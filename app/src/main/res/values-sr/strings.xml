@@ -3,9 +3,7 @@
     <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Да бисте инсталирали ново
         издање, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке апликације.)
     </string>
-    <string name="installIncompatible">Изгледа да овај пакет не одговара вашем уређају. Желите ли свеједно да га
-        инсталирате?
-    </string>
+    <string name="installIncompatible">Пакет не одговара вашем уређају, инсталирати свеједно?</string>
     <string name="version">Издање</string>
     <string name="delete">Обриши</string>
     <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
@@ -16,7 +14,7 @@
     <string name="update_interval_zero">Без самосталног освежавања списка надоградњи</string>
     <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
     <string name="automatic_scan_wifi_on">Самостално освежавање само на бесплатним мрежама као што је бежична</string>
-    <string name="notify">Обавештења о надоградњама</string>
+    <string name="notify">Прикажи доступне надоградње</string>
     <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
     <string name="system_installer">Повлашћено проширење</string>
     <string name="system_installer_on">Користи повлашћено проширење за уградњу, надоградњу и уклањање пакета</string>
@@ -163,7 +161,7 @@
     <string name="root_access_denied_body">Или ваш Андроид уређај нема корени приступ или сте Ф-дроиду одбили корени
         приступ.
     </string>
-    <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, додирните уређаје.</string>
+    <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, спојите ваше уређаје.</string>
     <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
     <string name="swap">Размена апликација</string>
     <string name="swap_no_wifi_network">Још нема мреже</string>
@@ -201,7 +199,7 @@
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
 
-    <string name="system_install_post_success">Успешно инсталирано повлашћено проширење за Ф-дроид</string>
+    <string name="system_install_post_success">Ф-дроид повлашћено проширење је уграђено</string>
     <string name="system_install_post_fail">Инсталација повлашћеног проширења за Ф-дроид није успела</string>
     <string name="system_install_installing">Инсталирам…</string>
     <string name="system_install_uninstalling">Уклањам…</string>
@@ -259,10 +257,8 @@
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца адресу друге особе у прегледачу.
     </string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
-    <string name="system_install_warning_lollipop">Ово траје десетак секунди и уређај ће након тога<b>поново да се
-        покрене</b>.
-    </string>
-    <string name="empty_can_update_app_list">Честитке! Све ваше апликације су надограђене (или ризнице нису освежене).</string>
+    <string name="system_install_warning_lollipop">Ово траје десетак секунди и уређај ће након тога<b>поново да се покрене</b>.</string>
+    <string name="empty_can_update_app_list">Честитке! Ваше апликације су надограђене.</string>
 
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражим људе у близини…</string>
@@ -275,7 +271,7 @@
     <string name="swap_nearby">Оближња размена</string>
     <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>
     <string name="swap_no_peers_nearby">Нисам нашао никога у близини за размену.</string>
-    <string name="download_error">Преузимање није успело</string>
+    <string name="download_error">Преузимање није успело!</string>
 
     <string name="perms_description_app">Обезбеђује %1$s.</string>
     <string name="more">Више</string>
@@ -297,17 +293,13 @@
     <string name="menu_flattr">Флатр</string>
 
 
-    <string name="system_install_post_success_message">Повлашћено проширење Ф-дроида је успешно инсталирано. Оно
-        омогућује Ф-дроиду да сам инсталира, надограђује и уклања програме.
-    </string>
+    <string name="system_install_post_success_message">Повлашћено проширење Ф-дроида је успешно уграђено. Оно омогућује Ф-дроиду да сам уграђује, надограђује и уклања програме.</string>
     <string name="system_install_post_fail_message">Инсталација повлашћеног проширења Ф-дроида није успела. Овај начин
         инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више
         података.
     </string>
     <string name="menu_settings">Поставке</string>
-    <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, изгледа да не можемо
-        размењивати са њим.
-    </string>
+    <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, не можемо размењивати са њим!</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате
         приступ истој мрежи, једно од вас може да направи бежичну врућу тачку.
     </string>
@@ -322,10 +314,7 @@
     <string name="status_inserting_apps">Уписујем детаље апликација</string>
     <string name="empty_search_available_app_list">Нема одговарајућих апликација.</string>
 
-    <string name="install_confirm_update">Желите ли да надоградите постојећу
-        апликацију? Подаци неће бити изгубљени.
-        Надограђена апликација ће добити приступ следећем:
-    </string>
+    <string name="install_confirm_update">Желите ли да надоградите постојећу апликацију? Подаци неће бити изгубљени. Надограђена апликација ће добити приступ следећем:</string>
     <string name="install_confirm_update_system">Желите ли да надоградите
         подразумевану апликацију? Подаци неће бити
         изгубљени. Надограђена апликација ће добити приступ следећем:
@@ -353,9 +342,7 @@
     <string name="repo_provider">Ризница: %s</string>
 
     <string name="update_auto_download">Аутоматски добављај надоградње</string>
-    <string name="update_auto_download_summary">"Надоградње се преузимају аутоматски и бићете обавештени када буду
-спремне за уградњу
- "</string>
+    <string name="update_auto_download_summary">Надоградње се преузимају аутоматски и бићете обавештени пре уградње</string>
     <string name="download_pending">Чекам на почетак преузимања…</string>
 
     <string name="system_install_not_supported">Инсталирање Повлашћеног проширење за Ф-дроид тренутно није подржано на
@@ -467,10 +454,8 @@
 	<item quantity="few">Надограђена пре %1$d дана</item>
 	<item quantity="other">Надограђена пре %1$d дана</item>
 </plurals>
-    <string name="app_list__name__successfully_installed">%1$s успешно инсталирана</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузимајте апликације од људи у
-        близини!
-    </string>
+    <string name="app_list__name__successfully_installed">%1$s уграђена</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обе стране треба да користе %1$s да би користиле ово.</string>
 
@@ -478,9 +463,7 @@
     <string name="categories__empty_state__no_categories">Нема категорија за приказ</string>
 
     <string name="latest__empty_state__never_updated">Када се списак апликација ажурира, најновије апликације ће бити приказане овде</string>
-    <string name="latest__empty_state__no_enabled_repos">"Када укључите ризнице и дозволите да се ажурира, најновије
-апликације ће бити приказане овде
- "</string>
+    <string name="latest__empty_state__no_enabled_repos">Када укључите ризнице и дозволите да се ажурира, најновије апликације ће бити приказане овде</string>
 
     <string name="details_last_updated_today">Ажурирана данас</string>
     <string name="menu_video">Видео</string>
@@ -495,27 +478,36 @@
 </plurals>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d надоградња</item>
-        <item quantity="few">%1$d надоградње</item>
-	<item quantity="other">%1$d надоградње</item>
+	<item quantity="few">%1$d надоградње</item>
+	<item quantity="other">%1$d надоградњи</item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d апл. инсталирана</item>
-        <item quantity="few">%1$d апл. инсталиране</item>
-	<item quantity="other">%1$d апл. инсталиране</item>
+	<item quantity="one">%1$d апл. уграђена</item>
+	<item quantity="few">%1$d апл. уграђене</item>
+	<item quantity="other">%1$d апл. уграђено</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Надограђена пре %1$d седмицу</item>
-        <item quantity="few">Надограђена пре %1$d седмице</item>
-	<item quantity="other">Надограђена пре %1$d седмице</item>
+	<item quantity="few">Надограђена пре %1$d седмице</item>
+	<item quantity="other">Надограђена пре %1$d седмица</item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Надограђена пре %1$d месец</item>
-        <item quantity="few">Надограђена пре %1$d месеца</item>
-	<item quantity="other">Надограђена пре %1$d месеца</item>
+	<item quantity="few">Надограђена пре %1$d месеца</item>
+	<item quantity="other">Надограђена пре %1$d месеци</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Надограђена пре %1$d годину</item>
-        <item quantity="few">Надограђена пре %1$d године</item>
-	<item quantity="other">Надограђена пре %1$d године</item>
+	<item quantity="few">Надограђена пре %1$d године</item>
+	<item quantity="other">Надограђена пре %1$d година</item>
 </plurals>
-</resources>
+<string name="force_old_index">Присили стари формат индекса</string>
+    <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите ИксМЛ индекс апликација</string>
+    <string name="app_installed_media">Фајл уграђен у %s</string>
+    <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште да би уградио у складиште. Одобрите приступ на следећем екрану да бисте наставили уградњу.</string>
+
+    <string name="app_list_download_ready">Преузето, спремо за уградњу</string>
+
+    <string name="download_404">Захтевани фајл није нађен.</string>
+    <string name="status_inserting_x_apps">Уписујем детаље апликација (%1$d/%2$d) од %3$s</string>
+    </resources>

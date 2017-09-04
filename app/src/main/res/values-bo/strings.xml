@@ -246,7 +246,7 @@
     <string name="unsigned_description">འདིས་མཉེན་ཆས་ཁག་གི་ཐོ་གཞུང་རྣམས་ར་སྤྲོད་མི་ཐུབ་མེད། མིང་རྟགས་མེད་པའི་བརྡ་སྟོན་ཁག་ནས་ཕབ་ལེན་བྱེད་པའི་མཉེན་ཆས་རྣམས་ཁྱེད་ཀྱིས་ངེས་པར་དུ་ཟབ་ཟབ་གནང་རོགས།</string>
     <string name="repo_not_yet_updated">མཛོད་ཁང་འདི་ད་བར་བེད་སྤྱོད་བཏང་མེད། ཁྱེད་ཀྱིས་འདི་སྒོ་ཕྱེས་ནས་མཉེན་ཆས་ལྟ་ཐུབ།</string>
     <string name="unknown">རྒྱུས་མེད།</string>
-    <string name="repo_confirm_delete_title">མཛོད་ཁང་སུབ་བམ་།</string>
+    <string name="repo_confirm_delete_title">མཛོད་ཁང་སུབས་སམ།</string>
     <string name="repo_confirm_delete_body">མཛོད་ཁང་སུབས་ན་འདིའི་ནང་གི་མཉེན་ཆས་རྣམས་ཨེཕ་རོཌ་ནང་་མེད་པ་ཆགས་ཀྱི་ཡོད་རེད། 
 \n 
 \nམཁྱེན་དགོས་པ་གཅིག་ལ། སྔར་འགྲིག་བཅུག་བྱས་ཟིན་པའི་མཉེན་ཆས་ཚང་མ་ཁྱེད་རང་གི་ཡོ་བྱད་སྒང་ལ་གནས་ཐུབ་ཀྱི་ཡོད།</string>
@@ -447,9 +447,11 @@
 
     <string name="requesting_root_access_body">ཡོ་བྱད་ཨ་མ་ལྟ་ཐུབ་པར་རེ་སྐུལ་ཞུ་བཞིན་པ།</string>
     <string name="root_access_denied_title">ཡོ་བྱད་ཨ་མ་ལྟ་བར་འགོག་རྐྱེན།</string>
-    <string name="root_access_denied_body">གཅིག་བྱས་ན་ཁྱེད་རང་གི་ཨེན་ཀྲོཌ་ཡོ་བྱད་འདི་ཆོག་མཆན་ཆ་ཚང་ཡོད་པའི་ཡོ་བྱད་ཨ་མ་བཟོས་མེད་པའམ་ཡང་ན་ཨེཕ་རོཌ་ལ་ཡོ་བྱད་ཨ་མས་བཀག་འདུག</string>
+    <string name="root_access_denied_body">གཅིག་བྱས་ན་ཁྱེད་རང་གི་ཨེན་ཀྲོཌ་ཡོ་བྱད་འདི་ཆོག་མཆན་ཆ་ཚང་ཡོད་པའི་ཡོ་བྱད་ཨ་མ་བཟོས་མེད་པའམ་ཡང་ན་ཁྱེད་རང་གིས་ཨེཕ་རོཌ་ལ་ཡོ་བྱད་ཨ་མ་ལྟ་ཡག་བཀག་འདུག</string>
     <string name="rooted_on">རྩ་བའི་ཐོབ་ཐང་རྣམས་དགོས་མཁོ་ཡོང་ན་མཉེན་ཆས་ཐལ་མདོག་མ་བཟོས།</string>
     <string name="hide_anti_feature_apps">ཁྱད་ཆོས་འགལ་ཟླའི་མཉེས་ཆས་ཐལ་མདོག་བཟོས།</string>
     <string name="hide_anti_feature_apps_on">ཁྱད་ཆོས་འགལ་ཟླའི་དོགས་མཁོ་ཡོད་པའི་ཐལ་མདོག་བཟོས།</string>
+
+    <string name="tts_category_name">སྡེ་ཚན་%1$s</string>
 
     </resources>

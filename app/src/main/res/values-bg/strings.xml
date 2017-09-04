@@ -9,7 +9,7 @@
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
     <string name="cache_downloaded">Запазване на кешираните приложения</string>
-    <string name="updates">Актуализации</string>
+    <string name="updates">Обновления</string>
     <string name="other">Други</string>
     <string name="update_interval">Проверка за актуализации</string>
     <string name="update_interval_zero">Без автоматично актуализиране на списъка с приложения</string>
@@ -40,7 +40,7 @@
     <string name="ok">Добре</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
-    <string name="repo_add_title">Добави ново хранилище</string>
+    <string name="repo_add_title">Добавяне на ново хранилище</string>
     <string name="repo_add_add">Добавяне</string>
     <string name="cancel">Отказ</string>
     <string name="add_key">Добавете ключ</string>
@@ -52,10 +52,10 @@
     <string name="menu_manage">Хранилища</string>
     <string name="menu_search">Търсене</string>
     <string name="menu_add_repo">Ново хранилище</string>
-    <string name="menu_launch">Стартирай</string>
-    <string name="menu_share">Сподели</string>
-    <string name="menu_install">Инсталирай</string>
-    <string name="menu_uninstall">Деинсталирай</string>
+    <string name="menu_launch">Пускане</string>
+    <string name="menu_share">Споделяне</string>
+    <string name="menu_install">Инсталиране</string>
+    <string name="menu_uninstall">Деинсталиране</string>
     <string name="menu_ignore_all">Игнорирай всички актуализации</string>
     <string name="menu_ignore_this">Игнорирай актуализацията</string>
     <string name="menu_website">Уебсайт</string>
@@ -69,7 +69,7 @@
     <string name="antinonfreenetlist">Приложението промотира несвободни мрежови услуги</string>
     <string name="antinonfreedeplist">Приложението зависи от други несвободни приложения</string>
     <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
-    <string name="display">Дисплей</string>
+    <string name="display">Изглед</string>
     <string name="expert">Експертен режим</string>
     <string name="expert_on">Показва допълнителна информация и настройки</string>
     <string name="search_hint">Търсене на приложения</string>
@@ -90,9 +90,9 @@
     <string name="enable_proxy_title">Включване на HTTP прокси</string>
     <string name="enable_proxy_summary">Настройка на HTTP прокси за всички мрежови заявки</string>
     <string name="proxy_host">Хост на проксито</string>
-    <string name="proxy_host_summary">Въведете име на хоста за проксито (напр. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Име на хоста за посредника (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт за проксито</string>
-    <string name="proxy_port_summary">Въведете номер за порта на проксито (напр. 8118)</string>
+    <string name="proxy_port_summary">Номер на порта за посредника (напр. 8118)</string>
     <string name="status_download">Сваляне
         %2$s / %3$s (%4$d%%) от
         %1$s
@@ -191,7 +191,7 @@
     <string name="unstable_updates">Нестабилни актуализации</string>
     <string name="unstable_updates_summary">Предлагай актуализиране до версии, които могат да бъдат нестабилни</string>
     <string name="category_Connectivity">Свързаност</string>
-    <string name="menu_upgrade">Обнови</string>
+    <string name="menu_upgrade">Обновяване</string>
     <string name="links">Връзки</string>
     <string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през
         F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите,
@@ -278,7 +278,7 @@
     <string name="less">По-малко</string>
 
     <string name="menu_settings">Настройки</string>
-    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_bitcoin">Биткойн</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
 
@@ -305,7 +305,7 @@
         осъществи.
     </string>
     <string name="newPerms">Нови</string>
-    <string name="uninstall_update_confirm">Желаете ли приложението да бъде заменено от фабричната му версия?</string>
+    <string name="uninstall_update_confirm">Искате ли да замените приложението със заводската му версия?</string>
     <string name="download_error">Свалянето се провали</string>
 
     <string name="perms_new_perm_prefix">Ново:</string>
@@ -344,7 +344,7 @@
         браузер.
     </string>
     <string name="swap_stopping_wifi">Изключване на Wi-Fi…</string>
-    <string name="crash_dialog_title">F-Droid крашна</string>
+    <string name="crash_dialog_title">Програмата се срина</string>
     <string name="crash_dialog_text">Непредвидена грешка накара приложението да се затвори. Желаете ли да пратите имейл
         до разработчиците за помощ?
     </string>
@@ -405,7 +405,7 @@
     <string name="main_menu__swap_nearby">Наблизо</string>
 
     <string name="latest__empty_state__no_recent_apps">Няма намерени нови приложения</string>
-<string name="preference_manage_installed_apps">Управление на инсталираните приложения</string>
+<string name="preference_manage_installed_apps">Управление на инсталираните  приложения</string>
 
 
     <string name="preference_category__my_apps">Моите приложения</string>
@@ -427,11 +427,11 @@
     <string name="categories__empty_state__no_categories">Няма категории за показване</string>
 
     <string name="download_404">Исканият файл не е намерен.</string>
-    <string name="keep_day">1 Ден</string>
-    <string name="keep_week">1 Седмица</string>
-    <string name="keep_month">1 Месец</string>
-    <string name="keep_hour">1 Час</string>
-    <string name="keep_year">1 Година</string>
+    <string name="keep_day">1 ден</string>
+    <string name="keep_week">1 седмица</string>
+    <string name="keep_month">1 месец</string>
+    <string name="keep_hour">1 час</string>
+    <string name="keep_year">1 година</string>
     <string name="keep_forever">Завинаги</string>
 
     <string name="notification_title_single_ready_to_install">Готов за инсталация</string>
@@ -485,8 +485,8 @@
     <string name="notification_action_install">Инсталирай</string>
 
     <string name="warning_no_internet">Невъзможна актуализация, проверете свързани ли сте към интернет?</string>
-    <string name="notification_title_single_update_available">Налична актуализация</string>
-    <string name="notification_title_summary_install_error">Провалена иснталация</string>
+    <string name="notification_title_single_update_available">Налично обновление</string>
+    <string name="notification_title_summary_install_error">Инсталирането е неуспешно</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Покажи %d</item>
 	<item quantity="other">Покажи всички %d</item>

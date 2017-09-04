@@ -221,7 +221,7 @@
         que não estão disponíveis no F-Droid. Pode ser necessário atualizar os seus repositórios ou os repositórios não
         possuem quaisquer aplicações.
     </string>
-    <string name="empty_can_update_app_list">Parabéns! Todas as aplicações estão atualizadas (ou os repositórios estão desatualizados).</string>
+    <string name="empty_can_update_app_list">Parabéns! As suas aplicações estão atualizadas.</string>
 
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
@@ -519,4 +519,10 @@
 </plurals>
 <string name="force_old_index">Impor formato de índice antigo</string>
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidade, utilizar o índice XML</string>
+    <string name="app_installed_media">Ficheiro instalado em %s</string>
+    <string name="app_permission_storage">O F-Droid necessita de aceder ao armazenamento. Por favor conceda essa permissão no próximo ecrã para continuar com a instalação.</string>
+
+    <string name="app_list_download_ready">Descarregada e pronta para instalação</string>
+
+    <string name="status_inserting_x_apps">A guardar detalhes das aplicações (%1$d/%2$d) de %3$s</string>
     </resources>

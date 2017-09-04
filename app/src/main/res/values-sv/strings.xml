@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera
-        den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att
-        all intern lagrad data som tillhör programmet kommer att raderas när det avinstalleras.)
-    </string>
-    <string name="installIncompatible">Det verkar som att det här paketet inte är kompatibelt med din enhet. Vill du
-        testa att installera det ändå?
-    </string>
+    <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all intern lagrad data som tillhör appen kommer att raderas när det avinstalleras.)</string>
+    <string name="installIncompatible">Appen är inte kompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
     <string name="delete">Ta bort</string>
     <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
@@ -17,7 +12,7 @@
     <string name="update_interval_zero">Inga automatiska applistuppdateringar</string>
     <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
-    <string name="notify">Avisering vid uppdatering</string>
+    <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
     <string name="system_installer">Privilegierad utökning</string>
     <string name="system_installer_on">Använd F-Droid privilegierad utökning för att installera, uppdatera och ta bort paket</string>
@@ -79,8 +74,8 @@
     <string name="display">Visning</string>
     <string name="expert">Expertläge</string>
     <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
-    <string name="search_hint">Sök efter applikationer</string>
-    <string name="appcompatibility">Applikationskompatibilitet</string>
+    <string name="search_hint">Sök efter appar</string>
+    <string name="appcompatibility">Appkompatibilitet</string>
     <string name="show_incompat_versions">Inkompatibla versioner</string>
     <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
     <string name="rooted">Ignorera root</string>
@@ -102,9 +97,9 @@
     <string name="enable_proxy_title">Aktivera HTTP-proxy</string>
     <string name="enable_proxy_summary">Konfigurera HTTP-proxy för alla nätverksförfrågningar</string>
     <string name="proxy_host">Proxyvärd</string>
-    <string name="proxy_host_summary">Konfigurera din proxys värdnamn (t.ex. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Din proxys värdnamn (t.ex. 127.0.0.1)</string>
     <string name="proxy_port">Proxyport</string>
-    <string name="proxy_port_summary">Konfigurera din proxys portnummer (t.ex. 8118)</string>
+    <string name="proxy_port_summary">Din proxys portnummer (t.ex. 8118)</string>
     <string name="status_download">Hämtar
 \n%2$s / %3$s (%4$d%%) från
 \n%1$s</string>
@@ -122,21 +117,18 @@
     <string name="repo_description">Beskrivning</string>
     <string name="repo_last_update">Senaste uppdatering</string>
     <string name="repo_name">Namn</string>
-    <string name="unsigned_description">Detta betyder att listan av
-        program inte kunde verifieras. Du bör vara försiktig
-        med appar som hämtats från osignerade index.
-    </string>
+    <string name="unsigned_description">Detta betyder att listan med appar inte kunde verifieras. Du bör vara försiktig med appar som hämtats från osignerade index.</string>
     <string name="repo_not_yet_updated">Detta förråd har inte använts ännu.
         Du måste aktivera det för att se apparna det tillhandahåller.
     </string>
     <string name="unknown">Okänd</string>
     <string name="repo_confirm_delete_title">Ta bort förråd?</string>
-    <string name="repo_confirm_delete_body">"Att ta bort ett förråd betyder att dess appar inte längre kommer att vara tillgängliga från F-Droid. 
-\n
-\nObservera: Alla tidigare installerade appar kommer kvarstå på din enhet. "</string>
-    <string name="repo_disabled_notification">"Inaktiverade %1$s.
-\n
-\nDu kommer behöva återaktivera det här förrådet för att kunna installera appar från det. "</string>
+    <string name="repo_confirm_delete_body">Att ta bort ett förråd betyder att dess appar inte längre kommer att vara tillgängliga från F-Droid. 
+\n 
+\nObservera: Alla tidigare installerade appar kommer kvarstå på din enhet.</string>
+    <string name="repo_disabled_notification">Inaktiverade %1$s. 
+\n 
+\nDu kommer behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
     <string name="repo_searching_address">Söker F-Droid-förråd på
 \n%1$s</string>
     <string name="minsdk_or_later">%s eller senare</string>
@@ -215,7 +207,7 @@
     <string name="useTor">Använd Tor</string>
     <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
-    <string name="status_inserting_apps">Sparar applikationsdetaljer</string>
+    <string name="status_inserting_apps">Sparar appdetaljer</string>
     <string name="repo_added">Sparade F-Droid-förråd %1$s.</string>
     <string name="wifi_ap">Surfzon</string>
 
@@ -231,16 +223,16 @@
         tillgängliga från F-Droid. Detta kan bero på att du behöver uppdatera dina förråd, eller så har förråden
         verkligen inte dina appar tillgängliga.
     </string>
-    <string name="empty_can_update_app_list">Grattis! Alla dina appar är uppdaterade (eller så behöver dina förråd uppdateras).</string>
+    <string name="empty_can_update_app_list">Grattis! Dina appar är uppdaterade.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="repo_provider">Förråd: %s</string>
 
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
-    <string name="system_install_denied_signature">Signaturen för tillägget är fel! Skapa en felrapport!</string>
-    <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats tillägget! Skapa en felrapport!</string>
+    <string name="system_install_denied_signature">Signaturen för utökningen är fel! Skapa en felrapport!</string>
+    <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
     <string name="system_install_button_install">Installera</string>
-    <string name="system_install_post_success">Installerat F-Droid privilegierade tillbyggnad</string>
+    <string name="system_install_post_success">F-Droid privilegierade tillbyggnad har installerats</string>
     <string name="system_install_post_fail">Installationen av F-Droid privilegierad tillbyggnad misslyckades</string>
     <string name="system_install_post_success_message">F-Droid privilegierad tillbyggnad har installerats. Detta
         tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.
@@ -290,19 +282,14 @@
     <string name="swap_confirm">Bekräfta utbyte</string>
     <string name="swap_qr_isnt_for_swap">QR-koden du läst av ser inte ut som en utbytarkod.</string>
     <string name="bluetooth_unavailable">Bluetooth inte tillgänglig</string>
-    <string name="swap_cant_send_no_bluetooth">Det går inte att skicka F-Droid eftersom Bluetooth inte är tillgänglig på den här enheten.</string>
+    <string name="swap_cant_send_no_bluetooth">Det går inte att skicka F-Droid eftersom Bluetooth är otillgänglig på den här enheten.</string>
     <string name="loading">Öppnar…</string>
-    <string name="swap_connection_misc_error">Ett fel uppstod under enhetsanslutning, vi kan inte utföra utbyte med
-        den.
-    </string>
+    <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="swap_not_enabled">Utbyta inte aktiverat</string>
     <string name="swap_not_enabled_description">Innan utbyte måste din enhet synliggöras.</string>
 
     <string name="install_confirm">behöver åtkomst till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering
-        till denna befintlig applikation? Din befintliga data
-        försvinner inte. Det uppdaterade programmet kommer att få åtkomst till:
-    </string>
+    <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
     <string name="install_confirm_update_system">Vill du installera en uppdatering
         till denna inbyggda app? Befintlig data försvinner inte.
         Den uppdaterade appen kommer att få åtkomst till:
@@ -320,7 +307,7 @@
     <string name="perm_costs_money">Detta kan kosta pengar</string>
     <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
     <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>
-    <string name="download_error">Hämtning misslyckades</string>
+    <string name="download_error">Hämtning misslyckades!</string>
 
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tillhandahålls av %1$s.</string>
@@ -339,7 +326,7 @@
     <string name="theme_night">Natt</string>
 
     <string name="crash_dialog_title">F-Droid har kraschat</string>
-    <string name="crash_dialog_text">Ett oväntat fel tvingade programmet att avsluta. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
+    <string name="crash_dialog_text">Ett oväntat fel tvingade appen att avslutas. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
     <string name="swap_nearby">Utbyt nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
@@ -372,12 +359,12 @@
     <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
     <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
-    <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till internet?</string>
+    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till utvecklarna av %1$s!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
 
-    <string name="repositories_summary">Lägg till ytterligare källor till applikationer</string>
+    <string name="repositories_summary">Lägg till ytterligare källor till appar</string>
     <string name="app_version_x_available">Version %1$s är tillgänglig</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Rekommenderad)</string>
@@ -447,10 +434,10 @@
     <string name="antifeatureswarning">Denna app har funktioner som du kanske inte gillar.</string>
     <string name="antifeatures">Anti-funktioner</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Uppdaterade %1$s dag sedan</item>
-        <item quantity="other">Uppdaterade %1$s dagar sedan</item>
-    </plurals>
-    <string name="app_list__name__successfully_installed">%1$s har installerats</string>
+	<item quantity="one">Uppdaterade för %1$d dag sedan</item>
+	<item quantity="other">Uppdaterade för %1$d dagar sedan</item>
+</plurals>
+    <string name="app_list__name__successfully_installed">%1$s installerad</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Hämta appar från personer nära dig!
     </string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
@@ -480,17 +467,25 @@
 	<item quantity="other">%1$d appar installerade</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uppdaterad för %1$s vecka sedan</item>
-	<item quantity="other">Uppdaterad för %1$s veckor sedan</item>
+	<item quantity="one">Uppdaterad för %1$d vecka sedan</item>
+	<item quantity="other">Uppdaterad för %1$d veckor sedan</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uppdaterad för %1$s månad sedan</item>
-	<item quantity="other">Uppdaterad för %1$s månader sedan</item>
+	<item quantity="one">Uppdaterad för %1$d månad sedan</item>
+	<item quantity="other">Uppdaterad för %1$d månader sedan</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uppdaterad för %1$s år sedan</item>
-	<item quantity="other">Uppdaterad för %1$s år sedan</item>
+	<item quantity="one">Uppdaterad för %1$d år sedan</item>
+	<item quantity="other">Uppdaterad för %1$d år sedan</item>
 </plurals>
 <string name="by_author_format">av %s</string>
     <string name="download_404">Den begärda filen hittades inte.</string>
+    <string name="force_old_index">Tvinga gammalt indexformat</string>
+    <string name="force_old_index_summary">Om det finns fel eller kompatibilitetsproblem, använd XML-appindexet</string>
+    <string name="app_installed_media">Fil installerad till %s</string>
+    <string name="app_permission_storage">F-Droid behöver lagringstillstånd för att installera detta till lagring. Vänligen tillåt det på nästa skärm för att fortsätta med installationen.</string>
+
+    <string name="app_list_download_ready">Hämtat, redo att installera</string>
+
+    <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
     </resources>

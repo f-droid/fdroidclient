@@ -106,9 +106,9 @@
     <string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
     <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
 
-    <string name="local_repo_name">Izendatu zure tokiko biltegia</string>
-    <string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
-    <string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
+    <string name="local_repo_name">Zure biltegi lokalaren izena</string>
+    <string name="local_repo_name_summary">Zure biltegi lokalak iragarritako izenburua: %s</string>
+    <string name="local_repo_https_on">Erabili zifratutako HTTPS:// konexioa biltegi lokalarentzat</string>
 
     <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
     <string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
@@ -124,7 +124,7 @@
     <string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
     <string name="ignoreTouch_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
 
-    <string name="local_repo">Tokiko biltegia</string>
+    <string name="local_repo">Biltegi lokala</string>
     <string name="deleting_repo">Uneko biltegia ezabatzen…</string>
     <string name="adding_apks_format">%s biltegira gehitzen…</string>
     <string name="icon">Ikonoa</string>
@@ -215,7 +215,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Money">Dirua</string>
     <string name="category_Multimedia">Multimedia</string>
-    <string name="category_Navigation">Nabigazioa</string>
+    <string name="category_Navigation">Orientazioa</string>
     <string name="category_Phone_SMS">Telefonoa eta SMS</string>
     <string name="category_Reading">Irakurketa</string>
     <string name="category_Science_Education">Zientzia eta hezkuntza</string>
@@ -394,14 +394,14 @@
     <string name="update_auto_install">Instalatu eguneraketak automatikoki</string>
     <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan
     </string>
-    <string name="keep_install_history">Mantendu instalazio historiala</string>
+    <string name="keep_install_history">Mantendu instalazioen historiala</string>
     <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
     <string name="warning_no_internet">Ezin da eguneratu, Internetera konektatuta zaude?</string>
     <string name="versions">Bertsioak</string>
     <string name="app_details_donate_prompt_unknown_author">Gonbidatu %1$s garatzaileak kafe batetara!</string>
     <string name="app_details_donate_prompt">%1$s %2$s(e)k sortu du. Gonbidatu kafe batetara!</string>
 
-    <string name="repositories_summary">Gehitu aplikazioen iturri gehigarriak</string>
+    <string name="repositories_summary">Gehitu aplikazioen iturri osagarriak</string>
     <string name="notification_title_single_update_available">Eguneraketa eskuragarri</string>
     <string name="notification_title_single_ready_to_install">Instalatzeko prest</string>
     <string name="notification_title_single_ready_to_install_update">Eguneraketa instalatzeko prest</string>
@@ -493,7 +493,7 @@
 
     <string name="app__tts__downloading_progress">Deskargatzen, %1$d%% osatua</string>
     <string name="by_author_format">egilea: %s</string>
-    <string name="force_old_index">Indize zaharreko formatua behartu</string>
+    <string name="force_old_index">Behartu indize-formatu zaharra</string>
     <string name="force_old_index_summary">Errorerik edo bateragarritasun arazorik izanez gero, erabili aplikazioaren XML indizea</string>
     <string name="download_404">Ez da aurkitu eskatutako fitxategia.</string>
     <plurals name="notification_summary_more">

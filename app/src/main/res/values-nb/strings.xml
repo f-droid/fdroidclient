@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet.)</string>
-    <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere den likevel?</string>
+    <string name="installIncompatible">Programmet er ikke kompatibelt med ditt utstyr, installer likevel?</string>
     <string name="delete">Slett</string>
     <string name="enable_nfc_send">Skru på NFC-sending…</string>
     <string name="cache_downloaded">Behold mellomlagrede programmer</string>
@@ -11,7 +11,7 @@
     <string name="update_interval_zero">Ingen automatisk oppdatering av pakkebrønner</string>
     <string name="automatic_scan_wifi">Bare på trådløst</string>
     <string name="automatic_scan_wifi_on">Bare oppdater automatisk når tilknyttet Wi-Fi</string>
-    <string name="notify">Varsle</string>
+    <string name="notify">Vis tilgjengelig oppdateringer</string>
     <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
     <string name="system_installer">Priviligert tillegg</string>
     <string name="system_installer_on">Bruk priviligert tillegg til å installere, oppdatere, og fjerne programmer
@@ -97,9 +97,9 @@
     <string name="enable_proxy_title">Skru på HTTP-mellomtjener</string>
     <string name="enable_proxy_summary">Sett opp HTTP-mellomtjener for alle nettverksforespørsler</string>
     <string name="proxy_host">Mellomtjener-vert</string>
-    <string name="proxy_host_summary">Sett opp tjenernavn for din mellomtjener (f.eks. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Tjenernavn for din mellomtjener (f.eks. 127.0.0.1)</string>
     <string name="proxy_port">Mellomtjener-port</string>
-    <string name="proxy_port_summary">Sett opp portnummer for din mellomtjener (f.eks. 8118)</string>
+    <string name="proxy_port_summary">Portnummer for din mellomtjener (f.eks. 8118)</string>
     <string name="status_download">Laster ned\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
     <string name="status_connecting_to_repo">Kobler til\n%1$s</string>
     <string name="repos_unchanged">Alle pakkebrønner ajourførte</string>
@@ -204,10 +204,7 @@
     <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
     <string name="system_install_uninstalling">Avinstallerer…</string>
     <string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
-    <string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder,
-        <b>omstart</b>
-        vil igangsettes etterpå.
-    </string>
+    <string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
     <string name="system_uninstall_button">Avinstaller</string>
 
     <string name="swap_switch_to_wifi">Trykk for å bytte Wi-Fi-nettverk</string>
@@ -240,7 +237,7 @@
     <string name="perm_costs_money">Dette kan koste penger</string>
     <string name="uninstall_update_confirm">Ønsker du å erstatte dette programmet med fabrikkversjonen?</string>
     <string name="uninstall_confirm">Ønsker du å avinstallere dette programmet?</string>
-    <string name="download_error">Nedlasting feilet</string>
+    <string name="download_error">Nedlasting mislyktes!</string>
 
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tilbudt av %1$s.</string>
@@ -351,8 +348,8 @@
     <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
     <string name="update_auto_download">Hent oppdateringer automatisk</string>
-    <string name="update_auto_download_summary">"Oppdateringene blir lastet ned i bakgrunnen og du får en beskjed
-\nom å installere dem "</string>
+    <string name="update_auto_download_summary">Oppdateringer blir lastet ned automatisk og du får en beskjed 
+\nom å installere dem</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
 
     <string name="keep_hour">én time</string>
@@ -456,8 +453,8 @@
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Oppdatert %1$s dag siden</item>
-	<item quantity="other">Oppdatert for %1$s dager siden</item>
+	<item quantity="one">Oppdatert %1$d dag siden</item>
+	<item quantity="other">Oppdatert for %1$d dager siden</item>
 </plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
     <string name="app_list__name__successfully_installed">%1$s installert</string>
@@ -472,8 +469,7 @@
 
     <string name="categories__empty_state__no_categories">Ingen kategorier å vise</string>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">"Inget Internett? Hent programmer fra folk i nærheten!
-\n "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Inget Internett? Hent programmer fra folk i nærheten!</string>
     <string name="nearby_splash__find_people_button">Finn folk i nærheten</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter trenger %1$s for å bruke sirkulering.</string>
 

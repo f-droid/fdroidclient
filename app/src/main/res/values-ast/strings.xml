@@ -236,9 +236,7 @@
         tán disponibles dende F-Droid. Esto quiciabes sía porque precises anovar los tos repositorios o porque los
         repositorios nun tengan daveres les tos aplicaciones disponibles.
     </string>
-    <string name="empty_can_update_app_list">Anováronse toles aplicaciones.\n\n¡Norabona! Toles tos aplicaciones tán
-        anovaes (o los tos repositorios tán ensin anovar).
-    </string>
+    <string name="empty_can_update_app_list">¡Norabona! Les aplicaciones tán anovaes.</string>
 
     <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
@@ -503,4 +501,7 @@
 <string name="app_list_download_ready">Descargao, preparao pa instalar</string>
 
     <string name="status_inserting_x_apps">Guardando detalles de la app (%1$d/%2$d) dende %3$s</string>
+    <string name="app_installed_media">Ficheru instaláu en %s</string>
+    <string name="app_permission_storage">F-Droid necesita permisu de guardar pa instalar esto nel almacenamientu. Da esi permisu na siguiente pantalla pa siguir cola instalación.</string>
+
     </resources>

@@ -1,11 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии
-        необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут
-        потеряны)
-    </string>
-    <string name="installIncompatible">Похоже, этот пакет несовместим с вашим устройством. Всё равно установить?
-    </string>
+    <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз (при удалении приложения все его данные будут потеряны).</string>
+    <string name="installIncompatible">Приложение несовместимо с вашим устройством. Всё равно установить?</string>
     <string name="version">Версия</string>
     <string name="delete">Удалить</string>
     <string name="enable_nfc_send">Включить отправку по NFC…</string>
@@ -18,7 +14,7 @@
     <string name="automatic_scan_wifi_on">Обновлять автоматически только по нелимитированным соединениям (таким как
         Wi-Fi)
     </string>
-    <string name="notify">Уведомления об обновлениях</string>
+    <string name="notify">Показывать доступные обновления</string>
     <string name="notify_on">Отображать уведомление когда есть обновления</string>
     <string name="system_installer">Привилегированное расширение</string>
     <string name="system_installer_on">Использовать привилегированное расширение F-Droid для установки, обновления и
@@ -82,7 +78,7 @@
     <string name="display">Вид</string>
     <string name="expert">Режим эксперта</string>
     <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
-    <string name="search_hint">Найти приложения</string>
+    <string name="search_hint">Искать приложения</string>
     <string name="appcompatibility">Совместимость приложений</string>
     <string name="show_incompat_versions">Несовместимые версии</string>
     <string name="show_incompat_versions_on">Показать версии программ, несовместимые с устройством</string>
@@ -104,9 +100,9 @@
     <string name="enable_proxy_title">Включить HTTP прокси</string>
     <string name="enable_proxy_summary">Настроить HTTP прокси для всех запросов</string>
     <string name="proxy_host">Хост прокси</string>
-    <string name="proxy_host_summary">Настройка хоста прокси (напр. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Хост вашего прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт прокси</string>
-    <string name="proxy_port_summary">Настройка номера порта вашего прокси (напр. 8118)</string>
+    <string name="proxy_port_summary">Номера порта вашего прокси (напр. 8118)</string>
     <string name="status_download">Загрузка
         %2$s / %3$s (%4$d%%) из
         %1$s
@@ -133,9 +129,9 @@
     </string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-    <string name="repo_confirm_delete_body">"Удаление репозитория означает, что приложения из него больше не будут доступны в F-Droid.
-\n
-\nПримечание: все ранее установленные приложения останутся на вашем устройстве. "</string>
+    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше не будут доступны в F-Droid. 
+\n 
+\nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
     <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам
         необходимо повторно включить его.
     </string>
@@ -203,9 +199,7 @@
         недоступны из F-Droid. Возможно, репозитории не обновлены, а может быть они вообще не содержат установленных у
         вас приложений.
     </string>
-    <string name="empty_can_update_app_list">"Все приложения обновлены.
-\n
-\nПоздравляем! У Вас установлены самые свежие версии приложений (либо репозитории требуют обновления). "</string>
+    <string name="empty_can_update_app_list">Поздравляем! У вас установлены самые свежие версии приложений.</string>
 
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
@@ -252,7 +246,7 @@
         Пожалуйста, отправьте сообщение об ошибке!
     </string>
     <string name="system_install_button_install">Установить</string>
-    <string name="system_install_post_success">Привелигированное расширение F-Droid успешно установлено</string>
+    <string name="system_install_post_success">Привилегированное расширение F-Droid успешно установлено</string>
     <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
     <string name="system_install_installing">Установка…</string>
     <string name="system_install_installing_rebooting">Установка и перезагрузка…</string>
@@ -269,9 +263,7 @@
     <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
 
     <string name="system_install_warning">Это займёт до 10 секунд.</string>
-    <string name="system_install_warning_lollipop">Это займёт до 10 секунд, после чего устройство будет<b>
-        перезагружено</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Это займёт до 10 секунд, после чего устройство будет <b>перезагружено</b>.</string>
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
     <string name="swap_scan_qr">Сканировать QR-код</string>
@@ -296,7 +288,7 @@
     <string name="perm_costs_money">Это может стоить вам денег</string>
     <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
     <string name="uninstall_confirm">Хотите удалить это приложение?</string>
-    <string name="download_error">Загрузка не удалась</string>
+    <string name="download_error">Загрузка не удалась!</string>
 
     <string name="perms_new_perm_prefix">Новые:</string>
     <string name="crash_dialog_title">Произошёл сбой F-Droid</string>
@@ -308,16 +300,14 @@
     <string name="useTorSummary">Перенаправлять входящий трафик через Tor для улучшения конфиденциальности</string>
     <string name="repo_provider">Репозиторий: %s</string>
 
-    <string name="system_install_post_success_message">Привилегированное дополнение F-Droid успешно установлено. Оно
-        позволяет F-Droid самостоятельно устанавливать, обновить и удалять приложения.
-    </string>
+    <string name="system_install_post_success_message">Привилегированное дополнение F-Droid установлено. Это позволяет F-Droid самостоятельно устанавливать, обновлять и удалять приложения.</string>
     <string name="system_install_post_fail_message">Установка привилегированного приложения F-Droid не удалась.
         Используемый метод установки поддерживается не всеми дистрибутивами Android, за дополнительной информацией
         обратитесь к системе отслеживания ошибок F-Droid.
     </string>
     <string name="system_install_question">Вы хотите установить привилегированное расширение F-Droid?</string>
     <string name="system_uninstall">Вы хотите удалить привилегированное расширение F-Droid?</string>
-    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включен NFC, приложите устройства друг к другу.</string>
+    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включён NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите Вашему другу подключиться к Вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
     <string name="swap_join_same_wifi_desc">Чтобы выполнить обмен, используя Wi-Fi, убедитесь, что вы подключены к одной
@@ -347,9 +337,7 @@
     <string name="swap_cant_send_no_bluetooth">Не удаётся отправить F-Droid, так как Bluetooth не доступен на данном
         устройстве.
     </string>
-    <string name="swap_connection_misc_error">При подключении к устройству возникли ошибки, вы не можете провести обмен
-        с этим устройством.
-    </string>
+    <string name="swap_connection_misc_error">При подключении к устройству произошла ошибка, невозможно провести с ним обмен!</string>
     <string name="swap_not_enabled">Обмен не включен</string>
     <string name="swap_not_enabled_description">Для выполнения обмена следует сделать ваше устройство видимым.</string>
 
@@ -385,7 +373,7 @@
     <string name="hide_anti_feature_apps">Сомнительные приложения</string>
     <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал
     </string>
-    <string name="warning_no_internet">Не удаётся обновить. Вы подключены к интернету?</string>
+    <string name="warning_no_internet">Не удаётся обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
     <string name="updates__tts__download_updates_for_all_apps">Скачать все обновления</string>
@@ -395,7 +383,7 @@
 
     <string name="clear_search">Очистить поиск</string>
 
-    <string name="repositories_summary">Добавить дополнительный источник приложений</string>
+    <string name="repositories_summary">Добавить дополнительные источники приложений</string>
     <string name="main_menu__categories">Категории</string>
     <string name="preference_manage_installed_apps">Управление установленными приложениями</string>
 
@@ -420,7 +408,7 @@
     <string name="app_version_x_available">Доступна версия %1$s</string>
     <string name="app_version_x_installed">Версия %1$s</string>
     <string name="app__newly_added">Новое</string>
-    <string name="app_list__name__successfully_installed">%1$s успешно установлено</string>
+    <string name="app_list__name__successfully_installed">%1$s установлено</string>
 
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
 
@@ -431,7 +419,7 @@
         <item quantity="other">Посмотреть %d приложений</item>
 	</plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Скачивайте приложения у людей рядом с вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет Интернета? Получайте приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
@@ -534,4 +522,7 @@
     <string name="app_list_download_ready">Загружено, готово к установке</string>
 
     <string name="status_inserting_x_apps">Сохранение данных приложений (%1$d/%2$d) из %3$s</string>
+    <string name="app_installed_media">Файл установлен в %s</string>
+    <string name="app_permission_storage">F-Droid нуждается в разрешении на доступ к хранилищу, чтобы установить это. Пожалуйста, дайте разрешение на следующем экране, чтобы продолжить установку.</string>
+
     </resources>
