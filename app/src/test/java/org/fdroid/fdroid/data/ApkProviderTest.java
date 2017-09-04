@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.mock.MockApk;
@@ -269,6 +270,27 @@ public class ApkProviderTest extends FDroidProviderTest {
         List<Apk> thingoApks = ApkProvider.Helper.findByPackageName(context, "com.apk.thingo");
         assertResultCount(1, thingoApks);
         assertBelongsToApp(thingoApks, "com.apk.thingo");
+    }
+
+    @Test
+    public void findApksForAppInSpecificRepo() {
+        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/repo");
+        Repo swapRepo = RepoProviderTest.insertRepo(context, "http://192.168.1.3/fdroid/repo", "", "22", "", true);
+
+        App officialFDroid = insertApp(context, "org.fdroid.fdroid", "F-Droid (Official)", fdroidRepo);
+        TestUtils.insertApk(context, officialFDroid, 4, TestUtils.FDROID_SIG);
+        TestUtils.insertApk(context, officialFDroid, 5, TestUtils.FDROID_SIG);
+
+        App debugSwapFDroid = insertApp(context, "org.fdroid.fdroid", "F-Droid (Debug)", swapRepo);
+        TestUtils.insertApk(context, debugSwapFDroid, 6, TestUtils.THIRD_PARTY_SIG);
+
+        List<Apk> foundOfficialApks = ApkProvider.Helper.findAppVersionsByRepo(context, officialFDroid, fdroidRepo);
+        assertEquals(2, foundOfficialApks.size());
+
+        List<Apk> debugSwapApks = ApkProvider.Helper.findAppVersionsByRepo(context, officialFDroid, swapRepo);
+        assertEquals(1, debugSwapApks.size());
+        assertEquals(debugSwapFDroid.getId(), debugSwapApks.get(0).appId);
+        assertEquals(6, debugSwapApks.get(0).versionCode);
     }
 
     @Test

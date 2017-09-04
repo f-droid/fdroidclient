@@ -39,7 +39,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.InstallManagerService;
@@ -766,8 +765,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    public void install(@NonNull final App app) {
-        final Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
+    public void install(@NonNull final App app, @NonNull final Apk apk) {
         Uri downloadUri = Uri.parse(apk.getUrl());
         localBroadcastManager.registerReceiver(installReceiver,
                 Installer.getInstallIntentFilter(downloadUri));

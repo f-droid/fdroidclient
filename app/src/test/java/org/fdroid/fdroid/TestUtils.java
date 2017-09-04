@@ -6,7 +6,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
+import android.net.Uri;
 
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
@@ -81,10 +84,14 @@ public class TestUtils {
         assertEquals(message, formatSigForDebugging(expected), formatSigForDebugging(actual));
     }
 
-    public static void insertApk(Context context, App app, int versionCode, String signature) {
+    public static Apk insertApk(Context context, App app, int versionCode, String signature) {
         ContentValues values = new ContentValues();
         values.put(Schema.ApkTable.Cols.SIGNATURE, signature);
-        Assert.insertApk(context, app, versionCode, values);
+
+        long repoId = app.repoId > 0 ? app.repoId : 1;
+        values.put(Schema.ApkTable.Cols.REPO_ID, repoId);
+        Uri uri = Assert.insertApk(context, app, versionCode, values);
+        return ApkProvider.Helper.findByUri(context, uri, Schema.ApkTable.Cols.ALL);
     }
 
     public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,

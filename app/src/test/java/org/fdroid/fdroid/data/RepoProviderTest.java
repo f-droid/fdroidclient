@@ -256,11 +256,17 @@ public class RepoProviderTest extends FDroidProviderTest {
 
     public static Repo insertRepo(Context context, String address, String description,
                                   String fingerprint, @Nullable String name) {
+        return insertRepo(context, address, description, fingerprint, name, false);
+    }
+
+    public static Repo insertRepo(Context context, String address, String description,
+                                  String fingerprint, @Nullable String name, boolean isSwap) {
         ContentValues values = new ContentValues();
         values.put(RepoTable.Cols.ADDRESS, address);
         values.put(RepoTable.Cols.DESCRIPTION, description);
         values.put(RepoTable.Cols.FINGERPRINT, fingerprint);
         values.put(RepoTable.Cols.NAME, name);
+        values.put(RepoTable.Cols.IS_SWAP, isSwap);
 
         RepoProvider.Helper.insert(context, values);
         return RepoProvider.Helper.findByAddress(context, address);

@@ -9,6 +9,7 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -179,6 +180,12 @@ public class Assert {
 
     public static App insertApp(Context context, String packageName, String name) {
         return insertApp(context, packageName, name, new ContentValues());
+    }
+
+    public static App insertApp(Context context, String packageName, String name, Repo repo) {
+        ContentValues values = new ContentValues();
+        values.put(AppMetadataTable.Cols.REPO_ID, repo.getId());
+        return insertApp(context, packageName, name, values);
     }
 
     public static App insertApp(Context context, String packageName, String name, ContentValues additionalValues) {
