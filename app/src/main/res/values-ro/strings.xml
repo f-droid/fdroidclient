@@ -453,4 +453,16 @@
     <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în această locație. Va rugăm sa i-o acordați în ecranul următor pentru a putea continua cu instalarea.</string>
 
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
+    <string name="not_on_same_wifi">Dispozitivul tău nu este pe același Wi-Fi ca depozitul local pe care tocmai l-ai adăugat! Încearcă să te conectezi la această rețea : %s</string>
+    <string name="touch_to_configure_local_repo">Atinge pentru a vedea detalii și a permite celorlalți să își împartă aplicațiile tale.</string>
+    <string name="system_install_denied_signature">Semnătura acestei extensii este greșită! Te rog să creezi un bug report!</string>
+    <string name="system_install_warning_lollipop">Această acțiune durează până la 10 secunde iar dispozitivul se va <b>restarta</b> după aceea.</string>
+    <string name="swap_nfc_description">Dacă prietenul tău are F-Droid și NFC activat, atingeți-vă dispozitivele.</string>
+    <string name="swap_view_available_networks">Atinge pentru a vedea rețelele deschise disponibile</string>
+    <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
+    <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
+    <string name="swap_cant_send_no_bluetooth">Nu s-a putut trimite F-Droid, deoarece conexiunea Bluetooth nu este valabilă pe acest dispozitiv.</string>
+    <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
+    <string name="swap_not_enabled_description">Înaintea schimbului, dispozitivul tău trebuie făcut vizibil.</string>
+
     </resources>
