@@ -5,19 +5,21 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
-import android.text.TextUtils;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.AppListItemController;
@@ -40,7 +42,8 @@ public class KnownVulnAppListItemController extends AppListItemController {
         String mainText;
         String actionButtonText;
 
-        if (shouldUpgradeInsteadOfUninstall(app)) {
+        Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
+        if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
             mainText = activity.getString(R.string.updates__app_with_known_vulnerability__prompt_upgrade, app.name);
             actionButtonText = activity.getString(R.string.menu_upgrade);
         } else {
@@ -54,9 +57,8 @@ public class KnownVulnAppListItemController extends AppListItemController {
                 .showSecondaryButton(activity.getString(R.string.updates__app_with_known_vulnerability__ignore));
     }
 
-    private boolean shouldUpgradeInsteadOfUninstall(@NonNull App app) {
-        return app.installedVersionCode < app.suggestedVersionCode &&
-                TextUtils.equals(app.installedSig, app.getMostAppropriateSignature());
+    private boolean shouldUpgradeInsteadOfUninstall(@NonNull App app, @Nullable Apk suggestedApk) {
+        return suggestedApk != null && app.installedVersionCode < suggestedApk.versionCode;
     }
 
     @Override
@@ -67,10 +69,12 @@ public class KnownVulnAppListItemController extends AppListItemController {
                     "Tried to upgrade or uninstall app with known vulnerability but it doesn't seem to be installed");
         }
 
-        if (shouldUpgradeInsteadOfUninstall(app)) {
+        Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
+        if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
-            manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
-            InstallerService.uninstall(activity, installedApk);
+            Uri uri = Uri.parse(suggestedApk.getUrl());
+            manager.registerReceiver(installReceiver, Installer.getInstallIntentFilter(uri));
+            InstallManagerService.queue(activity, app, suggestedApk);
         } else {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
             manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
@@ -86,7 +90,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         refreshUpdatesList();
     }
 
-    private void unregisterUninstallReceiver() {
+    private void unregisterInstallReceiver() {
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(installReceiver);
     }
 
@@ -102,15 +106,18 @@ public class KnownVulnAppListItemController extends AppListItemController {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
+                case Installer.ACTION_INSTALL_COMPLETE:
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     refreshUpdatesList();
-                    unregisterUninstallReceiver();
+                    unregisterInstallReceiver();
                     break;
 
+                case Installer.ACTION_INSTALL_INTERRUPTED:
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:
-                    unregisterUninstallReceiver();
+                    unregisterInstallReceiver();
                     break;
 
+                case Installer.ACTION_INSTALL_USER_INTERACTION:
                 case Installer.ACTION_UNINSTALL_USER_INTERACTION:
                     PendingIntent uninstallPendingIntent =
                             intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
