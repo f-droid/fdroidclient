@@ -244,7 +244,7 @@ public class TempAppProvider extends AppProvider {
                     Schema.ApkAntiFeatureJoinTable.Cols.ALL_COLS,
                     tempAntiFeatureJoin,
                     Schema.ApkAntiFeatureJoinTable.NAME,
-                    getAntiFeatureRepoWhere(tempAntiFeatureJoin)));
+                    getAntiFeatureRepoWhere(tempAntiFeatureJoin)), repoArgs);
 
             db.setTransactionSuccessful();
 
@@ -271,7 +271,7 @@ public class TempAppProvider extends AppProvider {
         String subquery =
                 "SELECT innerApk." + ApkTable.Cols.ROW_ID + " " +
                 "FROM " + ApkTable.NAME + " AS innerApk " +
-                "WHERE innerApk." + ApkTable.Cols.REPO_ID + " != ?";
+                "WHERE innerApk." + ApkTable.Cols.REPO_ID + " = ?";
 
         return antiFeatureTable + "." + Schema.ApkAntiFeatureJoinTable.Cols.APK_ID + " IN (" + subquery + ")";
     }

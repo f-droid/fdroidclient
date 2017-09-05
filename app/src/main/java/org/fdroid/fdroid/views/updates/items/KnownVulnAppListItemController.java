@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -39,8 +40,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         String mainText;
         String actionButtonText;
 
-        // TODO: Take into account signature when multi-sig stuff is merged.
-        if (app.installedVersionCode < app.suggestedVersionCode) {
+        if (shouldUpgradeInsteadOfUninstall(app)) {
             mainText = activity.getString(R.string.updates__app_with_known_vulnerability__prompt_upgrade, app.name);
             actionButtonText = activity.getString(R.string.menu_upgrade);
         } else {
@@ -54,6 +54,11 @@ public class KnownVulnAppListItemController extends AppListItemController {
                 .showSecondaryButton(activity.getString(R.string.updates__app_with_known_vulnerability__ignore));
     }
 
+    private boolean shouldUpgradeInsteadOfUninstall(@NonNull App app) {
+        return app.installedVersionCode < app.suggestedVersionCode &&
+                TextUtils.equals(app.installedSig, app.getMostAppropriateSignature());
+    }
+
     @Override
     protected void onActionButtonPressed(@NonNull App app) {
         Apk installedApk = app.getInstalledApk(activity);
@@ -62,12 +67,13 @@ public class KnownVulnAppListItemController extends AppListItemController {
                     "Tried to upgrade or uninstall app with known vulnerability but it doesn't seem to be installed");
         }
 
-        // TODO: Take into account signature when multi-sig stuff is merged.
-        if (app.installedVersionCode < app.suggestedVersionCode) {
+        if (shouldUpgradeInsteadOfUninstall(app)) {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
             manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
             InstallerService.uninstall(activity, installedApk);
         } else {
+            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
+            manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
             InstallerService.uninstall(activity, installedApk);
         }
     }
