@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +49,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -94,8 +97,9 @@ public class AppDetailsRecyclerViewAdapter
     private App app;
     private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
     private RecyclerView recyclerView;
-    private ArrayList<Object> items;
-    private ArrayList<Apk> versions;
+    private List<Object> items;
+    private List<Apk> versions;
+    private List<Apk> compatibleVersionsDifferentSig;
     private boolean showVersions;
 
     private HeaderViewHolder headerView;
@@ -112,12 +116,17 @@ public class AppDetailsRecyclerViewAdapter
 
         // Get versions
         versions = new ArrayList<>();
+        compatibleVersionsDifferentSig = new ArrayList<>();
         final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
+        boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         for (final Apk apk : apks) {
-            boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
-            boolean allowBySig = this.app.installedSig == null || TextUtils.equals(this.app.installedSig, apk.sig);
-            if (allowByCompatability && allowBySig) {
-                versions.add(apk);
+            boolean allowByCompatability = apk.compatible || showIncompatibleVersions;
+            boolean allowBySig = this.app.installedSig == null || showIncompatibleVersions || TextUtils.equals(this.app.installedSig, apk.sig);
+            if (allowByCompatability) {
+                compatibleVersionsDifferentSig.add(apk);
+                if (allowBySig) {
+                    versions.add(apk);
+                }
             }
         }
 
@@ -226,8 +235,12 @@ public class AppDetailsRecyclerViewAdapter
                 View permissions = inflater.inflate(R.layout.app_details2_links, parent, false);
                 return new PermissionsViewHolder(permissions);
             case VIEWTYPE_VERSIONS:
-                View versions = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new VersionsViewHolder(versions);
+                View versionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
+                if (versions.size() == 0) {
+                    return new NoVersionsViewHolder(versionsView);
+                } else {
+                    return new VersionsViewHolder(versionsView);
+                }
             case VIEWTYPE_VERSION:
                 View version = inflater.inflate(R.layout.apklistitem, parent, false);
                 return new VersionViewHolder(version);
@@ -244,21 +257,16 @@ public class AppDetailsRecyclerViewAdapter
                 headerView = header;
                 header.bindModel();
                 break;
+
+            // These don't have any specific requirements, they all get their state from the outer class.
             case VIEWTYPE_SCREENSHOTS:
-                ((ScreenShotsViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_DONATE:
-                ((DonateViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_LINKS:
-                ((LinksViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_PERMISSIONS:
-                ((PermissionsViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_VERSIONS:
-                ((VersionsViewHolder) holder).bindModel();
+                ((AppDetailsViewHolder) holder).bindModel();
                 break;
+
             case VIEWTYPE_VERSION:
                 final Apk apk = (Apk) items.get(position);
                 ((VersionViewHolder) holder).bindModel(apk);
@@ -562,7 +570,15 @@ public class AppDetailsRecyclerViewAdapter
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
-    private class ScreenShotsViewHolder extends RecyclerView.ViewHolder {
+    private abstract class AppDetailsViewHolder extends RecyclerView.ViewHolder {
+        AppDetailsViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        public abstract void bindModel();
+    }
+
+    private class ScreenShotsViewHolder extends AppDetailsViewHolder {
         final RecyclerView recyclerView;
         LinearLayoutManagerSnapHelper snapHelper;
 
@@ -571,6 +587,7 @@ public class AppDetailsRecyclerViewAdapter
             recyclerView = (RecyclerView) view.findViewById(R.id.screenshots);
         }
 
+        @Override
         public void bindModel() {
             LinearLayoutManager lm = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(lm);
@@ -586,7 +603,7 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private class DonateViewHolder extends RecyclerView.ViewHolder {
+    private class DonateViewHolder extends AppDetailsViewHolder {
         final TextView donateHeading;
         final GridLayout donationOptionsLayout;
 
@@ -596,6 +613,7 @@ public class AppDetailsRecyclerViewAdapter
             donationOptionsLayout = (GridLayout) view.findViewById(R.id.donation_options);
         }
 
+        @Override
         public void bindModel() {
             if (TextUtils.isEmpty(app.authorName)) {
                 donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
@@ -640,7 +658,7 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private abstract class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
+    private abstract class ExpandableLinearLayoutViewHolder extends AppDetailsViewHolder {
         final TextView headerView;
         final LinearLayout contentView;
 
@@ -667,6 +685,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -684,12 +703,80 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
+    private class NoVersionsViewHolder extends AppDetailsViewHolder {
+        final TextView headerView;
+
+        NoVersionsViewHolder(View view) {
+            super(view);
+            headerView = (TextView) view.findViewById(R.id.information);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, 0, 0);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    explainIncompatibleVersions();
+                }
+            });
+        }
+
+        @Override
+        public void bindModel() {
+            if (hasCompatibleApksDifferentSigs()) {
+                headerView.setText("No versions with compatible signature");
+            } else {
+                headerView.setText("No versions compatible with device");
+            }
+        }
+
+        /**
+         * Show a dialog to the user explaining the reaons there are no compatible versions.
+         * This will either be due to device features (e.g. NFC, API levels, etc) or being signed
+         * by a different certificate (as is often the case with apps from Google Play signed by
+         * upstream).
+         */
+        private void explainIncompatibleVersions() {
+            String preferenceName = context.getString(R.string.show_incompat_versions);
+            String showIncompatible = context.getString(
+                    R.string.app_details__no_versions__show_incompat_versions, preferenceName);
+
+            String message;
+            String title;
+            if (hasCompatibleApksDifferentSigs()) {
+                title = context.getString(R.string.app_details__no_versions__no_compatible_signatures);
+                message = context.getString(R.string.app_details__no_versions__explain_incompatible_signatures) +
+                        "\n\n" + showIncompatible;
+            } else {
+                title = context.getString(R.string.app_details__no_versions__none_compatible_with_device);
+                message = showIncompatible;
+            }
+
+            new AlertDialog.Builder(context)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton(R.string.menu_settings, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
+                            context.startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
+        }
+
+        private boolean hasCompatibleApksDifferentSigs() {
+            return compatibleVersionsDifferentSig != null && compatibleVersionsDifferentSig.size() > 0;
+        }
+    }
+
     private class PermissionsViewHolder extends ExpandableLinearLayoutViewHolder {
 
         PermissionsViewHolder(View view) {
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -721,6 +808,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -875,11 +963,17 @@ public class AppDetailsRecyclerViewAdapter
                 nativecode.setVisibility(View.GONE);
             }
 
+            boolean mismatchedSig = app.installedSig != null && !TextUtils.equals(app.installedSig, apk.sig);
+
             if (apk.incompatibleReasons != null) {
                 incompatibleReasons.setText(
                         context.getResources().getString(
                                 R.string.requires_features,
                                 TextUtils.join(", ", apk.incompatibleReasons)));
+                incompatibleReasons.setVisibility(View.VISIBLE);
+            } else if (mismatchedSig) {
+                incompatibleReasons.setText(
+                        context.getString(R.string.app_details__incompatible_mismatched_signature));
                 incompatibleReasons.setVisibility(View.VISIBLE);
             } else {
                 incompatibleReasons.setVisibility(View.GONE);
@@ -898,7 +992,7 @@ public class AppDetailsRecyclerViewAdapter
                     nativecode,
             };
             for (final View v : views) {
-                v.setEnabled(apk.compatible);
+                v.setEnabled(apk.compatible && !mismatchedSig);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

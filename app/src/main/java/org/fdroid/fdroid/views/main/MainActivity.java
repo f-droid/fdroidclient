@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private static final String TAG = "MainActivity";
 
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
+    public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -155,6 +156,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
             selectedMenuId = R.id.updates;
+            setSelectedMenuInNav();
+        } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
+            getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
+            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.settings));
+            selectedMenuId = R.id.settings;
             setSelectedMenuInNav();
         }
 
