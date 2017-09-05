@@ -1141,13 +1141,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * the user to try and install versions with that signature (because thats all the OS will let
      * them do).
      */
-    @NonNull
+    @Nullable
     public String getMostAppropriateSignature() {
         if (!TextUtils.isEmpty(installedSig)) {
             return installedSig;
         } else if (!TextUtils.isEmpty(preferredSigner)) {
             return preferredSigner;
         }
-        throw new IllegalStateException("Most Appropriate Signature not found!");
+
+        return null;
     }
 }
