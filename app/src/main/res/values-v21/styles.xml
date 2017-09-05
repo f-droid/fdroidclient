@@ -6,12 +6,18 @@
         <item name="android:alertDialogTheme">@style/AlertDialogThemeDark</item>
         <item name="android:colorControlActivated">@color/fdroid_green</item>
         <item name="android:colorControlHighlight">@color/fdroid_green</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/shared_elements</item>
+        <item name="android:windowSharedElementExitTransition">@transition/shared_elements</item>
     </style>
 
     <style name="AppThemeLight" parent="AppBaseThemeLight">
         <!-- customizations that are not API-level specific go here. -->
         <item name="android:alertDialogTheme">@style/AlertDialogThemeLight</item>
         <item name="android:colorEdgeEffect">@color/fdroid_blue</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/shared_elements</item>
+        <item name="android:windowSharedElementExitTransition">@transition/shared_elements</item>
     </style>
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">

@@ -286,6 +286,10 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+    <style name="ActionButtonOverflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_more</item>
+    </style>
+
     <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
