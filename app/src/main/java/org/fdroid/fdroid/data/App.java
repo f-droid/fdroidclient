@@ -1154,6 +1154,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * However, if the app is installed, then we override this and instead want to only encourage
      * the user to try and install versions with that signature (because thats all the OS will let
      * them do).
+     *
+     * Will return null for any {@link App} which represents media (instead of an apk) and thus
+     * doesn't have a signer.
      */
     @Nullable
     public String getMostAppropriateSignature() {
