@@ -76,7 +76,7 @@ final class LoggingQuery {
      * query() takes 1ms, whereas the call go getCount() is the bit which takes time.
      * As such, we will also track that method duration in order to potentially log slow queries.
      */
-    private class LogGetCountCursorWrapper extends CursorWrapper {
+    private final class LogGetCountCursorWrapper extends CursorWrapper {
         private LogGetCountCursorWrapper(Cursor cursor) {
             super(cursor);
         }
