@@ -151,6 +151,7 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS + " string,"
             + AppMetadataTable.Cols.TV_SCREENSHOTS + " string,"
             + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " string,"
+            + AppMetadataTable.Cols.IS_APK + " boolean,"
             + "primary key(" + AppMetadataTable.Cols.PACKAGE_ID + ", " + AppMetadataTable.Cols.REPO_ID + "));";
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
@@ -193,7 +194,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 73;
+    protected static final int DB_VERSION = 74;
 
     private final Context context;
 
@@ -281,6 +282,30 @@ class DBHelper extends SQLiteOpenHelper {
         addIntegerPrimaryKeyToInstalledApps(db, oldVersion);
         addPreferredSignerToApp(db, oldVersion);
         updatePreferredSignerIfEmpty(db, oldVersion);
+        addIsAppToApp(db, oldVersion);
+    }
+
+    private void addIsAppToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 74) {
+            return;
+        }
+
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.IS_APK)) {
+            Log.i(TAG, "Figuring out whether each \"app\" is actually an app, or it represents other media.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.IS_APK + " boolean;");
+
+            // Find all apks for which their filename DOESN'T end in ".apk", and if there is more than one, the
+            // corresponding app is updated to be marked as media.
+            String apkName = ApkTable.Cols.NAME;
+            String query = "UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.IS_APK + " = (" +
+                    "  SELECT COUNT(*) FROM " + ApkTable.NAME + " AS apk" +
+                    "  WHERE " +
+                    "    " + ApkTable.Cols.APP_ID + " = " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.ROW_ID +
+                    "    AND SUBSTR(" + apkName + ", LENGTH(" + apkName + ") - 3) != '.apk'" +
+                    ") = 0;";
+            Log.i(TAG, query);
+            db.execSQL(query);
+        }
     }
 
     private void updatePreferredSignerIfEmpty(SQLiteDatabase db, int oldVersion) {
