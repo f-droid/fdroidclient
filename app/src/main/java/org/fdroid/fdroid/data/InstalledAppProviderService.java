@@ -11,12 +11,16 @@ import android.net.Uri;
 import android.os.Process;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
+import android.widget.Toast;
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
+import rx.subjects.PublishSubject;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -24,10 +28,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
 
 /**
  * Handles all updates to {@link InstalledAppProvider}, whether checking the contents
@@ -76,12 +76,12 @@ public class InstalledAppProviderService extends IntentService {
                 .subscribeOn(Schedulers.newThread())
                 .debounce(3, TimeUnit.SECONDS)
                 .subscribe(new Action1<String>() {
-                        @Override
-                        public void call(String packageName) {
-                            Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
-                            getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-                            getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
-                        }
+                    @Override
+                    public void call(String packageName) {
+                        Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
+                        getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+                        getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+                    }
                 });
 
         // ...alternatively, this non-debounced version will instantly emit an event about the
@@ -250,6 +250,8 @@ public class InstalledAppProviderService extends IntentService {
 
                         insertAppIntoDb(this, packageInfo, hashType, hash);
                     } catch (Utils.PotentialFilesystemCorruptionException e) {
+                        String msg = getString(R.string.installed_app__file_corrupt, apk.getAbsolutePath());
+                        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                         Log.e(TAG, "Encountered potential filesystem corruption, or other unknown " +
                                 "problem when calculating hash of " + apk.getAbsolutePath() + ". " +
                                 "It is unlikely F-Droid can do anything about this, and this " +
