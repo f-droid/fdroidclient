@@ -526,4 +526,10 @@
     <string name="app_installed_media">Fitxategia hemen instalatu da: %s</string>
     <string name="app_permission_storage">F-droidek biltegira sarbidea behar du hau bertan instalatzeko. Eman baimena hurrengo pantailan instalazioarekin jarraitzeko.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Instalatutako bertsioaren sinadura desberdina da</string>
+    <string name="app_details__no_versions__show_incompat_versions">Edonola ere bertsio ez bateragarriak erakusteko, gaitu \"%1$s\" ezarpena.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Ez dago bateragarria den sinadura duen bertsiorik</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Ez dago gailuarekin bateragarria den bertsiorik</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Instalatutako bertsioa ez da bateragarria eskuragarri duden bertsioekin. Aplikazioa desinstalatzeak bertsio bateragarriak ikusi eta instalatzea ahalbidetuko dizu. Hau Gogle Play edo beste iturrietatik instalatutako aplikazioekin gertatu ohi da, ziurtagiri desberdin batekin sinatu direlako.</string>
+
     </resources>

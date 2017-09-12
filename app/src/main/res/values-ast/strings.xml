@@ -504,4 +504,10 @@
     <string name="app_installed_media">Ficheru instaláu en %s</string>
     <string name="app_permission_storage">F-Droid necesita permisu de guardar pa instalar esto nel almacenamientu. Da esi permisu na siguiente pantalla pa siguir cola instalación.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">La robla ye distinta de la versión instalada</string>
+    <string name="app_details__no_versions__show_incompat_versions">P\'amosar de toles maneres les versiones incompatibles, activa la opción «%1$s».</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Nun hai nenguna versión con una firma compatible</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nun hai nenguna versión compatible col preséu</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada nun ye compatible con nenguna versión disponible. Desinstalando esta aplicación podrás ver ya instalar versiones compatibles. De vezu, esto asocede coles aplicaciones instalaes con Google Play o dende otres fontes, si tán roblaes con un certificáu distintu.</string>
+
     </resources>

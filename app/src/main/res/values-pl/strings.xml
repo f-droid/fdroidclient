@@ -517,4 +517,10 @@
     <string name="app_installed_media">Plik zainstalowany do %s</string>
     <string name="app_permission_storage">F-Droid potrzebuje uprawnienia do pamięci, aby tam to zainstalować. Udziel go na następnym ekranie, aby kontynuować instalację.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Inna sygnatura niż zainstalowanej wersji</string>
+    <string name="app_details__no_versions__show_incompat_versions">Aby pomimo tego wyświetlić niekompatybilne wersje, włącz ustawienie „%1$s” w opcjach.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Brak wersji ze zgodną sygnaturą</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Brak wersji zgodnych z urządzeniem</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Zainstalowana wersja nie jest kompatybilna z jakąkolwiek dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. To często zdarza się w przypadku aplikacji zainstalowanych ze Sklepu Play lub z innych źródeł, jeżeli są one podpisane innym kluczem.</string>
+
     </resources>

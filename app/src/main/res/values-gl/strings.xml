@@ -346,4 +346,7 @@
         instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros
         de F-Droid para máis información.
     </string>
-</resources>
+<string name="menu_settings">Axustes</string>
+    <string name="main_menu__latest_apps">Últimas</string>
+    <string name="main_menu__categories">Categorías</string>
+    </resources>

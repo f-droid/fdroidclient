@@ -474,4 +474,10 @@
     <string name="app_permission_storage">F-Droid 需要存儲權限將其安裝到存儲。請允許它在下一個螢幕上繼續進行安裝。</string>
 
     <string name="status_inserting_x_apps">正從 %3$s 儲存應用程式的詳細資訊 (%1$d/%2$d)</string>
+    <string name="app_details__incompatible_mismatched_signature">不同的簽名於安裝版本</string>
+    <string name="app_details__no_versions__show_incompat_versions">若要在這裡顯示不相容的版本，請啟用 \"%1$s\" 設定。</string>
+    <string name="app_details__no_versions__no_compatible_signatures">沒有相容簽名的版本</string>
+    <string name="app_details__no_versions__none_compatible_with_device">沒有與裝置相容的版本</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的版本不相容於任何可用的版本。解除安裝該應用程式將能使您能夠查看和安裝相容的版本。這通常是透過 Google Play 或其它來源安裝的應用程式，如果它們是由不同的證書簽署時才會發生。</string>
+
     </resources>
