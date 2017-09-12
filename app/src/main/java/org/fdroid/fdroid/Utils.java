@@ -417,10 +417,26 @@ public final class Utils {
 
             byte[] mdbytes = md.digest();
             return toHexString(mdbytes).toLowerCase(Locale.ENGLISH);
-        } catch (IOException | NoSuchAlgorithmException e) {
+        } catch (IOException e) {
+            // The annoyance (potentially) caused by miscellaneous filesystem corruption results in
+            // F-Droid constantly popping up crash reports when F-Droid isn't even open. As such this
+            // exception-message-parsing-and-throwing-a-new-ignorable-exception-hackery is probably
+            // warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855 for more detail.
+            if (e.getMessage().contains("read failed: EIO (I/O error)")) {
+                throw new PotentialFilesystemCorruptionException(e);
+            }
+
+            throw new IllegalArgumentException(e);
+        } catch (NoSuchAlgorithmException e) {
             throw new IllegalArgumentException(e);
         } finally {
             closeQuietly(fis);
+        }
+    }
+
+    public static class PotentialFilesystemCorruptionException extends IllegalArgumentException {
+        public PotentialFilesystemCorruptionException(IOException e) {
+            super(e);
         }
     }
 
