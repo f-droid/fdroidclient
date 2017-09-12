@@ -1,3 +1,9 @@
+### 1.0-alpha3 (2017-09-12)
+
+* Big UI performance improvements, especially with archive enabled
+
+* Fixed crasher bugs
+
 ### 1.0-alpha2 (2017-09-04)
 
 * Prevent HTTP ETag from being used as a tracking cookie
