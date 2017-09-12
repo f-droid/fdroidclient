@@ -156,6 +156,7 @@ public interface Schema {
             String TEN_INCH_SCREENSHOTS = "tenInchScreenshots";
             String TV_SCREENSHOTS = "tvScreenshots";
             String WEAR_SCREENSHOTS = "wearScreenshots";
+            String IS_APK = "isApk";
 
             interface SuggestedApk {
                 String VERSION_NAME = "suggestedApkVersion";
@@ -195,7 +196,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK,
             };
 
             /**
@@ -211,7 +212,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

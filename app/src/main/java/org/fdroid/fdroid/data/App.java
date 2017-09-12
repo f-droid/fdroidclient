@@ -104,6 +104,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     @NonNull
     public String preferredSigner;
+    @JsonIgnore
+    public boolean isApk;
 
     @JacksonInject("repoId")
     public long repoId;
@@ -346,6 +348,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.WEAR_SCREENSHOTS:
                     wearScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.IS_APK:
+                    isApk = cursor.getInt(i) == 1;
                     break;
                 case Cols.InstalledApp.VERSION_CODE:
                     installedVersionCode = cursor.getInt(i);
@@ -854,12 +859,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.TV_SCREENSHOTS, Utils.serializeCommaSeparatedString(tvScreenshots));
         values.put(Cols.WEAR_SCREENSHOTS, Utils.serializeCommaSeparatedString(wearScreenshots));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
+        values.put(Cols.IS_APK, isApk ? 1 : 0);
 
         return values;
     }
 
     public boolean isInstalled(Context context) {
-        return installedVersionCode > 0 || isMediaInstalled(context);
+        // First check isApk() before isMediaInstalled() because the latter is quite expensive,
+        // hitting the database for each apk version, then the disk to check for installed media.
+        return installedVersionCode > 0 || (!isApk() && isMediaInstalled(context));
+    }
+
+    private boolean isApk() {
+        return isApk;
     }
 
     public boolean isMediaInstalled(Context context) {
@@ -1064,6 +1076,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeStringArray(this.tenInchScreenshots);
         dest.writeStringArray(this.tvScreenshots);
         dest.writeStringArray(this.wearScreenshots);
+        dest.writeByte(this.isApk ? (byte) 1 : (byte) 0);
         dest.writeString(this.installedVersionName);
         dest.writeInt(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
@@ -1114,6 +1127,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.tenInchScreenshots = in.createStringArray();
         this.tvScreenshots = in.createStringArray();
         this.wearScreenshots = in.createStringArray();
+        this.isApk = in.readByte() != 0;
         this.installedVersionName = in.readString();
         this.installedVersionCode = in.readInt();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());
@@ -1140,14 +1154,18 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * However, if the app is installed, then we override this and instead want to only encourage
      * the user to try and install versions with that signature (because thats all the OS will let
      * them do).
+     *
+     * Will return null for any {@link App} which represents media (instead of an apk) and thus
+     * doesn't have a signer.
      */
-    @NonNull
+    @Nullable
     public String getMostAppropriateSignature() {
         if (!TextUtils.isEmpty(installedSig)) {
             return installedSig;
         } else if (!TextUtils.isEmpty(preferredSigner)) {
             return preferredSigner;
         }
-        throw new IllegalStateException("Most Appropriate Signature not found!");
+
+        return null;
     }
 }
