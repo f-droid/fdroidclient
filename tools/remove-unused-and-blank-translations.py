@@ -52,9 +52,14 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
             root.remove(e)
 
     for e in root.findall('.//plurals'):
+        found_other = False
         for item in e.findall('item'):
             if not item.text:
                 e.remove(item)
+            elif item.attrib['quantity'] == 'other':
+                found_other = True
+        if not found_other:
+            print(os.path.relpath(str_path) + ': Missing "other" string in', e.attrib['name'])
 
     result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
 
