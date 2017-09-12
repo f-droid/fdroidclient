@@ -465,4 +465,10 @@
     <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
     <string name="swap_not_enabled_description">Înaintea schimbului, dispozitivul tău trebuie făcut vizibil.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Semnătură diferită de cea instalată</string>
+    <string name="app_details__no_versions__show_incompat_versions">Pentru a afișa aici și versiunile incompatibile, activați setarea \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Nici o versiune nu are o semnătură compatibilă</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nici o versiune nu este compatibilă cu acest dispozitiv</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Versiunea instalată nu este compatibilă cu cele disponibile. Dacă dezinstalați aplicația veți putea vedea și instala versiunile compatibile. Acest fapt se întâmplă cel mai des atunci când aplicațiile sunt instalate din Google Play sau din alte surse, dacă sunt semnate cu un certificat diferit.</string>
+
     </resources>

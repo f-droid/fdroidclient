@@ -491,4 +491,10 @@
     <string name="app_installed_media">Dosiero instalita al %s</string>
     <string name="app_permission_storage">F-Droid bezonas aliron al memorejo por instali ĝin tien. Permesu tion ĉi je la sekva ekrano por pluigi kun instalado.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Alia subskribo ol instalita versio</string>
+    <string name="app_details__no_versions__show_incompat_versions">Por montri nekongruajn versiojn tie ĉe malgraŭ tio, enŝaltu la agordon “%1$s”.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Neniuj versioj kun kongruaj subskriboj</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Neniuj versioj kongruaj kun la aparato</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
+
     </resources>

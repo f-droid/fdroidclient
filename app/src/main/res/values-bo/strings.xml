@@ -454,4 +454,12 @@
 
     <string name="tts_category_name">སྡེ་ཚན་%1$s</string>
 
+    <string name="app_details__incompatible_mismatched_signature">སྒྲིག་བཅུག་བྱེད་པའི་ཐོན་རིམ་འདི་མིང་རྟགས་མཐུན་མ་སོང་།</string>
+    <string name="app_details__no_versions__show_incompat_versions">འདིར་ཐོན་རིམ་མི་མཐུན་པ་རྣམས་སྟོན་དགོས་ན། \"%1$s\" སྒྲིག་བཀོད་འདི་སྒོ་ཕྱེད།</string>
+    <string name="app_details__no_versions__no_compatible_signatures">མིང་རྟགས་མཐུན་པའི་ཐོན་རིམ་མིན་འདུག</string>
+    <string name="app_details__no_versions__none_compatible_with_device">ཡོ་བྱད་འདི་དང་མཐུན་པའི་ཐོན་རིམ་མིན་འདུག</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">སྒྲིག་བཅུག་བྱེད་པའི་ཐོན་རིམ་འདི་ཡོད་བཞིན་པའི་ཐོན་རིམ་གང་དང་ཡང་མཐུན་གྱི་མིན་འདུག སོང་ཙང་ཕྱིར་སྟོན་བྱས་པའི་ཐོན་རིམ་འདིས་མཐུན་པའི་ཐོན་རིམ་རྣམས་སྒྲིག་བཅུག་བྱེད་པ་དང་ལྟ་ཐུབ། འདི་ནི་གུ་གྷལ་མཉེན་ཆས་གསོག་ཉར་ཁང་དང་ཡན་ན་འབྱུང་ཁུངས་གཞན་དག་རྒྱུད་དེ་སྒྲིག་བཅུག་བྱས་པའི་མཉེན་ཆས་རིགས་ལ་ཆོག་མཆན་ལག་ཁྱེར་གྱི་མིང་རྟགས་གཞན་དག་གིས་བཀོད་ཚེ་དཀའ་ངལ་དེའི་རིགས་ཡང་སེ་ཕྲད་ཀྱི་ཡོད།</string>
+
+    <string name="empty_search_available_app_list">འདི་དང་མཐུན་པའི་མཉེན་ཆས་རྙེད་མ་སོང་།</string>
+
     </resources>

@@ -6,7 +6,7 @@
     <string name="delete">Borrar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
     <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
-    <string name="updates">Actualizaciones</string>
+    <string name="updates">Avisos</string>
     <string name="other">Otros</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="update_interval_zero">No actualizar la lista de aplicaciones automáticamente</string>
@@ -74,7 +74,7 @@
     <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
-    <string name="display">Mostrar</string>
+    <string name="display">Presentación</string>
     <string name="expert">Modo experto</string>
     <string name="expert_on">Mostrar info extra y habilitar los ajustes extra</string>
     <string name="search_hint">Buscar aplicaciones</string>
@@ -82,10 +82,10 @@
     <string name="show_incompat_versions">Versiones incompatibles</string>
     <string name="show_incompat_versions_on">Mostrar las versiones de aplicaciones incompatibles con el dispositivo
     </string>
-    <string name="rooted">Ignorar «root»</string>
-    <string name="rooted_on">No marcar en gris las aplicaciones que requieren permisos de «root»</string>
+    <string name="rooted">Obviar permisos de administración</string>
+    <string name="rooted_on">No marcar en gris las aplicaciones que piden permisos de administración<i>root</i>)</string>
     <string name="ignoreTouch">Ignorar pantalla táctil</string>
-    <string name="ignoreTouch_on">Siempre incluir aplicaciones que requieran pantalla táctil</string>
+    <string name="ignoreTouch_on">Siempre incluir aplicaciones que necesiten una pantalla táctil</string>
     <string name="local_repo">Repo local</string>
     <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
     <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
@@ -333,7 +333,7 @@
 
     <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
 
-    <string name="menu_email">Escribir un correo electrónico al autor</string>
+    <string name="menu_email">Escribir al autor por correo electrónico</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
@@ -363,8 +363,8 @@
     <string name="installing">Instalando…</string>
     <string name="uninstalling">Desinstalando…</string>
 
-    <string name="hide_anti_feature_apps">Marcar en gris aplicaciones con contraindicaciones</string>
-    <string name="hide_anti_feature_apps_on">Marca en gris aplicaciones que tengan características indeseables</string>
+    <string name="hide_anti_feature_apps">Marcar aplis controvertidas en gris</string>
+    <string name="hide_anti_feature_apps_on">Marcar en gris las aplicaciones que tengan características controvertidas</string>
     <string name="update_auto_install_summary">Descargar e instalar las actualizaciones en segundo plano</string>
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
@@ -505,5 +505,11 @@
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
     <string name="app_permission_storage">F-Droid necesita el permiso instalar esto en su almacenamiento. Por favor permita que en la siguiente pantalla continúe con la instalación.</string>
+
+    <string name="app_details__incompatible_mismatched_signature">La firma no coincide con la de la versión instalada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Para mostrar versiones incompatibles aquí de todos modos, habilita la opción \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">No hay versiones con una firma compatible</string>
+    <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con el dispositivo</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación te permitirá ver e instalar las versiones compatibles. Esto ocurre a menudo con aplicaciones instaladas a través de Google Play o de otras fuentes, si se han firmado con un certificado diferente.</string>
 
     </resources>

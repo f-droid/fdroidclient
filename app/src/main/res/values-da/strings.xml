@@ -116,7 +116,7 @@
     <string name="antinonfreeadlist">Appen fremmer ikke-frie tilføjelser</string>
     <string name="antinonfreenetlist">Appen fremmer ikke-frie netværkstjenester</string>
     <string name="antinonfreedeplist">Denne app afhænger af andre ikke-frie apps</string>
-    <string name="antiupstreamnonfreelist">Kildekoden opstrøms er ikke udelukkende Fri</string>
+    <string name="antiupstreamnonfreelist">Kildekoden opstrøms er ikke udelukkende fri</string>
 
     <string name="display">Vis</string>
 

@@ -465,4 +465,10 @@
     <string name="app_permission_storage">F-Droidは、ｽﾄﾚｰｼﾞにｲﾝｽﾄｰﾙするためにｽﾄﾚｰｼﾞのｱｸｾｽ許可が必要です。ｲﾝｽﾄｰﾙを続行するには次の画面で許可してください。</string>
 
     <string name="status_inserting_x_apps">%3$s からｱﾌﾟﾘ詳細を保存中 (%1$d/%2$d)</string>
+    <string name="app_details__incompatible_mismatched_signature">ｲﾝｽﾄｰﾙされたﾊﾞｰｼﾞｮﾝで署名が異なります</string>
+    <string name="app_details__no_versions__show_incompat_versions">ここに互換性のないﾊﾞｰｼﾞｮﾝを表示するには、\"%1$s\" 設定を有効にします。</string>
+    <string name="app_details__no_versions__no_compatible_signatures">互換性のある署名のﾊﾞｰｼﾞｮﾝがありません</string>
+    <string name="app_details__no_versions__none_compatible_with_device">ﾃﾞﾊﾞｲｽと互換性のあるﾊﾞｰｼﾞｮﾝがありません</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">ｲﾝｽﾄｰﾙされているﾊﾞｰｼﾞｮﾝは、利用可能なﾊﾞｰｼﾞｮﾝと互換性がありません。ｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙすると、互換性のあるﾊﾞｰｼﾞｮﾝを表示したりｲﾝｽﾄｰﾙすることができます。これは多くの場合 Google Play やその他のｿｰｽからｲﾝｽﾄｰﾙされたｱﾌﾟﾘが、別の証明書で署名されている場合に発生します。</string>
+
     </resources>

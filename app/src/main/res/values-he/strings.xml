@@ -371,7 +371,7 @@
 
     <string name="latest__empty_state__no_recent_apps">לא נמצאו יישומונים אחרונים</string>
     <string name="latest__empty_state__never_updated">לאחר עדכון רשימת היישומונים, היישומונים העדכניים ביותר אמורים להופיע כאן</string>
-    <string name="latest__empty_state__no_enabled_repos">לאחר הפעלת מאגר ומשיכת עדכון ממנו, היישומים העדכניים ביותר אמור להופיע כאן</string>
+    <string name="latest__empty_state__no_enabled_repos">לאחר הפעלת מאגר ומשיכת עדכון ממנו, היישומונים העדכניים ביותר אמור להופיע כאן</string>
 
     <string name="categories__empty_state__no_categories">אין קטגוריות להצגה</string>
 
@@ -489,11 +489,17 @@
 	<item quantity="other">עודכן לפני %1$d שנים</item>
 </plurals>
 <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
-    <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומים בתבנית XML</string>
+    <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומונים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>
 
     <string name="status_inserting_x_apps">פרטי היישומון נשמרים (%1$d/%2$d) מתוך %3$s</string>
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
     <string name="app_permission_storage">ל־F-Droid נדרשת הרשאה לגשת לאחסון כדי להתקין זאת לאחסון. נא להרשות זאת במסך הבא כדי להמשיך בהתקנה.</string>
+
+    <string name="app_details__incompatible_mismatched_signature">חתימה שונה מהגרסה המותקנת</string>
+    <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגרסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">אין גרסאות עם חתימה תואמת</string>
+    <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
 
     </resources>

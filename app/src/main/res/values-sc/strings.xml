@@ -527,4 +527,10 @@
     <string name="app_permission_storage">F-Droid tenet bisòngiu de unu permissu pro installare custu in sa memòria. Pro praghere dae·liu in s\'ischermu chi benit pro sighire cun s\'installatzione.</string>
 
     <string name="status_inserting_x_apps">Sarvende sas minujas de sas aplicatziones (%1$d/%2$d) dae %3$s</string>
+    <string name="app_details__incompatible_mismatched_signature">Firma diversa dae sa versione installada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Pro ammustrare su matessi sas versiones non cumpatìbiles inoghe abìlita s\'impostatzione \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Peruna versione cun una firma cumpatìbile</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Peruna versione cumpatìbile cun su dispositivu</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Sa versione installada no est cumpatìbile cun sas versiones disponìbiles. Disinstallende s\'aplicatzione t\'at a permìtere de bìdere e installare versiones cumpatìbiles. Custu acontessit, a s\'ispissu, cun aplicatziones installadas pro mèdiu de Google Play o àteras mitzas, si sunt firmadas cun unu tzertificadu diferente.</string>
+
     </resources>

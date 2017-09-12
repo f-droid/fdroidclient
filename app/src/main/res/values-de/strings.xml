@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
-    <string name="installIncompatible">Diese Anwendung ist nicht kompatibel mit Ihrem Gerät. Trotzdem installieren?</string>
+    <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible Anwendung. Trotzdem installieren?</string>
     <string name="version">Version</string>
     <string name="delete">Löschen</string>
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
@@ -504,4 +504,10 @@
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
 
     <string name="status_inserting_x_apps">App-Details werden von %3$s gespeichert (%1$d/%2$d)</string>
+    <string name="app_details__incompatible_mismatched_signature">Abweichende Signatur zur installierten Version</string>
+    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der verfügbaren Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen die Suche und Installation kompatibler Versionen. Dies tritt häufig bei über Google Play oder andere Quellen installierten Apps auf, wenn sie mit einem abweichenden Zertifikat signiert sind.</string>
+
     </resources>

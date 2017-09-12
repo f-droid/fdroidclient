@@ -234,9 +234,7 @@
     <string name="system_install_button_install">Installera</string>
     <string name="system_install_post_success">F-Droid privilegierade tillbyggnad har installerats</string>
     <string name="system_install_post_fail">Installationen av F-Droid privilegierad tillbyggnad misslyckades</string>
-    <string name="system_install_post_success_message">F-Droid privilegierad tillbyggnad har installerats. Detta
-        tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.
-    </string>
+    <string name="system_install_post_success_message">F-Droid privilegierad tillbyggnad. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.</string>
     <string name="system_install_post_fail_message">Installationen av F-Droid privilegierade tillbyggnad har
         misslyckats. Installationsmetoden stöds inte av alla Android distributioner, kontakta F-Droid bugg spårare för
         mer information.
@@ -246,15 +244,12 @@
     <string name="system_install_uninstalling">Avinstallerar…</string>
     <string name="system_install_question">Vill du installera F-Droid Privilegierad utökning?</string>
     <string name="system_install_warning">Detta tar upp till 10 sekunder.</string>
-    <string name="system_install_warning_lollipop">Detta tar upp till 10 sekunder och enheten kommer att
-        <b>startas om</b>
-        efteråt.
-    </string>
+    <string name="system_install_warning_lollipop">Detta tar upp till 10 sekunder och enheten kommer att <b>startas om</b> efteråt.</string>
     <string name="system_uninstall">Vill du avinstallera F-Droid Privilegierad utökning?</string>
     <string name="system_uninstall_button">Avinstallera</string>
 
     <string name="swap_nfc_title">Tryck för att utbyta</string>
-    <string name="swap_nfc_description">Om din vän har F-Droid och NFC aktiverat, lägg samman era enheter.</string>
+    <string name="swap_nfc_description">Om din vän har F-Droid och NFC påslaget, lägg samman era enheter.</string>
     <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en wifi-surfzon.</string>
     <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din surfzon</string>
     <string name="swap_success">Utbyte lyckades!</string>
@@ -438,8 +433,7 @@
 	<item quantity="other">Uppdaterade för %1$d dagar sedan</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Hämta appar från personer nära dig!
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
     <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\".</string>
 
@@ -488,4 +482,10 @@
     <string name="app_list_download_ready">Hämtat, redo att installera</string>
 
     <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
+    <string name="app_details__incompatible_mismatched_signature">Olika signaturer till installerad version</string>
+    <string name="app_details__no_versions__show_incompat_versions">För att visa inkompatibla versioner här ändå, aktivera inställningen \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Inga versioner har kompatibel signatur</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Inga versioner är kompatibla med enheten</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
+
     </resources>
