@@ -76,21 +76,27 @@ public class NewRepoConfig {
             uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
         }
 
+        // make scheme and host lowercase so they're readable in dialogs
+        scheme = scheme.toLowerCase(Locale.ENGLISH);
+        host = host.toLowerCase(Locale.ENGLISH);
+
+        // We only listen for /fdroid/archive or /fdroid/repo paths when receiving a HTTP(S) intent.
+        // For fdroidrepo(s) intents, we are less picky and will accept any path.
+        boolean isHttpScheme = TextUtils.equals("http", scheme) || TextUtils.equals("https", scheme);
         String path = uri.getPath();
-        if (path == null || !(path.contains("/fdroid/archive") || path.contains("/fdroid/repo"))) {
+        if (path == null || isHttpScheme && !(path.contains("/fdroid/archive") || path.contains("/fdroid/repo"))) {
             isValidRepo = false;
             return;
         }
 
-        // make scheme and host lowercase so they're readable in dialogs
-        scheme = scheme.toLowerCase(Locale.ENGLISH);
-        host = host.toLowerCase(Locale.ENGLISH);
+        boolean isFdroidScheme = TextUtils.equals("fdroidrepo", scheme) || TextUtils.equals("fdroidrepos", scheme);
+
         fingerprint = uri.getQueryParameter("fingerprint");
         bssid = uri.getQueryParameter("bssid");
         ssid = uri.getQueryParameter("ssid");
         fromSwap = uri.getQueryParameter("swap") != null;
 
-        if (!Arrays.asList("fdroidrepos", "fdroidrepo", "https", "http").contains(scheme)) {
+        if (!isFdroidScheme && !isHttpScheme) {
             isValidRepo = false;
             return;
         }
