@@ -12,11 +12,11 @@
         <item name="android:textViewStyle">@style/TextViewStyle</item>
         <item name="actionBarTheme">@style/AppThemeLight.Toolbar</item>
         <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
-        <item name="appDetailsBackground">#0c0c0c</item>
-        <item name="appDetailsCardBackground">#000000</item>
+        <item name="appDetailsBackground">?android:windowBackground</item>
+        <item name="appDetailsCardBackground">#424242</item>
         <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_dark</item>
-        <item name="mainTabSwapBackground">#0a0a0a</item>
-        <item name="mainTabSwapSplashTint">#050505</item>
+        <item name="mainTabSwapBackground">?android:windowBackground</item>
+        <item name="mainTabSwapSplashTint">#2c2c2c</item>
         <item name="categoryName">#ffffff</item>
         <item name="installedApps">#ffffff</item>
         <item name="detailPanel">@drawable/details_panel_donate_background_dark</item>
@@ -49,19 +49,30 @@
         <item name="antiFeaturesWarning">@drawable/ic_warning_black_24dp</item>
     </style>
 
+    <style name="AppBaseThemeNight" parent="AppThemeDark">
+        <!-- backward-compatibility theme options go here -->
+
+        <item name="colorPrimary">@color/fdroid_night</item>
+        <item name="colorPrimaryDark">@color/fdroid_night_dark</item>
+        <item name="alertDialogTheme">@style/AlertDialogThemeNight</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="detailPanel">@drawable/details_panel_donate_background_night</item>
+        <item name="mainTabSwapSplashTint">#111111</item>
+    </style>
+
+    <!-- dark app theme with accent colors following roughly android design guidelines -->
     <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
+    <!-- light app theme with accent colors following roughly android design guidelines -->
     <style name="AppThemeLight" parent="AppBaseThemeLight">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
-    <style name="AppThemeNight" parent="AppThemeDark">
+    <!-- mostly deep black theme specialized for OLED screens -->
+    <style name="AppThemeNight" parent="AppBaseThemeNight">
         <!-- customizations that are not API-level specific go here. -->
-
-        <item name="colorPrimary">@color/fdroid_night</item>
-        <item name="colorPrimaryDark">@color/fdroid_night_dark</item>
     </style>
 
     <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert" />
@@ -72,6 +83,11 @@
     <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert" />
     <style name="AlertDialogThemeLight" parent="AlertDialogBaseThemeLight">
         <item name="colorAccent">@color/fdroid_green</item>
+    </style>
+
+    <style name="AlertDialogBaseThemeNight" parent="AlertDialogThemeDark" />
+    <style name="AlertDialogThemeNight" parent="AlertDialogBaseThemeNight">
+        <item name="android:windowBackground">@color/fdroid_night</item>
     </style>
 
     <style name="MinWithDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.MinWidth">

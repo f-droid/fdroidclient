@@ -4,8 +4,6 @@
     <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
         <item name="android:alertDialogTheme">@style/AlertDialogThemeDark</item>
-        <item name="android:colorControlActivated">@color/fdroid_green</item>
-        <item name="android:colorControlHighlight">@color/fdroid_green</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
         <item name="android:windowSharedElementEnterTransition">@transition/shared_elements</item>
         <item name="android:windowSharedElementExitTransition">@transition/shared_elements</item>

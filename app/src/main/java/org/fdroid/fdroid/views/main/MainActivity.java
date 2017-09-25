@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
         bottomNavigation.setTabSelectedListener(this)
-                .setBarBackgroundColor(R.color.fdroid_blue)
+                .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
                 .setInActiveColor(R.color.bottom_nav_items)
                 .setActiveColor(android.R.color.white)
                 .setMode(BottomNavigationBar.MODE_FIXED)
@@ -333,6 +333,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         } else {
             updatesBadge.setText(Integer.toString(canUpdateCount));
             updatesBadge.show(true);
+        }
+    }
+
+    private int getBottomNavigationBackgroundColorResId() {
+        switch (FDroidApp.getCurThemeResId()) {
+            case R.style.AppThemeNight:
+                return R.color.fdroid_night;
+            default:
+                return R.color.fdroid_blue;
         }
     }
 
