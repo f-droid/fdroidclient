@@ -424,6 +424,9 @@
             query parameters. An alternative would be to do something like fdroidswap:// as
             a scheme, but then we need to copy/paste all of this intent-filter stuff and
             keep it up to date when it changes or a bug is found.
+
+            This filter supports HTTP and HTTPS schemes. There is an additional filter for
+            fdroidrepo:// and fdroidrepos://
             -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -441,10 +444,6 @@
                 <data android:scheme="HTTP" />
                 <data android:scheme="https" />
                 <data android:scheme="HTTPS" />
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="FDROIDREPO" />
-                <data android:scheme="fdroidrepos" />
-                <data android:scheme="FDROIDREPOS" />
 
                 <data android:host="*" />
 
@@ -478,6 +477,28 @@
                 <data android:pathPattern="/.*/FDROID/REPO" />
                 <data android:pathPattern="/.*/.*/FDROID/REPO" />
                 <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
+            </intent-filter>
+
+            <!--
+            Same as the intent filter listening for repositories via https://*/fdroid/repo, except this
+            looks for fdroidrepos://* and doesn't care what the path is.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
             </intent-filter>
 
 
