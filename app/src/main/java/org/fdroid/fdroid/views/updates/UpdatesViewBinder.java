@@ -29,7 +29,7 @@ public class UpdatesViewBinder {
         list.setLayoutManager(new LinearLayoutManager(activity));
         list.setAdapter(adapter);
 
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new UpdatesItemTouchCallback(adapter));
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new UpdatesItemTouchCallback(activity, adapter));
         touchHelper.attachToRecyclerView(list);
 
         emptyState = (TextView) view.findViewById(R.id.empty_state);

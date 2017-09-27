@@ -379,7 +379,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
 
             String reason = intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE);
-            switch(intent.getAction()) {
+            switch (intent.getAction()) {
                 // Apps which are added/removed from the list due to becoming ready to install or a repo being
                 // disabled both cause us to increase/decrease our badge count respectively.
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:

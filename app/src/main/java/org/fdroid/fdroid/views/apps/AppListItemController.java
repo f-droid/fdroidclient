@@ -26,7 +26,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -43,6 +42,7 @@ import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
+import org.fdroid.fdroid.views.updates.DismissResult;
 
 import java.io.File;
 import java.util.Iterator;
@@ -203,13 +203,13 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
      * This mainly exists to keep the API consistent, in that the {@link App} is threaded through to the relevant
      * method with a guarantee that it is not null, rather than every method having to check if it is null or not.
      */
-    public final void onDismiss() {
+    @NonNull
+    public final DismissResult onDismiss() {
         if (currentApp != null && canDismiss()) {
-            CharSequence message = onDismissApp(currentApp);
-            if (message != null) {
-                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-            }
+            return onDismissApp(currentApp);
         }
+
+        return new DismissResult();
     }
 
     /**
@@ -218,9 +218,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
      * a {@link android.widget.Toast} for a {@link android.widget.Toast#LENGTH_SHORT} time.
      * @see #canDismiss() This must also be overriden and should return true.
      */
-    @Nullable
-    protected CharSequence onDismissApp(@NonNull App app) {
-        return null;
+    @NonNull
+    protected DismissResult onDismissApp(@NonNull App app) {
+        return new DismissResult();
     }
 
     /**

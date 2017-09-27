@@ -11,6 +11,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
+import org.fdroid.fdroid.views.updates.DismissResult;
 
 /**
  * Shows apps which are:
@@ -51,9 +52,9 @@ public class AppStatusListItemController extends AppListItemController {
         return true;
     }
 
-    @Nullable
+    @NonNull
     @Override
-    protected CharSequence onDismissApp(@NonNull App app) {
+    protected DismissResult onDismissApp(@NonNull App app) {
         AppUpdateStatus status = getCurrentStatus();
         if (status != null) {
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
@@ -69,6 +70,6 @@ public class AppStatusListItemController extends AppListItemController {
             }
         }
 
-        return null;
+        return new DismissResult(true);
     }
 }

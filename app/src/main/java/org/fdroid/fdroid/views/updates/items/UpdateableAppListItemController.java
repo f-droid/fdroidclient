@@ -12,6 +12,7 @@ import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
+import org.fdroid.fdroid.views.updates.DismissResult;
 
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.
@@ -38,14 +39,14 @@ public class UpdateableAppListItemController extends AppListItemController {
     }
 
     @Override
-    @Nullable
-    protected CharSequence onDismissApp(@NonNull App app) {
+    @NonNull
+    protected DismissResult onDismissApp(@NonNull App app) {
         AppPrefs prefs = app.getPrefs(activity);
         prefs.ignoreThisUpdate = app.suggestedVersionCode;
 
         // The act of updating here will trigger a re-query of the "can update" apps, so no need to do anything else
         // to update the UI in response to this.
         AppPrefsProvider.Helper.update(activity, app, prefs);
-        return activity.getString(R.string.app_list__dismiss_app_update);
+        return new DismissResult(activity.getString(R.string.app_list__dismiss_app_update), false);
     }
 }
