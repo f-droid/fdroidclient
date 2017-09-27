@@ -510,11 +510,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {
-                return;
-            }
-
-            InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+            cancelDownload();
         }
     };
+
+    protected final void cancelDownload() {
+        if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {
+            return;
+        }
+
+        InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+    }
 }

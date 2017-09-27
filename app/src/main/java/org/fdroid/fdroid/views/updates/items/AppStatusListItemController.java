@@ -45,4 +45,30 @@ public class AppStatusListItemController extends AppListItemController {
 
         return null;
     }
+
+    @Override
+    public boolean canDismiss() {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    protected CharSequence onDismissApp(@NonNull App app) {
+        AppUpdateStatus status = getCurrentStatus();
+        if (status != null) {
+            AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
+            manager.removeApk(status.getUniqueKey());
+            switch (status.status) {
+                case ReadyToInstall:
+                    manager.markAsNoLongerPendingInstall(status);
+                    break;
+
+                case Downloading:
+                    cancelDownload();
+                    break;
+            }
+        }
+
+        return null;
+    }
 }

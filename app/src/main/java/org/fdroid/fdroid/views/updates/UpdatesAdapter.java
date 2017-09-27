@@ -341,6 +341,16 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     };
 
+    /**
+     * If an item representing an {@link org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus} is dismissed,
+     * then we should rebuild the list of app statuses and update the adapter. If it was an updateable app which was
+     * dismissed, then it is still harmless to rebuild the list of items anyway, but this isn't strictly required
+     * because the act of marking an app as "Ignored" will trigger the {@link AppProvider} to re-query for a list
+     * of updateable apps, separate to this method. However, by the time we get here it is a bit tricky to figure
+     * out which item was dismissed, so for simplicity (and to make the behaviour more deterministic) we always
+     * rebuild the full updates list.
+     */
     public void onItemDismissed() {
+        onAppStatusRemoved();
     }
 }

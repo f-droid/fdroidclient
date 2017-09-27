@@ -83,7 +83,22 @@ public class KnownVulnAppListItemController extends AppListItemController {
     }
 
     @Override
+    public boolean canDismiss() {
+        return true;
+    }
+
+    @Override
+    protected CharSequence onDismissApp(@NonNull App app) {
+        this.ignoreVulnerableApp(app);
+        return activity.getString(R.string.app_list__dismiss_vulnerable_app);
+    }
+
+    @Override
     protected void onSecondaryButtonPressed(@NonNull App app) {
+        this.ignoreVulnerableApp(app);
+    }
+
+    private void ignoreVulnerableApp(@NonNull App app) {
         AppPrefs prefs = app.getPrefs(activity);
         prefs.ignoreVulnerabilities = true;
         AppPrefsProvider.Helper.update(activity, app, prefs);
