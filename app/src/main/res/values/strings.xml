@@ -89,6 +89,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_list_download_ready">Downloaded, ready to install</string>
     <string name="app_list__dismiss_app_update">Update ignored</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerability ignored</string>
+    <string name="app_list__dismiss_downloading_app">Download canceled</string>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>

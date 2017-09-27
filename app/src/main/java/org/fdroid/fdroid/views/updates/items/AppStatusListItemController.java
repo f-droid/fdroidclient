@@ -56,20 +56,24 @@ public class AppStatusListItemController extends AppListItemController {
     @Override
     protected DismissResult onDismissApp(@NonNull App app) {
         AppUpdateStatus status = getCurrentStatus();
+        CharSequence message = null;
         if (status != null) {
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
             manager.removeApk(status.getUniqueKey());
             switch (status.status) {
                 case ReadyToInstall:
                     manager.markAsNoLongerPendingInstall(status);
+                    // Do this silently, because it should be pretty obvious based on the context
+                    // of a "Ready to install" app being dismissed.
                     break;
 
                 case Downloading:
                     cancelDownload();
+                    message = activity.getString(R.string.app_list__dismiss_downloading_app);
                     break;
             }
         }
 
-        return new DismissResult(true);
+        return new DismissResult(message, true);
     }
 }
