@@ -1,3 +1,13 @@
+### 1.0-alpha4 (2017-09-27)
+
+* added swipe gestures to the Updates tab
+
+* display warnings with actions in Updates tab for KnownVulns
+
+* translation updates
+
+* dark UI fixes
+
 ### 1.0-alpha3 (2017-09-12)
 
 * Big UI performance improvements, especially with archive enabled

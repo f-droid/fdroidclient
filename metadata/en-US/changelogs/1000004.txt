@@ -1,0 +1,7 @@
+* added swipe gestures to the Updates tab
+
+* display warnings with actions in Updates tab for KnownVulns
+
+* translation updates
+
+* dark UI fixes
