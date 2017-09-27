@@ -9,6 +9,10 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
+import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
@@ -17,8 +21,10 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @SuppressWarnings("LineLength")
 public class ApkProvider extends FDroidProvider {
@@ -266,6 +272,10 @@ public class ApkProvider extends FDroidProvider {
         return ApkTable.NAME;
     }
 
+    protected String getApkAntiFeatureJoinTableName() {
+        return ApkAntiFeatureJoinTable.NAME;
+    }
+
     protected String getAppTableName() {
         return AppMetadataTable.NAME;
     }
@@ -283,6 +293,18 @@ public class ApkProvider extends FDroidProvider {
     private class Query extends QueryBuilder {
 
         private boolean repoTableRequired;
+        private boolean antiFeaturesRequested;
+
+        /**
+         * If the query includes anti features, then we group by apk id. This is because joining onto the anti-features
+         * table will result in multiple result rows for each apk (potentially), so we will GROUP_CONCAT each of the
+         * anti features into a single comma separated list for each apk. If we are _not_ including anti features, then
+         * don't group by apk, because when doing a COUNT(*) this will result in the wrong result.
+         */
+        @Override
+        protected String groupBy() {
+            return antiFeaturesRequested ? "apk." + Cols.ROW_ID : null;
+        }
 
         @Override
         protected String getRequiredTables() {
@@ -301,6 +323,9 @@ public class ApkProvider extends FDroidProvider {
                 addPackageField(PACKAGE_FIELDS.get(field), field);
             } else if (REPO_FIELDS.containsKey(field)) {
                 addRepoField(REPO_FIELDS.get(field), field);
+            } else if (Cols.AntiFeatures.ANTI_FEATURES.equals(field)) {
+                antiFeaturesRequested = true;
+                addAntiFeatures();
             } else if (field.equals(Cols._ID)) {
                 appendField("rowid", "apk", "_id");
             } else if (field.equals(Cols._COUNT)) {
@@ -324,6 +349,18 @@ public class ApkProvider extends FDroidProvider {
             appendField(field, "repo", alias);
         }
 
+        private void addAntiFeatures() {
+            String apkAntiFeature = "apkAntiFeatureJoin";
+            String antiFeature = "antiFeature";
+
+            leftJoin(getApkAntiFeatureJoinTableName(), apkAntiFeature,
+                    "apk." + Cols.ROW_ID + " = " + apkAntiFeature + "." + ApkAntiFeatureJoinTable.Cols.APK_ID);
+
+            leftJoin(AntiFeatureTable.NAME, antiFeature,
+                    apkAntiFeature + "." + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + " = " + antiFeature + "." + AntiFeatureTable.Cols.ROW_ID);
+
+            appendField("group_concat(" + antiFeature + "." + AntiFeatureTable.Cols.NAME + ") as " + Cols.AntiFeatures.ANTI_FEATURES);
+        }
     }
 
     private QuerySelection queryPackage(String packageName) {
@@ -508,13 +545,71 @@ public class ApkProvider extends FDroidProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        boolean saveAntiFeatures = false;
+        String[] antiFeatures = null;
+        if (values.containsKey(Cols.AntiFeatures.ANTI_FEATURES)) {
+            saveAntiFeatures = true;
+            String antiFeaturesString = values.getAsString(Cols.AntiFeatures.ANTI_FEATURES);
+            antiFeatures = Utils.parseCommaSeparatedString(antiFeaturesString);
+            values.remove(Cols.AntiFeatures.ANTI_FEATURES);
+        }
+
         removeFieldsFromOtherTables(values);
         validateFields(Cols.ALL, values);
         long newId = db().insertOrThrow(getTableName(), null, values);
+
+        if (saveAntiFeatures) {
+            ensureAntiFeatures(antiFeatures, newId);
+        }
+
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return getApkUri(newId);
+    }
+
+    protected void ensureAntiFeatures(String[] antiFeatures, long apkId) {
+        db().delete(getApkAntiFeatureJoinTableName(), ApkAntiFeatureJoinTable.Cols.APK_ID + " = ?", new String[] {Long.toString(apkId)});
+        if (antiFeatures != null) {
+            Set<String> antiFeatureSet = new HashSet<>();
+            for (String antiFeatureName : antiFeatures) {
+
+                // There is nothing stopping a server repeating a category name in the metadata of
+                // an app. In order to prevent unique constraint violations, only insert once into
+                // the join table.
+                if (antiFeatureSet.contains(antiFeatureName)) {
+                    continue;
+                }
+
+                antiFeatureSet.add(antiFeatureName);
+
+                long antiFeatureId = ensureAntiFeature(antiFeatureName);
+                ContentValues categoryValues = new ContentValues(2);
+                categoryValues.put(ApkAntiFeatureJoinTable.Cols.APK_ID, apkId);
+                categoryValues.put(ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID, antiFeatureId);
+                db().insert(getApkAntiFeatureJoinTableName(), null, categoryValues);
+            }
+        }
+    }
+
+    protected long ensureAntiFeature(String antiFeatureName) {
+        long antiFeatureId = 0;
+        Cursor cursor = db().query(AntiFeatureTable.NAME, new String[] {AntiFeatureTable.Cols.ROW_ID}, AntiFeatureTable.Cols.NAME + " = ?", new String[]{antiFeatureName}, null, null, null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                antiFeatureId = cursor.getLong(0);
+            }
+            cursor.close();
+        }
+
+        if (antiFeatureId <= 0) {
+            ContentValues values = new ContentValues(1);
+            values.put(AntiFeatureTable.Cols.NAME, antiFeatureName);
+            antiFeatureId = db().insert(AntiFeatureTable.NAME, null, values);
+        }
+
+        return antiFeatureId;
     }
 
     @Override
@@ -549,6 +644,15 @@ public class ApkProvider extends FDroidProvider {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
 
+        boolean saveAntiFeatures = false;
+        String[] antiFeatures = null;
+        if (values.containsKey(Cols.AntiFeatures.ANTI_FEATURES)) {
+            saveAntiFeatures = true;
+            String antiFeaturesString = values.getAsString(Cols.AntiFeatures.ANTI_FEATURES);
+            antiFeatures = Utils.parseCommaSeparatedString(antiFeaturesString);
+            values.remove(Cols.AntiFeatures.ANTI_FEATURES);
+        }
+
         validateFields(Cols.ALL, values);
         removeFieldsFromOtherTables(values);
 
@@ -556,6 +660,19 @@ public class ApkProvider extends FDroidProvider {
         query = query.add(querySingleWithAppId(uri));
 
         int numRows = db().update(getTableName(), values, query.getSelection(), query.getArgs());
+
+        if (saveAntiFeatures) {
+            // Get the database ID of the row we just updated, so that we can join relevant anti features to it.
+            Cursor result = db().query(getTableName(), new String[]{Cols.ROW_ID},
+                    query.getSelection(), query.getArgs(), null, null, null);
+            if (result != null) {
+                result.moveToFirst();
+                long apkId = result.getLong(0);
+                ensureAntiFeatures(antiFeatures, apkId);
+                result.close();
+            }
+        }
+
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }

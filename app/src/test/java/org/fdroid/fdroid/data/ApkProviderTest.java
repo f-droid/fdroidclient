@@ -22,6 +22,7 @@ import java.util.List;
 import static org.fdroid.fdroid.Assert.assertCantDelete;
 import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.fdroid.fdroid.Assert.insertApp;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -309,10 +310,12 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("com.example", apk.packageName);
         assertEquals(10, apk.versionCode);
 
+        assertNull(apk.antiFeatures);
         assertNull(apk.features);
         assertNull(apk.added);
         assertNull(apk.hashType);
 
+        apk.antiFeatures = new String[] {"KnownVuln", "Other anti feature"};
         apk.features = new String[] {"one", "two", "three" };
         long dateTimestamp = System.currentTimeMillis();
         apk.added = new Date(dateTimestamp);
@@ -335,14 +338,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("com.example", updatedApk.packageName);
         assertEquals(10, updatedApk.versionCode);
 
-        assertNotNull(updatedApk.features);
-        assertNotNull(updatedApk.added);
-        assertNotNull(updatedApk.hashType);
-
-        assertEquals(3, updatedApk.features.length);
-        assertEquals("one", updatedApk.features[0]);
-        assertEquals("two", updatedApk.features[1]);
-        assertEquals("three", updatedApk.features[2]);
+        assertArrayEquals(new String[]{"KnownVuln", "Other anti feature"}, updatedApk.antiFeatures);
+        assertArrayEquals(new String[]{"one", "two", "three"}, updatedApk.features);
         assertEquals(new Date(dateTimestamp).getYear(), updatedApk.added.getYear());
         assertEquals(new Date(dateTimestamp).getMonth(), updatedApk.added.getMonth());
         assertEquals(new Date(dateTimestamp).getDay(), updatedApk.added.getDay());

@@ -30,6 +30,7 @@ public class TempAppProvider extends AppProvider {
     private static final String PROVIDER_NAME = "TempAppProvider";
 
     static final String TABLE_TEMP_APP = "temp_" + AppMetadataTable.NAME;
+    static final String TABLE_TEMP_APK_ANTI_FEATURE_JOIN = "temp_" + Schema.ApkAntiFeatureJoinTable.NAME;
     static final String TABLE_TEMP_CAT_JOIN = "temp_" + CatJoinTable.NAME;
 
     private static final String PATH_INIT = "init";
@@ -122,6 +123,10 @@ public class TempAppProvider extends AppProvider {
 
     @Override
     protected String getApkTableName() {
+        return TempApkProvider.TABLE_TEMP_APK;
+    }
+
+    protected String getApkAntiFeatureJoinTableName() {
         return TempApkProvider.TABLE_TEMP_APK;
     }
 
@@ -218,6 +223,7 @@ public class TempAppProvider extends AppProvider {
             final String tempApp = DB + "." + TABLE_TEMP_APP;
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
             final String tempCatJoin = DB + "." + TABLE_TEMP_CAT_JOIN;
+            final String tempAntiFeatureJoin = DB + "." + TABLE_TEMP_APK_ANTI_FEATURE_JOIN;
 
             final String[] repoArgs = new String[]{Long.toString(repoIdToCommit)};
 
@@ -229,6 +235,16 @@ public class TempAppProvider extends AppProvider {
 
             db.execSQL("DELETE FROM " + CatJoinTable.NAME + " WHERE " + getCatRepoWhere(CatJoinTable.NAME), repoArgs);
             db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, tempCatJoin, CatJoinTable.NAME, getCatRepoWhere(tempCatJoin)), repoArgs);
+
+            db.execSQL(
+                    "DELETE FROM " + Schema.ApkAntiFeatureJoinTable.NAME + " " +
+                    "WHERE " + getAntiFeatureRepoWhere(Schema.ApkAntiFeatureJoinTable.NAME), repoArgs);
+
+            db.execSQL(copyData(
+                    Schema.ApkAntiFeatureJoinTable.Cols.ALL_COLS,
+                    tempAntiFeatureJoin,
+                    Schema.ApkAntiFeatureJoinTable.NAME,
+                    getAntiFeatureRepoWhere(tempAntiFeatureJoin)), repoArgs);
 
             db.setTransactionSuccessful();
 
@@ -249,5 +265,14 @@ public class TempAppProvider extends AppProvider {
                 "WHERE app." + Cols.REPO_ID + " = ?";
 
         return CatJoinTable.Cols.ROW_ID + " IN (" + catRepoSubquery + ")";
+    }
+
+    private String getAntiFeatureRepoWhere(String antiFeatureTable) {
+        String subquery =
+                "SELECT innerApk." + ApkTable.Cols.ROW_ID + " " +
+                "FROM " + ApkTable.NAME + " AS innerApk " +
+                "WHERE innerApk." + ApkTable.Cols.REPO_ID + " = ?";
+
+        return antiFeatureTable + "." + Schema.ApkAntiFeatureJoinTable.Cols.APK_ID + " IN (" + subquery + ")";
     }
 }

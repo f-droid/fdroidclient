@@ -82,13 +82,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     @JsonIgnore
     public boolean compatible;
-    /**
-     * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
-     * At most other times, we don't particularly care which repo an {@link App} object came from.
-     * It is pretty much transparent, because the metadata will be populated from the repo with
-     * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
-     * This is required for getting the full URL to the various graphics and screenshots.
-     */
     @JsonIgnore
     public Apk installedApk; // might be null if not installed
     @JsonIgnore
@@ -107,6 +100,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     public boolean isApk;
 
+    /**
+     * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
+     * At most other times, we don't particularly care which repo an {@link App} object came from.
+     * It is pretty much transparent, because the metadata will be populated from the repo with
+     * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
+     * This is required for getting the full URL to the various graphics and screenshots.
+     */
     @JacksonInject("repoId")
     public long repoId;
 
@@ -794,6 +794,37 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
         }
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
+    }
+
+    /**
+     * Attempts to find the installed {@link Apk} from the database. If not found, will lookup the
+     * {@link InstalledAppProvider} to find the details of the installed app and use that to
+     * instantiate an {@link Apk} to be returned.
+     *
+     * Cases where an {@link Apk} will not be found in the database and for which we fall back to
+     * the {@link InstalledAppProvider} include:
+     *  + System apps which are provided by a repository, but for which the version code bundled
+     *    with the system is not included in the repository.
+     *  + Regular apps from a repository, where the installed version is old enough that it is no
+     *    longer available in the repository.
+     *
+     */
+    @Nullable
+    public Apk getInstalledApk(Context context) {
+        try {
+            PackageInfo pi = context.getPackageManager().getPackageInfo(this.packageName, 0);
+            Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, pi.packageName, pi.versionCode);
+            if (apk == null) {
+                InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(context, pi.packageName);
+                if (installedApp == null) {
+                    throw new IllegalStateException("No installed app found when trying to uninstall");
+                }
+                apk = new Apk(installedApp);
+            }
+            return apk;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
     }
 
     public boolean isValid() {

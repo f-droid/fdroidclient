@@ -37,6 +37,11 @@ public class TempApkProvider extends ApkProvider {
     }
 
     @Override
+    protected String getApkAntiFeatureJoinTableName() {
+        return TempAppProvider.TABLE_TEMP_APK_ANTI_FEATURE_JOIN;
+    }
+
+    @Override
     protected String getAppTableName() {
         return TempAppProvider.TABLE_TEMP_APP;
     }
@@ -93,10 +98,22 @@ public class TempApkProvider extends ApkProvider {
         final SQLiteDatabase db = db();
         final String memoryDbName = TempAppProvider.DB;
         db.execSQL(DBHelper.CREATE_TABLE_APK.replaceFirst(ApkTable.NAME, memoryDbName + "." + getTableName()));
+        db.execSQL(DBHelper.CREATE_TABLE_APK_ANTI_FEATURE_JOIN.replaceFirst(Schema.ApkAntiFeatureJoinTable.NAME, memoryDbName + "." + getApkAntiFeatureJoinTableName()));
 
         String where = ApkTable.NAME + "." + Cols.REPO_ID + " != ?";
         String[] whereArgs = new String[]{Long.toString(repoIdBeingUpdated)};
         db.execSQL(TempAppProvider.copyData(Cols.ALL_COLS, ApkTable.NAME, memoryDbName + "." + getTableName(), where), whereArgs);
+
+        String antiFeaturesWhere =
+                Schema.ApkAntiFeatureJoinTable.NAME + "." + Schema.ApkAntiFeatureJoinTable.Cols.APK_ID + " IN " +
+                "(SELECT innerApk." + Cols.ROW_ID + " FROM " + ApkTable.NAME + " AS innerApk " +
+                "WHERE innerApk." + Cols.REPO_ID + " != ?)";
+
+        db.execSQL(TempAppProvider.copyData(
+                Schema.ApkAntiFeatureJoinTable.Cols.ALL_COLS,
+                Schema.ApkAntiFeatureJoinTable.NAME,
+                memoryDbName + "." + getApkAntiFeatureJoinTableName(),
+                antiFeaturesWhere), whereArgs);
 
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_appId on " + getTableName() + " (" + Cols.APP_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (" + Cols.IS_COMPATIBLE + ");");

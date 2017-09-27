@@ -22,6 +22,14 @@ public class InstalledAppTestUtils {
                                String packageName,
                                int versionCode, String versionName,
                                @Nullable String signingCert) {
+        install(context, packageName, versionCode, versionName, signingCert, null);
+    }
+
+    public static void install(Context context,
+                               String packageName,
+                               int versionCode, String versionName,
+                               @Nullable String signingCert,
+                               @Nullable String hash) {
         PackageInfo info = new PackageInfo();
         info.packageName = packageName;
         info.versionCode = versionCode;
@@ -31,8 +39,12 @@ public class InstalledAppTestUtils {
         if (signingCert != null) {
             info.signatures = new Signature[]{new Signature(signingCert)};
         }
+
         String hashType = "sha256";
-        String hash = "00112233445566778899aabbccddeeff";
+        if (hash == null) {
+            hash = "00112233445566778899aabbccddeeff";
+        }
+
         InstalledAppProviderService.insertAppIntoDb(context, info, hashType, hash);
     }
 

@@ -54,8 +54,9 @@ public interface Schema {
 
             String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
             String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
+            String IGNORE_VULNERABILITIES = "ignoreVulnerabilities";
 
-            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
+            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE, IGNORE_VULNERABILITIES};
         }
     }
 
@@ -103,6 +104,47 @@ public interface Schema {
              * @see AppMetadataTable.Cols#ALL_COLS
              */
             String[] ALL_COLS = {ROW_ID, APP_METADATA_ID, CATEGORY_ID};
+        }
+    }
+
+    interface AntiFeatureTable {
+
+        String NAME = "fdroid_antiFeature";
+
+        interface Cols {
+            String ROW_ID = "rowid";
+            String NAME = "name";
+
+            String[] ALL = {ROW_ID, NAME};
+        }
+    }
+
+    /**
+     * An entry in this table signifies that an apk has a particular anti feature.
+     * @see AntiFeatureTable
+     * @see ApkTable
+     */
+    interface ApkAntiFeatureJoinTable {
+
+        String NAME = "fdroid_apkAntiFeatureJoin";
+
+        interface Cols {
+            /**
+             * Foreign key to {@link ApkTable}.
+             * @see ApkTable
+             */
+            String APK_ID = "apkId";
+
+            /**
+             * Foreign key to {@link AntiFeatureTable}.
+             * @see AntiFeatureTable
+             */
+            String ANTI_FEATURE_ID = "antiFeatureId";
+
+            /**
+             * @see AppMetadataTable.Cols#ALL_COLS
+             */
+            String[] ALL_COLS = {APK_ID, ANTI_FEATURE_ID};
         }
     }
 
@@ -258,7 +300,6 @@ public interface Schema {
             String ADDED_DATE      = "added";
             String IS_COMPATIBLE   = "compatible";
             String INCOMPATIBLE_REASONS = "incompatibleReasons";
-            String ANTI_FEATURES   = "antiFeatures";
 
             interface Repo {
                 String VERSION = "repoVersion";
@@ -269,6 +310,10 @@ public interface Schema {
                 String PACKAGE_NAME = "package_packageName";
             }
 
+            interface AntiFeatures {
+                String ANTI_FEATURES   = "antiFeatures_commaSeparated";
+            }
+
             /**
              * @see AppMetadataTable.Cols#ALL_COLS
              */
@@ -277,7 +322,7 @@ public interface Schema {
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
-                    IS_COMPATIBLE, INCOMPATIBLE_REASONS, ANTI_FEATURES,
+                    IS_COMPATIBLE, INCOMPATIBLE_REASONS,
             };
 
             /**
@@ -289,7 +334,7 @@ public interface Schema {
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
-                    ANTI_FEATURES,
+                    AntiFeatures.ANTI_FEATURES,
             };
         }
     }

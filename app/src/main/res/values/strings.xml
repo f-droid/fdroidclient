@@ -97,9 +97,12 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="updates__tts__download_app">Download</string>
     <string name="updates__tts__download_updates_for_all_apps">Download all updates</string>
 
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">We found a vulnerability with %1$s. We recommend uninstalling this app immediately.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">We found a vulnerability with %1$s. We recommend upgrading to the newest version immediately.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignore</string>
+
     <string name="updates__hide_updateable_apps">Hide apps</string>
     <string name="updates__show_updateable_apps">Show apps</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Download update for %1$d app.</item>
         <item quantity="other">Download updates for %1$d apps.</item>

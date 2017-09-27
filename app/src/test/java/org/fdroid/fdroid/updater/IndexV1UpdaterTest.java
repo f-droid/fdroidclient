@@ -21,6 +21,7 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
+import org.fdroid.fdroid.data.InstalledAppTestUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
@@ -91,7 +92,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         updater.processIndexV1(indexInputStream, indexEntry, "fakeEtag");
         IOUtils.closeQuietly(indexInputStream);
         List<App> apps = AppProvider.Helper.all(context.getContentResolver());
-        assertEquals("53 apps present", 53, apps.size());
+        assertEquals("63 apps present", 63, apps.size());
 
         String[] packages = {
                 "fake.app.one",
@@ -110,7 +111,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         repos = RepoProvider.Helper.all(context);
         assertEquals("One repo", 1, repos.size());
         Repo repoFromDb = repos.get(0);
-        assertEquals("repo.timestamp should be set", 1481222111, repoFromDb.timestamp);
+        assertEquals("repo.timestamp should be set", 1497639511, repoFromDb.timestamp);
         assertEquals("repo.address should be the same", repo.address, repoFromDb.address);
         assertEquals("repo.name should be set", "non-public test repo", repoFromDb.name);
         assertEquals("repo.maxage should be set", 0, repoFromDb.maxage);
@@ -121,6 +122,12 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         assertEquals("repo.mirrors should have items", 2, repo.mirrors.length);
         assertEquals("repo.mirrors first URL", "http://frkcchxlcvnb4m5a.onion/fdroid/repo", repo.mirrors[0]);
         assertEquals("repo.mirrors second URL", "http://testy.at.or.at/fdroid/repo", repo.mirrors[1]);
+
+        // Make sure the per-apk anti features which are new in index v1 get added correctly.
+        assertEquals(0, AppProvider.Helper.findInstalledAppsWithKnownVulns(context).size());
+        InstalledAppTestUtils.install(context, "com.waze", 1019841, "v3.9.5.4", "362488e7be5ea0689b4e97d989ae1404",
+                "cbbdb8c5dafeccd7dd7b642dde0477d3489e18ac366e3c8473d5c07e5f735a95");
+        assertEquals(1, AppProvider.Helper.findInstalledAppsWithKnownVulns(context).size());
     }
 
     @Test(expected = RepoUpdater.SigningException.class)

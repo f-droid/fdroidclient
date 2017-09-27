@@ -97,7 +97,7 @@ public class AppProviderTest extends FDroidProviderTest {
             String packageName, int installedVercode, int suggestedVercode,
             boolean ignoreAll, int ignoreVercode) {
         App app = insertApp(contentResolver, context, packageName, "App: " + packageName, new ContentValues());
-        AppPrefsProvider.Helper.update(context, app, new AppPrefs(ignoreVercode, ignoreAll));
+        AppPrefsProvider.Helper.update(context, app, new AppPrefs(ignoreVercode, ignoreAll, false));
 
         ContentValues certValue = new ContentValues(1);
         certValue.put(Schema.ApkTable.Cols.SIGNATURE, TestUtils.FDROID_SIG);

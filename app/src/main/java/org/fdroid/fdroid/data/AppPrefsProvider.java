@@ -20,6 +20,7 @@ public class AppPrefsProvider extends FDroidProvider {
             ContentValues values = new ContentValues(3);
             values.put(Cols.IGNORE_ALL_UPDATES, prefs.ignoreAllUpdates);
             values.put(Cols.IGNORE_THIS_UPDATE, prefs.ignoreThisUpdate);
+            values.put(Cols.IGNORE_VULNERABILITIES, prefs.ignoreVulnerabilities);
 
             if (getPrefsOrNull(context, app) == null) {
                 values.put(Cols.PACKAGE_NAME, app.packageName);
@@ -51,7 +52,8 @@ public class AppPrefsProvider extends FDroidProvider {
                 cursor.moveToFirst();
                 return new AppPrefs(
                         cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_THIS_UPDATE)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_ALL_UPDATES)) > 0);
+                        cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_ALL_UPDATES)) > 0,
+                        cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_VULNERABILITIES)) > 0);
             } finally {
                 cursor.close();
             }
