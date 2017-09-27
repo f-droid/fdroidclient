@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -53,6 +55,16 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         categoriesList.setHasFixedSize(true);
         categoriesList.setLayoutManager(new LinearLayoutManager(activity));
         categoriesList.setAdapter(categoryAdapter);
+
+        final SwipeRefreshLayout swipeToRefresh =
+                (SwipeRefreshLayout) categoriesView.findViewById(R.id.swipe_to_refresh);
+        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeToRefresh.setRefreshing(false);
+                UpdateService.updateNow(activity);
+            }
+        });
 
         FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.btn_search);
         searchFab.setOnClickListener(new View.OnClickListener() {

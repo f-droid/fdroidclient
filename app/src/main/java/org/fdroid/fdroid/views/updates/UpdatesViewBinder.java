@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.updates;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 
 public class UpdatesViewBinder {
 
@@ -17,7 +19,7 @@ public class UpdatesViewBinder {
     private final TextView emptyState;
     private final ImageView emptyImage;
 
-    public UpdatesViewBinder(AppCompatActivity activity, FrameLayout parent) {
+    public UpdatesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         View view = activity.getLayoutInflater().inflate(R.layout.main_tab_updates, parent, true);
 
         adapter = new UpdatesAdapter(activity);
@@ -30,6 +32,16 @@ public class UpdatesViewBinder {
 
         emptyState = (TextView) view.findViewById(R.id.empty_state);
         emptyImage = (ImageView) view.findViewById(R.id.image);
+
+        final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
+        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeToRefresh.setRefreshing(false);
+                UpdateService.updateNow(activity);
+            }
+        });
+
     }
 
     public void bind() {
