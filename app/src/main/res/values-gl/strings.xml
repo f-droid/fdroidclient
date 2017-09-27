@@ -1,18 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">A nova versión está asinada cunha clave diferente da antiga. Para instalar a nova
-        versión, antes débese desinstalar a anterior. Por favor, fágao e téntao de novo. (Ao desinstalar borrarase
-        calquera dato interno gardado pola aplicación)
-    </string>
-    <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba
-        e instalalo aínda así?
-    </string>
+    <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, antes debe desinstalar a anterior. Por favor, fágao e ténteo de novo. (Ao desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
+    <string name="installIncompatible">App incompatíbel co seu dispositivo. Instalar aínda así?</string>
     <string name="version">Versión</string>
     <string name="cache_downloaded">Manter paquetes na caché</string>
     <string name="updates">Actualizacións</string>
     <string name="other">Outro</string>
     <string name="automatic_scan_wifi">Só mediante wifi</string>
-    <string name="notify">Notificar actualizacións</string>
+    <string name="notify">Amosar actualizacións disponíbeis</string>
     <string name="app_details">Detalles da ap</string>
     <string name="no_such_app">Non se atopou ese aplicativo.</string>
     <string name="about_title">Sobre F-Droid</string>
@@ -179,7 +174,7 @@
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
-    <string name="system_install_warning">Levará máis de 10 segundos…</string>
+    <string name="system_install_warning">Levará máis de 10 segundos.</string>
     <string name="system_install_warning_lollipop">Levará máis de 10 segundos e o dispositivo será
         <b>reiniciado</b>
         a continuación.
@@ -349,4 +344,16 @@
 <string name="menu_settings">Axustes</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
+    <string name="main_menu__swap_nearby">Veciñanza</string>
+
+    <string name="preference_manage_installed_apps">Xestionar aplicacións instaladas</string>
+
+
+    <string name="notification_action_update">Anovar</string>
+    <string name="notification_action_cancel">Cancelar</string>
+    <string name="notification_action_install">Instalar</string>
+
+    <string name="app_list__name__downloading_in_progress">Baixando %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
+    <string name="updates__tts__download_app">Descargar</string>
     </resources>

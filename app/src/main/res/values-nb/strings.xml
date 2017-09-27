@@ -70,7 +70,7 @@
     <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>
     <string name="antinonfreenetlist">Dette programmet promoterer ufrie nettverkstjenester</string>
     <string name="antinonfreedeplist">Dette programmet avhenger av andre ufrie applikasjoner</string>
-    <string name="antiupstreamnonfreelist">Koden fra kilden er ikke helt fri</string>
+    <string name="antiupstreamnonfreelist">Kildekoden er ikke helt fri</string>
     <string name="display">Vis</string>
     <string name="expert">Ekspertmodus</string>
     <string name="expert_on">Vis ekstra info og skru på ekstra innstillinger</string>
@@ -510,4 +510,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Ingen versjoner kompatible med enhet</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerte versjonen er ikke kompatibel med noen tilgjengelig versjoner. Å avinstallere programmet vil la deg vise og installere kompatible versjoner. Dette skjer ofte når programmer er installert via Google Play eller fra andre kilder, hvis de er signert med et annet sertifikat.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid støtte på en EIO-feil: %s er antagelig skadet!</string>
     </resources>

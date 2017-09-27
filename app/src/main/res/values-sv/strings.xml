@@ -104,7 +104,7 @@
 \n%2$s / %3$s (%4$d%%) från
 \n%1$s</string>
     <string name="status_connecting_to_repo">Ansluter till\n%1$s</string>
-    <string name="repos_unchanged">Alla fil-förråd är uppdaterade</string>
+    <string name="repos_unchanged">Alla förråd är uppdaterade</string>
     <string name="all_other_repos_fine">Övriga förråd orsakade inga fel.</string>
     <string name="global_error_updating_repos">Fel vid uppdatering: %s</string>
     <string name="no_permissions">Inga behörigheter används.</string>
@@ -488,4 +488,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Inga versioner är kompatibla med enheten</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid mottog EIO-fel: %s är förmodligen korrupt!</string>
     </resources>

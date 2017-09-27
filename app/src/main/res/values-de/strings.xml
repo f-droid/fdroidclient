@@ -508,6 +508,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der verfügbaren Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen die Suche und Installation kompatibler Versionen. Dies tritt häufig bei über Google Play oder andere Quellen installierten Apps auf, wenn sie mit einem abweichenden Zertifikat signiert sind.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid empfing einen EIO-Fehler: Möglicherweise ist %s beschädigt!</string>
     </resources>

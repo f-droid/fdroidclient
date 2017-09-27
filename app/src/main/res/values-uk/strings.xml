@@ -511,4 +511,5 @@
     <string name="app_list_download_ready">Завантажено, готовий до встановлення</string>
 
     <string name="status_inserting_x_apps">Збереження деталей застосунку (%1$d/%2$d) з %3$s</string>
+    <string name="installed_app__file_corrupt">F-Droid отримав помилку EIO: %s ймовірно, зіпсований!</string>
     </resources>
