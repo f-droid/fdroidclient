@@ -157,6 +157,7 @@ public class AppProvider extends FDroidProvider {
     protected static class AppQuerySelection extends QuerySelection {
 
         private boolean naturalJoinToInstalled;
+        private boolean naturalJoinApks;
         private boolean naturalJoinAntiFeatures;
         private boolean leftJoinPrefs;
 
@@ -178,6 +179,10 @@ public class AppProvider extends FDroidProvider {
             return naturalJoinToInstalled;
         }
 
+        public boolean naturalJoinToApks() {
+            return naturalJoinApks;
+        }
+
         public boolean naturalJoinAntiFeatures() {
             return naturalJoinAntiFeatures;
         }
@@ -191,6 +196,17 @@ public class AppProvider extends FDroidProvider {
          */
         public AppQuerySelection requireNaturalInstalledTable() {
             naturalJoinToInstalled = true;
+            return this;
+        }
+
+        /**
+         * Note that this has large performance implications, so should only be used if you are already limiting
+         * the result set based on other, more drastic conditions first.
+         * See https://gitlab.com/fdroid/fdroidclient/issues/1143 for the investigation which identified these
+         * performance implications.
+         */
+        public AppQuerySelection requireNaturalJoinApks() {
+            naturalJoinApks = true;
             return this;
         }
 
@@ -215,6 +231,10 @@ public class AppProvider extends FDroidProvider {
                 bothWithJoin.requireNaturalInstalledTable();
             }
 
+            if (this.naturalJoinToApks() || query.naturalJoinToApks()) {
+                bothWithJoin.requireNaturalJoinApks();
+            }
+
             if (this.leftJoinToPrefs() || query.leftJoinToPrefs()) {
                 bothWithJoin.requireLeftJoinPrefs();
             }
@@ -232,6 +252,7 @@ public class AppProvider extends FDroidProvider {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
+        private boolean requiresApkTable;
         private boolean requiresAntiFeatures;
         private boolean requiresLeftJoinToPrefs;
         private boolean countFieldAppended;
@@ -263,6 +284,9 @@ public class AppProvider extends FDroidProvider {
             if (selection.naturalJoinToInstalled()) {
                 naturalJoinToInstalledTable();
             }
+            if (selection.naturalJoinToApks()) {
+                naturalJoinToApkTable();
+            }
             if (selection.leftJoinToPrefs()) {
                 leftJoinToPrefs();
             }
@@ -280,6 +304,17 @@ public class AppProvider extends FDroidProvider {
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
+            }
+        }
+
+        public void naturalJoinToApkTable() {
+            if (!requiresApkTable) {
+                join(
+                        getApkTableName(),
+                        getApkTableName(),
+                        getApkTableName() + "." + ApkTable.Cols.APP_ID + " = " + getTableName() + "." + Cols.ROW_ID
+                );
+                requiresApkTable = true;
             }
         }
 
@@ -720,6 +755,7 @@ public class AppProvider extends FDroidProvider {
 
         return new AppQuerySelection(selection)
                 .requireNaturalInstalledTable()
+                .requireNaturalJoinApks()
                 .requireNatrualJoinAntiFeatures()
                 .requireLeftJoinPrefs();
     }
