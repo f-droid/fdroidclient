@@ -341,4 +341,11 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     };
 
+    /**
+     * If an item representing an {@link org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus} is dismissed,
+     * then we should rebuild the list of app statuses and update the adapter.
+     */
+    public void refreshStatuses() {
+        onAppStatusRemoved();
+    }
 }

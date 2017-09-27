@@ -24,6 +24,7 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
+import org.fdroid.fdroid.views.updates.DismissResult;
 
 /**
  * Tell the user that an app they have installed has a known vulnerability.
@@ -83,7 +84,22 @@ public class KnownVulnAppListItemController extends AppListItemController {
     }
 
     @Override
+    public boolean canDismiss() {
+        return true;
+    }
+
+    @Override
+    protected DismissResult onDismissApp(@NonNull App app) {
+        this.ignoreVulnerableApp(app);
+        return new DismissResult(activity.getString(R.string.app_list__dismiss_vulnerable_app), false);
+    }
+
+    @Override
     protected void onSecondaryButtonPressed(@NonNull App app) {
+        this.ignoreVulnerableApp(app);
+    }
+
+    private void ignoreVulnerableApp(@NonNull App app) {
         AppPrefs prefs = app.getPrefs(activity);
         prefs.ignoreVulnerabilities = true;
         AppPrefsProvider.Helper.update(activity, app, prefs);

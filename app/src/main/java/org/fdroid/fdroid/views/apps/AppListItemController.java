@@ -32,6 +32,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -41,6 +42,7 @@ import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
+import org.fdroid.fdroid.views.updates.DismissResult;
 
 import java.io.File;
 import java.util.Iterator;
@@ -57,7 +59,7 @@ import java.util.Iterator;
  * </ul>
  *
  * The state of the UI is defined in a dumb {@link AppListItemState} class, then applied to the UI
- * in the {@link #refreshView(App, AppUpdateStatusManager.AppUpdateStatus)} method.
+ * in the {@link #refreshView(App, AppUpdateStatus)} method.
  */
 public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
@@ -102,7 +104,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private App currentApp;
 
     @Nullable
-    private AppUpdateStatusManager.AppUpdateStatus currentStatus;
+    private AppUpdateStatus currentStatus;
 
     @TargetApi(21)
     public AppListItemController(final Activity activity, View itemView) {
@@ -159,6 +161,11 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(onAppClicked);
     }
 
+    @Nullable
+    protected final AppUpdateStatus getCurrentStatus() {
+        return currentStatus;
+    }
+
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
@@ -166,10 +173,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         // Figures out the current install/update/download/etc status for the app we are viewing.
         // Then, asks the view to update itself to reflect this status.
-        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses =
+        Iterator<AppUpdateStatus> statuses =
                 AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
         if (statuses.hasNext()) {
-            AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
+            AppUpdateStatus status = statuses.next();
             updateAppStatus(app, status);
         } else {
             updateAppStatus(app, null);
@@ -186,27 +193,56 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
     }
 
+    /** To be overridden if required */
+    public boolean canDismiss() {
+        return false;
+    }
+
+    /**
+     * If able, forwards the request onto {@link #onDismissApp(App)}.
+     * This mainly exists to keep the API consistent, in that the {@link App} is threaded through to the relevant
+     * method with a guarantee that it is not null, rather than every method having to check if it is null or not.
+     */
+    @NonNull
+    public final DismissResult onDismiss() {
+        if (currentApp != null && canDismiss()) {
+            return onDismissApp(currentApp);
+        }
+
+        return new DismissResult();
+    }
+
+    /**
+     * Override to respond to the user swiping an app to dismiss it from the list.
+     * @return Optionally return a description of what you did if it is not obvious to the user. It will be shown as
+     * a {@link android.widget.Toast} for a {@link android.widget.Toast#LENGTH_SHORT} time.
+     * @see #canDismiss() This must also be overriden and should return true.
+     */
+    @NonNull
+    protected DismissResult onDismissApp(@NonNull App app) {
+        return new DismissResult();
+    }
+
     /**
      * Updates both the progress bar and the circular install button (which shows progress around the outside of
      * the circle). Also updates the app label to indicate that the app is being downloaded.
      */
-    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus status) {
+    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatus status) {
         currentStatus = status;
         refreshView(app, status);
     }
 
     /**
-     * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)}
+     * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatus)}
      * and then updates the relevant widgets depending on that state.
      *
      * Should contain little to no business logic, this all belongs to
-     * {@link #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)}.
+     * {@link #getCurrentViewState(App, AppUpdateStatus)}.
      *
      * @see AppListItemState
-     * @see #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)
+     * @see #getCurrentViewState(App, AppUpdateStatus)
      */
-    private void refreshView(@NonNull App app,
-                             @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+    private void refreshView(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
 
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
@@ -292,8 +328,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     @NonNull
-    protected AppListItemState getCurrentViewState(
-            @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+    protected AppListItemState getCurrentViewState(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
         if (appStatus == null) {
             return getViewStateDefault(app);
         } else {
@@ -328,8 +363,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         return state;
     }
 
-    protected AppListItemState getViewStateDownloading(
-            @NonNull App app, @NonNull AppUpdateStatusManager.AppUpdateStatus currentStatus) {
+    protected AppListItemState getViewStateDownloading(@NonNull App app, @NonNull AppUpdateStatus currentStatus) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__downloading_in_progress, app.name);
 
@@ -384,8 +418,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final BroadcastReceiver onStatusChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            AppUpdateStatusManager.AppUpdateStatus newStatus =
-                    intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
+            AppUpdateStatus newStatus = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
 
             if (currentApp == null
                     || !TextUtils.equals(newStatus.app.packageName, currentApp.packageName)
@@ -477,11 +510,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {
-                return;
-            }
-
-            InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+            cancelDownload();
         }
     };
+
+    protected final void cancelDownload() {
+        if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {
+            return;
+        }
+
+        InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+    }
 }
