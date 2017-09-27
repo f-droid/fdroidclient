@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.updates;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,6 +28,9 @@ public class UpdatesViewBinder {
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(activity));
         list.setAdapter(adapter);
+
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new UpdatesItemTouchCallback(adapter));
+        touchHelper.attachToRecyclerView(list);
 
         emptyState = (TextView) view.findViewById(R.id.empty_state);
         emptyImage = (ImageView) view.findViewById(R.id.image);

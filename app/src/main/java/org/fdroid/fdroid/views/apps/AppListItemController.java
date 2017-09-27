@@ -26,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -160,6 +161,11 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(onAppClicked);
     }
 
+    @Nullable
+    protected final AppUpdateStatus getCurrentStatus() {
+        return currentStatus;
+    }
+
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
@@ -185,6 +191,36 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
+    }
+
+    /** To be overridden if required */
+    public boolean canDismiss() {
+        return false;
+    }
+
+    /**
+     * If able, forwards the request onto {@link #onDismissApp(App)}.
+     * This mainly exists to keep the API consistent, in that the {@link App} is threaded through to the relevant
+     * method with a guarantee that it is not null, rather than every method having to check if it is null or not.
+     */
+    public final void onDismiss() {
+        if (currentApp != null && canDismiss()) {
+            CharSequence message = onDismissApp(currentApp);
+            if (message != null) {
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    /**
+     * Override to respond to the user swiping an app to dismiss it from the list.
+     * @return Optionally return a description of what you did if it is not obvious to the user. It will be shown as
+     * a {@link android.widget.Toast} for a {@link android.widget.Toast#LENGTH_SHORT} time.
+     * @see #canDismiss() This must also be overriden and should return true.
+     */
+    @Nullable
+    protected CharSequence onDismissApp(@NonNull App app) {
+        return null;
     }
 
     /**

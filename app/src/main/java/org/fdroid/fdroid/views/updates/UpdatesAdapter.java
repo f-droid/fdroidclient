@@ -341,4 +341,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     };
 
+    public void onItemDismissed() {
+    }
 }
