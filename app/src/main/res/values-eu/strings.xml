@@ -532,4 +532,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Ez dago gailuarekin bateragarria den bertsiorik</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Instalatutako bertsioa ez da bateragarria eskuragarri duden bertsioekin. Aplikazioa desinstalatzeak bertsio bateragarriak ikusi eta instalatzea ahalbidetuko dizu. Hau Gogle Play edo beste iturrietatik instalatutako aplikazioekin gertatu ohi da, ziurtagiri desberdin batekin sinatu direlako.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid-ek EIO errorea jaso du: %s hondatuta egon daiteke!</string>
     </resources>

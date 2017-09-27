@@ -2,13 +2,8 @@
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue
-        versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu:
-        eemaldamisel kustutatakse programmiga seotud andmed.)
-    </string>
-    <string name="installIncompatible">Tundub, et see pakett ei ühildu su seadmega. Kas sa soovid ikkagi proovida selle
-        paigaldamist?
-    </string>
+    <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu: eemaldamisel kustutatakse rakendusega seotud andmed.)</string>
+    <string name="installIncompatible">Rakendus ei ühildu su seadmega. Kas paigaldada ta ikkagi?</string>
     <string name="version">Versioon</string>
     <string name="delete">Kustuta</string>
     <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
@@ -23,8 +18,8 @@
     <string name="automatic_scan_wifi">Ainult Wi-Fi ühendusega</string>
     <string name="automatic_scan_wifi_on">Värskenda rakenduste loendit automaatselt piiramatu andmemahuga võrkudes nagu Wi-Fi</string>
     <string name="update_auto_download">Värskenduste automaatne hankimine</string>
-    <string name="update_auto_download_summary">Värskendused laaditakse automaatselt ja sulle antakse teada nende paigaldamiseks</string>
-    <string name="notify">Värskenduste teated</string>
+    <string name="update_auto_download_summary">Värskendused laaditakse automaatselt ja sind teavitatakse, et neid paigaldada</string>
+    <string name="notify">Kuva saadaolevad värskendused</string>
     <string name="notify_on">Kuva teade, kui värskendused on saadaval</string>
     <string name="system_installer">Priviligeeritud laiendus</string>
     <string name="system_installer_on">"Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks F-Droidi
@@ -50,7 +45,7 @@
     <string name="about_version">Versioon</string>
     <string name="about_site">Veebileht</string>
     <string name="about_source">Lähtekood</string>
-    <string name="about_mail">Meil</string>
+    <string name="about_mail">E-post</string>
     <string name="about_license">Litsents</string>
 
     <string name="app_incompatible">Ühildumatu</string>
@@ -90,9 +85,7 @@
     </string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
-    <string name="install_confirm_update">Kas soovid paigaldada värskenduse sellele rakendusele? Olemasolevad andmed
-        jäävad alles. Värskendatud rakendus saab ligipääsu:
-    </string>
+    <string name="install_confirm_update">Kas sa soovid paigaldada selle rakenduse värskenduse? Olemasolevad andmed jäävad alles. Värskendatud rakendus saab ligipääsu:</string>
     <string name="menu_email">Saada autorile meil</string>
 
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
@@ -130,10 +123,8 @@
         kuid nad ei ole paigaldatud F-Droidist. Selle põhjuseks võib olla kas vajadus hoidlaid värskendada või sinu
         rakenduste puudumine nendes hoidlates.
     </string>
-    <string name="empty_can_update_app_list">Kõik rakendused on värskendatud.\n\nPalju õnne! Su rakendused on kõik
-        kaasajastatud (või hoidlad on aegunud).
-    </string>
-    <string name="system_install_denied_signature">Laienduse signatuur on vale! Palun saada veateade!</string>
+    <string name="empty_can_update_app_list">Palju õnne! Su rakendused on ajakohased.</string>
+    <string name="system_install_denied_signature">Laienduse signatuur on vale! Palun teavita veast!</string>
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!
     </string>
@@ -183,7 +174,7 @@
 
     <string name="search_hint">Otsi rakendusi</string>
 
-    <string name="appcompatibility">Rakenduste ühilduvus</string>
+    <string name="appcompatibility">Rakenduse ühilduvus</string>
     <string name="show_incompat_versions">Ühildumatud versioonid</string>
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
     <string name="rooted">Ignoreeri juur-kasutajat</string>
@@ -264,11 +255,9 @@
     <string name="install_error_unknown">Paigaldamine nurjus tundmatu vea tõttu</string>
     <string name="uninstall_error_unknown">Eemaldamine nurjus tundmatu vea tõttu</string>
     <string name="system_install_button_install">Paigalda</string>
-    <string name="system_install_post_success">F-Droidi privilegeeritud laiendus paigaldati edukalt</string>
+    <string name="system_install_post_success">F-Droidi privilegeeritud laiendus on paigaldatud</string>
     <string name="system_install_post_fail">F-Droid privilegeeritud laienduse paigaldamine nurjus</string>
-    <string name="system_install_post_success_message">F-Droid privilegeeritud laiendus paigaldati edukalt. See
-        võimaldab F-Droidil paigaldada, uuendada ja eemaldada rakendusi iseseisvalt.
-    </string>
+    <string name="system_install_post_success_message">F-Droid privilegeeritud laiendus on paigaldatud. See võimaldab F-Droidil paigaldada, uuendada ja eemaldada rakendusi iseseisvalt.</string>
     <string name="system_install_post_fail_message">F-Droid privilegeeritud laienduse paigaldamine nurjus. Kõik Androidi
         väljalasked ei toeta paigaldamise meetodit. Lisateavet leiad F-Droidi veahaldusest.
     </string>
@@ -277,9 +266,7 @@
     <string name="system_install_uninstalling">Eemaldamine…</string>
     <string name="system_install_question">Kas sa soovid paigaldada F-Droidi priviligeeritud laienduse?</string>
     <string name="system_install_warning">Selleks kulub kuni 10 sekundit.</string>
-    <string name="system_install_warning_lollipop">Selleks kulub kuni 10 sekundit ja seadmele tehakse hiljem<b>
-        taaskäivitus</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Selleks kulub kuni 10 sekundit ja seadmele tehakse hiljem<b> taaskäivitus</b>.</string>
     <string name="system_uninstall">Kas soovid eemaldada F-Droidi priviligeeritud laienduse?</string>
     <string name="system_uninstall_button">Eemalda</string>
     <string name="system_install_not_supported">Android 5.1 ja uuematega ei ole hetkel F-Droidi privilegeeritud
@@ -375,8 +362,7 @@
     <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs
         samasse võrku, siis saab teist üks luua WiFi tööpunkti.
     </string>
-    <string name="swap_connection_misc_error">Seadmega ühendumine nurjus. Sellega vahetamine ei ole vist võimalik.
-    </string>
+    <string name="swap_connection_misc_error">Seadmega ühendumine nurjus. Sellega vahetamine ei ole võimalik!</string>
     <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
         Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?
     </string>

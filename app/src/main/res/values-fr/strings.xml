@@ -309,7 +309,7 @@
     <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
-    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange avec !</string>
+    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
@@ -503,12 +503,18 @@
 <string name="by_author_format">par %s</string>
     <string name="download_404">Le fichier n\'a pas été trouvé.</string>
     <string name="force_old_index">Forcer l\'ancien format d\'index</string>
-    <string name="force_old_index_summary">Dans le cas où des erreurs ou des incompatibilités apparaissent, utiliser l\'index d\'application XML</string>
+    <string name="force_old_index_summary">Dans le cas où des erreurs ou des incompatibilités apparaitraient, utilisez l\'index des applications en XML</string>
     <string name="app_list_download_ready">Téléchargé, prêt à installer</string>
 
-    <string name="status_inserting_x_apps">Sauvegarder les détails de l\'application (%1$d/%2$d) depuis %3$s</string>
+    <string name="status_inserting_x_apps">Sauvegarde des détails de l\'application (%1$d/%2$d) depuis %3$s</string>
     <string name="app_installed_media">Fichier installé dans %s</string>
-    <string name="app_permission_storage">F-Droid a besoin de la permission Stockage pour l\'installer à cet emplacement. Veuillez l\'autoriser sur l\'écran suivant pour pouvoir continuer l\'installation.</string>
+    <string name="app_permission_storage">F-Droid a besoin de la permission de stockage pour l\'installer à cet emplacement. Veuillez l\'autoriser sur l\'écran suivant pour pouvoir continuer l\'installation.</string>
 
     <string name="app_details__no_versions__none_compatible_with_device">Aucune version compatible avec l\'appareil</string>
+    <string name="app_details__incompatible_mismatched_signature">La signature diffère de la version déjà installée</string>
+    <string name="app_details__no_versions__show_incompat_versions">Pour tout de même afficher ici les versions incompatibles, activez la préférence \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Aucune version ne possède une signature compatible</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
+
+    <string name="installed_app__file_corrupt">F-Droid a reçu une erreur EIO : %s est probablement corrompu !</string>
     </resources>

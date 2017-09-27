@@ -497,4 +497,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Neniuj versioj kongruaj kun la aparato</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid renkontis EIO-eraron: %s probable estas difektita!</string>
     </resources>

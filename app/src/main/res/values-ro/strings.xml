@@ -471,4 +471,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Nici o versiune nu este compatibilă cu acest dispozitiv</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Versiunea instalată nu este compatibilă cu cele disponibile. Dacă dezinstalați aplicația veți putea vedea și instala versiunile compatibile. Acest fapt se întâmplă cel mai des atunci când aplicațiile sunt instalate din Google Play sau din alte surse, dacă sunt semnate cu un certificat diferit.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid a întâlnit o eroare EIO: %s este probabil corupt!</string>
     </resources>

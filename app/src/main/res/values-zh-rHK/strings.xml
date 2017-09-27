@@ -222,9 +222,9 @@
     <string name="swap_not_visible_wifi">不可在 Wi-Fi 上被偵測</string>
     <string name="swap_setting_up_wifi">正在設定 Wi-Fi…</string>
     <string name="swap_visible_wifi">可在 Wi-Fi 上被偵測</string>
-    <string name="swap_not_visible_bluetooth">不可在藍牙上被偵測</string>
+    <string name="swap_not_visible_bluetooth">不可透過藍牙被偵測</string>
     <string name="swap_setting_up_bluetooth">正在設定藍牙…</string>
-    <string name="swap_visible_bluetooth">可在藍牙上被偵測</string>
+    <string name="swap_visible_bluetooth">可在透過藍牙被偵測</string>
     <string name="swap_intro">與附近的人交換應用程式。</string>
     <string name="swap_nearby">近距交換</string>
     <string name="swap_scan_or_type_url">其中一人需掃描 QR 碼或在瀏覽器中輸入另一人的網址。</string>
@@ -279,9 +279,7 @@
 \nF-Droid 並不提供您裝置上的應用程式。您可以嘗試更新您的軟件庫，但若更新後此頁還沒有顯示任何應用程式，您的倉庫的確不提供裝置現有的程式。</string>
 
     <string name="root_access_denied_body">您的 Android 裝置還未取得 root 權限，或 F-Droid 已被拒 root 權限。</string>
-    <string name="system_install_denied_signature">套件的簽署不正確！
-請提交一份錯誤報告！
-</string>
+    <string name="system_install_denied_signature">套件的簽署不正確！請提交一份錯誤報告！</string>
     <string name="system_install_denied_permissions">套件尚未得到系統權限！
 請提交一份錯誤報告！
 </string>
@@ -452,4 +450,11 @@
     <plurals name="notification_summary_more">
 	<item quantity="other">還有 %1$d 則通知…</item>
 </plurals>
+    <string name="app_details__incompatible_mismatched_signature">簽署與已安裝的版本不相符</string>
+    <string name="app_details__no_versions__show_incompat_versions">如要在此顯示不相容的版本，請啟用「%1$s」的設定。</string>
+    <string name="app_details__no_versions__no_compatible_signatures">沒有含相容簽署的版本</string>
+    <string name="app_details__no_versions__none_compatible_with_device">沒有與裝置相容的版本</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的程式版本與可供安裝的版本並不相容。卸載現有的應用程式將讓您檢視及安裝相容的版本。此問題通常出現於透過 Google Play 或其他途徑安裝，並使用不同認證的應用程式。</string>
+
+    <string name="installed_app__file_corrupt">F-Droid 偵測到一個 EIO 錯誤：%s 很可能已崩潰！</string>
     </resources>

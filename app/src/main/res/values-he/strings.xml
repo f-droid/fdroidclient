@@ -502,4 +502,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
 
+    <string name="installed_app__file_corrupt">התקבלה שגיאת קלט/פלט ב־F-Droid: כנראה כי קיימת תקלה מול %s!</string>
     </resources>

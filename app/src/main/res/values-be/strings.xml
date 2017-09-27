@@ -547,4 +547,5 @@
 
     <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных праграм.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid атрымаў EIO-памылку: %s верагодна пашкоджаны!</string>
     </resources>

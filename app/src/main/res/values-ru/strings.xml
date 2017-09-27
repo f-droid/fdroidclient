@@ -525,4 +525,10 @@
     <string name="app_installed_media">Файл установлен в %s</string>
     <string name="app_permission_storage">F-Droid нуждается в разрешении на доступ к хранилищу, чтобы установить это. Пожалуйста, дайте разрешение на следующем экране, чтобы продолжить установку.</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Отличается подпись установленной версии</string>
+    <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии, включите параметр \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Нет версий с совместимой подписью</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Нет версий, совместимых с устройством</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Установленная версия несовместима со всеми доступными версиями. Удаление приложения позволит вам установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников.</string>
+
     </resources>

@@ -533,4 +533,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Peruna versione cumpatìbile cun su dispositivu</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Sa versione installada no est cumpatìbile cun sas versiones disponìbiles. Disinstallende s\'aplicatzione t\'at a permìtere de bìdere e installare versiones cumpatìbiles. Custu acontessit, a s\'ispissu, cun aplicatziones installadas pro mèdiu de Google Play o àteras mitzas, si sunt firmadas cun unu tzertificadu diferente.</string>
 
+    <string name="installed_app__file_corrupt">F-Droid at retzidu un\'errore EIO: %s est probabilmente corrùmpidu!</string>
     </resources>
