@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
@@ -24,15 +25,14 @@ public class AppStatusListItemController extends AppListItemController {
 
     @NonNull
     @Override
-    protected AppListItemState getCurrentViewState(
-            @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+    protected AppListItemState getCurrentViewState(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
 
         return super.getCurrentViewState(app, appStatus)
                 .setStatusText(getStatusText(appStatus));
     }
 
     @Nullable
-    private CharSequence getStatusText(@Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+    private CharSequence getStatusText(@Nullable AppUpdateStatus appStatus) {
         if (appStatus != null) {
             switch (appStatus.status) {
                 case ReadyToInstall:

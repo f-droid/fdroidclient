@@ -23,6 +23,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -385,8 +386,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             }
 
             // Check if we have moved into the ReadyToInstall or Installed state.
-            AppUpdateStatusManager.AppUpdateStatus status = manager.get(
-                    intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
+            AppUpdateStatus status = manager.get(intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
             boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
             if (isStatusChange
                     && status != null
@@ -396,7 +396,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
             if (updateBadge) {
                 int count = 0;
-                for (AppUpdateStatusManager.AppUpdateStatus s : manager.getAll()) {
+                for (AppUpdateStatus s : manager.getAll()) {
                     if (s.status == AppUpdateStatusManager.Status.ReadyToInstall) {
                         count++;
                     }
