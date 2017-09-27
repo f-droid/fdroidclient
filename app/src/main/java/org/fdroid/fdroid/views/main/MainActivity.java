@@ -107,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
                 .initialise();
 
-        IntentFilter updateableAppsFilter = new IntentFilter(
-                AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
+        IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
+        updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
 
         if (savedInstanceState != null) {
@@ -379,10 +379,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
 
             String reason = intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE);
-            if (AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED.equals(intent.getAction()) &&
-                    (AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(reason) ||
-                    AppUpdateStatusManager.REASON_REPO_DISABLED.equals(reason))) {
-                updateBadge = true;
+            switch(intent.getAction()) {
+                // Apps which are added/removed from the list due to becoming ready to install or a repo being
+                // disabled both cause us to increase/decrease our badge count respectively.
+                case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
+                    if (AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(reason) ||
+                            AppUpdateStatusManager.REASON_REPO_DISABLED.equals(reason)) {
+                        updateBadge = true;
+                    }
+                    break;
+
+                // Apps which were previously "Ready to install" but have been removed. We need to lower our badge
+                // count in response to this.
+                case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
+                    AppUpdateStatus status = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
+                    if (status != null && status.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+                        updateBadge = true;
+                    }
+                    break;
             }
 
             // Check if we have moved into the ReadyToInstall or Installed state.
