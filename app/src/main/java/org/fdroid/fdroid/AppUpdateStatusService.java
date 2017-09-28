@@ -85,6 +85,22 @@ public class AppUpdateStatusService extends IntentService {
     @Nullable
     private Apk processDownloadedApk(File apkPath) {
         Utils.debugLog(TAG, "Checking " + apkPath);
+
+        // Overly defensive checking for existence. One would think that the file exists at this point,
+        // because we got it from the result of File#list() earlier. However, this has proven to not be
+        // sufficient, and by the time we get here we are often hitting a non-existent file.
+        // This may be due to the fact that the loop checking each file in the cache takes a long time to execute.
+        // If the number of apps in the cache is large, it can take 10s of seconds to complete. In such
+        // cases, it is possible that Android has cleared up some files in the cache to make space in
+        // the meantime.
+        //
+        // This is all just a hypothesis about what may have caused
+        // https://gitlab.com/fdroid/fdroidclient/issues/1172
+        if (!apkPath.exists()) {
+            Log.i(TAG, "Was going to check " + apkPath + ", but it has since been removed from the cache.");
+            return null;
+        }
+
         PackageInfo downloadedInfo = getPackageManager().getPackageArchiveInfo(apkPath.getAbsolutePath(), PackageManager.GET_GIDS);
         if (downloadedInfo == null) {
             Log.i(TAG, "Skipping " + apkPath + " because PackageManager was unable to read it.");
