@@ -16,7 +16,7 @@
     <color tools:ignore="UnusedResources" name="category_navigation">#94D6FD</color>
     <color tools:ignore="UnusedResources" name="category_phone_sms">#F3CFC0</color>
     <color tools:ignore="UnusedResources" name="category_reading">#D6A07A</color>
-    <color tools:ignore="UnusedResources" name="category_science_education">#F4F4EC</color>
+    <color tools:ignore="UnusedResources" name="category_science_education">#FFAD08</color>
     <color tools:ignore="UnusedResources" name="category_security">#FFD15F</color>
     <color tools:ignore="UnusedResources" name="category_sports_health">#ADCEDE</color>
     <color tools:ignore="UnusedResources" name="category_system">#D3DB77</color>
