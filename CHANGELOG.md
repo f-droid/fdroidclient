@@ -1,3 +1,9 @@
+### 1.0-alpha5 (2017-10-04)
+
+* fix bug that prevented translations from showing up on Android >= 7.0 (#987)
+
+* fix db upgrade crash from 1.0-alpha3 --> 1.0-alpha4 (#1181)
+
 ### 1.0-alpha4 (2017-09-27)
 
 * added swipe gestures to the Updates tab
