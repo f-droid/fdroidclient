@@ -481,4 +481,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的版本不相容於任何可用的版本。解除安裝該應用程式將能使您能夠查看和安裝相容的版本。這通常是透過 Google Play 或其它來源安裝的應用程式，如果它們是由不同的證書簽署時才會發生。</string>
 
     <string name="installed_app__file_corrupt">F-Droid 接收到 EIO 錯誤：%s 很可能已損壞！</string>
+    <string name="app_list__dismiss_app_update">忽略更新</string>
+    <string name="app_list__dismiss_vulnerable_app">忽略漏洞</string>
+    <string name="app_list__dismiss_downloading_app">已取消下載</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">我們發現了 %1$s 的一個漏洞。我們建議立即解除安裝此應用程式。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">我們發現了 %1$s 的一個漏洞。我們建議立即升級到最新版本。</string>
+    <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
+
     </resources>

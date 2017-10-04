@@ -498,4 +498,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
 
     <string name="installed_app__file_corrupt">F-Droid renkontis EIO-eraron: %s probable estas difektita!</string>
+    <string name="app_list__dismiss_app_update">Ĝisdatigo ignorata</string>
+    <string name="app_list__dismiss_vulnerable_app">Sekurec-fliko ignorata</string>
+    <string name="app_list__dismiss_downloading_app">Elŝuto nuligita</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi ĝin al la plej nova versio.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
+
     </resources>

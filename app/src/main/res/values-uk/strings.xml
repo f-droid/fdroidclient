@@ -512,4 +512,12 @@
 
     <string name="status_inserting_x_apps">Збереження деталей застосунку (%1$d/%2$d) з %3$s</string>
     <string name="installed_app__file_corrupt">F-Droid отримав помилку EIO: %s ймовірно, зіпсований!</string>
+    <string name="app_list__dismiss_app_update">Оновлення ігнорується</string>
+    <string name="app_list__dismiss_vulnerable_app">Вразливість ігнорується</string>
+    <string name="app_list__dismiss_downloading_app">Завантаження скасовано</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Ми виявили вразливість з %1$s. Ми рекомендуємо видалити цей застосунок негайно.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ми виявили вразливість з %1$s. Ми рекомендуємо оновити на найновішу версію негайно.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ігнорувати</string>
+
     </resources>

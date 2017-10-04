@@ -195,9 +195,9 @@
     <string name="enable_proxy_title">Kasuta HTTP puhverserverit</string>
     <string name="enable_proxy_summary">Konfigureeri HTTP puhverserver kõigile võrgupäringutele</string>
     <string name="proxy_host">Puhverserveri nimi</string>
-    <string name="proxy_host_summary">Konfigureeri oma puhverserveri nimi (nt. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Sinu puhverserveri nimi (nt 127.0.0.1)</string>
     <string name="proxy_port">Puhverserver port</string>
-    <string name="proxy_port_summary">Konfigureeri oma puhverserveri pordi number (nt. 8118)</string>
+    <string name="proxy_port_summary">Sinu puhverserveri pordi number (nt 8118)</string>
 
     <string name="status_download">Alla laadimine\n%2$s / %3$s (%4$d%%) masinast\n%1$s</string>
 
@@ -323,7 +323,7 @@
     <string name="perm_costs_money">See võib olla tasuline</string>
     <string name="uninstall_update_confirm">Kas sa soovid asendada selle rakenduse tootja versiooniga?</string>
     <string name="uninstall_confirm">Kas soovid eemaldada selle rakenduse?</string>
-    <string name="download_error">Allalaadimine nurjus</string>
+    <string name="download_error">Allalaadimine nurjus!</string>
     <string name="download_pending">Oodatakse allalaadimise algamist…</string>
     <string name="install_error_notify_title">Viga %s paigaldamisel</string>
     <string name="uninstall_error_notify_title">Viga %s eemaldamisel</string>
@@ -366,4 +366,33 @@
     <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
         Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?
     </string>
-</resources>
+<string name="main_menu__latest_apps">Uusimad</string>
+    <string name="main_menu__categories">Kategooriad</string>
+    <string name="main_menu__swap_nearby">Lähedal</string>
+
+    <string name="preference_manage_installed_apps">Halda paigaldatud rakendusi</string>
+
+
+    <string name="notification_action_update">Värskenda</string>
+    <string name="notification_action_cancel">Loobu</string>
+    <string name="notification_action_install">Paigalda</string>
+
+    <string name="app_list__name__downloading_in_progress">Allalaadimine %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s paigaldatud</string>
+    <string name="updates__tts__download_app">Laadi alla</string>
+    <string name="warning_no_internet">Ei saa värskendada! Kas oled ühendatud Internetti?</string>
+    <string name="notification_title_single_update_available">Värskendus on saadaval</string>
+    <string name="notification_title_summary_install_error">Paigaldamine nurjus</string>
+    <string name="by_author_format">autor: %s</string>
+    <string name="keep_install_history">Säilita paigalduse ajalugu</string>
+    <string name="keep_install_history_summary">Salvesta F-Droidis kõik paigaldamised ja eemaldamised</string>
+    <string name="force_old_index">Sunni vana indeksi vorming</string>
+    <string name="force_old_index_summary">Kasuta vigade või ühilduvusprobleemide ilmnemisel rakenduste XML indeksit</string>
+    <string name="update_auto_install">Paigalda värskendused automaatselt</string>
+    <string name="update_auto_install_summary">Laadi alla ja paigalda rakenduste värskendused taustal</string>
+    <string name="app_details_donate_prompt_unknown_author">Osta %1$s  arendajatele kohvi!</string>
+    <string name="app_details_donate_prompt">%1$s loojad on %2$s. Osta neile kohvi!</string>
+
+    <string name="app_details__incompatible_mismatched_signature">Signatuur erineb paigaldatud versiooni omast</string>
+    <string name="app_details__no_versions__show_incompat_versions">Mitteühilduvate versioonide siin kuvamiseks lülita sisse \"%1$s\".</string>
+    </resources>

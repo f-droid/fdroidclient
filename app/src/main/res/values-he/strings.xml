@@ -503,4 +503,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
 
     <string name="installed_app__file_corrupt">התקבלה שגיאת קלט/פלט ב־F-Droid: כנראה כי קיימת תקלה מול %s!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. אנו ממליצים להסיר את היישומון הזה מיידית.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">מצאנו חולשה אצל %1$s. אנו ממליצים לשדרג את היישומון הזה לגרסה החדשה ביותר מיידית.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">התעלמות</string>
+
+    <string name="app_list__dismiss_app_update">העדכון בהתעלמות</string>
+    <string name="app_list__dismiss_vulnerable_app">החולשה בהתעלמות</string>
+    <string name="app_list__dismiss_downloading_app">ההורדה בוטלה</string>
+
     </resources>

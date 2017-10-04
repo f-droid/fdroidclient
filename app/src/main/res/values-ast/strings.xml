@@ -510,4 +510,13 @@
     <string name="app_details__no_versions__none_compatible_with_device">Nun hai nenguna versión compatible col preséu</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada nun ye compatible con nenguna versión disponible. Desinstalando esta aplicación podrás ver ya instalar versiones compatibles. De vezu, esto asocede coles aplicaciones instalaes con Google Play o dende otres fontes, si tán roblaes con un certificáu distintu.</string>
 
+    <string name="app_list__dismiss_app_update">Anovamientu inoráu</string>
+    <string name="app_list__dismiss_vulnerable_app">Inseguridá inorada</string>
+    <string name="app_list__dismiss_downloading_app">Descarga encaboxada</string>
+
+    <string name="installed_app__file_corrupt">F-Droid recibió un error EIO: ¡probablemente %s ta corrompíu!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Alcontramos una inseguridá con %1$s. Recomendamos desinstalar esta app nel intre.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Alcontramos una inseguridá con %1$s. Recomendamos actualizar a la versión más nueva nel intre.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Inorar</string>
+
     </resources>

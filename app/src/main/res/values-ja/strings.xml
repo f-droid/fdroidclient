@@ -471,4 +471,13 @@
     <string name="app_details__no_versions__none_compatible_with_device">ﾃﾞﾊﾞｲｽと互換性のあるﾊﾞｰｼﾞｮﾝがありません</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">ｲﾝｽﾄｰﾙされているﾊﾞｰｼﾞｮﾝは、利用可能なﾊﾞｰｼﾞｮﾝと互換性がありません。ｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙすると、互換性のあるﾊﾞｰｼﾞｮﾝを表示したりｲﾝｽﾄｰﾙすることができます。これは多くの場合 Google Play やその他のｿｰｽからｲﾝｽﾄｰﾙされたｱﾌﾟﾘが、別の証明書で署名されている場合に発生します。</string>
 
+    <string name="app_list__dismiss_app_update">更新を無視しました</string>
+    <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
+    <string name="app_list__dismiss_downloading_app">ﾀﾞｳﾝﾛｰﾄﾞをｷｬﾝｾﾙしました</string>
+
+    <string name="installed_app__file_corrupt">F-DroidがEIOｴﾗｰを受信しました: %s は壊れている可能性があります!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s で脆弱性を発見しました。すぐにこのｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙすることをお勧めします。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s で脆弱性を発見しました。すぐに最新ﾊﾞｰｼﾞｮﾝへのｱｯﾌﾟｸﾞﾚｰﾄﾞをお勧めします。</string>
+    <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
+
     </resources>
