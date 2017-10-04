@@ -346,4 +346,58 @@
     <string name="installed_apps__activity_title">Telepített Alkalmazások</string>
     <string name="menu_video">Videó</string>
     <string name="preference_category__my_apps">Az én-m Apps</string>
+    <string name="app_list__name__downloading_in_progress">%1$s letöltése</string>
+    <string name="app_list__name__successfully_installed">%1$s telepítve</string>
+    <string name="warning_no_internet">Nem sikerült a frissítés. Csatlakozva vagy az internethez?</string>
+    <string name="not_on_same_wifi">Az eszközöd nem ugyanazon a Wi-Fi-n van, mint a hozzáadott helyi tároló! Próbálj ehhez a hálózathoz csatlakozni: %s</string>
+    <string name="notification_title_single_update_available">Frissítés elérhető</string>
+    <string name="notification_title_summary_install_error">A telepítés sikertelen</string>
+    <string name="force_old_index_summary">Abban az esetben, ha bugok, vagy kompatibilitási problémák vannak, használd az XML app indexet</string>
+    <string name="app_details_donate_prompt_unknown_author">Fizess egy kávét a %1$s fejlesztőinek!</string>
+    <string name="app_details__no_versions__show_incompat_versions">Az inkompatibilis verziók mutatásához engedélyezd a \"%1$s\" beállítást.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Nem található kompatibilis aláírással rendelkező verzió</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nem található az eszközöddel kompatibilis verzió</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">A telepített verzió nem kompatibilis egyetlen elérhető verzióval sem. Az alkalmazás törlése lehetőséget ad kompatibilis verziók megtekintésére, és telepítésére. Ez gyakran olyan alkalmazásoknál fordul elő, amik a Google Play áruházból, vagy egyéb forrásból vannak telepítve, és egy másik bizonyítvánnyal vannak hitelesítve.</string>
+
+    <string name="app_permission_storage">Az F-Droidnak tárhely engedéllyel kell rendelkeznie, hogy erre a tárhelyre telepíthessen. Engedélyezd a következő ablakban a telepítés folytatásához.</string>
+
+    <string name="app_list_download_ready">Letöltve, készen áll a telepítésre</string>
+    <string name="app_list__dismiss_app_update">Frissítés figyelmen kívül hagyva</string>
+    <string name="app_list__dismiss_vulnerable_app">Sebezhetőség figyelmen kívül hagyva</string>
+    <string name="app_list__dismiss_downloading_app">Letöltés megszakítva</string>
+
+    <string name="installed_app__updates_ignored">Frissítések figyelmen kívül hagyva</string>
+    <string name="updates__tts__download_updates_for_all_apps">Minden frissítés letöltése</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Egy sebezhetőséget találtunk %1$s-ben. Ajánlott az alkalmazás azonnali eltávolítása.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezthetőséget találtunk a %1$s-ban. Azonnali frissítés ajánlott a legújabb verzióra.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Figyelmen kívül hagy</string>
+
+    <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
+    <string name="updates__show_updateable_apps">Alkalmazások mutatása</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Frissítés letöltése a %1$d alkalmazáshoz.</item>
+	<item quantity="other">Frissítés letöltése a %1$d alkalmazásokhoz.</item>
+</plurals>
+
+    <string name="clear_search">Keresés törlése</string>
+
+    <string name="menu_license">Licensz: %s</string>
+    <string name="latest__empty_state__no_recent_apps">Nincs legutóbbi alkalmazás</string>
+    <string name="latest__empty_state__never_updated">Amint az alkalmazáslista frissítve van, a legújabb alkalmazások itt látszódnak</string>
+    <string name="latest__empty_state__no_enabled_repos">Amint engedélyezel egy tárolót, és frissíted, a legújabb alkalmazások itt fognak megjelenni</string>
+
+    <string name="categories__empty_state__no_categories">Nincsenek megjelenítendő kategóriák</string>
+
+    <string name="details_new_in_version">Új verzió a %s-ban</string>
+
+    <string name="antifeatureswarning">Ennek az alkalmazásnak vannak előnytelen tulajdonságai.</string>
+    <string name="antifeatures">Előnytelen tulajdonságok</string>
+    <string name="touch_to_configure_local_repo">Érintsd meg a részletek megtekintéséhez, és a másokkal történő alkalmazáscsere lehetővé tevéséhez.</string>
+    <string name="linking_apks">APK fájlok tárolóhoz csatolása…</string>
+    <string name="download_404">A kért fájl nem található.</string>
+    <string name="unsigned_description">Ez azt jelenti, hogy az alkalmazások listája nem ellenőrizhető. Óvatosnak kell lenned a hitelesítetlen indexekből letöltött alkalmazásokkal.</string>
+    <string name="repo_added">A %1$s F-Droid tároló mentve.</string>
+    <string name="up_to_maxsdk">%s-ig</string>
+    <string name="minsdk_up_to_maxsdk">%1$s-től %2$s-ig</string>
     </resources>

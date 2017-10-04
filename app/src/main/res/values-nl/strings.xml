@@ -35,7 +35,7 @@
     <string name="no">Nee</string>
     <string name="repo_add_title">Nieuwe bron toevoegen</string>
     <string name="repo_add_add">Toevoegen</string>
-    <string name="cancel">Annuleer</string>
+    <string name="cancel">Annuleren</string>
     <string name="enable">Inschakelen</string>
     <string name="add_key">Sleutel toevoegen</string>
     <string name="overwrite">Overschrijven</string>
@@ -374,7 +374,7 @@
     <string name="installed_apps__activity_title">Geïnstalleerde apps</string>
     <string name="installed_app__updates_ignored">Updates genegeerd</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates genegeerd voor versie %1$s</string>
-    <string name="updates__tts__download_app">Download</string>
+    <string name="updates__tts__download_app">Downloaden</string>
     <string name="updates__tts__download_updates_for_all_apps">Alle updates downloaden</string>
 
     <string name="updates__hide_updateable_apps">Apps verbergen</string>
@@ -494,4 +494,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna je ze kan installeren. Dit gebeurt vaak wanneer je apps installeert via Google Play of andere bronnen, en deze door een ander certificaat zijn ondertekend.</string>
 
     <string name="installed_app__file_corrupt">F-Droid ontving een EIO-fout: %s is waarschijnlijk beschadigd!</string>
+    <string name="app_list__dismiss_app_update">Update genegeerd</string>
+    <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
+    <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Er zit een kwetsbaarheid in %1$s. We raden aan deze app onmiddellijk te verwijderen.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Er zit een kwetsbaarheid in %1$s. We raden aan onmiddellijk bij te werken naar de meest recente versie.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Negeren</string>
+
     </resources>

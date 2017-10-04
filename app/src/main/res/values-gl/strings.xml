@@ -356,4 +356,155 @@
     <string name="app_list__name__downloading_in_progress">Baixando %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
     <string name="updates__tts__download_app">Descargar</string>
+    <string name="warning_no_internet">Non é posíbel anovar. Estás conectado a Internet?</string>
+    <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
+    <string name="crash_dialog_text">Ocorreu un erro inesperado, forzando a parada do aplicativo. Gostaria de enviar un e-mail cos detalles para axudar a correxir o problema?</string>
+    <string name="notification_title_single_update_available">Anovación disponíbel</string>
+    <string name="notification_title_summary_install_error">Instalación falida</string>
+    <string name="by_author_format">por %s</string>
+    <string name="keep_install_history">Manter o historial de instalacións</string>
+    <string name="keep_install_history_summary">Gardar un rexistro de todas as instalacións e desinstalacións en F-Droid</string>
+    <string name="force_old_index">Forzar o antigo formato de índice</string>
+    <string name="force_old_index_summary">En caso de erros ou incompatibilidades, utilizar o índice XML</string>
+    <string name="update_auto_download">Obter anovacións automáticamente</string>
+    <string name="update_auto_download_summary">As anovacións descárganse automaticamente e será notificado para as instalar</string>
+    <string name="update_auto_install">Instalar as anovacións automaticamente</string>
+    <string name="update_auto_install_summary">Baixar e instalar anovacións en segundo plano</string>
+    <string name="system_installer">Extensión privilexiada</string>
+    <string name="local_repo_name_summary">O título anunciado do seu repositorio local: %s</string>
+    <string name="login_title">Requírese autenticación</string>
+    <string name="login_name">Nome de usuario</string>
+    <string name="login_password">Contrasinal</string>
+    <string name="repo_edit_credentials">Mudar contrasinal</string>
+    <string name="repo_error_empty_username">Nome de usuario baleiro, credenciais non alteradas</string>
+
+    <string name="app_details_donate_prompt_unknown_author">Convida a un café aos desenvolvedores do %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s foi creado por %2$s. Págalles un café!</string>
+
+    <string name="app_details__incompatible_mismatched_signature">A sinatura difire da versión actualmente instalada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Para amosar versións incompatibeis aquí de todos modos, activa a opción \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Non hai versións con sinatura compatíbel</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Non hai versión compatibeis co dispositivo</string>
+    <string name="about_license">Licenza</string>
+
+    <string name="app_version_x_available">Versión %1$s disponíbel</string>
+    <string name="app_version_x_installed">Versión %1$s</string>
+    <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
+    <string name="app__newly_added">Nova</string>
+    <string name="app__tts__cancel_download">Cancelar descarga</string>
+    <string name="app__install_downloaded_update">Anovar</string>
+    <string name="app_installed_media">Ficheiro instalado en %s</string>
+    <string name="app_list_download_ready">Descargado, listo para instalar</string>
+    <string name="app_list__dismiss_app_update">Anovación ignorada</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
+    <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
+
+    <string name="installed_apps__activity_title">Aplicacións instaladas</string>
+    <string name="installed_app__updates_ignored">Anovacións ignoradas</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Anovacións ignoradas para a versión %1$s</string>
+    <string name="installed_app__file_corrupt">F-Droid recibiu un erro EIO: ¡probablemente %s está corrupto!</string>
+    <string name="updates__tts__download_updates_for_all_apps">Descargar todas as anovacións</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendamos desinstalar esta app inmediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Atopamos unha vulnerabilidade en %1$s. Recomendamos actualizar á nova versión inmediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
+
+    <string name="updates__hide_updateable_apps">Ocultar apps</string>
+    <string name="updates__show_updateable_apps">Amosar apps</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Baixar anovación para %1$d app.</item>
+	<item quantity="other">Baixar anovacións para %1$d apps.</item>
+</plurals>
+
+    <string name="versions">Versións</string>
+    <string name="clear_search">Limpar a busca</string>
+
+    <string name="repo_provider">Repositorio: %s</string>
+
+    <string name="repositories_summary">Adicionar máis fontes de aplicativos</string>
+    <string name="menu_email">E-mail do autor</string>
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Licenza: %s</string>
+    <string name="latest__empty_state__no_recent_apps">Non se atoparon aplicativos recentes</string>
+    <string name="categories__empty_state__no_categories">Non hai categorías para amosar</string>
+
+    <string name="preference_category__my_apps">Miñas apps</string>
+    <string name="details_new_in_version">Novidades da versión %s</string>
+
+    <string name="antifeatureswarning">Este aplicativo ten características que poderían non gustar.</string>
+    <string name="antifeatures">Características indesexadas</string>
+    <string name="antinonfreeassetslist">Esta aplicación contén recursos non libres</string>
+
+    <string name="hide_anti_feature_apps">Sombrear aplicacións con características indesexadas</string>
+    <string name="hide_anti_feature_apps_on">Sombrear aplicacións que requiran características indesexadas</string>
+    <string name="useTor">Usar Tor</string>
+    <string name="useTorSummary">Baixar aplicacións através da rede Tor para manter a privacidade</string>
+    <string name="download_404">O ficheiro solicitado non foi atopado.</string>
+    <string name="status_inserting_x_apps">Gardando detalles do aplicativo (%1$d/%2$d) de %3$s</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Ver %d</item>
+	<item quantity="other">Ver todas as %d</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet? Baixa aplicativos de persoas próximas!</string>
+    <string name="nearby_splash__find_people_button">Atopar persoas próximas a min</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisan do %1$s para uso próximo.</string>
+
+    <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
+    <string name="download_pending">Á espera de iniciar a descarga…</string>
+    <string name="install_error_notify_title">Erro ao instalar %s</string>
+    <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
+
+
+    <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
+
+    <string name="keep_hour">1 hora</string>
+    <string name="keep_day">1 día</string>
+    <string name="keep_week">1 semana</string>
+    <string name="keep_month">1 mes</string>
+    <string name="keep_year">1 ano</string>
+    <string name="keep_forever">Para sempre</string>
+
+    <string name="crash_dialog_comment_prompt">Podes engadir informacións extras e comentarios aquí:</string>
+
+    <plurals name="notification_summary_more">
+	<item quantity="one">máis +%1$d …</item>
+	<item quantity="other">máis +%1$d …</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">Preparado para anovar</string>
+    <string name="notification_title_single_ready_to_install_update">Anovación lista para instalar</string>
+    <string name="notification_title_single_install_error">Fallou a instalación</string>
+    <string name="notification_content_single_downloading">Baixando \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Baixando anovación para \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instalación correcta</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d anovación</item>
+	<item quantity="other">%1$d anovacións</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Aplicativo instalado</item>
+	<item quantity="other">%1$d Aplicativos instalados</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Anovación disponíbel</string>
+    <string name="notification_title_summary_downloading">Baixando…</string>
+    <string name="notification_title_summary_downloading_update">Baixando anovación…</string>
+    <string name="notification_title_summary_ready_to_install">Preparado para instalar</string>
+    <string name="notification_title_summary_ready_to_install_update">Anovación lista para instalar</string>
+    <string name="notification_title_summary_installing">Instalando</string>
+    <string name="notification_title_summary_installed">Instalada con éxito</string>
+    <string name="tts_category_name">Categoría %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ver %1$d aplicativo na categoría %2$s</item>
+	<item quantity="other">Ver todos os %1$d aplicativos da categoría %2$s</item>
+</plurals>
+
+    <string name="details_last_updated_today">Anovada hoxe</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Anovada %1$s día atrás</item>
+	<item quantity="other">Anovada %1$s días atrás</item>
+</plurals>
     </resources>

@@ -11,7 +11,7 @@
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="update_interval_zero">Inga automatiska applistuppdateringar</string>
     <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Uppdatera endast automatiskt på obegränsade nätverk som Wi-Fi</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
     <string name="system_installer">Privilegierad utökning</string>
@@ -22,7 +22,7 @@
     <string name="app_details">Detaljer för app</string>
     <string name="no_such_app">Hittade ingen sådan app.</string>
     <string name="about_title">Om F-Droid</string>
-    <string name="about_site">Hemsida</string>
+    <string name="about_site">Webbplats</string>
     <string name="about_mail">E-post</string>
     <string name="about_version">Version</string>
     <string name="app_installed">Installerad</string>
@@ -489,4 +489,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
 
     <string name="installed_app__file_corrupt">F-Droid mottog EIO-fel: %s är förmodligen korrupt!</string>
+    <string name="app_list__dismiss_app_update">Uppdatering ignorerad</string>
+    <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorerad</string>
+    <string name="app_list__dismiss_downloading_app">Hämtning avbruten</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi hittade en sårbarhet hos %1$s. Du rekommenderas avinstallera denna app omedelbart.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi hittade en sårbarhet hos %1$s. Du rekommenderas uppgradera till den nyaste versionen omedelbart.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorera</string>
+
     </resources>

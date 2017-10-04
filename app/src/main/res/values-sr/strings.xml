@@ -510,4 +510,13 @@
 
     <string name="download_404">Захтевани фајл није нађен.</string>
     <string name="status_inserting_x_apps">Уписујем детаље апликација (%1$d/%2$d) од %3$s</string>
+    <string name="app_list__dismiss_app_update">Надоградња игнорисана</string>
+    <string name="app_list__dismiss_vulnerable_app">Рањивост је занемарена</string>
+    <string name="app_list__dismiss_downloading_app">Преузимање отказано</string>
+
+    <string name="installed_app__file_corrupt">Ф-дроид је примио ЕУИ грешку: %s је вероватно покварена!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа уклоните апликацију.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа надоградите апликацију.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
+
     </resources>

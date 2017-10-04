@@ -524,4 +524,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Zainstalowana wersja nie jest kompatybilna z jakąkolwiek dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. To często zdarza się w przypadku aplikacji zainstalowanych ze Sklepu Play lub z innych źródeł, jeżeli są one podpisane innym kluczem.</string>
 
     <string name="installed_app__file_corrupt">F-Droid napotkał na błąd EIO: %s prawdopodobnie jest uszkodzony!</string>
+    <string name="app_list__dismiss_app_update">Ignorowana aktualizacja</string>
+    <string name="app_list__dismiss_vulnerable_app">Ignorowana łatka bezpieczeństwa</string>
+    <string name="app_list__dismiss_downloading_app">Anulowano pobieranie</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Znaleziono podatność bezpieczeństwa w %1$s. Zaleca się bezzwłocznie odinstalować tę aplikację.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Znaleziono podatność bezpieczeństwa w %1$s. Zaleca się bezzwłocznie zaktualizować aplikację do najnowszej wersji.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignoruj</string>
+
     </resources>

@@ -511,4 +511,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
 
     <string name="installed_app__file_corrupt">F-Droid empfing einen EIO-Fehler: Möglicherweise ist %s beschädigt!</string>
+    <string name="app_list__dismiss_app_update">Aktualisierung ignoriert</string>
+    <string name="app_list__dismiss_vulnerable_app">Sicherheitsbedenken ignoriert</string>
+    <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Bei %1$s wurden Sicherheitsrisiken festgestellt. Es wird empfohlen, diese App unverzüglich zu deinstallieren.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Bei %1$s wurden Sicherheitsrisiken festgestellt. Es wird die sofortige Aktualisierung zur neusten Version empfohlen.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorieren</string>
+
     </resources>
