@@ -315,7 +315,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addApkAntiFeatures(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 74) {
+        if (oldVersion >= 75) {
             return;
         }
 
