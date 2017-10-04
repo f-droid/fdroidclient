@@ -13,6 +13,7 @@ import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class CategoryProvider extends FDroidProvider {
@@ -40,7 +41,7 @@ public class CategoryProvider extends FDroidProvider {
 
         public static long ensureExists(Context context, String category) {
             // Check our in-memory cache to potentially prevent a trip to the database (and hence disk).
-            String lowerCaseCategory = category.toLowerCase();
+            String lowerCaseCategory = category.toLowerCase(Locale.ENGLISH);
             if (KNOWN_CATEGORIES.containsKey(lowerCaseCategory)) {
                 return KNOWN_CATEGORIES.get(lowerCaseCategory);
             }
