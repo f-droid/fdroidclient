@@ -443,9 +443,22 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
         Set<String> availableLocales = localized.keySet();
         Set<String> localesToUse = new LinkedHashSet<>();
+        if (availableLocales.contains(localeTag)) {
+            localesToUse.add(localeTag);
+        }
+        if (availableLocales.contains(languageTag)) {
+            localesToUse.add(languageTag);
+        }
         if (Build.VERSION.SDK_INT >= 24) {
             LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
-            for (String toUse : localeList.toLanguageTags().split(",")) {
+            String[] sortedLocaleList = localeList.toLanguageTags().split(",");
+            Arrays.sort(sortedLocaleList, new java.util.Comparator<String>() {
+                @Override
+                public int compare(String s1, String s2) {
+                    return s1.length() - s2.length();
+                }
+            });
+            for (String toUse : sortedLocaleList) {
                 localesToUse.add(toUse);
                 for (String l : availableLocales) {
                     if (l.equals(toUse.split("-")[0])) {
@@ -455,12 +468,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 }
             }
         } else {
-            if (availableLocales.contains(localeTag)) {
-                localesToUse.add(localeTag);
-            }
-            if (availableLocales.contains(languageTag)) {
-                localesToUse.add(languageTag);
-            }
             for (String l : availableLocales) {
                 if (l.startsWith(languageTag)) {
                     localesToUse.add(l);
@@ -506,6 +513,18 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
     }
 
+    /**
+     * Returns the right localized version of this entry, based on an immitation of
+     * the logic that Android/Java uses.  On Android >= 24, this can get the
+     * "Language Priority List", but it doesn't always seem to be properly sorted.
+     * So this method has to kind of fake it by using {@link Locale#getDefault()}
+     * as the first entry, then sorting the rest based on length (e.g. {@code de-AT}
+     * before {@code de}).
+     *
+     * @see LocaleList
+     * @see Locale#getDefault()
+     * @see java.util.Locale.LanguageRange
+     */
     private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
                                      Set<String> locales, String key) {
         try {
@@ -800,14 +819,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * Attempts to find the installed {@link Apk} from the database. If not found, will lookup the
      * {@link InstalledAppProvider} to find the details of the installed app and use that to
      * instantiate an {@link Apk} to be returned.
-     *
+     * <p>
      * Cases where an {@link Apk} will not be found in the database and for which we fall back to
      * the {@link InstalledAppProvider} include:
-     *  + System apps which are provided by a repository, but for which the version code bundled
-     *    with the system is not included in the repository.
-     *  + Regular apps from a repository, where the installed version is old enough that it is no
-     *    longer available in the repository.
-     *
+     * <li>System apps which are provided by a repository, but for which the version code bundled
+     * with the system is not included in the repository.</li>
+     * <li>Regular apps from a repository, where the installed version is old enough that it is no
+     * longer available in the repository.</li>
      */
     @Nullable
     public Apk getInstalledApk(Context context) {
@@ -1185,7 +1203,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * However, if the app is installed, then we override this and instead want to only encourage
      * the user to try and install versions with that signature (because thats all the OS will let
      * them do).
-     *
+     * <p>
      * Will return null for any {@link App} which represents media (instead of an apk) and thus
      * doesn't have a signer.
      */
