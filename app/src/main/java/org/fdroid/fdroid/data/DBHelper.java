@@ -208,7 +208,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 75;
+    protected static final int DB_VERSION = 76;
 
     private final Context context;
 
@@ -304,7 +304,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addIgnoreVulnPref(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 74) {
+        if (oldVersion >= 76) {
             return;
         }
 
@@ -315,7 +315,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addApkAntiFeatures(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 75) {
+        if (oldVersion >= 76) {
             return;
         }
 
