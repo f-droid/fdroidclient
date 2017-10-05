@@ -52,7 +52,6 @@ connected10:
         echo "read $log here:";
         (cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com) || true;
       done
-  allow_failure: true
 
 connected24:
   variables:
