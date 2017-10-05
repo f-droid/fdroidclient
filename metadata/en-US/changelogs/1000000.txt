@@ -1,0 +1,7 @@
+* Support installing media, OTA, ZIP, etc files
+
+* Fully support APKs signed by multiple signing keys
+
+* new Tibetan translation
+
+* Remove related apps and categories after disabling repo
