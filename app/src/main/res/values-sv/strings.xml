@@ -354,7 +354,7 @@
     <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
     <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
-    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
+    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till Internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till utvecklarna av %1$s!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
@@ -433,7 +433,7 @@
 	<item quantity="other">Uppdaterade för %1$d dagar sedan</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Inget Internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
     <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\".</string>
 
