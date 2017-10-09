@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, antes debe desinstalar a anterior. Por favor, fágao e ténteo de novo. (Ao desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
     <string name="installIncompatible">App incompatíbel co seu dispositivo. Instalar aínda así?</string>
     <string name="version">Versión</string>
-    <string name="cache_downloaded">Manter paquetes na caché</string>
+    <string name="cache_downloaded">Manter apps na caché</string>
     <string name="updates">Actualizacións</string>
     <string name="other">Outro</string>
     <string name="automatic_scan_wifi">Só mediante wifi</string>
@@ -11,9 +11,9 @@
     <string name="app_details">Detalles da ap</string>
     <string name="no_such_app">Non se atopou ese aplicativo.</string>
     <string name="about_title">Sobre F-Droid</string>
-    <string name="about_site">Sitio web:</string>
-    <string name="about_mail">Enderezo electrónico:</string>
-    <string name="about_version">Versión:</string>
+    <string name="about_site">Sitio web</string>
+    <string name="about_mail">Enderezo electrónico</string>
+    <string name="about_version">Versión</string>
     <string name="app_installed">Instalada</string>
     <string name="app_not_installed">Non instalada</string>
     <string name="added_on">Engadida a %s</string>
@@ -46,8 +46,8 @@
     <string name="antinonfreedeplist">Esta ap depende doutras aps non libres</string>
     <string name="display">Amosar</string>
     <string name="expert">Modo experto</string>
-    <string name="search_hint">Buscar aplicativos</string>
-    <string name="appcompatibility">Compatibilidade de aplicativos</string>
+    <string name="search_hint">Buscar apps</string>
+    <string name="appcompatibility">Compatibilidade da App</string>
     <string name="show_incompat_versions">Versións incompatíbeis</string>
     <string name="rooted">Ignorar Root</string>
     <string name="ignoreTouch">Ignorar a pantalla táctil</string>
@@ -55,9 +55,8 @@
         %2$s / %3$s (%4$d%%) desde
         %1$s
     </string>
-    <string name="status_connecting_to_repo">Conectándose con
-        %1$s
-    </string>
+    <string name="status_connecting_to_repo">Conectándose con 
+\n%1$s</string>
     <string name="no_permissions">Non se usan permisos.</string>
     <string name="no_handler_app">Non tes ningun aplicativo dispoñíbel que poida manexar %s.</string>
     <string name="theme">Tema</string>
@@ -67,7 +66,7 @@
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="unstable_updates">Actualizacións inestables</string>
     <string name="update_interval">Intervalo de actualización automática</string>
-    <string name="automatic_scan_wifi_on">Actualizar automáticamente o listado de apps só mediante Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Actualizar automáticamente só en redes con acceso ilimitado, como as Wi-Fi</string>
     <string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñibles</string>
     <string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar
         paquetes
@@ -76,7 +75,7 @@
     <string name="local_repo_name">Nome do teu repositorio local</string>
     <string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
 
-    <string name="about_source">Fonte:</string>
+    <string name="about_source">Código fonte</string>
     <string name="app_incompatible">Incompatibel</string>
     <string name="app_inst_known_source">Instalado (dende %s)</string>
     <string name="app_inst_unknown_source">Instalado (dende unha fonte descoñecida)</string>
@@ -131,11 +130,13 @@
     <string name="enable_proxy_title">Activar Proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar Proxy HTTP para tódalas peticións de rede</string>
     <string name="proxy_port">Porto do Proxy</string>
-    <string name="proxy_port_summary">Configura o porto do teu proxy (p.e. 8118)</string>
+    <string name="proxy_port_summary">Número de porto do seu proxy (p.e. 8118)</string>
 
-    <string name="status_download_unknown_size">Descargando\n%2$s dende\n%1$s</string>
+    <string name="status_download_unknown_size">Descargando
+\n%2$s desde
+\n%1$s</string>
     <string name="update_notification_title">Actualizando repositorios</string>
-    <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) dende %1$s</string>
+    <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
     <string name="repos_unchanged">Todos os repositorios están actualizados</string>
     <string name="all_other_repos_fine">Os demáis repositorios non crearon erros.</string>
     <string name="global_error_updating_repos">Error durante a actualización: %s</string>
@@ -175,10 +176,7 @@
     <string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_warning">Levará máis de 10 segundos.</string>
-    <string name="system_install_warning_lollipop">Levará máis de 10 segundos e o dispositivo será
-        <b>reiniciado</b>
-        a continuación.
-    </string>
+    <string name="system_install_warning_lollipop">Levará arredor de 10 segundos e o dispositivo será <b>reiniciado</b> a continuación.</string>
     <string name="system_uninstall">Desexas desinstalar F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
@@ -231,10 +229,8 @@
     <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
 
     <string name="proxy_host">Servidor Proxy</string>
-    <string name="proxy_host_summary">Configura o nome do proxy (p.e. 127.0.0.1)</string>
-    <string name="unsigned_description">Esto significa que o listado de aplicativos podería non ser verificado. Deberías
-        ter coidad cós aplicativos descargados dende fontes inseguras.
-    </string>
+    <string name="proxy_host_summary">Nome do seu proxy (p.e. 127.0.0.1)</string>
+    <string name="unsigned_description">Isto significa que o listado de apps podería non ser verificado. Deberías ter coidado cos aplicativos descargados desde índices sen asinar.</string>
     <string name="repo_not_yet_updated">Este repositorio todavía non se uitlizou. Terás que activalo para ver os
         aplicativos que ofrece.
     </string>
@@ -265,9 +261,7 @@
         pero non están dispoñibles dende F-Droid. Isto pode deberse a que necesitas actualizar os repositorios, ou éstes
         carecen dos teus aplicativos.
     </string>
-    <string name="empty_can_update_app_list">Todos os aplicativos están actualizados.\n\nEnhoraboa! Todos os teus
-        aplicativos están actualizados (ou os teus repositorios están anticuados).
-    </string>
+    <string name="empty_can_update_app_list">Parabéns! Todas as súas apps están actualizadas.</string>
 
     <string name="requesting_root_access_body">Pedindo acceso root…</string>
     <string name="root_access_denied_title">Acceso root denegado</string>
@@ -280,9 +274,9 @@
     <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantizados para a
         extensión! Por favor, crea unha incidencia!
     </string>
-    <string name="system_install_post_success">F-Droid Privileged Extension foi instalado correctamente</string>
+    <string name="system_install_post_success">A Extensión Privilexiada de F-Droid foi instalada</string>
     <string name="system_install_question">Desexas instalar F-Droid Privileged Extension?</string>
-    <string name="swap_nfc_description">Se o teu amigo ten F-Droid e o NFC activado, achegade os dispositivos.</string>
+    <string name="swap_nfc_description">Se o seu amigo ten F-Droid e o NFC activado, achegade os dispositivos.</string>
     <string name="swap_join_same_wifi">Únete á mesma rede Wi-Fi que o teu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, asegúrate de estar na mesma rede. Se non
         tes acceso á mesma rede, un de vos pode crear un punto de acceso Wi-Fi.
@@ -308,40 +302,30 @@
     <string name="swap_cant_send_no_bluetooth">Non se pode enviar, porque o Bluetooth non está dispoñible neste
         dispositivo.
     </string>
-    <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o
-        intercambio.
-    </string>
+    <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio!</string>
     <string name="swap_not_enabled">Intercambio non dispoñible</string>
     <string name="swap_not_enabled_description">Antes do intercambio, o teu dispositivo debe estar visible.</string>
 
-    <string name="install_confirm">Desexas instalar este aplicativo? Terá acceso a:</string>
-    <string name="install_confirm_update">Desexas instalar unha actualización de este aplicativo? Os teus datos
-        existentes non se perderán. A actualización require acceso a:
-    </string>
+    <string name="install_confirm">require acceso a</string>
+    <string name="install_confirm_update">Desexas instalar unha actualización deste aplicativo existente? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
     <string name="install_confirm_update_system">Desexas instalar unha actualización para este aplicativo do sistema? Os
         teus datos existentes non se perderán. A actualización require acceso a:
     </string>
-    <string name="install_confirm_update_no_perms">Desexas instalar unha actualización de este aplicativo? Os teus datos
-        existentes non se perderán. A actualización non require privilexios especiais.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Desexas instalar unha actualización para este aplicativo do
-        sistema? Os teus datos existentes non se perderán. A actualización non require privilexios especiais.
-    </string>
-    <string name="download_error">Descarga incorrecta</string>
+    <string name="install_confirm_update_no_perms">Desexas instalar unha actualización de este aplicativo existente? Os teus datos existentes non se perderán. A actualización non require privilexios especiais.</string>
+    <string name="install_confirm_update_system_no_perms">Desexas instalar unha actualización para este aplicativo do sistema? Os teus datos existentes non se perderán.  Non require privilexios especiais.</string>
+    <string name="download_error">Descarga falida!</string>
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="repo_exists_add_fingerprint">Este repositorio xa está instalado, engadirase información adicional
         sobre a chave.
     </string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension instalouse correctamente. Esto
-        permite á F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.
-    </string>
+    <string name="system_install_post_success_message">A Extensión Privilexiada de F-Droid Privileged Extension está instalada. Isto permite ao F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
     <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de
         instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros
         de F-Droid para máis información.
     </string>
-<string name="menu_settings">Axustes</string>
+<string name="menu_settings">Preferencias</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Veciñanza</string>
@@ -357,7 +341,7 @@
     <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
     <string name="updates__tts__download_app">Descargar</string>
     <string name="warning_no_internet">Non é posíbel anovar. Estás conectado a Internet?</string>
-    <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
+    <string name="crash_dialog_title">F-Droid quebrou</string>
     <string name="crash_dialog_text">Ocorreu un erro inesperado, forzando a parada do aplicativo. Gostaria de enviar un e-mail cos detalles para axudar a correxir o problema?</string>
     <string name="notification_title_single_update_available">Anovación disponíbel</string>
     <string name="notification_title_summary_install_error">Instalación falida</string>
@@ -375,8 +359,8 @@
     <string name="login_title">Requírese autenticación</string>
     <string name="login_name">Nome de usuario</string>
     <string name="login_password">Contrasinal</string>
-    <string name="repo_edit_credentials">Mudar contrasinal</string>
-    <string name="repo_error_empty_username">Nome de usuario baleiro, credenciais non alteradas</string>
+    <string name="repo_edit_credentials">Cambiar contrasinal</string>
+    <string name="repo_error_empty_username">Nome de usuario baldeiro, non se cambiaron as credenciais</string>
 
     <string name="app_details_donate_prompt_unknown_author">Convida a un café aos desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s foi creado por %2$s. Págalles un café!</string>
@@ -422,7 +406,7 @@
     <string name="repo_provider">Repositorio: %s</string>
 
     <string name="repositories_summary">Adicionar máis fontes de aplicativos</string>
-    <string name="menu_email">E-mail do autor</string>
+    <string name="menu_email">Enderezo electrónico do autor</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Licenza: %s</string>
     <string name="latest__empty_state__no_recent_apps">Non se atoparon aplicativos recentes</string>
@@ -433,12 +417,12 @@
 
     <string name="antifeatureswarning">Este aplicativo ten características que poderían non gustar.</string>
     <string name="antifeatures">Características indesexadas</string>
-    <string name="antinonfreeassetslist">Esta aplicación contén recursos non libres</string>
+    <string name="antinonfreeassetslist">Este app contén elementos non-libres</string>
 
     <string name="hide_anti_feature_apps">Sombrear aplicacións con características indesexadas</string>
     <string name="hide_anti_feature_apps_on">Sombrear aplicacións que requiran características indesexadas</string>
-    <string name="useTor">Usar Tor</string>
-    <string name="useTorSummary">Baixar aplicacións através da rede Tor para manter a privacidade</string>
+    <string name="useTor">Utilice Tor</string>
+    <string name="useTorSummary">Forzar a descarga a través de Tor para maior intimidade</string>
     <string name="download_404">O ficheiro solicitado non foi atopado.</string>
     <string name="status_inserting_x_apps">Gardando detalles do aplicativo (%1$d/%2$d) de %3$s</string>
     <plurals name="button_view_all_apps_in_category">
@@ -450,8 +434,8 @@
     <string name="nearby_splash__find_people_button">Atopar persoas próximas a min</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisan do %1$s para uso próximo.</string>
 
-    <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
-    <string name="download_pending">Á espera de iniciar a descarga…</string>
+    <string name="swap_stopping_wifi">Detendo o Wi-Fi...</string>
+    <string name="download_pending">Agardando para iniciar a descarga...</string>
     <string name="install_error_notify_title">Erro ao instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
 
@@ -467,7 +451,7 @@
     <string name="keep_year">1 ano</string>
     <string name="keep_forever">Para sempre</string>
 
-    <string name="crash_dialog_comment_prompt">Podes engadir informacións extras e comentarios aquí:</string>
+    <string name="crash_dialog_comment_prompt">Pode engadir información adicional e comentarios aquí:</string>
 
     <plurals name="notification_summary_more">
 	<item quantity="one">máis +%1$d …</item>
@@ -507,4 +491,28 @@
 	<item quantity="one">Anovada %1$s día atrás</item>
 	<item quantity="other">Anovada %1$s días atrás</item>
 </plurals>
+    <string name="app_details__no_versions__explain_incompatible_signatures">A versión instalada non é compatíbel con ningunha das versións dispoñibeis. Desinstalar a aplicación permitiralle ver e instalar as versións compatibeis. Isto acontece habitualmente con apps instaladas através de Google Play ou outras fontes, se foron asinadas cun certificado diferente.</string>
+
+    <string name="app_permission_storage">O F-Droid precisa permiso para acceder ao almacenamento. Por favor conceda ese permiso na seguinte pantalla para continuar coa instalación.</string>
+
+    <string name="latest__empty_state__never_updated">Unha vez que a lista de aplicacións estiver actualizada, as aplicacións máis recentes serán amosadas aquí</string>
+    <string name="latest__empty_state__no_enabled_repos">Unha vez que habilite e actualice un repositorio, as aplicacións máis recentes serán amosadas aquí</string>
+
+    <string name="empty_search_available_app_list">Nengún aplicativo coincidente disponíbel.</string>
+
+    <string name="system_install_not_supported">Polo de agora non é posíbel instalar a Extensión Privilexiada de F-Droid en sistemas Android &gt; 5.1.</string>
+
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Actualizado hai %1$d semana</item>
+	<item quantity="other">Actualizado hai %1$d semanas</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Actualizado hai %1$d mes</item>
+	<item quantity="other">Actualizado hai %1$d meses</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Actualizado hai %1$d ano</item>
+	<item quantity="other">Actualizado hai %1$d anos</item>
+</plurals>
+<string name="status_inserting_apps">Gardando os detalles das apps</string>
     </resources>
