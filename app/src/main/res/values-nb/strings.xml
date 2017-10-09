@@ -511,4 +511,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerte versjonen er ikke kompatibel med noen tilgjengelig versjoner. Å avinstallere programmet vil la deg vise og installere kompatible versjoner. Dette skjer ofte når programmer er installert via Google Play eller fra andre kilder, hvis de er signert med et annet sertifikat.</string>
 
     <string name="installed_app__file_corrupt">F-Droid støtte på en EIO-feil: %s er antagelig skadet!</string>
+    <string name="app_list__dismiss_app_update">Oppdatering oversett</string>
+    <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorert</string>
+    <string name="app_list__dismiss_downloading_app">Nedlasting avbrutt</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fant en sårbarhet i %1$s. Det anbefales å avinstallere dette programmet umiddelbart.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Det er funnet en sårbarhet i %1$s. Det anbefales å hente den nyeste versjonen umiddelbart.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
+
     </resources>

@@ -395,4 +395,120 @@
 
     <string name="app_details__incompatible_mismatched_signature">Signatuur erineb paigaldatud versiooni omast</string>
     <string name="app_details__no_versions__show_incompat_versions">Mitteühilduvate versioonide siin kuvamiseks lülita sisse \"%1$s\".</string>
-    </resources>
+    <string name="app_details__no_versions__no_compatible_signatures">Ühilduvate signatuuridega versioone ei ole</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Seadmega ühilduvaid versioone ei ole</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Paigaldatud versioon ei ühildu mitte ühegi kättesaadava versiooniga. Rakenduse eemaldamine lubab sul vaadata ja paigaldada ühilduvaid versioone. Seda juhtub tihti rakendustega, mis on paigaldatud Google Playst või teistest allikatest, kui nad on signeeritud erineva sertifikaadiga.</string>
+
+    <string name="app_version_x_available">Versioon %1$s on saadaval</string>
+    <string name="app_version_x_installed">Versioon %1$s</string>
+    <string name="app_recommended_version_installed">Versioon %1$s (soovitatav)</string>
+    <string name="app__newly_added">Uus</string>
+    <string name="app__tts__cancel_download">Tühista allalaadimine</string>
+    <string name="app__install_downloaded_update">Värskenda</string>
+    <string name="app_installed_media">Fail paigaldati asukohta %s</string>
+    <string name="app_permission_storage">F-Droid vajab sellele seadmele paigaldamisel salvestusõigust. Palun luba see järgmisel ekraanil, et jätkata paigaldust.</string>
+
+    <string name="app_list_download_ready">Alla laetud, valmis paigaldamiseks</string>
+    <string name="app_list__dismiss_app_update">Värskendust ignoreeriti</string>
+    <string name="app_list__dismiss_vulnerable_app">Haavatavust ignoreeriti</string>
+    <string name="app_list__dismiss_downloading_app">Allalaadimine tühistatud</string>
+
+    <string name="installed_apps__activity_title">Paigaldatud rakendused</string>
+    <string name="installed_app__updates_ignored">Värskendusi ignoreeriti</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Versiooni %1$s värskendust ignoreeriti</string>
+    <string name="installed_app__file_corrupt">F-Droid sai EIO vea: %s on ilmselt rikutud!</string>
+    <string name="updates__tts__download_updates_for_all_apps">Laadi alla kõik värskendused</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s sees leiti haavatavus. Soovitatav on see rakendus koheselt eemaldada.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s sees leiti haavatavus. Soovitatav on värskendada koheselt see rakendus uusimale versioonile.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignoreeri</string>
+
+    <string name="updates__hide_updateable_apps">Peida rakendused</string>
+    <string name="updates__show_updateable_apps">Kuva rakendused</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Laadi alla %1$d rakenduse värskendus.</item>
+	<item quantity="other">Laadi alla %1$d rakenduse värskendus.</item>
+</plurals>
+
+    <string name="versions">Versioonid</string>
+    <string name="clear_search">Tühjenda otsing</string>
+
+    <string name="repositories_summary">Lisa täiendavaid rakenduste allikaid</string>
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Litsents: %s</string>
+    <string name="latest__empty_state__no_recent_apps">Hiljutisi rakendusi ei leitud</string>
+    <string name="latest__empty_state__never_updated">Kui su rakenduste loend on värskendatud, kuvatakse siia uusimad rakendused</string>
+    <string name="latest__empty_state__no_enabled_repos">Repositooriumi lubamise ja värskendamise järel peaksid siia kuvatama hiljutised rakendused</string>
+
+    <string name="categories__empty_state__no_categories">Kuvamiseks kategooriaid ei ole</string>
+
+    <string name="preference_category__my_apps">Minu rakendused</string>
+    <string name="details_new_in_version">Uus versioonis %s</string>
+
+    <string name="antifeatureswarning">Sellel rakendusel on funktsioone, mis ei pruugi sulle meeldida.</string>
+    <string name="antifeatures">Anti funktsioonid</string>
+    <string name="hide_anti_feature_apps">Muuda anti-funktsiooniga rakendused halliks</string>
+    <string name="hide_anti_feature_apps_on">Tee antifunktsioone nõudvad rakendused halliks</string>
+    <string name="download_404">Soovitud faili ei leitud.</string>
+    <string name="status_inserting_x_apps">Rakenduse detailide salvestamine (%1$d/%2$d) %3$s-st</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Kuva %d</item>
+	<item quantity="other">Kuva kõik %d</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">Internetti ei ole? Hangi rakendused sinu lähedal olevatelt inimestelt!</string>
+    <string name="nearby_splash__find_people_button">Otsi inimesi mu lähedal</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Naabriotsinguks peab mõlemal osapoolel olema %1$s.</string>
+
+    <string name="app__tts__downloading_progress">Allalaadimine, %1$d%% valmis</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">veel +%1$d…</item>
+	<item quantity="other">veel +%1$d…</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">Valmis paigaldamiseks</string>
+    <string name="notification_title_single_ready_to_install_update">Värskendused on valmis paigalduseks</string>
+    <string name="notification_title_single_install_error">Paigaldamine nurjus</string>
+    <string name="notification_content_single_downloading">\"%1$s\" allalaadimine…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\" värskenduse allalaadimine…</string>
+    <string name="notification_content_single_installing">\"%1$s\" paigaldamine…</string>
+    <string name="notification_content_single_installed">Edukalt paigaldatud</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d värskendus</item>
+	<item quantity="other">%1$d värskendust</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d rakendus paigaldatud</item>
+	<item quantity="other">%1$d rakendust paigaldatud</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Värskendus on saadaval</string>
+    <string name="notification_title_summary_downloading">Allalaadimine…</string>
+    <string name="notification_title_summary_downloading_update">Värskenduse allalaadimine…</string>
+    <string name="notification_title_summary_ready_to_install">Paigaldamiseks valmis</string>
+    <string name="notification_title_summary_ready_to_install_update">Värskendused on valmis paigalduseks</string>
+    <string name="notification_title_summary_installing">Paigaldamine</string>
+    <string name="notification_title_summary_installed">Edukalt paigaldatud</string>
+    <string name="tts_category_name">Kategooria %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Kuva %1$d rakendus kategoorias %2$s</item>
+	<item quantity="other">Kuva kõik %1$d rakendust kategoorias %2$s</item>
+</plurals>
+
+    <string name="details_last_updated_today">Värskendati täna</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Värskendati %1$d päev tagasi</item>
+	<item quantity="other">Värskendati %1$d päeva tagasi</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Värskendati %1$d nädal tagasi</item>
+	<item quantity="other">Värskendati %1$d nädalat tagasi</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Värskendati %1$d kuu tagasi</item>
+	<item quantity="other">Värskendati %1$d kuud tagasi</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Värskendati %1$d aasta tagasi</item>
+	<item quantity="other">Värskendati %1$d aastat tagasi</item>
+</plurals>
+</resources>
