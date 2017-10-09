@@ -517,4 +517,12 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
 
     <string name="installed_app__file_corrupt">F-Droid a reçu une erreur EIO : %s est probablement corrompu !</string>
+    <string name="app_list__dismiss_app_update">Mise à jour ignorée</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnérabilité ignorée</string>
+    <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>
+
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons découvert une vulnérabilité avec %1$s. Nous vous recommandons de désinstaller cette application immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons découvert une vulnérabilité avec %1$s. Nous vous recommandons de mettre à jour cette application immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
+
     </resources>

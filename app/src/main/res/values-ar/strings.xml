@@ -464,4 +464,7 @@
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
     <string name="tts_category_name">التصنيف  %1$s</string>
 
+    <string name="app_details_donate_prompt">%1$s تم تطويره من طرف %2$s. إشتري لهم مشروبا !</string>
+
+    <string name="app_installed_media">تم تثبيت الملف على %s</string>
     </resources>
