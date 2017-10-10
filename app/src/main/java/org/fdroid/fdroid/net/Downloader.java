@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,12 +20,16 @@ public abstract class Downloader {
     public static final String ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED";
     public static final String ACTION_PROGRESS = "org.fdroid.fdroid.net.Downloader.action.PROGRESS";
     public static final String ACTION_INTERRUPTED = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED";
+    public static final String ACTION_CONNECTION_FAILED = "org.fdroid.fdroid.net.Downloader.action.CONNECTION_FAILED";
     public static final String ACTION_COMPLETE = "org.fdroid.fdroid.net.Downloader.action.COMPLETE";
 
     public static final String EXTRA_DOWNLOAD_PATH = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH";
     public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
     public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
+    public static final String EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.ERROR_REPO_ID";
+    public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_CANONICAL_URL";
+    public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MIRROR_URL";
 
     private volatile boolean cancelled = false;
     private volatile int bytesRead;
@@ -35,6 +40,8 @@ public abstract class Downloader {
     final URL sourceUrl;
     String cacheTag;
     boolean notFound;
+
+    private volatile int timeout = 10000;
 
     /**
      * For sending download progress, should only be called in {@link #progressTask}
@@ -58,6 +65,14 @@ public abstract class Downloader {
         this.downloaderProgressListener = listener;
     }
 
+    public void setTimeout(int ms) {
+        timeout = ms;
+    }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
     /**
      * If you ask for the cacheTag before calling download(), you will get the
      * same one you passed in (if any). If you call it after download(), you
@@ -79,7 +94,7 @@ public abstract class Downloader {
 
     protected abstract int totalDownloadSize();
 
-    public abstract void download() throws IOException, InterruptedException;
+    public abstract void download() throws ConnectException, IOException, InterruptedException;
 
     /**
      * @return whether the requested file was not found in the repo (e.g. HTTP 404 Not Found)

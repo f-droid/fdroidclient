@@ -14,8 +14,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 
 public class HttpDownloader extends Downloader {
@@ -77,7 +79,7 @@ public class HttpDownloader extends Downloader {
      * @see <a href="http://lucb1e.com/rp/cookielesscookies">Cookieless cookies</a>
      */
     @Override
-    public void download() throws IOException, InterruptedException {
+    public void download() throws ConnectException, IOException, InterruptedException {
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
         tmpConn.setRequestMethod("HEAD");
@@ -126,7 +128,7 @@ public class HttpDownloader extends Downloader {
                 && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
-    private HttpURLConnection getConnection() throws IOException {
+    private HttpURLConnection getConnection() throws SocketTimeoutException, IOException {
         HttpURLConnection connection;
         if (isSwapUrl()) {
             // swap never works with a proxy, its unrouted IP on the same subnet
@@ -136,6 +138,7 @@ public class HttpDownloader extends Downloader {
         }
 
         connection.setRequestProperty("User-Agent", "F-Droid " + BuildConfig.VERSION_NAME);
+        connection.setConnectTimeout(getTimeout());
 
         if (username != null && password != null) {
             // add authorization header from username / password if set
