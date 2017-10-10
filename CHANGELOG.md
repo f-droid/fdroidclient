@@ -1,3 +1,23 @@
+### 1.0 (2017-10-10)
+
+* completely overhauled workflow for updating apps
+
+* fully translatable app summaries and descriptions
+
+* "What's New" section to show changes in current release
+
+* screenshots and feature graphics
+
+* Support installing media, OTA, ZIP, etc files
+
+* improved protection against tracking (HTTP etag, TLS, etc.)
+
+* fully background updates with Privileged Extension
+
+* highlight donations to app developers
+
+* much faster index updates
+
 ### 1.0-alpha5 (2017-10-04)
 
 * fix bug that prevented translations from showing up on Android >= 7.0 (#987)
