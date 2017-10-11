@@ -1,0 +1,15 @@
+Categories: System
+License: GPL-3.0+
+WebSite: https://f-droid.org
+SourceCode: https://gitlab.com/fdroid/fdroidclient
+IssueTracker: https://gitlab.com/fdroid/fdroidclient/issues
+Changelog: https://gitlab.com/fdroid/fdroidclient/raw/HEAD/CHANGELOG.md
+Donate: https://f-droid.org/about
+FlattrID: 343053
+Bitcoin: 15u8aAPK4jJ5N8wpWJ5gutAyyeHtKX5i18
+
+AutoName: F-Droid Nightly
+Summary: Nightly test build of F-Droid
+
+RepoType: srclib
+Repo: fdroidclient
