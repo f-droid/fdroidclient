@@ -1,38 +1,38 @@
 ### 1.0 (2017-10-10)
 
-* completely overhauled workflow for updating apps
+* Completely overhauled workflow for updating apps
 
-* fully translatable app summaries and descriptions
+* Fully translatable app summaries and descriptions
 
 * "What's New" section to show changes in current release
 
-* screenshots and feature graphics
+* Screenshots and feature graphics
 
-* Support installing media, OTA, ZIP, etc files
+* Support installing media, OTA, ZIP, etc. files
 
-* improved protection against tracking (HTTP etag, TLS, etc.)
+* Improved protection against tracking (HTTP ETag, TLS, etc.)
 
-* fully background updates with Privileged Extension
+* Fully background updates with Privileged Extension
 
-* highlight donations to app developers
+* Highlight donations to app developers
 
-* much faster index updates
+* Much faster index updates
 
 ### 1.0-alpha5 (2017-10-04)
 
-* fix bug that prevented translations from showing up on Android >= 7.0 (#987)
+* Fix bug that prevented translations from showing up on Android >= 7.0 (#987)
 
-* fix db upgrade crash from 1.0-alpha3 --> 1.0-alpha4 (#1181)
+* Fix DB upgrade crash from 1.0-alpha3 --> 1.0-alpha4 (#1181)
 
 ### 1.0-alpha4 (2017-09-27)
 
-* added swipe gestures to the Updates tab
+* Added swipe gestures to the Updates tab
 
-* display warnings with actions in Updates tab for KnownVulns
+* Display warnings with actions in Updates tab for KnownVulns
 
-* translation updates
+* Translation updates
 
-* dark UI fixes
+* Dark UI fixes
 
 ### 1.0-alpha3 (2017-09-12)
 
@@ -52,13 +52,13 @@
 
 ### 1.0-alpha1 (2017-07-18)
 
-* fix bug removing apps from repos (#568)
+* Fix bug removing apps from repos (#568)
 
-* much faster index updates
+* Much faster index updates
 
 ### 1.0-alpha0 (2017-07-08)
 
-* Support installing media, OTA, ZIP, etc files
+* Support installing media, OTA, ZIP, etc. files
 
 * Fully support APKs signed by multiple signing keys
 
@@ -82,7 +82,7 @@
 
 * Various stability fixes
 
-* Bits of text no longer randomly switches to English
+* Bits of text no longer randomly switch to English
 
 * Fix send F-Droid via Bluetooth on Android 7.x
 
@@ -134,7 +134,7 @@
 
 * Support for Android 2.2 is dropped, 2.3.3 or later is now required
 
-* Fixed APK Cache bugs, requiring the cache time be reset to 1 day
+* Fixed APK Cache bugs, requiring the cache time be reset to one day
 
 * Use Privileged Extension by default if installed
 
@@ -148,7 +148,7 @@
 
 * Fix crash if an app has a short description
 
-* Fix background crash in the wifi state change swap service
+* Fix background crash in the Wi-Fi state change swap service
 
 * Fix crash if there is a problem listing the cached files to delete
 
@@ -198,7 +198,7 @@
 
 * Fix crash when adding malformed URIs as repos
 
-* Fix Android.mk build when the output dir is a relative path
+* Fix Android.mk build when the output dir. is a relative path
 
 ### 0.98 (2016-02-01)
 
@@ -262,7 +262,7 @@
 
 * Move the repo index update to a notification
 
-* Handle apk downloads without a dialog
+* Handle APK downloads without a dialog
 
 * Don't let users try to uninstall system apps that haven't been updated
 
@@ -305,14 +305,14 @@
   and now easy to set up with root privileges
 
 * Speed up and simplify repo update process by streaming the data out of the
-  jar file directly
+  JAR file directly
 
 * Can now manually add swap repo via "Repositories" screen
 
 * Using NFC during swap now initiates a proper swap, rather than redirecting to
   the "Repositories" screen
 
-* Drop ant support to greatly simplify the build process and its maintenance
+* Drop Ant support to greatly simplify the build process and its maintenance
 
 ### 0.92 (2015-06-08)
 
@@ -320,7 +320,7 @@
 
 * Update Universal-Image-Loader to 1.9.4
 
-* Make Apk downloads progress be measured in kilobytes instead of bytes
+* Make APK downloads progress be measured in kilobytes instead of bytes
 
 * Add missing Sardinian language to the preferences
 
@@ -333,9 +333,9 @@
   since it's not needed to use our own external app directory
 
 * Fix a crash occuring if the user triggered a repo update that got rid of
-  more than 450 apks at once
+  more than 450 APKs at once
 
-* Properly cache apk files on the SD card if configured this way
+* Properly cache APK files on the SD card if configured this way
 
 * Drop support for unsigned repos in favour of signed ones and TOFU support
 
@@ -349,7 +349,7 @@
 
 * Don't crash if links on descriptions cannot be handled by any application
 
-* Support building as part of a ROM via an Android.mk using gradle
+* Support building as part of a ROM via an Android.mk using Gradle
 
 ### 0.88 (2015-04-28)
 
@@ -359,7 +359,7 @@
 * User interface language can now be changed from inside the F-Droid
   preferences without changing the system language (locale)
 
-* Fix an issue where xml files could pile up in the data directory
+* Fix an issue where XML files could pile up in the data directory
 
 * Improve app and search link handling while also adding supporting for Amazon
   and Google Play links
@@ -369,12 +369,12 @@
 
 * Show a message to the user when there are no apps to display.
 
-* Swapping is now two way. Connecting to a swap on one device will
-  initiate a swap on the other device.
+* Swapping is now two-way. Connecting to a swap on one device will
+  initiate a swap on the other device
 
 * Small UI fixes to avoid overlapping text and improve app version ellipsizing
 
-* Split up search terms when querying the app database - "fire fox" now
+* Split up search terms when querying the app database—"fire fox" now
   matches FireFox
 
 * Ignore trailing paces in search terms introduced by some input methods
@@ -391,7 +391,7 @@
 
 * Fix issue that caused the installed state label to sometimes not be updated
 
-* Support for future devices with more than two cpu architectures
+* Support for future devices with more than two CPU architectures
 
 * Show when packages are installed but not via F-Droid (mismatching signature)
 
@@ -420,7 +420,7 @@
 
 * Update Universal-Image-Loader and the Support libraries
 
-* Switch the directory structure to better suit building with gradle
+* Switch the directory structure to better suit building with Gradle
 
 * Translation updates
 
@@ -442,14 +442,14 @@
 * HTTP Proxy support in Preferences
 
 * Directly send installed apps to other devices via Bluetooth and Android Beam
-  (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
+  (NFC+Bluetooth), also compatible with Samsung/HTC S Beam
 
 * Initial support for root and system installers, allowing the client to
-  install apks directly on its own
+  install APKs directly on its own
 
 * Increased performance when updating from repository with many apps
 
-* Switch to Appcompat from the Support library
+* Switch to AppCompat from the Support library
 
 * Fix some crashes
 
@@ -488,7 +488,7 @@
 * Send F-Droid via Bluetooth to any device that supports receiving APKs via
   Bluetooth (stock Android blocks APKs, most ROMs allow them)
 
-* NFC support: beam repo configs from the repo detail view (Android 4.0+),
+* NFC support: Beam repo configs from the repo detail view (Android 4.0+),
   beam the F-Droid.apk from F-Droid's main screen (Android 4.1+)
 
 * Support for repositories using self-signed HTTPS certificates through
@@ -502,7 +502,7 @@
 
 * Major internal changes to enable F-Droid to handle repos with thousands
   of apps without slowing down too much. These internal changes will also make
-  new features easier to implement.
+  new features easier to implement
 
 * Various fixes to layout issues introduced in 0.58
 
@@ -516,7 +516,7 @@
 
 * Tweaked some layouts, especially the app lists and their compact layout
 
-* App lists now show more useful version information: current version names,
+* App lists now show more useful version information: Current version names,
   rather than number of versions available
 
 * Reduce scroll lag in app lists by caching views in a ViewHolder
@@ -532,21 +532,21 @@
   can see what the checkbox preferences actually mean and what the edit and
   list preferences are set at
 
-* Support for dogecoin donation method added (wow)
+* Support for Dogecoin donation method added (wow)
 
-* Don't keep app icons older than 30 days on disc cache
+* Don't keep app icons older than 30 days in disc cache
 
-* Always include incompatible apks in memory to avoid issues with apps
-  seemingly not having any apks available
+* Always include incompatible APKs in memory to avoid issues with apps
+  seemingly not having any APKs available
 
 * Fixed a crash when trying to access a non-existing app
 
 * F-Droid registers with Android to receive F-Droid URIs https://\*/fdroid/repo
   and fdroidrepos://
 
-* support including signing key fingerprint in repo URIs
+* Support including signing key fingerprint in repo URIs
 
-* when adding new repos that include the fingerprint, check to see whether
+* When adding new repos that include the fingerprint, check to see whether
   that repo exists in F-Droid already, and if the fingerprints match
 
 * Other minor bug fixes
@@ -557,12 +557,12 @@
 
 * Fixed problems with category selection and permission lists on Android 2.X devices.
 
-* Lots of translation updates, including new Norwegian translation.
+* Lots of translation updates, including new Norwegian translation
 
 ### 0.54 (2013-11-05)
 
 * New options on the App Details screen to ignore all future updates for that
-  particular app, or ignore just the current update.
+  particular app, or ignore just the current update
 
 * Apps with Anti-features are no longer hidden, and the corresponding
   preferences to unhide them are removed. Instead they are clearly marked on the
@@ -571,7 +571,7 @@
 * Apps with incompatible native code architecture requirements are now correctly
   filtered.
 
-* A bug that prevented update notifications from appearing has been fixed.
+* A bug that prevented update notifications from appearing has been fixed
 
 * Theming support, with Light and Dark themes.
 
@@ -580,29 +580,29 @@
   installation.
 
 * All app donation options have been grouped into a submenu, and Litecoin
-  donation support has been added.
+  donation support has been added
 
-* App filter settings now take effect immediately.
+* App filter settings now take effect immediately
 
-* Apk native code ABIs are now shown in expert mode.
+* APK native code ABIs are now shown in expert mode
 
-* Search uris for market://search and fdroid.search: are  now handled.
+* Search URIs for market://search and fdroid.search: are now handled
 
-* A problem with ActionBar Up navigation on some devices has been fixed.
+* A problem with ActionBar Up navigation on some devices has been fixed
 
-* Other minor bug fixes, and adjustments to spacings and layouts.
+* Other minor bug fixes, and adjustments to spacings and layouts
 
-* Lots of translation updates.
+* Lots of translation updates
 
 ### 0.50 (2013-08-20)
 
 * New basic app sharing functionality
 
-* Handle f-droid.org web repo as well as market:// app uris
+* Handle f-droid.org web repo as well as market:// app URIs
 
 * Search by just typing on main screen and search results screen
 
-* Flattr and Bitcoin donation methods added
+* Flattr and bitcoin donation methods added
 
 * Noticeable speedups when returning from installs and uninstalls
 
