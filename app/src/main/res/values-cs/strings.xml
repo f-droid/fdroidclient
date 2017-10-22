@@ -328,7 +328,7 @@
     <string name="swap_intro">Propojte se a vyměňujte si aplikace s lidmi z okolí.</string>
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">Nelze nalézt lidi v okolí pro výměnu aplikací.</string>
-    <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace.</string>
+    <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
     <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
         Aktuální data nebudou ztracena.
         Aktualizovaná aplikace bude mít přístup k:
@@ -384,7 +384,7 @@
     <string name="main_menu__categories">Kategorie</string>
 
 
-    <string name="notification_title_single_update_available">Dostupná aktualizace</string>
+    <string name="notification_title_single_update_available">Je k dispozici aktualizace</string>
     <string name="notification_title_single_ready_to_install">Připraveno k instalaci</string>
     <string name="notification_title_single_ready_to_install_update">Aktualizace připravena k instalaci</string>
     <string name="notification_title_single_install_error">Instalace selhala</string>
@@ -405,11 +405,11 @@
     <string name="notification_action_install">Instalovat</string>
 
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
-    <string name="app__newly_added">Novinka</string>
+    <string name="app__newly_added">Nové</string>
 
     <string name="installed_apps__activity_title">Nainstalované aplikace</string>
     <string name="installed_app__updates_ignored">Ignorované aktualizace</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Ignorované aktualizace pro verzi %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Aktualizace na verzi %1$s jsou ignorovány</string>
 
     <string name="main_menu__swap_nearby">Poblíž</string>
 
@@ -474,7 +474,7 @@
     <string name="status_inserting_x_apps">Ukládání podrobností o aplikaci (%1$d/%2$d) z %3$s</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Zobrazit %d</item>
-	<item quantity="few">Zobrazit %d</item>
+	<item quantity="few">Zobrazit oba %d</item>
 	<item quantity="other">Zobrazit všech %d</item>
 	</plurals>
 
