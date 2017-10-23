@@ -62,9 +62,9 @@
     <string name="details_notinstalled">Nincs telepítve</string>
     <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
     <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
-    <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
-    <string name="antinonfreenetlist">Az alkalmazás nem ingyenes hálózati szolgáltatásokat támogat</string>
-    <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
+    <string name="antinonfreeadlist">Az alkalmazás nem szabad szoftver kiegészítőket támogat</string>
+    <string name="antinonfreenetlist">Az alkalmazás nem szabad szoftver alapú hálózati szolgáltatásokat támogat</string>
+    <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad szoftver alkalmazásoktól függ</string>
     <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
     <string name="display">Megjelenés</string>
     <string name="expert">Szakértő mód</string>

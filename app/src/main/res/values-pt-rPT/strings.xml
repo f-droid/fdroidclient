@@ -525,4 +525,19 @@
     <string name="app_list_download_ready">Descarregada e pronta para instalação</string>
 
     <string name="status_inserting_x_apps">A guardar detalhes das aplicações (%1$d/%2$d) de %3$s</string>
+    <string name="app_details__incompatible_mismatched_signature">Assinatura diferente da versão instalada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a definição \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Não há versões com assinatura compatível</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Não há versões compatíveis com o dispositivo</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com as versões disponíveis. Pode desinstalar a aplicação de modo a ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar aplicações através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
+
+    <string name="app_list__dismiss_app_update">Atualização ignorada</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
+    <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
+
+    <string name="installed_app__file_corrupt">Ocorreu um erro EIO: possivelmente %s está danificada!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a desinstalação imediata da aplicação.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a atualização imediata da aplicação.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
+
     </resources>

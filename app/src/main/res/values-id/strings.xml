@@ -494,4 +494,11 @@
     <string name="app_installed_media">Berkas dipasang ke %s</string>
     <string name="app_permission_storage">F-Droid membutuhkan izin penyimpanan untuk memasang apl ini ke penyimpanan. Harap izinkan di layar berikutnya untuk melanjutkan pemasangan.</string>
 
+    <string name="app_details__no_versions__show_incompat_versions">Untuk menampilkan versi yang tidak kompatibel, aktifkan pengaturan \"%1$s\".</string>
+    <string name="app_list__dismiss_app_update">Pembaruan diabaikan</string>
+    <string name="app_list__dismiss_downloading_app">Unduhan dibatalkan</string>
+
+    <string name="installed_app__file_corrupt">F-Droid menerima galat EIO: %s mungkin rusak!</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Abaikan</string>
+
     </resources>
