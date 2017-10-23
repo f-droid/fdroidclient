@@ -176,9 +176,7 @@
     <string name="less">Vähemmän</string>
 
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
-    <string name="update_auto_download_summary">"Päivitykset ladataan automaattisesti ja sinulle ilmoitetaan niiden
-asentamisesta
- "</string>
+    <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
     <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>
     <string name="uninstall_system_summary">Avaa Privileged Extensionin asetussivu päivittääksesi tai poistaaksesi sen
     </string>
