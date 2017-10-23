@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta stará. Před instalací nové verze je
-        nutné starou odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna
-        její data v interním úložišti smazána.)
-    </string>
-    <string name="installIncompatible">Zdá se, že balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit
-        nainstalovat?
-    </string>
+    <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta předchozí. Před instalací nové verze je nutné tu předchozí odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
+    <string name="installIncompatible">Aplikace není kompatibilní s vaším zařízením – chcete se přesto pokusit o instalaci?</string>
     <string name="version">Verze</string>
     <string name="delete">Smazat</string>
     <string name="enable_nfc_send">Povolit posílání po NFC…</string>
@@ -16,7 +11,7 @@
     <string name="automatic_scan_wifi">Pouze přes Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Automaticky aktualizovat jen na nezpoplatněných sítích, jako např. Wi-Fi
     </string>
-    <string name="notify">Upozornění na aktualizace</string>
+    <string name="notify">Zobrazit dostupné aktualizace</string>
     <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
     <string name="system_installer">Privilegovaná rozšíření</string>
     <string name="system_installer_on">Použít privilegovaná rozšíření F-Droid k instalování, aktualizaci a odebírání
@@ -29,7 +24,7 @@
     <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
     <string name="about_title">O aplikaci F-Droid</string>
     <string name="about_site">Webová stránka</string>
-    <string name="about_mail">Email</string>
+    <string name="about_mail">E-mail</string>
     <string name="about_version">Verze</string>
     <string name="app_installed">Nainstalováno</string>
     <string name="app_not_installed">Nenainstalováno</string>
@@ -86,7 +81,7 @@
     <string name="enable_proxy_title">Povolit HTTP proxy</string>
     <string name="enable_proxy_summary">Nastavit HTTP proxy pro všechny síťové požadavky</string>
     <string name="proxy_host">Proxy server</string>
-    <string name="proxy_host_summary">Nakonfigurovat hostname proxy (např. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Název stroje s vaší proxy (např. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
     <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
     <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
@@ -100,10 +95,7 @@
     <string name="repo_description">Popis</string>
     <string name="repo_last_update">Poslední aktualizace</string>
     <string name="repo_name">Název</string>
-    <string name="unsigned_description">To znamená, že seznam
-        aplikací nemohl být ověřený. Měli by jste být opatrný
-        s aplikacemi převzatými z nepodepsaných indexů.
-    </string>
+    <string name="unsigned_description">To znamená, že seznam aplikací se nepodařilo ověřit. Měli by jste být opatrní s aplikacemi staženými z nepodepsaných indexů.</string>
     <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit.
         Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.
     </string>
@@ -166,11 +158,11 @@
     <string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
 
-    <string name="appcompatibility">Kompatibilita aplikací</string>
+    <string name="appcompatibility">Kompatibilita aplikace</string>
     <string name="display">Zobrazení</string>
 
     <string name="show_incompat_versions_on">Zobrazit verze aplikací nekompatibilní s tímto zařízením</string>
-    <string name="proxy_port_summary">Nakonfigurovat číslo portu proxy</string>
+    <string name="proxy_port_summary">Číslo portu vaší proxy (např. 8118)</string>
 
     <string name="status_download">Stahování\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="app_name">F-Droid</string>
@@ -229,13 +221,11 @@
         dostupné v F-Droid. To může být způsobeno zastaralým seznamem repozitářů nebo aplikace nejsou v repozitářích
         vůbec dostupné.
     </string>
-    <string name="empty_can_update_app_list">Všechny aplikace jsou aktualizované.\n\nGratulujeme! Všechny nainstalované
-        aplikace jsou aktuální (nebo nejsou repozitáře aktualizovány).
-    </string>
+    <string name="empty_can_update_app_list">Gratulujeme! Všechny nainstalované aplikace jsou aktuální.</string>
 
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
-    <string name="system_install_denied_signature">Podpis rozšíření je chybný! Nahlašte prosím chybu!</string>
+    <string name="system_install_denied_signature">Podpis rozšíření není správný! Nahlaste chybu vývojářům!</string>
     <string name="system_install_button_install">Instalovat</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
@@ -268,15 +258,14 @@
     <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 
     <string name="install_confirm">vyžaduje přístup k</string>
-    <string name="system_install_post_success">Oprávněné rozšíření F-Droidu úspěšně nainstalováno</string>
+    <string name="system_install_post_success">Rozšíření F-Droid pro oprávnění úspěšně nainstalováno</string>
     <string name="system_install_post_fail">Instalace prigilegovaného rozšíření F-Droid selhala</string>
     <string name="system_install_installing">Instalace…</string>
     <string name="system_install_installing_rebooting">Instalace a restart…</string>
     <string name="system_install_uninstalling">Deinstalace…</string>
     <string name="system_install_question">Chcete instalovat rozšíření oprávnění F-Droidu?</string>
     <string name="system_install_warning">To může trvat až 10 vteřin.</string>
-    <string name="system_install_warning_lollipop">To může trvat až 10 vteřin a poté bude přístroj<b>restartován</b>.
-    </string>
+    <string name="system_install_warning_lollipop">To může trvat až 10 vteřin a poté bude přístroj<b>restartován</b>.</string>
     <string name="system_uninstall">Chcete odinstalovat privilegované rozšíření F-Droid?</string>
     <string name="system_uninstall_button">Odinstalovat</string>
 
@@ -287,7 +276,7 @@
     <string name="perm_costs_money">Toto může stát peníze</string>
     <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
     <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>
-    <string name="download_error">Stažení neúspěšné</string>
+    <string name="download_error">Stahování se nezdařilo!</string>
 
     <string name="perms_new_perm_prefix">Nová:</string>
     <string name="perms_description_app">Poskytováno %1$s.</string>
@@ -312,19 +301,17 @@
     <string name="menu_email">Odeslat email autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
 
-    <string name="status_inserting_apps">Ukládání detailů aplikace</string>
+    <string name="status_inserting_apps">Ukládání podrobností o aplikaci</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
 
-    <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto
-        dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.
-    </string>
+    <string name="system_install_post_success_message">Rozšíření F-Droid pro oprávnění úspěšně nainstalováno. Toto dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.</string>
     <string name="system_install_post_fail_message">Instalace oprávněného rozšíření F-Droidu selhala. Tato instalační
         metoda není podporována všemi distribucemi Androidu. Pro více informací se podívejte na bug tracker F-Droidu.
     </string>
     <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, přibližte svá zařízení k sobě.
     </string>
-    <string name="update_auto_download">Automaticky stahovat aktualizace</string>
-    <string name="update_auto_download_summary">Stahovat soubory aktualizací v pozadí</string>
+    <string name="update_auto_download">Stahovat aktualizace automaticky</string>
+    <string name="update_auto_download_summary">Aktualizace jsou stahovány automaticky a jste upozorněni na možnost je nainstalovat</string>
     <string name="repo_provider">Repozitář: %s</string>
 
     <string name="useTor">Použít Tor</string>
@@ -341,9 +328,7 @@
     <string name="swap_intro">Propojte se a vyměňujte si aplikace s lidmi z okolí.</string>
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">Nelze nalézt lidi v okolí pro výměnu aplikací.</string>
-    <string name="swap_connection_misc_error">Došlo k chybě při připojování přístroje, zdá se že nelze vyměňovat
-        aplikace.
-    </string>
+    <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace.</string>
     <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
         Aktuální data nebudou ztracena.
         Aktualizovaná aplikace bude mít přístup k:
@@ -376,9 +361,7 @@
     <string name="keep_forever">navždy</string>
 
     <string name="crash_dialog_title">F-Droid neočekávaně skončil</string>
-    <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace.
-        Budete chtít odeslat detaily emailem a tím pomoci s napravením chyby?
-    </string>
+    <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. Odeslat vývojářům podrobnosti e-mailem a pomoci tak s nápravou?</string>
     <string name="crash_dialog_comment_prompt">Zde můžete přidat další informace a komentáře:</string>
     <string name="keep_install_history">Uchovat historii instalací</string>
     <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích v F-Droid-e
@@ -388,7 +371,7 @@
     <string name="versions">Verze</string>
     <string name="hide_anti_feature_apps">Vyšedit \"anti-feature\" aplikace</string>
     <string name="hide_anti_feature_apps_on">Vyšedit aplikace vyžadující \"anti-features\"</string>
-    <string name="warning_no_internet">Nemožno aktualizovat, jste připojený k internetu?</string>
+    <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
     <string name="app_details_donate_prompt">%1$s vytvořil %2$s. Kup mu kávu!</string>
 
@@ -443,4 +426,103 @@
     <string name="updates__tts__download_app">Stáhnout</string>
     <string name="updates__tts__download_updates_for_all_apps">Stáhnout všechny aktualizace</string>
 
+<string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
+    <string name="by_author_format">od %s</string>
+    <string name="force_old_index">vynutit původní formát rejstříku</string>
+    <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou, použít XML rejstřík aplikací</string>
+    <string name="app_details__incompatible_mismatched_signature">Rozdílný podpis oproti nainstalované verzi</string>
+    <string name="app_details__no_versions__show_incompat_versions">Pro zobrazení nekompatibilních verzí i tak, zapněte v nastavení „%1$s“.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Není k dispozici žádná veze s kompatibilním podpisem</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Není k dispozici verze kompatibilní s tímto zařízením</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím služby Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
+
+    <string name="app__tts__cancel_download">Zrušit stahování</string>
+    <string name="app_installed_media">Soubor nainstalován do %s</string>
+    <string name="app_permission_storage">Pro instalaci tohoto do úložiště potřebuje F-Droid oprávnění. Umožněte to na následující obrazovce a instalace bude moci pokračovat.</string>
+
+    <string name="app_list_download_ready">Staženo, připraveno k instalaci</string>
+    <string name="app_list__dismiss_app_update">Aktualizace ignorována</string>
+    <string name="app_list__dismiss_vulnerable_app">Zranitelnost ignorována</string>
+    <string name="app_list__dismiss_downloading_app">Stahování zrušeno</string>
+
+    <string name="installed_app__file_corrupt">F-Droid obdržel EIO chybu: %s je pravděpodobně poškozené!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci okamžitě odinstalovat.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci aktualizovat na nejnovější verzi.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorovat</string>
+
+    <string name="updates__hide_updateable_apps">Skrýt aplikace</string>
+    <string name="updates__show_updateable_apps">Zobrazit aplikace</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Stáhnout aktualizaci pro %1$d aplikaci.</item>
+	<item quantity="few">Stáhnout aktualizace pro %1$d aplikace.</item>
+	<item quantity="other">Stáhnout aktualizace pro %1$d aplikací.</item>
+	</plurals>
+
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Licence: %s</string>
+    <string name="latest__empty_state__no_recent_apps">Nebyly nalezeny žádné nedávné aplikace</string>
+    <string name="latest__empty_state__never_updated">Jakmile bude aktualizován seznam aplikací, nejnovější aplikace by se mely zobrazit zde</string>
+    <string name="latest__empty_state__no_enabled_repos">Jakmile zapnete repozitář a necháte aktualizovat, měly by se zde zobrazit nejnovější aplikace</string>
+
+    <string name="categories__empty_state__no_categories">Žádné kategorie k zobrazení</string>
+
+    <string name="details_new_in_version">Novinky ve verzi %s</string>
+
+    <string name="antifeatureswarning">Tato aplikace má funkce které se vám možná nebudou líbit.</string>
+    <string name="antifeatures">Anti-funkce</string>
+    <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
+    <string name="status_inserting_x_apps">Ukládání podrobností o aplikaci (%1$d/%2$d) z %3$s</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Zobrazit %d</item>
+	<item quantity="few">Zobrazit %d</item>
+	<item quantity="other">Zobrazit všech %d</item>
+	</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">Není k dispozici připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
+    <string name="nearby_splash__find_people_button">Najít lidi poblíž</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Je třeba, aby obě strany používaly %1$s aby bylo možné využít funkce poblíž.</string>
+
+    <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d další…</item>
+	<item quantity="few">+%1$d další…</item>
+	<item quantity="other">+%1$d dalších…</item>
+	</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d aktualizace</item>
+	<item quantity="few">%1$d aktualizace</item>
+	<item quantity="other">%1$d aktualizací</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">Nainstalována %1$d aplikace</item>
+	<item quantity="few">Nainstalovány %1$d aplikace</item>
+	<item quantity="other">Nainstalováno %1$d aplikací</item>
+	</plurals>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Zobrazit %1$d aplikaci v %2$s kategorii</item>
+	<item quantity="few">Zobrazit %1$d aplikace v %2$s kategoriích</item>
+	<item quantity="other">Zobrazit %1$d aplikací v %2$s kategoriích</item>
+	</plurals>
+
+    <string name="details_last_updated_today">Aktualizováno dnes</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Aktualizováno před %1$d dnem</item>
+	<item quantity="few">Aktualizováno před %1$d dny</item>
+	<item quantity="other">Aktualizováno před %1$d dny</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Aktualizováno před %1$d týdnem</item>
+	<item quantity="few">Aktualizováno před %1$d týdny</item>
+	<item quantity="other">Aktualizováno před %1$d týdny</item>
+	</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Aktualizováno před %1$d měsícem</item>
+	<item quantity="few">Aktualizováno před %1$d měsíci</item>
+	<item quantity="other">Aktualizováno před %1$d měsíci</item>
+	</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Aktualizováno před %1$d rokem</item>
+	<item quantity="few">Aktualizováno před %1$d roky</item>
+	<item quantity="other">Aktualizováno před %1$d lety</item>
+	</plurals>
 </resources>

@@ -521,8 +521,8 @@
     <string name="app_list__dismiss_vulnerable_app">Vulnérabilité ignorée</string>
     <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>
 
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons découvert une vulnérabilité avec %1$s. Nous vous recommandons de désinstaller cette application immédiatement.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons découvert une vulnérabilité avec %1$s. Nous vous recommandons de mettre à jour cette application immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons trouvé une vulnérabilité avec %1$s. Nous recommandons de désinstaller cette application immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons trouvé une vulnérabilité avec %1$s. Nous recommandons de mettre à jour immédiatement.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     </resources>

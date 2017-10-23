@@ -516,4 +516,19 @@
     <string name="app_list_download_ready">Baixado, pronto para instalar</string>
 
     <string name="status_inserting_x_apps">Salvando detalhes do aplicativo (%1$d/%2$d) de %3$s</string>
+    <string name="app_details__incompatible_mismatched_signature">Assinatura diferente para versão instalada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Para mostrar versões incompatíveis aqui mesmo assim, ative a configuração \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Sem versões com assinatura compatível</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Sem versões compatíveis ao dispositivo</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com nenhuma versão disponível. Desinstalar o aplicativo permitirá que você veja e instale versões compatíveis. Isto frequentemente ocorre com aplicativos instalados via Google Play ou outras fontes, caso eles estejam assinados por um certificado diferente.</string>
+
+    <string name="app_list__dismiss_app_update">Atualização ignorada</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
+    <string name="app_list__dismiss_downloading_app">Baixar cancelado</string>
+
+    <string name="installed_app__file_corrupt">F-Droid recebeu erro EIO: %s está provavelmente corrompido!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nós encontramos uma vulnerabilidade com o %1$s. Nós recomendamos desinstalar o aplicativo imediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nós encontramos uma vulnerabilidade com o %1$s. Nós recomendamos atualizar para a versão mais nova imediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
+
     </resources>

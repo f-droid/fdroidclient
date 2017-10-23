@@ -523,12 +523,14 @@
 
     <string name="status_inserting_x_apps">Сохранение данных приложений (%1$d/%2$d) из %3$s</string>
     <string name="app_installed_media">Файл установлен в %s</string>
-    <string name="app_permission_storage">F-Droid нуждается в разрешении на доступ к хранилищу, чтобы установить это. Пожалуйста, дайте разрешение на следующем экране, чтобы продолжить установку.</string>
+    <string name="app_permission_storage">Для установки в хранилище F-Droid нуждается в соответствующем разрешении. Его можно предоставить на следующем экране.</string>
 
-    <string name="app_details__incompatible_mismatched_signature">Отличается подпись установленной версии</string>
-    <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии, включите параметр \"%1$s\".</string>
+    <string name="app_details__incompatible_mismatched_signature">У установленной версии другая подпись</string>
+    <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии включите параметр \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Нет версий с совместимой подписью</string>
     <string name="app_details__no_versions__none_compatible_with_device">Нет версий, совместимых с устройством</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Установленная версия несовместима со всеми доступными версиями. Удаление приложения позволит вам установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников.</string>
 
+    <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
+    <string name="app_list__dismiss_vulnerable_app">Обновление игнорируется</string>
     </resources>
