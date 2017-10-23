@@ -233,6 +233,15 @@ public class FDroidApp extends Application {
         curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
 
+        // bug specific to exactly 5.0 makes it only work with the old index
+        // which includes an ugly, hacky workaround
+        // https://gitlab.com/fdroid/fdroidclient/issues/1014
+        if (Build.VERSION.SDK_INT == 21) {
+            Preferences p = Preferences.get();
+            p.setExpertMode(true);
+            p.setForceOldIndex(true);
+        }
+
         InstalledAppProviderService.compareToPackageManager(this);
         AppUpdateStatusService.scanDownloadedApks(this);
 
