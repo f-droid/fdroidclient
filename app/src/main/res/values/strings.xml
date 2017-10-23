@@ -231,7 +231,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="skip">Skip</string>
 
     <string name="useTor">Use Tor</string>
-    <string name="useTorSummary">Force download traffic through Tor for increased privacy</string>
+    <string name="useTorSummary">Force download traffic through Tor for increased privacy. Requires Orbot</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Enable HTTP Proxy</string>
     <string name="enable_proxy_summary">Configure HTTP Proxy for all network requests</string>
