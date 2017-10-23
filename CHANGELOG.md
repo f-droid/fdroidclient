@@ -1,3 +1,7 @@
+### 1.0.1 (2017-10-23)
+
+* fixed index update failure on Android 5.0 (#1014)
+
 ### 1.0 (2017-10-10)
 
 * completely overhauled workflow for updating apps
