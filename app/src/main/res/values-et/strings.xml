@@ -206,7 +206,7 @@
     <string name="status_connecting_to_repo">Ühenduse loomine\n%1$s</string>
     <string name="status_inserting_apps">Rakenduse detaile salvestatakse</string>
     <string name="no_permissions">Eriõiguseid ei kasutata.</string>
-    <string name="permissions">Õigused</string>
+    <string name="permissions">Volitused</string>
     <string name="no_handler_app">Sul puuduvad rakendused, mis suudaksid %s käsitleda.</string>
     <string name="theme">Teema</string>
     <string name="unsigned">Allkirjastamata</string>

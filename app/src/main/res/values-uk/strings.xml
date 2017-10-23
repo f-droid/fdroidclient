@@ -205,7 +205,7 @@
     <string name="repo_delete_to_overwrite">Спершу ви маєте видалити цей репозиторій, а потім додати його з іншим
         ключем.
     </string>
-    <string name="malformed_repo_uri">Ігнорування не правильного URI репозиторію: %s</string>
+    <string name="malformed_repo_uri">Ігнорування неправильного URI репозиторію: %s</string>
 
     <string name="antinonfreeadlist">Цей застосунок пропонує не-безкоштовні надбудови</string>
     <string name="antinonfreenetlist">Цей застосунок пропонує не-безкоштовні мережеві послуги</string>

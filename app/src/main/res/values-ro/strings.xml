@@ -206,7 +206,7 @@
     <string name="system_install_uninstalling">Dezinstalare…</string>
     <string name="system_uninstall_button">Dezinstalare</string>
 
-    <string name="swap_join_same_wifi">Conectează la aceeași rețea Wi-Fi ca și prietenii tăi</string>
+    <string name="swap_join_same_wifi">Conectează-te la aceeași rețea Wi-Fi ca și prietenii tăi</string>
     <string name="swap">Schimb de aplicații</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
     <string name="swap_no_wifi_network">Nici o rețea încă</string>
@@ -309,11 +309,11 @@
     <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal în F-Droid</string>
     <string name="system_installer_on">Folosiți F-Droid Extension pentru a instala, actualiza și a înlătura pachete</string>
     <string name="empty_can_update_app_list">Felicitări! Aplicațiile tale sunt la zi.</string>
-    <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
+    <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
 \nVa trebui sa reactivați acest depozit pentru a putea instala aplicații din el.</string>
-    <string name="repo_confirm_delete_body">Ștergerea unui depozit presupune ca aplicațiile din el sa nu mai fi disponibile din F-Droid. Nota: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dumneavoastră.</string>
+    <string name="repo_confirm_delete_body">Ștergerea unui depozit presupune ca aplicațiile din el să nu mai fie disponibile în F-Droid. Notă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dumneavoastră.</string>
     <string name="repo_not_yet_updated">Acest depozit nu a fost folosit încă. Trebuie sa îl activați pentru a putea vedea ce aplicații are disponibile.</string>
     <string name="unsigned_description">Asta înseamnă că lista de aplicații nu a putut fi verificata. Ar trebui sa fiți atenți cu aplicațiile descărcate din indexuri nesemnate.</string>
     <string name="warning_no_internet">Nu se poate face actualizarea, există conexiune la Internet?</string>

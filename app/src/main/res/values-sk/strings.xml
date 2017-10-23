@@ -516,4 +516,24 @@
 	<item quantity="few">+%1$d ďaľšie…</item>
 	<item quantity="other">+%1$d ďaľších…</item>
 </plurals>
+    <string name="app_details__incompatible_mismatched_signature">Digitálny podpis nesedí s nainštalovanou verziou</string>
+    <string name="app_details__no_versions__show_incompat_versions">Ak chcete aj tak zobraziť nekompatibilné verzie, zapnite nastavenie \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Žiadne verzie s kompatibilným podpisom</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Žiadne verzie kompatibilné so zariadením</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Nainštalovaná verzia nie je kompatibilná s dostupnými verziami. Odinštalovaním súčasnej verzie aplikácie budete môcť zobraziť a nainštalovať nové kompatibilné verzie. Toto sa často vyskytuje pri aplikáciách nainštalovaných prostredníctvom služby Google Play alebo iných zdrojov, ak sú podpísané iným certifikátom.</string>
+
+    <string name="app_installed_media">Súbor bol nainštalovaný na %s</string>
+    <string name="app_permission_storage">F-Droid potrebuje povolenie na ukladanie na inštaláciu do úložiska. Pre pokračovanie v inštalácií potvrďte povolenie na ďalšej obrazovke.</string>
+
+    <string name="app_list_download_ready">Stiahnuté, pripravené na inštaláciu</string>
+    <string name="app_list__dismiss_app_update">Aktualizácia bola ignorovaná</string>
+    <string name="app_list__dismiss_vulnerable_app">Zraniteľnosť bola ignorovaná</string>
+    <string name="app_list__dismiss_downloading_app">Sťahovanie bolo zrušené</string>
+
+    <string name="installed_app__file_corrupt">F-Droid obdržal chybu EIO: %s je pravdepodobne poškodený!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Zistili sme zraniteľnosť %1$s. Odporúčame okamžite odinštalovať túto aplikáciu.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Objavili sme zraniteľnosť  %1$s. Odporúčame ihneď aktualizovať na najnovšiu verziu.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorovať</string>
+
+    <string name="status_inserting_x_apps">Ukladanie podrobností aplikácie (%1$d/%2$d) z %3$s</string>
     </resources>

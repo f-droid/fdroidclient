@@ -265,7 +265,7 @@
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
     <string name="swap_scan_or_type_url">Unu persono devas skani la kodon, aŭ entajpi URL-n de aliulo en foliumilon.</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
-    <string name="swap_scan_qr">Skanu QR-kodon</string>
+    <string name="swap_scan_qr">Skani QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
     <string name="swap_scanning_for_peers">Serĉado de proksimuloj…</string>
     <string name="swap_nearby">Proksima interŝanĝo</string>
@@ -397,7 +397,7 @@
 
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">%d aplikaĵo</item>
-	<item quantity="other">Ĉiuj %d aplikaĵoj</item>
+	<item quantity="other">%d aplikaĵoj</item>
 </plurals>
 
     <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
