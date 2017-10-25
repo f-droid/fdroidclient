@@ -22,13 +22,13 @@ test:
     - ./tools/remove-unused-and-blank-translations.py
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --exit-code || export EXITVALUE=1
-    - ./gradlew assemble -PdisablePreDex
+    - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew lint -PdisablePreDex
-    - ./gradlew pmd -PdisablePreDex
-    - ./gradlew checkstyle -PdisablePreDex
-    - ./gradlew test -PdisablePreDex || {
+    - ./gradlew lint
+    - ./gradlew pmd
+    - ./gradlew checkstyle
+    - ./gradlew test || {
           for log in app/build/reports/*ests/*/*ml; do
               echo "read $log here:";
               (cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com) || true;
@@ -42,12 +42,12 @@ connected10:
   variables:
     AVD_SDK: "10"
   script:
-    - ./gradlew assembleDebug -PdisablePreDex
+    - ./gradlew assembleDebug
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
     - export EXITVALUE=0
-    - ./gradlew connectedCheck -PdisablePreDex || {
+    - ./gradlew connectedCheck || {
         adb -e logcat -d '*:E';
         echo "get the full logcat here:";
         (adb -e logcat -d | curl --silent -F 'clbin=<-' https://clbin.com) || true;
@@ -64,14 +64,14 @@ connected24:
   variables:
     AVD_SDK: "24"
   script:
-    - ./gradlew assembleDebug -PdisablePreDex
+    - ./gradlew assembleDebug
     - android list avd
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
     - adb devices
     - export EXITVALUE=0
-    - ./gradlew connectedCheck -PdisablePreDex || {
+    - ./gradlew connectedCheck || {
         adb -e logcat -d '*:E';
         echo "get the full logcat here:";
         (adb -e logcat -d | curl --silent -F 'clbin=<-' https://clbin.com) || true;

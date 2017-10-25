@@ -182,6 +182,9 @@ if (!hasProperty('sourceDeps')) {
     }
 }
 
+def isCi = "true".equals(System.getenv("CI"))
+def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.2'
@@ -209,6 +212,13 @@ android {
 
     aaptOptions {
         cruncherEnabled = false
+    }
+
+    dexOptions {
+        // Improve build server performance by allowing disabling of pre-dexing
+        // see http://tools.android.com/tech-docs/new-build-system/tips#TOC-Improving-Build-Server-performance
+        // Skip pre-dexing when running on CI or when disabled via -Dpre-dex=false.
+        preDexLibraries = preDexEnabled && !isCi
     }
 
     defaultConfig {
