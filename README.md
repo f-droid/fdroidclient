@@ -59,3 +59,11 @@ Other icons are from the
 [Material Design Icon set](https://github.com/google/material-design-icons)
 released under an
 [Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+
+
+## Translation
+
+Everything can be translated.  See
+[Translation and Localization](https://f-droid.org/docs/Translation_and_Localization)
+for more info.
+[![translation status](https://hosted.weblate.org/widgets/f-droid/-/f-droid/multi-auto.svg)](https://hosted.weblate.org/engage/f-droid/?utm_source=widget)
