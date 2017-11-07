@@ -18,9 +18,12 @@ import org.fdroid.fdroid.data.App;
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final String[] screenshots;
     private final DisplayImageOptions displayImageOptions;
+    private final Listener listener;
 
-    ScreenShotsRecyclerViewAdapter(Context context, App app) {
+    ScreenShotsRecyclerViewAdapter(Context context, App app, Listener listener) {
         super();
+        this.listener = listener;
+
         screenshots = app.getAllScreenshots(context);
         displayImageOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -33,8 +36,8 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        final ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
         ImageLoader.getInstance().displayImage(screenshots[position],
                 vh.image, displayImageOptions);
     }
@@ -51,12 +54,28 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         return screenshots.length;
     }
 
-    private class ScreenShotViewHolder extends RecyclerView.ViewHolder {
+
+    public interface Listener {
+        /**
+         * @param position zero based position of the screenshot
+         *                 that has been clicked upon
+         */
+        void onScreenshotClick(int position);
+    }
+
+
+    private class ScreenShotViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ImageView image;
 
         ScreenShotViewHolder(View view) {
             super(view);
             image = (ImageView) view.findViewById(R.id.image);
+            image.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onScreenshotClick(getAdapterPosition());
         }
 
         @Override
