@@ -1,8 +1,10 @@
 package org.fdroid.fdroid.views;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -53,6 +55,11 @@ public class ScreenShotsActivity extends AppCompatActivity {
         ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(getSupportFragmentManager(), screenshots);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(startPosition);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            // display some nice animation while swiping
+            viewPager.setPageTransformer(true, new DepthPageTransformer());
+        }
     }
 
 
@@ -121,6 +128,32 @@ public class ScreenShotsActivity extends AppCompatActivity {
             ImageLoader.getInstance().displayImage(screenshotUrl, screenshotView, displayImageOptions);
 
             return rootView;
+        }
+    }
+
+
+    @TargetApi(11)
+    public class DepthPageTransformer implements ViewPager.PageTransformer {
+
+        public void transformPage(View view, float position) {
+            int pageWidth = view.getWidth();
+
+            if (position <= 0) {
+                // use the default slide transition when moving to the left page
+                view.setAlpha(1);
+                view.setTranslationX(0);
+
+            } else if (position <= 1) {
+                // fade the page out.
+                view.setAlpha(1 - position);
+
+                // add parallax effect
+                view.setTranslationX(pageWidth * -position / 2);
+
+            } else {
+                // this page is way off-screen to the right.
+                view.setAlpha(0);
+            }
         }
     }
 }
