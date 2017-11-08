@@ -21,6 +21,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -42,6 +43,9 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots);
 
