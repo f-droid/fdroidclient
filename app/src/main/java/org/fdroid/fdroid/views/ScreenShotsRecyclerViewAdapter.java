@@ -54,7 +54,6 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         return screenshots.length;
     }
 
-
     public interface Listener {
         /**
          * @param position zero based position of the screenshot
@@ -62,7 +61,6 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
          */
         void onScreenshotClick(int position);
     }
-
 
     private class ScreenShotViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ImageView image;

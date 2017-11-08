@@ -66,7 +66,6 @@ public class ScreenShotsActivity extends AppCompatActivity {
         }
     }
 
-
     private class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
 
         private final String[] screenshots;
@@ -87,7 +86,6 @@ public class ScreenShotsActivity extends AppCompatActivity {
         }
     }
 
-
     /**
      * A single screenshot page.
      */
@@ -102,7 +100,6 @@ public class ScreenShotsActivity extends AppCompatActivity {
             fragment.setArguments(args);
             return fragment;
         }
-
 
         private String screenshotUrl;
 
@@ -134,7 +131,6 @@ public class ScreenShotsActivity extends AppCompatActivity {
             return rootView;
         }
     }
-
 
     @TargetApi(11)
     public class DepthPageTransformer implements ViewPager.PageTransformer {
