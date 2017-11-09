@@ -229,6 +229,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "applicationId", defaultConfig.applicationId + applicationIdSuffix
+            versionNameSuffix "-debug"
+        }
+    }
+
     testOptions {
         unitTests {
             // prevent tests from dying on android.util.Log calls
