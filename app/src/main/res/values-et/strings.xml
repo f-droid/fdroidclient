@@ -178,7 +178,7 @@
     <string name="show_incompat_versions">Ühildumatud versioonid</string>
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
     <string name="rooted">Ignoreeri juur-kasutajat</string>
-    <string name="rooted_on">Ära märgi halliga rakendusi, mis vajavad juur-kasutaja õiguseid</string>
+    <string name="rooted_on">Ära märgi halliga rakendusi, mis vajavad juur-kasutaja privileege</string>
     <string name="ignoreTouch">Ignoreeri puuteekraani</string>
     <string name="ignoreTouch_on">Alati kaasa puuteekraani vajavad rakendused</string>
 
@@ -190,7 +190,7 @@
     <string name="skip">Jäta vahele</string>
 
     <string name="useTor">Kasuta Tori</string>
-    <string name="useTorSummary">Privaatsuse suurendamiseks kohusta alla laadimisel Tori kasutamine</string>
+    <string name="useTorSummary">Kohusta privaatsuse suurendamiseks alla laadimisel Tor võrgu kasutamine. Vajalik on Orbot</string>
     <string name="proxy">Puhverserver</string>
     <string name="enable_proxy_title">Kasuta HTTP puhverserverit</string>
     <string name="enable_proxy_summary">Konfigureeri HTTP puhverserver kõigile võrgupäringutele</string>

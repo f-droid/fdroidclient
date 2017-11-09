@@ -1,35 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">새 버전은 기존 버전과 다른 키로 서명되어 있습니다. 새 버전을 설치하려면 기존 버전을 반드시 먼저 삭제해야 합니다. 그 다음에 다시 시도하세요.
-        (참고로, 삭제를 할 경우 앱이 저장한 모든 내부 자료도 같이 삭제됩니다)
-    </string>
-    <string name="installIncompatible">이 패키지가 기기와 호환되지 않는 것 같습니다. 계속 설치를 진행할까요?</string>
+    <string name="SignatureMismatch">새 버전은 오래된 것과 다른 키로 서명되어 있습니다. 새 버전을 설치하려면, 오래된 것은 먼저 제거해야 합니다. 이를 수행하고 다시 시도해주세요. (제거하는 것은 앱에 저장된 모든 내부 데이터가 지워집니다)</string>
+    <string name="installIncompatible">앱이 당신의 장치와 호환되지 않는데, 어쨌든 설치하겠습니까?</string>
     <string name="version">버전</string>
     <string name="delete">삭제</string>
-    <string name="enable_nfc_send">NFC 전송 사용…</string>
-    <string name="cache_downloaded">임시 저장된 앱 보관</string>
+    <string name="enable_nfc_send">NFC 전송 활성화…</string>
+    <string name="cache_downloaded">캐시된 앱 유지</string>
     <string name="updates">업데이트</string>
     <string name="other">기타</string>
     <string name="update_interval">자동 업데이트 간격</string>
-    <string name="update_interval_zero">자동으로 앱 목록 업데이트 하지 않음</string>
-    <string name="automatic_scan_wifi">Wi-Fi 연결 시에만</string>
-    <string name="automatic_scan_wifi_on">Wi-Fi에 연결되어 있을 때만 자동으로 앱 목록 업데이트</string>
-    <string name="notify">업데이트 알림</string>
-    <string name="notify_on">새로운 업데이트가 가능할 때 알림</string>
-    <string name="system_installer">권한 확장</string>
-    <string name="system_installer_on">패키지의 설치, 업데이트, 제거를 위해 특별 권한 확장 사용</string>
+    <string name="update_interval_zero">자동으로 앱 목록을 업데이트하지 않기</string>
+    <string name="automatic_scan_wifi">Wi-Fi에서만</string>
+    <string name="automatic_scan_wifi_on">Wi-Fi와 같이 추가 요금이 부과되지 않는 네트워크에서만 자동으로 업데이트합니다</string>
+    <string name="notify">사용 가능한 업데이트 보이기</string>
+    <string name="notify_on">업데이트가 사용 가능할 때 알림을 보여줍니다</string>
+    <string name="system_installer">특별 권한 확장 기능</string>
+    <string name="system_installer_on">패키지를 설치, 업데이트, 제거를 위해 F-Droid 특별 권한 확장 기능을 사용합니다</string>
     <string name="local_repo_name">로컬 저장소의 이름</string>
-    <string name="local_repo_name_summary">로컬 저장소의 광고 제목: %s</string>
+    <string name="local_repo_name_summary">로컬 저장소의 홍보 제목: %s</string>
     <string name="local_repo_https_on">로컬 저장소에 암호화된 HTTPS:// 연결을 사용</string>
-    <string name="app_details">앱 상세정보</string>
-    <string name="no_such_app">앱이 발견되지 않음.</string>
-    <string name="about_title">F-Droid 대하여</string>
+    <string name="app_details">앱 자세한 사항</string>
+    <string name="no_such_app">앱을 찾을 수 없습니다.</string>
+    <string name="about_title">F-Droid 정보</string>
     <string name="about_site">웹사이트</string>
     <string name="about_mail">이메일</string>
     <string name="about_version">버전</string>
     <string name="app_installed">설치됨</string>
     <string name="app_not_installed">설치되지 않음</string>
-    <string name="app_inst_known_source">설치됨 (%s (으)로부터)</string>
+    <string name="app_inst_known_source">설치됨 (%s(으)로부터)</string>
     <string name="app_inst_unknown_source">설치됨 (알 수 없는 출처로부터)</string>
     <string name="added_on">%s에 추가됨</string>
     <string name="ok">확인</string>
@@ -38,19 +36,19 @@
     <string name="repo_add_title">새로운 저장소 추가</string>
     <string name="repo_add_add">추가</string>
     <string name="cancel">취소</string>
-    <string name="enable">사용</string>
+    <string name="enable">활성화</string>
     <string name="add_key">키 추가</string>
     <string name="overwrite">덮어쓰기</string>
-    <string name="bluetooth_activity_not_found">블루투스 전송 방법을 찾을 수 없습니다. 선택하세요!</string>
+    <string name="bluetooth_activity_not_found">블루투스 전송 방법을 찾을 수 없습니다. 다른 방법을 선택하세요!</string>
     <string name="choose_bt_send">블루투스 전송 방법 선택</string>
     <string name="repo_add_url">저장소 주소</string>
-    <string name="repo_add_fingerprint">핑거프린트 (선택 가능)</string>
-    <string name="repo_exists_add_fingerprint">저장소가 이미 설치되었으며, 키에 대한 새로운 정보를 추가할 것입니다.</string>
-    <string name="repo_exists_enable">저장소가 이미 설치되었으며, 다시 사용할 것인지 확인하세요.</string>
-    <string name="repo_exists_and_enabled">도착하는 저장소가 이미 설치되었으며 사용 가능합니다!</string>
-    <string name="repo_delete_to_overwrite">다른 키가 할당된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다!</string>
+    <string name="repo_add_fingerprint">핑거프린트 (선택 사항)</string>
+    <string name="repo_exists_add_fingerprint">이 저장소가 이미 설정되어 있으며, 키에 대한 새로운 정보를 추가할 것입니다.</string>
+    <string name="repo_exists_enable">이 저장소가 이미 설정되어 있으며, 다시 활성화할 것인지 확인하세요.</string>
+    <string name="repo_exists_and_enabled">들어오는 저장소가 이미 설정되어 있고 활성화되어 있습니다.</string>
+    <string name="repo_delete_to_overwrite">다른 키로 된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다.</string>
     <string name="malformed_repo_uri">잘못된 형식의 저장소 URI를 무시하는 중: %s</string>
-    <string name="menu_manage">저장소 관리</string>
+    <string name="menu_manage">저장소</string>
     <string name="menu_search">검색</string>
     <string name="menu_add_repo">새로운 저장소</string>
     <string name="menu_launch">실행</string>
@@ -61,134 +59,137 @@
     <string name="menu_ignore_this">이 업데이트 무시</string>
     <string name="menu_website">웹사이트</string>
     <string name="menu_issues">이슈</string>
-    <string name="menu_source">소스코드</string>
+    <string name="menu_source">소스 코드</string>
     <string name="menu_upgrade">업그레이드</string>
     <string name="menu_donate">기부</string>
     <string name="details_notinstalled">설치되지 않음</string>
-    <string name="antiadslist">이 응용프로그램은 광고가 포함되어 있습니다.</string>
-    <string name="antitracklist">이 응용프로그램은 활동을 추적하여 리포트를 보고합니다.</string>
-    <string name="antinonfreeadlist">이 앱은 자유롭지 않은 애드온을 권장하고 있습니다</string>
+    <string name="antiadslist">이 앱에는 광고를 포함합니다</string>
+    <string name="antitracklist">이 앱은 당신의 활동을 추적하여 보고합니다</string>
+    <string name="antinonfreeadlist">이 앱은 자유롭지 않은 부가 기능을 권장하고 있습니다</string>
     <string name="antinonfreenetlist">이 앱은 자유롭지 않은 네트워크 서비스를 권장하고 있습니다</string>
     <string name="antinonfreedeplist">이 앱은 다른 자유롭지 않은 앱에 의존합니다</string>
     <string name="antiupstreamnonfreelist">업스트림 소스 코드가 완전히 자유롭지 않습니다</string>
     <string name="display">표시</string>
     <string name="expert">전문가 모드</string>
-    <string name="expert_on">추가 정보 표시 및 추가 설정 사용</string>
-    <string name="search_hint">응용 프로그램 검색</string>
-    <string name="appcompatibility">응용 프로그램 호환성</string>
+    <string name="expert_on">추가 정보를 보여주고 추가 설정을 활성화합니다</string>
+    <string name="search_hint">앱 검색</string>
+    <string name="appcompatibility">앱 호환성</string>
     <string name="show_incompat_versions">호환되지 않는 버전</string>
-    <string name="show_incompat_versions_on">기기와 호환되지 않는 앱 버전도 표시</string>
+    <string name="show_incompat_versions_on">장치와 호환되지 않는 앱 버전을 보여줍니다</string>
     <string name="rooted">루팅 무시</string>
-    <string name="rooted_on">루트 권한을 요구하는 앱을 비활성화 하지 않기</string>
+    <string name="rooted_on">루트 권한을 요구하는 앱을 회색으로 표시하지 않습니다</string>
     <string name="ignoreTouch">터치스크린 무시</string>
-    <string name="ignoreTouch_on">터치스크린을 요구하는 앱을 항상 포함</string>
+    <string name="ignoreTouch_on">터치스크린을 요구하는 앱을 항상 포함합니다</string>
     <string name="local_repo">로컬 저장소</string>
     <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
-    <string name="touch_to_configure_local_repo">자세한 정보를 보고, 타인이 당신과 앱을 교환할 수 있도록 하려면 여기를 누르세요.</string>
-    <string name="deleting_repo">현재의 저장소 삭제중…</string>
-    <string name="adding_apks_format">%s 을(를) 저장소에 추가하는 중…</string>
-    <string name="writing_index_jar">서명된 색인 파일(index.jar) 작성 중…</string>
-    <string name="linking_apks">APK 파일을 저장소에 연결하는 중…</string>
-    <string name="copying_icons">앱 아이콘을 저장소에 복사하는 중…</string>
+    <string name="touch_to_configure_local_repo">자세한 사항를 보고 상대방이 당신의 앱을 교환할 수 있도록 하려면 누르세요.</string>
+    <string name="deleting_repo">현재의 저장소를 삭제 중…</string>
+    <string name="adding_apks_format">저장소에 %s 추가 중…</string>
+    <string name="writing_index_jar">서명된 색인 파일 (index.jar) 작성 중…</string>
+    <string name="linking_apks">APK를 저장소 안으로 연결하는 중…</string>
+    <string name="copying_icons">앱 아이콘을 저장소 안으로 복사 중…</string>
     <string name="icon">아이콘</string>
     <string name="next">다음</string>
     <string name="skip">건너뛰기</string>
     <string name="proxy">프록시</string>
-    <string name="enable_proxy_title">HTTP 프록시 사용</string>
-    <string name="enable_proxy_summary">모든 네트워크 요청 사항에 사용할 HTTP 프록시 설정</string>
+    <string name="enable_proxy_title">HTTP 프록시 활성화</string>
+    <string name="enable_proxy_summary">모든 네트워크 요청에 대한 HTTP 프록시를 구성합니다</string>
     <string name="proxy_host">프록시 호스트</string>
-    <string name="proxy_host_summary">프록시의 호스트명을 설정 (예시: 127.0.0.1)</string>
+    <string name="proxy_host_summary">프록시의 호스트 이름 (예시: 127.0.0.1)</string>
     <string name="proxy_port">프록시 포트</string>
-    <string name="proxy_port_summary">프록시의 포트 번호를 설정 (예시: 8118)</string>
-    <string name="status_download">%1$s 에서 다운로드 중입니다.
-        %2$s / %3$s (%4$d%%)
-    </string>
-    <string name="status_connecting_to_repo">%1$s에\n접속 중</string>
+    <string name="proxy_port_summary">프록시의 포트 번호 (예시: 8118)</string>
+    <string name="status_download">%1$s에서
+\n%2$s / %3$s (%4$d%%)
+\n다운로드 중</string>
+    <string name="status_connecting_to_repo">%1$s에
+\n연결 중</string>
     <string name="repos_unchanged">모든 저장소가 최신 상태입니다</string>
-    <string name="all_other_repos_fine">다른 저장소들은 오류를 일으키지 않았습니다.</string>
-    <string name="global_error_updating_repos">업데이트 도중 오류 발생: %s</string>
+    <string name="all_other_repos_fine">다른 모든 저장소들은 오류를 일으키지 않았습니다.</string>
+    <string name="global_error_updating_repos">업데이트 도중 오류: %s</string>
     <string name="no_permissions">사용된 권한이 없습니다.</string>
-    <string name="no_handler_app">%s을(를) 처리할 수 있는 앱이 없습니다.</string>
+    <string name="no_handler_app">%s을(를) 처리할 수 있는 어떠한 사용 가능한 앱도 없습니다.</string>
     <string name="theme">테마</string>
     <string name="unsigned">서명되지 않음</string>
     <string name="unverified">검증되지 않음</string>
     <string name="repo_num_apps">앱 개수</string>
-    <string name="repo_fingerprint">저장소 서명 키(SHA-256)의 핑거프린트</string>
+    <string name="repo_fingerprint">서명 키(SHA-256)의 핑거프린트</string>
     <string name="repo_description">설명</string>
     <string name="repo_last_update">마지막 업데이트</string>
     <string name="repo_name">이름</string>
-    <string name="unsigned_description">앱 목록을 검증할 수 없습니다. 서명되지 않은 색인으로부터 다운로드한 앱은 주의하시기 바랍니다.</string>
-    <string name="repo_not_yet_updated">이 저장소는 아직 사용되지 않았습니다. 저장소가 제공하는 앱을 보려면 이를 사용해야 합니다.</string>
+    <string name="unsigned_description">이것은 앱 목록을 검증할 수 없었다는 것을 뜻합니다. 서명되지 않는 색인으로부터 다운로드한 앱은 주의하여야 합니다.</string>
+    <string name="repo_not_yet_updated">이 저장소는 아직 사용되지 않았습니다. 저장소가 제공하는 앱을 보려면 이를 활성화해야 합니다.</string>
     <string name="unknown">알 수 없음</string>
-    <string name="repo_confirm_delete_title">저장소를 삭제할까요?</string>
-    <string name="repo_confirm_delete_body">저장소를 삭제한다는 것은 저장소의 앱들을 F-Droid에서 더이상 구할 수 없다는 의미입니다.
-        \n\n참고로, 이미 설치된 앱들은 기기에 남아있게 됩니다.
-    </string>
-    <string name="repo_disabled_notification">\"%1$s\"을(를) 해제했습니다.
-        \n\n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.
-    </string>
-    <string name="repo_added">F-Droid 저장소 %1$s 저장됨.</string>
+    <string name="repo_confirm_delete_title">저장소를 삭제하시겠습니까?</string>
+    <string name="repo_confirm_delete_body">저장소를 삭제하는 것은 저장소의 앱을 F-Droid에서 더 이상 구할 수 없다는 것을 뜻합니다. 
+\n
+\n참고: 이전에 설치된 모든 앱은 당신의 장치에 남아있게 됩니다.</string>
+    <string name="repo_disabled_notification">\"%1$s\"을(를) 비활성화했습니다. 
+\n
+\n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.</string>
+    <string name="repo_added">F-Droid 저장소 %1$s 저장되었습니다.</string>
     <string name="repo_searching_address">%1$s에서 F-Droid 저장소 찾는 중</string>
     <string name="minsdk_or_later">%s 또는 나중에</string>
     <string name="up_to_maxsdk">최대 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 최대 %2$s</string>
-    <string name="not_on_same_wifi">현재 이 기기는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
-    <string name="requires_features">다음이 필요함: %1$s</string>
+    <string name="not_on_same_wifi">당신의 장치는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크 상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
+    <string name="requires_features">필요: %1$s</string>
     <string name="category_Development">개발</string>
     <string name="category_Games">게임</string>
     <string name="category_Internet">인터넷</string>
     <string name="category_Multimedia">멀티미디어</string>
-    <string name="category_Navigation">탐색</string>
+    <string name="category_Navigation">네비게이션</string>
     <string name="category_Phone_SMS">전화 및 문자</string>
     <string name="category_Reading">독서</string>
     <string name="category_Science_Education">과학 및 교육</string>
     <string name="category_Security">보안</string>
     <string name="category_System">시스템</string>
-    <string name="requesting_root_access_body">루트 권한 요청하는 중…</string>
+    <string name="requesting_root_access_body">루트 권한을 요청하는 중…</string>
     <string name="root_access_denied_title">루트 권한 거부됨</string>
-    <string name="root_access_denied_body">기기가 루팅되지 않았거나 F-Droid의 루트 권한 요청을 거부한 경우입니다.</string>
-    <string name="swap_nfc_description">만약 상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 기기를 서로 맞대어 놓으세요.</string>
-    <string name="swap_join_same_wifi">같은 Wi-Fi 네트워크에 접속하세요</string>
-    <string name="swap">앱 교환</string>
+    <string name="root_access_denied_body">Android 장치가 루팅되지 않았거나 F-Droid의 루트 권한 요청을 거부한 경우입니다.</string>
+    <string name="swap_nfc_description">상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 장치를 서로 맞대세요.</string>
+    <string name="swap_join_same_wifi">상대방과 같은 Wi-Fi에 접속하세요</string>
+    <string name="swap">앱 교환하기</string>
     <string name="swap_no_wifi_network">아직 네트워크 없음</string>
-    <string name="swap_view_available_networks">(사용 가능한 네트워크를 열기 위해 누르기)</string>
-    <string name="open_qr_code_scanner">QR 코드 스캐너 열기</string>
+    <string name="swap_view_available_networks">탭하여 사용 가능한 네트워크를 열기</string>
+    <string name="open_qr_code_scanner">QR 스캐너 열기</string>
     <string name="swap_welcome">F-Droid에 오신 것을 환영합니다!</string>
-    <string name="swap_confirm_connect">지금 %1$s(으)로부터 앱을 가져올까요?</string>
+    <string name="swap_confirm_connect">지금 %1$s(으)로부터 앱을 받겠습니까?</string>
     <string name="app_name">F-Droid</string>
 
     <string name="unstable_updates">불안정 업데이트</string>
-    <string name="unstable_updates_summary">불안정한 버전으로의 업데이트를 제안</string>
-    <string name="uninstall_system">특별 권한 확장 업데이트/삭제</string>
-    <string name="uninstall_system_summary">특별 권한 확장을 업데이트하거나 삭제하기 위해 자세한 사항 열기</string>
-    <string name="login_title">인증이 필요합니다</string>
+    <string name="unstable_updates_summary">불안정한 버전으로의 업데이트를 제안합니다</string>
+    <string name="uninstall_system">특별 권한 확장 기능 업데이트/제거</string>
+    <string name="uninstall_system_summary">특별 권한 확장 기능을 업데이트하거나 제거하기 위해 자세한 사항 화면을 엽니다</string>
+    <string name="login_title">인증 필요</string>
     <string name="login_name">사용자 이름</string>
     <string name="login_password">암호</string>
     <string name="repo_edit_credentials">암호 변경</string>
-    <string name="repo_error_empty_username">사용자 이름이 비어있습니다. 인증서가 변경되지 않았습니다</string>
+    <string name="repo_error_empty_username">사용자 이름이 비어있어, 인증서가 바뀌지 않습니다</string>
 
     <string name="about_source">소스 코드</string>
-    <string name="about_license">라이센스</string>
+    <string name="about_license">라이선스</string>
 
     <string name="app_incompatible">호환되지 않음</string>
     <string name="links">링크</string>
-    <string name="more">펼치기</string>
-    <string name="less">접기</string>
+    <string name="more">더 보기</string>
+    <string name="less">덜 보기</string>
 
     <string name="back">뒤로</string>
-    <string name="bad_fingerprint">올바르지 않은 핑거프린트</string>
+    <string name="bad_fingerprint">잘못된 핑거프린트</string>
     <string name="invalid_url">올바른 URL이 아닙니다.</string>
     <string name="menu_settings">설정</string>
-    <string name="menu_changelog">변경사항</string>
+    <string name="menu_changelog">변경내역</string>
     <string name="menu_bitcoin">비트코인</string>
     <string name="menu_litecoin">라이트코인</string>
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="status_download_unknown_size">%1$s 에서\n%2$s\n다운로드 중</string>
+    <string name="status_download_unknown_size">%1$s에서
+\n%2$s
+\n다운로드 중</string>
     <string name="update_notification_title">저장소 업데이트 중</string>
     <string name="status_processing_xml_percent">%1$s에서 %2$s / %3$s (%4$d%%) 처리 중</string>
-    <string name="status_inserting_apps">앱 상세정보 저장 중</string>
+    <string name="status_inserting_apps">앱 자세한 사항 저장 중</string>
     <string name="permissions">권한</string>
     <string name="repo_details">저장소</string>
     <string name="repo_url">주소</string>
@@ -206,118 +207,106 @@
     <string name="category_Time">시간</string>
     <string name="category_Writing">작성</string>
 
-    <string name="empty_installed_app_list">앱이 설치되지 않았습니다.\n\n기기에 앱이 있지만, F-Droid에서는 구할 수 없습니다. 저장소를 업데이트해야 하거나, 정말로
-        저장소에 앱이 존재하지 않기 때문인 것 같습니다.
-    </string>
-    <string name="empty_can_update_app_list">모든 앱이 최신 상태입니다.\n\n모든 앱이 최신 상태이거나 저장소가 아직 업데이트 되지 않았습니다.</string>
+    <string name="empty_installed_app_list">설치된 앱이 없습니다.
+\n
+\n당신의 장치에 앱이 있지만, 그 앱은 F-Droid에서 구할 수 없습니다. 저장소를 업데이트해야 하거나, 저장소에 정말로 사용 가능한 앱이 없기 때문인 것 같습니다.</string>
+    <string name="empty_can_update_app_list">축하합니다! 당신의 앱이 최신입니다.</string>
 
-    <string name="install_error_unknown">알 수 없는 이유로 인해 설치할 수 없습니다</string>
-    <string name="uninstall_error_unknown">알 수 없는 이유로 인해 삭제할 수 없습니다</string>
-    <string name="system_install_denied_signature">확장의 서명이 올바르지 않습니다! 오류 보고서를 작성해주세요!</string>
-    <string name="system_install_denied_permissions">특별 권한이 확장에 부여되지 않았습니다! 오류 보고서를 작성해주세요!</string>
+    <string name="install_error_unknown">알 수 없는 오류로 인해 설치에 실패했습니다</string>
+    <string name="uninstall_error_unknown">알 수 없는 오류로 인해 제거에 실패했습니다</string>
+    <string name="system_install_denied_signature">확장 기능의 서명이 잘못되어 있습니다! 버그 보고를 작성해주세요!</string>
+    <string name="system_install_denied_permissions">특별 권한이 확장 기능에 부여되지 않았습니다! 버그 보고를 작성해주세요!</string>
     <string name="system_install_button_install">설치</string>
-    <string name="system_install_post_success">F-Droid 특별 권한 확장을 성공적으로 설치했습니다</string>
-    <string name="system_install_post_fail">F-Droid 특별 권한 확장 설치 실패</string>
-    <string name="system_install_post_success_message">F-Droid 특별 권한 확장이 설치되었습니다. 이는 F-Droid가 자체적으로 앱을 설치, 업그레이드, 삭제할 수
-        있게 합니다.
-    </string>
-    <string name="system_install_post_fail_message">F-Droid 특별 권한 확장 설치가 실패했습니다. 이 설치 방법은 모든 Android 배포판에서 지원되는 것은 아닙니다.
-        F-Droid 버그 트래커에서 더 많은 정보를 참조하세요.
-    </string>
+    <string name="system_install_post_success">F-Droid 특별 권한 확장 기능이 설치됨</string>
+    <string name="system_install_post_fail">F-Droid 특별 권한 확장 기능의 설치가 실패됨</string>
+    <string name="system_install_post_success_message">F-Droid 특별 권한 확장 기능이 설치되었습니다. 이는 F-Droid가 자체적으로 앱을 설치, 업데이트 및 제거할 수 있게 합니다.</string>
+    <string name="system_install_post_fail_message">F-Droid 특별 권한 확장 기능의 설치가 실패했습니다. 설치 방법은 모든 Android 배포판에서 지원되는 것은 아닙니다. F-Droid 버그 트래커에서 더 많은 정보를 참조하세요.</string>
     <string name="system_install_installing">설치 중…</string>
-    <string name="system_install_installing_rebooting">설치 및 재시작 중…</string>
-    <string name="system_install_uninstalling">삭제 중…</string>
-    <string name="system_install_question">F-Droid 특별 권한 확장을 설치하시겠습니까?</string>
-    <string name="system_install_warning">최대 10초가 소요됩니다.</string>
-    <string name="system_install_warning_lollipop">최대 10초가 소요되며 이후 기기가<b>재시작</b>됩니다.
-    </string>
-    <string name="system_uninstall">F-Droid 특별 권한 확장을 삭제할까요?</string>
-    <string name="system_uninstall_button">삭제</string>
+    <string name="system_install_installing_rebooting">설치 및 다시 시작 중…</string>
+    <string name="system_install_uninstalling">제거 중…</string>
+    <string name="system_install_question">F-Droid 특별 권한 확장 기능을 설치하시겠습니까?</string>
+    <string name="system_install_warning">최대 10초가 걸립니다.</string>
+    <string name="system_install_warning_lollipop">최대 10초가 걸리며 이후 장치가 <b>다시 시작</b>됩니다.</string>
+    <string name="system_uninstall">F-Droid 특별 권한 확장 기능을 제거하시겠습니까?</string>
+    <string name="system_uninstall_button">제거</string>
 
-    <string name="swap_nfc_title">눌러서 교환</string>
-    <string name="swap_join_same_wifi_desc">Wi-Fi를 사용해 교환하려면, 같은 네트워크에 있는지를 확인하세요. 만약 같은 네트워크에 접속할 수 없다면, 하나의 기기에서 Wi-Fi
-        핫스팟을 시작할 수도 있습니다.
-    </string>
+    <string name="swap_nfc_title">터치하여 교환하기</string>
+    <string name="swap_join_same_wifi_desc">Wi-Fi를 사용해 교환하려면, 같은 네트워크에 있는지를 확인하세요. 만약 같은 네트워크에 접근할 수 없다면, 장치 하나에서 Wi-Fi 핫스팟을 시작할 수 있습니다.</string>
     <string name="swap_join_this_hotspot">상대방이 당신의 핫스팟에 접속하도록 도와주기</string>
     <string name="swap_success">교환 성공!</string>
     <string name="swap_active_hotspot">%1$s (당신의 핫스팟)</string>
-    <string name="swap_switch_to_wifi">눌러서 Wi-Fi 네트워크로 전환</string>
-    <string name="swap_dont_show_again">더 이상 표시하지 않음</string>
-    <string name="swap_scan_or_type_url">한 명은 코드를 스캔하거나 상대방의 URL을 브라우저에 입력해야 합니다.</string>
+    <string name="swap_switch_to_wifi">탭하여 Wi-Fi 네트워크로 전환</string>
+    <string name="swap_dont_show_again">다시 보지 않기</string>
+    <string name="swap_scan_or_type_url">한 사람은 코드를 스캔하거나, 상대방의 URL을 브라우저에 입력하세요.</string>
     <string name="swap_choose_apps">앱 선택</string>
     <string name="swap_scan_qr">QR 코드 스캔</string>
-    <string name="swap_people_nearby">주위에 있는 사람</string>
-    <string name="swap_scanning_for_peers">주위에 있는 사람을 검색하는 중…</string>
-    <string name="swap_nearby">근접 교환</string>
-    <string name="swap_intro">주위에 있는 사람들과 연결하고 앱을 교환합니다.</string>
+    <string name="swap_people_nearby">근처 사람들</string>
+    <string name="swap_scanning_for_peers">근처 사람들을 검색 중…</string>
+    <string name="swap_nearby">근처 교환하기</string>
+    <string name="swap_intro">근처의 사람들과 연결하고 앱을 교환합니다.</string>
     <string name="swap_visible_bluetooth">블루투스를 통해 보여짐</string>
-    <string name="swap_setting_up_bluetooth">블루투스 가동하는 중…</string>
+    <string name="swap_setting_up_bluetooth">블루투스 설정 중…</string>
     <string name="swap_not_visible_bluetooth">블루투스를 통해 보여지지 않음</string>
     <string name="swap_visible_wifi">Wi-Fi를 통해 보여짐</string>
-    <string name="swap_setting_up_wifi">Wi-Fi 가동하는 중…</string>
+    <string name="swap_setting_up_wifi">Wi-Fi 설정 중…</string>
     <string name="swap_not_visible_wifi">Wi-Fi를 통해 보여지지 않음</string>
-    <string name="swap_wifi_device_name">기기 이름</string>
+    <string name="swap_wifi_device_name">장치 이름</string>
     <string name="swap_cant_find_peers">찾고 있는 사람을 찾을 수 없습니까?</string>
     <string name="swap_send_fdroid">F-Droid 보내기</string>
-    <string name="swap_no_peers_nearby">근처에 교환할 수 있는 사람을 찾을 수 없습니다.</string>
-    <string name="swap_connecting">접속 중</string>
+    <string name="swap_no_peers_nearby">근처에 교환할 수 있는 사람들을 찾을 수 없었습니다.</string>
+    <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>
     <string name="swap_qr_isnt_for_swap">스캔한 QR 코드는 교환 코드가 아닌 것으로 파악됩니다.</string>
-    <string name="bluetooth_unavailable">블루투스 사용할 수 없음</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid를 보낼 수 없습니다. 이 기기에서 블루투스를 사용할 수 없습니다.</string>
+    <string name="bluetooth_unavailable">블루투스를 사용할 수 없음</string>
+    <string name="swap_cant_send_no_bluetooth">F-Droid를 보낼 수 없습니다. 이 장치에서 블루투스를 사용할 수 없기 때문입니다.</string>
     <string name="loading">불러오는 중…</string>
-    <string name="swap_connection_misc_error">기기에 연결하는 도중 오류가 발생했습니다. 교환을 진행할 수 없습니다.</string>
-    <string name="swap_not_enabled">교환 비활성화됨</string>
-    <string name="swap_not_enabled_description">교환을 하기 전에, 기기가 보여져야 합니다.</string>
+    <string name="swap_connection_misc_error">장치에 연결하는 동안 오류가 발생했습니다. 교환할 수 없습니다!</string>
+    <string name="swap_not_enabled">교환이 활성화되어 있지 않음</string>
+    <string name="swap_not_enabled_description">교환을 하기 전에, 당신의 장치가 보여져야 합니다.</string>
 
     <string name="install_confirm">다음에의 접근 권한이 필요합니다</string>
-    <string name="install_confirm_update">기존의 앱을 업데이트 하시겠습니까? 기존의 데이터는 남아있을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
-    <string name="install_confirm_update_system">기존의 내장 앱을 업데이트 하시겠습니까? 기존의 데이터는 남아있을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:
-    </string>
-    <string name="install_confirm_update_no_perms">기존의 앱을 업데이트 하시겠습니까? 기존의 데이터는 남아있을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지
-        않습니다.
-    </string>
-    <string name="install_confirm_update_system_no_perms">기존의 내장 앱을 업데이트 하시겠습니까? 기존의 데이터는 남아있을 것입니다. 업데이트된 앱은 어떠한 특별한
-        접근도 요구하지 않습니다.
-    </string>
-    <string name="newPerms">새로운</string>
-    <string name="allPerms">모든</string>
+    <string name="install_confirm_update">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
+    <string name="install_confirm_update_system">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
+    <string name="install_confirm_update_no_perms">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
+    <string name="install_confirm_update_system_no_perms">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
+    <string name="newPerms">새로 출시됨</string>
+    <string name="allPerms">모두</string>
     <string name="perm_costs_money">금전을 요구할 수 있습니다</string>
     <string name="uninstall_update_confirm">이 앱을 공장 초기화 버전으로 교체하시겠습니까?</string>
-    <string name="uninstall_confirm">이 앱을 삭제하시겠습니까?</string>
-    <string name="download_error">다운로드 실패</string>
+    <string name="uninstall_confirm">이 앱을 제거하시겠습니까?</string>
+    <string name="download_error">다운로드 실패됨!</string>
 
-    <string name="perms_new_perm_prefix">새로운:</string>
+    <string name="perms_new_perm_prefix">새 권한:</string>
     <string name="perms_description_app">%1$s 제공.</string>
     <string name="downloading">다운로드 중…</string>
 
     <string name="interval_never">없음</string>
     <string name="interval_1h">1시간</string>
-    <string name="interval_4h">4시간</string>
-    <string name="interval_12h">12시간</string>
+    <string name="interval_4h">4시간마다</string>
+    <string name="interval_12h">12시간마다</string>
     <string name="interval_1d">매일</string>
     <string name="interval_1w">매주</string>
-    <string name="interval_2w">2주</string>
+    <string name="interval_2w">2주마다</string>
 
     <string name="theme_light">밝음</string>
     <string name="theme_dark">어두움</string>
     <string name="theme_night">야간</string>
-    <string name="update_auto_download">업데이트를 자동으로 다운로드</string>
-    <string name="update_auto_download_summary">업데이트 파일을 백그라운드에서 다운로드합니다</string>
+    <string name="update_auto_download">업데이트를 자동으로 얻기</string>
+    <string name="update_auto_download_summary">업데이트를 자동으로 다운로드하고 업데이트의 설치를 알려줍니다</string>
     <string name="repo_provider">저장소: %s</string>
 
-    <string name="menu_email">제작자에게 이메일 보내기</string>
-    <string name="antinonfreeassetslist">이 앱은 자유롭지 않은 구성요소를 포함하고 있습니다</string>
+    <string name="menu_email">저자에게 이메일 보내기</string>
+    <string name="antinonfreeassetslist">이 앱은 자유롭지 않은 자산을 포함합니다</string>
 
     <string name="useTor">Tor 사용</string>
-    <string name="useTorSummary">향상된 프라이버시를 위해 Tor를 통한 다운로드 트래픽을 강제합니다</string>
-    <string name="empty_search_available_app_list">일치하는 앱이 없습니다.</string>
-    <string name="system_install_not_supported">F-Droid 특별 권한 확장을 설치하려면 Android 5.1보다 높은 버전이 필요합니다.</string>
+    <string name="useTorSummary">향상된 개인정보 보호를 위해 Tor를 통한 다운로드 트래픽을 강제합니다. Orbot이 필요합니다</string>
+    <string name="empty_search_available_app_list">일치하는 사용 가능한 앱이 없습니다.</string>
+    <string name="system_install_not_supported">F-Droid 특별 권한 확장 기능을 설치하는 것은 현재 Android 5.1 이상에서 지원되지 않습니다.</string>
 
-    <string name="swap_stopping_wifi">Wi-Fi 중단하는 중…</string>
+    <string name="swap_stopping_wifi">Wi-Fi 중지하는 중…</string>
     <string name="download_pending">다운로드 시작을 기다리는 중…</string>
-    <string name="install_error_notify_title">%s 설치 오류</string>
-    <string name="uninstall_error_notify_title">%s 삭제 오류</string>
+    <string name="install_error_notify_title">%s 설치 중 오류</string>
+    <string name="uninstall_error_notify_title">%s 제거 중 오류</string>
 
 
     <string name="installing">설치하는 중…</string>
@@ -328,9 +317,144 @@
     <string name="keep_week">1주</string>
     <string name="keep_month">1달</string>
     <string name="keep_year">1년</string>
-    <string name="keep_forever">계속 보관</string>
+    <string name="keep_forever">영원히</string>
 
-    <string name="crash_dialog_title">F-Droid가 중지되었습니다</string>
-    <string name="crash_dialog_text">예기치 못한 오류로 인해 앱이 중지되었습니다. 자세한 사항을 이메일로 전송해 이 문제를 해결하도록 도와주시겠습니까?</string>
-    <string name="crash_dialog_comment_prompt">추가적인 정보와 코멘트를 입력하실 수 있습니다:</string>
-</resources>
+    <string name="crash_dialog_title">F-Droid가 중지됨</string>
+    <string name="crash_dialog_text">예기치 못한 오류로 인해 앱이 강제로 중지되었습니다. 자세한 사항을 이메일로 보내 이슈를 해결하도록 도와주시겠습니까?</string>
+    <string name="crash_dialog_comment_prompt">여기에 추가적인 정보와 댓글을 추가할 수 있습니다:</string>
+<string name="main_menu__latest_apps">최신</string>
+    <string name="main_menu__categories">카테고리</string>
+    <string name="main_menu__swap_nearby">근처</string>
+
+    <string name="preference_manage_installed_apps">설치된 앱 관리</string>
+
+
+    <string name="notification_action_update">업데이트</string>
+    <string name="notification_action_cancel">취소</string>
+    <string name="notification_action_install">설치</string>
+
+    <string name="app_list__name__downloading_in_progress">%1$s 다운로드 중</string>
+    <string name="app_list__name__successfully_installed">%1$s 설치됨</string>
+    <string name="updates__tts__download_app">다운로드</string>
+    <string name="warning_no_internet">업데이트할 수 없습니다, 인터넷에 연결되어 있습니까?</string>
+    <string name="notification_title_single_update_available">업데이트 사용 가능</string>
+    <string name="notification_title_summary_install_error">설치 실패됨</string>
+    <string name="by_author_format">%s 제작</string>
+    <string name="keep_install_history">설치 내역 유지</string>
+    <string name="keep_install_history_summary">F-Droid 안에 모든 설치 및 제거의 기록을 보관합니다</string>
+    <string name="force_old_index">이전 색인 형식을 강제</string>
+    <string name="force_old_index_summary">버그나 호환성 이슈가 있는 경우, XML 앱 색인을 사용합니다</string>
+    <string name="update_auto_install">자동으로 업데이트 설치</string>
+    <string name="update_auto_install_summary">백그라운드에서 업데이트 앱을 다운로드 및 설치합니다</string>
+    <string name="app_details_donate_prompt_unknown_author">%1$s의 개발자에게 후원해주세요!</string>
+    <string name="app_details_donate_prompt">%1$s 앱은 %2$s님이 만들었습니다. 그들에게 후원해주세요!</string>
+
+    <string name="app_details__incompatible_mismatched_signature">설치된 버전의 서명과 다름</string>
+    <string name="app_details__no_versions__no_compatible_signatures">호환되는 서명으로 된 버전이 없습니다</string>
+    <string name="app_details__no_versions__none_compatible_with_device">장치와 호환되는 버전이 없습니다</string>
+    <string name="app_version_x_available">버전 %1$s 사용 가능</string>
+    <string name="app_version_x_installed">버전 %1$s</string>
+    <string name="app_recommended_version_installed">버전 %1$s (권장)</string>
+    <string name="app__newly_added">새로 출시됨</string>
+    <string name="app__tts__cancel_download">다운로드 취소</string>
+    <string name="app__install_downloaded_update">업데이트</string>
+    <string name="app_installed_media">%s에 설치된 파일</string>
+    <string name="app_list_download_ready">다운로드되어, 설치할 준비가 되었습니다</string>
+    <string name="app_list__dismiss_app_update">업데이트 무시됨</string>
+    <string name="app_list__dismiss_downloading_app">다운로드가 취소됨</string>
+
+    <string name="installed_apps__activity_title">설치된 앱</string>
+    <string name="installed_app__updates_ignored">업데이트 무시됨</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">버전 %1$s의 업데이트 무시됨</string>
+    <string name="installed_app__file_corrupt">F-Droid가 EIO 오류를 수신했습니다: %s은(는) 아마도 손상되었을 것입니다!</string>
+    <string name="updates__tts__download_updates_for_all_apps">모든 업데이트 다운로드</string>
+
+    <string name="updates__app_with_known_vulnerability__ignore">무시</string>
+
+    <string name="updates__hide_updateable_apps">앱 숨기기</string>
+    <string name="updates__show_updateable_apps">앱 보이기</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="other">앱 %1$d개의 업데이트를 다운로드합니다.</item>
+</plurals>
+
+    <string name="versions">버전</string>
+    <string name="clear_search">검색 지우기</string>
+
+    <string name="repositories_summary">앱의 추가적인 출처를 추가합니다</string>
+    <string name="menu_video">동영상</string>
+    <string name="menu_license">라이선스: %s</string>
+    <string name="latest__empty_state__no_recent_apps">최근 앱을 찾을 수 없습니다</string>
+    <string name="latest__empty_state__never_updated">앱 목록이 업데이트되면, 최신 앱이 여기에 보여주어야 합니다</string>
+    <string name="latest__empty_state__no_enabled_repos">저장소를 활성화하고 그것을 업데이트하면, 최신 앱이 여기에 보여주어야 합니다</string>
+
+    <string name="categories__empty_state__no_categories">표시할 카테고리가 없습니다</string>
+
+    <string name="preference_category__my_apps">내 앱</string>
+    <string name="details_new_in_version">버전 %s의 새로운 기능</string>
+
+    <string name="antifeatureswarning">이 앱은 여러분이 좋아하지 않을 수 있는 기능이 있습니다.</string>
+    <string name="hide_anti_feature_apps_on">안티 기능을 요구하는 앱을 회색으로 표시합니다</string>
+    <string name="download_404">요청된 파일을 찾을 수 없었습니다.</string>
+    <string name="status_inserting_x_apps">%3$s에서 앱 자세한 사항(%1$d/%2$d)을 저장 중</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="other">%d개 모두 보기</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">인터넷이 안되나요? 근처 사람들로부터 앱을 받으세요!</string>
+    <string name="nearby_splash__find_people_button">내 근처의 사람들 찾기</string>
+    <string name="nearby_splash__both_parties_need_fdroid">근처에 사용할 양 당사자는 %1$s가 필요합니다.</string>
+
+    <string name="app__tts__downloading_progress">다운로드 중, %1$d%% 완료</string>
+    <plurals name="notification_summary_more">
+	<item quantity="other">+%1$d개 더 보기…</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">설치할 준비가 되었습니다</string>
+    <string name="notification_title_single_ready_to_install_update">업데이트를 설치할 준비가 되었습니다</string>
+    <string name="notification_title_single_install_error">설치 실패됨</string>
+    <string name="notification_content_single_downloading">\"%1$s\" 다운로드 중…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\"의 업데이트를 다운로드 중…</string>
+    <string name="notification_content_single_installing">\"%1$s\" 설치 중…</string>
+    <string name="notification_content_single_installed">성공적으로 설치됨</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="other">업데이트 %1$d개</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="other">설치된 앱 %1$d개</item>
+</plurals>
+    <string name="notification_title_summary_update_available">업데이트 사용 가능</string>
+    <string name="notification_title_summary_downloading">다운로드 중…</string>
+    <string name="notification_title_summary_downloading_update">업데이트를 다운로드 중…</string>
+    <string name="notification_title_summary_ready_to_install">설치할 준비가 되었습니다</string>
+    <string name="notification_title_summary_ready_to_install_update">업데이트를 설치할 준비가 되었습니다</string>
+    <string name="notification_title_summary_installing">설치 중</string>
+    <string name="notification_title_summary_installed">성공적으로 설치됨</string>
+    <string name="tts_category_name">카테고리 %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="other">%2$s 카테고리에서 앱 %1$d개 모두 보기</item>
+</plurals>
+
+    <string name="details_last_updated_today">오늘 업데이트됨</string>
+    <plurals name="details_last_update_days">
+	<item quantity="other">%1$d일 전에 업데이트됨</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="other">%1$d주 전에 업데이트됨</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="other">%1$d달 전에 업데이트됨</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="other">%1$d년 전에 업데이트됨</item>
+</plurals>
+<string name="app_details__no_versions__show_incompat_versions">어쨌든 여기에 호환되지 않는 버전을 보여주려면, \"%1$s\" 설정을 활성화하세요.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">설치된 버전은 모든 사용 가능한 버전과 호환되지 않습니다. 앱을 제거하는 것은 호환되는 버전을 보고 설치할 수 있도록 합니다. 이는 때때로, 앱들이 다른 인증서으로 서명되어 있다면, Google Play 또는 다른 출처를 통해 설치된 앱에서 발생합니다.</string>
+
+    <string name="app_permission_storage">F-Droid는 이것을 저장공간에 설치하려면 저장공간 권한이 필요합니다. 설치를 계속하려면 다음 화면에서 그것을 허용해주세요.</string>
+
+    <string name="app_list__dismiss_vulnerable_app">취약점이 무시됨</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 이 앱을 제거할 것을 권장합니다.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 최신 버전으로 업그레이드할 것을 권장합니다.</string>
+    <string name="antifeatures">안티 기능</string>
+    <string name="hide_anti_feature_apps">안티 기능 앱을 회색으로 표시</string>
+    </resources>

@@ -328,7 +328,7 @@
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
     <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
     <string name="useTor">Użyj Tora</string>
-    <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>
+    <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność, wymagany Orbot</string>
     <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>
     <string name="repo_provider">Repozytorium: %s</string>
 

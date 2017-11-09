@@ -338,7 +338,7 @@
 
     <string name="menu_email">Écrire à l\'auteur</string>
     <string name="useTor">Utiliser Tor</string>
-    <string name="useTorSummary">Télécharger anonymement grâce à Tor</string>
+    <string name="useTorSummary">Télécharger anonymement grâce à Tor. Requiert Orbot</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi en cours…</string>
     <string name="repo_provider">Dépôt : %s</string>
 
@@ -446,9 +446,9 @@
 	<item quantity="other">Voir toutes %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Pas de connexion Internet? Obtenez les applications depuis des appareils de votre entourage !</string>
-    <string name="nearby_splash__find_people_button">Trouver des gens/appareils dans les environs</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Chacun utilisateur proche doit utiliser %1$s.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez les applications depuis les appareils de votre entourage !</string>
+    <string name="nearby_splash__find_people_button">Trouvez des personnes autour de vous</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
 
     <string name="tts_category_name">Catégorie %1$s</string>
 
@@ -461,7 +461,7 @@
 	<item quantity="one">Mis à jour il y a %1$s jour</item>
 	<item quantity="other">Mis à jour il y a %1$s jours</item>
 </plurals>
-    <string name="latest__empty_state__no_recent_apps">Aucunes applications récentes trouvé</string>
+    <string name="latest__empty_state__no_recent_apps">Aucune application récente trouvée</string>
     <string name="categories__empty_state__no_categories">Aucune catégorie à afficher</string>
 
     <string name="latest__empty_state__no_enabled_repos">Quand vous activez un dépôt et le mettez à jour, les dernières

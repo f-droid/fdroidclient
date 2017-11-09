@@ -302,7 +302,7 @@
     <string name="repo_provider">软件源：%s</string>
 
     <string name="useTor">使用 Tor</string>
-    <string name="useTorSummary">强制下载流量使用 Tor 以增强隐私保障</string>
+    <string name="useTorSummary">强制下载流量通过 Tor 以增强隐私保障。需要 Orbot</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="update_auto_download">自动下载更新</string>
     <string name="update_auto_download_summary">自动下载更新并显示安装通知</string>

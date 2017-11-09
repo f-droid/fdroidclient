@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez
-        először el kell távolítani a régit. Kérem tegye meg ezt és próbálja újra. (Megjegyzendő, hogy az eltávolítás
-        törli az alkalmazás minden tárolt adatát)
-    </string>
-    <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is
-        megpróbálja telepíteni?
-    </string>
+    <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Kérem, tegye meg ezt, és próbálja újra. (Figyelem: az eltávolítás törli az alkalmazás minden tárolt adatát.)</string>
+    <string name="installIncompatible">Az alkalmazás nem kompatibilis ezzel a készülékkel, ennek ellenére is telepíti?</string>
     <string name="version">Verzió</string>
     <string name="cache_downloaded">Gyorsítótárazott appok megtartása</string>
     <string name="updates">Frissítések</string>
@@ -17,7 +12,7 @@
     <string name="automatic_scan_wifi_on">Automatikus alkalmazáslista-frissítés csak korlátlan kapcsolatokon, pl.
         Wi-Fi-n keresztül
     </string>
-    <string name="notify">Frissítési értesítések</string>
+    <string name="notify">Értesítés frissítésekről</string>
     <string name="notify_on">Értesít ha frissítés érhető el</string>
     <string name="app_details">App részletei</string>
     <string name="no_such_app">Nem található ilyen app.</string>
@@ -27,7 +22,7 @@
     <string name="about_version">Verzió</string>
     <string name="app_installed">Telepítve</string>
     <string name="app_not_installed">Nincs telepítve</string>
-    <string name="added_on">Hozzáadva %s</string>
+    <string name="added_on">Hozzáadva: %s</string>
     <string name="ok">Oké</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
@@ -45,13 +40,13 @@
     <string name="repo_exists_and_enabled">A fogadott repo már telepítve és engedélyezve van.</string>
     <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repót, mielőtt hozzáad egyet eltérő kulccsal.
     </string>
-    <string name="menu_manage">Repo-k kezelése</string>
+    <string name="menu_manage">Tárolók</string>
     <string name="menu_search">Keresés</string>
-    <string name="menu_add_repo">Új repository</string>
+    <string name="menu_add_repo">Új tároló</string>
     <string name="menu_launch">Indítás</string>
-    <string name="menu_share">Megoszt</string>
-    <string name="menu_install">Telepít</string>
-    <string name="menu_uninstall">Eltávolít</string>
+    <string name="menu_share">Megosztás</string>
+    <string name="menu_install">Telepítés</string>
+    <string name="menu_uninstall">Eltávolítás</string>
     <string name="menu_ignore_all">Mellőz minden frissítést</string>
     <string name="menu_ignore_this">Ezt a frissítést mellőzi</string>
     <string name="menu_website">Weboldal</string>
@@ -70,7 +65,7 @@
     <string name="expert">Szakértő mód</string>
     <string name="expert_on">Extra infókat mutat és extra beállításokat engedélyez</string>
     <string name="search_hint">Alkalmazások keresése</string>
-    <string name="appcompatibility">App kompatibilitás</string>
+    <string name="appcompatibility">Alkalmazáskompatibilitás</string>
     <string name="show_incompat_versions">Inkompatibilis verzió</string>
     <string name="show_incompat_versions_on">Megjeleníti, ha az app verzió nem kompatibilis a készülékkel</string>
     <string name="rooted">Root ignorálása</string>
@@ -142,12 +137,12 @@
     <string name="enable_proxy_title">HTTP proxy engedélyezése</string>
     <string name="enable_proxy_summary">HTTP proxy beállítása minden hálózati kéréshez</string>
     <string name="proxy_host">Proxyszerver</string>
-    <string name="proxy_host_summary">A proxyszerver hosztnevének beállítása (pl. 127.0.0.1)</string>
+    <string name="proxy_host_summary">A proxyszerver kiszolgálóneve (pl. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
-    <string name="proxy_port_summary">A proxyszerver portszámának beállítása (pl. 8118)</string>
+    <string name="proxy_port_summary">A proxyszerver portszáma (pl. 8118)</string>
 
     <string name="status_download_unknown_size">Letöltés\n%2$s, forrás:\n%1$s</string>
-    <string name="status_inserting_apps">Alkalmazás részleteinek mentése</string>
+    <string name="status_inserting_apps">Alkalmazásadatok részleteinek mentése</string>
     <string name="global_error_updating_repos">Hiba a frissítés során: %s</string>
     <string name="permissions">Engedélyek</string>
     <string name="unsigned">Aláíratlan</string>
@@ -190,22 +185,17 @@
         az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek
         az appjai.
     </string>
-    <string name="empty_can_update_app_list">Minden app naprakész.\n\nGratulálunk! Minden appja naprakész (vagy a
-        tárolói elavultak).
-    </string>
+    <string name="empty_can_update_app_list">Gratulálunk! Minden appja naprakész.</string>
 
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt nem sikerült</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt nem sikerült</string>
-    <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készíts egy hibajelentést!</string>
+    <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Kérjük, készíts egy hibajelentést!</string>
     <string name="system_install_button_install">Telepítés</string>
     <string name="system_install_installing">Telepítés…</string>
     <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
     <string name="system_install_uninstalling">Eltávolítás…</string>
-    <string name="system_install_warning">Ez akár 10 másodpercet is igénybe vehet.</string>
-    <string name="system_install_warning_lollipop">Ez akár 10 másodpercet is igénybe vehet, és az eszköz
-        <b>újra lesz indítva</b>
-        utána.
-    </string>
+    <string name="system_install_warning">Ez legfeljebb 10 másodpercig tart.</string>
+    <string name="system_install_warning_lollipop">Ez akár legfeljebb 10 másodpercig tart, majd az eszköz <b>újraindul</b>.</string>
     <string name="system_uninstall_button">Eltávolítás</string>
 
     <string name="loading">Betöltés…</string>
@@ -228,7 +218,7 @@
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
     <string name="uninstall_update_confirm">Szeretné lecserélni ezt az appot a gyári verzióra?</string>
     <string name="uninstall_confirm">Szeretné eltávolítani ezt az appot?</string>
-    <string name="download_error">Letöltés sikertelen</string>
+    <string name="download_error">Letöltés sikertelen!</string>
 
     <string name="perms_new_perm_prefix">Új:</string>
     <string name="downloading">Letöltés…</string>
@@ -250,8 +240,8 @@
         elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?
     </string>
     <string name="crash_dialog_comment_prompt">Itt adhat meg további adatokat és megjegyzéseket:</string>
-    <string name="update_auto_download">Frissítések automatikus letöltése</string>
-    <string name="update_auto_download_summary">Frissítések letöltése a háttérben</string>
+    <string name="update_auto_download">Frissítések automatikus lekérés</string>
+    <string name="update_auto_download_summary">A frissítések a háttérben letöltődnek, majd megjelenik egy értesítés a telepítéshez</string>
     <string name="choose_bt_send">Válassza ki a Bluetooth küldés módját</string>
     <string name="repo_provider">Tároló: %s</string>
 
@@ -269,7 +259,7 @@
     <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.
     </string>
     <string name="menu_email">E-mail a készítőnek</string>
-    <string name="useTorSummary">Letöltési forgalom kényszerítése Tor használatára az adatvédelem növeléséért</string>
+    <string name="useTorSummary">Letöltési forgalom kényszerítése Tor használatára az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
     <string name="antinonfreeassetslist">Ez az app nem szabad eszközöket tartalmaz</string>
@@ -330,9 +320,9 @@
     <string name="local_repo_running">Az F-Droid cserére kész</string>
 <string name="main_menu__latest_apps">Legújabb</string>
     <string name="main_menu__categories">Kategóriák</string>
-    <string name="main_menu__swap_nearby">Közeli</string>
+    <string name="main_menu__swap_nearby">Közelben</string>
 
-    <string name="preference_manage_installed_apps">Telepített Alkalmazások Kezelése</string>
+    <string name="preference_manage_installed_apps">Telepített alkalmazások kezelése</string>
 
 
     <string name="notification_action_update">Frissítés</string>
@@ -343,9 +333,9 @@
     <string name="app__newly_added">Új</string>
     <string name="app__install_downloaded_update">Frissítés</string>
 
-    <string name="installed_apps__activity_title">Telepített Alkalmazások</string>
+    <string name="installed_apps__activity_title">Telepített alkalmazások</string>
     <string name="menu_video">Videó</string>
-    <string name="preference_category__my_apps">Az én-m Apps</string>
+    <string name="preference_category__my_apps">Saját alkalmazások</string>
     <string name="app_list__name__downloading_in_progress">%1$s letöltése</string>
     <string name="app_list__name__successfully_installed">%1$s telepítve</string>
     <string name="warning_no_internet">Nem sikerült a frissítés. Csatlakozva vagy az internethez?</string>
@@ -353,7 +343,7 @@
     <string name="notification_title_single_update_available">Frissítés elérhető</string>
     <string name="notification_title_summary_install_error">A telepítés sikertelen</string>
     <string name="force_old_index_summary">Abban az esetben, ha bugok, vagy kompatibilitási problémák vannak, használd az XML app indexet</string>
-    <string name="app_details_donate_prompt_unknown_author">Fizess egy kávét a %1$s fejlesztőinek!</string>
+    <string name="app_details_donate_prompt_unknown_author">Vegyél egy kávét a(z) %1$s fejlesztőinek!</string>
     <string name="app_details__no_versions__show_incompat_versions">Az inkompatibilis verziók mutatásához engedélyezd a \"%1$s\" beállítást.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nem található kompatibilis aláírással rendelkező verzió</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nem található az eszközöddel kompatibilis verzió</string>
@@ -389,7 +379,7 @@
 
     <string name="categories__empty_state__no_categories">Nincsenek megjelenítendő kategóriák</string>
 
-    <string name="details_new_in_version">Új verzió a %s-ban</string>
+    <string name="details_new_in_version">Új a(z) %s verzióban</string>
 
     <string name="antifeatureswarning">Ennek az alkalmazásnak vannak előnytelen tulajdonságai.</string>
     <string name="antifeatures">Előnytelen tulajdonságok</string>
@@ -400,4 +390,74 @@
     <string name="repo_added">A %1$s F-Droid tároló mentve.</string>
     <string name="up_to_maxsdk">%s-ig</string>
     <string name="minsdk_up_to_maxsdk">%1$s-től %2$s-ig</string>
-    </resources>
+    <string name="by_author_format">Készítette: %s</string>
+    <string name="force_old_index">Régi indexformátum kényszerítése</string>
+    <string name="app_details_donate_prompt">A(z) %1$s alkalmazást %2$s készítette. Vegyél nekik egy kávét!</string>
+
+    <string name="app_details__incompatible_mismatched_signature">A telepített verzióétól eltérő aláírás</string>
+    <string name="app_version_x_available">%1$s verzió elérhető</string>
+    <string name="app_version_x_installed">%1$s verzió</string>
+    <string name="app_recommended_version_installed">%1$s verzió (ajánlott)</string>
+    <string name="app__tts__cancel_download">Letöltés megszakítása</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">A(z) %1$s verzió frissítései ignorálva</string>
+    <string name="repositories_summary">További alkalmazásforrások hozzáadása</string>
+    <string name="writing_index_jar">Aláírt indexfájl (index.jar) írása…</string>
+    <string name="all_other_repos_fine">A többi repó nem adott hibát.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet? Szerezz appokat a közelben lévő emberektől!</string>
+    <string name="nearby_splash__find_people_button">Közelben lévő emberek keresése</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek szüksége van %1$sra a funkció használatához.</string>
+
+    <string name="install_error_notify_title">Hiba a(z) %s telepítése közben</string>
+    <string name="uninstall_error_notify_title">Hiba a(z) %s eltávolítása közben</string>
+
+
+    <string name="app__tts__downloading_progress">Letöltés, %1$d%% kész</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d további…</item>
+	<item quantity="other">+%1$d további…</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">Telepítésre kész</string>
+    <string name="notification_title_single_ready_to_install_update">A frissítés telepítésre kész</string>
+    <string name="notification_title_single_install_error">A telepítés sikertelen</string>
+    <string name="notification_content_single_downloading">„%1$s” letöltése…</string>
+    <string name="notification_content_single_downloading_update">„%1$s” frissítésének letöltése…</string>
+    <string name="notification_content_single_installing">„%1$s” telepítése…</string>
+    <string name="notification_content_single_installed">Sikeresen telepítve</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d frissítés</item>
+	<item quantity="other">%1$d frissítés</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d app telepítve</item>
+	<item quantity="other">%1$d app telepítve</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Frissítés elérhető</string>
+    <string name="notification_title_summary_downloading">Letöltés…</string>
+    <string name="notification_title_summary_downloading_update">Frissítés letöltése…</string>
+    <string name="notification_title_summary_ready_to_install">Telepítésre kész</string>
+    <string name="notification_title_summary_ready_to_install_update">A frissítés telepítésre kész</string>
+    <string name="notification_title_summary_installing">Telepítés folyamatban</string>
+    <string name="notification_title_summary_installed">Sikeresen telepítve</string>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">%1$d app megtekintése a(z) %2$s kategóriában</item>
+	<item quantity="other">Mind a(z) %1$d app megtekintése a(z) %2$s kategóriából</item>
+</plurals>
+
+    <string name="details_last_updated_today">Ma frissítve</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Tegnap frissítve</item>
+	<item quantity="other">%1$d napja frissítve</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">%1$d hete frissítve</item>
+	<item quantity="other">%1$d hete frissítve</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">%1$d hónapja frissítve</item>
+	<item quantity="other">%1$d hónapja frissítve</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">%1$d éve frissítve</item>
+	<item quantity="other">%1$d éve frissítve</item>
+</plurals>
+</resources>

@@ -422,7 +422,7 @@
     <string name="hide_anti_feature_apps">Sombrear aplicacións con características indesexadas</string>
     <string name="hide_anti_feature_apps_on">Sombrear aplicacións que requiran características indesexadas</string>
     <string name="useTor">Utilice Tor</string>
-    <string name="useTorSummary">Forzar a descarga a través de Tor para maior intimidade</string>
+    <string name="useTorSummary">Forzar a descarga a través de Tor para maior intimidade. Require Orbot</string>
     <string name="download_404">O ficheiro solicitado non foi atopado.</string>
     <string name="status_inserting_x_apps">Gardando detalles do aplicativo (%1$d/%2$d) de %3$s</string>
     <plurals name="button_view_all_apps_in_category">

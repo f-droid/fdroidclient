@@ -155,13 +155,13 @@
     <string name="local_repo_running">F-Droid estas preta por interŝanĝo</string>
     <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn aplikaĵojn.</string>
     <string name="writing_index_jar">Konservado de subskribita indeksa dosiero (index.jar)…</string>
-    <string name="proxy">Prokurilo</string>
-    <string name="enable_proxy_title">Aktivigi HTTP prokurilon</string>
-    <string name="enable_proxy_summary">Uzi HTTP prokurilon por ĉiuj retkonektoj</string>
-    <string name="proxy_host">Prokurila adreso</string>
-    <string name="proxy_port">Prokurila pordo</string>
-    <string name="proxy_host_summary">Adreso de via prokurilo (ekz. 127.0.0.1)</string>
-    <string name="proxy_port_summary">Porda numero de via prokurilo (ekz. 8118)</string>
+    <string name="proxy">Retperanto</string>
+    <string name="enable_proxy_title">Aktivigi HTTP-retperanton</string>
+    <string name="enable_proxy_summary">Uzi HTTP-retperanton  por ĉiuj retkonektoj</string>
+    <string name="proxy_host">Adreso de retperanto</string>
+    <string name="proxy_port">Pordo de retperanto</string>
+    <string name="proxy_host_summary">Adreso de via retperanto (ekz. 127.0.0.1)</string>
+    <string name="proxy_port_summary">Porda numero de via retperanto (ekz. 8118)</string>
 
     <string name="status_download">Elŝutado
         %2$s / %3$s (%4$d%%) el
@@ -328,7 +328,7 @@
     </string>
     <string name="crash_dialog_comment_prompt">Vi povas aldoni ekstrajn informojn kaj komentojn tien ĉi:</string>
     <string name="useTor">Uzi Tor</string>
-    <string name="useTorSummary">Devigi elŝuti per Tor-reto por plibonigi privatecon</string>
+    <string name="useTorSummary">Devigi elŝuti per la Tor-reto por plibonigi privatecon, postulas Orbot</string>
     <string name="swap_stopping_wifi">Ĉesado de vifio…</string>
     <string name="repo_provider">Deponejo: %s</string>
 

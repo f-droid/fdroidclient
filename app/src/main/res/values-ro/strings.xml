@@ -274,7 +274,7 @@
     <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le
         instala
     </string>
-    <string name="useTorSummary">Pentru a îti proteja intimitatea, forțeaza folosirea Tor pentru descărcări</string>
+    <string name="useTorSummary">Pentru a îți proteja intimitatea, forțează folosirea Tor pentru descărcări. Necesită Orbot</string>
     <string name="no_handler_app">Nu exista nici o aplicație disponibila care sa poata folosi %s.</string>
     <string name="install_confirm">are nevoie de acces la</string>
     <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare la o aplicație existenta? Datele curente nu se vor pierde. Aplicația odată actualizată va primi acces la:</string>

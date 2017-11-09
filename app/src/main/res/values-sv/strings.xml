@@ -205,7 +205,7 @@
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 
     <string name="useTor">Använd Tor</string>
-    <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet</string>
+    <string name="useTorSummary">Tvinga nerladdningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar appdetaljer</string>
     <string name="repo_added">Sparade F-Droid-förråd %1$s.</string>

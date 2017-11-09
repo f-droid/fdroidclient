@@ -462,4 +462,13 @@
 
     <string name="empty_search_available_app_list">འདི་དང་མཐུན་པའི་མཉེན་ཆས་རྙེད་མ་སོང་།</string>
 
+    <string name="app_list__dismiss_app_update">ཡ་ལན་མ་བྱས་པའི་གསར་བསྒྱུར།</string>
+    <string name="app_list__dismiss_vulnerable_app">ཡ་ལན་མ་བྱས་པའི་ཉེན་ཁ།</string>
+    <string name="app_list__dismiss_downloading_app">ཕབ་ལེན་བརྩི་མེད།</string>
+
+    <string name="installed_app__file_corrupt">ཨེཕ་རོཌ་ལ་EIO ནོར་སྐྱོན་འདུག :%s ཕལ་ཆེར་སྐྱོན་ཤོར་ཡོད་ས་རེད།</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">ང་ཚོས་ %1$s འདི་དང་མཉམ་དུ་ཉེན་ཁ་འབྱུང་ཉེ་བ་རྙེད་སོང་། མཉེན་ཆས་འདི་ལམ་སེང་ཕྱིར་དབྱུང་བྱེད་རྒྱུའི་རེ་བ་ཞུ་གི་ཡོད།</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">ང་ཚོས་ %1$s འདི་དང་མཉམ་དུ་ཉེན་ཁ་འབྱུང་ཉེ་བ་རྙེད་སོང་། ཁྱེད་རང་གིས་གང་མགྱོགས་ཐོན་རིམ་གསར་ཤོས་འདི་ལ་གསར་བསྒྱུར་བྱེད་རྒྱུའི་རེ་བ་འདོན་རྒྱུ་ཡིན།</string>
+    <string name="updates__app_with_known_vulnerability__ignore">ཡ་ལན་མ་བྱས་པ།</string>
+
     </resources>

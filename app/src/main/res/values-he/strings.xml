@@ -320,7 +320,7 @@
     <string name="repo_provider">מאגר: %s</string>
 
     <string name="useTor">שימוש ב־Tor</string>
-    <string name="useTorSummary">אילוץ העברת תעבורת ההורדה דרך Tor להגברת הפרטיות</string>
+    <string name="useTorSummary">אילוץ העברת תעבורת ההורדה דרך Tor להגברת הפרטיות. דורש Orbot</string>
     <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
     <string name="update_auto_download">הורדת עדכונים אוטומטית</string>
     <string name="update_auto_download_summary">העדכונים מתקבלים אוטומטית ותופיע הודעה להתקין אותם</string>
