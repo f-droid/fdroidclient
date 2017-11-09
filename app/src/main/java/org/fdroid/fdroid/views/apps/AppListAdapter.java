@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.Schema;
 
 class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController> {
 
@@ -16,6 +17,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     AppListAdapter(Activity activity) {
         this.activity = activity;
         divider = new AppListItemDivider(activity);
+        setHasStableIds(true);
     }
 
     public void setAppCursor(Cursor cursor) {
@@ -33,6 +35,12 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     public void onBindViewHolder(StandardAppListItemController holder, int position) {
         cursor.moveToPosition(position);
         holder.bindModel(new App(cursor));
+    }
+
+    @Override
+    public long getItemId(int position) {
+        cursor.moveToPosition(position);
+        return cursor.getLong(cursor.getColumnIndex(Schema.AppMetadataTable.Cols.ROW_ID));
     }
 
     @Override
