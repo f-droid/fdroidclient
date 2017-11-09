@@ -329,7 +329,7 @@
     <string name="repo_provider">Bron: %s</string>
 
     <string name="useTor">Tor gebruiken</string>
-    <string name="useTorSummary">Forceer downloadverkeer door Tor heen voor betere privacy</string>
+    <string name="useTorSummary">Dwing downloadverkeer door Tor heen voor betere privacy. Vereist Orbot</string>
     <string name="swap_stopping_wifi">Wifi stoppen…</string>
     <string name="update_auto_download">Download updates automatisch</string>
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een

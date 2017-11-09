@@ -253,7 +253,7 @@
     <string name="linking_apks">正在連結 APK 到應用軟體倉庫裡…</string>
     <string name="next">下一步</string>
     <string name="useTor">使用 Tor</string>
-    <string name="useTorSummary">為了增強隱私保護，強制下載流量通過 Tor</string>
+    <string name="useTorSummary">強制下載流量通過 Tor 以增強隱私保護。需要Orbot</string>
     <string name="enable_proxy_summary">為所有的網路要求組態 HTTP Proxy</string>
     <string name="proxy_host">Proxy 主機</string>
     <string name="proxy_host_summary">您的 proxy 主機名稱 (例如 127.0.0.1)</string>

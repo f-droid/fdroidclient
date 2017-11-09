@@ -4,11 +4,11 @@
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
         (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)
     </string>
-    <string name="installIncompatible">Applicazione incompatibile con il tuo dispositivo, installarla lo stesso?</string>
+    <string name="installIncompatible">App incompatibile con il tuo dispositivo, installarla lo stesso?</string>
     <string name="version">Versione</string>
     <string name="delete">Elimina</string>
     <string name="enable_nfc_send">Attiva invio NFC…</string>
-    <string name="cache_downloaded">Mantieni le app memorizzate nella cache</string>
+    <string name="cache_downloaded">Mantieni le app in cache</string>
     <string name="updates">Aggiornamenti</string>
     <string name="other">Altro</string>
     <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
@@ -33,7 +33,7 @@
     <string name="app_installed">Installato</string>
     <string name="app_not_installed">Non installato</string>
     <string name="added_on">Aggiunto il %s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="repo_add_title">Aggiungi nuovo repository</string>
@@ -183,7 +183,7 @@
 
     <string name="more">Altro</string>
     <string name="back">Indietro</string>
-    <string name="less">Meno</string>
+    <string name="less">Riduci</string>
 
     <string name="bad_fingerprint">Impronta digitale non corrispondente</string>
     <string name="invalid_url">Questo non è un URL valido.</string>
@@ -332,7 +332,7 @@
     <string name="swap_scan_or_type_url">Una persona deve scansionare il codice o inserire l\'URL dell\'altro in un
         browser.
     </string>
-    <string name="swap_send_fdroid">Invia a F-Droid</string>
+    <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="swap_cant_send_no_bluetooth">Impossibile inviare F-Droid, perché il Bluetooth non è disponibile su
         questo dispositivo.
     </string>
@@ -357,7 +357,7 @@
     <string name="empty_search_available_app_list">Non è disponibile nessuna app corrispondente.</string>
 
     <string name="useTor">Usa Tor</string>
-    <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy</string>
+    <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot</string>
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
     <string name="update_auto_download_summary">Gli aggiornamenti vengono scaricati automaticamente e ti sarai notificato per installarli</string>
     <string name="update_auto_download">Ottieni automaticamente gli aggiornamenti</string>
@@ -393,7 +393,7 @@
         F-Droid
     </string>
     <string name="versions">Versioni</string>
-    <string name="warning_no_internet">Impossibile aggiornare,sei connesso ad Internet?</string>
+    <string name="warning_no_internet">Impossibile aggiornare, sei connesso ad Internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
     <string name="app_details_donate_prompt">%1$s è creato da %2$s. Offri un caffè!</string>
 
@@ -426,9 +426,9 @@
     <string name="notification_action_cancel">Annulla</string>
     <string name="notification_action_install">Installa</string>
 
-    <string name="main_menu__swap_nearby">Nelle vicinanze</string>
+    <string name="main_menu__swap_nearby">Vicino</string>
 <string name="preference_category__my_apps">Mie App</string>
-    <string name="preference_manage_installed_apps">Gestisci App Installate</string>
+    <string name="preference_manage_installed_apps">Gestisci app installate</string>
 
 
     <string name="latest__empty_state__never_updated">Una volta aggiornata la tua lista delle applicazioni, le ultime applicazioni dovrebbero apparire qui</string>
@@ -442,7 +442,7 @@
     <string name="antifeatureswarning">Questa app ha caratteristiche che potrebbero non piacerti.</string>
     <string name="antifeatures">Anti-caratteristiche</string>
     <string name="by_author_format">da %s</string>
-    <string name="app_list__name__downloading_in_progress">Scaricando %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Scaricamento %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
     <string name="app_recommended_version_installed">Versione %1$s (Raccomandata)</string>
@@ -497,7 +497,7 @@
     <string name="download_404">Il file richiesto non è stato trovato.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Senza Internet? Ottieni le app da persone vicine a te!</string>
     <string name="nearby_splash__find_people_button">Trova persone vicine a me</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Entrambi le parti hanno bisogno di %1$s per l\'uso nelle vicinanze.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Entrambe le parti hanno bisogno di %1$s per l\'uso nelle vicinanze.</string>
 
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d altra…</item>

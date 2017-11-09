@@ -61,8 +61,7 @@
         إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أن إلغاء التثبيت سيتم محو البيانات
         الداخلية المخزنة من قِبل التطبيق)
     </string>
-    <string name="installIncompatible">يبدو أن هذه الحزمة غير متوافقة مع جهازك. هل ترغب في محاولة لتثبيتها على أي حال؟
-    </string>
+    <string name="installIncompatible">التطبيق غير متوافق مع جهازك. تثبيته علي أية حال؟</string>
     <string name="menu_email">إرسال رسالة للمؤلف</string>
     <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
@@ -76,10 +75,10 @@
     <string name="automatic_scan_wifi_on">تحديث قوائم التطبيق تلقائيا فقط على الشبكات غير المحدودة بمقدار البيانات مثل
         (Wi-Fi)
     </string>
-    <string name="update_auto_download">تحميل التحديثات تلقائياً</string>
-    <string name="update_auto_download_summary">تحميل ملفات التحديث في الخلفية</string>
-    <string name="notify">تحديث التنبيهات</string>
-    <string name="notify_on">إظهار تنبيه عندما تتوفر التحديثات</string>
+    <string name="update_auto_download">جلب التحديثات تلقائياً</string>
+    <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً و أنت تتلقي إشعار لتثبيتها</string>
+    <string name="notify">إظهار التحديثات المتوفرة</string>
+    <string name="notify_on">أظهر تنبيه عندما تتوفر تحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام اف-درويد مميز الملحقات لتثبيت وتحديث وإزالة الحزم</string>
     <string name="uninstall_system">تحديث / إلغاء مميز الملحقات</string>
@@ -166,7 +165,7 @@
     <string name="copying_icons">نسخ أيقونات التطبيق في المستودعات …</string>
     <string name="icon">أيقونة</string>
     <string name="useTor">إستخدم شبكة تور (Tor)</string>
-    <string name="useTorSummary">إجبار حركة التحميل من خلال تور لزيادة الخصوصية</string>
+    <string name="useTorSummary">إجبار حركة التحميل من خلال تور لزيادة الخصوصية. تطبيق أوربوت مطلوب</string>
     <string name="proxy">خدمة الوكيل (البروكسي)</string>
     <string name="enable_proxy_title">تمكين وكيل (البروكسي) HTTP</string>
     <string name="enable_proxy_summary">تكوين وكيل (بروكسي) HTTP لجميع طلبات الشبكة</string>
@@ -238,9 +237,7 @@
     <string name="empty_installed_app_list">لا يوجد تطبيقات مثبتة.\n\nهناك تطبيقات على جهازك، ولكن لم تكن متوفرة في
         اف-درويد. يمكن أنك تحتاج إلى تحديث المستودعات الخاصة بك، أو المستودعات بالفعل لا تملك تطبيقات متوفرة خاصة بك.
     </string>
-    <string name="empty_can_update_app_list">كل التطبيقات محدثة.\n\nتهانينا! كل من التطبيقات الخاصة بك محدثة (أو
-        المستودعات الخاصة بك قديمة).
-    </string>
+    <string name="empty_can_update_app_list">تهانينا ! كل تطبيقاتك محدثة.</string>
     <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
 
     <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
@@ -250,7 +247,7 @@
     </string>
     <string name="install_error_unknown">فشل في التثبيت بسبب خطأ مجهول</string>
     <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
-    <string name="system_install_denied_signature">التوقيع على التمديد خطأ! يرجى إنشاء تقرير الأخطاء!</string>
+    <string name="system_install_denied_signature">توقيع التمديد خاطئ ! يرجى إنشاء تقرير الأخطاء !</string>
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للتمديد! يرجى إنشاء تقرير الأخطاء!</string>
     <string name="system_install_button_install">تثبيت</string>
     <string name="system_install_post_success">تم تثبيت اف-درويد مميز التمديد بنجاح</string>
@@ -376,16 +373,14 @@
     <string name="theme_night">ليل</string>
 
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
-    <string name="crash_dialog_text">حدث خطأ غير متوقع اجبر التطبيق للتوقف. هل ترغب في إرسال بريد الإلكتروني بالتفاصيل
-        للمساعدة في حل المشكلة؟
-    </string>
+    <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
     <string name="keep_install_history">الحفاظ على تاريخ التثبيت</string>
     <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في اف-درويد</string>
-    <string name="update_auto_install">تثبيت التحديثات تلقائيا</string>
+    <string name="update_auto_install">تثبيت التحديثات تلقائياً</string>
     <string name="update_auto_install_summary">تحميل و تثبيت تحديث التطبيقات في الخلفية</string>
     <string name="versions">الإصدارات</string>
-    <string name="warning_no_internet">لا يمكن التحديث, هل انت متصل بالانترنت ؟</string>
+    <string name="warning_no_internet">لا يمكن التحديث. تَحقّق من ربطك بالإنترنت ؟</string>
     <string name="hide_anti_feature_apps_on">تعتيم جزئي للتطبيقات التي تتطلب ميزات غير مرغوبة</string>
     <string name="hide_anti_feature_apps">تعتيم للتطبيقات الغير مرغوبة</string>
 <string name="main_menu__swap_nearby">حواليك</string>
@@ -467,4 +462,26 @@
     <string name="app_details_donate_prompt">%1$s تم تطويره من طرف %2$s. إشتري لهم مشروبا !</string>
 
     <string name="app_installed_media">تم تثبيت الملف على %s</string>
+    <string name="app_list_download_ready">تم تنزيله و متوفر للتثبيت</string>
+    <string name="app_list__dismiss_downloading_app">تم إلغاء التنزيل</string>
+
+    <string name="updates__app_with_known_vulnerability__ignore">تخطي</string>
+
+    <string name="details_new_in_version">جديد في الإصدار %s</string>
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="zero">عرض %d</item>
+	<item quantity="one">عرض الكل %d</item>
+	<item quantity="two">عرض الكل %d</item>
+	<item quantity="few">عرض الكل %d</item>
+	<item quantity="many">عرض الكل %d</item>
+	<item quantity="other">عرض الكل %d</item>
+</plurals>
+
+    <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
+    <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، إستخدم أرشفة تطبيق XML</string>
+    <string name="app_details__incompatible_mismatched_signature">توقيع مختلف عن التطبيق المُثبت</string>
+    <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\" .</string>
+    <string name="app_details__no_versions__no_compatible_signatures">لا نسخ مع توقعيات متوافقة</string>
+    <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
     </resources>

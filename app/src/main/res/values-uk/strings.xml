@@ -265,7 +265,7 @@
     <string name="swap_active_hotspot">%1$s (ваша точка доступу)</string>
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
-    <string name="swap_not_visible_bluetooth">Не видимий через Bluetooth</string>
+    <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
     <string name="swap_not_enabled_description">Перед обміном, ви повинні зробити пристрій видимим.</string>
 
     <string name="install_confirm_update">Бажаєте встановити оновлення для існуючого застосунку? Це не видалить ваші наявні дані. Оновлений застосунок матиме доступ до:</string>
@@ -322,7 +322,7 @@
 
     <string name="menu_email">Написати листа авторові</string>
     <string name="useTor">Використовувати Tor</string>
-    <string name="useTorSummary">Примусове завантаження трафіку через мережу Tor для підвищення конфіденційності</string>
+    <string name="useTorSummary">Примусове завантаження трафіку через мережу Tor для підвищення конфіденційності. Потрібен Orbot</string>
     <string name="swap_stopping_wifi">Зупинка Wi-Fi…</string>
     <string name="repo_provider">Репозиторій: %s</string>
 

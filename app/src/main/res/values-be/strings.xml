@@ -21,11 +21,9 @@
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
     <string name="update_interval_zero">Не абнаўляць спіс праграм аўтаматычна</string>
     <string name="automatic_scan_wifi">Толькі праз Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Аўтаматычна абноўляць толькі праз не лімітаваныя сеткі, такія як Wi-Fi
-    </string>
+    <string name="automatic_scan_wifi_on">Аўтаматычна абнаўляць толькі праз нелімітаваныя сеткі, такія як Wi-Fi</string>
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
-    <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам прапануецца ўсталяваць іх
-    </string>
+    <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
     <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>
     <string name="update_auto_install_summary">Спампоўваць і ўсталёўваць абнаўленні ў фоне</string>
     <string name="notify">Паказаць даступныя абнаўленні</string>
@@ -164,7 +162,7 @@
     <string name="skip">Прапусціць</string>
 
     <string name="useTor">Выкарыстоўваць Tor</string>
-    <string name="useTorSummary">Сілком спампоўваць праз Tor для павелічэнне прыватнасці</string>
+    <string name="useTorSummary">Сілком спампоўваць праз Tor для павелічэнне прыватнасці. Патрабуе Orbot</string>
     <string name="proxy">Проксі</string>
     <string name="enable_proxy_title">Выкарыстоўваць HTTP-проксі</string>
     <string name="enable_proxy_summary">Наладзіць HTTP-проксі для ўсіх сеткавых запытаў</string>

@@ -347,7 +347,7 @@
     <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
     <string name="menu_email">Enviar mensagem para o autor</string>
     <string name="useTor">Usar o Tor</string>
-    <string name="useTorSummary">Força tráfego de download através do Tor para maior privacidade</string>
+    <string name="useTorSummary">Forçar tráfego de download através do Tor para maior privacidade. Exige Orbot</string>
     <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
     <string name="repo_provider">Repositório: %s</string>
 

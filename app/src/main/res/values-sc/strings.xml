@@ -354,7 +354,7 @@
 
     <string name="menu_email">Iscrie a s’autore</string>
     <string name="useTor">Imprea Tor</string>
-    <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna</string>
+    <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna. Tenet bisòngiu de Orbot</string>
     <string name="swap_stopping_wifi">Firmende su Wi-Fi…</string>
     <string name="repo_provider">Depòsitu: %s</string>
 

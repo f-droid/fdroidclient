@@ -337,7 +337,7 @@
 
     <string name="menu_email">Пошаљи е-пошту аутору</string>
     <string name="useTor">Користи Тор</string>
-    <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност</string>
+    <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност. Захтева Орбот</string>
     <string name="swap_stopping_wifi">Заустављам бежични…</string>
     <string name="repo_provider">Ризница: %s</string>
 

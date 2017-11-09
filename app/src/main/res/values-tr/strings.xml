@@ -334,7 +334,7 @@
 
     <string name="useTor">Tor Kullan</string>
     <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
-    <string name="useTorSummary">Artırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl</string>
+    <string name="useTorSummary">Artırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl. Orbot gerektirir</string>
     <string name="download_pending">İndirmeye başlamak için bekleniyor…</string>
 
     <string name="system_install_not_supported">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu şu anda Android 5.1 ve sonraki

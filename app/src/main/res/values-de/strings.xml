@@ -271,7 +271,7 @@
     <string name="swap_setting_up_bluetooth">Bluetooth wird eingestellt …</string>
     <string name="swap_not_visible_bluetooth">Über Bluetooth nicht sichtbar</string>
     <string name="swap_visible_wifi">Über WLAN sichtbar</string>
-    <string name="swap_setting_up_wifi">WLAN wird eingestellt …</string>
+    <string name="swap_setting_up_wifi">WLAN wird eingerichtet …</string>
     <string name="swap_not_visible_wifi">Über WLAN nicht sichtbar</string>
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser
         eingeben.
@@ -337,10 +337,10 @@
     <string name="repo_provider">Paketquelle: %s</string>
 
     <string name="useTor">Tor verwenden</string>
-    <string name="useTorSummary">Herunterladen über Tor erzwingen; zum besseren Schutz der Privatsphäre</string>
+    <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
-    <string name="update_auto_download_summary">Die Aktualisierungen werden automatisch heruntergeladen und Sie werden informiert, um sie zu installieren.</string>
+    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Updates installieren können.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="keep_hour">1 Stunde</string>
@@ -399,7 +399,7 @@
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Suche löschen</string>
 
-    <string name="main_menu__latest_apps">Neues</string>
+    <string name="main_menu__latest_apps">Neueste</string>
     <string name="main_menu__categories">Kategorien</string>
 
 
@@ -512,11 +512,11 @@
 
     <string name="installed_app__file_corrupt">F-Droid empfing einen EIO-Fehler: Möglicherweise ist %s beschädigt!</string>
     <string name="app_list__dismiss_app_update">Aktualisierung ignoriert</string>
-    <string name="app_list__dismiss_vulnerable_app">Sicherheitsbedenken ignoriert</string>
+    <string name="app_list__dismiss_vulnerable_app">Sicherheitslücke ignoriert</string>
     <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>
 
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Bei %1$s wurden Sicherheitsrisiken festgestellt. Es wird empfohlen, diese App unverzüglich zu deinstallieren.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Bei %1$s wurden Sicherheitsrisiken festgestellt. Es wird die sofortige Aktualisierung zur neusten Version empfohlen.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">In „%1$s” wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu deinstallieren.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">In „%1$s” wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu aktualisieren.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorieren</string>
 
     </resources>

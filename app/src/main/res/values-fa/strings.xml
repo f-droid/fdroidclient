@@ -313,7 +313,7 @@
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل، ایمیل کنید؟</string>
     <string name="crash_dialog_comment_prompt">در این‌جا می‌توانید اطّلاعات اضافی و نظرها را بیفزایید:</string>
     <string name="useTor">استفاده از Tor</string>
-    <string name="useTorSummary">اجبار ترافیک دانلود به استفاده از Tor برای محرمانه تر بودن</string>
+    <string name="useTorSummary">اجبار ترافیک بارگیری به استفاده از تور برای محرمانگی بیش‌تر. به Orbot نیاز است</string>
     <string name="swap_stopping_wifi">در حال توقّف وای‌فای…</string>
     <string name="repo_provider">مخزن: %s</string>
 

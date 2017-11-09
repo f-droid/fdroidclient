@@ -312,7 +312,7 @@
 
     <string name="menu_email">ﾒｰﾙ作者</string>
     <string name="useTor">Tor を使用する</string>
-    <string name="useTorSummary">強制的に Tor を通じたﾄﾗﾌｨｯｸでﾀﾞｳﾝﾛｰﾄﾞして、プライバシーを高めます</string>
+    <string name="useTorSummary">強制的に Tor を経由した通信でﾀﾞｳﾝﾛｰﾄﾞして、ﾌﾟﾗｲﾊﾞｼｰを高めます。Orbot が必要です</string>
     <string name="swap_stopping_wifi">Wi-Fiの停止中…</string>
     <string name="repo_provider">ﾘﾎﾟｼﾞﾄﾘ: %s</string>
 
