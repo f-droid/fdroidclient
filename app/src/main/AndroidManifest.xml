@@ -201,6 +201,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.main.MainActivity" />
         </activity>
+        <activity android:name=".views.ScreenShotsActivity" />
         <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
         <activity
             android:name=".privileged.install.InstallExtensionDialogActivity"

@@ -578,7 +578,8 @@ public class AppDetailsRecyclerViewAdapter
         public abstract void bindModel();
     }
 
-    private class ScreenShotsViewHolder extends AppDetailsViewHolder {
+    private class ScreenShotsViewHolder extends AppDetailsViewHolder
+            implements ScreenShotsRecyclerViewAdapter.Listener {
         final RecyclerView recyclerView;
         LinearLayoutManagerSnapHelper snapHelper;
 
@@ -591,7 +592,7 @@ public class AppDetailsRecyclerViewAdapter
         public void bindModel() {
             LinearLayoutManager lm = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(lm);
-            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), app);
+            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), app, this);
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setNestedScrollingEnabled(false);
@@ -600,6 +601,11 @@ public class AppDetailsRecyclerViewAdapter
             }
             snapHelper = new LinearLayoutManagerSnapHelper(lm);
             snapHelper.attachToRecyclerView(recyclerView);
+        }
+
+        @Override
+        public void onScreenshotClick(int position) {
+            context.startActivity(ScreenShotsActivity.getStartIntent(context, app.packageName, position));
         }
     }
 
