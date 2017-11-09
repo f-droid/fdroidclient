@@ -60,7 +60,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(startPosition);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        if (Build.VERSION.SDK_INT >= 11) {
             // display some nice animation while swiping
             viewPager.setPageTransformer(true, new DepthPageTransformer());
         }
