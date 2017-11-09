@@ -1,3 +1,9 @@
+### 1.1-alpha0 (2017-11-09)
+
+* automatically choose between official repo mirrors
+
+* fullscreen, swipeable app screenshot navigation
+
 ### 1.0.1 (2017-10-23)
 
 * fixed index update failure on Android 5.0 (#1014)
