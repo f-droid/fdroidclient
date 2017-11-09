@@ -9,10 +9,6 @@ apt-get update
 apt-get install -y --no-install-recommends -t stretch-backports \
         fdroidserver openssh-client rsync python3-qrcode
 
-db=`sed -n 's,.*DB_VERSION *= *\([0-9][0-9]*\).*,\1,p' app/src/main/java/org/fdroid/fdroid/data/DBHelper.java`
-count=`git rev-list --first-parent --count HEAD`
-sed -i "s,versionCode *[0-9][0-9]*.*,versionCode `printf '%d%05d' $db $count`," app/build.gradle
-
 repo_git_base=${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}-nightly
 repo_base=https://gitlab.com/${repo_git_base}
 repo_url=${repo_base}/raw/master/fdroid/repo
