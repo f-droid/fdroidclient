@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="updates">Amucceḍ</string>
+<resources xmlns:tools="http://schemas.android.com/tools"><string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
 
     <string name="yes">Ih</string>
@@ -129,4 +129,55 @@
     <string name="notification_title_summary_installing">Asbeddi…</string>
     <string name="theme_light">Aceɛlal</string>
     <string name="theme_dark">Aberkan</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Tabeflit</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Tiliɣri &amp; SMS</string>
+    <string name="about_title">Ɣef F-Droid</string>
+    <string name="app_list__name__successfully_installed">%1$s yebded</string>
+    <string name="update_interval">Azilal n uleqqem awurman</string>
+    <string name="update_auto_download">Anadi awurman n ileqman</string>
+    <string name="update_auto_install">Asebded awurman n umucceḍ</string>
+    <string name="app_details_donate_prompt">%1$s yerna-t %2$s. Aɣ-asen lqehwa!</string>
+
+    <string name="app_incompatible">Ur imṣada ara</string>
+    <string name="app_version_x_available">Lqem %1$s yella</string>
+    <string name="app_version_x_installed">Lqem %1$s</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ttu</string>
+
+    <string name="repo_add_title">Rnu akufi amaynut</string>
+    <string name="overwrite">Sfeɛj</string>
+    <string name="repositories_summary">Rnu iɣbula nniḍen n yisnasen</string>
+    <string name="menu_changelog">Aɣmis n ibeddilen</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="ignoreTouch_on">Isedday yal tikelt isnasen yesran askan analan</string>
+
+    <string name="adding_apks_format">"Timerna n  %s ar ukufi…"</string>
+    <string name="repos_unchanged">Akk ikuffiyen ttwaleqmen</string>
+    <string name="all_other_repos_fine">Ikufiyen nniḍen ur d-ggaren ara tuccḍiwin.</string>
+    <string name="minsdk_or_later">%s neɣ ugar</string>
+    <string name="minsdk_up_to_maxsdk">%1$s arama d %2$s</string>
+    <string name="swap_active_hotspot">%1$s (taneqqiḍt-ik n unekcum)</string>
+    <string name="swap_choose_apps">Fren Asnas</string>
+    <string name="swap_wifi_device_name">Isem n yibenk</string>
+    <string name="swap_confirm">Sentem ambaddal</string>
+    <string name="bluetooth_unavailable">Bluetooth yella</string>
+    <string name="interval_never">Warǧin</string>
+    <string name="keep_week">1 n umalas</string>
+    <string name="keep_forever">Yal tikelt</string>
+
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d nniḍen…</item>
+	<item quantity="other">+%1$d nniḍen…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d n lqem</item>
+	<item quantity="other">%1$d n ileqman</item>
+</plurals>
+    <string name="tts_category_name">Taggayt %1$s</string>
+
+    <string name="proxy_host">Asenneftaɣ Apṛuksi</string>
+    <string name="proxy_port">Tabburt n Apṛuksi</string>
+    <string name="status_inserting_apps">Rnu tazmilt i usnas</string>
+    <string name="theme_night">Iḍ</string>
+
+    <string name="root_access_denied_title">Anekcum s uẓar yegdel.</string>
     </resources>
