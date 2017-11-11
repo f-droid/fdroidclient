@@ -26,10 +26,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -42,6 +44,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 
 import java.text.Collator;
@@ -107,10 +110,17 @@ public class AppSecurityPermissions {
 
         @TargetApi(22)
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
+            Drawable iconDrawable;
             if (icon != 0) {
-                return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+                iconDrawable = (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+            } else {
+                iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
             }
-            return ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
+
+            Preferences.Theme theme = Preferences.get().getTheme();
+            Drawable wrappedIconDrawable = DrawableCompat.wrap(iconDrawable).mutate();
+            DrawableCompat.setTint(wrappedIconDrawable, theme == Preferences.Theme.light ? Color.BLACK : Color.WHITE);
+            return wrappedIconDrawable;
         }
 
     }
