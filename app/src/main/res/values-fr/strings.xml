@@ -434,7 +434,7 @@
     </plurals>
 
     <string name="preference_category__my_apps">Mes Applications</string>
-    <string name="preference_manage_installed_apps">Gère les applications installées</string>
+    <string name="preference_manage_installed_apps">Gérer les applications installées</string>
 
 
     <string name="details_new_in_version">Nouveautés de la version %s</string>
