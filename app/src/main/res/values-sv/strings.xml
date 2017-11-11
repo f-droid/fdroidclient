@@ -397,7 +397,7 @@
     <string name="notification_title_summary_ready_to_install">Färdig att installera</string>
     <string name="notification_title_summary_ready_to_install_update">Uppdatering färdig att installera</string>
     <string name="notification_title_summary_installing">Installerar</string>
-    <string name="notification_title_summary_installed">Installerades</string>
+    <string name="notification_title_summary_installed">Installerad</string>
     <string name="notification_title_summary_install_error">Installation misslyckades</string>
     <string name="notification_action_update">Uppdatering</string>
     <string name="notification_action_cancel">Avbryt</string>
