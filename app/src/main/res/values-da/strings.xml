@@ -3,9 +3,7 @@
     <string name="app_name">F-Droid</string>
 
     <string name="SignatureMismatch">Den nye version er signeret med en nøgle som er forskellig fra den gamle nøgle. Den gamle version skal afinstalleres, før den nye version kan installeres. Gør venligst dette, og forsøg igen. (Bemærk at afinstallation sletter al data appen har lagret internt)</string>
-    <string name="installIncompatible">Det ser ud til at denne pakke er inkompatibel med din enhed. Vil du forsøge at
-        installere den alligevel?
-    </string>
+    <string name="installIncompatible">"App er ikke kompatibel med enhed,  installer alligevel?"</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC Send…</string>
@@ -19,7 +17,7 @@
     <string name="update_interval_zero">Ingen automatiske opdateringer til applikationslisten</string>
     <string name="automatic_scan_wifi">Kun på Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Opdater kun automatisk på ubegrænsede netværk som WI-FI</string>
-    <string name="notify">Opdateringsnotifikationer</string>
+    <string name="notify">Vis tilgængelige opdateringer</string>
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
     <string name="system_installer">Privilegeret Udvidelse</string>
     <string name="system_installer_on">Brug F-Droid Privilegeret Udvidelse til at installere, opdatere og fjerne
@@ -148,9 +146,9 @@
     <string name="enable_proxy_title">Aktiver HTTP Proxy</string>
     <string name="enable_proxy_summary">Konfigurer HTTP Proxy for alle netværksforespørgsler</string>
     <string name="proxy_host">Proxyvært</string>
-    <string name="proxy_host_summary">Konfigurer din proxys værtsnavn (e.g. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Proxy værtsnavn (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Proxyport</string>
-    <string name="proxy_port_summary">Konfigurer din proxys portnummer (e.g. 8118)</string>
+    <string name="proxy_port_summary">Proxy portnummer (e.g. 8118)</string>
 
     <string name="status_download">Henter\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
 
@@ -158,7 +156,7 @@
     <string name="update_notification_title">Opdaterer depoter</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="status_connecting_to_repo">Forbinder til\n%1$s</string>
-    <string name="status_inserting_apps">Gemmer applikationsdetaljer</string>
+    <string name="status_inserting_apps">Gemmer app-detaljer</string>
     <string name="repos_unchanged">Alle depoter er opdaterede</string>
     <string name="all_other_repos_fine">Alle andre depoter gav ingen fejl.</string>
     <string name="global_error_updating_repos">Fejl under opdatering: %s</string>
@@ -179,12 +177,12 @@
     <string name="repo_not_yet_updated">Dette depot har ikke været benyttet endnu. Du skal aktivere det for at se de apps det har.</string>
     <string name="unknown">Ukendt</string>
     <string name="repo_confirm_delete_title">Slet Depot?</string>
-    <string name="repo_confirm_delete_body">"Slettes et depot vil dets apps ikke længere være tilgængelige i F-Droid.
-\n
-\nBemærk: Alle tidligere installerede apps vil blive på din enhed. "</string>
-    <string name="repo_disabled_notification">"Deaktiverede %1$s.
-\n
-\nDu skal genaktivere dette depot for at installere apps fra det. "</string>
+    <string name="repo_confirm_delete_body">Slettes et depot vil dets apps ikke længere være tilgængelige i F-Droid. 
+\n 
+\nBemærk: Alle tidligere installerede apps vil blive på din enhed.</string>
+    <string name="repo_disabled_notification">Deaktiverede %1$s. 
+\n 
+\nDu skal genaktivere dette depot for at installere apps fra det.</string>
     <string name="repo_added">Gemte F-Droid depot %1$s.</string>
     <string name="repo_searching_address">Leder efter F-Droid depot på\n%1$s</string>
     <string name="minsdk_or_later">%s eller nyere</string>
@@ -218,10 +216,10 @@
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivning</string>
 
-    <string name="empty_installed_app_list">"Ingen apps installeret.
-\n
-\nDer er apps på din enhed, men de er ikke tilgængelige i F-Droid. Det kan være fordi, at du skal opdatere dine depoter eller også tilbyder depoterne reelt ikke dine apps. "</string>
-    <string name="empty_can_update_app_list">Tillykke! Alle dine apps er opdaterede (eller dine depoter er uddaterede).</string>
+    <string name="empty_installed_app_list">Ingen apps installeret. 
+\n 
+\nDer er apps på din enhed, men de er ikke tilgængelige i F-Droid. Det kan være fordi, at du skal opdatere dine depoter eller også tilbyder depoterne reelt ikke dine apps.</string>
+    <string name="empty_can_update_app_list">Tillykke! Dine apps er opdaterede.</string>
 
     <string name="requesting_root_access_body">Anmoder om root-adgang…</string>
     <string name="root_access_denied_title">Root-adgang nægtet</string>
@@ -237,9 +235,9 @@
         Opret venligst en fejlrapport!
     </string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_post_success">Installation af F-Droid Privilegeret Udvidelse succesfuld</string>
+    <string name="system_install_post_success">F-Droid Privilegeret udvidelse installeret</string>
     <string name="system_install_post_fail">Installation af F-Droid Privilegeret Udvidelse fejlede</string>
-    <string name="system_install_post_success_message">F-Droid Privilegeret Udvidelse blev installeret succesfuldt. Dette tillader F-Droid at installere, opgradere og afinstallere apps af sig selv.</string>
+    <string name="system_install_post_success_message">F-Droid Privilegeret udvidelse blev installeret. Dette tillader F-Droid at installere, opdatere og afinstallere apps af sig selv.</string>
     <string name="system_install_post_fail_message">Installation af F-Droid Privilegeret Udvidelse fejlede.
         Installationsmetoden er ikke understøttet af alle Android distributioner, konsulter venligst F-Droid
         fejldatabasen for mere information.
@@ -249,10 +247,7 @@
     <string name="system_install_uninstalling">Afinstallerer…</string>
     <string name="system_install_question">Vil du installere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_install_warning">Dette tager op til 10 sekunder.</string>
-    <string name="system_install_warning_lollipop">Dette tager op til 10 sekunder og enheden vil
-        <b>genstarte</b>
-        bagefter.
-    </string>
+    <string name="system_install_warning_lollipop">Dette tager op til 10 sekunder og enheden vil <b>genstarte</b> bagefter.</string>
     <string name="system_uninstall">Vil du afinstallere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_uninstall_button">Afinstaller</string>
 
@@ -298,23 +293,21 @@
     <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid fordi Bluetooth er utilgængeligt på denne enhed.
     </string>
     <string name="loading">Indlæser…</string>
-    <string name="swap_connection_misc_error">Der forekom en fejl under forbindelsen til enheden, det ser ud til at vi
-        ikke kan udveksle med den.
-    </string>
+    <string name="swap_connection_misc_error">Der opstod en fejl under forbindelsen til enheden, kan udveksle med den!</string>
     <string name="swap_not_enabled">Udveksling ikke aktiveret</string>
     <string name="swap_not_enabled_description">Inden udveksling skal din enhed gøres synlig.</string>
 
     <string name="install_confirm">kræver adgang til</string>
-    <string name="install_confirm_update">Vil du installere en opdatering til denne eksisterende applikation? Dine eksisterende data vil ikke gå tabt. Den opdaterede applikation vil få adgang til:</string>
-    <string name="install_confirm_update_system">Vil du installere en opdatering til denne indbyggede applikation? Dine eksisterende data vil ikke gå tabt. Den opdaterede applikation vil få adgang til:</string>
-    <string name="install_confirm_update_no_perms">Vil du installere en opdatering til denne eksisterende applikation? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
-    <string name="install_confirm_update_system_no_perms">Vil du installere en opdatering til denne indbyggede applikation? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
+    <string name="install_confirm_update">Vil du installere en opdatering til eksisterende app? Dine eksisterende data vil ikke gå tabt. Den opdaterede app vil få adgang til:</string>
+    <string name="install_confirm_update_system">Vil du installere en opdatering til denne indbyggede app? Dine eksisterende data vil ikke gå tabt. Den opdaterede app vil få adgang til:</string>
+    <string name="install_confirm_update_no_perms">Vil du installere en opdatering til denne eksisterende app? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
+    <string name="install_confirm_update_system_no_perms">Vil du installere en opdatering til denne indbyggede app? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dette koster dig muligvis penge</string>
     <string name="uninstall_update_confirm">Vil du erstatte denne app med fabriksversionen?</string>
     <string name="uninstall_confirm">Vil du afinstallere denne app?</string>
-    <string name="download_error">Overførsel forfejlet</string>
+    <string name="download_error">Hentning mislykkedes!</string>
 
     <string name="perms_new_perm_prefix">Nye:</string>
     <string name="perms_description_app">Udbudt af %1$s.</string>
@@ -344,7 +337,7 @@
     <string name="repo_provider">Depot: %s</string>
 
     <string name="useTor">Brug Tor</string>
-    <string name="useTorSummary">Hent altid gennem Tor for forbedret privatliv</string>
+    <string name="useTorSummary">Hent altid gennem Tor for øget beskyttelse af privatlivet. Kræver Orbot</string>
     <string name="system_install_not_supported">Installation af F-Droid Priviligeret Udvidelse er i øjeblikket ikke
         understøttet på Android 5.1 eller senere.
     </string>
@@ -369,7 +362,7 @@
     <string name="keep_install_history_summary">Opbevar en log af installationer og afinstallationer i F-Droid</string>
     <string name="update_auto_install">Installer automatisk opdateringer</string>
     <string name="update_auto_install_summary">Download og installer app opdateringer i baggrunden</string>
-    <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til internettet?</string>
+    <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til Internettet?</string>
 <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
     <string name="main_menu__swap_nearby">I nærheden</string>
@@ -382,7 +375,7 @@
     <string name="notification_action_install">Installér</string>
 
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s blev installeret succesfuldt</string>
+    <string name="app_list__name__successfully_installed">%1$s installeret</string>
     <string name="updates__tts__download_app">Hent</string>
     <string name="notification_title_single_update_available">Opdatering tilgængelig</string>
     <string name="notification_title_summary_install_error">Installationen fejlede</string>
@@ -433,7 +426,7 @@
 	<item quantity="other">Vis alle %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Ingen internet? Hent apps fra folk i nærheden af dig!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ingen Internet? Hent apps fra folk i nærheden af dig!</string>
     <string name="nearby_splash__find_people_button">Find folk i nærheden af mig</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte i nærheden.</string>
 
@@ -490,4 +483,24 @@
 </plurals>
 <string name="hide_anti_feature_apps">Nedton apps med antifunktionalitet</string>
     <string name="hide_anti_feature_apps_on">Nedton apps som indeholder uønsket funktionalitet</string>
+    <string name="force_old_index">Gennemtving gammelt indeksformat</string>
+    <string name="force_old_index_summary">I tilfælde af, at der er fejl eller problemer med kompatibilitet, brug XML-app-index</string>
+    <string name="app_details__incompatible_mismatched_signature">Forskellig signatur til installeret version</string>
+    <string name="app_details__no_versions__show_incompat_versions">For at vise uforenelige versioner her alligevel, aktiver \"%1$s\" indstilling.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Ingen versioner med kompatibel signatur</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Ingen versioner, der er kompatibel med enheden</string>
+    <string name="app_installed_media">Fil installeret til %s</string>
+    <string name="app_permission_storage">F-Droid skal have adgang til lagring for at installere til dette lagermedium. Tillad det på den næste skærm for at fortsætte installationen.</string>
+
+    <string name="app_list_download_ready">Hentet, klar til at installere</string>
+    <string name="app_list__dismiss_app_update">Opdatering ignoreret</string>
+    <string name="app_list__dismiss_vulnerable_app">Sårbarhed ignoreret</string>
+    <string name="app_list__dismiss_downloading_app">Hentning annulleret</string>
+
+    <string name="installed_app__file_corrupt">F-Droid modtog EIO-fejl: %s er formentlig korrupt!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du afinstallerer denne app med det samme.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du opgraderer til den nyeste version med det samme.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
+
+    <string name="status_inserting_x_apps">Gemmer app detaljer (%1$d/%2$d) fra %3$s</string>
     </resources>
