@@ -359,8 +359,8 @@
     <string name="installing">Installation läuft …</string>
     <string name="uninstalling">Deinstallation läuft …</string>
 
-    <string name="hide_anti_feature_apps">Apps mit unfreien Merkmalen</string>
-    <string name="hide_anti_feature_apps_on">Apps ausgrauen, deren Inhalte nicht völlig frei sind</string>
+    <string name="hide_anti_feature_apps">Apps mit problematischen Merkmalen</string>
+    <string name="hide_anti_feature_apps_on">Apps mit problematischen Merkmalen ausgrauen</string>
     <string name="update_auto_install">Aktualisierungen automatisch installieren</string>
     <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und
         installieren
@@ -440,7 +440,7 @@
     <string name="details_new_in_version">Neu in Version %s</string>
 
     <string name="antifeatureswarning">Diese Anwendung hat Merkmale, die Ihnen nicht gefallen könnten.</string>
-    <string name="antifeatures">Unfreie Merkmale</string>
+    <string name="antifeatures">Problematische Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Vor %1$d Tag aktualisiert</item>
