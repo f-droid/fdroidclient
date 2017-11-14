@@ -372,7 +372,7 @@
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee kaufen!</string>
-    <string name="app_details_donate_prompt">%1$s wurde von %2$s erstellt. Spendieren Sie ihnen einen Kaffee!</string>
+    <string name="app_details_donate_prompt">Spendieren Sie %2$s einen Kaffee für die Erstellung von %1$s!</string>
 
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
     <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
