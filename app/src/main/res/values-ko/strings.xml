@@ -43,7 +43,7 @@
     <string name="choose_bt_send">블루투스 전송 방법 선택</string>
     <string name="repo_add_url">저장소 주소</string>
     <string name="repo_add_fingerprint">핑거프린트 (선택 사항)</string>
-    <string name="repo_exists_add_fingerprint">이 저장소가 이미 설정되어 있으며, 키에 대한 새로운 정보를 추가할 것입니다.</string>
+    <string name="repo_exists_add_fingerprint">이 저장소가 이미 설정되어 있으며, 새로운 키 정보를 추가할 것입니다.</string>
     <string name="repo_exists_enable">이 저장소가 이미 설정되어 있으며, 다시 활성화할 것인지 확인하세요.</string>
     <string name="repo_exists_and_enabled">들어오는 저장소가 이미 설정되어 있고 활성화되어 있습니다.</string>
     <string name="repo_delete_to_overwrite">다른 키로 된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다.</string>
@@ -269,7 +269,7 @@
     <string name="install_confirm_update_system">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
     <string name="install_confirm_update_no_perms">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
     <string name="install_confirm_update_system_no_perms">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
-    <string name="newPerms">새로 출시됨</string>
+    <string name="newPerms">신규</string>
     <string name="allPerms">모두</string>
     <string name="perm_costs_money">금전을 요구할 수 있습니다</string>
     <string name="uninstall_update_confirm">이 앱을 공장 초기화 버전으로 교체하시겠습니까?</string>
@@ -355,7 +355,7 @@
     <string name="app_version_x_available">버전 %1$s 사용 가능</string>
     <string name="app_version_x_installed">버전 %1$s</string>
     <string name="app_recommended_version_installed">버전 %1$s (권장)</string>
-    <string name="app__newly_added">새로 출시됨</string>
+    <string name="app__newly_added">신규</string>
     <string name="app__tts__cancel_download">다운로드 취소</string>
     <string name="app__install_downloaded_update">업데이트</string>
     <string name="app_installed_media">%s에 설치된 파일</string>
