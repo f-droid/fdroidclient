@@ -350,10 +350,10 @@
 \nom å installere dem</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
 
-    <string name="keep_hour">én time</string>
-    <string name="keep_day">én dag</string>
+    <string name="keep_hour">Én time</string>
+    <string name="keep_day">Én dag</string>
     <string name="keep_week">ei uke</string>
-    <string name="keep_month">én måned</string>
+    <string name="keep_month">Én måned</string>
     <string name="keep_year">ett år</string>
     <string name="keep_forever">For alltid</string>
 
@@ -451,7 +451,7 @@
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Oppdatert %1$d dag siden</item>
+	<item quantity="one">Oppdatert for %1$d dag siden</item>
 	<item quantity="other">Oppdatert for %1$d dager siden</item>
 </plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
@@ -486,8 +486,8 @@
 	<item quantity="other">Oppdatert for %1$d uker siden</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Oppdatert %1$d måned siden</item>
-	<item quantity="other">Oppdatert %1$d måneder siden</item>
+	<item quantity="one">Oppdatert for %1$d måned siden</item>
+	<item quantity="other">Oppdatert for %1$d måneder siden</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Oppdatert for %1$d år siden</item>
