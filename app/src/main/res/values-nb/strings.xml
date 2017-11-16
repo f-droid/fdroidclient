@@ -343,7 +343,7 @@
     <string name="repo_provider">Pakkebrønn: %s</string>
 
     <string name="useTor">Bruk Tor</string>
-    <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet</string>
+    <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet. Krever Orbot</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
     <string name="update_auto_download">Hent oppdateringer automatisk</string>
     <string name="update_auto_download_summary">Oppdateringer blir lastet ned automatisk og du får en beskjed 
