@@ -451,7 +451,7 @@
 
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
-    <string name="installed_app__updates_ignored">Обновления отключены</string>
+    <string name="installed_app__updates_ignored">Отключённые обновления</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Новинки</string>
     <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые свежие
