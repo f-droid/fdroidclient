@@ -219,9 +219,8 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="touch_to_configure_local_repo">"Коснитесь чтобы посмотреть подробную информацию и позволить другим скачивать ваши
-\n приложения.
-\n "</string>
+    <string name="touch_to_configure_local_repo">Коснитесь чтобы посмотреть подробную информацию и позволить другим скачивать ваши
+\n приложения.</string>
     <string name="status_download_unknown_size">Загрузка
         \n%2$s от
         \n%1$s
