@@ -297,7 +297,7 @@
     </string>
     <string name="crash_dialog_comment_prompt">Можете добавить дополнительную информацию и комментарии:</string>
     <string name="useTor">Использовать Tor</string>
-    <string name="useTorSummary">Перенаправлять входящий трафик через Tor для улучшения конфиденциальности</string>
+    <string name="useTorSummary">Перенаправлять входящий трафик через Tor для лучшей защиты личных данных. Для работы этого приложения необходимо установить Orbot</string>
     <string name="repo_provider">Репозиторий: %s</string>
 
     <string name="system_install_post_success_message">Привилегированное дополнение F-Droid установлено. Это позволяет F-Droid самостоятельно устанавливать, обновлять и удалять приложения.</string>
@@ -533,4 +533,11 @@
 
     <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
     <string name="app_list__dismiss_vulnerable_app">Обновление игнорируется</string>
+    <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
+
+    <string name="installed_app__file_corrupt">Произошла ошибка ввода-вывода: возможно, файл %s повреждён!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">В компоненте %1$s есть уязвимости. Лучше удалить это приложение прямо сейчас.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">В компоненте %1$s есть уязвимости. Лучше обновиться до новой версии прямо сейчас.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>
+
     </resources>
