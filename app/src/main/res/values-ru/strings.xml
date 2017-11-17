@@ -451,7 +451,7 @@
 
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
-    <string name="installed_app__updates_ignored">Пропущенные обновления</string>
+    <string name="installed_app__updates_ignored">Обновления отключены</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Новинки</string>
     <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые свежие
@@ -503,19 +503,19 @@
 	<item quantity="one">Обновлено %1$d неделю назад</item>
 	<item quantity="few">Обновлено %1$d недели назад</item>
 	<item quantity="many">Обновлено %1$d недель назад</item>
-	<item quantity="other"></item>
+	<item quantity="other"/>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Обновлено %1$d месяц назад</item>
 	<item quantity="few">Обновлено %1$d месяца назад</item>
 	<item quantity="many">Обновлено %1$d месяцев назад</item>
-	<item quantity="other"></item>
+	<item quantity="other"/>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Обновлено %1$d год назад</item>
 	<item quantity="few">Обновлено %1$d года назад</item>
 	<item quantity="many">Обновлено %1$d лет назад</item>
-	<item quantity="other"></item>
+	<item quantity="other"/>
 </plurals>
 <string name="force_old_index">Старый формат индекса (принудительно)</string>
     <string name="force_old_index_summary">Использовать индекс приложений XML в случае проблем с совместимостью</string>
