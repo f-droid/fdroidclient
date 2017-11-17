@@ -472,7 +472,7 @@
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
 	</plurals>
 
-    <string name="latest__empty_state__no_recent_apps">Нет недавних приложений</string>
+    <string name="latest__empty_state__no_recent_apps">Не найдено недавно обновлённых приложений</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s чтобы передавать приложения.</string>
 
     <string name="menu_video">Видео</string>
