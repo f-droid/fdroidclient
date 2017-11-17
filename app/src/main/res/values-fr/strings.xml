@@ -411,7 +411,7 @@
     <string name="main_menu__swap_nearby">À proximité</string>
 
 
-    <string name="app_recommended_version_installed">Verrsion %1$s (recommandée)</string>
+    <string name="app_recommended_version_installed">Version %1$s (recommandée)</string>
     <string name="app__newly_added">Nouveau</string>
     <string name="app__install_downloaded_update">Mise à jour</string>
 
@@ -420,8 +420,7 @@
 
     <string name="installed_apps__activity_title">Applications installées</string>
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la Version %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
     <string name="updates__tts__download_updates_for_all_apps">Télécharger toutes les mises jour</string>
 
