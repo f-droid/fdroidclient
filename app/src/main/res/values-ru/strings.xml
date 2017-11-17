@@ -21,7 +21,7 @@
         удаления пакетов
     </string>
     <string name="local_repo_name">Название локального репозитория</string>
-    <string name="local_repo_name_summary">Ваш локальный репозиторий известен под именем: %s</string>
+    <string name="local_repo_name_summary">Ваш локальный репозиторий опубликован под именем: %s</string>
     <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
     <string name="app_details">Описание приложения</string>
     <string name="no_such_app">Приложение не найдено.</string>
