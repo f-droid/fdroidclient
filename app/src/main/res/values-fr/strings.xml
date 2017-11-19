@@ -104,9 +104,7 @@
     <string name="proxy_port">Port du proxy</string>
     <string name="proxy_port_summary">Le numéro de port de votre proxy (ex : 8118)</string>
     <string name="status_download">Téléchargement %2$s / %3$s (%4$d%%) depuis %1$s</string>
-    <string name="status_connecting_to_repo">Connexion à
-        \n%1$s
-    </string>
+    <string name="status_connecting_to_repo">Connexion à %1$s</string>
     <string name="repos_unchanged">Tous les dépôts sont à jour</string>
     <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
     <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
