@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public abstract class FDroidProvider extends ContentProvider {
 
     private static final String TAG = "FDroidProvider";
 
-    static final String AUTHORITY = "org.fdroid.fdroid.data";
+    static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".data";
 
     static final int CODE_LIST   = 1;
     static final int CODE_SINGLE = 2;

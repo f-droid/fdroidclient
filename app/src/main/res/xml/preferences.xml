@@ -3,14 +3,14 @@
         <PreferenceScreen android:title="@string/about_title">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetPackage="org.fdroid.fdroid"
+                android:targetPackage="@string/applicationId"
                 android:targetClass="org.fdroid.fdroid.AboutActivity" />
         </PreferenceScreen>
     <PreferenceCategory android:title="@string/preference_category__my_apps">
         <PreferenceScreen android:title="@string/preference_manage_installed_apps">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetPackage="org.fdroid.fdroid"
+                android:targetPackage="@string/applicationId"
                 android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity" />
         </PreferenceScreen>
         <PreferenceScreen
@@ -18,7 +18,7 @@
             android:summary="@string/repositories_summary">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetPackage="org.fdroid.fdroid"
+                android:targetPackage="@string/applicationId"
                 android:targetClass="org.fdroid.fdroid.views.ManageReposActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
