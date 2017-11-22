@@ -4,7 +4,7 @@
     <string name="installIncompatible">L\'«app» és incompatible amb el vostre dispositiu. La voleu instal·lar de totes maneres?</string>
     <string name="version">Versió</string>
     <string name="delete">Esborrar</string>
-    <string name="cache_downloaded">Conservar les apps en memòria cau</string>
+    <string name="cache_downloaded">Manté les aplicacions en memòria cau</string>
     <string name="updates">Actualitzacions</string>
     <string name="other">Altres</string>
     <string name="update_interval">Període d\'actualització automàtica</string>
@@ -75,8 +75,8 @@
     <string name="display">Pantalla</string>
     <string name="expert">Mode expert</string>
     <string name="expert_on">Mostra informació extra i habilita paràmetres extra</string>
-    <string name="search_hint">Cerqueu «apps»</string>
-    <string name="appcompatibility">Compatibilitat de les «apps»</string>
+    <string name="search_hint">Cerca aplicacions</string>
+    <string name="appcompatibility">Compatibilitat d\'aplicacions</string>
     <string name="show_incompat_versions">Versions incompatibles</string>
     <string name="show_incompat_versions_on">Mostra també versions no compatibles de les aplicacions amb el dispositiu
     </string>
@@ -210,7 +210,7 @@
     <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
     <string name="bad_fingerprint">Empremta digital incorrecta</string>
     <string name="invalid_url">L\'adreça URL és invàlida.</string>
-    <string name="menu_settings">Configuració</string>
+    <string name="menu_settings">Opcions</string>
     <string name="menu_changelog">Registre de canvis</string>
     <string name="status_download_unknown_size">S\'està baixant\n%2$s des de\n%1$s</string>
     <string name="status_processing_xml_percent">S\'està processant %2$s / %3$s (%4$d%%) de %1$s</string>
@@ -248,9 +248,7 @@
     </string>
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
-    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres
-        aplicacions estan actualitzades (o els repositoris no ho estan).
-    </string>
+    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.</string>
 
     <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu
         d\'aquest error!
@@ -340,7 +338,7 @@
     <string name="menu_email">Escriviu un correu electrònic a l\'autor</string>
     <string name="swap_stopping_wifi">Aurant la Wi-Fi…</string>
     <string name="useTor">Usi Tor</string>
-    <string name="useTorSummary">Forçar el tràfic de baixada a través de Tor per millorar la privadesa</string>
+    <string name="useTorSummary">Força el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
     <string name="repo_provider">Repositori: %s</string>
 
     <string name="update_auto_download">Obtingueu actualitzacions de forma automàtica</string>
@@ -367,26 +365,25 @@
     <string name="uninstalling">Desinstal·lant…</string>
 
     <string name="keep_hour">1 hora</string>
-    <string name="hide_anti_feature_apps_on">Ombrejar les «apps» que requereixin components no lliures</string>
-    <string name="hide_anti_feature_apps">Ombrejar les «apps» amb components no lliures</string>
+    <string name="hide_anti_feature_apps_on">Marca les aplicacions que requereixin components no lliures</string>
+    <string name="hide_anti_feature_apps">Marca les aplicacions no lliures</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes
         per l\'F-Droid
     </string>
     <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
-    <string name="update_auto_install_summary">Descarregueu i instal·leu les actualitzacions de les apps en segon pla
-    </string>
+    <string name="update_auto_install_summary">Baixa i instal·la actualitzacions d\'aplicacions en rerefons</string>
     <string name="versions">Versions</string>
     <string name="warning_no_internet">No es pot actualitzar: esteu connectat a internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Convideu els desenvolupadors de %1$s a un cafè!</string>
     <string name="app_details_donate_prompt">%2$s ha creat %1$s. Convideu-los a un cafè!</string>
 
-    <string name="repositories_summary">Afegiu orígens d\'«apps» addicionals</string>
+    <string name="repositories_summary">Administració d\'orígens addicionals</string>
     <string name="app_version_x_available">Versió %1$s disponible</string>
     <string name="app_version_x_installed">Versió %1$s</string>
     <string name="clear_search">Netegeu la cerca</string>
 
-    <string name="main_menu__latest_apps">Últim</string>
+    <string name="main_menu__latest_apps">Novetats</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Al voltant</string>
 
@@ -414,14 +411,14 @@
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
     <string name="app__newly_added">Nou</string>
 
-    <string name="installed_apps__activity_title">Apps instal·lades</string>
+    <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Ignoreu les actualitzacions</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Les actualitzacions s\'han ignorat per la versió
         %1$s
     </string>
 
-    <string name="preference_category__my_apps">Les meves apps</string>
-    <string name="preference_manage_installed_apps">Administreu les «apps» instal·lades</string>
+    <string name="preference_category__my_apps">Les meves aplicacions</string>
+    <string name="preference_manage_installed_apps">Administració d\'aplicacions instal·lades</string>
 
 
     <string name="tts_category_name">Categoria %1$s</string>
@@ -440,13 +437,13 @@
     </string>
     <string name="updates__tts__download_updates_for_all_apps">Descarregueu totes les actualitzacions</string>
 
-    <string name="updates__hide_updateable_apps">Oculteu apps</string>
-    <string name="updates__show_updateable_apps">Mostreu apps</string>
+    <string name="updates__hide_updateable_apps">Amaga</string>
+    <string name="updates__show_updateable_apps">Mostra</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descarregueu l\'actualització per l\'app %1$d.</item>
-        <item quantity="other">Descarregueu les actualitzacions per a les apps %1$d.</item>
-    </plurals>
+	<item quantity="one">%1$d actualització disponible:</item>
+	<item quantity="other">%1$d actualitzacions disponibles:</item>
+</plurals>
 
     <string name="details_new_in_version">Novetats a la versió %s</string>
 
@@ -463,12 +460,8 @@
     <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.</string>
 
     <string name="latest__empty_state__no_recent_apps">Cap «app» recent trobada</string>
-    <string name="latest__empty_state__never_updated">Un cop s\'hagi actualitzat la vostra llista d\'«apps», les «apps»
-        més noves s\'haurien de mostrar aquí
-    </string>
-    <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori, les «apps» més
-        noves s\'haurien de mostrar aquí
-    </string>
+    <string name="latest__empty_state__never_updated">Un cop actualitzada la vostra llista d\'aplicacions, les més recents es mostraran aquí</string>
+    <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori d\'aplicacions, les més recents es mostraran aquí</string>
 
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
 
@@ -508,4 +501,25 @@
 <string name="by_author_format">per %s</string>
     <string name="download_404">No s\'ha trobat l\'arxiu sol·licitat.</string>
     <string name="force_old_index">Forceu el format d\'índex antic</string>
+    <string name="force_old_index_summary">En cas d\'errors o problemes de compatibilitat, utilitzeu l\'índex d\'aplicació XML</string>
+    <string name="app_details__incompatible_mismatched_signature">Signatura diferent a la versió instal·lada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Per mostrar de totes formes versions no compatibles, habiliteu «%1$s» a les opcions.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">No hi ha versions amb signatura compatible</string>
+    <string name="app_details__no_versions__none_compatible_with_device">No hi ha versions compatibles amb el dispositiu</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La versió instal·lada no és compatible amb cap versió disponible. desinstal·lau la versió per poder veure i instal·lar versions compatibles. Això passa amb aplicacions instal·lades des del Google Play o altres fonts, si s\'han signat amb un certificat diferent.</string>
+
+    <string name="app_installed_media">Fitxer instal·lat a %s</string>
+    <string name="app_permission_storage">F-Droid necessita permisos d\'emmagatzematge per instal·lar. Doneu permisos a la pantalla següent per procedir amb la instal·lació.</string>
+
+    <string name="app_list_download_ready">S\'ha baixat i ja es pot instal·lar</string>
+    <string name="app_list__dismiss_app_update">Actualització ignorada</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnerabilitat ignorada</string>
+    <string name="app_list__dismiss_downloading_app">Baixada cancel·lada</string>
+
+    <string name="installed_app__file_corrupt">Error EIO rebut a l\'F-Droid: %s probablement és corrupte!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem suprimir aquesta aplicació immediatament.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem actualitzar immediatament a la versió més recent.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
+
+    <string name="status_inserting_x_apps">S\'estan desant els detalls de l\'aplicació (%1$d/%2$d) des de %3$s</string>
     </resources>
