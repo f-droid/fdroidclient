@@ -145,7 +145,7 @@
     <string name="repo_searching_address">%1$s konumunda
         F-Droid deposu aranıyor
     </string>
-    <string name="minsdk_or_later">%s ya da sonrası</string>
+    <string name="minsdk_or_later">%s veya sonrası</string>
     <string name="up_to_maxsdk">%s değerine kadar</string>
     <string name="minsdk_up_to_maxsdk">%1$s değerinden %2$s değerine kadar</string>
     <string name="not_on_same_wifi">Aygıtınız eklemiş olduğunuz yerel deponuzla aynı Wi-Fi\'de değildir. Şu ağa
@@ -227,7 +227,7 @@
     <string name="category_Theming">Temalandırma</string>
     <string name="category_Time">Zaman</string>
     <string name="category_Writing">Yazma</string>
-    <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama mevcut değildir.</string>
+    <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama yok.</string>
     <string name="empty_installed_app_list">Kurulu uygulama yok.
 
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği
