@@ -81,6 +81,7 @@ import sun.net.www.protocol.bluetooth.Handler;
 public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
+    private static final String ACRA_ID = BuildConfig.APPLICATION_ID + ":acra";
 
     public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
 
@@ -425,7 +426,7 @@ public class FDroidApp extends Application {
 
         int pid = android.os.Process.myPid();
         for (RunningAppProcessInfo processInfo : processes) {
-            if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
+            if (processInfo.pid == pid && ACRA_ID.equals(processInfo.processName)) {
                 return true;
             }
         }

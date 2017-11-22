@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -433,7 +434,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void sendFDroidApk() {
-        ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, "org.fdroid.fdroid");
+        ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, BuildConfig.APPLICATION_ID);
     }
 
     // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
@@ -632,7 +633,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         PrepareInitialSwapRepo() {
-            super(new HashSet<>(Arrays.asList(new String[] {"org.fdroid.fdroid"})));
+            super(new HashSet<>(Arrays.asList(new String[] {BuildConfig.APPLICATION_ID})));
         }
     }
 

@@ -40,6 +40,7 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -133,7 +134,7 @@ public class SwapAppsView extends ListView implements
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.fdroid.fdroid"))) { // NOCHECKSTYLE LineLength
+                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals(BuildConfig.APPLICATION_ID))) { // NOCHECKSTYLE LineLength
             Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }

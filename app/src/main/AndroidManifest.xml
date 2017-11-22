@@ -63,53 +63,53 @@
         >
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.AppProvider"
+            android:authorities="${applicationId}.data.AppProvider"
             android:name="org.fdroid.fdroid.data.AppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.RepoProvider"
+            android:authorities="${applicationId}.data.RepoProvider"
             android:name="org.fdroid.fdroid.data.RepoProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.ApkProvider"
+            android:authorities="${applicationId}.data.ApkProvider"
             android:name="org.fdroid.fdroid.data.ApkProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.TempApkProvider"
+            android:authorities="${applicationId}.data.TempApkProvider"
             android:name="org.fdroid.fdroid.data.TempApkProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.TempAppProvider"
+            android:authorities="${applicationId}.data.TempAppProvider"
             android:name="org.fdroid.fdroid.data.TempAppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:authorities="${applicationId}.data.InstalledAppProvider"
             android:name="org.fdroid.fdroid.data.InstalledAppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.AppPrefsProvider"
+            android:authorities="${applicationId}.data.AppPrefsProvider"
             android:name="org.fdroid.fdroid.data.AppPrefsProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.PackageProvider"
+            android:authorities="${applicationId}.data.PackageProvider"
             android:name="org.fdroid.fdroid.data.PackageProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.CategoryProvider"
+            android:authorities="${applicationId}.data.CategoryProvider"
             android:name="org.fdroid.fdroid.data.CategoryProvider"
             android:exported="false"/>
 
         <provider
             android:name="org.fdroid.fdroid.installer.ApkFileProvider"
-            android:authorities="org.fdroid.fdroid.installer.ApkFileProvider"
+            android:authorities="${applicationId}.installer.ApkFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -118,7 +118,7 @@
         </provider>
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="org.fdroid.fdroid.installer"
+            android:authorities="${applicationId}.installer"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
