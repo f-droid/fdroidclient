@@ -64,7 +64,7 @@
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
-    <string name="menu_upgrade">Aktualisieren</string>
+    <string name="menu_upgrade">Erneuert</string>
     <string name="menu_donate">Spenden</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese Anwendung enthält Werbung</string>
@@ -340,7 +340,7 @@
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
-    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Updates installieren können.</string>
+    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Aktualisierungen installieren können.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="keep_hour">1 Stunde</string>
@@ -505,7 +505,7 @@
 
     <string name="status_inserting_x_apps">App-Details werden von %3$s gespeichert (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signature">Abweichende Signatur zur installierten Version</string>
-    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
