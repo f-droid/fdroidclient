@@ -41,6 +41,7 @@ dependencies {
     compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
     compile 'cc.mvdan.accesspoint:library:0.2.0'
     compile 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
+    compile "info.guardianproject.panic:panic:0.5"
     compile 'commons-io:commons-io:2.5'
     compile 'commons-net:commons-net:3.5'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
@@ -142,6 +143,7 @@ if (!hasProperty('sourceDeps')) {
                 'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
                 'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
                 'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
+                'info.guardianproject.panic:panic:a7ed9439826db2e9901649892cf9afbe76f00991b768d8f4c26332d7c9406cb2',
                 'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
                 'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
                 'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',

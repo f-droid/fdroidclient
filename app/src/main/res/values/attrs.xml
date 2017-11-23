@@ -16,5 +16,6 @@
 
     <!-- Default Preferences -->
     <bool name="defaultPreventScreenshots">false</bool>
+    <bool name="defaultPanicExit">true</bool>
 
 </resources>
