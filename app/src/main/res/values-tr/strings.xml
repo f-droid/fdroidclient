@@ -279,9 +279,9 @@
 
     <string name="install_confirm">erişmesi gerekenler</string>
     <string name="install_confirm_update">Var olan bu uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolmayacak. Güncellenmiş uygulamanın şunlara erişimi olacak:</string>
-    <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolamayacak. Güncellenmiş uygulamanın şunlara erişimi olacak:</string>
+    <string name="install_confirm_update_system">Bu yerleşik uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolamayacak. Güncellenmiş uygulamanın şunlara erişimi olacak:</string>
     <string name="install_confirm_update_no_perms">Var olan bu uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolmayacak. Hiçbir özel erişim gerektirmez.</string>
-    <string name="install_confirm_update_system_no_perms">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolmayacak. Hiçbir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolmayacak. Hiçbir özel erişim gerektirmez.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
@@ -497,11 +497,11 @@
     <string name="app_installed_media">Dosya %s konumuna kuruldu</string>
     <string name="app_permission_storage">F-Droid depolama bunu depolamaya kurmak için depolama iznine gerek duyar. Lütfen kurmaya devam etmek için bir sonraki ekranda izin verin.</string>
 
-    <string name="app_details__incompatible_mismatched_signature">Yüklü sürümü için farklı imza</string>
+    <string name="app_details__incompatible_mismatched_signature">Kurulu sürümden farklı imza</string>
     <string name="app_details__no_versions__show_incompat_versions">Burada uyumsuz sürümleri göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Uyumlu imza ile hiçbir sürüm</string>
     <string name="app_details__no_versions__none_compatible_with_device">Cihazla uyumlu sürüm yok</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Yüklü sürüm herhangi bir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip yüklemenizi sağlayacaktır. Bu genellikle, farklı bir sertifika ile imzalanmışsa, Google Play veya diğer kaynaklar aracılığıyla yüklenmiş uygulamalarda olur.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Kurulu sürüm herhangi bir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, farklı bir sertifika ile imzalanmışsa, Google Play veya diğer kaynaklar aracılığıyla kurulmuş uygulamalarda oluşur.</string>
 
     <string name="installed_app__file_corrupt">F-Droid EIO hatası aldı: %s büyük olasılıkla bozuk!</string>
     <string name="app_list__dismiss_app_update">Güncelleme yok sayıldı</string>
