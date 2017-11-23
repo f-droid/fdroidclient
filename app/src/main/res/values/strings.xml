@@ -240,6 +240,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="proxy_port">Proxy Port</string>
     <string name="proxy_port_summary">Your proxy\'s port number (e.g. 8118)</string>
 
+    <string name="privacy">Privacy</string>
+    <string name="preventScreenshots_title">Prevent Screenshots</string>
+    <string name="preventScreenshots_summary">Blocks screenshots from being taken and hides app content from recent apps screen</string>
+
     <!--
     status_download takes four parameters:
       - Repository (url)

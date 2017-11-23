@@ -89,6 +89,19 @@
             android:summary="@string/proxy_port_summary"
             android:dependency="enableProxy" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_category_privacy"
+        android:title="@string/privacy">
+
+        <CheckBoxPreference
+            android:defaultValue="@bool/defaultPreventScreenshots"
+            android:key="preventScreenshots"
+            android:summary="@string/preventScreenshots_summary"
+            android:title="@string/preventScreenshots_title"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/other"
         android:key="pref_category_other">
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/cache_downloaded"

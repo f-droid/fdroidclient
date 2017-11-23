@@ -38,6 +38,7 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
@@ -126,6 +127,9 @@ public class FDroidApp extends Application {
 
     public void applyTheme(Activity activity) {
         activity.setTheme(getCurThemeResId());
+        if (Preferences.get().preventScreenshots()) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     public static int getCurThemeResId() {
