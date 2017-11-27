@@ -339,7 +339,7 @@
     <string name="useTor">Tor verwenden</string>
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
-    <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
+    <string name="update_auto_download">Automatisch abrufen</string>
     <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Aktualisierungen installieren können.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
@@ -361,7 +361,7 @@
 
     <string name="hide_anti_feature_apps">Apps mit problematischen Merkmalen</string>
     <string name="hide_anti_feature_apps_on">Apps mit problematischen Merkmalen ausgrauen</string>
-    <string name="update_auto_install">Aktualisierungen automatisch installieren</string>
+    <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und
         installieren
     </string>
