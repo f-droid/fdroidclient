@@ -119,9 +119,7 @@
         ikke kunne bekreftes. Du bør være forsiktig
         med programmer lastet ned fra usignerte lister.
     </string>
-    <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda.
-        Du må skru det på for å se programmene den tilbyr.
-    </string>
+    <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru den på for å se programmene den tilbyr.</string>
     <string name="unknown">Ukjent</string>
     <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
     <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være
