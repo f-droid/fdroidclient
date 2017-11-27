@@ -439,7 +439,7 @@
 
     <string name="details_new_in_version">Neu in Version %s</string>
 
-    <string name="antifeatureswarning">Diese Anwendung hat Merkmale, die Ihnen nicht gefallen könnten.</string>
+    <string name="antifeatureswarning">Diese Anwendung besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
     <string name="antifeatures">Problematische Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
