@@ -554,4 +554,6 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Мы знайшлі ўразлівасць з %1$s. Мы рэкамендуем неадкладна абнавіцца да найноўшай версіі.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ігнараваць</string>
 
+    <string name="privacy">Прыватнасць</string>
+    <string name="preventScreenshots_title">Прадухіліць здымкі экрана</string>
     </resources>
