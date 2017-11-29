@@ -89,8 +89,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity))
                 .addDelegate(new KnownVulnApp.Delegate(activity));
 
-        activity.getSupportLoaderManager().initLoader(LOADER_CAN_UPDATE, null, this);
-        activity.getSupportLoaderManager().initLoader(LOADER_KNOWN_VULN, null, this);
+        initLoaders();
     }
 
     /**
@@ -298,7 +297,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * We need to rerun our database query to get a list of apps to update.
      */
     private void onUpdateableAppsChanged() {
-        activity.getSupportLoaderManager().initLoader(0, null, this);
+        initLoaders();
+    }
+
+    private void initLoaders() {
+        activity.getSupportLoaderManager().initLoader(LOADER_CAN_UPDATE, null, this);
+        activity.getSupportLoaderManager().initLoader(LOADER_KNOWN_VULN, null, this);
     }
 
     /**
