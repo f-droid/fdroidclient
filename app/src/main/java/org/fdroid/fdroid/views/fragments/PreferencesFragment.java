@@ -12,6 +12,8 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
+import android.view.WindowManager;
+
 import com.geecko.QuickLyric.view.AppCompatListPreference;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
@@ -377,6 +379,13 @@ public class PreferencesFragment extends PreferenceFragment
     public void onSharedPreferenceChanged(
             SharedPreferences sharedPreferences, String key) {
         updateSummary(key, true);
+        if (key.equals(Preferences.PREF_PREVENT_SCREENSHOTS)) {
+            if (Preferences.get().preventScreenshots()) {
+                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+            } else {
+                getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+            }
+        }
     }
 
 }

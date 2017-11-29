@@ -38,6 +38,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
                     .apply();
         }
+        defaultPreventScreenshots =
+                context.getResources().getBoolean(R.bool.defaultPreventScreenshots);
     }
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
@@ -66,6 +68,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
     public static final String PREF_TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
+    public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
@@ -85,6 +88,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
     private static final boolean DEFAULT_FORCE_OLD_INDEX = false;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
+    private final boolean defaultPreventScreenshots;
 
     public enum Theme {
         light,
@@ -312,6 +316,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 return DEFAULT_PROXY_PORT;
             }
         }
+    }
+
+    public boolean preventScreenshots() {
+        return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, defaultPreventScreenshots);
     }
 
     /**

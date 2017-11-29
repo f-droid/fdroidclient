@@ -13,4 +13,8 @@
         <attr name="lightGrayTextColor" format="color" />
         <attr name="antiFeaturesWarning" format="reference" />
     </declare-styleable>
+
+    <!-- Default Preferences -->
+    <bool name="defaultPreventScreenshots">false</bool>
+
 </resources>
