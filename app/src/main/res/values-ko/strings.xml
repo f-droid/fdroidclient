@@ -457,4 +457,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 최신 버전으로 업그레이드할 것을 권장합니다.</string>
     <string name="antifeatures">안티 기능</string>
     <string name="hide_anti_feature_apps">안티 기능 앱을 회색으로 표시</string>
+    <string name="privacy">개인정보 보호</string>
+    <string name="preventScreenshots_title">스크린샷 방지</string>
+    <string name="preventScreenshots_summary">스크린샷을 찍지 못하도록 막고 최근 앱 화면에서 앱 내용을 숨깁니다</string>
+
     </resources>
