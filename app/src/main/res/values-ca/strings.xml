@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">La nova versió està signada amb una clau diferent de l\'antiga. Per a instal·lar la nova versió, cal desinstal·lar primer la vella. Si us plau feu-ho i proveu altre cop. (Sapigueu que desinstal·lar-la suprimirà qualsevol dada interna que l\'«app» hagi desat)</string>
-    <string name="installIncompatible">L\'«app» és incompatible amb el vostre dispositiu. La voleu instal·lar de totes maneres?</string>
+    <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
+    <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
     <string name="version">Versió</string>
     <string name="delete">Esborrar</string>
     <string name="cache_downloaded">Manté les aplicacions en memòria cau</string>
@@ -10,9 +10,7 @@
     <string name="update_interval">Període d\'actualització automàtica</string>
     <string name="update_interval_zero">No actualitzis automàticament la llista d\'aplicacions</string>
     <string name="automatic_scan_wifi">Només en Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Actualitzeu la llista d\'aplicacions en xarxes sense limitació de tràfic com
-        les Wi-Fi
-    </string>
+    <string name="automatic_scan_wifi_on">Actualitza la llista d\'aplicacions en xarxes sense limitació de tràfic, com ara Wi-Fi</string>
     <string name="notify">Mostreu les actualitzacions disponibles</string>
     <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
     <string name="system_installer">Extensió Privilegiada</string>
@@ -45,7 +43,7 @@
     <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
     <string name="repo_add_url">Adreça del dipòsit</string>
     <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça, sou canviant l\'empremta digital.</string>
+    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça. Això afegirà una empremta digital nova.</string>
     <string name="repo_exists_enable">L\'adreça coincideix amb la d\'un dipòsit inhabilitat, confirmeu que voleu reactivar-lo.</string>
     <string name="repo_exists_and_enabled">Aquesta adreça ja està en ús per un altre dipòsit del dispositiu.</string>
     <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.
@@ -63,7 +61,7 @@
     <string name="menu_website">Pàgina web</string>
     <string name="menu_issues">Problemes</string>
     <string name="menu_source">Codi font</string>
-    <string name="menu_upgrade">Actualitzeu</string>
+    <string name="menu_upgrade">Actualitza</string>
     <string name="menu_donate">Feu una donació</string>
     <string name="details_notinstalled">No està instal·lat</string>
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
@@ -312,7 +310,7 @@
     <string name="status_inserting_apps">S\'està desant els detalls de l\'aplicació</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
-    <string name="crash_dialog_text">L\'«app» s\'ha aturat degut a un error inesperat. Voldríeu enviar-ne els detalls per correu-e per tal d\'ajudar a resoldre la incidència?</string>
+    <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un error inesperat. Voleu enviar els detalls per correu-e per ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
 
@@ -383,7 +381,7 @@
     <string name="notification_title_summary_installing">Instal·lant</string>
     <string name="notification_title_summary_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_install_error">Instal·lació fallida</string>
-    <string name="notification_action_update">Actualitzeu</string>
+    <string name="notification_action_update">Actualitza</string>
     <string name="notification_action_cancel">Cancel·leu</string>
     <string name="notification_action_install">Instal·leu</string>
 
@@ -406,15 +404,12 @@
 	<item quantity="one">Mostra %1$d aplicació de la categoria %2$s</item>
 	<item quantity="other">Mostra les %1$d aplicacions de la categoria %2$s</item>
 </plurals>
-    <string name="app__install_downloaded_update">Actualitzeu</string>
+    <string name="app__install_downloaded_update">Actualitza</string>
 
-    <string name="app_list__name__downloading_in_progress">Descarregant %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Baixant %1$s</string>
 
-    <string name="updates__tts__download_app">"El botó de descàrrega que es mostra a dins del test a la pantalla
-        d\'\"Actualitzacions\" només usa
-        una icona i per tant li cal algun text descriptiu pel motor de TTS"
-    </string>
-    <string name="updates__tts__download_updates_for_all_apps">Descarregueu totes les actualitzacions</string>
+    <string name="updates__tts__download_app">Baixa</string>
+    <string name="updates__tts__download_updates_for_all_apps">Baixa totes les actualitzacions</string>
 
     <string name="updates__hide_updateable_apps">Amaga</string>
     <string name="updates__show_updateable_apps">Mostra</string>
@@ -426,7 +421,7 @@
 
     <string name="details_new_in_version">Novetats a la versió %s</string>
 
-    <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
+    <string name="antifeatureswarning">Aquesta aplicació conté característiques potser no desitjables.</string>
     <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Actualitzada fa %1$d dia</item>
@@ -438,14 +433,14 @@
     <string name="nearby_splash__find_people_button">Cerca persones al voltant</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten l\'%1$s per utilitzar aquesta característica.</string>
 
-    <string name="latest__empty_state__no_recent_apps">Cap «app» recent trobada</string>
+    <string name="latest__empty_state__no_recent_apps">No s\'han trobat aplicacions recents</string>
     <string name="latest__empty_state__never_updated">Un cop actualitzada la vostra llista d\'aplicacions, les més recents es mostraran aquí</string>
     <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori d\'aplicacions, les més recents es mostraran aquí</string>
 
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
 
     <string name="menu_video">Vídeo</string>
-    <string name="app__tts__cancel_download">Cancel·leu la descàrrega</string>
+    <string name="app__tts__cancel_download">Cancel·la la baixada</string>
     <string name="menu_license">Llicència: %s</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Mostra %d</item>
