@@ -511,4 +511,8 @@
     <string name="app_list__dismiss_vulnerable_app">החולשה בהתעלמות</string>
     <string name="app_list__dismiss_downloading_app">ההורדה בוטלה</string>
 
+    <string name="privacy">פרטיות</string>
+    <string name="preventScreenshots_title">מניעת צילומי מסך</string>
+    <string name="preventScreenshots_summary">חסימת צילום המסך והסתרת תוכן היישומון ממסך היישומונים האחרונים</string>
+
     </resources>
