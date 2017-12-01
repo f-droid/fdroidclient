@@ -944,6 +944,10 @@ public class AppProvider extends FDroidProvider {
             values.put(Cols.DESCRIPTION, "");
         }
 
+        // Trim these to avoid unwanted newlines in the UI
+        values.put(Cols.SUMMARY, values.getAsString(Cols.SUMMARY).trim());
+        values.put(Cols.NAME, values.getAsString(Cols.NAME).trim());
+
         String[] categories = null;
         boolean saveCategories = false;
         if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {

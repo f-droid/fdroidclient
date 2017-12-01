@@ -267,6 +267,16 @@ public class AppProviderTest extends FDroidProviderTest {
         assertEquals("F-Droid", otherApp.name);
     }
 
+    @Test
+    public void testInsertTrimsNamesAndSummary() {
+        // Insert a new record with unwanted newlines...
+        App app = insertApp("org.fdroid.trimmer", "Trim me\n", "Trim me too\n");
+
+        assertEquals("org.fdroid.trimmer", app.packageName);
+        assertEquals("Trim me", app.name);
+        assertEquals("Trim me too", app.summary);
+    }
+
     /**
      * We intentionally throw an IllegalArgumentException if you haven't
      * yet called cursor.move*().
@@ -294,6 +304,12 @@ public class AppProviderTest extends FDroidProviderTest {
 
     private void insertApp(String id, String name) {
         insertApp(contentResolver, context, id, name, new ContentValues());
+    }
+
+    private App insertApp(String id, String name, String summary) {
+        ContentValues additionalValues = new ContentValues();
+        additionalValues.put(Cols.SUMMARY, summary);
+        return insertApp(contentResolver, context, id, name, additionalValues);
     }
 
     public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues) {
