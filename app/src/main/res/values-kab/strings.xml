@@ -149,7 +149,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="ignoreTouch_on">Isedday yal tikelt isnasen yesran askan analan</string>
 
-    <string name="adding_apks_format">"Timerna n  %s ar ukufi…"</string>
+    <string name="adding_apks_format">Timerna n  %s ar ukufi…</string>
     <string name="repos_unchanged">Akk ikuffiyen ttwaleqmen</string>
     <string name="all_other_repos_fine">Ikufiyen nniḍen ur d-ggaren ara tuccḍiwin.</string>
     <string name="minsdk_or_later">%s neɣ ugar</string>
@@ -232,7 +232,7 @@
     <string name="proxy_host_summary">Asenneftaɣ n upruksi-ik (m.d. 127.0.0.1)</string>
     <string name="proxy_port_summary">Uṭṭun n tebburt n upruksi-ik (m.d.. 8118)</string>
 
-    <string name="status_processing_xml_percent">"Asesfer n  %2$s / %3$s (%4$d%%) from %1$s"</string>
+    <string name="status_processing_xml_percent">Asesfer n  %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="notification_title_single_ready_to_install">Iwjed i usebded</string>
     <string name="notification_title_single_ready_to_install_update">Alqem iwjed i usebded</string>
     </resources>
