@@ -203,7 +203,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     break;
                 case "desc":
                     // New-style description.
-                    curapp.description = str;
+                    curapp.description = App.formatDescription(str);
                     break;
                 case "summary":
                     curapp.summary = str;
