@@ -3,7 +3,7 @@
     <string name="app_name">F-Droid</string>
 
     <string name="SignatureMismatch">Den nye version er signeret med en nøgle som er forskellig fra den gamle nøgle. Den gamle version skal afinstalleres, før den nye version kan installeres. Gør venligst dette, og forsøg igen. (Bemærk at afinstallation sletter al data appen har lagret internt)</string>
-    <string name="installIncompatible">"App er ikke kompatibel med enhed,  installer alligevel?"</string>
+    <string name="installIncompatible">App er ikke kompatibel med enhed,  installer alligevel?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC Send…</string>
