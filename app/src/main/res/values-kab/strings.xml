@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools"><string name="updates">Amucceḍ</string>
+<resources><string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
 
     <string name="yes">Ih</string>
@@ -27,7 +27,6 @@
     <string name="pref_language_default">Amezwer n unagraw</string>
 
     <string name="category_Games">Uraren</string>
-    <string name="category_Graphics"></string>
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Umuγ n ugetmedia</string>
     <string name="category_Navigation">Asnirem</string>
@@ -129,8 +128,8 @@
     <string name="notification_title_summary_installing">Asebded</string>
     <string name="theme_light">Aceɛlal</string>
     <string name="theme_dark">Aberkan</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Taneflit</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Tiliγri &amp; SMS</string>
+    <string name="category_Development">Taneflit</string>
+    <string name="category_Phone_SMS">Tiliγri &amp; SMS</string>
     <string name="about_title">Γef F-Droid</string>
     <string name="app_list__name__successfully_installed">%1$s yebded</string>
     <string name="update_interval">Azilal n uleqqem awurman</string>
@@ -186,9 +185,9 @@
     <string name="preference_manage_installed_apps">Isefrak Isnasen Ibedden</string>
 
 
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Tuqqniwt</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Tadrimt</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Tussna &amp; Usegmi</string>
+    <string name="category_Connectivity">Tuqqniwt</string>
+    <string name="category_Money">Tadrimt</string>
+    <string name="category_Science_Education">Tussna &amp; Usegmi</string>
     <string name="system_uninstall_button">Kkes</string>
     <string name="swap_welcome">Ansuf γer F-Droid !</string>
     <string name="swap_dont_show_again">Ur d-skan ara tikkelt-nniḍen</string>
@@ -199,7 +198,7 @@
     <string name="unverified">Ur yettwasenqed ara</string>
     <string name="not_on_same_wifi">Ibenk-ik ur yelli ara γef yiwen nni n Wi-Fi am ukufi adigan i terniḍ yakan! Ɛreḍ ad tedduḍ ar uẓeṭṭa-agi: %s</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Addal &amp; Tazmert</string>
+    <string name="category_Sports_Health">Addal &amp; Tazmert</string>
     <string name="swap_send_fdroid">Azen F-Droid</string>
     <string name="crash_dialog_title">F-Droid yeγli</string>
     <string name="enable_nfc_send">Rmed Tuzna NFC …</string>
