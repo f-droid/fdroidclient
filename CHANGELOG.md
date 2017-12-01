@@ -4,6 +4,10 @@
 
 * fullscreen, swipeable app screenshot navigation
 
+* new preference to prevent screenshots/recents
+
+* fix crasher bug #1203
+
 ### 1.0.1 (2017-10-23)
 
 * fixed index update failure on Android 5.0 (#1014)
