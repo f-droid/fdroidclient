@@ -504,20 +504,20 @@
 	<item quantity="one">Обновлено %1$d неделю назад</item>
 	<item quantity="few">Обновлено %1$d недели назад</item>
 	<item quantity="many">Обновлено %1$d недель назад</item>
-	<item quantity="other"/>
+    <item quantity="other">Обновлено %1$d недель назад</item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Обновлено %1$d месяц назад</item>
 	<item quantity="few">Обновлено %1$d месяца назад</item>
 	<item quantity="many">Обновлено %1$d месяцев назад</item>
-	<item quantity="other"/>
-</plurals>
+    <item quantity="other">Обновлено %1$d месяцев назад</item>
+    </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Обновлено %1$d год назад</item>
 	<item quantity="few">Обновлено %1$d года назад</item>
 	<item quantity="many">Обновлено %1$d лет назад</item>
-	<item quantity="other"/>
-</plurals>
+    <item quantity="other">Обновлено %1$d лет назад</item>
+    </plurals>
 <string name="force_old_index">Старый формат индекса (принудительно)</string>
     <string name="force_old_index_summary">Использовать индекс приложений XML в случае проблем с совместимостью</string>
     <string name="app_list_download_ready">Загружено, готово к установке</string>
