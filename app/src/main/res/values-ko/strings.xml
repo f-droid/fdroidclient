@@ -338,7 +338,7 @@
     <string name="updates__tts__download_app">다운로드</string>
     <string name="warning_no_internet">업데이트할 수 없습니다, 인터넷에 연결되어 있습니까?</string>
     <string name="notification_title_single_update_available">업데이트 사용 가능</string>
-    <string name="notification_title_summary_install_error">설치 실패됨</string>
+    <string name="notification_title_summary_install_error">설치에 실패되었습니다</string>
     <string name="by_author_format">%s 제작</string>
     <string name="keep_install_history">설치 내역 유지</string>
     <string name="keep_install_history_summary">F-Droid 안에 모든 설치 및 제거의 기록을 보관합니다</string>
@@ -410,11 +410,11 @@
 </plurals>
     <string name="notification_title_single_ready_to_install">설치할 준비가 되었습니다</string>
     <string name="notification_title_single_ready_to_install_update">업데이트를 설치할 준비가 되었습니다</string>
-    <string name="notification_title_single_install_error">설치 실패됨</string>
+    <string name="notification_title_single_install_error">설치에 실패되었습니다</string>
     <string name="notification_content_single_downloading">\"%1$s\" 다운로드 중…</string>
     <string name="notification_content_single_downloading_update">\"%1$s\"의 업데이트를 다운로드 중…</string>
     <string name="notification_content_single_installing">\"%1$s\" 설치 중…</string>
-    <string name="notification_content_single_installed">성공적으로 설치됨</string>
+    <string name="notification_content_single_installed">성공적으로 설치되었습니다</string>
     <plurals name="notification_summary_updates">
 	<item quantity="other">업데이트 %1$d개</item>
 </plurals>
@@ -427,7 +427,7 @@
     <string name="notification_title_summary_ready_to_install">설치할 준비가 되었습니다</string>
     <string name="notification_title_summary_ready_to_install_update">업데이트를 설치할 준비가 되었습니다</string>
     <string name="notification_title_summary_installing">설치 중</string>
-    <string name="notification_title_summary_installed">성공적으로 설치됨</string>
+    <string name="notification_title_summary_installed">성공적으로 설치되었습니다</string>
     <string name="tts_category_name">카테고리 %1$s</string>
 
     <plurals name="tts_view_all_in_category">
