@@ -212,7 +212,7 @@ android {
     }
 
     defaultConfig {
-        versionCode 1000011
+        versionCode 1000012
         versionName getVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
