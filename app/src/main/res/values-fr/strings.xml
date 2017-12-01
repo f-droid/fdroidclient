@@ -104,9 +104,7 @@
     <string name="proxy_port">Port du proxy</string>
     <string name="proxy_port_summary">Le numéro de port de votre proxy (ex : 8118)</string>
     <string name="status_download">Téléchargement %2$s / %3$s (%4$d%%) depuis %1$s</string>
-    <string name="status_connecting_to_repo">Connexion à
-        \n%1$s
-    </string>
+    <string name="status_connecting_to_repo">Connexion à %1$s</string>
     <string name="repos_unchanged">Tous les dépôts sont à jour</string>
     <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
     <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
@@ -411,7 +409,7 @@
     <string name="main_menu__swap_nearby">À proximité</string>
 
 
-    <string name="app_recommended_version_installed">Verrsion %1$s (recommandée)</string>
+    <string name="app_recommended_version_installed">Version %1$s (recommandée)</string>
     <string name="app__newly_added">Nouveau</string>
     <string name="app__install_downloaded_update">Mise à jour</string>
 
@@ -420,8 +418,7 @@
 
     <string name="installed_apps__activity_title">Applications installées</string>
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la Version %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
     <string name="updates__tts__download_updates_for_all_apps">Télécharger toutes les mises jour</string>
 
@@ -434,7 +431,7 @@
     </plurals>
 
     <string name="preference_category__my_apps">Mes Applications</string>
-    <string name="preference_manage_installed_apps">Gère les applications installées</string>
+    <string name="preference_manage_installed_apps">Gérer les applications installées</string>
 
 
     <string name="details_new_in_version">Nouveautés de la version %s</string>
@@ -524,5 +521,9 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons trouvé une vulnérabilité avec %1$s. Nous recommandons de désinstaller cette application immédiatement.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons trouvé une vulnérabilité avec %1$s. Nous recommandons de mettre à jour immédiatement.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
+
+    <string name="privacy">Vie privée</string>
+    <string name="preventScreenshots_title">Interdire les copies écran</string>
+    <string name="preventScreenshots_summary">Bloque les copies écran et masque le contenu d\'application dans les applications récentes</string>
 
     </resources>

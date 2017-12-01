@@ -1,18 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">La nova versió està signada amb una clau diferent de l\'antiga. Per a instal·lar la nova versió, cal desinstal·lar primer la vella. Si us plau feu-ho i proveu altre cop. (Sapigueu que desinstal·lar-la suprimirà qualsevol dada interna que l\'«app» hagi desat)</string>
-    <string name="installIncompatible">L\'«app» és incompatible amb el vostre dispositiu. La voleu instal·lar de totes maneres?</string>
+    <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
+    <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
     <string name="version">Versió</string>
     <string name="delete">Esborrar</string>
-    <string name="cache_downloaded">Conservar les apps en memòria cau</string>
+    <string name="cache_downloaded">Manté les aplicacions en memòria cau</string>
     <string name="updates">Actualitzacions</string>
     <string name="other">Altres</string>
     <string name="update_interval">Període d\'actualització automàtica</string>
     <string name="update_interval_zero">No actualitzis automàticament la llista d\'aplicacions</string>
     <string name="automatic_scan_wifi">Només en Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Actualitzeu la llista d\'aplicacions en xarxes sense limitació de tràfic com
-        les Wi-Fi
-    </string>
+    <string name="automatic_scan_wifi_on">Actualitza la llista d\'aplicacions en xarxes sense limitació de tràfic, com ara Wi-Fi</string>
     <string name="notify">Mostreu les actualitzacions disponibles</string>
     <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
     <string name="system_installer">Extensió Privilegiada</string>
@@ -45,7 +43,7 @@
     <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
     <string name="repo_add_url">Adreça del dipòsit</string>
     <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça, sou canviant l\'empremta digital.</string>
+    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça. Això afegirà una empremta digital nova.</string>
     <string name="repo_exists_enable">L\'adreça coincideix amb la d\'un dipòsit inhabilitat, confirmeu que voleu reactivar-lo.</string>
     <string name="repo_exists_and_enabled">Aquesta adreça ja està en ús per un altre dipòsit del dispositiu.</string>
     <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.
@@ -63,7 +61,7 @@
     <string name="menu_website">Pàgina web</string>
     <string name="menu_issues">Problemes</string>
     <string name="menu_source">Codi font</string>
-    <string name="menu_upgrade">Actualitzeu</string>
+    <string name="menu_upgrade">Actualitza</string>
     <string name="menu_donate">Feu una donació</string>
     <string name="details_notinstalled">No està instal·lat</string>
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
@@ -75,8 +73,8 @@
     <string name="display">Pantalla</string>
     <string name="expert">Mode expert</string>
     <string name="expert_on">Mostra informació extra i habilita paràmetres extra</string>
-    <string name="search_hint">Cerqueu «apps»</string>
-    <string name="appcompatibility">Compatibilitat de les «apps»</string>
+    <string name="search_hint">Cerca aplicacions</string>
+    <string name="appcompatibility">Compatibilitat d\'aplicacions</string>
     <string name="show_incompat_versions">Versions incompatibles</string>
     <string name="show_incompat_versions_on">Mostra també versions no compatibles de les aplicacions amb el dispositiu
     </string>
@@ -97,11 +95,11 @@
     <string name="skip">Omet</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Habilita HTTP Proxy</string>
-    <string name="enable_proxy_summary">Utilitza HTTP Proxy per a totes les peticions de connexió</string>
-    <string name="proxy_host">Servidor Proxy</string>
-    <string name="proxy_host_summary">El nom de màquina del vostre proxy (p. ex. 127.0.0.1)</string>
-    <string name="proxy_port">Port del Proxy</string>
-    <string name="proxy_port_summary">Número de port del vostre proxy (p. ex. 8118)</string>
+    <string name="enable_proxy_summary">Utilitza un servidor intermediari HTTP per a totes les peticions de connexió</string>
+    <string name="proxy_host">Servidor intermediari</string>
+    <string name="proxy_host_summary">El nom del vostre servidor intermediari (p. ex. 127.0.0.1)</string>
+    <string name="proxy_port">Port del servidor</string>
+    <string name="proxy_port_summary">Número de port del servidor (p. ex. 8118)</string>
     <string name="status_download">S\'està baixant
         %2$s / %3$s (%4$d%%) des de
         %1$s
@@ -118,27 +116,21 @@
     <string name="repo_num_apps">Número d\'aplicacions</string>
     <string name="repo_fingerprint">Empremta digital de la clau del dipòsit (SHA-256)</string>
     <string name="repo_description">Descripció</string>
-    <string name="repo_last_update">Última actualització</string>
+    <string name="repo_last_update">Darrera actualització</string>
     <string name="repo_name">Nom</string>
     <string name="unsigned_description">Això vol dir que la llista d\'«apps» podria no estar verificada. Tingueu compte amb «apps» baixades des de dipòsits sense empremta digital.</string>
     <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit.
         Per veure les seves aplicacions heu d\'activar-lo.
     </string>
     <string name="unknown">Desconegut</string>
-    <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
-    <string name="repo_confirm_delete_body">Eliminar un dipòsit implica
-        que les seves aplicacions ja no seran accessibles des de l\'F-Droid.
-
-        Nota: No
-        perdreu les aplicacions ja instal·lades.
-    </string>
+    <string name="repo_confirm_delete_title">Voleu suprimir el dipòsit?</string>
+    <string name="repo_confirm_delete_body">Suprimir-ho implica que les aplicacions d\'aquest dipòsit ja no seran accessibles des de l\'F-Droid. Nota: No perdreu les aplicacions ja instal·lades.</string>
     <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.
-
-        Heu de
-        tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.
-    </string>
-    <string name="repo_added">S\'ha desat el dipòsit d\'F-Droid %1$s.</string>
-    <string name="repo_searching_address">S\'està cercant un dipòsit d\'F-Droid a\n%1$s</string>
+\n
+\nHabiliteu el dipòsit novament per instal·lar les aplicacions que conté.</string>
+    <string name="repo_added">S\'ha desat el dipòsit %1$s de l\'F-Droid.</string>
+    <string name="repo_searching_address">S\'està cercant un dipòsit de l\'F-Droid a
+\n%1$s</string>
     <string name="minsdk_or_later">%s o més recent</string>
     <string name="up_to_maxsdk">Fins a %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s fins a %2$s</string>
@@ -156,13 +148,11 @@
     <string name="category_Science_Education">Ciència i educació</string>
     <string name="category_Security">Seguretat</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">S\'estan demanant privilegis d\'administrador…</string>
-    <string name="root_access_denied_title">Accés com a administrador rebutjat</string>
-    <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu
-        donat privilegis d\'administrador a l\'F-Droid.
-    </string>
+    <string name="requesting_root_access_body">S\'està demanant privilegis d\'administrador…</string>
+    <string name="root_access_denied_title">S\'ha rebutjat l\'accés d\'administrador</string>
+    <string name="root_access_denied_body">Aquest dispositiu Android no té permisos d\'administrador o no li heu donat a l\'F-Droid.</string>
     <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>
-    <string name="swap">Intercanvieu aplicacions</string>
+    <string name="swap">Intercanvia aplicacions</string>
     <string name="swap_no_wifi_network">No esteu connectats a cap xarxa</string>
     <string name="swap_view_available_networks">(Toqueu per mostrar les xarxes disponibles)</string>
     <string name="open_qr_code_scanner">Obre l\'escàner de codis QR</string>
@@ -186,7 +176,7 @@
     <string name="category_Writing">Per a escriure</string>
 
     <string name="system_install_installing">Instal·lant…</string>
-    <string name="system_install_uninstalling">Desinstal·lant…</string>
+    <string name="system_install_uninstalling">S\'està desinstal·lant…</string>
     <string name="system_uninstall_button">Desinstal·la</string>
 
     <string name="unstable_updates">Actualitzacions inestables</string>
@@ -210,7 +200,7 @@
     <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
     <string name="bad_fingerprint">Empremta digital incorrecta</string>
     <string name="invalid_url">L\'adreça URL és invàlida.</string>
-    <string name="menu_settings">Configuració</string>
+    <string name="menu_settings">Opcions</string>
     <string name="menu_changelog">Registre de canvis</string>
     <string name="status_download_unknown_size">S\'està baixant\n%2$s des de\n%1$s</string>
     <string name="status_processing_xml_percent">S\'està processant %2$s / %3$s (%4$d%%) de %1$s</string>
@@ -224,7 +214,7 @@
     <string name="interval_1h">Cada hora</string>
     <string name="interval_4h">Cada 4 hores</string>
     <string name="interval_12h">Cada 12 hores</string>
-    <string name="interval_1d">Cada dia</string>
+    <string name="interval_1d">Diàriament</string>
     <string name="interval_1w">Setmanalment</string>
     <string name="interval_2w">Cada dues setmanes</string>
 
@@ -233,10 +223,10 @@
     <string name="theme_night">Nit</string>
     <string name="newPerms">Nous</string>
     <string name="allPerms">Tots</string>
-    <string name="perm_costs_money">Això pot costat-li diners</string>
-    <string name="uninstall_update_confirm">Voleu canviar aquesta aplicació per la versió de fàbrica?</string>
-    <string name="uninstall_confirm">Voleu eliminar aquesta aplicació?</string>
-    <string name="download_error">Error en la descàrrega!</string>
+    <string name="perm_costs_money">Això us pot costar diners</string>
+    <string name="uninstall_update_confirm">Voleu restaurar l\'aplicació per la versió de fàbrica?</string>
+    <string name="uninstall_confirm">Voleu suprimir aquesta aplicació?</string>
+    <string name="download_error">Error en la baixada!</string>
 
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Proporcionat per %1$s.</string>
@@ -248,79 +238,66 @@
     </string>
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
-    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres
-        aplicacions estan actualitzades (o els repositoris no ho estan).
-    </string>
+    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.</string>
 
-    <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu
-        d\'aquest error!
-    </string>
+    <string name="system_install_denied_signature">La signatura de l\'extensió no és valida! Si podeu, informeu d\'aquest error!</string>
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu,
         informeu d\'aquest error!
     </string>
-    <string name="system_install_post_success">L\'Extensió Privilegiada d\'F-Droid s\'ha instal·lat correctament</string>
-    <string name="system_install_post_fail">La instal·lació de l\'Extensió Privilegiada d\'F-Droid ha fallat</string>
-    <string name="system_install_post_success_message">L\'Extensió Privilegiada d\'F-Droid s\'ha instal·lat. Això permet a l\'F-Droid instal·lar, actualitzar i eliminar aplicacions per sí sol.</string>
-    <string name="system_install_post_fail_message">La instal·lació de l\'Extensió Privilegiada d\'F-Droid ha fallat. El
-        mètode d\'instal·lació no funciona a totes les distribucions d\'Android. Consulteu el sistema de seguiment
-        d\'errors d\'F-Droid per a més informació.
-    </string>
+    <string name="system_install_post_success">S\'ha instal·lat l\'extensió privilegiada de l\'F-Droid</string>
+    <string name="system_install_post_fail">Ha fallat la instal·lació de l\'Extensió Privilegiada de l\'F-Droid</string>
+    <string name="system_install_post_success_message">S\'ha instal·lat l\'extensió privilegiada. Això permet a l\'F-Droid instal·lar, actualitzar i suprimir aplicacions de forma independent.</string>
+    <string name="system_install_post_fail_message">Ha fallat la instal·lació de l\'Extensió Privilegiada de l\'F-Droid. El mètode d\'instal·lació no funciona a totes les distribucions d\'Android. Consulteu el sistema de seguiment d\'errors de l\'F-Droid per a més informació.</string>
     <string name="system_install_installing_rebooting">S\'està instal·lant i reiniciant…</string>
-    <string name="system_install_question">Voleu instal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
+    <string name="system_install_question">Voleu instal·lar l\'extensió privilegiada de l\'F-Droid?</string>
     <string name="system_install_warning">Això pot trigar fins a 10 segons.</string>
-    <string name="system_install_warning_lollipop">Això pot trigar fins a 10 segons i a continuació el dispositiu es<b>reiniciarà</b>.</string>
-    <string name="system_uninstall">Desitgeu desinstal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
+    <string name="system_install_warning_lollipop">Això pot trigar fins a 10 segons i, a continuació, el dispositiu es<b>reiniciarà</b>.</string>
+    <string name="system_uninstall">Voleu desinstal·lar l\'extensió privilegiada de l\'F-Droid?</string>
     <string name="swap_nfc_title">Toqueu per intercanviar</string>
-    <string name="swap_nfc_description">Si el vostre amic té l\'F-Droid i l\'NFC encesos feu que els dispositius es
-        toquin.
-    </string>
+    <string name="swap_nfc_description">Si l\'altra persona té l\'F-Droid i l\'NFC encesos, feu que els dispositius es toquin.</string>
     <string name="swap_join_same_wifi_desc">Per intercanviar utilitzant Wi-Fi, assegureu-vos que us trobeu a la mateixa
         xarxa. Si no teniu accés a la mateixa xarxa un de vosaltres pot crear un punt d\'accés Wi-Fi.
     </string>
-    <string name="swap_join_this_hotspot">Ajudeu al vostre amic a unirse al vostre punt d\'accés</string>
-    <string name="swap_success">L\'intercanvi s\'ha completat amb èxit!</string>
+    <string name="swap_join_this_hotspot">Ajudeu al vostre amic a unir-se al vostre punt d\'accés</string>
+    <string name="swap_success">L\'intercanvi s\'ha completat correctament!</string>
     <string name="swap_active_hotspot">%1$s (el vostre punt d\'accés)</string>
     <string name="swap_switch_to_wifi">Toqueu per canviar a una xarxa Wi-Fi</string>
     <string name="swap_dont_show_again">No tornis a mostrar això</string>
-    <string name="swap_scan_or_type_url">Una persona ha d\'escanejar el codi, o escriure la URL de l\'altra al
-        navegador.
-    </string>
+    <string name="swap_scan_or_type_url">Una persona ha d\'escanejar el codi, o escriure l\'URL de l\'altra al navegador.</string>
     <string name="swap_choose_apps">Trieu les aplicacions</string>
-    <string name="swap_scan_qr">Escanegeu el codi QR</string>
-    <string name="swap_people_nearby">Persones properes</string>
-    <string name="swap_scanning_for_peers">Cercant persones properes…</string>
+    <string name="swap_scan_qr">Escaneja un codi QR</string>
+    <string name="swap_people_nearby">Persones a prop</string>
+    <string name="swap_scanning_for_peers">S\'està cercant persones a prop…</string>
     <string name="swap_nearby">Intercanvi per proximitat</string>
-    <string name="swap_intro">Connecteu-vos i intercanvieu aplicacions amb persones properes.</string>
+    <string name="swap_intro">Connecteu-vos i intercanvieu aplicacions amb persones a prop.</string>
     <string name="swap_visible_bluetooth">Visible mitjançant Bluetooth</string>
-    <string name="swap_setting_up_bluetooth">Preparant el Bluetooth…</string>
+    <string name="swap_setting_up_bluetooth">S\'està preparant el Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">No visible mitjançant Bluetooth</string>
     <string name="swap_visible_wifi">Visible mitjançant Wi-Fi</string>
-    <string name="swap_setting_up_wifi">Preparant el Wi-Fi…</string>
+    <string name="swap_setting_up_wifi">S\'està preparant la connexió Wi-Fi…</string>
     <string name="swap_not_visible_wifi">No visible mitjançant Wi-Fi</string>
     <string name="swap_wifi_device_name">Nom del dispositiu</string>
-    <string name="swap_cant_find_peers">No trobeu a qui esteu buscant?</string>
+    <string name="swap_cant_find_peers">No trobeu a qui esteu cercant?</string>
     <string name="swap_send_fdroid">Envia l\'F-Droid</string>
     <string name="swap_no_peers_nearby">No s\'ha trobat ningú a prop amb qui intercanviar.</string>
     <string name="swap_connecting">Connectant</string>
     <string name="swap_confirm">Confirmeu l\'intercanvi</string>
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
     <string name="bluetooth_unavailable">El Bluetooth no està disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No s\'ha pogut enviar F-Droid perquè el Bluetooth no està disponible en
-        aquest dispositiu.
-    </string>
-    <string name="loading">Carregant…</string>
-    <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us hi podeu connectar!</string>
+    <string name="swap_cant_send_no_bluetooth">No s\'ha pogut enviar l\'F-Droid perquè el Bluetooth no està disponible en aquest dispositiu.</string>
+    <string name="loading">S\'està carregant…</string>
+    <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
     <string name="swap_not_enabled">Intercanvi no activat</string>
     <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
     <string name="install_confirm">necessita accés a</string>
-    <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta «app»? Les dades existents no es perdran. L\'«app» actualitzada tindrà accés a:</string>
+    <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_system">Voleu instal·lar una actualització
         d\'aquesta aplicació integrada? No perdreu les dades
         existents. L\'aplicació actualitzada tindrà accés a:
     </string>
-    <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta «app»? No perdreu les dades existents. No requereix cap accés especial.</string>
-    <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta «app» integrada? No perdreu les dades existents. L\'aplicació no requereix cap accés especial.</string>
+    <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació? No perdreu les dades existents. No requereix cap accés especial.</string>
+    <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació no requereix cap accés especial.</string>
     <string name="login_title">Es requereix autenticació</string>
     <string name="login_name">Nom d\'usuari</string>
     <string name="login_password">Contrasenya</string>
@@ -330,28 +307,26 @@
     <string name="about_license">Llicència</string>
 
     <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
-    <string name="status_inserting_apps">Desant els detalls de l\'«app»</string>
+    <string name="status_inserting_apps">S\'està desant els detalls de l\'aplicació</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
-    <string name="crash_dialog_text">L\'«app» s\'ha aturat degut a un error inesperat. Voldríeu enviar-ne els detalls per correu-e per tal d\'ajudar a resoldre la incidència?</string>
+    <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un error inesperat. Voleu enviar els detalls per correu-e per ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
 
     <string name="menu_email">Escriviu un correu electrònic a l\'autor</string>
-    <string name="swap_stopping_wifi">Aurant la Wi-Fi…</string>
+    <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
     <string name="useTor">Usi Tor</string>
-    <string name="useTorSummary">Forçar el tràfic de baixada a través de Tor per millorar la privadesa</string>
+    <string name="useTorSummary">Força el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
     <string name="repo_provider">Repositori: %s</string>
 
     <string name="update_auto_download">Obtingueu actualitzacions de forma automàtica</string>
     <string name="update_auto_download_summary">Les descàrregues es descarreguen automàticament i sereu avisats per
         instal·lar-les
     </string>
-    <string name="download_pending">Esperant que comenci la descàrrega…</string>
+    <string name="download_pending">S\'està esperant que comenci la baixada…</string>
 
-    <string name="system_install_not_supported">No es pot instal·lar F-Droid Privileged Extension actualment actualment
-        en versions d\'Android 5.1 o posteriors.
-    </string>
+    <string name="system_install_not_supported">No es pot instal·lar l\'extensió privilegiada de l\'F-Droid en versions d\'Android 5.1 o posteriors.</string>
 
     <string name="keep_forever">Per sempre</string>
 
@@ -367,26 +342,25 @@
     <string name="uninstalling">Desinstal·lant…</string>
 
     <string name="keep_hour">1 hora</string>
-    <string name="hide_anti_feature_apps_on">Ombrejar les «apps» que requereixin components no lliures</string>
-    <string name="hide_anti_feature_apps">Ombrejar les «apps» amb components no lliures</string>
+    <string name="hide_anti_feature_apps_on">Marca les aplicacions que requereixin components no lliures</string>
+    <string name="hide_anti_feature_apps">Marca les aplicacions no lliures</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes
         per l\'F-Droid
     </string>
     <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
-    <string name="update_auto_install_summary">Descarregueu i instal·leu les actualitzacions de les apps en segon pla
-    </string>
+    <string name="update_auto_install_summary">Baixa i instal·la actualitzacions d\'aplicacions en rerefons</string>
     <string name="versions">Versions</string>
     <string name="warning_no_internet">No es pot actualitzar: esteu connectat a internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Convideu els desenvolupadors de %1$s a un cafè!</string>
     <string name="app_details_donate_prompt">%2$s ha creat %1$s. Convideu-los a un cafè!</string>
 
-    <string name="repositories_summary">Afegiu orígens d\'«apps» addicionals</string>
+    <string name="repositories_summary">Administració d\'orígens addicionals</string>
     <string name="app_version_x_available">Versió %1$s disponible</string>
     <string name="app_version_x_installed">Versió %1$s</string>
     <string name="clear_search">Netegeu la cerca</string>
 
-    <string name="main_menu__latest_apps">Últim</string>
+    <string name="main_menu__latest_apps">Novetats</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Al voltant</string>
 
@@ -394,118 +368,136 @@
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>
     <string name="notification_title_single_ready_to_install_update">Actualització llesta per a ser instal·lada</string>
     <string name="notification_title_single_install_error">Instal·lació fallida</string>
-    <string name="notification_content_single_downloading">Descarregant \"%1$s\"…</string>
-    <string name="notification_content_single_downloading_update">Descarregant una actualització de \"%1$s\"…</string>
+    <string name="notification_content_single_downloading">Baixant \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Baixant una actualització de \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instal·lant \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_update_available">Actualització disponible</string>
-    <string name="notification_title_summary_downloading">Descarregant…</string>
-    <string name="notification_title_summary_downloading_update">Descarregant una actualització…</string>
+    <string name="notification_title_summary_downloading">Baixant…</string>
+    <string name="notification_title_summary_downloading_update">Baixant una actualització…</string>
     <string name="notification_title_summary_ready_to_install">Llest per instal·lar</string>
     <string name="notification_title_summary_ready_to_install_update">Actualització llesta per a ser instal·lada
     </string>
     <string name="notification_title_summary_installing">Instal·lant</string>
     <string name="notification_title_summary_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_install_error">Instal·lació fallida</string>
-    <string name="notification_action_update">Actualitzeu</string>
+    <string name="notification_action_update">Actualitza</string>
     <string name="notification_action_cancel">Cancel·leu</string>
     <string name="notification_action_install">Instal·leu</string>
 
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
     <string name="app__newly_added">Nou</string>
 
-    <string name="installed_apps__activity_title">Apps instal·lades</string>
+    <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Ignoreu les actualitzacions</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Les actualitzacions s\'han ignorat per la versió
         %1$s
     </string>
 
-    <string name="preference_category__my_apps">Les meves apps</string>
-    <string name="preference_manage_installed_apps">Administreu les «apps» instal·lades</string>
+    <string name="preference_category__my_apps">Les meves aplicacions</string>
+    <string name="preference_manage_installed_apps">Administració d\'aplicacions instal·lades</string>
 
 
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Mostreu %1$d «app» de la categoria %2$s</item>
-	<item quantity="other">Mostreu totes les %1$d «apps» de la categoria %2$s</item>
+	<item quantity="one">Mostra %1$d aplicació de la categoria %2$s</item>
+	<item quantity="other">Mostra les %1$d aplicacions de la categoria %2$s</item>
 </plurals>
-    <string name="app__install_downloaded_update">Actualitzeu</string>
+    <string name="app__install_downloaded_update">Actualitza</string>
 
-    <string name="app_list__name__downloading_in_progress">Descarregant %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Baixant %1$s</string>
 
-    <string name="updates__tts__download_app">"El botó de descàrrega que es mostra a dins del test a la pantalla
-        d\'\"Actualitzacions\" només usa
-        una icona i per tant li cal algun text descriptiu pel motor de TTS"
-    </string>
-    <string name="updates__tts__download_updates_for_all_apps">Descarregueu totes les actualitzacions</string>
+    <string name="updates__tts__download_app">Baixa</string>
+    <string name="updates__tts__download_updates_for_all_apps">Baixa totes les actualitzacions</string>
 
-    <string name="updates__hide_updateable_apps">Oculteu apps</string>
-    <string name="updates__show_updateable_apps">Mostreu apps</string>
+    <string name="updates__hide_updateable_apps">Amaga</string>
+    <string name="updates__show_updateable_apps">Mostra</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descarregueu l\'actualització per l\'app %1$d.</item>
-        <item quantity="other">Descarregueu les actualitzacions per a les apps %1$d.</item>
-    </plurals>
+	<item quantity="one">%1$d actualització disponible:</item>
+	<item quantity="other">%1$d actualitzacions disponibles:</item>
+</plurals>
 
     <string name="details_new_in_version">Novetats a la versió %s</string>
 
-    <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
+    <string name="antifeatureswarning">Aquesta aplicació conté característiques potser no desitjables.</string>
     <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Actualitzada fa %1$d dies</item>
-	<item quantity="other">Actualitzades fa %1$d dies</item>
+	<item quantity="one">Actualitzada fa %1$d dia</item>
+	<item quantity="other">Actualitzada fa %1$d dies</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s s\'ha instal·lat</string>
     <string name="antifeatures">Característiques no lliures</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">No teniu internet? Aconseguiu «apps» de la gent que tingueu al voltant!</string>
-    <string name="nearby_splash__find_people_button">Trobeu persones del voltant</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">No teniu internet? Aconseguiu aplicacions de la gent que tingueu al voltant!</string>
+    <string name="nearby_splash__find_people_button">Cerca persones al voltant</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten l\'%1$s per utilitzar aquesta característica.</string>
 
-    <string name="latest__empty_state__no_recent_apps">Cap «app» recent trobada</string>
-    <string name="latest__empty_state__never_updated">Un cop s\'hagi actualitzat la vostra llista d\'«apps», les «apps»
-        més noves s\'haurien de mostrar aquí
-    </string>
-    <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori, les «apps» més
-        noves s\'haurien de mostrar aquí
-    </string>
+    <string name="latest__empty_state__no_recent_apps">No s\'han trobat aplicacions recents</string>
+    <string name="latest__empty_state__never_updated">Un cop actualitzada la vostra llista d\'aplicacions, les més recents es mostraran aquí</string>
+    <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori d\'aplicacions, les més recents es mostraran aquí</string>
 
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
 
     <string name="menu_video">Vídeo</string>
-    <string name="app__tts__cancel_download">Cancel·leu la descàrrega</string>
+    <string name="app__tts__cancel_download">Cancel·la la baixada</string>
     <string name="menu_license">Llicència: %s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Veure\'n %d</item>
-	<item quantity="other">Veure\'ls tots %d</item>
+	<item quantity="one">Mostra %d</item>
+	<item quantity="other">Mostra els %d</item>
 </plurals>
 
-    <string name="app__tts__downloading_progress">Descarregant, %1$d%% completat</string>
+    <string name="app__tts__downloading_progress">Baixant, %1$d%% completat</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d actualització</item>
 	<item quantity="other">%1$d actualitzacions</item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d «app» instal·lada</item>
-	<item quantity="other">%1$d «apps» instal·lades</item>
+	<item quantity="one">%1$d aplicació instal·lada</item>
+	<item quantity="other">%1$d aplicacions instal·lades</item>
 </plurals>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d més…</item>
 	<item quantity="other">+%1$d més…</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualitzades fa %1$d setmana</item>
-	<item quantity="other">Actualitzades %1$d setmanes</item>
+	<item quantity="one">Actualitzada fa %1$d setmana</item>
+	<item quantity="other">Actualitzada %1$d setmanes</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Actualitzades fa %1$d mes</item>
-	<item quantity="other">Actualitzades fa %1$d mesos</item>
+	<item quantity="one">Actualitzada fa %1$d mes</item>
+	<item quantity="other">Actualitzada fa %1$d mesos</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Actualitzades fa %1$d any</item>
-	<item quantity="other">Actualitzades fa %1$d anys</item>
+	<item quantity="one">Actualitzada fa %1$d any</item>
+	<item quantity="other">Actualitzada fa %1$d anys</item>
 </plurals>
 <string name="by_author_format">per %s</string>
     <string name="download_404">No s\'ha trobat l\'arxiu sol·licitat.</string>
     <string name="force_old_index">Forceu el format d\'índex antic</string>
+    <string name="force_old_index_summary">En cas d\'errors o problemes de compatibilitat, utilitzeu l\'índex d\'aplicació XML</string>
+    <string name="app_details__incompatible_mismatched_signature">Signatura diferent a la versió instal·lada</string>
+    <string name="app_details__no_versions__show_incompat_versions">Per mostrar de totes formes versions no compatibles, habiliteu «%1$s» a les opcions.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">No hi ha versions amb signatura compatible</string>
+    <string name="app_details__no_versions__none_compatible_with_device">No hi ha versions compatibles amb el dispositiu</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La versió instal·lada no és compatible amb cap versió disponible. desinstal·lau la versió per poder veure i instal·lar versions compatibles. Això passa amb aplicacions instal·lades des del Google Play o altres fonts, si s\'han signat amb un certificat diferent.</string>
+
+    <string name="app_installed_media">Fitxer instal·lat a %s</string>
+    <string name="app_permission_storage">F-Droid necessita permisos d\'emmagatzematge per instal·lar. Doneu permisos a la pantalla següent per procedir amb la instal·lació.</string>
+
+    <string name="app_list_download_ready">S\'ha baixat i ja es pot instal·lar</string>
+    <string name="app_list__dismiss_app_update">Actualització ignorada</string>
+    <string name="app_list__dismiss_vulnerable_app">Vulnerabilitat ignorada</string>
+    <string name="app_list__dismiss_downloading_app">Baixada cancel·lada</string>
+
+    <string name="installed_app__file_corrupt">Error EIO rebut a l\'F-Droid: %s probablement és corrupte!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem suprimir aquesta aplicació immediatament.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem actualitzar immediatament a la versió més recent.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
+
+    <string name="status_inserting_x_apps">S\'estan desant els detalls de l\'aplicació (%1$d/%2$d) des de %3$s</string>
+    <string name="privacy">Privadesa</string>
+    <string name="preventScreenshots_title">Bloca les captures de pantalla</string>
+    <string name="preventScreenshots_summary">Bloca les captures de pantalla i amaga el contingut de la pantalla d\'aplicacions recents</string>
+
     </resources>

@@ -396,4 +396,5 @@
     <string name="repo_exists_add_fingerprint">แหล่งโปรแกรมนี้มีอยู่แล้ว,
         แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป
     </string>
-</resources>
+<string name="main_menu__latest_apps">ล่าสุด</string>
+    </resources>

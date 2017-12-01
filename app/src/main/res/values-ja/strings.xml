@@ -480,4 +480,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s で脆弱性を発見しました。すぐに最新ﾊﾞｰｼﾞｮﾝへのｱｯﾌﾟｸﾞﾚｰﾄﾞをお勧めします。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
 
+    <string name="privacy">プライバシー</string>
+    <string name="preventScreenshots_title">スクリーンショット防止</string>
+    <string name="preventScreenshots_summary">スクリーンショットの撮影を防止するとともに、アプリ履歴に内容が表示されないようにします</string>
+
     </resources>

@@ -218,7 +218,7 @@
     <string name="copying_icons">རེ་པོ་ནང་དུ་མཉེན་ཆས་རྟགས་ཅན་ཕབ་ཤུས།</string>
     <string name="icon">རྟགས་ཅན།</string>
     <string name="useTor">ཏོར་བེད་སྤྱོད།</string>
-    <string name="useTorSummary">གསང་དོན་ཤུགས་ཆེ་རུ་གཏོང་བའི་ཆེད་དུ་ཏཱོར་རྒྱུད་དེ་དྲྭ་ཟིང་ཕབ་ལེན་ནན་སྐུལ་བྱེད།</string>
+    <string name="useTorSummary">གསང་དོན་ཤུགས་ཆེ་རུ་གཏོང་བའི་ཆེད་དུ་ཏཱོར་རྒྱུད་དེ་དྲྭ་ཟིང་ཕབ་ལེན་ནན་སྐུལ་བྱེད། Orbot དགོས་ངེས་རེད།</string>
     <string name="proxy">ངོ་ཚབ།</string>
     <string name="enable_proxy_title">HTTP ངོ་ཚབ་སྒོ་ཕྱེས།</string>
     <string name="status_download">ཕབ་ལེན་བྱེད་བཞིན་པ།

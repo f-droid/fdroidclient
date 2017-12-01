@@ -542,4 +542,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Amus agatadu una vulnerabilidade in %1$s. Racumandamus de l\'agiornare a sa versione prus noa immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
 
+    <string name="privacy">Privadesa</string>
+    <string name="preventScreenshots_title">Preveni sas ischermadas</string>
+    <string name="preventScreenshots_summary">Non permìtere su sarvamentu de ischermadas e istichi su cuntenutu de s\'aplicatzione dae s\'ischermada de sas aplicatziones reghentes</string>
+
     </resources>

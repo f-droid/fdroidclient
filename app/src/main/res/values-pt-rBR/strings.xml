@@ -483,8 +483,8 @@
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">mais +%1$d …</item>
-	<item quantity="other">mais +%1$d …</item>
+	<item quantity="one">mais +%1$d…</item>
+	<item quantity="other">mais +%1$d…</item>
 </plurals>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d atualização</item>
@@ -511,7 +511,7 @@
     <string name="force_old_index">Forçar um formato de índice antigo</string>
     <string name="force_old_index_summary">Se existirem bugs ou problemas de compatibilidade, use o índice XML do aplicativo</string>
     <string name="app_installed_media">Arquivos instalados em %s</string>
-    <string name="app_permission_storage">F-Droid precisa de permissão de acesso para instalar na unidade. Por favor dê permissão na próxima janela para continuar com a instalação.</string>
+    <string name="app_permission_storage">F-Droid precisa de permissão de acesso para instalar na unidade. Por favor, dê permissão na próxima tela para continuar com a instalação.</string>
 
     <string name="app_list_download_ready">Baixado, pronto para instalar</string>
 

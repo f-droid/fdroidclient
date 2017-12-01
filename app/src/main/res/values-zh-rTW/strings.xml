@@ -489,4 +489,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">我們發現了 %1$s 的漏洞，建議您立即更新到最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
 
+    <string name="privacy">隱私權</string>
+    <string name="preventScreenshots_title">阻止螢幕快照</string>
+    <string name="preventScreenshots_summary">阻擋攝取螢幕快照，並自最新的應用程式螢幕中隱藏應用程式內容</string>
+
     </resources>

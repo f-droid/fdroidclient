@@ -119,9 +119,7 @@
         ikke kunne bekreftes. Du bør være forsiktig
         med programmer lastet ned fra usignerte lister.
     </string>
-    <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda.
-        Du må skru det på for å se programmene den tilbyr.
-    </string>
+    <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru den på for å se programmene den tilbyr.</string>
     <string name="unknown">Ukjent</string>
     <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
     <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være
@@ -343,17 +341,17 @@
     <string name="repo_provider">Pakkebrønn: %s</string>
 
     <string name="useTor">Bruk Tor</string>
-    <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet</string>
+    <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet. Krever Orbot</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
     <string name="update_auto_download">Hent oppdateringer automatisk</string>
     <string name="update_auto_download_summary">Oppdateringer blir lastet ned automatisk og du får en beskjed 
 \nom å installere dem</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
 
-    <string name="keep_hour">én time</string>
-    <string name="keep_day">én dag</string>
+    <string name="keep_hour">Én time</string>
+    <string name="keep_day">Én dag</string>
     <string name="keep_week">ei uke</string>
-    <string name="keep_month">én måned</string>
+    <string name="keep_month">Én måned</string>
     <string name="keep_year">ett år</string>
     <string name="keep_forever">For alltid</string>
 
@@ -451,7 +449,7 @@
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Oppdatert %1$d dag siden</item>
+	<item quantity="one">Oppdatert for %1$d dag siden</item>
 	<item quantity="other">Oppdatert for %1$d dager siden</item>
 </plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
@@ -486,8 +484,8 @@
 	<item quantity="other">Oppdatert for %1$d uker siden</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Oppdatert %1$d måned siden</item>
-	<item quantity="other">Oppdatert %1$d måneder siden</item>
+	<item quantity="one">Oppdatert for %1$d måned siden</item>
+	<item quantity="other">Oppdatert for %1$d måneder siden</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Oppdatert for %1$d år siden</item>

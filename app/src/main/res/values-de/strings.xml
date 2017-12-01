@@ -64,7 +64,7 @@
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
-    <string name="menu_upgrade">Aktualisieren</string>
+    <string name="menu_upgrade">Erneuert</string>
     <string name="menu_donate">Spenden</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese Anwendung enthält Werbung</string>
@@ -339,8 +339,8 @@
     <string name="useTor">Tor verwenden</string>
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
-    <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
-    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Updates installieren können.</string>
+    <string name="update_auto_download">Automatisch abrufen</string>
+    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, wenn Sie die Aktualisierungen installieren können.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="keep_hour">1 Stunde</string>
@@ -359,9 +359,9 @@
     <string name="installing">Installation läuft …</string>
     <string name="uninstalling">Deinstallation läuft …</string>
 
-    <string name="hide_anti_feature_apps">Apps mit unfreien Merkmalen</string>
-    <string name="hide_anti_feature_apps_on">Apps ausgrauen, deren Inhalte nicht völlig frei sind</string>
-    <string name="update_auto_install">Aktualisierungen automatisch installieren</string>
+    <string name="hide_anti_feature_apps">Apps mit problematischen Merkmalen</string>
+    <string name="hide_anti_feature_apps_on">Apps mit problematischen Merkmalen ausgrauen</string>
+    <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und
         installieren
     </string>
@@ -372,7 +372,7 @@
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee kaufen!</string>
-    <string name="app_details_donate_prompt">%1$s wurde von %2$s erstellt. Spendieren Sie ihnen einen Kaffee!</string>
+    <string name="app_details_donate_prompt">Spendieren Sie %2$s einen Kaffee für die Erstellung von %1$s!</string>
 
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
     <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
@@ -439,8 +439,8 @@
 
     <string name="details_new_in_version">Neu in Version %s</string>
 
-    <string name="antifeatureswarning">Diese Anwendung hat Merkmale, die Ihnen nicht gefallen könnten.</string>
-    <string name="antifeatures">Unfreie Merkmale</string>
+    <string name="antifeatureswarning">Diese Anwendung besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
+    <string name="antifeatures">Problematische Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Vor %1$d Tag aktualisiert</item>
@@ -451,7 +451,7 @@
 	<item quantity="other">Alle %d ansehen</item>
 </plurals>
 
-    <string name="app_list__name__successfully_installed">%1$s erfolgreich installiert</string>
+    <string name="app_list__name__successfully_installed">%1$s installiert</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet? Apps von Menschen in der Nähe herunterladen!</string>
     <string name="nearby_splash__find_people_button">Menschen in der Nähe finden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Nahfunktion zu verwenden.</string>
@@ -505,7 +505,7 @@
 
     <string name="status_inserting_x_apps">App-Details werden von %3$s gespeichert (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signature">Abweichende Signatur zur installierten Version</string>
-    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>

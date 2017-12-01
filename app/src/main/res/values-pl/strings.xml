@@ -136,7 +136,7 @@
     <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
     <string name="uninstall_system">Aktualizuj/odinstaluj uprzywilejowany dodatek F-Droida</string>
     <string name="uninstall_system_summary">Pokaż szczegóły uprzywilejowanego dodatku</string>
-    <string name="about_mail">El-poczta</string>
+    <string name="about_mail">Meil</string>
     <string name="app_incompatible">Niekompatybilne</string>
     <string name="app_installed">Zainstalowane</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
@@ -392,7 +392,7 @@
     <string name="app_version_x_installed">Wersja %1$s</string>
     <string name="clear_search">Wyczyść wyszukiwanie</string>
 
-    <string name="main_menu__latest_apps">Najnowsze</string>
+    <string name="main_menu__latest_apps">Ostatnie</string>
     <string name="main_menu__categories">Kategorie</string>
     <string name="main_menu__swap_nearby">Blisko</string>
 
