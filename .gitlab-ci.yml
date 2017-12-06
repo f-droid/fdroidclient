@@ -89,10 +89,15 @@ deploy_nightly:
   only:
     - master
   script:
+    - sed -i
+        's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
+        app/src/main/res/values*/strings.xml
+    # add this nightly repo as a enabled repo
     - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_URL}-nightly/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
     - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
+    # build the APKs!
     - ./gradlew assembleDebug
     - apt update; apt install -y --no-install-recommends fdroidserver python3-qrcode openssh-client
     - fdroid nightly -v
