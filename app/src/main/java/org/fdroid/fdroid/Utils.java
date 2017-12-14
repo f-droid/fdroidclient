@@ -409,7 +409,7 @@ public final class Utils {
             fis = new FileInputStream(apk);
             BufferedInputStream bis = new BufferedInputStream(fis);
 
-            byte[] dataBytes = new byte[524288];
+            byte[] dataBytes = new byte[8192];
             int nread;
             while ((nread = bis.read(dataBytes)) != -1) {
                 md.update(dataBytes, 0, nread);
