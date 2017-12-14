@@ -2,6 +2,7 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -38,8 +39,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
                     .apply();
         }
-        defaultPreventScreenshots =
-                context.getResources().getBoolean(R.bool.defaultPreventScreenshots);
+        Resources res = context.getResources();
+        defaultPreventScreenshots = res.getBoolean(R.bool.defaultPreventScreenshots);
+        defaultPanicExit = res.getBoolean(R.bool.defaultPanicExit);
     }
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
@@ -69,6 +71,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
     public static final String PREF_TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
+    public static final String PREF_PANIC_EXIT = "pref_panic_exit";
+    public static final String PREF_PANIC_HIDE = "pref_panic_hide";
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
@@ -89,6 +93,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_FORCE_OLD_INDEX = false;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
     private final boolean defaultPreventScreenshots;
+    private final boolean defaultPanicExit;
 
     public enum Theme {
         light,
@@ -320,6 +325,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean preventScreenshots() {
         return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, defaultPreventScreenshots);
+    }
+
+    public boolean panicExit() {
+        return preferences.getBoolean(PREF_PANIC_EXIT, defaultPanicExit);
+    }
+
+    public boolean panicHide() {
+        return preferences.getBoolean(PREF_PANIC_HIDE, false);
     }
 
     /**

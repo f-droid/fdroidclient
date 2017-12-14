@@ -532,6 +532,33 @@
         <activity android:name=".AboutActivity" android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name=".installer.FileInstallerActivity" android:theme="@style/AppThemeTransparent" />
 
+        <activity
+            android:name=".views.panic.PanicPreferencesActivity"
+            android:label="@string/panic_settings"
+            android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity"/>
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.CONNECT"/>
+                <action android:name="info.guardianproject.panic.action.DISCONNECT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.panic.PanicResponderActivity"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <!-- this can never have launchMode singleTask or singleInstance! -->
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.panic.ExitActivity"
+            android:theme="@android:style/Theme.NoDisplay"/>
+
     </application>
 
 </manifest>
