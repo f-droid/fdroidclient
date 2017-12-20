@@ -27,7 +27,7 @@
           android:installLocation="auto">
 
     <uses-sdk
-            android:minSdkVersion="14"
+            android:minSdkVersion="21"
             android:targetSdkVersion="25"
     />
 
