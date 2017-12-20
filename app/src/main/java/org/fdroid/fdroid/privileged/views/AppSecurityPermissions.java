@@ -1,4 +1,5 @@
 /*
+**
 ** Copyright 2007, The Android Open Source Project
 ** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
 **
@@ -43,7 +44,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 
@@ -67,12 +67,18 @@ import java.util.Set;
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
  * <p/>
  * NOTES:
- * Based on AOSP core/java/android/widget/AppSecurityPermissions
+ * Based on AOSP core/java/android/widget/AppSecurityPermissions.java
  * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
+ * Reviewed against frameworks/base/core/java/android/widget/AppSecurityPermissions.java
+ * from commit {@code android-8.1.0_r2}
  * <p/>
  * To update this file, Start from latest included commit and include changes
  * until the newest commit with care:
  * github.com/android/platform_frameworks_base/blob/master/core/java/android/widget/AppSecurityPermissions.java
+ * <p/>
+ * This file has a different code style than the rest of fdroidclient because
+ * it is kept in sync with the file from AOSP.  Please maintain the original
+ * AOSP code style so it is easy to track changes.
  */
 public class AppSecurityPermissions {
 
