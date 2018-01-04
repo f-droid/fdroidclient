@@ -89,7 +89,9 @@ deploy_nightly:
   only:
     - master
   script:
-    - "[ -z \"$DEBUG_KEYSTORE\" ] || ./config/nightly-repo/deploy"
+    - ./gradlew assembleDebug
+    - apt update; apt install -y --no-install-recommends fdroidserver python3-qrcode openssh-client
+    - fdroid nightly -v
 
 after_script:
     # this file changes every time but should not be cached
