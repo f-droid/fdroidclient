@@ -28,7 +28,7 @@ public class CrashReportSender implements ReportSender {
             throws ReportSenderException {
         Intent emailIntent = new Intent("android.intent.action.SENDTO");
         emailIntent.setData(Uri.fromParts("mailto", this.config.mailTo(), (String) null));
-        emailIntent.addFlags(268435456);
+        emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         String[] subjectBody = this.buildSubjectBody(context, errorContent);
         emailIntent.putExtra("android.intent.extra.SUBJECT", subjectBody[0]);
         emailIntent.putExtra("android.intent.extra.TEXT", subjectBody[1]);
