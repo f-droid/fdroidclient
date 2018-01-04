@@ -102,7 +102,7 @@ public class SwapService extends Service {
      * a different network.
      */
     private SharedPreferences persistence() {
-        return getSharedPreferences(SHARED_PREFERENCES, MODE_APPEND);
+        return getSharedPreferences(SHARED_PREFERENCES, MODE_PRIVATE);
     }
 
     // ==========================================================
