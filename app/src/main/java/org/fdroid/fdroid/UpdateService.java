@@ -467,6 +467,8 @@ public class UpdateService extends IntentService {
 
         long time = System.currentTimeMillis() - startTime;
         Log.i(TAG, "Updating repo(s) complete, took " + time / 1000 + " seconds to complete.");
+
+        // TODO provi: this looks like a good spot for adding automated repository provisioning
     }
 
     private void notifyContentProviders() {
