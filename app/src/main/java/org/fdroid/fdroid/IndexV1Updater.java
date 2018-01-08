@@ -236,7 +236,7 @@ public class IndexV1Updater extends RepoUpdater {
         long timestamp = (Long) repoMap.get("timestamp") / 1000;
 
         if (repo.timestamp > timestamp) {
-            throw new RepoUpdater.UpdateException(repo, "index.jar is older that current index! "
+            throw new RepoUpdater.UpdateException(repo, "index.jar is older than current index! "
                     + timestamp + " < " + repo.timestamp);
         }
 
