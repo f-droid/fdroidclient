@@ -46,3 +46,5 @@ junit-report.xml
 
 # Screen dumps from Android Studio/DDMS
 captures/
+
+/fdroid/
