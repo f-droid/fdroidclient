@@ -26,6 +26,7 @@
 
     <dimen name="category_preview__app_list__padding__horizontal">4dp</dimen>
     <dimen name="category_preview__app_list__padding__horizontal__first">72dp</dimen>
+    <dimen name="category_preview__app_list__padding__horizontal__last">90dp</dimen>
     <dimen name="category_preview__app_list__padding__vertical">18dp</dimen>
 
     <dimen name="banner__padding">4dp</dimen>
