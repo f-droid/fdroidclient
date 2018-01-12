@@ -86,7 +86,6 @@ deploy_nightly:
     - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
     # build the APKs!
     - ./gradlew assembleDebug
-    - apt update; apt install -y --no-install-recommends fdroidserver python3-qrcode openssh-client
     - fdroid nightly -v
 
 after_script:
