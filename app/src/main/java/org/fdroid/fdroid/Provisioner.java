@@ -1,5 +1,8 @@
 package org.fdroid.fdroid;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Base64;
 
@@ -35,7 +38,7 @@ public class Provisioner {
     /**
      * search for provision files and process them
      */
-    public void scanAndProcess() {
+    public void scanAndProcess(Context context) {
 
         List<File> files = findProvisionFiles();
         List<ProvisionPlaintext> plaintexts = extractProvisionsPlaintext(files);
@@ -52,6 +55,10 @@ public class Provisioner {
                         + " " + repo.getName()
                         + " " + repo.getUrl()
                         + " " + repo.getUsername());
+
+                Intent i  = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(repo.getUrl()));
+                context.startActivity(i);
             }
         }
     }
@@ -81,9 +88,9 @@ public class Provisioner {
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M')) {
-                sb.append(c + 13);
+                sb.append((char)(c + 13));
             } else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z')) {
-                sb.append(c - 13);
+                sb.append((char)(c - 13));
             } else {
                 sb.append(c);
             }
@@ -204,6 +211,7 @@ public class Provisioner {
 
         private String name;
         private String url;
+        private String sigfp;
         private String username;
         private String password;
 
@@ -221,6 +229,14 @@ public class Provisioner {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        public String getSigfp() {
+            return sigfp;
+        }
+
+        public void setSigfp(String sigfp) {
+            this.sigfp = sigfp;
         }
 
         public String getUsername() {
