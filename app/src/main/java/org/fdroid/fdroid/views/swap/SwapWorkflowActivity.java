@@ -163,6 +163,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ((FDroidApp) getApplication()).setSecureWindow(this);
         super.onCreate(savedInstanceState);
 
         // The server should not be doing anything or occupying any (noticeable) resources

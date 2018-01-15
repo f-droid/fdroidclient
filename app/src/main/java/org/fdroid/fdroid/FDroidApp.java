@@ -127,9 +127,7 @@ public class FDroidApp extends Application {
 
     public void applyTheme(Activity activity) {
         activity.setTheme(getCurThemeResId());
-        if (Preferences.get().preventScreenshots()) {
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        }
+        setSecureWindow(activity);
     }
 
     public static int getCurThemeResId() {
@@ -147,6 +145,13 @@ public class FDroidApp extends Application {
 
     public void applyDialogTheme(Activity activity) {
         activity.setTheme(getCurDialogThemeResId());
+        setSecureWindow(activity);
+    }
+
+    public void setSecureWindow(Activity activity) {
+        if (Preferences.get().preventScreenshots()) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     private static int getCurDialogThemeResId() {
