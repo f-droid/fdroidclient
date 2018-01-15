@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -21,6 +23,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.hiding.HidingManager;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 import java.util.Date;
@@ -69,6 +72,17 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View v) {
                 activity.startActivity(new Intent(activity, AppListActivity.class));
+            }
+        });
+        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (Preferences.get().hideOnLongPressSearch()) {
+                    HidingManager.showHideDialog(activity);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
 

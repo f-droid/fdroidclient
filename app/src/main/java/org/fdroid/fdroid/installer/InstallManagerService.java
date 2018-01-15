@@ -85,6 +85,8 @@ public class InstallManagerService extends Service {
 
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager appUpdateStatusManager;
+    private BroadcastReceiver broadcastReceiver;
+    private boolean running = false;
 
     /**
      * This service does not use binding, so no need to implement this method
@@ -101,9 +103,10 @@ public class InstallManagerService extends Service {
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
 
-        BroadcastReceiver br = new BroadcastReceiver() {
+        broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                if (intent.getData() == null) return;
                 String packageName = intent.getData().getSchemeSpecificPart();
                 for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(packageName)) {
                     appUpdateStatusManager.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
@@ -113,7 +116,15 @@ public class InstallManagerService extends Service {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");
-        registerReceiver(br, intentFilter);
+        registerReceiver(broadcastReceiver, intentFilter);
+        running = true;
+    }
+
+    @Override
+    public void onDestroy() {
+        running = false;
+        unregisterReceiver(broadcastReceiver);
+        super.onDestroy();
     }
 
     @Override
@@ -218,6 +229,10 @@ public class InstallManagerService extends Service {
         final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                if (!running) {
+                    localBroadcastManager.unregisterReceiver(this);
+                    return;
+                }
                 String action = intent.getAction();
                 if (Downloader.ACTION_STARTED.equals(action)) {
                     Utils.debugLog(TAG, action + " " + intent);
@@ -273,6 +288,10 @@ public class InstallManagerService extends Service {
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                if (!running) {
+                    localBroadcastManager.unregisterReceiver(this);
+                    return;
+                }
                 Uri downloadUri = intent.getData();
                 String urlString = downloadUri.toString();
                 long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
@@ -351,6 +370,10 @@ public class InstallManagerService extends Service {
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                if (!running) {
+                    localBroadcastManager.unregisterReceiver(this);
+                    return;
+                }
                 String downloadUrl = intent.getDataString();
                 Apk apk;
                 switch (intent.getAction()) {

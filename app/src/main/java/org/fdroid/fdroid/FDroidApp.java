@@ -62,6 +62,7 @@ import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -286,7 +287,7 @@ public class FDroidApp extends Application {
         Languages.setLanguage(this);
 
         ACRA.init(this);
-        if (isAcraProcess()) {
+        if (isAcraProcess() || HidingManager.isHidden(this)) {
             return;
         }
 

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.CategoryProvider;
@@ -22,6 +23,7 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 import org.fdroid.fdroid.views.categories.CategoryController;
+import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,6 +73,17 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View v) {
                 activity.startActivity(new Intent(activity, AppListActivity.class));
+            }
+        });
+        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (Preferences.get().hideOnLongPressSearch()) {
+                    HidingManager.showHideDialog(activity);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
 

@@ -100,6 +100,12 @@
             android:summary="@string/preventScreenshots_summary"
             android:title="@string/preventScreenshots_title"/>
 
+        <CheckBoxPreference
+            android:defaultValue="@bool/defaultHideOnLongPressSearch"
+            android:key="hideOnLongPressSearch"
+            android:summary="@string/hide_on_long_search_press_summary"
+            android:title="@string/hide_on_long_search_press_title"/>
+
         <PreferenceScreen
             android:summary="@string/panic_settings_summary"
             android:title="@string/panic_settings">
