@@ -2,13 +2,14 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+
+import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -174,6 +175,21 @@ public class UtilsTest {
         }
     }
 
+    @Test
+    public void testGetBinaryHash() {
+        File f = TestUtils.copyResourceToTempFile("largeRepo.xml");
+        assertEquals("df1754aa4b56c86c06d7842dfd02064f0781c1f740f489d3fc158bb541c8d197",
+                Utils.getBinaryHash(f, "sha256"));
+        f = TestUtils.copyResourceToTempFile("masterKeyIndex.jar");
+        assertEquals("625d5aedcd0499fe04ebab81f3c7ae30c236cee653a914ffb587d890198f3aba",
+                Utils.getBinaryHash(f, "sha256"));
+        f = TestUtils.copyResourceToTempFile("index.fdroid.2016-10-30.jar");
+        assertEquals("c138b503c6475aa749585d0e3ad4dba3546b6d33ec485efd8ac8bd603d93fedb",
+                Utils.getBinaryHash(f, "sha256"));
+        f = TestUtils.copyResourceToTempFile("index.fdroid.2016-11-10.jar");
+        assertEquals("93bea45814fd8955cabb957e7a3f8790d6c568eaa16fa30425c2d26c60490bde",
+                Utils.getBinaryHash(f, "sha256"));
+    }
     // TODO write tests that work with a Certificate
 
 }
