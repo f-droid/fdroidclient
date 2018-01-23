@@ -713,7 +713,6 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     public void installCancel() {
         if (isAppDownloading()) {
             InstallManagerService.cancel(this, currentStatus.getUniqueKey());
-            adapter.clearProgress();
         }
     }
 

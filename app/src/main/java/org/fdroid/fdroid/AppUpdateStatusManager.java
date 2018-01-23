@@ -379,7 +379,6 @@ public final class AppUpdateStatusManager {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {
                 Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkName);
-                appMapping.remove(entry.apk.getUrl());
                 notifyRemove(entry);
             }
         }
