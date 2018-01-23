@@ -410,6 +410,9 @@ public class FDroidApp extends Application {
             }
             grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
         }
+
+        // find and process provisions if any.
+        Provisioner.scanAndProcess(getApplicationContext());
     }
 
     /**
