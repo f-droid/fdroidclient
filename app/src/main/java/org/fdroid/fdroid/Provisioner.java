@@ -3,12 +3,14 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.util.Base64;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.views.ManageReposActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,11 +28,18 @@ import java.util.zip.ZipInputStream;
 /**
  * @author Michael Pöhn (michael.poehn@fsfe.org)
  */
+@SuppressWarnings("LineLength")
 public class Provisioner {
 
     public static final String TAG = "Provisioner";
 
-    private static final String DEFAULT_PROVISION_DIR = Environment.getExternalStorageDirectory().getPath();
+    /**
+     * This is the name of the subfolder in the file directory of this app
+     * where {@link Provisioner} looks for new provisions.
+     *
+     * eg. in the Emulator (API level 24): /data/user/0/org.fdroid.fdroid.debug/files/provisions
+     */
+    private static final String NEW_PROVISIONS_DIR = "provisions";
 
     protected Provisioner() {
     }
@@ -38,49 +47,88 @@ public class Provisioner {
     /**
      * search for provision files and process them
      */
-    public void scanAndProcess(Context context) {
+    public static void scanAndProcess(Context context) {
 
-        List<File> files = findProvisionFiles();
-        List<ProvisionPlaintext> plaintexts = extractProvisionsPlaintext(files);
-        files.clear();
+        File provisionDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + File.separator + NEW_PROVISIONS_DIR);
 
-        List<Provision> provisions = parseProvisions(plaintexts);
-        plaintexts.clear();
+        if (!provisionDir.isDirectory()) {
+            Utils.debugLog(TAG, "Provisions dir does not exists: '" + provisionDir.getAbsolutePath() + "' moving on ...");
+        } else if (provisionDir.list().length == 0) {
+            Utils.debugLog(TAG, "Provisions dir is empty: '" + provisionDir.getAbsolutePath() + "' moving on ...");
+        } else {
 
-        // TODO: do something useful with provisions, like prompting users
-        for (Provision provision : provisions) {
-            if (provision.getRepositoryProvision() != null) {
-                RepositoryProvision repo = provision.getRepositoryProvision();
-                Utils.debugLog(TAG, "repository:"
-                        + " " + repo.getName()
-                        + " " + repo.getUrl()
-                        + " " + repo.getUsername());
+            Provisioner p = new Provisioner();
+            List<File> files = p.findProvisionFiles(context);
+            List<ProvisionPlaintext> plaintexts = p.extractProvisionsPlaintext(files);
+            List<Provision> provisions = p.parseProvisions(plaintexts);
 
-                Intent i  = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(repo.getUrl()));
-                context.startActivity(i);
+            if (provisions == null || provisions.size() == 0) {
+                Utils.debugLog(TAG, "Provision dir does not contain any provisions: '" + provisionDir.getAbsolutePath() + "' moving on ...");
+            } else {
+                int cleanupCounter = 0;
+                for (Provision provision : provisions) {
+                    if (provision.getRepositoryProvision() != null) {
+                        RepositoryProvision repo = provision.getRepositoryProvision();
+
+                        // TODO uniqx: check if repo is already enable
+                        Repo storedRepo = RepoProvider.Helper.findByAddress(context, repo.getUrl());
+                        if (storedRepo != null) {
+                            Utils.debugLog(TAG, "Provision contains a repo which is already added: '" + provision.getProvisonPath() + "' ignoring ...");
+                        } else {
+                            // Note: only the last started activity will visible to users.
+                            // All other prompting attempts will be lost.
+                            Uri origUrl = Uri.parse(repo.getUrl());
+                            Uri.Builder data = new Uri.Builder();
+                            data.scheme(origUrl.getScheme());
+                            data.encodedAuthority(Uri.encode(repo.getUsername()) + ":" + Uri.encode(repo.getPassword()) + "@" + Uri.encode(origUrl.getAuthority()));
+                            data.path(origUrl.getPath());
+                            data.appendQueryParameter("fingerprint", repo.getSigfp());
+                            Intent i = new Intent(context, ManageReposActivity.class);
+                            i.setData(data.build());
+                            context.startActivity(i);
+                            Utils.debugLog(TAG, "Provision processed: '" + provision.getProvisonPath() + "' prompted user ...");
+                        }
+
+                    }
+
+                    // remove provision file
+                    try {
+                        new File(provision.getProvisonPath()).delete();
+                        cleanupCounter++;
+                    } catch (SecurityException e) {
+                        // ignore this exception
+                        Utils.debugLog(TAG, "Removing provision not possible: " + e.getMessage() + " ()");
+                    }
+                }
+                Utils.debugLog(TAG, "Provisions done, removed " + cleanupCounter + " provision(s).");
             }
         }
     }
 
-    /**
-     * @return List of
-     */
-    public List<File> findProvisionFiles() {
-        return findProvisionFilesInDir(new File(DEFAULT_PROVISION_DIR));
+    public List<File> findProvisionFiles(Context context) {
+        String provisionDirPath = context.getExternalFilesDir(null).getAbsolutePath() + File.separator + NEW_PROVISIONS_DIR;
+        return findProvisionFilesInDir(new File(provisionDirPath));
     }
 
     protected List<File> findProvisionFilesInDir(File file) {
-        File[] files = file.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                if (name != null && name.endsWith(".fdrp")) {
-                    return true;
+        if (file == null || !file.isDirectory()) {
+            return new ArrayList<>();
+        }
+        try {
+            File[] files = file.listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    if (name != null && name.endsWith(".fdrp")) {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-        return files != null ? Arrays.asList(files) : null;
+            });
+            return files != null ? Arrays.asList(files) : null;
+        } catch (Exception e) {
+            Utils.debugLog(TAG, "can not search for provisions, can not access: " + file.getAbsolutePath(), e);
+            return new ArrayList<>();
+        }
     }
 
     String rot13(String text) {
@@ -88,9 +136,9 @@ public class Provisioner {
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M')) {
-                sb.append((char)(c + 13));
+                sb.append((char) (c + 13));
             } else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z')) {
-                sb.append((char)(c - 13));
+                sb.append((char) (c - 13));
             } else {
                 sb.append(c);
             }
@@ -109,38 +157,40 @@ public class Provisioner {
 
     protected List<ProvisionPlaintext> extractProvisionsPlaintext(List<File> files) {
         List<ProvisionPlaintext> result = new ArrayList<>();
-        for (File file : files) {
-            ProvisionPlaintext plain = new ProvisionPlaintext();
-            plain.setProvisionPath(file.getAbsolutePath());
-            ZipInputStream in = null;
-            try {
-                in = new ZipInputStream(new FileInputStream(file));
-                ZipEntry zipEntry = null;
-                while ((zipEntry = in.getNextEntry()) != null) {
-                    String name = zipEntry.getName();
-                    if ("repo_provision.json".equals(name)) {
-                        if (plain.getRepositoryProvision() != null) {
-                            throw new IOException("provision malformed: contains more than one repo provision file.");
+        if (files != null) {
+            for (File file : files) {
+                ProvisionPlaintext plain = new ProvisionPlaintext();
+                plain.setProvisionPath(file.getAbsolutePath());
+                ZipInputStream in = null;
+                try {
+                    in = new ZipInputStream(new FileInputStream(file));
+                    ZipEntry zipEntry = null;
+                    while ((zipEntry = in.getNextEntry()) != null) {
+                        String name = zipEntry.getName();
+                        if ("repo_provision.json".equals(name)) {
+                            if (plain.getRepositoryProvision() != null) {
+                                throw new IOException("provision malformed: contains more than one repo provision file.");
+                            }
+                            plain.setRepositoryProvision(IOUtils.toString(in, Charset.forName("UTF-8")));
+                        } else if ("repo_provision.ojson".equals(name)) {
+                            if (plain.getRepositoryProvision() != null) {
+                                throw new IOException("provision malformed: contains more than one repo provision file.");
+                            }
+                            plain.setRepositoryProvision(deobfuscate(IOUtils.toString(in, Charset.forName("UTF-8"))));
                         }
-                        plain.setRepositoryProvision(IOUtils.toString(in, Charset.forName("UTF-8")));
-                    } else if ("repo_provision.ojson".equals(name)) {
-                        if (plain.getRepositoryProvision() != null) {
-                            throw new IOException("provision malformed: contains more than one repo provision file.");
-                        }
-                        plain.setRepositoryProvision(deobfuscate(IOUtils.toString(in, Charset.forName("UTF-8"))));
                     }
+                } catch (FileNotFoundException e) {
+                    Utils.debugLog(TAG, String.format("finding provision '%s' failed", file.getPath()), e);
+                    continue;
+                } catch (IOException e) {
+                    Utils.debugLog(TAG, String.format("reading provision '%s' failed", file.getPath()), e);
+                    continue;
+                } finally {
+                    IOUtils.closeQuietly(in);
                 }
-            } catch (FileNotFoundException e) {
-                Utils.debugLog(TAG, String.format("finding provision '%s' failed", file.getPath()), e);
-                continue;
-            } catch (IOException e) {
-                Utils.debugLog(TAG, String.format("reading provision '%s' failed", file.getPath()), e);
-                continue;
-            } finally {
-                IOUtils.closeQuietly(in);
-            }
 
-            result.add(plain);
+                result.add(plain);
+            }
         }
         return result;
     }
@@ -150,16 +200,18 @@ public class Provisioner {
         List<Provision> provisions = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
 
-        for (ProvisionPlaintext provisionPlaintext : provisionPlaintexts) {
-            Provision provision = new Provision();
-            provision.setProvisonPath(provisionPlaintext.getProvisionPath());
-            try {
-                provision.setRepositoryProvision(
-                        mapper.readValue(provisionPlaintext.getRepositoryProvision(), RepositoryProvision.class));
-            } catch (IOException e) {
-                Utils.debugLog(TAG, "could not parse repository provision", e);
+        if (provisionPlaintexts != null) {
+            for (ProvisionPlaintext provisionPlaintext : provisionPlaintexts) {
+                Provision provision = new Provision();
+                provision.setProvisonPath(provisionPlaintext.getProvisionPath());
+                try {
+                    provision.setRepositoryProvision(
+                            mapper.readValue(provisionPlaintext.getRepositoryProvision(), RepositoryProvision.class));
+                    provisions.add(provision);
+                } catch (IOException e) {
+                    Utils.debugLog(TAG, "could not parse repository provision", e);
+                }
             }
-            provisions.add(provision);
         }
 
         return provisions;
