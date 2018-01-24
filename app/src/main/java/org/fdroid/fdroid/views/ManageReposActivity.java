@@ -180,7 +180,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                     if (userInfoTokens.length >= 2) {
                         username = userInfoTokens[0];
                         password = userInfoTokens[1];
-                        for (int i=2; i<userInfoTokens.length; i++) {
+                        for (int i = 2; i < userInfoTokens.length; i++) {
                             password += ":" + userInfoTokens[i];
                         }
                     }
@@ -221,12 +221,9 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
         private AddRepoState addRepoState;
 
-        AddRepo(String newAddress, String newFingerprint,final String username, final String password) {
+        AddRepo(String newAddress, String newFingerprint, final String username, final String password) {
 
             context = ManageReposActivity.this;
-
-            // TODO uniqx: forward username and password
-            Toast.makeText(context, "username: " + username + ", password: " + password, Toast.LENGTH_LONG).show();
 
             final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
             addRepoDialog = new AlertDialog.Builder(context).setView(view).create();
