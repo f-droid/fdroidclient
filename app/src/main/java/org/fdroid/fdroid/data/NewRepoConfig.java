@@ -96,7 +96,7 @@ public class NewRepoConfig {
         String userInfo = uri.getUserInfo();
         if (userInfo != null) {
             String[] userInfoTokens = userInfo.split(":");
-            if (userInfoTokens != null && userInfoTokens.length >= 2){
+            if (userInfoTokens != null && userInfoTokens.length >= 2) {
                 username = userInfoTokens[0];
                 password = userInfoTokens[1];
                 for (int i = 2; i < userInfoTokens.length; i++) {
