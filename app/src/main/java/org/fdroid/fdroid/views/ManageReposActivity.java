@@ -162,6 +162,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         ClipboardCompat clipboard = ClipboardCompat.create(this);
         String text = clipboard.getText();
         String fingerprint = null;
+        String username = null;
+        String password = null;
         if (!TextUtils.isEmpty(text)) {
             try {
                 new URL(text);
@@ -171,6 +173,19 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                 if (TextUtils.isEmpty(fingerprint)) {
                     fingerprint = uri.getQueryParameter("FINGERPRINT");
                 }
+
+                String userInfo = uri.getUserInfo();
+                if (userInfo != null) {
+                    String[] userInfoTokens = userInfo.split(":");
+                    if (userInfoTokens.length >= 2) {
+                        username = userInfoTokens[0];
+                        password = userInfoTokens[1];
+                        for (int i = 2; i < userInfoTokens.length; i++) {
+                            password += ":" + userInfoTokens[i];
+                        }
+                    }
+                }
+
                 text = NewRepoConfig.sanitizeRepoUri(uri);
             } catch (MalformedURLException e) {
                 text = null;
@@ -180,11 +195,11 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         if (TextUtils.isEmpty(text)) {
             text = DEFAULT_NEW_REPO_TEXT;
         }
-        showAddRepo(text, fingerprint);
+        showAddRepo(text, fingerprint, username, password);
     }
 
-    private void showAddRepo(String newAddress, String newFingerprint) {
-        new AddRepo(newAddress, newFingerprint);
+    private void showAddRepo(String newAddress, String newFingerprint, String username, String password) {
+        new AddRepo(newAddress, newFingerprint, username, password);
     }
 
     /**
@@ -206,7 +221,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
         private AddRepoState addRepoState;
 
-        AddRepo(String newAddress, String newFingerprint) {
+        AddRepo(String newAddress, String newFingerprint, final String username, final String password) {
 
             context = ManageReposActivity.this;
 
@@ -270,14 +285,14 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
                             switch (addRepoState) {
                                 case DOESNT_EXIST:
-                                    prepareToCreateNewRepo(url, fp);
+                                    prepareToCreateNewRepo(url, fp, username, password);
                                     break;
 
                                 case IS_SWAP:
                                     Utils.debugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
                                     Repo repo = RepoProvider.Helper.findByAddress(context, url);
                                     RepoProvider.Helper.remove(context, repo.getId());
-                                    prepareToCreateNewRepo(url, fp);
+                                    prepareToCreateNewRepo(url, fp, username, password);
                                     break;
 
                                 case EXISTS_DISABLED:
@@ -430,7 +445,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         /**
          * Adds a new repo to the database.
          */
-        private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint) {
+        private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint, final String username, final String password) {
 
             addRepoDialog.findViewById(R.id.add_repo_form).setVisibility(View.GONE);
             addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setVisibility(View.GONE);
@@ -503,6 +518,13 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                             final AlertDialog credentialsDialog = new AlertDialog.Builder(context).setView(view).create();
                             final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
                             final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
+
+                            if (username != null) {
+                                nameInput.setText(username);
+                            }
+                            if (password != null) {
+                                passwordInput.setText(password);
+                            }
 
                             credentialsDialog.setTitle(R.string.login_title);
                             credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
@@ -661,7 +683,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
         if (newRepoConfig.isValidRepo()) {
             isImportingRepo = true;
-            showAddRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint());
+            showAddRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint(), newRepoConfig.getUsername(), newRepoConfig.getPassword());
             checkIfNewRepoOnSameWifi(newRepoConfig);
         } else if (newRepoConfig.getErrorMessage() != null) {
             Toast.makeText(this, newRepoConfig.getErrorMessage(), Toast.LENGTH_LONG).show();

@@ -23,6 +23,8 @@ public class NewRepoConfig {
     private String uriString;
     private String host;
     private int port = -1;
+    private String username;
+    private String password;
     private String fingerprint;
     private String bssid;
     private String ssid;
@@ -91,6 +93,18 @@ public class NewRepoConfig {
 
         boolean isFdroidScheme = TextUtils.equals("fdroidrepo", scheme) || TextUtils.equals("fdroidrepos", scheme);
 
+        String userInfo = uri.getUserInfo();
+        if (userInfo != null) {
+            String[] userInfoTokens = userInfo.split(":");
+            if (userInfoTokens != null && userInfoTokens.length >= 2) {
+                username = userInfoTokens[0];
+                password = userInfoTokens[1];
+                for (int i = 2; i < userInfoTokens.length; i++) {
+                    password += ":" + userInfoTokens[i];
+                }
+            }
+        }
+
         fingerprint = uri.getQueryParameter("fingerprint");
         bssid = uri.getQueryParameter("bssid");
         ssid = uri.getQueryParameter("ssid");
@@ -133,6 +147,14 @@ public class NewRepoConfig {
         return host;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public String getFingerprint() {
         return fingerprint;
     }
@@ -157,9 +179,11 @@ public class NewRepoConfig {
     public static String sanitizeRepoUri(Uri uri) {
         String scheme = uri.getScheme();
         String host = uri.getHost();
+        String userInfo = uri.getUserInfo();
         return uri.toString()
                 .replaceAll("\\?.*$", "") // remove the whole query
                 .replaceAll("/*$", "") // remove all trailing slashes
+                .replace(userInfo + "@", "") // remove user authentication
                 .replace(host, host.toLowerCase(Locale.ENGLISH))
                 .replace(scheme, scheme.toLowerCase(Locale.ENGLISH))
                 .replace("fdroidrepo", "http") // proper repo address
