@@ -80,8 +80,8 @@
     <string name="show_incompat_versions_on">Aygıtla uyumsuz uygulama sürümlerini göster</string>
     <string name="rooted">Kökü yok say</string>
     <string name="rooted_on">Kök yetkileri gerektiren uygulamalar gri yapılmasın</string>
-    <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
-    <string name="ignoreTouch_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
+    <string name="force_touch_apps">Dokunmatik ekranı yok say</string>
+    <string name="force_touch_apps_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
     <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine izin vermek için dokunun.</string>

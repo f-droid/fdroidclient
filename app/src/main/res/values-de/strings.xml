@@ -82,8 +82,8 @@
     <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible App-Versionen anzeigen</string>
     <string name="rooted">Root ignorieren</string>
     <string name="rooted_on">Apps nicht ausgrauen, wenn sie Root-Rechte verlangen</string>
-    <string name="ignoreTouch">Touchscreen ignorieren</string>
-    <string name="ignoreTouch_on">Apps anzeigen, die einen Touchscreen benötigen</string>
+    <string name="force_touch_apps">Touchscreen ignorieren</string>
+    <string name="force_touch_apps_on">Apps anzeigen, die einen Touchscreen benötigen</string>
     <string name="local_repo">Lokale Paketquelle</string>
     <string name="local_repo_running">F-Droid ist zum Tausch bereit</string>
     <string name="touch_to_configure_local_repo">Berühren, um die Details anzusehen und anderen einen App-Tausch mit Ihnen zu ermöglichen.</string>

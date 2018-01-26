@@ -84,8 +84,8 @@
     </string>
     <string name="rooted">Obviar permisos de administración</string>
     <string name="rooted_on">No marcar en gris las aplicaciones que piden permisos de administración<i>root</i>)</string>
-    <string name="ignoreTouch">Ignorar pantalla táctil</string>
-    <string name="ignoreTouch_on">Siempre incluir aplicaciones que necesiten una pantalla táctil</string>
+    <string name="force_touch_apps">Ignorar pantalla táctil</string>
+    <string name="force_touch_apps_on">Siempre incluir aplicaciones que necesiten una pantalla táctil</string>
     <string name="local_repo">Repo local</string>
     <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
     <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>

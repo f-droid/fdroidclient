@@ -28,14 +28,14 @@ public class CompatibilityChecker {
     private final Set<String> features;
     private final String[] cpuAbis;
     private final String cpuAbisDesc;
-    private final boolean ignoreTouchscreen;
+    private final boolean forceTouchApps;
 
     public CompatibilityChecker(Context ctx) {
 
         context = ctx.getApplicationContext();
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        ignoreTouchscreen = prefs.getBoolean(Preferences.PREF_IGN_TOUCH, false);
+        forceTouchApps = prefs.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, false);
 
         PackageManager pm = ctx.getPackageManager();
 
@@ -102,7 +102,7 @@ public class CompatibilityChecker {
 
         if (apk.features != null) {
             for (final String feat : apk.features) {
-                if (ignoreTouchscreen && "android.hardware.touchscreen".equals(feat)) {
+                if (forceTouchApps && "android.hardware.touchscreen".equals(feat)) {
                     continue;
                 }
                 if (!features.contains(feat)) {

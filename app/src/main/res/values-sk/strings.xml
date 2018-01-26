@@ -85,8 +85,8 @@
     <string name="show_incompat_versions_on">Zobraziť verzie nekompatibilné so zariadením</string>
     <string name="rooted">Ignorovať root</string>
     <string name="rooted_on">Nezašediť aplikácie vyžadujúce práva root</string>
-    <string name="ignoreTouch">Ignorovať dotykovú obrazovku</string>
-    <string name="ignoreTouch_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
+    <string name="force_touch_apps">Ignorovať dotykovú obrazovku</string>
+    <string name="force_touch_apps_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
     <string name="local_repo">Miestne repo</string>
     <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
     <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše

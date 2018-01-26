@@ -73,8 +73,8 @@
     <string name="show_incompat_versions_on">Προβολή εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
     <string name="rooted">Αγνόηση εφαρμογών που απαιτούν δικαιώματα υπερχρήστη (Root)</string>
     <string name="rooted_on">Να μη γκριζάρονται εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
-    <string name="ignoreTouch">Αγνόηση οθόνης αφής</string>
-    <string name="ignoreTouch_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
+    <string name="force_touch_apps">Αγνόηση οθόνης αφής</string>
+    <string name="force_touch_apps_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
     <string name="status_download">Λήψη 
 \n%2$s / %3$s (%4$d%%) από %1$s</string>
     <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>

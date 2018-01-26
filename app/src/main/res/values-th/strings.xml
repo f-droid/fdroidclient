@@ -271,8 +271,8 @@
     </string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
-    <string name="ignoreTouch">ไม่ต้องสนใจชนิดหน้าจอ</string>
-    <string name="ignoreTouch_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
+    <string name="force_touch_apps">ไม่ต้องสนใจชนิดหน้าจอ</string>
+    <string name="force_touch_apps_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
 
     <string name="proxy_host_summary">ตั้งค่าที่อยู่เครื่องพรอกซีที่จะใช้ (เช่น 127.0.0.1)</string>
     <string name="proxy_port_summary">ตั้งค่าพอร์ตของเครื่องพรอกซี่ที่จะใช้ (เช่น 8118)</string>

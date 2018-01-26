@@ -50,7 +50,7 @@
     <string name="appcompatibility">Compatibilidade da App</string>
     <string name="show_incompat_versions">Versións incompatíbeis</string>
     <string name="rooted">Ignorar Root</string>
-    <string name="ignoreTouch">Ignorar a pantalla táctil</string>
+    <string name="force_touch_apps">Ignorar a pantalla táctil</string>
     <string name="status_download">Descargando
         %2$s / %3$s (%4$d%%) desde
         %1$s
@@ -111,7 +111,7 @@
 
     <string name="show_incompat_versions_on">Amosar versións de aplicativos incompatibles co dispositivo</string>
     <string name="rooted_on">Non sombrear os aplicativos que requiran privilexios de root</string>
-    <string name="ignoreTouch_on">Incluír sempre aplicativos que requiran pantalla táctil</string>
+    <string name="force_touch_apps_on">Incluír sempre aplicativos que requiran pantalla táctil</string>
 
     <string name="local_repo">Repositorio local</string>
     <string name="local_repo_running">F-Droid está listo para o intercambio</string>

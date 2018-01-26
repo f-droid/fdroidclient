@@ -83,8 +83,8 @@
     <string name="show_incompat_versions_on">Afficher les versions d\'applis incompatibles avec cet appareil</string>
     <string name="rooted">Ignorer root</string>
     <string name="rooted_on">Ne pas griser les applis nécessitant les privilèges root</string>
-    <string name="ignoreTouch">Ignorer l\'écran tactile</string>
-    <string name="ignoreTouch_on">Toujours inclure les applis nécessitant un écran tactile</string>
+    <string name="force_touch_apps">Ignorer l\'écran tactile</string>
+    <string name="force_touch_apps_on">Toujours inclure les applis nécessitant un écran tactile</string>
     <string name="local_repo">Dépôt local</string>
     <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
     <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser d\'autres à échanger vos applications.</string>

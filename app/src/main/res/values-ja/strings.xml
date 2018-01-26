@@ -78,8 +78,8 @@
     <string name="show_incompat_versions_on">端末と互換性が無いアプリのバージョンを表示します</string>
     <string name="rooted">rootアプリを無視する</string>
     <string name="rooted_on">root権限を要求するアプリを表示します</string>
-    <string name="ignoreTouch">タッチスクリーンを無視する</string>
-    <string name="ignoreTouch_on">タッチスクリーンを要求するアプリを常に表示します</string>
+    <string name="force_touch_apps">タッチスクリーンを無視する</string>
+    <string name="force_touch_apps_on">タッチスクリーンを要求するアプリを常に表示します</string>
     <string name="local_repo">ローカルリポジトリ</string>
     <string name="local_repo_running">F-Droidは交換の準備ができました</string>
     <string name="touch_to_configure_local_repo">タッチすると詳細を表示し、アプリの交換ができるようになります。</string>

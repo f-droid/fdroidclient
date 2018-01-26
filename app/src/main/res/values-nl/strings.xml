@@ -80,8 +80,8 @@
     <string name="show_incompat_versions_on">Toon app-versies die niet compatibel zijn met je apparaat</string>
     <string name="rooted">Root negeren</string>
     <string name="rooted_on">Verberg apps die rootrechten vereisen niet</string>
-    <string name="ignoreTouch">Aanraakscherm negeren</string>
-    <string name="ignoreTouch_on">Reken apps die een aanraakscherm vereisen altijd mee</string>
+    <string name="force_touch_apps">Aanraakscherm negeren</string>
+    <string name="force_touch_apps_on">Reken apps die een aanraakscherm vereisen altijd mee</string>
     <string name="local_repo">Collectie gedeelde apps</string>
     <string name="local_repo_running">F-Droid is klaar om apps uit te wisselen</string>
     <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen apps te laten uitwisselen.</string>

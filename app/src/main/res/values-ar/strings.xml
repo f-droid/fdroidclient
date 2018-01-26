@@ -150,8 +150,8 @@
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير متوافقة مع الجهاز</string>
     <string name="rooted">تجاهل صلاحيات الجذر</string>
     <string name="rooted_on">لا تخفي أصل التطبيقات التي تتطلب امتيازات الجذر</string>
-    <string name="ignoreTouch">تجاهل الشاشات التي تعمل باللمس</string>
-    <string name="ignoreTouch_on">دائما ضم التطبيقات التي تتطلب شاشة تعمل باللمس</string>
+    <string name="force_touch_apps">تجاهل الشاشات التي تعمل باللمس</string>
+    <string name="force_touch_apps_on">دائما ضم التطبيقات التي تتطلب شاشة تعمل باللمس</string>
 
     <string name="local_repo_running">اف-درويد على استعداد التبديل</string>
     <string name="touch_to_configure_local_repo">إستخدم اللمس لعرض تفاصيل والسماح للآخرين لمبادلة التطبيقات الخاصة بك.

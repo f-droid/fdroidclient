@@ -55,8 +55,7 @@
     <string name="search_hint">Bilatu aplikazioak</string>
     <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
     <string name="show_incompat_versions">Bertsio bateraezinak</string>
-    <string name="rooted">Ezikusi Root</string>
-    <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
+    <string name="force_touch_apps">Ezikusi egin ukipen-pantailari</string>
     <string name="status_connecting_to_repo">%1$s(e)ra
         \nkonektatzen
     </string>
@@ -122,7 +121,7 @@
     <string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
 
     <string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
-    <string name="ignoreTouch_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
+    <string name="force_touch_apps_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
 
     <string name="local_repo">Biltegi lokala</string>
     <string name="deleting_repo">Uneko biltegia ezabatzen…</string>

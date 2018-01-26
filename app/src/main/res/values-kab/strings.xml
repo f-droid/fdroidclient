@@ -147,7 +147,7 @@
     <string name="repositories_summary">Rnu iɣbula nniḍen n yisnasen</string>
     <string name="menu_changelog">Aɣmis n ibeddilen</string>
     <string name="menu_bitcoin">Bitcoin</string>
-    <string name="ignoreTouch_on">Isedday yal tikelt isnasen yesran askan analan</string>
+    <string name="force_touch_apps_on">Isedday yal tikelt isnasen yesran askan analan</string>
 
     <string name="adding_apks_format">Timerna n  %s ar ukufi…</string>
     <string name="repos_unchanged">Akk ikuffiyen ttwaleqmen</string>

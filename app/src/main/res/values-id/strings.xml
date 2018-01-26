@@ -115,8 +115,8 @@
     <string name="show_incompat_versions">Versi tidak kompatibel</string>
     <string name="show_incompat_versions_on">Menampilkan versi apl yang tidak kompatibel dengan perangkat ini</string>
     <string name="rooted">Abaikan root</string>
-    <string name="ignoreTouch">Abaikan layar sentuh</string>
-    <string name="ignoreTouch_on">Selalu sertakan aplikasi yang membutuhkan layar sentuh</string>
+    <string name="force_touch_apps">Abaikan layar sentuh</string>
+    <string name="force_touch_apps_on">Selalu sertakan aplikasi yang membutuhkan layar sentuh</string>
 
     <string name="local_repo">Repo Lokal</string>
     <string name="deleting_repo">Menghapus repo saat ini…</string>

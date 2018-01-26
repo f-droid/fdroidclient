@@ -81,8 +81,8 @@
     <string name="show_incompat_versions_on">Приказ неодговарајућих издања апликације са уређајем</string>
     <string name="rooted">Занемари корен</string>
     <string name="rooted_on">Не посивљуј приказ апликација које захтевају корени приступ</string>
-    <string name="ignoreTouch">Занемари услов додирног екрана</string>
-    <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
+    <string name="force_touch_apps">Занемари услов додирног екрана</string>
+    <string name="force_touch_apps_on">Увек укључи апликације које захтевају додирни екран</string>
     <string name="local_repo">Локална ризница</string>
     <string name="local_repo_running">Ф-дроид је спреман за размену</string>
     <string name="touch_to_configure_local_repo">Додирните за приказ детаља и да дозволите другима да размењују ваше

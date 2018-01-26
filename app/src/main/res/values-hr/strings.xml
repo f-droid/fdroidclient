@@ -141,8 +141,8 @@
     <string name="show_incompat_versions_on">Prikaži verzije nekompatibilne s ovim uređajem</string>
     <string name="rooted">Ignoriraj root</string>
     <string name="rooted_on">Nemoj zasiviti aplikacije koje zahtjevaju root ovlasti</string>
-    <string name="ignoreTouch">Ignoriraj dodirni zaslon</string>
-    <string name="ignoreTouch_on">Uvijek uključi aplikacije koje zahtjevaju dodirni zaslon</string>
+    <string name="force_touch_apps">Ignoriraj dodirni zaslon</string>
+    <string name="force_touch_apps_on">Uvijek uključi aplikacije koje zahtjevaju dodirni zaslon</string>
 
     <string name="local_repo">Lokalni repozitorij</string>
     <string name="local_repo_running">F-Droid je spreman za razmjenu</string>

@@ -78,8 +78,8 @@
     <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството</string>
     <string name="rooted">Игнорирай Root</string>
     <string name="rooted_on">Приложенията изискващи Root няма да бъдат изобразявани в сиво</string>
-    <string name="ignoreTouch">Игнорирай сензорния екран</string>
-    <string name="ignoreTouch_on">Приложенията изискващи сензорен екран ще бъдат показвани винаги</string>
+    <string name="force_touch_apps">Игнорирай сензорния екран</string>
+    <string name="force_touch_apps_on">Приложенията изискващи сензорен екран ще бъдат показвани винаги</string>
     <string name="local_repo">Локално хранилище</string>
     <string name="deleting_repo">Изтриване на хранилището…</string>
     <string name="adding_apks_format">Добавяне на %s към хранилището…</string>

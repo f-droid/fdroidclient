@@ -63,8 +63,8 @@
     <string name="show_incompat_versions">Nekompatibilní verze</string>
     <string name="rooted">Ignorovat Root</string>
     <string name="rooted_on">Nezašedávat aplikace vyžadující root oprávnění</string>
-    <string name="ignoreTouch">Ignorovat dotykovou obrazovku</string>
-    <string name="ignoreTouch_on">Vždy zahrnovat aplikace vyžadující dotykovou obrazovku</string>
+    <string name="force_touch_apps">Ignorovat dotykovou obrazovku</string>
+    <string name="force_touch_apps_on">Vždy zahrnovat aplikace vyžadující dotykovou obrazovku</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
     <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním si přetáhnout tvé aplikace.

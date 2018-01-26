@@ -86,8 +86,8 @@
     <string name="show_incompat_versions_on">Mostrar versões de aplicativos incompatíveis com o dispositivo</string>
     <string name="rooted">Ignorar o root</string>
     <string name="rooted_on">Não marcar de cinza os aplicativos que requerem privilégios de root</string>
-    <string name="ignoreTouch">Ignorar tela sensível ao toque</string>
-    <string name="ignoreTouch_on">Sempre incluir aplicativos que requerem tela sensível a toque</string>
+    <string name="force_touch_apps">Ignorar tela sensível ao toque</string>
+    <string name="force_touch_apps_on">Sempre incluir aplicativos que requerem tela sensível a toque</string>
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">O F-Droid está pronto para permutar</string>
     <string name="touch_to_configure_local_repo">Toque para ver detalhes e permitir que outros permutem seus aplicativos.</string>

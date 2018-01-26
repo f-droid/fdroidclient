@@ -85,8 +85,8 @@
     <string name="show_incompat_versions_on">Amuesa les versiones d\'aplicaciones incompatibles col preséu</string>
     <string name="rooted">Inorar root</string>
     <string name="rooted_on">Nun escurez les aplicaciones que rican privilexos root</string>
-    <string name="ignoreTouch">Inorar pantalla táutil</string>
-    <string name="ignoreTouch_on">Inclúi siempres aplicaciones que rican pantalla táutil</string>
+    <string name="force_touch_apps">Inorar pantalla táutil</string>
+    <string name="force_touch_apps_on">Inclúi siempres aplicaciones que rican pantalla táutil</string>
     <string name="local_repo">Repositoriu llocal</string>
     <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
     <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos

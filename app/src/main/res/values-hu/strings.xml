@@ -66,8 +66,8 @@
     <string name="show_incompat_versions_on">Azon alkalmazásverziók megjelenítése, melyek nem kompatibilisek az eszközzel</string>
     <string name="rooted">Root figyelmen kívül hagyása</string>
     <string name="rooted_on">Nem szürkíti ki a root jogot igénylő alkalmazásokat</string>
-    <string name="ignoreTouch">Érintőképernyő figyelmen kívül hagyása</string>
-    <string name="ignoreTouch_on">Mindig vegye bele azokat az appokat is, melyekhez érintőképernyő szükséges</string>
+    <string name="force_touch_apps">Érintőképernyő figyelmen kívül hagyása</string>
+    <string name="force_touch_apps_on">Mindig vegye bele azokat az appokat is, melyekhez érintőképernyő szükséges</string>
     <string name="status_download">Letöltés\n%2$s / %3$s (%4$d%%), forrás:\n%1$s</string>
     <string name="status_connecting_to_repo">Kapcsolódás ehhez:\n%1$s</string>
     <string name="no_permissions">Nincsenek engedélyei.</string>

@@ -205,8 +205,8 @@
     <string name="show_incompat_versions">རན་མཚམས་མེད་པའི་ཐོན་རིམ་ཁག</string>
     <string name="show_incompat_versions_on">ཡོ་བྱད་དང་རན་མཚམས་མེད་པའི་མཉེན་ཆས་ཀྱི་ཐོན་རིམ་རྣམས་སྟོན།</string>
     <string name="rooted">འཕྲུལ་ཆས་ཨ་མ་ལ་ཡ་མ་བྱེད།</string>
-    <string name="ignoreTouch">རེག་ཤེལ་ལ་ཡ་མ་བྱེད།</string>
-    <string name="ignoreTouch_on">རེག་ཤེལ་དགོས་པའི་མཉེན་ཆས་རྣམས་རྒྱུན་དུ་ངོས་པར་དུ་ཚུད་དགོས།</string>
+    <string name="force_touch_apps">རེག་ཤེལ་ལ་ཡ་མ་བྱེད།</string>
+    <string name="force_touch_apps_on">རེག་ཤེལ་དགོས་པའི་མཉེན་ཆས་རྣམས་རྒྱུན་དུ་ངོས་པར་དུ་ཚུད་དགོས།</string>
 
     <string name="local_repo">རེ་པོ་བསྟི་གནས།</string>
     <string name="local_repo_running">ཨེཕ་རོཌ་བརྗེ་ལེན་བྱས་པར་གྲ་སྒྲིག་ཡོད།</string>

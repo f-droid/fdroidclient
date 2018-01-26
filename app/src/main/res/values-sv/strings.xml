@@ -80,8 +80,8 @@
     <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
     <string name="rooted">Ignorera root</string>
     <string name="rooted_on">Gråtona inte appar som kräver root-behörigheter</string>
-    <string name="ignoreTouch">Ignorera pekskärm</string>
-    <string name="ignoreTouch_on">Inkludera alltid appar som kräver pekskärm</string>
+    <string name="force_touch_apps">Ignorera pekskärm</string>
+    <string name="force_touch_apps_on">Inkludera alltid appar som kräver pekskärm</string>
     <string name="local_repo">Lokalt förråd</string>
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>

@@ -101,7 +101,7 @@
     <string name="appcompatibility">Samhæfni forrits</string>
     <string name="show_incompat_versions">Ósamhæfðar útgáfur</string>
     <string name="rooted">Hunsa rót/root</string>
-    <string name="ignoreTouch">Hunsa snertiskjá</string>
+    <string name="force_touch_apps">Hunsa snertiskjá</string>
     <string name="local_repo">Staðvært hugbúnaðarsafn</string>
     <string name="local_repo_running">F-Droid er tilbúið í forritaskipti</string>
     <string name="deleting_repo">Eyði núgildandi hugbúnaðarsafni…</string>
@@ -328,7 +328,7 @@
     <string name="show_incompat_versions_on">Birta útgáfur forrita sem eru ósamhæfðar tækinu</string>
     <string name="hide_anti_feature_apps">Skyggja forrit með neikvæða eiginleika (anti-feature)</string>
     <string name="hide_anti_feature_apps_on">Skyggja forrit sem krefjast neikvæðra eiginleika</string>
-    <string name="ignoreTouch_on">Alltaf hafa með forrit sem krefjast snertiskjás</string>
+    <string name="force_touch_apps_on">Alltaf hafa með forrit sem krefjast snertiskjás</string>
 
     <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að
         býtta við þig á forritum.

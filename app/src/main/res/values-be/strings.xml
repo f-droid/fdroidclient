@@ -146,8 +146,8 @@
     <string name="rooted_on">Не паказваць шэрым праграмы, якія патрабуюць прывілей суперкарыстальніка</string>
     <string name="hide_anti_feature_apps">Пазначаць праграмы з непажаданым функцыяналам</string>
     <string name="hide_anti_feature_apps_on">Пазначаць шэрым праграмы з непажаданым функцыяналам</string>
-    <string name="ignoreTouch">Ігнараваць сэнсарны экран</string>
-    <string name="ignoreTouch_on">Заўседы ўключаць праграмы, якія патрабуюць сэнсарны экран</string>
+    <string name="force_touch_apps">Ігнараваць сэнсарны экран</string>
+    <string name="force_touch_apps_on">Заўседы ўключаць праграмы, якія патрабуюць сэнсарны экран</string>
 
     <string name="local_repo">Лакальны рэпазіторый</string>
     <string name="local_repo_running">F-Droid гатовы да абмену</string>

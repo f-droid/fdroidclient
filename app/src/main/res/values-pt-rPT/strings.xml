@@ -121,8 +121,8 @@
     <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
     <string name="rooted">Ignorar \'root\'</string>
     <string name="rooted_on">Não sombrear aplicações que necessitem de acesso \'root\'</string>
-    <string name="ignoreTouch">Ignorar ecrã de toque</string>
-    <string name="ignoreTouch_on">Incluir aplicações que necessitem de toque no ecrã</string>
+    <string name="force_touch_apps">Ignorar ecrã de toque</string>
+    <string name="force_touch_apps_on">Incluir aplicações que necessitem de toque no ecrã</string>
 
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">F-Droid pronto para a troca</string>

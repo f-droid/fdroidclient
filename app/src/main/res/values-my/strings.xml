@@ -127,8 +127,8 @@
     <string name="show_incompat_versions">မကိုက္ညီေသာဗားရွင္းမ်ား</string>
     <string name="show_incompat_versions_on">စက္ႏွင့္မကိုက္ညီေသာ app ဗားရွင္းမ်ားကိုျပမည္</string>
     <string name="rooted">Root ကိုလ်စ္လႈရွဴမည္</string>
-    <string name="ignoreTouch">ထိေတြ႕စခရင္ လ်စ္လွဴရႈမည္</string>
-    <string name="ignoreTouch_on">ထိေတြ႕စခရင္လိုေသာ app မ်ားပါဝင္လ်က္အျမဲတမ္း</string>
+    <string name="force_touch_apps">ထိေတြ႕စခရင္ လ်စ္လွဴရႈမည္</string>
+    <string name="force_touch_apps_on">ထိေတြ႕စခရင္လိုေသာ app မ်ားပါဝင္လ်က္အျမဲတမ္း</string>
 
     <string name="local_repo_running">F-Droidကို စတင္ swap ႏိုင္ပါျပီ</string>
     <string name="adding_apks_format">%s ကို repot ထဲေပါင္းထည့္ေနပါသည္</string>

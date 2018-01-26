@@ -80,8 +80,8 @@
     </string>
     <string name="rooted">Ignora root</string>
     <string name="rooted_on">No marquis en gris aplicacions que requereixen privilegis d\'administrador</string>
-    <string name="ignoreTouch">Ignora la pantalla tàctil</string>
-    <string name="ignoreTouch_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
+    <string name="force_touch_apps">Ignora la pantalla tàctil</string>
+    <string name="force_touch_apps_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
     <string name="local_repo">Dipòsit local</string>
     <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
     <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>

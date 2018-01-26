@@ -80,8 +80,8 @@
     <string name="show_incompat_versions_on">Vis programvareversjoner som ikke er kompatible med enheten</string>
     <string name="rooted">Ignorer root</string>
     <string name="rooted_on">Skyggelegg alle app-er som krever superbruker-tilgang</string>
-    <string name="ignoreTouch">Ignorer pekeskjerm</string>
-    <string name="ignoreTouch_on">Alltid inkluder app-er som krever pekeskjerm</string>
+    <string name="force_touch_apps">Ignorer pekeskjerm</string>
+    <string name="force_touch_apps_on">Alltid inkluder app-er som krever pekeskjerm</string>
     <string name="local_repo">Lokal pakkebrønn</string>
     <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
     <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>

@@ -137,7 +137,7 @@
     <string name="show_incompat_versions_on">Wys program weergawes onversoenbaar met hierdie toestel</string>
     <string name="rooted">Ignoreer root</string>
     <string name="rooted_on">Moet nie programme uit-grys uit wat root voorregte benodig nie</string>
-    <string name="ignoreTouch">Ignoreer tasskerm</string>
+    <string name="force_touch_apps">Ignoreer tasskerm</string>
     <string name="local_repo">Lokale argief</string>
     <string name="local_repo_running">roid is gereed om te deel</string>
     <string name="writing_index_jar">Skryf getekende indekslêer (index.jar)…</string>
@@ -172,7 +172,7 @@
     <string name="repo_delete_to_overwrite">Jy moet eers hierdie argief uitvee voordat jy een met \'n ander sleutel kan
         laai.
     </string>
-    <string name="ignoreTouch_on">Sluit altyd programme in wat \'n tasskerm vereis</string>
+    <string name="force_touch_apps_on">Sluit altyd programme in wat \'n tasskerm vereis</string>
 
     <string name="deleting_repo">Huidige argief word uitgevee …</string>
     <string name="adding_apks_format">Laai %s na argief…</string>

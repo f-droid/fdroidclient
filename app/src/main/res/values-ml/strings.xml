@@ -223,8 +223,8 @@
     <string name="rooted_on">റൂട്ട് ആനുകൂല്യങ്ങൾ ആവശ്യപ്പെടുന്ന അപ്ലിക്കേഷനുകളെ മങ്ങിക്കാതിരിക്കുക</string>
     <string name="hide_anti_feature_apps">വിരുദ്ധ സവിശേഷതകളുള്ള പ്രയോഗങ്ങളെ നിറം മങ്ങിക്കുക</string>
     <string name="hide_anti_feature_apps_on">വിരുദ്ധ സവിശേഷതകളുള്ള പ്രയോഗങ്ങളെ നിറം മങ്ങിക്കുക</string>
-    <string name="ignoreTouch">ടച്ച്സ്ക്രീൻ അവഗണിക്കുക</string>
-    <string name="ignoreTouch_on">ടച്ച്സ്ക്രീൻ ആവശ്യമായ പ്രയോഗങ്ങള്‍ എല്ലായ്പ്പോഴും ഉൾപ്പെടുത്തുക</string>
+    <string name="force_touch_apps">ടച്ച്സ്ക്രീൻ അവഗണിക്കുക</string>
+    <string name="force_touch_apps_on">ടച്ച്സ്ക്രീൻ ആവശ്യമായ പ്രയോഗങ്ങള്‍ എല്ലായ്പ്പോഴും ഉൾപ്പെടുത്തുക</string>
 
     <string name="local_repo">പ്രാദേശിക സംഭരണി</string>
     <string name="local_repo_running">എഫ്-ഡ്രോയ്ഡ് കൈമാറ്റം ചെയ്യാന്‍ തയ്യാറാണ്</string>

@@ -72,8 +72,8 @@
     <string name="show_incompat_versions_on">显示与该设备不兼容的应用程序版本</string>
     <string name="rooted">忽略 root</string>
     <string name="rooted_on">不以灰色显示需要 root 权限的应用程序</string>
-    <string name="ignoreTouch">忽略触屏应用</string>
-    <string name="ignoreTouch_on">总是包含需要触屏的应用程序</string>
+    <string name="force_touch_apps">忽略触屏应用</string>
+    <string name="force_touch_apps_on">总是包含需要触屏的应用程序</string>
     <string name="local_repo">本地软件源</string>
     <string name="deleting_repo">正在删除当前软件源…</string>
     <string name="icon">图标</string>

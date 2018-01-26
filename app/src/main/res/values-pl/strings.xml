@@ -58,8 +58,8 @@
     <string name="show_incompat_versions">Niekompatybilne wersje</string>
     <string name="rooted">Ignoruj aplikacje wymagające roota</string>
     <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
-    <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
-    <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
+    <string name="force_touch_apps">Ignoruj ekran dotykowy</string>
+    <string name="force_touch_apps_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
     <string name="local_repo">Repozytorium lokalne</string>
     <string name="local_repo_running">F-Droid gotowy do wymiany</string>
     <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>

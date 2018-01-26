@@ -179,8 +179,8 @@
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
     <string name="rooted">Ignoreeri juur-kasutajat</string>
     <string name="rooted_on">Ära märgi halliga rakendusi, mis vajavad juur-kasutaja privileege</string>
-    <string name="ignoreTouch">Ignoreeri puuteekraani</string>
-    <string name="ignoreTouch_on">Alati kaasa puuteekraani vajavad rakendused</string>
+    <string name="force_touch_apps">Ignoreeri puuteekraani</string>
+    <string name="force_touch_apps_on">Alati kaasa puuteekraani vajavad rakendused</string>
 
     <string name="local_repo_running">F-Droid on valmis vahetama</string>
     <string name="touch_to_configure_local_repo">Üksikasjade vaatamiseks puuduta ja luba teistel vahetada su rakendusi.</string>

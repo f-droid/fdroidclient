@@ -50,9 +50,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
-    public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
+    public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
+    public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
@@ -76,13 +76,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
+    private static final boolean DEFAULT_SHOW_INCOMP_VERSIONS = false;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
     private static final boolean DEFAULT_KEEP_INSTALL_HISTORY = false;
     //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
-    private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
     private static final boolean DEFAULT_ENABLE_PROXY = false;
     public static final String DEFAULT_THEME = "light";
@@ -223,7 +223,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean showIncompatibleVersions() {
-        return preferences.getBoolean(PREF_INCOMP_VER, DEFAULT_INCOMP_VER);
+        return preferences.getBoolean(PREF_SHOW_INCOMPAT_VERSIONS, DEFAULT_SHOW_INCOMP_VERSIONS);
     }
 
     public boolean showNfcDuringSwap() {

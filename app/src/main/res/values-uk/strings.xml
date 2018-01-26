@@ -33,7 +33,7 @@
     <string name="search_hint">Пошук застосунків</string>
     <string name="appcompatibility">Сумісність застосунків</string>
     <string name="rooted">Ігнорувати суперкористувача</string>
-    <string name="ignoreTouch">Ігнорувати сенсорний екран</string>
+    <string name="force_touch_apps">Ігнорувати сенсорний екран</string>
     <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">Застосунок, несумісний з вашим пристроєм, встановити попри все?</string>
@@ -106,7 +106,7 @@
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
 
     <string name="rooted_on">Не підсвічувати сірим застосунки, які потребують прав суперкористувача</string>
-    <string name="ignoreTouch_on">Завжди включати застосунки, які потребують сенсорного екрану</string>
+    <string name="force_touch_apps_on">Завжди включати застосунки, які потребують сенсорного екрану</string>
 
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>

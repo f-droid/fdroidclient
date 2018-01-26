@@ -37,9 +37,9 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_UPD_NOTIFY,
             Preferences.PREF_ROOTED,
             Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
-            Preferences.PREF_INCOMP_VER,
+            Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
-            Preferences.PREF_IGN_TOUCH,
+            Preferences.PREF_FORCE_TOUCH_APPS,
             Preferences.PREF_LOCAL_REPO_NAME,
             Preferences.PREF_LANGUAGE,
             Preferences.PREF_KEEP_CACHE_TIME,
@@ -132,7 +132,7 @@ public class PreferencesFragment extends PreferenceFragment
                 }
                 break;
 
-            case Preferences.PREF_INCOMP_VER:
+            case Preferences.PREF_SHOW_INCOMPAT_VERSIONS:
                 checkSummary(key, R.string.show_incompat_versions_on);
                 break;
 
@@ -144,8 +144,8 @@ public class PreferencesFragment extends PreferenceFragment
                 checkSummary(key, R.string.hide_anti_feature_apps_on);
                 break;
 
-            case Preferences.PREF_IGN_TOUCH:
-                checkSummary(key, R.string.ignoreTouch_on);
+            case Preferences.PREF_FORCE_TOUCH_APPS:
+                checkSummary(key, R.string.force_touch_apps_on);
                 break;
 
             case Preferences.PREF_LOCAL_REPO_NAME:

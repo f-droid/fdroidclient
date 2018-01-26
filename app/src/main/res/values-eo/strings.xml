@@ -56,8 +56,8 @@
     <string name="show_incompat_versions_on">Montri aplikaĵ-versiojn nekongruajn kun la aparato</string>
     <string name="rooted">Ĉefuzanto</string>
     <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
-    <string name="ignoreTouch">Ignori tuŝekranon</string>
-    <string name="ignoreTouch_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
+    <string name="force_touch_apps">Ignori tuŝekranon</string>
+    <string name="force_touch_apps_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
     <string name="local_repo">Loka deponejo</string>
     <string name="deleting_repo">Forigado de la deponejo…</string>
     <string name="adding_apks_format">Aldonado de %s al la deponejo…</string>

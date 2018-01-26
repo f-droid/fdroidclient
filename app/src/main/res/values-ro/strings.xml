@@ -31,7 +31,7 @@
     <string name="display">Afișează</string>
     <string name="expert">Setări expert</string>
     <string name="rooted">Ignoră aplicațiile ce necesită root</string>
-    <string name="ignoreTouch_on">Include mereu aplicații ce necesită touchscreen</string>
+    <string name="force_touch_apps_on">Include mereu aplicații ce necesită touchscreen</string>
     <string name="theme">Temă</string>
     <string name="repo_num_apps">Număr de aplicații</string>
     <string name="repo_last_update">Ultima actualizare</string>
@@ -96,7 +96,7 @@
     <string name="deleting_repo">Se șterge depozitul curent…</string>
     <string name="local_repo">Depozit local</string>
     <string name="rooted_on">Nu marca cu gri aplicațiile ce necesita root</string>
-    <string name="ignoreTouch">Ignora touchscreen</string>
+    <string name="force_touch_apps">Ignora touchscreen</string>
     <string name="show_incompat_versions_on">Arată versiunile incompatibile cu acest dispozitiv</string>
     <string name="show_incompat_versions">Versiuni incompatibile</string>
     <string name="appcompatibility">Compatibilitate aplicații</string>

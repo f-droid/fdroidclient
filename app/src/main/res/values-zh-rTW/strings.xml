@@ -108,8 +108,8 @@
     <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
     <string name="rooted">忽略 root</string>
     <string name="rooted_on">不要以暗灰顯示需要 root 權限的應用程式</string>
-    <string name="ignoreTouch">忽略觸控螢幕</string>
-    <string name="ignoreTouch_on">永遠包含需要觸控螢幕的應用程式</string>
+    <string name="force_touch_apps">忽略觸控螢幕</string>
+    <string name="force_touch_apps_on">永遠包含需要觸控螢幕的應用程式</string>
 
     <string name="icon">圖示</string>
     <string name="skip">略過</string>

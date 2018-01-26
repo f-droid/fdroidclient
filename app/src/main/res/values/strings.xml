@@ -210,13 +210,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="appcompatibility">App compatibility</string>
     <string name="show_incompat_versions">Incompatible versions</string>
-    <string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
     <string name="rooted">Ignore root</string>
     <string name="rooted_on">Do not grey out apps requiring root privileges</string>
     <string name="hide_anti_feature_apps">Grey out anti-feature apps</string>
     <string name="hide_anti_feature_apps_on">Grey out apps requiring anti-features</string>
-    <string name="ignoreTouch">Ignore touchscreen</string>
-    <string name="ignoreTouch_on">Always include apps that require touchscreen</string>
+    <string name="show_incompat_versions_on">Show app versions that are incompatible with the device</string>
+    <string name="force_touch_apps">Include touchscreen apps</string>
+    <string name="force_touch_apps_on">Show apps that require touchscreen regardless of hardware support</string>
 
     <string name="local_repo">Local Repo</string>
     <string name="local_repo_running">F-Droid is ready to swap</string>

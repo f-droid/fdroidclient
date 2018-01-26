@@ -94,8 +94,8 @@
     <string name="show_incompat_versions_on">הצגת גירסאות היישומון שאינן תואמות להתקן</string>
     <string name="rooted">התעלמות ממצב על (root)</string>
     <string name="rooted_on">לא לסמן באפור יישומונים שדורשים הרשאות על (root)</string>
-    <string name="ignoreTouch">התעלמות ממסך מגע</string>
-    <string name="ignoreTouch_on">תמיד לכלול יישומונים שדורשים מסך מגע</string>
+    <string name="force_touch_apps">התעלמות ממסך מגע</string>
+    <string name="force_touch_apps_on">תמיד לכלול יישומונים שדורשים מסך מגע</string>
 
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid מוכנה להחלפה</string>

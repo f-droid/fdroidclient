@@ -70,8 +70,8 @@
     <string name="show_incompat_versions">不相容的版本</string>
     <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
     <string name="rooted">略過 root</string>
-    <string name="ignoreTouch">略過觸碰屏幕</string>
-    <string name="ignoreTouch_on">顯示需要觸碰屏幕的應用程式</string>
+    <string name="force_touch_apps">略過觸碰屏幕</string>
+    <string name="force_touch_apps_on">顯示需要觸碰屏幕的應用程式</string>
     <string name="local_repo">本地倉庫</string>
     <string name="local_repo_running">F-Droid 隨時可以進行交換</string>
     <string name="touch_to_configure_local_repo">按這裏以顯示詳細資料及允許其他人交換您的應用程式。</string>

@@ -49,7 +49,7 @@
     <string name="search_hint">جست‌وجوی برنامه‌ها</string>
     <string name="appcompatibility">سازگاری برنامه</string>
     <string name="rooted">نادیده گرفتن ریشه</string>
-    <string name="ignoreTouch">نادیده گرفتن صفحه‌لمسی</string>
+    <string name="force_touch_apps">نادیده گرفتن صفحه‌لمسی</string>
     <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$d%%) از\n%1$s</string>
     <string name="status_connecting_to_repo">درحال اتّصال به\n%1$s</string>
     <string name="no_permissions">دسترسی ای استفاده نشده است.</string>
@@ -124,7 +124,7 @@
     <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های ناساگار برنامه با این دستگاه</string>
     <string name="rooted_on">برنامه هایی که به دسترسی ریشه نیاز دارند را غیر فعال نکن</string>
-    <string name="ignoreTouch_on">همواره برنامه هایی که نیازمند صفحه‌لمسی هستند را مشمول کن</string>
+    <string name="force_touch_apps_on">همواره برنامه هایی که نیازمند صفحه‌لمسی هستند را مشمول کن</string>
 
     <string name="local_repo">مخزن محلّی</string>
     <string name="local_repo_running">اف‌دروید آمادهٔ تبادل است</string>

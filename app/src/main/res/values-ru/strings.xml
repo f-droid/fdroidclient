@@ -84,8 +84,8 @@
     <string name="show_incompat_versions_on">Показать версии программ, несовместимые с устройством</string>
     <string name="rooted">Суперпользователь</string>
     <string name="rooted_on">Не выделять серым цветом приложения, требующие привилегии суперпользователя</string>
-    <string name="ignoreTouch">Сенсорный экран</string>
-    <string name="ignoreTouch_on">Всегда включать приложения, требующие сенсорный экран</string>
+    <string name="force_touch_apps">Сенсорный экран</string>
+    <string name="force_touch_apps_on">Всегда включать приложения, требующие сенсорный экран</string>
     <string name="local_repo">Локальный репозиторий</string>
     <string name="local_repo_running">F-Droid готов для обмена</string>
     <string name="deleting_repo">Удаление текущего репозитория…</string>

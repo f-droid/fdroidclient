@@ -140,8 +140,8 @@
     <string name="rooted_on">Usaita kuti maApps anoda tambanudzo dzepamudzi dzisave dziripo</string>
     <string name="hide_anti_feature_apps">Ita kuti maApps ane anti-feature ave asipo</string>
     <string name="hide_anti_feature_apps_on">Ita kuti maApps anoda anti-features ave asipo</string>
-    <string name="ignoreTouch">Furatira chivhitivhiti chekubata</string>
-    <string name="ignoreTouch_on">Gara wakasanganidza maApps anoda chivhitivhiti chekubata</string>
+    <string name="force_touch_apps">Furatira chivhitivhiti chekubata</string>
+    <string name="force_touch_apps_on">Gara wakasanganidza maApps anoda chivhitivhiti chekubata</string>
 
     <string name="local_repo">Pfimbi yakamanikwa</string>
     <string name="local_repo_running">F-Droid yakagadzirira kutsinhana</string>

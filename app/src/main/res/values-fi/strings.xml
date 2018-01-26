@@ -70,7 +70,7 @@
     <string name="appcompatibility">Sovellusten yhteensopivuus</string>
     <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
     <string name="rooted">Ohita root</string>
-    <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>
+    <string name="force_touch_apps">Älä välitä kosketusnäytöstä</string>
     <string name="local_repo">Paikallinen sovelluslähde</string>
     <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
     <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa
@@ -201,7 +201,7 @@
 
     <string name="show_incompat_versions_on">Näytä sovellusversiot jotka eivät ole yhteensopivia laitteesi kanssa
     </string>
-    <string name="ignoreTouch_on">Sisällytä aina sovellukset jotka vaativat kosketusnäytön toimiakseen</string>
+    <string name="force_touch_apps_on">Sisällytä aina sovellukset jotka vaativat kosketusnäytön toimiakseen</string>
 
     <string name="useTor">Käytä Tor-verkkoa</string>
     <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi</string>
