@@ -511,4 +511,24 @@
 	<item quantity="one">Värskendati %1$d aasta tagasi</item>
 	<item quantity="other">Värskendati %1$d aastat tagasi</item>
 </plurals>
-</resources>
+<string name="privacy">Privaatsus</string>
+    <string name="preventScreenshots_title">Väldi ekraanitõmmiseid</string>
+    <string name="preventScreenshots_summary">Keelab ekraanitõmmiste tegemise ja peidab rakenduse sisu viimaste rakenduste vaatest</string>
+
+    <string name="panic_app_setting_title">Paanikanupu rakendus</string>
+    <string name="panic_app_unknown_app">tundmatu rakendus</string>
+    <string name="panic_app_setting_summary">Ühtegi rakendust ei ole määratud</string>
+    <string name="panic_app_setting_none">Puudub</string>
+    <string name="panic_app_dialog_title">Kinnitada paanika rakendus</string>
+    <string name="panic_app_dialog_message">Kas sa oled kindel, et %1$s tohib käivitada kõike hävitava paanikanupu tegevused?</string>
+    <string name="allow">Luba</string>
+
+    <string name="panic_settings">Paanikanupu seaded</string>
+    <string name="panic_settings_summary">Tegevused, mida hädaolukorras rakendada</string>
+    <string name="panic_exit_title">Välju rakendusest</string>
+    <string name="panic_exit_summary">Rakendus suletakse</string>
+    <string name="panic_destructive_actions">Hävitavad tegevused</string>
+    <string name="panic_hide_title">Peida %s</string>
+    <string name="panic_hide_summary">Rakendus peidab end ise</string>
+
+    </resources>

@@ -336,7 +336,7 @@
     <string name="menu_email">Escribir al autor por correo electrónico</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
-    <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
+    <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad. Requiere Orbot</string>
     <string name="repo_provider">Repositorio: %s</string>
 
     <string name="update_auto_download">Obtenga actualizaciones automáticamente</string>
@@ -387,8 +387,8 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver %d</item>
-	<item quantity="other">Ver todos %d</item>
+	<item quantity="one">Ver (%d)</item>
+	<item quantity="other">Ver todos (%d)</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Actualización disponible</string>
@@ -481,7 +481,7 @@
 	<item quantity="other">%1$d actualizaciones</item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d apli instalada</item>
+	<item quantity="one">%1$d aplicación instalada</item>
 	<item quantity="other">%1$d aplicaciones instaladas</item>
 </plurals>
     <plurals name="details_last_update_weeks">
@@ -520,5 +520,25 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Se ha encontrado una vulnerabilidad con  %1$s. Recomendamos desinstalar esta aplicación inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Se ha encontrado una vulnerabilidad con  %1$s. Recomendamos actualizar a la última versión inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
+
+    <string name="privacy">Privacidad</string>
+    <string name="preventScreenshots_title">Evitar capturas de pantalla</string>
+    <string name="preventScreenshots_summary">Bloquea la captura de pantalla y oculta el contenido de la aplicación de la pantalla de aplicaciones recientes</string>
+
+    <string name="panic_app_setting_title">Aplicación de botón de pánico</string>
+    <string name="panic_app_unknown_app">una aplicación desconocida</string>
+    <string name="panic_app_setting_summary">No se ha establecido aplicación</string>
+    <string name="panic_app_setting_none">Ninguna</string>
+    <string name="panic_app_dialog_title">Confirmar aplicación de pánico</string>
+    <string name="panic_app_dialog_message">¿Seguro que desea permitir que %1$s desencadene acciones destructivas como botón de pánico?</string>
+    <string name="allow">Permitir</string>
+
+    <string name="panic_settings">Ajustes de botón de pánico</string>
+    <string name="panic_settings_summary">Acciones a tomar en caso de emergencia</string>
+    <string name="panic_exit_title">Salir de la aplicación</string>
+    <string name="panic_exit_summary">Se cerrará la aplicación</string>
+    <string name="panic_destructive_actions">Acciones destructivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_summary">La aplicación se ocultará</string>
 
     </resources>

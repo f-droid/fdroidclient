@@ -49,7 +49,7 @@
     <string name="menu_upgrade">Bertsio-berritu</string>
     <string name="menu_donate">Egin dohaintza</string>
     <string name="details_notinstalled">Instalatu gabe</string>
-    <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
+    <string name="antiadslist">Aplikazio honek iragarkiak ditu</string>
     <string name="display">Bistaratu</string>
     <string name="expert">Modu aditua</string>
     <string name="search_hint">Bilatu aplikazioak</string>
@@ -277,12 +277,12 @@
     <string name="swap_scanning_for_peers">Inguruko jendearen bila…</string>
     <string name="swap_nearby">Ingurukoekin partekatu</string>
     <string name="swap_intro">Konektatu eta trukatu aplikazioak inguruko jendearekin.</string>
-    <string name="swap_visible_bluetooth">Bluetooth bidez ikusgarri</string>
+    <string name="swap_visible_bluetooth">Bluetooth bidez ikusgai</string>
     <string name="swap_setting_up_bluetooth">Bluetooth ezartzen…</string>
-    <string name="swap_not_visible_bluetooth">Bluetooth bidez ez ikusgarri</string>
-    <string name="swap_visible_wifi">Wi-Fi bidez ikusgarri</string>
+    <string name="swap_not_visible_bluetooth">Bluetooth bidez ez ikusgai</string>
+    <string name="swap_visible_wifi">Wi-Fi bidez ikusgai</string>
     <string name="swap_setting_up_wifi">Wi-Fi ezartzen…</string>
-    <string name="swap_not_visible_wifi">Wi-Fi bidez ez ikusgarri</string>
+    <string name="swap_not_visible_wifi">Wi-Fi bidez ez ikusgai</string>
     <string name="swap_cant_find_peers">Ezin duzu bilatzen ari zarena aurkitu?</string>
     <string name="swap_send_fdroid">Bidali F-Droid</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
@@ -309,7 +309,7 @@
     </string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
     <string name="swap_not_enabled">Trukea ez dago gaituta</string>
-    <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgarri jarri behar duzu.</string>
+    <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgai jarri behar duzu.</string>
 
     <string name="install_confirm">baimen hauek behar ditu</string>
     <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa
@@ -364,7 +364,7 @@
 
     <string name="swap_stopping_wifi">Wi-Fia gelditzen…</string>
     <string name="crash_dialog_title">F-droid kraskatu da</string>
-    <string name="useTorSummary">Behartu Tor bidezko deskarga pribatutasuna areagotzeko</string>
+    <string name="useTorSummary">Behartu Tor bidezko deskarga pribatutasuna areagotzeko. Orbot behar da</string>
     <string name="crash_dialog_text">Ustekabeko errorea gertatu da aplikazioa geldiaraztean.
         Xehetasunak e-posta bidez bidali nahi dituzu arazoa
         konpontzen laguntzeko?
@@ -467,7 +467,7 @@
     <string name="details_new_in_version">%s bertsioan berria</string>
 
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
-    <string name="antifeatures">Anti-ezaugarriak</string>
+    <string name="antifeatures">Ezaugarri zalantzagarriak</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Ikusi %d</item>
 	<item quantity="other">Ikusi guztiak: %d</item>
@@ -540,5 +540,26 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Segurtasun ahultasun bat aurkitu dugu %1$s aplikazioan. Berehala desinstalatzea aholkatzen dugu.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Segurtasun ahultasun bat aurkitu dugu %1$s aplikazioan. Berehala azken bertsiora eguneratzea aholkatzen dugu.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ezikusi</string>
+
+    <string name="privacy">Pribatutasuna</string>
+    <string name="preventScreenshots_title">Eragotzi pantaila-argazkiak</string>
+    <string name="preventScreenshots_summary">Pantaila-argazkiak ateratzea eragozten du eta aplikazioaren edukia ezkutatzen du azken aplikazioen pantailan</string>
+
+    <string name="panic_app_setting_title">Larrialdi botoiaren aplikazioa</string>
+    <string name="panic_app_unknown_app">aplikazio ezezagun bat</string>
+    <string name="panic_app_setting_summary">Ez da aplikaziorik ezarri</string>
+    <string name="panic_app_setting_none">Bat ere ez</string>
+    <string name="panic_app_dialog_title">Berretsi larrialdietarako aplikazioa</string>
+    <string name="panic_app_dialog_message">Ziur %1$s aplikazioari eragiketa suntsikorrak abiatzea baimendu nahi
+        diozula?</string>
+    <string name="allow">Baimendu</string>
+
+    <string name="panic_settings">Larrialdi botoiaren ezarpenak</string>
+    <string name="panic_settings_summary">Larrialdi batean hartu beharreko neurriak</string>
+    <string name="panic_exit_title">Aplikaziotik irten</string>
+    <string name="panic_exit_summary">Aplikazioa itxiko da</string>
+    <string name="panic_destructive_actions">Eragiketa suntsikorrak</string>
+    <string name="panic_hide_title">Ezkutatu %s</string>
+    <string name="panic_hide_summary">Aplikazioak bere burua ezkutatuko du</string>
 
     </resources>

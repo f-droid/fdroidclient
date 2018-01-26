@@ -514,4 +514,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Alcontramos una inseguridá con %1$s. Recomendamos actualizar a la versión más nueva nel intre.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Inorar</string>
 
+    <string name="privacy">Intimidá</string>
+    <string name="preventScreenshots_title">Bloquiar les captures de pantalla</string>
+    <string name="preventScreenshots_summary">Torga la toma d\'imáxenes de pantalla y anubre\'l conteníu de la pantalla d\'aplicaciones recién</string>
+
     </resources>

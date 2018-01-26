@@ -502,4 +502,24 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Er zit een kwetsbaarheid in %1$s. We raden aan onmiddellijk bij te werken naar de meest recente versie.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Negeren</string>
 
+    <string name="privacy">Privacy</string>
+    <string name="preventScreenshots_title">Blokkeer schermafdrukken</string>
+    <string name="preventScreenshots_summary">Zorgt dat er geen schermafdrukken genomen kunnen worden, en verbergt de inhoud van de app in het overzicht van recente apps</string>
+
+    <string name="panic_app_setting_title">Paniekknopapp</string>
+    <string name="panic_app_unknown_app">een onbekende app</string>
+    <string name="panic_app_setting_summary">Geen app ingesteld</string>
+    <string name="panic_app_setting_none">Geen</string>
+    <string name="panic_app_dialog_title">Paniekapp bevestigen</string>
+    <string name="panic_app_dialog_message">Weet je zeker dat je %1$s wil toestaan vernietigende paniekknopacties uit te voeren?</string>
+    <string name="allow">Toestaan</string>
+
+    <string name="panic_settings">Paniekknopinstellingen</string>
+    <string name="panic_settings_summary">Te ondernemen acties in geval van nood</string>
+    <string name="panic_exit_title">App afsluiten</string>
+    <string name="panic_exit_summary">App zal gesloten worden</string>
+    <string name="panic_destructive_actions">Destructieve acties</string>
+    <string name="panic_hide_title">%s verbergen</string>
+    <string name="panic_hide_summary">App zal zichzelf verbergen</string>
+
     </resources>

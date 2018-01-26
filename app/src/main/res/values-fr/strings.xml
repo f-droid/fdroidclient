@@ -404,7 +404,7 @@
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Effacer la recherche</string>
 
-    <string name="main_menu__latest_apps">Dernière</string>
+    <string name="main_menu__latest_apps">Nouveautés</string>
     <string name="main_menu__categories">Catégories</string>
     <string name="main_menu__swap_nearby">À proximité</string>
 
@@ -498,7 +498,7 @@
 	<item quantity="other">Mis à jour il y a %1$s ans</item>
 </plurals>
 <string name="by_author_format">par %s</string>
-    <string name="download_404">Le fichier n\'a pas été trouvé.</string>
+    <string name="download_404">Le fichier demandé n\'a pas été trouvé.</string>
     <string name="force_old_index">Forcer l\'ancien format d\'index</string>
     <string name="force_old_index_summary">Dans le cas où des erreurs ou des incompatibilités apparaitraient, utilisez l\'index des applications en XML</string>
     <string name="app_list_download_ready">Téléchargé, prêt à installer</string>
@@ -526,4 +526,20 @@
     <string name="preventScreenshots_title">Interdire les copies écran</string>
     <string name="preventScreenshots_summary">Bloque les copies écran et masque le contenu d\'application dans les applications récentes</string>
 
+    <string name="panic_app_unknown_app">une application inconnue</string>
+    <string name="panic_app_setting_summary">Aucune application n\'a été définie</string>
+    <string name="panic_app_setting_none">Aucun</string>
+    <string name="allow">Autoriser</string>
+
+    <string name="panic_exit_title">Quitter l\'application</string>
+    <string name="panic_exit_summary">L\'application va être fermée</string>
+    <string name="panic_hide_title">Masquer %s</string>
+    <string name="panic_hide_summary">L\'application sera masquée</string>
+
+    <string name="panic_settings">Paramètres du bouton d\'urgence</string>
+    <string name="panic_settings_summary">Actions à exécuter en cas d\'urgence</string>
+    <string name="panic_app_setting_title">Application Bouton d\'urgence</string>
+    <string name="panic_app_dialog_title">Confirmer l\'application d\'urgence ?</string>
+    <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions destructrices du bouton d\'urgence ?</string>
+    <string name="panic_destructive_actions">Actions destructrices</string>
     </resources>

@@ -177,8 +177,7 @@
     <string name="update_notification_title">تحديث المستودعات</string>
     <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) من %1$s</string>
     <string name="status_connecting_to_repo">الاتصال بـ
-        %1$s
-    </string>
+\n %1$s</string>
     <string name="status_inserting_apps">حفظ تفاصيل التطبيق</string>
     <string name="repos_unchanged">جميع المستودعات محدثة</string>
     <string name="all_other_repos_fine">كل المستودعات الأخرى لم تقم بإنشاء أخطاء.</string>
@@ -500,4 +499,24 @@
 	<item quantity="many">تطابيق</item>
 	<item quantity="other">التطبيقات</item>
 </plurals>
+    <string name="privacy">الخصوصية</string>
+    <string name="preventScreenshots_title">منع لقطات الشاشة</string>
+    <string name="preventScreenshots_summary">أخفاء لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الأخيرة</string>
+
+    <string name="panic_app_setting_title">زر الهلع للتطبيق</string>
+    <string name="panic_app_unknown_app">تطبيق غير معروف</string>
+    <string name="panic_app_setting_summary">لم يتم تحديد اي تطبيق</string>
+    <string name="panic_app_setting_none">لا شيء</string>
+    <string name="panic_app_dialog_title">تحديد تطبيق الهلع</string>
+    <string name="panic_app_dialog_message">هل أنت متأكد من أنك تريد السماح ل %1$s بتشغيل إجراءات زر الهلع المدمرة؟</string>
+    <string name="allow">السماح</string>
+
+    <string name="panic_settings">اعدادات زر الهلع</string>
+    <string name="panic_settings_summary">الإجراءات الواجب اتخاذها في حالة الطوارئ</string>
+    <string name="panic_exit_title">اغلاق التطبيق</string>
+    <string name="panic_exit_summary">سيتم اغلاق التطبيق</string>
+    <string name="panic_destructive_actions">الإجراءات التدميرية</string>
+    <string name="panic_hide_title">إخفاء %s</string>
+    <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
+
     </resources>

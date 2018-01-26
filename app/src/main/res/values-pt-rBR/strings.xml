@@ -531,4 +531,22 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nós encontramos uma vulnerabilidade com o %1$s. Nós recomendamos atualizar para a versão mais nova imediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
 
+    <string name="privacy">Privacidade</string>
+    <string name="preventScreenshots_title">Prevenir Capturas de tela</string>
+    <string name="preventScreenshots_summary">Bloqueia as capturas de tela e esconde o conteúdo da tela de aplicativos recentes</string>
+
+    <string name="panic_app_unknown_app">um aplicativo desconhecido</string>
+    <string name="panic_app_setting_summary">Nenhum aplicativo foi configurado</string>
+    <string name="panic_app_setting_none">Nenhum</string>
+    <string name="panic_app_dialog_message">Tem certeza de que deseja permitir %1$s para desencadear ações destrutivas do botão de pânico?</string>
+    <string name="allow">Permitir</string>
+
+    <string name="panic_settings">Configurações do botão Panic</string>
+    <string name="panic_settings_summary">Ações a serem tomadas em caso de emergência</string>
+    <string name="panic_exit_title">Sair da aplicação</string>
+    <string name="panic_exit_summary">A aplicação será fechada</string>
+    <string name="panic_destructive_actions">Ações destrutivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_summary">A aplicação se esconderá</string>
+
     </resources>

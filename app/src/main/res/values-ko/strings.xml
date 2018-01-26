@@ -461,4 +461,20 @@
     <string name="preventScreenshots_title">스크린샷 방지</string>
     <string name="preventScreenshots_summary">스크린샷을 찍지 못하도록 막고 최근 앱 화면에서 앱 내용을 숨깁니다</string>
 
+    <string name="panic_app_setting_title">패닉 버튼 앱</string>
+    <string name="panic_app_unknown_app">알 수 없는 앱</string>
+    <string name="panic_app_setting_summary">설정된 앱이 없습니다</string>
+    <string name="panic_app_setting_none">없음</string>
+    <string name="panic_app_dialog_title">패닉 앱 구성</string>
+    <string name="panic_app_dialog_message">%1$s 앱을 파괴적인 패닉 버튼 동작을 트리거하도록 허용하고 싶은 것이 확실합니까?</string>
+    <string name="allow">허용</string>
+
+    <string name="panic_settings">패닉 버튼 설정</string>
+    <string name="panic_settings_summary">응급 상황시 수행할 동작</string>
+    <string name="panic_exit_title">앱 나가기</string>
+    <string name="panic_exit_summary">앱이 닫힐 것입니다</string>
+    <string name="panic_destructive_actions">파괴적인 동작</string>
+    <string name="panic_hide_title">%s 숨기기</string>
+    <string name="panic_hide_summary">앱 자체가 숨을 것입니다</string>
+
     </resources>

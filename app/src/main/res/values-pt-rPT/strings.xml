@@ -365,16 +365,14 @@
     <string name="repo_provider">Repositório: %s</string>
 
     <string name="useTor">Utilizar Tor</string>
-    <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade</string>
+    <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade. Requer Orbot.</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
     <string name="update_auto_download">Obter atualizações automaticamente</string>
     <string name="update_auto_download_summary">As descargas são automáticas e você será notificado para as instalar
     </string>
     <string name="download_pending">À espera da descarga…</string>
 
-    <string name="system_install_not_supported">Atualmente, ainda não é possível instalar a F-Droid Privileged Extension
-        em sistemas Android &gt; 5.1.
-    </string>
+    <string name="system_install_not_supported">Atualmente, ainda não é possível instalar F-Droid Privileged Extension em sistemas Android &gt; 5.1.</string>
 
     <string name="install_error_notify_title">Erro ao instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
@@ -539,5 +537,9 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a desinstalação imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a atualização imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
+
+    <string name="privacy">Privacidade</string>
+    <string name="preventScreenshots_title">Impedir captura de ecrã</string>
+    <string name="preventScreenshots_summary">Impede as capturas de ecrã e oculta o conteúdo da aplicação do ecrã de aplicações recentes</string>
 
     </resources>

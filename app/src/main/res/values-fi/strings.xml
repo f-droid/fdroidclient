@@ -61,9 +61,9 @@
     <string name="details_notinstalled">Ei asennettu</string>
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
-    <string name="antinonfreeadlist">Tämä sovellus suosittelee maksullisia lisäosia</string>
-    <string name="antinonfreenetlist">Tämä sovellus tukee maksullisia verkkopalveluja</string>
-    <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista maksullisista sovelluksista</string>
+    <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-vapaita lisäosia</string>
+    <string name="antinonfreenetlist">Tämä sovellus tukee ei-vapaita verkkopalveluja</string>
+    <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista, ei-vapaista sovelluksista</string>
     <string name="display">Näyttö</string>
     <string name="expert">Asiantuntijatila</string>
     <string name="search_hint">Etsi sovelluksia</string>
@@ -196,7 +196,7 @@
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">Ylävirran lähdekoodi ei ole kokonaan ilmaista</string>
+    <string name="antiupstreamnonfreelist">Ylävirran lähdekoodi ei ole kokonaan vapaata</string>
     <string name="expert_on">Näytä lisää tietoa ja ota käyttöön lisäasetukset</string>
 
     <string name="show_incompat_versions_on">Näytä sovellusversiot jotka eivät ole yhteensopivia laitteesi kanssa
@@ -267,7 +267,7 @@
     </string>
     <string name="update_auto_install_summary">Lataa ja asenna päivitykset sovelluksiin taustalla</string>
     <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu sovelluslähteen URI: %s</string>
-    <string name="antinonfreeassetslist">Tämä sovellus sisältää maksullisia osia</string>
+    <string name="antinonfreeassetslist">Tämä sovellus sisältää ei-vapaita osia</string>
 
     <string name="rooted_on">Älä himmennä sovelluksia jotka edellyttävät root-oikeuksia</string>
     <string name="hide_anti_feature_apps">Himmennä anti-ominaisuuksia sisältävät sovellukset</string>

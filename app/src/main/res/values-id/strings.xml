@@ -99,9 +99,9 @@
     <string name="details_notinstalled">Tidak terpasang</string>
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
-    <string name="antinonfreeadlist">Aplikasi ini mempromosikan pengaya berbayar</string>
-    <string name="antinonfreenetlist">Aplikasi ini mempromosikan layanan jaringan berbayar</string>
-    <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi berbayar lainnya</string>
+    <string name="antinonfreeadlist">Aplikasi ini mempromosikan pengaya tak-bebas</string>
+    <string name="antinonfreenetlist">Aplikasi ini mempromosikan layanan jaringan tak-bebas</string>
+    <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi tak-bebas lainnya</string>
     <string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Bebas</string>
 
     <string name="display">Tampilan</string>
@@ -191,7 +191,7 @@
 
     <string name="touch_to_configure_local_repo">Ketuk untuk melihat rincian dan izinkan yang lain untuk menukar apl Anda.</string>
     <string name="useTor">Gunakan Tor</string>
-    <string name="useTorSummary">Paksa jalur unduhan lewat Tor untuk meningkatkan privasi</string>
+    <string name="useTorSummary">Paksa lalu lintas unduh melalui Tor untuk meningkatkan privasi. Membutuhkan Orbot</string>
     <string name="status_inserting_apps">Menyimpan detail apl</string>
     <string name="all_other_repos_fine">Semua repo lainnya tidak membuat galat.</string>
     <string name="repo_fingerprint">Sidik jari kunci penandatanganan (SHA-256)</string>
@@ -500,5 +500,33 @@
 
     <string name="installed_app__file_corrupt">F-Droid menerima galat EIO: %s mungkin rusak!</string>
     <string name="updates__app_with_known_vulnerability__ignore">Abaikan</string>
+
+    <string name="app_details__incompatible_mismatched_signature">Tanda tangan berbeda dari versi terpasang</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Tidak ditemukan versi dengan tanda tangan yang cocok</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Tidak ada versi yang kompatibel dengan perangkat</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Versi yang terpasang tidak kompatibel dengan semua versi yang tersedia. Mencopot pemasangan aplikasi akan memungkinkan Anda melihat dan memasang versi yang kompatibel. Ini biasanya terjadi pada aplikasi yang terpasang melalu Google Play atau sumber lain, jika aplikasi tersebut ditandatangani dengan sertifikat berbeda.</string>
+
+    <string name="app_list__dismiss_vulnerable_app">Kerentanan diabaikan</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan sebuah celah keamanan dengan %1$s. Kami merekomendasikan mencabut pemasangan aplikasi ini segera.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan sebuah celah keamanan dengan %1$s. Kami merekomendasikan memutakhirkan aplikasi ke versi terbaru segera.</string>
+    <string name="privacy">Privasi</string>
+    <string name="preventScreenshots_title">Cegah tangkapan layar</string>
+    <string name="preventScreenshots_summary">Blok pengambilan tangkapan layar dan sembunyikan isi aplikasi dari layar aplikasi saat ini</string>
+
+    <string name="panic_app_setting_title">Aplikasi Tombol Panik</string>
+    <string name="panic_app_unknown_app">aplikasi tidak dikenal</string>
+    <string name="panic_app_setting_summary">Belum ada aplikasi yang ditetapkan</string>
+    <string name="panic_app_setting_none">Nihil</string>
+    <string name="panic_app_dialog_title">Konfirmasi Aplikasi Panik</string>
+    <string name="panic_app_dialog_message">Apakah Anda yakin ingin mengizinkan %1$s untuk menjalankan tindakan destruktif tombol panik?</string>
+    <string name="allow">Izinkan</string>
+
+    <string name="panic_settings">Pengaturan Tombol Panik</string>
+    <string name="panic_settings_summary">Tindakan yang akan diambil dalam keadaan darurat</string>
+    <string name="panic_exit_title">Keluar Aplikasi</string>
+    <string name="panic_exit_summary">Aplikasi akan ditutup</string>
+    <string name="panic_destructive_actions">Tindakan Destruktif</string>
+    <string name="panic_hide_title">Sembunyikan %s</string>
+    <string name="panic_hide_summary">Aplikasi akan sembunyi dengan sendirinya</string>
 
     </resources>

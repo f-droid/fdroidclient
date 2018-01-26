@@ -110,9 +110,9 @@
     </string>
     <string name="uninstall_system">Ĝisdatigi/malinstali privilegian aldonaĵon</string>
     <string name="uninstall_system_summary">Malfermi detalan ekranon de privilegia aldonaĵo por ĝisdatigi/malinstali ĝin</string>
-    <string name="local_repo_name">Nomo de loka deponejo</string>
+    <string name="local_repo_name">Nomo de via loka deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
-    <string name="local_repo_https_on">Uzi ĉifritan HTTPS-konekton por loka deponejo</string>
+    <string name="local_repo_https_on">Uzi ĉifritan HTTPS:// konekton por loka deponejo</string>
 
     <string name="login_title">Aŭtentokontrolo nepra</string>
     <string name="login_name">Uzantnomo</string>
@@ -137,14 +137,14 @@
     <string name="repo_exists_add_fingerprint">Tiu ĉi deponejo estas jam instalita, tio ĉi aldonos novan informon pri ŝlosilo.</string>
     <string name="repo_exists_enable">Tiu ĉi deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
     <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
-    <string name="bad_fingerprint">Erara fingrospuro</string>
+    <string name="bad_fingerprint">Malbona fingrospuro</string>
     <string name="repo_delete_to_overwrite">Vi devas unue forigi tiun ĉi deponejon antaŭ vi povos aldoni alian kun diferenca ŝlosilo.</string>
-    <string name="invalid_url">Malĝusta URL.</string>
+    <string name="invalid_url">Ĉi tio ne estas valida URL.</string>
     <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
 
     <string name="menu_settings">Agordoj</string>
-    <string name="menu_email">Aŭtora retpoŝtadreso</string>
-    <string name="menu_changelog">Ŝanĝoprotokolo</string>
+    <string name="menu_email">Retleteri programiston</string>
+    <string name="menu_changelog">Protokolo pri ŝanĝoj</string>
     <string name="menu_bitcoin">Bitmono</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -163,20 +163,17 @@
     <string name="proxy_host_summary">Adreso de via retperanto (ekz. 127.0.0.1)</string>
     <string name="proxy_port_summary">Porda numero de via retperanto (ekz. 8118)</string>
 
-    <string name="status_download">Elŝutado
-        %2$s / %3$s (%4$d%%) el
-        %1$s
-    </string>
+    <string name="status_download">Elŝutas
+\n%2$s / %3$s (%4$d%%) el
+\n%1$s</string>
 
-    <string name="status_download_unknown_size">Elŝutado
-        %2$s el
-        %1$s
-    </string>
-    <string name="update_notification_title">Ĝisdatigado de deponejoj</string>
+    <string name="status_download_unknown_size">Elŝutas
+\n%2$s el
+\n%1$s</string>
+    <string name="update_notification_title">Ĝisdatigas deponejojn</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
-    <string name="status_connecting_to_repo">Konektado al
-        %1$s
-    </string>
+    <string name="status_connecting_to_repo">Konektas al
+\n%1$s</string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
     <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigitaj</string>
     <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis erarojn.</string>
@@ -187,7 +184,7 @@
     <string name="unverified">Neverigita</string>
     <string name="repo_details">Deponejo</string>
     <string name="repo_url">Adreso</string>
-    <string name="repo_fingerprint">Fingrospuro de subskrib-ŝlosilo (SHA-256)</string>
+    <string name="repo_fingerprint">Fingrospuro de subskriba ŝlosilo (SHA-256)</string>
     <string name="unsigned_description">Tio ĉi signifas, ke la listo de aplikaĵoj ne povas esti verigita. Vi devas esti
         singarda kun aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.
     </string>
@@ -239,9 +236,9 @@
     <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
     <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estis instalita. Tio ĉi ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.</string>
     <string name="system_install_post_fail_message">Instalado de privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli da informoj.</string>
-    <string name="system_install_installing">Instalado…</string>
-    <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>
-    <string name="system_install_uninstalling">Malinstalado…</string>
+    <string name="system_install_installing">Instalas…</string>
+    <string name="system_install_installing_rebooting">Instalas kaj restartas…</string>
+    <string name="system_install_uninstalling">Malinstalas…</string>
     <string name="system_install_question">Ĉu vi volas instali privilegian F-Droid-aldonaĵon?</string>
     <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundoj.</string>
     <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundoj kaj la aparato estos poste <b>restartita</b>.</string>
@@ -267,20 +264,20 @@
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">Skani QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
-    <string name="swap_scanning_for_peers">Serĉado de proksimuloj…</string>
+    <string name="swap_scanning_for_peers">Serĉas najbarajn homojn…</string>
     <string name="swap_nearby">Proksima interŝanĝo</string>
     <string name="swap_intro">Konekti kaj interŝanĝi aplikaĵojn kun proksimaj homoj.</string>
     <string name="swap_visible_bluetooth">Videbla per Bludento</string>
-    <string name="swap_setting_up_bluetooth">Agordado de Bludento…</string>
+    <string name="swap_setting_up_bluetooth">Agordas Bludento…</string>
     <string name="swap_not_visible_bluetooth">Nevidebla per Bludento</string>
     <string name="swap_visible_wifi">Videbla per vifio</string>
-    <string name="swap_setting_up_wifi">Agordado de vifio…</string>
+    <string name="swap_setting_up_wifi">Agordas vifion…</string>
     <string name="swap_not_visible_wifi">Nevidebla per vifio</string>
     <string name="swap_wifi_device_name">Nomo de aparato</string>
     <string name="swap_cant_find_peers">Ĉu vi ne povas trovi kiun, tiun vi serĉas?</string>
     <string name="swap_send_fdroid">Sendi F-Droid</string>
     <string name="swap_no_peers_nearby">Ne povas trovi homojn proksime por interŝanĝi.</string>
-    <string name="swap_connecting">Konektado</string>
+    <string name="swap_connecting">Konektas</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
     <string name="bluetooth_unavailable">Bludento ne disponebla</string>
@@ -307,16 +304,16 @@
     <string name="download_error">Elŝuto fiaskis!</string>
 
     <string name="perms_new_perm_prefix">Nova:</string>
-    <string name="downloading">Elŝutado…</string>
+    <string name="downloading">Elŝutas…</string>
 
     <string name="perms_description_app">Liverita per %1$s.</string>
     <string name="interval_never">Neniam</string>
     <string name="interval_1h">Ĉiuhore</string>
-    <string name="interval_4h">Je ĉiu 4 horoj</string>
-    <string name="interval_12h">Je ĉiu 12 horoj</string>
+    <string name="interval_4h">Ĉiuj 4 horoj</string>
+    <string name="interval_12h">Ĉiuj 12 horoj</string>
     <string name="interval_1d">Ĉiutage</string>
     <string name="interval_1w">Ĉiusemajne</string>
-    <string name="interval_2w">Je ĉiu 2 semajnoj</string>
+    <string name="interval_2w">Ĉiuj 2 semajnoj</string>
 
     <string name="theme_light">Hela</string>
     <string name="theme_dark">Malhela</string>
@@ -352,7 +349,7 @@
 
 
     <string name="installing">Instalado…</string>
-    <string name="uninstalling">Malinstalado…</string>
+    <string name="uninstalling">Malinstalas…</string>
 
     <string name="hide_anti_feature_apps">Grizigi aplikaĵojn kun fiebloj</string>
     <string name="hide_anti_feature_apps_on">Grizigi aplikaĵojn kun nedeziratajn eblojn (ekz. spurado)</string>
@@ -505,5 +502,25 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi ĝin al la plej nova versio.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
+
+    <string name="privacy">Privateco</string>
+    <string name="preventScreenshots_title">Bloki ekranokopiojn</string>
+    <string name="preventScreenshots_summary">Bloki fari ekranokopiojn kaj kaŝi enhavon ĉe ekrano de lastaj aplikaĵoj</string>
+
+    <string name="panic_app_setting_title">Aplikaĵo de panika butono</string>
+    <string name="panic_app_unknown_app">nekonata aplikaĵo</string>
+    <string name="panic_app_setting_summary">Neniu agordita aplikaĵo</string>
+    <string name="panic_app_setting_none">Neniu</string>
+    <string name="panic_app_dialog_title">Konfirmi panikan aplikaĵon</string>
+    <string name="panic_app_dialog_message">Ĉu vi certas, ke vi volas permesi al %1$s por agordi detruajn agojn de panika butono?</string>
+    <string name="allow">Permesi</string>
+
+    <string name="panic_settings">Agordoj de Panika Butono</string>
+    <string name="panic_settings_summary">Agoj por esti prenita en kazo de krizo</string>
+    <string name="panic_exit_title">Fermi aplikaĵon</string>
+    <string name="panic_exit_summary">Aplikaĵo fermiĝos</string>
+    <string name="panic_destructive_actions">Detruaj agoj</string>
+    <string name="panic_hide_title">Kaŝi %s</string>
+    <string name="panic_hide_summary">Aplikaĵo kaŝiĝos</string>
 
     </resources>

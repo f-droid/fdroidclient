@@ -512,4 +512,24 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s içinde bir güvenlik açığı bulduk. Hemen en yeni sürüme yükseltmenizi öneririz.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Yok say</string>
 
+    <string name="privacy">Gizlilik</string>
+    <string name="preventScreenshots_title">Ekran Görüntüsü Almayı Engelle</string>
+    <string name="preventScreenshots_summary">Ekran görüntüsü almayı engeller ve uygulama içeriğini en son uygulamalar ekranında gizler</string>
+
+    <string name="panic_app_setting_title">Panik Düğmesi Uygulaması</string>
+    <string name="panic_app_unknown_app">bilinmeyen bir uygulama</string>
+    <string name="panic_app_setting_summary">Ayarlanan uygulama yok</string>
+    <string name="panic_app_setting_none">Yok</string>
+    <string name="panic_app_dialog_title">Panik Uygulamasını Onayla</string>
+    <string name="panic_app_dialog_message">%1$s uygulamasının yıkıcı panik düğmesi eylemlerini tetiklemesine izin vermek istediğinize emin misiniz?</string>
+    <string name="allow">İzin Ver</string>
+
+    <string name="panic_settings">Panik Düğmesi Ayarları</string>
+    <string name="panic_settings_summary">Acil durumda uygulanacak eylemler</string>
+    <string name="panic_exit_title">Uygulamadan Çık</string>
+    <string name="panic_exit_summary">Uygulama kapatılacak</string>
+    <string name="panic_destructive_actions">Yıkıcı Eylemler</string>
+    <string name="panic_hide_title">%s uygulamasını gizle</string>
+    <string name="panic_hide_summary">Uygulama kendisini gizler</string>
+
     </resources>
