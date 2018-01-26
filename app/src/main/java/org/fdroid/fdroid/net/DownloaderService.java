@@ -246,7 +246,9 @@ public class DownloaderService extends Service {
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage, long repoId,
                                String originalUrlString) {
         Intent intent = new Intent(action);
-        intent.setData(Uri.parse(originalUrlString));
+        if (originalUrlString != null) {
+            intent.setData(Uri.parse(originalUrlString));
+        }
         if (file != null) {
             intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
         }
