@@ -111,7 +111,7 @@
     <string name="skip">Sleppa</string>
 
     <string name="useTor">Nota Tor</string>
-    <string name="useTorSummary">Þvinga niðurhalsumferð í gegnum Tor til að auka gagnaleynd</string>
+    <string name="useTorSummary">Þvinga niðurhalsumferð í gegnum Tor til að auka gagnaleynd. Þarnast Orbot</string>
     <string name="proxy">Milliþjónn</string>
     <string name="enable_proxy_title">Virkja HTTP-milliþjón</string>
     <string name="proxy_host">Milliþjónn</string>
@@ -366,11 +366,7 @@
         Það eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að
         uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.
     </string>
-    <string name="empty_can_update_app_list">Öll forrit eru af nýjustu útgáfu.
-
-        Til hamingju! Öll forritin þín eru af nýjustu útgáfu (nema ef vera kynni að upplýsingar um hugbúnaðarsöfn séu
-        úreltar).
-    </string>
+    <string name="empty_can_update_app_list">Til hamingju! Öll forritin þín eru af nýjustu útgáfu.</string>
     <string name="root_access_denied_body">Annað hvort er Android tækið þitt ekki með rótaraðgang (rooted) eða að þú
         hefur neitað F-Droid um rótarheimildir.
     </string>
@@ -539,4 +535,44 @@
 </plurals>
 <string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
     <string name="force_old_index_summary">Ef um er að ræða galla eða vandamál með samhæfni, má nota XML-yfirlitsvísi forritsins</string>
+    <string name="app_details__incompatible_mismatched_signature">Undirritun er önnur en á uppsettri útgáfu</string>
+    <string name="app_details__no_versions__show_incompat_versions">Til að birta hér samt ósamhæfðar útgáfur, virkjaðu þá \"%1$s\" stillinguna.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Engin útgáfa með samhæfða undirritun</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Engar útgáfur samhæfanlegar við tækið</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Uppsetta útgáfan er ekki samhæfð við neinar tiltækar útgáfur. Ef þú hendir forritinu út, geturðu skoðað og sett upp samhæfða útgáfu. Þetta gerist oft með forrit sem sett eru upp í gegnum Google Play eða aðrar slíkar leiðir, ef forritin eru undirrituð með mismunandi skilríkjum.</string>
+
+    <string name="app_installed_media">Skrá sett upp í %s</string>
+    <string name="app_permission_storage">F-Droid þarf aðgang að gagnageymslum til að geta sett þetta upp í geymsluminni. Þú ættir að heimila þetta á næsta skjá til þess að halda áfram með uppsetninguna.</string>
+
+    <string name="app_list_download_ready">Þegar sótt, tilbúið til uppsetningar</string>
+    <string name="app_list__dismiss_app_update">Uppfærsla hunsuð</string>
+    <string name="app_list__dismiss_vulnerable_app">Öryggisgalli hunsaður</string>
+    <string name="app_list__dismiss_downloading_app">Hætt við niðurhal</string>
+
+    <string name="installed_app__file_corrupt">F-Droid tók á móti EIO-villu: %s er líklega skemmd!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði fjarlægt strax.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði strax uppfært í nýjustu útgáfuna.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Hunsa</string>
+
+    <string name="privacy">Gagnaleynd</string>
+    <string name="preventScreenshots_title">Hindra skjámyndatöku</string>
+    <string name="preventScreenshots_summary">Hindrar að skjámyndir séu teknar og felur efni forritsins frá því að birtast á skjánum yfir nýleg forrit</string>
+
+    <string name="panic_app_setting_title">Forrit fyrir neyðarhnapp</string>
+    <string name="panic_app_unknown_app">óþekkt forrit</string>
+    <string name="panic_app_setting_summary">Ekkert forrit hefur verið stillt</string>
+    <string name="panic_app_setting_none">Ekkert</string>
+    <string name="panic_app_dialog_title">Staðfesta neyðarhnappsforrit</string>
+    <string name="panic_app_dialog_message">Ertu viss um að þú viljir leyfa %1$s að setja í gang óafturkræfar aðgerðir neyðarhnappsins?</string>
+    <string name="allow">Leyfa</string>
+
+    <string name="panic_settings">Stillingar neyðarhnapps</string>
+    <string name="panic_settings_summary">Aðgerðir sem á að framkvæma í neyðartilfellum</string>
+    <string name="panic_exit_title">Hætta í forriti</string>
+    <string name="panic_exit_summary">Forriti verður lokað</string>
+    <string name="panic_destructive_actions">Óafturkræfar aðgerðir</string>
+    <string name="panic_hide_title">Fela %s</string>
+    <string name="panic_hide_summary">Forrit mun fela sig</string>
+
+    <string name="status_inserting_x_apps">Vista ítarupplýsingar um forrit (%1$d/%2$d) frá %3$s</string>
     </resources>

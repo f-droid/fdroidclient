@@ -520,4 +520,9 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ми виявили вразливість з %1$s. Ми рекомендуємо оновити на найновішу версію негайно.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ігнорувати</string>
 
+    <string name="privacy">Конфіденційність</string>
+    <string name="preventScreenshots_title">Запобігання скріншотам</string>
+    <string name="panic_app_unknown_app">невідомий застосунок</string>
+    <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
+    <string name="panic_app_setting_none">Жоден</string>
     </resources>

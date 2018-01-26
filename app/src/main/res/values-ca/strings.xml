@@ -500,4 +500,20 @@
     <string name="preventScreenshots_title">Bloca les captures de pantalla</string>
     <string name="preventScreenshots_summary">Bloca les captures de pantalla i amaga el contingut de la pantalla d\'aplicacions recents</string>
 
+    <string name="panic_app_setting_title">App \"Botó del pànic\"</string>
+    <string name="panic_app_unknown_app">una app desconeguda</string>
+    <string name="panic_app_setting_summary">No heu definit cap app</string>
+    <string name="panic_app_setting_none">Cap</string>
+    <string name="panic_app_dialog_title">App \"Confirmeu pànic\"</string>
+    <string name="panic_app_dialog_message">Esteu segurs que voleu permetre que %1$s iniciï accions destructives de \"Botó del pànic\"?</string>
+    <string name="allow">Permetre</string>
+
+    <string name="panic_settings">Configuració del Botó del pànic</string>
+    <string name="panic_settings_summary">Accions a dur a terme en cas d\'emergència</string>
+    <string name="panic_exit_title">Sortir de l\'app</string>
+    <string name="panic_exit_summary">L\'app es tancarà</string>
+    <string name="panic_destructive_actions">Accions destructives</string>
+    <string name="panic_hide_title">Amagueu %s</string>
+    <string name="panic_hide_summary">L\'app s\'ocultarà</string>
+
     </resources>

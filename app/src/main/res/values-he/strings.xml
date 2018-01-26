@@ -515,4 +515,20 @@
     <string name="preventScreenshots_title">מניעת צילומי מסך</string>
     <string name="preventScreenshots_summary">חסימת צילום המסך והסתרת תוכן היישומון ממסך היישומונים האחרונים</string>
 
+    <string name="panic_app_setting_title">יישומון כפתור מצוקה</string>
+    <string name="panic_app_unknown_app">יישומון לא ידוע</string>
+    <string name="panic_app_setting_summary">לא הוגדר יישומון</string>
+    <string name="panic_app_setting_none">אין</string>
+    <string name="panic_app_dialog_title">הגדרת יישומון מצוקה</string>
+    <string name="panic_app_dialog_message">לאפשר ל־%1$s לבצע פעולות כפתור מצוקה הרסניות?</string>
+    <string name="allow">לאפשר</string>
+
+    <string name="panic_settings">הגדרות כפתור מצוקה</string>
+    <string name="panic_settings_summary">פעולות בהן לנקוט במקרה חירום</string>
+    <string name="panic_exit_title">יציאה מהיישומון</string>
+    <string name="panic_exit_summary">היישומון ייסגר</string>
+    <string name="panic_destructive_actions">פעולות הרסניות</string>
+    <string name="panic_hide_title">הסתרת %s</string>
+    <string name="panic_hide_summary">היישומון יסתיר את עצמו</string>
+
     </resources>

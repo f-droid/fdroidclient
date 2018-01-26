@@ -480,4 +480,24 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S-a detectat o vulnerabilitate în %1$s. Se recomandă actualizarea imediată la cea mai nouă versiune.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoră</string>
 
+    <string name="privacy">Intimitate</string>
+    <string name="preventScreenshots_title">Previne poze cu aplicația</string>
+    <string name="preventScreenshots_summary">Blochează posibilitatea de a înregistra ecranul aplicației și ascunde conținutul în lista de aplicații recente</string>
+
+    <string name="panic_app_setting_title">Aplicație buton de panică</string>
+    <string name="panic_app_unknown_app">o aplicație necunoscută</string>
+    <string name="panic_app_setting_summary">Nu a fost setată o aplicație</string>
+    <string name="panic_app_setting_none">Nici una</string>
+    <string name="panic_app_dialog_title">Confirmă aplicația buton de panică</string>
+    <string name="panic_app_dialog_message">Sunteți siguri că doriți să permiteți aplicației %1$s să efectueze acțiuni distructive la apăsarea butonului de panică?</string>
+    <string name="allow">Permite</string>
+
+    <string name="panic_settings">Setări bunton de panică</string>
+    <string name="panic_settings_summary">Acțiuni ce se vor executa în caz de urgență</string>
+    <string name="panic_exit_title">Ieșire aplicație</string>
+    <string name="panic_exit_summary">Aplicația se va închide</string>
+    <string name="panic_destructive_actions">Actiuni distructive</string>
+    <string name="panic_hide_title">Ascunde %s</string>
+    <string name="panic_hide_summary">Aplicația se va ascunde</string>
+
     </resources>

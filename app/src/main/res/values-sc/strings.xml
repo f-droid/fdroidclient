@@ -546,4 +546,20 @@
     <string name="preventScreenshots_title">Preveni sas ischermadas</string>
     <string name="preventScreenshots_summary">Non permìtere su sarvamentu de ischermadas e istichi su cuntenutu de s\'aplicatzione dae s\'ischermada de sas aplicatziones reghentes</string>
 
+    <string name="panic_app_setting_title">Aplicatzione de su butone de pànicu</string>
+    <string name="panic_app_unknown_app">un\'aplicatzione disconnota</string>
+    <string name="panic_app_setting_summary">Peruna aplicatzione est istada impostada</string>
+    <string name="panic_app_setting_none">Peruna</string>
+    <string name="panic_app_dialog_title">Cunfirma aplicatzione de pànicu</string>
+    <string name="panic_app_dialog_message">Seguru ses de chèrrere permìtere a %1$s de fàghere partire atziones distrutoras dae su butone de pànicu?</string>
+    <string name="allow">Permiti</string>
+
+    <string name="panic_settings">Impostatziones de su butone de pànicu</string>
+    <string name="panic_settings_summary">Atziones de fàghere in casu de emergèntzia</string>
+    <string name="panic_exit_title">Essi dae s\'aplicatzione</string>
+    <string name="panic_exit_summary">S\'aplicatzione at a èssere serrada</string>
+    <string name="panic_destructive_actions">Atziones distrutoras</string>
+    <string name="panic_hide_title">Istichi %s</string>
+    <string name="panic_hide_summary">S\'aplicatzione s\'at a istichire</string>
+
     </resources>

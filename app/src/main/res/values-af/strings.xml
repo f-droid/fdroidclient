@@ -146,7 +146,7 @@
     <string name="skip">Slaan oor</string>
 
     <string name="useTor">Gebruik Tor</string>
-    <string name="useTorSummary">Forseer aflaaiverkeer dour Tor vir beter privaatheid</string>
+    <string name="useTorSummary">Forseer aflaaiverkeer dour Tor vir beter privaatheid. Vereis Orbot</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Aktiveer HTTP proxy</string>
     <string name="enable_proxy_summary">Stel HTTP proxy op vir alle netwerk versoeke</string>

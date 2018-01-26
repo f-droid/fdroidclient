@@ -532,4 +532,24 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Znaleziono podatność bezpieczeństwa w %1$s. Zaleca się bezzwłocznie zaktualizować aplikację do najnowszej wersji.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoruj</string>
 
+    <string name="privacy">Prywatność</string>
+    <string name="preventScreenshots_title">Blokuj zrzuty ekranu</string>
+    <string name="preventScreenshots_summary">Blokuj wykonywanie zrzutów ekranu i zablokuj zawartość na ekranie najnowszych aplikacji</string>
+
+    <string name="panic_app_setting_title">Aplikacja Przycisk Alarmowy</string>
+    <string name="panic_app_unknown_app">nieznana aplikacja</string>
+    <string name="panic_app_setting_summary">Brak ustawionej aplikacji</string>
+    <string name="panic_app_setting_none">Brak</string>
+    <string name="panic_app_dialog_title">Potwierdź aplikację alarmową</string>
+    <string name="panic_app_dialog_message">Czy na pewno chcesz zezwolić %1$s wywołać niszczące czynności przycisku alarmowego?</string>
+    <string name="allow">Zezwól</string>
+
+    <string name="panic_settings">Ustawienia przycisku alarmowego</string>
+    <string name="panic_settings_summary">Akcje do wywołania w razie niebezpieczeństwa</string>
+    <string name="panic_exit_title">Zamknij aplikację</string>
+    <string name="panic_exit_summary">Aplikacja zostanie zamknięta</string>
+    <string name="panic_destructive_actions">Niszczące akcje</string>
+    <string name="panic_hide_title">Ukryj %s</string>
+    <string name="panic_hide_summary">Aplikacja zostanie ukryta</string>
+
     </resources>

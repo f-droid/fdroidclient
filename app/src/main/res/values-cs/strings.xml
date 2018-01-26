@@ -315,7 +315,7 @@
     <string name="repo_provider">Repozitář: %s</string>
 
     <string name="useTor">Použít Tor</string>
-    <string name="useTorSummary">Vynutit stahování přes Tor pro zvýšení bezpečnosti</string>
+    <string name="useTorSummary">Vynutit stahování přes Tor pro zvýšení bezpečnosti. Vyžaduje Orbot</string>
     <string name="system_install_not_supported">Instalace rozšíření oprávnění F-Droidu není momentálně podporována na
         Androidu 5.1 nebo pozdějším.
     </string>
@@ -525,4 +525,23 @@
 	<item quantity="few">Aktualizováno před %1$d roky</item>
 	<item quantity="other">Aktualizováno před %1$d lety</item>
 	</plurals>
-</resources>
+<string name="privacy">Soukromí</string>
+    <string name="preventScreenshots_title">Zabránit pořizování snímků obrazovky</string>
+    <string name="preventScreenshots_summary">Blokuje pořizování snímků obrazovky a skrývá aplikace v seznamu nedávno použitých</string>
+
+    <string name="panic_app_setting_title">Aplikace Panické tlačítko</string>
+    <string name="panic_app_unknown_app">neznámá aplikace</string>
+    <string name="panic_app_setting_summary">Nebyla nastavena žádná aplikace</string>
+    <string name="panic_app_setting_none">Žádné</string>
+    <string name="panic_app_dialog_title">Potvrdit Panickou aplikaci</string>
+    <string name="allow">Umožnit</string>
+
+    <string name="panic_settings">Nastavení tlačítka paniky</string>
+    <string name="panic_settings_summary">Akce které podniknout v případě nouze</string>
+    <string name="panic_exit_title">Ukončit aplikaci</string>
+    <string name="panic_exit_summary">Aplikace bude ukončena</string>
+    <string name="panic_destructive_actions">Destruktivní akce</string>
+    <string name="panic_hide_title">Skrýt %s</string>
+    <string name="panic_hide_summary">Aplikace se skryje</string>
+
+    </resources>

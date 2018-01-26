@@ -126,11 +126,9 @@
         tilgjengelige i F-droid.
         \n\nMerk: Alle tidligere installerte programmer vil fremdeles være å finne på din enhet.
     </string>
-    <string name="repo_disabled_notification">Avskrudd \"%1$s\".
-
-        Du må
-        skru på denne pakkebrønnen igjen for å installere programmer fra den.
-    </string>
+    <string name="repo_disabled_notification">Avskrudde \"%1$s\".
+\n
+\nDu må skru på denne pakkebrønnen igjen for å installere programmer fra den.</string>
     <string name="repo_added">Lagret F-Droid-pakkebrønnen %1$s.</string>
     <string name="repo_searching_address">Ser etter F-Droid-pakkebrønn på\n%1$s</string>
     <string name="minsdk_or_later">%s eller senere</string>
@@ -516,5 +514,25 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fant en sårbarhet i %1$s. Det anbefales å avinstallere dette programmet umiddelbart.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Det er funnet en sårbarhet i %1$s. Det anbefales å hente den nyeste versjonen umiddelbart.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
+
+    <string name="privacy">Personvern</string>
+    <string name="preventScreenshots_title">Forhindre skjermavbildninger</string>
+    <string name="preventScreenshots_summary">Blokkerer avbildning av skjermen, og skjuler programinnhold fra nylige programmer</string>
+
+    <string name="panic_app_setting_title">Panikkprogram-knapp</string>
+    <string name="panic_app_unknown_app">et ukjent program</string>
+    <string name="panic_app_setting_summary">Inget program har blitt valgt</string>
+    <string name="panic_app_setting_none">Ingen</string>
+    <string name="panic_app_dialog_title">Bekreft panikkprogram</string>
+    <string name="panic_app_dialog_message">Er du sikker på at du vil tillate %1$s å utløse ødeleggende panikknappehandlinger?</string>
+    <string name="allow">Tillat</string>
+
+    <string name="panic_settings">Panikknappeinnstillinger</string>
+    <string name="panic_settings_summary">Handlinger å utføre i nødsfall</string>
+    <string name="panic_exit_title">Avslutt program</string>
+    <string name="panic_exit_summary">Programmet vil bli lukket</string>
+    <string name="panic_destructive_actions">Ødeleggende handlinger</string>
+    <string name="panic_hide_title">Skjul %s</string>
+    <string name="panic_hide_summary">Programmet vil skjule seg selv</string>
 
     </resources>

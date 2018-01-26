@@ -556,4 +556,21 @@
 
     <string name="privacy">Прыватнасць</string>
     <string name="preventScreenshots_title">Прадухіліць здымкі экрана</string>
+    <string name="preventScreenshots_summary">Блакуе здымкі экрана з апошніх праграм</string>
+
+    <string name="panic_app_setting_title">Прыкладанне трывожнай кнопкі</string>
+    <string name="panic_app_unknown_app">невядомае прыкладанне</string>
+    <string name="panic_app_setting_summary">Ніводнага прыкладання не ўстаноўлена</string>
+    <string name="panic_app_setting_none">Няма</string>
+    <string name="panic_app_dialog_title">Пацвердзіць трывожнае прыкладанне</string>
+    <string name="panic_app_dialog_message">Вы ўпэўненыя, што вы хочаце дазволіць %1$s выклікаць разбуральныя дзеянні трывожнай кнопкі?</string>
+    <string name="allow">Дазволіць</string>
+
+    <string name="panic_settings">Налады трывожнай кнопкі</string>
+    <string name="panic_settings_summary">Дзеянні, якія неабходна зрабіць у выпадку надзвычайнай сітуацыі</string>
+    <string name="panic_exit_summary">Праграма будзе закрытая</string>
+    <string name="panic_destructive_actions">Разбуральныя дзеянні</string>
+    <string name="panic_hide_title">Схаваць %s</string>
+    <string name="panic_hide_summary">Праграма схавае сама сябе</string>
+
     </resources>

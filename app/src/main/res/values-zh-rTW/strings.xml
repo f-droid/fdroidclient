@@ -20,7 +20,7 @@
     <string name="notify">顯示可用的更新</string>
     <string name="notify_on">當有可用更新時顯示通知</string>
     <string name="local_repo_name">本地端應用程式倉庫名稱</string>
-    <string name="local_repo_name_summary">您本地端應用軟體倉庫對外宣傳的名稱：%s</string>
+    <string name="local_repo_name_summary">您本地端應用軟體庫對外宣傳的名稱：%s</string>
     <string name="local_repo_https_on">使用 HTTPS 加密連線來存取本地端應用程式倉庫</string>
 
     <string name="login_title">需要驗證</string>
@@ -59,7 +59,7 @@
     <string name="cancel">取消</string>
     <string name="enable">啟用</string>
 
-    <string name="repo_add_url">應用軟體倉庫網址</string>
+    <string name="repo_add_url">應用軟體庫網址</string>
     <string name="repo_add_fingerprint">指紋（選填）</string>
     <string name="theme_night">夜晚</string>
     <string name="theme_dark">暗</string>
@@ -151,32 +151,24 @@
     <string name="menu_manage">應用程式倉庫</string>
     <string name="menu_add_repo">新增應用程式倉庫</string>
 
-    <string name="local_repo">本地應用軟體倉庫</string>
-    <string name="deleting_repo">正在刪除目前的應用軟體倉庫…</string>
-    <string name="adding_apks_format">正在加入 %s 到應用軟體倉庫…</string>
-    <string name="copying_icons">正在複製應用程式圖示到應用軟體倉庫…</string>
-    <string name="update_notification_title">正在更新應用軟體倉庫</string>
-    <string name="repos_unchanged">所有應用軟體倉庫已更新至最新的版本</string>
-    <string name="all_other_repos_fine">所有其它應用軟體倉庫都沒有出現錯誤。</string>
+    <string name="local_repo">本地應用軟體庫</string>
+    <string name="deleting_repo">正在刪除目前的應用軟體庫…</string>
+    <string name="adding_apks_format">正在加入 %s 到應用軟體庫…</string>
+    <string name="copying_icons">正在複製應用程式圖示到應用軟體庫…</string>
+    <string name="update_notification_title">正在更新應用軟體庫</string>
+    <string name="repos_unchanged">所有應用軟體庫已更新至最新的版本</string>
+    <string name="all_other_repos_fine">所有其它應用軟體庫都沒有出現錯誤。</string>
     <string name="global_error_updating_repos">更新時發生錯誤：%s</string>
     <string name="unverified">未驗證</string>
     <string name="repo_details">應用程式倉庫</string>
     <string name="repo_num_apps">應用程式數量</string>
     <string name="repo_last_update">上次更新</string>
     <string name="unsigned_description">這表示應用程式清單無法被驗證。 您應該小心從未簽署索引下載的應用程式。</string>
-    <string name="repo_not_yet_updated">此應用軟體倉庫尚未被使用。
-您需要啟用它才能檢視其中的應用程式。
-</string>
-    <string name="repo_confirm_delete_title">刪除應用軟體倉庫？</string>
-    <string name="repo_confirm_delete_body">應用軟體倉庫被刪除後，應用軟體倉庫中的應用程式將不會在 F-Droid 出現。
-
-        注意：所有之前所安裝的應用程式會保留在您的裝置上。
-    </string>
-    <string name="repo_disabled_notification">已停用 %1$s。
-
-        您需重新啟用此應用軟體倉庫才能安裝其中的應用程式。
-    </string>
-    <string name="repo_added">已儲存 F-Droid 應用軟體倉庫 %1$s。</string>
+    <string name="repo_not_yet_updated">此應用軟體庫尚未被使用。 您需要啟用它才能檢視其中的應用程式。</string>
+    <string name="repo_confirm_delete_title">刪除應用軟體庫？</string>
+    <string name="repo_confirm_delete_body">應用軟體庫被刪除後，應用軟體庫中的應用程式將不會在 F-Droid 出現。 注意：所有之前所安裝的應用程式會保留在您的裝置上。</string>
+    <string name="repo_disabled_notification">已停用 %1$s。 您需重新啟用此應用軟體庫才能安裝其中的應用程式。</string>
+    <string name="repo_added">已儲存 F-Droid 應用軟體庫 %1$s。</string>
     <string name="category_Money">理財</string>
     <string name="category_Phone_SMS">通話與簡訊</string>
     <string name="category_Writing">書寫</string>
@@ -185,8 +177,7 @@
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
     <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
-    <string name="repo_delete_to_overwrite">在加入含有不同金鑰的應用軟體倉庫前，您需要先刪除此儲存庫。
-</string>
+    <string name="repo_delete_to_overwrite">在加入含有不同金鑰的應用軟體庫前，您需要先刪除此儲存庫。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     <string name="system_installer">特權擴充套件</string>
     <string name="category_Navigation">導航</string>
@@ -239,10 +230,10 @@
     <string name="uninstall_system_summary">開啟特權擴充套件的詳細資料來更新或解除安裝</string>
     <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
 
-    <string name="repo_exists_enable">此應用軟體倉庫已經設立。確認您要重新啟用它。</string>
+    <string name="repo_exists_enable">此應用軟體庫已經設立。確認您要重新啟用它。</string>
     <string name="repo_exists_and_enabled">進入的儲存庫已設立並已啟用。</string>
-    <string name="malformed_repo_uri">略過異常的應用軟體倉庫 URI：%s</string>
-    <string name="repo_provider">應用軟體倉庫：%s</string>
+    <string name="malformed_repo_uri">略過異常的應用軟體庫 URI：%s</string>
+    <string name="repo_provider">應用軟體庫：%s</string>
 
     <string name="menu_email">E-Mail 作者</string>
     <string name="menu_issues">問題</string>
@@ -250,7 +241,7 @@
     <string name="touch_to_configure_local_repo">觸碰以便檢視詳細資料並允許其他去交換您的應用程式。</string>
     <string name="swap_nfc_title">觸碰以便交換</string>
     <string name="writing_index_jar">寫入已簽署的索引檔案中 (index.jar)…</string>
-    <string name="linking_apks">正在連結 APK 到應用軟體倉庫裡…</string>
+    <string name="linking_apks">正在連結 APK 到應用軟體庫裡…</string>
     <string name="next">下一步</string>
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">強制下載流量通過 Tor 以增強隱私保護。需要Orbot</string>
@@ -272,15 +263,10 @@
     <string name="up_to_maxsdk">直到 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 直到 %2$s</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
-    <string name="repo_searching_address">查看 F-Droid 應用軟體倉庫於
-        %1$s
-    </string>
+    <string name="repo_searching_address">查看 F-Droid 應用軟體庫於 %1$s</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的應用程式倉庫並不在同一個 Wi-Fi 網路上！請嘗試加入這個網路：%s</string>
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
-    <string name="empty_installed_app_list">未安裝應用程式。
-
-        F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的應用軟體倉庫，或是應用軟體倉庫真的沒有您可用的應用程式。
-    </string>
+    <string name="empty_installed_app_list">未安裝應用程式。 F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的應用軟體庫，或是應用軟體庫真的沒有您可用的應用程式。</string>
     <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
     <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！
 </string>
@@ -349,8 +335,8 @@
     <string name="keep_install_history_summary">在 F-Droid 中儲存安裝和解除安裝紀錄</string>
     <string name="update_auto_install">自動安裝更新</string>
     <string name="update_auto_install_summary">在背景中下載並且更新應用程式</string>
-    <string name="hide_anti_feature_apps">以暗灰顯示 anti-features 應用程式</string>
-    <string name="hide_anti_feature_apps_on">以暗灰顯示需要 anti-features 的應用程式</string>
+    <string name="hide_anti_feature_apps">以暗灰顯示反特徵應用程式</string>
+    <string name="hide_anti_feature_apps_on">以暗灰顯示需要反特徵的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否已連線至網路？</string>
     <string name="versions">版本</string>
     <string name="app_details_donate_prompt_unknown_author">為 %1$s 開發者買杯咖啡！</string>
@@ -426,7 +412,7 @@
 	<item quantity="other">%1$d 天前已更新</item>
 </plurals>
     <string name="updates__tts__download_app">下載</string>
-    <string name="antifeatures">Anti-features</string>
+    <string name="antifeatures">反特徵</string>
     <string name="app_list__name__successfully_installed">%1$s 已安裝</string>
     <string name="nearby_splash__download_apps_from_people_nearby">沒有網路嗎？從您附近的人下載應用程式！
 </string>
@@ -436,8 +422,7 @@
     <string name="latest__empty_state__no_recent_apps">沒有找到新近的應用程式</string>
     <string name="latest__empty_state__never_updated">一旦您的應用程式清單已更新，最新的應用程式應在這裡顯示
 </string>
-    <string name="latest__empty_state__no_enabled_repos">一旦您啟用應用軟體倉庫並讓它更新，最新的應用程式應該在這裡顯示
-</string>
+    <string name="latest__empty_state__no_enabled_repos">一旦您啟用應用軟體庫並讓它更新，最新的應用程式應該在這裡顯示</string>
 
     <string name="categories__empty_state__no_categories">沒有要顯示的類別</string>
 
@@ -493,4 +478,20 @@
     <string name="preventScreenshots_title">阻止螢幕快照</string>
     <string name="preventScreenshots_summary">阻擋攝取螢幕快照，並自最新的應用程式螢幕中隱藏應用程式內容</string>
 
+    <string name="panic_app_setting_title">應急按鈕應用程式</string>
+    <string name="panic_app_unknown_app">未知的應用程式</string>
+    <string name="panic_app_setting_summary">沒有應用程式被設定</string>
+    <string name="panic_app_setting_none">無</string>
+    <string name="panic_app_dialog_title">確認應急應用程式</string>
+    <string name="allow">允許</string>
+
+    <string name="panic_settings">應急按鈕設定</string>
+    <string name="panic_exit_title">退出應用程式</string>
+    <string name="panic_exit_summary">應用程式將被關閉</string>
+    <string name="panic_hide_title">隱藏 %s</string>
+    <string name="panic_hide_summary">應用程式將隱藏自己</string>
+
+    <string name="panic_app_dialog_message">確認同意讓 %1$s 啟動破壞式的緊急按鈕動作？</string>
+    <string name="panic_settings_summary">危急狀況下要採取的行動</string>
+    <string name="panic_destructive_actions">破壞式行動</string>
     </resources>

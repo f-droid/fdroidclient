@@ -4,11 +4,11 @@
         деинсталирате старата версия. (Забележка: деинсталирането ще доведе до изтриване на данни съхранявани от старата
         версия.)
     </string>
-    <string name="installIncompatible">Приложението не е съвместим с вашето устройство. Да бъде направен опит за инсталиране въпреки това?</string>
+    <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това?</string>
     <string name="version">Версия</string>
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
-    <string name="cache_downloaded">Запазване на кешираните приложения</string>
+    <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновления</string>
     <string name="other">Други</string>
     <string name="update_interval">Проверка за актуализации</string>
@@ -26,11 +26,11 @@
     <string name="local_repo_name">Име на локалното хранилище</string>
     <string name="local_repo_name_summary">Обявява хранилището под името: %s</string>
     <string name="local_repo_https_on">Ползва криптирана HTTPS:// връзка за комуникацията с локалното хранилище</string>
-    <string name="app_details">Детайли за приложението</string>
+    <string name="app_details">Още информация</string>
     <string name="no_such_app">Не е намерено такова приложение.</string>
     <string name="about_title">Относно F-Droid</string>
     <string name="about_site">Уебсайт</string>
-    <string name="about_mail">Имейл</string>
+    <string name="about_mail">Е-поща</string>
     <string name="about_version">Версия</string>
     <string name="app_installed">Инсталирана</string>
     <string name="app_not_installed">Неинсталирана</string>
@@ -197,21 +197,12 @@
         F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите,
         който ползвате.
     </string>
-    <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични
-        версии.\n\nПоздравления! Ползвате актуалните версии на приложенията (или хранилищата не са актуализирани).
-    </string>
+    <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични версии.</string>
 
     <string name="install_confirm">има нужда от достъп до</string>
-    <string name="install_confirm_update">Желаете ли актуализацията за съществуващото приложение да бъде инсталирана?
-        Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:
-    </string>
-    <string name="install_confirm_update_system">Желаете ли актуализацията за за вграденото приложение да бъде
-        инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:
-    </string>
-    <string name="install_confirm_update_no_perms">Желаете ли актуализацията за съществуващото приложение да бъде
-        инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за
-        достъп.
-    </string>
+    <string name="install_confirm_update">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
+    <string name="install_confirm_update_system">Потвърдете актуализацията на вграденото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
+    <string name="install_confirm_update_no_perms">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия не изисква разрешения за достъп.</string>
     <string name="install_confirm_update_system_no_perms">Желаете ли актуализацията за вграденото приложение да бъде
         инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за
         достъп.
@@ -255,13 +246,11 @@
     <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
     <string name="app_incompatible">Несъвместимо</string>
     <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
-    <string name="system_install_post_success">F-Droid е инсталиран като привилегировано приложение</string>
+    <string name="system_install_post_success">Привилегированото разширение на F-Droid е инсталирано</string>
     <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
     <string name="system_install_question">Желаете ли F-Droid да бъде инсталирано като привилегировано приложение?
     </string>
-    <string name="system_install_warning_lollipop">Инсталцията отнема около 10 секунди след което устройството ще бъде
-        <b>рестартирано</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Инсталцията отнема около 10 секунди, след което устройството ще бъде <b>рестартирано</b>.</string>
     <string name="system_uninstall">Желаете ли F-Droid да бъде деинсталиран като привилегировано приложение?</string>
     <string name="system_uninstall_button">Деинсталиране</string>
 
@@ -271,9 +260,7 @@
     </string>
     <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.
     </string>
-    <string name="system_install_post_success_message">F-Droid е инсталиран като привилегировано приложение. Това
-        позволява на F-Droid да инсталира, актуализира и деинсталира приложения самостоятелно.
-    </string>
+    <string name="system_install_post_success_message">Привилегировано разширение на F-Droid е инсталирано. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения самостоятелно.</string>
     <string name="more">Повече</string>
     <string name="less">По-малко</string>
 
@@ -301,12 +288,10 @@
     <string name="unsigned">Неподписано</string>
     <string name="system_install_button_install">Инсталиране</string>
     <string name="swap_confirm">Потвърдете размяната</string>
-    <string name="swap_connection_misc_error">Възникна грешка при свързването с устройството, размяната не може да се
-        осъществи.
-    </string>
+    <string name="swap_connection_misc_error">Възникна грешка при свързване с устройството, размяната не може да се осъществи!</string>
     <string name="newPerms">Нови</string>
     <string name="uninstall_update_confirm">Искате ли да замените приложението със заводската му версия?</string>
-    <string name="download_error">Свалянето се провали</string>
+    <string name="download_error">Грешка при изтегляне!</string>
 
     <string name="perms_new_perm_prefix">Ново:</string>
     <string name="perms_description_app">Предоставено от %1$s.</string>
@@ -328,12 +313,10 @@
 
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
     <string name="useTor">Да се използва Tor</string>
-    <string name="useTorSummary">С цел увеличаване на сигурността нека възходящия трафик минава през Tor</string>
-    <string name="status_inserting_apps">Записване на данните на приложенията</string>
+    <string name="useTorSummary">Използване на мрежата на Tor за повече анонимност. Изисква Орбот</string>
+    <string name="status_inserting_apps">Записване на данните за приложенията</string>
     <string name="unverified">Непотвърдено</string>
-    <string name="unsigned_description">Това означава че списъкът на приложенията не е бил потвърден. Бъдете внимателни
-        с приложения, изтеглени от незасекретени индекси.
-    </string>
+    <string name="unsigned_description">Това означава че списъкът на приложенията не е бил потвърден. Бъдете внимателни с приложения, изтеглени от неудостоверени индекси.</string>
     <string name="unknown">Неизвестно</string>
     <string name="minsdk_or_later">%s или по-късно</string>
     <string name="wifi_ap">Хотспот</string>
@@ -351,7 +334,7 @@
     <string name="crash_dialog_comment_prompt">Тук можете да добавяте допълнителна информация и коментари:</string>
     <string name="empty_search_available_app_list">Няма съвпадения сред достъпните приложения.</string>
 
-    <string name="system_install_denied_signature">Подписът на плъгина е грешен! Моля създайте бъг репорт!</string>
+    <string name="system_install_denied_signature">Подписът на разширението е грешен! Моля създайте доклад за грвшка!</string>
     <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля
         създайте бъг репорт!
     </string>
@@ -411,10 +394,10 @@
     <string name="preference_category__my_apps">Моите приложения</string>
     <string name="details_new_in_version">Ново във версия %s</string>
 
-    <string name="antifeatureswarning">Това приложение има функции, които може да не ви харесат.</string>
+    <string name="antifeatureswarning">Някои свойства на това приложение може да не ви харесат.</string>
     <string name="antifeatures">Анти-функции</string>
-    <string name="hide_anti_feature_apps">Засенчи приложения с анти-функции</string>
-    <string name="hide_anti_feature_apps_on">Засенчи приложения изискващи анти-функции</string>
+    <string name="hide_anti_feature_apps">Засенчване на приложения с анти-функции</string>
+    <string name="hide_anti_feature_apps_on">Засенчване на приложения с анти-функции</string>
     <string name="by_author_format">от %s</string>
     <string name="force_old_index_summary">В случай на грешки или проблеми със съвместимостта, използвай XML приложение за индекс</string>
     <string name="app__tts__cancel_download">Прекратено сваляне</string>
@@ -422,7 +405,7 @@
     <string name="menu_video">Видео</string>
     <string name="menu_license">Лиценз: %s</string>
     <string name="latest__empty_state__never_updated">След  обновяване на листа с приложения, новите приложения трябва да се покажат тук</string>
-    <string name="latest__empty_state__no_enabled_repos">Веднъж след като активирате източник и той се обнови, последните приложения трябва да се покажат тук</string>
+    <string name="latest__empty_state__no_enabled_repos">След като активирате източник и той се обнови, последните приложения ще се покажат тук</string>
 
     <string name="categories__empty_state__no_categories">Няма категории за показване</string>
 
@@ -451,8 +434,8 @@
 </plurals>
     <string name="notification_title_summary_update_available">Налична актуализация</string>
     <string name="notification_title_summary_downloading">Сваляне…</string>
-    <string name="notification_title_summary_downloading_update">Сваляне на актуализацията…</string>
-    <string name="notification_title_summary_ready_to_install">Готов за инсталация</string>
+    <string name="notification_title_summary_downloading_update">Изтегляне на актуализацията…</string>
+    <string name="notification_title_summary_ready_to_install">Готовност за инсталиране</string>
     <string name="notification_title_summary_ready_to_install_update">Актуализацията е готова за инсталиране</string>
     <string name="notification_title_summary_installing">Инсталиране</string>
     <string name="notification_title_summary_installed">Успешна инсталация</string>
@@ -466,7 +449,7 @@
     <string name="details_last_updated_today">Актуализирано днес</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Актуализирано преди %1$d ден</item>
-	<item quantity="other">Актуализирано преди %1$d дени</item>
+	<item quantity="other">Актуализирано преди %1$d дни</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Актуализирано преди %1$d седмица</item>
@@ -474,7 +457,7 @@
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Актуализирано преди %1$d месец</item>
-	<item quantity="other">Актуализирано преди %1$d месеци</item>
+	<item quantity="other">Актуализирано преди %1$d месеца</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Актуализирано преди %1$d година</item>
@@ -484,7 +467,7 @@
     <string name="notification_action_cancel">Отказ</string>
     <string name="notification_action_install">Инсталирай</string>
 
-    <string name="warning_no_internet">Невъзможна актуализация, проверете свързани ли сте към интернет?</string>
+    <string name="warning_no_internet">Невъзможна актуализация. Проверете връзката към интернет.</string>
     <string name="notification_title_single_update_available">Налично обновление</string>
     <string name="notification_title_summary_install_error">Инсталирането е неуспешно</string>
     <plurals name="button_view_all_apps_in_category">
@@ -492,9 +475,9 @@
 	<item quantity="other">Покажи всички %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Нямате интернет? Вземете приложения от хората около вас!</string>
-    <string name="nearby_splash__find_people_button">Намери хора близо до мен</string>
-    <string name="download_pending">Изчакване за сваляне…</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нямате връзка с Интернет? Вземете приложения от хората около вас!</string>
+    <string name="nearby_splash__find_people_button">Откриване на близки устройства</string>
+    <string name="download_pending">Изчакване…</string>
     <string name="install_error_notify_title">Грешка при инсталацията на %s</string>
     <string name="uninstall_error_notify_title">Грешка при деинсталирането на %s</string>
 
@@ -507,8 +490,23 @@
 	<item quantity="one">+%1$d  още…</item>
 	<item quantity="other">+%1$d  повече…</item>
 </plurals>
-    <string name="force_old_index">Принудете стар формат на индексиране</string>
+    <string name="force_old_index">Принудителен стар формат на индексиране</string>
     <string name="app_details__incompatible_mismatched_signature">Различен подпис от инсталираната версия</string>
     <string name="app_details__no_versions__no_compatible_signatures">Няма налични версии със съвместим подпис</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Версиите не са съвместими с устройството</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Наличните версии не са съвместими с устройството</string>
+    <string name="app_details__no_versions__show_incompat_versions">Включете настройката \"%1$s\" за показване на несъвместими версии.</string>
+    <string name="app_list_download_ready">Изтвглено и готово за инсталиране</string>
+    <string name="app_list__dismiss_downloading_app">Спряно изтегляне</string>
+
+    <string name="installed_app__file_corrupt">Входно-изходна грешка. %s вероятно е повреден!</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Открита е уязвимост в %1$s. Препоръчва се незабавно обновяване до най-новата версия.</string>
+    <string name="privacy">Лични данни</string>
+    <string name="preventScreenshots_title">Без снимки на екрана</string>
+    <string name="preventScreenshots_summary">Забрана на снимките на екрана на приложението и скриване от списъка с последни приложения</string>
+
+    <string name="status_inserting_x_apps">Запазване (%1$d/%2$d) от %3$s</string>
+    <string name="system_install_not_supported">Засега инсталирането на привилегированото разширение на F-Droid не се поддържа на Андроид версия 5.1 или по-нова.</string>
+
+    <string name="nearby_splash__both_parties_need_fdroid">За споделянето на приложения с други около вас, и двете устройства трябва да използват %1$s.</string>
+
     </resources>

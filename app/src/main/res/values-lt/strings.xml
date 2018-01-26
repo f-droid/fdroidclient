@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="version">Versija</string>
     <string name="delete">Šalinti</string>
-    <string name="cache_downloaded">Atsiųstų programų podėlis</string>
+    <string name="cache_downloaded">Saugoti atsisiųstų programėlių instaliacinius paketus</string>
     <string name="updates">Atnaujinimai</string>
     <string name="other">Kita</string>
     <string name="update_interval">Automatinis programų sąrašų naujinimas</string>
@@ -68,4 +68,72 @@
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir mokymasis</string>
     <string name="swap_welcome">Sveikiname, jūs naudojate F-Droid!</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+    <string name="back">Atgal</string>
+    <string name="menu_settings">Nustatymai</string>
+    <string name="main_menu__latest_apps">Naujausios</string>
+    <string name="main_menu__categories">Kategorijos</string>
+    <string name="main_menu__swap_nearby">Netoliese</string>
+
+    <string name="preference_manage_installed_apps">Tvarkyti įdiegtas programėles</string>
+
+
+    <string name="skip">Praleisti</string>
+
+    <string name="pref_language">Kalba</string>
+    <string name="pref_language_default">Sistemos numatytoji</string>
+
+    <string name="category_Connectivity">Jungiamumas</string>
+    <string name="category_Development">Vystymas</string>
+    <string name="category_Games">Žaidimai</string>
+    <string name="category_Graphics">Grafika</string>
+    <string name="category_Internet">Internetas</string>
+    <string name="category_Money">Pinigai</string>
+    <string name="category_Multimedia">Multimedija</string>
+    <string name="category_Navigation">Navigacija</string>
+    <string name="category_Phone_SMS">Telefonas ir SMS</string>
+    <string name="category_Reading">Skaitymas</string>
+    <string name="category_Security">Sauga</string>
+    <string name="category_Time">Laikas</string>
+    <string name="category_Writing">Rašymas</string>
+
+    <string name="system_install_button_install">Įdiegti</string>
+    <string name="system_uninstall_button">Išdiegti</string>
+    <string name="swap_dont_show_again">Daugiau to nerodyti</string>
+    <string name="newPerms">Nauja</string>
+    <string name="notification_action_update">Atnaujinti</string>
+    <string name="notification_action_cancel">Atšaukti</string>
+    <string name="notification_action_install">Įdiegti</string>
+
+    <string name="app_details">Programėlės detalės</string>
+    <string name="app_list__name__downloading_in_progress">Atsiunčiama %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s įdiegta</string>
+    <string name="updates__tts__download_app">Atsisiųsti</string>
+    <string name="more">Daugiau</string>
+    <string name="less">Mažiau</string>
+
+    <string name="antitracklist">Ši programėlė seka ir perduoda Jūsų veiksmus</string>
+    <string name="warning_no_internet">Negalima atnaujinti, ar Jūs prisijungę prie interneto?</string>
+    <string name="unsigned">Nepasirašyta</string>
+    <string name="unverified">Nepatikrinta</string>
+    <string name="repo_details">Repozitorija</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="category_Sports_Health">Sportas ir sveikata</string>
+    <string name="category_System">Sistema</string>
+    <string name="swap_send_fdroid">Siųsti F-Droid</string>
+    <string name="crash_dialog_title">F-Droid sugriuvo</string>
+    <string name="crash_dialog_text">Įvyko netikėta klaida, dėl kurios sustojo programėlė. Ar norėtumėte el. paštu atsiųsti klaidos detales, kad padėtumėme išsprestį tai?</string>
+    <string name="notification_title_single_update_available">Galimas Atnaujinimas</string>
+    <string name="notification_title_summary_install_error">Įdiegimas nepavyko</string>
+    <string name="SignatureMismatch">Nauja versija pasirašyta kitu raktu. Kad instaliuoti naują versiją, pirna turi būti išdiegta senoji. Prašome tai padaryti ir tada pabandyti iš naujo. (Pastaba- išdiegiant bus ištrinta ir programėlės vidinė informacija)</string>
+    <string name="installIncompatible">Programėlė nesuderinama su Jūsų įrenginiu, įdiegti vistiek?</string>
+    <string name="enable_nfc_send">Įgalinti NFC siuntimą…</string>
+    <string name="unstable_updates">Nestabilūs atnaujinimai</string>
+    <string name="unstable_updates_summary">Pasiūlyti naujinimus nestabilioms versijoms</string>
+    <string name="keep_install_history">Saugoti įdiegimų istoriją</string>
+    <string name="keep_install_history_summary">Saugoti log bylą visiems įdiegimams ir išdiegimams F-Droid programėlėje</string>
+    <string name="force_old_index">Priversti senąjį indeksavimo formatą</string>
+    <string name="update_interval_zero">Nėra automatinio programėlių sąrašo atnaujinimų</string>
+    <string name="update_auto_download_summary">Atnaujinimai parsiunčiami automatiškai o Jūs perspėjami juos instaliuoti</string>
+    </resources>

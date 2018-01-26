@@ -447,7 +447,7 @@
     <string name="updates__tts__download_app">Scarica</string>
     <string name="app_recommended_version_installed">Versione %1$s (Raccomandata)</string>
     <string name="app__newly_added">Nuovo</string>
-    <string name="app__tts__cancel_download">Annulla Scaricamento</string>
+    <string name="app__tts__cancel_download">Annulla scaricamento</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
 
     <string name="app_list_download_ready">Scaricato, pronto per l\'installazione</string>
@@ -535,4 +535,20 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo di aggiornare all\'ultima versione immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
 
+    <string name="privacy">Privacy</string>
+    <string name="preventScreenshots_title">Impedisci schermate</string>
+    <string name="preventScreenshots_summary">Blocca l\'acquisizione di screenshot e nascondi il contenuto dell\'app dalla schermata delle app recenti</string>
+
+    <string name="panic_app_unknown_app">un\'applicazione sconosciuta</string>
+    <string name="panic_app_setting_summary">Nessuna applicazione è stata impostata</string>
+    <string name="panic_app_setting_none">Nessuno</string>
+    <string name="allow">Permetti</string>
+
+    <string name="panic_settings_summary">Azioni da intraprendere in caso di emergenza</string>
+    <string name="panic_exit_summary">L\'applicazione sarà chiusa</string>
+    <string name="panic_destructive_actions">Azioni Distruttive</string>
+    <string name="panic_hide_title">Nascondi %s</string>
+    <string name="panic_hide_summary">L\'applicazione si auto-nasconderà</string>
+
+    <string name="panic_exit_title">Esci dall\'app</string>
     </resources>

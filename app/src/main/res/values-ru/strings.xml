@@ -135,7 +135,7 @@
     <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам
         необходимо повторно включить его.
     </string>
-    <string name="minsdk_or_later">%s или позднее</string>
+    <string name="minsdk_or_later">%s или новее</string>
     <string name="up_to_maxsdk">До %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
     <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий,
@@ -540,5 +540,9 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">В компоненте %1$s есть уязвимости. Лучше удалить это приложение прямо сейчас.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">В компоненте %1$s есть уязвимости. Лучше обновиться до новой версии прямо сейчас.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>
+
+    <string name="privacy">Приватность</string>
+    <string name="preventScreenshots_title">Предотвратить Скриншоты</string>
+    <string name="preventScreenshots_summary">Блокировать скриншоты от последних приложений</string>
 
     </resources>

@@ -64,7 +64,7 @@
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
-    <string name="menu_upgrade">Erneuert</string>
+    <string name="menu_upgrade">Update</string>
     <string name="menu_donate">Spenden</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese Anwendung enthält Werbung</string>
@@ -519,4 +519,13 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">In „%1$s” wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu aktualisieren.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorieren</string>
 
+    <string name="privacy">Privatsphäre</string>
+    <string name="preventScreenshots_title">Bildschirmfotos verhindern</string>
+    <string name="preventScreenshots_summary">Blockiert das Aufnehmen von Bildschirmfotos und versteckt die App in der Appübersicht</string>
+
+    <string name="allow">Erlauben</string>
+
+    <string name="panic_app_setting_none">Keine</string>
+    <string name="panic_settings_summary">Maßnahmen für den Notfall</string>
+    <string name="panic_exit_title">App schließen</string>
     </resources>
