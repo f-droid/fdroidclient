@@ -44,6 +44,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final Activity activity;
     private final LoaderManager loaderManager;
     private final DisplayImageOptions displayImageOptions;
+    private static int categoryItemCount = 20;
 
     private String currentCategory;
 
@@ -150,7 +151,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         } else {
             return new CursorLoader(
                     activity,
-                    AppProvider.getTopFromCategoryUri(currentCategory, 20),
+                    AppProvider.getTopFromCategoryUri(currentCategory, categoryItemCount),
                     new String[]{
                             Schema.AppMetadataTable.Cols.NAME,
                             Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
@@ -225,14 +226,17 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             int horizontalPadding = (int) r.getDimension(R.dimen.category_preview__app_list__padding__horizontal);
             int horizontalPaddingFirst = (int) r.getDimension(
                     R.dimen.category_preview__app_list__padding__horizontal__first);
+            int horizontalPaddingLast = (int) r.getDimension(
+                    R.dimen.category_preview__app_list__padding__horizontal__last);
             boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
             int itemPosition = parent.getChildLayoutPosition(view);
             boolean first = itemPosition == 0;
+            boolean end = itemPosition == categoryItemCount - 1;
 
             // Leave this "paddingEnd" local variable here for clarity when converting from
             // left/right to start/end for RTL friendly layout.
             // noinspection UnnecessaryLocalVariable
-            int paddingEnd = horizontalPadding;
+            int paddingEnd = end ? horizontalPaddingLast : horizontalPadding;
             int paddingStart = first ? horizontalPaddingFirst : horizontalPadding;
 
             int paddingLeft = isLtr ? paddingStart : paddingEnd;
