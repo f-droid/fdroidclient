@@ -298,8 +298,6 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                                 case EXISTS_DISABLED:
                                 case EXISTS_UPGRADABLE_TO_SIGNED:
                                 case EXISTS_FINGERPRINT_MATCH:
-                                    // TODO uniqx:
-                                    //updateAndEnableExistingRepo(url, fp, username, password);
                                     updateAndEnableExistingRepo(url, fp);
                                     finishedAddingRepo();
                                     break;

@@ -49,7 +49,7 @@ public class Provisioner {
      */
     public static void scanAndProcess(Context context) {
 
-        File provisionDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + File.separator + NEW_PROVISIONS_DIR);
+        File provisionDir = new File(context.getExternalFilesDir(null).getAbsolutePath(), NEW_PROVISIONS_DIR);
 
         if (!provisionDir.isDirectory()) {
             Utils.debugLog(TAG, "Provisions dir does not exists: '" + provisionDir.getAbsolutePath() + "' moving on ...");
@@ -70,7 +70,6 @@ public class Provisioner {
                     if (provision.getRepositoryProvision() != null) {
                         RepositoryProvision repo = provision.getRepositoryProvision();
 
-                        // TODO uniqx: check if repo is already enable
                         Repo storedRepo = RepoProvider.Helper.findByAddress(context, repo.getUrl());
                         if (storedRepo != null) {
                             Utils.debugLog(TAG, "Provision contains a repo which is already added: '" + provision.getProvisonPath() + "' ignoring ...");
