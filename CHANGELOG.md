@@ -1,3 +1,11 @@
+### 1.1-alpha0 (2018-01-26)
+
+* provision new repos via a provisioning file
+
+* "Android App Links" handling aka "Digital Asset Links"
+
+* new privacy prefs: disable screenshots; exit on panic
+
 ### 1.1-alpha0 (2017-11-09)
 
 * automatically choose between official repo mirrors
