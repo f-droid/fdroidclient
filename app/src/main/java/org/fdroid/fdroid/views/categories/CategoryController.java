@@ -44,7 +44,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final Activity activity;
     private final LoaderManager loaderManager;
     private final DisplayImageOptions displayImageOptions;
-    private static int categoryItemCount = 30; //was: 20
+    private static int categoryItemCount = 20;
 
     private String currentCategory;
 
@@ -236,12 +236,12 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             // Leave this "paddingEnd" local variable here for clarity when converting from
             // left/right to start/end for RTL friendly layout.
             // noinspection UnnecessaryLocalVariable
-            int paddingEnd =  end ? horizontalPaddingLast : horizontalPadding;
+            int paddingEnd = end ? horizontalPaddingLast : horizontalPadding;
             int paddingStart = first ? horizontalPaddingFirst : horizontalPadding;
 
             int paddingLeft = isLtr ? paddingStart : paddingEnd;
             int paddingRight = isLtr ? paddingEnd : paddingStart;
-            outRect.set(paddingLeft, 0, paddingRight, 0 );
+            outRect.set(paddingLeft, 0, paddingRight, 0);
         }
     }
 }
