@@ -1091,8 +1091,17 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("update " + RepoTable.NAME + " set " + RepoTable.Cols.LAST_ETAG + " = NULL");
     }
 
-    private void resetTransient(SQLiteDatabase db) {
-        Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
+    /**
+     * Resets all database tables that are generated from the index files downloaded
+     * from the active repositories.  This will trigger the index file(s) to be
+     * downloaded processed on the next update.
+     */
+    public static void resetTransient(Context context) {
+        resetTransient(getInstance(context).getWritableDatabase());
+    }
+
+    private static void resetTransient(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Removing all index tables, they will be recreated next time F-Droid updates.");
 
         Preferences.get().setTriedEmptyUpdate(false);
 

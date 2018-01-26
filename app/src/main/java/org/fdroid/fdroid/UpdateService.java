@@ -40,11 +40,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -66,6 +66,7 @@ public class UpdateService extends IntentService {
     public static final String EXTRA_STATUS_CODE = "status";
     public static final String EXTRA_ADDRESS = "address";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
+    public static final String EXTRA_FORCED_UPDATE = "forcedUpdate";
     public static final String EXTRA_PROGRESS = "progress";
 
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
@@ -96,15 +97,26 @@ public class UpdateService extends IntentService {
     }
 
     public static void updateNow(Context context) {
-        updateRepoNow(null, context);
+        updateRepoNow(context, null);
     }
 
-    public static void updateRepoNow(String address, Context context) {
+    public static void updateRepoNow(Context context, String address) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
         if (!TextUtils.isEmpty(address)) {
             intent.putExtra(EXTRA_ADDRESS, address);
         }
+        context.startService(intent);
+    }
+
+    /**
+     * For when an automatic process needs to force an index update, like
+     * when the system language changes, or the underlying OS was upgraded.
+     * This wipes the existing database before running the update!
+     */
+    public static void forceUpdateRepo(Context context) {
+        Intent intent = new Intent(context, UpdateService.class);
+        intent.putExtra(EXTRA_FORCED_UPDATE, true);
         context.startService(intent);
     }
 
@@ -225,7 +237,7 @@ public class UpdateService extends IntentService {
             switch (resultCode) {
                 case STATUS_INFO:
                     notificationBuilder.setContentText(message)
-                        .setCategory(NotificationCompat.CATEGORY_SERVICE);
+                            .setCategory(NotificationCompat.CATEGORY_SERVICE);
                     if (progress != -1) {
                         notificationBuilder.setProgress(100, progress, false);
                     } else {
@@ -236,8 +248,8 @@ public class UpdateService extends IntentService {
                 case STATUS_ERROR_GLOBAL:
                     text = context.getString(R.string.global_error_updating_repos, message);
                     notificationBuilder.setContentText(text)
-                        .setCategory(NotificationCompat.CATEGORY_ERROR)
-                        .setSmallIcon(android.R.drawable.ic_dialog_alert);
+                            .setCategory(NotificationCompat.CATEGORY_ERROR)
+                            .setSmallIcon(android.R.drawable.ic_dialog_alert);
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
                     break;
@@ -254,8 +266,8 @@ public class UpdateService extends IntentService {
                     }
                     text = msgBuilder.toString();
                     notificationBuilder.setContentText(text)
-                        .setCategory(NotificationCompat.CATEGORY_ERROR)
-                        .setSmallIcon(android.R.drawable.ic_dialog_info);
+                            .setCategory(NotificationCompat.CATEGORY_ERROR)
+                            .setSmallIcon(android.R.drawable.ic_dialog_info);
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
                     break;
@@ -264,7 +276,7 @@ public class UpdateService extends IntentService {
                 case STATUS_COMPLETE_AND_SAME:
                     text = context.getString(R.string.repos_unchanged);
                     notificationBuilder.setContentText(text)
-                        .setCategory(NotificationCompat.CATEGORY_SERVICE);
+                            .setCategory(NotificationCompat.CATEGORY_SERVICE);
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     break;
             }
@@ -349,10 +361,12 @@ public class UpdateService extends IntentService {
 
         final long startTime = System.currentTimeMillis();
         boolean manualUpdate = false;
+        boolean forcedUpdate = false;
         String address = null;
         if (intent != null) {
             address = intent.getStringExtra(EXTRA_ADDRESS);
             manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
+            forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
         }
 
         try {
@@ -366,8 +380,8 @@ public class UpdateService extends IntentService {
                 return;
             }
 
-            if (manualUpdate) {
-                Utils.debugLog(TAG, "manually requested update");
+            if (manualUpdate || forcedUpdate) {
+                Utils.debugLog(TAG, "manually requested or forced update");
             } else if (!verifyIsTimeForScheduledRun()
                     || (netState == FLAG_NET_METERED && Preferences.get().isUpdateOnlyOnUnmeteredNetworks())) {
                 Utils.debugLog(TAG, "don't run update");
@@ -404,6 +418,9 @@ public class UpdateService extends IntentService {
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
 
+                if (forcedUpdate) {
+                    DBHelper.resetTransient(this);
+                }
 
                 try {
                     RepoUpdater updater = new IndexV1Updater(this, repo);

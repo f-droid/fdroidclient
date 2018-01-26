@@ -267,6 +267,7 @@ public class FDroidApp extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
+        UpdateService.forceUpdateRepo(this);
     }
 
     @Override
