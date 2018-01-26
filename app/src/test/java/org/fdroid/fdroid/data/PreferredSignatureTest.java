@@ -2,11 +2,9 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.Context;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +22,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     @Before
     public void setup() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
-        Preferences.setup(context);
+        Preferences.setupForTests(context);
 
         // This is what the FDroidApp does when this preference is changed. Need to also do this under testing.
         Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
@@ -33,11 +31,6 @@ public class PreferredSignatureTest extends FDroidProviderTest {
                 AppProvider.Helper.calcSuggestedApks(context);
             }
         });
-    }
-
-    @After
-    public void tearDown() {
-        Preferences.clearSingletonForTesting();
     }
 
     private Repo createFDroidRepo() {

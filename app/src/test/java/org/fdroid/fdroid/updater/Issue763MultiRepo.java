@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.data.Apk;

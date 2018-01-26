@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
-
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
@@ -11,10 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)

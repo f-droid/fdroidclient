@@ -14,7 +14,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProviderTest;
-import org.fdroid.fdroid.data.FDroidProvider;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProviderTest;
@@ -36,7 +36,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
     @Before
     public void setup() {
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
-        Preferences.setup(context);
+        Preferences.setupForTests(context);
 
         Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
         app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
@@ -46,8 +46,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
     @After
     public void teardown() {
         ImageLoader.getInstance().destroy();
-        FDroidProvider.clearDbHelperSingleton();
-        Preferences.clearSingletonForTesting();
+        DBHelper.clearDbHelperSingleton();
     }
 
     @Test

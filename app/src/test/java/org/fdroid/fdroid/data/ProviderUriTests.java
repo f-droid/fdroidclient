@@ -39,7 +39,7 @@ public class ProviderUriTests {
 
     @After
     public void teardown() {
-        FDroidProvider.clearDbHelperSingleton();
+        DBHelper.clearDbHelperSingleton();
     }
 
     @Test

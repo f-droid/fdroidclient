@@ -26,7 +26,6 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.mock.RepoDetails;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,12 +65,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        Preferences.setup(context);
-    }
-
-    @After
-    public void tearDown() {
-        Preferences.clearSingletonForTesting();
+        Preferences.setupForTests(context);
     }
 
     @Test

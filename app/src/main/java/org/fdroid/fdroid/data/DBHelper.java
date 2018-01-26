@@ -47,13 +47,20 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is basically a singleton used to represent the database at the core
+ * of all of the {@link android.content.ContentProvider}s used at the core
+ * of this app.  {@link DBHelper} is not {@code private} so that it can be easily
+ * used in test subclasses.
+ */
 @SuppressWarnings("LineLength")
-class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 
     public static final int REPO_XML_ARG_COUNT = 8;
 
+    private static DBHelper instance;
     private static final String DATABASE_NAME = "fdroid";
 
     private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
@@ -214,7 +221,22 @@ class DBHelper extends SQLiteOpenHelper {
 
     DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DB_VERSION);
-        this.context = context;
+        this.context = context.getApplicationContext();
+    }
+
+    /**
+     * Only used for testing. Not quite sure how to mock a singleton variable like this.
+     */
+    public static void clearDbHelperSingleton() {
+        instance = null;
+    }
+
+    static synchronized DBHelper getInstance(Context context) {
+        if (instance == null) {
+            Utils.debugLog(TAG, "First time accessing database, creating new helper");
+            instance = new DBHelper(context);
+        }
+        return instance;
     }
 
     @Override

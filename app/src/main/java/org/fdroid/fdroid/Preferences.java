@@ -453,8 +453,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * While it is likely that most places asking for preferences have access to a {@link Context},
      * it is a minor convenience to be able to ask for preferences without.
      */
-    public static void clearSingletonForTesting() {
+    public static void setupForTests(Context context) {
         instance = null;
+        setup(context);
     }
 
     /**
