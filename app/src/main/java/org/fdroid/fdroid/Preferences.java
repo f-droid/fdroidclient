@@ -47,7 +47,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_THEME = "theme";
     public static final String PREF_SHOW_INCOMP_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ROOT_APPS = "rooted";
-    public static final String PREF_SHOW_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
+    public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
@@ -358,6 +358,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * in PREF_SHOW_ANTI_FEATURE_APPS.
      */
     public boolean showAppsWithAntiFeatures() {
+        // migrate old preference to new key
+        if (isInitialized("hideAntiFeatureApps")) {
+            boolean oldPreference = preferences.getBoolean("hideAntiFeatureApps", false);
+            preferences.edit().putBoolean(PREF_SHOW_ANTI_FEATURE_APPS, !oldPreference).apply();
+        }
         if (!isInitialized(PREF_SHOW_ANTI_FEATURE_APPS)) {
             initialize(PREF_SHOW_ANTI_FEATURE_APPS);
             showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS,
