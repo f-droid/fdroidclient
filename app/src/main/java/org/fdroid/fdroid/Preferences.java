@@ -45,7 +45,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_SHOW_INCOMP_VERSIONS = "incompatibleVersions";
+    public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ROOT_APPS = "rooted";
     public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
@@ -71,7 +71,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
 
-    private static final boolean DEFAULT_SHOW_INCOMP_VERSIONS = false;
+    private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
@@ -221,7 +221,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean showIncompatibleVersions() {
-        return preferences.getBoolean(PREF_SHOW_INCOMP_VERSIONS, DEFAULT_SHOW_INCOMP_VERSIONS);
+        return preferences.getBoolean(PREF_SHOW_INCOMPAT_VERSIONS, DEFAULT_SHOW_INCOMPAT_VERSIONS);
     }
 
     public boolean showNfcDuringSwap() {

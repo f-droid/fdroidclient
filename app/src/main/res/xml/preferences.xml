@@ -53,12 +53,12 @@
         <CheckBoxPreference android:title="@string/show_incompat_versions"
             android:defaultValue="false"
             android:key="incompatibleVersions" />
-        <CheckBoxPreference android:title="@string/rooted"
+        <CheckBoxPreference android:title="@string/show_root_apps"
             android:defaultValue="true"
             android:key="rooted" />
-        <CheckBoxPreference android:title="@string/hide_anti_feature_apps"
+        <CheckBoxPreference android:title="@string/show_anti_feature_apps"
             android:defaultValue="false"
-            android:key="hideAntiFeatureApps" />
+            android:key="showAntiFeatureApps" />
         <CheckBoxPreference android:title="@string/force_touch_apps"
             android:defaultValue="false"
             android:key="ignoreTouchscreen" />

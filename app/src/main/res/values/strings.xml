@@ -212,10 +212,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="appcompatibility">App compatibility</string>
     <string name="show_incompat_versions">Include incompatible versions</string>
     <string name="show_incompat_versions_on">Show app versions that are incompatible with the device</string>
-    <string name="rooted">Include root apps</string>
-    <string name="rooted_on">Show apps that require root privileges</string>
-    <string name="hide_anti_feature_apps">Include anti-feature apps</string>
-    <string name="hide_anti_feature_apps_on">Show apps that require anti-features</string>
+    <string name="show_root_apps">Include root apps</string>
+    <string name="show_root_apps_on">Show apps that require root privileges</string>
+    <string name="show_anti_feature_apps">Include anti-feature apps</string>
+    <string name="show_anti_feature_apps_on">Show apps that require anti-features</string>
     <string name="force_touch_apps">Include touchscreen apps</string>
     <string name="force_touch_apps_on">Show apps that require touchscreen regardless of hardware support</string>
 
