@@ -66,7 +66,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
         }
     }
 
-    private class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
+    private static class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
 
         private final String[] screenshots;
 
@@ -133,7 +133,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
     }
 
     @TargetApi(11)
-    public class DepthPageTransformer implements ViewPager.PageTransformer {
+    public static class DepthPageTransformer implements ViewPager.PageTransformer {
 
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();

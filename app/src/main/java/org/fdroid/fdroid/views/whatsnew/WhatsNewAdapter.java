@@ -112,7 +112,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__horizontal
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__vertical
      */
-    private class ItemDecorator extends RecyclerView.ItemDecoration {
+    private static class ItemDecorator extends RecyclerView.ItemDecoration {
         private final Context context;
 
         ItemDecorator(Context context) {
