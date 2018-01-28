@@ -81,10 +81,6 @@
     <string name="appcompatibility">Compatibilité des applis</string>
     <string name="show_incompat_versions">Versions incompatibles</string>
     <string name="show_incompat_versions_on">Afficher les versions d\'applis qui sont incompatibles avec cet appareil</string>
-    <string name="rooted">Ignorer root</string>
-    <string name="rooted_on">Ne pas griser les applis nécessitant les privilèges root</string>
-    <string name="force_touch_apps">Ignorer l\'écran tactile</string>
-    <string name="force_touch_apps_on">Toujours inclure les applis nécessitant un écran tactile</string>
     <string name="local_repo">Dépôt local</string>
     <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
     <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser d\'autres à échanger vos applications.</string>
@@ -366,8 +362,6 @@
     <string name="uninstall_error_notify_title">Erreur à la désinstallation de %s</string>
 
 
-    <string name="hide_anti_feature_apps">Griser les applications présentant des contre-indications</string>
-    <string name="hide_anti_feature_apps_on">Griser les applications nécessitant des anti-fonctionnalités</string>
     <string name="keep_install_history">Conserver l\'historique d\'installation</string>
     <string name="update_auto_install">Installer automatiquement les mises à jour</string>
     <string name="update_auto_install_summary">Télécharger et installer les mises à jour des applications en

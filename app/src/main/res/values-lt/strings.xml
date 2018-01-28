@@ -42,7 +42,6 @@
     <string name="display">Rodymas</string>
     <string name="show_incompat_versions">Nesuderintos versijos</string>
     <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
-    <string name="rooted">Administratoriaus privilegijos</string>
     <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
     <string name="next">Toliau</string>
     <string name="status_connecting_to_repo">Jungiamasi prie

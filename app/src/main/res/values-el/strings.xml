@@ -71,11 +71,7 @@
     <string name="appcompatibility">Συμβατότητα εφαρμογής</string>
     <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
     <string name="show_incompat_versions_on">Προβολή εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
-    <string name="rooted">Αγνόηση εφαρμογών που απαιτούν δικαιώματα υπερχρήστη (Root)</string>
-    <string name="rooted_on">Να μη γκριζάρονται εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
-    <string name="force_touch_apps">Αγνόηση οθόνης αφής</string>
-    <string name="force_touch_apps_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
-    <string name="status_download">Λήψη 
+    <string name="status_download">Λήψη
 \n%2$s / %3$s (%4$d%%) από %1$s</string>
     <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
     <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
@@ -385,9 +381,7 @@
 
     <string name="crash_dialog_title">Το F-Droid σταμάτησε να λειτουργεί</string>
     <string name="crash_dialog_text">Μη αναμενόμενο σφάλμα ανάγκασε την εφαρμογή να σταματήσει. Θα θέλατε να στείλετε e-mail με τις λεπτομέρειες για να βοηθήσετε να διορθωθεί το πρόβλημα;</string>
-    <string name="hide_anti_feature_apps_on">Σήμανση με γκρίζο εφαρμογές που έχουν ανεπιθύμητα χαρακτηριστικά</string>
-    <string name="hide_anti_feature_apps">Γκριζάρισμα εφαρμογών με ανεπιθύμητα χαρακτηριστικά</string>
-<string name="main_menu__latest_apps">Νέα</string>
+    <string name="main_menu__latest_apps">Νέα</string>
     <string name="main_menu__categories">Κατηγορίες</string>
     <string name="preference_manage_installed_apps">Διαχείριση  εγκατεστημένων εφαρμογών</string>
 

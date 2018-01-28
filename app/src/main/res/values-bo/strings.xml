@@ -204,9 +204,6 @@
     <string name="appcompatibility">མཉེན་ཆས་རན་མཚམས།</string>
     <string name="show_incompat_versions">རན་མཚམས་མེད་པའི་ཐོན་རིམ་ཁག</string>
     <string name="show_incompat_versions_on">ཡོ་བྱད་དང་རན་མཚམས་མེད་པའི་མཉེན་ཆས་ཀྱི་ཐོན་རིམ་རྣམས་སྟོན།</string>
-    <string name="rooted">འཕྲུལ་ཆས་ཨ་མ་ལ་ཡ་མ་བྱེད།</string>
-    <string name="force_touch_apps">རེག་ཤེལ་ལ་ཡ་མ་བྱེད།</string>
-    <string name="force_touch_apps_on">རེག་ཤེལ་དགོས་པའི་མཉེན་ཆས་རྣམས་རྒྱུན་དུ་ངོས་པར་དུ་ཚུད་དགོས།</string>
 
     <string name="local_repo">རེ་པོ་བསྟི་གནས།</string>
     <string name="local_repo_running">ཨེཕ་རོཌ་བརྗེ་ལེན་བྱས་པར་གྲ་སྒྲིག་ཡོད།</string>
@@ -448,9 +445,6 @@
     <string name="requesting_root_access_body">ཡོ་བྱད་ཨ་མ་ལྟ་ཐུབ་པར་རེ་སྐུལ་ཞུ་བཞིན་པ།</string>
     <string name="root_access_denied_title">ཡོ་བྱད་ཨ་མ་ལྟ་བར་འགོག་རྐྱེན།</string>
     <string name="root_access_denied_body">གཅིག་བྱས་ན་ཁྱེད་རང་གི་ཨེན་ཀྲོཌ་ཡོ་བྱད་འདི་ཆོག་མཆན་ཆ་ཚང་ཡོད་པའི་ཡོ་བྱད་ཨ་མ་བཟོས་མེད་པའམ་ཡང་ན་ཁྱེད་རང་གིས་ཨེཕ་རོཌ་ལ་ཡོ་བྱད་ཨ་མ་ལྟ་ཡག་བཀག་འདུག</string>
-    <string name="rooted_on">རྩ་བའི་ཐོབ་ཐང་རྣམས་དགོས་མཁོ་ཡོང་ན་མཉེན་ཆས་ཐལ་མདོག་མ་བཟོས།</string>
-    <string name="hide_anti_feature_apps">ཁྱད་ཆོས་འགལ་ཟླའི་མཉེས་ཆས་ཐལ་མདོག་བཟོས།</string>
-    <string name="hide_anti_feature_apps_on">ཁྱད་ཆོས་འགལ་ཟླའི་དོགས་མཁོ་ཡོད་པའི་ཐལ་མདོག་བཟོས།</string>
 
     <string name="tts_category_name">སྡེ་ཚན་%1$s</string>
 

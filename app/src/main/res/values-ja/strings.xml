@@ -76,10 +76,6 @@
     <string name="appcompatibility">アプリの互換性</string>
     <string name="show_incompat_versions">互換性の無いバージョン</string>
     <string name="show_incompat_versions_on">端末と互換性のないバージョンを表示します</string>
-    <string name="rooted">rootアプリ</string>
-    <string name="rooted_on">root権限を要求するアプリを表示します</string>
-    <string name="force_touch_apps">タッチスクリーンを使用するアプリ</string>
-    <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を要求するアプリを表示します</string>
     <string name="local_repo">ローカルリポジトリ</string>
     <string name="local_repo_running">F-Droidは交換の準備ができました</string>
     <string name="touch_to_configure_local_repo">タッチすると詳細を表示し、アプリの交換ができるようになります。</string>
@@ -324,8 +320,6 @@
     <string name="installing">インストール中</string>
     <string name="uninstalling">アンインストール中</string>
 
-    <string name="hide_anti_feature_apps">好ましくない機能を使用するアプリ</string>
-    <string name="hide_anti_feature_apps_on">好ましくない機能の使用を必要とするアプリを隠します</string>
     <string name="update_auto_install">自動的に更新をインストール</string>
     <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストールします</string>
     <string name="keep_install_history">インストール履歴を保存する</string>

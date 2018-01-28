@@ -119,10 +119,6 @@
     <string name="appcompatibility">Compatibilidade de aplicações</string>
     <string name="show_incompat_versions">Versões incompatíveis</string>
     <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
-    <string name="rooted">Ignorar \'root\'</string>
-    <string name="rooted_on">Não sombrear aplicações que necessitem de acesso \'root\'</string>
-    <string name="force_touch_apps">Ignorar ecrã de toque</string>
-    <string name="force_touch_apps_on">Incluir aplicações que necessitem de toque no ecrã</string>
 
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">F-Droid pronto para a troca</string>
@@ -441,8 +437,6 @@
 
     <string name="antifeatureswarning">Esta aplicação tem funcionalidades que poderão não lhe agradar.</string>
     <string name="antifeatures">Anti-funcionalidades</string>
-    <string name="hide_anti_feature_apps">Sombrear aplicações com anti-funcionalidades</string>
-    <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
     <string name="warning_no_internet">Não é possível atualizar. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d</item>

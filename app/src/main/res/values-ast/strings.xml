@@ -83,10 +83,6 @@
     <string name="appcompatibility">Compatibilidá d\'app</string>
     <string name="show_incompat_versions">Versiones incompatibles</string>
     <string name="show_incompat_versions_on">Amuesa les versiones d\'aplicaciones incompatibles col preséu</string>
-    <string name="rooted">Inorar root</string>
-    <string name="rooted_on">Nun escurez les aplicaciones que rican privilexos root</string>
-    <string name="force_touch_apps">Inorar pantalla táutil</string>
-    <string name="force_touch_apps_on">Inclúi siempres aplicaciones que rican pantalla táutil</string>
     <string name="local_repo">Repositoriu llocal</string>
     <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
     <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos
@@ -363,9 +359,6 @@
     <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones dientro de
         F-Droid
     </string>
-    <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de
-        rastrexu
-    </string>
     <string name="warning_no_internet">Nun pué anovase, ¿tas coneutáu a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a sidres!</string>
@@ -447,7 +440,6 @@
     <string name="menu_video">Videu</string>
     <string name="menu_license">Llicencia: %s</string>
     <string name="antifeatures">Carauterístiques non llibres</string>
-    <string name="hide_anti_feature_apps">Poner en buxu  les apps con componentes non llibres</string>
     <string name="download_404">Nun s\'alcontró el ficheru solicitáu.</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d</item>

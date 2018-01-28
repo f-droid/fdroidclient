@@ -54,10 +54,6 @@
     <string name="appcompatibility">Aplikaĵa kongrueco</string>
     <string name="show_incompat_versions">Nekongruaj versioj</string>
     <string name="show_incompat_versions_on">Montri versiojn de aplikaĵoj, kiuj estas nekongruaj kun la aparato</string>
-    <string name="rooted">Ĉefuzanto</string>
-    <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
-    <string name="force_touch_apps">Ignori tuŝekranon</string>
-    <string name="force_touch_apps_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
     <string name="local_repo">Loka deponejo</string>
     <string name="deleting_repo">Forigado de la deponejo…</string>
     <string name="adding_apks_format">Aldonado de %s al la deponejo…</string>
@@ -351,8 +347,6 @@
     <string name="installing">Instalado…</string>
     <string name="uninstalling">Malinstalado…</string>
 
-    <string name="hide_anti_feature_apps">Grizigi aplikaĵojn kun fiebloj</string>
-    <string name="hide_anti_feature_apps_on">Grizigi aplikaĵojn kun nedeziratajn eblojn (ekz. spurado)</string>
     <string name="update_auto_install">Aŭtomate instali ĝisdatigojn</string>
     <string name="update_auto_install_summary">Elŝuti kaj instali ĝisdatigojn de aplikaĵoj fone</string>
     <string name="keep_install_history">Konservi historion de instaladoj</string>

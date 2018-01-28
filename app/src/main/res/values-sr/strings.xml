@@ -79,10 +79,6 @@
     <string name="appcompatibility">Усклађеност апликација</string>
     <string name="show_incompat_versions">Неодговарајућа издања</string>
     <string name="show_incompat_versions_on">Приказ неодговарајућих издања апликације са уређајем</string>
-    <string name="rooted">Занемари корен</string>
-    <string name="rooted_on">Не посивљуј приказ апликација које захтевају корени приступ</string>
-    <string name="force_touch_apps">Занемари услов додирног екрана</string>
-    <string name="force_touch_apps_on">Увек укључи апликације које захтевају додирни екран</string>
     <string name="local_repo">Локална ризница</string>
     <string name="local_repo_running">Ф-дроид је спреман за размену</string>
     <string name="touch_to_configure_local_repo">Додирните за приказ детаља и да дозволите другима да размењују ваше
@@ -363,8 +359,6 @@
     <string name="installing">Уграђујем…</string>
     <string name="uninstalling">Уклањам…</string>
 
-    <string name="hide_anti_feature_apps">Посиви апликације са анти-карактеристикама</string>
-    <string name="hide_anti_feature_apps_on">Посивљује апликације које захтевају анти-карактеристике</string>
     <string name="update_auto_install">Аутоматски уграђуј надоградње</string>
     <string name="update_auto_install_summary">Преузимање и уградња апликација у позадини</string>
     <string name="keep_install_history">Чувај историјат уградњи</string>

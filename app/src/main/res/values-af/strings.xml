@@ -135,9 +135,6 @@
     <string name="appcompatibility">Program versoenbaarheid</string>
     <string name="show_incompat_versions">Onversoenbare weergawes</string>
     <string name="show_incompat_versions_on">Wys program weergawes onversoenbaar met hierdie toestel</string>
-    <string name="rooted">Ignoreer root</string>
-    <string name="rooted_on">Moet nie programme uit-grys uit wat root voorregte benodig nie</string>
-    <string name="force_touch_apps">Ignoreer tasskerm</string>
     <string name="local_repo">Lokale argief</string>
     <string name="local_repo_running">roid is gereed om te deel</string>
     <string name="writing_index_jar">Skryf getekende indekslêer (index.jar)…</string>
@@ -172,7 +169,6 @@
     <string name="repo_delete_to_overwrite">Jy moet eers hierdie argief uitvee voordat jy een met \'n ander sleutel kan
         laai.
     </string>
-    <string name="force_touch_apps_on">Sluit altyd programme in wat \'n tasskerm vereis</string>
 
     <string name="deleting_repo">Huidige argief word uitgevee …</string>
     <string name="adding_apks_format">Laai %s na argief…</string>
@@ -203,8 +199,6 @@
     <string name="uninstall_system_summary">Wys die bevoorregte uitbreiding detail besonderhede skerm vir opdatering of
         verdydering
     </string>
-    <string name="hide_anti_feature_apps">Grys anti-funksie programme uit</string>
-    <string name="hide_anti_feature_apps_on">Grys programme wat anti-funksies benodig uit</string>
     <string name="touch_to_configure_local_repo">Tas om details te wys en laat ander toe om jou programme te deel.</string>
     <string name="copying_icons">Kopieer program simbooltjie na die argief…</string>
     <string name="icon">Simbooltjie</string>

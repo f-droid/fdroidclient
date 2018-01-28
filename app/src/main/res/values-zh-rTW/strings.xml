@@ -106,10 +106,6 @@
     <string name="appcompatibility">應用程式相容性</string>
     <string name="show_incompat_versions">不相容的版本</string>
     <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
-    <string name="rooted">忽略 root</string>
-    <string name="rooted_on">不要以暗灰顯示需要 root 權限的應用程式</string>
-    <string name="force_touch_apps">忽略觸控螢幕</string>
-    <string name="force_touch_apps_on">不論硬體支援如何都顯示需要觸控螢幕的應用程式</string>
 
     <string name="icon">圖示</string>
     <string name="skip">略過</string>
@@ -339,8 +335,6 @@
     <string name="keep_install_history_summary">在 F-Droid 中儲存安裝和解除安裝紀錄</string>
     <string name="update_auto_install">自動安裝更新</string>
     <string name="update_auto_install_summary">在背景中下載並且更新應用程式</string>
-    <string name="hide_anti_feature_apps">以暗灰顯示反特徵應用程式</string>
-    <string name="hide_anti_feature_apps_on">以暗灰顯示需要反特徵的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否已連線至網路？</string>
     <string name="versions">版本</string>
     <string name="app_details_donate_prompt_unknown_author">為 %1$s 的開發者買杯咖啡！</string>

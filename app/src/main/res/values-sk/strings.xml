@@ -83,10 +83,6 @@
     <string name="appcompatibility">Kompatibilita aplikácií</string>
     <string name="show_incompat_versions">Nekompatibilné verzie</string>
     <string name="show_incompat_versions_on">Zobraziť verzie nekompatibilné so zariadením</string>
-    <string name="rooted">Ignorovať root</string>
-    <string name="rooted_on">Nezašediť aplikácie vyžadujúce práva root</string>
-    <string name="force_touch_apps">Ignorovať dotykovú obrazovku</string>
-    <string name="force_touch_apps_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
     <string name="local_repo">Miestne repo</string>
     <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
     <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše
@@ -379,8 +375,6 @@
 
     <string name="update_auto_install">Automaticky nainštalovať aktualizácie</string>
     <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí</string>
-    <string name="hide_anti_feature_apps">Vyšediť \"anti-feature\" aplikácie</string>
-    <string name="hide_anti_feature_apps_on">Vyšediť aplikácie vyžadujúje \"anti-features\"</string>
     <string name="warning_no_internet">Nemožno aktualizovať, máte prístup na Internet?</string>
     <string name="keep_install_history">Uchovať históriu inštalácií</string>
     <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaní a odinštalovaní v F-Droid-e

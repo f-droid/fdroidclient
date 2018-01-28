@@ -114,9 +114,6 @@
     <string name="appcompatibility">Kompatibilitas apl</string>
     <string name="show_incompat_versions">Versi tidak kompatibel</string>
     <string name="show_incompat_versions_on">Menampilkan versi apl yang tidak kompatibel dengan perangkat ini</string>
-    <string name="rooted">Abaikan root</string>
-    <string name="force_touch_apps">Abaikan layar sentuh</string>
-    <string name="force_touch_apps_on">Selalu sertakan aplikasi yang membutuhkan layar sentuh</string>
 
     <string name="local_repo">Repo Lokal</string>
     <string name="deleting_repo">Menghapus repo saat ini…</string>
@@ -158,7 +155,6 @@
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
     <string name="menu_settings">Pengaturan</string>
-    <string name="rooted_on">Jangan bedakan warna apl yang membutuhkan izin root</string>
     <string name="unsigned_description">Ini artinya daftar apl tersebut tidak bisa diverifikasi. Anda harus berhati-hati dengan apl yang diunduh dari daftar yang tidak terverifikasi.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
@@ -365,9 +361,6 @@
     <string name="installing">Memasang…</string>
     <string name="uninstalling">Mencopot pemasangan…</string>
 
-    <string name="hide_anti_feature_apps">Bedakan warna apl anti-fitur</string>
-    <string name="hide_anti_feature_apps_on">Bedakan warna apl yang membutuhkan fitur yang tidak direkomendasikan
-    </string>
     <string name="keep_install_history">Simpan riwayat pemasangan</string>
     <string name="keep_install_history_summary">Simpan semua log pemasangan dan pencopotan di F-Droid</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>

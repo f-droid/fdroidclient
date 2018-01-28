@@ -80,10 +80,6 @@
     <string name="appcompatibility">Совместимость приложений</string>
     <string name="show_incompat_versions">Несовместимые версии</string>
     <string name="show_incompat_versions_on">Показать версии приложений, несовместимые с устройством</string>
-    <string name="rooted">Игнорировать root</string>
-    <string name="rooted_on">Не выделять серым цветом приложения, требующие прав root</string>
-    <string name="force_touch_apps">Включить приложения требующие сенсорный экран</string>
-    <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки оборудования</string>
     <string name="local_repo">Локальный репозиторий</string>
     <string name="local_repo_running">F-Droid готов к обмену</string>
     <string name="deleting_repo">Удаление текущего репозитория…</string>
@@ -349,8 +345,6 @@
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     <string name="keep_install_history">Хранить историю установок</string>
     <string name="keep_install_history_summary">Хранить в F-Droid журнал всех установок и удалений</string>
-    <string name="hide_anti_feature_apps">Помечать сомнительные приложения</string>
-    <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие сомнительный функционал</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>

@@ -44,10 +44,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPD_NOTIFY = "updateNotify";
-    public static final String PREF_ROOTED = "rooted";
-    public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
+    public static final String PREF_SHOW_INCOMP_VERSIONS = "incompatibleVersions";
+    public static final String PREF_SHOW_ROOT_APPS = "rooted";
+    public static final String PREF_SHOW_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
@@ -71,9 +71,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
 
-    private static final boolean DEFAULT_ROOTED = true;
-    private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
     private static final boolean DEFAULT_SHOW_INCOMP_VERSIONS = false;
+    private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
+    private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -100,13 +100,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         lightWithDarkActionBar, // Obsolete
     }
 
-    private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
-    private boolean filterAppsWithAntiFeatures = DEFAULT_HIDE_ANTI_FEATURE_APPS;
+    private boolean showAppsRequiringRoot = DEFAULT_SHOW_ROOT_APPS;
+    private boolean showAppsWithAntiFeatures = DEFAULT_SHOW_ANTI_FEATURE_APPS;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
-    private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
-    private final List<ChangeListener> filterAppsRequiringAntiFeaturesListeners = new ArrayList<>();
+    private final List<ChangeListener> showAppsRequiringRootListeners = new ArrayList<>();
+    private final List<ChangeListener> showAppsRequiringAntiFeaturesListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
     private final List<ChangeListener> unstableUpdatesListeners = new ArrayList<>();
@@ -221,7 +221,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean showIncompatibleVersions() {
-        return preferences.getBoolean(PREF_SHOW_INCOMPAT_VERSIONS, DEFAULT_SHOW_INCOMP_VERSIONS);
+        return preferences.getBoolean(PREF_SHOW_INCOMP_VERSIONS, DEFAULT_SHOW_INCOMP_VERSIONS);
     }
 
     public boolean showNfcDuringSwap() {
@@ -341,45 +341,45 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
-     * in PREF_ROOTED.
+     * in PREF_SHOW_ROOT_APPS.
      */
-    public boolean filterAppsRequiringRoot() {
-        if (!isInitialized(PREF_ROOTED)) {
-            initialize(PREF_ROOTED);
-            filterAppsRequiringRoot = preferences.getBoolean(PREF_ROOTED, DEFAULT_ROOTED);
+    public boolean showAppsRequiringRoot() {
+        if (!isInitialized(PREF_SHOW_ROOT_APPS)) {
+            initialize(PREF_SHOW_ROOT_APPS);
+            showAppsRequiringRoot = preferences.getBoolean(PREF_SHOW_ROOT_APPS, DEFAULT_SHOW_ROOT_APPS);
         }
-        return filterAppsRequiringRoot;
+        return showAppsRequiringRoot;
     }
 
     /**
      * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
-     * in PREF_HIDE_ANTI_FEATURE_APPS.
+     * in PREF_SHOW_ANTI_FEATURE_APPS.
      */
-    public boolean filterAppsWithAntiFeatures() {
-        if (!isInitialized(PREF_HIDE_ANTI_FEATURE_APPS)) {
-            initialize(PREF_HIDE_ANTI_FEATURE_APPS);
-            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_HIDE_ANTI_FEATURE_APPS,
-                    DEFAULT_HIDE_ANTI_FEATURE_APPS);
+    public boolean showAppsWithAntiFeatures() {
+        if (!isInitialized(PREF_SHOW_ANTI_FEATURE_APPS)) {
+            initialize(PREF_SHOW_ANTI_FEATURE_APPS);
+            showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS,
+                    DEFAULT_SHOW_ANTI_FEATURE_APPS);
         }
-        return filterAppsWithAntiFeatures;
+        return showAppsWithAntiFeatures;
     }
 
     public void registerAppsRequiringRootChangeListener(ChangeListener listener) {
-        filterAppsRequiringRootListeners.add(listener);
+        showAppsRequiringRootListeners.add(listener);
     }
 
     public void unregisterAppsRequiringRootChangeListener(ChangeListener listener) {
-        filterAppsRequiringRootListeners.remove(listener);
+        showAppsRequiringRootListeners.remove(listener);
     }
 
     public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
-        filterAppsRequiringAntiFeaturesListeners.add(listener);
+        showAppsRequiringAntiFeaturesListeners.add(listener);
     }
 
     public void unregisterAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
-        filterAppsRequiringAntiFeaturesListeners.remove(listener);
+        showAppsRequiringAntiFeaturesListeners.remove(listener);
     }
 
     public void registerUnstableUpdatesChangeListener(ChangeListener listener) {
@@ -396,13 +396,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         uninitialize(key);
 
         switch (key) {
-            case PREF_ROOTED:
-                for (ChangeListener listener : filterAppsRequiringRootListeners) {
+            case PREF_SHOW_ROOT_APPS:
+                for (ChangeListener listener : showAppsRequiringRootListeners) {
                     listener.onPreferenceChange();
                 }
                 break;
-            case PREF_HIDE_ANTI_FEATURE_APPS:
-                for (ChangeListener listener : filterAppsRequiringAntiFeaturesListeners) {
+            case PREF_SHOW_ANTI_FEATURE_APPS:
+                for (ChangeListener listener : showAppsRequiringAntiFeaturesListeners) {
                     listener.onPreferenceChange();
                 }
                 break;

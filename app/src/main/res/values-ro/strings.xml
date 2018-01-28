@@ -30,8 +30,6 @@
     <string name="details_notinstalled">Nu e instalat</string>
     <string name="display">Afișează</string>
     <string name="expert">Setări expert</string>
-    <string name="rooted">Ignoră aplicațiile ce necesită root</string>
-    <string name="force_touch_apps_on">Include mereu aplicații ce necesită touchscreen</string>
     <string name="theme">Temă</string>
     <string name="repo_num_apps">Număr de aplicații</string>
     <string name="repo_last_update">Ultima actualizare</string>
@@ -95,8 +93,6 @@
     <string name="writing_index_jar">Scriere index semnat (index.jar)…</string>
     <string name="deleting_repo">Se șterge depozitul curent…</string>
     <string name="local_repo">Depozit local</string>
-    <string name="rooted_on">Nu marca cu gri aplicațiile ce necesita root</string>
-    <string name="force_touch_apps">Ignora touchscreen</string>
     <string name="show_incompat_versions_on">Arată versiunile incompatibile cu acest dispozitiv</string>
     <string name="show_incompat_versions">Versiuni incompatibile</string>
     <string name="appcompatibility">Compatibilitate aplicații</string>
@@ -303,8 +299,6 @@
     <string name="install_error_notify_title">Eroare la instalarea %s</string>
     <string name="update_auto_install">Instalează automat actualizările</string>
     <string name="update_auto_install_summary">Descarcă și instalează actualizările aplicațiilor în fundal</string>
-    <string name="hide_anti_feature_apps">Arata cu gri aplicațiile ce prezintă caracteristici periculoase</string>
-    <string name="hide_anti_feature_apps_on">Arata cu gri aplicațiile ce necesită caracteristici periculoase</string>
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
     <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal în F-Droid</string>
     <string name="system_installer_on">Folosiți F-Droid Extension pentru a instala, actualiza și a înlătura pachete</string>

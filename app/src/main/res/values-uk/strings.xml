@@ -32,8 +32,6 @@
     <string name="expert">Експертний режим</string>
     <string name="search_hint">Пошук застосунків</string>
     <string name="appcompatibility">Сумісність застосунків</string>
-    <string name="rooted">Ігнорувати суперкористувача</string>
-    <string name="force_touch_apps">Ігнорувати сенсорний екран</string>
     <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">Застосунок, несумісний з вашим пристроєм, встановити попри все?</string>
@@ -104,9 +102,6 @@
     <string name="antitracklist">Цей застосунок відстежує та повідомляє вашу активність</string>
     <string name="antinonfreedeplist">Цей застосунок залежить від іншого не-безкоштовного застосунку</string>
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
-
-    <string name="rooted_on">Не підсвічувати сірим застосунки, які потребують прав суперкористувача</string>
-    <string name="force_touch_apps_on">Завжди включати застосунки, які потребують сенсорного екрану</string>
 
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
@@ -355,8 +350,6 @@
     <string name="keep_install_history">Зберігати історію встановлення</string>
     <string name="keep_install_history_summary">Зберігати звіт про всі встановлення та видалення в F-Droid</string>
     <string name="versions">Версії</string>
-    <string name="hide_anti_feature_apps">Позначати застосунки з небажаним функціоналом</string>
-    <string name="hide_anti_feature_apps_on">Позначати сірим застосунки, які потребують небажаний функціонал</string>
     <string name="warning_no_internet">Не вдається оновити, чи підключені ви до Інтернету?</string>
     <string name="repositories_summary">Додати додаткові джерела застосунку</string>
     <string name="notification_title_single_update_available">Доступне оновлення</string>

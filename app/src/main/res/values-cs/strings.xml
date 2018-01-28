@@ -61,10 +61,6 @@
     <string name="expert_on">Zobrazit dodatečné informace a povolit pokročilá nastavení</string>
     <string name="search_hint">Hledat aplikace</string>
     <string name="show_incompat_versions">Nekompatibilní verze</string>
-    <string name="rooted">Ignorovat Root</string>
-    <string name="rooted_on">Nezašedávat aplikace vyžadující root oprávnění</string>
-    <string name="force_touch_apps">Ignorovat dotykovou obrazovku</string>
-    <string name="force_touch_apps_on">Vždy zahrnovat aplikace vyžadující dotykovou obrazovku</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
     <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním si přetáhnout tvé aplikace.
@@ -369,8 +365,6 @@
     <string name="update_auto_install">Automaticky nainstalovat aktualizace</string>
     <string name="update_auto_install_summary">Převzít a nainstalovat aktualizace aplikací na pozadí</string>
     <string name="versions">Verze</string>
-    <string name="hide_anti_feature_apps">Vyšedit \"anti-feature\" aplikace</string>
-    <string name="hide_anti_feature_apps_on">Vyšedit aplikace vyžadující \"anti-features\"</string>
     <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
     <string name="app_details_donate_prompt">%1$s vytvořil %2$s. Kup mu kávu!</string>

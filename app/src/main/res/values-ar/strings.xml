@@ -148,10 +148,6 @@
     <string name="appcompatibility">توافق التطبيق</string>
     <string name="show_incompat_versions">إصدارات غير متوافقة</string>
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير المتوافقة مع الجهاز</string>
-    <string name="rooted">تجاهل صلاحيات الجذر</string>
-    <string name="rooted_on">لا تخفي أصل التطبيقات التي تتطلب امتيازات الجذر</string>
-    <string name="force_touch_apps">تجاهل الشاشات التي تعمل باللمس</string>
-    <string name="force_touch_apps_on">دائما ضم التطبيقات التي تتطلب شاشة تعمل باللمس</string>
 
     <string name="local_repo_running">اف-درويد على استعداد التبديل</string>
     <string name="touch_to_configure_local_repo">إستخدم اللمس لعرض تفاصيل والسماح للآخرين لمبادلة التطبيقات الخاصة بك.
@@ -358,9 +354,7 @@
     <string name="update_auto_install_summary">تحميل و تثبيت تحديث التطبيقات في الخلفية</string>
     <string name="versions">النُسخ</string>
     <string name="warning_no_internet">لا يمكن التحديث. تَحقّق من ربطك بالإنترنت ؟</string>
-    <string name="hide_anti_feature_apps_on">تعتيم جزئي للتطبيقات التي تتطلب ميزات غير مرغوبة</string>
-    <string name="hide_anti_feature_apps">تعتيم للتطبيقات الغير مرغوبة</string>
-<string name="main_menu__swap_nearby">حواليك</string>
+    <string name="main_menu__swap_nearby">حواليك</string>
 
     <string name="main_menu__categories">الفئات</string>
     <string name="categories__empty_state__no_categories">ليس هناك فئات للعرض</string>

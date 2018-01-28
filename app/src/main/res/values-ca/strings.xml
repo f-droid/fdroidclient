@@ -78,10 +78,6 @@
     <string name="show_incompat_versions">Versions incompatibles</string>
     <string name="show_incompat_versions_on">Mostra també versions no compatibles de les aplicacions amb el dispositiu
     </string>
-    <string name="rooted">Ignora root</string>
-    <string name="rooted_on">No marquis en gris aplicacions que requereixen privilegis d\'administrador</string>
-    <string name="force_touch_apps">Ignora la pantalla tàctil</string>
-    <string name="force_touch_apps_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
     <string name="local_repo">Dipòsit local</string>
     <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
     <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>
@@ -342,8 +338,6 @@
     <string name="uninstalling">Desinstal·lant…</string>
 
     <string name="keep_hour">1 hora</string>
-    <string name="hide_anti_feature_apps_on">Marca les aplicacions que requereixin components no lliures</string>
-    <string name="hide_anti_feature_apps">Marca les aplicacions no lliures</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes
         per l\'F-Droid

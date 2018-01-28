@@ -83,10 +83,6 @@
     <string name="appcompatibility">Cumpatibilidade aplicatziones</string>
     <string name="show_incompat_versions">Versiones non cumpatìbiles</string>
     <string name="show_incompat_versions_on">Ammustra sas versiones non cumpatìbiles cun su dispositivu</string>
-    <string name="rooted">Ignora su \"root\"</string>
-    <string name="rooted_on">Non disabilitare sas aplicatziones chi tenet bisòngiu de sos permissos de root</string>
-    <string name="force_touch_apps">Ignora touchscreen</string>
-    <string name="force_touch_apps_on">Include semper sas aplicatziones chi tenet bisòngiu de su touchscreen</string>
     <string name="local_repo">Depòsitu locale</string>
     <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
     <string name="touch_to_configure_local_repo">Toca pro bìdere sas minujas e permìtere a àteros de retzire sas
@@ -382,8 +378,6 @@
     <string name="installing">Installende…</string>
     <string name="uninstalling">Disinstallende…</string>
 
-    <string name="hide_anti_feature_apps">Marca in murru sas aplicatziones cun controidas</string>
-    <string name="hide_anti_feature_apps_on">Marca in murru sas aplicatziones cun caraterìsticas cun controidas</string>
     <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
     <string name="keep_install_history">Sarva s\'istòria de sas installatziones</string>
