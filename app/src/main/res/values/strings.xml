@@ -259,6 +259,15 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_destructive_actions">Destructive Actions</string>
     <string name="panic_hide_title">Hide %s</string>
     <string name="panic_hide_summary">App will hide itself</string>
+    <string name="panic_hide_warning_title">Remember how to restore</string>
+    <string name="panic_hide_warning_message">In a panic event, this will remove %1$s from the launcher. Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
+
+    <string name="hiding_calculator">Calculator</string>
+    <string name="hiding_dialog_title">Hide %s Now</string>
+    <string name="hiding_dialog_message">Are you sure you want to remove %1$s from the launcher? Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
+    <string name="hiding_dialog_warning">Warning: Any app shortcut on the home screen will also be removed and needs to be re-added manually.</string>
+    <string name="hide_on_long_search_press_title">Hide with search button</string>
+    <string name="hide_on_long_search_press_summary">Long pressing the search button will hide the app</string>
 
     <!--
     status_download takes four parameters:

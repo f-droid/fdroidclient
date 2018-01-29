@@ -42,6 +42,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         Resources res = context.getResources();
         defaultPreventScreenshots = res.getBoolean(R.bool.defaultPreventScreenshots);
         defaultPanicExit = res.getBoolean(R.bool.defaultPanicExit);
+        defaultHideOnLongPressSearch = res.getBoolean(R.bool.defaultHideOnLongPressSearch);
     }
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
@@ -73,6 +74,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
+    public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
@@ -94,6 +96,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
     private final boolean defaultPreventScreenshots;
     private final boolean defaultPanicExit;
+    private final boolean defaultHideOnLongPressSearch;
 
     public enum Theme {
         light,
@@ -333,6 +336,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean panicHide() {
         return preferences.getBoolean(PREF_PANIC_HIDE, false);
+    }
+
+    public boolean hideOnLongPressSearch() {
+        return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, defaultHideOnLongPressSearch);
     }
 
     /**

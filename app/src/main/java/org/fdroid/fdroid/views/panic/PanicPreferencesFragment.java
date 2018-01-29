@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceCategory;
 import android.support.annotation.Nullable;
 import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
@@ -21,6 +20,7 @@ import android.text.TextUtils;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
 
@@ -79,10 +79,6 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
                 return true;
             }
         });
-
-        // TODO implement app hiding
-        PreferenceCategory category = (PreferenceCategory) findPreference("pref_panic_destructive_actions");
-        category.removePreference(prefHide);
     }
 
     @Override
@@ -100,9 +96,8 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        // enable "exit" if "hiding" gets enabled
         if (key.equals(PREF_HIDE) && sharedPreferences.getBoolean(PREF_HIDE, false)) {
-            prefExit.setChecked(true);
+            showHideConfirmationDialog();
         }
         // disable "hiding" if "exit" gets disabled
         if (key.equals(PREF_EXIT) && !sharedPreferences.getBoolean(PREF_EXIT, true)) {
@@ -215,6 +210,37 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
             packageName = componentName.getPackageName();
         }
         return packageName;
+    }
+
+    private void showHideConfirmationDialog() {
+        String appName = getString(R.string.app_name);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.panic_hide_warning_title);
+        builder.setMessage(getString(R.string.panic_hide_warning_message, appName,
+                HidingManager.getUnhidePin(getContext()), getString(R.string.hiding_calculator)));
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // enable "exit" if "hiding" gets enabled
+                prefExit.setChecked(true);
+                // dismiss, but not cancel dialog
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                prefHide.setChecked(false);
+            }
+        });
+        builder.setView(R.layout.dialog_app_hiding);
+        builder.create().show();
     }
 
 }

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import info.guardianproject.panic.Panic;
 import info.guardianproject.panic.PanicResponder;
@@ -36,7 +37,7 @@ public class PanicResponderActivity extends AppCompatActivity {
             // Performing destructive panic responses
             if (preferences.panicHide()) {
                 Log.i(TAG, "Hiding app...");
-                // TODO
+                HidingManager.hide(this);
             }
         }
 
