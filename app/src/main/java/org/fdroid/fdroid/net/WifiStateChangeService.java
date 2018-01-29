@@ -101,7 +101,7 @@ public class WifiStateChangeService extends IntentService {
                 WifiInfo wifiInfo = null;
 
                 int wifiState = wifiManager.getWifiState();
-
+                int retryCount = 0;
                 while (FDroidApp.ipAddressString == null) {
                     if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
                         return;
@@ -116,7 +116,7 @@ public class WifiStateChangeService extends IntentService {
                                 try {
                                     FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
                                 } catch (IllegalArgumentException e) {
-                                    // catch this mystery error: "java.lang.IllegalArgumentException: Could not parse [null/24]"
+                                    // catch mystery: "java.lang.IllegalArgumentException: Could not parse [null/24]"
                                     e.printStackTrace();
                                 }
                             }
@@ -131,6 +131,11 @@ public class WifiStateChangeService extends IntentService {
                     } else { // a hotspot can be active during WIFI_STATE_UNKNOWN
                         setIpInfoFromNetworkInterface();
                     }
+
+                    if (retryCount > 120) {
+                        return;
+                    }
+                    retryCount++;
 
                     if (FDroidApp.ipAddressString == null) {
                         Thread.sleep(1000);
