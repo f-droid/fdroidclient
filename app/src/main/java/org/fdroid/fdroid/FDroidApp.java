@@ -386,12 +386,12 @@ public class FDroidApp extends Application {
         ImageLoader.getInstance().init(config);
 
         FDroidApp.initWifiSettings();
-        startService(new Intent(this, WifiStateChangeService.class));
+        WifiStateChangeService.start(this, null);
         // if the HTTPS pref changes, then update all affected things
         Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                startService(new Intent(FDroidApp.this, WifiStateChangeService.class));
+                WifiStateChangeService.start(getApplicationContext(), null);
             }
         });
 

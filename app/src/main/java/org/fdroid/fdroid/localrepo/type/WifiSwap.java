@@ -2,29 +2,26 @@ package org.fdroid.fdroid.localrepo.type;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-
-import java.io.IOException;
-import java.net.BindException;
-import java.util.Random;
-
 import rx.Single;
 import rx.SingleSubscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+
+import java.io.IOException;
+import java.net.BindException;
+import java.util.Random;
 
 @SuppressWarnings("LineLength")
 public class WifiSwap extends SwapType {
@@ -143,7 +140,7 @@ public class WifiSwap extends SwapType {
                         } catch (BindException e) {
                             int prev = FDroidApp.port;
                             FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
-                            context.startService(new Intent(context, WifiStateChangeService.class));
+                            WifiStateChangeService.start(context, null);
                             singleSubscriber.onError(new Exception("port " + prev + " occupied, trying on " + FDroidApp.port + "!"));
                         } catch (IOException e) {
                             Log.e(TAG, "Could not start local repo HTTP server", e);

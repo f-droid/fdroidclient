@@ -1,16 +1,17 @@
 package org.fdroid.fdroid.net;
 
 import android.app.IntentService;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -34,7 +35,7 @@ import java.util.Locale;
  * which is how it can be triggered by code, or it came in from the system
  * via {@link  org.fdroid.fdroid.receiver.WifiStateChangeReceiver}, in
  * which case an instance of {@link NetworkInfo} is included.
- *
+ * <p>
  * The work is done in a {@link Thread} so that new incoming {@code Intents}
  * are not blocked by processing. A new {@code Intent} immediately nullifies
  * the current state because it means that something about the wifi has
@@ -52,6 +53,14 @@ public class WifiStateChangeService extends IntentService {
 
     public WifiStateChangeService() {
         super("WifiStateChangeService");
+    }
+
+    public static void start(Context context, @Nullable Intent intent) {
+        if (intent == null) {
+            intent = new Intent(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        }
+        intent.setComponent(new ComponentName(context, WifiStateChangeService.class));
+        context.startService(intent);
     }
 
     @Override
