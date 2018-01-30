@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -39,10 +38,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
                     .apply();
         }
-        Resources res = context.getResources();
-        defaultPreventScreenshots = res.getBoolean(R.bool.defaultPreventScreenshots);
-        defaultPanicExit = res.getBoolean(R.bool.defaultPanicExit);
-        defaultHideOnLongPressSearch = res.getBoolean(R.bool.defaultHideOnLongPressSearch);
     }
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
@@ -94,9 +89,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
     private static final boolean DEFAULT_FORCE_OLD_INDEX = false;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
-    private final boolean defaultPreventScreenshots;
-    private final boolean defaultPanicExit;
-    private final boolean defaultHideOnLongPressSearch;
+    private static final boolean DEFAULT_PREVENT_SCREENSHOTS = false;
+    private static final boolean DEFAULT_PANIC_EXIT = true;
+    private static final boolean DEFAULT_HIDE_ON_LONG_PRESS_SEARCH = false;
 
     public enum Theme {
         light,
@@ -327,11 +322,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean preventScreenshots() {
-        return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, defaultPreventScreenshots);
+        return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, DEFAULT_PREVENT_SCREENSHOTS);
     }
 
     public boolean panicExit() {
-        return preferences.getBoolean(PREF_PANIC_EXIT, defaultPanicExit);
+        return preferences.getBoolean(PREF_PANIC_EXIT, DEFAULT_PANIC_EXIT);
     }
 
     public boolean panicHide() {
@@ -339,7 +334,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean hideOnLongPressSearch() {
-        return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, defaultHideOnLongPressSearch);
+        return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, DEFAULT_HIDE_ON_LONG_PRESS_SEARCH);
     }
 
     /**

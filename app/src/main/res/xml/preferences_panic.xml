@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <CheckBoxPreference
-        android:defaultValue="@bool/defaultPanicExit"
+        android:defaultValue="true"
         android:key="pref_panic_exit"
         android:summary="@string/panic_exit_summary"
         android:title="@string/panic_exit_title"/>

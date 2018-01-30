@@ -14,11 +14,6 @@
         <attr name="antiFeaturesWarning" format="reference" />
     </declare-styleable>
 
-    <!-- Default Preferences -->
-    <bool name="defaultPreventScreenshots">false</bool>
-    <bool name="defaultPanicExit">true</bool>
-    <bool name="defaultHideOnLongPressSearch">false</bool>
-
     <integer name="unhidePin">1337</integer>
 
 </resources>
