@@ -570,7 +570,7 @@ public class AppDetailsRecyclerViewAdapter
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
-    private abstract class AppDetailsViewHolder extends RecyclerView.ViewHolder {
+    private abstract static class AppDetailsViewHolder extends RecyclerView.ViewHolder {
         AppDetailsViewHolder(View itemView) {
             super(itemView);
         }
@@ -664,7 +664,7 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private abstract class ExpandableLinearLayoutViewHolder extends AppDetailsViewHolder {
+    private abstract static class ExpandableLinearLayoutViewHolder extends AppDetailsViewHolder {
         final TextView headerView;
         final LinearLayout contentView;
 
