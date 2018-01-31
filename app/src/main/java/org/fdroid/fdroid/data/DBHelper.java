@@ -28,20 +28,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
 import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.CatJoinTable;
-import org.fdroid.fdroid.data.Schema.PackageTable;
-import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -1095,10 +1094,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void resetTransient(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putBoolean("triedEmptyUpdate", false)
-                .apply();
+        Preferences.get().setTriedEmptyUpdate(false);
 
         db.beginTransaction();
         try {
@@ -1150,10 +1146,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putBoolean("triedEmptyUpdate", false)
-                .apply();
+        Preferences.get().setTriedEmptyUpdate(false);
 
         db.execSQL("drop table " + AppMetadataTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);

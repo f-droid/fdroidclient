@@ -7,6 +7,7 @@ import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
 import org.junit.Before;
@@ -34,6 +35,7 @@ public class DatabaseMigration {
 
     @Test
     public void migrationsFromDbVersion42Onward() {
+        Preferences.setupForTests(context);
         SQLiteOpenHelper opener = new MigrationRunningOpenHelper(context);
         opener.getReadableDatabase();
     }
