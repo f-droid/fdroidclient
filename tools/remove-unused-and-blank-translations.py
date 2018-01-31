@@ -7,7 +7,10 @@
 import glob
 import os
 import re
+import sys
 from xml.etree import ElementTree
+
+count = 0
 
 resdir = os.path.join(os.path.dirname(__file__), '..', 'app', 'src', 'main', 'res')
 sourcepath = os.path.join(resdir, 'values', 'strings.xml')
@@ -60,6 +63,7 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
                 found_other = True
         if not found_other:
             print(os.path.relpath(str_path) + ': Missing "other" string in', e.attrib['name'])
+            count += 1
 
     result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
 
@@ -67,3 +71,5 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
         f.write(header)
         f.write(result)
         f.write('\n')
+
+sys.exit(count)
