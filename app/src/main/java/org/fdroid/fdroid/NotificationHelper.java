@@ -433,6 +433,12 @@ class NotificationHelper {
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
+
+        if (Build.VERSION.SDK_INT < 11) {
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            builder.setContentIntent(PendingIntent.getActivity(context, 0, intent, 0));
+        }
         return builder.build();
     }
 
