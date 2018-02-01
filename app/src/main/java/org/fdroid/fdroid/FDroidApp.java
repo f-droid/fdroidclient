@@ -41,13 +41,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.acra.ACRA;
+import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.apache.commons.net.util.SubnetUtils;
@@ -64,6 +65,7 @@ import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
+import sun.net.www.protocol.bluetooth.Handler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -72,14 +74,25 @@ import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.List;
 
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
-import sun.net.www.protocol.bluetooth.Handler;
-
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
         reportDialogClass = org.fdroid.fdroid.acra.CrashReportActivity.class,
-        reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class
+        reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class,
+        customReportContent = {
+                ReportField.USER_COMMENT,
+                ReportField.PACKAGE_NAME,
+                ReportField.APP_VERSION_NAME,
+                ReportField.ANDROID_VERSION,
+                ReportField.PRODUCT,
+                ReportField.BRAND,
+                ReportField.PHONE_MODEL,
+                ReportField.DISPLAY,
+                ReportField.TOTAL_MEM_SIZE,
+                ReportField.AVAILABLE_MEM_SIZE,
+                ReportField.CUSTOM_DATA,
+                ReportField.STACK_TRACE_HASH,
+                ReportField.STACK_TRACE,
+        }
 )
 public class FDroidApp extends Application {
 
