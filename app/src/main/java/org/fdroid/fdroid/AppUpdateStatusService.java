@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
@@ -109,7 +108,7 @@ public class AppUpdateStatusService extends IntentService {
 
         Utils.debugLog(TAG, "Found package for " + downloadedInfo.packageName + ", checking its hash to see if it downloaded correctly.");
         Apk downloadedApk = findApkMatchingHash(apkPath);
-        if (downloadedApk ==  null) {
+        if (downloadedApk == null) {
             Log.i(TAG, "Either the apk wasn't downloaded fully, or the repo it came from has been disabled. Either way, not notifying the user about it.");
             return null;
         }
@@ -129,7 +128,8 @@ public class AppUpdateStatusService extends IntentService {
                 AppUpdateStatusManager.getInstance(this).markAsNoLongerPendingInstall(downloadedApk.getUrl());
                 return null;
             }
-        } catch (PackageManager.NameNotFoundException ignored) { }
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
 
         Utils.debugLog(TAG, downloadedApk.packageName + " is pending install, so we need to notify the user about installing it.");
         return downloadedApk;
@@ -140,12 +140,16 @@ public class AppUpdateStatusService extends IntentService {
      * This method looks for all matching records in the database. It then asks each of these
      * {@link Apk} instances where they expect to be downloaded. If they expect to be downloaded
      * to {@param apkPath} then that instance is returned.
-     *
+     * <p>
      * If no files have a matching hash, or only those which don't belong to the correct repo, then
-     * this will return null.
+     * this will return null.  This method needs to do its own check whether the file exists,
+     * since files can be deleted from the cache at any time without warning.
      */
     @Nullable
     private Apk findApkMatchingHash(File apkPath) {
+        if (!apkPath.canRead()) {
+            return null;
+        }
 
         // NOTE: This presumes SHA256 is the only supported hash. It seems like that is an assumption
         // in more than one place in the F-Droid client. If this becomes a problem in the future, we
