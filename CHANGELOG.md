@@ -1,3 +1,21 @@
+### 1.0.3 (2018-02-02)
+
+* set up "Android App Links" handling aka "Digital Asset Links"
+
+* fix background crash when APKs disappear from cache in process
+
+* fix update notification crash on Android 2.3 (#1306)
+
+* reduce memory usage when checking APKs
+
+* limit WifiStateChangeService to 2 minute runs
+
+### 1.0.2 (2017-12-01)
+
+* fix crasher bug in Updates (#1203)
+
+* properly display newlines in app descriptions
+
 ### 1.0.1 (2017-10-23)
 
 * fixed index update failure on Android 5.0 (#1014)

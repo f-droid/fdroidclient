@@ -1,0 +1,5 @@
+This release fine tunes things, and sets up "Android App Links"
+handling aka "Digital Asset Links" so that F-Droid properly claims all
+links to https://f-droid.org.
+
+This also fixes some crashes and reduces memory usage.
