@@ -128,6 +128,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="add_key">Add Key</string>
     <string name="overwrite">Overwrite</string>
     <string name="clear_search">Clear search</string>
+    <string name="sort_search">Sort search</string>
 
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>

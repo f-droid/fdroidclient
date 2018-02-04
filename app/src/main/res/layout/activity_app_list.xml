@@ -18,20 +18,21 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp">
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingEnd="8dp"
+            android:paddingRight="8dp">
 
             <ImageView
                 android:id="@+id/back"
-                android:contentDescription="@string/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/search"
                 app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/ic_back_black_24dp" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <EditText
                 android:layout_width="0dp"
@@ -51,13 +52,29 @@
 
             <ImageView
                 android:id="@+id/clear"
-                android:contentDescription="@string/clear_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/clear_search"
+                android:src="@drawable/ic_close_black_24dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sort"
+                app:layout_constraintStart_toEndOf="@id/search"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/sort_search"
+                android:src="@drawable/ic_last_updated_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/ic_close_black_24dp" />
+                app:layout_constraintStart_toEndOf="@+id/clear"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
 
