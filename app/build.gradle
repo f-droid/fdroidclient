@@ -224,7 +224,7 @@ android {
     }
 
     defaultConfig {
-        versionCode 1001001
+        versionCode 1001002
         versionName getVersionName()
         applicationId 'org.fdroid.fdroid'
         resValue "string", "applicationId", applicationId
