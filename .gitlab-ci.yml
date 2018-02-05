@@ -27,22 +27,24 @@ before_script:
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
+# Run the most important first. Then we can decide whether to ignore
+# the style tests if the rest of the more meaningful tests pass.
 test:
   stage: test
   <<: *test-template
   script:
     - export EXITVALUE=0
-    - ./tools/check-format-strings.py
-    - ./tools/remove-unused-and-blank-translations.py
-    - echo "These are unused or blank translations that should be removed:"
-    - git --no-pager diff --exit-code || export EXITVALUE=1
     - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - ./gradlew test
     - ./gradlew lint
-    - ./gradlew pmd
-    - ./gradlew checkstyle
-    - ./gradlew test || export EXITVALUE=1
+    - ./gradlew pmd || export EXITVALUE=1
+    - ./gradlew checkstyle || export EXITVALUE=1
+    - ./tools/check-format-strings.py
+    - ./tools/remove-unused-and-blank-translations.py
+    - echo "These are unused or blank translations that should be removed:"
+    - git --no-pager diff --ignore-all-space --name-only --exit-code || export EXITVALUE=1
     - exit $EXITVALUE
 
 connected10:
