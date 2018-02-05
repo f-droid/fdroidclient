@@ -4,7 +4,6 @@ package org.fdroid.fdroid.updater;
 import android.content.ContentValues;
 import android.support.annotation.StringDef;
 import android.util.Log;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.TestUtils;

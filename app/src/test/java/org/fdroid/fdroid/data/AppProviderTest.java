@@ -10,7 +10,6 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,12 +39,7 @@ public class AppProviderTest extends FDroidProviderTest {
     @Before
     public void setup() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
-        Preferences.setup(context);
-    }
-
-    @After
-    public void tearDown() {
-        Preferences.clearSingletonForTesting();
+        Preferences.setupForTests(context);
     }
 
     /**

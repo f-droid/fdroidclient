@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import android.app.Application;
 import android.content.ContentValues;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -12,7 +11,6 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.InstalledAppTestUtils;
 import org.fdroid.fdroid.data.Schema;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,9 +19,9 @@ import org.robolectric.annotation.Config;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
@@ -35,7 +33,7 @@ public class AntiFeaturesTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        Preferences.setup(context);
+        Preferences.setupForTests(context);
 
         ContentValues vulnValues = new ContentValues(1);
         vulnValues.put(Schema.ApkTable.Cols.AntiFeatures.ANTI_FEATURES, "KnownVuln,ContainsGreenButtons");
@@ -56,11 +54,6 @@ public class AntiFeaturesTest extends FDroidProviderTest {
         insertApk(allVuln, 105, true);
 
         AppProvider.Helper.recalculatePreferredMetadata(context);
-    }
-
-    @After
-    public void tearDown() {
-        Preferences.clearSingletonForTesting();
     }
 
     private static String generateHash(String packageName, int versionCode) {

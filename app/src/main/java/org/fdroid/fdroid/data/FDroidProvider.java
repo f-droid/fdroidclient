@@ -5,16 +5,13 @@ import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.OperationApplicationException;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
-
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,14 +20,12 @@ import java.util.Set;
 
 public abstract class FDroidProvider extends ContentProvider {
 
-    private static final String TAG = "FDroidProvider";
+    public static final String TAG = "FDroidProvider";
 
     static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".data";
 
-    static final int CODE_LIST   = 1;
+    static final int CODE_LIST = 1;
     static final int CODE_SINGLE = 2;
-
-    private static DBHelper dbHelper;
 
     private boolean isApplyingBatch;
 
@@ -73,28 +68,13 @@ public abstract class FDroidProvider extends ContentProvider {
         return result;
     }
 
-    /**
-     * Only used for testing. Not quite sure how to mock a singleton variable like this.
-     */
-    public static void clearDbHelperSingleton() {
-        dbHelper = null;
-    }
-
-    private static synchronized DBHelper getOrCreateDb(Context context) {
-        if (dbHelper == null) {
-            Utils.debugLog(TAG, "First time accessing database, creating new helper");
-            dbHelper = new DBHelper(context);
-        }
-        return dbHelper;
-    }
-
     @Override
     public boolean onCreate() {
         return true;
     }
 
     protected final synchronized SQLiteDatabase db() {
-        return getOrCreateDb(getContext().getApplicationContext()).getWritableDatabase();
+        return DBHelper.getInstance(getContext()).getWritableDatabase();
     }
 
     @Override
@@ -154,7 +134,7 @@ public abstract class FDroidProvider extends ContentProvider {
 
             if (!isValid) {
                 throw new IllegalArgumentException(
-                    "Cannot save field '" + key + "' to provider " + getProviderName());
+                        "Cannot save field '" + key + "' to provider " + getProviderName());
             }
         }
     }

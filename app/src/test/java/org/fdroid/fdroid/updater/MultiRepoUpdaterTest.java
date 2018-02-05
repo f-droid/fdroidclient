@@ -17,7 +17,6 @@ import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.junit.After;
 import org.junit.Before;
 
 import java.io.File;
@@ -86,12 +85,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         RepoProvider.Helper.remove(context, 3);
         RepoProvider.Helper.remove(context, 4);
 
-        Preferences.setup(context);
-    }
-
-    @After
-    public final void tearDownMultiRepo() {
-        Preferences.clearSingletonForTesting();
+        Preferences.setupForTests(context);
     }
 
     protected void assertApp(String packageName, int[] versionCodes) {

@@ -205,7 +205,7 @@ public class SwapService extends Service {
             askServerToSwapWithUs(peerRepo);
         }
 
-        UpdateService.updateRepoNow(peer.getRepoAddress(), this);
+        UpdateService.updateRepoNow(this, peer.getRepoAddress());
     }
 
     private void askServerToSwapWithUs(final Repo repo) {

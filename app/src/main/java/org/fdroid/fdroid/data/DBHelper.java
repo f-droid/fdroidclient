@@ -28,32 +28,38 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
 import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.CatJoinTable;
-import org.fdroid.fdroid.data.Schema.PackageTable;
-import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is basically a singleton used to represent the database at the core
+ * of all of the {@link android.content.ContentProvider}s used at the core
+ * of this app.  {@link DBHelper} is not {@code private} so that it can be easily
+ * used in test subclasses.
+ */
 @SuppressWarnings("LineLength")
-class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 
     public static final int REPO_XML_ARG_COUNT = 8;
 
+    private static DBHelper instance;
     private static final String DATABASE_NAME = "fdroid";
 
     private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
@@ -214,7 +220,22 @@ class DBHelper extends SQLiteOpenHelper {
 
     DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DB_VERSION);
-        this.context = context;
+        this.context = context.getApplicationContext();
+    }
+
+    /**
+     * Only used for testing. Not quite sure how to mock a singleton variable like this.
+     */
+    public static void clearDbHelperSingleton() {
+        instance = null;
+    }
+
+    static synchronized DBHelper getInstance(Context context) {
+        if (instance == null) {
+            Utils.debugLog(TAG, "First time accessing database, creating new helper");
+            instance = new DBHelper(context);
+        }
+        return instance;
     }
 
     @Override
@@ -1070,13 +1091,19 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("update " + RepoTable.NAME + " set " + RepoTable.Cols.LAST_ETAG + " = NULL");
     }
 
-    private void resetTransient(SQLiteDatabase db) {
-        Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
+    /**
+     * Resets all database tables that are generated from the index files downloaded
+     * from the active repositories.  This will trigger the index file(s) to be
+     * downloaded processed on the next update.
+     */
+    public static void resetTransient(Context context) {
+        resetTransient(getInstance(context).getWritableDatabase());
+    }
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putBoolean("triedEmptyUpdate", false)
-                .apply();
+    private static void resetTransient(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Removing all index tables, they will be recreated next time F-Droid updates.");
+
+        Preferences.get().setTriedEmptyUpdate(false);
 
         db.beginTransaction();
         try {
@@ -1128,10 +1155,7 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putBoolean("triedEmptyUpdate", false)
-                .apply();
+        Preferences.get().setTriedEmptyUpdate(false);
 
         db.execSQL("drop table " + AppMetadataTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);

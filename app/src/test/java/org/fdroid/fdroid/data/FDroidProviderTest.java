@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.data;
 
 import android.content.ContextWrapper;
-
 import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -24,7 +23,7 @@ public abstract class FDroidProviderTest {
     @After
     public final void tearDownBase() {
         CategoryProvider.Helper.clearCategoryIdCache();
-        FDroidProvider.clearDbHelperSingleton();
+        DBHelper.clearDbHelperSingleton();
     }
 
 }

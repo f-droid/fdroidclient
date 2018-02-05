@@ -27,6 +27,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -267,6 +268,7 @@ public class FDroidApp extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
+        UpdateService.forceUpdateRepo(this);
     }
 
     @Override
@@ -386,12 +388,12 @@ public class FDroidApp extends Application {
         ImageLoader.getInstance().init(config);
 
         FDroidApp.initWifiSettings();
-        startService(new Intent(this, WifiStateChangeService.class));
+        WifiStateChangeService.start(this, null);
         // if the HTTPS pref changes, then update all affected things
         Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                startService(new Intent(FDroidApp.this, WifiStateChangeService.class));
+                WifiStateChangeService.start(getApplicationContext(), null);
             }
         });
 
@@ -414,6 +416,13 @@ public class FDroidApp extends Application {
 
         // find and process provisions if any.
         Provisioner.scanAndProcess(getApplicationContext());
+
+        // if the underlying OS version has changed, then fully rebuild the database
+        SharedPreferences atStartTime = getSharedPreferences("at-start-time", Context.MODE_PRIVATE);
+        if (Build.VERSION.SDK_INT != atStartTime.getInt("build-version", Build.VERSION.SDK_INT)) {
+            UpdateService.forceUpdateRepo(this);
+        }
+        atStartTime.edit().putInt("build-version", Build.VERSION.SDK_INT).apply();
     }
 
     /**
