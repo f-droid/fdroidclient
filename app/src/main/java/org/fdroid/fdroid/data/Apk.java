@@ -12,11 +12,9 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -251,9 +249,11 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     private void checkRepoAddress() {
         if (repoAddress == null || apkName == null) {
             throw new IllegalStateException(
-                    "Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and " +
-                    "Schema.ApkTable.Cols.NAME set in order to calculate URL " +
-                    "[package: " + packageName + ", versionCode: " + versionCode + ", repoId: " + repoId + "]");
+                    "Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and "
+                            + "Schema.ApkTable.Cols.NAME set in order to calculate URL "
+                            + "[package: " + packageName
+                            + ", versionCode: " + versionCode
+                            + ", repoId: " + repoId + "]");
         }
     }
 
@@ -524,6 +524,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     /**
      * Default to assuming apk if apkName is null since that has always been
      * what we had.
+     *
      * @return true if this is an apk instead of a non-apk/media file
      */
     public boolean isApk() {
