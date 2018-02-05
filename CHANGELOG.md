@@ -1,4 +1,10 @@
-### 1.1-alpha0 (2018-01-26)
+### 1.1-alpha2 (2018-02-06)
+
+* reload index after system locale change or OS upgrade
+
+* add "panic responder" support
+
+### 1.1-alpha1 (2018-01-26)
 
 * provision new repos via a provisioning file
 
