@@ -37,7 +37,7 @@ dependencies {
     compile "com.android.support:palette-v7:${supportLibVersion}"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.google.zxing:core:3.2.1'
+    compile 'com.google.zxing:core:3.3.2'
     compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
     compile 'cc.mvdan.accesspoint:library:0.2.0'
     compile 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
@@ -135,7 +135,7 @@ if (!hasProperty('sourceDeps')) {
                 'com.fasterxml.jackson.core:jackson-core:256ff34118ab292d1b4f3ee4d2c3e5e5f0f609d8e07c57e8ad1f51c46d4fbb46',
                 'com.fasterxml.jackson.core:jackson-databind:4f74337b6d18664be0f5b15c6664b17aa3972c9c175092328b139b894ff66f19',
                 'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
-                'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
+                'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
                 'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
                 'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
                 'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
