@@ -32,17 +32,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
-import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
-import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import info.guardianproject.netcipher.NetCipher;
@@ -59,7 +55,6 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
@@ -387,34 +382,7 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
-                .diskCache(new LimitedAgeDiskCache(
-                        Utils.getImageCacheDir(this),
-                        null,
-                        new FileNameGenerator() {
-                            @NonNull
-                            @Override
-                            public String generate(String imageUri) {
-                                if (TextUtils.isEmpty(imageUri)) {
-                                    return "null";
-                                }
-
-                                String fileNameToSanitize;
-                                Uri uri = Uri.parse(imageUri);
-                                if (TextUtils.isEmpty(uri.getPath())) {
-                                    // files with URL like "drawable://213083835209" used by the category backgrounds
-                                    fileNameToSanitize = imageUri.replaceAll("[:/]", "");
-                                } else {
-                                    fileNameToSanitize = uri.getPath().replace("/", "-");
-                                }
-
-                                return SanitizedFile.sanitizeFileName(fileNameToSanitize);
-                            }
-                        },
-                        // 30 days in secs: 30*24*60*60 = 2592000
-                        2592000)
-                )
                 .threadPoolSize(4)
-                .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
                 .build();
         ImageLoader.getInstance().init(config);
 
