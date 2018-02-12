@@ -80,7 +80,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                     sortImage.setImageResource(R.drawable.ic_az_black);
                 } else {
                     sortClauseSelected = SortClause.LAST_UPDATED;
-                    sortImage.setImageResource(R.drawable.ic_last_updated_black);
+                    //sortImage.setImageResource(R.drawable.ic_last_updated_black);
+                    sortImage.setImageResource(R.drawable.ic_last_updated_white);
                 }
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this );
                 appView.scrollToPosition(0);
