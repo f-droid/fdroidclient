@@ -72,16 +72,19 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         });
 
         sortImage = (ImageView) findViewById(R.id.sort);
+        sortImage.setImageResource(FDroidApp.getCurThemeResId() == R.style.AppThemeLight ? R.drawable.ic_last_updated_black : R.drawable.ic_last_updated_white);
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
+                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED))
+                {
                     sortClauseSelected = SortClause.NAME;
-                    sortImage.setImageResource(R.drawable.ic_az_black);
-                } else {
+                    sortImage.setImageResource(FDroidApp.getCurThemeResId() == R.style.AppThemeLight ? R.drawable.ic_az_black : R.drawable.ic_az_white);
+                }
+                else
+                {
                     sortClauseSelected = SortClause.LAST_UPDATED;
-                    //sortImage.setImageResource(R.drawable.ic_last_updated_black);
-                    sortImage.setImageResource(R.drawable.ic_last_updated_white);
+                    sortImage.setImageResource(FDroidApp.getCurThemeResId() == R.style.AppThemeLight ? R.drawable.ic_last_updated_black : R.drawable.ic_last_updated_white);
                 }
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this );
                 appView.scrollToPosition(0);

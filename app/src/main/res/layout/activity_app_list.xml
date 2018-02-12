@@ -75,7 +75,6 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:contentDescription="@string/sort_search"
-        android:src="@drawable/ic_last_updated_white"
         app:layout_constraintTop_toTopOf="@id/search_card"
         app:layout_constraintBottom_toBottomOf="@id/search_card"
         app:layout_constraintEnd_toEndOf="parent"
