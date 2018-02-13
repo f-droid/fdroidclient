@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-
-import org.acra.ACRAConstants;
 import org.acra.ReportField;
 import org.acra.collections.ImmutableSet;
 import org.acra.collector.CrashReportData;
@@ -38,7 +36,7 @@ public class CrashReportSender implements ReportSender {
     private String[] buildSubjectBody(Context context, CrashReportData errorContent) {
         ImmutableSet fields = this.config.getReportFields();
         if (fields.isEmpty()) {
-            fields = new ImmutableSet<ReportField>(ACRAConstants.DEFAULT_MAIL_REPORT_FIELDS);
+            return new String[]{"No ACRA Report Fields found."};
         }
 
         String subject = context.getPackageName() + " Crash Report";
