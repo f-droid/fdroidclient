@@ -1,3 +1,11 @@
+### 1.1-alpha3 (2018-02-13)
+
+* add sort button to Search view: alpha or most recent
+
+* fix bugs: #1305 #1306 #1325
+
+* add more detail to ACRA crash reports
+
 ### 1.1-alpha2 (2018-02-06)
 
 * reload index after system locale change or OS upgrade
