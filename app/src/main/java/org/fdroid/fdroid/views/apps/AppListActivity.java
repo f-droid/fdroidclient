@@ -18,7 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -76,17 +75,14 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED))
-                {
+                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
                     sortClauseSelected = SortClause.NAME;
                     sortImage.setImageResource(FDroidApp.getCurThemeResId() == R.style.AppThemeLight ? R.drawable.ic_az_black : R.drawable.ic_az_white);
-                }
-                else
-                {
+                } else {
                     sortClauseSelected = SortClause.LAST_UPDATED;
                     sortImage.setImageResource(FDroidApp.getCurThemeResId() == R.style.AppThemeLight ? R.drawable.ic_last_updated_black : R.drawable.ic_last_updated_white);
                 }
-                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this );
+                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
                 appView.scrollToPosition(0);
             }
         });
