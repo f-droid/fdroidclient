@@ -1,0 +1,35 @@
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.13"
+    }
+}
+
+apply plugin: "net.ltgt.errorprone"
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += [
+        '-XepAllDisabledChecksAsWarnings',
+        '-Xep:CatchFail:OFF',
+        '-Xep:ClassCanBeStatic:OFF',
+        '-Xep:DateFormatConstant:OFF',
+        '-Xep:DefaultCharset:OFF',
+        '-Xep:FormatString:OFF',
+        '-Xep:JavaLangClash:OFF',
+        '-Xep:MissingCasesInEnumSwitch:OFF',
+        '-Xep:MissingOverride:OFF',
+        '-Xep:NonAtomicVolatileUpdate:OFF',
+        '-Xep:OperatorPrecedence:OFF',
+        '-Xep:StringSplitter:OFF',
+        '-Xep:UnsynchronizedOverridesSynchronized:OFF',
+    ]
+}
+
+configurations.errorprone {
+    resolutionStrategy.force 'com.google.errorprone:error_prone_core:2.2.0'
+}
