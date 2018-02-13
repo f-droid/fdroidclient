@@ -83,7 +83,7 @@
     <string name="search_hint">Procurar aplicativos</string>
     <string name="appcompatibility">Compatibilidade de aplicativo</string>
     <string name="show_incompat_versions">Versões incompatíveis</string>
-    <string name="show_incompat_versions_on">Mostrar versões de aplicativos incompatíveis com o dispositivo</string>
+    <string name="show_incompat_versions_on">Mostrar versões de aplicativos que são incompatíveis com o dispositivo</string>
     <string name="rooted">Ignorar o root</string>
     <string name="rooted_on">Não marcar de cinza os aplicativos que requerem privilégios de root</string>
     <string name="force_touch_apps">Ignorar tela sensível ao toque</string>
@@ -476,7 +476,7 @@
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Atualizado %1$s dia atrás</item>
-	<item quantity="other">Atualizados %1$s dias atrás</item>
+	<item quantity="other">Atualizado %1$s dias atrás</item>
 </plurals>
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar download</string>
@@ -495,16 +495,16 @@
 	<item quantity="other">%1$d Aplicativos instalados</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualizado há %1$d semana atrás</item>
-	<item quantity="other">Actualizado há %1$d semanas atrás</item>
+	<item quantity="one">Atualizado %1$d semana atrás</item>
+	<item quantity="other">Atualizado %1$d semanas atrás</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Atualizado há %1$d semana atrás</item>
-	<item quantity="other">Atualizado há %1$d semanas atrás</item>
+	<item quantity="one">Atualizado %1$d mês atrás</item>
+	<item quantity="other">Atualizado %1$d meses atrás</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Atualizado há %1$d ano atrás</item>
-	<item quantity="other">Atualizado há %1$d anos atrás</item>
+	<item quantity="one">Atualizado %1$d ano atrás</item>
+	<item quantity="other">Atualizado %1$d anos atrás</item>
 </plurals>
 <string name="by_author_format">por %s</string>
     <string name="download_404">O arquivo solicitado não foi encontrado.</string>
@@ -548,5 +548,17 @@
     <string name="panic_destructive_actions">Ações destrutivas</string>
     <string name="panic_hide_title">Ocultar %s</string>
     <string name="panic_hide_summary">A aplicação se esconderá</string>
+
+    <string name="panic_app_setting_title">App de botão de pânico</string>
+    <string name="panic_app_dialog_title">Confirmar app de botão de pânico</string>
+    <string name="panic_hide_warning_title">Lembrar de como restaurar</string>
+    <string name="panic_hide_warning_message">Numa situação de pânico, isso irá remover %1$s do menu. Para restaurar, basta digitar \"%2$d\" no aplicativo falso %3$s.</string>
+
+    <string name="hiding_calculator">Calculadora</string>
+    <string name="hiding_dialog_title">Esconder %s agora</string>
+    <string name="hiding_dialog_message">Você tem certeza que quer remover %1$s do menu? Basta digitar \"%2$d\" no app fake %3$s para restaurar.</string>
+    <string name="hiding_dialog_warning">Atenção: Todos os atalhos de aplicativos na tela inicial também serão removidos e precisarão ser re-adicionados manualmente.</string>
+    <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
+    <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um tempo longo vai esconder o app</string>
 
     </resources>

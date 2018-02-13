@@ -518,4 +518,20 @@
     <string name="preventScreenshots_title">Bloquiar les captures de pantalla</string>
     <string name="preventScreenshots_summary">Torga la toma d\'imáxenes de pantalla y anubre\'l conteníu de la pantalla d\'aplicaciones recién</string>
 
+    <string name="panic_app_setting_title">App de «Botón del espantu»</string>
+    <string name="panic_app_unknown_app">una app desconocida</string>
+    <string name="panic_app_setting_summary">Nun se definió nenguna app</string>
+    <string name="panic_app_setting_none">Nenguna</string>
+    <string name="panic_app_dialog_title">Confirmar «App del espantu»</string>
+    <string name="panic_app_dialog_message">¿Confirmes que quies permitir a %1$s llanzar les aiciones destructives de «Botón del espantu»?</string>
+    <string name="allow">Permitir</string>
+
+    <string name="panic_settings">Configuración del Botón del espantu</string>
+    <string name="panic_settings_summary">Aiciones a facer en casu d\'emerxencia</string>
+    <string name="panic_exit_title">Salir de la app</string>
+    <string name="panic_exit_summary">Zarraráse la app</string>
+    <string name="panic_destructive_actions">Aiciones destructives</string>
+    <string name="panic_hide_title">Tapecer %s</string>
+    <string name="panic_hide_summary">Tapeceráse la app</string>
+
     </resources>

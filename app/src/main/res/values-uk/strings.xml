@@ -525,4 +525,8 @@
     <string name="panic_app_unknown_app">невідомий застосунок</string>
     <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
     <string name="panic_app_setting_none">Жоден</string>
+    <string name="allow">Дозволити</string>
+
+    <string name="panic_exit_title">Вийти з додатку</string>
+    <string name="panic_hide_title">Приховати %s</string>
     </resources>

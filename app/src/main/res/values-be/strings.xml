@@ -141,7 +141,7 @@
 
     <string name="appcompatibility">Сумяшчальнасць праграмы</string>
     <string name="show_incompat_versions">Не сумяшчальныя версіі</string>
-    <string name="show_incompat_versions_on">Паказваць версіі праграмы, не сумяшчальныя з прыладай</string>
+    <string name="show_incompat_versions_on">Паказваць версіі праграмы, якія не сумясцімыя з прыладай</string>
     <string name="rooted">Ігнараваць суперкарыстальніка</string>
     <string name="rooted_on">Не паказваць шэрым праграмы, якія патрабуюць прывілей суперкарыстальніка</string>
     <string name="hide_anti_feature_apps">Пазначаць праграмы з непажаданым функцыяналам</string>
@@ -573,4 +573,6 @@
     <string name="panic_hide_title">Схаваць %s</string>
     <string name="panic_hide_summary">Праграма схавае сама сябе</string>
 
+    <string name="panic_exit_title">Выйсці з праграмы</string>
+    <string name="panic_hide_warning_title">Запомніць як аднаўляць</string>
     </resources>

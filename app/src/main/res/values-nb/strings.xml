@@ -535,4 +535,14 @@
     <string name="panic_hide_title">Skjul %s</string>
     <string name="panic_hide_summary">Programmet vil skjule seg selv</string>
 
+    <string name="panic_hide_warning_title">Husk hvordan gjenoppretting utføres</string>
+    <string name="panic_hide_warning_message">I en panikksituasjon, vil dette fjerne %1$s fra oppstarteren. Kun det å skrive \"%2$d\" i det falske %3$s-programmet kan gjenopprette det.</string>
+
+    <string name="hiding_calculator">Kalkulator</string>
+    <string name="hiding_dialog_title">Skjul %s nå</string>
+    <string name="hiding_dialog_message">Er du sikker på at du ønsker å fjerne %1$s fra oppstarteren? Kun det å skrive \"%2$d\" i det falske %3$s-programmet kan gjenopprette det.</string>
+    <string name="hiding_dialog_warning">Advarsel: Enhver programsnarvei på hjemmeskjermen vil også bli fjernet og må legges til på nytt manuelt.</string>
+    <string name="hide_on_long_search_press_title">Skjul med søke-knappen</string>
+    <string name="hide_on_long_search_press_summary">Å trykke lenge på søkeknappen vil skjule programmet</string>
+
     </resources>

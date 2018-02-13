@@ -122,7 +122,7 @@
 
     <string name="expert">حالت حرفه‌ای</string>
     <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
-    <string name="show_incompat_versions_on">نمایش نگارش‌های ناساگار برنامه با این دستگاه</string>
+    <string name="show_incompat_versions_on">نمایش نگارش‌های کاره‌ای که با این افزاره ناسازگارند</string>
     <string name="rooted_on">برنامه هایی که به دسترسی ریشه نیاز دارند را غیر فعال نکن</string>
     <string name="force_touch_apps_on">همواره برنامه هایی که نیازمند صفحه‌لمسی هستند را مشمول کن</string>
 
@@ -496,4 +496,23 @@
     <string name="panic_exit_summary">برنامه بسته خواهد شد</string>
     <string name="panic_destructive_actions">اقدامات مخرب</string>
     <string name="panic_hide_title">پنهان کردن %s</string>
+    <string name="preventScreenshots_title">جلوگیری از نماگرفت‌ها</string>
+    <string name="preventScreenshots_summary">نماگرفت‌ها را مسدود و محتوای کاره را از صفحهٔ کاره‌های اخیر پنهان می‌کند</string>
+
+    <string name="panic_app_setting_title">کارهٔ دکمهٔ اضطرار</string>
+    <string name="panic_app_dialog_title">تأیید کارهٔ اضطرار</string>
+    <string name="panic_app_dialog_message">مطمئنید که می‌خواهید به %1$s اجازهٔ راه‌اندازی عمل‌های دکمهٔ اضطرار را بدهید؟</string>
+    <string name="panic_settings">تنظیمات دکمهٔ اضطرار</string>
+    <string name="panic_settings_summary">عمل‌هایی که در صورت اضطرار انجام می‌شوند</string>
+    <string name="panic_hide_summary">کاره خودش را پنهان می‌کند</string>
+    <string name="panic_hide_warning_title">روش بازگردانی را به‌خاطر بسپرید</string>
+    <string name="panic_hide_warning_message">در صورت اضطرار، این عمل %1$s را از اجراگر برمی‌دارد و فقط نوشتن «%2$d» در کارهٔ تقلّبی %3$s می‌تواند بازش گرداند.</string>
+
+    <string name="hiding_calculator">ماشین‌حساب</string>
+    <string name="hiding_dialog_title">اکنون %s پنهان شود</string>
+    <string name="hiding_dialog_message">مطمئنید که می‌خواهید %1$s را از اجراگر بردارید؟ فقط نوشتن «%2$d» در کارهٔ تقلّبی %3$s می‌تواند بازش گرداند.</string>
+    <string name="hiding_dialog_warning">هشدار: هر میانبر کاره‌ای روی صفحهٔ خانگی هم برداشته می‌شود و باید دوباره به صورت دستی افزوده شود.</string>
+    <string name="hide_on_long_search_press_title">پنهان کردن با دکمهٔ جست‌وجو</string>
+    <string name="hide_on_long_search_press_summary">لمس طولانی دکمهٔ جست‌وجو، کاره را پنهان می‌کند</string>
+
     </resources>

@@ -82,7 +82,7 @@
     <string name="search_hint">Chirca aplicatziones</string>
     <string name="appcompatibility">Cumpatibilidade aplicatziones</string>
     <string name="show_incompat_versions">Versiones non cumpatìbiles</string>
-    <string name="show_incompat_versions_on">Ammustra versiones non cumpatìbiles cun su dispositivu</string>
+    <string name="show_incompat_versions_on">Ammustra sas versiones non cumpatìbiles cun su dispositivu</string>
     <string name="rooted">Ignora su \"root\"</string>
     <string name="rooted_on">Non disabilitare sas aplicatziones chi tenet bisòngiu de sos permissos de root</string>
     <string name="force_touch_apps">Ignora touchscreen</string>
@@ -561,5 +561,15 @@
     <string name="panic_destructive_actions">Atziones distrutoras</string>
     <string name="panic_hide_title">Istichi %s</string>
     <string name="panic_hide_summary">S\'aplicatzione s\'at a istichire</string>
+
+    <string name="panic_hide_warning_title">Ammenta comente ripristinare</string>
+    <string name="panic_hide_warning_message">In casu de un\'eventu de pànicu, custu at a bogare %1$s dae su \"launcher\". Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
+
+    <string name="hiding_calculator">Calcolatrice</string>
+    <string name="hiding_dialog_title">Istichi %s como</string>
+    <string name="hiding_dialog_message">Seguru ses de chèrrere bogare %1$s dae su \"launcher\"? Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
+    <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale at a èssere bogada e b\'at a dèpere èssere torrada a pònnere manualmente.</string>
+    <string name="hide_on_long_search_press_title">Istichi cun su butone de chirca</string>
+    <string name="hide_on_long_search_press_summary">Un\'incarcada longa in su butone de chirca at a istichire s\'aplicatzione</string>
 
     </resources>

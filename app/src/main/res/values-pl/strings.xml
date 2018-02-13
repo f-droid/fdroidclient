@@ -160,7 +160,7 @@
     <string name="menu_donate">Dotacja</string>
 
     <string name="antitracklist">Ta aplikacja śledzi i raportuje Twoją aktywność</string>
-    <string name="show_incompat_versions_on">Pokazuj aplikacje niekompatybilne z tym urządzeniem</string>
+    <string name="show_incompat_versions_on">Pokazuj aplikacje, które są niekompatybilne z tym urządzeniem</string>
     <string name="status_download">Pobieranie\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="update_notification_title">Aktualizowanie repozytoriów</string>
     <string name="status_processing_xml_percent">Przetwarzanie %2$s / %3$s (%4$d%%) z %1$s</string>
@@ -551,5 +551,15 @@
     <string name="panic_destructive_actions">Niszczące akcje</string>
     <string name="panic_hide_title">Ukryj %s</string>
     <string name="panic_hide_summary">Aplikacja zostanie ukryta</string>
+
+    <string name="panic_hide_warning_title">Pamiętaj jak przywrócić</string>
+    <string name="panic_hide_warning_message">W przypadku alarmu, %1$s zostanie usunięty z pulpitu. Tylko wpisanie „%2$d” w fałszywej aplikacji %3$s pozwoli go przywrócić.</string>
+
+    <string name="hiding_calculator">Kalkulator</string>
+    <string name="hiding_dialog_title">Ukryj teraz %s</string>
+    <string name="hiding_dialog_message">Czy na pewno chcesz usunąć %1$s z pulpitu? Tylko pisanie  „%2$d” w fałszywej aplikacji %3$s pozwoli go przywrócić.</string>
+    <string name="hiding_dialog_warning">Ostrzeżenie: ponadto każdy skrót na ekranie startowym zostanie usunięty i wymagane będzie ponowne dodanie ich ręcznie.</string>
+    <string name="hide_on_long_search_press_title">Ukryj przyciskiem szukania</string>
+    <string name="hide_on_long_search_press_summary">Przytrzymanie przycisku szukania ukryje aplikację</string>
 
     </resources>

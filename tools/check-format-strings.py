@@ -10,6 +10,8 @@ from xml.etree import ElementTree
 
 formatRe = re.compile(r'(%%|%[^%](\$.)?)')
 
+simpleFormatRe = re.compile(r'%[ds]')
+numberedFormatRe = re.compile(r'%[0-9]+\$')
 validFormatRe = re.compile(r'^(%%|%[sd]|%[0-9]\$[sd])$')
 oddQuotingRe = re.compile(r'^"\s*(.+?)\s*"$')
 
@@ -33,12 +35,22 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
         if e.tag == "item" and e.text is None:
             continue
 
+        found_simple_format = False  # %s
+        found_numbered_format = False  # %1$s
         for m in formatRe.finditer(e.text):
             s = m.group(0)
+            if simpleFormatRe.match(s):
+                found_simple_format = True
+            if numberedFormatRe.match(s):
+                found_numbered_format = True
             if validFormatRe.match(s):
                 continue
             count += 1
             print('%s: Invalid format "%s" in "%s"' % (str_path, s, e.text))
+
+        if found_simple_format and found_numbered_format:
+            count += 1
+            print('%s: Invalid mixed formats "%s" in "%s"' % (str_path, s, e.text))
 
         m = oddQuotingRe.search(e.text)
         if m:

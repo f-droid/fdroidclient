@@ -575,4 +575,14 @@
     <string name="panic_hide_summary">Forrit mun fela sig</string>
 
     <string name="status_inserting_x_apps">Vista ítarupplýsingar um forrit (%1$d/%2$d) frá %3$s</string>
+    <string name="panic_hide_warning_title">Muna hvernig á að endurheimta</string>
+    <string name="panic_hide_warning_message">Við neyðaratvik mun þetta fjarlægja %1$s úr ræsinum. Aðeins með því að skrifa \"%2$d\" í falska %3$s forritið er hægt að endurheimta það.</string>
+
+    <string name="hiding_calculator">Reiknivél</string>
+    <string name="hiding_dialog_title">Fela %s núna</string>
+    <string name="hiding_dialog_message">Ertu viss um að þú viljir fjarlægja %1$s úr ræsinum? Aðeins með því að skrifa \"%2$d\" í falska %3$s forritið er hægt að endurheimta það.</string>
+    <string name="hiding_dialog_warning">Aðvörun: Allar flýtileiðir á forrit á heimaskjánum verða einnig fjarlægðar og verður að bæta þeim aftur inn handvirkt.</string>
+    <string name="hide_on_long_search_press_title">Fela með leitarhnappi</string>
+    <string name="hide_on_long_search_press_summary">Ef ýtt er lengi mun leitarhnappurinn fela forritið</string>
+
     </resources>

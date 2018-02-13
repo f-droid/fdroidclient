@@ -542,4 +542,20 @@
     <string name="preventScreenshots_title">Impedir captura de ecrã</string>
     <string name="preventScreenshots_summary">Impede as capturas de ecrã e oculta o conteúdo da aplicação do ecrã de aplicações recentes</string>
 
+    <string name="panic_app_unknown_app">uma aplicação desconhecida</string>
+    <string name="panic_app_setting_summary">Nenhuma aplicação definida</string>
+    <string name="panic_app_setting_none">Nenhuma</string>
+    <string name="allow">Permitir</string>
+
+    <string name="panic_settings_summary">Ações a efetuar em caso de emergência</string>
+    <string name="panic_exit_title">Sair da aplicação</string>
+    <string name="panic_exit_summary">Fechar aplicação</string>
+    <string name="panic_destructive_actions">Ações destrutivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_warning_title">Memorizar tipo de restauro</string>
+    <string name="hiding_calculator">Calculadora</string>
+    <string name="hiding_dialog_title">Ocultar %s agora</string>
+    <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisa</string>
+    <string name="hide_on_long_search_press_summary">Toque longo no botão de pesquisa oculta a aplicação</string>
+
     </resources>

@@ -561,4 +561,15 @@
     <string name="panic_hide_title">Ezkutatu %s</string>
     <string name="panic_hide_summary">Aplikazioak bere burua ezkutatuko du</string>
 
+    <string name="rooted">Ezikusi root</string>
+    <string name="panic_hide_warning_title">Gogoratu nola berrezarri</string>
+    <string name="panic_hide_warning_message">Larrialdi egoera batean, honek %1$s kenduko du abiarazletik. %3$s aplikazio faltsuan \"%2$d\" idatziz berreskuratu daiteke bakarrik.</string>
+
+    <string name="hiding_calculator">Kalkulagailua</string>
+    <string name="hiding_dialog_title">Ezkutatu %s orain</string>
+    <string name="hiding_dialog_message">Ziur %1$s kendu nahi duzula abiarazletik? \"%2$d\" idatziz %3$s aplikazio faltsuan berreskuratu daiteke bakarrik.</string>
+    <string name="hiding_dialog_warning">Abisua: Hasierako pantailako edozein aplikazio lasterbide kenduko da ere eta eskuz gehitu beharko da.</string>
+    <string name="hide_on_long_search_press_title">Ezkutatu bilaketa botoiarekin</string>
+    <string name="hide_on_long_search_press_summary">Bilaketa botoia luze zapaltzean aplikazioa ezkutatuko da</string>
+
     </resources>

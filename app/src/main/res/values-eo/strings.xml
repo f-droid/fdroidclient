@@ -53,7 +53,7 @@
     <string name="search_hint">Serĉi aplikaĵojn</string>
     <string name="appcompatibility">Aplikaĵa kongrueco</string>
     <string name="show_incompat_versions">Nekongruaj versioj</string>
-    <string name="show_incompat_versions_on">Montri aplikaĵ-versiojn nekongruajn kun la aparato</string>
+    <string name="show_incompat_versions_on">Montri versiojn de aplikaĵoj, kiuj estas nekongruaj kun la aparato</string>
     <string name="rooted">Ĉefuzanto</string>
     <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
     <string name="force_touch_apps">Ignori tuŝekranon</string>
@@ -522,5 +522,15 @@
     <string name="panic_destructive_actions">Detruaj agoj</string>
     <string name="panic_hide_title">Kaŝi %s</string>
     <string name="panic_hide_summary">Aplikaĵo kaŝiĝos</string>
+
+    <string name="panic_hide_warning_title">Memori kiel restarigi</string>
+    <string name="panic_hide_warning_message">En kriza okazo, tio ĉi forigos %1$s el la lanĉilo. Nur tajpado de “%2$d” en la ŝajn-aplikaĵo %3$s povas restarigi ĝin.</string>
+
+    <string name="hiding_calculator">Kalkulilo</string>
+    <string name="hiding_dialog_title">Kaŝi %s nun</string>
+    <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo? Nur tajpado de “%2$d” en la ŝajn-aplikaĵo %3$s povas restarigi ĝin.</string>
+    <string name="hiding_dialog_warning">Averto: ĉiu ligilo ĉe la hejmekrano ankaŭ estos forigita kaj devas esti realdonita permane.</string>
+    <string name="hide_on_long_search_press_title">Kaŝi per serĉ-butono</string>
+    <string name="hide_on_long_search_press_summary">Longe premu la serĉ-butonon por kaŝi la aplikaĵon</string>
 
     </resources>

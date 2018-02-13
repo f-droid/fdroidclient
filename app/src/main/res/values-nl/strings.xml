@@ -522,4 +522,14 @@
     <string name="panic_hide_title">%s verbergen</string>
     <string name="panic_hide_summary">App zal zichzelf verbergen</string>
 
+    <string name="panic_hide_warning_title">Onthoud hoe te herstellen</string>
+    <string name="panic_hide_warning_message">Bij een paniekgebeurtenis zal dit %1$s verwijderen uit de appstarter. Enkel door ‘%2$d’ in te voeren in de valse %3$s-app kan het hersteld worden.</string>
+
+    <string name="hiding_calculator">Rekenmachine</string>
+    <string name="hiding_dialog_title">%s nu verbergen</string>
+    <string name="hiding_dialog_message">Weet je zeker dat je %1$s uit de appstarter wil verwijderen? Enkel door ‘%2$d’ in te voeren in de valse %3$s-app kan het hersteld worden.</string>
+    <string name="hiding_dialog_warning">Waarschuwingen: alle snelkoppelingen naar de app op het startscherm zullen ook verwijderd worden, en dienen handmatig opnieuw toegevoegd te worden.</string>
+    <string name="hide_on_long_search_press_title">Verbergen met zoekknop</string>
+    <string name="hide_on_long_search_press_summary">De zoekknop lang ingedrukt houden zal de app verbergen</string>
+
     </resources>

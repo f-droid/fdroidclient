@@ -11,7 +11,7 @@
     <string name="update_interval">自动更新频率</string>
     <string name="update_interval_zero">不要自动更新应用列表</string>
     <string name="automatic_scan_wifi">仅在Wi-Fi上</string>
-    <string name="automatic_scan_wifi_on">仅在使用Wi-Fi等非计量网络时自动更新</string>
+    <string name="automatic_scan_wifi_on">仅在使用 Wi-Fi 等非计量网络时自动更新</string>
     <string name="notify">显示可用更新</string>
     <string name="notify_on">应用可供更新时显示通知</string>
     <string name="system_installer">特权扩展</string>
@@ -476,4 +476,7 @@
     <string name="panic_settings_summary">危急状况下要采取的行动</string>
     <string name="panic_exit_title">退出应用程序</string>
     <string name="panic_exit_summary">应用程序将被关闭</string>
+    <string name="panic_app_setting_none">无</string>
+    <string name="panic_hide_title">隐藏 %s</string>
+    <string name="panic_hide_summary">应用程序将隐藏自己</string>
     </resources>

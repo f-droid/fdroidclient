@@ -80,7 +80,7 @@
     <string name="search_hint">Rechercher des applis</string>
     <string name="appcompatibility">Compatibilité des applis</string>
     <string name="show_incompat_versions">Versions incompatibles</string>
-    <string name="show_incompat_versions_on">Afficher les versions d\'applis incompatibles avec cet appareil</string>
+    <string name="show_incompat_versions_on">Afficher les versions d\'applis qui sont incompatibles avec cet appareil</string>
     <string name="rooted">Ignorer root</string>
     <string name="rooted_on">Ne pas griser les applis nécessitant les privilèges root</string>
     <string name="force_touch_apps">Ignorer l\'écran tactile</string>
@@ -103,7 +103,9 @@
     <string name="proxy_host_summary">Le nom d\'hôte de votre proxy (ex : 127.0.0.1)</string>
     <string name="proxy_port">Port du proxy</string>
     <string name="proxy_port_summary">Le numéro de port de votre proxy (ex : 8118)</string>
-    <string name="status_download">Téléchargement %2$s / %3$s (%4$d%%) depuis %1$s</string>
+    <string name="status_download">Téléchargement
+\n%2$s / %3$s (%4$d%%) depuis
+\n%1$s</string>
     <string name="status_connecting_to_repo">Connexion à %1$s</string>
     <string name="repos_unchanged">Tous les dépôts sont à jour</string>
     <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
@@ -542,4 +544,11 @@
     <string name="panic_app_dialog_title">Confirmer l\'application d\'urgence ?</string>
     <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions destructrices du bouton d\'urgence ?</string>
     <string name="panic_destructive_actions">Actions destructrices</string>
+    <string name="panic_hide_warning_title">Mémoriser comment restaurer</string>
+    <string name="panic_hide_warning_message">En cas d\'urgence, cela supprimera %1$s du lanceur. Vous ne pouvez le restaurer qu\'en tapant « %2$d » dans la fausse application %3$s.</string>
+
+    <string name="hiding_calculator">Calculatrice</string>
+    <string name="hiding_dialog_title">Masquer %s maintenant</string>
+    <string name="hiding_dialog_message">Êtes-vous sûr de vouloir supprimer %1$s du lanceur. Vous ne pouvez le restaurer qu\'en tapant « %2$d » dans la fausse application %3$s.</string>
+    <string name="hiding_dialog_warning">Attention : les raccourcis d\'applications sur l\'écran d\'accueil seront aussi supprimés et devront être rajoutés manuellement.</string>
     </resources>
