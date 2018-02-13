@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -34,8 +35,16 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
+    private String sortClauseSelected = SortClause.LAST_UPDATED;
     private TextView emptyState;
     private EditText searchInput;
+    private ImageView sortImage;
+
+    private interface SortClause {
+        String NAME = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME + " asc";
+        String LAST_UPDATED = Schema.AppMetadataTable.NAME + "."
+                + Schema.AppMetadataTable.Cols.LAST_UPDATED + " desc";
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +68,35 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                     return true;
                 }
                 return false;
+            }
+        });
+
+        sortImage = (ImageView) findViewById(R.id.sort);
+        if (FDroidApp.isAppThemeLight()) {
+            sortImage.setImageResource(R.drawable.ic_last_updated_black);
+        } else {
+            sortImage.setImageResource(R.drawable.ic_last_updated_white);
+        }
+        sortImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
+                    sortClauseSelected = SortClause.NAME;
+                    if (FDroidApp.isAppThemeLight()) {
+                        sortImage.setImageResource(R.drawable.ic_az_black);
+                    } else {
+                        sortImage.setImageResource(R.drawable.ic_az_white);
+                    }
+                } else {
+                    sortClauseSelected = SortClause.LAST_UPDATED;
+                    if (FDroidApp.isAppThemeLight()) {
+                        sortImage.setImageResource(R.drawable.ic_last_updated_black);
+                    } else {
+                        sortImage.setImageResource(R.drawable.ic_last_updated_white);
+                    }
+                }
+                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
+                appView.scrollToPosition(0);
             }
         });
 
@@ -128,7 +166,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 Schema.AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                Schema.AppMetadataTable.Cols.NAME
+                sortClauseSelected
         );
     }
 
