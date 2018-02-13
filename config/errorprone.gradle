@@ -14,6 +14,7 @@ apply plugin: "net.ltgt.errorprone"
 
 tasks.withType(JavaCompile) {
     options.compilerArgs += [
+        '-XepAllDisabledChecksAsWarnings',
         '-Xep:CatchFail:OFF',
         '-Xep:ClassCanBeStatic:OFF',
         '-Xep:DateFormatConstant:OFF',
