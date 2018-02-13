@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">此應用程式的新版本使用了與舊版不同的簽署金鑰。若要安裝新版本，您必須將舊版應用程式先解除安裝。請於完成該操作後再嘗試一次。（注意，解除安裝時會清除任何由該應用程式儲存於系統中的所有資料）</string>
+    <string name="SignatureMismatch">此應用程式的新版本，使用了與舊版不同的簽署金鑰。若要安裝新版本，您必須將舊版應用程式先解除安裝。請於完成該操作後再嘗試一次。（注意，解除安裝時，會清除任何由該應用程式，儲存於系統中的所有資料）</string>
     <string name="installIncompatible">應用程式與您的裝置並不相容。您仍然要安裝嗎？</string>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
@@ -10,8 +10,8 @@
     <string name="cache_downloaded">保留快取應用程式</string>
     <string name="updates">更新</string>
     <string name="unstable_updates">非穩定版本的軟體更新</string>
-    <string name="unstable_updates_summary">建議更新至不穩定的應用軟體版本</string>
-    <string name="other">其他設定</string>
+    <string name="unstable_updates_summary">建議更新至非穩定的軟體版本</string>
+    <string name="other">其它設定</string>
 
     <string name="update_interval">自動更新間隔</string>
     <string name="update_interval_zero">不要自動更新應用程式清單</string>
@@ -20,8 +20,8 @@
     <string name="notify">顯示可用的更新</string>
     <string name="notify_on">當有可用更新時顯示通知</string>
     <string name="local_repo_name">本地端軟體庫名稱</string>
-    <string name="local_repo_name_summary">您本地端應用軟體庫對外宣傳的名稱：%s</string>
-    <string name="local_repo_https_on">使用 HTTPS 加密連線來存取本地端軟體庫</string>
+    <string name="local_repo_name_summary">您本地端軟體庫對外宣傳的名稱：%s</string>
+    <string name="local_repo_https_on">使用 HTTPS:// 加密連線來存取本地端軟體庫</string>
 
     <string name="login_title">需要驗證</string>
     <string name="login_name">使用者名稱</string>
@@ -34,7 +34,7 @@
     <string name="about_version">版本</string>
     <string name="about_site">網站</string>
     <string name="about_source">原始碼</string>
-    <string name="about_mail">電子郵件地址</string>
+    <string name="about_mail">電子郵件</string>
     <string name="about_license">授權條款</string>
 
     <string name="app_incompatible">與您的裝置不相容</string>
@@ -59,7 +59,7 @@
     <string name="cancel">取消</string>
     <string name="enable">啟用</string>
 
-    <string name="repo_add_url">應用軟體庫網址</string>
+    <string name="repo_add_url">軟體庫網址</string>
     <string name="repo_add_fingerprint">指紋（選填）</string>
     <string name="theme_night">夜晚</string>
     <string name="theme_dark">暗</string>
@@ -151,13 +151,13 @@
     <string name="menu_manage">軟體庫</string>
     <string name="menu_add_repo">新增軟體庫</string>
 
-    <string name="local_repo">本地應用軟體庫</string>
-    <string name="deleting_repo">正在刪除目前的應用軟體庫…</string>
-    <string name="adding_apks_format">正在加入 %s 到應用軟體庫…</string>
+    <string name="local_repo">本地軟體庫</string>
+    <string name="deleting_repo">正在刪除目前的軟體庫…</string>
+    <string name="adding_apks_format">正在加入 %s 到軟體庫…</string>
     <string name="copying_icons">正在複製應用程式圖示到軟體庫…</string>
-    <string name="update_notification_title">正在更新應用軟體庫</string>
-    <string name="repos_unchanged">所有應用軟體庫已更新至最新的版本</string>
-    <string name="all_other_repos_fine">所有其它應用軟體庫都沒有出現錯誤。</string>
+    <string name="update_notification_title">正在更新軟體庫</string>
+    <string name="repos_unchanged">所有軟體庫已更新至最新的版本</string>
+    <string name="all_other_repos_fine">所有其它軟體庫都沒有出現錯誤。</string>
     <string name="global_error_updating_repos">更新時發生錯誤：%s</string>
     <string name="unverified">未驗證</string>
     <string name="repo_details">軟體庫</string>
@@ -165,12 +165,12 @@
     <string name="repo_last_update">上次更新</string>
     <string name="unsigned_description">這表示應用程式清單無法被驗證。 您應該小心從未簽署索引所下載的應用程式。</string>
     <string name="repo_not_yet_updated">此軟體庫尚未被使用。 您需要啟用它才能檢視其中的應用程式。</string>
-    <string name="repo_confirm_delete_title">刪除應用軟體庫？</string>
+    <string name="repo_confirm_delete_title">要刪除軟體庫嗎？</string>
     <string name="repo_confirm_delete_body">軟體庫被刪除後，軟體庫中的應用程式將不會在 F-Droid 出現。 注意：所有之前所安裝的應用程式會保留在您的裝置上。</string>
     <string name="repo_disabled_notification">已停用 %1$s。
 \n
 \n您需重新啟用此軟體庫，才能安裝其中的應用程式。</string>
-    <string name="repo_added">已儲存 F-Droid 應用軟體庫 %1$s。</string>
+    <string name="repo_added">已儲存 F-Droid 軟體庫 %1$s。</string>
     <string name="category_Money">理財</string>
     <string name="category_Phone_SMS">通話與簡訊</string>
     <string name="category_Writing">書寫</string>
@@ -178,8 +178,8 @@
     <string name="empty_can_update_app_list">恭喜！您的應用程式都是最新的。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
-    <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
-    <string name="repo_delete_to_overwrite">在加入含有不同金鑰的應用軟體庫前，您需要先刪除此儲存庫。</string>
+    <string name="repo_exists_add_fingerprint">此軟體庫已經設定，此動作將會加入新的金鑰資訊。</string>
+    <string name="repo_delete_to_overwrite">在加入含有不同金鑰的軟體庫前，您需要先刪除此軟體庫。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     <string name="system_installer">特權擴充套件</string>
     <string name="category_Navigation">導航</string>
@@ -230,9 +230,9 @@
     <string name="system_installer_on">使用 F-Droid 特權擴充套件以安裝、更新和移除應用程式</string>
     <string name="uninstall_system">更新或解除安裝特權擴充套件</string>
     <string name="uninstall_system_summary">開啟特權擴充套件的詳細資料來更新或解除安裝</string>
-    <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
+    <string name="repo_error_empty_username">空白的使用者名稱，憑證未改變</string>
 
-    <string name="repo_exists_enable">此應用軟體庫已經設立。確認您要重新啟用它。</string>
+    <string name="repo_exists_enable">此軟體庫已經設立。確認您要重新啟用它。</string>
     <string name="repo_exists_and_enabled">進入的儲存庫已設立並已啟用。</string>
     <string name="malformed_repo_uri">略過異常的軟體庫 URI：%s</string>
     <string name="repo_provider">軟體庫：%s</string>
@@ -243,7 +243,7 @@
     <string name="touch_to_configure_local_repo">觸碰以便檢視詳細資料並允許其他去交換您的應用程式。</string>
     <string name="swap_nfc_title">觸碰以便交換</string>
     <string name="writing_index_jar">寫入已簽署的索引檔案中 (index.jar)…</string>
-    <string name="linking_apks">正在連結 APK 到應用軟體庫裡…</string>
+    <string name="linking_apks">正在連結 APK 到軟體庫裡…</string>
     <string name="next">下一步</string>
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">強制下載流量通過 Tor 以增強隱私保護。需要Orbot</string>
@@ -265,12 +265,12 @@
     <string name="up_to_maxsdk">直到 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 直到 %2$s</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
-    <string name="repo_searching_address">查看 F-Droid 應用軟體庫於 %1$s</string>
+    <string name="repo_searching_address">查看 F-Droid 軟體庫於 %1$s</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的軟體庫並不在同一個 Wi-Fi 網路上！請嘗試加入這個網路：%s</string>
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。
 \n
-\n在您的裝置上有應用程式，但 F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的應用軟體庫，或是應用軟體庫真的沒有您可用的應用程式。</string>
+\n在您的裝置上有應用程式，但 F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的軟體庫，或是軟體庫真的沒有您可用的應用程式。</string>
     <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
     <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！
 </string>
@@ -343,8 +343,8 @@
     <string name="hide_anti_feature_apps_on">以暗灰顯示需要反特徵的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否已連線至網路？</string>
     <string name="versions">版本</string>
-    <string name="app_details_donate_prompt_unknown_author">為 %1$s 開發者買杯咖啡！</string>
-    <string name="app_details_donate_prompt">%1$s 由%2$s 建立。為他們買杯咖啡吧！</string>
+    <string name="app_details_donate_prompt_unknown_author">為 %1$s 的開發者買杯咖啡！</string>
+    <string name="app_details_donate_prompt">%1$s 由 %2$s 所建立。為他們買杯咖啡吧！</string>
 
     <string name="repositories_summary">為應用程式增加其他的來源</string>
     <string name="notification_title_single_update_available">可用的更新</string>
@@ -457,7 +457,7 @@
     <string name="download_404">找不到要求的檔案。</string>
     <string name="force_old_index">強制使用舊的索引格式</string>
     <string name="force_old_index_summary">如果遇到錯誤或相容性問題，請使用 XML 應用程式索引</string>
-    <string name="app_list_download_ready">已下載、安裝準備就緒</string>
+    <string name="app_list_download_ready">已下載，安裝準備就緒</string>
 
     <string name="app_installed_media">檔案已安裝到 %s</string>
     <string name="app_permission_storage">F-Droid 需要檔案存取權限以將其安裝到裝置。請在下一個畫面允許它以繼續安裝。</string>
@@ -467,7 +467,7 @@
     <string name="app_details__no_versions__show_incompat_versions">若要在這裡顯示不相容的版本，請啟用 \"%1$s\" 設定。</string>
     <string name="app_details__no_versions__no_compatible_signatures">沒有相容簽名的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">沒有與裝置相容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的版本不相容於任何可用的版本。解除安裝該應用程式將能使您能夠查看和安裝相容的版本。這通常是透過 Google Play 或其它來源安裝的應用程式，如果它們是由不同的證書簽署時才會發生。</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的版本不相容於任何可用的版本。解除安裝該應用程式，將使您能夠查看和安裝相容的版本。這通常是透過 Google Play 或其它來源安裝的應用程式，如果它們是由不同的證書簽署時才會發生。</string>
 
     <string name="installed_app__file_corrupt">F-Droid 接收到 EIO 錯誤：%s 很可能已損壞！</string>
     <string name="app_list__dismiss_app_update">已忽略更新</string>
