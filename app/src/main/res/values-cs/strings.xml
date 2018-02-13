@@ -161,7 +161,7 @@
     <string name="appcompatibility">Kompatibilita aplikace</string>
     <string name="display">Zobrazení</string>
 
-    <string name="show_incompat_versions_on">Zobrazit verze aplikací nekompatibilní s tímto zařízením</string>
+    <string name="show_incompat_versions_on">Zobrazit verze aplikace které jsou nekompatibilní s tímto zařízením</string>
     <string name="proxy_port_summary">Číslo portu vaší proxy (např. 8118)</string>
 
     <string name="status_download">Stahování\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
@@ -543,5 +543,16 @@
     <string name="panic_destructive_actions">Destruktivní akce</string>
     <string name="panic_hide_title">Skrýt %s</string>
     <string name="panic_hide_summary">Aplikace se skryje</string>
+
+    <string name="panic_app_dialog_message">Opravdu chcete umožnit %1$s spouštět destruktivní akce panického tlačítka?</string>
+    <string name="panic_hide_warning_title">Zapamatovat si jak obnovit</string>
+    <string name="panic_hide_warning_message">V panické události, toto odebere  %1$s ze spouštěče. Pouze zadání „%2$d“ v nastrčené aplikaci %3$s ho může obnovit.</string>
+
+    <string name="hiding_calculator">Kalkulačka</string>
+    <string name="hiding_dialog_title">Skrýt %s nyní</string>
+    <string name="hiding_dialog_message">Opravdu chcete odebrat %1$s ze spouštěče? Pouze zadání „%2$d“ v nastrčené aplikaci %3$s ho může obnovit.</string>
+    <string name="hiding_dialog_warning">Varování: jakýkoli zástupce aplikace na domovské obrazovce bude také odebrán a bude třeba znovu ručně přidat.</string>
+    <string name="hide_on_long_search_press_title">Skrýt tlačítko vyhledávání</string>
+    <string name="hide_on_long_search_press_summary">Dlouhý stisk tlačítka hledání skryje aplikaci</string>
 
     </resources>
