@@ -528,7 +528,7 @@
     <string name="panic_app_setting_none">Keine</string>
     <string name="panic_settings_summary">Maßnahmen für den Notfall</string>
     <string name="panic_exit_title">App schließen</string>
-    <string name="panic_app_setting_title">Panik-Knopf App</string>
+    <string name="panic_app_setting_title">Notfalltasten-App</string>
     <string name="panic_app_unknown_app">Eine unbekannte App</string>
     <string name="panic_app_setting_summary">Keine App wurde festgelegt</string>
     <string name="panic_app_dialog_title">Bestätigung der Panik-App</string>
