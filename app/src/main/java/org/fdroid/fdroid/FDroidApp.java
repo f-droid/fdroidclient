@@ -143,6 +143,10 @@ public class FDroidApp extends Application {
         }
     }
 
+    public static boolean isAppThemeLight() {
+        return curTheme == Theme.light;
+    }
+
     public void applyDialogTheme(Activity activity) {
         activity.setTheme(getCurDialogThemeResId());
         setSecureWindow(activity);
