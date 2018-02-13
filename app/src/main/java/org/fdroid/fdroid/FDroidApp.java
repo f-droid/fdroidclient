@@ -285,7 +285,21 @@ public class FDroidApp extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
-        UpdateService.forceUpdateRepo(this);
+
+        // update the descriptions based on the new language preferences
+        SharedPreferences atStartTime = getAtStartTimeSharedPreferences();
+        final String lastLocaleKey = "lastLocale";
+        String lastLocale = atStartTime.getString(lastLocaleKey, null);
+        String currentLocale;
+        if (Build.VERSION.SDK_INT < 24) {
+            currentLocale = newConfig.locale.toString();
+        } else {
+            currentLocale = newConfig.getLocales().toString();
+        }
+        if (!TextUtils.equals(lastLocale, currentLocale)) {
+            UpdateService.forceUpdateRepo(this);
+        }
+        atStartTime.edit().putString(lastLocaleKey, currentLocale).apply();
     }
 
     @Override
@@ -435,7 +449,7 @@ public class FDroidApp extends Application {
         Provisioner.scanAndProcess(getApplicationContext());
 
         // if the underlying OS version has changed, then fully rebuild the database
-        SharedPreferences atStartTime = getSharedPreferences("at-start-time", Context.MODE_PRIVATE);
+        SharedPreferences atStartTime = getAtStartTimeSharedPreferences();
         if (Build.VERSION.SDK_INT != atStartTime.getInt("build-version", Build.VERSION.SDK_INT)) {
             UpdateService.forceUpdateRepo(this);
         }
@@ -481,6 +495,10 @@ public class FDroidApp extends Application {
             return BluetoothAdapter.getDefaultAdapter();
         }
         return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
+    }
+
+    private SharedPreferences getAtStartTimeSharedPreferences() {
+        return getSharedPreferences("at-start-time", Context.MODE_PRIVATE);
     }
 
     public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {

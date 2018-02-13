@@ -706,11 +706,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.compatible = true;
     }
 
+    /**
+     * Initializes an {@link App} instances from an APK file. Since the file
+     * could in the cache, and files can disappear from the cache at any time,
+     * this needs to be quite defensive ensuring that {@code apkFile} still
+     * exists.
+     */
     private void initApkFromApkFile(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
             throws IOException, CertificateEncodingException {
         // TODO include signature hash calculation here
-        apk.hashType = "sha256";
-        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+        if (apkFile.canRead()) {
+            apk.hashType = "sha256";
+            apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+        }
         initInstalledApk(context, apk, packageInfo, apkFile);
     }
 
@@ -750,10 +758,22 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         apk.packageName = this.packageName;
         apk.requestedPermissions = packageInfo.requestedPermissions;
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
-        apk.installedFile = apkFile;
 
         initInstalledObbFiles(apk);
 
+        final FeatureInfo[] features = packageInfo.reqFeatures;
+        if (features != null && features.length > 0) {
+            apk.features = new String[features.length];
+            for (int i = 0; i < features.length; i++) {
+                apk.features[i] = features[i].name;
+            }
+        }
+
+        if (!apkFile.canRead()) {
+            return;
+        }
+
+        apk.installedFile = apkFile;
         JarFile apkJar = new JarFile(apkFile);
         HashSet<String> abis = new HashSet<>(3);
         Pattern pattern = Pattern.compile("^lib/([a-z0-9-]+)/.*");
@@ -765,14 +785,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
         apk.nativecode = abis.toArray(new String[abis.size()]);
-
-        final FeatureInfo[] features = packageInfo.reqFeatures;
-        if (features != null && features.length > 0) {
-            apk.features = new String[features.length];
-            for (int i = 0; i < features.length; i++) {
-                apk.features[i] = features[i].name;
-            }
-        }
 
         final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
 

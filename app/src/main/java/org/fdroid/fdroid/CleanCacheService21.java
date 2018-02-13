@@ -14,6 +14,9 @@ import java.io.File;
 @TargetApi(21)
 class CleanCacheService21 {
     static void deleteIfOld(File file, long olderThan) {
+        if (file == null || !file.exists()) {
+            return;
+        }
         try {
             StructStat stat = Os.lstat(file.getAbsolutePath());
             if ((stat.st_atime * 1000L) < olderThan) {

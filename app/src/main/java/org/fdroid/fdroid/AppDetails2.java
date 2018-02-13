@@ -48,10 +48,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -69,8 +67,9 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
 
-@SuppressWarnings("LineLength")
-public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener, AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
+public class AppDetails2 extends AppCompatActivity
+        implements ShareChooserDialog.ShareChooserDialogListener,
+        AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
     public static final String EXTRA_APPID = "appid";
     private static final String TAG = "AppDetails2";
@@ -121,7 +120,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         appBarLayout = (AppBarLayout) coordinatorLayout.findViewById(R.id.app_bar);
         recyclerView = (RecyclerView) findViewById(R.id.rvDetails);
         adapter = new AppDetailsRecyclerViewAdapter(this, app, this);
-        OverscrollLinearLayoutManager lm = new OverscrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        OverscrollLinearLayoutManager lm = new OverscrollLinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
 
         // Has to be invoked after AppDetailsRecyclerViewAdapter is created.
@@ -146,10 +146,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             public int onOverscrollY(int overscroll) {
                 int consumed = 0;
                 if (overscroll < 0) {
-                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)
+                            appBarLayout.getLayoutParams();
                     CoordinatorLayout.Behavior behavior = lp.getBehavior();
                     if (behavior != null && behavior instanceof AppBarLayout.Behavior) {
-                        ((AppBarLayout.Behavior) behavior).onNestedScroll(coordinatorLayout, appBarLayout, recyclerView, 0, 0, 0, overscroll);
+                        ((AppBarLayout.Behavior) behavior).onNestedScroll(
+                                coordinatorLayout, appBarLayout, recyclerView, 0, 0, 0, overscroll);
                         consumed = overscroll; // Consume all of it!
                     }
                 }
@@ -173,7 +175,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
         DisplayImageOptions displayImageOptions = Utils.getImageLoadingOptions().build();
         String featureGraphicUrl = app.getFeatureGraphicUrl(this);
-        featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions, featureGraphicUrl, app.iconUrl);
+        featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions,
+                featureGraphicUrl, app.iconUrl);
     }
 
     private String getPackageNameFromIntent(Intent intent) {
@@ -197,26 +200,27 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         app = newApp;
 
         // Remove all "installed" statuses for this app, since we are now viewing it.
-        AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-        for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
             if (status.status == AppUpdateStatusManager.Status.Installed) {
-                appUpdateStatusManager.removeApk(status.getUniqueKey());
+                ausm.removeApk(status.getUniqueKey());
             }
         }
     }
 
     /**
-     * Some notifications (like "downloading" and "installed") are not shown for this app if it is open in app details.
-     * When closing, we need to refresh the notifications, so they are displayed again.
+     * Some notifications (like "downloading" and "installed") are not shown
+     * for this app if it is open in app details.  When closing, we need to
+     * refresh the notifications, so they are displayed again.
      */
     private void updateNotificationsForApp() {
         if (app != null) {
-            AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-            for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+            AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+            for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
                 if (status.status == AppUpdateStatusManager.Status.Installed) {
-                    appUpdateStatusManager.removeApk(status.getUniqueKey());
+                    ausm.removeApk(status.getUniqueKey());
                 } else {
-                    appUpdateStatusManager.refreshApk(status.getUniqueKey());
+                    ausm.refreshApk(status.getUniqueKey());
                 }
             }
         }
@@ -245,7 +249,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
      * Then, asks the view to update itself to reflect this status.
      */
     private void refreshStatus() {
-        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = AppUpdateStatusManager.getInstance(this).getByPackageName(app.packageName).iterator();
+        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = ausm.getByPackageName(app.packageName).iterator();
         if (statuses.hasNext()) {
             AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
             updateAppStatus(status, false);
@@ -304,10 +309,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary
+                    + ") - https://f-droid.org/app/" + app.packageName);
 
             boolean showNearbyItem = app.isInstalled(getApplicationContext()) && fdroidApp.bluetoothAdapter != null;
-            ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, this, shareIntent, showNearbyItem);
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
+            ShareChooserDialog.createChooser(coordinatorLayout, this, this, shareIntent, showNearbyItem);
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
             app.getPrefs(this).ignoreAllUpdates ^= true;
@@ -420,7 +427,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     private void initiateInstall(Apk apk) {
         if (isAppDownloading()) {
-            Log.i(TAG, "Ignoring request to install " + apk.packageName + " version " + apk.versionName + ", as we are already downloading (either that or a different version).");
+            Log.i(TAG, "Ignoring request to install " + apk.packageName + " version " + apk.versionName
+                    + ", as we are already downloading (either that or a different version).");
             return;
         }
 
@@ -489,7 +497,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             case ReadyToInstall:
                 if (justReceived) {
                     adapter.clearProgress();
-                    localBroadcastManager.registerReceiver(installReceiver, Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
+                    localBroadcastManager.registerReceiver(installReceiver,
+                            Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
                 }
                 break;
 
@@ -520,13 +529,19 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     private final BroadcastReceiver appStatusReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            AppUpdateStatusManager.AppUpdateStatus status = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
+            AppUpdateStatusManager.AppUpdateStatus status = intent.getParcelableExtra(
+                    AppUpdateStatusManager.EXTRA_STATUS);
 
-            boolean isRemoving = TextUtils.equals(intent.getAction(), AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
-            if (currentStatus != null && isRemoving && !TextUtils.equals(status.getUniqueKey(), currentStatus.getUniqueKey())) {
-                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + status.getUniqueKey() + " not " + currentStatus.getUniqueKey());
+            boolean isRemoving = TextUtils.equals(intent.getAction(),
+                    AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
+            if (currentStatus != null
+                    && isRemoving
+                    && !TextUtils.equals(status.getUniqueKey(), currentStatus.getUniqueKey())) {
+                Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
+                        + status.getUniqueKey() + " not " + currentStatus.getUniqueKey());
             } else if (status != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
-                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + status.apk.packageName + " not " + app.packageName);
+                Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
+                        + status.apk.packageName + " not " + app.packageName);
             } else {
                 updateAppStatus(status, true);
             }
@@ -583,15 +598,17 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 case Installer.ACTION_INSTALL_USER_INTERACTION:
                     Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                     if (!isAppVisible(apk.packageName)) {
-                        Utils.debugLog(TAG, "Ignore request for user interaction from installer, because " + apk.packageName + " is no longer showing.");
+                        Utils.debugLog(TAG, "Ignore request for user interaction from installer, because "
+                                + apk.packageName + " is no longer showing.");
                         break;
                     }
 
-                    Utils.debugLog(TAG, "Automatically showing package manager for " + apk.packageName + " as it is being viewed by the user.");
-                    PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                    Utils.debugLog(TAG, "Automatically showing package manager for " + apk.packageName
+                            + " as it is being viewed by the user.");
+                    PendingIntent pendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
                     try {
-                        installPendingIntent.send();
+                        pendingIntent.send();
                     } catch (PendingIntent.CanceledException e) {
                         Log.e(TAG, "PI canceled", e);
                     }
