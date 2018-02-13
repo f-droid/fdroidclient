@@ -45,6 +45,13 @@ test:
     - ./gradlew test || export EXITVALUE=1
     - exit $EXITVALUE
 
+errorprone:
+  stage: test
+  script:
+    - cat config/errorprone.gradle >> app/build.gradle
+    - ./gradlew assembleDebug
+  allow_failure: true
+
 connected10:
   stage: test
   <<: *test-template
