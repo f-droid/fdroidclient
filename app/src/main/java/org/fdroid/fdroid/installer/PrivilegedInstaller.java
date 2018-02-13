@@ -55,12 +55,11 @@ import java.util.HashMap;
  * <p/>
  * This installer makes unattended installs/uninstalls possible.
  * Thus no PendingIntents are returned.
- * <p/>
- * Sources for Android 4.4 change:
- * https://groups.google.com/forum/#!msg/android-
- * security-discuss/r7uL_OEMU5c/LijNHvxeV80J
- * https://android.googlesource.com/platform
- * /frameworks/base/+/ccbf84f44c9e6a5ed3c08673614826bb237afc54
+ *
+ * @see <a href="https://groups.google.com/forum/#!msg/android-security-discuss/r7uL_OEMU5c/LijNHvxeV80J">
+ * Sources for Android 4.4 change</a>
+ * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/ccbf84f44">
+ * Commit that restricted "signatureOrSystem" permissions</a>
  */
 public class PrivilegedInstaller extends Installer {
 
