@@ -273,7 +273,7 @@
     <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en
         feilrapport om dette omgående!
     </string>
-    <string name="system_install_post_success">F-Droid priviligert tillegg installert</string>
+    <string name="system_install_post_success">F-Droid-rettighetsutvidelse installert</string>
     <string name="system_install_post_fail">Installasjon av F-Droid som priviligert tillegg feilet</string>
     <string name="system_install_post_success_message">F-Droid installert som priviligert tillegg. Dette lar F-droid installere, oppgradere og avinstallere programmer på egenhånd.</string>
     <string name="system_install_post_fail_message">Installasjon av F-droid som priviligert tillegg feilet.
