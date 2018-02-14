@@ -144,6 +144,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.BITCOIN + " string,"
             + AppMetadataTable.Cols.LITECOIN + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
+            + AppMetadataTable.Cols.LIBERAPAY_ID + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
@@ -214,7 +215,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 76;
+    protected static final int DB_VERSION = 77;
 
     private final Context context;
 
@@ -322,6 +323,20 @@ public class DBHelper extends SQLiteOpenHelper {
         addIsAppToApp(db, oldVersion);
         addApkAntiFeatures(db, oldVersion);
         addIgnoreVulnPref(db, oldVersion);
+        addLiberapayID(db, oldVersion);
+    }
+
+    private void addLiberapayID(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 77) {
+            return;
+        }
+
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.LIBERAPAY_ID)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.LIBERAPAY_ID + " field to "
+                    + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
+                    + AppMetadataTable.Cols.LIBERAPAY_ID + " string;");
+        }
     }
 
     private void addIgnoreVulnPref(SQLiteDatabase db, int oldVersion) {

@@ -274,6 +274,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "iconUrlLarge",
                 "issueTracker",
                 "lastUpdated",
+                "liberapayID",
                 "license",
                 "litecoin",
                 "name",

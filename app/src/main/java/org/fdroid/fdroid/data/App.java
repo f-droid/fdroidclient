@@ -157,6 +157,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String flattrID;
 
+    public String liberapayID;
+
     public String upstreamVersionName;
 
     /**
@@ -291,6 +293,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.FLATTR_ID:
                     flattrID = cursor.getString(i);
+                    break;
+                case Cols.LIBERAPAY_ID:
+                    liberapayID = cursor.getString(i);
                     break;
                 case Cols.SuggestedApk.VERSION_NAME:
                     suggestedVersionName = cursor.getString(i);
@@ -919,6 +924,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.BITCOIN, bitcoin);
         values.put(Cols.LITECOIN, litecoin);
         values.put(Cols.FLATTR_ID, flattrID);
+        values.put(Cols.LIBERAPAY_ID, liberapayID);
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
@@ -1034,6 +1040,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return TextUtils.isEmpty(flattrID) ? null : "https://flattr.com/thing/" + flattrID;
     }
 
+    @Nullable
+    public String getLiberapayUri() {
+        return TextUtils.isEmpty(liberapayID) ? null : "https://liberapay.com/~" + liberapayID;
+    }
+
+
     /**
      * @see App#suggestedVersionName for why this uses a getter while other member variables are
      * publicly accessible.
@@ -1134,6 +1146,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.bitcoin);
         dest.writeString(this.litecoin);
         dest.writeString(this.flattrID);
+        dest.writeString(this.liberapayID);
         dest.writeString(this.preferredSigner);
         dest.writeString(this.upstreamVersionName);
         dest.writeInt(this.upstreamVersionCode);
@@ -1183,6 +1196,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.bitcoin = in.readString();
         this.litecoin = in.readString();
         this.flattrID = in.readString();
+        this.liberapayID = in.readString();
         this.preferredSigner = in.readString();
         this.upstreamVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();
