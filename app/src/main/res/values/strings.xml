@@ -170,6 +170,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
+    <string name="menu_liberapay">Liberapay</string>
 
     <string name="main_menu__latest_apps">Latest</string>
     <string name="main_menu__categories">Categories</string>

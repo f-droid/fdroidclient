@@ -202,7 +202,8 @@ public class AppDetailsRecyclerViewAdapter
         return uriIsSetAndCanBeOpened(app.donate) ||
                 uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
-                uriIsSetAndCanBeOpened(app.getFlattrUri());
+                uriIsSetAndCanBeOpened(app.getFlattrUri()) ||
+                uriIsSetAndCanBeOpened(app.getLiberapayUri());
     }
 
     public void clearProgress() {
@@ -648,6 +649,10 @@ public class AppDetailsRecyclerViewAdapter
             // Flattr
             if (uriIsSetAndCanBeOpened(app.getFlattrUri())) {
                 addDonateOption(R.layout.donate_flattr, app.getFlattrUri());
+            }
+            // LiberaPay
+            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
+                addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
             }
         }
 
