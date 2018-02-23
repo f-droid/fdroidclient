@@ -27,7 +27,7 @@ EOFU
 VARIANT="$1"
 [[ -z "$VARIANT" ]] && error "Missing variant"
 
-BINARIES="$2"
+VERSIONCODE=$2
 
 GPG="gpg --keyring $PROG_DIR/f-droid.org-signing-key.gpg --no-default-keyring --trust-model always"
 
@@ -40,10 +40,17 @@ mkdir -p $TMP_DIR/META-INF/com/google/android/
 cp app/src/main/scripts/update-binary $TMP_DIR/META-INF/com/google/android/
 
 if [ $VARIANT == "binary" ] ; then
-	curl -L https://f-droid.org/$FDROID_APK > $TMP_DIR/$FDROID_APK
-	curl -L https://f-droid.org/${FDROID_APK}.asc > $TMP_DIR/${FDROID_APK}.asc
-	$GPG --verify $TMP_DIR/${FDROID_APK}.asc
-	rm $TMP_DIR/${FDROID_APK}.asc
+    if [ -z $VERSIONCODE ]; then
+        curl -L https://f-droid.org/$FDROID_APK > $TMP_DIR/$FDROID_APK
+        curl -L https://f-droid.org/${FDROID_APK}.asc > $TMP_DIR/${FDROID_APK}.asc
+    else
+        GITVERSION=$VERSIONCODE
+        DL_APK=org.fdroid.fdroid_${VERSIONCODE}.apk
+        curl -L https://f-droid.org/repo/$DL_APK > $TMP_DIR/$FDROID_APK
+        curl -L https://f-droid.org/repo/${DL_APK}.asc > $TMP_DIR/${FDROID_APK}.asc
+    fi
+    $GPG --verify $TMP_DIR/${FDROID_APK}.asc
+    rm $TMP_DIR/${FDROID_APK}.asc
 else
     cd $PROG_DIR
     ./gradlew assemble$(echo $VARIANT | tr 'dr' 'DR')
