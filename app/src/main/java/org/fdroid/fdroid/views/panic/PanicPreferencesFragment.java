@@ -7,16 +7,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.TypedValue;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -144,7 +150,13 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
             prefApp.setSummary(getString(R.string.panic_app_setting_summary));
             if (Build.VERSION.SDK_INT >= 11) {
                 prefApp.setIcon(null); // otherwise re-setting view resource doesn't work
-                prefApp.setIcon(R.drawable.ic_cancel);
+                Drawable icon = ContextCompat.getDrawable(getContext(), R.drawable.ic_cancel);
+                TypedValue typedValue = new TypedValue();
+                Resources.Theme theme = getContext().getTheme();
+                theme.resolveAttribute(R.attr.appListItem, typedValue, true);
+                @ColorInt int color = typedValue.data;
+                icon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+                prefApp.setIcon(icon);
             }
             // disable destructive panic actions
             prefHide.setEnabled(false);

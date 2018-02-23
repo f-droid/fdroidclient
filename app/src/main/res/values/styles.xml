@@ -78,6 +78,7 @@
     <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert" />
     <style name="AlertDialogThemeDark" parent="AlertDialogBaseThemeDark">
         <item name="colorAccent">@color/fdroid_green</item>
+        <item name="android:windowBackground">@color/cardview_dark_background</item>
     </style>
 
     <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert" />
