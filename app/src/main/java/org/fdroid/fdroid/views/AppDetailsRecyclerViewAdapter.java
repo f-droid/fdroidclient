@@ -911,7 +911,7 @@ public class AppDetailsRecyclerViewAdapter
 
             int margin = context.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
             int padding = context.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
-            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
+            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), margin + padding + ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
         }
 
         public void bindModel(final Apk apk) {
