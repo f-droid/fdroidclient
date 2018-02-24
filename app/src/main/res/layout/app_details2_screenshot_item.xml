@@ -6,6 +6,7 @@
     android:layout_margin="@dimen/details_screenshot_margin"
     android:padding="10dp"
     app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="0dp"
     app:cardElevation="3dp">
 
     <ImageView
@@ -14,6 +15,6 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:minWidth="@dimen/details_screenshot_width"
-        android:scaleType="fitCenter" />
+        android:scaleType="centerCrop" />
 
 </android.support.v7.widget.CardView>
