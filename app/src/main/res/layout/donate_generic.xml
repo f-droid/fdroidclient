@@ -6,5 +6,9 @@
     android:drawableLeft="@drawable/ic_donate"
     android:drawableStart="@drawable/ic_donate"
     android:drawablePadding="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginRight="4dp"
     android:gravity="center_vertical"
     android:text="@string/menu_donate" />
