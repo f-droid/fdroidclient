@@ -243,7 +243,7 @@ public class AppDetailsRecyclerViewAdapter
                     return new VersionsViewHolder(versionsView);
                 }
             case VIEWTYPE_VERSION:
-                View version = inflater.inflate(R.layout.apklistitem, parent, false);
+                View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 return new VersionViewHolder(version);
         }
         return null;
