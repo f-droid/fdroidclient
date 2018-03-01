@@ -554,5 +554,6 @@
     <string name="hiding_dialog_warning">Varování: jakýkoli zástupce aplikace na domovské obrazovce bude také odebrán a bude třeba znovu ručně přidat.</string>
     <string name="hide_on_long_search_press_title">Skrýt tlačítko vyhledávání</string>
     <string name="hide_on_long_search_press_summary">Dlouhý stisk tlačítka hledání skryje aplikaci</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

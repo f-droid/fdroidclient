@@ -531,5 +531,6 @@
     <string name="hiding_dialog_warning">Waarschuwingen: alle snelkoppelingen naar de app op het startscherm zullen ook verwijderd worden, en dienen handmatig opnieuw toegevoegd te worden.</string>
     <string name="hide_on_long_search_press_title">Verbergen met zoekknop</string>
     <string name="hide_on_long_search_press_summary">De zoekknop lang ingedrukt houden zal de app verbergen</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

@@ -397,4 +397,5 @@
         แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป
     </string>
 <string name="main_menu__latest_apps">ล่าสุด</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

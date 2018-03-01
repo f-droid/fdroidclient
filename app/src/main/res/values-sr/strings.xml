@@ -518,5 +518,6 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа уклоните апликацију.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа надоградите апликацију.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

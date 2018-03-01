@@ -557,5 +557,6 @@
     <string name="hiding_dialog_title">Ocultar %s agora</string>
     <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisa</string>
     <string name="hide_on_long_search_press_summary">Toque longo no botão de pesquisa oculta a aplicação</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

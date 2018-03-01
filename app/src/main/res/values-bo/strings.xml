@@ -474,5 +474,6 @@
     <string name="privacy">གསང་དོན།</string>
     <string name="preventScreenshots_title">དྲྭ་ཤེལ་པར་ལེན་བཀག</string>
     <string name="preventScreenshots_summary">ཉེ་བའི་ཆར་གྱི་མཉེས་ཆས་དྲྭ་ཤེལ་ནས་དྲྭ་ཤེལ་པར་ལེན་བཀག་པ་དང་། དྲྭ་ཤེལ་པར་ལེན་ནསམཉེས་ཆས་ནང་དོན་སྦས་པ།</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

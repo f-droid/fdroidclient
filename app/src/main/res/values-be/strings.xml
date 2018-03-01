@@ -575,4 +575,5 @@
 
     <string name="panic_exit_title">Выйсці з праграмы</string>
     <string name="panic_hide_warning_title">Запомніць як аднаўляць</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

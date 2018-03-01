@@ -528,4 +528,5 @@
     <string name="app_list_download_ready">Afgelaai, gereed om te installeer</string>
 
     <string name="status_inserting_x_apps">Stoor program besonderhede (%1$d/%2$d) vanaf %3$s</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

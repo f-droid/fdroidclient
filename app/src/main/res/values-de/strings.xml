@@ -548,4 +548,5 @@
     <string name="panic_hide_warning_message">In einem Krisenereignis werden %1$s aus dem Programmstarter entfernt. Nur die Eingabe von „%2$d” in der gefälschten %3$s-App kann sie wiederherstellen.</string>
 
     <string name="hiding_dialog_warning">Warnhinweis. Alle Verknüpfungen auf dem Startbildschirm werden ebenfalls entfernt und müssen manuell hinzugefügt werden.</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

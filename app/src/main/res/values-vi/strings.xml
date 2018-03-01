@@ -489,6 +489,7 @@
 </plurals>
 
     <string name="details_last_updated_today">Được cập nhật hôm nay</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
     <plurals name="details_last_update_days">
 	<item quantity="other">Được cập nhật %1$d ngày trước</item>
 </plurals>

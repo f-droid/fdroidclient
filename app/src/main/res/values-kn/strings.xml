@@ -83,4 +83,5 @@
     <string name="other">ಇತರೆ</string>
 
     <string name="delete">ಅಳಿಸು</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

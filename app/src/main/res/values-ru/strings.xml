@@ -544,5 +544,6 @@
     <string name="privacy">Приватность</string>
     <string name="preventScreenshots_title">Предотвратить Скриншоты</string>
     <string name="preventScreenshots_summary">Блокировать скриншоты от последних приложений</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

@@ -136,4 +136,5 @@
     <string name="force_old_index">Priversti senąjį indeksavimo formatą</string>
     <string name="update_interval_zero">Nėra automatinio programėlių sąrašo atnaujinimų</string>
     <string name="update_auto_download_summary">Atnaujinimai parsiunčiami automatiškai o Jūs perspėjami juos instaliuoti</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

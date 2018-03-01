@@ -515,4 +515,5 @@
 	<item quantity="other">Actualizado hai %1$d anos</item>
 </plurals>
 <string name="status_inserting_apps">Gardando os detalles das apps</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

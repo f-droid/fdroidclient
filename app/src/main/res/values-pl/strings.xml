@@ -561,5 +561,6 @@
     <string name="hiding_dialog_warning">Ostrzeżenie: ponadto każdy skrót na ekranie startowym zostanie usunięty i wymagane będzie ponowne dodanie ich ręcznie.</string>
     <string name="hide_on_long_search_press_title">Ukryj przyciskiem szukania</string>
     <string name="hide_on_long_search_press_summary">Przytrzymanie przycisku szukania ukryje aplikację</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

@@ -518,5 +518,6 @@
     <string name="panic_destructive_actions">الإجراءات التدميرية</string>
     <string name="panic_hide_title">إخفاء %s</string>
     <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

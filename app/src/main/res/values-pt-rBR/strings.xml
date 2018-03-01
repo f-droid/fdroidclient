@@ -560,5 +560,6 @@
     <string name="hiding_dialog_warning">Atenção: Todos os atalhos de aplicativos na tela inicial também serão removidos e precisarão ser re-adicionados manualmente.</string>
     <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
     <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um tempo longo vai esconder o app</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

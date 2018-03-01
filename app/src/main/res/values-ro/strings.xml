@@ -504,4 +504,5 @@
     <string name="hiding_calculator">Calculator</string>
     <string name="hiding_dialog_title">Ascunde %s acum</string>
     <string name="hide_on_long_search_press_title">Ascunde cu butonul de căutare</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>

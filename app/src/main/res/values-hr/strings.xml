@@ -404,4 +404,5 @@
     </string>
     <string name="hide_anti_feature_apps">Obilježi aplikacije s nepoželjnim svojstvima</string>
     <string name="hide_anti_feature_apps_on">Obilježi aplikacije koje zahtjevaju nepoželjna svojstva</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

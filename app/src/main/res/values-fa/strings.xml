@@ -514,5 +514,6 @@
     <string name="hiding_dialog_warning">هشدار: هر میانبر کاره‌ای روی صفحهٔ خانگی هم برداشته می‌شود و باید دوباره به صورت دستی افزوده شود.</string>
     <string name="hide_on_long_search_press_title">پنهان کردن با دکمهٔ جست‌وجو</string>
     <string name="hide_on_long_search_press_summary">لمس طولانی دکمهٔ جست‌وجو، کاره را پنهان می‌کند</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

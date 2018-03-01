@@ -541,5 +541,6 @@
     <string name="hiding_dialog_warning">Uyarı: Ana ekrandaki her bir uygulama kısayolu da kaldırılacak ve elle yeniden eklenmesi gerekecek.</string>
     <string name="hide_on_long_search_press_title">Arama düğmesiyle gizle</string>
     <string name="hide_on_long_search_press_summary">Arama düğmesine uzun basmak uygulamayı gizler</string>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
-    </resources>
+</resources>

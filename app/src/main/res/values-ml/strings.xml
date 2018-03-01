@@ -452,4 +452,5 @@
     <string name="perms_description_app">%1$s നൽകിയത്.</string>
     <string name="enable_proxy_summary">എല്ലാ നെറ്റ്വർക്ക് അഭ്യർത്ഥനകൾക്കും പ്രോക്സി ക്രമീകരിക്കുക</string>
     <string name="proxy_host">പ്രോക്സി ഹോസ്റ്റ്</string>
-    </resources>
+    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
+</resources>
