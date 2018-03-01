@@ -227,11 +227,18 @@
     <style name="SwapTheme.Wizard.MainTextBase" parent="@style/SwapTheme.Wizard.Text">
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
     </style>
 
     <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase" />
+
+    <style name="SwapTheme.Wizard.QRScanWarningText" parent="@style/SwapTheme.Wizard.MainTextBase" >
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
 
     <style name="SwapTheme.Wizard.LocalIpAddress" parent="@style/SwapTheme.Wizard.Text">
         <item name="android:textSize">20sp</item>
