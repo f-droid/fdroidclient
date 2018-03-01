@@ -29,6 +29,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
 import java.net.URI;
 import java.util.List;
@@ -63,6 +64,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     protected void onFinishInflate() {
         super.onFinishInflate();
         setUIFromWifi();
+        setUpWarningMessageQrScan();
 
         ImageView qrImage = (ImageView) findViewById(R.id.wifi_qr_code);
 
@@ -80,6 +82,14 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 onWifiStateChanged, new IntentFilter(WifiStateChangeService.BROADCAST));
     }
+
+    private void setUpWarningMessageQrScan() {
+        final View qrWarnningMessage = findViewById(R.id.warning_qr_scanner);
+        final boolean hasAutofocus = CameraCharacteristicsChecker.getInstance(getContext()).hasAutofocus();
+        final int visiblity = hasAutofocus ? GONE : VISIBLE;
+        qrWarnningMessage.setVisibility(visiblity);
+    }
+
 
     /**
      * Remove relevant listeners/receivers/etc so that they do not receive and process events
