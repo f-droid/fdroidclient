@@ -13,8 +13,7 @@ import android.util.Log;
 public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChecker {
 
     private static final String TAG = "CameraCharMinApiLevel21";
-    final private CameraManager cameraManager;
-
+    private final CameraManager cameraManager;
 
     protected CameraCharacteristicsMinApiLevel21(final Context context) {
         this.cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
