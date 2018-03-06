@@ -243,7 +243,7 @@ public class AppDetailsRecyclerViewAdapter
                     return new VersionsViewHolder(versionsView);
                 }
             case VIEWTYPE_VERSION:
-                View version = inflater.inflate(R.layout.apklistitem, parent, false);
+                View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 return new VersionViewHolder(version);
         }
         return null;
@@ -387,12 +387,12 @@ public class AppDetailsRecyclerViewAdapter
                     progressLabel.setContentDescription(context.getString(R.string.downloading));
                     progressPercent.setText("");
                 } else if (totalBytes > 0 && bytesDownloaded >= 0) {
-                    float percent = bytesDownloaded * 100 / totalBytes;
+                    float percent = (float) bytesDownloaded / totalBytes;
                     progressLabel.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
                     progressLabel.setContentDescription(context.getString(R.string.app__tts__downloading_progress, (int) percent));
                     NumberFormat format = NumberFormat.getPercentInstance();
                     format.setMaximumFractionDigits(0);
-                    progressPercent.setText(format.format(percent / 100));
+                    progressPercent.setText(format.format(percent));
                 } else if (bytesDownloaded >= 0) {
                     progressLabel.setText(Utils.getFriendlySize(bytesDownloaded));
                     progressLabel.setContentDescription(context.getString(R.string.downloading));
