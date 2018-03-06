@@ -536,4 +536,4 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorovať</string>
 
     <string name="status_inserting_x_apps">Ukladanie podrobností aplikácie (%1$d/%2$d) z %3$s</string>
-    </resources>
+</resources>

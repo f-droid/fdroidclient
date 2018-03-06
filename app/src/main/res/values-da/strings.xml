@@ -503,4 +503,4 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     <string name="status_inserting_x_apps">Gemmer app detaljer (%1$d/%2$d) fra %3$s</string>
-    </resources>
+</resources>
