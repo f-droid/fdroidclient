@@ -30,7 +30,8 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
         body = fp.read()
     body = re.sub(b'.*<item quantity="[a-z]+"/>.*\n', b'', body)
     # Weblate is not handling plurals right https://github.com/WeblateOrg/weblate/issues/520
-    if os.path.basename(d)[7:9] in ('ja', 'ko', 'zh'):
+    language = os.path.basename(d)[7:9]  # careful, its not the whole locale!
+    if language in ('ja', 'ko', 'zh'):
         body = re.sub(b'<item quantity="one">', b'<item quantity="other">', body)
     with open(str_path, 'wb') as fp:
         fp.write(body)
@@ -61,7 +62,7 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
                 e.remove(item)
             elif item.attrib['quantity'] == 'other':
                 found_other = True
-        if not found_other:
+        if not found_other and language not in ('be', 'pl', 'ru'):
             print(os.path.relpath(str_path) + ': Missing "other" string in', e.attrib['name'])
             count += 1
 
