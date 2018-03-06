@@ -352,9 +352,9 @@
     <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
     <string name="updates__show_updateable_apps">Alkalmazások megjelenítése</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Frissítés letöltése %1$d apphoz.</item>
-	<item quantity="other">Frissítés letöltése %1$d apphoz.</item>
-</plurals>
+        <item quantity="one">Frissítés letöltése %1$d apphoz.</item>
+        <item quantity="other">Frissítés letöltése %1$d apphoz.</item>
+    </plurals>
 
     <string name="clear_search">Keresés törlése</string>
 
@@ -399,9 +399,9 @@
 
     <string name="app__tts__downloading_progress">Letöltés, %1$d%% kész</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d további…</item>
-	<item quantity="other">+%1$d további…</item>
-</plurals>
+        <item quantity="one">+%1$d további…</item>
+        <item quantity="other">+%1$d további…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Telepítésre kész</string>
     <string name="notification_title_single_ready_to_install_update">A frissítés telepítésre kész</string>
     <string name="notification_title_single_install_error">A telepítés sikertelen</string>
@@ -410,13 +410,13 @@
     <string name="notification_content_single_installing">„%1$s” telepítése…</string>
     <string name="notification_content_single_installed">Sikeresen telepítve</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d frissítés</item>
-	<item quantity="other">%1$d frissítés</item>
-</plurals>
+        <item quantity="one">%1$d frissítés</item>
+        <item quantity="other">%1$d frissítés</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d alkalmazás telepítve</item>
-	<item quantity="other">%1$d alkalmazás telepítve</item>
-</plurals>
+        <item quantity="one">%1$d alkalmazás telepítve</item>
+        <item quantity="other">%1$d alkalmazás telepítve</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Frissítés elérhető</string>
     <string name="notification_title_summary_downloading">Letöltés…</string>
     <string name="notification_title_summary_downloading_update">Frissítés letöltése…</string>
@@ -425,34 +425,34 @@
     <string name="notification_title_summary_installing">Telepítés folyamatban</string>
     <string name="notification_title_summary_installed">Sikeresen telepítve</string>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">%1$d alkalmazás megtekintése a(z) %2$s kategóriában</item>
-	<item quantity="other">Mind a(z) %1$d alkalmazás megtekintése a(z) %2$s kategóriából</item>
-</plurals>
+        <item quantity="one">%1$d alkalmazás megtekintése a(z) %2$s kategóriában</item>
+        <item quantity="other">Mind a(z) %1$d alkalmazás megtekintése a(z) %2$s kategóriából</item>
+    </plurals>
 
     <string name="details_last_updated_today">Ma frissítve</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Tegnap frissítve</item>
-	<item quantity="other">%1$d napja frissítve</item>
-</plurals>
+        <item quantity="one">Tegnap frissítve</item>
+        <item quantity="other">%1$d napja frissítve</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$d hete frissítve</item>
-	<item quantity="other">%1$d hete frissítve</item>
-</plurals>
+        <item quantity="one">%1$d hete frissítve</item>
+        <item quantity="other">%1$d hete frissítve</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$d hónapja frissítve</item>
-	<item quantity="other">%1$d hónapja frissítve</item>
-</plurals>
+        <item quantity="one">%1$d hónapja frissítve</item>
+        <item quantity="other">%1$d hónapja frissítve</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$d éve frissítve</item>
-	<item quantity="other">%1$d éve frissítve</item>
-</plurals>
+        <item quantity="one">%1$d éve frissítve</item>
+        <item quantity="other">%1$d éve frissítve</item>
+    </plurals>
 <string name="app_installed_media">A fájl telepítve ide: %s</string>
     <string name="installed_app__file_corrupt">Az F-Droid EIO hibát kapott: a(z) %s valószínűleg sérült!</string>
     <string name="status_inserting_x_apps">Alkalmazás részleteinek mentése (%1$d / %2$d), forrás: %3$s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d megtekintése</item>
-	<item quantity="other">Mind a(z) %d megtekintése</item>
-</plurals>
+        <item quantity="one">%d megtekintése</item>
+        <item quantity="other">Mind a(z) %d megtekintése</item>
+    </plurals>
 
     <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
     <string name="system_install_post_success">Az F-Droid privilegizált kiterjesztés telepítve</string>

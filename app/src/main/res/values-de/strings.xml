@@ -9,7 +9,7 @@
     <string name="updates">Aktualisierungen</string>
     <string name="other">Andere</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
-    <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
+    <string name="update_interval_zero">Anwendungsliste nicht automatisch aktualisieren</string>
     <string name="automatic_scan_wifi">Nur über WLAN</string>
     <string name="automatic_scan_wifi_on">Anwendungsliste nur über gebührenfreie Netze wie WLAN automatisch
         aktualisieren
@@ -340,7 +340,7 @@
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     <string name="update_auto_download">Automatisch abrufen</string>
-    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, sie zu installieren.</string>
+    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, um sie zu installieren.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="keep_hour">1 Stunde</string>
@@ -419,9 +419,9 @@
     <string name="tts_category_name">Kategorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">%1$d Anwendung in der Kategorie %2$s ansehen</item>
-	<item quantity="other">Alle %1$s Anwendungen aus der Kategorie %2$s ansehen</item>
-</plurals>
+        <item quantity="one">%1$d Anwendung in der Kategorie %2$s ansehen</item>
+        <item quantity="other">Alle %1$s Anwendungen aus der Kategorie %2$s ansehen</item>
+    </plurals>
     <string name="app__install_downloaded_update">Aktualisieren</string>
 
     <string name="app_list__name__downloading_in_progress">%1$s wird heruntergeladen</string>
@@ -440,16 +440,16 @@
     <string name="details_new_in_version">Neu in Version %s</string>
 
     <string name="antifeatureswarning">Diese Anwendung besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
-    <string name="antifeatures">Problematische Funktionen</string>
+    <string name="antifeatures">Bedenkliche Eigenschaften</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Vor %1$d Tag aktualisiert</item>
-	<item quantity="other">Vor %1$d Tagen aktualisiert</item>
-</plurals>
+        <item quantity="one">Vor %1$d Tag aktualisiert</item>
+        <item quantity="other">Vor %1$d Tagen aktualisiert</item>
+    </plurals>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d ansehen</item>
-	<item quantity="other">Alle %d ansehen</item>
-</plurals>
+        <item quantity="one">%d ansehen</item>
+        <item quantity="other">Alle %d ansehen</item>
+    </plurals>
 
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet? Apps von Menschen in der Nähe herunterladen!</string>
@@ -471,29 +471,29 @@
     <string name="app__tts__downloading_progress">wird heruntergeladen, %1$d%% vervollständigt</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d weitere …</item>
-	<item quantity="other">+%1$d weitere …</item>
-</plurals>
+        <item quantity="one">+%1$d weitere …</item>
+        <item quantity="other">+%1$d weitere …</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Aktualisierung</item>
-	<item quantity="other">%1$d Aktualisierungen</item>
-</plurals>
+        <item quantity="one">%1$d Aktualisierung</item>
+        <item quantity="other">%1$d Aktualisierungen</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d App installiert</item>
-	<item quantity="other">%1$d Apps installiert</item>
-</plurals>
+        <item quantity="one">%1$d App installiert</item>
+        <item quantity="other">%1$d Apps installiert</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Vor %1$d Woche aktualisiert</item>
-	<item quantity="other">Vor %1$d Wochen aktualisiert</item>
-</plurals>
+        <item quantity="one">Vor %1$d Woche aktualisiert</item>
+        <item quantity="other">Vor %1$d Wochen aktualisiert</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Vor %1$d Monat aktualisiert</item>
-	<item quantity="other">Vor %1$d Monaten aktualisiert</item>
-</plurals>
+        <item quantity="one">Vor %1$d Monat aktualisiert</item>
+        <item quantity="other">Vor %1$d Monaten aktualisiert</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Vor %1$d Jahr aktualisiert</item>
-	<item quantity="other">Vor %1$d Jahren aktualisiert</item>
-</plurals>
+        <item quantity="one">Vor %1$d Jahr aktualisiert</item>
+        <item quantity="other">Vor %1$d Jahren aktualisiert</item>
+    </plurals>
 <string name="by_author_format">von %s</string>
     <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
     <string name="force_old_index">Altes Index-Format erzwingen</string>
@@ -526,26 +526,31 @@
     <string name="allow">Erlauben</string>
 
     <string name="panic_app_setting_none">Keine</string>
-    <string name="panic_settings_summary">Maßnahmen für den Notfall</string>
-    <string name="panic_exit_title">App schließen</string>
+    <string name="panic_settings_summary">Maßnahmen, die im Notfall ergriffen werden sollen</string>
+    <string name="panic_exit_title">App beenden</string>
     <string name="panic_app_setting_title">Notfalltasten-App</string>
     <string name="panic_app_unknown_app">Eine unbekannte App</string>
-    <string name="panic_app_setting_summary">Keine App wurde festgelegt</string>
+    <string name="panic_app_setting_summary">Keine App festgelegt</string>
     <string name="panic_app_dialog_title">Bestätigung der Panik-App</string>
     <string name="panic_app_dialog_message">Möchten Sie %1$s erlauben, zerstörerische Notfallmaßnahmen auszulösen zu dürfen?</string>
     <string name="panic_settings">Panik-Knopf Einstellungen</string>
     <string name="panic_exit_summary">App wird geschlossen</string>
-    <string name="panic_destructive_actions">Schädliche Aktionen</string>
-    <string name="panic_hide_title">Verstecke %s</string>
+    <string name="panic_destructive_actions">Zerstörerische Maßnahmen</string>
+    <string name="panic_hide_title">%s verstecken</string>
     <string name="panic_hide_summary">App wird sich selbst verstecken</string>
 
     <string name="hiding_calculator">Rechner</string>
-    <string name="hiding_dialog_title">Verstecke %s jetzt</string>
+    <string name="hiding_dialog_title">%s jetzt verstecken</string>
     <string name="hiding_dialog_message">Wirklich %1$s vom Starter entfernen? Eingabe von \"%2$d\" in die falsche %3$s App kann diese wiederherstellen.</string>
-    <string name="hide_on_long_search_press_title">Verstecke mit Such-Schaltfläche</string>
+    <string name="hide_on_long_search_press_title">Mit Such-Schaltfläche verstecken</string>
     <string name="hide_on_long_search_press_summary">Langes Drücken der Such-Schaltfläche versteckt die App</string>
 
     <string name="panic_hide_warning_message">In einem Krisenereignis werden %1$s aus dem Programmstarter entfernt. Nur die Eingabe von „%2$d” in der gefälschten %3$s-App kann sie wiederherstellen.</string>
 
     <string name="hiding_dialog_warning">Warnhinweis. Alle Verknüpfungen auf dem Startbildschirm werden ebenfalls entfernt und müssen manuell hinzugefügt werden.</string>
+    <string name="sort_search">Suchergebnis sortieren</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="panic_hide_warning_title">Sicherungsmethode beibehalten</string>
 </resources>

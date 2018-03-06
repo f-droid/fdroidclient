@@ -43,7 +43,7 @@
     <string name="antinonfreeadlist">این برنامه، افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
     <string name="antinonfreenetlist">این برنامه، خدمات شبکه‌های غیر آزاد را تبلیغ می‌کند</string>
     <string name="antinonfreedeplist">این برنامه، به دیگر کاره‌های غیر آزاد وابسته است</string>
-    <string name="antiupstreamnonfreelist">کد مبدأ بالادستی کاملاً رایگان نیست</string>
+    <string name="antiupstreamnonfreelist">کد مبدأ بالادستی کاملاً آزاد نیست</string>
     <string name="display">نمایش</string>
     <string name="expert_on">نمایش اطّلاعات اضافی و فعّال کردن تنظیمات اضافی</string>
     <string name="search_hint">جست‌وجوی برنامه‌ها</string>
@@ -364,9 +364,9 @@
     <string name="updates__show_updateable_apps">نمایش برنامه ها</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">بارگیری به‌روز رسانی برای %1$d برنامه.</item>
-	<item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d برنامه.</item>
-</plurals>
+        <item quantity="one">بارگیری به‌روز رسانی برای %1$d برنامه.</item>
+        <item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d برنامه.</item>
+    </plurals>
 
     <string name="versions">نگارش‌ها</string>
     <string name="clear_search">پاک‌سازی جست‌وجو</string>
@@ -395,9 +395,9 @@
     <string name="hide_anti_feature_apps_on">خاکستری کردن برنامه هایی که نیازمند ضد ویژگی هستند</string>
     <string name="warning_no_internet">نمی‌توان به‌روزرسانی کرد. به اینترنت وصل هستید؟</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">نمایش %d</item>
-	<item quantity="other">نمایش‌ همه %d</item>
-</plurals>
+        <item quantity="one">نمایش %d</item>
+        <item quantity="other">نمایش‌ همه %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">اینترنت ندارید؟ برنامه ها را از افراد در نزدیکی خود بگیرید!</string>
     <string name="nearby_splash__find_people_button">یافتن اطرافیانم</string>
@@ -427,40 +427,40 @@
     <string name="tts_category_name">دستهٔ %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">نمایش %1$d برنامه ی دستهٔ %2$s</item>
-	<item quantity="other">نمایش همه ی %1$d برنامه های دستهٔ %2$s</item>
-</plurals>
+        <item quantity="one">نمایش %1$d برنامه در دستهٔ %2$s</item>
+        <item quantity="other">نمایش تمام %1$d برنامه از دستهٔ %2$s</item>
+    </plurals>
 
     <string name="details_last_updated_today">امروز به‌روز شده</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">%1$sd روز پیش به‌روز شده</item>
-	<item quantity="other">%1$sd روز پیش به‌روز شده‌</item>
-</plurals>
+        <item quantity="one">%1$d روز پیش به‌روز شده</item>
+        <item quantity="other">%1$d روز پیش به‌روز شده‌</item>
+    </plurals>
 <string name="menu_license">پروانه: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d بیشتر…</item>
-	<item quantity="other">+%1$d بیشتر…</item>
-</plurals>
+        <item quantity="one">+%1$d بیش‌تر…</item>
+        <item quantity="other">+%1$d بیش‌تر…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d بروزرسانی</item>
-	<item quantity="other">%1$d بروزرسانی</item>
-</plurals>
+        <item quantity="one">%1$d به‌روز رسانی</item>
+        <item quantity="other">%1$d به‌روز رسانی</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d برنامه نصب شد</item>
-	<item quantity="other">%1$d برنامه نصب شدند</item>
-</plurals>
+        <item quantity="one">%1$d کاره نصب شد</item>
+        <item quantity="other">%1$d کاره نصب شدند</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$sd هفته پیش بروزرسانی شده است</item>
-	<item quantity="other">%1$sd هفته پیش بروزرسانی شده است</item>
-</plurals>
+        <item quantity="one">%1$d هفته پیش به‌روز شده</item>
+        <item quantity="other">%1$d هفته پیش به‌روز شده</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$sd ماه پیش بروزرسانی شده است</item>
-	<item quantity="other">%1$sd ماه پیش بروزرسانی شده است</item>
-</plurals>
+        <item quantity="one">%1$d ماه پیش به‌روز شده</item>
+        <item quantity="other">%1$d ماه پیش به‌روز شده</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$sd سال پیش بروزرسانی شده است</item>
-	<item quantity="other">%1$sd سال پیش بروزرسانی شده است</item>
-</plurals>
+        <item quantity="one">%1$d سال پیش به‌روز شده</item>
+        <item quantity="other">%1$d سال پیش به‌روز شده</item>
+    </plurals>
 <string name="by_author_format">توسط %s</string>
     <string name="download_404">فایل درخواستی یافت نشد.</string>
     <string name="force_old_index">فرمت فهرست قدیمی به اجبار</string>
@@ -514,5 +514,8 @@
     <string name="hiding_dialog_warning">هشدار: هر میانبر کاره‌ای روی صفحهٔ خانگی هم برداشته می‌شود و باید دوباره به صورت دستی افزوده شود.</string>
     <string name="hide_on_long_search_press_title">پنهان کردن با دکمهٔ جست‌وجو</string>
     <string name="hide_on_long_search_press_summary">لمس طولانی دکمهٔ جست‌وجو، کاره را پنهان می‌کند</string>
+    <string name="sort_search">چینش جست‌وجو</string>
+
+    <string name="menu_liberapay">لیبراپی</string>
 
 </resources>

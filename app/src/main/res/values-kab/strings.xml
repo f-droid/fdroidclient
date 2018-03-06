@@ -93,7 +93,7 @@
 
     <string name="search_hint">Nadi</string>
 
-    <string name="rooted">&amp;Zgel</string>
+    <string name="rooted">Zgel root</string>
     <string name="local_repo">Akufi adigan</string>
     <string name="icon">D tignit n wesnas</string>
     <string name="proxy">Apruksi</string>
@@ -120,9 +120,9 @@
     <string name="keep_year">Aseggas</string>
     <string name="notification_title_single_install_error">Asebdeded yecceḍ</string>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d n usnas yebded</item>
-	<item quantity="other">%1$d n isnasen bedden</item>
-</plurals>
+        <item quantity="one">%1$d n usnas yebded</item>
+        <item quantity="other">%1$d n isnasen bedden</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Amucceḍ yewjed</string>
     <string name="notification_title_summary_downloading">Azdam…</string>
     <string name="notification_title_summary_installing">Asebded</string>
@@ -164,13 +164,13 @@
     <string name="keep_forever">Yal tikelt</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d nniḍen…</item>
-	<item quantity="other">+%1$d nniḍen…</item>
-</plurals>
+        <item quantity="one">+%1$d nniḍen …</item>
+        <item quantity="other">+%1$d nniḍen …</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d n lqem</item>
-	<item quantity="other">%1$d n ileqman</item>
-</plurals>
+        <item quantity="one">%1$d n lqem</item>
+        <item quantity="other">%1$d n ileqman</item>
+    </plurals>
     <string name="tts_category_name">Taggayt %1$s</string>
 
     <string name="proxy_host">Asenneftaɣ Apṛuksi</string>
@@ -218,8 +218,8 @@
     <string name="app_inst_known_source">Yebded (si %s)</string>
     <string name="repo_add_url">Tansa n ukufi</string>
     <string name="repo_add_fingerprint">Adsil umḍin (afrayan)</string>
-    <string name="menu_ignore_all">Zgel akk ileqman</string>
-    <string name="menu_ignore_this">Zgel lqem-agi</string>
+    <string name="menu_ignore_all">Zgel Akk Ileqman</string>
+    <string name="menu_ignore_this">Zgel Lqem-Agi</string>
     <string name="menu_email">Azen imayl i umeskar</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

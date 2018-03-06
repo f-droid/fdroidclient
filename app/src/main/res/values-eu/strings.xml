@@ -445,9 +445,9 @@
     <string name="tts_category_name">%1$s kategoria</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ikusi %2$s kategoriako aplikazio %1$d</item>
-	<item quantity="other">Ikusi %2$s kategoriako %1$d aplikazioak</item>
-</plurals>
+        <item quantity="one">Ikusi %2$s kategoriako aplikazio %1$d</item>
+        <item quantity="other">Ikusi %2$s kategoriako %1$d aplikazioak</item>
+    </plurals>
     <string name="app__install_downloaded_update">Eguneratu</string>
 
     <string name="app_list__name__downloading_in_progress">%1$s deskargatzen</string>
@@ -468,14 +468,14 @@
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
     <string name="antifeatures">Ezaugarri zalantzagarriak</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ikusi %d</item>
-	<item quantity="other">Ikusi guztiak: %d</item>
-</plurals>
+        <item quantity="one">Ikusi %d</item>
+        <item quantity="other">Ikusi guztiak: %d</item>
+    </plurals>
     <string name="details_last_updated_today">Gaur eguneratua</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Orain dela egun %1$d eguneratua</item>
-	<item quantity="other">Orain dela %1$d egun eguneratua</item>
-</plurals>
+        <item quantity="one">Orain dela egun %1$d eguneratua</item>
+        <item quantity="other">Orain dela %1$d egun eguneratua</item>
+    </plurals>
 <string name="app_list__name__successfully_installed">%1$s instalatu da</string>
     <string name="menu_video">Bideoa</string>
     <string name="latest__empty_state__no_recent_apps">Ez da oraintsuko aplikaziorik aurkitu</string>
@@ -496,29 +496,29 @@
     <string name="force_old_index_summary">Errorerik edo bateragarritasun arazorik izanez gero, erabili aplikazioaren XML indizea</string>
     <string name="download_404">Ez da aurkitu eskatutako fitxategia.</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d gehiago…</item>
-	<item quantity="other">+%1$d gehiago…</item>
-</plurals>
+        <item quantity="one">+%1$d gehiago…</item>
+        <item quantity="other">+%1$d gehiago…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">Eguneraketa %1$d</item>
-	<item quantity="other">%1$d eguneraketa</item>
-</plurals>
+        <item quantity="one">Eguneraketa %1$d</item>
+        <item quantity="other">%1$d eguneraketa</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">Aplikazio %1$d instalatuta</item>
-	<item quantity="other">%1$d aplikazio instalatuta</item>
-</plurals>
+        <item quantity="one">Aplikazio %1$d instalatuta</item>
+        <item quantity="other">%1$d aplikazio instalatuta</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Orain dela aste %1$d eguneratua</item>
-	<item quantity="other">Orain dela %1$d aste eguneratua</item>
-</plurals>
+        <item quantity="one">Orain dela aste %1$d eguneratua</item>
+        <item quantity="other">Orain dela %1$d aste eguneratua</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Orain dela hilabete %1$d eguneratua</item>
-	<item quantity="other">Orain dela %1$d hilabete eguneratua</item>
-</plurals>
+        <item quantity="one">Orain dela hilabete %1$d eguneratua</item>
+        <item quantity="other">Orain dela %1$d hilabete eguneratua</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Orain dela urte %1$d eguneratua</item>
-	<item quantity="other">Orain dela %1$d urte eguneratua</item>
-</plurals>
+        <item quantity="one">Orain dela urte %1$d eguneratua</item>
+        <item quantity="other">Orain dela %1$d urte eguneratua</item>
+    </plurals>
 <string name="app_list_download_ready">Deskargatuta, instalatzeko prest</string>
 
     <string name="status_inserting_x_apps">Aplikazioaren xehetasunak gordetzen (%1$d/%2$d) %3$s(e)tik</string>
@@ -571,5 +571,7 @@
     <string name="hiding_dialog_warning">Abisua: Hasierako pantailako edozein aplikazio lasterbide kenduko da ere eta eskuz gehitu beharko da.</string>
     <string name="hide_on_long_search_press_title">Ezkutatu bilaketa botoiarekin</string>
     <string name="hide_on_long_search_press_summary">Bilaketa botoia luze zapaltzean aplikazioa ezkutatuko da</string>
+    <string name="sort_search">Ordenatu bilaketa</string>
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

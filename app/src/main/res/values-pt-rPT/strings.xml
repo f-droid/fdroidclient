@@ -445,9 +445,9 @@
     <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
     <string name="warning_no_internet">Não é possível atualizar. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver %d</item>
-	<item quantity="other">Ver todos %d</item>
-</plurals>
+        <item quantity="one">Ver %d</item>
+        <item quantity="other">Ver todos %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
     <string name="nearby_splash__find_people_button">Encontrar pessoas perto de mim</string>
@@ -477,13 +477,13 @@
 
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Atualizada há %1$d dia</item>
-	<item quantity="other">Atualizada há %1$d dias</item>
-</plurals>
+        <item quantity="one">Atualizada há %1$d dia</item>
+        <item quantity="other">Atualizada há %1$d dias</item>
+    </plurals>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver  aplicação %1$d  da categoria %2$s</item>
-	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
-</plurals>
+        <item quantity="one">Ver  aplicação %1$d  da categoria %2$s</item>
+        <item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
+    </plurals>
 
     <string name="menu_video">Vídeo</string>
     <string name="menu_license">Licença: %s</string>
@@ -492,29 +492,29 @@
     <string name="by_author_format">de %s</string>
     <string name="download_404">O ficheiro solicitado não foi encontrado.</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">%1$d mais…</item>
-	<item quantity="other">%1$d mais…</item>
-</plurals>
+        <item quantity="one">%1$d mais…</item>
+        <item quantity="other">%1$d mais…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d atualização</item>
-	<item quantity="other">%1$d atualizações</item>
-</plurals>
+        <item quantity="one">%1$d atualização</item>
+        <item quantity="other">%1$d atualizações</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d aplicação instalada</item>
-	<item quantity="other">%1$d aplicações instaladas</item>
-</plurals>
+        <item quantity="one">%1$d aplicação instalada</item>
+        <item quantity="other">%1$d aplicações instaladas</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Atualizada há %1$d semana</item>
-	<item quantity="other">Atualizada há %1$d semanas</item>
-</plurals>
+        <item quantity="one">Atualizada há %1$d semana</item>
+        <item quantity="other">Atualizada há %1$d semanas</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Atualizada há %1$d mês</item>
-	<item quantity="other">Atualizada há %1$d meses</item>
-</plurals>
+        <item quantity="one">Atualizada há %1$d mês</item>
+        <item quantity="other">Atualizada há %1$d meses</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Atualizada há %1$d ano</item>
-	<item quantity="other">Atualizada há %1$d anos</item>
-</plurals>
+        <item quantity="one">Atualizada há %1$d ano</item>
+        <item quantity="other">Atualizada há %1$d anos</item>
+    </plurals>
 <string name="force_old_index">Impor formato de índice antigo</string>
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidade, utilizar o índice XML</string>
     <string name="app_installed_media">Ficheiro instalado em %s</string>

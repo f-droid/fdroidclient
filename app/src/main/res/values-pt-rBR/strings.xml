@@ -419,9 +419,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver %d</item>
-	<item quantity="other">Ver todas as %d</item>
-</plurals>
+        <item quantity="one">Ver %d</item>
+        <item quantity="other">Ver todas as %d</item>
+    </plurals>
 
     <string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
     <string name="app__newly_added">Novo</string>
@@ -451,9 +451,9 @@
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver %1$d aplicativo na categoria %2$s</item>
-	<item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
-</plurals>
+        <item quantity="one">Ver %1$d aplicativo na categoria %2$s</item>
+        <item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s instalado</string>
     <string name="latest__empty_state__no_recent_apps">Nenhum aplicativo recente encontrado</string>
     <string name="latest__empty_state__never_updated">Uma vez que a sua lista de aplicativos tenha sido atualizada, os
@@ -475,37 +475,37 @@
 
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Atualizado %1$s dia atrás</item>
-	<item quantity="other">Atualizado %1$s dias atrás</item>
-</plurals>
+        <item quantity="one">Atualizado %1$s dia atrás</item>
+        <item quantity="other">Atualizado %1$s dias atrás</item>
+    </plurals>
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar download</string>
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">mais +%1$d…</item>
-	<item quantity="other">mais +%1$d…</item>
-</plurals>
+        <item quantity="one">mais +%1$d…</item>
+        <item quantity="other">mais +%1$d…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d atualização</item>
-	<item quantity="other">%1$d atualizações</item>
-</plurals>
+        <item quantity="one">%1$d atualização</item>
+        <item quantity="other">%1$d atualizações</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d Aplicativo instalado</item>
-	<item quantity="other">%1$d Aplicativos instalados</item>
-</plurals>
+        <item quantity="one">%1$d Aplicativo instalado</item>
+        <item quantity="other">%1$d Aplicativos instalados</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Atualizado %1$d semana atrás</item>
-	<item quantity="other">Atualizado %1$d semanas atrás</item>
-</plurals>
+        <item quantity="one">Atualizado %1$d semana atrás</item>
+        <item quantity="other">Atualizado %1$d semanas atrás</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Atualizado %1$d mês atrás</item>
-	<item quantity="other">Atualizado %1$d meses atrás</item>
-</plurals>
+        <item quantity="one">Atualizado %1$d mês atrás</item>
+        <item quantity="other">Atualizado %1$d meses atrás</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Atualizado %1$d ano atrás</item>
-	<item quantity="other">Atualizado %1$d anos atrás</item>
-</plurals>
+        <item quantity="one">Atualizado %1$d ano atrás</item>
+        <item quantity="other">Atualizado %1$d anos atrás</item>
+    </plurals>
 <string name="by_author_format">por %s</string>
     <string name="download_404">O arquivo solicitado não foi encontrado.</string>
     <string name="force_old_index">Forçar um formato de índice antigo</string>

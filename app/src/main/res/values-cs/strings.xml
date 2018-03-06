@@ -20,7 +20,7 @@
     <string name="local_repo_name">Název místního repozitáře</string>
     <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
     <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
-    <string name="app_details">Detaily aplikace</string>
+    <string name="app_details">Podrobnosti o aplikaci</string>
     <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
     <string name="about_title">O aplikaci F-Droid</string>
     <string name="about_site">Webová stránka</string>
@@ -34,7 +34,7 @@
     <string name="no">Ne</string>
     <string name="repo_add_title">Přidat nový repozitář</string>
     <string name="repo_add_add">Přidat</string>
-    <string name="cancel">Zrušit</string>
+    <string name="cancel">Storno</string>
     <string name="enable">Povolit</string>
     <string name="add_key">Přidat klíč</string>
     <string name="overwrite">Přepsat</string>
@@ -45,7 +45,7 @@
     <string name="menu_add_repo">Nový repozitář</string>
     <string name="menu_launch">Spustit</string>
     <string name="menu_share">Sdílet</string>
-    <string name="menu_install">Instalovat</string>
+    <string name="menu_install">Nainstalovat</string>
     <string name="menu_uninstall">Odinstalovat</string>
     <string name="menu_ignore_all">Ignorovat všechny aktualizace</string>
     <string name="menu_ignore_this">Ignorovat tuto aktualizaci</string>
@@ -93,7 +93,7 @@
     <string name="repo_num_apps">Počet aplikací</string>
     <string name="repo_fingerprint">Otisk podpisového klíče repozitáře (SHA-256)</string>
     <string name="repo_description">Popis</string>
-    <string name="repo_last_update">Poslední aktualizace</string>
+    <string name="repo_last_update">Minulá aktualizace</string>
     <string name="repo_name">Název</string>
     <string name="unsigned_description">To znamená, že seznam aplikací se nepodařilo ověřit. Měli by jste být opatrní s aplikacemi staženými z nepodepsaných indexů.</string>
     <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit.
@@ -114,10 +114,10 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimédia</string>
     <string name="category_Navigation">Navigace</string>
-    <string name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string name="category_Phone_SMS">Telefon a SMS</string>
     <string name="category_Reading">Čtení</string>
-    <string name="category_Science_Education">Věda &amp; vzdělání</string>
-    <string name="category_Security">Bezpečnost</string>
+    <string name="category_Science_Education">Věda a vzdělání</string>
+    <string name="category_Security">Zabezpečení</string>
     <string name="category_System">Systém</string>
     <string name="requesting_root_access_body">Získávám root oprávnění…</string>
     <string name="root_access_denied_title">Root přístup odepřen</string>
@@ -226,12 +226,12 @@
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
     <string name="system_install_denied_signature">Podpis rozšíření není správný! Nahlaste chybu vývojářům!</string>
-    <string name="system_install_button_install">Instalovat</string>
+    <string name="system_install_button_install">Nainstalovat</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
     <string name="swap_active_hotspot">%1$s (tvůj hotspot)</string>
-    <string name="swap_dont_show_again">Toto již nezobrazovat</string>
+    <string name="swap_dont_show_again">Toto už nezobrazovat</string>
     <string name="swap_choose_apps">Vybrat aplikace</string>
     <string name="swap_scan_qr">Skenovat QR kód</string>
     <string name="swap_people_nearby">Lidé v blízkosti</string>
@@ -315,7 +315,7 @@
     <string name="repo_provider">Repozitář: %s</string>
 
     <string name="useTor">Použít Tor</string>
-    <string name="useTorSummary">Vynutit stahování přes Tor pro zvýšení bezpečnosti. Vyžaduje Orbot</string>
+    <string name="useTorSummary">Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot</string>
     <string name="system_install_not_supported">Instalace rozšíření oprávnění F-Droidu není momentálně podporována na
         Androidu 5.1 nebo pozdějším.
     </string>
@@ -401,8 +401,8 @@
     <string name="notification_title_summary_installed">Úspěšně nainstalováno</string>
     <string name="notification_title_summary_install_error">Instalace selhala</string>
     <string name="notification_action_update">Aktualizovat</string>
-    <string name="notification_action_cancel">Zrušit</string>
-    <string name="notification_action_install">Instalovat</string>
+    <string name="notification_action_cancel">Storno</string>
+    <string name="notification_action_install">Nainstalovat</string>
 
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
     <string name="app__newly_added">Nové</string>
@@ -453,10 +453,10 @@
     <string name="updates__hide_updateable_apps">Skrýt aplikace</string>
     <string name="updates__show_updateable_apps">Zobrazit aplikace</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Stáhnout aktualizaci pro %1$d aplikaci.</item>
-	<item quantity="few">Stáhnout aktualizace pro %1$d aplikace.</item>
-	<item quantity="other">Stáhnout aktualizace pro %1$d aplikací.</item>
-	</plurals>
+        <item quantity="one">Stáhnout aktualizaci pro %1$d aplikaci.</item>
+        <item quantity="few">Stáhnout aktualizace pro %1$d aplikace.</item>
+        <item quantity="other">Stáhnout aktualizace pro %1$d aplikací.</item>
+    </plurals>
 
     <string name="menu_video">Video</string>
     <string name="menu_license">Licence: %s</string>
@@ -473,10 +473,10 @@
     <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
     <string name="status_inserting_x_apps">Ukládání podrobností o aplikaci (%1$d/%2$d) z %3$s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Zobrazit %d</item>
-	<item quantity="few">Zobrazit oba %d</item>
-	<item quantity="other">Zobrazit všech %d</item>
-	</plurals>
+        <item quantity="one">Zobrazit %d</item>
+        <item quantity="few">Zobrazit oba %d</item>
+        <item quantity="other">Zobrazit všech %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Není k dispozici připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
     <string name="nearby_splash__find_people_button">Najít lidi poblíž</string>
@@ -484,47 +484,47 @@
 
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d další…</item>
-	<item quantity="few">+%1$d další…</item>
-	<item quantity="other">+%1$d dalších…</item>
-	</plurals>
+        <item quantity="one">+%1$d další…</item>
+        <item quantity="few">+%1$d další…</item>
+        <item quantity="other">+%1$d dalších…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d aktualizace</item>
-	<item quantity="few">%1$d aktualizace</item>
-	<item quantity="other">%1$d aktualizací</item>
-	</plurals>
+        <item quantity="one">%1$d aktualizace</item>
+        <item quantity="few">%1$d aktualizace</item>
+        <item quantity="other">%1$d aktualizací</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">Nainstalována %1$d aplikace</item>
-	<item quantity="few">Nainstalovány %1$d aplikace</item>
-	<item quantity="other">Nainstalováno %1$d aplikací</item>
-	</plurals>
+        <item quantity="one">Nainstalována %1$d aplikace</item>
+        <item quantity="few">Nainstalovány %1$d aplikace</item>
+        <item quantity="other">Nainstalováno %1$d aplikací</item>
+    </plurals>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Zobrazit %1$d aplikaci v %2$s kategorii</item>
-	<item quantity="few">Zobrazit %1$d aplikace v %2$s kategoriích</item>
-	<item quantity="other">Zobrazit %1$d aplikací v %2$s kategoriích</item>
-	</plurals>
+        <item quantity="one">Zobrazit %1$d aplikaci v %2$s kategorii</item>
+        <item quantity="few">Zobrazit %1$d aplikace v %2$s kategoriích</item>
+        <item quantity="other">Zobrazit %1$d aplikací v %2$s kategoriích</item>
+    </plurals>
 
     <string name="details_last_updated_today">Aktualizováno dnes</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Aktualizováno před %1$d dnem</item>
-	<item quantity="few">Aktualizováno před %1$d dny</item>
-	<item quantity="other">Aktualizováno před %1$d dny</item>
-	</plurals>
+        <item quantity="one">Aktualizováno před %1$d dnem</item>
+        <item quantity="few">Aktualizováno před %1$d dny</item>
+        <item quantity="other">Aktualizováno před %1$d dny</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Aktualizováno před %1$d týdnem</item>
-	<item quantity="few">Aktualizováno před %1$d týdny</item>
-	<item quantity="other">Aktualizováno před %1$d týdny</item>
-	</plurals>
+        <item quantity="one">Aktualizováno před %1$d týdnem</item>
+        <item quantity="few">Aktualizováno před %1$d týdny</item>
+        <item quantity="other">Aktualizováno před %1$d týdny</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Aktualizováno před %1$d měsícem</item>
-	<item quantity="few">Aktualizováno před %1$d měsíci</item>
-	<item quantity="other">Aktualizováno před %1$d měsíci</item>
-	</plurals>
+        <item quantity="one">Aktualizováno před %1$d měsícem</item>
+        <item quantity="few">Aktualizováno před %1$d měsíci</item>
+        <item quantity="other">Aktualizováno před %1$d měsíci</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Aktualizováno před %1$d rokem</item>
-	<item quantity="few">Aktualizováno před %1$d roky</item>
-	<item quantity="other">Aktualizováno před %1$d lety</item>
-	</plurals>
+        <item quantity="one">Aktualizováno před %1$d rokem</item>
+        <item quantity="few">Aktualizováno před %1$d roky</item>
+        <item quantity="other">Aktualizováno před %1$d lety</item>
+    </plurals>
 <string name="privacy">Soukromí</string>
     <string name="preventScreenshots_title">Zabránit pořizování snímků obrazovky</string>
     <string name="preventScreenshots_summary">Blokuje pořizování snímků obrazovky a skrývá aplikace v seznamu nedávno použitých</string>
@@ -554,5 +554,8 @@
     <string name="hiding_dialog_warning">Varování: jakýkoli zástupce aplikace na domovské obrazovce bude také odebrán a bude třeba znovu ručně přidat.</string>
     <string name="hide_on_long_search_press_title">Skrýt tlačítko vyhledávání</string>
     <string name="hide_on_long_search_press_summary">Dlouhý stisk tlačítka hledání skryje aplikaci</string>
+    <string name="sort_search">Setřídit hledání</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

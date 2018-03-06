@@ -379,9 +379,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Visa %d</item>
-	<item quantity="other">Visa alla %d</item>
-</plurals>
+        <item quantity="one">Visa %d</item>
+        <item quantity="other">Visa alla %d</item>
+    </plurals>
 
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_single_ready_to_install">Färdig att installera</string>
@@ -406,9 +406,9 @@
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Visa %1$d app i %2$s kategorin</item>
-	<item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
-</plurals>
+        <item quantity="one">Visa %1$d app i %2$s kategorin</item>
+        <item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
+    </plurals>
     <string name="app__install_downloaded_update">Uppdatera</string>
 
     <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
@@ -429,9 +429,9 @@
     <string name="antifeatureswarning">Denna app har funktioner som du kanske inte gillar.</string>
     <string name="antifeatures">Anti-funktioner</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uppdaterad för %1$d dag sedan</item>
-	<item quantity="other">Uppdaterad för %1$d dagar sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterad för %1$d dag sedan</item>
+        <item quantity="other">Uppdaterad för %1$d dagar sedan</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget Internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
@@ -449,29 +449,29 @@
     <string name="menu_license">Licens: %s</string>
     <string name="app__tts__downloading_progress">Hämtar, %1$d%% färdigt</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d till…</item>
-	<item quantity="other">+%1$d till…</item>
-</plurals>
+        <item quantity="one">+%1$d till…</item>
+        <item quantity="other">+%1$d till…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d uppdatering</item>
-	<item quantity="other">%1$d uppdateringar</item>
-</plurals>
+        <item quantity="one">%1$d uppdatering</item>
+        <item quantity="other">%1$d uppdateringar</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d app installerad</item>
-	<item quantity="other">%1$d appar installerade</item>
-</plurals>
+        <item quantity="one">%1$d app installerad</item>
+        <item quantity="other">%1$d appar installerade</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uppdaterad för %1$d vecka sedan</item>
-	<item quantity="other">Uppdaterad för %1$d veckor sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterad för %1$d vecka sedan</item>
+        <item quantity="other">Uppdaterad för %1$d veckor sedan</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uppdaterad för %1$d månad sedan</item>
-	<item quantity="other">Uppdaterad för %1$d månader sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterad för %1$d månad sedan</item>
+        <item quantity="other">Uppdaterad för %1$d månader sedan</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uppdaterad för %1$d år sedan</item>
-	<item quantity="other">Uppdaterad för %1$d år sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterad för %1$d år sedan</item>
+        <item quantity="other">Uppdaterad för %1$d år sedan</item>
+    </plurals>
 <string name="by_author_format">av %s</string>
     <string name="download_404">Den begärda filen hittades inte.</string>
     <string name="force_old_index">Tvinga gammalt indexformat</string>
@@ -517,4 +517,18 @@
     <string name="preventScreenshots_summary">Förhindrar skärmdumpar och döljer appinnehåll från senaste skärmar</string>
 
     <string name="panic_app_setting_title">Panikknappsapp</string>
+    <string name="sort_search">Sortera sökning</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="panic_hide_warning_title">Kom ihåg hur du återställer</string>
+    <string name="panic_hide_warning_message">Under en panikhändelse kommer detta ta bort %1$s från startaren. Att bara skriva in \"%2$d\" i %3$s fejk-app kan återställa det.</string>
+
+    <string name="hiding_calculator">Kalkylator</string>
+    <string name="hiding_dialog_title">Göm %s Nu</string>
+    <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva in \"%2$d\" i %3$s fejk-app kan återställa det.</string>
+    <string name="hiding_dialog_warning">Varning: Alla app-genvägar på hemskärmen kommer också att tas bort och kommer att behöva läggas till igen manuellt.</string>
+    <string name="hide_on_long_search_press_title">Göm med sökknappen</string>
+    <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att gömma appen</string>
+
 </resources>

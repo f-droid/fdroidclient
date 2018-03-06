@@ -401,9 +401,9 @@
     <string name="antifeatureswarning">Deze app heeft functionaliteit die je misschien niet leuk vindt.</string>
     <string name="antifeatures">Anti-functies</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d weergeven</item>
-	<item quantity="other">Alle %d weergeven</item>
-</plurals>
+        <item quantity="one">%d weergeven</item>
+        <item quantity="other">Alle %d weergeven</item>
+    </plurals>
 
     <string name="notification_title_single_update_available">Update beschikbaar</string>
     <string name="notification_title_single_ready_to_install">Klaar voor installatie</string>
@@ -427,14 +427,14 @@
     <string name="tts_category_name">Categorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Geef %1$d app weer in de categorie %2$s</item>
-	<item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
-</plurals>
+        <item quantity="one">Geef %1$d app weer in de categorie %2$s</item>
+        <item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
+    </plurals>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">%1$d dag geleden geüpdatet</item>
-	<item quantity="other">%1$d dagen geleden geüpdatet</item>
-</plurals>
+        <item quantity="one">%1$d dag geleden geüpdatet</item>
+        <item quantity="other">%1$d dagen geleden geüpdatet</item>
+    </plurals>
     <string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!
@@ -454,29 +454,29 @@
     <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
     <string name="menu_license">Licentie: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d meer…</item>
-	<item quantity="other">+%1$d meer…</item>
-</plurals>
+        <item quantity="one">+%1$d meer…</item>
+        <item quantity="other">+%1$d meer…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d update</item>
-	<item quantity="other">%1$d updates</item>
-</plurals>
+        <item quantity="one">%1$d update</item>
+        <item quantity="other">%1$d updates</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d app geïnstalleerd</item>
-	<item quantity="other">%1$d apps geïnstalleerd</item>
-</plurals>
+        <item quantity="one">%1$d app geïnstalleerd</item>
+        <item quantity="other">%1$d apps geïnstalleerd</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$d week geleden geüpdatet</item>
-	<item quantity="other">%1$d weken geleden geüpdatet</item>
-</plurals>
+        <item quantity="one">%1$d week geleden geüpdatet</item>
+        <item quantity="other">%1$d weken geleden geüpdatet</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$d maand geleden geüpdatet</item>
-	<item quantity="other">%1$d maand geleden geüpdatet</item>
-</plurals>
+        <item quantity="one">%1$d maand geleden geüpdatet</item>
+        <item quantity="other">%1$d maand geleden geüpdatet</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$d jaar geleden geüpdatet</item>
-	<item quantity="other">%1$d jaar geleden geüpdatet</item>
-</plurals>
+        <item quantity="one">%1$d jaar geleden geüpdatet</item>
+        <item quantity="other">%1$d jaar geleden geüpdatet</item>
+    </plurals>
 <string name="by_author_format">door %s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="force_old_index">Oud indexformaat afdwingen</string>
@@ -531,5 +531,8 @@
     <string name="hiding_dialog_warning">Waarschuwingen: alle snelkoppelingen naar de app op het startscherm zullen ook verwijderd worden, en dienen handmatig opnieuw toegevoegd te worden.</string>
     <string name="hide_on_long_search_press_title">Verbergen met zoekknop</string>
     <string name="hide_on_long_search_press_summary">De zoekknop lang ingedrukt houden zal de app verbergen</string>
+    <string name="sort_search">Zoekresultaten sorteren</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

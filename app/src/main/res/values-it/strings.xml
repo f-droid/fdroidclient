@@ -461,38 +461,38 @@
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Scarica aggiornamento per %1$d app.</item>
-	<item quantity="other">Scarica aggiornamenti per %1$d app.</item>
-</plurals>
+        <item quantity="one">Scarica aggiornamento per %1$d app.</item>
+        <item quantity="other">Scarica aggiornamenti per %1$d app.</item>
+    </plurals>
 
     <string name="menu_license">Licenza: %s</string>
     <plurals name="details_last_update_years">
-	<item quantity="one">Aggiornata %1$d anno fa</item>
-	<item quantity="other">Aggiornata %1$d anni fa</item>
-</plurals>
-<plurals name="details_last_update_months">
-	<item quantity="one">Aggiornata %1$d mese fa</item>
-	<item quantity="other">Aggiornata %1$d mesi fa</item>
-</plurals>
+        <item quantity="one">Aggiornata %1$d anno fa</item>
+        <item quantity="other">Aggiornata %1$d anni fa</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Aggiornata %1$d mese fa</item>
+        <item quantity="other">Aggiornata %1$d mesi fa</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Aggiornata %1$d settimana fa</item>
-	<item quantity="other">Aggiornata %1$d settimane fa</item>
-</plurals>
+        <item quantity="one">Aggiornata %1$d settimana fa</item>
+        <item quantity="other">Aggiornata %1$d settimane fa</item>
+    </plurals>
     <plurals name="details_last_update_days">
-	<item quantity="one">Aggiornata %1$d giorno fa</item>
-	<item quantity="other">Aggiornata %1$d giorni fa</item>
-</plurals>
+        <item quantity="one">Aggiornata %1$d giorno fa</item>
+        <item quantity="other">Aggiornata %1$d giorni fa</item>
+    </plurals>
     <string name="details_last_updated_today">Aggiornata oggi</string>
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d App Installata</item>
-	<item quantity="other">%1$d App Installate</item>
-</plurals>
+        <item quantity="one">%1$d App Installata</item>
+        <item quantity="other">%1$d App Installate</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Aggiornamento</item>
-	<item quantity="other">%1$d Aggiornamenti</item>
-</plurals>
+        <item quantity="one">%1$d Aggiornamento</item>
+        <item quantity="other">%1$d Aggiornamenti</item>
+    </plurals>
     <string name="app__tts__downloading_progress">Scaricamento, %1$d%% completato</string>
     <string name="download_404">Il file richiesto non è stato trovato.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Senza Internet? Ottieni le app da persone vicine a te!</string>
@@ -500,19 +500,19 @@
     <string name="nearby_splash__both_parties_need_fdroid">Entrambe le parti hanno bisogno di %1$s per l\'uso nelle vicinanze.</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d altra…</item>
-	<item quantity="other">+%1$d altre…</item>
-</plurals>
+        <item quantity="one">+%1$d altra…</item>
+        <item quantity="other">+%1$d altre…</item>
+    </plurals>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Mostra %1$d app nella categoria %2$s</item>
-	<item quantity="other">Mostra tutte e %1$d app dalla categoria %2$s</item>
-</plurals>
+        <item quantity="one">Mostra %1$d app nella categoria %2$s</item>
+        <item quantity="other">Mostra tutte e %1$d app dalla categoria %2$s</item>
+    </plurals>
 
     <string name="menu_video">Video</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Mostra %d</item>
-	<item quantity="other">Mostra tutti %d</item>
-</plurals>
+        <item quantity="one">Mostra %d</item>
+        <item quantity="other">Mostra tutti %d</item>
+    </plurals>
 
     <string name="force_old_index_summary">In caso di bug o problemi di compatibilità, usa l\'indice XML delle app</string>
     <string name="force_old_index">Forza il vecchio formato indice</string>

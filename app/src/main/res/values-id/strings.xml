@@ -434,8 +434,8 @@
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="other">Tampilkan semua %1$d apl dari kategori %2$s</item>
-</plurals>
+        <item quantity="other">Tampilkan semua %1$d apl dari kategori %2$s</item>
+    </plurals>
     <string name="preference_category__my_apps">Apl Saya</string>
     <string name="app__install_downloaded_update">Perbarui</string>
 
@@ -444,8 +444,8 @@
     <string name="antifeatureswarning">Apl ini memiliki fitur yang Anda mungkin tidak suka.</string>
     <string name="antifeatures">Anti-fitur</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">Diperbarui %1$d hari yang lalu</item>
-</plurals>
+        <item quantity="other">Diperbarui %1$d hari yang lalu</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s telah dipasang</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada Internet? Dapatkan apl dari orang-orang di sekitarmu!</string>
     <string name="nearby_splash__find_people_button">Temukan orang-orang di sekitarmu</string>
@@ -467,23 +467,23 @@
     <string name="app__tts__downloading_progress">Mengunduh, %1$d%% selesai</string>
     <string name="menu_license">Lisensi: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="other">+%1$d lainnya…</item>
-	</plurals>
+        <item quantity="other">+%1$d lainnya…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="other">%1$d Pembaruan</item>
-	</plurals>
+        <item quantity="other">%1$d Pembaruan</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="other">%1$d Apl Terpasang</item>
-	</plurals>
+        <item quantity="other">%1$d Apl Terpasang</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">Diperbarui %1$d minggu yang lalu</item>
-</plurals>
+        <item quantity="other">Diperbarui %1$d minggu yang lalu</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">Diperbarui %1$d bulan yang lalu</item>
-</plurals>
+        <item quantity="other">Diperbarui %1$d bulan yang lalu</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">Diperbarui %1$d tahun yang lalu</item>
-</plurals>
+        <item quantity="other">Diperbarui %1$d tahun yang lalu</item>
+    </plurals>
 <string name="by_author_format">oleh %s</string>
     <string name="download_404">Berkas yang diminta tidak ditemukan.</string>
     <string name="force_old_index">Paksa format indeks lama</string>
@@ -528,5 +528,6 @@
     <string name="panic_destructive_actions">Tindakan Destruktif</string>
     <string name="panic_hide_title">Sembunyikan %s</string>
     <string name="panic_hide_summary">Aplikasi akan sembunyi dengan sendirinya</string>
+    <string name="sort_search">Atur pencarian</string>
 
 </resources>

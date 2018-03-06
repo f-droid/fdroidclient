@@ -351,8 +351,8 @@
 
     <string name="versions">版本</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="other">為 %1$d 個應用程式下載更新。</item>
-</plurals>
+        <item quantity="other">為 %1$d 個應用程式下載更新。</item>
+    </plurals>
 
     <string name="clear_search">清除搜尋</string>
 
@@ -378,8 +378,8 @@
     <string name="hide_anti_feature_apps_on">以灰字顯示含有反功能的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否能夠連線至互聯網？</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="other">顯示所有 %d</item>
-</plurals>
+        <item quantity="other">顯示所有 %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">沒有網絡連線？您可以從附近的人取得應用程式！</string>
     <string name="nearby_splash__find_people_button">搜索附近的人</string>
@@ -408,13 +408,13 @@
     <string name="tts_category_name">類別 %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="other">檢視屬於 %2$s 類別的全部 %1$d 個應用程式</item>
-</plurals>
+        <item quantity="other">檢視屬於 %2$s 類別的全部 %1$d 個應用程式</item>
+    </plurals>
 
     <string name="details_last_updated_today">今天更新</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">%1$d 天前更新</item>
-</plurals>
+        <item quantity="other">%1$d 天前更新</item>
+    </plurals>
 <string name="app__newly_added">最新</string>
     <string name="latest__empty_state__no_recent_apps">找不到近期用過的應用程式</string>
     <string name="categories__empty_state__no_categories">沒有可顯示的程式分類</string>
@@ -432,24 +432,24 @@
     <string name="status_inserting_x_apps">正在從 %3$s 儲存應用程式的資料（%1$d/%2$d）</string>
     <string name="app__tts__downloading_progress">下載中，已下載 %1$d%%</string>
     <plurals name="notification_summary_updates">
-	<item quantity="other">有 %1$d 個更新</item>
-</plurals>
+        <item quantity="other">有 %1$d 個更新</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="other">已安裝 %1$d 個應用程式</item>
-</plurals>
+        <item quantity="other">已安裝 %1$d 個應用程式</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">%1$d 週前更新</item>
-</plurals>
+        <item quantity="other">%1$d 週前更新</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">%1$d 個月前更新</item>
-</plurals>
+        <item quantity="other">%1$d 個月前更新</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">%1$d 年前更新</item>
-</plurals>
+        <item quantity="other">%1$d 年前更新</item>
+    </plurals>
 <string name="force_old_index">必須使用舊索引格式</string>
     <plurals name="notification_summary_more">
-	<item quantity="other">還有 %1$d 則通知…</item>
-</plurals>
+        <item quantity="other">還有 %1$d 則通知…</item>
+    </plurals>
     <string name="app_details__incompatible_mismatched_signature">簽署與已安裝的版本不相符</string>
     <string name="app_details__no_versions__show_incompat_versions">如要在此顯示不相容的版本，請啟用「%1$s」的設定。</string>
     <string name="app_details__no_versions__no_compatible_signatures">沒有含相容簽署的版本</string>

@@ -163,16 +163,16 @@
     <string name="proxy_host_summary">Adreso de via retperanto (ekz. 127.0.0.1)</string>
     <string name="proxy_port_summary">Porda numero de via retperanto (ekz. 8118)</string>
 
-    <string name="status_download">Elŝutas
+    <string name="status_download">Elŝutado
 \n%2$s / %3$s (%4$d%%) el
 \n%1$s</string>
 
-    <string name="status_download_unknown_size">Elŝutas
+    <string name="status_download_unknown_size">Elŝutado
 \n%2$s el
 \n%1$s</string>
-    <string name="update_notification_title">Ĝisdatigas deponejojn</string>
+    <string name="update_notification_title">Ĝisdatigado de deponejoj</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
-    <string name="status_connecting_to_repo">Konektas al
+    <string name="status_connecting_to_repo">Konektado al
 \n%1$s</string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
     <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigitaj</string>
@@ -236,9 +236,9 @@
     <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
     <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estis instalita. Tio ĉi ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.</string>
     <string name="system_install_post_fail_message">Instalado de privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli da informoj.</string>
-    <string name="system_install_installing">Instalas…</string>
-    <string name="system_install_installing_rebooting">Instalas kaj restartas…</string>
-    <string name="system_install_uninstalling">Malinstalas…</string>
+    <string name="system_install_installing">Instalado…</string>
+    <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>
+    <string name="system_install_uninstalling">Malinstalado…</string>
     <string name="system_install_question">Ĉu vi volas instali privilegian F-Droid-aldonaĵon?</string>
     <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundoj.</string>
     <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundoj kaj la aparato estos poste <b>restartita</b>.</string>
@@ -264,20 +264,20 @@
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">Skani QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
-    <string name="swap_scanning_for_peers">Serĉas najbarajn homojn…</string>
+    <string name="swap_scanning_for_peers">Serĉado de proksimuloj…</string>
     <string name="swap_nearby">Proksima interŝanĝo</string>
     <string name="swap_intro">Konekti kaj interŝanĝi aplikaĵojn kun proksimaj homoj.</string>
     <string name="swap_visible_bluetooth">Videbla per Bludento</string>
-    <string name="swap_setting_up_bluetooth">Agordas Bludento…</string>
+    <string name="swap_setting_up_bluetooth">Agordado de Bludento…</string>
     <string name="swap_not_visible_bluetooth">Nevidebla per Bludento</string>
     <string name="swap_visible_wifi">Videbla per vifio</string>
-    <string name="swap_setting_up_wifi">Agordas vifion…</string>
+    <string name="swap_setting_up_wifi">Agordado de vifio…</string>
     <string name="swap_not_visible_wifi">Nevidebla per vifio</string>
     <string name="swap_wifi_device_name">Nomo de aparato</string>
     <string name="swap_cant_find_peers">Ĉu vi ne povas trovi kiun, tiun vi serĉas?</string>
     <string name="swap_send_fdroid">Sendi F-Droid</string>
     <string name="swap_no_peers_nearby">Ne povas trovi homojn proksime por interŝanĝi.</string>
-    <string name="swap_connecting">Konektas</string>
+    <string name="swap_connecting">Konektado</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
     <string name="bluetooth_unavailable">Bludento ne disponebla</string>
@@ -304,7 +304,7 @@
     <string name="download_error">Elŝuto fiaskis!</string>
 
     <string name="perms_new_perm_prefix">Nova:</string>
-    <string name="downloading">Elŝutas…</string>
+    <string name="downloading">Elŝutado…</string>
 
     <string name="perms_description_app">Liverita per %1$s.</string>
     <string name="interval_never">Neniam</string>
@@ -349,7 +349,7 @@
 
 
     <string name="installing">Instalado…</string>
-    <string name="uninstalling">Malinstalas…</string>
+    <string name="uninstalling">Malinstalado…</string>
 
     <string name="hide_anti_feature_apps">Grizigi aplikaĵojn kun fiebloj</string>
     <string name="hide_anti_feature_apps_on">Grizigi aplikaĵojn kun nedeziratajn eblojn (ekz. spurado)</string>
@@ -393,9 +393,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d aplikaĵo</item>
-	<item quantity="other">%d aplikaĵoj</item>
-</plurals>
+        <item quantity="one">%d aplikaĵo</item>
+        <item quantity="other">%d aplikaĵoj</item>
+    </plurals>
 
     <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
     <string name="app__newly_added">Nova</string>
@@ -411,9 +411,9 @@
     <string name="tts_category_name">Kategorio %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Montri %1$d aplikaĵon en la kategorio %2$s</item>
-	<item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
-</plurals>
+        <item quantity="one">Montri %1$d aplikaĵon en la kategorio %2$s</item>
+        <item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
+    </plurals>
     <string name="app__install_downloaded_update">Ĝisdatigi</string>
 
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
@@ -435,9 +435,9 @@
     <string name="antifeatures">Fiebloj</string>
     <string name="details_last_updated_today">Ĝisdatigita hodiaŭ</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Ĝisdatigita antaŭ %1$d tago</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$d tagoj</item>
-</plurals>
+        <item quantity="one">Ĝisdatigita antaŭ %1$d tago</item>
+        <item quantity="other">Ĝisdatigita antaŭ %1$d tagoj</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s instalita</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!
     </string>
@@ -450,38 +450,38 @@
 
     <string name="categories__empty_state__no_categories">Neniuj kategorioj por montri</string>
 
-    <string name="menu_video">Video</string>
+    <string name="menu_video">Filmeto</string>
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
     <string name="menu_license">Permesilo: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d pli…</item>
-	<item quantity="other">+1$d pli…</item>
-</plurals>
+        <item quantity="one">+%1$d pli…</item>
+        <item quantity="other">+1$d pli…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d ĝisdatigo</item>
-	<item quantity="other">%1$d ĝisdatigoj</item>
-</plurals>
+        <item quantity="one">%1$d ĝisdatigo</item>
+        <item quantity="other">%1$d ĝisdatigoj</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d instalita aplikaĵo</item>
-	<item quantity="other">%1$d instalitaj aplikaĵoj</item>
-</plurals>
+        <item quantity="one">%1$d instalita aplikaĵo</item>
+        <item quantity="other">%1$d instalitaj aplikaĵoj</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Ĝisdatigita antaŭ %1$d semajno</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$d semajnoj</item>
-</plurals>
+        <item quantity="one">Ĝisdatigita antaŭ %1$d semajno</item>
+        <item quantity="other">Ĝisdatigita antaŭ %1$d semajnoj</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Ĝisdatigita antaŭ %1$d monato</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$d monatoj</item>
-</plurals>
+        <item quantity="one">Ĝisdatigita antaŭ %1$d monato</item>
+        <item quantity="other">Ĝisdatigita antaŭ %1$d monatoj</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Ĝisdatigita antaŭ %1$d jaro</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$d jaroj</item>
-</plurals>
+        <item quantity="one">Ĝisdatigita antaŭ %1$d jaro</item>
+        <item quantity="other">Ĝisdatigita antaŭ %1$d jaroj</item>
+    </plurals>
 <string name="by_author_format">de %s</string>
     <string name="download_404">Ne trovis petitan dosieron.</string>
     <string name="force_old_index">Devigi malnovan formon de indekso</string>
-    <string name="force_old_index_summary">Por okazo de eraroj aŭ kongruec-problemoj, uzi XML aplikaĵan indekson</string>
+    <string name="force_old_index_summary">Por okazo de eraroj aŭ kongruec-problemoj, uzi XML-indekson de aplikaĵoj</string>
     <string name="app_list_download_ready">Elŝutita kaj instalpreta</string>
 
     <string name="status_inserting_x_apps">Konservado de aplikaĵaj detaloj (%1$d/%2$d) el %3$s</string>
@@ -532,5 +532,8 @@
     <string name="hiding_dialog_warning">Averto: ĉiu ligilo ĉe la hejmekrano ankaŭ estos forigita kaj devas esti realdonita permane.</string>
     <string name="hide_on_long_search_press_title">Kaŝi per serĉ-butono</string>
     <string name="hide_on_long_search_press_summary">Longe premu la serĉ-butonon por kaŝi la aplikaĵon</string>
+    <string name="sort_search">Ordigi serĉon</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

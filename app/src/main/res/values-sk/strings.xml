@@ -430,10 +430,10 @@
 
 <string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
-	<item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
-	<item quantity="other">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
-	</plurals>
+        <item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
+        <item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
+        <item quantity="other">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
+    </plurals>
 
     <string name="clear_search">Vymazať hľadanie</string>
 
@@ -458,10 +458,10 @@
     <string name="antifeatureswarning">Táto aplikácia obsahuje funkcie, ktoré sa vám nemusia páčiť.</string>
     <string name="antifeatures">Anti-funkcie</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Dostupná %d aplikácia</item>
-	<item quantity="few">Dostupné %d aplikácie</item>
-	<item quantity="other">Dostupných %d aplikácií</item>
-</plurals>
+        <item quantity="one">Dostupná %d aplikácia</item>
+        <item quantity="few">Dostupné %d aplikácie</item>
+        <item quantity="other">Dostupných %d aplikácií</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Žiadny Internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
     <string name="nearby_splash__find_people_button">Nájdi ľudí blízko mňa</string>
@@ -471,51 +471,51 @@
     <string name="tts_category_name">Kategória %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Zobraziť %1$d aplikáciu z kategórie %2$s</item>
-	<item quantity="few">Zobraziť %1$d aplikácie z kategórie %2$s</item>
-	<item quantity="other">Zobraziť %1$d aplikácií z kategórie %2$s</item>
-</plurals>
+        <item quantity="one">Zobraziť %1$d aplikáciu z kategórie %2$s</item>
+        <item quantity="few">Zobraziť %1$d aplikácie z kategórie %2$s</item>
+        <item quantity="other">Zobraziť %1$d aplikácií z kategórie %2$s</item>
+    </plurals>
 
     <string name="details_last_updated_today">Dnes aktualizované</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Od poslednej aktualizácie prešiel %1$d deň</item>
-	<item quantity="few">Od poslednej aktualizácie prešli %1$d dni</item>
-	<item quantity="other">Od poslednej aktualizácie prešlo %1$d dní</item>
-</plurals>
+        <item quantity="one">Od poslednej aktualizácie prešiel %1$d deň</item>
+        <item quantity="few">Od poslednej aktualizácie prešli %1$d dni</item>
+        <item quantity="other">Od poslednej aktualizácie prešlo %1$d dní</item>
+    </plurals>
 <string name="by_author_format">autor %s</string>
     <string name="force_old_index">Pôvodný index</string>
     <string name="force_old_index_summary">V prípade problémov s kompatibilitou alebo chýb, použiť index vo formáte XML</string>
     <string name="download_404">Požadovaný súbor sa nenašiel.</string>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d nainštalovaná aplikácia</item>
-	<item quantity="few">%1$d nainštalované aplikácie</item>
-	<item quantity="other">%1$d nainštalovaných aplikácií</item>
-</plurals>
+        <item quantity="one">%1$d nainštalovaná aplikácia</item>
+        <item quantity="few">%1$d nainštalované aplikácie</item>
+        <item quantity="other">%1$d nainštalovaných aplikácií</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Od poslednej aktualizácie prešiel %1$d týždeň</item>
-	<item quantity="few">Od poslednej aktualizácie prešli %1$d týždne</item>
-	<item quantity="other">Od poslednej aktualizácie prešlo %1$d týždňov</item>
-</plurals>
+        <item quantity="one">Od poslednej aktualizácie prešiel %1$d týždeň</item>
+        <item quantity="few">Od poslednej aktualizácie prešli %1$d týždne</item>
+        <item quantity="other">Od poslednej aktualizácie prešlo %1$d týždňov</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Od poslednej aktualizácie prešiel %1$d mesiac</item>
-	<item quantity="few">Od poslednej aktualizácie prešli %1$d mesiace</item>
-	<item quantity="other">Od poslednej aktualizácie prešlo %1$d mesiacov</item>
-</plurals>
+        <item quantity="one">Od poslednej aktualizácie prešiel %1$d mesiac</item>
+        <item quantity="few">Od poslednej aktualizácie prešli %1$d mesiace</item>
+        <item quantity="other">Od poslednej aktualizácie prešlo %1$d mesiacov</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d aktualizácia</item>
-	<item quantity="few">%1$d aktualizácie</item>
-	<item quantity="other">%1$d aktualizácií</item>
-</plurals>
+        <item quantity="one">%1$d aktualizácia</item>
+        <item quantity="few">%1$d aktualizácie</item>
+        <item quantity="other">%1$d aktualizácií</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Od poslednej aktualizácie prešiel %1$d rok</item>
-	<item quantity="few">Od poslednej aktualizácie prešli %1$d roky</item>
-	<item quantity="other">Od poslednej aktualizácie prešlo %1$d rokov</item>
-</plurals>
-<plurals name="notification_summary_more">
-	<item quantity="one">+%1$d ďaľšia…</item>
-	<item quantity="few">+%1$d ďaľšie…</item>
-	<item quantity="other">+%1$d ďaľších…</item>
-</plurals>
+        <item quantity="one">Od poslednej aktualizácie prešiel %1$d rok</item>
+        <item quantity="few">Od poslednej aktualizácie prešli %1$d roky</item>
+        <item quantity="other">Od poslednej aktualizácie prešlo %1$d rokov</item>
+    </plurals>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d ďaľšia…</item>
+        <item quantity="few">+%1$d ďaľšie…</item>
+        <item quantity="other">+%1$d ďaľších…</item>
+    </plurals>
     <string name="app_details__incompatible_mismatched_signature">Digitálny podpis nesedí s nainštalovanou verziou</string>
     <string name="app_details__no_versions__show_incompat_versions">Ak chcete aj tak zobraziť nekompatibilné verzie, zapnite nastavenie \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Žiadne verzie s kompatibilným podpisom</string>

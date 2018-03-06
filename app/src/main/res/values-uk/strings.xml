@@ -413,11 +413,11 @@
     <string name="updates__show_updateable_apps">Показати застосунки</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Завантажити оновлення для %1$d застосунку.</item>
-	<item quantity="few">Завантажити оновлення для %1$d застосунків.</item>
-	<item quantity="many">Завантажити оновлення для %1$d застосункiв.</item>
+        <item quantity="one">Завантажити оновлення для %1$d застосунку.</item>
+        <item quantity="few">Завантажити оновлення для %1$d застосунків.</item>
+        <item quantity="many">Завантажити оновлення для %1$d застосункiв.</item>
         <item quantity="other">Завантажити оновлення для %1$d застосункiв.</item>
-</plurals>
+    </plurals>
 
     <string name="details_new_in_version">Нове у версії %s</string>
 
@@ -425,11 +425,11 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Немає Інтернету? Отримуйте застосунки від людей поруч із вами!</string>
     <string name="nearby_splash__find_people_button">Знайти людей навколо мене</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Оновлено %1$s день тому</item>
-	<item quantity="few">Оновлено %1$d дні тому</item>
-	<item quantity="many">Оновлено %1$d днів тому</item>
-	<item quantity="other">Оновлено %1$d днів тому</item>
-	</plurals>
+        <item quantity="one">Оновлено %1$s день тому</item>
+        <item quantity="few">Оновлено %1$d дні тому</item>
+        <item quantity="many">Оновлено %1$d днів тому</item>
+        <item quantity="other">Оновлено %1$d днів тому</item>
+    </plurals>
 <string name="updates__tts__download_app">Завантажити</string>
     <string name="by_author_format">від %s</string>
     <string name="app__tts__cancel_download">Скасувати завантаження</string>
@@ -438,11 +438,11 @@
     <string name="details_last_updated_today">Оновлено сьогодні</string>
     <string name="antifeatures">Небажані функції</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d звістка…</item>
-	<item quantity="few">+%1$d звістки…</item>
-	<item quantity="many">+%1$d звісток…</item>
-	<item quantity="other">+%1$d звісток…</item>
-	</plurals>
+        <item quantity="one">+%1$d звістка…</item>
+        <item quantity="few">+%1$d звістки…</item>
+        <item quantity="many">+%1$d звісток…</item>
+        <item quantity="other">+%1$d звісток…</item>
+    </plurals>
     <string name="force_old_index">Примусово старий формат індексу</string>
     <string name="force_old_index_summary">У разі виникнення помилок або проблем сумісності використовуйте XML індекс застосунку</string>
     <string name="latest__empty_state__no_recent_apps">Недавніх застосунків не виявлено</string>
@@ -453,52 +453,52 @@
 
     <string name="download_404">Запитаний файл не знайдено.</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Оглянути %d застосунок</item>
-	<item quantity="few">Оглянути усі %d застосунки</item>
-	<item quantity="many">Оглянути усі %d застосунків</item>
-	<item quantity="other">Оглянути усі %d застосунків</item>
-	</plurals>
+        <item quantity="one">Оглянути %d застосунок</item>
+        <item quantity="few">Оглянути усі %d застосунки</item>
+        <item quantity="many">Оглянути усі %d застосунків</item>
+        <item quantity="other">Оглянути усі %d застосунків</item>
+    </plurals>
 
     <string name="nearby_splash__both_parties_need_fdroid">Обидві сторони потребують %1$s використовувати поруч.</string>
 
     <string name="app__tts__downloading_progress">Завантаження, %1$d%% завершено</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d оновлення</item>
-	<item quantity="few">%1$d oновлення</item>
-	<item quantity="many">%1$d оновлень</item>
+        <item quantity="one">%1$d оновлення</item>
+        <item quantity="few">%1$d oновлення</item>
+        <item quantity="many">%1$d оновлень</item>
         <item quantity="other">%1$d оновлень</item>
-</plurals>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d встановлений застосунок</item>
-	<item quantity="few">%1$d встановлених застосунка</item>
-	<item quantity="many">%1$d встановлених застосунків</item>
+        <item quantity="one">%1$d встановлений застосунок</item>
+        <item quantity="few">%1$d встановлених застосунка</item>
+        <item quantity="many">%1$d встановлених застосунків</item>
         <item quantity="other">%1$d встановлених застосунків</item>
-</plurals>
+    </plurals>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Показати %1$d застосунок у категорії %2$s</item>
-	<item quantity="few">Показати %1$d застосунка у категорії %2$s</item>
-	<item quantity="many">Показати %1$d застосунків у категорії %2$s</item>
+        <item quantity="one">Показати %1$d застосунок у категорії %2$s</item>
+        <item quantity="few">Показати %1$d застосунка у категорії %2$s</item>
+        <item quantity="many">Показати %1$d застосунків у категорії %2$s</item>
         <item quantity="other">Показати %1$d застосунків у категорії %2$s</item>
-</plurals>
+    </plurals>
 
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Оновлено %1$d тиждень тому</item>
-	<item quantity="few">Оновлено %1$d тижня тому</item>
-	<item quantity="many">Оновлено %1$d тижнів тому</item>
+        <item quantity="one">Оновлено %1$d тиждень тому</item>
+        <item quantity="few">Оновлено %1$d тижня тому</item>
+        <item quantity="many">Оновлено %1$d тижнів тому</item>
         <item quantity="other">Оновлено %1$d тижнів тому</item>
-</plurals>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Оновлено %1$d місяць тому</item>
-	<item quantity="few">Оновлено %1$d місяці тому</item>
-	<item quantity="many">Оновлено %1$d місяців тому</item>
+        <item quantity="one">Оновлено %1$d місяць тому</item>
+        <item quantity="few">Оновлено %1$d місяці тому</item>
+        <item quantity="many">Оновлено %1$d місяців тому</item>
         <item quantity="other">Оновлено %1$d місяців тому</item>
-</plurals>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Оновлено %1$d рік тому</item>
-	<item quantity="few">Оновлено %1$d роки тому</item>
-	<item quantity="many">Оновлено %1$d років тому</item>
+        <item quantity="one">Оновлено %1$d рік тому</item>
+        <item quantity="few">Оновлено %1$d роки тому</item>
+        <item quantity="many">Оновлено %1$d років тому</item>
         <item quantity="other">Оновлено %1$d років тому</item>
-</plurals>
+    </plurals>
 <string name="app_details__incompatible_mismatched_signature">Різний підпис до встановленої версії</string>
     <string name="app_details__no_versions__show_incompat_versions">У будь-якому разі, щоб показати несумісні версії тут, увімкніть параметр \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Немає версій із сумісним підписом</string>

@@ -351,15 +351,15 @@
     </plurals>
     <string name="details_last_updated_today">Actualizate azi</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Actualizate azi</item>
-	<item quantity="few">Actualizate acum %1$d zile</item>
-	<item quantity="other">Actualizate acum %1$d de zile</item>
-</plurals>
+        <item quantity="one">Actualizate azi</item>
+        <item quantity="few">Actualizate acum %1$d zile</item>
+        <item quantity="other">Actualizate acum %1$d de zile</item>
+    </plurals>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Vezi %d</item>
-	<item quantity="few">Toate cele %d</item>
-	<item quantity="other">Toate cele %d</item>
-</plurals>
+        <item quantity="one">Vezi %d</item>
+        <item quantity="few">Toate cele %d</item>
+        <item quantity="other">Toate cele %d</item>
+    </plurals>
 
     <string name="antifeatures">Caracteristici negative</string>
     <string name="antifeatureswarning">Aceasta aplicație are caracteristici ce ar putea sa nu îți placă.</string>
@@ -414,35 +414,35 @@
     <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>
 
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d aplicație instalată</item>
-	<item quantity="few">%1$d aplicații instalate</item>
-	<item quantity="other">%1$d de aplicații instalate</item>
-</plurals>
+        <item quantity="one">%1$d aplicație instalată</item>
+        <item quantity="few">%1$d aplicații instalate</item>
+        <item quantity="other">%1$d de aplicații instalate</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d actualizare</item>
-	<item quantity="few">%1$d actualizări</item>
-	<item quantity="other">%1$d de actualizări</item>
-</plurals>
+        <item quantity="one">%1$d actualizare</item>
+        <item quantity="few">%1$d actualizări</item>
+        <item quantity="other">%1$d de actualizări</item>
+    </plurals>
     <plurals name="notification_summary_more">
-	<item quantity="one">+ încă %1$d…</item>
-	<item quantity="few">+ încă %1$d…</item>
-	<item quantity="other">+ încă %1$d…</item>
-</plurals>
+        <item quantity="one">+ încă %1$d…</item>
+        <item quantity="few">+ încă %1$d…</item>
+        <item quantity="other">+ încă %1$d…</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Actualizat acum un an</item>
-	<item quantity="few">Actualizat acum %1$s ani</item>
-	<item quantity="other">Actualizat acum %1$s de ani</item>
-</plurals>
-<plurals name="details_last_update_months">
-	<item quantity="one">Actualizat acum o lună</item>
-	<item quantity="few">Actualizat acum %1$s luni</item>
-	<item quantity="other">Actualizat acum %1$s de luni</item>
-</plurals>
+        <item quantity="one">Actualizat acum un an</item>
+        <item quantity="few">Actualizat acum %1$s ani</item>
+        <item quantity="other">Actualizat acum %1$s de ani</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Actualizat acum o lună</item>
+        <item quantity="few">Actualizat acum %1$s luni</item>
+        <item quantity="other">Actualizat acum %1$s de luni</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualizat acum o săptămână</item>
-	<item quantity="few">Actualizat acum %1$s săptămâni</item>
-	<item quantity="other">Actualizat acum %1$s săptămâni</item>
-</plurals>
+        <item quantity="one">Actualizat acum o săptămână</item>
+        <item quantity="few">Actualizat acum %1$s săptămâni</item>
+        <item quantity="other">Actualizat acum %1$s săptămâni</item>
+    </plurals>
     <string name="force_old_index">Forțează vechiul format de index</string>
     <string name="force_old_index_summary">În caz de probleme legate de compatibilitate, folosește indexul de aplicații XML</string>
     <string name="by_author_format">de %s</string>
@@ -504,4 +504,11 @@
     <string name="hiding_calculator">Calculator</string>
     <string name="hiding_dialog_title">Ascunde %s acum</string>
     <string name="hide_on_long_search_press_title">Ascunde cu butonul de căutare</string>
+    <string name="sort_search">Sortare căutare</string>
+
+    <string name="panic_hide_warning_message">În caz de urgență, se va elimina %1$s din lansator. Doar scriind \"%2$d\" în aplicația falsă %3$s veți putea să o restaurați.</string>
+
+    <string name="hiding_dialog_message">Sigur doriți să eliminați %1$s din lansator? Doar scriind \"%2$d\" în aplicația falsă %3$s veți putea să o restaurați.</string>
+    <string name="hiding_dialog_warning">Atenție: Orice scurtătură din ecranul de pornire va fi de asemenea eliminată și va trebui adăugată din nou manual.</string>
+    <string name="hide_on_long_search_press_summary">Aplicația va fi ascunsă dacă se apasă lung butonul de căutare</string>
 </resources>

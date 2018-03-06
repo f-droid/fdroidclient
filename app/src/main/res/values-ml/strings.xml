@@ -149,9 +149,9 @@
     <string name="updates__show_updateable_apps">പ്രയോഗങ്ങള്‍ കാണിക്കുക</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">%1$d പ്രയോഗത്തിനുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
-	<item quantity="other">%1$d പ്രയോഗങ്ങള്‍ക്കുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
-</plurals>
+        <item quantity="one">%1$d പ്രയോഗത്തിനുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
+        <item quantity="other">%1$d പ്രയോഗങ്ങള്‍ക്കുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
+    </plurals>
 
     <string name="repo_add_title">പുതിയ സംഭരണി ചേര്‍ക്കുക</string>
     <string name="repo_add_add">ചേർക്കുക</string>
@@ -283,9 +283,9 @@
 
     <string name="category_Theming">തീമിംഗ്</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d കാണുക</item>
-	<item quantity="other">എല്ലാ %d യും കാണുക</item>
-</plurals>
+        <item quantity="one">%d കാണുക</item>
+        <item quantity="other">എല്ലാ %d യും കാണുക</item>
+    </plurals>
 
     <string name="empty_installed_app_list">പ്രയോഗങ്ങളൊന്നും സ്ഥാപിക്കപ്പെട്ടിട്ടില്ല. 
 \n 
@@ -379,9 +379,9 @@
     <string name="crash_dialog_comment_prompt">നിങ്ങൾക്ക് അധിക വിവരങ്ങളും അഭിപ്രായങ്ങളും ഇവിടെ ചേർക്കാം:</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d കൂടെ…</item>
-	<item quantity="other">+%1$d കൂടെ…</item>
-</plurals>
+        <item quantity="one">+%1$d കൂടെ…</item>
+        <item quantity="other">+%1$d കൂടെ…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">സ്ഥാപിക്കാന്‍ തയ്യാര്‍</string>
     <string name="notification_title_single_ready_to_install_update">പുതുക്കല്‍ സ്ഥാപിക്കാന്‍ തയ്യാര്‍</string>
     <string name="notification_title_single_install_error">സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
@@ -390,13 +390,13 @@
     <string name="notification_content_single_installing">\"%1$s\" സ്ഥാപിക്കുന്നു…</string>
     <string name="notification_content_single_installed">വിജയകരമായി സ്ഥാപിച്ചു</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d പുതുക്കല്‍</item>
-	<item quantity="other">%1$d പുതുക്കലുകള്‍</item>
-</plurals>
+        <item quantity="one">%1$d പുതുക്കല്‍</item>
+        <item quantity="other">%1$d പുതുക്കലുകള്‍</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d പ്രയോഗം സ്ഥാപിച്ചു</item>
-	<item quantity="other">%1$d പ്രയോഗങ്ങള്‍ സ്ഥാപിച്ചു</item>
-</plurals>
+        <item quantity="one">%1$d പ്രയോഗം സ്ഥാപിച്ചു</item>
+        <item quantity="other">%1$d പ്രയോഗങ്ങള്‍ സ്ഥാപിച്ചു</item>
+    </plurals>
     <string name="notification_title_summary_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
     <string name="notification_title_summary_downloading">ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
     <string name="notification_title_summary_downloading_update">പുതുക്കല്‍ ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
@@ -407,27 +407,27 @@
     <string name="tts_category_name">%1$s ഇനം</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">%2$s ഇനത്തിലെ %1$d പ്രയോഗം കാണുക</item>
-	<item quantity="other">%2$s ഇനത്തിലെ എല്ലാ %1$d പ്രയോഗങ്ങളും കാണുക</item>
-</plurals>
+        <item quantity="one">%2$s ഇനത്തിലെ %1$d പ്രയോഗം കാണുക</item>
+        <item quantity="other">%2$s ഇനത്തിലെ എല്ലാ %1$d പ്രയോഗങ്ങളും കാണുക</item>
+    </plurals>
 
     <string name="details_last_updated_today">ഇന്ന് പുതുക്കിയത്</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">%1$d ദിവസം മുന്നെ പുതുക്കിയത്</item>
-	<item quantity="other">%1$d ദിവസങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
-</plurals>
+        <item quantity="one">%1$d ദിവസം മുന്നെ പുതുക്കിയത്</item>
+        <item quantity="other">%1$d ദിവസങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$d ആഴ്ച മുന്നെ പുതുക്കിയത്</item>
-	<item quantity="other">%1$d ആഴ്ചകള്‍ മുന്നെ പുതുക്കിയത്</item>
-</plurals>
+        <item quantity="one">%1$d ആഴ്ച മുന്നെ പുതുക്കിയത്</item>
+        <item quantity="other">%1$d ആഴ്ചകള്‍ മുന്നെ പുതുക്കിയത്</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$d മാസം മുന്നെ പുതുക്കിയത്</item>
-	<item quantity="other">%1$d മാസങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
-</plurals>
+        <item quantity="one">%1$d മാസം മുന്നെ പുതുക്കിയത്</item>
+        <item quantity="other">%1$d മാസങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$d കൊല്ലം മുന്നെ പുതുക്കിയത്</item>
-	<item quantity="other">%1$d കൊല്ലങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
-</plurals>
+        <item quantity="one">%1$d കൊല്ലം മുന്നെ പുതുക്കിയത്</item>
+        <item quantity="other">%1$d കൊല്ലങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
+    </plurals>
 <string name="status_inserting_apps">പ്രയോഗ വിവരങ്ങള്‍ സൂക്ഷിക്കുന്നു</string>
     <string name="theme_light">ഇളം നിറം</string>
     <string name="theme_dark">ഇരുണ്ട നിറം</string>

@@ -353,11 +353,11 @@
     <string name="updates__show_updateable_apps">הצגת יישומונים</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
-	<item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
-	<item quantity="many">הורדת עדכונים עבור %1$d יישומונים.</item>
-	<item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
-</plurals>
+        <item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
+        <item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
+        <item quantity="many">הורדת עדכונים עבור %1$d יישומונים.</item>
+        <item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
+    </plurals>
 
     <string name="versions">גירסאות</string>
     <string name="clear_search">פינוי החיפוש</string>
@@ -387,11 +387,11 @@
     <string name="hide_anti_feature_apps_on">סימון באפור יישומונים אשר דורשים תכונות שליליות</string>
     <string name="warning_no_internet">לא ניתן לעדכן, האם קיים חיבור לרשת?</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">הצגת אחד</item>
-	<item quantity="two">הצגת כל ה־%d</item>
-	<item quantity="many">הצגת כל ה־%d</item>
-	<item quantity="other">הצגת כל ה־%d</item>
-</plurals>
+        <item quantity="one">הצגת אחד</item>
+        <item quantity="two">הצגת כל ה־%d</item>
+        <item quantity="many">הצגת כל ה־%d</item>
+        <item quantity="other">הצגת כל ה־%d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
     <string name="nearby_splash__find_people_button">חיפוש אנשים בקרבתי</string>
@@ -436,17 +436,17 @@
     <string name="notification_content_single_installing">ההתקנה של „%1$s“ מתבצעת כעת…</string>
     <string name="notification_content_single_installed">ההתקנה הצליחה</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">עדכון %1$d</item>
-	<item quantity="two">%1$d עדכונים</item>
-	<item quantity="many">%1$d עדכונים</item>
-	<item quantity="other">%1$d עדכונים</item>
-</plurals>
+        <item quantity="one">עדכון %1$d</item>
+        <item quantity="two">%1$d עדכונים</item>
+        <item quantity="many">%1$d עדכונים</item>
+        <item quantity="other">%1$d עדכונים</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">יישומון %1$d הותקן</item>
-	<item quantity="two">%1$d יישומונים הותקנו</item>
-	<item quantity="many">%1$d יישומונים הותקנו</item>
-	<item quantity="other">%1$d יישומונים הותקנו</item>
-</plurals>
+        <item quantity="one">יישומון %1$d הותקן</item>
+        <item quantity="two">%1$d יישומונים הותקנו</item>
+        <item quantity="many">%1$d יישומונים הותקנו</item>
+        <item quantity="other">%1$d יישומונים הותקנו</item>
+    </plurals>
     <string name="notification_title_summary_update_available">עדכון זמין</string>
     <string name="notification_title_summary_downloading">מתבצעת הורדה כעת…</string>
     <string name="notification_title_summary_downloading_update">העדכון מתקבל כעת…</string>
@@ -457,37 +457,37 @@
     <string name="tts_category_name">קטגוריה %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">הצגת יישומון מהקטגוריה %2$s</item>
-	<item quantity="two">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
-	<item quantity="many">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
-	<item quantity="other">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
-</plurals>
+        <item quantity="one">הצגת יישומון מהקטגוריה %2$s</item>
+        <item quantity="two">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+        <item quantity="many">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+        <item quantity="other">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+    </plurals>
 
     <string name="details_last_updated_today">עודכן היום</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">עודכן אתמול</item>
-	<item quantity="two">עודכן שלשום</item>
-	<item quantity="many">עודכן לפני %1$d ימים</item>
-	<item quantity="other">עודכן לפני %1$d ימים</item>
-</plurals>
+        <item quantity="one">עודכן אתמול</item>
+        <item quantity="two">עודכן שלשום</item>
+        <item quantity="many">עודכן לפני %1$d ימים</item>
+        <item quantity="other">עודכן לפני %1$d ימים</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">עודכן לפני שבוע</item>
-	<item quantity="two">עודכן לפני שבועיים</item>
-	<item quantity="many">עודכן לפני %1$d שבועות</item>
-	<item quantity="other">עודכן לפני %1$d שבועות</item>
-</plurals>
+        <item quantity="one">עודכן לפני שבוע</item>
+        <item quantity="two">עודכן לפני שבועיים</item>
+        <item quantity="many">עודכן לפני %1$d שבועות</item>
+        <item quantity="other">עודכן לפני %1$d שבועות</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">עודכן לפני חודש</item>
-	<item quantity="two">עודכן לפני חודשיים</item>
-	<item quantity="many">עודכן לפני %1$d חודשים</item>
-	<item quantity="other">עודכן לפני %1$d חודשים</item>
-</plurals>
+        <item quantity="one">עודכן לפני חודש</item>
+        <item quantity="two">עודכן לפני חודשיים</item>
+        <item quantity="many">עודכן לפני %1$d חודשים</item>
+        <item quantity="other">עודכן לפני %1$d חודשים</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">עודכן לפני שנה</item>
-	<item quantity="two">עודכן לפני שנתיים</item>
-	<item quantity="many">עודכן לפני %1$d שנים</item>
-	<item quantity="other">עודכן לפני %1$d שנים</item>
-</plurals>
+        <item quantity="one">עודכן לפני שנה</item>
+        <item quantity="two">עודכן לפני שנתיים</item>
+        <item quantity="many">עודכן לפני %1$d שנים</item>
+        <item quantity="other">עודכן לפני %1$d שנים</item>
+    </plurals>
 <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
     <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומונים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>
@@ -540,5 +540,8 @@
     <string name="hiding_dialog_warning">אזהרה: כל קיצור דרך ליישומון על מסך הבית יוסר גם כן ויהיה להוסיף אותו מחדש ידנית.</string>
     <string name="hide_on_long_search_press_title">הסתרה עם כפתור החיפוש</string>
     <string name="hide_on_long_search_press_summary">לחיצה ארוכה על כפתור החיפוש תסתיר את היישומון</string>
+    <string name="sort_search">מיון החיפוש</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>
