@@ -411,9 +411,9 @@
     </plurals>
     <string name="details_last_updated_today">Anovóse güei</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Anovóse hai %1$d día</item>
-	<item quantity="other">Anovóse hai %1$d díes</item>
-</plurals>
+        <item quantity="one">Anovóse hai %1$d día</item>
+        <item quantity="other">Anovóse hai %1$d díes</item>
+    </plurals>
     <string name="tts_category_name">Estaya %1$s</string>
 
     <string name="notification_action_install">Instalar</string>
@@ -450,9 +450,9 @@
     <string name="hide_anti_feature_apps">Poner en buxu  les apps con componentes non llibres</string>
     <string name="download_404">Nun s\'alcontró el ficheru solicitáu.</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver %d</item>
-	<item quantity="other">Ver toles %d</item>
-</plurals>
+        <item quantity="one">Ver %d</item>
+        <item quantity="other">Ver toles %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">¿Nun tienes Internet? ¡Descarga apps de xente cercana!</string>
     <string name="nearby_splash__find_people_button">Alcontrar persones cercanes</string>
@@ -460,39 +460,39 @@
 
     <string name="app__tts__downloading_progress">Descargando, %1$d%% completáu</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d más…</item>
-	<item quantity="other">+%1$d más…</item>
-</plurals>
+        <item quantity="one">+%1$d más…</item>
+        <item quantity="other">+%1$d más…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Preparáu pa instalar</string>
     <string name="notification_title_single_ready_to_install_update">Anovamientu preparáu pa instalar</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d anovamientu</item>
-	<item quantity="other">%1$d anovamientos</item>
-</plurals>
+        <item quantity="one">%1$d anovamientu</item>
+        <item quantity="other">%1$d anovamientos</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d app instalada</item>
-	<item quantity="other">%1$d app instalaes</item>
-</plurals>
+        <item quantity="one">%1$d app instalada</item>
+        <item quantity="other">%1$d app instalaes</item>
+    </plurals>
     <string name="notification_title_summary_ready_to_install">Preparáu pa instalar</string>
     <string name="notification_title_summary_ready_to_install_update">Anovamientu preparáu pa instalar</string>
     <string name="notification_title_summary_installed">Instalación correuta</string>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver %1$d app de la categoría %2$s</item>
-	<item quantity="other">Ver les %1$d apps de la categoría %2$s</item>
-</plurals>
+        <item quantity="one">Ver %1$d app de la categoría %2$s</item>
+        <item quantity="other">Ver les %1$d apps de la categoría %2$s</item>
+    </plurals>
 
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Anovóse hai %1$d selmana</item>
-	<item quantity="other">Anovóse hai %1$d selmanes</item>
-</plurals>
+        <item quantity="one">Anovóse hai %1$d selmana</item>
+        <item quantity="other">Anovóse hai %1$d selmanes</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Anovóse hai %1$d mes</item>
-	<item quantity="other">Anovóse hai %1$d meses</item>
-</plurals>
+        <item quantity="one">Anovóse hai %1$d mes</item>
+        <item quantity="other">Anovóse hai %1$d meses</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Anovóse hai %1$d añu</item>
-	<item quantity="other">Anovóse hai %1$d años</item>
-</plurals>
+        <item quantity="one">Anovóse hai %1$d añu</item>
+        <item quantity="other">Anovóse hai %1$d años</item>
+    </plurals>
 <string name="app_list_download_ready">Descargao, preparao pa instalar</string>
 
     <string name="status_inserting_x_apps">Guardando detalles de la app (%1$d/%2$d) dende %3$s</string>

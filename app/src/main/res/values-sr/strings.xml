@@ -444,16 +444,16 @@
     <string name="antifeatureswarning">Ова апликација поседује функционалности које вам се можда неће свидети.</string>
     <string name="antifeatures">Анти-могућности</string>
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Прикажи %1$d апликацију у категорији %2$s</item>
-	<item quantity="few">Прикажи све %1$d апликације у категорији %2$s</item>
-	<item quantity="other">Прикажи свих %1$d апликација у категорији %2$s</item>
-</plurals>
+        <item quantity="one">Прикажи %1$d апликацију у категорији %2$s</item>
+        <item quantity="few">Прикажи све %1$d апликације у категорији %2$s</item>
+        <item quantity="other">Прикажи свих %1$d апликација у категорији %2$s</item>
+    </plurals>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Надограђена пре %1$d дан</item>
-	<item quantity="few">Надограђена пре %1$d дана</item>
-	<item quantity="other">Надограђена пре %1$d дана</item>
-</plurals>
+        <item quantity="one">Надограђена пре %1$d дан</item>
+        <item quantity="few">Надограђена пре %1$d дана</item>
+        <item quantity="other">Надограђена пре %1$d дана</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s уграђена</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
@@ -472,35 +472,35 @@
     <string name="app__tts__downloading_progress">Преузимам, %1$d%% завршено</string>
     <string name="by_author_format">од %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+још %1$d…</item>
-	<item quantity="few">+још %1$d…</item>
-	<item quantity="other">+још %1$d…</item>
-</plurals>
+        <item quantity="one">+још %1$d…</item>
+        <item quantity="few">+још %1$d…</item>
+        <item quantity="other">+још %1$d…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d надоградња</item>
-	<item quantity="few">%1$d надоградње</item>
-	<item quantity="other">%1$d надоградњи</item>
-</plurals>
+        <item quantity="one">%1$d надоградња</item>
+        <item quantity="few">%1$d надоградње</item>
+        <item quantity="other">%1$d надоградњи</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d апл. уграђена</item>
-	<item quantity="few">%1$d апл. уграђене</item>
-	<item quantity="other">%1$d апл. уграђено</item>
-</plurals>
+        <item quantity="one">%1$d апл. уграђена</item>
+        <item quantity="few">%1$d апл. уграђене</item>
+        <item quantity="other">%1$d апл. уграђено</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Надограђена пре %1$d седмицу</item>
-	<item quantity="few">Надограђена пре %1$d седмице</item>
-	<item quantity="other">Надограђена пре %1$d седмица</item>
-</plurals>
+        <item quantity="one">Надограђена пре %1$d седмицу</item>
+        <item quantity="few">Надограђена пре %1$d седмице</item>
+        <item quantity="other">Надограђена пре %1$d седмица</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Надограђена пре %1$d месец</item>
-	<item quantity="few">Надограђена пре %1$d месеца</item>
-	<item quantity="other">Надограђена пре %1$d месеци</item>
-</plurals>
+        <item quantity="one">Надограђена пре %1$d месец</item>
+        <item quantity="few">Надограђена пре %1$d месеца</item>
+        <item quantity="other">Надограђена пре %1$d месеци</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Надограђена пре %1$d годину</item>
-	<item quantity="few">Надограђена пре %1$d године</item>
-	<item quantity="other">Надограђена пре %1$d година</item>
-</plurals>
+        <item quantity="one">Надограђена пре %1$d годину</item>
+        <item quantity="few">Надограђена пре %1$d године</item>
+        <item quantity="other">Надограђена пре %1$d година</item>
+    </plurals>
 <string name="force_old_index">Присили стари формат индекса</string>
     <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите ИксМЛ индекс апликација</string>
     <string name="app_installed_media">Фајл уграђен у %s</string>

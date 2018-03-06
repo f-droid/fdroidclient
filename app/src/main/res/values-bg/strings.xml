@@ -425,13 +425,13 @@
     <string name="notification_content_single_installing">Инсталиране \"%1$s\"…</string>
     <string name="notification_content_single_installed">Успешна инсталация</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Актуализация</item>
-	<item quantity="other">%1$d Актуализации</item>
-</plurals>
+        <item quantity="one">%1$d Актуализация</item>
+        <item quantity="other">%1$d Актуализации</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d Инсталирано приложение</item>
-	<item quantity="other">%1$d Инсталирани приложения</item>
-</plurals>
+        <item quantity="one">%1$d Инсталирано приложение</item>
+        <item quantity="other">%1$d Инсталирани приложения</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Налична актуализация</string>
     <string name="notification_title_summary_downloading">Сваляне…</string>
     <string name="notification_title_summary_downloading_update">Изтегляне на актуализацията…</string>
@@ -442,27 +442,27 @@
     <string name="tts_category_name">Категория %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Покажи %1$d  приложение в %2$s категория</item>
-	<item quantity="other">Покажи всички %1$d  приложения от %2$s категория</item>
-</plurals>
+        <item quantity="one">Покажи %1$d  приложение в %2$s категория</item>
+        <item quantity="other">Покажи всички %1$d  приложения от %2$s категория</item>
+    </plurals>
 
     <string name="details_last_updated_today">Актуализирано днес</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Актуализирано преди %1$d ден</item>
-	<item quantity="other">Актуализирано преди %1$d дни</item>
-</plurals>
+        <item quantity="one">Актуализирано преди %1$d ден</item>
+        <item quantity="other">Актуализирано преди %1$d дни</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Актуализирано преди %1$d седмица</item>
-	<item quantity="other">Актуализирано преди %1$d седмици</item>
-</plurals>
+        <item quantity="one">Актуализирано преди %1$d седмица</item>
+        <item quantity="other">Актуализирано преди %1$d седмици</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Актуализирано преди %1$d месец</item>
-	<item quantity="other">Актуализирано преди %1$d месеца</item>
-</plurals>
+        <item quantity="one">Актуализирано преди %1$d месец</item>
+        <item quantity="other">Актуализирано преди %1$d месеца</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Актуализирано преди %1$d година</item>
-	<item quantity="other">Актуализирано преди %1$d години</item>
-</plurals>
+        <item quantity="one">Актуализирано преди %1$d година</item>
+        <item quantity="other">Актуализирано преди %1$d години</item>
+    </plurals>
 <string name="notification_action_update">Актуализация</string>
     <string name="notification_action_cancel">Отказ</string>
     <string name="notification_action_install">Инсталирай</string>
@@ -471,9 +471,9 @@
     <string name="notification_title_single_update_available">Налично обновление</string>
     <string name="notification_title_summary_install_error">Инсталирането е неуспешно</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Покажи %d</item>
-	<item quantity="other">Покажи всички %d</item>
-</plurals>
+        <item quantity="one">Покажи %d</item>
+        <item quantity="other">Покажи всички %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Нямате връзка с Интернет? Вземете приложения от хората около вас!</string>
     <string name="nearby_splash__find_people_button">Откриване на близки устройства</string>
@@ -487,15 +487,15 @@
     <string name="uninstalling">Деинсталиране…</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d  още…</item>
-	<item quantity="other">+%1$d  повече…</item>
-</plurals>
+        <item quantity="one">+%1$d  още…</item>
+        <item quantity="other">+%1$d  повече…</item>
+    </plurals>
     <string name="force_old_index">Принудителен стар формат на индексиране</string>
     <string name="app_details__incompatible_mismatched_signature">Различен подпис от инсталираната версия</string>
     <string name="app_details__no_versions__no_compatible_signatures">Няма налични версии със съвместим подпис</string>
     <string name="app_details__no_versions__none_compatible_with_device">Наличните версии не са съвместими с устройството</string>
     <string name="app_details__no_versions__show_incompat_versions">Включете настройката \"%1$s\" за показване на несъвместими версии.</string>
-    <string name="app_list_download_ready">Изтвглено и готово за инсталиране</string>
+    <string name="app_list_download_ready">Изтeглено и готово за инсталиране</string>
     <string name="app_list__dismiss_downloading_app">Спряно изтегляне</string>
 
     <string name="installed_app__file_corrupt">Входно-изходна грешка. %s вероятно е повреден!</string>
@@ -508,5 +508,21 @@
     <string name="system_install_not_supported">Засега инсталирането на привилегированото разширение на F-Droid не се поддържа на Андроид версия 5.1 или по-нова.</string>
 
     <string name="nearby_splash__both_parties_need_fdroid">За споделянето на приложения с други около вас, и двете устройства трябва да използват %1$s.</string>
+    <string name="app_installed_media">Файлът е инсталиран в %s</string>
+    <string name="app_permission_storage">F-Droid се нуждае от разрешение, за да инсталира приложението в хранилището. Моля, разрешете на следващия екран, за да продължи инсталирането.</string>
 
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открихме уязвимост в %1$s. Препоръчваме незабавно да деинсталирате това приложение.</string>
+    <string name="panic_app_setting_title">Паник бутон приложение</string>
+    <string name="panic_app_unknown_app">непознато приложение</string>
+    <string name="panic_app_setting_summary">Няма зададено приложение</string>
+    <string name="panic_app_dialog_title">Потвърдете паник приложение</string>
+    <string name="panic_app_dialog_message">Сигурни ли сте, че искате да разрешите на %1$s да задейства унищожителни действия на паник бутон?</string>
+    <string name="allow">Разреши</string>
+
+    <string name="panic_settings">Настройки на паник бутон</string>
+    <string name="panic_settings_summary">Действия, които се предприемат в спешен случай</string>
+    <string name="panic_exit_summary">Приложението ще се затвори</string>
+    <string name="panic_destructive_actions">Унищожителни действия</string>
+    <string name="panic_hide_title">Скриване на %s</string>
+    <string name="panic_hide_summary">Приложението ще се скрие само</string>
 </resources>

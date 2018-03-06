@@ -109,7 +109,7 @@
 
     <string name="expert_on">Amosar información adicional e activar axustes adicionais</string>
 
-    <string name="show_incompat_versions_on">Amosar versións de aplicativos incompatibles co dispositivo</string>
+    <string name="show_incompat_versions_on">Amosar versións de aplicativos que son incompatibeis co dispositivo</string>
     <string name="rooted_on">Non sombrear os aplicativos que requiran privilexios de root</string>
     <string name="force_touch_apps_on">Incluír sempre aplicativos que requiran pantalla táctil</string>
 
@@ -396,9 +396,9 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Amosar apps</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Baixar anovación para %1$d app.</item>
-	<item quantity="other">Baixar anovacións para %1$d apps.</item>
-</plurals>
+        <item quantity="one">Baixar anovación para %1$d app.</item>
+        <item quantity="other">Baixar anovacións para %1$d apps.</item>
+    </plurals>
 
     <string name="versions">Versións</string>
     <string name="clear_search">Limpar a busca</string>
@@ -426,9 +426,9 @@
     <string name="download_404">O ficheiro solicitado non foi atopado.</string>
     <string name="status_inserting_x_apps">Gardando detalles do aplicativo (%1$d/%2$d) de %3$s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver %d</item>
-	<item quantity="other">Ver todas as %d</item>
-</plurals>
+        <item quantity="one">Ver %d</item>
+        <item quantity="other">Ver todas as %d</item>
+    </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet? Baixa aplicativos de persoas próximas!</string>
     <string name="nearby_splash__find_people_button">Atopar persoas próximas a min</string>
@@ -454,9 +454,9 @@
     <string name="crash_dialog_comment_prompt">Pode engadir información adicional e comentarios aquí:</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="one">máis +%1$d …</item>
-	<item quantity="other">máis +%1$d …</item>
-</plurals>
+        <item quantity="one">máis +%1$d …</item>
+        <item quantity="other">máis +%1$d …</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Preparado para anovar</string>
     <string name="notification_title_single_ready_to_install_update">Anovación lista para instalar</string>
     <string name="notification_title_single_install_error">Fallou a instalación</string>
@@ -465,13 +465,13 @@
     <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalación correcta</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d anovación</item>
-	<item quantity="other">%1$d anovacións</item>
-</plurals>
+        <item quantity="one">%1$d anovación</item>
+        <item quantity="other">%1$d anovacións</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d Aplicativo instalado</item>
-	<item quantity="other">%1$d Aplicativos instalados</item>
-</plurals>
+        <item quantity="one">%1$d Aplicativo instalado</item>
+        <item quantity="other">%1$d Aplicativos instalados</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Anovación disponíbel</string>
     <string name="notification_title_summary_downloading">Baixando…</string>
     <string name="notification_title_summary_downloading_update">Baixando anovación…</string>
@@ -482,15 +482,15 @@
     <string name="tts_category_name">Categoría %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver %1$d aplicativo na categoría %2$s</item>
-	<item quantity="other">Ver todos os %1$d aplicativos da categoría %2$s</item>
-</plurals>
+        <item quantity="one">Ver %1$d aplicativo na categoría %2$s</item>
+        <item quantity="other">Ver todos os %1$d aplicativos da categoría %2$s</item>
+    </plurals>
 
     <string name="details_last_updated_today">Anovada hoxe</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Anovada %1$s día atrás</item>
-	<item quantity="other">Anovada %1$s días atrás</item>
-</plurals>
+        <item quantity="one">Anovada %1$s día atrás</item>
+        <item quantity="other">Anovada %1$s días atrás</item>
+    </plurals>
     <string name="app_details__no_versions__explain_incompatible_signatures">A versión instalada non é compatíbel con ningunha das versións dispoñibeis. Desinstalar a aplicación permitiralle ver e instalar as versións compatibeis. Isto acontece habitualmente con apps instaladas através de Google Play ou outras fontes, se foron asinadas cun certificado diferente.</string>
 
     <string name="app_permission_storage">O F-Droid precisa permiso para acceder ao almacenamento. Por favor conceda ese permiso na seguinte pantalla para continuar coa instalación.</string>
@@ -503,16 +503,49 @@
     <string name="system_install_not_supported">Polo de agora non é posíbel instalar a Extensión Privilexiada de F-Droid en sistemas Android &gt; 5.1.</string>
 
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualizado hai %1$d semana</item>
-	<item quantity="other">Actualizado hai %1$d semanas</item>
-</plurals>
+        <item quantity="one">Actualizado hai %1$d semana</item>
+        <item quantity="other">Actualizado hai %1$d semanas</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Actualizado hai %1$d mes</item>
-	<item quantity="other">Actualizado hai %1$d meses</item>
-</plurals>
+        <item quantity="one">Actualizado hai %1$d mes</item>
+        <item quantity="other">Actualizado hai %1$d meses</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Actualizado hai %1$d ano</item>
-	<item quantity="other">Actualizado hai %1$d anos</item>
-</plurals>
-<string name="status_inserting_apps">Gardando os detalles das apps</string>
+        <item quantity="one">Actualizado hai %1$d ano</item>
+        <item quantity="other">Actualizado hai %1$d anos</item>
+    </plurals>
+    <string name="status_inserting_apps">Gardando os detalles das apps</string>
+    <string name="sort_search">Ordear busca</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="privacy">Privacidade</string>
+    <string name="preventScreenshots_title">Impedir capturas de pantalla</string>
+    <string name="preventScreenshots_summary">Impide a captura de pantalla e oculta o contido da aplicación na pantalla de aplicacións recentes</string>
+
+    <string name="panic_app_setting_title">App de botón do pánico</string>
+    <string name="panic_app_unknown_app">unha app descoñecida</string>
+    <string name="panic_app_setting_summary">App sen definir</string>
+    <string name="panic_app_setting_none">Nengunha</string>
+    <string name="panic_app_dialog_title">Confirmar App do pánico</string>
+    <string name="panic_app_dialog_message">Seguro que desexa permitir que %1$s desencadene accións destrutivas do botón de pánico?</string>
+    <string name="allow">Permitir</string>
+
+    <string name="panic_settings">Axustes do botón do pánico</string>
+    <string name="panic_settings_summary">Accións a tomar en caso de emerxencia</string>
+    <string name="panic_exit_title">Saír da aplicación</string>
+    <string name="panic_exit_summary">A aplicación será fechada</string>
+    <string name="panic_destructive_actions">Accións destrutivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_summary">A aplicación agocharase</string>
+    <string name="panic_hide_warning_title">Lembrar como restaurar</string>
+    <string name="panic_hide_warning_message">Nunha situación de pânico, borrarase %1$s do menu. Para restaurar, abonda dixitar \"%2$d\" no aplicativo falso %3$s.</string>
+
+    <string name="hiding_calculator">Calculadora</string>
+    <string name="hiding_dialog_title">Agochar %s agora</string>
+    <string name="hiding_dialog_message">Está seguro de que quere borrar %1$s do menú? Abonda dixitar \"%2$d\" no aplicativo falso %3$s para restaurar.</string>
+    <string name="hiding_dialog_warning">Atención: Todos os atallos de aplicativos na pantalla inicial tamén serán borrados e precisarán ser re-adicionados manualmente.</string>
+    <string name="hide_on_long_search_press_title">Ocultar co botón de busca</string>
+    <string name="hide_on_long_search_press_summary">Premer longo no botón de busca oculta o aplicativo</string>
+
 </resources>

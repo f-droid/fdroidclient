@@ -423,9 +423,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Càstia %d</item>
-	<item quantity="other">Càstia totu %d</item>
-</plurals>
+        <item quantity="one">Càstia %d</item>
+        <item quantity="other">Càstia totu %d</item>
+    </plurals>
 
     <string name="clear_search">Inneta sa chirca</string>
 
@@ -444,9 +444,9 @@
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ammustra s\'aplicatzione %1$d in sa categoria %2$s</item>
-	<item quantity="other">Ammustra totu sas aplicatziones %1$d in sa categoria %2$s</item>
-</plurals>
+        <item quantity="one">Ammustra s\'aplicatzione %1$d in sa categoria %2$s</item>
+        <item quantity="other">Ammustra totu sas aplicatziones %1$d in sa categoria %2$s</item>
+    </plurals>
     <string name="app__install_downloaded_update">Agiorna</string>
 
     <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
@@ -468,9 +468,9 @@
     <string name="antifeatures">Anti-funtzionalidades</string>
     <string name="details_last_updated_today">Agiornadu oe</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Agiornada %1$d die a como</item>
-	<item quantity="other">Agiornada %1$d dies a como</item>
-</plurals>
+        <item quantity="one">Agiornada %1$d die a como</item>
+        <item quantity="other">Agiornada %1$d dies a como</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s installada</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa
         gente a curtzu de tie!
@@ -494,29 +494,29 @@
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
     <string name="menu_license">Litzèntzia: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d àtera…</item>
-	<item quantity="other">àteras +%1$d…</item>
-</plurals>
+        <item quantity="one">+%1$d àtera…</item>
+        <item quantity="other">àteras +%1$d…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Agiornamentu</item>
-	<item quantity="other">%1$d Agiornamentos</item>
-</plurals>
+        <item quantity="one">%1$d Agiornamentu</item>
+        <item quantity="other">%1$d Agiornamentos</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d aplicatzione installada</item>
-	<item quantity="other">%1$d aplicatziones installadas</item>
-</plurals>
+        <item quantity="one">%1$d aplicatzione installada</item>
+        <item quantity="other">%1$d aplicatziones installadas</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Agiornada %1$d chida a como</item>
-	<item quantity="other">Agiornada %1$d chidas a como</item>
-</plurals>
+        <item quantity="one">Agiornada %1$d chida a como</item>
+        <item quantity="other">Agiornada %1$d chidas a como</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Agiornada %1$d mese a como</item>
-	<item quantity="other">Agiornada %1$d meses a como</item>
-</plurals>
+        <item quantity="one">Agiornada %1$d mese a como</item>
+        <item quantity="other">Agiornada %1$d meses a como</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Agiornada %1$d annu a como</item>
-	<item quantity="other">Agiornada %1$d annos a como</item>
-</plurals>
+        <item quantity="one">Agiornada %1$d annu a como</item>
+        <item quantity="other">Agiornada %1$d annos a como</item>
+    </plurals>
 <string name="by_author_format">de %s</string>
     <string name="download_404">Su documentu pedidu no est istadu agatadu.</string>
     <string name="force_old_index">Fortza su formatu betzu de s\'ìnditze</string>
@@ -571,5 +571,8 @@
     <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale at a èssere bogada e b\'at a dèpere èssere torrada a pònnere manualmente.</string>
     <string name="hide_on_long_search_press_title">Istichi cun su butone de chirca</string>
     <string name="hide_on_long_search_press_summary">Un\'incarcada longa in su butone de chirca at a istichire s\'aplicatzione</string>
+    <string name="sort_search">Òrdina sa chirca</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

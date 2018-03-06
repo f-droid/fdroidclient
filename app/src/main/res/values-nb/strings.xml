@@ -418,9 +418,9 @@
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Vis %1$d programmet i kategorien %1$s</item>
-	<item quantity="other">Vis alle %1$d programmer i kategorien %2$s</item>
-</plurals>
+        <item quantity="one">Vis %1$d programmet i kategorien %1$s</item>
+        <item quantity="other">Vis alle %1$d programmer i kategorien %2$s</item>
+    </plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
 
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
@@ -441,15 +441,15 @@
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Vis ett %d</item>
-	<item quantity="other">Vis alle %d</item>
-</plurals>
+        <item quantity="one">Vis ett %d</item>
+        <item quantity="other">Vis alle %d</item>
+    </plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Oppdatert for %1$d dag siden</item>
-	<item quantity="other">Oppdatert for %1$d dager siden</item>
-</plurals>
+        <item quantity="one">Oppdatert for %1$d dag siden</item>
+        <item quantity="other">Oppdatert for %1$d dager siden</item>
+    </plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
     <string name="app_list__name__successfully_installed">%1$s installert</string>
     <string name="menu_video">Video</string>
@@ -466,29 +466,29 @@
     <string name="app__tts__downloading_progress">Laster ned, %1$d%% fullført</string>
     <string name="menu_license">Lisens: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d til…</item>
-	<item quantity="other">+%1$d til…</item>
-</plurals>
+        <item quantity="one">+%1$d til…</item>
+        <item quantity="other">+%1$d til…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d oppdatering</item>
-	<item quantity="other">%1$d oppdateringer</item>
-</plurals>
+        <item quantity="one">%1$d oppdatering</item>
+        <item quantity="other">%1$d oppdateringer</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d program installert</item>
-	<item quantity="other">%1$d programmer installert</item>
-</plurals>
+        <item quantity="one">%1$d program installert</item>
+        <item quantity="other">%1$d programmer installert</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Oppdatert for %1$d uke siden</item>
-	<item quantity="other">Oppdatert for %1$d uker siden</item>
-</plurals>
+        <item quantity="one">Oppdatert for %1$d uke siden</item>
+        <item quantity="other">Oppdatert for %1$d uker siden</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Oppdatert for %1$d måned siden</item>
-	<item quantity="other">Oppdatert for %1$d måneder siden</item>
-</plurals>
+        <item quantity="one">Oppdatert for %1$d måned siden</item>
+        <item quantity="other">Oppdatert for %1$d måneder siden</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Oppdatert for %1$d år siden</item>
-	<item quantity="other">Oppdatert for %1$d år siden</item>
-</plurals>
+        <item quantity="one">Oppdatert for %1$d år siden</item>
+        <item quantity="other">Oppdatert for %1$d år siden</item>
+    </plurals>
 <string name="version">Versjon</string>
     <string name="by_author_format">av %s</string>
     <string name="force_old_index">Tving gjennom gammelt indeksformat</string>

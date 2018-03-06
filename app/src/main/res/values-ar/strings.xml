@@ -422,13 +422,13 @@
     <string name="installed_app__updates_ignored">تم تجاهل التحديثات</string>
     <string name="installed_app__updates_ignored_for_suggested_version">تم تجاهل التحديثات للنسخة %1$s</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="zero">لا تحمل التحديثات لأي شيء.</item>
-	<item quantity="one">حمل التحديثات لتطبيق واحد.</item>
-	<item quantity="two">حمل التحديثات لتطبيقين.</item>
-	<item quantity="few">حمل التحديثات  %1$s تطبيقات.</item>
-	<item quantity="many">حمل التحديثات ل  %1$s تطبيقا.</item>
-	<item quantity="other">حمل التحديثات ل  %1$s تطبيق.</item>
-</plurals>
+        <item quantity="zero">لا تحمل التحديثات لأي شيء.</item>
+        <item quantity="one">حمل التحديثات لتطبيق واحد.</item>
+        <item quantity="two">حمل التحديثات لتطبيقين.</item>
+        <item quantity="few">حمل التحديثات  %1$s تطبيقات.</item>
+        <item quantity="many">حمل التحديثات ل  %1$s تطبيقا.</item>
+        <item quantity="other">حمل التحديثات ل  %1$s تطبيق.</item>
+    </plurals>
 
     <string name="repositories_summary">أضف مصادر إضافية للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
@@ -447,13 +447,13 @@
     <string name="details_new_in_version">جديد في النسخة %s</string>
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="zero">عرض %d</item>
-	<item quantity="one">عرض الكل %d</item>
-	<item quantity="two">عرض الكل %d</item>
-	<item quantity="few">عرض الكل %d</item>
-	<item quantity="many">عرض الكل %d</item>
-	<item quantity="other">عرض الكل %d</item>
-</plurals>
+        <item quantity="zero">عرض %d</item>
+        <item quantity="one">عرض الكل %d</item>
+        <item quantity="two">عرض الكل %d</item>
+        <item quantity="few">عرض الكل %d</item>
+        <item quantity="many">عرض الكل %d</item>
+        <item quantity="other">عرض الكل %d</item>
+    </plurals>
 
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
     <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، إستخدم أرشفة تطبيق XML</string>
@@ -476,29 +476,29 @@
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
-	<item quantity="zero">لاشئ…</item>
-	<item quantity="one">واحد تحديث…</item>
-	<item quantity="two">تحديثان…</item>
-	<item quantity="few">تحديثات…</item>
-	<item quantity="many">بعض تحديث…</item>
-	<item quantity="other">+%1$d بكثرة…</item>
-</plurals>
+        <item quantity="zero">لاشئ…</item>
+        <item quantity="one">واحد تحديث…</item>
+        <item quantity="two">تحديثان…</item>
+        <item quantity="few">تحديثات…</item>
+        <item quantity="many">بعض تحديث…</item>
+        <item quantity="other">+%1$d بكثرة…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="zero">لا تحديثات</item>
-	<item quantity="one">تحديث واحد</item>
-	<item quantity="two">تحديثان</item>
-	<item quantity="few">تحديثات</item>
-	<item quantity="many">تحاديث</item>
-	<item quantity="other">التحاديث</item>
-</plurals>
+        <item quantity="zero">لا تحديثات</item>
+        <item quantity="one">تحديث واحد</item>
+        <item quantity="two">تحديثان</item>
+        <item quantity="few">تحديثات</item>
+        <item quantity="many">تحاديث</item>
+        <item quantity="other">التحاديث</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="zero">لا شئ</item>
-	<item quantity="one">تطبيق واحد</item>
-	<item quantity="two">تطبيقان</item>
-	<item quantity="few">تطبيقات</item>
-	<item quantity="many">تطابيق</item>
-	<item quantity="other">التطبيقات</item>
-</plurals>
+        <item quantity="zero">لا شئ</item>
+        <item quantity="one">تطبيق واحد</item>
+        <item quantity="two">تطبيقان</item>
+        <item quantity="few">تطبيقات</item>
+        <item quantity="many">تطابيق</item>
+        <item quantity="other">التطبيقات</item>
+    </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع لقطات الشاشة</string>
     <string name="preventScreenshots_summary">أخفاء لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الأخيرة</string>

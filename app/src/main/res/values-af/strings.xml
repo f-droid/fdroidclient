@@ -451,9 +451,9 @@
     <string name="updates__show_updateable_apps">Wys programme</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Laai opdaterings vir %1$d programme af.</item>
-	<item quantity="other">Laai bywerking vir %1$d app.</item>
-</plurals>
+        <item quantity="one">Laai opdaterings vir %1$d programme af.</item>
+        <item quantity="other">Laai bywerking vir %1$d app.</item>
+    </plurals>
 
     <string name="menu_video">Video</string>
     <string name="latest__empty_state__no_recent_apps">Geen onlangse programme gevind nie</string>
@@ -479,49 +479,49 @@
     <string name="tts_category_name">Kategorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Kyk na %1$d program in die %2$s kategorie</item>
-	<item quantity="other">Kyk na alle %1$d programme van die %2$s kategorie</item>
-</plurals>
+        <item quantity="one">Kyk na %1$d program in die %2$s kategorie</item>
+        <item quantity="other">Kyk na alle %1$d programme van die %2$s kategorie</item>
+    </plurals>
 
     <string name="menu_license">Lisensie: %s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Kyk na %d</item>
-	<item quantity="other">Kyk na alle %d</item>
-</plurals>
+        <item quantity="one">Kyk na %d</item>
+        <item quantity="other">Kyk na alle %d</item>
+    </plurals>
 
     <string name="details_last_updated_today">Vandag opgedateer</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">%1$s dag gelede opgedateer</item>
-	<item quantity="other">%1$s dae gelede opgedateer</item>
-</plurals>
-<plurals name="notification_summary_more">
-	<item quantity="one">+%1$d meer…</item>
-	<item quantity="other">+%1$d meer…</item>
-</plurals>
+        <item quantity="one">%1$s dag gelede opgedateer</item>
+        <item quantity="other">%1$s dae gelede opgedateer</item>
+    </plurals>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d meer…</item>
+        <item quantity="other">+%1$d meer…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Opdatering</item>
-	<item quantity="other">%1$d Opdaterings</item>
-</plurals>
+        <item quantity="one">%1$d Opdatering</item>
+        <item quantity="other">%1$d Opdaterings</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d Program geïnstalleer</item>
-	<item quantity="other">%1$d Programme geïnstalleer</item>
-</plurals>
+        <item quantity="one">%1$d Program geïnstalleer</item>
+        <item quantity="other">%1$d Programme geïnstalleer</item>
+    </plurals>
     <string name="by_author_format">deur %s</string>
     <string name="force_old_index">Forseer ou indeks formaat</string>
     <string name="force_old_index_summary">As daar foute of versoenbaarheidskwessies is, gebruik die XML app indeks</string>
     <string name="download_404">Die aangevraagde lêer is nie gevind nie.</string>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">\'n Week gelede opgedateer</item>
-	<item quantity="other">%1$d weke gelede opgedateer</item>
-</plurals>
+        <item quantity="one">\'n Week gelede opgedateer</item>
+        <item quantity="other">%1$d weke gelede opgedateer</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">\'n Maand gelede opgedateer</item>
-	<item quantity="other">%1$d maande gelede opgedateer</item>
-</plurals>
+        <item quantity="one">\'n Maand gelede opgedateer</item>
+        <item quantity="other">%1$d maande gelede opgedateer</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">\'n Jaar gelede opgedateer</item>
-	<item quantity="other">%1$d jare gelede opgedateer</item>
-</plurals>
+        <item quantity="one">\'n Jaar gelede opgedateer</item>
+        <item quantity="other">%1$d jare gelede opgedateer</item>
+    </plurals>
 <string name="app_installed_media">Lêer geïnstalleer na %s</string>
     <string name="app_permission_storage">F-Droid het stoor toestemming nodig. Laat dit toe op die volgende skerm om voort te gaan met installasie.</string>
 

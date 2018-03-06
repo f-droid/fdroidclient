@@ -385,8 +385,8 @@
     <string name="updates__hide_updateable_apps">Ẩn ứng dụng</string>
     <string name="updates__show_updateable_apps">Hiển thị ứng dụng</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="other">Tải các bản cập nhật của %1$d ứng dụng.</item>
-</plurals>
+        <item quantity="other">Tải các bản cập nhật của %1$d ứng dụng.</item>
+    </plurals>
 
     <string name="versions">Các phiên bản</string>
     <string name="clear_search">Xoá tìm kiếm</string>
@@ -429,8 +429,8 @@
     <string name="status_inserting_x_apps">Đang lưu thông tin ứng dụng (%1$d/%2$d) từ %3$s</string>
     <string name="repo_fingerprint">Mã SHA-256 của khoá dùng để kí kho ứng dụng</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="other">Xem %d ứng dụng</item>
-</plurals>
+        <item quantity="other">Xem %d ứng dụng</item>
+    </plurals>
 
     <string name="empty_search_available_app_list">Không tìm thấy ứng dụng tương ứng.</string>
 
@@ -460,8 +460,8 @@
     <string name="crash_dialog_comment_prompt">Bạn có thể đưa thêm thông tin và bình luận ở đây:</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="other">và còn +%1$d…</item>
-</plurals>
+        <item quantity="other">và còn +%1$d…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Sẵn sàng cài đặt</string>
     <string name="notification_title_single_ready_to_install_update">Bản cập nhật đã sẵn sàng cài đặt</string>
     <string name="notification_title_single_install_error">Cài đặt thất bại</string>
@@ -470,11 +470,11 @@
     <string name="notification_content_single_installing">Đang cài đặt \"%1$s\"…</string>
     <string name="notification_content_single_installed">Cài đặt thành công</string>
     <plurals name="notification_summary_updates">
-	<item quantity="other">%1$d bản cập nhật</item>
-</plurals>
+        <item quantity="other">%1$d bản cập nhật</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="other">Đã cài đặt %1$d ứng dụng</item>
-</plurals>
+        <item quantity="other">Đã cài đặt %1$d ứng dụng</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Đã có bản cập nhật</string>
     <string name="notification_title_summary_downloading">Đang tải…</string>
     <string name="notification_title_summary_downloading_update">Đang tải bản cập nhật…</string>
@@ -485,20 +485,20 @@
     <string name="tts_category_name">Mục %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="other">Xem tất cả %1$d ứng dụng trong mục %2$s</item>
-</plurals>
+        <item quantity="other">Xem tất cả %1$d ứng dụng trong mục %2$s</item>
+    </plurals>
 
     <string name="details_last_updated_today">Được cập nhật hôm nay</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">Được cập nhật %1$d ngày trước</item>
-</plurals>
+        <item quantity="other">Được cập nhật %1$d ngày trước</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">Được cập nhật %1$d tuần trước</item>
-</plurals>
+        <item quantity="other">Được cập nhật %1$d tuần trước</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">Được cập nhật %1$d tháng trước</item>
-</plurals>
+        <item quantity="other">Được cập nhật %1$d tháng trước</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">Được cập nhật %1$d năm trước</item>
-</plurals>
+        <item quantity="other">Được cập nhật %1$d năm trước</item>
+    </plurals>
 </resources>

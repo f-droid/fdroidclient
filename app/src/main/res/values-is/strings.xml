@@ -465,9 +465,9 @@
     </plurals>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Skoða %1$d forritið í %2$s flokknum</item>
-	<item quantity="other">Skoða öll %1$d forritin í %2$s flokknum</item>
-</plurals>
+        <item quantity="one">Skoða %1$d forritið í %2$s flokknum</item>
+        <item quantity="other">Skoða öll %1$d forritin í %2$s flokknum</item>
+    </plurals>
 <string name="app_list__name__downloading_in_progress">Sæki %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s er uppsett</string>
     <string name="updates__tts__download_app">Sækja</string>
@@ -482,9 +482,9 @@
     <string name="updates__show_updateable_apps">Birta forrit</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Sækja uppfærslu fyrir %1$d forrit.</item>
-	<item quantity="other">Sækja uppfærslur fyrir %1$d forrit.</item>
-</plurals>
+        <item quantity="one">Sækja uppfærslu fyrir %1$d forrit.</item>
+        <item quantity="other">Sækja uppfærslur fyrir %1$d forrit.</item>
+    </plurals>
 
     <string name="menu_video">Myndskeið</string>
     <string name="menu_license">Notkunarleyfi: %s</string>
@@ -505,34 +505,34 @@
 
     <string name="app__tts__downloading_progress">Hleð niður, %1$d%% lokið</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d til viðbótar…</item>
-	<item quantity="other">+%1$d til viðbótar…</item>
-</plurals>
+        <item quantity="one">+%1$d til viðbótar…</item>
+        <item quantity="other">+%1$d til viðbótar…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d uppfærsla</item>
-	<item quantity="other">%1$d uppfærslur</item>
-</plurals>
+        <item quantity="one">%1$d uppfærsla</item>
+        <item quantity="other">%1$d uppfærslur</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d forrit sett upp</item>
-	<item quantity="other">%1$d forrit sett upp</item>
-</plurals>
+        <item quantity="one">%1$d forrit sett upp</item>
+        <item quantity="other">%1$d forrit sett upp</item>
+    </plurals>
     <string name="details_last_updated_today">Uppfært í dag</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uppfært fyrir %1$d degi síðan</item>
-	<item quantity="other">Uppfært fyrir %1$d dögum</item>
-</plurals>
+        <item quantity="one">Uppfært fyrir %1$d degi síðan</item>
+        <item quantity="other">Uppfært fyrir %1$d dögum</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uppfært fyrir %1$d viku síðan</item>
-	<item quantity="other">Uppfært fyrir %1$d vikum síðan</item>
-</plurals>
+        <item quantity="one">Uppfært fyrir %1$d viku síðan</item>
+        <item quantity="other">Uppfært fyrir %1$d vikum síðan</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uppfært fyrir %1$d mánuði síðan</item>
-	<item quantity="other">Uppfært fyrir %1$d mánuðum síðan</item>
-</plurals>
+        <item quantity="one">Uppfært fyrir %1$d mánuði síðan</item>
+        <item quantity="other">Uppfært fyrir %1$d mánuðum síðan</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uppfært fyrir %1$d ári síðan</item>
-	<item quantity="other">Uppfært fyrir %1$d árum</item>
-</plurals>
+        <item quantity="one">Uppfært fyrir %1$d ári síðan</item>
+        <item quantity="other">Uppfært fyrir %1$d árum</item>
+    </plurals>
 <string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
     <string name="force_old_index_summary">Ef um er að ræða galla eða vandamál með samhæfni, má nota XML-yfirlitsvísi forritsins</string>
     <string name="app_details__incompatible_mismatched_signature">Undirritun er önnur en á uppsettri útgáfu</string>
@@ -584,5 +584,7 @@
     <string name="hiding_dialog_warning">Aðvörun: Allar flýtileiðir á forrit á heimaskjánum verða einnig fjarlægðar og verður að bæta þeim aftur inn handvirkt.</string>
     <string name="hide_on_long_search_press_title">Fela með leitarhnappi</string>
     <string name="hide_on_long_search_press_summary">Ef ýtt er lengi mun leitarhnappurinn fela forritið</string>
+    <string name="sort_search">Raða leit</string>
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>

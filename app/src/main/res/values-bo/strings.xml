@@ -143,8 +143,8 @@
     <string name="updates__show_updateable_apps">མཉེན་ཆས་སྟོན།</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="other">མཉེན་ཆས་%1$dའདིའི་ཆེད་དུ་གསར་བསྒྱུར་ཕབ་ལེན་བྱེད།</item>
-</plurals>
+        <item quantity="other">མཉེན་ཆས་%1$dའདིའི་ཆེད་དུ་གསར་བསྒྱུར་ཕབ་ལེན་བྱེད།</item>
+    </plurals>
 
     <string name="repo_add_title">མཛོད་ཁང་གསར་པ་ཁ་སྣོན།</string>
     <string name="repo_add_add">ཁ་སྣོན།</string>
@@ -263,8 +263,8 @@
 
     <string name="category_Theming">བརྗོད་གཞི་གླེང་བཞིན་པ།</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="other">ཚང་མར་བལྟས། %d</item>
-</plurals>
+        <item quantity="other">ཚང་མར་བལྟས། %d</item>
+    </plurals>
 
     <string name="empty_installed_app_list">མཉེན་ཆས་འགྲིག་བཅུག་བྱེད་མེད། 
 \nཁྱེད་རང་གི་ཡོ་བྱད་སྒང་ལ་མཉེན་ཆས་འདུག འོན་ཀྱང་དེ་ཚོ་ཨེཕ་རོཌ་རྒྱུད་ནས་ཐོབ་པ་མ་རེད། འདིའི་རྒྱུ་མཚན་ནི་གཅིག་བྱས་ན་ཁྱེད་རང་གི་མཛོད་ཁང་གསར་བསྒྱུར་བྱེད་དགོས་ཀྱི་ཡོད་པའམ་ཡང་ན་མཛོད་ཁང་ནང་ལ་དོན་ངོ་མའི་ཐོག་ལ་ཁྱེད་རང་གི་མཉེན་ཆས་འདི་མེད་པའི་རྐྱེན་གྱིས་བྱས་པ་རེད།</string>
@@ -393,8 +393,8 @@
     <string name="crash_dialog_comment_prompt">ཁྱེད་རང་གིས་གནས་ཚུལ་འཕར་མ་དང་མཆན་འདིར་བཀོད་ཐུབ།:</string>
 
     <plurals name="notification_summary_more">
-	<item quantity="other">+%1$d དེ་ལས་མང་བ།…</item>
-</plurals>
+        <item quantity="other">+%1$d དེ་ལས་མང་བ།…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">འགྲིག་བཅུག་བྱེད་རྒྱུར་གྲ་སྒྲིག་ཡོད།</string>
     <string name="notification_title_single_ready_to_install_update">གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་རྒྱུར་གྲ་སྒྲིག་ཡིན།</string>
     <string name="notification_title_single_install_error">འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>
@@ -403,11 +403,11 @@
     <string name="notification_content_single_installing">འགྲིག་བཅུག་བྱེད་བཞིན་པ།\"%1$s\"…</string>
     <string name="notification_content_single_installed">འགྲིག་བཅུག་ལེགས་གྲུབ་ཐུབ།</string>
     <plurals name="notification_summary_updates">
-	<item quantity="other">%1$d གསར་བསྒྱུར་ཁག</item>
-</plurals>
+        <item quantity="other">%1$d གསར་བསྒྱུར་ཁག</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="other">%1$d མཉེན་ཆས་འགྲིག་བཅུག་བྱས་ཚར་བ།</item>
-</plurals>
+        <item quantity="other">%1$d མཉེན་ཆས་འགྲིག་བཅུག་བྱས་ཚར་བ།</item>
+    </plurals>
     <string name="notification_title_summary_update_available">གསར་བསྒྱུར་ཡོད།</string>
     <string name="notification_title_summary_downloading">ཕབ་ལེན་བྱེད་བཞིན་པ།…</string>
     <string name="notification_title_summary_downloading_update">གསར་བསྒྱུར་ཕབ་ལེན་བྱེད་བཞིན་པ་…</string>
@@ -417,22 +417,22 @@
     <string name="notification_title_summary_installed">འགྲིག་བཅུག་ལེགས་གྲུབ་བྱུང་།</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="other">ཚང་མར་ལྟོས་ %1$d མཉེན་ཆས་དེ་ནས་ %2$s སྡེ་ཚན།</item>
-</plurals>
+        <item quantity="other">ཚང་མར་ལྟོས་ %1$d མཉེན་ཆས་དེ་ནས་ %2$s སྡེ་ཚན།</item>
+    </plurals>
 
     <string name="details_last_updated_today">དེ་རེས་གསར་བསྒྱུར་བྱས་ཟིན།</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">གསར་བསྒྱུར་%1$d ཉིན་ཤས་གོང་ལ་བྱས་ཟིན།</item>
-</plurals>
+        <item quantity="other">གསར་བསྒྱུར་%1$d ཉིན་ཤས་གོང་ལ་བྱས་ཟིན།</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">གསར་བསྒྱུར་%1$d བདུན་ཕྲག་ཁ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
-</plurals>
+        <item quantity="other">གསར་བསྒྱུར་%1$d བདུན་ཕྲག་ཁ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">གསར་བསྒྱུར་%1$d ཟླ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
-</plurals>
+        <item quantity="other">གསར་བསྒྱུར་%1$d ཟླ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">གསར་བསྒྱུར་%1$d ལོ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
-</plurals>
+        <item quantity="other">གསར་བསྒྱུར་%1$d ལོ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
+    </plurals>
 <string name="enable_proxy_summary">དྲྭ་རྒྱའི་རེ་སྐུལ་ཆ་ཚང་ལ་ HTTP ངོ་ཚབ་སྒྲིག་བཀོད་བྱས།</string>
     <string name="proxy_host">དོ་བདག་ངོ་ཚབ།</string>
     <string name="proxy_host_summary">ཁྱེད་རང་གི་ངོ་ཚབ་ཀྱི་དོ་བདག་མིང་(དཔེར་ན། 127.0.0.1)</string>

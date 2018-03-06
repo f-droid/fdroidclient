@@ -398,11 +398,11 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d aplikacja</item>
-	<item quantity="few">Wszystkie %d aplikacje</item>
-	<item quantity="many">Wszystkich %d aplikacji</item>
+        <item quantity="one">%d aplikacja</item>
+        <item quantity="few">Wszystkie %d aplikacje</item>
+        <item quantity="many">Wszystkich %d aplikacji</item>
         <item quantity="other">Wszystkich %d aplikacji</item>
-</plurals>
+    </plurals>
 
     <string name="app_recommended_version_installed">Wersja %1$s (zalecana)</string>
     <string name="app__newly_added">Nowa</string>
@@ -419,11 +419,11 @@
     <string name="tts_category_name">Kategoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Pokaż %1$d aplikację w kategorii %2$s</item>
-	<item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
-	<item quantity="many">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
+        <item quantity="one">Pokaż %1$d aplikację w kategorii %2$s</item>
+        <item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
+        <item quantity="many">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
         <item quantity="other">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
-	</plurals>
+    </plurals>
     <string name="app__install_downloaded_update">Aktualizuj</string>
 
     <string name="app_list__name__downloading_in_progress">Pobieranie %1$s</string>
@@ -439,7 +439,7 @@
         <item quantity="few">Pobierz aktualizacje dla %1$d aplikacji.</item>
         <item quantity="many">Pobierz aktualizacje dla %1$d aplikacji.</item>
         <item quantity="other">Pobierz aktualizacje dla %1$d aplikacji.</item>
-        </plurals>
+    </plurals>
 
     <string name="details_new_in_version">Nowe w wersji %s</string>
 
@@ -447,11 +447,11 @@
     <string name="antifeatures">Niepożądane funkcje</string>
     <string name="details_last_updated_today">Uaktualniono dzisiaj</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uaktualniono %1$d dzień temu</item>
-	<item quantity="few">Uaktualniono %1$d dni temu</item>
-	<item quantity="many">Uaktualniono %1$d dni temu</item>
+        <item quantity="one">Uaktualniono %1$d dzień temu</item>
+        <item quantity="few">Uaktualniono %1$d dni temu</item>
+        <item quantity="many">Uaktualniono %1$d dni temu</item>
         <item quantity="other">Uaktualniono %1$d dni temu</item>
-</plurals>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s zainstalowano</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu? Pobierz aplikacje od ludzi w pobliżu!</string>
     <string name="nearby_splash__find_people_button">Znajdź ludzi w pobliżu</string>
@@ -472,41 +472,41 @@
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
     <string name="menu_license">Licencja: %s</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">%1$d Aktualizacja</item>
-	<item quantity="few">%1$d Aktualizacje</item>
-	<item quantity="many">%1$d Aktualizacji</item>
+        <item quantity="one">%1$d Aktualizacja</item>
+        <item quantity="few">%1$d Aktualizacje</item>
+        <item quantity="many">%1$d Aktualizacji</item>
         <item quantity="other">%1$d Aktualizacji</item>
-	</plurals>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d Zainstalowana Aplikacja</item>
-	<item quantity="few">%1$d Zainstalowane Aplikacje</item>
-	<item quantity="many">%1$d Zainstalowanych Aplikacji</item>
+        <item quantity="one">%1$d Zainstalowana Aplikacja</item>
+        <item quantity="few">%1$d Zainstalowane Aplikacje</item>
+        <item quantity="many">%1$d Zainstalowanych Aplikacji</item>
         <item quantity="other">%1$d Zainstalowanych Aplikacji</item>
-	</plurals>
+    </plurals>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d powiadomienie więcej…</item>
-	<item quantity="few">+%1$d powiadomienia więcej…</item>
-	<item quantity="many">+%1$d powiadomień więcej…</item>
+        <item quantity="one">+%1$d powiadomienie więcej…</item>
+        <item quantity="few">+%1$d powiadomienia więcej…</item>
+        <item quantity="many">+%1$d powiadomień więcej…</item>
         <item quantity="other">+%1$d powiadomień więcej…</item>
-	</plurals>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uaktualniono %1$d tydzień temu</item>
-	<item quantity="few">Uaktualniono %1$d tygodnie temu</item>
-	<item quantity="many">Uaktualniono %1$d tygodni temu</item>
+        <item quantity="one">Uaktualniono %1$d tydzień temu</item>
+        <item quantity="few">Uaktualniono %1$d tygodnie temu</item>
+        <item quantity="many">Uaktualniono %1$d tygodni temu</item>
         <item quantity="other">Uaktualniono %1$d tygodni temu</item>
-</plurals>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uaktualniono %1$d miesiąc temu</item>
-	<item quantity="few">Uaktualniono %1$d miesiące temu</item>
-	<item quantity="many">Uaktualniono %1$d miesięcy temu</item>
+        <item quantity="one">Uaktualniono %1$d miesiąc temu</item>
+        <item quantity="few">Uaktualniono %1$d miesiące temu</item>
+        <item quantity="many">Uaktualniono %1$d miesięcy temu</item>
         <item quantity="other">Uaktualniono %1$d miesięcy temu</item>
-</plurals>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uaktualniono %1$d rok temu</item>
-	<item quantity="few">Uaktualniono %1$d lata temu</item>
-	<item quantity="many">Uaktualniono %1$d lat temu</item>
+        <item quantity="one">Uaktualniono %1$d rok temu</item>
+        <item quantity="few">Uaktualniono %1$d lata temu</item>
+        <item quantity="many">Uaktualniono %1$d lat temu</item>
         <item quantity="other">Uaktualniono %1$d lat temu</item>
-</plurals>
+    </plurals>
 <string name="by_author_format">od %s</string>
     <string name="download_404">Nie znaleziono żądanego pliku.</string>
     <string name="force_old_index">Wymuś starszy format indeksu</string>
@@ -561,5 +561,8 @@
     <string name="hiding_dialog_warning">Ostrzeżenie: ponadto każdy skrót na ekranie startowym zostanie usunięty i wymagane będzie ponowne dodanie ich ręcznie.</string>
     <string name="hide_on_long_search_press_title">Ukryj przyciskiem szukania</string>
     <string name="hide_on_long_search_press_summary">Przytrzymanie przycisku szukania ukryje aplikację</string>
+    <string name="sort_search">Sortuj wyszukiwanie</string>
+
+    <string name="menu_liberapay">Liberapay</string>
 
 </resources>
