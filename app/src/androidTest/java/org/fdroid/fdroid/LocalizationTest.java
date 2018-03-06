@@ -182,6 +182,9 @@ public class LocalizationTest {
                         case "dds":
                             resources.getString(resId, 1, 2, "THREE");
                             break;
+                        case "sds":
+                            resources.getString(resId, "ONE", 2, "THREE");
+                            break;
                         case "s":
                             resources.getString(resId, "ONE");
                             break;
