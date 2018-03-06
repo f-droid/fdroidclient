@@ -457,5 +457,4 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的程式版本與可供安裝的版本並不相容。卸載現有的應用程式將讓您檢視及安裝相容的版本。此問題通常出現於透過 Google Play 或其他途徑安裝，並使用不同認證的應用程式。</string>
 
     <string name="installed_app__file_corrupt">F-Droid 偵測到一個 EIO 錯誤：%s 很可能已崩潰！</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

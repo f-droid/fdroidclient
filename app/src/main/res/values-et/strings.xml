@@ -543,5 +543,4 @@
     <string name="hiding_dialog_message">Kas sa oled kindel, et soovid käivitajast eemaldada rakenduse %1$s? Ainult \"%2$d\" sisestamine võltsrakendusse %3$s taastab selle.</string>
     <string name="hiding_dialog_warning">Hoiatus: avakuvalt eemaldatakse ka kõigi rakenduste otseteed ja need on vaja käsitsi uuesti lisada.</string>
     <string name="hide_on_long_search_press_title">Peida otsingunupuga</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

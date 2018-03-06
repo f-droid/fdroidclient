@@ -65,5 +65,4 @@
     <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
     <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
     <string name="theme">ئۆرنەك</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

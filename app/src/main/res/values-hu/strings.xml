@@ -482,6 +482,5 @@
 
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
     <string name="tts_category_name">Kategória %1$s</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

@@ -81,5 +81,4 @@
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளது</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
     </string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

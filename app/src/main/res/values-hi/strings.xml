@@ -154,5 +154,4 @@
 <string name="SignatureMismatch">नया व्हर्जन भिन्न की से साईन किया हुवा है।नया व्हर्जन इन्स्टॉल करनेकेलिए पुराना अनइंस्टाल करें।कृपया फिर से कोशिश करें। ( याद रहे कि अनइंस्टाल करनेके बाद ऐप डेटा डिलेट हो जायेगा।)</string>
     <string name="keep_install_history">इनस्टॉल हिस्ट्री रखें</string>
     <string name="keep_install_history_summary">सभी इन्स्टॉल एवं अनइंस्टॉल लॉग को एफ-ड्रॉइड में रखें</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

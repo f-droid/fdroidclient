@@ -478,7 +478,6 @@
     <string name="tts_category_name">Kategoria %1$s</string>
 
     <string name="antifeatures">Anti-ominaisuudet</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">Näytä sovellus %1$d kategoriassa %2$s</item>
 	<item quantity="other">Näytä kaikki %1$d -sovellukset kategoriasta %2$s</item>

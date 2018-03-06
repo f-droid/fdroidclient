@@ -507,6 +507,5 @@
     <string name="hiding_dialog_warning">警告：主畫面上任何的應用程式捷徑也將被移除，並需要重新手動新增。</string>
     <string name="hide_on_long_search_press_title">隱藏搜尋按鈕</string>
     <string name="hide_on_long_search_press_summary">長按搜尋按鈕將會隱藏應用程式</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

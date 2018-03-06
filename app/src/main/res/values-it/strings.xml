@@ -555,5 +555,4 @@
     <string name="panic_app_dialog_title">Conferma Applicazione Pulsante di Panico</string>
     <string name="panic_app_dialog_message">Sei sicuro di voler permettere %1$s di eseguire azioni distruttive del pulsante di panico?</string>
     <string name="panic_settings">Impostazioni Pulsante di Panico</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

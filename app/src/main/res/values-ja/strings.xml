@@ -494,6 +494,5 @@
     <string name="hiding_dialog_warning">警告: ホーム画面からすべてのアプリのショートカットが削除されます。手動で追加することでのみ復元することができます。</string>
     <string name="hide_on_long_search_press_title">検索ボタンで非表示にする</string>
     <string name="hide_on_long_search_press_summary">検索ボタンを長押しすることでアプリを非表示にすることができます</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

@@ -544,6 +544,5 @@
     <string name="hiding_dialog_warning">Advarsel: Enhver programsnarvei på hjemmeskjermen vil også bli fjernet og må legges til på nytt manuelt.</string>
     <string name="hide_on_long_search_press_title">Skjul med søke-knappen</string>
     <string name="hide_on_long_search_press_summary">Å trykke lenge på søkeknappen vil skjule programmet</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

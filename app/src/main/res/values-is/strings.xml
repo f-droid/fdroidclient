@@ -584,6 +584,5 @@
     <string name="hiding_dialog_warning">Aðvörun: Allar flýtileiðir á forrit á heimaskjánum verða einnig fjarlægðar og verður að bæta þeim aftur inn handvirkt.</string>
     <string name="hide_on_long_search_press_title">Fela með leitarhnappi</string>
     <string name="hide_on_long_search_press_summary">Ef ýtt er lengi mun leitarhnappurinn fela forritið</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

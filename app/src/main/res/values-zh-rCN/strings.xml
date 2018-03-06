@@ -479,5 +479,4 @@
     <string name="panic_app_setting_none">无</string>
     <string name="panic_hide_title">隐藏 %s</string>
     <string name="panic_hide_summary">应用程序将隐藏自己</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 </resources>

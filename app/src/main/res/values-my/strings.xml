@@ -319,7 +319,6 @@
     <string name="proxy_port">Proxy Port</string>
     <string name="warning_no_internet">အသစ်မွမ်းမံလို့မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား?</string>
     <string name="no_handler_app">%s ကိုကိုင်တွယ်ရန်အတွက် သင့်တွင် ရရှိထားသော အက်ပ်မရှိပါ</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="other">%d အားလုံးကိုကြည့်မည်</item>
 </plurals>

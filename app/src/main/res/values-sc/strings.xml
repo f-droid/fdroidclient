@@ -571,6 +571,5 @@
     <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale at a èssere bogada e b\'at a dèpere èssere torrada a pònnere manualmente.</string>
     <string name="hide_on_long_search_press_title">Istichi cun su butone de chirca</string>
     <string name="hide_on_long_search_press_summary">Un\'incarcada longa in su butone de chirca at a istichire s\'aplicatzione</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
 </resources>

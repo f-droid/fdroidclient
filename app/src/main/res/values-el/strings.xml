@@ -526,7 +526,6 @@
 	<item quantity="other">%1$d Εφαρμογές εγκαταστάθηκαν</item>
 </plurals>
     <string name="tts_category_name">Κατηγορία %1$s</string>
-    <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
 
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">Προβολή %1$d  εφαρμογής από τη κατηγορία %2$s</item>
