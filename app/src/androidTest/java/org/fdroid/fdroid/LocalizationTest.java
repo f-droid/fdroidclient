@@ -102,7 +102,7 @@ public class LocalizationTest {
                 String formats = null;
                 try {
                     int resId = field.getInt(int.class);
-                    for (int quantity = 0; quantity < 22; quantity++) {
+                    for (int quantity = 0; quantity < 567; quantity++) {
                         resources.getQuantityString(resId, quantity);
                     }
 
