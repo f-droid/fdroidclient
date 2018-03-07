@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -36,7 +37,6 @@ import java.util.Map;
  * and {@code versionCode} since there could be different copies of the same
  * APK on different servers, signed by different keys, or even different builds.
  */
-@SuppressWarnings("LineLength")
 public final class AppUpdateStatusManager {
 
     private static final String TAG = "AppUpdateStatusManager";
@@ -132,7 +132,7 @@ public final class AppUpdateStatusManager {
          */
         public String toString() {
             return app.packageName + " [Status: " + status
-                    + ", Progress: " + progressCurrent + " / " + progressMax + "]";
+                    + ", Progress: " + progressCurrent + " / " + progressMax + ']';
         }
 
         protected AppUpdateStatus(Parcel in) {
@@ -257,20 +257,14 @@ public final class AppUpdateStatusManager {
         boolean isStatusUpdate = entry.status != status;
         entry.status = status;
         entry.intent = intent;
-        // If intent not set, see if we need to create a default intent
-        if (entry.intent == null) {
-            entry.intent = getContentIntent(entry);
-        }
+        setEntryContentIntentIfEmpty(entry);
         notifyChange(entry, isStatusUpdate);
     }
 
     private void addApkInternal(@NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
         Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
         AppUpdateStatus entry = createAppEntry(apk, status, intent);
-        // If intent not set, see if we need to create a default intent
-        if (entry.intent == null) {
-            entry.intent = getContentIntent(entry);
-        }
+        setEntryContentIntentIfEmpty(entry);
         appMapping.put(entry.getUniqueKey(), entry);
         notifyAdd(entry);
     }
@@ -453,6 +447,7 @@ public final class AppUpdateStatusManager {
         }
     }
 
+    @SuppressWarnings("LineLength")
     void clearAllUpdates() {
         synchronized (appMapping) {
             for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) { // NOCHECKSTYLE EmptyForIteratorPad
@@ -465,6 +460,7 @@ public final class AppUpdateStatusManager {
         }
     }
 
+    @SuppressWarnings("LineLength")
     void clearAllInstalled() {
         synchronized (appMapping) {
             for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) { // NOCHECKSTYLE EmptyForIteratorPad
@@ -477,28 +473,46 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private PendingIntent getContentIntent(AppUpdateStatus entry) {
+    /**
+     * If the {@link PendingIntent} aimed at {@link Notification.Builder#setContentIntent(PendingIntent)}
+     * is not set, then create a default one.  The goal is to link the notification
+     * to the most relevant action, like the installer if the APK is downloaded, or the launcher once
+     * installed, if possible, or other relevant action. If there is no app launch
+     * {@code PendingIntent}, the app is probably not launchable, e.g. its a keyboard.
+     * If there is not an {@code PendingIntent} to install the app, this creates an {@code PendingIntent}
+     * to open up the app details page for the app. From there, the user can hit "install".
+     * <p>
+     * Before {@code android-11}, a {@code ContentIntent} was required in every
+     * {@link Notification}.  This generates a boilerplate one for places where
+     * there isn't an obvious one.
+     */
+    private void setEntryContentIntentIfEmpty(AppUpdateStatus entry) {
+        if (entry.intent != null) {
+            return;
+        }
         switch (entry.status) {
             case UpdateAvailable:
             case ReadyToInstall:
-                // Make sure we have an intent to install the app. If not set, we create an intent
-                // to open up the app details page for the app. From there, the user can hit "install"
-                return getAppDetailsIntent(entry.apk);
-
+                entry.intent = getAppDetailsIntent(entry.apk);
+                break;
             case InstallError:
-                return getAppErrorIntent(entry);
-
+                entry.intent = getAppErrorIntent(entry);
+                break;
             case Installed:
                 PackageManager pm = context.getPackageManager();
                 Intent intentObject = pm.getLaunchIntentForPackage(entry.app.packageName);
                 if (intentObject != null) {
-                    return PendingIntent.getActivity(context, 0, intentObject, 0);
+                    entry.intent = PendingIntent.getActivity(context, 0, intentObject, 0);
                 } else {
-                    // Could not get launch intent, maybe not launchable, e.g. a keyboard
-                    return getAppDetailsIntent(entry.apk);
+                    entry.intent = getAppDetailsIntent(entry.apk);
                 }
+                break;
         }
-        return null;
+        if (Build.VERSION.SDK_INT < 11 && entry.intent == null) {
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            entry.intent = PendingIntent.getActivity(context, 0, intent, 0);
+        }
     }
 
     /**
