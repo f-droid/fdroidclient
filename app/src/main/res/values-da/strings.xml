@@ -497,7 +497,6 @@
     <string name="app_list__dismiss_vulnerable_app">Sårbarhed ignoreret</string>
     <string name="app_list__dismiss_downloading_app">Hentning annulleret</string>
 
-    <string name="installed_app__file_corrupt">F-Droid modtog EIO-fejl: %s er formentlig korrupt!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du afinstallerer denne app med det samme.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du opgraderer til den nyeste version med det samme.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>

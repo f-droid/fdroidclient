@@ -427,7 +427,7 @@ public final class Utils {
         } catch (IOException e) {
             String message = e.getMessage();
             if (message.contains("read failed: EIO (I/O error)")) {
-                throw new PotentialFilesystemCorruptionException(e);
+                Utils.debugLog(TAG, "potential filesystem corruption while accessing " + apk + ": " + message);
             } else if (message.contains(" ENOENT ")) {
                 Utils.debugLog(TAG, apk + " vanished: " + message);
             }
@@ -436,12 +436,6 @@ public final class Utils {
             throw new IllegalArgumentException(e);
         } finally {
             closeQuietly(fis);
-        }
-    }
-
-    public static class PotentialFilesystemCorruptionException extends IllegalArgumentException {
-        public PotentialFilesystemCorruptionException(IOException e) {
-            super(e);
         }
     }
 

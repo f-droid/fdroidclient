@@ -481,7 +481,6 @@
     <string name="app_list__dismiss_vulnerable_app">آسیب‌پذیری نادیده گرفته شد</string>
     <string name="app_list__dismiss_downloading_app">بارگیری لغو شد</string>
 
-    <string name="installed_app__file_corrupt">اف‌دروید خطای EIO گرفت: احتمالاً %s خراب است!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود فوراً این کاره را حذف نصب کنید.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود فوراً به جدیدترین نگارش ارتقا دهید.</string>
     <string name="updates__app_with_known_vulnerability__ignore">نادیده گرفتن</string>

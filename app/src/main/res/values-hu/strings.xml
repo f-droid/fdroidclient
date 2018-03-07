@@ -447,7 +447,6 @@
         <item quantity="other">%1$d éve frissítve</item>
     </plurals>
 <string name="app_installed_media">A fájl telepítve ide: %s</string>
-    <string name="installed_app__file_corrupt">Az F-Droid EIO hibát kapott: a(z) %s valószínűleg sérült!</string>
     <string name="status_inserting_x_apps">Alkalmazás részleteinek mentése (%1$d / %2$d), forrás: %3$s</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">%d megtekintése</item>

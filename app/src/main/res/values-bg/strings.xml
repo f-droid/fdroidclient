@@ -498,7 +498,6 @@
     <string name="app_list_download_ready">Изтeглено и готово за инсталиране</string>
     <string name="app_list__dismiss_downloading_app">Спряно изтегляне</string>
 
-    <string name="installed_app__file_corrupt">Входно-изходна грешка. %s вероятно е повреден!</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Открита е уязвимост в %1$s. Препоръчва се незабавно обновяване до най-новата версия.</string>
     <string name="privacy">Лични данни</string>
     <string name="preventScreenshots_title">Без снимки на екрана</string>

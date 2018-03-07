@@ -549,7 +549,6 @@
     <string name="app_list__dismiss_vulnerable_app">Öryggisgalli hunsaður</string>
     <string name="app_list__dismiss_downloading_app">Hætt við niðurhal</string>
 
-    <string name="installed_app__file_corrupt">F-Droid tók á móti EIO-villu: %s er líklega skemmd!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði fjarlægt strax.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði strax uppfært í nýjustu útgáfuna.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Hunsa</string>

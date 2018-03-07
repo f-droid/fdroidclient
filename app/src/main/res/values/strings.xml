@@ -96,7 +96,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
     <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
     some descriptive text for the TTS engine -->
-    <string name="installed_app__file_corrupt">F-Droid received EIO error: %s is probably corrupt!</string>
     <string name="updates__tts__download_app">Download</string>
     <string name="updates__tts__download_updates_for_all_apps">Download all updates</string>
 

@@ -508,7 +508,6 @@
     <string name="app_list__dismiss_vulnerable_app">Уязвимость игнорируется</string>
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
 
-    <string name="installed_app__file_corrupt">F-Droid получил ошибку EIO: вероятно, файл %s поврежден!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно удалить это приложение.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновиться до новейшей версии.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>

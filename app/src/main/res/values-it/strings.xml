@@ -530,7 +530,6 @@
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilità ignorata</string>
     <string name="app_list__dismiss_downloading_app">Download annullato</string>
 
-    <string name="installed_app__file_corrupt">F-Droid ha ricevuto un errore EIO: %s probabilmente è corrotto!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo di disinstallare questa applicazione immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo di aggiornare all\'ultima versione immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>

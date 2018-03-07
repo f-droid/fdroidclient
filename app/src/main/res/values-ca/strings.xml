@@ -490,7 +490,6 @@
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitat ignorada</string>
     <string name="app_list__dismiss_downloading_app">Baixada cancel·lada</string>
 
-    <string name="installed_app__file_corrupt">Error EIO rebut a l\'F-Droid: %s probablement és corrupte!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem suprimir aquesta aplicació immediatament.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem actualitzar immediatament a la versió més recent.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>

@@ -545,7 +545,6 @@
 
     <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных праграм.</string>
 
-    <string name="installed_app__file_corrupt">F-Droid атрымаў EIO-памылку: %s верагодна пашкоджаны!</string>
     <string name="app_list__dismiss_app_update">Абнаўленне ігнаруецца</string>
     <string name="app_list__dismiss_vulnerable_app">Уразлівасць ігнаруецца</string>
     <string name="app_list__dismiss_downloading_app">Спампоўка адмененая</string>

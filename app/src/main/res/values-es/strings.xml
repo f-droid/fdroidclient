@@ -512,7 +512,6 @@
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con el dispositivo</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación te permitirá ver e instalar las versiones compatibles. Esto ocurre a menudo con aplicaciones instaladas a través de Google Play o de otras fuentes, si se han firmado con un certificado diferente.</string>
 
-    <string name="installed_app__file_corrupt">F-Droid recibió un error EIO: ¡probablemente %s está corrupto!</string>
     <string name="app_list__dismiss_app_update">Actualización ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidad ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>

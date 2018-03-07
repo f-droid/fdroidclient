@@ -445,7 +445,6 @@
     <string name="app_list__dismiss_vulnerable_app">Zranitelnost ignorována</string>
     <string name="app_list__dismiss_downloading_app">Stahování zrušeno</string>
 
-    <string name="installed_app__file_corrupt">F-Droid obdržel EIO chybu: %s je pravděpodobně poškozené!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci okamžitě odinstalovat.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci aktualizovat na nejnovější verzi.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorovat</string>
