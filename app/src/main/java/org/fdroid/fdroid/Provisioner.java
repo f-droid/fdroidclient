@@ -21,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -48,8 +49,11 @@ public class Provisioner {
      * search for provision files and process them
      */
     public static void scanAndProcess(Context context) {
-
-        File provisionDir = new File(context.getExternalFilesDir(null).getAbsolutePath(), NEW_PROVISIONS_DIR);
+        File externalFilesDir = context.getExternalFilesDir(null);
+        if (externalFilesDir == null) {
+            return;
+        }
+        File provisionDir = new File(externalFilesDir.getAbsolutePath(), NEW_PROVISIONS_DIR);
 
         if (!provisionDir.isDirectory()) {
             Utils.debugLog(TAG, "Provisions dir does not exists: '" + provisionDir.getAbsolutePath() + "' moving on ...");
@@ -105,13 +109,17 @@ public class Provisioner {
     }
 
     public List<File> findProvisionFiles(Context context) {
-        String provisionDirPath = context.getExternalFilesDir(null).getAbsolutePath() + File.separator + NEW_PROVISIONS_DIR;
-        return findProvisionFilesInDir(new File(provisionDirPath));
+        File externalFilesDir = context.getExternalFilesDir(null);
+        if (externalFilesDir == null) {
+            return Collections.emptyList();
+        }
+        File provisionDir = new File(externalFilesDir.getAbsolutePath(), NEW_PROVISIONS_DIR);
+        return findProvisionFilesInDir(provisionDir);
     }
 
     protected List<File> findProvisionFilesInDir(File file) {
         if (file == null || !file.isDirectory()) {
-            return new ArrayList<>();
+            return Collections.emptyList();
         }
         try {
             File[] files = file.listFiles(new FilenameFilter() {
