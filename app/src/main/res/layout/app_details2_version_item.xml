@@ -9,8 +9,7 @@
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:background="?attr/selectableItemBackground"
-        >
+        android:background="?attr/selectableItemBackground">
 
       <TextView android:id="@+id/version"
             android:textStyle="bold"
@@ -99,7 +98,6 @@
             android:layout_width="wrap_content"
             tools:text=""
             tools:visibility="gone" />
-
 
       <TextView android:id="@+id/incompatible_reasons"
             android:textSize="13sp"

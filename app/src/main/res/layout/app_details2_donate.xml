@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/details_activity_padding"
-    android:clickable="true"
-    android:orientation="vertical"
-    android:background="?attr/detailPanel"
-    android:padding="@dimen/details_activity_padding">
+    app:cardBackgroundColor="?attr/appDetailsCardBackground"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp">
 
-    <TextView
-        android:id="@+id/donate_header"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        tools:text="F-Droid is created by F-Droid Limited and Contributors. Buy them a coffee!"
-        android:layout_marginBottom="12dp" />
+        android:orientation="vertical"
+        android:padding="@dimen/details_activity_padding">
 
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/donation_options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:columnCount="3" />
+        <TextView
+            android:id="@+id/donate_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            tools:text="F-Droid is created by F-Droid Limited and Contributors. Buy them a coffee!" />
 
-</LinearLayout>
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/donation_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="3" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
