@@ -533,7 +533,6 @@
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
 
-    <string name="installed_app__file_corrupt">Ocorreu um erro EIO: possivelmente %s está danificada!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a desinstalação imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a atualização imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>

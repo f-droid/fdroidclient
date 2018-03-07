@@ -493,7 +493,6 @@
     <string name="app_details__no_versions__none_compatible_with_device">Geen versies compatibel met apparaat</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna je ze kan installeren. Dit gebeurt vaak wanneer je apps installeert via Google Play of andere bronnen, en deze door een ander certificaat zijn ondertekend.</string>
 
-    <string name="installed_app__file_corrupt">F-Droid ontving een EIO-fout: %s is waarschijnlijk beschadigd!</string>
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>

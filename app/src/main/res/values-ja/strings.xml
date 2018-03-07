@@ -460,7 +460,6 @@
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
 
-    <string name="installed_app__file_corrupt">F-DroidがEIOエラーを受信しました: %sは壊れている可能性があります！</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$sで脆弱性を発見しました。今すぐにこのアプリをアンインストールすることをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$sで脆弱性を発見しました。今すぐに最新バージョンへのアップグレードすることをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>

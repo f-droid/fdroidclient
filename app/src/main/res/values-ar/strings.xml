@@ -467,7 +467,6 @@
 
     <string name="app_list__dismiss_app_update">التحديث تم تخطيه</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
-    <string name="installed_app__file_corrupt">أف-درويد تلقي خطأ EIO:ربما %s تالف!</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلي أحدث إصدار في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة التطبيقات، التطبيقات الأخيرة سوف تظهر هنا</string>

@@ -386,7 +386,6 @@
     <string name="installed_apps__activity_title">Aplicacións instaladas</string>
     <string name="installed_app__updates_ignored">Anovacións ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Anovacións ignoradas para a versión %1$s</string>
-    <string name="installed_app__file_corrupt">F-Droid recibiu un erro EIO: ¡probablemente %s está corrupto!</string>
     <string name="updates__tts__download_updates_for_all_apps">Descargar todas as anovacións</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendamos desinstalar esta app inmediatamente.</string>

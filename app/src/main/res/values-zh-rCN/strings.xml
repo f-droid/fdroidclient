@@ -457,7 +457,6 @@
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
 
-    <string name="installed_app__file_corrupt">F-Droid收到了EIO错误：%s很可能已经损毁！</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">我们发现了关于%1$s的漏洞，建议您立即卸载此应用。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">我们发现了关于%1$s的漏洞，建议您立即升级到最新的版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>

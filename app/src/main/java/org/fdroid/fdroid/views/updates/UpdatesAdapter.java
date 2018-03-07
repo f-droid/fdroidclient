@@ -63,7 +63,6 @@ import java.util.Set;
  * TODO: If a user downloads an old version of an app (resulting in a new update being available
  * instantly), then we need to refresh the list of apps to update.
  */
-@SuppressWarnings("LineLength")
 public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -170,9 +169,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         }
 
-        for (KnownVulnApp app : knownVulnApps) {
-            items.add(app);
-        }
+        items.addAll(knownVulnApps);
     }
 
     @Override
@@ -329,6 +326,9 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (intent == null) {
+                return;
+            }
             switch (intent.getAction()) {
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
                     onManyAppStatusesChanged(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE));

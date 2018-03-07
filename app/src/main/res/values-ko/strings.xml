@@ -366,7 +366,6 @@
     <string name="installed_apps__activity_title">설치된 앱</string>
     <string name="installed_app__updates_ignored">업데이트 무시됨</string>
     <string name="installed_app__updates_ignored_for_suggested_version">버전 %1$s의 업데이트 무시됨</string>
-    <string name="installed_app__file_corrupt">F-Droid가 EIO 오류를 수신했습니다: %s은(는) 아마도 손상되었을 것입니다!</string>
     <string name="updates__tts__download_updates_for_all_apps">모든 업데이트 다운로드</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">무시</string>
