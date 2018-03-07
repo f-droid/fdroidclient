@@ -1,3 +1,11 @@
+### 1.1-alpha4 (2018-03-09)
+
+* fix the most popular ACRA crash reports
+
+* UI layout improvements
+
+* warn users when scanning QR with camera without autofocus
+
 ### 1.1-alpha3 (2018-02-13)
 
 * add sort button to Search view: alpha or most recent
