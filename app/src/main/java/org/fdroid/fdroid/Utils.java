@@ -38,12 +38,10 @@ import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -91,7 +89,7 @@ public final class Utils {
             new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
-        "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
+            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
     };
 
     public static final String FALLBACK_ICONS_DIR = "/icons/";
@@ -205,31 +203,31 @@ public final class Utils {
     }
 
     private static final String[] ANDROID_VERSION_NAMES = {
-        "?",     // 0, undefined
-        "1.0",   // 1
-        "1.1",   // 2
-        "1.5",   // 3
-        "1.6",   // 4
-        "2.0",   // 5
-        "2.0.1", // 6
-        "2.1",   // 7
-        "2.2",   // 8
-        "2.3",   // 9
-        "2.3.3", // 10
-        "3.0",   // 11
-        "3.1",   // 12
-        "3.2",   // 13
-        "4.0",   // 14
-        "4.0.3", // 15
-        "4.1",   // 16
-        "4.2",   // 17
-        "4.3",   // 18
-        "4.4",   // 19
-        "4.4W",  // 20
-        "5.0",   // 21
-        "5.1",   // 22
-        "6.0",   // 23
-        "7.0",   // 24
+            "?",     // 0, undefined
+            "1.0",   // 1
+            "1.1",   // 2
+            "1.5",   // 3
+            "1.6",   // 4
+            "2.0",   // 5
+            "2.0.1", // 6
+            "2.1",   // 7
+            "2.2",   // 8
+            "2.3",   // 9
+            "2.3.3", // 10
+            "3.0",   // 11
+            "3.1",   // 12
+            "3.2",   // 13
+            "4.0",   // 14
+            "4.0.3", // 15
+            "4.1",   // 16
+            "4.2",   // 17
+            "4.3",   // 18
+            "4.4",   // 19
+            "4.4W",  // 20
+            "5.0",   // 21
+            "5.1",   // 22
+            "6.0",   // 23
+            "7.0",   // 24
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
@@ -400,7 +398,16 @@ public final class Utils {
     /**
      * Get the checksum hash of the file {@code apk} using the algorithm in {@code algo}.
      * {@code apk} must exist on the filesystem and {@code algo} must be supported
-     * by this device, otherwise an {@link IllegalArgumentException} is thrown.
+     * by this device, otherwise an {@link IllegalArgumentException} is thrown.  This
+     * method must be very defensive about checking whether the file exists, since APKs
+     * can be uninstalled/deleted in background at any time, even if this is in the
+     * middle of running.
+     * <p>
+     * This also will run into filesystem corruption if the device is having trouble.
+     * So hide those so F-Droid does not pop up crash reports about that. As such this
+     * exception-message-parsing-and-throwing-a-new-ignorable-exception-hackery is
+     * probably warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855
+     * for more detail.
      */
     public static String getBinaryHash(File apk, String algo) {
         FileInputStream fis = null;
@@ -418,14 +425,12 @@ public final class Utils {
             byte[] mdbytes = md.digest();
             return toHexString(mdbytes).toLowerCase(Locale.ENGLISH);
         } catch (IOException e) {
-            // The annoyance (potentially) caused by miscellaneous filesystem corruption results in
-            // F-Droid constantly popping up crash reports when F-Droid isn't even open. As such this
-            // exception-message-parsing-and-throwing-a-new-ignorable-exception-hackery is probably
-            // warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855 for more detail.
-            if (e.getMessage().contains("read failed: EIO (I/O error)")) {
+            String message = e.getMessage();
+            if (message.contains("read failed: EIO (I/O error)")) {
                 throw new PotentialFilesystemCorruptionException(e);
+            } else if (message.contains(" ENOENT ")) {
+                Utils.debugLog(TAG, apk + " vanished: " + message);
             }
-
             throw new IllegalArgumentException(e);
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalArgumentException(e);
@@ -537,10 +542,10 @@ public final class Utils {
 
     public static String formatLastUpdated(@NonNull Resources res, @NonNull Date date) {
         long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
-        long days   = msDiff / DateUtils.DAY_IN_MILLIS;
-        long weeks  = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
+        long days = msDiff / DateUtils.DAY_IN_MILLIS;
+        long weeks = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
         long months = msDiff / (DateUtils.DAY_IN_MILLIS * 30);
-        long years  = msDiff / (DateUtils.DAY_IN_MILLIS * 365);
+        long years = msDiff / (DateUtils.DAY_IN_MILLIS * 365);
 
         if (days < 1) {
             return res.getString(R.string.details_last_updated_today);
