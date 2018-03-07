@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Base64;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -37,7 +35,7 @@ public class Provisioner {
     /**
      * This is the name of the subfolder in the file directory of this app
      * where {@link Provisioner} looks for new provisions.
-     *
+     * <p>
      * eg. in the Emulator (API level 24): /data/user/0/org.fdroid.fdroid.debug/files/provisions
      */
     private static final String NEW_PROVISIONS_DIR = "provisions";
@@ -48,7 +46,7 @@ public class Provisioner {
     /**
      * search for provision files and process them
      */
-    public static void scanAndProcess(Context context) {
+    static void scanAndProcess(Context context) {
         File externalFilesDir = context.getExternalFilesDir(null);
         if (externalFilesDir == null) {
             return;
@@ -83,21 +81,24 @@ public class Provisioner {
                             Uri origUrl = Uri.parse(repo.getUrl());
                             Uri.Builder data = new Uri.Builder();
                             data.scheme(origUrl.getScheme());
-                            data.encodedAuthority(Uri.encode(repo.getUsername()) + ":" + Uri.encode(repo.getPassword()) + "@" + Uri.encode(origUrl.getAuthority()));
+                            data.encodedAuthority(Uri.encode(repo.getUsername()) + ':'
+                                    + Uri.encode(repo.getPassword()) + '@' + Uri.encode(origUrl.getAuthority()));
                             data.path(origUrl.getPath());
                             data.appendQueryParameter("fingerprint", repo.getSigfp());
                             Intent i = new Intent(context, ManageReposActivity.class);
                             i.setData(data.build());
                             context.startActivity(i);
-                            Utils.debugLog(TAG, "Provision processed: '" + provision.getProvisonPath() + "' prompted user ...");
+                            Utils.debugLog(TAG, "Provision processed: '"
+                                    + provision.getProvisonPath() + "' prompted user ...");
                         }
 
                     }
 
                     // remove provision file
                     try {
-                        new File(provision.getProvisonPath()).delete();
-                        cleanupCounter++;
+                        if (new File(provision.getProvisonPath()).delete()) {
+                            cleanupCounter++;
+                        }
                     } catch (SecurityException e) {
                         // ignore this exception
                         Utils.debugLog(TAG, "Removing provision not possible: " + e.getMessage() + " ()");
@@ -108,7 +109,7 @@ public class Provisioner {
         }
     }
 
-    public List<File> findProvisionFiles(Context context) {
+    private List<File> findProvisionFiles(Context context) {
         File externalFilesDir = context.getExternalFilesDir(null);
         if (externalFilesDir == null) {
             return Collections.emptyList();
@@ -117,7 +118,7 @@ public class Provisioner {
         return findProvisionFilesInDir(provisionDir);
     }
 
-    protected List<File> findProvisionFilesInDir(File file) {
+    List<File> findProvisionFilesInDir(File file) {
         if (file == null || !file.isDirectory()) {
             return Collections.emptyList();
         }
@@ -153,7 +154,7 @@ public class Provisioner {
         return sb.toString();
     }
 
-    protected String deobfuscate(String obfuscated) {
+    String deobfuscate(String obfuscated) {
         try {
             return new String(Base64.decode(rot13(obfuscated), Base64.DEFAULT), "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -162,7 +163,7 @@ public class Provisioner {
         }
     }
 
-    protected List<ProvisionPlaintext> extractProvisionsPlaintext(List<File> files) {
+    List<ProvisionPlaintext> extractProvisionsPlaintext(List<File> files) {
         List<ProvisionPlaintext> result = new ArrayList<>();
         if (files != null) {
             for (File file : files) {
@@ -171,7 +172,7 @@ public class Provisioner {
                 ZipInputStream in = null;
                 try {
                     in = new ZipInputStream(new FileInputStream(file));
-                    ZipEntry zipEntry = null;
+                    ZipEntry zipEntry;
                     while ((zipEntry = in.getNextEntry()) != null) {
                         String name = zipEntry.getName();
                         if ("repo_provision.json".equals(name)) {
@@ -202,7 +203,7 @@ public class Provisioner {
         return result;
     }
 
-    public List<Provision> parseProvisions(List<ProvisionPlaintext> provisionPlaintexts) {
+    List<Provision> parseProvisions(List<ProvisionPlaintext> provisionPlaintexts) {
 
         List<Provision> provisions = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
@@ -224,44 +225,44 @@ public class Provisioner {
         return provisions;
     }
 
-    public static class ProvisionPlaintext {
+    static class ProvisionPlaintext {
         private String provisionPath;
         private String repositoryProvision;
 
-        public String getProvisionPath() {
+        String getProvisionPath() {
             return provisionPath;
         }
 
-        public void setProvisionPath(String provisionPath) {
+        void setProvisionPath(String provisionPath) {
             this.provisionPath = provisionPath;
         }
 
-        public String getRepositoryProvision() {
+        String getRepositoryProvision() {
             return repositoryProvision;
         }
 
-        public void setRepositoryProvision(String repositoryProvision) {
+        void setRepositoryProvision(String repositoryProvision) {
             this.repositoryProvision = repositoryProvision;
         }
     }
 
-    public static class Provision {
+    static class Provision {
         private String provisonPath;
         private RepositoryProvision repositoryProvision;
 
-        public String getProvisonPath() {
+        String getProvisonPath() {
             return provisonPath;
         }
 
-        public void setProvisonPath(String provisonPath) {
+        void setProvisonPath(String provisonPath) {
             this.provisonPath = provisonPath;
         }
 
-        public RepositoryProvision getRepositoryProvision() {
+        RepositoryProvision getRepositoryProvision() {
             return repositoryProvision;
         }
 
-        public void setRepositoryProvision(RepositoryProvision repositoryProvision) {
+        void setRepositoryProvision(RepositoryProvision repositoryProvision) {
             this.repositoryProvision = repositoryProvision;
         }
     }
