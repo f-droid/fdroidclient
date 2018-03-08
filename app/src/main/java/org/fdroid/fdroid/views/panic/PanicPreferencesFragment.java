@@ -85,13 +85,13 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
                 return true;
             }
         });
+        showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
     }
 
     @Override
     public void onStart() {
         super.onStart();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-        showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
     }
 
     @Override
