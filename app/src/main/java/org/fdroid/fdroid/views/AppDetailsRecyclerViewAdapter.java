@@ -732,10 +732,11 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
+            Context context = headerView.getContext();
             if (hasCompatibleApksDifferentSigs()) {
-                headerView.setText("No versions with compatible signature");
+                headerView.setText(context.getString(R.string.app_details__no_versions__no_compatible_signatures));
             } else {
-                headerView.setText("No versions compatible with device");
+                headerView.setText(context.getString(R.string.app_details__no_versions__none_compatible_with_device));
             }
         }
 
