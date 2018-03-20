@@ -40,7 +40,7 @@ import java.io.IOException;
  * and then redeliver the {@link Intent} for us, which includes all of the data needed
  * for {@code InstallManagerService} to do its job for the whole lifecycle of an install.
  * <p>
- * The full URL for the APK file to download is also used as the unique ID to
+ * The canonical URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
  * of {@link Intent#setData(Uri)}, where the core data of an {@code Intent} is
  * a {@code Uri}.  The full download URL is guaranteed to be unique since it

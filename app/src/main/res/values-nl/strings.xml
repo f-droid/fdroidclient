@@ -534,4 +534,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Je camera lijkt niet over autofocus te beschikken. Het scannen van de code kan moeilijk zijn.</string>
+    </resources>

@@ -544,4 +544,9 @@
     <string name="hide_on_long_search_press_title">Skjul med søke-knappen</string>
     <string name="hide_on_long_search_press_summary">Å trykke lenge på søkeknappen vil skjule programmet</string>
 
-</resources>
+<string name="sort_search">Sorter søk</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="warning_scaning_qr_code">Kameraet ditt mangler autofokus. Det kan vise seg vanskelig å skanne koden.</string>
+    </resources>

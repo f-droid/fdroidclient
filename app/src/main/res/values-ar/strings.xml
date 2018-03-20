@@ -147,7 +147,7 @@
 
     <string name="appcompatibility">توافق التطبيق</string>
     <string name="show_incompat_versions">إصدارات غير متوافقة</string>
-    <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير متوافقة مع الجهاز</string>
+    <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير المتوافقة مع الجهاز</string>
     <string name="rooted">تجاهل صلاحيات الجذر</string>
     <string name="rooted_on">لا تخفي أصل التطبيقات التي تتطلب امتيازات الجذر</string>
     <string name="force_touch_apps">تجاهل الشاشات التي تعمل باللمس</string>
@@ -518,4 +518,9 @@
     <string name="panic_hide_title">إخفاء %s</string>
     <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
 
-</resources>
+<string name="menu_liberapay">Liberapay</string>
+
+    <string name="panic_hide_warning_title">تذكر كيفية الإسترجاع</string>
+    <string name="hiding_calculator">الحاسبة</string>
+    <string name="hiding_dialog_title">إخفاء %s الآن</string>
+    </resources>

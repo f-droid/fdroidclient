@@ -552,4 +552,5 @@
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="panic_hide_warning_title">Sicherungsmethode beibehalten</string>
-</resources>
+<string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
+    </resources>
