@@ -17,10 +17,6 @@ public class DismissResult {
         this(null, false);
     }
 
-    public DismissResult(boolean requiresAdapterRefresh) {
-        this(null, requiresAdapterRefresh);
-    }
-
     public DismissResult(@Nullable CharSequence message, boolean requiresAdapterRefresh) {
         this.message = message;
         this.requiresAdapterRefresh = requiresAdapterRefresh;

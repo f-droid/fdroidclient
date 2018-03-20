@@ -370,7 +370,7 @@ public final class AppUpdateStatusManager {
 
     public void removeApk(String key) {
         synchronized (appMapping) {
-            AppUpdateStatus entry = appMapping.get(key);
+            AppUpdateStatus entry = appMapping.remove(key);
             if (entry != null) {
                 Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkName);
                 notifyRemove(entry);
