@@ -736,7 +736,12 @@ public class AppDetails2 extends AppCompatActivity
     @Override
     public void launchApk() {
         Intent intent = getPackageManager().getLaunchIntentForPackage(app.packageName);
-        startActivity(intent);
+        if (intent != null) {
+            startActivity(intent);
+        } else {
+            // This can happen when the app was just uninstalled.
+            Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
