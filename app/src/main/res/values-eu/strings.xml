@@ -573,4 +573,5 @@
     <string name="sort_search">Ordenatu bilaketa</string>
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
+    </resources>

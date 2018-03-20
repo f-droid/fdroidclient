@@ -20,13 +20,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Scans the list of downloaded .apk files in the cache for each app which can be updated.
- * If a valid .apk file is found then it will tell the {@link AppUpdateStatusManager} that it is
- * {@link AppUpdateStatusManager.Status#ReadyToInstall}. This is an {@link IntentService} so as to
- * run on a background thread, as it hits the disk a bit to figure out the hash of each downloaded
- * file.
+ * Scans the list of downloaded .apk files in the cache.  This info is used to
+ * determine if an APK is ready to install.  When a valid .apk file is found,
+ * this checks whether that APK is already installed, and whether the user's
+ * install request is still active.  If all those are true, then this tells the
+ * {@link AppUpdateStatusManager} that the APK is
+ * {@link AppUpdateStatusManager.Status#ReadyToInstall}. This is an
+ * {@link IntentService} so as to run on a background thread, as it hits the
+ * disk a bit to figure out the hash of each downloaded file.
  */
-@SuppressWarnings("LineLength")
 public class AppUpdateStatusService extends IntentService {
 
     private static final String TAG = "AppUpdateStatusService";
@@ -54,6 +56,7 @@ public class AppUpdateStatusService extends IntentService {
         if (cacheDirList == null) {
             return;
         }
+        PackageManager packageManager = getPackageManager();
         List<Apk> apksReadyToInstall = new ArrayList<>();
         for (String repoDirName : cacheDirList) {
             File repoDir = new File(cacheDir, repoDirName);
@@ -64,14 +67,23 @@ public class AppUpdateStatusService extends IntentService {
             for (String apkFileName : apks) {
                 Apk apk = processDownloadedApk(new File(repoDir, apkFileName));
                 if (apk != null) {
-                    Log.i(TAG, "Found downloaded apk " + apk.packageName + ". Notifying user that it should be installed.");
-                    apksReadyToInstall.add(apk);
+                    PackageInfo packageInfo = null;
+                    try {
+                        packageInfo = packageManager.getPackageInfo(apk.packageName, 0);
+                    } catch (PackageManager.NameNotFoundException e) {
+                        // ignored
+                    }
+                    if (packageInfo == null || packageInfo.versionCode != apk.versionCode) {
+                        Utils.debugLog(TAG, "Marking downloaded apk " + apk.apkName + " as ReadyToInstall");
+                        apksReadyToInstall.add(apk);
+                    }
                 }
             }
         }
 
         if (apksReadyToInstall.size() > 0) {
-            AppUpdateStatusManager.getInstance(this).addApks(apksReadyToInstall, AppUpdateStatusManager.Status.ReadyToInstall);
+            AppUpdateStatusManager.getInstance(this).addApks(apksReadyToInstall,
+                    AppUpdateStatusManager.Status.ReadyToInstall);
             InstallManagerService.managePreviouslyDownloadedApks(this);
         }
     }
@@ -100,21 +112,25 @@ public class AppUpdateStatusService extends IntentService {
             return null;
         }
 
-        PackageInfo downloadedInfo = getPackageManager().getPackageArchiveInfo(apkPath.getAbsolutePath(), PackageManager.GET_GIDS);
+        PackageInfo downloadedInfo = getPackageManager().getPackageArchiveInfo(apkPath.getAbsolutePath(),
+                PackageManager.GET_GIDS);
         if (downloadedInfo == null) {
             Log.i(TAG, "Skipping " + apkPath + " because PackageManager was unable to read it.");
             return null;
         }
 
-        Utils.debugLog(TAG, "Found package for " + downloadedInfo.packageName + ", checking its hash to see if it downloaded correctly.");
+        Utils.debugLog(TAG, "Found package for " + downloadedInfo.packageName + ':' + downloadedInfo.versionCode
+                + ", checking its hash to see if it downloaded correctly.");
         Apk downloadedApk = findApkMatchingHash(apkPath);
         if (downloadedApk == null) {
-            Log.i(TAG, "Either the apk wasn't downloaded fully, or the repo it came from has been disabled. Either way, not notifying the user about it.");
+            Log.i(TAG, "Either the apk wasn't downloaded fully, or the repo it came from has been disabled. "
+                    + "Either way, not notifying the user about it.");
             return null;
         }
 
         if (!AppUpdateStatusManager.getInstance(this).isPendingInstall(downloadedApk.hash)) {
-            Log.i(TAG, downloadedApk.packageName + " is NOT pending install, probably just left over from a previous install.");
+            Log.i(TAG, downloadedApk.packageName + ':' + downloadedApk.versionCode
+                    + " is NOT pending install, probably just left over from a previous install.");
             return null;
         }
 
@@ -124,14 +140,16 @@ public class AppUpdateStatusService extends IntentService {
             if (pathToInstalled != null && pathToInstalled.canRead() &&
                     pathToInstalled.length() == downloadedApk.size && // Check size before hash for performance.
                     TextUtils.equals(Utils.getBinaryHash(pathToInstalled, "sha256"), downloadedApk.hash)) {
-                Log.i(TAG, downloadedApk.packageName + " is pending install, but we already have the correct version installed.");
+                Log.i(TAG, downloadedApk.packageName
+                        + " is pending install, but we already have the correct version installed.");
                 AppUpdateStatusManager.getInstance(this).markAsNoLongerPendingInstall(downloadedApk.getUrl());
                 return null;
             }
         } catch (PackageManager.NameNotFoundException ignored) {
         }
 
-        Utils.debugLog(TAG, downloadedApk.packageName + " is pending install, so we need to notify the user about installing it.");
+        Utils.debugLog(TAG, downloadedApk.packageName + ':' + downloadedApk.versionCode
+                + " is pending install, so we need to notify the user about installing it.");
         return downloadedApk;
     }
 

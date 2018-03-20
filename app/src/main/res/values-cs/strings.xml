@@ -557,4 +557,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
+    </resources>

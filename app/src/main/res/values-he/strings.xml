@@ -543,4 +543,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
+    </resources>

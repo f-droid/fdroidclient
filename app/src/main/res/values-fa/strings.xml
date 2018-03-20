@@ -517,4 +517,5 @@
 
     <string name="menu_liberapay">لیبراپی</string>
 
-</resources>
+<string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
+    </resources>

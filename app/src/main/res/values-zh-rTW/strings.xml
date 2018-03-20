@@ -510,4 +510,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">您的相機似乎沒有自動對焦。掃描代碼可能會很困難。</string>
+    </resources>

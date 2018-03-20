@@ -562,11 +562,11 @@
     <string name="panic_hide_summary">S\'aplicatzione s\'at a istichire</string>
 
     <string name="panic_hide_warning_title">Ammenta comente ripristinare</string>
-    <string name="panic_hide_warning_message">In casu de un\'eventu de pànicu, custu at a bogare %1$s dae su \"launcher\". Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
+    <string name="panic_hide_warning_message">In casu de un\'eventu de pànicu, custu at a bogare %1$s dae su \"launcher\" (s\'afiladore). Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
 
     <string name="hiding_calculator">Calcolatrice</string>
     <string name="hiding_dialog_title">Istichi %s como</string>
-    <string name="hiding_dialog_message">Seguru ses de chèrrere bogare %1$s dae su \"launcher\"? Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
+    <string name="hiding_dialog_message">Seguru ses de chèrrere bogare %1$s dae su \"launcher\" (s\'afiladore)? Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
     <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale at a èssere bogada e b\'at a dèpere èssere torrada a pònnere manualmente.</string>
     <string name="hide_on_long_search_press_title">Istichi cun su butone de chirca</string>
     <string name="hide_on_long_search_press_summary">Un\'incarcada longa in su butone de chirca at a istichire s\'aplicatzione</string>
@@ -574,4 +574,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
+    </resources>

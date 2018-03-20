@@ -557,4 +557,5 @@
     <string name="hide_on_long_search_press_title">Cacher à l\'aide du bouton de recherche</string>
     <string name="hide_on_long_search_press_summary">Appuyez longuement sur le bouton de recherche pour cacher l\'application</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Votre appareil-photo n’a pas de mise au point automatique. Il sera peut-être difficile de scanner le code.</string>
+    </resources>

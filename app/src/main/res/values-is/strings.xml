@@ -586,4 +586,5 @@
     <string name="sort_search">Raða leit</string>
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
+    </resources>

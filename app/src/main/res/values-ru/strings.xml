@@ -545,4 +545,5 @@
     <string name="hide_on_long_search_press_title">Скрыть с помощью кнопки поиска</string>
     <string name="hide_on_long_search_press_summary">Длительное нажатие кнопки поиска скроет приложение</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
+    </resources>

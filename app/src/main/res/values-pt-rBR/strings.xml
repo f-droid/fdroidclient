@@ -560,4 +560,9 @@
     <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
     <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um tempo longo vai esconder o app</string>
 
-</resources>
+<string name="sort_search">Classificação da pesquisa</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="warning_scaning_qr_code">Sua câmera não parece ter focagem automática. Pode ser difícil escanear o código.</string>
+    </resources>

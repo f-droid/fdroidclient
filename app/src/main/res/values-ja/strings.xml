@@ -76,10 +76,10 @@
     <string name="appcompatibility">アプリの互換性</string>
     <string name="show_incompat_versions">互換性の無いバージョン</string>
     <string name="show_incompat_versions_on">端末と互換性のないバージョンを表示します</string>
-    <string name="rooted">rootアプリを無視する</string>
+    <string name="rooted">rootアプリ</string>
     <string name="rooted_on">root権限を要求するアプリを表示します</string>
-    <string name="force_touch_apps">タッチスクリーンを無視する</string>
-    <string name="force_touch_apps_on">タッチスクリーンを要求するアプリを常に表示します</string>
+    <string name="force_touch_apps">タッチスクリーンを使用するアプリ</string>
+    <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を要求するアプリを表示します</string>
     <string name="local_repo">ローカルリポジトリ</string>
     <string name="local_repo_running">F-Droidは交換の準備ができました</string>
     <string name="touch_to_configure_local_repo">タッチすると詳細を表示し、アプリの交換ができるようになります。</string>
@@ -143,8 +143,8 @@
     <string name="category_Security">セキュリティ</string>
     <string name="category_System">システム</string>
     <string name="requesting_root_access_body">root権限の要求中</string>
-    <string name="root_access_denied_title">root権限での接続が拒絶されました</string>
-    <string name="root_access_denied_body">この端末はroot化されていないか、F-Droidのrootアクセスが拒絶されました｡</string>
+    <string name="root_access_denied_title">rootへのアクセスが拒否されました</string>
+    <string name="root_access_denied_body">この端末はroot化されていないか、F-Droidのrootへのアクセスが拒否されました｡</string>
     <string name="swap_nfc_description">友だちがF-DroidとNFCを持っているなら、一緒にお使いの端末をタッチしてください。</string>
     <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
     <string name="swap">アプリの交換</string>
@@ -324,8 +324,8 @@
     <string name="installing">インストール中</string>
     <string name="uninstalling">アンインストール中</string>
 
-    <string name="hide_anti_feature_apps">対策機能のアプリををグレーアウト</string>
-    <string name="hide_anti_feature_apps_on">対策機能を必要とするアプリを隠します</string>
+    <string name="hide_anti_feature_apps">好ましくない機能を使用するアプリ</string>
+    <string name="hide_anti_feature_apps_on">好ましくない機能の使用を必要とするアプリを隠します</string>
     <string name="update_auto_install">自動的に更新をインストール</string>
     <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストールします</string>
     <string name="keep_install_history">インストール履歴を保存する</string>
@@ -402,7 +402,7 @@
     <string name="details_new_in_version">バージョン%sの新機能</string>
 
     <string name="antifeatureswarning">このアプリは好ましくない機能を含んでいるかもしれません。</string>
-    <string name="antifeatures">対策機能</string>
+    <string name="antifeatures">好ましくない機能</string>
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d日前に更新しました</item>
     </plurals>
@@ -465,10 +465,10 @@
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
 
     <string name="privacy">プライバシー</string>
-    <string name="preventScreenshots_title">スクリーンショットを防止</string>
+    <string name="preventScreenshots_title">スクリーンショットの防止</string>
     <string name="preventScreenshots_summary">スクリーンショットの撮影を防止するとともに、アプリ履歴にアプリの内容が表示されないようにします</string>
 
-    <string name="panic_app_setting_title">パニックボタンアプリ</string>
+    <string name="panic_app_setting_title">パニックボタンのアプリ</string>
     <string name="panic_app_unknown_app">不明のアプリ</string>
     <string name="panic_app_setting_summary">アプリが設定されていません</string>
     <string name="panic_app_setting_none">なし</string>
@@ -476,7 +476,7 @@
     <string name="panic_app_dialog_message">%1$sを破壊的なパニックボタンとして動作させることを許可してもよろしいですか？</string>
     <string name="allow">許可</string>
 
-    <string name="panic_settings">パニックボタン設定</string>
+    <string name="panic_settings">パニックボタンの設定</string>
     <string name="panic_settings_summary">緊急時のアクション</string>
     <string name="panic_exit_title">アプリを終了</string>
     <string name="panic_exit_summary">アプリを閉じます</string>
@@ -497,4 +497,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
+    </resources>

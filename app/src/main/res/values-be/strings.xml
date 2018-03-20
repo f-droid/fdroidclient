@@ -587,4 +587,5 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-</resources>
+<string name="warning_scaning_qr_code">Ваша камеры не падтрымлівае аўтафокус. Сканаванне кода можа быць абцяжаранае.</string>
+    </resources>

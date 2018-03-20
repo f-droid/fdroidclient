@@ -510,4 +510,5 @@
     <string name="hiding_dialog_message">Sigur doriți să eliminați %1$s din lansator? Doar scriind \"%2$d\" în aplicația falsă %3$s veți putea să o restaurați.</string>
     <string name="hiding_dialog_warning">Atenție: Orice scurtătură din ecranul de pornire va fi de asemenea eliminată și va trebui adăugată din nou manual.</string>
     <string name="hide_on_long_search_press_summary">Aplicația va fi ascunsă dacă se apasă lung butonul de căutare</string>
-</resources>
+<string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
+    </resources>

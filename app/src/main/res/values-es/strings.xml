@@ -80,8 +80,7 @@
     <string name="search_hint">Buscar aplicaciones</string>
     <string name="appcompatibility">Compatibilidad de aplicaciones</string>
     <string name="show_incompat_versions">Versiones incompatibles</string>
-    <string name="show_incompat_versions_on">Mostrar las versiones de aplicaciones incompatibles con el dispositivo
-    </string>
+    <string name="show_incompat_versions_on">Mostrar las versiones incompatibles de las aplicaciones</string>
     <string name="rooted">Obviar permisos de administración</string>
     <string name="rooted_on">No marcar en gris las aplicaciones que piden permisos de administración<i>root</i>)</string>
     <string name="force_touch_apps">Ignorar pantalla táctil</string>
@@ -336,7 +335,7 @@
     <string name="menu_email">Escribir al autor por correo electrónico</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
-    <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad. Requiere Orbot</string>
+    <string name="useTorSummary">Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot</string>
     <string name="repo_provider">Repositorio: %s</string>
 
     <string name="update_auto_download">Obtenga actualizaciones automáticamente</string>
@@ -540,4 +539,19 @@
     <string name="panic_hide_title">Ocultar %s</string>
     <string name="panic_hide_summary">La aplicación se ocultará</string>
 
-</resources>
+<string name="sort_search">Ordenar resultados</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="panic_hide_warning_title">Recordar cómo restaurar</string>
+    <string name="panic_hide_warning_message">En un momento de pánico, se eliminará %1$s de la pantalla de inicio. Solo se restaurará escribiendo \"%2$d\" en la apli falsa %3$s.</string>
+
+    <string name="hiding_calculator">Calculadora</string>
+    <string name="hiding_dialog_title">Ocultar %s ahora</string>
+    <string name="hiding_dialog_message">¿Seguro que quieres eliminar %1$s de la pantalla de inicio? Solo se restaurará escribiendo \"%2$d\" en la apli falsa %3$s.</string>
+    <string name="hiding_dialog_warning">Atención: se eliminará también cualquier atajo de la aplicación en la pantalla de inicio y tendrá que añadirse manualmente.</string>
+    <string name="hide_on_long_search_press_title">Ocultar con el botón de búsqueda</string>
+    <string name="hide_on_long_search_press_summary">Manteniendo pulsado el botón de búsqueda se ocultará la aplicación</string>
+
+    <string name="warning_scaning_qr_code">Parece que tu cámara no tiene autoenfoque. Puede resultar difícil escanear el código.</string>
+    </resources>

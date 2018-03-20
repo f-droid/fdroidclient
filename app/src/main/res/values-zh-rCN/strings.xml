@@ -72,8 +72,8 @@
     <string name="show_incompat_versions_on">显示与该设备不兼容的应用程序版本</string>
     <string name="rooted">忽略 root</string>
     <string name="rooted_on">不以灰色显示需要 root 权限的应用程序</string>
-    <string name="force_touch_apps">忽略触屏应用</string>
-    <string name="force_touch_apps_on">总是包含需要触屏的应用程序</string>
+    <string name="force_touch_apps">包含触屏应用</string>
+    <string name="force_touch_apps_on">总是展示需要触屏的应用程序，无论硬件是否支持</string>
     <string name="local_repo">本地软件源</string>
     <string name="deleting_repo">正在删除当前软件源…</string>
     <string name="icon">图标</string>
@@ -346,7 +346,7 @@
     <string name="notification_title_single_update_available">可更新</string>
     <string name="notification_title_summary_install_error">安装失败</string>
     <string name="app_details_donate_prompt_unknown_author">给%1$s的开发者买一杯咖啡吧！</string>
-    <string name="app_details_donate_prompt">%2$s是%1$s的开发者，给他們买一杯咖啡吧！</string>
+    <string name="app_details_donate_prompt">%2$s 是 %1$s 的开发者，给他们买一杯咖啡吧！</string>
 
     <string name="app_version_x_available">版本%1$s可用</string>
     <string name="app_version_x_installed">版本%1$s</string>
@@ -485,13 +485,14 @@
     <string name="panic_app_dialog_title">确认紧急应用</string>
     <string name="panic_destructive_actions">危险动作</string>
     <string name="panic_hide_warning_title">请记住如何还原</string>
-    <string name="panic_hide_warning_message">在紧急情况下，这从启动器中移除 %1$s。只有在假的 %3$s 应用中输入“%2$d”才能恢复它。</string>
+    <string name="panic_hide_warning_message">在紧急情况下，这将从启动器中移除 %1$s。只有在假的 %3$s 应用中输入“%2$d”才能恢复它。</string>
 
     <string name="hiding_calculator">计算器</string>
     <string name="hiding_dialog_title">立即隐藏 %s</string>
     <string name="hiding_dialog_message">确定要从启动器中移除 %1$s 吗？只有在假的 %3$s 应用中输入“%2$d”才能恢复它。</string>
-    <string name="hiding_dialog_warning">警告：主屏幕上的任何应用捷径也将被移除，需要手动重新添加。</string>
+    <string name="hiding_dialog_warning">警告：主屏幕上的任何应用快捷方式也将被移除，需要手动重新添加。</string>
     <string name="hide_on_long_search_press_title">用搜索按钮隐藏</string>
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
 
-</resources>
+<string name="warning_scaning_qr_code">您的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
+    </resources>
