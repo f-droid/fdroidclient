@@ -203,14 +203,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String[] requirements;
 
     /**
-     * To be displayed at 48dp (x1.0)
+     * URL to download the app's icon.
      */
     public String iconUrl;
-
-    /**
-     * To be displayed at 72dp (x1.5)
-     */
-    public String iconUrlLarge;
 
     public static String getIconName(String packageName, int versionCode) {
         return packageName + "_" + versionCode + ".png";
@@ -326,9 +321,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.ICON_URL:
                     iconUrl = cursor.getString(i);
-                    break;
-                case Cols.ICON_URL_LARGE:
-                    iconUrlLarge = cursor.getString(i);
                     break;
                 case Cols.FEATURE_GRAPHIC:
                     featureGraphic = cursor.getString(i);
@@ -909,7 +901,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.SUMMARY, summary);
         values.put(Cols.ICON, icon);
         values.put(Cols.ICON_URL, iconUrl);
-        values.put(Cols.ICON_URL_LARGE, iconUrlLarge);
         values.put(Cols.DESCRIPTION, description);
         values.put(Cols.WHATSNEW, whatsNew);
         values.put(Cols.LICENSE, license);
@@ -1158,7 +1149,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeStringArray(this.antiFeatures);
         dest.writeStringArray(this.requirements);
         dest.writeString(this.iconUrl);
-        dest.writeString(this.iconUrlLarge);
         dest.writeString(this.featureGraphic);
         dest.writeString(this.promoGraphic);
         dest.writeString(this.tvBanner);
@@ -1210,7 +1200,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.antiFeatures = in.createStringArray();
         this.requirements = in.createStringArray();
         this.iconUrl = in.readString();
-        this.iconUrlLarge = in.readString();
         this.featureGraphic = in.readString();
         this.promoGraphic = in.readString();
         this.tvBanner = in.readString();

@@ -150,7 +150,6 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
             + AppMetadataTable.Cols.ICON_URL + " text, "
-            + AppMetadataTable.Cols.ICON_URL_LARGE + " text, "
             + AppMetadataTable.Cols.FEATURE_GRAPHIC + " string,"
             + AppMetadataTable.Cols.PROMO_GRAPHIC + " string,"
             + AppMetadataTable.Cols.TV_BANNER + " string,"
@@ -296,8 +295,6 @@ public class DBHelper extends SQLiteOpenHelper {
         populateRepoNames(db, oldVersion);
         addIsSwapToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
-        addIconUrlLargeToApp(db, oldVersion);
-        updateIconUrlLarge(db, oldVersion);
         addCredentialsToRepo(db, oldVersion);
         addAuthorToApp(db, oldVersion);
         useMaxValueInMaxSdkVersion(db, oldVersion);
@@ -1013,48 +1010,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.CHANGELOG + " column to " + AppMetadataTable.NAME);
         db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.CHANGELOG + " text");
-    }
-
-    private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 49 || columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.ICON_URL_LARGE)) {
-            return;
-        }
-        Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.ICON_URL_LARGE + " columns to " + AppMetadataTable.NAME);
-        db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.ICON_URL_LARGE + " text");
-    }
-
-    private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 50) {
-            return;
-        }
-        Utils.debugLog(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
-
-        String query = "UPDATE fdroid_app "
-                + "SET iconUrl = ("
-                + "  SELECT (fdroid_repo.address || CASE WHEN fdroid_repo.version >= ? THEN ? ELSE ? END || fdroid_app.icon) "
-                + "  FROM fdroid_apk "
-                + "  JOIN fdroid_repo ON (fdroid_repo._id = fdroid_apk.repo) "
-                + "  WHERE fdroid_app.id = fdroid_apk.id AND fdroid_apk.vercode = fdroid_app.suggestedVercode "
-                + "), iconUrlLarge = ("
-                + "  SELECT (fdroid_repo.address || CASE WHEN fdroid_repo.version >= ? THEN ? ELSE ? END || fdroid_app.icon) "
-                + "  FROM fdroid_apk "
-                + "  JOIN fdroid_repo ON (fdroid_repo._id = fdroid_apk.repo) "
-                + "  WHERE fdroid_app.id = fdroid_apk.id AND fdroid_apk.vercode = fdroid_app.suggestedVercode"
-                + ")";
-
-        String iconsDir = Utils.getIconsDir(context, 1.0);
-        String iconsDirLarge = Utils.getIconsDir(context, 1.5);
-        String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        Utils.debugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
-        String[] args = {
-                repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
-                repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR,
-        };
-
-        db.rawQuery(query, args);
-
-        clearRepoEtags(db);
     }
 
     private void addAuthorToApp(SQLiteDatabase db, int oldVersion) {
