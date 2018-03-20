@@ -29,13 +29,16 @@ import java.util.Map;
 
 /**
  * Manages the state of APKs that are being installed or that have updates available.
+ * This also ensures the state is saved across F-Droid restarts, and repopulates
+ * based on {@link org.fdroid.fdroid.data.Schema.InstalledAppTable} data, APKs that
+ * are present in the cache, and the {@code apks-pending-install}
+ * {@link SharedPreferences} instance.
  * <p>
- * The full URL for the APK file to download is used as the unique ID to
- * represent the status of the APK throughout F-Droid. The full download URL is guaranteed
- * to be unique since it points to files on a filesystem, where there cannot be multiple files with
- * the same name.  This provides a unique ID beyond just {@code packageName}
- * and {@code versionCode} since there could be different copies of the same
- * APK on different servers, signed by different keys, or even different builds.
+ * As defined in {@link org.fdroid.fdroid.installer.InstallManagerService}, the
+ * canonical URL for the APK file to download is used as the unique ID to represent
+ * the status of the APK throughout F-Droid.
+ *
+ * @see org.fdroid.fdroid.installer.InstallManagerService
  */
 public final class AppUpdateStatusManager {
 
@@ -556,8 +559,8 @@ public final class AppUpdateStatusManager {
      *
      * @see #isPendingInstall(String)
      */
-    public void markAsPendingInstall(String uniqueKey) {
-        AppUpdateStatus entry = get(uniqueKey);
+    public void markAsPendingInstall(String urlString) {
+        AppUpdateStatus entry = get(urlString);
         if (entry != null) {
             Utils.debugLog(TAG, "Marking " + entry.apk.packageName + " as pending install.");
             apksPendingInstall.edit().putBoolean(entry.apk.hash, true).apply();
@@ -568,8 +571,8 @@ public final class AppUpdateStatusManager {
      * @see #markAsNoLongerPendingInstall(AppUpdateStatus)
      * @see #isPendingInstall(String)
      */
-    public void markAsNoLongerPendingInstall(String uniqueKey) {
-        AppUpdateStatus entry = get(uniqueKey);
+    public void markAsNoLongerPendingInstall(String urlString) {
+        AppUpdateStatus entry = get(urlString);
         if (entry != null) {
             markAsNoLongerPendingInstall(entry);
         }
