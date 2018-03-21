@@ -235,17 +235,26 @@ public abstract class Installer {
     }
 
     /**
-     * Install apk
+     * Install apk given the URI that points to the local APK file, and the
+     * download URI to identify which session this belongs to.  This first
+     * moves the APK file to private directory for the installation process
+     * to read from.  Then the hash of the APK is checked against the
+     * {@link Apk} instance provided when this {@code Installer} object was
+     * instantiated.  The list of permissions in the APK file and the
+     * {@code Apk} instance are compared, if they do not match, then the user
+     * is prompted with the system installer dialog, which shows all the
+     * permissions that the APK is requesting.
      *
      * @param localApkUri points to the local copy of the APK to be installed
      * @param downloadUri serves as the unique ID for all actions related to the
      *                    installation of that specific APK
+     * @see InstallManagerService
+     * @see <a href="https://issuetracker.google.com/issues/37091886">ACTION_INSTALL_PACKAGE Fails For Any Possible Uri</a>
      */
     public void installPackage(Uri localApkUri, Uri downloadUri) {
         Uri sanitizedUri;
 
         try {
-            // move apk file to private directory for installation and check hash
             sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk);
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
@@ -269,14 +278,7 @@ public abstract class Installer {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
-                // https://issuetracker.google.com/issues/37091886
-                if (Build.VERSION.SDK_INT >= 24) {
-                    // content scheme for N and above
-                    defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
-                } else {
-                    // file scheme for below N
-                    defaultInstaller.installPackageInternal(localApkUri, downloadUri);
-                }
+                defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
                 return;
             }
         }
