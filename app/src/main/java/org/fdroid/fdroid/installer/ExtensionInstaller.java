@@ -24,7 +24,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -33,11 +32,16 @@ import java.io.File;
 
 /**
  * Special Installer that is only useful to install the Privileged Extension apk
- * as a privileged app into the system partition of Android.
+ * as a privileged app into the system partition of Android.  It is deprecated
+ * because it cannot work on Android versions newer than {@code android-20} or so,
+ * due to increased SELinux enforcement that restricts what even root can do.
  * <p/>
  * This is installer requires user interaction and thus install/uninstall directly
  * return PendingIntents.
+ *
+ * @see <a href="https://www.androidauthority.com/chainfire-rooting-android-lollipop-541458/">Chainfire talks Android Lollipop and the future of rooting</a>
  */
+@Deprecated
 public class ExtensionInstaller extends Installer {
 
     ExtensionInstaller(Context context, Apk apk) {
@@ -92,11 +96,6 @@ public class ExtensionInstaller extends Installer {
 
     @Override
     protected boolean isUnattended() {
-        return false;
-    }
-
-    @Override
-    protected boolean supportsContentUri() {
         return false;
     }
 }

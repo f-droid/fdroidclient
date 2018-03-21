@@ -31,7 +31,6 @@ import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -144,7 +143,7 @@ public abstract class Installer {
         PackageManager pm = context.getPackageManager();
         if (Build.VERSION.SDK_INT >= 24 && (
                 pm.getInstallerPackageName(apk.packageName).equals("com.android.packageinstaller")
-                || pm.getInstallerPackageName(apk.packageName).equals("com.google.android.packageinstaller"))) {
+                        || pm.getInstallerPackageName(apk.packageName).equals("com.google.android.packageinstaller"))) {
             Utils.debugLog(TAG, "Falling back to default installer for uninstall");
             Intent intent = new Intent(context, DefaultInstallerActivity.class);
             intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
@@ -195,7 +194,7 @@ public abstract class Installer {
         sendBroadcastUninstall(action, pendingIntent, null);
     }
 
-    void sendBroadcastUninstall(String action, PendingIntent pendingIntent, String errorMessage) {
+    private void sendBroadcastUninstall(String action, PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", apk.packageName, null);
 
         Intent intent = new Intent(action);
@@ -247,7 +246,7 @@ public abstract class Installer {
 
         try {
             // move apk file to private directory for installation and check hash
-            sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk, supportsContentUri());
+            sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk);
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
             sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
@@ -270,7 +269,7 @@ public abstract class Installer {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
-                // https://code.google.com/p/android/issues/detail?id=205827
+                // https://issuetracker.google.com/issues/37091886
                 if (Build.VERSION.SDK_INT >= 24) {
                     // content scheme for N and above
                     defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
@@ -298,10 +297,4 @@ public abstract class Installer {
      * uninstall activities, without the system enforcing a user prompt.
      */
     protected abstract boolean isUnattended();
-
-    /**
-     * @return true if the Installer supports content Uris and not just file Uris
-     */
-    protected abstract boolean supportsContentUri();
-
 }

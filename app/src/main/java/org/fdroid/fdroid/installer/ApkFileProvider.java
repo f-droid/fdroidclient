@@ -25,7 +25,6 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -34,7 +33,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * This class has helper methods for preparing apks for installation.
+ * Helper methods for preparing APKs and arbitrary files for installation,
+ * either locally or for sending via bluetooth.
  * <p/>
  * APK handling for installations:
  * 1. APKs are downloaded into a cache directory that is either created on SD card
@@ -56,34 +56,44 @@ public class ApkFileProvider extends FileProvider {
     }
 
     /**
-     * Copies the APK into private data directory of F-Droid and returns a "file" or "content" Uri
-     * to be used for installation.
+     * Copies the APK into private data directory of F-Droid and returns a
+     * {@code file://} or {@code content://} URI to be used for the
+     * actual installation process.  Only APKs will ever use a {@code content://}
+     * URI, any other file will always use a {@code file://} URI since F-Droid
+     * itself handles their whole installation process.
      */
-    public static Uri getSafeUri(Context context, Uri localApkUri, Apk expectedApk, boolean useContentUri)
+    public static Uri getSafeUri(Context context, Uri localApkUri, Apk expectedApk)
             throws IOException {
         File apkFile = new File(localApkUri.getPath());
         SanitizedFile tempApkFile = ApkCache.copyApkFromCacheToFiles(context, apkFile, expectedApk);
-        return getSafeUri(context, tempApkFile, useContentUri);
+        return getSafeUri(context, tempApkFile,
+                Build.VERSION.SDK_INT >= 24 && expectedApk.isApk());
 
     }
 
-    private static Uri getSafeUri(Context context, SanitizedFile tempApkFile, boolean useContentUri) {
+    /**
+     * Return a {@link Uri} for all install processes to install this package
+     * from.  This supports APKs and all other supported files.  It also
+     * supports all installation methods, e.g. default, privileged, etc.
+     * It can return either a {@code content://} or {@code file://} URI.
+     * <p>
+     * APKs need to be world readable, so that the Android system installer
+     * is able to read it.  Saving it into external storage to send it to the
+     * installer have access is insecure, because apps with permission to write
+     * to the external storage can overwrite the app between F-Droid asking for
+     * it to be installed and the installer actually installing it.
+     */
+    private static Uri getSafeUri(Context context, SanitizedFile tempFile, boolean useContentUri) {
         if (useContentUri) {
-            // return a content Uri using support libs FileProvider
-            Uri apkUri = getUriForFile(context, AUTHORITY, tempApkFile);
+            Uri apkUri = getUriForFile(context, AUTHORITY, tempFile);
             context.grantUriPermission("org.fdroid.fdroid.privileged", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             context.grantUriPermission("com.android.bluetooth", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             return apkUri;
         }
 
-        // Need the apk to be world readable, so that the installer is able to read it.
-        // Note that saving it into external storage for the purpose of letting the installer
-        // have access is insecure, because apps with permission to write to the external
-        // storage can overwrite the app between F-Droid asking for it to be installed and
-        // the installer actually installing it.
-        tempApkFile.setReadable(true, false);
+        tempFile.setReadable(true, false);
 
-        return Uri.fromFile(tempApkFile);
+        return Uri.fromFile(tempFile);
     }
 
 }
