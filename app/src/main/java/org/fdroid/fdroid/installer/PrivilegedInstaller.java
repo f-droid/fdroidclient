@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
@@ -403,10 +402,5 @@ public class PrivilegedInstaller extends Installer {
     @Override
     protected boolean isUnattended() {
         return true;
-    }
-
-    @Override
-    protected boolean supportsContentUri() {
-        return Build.VERSION.SDK_INT >= 24;
     }
 }

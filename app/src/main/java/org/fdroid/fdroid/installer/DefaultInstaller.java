@@ -24,8 +24,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-
 import org.fdroid.fdroid.data.Apk;
 
 /**
@@ -81,11 +79,5 @@ public class DefaultInstaller extends Installer {
     @Override
     protected boolean isUnattended() {
         return false;
-    }
-
-    @Override
-    protected boolean supportsContentUri() {
-        // Android N only supports content Uris
-        return Build.VERSION.SDK_INT >= 24;
     }
 }
