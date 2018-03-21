@@ -30,7 +30,6 @@ import android.os.Build;
 import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Log;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -257,7 +256,7 @@ public abstract class Installer {
         try {
             sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk);
         } catch (IOException e) {
-            Log.e(TAG, e.getMessage(), e);
+            Utils.debugLog(TAG, e.getMessage(), e);
             sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         }
@@ -267,7 +266,7 @@ public abstract class Installer {
             ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
             apkVerifier.verifyApk();
         } catch (ApkVerifier.ApkVerificationException e) {
-            Log.e(TAG, e.getMessage(), e);
+            Utils.debugLog(TAG, e.getMessage(), e);
             sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         } catch (ApkVerifier.ApkPermissionUnequalException e) {
@@ -275,8 +274,8 @@ public abstract class Installer {
             // and an unattended installer is used, a wrong permission screen
             // has been shown, thus fallback to AOSP DefaultInstaller!
             if (isUnattended()) {
-                Log.e(TAG, e.getMessage(), e);
-                Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
+                Utils.debugLog(TAG, e.getMessage(), e);
+                Utils.debugLog(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
                 defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
                 return;
