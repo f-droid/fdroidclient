@@ -1,3 +1,9 @@
+### 1.1 (2018-03-21)
+
+* fix some problems with items Updates reappearing
+
+* fix failback install method when permissions aren't in sync #1310
+
 ### 1.1-alpha4 (2018-03-09)
 
 * fix the most popular ACRA crash reports
