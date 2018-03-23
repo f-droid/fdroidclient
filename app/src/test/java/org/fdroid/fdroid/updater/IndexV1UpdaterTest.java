@@ -271,7 +271,6 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "flattrID",
                 "icon",
                 "iconUrl",
-                "iconUrlLarge",
                 "issueTracker",
                 "lastUpdated",
                 "liberapayID",

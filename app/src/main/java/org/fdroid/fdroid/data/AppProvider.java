@@ -1194,15 +1194,12 @@ public class AppProvider extends FDroidProvider {
         final String appTable = getTableName();
         final String apkTable = getApkTableName();
         final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
-        final String iconsDirLarge = Utils.getIconsDir(getContext(), 1.5);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
         Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        Utils.debugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
         String query = getIconUpdateQuery(appTable, apkTable);
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
-            repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR,
         };
         db().execSQL(query, params);
     }
@@ -1242,8 +1239,7 @@ public class AppProvider extends FDroidProvider {
                 apk + "." + ApkTable.Cols.VERSION_CODE + " = " + app + "." + Cols.SUGGESTED_VERSION_CODE;
 
         return "UPDATE " + app + " SET "
-            + Cols.ICON_URL + " = ( " + iconUrlQuery + " ), "
-            + Cols.ICON_URL_LARGE + " = ( " + iconUrlQuery + " )";
+            + Cols.ICON_URL + " = ( " + iconUrlQuery + " )";
     }
 
 }
