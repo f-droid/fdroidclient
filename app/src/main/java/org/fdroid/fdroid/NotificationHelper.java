@@ -21,10 +21,8 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
@@ -54,7 +52,6 @@ class NotificationHelper {
     private final Context context;
     private final NotificationManagerCompat notificationManager;
     private final AppUpdateStatusManager appUpdateStatusManager;
-    private final DisplayImageOptions displayImageOptions;
     private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates = new ArrayList<>();
     private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed = new ArrayList<>();
 
@@ -62,12 +59,6 @@ class NotificationHelper {
         this.context = context;
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         notificationManager = NotificationManagerCompat.from(context);
-        displayImageOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.NONE)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
@@ -506,7 +497,8 @@ class NotificationHelper {
         Bitmap iconLarge = null;
         if (TextUtils.isEmpty(entry.app.iconUrl)) {
             return null;
-        } else if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
+        } else if (entry.status == AppUpdateStatusManager.Status.Downloading
+                || entry.status == AppUpdateStatusManager.Status.Installing) {
             Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             Drawable downloadIcon = ContextCompat.getDrawable(context, R.drawable.ic_notification_download);
@@ -516,10 +508,11 @@ class NotificationHelper {
             }
             return bitmap;
         } else if (DiskCacheUtils.findInCache(entry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
-            iconLarge = ImageLoader.getInstance().loadImageSync(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions);
+            iconLarge = ImageLoader.getInstance().loadImageSync(
+                    entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y));
         } else {
             // Load it for later!
-            ImageLoader.getInstance().loadImage(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions, new ImageLoadingListener() {
+            ImageLoader.getInstance().loadImage(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), new ImageLoadingListener() {
 
                 AppUpdateStatusManager.AppUpdateStatus entry;
 

@@ -36,10 +36,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -62,8 +59,6 @@ public class SwapAppsView extends ListView implements
         SwapWorkflowActivity.InnerView,
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
-
-    private DisplayImageOptions displayImageOptions;
 
     public SwapAppsView(Context context) {
         super(context);
@@ -112,8 +107,6 @@ public class SwapAppsView extends ListView implements
 
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_SWAPABLE_APPS, null, this);
-
-        displayImageOptions = Utils.getImageLoadingOptions().build();
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
@@ -354,7 +347,7 @@ public class SwapAppsView extends ListView implements
                     nameView.setText(app.name);
                 }
 
-                ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
+                ImageLoader.getInstance().displayImage(app.iconUrl, iconView, Utils.getRepoAppDisplayImageOptions());
 
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);

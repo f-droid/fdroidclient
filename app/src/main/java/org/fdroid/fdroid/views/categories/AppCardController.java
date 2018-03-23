@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -70,7 +69,6 @@ public class AppCardController extends RecyclerView.ViewHolder
     private App currentApp;
 
     private final Activity activity;
-    private final DisplayImageOptions displayImageOptions;
 
     public AppCardController(Activity activity, View itemView) {
         super(itemView);
@@ -82,8 +80,6 @@ public class AppCardController extends RecyclerView.ViewHolder
 
         featuredImage = (FeatureImage) itemView.findViewById(R.id.featured_image);
         newTag = (TextView) itemView.findViewById(R.id.new_tag);
-
-        displayImageOptions = Utils.getImageLoadingOptions().build();
 
         itemView.setOnClickListener(this);
     }
@@ -117,7 +113,7 @@ public class AppCardController extends RecyclerView.ViewHolder
             }
         }
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions(), this);
 
         if (featuredImage != null) {
             featuredImage.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
@@ -133,7 +129,7 @@ public class AppCardController extends RecyclerView.ViewHolder
             // feature image to be loaded).
             if (!TextUtils.isEmpty(app.featureGraphic)) {
                 featuredImage.loadImageAndDisplay(ImageLoader.getInstance(),
-                        displayImageOptions, app.getFeatureGraphicUrl(activity));
+                        Utils.getRepoAppDisplayImageOptions(), app.getFeatureGraphicUrl(activity));
             }
         }
     }
@@ -162,7 +158,8 @@ public class AppCardController extends RecyclerView.ViewHolder
             Pair<View, String> iconTransitionPair = Pair.create((View) icon,
                     activity.getString(R.string.transition_app_item_icon));
 
-            @SuppressWarnings("unchecked") // the right type is passed as 2nd varargs arg: Pair<View, String>
+            // unchecked since the right type is passed as 2nd varargs arg: Pair<View, String>
+            @SuppressWarnings("unchecked")
             Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
             activity.startActivity(intent, b);
         } else {

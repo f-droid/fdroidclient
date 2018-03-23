@@ -382,6 +382,7 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
+                .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
                 .threadPoolSize(4)
                 .build();
         ImageLoader.getInstance().init(config);
