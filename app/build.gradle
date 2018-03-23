@@ -20,24 +20,20 @@ repositories {
     }
 }
 
-ext {
-    supportLibVersion = '25.2.0'
-}
-
 dependencies {
-    compile "com.android.support:support-v4:${supportLibVersion}"
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.android.support:gridlayout-v7:${supportLibVersion}"
-    compile "com.android.support:support-annotations:${supportLibVersion}"
-    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
-    compile "com.android.support:cardview-v7:${supportLibVersion}"
-    compile "com.android.support:design:${supportLibVersion}"
-    compile "com.android.support:support-vector-drawable:${supportLibVersion}"
+    compile "com.android.support:support-v4:25.3.1"
+    compile "com.android.support:appcompat-v7:25.3.1"
+    compile "com.android.support:gridlayout-v7:25.3.1"
+    compile "com.android.support:support-annotations:25.3.1"
+    compile "com.android.support:recyclerview-v7:25.3.1"
+    compile "com.android.support:cardview-v7:25.3.1"
+    compile "com.android.support:design:25.3.1"
+    compile "com.android.support:support-vector-drawable:25.3.1"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile "com.android.support:palette-v7:${supportLibVersion}"
+    compile "com.android.support:palette-v7:25.3.1"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.google.zxing:core:3.2.1'
+    compile 'com.google.zxing:core:3.3.2'
     compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
     compile 'cc.mvdan.accesspoint:library:0.2.0'
     compile 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
@@ -52,24 +48,19 @@ dependencies {
 
     // Migrate this to upstream https://github.com/Ashok-Varma/BottomNavigation if PR #110 gets
     // accepted to drop the minSdk to 10.
-    compile('com.github.pserwylo:BottomNavigation:1.5.0') {
-        // These pull our explicit dependency on 25.2.0 up to 25.3.0 which is broken
-        // (https://code.google.com/p/android/issues/detail?id=251302)
-        exclude module: 'appcompat-v7'
-        exclude module: 'design'
-    }
+    compile('com.github.pserwylo:BottomNavigation:1.5.0')
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 
-    testCompile "org.robolectric:robolectric:3.3.1"
+    testCompile "org.robolectric:robolectric:3.3.2"
     testCompile 'junit:junit:4.12'
     // As per https://github.com/robolectric/robolectric/issues/1932#issuecomment-219796474
     testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
     testCompile "org.mockito:mockito-core:1.10.19"
 
-    androidTestCompile "com.android.support:support-annotations:${supportLibVersion}"
+    androidTestCompile "com.android.support:support-annotations:25.3.1"
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
@@ -85,9 +76,9 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
-        compile 'com.madgag.spongycastle:pkix:1.53.0.0'
-        compile 'com.madgag.spongycastle:prov:1.53.0.0'
-        compile 'com.madgag.spongycastle:core:1.53.0.0'
+        compile 'com.madgag.spongycastle:pkix:1.54.0.0'
+        compile 'com.madgag.spongycastle:prov:1.54.0.0'
+        compile 'com.madgag.spongycastle:core:1.54.0.0'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -115,31 +106,31 @@ if (!hasProperty('sourceDeps')) {
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
                 'com.android.support.constraint:constraint-layout-solver:8c62525a9bc5cff5633a96cb9b32fffeccaf41b8841aa87fc22607070dea9b8d',
                 'com.android.support.constraint:constraint-layout:b0c688cc2b7172608f8153a689d746da40f71e52d7e2fe2bfd9df2f92db77085',
-                'com.android.support:animated-vector-drawable:d2d59a11809abe3e64535346f05c22437b458de115f06ea35021fd0714960213',
-                'com.android.support:appcompat-v7:120f3ce6cac682d69e53d80ccfa9cee076f0f11ccbe56d4ccd72099a745e81f9',
-                'com.android.support:cardview-v7:c8610b0c334e4438d7e1ac58fcf2ac891fb26bac662c8351cd6b345c8d7b7076',
-                'com.android.support:design:bf92337c5d0931df50a0dcec81682186dc1fbcf14c2fa1c6d51976963379b64d',
-                'com.android.support:gridlayout-v7:257ac1280f2b3cc3c0afca1cd4d4d2e0b923b92a76b61a9c09fc57e892da7360',
-                'com.android.support:palette-v7:e0050715e0d06fabcc8721b0c2893545fb00be9d761a6ef59ae69101d2368551',
-                'com.android.support:recyclerview-v7:d6ba2c3a6196cc464eb4d69756229523a46eef7804991e5a8cf2d6306dbff10c',
-                'com.android.support:support-annotations:47a2a30eab487a490a8a8f16678007c3d2b6dcae1e09b0485a12bbf921200ec3',
-                'com.android.support:support-compat:5a7b6e18903458e3a561df24033476518f998cd7ae1ed747c2874e0685b999c7',
-                'com.android.support:support-core-ui:cf3c75fd9a1b1dcbb6042d610515cd79cd0d65d3efd272d2250727187e8ca2ed',
-                'com.android.support:support-core-utils:e0561cc9d00ae125d9e1ad8985d4639e68ce8399ae973e91674e97faaf658243',
-                'com.android.support:support-fragment:f12633dd4d418a4edeb5ecf3bf4393edd0770b1eaa5d1ee3078c5e7c174868fd',
-                'com.android.support:support-media-compat:e9f820d08e6a5735cfdb2a7d81d3c86b4a31897ac1edaeb55c7de06bcb370343',
-                'com.android.support:support-v4:cd030f875dc7ee73b58e17598f368a2e12824fb3ceb4ed515ed815a47160228c',
-                'com.android.support:support-vector-drawable:d79752fd68db5a8f5c18125517dafb9e4d7b593c755d188986010e15edd62454',
-                'com.android.support:transition:5a4adefb1b410b23ad62b4477bc612edc47d3dfc8efed488deb8223b70b510d7',
+                'com.android.support:animated-vector-drawable:4bc46edf1946b32d518b41416d1734e915e0cbb28021de3b340527419b070691',
+                'com.android.support:appcompat-v7:ac1ebbc46589195dda3e0b1becfe410bafd75bdf3edd1cd9acf04850f3895830',
+                'com.android.support:cardview-v7:defc17032ffa600a82e1c7d96bb574aa5ed64e2b57e28414a245da7d6db0c666',
+                'com.android.support:design:a3e83064fe99d0a4369f9b46d8bfbe77d0c3022fffdee4be3ac3857b87cc89e3',
+                'com.android.support:gridlayout-v7:de87a59472f19eb05429faf6b2683a09dd6995f5db562d3daf6033297c312388',
+                'com.android.support:palette-v7:956276da2ed8b6c087c431da807a496f4908061c9c64d4c9f7b42c626d633662',
+                'com.android.support:recyclerview-v7:375974a8724e359d97d77fa8522c614f813a3ac4583c1807f154a3f9a054b0a1',
+                'com.android.support:support-annotations:aedf76962584adfaed2bd3fcaa22406461c4310237fc27e301128edaa2dba2fa',
+                'com.android.support:support-compat:e02d781268dc60aab6638d8dc20156ea11ca20b962d294b85e6f1e8418cabfa7',
+                'com.android.support:support-core-ui:6182278a6653e6c111c888963626cbb16f2d0022571cb239760475119e0b92a8',
+                'com.android.support:support-core-utils:32fac02eb2c20a77fa3e3bc3ede62392a19613f72b8f8e10f5dfa84bb4c89ea1',
+                'com.android.support:support-fragment:541d6393c1e024453aca2a14f31bea0c7270ff4e2a02783f3528aa426367444d',
+                'com.android.support:support-media-compat:cbed07d07e0e84fdb4b75712f5fd946229a8af155933c9a92e41db64d00791e0',
+                'com.android.support:support-v4:07d389154bcf73b47e514964df1578136b26cba78257b8a577a3ccb54beff0ae',
+                'com.android.support:support-vector-drawable:13728f337f36d1c02d52198a6c20724edb447a0875454d829f95cb9eb4aa293b',
+                'com.android.support:transition:36c688825a8c0e6e879e18886de83dc90673322822d5b606ee302f70fb558e16',
                 'com.fasterxml.jackson.core:jackson-annotations:6b7802f6c22c09c4a92a2ebeb76e755c3c0a58dfbf419835fae470d89e469b86',
                 'com.fasterxml.jackson.core:jackson-core:256ff34118ab292d1b4f3ee4d2c3e5e5f0f609d8e07c57e8ad1f51c46d4fbb46',
                 'com.fasterxml.jackson.core:jackson-databind:4f74337b6d18664be0f5b15c6664b17aa3972c9c175092328b139b894ff66f19',
                 'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
-                'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
+                'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
                 'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
-                'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
-                'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
-                'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
+                'com.madgag.spongycastle:core:1e7fa4b19ccccd1011364ab838d0b4702470c178bbbdd94c5c90b2d4d749ea1e',
+                'com.madgag.spongycastle:pkix:721a302f5ce18bf6fff89d514ef224c37b5dd9ca67a16b56fafaea4b24a51482',
+                'com.madgag.spongycastle:prov:cf89c550fda86c0f26858c3d851ac1d2ce49cd78dd144cd86f307b7ea3e6afd7',
                 'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
                 'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
                 'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
