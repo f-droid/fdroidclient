@@ -25,14 +25,14 @@ public class AppFilter {
     // Return true if the given app should be filtered out based on user
     // preferences, and false otherwise.
     public boolean filter(App app) {
-        if (app.requirements != null && !Preferences.get().filterAppsRequiringRoot()) {
+        if (app.requirements != null && !Preferences.get().showAppsRequiringRoot()) {
             for (String requirement : app.requirements) {
                 if ("root".equals(requirement)) {
                     return true;
                 }
             }
         }
-        if (app.antiFeatures != null && app.antiFeatures.length > 0 && Preferences.get().filterAppsWithAntiFeatures()) { // NOPMD NOCHECKSTYLE LineLength
+        if (app.antiFeatures != null && app.antiFeatures.length > 0 && !Preferences.get().showAppsWithAntiFeatures()) { // NOPMD NOCHECKSTYLE LineLength
             return true;
         }
         return false;

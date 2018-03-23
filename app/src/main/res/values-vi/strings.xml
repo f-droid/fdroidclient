@@ -77,10 +77,6 @@
     <string name="appcompatibility">Tính tương thích của ứng dụng</string>
     <string name="show_incompat_versions">Phiên bản không tương thích</string>
     <string name="show_incompat_versions_on">Hiện các phiên bản không tương thích với thiết bị này</string>
-    <string name="rooted">Bỏ qua quyền root</string>
-    <string name="rooted_on">Không bôi xám các ứng dụng yêu cầu quyền root</string>
-    <string name="force_touch_apps">Bỏ qua màn hình cảm ứng</string>
-    <string name="force_touch_apps_on">Luôn hiện các ứng dụng yêu cầu màn hình cảm ứng</string>
     <string name="local_repo">Kho nội bộ</string>
     <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
     <string name="touch_to_configure_local_repo">Chạm để xem danh sách và cho phép mọi người trao đổi ứng dụng với
@@ -408,8 +404,6 @@
     <string name="antifeatures">Tính năng không mong muốn</string>
     <string name="antinonfreeassetslist">Ứng dụng này có những phần không tự do</string>
 
-    <string name="hide_anti_feature_apps">Bôi xám những ứng dụng có tính năng không mong muốn</string>
-    <string name="hide_anti_feature_apps_on">Bôi xám những ứng dụng cần tính năng không mong muốn</string>
     <string name="privacy">Quyền riêng tư</string>
     <string name="preventScreenshots_title">Chặn chụp màn hình</string>
     <string name="preventScreenshots_summary">Không cho phép chụp màn hình và ẩn nội dung ứng dụng trong màn hình các ứng dụng gần đây</string>

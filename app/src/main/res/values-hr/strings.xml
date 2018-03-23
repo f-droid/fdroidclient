@@ -139,10 +139,6 @@
     <string name="appcompatibility">Kompatibilnost aplikacija</string>
     <string name="show_incompat_versions">Nekompatibilne verzije</string>
     <string name="show_incompat_versions_on">Prikaži verzije nekompatibilne s ovim uređajem</string>
-    <string name="rooted">Ignoriraj root</string>
-    <string name="rooted_on">Nemoj zasiviti aplikacije koje zahtjevaju root ovlasti</string>
-    <string name="force_touch_apps">Ignoriraj dodirni zaslon</string>
-    <string name="force_touch_apps_on">Uvijek uključi aplikacije koje zahtjevaju dodirni zaslon</string>
 
     <string name="local_repo">Lokalni repozitorij</string>
     <string name="local_repo_running">F-Droid je spreman za razmjenu</string>
@@ -402,6 +398,4 @@
     <string name="keep_install_history_summary">Spremi zapisnik o svim instaliranim i obrisanim aplikacijama unutar
         F-Droida
     </string>
-    <string name="hide_anti_feature_apps">Obilježi aplikacije s nepoželjnim svojstvima</string>
-    <string name="hide_anti_feature_apps_on">Obilježi aplikacije koje zahtjevaju nepoželjna svojstva</string>
 </resources>

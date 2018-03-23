@@ -177,10 +177,6 @@
     <string name="appcompatibility">Rakenduse ühilduvus</string>
     <string name="show_incompat_versions">Ühildumatud versioonid</string>
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
-    <string name="rooted">Ignoreeri juur-kasutajat</string>
-    <string name="rooted_on">Ära märgi halliga rakendusi, mis vajavad juur-kasutaja privileege</string>
-    <string name="force_touch_apps">Ignoreeri puuteekraani</string>
-    <string name="force_touch_apps_on">Alati kaasa puuteekraani vajavad rakendused</string>
 
     <string name="local_repo_running">F-Droid on valmis vahetama</string>
     <string name="touch_to_configure_local_repo">Üksikasjade vaatamiseks puuduta ja luba teistel vahetada su rakendusi.</string>
@@ -448,8 +444,6 @@
 
     <string name="antifeatureswarning">Sellel rakendusel on funktsioone, mis ei pruugi sulle meeldida.</string>
     <string name="antifeatures">Anti funktsioonid</string>
-    <string name="hide_anti_feature_apps">Muuda anti-funktsiooniga rakendused halliks</string>
-    <string name="hide_anti_feature_apps_on">Tee antifunktsioone nõudvad rakendused halliks</string>
     <string name="download_404">Soovitud faili ei leitud.</string>
     <string name="status_inserting_x_apps">Rakenduse detailide salvestamine (%1$d/%2$d) %3$s-st</string>
     <plurals name="button_view_all_apps_in_category">

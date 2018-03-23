@@ -55,7 +55,6 @@
     <string name="search_hint">Bilatu aplikazioak</string>
     <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
     <string name="show_incompat_versions">Bertsio bateraezinak</string>
-    <string name="force_touch_apps">Ezikusi egin ukipen-pantailari</string>
     <string name="status_connecting_to_repo">%1$s(e)ra
         \nkonektatzen
     </string>
@@ -121,7 +120,6 @@
     <string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
 
     <string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
-    <string name="force_touch_apps_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
 
     <string name="local_repo">Biltegi lokala</string>
     <string name="deleting_repo">Uneko biltegia ezabatzen…</string>
@@ -164,7 +162,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="rooted_on">Ez lainotu root baimena behar duten aplikazioak</string>
     <string name="local_repo_running">F-Droid partekatzeko prest dago</string>
     <string name="touch_to_configure_local_repo">Ukitu xehetasunak ikusteko eta besteek zure aplikazioak hartzea ahalbidetzeko.</string>
     <string name="proxy_host_summary">Zure proxyaren zerbitzaria (adib. 127.0.0.1)</string>
@@ -388,8 +385,6 @@
         instalatu.
     </string>
 
-    <string name="hide_anti_feature_apps">Ilundu ezaugarri zalantzagarriak</string>
-    <string name="hide_anti_feature_apps_on">Ilundu ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
     <string name="update_auto_install">Instalatu eguneraketak automatikoki</string>
     <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan
     </string>
@@ -560,7 +555,6 @@
     <string name="panic_hide_title">Ezkutatu %s</string>
     <string name="panic_hide_summary">Aplikazioak bere burua ezkutatuko du</string>
 
-    <string name="rooted">Ezikusi root</string>
     <string name="panic_hide_warning_title">Gogoratu nola berrezarri</string>
     <string name="panic_hide_warning_message">Larrialdi egoera batean, honek %1$s kenduko du abiarazletik. %3$s aplikazio faltsuan \"%2$d\" idatziz berreskuratu daiteke bakarrik.</string>
 

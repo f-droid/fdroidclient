@@ -69,8 +69,6 @@
     <string name="search_hint">Etsi sovelluksia</string>
     <string name="appcompatibility">Sovellusten yhteensopivuus</string>
     <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
-    <string name="rooted">Ohita root</string>
-    <string name="force_touch_apps">Älä välitä kosketusnäytöstä</string>
     <string name="local_repo">Paikallinen sovelluslähde</string>
     <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
     <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa
@@ -200,7 +198,6 @@
     <string name="expert_on">Näytä lisää tietoa ja ota käyttöön lisäasetukset</string>
 
     <string name="show_incompat_versions_on">Näytä sovellusversiot, jotka eivät ole yhteensopivia laitteesi kanssa</string>
-    <string name="force_touch_apps_on">Sisällytä aina sovellukset jotka vaativat kosketusnäytön toimiakseen</string>
 
     <string name="useTor">Käytä Tor-verkkoa</string>
     <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi. Orbot vaaditaan</string>
@@ -268,9 +265,6 @@
     <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu sovelluslähteen URI: %s</string>
     <string name="antinonfreeassetslist">Tämä sovellus sisältää ei-vapaita osia</string>
 
-    <string name="rooted_on">Älä himmennä sovelluksia jotka edellyttävät root-oikeuksia</string>
-    <string name="hide_anti_feature_apps">Himmennä anti-ominaisuuksia sisältävät sovellukset</string>
-    <string name="hide_anti_feature_apps_on">Himmennä sovellukset, jotka vaativat anti-ominaisuuksia</string>
     <string name="status_connecting_to_repo">Yhdistetään osoitteeseen
         %1$s
     </string>

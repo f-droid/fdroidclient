@@ -48,8 +48,6 @@
     <string name="expert_on">نمایش اطّلاعات اضافی و فعّال کردن تنظیمات اضافی</string>
     <string name="search_hint">جست‌وجوی برنامه‌ها</string>
     <string name="appcompatibility">سازگاری برنامه</string>
-    <string name="rooted">نادیده گرفتن ریشه</string>
-    <string name="force_touch_apps">نادیده گرفتن صفحه‌لمسی</string>
     <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$d%%) از\n%1$s</string>
     <string name="status_connecting_to_repo">درحال اتّصال به\n%1$s</string>
     <string name="no_permissions">دسترسی ای استفاده نشده است.</string>
@@ -123,8 +121,6 @@
     <string name="expert">حالت حرفه‌ای</string>
     <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های کاره‌ای که با این افزاره ناسازگارند</string>
-    <string name="rooted_on">برنامه هایی که به دسترسی ریشه نیاز دارند را غیر فعال نکن</string>
-    <string name="force_touch_apps_on">همواره برنامه هایی که نیازمند صفحه‌لمسی هستند را مشمول کن</string>
 
     <string name="local_repo">مخزن محلّی</string>
     <string name="local_repo_running">اف‌دروید آمادهٔ تبادل است</string>
@@ -391,8 +387,6 @@
 
     <string name="antifeatureswarning">این برنامه، ویژگی‌هایی دارد که شاید نپسندید.</string>
     <string name="antifeatures">ضد ویژگی‌ها</string>
-    <string name="hide_anti_feature_apps">غیر فعال کردن برنامه های دارای ضد ویژگی</string>
-    <string name="hide_anti_feature_apps_on">خاکستری کردن برنامه هایی که نیازمند ضد ویژگی هستند</string>
     <string name="warning_no_internet">نمی‌توان به‌روزرسانی کرد. به اینترنت وصل هستید؟</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">نمایش %d</item>

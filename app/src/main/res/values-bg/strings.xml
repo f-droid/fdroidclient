@@ -76,10 +76,6 @@
     <string name="appcompatibility">Съвместимост на приложението</string>
     <string name="show_incompat_versions">Несъвместими версии</string>
     <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството</string>
-    <string name="rooted">Игнорирай Root</string>
-    <string name="rooted_on">Приложенията изискващи Root няма да бъдат изобразявани в сиво</string>
-    <string name="force_touch_apps">Игнорирай сензорния екран</string>
-    <string name="force_touch_apps_on">Приложенията изискващи сензорен екран ще бъдат показвани винаги</string>
     <string name="local_repo">Локално хранилище</string>
     <string name="deleting_repo">Изтриване на хранилището…</string>
     <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
@@ -396,8 +392,6 @@
 
     <string name="antifeatureswarning">Някои свойства на това приложение може да не ви харесат.</string>
     <string name="antifeatures">Анти-функции</string>
-    <string name="hide_anti_feature_apps">Засенчване на приложения с анти-функции</string>
-    <string name="hide_anti_feature_apps_on">Засенчване на приложения с анти-функции</string>
     <string name="by_author_format">от %s</string>
     <string name="force_old_index_summary">В случай на грешки или проблеми със съвместимостта, използвай XML приложение за индекс</string>
     <string name="app__tts__cancel_download">Прекратено сваляне</string>

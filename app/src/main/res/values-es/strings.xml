@@ -81,10 +81,6 @@
     <string name="appcompatibility">Compatibilidad de aplicaciones</string>
     <string name="show_incompat_versions">Versiones incompatibles</string>
     <string name="show_incompat_versions_on">Mostrar las versiones incompatibles de las aplicaciones</string>
-    <string name="rooted">Obviar permisos de administración</string>
-    <string name="rooted_on">No marcar en gris las aplicaciones que piden permisos de administración<i>root</i>)</string>
-    <string name="force_touch_apps">Ignorar pantalla táctil</string>
-    <string name="force_touch_apps_on">Siempre incluir aplicaciones que necesiten una pantalla táctil</string>
     <string name="local_repo">Repo local</string>
     <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
     <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
@@ -362,8 +358,6 @@
     <string name="installing">Instalando…</string>
     <string name="uninstalling">Desinstalando…</string>
 
-    <string name="hide_anti_feature_apps">Marcar aplis controvertidas en gris</string>
-    <string name="hide_anti_feature_apps_on">Marcar en gris las aplicaciones que tengan características controvertidas</string>
     <string name="update_auto_install_summary">Descargar e instalar las actualizaciones en segundo plano</string>
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>

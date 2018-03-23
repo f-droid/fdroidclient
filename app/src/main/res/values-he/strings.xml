@@ -92,10 +92,6 @@
     <string name="appcompatibility">תאימות היישומון</string>
     <string name="show_incompat_versions">גירסאות לא תואמות</string>
     <string name="show_incompat_versions_on">הצגת גירסאות היישומון שאינן תואמות להתקן</string>
-    <string name="rooted">התעלמות ממצב על (root)</string>
-    <string name="rooted_on">לא לסמן באפור יישומונים שדורשים הרשאות על (root)</string>
-    <string name="force_touch_apps">התעלמות ממסך מגע</string>
-    <string name="force_touch_apps_on">תמיד לכלול יישומונים שדורשים מסך מגע</string>
 
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid מוכנה להחלפה</string>
@@ -383,8 +379,6 @@
 
     <string name="antifeatureswarning">ייתכן שביישומון זה ישנן תכונות שלא תישאנה חן בעיניך.</string>
     <string name="antifeatures">תכונות שליליות</string>
-    <string name="hide_anti_feature_apps">סימון באפור יישומונים עם תכונות שליליות</string>
-    <string name="hide_anti_feature_apps_on">סימון באפור יישומונים אשר דורשים תכונות שליליות</string>
     <string name="warning_no_internet">לא ניתן לעדכן, האם קיים חיבור לרשת?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">הצגת אחד</item>

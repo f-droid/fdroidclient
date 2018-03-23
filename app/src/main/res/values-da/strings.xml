@@ -126,12 +126,8 @@
     <string name="appcompatibility">Applikationskompatibilitet</string>
     <string name="show_incompat_versions">Inkompatible versioner</string>
     <string name="show_incompat_versions_on">Vis versioner af appen som er inkompatible med enheden</string>
-    <string name="rooted">Ignorer root</string>
-    <string name="force_touch_apps">Ignorer touchskærm</string>
-    <string name="force_touch_apps_on">Inkluder altid apps som kræver touchskærm</string>
 
     <string name="local_repo">Lokalt Depot</string>
-    <string name="rooted_on">Nedton ikke apps som kræver root privilegier</string>
     <string name="local_repo_running">F-Droid er klar til at udveksle</string>
     <string name="touch_to_configure_local_repo">Berør for at se detaljer og tillade andre at udveksle dine apps.</string>
     <string name="deleting_repo">Sletter aktuelle depot…</string>
@@ -481,8 +477,6 @@
         <item quantity="one">Opdateret for %1$d år siden</item>
         <item quantity="other">Opdateret for %1$d år siden</item>
     </plurals>
-<string name="hide_anti_feature_apps">Nedton apps med antifunktionalitet</string>
-    <string name="hide_anti_feature_apps_on">Nedton apps som indeholder uønsket funktionalitet</string>
     <string name="force_old_index">Gennemtving gammelt indeksformat</string>
     <string name="force_old_index_summary">I tilfælde af, at der er fejl eller problemer med kompatibilitet, brug XML-app-index</string>
     <string name="app_details__incompatible_mismatched_signature">Forskellig signatur til installeret version</string>

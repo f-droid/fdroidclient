@@ -78,10 +78,6 @@
     <string name="appcompatibility">Uygulama uyumluluğu</string>
     <string name="show_incompat_versions">Uyumsuz sürümler</string>
     <string name="show_incompat_versions_on">Aygıtla uyumsuz olan uygulama sürümlerini göster</string>
-    <string name="rooted">Kökü yok say</string>
-    <string name="rooted_on">Kök yetkileri gerektiren uygulamalar gri yapılmasın</string>
-    <string name="force_touch_apps">Dokunmatik ekranı yok say</string>
-    <string name="force_touch_apps_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
     <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine izin vermek için dokunun.</string>
@@ -362,8 +358,6 @@
     <string name="warning_no_internet">Güncellenemiyor, İnternete bağlı mısınız?</string>
     <string name="update_auto_install_summary">Uygulama güncellemelerini arka planda indir ve kur</string>
     <string name="versions">Sürümler</string>
-    <string name="hide_anti_feature_apps">Karşıt-özellikli uygulamaları gri yap</string>
-    <string name="hide_anti_feature_apps_on">Karşıt-özellik gerektiren uygulamaları gri yap</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine bir kahve al!</string>
     <string name="app_details_donate_prompt">%1$s, %2$s tarafından yaratıldı. Onlara bir kahve al!</string>
 

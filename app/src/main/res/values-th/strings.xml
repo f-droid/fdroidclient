@@ -94,8 +94,6 @@
     <string name="appcompatibility">ความเข้ากันได้ของโปรแกรม</string>
     <string name="show_incompat_versions">รุ่นที่เข้ากันไม่ได้</string>
     <string name="show_incompat_versions_on">แสดงโปรแกรมที่เข้ากันไม่ได้กับเครื่องนี้ด้วย</string>
-    <string name="rooted">แสดงโปรแกรมที่ต้องใช้รูท</string>
-    <string name="rooted_on">ไม่ต้องแสดงโปรแกรมที่ใช้รูทเป็นสีเทา</string>
     <string name="local_repo">แหล่งโปรแกรมจากในเครื่อง</string>
     <string name="deleting_repo">กำลังลบแหล่งโปรแกรมนี้…</string>
     <string name="adding_apks_format">กำลังเพิ่ม %s เข้าในแหล่งโปรแกรม…</string>
@@ -271,8 +269,6 @@
     </string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
-    <string name="force_touch_apps">ไม่ต้องสนใจชนิดหน้าจอ</string>
-    <string name="force_touch_apps_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
 
     <string name="proxy_host_summary">ตั้งค่าที่อยู่เครื่องพรอกซีที่จะใช้ (เช่น 127.0.0.1)</string>
     <string name="proxy_port_summary">ตั้งค่าพอร์ตของเครื่องพรอกซี่ที่จะใช้ (เช่น 8118)</string>
@@ -344,8 +340,6 @@
     <string name="touch_to_configure_local_repo">แตะเพื่อดูรายละเอียดแหล่งโปรแกรม หรืออนุญาตให้ผู้อื่นดาวน์โหลดโปรแกรม
     </string>
     <string name="local_repo_running">F-Droid พร้อมจะแบ่งบันโปรแกรมแล้ว</string>
-    <string name="hide_anti_feature_apps_on">แสดงโปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
-    <string name="hide_anti_feature_apps">ให้โปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
     <string name="malformed_repo_uri">กำลังข้ามแหล่งโปรแกรมที่มี URI ผิดรูป: %s</string>
     <string name="update_auto_install_summary">ดาวน์โหลดและติดตั้งโปรแกรมที่อัดเดต แบบเบื้องหลัง</string>
     <string name="update_auto_install">ติดตั้งโปรแกรมที่อัพเดต โดยอัดโนมัติ</string>

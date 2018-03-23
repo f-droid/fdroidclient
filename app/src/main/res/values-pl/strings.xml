@@ -56,10 +56,6 @@
     <string name="search_hint">Wyszukaj aplikacje</string>
     <string name="appcompatibility">Kompatybilność aplikacji</string>
     <string name="show_incompat_versions">Niekompatybilne wersje</string>
-    <string name="rooted">Ignoruj aplikacje wymagające roota</string>
-    <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
-    <string name="force_touch_apps">Ignoruj ekran dotykowy</string>
-    <string name="force_touch_apps_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
     <string name="local_repo">Repozytorium lokalne</string>
     <string name="local_repo_running">F-Droid gotowy do wymiany</string>
     <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>
@@ -354,8 +350,6 @@
     <string name="installing">Instalowanie…</string>
     <string name="uninstalling">Dezinstalacja…</string>
 
-    <string name="hide_anti_feature_apps">Przyciemniaj aplikacje z niepożądanymi cechami</string>
-    <string name="hide_anti_feature_apps_on">Przyciemnia aplikacje z niepożądanymi funkcjami</string>
     <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
     <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
     <string name="keep_install_history">Zachowaj historię instalacji</string>

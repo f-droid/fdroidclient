@@ -76,10 +76,6 @@
     <string name="appcompatibility">앱 호환성</string>
     <string name="show_incompat_versions">호환되지 않는 버전</string>
     <string name="show_incompat_versions_on">장치와 호환되지 않는 앱 버전을 보여줍니다</string>
-    <string name="rooted">루팅 무시</string>
-    <string name="rooted_on">루트 권한을 요구하는 앱을 회색으로 표시하지 않습니다</string>
-    <string name="force_touch_apps">터치스크린 무시</string>
-    <string name="force_touch_apps_on">터치스크린을 요구하는 앱을 항상 포함합니다</string>
     <string name="local_repo">로컬 저장소</string>
     <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
     <string name="touch_to_configure_local_repo">자세한 사항를 보고 상대방이 당신의 앱을 교환할 수 있도록 하려면 누르세요.</string>
@@ -392,7 +388,6 @@
     <string name="details_new_in_version">버전 %s의 새로운 기능</string>
 
     <string name="antifeatureswarning">이 앱은 여러분이 좋아하지 않을 수 있는 기능이 있습니다.</string>
-    <string name="hide_anti_feature_apps_on">안티 기능을 요구하는 앱을 회색으로 표시합니다</string>
     <string name="download_404">요청된 파일을 찾을 수 없었습니다.</string>
     <string name="status_inserting_x_apps">%3$s에서 앱 자세한 사항(%1$d/%2$d)을 저장 중</string>
     <plurals name="button_view_all_apps_in_category">
@@ -455,7 +450,6 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 이 앱을 제거할 것을 권장합니다.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 최신 버전으로 업그레이드할 것을 권장합니다.</string>
     <string name="antifeatures">안티 기능</string>
-    <string name="hide_anti_feature_apps">안티 기능 앱을 회색으로 표시</string>
     <string name="privacy">개인정보 보호</string>
     <string name="preventScreenshots_title">스크린샷 방지</string>
     <string name="preventScreenshots_summary">스크린샷을 찍지 못하도록 막고 최근 앱 화면에서 앱 내용을 숨깁니다</string>

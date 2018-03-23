@@ -78,10 +78,6 @@
     <string name="appcompatibility">Appkompatibilitet</string>
     <string name="show_incompat_versions">Inkompatibla versioner</string>
     <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
-    <string name="rooted">Ignorera root</string>
-    <string name="rooted_on">Gråtona inte appar som kräver root-behörigheter</string>
-    <string name="force_touch_apps">Ignorera pekskärm</string>
-    <string name="force_touch_apps_on">Inkludera alltid appar som kräver pekskärm</string>
     <string name="local_repo">Lokalt förråd</string>
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
@@ -352,8 +348,6 @@
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
-    <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
-    <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
     <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till Internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till utvecklarna av %1$s!</string>

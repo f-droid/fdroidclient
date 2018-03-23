@@ -53,8 +53,6 @@
     <string name="search_hint">ئەپ ئىزدە</string>
     <string name="appcompatibility">ئەپ ماسلىشىشچانلىقى</string>
     <string name="show_incompat_versions">ماسلاشمايدىغان نەشرىلىرى</string>
-    <string name="rooted">Root</string>
-    <string name="force_touch_apps">سەزگۈر ئېكرانغا پەرۋا قىلما</string>
     <string name="status_download">چۈشۈرۈۋاتىدۇ
         %2$s / %3$s (%4$d%%)
         %1$s

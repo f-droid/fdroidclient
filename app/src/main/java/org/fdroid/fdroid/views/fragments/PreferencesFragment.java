@@ -35,8 +35,8 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_UPD_INTERVAL,
             Preferences.PREF_UPD_WIFI_ONLY,
             Preferences.PREF_UPD_NOTIFY,
-            Preferences.PREF_ROOTED,
-            Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
+            Preferences.PREF_SHOW_ROOT_APPS,
+            Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
             Preferences.PREF_FORCE_TOUCH_APPS,
@@ -136,12 +136,12 @@ public class PreferencesFragment extends PreferenceFragment
                 checkSummary(key, R.string.show_incompat_versions_on);
                 break;
 
-            case Preferences.PREF_ROOTED:
-                checkSummary(key, R.string.rooted_on);
+            case Preferences.PREF_SHOW_ROOT_APPS:
+                checkSummary(key, R.string.show_root_apps_on);
                 break;
 
-            case Preferences.PREF_HIDE_ANTI_FEATURE_APPS:
-                checkSummary(key, R.string.hide_anti_feature_apps_on);
+            case Preferences.PREF_SHOW_ANTI_FEATURE_APPS:
+                checkSummary(key, R.string.show_anti_feature_apps_on);
                 break;
 
             case Preferences.PREF_FORCE_TOUCH_APPS:
