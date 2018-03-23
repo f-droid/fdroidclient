@@ -63,7 +63,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 
-    testCompile "org.robolectric:robolectric:3.3.1"
+    testCompile "org.robolectric:robolectric:3.3.2"
     testCompile 'junit:junit:4.12'
     // As per https://github.com/robolectric/robolectric/issues/1932#issuecomment-219796474
     testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
