@@ -85,9 +85,9 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
-        compile 'com.madgag.spongycastle:pkix:1.53.0.0'
-        compile 'com.madgag.spongycastle:prov:1.53.0.0'
-        compile 'com.madgag.spongycastle:core:1.53.0.0'
+        compile 'com.madgag.spongycastle:pkix:1.54.0.0'
+        compile 'com.madgag.spongycastle:prov:1.54.0.0'
+        compile 'com.madgag.spongycastle:core:1.54.0.0'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -137,9 +137,9 @@ if (!hasProperty('sourceDeps')) {
                 'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
                 'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
                 'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
-                'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
-                'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
-                'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
+                'com.madgag.spongycastle:core:1e7fa4b19ccccd1011364ab838d0b4702470c178bbbdd94c5c90b2d4d749ea1e',
+                'com.madgag.spongycastle:pkix:721a302f5ce18bf6fff89d514ef224c37b5dd9ca67a16b56fafaea4b24a51482',
+                'com.madgag.spongycastle:prov:cf89c550fda86c0f26858c3d851ac1d2ce49cd78dd144cd86f307b7ea3e6afd7',
                 'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
                 'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
                 'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
