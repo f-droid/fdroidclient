@@ -397,7 +397,7 @@ public class FDroidApp extends Application {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
                 .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
-                .threadPoolSize(4)
+                .threadPoolSize(getThreadPoolSize())
                 .build();
         ImageLoader.getInstance().init(config);
 
@@ -468,6 +468,24 @@ public class FDroidApp extends Application {
         }
 
         return false;
+    }
+
+    /**
+     * Return the number of threads Universal Image Loader should use, based on
+     * the total RAM in the device.  Devices with lots of RAM can do lots of
+     * parallel operations for fast icon loading.
+     */
+    @TargetApi(16)
+    private int getThreadPoolSize() {
+        if (Build.VERSION.SDK_INT >= 16) {
+            ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
+            if (activityManager != null) {
+                activityManager.getMemoryInfo(memInfo);
+                return (int) Math.max(1, Math.min(16, memInfo.totalMem / 256 / 1024 / 1024));
+            }
+        }
+        return 2;
     }
 
     @TargetApi(18)
