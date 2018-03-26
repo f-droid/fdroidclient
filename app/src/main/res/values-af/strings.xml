@@ -248,7 +248,7 @@
         Daar is programme op jou toestel nie, maar hulle is nie beskikbaar vanaf F-Droid nie. Dit kan wees omdat jy jou
         argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.
     </string>
-    <string name="empty_can_update_app_list">Geluk! Jou programme is op datum.</string>
+    <string name="empty_can_update_app_list">Geluk!\nJou programme is op datum.</string>
 
     <string name="requesting_root_access_body">Versoek root toegang…</string>
     <string name="root_access_denied_title">Root toegang geweier</string>

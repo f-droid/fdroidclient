@@ -193,7 +193,7 @@
         tuo, ma non sunt disponìbiles dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos
         tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas disponìbiles.
     </string>
-    <string name="empty_can_update_app_list">Bene meda! Sas aplicatziones tuas sunt agiornadas.</string>
+    <string name="empty_can_update_app_list">Bene meda!\nSas aplicatziones tuas sunt agiornadas.</string>
 
     <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>

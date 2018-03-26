@@ -219,7 +219,7 @@
         tillgängliga från F-Droid. Detta kan bero på att du behöver uppdatera dina förråd, eller så har förråden
         verkligen inte dina appar tillgängliga.
     </string>
-    <string name="empty_can_update_app_list">Grattis! Dina appar är uppdaterade.</string>
+    <string name="empty_can_update_app_list">Grattis!\nDina appar är uppdaterade.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="repo_provider">Förråd: %s</string>

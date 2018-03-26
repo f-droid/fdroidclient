@@ -215,7 +215,7 @@
     <string name="empty_installed_app_list">Ingen apps installeret. 
 \n 
 \nDer er apps på din enhed, men de er ikke tilgængelige i F-Droid. Det kan være fordi, at du skal opdatere dine depoter eller også tilbyder depoterne reelt ikke dine apps.</string>
-    <string name="empty_can_update_app_list">Tillykke! Dine apps er opdaterede.</string>
+    <string name="empty_can_update_app_list">Tillykke!\nDine apps er opdaterede.</string>
 
     <string name="requesting_root_access_body">Anmoder om root-adgang…</string>
     <string name="root_access_denied_title">Root-adgang nægtet</string>

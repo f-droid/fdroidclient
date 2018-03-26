@@ -254,7 +254,7 @@
     </string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
     <string name="system_install_warning_lollipop">Ово траје десетак секунди и уређај ће након тога<b>поново да се покрене</b>.</string>
-    <string name="empty_can_update_app_list">Честитке! Ваше апликације су надограђене.</string>
+    <string name="empty_can_update_app_list">Честитке!\nВаше апликације су надограђене.</string>
 
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражим људе у близини…</string>

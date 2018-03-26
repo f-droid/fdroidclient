@@ -172,7 +172,7 @@
     <string name="empty_installed_app_list">Nincs telepített alkalmazások.
 \n
 \nVannak alkalmazások a készülékén, de azok nem érhetőek el az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az alkalmazásai.</string>
-    <string name="empty_can_update_app_list">Gratulálunk! Minden alkalmazása naprakész.</string>
+    <string name="empty_can_update_app_list">Gratulálunk!\nMinden alkalmazása naprakész.</string>
 
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt meghiúsult</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>

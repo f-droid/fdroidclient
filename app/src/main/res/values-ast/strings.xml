@@ -232,7 +232,7 @@
         tán disponibles dende F-Droid. Esto quiciabes sía porque precises anovar los tos repositorios o porque los
         repositorios nun tengan daveres les tos aplicaciones disponibles.
     </string>
-    <string name="empty_can_update_app_list">¡Norabona! Les aplicaciones tán anovaes.</string>
+    <string name="empty_can_update_app_list">¡Norabona!\nLes aplicaciones tán anovaes.</string>
 
     <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>

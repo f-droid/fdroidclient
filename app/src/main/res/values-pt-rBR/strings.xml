@@ -198,7 +198,7 @@
         eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os
         repositórios realmente não têm os seus aplicativos disponíveis.
     </string>
-    <string name="empty_can_update_app_list">Parabéns! Todos os seus aplicativos estão atualizados (ou seus repositórios estão desatualizados).</string>
+    <string name="empty_can_update_app_list">Parabéns!\nTodos os seus aplicativos estão atualizados (ou seus repositórios estão desatualizados).</string>
 
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>

@@ -257,7 +257,7 @@
         На вашай прыладзе ёсць праграмы, але яны недаступныя праз F-Droid. Магчыма вам неабходна абнавіць рэпазіторыі,
         або вашы рэпазіторыі не змяшчаюць такіх праграм.
     </string>
-    <string name="empty_can_update_app_list">Віншуем! Вашы праграмы маюць апошнія версіі.</string>
+    <string name="empty_can_update_app_list">Віншуем!\nВашы праграмы маюць апошнія версіі.</string>
     <string name="requesting_root_access_body">Запыт root-доступу…</string>
     <string name="root_access_denied_title">Адмоўлена ў root-доступе</string>
     <string name="root_access_denied_body">Альбо ваша прылада не мае root-доступу, альбо вы адхілілі запыт ад F-Droid.

@@ -214,7 +214,7 @@
         deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.
     </string>
     <string name="empty_search_available_app_list">Neniuj kongruaj aplikaĵoj disponeblaj.</string>
-    <string name="empty_can_update_app_list">Bonege! Ĉiuj viaj aplikaĵoj estas ĝisdataj.</string>
+    <string name="empty_can_update_app_list">Bonege!\nĈiuj viaj aplikaĵoj estas ĝisdataj.</string>
     <string name="requesting_root_access_body">Petado pri ĉefuzanta aliro…</string>
     <string name="root_access_denied_title">Ĉefuzanta aliro malpermesita</string>
     <string name="root_access_denied_body">Aŭ via Androida aparato ne havas ĉefuzantan aliron, aŭ vi malpermesis

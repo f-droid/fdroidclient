@@ -302,7 +302,7 @@
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
     <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal în F-Droid</string>
     <string name="system_installer_on">Folosiți F-Droid Extension pentru a instala, actualiza și a înlătura pachete</string>
-    <string name="empty_can_update_app_list">Felicitări! Aplicațiile tale sunt la zi.</string>
+    <string name="empty_can_update_app_list">Felicitări!\nAplicațiile tale sunt la zi.</string>
     <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n

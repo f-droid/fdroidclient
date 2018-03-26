@@ -244,7 +244,7 @@
         nisu dostupne iz F-Droida. Možda trebate ažurirati svoje repozitorije, ili ti repozitoriji stvarno nemaju Vaše
         aplikacije.
     </string>
-    <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke! Sve aplikacije su ažurirane (ili
+    <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke!\nSve aplikacije su ažurirane (ili
         su Vam repozitoriji zastarjeli).
     </string>
 

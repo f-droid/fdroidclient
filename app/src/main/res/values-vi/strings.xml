@@ -197,7 +197,7 @@
         này không nằm trong F-Droid. Có thể bạn cần cập nhật các kho ứng dụng, hoặc trong các kho không có ứng dụng bạn
         đang dùng.
     </string>
-    <string name="empty_can_update_app_list">Chúc mừng! Các ứng dụng của bạn đã được cập nhật.</string>
+    <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
 
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>

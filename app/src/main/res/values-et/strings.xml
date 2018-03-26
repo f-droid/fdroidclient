@@ -123,7 +123,7 @@
         kuid nad ei ole paigaldatud F-Droidist. Selle põhjuseks võib olla kas vajadus hoidlaid värskendada või sinu
         rakenduste puudumine nendes hoidlates.
     </string>
-    <string name="empty_can_update_app_list">Palju õnne! Su rakendused on ajakohased.</string>
+    <string name="empty_can_update_app_list">Palju õnne!\nSu rakendused on ajakohased.</string>
     <string name="system_install_denied_signature">Laienduse signatuur on vale! Palun teavita veast!</string>
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!

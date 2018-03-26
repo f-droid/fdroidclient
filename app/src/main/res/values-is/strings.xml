@@ -360,7 +360,7 @@
         Það eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að
         uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.
     </string>
-    <string name="empty_can_update_app_list">Til hamingju! Öll forritin þín eru af nýjustu útgáfu.</string>
+    <string name="empty_can_update_app_list">Til hamingju!\nÖll forritin þín eru af nýjustu útgáfu.</string>
     <string name="root_access_denied_body">Annað hvort er Android tækið þitt ekki með rótaraðgang (rooted) eða að þú
         hefur neitað F-Droid um rótarheimildir.
     </string>

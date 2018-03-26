@@ -290,7 +290,7 @@
         Ci sono delle app sul tuo dispositivo ma non sono disponibili su F-Droid. Ciò potrebbe essere dovuto al fatto
         che devi aggiornare i repository o che le app non sono disponibili all\'interno dei repository.
     </string>
-    <string name="empty_can_update_app_list">Congratulazioni! Le tue app sono aggiornate.</string>
+    <string name="empty_can_update_app_list">Congratulazioni!\nLe tue app sono aggiornate.</string>
 
     <string name="install_error_unknown">Installazione fallita a causa di un errore sconosciuto</string>
     <string name="uninstall_error_unknown">Disinstallazione fallita a causa di un errore sconosciuto</string>

@@ -215,7 +215,7 @@
         liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen
         beinhalten.
     </string>
-    <string name="empty_can_update_app_list">Glückwunsch! Ihre Apps sind auf dem neuesten Stand.</string>
+    <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
 
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>

@@ -217,7 +217,7 @@
         dostupné v F-Droid. To může být způsobeno zastaralým seznamem repozitářů nebo aplikace nejsou v repozitářích
         vůbec dostupné.
     </string>
-    <string name="empty_can_update_app_list">Gratulujeme! Všechny nainstalované aplikace jsou aktuální.</string>
+    <string name="empty_can_update_app_list">Gratulujeme!\nVšechny nainstalované aplikace jsou aktuální.</string>
 
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>

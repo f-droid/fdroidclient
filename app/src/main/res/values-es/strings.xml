@@ -200,7 +200,7 @@
         no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o porque los
         repositorios no tienen esas aplicaciones.
     </string>
-    <string name="empty_can_update_app_list">¡Felicitaciones! Tus aplicaciones están actualizadas.</string>
+    <string name="empty_can_update_app_list">¡Felicitaciones!\nTus aplicaciones están actualizadas.</string>
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>

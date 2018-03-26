@@ -175,7 +175,7 @@
     <string name="icon">Піктограма</string>
     <string name="no_permissions">Не потребує дозволів.</string>
     <string name="requires_features">Потрібно: %1$s</string>
-    <string name="empty_can_update_app_list">Вітаємо! Ваші застосунки оновлені.</string>
+    <string name="empty_can_update_app_list">Вітаємо!\nВаші застосунки оновлені.</string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>

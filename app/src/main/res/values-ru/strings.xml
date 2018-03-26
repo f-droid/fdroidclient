@@ -189,7 +189,7 @@
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
 \nНа вашем устройстве есть приложения, но они недоступны из F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
-    <string name="empty_can_update_app_list">Поздравляем! Ваши приложения обновлены.</string>
+    <string name="empty_can_update_app_list">Поздравляем!\nВаши приложения обновлены.</string>
 
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>

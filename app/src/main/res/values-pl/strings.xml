@@ -182,7 +182,7 @@
     <string name="empty_installed_app_list">Brak zainstalowanych aplikacji.\n\nMasz na swoim urządzeniu aplikacje, ale
         nie zostały one zainstalowane przez F-Droida. Być może musisz zaktualizować swoje repozytoria.
     </string>
-    <string name="empty_can_update_app_list">Wspaniale! Wszystkie Twoje aplikacje są w najnowszych wersjach.</string>
+    <string name="empty_can_update_app_list">Wspaniale!\nWszystkie Twoje aplikacje są w najnowszych wersjach.</string>
 
     <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>

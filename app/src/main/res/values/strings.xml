@@ -366,7 +366,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         available from F-Droid. This could be because you need to update your repositories, or the repositories
         genuinely don\'t have your apps available.
     </string>
-    <string name="empty_can_update_app_list">Congratulations! Your apps are up to date.</string>
+    <string name="empty_can_update_app_list">Congratulations!\nYour apps are up to date.</string>
 
     <string name="empty_search_available_app_list">No matching applications available.</string>
 

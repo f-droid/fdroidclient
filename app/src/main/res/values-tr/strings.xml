@@ -229,7 +229,7 @@
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
-    <string name="empty_can_update_app_list">Tebrikler! Uygulamalarınız güncel.</string>
+    <string name="empty_can_update_app_list">Tebrikler!\nUygulamalarınız güncel.</string>
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
     <string name="system_install_button_install">Kur</string>

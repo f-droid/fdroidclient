@@ -232,7 +232,7 @@
         Terdapat apl diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh
         pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.
     </string>
-    <string name="empty_can_update_app_list">Selamat! Apl Anda sudah yang paling baru.</string>
+    <string name="empty_can_update_app_list">Selamat!\nApl Anda sudah yang paling baru.</string>
     <string name="requesting_root_access_body">Meminta akses root…</string>
     <string name="root_access_denied_title">Akses root ditolak</string>
     <string name="root_access_denied_body">Mungkin perangkat Android anda yang belum diroot atau anda telah menolak
