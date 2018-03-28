@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.peers.WifiPeer;
@@ -82,16 +81,11 @@ public class NewRepoConfig {
         scheme = scheme.toLowerCase(Locale.ENGLISH);
         host = host.toLowerCase(Locale.ENGLISH);
 
-        // We only listen for /fdroid/archive or /fdroid/repo paths when receiving a HTTP(S) intent.
-        // For fdroidrepo(s) intents, we are less picky and will accept any path.
-        boolean isHttpScheme = TextUtils.equals("http", scheme) || TextUtils.equals("https", scheme);
-        String path = uri.getPath();
-        if (path == null || isHttpScheme && !(path.contains("/fdroid/archive") || path.contains("/fdroid/repo"))) {
+        if (uri.getPath() == null
+                || !Arrays.asList("https", "http", "fdroidrepos", "fdroidrepo").contains(scheme)) {
             isValidRepo = false;
             return;
         }
-
-        boolean isFdroidScheme = TextUtils.equals("fdroidrepo", scheme) || TextUtils.equals("fdroidrepos", scheme);
 
         String userInfo = uri.getUserInfo();
         if (userInfo != null) {
@@ -109,15 +103,8 @@ public class NewRepoConfig {
         bssid = uri.getQueryParameter("bssid");
         ssid = uri.getQueryParameter("ssid");
         fromSwap = uri.getQueryParameter("swap") != null;
-
-        if (!isFdroidScheme && !isHttpScheme) {
-            isValidRepo = false;
-            return;
-        }
-
         uriString = sanitizeRepoUri(uri);
         isValidRepo = true;
-
     }
 
     public String getBssid() {
@@ -175,7 +162,9 @@ public class NewRepoConfig {
         return errorMessage;
     }
 
-    /** Sanitize and format an incoming repo URI for function and readability */
+    /**
+     * Sanitize and format an incoming repo URI for function and readability
+     */
     public static String sanitizeRepoUri(Uri uri) {
         String scheme = uri.getScheme();
         String host = uri.getHost();
