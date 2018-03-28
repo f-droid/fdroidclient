@@ -135,7 +135,7 @@ public class IndexV1Updater extends RepoUpdater {
                     if (downloader != null) {
                         FileUtils.deleteQuietly(downloader.outputFile);
                     }
-                    throw new RepoUpdater.UpdateException(repo, "Error getting index file", e2);
+                    throw new RepoUpdater.UpdateException("Error getting index file", e2);
                 } catch (InterruptedException e2) {
                     // ignored if canceled, the local database just won't be updated
                 }
@@ -144,7 +144,7 @@ public class IndexV1Updater extends RepoUpdater {
             if (downloader != null) {
                 FileUtils.deleteQuietly(downloader.outputFile);
             }
-            throw new RepoUpdater.UpdateException(repo, "Error getting index file", e);
+            throw new RepoUpdater.UpdateException("Error getting index file", e);
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
         }
@@ -236,7 +236,7 @@ public class IndexV1Updater extends RepoUpdater {
         long timestamp = (Long) repoMap.get("timestamp") / 1000;
 
         if (repo.timestamp > timestamp) {
-            throw new RepoUpdater.UpdateException(repo, "index.jar is older that current index! "
+            throw new RepoUpdater.UpdateException("index.jar is older that current index! "
                     + timestamp + " < " + repo.timestamp);
         }
 
@@ -410,16 +410,14 @@ public class IndexV1Updater extends RepoUpdater {
         String certFromJar = Hasher.hex(rawCertFromJar);
 
         if (TextUtils.isEmpty(certFromJar)) {
-            throw new SigningException(repo,
-                    SIGNED_FILE_NAME + " must have an included signing certificate!");
+            throw new SigningException(SIGNED_FILE_NAME + " must have an included signing certificate!");
         }
 
         if (repo.signingCertificate == null) {
             if (repo.fingerprint != null) {
                 String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
                 if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
-                    throw new SigningException(repo,
-                            "Supplied certificate fingerprint does not match!");
+                    throw new SigningException("Supplied certificate fingerprint does not match!");
                 }
             }
             Utils.debugLog(TAG, "Saving new signing certificate to database for " + repo.address);
@@ -431,14 +429,14 @@ public class IndexV1Updater extends RepoUpdater {
         }
 
         if (TextUtils.isEmpty(repo.signingCertificate)) {
-            throw new SigningException(repo, "A empty repo signing certificate is invalid!");
+            throw new SigningException("A empty repo signing certificate is invalid!");
         }
 
         if (repo.signingCertificate.equals(certFromJar)) {
             return; // we have a match!
         }
 
-        throw new SigningException(repo, "Signing certificate does not match!");
+        throw new SigningException("Signing certificate does not match!");
     }
 
 }
