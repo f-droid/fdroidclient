@@ -2,18 +2,14 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.content.LocalBroadcastManager;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class DownloaderFactory {
-
-    private static LocalBroadcastManager localBroadcastManager;
 
     /**
      * Downloads to a temporary file, which *you must delete yourself when
@@ -34,22 +30,19 @@ public class DownloaderFactory {
 
     public static Downloader create(Context context, String urlString, File destFile)
             throws IOException {
-        URL url = new URL(urlString);
         Downloader downloader;
-        if (localBroadcastManager == null) {
-            localBroadcastManager = LocalBroadcastManager.getInstance(context);
-        }
 
-        if ("bluetooth".equalsIgnoreCase(url.getProtocol())) {
-            String macAddress = url.getHost().replace("-", ":");
-            downloader = new BluetoothDownloader(macAddress, url, destFile);
+        Uri uri = Uri.parse(urlString);
+        String scheme = uri.getScheme();
+        if ("bluetooth".equals(scheme)) {
+            downloader = new BluetoothDownloader(uri, destFile);
         } else {
             final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
-            Repo repo = RepoProvider.Helper.findByUrl(context, Uri.parse(url.toString()), projection);
+            Repo repo = RepoProvider.Helper.findByUrl(context, uri, projection);
             if (repo == null) {
-                downloader = new HttpDownloader(url, destFile);
+                downloader = new HttpDownloader(uri, destFile);
             } else {
-                downloader = new HttpDownloader(url, destFile, repo.username, repo.password);
+                downloader = new HttpDownloader(uri, destFile, repo.username, repo.password);
             }
         }
         return downloader;

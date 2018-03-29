@@ -158,22 +158,17 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return createRepo(name, uri, context, PUB_KEY);
     }
 
+    /**
+     * Creates a real instance of {@code Repo} by loading it from the database,
+     * that ensures it includes the primary key from the database.
+     */
     static Repo createRepo(String name, String uri, Context context, String signingCert) {
-        Repo repo = new Repo();
-        repo.signingCertificate = signingCert;
-        repo.address = uri;
-        repo.name = name;
-
         ContentValues values = new ContentValues(3);
-        values.put(Schema.RepoTable.Cols.SIGNING_CERT, repo.signingCertificate);
-        values.put(Schema.RepoTable.Cols.ADDRESS, repo.address);
-        values.put(Schema.RepoTable.Cols.NAME, repo.name);
-
+        values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
+        values.put(Schema.RepoTable.Cols.ADDRESS, uri);
+        values.put(Schema.RepoTable.Cols.NAME, name);
         RepoProvider.Helper.insert(context, values);
-
-        // Need to reload the repo based on address so that it includes the primary key from
-        // the database.
-        return RepoProvider.Helper.findByAddress(context, repo.address);
+        return RepoProvider.Helper.findByAddress(context, uri);
     }
 
     protected RepoUpdater createRepoUpdater(String name, String uri, Context context) {

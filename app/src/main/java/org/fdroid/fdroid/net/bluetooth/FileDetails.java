@@ -3,13 +3,13 @@ package org.fdroid.fdroid.net.bluetooth;
 public class FileDetails {
 
     private String cacheTag;
-    private int fileSize;
+    private long fileSize;
 
     public String getCacheTag() {
         return cacheTag;
     }
 
-    public int getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 

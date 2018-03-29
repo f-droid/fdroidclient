@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.net.Uri;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ConnectException;
-import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,12 +32,12 @@ public abstract class Downloader {
     public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MIRROR_URL";
 
     private volatile boolean cancelled = false;
-    private volatile int bytesRead;
-    private volatile int totalBytes;
+    private volatile long bytesRead;
+    private volatile long totalBytes;
 
     public final File outputFile;
 
-    final URL sourceUrl;
+    final String urlString;
     String cacheTag;
     boolean notFound;
 
@@ -52,8 +52,8 @@ public abstract class Downloader {
 
     protected abstract void close();
 
-    Downloader(URL url, File destFile) {
-        this.sourceUrl = url;
+    Downloader(Uri uri, File destFile) {
+        this.urlString = uri.toString();
         outputFile = destFile;
     }
 
@@ -92,7 +92,7 @@ public abstract class Downloader {
 
     public abstract boolean hasChanged();
 
-    protected abstract int totalDownloadSize();
+    protected abstract long totalDownloadSize();
 
     public abstract void download() throws ConnectException, IOException, InterruptedException;
 
@@ -201,7 +201,7 @@ public abstract class Downloader {
         @Override
         public void run() {
             if (downloaderProgressListener != null) {
-                downloaderProgressListener.onProgress(sourceUrl, bytesRead, totalBytes);
+                downloaderProgressListener.onProgress(urlString, bytesRead, totalBytes);
             }
         }
     };

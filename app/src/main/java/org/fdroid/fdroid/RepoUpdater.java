@@ -53,7 +53,6 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -139,7 +138,7 @@ public class RepoUpdater {
                 }
             }
 
-            throw new UpdateException(repo, "Error getting index file", e);
+            throw new UpdateException("Error getting index file", e);
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
             e.printStackTrace();
@@ -202,7 +201,7 @@ public class RepoUpdater {
         InputStream indexInputStream = null;
         try {
             if (downloadedFile == null || !downloadedFile.exists()) {
-                throw new UpdateException(repo, downloadedFile + " does not exist!");
+                throw new UpdateException(downloadedFile + " does not exist!");
             }
 
             // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
@@ -213,7 +212,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
+                    processIndexListener, repo.address, (int) indexEntry.getSize());
 
             // Process the index...
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -226,7 +225,7 @@ public class RepoUpdater {
 
             long timestamp = repoDetailsToSave.getAsLong(RepoTable.Cols.TIMESTAMP);
             if (timestamp < repo.timestamp) {
-                throw new UpdateException(repo, "index.jar is older that current index! "
+                throw new UpdateException("index.jar is older that current index! "
                         + timestamp + " < " + repo.timestamp);
             }
 
@@ -237,7 +236,7 @@ public class RepoUpdater {
             assertSigningCertFromXmlCorrect();
             commitToDb();
         } catch (SAXException | ParserConfigurationException | IOException e) {
-            throw new UpdateException(repo, "Error parsing index", e);
+            throw new UpdateException("Error parsing index", e);
         } finally {
             FDroidApp.enableSpongyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
@@ -251,14 +250,14 @@ public class RepoUpdater {
 
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+        public void onProgress(String urlString, long bytesRead, long totalBytes) {
             UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+        public void onProgress(String urlString, long bytesRead, long totalBytes) {
             UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
@@ -343,22 +342,19 @@ public class RepoUpdater {
     public static class UpdateException extends Exception {
 
         private static final long serialVersionUID = -4492452418826132803L;
-        public final Repo repo;
 
-        public UpdateException(Repo repo, String message) {
+        public UpdateException(String message) {
             super(message);
-            this.repo = repo;
         }
 
-        public UpdateException(Repo repo, String message, Exception cause) {
+        public UpdateException(String message, Exception cause) {
             super(message, cause);
-            this.repo = repo;
         }
     }
 
     public static class SigningException extends UpdateException {
-        public SigningException(Repo repo, String message) {
-            super(repo, "Repository was not signed correctly: " + message);
+        public SigningException(String message) {
+            super("Repository was not signed correctly: " + message);
         }
     }
 
@@ -367,18 +363,18 @@ public class RepoUpdater {
      * signing setups that would be valid for a regular jar.  This validates those
      * restrictions.
      */
-    X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
+    public static X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
         final CodeSigner[] codeSigners = jarEntry.getCodeSigners();
         if (codeSigners == null || codeSigners.length == 0) {
-            throw new SigningException(repo, "No signature found in index");
+            throw new SigningException("No signature found in index");
         }
         /* we could in theory support more than 1, but as of now we do not */
         if (codeSigners.length > 1) {
-            throw new SigningException(repo, "index.jar must be signed by a single code signer!");
+            throw new SigningException("index.jar must be signed by a single code signer!");
         }
         List<? extends Certificate> certs = codeSigners[0].getSignerCertPath().getCertificates();
         if (certs.size() != 1) {
-            throw new SigningException(repo, "index.jar code signers must only have a single certificate!");
+            throw new SigningException("index.jar code signers must only have a single certificate!");
         }
         return (X509Certificate) certs.get(0);
     }
@@ -404,7 +400,7 @@ public class RepoUpdater {
             String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
             if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
                     || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
-                throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
+                throw new SigningException("Supplied certificate fingerprint does not match!");
             }
         } // else - no info to check things are valid, so just Trust On First Use
 
@@ -435,7 +431,7 @@ public class RepoUpdater {
         if (TextUtils.isEmpty(repo.signingCertificate)
                 || TextUtils.isEmpty(certFromJar)
                 || TextUtils.isEmpty(certFromIndexXml)) {
-            throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
+            throw new SigningException("A empty repo or signing certificate is invalid!");
         }
 
         // though its called repo.signingCertificate, its actually a X509 certificate
@@ -444,7 +440,7 @@ public class RepoUpdater {
                 && certFromIndexXml.equals(certFromJar)) {
             return; // we have a match!
         }
-        throw new SigningException(repo, "Signing certificate does not match!");
+        throw new SigningException("Signing certificate does not match!");
     }
 
     /**

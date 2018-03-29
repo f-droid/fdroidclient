@@ -362,12 +362,13 @@ public interface Schema {
             String TIMESTAMP    = "timestamp";
             String ICON         = "icon";
             String MIRRORS      = "mirrors";
+            String USER_MIRRORS = "userMirrors";
             String PUSH_REQUESTS = "pushRequests";
 
             String[] ALL = {
                     _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
                     FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-                    USERNAME, PASSWORD, TIMESTAMP, ICON, MIRRORS, PUSH_REQUESTS,
+                    USERNAME, PASSWORD, TIMESTAMP, ICON, MIRRORS, USER_MIRRORS, PUSH_REQUESTS,
             };
         }
     }

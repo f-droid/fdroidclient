@@ -71,6 +71,30 @@
                 android:id="@+id/text_last_update"
                 style="@style/BodyText" />
 
+            <!-- mirrors included in the index -->
+            <TextView
+                    android:id="@+id/label_official_mirrors"
+                    android:visibility="gone"
+                    android:text="@string/repo_official_mirrors"
+                    style="@style/CaptionText" />
+            <TextView
+                    android:id="@+id/text_official_mirrors"
+                    android:visibility="gone"
+                    android:textColor="@android:color/black"
+                    style="@style/CaptionText" />
+
+            <!-- mirrors added by the user -->
+            <TextView
+                    android:id="@+id/label_user_mirrors"
+                    android:visibility="gone"
+                    android:text="@string/repo_user_mirrors"
+                    style="@style/CaptionText" />
+            <TextView
+                    android:id="@+id/text_user_mirrors"
+                    android:visibility="gone"
+                    android:textColor="@android:color/black"
+                    style="@style/CaptionText" />
+
             <!-- The credentials used to access this repo (optional) -->
             <TextView
                 android:id="@+id/label_username"

@@ -516,12 +516,13 @@ public class UpdateService extends IntentService {
         }
     }
 
-    public static void reportDownloadProgress(Context context, RepoUpdater updater, int bytesRead, int totalBytes) {
+    public static void reportDownloadProgress(Context context, RepoUpdater updater,
+                                              long bytesRead, long totalBytes) {
         Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
         if (totalBytes > 0) {
-            percent = (int) ((double) bytesRead / totalBytes * 100);
+            percent = (int) (bytesRead / (totalBytes * 100L));
         }
         String message;
         if (totalBytes == -1) {
@@ -534,13 +535,14 @@ public class UpdateService extends IntentService {
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
-    public static void reportProcessIndexProgress(Context context, RepoUpdater updater, int bytesRead, int totalBytes) {
+    public static void reportProcessIndexProgress(Context context, RepoUpdater updater,
+                                                  long bytesRead, long totalBytes) {
         Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSize = Utils.getFriendlySize(bytesRead);
         String totalSize = Utils.getFriendlySize(totalBytes);
         int percent = -1;
         if (totalBytes > 0) {
-            percent = (int) ((double) bytesRead / totalBytes * 100);
+            percent = (int) (bytesRead / (totalBytes * 100L));
         }
         String message = context.getString(R.string.status_processing_xml_percent, updater.indexUrl, downloadedSize, totalSize, percent);
         sendStatus(context, STATUS_INFO, message, percent);

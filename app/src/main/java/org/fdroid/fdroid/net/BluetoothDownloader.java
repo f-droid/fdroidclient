@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.net;
 
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.apache.commons.io.input.BoundedInputStream;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
@@ -14,7 +14,6 @@ import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 public class BluetoothDownloader extends Downloader {
 
@@ -24,10 +23,11 @@ public class BluetoothDownloader extends Downloader {
     private FileDetails fileDetails;
     private final String sourcePath;
 
-    public BluetoothDownloader(String macAddress, URL sourceUrl, File destFile) throws IOException {
-        super(sourceUrl, destFile);
+    public BluetoothDownloader(Uri uri, File destFile) throws IOException {
+        super(uri, destFile);
+        String macAddress = uri.getHost().replace("-", ":");
         this.connection = new BluetoothClient(macAddress).openConnection();
-        this.sourcePath = sourceUrl.getPath();
+        this.sourcePath = uri.getPath();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class BluetoothDownloader extends Downloader {
         if (fileDetails == null) {
             Utils.debugLog(TAG, "Going to Bluetooth \"server\" to get file details.");
             try {
-                fileDetails = Request.createHEAD(sourceUrl.getPath(), connection).send().toFileDetails();
+                fileDetails = Request.createHEAD(sourcePath, connection).send().toFileDetails();
             } catch (IOException e) {
                 Log.e(TAG, "Error getting file details from Bluetooth \"server\"", e);
             }
@@ -73,7 +73,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public int totalDownloadSize() {
+    public long totalDownloadSize() {
         FileDetails details = getFileDetails();
         return details != null ? details.getFileSize() : -1;
     }

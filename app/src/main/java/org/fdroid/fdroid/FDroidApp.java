@@ -60,12 +60,8 @@ import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
-import sun.net.www.protocol.bluetooth.Handler;
 
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLStreamHandler;
-import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.List;
 
@@ -367,16 +363,6 @@ public class FDroidApp extends Application {
             @Override
             public void onPreferenceChange() {
                 getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-            }
-        });
-
-        // This is added so that the bluetooth:// scheme we use for URLs the BluetoothDownloader
-        // understands is not treated as invalid by the java.net.URL class. The actual Handler does
-        // nothing, but its presence is enough.
-        URL.setURLStreamHandlerFactory(new URLStreamHandlerFactory() {
-            @Override
-            public URLStreamHandler createURLStreamHandler(String protocol) {
-                return TextUtils.equals(protocol, "bluetooth") ? new Handler() : null;
             }
         });
 
