@@ -50,26 +50,26 @@ public class RepoDetailsActivity extends ActionBarActivity {
      * all of this info, otherwise they will be hidden.
      */
     private static final int[] SHOW_IF_EXISTS = {
-        R.id.label_repo_name,
-        R.id.text_repo_name,
-        R.id.text_description,
-        R.id.label_num_apps,
-        R.id.text_num_apps,
-        R.id.label_last_update,
-        R.id.text_last_update,
-        R.id.label_username,
-        R.id.text_username,
-        R.id.button_edit_credentials,
-        R.id.label_repo_fingerprint,
-        R.id.text_repo_fingerprint,
-        R.id.text_repo_fingerprint_description,
+            R.id.label_repo_name,
+            R.id.text_repo_name,
+            R.id.text_description,
+            R.id.label_num_apps,
+            R.id.text_num_apps,
+            R.id.label_last_update,
+            R.id.text_last_update,
+            R.id.label_username,
+            R.id.text_username,
+            R.id.button_edit_credentials,
+            R.id.label_repo_fingerprint,
+            R.id.text_repo_fingerprint,
+            R.id.text_repo_fingerprint_description,
     };
     /**
      * If the repo has <em>not</em> been updated yet, then we only show
      * these, otherwise they are hidden.
      */
     private static final int[] HIDE_IF_EXISTS = {
-        R.id.text_not_yet_updated,
+            R.id.text_not_yet_updated,
     };
     private Repo repo;
     private long repoId;
@@ -108,11 +108,17 @@ public class RepoDetailsActivity extends ActionBarActivity {
                 RepoTable.Cols.NAME,
                 RepoTable.Cols.ADDRESS,
                 RepoTable.Cols.FINGERPRINT,
+                RepoTable.Cols.MIRRORS,
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
         TextView inputUrl = (TextView) findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
+
+        if (repo.address.startsWith("content://")) {
+            // no need to show a QR Code, it is not shareable
+            return;
+        }
 
         Uri uri = Uri.parse(repo.address);
         uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
@@ -321,6 +327,20 @@ public class RepoDetailsActivity extends ActionBarActivity {
         TextView numApps = (TextView) repoView.findViewById(R.id.text_num_apps);
         TextView lastUpdated = (TextView) repoView.findViewById(R.id.text_last_update);
 
+        if (repo.mirrors != null) {
+            TextView officialMirrorsLabel = (TextView) repoView.findViewById(R.id.label_official_mirrors);
+            officialMirrorsLabel.setVisibility(View.VISIBLE);
+            TextView officialMirrorsText = (TextView) repoView.findViewById(R.id.text_official_mirrors);
+            officialMirrorsText.setVisibility(View.VISIBLE);
+            StringBuilder builder = new StringBuilder();
+            for (String url : repo.mirrors) {
+                builder.append("◦ ");
+                builder.append(url);
+                builder.append('\n');
+            }
+            officialMirrorsText.setText(builder.toString());
+        }
+
         name.setText(repo.name);
 
         int appCount = RepoProvider.Helper.countAppsForRepo(this, repoId);
@@ -345,22 +365,22 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     private void promptForDelete() {
         new AlertDialog.Builder(this)
-            .setTitle(R.string.repo_confirm_delete_title)
-            .setMessage(R.string.repo_confirm_delete_body)
-            .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    RepoProvider.Helper.remove(getApplicationContext(), repoId);
-                    finish();
-                }
-            }).setNegativeButton(android.R.string.cancel,
+                .setTitle(R.string.repo_confirm_delete_title)
+                .setMessage(R.string.repo_confirm_delete_body)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        RepoProvider.Helper.remove(getApplicationContext(), repoId);
+                        finish();
+                    }
+                }).setNegativeButton(android.R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing...
                     }
                 }
-            ).show();
+        ).show();
     }
 
     public void showChangePasswordDialog(final View parentView) {
