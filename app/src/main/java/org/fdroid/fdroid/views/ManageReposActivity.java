@@ -61,12 +61,15 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
 
 @SuppressWarnings("LineLength")
@@ -76,7 +79,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
 
     private enum AddRepoState {
-        DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_FINGERPRINT_MATCH,
+        DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_ADD_MIRROR,
         EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
         IS_SWAP
     }
@@ -213,17 +216,34 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
     private class AddRepo {
 
         private final Context context;
+        private final HashMap<String, Repo> urlRepoMap = new HashMap<>();
+        private final HashMap<String, Repo> fingerprintRepoMap = new HashMap<>();
         private final AlertDialog addRepoDialog;
-
         private final TextView overwriteMessage;
         private final ColorStateList defaultTextColour;
         private final Button addButton;
 
         private AddRepoState addRepoState;
 
+        /**
+         * Create new instance, setup GUI, and build maps for quickly looking
+         * up repos based on URL or fingerprint.  These need to be in maps
+         * since the user input is validated as they are typing.  This also
+         * checks that the repo type matches, e.g. "repo" or "archive".
+         */
         AddRepo(String newAddress, String newFingerprint, final String username, final String password) {
 
             context = ManageReposActivity.this;
+
+            for (Repo repo : RepoProvider.Helper.all(context)) {
+                urlRepoMap.put(repo.address, repo);
+                for (String url : repo.getMirrorList()) {
+                    urlRepoMap.put(url, repo);
+                }
+                if (TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
+                    fingerprintRepoMap.put(repo.fingerprint, repo);
+                }
+            }
 
             final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
             addRepoDialog = new AlertDialog.Builder(context).setView(view).create();
@@ -297,7 +317,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
                                 case EXISTS_DISABLED:
                                 case EXISTS_UPGRADABLE_TO_SIGNED:
-                                case EXISTS_FINGERPRINT_MATCH:
+                                case EXISTS_ADD_MIRROR:
                                     updateAndEnableExistingRepo(url, fp);
                                     finishedAddingRepo();
                                     break;
@@ -348,8 +368,30 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         }
 
         /**
+         * Gets the repo type as represented by the final segment of the path. This is
+         * a bit trickier with {@code content://} URLs, since they might have
+         * encoded "/" chars in it, for example:
+         * {@code content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo}
+         */
+        private String getRepoType(String url) {
+            String last = Uri.parse(url).getLastPathSegment();
+            if (last == null) {
+                return "";
+            } else {
+                return new File(last).getName();
+            }
+        }
+
+        /**
          * Compare the repo and the fingerprint against existing repositories, to see if this
-         * repo matches and display a relevant message to the user if that is the case.
+         * repo matches and display a relevant message to the user if that is the case. There
+         * are many different cases to handle:
+         * <ul>
+         * <li> a signed repo with a {@link Repo#address URL} and fingerprint that matches
+         * <li> a signed repo with a matching fingerprint and URL that matches a mirror
+         * <li> a signed repo with a matching fingerprint, but the URL doesn't match any known mirror
+         * <li>an unsigned repo and no fingerprint was supplied
+         * </ul>
          */
         private void validateRepoDetails(@NonNull String uri, @NonNull String fingerprint) {
 
@@ -361,7 +403,10 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                 // to the user until they try to save the repo.
             }
 
-            final Repo repo = !TextUtils.isEmpty(uri) ? RepoProvider.Helper.findByAddress(context, uri) : null;
+            Repo repo = fingerprintRepoMap.get(fingerprint);
+            if (repo == null) {
+                repo = urlRepoMap.get(uri);
+            }
 
             if (repo == null) {
                 repoDoesntExist(repo);
@@ -373,9 +418,10 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                 } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
                     repoFingerprintDoesntMatch(repo);
                 } else {
-                    // Could be either an unsigned repo, and no fingerprint was supplied,
-                    // or it could be a signed repo with a matching fingerprint.
-                    if (repo.inuse) {
+                    if (!TextUtils.equals(repo.address, uri)
+                            && !repo.getMirrorList().contains(uri)) {
+                        repoExistsAddMirror(repo);
+                    } else if (repo.inuse) {
                         repoExistsAndEnabled(repo);
                     } else {
                         repoExistsAndDisabled(repo);
@@ -659,11 +705,34 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
             }
 
             Utils.debugLog(TAG, "Enabling existing repo: " + url);
-            Repo repo = RepoProvider.Helper.findByAddress(context, url);
+            Repo repo = fingerprintRepoMap.get(fingerprint);
+            if (repo == null) {
+                repo = RepoProvider.Helper.findByAddress(context, url);
+            }
+
             ContentValues values = new ContentValues(2);
             values.put(RepoTable.Cols.IN_USE, 1);
             values.put(RepoTable.Cols.FINGERPRINT, fingerprint);
+            if (!TextUtils.equals(url, repo.address)) {
+                boolean addUserMirror = true;
+                for (String mirror : repo.getMirrorList()) {
+                    if (TextUtils.equals(mirror, url)) {
+                        addUserMirror = false;
+                    }
+                }
+                if (addUserMirror) {
+                    if (repo.userMirrors == null) {
+                        repo.userMirrors = new String[]{url};
+                    } else {
+                        int last = repo.userMirrors.length;
+                        repo.userMirrors = Arrays.copyOf(repo.userMirrors, last);
+                        repo.userMirrors[last] = url;
+                    }
+                    values.put(RepoTable.Cols.USER_MIRRORS, Utils.serializeCommaSeparatedString(repo.userMirrors));
+                }
+            }
             RepoProvider.Helper.update(context, repo, values);
+
             notifyDataSetChanged();
             finishedAddingRepo();
         }

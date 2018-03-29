@@ -109,6 +109,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                 RepoTable.Cols.ADDRESS,
                 RepoTable.Cols.FINGERPRINT,
                 RepoTable.Cols.MIRRORS,
+                RepoTable.Cols.USER_MIRRORS,
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
@@ -339,6 +340,19 @@ public class RepoDetailsActivity extends ActionBarActivity {
                 builder.append('\n');
             }
             officialMirrorsText.setText(builder.toString());
+        }
+        if (repo.userMirrors != null) {
+            TextView userMirrorsLabel = (TextView) repoView.findViewById(R.id.label_user_mirrors);
+            userMirrorsLabel.setVisibility(View.VISIBLE);
+            TextView userMirrorsText = (TextView) repoView.findViewById(R.id.text_user_mirrors);
+            userMirrorsText.setVisibility(View.VISIBLE);
+            StringBuilder builder = new StringBuilder();
+            for (String url : repo.userMirrors) {
+                builder.append("◦ ");
+                builder.append(url);
+                builder.append('\n');
+            }
+            userMirrorsText.setText(builder.toString());
         }
 
         name.setText(repo.name);

@@ -116,6 +116,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="no">No</string>
     <string name="repo_add_title">Add new repository</string>
     <string name="repo_add_add">Add</string>
+    <string name="repo_add_mirror">Add mirror</string>
     <string name="links">Links</string>
     <string name="versions">Versions</string>
     <string name="more">More</string>
@@ -138,6 +139,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_exists_enable">%1$s is already setup, confirm that you want to re-enable it.</string>
     <string name="repo_exists_and_enabled">%1$s is already setup and enabled.</string>
     <string name="repo_delete_to_overwrite">First delete %1$s in order to add this with a conflicting key.</string>
+    <string name="repo_exists_add_mirror">This is a copy of %1$s, add it as a mirror?</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>

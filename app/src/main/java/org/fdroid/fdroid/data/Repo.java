@@ -26,13 +26,13 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -93,6 +93,11 @@ public class Repo extends ValueObject {
 
     /** Official mirrors of this repo, considered automatically interchangeable */
     public String[] mirrors;
+
+    /**
+     * Mirrors added by the user, either by UI input or by attaching removeable storage
+     */
+    public String[] userMirrors;
 
     /** How to treat push requests included in this repo's index XML */
     public int pushRequests = PUSH_REQUEST_IGNORE;
@@ -159,6 +164,9 @@ public class Repo extends ValueObject {
                     break;
                 case Cols.MIRRORS:
                     mirrors = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.USER_MIRRORS:
+                    userMirrors = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.PUSH_REQUESTS:
                     pushRequests = cursor.getInt(i);
@@ -297,26 +305,43 @@ public class Repo extends ValueObject {
             mirrors = Utils.parseCommaSeparatedString(values.getAsString(Cols.MIRRORS));
         }
 
+        if (values.containsKey(Cols.USER_MIRRORS)) {
+            userMirrors = Utils.parseCommaSeparatedString(values.getAsString(Cols.USER_MIRRORS));
+        }
+
         if (values.containsKey(Cols.PUSH_REQUESTS)) {
             pushRequests = toInt(values.getAsInteger(Cols.PUSH_REQUESTS));
         }
     }
 
     public boolean hasMirrors() {
-        return mirrors != null && mirrors.length > 1;
+        return (mirrors != null && mirrors.length > 1)
+                || (userMirrors != null && userMirrors.length > 0);
     }
 
+    public List<String> getMirrorList() {
+        final ArrayList<String> allMirrors = new ArrayList<String>();
+        if (userMirrors != null) {
+            allMirrors.addAll(Arrays.asList(userMirrors));
+        }
+        if (mirrors != null) {
+            allMirrors.addAll(Arrays.asList(mirrors));
+        }
+        return allMirrors;
+    }
+
+    /**
+     * Get the number of available mirrors, including the canonical repo.
+     */
     public int getMirrorCount() {
         int count = 0;
-        if (mirrors != null && mirrors.length > 1) {
-            for (String m: mirrors) {
-                if (!m.equals(address)) {
-                    if (FDroidApp.isUsingTor()) {
+        for (String m : getMirrorList()) {
+            if (!m.equals(address)) {
+                if (FDroidApp.isUsingTor()) {
+                    count++;
+                } else {
+                    if (!m.contains(".onion")) {
                         count++;
-                    } else {
-                        if (!m.contains(".onion")) {
-                            count++;
-                        }
                     }
                 }
             }
@@ -328,7 +353,7 @@ public class Repo extends ValueObject {
         if (TextUtils.isEmpty(lastWorkingMirror)) {
             lastWorkingMirror = address;
         }
-        List<String> shuffledMirrors = Arrays.asList(mirrors);
+        List<String> shuffledMirrors = getMirrorList();
         Collections.shuffle(shuffledMirrors);
         if (shuffledMirrors.size() > 1) {
             for (String m : shuffledMirrors) {
