@@ -251,14 +251,14 @@ public class RepoUpdater {
 
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+        public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
             UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+        public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
             UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };

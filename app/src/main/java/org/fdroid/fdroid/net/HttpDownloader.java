@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.net;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.text.TextUtils;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import info.guardianproject.netcipher.NetCipher;
@@ -169,8 +171,13 @@ public class HttpDownloader extends Downloader {
     // because as the repo grows, the tradeoff will
     // become more worth it.
     @Override
-    public int totalDownloadSize() {
-        return connection.getContentLength();
+    @TargetApi(24)
+    public long totalDownloadSize() {
+        if (Build.VERSION.SDK_INT < 24) {
+            return connection.getContentLength();
+        } else {
+            return connection.getContentLengthLong();
+        }
     }
 
     @Override

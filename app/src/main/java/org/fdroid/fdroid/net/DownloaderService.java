@@ -199,7 +199,7 @@ public class DownloaderService extends Service {
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
-                public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+                public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
                     intent.setData(uri);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);

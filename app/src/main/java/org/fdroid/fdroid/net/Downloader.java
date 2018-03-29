@@ -32,8 +32,8 @@ public abstract class Downloader {
     public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MIRROR_URL";
 
     private volatile boolean cancelled = false;
-    private volatile int bytesRead;
-    private volatile int totalBytes;
+    private volatile long bytesRead;
+    private volatile long totalBytes;
 
     public final File outputFile;
 
@@ -92,7 +92,7 @@ public abstract class Downloader {
 
     public abstract boolean hasChanged();
 
-    protected abstract int totalDownloadSize();
+    protected abstract long totalDownloadSize();
 
     public abstract void download() throws ConnectException, IOException, InterruptedException;
 

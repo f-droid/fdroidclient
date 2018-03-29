@@ -73,7 +73,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public int totalDownloadSize() {
+    public long totalDownloadSize() {
         FileDetails details = getFileDetails();
         return details != null ? details.getFileSize() : -1;
     }
