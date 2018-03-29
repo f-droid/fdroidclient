@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.annotation.TargetApi;
+import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
@@ -29,29 +30,30 @@ public class HttpDownloader extends Downloader {
 
     private final String username;
     private final String password;
+    private URL sourceUrl;
     private HttpURLConnection connection;
     private boolean newFileAvailableOnServer;
 
-    HttpDownloader(URL url, File destFile)
+    HttpDownloader(Uri uri, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        this(url, destFile, null, null);
+        this(uri, destFile, null, null);
     }
 
     /**
      * Create a downloader that can authenticate via HTTP Basic Auth using the supplied
      * {@code username} and {@code password}.
      *
-     * @param url      The file to download
+     * @param uri      The file to download
      * @param destFile Where the download is saved
      * @param username Username for HTTP Basic Auth, use {@code null} to ignore
      * @param password Password for HTTP Basic Auth, use {@code null} to ignore
      * @throws FileNotFoundException
      * @throws MalformedURLException
      */
-    HttpDownloader(URL url, File destFile, String username, String password)
+    HttpDownloader(Uri uri, File destFile, String username, String password)
             throws FileNotFoundException, MalformedURLException {
-        super(url, destFile);
-
+        super(uri, destFile);
+        this.sourceUrl = new URL(urlString);
         this.username = username;
         this.password = password;
     }
@@ -95,7 +97,7 @@ public class HttpDownloader extends Downloader {
             case 200:
                 contentLength = tmpConn.getContentLength();
                 if (!TextUtils.isEmpty(etag) && etag.equals(cacheTag)) {
-                    Utils.debugLog(TAG, sourceUrl + " is cached, not downloading");
+                    Utils.debugLog(TAG, urlString + " is cached, not downloading");
                     return;
                 }
                 newFileAvailableOnServer = true;
@@ -104,7 +106,7 @@ public class HttpDownloader extends Downloader {
                 notFound = true;
                 return;
             default:
-                Utils.debugLog(TAG, "HEAD check of " + sourceUrl + " returned " + statusCode + ": "
+                Utils.debugLog(TAG, "HEAD check of " + urlString + " returned " + statusCode + ": "
                         + tmpConn.getResponseMessage());
         }
 
@@ -118,7 +120,7 @@ public class HttpDownloader extends Downloader {
             resumable = true;
         }
         setupConnection(resumable);
-        Utils.debugLog(TAG, "downloading " + sourceUrl + " (is resumable: " + resumable + ")");
+        Utils.debugLog(TAG, "downloading " + urlString + " (is resumable: " + resumable + ")");
         downloadFromStream(8192, resumable);
         cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }

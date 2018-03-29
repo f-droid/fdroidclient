@@ -31,7 +31,6 @@ import android.os.PatternMatcher;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -42,7 +41,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
-import java.net.URL;
 
 /**
  * DownloaderService is a service that handles asynchronous download requests
@@ -199,7 +197,7 @@ public class DownloaderService extends Service {
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
-                public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
+                public void onProgress(String urlString, long bytesRead, long totalBytes) {
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
                     intent.setData(uri);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
@@ -321,7 +319,7 @@ public class DownloaderService extends Service {
      * Check if a URL is actively being downloaded.
      */
     private static boolean isActive(String urlString) {
-        return downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString());
+        return downloader != null && TextUtils.equals(urlString, downloader.urlString);
     }
 
     public static void setTimeout(int ms) {

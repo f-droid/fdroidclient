@@ -53,7 +53,6 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -213,7 +212,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
+                    processIndexListener, repo.address, (int) indexEntry.getSize());
 
             // Process the index...
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -251,14 +250,14 @@ public class RepoUpdater {
 
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
+        public void onProgress(String urlString, long bytesRead, long totalBytes) {
             UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
-        public void onProgress(URL sourceUrl, long bytesRead, long totalBytes) {
+        public void onProgress(String urlString, long bytesRead, long totalBytes) {
             UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };

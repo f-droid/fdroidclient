@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -15,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -31,7 +29,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
-import java.net.URL;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -157,7 +154,7 @@ public class IndexV1Updater extends RepoUpdater {
         JarFile jarFile = new JarFile(outputFile, true);
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
         InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
+                processIndexListener, repo.address, (int) indexEntry.getSize());
         processIndexV1(indexInputStream, indexEntry, cacheTag);
     }
 
