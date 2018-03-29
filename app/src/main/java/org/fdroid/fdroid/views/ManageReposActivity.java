@@ -475,7 +475,6 @@ public class ManageReposActivity extends AppCompatActivity
                     false, R.string.add_key, true);
         }
 
-        @DebugLog
         private void updateUi(Repo repo, AddRepoState state, int messageRes, boolean redMessage, int addTextRes,
                               boolean addEnabled) {
             if (addRepoState != state) {
@@ -519,9 +518,9 @@ public class ManageReposActivity extends AppCompatActivity
             final AsyncTask<String, String, String> checker = new AsyncTask<String, String, String>() {
 
                 private int statusCode = -1;
-                private final static int REFRESH_DIALOG = Integer.MAX_VALUE;
-                private final static int HTTP_UNAUTHORIZED = 401;
-                private final static int HTTP_OK = 200;
+                private static final int REFRESH_DIALOG = Integer.MAX_VALUE;
+                private static final int HTTP_UNAUTHORIZED = 401;
+                private static final int HTTP_OK = 200;
 
                 @Override
                 protected String doInBackground(String... params) {

@@ -387,8 +387,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                         RepoProvider.Helper.remove(getApplicationContext(), repoId);
                         finish();
                     }
-                }).setNegativeButton(android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
+                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing...
