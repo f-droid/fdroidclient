@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,18 +15,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 
 /**
- * Full screen view of an apps screenshots to swipe through.
+ * Full screen view of an apps screenshots to swipe through. This will always
+ * download the image, even if the user has said not to use "unmetered" networks,
+ * e.g. WiFi.  That is because the user has to click on the thumbnail in
+ * {@link org.fdroid.fdroid.AppDetails2} in order to bring up this activity.
+ * That makes it a specific request for that image, rather than regular
+ * background loading.
  */
 public class ScreenShotsActivity extends AppCompatActivity {
 
@@ -114,13 +116,9 @@ public class ScreenShotsActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
 
-            DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
-                    .cacheInMemory(true)
-                    .cacheOnDisk(true)
-                    .imageScaleType(ImageScaleType.NONE)
+            DisplayImageOptions displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
                     .showImageOnLoading(R.drawable.screenshot_placeholder)
                     .showImageForEmptyUri(R.drawable.screenshot_placeholder)
-                    .bitmapConfig(Bitmap.Config.RGB_565)
                     .build();
 
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);

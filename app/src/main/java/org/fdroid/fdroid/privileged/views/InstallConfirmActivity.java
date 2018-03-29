@@ -23,7 +23,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -36,11 +35,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -71,15 +69,6 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
 
     private App app;
 
-    private final DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisk(true)
-            .imageScaleType(ImageScaleType.NONE)
-            .showImageOnLoading(R.drawable.ic_repo_app_default)
-            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .build();
-
     private void startInstallConfirm() {
         View appSnippet = findViewById(R.id.app_snippet);
         TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
@@ -87,7 +76,8 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
         appName.setText(app.name);
-        ImageLoader.getInstance().displayImage(app.iconUrl, appIcon, displayImageOptions);
+        ImageLoader.getInstance().displayImage(app.iconUrl, appIcon,
+                Utils.getRepoAppDisplayImageOptions());
 
         tabHost.setup();
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

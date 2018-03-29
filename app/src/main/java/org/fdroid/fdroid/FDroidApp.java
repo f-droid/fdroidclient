@@ -32,17 +32,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
-import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
-import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import info.guardianproject.netcipher.NetCipher;
@@ -59,7 +55,6 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
@@ -303,6 +298,20 @@ public class FDroidApp extends Application {
     }
 
     @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (level >= TRIM_MEMORY_BACKGROUND) {
+            ImageLoader.getInstance().clearMemoryCache();
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        ImageLoader.getInstance().clearMemoryCache();
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
@@ -387,34 +396,8 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
-                .diskCache(new LimitedAgeDiskCache(
-                        Utils.getImageCacheDir(this),
-                        null,
-                        new FileNameGenerator() {
-                            @NonNull
-                            @Override
-                            public String generate(String imageUri) {
-                                if (TextUtils.isEmpty(imageUri)) {
-                                    return "null";
-                                }
-
-                                String fileNameToSanitize;
-                                Uri uri = Uri.parse(imageUri);
-                                if (TextUtils.isEmpty(uri.getPath())) {
-                                    // files with URL like "drawable://213083835209" used by the category backgrounds
-                                    fileNameToSanitize = imageUri.replaceAll("[:/]", "");
-                                } else {
-                                    fileNameToSanitize = uri.getPath().replace("/", "-");
-                                }
-
-                                return SanitizedFile.sanitizeFileName(fileNameToSanitize);
-                            }
-                        },
-                        // 30 days in secs: 30*24*60*60 = 2592000
-                        2592000)
-                )
-                .threadPoolSize(4)
-                .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
+                .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
+                .threadPoolSize(getThreadPoolSize())
                 .build();
         ImageLoader.getInstance().init(config);
 
@@ -485,6 +468,24 @@ public class FDroidApp extends Application {
         }
 
         return false;
+    }
+
+    /**
+     * Return the number of threads Universal Image Loader should use, based on
+     * the total RAM in the device.  Devices with lots of RAM can do lots of
+     * parallel operations for fast icon loading.
+     */
+    @TargetApi(16)
+    private int getThreadPoolSize() {
+        if (Build.VERSION.SDK_INT >= 16) {
+            ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
+            if (activityManager != null) {
+                activityManager.getMemoryInfo(memInfo);
+                return (int) Math.max(1, Math.min(16, memInfo.totalMem / 256 / 1024 / 1024));
+            }
+        }
+        return 2;
     }
 
     @TargetApi(18)

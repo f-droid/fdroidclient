@@ -1,20 +1,20 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
+/**
+ * Loads and displays the small screenshots that are inline in {@link org.fdroid.fdroid.AppDetails2}
+ */
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final String[] screenshots;
     private final DisplayImageOptions displayImageOptions;
@@ -25,13 +25,9 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         this.listener = listener;
 
         screenshots = app.getAllScreenshots(context);
-        displayImageOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.NONE)
+        displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
                 .showImageOnLoading(R.drawable.screenshot_placeholder)
                 .showImageForEmptyUri(R.drawable.screenshot_placeholder)
-                .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
     }
 

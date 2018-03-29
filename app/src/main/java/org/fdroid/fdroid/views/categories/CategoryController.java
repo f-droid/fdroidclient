@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -23,9 +22,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -67,11 +66,8 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         appCards.setAdapter(appCardsAdapter);
         appCards.addItemDecoration(new ItemDecorator(activity));
 
-        displayImageOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .imageScaleType(ImageScaleType.NONE)
+        displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
                 .displayer(new FadeInBitmapDisplayer(100, true, true, false))
-                .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
     }
 

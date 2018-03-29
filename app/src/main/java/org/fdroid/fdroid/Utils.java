@@ -92,6 +92,9 @@ public final class Utils {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
     };
 
+    private static DisplayImageOptions.Builder defaultDisplayImageOptionsBuilder;
+    private static DisplayImageOptions repoAppDisplayImageOptions;
+
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
     /*
@@ -369,15 +372,33 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
-    public static DisplayImageOptions.Builder getImageLoadingOptions() {
-        return new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.NONE)
-                .showImageOnLoading(R.drawable.ic_repo_app_default)
-                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-                .displayer(new FadeInBitmapDisplayer(200, true, true, false))
-                .bitmapConfig(Bitmap.Config.RGB_565);
+    public static DisplayImageOptions.Builder getDefaultDisplayImageOptionsBuilder() {
+        if (defaultDisplayImageOptionsBuilder == null) {
+            defaultDisplayImageOptionsBuilder = new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .considerExifParams(false)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .imageScaleType(ImageScaleType.NONE);
+        }
+        return defaultDisplayImageOptionsBuilder;
+    }
+
+    /**
+     * Gets the {@link DisplayImageOptions} instance used to configure
+     * {@link com.nostra13.universalimageloader.core.ImageLoader} instances
+     * used to display app icons.  It lazy loads a reusable static instance.
+     */
+    public static DisplayImageOptions getRepoAppDisplayImageOptions() {
+        if (repoAppDisplayImageOptions == null) {
+            repoAppDisplayImageOptions = getDefaultDisplayImageOptionsBuilder()
+                    .showImageOnLoading(R.drawable.ic_repo_app_default)
+                    .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                    .showImageOnFail(R.drawable.ic_repo_app_default)
+                    .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+                    .build();
+        }
+        return repoAppDisplayImageOptions;
     }
 
     // this is all new stuff being added
@@ -554,8 +575,10 @@ public final class Utils {
         }
     }
 
-    // Need this to add the unimplemented support for ordered and unordered
-    // lists to Html.fromHtml().
+    /**
+     * Need this to add the unimplemented support for ordered and unordered
+     * lists to Html.fromHtml().
+     */
     public static class HtmlTagHandler implements Html.TagHandler {
         int listNum;
 

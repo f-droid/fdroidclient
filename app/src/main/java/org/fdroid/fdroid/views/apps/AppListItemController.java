@@ -26,10 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
@@ -50,14 +47,14 @@ import java.util.Iterator;
 /**
  * Supports the following layouts:
  * <ul>
- *     <li>app_list_item (see {@link StandardAppListItemController}</li>
- *     <li>updateable_app_list_status_item (see
- *         {@link org.fdroid.fdroid.views.updates.items.AppStatusListItemController}</li>
- *     <li>updateable_app_list_item (see
- *         {@link org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController}</li>
- *     <li>installed_app_list_item (see {@link StandardAppListItemController}</li>
+ * <li>app_list_item (see {@link StandardAppListItemController}</li>
+ * <li>updateable_app_list_status_item (see
+ * {@link org.fdroid.fdroid.views.updates.items.AppStatusListItemController}</li>
+ * <li>updateable_app_list_item (see
+ * {@link org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController}</li>
+ * <li>installed_app_list_item (see {@link StandardAppListItemController}</li>
  * </ul>
- *
+ * <p>
  * The state of the UI is defined in a dumb {@link AppListItemState} class, then applied to the UI
  * in the {@link #refreshView(App, AppUpdateStatus)} method.
  */
@@ -97,8 +94,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     @Nullable
     private final Button secondaryButton;
-
-    private final DisplayImageOptions displayImageOptions;
 
     @Nullable
     private App currentApp;
@@ -156,8 +151,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             cancelButton.setOnClickListener(onCancelDownload);
         }
 
-        displayImageOptions = Utils.getImageLoadingOptions().build();
-
         itemView.setOnClickListener(onAppClicked);
     }
 
@@ -169,7 +162,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
 
         // Figures out the current install/update/download/etc status for the app we are viewing.
         // Then, asks the view to update itself to reflect this status.
@@ -193,7 +186,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
     }
 
-    /** To be overridden if required */
+    /**
+     * To be overridden if required
+     */
     public boolean canDismiss() {
         return false;
     }
@@ -214,6 +209,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     /**
      * Override to respond to the user swiping an app to dismiss it from the list.
+     *
      * @return Optionally return a description of what you did if it is not obvious to the user. It will be shown as
      * a {@link android.widget.Toast} for a {@link android.widget.Toast#LENGTH_SHORT} time.
      * @see #canDismiss() This must also be overriden and should return true.
@@ -235,7 +231,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     /**
      * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatus)}
      * and then updates the relevant widgets depending on that state.
-     *
+     * <p>
      * Should contain little to no business logic, this all belongs to
      * {@link #getCurrentViewState(App, AppUpdateStatus)}.
      *
@@ -489,7 +485,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                                 intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
                         try {
                             pendingIntent.send();
-                        } catch (PendingIntent.CanceledException ignored) { }
+                        } catch (PendingIntent.CanceledException ignored) {
+                        }
                     }
                 }
             };
@@ -503,8 +500,11 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
     }
 
-    /** To be overridden by subclasses if desired */
-    protected void onSecondaryButtonPressed(@NonNull App app) { }
+    /**
+     * To be overridden by subclasses if desired
+     */
+    protected void onSecondaryButtonPressed(@NonNull App app) {
+    }
 
     @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {

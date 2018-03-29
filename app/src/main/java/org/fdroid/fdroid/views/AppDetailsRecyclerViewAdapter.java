@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
@@ -34,11 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -317,7 +312,6 @@ public class AppDetailsRecyclerViewAdapter
         final TextView progressLabel;
         final TextView progressPercent;
         final View progressCancel;
-        final DisplayImageOptions displayImageOptions;
         boolean descriptionIsExpanded;
 
         HeaderViewHolder(View view) {
@@ -340,14 +334,6 @@ public class AppDetailsRecyclerViewAdapter
             progressLabel = (TextView) view.findViewById(R.id.progress_label);
             progressPercent = (TextView) view.findViewById(R.id.progress_percent);
             progressCancel = view.findViewById(R.id.progress_cancel);
-            displayImageOptions = new DisplayImageOptions.Builder()
-                    .cacheInMemory(true)
-                    .cacheOnDisk(true)
-                    .imageScaleType(ImageScaleType.NONE)
-                    .showImageOnLoading(R.drawable.ic_repo_app_default)
-                    .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-                    .bitmapConfig(Bitmap.Config.RGB_565)
-                    .build();
             descriptionView.setMaxLines(MAX_LINES);
             descriptionView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             descriptionMoreView.setOnClickListener(new View.OnClickListener() {
@@ -408,7 +394,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
-            ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
+            ImageLoader.getInstance().displayImage(app.iconUrl, iconView, Utils.getRepoAppDisplayImageOptions());
             titleView.setText(app.name);
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
