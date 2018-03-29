@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid.views;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -500,23 +501,37 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Adds a new repo to the database.
          */
+        @SuppressLint("StaticFieldLeak")
         private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint,
                                             final String username, final String password) {
 
-            addRepoDialog.findViewById(R.id.add_repo_form).setVisibility(View.GONE);
-            addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setVisibility(View.GONE);
+            final View addRepoForm = addRepoDialog.findViewById(R.id.add_repo_form);
+            addRepoForm.setVisibility(View.GONE);
+            final View positiveButton = addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setVisibility(View.GONE);
 
             final TextView textSearching = (TextView) addRepoDialog.findViewById(R.id.text_searching_for_repo);
             textSearching.setText(getString(R.string.repo_searching_address, originalAddress));
 
+            final Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+            skip.setText(R.string.skip);
+
             final AsyncTask<String, String, String> checker = new AsyncTask<String, String, String>() {
 
                 private int statusCode = -1;
+                private final static int REFRESH_DIALOG = Integer.MAX_VALUE;
+                private final static int HTTP_UNAUTHORIZED = 401;
+                private final static int HTTP_OK = 200;
 
                 @Override
                 protected String doInBackground(String... params) {
-
                     final String originalAddress = params[0];
+
+                    if (fingerprintRepoMap.containsKey(fingerprint)) {
+                        statusCode = REFRESH_DIALOG;
+                        return originalAddress;
+                    }
+
                     final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
                     for (final String path : pathsToCheck) {
 
@@ -524,6 +539,11 @@ public class ManageReposActivity extends AppCompatActivity
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                         final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
+
+                        if (urlRepoMap.containsKey(addressWithoutIndex)) {
+                            statusCode = REFRESH_DIALOG;
+                            return addressWithoutIndex;
+                        }
 
                         final Uri uri = builder.appendPath("index.jar").build();
 
@@ -547,14 +567,13 @@ public class ManageReposActivity extends AppCompatActivity
                 }
 
                 private boolean checkForRepository(Uri indexUri) throws IOException {
-
                     final URL url = new URL(indexUri.toString());
                     final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("HEAD");
 
                     statusCode = connection.getResponseCode();
 
-                    return statusCode == 401 || statusCode == 200;
+                    return statusCode == HTTP_UNAUTHORIZED || statusCode == HTTP_OK;
                 }
 
                 @Override
@@ -568,7 +587,7 @@ public class ManageReposActivity extends AppCompatActivity
 
                     if (addRepoDialog.isShowing()) {
 
-                        if (statusCode == 401) {
+                        if (statusCode == HTTP_UNAUTHORIZED) {
 
                             final View view = getLayoutInflater().inflate(R.layout.login, null);
                             final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
@@ -608,6 +627,13 @@ public class ManageReposActivity extends AppCompatActivity
 
                             credentialsDialog.show();
 
+                        } else if (statusCode == REFRESH_DIALOG) {
+                            addRepoForm.setVisibility(View.VISIBLE);
+                            positiveButton.setVisibility(View.VISIBLE);
+                            textSearching.setText("");
+                            skip.setText(R.string.cancel);
+                            skip.setOnClickListener(null);
+                            validateRepoDetails(newAddress, fingerprint);
                         } else {
 
                             // create repo without username/password
@@ -617,8 +643,6 @@ public class ManageReposActivity extends AppCompatActivity
                 }
             };
 
-            Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-            skip.setText(R.string.skip);
             skip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -758,7 +782,6 @@ public class ManageReposActivity extends AppCompatActivity
                 finish();
             }
         }
-
     }
 
     private void addRepoFromIntent(Intent intent) {
