@@ -72,8 +72,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
-@SuppressWarnings("LineLength")
-public class ManageReposActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
+public class ManageReposActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
     private static final String TAG = "ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
@@ -309,7 +309,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                                     break;
 
                                 case IS_SWAP:
-                                    Utils.debugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                    Utils.debugLog(TAG, "Removing existing swap repo " + url
+                                            + " before adding new repo.");
                                     Repo repo = RepoProvider.Helper.findByAddress(context, url);
                                     RepoProvider.Helper.remove(context, repo.getId());
                                     prepareToCreateNewRepo(url, fp, username, password);
@@ -499,7 +500,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         /**
          * Adds a new repo to the database.
          */
-        private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint, final String username, final String password) {
+        private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint,
+                                            final String username, final String password) {
 
             addRepoDialog.findViewById(R.id.add_repo_form).setVisibility(View.GONE);
             addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setVisibility(View.GONE);
@@ -518,7 +520,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                     final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
                     for (final String path : pathsToCheck) {
 
-                        Utils.debugLog(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
+                        Utils.debugLog(TAG, "Check for repo at " + originalAddress + " with suffix '" + path + "'");
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                         final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
@@ -536,7 +538,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                         }
 
                         if (isCancelled()) {
-                            Utils.debugLog(TAG, "Not checking any more repo addresses, because process was skipped.");
+                            Utils.debugLog(TAG, "Not checking more repo addresses, because process was skipped.");
                             break;
                         }
                     }
@@ -569,7 +571,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                         if (statusCode == 401) {
 
                             final View view = getLayoutInflater().inflate(R.layout.login, null);
-                            final AlertDialog credentialsDialog = new AlertDialog.Builder(context).setView(view).create();
+                            final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
+                                    .setView(view).create();
                             final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
                             final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
 
@@ -597,7 +600,9 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            createNewRepo(newAddress, fingerprint, nameInput.getText().toString(), passwordInput.getText().toString());
+                                            createNewRepo(newAddress, fingerprint,
+                                                    nameInput.getText().toString(),
+                                                    passwordInput.getText().toString());
                                         }
                                     });
 
@@ -669,7 +674,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
             createNewRepo(address, fingerprint, null, null);
         }
 
-        private void createNewRepo(String address, String fingerprint, final String username, final String password) {
+        private void createNewRepo(String address, String fingerprint,
+                                   final String username, final String password) {
             try {
                 address = normalizeUrl(address);
             } catch (URISyntaxException e) {
@@ -688,7 +694,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
             RepoProvider.Helper.insert(context, values);
             finishedAddingRepo();
-            Toast.makeText(ManageReposActivity.this, getString(R.string.repo_added, address), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getString(R.string.repo_added, address), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -760,7 +766,8 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
         if (newRepoConfig.isValidRepo()) {
             isImportingRepo = true;
-            showAddRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint(), newRepoConfig.getUsername(), newRepoConfig.getPassword());
+            showAddRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint(),
+                    newRepoConfig.getUsername(), newRepoConfig.getPassword());
             checkIfNewRepoOnSameWifi(newRepoConfig);
         } else if (newRepoConfig.getErrorMessage() != null) {
             Toast.makeText(this, newRepoConfig.getErrorMessage(), Toast.LENGTH_LONG).show();
