@@ -90,7 +90,7 @@
     <string name="search_hint">חיפוש יישומונים</string>
 
     <string name="appcompatibility">תאימות היישומון</string>
-    <string name="show_incompat_versions">גירסאות לא תואמות</string>
+    <string name="show_incompat_versions">לכלול גירסאות שאינן תואמות</string>
     <string name="show_incompat_versions_on">הצגת גירסאות היישומון שאינן תואמות להתקן</string>
 
     <string name="local_repo">מאגר מקומי</string>
@@ -154,7 +154,8 @@
     <string name="empty_installed_app_list">אין יישומונים מותקנים. 
 \n 
 \nיש יישומונים מותקנים על מכשירך, אך אלו אינם זמינים מתוך F-Droid. מצב זה עלול לקרות כאשר עליך לעדכן את המאגרים שלך או שבמאגרים באמת אין את היישומונים שלך.</string>
-    <string name="empty_can_update_app_list">ברכותינו! היישומונים שלך עדכניים.</string>
+    <string name="empty_can_update_app_list">ברכותינו!
+\nהיישומונים שלך עדכניים.</string>
 
     <string name="requesting_root_access_body">בקשה לגישת על (root)…</string>
     <string name="root_access_denied_title">גישת על (root) נאסרה</string>
@@ -191,7 +192,7 @@
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכול</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
-    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן?</string>
+    <string name="uninstall_update_confirm">להחליף יישומון זה בגירסת היצרן?</string>
     <string name="uninstall_confirm">להסיר יישומון זה?</string>
 
     <string name="perms_new_perm_prefix">חדש:</string>
@@ -240,7 +241,7 @@
     <string name="theme_light">בהירה</string>
     <string name="theme_dark">אפלה</string>
     <string name="unstable_updates">עדכונים לא יציבים</string>
-    <string name="unstable_updates_summary">הצעת עדכונים לגרסאות לא יציבות</string>
+    <string name="unstable_updates_summary">הצעת עדכונים לגירסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
     <string name="swap_nfc_title">יש לגעת כדי להחליף</string>
     <string name="swap_nearby">החלפה בקרבת מקום</string>
@@ -255,7 +256,7 @@
     <string name="swap_intro">ניתן להתחבר ולהחליף יישומונים עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">אין אפשרות למצוא אנשים בקרבת מקום כדי להחליף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה בעת ההתחברות להתקן, אין אפשרות לבצע מולו החלפה!</string>
-    <string name="SignatureMismatch">הגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגרסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
+    <string name="SignatureMismatch">היגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגירסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
     <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, פעולה זו תוסיף מידע מפתח חדש.</string>
     <string name="repo_exists_enable">מאגר זה כבר מותקן, נא לאמת כדי לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">המאגר הנכנס כבר מותקן ומאופשר.</string>
@@ -341,7 +342,7 @@
 
     <string name="installed_apps__activity_title">יישומונים מותקנים</string>
     <string name="installed_app__updates_ignored">עדכונים בהתעלמות</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגרסה %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגירסה %1$s</string>
     <string name="updates__tts__download_app">הורדה</string>
     <string name="updates__tts__download_updates_for_all_apps">הורדת כל העדכונים</string>
 
@@ -490,14 +491,14 @@
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
     <string name="app_permission_storage">ל־F-Droid נדרשת הרשאה לגשת לאחסון כדי להתקין זאת לאחסון. נא להרשות זאת במסך הבא כדי להמשיך בהתקנה.</string>
 
-    <string name="app_details__incompatible_mismatched_signature">חתימה שונה מהגרסה המותקנת</string>
-    <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגרסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">אין גרסאות עם חתימה תואמת</string>
-    <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
+    <string name="app_details__incompatible_mismatched_signature">חתימה שונה מהגירסה המותקנת</string>
+    <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגירסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">אין גירסאות עם חתימה תואמת</string>
+    <string name="app_details__no_versions__none_compatible_with_device">אין גירסאות תואמות להתקן זה</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">הגירסה המותקנת אינה תואמת לכל הגירסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גירסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. אנו ממליצים להסיר את היישומון הזה מיידית.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">מצאנו חולשה אצל %1$s. אנו ממליצים לשדרג את היישומון הזה לגרסה החדשה ביותר מיידית.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">מצאנו חולשה אצל %1$s. אנו ממליצים לשדרג את היישומון הזה ליגרסה החדשה ביותר מיידית.</string>
     <string name="updates__app_with_known_vulnerability__ignore">התעלמות</string>
 
     <string name="app_list__dismiss_app_update">העדכון בהתעלמות</string>
@@ -538,4 +539,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
+    <string name="show_root_apps">לכלול גירסאות שדורשות גישת על</string>
+    <string name="show_root_apps_on">הצגת יישומונים שדורשים גישת על למכשיר</string>
+    <string name="show_anti_feature_apps">לכלול יישומונים שמכילים תכונות שליליות</string>
+    <string name="show_anti_feature_apps_on">הצגת יישומונים שדורשים תכונות שליליות</string>
+    <string name="force_touch_apps">לכלול יישומוני מסך מגע</string>
+    <string name="force_touch_apps_on">הצגת יישומונים שדורשים מסך מגע ללא תלות בתמיכת החומרה</string>
+
     </resources>

@@ -81,7 +81,7 @@
     <string name="expert_on">Ammustra àteras informatziones e abìlita àteras impostatziones</string>
     <string name="search_hint">Chirca aplicatziones</string>
     <string name="appcompatibility">Cumpatibilidade aplicatziones</string>
-    <string name="show_incompat_versions">Versiones non cumpatìbiles</string>
+    <string name="show_incompat_versions">Inclue sas versiones non cumpatìbiles</string>
     <string name="show_incompat_versions_on">Ammustra sas versiones non cumpatìbiles cun su dispositivu</string>
     <string name="local_repo">Depòsitu locale</string>
     <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
@@ -569,4 +569,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
+    <string name="show_root_apps">Inclue sas aplicatziones \"root\"</string>
+    <string name="show_root_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de sos privilègios de root</string>
+    <string name="show_anti_feature_apps">Inclue sas aplicatziones cun anti-funtzionalidades</string>
+    <string name="show_anti_feature_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de anti-funtzionalidades</string>
+    <string name="force_touch_apps">Inclue sas aplicatziones chi impreant s\'ischermu tàtile</string>
+    <string name="force_touch_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de s\'ischermu tàtile in cale si siat dispositivu</string>
+
     </resources>

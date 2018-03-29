@@ -104,7 +104,7 @@
     <string name="search_hint">搜尋應用程式</string>
 
     <string name="appcompatibility">應用程式相容性</string>
-    <string name="show_incompat_versions">不相容的版本</string>
+    <string name="show_incompat_versions">包括不相容的版本</string>
     <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
 
     <string name="icon">圖示</string>
@@ -160,9 +160,11 @@
     <string name="repo_num_apps">應用程式數量</string>
     <string name="repo_last_update">上次更新</string>
     <string name="unsigned_description">這表示應用程式清單無法被驗證。 您應該小心從未簽署索引所下載的應用程式。</string>
-    <string name="repo_not_yet_updated">此軟體庫尚未被使用。 您需要啟用它才能檢視其中的應用程式。</string>
+    <string name="repo_not_yet_updated">此軟體庫尚未被使用。您需要啟用它才能檢視其中的應用程式。</string>
     <string name="repo_confirm_delete_title">要刪除軟體庫嗎？</string>
-    <string name="repo_confirm_delete_body">軟體庫被刪除後，軟體庫中的應用程式將不會在 F-Droid 出現。 注意：所有之前所安裝的應用程式會保留在您的裝置上。</string>
+    <string name="repo_confirm_delete_body">軟體庫被刪除後，軟體庫中的應用程式將不會在 F-Droid 出現。
+\n
+\n注意：所有之前已安裝的應用程式會保留在您的裝置上。</string>
     <string name="repo_disabled_notification">已停用 %1$s。
 \n
 \n您需重新啟用此軟體庫，才能安裝其中的應用程式。</string>
@@ -171,7 +173,8 @@
     <string name="category_Phone_SMS">通話與簡訊</string>
     <string name="category_Writing">書寫</string>
 
-    <string name="empty_can_update_app_list">恭喜！您的應用程式都是最新的。</string>
+    <string name="empty_can_update_app_list">恭喜！
+\n您的應用程式都是最新的。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
     <string name="repo_exists_add_fingerprint">此軟體庫已經設定，此動作將會加入新的金鑰資訊。</string>
@@ -236,7 +239,7 @@
     <string name="menu_email">E-Mail 作者</string>
     <string name="menu_issues">問題</string>
     <string name="local_repo_running">F-Droid 已準備好交換</string>
-    <string name="touch_to_configure_local_repo">觸碰以便檢視詳細資料並允許其他去交換您的應用程式。</string>
+    <string name="touch_to_configure_local_repo">點觸以便檢視詳細資料並允許其他去交換您的應用程式。</string>
     <string name="swap_nfc_title">觸碰以便交換</string>
     <string name="writing_index_jar">寫入已簽署的索引檔案中 (index.jar)…</string>
     <string name="linking_apks">正在連結 APK 到軟體庫裡…</string>
@@ -357,7 +360,7 @@
     <string name="notification_title_summary_installing">正在安裝</string>
     <string name="notification_title_summary_installed">安裝成功</string>
     <string name="notification_title_summary_install_error">安裝失敗</string>
-    <string name="notification_action_update">更新</string>
+    <string name="notification_action_update">個更新</string>
     <string name="notification_action_cancel">取消</string>
     <string name="notification_action_install">安裝</string>
 
@@ -390,7 +393,7 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="other">從 %2$s 類別中查看所有 %1$d 的應用程式</item>
     </plurals>
-    <string name="app__install_downloaded_update">更新</string>
+    <string name="app__install_downloaded_update">個更新</string>
 
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
 
@@ -473,7 +476,7 @@
 
     <string name="privacy">隱私權</string>
     <string name="preventScreenshots_title">阻止螢幕快照</string>
-    <string name="preventScreenshots_summary">阻擋攝取螢幕快照，並自最新的應用程式螢幕中隱藏應用程式內容</string>
+    <string name="preventScreenshots_summary">阻擋拍攝螢幕快照，並自最新的應用程式螢幕中隱藏應用程式內容</string>
 
     <string name="panic_app_setting_title">應急按鈕應用程式</string>
     <string name="panic_app_unknown_app">未知的應用程式</string>
@@ -505,4 +508,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">您的相機似乎沒有自動對焦。掃描代碼可能會很困難。</string>
+    <string name="show_root_apps">包括 root 應用程式</string>
+    <string name="show_root_apps_on">顯示需要 root 授權的應用程式</string>
+    <string name="show_anti_feature_apps">包括反特徵應用程式</string>
+    <string name="show_anti_feature_apps_on">顯示需要反特徵的應用程式</string>
+    <string name="force_touch_apps">包括觸控式螢幕的應用程式</string>
+    <string name="force_touch_apps_on">顯示需要觸控式螢幕的應用程式，而不管硬體的支援度如何</string>
+
     </resources>

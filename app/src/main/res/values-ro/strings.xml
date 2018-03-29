@@ -93,8 +93,8 @@
     <string name="writing_index_jar">Scriere index semnat (index.jar)…</string>
     <string name="deleting_repo">Se șterge depozitul curent…</string>
     <string name="local_repo">Depozit local</string>
-    <string name="show_incompat_versions_on">Arată versiunile incompatibile cu acest dispozitiv</string>
-    <string name="show_incompat_versions">Versiuni incompatibile</string>
+    <string name="show_incompat_versions_on">Se listează și aplicațiile incompatibile cu acest dispozitiv</string>
+    <string name="show_incompat_versions">Include incompatibile</string>
     <string name="appcompatibility">Compatibilitate aplicații</string>
     <string name="expert_on">Arata informații și setări suplimentare</string>
 
@@ -505,4 +505,13 @@
     <string name="hiding_dialog_warning">Atenție: Orice scurtătură din ecranul de pornire va fi de asemenea eliminată și va trebui adăugată din nou manual.</string>
     <string name="hide_on_long_search_press_summary">Aplicația va fi ascunsă dacă se apasă lung butonul de căutare</string>
 <string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="show_root_apps">Include root</string>
+    <string name="show_root_apps_on">Se listează și aplicațiile ce necesită acces de tip administrator (root)</string>
+    <string name="show_anti_feature_apps">Include caracteristici periculoase</string>
+    <string name="show_anti_feature_apps_on">Se listează și aplicațiile ce prezintă caracteristici periculoase (ex. urmărire)</string>
+    <string name="force_touch_apps">Include ecran tactil</string>
+    <string name="force_touch_apps_on">Se listează și aplicațiile ce necesită un ecran tactil indiferent dacă dispozitivul suportă sau nu</string>
+
     </resources>

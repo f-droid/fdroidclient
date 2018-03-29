@@ -76,7 +76,7 @@
     <string name="expert_on">Ek veri göster ve ilâve ayarları etkinleştir</string>
     <string name="search_hint">Uygulama ara</string>
     <string name="appcompatibility">Uygulama uyumluluğu</string>
-    <string name="show_incompat_versions">Uyumsuz sürümler</string>
+    <string name="show_incompat_versions">Uyumsuz sürümleri içer</string>
     <string name="show_incompat_versions_on">Aygıtla uyumsuz olan uygulama sürümlerini göster</string>
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
@@ -539,4 +539,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Kameranızın kendiliğinden odaklanması yok gibi görünüyor. Kodu taramak zor olabilir.</string>
+    <string name="show_root_apps">Kök uygulamalarını içer</string>
+    <string name="show_root_apps_on">Kök yetkileri gerektiren uygulamaları göster</string>
+    <string name="show_anti_feature_apps">Karşıt-özellikli uygulamaları içer</string>
+    <string name="show_anti_feature_apps_on">Karşıt-özellikler gerektiren uygulamaları göster</string>
+    <string name="force_touch_apps">Dokunmatik ekran uygulamalarını içer</string>
+    <string name="force_touch_apps_on">Donanım desteği aramadan dokunmatik ekran gerektiren uygulamaları göster</string>
+
     </resources>

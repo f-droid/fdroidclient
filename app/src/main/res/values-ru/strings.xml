@@ -78,7 +78,7 @@
     <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
     <string name="search_hint">Поиск приложений</string>
     <string name="appcompatibility">Совместимость приложений</string>
-    <string name="show_incompat_versions">Несовместимые версии</string>
+    <string name="show_incompat_versions">Включить несовместимые версии</string>
     <string name="show_incompat_versions_on">Показать версии приложений, несовместимые с устройством</string>
     <string name="local_repo">Локальный репозиторий</string>
     <string name="local_repo_running">F-Droid готов к обмену</string>
@@ -540,4 +540,6 @@
     <string name="hide_on_long_search_press_summary">Длительное нажатие кнопки поиска скроет приложение</string>
 
 <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
+    <string name="show_root_apps">Включить root-приложения</string>
+    <string name="show_root_apps_on">Показать приложения, требующие привилегий root</string>
     </resources>
