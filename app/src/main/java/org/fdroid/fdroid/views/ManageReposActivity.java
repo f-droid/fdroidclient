@@ -275,7 +275,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                             try {
                                 url = normalizeUrl(url);
                             } catch (URISyntaxException e) {
-                                invalidUrl();
+                                invalidUrl(null);
                                 return;
                             }
 
@@ -364,69 +364,77 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
             final Repo repo = !TextUtils.isEmpty(uri) ? RepoProvider.Helper.findByAddress(context, uri) : null;
 
             if (repo == null) {
-                repoDoesntExist();
+                repoDoesntExist(repo);
             } else {
                 if (repo.isSwap) {
-                    repoIsSwap();
+                    repoIsSwap(repo);
                 } else if (repo.fingerprint == null && fingerprint.length() > 0) {
-                    upgradingToSigned();
+                    upgradingToSigned(repo);
                 } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
-                    repoFingerprintDoesntMatch();
+                    repoFingerprintDoesntMatch(repo);
                 } else {
                     // Could be either an unsigned repo, and no fingerprint was supplied,
                     // or it could be a signed repo with a matching fingerprint.
                     if (repo.inuse) {
-                        repoExistsAndEnabled();
+                        repoExistsAndEnabled(repo);
                     } else {
-                        repoExistsAndDisabled();
+                        repoExistsAndDisabled(repo);
                     }
                 }
             }
         }
 
-        private void repoDoesntExist() {
-            updateUi(AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
+        private void repoDoesntExist(Repo repo) {
+            updateUi(repo, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
         }
 
-        private void repoIsSwap() {
-            updateUi(AddRepoState.IS_SWAP, 0, false, R.string.repo_add_add, true);
+        private void repoIsSwap(Repo repo) {
+            updateUi(repo, AddRepoState.IS_SWAP, 0, false, R.string.repo_add_add, true);
         }
 
         /**
          * Same address with different fingerprint, this could be malicious, so display a message
          * force the user to manually delete the repo before adding this one.
          */
-        private void repoFingerprintDoesntMatch() {
-            updateUi(AddRepoState.EXISTS_FINGERPRINT_MISMATCH, R.string.repo_delete_to_overwrite,
+        private void repoFingerprintDoesntMatch(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_FINGERPRINT_MISMATCH,
+                    R.string.repo_delete_to_overwrite,
                     true, R.string.overwrite, false);
         }
 
-        private void invalidUrl() {
-            updateUi(AddRepoState.INVALID_URL, R.string.invalid_url, true,
+        private void invalidUrl(Repo repo) {
+            updateUi(repo, AddRepoState.INVALID_URL, R.string.invalid_url, true,
                     R.string.repo_add_add, false);
         }
 
-        private void repoExistsAndDisabled() {
-            updateUi(AddRepoState.EXISTS_DISABLED,
+        private void repoExistsAndDisabled(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_DISABLED,
                     R.string.repo_exists_enable, false, R.string.enable, true);
         }
 
-        private void repoExistsAndEnabled() {
-            updateUi(AddRepoState.EXISTS_ENABLED, R.string.repo_exists_and_enabled, false,
+        private void repoExistsAndEnabled(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_ENABLED, R.string.repo_exists_and_enabled, false,
                     R.string.ok, true);
         }
 
-        private void upgradingToSigned() {
-            updateUi(AddRepoState.EXISTS_UPGRADABLE_TO_SIGNED, R.string.repo_exists_add_fingerprint,
+        private void repoExistsAddMirror(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_ADD_MIRROR, R.string.repo_exists_add_mirror, false,
+                    R.string.repo_add_mirror, true);
+        }
+
+        private void upgradingToSigned(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_UPGRADABLE_TO_SIGNED, R.string.repo_exists_add_fingerprint,
                     false, R.string.add_key, true);
         }
 
-        private void updateUi(AddRepoState state, int messageRes, boolean redMessage, int addTextRes, boolean addEnabled) {
+        @DebugLog
+        private void updateUi(Repo repo, AddRepoState state, int messageRes, boolean redMessage, int addTextRes,
+                              boolean addEnabled) {
             if (addRepoState != state) {
                 addRepoState = state;
 
                 if (messageRes > 0) {
-                    overwriteMessage.setText(messageRes);
+                    overwriteMessage.setText(String.format(getString(messageRes), repo.name));
                     overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
                         overwriteMessage.setTextColor(getResources().getColor(R.color.red));
