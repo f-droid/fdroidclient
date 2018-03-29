@@ -60,7 +60,7 @@
     <string name="expert">Expertní mód</string>
     <string name="expert_on">Zobrazit dodatečné informace a povolit pokročilá nastavení</string>
     <string name="search_hint">Hledat aplikace</string>
-    <string name="show_incompat_versions">Nekompatibilní verze</string>
+    <string name="show_incompat_versions">Zahrnout nekompatibilní verze</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
     <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním si přetáhnout tvé aplikace.
@@ -552,4 +552,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
+    <string name="show_root_apps">Zahrnout aplikace vyžadující root přístup</string>
+    <string name="show_root_apps_on">Zobrazit aplikace které vyžadují práva root</string>
+    <string name="show_anti_feature_apps">Zahrnout aplikace s funkcemi které nejsou v zájmu uživatele</string>
+    <string name="show_anti_feature_apps_on">Zobrazit aplikace které vyžadují funkce které nejsou v zájmu uživatele</string>
+    <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
+    <string name="force_touch_apps_on">Zobrazit aplikace které vyžadují dotykovou obrazovku i když toto zařízení takovou není vybaveno</string>
+
     </resources>

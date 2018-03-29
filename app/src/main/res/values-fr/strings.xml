@@ -79,7 +79,7 @@
     <string name="expert_on">Affiche plus d\'infos et active des paramètres supplémentaires</string>
     <string name="search_hint">Rechercher des applis</string>
     <string name="appcompatibility">Compatibilité des applis</string>
-    <string name="show_incompat_versions">Versions incompatibles</string>
+    <string name="show_incompat_versions">Inclure les versions incompatibles</string>
     <string name="show_incompat_versions_on">Afficher les versions d\'applis qui sont incompatibles avec cet appareil</string>
     <string name="local_repo">Dépôt local</string>
     <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
@@ -552,4 +552,6 @@
     <string name="hide_on_long_search_press_summary">Appuyez longuement sur le bouton de recherche pour cacher l\'application</string>
 
 <string name="warning_scaning_qr_code">Votre appareil-photo n’a pas de mise au point automatique. Il sera peut-être difficile de scanner le code.</string>
+    <string name="show_root_apps">Inclure les applications nécessitant les privilèges root</string>
+    <string name="show_root_apps_on">Afficher les applications nécessitant les privilèges root</string>
     </resources>

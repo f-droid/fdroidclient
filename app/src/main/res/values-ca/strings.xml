@@ -75,9 +75,8 @@
     <string name="expert_on">Mostra informació extra i habilita paràmetres extra</string>
     <string name="search_hint">Cerca aplicacions</string>
     <string name="appcompatibility">Compatibilitat d\'aplicacions</string>
-    <string name="show_incompat_versions">Versions incompatibles</string>
-    <string name="show_incompat_versions_on">Mostra també versions no compatibles de les aplicacions amb el dispositiu
-    </string>
+    <string name="show_incompat_versions">Inclou versions incompatibles</string>
+    <string name="show_incompat_versions_on">Mostra també les versions de les aplicacions que no son compatibles amb el dispositiu</string>
     <string name="local_repo">Dipòsit local</string>
     <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
     <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>
@@ -509,4 +508,14 @@
     <string name="panic_hide_title">Amagueu %s</string>
     <string name="panic_hide_summary">L\'app s\'ocultarà</string>
 
-</resources>
+<string name="sort_search">Ordena els resultats de la cerca</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="show_root_apps_on">Mostra aplicacions que requereixen privilegis d\'administrador</string>
+    <string name="panic_hide_warning_title">Recorda com restaurar-ho</string>
+    <string name="panic_hide_warning_message">En una situació de pànic, això esborrarà %1$s del menú. Només es podrà restaurar escrivint \"%2$d\" a la falsa aplicació %3$s.</string>
+
+    <string name="hiding_calculator">Calculadora</string>
+    <string name="hiding_dialog_title">Amaga %s ara</string>
+    </resources>

@@ -76,7 +76,7 @@
     <string name="expert_on">Extra informatie weergeven en extra instellingen inschakelen</string>
     <string name="search_hint">Zoek apps</string>
     <string name="appcompatibility">Compatibiliteit van app</string>
-    <string name="show_incompat_versions">Incompatibele versies</string>
+    <string name="show_incompat_versions">Incompatibele versies tonen</string>
     <string name="show_incompat_versions_on">Toon app-versies die niet compatibel zijn met je apparaat</string>
     <string name="local_repo">Collectie gedeelde apps</string>
     <string name="local_repo_running">F-Droid is klaar om apps uit te wisselen</string>
@@ -426,9 +426,9 @@
     </plurals>
 
     <plurals name="details_last_update_days">
-        <item quantity="one">%1$d dag geleden geüpdatet</item>
-        <item quantity="other">%1$d dagen geleden geüpdatet</item>
-    </plurals>
+	<item quantity="one">%1$d dag geleden bijgewerkt</item>
+	<item quantity="other">%1$d dagen geleden bijgewerkt</item>
+</plurals>
     <string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!
@@ -442,7 +442,7 @@
 
     <string name="categories__empty_state__no_categories">Geen categorieën om weer te geven</string>
 
-    <string name="details_last_updated_today">Vandaag geüpdatet</string>
+    <string name="details_last_updated_today">Vandaag bijgewerkt</string>
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Download annuleren</string>
     <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
@@ -460,17 +460,17 @@
         <item quantity="other">%1$d apps geïnstalleerd</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">%1$d week geleden geüpdatet</item>
-        <item quantity="other">%1$d weken geleden geüpdatet</item>
-    </plurals>
+	<item quantity="one">%1$d week geleden bijgewerkt</item>
+	<item quantity="other">%1$d weken geleden bijgewerkt</item>
+</plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">%1$d maand geleden geüpdatet</item>
-        <item quantity="other">%1$d maand geleden geüpdatet</item>
-    </plurals>
+	<item quantity="one">%1$d maand geleden bijgewerkt</item>
+	<item quantity="other">%1$d maand geleden bijgewerkt</item>
+</plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">%1$d jaar geleden geüpdatet</item>
-        <item quantity="other">%1$d jaar geleden geüpdatet</item>
-    </plurals>
+	<item quantity="one">%1$d jaar geleden bijgewerkt</item>
+	<item quantity="other">%1$d jaar geleden bijgewerkt</item>
+</plurals>
 <string name="by_author_format">door %s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="force_old_index">Oud indexformaat afdwingen</string>
@@ -529,4 +529,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Je camera lijkt niet over autofocus te beschikken. Het scannen van de code kan moeilijk zijn.</string>
+    <string name="show_root_apps">Root-apps tonen</string>
+    <string name="show_root_apps_on">Toon apps die root-privileges vereisen</string>
+    <string name="show_anti_feature_apps">Apps met antifuncties tonen</string>
+    <string name="show_anti_feature_apps_on">Toon apps die antifuncties bevatten</string>
+    <string name="force_touch_apps">Aanraakschermapps tonen</string>
+    <string name="force_touch_apps_on">Toon apps die ondersteuning voor aanraakscherm vereisen ongeacht hardwareondersteuning</string>
+
     </resources>

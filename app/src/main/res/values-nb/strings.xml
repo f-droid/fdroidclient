@@ -76,7 +76,7 @@
     <string name="expert_on">Vis ekstra info og skru på ekstra innstillinger</string>
     <string name="search_hint">Søk i programliste</string>
     <string name="appcompatibility">Programstøtte</string>
-    <string name="show_incompat_versions">Ukompatible versjoner</string>
+    <string name="show_incompat_versions">Inkluder ukompatible versjoner</string>
     <string name="show_incompat_versions_on">Vis programvareversjoner som ikke er kompatible med enheten</string>
     <string name="local_repo">Lokal pakkebrønn</string>
     <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
@@ -261,7 +261,8 @@
         F-Droid har dem ikke. Det kan hende du bare må oppdatere pakkebrønnene dine, eller at de faktisk ikke finnes
         der.
     </string>
-    <string name="empty_can_update_app_list">Alle programmene dine er av nyeste dato.</string>
+    <string name="empty_can_update_app_list">Gratulerer!
+\nAlle programmene dine er av nyeste dato.</string>
 
     <string name="system_install_denied_signature">Signaturen til tillegget er feil! Send inn en feilrapport om dette
         omgående!
@@ -543,4 +544,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="warning_scaning_qr_code">Kameraet ditt mangler autofokus. Det kan vise seg vanskelig å skanne koden.</string>
+    <string name="show_root_apps">Inkluder root-programmer</string>
+    <string name="show_root_apps_on">Vis programmer som krever root-tilgang</string>
+    <string name="show_anti_feature_apps">Inkluder antifunksjons-programmer</string>
+    <string name="show_anti_feature_apps_on">Vis programmer som krever anti-funksjoner</string>
+    <string name="force_touch_apps">Inkluder pekeskjermsprogrammer</string>
+    <string name="force_touch_apps_on">Vis programmer som krever pekeskjerm, uavhengig av maskinvarestøtte</string>
+
     </resources>

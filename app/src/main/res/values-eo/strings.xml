@@ -52,7 +52,7 @@
     <string name="expert_on">Montri aldonajn informojn kaj aktivigi aldonajn agordojn</string>
     <string name="search_hint">Serĉi aplikaĵojn</string>
     <string name="appcompatibility">Aplikaĵa kongrueco</string>
-    <string name="show_incompat_versions">Nekongruaj versioj</string>
+    <string name="show_incompat_versions">Inkluzivi nekongruajn versiojn</string>
     <string name="show_incompat_versions_on">Montri versiojn de aplikaĵoj, kiuj estas nekongruaj kun la aparato</string>
     <string name="local_repo">Loka deponejo</string>
     <string name="deleting_repo">Forigado de la deponejo…</string>
@@ -530,4 +530,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
+    <string name="show_root_apps">Inkluzivi ĉefuzantajn aplikaĵojn</string>
+    <string name="show_root_apps_on">Montri aplikaĵojn, kiuj postulas ĉefuzantan aliron (root)</string>
+    <string name="show_anti_feature_apps">Inkluzivi aplikaĵojn kun fiebloj</string>
+    <string name="show_anti_feature_apps_on">Montri aplikaĵojn, kiuj enhavas nedeziratajn eblojn</string>
+    <string name="force_touch_apps">Inkluzivi tuŝekranajn aplikaĵojn</string>
+    <string name="force_touch_apps_on">Montri aplikaĵojn, kiuj bezonas tuŝekranon malgraŭ ĝia nedisponeblo de aparato</string>
+
     </resources>

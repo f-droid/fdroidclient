@@ -68,7 +68,7 @@
     <string name="expert_on">显示额外信息并启用额外选项</string>
     <string name="search_hint">搜索应用</string>
     <string name="appcompatibility">应用兼容性</string>
-    <string name="show_incompat_versions">不兼容的版本</string>
+    <string name="show_incompat_versions">包括不兼容的版本</string>
     <string name="show_incompat_versions_on">显示与该设备不兼容的应用程序版本</string>
     <string name="local_repo">本地软件源</string>
     <string name="deleting_repo">正在删除当前软件源…</string>
@@ -489,4 +489,8 @@
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
 
 <string name="warning_scaning_qr_code">您的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
+    <string name="show_root_apps">包括需 root 的应用</string>
+    <string name="show_root_apps_on">显示需要 root 权限的应用程序</string>
+    <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
+    <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用程序</string>
     </resources>

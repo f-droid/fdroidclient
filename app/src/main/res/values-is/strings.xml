@@ -99,7 +99,7 @@
     <string name="search_hint">Leita að forritum</string>
 
     <string name="appcompatibility">Samhæfni forrits</string>
-    <string name="show_incompat_versions">Ósamhæfðar útgáfur</string>
+    <string name="show_incompat_versions">Hafa með ósamhæfðar útgáfur</string>
     <string name="local_repo">Staðvært hugbúnaðarsafn</string>
     <string name="local_repo_running">F-Droid er tilbúið í forritaskipti</string>
     <string name="deleting_repo">Eyði núgildandi hugbúnaðarsafni…</string>
@@ -581,4 +581,11 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
+    <string name="show_root_apps">Hafa með rótaraðgangsforrit</string>
+    <string name="show_root_apps_on">Birta forrit sem þurfa rótaraðgang</string>
+    <string name="show_anti_feature_apps">Hafa með forrit með ókostum</string>
+    <string name="show_anti_feature_apps_on">Birta forrit með óæskilegum eiginleikum</string>
+    <string name="force_touch_apps">Hafa með forrit sem þurfa snertiskjá</string>
+    <string name="force_touch_apps_on">Birta forrit sem þurfa nauðsynlega snertiskjá hvort sem slíkt er til staðar eður ei</string>
+
     </resources>
