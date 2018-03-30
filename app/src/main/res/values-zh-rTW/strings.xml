@@ -177,6 +177,8 @@
 \n您的應用程式都是最新的。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
+    <string name="repo_exists_add_fingerprint">%1$s 已經設立，此動作將會加入新的金鑰資訊。</string>
+    <string name="repo_delete_to_overwrite">先刪除 %1$s ，以便加入互不相容的金鑰。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     <string name="system_installer">特權擴充套件</string>
     <string name="category_Navigation">導航</string>
@@ -229,6 +231,8 @@
     <string name="uninstall_system_summary">開啟特權擴充套件的詳細資料來更新或解除安裝</string>
     <string name="repo_error_empty_username">空白的使用者名稱，憑證未改變</string>
 
+    <string name="repo_exists_enable">%1$s 已經設立。請確認您要重新啟用它。</string>
+    <string name="repo_exists_and_enabled">%1$s 已設立並已啟用。</string>
     <string name="malformed_repo_uri">略過異常的軟體庫 URI：%s</string>
     <string name="repo_provider">軟體庫：%s</string>
 
@@ -511,4 +515,8 @@
     <string name="force_touch_apps">包括觸控式螢幕的應用程式</string>
     <string name="force_touch_apps_on">顯示需要觸控式螢幕的應用程式，而不管硬體的支援度如何</string>
 
+    <string name="repo_add_mirror">增加鏡像</string>
+    <string name="repo_exists_add_mirror">這是 %1$s 的副本，將其增為鏡像？</string>
+    <string name="repo_official_mirrors">官方鏡像</string>
+    <string name="repo_user_mirrors">使用者鏡像</string>
     </resources>

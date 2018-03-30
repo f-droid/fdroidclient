@@ -313,6 +313,9 @@
         mun hreinsa út öll gögn sem forritið geymir)
     </string>
     <string name="installIncompatible">Forritið er ekki samhæfðt tækinu þínu. Viltu samt prófa að setja það upp?</string>
+    <string name="repo_exists_add_fingerprint">%1$s er þegar uppsett, þetta mun bæta við nýjum lykilupplýsingum.</string>
+    <string name="repo_exists_enable">%1$s er þegar uppsett, staðfestu að þú viljir endurvirkja það.</string>
+    <string name="repo_exists_and_enabled">%1$s er þegar uppsett og virkjað.</string>
     <string name="show_incompat_versions_on">Birta útgáfur forrita sem eru ósamhæfðar tækinu</string>
 
     <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að
@@ -579,4 +582,8 @@
     <string name="force_touch_apps">Hafa með forrit sem þurfa snertiskjá</string>
     <string name="force_touch_apps_on">Birta forrit sem þurfa nauðsynlega snertiskjá hvort sem slíkt er til staðar eður ei</string>
 
+    <string name="repo_add_mirror">Bæta við spegli</string>
+    <string name="repo_exists_add_mirror">Þetta er afrit af %1$s, bæta því við sem spegli?</string>
+    <string name="repo_official_mirrors">Opinberir speglar</string>
+    <string name="repo_user_mirrors">Speglar frá notendum</string>
     </resources>

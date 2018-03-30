@@ -140,6 +140,8 @@
     <string name="back">Zpět</string>
     <string name="bluetooth_activity_not_found">Nerozpoznána žádná Bluetooth metoda přenosu, nějakou vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
+    <string name="repo_exists_add_fingerprint">%1$s je už nastavené, toto jen přidá informace o novém klíči.</string>
+    <string name="repo_exists_enable">%1$s je už nastavené, potvrďte že chcete znovu začít používat.</string>
     <string name="invalid_url">Toto není validní URL.</string>
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
 
@@ -554,4 +556,7 @@
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
     <string name="force_touch_apps_on">Zobrazit aplikace které vyžadují dotykovou obrazovku i když toto zařízení takovou není vybaveno</string>
 
+    <string name="repo_add_mirror">Přidat zrcadlo (mirror)</string>
+    <string name="repo_official_mirrors">Oficiální zrcadla</string>
+    <string name="repo_user_mirrors">Uživatelem určená zrcadla</string>
     </resources>
