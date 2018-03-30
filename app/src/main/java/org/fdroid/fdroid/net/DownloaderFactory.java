@@ -20,19 +20,14 @@ public class DownloaderFactory {
             throws IOException {
         File destFile = File.createTempFile("dl-", "", context.getCacheDir());
         destFile.deleteOnExit(); // this probably does nothing, but maybe...
-        return create(context, urlString, destFile);
+        Uri uri = Uri.parse(urlString);
+        return create(context, uri, destFile);
     }
 
     public static Downloader create(Context context, Uri uri, File destFile)
             throws IOException {
-        return create(context, uri.toString(), destFile);
-    }
-
-    public static Downloader create(Context context, String urlString, File destFile)
-            throws IOException {
         Downloader downloader;
 
-        Uri uri = Uri.parse(urlString);
         String scheme = uri.getScheme();
         if ("bluetooth".equals(scheme)) {
             downloader = new BluetoothDownloader(uri, destFile);
