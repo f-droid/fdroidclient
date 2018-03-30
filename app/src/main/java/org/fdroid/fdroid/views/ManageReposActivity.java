@@ -674,17 +674,24 @@ public class ManageReposActivity extends AppCompatActivity
          * Currently it normalizes the path so that "/./" are removed and "test/../" is collapsed.
          * This is done using {@link URI#normalize()}. It also removes multiple consecutive forward
          * slashes in the path and replaces them with one. Finally, it removes trailing slashes.
+         * <p>
+         * {@code content://} URLs used for repos stored on removable storage get messed up by
+         * {@link URI}.
          */
         private String normalizeUrl(String urlString) throws URISyntaxException {
             if (urlString == null) {
                 return null;
             }
-            URI uri = new URI(urlString);
+            Uri uri = Uri.parse(urlString);
             if (!uri.isAbsolute()) {
                 throw new URISyntaxException(urlString, "Must provide an absolute URI for repositories");
             }
-
-            uri = uri.normalize();
+            if (!uri.isHierarchical()) {
+                throw new URISyntaxException(urlString, "Must provide an hierarchical URI for repositories");
+            }
+            if ("content".equals(uri.getScheme())) {
+                return uri.toString();
+            }
             String path = uri.getPath();
             if (path != null) {
                 path = path.replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
@@ -692,9 +699,13 @@ public class ManageReposActivity extends AppCompatActivity
                     path = path.substring(0, path.length() - 1);
                 }
             }
-
-            return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
-                    path, uri.getQuery(), uri.getFragment()).toString();
+            return new URI(uri.getScheme().toLowerCase(Locale.ENGLISH),
+                    uri.getUserInfo(),
+                    uri.getHost().toLowerCase(Locale.ENGLISH),
+                    uri.getPort(),
+                    path,
+                    uri.getQuery(),
+                    uri.getFragment()).normalize().toString();
         }
 
         /**
