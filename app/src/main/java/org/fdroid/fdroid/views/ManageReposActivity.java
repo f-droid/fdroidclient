@@ -241,7 +241,8 @@ public class ManageReposActivity extends AppCompatActivity
                 for (String url : repo.getMirrorList()) {
                     urlRepoMap.put(url, repo);
                 }
-                if (TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
+                if (!TextUtils.isEmpty(repo.fingerprint)
+                        && TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
                     fingerprintRepoMap.put(repo.fingerprint, repo);
                 }
             }
@@ -296,7 +297,7 @@ public class ManageReposActivity extends AppCompatActivity
                             try {
                                 url = normalizeUrl(url);
                             } catch (URISyntaxException e) {
-                                invalidUrl(null);
+                                invalidUrl();
                                 return;
                             }
 
@@ -411,7 +412,7 @@ public class ManageReposActivity extends AppCompatActivity
             }
 
             if (repo == null) {
-                repoDoesntExist(repo);
+                repoDoesntExist();
             } else {
                 if (repo.isSwap) {
                     repoIsSwap(repo);
@@ -432,8 +433,8 @@ public class ManageReposActivity extends AppCompatActivity
             }
         }
 
-        private void repoDoesntExist(Repo repo) {
-            updateUi(repo, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
+        private void repoDoesntExist() {
+            updateUi(null, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
         }
 
         private void repoIsSwap(Repo repo) {
@@ -450,8 +451,8 @@ public class ManageReposActivity extends AppCompatActivity
                     true, R.string.overwrite, false);
         }
 
-        private void invalidUrl(Repo repo) {
-            updateUi(repo, AddRepoState.INVALID_URL, R.string.invalid_url, true,
+        private void invalidUrl() {
+            updateUi(null, AddRepoState.INVALID_URL, R.string.invalid_url, true,
                     R.string.repo_add_add, false);
         }
 
@@ -480,8 +481,15 @@ public class ManageReposActivity extends AppCompatActivity
             if (addRepoState != state) {
                 addRepoState = state;
 
+                String name;
+                if (repo == null) {
+                    name = '"' + getString(R.string.unknown) + '"';
+                } else {
+                    name = repo.name;
+                }
+
                 if (messageRes > 0) {
-                    overwriteMessage.setText(String.format(getString(messageRes), repo.name));
+                    overwriteMessage.setText(String.format(getString(messageRes), name));
                     overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
                         overwriteMessage.setTextColor(getResources().getColor(R.color.red));
@@ -667,17 +675,24 @@ public class ManageReposActivity extends AppCompatActivity
          * Currently it normalizes the path so that "/./" are removed and "test/../" is collapsed.
          * This is done using {@link URI#normalize()}. It also removes multiple consecutive forward
          * slashes in the path and replaces them with one. Finally, it removes trailing slashes.
+         * <p>
+         * {@code content://} URLs used for repos stored on removable storage get messed up by
+         * {@link URI}.
          */
         private String normalizeUrl(String urlString) throws URISyntaxException {
             if (urlString == null) {
                 return null;
             }
-            URI uri = new URI(urlString);
+            Uri uri = Uri.parse(urlString);
             if (!uri.isAbsolute()) {
                 throw new URISyntaxException(urlString, "Must provide an absolute URI for repositories");
             }
-
-            uri = uri.normalize();
+            if (!uri.isHierarchical()) {
+                throw new URISyntaxException(urlString, "Must provide an hierarchical URI for repositories");
+            }
+            if ("content".equals(uri.getScheme())) {
+                return uri.toString();
+            }
             String path = uri.getPath();
             if (path != null) {
                 path = path.replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
@@ -685,9 +700,13 @@ public class ManageReposActivity extends AppCompatActivity
                     path = path.substring(0, path.length() - 1);
                 }
             }
-
-            return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
-                    path, uri.getQuery(), uri.getFragment()).toString();
+            return new URI(uri.getScheme().toLowerCase(Locale.ENGLISH),
+                    uri.getUserInfo(),
+                    uri.getHost().toLowerCase(Locale.ENGLISH),
+                    uri.getPort(),
+                    path,
+                    uri.getQuery(),
+                    uri.getFragment()).normalize().toString();
         }
 
         /**

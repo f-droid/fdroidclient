@@ -82,8 +82,7 @@ public class IndexV1Updater extends RepoUpdater {
         Downloader downloader = null;
         try {
             // read file name from file
-            final Uri dataUri = Uri.parse(indexUrl);
-            downloader = DownloaderFactory.create(context, dataUri.toString());
+            downloader = DownloaderFactory.create(context, indexUrl);
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();
@@ -108,8 +107,7 @@ public class IndexV1Updater extends RepoUpdater {
                 try {
                     mirrorUrl = FDroidApp.getMirror(prevMirrorUrl, repo);
                     prevMirrorUrl = mirrorUrl;
-                    Uri dataUri2 = Uri.parse(mirrorUrl);
-                    downloader = DownloaderFactory.create(context, dataUri2.toString());
+                    downloader = DownloaderFactory.create(context, mirrorUrl);
                     downloader.setCacheTag(repo.lastetag);
                     downloader.setListener(downloadListener);
                     downloader.setTimeout(FDroidApp.getTimeout());
