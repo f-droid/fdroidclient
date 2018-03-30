@@ -1,3 +1,9 @@
+### 1.2-alpha0 (2018-03-30)
+
+* add custom mirrors to any repo by clicking links, scanning QR codes, etc.
+
+* reduce memory usage when device is running low
+
 ### 1.1 (2018-03-21)
 
 * fix some problems with items Updates reappearing
