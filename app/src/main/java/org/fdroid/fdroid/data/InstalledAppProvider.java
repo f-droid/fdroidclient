@@ -225,10 +225,8 @@ public class InstalledAppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         query = query.add(queryAppSubQuery(packageName));
 
-        Utils.debugLog(TAG, "Deleting " + packageName);
         int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
 
-        Utils.debugLog(TAG, "Requesting the suggested apk get recalculated for  " + packageName);
         AppProvider.Helper.calcSuggestedApk(getContext(), packageName);
 
         return count;
@@ -252,10 +250,8 @@ public class InstalledAppProvider extends FDroidProvider {
 
         verifyVersionNameNotNull(values);
 
-        Utils.debugLog(TAG, "Inserting/updating " + packageName);
         db().replaceOrThrow(getTableName(), null, values);
 
-        Utils.debugLog(TAG, "Requesting the suggested apk get recalculated for  " + packageName);
         AppProvider.Helper.calcSuggestedApk(getContext(), packageName);
 
         return getAppUri(values.getAsString(Cols.Package.NAME));
