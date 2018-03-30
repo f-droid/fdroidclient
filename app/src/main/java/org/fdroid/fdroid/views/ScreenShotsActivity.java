@@ -117,6 +117,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
                                  @Nullable Bundle savedInstanceState) {
 
             DisplayImageOptions displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
+                    .showImageOnFail(R.drawable.screenshot_placeholder)
                     .showImageOnLoading(R.drawable.screenshot_placeholder)
                     .showImageForEmptyUri(R.drawable.screenshot_placeholder)
                     .build();
