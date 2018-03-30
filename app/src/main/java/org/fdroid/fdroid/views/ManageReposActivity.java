@@ -241,7 +241,8 @@ public class ManageReposActivity extends AppCompatActivity
                 for (String url : repo.getMirrorList()) {
                     urlRepoMap.put(url, repo);
                 }
-                if (TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
+                if (!TextUtils.isEmpty(repo.fingerprint)
+                        && TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
                     fingerprintRepoMap.put(repo.fingerprint, repo);
                 }
             }
