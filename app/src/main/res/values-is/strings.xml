@@ -313,15 +313,6 @@
         mun hreinsa út öll gögn sem forritið geymir)
     </string>
     <string name="installIncompatible">Forritið er ekki samhæfðt tækinu þínu. Viltu samt prófa að setja það upp?</string>
-    <string name="repo_exists_add_fingerprint">Þetta hugbúnaðarsafn er þegar uppsett, þetta mun bæta við nýjum
-        lykilupplýsingum.
-    </string>
-    <string name="repo_exists_enable">Þetta hugbúnaðarsafn er þegar uppsett, staðfestu að þú viljir endurvirkja það.
-    </string>
-    <string name="repo_exists_and_enabled">Innsent hugbúnaðarsafn er þegar uppsett og virkjað.</string>
-    <string name="repo_delete_to_overwrite">Þú verður fyrst að eyða þessu hugbúnaðarsafni áður en þú getur bætt við öðru
-        með öðrum lykli.
-    </string>
     <string name="show_incompat_versions_on">Birta útgáfur forrita sem eru ósamhæfðar tækinu</string>
 
     <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að

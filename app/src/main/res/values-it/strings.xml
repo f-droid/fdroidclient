@@ -47,15 +47,6 @@
     <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
     <string name="repo_add_url">Indirizzo repository</string>
     <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
-    <string name="repo_exists_add_fingerprint">Questo repository è già configurato, una nuova informazione chiave verrà
-        aggiunta.
-    </string>
-    <string name="repo_exists_enable">Questo repository è già configurato, conferma di volerlo attivare nuovamente.
-    </string>
-    <string name="repo_exists_and_enabled">Il nuovo repo è già configurato e attivato.</string>
-    <string name="repo_delete_to_overwrite">È necessario eliminare questo repo prima di poter aggiungerne uno con una
-        chiave differente.
-    </string>
     <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
     <string name="menu_manage">Repository</string>
     <string name="menu_search">Cerca</string>

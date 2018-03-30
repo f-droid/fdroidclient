@@ -44,12 +44,6 @@
     <string name="choose_bt_send">Одредите начин слања блутутом</string>
     <string name="repo_add_url">Адреса ризнице</string>
     <string name="repo_add_fingerprint">Отисак (опционо)</string>
-    <string name="repo_exists_add_fingerprint">Ова ризница је већ постављена, ово ће да дода нове податке о кључевима.</string>
-    <string name="repo_exists_enable">Ова ризница је већ постављена, потврдите да желите поново да је укључите.</string>
-    <string name="repo_exists_and_enabled">Ризница је већ постављена и омогућена.</string>
-    <string name="repo_delete_to_overwrite">Најпре морате да обришете ову ризницу да бисте могли да додате ризницу са
-        другачијим кључем.
-    </string>
     <string name="malformed_repo_uri">Занемарујем лошу адресу ризнице: %s</string>
     <string name="menu_manage">Ризнице</string>
     <string name="menu_search">Тражи</string>

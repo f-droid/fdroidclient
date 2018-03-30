@@ -45,12 +45,6 @@
     <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
     <string name="repo_add_url">Adresse der Paketquelle</string>
     <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
-    <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, hiermit werden neue Schlüsselinformationen hinzugefügt.</string>
-    <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen Sie, dass Sie diese wieder aktivieren möchten.</string>
-    <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert.</string>
-    <string name="repo_delete_to_overwrite">Sie müssen diese Paketquelle zuerst löschen, bevor Sie eine mit einem
-        anderen Schlüssel hinzufügen können.
-    </string>
     <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
     <string name="menu_manage">Paketquellen</string>
     <string name="menu_search">Suchen</string>

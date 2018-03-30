@@ -140,11 +140,6 @@
     <string name="back">Zpět</string>
     <string name="bluetooth_activity_not_found">Nerozpoznána žádná Bluetooth metoda přenosu, nějakou vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
-    <string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
-    <string name="repo_exists_enable">Tento repozitář je již nastaven, potvrďte jeho znovupovolení.</string>
-    <string name="repo_exists_and_enabled">Tento příchozí repozitář je již nastaven a povolen.</string>
-    <string name="repo_delete_to_overwrite">Před přidáním repozitáře s jiným klíčem musíte nejprve tento odebrat.
-    </string>
     <string name="invalid_url">Toto není validní URL.</string>
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
 

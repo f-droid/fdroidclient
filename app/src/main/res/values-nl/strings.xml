@@ -43,12 +43,6 @@
     <string name="choose_bt_send">Kies Bluetooth-verzendmethode</string>
     <string name="repo_add_url">Bronadres</string>
     <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
-    <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Dit zal de nieuwe sleutelinformatie toevoegen.</string>
-    <string name="repo_exists_enable">Deze bron is al ingesteld. Bevestig dat je deze opnieuw wil inschakelen.</string>
-    <string name="repo_exists_and_enabled">De binnenkomende bron is al ingesteld en ingeschakeld.</string>
-    <string name="repo_delete_to_overwrite">Je moet deze bron eerst verwijderen voordat je er een kan toevoegen met een
-        andere sleutel.
-    </string>
     <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
     <string name="menu_manage">Bronnen</string>
     <string name="menu_search">Zoeken</string>

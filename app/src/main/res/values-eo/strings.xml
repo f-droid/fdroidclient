@@ -130,11 +130,7 @@
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
-    <string name="repo_exists_add_fingerprint">Tiu ĉi deponejo estas jam instalita, tio ĉi aldonos novan informon pri ŝlosilo.</string>
-    <string name="repo_exists_enable">Tiu ĉi deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
-    <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
     <string name="bad_fingerprint">Malbona fingrospuro</string>
-    <string name="repo_delete_to_overwrite">Vi devas unue forigi tiun ĉi deponejon antaŭ vi povos aldoni alian kun diferenca ŝlosilo.</string>
     <string name="invalid_url">Ĉi tio ne estas valida URL.</string>
     <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
 

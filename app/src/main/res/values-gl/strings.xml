@@ -92,9 +92,6 @@
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
 
     <string name="repo_add_fingerprint">Pegada dixital (opcional)</string>
-    <string name="repo_delete_to_overwrite">Primeiro debes eliminar éste repositorio antes de poder engadir outro con
-        diferente chave.
-    </string>
     <string name="bad_fingerprint">Pegada dixital incorrecta</string>
     <string name="invalid_url">Ésta non é unha URL válida.</string>
     <string name="malformed_repo_uri">Ignorouse unha URL de repositorio mal formada: %s</string>
@@ -220,8 +217,6 @@
     <string name="uninstall_system_summary">Abre a pantalla de detalles da Privileged Extension para
         actualizala/desinstalala
     </string>
-    <string name="repo_exists_enable">Este repositorio xa está instalado, confirma que desexas reactivalo.</string>
-    <string name="repo_exists_and_enabled">O seguinte repositorio xa está instalado e activado.</string>
     <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
 
     <string name="proxy_host">Servidor Proxy</string>
@@ -312,9 +307,6 @@
     <string name="download_error">Descarga falida!</string>
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
-    <string name="repo_exists_add_fingerprint">Este repositorio xa está instalado, engadirase información adicional
-        sobre a chave.
-    </string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
     <string name="system_install_post_success_message">A Extensión Privilexiada de F-Droid Privileged Extension está instalada. Isto permite ao F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
     <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de

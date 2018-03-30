@@ -44,11 +44,6 @@
     <string name="choose_bt_send">Bluetooth gönderme yöntemi seç</string>
     <string name="repo_add_url">Depo adresi</string>
     <string name="repo_add_fingerprint">Parmak izi (seçime dayalı)</string>
-    <string name="repo_exists_add_fingerprint">Bu depo zaten ayarlanmıştır, bu yeni anahtar bilgisi ekleyecek.</string>
-    <string name="repo_exists_enable">Bu depo zaten ayarlanmıştır, tekrar etkinleştirmek istediğinizi onaylayın.</string>
-    <string name="repo_exists_and_enabled">Gelen depo zaten kuruludur ve etkinleştirilmiştir.</string>
-    <string name="repo_delete_to_overwrite">Değişik bir anahtarla depo ekleyebilmek için önce bu depoyu silmelisiniz.
-    </string>
     <string name="malformed_repo_uri">Hatalı depo URI\'si yok sayılıyor: %s</string>
     <string name="menu_manage">Depolar</string>
     <string name="menu_search">Arama</string>

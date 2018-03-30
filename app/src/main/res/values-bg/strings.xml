@@ -231,14 +231,6 @@
     <string name="swap_success">Успешна размяна!</string>
     <string name="swap_switch_to_wifi">Натиснете за смяна на Wi-Fi мрежата</string>
     <string name="swap_dont_show_again">Не показвай повече</string>
-    <string name="repo_exists_add_fingerprint">Хранилището е вече настроено, сега ще бъде добавена информация за
-        ключа.
-    </string>
-    <string name="repo_exists_enable">Хранилището е вече настроено, потвърдете че желаете да бъде включено.</string>
-    <string name="repo_exists_and_enabled">Входящото хранилище е настроено и включено.</string>
-    <string name="repo_delete_to_overwrite">Необходимо е първо да изтриете хранилището преди да добавите различен
-        ключ.
-    </string>
     <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
     <string name="app_incompatible">Несъвместимо</string>
     <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>

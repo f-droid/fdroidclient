@@ -80,14 +80,6 @@
 
     <string name="repo_add_url">Kero yepfimbi</string>
     <string name="repo_add_fingerprint">Chidhindo chechigunwe (zvirikwauri)</string>
-    <string name="repo_exists_add_fingerprint">iri pfimbi ratova nehurongwa, izvi zvichawedzera mashoko akakosha
-        matsva.
-    </string>
-    <string name="repo_exists_enable">Iri pfimbi ratova nehurongwa, tsinhira kuti urikuda kuibvumidza zvekare.</string>
-    <string name="repo_exists_and_enabled">Pfimbi ririkupinda iri ratova nehurongwa uye rakabvumidzwa.</string>
-    <string name="repo_delete_to_overwrite">Unofanirwa kutanga wadzima pfimbi iyi usati wawedzera imwe nesvumbunuro
-        yakasiyana.
-    </string>
     <string name="bad_fingerprint">Chidhindo chechigunwe ichi chakaipa</string>
     <string name="invalid_url">URL iri harina kururama.</string>
     <string name="malformed_repo_uri">Kufuratira URI yepfimbi yakapeyama: %s</string>

@@ -84,7 +84,6 @@
 
     <string name="repo_add_url">Adresă depozit</string>
     <string name="repo_add_fingerprint">Amprenta (opțională)</string>
-    <string name="repo_exists_add_fingerprint">Acest depozit este deja configurat, aceasta acțiune doar va adăuga o noua cheie.</string>
     <string name="icon">Iconiță</string>
     <string name="skip">Sări</string>
 
@@ -122,9 +121,6 @@
 
     <string name="invalid_url">Aceasta nu este o adresă URL validă.</string>
     <string name="bad_fingerprint">Amprentă eronată</string>
-    <string name="repo_exists_enable">Acest depozit este deja configurat, confirmați activarea din nou.</string>
-    <string name="repo_exists_and_enabled">Depozitul introdus este deja configurat și activat.</string>
-    <string name="repo_delete_to_overwrite">Depozitul curent trebuie șters înainte de a adăuga unul nou cu o cheie diferita.</string>
     <string name="install_error_unknown">Instalare eșuată din cauza unei erori necunoscute</string>
     <string name="root_access_denied_body">Fie dispozitivul nu are acces root fie tocmai ați refuzat cererea de permisiuni root pentru F-Droid.</string>
     <string name="root_access_denied_title">Acces root refuzat</string>

@@ -43,12 +43,6 @@
     <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
     <string name="repo_add_url">Förrådsadress</string>
     <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
-    <string name="repo_exists_add_fingerprint">Detta förråd är redan inställt, det här kommer att lägga till ny nyckelinformation.</string>
-    <string name="repo_exists_enable">Detta förråd är redan inställt, bekräfta att du vill återaktivera det.</string>
-    <string name="repo_exists_and_enabled">Det inkommande förrådet är redan inställt och aktiverat.</string>
-    <string name="repo_delete_to_overwrite">Du måste först ta bort detta förråd innan du kan lägga till ett med en annan
-        nyckel.
-    </string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
     <string name="menu_manage">Förråd</string>
     <string name="menu_search">Sök</string>

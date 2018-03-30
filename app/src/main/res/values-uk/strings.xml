@@ -194,12 +194,6 @@
         них!
     </string>
     <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
-    <string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.</string>
-    <string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.</string>
-    <string name="repo_exists_and_enabled">Репозиторій вже налаштовано і увімкнено.</string>
-    <string name="repo_delete_to_overwrite">Спершу ви маєте видалити цей репозиторій, а потім додати його з іншим
-        ключем.
-    </string>
     <string name="malformed_repo_uri">Ігнорування неправильного URI репозиторію: %s</string>
 
     <string name="antinonfreeadlist">Цей застосунок пропонує не-безкоштовні надбудови</string>

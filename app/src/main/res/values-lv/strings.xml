@@ -40,11 +40,6 @@
     <string name="choose_bt_send">Izvēlies Bluesūtīšanas metodi</string>
     <string name="repo_add_url">Repozitorija adrese</string>
     <string name="repo_add_fingerprint">Nospiedums (opcionāli)</string>
-    <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgas info.</string>
-    <string name="repo_exists_enable">Repozitorijs jau iestatīts, apstiprini atkārtotu ieslēgšanu.</string>
-    <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts.</string>
-    <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu.
-    </string>
     <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_search">Meklēt</string>

@@ -53,7 +53,6 @@
 
     <string name="repo_add_url">כתובת מאגר</string>
     <string name="repo_add_fingerprint">טביעת אצבע (רשות)</string>
-    <string name="repo_delete_to_overwrite">עליך למחוק מאגר זה לפני שתינתן לך האפשרות להוסיף אחד עם מפתח שונה.</string>
     <string name="bad_fingerprint">טביעת אצבע שגויה</string>
     <string name="invalid_url">כתובת זו אינה תקינה.</string>
     <string name="malformed_repo_uri">כתובת מאגר שגויה בהתעלמות: %s</string>
@@ -257,9 +256,6 @@
     <string name="swap_no_peers_nearby">אין אפשרות למצוא אנשים בקרבת מקום כדי להחליף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה בעת ההתחברות להתקן, אין אפשרות לבצע מולו החלפה!</string>
     <string name="SignatureMismatch">היגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגירסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
-    <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, פעולה זו תוסיף מידע מפתח חדש.</string>
-    <string name="repo_exists_enable">מאגר זה כבר מותקן, נא לאמת כדי לאפשרו שוב.</string>
-    <string name="repo_exists_and_enabled">המאגר הנכנס כבר מותקן ומאופשר.</string>
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>

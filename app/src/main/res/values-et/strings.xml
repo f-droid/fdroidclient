@@ -77,12 +77,6 @@
 
     <string name="repo_add_url">Hoidla aadress</string>
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
-    <string name="repo_exists_add_fingerprint">See hoidla on juba seadistatud, see lisab uue võtme teabe.</string>
-    <string name="repo_exists_enable">See hoidla on juba seadistatud. Palun kinnita, et soovid ta uuesti lubada.</string>
-    <string name="repo_exists_and_enabled">Sissetulev hoidla on juba seadistatud ja lubatud.</string>
-    <string name="repo_delete_to_overwrite">Enne sellest hoidlast erineva võtmega hoidla lisamist, pead sa hoidla
-        kustutama.
-    </string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
     <string name="install_confirm_update">Kas sa soovid paigaldada selle rakenduse värskenduse? Olemasolevad andmed jäävad alles. Värskendatud rakendus saab ligipääsu:</string>

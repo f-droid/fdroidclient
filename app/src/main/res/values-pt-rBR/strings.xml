@@ -49,12 +49,6 @@
     <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>
     <string name="repo_add_url">Endereço do repositório</string>
     <string name="repo_add_fingerprint">Fingerprint (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação sobre a chave.</string>
-    <string name="repo_exists_enable">Este repositório já está configurado, confirma que quer reativá-lo.</string>
-    <string name="repo_exists_and_enabled">O repositório já está configurado e habilitado.</string>
-    <string name="repo_delete_to_overwrite">Você deve apagar este repositório antes para poder adicionar um com uma
-        chave diferente.
-    </string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
     <string name="menu_search">Procurar</string>

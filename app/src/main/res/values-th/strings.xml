@@ -382,13 +382,5 @@
 
         ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่
     </string>
-    <string name="repo_delete_to_overwrite">ถ้าคุณต้องการใช้กุญแจเข้ารหัสชุดใหม่กับแหล่งโปรแกรมที่จะสร้าง,
-        คุณจะต้องลบแหล่งโปรแกรมนี้ก่อน
-    </string>
-    <string name="repo_exists_and_enabled">แหล่งโปรแกรมนี้มีอยู่แล้ว และเปิดใช้งานอยู่</string>
-    <string name="repo_exists_enable">แหล่งโปรแกรมนี้มีอยู่แล้ว, กดยืนยันเพื่อเปิดกลับมาใช้งานอีกครั่ง</string>
-    <string name="repo_exists_add_fingerprint">แหล่งโปรแกรมนี้มีอยู่แล้ว,
-        แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป
-    </string>
 <string name="main_menu__latest_apps">ล่าสุด</string>
 </resources>

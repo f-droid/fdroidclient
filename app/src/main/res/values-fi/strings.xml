@@ -180,13 +180,6 @@
     </string>
     <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
 
-    <string name="repo_exists_enable">Tämä sovelluslähde on jo asennettu, vahvista, että haluat ottaa sen käyttöön
-        uudelleen.
-    </string>
-    <string name="repo_exists_and_enabled">Tuleva sovelluslähde on jo asennettu ja käytössä.</string>
-    <string name="repo_delete_to_overwrite">Sinun täytyy ensin poistaa tämä sovelluslähde, ennen kuin voit lisätä toisen
-        eri avaimella.
-    </string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
@@ -202,7 +195,6 @@
     <string name="useTor">Käytä Tor-verkkoa</string>
     <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi. Orbot vaaditaan</string>
     <string name="update_notification_title">Päivitetään sovelluslähteitä</string>
-    <string name="repo_exists_add_fingerprint">Tämä sovelluslähde on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
     <string name="status_inserting_apps">Tallennetaan sovelluksen tietoja</string>
     <string name="no_permissions">Käyttöoikeuksia ei tarvita.</string>
     <string name="permissions">Käyttöoikeudet</string>

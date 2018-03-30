@@ -46,14 +46,6 @@
     <string name="choose_bt_send">Escueyi\'l métodu d\'unvu pente Bluetooth</string>
     <string name="repo_add_url">Direición del repositoriu</string>
     <string name="repo_add_fingerprint">Buelga (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Yá ta configuráu esti repositoriu, esto amestará la información de la
-        clave nueva.
-    </string>
-    <string name="repo_exists_enable">Yá ta configuráu esti respositoriu, confirma que quies rehabilitalu.</string>
-    <string name="repo_exists_and_enabled">Yá ta configuráu y habilitáu\'l repositoriu d\'entrada.</string>
-    <string name="repo_delete_to_overwrite">Primero tienes de desaniciar esti repositoriu enantes que pueas amestar otru
-        con una clave diferente.
-    </string>
     <string name="malformed_repo_uri">Inorando l\'URI de repositoriu mal formáu: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Guetar</string>

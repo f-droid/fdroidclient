@@ -36,12 +36,6 @@
     <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
     <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
     <string name="repo_add_fingerprint">Δακτυλικό αποτύπωμα (προαιρετικά)</string>
-    <string name="repo_exists_add_fingerprint">Αυτό το αποθετήριο υπάρχει ήδη, αυτό θα προσθέσει νέο κλειδί.</string>
-    <string name="repo_exists_enable">Αυτό το αποθετήριο ρυθμίστηκε ήδη, επιβεβαιώστε ότι θέλετε να το ενεργοποιήσετε ξανά.</string>
-    <string name="repo_exists_and_enabled">Το εισερχόμενο αποθετήριο έχει ήδη ρυθμιστεί και ενεργοποιηθεί.</string>
-    <string name="repo_delete_to_overwrite">Πρέπει πρώτα να διαγράψετε αυτό το αποθετήριο για να μπορέσετε να προσθέσετε
-        ένα με διαφορετικό κλειδί.
-    </string>
     <string name="malformed_repo_uri">Παράβλεψη αποθετηρίου με λανθασμένη διεύθυνση: %s</string>
     <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
     <string name="menu_search">Αναζήτηση</string>

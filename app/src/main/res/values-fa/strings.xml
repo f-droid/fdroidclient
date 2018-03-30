@@ -100,8 +100,6 @@
 
     <string name="back">بازگشت</string>
 
-    <string name="repo_exists_add_fingerprint">این مخزن از قبل برپا شده است. این کار، اطّلاعات کلید جدیدی را می‌افزاید.</string>
-    <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
     <string name="menu_settings">تنظیمات</string>
@@ -242,8 +240,6 @@
     <string name="theme_light">روشن</string>
     <string name="theme_dark">تیره</string>
     <string name="theme_night">شب</string>
-    <string name="repo_exists_and_enabled">مخزنن ورودی از پیش برپا و فعّال شده است.</string>
-    <string name="repo_delete_to_overwrite">باید پیش از افزودن مخزنی جدید با کلیدی متفاوت، این مخزن را حذف کنید.</string>
     <string name="malformed_repo_uri">نادیده گرفتن نشانی اینترنتی مخزن ناهنجار: %s</string>
 
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایجاد نکردند.</string>

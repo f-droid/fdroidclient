@@ -43,11 +43,6 @@
     <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
     <string name="repo_add_url">Adreça del dipòsit</string>
     <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça. Això afegirà una empremta digital nova.</string>
-    <string name="repo_exists_enable">L\'adreça coincideix amb la d\'un dipòsit inhabilitat, confirmeu que voleu reactivar-lo.</string>
-    <string name="repo_exists_and_enabled">Aquesta adreça ja està en ús per un altre dipòsit del dispositiu.</string>
-    <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.
-    </string>
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Gestiona els dipòsits</string>
     <string name="menu_search">Cerca</string>

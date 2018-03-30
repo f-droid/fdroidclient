@@ -47,10 +47,6 @@
     <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
     <string name="repo_add_url">Адрес репозитория</string>
     <string name="repo_add_fingerprint">Отпечаток ключа (необязательно)</string>
-    <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
-    <string name="repo_exists_enable">Этот репозиторий уже настроен, подтвердите, что вы хотите снова включить его.</string>
-    <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен.</string>
-    <string name="repo_delete_to_overwrite">Прежде чем добавить этот репозиторий с другим ключом, необходимо его удалить.</string>
     <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
     <string name="menu_manage">Репозитории</string>
     <string name="menu_search">Поиск</string>

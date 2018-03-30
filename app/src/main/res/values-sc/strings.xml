@@ -46,14 +46,6 @@
     <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
     <string name="repo_add_url">Indiritzu depòsitu</string>
     <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
-    <string name="repo_exists_add_fingerprint">Custu depòsitu est giai cunfiguradu, custu at a annànghere
- un\'informatzione crae noa.</string>
-    <string name="repo_exists_enable">Custu depòsitu est giai cunfiguradu, cunfirma s\'intentzione de lu bòlere torrare
- a abilitare.</string>
-    <string name="repo_exists_and_enabled">Custu depòsitu est giai cunfiguradu e abilitadu.</string>
-    <string name="repo_delete_to_overwrite">Depes burrare custu depòsitu in antis de nde pòdere annànghere unu cun
-        un’àtera crae.
-    </string>
     <string name="malformed_repo_uri">Ignorende URI depòsitos malformados: %s</string>
     <string name="menu_manage">Depòsitos</string>
     <string name="menu_search">Chirca</string>

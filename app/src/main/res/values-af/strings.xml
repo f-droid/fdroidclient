@@ -83,9 +83,6 @@
     <string name="enable">Aktiveer</string>
     <string name="add_key">Nuwe sleutel</string>
     <string name="repo_add_url">Argief adres</string>
-    <string name="repo_exists_add_fingerprint">Hierdie argief is reeds opgestel, die aksie sal nuwe sleutel inligting laai.</string>
-    <string name="repo_exists_enable">Hierdie argief is reeds opgestel, bevestig jy wil dit weer wil her-aktiveer.</string>
-    <string name="repo_exists_and_enabled">Die inkomende argief is reeds opgestel en geaktiveer.</string>
     <string name="bad_fingerprint">Onaanvaarbare vingerafdruk</string>
     <string name="invalid_url">Dit is nie \'n geldige URL nie.</string>
     <string name="malformed_repo_uri">Ek ignoreer die misvormde argief URI: %s</string>
@@ -166,9 +163,6 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Ongeteken</string>
     <string name="enable_nfc_send">Aktiveer NFC stuur…</string>
-    <string name="repo_delete_to_overwrite">Jy moet eers hierdie argief uitvee voordat jy een met \'n ander sleutel kan
-        laai.
-    </string>
 
     <string name="deleting_repo">Huidige argief word uitgevee …</string>
     <string name="adding_apks_format">Laai %s na argief…</string>

@@ -108,12 +108,6 @@
     <string name="local_repo_name_summary">Zure biltegi lokalak iragarritako izenburua: %s</string>
     <string name="local_repo_https_on">Erabili zifratutako HTTPS:// konexioa biltegi lokalarentzat</string>
 
-    <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
-    <string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
-    <string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
-    <string name="repo_delete_to_overwrite">Biltegi hau ezabatu behar duzu gako ezberdin batekin sinatutako beste bat
-        gehitu aurretik.
-    </string>
     <string name="invalid_url">URL hau baliogabea da.</string>
     <string name="malformed_repo_uri">Ezikusi biltegi URI okerra: %s</string>
 

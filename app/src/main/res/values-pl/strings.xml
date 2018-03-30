@@ -31,9 +31,6 @@
     <string name="overwrite">Nadpisz</string>
     <string name="repo_add_url">Adres repozytorium</string>
     <string name="repo_add_fingerprint">Podpis cyfrowy (opcjonalnie)</string>
-    <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym
-        kluczem.
-    </string>
     <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
     <string name="menu_search">Wyszukaj</string>
     <string name="menu_add_repo">Nowe repozytorium</string>
@@ -143,9 +140,6 @@
     <string name="back">Powrót</string>
     <string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth!</string>
     <string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>
-    <string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>
-    <string name="repo_exists_enable">To repozytorium jest już dodane, potwierdź czy chcesz je włączyć.</string>
-    <string name="repo_exists_and_enabled">To repozytorium jest już dodane i jest włączone.</string>
     <string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
     <string name="invalid_url">Niepoprawny URL.</string>
     <string name="menu_manage">Repozytoria</string>

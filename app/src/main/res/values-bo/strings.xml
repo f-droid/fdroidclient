@@ -157,10 +157,6 @@
 
     <string name="repo_add_url">མཛོད་ཁང་གི་ཁ་བྱང་།</string>
     <string name="repo_add_fingerprint">མཛུབ་ཐེལ།(གདམ་ཀ་)</string>
-    <string name="repo_exists_add_fingerprint">རེ་པོ་སྔོན་ཚོད་ནས་སྒྲིག་ཚར་སོང་། འདིས་ལྡ་མིག་གསར་པའི་གནད་ཚུལ་ཁ་སྣོན་བྱེད་ཀྱི་རེད།.</string>
-    <string name="repo_exists_enable">རེ་པོ་དེ་སྔོན་ཚོད་ནས་སྒྲིག་ཚར་སོང་། ཁྱེད་ཀྱིས་ཡང་སྐྱར་སྒོ་ཕྱེད་འདོད་ཡོད་པའི་གཏན་འཁེལ་གནང་རོགས།</string>
-    <string name="repo_exists_and_enabled">ཚུར་འོང་མཁན་གྱི་རེ་པོ་སྔོན་ཚོད་ནས་སྒྲིག་བཀོད་དང་སྒོ་ཕྱེས་ཚར་སོང་།</string>
-    <string name="repo_delete_to_overwrite">དང་པོ་ཁྱེད་རང་གིས་ལྡེ་མིག་གཞན་ཞིག་ཁ་སྣོན་མ་བྱས་གོང་ལ་ངེས་པར་དུ་རེ་པོ་འདི་སུབ་དགོས།</string>
     <string name="bad_fingerprint">མཛུབ་ཐེལ་ཡག་པོ་ཐེབས་མིན་འདུག</string>
     <string name="invalid_url">འདི་URL ཁུངས་ལྡན་རེད་མིན་འདུག</string>
     <string name="malformed_repo_uri">བཟོ་ཉེས་ཤོར་བའི་རེ་པོ་URI ལ་ཡ་མེད་བཏང་བ་:%s</string>

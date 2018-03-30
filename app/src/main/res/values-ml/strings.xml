@@ -167,10 +167,6 @@
 
     <string name="repo_add_url">സംഭരണി വിലാസം</string>
     <string name="repo_add_fingerprint">വിരലടയാളം (എെച്ഛികം)</string>
-    <string name="repo_exists_add_fingerprint">ഈ സംഭരണി മുന്‍കൂട്ടി സജ്ജീകരിച്ചതാണ്, ഇത് പുതിയ കീയുടെ വിവരങ്ങൾ ചേർക്കും.</string>
-    <string name="repo_exists_enable">ഈ സംഭരണി മുന്‍കൂട്ടി സജ്ജീകരിച്ചതാണ്, നിങ്ങൾ അത് വീണ്ടും സജ്ജമാക്കാന്‍ താൽപ്പര്യപ്പെടുന്നുവെന്ന് സ്ഥിരീകരിക്കുക.</string>
-    <string name="repo_exists_and_enabled">ഇന്‍കമിങ് സംഭരണി മുന്‍കൂട്ടി സജ്ജീകരിച്ചതും സുസജ്ജവുമാണ്.</string>
-    <string name="repo_delete_to_overwrite">മറ്റൊരു കീ ഉപയോഗിച്ച് ഒരെണ്ണം ചേർക്കാൻ കഴിയുന്നതിനുമുമ്പ് ആദ്യം നിങ്ങൾ ഈ സംഭരണി നീക്കംചെയ്യണം.</string>
     <string name="bad_fingerprint">തെറ്റായ വിരലടയാളം</string>
     <string name="invalid_url">ഇത് ഒരു സാധുവായ URL അല്ല.</string>
     <string name="malformed_repo_uri">തെറ്റായ രൂപത്തിലുള്ള URI അവഗണിക്കുന്നു: %s</string>

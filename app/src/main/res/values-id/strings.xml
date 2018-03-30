@@ -65,12 +65,6 @@
 
     <string name="repo_add_url">Alamat repositori</string>
     <string name="repo_add_fingerprint">Sidik jari (opsional)</string>
-    <string name="repo_exists_add_fingerprint">Repo ini sudah disiapkan, ini akan menambah informasi kunci baru.</string>
-    <string name="repo_exists_enable">Repo ini sudah disiapkan, konfirmasi jika Anda ingin mengaktifkannya lagi.</string>
-    <string name="repo_exists_and_enabled">Repo yang masuk sudah disiapkan dan aktif.</string>
-    <string name="repo_delete_to_overwrite">Anda harus menghapus repo ini terlebh dahulu sebelum Anda bisa menambahkan
-        yang baru dengan kunci yang berbeda.
-    </string>
     <string name="bad_fingerprint">Sidik jari buruk</string>
     <string name="invalid_url">Ini bukan URL yang valid.</string>
     <string name="malformed_repo_uri">Mengabaikan URI repo yang tidak valid: %s</string>

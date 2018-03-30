@@ -43,12 +43,6 @@
     <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
     <string name="repo_add_url">Pakkebrønnsadresse</string>
     <string name="repo_add_fingerprint">Fingeravtrykk (valgfritt)</string>
-    <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
-    <string name="repo_exists_enable">Denne pakkebrønnen er allerede satt opp, bekreft at du vil skru den på igjen.</string>
-    <string name="repo_exists_and_enabled">Oppstrøms-pakkebrønnen er allerede satt opp og påskrudd.</string>
-    <string name="repo_delete_to_overwrite">Du må først slette denne pakkebrønnen før du kan legge til en med en annen
-        nøkkel.
-    </string>
     <string name="malformed_repo_uri">Ignorerer ugyldig pakkebrønnsadresse: %s</string>
     <string name="menu_manage">Pakkebrønner</string>
     <string name="menu_search">Søk</string>

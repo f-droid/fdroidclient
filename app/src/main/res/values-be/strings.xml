@@ -87,12 +87,6 @@
 
     <string name="repo_add_url">Адрас рэпазіторыя</string>
     <string name="repo_add_fingerprint">Адбітак (неабавязковы)</string>
-    <string name="repo_exists_add_fingerprint">Гэты рэпазіторый ужо наладжаны, гэта абновіць інфармацыю аб ключы.</string>
-    <string name="repo_exists_enable">Гэты рэпазіторый ужо наладжаны, пацвердзіце што хочаце ўключыць яго.</string>
-    <string name="repo_exists_and_enabled">Рэпазіторый ужо наладжаны і ўключаны.</string>
-    <string name="repo_delete_to_overwrite">Вы павінны спачатку выдаліць гэты рэпазіторый, а потым дабавіць яго з іншым
-        ключом.
-    </string>
     <string name="bad_fingerprint">Дрэнны адбітак</string>
     <string name="invalid_url">Гэта некарэктны URL.</string>
     <string name="malformed_repo_uri">Ігнараванне некарэктнага URI рэпазіторыя: %s</string>

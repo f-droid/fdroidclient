@@ -70,12 +70,6 @@
 
     <string name="repo_add_url">Endereço do repositório</string>
     <string name="repo_add_fingerprint">Identificação digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação sobre a chave.</string>
-    <string name="repo_exists_enable">Este repositório já está configurado, confirme que o quer reativar.</string>
-    <string name="repo_exists_and_enabled">O repositório de receção já está configurado e ativado.</string>
-    <string name="repo_delete_to_overwrite">Tem de apagar este repositório antes de adicionar outro com uma chave
-        diferente.
-    </string>
     <string name="bad_fingerprint">Identificação inválida</string>
     <string name="invalid_url">Este URL não é válido.</string>
     <string name="malformed_repo_uri">A ignorar URI de repositório inválido: %s</string>

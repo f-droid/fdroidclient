@@ -76,12 +76,6 @@
 
     <string name="repo_add_url">Depot adresse</string>
     <string name="repo_add_fingerprint">Fingeraftryk (valgfri)</string>
-    <string name="repo_exists_add_fingerprint">Dette depot er allerede sat op, dette vil tilføje ny nøgleinformation.</string>
-    <string name="repo_exists_enable">Dette depot er allerede sat op, bekræft at du vil genaktivere det.</string>
-    <string name="repo_exists_and_enabled">Det indgående depot er allerede sat op og aktiveret.</string>
-    <string name="repo_delete_to_overwrite">Du skal først slette dette depot, før du kan tilføje et med en forskellig
-        nøgle.
-    </string>
     <string name="bad_fingerprint">Misdannet fingeraftryk</string>
     <string name="invalid_url">Dette er ikke en gyldig URL.</string>
     <string name="malformed_repo_uri">Ignorerer misdannet depot URI: %s</string>

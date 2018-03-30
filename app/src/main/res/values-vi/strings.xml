@@ -47,7 +47,6 @@
     </string>
     <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
     <string name="repo_add_url">Địa chỉ kho</string>
-    <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác.</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
     <string name="menu_manage">Kho ứng dụng</string>
     <string name="menu_search">Tìm kiếm</string>
@@ -282,9 +281,6 @@
     <string name="theme_dark">Tối</string>
     <string name="all_other_repos_fine">Tất cả các kho khác không có lỗi.</string>
     <string name="swap_join_this_hotspot">Giúp đỡ bạn của bạn vào điểm truy cập</string>
-    <string name="repo_exists_add_fingerprint">Kho này đã được cài đặt, việc này sẽ thêm thông tin mới về mã khoá.
-    </string>
-    <string name="repo_exists_enable">Kho này đã được cài đặt, hãy xác nhận bạn muốn kích hoạt lại nó.</string>
     <string name="more">Thêm</string>
     <string name="less">Ít hơn</string>
 

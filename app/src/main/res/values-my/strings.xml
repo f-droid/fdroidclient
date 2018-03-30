@@ -76,12 +76,6 @@
 
     <string name="repo_add_url">Repository လိပ္စာ</string>
     <string name="repo_add_fingerprint">လက္ေဗြရာ(လိုအပ္မွသာ)</string>
-    <string name="repo_exists_add_fingerprint">ဒီ repo သည္ အဆင္သင့္ျဖစ္ေနပါျပီ ၄င္းသည္
-        ကီးအသစ္တစ္ခုအခ်က္အလက္ထည့္ေပးပါလိမ့္မည္.
-    </string>
-    <string name="repo_exists_enable">ဒီ repo သည္ အသင့္ျဖစ္ေနပါျပီ သင္ျပန္ဖြင့္ခ်င္ေၾကာင္း အတည္ျပဳပါ.</string>
-    <string name="repo_exists_and_enabled">အဝင္ ရီပိုသည္ အသင့္ျဖစ္ပါျပီ ဖြင့္ရန္လိုအပ္သည္</string>
-    <string name="repo_delete_to_overwrite">ကီးအသစ္တစ္ခုႏွင့္ထည့္သြင္းရန္မတိုင္မီ ဒီရီပိုကိုအရင္ဖ်က္မွရမည္.</string>
     <string name="bad_fingerprint">လက္ေဗြရာမမွန္ကန္ပါ</string>
     <string name="invalid_url">မွန္ကန္ေသာ URL မဟုတ္ပါ.</string>
     <string name="malformed_repo_uri">repo URI မွားယြင္းျပဳလုပ္မႈကိုလ်စ္လ်ဴရႈမလား : %s</string>

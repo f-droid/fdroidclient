@@ -43,10 +43,6 @@
     <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>
     <string name="repo_add_url">リポジトリのアドレス</string>
     <string name="repo_add_fingerprint">フィンガープリント(オプション)</string>
-    <string name="repo_exists_add_fingerprint">このリポジトリはすでに設定されているので、新しい鍵の情報が追加されます。</string>
-    <string name="repo_exists_enable">このリポジトリはすでに設定されています。再度有効にするか確認してください。</string>
-    <string name="repo_exists_and_enabled">入力中のリポジトリはすでに設定されて有効にされています。</string>
-    <string name="repo_delete_to_overwrite">異なる鍵でリポジトリを追加する前に、このリポジトリを削除する必要があります。</string>
     <string name="malformed_repo_uri">不正な形式のリポジトリURIを無視します: %s</string>
     <string name="menu_manage">リポジトリ</string>
     <string name="menu_search">検索</string>

@@ -43,10 +43,6 @@
     <string name="choose_bt_send">블루투스 전송 방법 선택</string>
     <string name="repo_add_url">저장소 주소</string>
     <string name="repo_add_fingerprint">핑거프린트 (선택 사항)</string>
-    <string name="repo_exists_add_fingerprint">이 저장소가 이미 설정되어 있으며, 새로운 키 정보를 추가할 것입니다.</string>
-    <string name="repo_exists_enable">이 저장소가 이미 설정되어 있으며, 다시 활성화할 것인지 확인하세요.</string>
-    <string name="repo_exists_and_enabled">들어오는 저장소가 이미 설정되어 있고 활성화되어 있습니다.</string>
-    <string name="repo_delete_to_overwrite">다른 키로 된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다.</string>
     <string name="malformed_repo_uri">잘못된 형식의 저장소 URI를 무시하는 중: %s</string>
     <string name="menu_manage">저장소</string>
     <string name="menu_search">검색</string>

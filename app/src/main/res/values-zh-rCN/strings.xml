@@ -37,10 +37,6 @@
     <string name="choose_bt_send">选择蓝牙发送方式</string>
     <string name="repo_add_url">软件源地址</string>
     <string name="repo_add_fingerprint">指纹（可选）</string>
-    <string name="repo_exists_add_fingerprint">此软件源已经设置，该操作将会添加新的密钥信息。</string>
-    <string name="repo_exists_enable">此软件源已经设置，请确认您是否要重新启用它。</string>
-    <string name="repo_exists_and_enabled">此软件源已经设置好并已启用。</string>
-    <string name="repo_delete_to_overwrite">在您添加不同密钥的软件源之前，您需要先删除该软件源。</string>
     <string name="malformed_repo_uri">忽略异常格式的软件源URI：%s</string>
     <string name="menu_manage">软件源</string>
     <string name="menu_search">搜索</string>

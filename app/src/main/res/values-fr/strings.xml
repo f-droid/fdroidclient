@@ -45,12 +45,6 @@
     <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
     <string name="repo_add_url">Adresse du dépôt</string>
     <string name="repo_add_fingerprint">Empreinte (facultatif)</string>
-    <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, les informations de la nouvelle clé seront ajoutées.</string>
-    <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmez que vous voulez le réactiver.</string>
-    <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé.</string>
-    <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter un avec une clé
-        différente.
-    </string>
     <string name="malformed_repo_uri">URI de dépôt malformé ignoré : %s</string>
     <string name="menu_manage">Gestion des dépôts</string>
     <string name="menu_search">Rechercher</string>

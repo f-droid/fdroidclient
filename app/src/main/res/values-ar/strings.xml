@@ -106,12 +106,6 @@
     <string name="overwrite">استبدال</string>
 
     <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
-    <string name="repo_exists_add_fingerprint">هذه المستودعات بالفعل موجودة، بهذا سوف يتم إضافة مفتاح معلومات جديد.
-    </string>
-    <string name="repo_exists_enable">هذه المستودعات بالفعل موجودة، تأكد إن كنت ترغب في إعادة تمكينه.</string>
-    <string name="repo_exists_and_enabled">المستودعات الواردة هي بالفعل موجودة وممكنه.</string>
-    <string name="repo_delete_to_overwrite">يجب أولا حذف هذه المستودعات قبل أن تتمكن من إضافة جديدة مع مفتاح مختلف.
-    </string>
     <string name="bad_fingerprint">البصمة خاطئة</string>
     <string name="invalid_url">هذا ليس عنوان URL صالح للاستخدام.</string>
     <string name="malformed_repo_uri">تجاهل مستودعات عنوان URI التالفة : %s</string>

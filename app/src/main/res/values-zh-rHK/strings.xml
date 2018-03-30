@@ -203,7 +203,6 @@
     <string name="more">顯示更多</string>
     <string name="less">顯示較少</string>
 
-    <string name="repo_exists_enable">此軟件庫已經設置好，請確認您要否要重新啟用倉庫。</string>
     <string name="theme_night">深夜色系</string>
     <string name="swap_not_enabled_description">在交換之前，您的裝置必須可被其他裝置發現。</string>
 
@@ -244,7 +243,6 @@
     <string name="repo_edit_credentials">更改密碼</string>
     <string name="repo_error_empty_username">因用戶名未填妥，沒有更改個人資料</string>
 
-    <string name="repo_exists_and_enabled">正被戴入的倉庫已設置好並已啟用。</string>
     <string name="bad_fingerprint">指紋無效</string>
     <string name="status_download_unknown_size">正在從 %1$s 下載
 %2$s</string>
@@ -294,8 +292,6 @@
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供更多有關此問題的資料嗎？</string>
     <string name="repo_fingerprint">鑰匙指紋（SHA-256）</string>
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案（index.jar）…</string>
-    <string name="repo_delete_to_overwrite">在加入使用不同鑰匙的軟件庫之前，請先刪除此倉庫。</string>
-    <string name="repo_exists_add_fingerprint">由於此軟件庫已經設置好，此動作將會加入新的鑰匙資料。</string>
     <string name="menu_email">電郵作者</string>
     <string name="unsigned_description">這表示 F-Droid 未能夠驗證應用程式清單。您要小心使用來自未經簽署的索引的應用程式。</string>
     <string name="useTor">使用 Tor</string>

@@ -32,10 +32,6 @@
     <string name="overwrite">Felülírás</string>
     <string name="repo_add_url">Tároló cím</string>
     <string name="repo_add_fingerprint">Ujjlenyomat (nem kötelező)</string>
-    <string name="repo_exists_add_fingerprint">Ez a tároló már be van állítva, ez új kulcs információt fog hozzáadni.</string>
-    <string name="repo_exists_enable">Ez a tároló már be van állítva, erősítse meg az újraengedélyezését.</string>
-    <string name="repo_exists_and_enabled">A fogadott tároló már telepítve és engedélyezve van.</string>
-    <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a tárolót, mielőtt hozzáad egyet egy eltérő kulccsal.</string>
     <string name="menu_manage">Tárolók</string>
     <string name="menu_search">Keresés</string>
     <string name="menu_add_repo">Új tároló</string>

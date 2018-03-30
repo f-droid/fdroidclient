@@ -83,14 +83,6 @@
 
     <string name="repo_add_url">Adresa repozitorija</string>
     <string name="repo_add_fingerprint">Otisak prsta (opcionalno)</string>
-    <string name="repo_exists_add_fingerprint">Ovaj repozitorij je već postavljen, dodat će se nove informacije o
-        ključu.
-    </string>
-    <string name="repo_exists_enable">Ovaj repozitorij je već postavljen, potvrdite da ga želite omogućiti.</string>
-    <string name="repo_exists_and_enabled">Repozitorij je već postavljen i omogućen.</string>
-    <string name="repo_delete_to_overwrite">Morate prvo obrisati ovaj repozitorij kako bi dodali drugi s različitim
-        ključem.
-    </string>
     <string name="bad_fingerprint">Loš otisak prsta</string>
     <string name="invalid_url">Ovo nije valjan URL.</string>
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
