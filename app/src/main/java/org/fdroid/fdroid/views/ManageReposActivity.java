@@ -296,7 +296,7 @@ public class ManageReposActivity extends AppCompatActivity
                             try {
                                 url = normalizeUrl(url);
                             } catch (URISyntaxException e) {
-                                invalidUrl(null);
+                                invalidUrl();
                                 return;
                             }
 
@@ -411,7 +411,7 @@ public class ManageReposActivity extends AppCompatActivity
             }
 
             if (repo == null) {
-                repoDoesntExist(repo);
+                repoDoesntExist();
             } else {
                 if (repo.isSwap) {
                     repoIsSwap(repo);
@@ -432,8 +432,8 @@ public class ManageReposActivity extends AppCompatActivity
             }
         }
 
-        private void repoDoesntExist(Repo repo) {
-            updateUi(repo, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
+        private void repoDoesntExist() {
+            updateUi(null, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
         }
 
         private void repoIsSwap(Repo repo) {
@@ -450,8 +450,8 @@ public class ManageReposActivity extends AppCompatActivity
                     true, R.string.overwrite, false);
         }
 
-        private void invalidUrl(Repo repo) {
-            updateUi(repo, AddRepoState.INVALID_URL, R.string.invalid_url, true,
+        private void invalidUrl() {
+            updateUi(null, AddRepoState.INVALID_URL, R.string.invalid_url, true,
                     R.string.repo_add_add, false);
         }
 
@@ -480,8 +480,15 @@ public class ManageReposActivity extends AppCompatActivity
             if (addRepoState != state) {
                 addRepoState = state;
 
+                String name;
+                if (repo == null) {
+                    name = '"' + getString(R.string.unknown) + '"';
+                } else {
+                    name = repo.name;
+                }
+
                 if (messageRes > 0) {
-                    overwriteMessage.setText(String.format(getString(messageRes), repo.name));
+                    overwriteMessage.setText(String.format(getString(messageRes), name));
                     overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
                         overwriteMessage.setTextColor(getResources().getColor(R.color.red));
