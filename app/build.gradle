@@ -35,6 +35,7 @@ dependencies {
     compile "com.android.support:support-vector-drawable:${supportLibVersion}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.android.support:palette-v7:${supportLibVersion}"
+    compile "com.android.support:leanback-v17:${supportLibVersion}"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'

@@ -52,7 +52,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/clear"
                 app:layout_constraintStart_toEndOf="@+id/back"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="true"
+                android:nextFocusDown="@+id/app_list"
+                android:nextFocusRight="@+id/sort"/>
 
             <ImageView
                 android:id="@+id/clear"
@@ -78,7 +81,11 @@
         app:layout_constraintTop_toTopOf="@id/search_card"
         app:layout_constraintBottom_toBottomOf="@id/search_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_card"/>
+        app:layout_constraintStart_toEndOf="@+id/search_card"
+        android:focusable="true"
+        android:background="@drawable/focus"
+        android:nextFocusDown="@+id/app_list"
+        android:nextFocusRight="@+id/app_list"/>
 
     <!-- Don't center, only show it at the top because a keyboard will usually be shown at the bottom of the screen,
          covering most of this layout. -->

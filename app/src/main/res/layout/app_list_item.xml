@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:focusable="true"
+    android:background="@drawable/focus">
+    <!-- TODO FAB TV was: android:background="?attr/selectableItemBackground"-->
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
@@ -21,7 +23,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/app_name"
@@ -38,7 +40,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintEnd_toStartOf="@+id/buttons"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"/>
 
     <TextView
         android:id="@+id/status"
@@ -69,7 +71,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:elevation="2dp"
-            android:padding="4dp" />
+            android:padding="4dp"/>
 
         <Button
             android:id="@+id/action_button"
@@ -78,7 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            tools:text="Update" />
+            tools:text="Update"
+            android:focusable="true"
+            android:background="@drawable/focus"/>
 
     </FrameLayout>
 
