@@ -80,7 +80,8 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     @Override
     public void onBindViewHolder(AppCardController holder, int position) {
         cursor.moveToPosition(position);
-        holder.bindApp(new App(cursor));
+        final App app = new App(cursor);
+        holder.bindApp(app);
     }
 
     @Override

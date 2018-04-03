@@ -34,7 +34,8 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     @Override
     public void onBindViewHolder(StandardAppListItemController holder, int position) {
         cursor.moveToPosition(position);
-        holder.bindModel(new App(cursor));
+        final App app = new App(cursor);
+        holder.bindModel(app);
     }
 
     @Override
