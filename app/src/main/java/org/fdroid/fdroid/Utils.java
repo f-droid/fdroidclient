@@ -379,7 +379,7 @@ public final class Utils {
                     .cacheOnDisk(true)
                     .considerExifParams(false)
                     .bitmapConfig(Bitmap.Config.RGB_565)
-                    .imageScaleType(ImageScaleType.NONE);
+                    .imageScaleType(ImageScaleType.EXACTLY);
         }
         return defaultDisplayImageOptionsBuilder;
     }
