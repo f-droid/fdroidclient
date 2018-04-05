@@ -20,6 +20,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -467,6 +468,9 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     private void setRequestedPermissions(Object[][] permissions, int minSdk) {
         HashSet<String> set = new HashSet<>();
+        if (requestedPermissions != null) {
+            Collections.addAll(set, requestedPermissions);
+        }
         for (Object[] versions : permissions) {
             int maxSdk = Integer.MAX_VALUE;
             if (versions[1] != null) {
