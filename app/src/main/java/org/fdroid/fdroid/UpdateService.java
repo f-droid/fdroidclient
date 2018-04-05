@@ -178,7 +178,8 @@ public class UpdateService extends IntentService {
         if (Build.VERSION.SDK_INT <= 10) {
             Intent pendingIntent = new Intent(this, MainActivity.class);
             pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+            notificationBuilder.setContentIntent(
+                    PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
         }
     }
 
@@ -526,11 +527,13 @@ public class UpdateService extends IntentService {
         }
         String message;
         if (totalBytes == -1) {
-            message = context.getString(R.string.status_download_unknown_size, updater.indexUrl, downloadedSizeFriendly);
+            message = context.getString(R.string.status_download_unknown_size,
+                    updater.indexUrl, downloadedSizeFriendly);
             percent = -1;
         } else {
             String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
-            message = context.getString(R.string.status_download, updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
+            message = context.getString(R.string.status_download,
+                    updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
         }
         sendStatus(context, STATUS_INFO, message, percent);
     }
@@ -544,7 +547,8 @@ public class UpdateService extends IntentService {
         if (totalBytes > 0) {
             percent = (int) (bytesRead / (totalBytes * 100L));
         }
-        String message = context.getString(R.string.status_processing_xml_percent, updater.indexUrl, downloadedSize, totalSize, percent);
+        String message = context.getString(R.string.status_processing_xml_percent,
+                updater.indexUrl, downloadedSize, totalSize, percent);
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
