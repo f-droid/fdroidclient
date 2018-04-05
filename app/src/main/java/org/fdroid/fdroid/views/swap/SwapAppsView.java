@@ -253,13 +253,12 @@ public class SwapAppsView extends ListView implements
                             if (progressView.getVisibility() != View.VISIBLE) {
                                 showProgress();
                             }
-                            int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                            int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                            long read = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
+                            long total = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                             if (total > 0) {
-                                int progress = (int) ((double) read / total * 100);
                                 progressView.setIndeterminate(false);
                                 progressView.setMax(100);
-                                progressView.setProgress(progress);
+                                progressView.setProgress(Utils.getPercent(read, total));
                             } else {
                                 progressView.setIndeterminate(true);
                             }

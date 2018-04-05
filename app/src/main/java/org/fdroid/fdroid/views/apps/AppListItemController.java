@@ -365,7 +365,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         return new AppListItemState(app)
                 .setMainText(mainText)
-                .setProgress(currentStatus.progressCurrent, currentStatus.progressMax);
+                .setProgress(Utils.bytesToKb(currentStatus.progressCurrent),
+                        Utils.bytesToKb(currentStatus.progressMax));
     }
 
     protected AppListItemState getViewStateReadyToInstall(@NonNull App app) {

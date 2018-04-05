@@ -115,8 +115,8 @@ public final class AppUpdateStatusManager {
         public final Apk apk;
         public Status status;
         public PendingIntent intent;
-        public int progressCurrent;
-        public int progressMax;
+        public long progressCurrent;
+        public long progressMax;
         public String errorText;
 
         AppUpdateStatus(App app, Apk apk, Status status, PendingIntent intent) {
@@ -143,8 +143,8 @@ public final class AppUpdateStatusManager {
             apk = in.readParcelable(getClass().getClassLoader());
             intent = in.readParcelable(getClass().getClassLoader());
             status = (Status) in.readSerializable();
-            progressCurrent = in.readInt();
-            progressMax = in.readInt();
+            progressCurrent = in.readLong();
+            progressMax = in.readLong();
             errorText = in.readString();
         }
 
@@ -154,8 +154,8 @@ public final class AppUpdateStatusManager {
             dest.writeParcelable(apk, 0);
             dest.writeParcelable(intent, 0);
             dest.writeSerializable(status);
-            dest.writeInt(progressCurrent);
-            dest.writeInt(progressMax);
+            dest.writeLong(progressCurrent);
+            dest.writeLong(progressMax);
             dest.writeString(errorText);
         }
 
@@ -391,7 +391,7 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    public void updateApkProgress(String key, int max, int current) {
+    public void updateApkProgress(String key, long max, long current) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {

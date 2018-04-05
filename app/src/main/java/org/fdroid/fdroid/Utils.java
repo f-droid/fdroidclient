@@ -693,6 +693,27 @@ public final class Utils {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
+    /**
+     * Converts a {@code long} bytes value, like from {@link File#length()}, to
+     * an {@code int} value that is kilobytes, suitable for things like
+     * {@link android.widget.ProgressBar#setMax(int)} or
+     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}
+     */
+    public static int bytesToKb(long bytes) {
+        return (int) (bytes / 1024);
+    }
+
+    /**
+     * Converts two {@code long} bytes values, like from {@link File#length()}, to
+     * an {@code int} value that is a percentage, suitable for things like
+     * {@link android.widget.ProgressBar#setMax(int)} or
+     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}.
+     * {@code total} must never be zero!
+     */
+    public static int getPercent(long current, long total) {
+        return (int) ((100L * current + total / 2) / total);
+    }
+
     @SuppressWarnings("unused")
     public static class Profiler {
         public final long startTime = System.currentTimeMillis();

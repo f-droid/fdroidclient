@@ -327,7 +327,8 @@ class NotificationHelper {
             if (entry.progressMax == 0) {
                 builder.setProgress(100, 0, true);
             } else {
-                builder.setProgress(entry.progressMax, entry.progressCurrent, false);
+                builder.setProgress(Utils.bytesToKb(entry.progressMax),
+                        Utils.bytesToKb(entry.progressCurrent), false);
             }
         } else if (status == AppUpdateStatusManager.Status.Installing) {
             builder.setProgress(100, 0, true); // indeterminate bar

@@ -54,7 +54,6 @@ import org.fdroid.fdroid.views.main.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("LineLength")
 public class UpdateService extends IntentService {
 
     private static final String TAG = "UpdateService";
@@ -239,7 +238,7 @@ public class UpdateService extends IntentService {
                 case STATUS_INFO:
                     notificationBuilder.setContentText(message)
                             .setCategory(NotificationCompat.CATEGORY_SERVICE);
-                    if (progress != -1) {
+                    if (progress > -1) {
                         notificationBuilder.setProgress(100, progress, false);
                     } else {
                         notificationBuilder.setProgress(100, 0, true);
@@ -449,7 +448,7 @@ public class UpdateService extends IntentService {
             }
 
             if (!changes) {
-                Utils.debugLog(TAG, "Not checking app details or compatibility, because all repos were up to date.");
+                Utils.debugLog(TAG, "Not checking app details or compatibility, because repos were up to date.");
             } else {
                 notifyContentProviders();
 
@@ -523,7 +522,7 @@ public class UpdateService extends IntentService {
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
         if (totalBytes > 0) {
-            percent = (int) (bytesRead / (totalBytes * 100L));
+            percent = Utils.getPercent(bytesRead, totalBytes);
         }
         String message;
         if (totalBytes == -1) {
@@ -545,7 +544,7 @@ public class UpdateService extends IntentService {
         String totalSize = Utils.getFriendlySize(totalBytes);
         int percent = -1;
         if (totalBytes > 0) {
-            percent = (int) (bytesRead / (totalBytes * 100L));
+            percent = Utils.getPercent(bytesRead, totalBytes);
         }
         String message = context.getString(R.string.status_processing_xml_percent,
                 updater.indexUrl, downloadedSize, totalSize, percent);
@@ -553,16 +552,20 @@ public class UpdateService extends IntentService {
     }
 
     /**
-     * If an updater is unable to know how many apps it has to process (i.e. it is streaming apps to the database or
-     * performing a large database query which touches all apps, but is unable to report progress), then it call this
-     * listener with `totalBytes = 0`. Doing so will result in a message of "Saving app details" sent to the user. If
-     * you know how many apps you have processed, then a message of "Saving app details (x/total)" is displayed.
+     * If an updater is unable to know how many apps it has to process (i.e. it
+     * is streaming apps to the database or performing a large database query
+     * which touches all apps, but is unable to report progress), then it call
+     * this listener with `totalBytes = 0`. Doing so will result in a message of
+     * "Saving app details" sent to the user. If you know how many apps you have
+     * processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    public static void reportProcessingAppsProgress(Context context, RepoUpdater updater, int appsSaved, int totalApps) {
+    public static void reportProcessingAppsProgress(Context context, RepoUpdater updater,
+                                                    int appsSaved, int totalApps) {
         Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         if (totalApps > 0) {
-            String message = context.getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
-            sendStatus(context, STATUS_INFO, message, (int) ((double) appsSaved / totalApps * 100));
+            String message = context.getString(R.string.status_inserting_x_apps,
+                    appsSaved, totalApps, updater.indexUrl);
+            sendStatus(context, STATUS_INFO, message, Utils.getPercent(appsSaved, totalApps));
         } else {
             String message = context.getString(R.string.status_inserting_apps);
             sendStatus(context, STATUS_INFO, message);

@@ -238,8 +238,8 @@ public class InstallManagerService extends Service {
                     Utils.debugLog(TAG, action + " " + intent);
                 } else if (Downloader.ACTION_PROGRESS.equals(action)) {
 
-                    int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                    int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
+                    long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                     appUpdateStatusManager.updateApkProgress(urlString, totalBytes, bytesRead);
                 } else if (Downloader.ACTION_COMPLETE.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
@@ -307,8 +307,8 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.Downloading, action);
                         break;
                     case Downloader.ACTION_PROGRESS:
-                        int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                        int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                        long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
+                        long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                         appUpdateStatusManager.updateApkProgress(urlString, totalBytes, bytesRead);
                         break;
                     case Downloader.ACTION_COMPLETE:

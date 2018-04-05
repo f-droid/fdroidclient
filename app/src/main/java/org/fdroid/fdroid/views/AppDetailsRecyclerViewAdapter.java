@@ -46,7 +46,6 @@ import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.main.MainActivity;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -205,7 +204,7 @@ public class AppDetailsRecyclerViewAdapter
         setProgress(0, 0, 0);
     }
 
-    public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
+    public void setProgress(long bytesDownloaded, long totalBytes, int resIdString) {
         if (headerView != null) {
             headerView.setProgress(bytesDownloaded, totalBytes, resIdString);
         }
@@ -358,14 +357,14 @@ public class AppDetailsRecyclerViewAdapter
             });
         }
 
-        public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
+        public void setProgress(long bytesDownloaded, long totalBytes, int resIdString) {
             if (bytesDownloaded == 0 && totalBytes == 0) {
                 // Remove progress bar
                 progressLayout.setVisibility(View.GONE);
                 buttonLayout.setVisibility(View.VISIBLE);
             } else {
-                progressBar.setMax(totalBytes);
-                progressBar.setProgress(bytesDownloaded);
+                progressBar.setMax(Utils.bytesToKb(totalBytes));
+                progressBar.setProgress(Utils.bytesToKb(bytesDownloaded));
                 progressBar.setIndeterminate(totalBytes == -1);
                 progressLabel.setContentDescription("");
                 if (resIdString != 0) {
@@ -373,12 +372,12 @@ public class AppDetailsRecyclerViewAdapter
                     progressLabel.setContentDescription(context.getString(R.string.downloading));
                     progressPercent.setText("");
                 } else if (totalBytes > 0 && bytesDownloaded >= 0) {
-                    float percent = (float) bytesDownloaded / totalBytes;
-                    progressLabel.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
-                    progressLabel.setContentDescription(context.getString(R.string.app__tts__downloading_progress, (int) percent));
-                    NumberFormat format = NumberFormat.getPercentInstance();
-                    format.setMaximumFractionDigits(0);
-                    progressPercent.setText(format.format(percent));
+                    int percent = Utils.getPercent(bytesDownloaded, totalBytes);
+                    progressLabel.setText(Utils.getFriendlySize(bytesDownloaded)
+                            + " / " + Utils.getFriendlySize(totalBytes));
+                    progressLabel.setContentDescription(context.getString(R.string.app__tts__downloading_progress,
+                            percent));
+                    progressPercent.setText(String.format(Locale.ENGLISH, "%d%%", percent));
                 } else if (bytesDownloaded >= 0) {
                     progressLabel.setText(Utils.getFriendlySize(bytesDownloaded));
                     progressLabel.setContentDescription(context.getString(R.string.downloading));
