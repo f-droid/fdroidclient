@@ -32,15 +32,18 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.acra.ACRA;
@@ -61,6 +64,7 @@ import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 
+import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;
 import java.security.Security;
 import java.util.List;
@@ -380,9 +384,31 @@ public class FDroidApp extends Application {
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 
+        // There are a couple things to pay attention to with this config: memory usage,
+        // especially on small devices; and, image processing vulns, since images are
+        // submitted via app's git repos, so anyone with commit privs there could submit
+        // exploits hidden in images.  Luckily, F-Droid doesn't need EXIF at all, and
+        // that is where the JPEG/PNG vulns have been. So it can be entirely stripped.
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int maxSize = GL10.GL_MAX_TEXTURE_SIZE; // see ImageScaleType.NONE_SAFE javadoc
+        int width = display.getWidth();
+        if (width > maxSize) {
+            maxSize = width;
+        }
+        int height = display.getHeight();
+        if (height > maxSize) {
+            maxSize = height;
+        }
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
                 .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
+                .diskCacheExtraOptions(maxSize, maxSize, new BitmapProcessor() {
+                    @Override
+                    public Bitmap process(Bitmap bitmap) {
+                        // converting JPEGs to Bitmaps, then saving them removes EXIF metadata
+                        return bitmap;
+                    }
+                })
                 .threadPoolSize(getThreadPoolSize())
                 .build();
         ImageLoader.getInstance().init(config);

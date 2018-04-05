@@ -219,12 +219,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public App() {
     }
 
-    public App(Cursor cursor) {
+    public App(final Cursor cursor) {
 
         checkCursorPosition(cursor);
 
-        for (int i = 0; i < cursor.getColumnCount(); i++) {
-            String n = cursor.getColumnName(i);
+        final int cursorColumnCount = cursor.getColumnCount();
+        for (int i = 0; i < cursorColumnCount; i++) {
+            final String n = cursor.getColumnName(i);
             switch (n) {
                 case Cols.ROW_ID:
                     id = cursor.getLong(i);
