@@ -24,6 +24,8 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
+import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -131,6 +133,38 @@ public final class Utils {
     public static File getImageCacheDir(Context context) {
         File cacheDir = StorageUtils.getCacheDirectory(context.getApplicationContext(), true);
         return new File(cacheDir, "icons");
+    }
+
+    public static long getImageCacheDirAvailableMemory(Context context) {
+        File statDir = getImageCacheDir(context);
+        while (statDir != null && !statDir.exists()) {
+            statDir = statDir.getParentFile();
+        }
+        if (statDir == null) {
+            return 50 * 1024 * 1024; // just return a minimal amount
+        }
+        StatFs stat = new StatFs(statDir.getPath());
+        if (Build.VERSION.SDK_INT < 18) {
+            return stat.getAvailableBlocks() * stat.getBlockSize();
+        } else {
+            return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
+        }
+    }
+
+    public static long getImageCacheDirTotalMemory(Context context) {
+        File statDir = getImageCacheDir(context);
+        while (statDir != null && !statDir.exists()) {
+            statDir = statDir.getParentFile();
+        }
+        if (statDir == null) {
+            return 100 * 1024 * 1024; // just return a minimal amount
+        }
+        StatFs stat = new StatFs(statDir.getPath());
+        if (Build.VERSION.SDK_INT < 18) {
+            return stat.getBlockCount() * stat.getBlockSize();
+        } else {
+            return stat.getBlockCountLong() * stat.getBlockSizeLong();
+        }
     }
 
     public static void copy(InputStream input, OutputStream output) throws IOException {

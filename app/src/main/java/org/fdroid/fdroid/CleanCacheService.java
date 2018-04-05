@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -49,6 +48,10 @@ public class CleanCacheService extends IntentService {
         alarm.cancel(pending);
         alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
                 SystemClock.elapsedRealtime() + 5000, interval, pending);
+    }
+
+    public static void start(Context context) {
+        context.startService(new Intent(context, CleanCacheService.class));
     }
 
     public CleanCacheService() {
