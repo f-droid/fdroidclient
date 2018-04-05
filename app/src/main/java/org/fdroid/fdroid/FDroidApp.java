@@ -41,6 +41,10 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+import com.nostra13.universalimageloader.cache.disc.DiskCache;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
+import com.nostra13.universalimageloader.core.DefaultConfigurationFactory;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
@@ -399,9 +403,26 @@ public class FDroidApp extends Application {
         if (height > maxSize) {
             maxSize = height;
         }
+
+        DiskCache diskCache;
+        long available = Utils.getImageCacheDirAvailableMemory(this);
+        int percentageFree = Utils.getPercent(available, Utils.getImageCacheDirTotalMemory(this));
+        if (percentageFree > 5) {
+            diskCache = new UnlimitedDiskCache(Utils.getImageCacheDir(this));
+        } else {
+            Log.i(TAG, "Switching to LruDiskCache(" + available / 2L + ") to save disk space!");
+            try {
+                diskCache = new LruDiskCache(Utils.getImageCacheDir(this),
+                        DefaultConfigurationFactory.createFileNameGenerator(),
+                        available / 2L);
+            } catch (IOException e) {
+                diskCache = new UnlimitedDiskCache(Utils.getImageCacheDir(this));
+            }
+        }
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
                 .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
+                .diskCache(diskCache)
                 .diskCacheExtraOptions(maxSize, maxSize, new BitmapProcessor() {
                     @Override
                     public Bitmap process(Bitmap bitmap) {
