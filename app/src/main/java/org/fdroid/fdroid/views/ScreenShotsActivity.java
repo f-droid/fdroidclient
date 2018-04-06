@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -35,6 +36,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
     private static final String EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME";
     private static final String EXTRA_START_POSITION = "EXTRA_START_POSITION";
+
+    private static final ImageLoader IMAGE_LOADER = ImageLoader.getInstance();
 
     public static Intent getStartIntent(Context context, String packageName, int startPosition) {
         Intent intent = new Intent(context, ScreenShotsActivity.class);
@@ -66,6 +69,18 @@ public class ScreenShotsActivity extends AppCompatActivity {
             // display some nice animation while swiping
             viewPager.setPageTransformer(true, new DepthPageTransformer());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IMAGE_LOADER.denyNetworkDownloads(false);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        IMAGE_LOADER.denyNetworkDownloads(!Preferences.get().isBackgroundDownloadAllowed());
     }
 
     private static class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
