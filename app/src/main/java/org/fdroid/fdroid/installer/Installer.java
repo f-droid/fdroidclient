@@ -113,10 +113,6 @@ public abstract class Installer {
         }
 
         AppDiff appDiff = new AppDiff(context.getPackageManager(), apk);
-        if (appDiff.pkgInfo == null) {
-            // could not get diff because we couldn't parse the package
-            throw new RuntimeException("cannot parse!");
-        }
         AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.pkgInfo);
         if (appDiff.installedAppInfo != null) {
             // update to an existing app
