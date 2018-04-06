@@ -18,55 +18,51 @@
 
 package org.fdroid.fdroid.privileged.views;
 
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-
 import org.fdroid.fdroid.data.Apk;
 
+/**
+ * Represents the permissions difference between the installed APK, and the
+ * update APK represented by {@link Apk}.
+ */
 public class AppDiff {
 
-    private final PackageManager pm;
-    public final PackageInfo pkgInfo;
-    public ApplicationInfo installedAppInfo;
+    public final PackageInfo apkPackageInfo;
+    public final ApplicationInfo installedApplicationInfo;
 
-    /**
-     * Constructor based on F-Droids Apk object
-     */
-    public AppDiff(PackageManager pm, Apk apk) {
-        this.pm = pm;
+    public AppDiff(Context context, Apk apk) {
+        PackageManager pm = context.getPackageManager();
+        apkPackageInfo = new PackageInfo();
+        apkPackageInfo.packageName = apk.packageName;
+        apkPackageInfo.applicationInfo = new ApplicationInfo();
+        apkPackageInfo.requestedPermissions = apk.requestedPermissions;
 
-        pkgInfo = new PackageInfo();
-        pkgInfo.packageName = apk.packageName;
-        pkgInfo.applicationInfo = new ApplicationInfo();
-        pkgInfo.requestedPermissions = apk.requestedPermissions;
-
-        init();
-    }
-
-    private void init() {
-        String pkgName = pkgInfo.packageName;
+        String packageName = apkPackageInfo.packageName;
         // Check if there is already a package on the device with this name
         // but it has been renamed to something else.
-        final String[] oldName = pm.canonicalToCurrentPackageNames(new String[]{pkgName});
+        final String[] oldName = pm.canonicalToCurrentPackageNames(new String[]{packageName});
         if (oldName != null && oldName.length > 0 && oldName[0] != null) {
-            pkgName = oldName[0];
-            pkgInfo.packageName = pkgName;
-            pkgInfo.applicationInfo.packageName = pkgName;
+            packageName = oldName[0];
+            apkPackageInfo.packageName = packageName;
+            apkPackageInfo.applicationInfo.packageName = packageName;
         }
         // Check if package is already installed
+        ApplicationInfo applicationInfo;
         try {
             // This is a little convoluted because we want to get all uninstalled
             // apps, but this may include apps with just data, and if it is just
             // data we still want to count it as "installed".
             //noinspection WrongConstant (lint is actually wrong here!)
-            installedAppInfo = pm.getApplicationInfo(pkgName,
-                    PackageManager.GET_UNINSTALLED_PACKAGES);
-            if ((installedAppInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
-                installedAppInfo = null;
+            applicationInfo = pm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
+            if ((applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
+                applicationInfo = null;
             }
         } catch (PackageManager.NameNotFoundException e) {
-            installedAppInfo = null;
+            applicationInfo = null;
         }
+        installedApplicationInfo = applicationInfo;
     }
 }

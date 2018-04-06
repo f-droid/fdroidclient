@@ -92,9 +92,9 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         scrollView = null;
         okCanInstall = false;
         int msg = 0;
-        AppSecurityPermissions perms = new AppSecurityPermissions(this, appDiff.pkgInfo);
-        if (appDiff.installedAppInfo != null) {
-            msg = (appDiff.installedAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+        AppSecurityPermissions perms = new AppSecurityPermissions(this, appDiff.apkPackageInfo);
+        if (appDiff.installedApplicationInfo != null) {
+            msg = (appDiff.installedApplicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                     ? R.string.install_confirm_update_system
                     : R.string.install_confirm_update;
             scrollView = new CaffeinatedScrollView(this);
@@ -131,10 +131,10 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         }
 
         if (!permVisible) {
-            if (appDiff.installedAppInfo != null) {
+            if (appDiff.installedApplicationInfo != null) {
                 // This is an update to an application, but there are no
                 // permissions at all.
-                msg = (appDiff.installedAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                msg = (appDiff.installedApplicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system_no_perms
                         : R.string.install_confirm_update_no_perms;
             } else {
@@ -182,7 +182,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         app = AppProvider.Helper.findSpecificApp(getContentResolver(),
                 apk.packageName, apk.repoId, Schema.AppMetadataTable.Cols.ALL);
 
-        appDiff = new AppDiff(getPackageManager(), apk);
+        appDiff = new AppDiff(this, apk);
 
         setContentView(R.layout.install_start);
 
