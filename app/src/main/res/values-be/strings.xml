@@ -581,4 +581,14 @@
     <string name="force_touch_apps">Паказваць прыкладанні для сэнсарнага экрана</string>
     <string name="force_touch_apps_on">Паказваць прыкладанні, якія патрабуюць сэнсарны экран незалежна ад наяўнасці апаратнай падтрымкі</string>
 
+    <string name="repo_add_mirror">Дадаць люстру</string>
+    <string name="repo_exists_add_fingerprint">%1$s ужо наладжаны, гэта абновіць інфармацыю аб ключы.</string>
+    <string name="repo_exists_enable">%1$s ужо наладжаны, пацвердзіце што хочаце ўключыць яго.</string>
+    <string name="repo_exists_and_enabled">%1$s ужо наладжаны і ўключаны.</string>
+    <string name="repo_delete_to_overwrite">Спачатку выдаліце %1$s, каб затым дабавіць гэты з канфліктуючым ключом.</string>
+    <string name="repo_exists_add_mirror">Гэта копія %1$s, дадаць яго як люстру?</string>
+    <string name="repo_official_mirrors">Афіцыйныя люстры</string>
+    <string name="repo_user_mirrors">Люстры карыстальніка</string>
+    <string name="show_anti_feature_apps">Уключаць праграмы з непажаданымі функцыямі</string>
+    <string name="show_anti_feature_apps_on">Паказаць праграмы, які патрабуюць непажаданыя функцыі</string>
     </resources>

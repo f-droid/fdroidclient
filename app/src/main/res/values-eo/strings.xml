@@ -533,4 +533,12 @@
     <string name="force_touch_apps">Inkluzivi tuŝekranajn aplikaĵojn</string>
     <string name="force_touch_apps_on">Montri aplikaĵojn, kiuj bezonas tuŝekranon malgraŭ ĝia nedisponeblo de aparato</string>
 
+    <string name="repo_add_mirror">Aldoni spegul-servilon</string>
+    <string name="repo_exists_add_fingerprint">%1$s estas jam agordita, tio ĉi aldonos informojn pri nova ŝlosilo.</string>
+    <string name="repo_exists_enable">%1$s estas jam agordita, konfirmu ke vi volas reaktivigi ĝin.</string>
+    <string name="repo_exists_and_enabled">%1$s estas jam agordita kaj aktiva.</string>
+    <string name="repo_delete_to_overwrite">Unue forigu %1$s por aldoni tiun ĉi servilon kun konflikta ŝlosilo.</string>
+    <string name="repo_exists_add_mirror">Tio ĉi estas kopio de %1$s, ĉe aldoni ĝin kiel spegul-servilo?</string>
+    <string name="repo_official_mirrors">Oficialaj spegul-serviloj</string>
+    <string name="repo_user_mirrors">Uzi spegul-servilojn</string>
     </resources>

@@ -81,4 +81,6 @@
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளது</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
     </string>
-</resources>
+<string name="menu_launch">இயக்க</string>
+    <string name="main_menu__latest_apps">சமீபத்திய</string>
+    </resources>

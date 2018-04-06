@@ -545,4 +545,8 @@
     <string name="force_touch_apps">Inkluder pekeskjermsprogrammer</string>
     <string name="force_touch_apps_on">Vis programmer som krever pekeskjerm, uavhengig av maskinvarestøtte</string>
 
+    <string name="repo_add_mirror">Legg til speil</string>
+    <string name="repo_exists_add_mirror">Dette er en kopi av %1$s, legg den til som speil?</string>
+    <string name="repo_official_mirrors">Offisielle speil</string>
+    <string name="repo_user_mirrors">Bruker-speil</string>
     </resources>

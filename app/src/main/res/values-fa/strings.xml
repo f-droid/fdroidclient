@@ -508,4 +508,10 @@
     <string name="menu_liberapay">لیبراپی</string>
 
 <string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
+    <string name="repo_add_mirror">افزودن mirror</string>
+    <string name="repo_exists_add_fingerprint">%1$s از قبل تنظیم شده است، این عملیات اطلاعات کلید جدید را اضافه میکند.</string>
+    <string name="repo_exists_enable">%1$s از قبل تنظیم شده است، در صورتی که میخواهید، فعال کردن مجدد آن را تایید نمایید.</string>
+    <string name="repo_exists_and_enabled">%1$s از قبل تنظیم و فعال شده است.</string>
+    <string name="repo_delete_to_overwrite">در ابتدا %1$s را پاک کنید تا بتوانید مورد جدید را با کلید نامتعارف اضافه کنید.</string>
+    <string name="repo_exists_add_mirror">این یک کپی از %1$s میباشد، آیا میخواهید آن را به عنوان یک mirror اضافه کنید؟</string>
     </resources>

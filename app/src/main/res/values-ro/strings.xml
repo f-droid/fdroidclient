@@ -510,4 +510,12 @@
     <string name="force_touch_apps">Include ecran tactil</string>
     <string name="force_touch_apps_on">Se listează și aplicațiile ce necesită un ecran tactil indiferent dacă dispozitivul suportă sau nu</string>
 
+    <string name="repo_add_mirror">Adaugă server de rezervă</string>
+    <string name="repo_exists_add_fingerprint">%1$s este deja setat, se vor adăuga informațiile despre cheia nouă.</string>
+    <string name="repo_exists_enable">%1$s este deja setat, confirmați că doriți să îl reactivați.</string>
+    <string name="repo_exists_and_enabled">%1$s este deja setat și activat.</string>
+    <string name="repo_delete_to_overwrite">Ștergeți %1$s mai întâi pentru a-l adăuga pe acesta cu o cheie diferită.</string>
+    <string name="repo_exists_add_mirror">Acesta este o copie a %1$s, îl adăugăm ca server de rezervă?</string>
+    <string name="repo_official_mirrors">Servere de rezervă oficiale</string>
+    <string name="repo_user_mirrors">Folosire servere de rezervă</string>
     </resources>
