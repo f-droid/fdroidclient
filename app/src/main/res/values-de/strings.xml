@@ -428,7 +428,7 @@
     <string name="details_new_in_version">Neu in Version %s</string>
 
     <string name="antifeatureswarning">Diese Anwendung besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
-    <string name="antifeatures">Bedenkliche Eigenschaften</string>
+    <string name="antifeatures">Unerwünschte Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Vor %1$d Tag aktualisiert</item>
@@ -444,10 +444,8 @@
     <string name="nearby_splash__find_people_button">Menschen in der Nähe finden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Nahfunktion zu verwenden.</string>
 
-    <string name="latest__empty_state__no_recent_apps">Keine kürzlichen Apps gefunden</string>
-    <string name="latest__empty_state__never_updated">Sobald Ihre Liste der Apps aktualisiert wurde, sollten die
-        neuesten Apps hier angezeigt werden.
-    </string>
+    <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
+    <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
     <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und sie
         aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.
     </string>
@@ -528,11 +526,11 @@
 
     <string name="hiding_calculator">Taschenrechner</string>
     <string name="hiding_dialog_title">%s jetzt verstecken</string>
-    <string name="hiding_dialog_message">Wirklich %1$s vom Starter entfernen? Eingabe von \"%2$d\" in die falsche %3$s App kann diese wiederherstellen.</string>
+    <string name="hiding_dialog_message">Soll %1$s wirklich vom Starter entfernt werden? Nur die Eingabe von \"%2$d\" in die erfundene App %3$s kann diese wiederherstellen.</string>
     <string name="hide_on_long_search_press_title">Mittels Suchtaste verbergen</string>
     <string name="hide_on_long_search_press_summary">Langes Drücken der Suchtaste blendet die App aus</string>
 
-    <string name="panic_hide_warning_message">Im Notfall wird %1$s aus dem Programmstarter entfernt. Nur die Eingabe von „%2$d” in der erfundenen %3$s-App kann sie wiederherstellen.</string>
+    <string name="panic_hide_warning_message">Im Notfall wird %1$s aus dem Programmstarter entfernt. Nur die Eingabe von \"%2$d\" in der erfundenen App %3$s kann sie wiederherstellen.</string>
 
     <string name="hiding_dialog_warning">Warnhinweis. Alle Verknüpfungen auf dem Startbildschirm werden ebenfalls entfernt und müssen manuell hinzugefügt werden.</string>
     <string name="sort_search">Suchergebnis sortieren</string>
@@ -543,4 +541,17 @@
 <string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
     <string name="show_root_apps">Root-Apps einbeziehen</string>
     <string name="show_root_apps_on">Apps anzeigen, die Root-Berechtigungen benötigen</string>
+    <string name="repo_add_mirror">Mirror hinzufügen</string>
+    <string name="repo_exists_add_fingerprint">%1$s ist bereits eingerichtet, dies fügt neue Schlüsselinformationen hinzu.</string>
+    <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie, dass Sie erneut aktivieren möchten.</string>
+    <string name="repo_exists_and_enabled">%1$s ist bereits eingerichtet und aktiviert.</string>
+    <string name="repo_exists_add_mirror">Dies ist eine Kopie von %1$s, als Spiegel hinzufügen?</string>
+    <string name="show_anti_feature_apps">Anti-Feature-Apps einbeziehen</string>
+    <string name="show_anti_feature_apps_on">Apps anzeigen, die Anti-Features benötigen</string>
+    <string name="force_touch_apps">Touchscreen-Apps einbeziehen</string>
+    <string name="force_touch_apps_on">Apps anzeigen, die unabhängig von der Hardwareunterstützung einen Touchscreen benötigen</string>
+
+    <string name="repo_official_mirrors">Offizielle Spiegel</string>
+    <string name="repo_user_mirrors">Benutzer-Spiegel</string>
+    <string name="repo_delete_to_overwrite">Löschen Sie zuerst %1$s, um es mit einem widersprüchlichen Schlüssel hinzuzufügen.</string>
     </resources>

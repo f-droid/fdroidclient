@@ -489,4 +489,5 @@
     <string name="show_root_apps_on">显示需要 root 权限的应用程序</string>
     <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
     <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用程序</string>
+    <string name="repo_add_mirror">添加镜像</string>
     </resources>

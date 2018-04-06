@@ -569,4 +569,7 @@
     <string name="force_touch_apps">Sartu ukimen pantaila darabilten aplikazioak</string>
     <string name="force_touch_apps_on">Erakutsi ukimen pantaila behar duten aplikazioak, hardware euskarria dena dela</string>
 
+    <string name="repo_add_mirror">Gehitu ispilua</string>
+    <string name="repo_exists_add_fingerprint">%1$s ezarrita dago jada, honek informazio gako berria gehituko du.</string>
+    <string name="repo_exists_enable">%1$s ezarrita dago jada, baieztatu berriz gaitu nahi duzula.</string>
     </resources>

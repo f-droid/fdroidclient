@@ -533,4 +533,7 @@
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Приховати %s зараз</string>
     <string name="hide_on_long_search_press_title">Приховати за допомогою кнопки пошуку</string>
+    <string name="repo_add_mirror">Додати дзеркало</string>
+    <string name="repo_official_mirrors">Офіційні дзеркала</string>
+    <string name="repo_user_mirrors">Дзеркала користувачів</string>
     </resources>

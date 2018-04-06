@@ -550,6 +550,16 @@
     <string name="hide_on_long_search_press_summary">Appuyez longuement sur le bouton de recherche pour cacher l\'application</string>
 
 <string name="warning_scaning_qr_code">Votre appareil-photo n’a pas de mise au point automatique. Il sera peut-être difficile de scanner le code.</string>
-    <string name="show_root_apps">Inclure les applications nécessitant les privilèges root</string>
+    <string name="show_root_apps">Inclure les applications root</string>
     <string name="show_root_apps_on">Afficher les applications nécessitant les privilèges root</string>
+    <string name="repo_add_mirror">Ajouter un miroir</string>
+    <string name="repo_delete_to_overwrite">Veuillez d\'abord supprimer %1$s pour pouvoir l\'ajouter avec la clé en conflit.</string>
+    <string name="repo_exists_add_mirror">Il s\'agit d\'une copie de %1$s, l\'ajouter comme miroir ?</string>
+    <string name="show_anti_feature_apps">Inclure les applications avec de mauvaises fonctionnalités</string>
+    <string name="show_anti_feature_apps_on">Afficher les applications incluant des fonctionnalités qui pourraient ne pas vous plaire</string>
+    <string name="force_touch_apps">Inclure les applications tactiles</string>
+    <string name="force_touch_apps_on">Afficher les applications qui requièrent un écran tactile, quel que soit votre appareil</string>
+
+    <string name="repo_official_mirrors">Miroirs officiels</string>
+    <string name="repo_user_mirrors">Miroirs administrés par des utilisateurs</string>
     </resources>

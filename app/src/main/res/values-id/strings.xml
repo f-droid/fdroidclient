@@ -106,8 +106,8 @@
     <string name="search_hint">Cari apl</string>
 
     <string name="appcompatibility">Kompatibilitas apl</string>
-    <string name="show_incompat_versions">Versi tidak kompatibel</string>
-    <string name="show_incompat_versions_on">Menampilkan versi apl yang tidak kompatibel dengan perangkat ini</string>
+    <string name="show_incompat_versions">Termasuk versi yg tidak kompatibel</string>
+    <string name="show_incompat_versions_on">Menampilkan versi apl yang tidak kompatibel dengan perangkat</string>
 
     <string name="local_repo">Repo Lokal</string>
     <string name="deleting_repo">Menghapus repo saat ini…</string>
@@ -516,4 +516,32 @@
     <string name="panic_hide_summary">Aplikasi akan sembunyi dengan sendirinya</string>
     <string name="sort_search">Atur pencarian</string>
 
-</resources>
+<string name="repo_add_mirror">Tambah mirror</string>
+    <string name="repo_exists_add_fingerprint">%1$s sudah diatur, ini akan menambah informasi kunci baru.</string>
+    <string name="repo_exists_enable">%1$s sudah diatur, konfirmasikan bahwa kamu ingin mengaktifkannya lagi.</string>
+    <string name="repo_exists_and_enabled">%1$s sudah diatur dan telah diaktifkan.</string>
+    <string name="repo_delete_to_overwrite">Pertama hapus %1$s untuk menambahkan ini dengan kunci yang sedang konflik.</string>
+    <string name="repo_exists_add_mirror">Ini adalah salinan dari %1$s, tambahkan sebagai mirror?</string>
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="show_root_apps">Termasuk apl root</string>
+    <string name="show_root_apps_on">Tampilkan apl yg butuh akses root</string>
+    <string name="show_anti_feature_apps">Termasuk apl anti-fitur</string>
+    <string name="show_anti_feature_apps_on">Tampilkan apl yg butuh anti-fitur</string>
+    <string name="force_touch_apps">Termasuk apl layar sentuh</string>
+    <string name="force_touch_apps_on">Tampilkan apl yg butuh layar sentuh terlepas dari dukungan perangkat keras</string>
+
+    <string name="panic_hide_warning_title">Ingat bagaimana caranya mengembalikan</string>
+    <string name="panic_hide_warning_message">Saat keadaan panik, ini akan menghapus %1$s dari peluncur. Hanya mengetik \"%2$d\" di apl %3$s palsu dapat mengembalikannya.</string>
+
+    <string name="hiding_calculator">Kalkulator</string>
+    <string name="hiding_dialog_title">Sembunyikan %s Sekarang</string>
+    <string name="hiding_dialog_message">Kamu yakin ingin menghapus %1$s dari peluncur? Cukup ketik \"%2$d\" di apl %3$s palsu dapat mengembalikannya.</string>
+    <string name="hiding_dialog_warning">Perhatian: Semua jalan pintas apl di beranda juga akan terhapus dan butuh ditambahkan sendiri.</string>
+    <string name="hide_on_long_search_press_title">Sembunyikan dengan tombol cari</string>
+    <string name="hide_on_long_search_press_summary">Tekan lama ditombol cari akan menyembunyikan apl</string>
+
+    <string name="repo_official_mirrors">Mirror resmi</string>
+    <string name="repo_user_mirrors">Mirror pengguna</string>
+    <string name="warning_scaning_qr_code">Kamera kamu sepertinya tidak memiliki autofokus. Mungkin akan susah untuk memindai kode.</string>
+    </resources>

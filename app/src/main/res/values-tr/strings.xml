@@ -541,4 +541,12 @@
     <string name="force_touch_apps">Dokunmatik ekran uygulamalarını içer</string>
     <string name="force_touch_apps_on">Donanım desteği aramadan dokunmatik ekran gerektiren uygulamaları göster</string>
 
+    <string name="repo_add_mirror">Yansıma ekle</string>
+    <string name="repo_exists_add_fingerprint">%1$s zaten kurulu, bu yeni anahtar bilgisi ekleyecek.</string>
+    <string name="repo_exists_enable">%1$s zaten kurulu, onu yeniden etkinleştirmek istediğinizi onaylayın.</string>
+    <string name="repo_exists_and_enabled">%1$s zaten kurulu ve etkin.</string>
+    <string name="repo_delete_to_overwrite">Bunu çakışan bir anahtarla eklemek için ilk önce %1$s deposunu silin.</string>
+    <string name="repo_exists_add_mirror">Bu %1$s deposunun bir kopyası, bir yansıma olarak eklensin mi?</string>
+    <string name="repo_official_mirrors">Resmi yansımalar</string>
+    <string name="repo_user_mirrors">Kullanıcı yansımaları</string>
     </resources>

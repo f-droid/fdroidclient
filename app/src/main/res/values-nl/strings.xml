@@ -530,4 +530,12 @@
     <string name="force_touch_apps">Aanraakschermapps tonen</string>
     <string name="force_touch_apps_on">Toon apps die ondersteuning voor aanraakscherm vereisen ongeacht hardwareondersteuning</string>
 
+    <string name="repo_add_mirror">Terugvalpakketbron toevoegen</string>
+    <string name="repo_exists_add_fingerprint">%1$s is al ingesteld, dit zal nieuwe sleutelinformatie toevoegen.</string>
+    <string name="repo_exists_enable">%1$s is al ingesteld, bevestig dat je deze opnieuw wil inschakelen.</string>
+    <string name="repo_exists_and_enabled">%1$s is al ingesteld en ingeschakeld.</string>
+    <string name="repo_delete_to_overwrite">Verwijder eerst %1$s om deze met een conflicterende sleutel toe te voegen.</string>
+    <string name="repo_exists_add_mirror">Dit is een kopie van %1$s, toevoegen als terugvalpakketbron?</string>
+    <string name="repo_official_mirrors">Officiële terugvalpakketbronnen</string>
+    <string name="repo_user_mirrors">Gebruikersterugvalpakketbronnen</string>
     </resources>

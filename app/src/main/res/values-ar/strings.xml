@@ -140,7 +140,7 @@
     <string name="search_hint">بحث في التطبيقات</string>
 
     <string name="appcompatibility">توافق التطبيق</string>
-    <string name="show_incompat_versions">إصدارات غير متوافقة</string>
+    <string name="show_incompat_versions">إضافة الإصدارات غير المتوافقة</string>
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير المتوافقة مع الجهاز</string>
 
     <string name="local_repo_running">اف-درويد على استعداد التبديل</string>
@@ -220,7 +220,8 @@
     <string name="empty_installed_app_list">لا يوجد تطبيقات مثبتة.\n\nهناك تطبيقات على جهازك، ولكن لم تكن متوفرة في
         اف-درويد. يمكن أنك تحتاج إلى تحديث المستودعات الخاصة بك، أو المستودعات بالفعل لا تملك تطبيقات متوفرة خاصة بك.
     </string>
-    <string name="empty_can_update_app_list">تهانينا ! كل تطبيقاتك محدثة.</string>
+    <string name="empty_can_update_app_list">تهانينا !
+\nإنَّ كافة تطبيقاتك مُحدّثة.</string>
     <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
 
     <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
@@ -432,7 +433,7 @@
 
     <string name="updates__app_with_known_vulnerability__ignore">تخطي</string>
 
-    <string name="details_new_in_version">جديد في النسخة %s</string>
+    <string name="details_new_in_version">مُستجدَّات النسخة %s</string>
 
     <plurals name="button_view_all_apps_in_category">
         <item quantity="zero">عرض %d</item>
@@ -506,9 +507,54 @@
     <string name="panic_hide_title">إخفاء %s</string>
     <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
 
-<string name="menu_liberapay">Liberapay</string>
+<string name="menu_liberapay">ليبراباي</string>
 
     <string name="panic_hide_warning_title">تذكر كيفية الإسترجاع</string>
     <string name="hiding_calculator">الحاسبة</string>
     <string name="hiding_dialog_title">إخفاء %s الآن</string>
+    <string name="repo_add_mirror">إضافة مستودع مِرآة</string>
+    <string name="sort_search">ترتيب البحث</string>
+
+    <string name="show_root_apps">إضافة التطبيقات التي تحتاج إلى التصريحات الجذرية</string>
+    <string name="show_root_apps_on">إظهار التطبيقات التي تتطلّب التصريحات الجذرية</string>
+    <string name="force_touch_apps">إضافة التطبيقات التي تتطلّب لمس الشاشة</string>
+    <string name="hide_on_long_search_press_title">الإخفاء عن طريق زر البحث</string>
+    <string name="hide_on_long_search_press_summary">الضغط المُطوّل على زر البحث يُمكّن مِن إخفاء التطبيق</string>
+
+    <string name="repo_official_mirrors">مستودعات المِرآة الرسمية</string>
+    <string name="repo_user_mirrors">مستخدم مستودعات المرايا البديلة</string>
+    <plurals name="details_last_update_days">
+	<item quantity="zero">تم تحديثه منذ %1$d يوم</item>
+	<item quantity="one">تم تحديثه منذ %1$d يوم</item>
+	<item quantity="two">تم تحديثه منذ %1$d يومين</item>
+	<item quantity="few">تم تحديثه منذ %1$d أيام</item>
+	<item quantity="many">تم تحديثه منذ %1$d أيام</item>
+	<item quantity="other">تم تحديثه منذ %1$d أيام</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="zero">تم تحديثه قبل %1$d أسابيع</item>
+	<item quantity="one">تم تحديثه قبل %1$d أسبوع</item>
+	<item quantity="two">تم تحديثه قبل %1$d أسبوعين</item>
+	<item quantity="few">تم تحديثه قبل %1$d أسابيع</item>
+	<item quantity="many">تم تحديثه قبل %1$d أسابيع</item>
+	<item quantity="other">تم تحديثه قبل %1$d أسابيع</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="zero">تم تحديثه قبل %1$d أشهر</item>
+	<item quantity="one">تم تحديثه قبل %1$d شهر</item>
+	<item quantity="two">تم تحديثه قبل %1$d شهرين</item>
+	<item quantity="few">تم تحديثه قبل %1$d أشهر</item>
+	<item quantity="many">تم تحديثه قبل %1$d أشهر</item>
+	<item quantity="other">تم تحديثه قبل %1$d أشهر</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="zero">تم تحديثه قبل %1$d سنوات</item>
+	<item quantity="one">تم تحديثه قبل %1$d سنة</item>
+	<item quantity="two">تم تحديثه قبل %1$d سنتين</item>
+	<item quantity="few">تم تحديثه قبل %1$d سنوات</item>
+	<item quantity="many">تم تحديثه قبل %1$d سنوات</item>
+	<item quantity="other">تم تحديثه قبل %1$d سنوات</item>
+</plurals>
+    <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
+    <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
     </resources>
