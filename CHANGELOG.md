@@ -1,3 +1,13 @@
+### 1.2-alpha1 (2018-04-06)
+
+* fix Privileged Extension install with apps with uses-permision-sdk-23
+
+* automatically trim or delete cache when storage space is low
+
+* improved performance on low memory devices
+
+* make all downloads respect "Only on Wi-Fi" preference
+
 ### 1.2-alpha0 (2018-03-30)
 
 * add custom mirrors to any repo by clicking links, scanning QR codes, etc.
