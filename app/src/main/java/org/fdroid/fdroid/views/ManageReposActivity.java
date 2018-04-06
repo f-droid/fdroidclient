@@ -57,6 +57,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import hugo.weaving.DebugLog;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
@@ -101,6 +102,7 @@ public class ManageReposActivity extends AppCompatActivity
     private boolean finishAfterAddingRepo;
 
     @Override
+    @DebugLog
     protected void onCreate(Bundle savedInstanceState) {
 
         ((FDroidApp) getApplication()).applyTheme(this);
@@ -126,6 +128,7 @@ public class ManageReposActivity extends AppCompatActivity
     }
 
     @Override
+    @DebugLog
     protected void onResume() {
         super.onResume();
         FDroidApp.checkStartTor(this);
@@ -138,6 +141,7 @@ public class ManageReposActivity extends AppCompatActivity
     }
 
     @Override
+    @DebugLog
     protected void onNewIntent(Intent intent) {
         setIntent(intent);
     }
@@ -230,6 +234,7 @@ public class ManageReposActivity extends AppCompatActivity
         showAddRepo(text, fingerprint, username, password);
     }
 
+    @DebugLog
     private void showAddRepo(String newAddress, String newFingerprint, String username, String password) {
         new AddRepo(newAddress, newFingerprint, username, password);
     }
@@ -260,17 +265,23 @@ public class ManageReposActivity extends AppCompatActivity
          * since the user input is validated as they are typing.  This also
          * checks that the repo type matches, e.g. "repo" or "archive".
          */
+        @DebugLog
         AddRepo(String newAddress, String newFingerprint, final String username, final String password) {
 
             context = ManageReposActivity.this;
 
             for (Repo repo : RepoProvider.Helper.all(context)) {
+                Log.i(TAG, "found repo: " + repo);
+                Log.i(TAG, "ADDING URL REPO MAP " + repo.address + " " + repo);
                 urlRepoMap.put(repo.address, repo);
                 for (String url : repo.getMirrorList()) {
+                    Log.i(TAG, "ADDING URL REPO MAP " + url + " " + repo);
                     urlRepoMap.put(url, repo);
                 }
+                Log.i(TAG, getRepoType(newAddress) + " == " + getRepoType(repo.address));
                 if (!TextUtils.isEmpty(repo.fingerprint)
                         && TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
+                    Log.i(TAG, "INCLUDING IN fingerprintRepoMap: " + repo.address + " " + repo.fingerprint);
                     fingerprintRepoMap.put(repo.fingerprint, repo);
                 }
             }
@@ -321,6 +332,7 @@ public class ManageReposActivity extends AppCompatActivity
             addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(
                     new View.OnClickListener() {
                         @Override
+                        @DebugLog
                         public void onClick(View v) {
 
                             String url = uriEditText.getText().toString();
@@ -407,6 +419,7 @@ public class ManageReposActivity extends AppCompatActivity
          * encoded "/" chars in it, for example:
          * {@code content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo}
          */
+        @DebugLog
         private String getRepoType(String url) {
             String last = Uri.parse(url).getLastPathSegment();
             if (last == null) {
@@ -414,6 +427,12 @@ public class ManageReposActivity extends AppCompatActivity
             } else {
                 return new File(last).getName();
             }
+            /*
+            int index = repoType.lastIndexOf('/');
+            if (index > -1 && repoType.length() > 1) {
+                repoType = repoType.substring(index + 1);
+            }
+            return repoType;*/
         }
 
         /**
@@ -427,6 +446,7 @@ public class ManageReposActivity extends AppCompatActivity
          * <li>an unsigned repo and no fingerprint was supplied
          * </ul>
          */
+        @DebugLog
         private void validateRepoDetails(@NonNull String uri, @NonNull String fingerprint) {
 
             try {
@@ -440,7 +460,11 @@ public class ManageReposActivity extends AppCompatActivity
             Repo repo = fingerprintRepoMap.get(fingerprint);
             if (repo == null) {
                 repo = urlRepoMap.get(uri);
+                Log.i(TAG, "FOUND BY ADDRESS repo == null, findByAddress " + repo);
+            } else {
+                Log.i(TAG, "FOUND BY FINGERPRINT: " + uri);
             }
+            Log.i(TAG, "urlRepoMap.get " + uri + " - " + repo);
 
             if (repo == null) {
                 repoDoesntExist();
@@ -552,6 +576,7 @@ public class ManageReposActivity extends AppCompatActivity
          * Adds a new repo to the database.
          */
         @SuppressLint("StaticFieldLeak")
+        @DebugLog
         private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint,
                                             final String username, final String password) {
 
@@ -718,12 +743,15 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Create a repository without a username or password.
          */
+        @DebugLog
         private void createNewRepo(String address, String fingerprint) {
             createNewRepo(address, fingerprint, null, null);
         }
 
+        @DebugLog
         private void createNewRepo(String address, String fingerprint,
                                    final String username, final String password) {
+            Log.i(TAG, "createNewRepo " + address);
             try {
                 address = AddRepoIntentService.normalizeUrl(address);
             } catch (URISyntaxException e) {
@@ -748,6 +776,7 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Seeing as this repo already exists, we will force it to be enabled again.
          */
+        @DebugLog
         private void updateAndEnableExistingRepo(String url, String fingerprint) {
             if (fingerprint != null) {
                 fingerprint = fingerprint.trim();
@@ -761,6 +790,7 @@ public class ManageReposActivity extends AppCompatActivity
             Utils.debugLog(TAG, "Enabling existing repo: " + url);
             Repo repo = fingerprintRepoMap.get(fingerprint);
             if (repo == null) {
+                Log.i(TAG, "repo == null, findByAddress");
                 repo = RepoProvider.Helper.findByAddress(context, url);
             }
 
@@ -782,12 +812,22 @@ public class ManageReposActivity extends AppCompatActivity
                         repo.userMirrors = Arrays.copyOf(repo.userMirrors, last + 1);
                         repo.userMirrors[last] = url;
                     }
+                    Log.i(TAG, "add user mirror: " + Arrays.toString(repo.userMirrors));
                     values.put(RepoTable.Cols.USER_MIRRORS, Utils.serializeCommaSeparatedString(repo.userMirrors));
                 }
             }
             RepoProvider.Helper.update(context, repo, values);
 
             notifyDataSetChanged();
+            repo = RepoProvider.Helper.findByAddress(context, url);
+            if (repo != null) {
+                Toast.makeText(ManageReposActivity.this,
+                        "STILL HAVE FINGERPRINT: " + repo.fingerprint, Toast.LENGTH_LONG)
+                        .show();
+                Log.i(TAG, "repo.address: " + repo.address);
+                Log.i(TAG, "STILL HAVE FINGERPRINT: " + repo.fingerprint);
+                Log.i(TAG, "repo.userMirrors: " + Arrays.toString(repo.userMirrors));
+            }
             finishedAddingRepo();
         }
 
@@ -808,6 +848,7 @@ public class ManageReposActivity extends AppCompatActivity
         }
     }
 
+    @DebugLog
     private void addRepoFromIntent(Intent intent) {
         /* an URL from a click, NFC, QRCode scan, etc */
         NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
