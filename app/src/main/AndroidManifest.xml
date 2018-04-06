@@ -251,6 +251,12 @@
             <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
         </receiver>
 
+        <receiver android:name=".receiver.DeviceStorageReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+            </intent-filter>
+        </receiver>
+
         <service android:name=".UpdateService"/>
         <service
                 android:name=".net.DownloaderService"
@@ -260,6 +266,9 @@
                 android:exported="false"/>
         <service
                 android:name=".CleanCacheService"
+                android:exported="false"/>
+        <service
+                android:name=".DeleteCacheService"
                 android:exported="false"/>
         <service android:name=".net.WifiStateChangeService"/>
         <service android:name=".localrepo.SwapService"/>
@@ -278,6 +287,7 @@
         <service
                 android:name=".AppUpdateStatusService"
                 android:exported="false"/>
+
 
         <!-- Warning: Please add all new services to HidingManager -->
 
@@ -534,9 +544,11 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".views.main.MainActivity"/>
+
             <intent-filter>
                 <action android:name="info.guardianproject.panic.action.CONNECT"/>
                 <action android:name="info.guardianproject.panic.action.DISCONNECT"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -544,16 +556,17 @@
                 android:name=".views.panic.PanicResponderActivity"
                 android:noHistory="true"
                 android:theme="@android:style/Theme.NoDisplay">
+
             <!-- this can never have launchMode singleTask or singleInstance! -->
             <intent-filter>
                 <action android:name="info.guardianproject.panic.action.TRIGGER"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity
                 android:name=".views.panic.ExitActivity"
                 android:theme="@android:style/Theme.NoDisplay"/>
-
         <activity
                 android:name=".views.hiding.CalculatorActivity"
                 android:enabled="false"
@@ -562,6 +575,7 @@
                 android:theme="@style/AppThemeLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

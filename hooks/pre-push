@@ -53,7 +53,7 @@ do
             fi
         fi
 
-        gradle checkstyle pmd lint || exit 1
+        ./gradlew checkstyle pmd lint || exit 1
     fi
 done
 

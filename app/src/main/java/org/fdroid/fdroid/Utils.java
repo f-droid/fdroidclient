@@ -24,6 +24,8 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
+import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -131,6 +133,38 @@ public final class Utils {
     public static File getImageCacheDir(Context context) {
         File cacheDir = StorageUtils.getCacheDirectory(context.getApplicationContext(), true);
         return new File(cacheDir, "icons");
+    }
+
+    public static long getImageCacheDirAvailableMemory(Context context) {
+        File statDir = getImageCacheDir(context);
+        while (statDir != null && !statDir.exists()) {
+            statDir = statDir.getParentFile();
+        }
+        if (statDir == null) {
+            return 50 * 1024 * 1024; // just return a minimal amount
+        }
+        StatFs stat = new StatFs(statDir.getPath());
+        if (Build.VERSION.SDK_INT < 18) {
+            return stat.getAvailableBlocks() * stat.getBlockSize();
+        } else {
+            return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
+        }
+    }
+
+    public static long getImageCacheDirTotalMemory(Context context) {
+        File statDir = getImageCacheDir(context);
+        while (statDir != null && !statDir.exists()) {
+            statDir = statDir.getParentFile();
+        }
+        if (statDir == null) {
+            return 100 * 1024 * 1024; // just return a minimal amount
+        }
+        StatFs stat = new StatFs(statDir.getPath());
+        if (Build.VERSION.SDK_INT < 18) {
+            return stat.getBlockCount() * stat.getBlockSize();
+        } else {
+            return stat.getBlockCountLong() * stat.getBlockSizeLong();
+        }
     }
 
     public static void copy(InputStream input, OutputStream output) throws IOException {
@@ -691,6 +725,27 @@ public final class Utils {
     public static int dpToPx(int dp, Context ctx) {
         Resources r = ctx.getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+    }
+
+    /**
+     * Converts a {@code long} bytes value, like from {@link File#length()}, to
+     * an {@code int} value that is kilobytes, suitable for things like
+     * {@link android.widget.ProgressBar#setMax(int)} or
+     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}
+     */
+    public static int bytesToKb(long bytes) {
+        return (int) (bytes / 1024);
+    }
+
+    /**
+     * Converts two {@code long} bytes values, like from {@link File#length()}, to
+     * an {@code int} value that is a percentage, suitable for things like
+     * {@link android.widget.ProgressBar#setMax(int)} or
+     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}.
+     * {@code total} must never be zero!
+     */
+    public static int getPercent(long current, long total) {
+        return (int) ((100L * current + total / 2) / total);
     }
 
     @SuppressWarnings("unused")
