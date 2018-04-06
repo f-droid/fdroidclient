@@ -106,19 +106,23 @@ public abstract class Installer {
         return intent;
     }
 
+    /**
+     * Return if this installation process has any new permissions that the user
+     * should be aware of.  Starting in {@code android-23}, all new permissions
+     * are requested when they are used, and the permissions prompt at time of
+     * install is not used.  All permissions in a new install are considered new.
+     *
+     * @return the number of new permissions
+     */
     private int newPermissionCount() {
         boolean supportsRuntimePermissions = apk.targetSdkVersion >= 23;
         if (supportsRuntimePermissions) {
             return 0;
         }
 
-        AppDiff appDiff = new AppDiff(context.getPackageManager(), apk);
-        if (appDiff.pkgInfo == null) {
-            // could not get diff because we couldn't parse the package
-            throw new RuntimeException("cannot parse!");
-        }
-        AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.pkgInfo);
-        if (appDiff.installedAppInfo != null) {
+        AppDiff appDiff = new AppDiff(context, apk);
+        AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.apkPackageInfo);
+        if (appDiff.installedApplicationInfo != null) {
             // update to an existing app
             return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
         }

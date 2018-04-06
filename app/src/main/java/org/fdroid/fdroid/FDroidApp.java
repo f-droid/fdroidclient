@@ -64,6 +64,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
@@ -109,6 +110,8 @@ public class FDroidApp extends Application {
     public static volatile String ssid;
     public static volatile String bssid;
     public static volatile Repo repo = new Repo();
+
+    public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
     private static volatile String lastWorkingMirror = null;
     private static volatile int numTries = Integer.MAX_VALUE;
@@ -374,11 +377,10 @@ public class FDroidApp extends Application {
             }
         });
 
-        final Context context = this;
         Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                AppProvider.Helper.calcSuggestedApks(context);
+                AppProvider.Helper.calcSuggestedApks(FDroidApp.this);
             }
         });
 
@@ -433,6 +435,8 @@ public class FDroidApp extends Application {
                 .threadPoolSize(getThreadPoolSize())
                 .build();
         ImageLoader.getInstance().init(config);
+
+        ConnectivityMonitorService.registerAndStart(this);
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);

@@ -270,7 +270,12 @@
         <service
                 android:name=".DeleteCacheService"
                 android:exported="false"/>
-        <service android:name=".net.WifiStateChangeService"/>
+        <service
+                android:name=".net.WifiStateChangeService"
+                android:exported="false"/>
+        <service
+                android:name=".net.ConnectivityMonitorService"
+                android:exported="false"/>
         <service android:name=".localrepo.SwapService"/>
         <service
                 android:name=".installer.InstallManagerService"

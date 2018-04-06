@@ -6,6 +6,7 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -273,8 +274,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, false);
     }
 
-    public boolean isUpdateOnlyOnUnmeteredNetworks() {
-        return preferences.getBoolean(PREF_UPD_WIFI_ONLY, false);
+    /**
+     * Do the network conditions and user preferences allow for things to be
+     * downloaded in the background.
+     */
+    public boolean isBackgroundDownloadAllowed() {
+        return FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT ||
+                (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED
+                        && !preferences.getBoolean(PREF_UPD_WIFI_ONLY, false));
     }
 
     /**

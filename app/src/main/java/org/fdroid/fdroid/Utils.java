@@ -406,6 +406,12 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
+    /**
+     * Since there have been vulnerabilities in EXIF processing in Android, this
+     * disables all use of EXIF.
+     *
+     * @see <a href="https://securityaffairs.co/wordpress/51043/mobile-2/android-cve-2016-3862-flaw.html">CVE-2016-3862</a>
+     */
     public static DisplayImageOptions.Builder getDefaultDisplayImageOptionsBuilder() {
         if (defaultDisplayImageOptionsBuilder == null) {
             defaultDisplayImageOptionsBuilder = new DisplayImageOptions.Builder()

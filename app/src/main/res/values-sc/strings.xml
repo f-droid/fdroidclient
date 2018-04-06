@@ -568,4 +568,12 @@
     <string name="force_touch_apps">Inclue sas aplicatziones chi impreant s\'ischermu tàtile</string>
     <string name="force_touch_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de s\'ischermu tàtile in cale si siat dispositivu</string>
 
+    <string name="repo_add_mirror">Annanghe un\'ispigru</string>
+    <string name="repo_exists_add_fingerprint">%1$s est giai impostadu, custu at a annànghere informatziones de crae noas.</string>
+    <string name="repo_exists_enable">%1$s est giai impostadu, cunfirma chi lu cheres torrare a abilitare.</string>
+    <string name="repo_exists_and_enabled">%1$s est giai impostadu e abilitadu.</string>
+    <string name="repo_delete_to_overwrite">In antis iscantzella %1$s pro annànghere custu cun una crae in cunflitu.</string>
+    <string name="repo_exists_add_mirror">Custa est una còpia de %1$s, lu cheres annànghere comente isprigu?</string>
+    <string name="repo_official_mirrors">Isprigos ufitziales</string>
+    <string name="repo_user_mirrors">Isprigos impreadores</string>
     </resources>

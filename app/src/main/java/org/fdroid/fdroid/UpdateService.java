@@ -27,8 +27,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,6 +47,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
@@ -78,10 +77,6 @@ public class UpdateService extends IntentService {
     private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
 
     private static final int NOTIFY_ID_UPDATING = 0;
-
-    private static final int FLAG_NET_UNAVAILABLE = 0;
-    private static final int FLAG_NET_METERED = 1;
-    private static final int FLAG_NET_NO_LIMIT = 2;
 
     private static Handler toastHandler;
 
@@ -313,33 +308,6 @@ public class UpdateService extends IntentService {
     }
 
     /**
-     * Gets the state of internet availability, whether there is no connection at all,
-     * whether the connection has no usage limit (like most WiFi), or whether this is
-     * a metered connection like most cellular plans or hotspot WiFi connections.
-     */
-    private static int getNetworkState(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork == null || !activeNetwork.isConnected()) {
-            return FLAG_NET_UNAVAILABLE;
-        }
-
-        int networkType = activeNetwork.getType();
-        switch (networkType) {
-            case ConnectivityManager.TYPE_ETHERNET:
-            case ConnectivityManager.TYPE_WIFI:
-                if (Build.VERSION.SDK_INT >= 16 && cm.isActiveNetworkMetered()) {
-                    return FLAG_NET_METERED;
-                } else {
-                    return FLAG_NET_NO_LIMIT;
-                }
-            default:
-                return FLAG_NET_METERED;
-        }
-    }
-
-    /**
      * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
      */
     private void sendNoInternetToast() {
@@ -371,8 +339,8 @@ public class UpdateService extends IntentService {
 
         try {
             // See if it's time to actually do anything yet...
-            int netState = getNetworkState(this);
-            if (netState == FLAG_NET_UNAVAILABLE) {
+            int netState = ConnectivityMonitorService.getNetworkState(this);
+            if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
                 Utils.debugLog(TAG, "No internet, cannot update");
                 if (manualUpdate) {
                     sendNoInternetToast();
@@ -380,10 +348,10 @@ public class UpdateService extends IntentService {
                 return;
             }
 
+            final Preferences fdroidPrefs = Preferences.get();
             if (manualUpdate || forcedUpdate) {
                 Utils.debugLog(TAG, "manually requested or forced update");
-            } else if (!verifyIsTimeForScheduledRun()
-                    || (netState == FLAG_NET_METERED && Preferences.get().isUpdateOnlyOnUnmeteredNetworks())) {
+            } else if (!verifyIsTimeForScheduledRun() || !fdroidPrefs.isBackgroundDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
             }
@@ -403,7 +371,6 @@ public class UpdateService extends IntentService {
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
-            final Preferences fdroidPrefs = Preferences.get();
             for (final Repo repo : repos) {
                 if (!repo.inuse) {
                     continue;
@@ -442,7 +409,7 @@ public class UpdateService extends IntentService {
                 }
 
                 // now that downloading the index is done, start downloading updates
-                if (changes && fdroidPrefs.isAutoDownloadEnabled()) {
+                if (changes && fdroidPrefs.isAutoDownloadEnabled() && fdroidPrefs.isBackgroundDownloadAllowed()) {
                     autoDownloadUpdates(this);
                 }
             }
