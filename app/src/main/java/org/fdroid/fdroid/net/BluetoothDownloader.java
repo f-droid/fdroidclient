@@ -24,6 +24,8 @@ public class BluetoothDownloader extends Downloader {
 
     private static final String TAG = "BluetoothDownloader";
 
+    public static final String SCHEME = "bluetooth";
+
     private final BluetoothConnection connection;
     private FileDetails fileDetails;
     private final String sourcePath;

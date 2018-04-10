@@ -47,6 +47,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -332,7 +333,7 @@ public class UpdateService extends IntentService {
         boolean forcedUpdate = false;
         String address = null;
         if (intent != null) {
-            address = intent.getStringExtra(EXTRA_ADDRESS);
+            address = intent.getStringExtra(EXTRA_ADDRESS); // TODO switch to Intent.setData()
             manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
             forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
         }
@@ -340,7 +341,9 @@ public class UpdateService extends IntentService {
         try {
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
-            if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
+            if (address != null && address.startsWith(BluetoothDownloader.SCHEME)) {
+                Utils.debugLog(TAG, "skipping internet check, this is bluetooth");
+            } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
                 Utils.debugLog(TAG, "No internet, cannot update");
                 if (manualUpdate) {
                     sendNoInternetToast();
