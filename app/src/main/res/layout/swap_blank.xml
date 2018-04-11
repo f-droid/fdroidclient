@@ -58,7 +58,7 @@
         <android.support.v7.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:checked="true"
+            android:enabled="false"
             android:id="@+id/switch_bluetooth" />
 
     </LinearLayout>
@@ -114,7 +114,7 @@
         <android.support.v7.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:checked="false"
+            android:enabled="false"
             android:id="@+id/switch_wifi" />
 
     </LinearLayout>
