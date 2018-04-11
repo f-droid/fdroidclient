@@ -574,17 +574,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 Utils.debugLog(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
                 ensureBluetoothDiscoverableThenStart();
             } else {
-                // Didn't enable bluetooth
-                Utils.debugLog(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
+                Utils.debugLog(TAG, "User chose not to enable Bluetooth, so doing nothing");
+                SwapService.putBluetoothVisibleUserPreference(false);
             }
 
         } else if (requestCode == REQUEST_BLUETOOTH_DISCOVERABLE) {
 
             if (resultCode != RESULT_CANCELED) {
                 Utils.debugLog(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
-                getState().getBluetoothSwap().startInBackground();
+                getState().getBluetoothSwap().startInBackground(); // TODO replace with Intent to SwapService
             } else {
-                Utils.debugLog(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
+                Utils.debugLog(TAG, "User chose not to make Bluetooth discoverable, so doing nothing");
+                SwapService.putBluetoothVisibleUserPreference(false);
             }
 
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SEND) {
@@ -640,7 +641,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             throw new IllegalStateException("Can't start Bluetooth swap because service is null for some strange reason.");
         }
 
-        service.getBluetoothSwap().startInBackground();
+        service.getBluetoothSwap().startInBackground();  // TODO replace with Intent to SwapService
     }
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {

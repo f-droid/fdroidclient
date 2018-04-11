@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.IntDef;
@@ -63,10 +65,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SwapService extends Service {
 
     private static final String TAG = "SwapService";
+
     private static final String SHARED_PREFERENCES = "swap-state";
     private static final String KEY_APPS_TO_SWAP = "appsToSwap";
     private static final String KEY_BLUETOOTH_ENABLED = "bluetoothEnabled";
     private static final String KEY_WIFI_ENABLED = "wifiEnabled";
+    private static final String KEY_BLUETOOTH_ENABLED_BEFORE_SWAP = "bluetoothEnabledBeforeSwap";
+    private static final String KEY_WIFI_ENABLED_BEFORE_SWAP = "wifiEnabledBeforeSwap";
 
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
@@ -75,6 +80,10 @@ public class SwapService extends Service {
      * A cache of parsed APKs from the file system.
      */
     private static final ConcurrentHashMap<String, App> INSTALLED_APPS = new ConcurrentHashMap<>();
+
+    private static SharedPreferences swapPreferences;
+    private static BluetoothAdapter bluetoothAdapter;
+    private static WifiManager wifiManager;
 
     public static void stop(Context context) {
         Intent intent = new Intent(context, SwapService.class);
@@ -87,16 +96,6 @@ public class SwapService extends Service {
 
     static void putAppInCache(String packageName, App app) {
         INSTALLED_APPS.put(packageName, app);
-    }
-
-    /**
-     * Where relevant, the state of the swap process will be saved to disk using preferences.
-     * Note that this is not always useful, for example saving the "current wifi network" is
-     * bound to cause trouble when the user opens the swap process again and is connected to
-     * a different network.
-     */
-    private SharedPreferences persistence() {
-        return getSharedPreferences(SHARED_PREFERENCES, MODE_PRIVATE);
     }
 
     // ==========================================================
@@ -311,7 +310,7 @@ public class SwapService extends Service {
     // ==========================================
 
     private void persistAppsToSwap() {
-        persistence().edit().putString(KEY_APPS_TO_SWAP, serializePackages(appsToSwap)).apply();
+        swapPreferences.edit().putString(KEY_APPS_TO_SWAP, serializePackages(appsToSwap)).apply();
     }
 
     /**
@@ -367,30 +366,36 @@ public class SwapService extends Service {
         persistAppsToSwap();
     }
 
-    // =============================================================
-    //   Remember which swap technologies a user used in the past
-    // =============================================================
-
-    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
-                    " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
-            persistence().edit()
-                    .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
-                    .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
-                    .apply();
-        }
-    };
-
-    /*
-    private boolean wasBluetoothEnabled() {
-        return persistence().getBoolean(KEY_BLUETOOTH_ENABLED, false);
+    public static boolean getBluetoothVisibleUserPreference() {
+        return swapPreferences.getBoolean(SwapService.KEY_BLUETOOTH_ENABLED, false);
     }
-    */
 
-    private boolean wasWifiEnabled() {
-        return persistence().getBoolean(KEY_WIFI_ENABLED, false);
+    public static void putBluetoothVisibleUserPreference(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_BLUETOOTH_ENABLED, visible).apply();
+    }
+
+    public static boolean getWifiVisibleUserPreference() {
+        return swapPreferences.getBoolean(SwapService.KEY_WIFI_ENABLED, false);
+    }
+
+    public static void putWifiVisibleUserPreference(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED, visible).apply();
+    }
+
+    public static boolean wasBluetoothEnabledBeforeSwap() {
+        return swapPreferences.getBoolean(SwapService.KEY_BLUETOOTH_ENABLED_BEFORE_SWAP, false);
+    }
+
+    public static void putBluetoothEnabledBeforeSwap(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_BLUETOOTH_ENABLED_BEFORE_SWAP, visible).apply();
+    }
+
+    public static boolean wasWifiEnabledBeforeSwap() {
+        return swapPreferences.getBoolean(SwapService.KEY_WIFI_ENABLED_BEFORE_SWAP, false);
+    }
+
+    public static void putWifiEnabledBeforeSwap(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED_BEFORE_SWAP, visible).apply();
     }
 
     /**
@@ -429,9 +434,6 @@ public class SwapService extends Service {
     public boolean isBonjourDiscoverable() {
         return wifiSwap.isConnected() && wifiSwap.getBonjour().isConnected();
     }
-
-    public static final String ACTION_PEER_FOUND = "org.fdroid.fdroid.SwapManager.ACTION_PEER_FOUND";
-    public static final String EXTRA_PEER = "EXTRA_PEER";
 
     // ===============================================================
     //        Old SwapService stuff being merged into that.
@@ -481,32 +483,39 @@ public class SwapService extends Service {
 
         CacheSwapAppsService.startCaching(this);
 
-        SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
-        appsToSwap.addAll(deserializePackages(preferences.getString(KEY_APPS_TO_SWAP, "")));
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter != null) {
+            SwapService.putBluetoothEnabledBeforeSwap(bluetoothAdapter.isEnabled());
+        }
+
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager != null) {
+            SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
+        }
+
+        appsToSwap.addAll(deserializePackages(swapPreferences.getString(KEY_APPS_TO_SWAP, "")));
         bluetoothSwap = BluetoothSwap.create(this);
         wifiSwap = new WifiSwap(this);
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
+        LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
+                new IntentFilter(WifiStateChangeService.BROADCAST));
 
-        IntentFilter filter = new IntentFilter(BLUETOOTH_STATE_CHANGE);
-        filter.addAction(WIFI_STATE_CHANGE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiveSwapStatusChanged, filter);
-
-        /*
-        if (wasBluetoothEnabled()) {
+        if (getBluetoothVisibleUserPreference()) {
             Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
-            bluetoothSwap.startInBackground();
-        }
-        */
-
-        if (wasWifiEnabled()) {
-            Utils.debugLog(TAG, "Previously the user enabled WiFi swap, so enabling again automatically.");
-            wifiSwap.startInBackground();
+            bluetoothSwap.startInBackground(); // TODO replace with Intent to SwapService
         } else {
-            Utils.debugLog(TAG, "WiFi was NOT enabled last time user swapped, so starting with WiFi not visible.");
+            Utils.debugLog(TAG, "Bluetooth was NOT enabled last time user swapped, starting not visible.");
+        }
+
+        if (getWifiVisibleUserPreference()) {
+            Utils.debugLog(TAG, "Previously the user enabled WiFi swap, so enabling again automatically.");
+            wifiSwap.startInBackground(); // TODO replace with Intent to SwapService
+        } else {
+            Utils.debugLog(TAG, "WiFi was NOT enabled last time user swapped, starting not visible.");
         }
     }
 
@@ -527,7 +536,14 @@ public class SwapService extends Service {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiveSwapStatusChanged);
+
+        if (!SwapService.wasBluetoothEnabledBeforeSwap()) {
+            bluetoothAdapter.disable();
+        }
+
+        if (!SwapService.wasWifiEnabledBeforeSwap()) {
+            wifiManager.setWifiEnabled(false);
+        }
 
         //TODO getBluetoothSwap().stopInBackground();
         getWifiSwap().stopInBackground();

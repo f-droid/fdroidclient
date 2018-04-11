@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
@@ -59,8 +58,8 @@ public final class BluetoothSwap extends SwapType {
 
     @Override
     public synchronized void start() {
-
         if (isConnected()) {
+            Utils.debugLog(TAG, "already running, quitting start()");
             return;
         }
 
@@ -171,10 +170,12 @@ public final class BluetoothSwap extends SwapType {
         }
 
         @Override
-        public void start() { }
+        public void start() {
+        }
 
         @Override
-        public void stop() { }
+        public void stop() {
+        }
 
         @Override
         protected String getBroadcastAction() {
