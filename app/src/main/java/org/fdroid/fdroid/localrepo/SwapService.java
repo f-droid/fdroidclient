@@ -20,7 +20,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -42,6 +41,10 @@ import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WifiSwap;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -55,11 +58,6 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
-
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Central service which manages all of the different moving parts of swap which are required
@@ -115,10 +113,10 @@ public class SwapService extends Service {
      * Call {@link Observable#subscribe()} on this in order to be notified of peers
      * which are found. Call {@link Subscription#unsubscribe()} on the resulting
      * subscription when finished and you no longer want to scan for peers.
-     *
+     * <p>
      * The returned object will scan for peers on a background thread, and emit
      * found peers on the mian thread.
-     *
+     * <p>
      * Invoking this in multiple places will return the same, cached, peer finder.
      * That is, if in the past it already found some peers, then you subscribe
      * to it in the future, the future subscriber will still receive the peers
@@ -129,9 +127,9 @@ public class SwapService extends Service {
         Utils.debugLog(TAG, "Scanning for nearby devices to swap with...");
         if (peerFinder == null) {
             peerFinder = PeerFinder.createObservable(getApplicationContext())
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .distinct();
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .distinct();
         }
         return peerFinder;
     }
@@ -141,14 +139,14 @@ public class SwapService extends Service {
     // ("Step" refers to the current view being shown in the UI)
     // ==========================================================
 
-    public static final int STEP_INTRO           = 1;
-    public static final int STEP_SELECT_APPS     = 2;
-    public static final int STEP_JOIN_WIFI       = 3;
-    public static final int STEP_SHOW_NFC        = 4;
-    public static final int STEP_WIFI_QR         = 5;
-    public static final int STEP_CONNECTING      = 6;
-    public static final int STEP_SUCCESS         = 7;
-    public static final int STEP_CONFIRM_SWAP    = 8;
+    public static final int STEP_INTRO = 1;
+    public static final int STEP_SELECT_APPS = 2;
+    public static final int STEP_JOIN_WIFI = 3;
+    public static final int STEP_SHOW_NFC = 4;
+    public static final int STEP_WIFI_QR = 5;
+    public static final int STEP_CONNECTING = 6;
+    public static final int STEP_SUCCESS = 7;
+    public static final int STEP_CONFIRM_SWAP = 8;
 
     /**
      * Special view, that we don't really want to actually store against the
@@ -158,7 +156,8 @@ public class SwapService extends Service {
      */
     public static final int STEP_INITIAL_LOADING = 9;
 
-    @SwapStep private int step = STEP_INTRO;
+    @SwapStep
+    private int step = STEP_INTRO;
 
     /**
      * Current screen that the swap process is up to.
@@ -174,7 +173,8 @@ public class SwapService extends Service {
         return this;
     }
 
-    @NonNull public Set<String> getAppsToSwap() {
+    @NonNull
+    public Set<String> getAppsToSwap() {
         return appsToSwap;
     }
 
@@ -299,9 +299,10 @@ public class SwapService extends Service {
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
+            STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SwapStep { }
+    public @interface SwapStep {
+    }
 
     // =================================================
     //    Have selected a specific peer to swap with
@@ -340,6 +341,7 @@ public class SwapService extends Service {
      * which is only available in API >= 11.
      * Package names are reverse-DNS-style, so they should only have alpha numeric values. Thus,
      * this uses a comma as the separator.
+     *
      * @see SwapService#deserializePackages(String)
      */
     private static String serializePackages(Set<String> packages) {

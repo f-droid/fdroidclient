@@ -19,6 +19,7 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -668,7 +669,12 @@ public final class Utils {
         }
     }
 
-    // Try to get the version name of the client. Return null on failure.
+    /**
+     * Try to get the {@link PackageInfo#versionName} of the
+     * client.
+     *
+     * @return null on failure
+     */
     public static String getVersionName(Context context) {
         String versionName = null;
         try {
@@ -678,6 +684,20 @@ public final class Utils {
             Log.e(TAG, "Could not get client version name", e);
         }
         return versionName;
+    }
+
+    /**
+     * Try to get the {@link PackageInfo} for the {@code packageName} provided.
+     *
+     * @return null on failure
+     */
+    public static PackageInfo getPackageInfo(Context context, String packageName) {
+        try {
+            return context.getPackageManager().getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            debugLog(TAG, "Could not get PackageInfo: ", e);
+        }
+        return null;
     }
 
     /**

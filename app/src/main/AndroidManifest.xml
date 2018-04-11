@@ -471,6 +471,8 @@
                 <data android:pathPattern="/.*/.*/fdroid/repo/*"/>
                 <data android:pathPattern="/.*/.*/.*/fdroid/repo"/>
                 <data android:pathPattern="/.*/.*/.*/fdroid/repo/*"/>
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo"/>
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo/*"/>
                 <data android:path="/fdroid/archive"/>
                 <data android:pathPattern="/fdroid/archive/*"/>
                 <data android:pathPattern="/.*/fdroid/archive"/>
@@ -479,6 +481,8 @@
                 <data android:pathPattern="/.*/.*/fdroid/archive/*"/>
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive"/>
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive/*"/>
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive"/>
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive/*"/>
                 <!--
                 Some QR Code scanners don't respect custom schemes like fdroidrepo://,
                 so this is a workaround, since the local repo URL is all uppercase in

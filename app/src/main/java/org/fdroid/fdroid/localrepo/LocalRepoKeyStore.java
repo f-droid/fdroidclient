@@ -2,7 +2,7 @@ package org.fdroid.fdroid.localrepo;
 
 import android.content.Context;
 import android.util.Log;
-
+import kellinwood.security.zipsigner.ZipSigner;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.asn1.ASN1Sequence;
@@ -19,6 +19,9 @@ import org.spongycastle.operator.ContentSigner;
 import org.spongycastle.operator.OperatorCreationException;
 import org.spongycastle.operator.jcajce.JcaContentSignerBuilder;
 
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.X509KeyManager;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -45,12 +48,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.X509KeyManager;
-
-import kellinwood.security.zipsigner.ZipSigner;
 
 // TODO Address exception handling in a uniform way throughout
 
@@ -162,8 +159,8 @@ public final class LocalRepoKeyStore {
             KeyManager defaultKeyManager = keyManagerFactory.getKeyManagers()[0];
             KeyManager wrappedKeyManager = new KerplappKeyManager(
                     (X509KeyManager) defaultKeyManager);
-            keyManagers = new KeyManager[] {
-                wrappedKeyManager,
+            keyManagers = new KeyManager[]{
+                    wrappedKeyManager,
             };
         } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
             Log.e(TAG, "Error loading keystore", e);
@@ -254,7 +251,7 @@ public final class LocalRepoKeyStore {
     private void addToStore(String alias, KeyPair kp, Certificate cert) throws KeyStoreException,
             NoSuchAlgorithmException, CertificateException, IOException, UnrecoverableKeyException {
         Certificate[] chain = {
-            cert,
+                cert,
         };
         keyStore.setKeyEntry(alias, kp.getPrivate(),
                 "".toCharArray(), chain);
@@ -272,8 +269,8 @@ public final class LocalRepoKeyStore {
         keyManagerFactory.init(keyStore, "".toCharArray());
         KeyManager defaultKeyManager = keyManagerFactory.getKeyManagers()[0];
         KeyManager wrappedKeyManager = new KerplappKeyManager((X509KeyManager) defaultKeyManager);
-        keyManagers = new KeyManager[] {
-            wrappedKeyManager,
+        keyManagers = new KeyManager[]{
+                wrappedKeyManager,
         };
     }
 

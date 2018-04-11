@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-
 import org.fdroid.fdroid.Utils;
 
 /**
@@ -38,12 +36,9 @@ public class ObbUrlActivity extends Activity {
             String packageName = componentName.getPackageName();
             Apk apk = null;
 
-            try {
-                PackageManager pm = getPackageManager();
-                PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
+            PackageInfo packageInfo = Utils.getPackageInfo(this, packageName);
+            if (packageInfo != null) {
                 apk = ApkProvider.Helper.findApkFromAnyRepo(this, packageName, packageInfo.versionCode);
-            } catch (PackageManager.NameNotFoundException e) {
-                Utils.debugLog(TAG, e.getLocalizedMessage());
             }
 
             if (apk == null) {
