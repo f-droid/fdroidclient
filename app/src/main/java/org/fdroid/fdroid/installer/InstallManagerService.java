@@ -7,11 +7,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-
+import android.util.Log;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -127,6 +128,19 @@ public class InstallManagerService extends Service {
         super.onDestroy();
     }
 
+    /**
+     * This goes through a series of checks to make sure that the incoming
+     * {@link Intent} is still valid.  The default {@link Intent#getAction() action}
+     * in the logic is {@link #ACTION_INSTALL} since it is the most complicate
+     * case.  Since the {@code Intent} will be redelivered by Android if the
+     * app was killed, this needs to check that it still makes sense to handle.
+     * <p>
+     * For example, if F-Droid is killed while installing, it might not receive
+     * the message that the install completed successfully. The checks need to be
+     * as specific as possible so as not to block things like installing updates
+     * with the same {@link PackageInfo#versionCode}, which happens sometimes,
+     * and is allowed by Android.
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
@@ -155,7 +169,7 @@ public class InstallManagerService extends Service {
             appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
         } else if (!ACTION_INSTALL.equals(action)) {
-            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
+            Log.i(TAG, "Ignoring unknown intent action: " + intent);
             return START_NOT_STICKY;
         }
 
@@ -166,7 +180,6 @@ public class InstallManagerService extends Service {
 
         if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
                 && !DownloaderService.isQueuedOrActive(urlString)) {
-            // TODO is there a case where we should allow an active urlString to pass through?
             Utils.debugLog(TAG, urlString + " finished downloading while InstallManagerService was killed.");
             appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
@@ -176,6 +189,14 @@ public class InstallManagerService extends Service {
         Apk apk = intent.getParcelableExtra(EXTRA_APK);
         if (app == null || apk == null) {
             Utils.debugLog(TAG, "Intent had null EXTRA_APP and/or EXTRA_APK: " + intent);
+            return START_NOT_STICKY;
+        }
+
+        PackageInfo packageInfo = Utils.getPackageInfo(this, apk.packageName);
+        if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
+                && packageInfo != null && packageInfo.versionCode == apk.versionCode
+                && TextUtils.equals(packageInfo.versionName, apk.versionName)) {
+            Log.i(TAG, "INSTALL Intent no longer valid since its installed, ignoring: " + intent);
             return START_NOT_STICKY;
         }
 
