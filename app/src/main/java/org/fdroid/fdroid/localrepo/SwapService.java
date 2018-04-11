@@ -497,7 +497,7 @@ public class SwapService extends Service {
 
         appsToSwap.addAll(deserializePackages(swapPreferences.getString(KEY_APPS_TO_SWAP, "")));
         bluetoothSwap = BluetoothSwap.create(this);
-        wifiSwap = new WifiSwap(this);
+        wifiSwap = new WifiSwap(this, wifiManager);
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 

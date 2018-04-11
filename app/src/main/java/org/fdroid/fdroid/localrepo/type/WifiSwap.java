@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo.type;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -31,10 +32,12 @@ public class WifiSwap extends SwapType {
     private Handler webServerThreadHandler;
     private LocalHTTPD localHttpd;
     private final BonjourBroadcast bonjourBroadcast;
+    private final WifiManager wifiManager;
 
-    public WifiSwap(Context context) {
+    public WifiSwap(Context context, WifiManager wifiManager) {
         super(context);
         bonjourBroadcast = new BonjourBroadcast(context);
+        this.wifiManager = wifiManager;
     }
 
     protected String getBroadcastAction() {
@@ -47,6 +50,8 @@ public class WifiSwap extends SwapType {
 
     @Override
     public void start() {
+        wifiManager.setWifiEnabled(true);
+
         Utils.debugLog(TAG, "Preparing swap webserver.");
         sendBroadcast(SwapService.EXTRA_STARTING);
 
