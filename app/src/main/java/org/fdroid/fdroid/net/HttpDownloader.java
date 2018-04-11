@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import info.guardianproject.netcipher.NetCipher;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
@@ -23,6 +22,13 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
+/**
+ * Download files over HTTP, with support for proxies, {@code .onion} addresses,
+ * HTTP Basic Auth, etc.  This is not a full HTTP client!  This is only using
+ * the bits of HTTP that F-Droid needs to operate.  It does not support things
+ * like redirects or other HTTP tricks.  This keeps the security model and code
+ * a lot simpler.
+ */
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
@@ -58,15 +64,6 @@ public class HttpDownloader extends Downloader {
         this.password = password;
     }
 
-    /**
-     * Note: Doesn't follow redirects (as far as I'm aware).
-     * {@link BaseImageDownloader#getStreamFromNetwork(String, Object)} has an implementation worth
-     * checking out that follows redirects up to a certain point. I guess though the correct way
-     * is probably to check for a loop (keep a list of all URLs redirected to and if you hit the
-     * same one twice, bail with an exception).
-     *
-     * @throws IOException
-     */
     @Override
     protected InputStream getDownloadersInputStream() throws IOException {
         setupConnection(false);
