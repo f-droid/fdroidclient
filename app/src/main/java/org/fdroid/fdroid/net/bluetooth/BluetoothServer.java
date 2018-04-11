@@ -66,7 +66,7 @@ public class BluetoothServer extends Thread {
     public void run() {
 
         isRunning = true;
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
         try {
             serverSocket = adapter.listenUsingInsecureRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
@@ -80,6 +80,11 @@ public class BluetoothServer extends Thread {
         while (true) {
             if (isInterrupted()) {
                 Utils.debugLog(TAG, "Server stopped so will terminate loop looking for client connections.");
+                break;
+            }
+
+            if (!adapter.isEnabled()) {
+                Utils.debugLog(TAG, "User disabled Bluetooth from outside, stopping.");
                 break;
             }
 
