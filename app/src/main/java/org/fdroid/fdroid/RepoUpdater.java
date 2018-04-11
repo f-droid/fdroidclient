@@ -26,7 +26,6 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -450,16 +449,9 @@ public class RepoUpdater {
      * per repo basis.
      */
     void processRepoPushRequests() {
-        PackageManager pm = context.getPackageManager();
-
         for (RepoPushRequest repoPushRequest : repoPushRequestList) {
             String packageName = repoPushRequest.packageName;
-            PackageInfo packageInfo = null;
-            try {
-                packageInfo = pm.getPackageInfo(packageName, 0);
-            } catch (PackageManager.NameNotFoundException e) {
-                // ignored
-            }
+            PackageInfo packageInfo = Utils.getPackageInfo(context, packageName);
             if (RepoPushRequest.INSTALL.equals(repoPushRequest.request)) {
                 ContentResolver cr = context.getContentResolver();
 

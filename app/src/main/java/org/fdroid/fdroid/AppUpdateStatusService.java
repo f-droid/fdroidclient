@@ -56,7 +56,6 @@ public class AppUpdateStatusService extends IntentService {
         if (cacheDirList == null) {
             return;
         }
-        PackageManager packageManager = getPackageManager();
         List<Apk> apksReadyToInstall = new ArrayList<>();
         for (String repoDirName : cacheDirList) {
             File repoDir = new File(cacheDir, repoDirName);
@@ -67,12 +66,7 @@ public class AppUpdateStatusService extends IntentService {
             for (String apkFileName : apks) {
                 Apk apk = processDownloadedApk(new File(repoDir, apkFileName));
                 if (apk != null) {
-                    PackageInfo packageInfo = null;
-                    try {
-                        packageInfo = packageManager.getPackageInfo(apk.packageName, 0);
-                    } catch (PackageManager.NameNotFoundException e) {
-                        // ignored
-                    }
+                    PackageInfo packageInfo = Utils.getPackageInfo(this, apk.packageName);
                     if (packageInfo == null || packageInfo.versionCode != apk.versionCode) {
                         Utils.debugLog(TAG, "Marking downloaded apk " + apk.apkName + " as ReadyToInstall");
                         apksReadyToInstall.add(apk);
@@ -134,8 +128,8 @@ public class AppUpdateStatusService extends IntentService {
             return null;
         }
 
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(downloadedApk.packageName, 0);
+        PackageInfo info = Utils.getPackageInfo(this, downloadedApk.packageName);
+        if (info != null) {
             File pathToInstalled = InstalledAppProviderService.getPathToInstalledApk(info);
             if (pathToInstalled != null && pathToInstalled.canRead() &&
                     pathToInstalled.length() == downloadedApk.size && // Check size before hash for performance.
@@ -145,7 +139,6 @@ public class AppUpdateStatusService extends IntentService {
                 AppUpdateStatusManager.getInstance(this).markAsNoLongerPendingInstall(downloadedApk.getUrl());
                 return null;
             }
-        } catch (PackageManager.NameNotFoundException ignored) {
         }
 
         Utils.debugLog(TAG, downloadedApk.packageName + ':' + downloadedApk.versionCode
