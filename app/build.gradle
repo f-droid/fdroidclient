@@ -40,7 +40,7 @@ dependencies {
     compile "info.guardianproject.panic:panic:0.5"
     compile 'commons-io:commons-io:2.5'
     compile 'commons-net:commons-net:3.5'
-    compile 'org.openhab.jmdns:jmdns:3.4.2'
+    compile 'org.jmdns:jmdns:3.5.3'
     compile 'ch.acra:acra:4.9.1'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:0.23.0'
@@ -137,7 +137,8 @@ if (!hasProperty('sourceDeps')) {
                 'info.guardianproject.panic:panic:a7ed9439826db2e9901649892cf9afbe76f00991b768d8f4c26332d7c9406cb2',
                 'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
                 'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
-                'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
+                'org.jmdns:jmdns:24e7e3a50a579136400e8c9b0750399eb3c7558918bdf52c0ffa5e0fa5aad503',
+                'org.slf4j:slf4j-api:e56288031f5e60652c06e7bb6e9fa410a61231ab54890f7b708fc6adc4107c5b',
         ]
     }
 
