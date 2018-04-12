@@ -121,6 +121,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private PrepareSwapRepo updateSwappableAppsTask;
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
+    private WifiManager wifiManager;
 
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -186,6 +187,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         container = (ViewGroup) findViewById(R.id.fragment_container);
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         new SwapDebug().logStatus();
     }
@@ -258,7 +260,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
+                        SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
+                        wifiManager.setWifiEnabled(true);
+                        Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
@@ -277,7 +283,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setupWifiAP() {
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiApControl ap = WifiApControl.getInstance(this);
         wifiManager.setWifiEnabled(false);
         if (ap.enable()) {
