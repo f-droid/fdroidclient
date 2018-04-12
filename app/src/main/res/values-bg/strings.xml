@@ -220,10 +220,6 @@
     </string>
 
     <string name="swap_not_enabled">Забранена размяна</string>
-    <string name="swap_cant_send_no_bluetooth">Изпращането на F-Droid не е възможно защото липсва Bluetooth
-        функционалност.
-    </string>
-    <string name="bluetooth_unavailable">Липсва Bluetooth</string>
     <string name="swap_nearby">Размяна с устройства наоколо</string>
     <string name="local_repo_running">F-Droid e в готовност за размяна</string>
     <string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>

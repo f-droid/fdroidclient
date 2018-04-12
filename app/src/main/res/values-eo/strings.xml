@@ -272,10 +272,6 @@
     <string name="swap_connecting">Konektado</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
-    <string name="bluetooth_unavailable">Bludento ne disponebla</string>
-    <string name="swap_cant_send_no_bluetooth">Ne povas sendi F-Droid, ĉar Bludento ne estas disponebla en via
-        aparato.
-    </string>
     <string name="loading">Prilaborado…</string>
     <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, ne povas interŝanĝi kun ĝi!</string>
     <string name="swap_not_enabled">Interŝanĝo malaktiva</string>

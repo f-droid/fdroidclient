@@ -333,10 +333,6 @@
     <string name="swap_intro">Verbind en deel programme met mense naby jou.</string>
     <string name="swap_confirm">Bevestig uitruil</string>
     <string name="swap_qr_isnt_for_swap">Die QR kode jy geskandeer het lyk nie soos \'n uitruil kode nie.</string>
-    <string name="bluetooth_unavailable">Bluetooth nie beskikbaar nie</string>
-    <string name="swap_cant_send_no_bluetooth">"Kan nie F-Droid stuur nie, omdat Bluetooth is nie beskikbaar is op
-        hierdie toestel nie."
-    </string>
     <string name="loading">Laai tans…</string>
     <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie asof ons kan uitruil nie!</string>
     <string name="swap_not_enabled">Uitruil nie geaktiveer nie</string>

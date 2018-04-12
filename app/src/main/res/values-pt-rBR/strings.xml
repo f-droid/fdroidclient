@@ -250,10 +250,6 @@
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar a permuta</string>
     <string name="swap_qr_isnt_for_swap">O código QR que você escaneou não parece com um código de permuta.</string>
-    <string name="bluetooth_unavailable">Bluetooth não está disponível</string>
-    <string name="swap_cant_send_no_bluetooth">Não é possível enviar F-Droid, porque o Bluetooth não está disponível
-        neste dispositivo.
-    </string>
     <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não foi possível trocar com ele!</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>

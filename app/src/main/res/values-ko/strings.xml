@@ -249,8 +249,6 @@
     <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>
     <string name="swap_qr_isnt_for_swap">스캔한 QR 코드는 교환 코드가 아닌 것으로 파악됩니다.</string>
-    <string name="bluetooth_unavailable">블루투스를 사용할 수 없음</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid를 보낼 수 없습니다. 이 장치에서 블루투스를 사용할 수 없기 때문입니다.</string>
     <string name="loading">불러오는 중…</string>
     <string name="swap_connection_misc_error">장치에 연결하는 동안 오류가 발생했습니다. 교환할 수 없습니다!</string>
     <string name="swap_not_enabled">교환이 활성화되어 있지 않음</string>

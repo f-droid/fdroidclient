@@ -223,10 +223,6 @@
     <string name="swap_connecting">Verbinden</string>
     <string name="swap_confirm">Bevestig uitwisseling</string>
     <string name="swap_qr_isnt_for_swap">De QR-code die je gescand hebt lijkt geen uitwisselcode te zijn.</string>
-    <string name="bluetooth_unavailable">Bluetooth niet beschikbaar</string>
-    <string name="swap_cant_send_no_bluetooth">Kon F-Droid niet verzenden omdat Bluetooth niet beschikbaar is op dit
-        apparaat.
-    </string>
     <string name="loading">Laden…</string>
     <string name="swap_connection_misc_error">Fout bij verbinden met apparaat, we kunnen er niet mee uit te wisselen!</string>
     <string name="swap_not_enabled">Uitwisselen niet ingeschakeld</string>

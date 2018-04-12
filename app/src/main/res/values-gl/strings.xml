@@ -191,7 +191,6 @@
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirma o intercambio</string>
-    <string name="bluetooth_unavailable">O Bluetooth non está dispoñible</string>
     <string name="loading">Cargando…</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Todo</string>
@@ -289,9 +288,6 @@
     <string name="swap_no_peers_nearby">Non se atopou a ninguén cerca para intercambios.</string>
     <string name="swap_qr_isnt_for_swap">O código QR que escaneaches non parece corresponder a un código de
         intercambio.
-    </string>
-    <string name="swap_cant_send_no_bluetooth">Non se pode enviar, porque o Bluetooth non está dispoñible neste
-        dispositivo.
     </string>
     <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio!</string>
     <string name="swap_not_enabled">Intercambio non dispoñible</string>

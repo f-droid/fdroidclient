@@ -234,10 +234,6 @@
     <string name="swap_connecting">Łączenie</string>
     <string name="swap_confirm">Potwierdź wymianę</string>
     <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.</string>
-    <string name="bluetooth_unavailable">Bluetooth nie jest dostępny</string>
-    <string name="swap_cant_send_no_bluetooth">Nie udało się wysłać F-Droida ponieważ Bluetooth nie jest dostępny na
-        Twoim urządzeniu.
-    </string>
     <string name="loading">Ładowanie…</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem wymiana nie powiodła się!</string>
     <string name="swap_not_enabled">Wymiana nie jest włączona</string>

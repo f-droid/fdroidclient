@@ -252,10 +252,6 @@
     <string name="swap_connecting">Connetende</string>
     <string name="swap_confirm">Cunfirma cumpartzidura</string>
     <string name="swap_qr_isnt_for_swap">Su còdighe QR iscansidu non paret unu còdighe de cumpartzidura.</string>
-    <string name="bluetooth_unavailable">Bluetooth non disponìbile</string>
-    <string name="swap_cant_send_no_bluetooth">Impossìbile imbiare F-Droid, ca su Bluetooth no est disponìbile in custu
-        dispositivu.
-    </string>
     <string name="loading">Carrighende…</string>
     <string name="swap_not_enabled">Cumpartzidura non abilitada</string>
     <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>

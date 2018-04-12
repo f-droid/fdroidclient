@@ -236,8 +236,6 @@
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
-    <string name="bluetooth_unavailable">Bluetooth no disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque no está disponible Bluetooth en este dispositivo.</string>
     <string name="loading">Cargando…</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. ¡No podemos intercambiar con él!</string>
     <string name="swap_not_enabled">Intercambio no activado</string>

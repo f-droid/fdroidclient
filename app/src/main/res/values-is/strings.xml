@@ -220,7 +220,6 @@
     <string name="swap_no_peers_nearby">Gat ekki fundið neinn í nágrenninu til að býtta við.</string>
     <string name="swap_connecting">Tengist</string>
     <string name="swap_confirm">Staðfesta býtti</string>
-    <string name="bluetooth_unavailable">Bluetooth er ekki tiltækt</string>
     <string name="loading">Hleð inn…</string>
     <string name="swap_not_enabled">Forritabýtti eru óvirk</string>
     <string name="install_confirm">þarf aðgang að</string>
@@ -369,8 +368,6 @@
     </string>
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
-    <string name="swap_cant_send_no_bluetooth">Get ekki sent F-Droid, því Bluetooth er ekki til taks á þessu tæki.
-    </string>
     <string name="swap_connection_misc_error">Villa kom upp við að tengjast við tækið, ekki er hægt að nota það við býtti!</string>
     <string name="swap_not_enabled_description">Áður en farið er í að býtta þarf að gera tækið þitt sýnilegt.</string>
 

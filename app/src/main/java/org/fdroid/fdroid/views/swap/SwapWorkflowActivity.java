@@ -202,7 +202,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         boolean parent = super.onPrepareOptionsMenu(menu);
-        boolean inner  = currentView != null && currentView.buildMenu(menu, getMenuInflater());
+        boolean inner = currentView != null && currentView.buildMenu(menu, getMenuInflater());
         return parent || inner;
     }
 
@@ -457,28 +457,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void sendFDroid() {
-        // If Bluetooth has not been enabled/turned on, then enabling device discoverability
-        // will automatically enable Bluetooth.
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        if (adapter != null) {
-            if (adapter.getState() != BluetoothAdapter.STATE_ON) {
-                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
-                startActivityForResult(discoverBt, REQUEST_BLUETOOTH_ENABLE_FOR_SEND);
-            } else {
-                sendFDroidApk();
-            }
+        if (adapter == null
+                || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
+                || (!adapter.isEnabled() && getService().getWifiSwap().isConnected())) {
+            showSendFDroid();
         } else {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.bluetooth_unavailable)
-                    .setMessage(R.string.swap_cant_send_no_bluetooth)
-                    .setNegativeButton(
-                            R.string.cancel,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) { }
-                            }
-                    ).create().show();
+            sendFDroidBluetooth();
+        }
+    }
+
+    /**
+     * Send the F-Droid APK via Bluetooth.  If Bluetooth has not been
+     * enabled/turned on, then enabling device discoverability will
+     * automatically enable Bluetooth.
+     */
+    public void sendFDroidBluetooth() {
+        if (BluetoothAdapter.getDefaultAdapter().isEnabled()) {
+            sendFDroidApk();
+        } else {
+            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
+            startActivityForResult(discoverBt, REQUEST_BLUETOOTH_ENABLE_FOR_SEND);
         }
     }
 
@@ -529,6 +529,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void showWifiQr() {
         inflateInnerView(R.layout.swap_wifi_qr);
+    }
+
+    public void showSendFDroid() {
+        inflateInnerView(R.layout.swap_send_fdroid);
     }
 
     public void showSwapConnected() {
@@ -688,7 +692,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         PrepareInitialSwapRepo() {
-            super(new HashSet<>(Arrays.asList(new String[] {BuildConfig.APPLICATION_ID})));
+            super(new HashSet<>(Arrays.asList(new String[]{BuildConfig.APPLICATION_ID})));
         }
     }
 

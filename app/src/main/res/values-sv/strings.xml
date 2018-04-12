@@ -266,8 +266,6 @@
     <string name="swap_connecting">Ansluter</string>
     <string name="swap_confirm">Bekräfta utbyte</string>
     <string name="swap_qr_isnt_for_swap">QR-koden du läst av ser inte ut som en utbytarkod.</string>
-    <string name="bluetooth_unavailable">Bluetooth inte tillgänglig</string>
-    <string name="swap_cant_send_no_bluetooth">Det går inte att skicka F-Droid eftersom Bluetooth är otillgänglig på den här enheten.</string>
     <string name="loading">Öppnar…</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="swap_not_enabled">Utbyta inte aktiverat</string>

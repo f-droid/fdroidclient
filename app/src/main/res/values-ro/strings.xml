@@ -259,7 +259,6 @@
     <string name="useTor">Folosește Tor</string>
     <string name="repo_details">Depozit</string>
     <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
-    <string name="bluetooth_unavailable">Bluetooth indisponibil</string>
     <string name="repo_provider">Depozit: %s</string>
 
     <string name="update_auto_download">Descarcă automat actualizările</string>
@@ -451,7 +450,6 @@
     <string name="swap_view_available_networks">Atinge pentru a vedea rețelele deschise disponibile</string>
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
     <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
-    <string name="swap_cant_send_no_bluetooth">Nu s-a putut trimite F-Droid, deoarece conexiunea Bluetooth nu este valabilă pe acest dispozitiv.</string>
     <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
     <string name="swap_not_enabled_description">Înaintea schimbului, dispozitivul tău trebuie făcut vizibil.</string>
 

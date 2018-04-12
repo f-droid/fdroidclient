@@ -227,7 +227,6 @@
     <string name="swap_not_visible_wifi">לא גלוי דרך רשת אלחוטית</string>
     <string name="swap_wifi_device_name">שם התקן</string>
     <string name="swap_connecting">מתבצע חיבור</string>
-    <string name="bluetooth_unavailable">‏Bluetooth לא זמין</string>
     <string name="loading">בטעינה…</string>
 
     <string name="interval_never">אף פעם</string>
@@ -249,7 +248,6 @@
     <string name="swap_send_fdroid">שליחת F-Droid</string>
     <string name="swap_confirm">אימות ההחלפה</string>
     <string name="swap_qr_isnt_for_swap">קוד ה־QR שסרקת לא נראה כמו קוד החלפה.</string>
-    <string name="swap_cant_send_no_bluetooth">אין אפשרות לשלוח את F-Droid כיוון שה־Bluetooth אינו זמין בהתקן זה.</string>
     <string name="swap_not_enabled">ההחלפה מנוטרלת</string>
     <string name="swap_not_enabled_description">בטרם ביצוע החלפה, על מכשירך להיות גלוי.</string>
 

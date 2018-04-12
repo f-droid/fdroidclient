@@ -232,7 +232,6 @@
     <string name="swap_cant_find_peers">Nemôžete nájsť koho hľadáte?</string>
     <string name="swap_send_fdroid">Poslať F-Droid</string>
     <string name="swap_connecting">Pripájam</string>
-    <string name="bluetooth_unavailable">Bluetooth nedostupný</string>
     <string name="loading">Načítavam…</string>
     <string name="install_confirm">vyžaduje prístup k</string>
     <string name="allPerms">Všetky</string>
@@ -257,9 +256,6 @@
     <string name="category_Theming">Témy</string>
     <string name="swap_not_visible_bluetooth">Nie je viditeľný cez Bluetooth</string>
     <string name="swap_not_visible_wifi">Nie je viditeľný cez Wi-Fi</string>
-    <string name="swap_cant_send_no_bluetooth">Nemožno poslať F-Droid, pretože Bluetooh nie je dostupný na tomto
-        zariadení.
-    </string>
     <string name="perm_costs_money">Môže stáť peniaze</string>
     <string name="menu_flattr">Flattr</string>
 

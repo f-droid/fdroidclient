@@ -301,10 +301,6 @@
     <string name="swap_no_peers_nearby">Não foram encontradas pessoas na sua vizinhança.</string>
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
-    <string name="bluetooth_unavailable">Bluetooth não disponível</string>
-    <string name="swap_cant_send_no_bluetooth">Não pode enviar o F-Droid porque o Bluetooth não está ativo no
-        dispositivo.
-    </string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="swap_not_enabled">Troca não ativa</string>
     <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>

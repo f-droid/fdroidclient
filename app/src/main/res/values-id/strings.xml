@@ -294,10 +294,6 @@
     <string name="swap_connecting">Menyambung</string>
     <string name="swap_confirm">Konfirmasi swap</string>
     <string name="swap_qr_isnt_for_swap">Kode QR yang kamu pindai tidak terlihat seperti kode swap.</string>
-    <string name="bluetooth_unavailable">Bluetooth tidak tersedia</string>
-    <string name="swap_cant_send_no_bluetooth">Tidak dapat mengirim F-Droid, karena Bluetooth tidak tersedia diperangkat
-        ini.
-    </string>
     <string name="loading">Memuat…</string>
     <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
     <string name="swap_not_enabled">Swap dinonaktifkan</string>
