@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.swap;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
@@ -12,8 +13,10 @@ import android.content.ServiceConnection;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -110,6 +113,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SWAP = 2;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
+    private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
 
     private Toolbar toolbar;
     private InnerView currentView;
@@ -250,32 +254,37 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing
                     }
-                }
-                ).setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
+                })
+                .setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
                     }
-                }
-                ).setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
+                })
+                .setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        promptToSetupWifiAP();
+                        if (Build.VERSION.SDK_INT >= 26) {
+                            showTetheringSettings();
+                        } else if (Build.VERSION.SDK_INT >= 23 && !Settings.System.canWrite(getBaseContext())) {
+                            requestWriteSettingsPermission();
+                        } else {
+                            setupWifiAP();
+                        }
                     }
-                }
-        ).create().show();
+                })
+                .create().show();
     }
 
-    private void promptToSetupWifiAP() {
+    private void setupWifiAP() {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiApControl ap = WifiApControl.getInstance(this);
         wifiManager.setWifiEnabled(false);
-        if (!ap.enable()) {
-            Log.e(TAG, "Could not enable WiFi AP.");
-            // TODO: Feedback to user?
+        if (ap.enable()) {
+            Toast.makeText(this, R.string.swap_toast_hotspot_enabled, Toast.LENGTH_SHORT).show();
         } else {
-            Utils.debugLog(TAG, "WiFi AP enabled.");
-            // TODO: Seems to be broken some times...
+            Toast.makeText(this, R.string.swap_toast_could_not_enable_hotspot, Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Could not enable WiFi AP.");
         }
     }
 
@@ -417,6 +426,29 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void showSelectApps() {
         inflateInnerView(R.layout.swap_select_apps);
+    }
+
+    /**
+     * On {@code android-26}, only apps with privileges can access
+     * {@code WRITE_SETTINGS}.  So this just shows the tethering settings
+     * for the user to do it themselves.
+     */
+    public void showTetheringSettings() {
+        final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        final ComponentName cn = new ComponentName("com.android.settings",
+                "com.android.settings.TetherSettings");
+        intent.setComponent(cn);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @TargetApi(23)
+    public void requestWriteSettingsPermission() {
+        Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
+                Uri.parse("package:" + getPackageName()));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivityForResult(intent, REQUEST_WRITE_SETTINGS_PERMISSION);
     }
 
     public void sendFDroid() {
@@ -568,6 +600,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
             finish();
+        } else if (requestCode == REQUEST_WRITE_SETTINGS_PERMISSION) {
+            if (Build.VERSION.SDK_INT >= 23 && Settings.System.canWrite(this)) {
+                setupWifiAP();
+            }
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SWAP) {
 
             if (resultCode == RESULT_OK) {
@@ -595,12 +631,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     /**
      * The process for setting up bluetooth is as follows:
-     *  * Assume we have bluetooth available (otherwise the button which allowed us to start
-     *    the bluetooth process should not have been available).
-     *  * Ask user to enable (if not enabled yet).
-     *  * Start bluetooth server socket.
-     *  * Enable bluetooth discoverability, so that people can connect to our server socket.
-     *
+     * <ul>
+     * <li>Assume we have bluetooth available (otherwise the button which allowed us to start
+     * the bluetooth process should not have been available)</li>
+     * <li>Ask user to enable (if not enabled yet)</li>
+     * <li>Start bluetooth server socket</li>
+     * <li>Enable bluetooth discoverability, so that people can connect to our server socket.</li>
+     * </ul>
      * Note that this is a little different than the usual process for bluetooth _clients_, which
      * involves pairing and connecting with other devices.
      */
