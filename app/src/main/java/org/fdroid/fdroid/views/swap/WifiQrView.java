@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -19,9 +20,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
@@ -31,9 +29,8 @@ import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
-import java.net.URI;
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class WifiQrView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
@@ -142,32 +139,34 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         ipAddressView.setText(buttonLabel);
 
         Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
-        String qrUriString = scheme + sharingUri.getHost();
+        StringBuilder qrUrlBuilder = new StringBuilder(scheme);
+        qrUrlBuilder.append(sharingUri.getHost());
         if (sharingUri.getPort() != 80) {
-            qrUriString += ":" + sharingUri.getPort();
+            qrUrlBuilder.append(':');
+            qrUrlBuilder.append(sharingUri.getPort());
         }
-        qrUriString += sharingUri.getPath();
+        qrUrlBuilder.append(sharingUri.getPath());
         boolean first = true;
 
-        // Andorid provides an API for getting the query parameters and iterating over them:
-        //   Uri.getQueryParameterNames()
-        // But it is only available on later Android versions. As such we use URLEncodedUtils instead.
-        List<NameValuePair> parameters = URLEncodedUtils.parse(URI.create(sharingUri.toString()), "UTF-8");
-        for (NameValuePair parameter : parameters) {
-            if (!"ssid".equals(parameter.getName())) {
-                if (first) {
-                    qrUriString += "?";
-                    first = false;
-                } else {
-                    qrUriString += "&";
+        if (Build.VERSION.SDK_INT > 10) {
+            Set<String> names = sharingUri.getQueryParameterNames();
+            for (String name : names) {
+                if (!"ssid".equals(name)) {
+                    if (first) {
+                        qrUrlBuilder.append('?');
+                        first = false;
+                    } else {
+                        qrUrlBuilder.append('&');
+                    }
+                    qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
+                    qrUrlBuilder.append('=');
+                    qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
                 }
-                qrUriString += parameter.getName().toUpperCase(Locale.ENGLISH) + "=" +
-                        parameter.getValue().toUpperCase(Locale.ENGLISH);
             }
         }
 
+        String qrUriString = qrUrlBuilder.toString();
         Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
-
         new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
 
     }

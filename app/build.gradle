@@ -181,7 +181,6 @@ def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.3'
-    useLibrary 'org.apache.http.legacy'
 
     buildTypes {
         // use proguard on debug too since we have unknowingly broken

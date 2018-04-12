@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.localrepo;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -10,7 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.IntDef;
@@ -20,11 +20,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-import org.apache.http.HttpHost;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -47,13 +42,14 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.ArrayList;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -208,54 +204,36 @@ public class SwapService extends Service {
         UpdateService.updateRepoNow(this, peer.getRepoAddress());
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void askServerToSwapWithUs(final Repo repo) {
-        askServerToSwapWithUs(repo.address);
-    }
-
-    private void askServerToSwapWithUs(final String address) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... args) {
-                Uri repoUri = Uri.parse(address);
                 String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
-
-                AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", SwapService.this);
-                HttpPost request = new HttpPost("/request-swap");
-                HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
-
+                HttpURLConnection conn = null;
                 try {
-                    Utils.debugLog(TAG, "Asking server at " + address + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
-                    populatePostParams(swapBackUri, request);
-                    client.execute(host, request);
+                    URL url = new URL(repo.address.replace("/fdroid/repo", "/request-swap"));
+                    conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setDoInput(true);
+                    conn.setDoOutput(true);
+
+                    OutputStream outputStream = conn.getOutputStream();
+                    OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+                    writer.write("repo=" + swapBackUri);
+                    writer.flush();
+                    writer.close();
+                    outputStream.close();
+
+                    int responseCode = conn.getResponseCode();
+                    Utils.debugLog(TAG, "Asking server at " + repo.address + " to swap with us in return (by " +
+                            "POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\"): " + responseCode);
                 } catch (IOException e) {
-                    notifyOfErrorOnUiThread();
                     Log.e(TAG, "Error while asking server to swap with us", e);
                 } finally {
-                    client.close();
+                    conn.disconnect();
                 }
                 return null;
-            }
-
-            private void populatePostParams(String swapBackUri, HttpPost request) throws UnsupportedEncodingException {
-                List<NameValuePair> params = new ArrayList<>();
-                params.add(new BasicNameValuePair("repo", swapBackUri));
-                UrlEncodedFormEntity encodedParams = new UrlEncodedFormEntity(params);
-                request.setEntity(encodedParams);
-            }
-
-            private void notifyOfErrorOnUiThread() {
-                // TODO: Broadcast error message so that whoever wants to can display a relevant
-                // message in the UI. This service doesn't understand the concept of UI.
-                /*runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(
-                                SwapService.this,
-                                R.string.swap_reciprocate_failed,
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
-                });*/
             }
         }.execute();
     }

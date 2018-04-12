@@ -7,6 +7,8 @@
 -dontwarn com.android.support.test.**
 
 -dontwarn javax.naming.**
+-dontnote org.apache.http.**
+-dontnote android.net.http.**
 -dontnote android.support.**
 -dontnote **ILicensingService
 
