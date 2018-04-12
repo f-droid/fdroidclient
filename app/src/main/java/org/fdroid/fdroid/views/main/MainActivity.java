@@ -30,6 +30,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
 
+    static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
@@ -206,6 +208,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         // here and once in onResume(). However, the method deals with this by ensuring it only
         // handles the same intent once.
         checkForAddRepoIntent(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) { // NOCHECKSTYLE LineLength
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_LOCATION_PERMISSIONS) {
+            startActivity(new Intent(this, SwapWorkflowActivity.class));
+        }
     }
 
     @Override

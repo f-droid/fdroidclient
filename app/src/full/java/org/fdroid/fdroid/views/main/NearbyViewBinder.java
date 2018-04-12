@@ -68,7 +68,15 @@ class NearbyViewBinder {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.startActivity(new Intent(activity, SwapWorkflowActivity.class));
+                final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
+                if (Build.VERSION.SDK_INT >= 23
+                        && PackageManager.PERMISSION_GRANTED
+                        != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
+                    ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
+                            MainActivity.REQUEST_LOCATION_PERMISSIONS);
+                } else {
+                    activity.startActivity(new Intent(activity, SwapWorkflowActivity.class));
+                }
             }
         });
 
