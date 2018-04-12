@@ -442,12 +442,20 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setupWifiAP() {
-        WifiApControl ap = WifiApControl.getInstance(this);
+        WifiApControl wifiApControl = WifiApControl.getInstance(this);
+        if (wifiApControl == null) {
+            Log.e(TAG, "WiFi AP is null");
+            Toast.makeText(this, R.string.swap_toast_could_not_enable_hotspot, Toast.LENGTH_LONG).show();
+            return;
+        }
+        SwapService.putHotspotEnabledBeforeSwap(wifiApControl.isEnabled());
         wifiManager.setWifiEnabled(false);
-        if (ap.enable()) {
+        if (wifiApControl.enable()) {
             Toast.makeText(this, R.string.swap_toast_hotspot_enabled, Toast.LENGTH_SHORT).show();
+            SwapService.putHotspotActivatedUserPreference(true);
         } else {
             Toast.makeText(this, R.string.swap_toast_could_not_enable_hotspot, Toast.LENGTH_LONG).show();
+            SwapService.putHotspotActivatedUserPreference(false);
             Log.e(TAG, "Could not enable WiFi AP.");
         }
     }
@@ -986,7 +994,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Context context = getApplicationContext();
                 if (isChecked) {
-                    wifiManager.setWifiEnabled(true);
+                    if (wifiApControl != null && wifiApControl.isEnabled()) {
+                        setupWifiAP();
+                    } else {
+                        wifiManager.setWifiEnabled(true);
+                    }
                     BonjourManager.start(context);
                 }
                 BonjourManager.setVisible(context, isChecked);

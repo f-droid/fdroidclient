@@ -22,6 +22,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -57,9 +58,11 @@ public class SwapService extends Service {
     private static final String KEY_APPS_TO_SWAP = "appsToSwap";
     private static final String KEY_BLUETOOTH_ENABLED = "bluetoothEnabled";
     private static final String KEY_WIFI_ENABLED = "wifiEnabled";
+    private static final String KEY_HOTSPOT_ACTIVATED = "hotspotEnabled";
     private static final String KEY_BLUETOOTH_ENABLED_BEFORE_SWAP = "bluetoothEnabledBeforeSwap";
     private static final String KEY_BLUETOOTH_NAME_BEFORE_SWAP = "bluetoothNameBeforeSwap";
     private static final String KEY_WIFI_ENABLED_BEFORE_SWAP = "wifiEnabledBeforeSwap";
+    private static final String KEY_HOTSPOT_ACTIVATED_BEFORE_SWAP = "hotspotEnabledBeforeSwap";
 
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
@@ -294,6 +297,14 @@ public class SwapService extends Service {
         swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED, visible).apply();
     }
 
+    public static boolean getHotspotActivatedUserPreference() {
+        return swapPreferences.getBoolean(SwapService.KEY_HOTSPOT_ACTIVATED, false);
+    }
+
+    public static void putHotspotActivatedUserPreference(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_HOTSPOT_ACTIVATED, visible).apply();
+    }
+
     public static boolean wasBluetoothEnabledBeforeSwap() {
         return swapPreferences.getBoolean(SwapService.KEY_BLUETOOTH_ENABLED_BEFORE_SWAP, false);
     }
@@ -316,6 +327,14 @@ public class SwapService extends Service {
 
     public static void putWifiEnabledBeforeSwap(boolean visible) {
         swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED_BEFORE_SWAP, visible).apply();
+    }
+
+    public static boolean wasHotspotEnabledBeforeSwap() {
+        return swapPreferences.getBoolean(SwapService.KEY_HOTSPOT_ACTIVATED_BEFORE_SWAP, false);
+    }
+
+    public static void putHotspotEnabledBeforeSwap(boolean visible) {
+        swapPreferences.edit().putBoolean(SwapService.KEY_HOTSPOT_ACTIVATED_BEFORE_SWAP, visible).apply();
     }
 
     private static final int NOTIFICATION = 1;
@@ -370,8 +389,19 @@ public class SwapService extends Service {
         localBroadcastManager.registerReceiver(bonjourPeerRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
         localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
 
+        if (getHotspotActivatedUserPreference()) {
+            WifiApControl wifiApControl = WifiApControl.getInstance(this);
+            if (wifiApControl != null) {
+                wifiApControl.enable();
+            }
+        } else if (getWifiVisibleUserPreference()) {
+            if (wifiManager != null) {
+                wifiManager.setWifiEnabled(true);
+            }
+        }
+
         BonjourManager.start(this);
-        BonjourManager.setVisible(this, getWifiVisibleUserPreference());
+        BonjourManager.setVisible(this, getWifiVisibleUserPreference() || getHotspotActivatedUserPreference());
     }
 
     /**
@@ -411,6 +441,15 @@ public class SwapService extends Service {
         LocalHTTPDManager.stop(this);
         if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
             wifiManager.setWifiEnabled(false);
+        }
+
+        WifiApControl ap = WifiApControl.getInstance(this);
+        if (ap != null) {
+            if (wasHotspotEnabledBeforeSwap()) {
+                ap.enable();
+            } else {
+                ap.disable();
+            }
         }
 
         stopPollingConnectedSwapRepo();
@@ -504,7 +543,7 @@ public class SwapService extends Service {
         if (hasIp) {
             LocalHTTPDManager.restart(this);
             BonjourManager.restart(this);
-            BonjourManager.setVisible(this, getWifiVisibleUserPreference());
+            BonjourManager.setVisible(this, getWifiVisibleUserPreference() || getHotspotActivatedUserPreference());
         } else {
             BonjourManager.stop(this);
             LocalHTTPDManager.stop(this);
