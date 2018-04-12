@@ -286,7 +286,7 @@
     <string name="status_inserting_apps">正在保存应用详细信息</string>
 
     <string name="menu_email">发邮件给作者</string>
-    <string name="antinonfreeassetslist">该此应用包括非自由资产</string>
+    <string name="antinonfreeassetslist">该应用包含非自由资产</string>
 
     <string name="crash_dialog_title">F-Droid已崩溃</string>
     <string name="crash_dialog_text">应用因为意外的问题而停止运作。你是否愿意通过电子邮件提交详细情况，以便修复该问题？</string>

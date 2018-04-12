@@ -70,7 +70,7 @@
     <string name="expert_on">拡張情報を表示し、拡張設定を有効にします</string>
     <string name="search_hint">アプリを検索</string>
     <string name="appcompatibility">アプリの互換性</string>
-    <string name="show_incompat_versions">互換性の無いﾊﾞｰｼﾞｮﾝを含める</string>
+    <string name="show_incompat_versions">互換性の無いバージョン</string>
     <string name="show_incompat_versions_on">端末と互換性のないバージョンを表示します</string>
     <string name="local_repo">ローカルリポジトリ</string>
     <string name="local_repo_running">F-Droidは交換の準備ができました</string>
@@ -168,8 +168,8 @@
     <string name="swap_nfc_title">タッチして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じネットワークに接続しているか確認してください。同じネットワークにアクセスしていない場合は、Wi-Fiホットスポットを作成できます。</string>
     <string name="swap_join_this_hotspot">友達がホットスポットに接続するのを助けましょう</string>
-    <string name="empty_can_update_app_list">おめでとうございます!
-\nｱﾌﾟﾘは最新です。</string>
+    <string name="empty_can_update_app_list">おめでとうございます！
+\nすべてのアプリが最新です。</string>
 
     <string name="install_error_unknown">不明なエラーのためインストールに失敗しました</string>
     <string name="uninstall_error_unknown">不明なエラーのためアンインストールに失敗しました</string>
@@ -490,18 +490,18 @@
 
 <string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
     <string name="repo_add_mirror">ﾐﾗｰを追加</string>
-    <string name="repo_exists_add_fingerprint">%1$s は既にｾｯﾄｱｯﾌﾟ済です。これは新しいｷｰ情報を追加します。</string>
-    <string name="repo_exists_enable">%1$s は既にｾｯﾄｱｯﾌﾟ済です。再度有効にするかを確認してください。</string>
-    <string name="repo_exists_and_enabled">%1$s は既にｾｯﾄｱｯﾌﾟ済で、有効になっています。</string>
-    <string name="repo_delete_to_overwrite">競合するｷｰでこれを追加するために、先に %1$s を削除してください。</string>
-    <string name="repo_exists_add_mirror">これは %1$s のｺﾋﾟｰです。ﾐﾗｰとして追加しますか?</string>
-    <string name="show_root_apps">root ｱﾌﾟﾘを含める</string>
-    <string name="show_root_apps_on">root 権限が必要なｱﾌﾟﾘを表示します</string>
-    <string name="show_anti_feature_apps">ｱﾝﾁ機能ｱﾌﾟﾘを含める</string>
-    <string name="show_anti_feature_apps_on">防止機能を必要とするｱﾌﾟﾘを表示します</string>
-    <string name="force_touch_apps">ﾀｯﾁｽｸﾘｰﾝｱﾌﾟﾘを含める</string>
-    <string name="force_touch_apps_on">ﾊｰﾄﾞｳｪｱｻﾎﾟｰﾄに関係なくﾀｯﾁｽｸﾘｰﾝを必要とするｱﾌﾟﾘを表示します</string>
+    <string name="repo_exists_add_fingerprint">%1$sは既に設定されているため、新しい鍵の情報が追加されます。</string>
+    <string name="repo_exists_enable">%1$sはすでに設定されています。再度有効にすることを承認してください。</string>
+    <string name="repo_exists_and_enabled">%1$sはすでに設定済みで有効です。</string>
+    <string name="repo_delete_to_overwrite">競合する鍵でこのリポジトリを追加するためには、先に%1$sを削除してください。</string>
+    <string name="repo_exists_add_mirror">これは%1$sの複製です。ミラーとして追加しますか？</string>
+    <string name="show_root_apps">root権限の使用が必要なアプリ</string>
+    <string name="show_root_apps_on">root権限の使用を必要とするアプリを表示します</string>
+    <string name="show_anti_feature_apps">好ましくない機能の使用が必要なアプリ</string>
+    <string name="show_anti_feature_apps_on">好ましくない機能の使用を必要とするアプリを表示します</string>
+    <string name="force_touch_apps">タッチスクリーンの使用が必要なアプリ</string>
+    <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を必要とするアプリを表示します</string>
 
-    <string name="repo_official_mirrors">公式ﾐﾗｰ</string>
-    <string name="repo_user_mirrors">ﾕｰｻﾞｰﾐﾗｰ</string>
+    <string name="repo_official_mirrors">公式ミラー</string>
+    <string name="repo_user_mirrors">ユーザーによるミラー</string>
     </resources>

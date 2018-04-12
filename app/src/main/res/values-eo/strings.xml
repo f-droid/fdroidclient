@@ -295,7 +295,7 @@
     <string name="uninstall_confirm">Ĉu vi volas malinstali tiun ĉi aplikaĵon?</string>
     <string name="download_error">Elŝuto fiaskis!</string>
 
-    <string name="perms_new_perm_prefix">Nova:</string>
+    <string name="perms_new_perm_prefix">nova:</string>
     <string name="downloading">Elŝutado…</string>
 
     <string name="perms_description_app">Liverita per %1$s.</string>
