@@ -29,10 +29,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
+import cc.mvdan.accesspoint.WifiApControl;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -47,6 +46,8 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.net.BluetoothDownloader;
+import org.fdroid.fdroid.net.HttpDownloader;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -56,8 +57,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import cc.mvdan.accesspoint.WifiApControl;
 
 /**
  * This activity will do its best to show the most relevant screen about swapping to the user.
@@ -209,8 +208,20 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         showRelevantView();
     }
 
+    /**
+     * Check whether incoming {@link Intent} is a swap repo, and ensure that
+     * it is a valid swap URL.  The hostname can only be either an IP or
+     * Bluetooth address.
+     */
     private void checkIncomingIntent() {
         Intent intent = getIntent();
+        Uri uri = intent.getData();
+        if (uri != null && !HttpDownloader.isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
+            String msg = getString(R.string.swap_toast_invalid_url, uri);
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if (intent.getBooleanExtra(EXTRA_CONFIRM, false) && !intent.getBooleanExtra(EXTRA_SWAP_INTENT_HANDLED, false)) {
             // Storing config in this variable will ensure that when showRelevantView() is next
             // run, it will show the connect swap view (if the service is available).

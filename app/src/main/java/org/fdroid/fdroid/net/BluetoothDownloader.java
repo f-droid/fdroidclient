@@ -14,7 +14,12 @@ import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.regex.Pattern;
 
+/**
+ * Download from a Bluetooth swap repo.  Example URI:
+ * {@code bluetooth://84-CF-BF-8B-3E-34/fdroid/repo}
+ */
 public class BluetoothDownloader extends Downloader {
 
     private static final String TAG = "BluetoothDownloader";
@@ -22,6 +27,11 @@ public class BluetoothDownloader extends Downloader {
     private final BluetoothConnection connection;
     private FileDetails fileDetails;
     private final String sourcePath;
+
+    public static boolean isBluetoothUri(Uri uri) {
+        return SCHEME.equals(uri.getScheme())
+                && Pattern.matches("([0-9A-F]{2}-)+[0-9A-F]{2}", uri.getHost());
+    }
 
     public BluetoothDownloader(Uri uri, File destFile) throws IOException {
         super(uri, destFile);

@@ -122,16 +122,23 @@ public class HttpDownloader extends Downloader {
         cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
-    private boolean isSwapUrl() {
-        String host = sourceUrl.getHost();
-        return sourceUrl.getPort() > 1023 // only root can use <= 1023, so never a swap repo
+    public static boolean isSwapUrl(Uri uri) {
+        return isSwapUrl(uri.getHost(), uri.getPort());
+    }
+
+    public static boolean isSwapUrl(URL url) {
+        return isSwapUrl(url.getHost(), url.getPort());
+    }
+
+    public static boolean isSwapUrl(String host, int port) {
+        return port > 1023 // only root can use <= 1023, so never a swap repo
                 && host.matches("[0-9.]+") // host must be an IP address
                 && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
     private HttpURLConnection getConnection() throws SocketTimeoutException, IOException {
         HttpURLConnection connection;
-        if (isSwapUrl()) {
+        if (isSwapUrl(sourceUrl)) {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
         } else {
