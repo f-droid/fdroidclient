@@ -1,0 +1,15 @@
+* automatically trim or delete cache when storage space is low
+
+* improved performance on low memory devices
+
+* make all downloads respect "Only on Wi-Fi" preference
+
+* reduce memory usage when device is running low
+
+* add custom mirrors to any repo by clicking links, scanning QR codes, etc.
+
+* lots of swap/nearby bug fixes and improvements
+
+* fix one cause of reoccuring update notifications (#1271)
+
+* make F-Droid recognize fdroid nightly URLs from GitLab

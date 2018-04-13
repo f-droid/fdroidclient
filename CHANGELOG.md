@@ -1,3 +1,11 @@
+### 1.2 (2018-04-13)
+
+* lots of swap/nearby bug fixes and improvements
+
+* fix one cause of reoccuring update notifications (#1271)
+
+* make F-Droid recognize fdroid nightly URLs from GitLab
+
 ### 1.2-alpha1 (2018-04-06)
 
 * fix Privileged Extension install with apps with uses-permision-sdk-23
