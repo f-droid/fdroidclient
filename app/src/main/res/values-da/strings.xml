@@ -279,9 +279,6 @@
     <string name="swap_connecting">Forbinder</string>
     <string name="swap_confirm">Bekræft udveksling</string>
     <string name="swap_qr_isnt_for_swap">Den QR-kode du skannede ligner ikke en udvekslingskode.</string>
-    <string name="bluetooth_unavailable">Bluetooth utilgængelig</string>
-    <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid fordi Bluetooth er utilgængeligt på denne enhed.
-    </string>
     <string name="loading">Indlæser…</string>
     <string name="swap_connection_misc_error">Der opstod en fejl under forbindelsen til enheden, kan udveksle med den!</string>
     <string name="swap_not_enabled">Udveksling ikke aktiveret</string>

@@ -246,8 +246,6 @@
     <string name="swap_connecting">连接中</string>
     <string name="swap_confirm">确认交换</string>
     <string name="swap_qr_isnt_for_swap">你扫描的二维码似乎不是一个交换代码。</string>
-    <string name="bluetooth_unavailable">蓝牙不可用</string>
-    <string name="swap_cant_send_no_bluetooth">不能发送 F-Droid，因为该设备蓝牙不可用。</string>
     <string name="loading">加载中…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
     <string name="swap_not_enabled">未启用交换功能</string>

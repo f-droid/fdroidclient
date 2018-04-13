@@ -210,8 +210,6 @@
     <string name="swap_connecting">接続中</string>
     <string name="swap_confirm">交換の確認</string>
     <string name="swap_qr_isnt_for_swap">読み取ったQRコードは交換コードではないようです。</string>
-    <string name="bluetooth_unavailable">Bluetoothが利用できません</string>
-    <string name="swap_cant_send_no_bluetooth">この端末ではBluetoothが利用できないため、F-Droidを送信できません。</string>
     <string name="loading">読み込み中</string>
 
     <string name="downloading">ダウンロード中</string>

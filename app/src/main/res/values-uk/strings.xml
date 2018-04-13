@@ -161,10 +161,6 @@
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
     <string name="swap_connecting">Підключення</string>
-    <string name="bluetooth_unavailable">Bluetooth не доступний</string>
-    <string name="swap_cant_send_no_bluetooth">Неможливо надіслати F-Droid, тому що Bluetooth не доступний на цьому
-        пристрої.
-    </string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>
     <string name="allPerms">Всі</string>

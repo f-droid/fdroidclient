@@ -269,10 +269,6 @@
     <string name="swap_cant_find_peers">Nem találja, amit keres?</string>
     <string name="swap_send_fdroid">Az F-Droid küldése</string>
     <string name="swap_connecting">Kapcsolódás</string>
-    <string name="bluetooth_unavailable">A Bluetooth nem érhető el</string>
-    <string name="swap_cant_send_no_bluetooth">Az F-Droid küldése sikertelen, mivel a Bluetooth nem érhető el ezen az
-        eszközön.
-    </string>
     <string name="download_pending">Várakozás a letöltés elkezdésére…</string>
     <string name="installing">Telepítés…</string>
     <string name="uninstalling">Eltávolítás…</string>

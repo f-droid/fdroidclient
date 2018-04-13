@@ -324,10 +324,6 @@
     <string name="swap_connecting">Злучэнне</string>
     <string name="swap_confirm">Пацвердзіць абмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, які вы адсканавалі, не выглядае як код абмену.</string>
-    <string name="bluetooth_unavailable">Bluetooth не даступны</string>
-    <string name="swap_cant_send_no_bluetooth">Немагчыма адправіць F-Droid, бо Bluetooth не даступны на гэтай
-        прыладзе.
-    </string>
     <string name="loading">Загрузка…</string>
     <string name="swap_connection_misc_error">Здарылася памылка падчас злучэння з прыладай. Немагчыма прадоўжыць абмен!</string>
     <string name="swap_not_enabled">Абмен не ўключаны</string>

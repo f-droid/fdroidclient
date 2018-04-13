@@ -242,8 +242,6 @@
     <string name="swap_connecting">Đang kết nối</string>
     <string name="swap_confirm">Xác nhận trao đổi</string>
     <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
-    <string name="bluetooth_unavailable">Không có Bluetooth</string>
-    <string name="swap_cant_send_no_bluetooth">Không thể gửi F-Droid vì thiết bị này không có Bluetooth.</string>
     <string name="loading">Đang tải…</string>
     <string name="swap_not_enabled">Trao đổi đang tắt</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>

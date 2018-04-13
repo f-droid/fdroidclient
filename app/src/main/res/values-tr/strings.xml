@@ -261,8 +261,6 @@
     <string name="swap_connecting">Bağlanıyor</string>
     <string name="swap_confirm">Takası onaylayın</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
-    <string name="bluetooth_unavailable">Bluetooth kullanılabilir değil</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemiyor, çünkü bu aygıtta Bluetooth kullanılabilir değil.</string>
     <string name="loading">Yükleniyor…</string>
     <string name="swap_connection_misc_error">Aygıta bağlanılırken hata oluştu, onunla takas yapılamaz!</string>
     <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>

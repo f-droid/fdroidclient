@@ -293,10 +293,6 @@
         sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.
     </string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
-    <string name="bluetooth_unavailable">Bluetooth ez dago eskuragarri</string>
-    <string name="swap_cant_send_no_bluetooth">Ezin da F-Droid bidali, Bluetooth ez dagoelako erabilgarri gailu
-        honetan.
-    </string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
     <string name="swap_not_enabled">Trukea ez dago gaituta</string>
     <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgai jarri behar duzu.</string>

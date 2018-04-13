@@ -96,9 +96,6 @@
     <string name="loading">लोड हो रहा है…</string>
     <string name="swap_connection_misc_error">यन्त्र को जोड़ने मैं एक समस्या आ गयी| यन्त्र से अदला-बदली नहीं हो सकती|
     </string>
-    <string name="bluetooth_unavailable">ब्लूटूथ अनुपलब्ध</string>
-    <string name="swap_cant_send_no_bluetooth">फ-द्रोइड नहीं भेज सकते, क्योंकि ब्लूटूथ इस यन्त्र पे उपलब्ध नहीं है|
-    </string>
     <string name="swap_connecting">जुड़ रहा है</string>
     <string name="swap_confirm">अदला-बदली की पुष्टि करे</string>
     <string name="swap_qr_isnt_for_swap">QR कोड जो अपने स्कैन किया है वह अदला-बदली का code नहीं है|</string>

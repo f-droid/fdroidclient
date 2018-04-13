@@ -176,8 +176,6 @@
     <string name="swap_send_fdroid">ส่งต่อโปรแกรม F-Droid</string>
     <string name="swap_connecting">กำลังเชื่อมต่อ</string>
     <string name="swap_confirm">ยืนยันการส่งต่อ</string>
-    <string name="bluetooth_unavailable">ไม่สามารถใช้บลูทูธได้</string>
-    <string name="swap_cant_send_no_bluetooth">ไม่สามารถส่งต่อโปรแกรม F-Droid ได้ เนื่องจากไม่สามารถใช้บลูทูธ</string>
     <string name="loading">กำลังโหลด…</string>
     <string name="swap_connection_misc_error">การเชื่อมต่อกับอีกเครื่องล้มเหลว, ไม่สามารถส่งต่อโปรแกรมได้</string>
     <string name="swap_not_enabled">ไม่เปิดใช้การส่งต่อโปรแกรม</string>

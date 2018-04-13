@@ -260,10 +260,6 @@
     <string name="swap_connecting">Connexion</string>
     <string name="swap_confirm">Confirmez l\'échange</string>
     <string name="swap_qr_isnt_for_swap">Le code QR que vous avez scanné ne ressemble pas à un code d\'échange.</string>
-    <string name="bluetooth_unavailable">Bluetooth indisponible</string>
-    <string name="swap_cant_send_no_bluetooth">Impossible d\'envoyer F-Droid : le Bluetooth n\'est pas disponible sur
-        cet appareil.
-    </string>
     <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer l\'échange.</string>
 
     <string name="interval_1h">Toutes les heures</string>

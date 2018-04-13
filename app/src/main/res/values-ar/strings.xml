@@ -287,8 +287,6 @@
     <string name="swap_connecting">جاري الاتصال</string>
     <string name="swap_confirm">تأكيد المبادلة</string>
     <string name="swap_qr_isnt_for_swap">رمز الاستجابة السريعة الذي تم التقاطه لا يبدو وكأنه رمز المبادلة.</string>
-    <string name="bluetooth_unavailable">البلوتوث غير متاح</string>
-    <string name="swap_cant_send_no_bluetooth">لا يمكن إرسال اف-درويد، بسبب أن البلوتوث غير متاح على هذا الجهاز.</string>
     <string name="loading">يتم التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
     <string name="swap_not_enabled">المبادلة غير فعالة</string>

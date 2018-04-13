@@ -274,8 +274,6 @@
     <string name="swap_nfc_description">اگر دوستتان اف‌دروید دارد و NFC اش روشن است، دستگاه هایتان را با هم تماس بدهید.</string>
     <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکی از شما می‌تواند یک هاتسپات وای‌فای ایجاد کند.</string>
     <string name="swap_qr_isnt_for_swap">رمز QR ای که اسکن کردید، شبیه یک رمز تبادل نیست.</string>
-    <string name="bluetooth_unavailable">بلوتوث موجود نیست</string>
-    <string name="swap_cant_send_no_bluetooth">نمی‌توان اف‌دروید را فرستاد، زیرا بلوتوث روی این دستگاه موجود نیست.</string>
     <string name="loading">در حال بارگزاری…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به دستگاه خطایی رخ داد، نمی‌توان تبادل کرد!</string>
     <string name="swap_not_enabled">تبادل فعّال نیست</string>

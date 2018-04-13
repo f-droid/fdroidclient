@@ -192,7 +192,6 @@
 
     <string name="system_uninstall_button">Deinstallieren</string>
 
-    <string name="bluetooth_unavailable">Bluetooth nicht verfügbar</string>
     <string name="newPerms">Neu</string>
     <string name="perms_new_perm_prefix">Neu:</string>
     <string name="interval_1h">Stündlich</string>
@@ -276,9 +275,6 @@
         Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
     </string>
     <string name="swap_nearby">Tausch in der Nähe</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da Bluetooth auf diesem Gerät nicht
-        verfügbar ist.
-    </string>
     <string name="loading">Ladevorgang …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
     <string name="swap_not_enabled">Tauschen ist nicht aktiviert</string>

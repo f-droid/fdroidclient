@@ -4,11 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.impl.util.ByteWrangler;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.UnknownHostException;
-
-import javax.jmdns.ServiceInfo;
 
 /**
  * The ServiceInfo class needs to be serialized in order to be sent as an Android broadcast.
@@ -32,7 +32,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         if (data == null || data.length == 0) {
             return null;
         }
-        String fingerprint = this.readUTF(data, 0, data.length);
+        String fingerprint = ByteWrangler.readUTF(data, 0, data.length);
         if (TextUtils.isEmpty(fingerprint)) {
             return null;
         }
@@ -51,14 +51,14 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
 
     public FDroidServiceInfo(Parcel in) {
         super(
-            in.readString(),
-            in.readString(),
-            in.readString(),
-            in.readInt(),
-            in.readInt(),
-            in.readInt(),
-            in.readByte() != 0,
-            readBytes(in)
+                in.readString(),
+                in.readString(),
+                in.readString(),
+                in.readInt(),
+                in.readInt(),
+                in.readInt(),
+                in.readByte() != 0,
+                readBytes(in)
         );
 
         int addressCount = in.readInt();

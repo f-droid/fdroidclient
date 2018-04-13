@@ -324,6 +324,7 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
                 viewBluetoothId.setVisibility(View.GONE);
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");
             }
+            SwapService.putBluetoothVisibleUserPreference(isChecked);
         }
     };
 
@@ -344,7 +345,8 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
         // and the Bonjour service at the same time. Technically swap will work fine without
         // Bonjour, and that is more of a convenience. Thus, we should show feedback once wifi
         // is ready, even if Bonjour is not yet.
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(onWifiSwapStateChanged, new IntentFilter(SwapService.WIFI_STATE_CHANGE));
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(onWifiSwapStateChanged,
+                new IntentFilter(SwapService.WIFI_STATE_CHANGE));
 
         viewWifiNetwork.setOnClickListener(new OnClickListener() {
             @Override
@@ -426,6 +428,7 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
                 getManager().getWifiSwap().stopInBackground();
             }
+            SwapService.putWifiVisibleUserPreference(isChecked);
             uiUpdateWifiNetwork();
         }
     };

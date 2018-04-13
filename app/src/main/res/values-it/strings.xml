@@ -200,7 +200,6 @@
         non saranno rimossi. L\'app dopo l\'aggiornamento avrà accesso a:
     </string>
     <string name="loading">Caricamento…</string>
-    <string name="bluetooth_unavailable">Bluetooth non disponibile</string>
     <string name="swap_connecting">Connessione in corso</string>
     <string name="swap_wifi_device_name">Nome del dispositivo</string>
     <string name="swap_cant_find_peers">Non riesci a trovare chi stai cercando?</string>
@@ -320,9 +319,6 @@
         browser.
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
-    <string name="swap_cant_send_no_bluetooth">Impossibile inviare F-Droid, perché il Bluetooth non è disponibile su
-        questo dispositivo.
-    </string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
     <string name="swap_not_enabled">Scambio non abilitato</string>
     <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata

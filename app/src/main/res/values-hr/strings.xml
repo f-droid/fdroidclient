@@ -315,9 +315,6 @@
     <string name="swap_connecting">Spajanje</string>
     <string name="swap_confirm">Potvrdi razmjenu</string>
     <string name="swap_qr_isnt_for_swap">Čini se da QR kod koji ste skenirali nije kod za razmjenu.</string>
-    <string name="bluetooth_unavailable">Bluetooth nedostupan</string>
-    <string name="swap_cant_send_no_bluetooth">Nije uspjelo slanje F-Droida, Bluetooth nije dostupan na ovom uređaju.
-    </string>
     <string name="loading">Učitavanje…</string>
     <string name="swap_connection_misc_error">Došlo je do greške prilikom spajanja na uređaj, čini se da razmjena nije
         moguća.

@@ -206,7 +206,6 @@
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
     <string name="swap_connecting">Повезујем се</string>
     <string name="swap_confirm">Потврди размену</string>
-    <string name="bluetooth_unavailable">Блутут није доступан</string>
     <string name="loading">Учитавам…</string>
     <string name="swap_not_enabled">Размена није укључена</string>
     <string name="newPerms">Ново</string>
@@ -238,8 +237,6 @@
 
     <string name="swap_not_enabled_description">Пре размене, ваш уређај мора бити видљив.</string>
 
-    <string name="swap_cant_send_no_bluetooth">Не могу да пошаљем Ф-дроида, блутут није доступан на овом уређају.
-    </string>
     <string name="swap_visible_bluetooth">Видљив преко блутута</string>
     <string name="swap_not_visible_bluetooth">Нисам видљив преко блутута</string>
     <string name="swap_visible_wifi">Видљив преко бежичног</string>

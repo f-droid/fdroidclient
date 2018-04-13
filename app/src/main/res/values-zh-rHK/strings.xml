@@ -209,8 +209,6 @@
     <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="swap_connection_misc_error">與裝置連接時發生了問題，未能進行交換！</string>
     <string name="loading">正在載入…</string>
-    <string name="swap_cant_send_no_bluetooth">因為此裝置沒有藍牙功能，未能傳送 F-Droid。</string>
-    <string name="bluetooth_unavailable">藍牙不可用</string>
     <string name="swap_qr_isnt_for_swap">您所掃描的 QR 碼不是一個交換碼。</string>
     <string name="swap_confirm">確定交換</string>
     <string name="swap_no_peers_nearby">找不到附近的人進行交換。</string>

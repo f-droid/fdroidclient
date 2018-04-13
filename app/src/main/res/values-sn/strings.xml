@@ -344,10 +344,6 @@
     <string name="swap_connecting">Kuhakira</string>
     <string name="swap_confirm">Tsinhira kutsinhana</string>
     <string name="swap_qr_isnt_for_swap">Murau weQR wawanzvera hausi kuita kunge murau wekutsinhana.</string>
-    <string name="bluetooth_unavailable">Bluetooth haipo</string>
-    <string name="swap_cant_send_no_bluetooth">Hatisi kukwanisa kutumira F-Droid, nekuti Bluetooth haipo pamuchina
-        uyu.
-    </string>
     <string name="loading">Kuzadza…</string>
     <string name="swap_connection_misc_error">Pane kanganiso yaitika pakuhakira kumuchina, hatisi kukwanisa kutsinhana
         nayo.

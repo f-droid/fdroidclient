@@ -220,8 +220,6 @@
     <string name="swap_send_fdroid">傳送 F-Droid</string>
     <string name="swap_no_peers_nearby">找不到附近的人來進行交換。</string>
     <string name="swap_confirm">確認交換</string>
-    <string name="bluetooth_unavailable">藍牙不可用</string>
-    <string name="swap_cant_send_no_bluetooth">無法傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
     <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗！</string>

@@ -273,8 +273,6 @@
     <string name="swap_connecting">Connectant</string>
     <string name="swap_confirm">Confirmeu l\'intercanvi</string>
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
-    <string name="bluetooth_unavailable">El Bluetooth no està disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No s\'ha pogut enviar l\'F-Droid perquè el Bluetooth no està disponible en aquest dispositiu.</string>
     <string name="loading">S\'està carregant…</string>
     <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
     <string name="swap_not_enabled">Intercanvi no activat</string>

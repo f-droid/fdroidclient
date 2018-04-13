@@ -212,10 +212,6 @@
     <string name="swap_cant_find_peers">Finner du ikke den du leter etter?</string>
     <string name="swap_send_fdroid">Oversend F-Droid</string>
     <string name="swap_connecting">Kobler til</string>
-    <string name="bluetooth_unavailable">Blåtann utilgjengelig</string>
-    <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid siden Blåtann ikke er tilgjengelig på denne
-        enheten.
-    </string>
     <string name="loading">Laster inn…</string>
     <string name="install_confirm">tilgang til</string>
     <string name="newPerms">Ny</string>

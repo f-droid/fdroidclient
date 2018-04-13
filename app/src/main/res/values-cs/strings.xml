@@ -242,10 +242,6 @@
     <string name="swap_connecting">Připojování</string>
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>
-    <string name="bluetooth_unavailable">Bluetooth nedostupné</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid nelze odeslat, protože na tomto přístroji není Bluetooth
-        dostupné.
-    </string>
     <string name="loading">Načítání…</string>
     <string name="swap_not_enabled">Výměna není povolena</string>
     <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>

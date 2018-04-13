@@ -176,15 +176,11 @@
     <string name="uninstall_update_confirm">¿Quies trocar esta aplicación pola versión de fábrica?</string>
     <string name="perm_costs_money">Quiciabes esto te cueste perres</string>
     <string name="loading">Cargando…</string>
-    <string name="swap_cant_send_no_bluetooth">Nun pue unviase F-droid porque\'l Bluetooth nun ta disponible nesti
-        preséu.
-    </string>
     <string name="swap_connecting">Coneutando</string>
     <string name="swap_cant_find_peers">¿Nun pues alcontrar a quien tas guetando?</string>
     <string name="swap_send_fdroid">Unviar F-droid</string>
     <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez ser un códigu d\'intercambéu.</string>
     <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, ¡nun podemos facer l\'intercambiu con elli!</string>
-    <string name="bluetooth_unavailable">Bluetooth non disponible</string>
     <string name="swap_confirm">Confirmar intercambéu</string>
     <string name="swap_wifi_device_name">Nome del preséu</string>
     <string name="swap_visible_bluetooth">Visible pente Bluetooth</string>

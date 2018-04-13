@@ -267,10 +267,6 @@
     <string name="swap_connecting">Σύνδεση</string>
     <string name="swap_confirm">Επιβεβαίωση ανταλλαγής</string>
     <string name="swap_qr_isnt_for_swap">Ο κώδικας QR που σαρώσατε δεν μοιάζει με έναν κωδικό ανταλλαγής.</string>
-    <string name="bluetooth_unavailable">Το Bluetooth δεν είναι διαθέσιμο</string>
-    <string name="swap_cant_send_no_bluetooth">Δεν μπορείτε να στείλετε το F-Droid επειδή το Bluetooth δεν είναι
-        διαθέσιμο σε αυτήν τη συσκευή.
-    </string>
     <string name="loading">Φόρτωση…</string>
     <string name="swap_connection_misc_error">Παρουσιάστηκε σφάλμα κατά τη σύνδεση με την συσκευή, φαίνεται ότι δεν μπορούμε να ανταλλάξουμε με αυτή!</string>
     <string name="swap_not_enabled">Η ανταλλαγή δεν είναι ενεργοποιημένη</string>

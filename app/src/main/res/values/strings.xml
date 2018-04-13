@@ -453,13 +453,14 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_connecting">Connecting</string>
     <string name="swap_confirm">Confirm swap</string>
     <string name="swap_qr_isnt_for_swap">The QR code you scanned doesn\'t look like a swap code.</string>
-    <string name="bluetooth_unavailable">Bluetooth unavailable</string>
-    <string name="swap_cant_send_no_bluetooth">Cannot send F-Droid, because Bluetooth is unavailable on this device.
-    </string>
+    <string name="use_bluetooth">Use Bluetooth</string>
     <string name="loading">Loading…</string>
     <string name="swap_connection_misc_error">Error occurred while connecting to device, can\'t swap with it!</string>
     <string name="swap_not_enabled">Swapping not enabled</string>
     <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
+    <string name="swap_toast_invalid_url">Invalid URL for swapping: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot enabled</string>
+    <string name="swap_toast_could_not_enable_hotspot">Could not enable Wi-Fi Hotspot!</string>
 
     <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update

@@ -302,9 +302,6 @@
     <string name="swap_connecting">Ühenduse loomine</string>
     <string name="swap_confirm">Kinnita vahetus</string>
     <string name="swap_qr_isnt_for_swap">Skannitud QR-kood ei paista olevat vahetamise kood.</string>
-    <string name="bluetooth_unavailable">Bluetooth ei ole saadaval</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droidi ei saa saata, sest Bluetooth ei ole selles seadmes saadaval.
-    </string>
     <string name="loading">Laadimine…</string>
     <string name="swap_not_enabled">Vahetamine ei ole lubatud</string>
     <string name="swap_not_enabled_description">Enne vahetamist pead tegema seadme nähtavaks.</string>

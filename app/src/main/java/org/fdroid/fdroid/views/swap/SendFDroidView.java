@@ -1,13 +1,12 @@
 package org.fdroid.fdroid.views.swap;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
-import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -29,27 +28,24 @@ import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
-import java.util.Locale;
-import java.util.Set;
+public class SendFDroidView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
-public class WifiQrView extends ScrollView implements SwapWorkflowActivity.InnerView {
+    private static final String TAG = "SendFDroidView";
 
-    private static final String TAG = "WifiQrView";
-
-    public WifiQrView(Context context) {
+    public SendFDroidView(Context context) {
         super(context);
     }
 
-    public WifiQrView(Context context, AttributeSet attrs) {
+    public SendFDroidView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public WifiQrView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SendFDroidView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(21)
-    public WifiQrView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SendFDroidView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -68,11 +64,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         // Replace all blacks with the background blue.
         qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
 
-        Button openQr = (Button) findViewById(R.id.btn_qr_scanner);
-        openQr.setOnClickListener(new Button.OnClickListener() {
+        Button useBluetooth = (Button) findViewById(R.id.btn_use_bluetooth);
+        useBluetooth.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().initiateQrScan();
+                getActivity().showIntro();
+                getActivity().sendFDroidBluetooth();
             }
         });
 
@@ -81,10 +78,10 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     }
 
     private void setUpWarningMessageQrScan() {
-        final View qrWarnningMessage = findViewById(R.id.warning_qr_scanner);
+        final View qrWarningMessage = findViewById(R.id.warning_qr_scanner);
         final boolean hasAutofocus = CameraCharacteristicsChecker.getInstance(getContext()).hasAutofocus();
         final int visiblity = hasAutofocus ? GONE : VISIBLE;
-        qrWarnningMessage.setVisibility(visiblity);
+        qrWarningMessage.setVisibility(visiblity);
     }
 
 
@@ -106,13 +103,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     @Override
     public int getStep() {
-        return SwapService.STEP_WIFI_QR;
+        return SwapService.STEP_INTRO;
     }
 
     @Override
     public int getPreviousStep() {
-        // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
-        return SwapService.STEP_JOIN_WIFI;
+        return SwapService.STEP_INTRO;
     }
 
     @ColorRes
@@ -122,11 +118,11 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     @Override
     public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_scan_qr);
+        return getResources().getString(R.string.swap_send_fdroid);
     }
 
+    @SuppressLint("HardwareIds")
     private void setUIFromWifi() {
-
         if (TextUtils.isEmpty(FDroidApp.repo.address)) {
             return;
         }
@@ -134,38 +130,10 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
 
         // the fingerprint is not useful on the button label
-        String buttonLabel = scheme + FDroidApp.ipAddressString + ":" + FDroidApp.port;
+        String qrUriString = scheme + FDroidApp.ipAddressString + ":" + FDroidApp.port;
         TextView ipAddressView = (TextView) findViewById(R.id.device_ip_address);
-        ipAddressView.setText(buttonLabel);
+        ipAddressView.setText(qrUriString);
 
-        Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
-        StringBuilder qrUrlBuilder = new StringBuilder(scheme);
-        qrUrlBuilder.append(sharingUri.getHost());
-        if (sharingUri.getPort() != 80) {
-            qrUrlBuilder.append(':');
-            qrUrlBuilder.append(sharingUri.getPort());
-        }
-        qrUrlBuilder.append(sharingUri.getPath());
-        boolean first = true;
-
-        if (Build.VERSION.SDK_INT > 10) {
-            Set<String> names = sharingUri.getQueryParameterNames();
-            for (String name : names) {
-                if (!"ssid".equals(name)) {
-                    if (first) {
-                        qrUrlBuilder.append('?');
-                        first = false;
-                    } else {
-                        qrUrlBuilder.append('&');
-                    }
-                    qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
-                    qrUrlBuilder.append('=');
-                    qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
-                }
-            }
-        }
-
-        String qrUriString = qrUrlBuilder.toString();
         Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
         new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
 
