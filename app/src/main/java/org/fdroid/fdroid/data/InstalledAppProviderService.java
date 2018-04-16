@@ -23,6 +23,8 @@ import rx.subjects.PublishSubject;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -146,7 +148,10 @@ public class InstalledAppProviderService extends IntentService {
      * Make sure that {@link InstalledAppProvider}, our database of installed apps,
      * is in sync with what the {@link PackageManager} tells us is installed. Once
      * completed, the relevant {@link android.content.ContentProvider}s will be
-     * notified of any changes to installed statuses.
+     * notified of any changes to installed statuses.  The packages are processed
+     * in alphabetically order so that "{@code android}" is processed first.  That
+     * is always present and signed by the system key, so it is the source of the
+     * system key for comparing all packages.
      * <p>
      * The installed app cache could get out of sync, e.g. if F-Droid crashed/ or
      * ran out of battery half way through responding to {@link Intent#ACTION_PACKAGE_ADDED}.
@@ -169,6 +174,12 @@ public class InstalledAppProviderService extends IntentService {
 
         List<PackageInfo> packageInfoList = context.getPackageManager()
                 .getInstalledPackages(PackageManager.GET_SIGNATURES);
+        Collections.sort(packageInfoList, new Comparator<PackageInfo>() {
+            @Override
+            public int compare(PackageInfo o1, PackageInfo o2) {
+                return o1.packageName.compareTo(o2.packageName);
+            }
+        });
         for (PackageInfo packageInfo : packageInfoList) {
             if (cachedInfo.containsKey(packageInfo.packageName)) {
                 if (packageInfo.lastUpdateTime < 1262300400000L // 2010-01-01 00:00
@@ -314,6 +325,11 @@ public class InstalledAppProviderService extends IntentService {
         context.getContentResolver().delete(uri, null, null);
     }
 
+    /**
+     * Get the fingerprint used to represent an APK signing key in F-Droid.
+     * This is a custom fingerprint algorithm that was kind of accidentally
+     * created, but is still in use.
+     */
     private static String getPackageSig(PackageInfo info) {
         if (info == null || info.signatures == null || info.signatures.length < 1) {
             return "";

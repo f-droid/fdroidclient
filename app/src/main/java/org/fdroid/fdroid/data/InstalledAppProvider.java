@@ -18,6 +18,7 @@ import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class InstalledAppProvider extends FDroidProvider {
@@ -81,6 +82,20 @@ public class InstalledAppProvider extends FDroidProvider {
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
+    /**
+     * Built-in apps that are signed by the various Android ROM keys.
+     *
+     * @see <a href="https://source.android.com/devices/tech/ota/sign_builds#certificates-keys">Certificates and private keys</a>
+     */
+    private static final String[] SYSTEM_PACKAGES = {
+            "android", // platform key
+            "com.android.email", // test/release key
+            "com.android.contacts", // shared key
+            "com.android.providers.downloads", // media key
+    };
+
+    private static String[] systemSignatures;
+
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
@@ -115,6 +130,36 @@ public class InstalledAppProvider extends FDroidProvider {
             Utils.debugLog(TAG, "Could not get application label: " + e.getMessage());
         }
         return packageName; // all else fails, return packageName
+    }
+
+    /**
+     * Add SQL selection statement to exclude {@link InstalledApp}s that were
+     * signed by the platform/shared/media/testkey keys.
+     *
+     * @see <a href="https://source.android.com/devices/tech/ota/sign_builds#certificates-keys">Certificates and private keys</a>
+     */
+    private QuerySelection selectNotSystemSignature(QuerySelection selection) {
+        if (systemSignatures == null) {
+            Log.i(TAG, "selectNotSystemSignature: systemSignature == null, querying for it");
+            HashSet<String> signatures = new HashSet<>();
+            for (String packageName : SYSTEM_PACKAGES) {
+                Cursor cursor = query(InstalledAppProvider.getAppUri(packageName), new String[]{Cols.SIGNATURE},
+                        null, null, null);
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        signatures.add(cursor.getString(cursor.getColumnIndex(Cols.SIGNATURE)));
+                    }
+                    cursor.close();
+                }
+            }
+            systemSignatures = signatures.toArray(new String[signatures.size()]);
+        }
+
+        Log.i(TAG, "excluding InstalledApps signed by system signatures");
+        for (String systemSignature : systemSignatures) {
+            selection = selection.add("NOT " + Cols.SIGNATURE + " IN (?)", new String[]{systemSignature});
+        }
+        return selection;
     }
 
     @Override
@@ -185,6 +230,7 @@ public class InstalledAppProvider extends FDroidProvider {
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         switch (MATCHER.match(uri)) {
             case CODE_LIST:
+                selection = selectNotSystemSignature(selection);
                 break;
 
             case CODE_SINGLE:
