@@ -641,7 +641,13 @@ public class AppDetails2 extends AppCompatActivity
                         Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
-                        alertBuilder.setTitle(R.string.uninstall_error_notify_title);
+                        Uri uri = intent.getData();
+                        if (uri == null) {
+                            alertBuilder.setTitle(getString(R.string.uninstall_error_notify_title, ""));
+                        } else {
+                            alertBuilder.setTitle(getString(R.string.uninstall_error_notify_title,
+                                    uri.getSchemeSpecificPart()));
+                        }
                         alertBuilder.setMessage(errorMessage);
                         alertBuilder.setNeutralButton(android.R.string.ok, null);
                         alertBuilder.create().show();
