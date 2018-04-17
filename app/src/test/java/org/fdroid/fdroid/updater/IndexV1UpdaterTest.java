@@ -50,6 +50,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -419,6 +420,8 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
         assertEquals(1, apps.length);
         assertEquals(1, packages.size());
+        List<Apk> cacerts =  packages.get("info.guardianproject.cacert");
+        assertEquals(2, cacerts.size());
         assertEquals(1488828510109L, repo.timestamp);
         assertEquals("GPLv3", apps[0].license);
 
@@ -427,12 +430,16 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
             assertNotEquals("secret", field);
         }
 
-        Apk apk = packages.get("info.guardianproject.cacert").get(0);
+        Apk apk = cacerts.get(0);
         assertEquals("e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a", apk.hash);
         Set<String> packageFields = getFields(apk);
         for (String field : packageFields) {
             assertNotEquals("secret", field);
         }
+
+        apk = cacerts.get(1);
+        assertEquals("2353d1235e8da843fae5ac44be6152e513123e717e5c8a7b6d913d7720566b5a", apk.hash);
+        assertNull(apk.versionName);
     }
 
     private Set<String> getFields(Object instance) {

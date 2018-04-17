@@ -87,6 +87,56 @@
                 ],
                 "versionCode": 14,
                 "versionName": "0.1.8"
+            },
+            {
+                "added": 1400014500000,
+                "apkName": "Courier-0.0.apk",
+                "hash": "2353d1235e8da843fae5ac44be6152e513123e717e5c8a7b6d913d7720566b5a",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.courier",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 16536125,
+                "targetSdkVersion": "15",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 0
             }
         ]
     }
