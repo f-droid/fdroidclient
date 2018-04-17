@@ -580,7 +580,6 @@ public class FDroidApp extends Application {
 
         String bluetoothPackageName = null;
         String className = null;
-        boolean found = false;
         Intent sendBt = null;
 
         try {
@@ -599,20 +598,19 @@ public class FDroidApp extends Application {
                 if ("com.android.bluetooth".equals(bluetoothPackageName)
                         || "com.mediatek.bluetooth".equals(bluetoothPackageName)) {
                     className = info.activityInfo.name;
-                    found = true;
                     break;
                 }
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not get application info to send via bluetooth", e);
-            found = false;
+            className = null;
         } catch (IOException e) {
             Exception toLog = new RuntimeException("Error preparing file to send via Bluetooth", e);
             ACRA.getErrorReporter().handleException(toLog, false);
         }
 
         if (sendBt != null) {
-            if (found) {
+            if (className != null) {
                 sendBt.setClassName(bluetoothPackageName, className);
                 activity.startActivity(sendBt);
             } else {

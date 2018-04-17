@@ -37,14 +37,18 @@ import java.io.IOException;
  * either locally or for sending via bluetooth.
  * <p/>
  * APK handling for installations:
- * 1. APKs are downloaded into a cache directory that is either created on SD card
+ * <ol>
+ * <li>APKs are downloaded into a cache directory that is either created on SD card
  * <i>"/Android/data/[app_package_name]/cache/apks"</i> (if card is mounted and app has
- * appropriate permission) or on device's file system depending incoming parameters.
- * 2. Before installation, the APK is copied into the private data directory of the F-Droid,
- * <i>"/data/data/[app_package_name]/files/install-$random.apk"</i>.
- * 3. The hash of the file is checked against the expected hash from the repository
- * 4. For Android < 7, a file Uri pointing to the File is returned, for Android >= 7,
- * a content Uri is returned using support lib's FileProvider.
+ * appropriate permission) or on device's file system depending incoming parameters</li>
+ * <li>Before installation, the APK is copied into the private data directory of the F-Droid,
+ * <i>"/data/data/[app_package_name]/files/install-$random.apk"</i></li>
+ * <li>The hash of the file is checked against the expected hash from the repository</li>
+ * <li>For {@link Build.VERSION_CODES#M < android-23}, a {@code file://} {@link Uri}
+ * pointing to the {@link File} is returned, for {@link Build.VERSION_CODES#M >= android-23},
+ * a {@code content://} {@code Uri} is returned using support lib's
+ * {@link FileProvider}</li>
+ * </ol>
  */
 public class ApkFileProvider extends FileProvider {
 
@@ -52,7 +56,7 @@ public class ApkFileProvider extends FileProvider {
 
     public static Uri getSafeUri(Context context, PackageInfo packageInfo) throws IOException {
         SanitizedFile tempApkFile = ApkCache.copyInstalledApkToFiles(context, packageInfo);
-        return getSafeUri(context, tempApkFile, Build.VERSION.SDK_INT >= 24);
+        return getSafeUri(context, tempApkFile, Build.VERSION.SDK_INT >= 23);
     }
 
     /**
@@ -89,12 +93,12 @@ public class ApkFileProvider extends FileProvider {
             context.grantUriPermission(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
                     apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             context.grantUriPermission("com.android.bluetooth", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            context.grantUriPermission("com.mediatek.bluetooth", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             return apkUri;
+        } else {
+            tempFile.setReadable(true, false);
+            return Uri.fromFile(tempFile);
         }
-
-        tempFile.setReadable(true, false);
-
-        return Uri.fromFile(tempFile);
     }
 
 }

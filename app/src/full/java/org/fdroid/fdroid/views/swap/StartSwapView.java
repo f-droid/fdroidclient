@@ -257,7 +257,9 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
             textBluetoothVisible.setText(textResource);
 
             bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
-            Utils.debugLog(TAG, getManager().isBluetoothDiscoverable() ? "Initially marking switch as checked, because Bluetooth is discoverable." : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
+            Utils.debugLog(TAG, getManager().isBluetoothDiscoverable()
+                    ? "Initially marking switch as checked, because Bluetooth is discoverable."
+                    : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
             bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
             setBluetoothSwitchState(getManager().isBluetoothDiscoverable(), true);
 
