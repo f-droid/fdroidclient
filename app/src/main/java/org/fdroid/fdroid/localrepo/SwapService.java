@@ -537,11 +537,11 @@ public class SwapService extends Service {
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
 
-        if (!SwapService.wasBluetoothEnabledBeforeSwap()) {
+        if (bluetoothAdapter != null && !wasBluetoothEnabledBeforeSwap()) {
             bluetoothAdapter.disable();
         }
 
-        if (!SwapService.wasWifiEnabledBeforeSwap()) {
+        if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
             wifiManager.setWifiEnabled(false);
         }
 
