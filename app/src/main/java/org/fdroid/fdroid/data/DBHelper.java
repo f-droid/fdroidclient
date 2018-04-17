@@ -95,7 +95,7 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String CREATE_TABLE_APK =
             "CREATE TABLE " + ApkTable.NAME + " ( "
                     + ApkTable.Cols.APP_ID + " integer not null, "
-                    + ApkTable.Cols.VERSION_NAME + " text not null, "
+                    + ApkTable.Cols.VERSION_NAME + " text, "
                     + ApkTable.Cols.REPO_ID + " integer not null, "
                     + ApkTable.Cols.HASH + " text not null, "
                     + ApkTable.Cols.VERSION_CODE + " int not null,"
@@ -215,7 +215,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 78;
+    protected static final int DB_VERSION = 79;
 
     private final Context context;
 
@@ -323,6 +323,16 @@ public class DBHelper extends SQLiteOpenHelper {
         addIgnoreVulnPref(db, oldVersion);
         addLiberapayID(db, oldVersion);
         addUserMirrorsFields(db, oldVersion);
+        removeNotNullFromVersionName(db, oldVersion);
+    }
+
+    private void removeNotNullFromVersionName(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 79) {
+            return;
+        }
+
+        Log.i(TAG, "Forcing repo refresh to remove NOT NULL from " + ApkTable.Cols.VERSION_NAME);
+        resetTransient(db);
     }
 
     private void addUserMirrorsFields(SQLiteDatabase db, int oldVersion) {

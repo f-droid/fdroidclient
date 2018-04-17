@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import com.fasterxml.jackson.annotation.JacksonInject;
@@ -65,6 +66,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // these come directly from the index metadata
     public String packageName;
+    @Nullable
     public String versionName;
     public int versionCode;
     public int size; // Size in bytes - 0 means we don't know!
