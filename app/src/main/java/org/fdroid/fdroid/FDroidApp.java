@@ -36,6 +36,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.support.v4.util.LongSparseArray;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
@@ -113,7 +114,7 @@ public class FDroidApp extends Application {
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
-    private static volatile String lastWorkingMirror = null;
+    private static volatile LongSparseArray<String> lastWorkingMirrorArray = new LongSparseArray<>(1);
     private static volatile int numTries = Integer.MAX_VALUE;
     private static volatile int timeout = 10000;
 
@@ -242,6 +243,7 @@ public class FDroidApp extends Application {
 
     public static String getMirror(String urlString, Repo repo2) throws IOException {
         if (repo2.hasMirrors()) {
+            String lastWorkingMirror = lastWorkingMirrorArray.get(repo2.getId());
             if (lastWorkingMirror == null) {
                 lastWorkingMirror = repo2.address;
             }
@@ -264,7 +266,7 @@ public class FDroidApp extends Application {
             String newUrl = urlString.replace(lastWorkingMirror, mirror);
             Utils.debugLog(TAG, "Trying mirror " + mirror + " after " + lastWorkingMirror + " failed," +
                     " timeout=" + timeout / 1000 + "s");
-            lastWorkingMirror = mirror;
+            lastWorkingMirrorArray.put(repo2.getId(), mirror);
             numTries--;
             return newUrl;
         } else {
@@ -278,7 +280,9 @@ public class FDroidApp extends Application {
 
     public static void resetMirrorVars() {
         // Reset last working mirror, numtries, and timeout
-        lastWorkingMirror = null;
+        for (int i = 0; i < lastWorkingMirrorArray.size(); i++) {
+            lastWorkingMirrorArray.removeAt(i);
+        }
         numTries = Integer.MAX_VALUE;
         timeout = 10000;
     }
