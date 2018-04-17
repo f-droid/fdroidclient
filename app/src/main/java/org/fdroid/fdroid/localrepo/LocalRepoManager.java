@@ -357,9 +357,12 @@ public final class LocalRepoManager {
 
         /**
          * Helper function to start a tag called "name", fill it with text "text", and then
-         * end the tag in a more concise manner.
+         * end the tag in a more concise manner.  If "text" is blank, skip the tag entirely.
          */
         private void tag(String name, String text) throws IOException {
+            if (TextUtils.isEmpty(text)) {
+                return;
+            }
             serializer.startTag("", name).text(text).endTag("", name);
         }
 
