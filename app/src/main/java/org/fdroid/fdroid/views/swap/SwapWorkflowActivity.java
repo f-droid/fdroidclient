@@ -425,7 +425,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     })
                     .create().show();
         } else {
-            showSelectApps();
+            showWifiQr();
         }
     }
 
