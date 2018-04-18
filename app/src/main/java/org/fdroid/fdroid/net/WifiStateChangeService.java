@@ -8,6 +8,7 @@ import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.util.Log;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
@@ -41,6 +43,11 @@ import java.util.Locale;
  * the current state because it means that something about the wifi has
  * changed.  Having the {@code Thread} also makes it easy to kill work
  * that is in progress.
+ * <p>
+ * This also schedules an update to encourage updates happening on
+ * unmetered networks like typical WiFi rather than networks that can
+ * cost money or have caps.  The logic for checking the state of the
+ * internet connection is in {@link org.fdroid.fdroid.UpdateService#onHandleIntent(Intent)}
  * <p>
  * Some devices send multiple copies of given events, like a Moto G often
  * sends three {@code CONNECTED} events.  So they have to be debounced to
@@ -91,6 +98,10 @@ public class WifiStateChangeService extends IntentService {
                 }
                 wifiInfoThread = new WifiInfoThread();
                 wifiInfoThread.start();
+            }
+
+            if (Build.VERSION.SDK_INT < 21 && wifiState == WifiManager.WIFI_STATE_ENABLED) {
+                UpdateService.scheduleIfStillOnWifi(this);
             }
         }
     }

@@ -22,11 +22,15 @@ import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,6 +55,7 @@ import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,32 +121,41 @@ public class UpdateService extends IntentService {
     }
 
     /**
-     * Schedule or cancel this service to update the app index, according to the
-     * current preferences. Should be called a) at boot, b) if the preference
-     * is changed, or c) on startup, in case we get upgraded.
+     * Schedule this service to update the app index while canceling any previously
+     * scheduled updates, according to the current preferences. Should be called
+     * a) at boot, b) if the preference is changed, or c) on startup, in case we get
+     * upgraded. It works differently on {@code android-21} and newer, versus older,
+     * due to the {@link JobScheduler} API handling it very nicely for us.
+     *
+     * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
      */
-    public static void schedule(Context ctx) {
+    public static void schedule(Context context) {
+        int interval = Preferences.get().getUpdateInterval();
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(ctx);
-        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
-        int interval = Integer.parseInt(sint);
+        if (Build.VERSION.SDK_INT < 21) {
+            Intent intent = new Intent(context, UpdateService.class);
+            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
 
-        Intent intent = new Intent(ctx, UpdateService.class);
-        PendingIntent pending = PendingIntent.getService(ctx, 0, intent, 0);
-
-        AlarmManager alarm = (AlarmManager) ctx
-                .getSystemService(Context.ALARM_SERVICE);
-        alarm.cancel(pending);
-        if (interval > 0) {
-            alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime() + 5000,
-                    AlarmManager.INTERVAL_HOUR, pending);
-            Utils.debugLog(TAG, "Update scheduler alarm set");
+            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarm.cancel(pending);
+            if (interval > 0) {
+                alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+                        SystemClock.elapsedRealtime() + 5000, interval, pending);
+                Utils.debugLog(TAG, "Update scheduler alarm set");
+            } else {
+                Utils.debugLog(TAG, "Update scheduler alarm not set");
+            }
         } else {
-            Utils.debugLog(TAG, "Update scheduler alarm not set");
+            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            jobScheduler.cancelAll();
+            ComponentName componentName = new ComponentName(context, UpdateJobService.class);
+            JobInfo task = new JobInfo.Builder(0xfedcba, componentName)
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                    .setOverrideDeadline(interval)
+                    .build();
+            jobScheduler.schedule(task);
         }
-
     }
 
     /**
@@ -150,6 +164,51 @@ public class UpdateService extends IntentService {
      */
     public static boolean isUpdating() {
         return updating;
+    }
+
+    private static volatile boolean isScheduleIfStillOnWifiRunning;
+
+    /**
+     * Waits for a period of time for the WiFi to settle, then if the WiFi is
+     * still active, it schedules an update.  This is to encourage the use of
+     * unlimited networks over metered networks for index updates and auto
+     * downloads of app updates. Starting with {@code android-21}, this uses
+     * {@link android.app.job.JobScheduler} instead.
+     */
+    public static void scheduleIfStillOnWifi(Context context) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            throw new IllegalStateException("This should never be used on android-21 or newer!");
+        }
+        if (isScheduleIfStillOnWifiRunning || !Preferences.get().isBackgroundDownloadAllowed()) {
+            return;
+        }
+        isScheduleIfStillOnWifiRunning = true;
+        new StillOnWifiAsyncTask(context).execute();
+    }
+
+    private static final class StillOnWifiAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private final WeakReference<Context> contextWeakReference;
+
+        private StillOnWifiAsyncTask(Context context) {
+            this.contextWeakReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Context context = contextWeakReference.get();
+            try {
+                Thread.sleep(120000);
+                if (Preferences.get().isBackgroundDownloadAllowed()) {
+                    Utils.debugLog(TAG, "scheduling update because there is good internet");
+                    schedule(context);
+                }
+            } catch (Exception e) {
+                Utils.debugLog(TAG, e.getMessage());
+            }
+            isScheduleIfStillOnWifiRunning = false;
+            return null;
+        }
     }
 
     @Override
@@ -280,35 +339,6 @@ public class UpdateService extends IntentService {
     };
 
     /**
-     * Check whether it is time to run the scheduled update.
-     * We don't want to run if:
-     * - The time between scheduled runs is set to zero (though don't know
-     * when that would occur)
-     * - Last update was too recent
-     * - Not on wifi, but the property for "Only auto update on wifi" is set.
-     *
-     * @return True if we are due for a scheduled update.
-     */
-    private boolean verifyIsTimeForScheduledRun() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
-        int interval = Integer.parseInt(sint);
-        if (interval == 0) {
-            Log.i(TAG, "Skipping update - disabled");
-            return false;
-        }
-        long lastUpdate = prefs.getLong(STATE_LAST_UPDATED, 0);
-        long elapsed = System.currentTimeMillis() - lastUpdate;
-        if (elapsed < interval * 60 * 60 * 1000) {
-            Log.i(TAG, "Skipping update - done " + elapsed
-                    + "ms ago, interval is " + interval + " hours");
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
      */
     private void sendNoInternetToast() {
@@ -339,6 +369,7 @@ public class UpdateService extends IntentService {
         }
 
         try {
+            final Preferences fdroidPrefs = Preferences.get();
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
             if (address != null && address.startsWith(BluetoothDownloader.SCHEME)) {
@@ -349,12 +380,9 @@ public class UpdateService extends IntentService {
                     sendNoInternetToast();
                 }
                 return;
-            }
-
-            final Preferences fdroidPrefs = Preferences.get();
-            if (manualUpdate || forcedUpdate) {
+            } else if (manualUpdate || forcedUpdate) {
                 Utils.debugLog(TAG, "manually requested or forced update");
-            } else if (!verifyIsTimeForScheduledRun() || !fdroidPrefs.isBackgroundDownloadAllowed()) {
+            } else if (!fdroidPrefs.isBackgroundDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
             }
