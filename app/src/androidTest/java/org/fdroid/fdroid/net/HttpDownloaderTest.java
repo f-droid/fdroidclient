@@ -1,12 +1,12 @@
 
 package org.fdroid.fdroid.net;
 
+import android.net.Uri;
 import org.fdroid.fdroid.ProgressListener;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -31,9 +31,9 @@ public class HttpDownloaderTest {
     @Test
     public void downloadUninterruptedTest() throws IOException, InterruptedException {
         for (String urlString : urls) {
-            URL url = new URL(urlString);
+            Uri uri = Uri.parse(urlString);
             File destFile = File.createTempFile("dl-", "");
-            HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
+            HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
             httpDownloader.download();
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
@@ -46,12 +46,12 @@ public class HttpDownloaderTest {
         final CountDownLatch latch = new CountDownLatch(1);
         String urlString = "https://f-droid.org/repo/index.jar";
         receivedProgress = false;
-        URL url = new URL(urlString);
+        Uri uri = Uri.parse(urlString);
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
+        final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
-            public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            public void onProgress(String urlString, long bytesRead, long totalBytes) {
                 receivedProgress = true;
             }
         });
@@ -76,9 +76,9 @@ public class HttpDownloaderTest {
 
     @Test
     public void downloadHttpBasicAuth() throws IOException, InterruptedException {
-        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "supersecretpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "myusername", "supersecretpassword");
         httpDownloader.download();
         assertTrue(destFile.exists());
         assertTrue(destFile.canRead());
@@ -87,9 +87,9 @@ public class HttpDownloaderTest {
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongPassword() throws IOException, InterruptedException {
-        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "wrongpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "myusername", "wrongpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -97,9 +97,9 @@ public class HttpDownloaderTest {
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongUsername() throws IOException, InterruptedException {
-        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "wrongusername", "supersecretpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "wrongusername", "supersecretpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -108,12 +108,12 @@ public class HttpDownloaderTest {
     @Test
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
-        URL url = new URL("https://f-droid.org/repo/index.jar");
+        Uri uri = Uri.parse("https://f-droid.org/repo/index.jar");
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
+        final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
-            public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            public void onProgress(String urlString, long bytesRead, long totalBytes) {
                 receivedProgress = true;
                 latch.countDown();
             }
