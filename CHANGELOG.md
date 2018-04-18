@@ -1,3 +1,9 @@
+### 1.2.1 (2018-04-18)
+
+* improved automatic mirror selection
+
+* more swap/nearby bug fixes and improvements
+
 ### 1.2 (2018-04-13)
 
 * lots of swap/nearby bug fixes and improvements
