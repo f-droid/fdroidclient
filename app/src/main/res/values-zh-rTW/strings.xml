@@ -521,5 +521,5 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi 熱點已啟用</string>
     <string name="swap_toast_could_not_enable_hotspot">無法啟用 Wi-Fi 熱點！</string>
 
-    <string name="swap_toast_invalid_url">無法交換的網址：%1$s</string>
+    <string name="swap_toast_invalid_url">無效的交換網址：%1$s</string>
     </resources>
