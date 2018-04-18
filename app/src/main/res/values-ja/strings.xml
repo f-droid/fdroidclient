@@ -502,4 +502,9 @@
 
     <string name="repo_official_mirrors">公式ミラー</string>
     <string name="repo_user_mirrors">ユーザーによるミラー</string>
+    <string name="use_bluetooth">Bluetooth を使用する</string>
+    <string name="swap_toast_invalid_url">交換の URL が無効: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi ホットスポットが有効です</string>
+    <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ホットスポットを有効にできませんでした!</string>
+
     </resources>

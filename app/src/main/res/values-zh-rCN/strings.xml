@@ -488,4 +488,10 @@
     <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
     <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用程序</string>
     <string name="repo_add_mirror">添加镜像</string>
+    <string name="force_touch_apps">包括触屏应用</string>
+    <string name="force_touch_apps_on">显示需要触控式屏幕的应用程序，无论硬件是否支持</string>
+
+    <string name="repo_official_mirrors">官方镜像</string>
+    <string name="repo_user_mirrors">用户镜像</string>
+    <string name="use_bluetooth">使用蓝牙</string>
     </resources>

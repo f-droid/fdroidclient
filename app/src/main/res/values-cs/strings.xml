@@ -555,4 +555,12 @@
     <string name="repo_add_mirror">Přidat zrcadlo (mirror)</string>
     <string name="repo_official_mirrors">Oficiální zrcadla</string>
     <string name="repo_user_mirrors">Uživatelem určená zrcadla</string>
+    <string name="repo_exists_and_enabled">%1$s je už nastavené a zapnuté.</string>
+    <string name="repo_delete_to_overwrite">Aby bylo možné toto přidat s konfliktním klíčem, je třeba nejprve smazat %1$s.</string>
+    <string name="repo_exists_add_mirror">Toto je kopie %1$s, přidat ji jako zrcadlo?</string>
+    <string name="use_bluetooth">Použít bluetooth</string>
+    <string name="swap_toast_invalid_url">Neplatná URL adresa pro prohození: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi přístupový bod zapnut</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout Wi-Fi přístupový bod!</string>
+
     </resources>

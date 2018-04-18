@@ -555,4 +555,8 @@
 </plurals>
     <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
     <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
+    <string name="use_bluetooth">إستخدم البلوتوث</string>
+    <string name="swap_toast_hotspot_enabled">تم تفعيل نقطة الواي فاي</string>
+    <string name="swap_toast_could_not_enable_hotspot">تعذر تشغيل نقطة الواي فاي !</string>
+
     </resources>

@@ -547,4 +547,9 @@
     <string name="repo_exists_add_mirror">Bu %1$s deposunun bir kopyası, bir yansıma olarak eklensin mi?</string>
     <string name="repo_official_mirrors">Resmi yansımalar</string>
     <string name="repo_user_mirrors">Kullanıcı yansımaları</string>
+    <string name="use_bluetooth">Bluetooth Kullan</string>
+    <string name="swap_toast_invalid_url">Takas için geçersiz URL: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot etkin</string>
+    <string name="swap_toast_could_not_enable_hotspot">Wi-Fi Hotspot etkinleştirilemedi!</string>
+
     </resources>

@@ -517,4 +517,9 @@
     <string name="repo_exists_add_mirror">這是 %1$s 的副本，將其增為鏡像？</string>
     <string name="repo_official_mirrors">官方鏡像</string>
     <string name="repo_user_mirrors">使用者鏡像</string>
+    <string name="use_bluetooth">使用藍牙</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi 熱點已啟用</string>
+    <string name="swap_toast_could_not_enable_hotspot">無法啟用 Wi-Fi 熱點！</string>
+
+    <string name="swap_toast_invalid_url">無法交換的網址：%1$s</string>
     </resources>

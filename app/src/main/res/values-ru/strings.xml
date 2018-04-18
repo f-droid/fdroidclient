@@ -536,4 +536,18 @@
 <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
     <string name="show_root_apps">Включить root-приложения</string>
     <string name="show_root_apps_on">Показать приложения, требующие привилегий root</string>
+    <string name="repo_add_mirror">Добавить зеркало</string>
+    <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
+    <string name="show_anti_feature_apps">Включить приложения с сомнительным функционалом</string>
+    <string name="show_anti_feature_apps_on">Показывать приложения, включающие функции, которые вам могут не понравиться</string>
+    <string name="force_touch_apps">Включить приложения, требущие сенсорного экрана</string>
+    <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
+
+    <string name="repo_official_mirrors">Официальные зеркала</string>
+    <string name="repo_user_mirrors">Пользовательские зеркала</string>
+    <string name="use_bluetooth">Использовать Bluetooth</string>
+    <string name="swap_toast_invalid_url">Недопустимый URL для замены: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Точка доступа Wi-Fi включена</string>
+    <string name="swap_toast_could_not_enable_hotspot">Не удалось включить точку доступа Wi-Fi!</string>
+
     </resources>

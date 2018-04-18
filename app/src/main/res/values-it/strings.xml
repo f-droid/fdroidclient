@@ -74,7 +74,7 @@
     <string name="expert_on">Mostra ulteriori informazioni e attiva le impostazioni avanzate</string>
     <string name="search_hint">Ricerca applicazioni</string>
     <string name="appcompatibility">Compatibilità applicazione</string>
-    <string name="show_incompat_versions">Versioni incompatibili</string>
+    <string name="show_incompat_versions">Includi versioni incompatibili</string>
     <string name="show_incompat_versions_on">Mostra le versioni incompatibili con il dispositivo</string>
     <string name="local_repo">Repo locale</string>
     <string name="local_repo_running">F-Droid è pronto per lo scambio</string>
@@ -104,7 +104,7 @@
     <string name="repos_unchanged">Tutti i repository sono aggiornati</string>
     <string name="all_other_repos_fine">Tutti gli altri repository non hanno generato errori.</string>
     <string name="global_error_updating_repos">Errore durante l\'aggiornamento: %s</string>
-    <string name="no_permissions">Nessuna autorizzazione viene usata.</string>
+    <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
     <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Non firmato</string>
@@ -231,7 +231,7 @@
     <string name="theme_light">Chiaro</string>
     <string name="theme_dark">Scuro</string>
     <string name="theme_night">Notte</string>
-    <string name="permissions">Permessi</string>
+    <string name="permissions">Autorizzazioni</string>
     <string name="unstable_updates_summary">Suggerisci aggiornamenti a versioni non stabili</string>
     <string name="uninstall_system">Aggiorna/disinstalla l\'estensione privilegiata</string>
     <string name="uninstall_system_summary">Apri la schermata dell\'estensione privilegiata per aggiornarla o
@@ -535,4 +535,39 @@
     <string name="panic_app_dialog_title">Conferma Applicazione Pulsante di Panico</string>
     <string name="panic_app_dialog_message">Sei sicuro di voler permettere %1$s di eseguire azioni distruttive del pulsante di panico?</string>
     <string name="panic_settings">Impostazioni Pulsante di Panico</string>
-</resources>
+<string name="repo_add_mirror">Aggiungi mirror</string>
+    <string name="sort_search">Ordina ricerca</string>
+
+    <string name="repo_exists_add_fingerprint">%1$s è già impostato, ciò aggiungerà nuove informazioni chiave.</string>
+    <string name="repo_exists_enable">%1$s è già impostato, conferma che vuoi riattivarlo.</string>
+    <string name="repo_exists_and_enabled">%1$s è già impostato e attivo.</string>
+    <string name="repo_delete_to_overwrite">Prima elimina %1$s per aggiungere questo con una chiave in conflitto.</string>
+    <string name="repo_exists_add_mirror">Questa è una copia di %1$s, aggiungerla come mirror?</string>
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="show_root_apps">Includi app di root</string>
+    <string name="show_root_apps_on">Mostra le app che richiedono privilegi di root</string>
+    <string name="show_anti_feature_apps">Includi app con anti-caratteristiche</string>
+    <string name="show_anti_feature_apps_on">Mostra app che richiedono anti-caratteristiche</string>
+    <string name="force_touch_apps">Includi app tattili</string>
+    <string name="force_touch_apps_on">Mostra app che richiedono il touchscreen indipendentemente dall\'hardware</string>
+
+    <string name="panic_hide_warning_title">Ricorda come ripristinare</string>
+    <string name="panic_hide_warning_message">In un evento di panico, ciò rimuoverà %1$s dal launcher. Solo digitando \"%2$d\" nella falsa app %3$s può ripristinarlo.</string>
+
+    <string name="hiding_calculator">Calcolatrice</string>
+    <string name="hiding_dialog_title">Nascondi %s ora</string>
+    <string name="hiding_dialog_message">Sei sicuro di volere rimuovere %1$s dal launcher? Solo digitando \"%2$d\" nella falsa app %3$s può ripristinarlo.</string>
+    <string name="hiding_dialog_warning">Attenzione: verrà rimossa anche qualsiasi scorciatoia dell\'app nella home e dovrà essere riaggiunta a mano.</string>
+    <string name="hide_on_long_search_press_title">Nascondi con il tasto ricerca</string>
+    <string name="hide_on_long_search_press_summary">Verrà nascosta l\'app premendo a lungo il tasto ricerca</string>
+
+    <string name="repo_official_mirrors">Mirror ufficiali</string>
+    <string name="repo_user_mirrors">Mirror utente</string>
+    <string name="use_bluetooth">Usa Bluetooth</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi attivo</string>
+    <string name="swap_toast_could_not_enable_hotspot">Impossibile attivare l\'hotspot Wi-Fi!</string>
+
+    <string name="warning_scaning_qr_code">La tua fotocamera non ha l\'autofocus. Potrebbe essere complicato scansionare il codice.</string>
+    <string name="swap_toast_invalid_url">URL per scambio non valido: %1$s</string>
+    </resources>
