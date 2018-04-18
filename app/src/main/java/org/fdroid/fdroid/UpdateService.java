@@ -22,7 +22,10 @@ import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -118,27 +121,41 @@ public class UpdateService extends IntentService {
     }
 
     /**
-     * Schedule or cancel this service to update the app index, according to the
-     * current preferences. Should be called a) at boot, b) if the preference
-     * is changed, or c) on startup, in case we get upgraded.
+     * Schedule this service to update the app index while canceling any previously
+     * scheduled updates, according to the current preferences. Should be called
+     * a) at boot, b) if the preference is changed, or c) on startup, in case we get
+     * upgraded. It works differently on {@code android-21} and newer, versus older,
+     * due to the {@link JobScheduler} API handling it very nicely for us.
+     *
+     * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
      */
-    public static void schedule(Context ctx) {
+    public static void schedule(Context context) {
         int interval = Preferences.get().getUpdateInterval();
 
-        Intent intent = new Intent(ctx, UpdateService.class);
-        PendingIntent pending = PendingIntent.getService(ctx, 0, intent, 0);
+        if (Build.VERSION.SDK_INT < 21) {
+            Intent intent = new Intent(context, UpdateService.class);
+            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
 
-        AlarmManager alarm = (AlarmManager) ctx
-                .getSystemService(Context.ALARM_SERVICE);
-        alarm.cancel(pending);
-        if (interval > 0) {
-            alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime() + 5000, interval, pending);
-            Utils.debugLog(TAG, "Update scheduler alarm set");
+            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarm.cancel(pending);
+            if (interval > 0) {
+                alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+                        SystemClock.elapsedRealtime() + 5000, interval, pending);
+                Utils.debugLog(TAG, "Update scheduler alarm set");
+            } else {
+                Utils.debugLog(TAG, "Update scheduler alarm not set");
+            }
         } else {
-            Utils.debugLog(TAG, "Update scheduler alarm not set");
+            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            jobScheduler.cancelAll();
+            ComponentName componentName = new ComponentName(context, UpdateJobService.class);
+            JobInfo task = new JobInfo.Builder(0xfedcba, componentName)
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                    .setOverrideDeadline(interval)
+                    .build();
+            jobScheduler.schedule(task);
         }
-
     }
 
     /**
