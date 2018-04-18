@@ -25,7 +25,7 @@
     <string name="repo_add_add">Aldoni</string>
     <string name="cancel">Nuligi</string>
     <string name="overwrite">Anstataŭigi</string>
-    <string name="repo_add_url">Deponeja adreso</string>
+    <string name="repo_add_url">Adreso de deponejo</string>
     <string name="menu_manage">Deponejoj</string>
     <string name="menu_search">Serĉi</string>
     <string name="menu_add_repo">Nova deponejo</string>
@@ -136,7 +136,7 @@
 
     <string name="menu_settings">Agordoj</string>
     <string name="menu_email">Retleteri programiston</string>
-    <string name="menu_changelog">Protokolo pri ŝanĝoj</string>
+    <string name="menu_changelog">Ŝanĝoprotokolo</string>
     <string name="menu_bitcoin">Bitmono</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -516,7 +516,7 @@
     <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo? Nur tajpado de “%2$d” en la ŝajn-aplikaĵo %3$s povas restarigi ĝin.</string>
     <string name="hiding_dialog_warning">Averto: ĉiu ligilo ĉe la hejmekrano ankaŭ estos forigita kaj devas esti realdonita permane.</string>
     <string name="hide_on_long_search_press_title">Kaŝi per serĉ-butono</string>
-    <string name="hide_on_long_search_press_summary">Longe premu la serĉ-butonon por kaŝi la aplikaĵon</string>
+    <string name="hide_on_long_search_press_summary">Kaŝi la aplikaĵon per longe premi la serĉ-butonon</string>
     <string name="sort_search">Ordigi serĉon</string>
 
     <string name="menu_liberapay">Liberapay</string>
@@ -537,4 +537,9 @@
     <string name="repo_exists_add_mirror">Tio ĉi estas kopio de %1$s, ĉe aldoni ĝin kiel spegul-servilo?</string>
     <string name="repo_official_mirrors">Oficialaj spegul-serviloj</string>
     <string name="repo_user_mirrors">Uzi spegul-servilojn</string>
+    <string name="use_bluetooth">Uzi Bludenton</string>
+    <string name="swap_toast_invalid_url">Erara ligilo por interŝanĝi: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Vifi-retkaptejo aktiva</string>
+    <string name="swap_toast_could_not_enable_hotspot">Ne povis aktivigi vifi-retkaptejon!</string>
+
     </resources>

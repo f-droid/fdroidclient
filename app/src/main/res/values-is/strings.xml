@@ -584,4 +584,9 @@
     <string name="repo_official_mirrors">Opinberir speglar</string>
     <string name="repo_user_mirrors">Speglar frá notendum</string>
     <string name="repo_delete_to_overwrite">Þú verður fyrst að eyða %1$s áður en þú getur bætt þessu við með öðrum lykli.</string>
+    <string name="use_bluetooth">Nota Bluetooth</string>
+    <string name="swap_toast_invalid_url">Ógild slóð fyrir býtti: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi aðgangspunktur virkur</string>
+    <string name="swap_toast_could_not_enable_hotspot">Gat ekki virkjað Wi-Fi aðgangspunkt!</string>
+
     </resources>

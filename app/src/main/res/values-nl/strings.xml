@@ -534,4 +534,9 @@
     <string name="repo_exists_add_mirror">Dit is een kopie van %1$s, toevoegen als terugvalpakketbron?</string>
     <string name="repo_official_mirrors">Officiële terugvalpakketbronnen</string>
     <string name="repo_user_mirrors">Gebruikersterugvalpakketbronnen</string>
+    <string name="use_bluetooth">Bluetooth gebruiken</string>
+    <string name="swap_toast_invalid_url">Ongeldige URL voor uitwisselen: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wifi-hotspot ingeschakeld</string>
+    <string name="swap_toast_could_not_enable_hotspot">Kon wifi-hotspot niet inschakelen!</string>
+
     </resources>

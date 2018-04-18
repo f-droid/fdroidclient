@@ -558,4 +558,9 @@
 
     <string name="repo_official_mirrors">Miroirs officiels</string>
     <string name="repo_user_mirrors">Miroirs administrés par des utilisateurs</string>
+    <string name="use_bluetooth">Utiliser le Bluetooth</string>
+    <string name="swap_toast_invalid_url">URL invalide pour l\'échange : %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activé</string>
+    <string name="swap_toast_could_not_enable_hotspot">Impossible d\'activer le Wi-Fi Hotspot !</string>
+
     </resources>

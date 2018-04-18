@@ -568,4 +568,14 @@
     <string name="repo_add_mirror">Gehitu ispilua</string>
     <string name="repo_exists_add_fingerprint">%1$s ezarrita dago jada, honek informazio gako berria gehituko du.</string>
     <string name="repo_exists_enable">%1$s ezarrita dago jada, baieztatu berriz gaitu nahi duzula.</string>
+    <string name="repo_exists_and_enabled">%1$s ezarrita eta gaituta dago jada.</string>
+    <string name="repo_delete_to_overwrite">Aurretik ezabatu %1$s hau gehitzeko gakoen arteko talka batean.</string>
+    <string name="repo_exists_add_mirror">Hau %1$s biltegiaren kopia bat da, ispilu gisa gehitu?</string>
+    <string name="repo_official_mirrors">Ispilu ofizialak</string>
+    <string name="repo_user_mirrors">Erabiltzaileen ispiluak</string>
+    <string name="use_bluetooth">Erabili Bluetooth</string>
+    <string name="swap_toast_invalid_url">Trukaketarako URL baliogabea: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi sarrera gunea gaituta</string>
+    <string name="swap_toast_could_not_enable_hotspot">Ezin izan da Wi-Fi sarrera gunea gaitu!</string>
+
     </resources>

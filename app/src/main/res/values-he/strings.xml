@@ -175,11 +175,11 @@
 
     <string name="swap_nfc_description">אם לחברך יש F-Droid ו־NFC פעיל הצמידו את המכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרפות לאותה רשת אלחוטית כמו חברך</string>
-    <string name="swap_join_this_hotspot">סיוע לחברך להצטרף לנקודה חמה</string>
+    <string name="swap_join_this_hotspot">סיוע לחברך להצטרף לנקודת גישה</string>
     <string name="swap">החלפת יישומונים</string>
     <string name="swap_success">ההחלפה הצליחה!</string>
     <string name="swap_no_wifi_network">אין רשת עדיין</string>
-    <string name="swap_active_hotspot">%1$s (הנקודה החמה שלך)</string>
+    <string name="swap_active_hotspot">%1$s (נקודת הגישה שלך)</string>
     <string name="swap_view_available_networks">נא לגעת כדי לפתוח רשתות זמינות</string>
     <string name="swap_switch_to_wifi">נא לגעת כדי להחליף רשת אלחוטית</string>
     <string name="open_qr_code_scanner">פתיחת סורק QR</string>
@@ -205,7 +205,7 @@
     <string name="repo_searching_address">מתבצע חיפוש אחר מאגר ה־F-Droid אצל 
 \n%1$s</string>
     <string name="wifi">רשת אלחוטית</string>
-    <string name="wifi_ap">נקודה חמה</string>
+    <string name="wifi_ap">נקודת גישה</string>
 
     <string name="category_Connectivity">קישוריות</string>
     <string name="category_Graphics">גרפיקה</string>
@@ -268,7 +268,7 @@
 \n 
 \nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
-    <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית חמה.</string>
+    <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית.</string>
     <string name="install_confirm_update">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. היישומון המעודכן יקבל גישה אל:</string>
     <string name="install_confirm_update_system">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. היישומון העדכני יקבל גישה אל:</string>
     <string name="install_confirm_update_no_perms">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה הרשאת גישה מיוחדת.</string>
@@ -548,4 +548,9 @@
     <string name="repo_exists_add_mirror">מדובר בעותק של %1$s, להוסיף כאתר מראה?</string>
     <string name="repo_official_mirrors">אתרי מראה רשמיים</string>
     <string name="repo_user_mirrors">אתרי מראה של משתמשים</string>
+    <string name="use_bluetooth">שימוש ב־Bluetooth</string>
+    <string name="swap_toast_invalid_url">כתובת שגויה להחלפה: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">נקודת גישה אלחוטית פעילה</string>
+    <string name="swap_toast_could_not_enable_hotspot">לא ניתן להפעיל נקודת גישה אלחוטית!</string>
+
     </resources>

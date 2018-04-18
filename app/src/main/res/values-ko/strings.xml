@@ -70,7 +70,7 @@
     <string name="expert_on">추가 정보를 보여주고 추가 설정을 활성화합니다</string>
     <string name="search_hint">앱 검색</string>
     <string name="appcompatibility">앱 호환성</string>
-    <string name="show_incompat_versions">호환되지 않는 버전</string>
+    <string name="show_incompat_versions">호환되지 않는 버전을 포함</string>
     <string name="show_incompat_versions_on">장치와 호환되지 않는 앱 버전을 보여줍니다</string>
     <string name="local_repo">로컬 저장소</string>
     <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
@@ -478,4 +478,25 @@
     <string name="hide_on_long_search_press_title">검색 버튼으로 숨기기</string>
     <string name="hide_on_long_search_press_summary">검색 버튼을 길게 누르면 앱을 숨길 것입니다</string>
 
-</resources>
+<string name="repo_add_mirror">미러 추가</string>
+    <string name="repo_exists_add_fingerprint">%1$s은(는) 이미 설정되어 있으며, 이는 새로운 키 정보를 추가할 것입니다.</string>
+    <string name="repo_exists_enable">%1$s은(는) 이미 설정되어 있으며, 그것을 다시 활성화하고자 할 것인지 확인합니다.</string>
+    <string name="repo_exists_and_enabled">%1$s은(는) 이미 설정되어 있으며, 활성화됩니다.</string>
+    <string name="repo_delete_to_overwrite">이것과 충돌하는 키를 추가하려면 먼저 %1$s을(를) 삭제합니다.</string>
+    <string name="repo_exists_add_mirror">이것은 %1$s의 복사본입니다, 그것을 미러로 추가하시겠습니까?</string>
+    <string name="show_root_apps">루트 앱을 포함</string>
+    <string name="show_root_apps_on">루트 권한이 필요한 앱을 보여주기</string>
+    <string name="show_anti_feature_apps">안티 기능 앱을 포함</string>
+    <string name="show_anti_feature_apps_on">안티 기능이 필요한 앱을 보여주기</string>
+    <string name="force_touch_apps">터치스크린 앱을 포함</string>
+    <string name="force_touch_apps_on">하드웨어가 터치스크린을 지원하는 것과 관계 없이 앱을 보여주기</string>
+
+    <string name="repo_official_mirrors">공식 미러</string>
+    <string name="repo_user_mirrors">사용자 미러</string>
+    <string name="use_bluetooth">블루투스를 사용</string>
+    <string name="swap_toast_invalid_url">교환을 위한 URL이 잘못되었습니다: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi 핫스팟이 활성화됨</string>
+    <string name="swap_toast_could_not_enable_hotspot">Wi-Fi 핫스팟을 활성화할 수 없었습니다!</string>
+
+    <string name="warning_scaning_qr_code">당신의 카메라가 오토포커스를 가진 것으로 보이지 않습니다. 코드를 스캔하는데 어려울 수도 있습니다.</string>
+    </resources>

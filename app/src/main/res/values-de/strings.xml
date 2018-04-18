@@ -550,4 +550,8 @@
     <string name="repo_official_mirrors">Offizielle Spiegel</string>
     <string name="repo_user_mirrors">Benutzer-Spiegel</string>
     <string name="repo_delete_to_overwrite">Löschen Sie zuerst %1$s, um es mit einem widersprüchlichen Schlüssel hinzuzufügen.</string>
+    <string name="use_bluetooth">Bluetooth nutzen</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi-Hotspot aktiviert</string>
+    <string name="swap_toast_could_not_enable_hotspot">Konnte WLAN-Hotspot nicht aktivieren!</string>
+
     </resources>

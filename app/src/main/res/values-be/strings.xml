@@ -587,4 +587,9 @@
     <string name="repo_user_mirrors">Люстры карыстальніка</string>
     <string name="show_anti_feature_apps">Уключаць праграмы з непажаданымі функцыямі</string>
     <string name="show_anti_feature_apps_on">Паказаць праграмы, які патрабуюць непажаданыя функцыі</string>
+    <string name="use_bluetooth">Выкарыстаць Bluetooth</string>
+    <string name="swap_toast_invalid_url">Некарэктны URL для абмену: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot уключаны</string>
+    <string name="swap_toast_could_not_enable_hotspot">Не атрымалася ўключыць Wi-Fi Hotspot!</string>
+
     </resources>
