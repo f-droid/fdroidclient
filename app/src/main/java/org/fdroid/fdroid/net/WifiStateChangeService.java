@@ -41,6 +41,10 @@ import java.util.Locale;
  * the current state because it means that something about the wifi has
  * changed.  Having the {@code Thread} also makes it easy to kill work
  * that is in progress.
+ * <p>
+ * Some devices send multiple copies of given events, like a Moto G often
+ * sends three {@code CONNECTED} events.  So they have to be debounced to
+ * keep the {@link #BROADCAST} useful.
  */
 @SuppressWarnings("LineLength")
 public class WifiStateChangeService extends IntentService {
@@ -50,6 +54,7 @@ public class WifiStateChangeService extends IntentService {
 
     private WifiManager wifiManager;
     private static WifiInfoThread wifiInfoThread;
+    private static int previousWifiState = Integer.MIN_VALUE;
 
     public WifiStateChangeService() {
         super("WifiStateChangeService");
@@ -70,16 +75,17 @@ public class WifiStateChangeService extends IntentService {
             Utils.debugLog(TAG, "received null Intent, ignoring");
             return;
         }
-        Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
+        Utils.debugLog(TAG, "WiFi change service started.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
         if (ni == null || ni.isConnected()) {
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
-            if (wifiState == WifiManager.WIFI_STATE_ENABLED
-                    || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
-                    || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
-                    || wifiState == WifiManager.WIFI_STATE_UNKNOWN) { // might be hotspot
+            if (previousWifiState != wifiState &&
+                    (wifiState == WifiManager.WIFI_STATE_ENABLED
+                            || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
+                            || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
+                            || wifiState == WifiManager.WIFI_STATE_UNKNOWN)) { // might be hotspot
                 if (wifiInfoThread != null) {
                     wifiInfoThread.interrupt();
                 }
@@ -287,7 +293,10 @@ public class WifiStateChangeService extends IntentService {
                 return "WIFI_STATE_ENABLED";
             case WifiManager.WIFI_STATE_UNKNOWN:
                 return "WIFI_STATE_UNKNOWN";
+            case Integer.MIN_VALUE:
+                return "previous value unset";
+            default:
+                return "~not mapped~";
         }
-        return null;
     }
 }
