@@ -48,7 +48,7 @@
     <string name="expert">Modo experto</string>
     <string name="search_hint">Buscar apps</string>
     <string name="appcompatibility">Compatibilidade da App</string>
-    <string name="show_incompat_versions">Versións incompatíbeis</string>
+    <string name="show_incompat_versions">Inclúe versións incompatíbeis</string>
     <string name="status_download">Descargando
         %2$s / %3$s (%4$d%%) desde
         %1$s
@@ -529,4 +529,10 @@
     <string name="hide_on_long_search_press_title">Ocultar co botón de busca</string>
     <string name="hide_on_long_search_press_summary">Premer longo no botón de busca oculta o aplicativo</string>
 
-</resources>
+<string name="repo_add_mirror">Engadir réplica</string>
+    <string name="repo_exists_add_fingerprint">%1$s xa está configurado, isto engadirá nova información clave.</string>
+    <string name="repo_exists_enable">%1$s xa está configurado, confirma que queres reactivalo.</string>
+    <string name="repo_exists_and_enabled">%1$s xa está configurado e activado.</string>
+    <string name="repo_delete_to_overwrite">Elimine primeiro %1$s para engadir isto cunha clave en conflito.</string>
+    <string name="repo_exists_add_mirror">Isto é unha copia de %1$s, engadila como réplica?</string>
+    </resources>
