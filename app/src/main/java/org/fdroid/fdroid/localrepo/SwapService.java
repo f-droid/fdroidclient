@@ -481,6 +481,8 @@ public class SwapService extends Service {
         Utils.debugLog(TAG, "Creating swap service.");
         startForeground(NOTIFICATION, createNotification());
 
+        deleteAllSwapRepos();
+
         CacheSwapAppsService.startCaching(this);
 
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
@@ -553,6 +555,8 @@ public class SwapService extends Service {
         }
         stopForeground(true);
 
+        deleteAllSwapRepos();
+
         super.onDestroy();
     }
 
@@ -568,7 +572,26 @@ public class SwapService extends Service {
                 .build();
     }
 
+    /**
+     * For now, swap repos are only trusted as long as swapping is active.  They
+     * should have a long lived trust based on the signing key, but that requires
+     * that the repos are stored in the database by fingerprint, not by URL address.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/295">TOFU in swap</a>
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/703">
+     * signing key fingerprint should be sole ID for repos in the database</a>
+     */
+    private void deleteAllSwapRepos() {
+        for (Repo repo : RepoProvider.Helper.all(this)) {
+            if (repo.isSwap) {
+                Utils.debugLog(TAG, "Removing stale swap repo: " + repo.address + " - " + repo.fingerprint);
+                RepoProvider.Helper.remove(this, repo.getId());
+            }
+        }
+    }
+
     private void initTimer() {
+        // TODO replace by Android scheduler
         if (timer != null) {
             Utils.debugLog(TAG, "Cancelling existing timeout timer so timeout can be reset.");
             timer.cancel();
