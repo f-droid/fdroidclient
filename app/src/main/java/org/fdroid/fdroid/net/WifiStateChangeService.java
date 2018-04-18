@@ -121,6 +121,10 @@ public class WifiStateChangeService extends IntentService {
                                 }
                             }
                         }
+                        if (FDroidApp.ipAddressString == null
+                                || FDroidApp.subnetInfo == FDroidApp.UNSET_SUBNET_INFO) {
+                            setIpInfoFromNetworkInterface();
+                        }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING) {
                         // try once to see if its a hotspot
@@ -210,6 +214,16 @@ public class WifiStateChangeService extends IntentService {
         }
     }
 
+    /**
+     * Search for known Wi-Fi, Hotspot, and local network interfaces and get
+     * the IP Address info from it.  This is necessary because network
+     * interfaces in Hotspot/AP mode do not show up in the regular
+     * {@link WifiManager} queries, and also on
+     * {@link android.os.Build.VERSION_CODES#LOLLIPOP Android 5.0} and newer,
+     * {@link WifiManager#getDhcpInfo()} returns an invalid netmask.
+     *
+     * @see <a href="https://issuetracker.google.com/issues/37015180">netmask of WifiManager.getDhcpInfo() is always zero on Android 5.0</a>
+     */
     private void setIpInfoFromNetworkInterface() {
         try {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();

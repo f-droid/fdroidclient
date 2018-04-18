@@ -114,6 +114,8 @@ public class FDroidApp extends Application {
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
+    public static final SubnetUtils.SubnetInfo UNSET_SUBNET_INFO = new SubnetUtils("0.0.0.0/32").getInfo();
+
     private static volatile LongSparseArray<String> lastWorkingMirrorArray = new LongSparseArray<>(1);
     private static volatile int numTries = Integer.MAX_VALUE;
     private static volatile int timeout = 10000;
@@ -231,7 +233,7 @@ public class FDroidApp extends Application {
     public static void initWifiSettings() {
         port = 8888;
         ipAddressString = null;
-        subnetInfo = new SubnetUtils("0.0.0.0/32").getInfo();
+        subnetInfo = UNSET_SUBNET_INFO;
         ssid = "";
         bssid = "";
         repo = new Repo();
