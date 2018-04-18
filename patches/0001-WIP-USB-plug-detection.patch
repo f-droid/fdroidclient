@@ -1,0 +1,185 @@
+From 5a9dfe32e3fb78d1fe7f093aea4c2a7bb49404be Mon Sep 17 00:00:00 2001
+From: Hans-Christoph Steiner <hans@eds.org>
+Date: Fri, 30 Mar 2018 10:15:27 +0200
+Subject: [PATCH 1/1] WIP USB plug detection
+
+---
+ app/src/main/AndroidManifest.xml                   | 18 ++++++++
+ .../fdroid/localrepo/UsbStorageActivity.java       | 20 +++++++++
+ .../fdroid/fdroid/receiver/UsbEventReceiver.java   | 48 ++++++++++++++++++++++
+ app/src/main/res/layout/activity_usb_storage.xml   | 10 +++++
+ app/src/main/res/xml/device_filter.xml             | 26 ++++++++++++
+ 5 files changed, 122 insertions(+)
+ create mode 100644 app/src/main/java/org/fdroid/fdroid/localrepo/UsbStorageActivity.java
+ create mode 100644 app/src/main/java/org/fdroid/fdroid/receiver/UsbEventReceiver.java
+ create mode 100644 app/src/main/res/layout/activity_usb_storage.xml
+ create mode 100644 app/src/main/res/xml/device_filter.xml
+
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index c371f60..f76b19c 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -32,6 +32,9 @@
+     <uses-feature
+             android:name="android.hardware.bluetooth"
+             android:required="false"/>
++    <uses-feature
++            android:name="android.hardware.usb.host"
++            android:required="false"/>
+ 
+     <uses-permission android:name="android.permission.INTERNET"/>
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+@@ -588,6 +591,21 @@
+                 <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+         </activity>
++        <activity android:name=".localrepo.UsbStorageActivity">
++            <intent-filter>
++                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
++            </intent-filter>
++
++            <meta-data
++                    android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
++                    android:resource="@xml/device_filter"/>
++        </activity>
++
++        <receiver android:name=".receiver.UsbEventReceiver">
++            <intent-filter>
++                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"/>
++            </intent-filter>
++        </receiver>
+ 
+     </application>
+ 
+diff --git a/app/src/main/java/org/fdroid/fdroid/localrepo/UsbStorageActivity.java b/app/src/main/java/org/fdroid/fdroid/localrepo/UsbStorageActivity.java
+new file mode 100644
+index 0000000..dda29c9
+--- /dev/null
++++ b/app/src/main/java/org/fdroid/fdroid/localrepo/UsbStorageActivity.java
+@@ -0,0 +1,20 @@
++package org.fdroid.fdroid.localrepo;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.support.v7.app.AppCompatActivity;
++import android.widget.Toast;
++import org.fdroid.fdroid.R;
++
++public class UsbStorageActivity extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_usb_storage);
++        Intent intent = getIntent();
++        Toast.makeText(this, "Got INTENT: " + intent, Toast.LENGTH_LONG).show();
++
++        // TODO Get mounted broadcast to check for fdroid repo.
++    }
++}
+diff --git a/app/src/main/java/org/fdroid/fdroid/receiver/UsbEventReceiver.java b/app/src/main/java/org/fdroid/fdroid/receiver/UsbEventReceiver.java
+new file mode 100644
+index 0000000..aded543
+--- /dev/null
++++ b/app/src/main/java/org/fdroid/fdroid/receiver/UsbEventReceiver.java
+@@ -0,0 +1,48 @@
++/*
++ * Copyright (C) 2018 Hans-Christoph Steiner <hans@eds.org>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 3
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++ * MA 02110-1301, USA.
++ */
++
++package org.fdroid.fdroid.receiver;
++
++import android.content.BroadcastReceiver;
++import android.content.Context;
++import android.content.Intent;
++import android.hardware.usb.UsbManager;
++import android.widget.Toast;
++
++public class UsbEventReceiver extends BroadcastReceiver {
++
++    @Override
++    public void onReceive(Context context, Intent intent) {
++        if (intent == null || intent.getAction() == null) {
++            return;
++        }
++        switch (intent.getAction()) {
++            case UsbManager.ACTION_USB_DEVICE_DETACHED:
++                break;
++            case Intent.ACTION_MEDIA_MOUNTED:
++                break;
++            case Intent.ACTION_MEDIA_REMOVED:
++                break;
++            default:
++                return;
++        }
++        Toast.makeText(context, "receiver got intent:  " + intent, Toast.LENGTH_LONG).show();
++
++    }
++}
+diff --git a/app/src/main/res/layout/activity_usb_storage.xml b/app/src/main/res/layout/activity_usb_storage.xml
+new file mode 100644
+index 0000000..8987a51
+--- /dev/null
++++ b/app/src/main/res/layout/activity_usb_storage.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.constraint.ConstraintLayout
++        xmlns:android="http://schemas.android.com/apk/res/android"
++        xmlns:tools="http://schemas.android.com/tools"
++        xmlns:app="http://schemas.android.com/apk/res-auto"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        tools:context="org.fdroid.fdroid.localrepo.UsbStorageActivity">
++
++</android.support.constraint.ConstraintLayout>
+diff --git a/app/src/main/res/xml/device_filter.xml b/app/src/main/res/xml/device_filter.xml
+new file mode 100644
+index 0000000..3ddae42
+--- /dev/null
++++ b/app/src/main/res/xml/device_filter.xml
+@@ -0,0 +1,26 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++/**
++ * (C) Copyright 2014 mjahnen <jahnen@in.tum.de>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++-->
++<resources>
++
++    <usb-device
++        class="8"
++        protocol="80"
++        subclass="6" />
++
++</resources>
+\ No newline at end of file
+-- 
+2.7.4
+

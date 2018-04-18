@@ -1,0 +1,74 @@
+From 9a88062cccc30be3efe5369af429246ca0ee4f17 Mon Sep 17 00:00:00 2001
+From: Hans-Christoph Steiner <hans@eds.org>
+Date: Thu, 10 Nov 2016 21:12:35 +0100
+Subject: [PATCH 1/1] DO NOT MERGE debug setup
+
+---
+ app/src/main/AndroidManifest.xml                               | 2 +-
+ app/src/main/java/org/fdroid/fdroid/FDroidApp.java             | 2 +-
+ app/src/test/java/org/fdroid/fdroid/data/RepoProviderTest.java | 9 +++++++++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index f6a6a23..3e0de08 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -4,7 +4,7 @@
+     android:installLocation="auto">
+ 
+     <uses-sdk
+-        android:minSdkVersion="10"
++        android:minSdkVersion="22"
+         android:targetSdkVersion="24"
+         />
+ 
+diff --git a/app/src/main/java/org/fdroid/fdroid/FDroidApp.java b/app/src/main/java/org/fdroid/fdroid/FDroidApp.java
+index 8047e0d..35d2db4 100644
+--- a/app/src/main/java/org/fdroid/fdroid/FDroidApp.java
++++ b/app/src/main/java/org/fdroid/fdroid/FDroidApp.java
+@@ -210,7 +210,7 @@ public class FDroidApp extends Application {
+     public void onCreate() {
+         super.onCreate();
+         instance = this;
+-        if (BuildConfig.DEBUG) {
++        if (false) { // NOPMD
+             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                     .detectAll()
+                     .penaltyLog()
+diff --git a/app/src/test/java/org/fdroid/fdroid/data/RepoProviderTest.java b/app/src/test/java/org/fdroid/fdroid/data/RepoProviderTest.java
+index 31baab6..95ba5c1 100644
+--- a/app/src/test/java/org/fdroid/fdroid/data/RepoProviderTest.java
++++ b/app/src/test/java/org/fdroid/fdroid/data/RepoProviderTest.java
+@@ -31,10 +31,12 @@ import org.fdroid.fdroid.BuildConfig;
+ import org.fdroid.fdroid.R;
+ import org.fdroid.fdroid.Utils;
+ import org.fdroid.fdroid.data.Schema.RepoTable;
++import org.junit.Before;
+ import org.junit.Test;
+ import org.junit.runner.RunWith;
+ import org.robolectric.RobolectricTestRunner;
+ import org.robolectric.annotation.Config;
++import org.robolectric.shadows.ShadowLog;
+ 
+ import java.util.Date;
+ import java.util.List;
+@@ -46,9 +48,16 @@ import static org.junit.Assert.assertNull;
+ @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+ @RunWith(RobolectricTestRunner.class)
+ public class RepoProviderTest extends FDroidProviderTest {
++    public static final String TAG = "RepoProviderTest";
+ 
+     private static final String[] COLS = RepoTable.Cols.ALL;
+ 
++    @Before
++    public void setUp() throws Exception {
++        ShadowLog.stream = System.out;
++        //you other setup here
++    }
++
+     @Test
+     public void countEnabledRepos() {
+ 
+-- 
+2.7.4
+

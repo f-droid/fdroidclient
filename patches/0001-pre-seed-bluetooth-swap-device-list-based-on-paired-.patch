@@ -1,0 +1,78 @@
+From d5bd4a44a3e18eb144bddb30bf01ab188fa6c39c Mon Sep 17 00:00:00 2001
+From: Hans-Christoph Steiner <hans@eds.org>
+Date: Wed, 11 Apr 2018 18:03:53 +0200
+Subject: [PATCH 1/1] pre-seed bluetooth swap device list based on paired
+ devices
+
+---
+ .../fdroid/localrepo/peers/BluetoothFinder.java    | 24 +++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/app/src/main/java/org/fdroid/fdroid/localrepo/peers/BluetoothFinder.java b/app/src/main/java/org/fdroid/fdroid/localrepo/peers/BluetoothFinder.java
+index 8c024e3..a482f52 100644
+--- a/app/src/main/java/org/fdroid/fdroid/localrepo/peers/BluetoothFinder.java
++++ b/app/src/main/java/org/fdroid/fdroid/localrepo/peers/BluetoothFinder.java
+@@ -8,14 +8,14 @@ import android.content.Context;
+ import android.content.Intent;
+ import android.content.IntentFilter;
+ import android.util.Log;
+-
+ import org.fdroid.fdroid.Utils;
+-
+ import rx.Observable;
+ import rx.Subscriber;
+ import rx.functions.Action0;
+ import rx.subscriptions.Subscriptions;
+ 
++import java.util.Set;
++
+ @SuppressWarnings("LineLength")
+ final class BluetoothFinder extends PeerFinder {
+ 
+@@ -86,9 +86,23 @@ final class BluetoothFinder extends PeerFinder {
+             context.registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
+         }
+ 
++        findPairedDevices();
++
+         startDiscovery();
+     }
+ 
++    /**
++     * Get nearby devices already paired with using Bluetooth.
++     */
++    private void findPairedDevices() {
++        Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
++        if (pairedDevices != null && pairedDevices.size() > 0) {
++            for (BluetoothDevice device : pairedDevices) {
++                onDeviceFound(device);
++            }
++        }
++    }
++
+     private void startDiscovery() {
+ 
+         if (adapter.isDiscovering()) {
+@@ -108,7 +122,7 @@ final class BluetoothFinder extends PeerFinder {
+     private void cancel() {
+         if (adapter != null) {
+             Utils.debugLog(TAG, "Stopping bluetooth discovery.");
+-            adapter.cancelDiscovery();
++            adapter.cancelDiscovery();  // TODO SwapService should handle this, requests via Intents
+         }
+ 
+         isScanning = false;
+@@ -117,8 +131,8 @@ final class BluetoothFinder extends PeerFinder {
+     private void onDeviceFound(BluetoothDevice device) {
+         if (device != null && device.getName() != null &&
+                 (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_HANDHELD_PC_PDA ||
+-                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA ||
+-                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.PHONE_SMART)) {
++                        device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA ||
++                        device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.PHONE_SMART)) {
+             subscriber.onNext(new BluetoothPeer(device));
+         }
+     }
+-- 
+2.7.4
+
