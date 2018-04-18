@@ -41,6 +41,10 @@ import java.util.Locale;
  * the current state because it means that something about the wifi has
  * changed.  Having the {@code Thread} also makes it easy to kill work
  * that is in progress.
+ * <p>
+ * Some devices send multiple copies of given events, like a Moto G often
+ * sends three {@code CONNECTED} events.  So they have to be debounced to
+ * keep the {@link #BROADCAST} useful.
  */
 @SuppressWarnings("LineLength")
 public class WifiStateChangeService extends IntentService {
@@ -50,6 +54,7 @@ public class WifiStateChangeService extends IntentService {
 
     private WifiManager wifiManager;
     private static WifiInfoThread wifiInfoThread;
+    private static int previousWifiState = Integer.MIN_VALUE;
 
     public WifiStateChangeService() {
         super("WifiStateChangeService");
@@ -70,16 +75,17 @@ public class WifiStateChangeService extends IntentService {
             Utils.debugLog(TAG, "received null Intent, ignoring");
             return;
         }
-        Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
+        Utils.debugLog(TAG, "WiFi change service started.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
         if (ni == null || ni.isConnected()) {
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
-            if (wifiState == WifiManager.WIFI_STATE_ENABLED
-                    || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
-                    || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
-                    || wifiState == WifiManager.WIFI_STATE_UNKNOWN) { // might be hotspot
+            if (previousWifiState != wifiState &&
+                    (wifiState == WifiManager.WIFI_STATE_ENABLED
+                            || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
+                            || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
+                            || wifiState == WifiManager.WIFI_STATE_UNKNOWN)) { // might be hotspot
                 if (wifiInfoThread != null) {
                     wifiInfoThread.interrupt();
                 }
@@ -120,6 +126,10 @@ public class WifiStateChangeService extends IntentService {
                                     e.printStackTrace();
                                 }
                             }
+                        }
+                        if (FDroidApp.ipAddressString == null
+                                || FDroidApp.subnetInfo == FDroidApp.UNSET_SUBNET_INFO) {
+                            setIpInfoFromNetworkInterface();
                         }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING) {
@@ -210,6 +220,16 @@ public class WifiStateChangeService extends IntentService {
         }
     }
 
+    /**
+     * Search for known Wi-Fi, Hotspot, and local network interfaces and get
+     * the IP Address info from it.  This is necessary because network
+     * interfaces in Hotspot/AP mode do not show up in the regular
+     * {@link WifiManager} queries, and also on
+     * {@link android.os.Build.VERSION_CODES#LOLLIPOP Android 5.0} and newer,
+     * {@link WifiManager#getDhcpInfo()} returns an invalid netmask.
+     *
+     * @see <a href="https://issuetracker.google.com/issues/37015180">netmask of WifiManager.getDhcpInfo() is always zero on Android 5.0</a>
+     */
     private void setIpInfoFromNetworkInterface() {
         try {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
@@ -273,7 +293,10 @@ public class WifiStateChangeService extends IntentService {
                 return "WIFI_STATE_ENABLED";
             case WifiManager.WIFI_STATE_UNKNOWN:
                 return "WIFI_STATE_UNKNOWN";
+            case Integer.MIN_VALUE:
+                return "previous value unset";
+            default:
+                return "~not mapped~";
         }
-        return null;
     }
 }

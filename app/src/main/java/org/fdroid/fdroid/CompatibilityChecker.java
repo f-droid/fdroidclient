@@ -7,8 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
@@ -22,12 +20,11 @@ import java.util.Set;
 // find reasons why an apk may be incompatible with the user's device.
 public class CompatibilityChecker {
 
-    private static final String TAG = "Compatibility";
+    public static final String TAG = "Compatibility";
 
     private final Context context;
     private final Set<String> features;
     private final String[] cpuAbis;
-    private final String cpuAbisDesc;
     private final boolean forceTouchApps;
 
     public CompatibilityChecker(Context ctx) {
@@ -43,13 +40,6 @@ public class CompatibilityChecker {
         if (pm != null) {
             final FeatureInfo[] featureArray = pm.getSystemAvailableFeatures();
             if (featureArray != null) {
-                if (BuildConfig.DEBUG) {
-                    StringBuilder logMsg = new StringBuilder("Available device features:");
-                    for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
-                        logMsg.append('\n').append(fi.name);
-                    }
-                    Utils.debugLog(TAG, logMsg.toString());
-                }
                 for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                     features.add(fi.name);
                 }
@@ -57,18 +47,6 @@ public class CompatibilityChecker {
         }
 
         cpuAbis = SupportedArchitectures.getAbis();
-
-        StringBuilder builder = new StringBuilder();
-        boolean first = true;
-        for (final String abi : cpuAbis) {
-            if (first) {
-                first = false;
-            } else {
-                builder.append(", ");
-            }
-            builder.append(abi);
-        }
-        cpuAbisDesc = builder.toString();
     }
 
     private boolean compatibleApi(@Nullable String[] nativecode) {
@@ -107,16 +85,11 @@ public class CompatibilityChecker {
                 }
                 if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
-                    Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
-                            + " is incompatible based on lack of " + feat);
                 }
             }
         }
         if (!compatibleApi(apk.nativecode)) {
             Collections.addAll(incompatibleReasons, apk.nativecode);
-            Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
-                    + " only supports " + TextUtils.join(", ", apk.nativecode)
-                    + " while your architectures are " + cpuAbisDesc);
         }
 
         return incompatibleReasons;
