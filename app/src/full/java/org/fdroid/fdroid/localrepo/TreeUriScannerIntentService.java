@@ -29,13 +29,13 @@ import android.support.v4.provider.DocumentFile;
 import android.util.Log;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -159,16 +159,7 @@ public class TreeUriScannerIntentService extends IntentService {
             }
         }
 
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setData(repoUri.buildUpon()
-                .appendQueryParameter("fingerprint", fingerprint)
-                .build());
-        context.startActivity(intent);
-        // TODO parse repo URL/mirrors/fingerprint using Jackson
-        //      https://stackoverflow.com/questions/24835431/use-jackson-to-stream-parse-an-array-of-json-objects#
+        AddRepoIntentService.addRepo(context, repoUri, fingerprint);
         // TODO rework IndexUpdater.getSigningCertFromJar to work for here
-        // TODO check whether fingerprint is already in the database
     }
 }

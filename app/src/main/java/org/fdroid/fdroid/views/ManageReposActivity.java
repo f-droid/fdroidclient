@@ -33,6 +33,7 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
@@ -54,6 +55,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.R;
@@ -69,7 +71,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
@@ -83,7 +84,7 @@ public class ManageReposActivity extends AppCompatActivity
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
 
     private enum AddRepoState {
-        DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_ADD_MIRROR,
+        DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_ADD_MIRROR, EXISTS_ALREADY_MIRROR,
         EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
         IS_SWAP
     }
@@ -312,7 +313,7 @@ public class ManageReposActivity extends AppCompatActivity
                             String url = uriEditText.getText().toString();
 
                             try {
-                                url = normalizeUrl(url);
+                                url = AddRepoIntentService.normalizeUrl(url);
                             } catch (URISyntaxException e) {
                                 invalidUrl();
                                 return;
@@ -416,7 +417,7 @@ public class ManageReposActivity extends AppCompatActivity
         private void validateRepoDetails(@NonNull String uri, @NonNull String fingerprint) {
 
             try {
-                uri = normalizeUrl(uri);
+                uri = AddRepoIntentService.normalizeUrl(uri);
             } catch (URISyntaxException e) {
                 // Don't bother dealing with this exception yet, as this is called every time
                 // a letter is added to the repo URL text input. We don't want to display a message
@@ -438,8 +439,9 @@ public class ManageReposActivity extends AppCompatActivity
                 } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
                     repoFingerprintDoesntMatch(repo);
                 } else {
-                    if (!TextUtils.equals(repo.address, uri)
-                            && !repo.getMirrorList().contains(uri)) {
+                    if (repo.getMirrorList().contains(uri) && !TextUtils.equals(repo.address, uri) && repo.inuse) {
+                        repoExistsAlreadyMirror(repo);
+                    } else if (!TextUtils.equals(repo.address, uri) && repo.inuse) {
                         repoExistsAddMirror(repo);
                     } else if (repo.inuse) {
                         repoExistsAndEnabled(repo);
@@ -488,6 +490,10 @@ public class ManageReposActivity extends AppCompatActivity
                     R.string.repo_add_mirror, true);
         }
 
+        private void repoExistsAlreadyMirror(Repo repo) {
+            updateUi(repo, AddRepoState.EXISTS_ALREADY_MIRROR, 0, false, R.string.ok, true);
+        }
+
         private void upgradingToSigned(Repo repo) {
             updateUi(repo, AddRepoState.EXISTS_UPGRADABLE_TO_SIGNED, R.string.repo_exists_add_fingerprint,
                     false, R.string.add_key, true);
@@ -519,6 +525,13 @@ public class ManageReposActivity extends AppCompatActivity
 
                 addButton.setText(addTextRes);
                 addButton.setEnabled(addEnabled);
+
+                if (Build.VERSION.SDK_INT >= 15 && addRepoState == AddRepoState.EXISTS_ALREADY_MIRROR) {
+                    addButton.callOnClick();
+                    editRepo(repo);
+                    String msg = getString(R.string.repo_exists_and_enabled, repo.address);
+                    Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                }
             }
         }
 
@@ -691,53 +704,6 @@ public class ManageReposActivity extends AppCompatActivity
         }
 
         /**
-         * Some basic sanitization of URLs, so that two URLs which have the same semantic meaning
-         * are represented by the exact same string by F-Droid. This will help to make sure that,
-         * e.g. "http://10.0.1.50" and "http://10.0.1.50/" are not two different repositories.
-         * <p>
-         * Currently it normalizes the path so that "/./" are removed and "test/../" is collapsed.
-         * This is done using {@link URI#normalize()}. It also removes multiple consecutive forward
-         * slashes in the path and replaces them with one. Finally, it removes trailing slashes.
-         * <p>
-         * {@code content://} URLs used for repos stored on removable storage get messed up by
-         * {@link URI}.
-         */
-        private String normalizeUrl(String urlString) throws URISyntaxException {
-            if (urlString == null) {
-                return null;
-            }
-            Uri uri = Uri.parse(urlString);
-            if (!uri.isAbsolute()) {
-                throw new URISyntaxException(urlString, "Must provide an absolute URI for repositories");
-            }
-            if (!uri.isHierarchical()) {
-                throw new URISyntaxException(urlString, "Must provide an hierarchical URI for repositories");
-            }
-            if ("content".equals(uri.getScheme())) {
-                return uri.toString();
-            }
-            String path = uri.getPath();
-            if (path != null) {
-                path = path.replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
-                if (path.length() > 0 && path.charAt(path.length() - 1) == '/') {
-                    path = path.substring(0, path.length() - 1);
-                }
-            }
-            String scheme = uri.getScheme();
-            String host = uri.getHost();
-            if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {
-                return urlString;
-            }
-            return new URI(scheme.toLowerCase(Locale.ENGLISH),
-                    uri.getUserInfo(),
-                    host.toLowerCase(Locale.ENGLISH),
-                    uri.getPort(),
-                    path,
-                    uri.getQuery(),
-                    uri.getFragment()).normalize().toString();
-        }
-
-        /**
          * Create a repository without a username or password.
          */
         private void createNewRepo(String address, String fingerprint) {
@@ -747,7 +713,7 @@ public class ManageReposActivity extends AppCompatActivity
         private void createNewRepo(String address, String fingerprint,
                                    final String username, final String password) {
             try {
-                address = normalizeUrl(address);
+                address = AddRepoIntentService.normalizeUrl(address);
             } catch (URISyntaxException e) {
                 // Leave address as it was.
             }
