@@ -40,10 +40,7 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:0.23.0'
     compile 'com.hannesdorfmann:adapterdelegates3:3.0.1'
-
-    // Migrate this to upstream https://github.com/Ashok-Varma/BottomNavigation if PR #110 gets
-    // accepted to drop the minSdk to 10.
-    compile('com.github.pserwylo:BottomNavigation:1.5.0')
+    compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
@@ -95,10 +92,10 @@ dependencyVerification {
             'com.android.support:support-v4:4f41dfc3e89f2738e45c86264a85c0934d055ee8ebe2020e23c97f303b80a48b',
             'com.android.support:support-vector-drawable:1c0f421114cf4627cf208776d6eb4f76340c78b7e96fe6e12b3e6eb950caf1b9',
             'com.android.support:transition:c0765b2f3c78696567ec5b3f519d22da1e3df11ac994625adf4bb4dc571caacc',
+            'com.ashokvarma.android:bottom-navigation-bar:f18d740e1777927ad761349298b5d4981cd9f6d2abe70f505abf415ae069baaa',
             'com.fasterxml.jackson.core:jackson-annotations:6b7802f6c22c09c4a92a2ebeb76e755c3c0a58dfbf419835fae470d89e469b86',
             'com.fasterxml.jackson.core:jackson-core:256ff34118ab292d1b4f3ee4d2c3e5e5f0f609d8e07c57e8ad1f51c46d4fbb46',
             'com.fasterxml.jackson.core:jackson-databind:4f74337b6d18664be0f5b15c6664b17aa3972c9c175092328b139b894ff66f19',
-            'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
             'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
             'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',

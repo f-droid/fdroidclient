@@ -16,9 +16,9 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private MainViewAdapter adapter;
     private BottomNavigationBar bottomNavigation;
     private int selectedMenuId = R.id.whats_new;
-    private BadgeItem updatesBadge;
+    private TextBadgeItem updatesBadge;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         }
 
-        updatesBadge = new BadgeItem().hide(false);
+        updatesBadge = new TextBadgeItem().hide(false);
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
         bottomNavigation.setTabSelectedListener(this)

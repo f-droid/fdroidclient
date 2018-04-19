@@ -17,7 +17,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://jitpack.io' } // for com.github.pserwylo:BottomNavigation:1.5.0.
         maven { url 'https://maven.google.com' }
     }
 }
