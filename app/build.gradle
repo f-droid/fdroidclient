@@ -259,6 +259,7 @@ task pmdMain(type: Pmd) {
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/main/java'
     include '**/*.java'
+    exclude '**/kellinwood/**/*.java'
 }
 
 task pmdTest(type: Pmd) {
