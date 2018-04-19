@@ -1,10 +1,23 @@
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            url "https://repo1.maven.org/maven2"
+            jcenter()
+        }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
-        // 2.2.2 is the version that is included in Debian/stretch
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath files('libs/gradle-witness.jar')
+    }
+}
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' } // for com.github.pserwylo:BottomNavigation:1.5.0.
+        maven { url 'https://maven.google.com' }
     }
 }

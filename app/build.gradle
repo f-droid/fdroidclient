@@ -13,13 +13,6 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-repositories {
-    jcenter()
-    maven {
-        url "https://jitpack.io"
-    }
-}
-
 dependencies {
     compile "com.android.support:support-v4:25.3.1"
     compile "com.android.support:appcompat-v7:25.3.1"
@@ -67,14 +60,6 @@ dependencies {
 
 if (!hasProperty('sourceDeps')) {
 
-    repositories {
-        // This is here until we sort out all dependencies from mavenCentral/jcenter. Once all of
-        // the dependencies below have been sorted out, this can be removed.
-        flatDir {
-            dirs 'libs/binaryDeps'
-        }
-    }
-
     dependencies {
         compile 'com.madgag.spongycastle:pkix:1.54.0.0'
         compile 'com.madgag.spongycastle:prov:1.54.0.0'
@@ -82,16 +67,16 @@ if (!hasProperty('sourceDeps')) {
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
-        compile(name: 'support-v4-preferencefragment-release', ext: 'aar')
+        compile files('libs/binaryDeps/support-v4-preferencefragment-release.aar')
 
         // Fork for F-Droid, including support for https. Not merged into upstream
         // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
-        compile(name: 'nanohttpd-2.1.0')
+        compile files('libs/binaryDeps/nanohttpd-2.1.0.jar')
 
         // Upstream doesn't have a binary on mavenCentral, and it is an SVN repo on
         // Google Code.  We include this code directly in this repo, and have made
         // modifications that should be pushed to anyone who wants to maintain it.
-        compile(name: 'zipsigner')
+        compile files('libs/binaryDeps/zipsigner.jar')
     }
 
     // Only do the libraries imported from maven repositories. Our own libraries
