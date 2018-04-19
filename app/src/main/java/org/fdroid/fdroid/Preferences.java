@@ -3,7 +3,7 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
