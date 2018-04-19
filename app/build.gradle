@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
+apply plugin: 'com.jakewharton.hugo'
 
 /* gets the version name from the latest Git tag, stripping the leading v off */
 def getVersionName = { ->
