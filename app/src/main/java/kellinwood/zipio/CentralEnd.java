@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package kellinwood.zipio;
 
-import java.io.IOException;
+package kellinwood.zipio;
 
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
 
-public class CentralEnd 
-{
+import java.io.IOException;
+
+public class CentralEnd {
     public int signature = 0x06054b50; // end of central dir signature    4 bytes
     public short numberThisDisk = 0;   // number of this disk             2 bytes     
     public short centralStartDisk = 0; // number of the disk with the start of the central directory  2 bytes
@@ -34,73 +34,70 @@ public class CentralEnd
 
     private static LoggerInterface log;
 
-    public static CentralEnd read(ZipInput input) throws IOException
-    {
+    public static CentralEnd read(ZipInput input) throws IOException {
 
         int signature = input.readInt();
         if (signature != 0x06054b50) {
             // back up to the signature
-            input.seek( input.getFilePointer() - 4);
+            input.seek(input.getFilePointer() - 4);
             return null;
         }
 
         CentralEnd entry = new CentralEnd();
 
-        entry.doRead( input);
+        entry.doRead(input);
         return entry;
     }
 
     public static LoggerInterface getLogger() {
-        if (log == null) log = LoggerManager.getLogger( CentralEnd.class.getName());
+        if (log == null) log = LoggerManager.getLogger(CentralEnd.class.getName());
         return log;
     }
 
 
-    private void doRead( ZipInput input) throws IOException
-    {
+    private void doRead(ZipInput input) throws IOException {
 
         boolean debug = getLogger().isDebugEnabled();
 
         numberThisDisk = input.readShort();
-        if (debug) log.debug( String.format("This disk number: 0x%04x", numberThisDisk));
+        if (debug) log.debug(String.format("This disk number: 0x%04x", numberThisDisk));
 
         centralStartDisk = input.readShort();
-        if (debug) log.debug( String.format("Central dir start disk number: 0x%04x", centralStartDisk));
+        if (debug) log.debug(String.format("Central dir start disk number: 0x%04x", centralStartDisk));
 
         numCentralEntries = input.readShort();
-        if (debug) log.debug( String.format("Central entries on this disk: 0x%04x", numCentralEntries));
+        if (debug) log.debug(String.format("Central entries on this disk: 0x%04x", numCentralEntries));
 
         totalCentralEntries = input.readShort();
-        if (debug) log.debug( String.format("Total number of central entries: 0x%04x", totalCentralEntries));
+        if (debug) log.debug(String.format("Total number of central entries: 0x%04x", totalCentralEntries));
 
         centralDirectorySize = input.readInt();
-        if (debug) log.debug( String.format("Central directory size: 0x%08x", centralDirectorySize));
+        if (debug) log.debug(String.format("Central directory size: 0x%08x", centralDirectorySize));
 
         centralStartOffset = input.readInt();
-        if (debug) log.debug( String.format("Central directory offset: 0x%08x", centralStartOffset));
+        if (debug) log.debug(String.format("Central directory offset: 0x%08x", centralStartOffset));
 
         short zipFileCommentLen = input.readShort();
         fileComment = input.readString(zipFileCommentLen);
-        if (debug) log.debug( ".ZIP file comment: " + fileComment);
+        if (debug) log.debug(".ZIP file comment: " + fileComment);
 
 
     }
 
 
-    public void write( ZipOutput output) throws IOException
-    {
+    public void write(ZipOutput output) throws IOException {
 
         boolean debug = getLogger().isDebugEnabled();
 
-        output.writeInt( signature);
-        output.writeShort( numberThisDisk);
-        output.writeShort( centralStartDisk);
-        output.writeShort( numCentralEntries);
-        output.writeShort( totalCentralEntries);
-        output.writeInt( centralDirectorySize );
-        output.writeInt( centralStartOffset );
-        output.writeShort( (short)fileComment.length());
-        output.writeString( fileComment);
+        output.writeInt(signature);
+        output.writeShort(numberThisDisk);
+        output.writeShort(centralStartDisk);
+        output.writeShort(numCentralEntries);
+        output.writeShort(totalCentralEntries);
+        output.writeInt(centralDirectorySize);
+        output.writeInt(centralStartOffset);
+        output.writeShort((short) fileComment.length());
+        output.writeString(fileComment);
 
 
     }

@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (C) 2010 Ken Ellinwood
  *
@@ -15,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.security.zipsigner;
 
 import java.security.PrivateKey;
@@ -23,31 +22,29 @@ import java.security.cert.X509Certificate;
 public class KeySet {
 
     String name;
-    
+
     // certificate
     X509Certificate publicKey = null;
-    
+
     // private key
-    PrivateKey privateKey = null; 
+    PrivateKey privateKey = null;
 
     // signature block template
     byte[] sigBlockTemplate = null;
 
     String signatureAlgorithm = "SHA1withRSA";
-    
+
     public KeySet() {
     }
-    
-    public KeySet( String name, X509Certificate publicKey, PrivateKey privateKey, byte[] sigBlockTemplate)
-    {
+
+    public KeySet(String name, X509Certificate publicKey, PrivateKey privateKey, byte[] sigBlockTemplate) {
         this.name = name;
         this.publicKey = publicKey;
         this.privateKey = privateKey;
         this.sigBlockTemplate = sigBlockTemplate;
     }
 
-    public KeySet( String name, X509Certificate publicKey, PrivateKey privateKey, String signatureAlgorithm, byte[] sigBlockTemplate)
-    {
+    public KeySet(String name, X509Certificate publicKey, PrivateKey privateKey, String signatureAlgorithm, byte[] sigBlockTemplate) {
         this.name = name;
         this.publicKey = publicKey;
         this.privateKey = privateKey;

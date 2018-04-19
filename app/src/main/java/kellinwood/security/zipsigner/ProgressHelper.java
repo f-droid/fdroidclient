@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.security.zipsigner;
 
 import java.util.ArrayList;
@@ -22,13 +23,12 @@ public class ProgressHelper {
     private int progressTotalItems = 0;
     private int progressCurrentItem = 0;
     private ProgressEvent progressEvent = new ProgressEvent();
-    
-    public void initProgress()
-    {
+
+    public void initProgress() {
         progressTotalItems = 10000;
-        progressCurrentItem = 0;        
+        progressCurrentItem = 0;
     }
-    
+
     public int getProgressTotalItems() {
         return progressTotalItems;
     }
@@ -45,7 +45,7 @@ public class ProgressHelper {
         this.progressCurrentItem = progressCurrentItem;
     }
 
-    public void progress( int priority, String message) {
+    public void progress(int priority, String message) {
 
         progressCurrentItem += 1;
 
@@ -58,25 +58,23 @@ public class ProgressHelper {
             progressEvent.setMessage(message);
             progressEvent.setPercentDone(percentDone);
             progressEvent.setPriority(priority);
-            listener.onProgress( progressEvent);
+            listener.onProgress(progressEvent);
         }
     }
 
     private ArrayList<ProgressListener> listeners = new ArrayList<ProgressListener>();
 
     @SuppressWarnings("unchecked")
-    public synchronized void addProgressListener( ProgressListener l)
-    {
-        ArrayList<ProgressListener> list = (ArrayList<ProgressListener>)listeners.clone();
+    public synchronized void addProgressListener(ProgressListener l) {
+        ArrayList<ProgressListener> list = (ArrayList<ProgressListener>) listeners.clone();
         list.add(l);
         listeners = list;
     }
 
     @SuppressWarnings("unchecked")
-    public synchronized void removeProgressListener( ProgressListener l)
-    {
-        ArrayList<ProgressListener> list = (ArrayList<ProgressListener>)listeners.clone();
+    public synchronized void removeProgressListener(ProgressListener l) {
+        ArrayList<ProgressListener> list = (ArrayList<ProgressListener>) listeners.clone();
         list.remove(l);
         listeners = list;
-    }      
+    }
 }

@@ -1,8 +1,13 @@
+
 package kellinwood.security.zipsigner.optional;
 
 import kellinwood.security.zipsigner.KeySet;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
-import org.bouncycastle.cms.*;
+import org.bouncycastle.cms.CMSProcessableByteArray;
+import org.bouncycastle.cms.CMSSignedData;
+import org.bouncycastle.cms.CMSSignedDataGenerator;
+import org.bouncycastle.cms.CMSTypedData;
+import org.bouncycastle.cms.SignerInfoGenerator;
 import org.bouncycastle.cms.jcajce.JcaSignerInfoGeneratorBuilder;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.DigestCalculatorProvider;
@@ -39,11 +44,11 @@ public class SignatureBlockGenerator {
             JcaDigestCalculatorProviderBuilder jcaDigestCalculatorProviderBuilder = new JcaDigestCalculatorProviderBuilder().setProvider("SC");
             DigestCalculatorProvider digestCalculatorProvider = jcaDigestCalculatorProviderBuilder.build();
 
-            JcaSignerInfoGeneratorBuilder jcaSignerInfoGeneratorBuilder = new JcaSignerInfoGeneratorBuilder( digestCalculatorProvider);
+            JcaSignerInfoGeneratorBuilder jcaSignerInfoGeneratorBuilder = new JcaSignerInfoGeneratorBuilder(digestCalculatorProvider);
             jcaSignerInfoGeneratorBuilder.setDirectSignature(true);
             SignerInfoGenerator signerInfoGenerator = jcaSignerInfoGeneratorBuilder.build(sha1Signer, keySet.getPublicKey());
 
-            gen.addSignerInfoGenerator( signerInfoGenerator);
+            gen.addSignerInfoGenerator(signerInfoGenerator);
 
             gen.addCertificates(certs);
 

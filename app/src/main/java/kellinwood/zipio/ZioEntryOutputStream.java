@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.zipio;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.zip.CRC32;
@@ -28,25 +28,24 @@ public class ZioEntryOutputStream extends OutputStream {
     int crcValue = 0;
     OutputStream wrapped;
     OutputStream downstream;
-    
-    public ZioEntryOutputStream( int compression, OutputStream wrapped) 
-    {
+
+    public ZioEntryOutputStream(int compression, OutputStream wrapped) {
         this.wrapped = wrapped;
         if (compression != 0)
-            downstream = new DeflaterOutputStream( wrapped, new Deflater( Deflater.BEST_COMPRESSION, true));
+            downstream = new DeflaterOutputStream(wrapped, new Deflater(Deflater.BEST_COMPRESSION, true));
         else downstream = wrapped;
     }
-    
+
     public void close() throws IOException {
         downstream.flush();
         downstream.close();
-        crcValue = (int)crc.getValue();
+        crcValue = (int) crc.getValue();
     }
 
     public int getCRC() {
         return crcValue;
     }
-    
+
     public void flush() throws IOException {
         downstream.flush();
     }
@@ -58,14 +57,14 @@ public class ZioEntryOutputStream extends OutputStream {
     }
 
     public void write(byte[] b, int off, int len) throws IOException {
-        downstream.write( b, off, len);
-        crc.update( b, off, len);
+        downstream.write(b, off, len);
+        crc.update(b, off, len);
         size += len;
     }
 
     public void write(int b) throws IOException {
-        downstream.write( b);
-        crc.update( b);
+        downstream.write(b);
+        crc.update(b);
         size += 1;
     }
 
@@ -73,10 +72,9 @@ public class ZioEntryOutputStream extends OutputStream {
         return size;
     }
 
-    public OutputStream getWrappedStream()
-    {
+    public OutputStream getWrappedStream() {
         return wrapped;
     }
-    
+
 }
 

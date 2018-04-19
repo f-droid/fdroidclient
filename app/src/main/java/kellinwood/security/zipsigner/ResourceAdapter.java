@@ -1,3 +1,4 @@
+
 package kellinwood.security.zipsigner;
 
 /**
@@ -14,7 +15,9 @@ public interface ResourceAdapter {
         GENERATING_SIGNATURE_FILE,
         GENERATING_SIGNATURE_BLOCK,
         COPYING_ZIP_ENTRY
-    };
+    }
 
-    public String getString( Item item, Object... args);
+    ;
+
+    public String getString(Item item, Object... args);
 }

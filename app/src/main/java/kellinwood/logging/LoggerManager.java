@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.logging;
 
 import java.util.Map;
@@ -20,21 +21,21 @@ import java.util.TreeMap;
 
 public class LoggerManager {
 
-	static LoggerFactory factory = new NullLoggerFactory();
-	
-	static Map<String,LoggerInterface> loggers = new TreeMap<String,LoggerInterface>();
-	
-	public static void setLoggerFactory( LoggerFactory f) {
-		factory = f;
-	}
-	
-	public static LoggerInterface getLogger(String category) {
-		
-		LoggerInterface logger = loggers.get( category);
-		if (logger == null) {
-			logger = factory.getLogger(category);
-			loggers.put( category, logger);
-		}
-		return logger;
-	}
+    static LoggerFactory factory = new NullLoggerFactory();
+
+    static Map<String, LoggerInterface> loggers = new TreeMap<String, LoggerInterface>();
+
+    public static void setLoggerFactory(LoggerFactory f) {
+        factory = f;
+    }
+
+    public static LoggerInterface getLogger(String category) {
+
+        LoggerInterface logger = loggers.get(category);
+        if (logger == null) {
+            logger = factory.getLogger(category);
+            loggers.put(category, logger);
+        }
+        return logger;
+    }
 }

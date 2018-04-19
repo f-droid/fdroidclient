@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.logging;
 
 public class ConsoleLoggerFactory implements LoggerFactory {
 
-	public LoggerInterface getLogger(String category) {
-		return new StreamLogger( category, System.out);
-	}
+    public LoggerInterface getLogger(String category) {
+        return new StreamLogger(category, System.out);
+    }
 }

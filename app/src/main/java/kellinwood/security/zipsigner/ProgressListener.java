@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package kellinwood.security.zipsigner;
 
 public interface ProgressListener {
 
-    /** Called to notify the listener that progress has been made during
-        the zip signing operation.
+    /**
+     * Called to notify the listener that progress has been made during
+     * the zip signing operation.
      */
-    public void onProgress( ProgressEvent event);
+    public void onProgress(ProgressEvent event);
 }
