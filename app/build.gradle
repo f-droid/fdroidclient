@@ -35,6 +35,7 @@ dependencies {
     compile 'commons-io:commons-io:2.5'
     compile 'commons-net:commons-net:3.5'
     compile 'org.jmdns:jmdns:3.5.3'
+    compile 'org.nanohttpd:nanohttpd:2.3.1'
     compile 'ch.acra:acra:4.9.1'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:0.23.0'
@@ -65,10 +66,6 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.madgag.spongycastle:pkix:1.54.0.0'
         compile 'com.madgag.spongycastle:prov:1.54.0.0'
         compile 'com.madgag.spongycastle:core:1.54.0.0'
-
-        // Fork for F-Droid, including support for https. Not merged into upstream
-        // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
-        compile files('libs/binaryDeps/nanohttpd-2.1.0.jar')
 
         // Upstream doesn't have a binary on mavenCentral, and it is an SVN repo on
         // Google Code.  We include this code directly in this repo, and have made
@@ -135,7 +132,6 @@ if (!hasProperty('sourceDeps')) {
     logger.info "Setting up *source* dependencies for F-Droid (because you passed in the -PsourceDeps argument to gradle while building)."
 
     dependencies {
-        compile project(':extern:nanohttpd:core')
         compile project(':extern:zipsigner')
     }
 
@@ -145,7 +141,6 @@ if (!hasProperty('sourceDeps')) {
         description = "Copies .jar and .aar files from subproject dependencies in extern/ to app/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
         from('../extern/') {
-            include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
             include 'zipsigner/build/libs/zipsigner.jar'
         }
 
