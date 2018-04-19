@@ -31,9 +31,9 @@ public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String[] SUMMARIES_TO_UPDATE = {
-            Preferences.PREF_UPD_INTERVAL,
-            Preferences.PREF_UPD_WIFI_ONLY,
-            Preferences.PREF_UPD_NOTIFY,
+            Preferences.PREF_UPDATE_INTERVAL,
+            Preferences.PREF_UPDATE_ON_WIFI_ONLY,
+            Preferences.PREF_UPDATE_NOTIFICATION_ENABLED,
             Preferences.PREF_SHOW_ROOT_APPS,
             Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
@@ -97,12 +97,12 @@ public class PreferencesFragment extends PreferenceFragment
     private void updateSummary(String key, boolean changing) {
 
         switch (key) {
-            case Preferences.PREF_UPD_INTERVAL:
+            case Preferences.PREF_UPDATE_INTERVAL:
                 ListPreference listPref = (ListPreference) findPreference(
-                        Preferences.PREF_UPD_INTERVAL);
+                        Preferences.PREF_UPDATE_INTERVAL);
                 int interval = Integer.parseInt(listPref.getValue());
                 Preference onlyOnWifi = findPreference(
-                        Preferences.PREF_UPD_WIFI_ONLY);
+                        Preferences.PREF_UPDATE_ON_WIFI_ONLY);
                 onlyOnWifi.setEnabled(interval > 0);
                 if (interval == 0) {
                     listPref.setSummary(R.string.update_interval_zero);
@@ -111,11 +111,11 @@ public class PreferencesFragment extends PreferenceFragment
                 }
                 break;
 
-            case Preferences.PREF_UPD_WIFI_ONLY:
+            case Preferences.PREF_UPDATE_ON_WIFI_ONLY:
                 checkSummary(key, R.string.automatic_scan_wifi_on);
                 break;
 
-            case Preferences.PREF_UPD_NOTIFY:
+            case Preferences.PREF_UPDATE_NOTIFICATION_ENABLED:
                 checkSummary(key, R.string.notify_on);
                 break;
 

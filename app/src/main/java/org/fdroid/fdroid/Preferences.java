@@ -41,10 +41,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public static final String PREF_UPD_INTERVAL = "updateInterval";
-    public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_UPDATE_INTERVAL = "updateInterval";
+    public static final String PREF_UPDATE_ON_WIFI_ONLY = "updateOnWifiOnly";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
-    public static final String PREF_UPD_NOTIFY = "updateNotify";
+    public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
     public static final String PREF_THEME = "theme";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ROOT_APPS = "rooted";
@@ -75,7 +75,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
-    private static final int DEFAULT_UPD_INTERVAL = 24;
+    private static final int DEFAULT_UPDATE_INTERVAL = 24;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -164,11 +164,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public int getUpdateInterval() {
         int hours;
         try {
-            String value = preferences.getString(PREF_UPD_INTERVAL,
-                    String.valueOf(DEFAULT_UPD_INTERVAL));
+            String value = preferences.getString(PREF_UPDATE_INTERVAL,
+                    String.valueOf(DEFAULT_UPDATE_INTERVAL));
             hours = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            hours = DEFAULT_UPD_INTERVAL;
+            hours = DEFAULT_UPDATE_INTERVAL;
         }
         return hours * 60 * 60 * 1000;
     }
@@ -283,7 +283,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isUpdateNotificationEnabled() {
-        return preferences.getBoolean(PREF_UPD_NOTIFY, true);
+        return preferences.getBoolean(PREF_UPDATE_NOTIFICATION_ENABLED, true);
     }
 
     public boolean isAutoDownloadEnabled() {
@@ -297,7 +297,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public boolean isBackgroundDownloadAllowed() {
         return FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT ||
                 (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED
-                        && !preferences.getBoolean(PREF_UPD_WIFI_ONLY, false));
+                        && !preferences.getBoolean(PREF_UPDATE_ON_WIFI_ONLY, false));
     }
 
     /**
