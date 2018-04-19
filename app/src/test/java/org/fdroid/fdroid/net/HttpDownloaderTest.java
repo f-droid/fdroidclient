@@ -15,7 +15,7 @@ import java.net.URL;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class HttpDownloaderTest {

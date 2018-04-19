@@ -19,7 +19,7 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class DatabaseMigration {
 

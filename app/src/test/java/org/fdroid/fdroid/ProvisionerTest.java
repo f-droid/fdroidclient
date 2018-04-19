@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @author Michael Poehn (michael.poehn@fsfe.org)
  */
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class ProvisionerTest {

@@ -28,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class ApkProviderTest extends FDroidProviderTest {
 

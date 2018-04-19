@@ -34,7 +34,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, sdk = 24, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
+@Config(constants = BuildConfig.class, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
