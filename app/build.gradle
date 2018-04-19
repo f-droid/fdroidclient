@@ -49,9 +49,8 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 
-    compile 'com.madgag.spongycastle:pkix:1.54.0.0'
-    compile 'com.madgag.spongycastle:prov:1.54.0.0'
-    compile 'com.madgag.spongycastle:core:1.54.0.0'
+    compile 'org.bouncycastle:bcpkix-jdk15on:1.59'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.59'
 
     testCompile "org.robolectric:robolectric:3.3.2"
     testCompile 'junit:junit:4.12'
@@ -85,6 +84,7 @@ dependencyVerification {
             'com.android.support:design:7225973f7ee03765008a9c2f17a40b154c6885169fef022276e811c926a2202c',
             'com.android.support:gridlayout-v7:2f5af33c4be1d3e4e3fa999323265718ac1a4c81df4c0373d6ce8901613b1671',
             'com.android.support:palette-v7:6d24037fb375c7884f878edeb88c812b87a05c69221513507ecea21c257d6314',
+            'com.android.support:preference-v7:a1798a826b4097d00e49280f412b21af08f9bf1179c2e3838dc339d9f843416d',
             'com.android.support:recyclerview-v7:d735e4727878e99ef3980c10d15dc3468462fd509d4fb60cb8bd20b0f735085c',
             'com.android.support:support-annotations:3365960206c3d2b09e845f555e7f88f8effc8d2f00b369e66c4be384029299cf',
             'com.android.support:support-compat:880ce01ff5be42b233ff8ec0c61cefb7dc3dc9500fea9e24423214813ac27ea2',
@@ -101,16 +101,16 @@ dependencyVerification {
             'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
             'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
             'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
-            'com.madgag.spongycastle:core:1e7fa4b19ccccd1011364ab838d0b4702470c178bbbdd94c5c90b2d4d749ea1e',
-            'com.madgag.spongycastle:pkix:721a302f5ce18bf6fff89d514ef224c37b5dd9ca67a16b56fafaea4b24a51482',
-            'com.madgag.spongycastle:prov:cf89c550fda86c0f26858c3d851ac1d2ce49cd78dd144cd86f307b7ea3e6afd7',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
             'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
             'info.guardianproject.panic:panic:a7ed9439826db2e9901649892cf9afbe76f00991b768d8f4c26332d7c9406cb2',
             'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
             'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
+            'org.bouncycastle:bcpkix-jdk15on:601d85cfbcef76a1cb77cbf755a6234a4ba1d4c02a98d9a81028d471f388694f',
+            'org.bouncycastle:bcprov-jdk15on:1c31e44e331d25e46d293b3e8ee2d07028a67db011e74cb2443285aed1d59c85',
             'org.jmdns:jmdns:24e7e3a50a579136400e8c9b0750399eb3c7558918bdf52c0ffa5e0fa5aad503',
+            'org.nanohttpd:nanohttpd:de864c47818157141a24c9acb36df0c47d7bf15b7ff48c90610f3eb4e5df0e58',
             'org.slf4j:slf4j-api:e56288031f5e60652c06e7bb6e9fa410a61231ab54890f7b708fc6adc4107c5b',
     ]
 }

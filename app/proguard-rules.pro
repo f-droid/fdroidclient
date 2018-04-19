@@ -22,7 +22,7 @@
 # removed, proguard will strip classes which are required, which may result in
 # crashes.
 -keep class kellinwood.security.zipsigner.** {*;}
--keep class org.spongycastle.** {*;}
+-keep class org.bouncycastle.** {*;}
 
 # This keeps class members used for SystemInstaller IPC.
 #   Reference: https://gitlab.com/fdroid/fdroidclient/issues/79

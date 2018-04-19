@@ -1,8 +1,8 @@
 package kellinwood.security.zipsigner.optional;
 
 import kellinwood.security.zipsigner.KeySet;
-import org.spongycastle.jce.X509Principal;
-import org.spongycastle.x509.X509V3CertificateGenerator;
+import org.bouncycastle.jce.X509Principal;
+import org.bouncycastle.x509.X509V3CertificateGenerator;
 
 import java.io.File;
 import java.io.IOException;

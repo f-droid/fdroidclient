@@ -797,7 +797,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         // breakage when verifying the signature of most .jars. For more
         // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
         try {
-            FDroidApp.disableSpongyCastleOnLollipop();
+            FDroidApp.disableBouncyCastleOnLollipop();
             final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
             byte[] buff = new byte[2048];
             //noinspection StatementWithEmptyBody
@@ -818,7 +818,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             final Certificate signer = aSignedEntry.getCertificates()[0];
             rawCertBytes = signer.getEncoded();
         } finally {
-            FDroidApp.enableSpongyCastleOnLollipop();
+            FDroidApp.enableBouncyCastleOnLollipop();
         }
         apkJar.close();
 

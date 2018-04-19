@@ -3,7 +3,7 @@ package kellinwood.security.zipsigner.optional;
 
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
-import org.spongycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import java.io.*;
 import java.security.*;
@@ -28,8 +28,8 @@ public class KeyStoreFileManager {
     static LoggerInterface logger = LoggerManager.getLogger( KeyStoreFileManager.class.getName());
 
     static {
-        // Add the spongycastle version of the BC provider so that the implementation classes returned
-        // from the keystore are all from the spongycastle libs.
+        // Add the bouncycastle version of the BC provider so that the implementation classes returned
+        // from the keystore are all from the bouncycastle libs.
         Security.addProvider(getProvider());
     }
 

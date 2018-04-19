@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.spongycastle.util.encoders.Base64;
+import org.bouncycastle.util.encoders.Base64;
 
 import java.io.BufferedInputStream;
 import java.io.File;

@@ -1,14 +1,14 @@
 package kellinwood.security.zipsigner.optional;
 
 import kellinwood.security.zipsigner.KeySet;
-import org.spongycastle.cert.jcajce.JcaCertStore;
-import org.spongycastle.cms.*;
-import org.spongycastle.cms.jcajce.JcaSignerInfoGeneratorBuilder;
-import org.spongycastle.operator.ContentSigner;
-import org.spongycastle.operator.DigestCalculatorProvider;
-import org.spongycastle.operator.jcajce.JcaContentSignerBuilder;
-import org.spongycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.spongycastle.util.Store;
+import org.bouncycastle.cert.jcajce.JcaCertStore;
+import org.bouncycastle.cms.*;
+import org.bouncycastle.cms.jcajce.JcaSignerInfoGeneratorBuilder;
+import org.bouncycastle.operator.ContentSigner;
+import org.bouncycastle.operator.DigestCalculatorProvider;
+import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
+import org.bouncycastle.util.Store;
 
 import java.util.ArrayList;
 import java.util.List;

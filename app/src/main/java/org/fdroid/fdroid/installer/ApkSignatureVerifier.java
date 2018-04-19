@@ -26,7 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import org.acra.ACRA;
 import org.fdroid.fdroid.Utils;
-import org.spongycastle.util.encoders.Hex;
+import org.bouncycastle.util.encoders.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
