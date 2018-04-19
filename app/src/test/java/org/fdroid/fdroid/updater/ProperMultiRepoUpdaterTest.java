@@ -445,7 +445,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
             if ("ro.product.cpu.abilist".equals(key)) {
                 return "armeabi";
             }
-            return ShadowSystemProperties.get(key);
+            return ShadowSystemProperties.native_get(key);
         }
     }
 
