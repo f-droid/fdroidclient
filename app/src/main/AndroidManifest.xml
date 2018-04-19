@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="org.fdroid.fdroid"
           android:installLocation="auto">
 
@@ -456,9 +457,9 @@
                 character set, making for more compact QR Codes.
                 -->
                 <data android:scheme="http"/>
-                <data android:scheme="HTTP"/>
+                <data android:scheme="HTTP" tools:ignore="AppLinkUrlError"/>
                 <data android:scheme="https"/>
-                <data android:scheme="HTTPS"/>
+                <data android:scheme="HTTPS" tools:ignore="AppLinkUrlError"/>
 
                 <data android:host="*"/>
 
@@ -515,9 +516,9 @@
                 character set, making for more compact QR Codes.
                 -->
                 <data android:scheme="fdroidrepo"/>
-                <data android:scheme="FDROIDREPO"/>
+                <data android:scheme="FDROIDREPO" tools:ignore="AppLinkUrlError"/>
                 <data android:scheme="fdroidrepos"/>
-                <data android:scheme="FDROIDREPOS"/>
+                <data android:scheme="FDROIDREPOS" tools:ignore="AppLinkUrlError"/>
             </intent-filter>
 
 
