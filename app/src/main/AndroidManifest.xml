@@ -151,13 +151,6 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".views.main.MainActivity"/>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:mimeType="application/vnd.org.fdroid.fdroid.repo"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".NfcNotEnabledActivity"
