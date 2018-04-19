@@ -24,6 +24,7 @@ dependencies {
     compile "com.android.support:support-vector-drawable:27.1.1"
     compile 'com.android.support.constraint:constraint-layout:1.1.0'
     compile "com.android.support:palette-v7:27.1.1"
+    compile "com.android.support:preference-v7:27.1.1"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.3.2'
@@ -64,10 +65,6 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.madgag.spongycastle:pkix:1.54.0.0'
         compile 'com.madgag.spongycastle:prov:1.54.0.0'
         compile 'com.madgag.spongycastle:core:1.54.0.0'
-
-        // Upstream doesn't have a binary on mavenCentral/jcenter yet:
-        // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
-        compile files('libs/binaryDeps/support-v4-preferencefragment-release.aar')
 
         // Fork for F-Droid, including support for https. Not merged into upstream
         // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
@@ -138,9 +135,6 @@ if (!hasProperty('sourceDeps')) {
     logger.info "Setting up *source* dependencies for F-Droid (because you passed in the -PsourceDeps argument to gradle while building)."
 
     dependencies {
-        compile(project(':extern:support-v4-preferencefragment')) {
-            exclude module: 'support-v4'
-        }
         compile project(':extern:nanohttpd:core')
         compile project(':extern:zipsigner')
     }
@@ -151,7 +145,6 @@ if (!hasProperty('sourceDeps')) {
         description = "Copies .jar and .aar files from subproject dependencies in extern/ to app/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
         from('../extern/') {
-            include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
             include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
             include 'zipsigner/build/libs/zipsigner.jar'
         }

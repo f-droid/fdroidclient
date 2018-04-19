@@ -23,7 +23,7 @@
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/updates">
-        <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/update_interval"
+        <ListPreference android:title="@string/update_interval"
             android:key="updateInterval"
             android:defaultValue="24"
             android:entries="@array/updateIntervalNames"
@@ -41,9 +41,9 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/display"
                         android:key="pref_category_display">
-        <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/pref_language"
+        <ListPreference android:title="@string/pref_language"
             android:key="language"/>
-        <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/theme"
+        <ListPreference android:title="@string/theme"
             android:key="theme"
             android:defaultValue="light"
             android:entries="@array/themeNames"
@@ -119,7 +119,7 @@
 
     <PreferenceCategory android:title="@string/other"
         android:key="pref_category_other">
-        <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/cache_downloaded"
+        <ListPreference android:title="@string/cache_downloaded"
             android:key="keepCacheFor"
             android:defaultValue="86400000"
             android:entries="@array/keepCacheNames"

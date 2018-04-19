@@ -12,14 +12,14 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.v14.preference.PreferenceFragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import info.guardianproject.panic.Panic;
@@ -30,8 +30,8 @@ import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
 
-public class PanicPreferencesFragment extends PreferenceFragment implements SharedPreferences
-        .OnSharedPreferenceChangeListener {
+public class PanicPreferencesFragment extends PreferenceFragment
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String PREF_EXIT = Preferences.PREF_PANIC_EXIT;
     private static final String PREF_APP = "pref_panic_app";
@@ -43,8 +43,7 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
     private CheckBoxPreference prefHide;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences_panic);
 
         pm = getActivity().getPackageManager();
@@ -147,9 +146,9 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
             prefApp.setSummary(getString(R.string.panic_app_setting_summary));
 
             prefApp.setIcon(null); // otherwise re-setting view resource doesn't work
-            Drawable icon = ContextCompat.getDrawable(getContext(), R.drawable.ic_cancel);
+            Drawable icon = ContextCompat.getDrawable(getActivity(), R.drawable.ic_cancel);
             TypedValue typedValue = new TypedValue();
-            Resources.Theme theme = getContext().getTheme();
+            Resources.Theme theme = getActivity().getTheme();
             theme.resolveAttribute(R.attr.appListItem, typedValue, true);
             @ColorInt int color = typedValue.data;
             icon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
@@ -189,7 +188,7 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(getString(R.string.panic_app_dialog_title));
 
         CharSequence app = getString(R.string.panic_app_unknown_app);
@@ -221,10 +220,10 @@ public class PanicPreferencesFragment extends PreferenceFragment implements Shar
 
     private void showHideConfirmationDialog() {
         String appName = getString(R.string.app_name);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.panic_hide_warning_title);
         builder.setMessage(getString(R.string.panic_hide_warning_message, appName,
-                HidingManager.getUnhidePin(getContext()), getString(R.string.hiding_calculator)));
+                HidingManager.getUnhidePin(getActivity()), getString(R.string.hiding_calculator)));
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
