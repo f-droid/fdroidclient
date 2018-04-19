@@ -16,16 +16,10 @@ public class NfcHelper {
 
     private static final String TAG = "NfcHelper";
 
-    @TargetApi(14)
     private static NfcAdapter getAdapter(Context context) {
-        if (Build.VERSION.SDK_INT < 14) {
-            return null;
-        }
-
         return NfcAdapter.getDefaultAdapter(context.getApplicationContext());
     }
 
-    @TargetApi(14)
     public static boolean setPushMessage(Activity activity, Uri toShare) {
         NfcAdapter adapter = getAdapter(activity);
         if (adapter != null) {

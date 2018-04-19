@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -65,10 +64,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(startPosition);
 
-        if (Build.VERSION.SDK_INT >= 11) {
-            // display some nice animation while swiping
-            viewPager.setPageTransformer(true, new DepthPageTransformer());
-        }
+        // display some nice animation while swiping
+        viewPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
     @Override

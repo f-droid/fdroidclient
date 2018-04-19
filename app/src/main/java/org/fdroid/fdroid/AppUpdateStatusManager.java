@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -510,11 +509,6 @@ public final class AppUpdateStatusManager {
                     entry.intent = getAppDetailsIntent(entry.apk);
                 }
                 break;
-        }
-        if (Build.VERSION.SDK_INT < 11 && entry.intent == null) {
-            Intent intent = new Intent();
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            entry.intent = PendingIntent.getActivity(context, 0, intent, 0);
         }
     }
 

@@ -1,9 +1,6 @@
 package org.fdroid.fdroid.net.bluetooth;
 
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothSocket;
-import android.os.Build;
-
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedInputStream;
@@ -32,15 +29,14 @@ public class BluetoothConnection {
         return output;
     }
 
-    @TargetApi(14)
     public void open() throws IOException {
-        if (Build.VERSION.SDK_INT >= 14 && !socket.isConnected()) {
+        if (!socket.isConnected()) {
             // Server sockets will already be connected when they are passed to us,
             // client sockets require us to call connect().
             socket.connect();
         }
 
-        input  = new BufferedInputStream(socket.getInputStream());
+        input = new BufferedInputStream(socket.getInputStream());
         output = new BufferedOutputStream(socket.getOutputStream());
         Utils.debugLog(TAG, "Opened connection to Bluetooth device");
     }

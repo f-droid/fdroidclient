@@ -46,12 +46,8 @@ public class NfcNotEnabledActivity extends AppCompatActivity {
         final Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 16) {
             doOnJellybean(intent);
-        } else if (Build.VERSION.SDK_INT >= 14) {
-            doOnIceCreamSandwich(intent);
         } else {
-            // no NFC support, so nothing to do here
-            finish();
-            return;
+            doOnIceCreamSandwich(intent);
         }
         startActivity(intent);
         finish();

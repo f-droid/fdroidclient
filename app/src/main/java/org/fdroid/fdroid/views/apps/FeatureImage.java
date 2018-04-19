@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.apps;
 
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,12 +18,10 @@ import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
 import org.fdroid.fdroid.R;
 
 import java.util.Random;
@@ -34,7 +30,7 @@ import java.util.Random;
  * A feature image can have a {@link android.graphics.drawable.Drawable} or a {@link Palette}. If
  * a Drawable is available, then it will draw that, otherwise it will attempt to fall back to the
  * Palette you gave it. If a Palette is given, it will draw a series of triangles like so:
- *
+ * <p>
  * +_----+----_+_----+----_+
  * | \_  |  _/ | \_  |  _/ |
  * |   \_|_/   |   \_|_/   |
@@ -42,12 +38,12 @@ import java.util.Random;
  * | \_  |  _/ | \_  |  _/ |
  * |   \_|_/   |   \_|_/   |
  * +-----+-----+-----+-----+
- *
+ * <p>
  * where each triangle is filled with one of two variations of the {@link Palette#getDominantColor(int)}
  * that is chosen randomly. The randomness is first seeded with the colour that has been selected.
  * This is so that if this repaints itself in the future, it will have the same unique pattern rather
  * than picking a new random pattern each time.
- *
+ * <p>
  * It is suggested that you obtain the Palette from the icon of an app.
  */
 @SuppressWarnings("LineLength")
@@ -143,12 +139,7 @@ public class FeatureImage extends AppCompatImageView {
     private int currentAlpha = 255;
     private ValueAnimator alphaAnimator = null;
 
-    @TargetApi(11)
     private void animateColourChange() {
-        if (Build.VERSION.SDK_INT < 11) {
-            return;
-        }
-
         if (alphaAnimator == null) {
             alphaAnimator = ValueAnimator.ofInt(0, 255);
         } else {
@@ -294,12 +285,15 @@ public class FeatureImage extends AppCompatImageView {
 
     private abstract static class ImageLoadingAdapter implements ImageLoadingListener {
         @Override
-        public void onLoadingStarted(String imageUri, View view) { }
+        public void onLoadingStarted(String imageUri, View view) {
+        }
 
         @Override
-        public void onLoadingFailed(String imageUri, View view, FailReason failReason) { }
+        public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+        }
 
         @Override
-        public void onLoadingCancelled(String imageUri, View view) { }
+        public void onLoadingCancelled(String imageUri, View view) {
+        }
     }
 }

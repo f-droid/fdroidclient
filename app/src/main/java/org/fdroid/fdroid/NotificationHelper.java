@@ -117,7 +117,7 @@ class NotificationHelper {
     }
 
     private boolean useStackedNotifications() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
+        return Build.VERSION.SDK_INT >= 24;
     }
 
     /**
@@ -481,15 +481,8 @@ class NotificationHelper {
     }
 
     private Point getLargeIconSize() {
-        int w;
-        int h;
-        if (Build.VERSION.SDK_INT >= 11) {
-            w = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
-            h = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
-        } else {
-            w = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-            h = w;
-        }
+        int w = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
+        int h = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
         return new Point(w, h);
     }
 

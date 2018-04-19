@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -148,20 +147,18 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         qrUrlBuilder.append(sharingUri.getPath());
         boolean first = true;
 
-        if (Build.VERSION.SDK_INT > 10) {
-            Set<String> names = sharingUri.getQueryParameterNames();
-            for (String name : names) {
-                if (!"ssid".equals(name)) {
-                    if (first) {
-                        qrUrlBuilder.append('?');
-                        first = false;
-                    } else {
-                        qrUrlBuilder.append('&');
-                    }
-                    qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
-                    qrUrlBuilder.append('=');
-                    qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
+        Set<String> names = sharingUri.getQueryParameterNames();
+        for (String name : names) {
+            if (!"ssid".equals(name)) {
+                if (first) {
+                    qrUrlBuilder.append('?');
+                    first = false;
+                } else {
+                    qrUrlBuilder.append('&');
                 }
+                qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
+                qrUrlBuilder.append('=');
+                qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
             }
         }
 

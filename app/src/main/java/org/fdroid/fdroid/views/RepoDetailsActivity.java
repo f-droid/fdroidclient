@@ -223,9 +223,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (Build.VERSION.SDK_INT >= 14) {
-            prepareNfcMenuItems(menu);
-        }
+        prepareNfcMenuItems(menu);
         return true;
     }
 

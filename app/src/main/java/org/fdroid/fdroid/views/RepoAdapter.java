@@ -2,14 +2,12 @@ package org.fdroid.fdroid.views;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Build;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 
@@ -24,10 +22,7 @@ public class RepoAdapter extends CursorAdapter {
     private EnabledListener enabledListener;
 
     public static RepoAdapter create(Context context, Cursor cursor, int flags) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return new RepoAdapter(context, cursor, flags);
-        }
-        return new RepoAdapter(context, cursor);
+        return new RepoAdapter(context, cursor, flags);
     }
 
     private RepoAdapter(Context context, Cursor c, int flags) {
