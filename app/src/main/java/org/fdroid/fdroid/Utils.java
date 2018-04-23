@@ -146,7 +146,7 @@ public final class Utils {
         }
         StatFs stat = new StatFs(statDir.getPath());
         if (Build.VERSION.SDK_INT < 18) {
-            return stat.getAvailableBlocks() * stat.getBlockSize();
+            return (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
         } else {
             return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
         }
@@ -162,7 +162,7 @@ public final class Utils {
         }
         StatFs stat = new StatFs(statDir.getPath());
         if (Build.VERSION.SDK_INT < 18) {
-            return stat.getBlockCount() * stat.getBlockSize();
+            return (long) stat.getBlockCount() * (long) stat.getBlockSize();
         } else {
             return stat.getBlockCountLong() * stat.getBlockSizeLong();
         }
