@@ -1,6 +1,0 @@
-gradle-witness.jar was obtained by running `gradle build` inside the directory
-extern/gradle-witness/ in this repository. The source code for the groovy
-plugin and its license can be found there.
-
-We must prebuild a jar for this plugin since gradle plugins can't be used
-directly from source.
