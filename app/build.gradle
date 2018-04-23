@@ -271,35 +271,3 @@ task pmdTest(type: Pmd) {
 }
 
 task pmd(dependsOn: [pmdMain, pmdTest]) {}
-
-// This person took the example code below from another blogpost online, however
-// I lost the reference to it:
-// http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
-android.applicationVariants.all { variant ->
-
-    task("generate${variant.name}Javadoc", type: Javadoc) {
-        title = "$name $version API"
-        description "Generates Javadoc for F-Droid."
-        source = variant.javaCompile.source
-
-        def sdkDir
-        Properties properties = new Properties()
-        File localProps = project.rootProject.file('local.properties')
-        if (localProps.exists()) {
-            properties.load(localProps.newDataInputStream())
-            sdkDir = properties.getProperty('sdk.dir')
-        } else {
-            sdkDir = System.getenv('ANDROID_HOME')
-        }
-        if (!sdkDir) {
-            throw new ProjectConfigurationException("Cannot find android sdk. Make sure sdk.dir is defined in local.properties or the environment variable ANDROID_HOME is set.", null)
-        }
-
-        ext.androidJar = "${sdkDir}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-        options.links("http://docs.oracle.com/javase/7/docs/api/");
-        options.links("http://d.android.com/reference/");
-        exclude '**/BuildConfig.java'
-        exclude '**/R.java'
-    }
-}
