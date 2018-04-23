@@ -1,3 +1,7 @@
+### 1.2.2 (2018-04-23)
+
+* fix crasher bug on devices running on Android 4.2 or older #1424
+
 ### 1.2.1 (2018-04-18)
 
 * improved automatic mirror selection
