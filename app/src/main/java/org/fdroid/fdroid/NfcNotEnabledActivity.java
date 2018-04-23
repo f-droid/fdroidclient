@@ -6,10 +6,10 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 // aka Android 4.0 aka Ice Cream Sandwich
-public class NfcNotEnabledActivity extends ActionBarActivity {
+public class NfcNotEnabledActivity extends AppCompatActivity {
 
     /*
      * ACTION_NFC_SETTINGS was added in 4.1 aka Jelly Bean MR1 as a
@@ -46,12 +46,8 @@ public class NfcNotEnabledActivity extends ActionBarActivity {
         final Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 16) {
             doOnJellybean(intent);
-        } else if (Build.VERSION.SDK_INT >= 14) {
-            doOnIceCreamSandwich(intent);
         } else {
-            // no NFC support, so nothing to do here
-            finish();
-            return;
+            doOnIceCreamSandwich(intent);
         }
         startActivity(intent);
         finish();

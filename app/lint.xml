@@ -11,6 +11,8 @@
     <!-- These are important to us, so promote from warning to error -->
     <issue id="UnusedResources" severity="error">
         <ignore path="src/main/res/drawable/category_**.png" />
+        <ignore path="src/main/res/values/dimens.xml"/>
+        <ignore path="src/main/res/values/styles.xml"/>
     </issue>
     <issue id="AppCompatMethod" severity="error"/>
     <issue id="NestedScrolling" severity="error"/>
@@ -29,6 +31,10 @@
 
     <issue id="SetWorldReadable" severity="error">
         <ignore path="src/main/java/org/fdroid/fdroid/installer/ApkFileProvider.java"/>
+    </issue>
+
+    <issue id="ProtectedPermissions" severity="error">
+        <ignore path="src/main/AndroidManifest.xml"/>
     </issue>
 
     <!-- these should be fixed, but it'll be a chunk of work -->

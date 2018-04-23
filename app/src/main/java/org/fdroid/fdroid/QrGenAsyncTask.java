@@ -5,11 +5,9 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 import android.widget.ImageView;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.encode.Contents;
@@ -39,15 +37,9 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point outSize = new Point();
         int x, y, qrCodeDimension;
-        /* lame, got to use both the new and old APIs here */
-        if (Build.VERSION.SDK_INT >= 13) {
-            display.getSize(outSize);
-            x = outSize.x;
-            y = outSize.y;
-        } else {
-            x = display.getWidth();
-            y = display.getHeight();
-        }
+        display.getSize(outSize);
+        x = outSize.x;
+        y = outSize.y;
         if (x < y) {
             qrCodeDimension = x;
         } else {

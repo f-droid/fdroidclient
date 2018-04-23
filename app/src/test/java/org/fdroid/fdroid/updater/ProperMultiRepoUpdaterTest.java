@@ -34,9 +34,8 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, sdk = 24, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
+@Config(constants = BuildConfig.class, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
-@SuppressWarnings("LineLength")
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";
 
@@ -136,7 +135,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
         // Provided by both the "Main" and "Conflicting" repo, so need to fetch metdata from the
         // repo with the higher "Conflicting" repo has a higher priority.
-        App adAway = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.adaway");
+        App adAway = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
+                "org.adaway");
         assertAdAwayMetadata(adAway, higherPriority);
         assertAdAwayMetadata(allApps.get("org.adaway"), higherPriority);
 
@@ -144,17 +144,20 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         // This is only provided by the "Main" or "Archive" repo. Both the main and archive repo both
         // pull their metadata from the same build recipe in fdroidserver. The only difference is that
         // the archive repository contains .apks from further back, but their metadata is the same.
-        App a2048 = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "com.uberspot.a2048");
+        App a2048 = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
+                "com.uberspot.a2048");
         assert2048Metadata(a2048, "Normal");
         assert2048Metadata(allApps.get("com.uberspot.a2048"), "Normal");
 
         // This is only provided by the "Conflicting" repo.
-        App calendar = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.dgtale.icsimport");
+        App calendar = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
+                "org.dgtale.icsimport");
         assertCalendarMetadata(calendar, "Conflicting");
         assertCalendarMetadata(allApps.get("org.dgtale.icsimport"), "Conflicting");
 
         // This is only provided by the "Main" repo.
-        App adb = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "siir.es.adbWireless");
+        App adb = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
+                "siir.es.adbWireless");
         assertAdbMetadata(adb, "Normal");
         assertAdbMetadata(allApps.get("siir.es.adbWireless"), "Normal");
     }
@@ -244,7 +247,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertCanUpdate(String packageName, int installedVersion, int expectedUpdateVersion) {
-        InstalledAppTestUtils.install(context, packageName, installedVersion, "v" + installedVersion, TestUtils.FDROID_CERT);
+        InstalledAppTestUtils.install(context, packageName, installedVersion,
+                "v" + installedVersion, TestUtils.FDROID_CERT);
         List<App> appsToUpdate = AppProvider.Helper.findCanUpdate(context, AppMetadataTable.Cols.ALL);
         assertEquals(1, appsToUpdate.size());
         assertEquals(installedVersion, appsToUpdate.get(0).installedVersionCode);
@@ -281,7 +285,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assert2048Metadata(Repo repo, @RepoIdentifier String id) {
-        App a2048 = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "com.uberspot.a2048", repo.getId(), AppMetadataTable.Cols.ALL);
+        App a2048 = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "com.uberspot.a2048",
+                repo.getId(), AppMetadataTable.Cols.ALL);
         assert2048Metadata(a2048, id);
     }
 
@@ -300,26 +305,36 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertAdAwayMetadata(Repo repo, @RepoIdentifier String id) {
-        App adaway = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.adaway", repo.getId(), AppMetadataTable.Cols.ALL);
+        App adaway = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.adaway",
+                repo.getId(), AppMetadataTable.Cols.ALL);
         assertAdAwayMetadata(adaway, id);
     }
 
     /** @see ProperMultiRepoUpdaterTest#assert2048Metadata(Repo, String) */
     private void assertAdAwayMetadata(App adaway, @RepoIdentifier String id) {
         assertNotNull(adaway);
-        assertEquals(String.format("AdAway", id), adaway.name);
-        assertEquals(String.format("<p>AdAway from %s repo.</p>", id), adaway.description);
-        assertEquals(String.format("Block advertisements (%s)", id), adaway.summary);
-        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.webSite);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away?%s", id), adaway.sourceCode);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away/issues?%s", id), adaway.issueTracker);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away/raw/HEAD/CHANGELOG?%s", id), adaway.changelog);
-        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.donate);
+        assertEquals(String.format("AdAway", id),
+                adaway.name);
+        assertEquals(String.format("<p>AdAway from %s repo.</p>", id),
+                adaway.description);
+        assertEquals(String.format("Block advertisements (%s)", id),
+                adaway.summary);
+        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id),
+                adaway.webSite);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away?%s", id),
+                adaway.sourceCode);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away/issues?%s", id),
+                adaway.issueTracker);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away/raw/HEAD/CHANGELOG?%s", id),
+                adaway.changelog);
+        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id),
+                adaway.donate);
         assertEquals(String.format("369138", id), adaway.flattrID);
     }
 
     private void assertAdbMetadata(Repo repo, @RepoIdentifier String id) {
-        App adb = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "siir.es.adbWireless", repo.getId(), AppMetadataTable.Cols.ALL);
+        App adb = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "siir.es.adbWireless",
+                repo.getId(), AppMetadataTable.Cols.ALL);
         assertAdbMetadata(adb, id);
     }
 
@@ -335,20 +350,28 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertCalendarMetadata(Repo repo, @RepoIdentifier String id) {
-        App calendar = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.dgtale.icsimport", repo.getId(), AppMetadataTable.Cols.ALL);
+        App calendar = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.dgtale.icsimport",
+                repo.getId(), AppMetadataTable.Cols.ALL);
         assertCalendarMetadata(calendar, id);
     }
 
     /** @see ProperMultiRepoUpdaterTest#assert2048Metadata(Repo, String) */
     private void assertCalendarMetadata(App calendar, @RepoIdentifier String id) {
         assertNotNull(calendar);
-        assertEquals("Add to calendar", calendar.name);
-        assertEquals(String.format("<p>Add to calendar from %s repo.</p>", id), calendar.description);
-        assertEquals(String.format("Import .ics files into calendar (%s)", id), calendar.summary);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/blob/HEAD/README.md?%s", id), calendar.webSite);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport?%s", id), calendar.sourceCode);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/issues?%s", id), calendar.issueTracker);
-        assertEquals("2225390", calendar.flattrID);
+        assertEquals("Add to calendar",
+                calendar.name);
+        assertEquals(String.format("<p>Add to calendar from %s repo.</p>", id),
+                calendar.description);
+        assertEquals(String.format("Import .ics files into calendar (%s)", id),
+                calendar.summary);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/blob/HEAD/README.md?%s", id),
+                calendar.webSite);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport?%s", id),
+                calendar.sourceCode);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/issues?%s", id),
+                calendar.issueTracker);
+        assertEquals("2225390",
+                calendar.flattrID);
     }
 
     private void assertMainArchiveRepoMetadata() {
@@ -422,7 +445,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
             if ("ro.product.cpu.abilist".equals(key)) {
                 return "armeabi";
             }
-            return ShadowSystemProperties.get(key);
+            return ShadowSystemProperties.native_get(key);
         }
     }
 

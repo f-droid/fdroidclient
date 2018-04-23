@@ -12,7 +12,7 @@ stages:
 before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
   - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
-  - echo y | android --silent update sdk --no-ui --filter android-${ANDROID_COMPILE_SDK}
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}"
 
 .test-template: &test-template
   artifacts:
@@ -54,13 +54,16 @@ errorprone:
     - ./gradlew assembleDebug
   allow_failure: true
 
-connected10:
+connected14:
   stage: test
   <<: *test-template
   variables:
-    AVD_SDK: "10"
+    AVD_SDK: "14"
   script:
     - ./gradlew assembleDebug
+    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-$AVD_SDK"
+    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-${AVD_SDK};default;armeabi-v7a"
+    - echo no | android --verbose create avd --name fcl-test-$AVD_SDK --target android-$AVD_SDK
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &

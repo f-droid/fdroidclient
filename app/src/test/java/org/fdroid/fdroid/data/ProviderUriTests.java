@@ -20,7 +20,7 @@ import java.util.List;
 import static org.fdroid.fdroid.Assert.assertInvalidUri;
 import static org.fdroid.fdroid.Assert.assertValidUri;
 
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class ProviderUriTests {

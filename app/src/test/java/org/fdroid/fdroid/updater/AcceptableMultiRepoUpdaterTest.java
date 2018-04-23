@@ -19,7 +19,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "AcceptableMultiRepoTest";

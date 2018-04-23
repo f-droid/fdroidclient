@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="org.fdroid.fdroid"
           android:installLocation="auto">
 
     <uses-sdk
-            android:minSdkVersion="10"
+            android:minSdkVersion="14"
             android:targetSdkVersion="24"
     />
 
@@ -150,13 +151,6 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".views.main.MainActivity"/>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:mimeType="application/vnd.org.fdroid.fdroid.repo"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".NfcNotEnabledActivity"
@@ -456,9 +450,9 @@
                 character set, making for more compact QR Codes.
                 -->
                 <data android:scheme="http"/>
-                <data android:scheme="HTTP"/>
+                <data android:scheme="HTTP" tools:ignore="AppLinkUrlError"/>
                 <data android:scheme="https"/>
-                <data android:scheme="HTTPS"/>
+                <data android:scheme="HTTPS" tools:ignore="AppLinkUrlError"/>
 
                 <data android:host="*"/>
 
@@ -515,9 +509,9 @@
                 character set, making for more compact QR Codes.
                 -->
                 <data android:scheme="fdroidrepo"/>
-                <data android:scheme="FDROIDREPO"/>
+                <data android:scheme="FDROIDREPO" tools:ignore="AppLinkUrlError"/>
                 <data android:scheme="fdroidrepos"/>
-                <data android:scheme="FDROIDREPOS"/>
+                <data android:scheme="FDROIDREPOS" tools:ignore="AppLinkUrlError"/>
             </intent-filter>
 
 

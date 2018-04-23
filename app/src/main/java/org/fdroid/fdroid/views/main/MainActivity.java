@@ -16,9 +16,9 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
@@ -28,7 +28,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private MainViewAdapter adapter;
     private BottomNavigationBar bottomNavigation;
     private int selectedMenuId = R.id.whats_new;
-    private BadgeItem updatesBadge;
+    private TextBadgeItem updatesBadge;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         }
 
-        updatesBadge = new BadgeItem().hide(false);
+        updatesBadge = new TextBadgeItem().hide(false);
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
         bottomNavigation.setTabSelectedListener(this)
@@ -232,29 +231,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                         packageName = data.getLastPathSegment();
                     } else if (path.startsWith("/repository/browse")) {
                         // http://f-droid.org/repository/browse?fdfilter=search+query
-                        query = UriCompat.getQueryParameter(data, "fdfilter");
+                        query = data.getQueryParameter("fdfilter");
 
                         // http://f-droid.org/repository/browse?fdid=packageName
-                        packageName = UriCompat.getQueryParameter(data, "fdid");
+                        packageName = data.getQueryParameter("fdid");
                     } else if ("/app".equals(data.getPath()) || "/packages".equals(data.getPath())) {
                         packageName = null;
                     }
                     break;
                 case "details":
                     // market://details?id=app.id
-                    packageName = UriCompat.getQueryParameter(data, "id");
+                    packageName = data.getQueryParameter("id");
                     break;
                 case "search":
                     // market://search?q=query
-                    query = UriCompat.getQueryParameter(data, "q");
+                    query = data.getQueryParameter("q");
                     break;
                 case "play.google.com":
                     if (path.startsWith("/store/apps/details")) {
                         // http://play.google.com/store/apps/details?id=app.id
-                        packageName = UriCompat.getQueryParameter(data, "id");
+                        packageName = data.getQueryParameter("id");
                     } else if (path.startsWith("/store/search")) {
                         // http://play.google.com/store/search?q=foo
-                        query = UriCompat.getQueryParameter(data, "q");
+                        query = data.getQueryParameter("q");
                     }
                     break;
                 case "apps":
@@ -262,8 +261,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 case "www.amazon.com":
                     // amzn://apps/android?p=app.id
                     // http://amazon.com/gp/mas/dl/android?s=app.id
-                    packageName = UriCompat.getQueryParameter(data, "p");
-                    query = UriCompat.getQueryParameter(data, "s");
+                    packageName = data.getQueryParameter("p");
+                    query = data.getQueryParameter("s");
                     break;
             }
         } else if ("fdroid.app".equals(scheme)) {

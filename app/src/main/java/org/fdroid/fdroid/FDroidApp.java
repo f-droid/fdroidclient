@@ -121,7 +121,7 @@ public class FDroidApp extends Application {
     private static volatile int timeout = 10000;
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
-    private static final org.spongycastle.jce.provider.BouncyCastleProvider SPONGYCASTLE_PROVIDER;
+    private static final org.bouncycastle.jce.provider.BouncyCastleProvider BOUNCYCASTLE_PROVIDER;
 
     @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter;
@@ -135,8 +135,8 @@ public class FDroidApp extends Application {
     NotificationHelper notificationHelper;
 
     static {
-        SPONGYCASTLE_PROVIDER = new org.spongycastle.jce.provider.BouncyCastleProvider();
-        enableSpongyCastle();
+        BOUNCYCASTLE_PROVIDER = new org.bouncycastle.jce.provider.BouncyCastleProvider();
+        enableBouncyCastle();
     }
 
     private static Theme curTheme = Theme.light;
@@ -209,19 +209,19 @@ public class FDroidApp extends Application {
         activity.overridePendingTransition(0, 0);
     }
 
-    public static void enableSpongyCastle() {
-        Security.addProvider(SPONGYCASTLE_PROVIDER);
+    public static void enableBouncyCastle() {
+        Security.addProvider(BOUNCYCASTLE_PROVIDER);
     }
 
-    public static void enableSpongyCastleOnLollipop() {
+    public static void enableBouncyCastleOnLollipop() {
         if (Build.VERSION.SDK_INT == 21) {
-            Security.addProvider(SPONGYCASTLE_PROVIDER);
+            Security.addProvider(BOUNCYCASTLE_PROVIDER);
         }
     }
 
-    public static void disableSpongyCastleOnLollipop() {
+    public static void disableBouncyCastleOnLollipop() {
         if (Build.VERSION.SDK_INT == 21) {
-            Security.removeProvider(SPONGYCASTLE_PROVIDER.getName());
+            Security.removeProvider(BOUNCYCASTLE_PROVIDER.getName());
         }
     }
 

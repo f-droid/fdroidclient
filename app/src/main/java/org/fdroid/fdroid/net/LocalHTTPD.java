@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-
+import fi.iki.elonen.NanoHTTPD;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
@@ -25,10 +26,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
-
-import javax.net.ssl.SSLServerSocketFactory;
-
-import fi.iki.elonen.NanoHTTPD;
 
 public class LocalHTTPD extends NanoHTTPD {
     private static final String TAG = "LocalHTTPD";
@@ -93,10 +90,10 @@ public class LocalHTTPD extends NanoHTTPD {
                 session.parseBody(new HashMap<String, String>());
             } catch (IOException e) {
                 Log.e(TAG, "An error occured while parsing the POST body", e);
-                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,
+                return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,
                         "Internal server error, check logcat on server for details.");
             } catch (ResponseException re) {
-                return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+                return newFixedLengthResponse(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
             }
 
             return handlePost(session);
@@ -111,13 +108,13 @@ public class LocalHTTPD extends NanoHTTPD {
                 if (!session.getParms().containsKey("repo")) {
                     Log.e(TAG, "Malformed /request-swap request to local repo HTTP server."
                             + " Should have posted a 'repo' parameter.");
-                    return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT,
+                    return newFixedLengthResponse(Response.Status.BAD_REQUEST, MIME_PLAINTEXT,
                             "Requires 'repo' parameter to be posted.");
                 }
                 requestSwap(session.getParms().get("repo"));
-                return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
+                return newFixedLengthResponse(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
         }
-        return new Response("");
+        return newFixedLengthResponse("");
     }
 
     private Response handleGet(IHTTPSession session) {
@@ -155,7 +152,7 @@ public class LocalHTTPD extends NanoHTTPD {
             SSLServerSocketFactory factory = NanoHTTPD.makeSSLSocketFactory(
                     localRepoKeyStore.getKeyStore(),
                     localRepoKeyStore.getKeyManagers());
-            makeSecure(factory);
+            makeSecure(factory, null);
         } catch (LocalRepoKeyStore.InitException | IOException e) {
             Log.e(TAG, "Could not enable HTTPS", e);
         }
@@ -209,7 +206,7 @@ public class LocalHTTPD extends NanoHTTPD {
             }
         }
 
-        Response response = serveFile(headers, f, getMimeTypeForFile(uri));
+        Response response = serveFile(headers, f, getAndroidMimeTypeForFile(uri));
         return response != null ? response :
                 createResponse(Response.Status.NOT_FOUND, NanoHTTPD.MIME_PLAINTEXT,
                         "Error 404, file not found.");
@@ -298,19 +295,19 @@ public class LocalHTTPD extends NanoHTTPD {
 
     // Announce that the file server accepts partial content requests
     private Response createResponse(Response.Status status, String mimeType, InputStream message) {
-        Response res = new Response(status, mimeType, message);
+        Response res = newChunkedResponse(status, mimeType, message);
         res.addHeader("Accept-Ranges", "bytes");
         return res;
     }
 
     // Announce that the file server accepts partial content requests
     private Response createResponse(Response.Status status, String mimeType, String message) {
-        Response res = new Response(status, mimeType, message);
+        Response res = newFixedLengthResponse(status, mimeType, message);
         res.addHeader("Accept-Ranges", "bytes");
         return res;
     }
 
-    private static String getMimeTypeForFile(String uri) {
+    private static String getAndroidMimeTypeForFile(String uri) {
         String type = null;
         String extension = MimeTypeMap.getFileExtensionFromUrl(uri);
         if (extension != null) {

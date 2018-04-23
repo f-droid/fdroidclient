@@ -5,16 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceCategory;
-import android.support.v4.preference.PreferenceFragment;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.EditTextPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
-import com.geecko.QuickLyric.view.AppCompatListPreference;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
@@ -59,15 +58,14 @@ public class PreferencesFragment extends PreferenceFragment
     private FDroidApp fdroidApp;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences);
         useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
-        AppCompatListPreference languagePref = (AppCompatListPreference) findPreference(Preferences.PREF_LANGUAGE);
+        ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
         if (Build.VERSION.SDK_INT >= 24) {
             PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_display");
             category.removePreference(languagePref);
@@ -162,8 +160,8 @@ public class PreferencesFragment extends PreferenceFragment
                     Activity activity = getActivity();
                     Languages.setLanguage(activity);
 
-                    RepoProvider.Helper.clearEtags(getContext());
-                    UpdateService.updateNow(getContext());
+                    RepoProvider.Helper.clearEtags(getActivity());
+                    UpdateService.updateNow(getActivity());
 
                     Languages.forceChangeLanguage(activity);
                 }
@@ -173,7 +171,7 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing
                         && currentKeepCacheTime != Preferences.get().getKeepCacheTime()) {
-                    CleanCacheService.schedule(getContext());
+                    CleanCacheService.schedule(getActivity());
                 }
                 break;
 
@@ -219,9 +217,9 @@ public class PreferencesFragment extends PreferenceFragment
             case Preferences.PREF_KEEP_INSTALL_HISTORY:
                 CheckBoxPreference p = (CheckBoxPreference) findPreference(key);
                 if (p.isChecked()) {
-                    InstallHistoryService.register(getContext());
+                    InstallHistoryService.register(getActivity());
                 } else {
-                    InstallHistoryService.unregister(getContext());
+                    InstallHistoryService.unregister(getActivity());
                 }
                 break;
         }
@@ -310,13 +308,13 @@ public class PreferencesFragment extends PreferenceFragment
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (newValue instanceof Boolean && (boolean) newValue) {
-                    UpdateService.autoDownloadUpdates(getContext());
+                    UpdateService.autoDownloadUpdates(getActivity());
                 }
                 return true;
             }
         });
 
-        if (PrivilegedInstaller.isDefault(getContext())) {
+        if (PrivilegedInstaller.isDefault(getActivity())) {
             updateAutoDownloadPref.setTitle(R.string.update_auto_install);
             updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
         }

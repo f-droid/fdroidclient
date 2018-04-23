@@ -20,6 +20,8 @@
 package org.fdroid.fdroid.views;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -55,7 +57,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
@@ -158,13 +159,24 @@ public class ManageReposActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public String getPrimaryClipAsText() {
+        CharSequence text = null;
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboardManager.hasPrimaryClip()) {
+            ClipData data = clipboardManager.getPrimaryClip();
+            if (data.getItemCount() > 0) {
+                text = data.getItemAt(0).getText();
+            }
+        }
+        return text != null ? text.toString() : null;
+    }
+
     private void showAddRepo() {
         /*
          * If there is text in the clipboard, and it looks like a URL, use that.
          * Otherwise use "https://" as default repo string.
          */
-        ClipboardCompat clipboard = ClipboardCompat.create(this);
-        String text = clipboard.getText();
+        String text = getPrimaryClipAsText();
         String fingerprint = null;
         String username = null;
         String password = null;

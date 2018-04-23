@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class SuggestedVersionTest extends FDroidProviderTest {
 

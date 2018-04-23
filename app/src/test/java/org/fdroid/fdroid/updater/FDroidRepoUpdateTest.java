@@ -14,7 +14,7 @@ import org.robolectric.annotation.Config;
  * because there is so much metadata to parse in the main repo, covering many different aspects
  * of the available metadata. Some apps will be added, others updated, and it should all just work.
  */
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class FDroidRepoUpdateTest extends MultiRepoUpdaterTest {
 
