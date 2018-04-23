@@ -55,7 +55,6 @@ public class PreferencesFragment extends PreferenceFragment
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
-    private FDroidApp fdroidApp;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -78,7 +77,7 @@ public class PreferencesFragment extends PreferenceFragment
     }
 
     private void checkSummary(String key, int resId) {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
+        Preference pref = findPreference(key);
         pref.setSummary(resId);
     }
 
@@ -123,10 +122,10 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     Activity activity = getActivity();
-                    fdroidApp = (FDroidApp) activity.getApplication();
+                    FDroidApp fdroidApp = (FDroidApp) activity.getApplication();
                     fdroidApp.reloadTheme();
                     fdroidApp.applyTheme(activity);
-                    fdroidApp.forceChangeTheme(activity);
+                    FDroidApp.forceChangeTheme(activity);
                 }
                 break;
 
