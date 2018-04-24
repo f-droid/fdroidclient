@@ -72,6 +72,9 @@ public class PreferencesFragment extends PreferenceFragment
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
+    private int overWifiPrevious;
+    private int overDataPrevious;
+    private int updateIntervalPrevious;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -85,8 +88,11 @@ public class PreferencesFragment extends PreferenceFragment
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
         overWifiSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
+        overWifiPrevious = overWifiSeekBar.getValue();
         overDataSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
+        overDataPrevious = overDataSeekBar.getValue();
         updateIntervalSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
+        updateIntervalPrevious = updateIntervalSeekBar.getValue();
 
         ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
         if (Build.VERSION.SDK_INT >= 24) {
@@ -422,6 +428,13 @@ public class PreferencesFragment extends PreferenceFragment
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         Preferences.get().configureProxy();
+
+        if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
+            UpdateService.schedule(getActivity());
+        } else if (Build.VERSION.SDK_INT >= 21 &&
+                (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue())) {
+            UpdateService.schedule(getActivity());
+        }
     }
 
     @Override
@@ -436,5 +449,4 @@ public class PreferencesFragment extends PreferenceFragment
             }
         }
     }
-
 }
