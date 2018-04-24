@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
@@ -62,8 +63,8 @@ public class PreferencesFragment extends PreferenceFragment
 
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
     private SeekBarPreference updateIntervalSeekBar;
-    private CheckBoxPreference enableProxyCheckPref;
-    private CheckBoxPreference useTorCheckPref;
+    private SwitchPreference enableProxyCheckPref;
+    private SwitchPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
@@ -74,8 +75,8 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.get().migrateUpdateIntervalStringToInt();
 
         addPreferencesFromResource(R.xml.preferences);
-        useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
-        enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
+        enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
@@ -201,7 +202,7 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_ENABLE_PROXY:
-                CheckBoxPreference checkPref = (CheckBoxPreference) findPreference(key);
+                SwitchPreference checkPref = (SwitchPreference) findPreference(key);
                 checkPref.setSummary(R.string.enable_proxy_summary);
                 break;
 
