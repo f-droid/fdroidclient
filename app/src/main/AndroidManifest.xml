@@ -280,6 +280,7 @@
                 android:exported="false"/>
         <service
                 android:name=".net.ConnectivityMonitorService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service android:name=".localrepo.SwapService"/>
         <service
