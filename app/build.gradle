@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'witness'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
@@ -14,100 +13,48 @@ def getVersionName = { ->
 }
 
 dependencies {
-    compile "com.android.support:support-v4:27.1.1"
-    compile "com.android.support:appcompat-v7:27.1.1"
-    compile "com.android.support:gridlayout-v7:27.1.1"
-    compile "com.android.support:support-annotations:27.1.1"
-    compile "com.android.support:recyclerview-v7:27.1.1"
-    compile "com.android.support:cardview-v7:27.1.1"
-    compile "com.android.support:design:27.1.1"
-    compile "com.android.support:support-vector-drawable:27.1.1"
-    compile 'com.android.support.constraint:constraint-layout:1.1.0'
-    compile "com.android.support:palette-v7:27.1.1"
-    compile "com.android.support:preference-v7:27.1.1"
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:gridlayout-v7:27.1.1'
+    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:palette-v7:27.1.1'
+    implementation 'com.android.support:preference-v7:27.1.1'
 
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.google.zxing:core:3.3.2'
-    compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
-    compile 'cc.mvdan.accesspoint:library:0.2.0'
-    compile 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
-    compile "info.guardianproject.panic:panic:0.5"
-    compile 'commons-io:commons-io:2.5'
-    compile 'commons-net:commons-net:3.5'
-    compile 'org.jmdns:jmdns:3.5.3'
-    compile 'org.nanohttpd:nanohttpd:2.3.1'
-    compile 'ch.acra:acra:4.9.1'
-    compile 'io.reactivex:rxjava:1.1.0'
-    compile 'io.reactivex:rxandroid:0.23.0'
-    compile 'com.hannesdorfmann:adapterdelegates3:3.0.1'
-    compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.google.zxing:core:3.3.2'
+    implementation 'eu.chainfire:libsuperuser:1.0.0.201602271131'
+    implementation 'cc.mvdan.accesspoint:library:0.2.0'
+    implementation 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
+    implementation 'info.guardianproject.panic:panic:0.5'
+    implementation 'commons-io:commons-io:2.5'
+    implementation 'commons-net:commons-net:3.5'
+    implementation 'org.jmdns:jmdns:3.5.3'
+    implementation 'org.nanohttpd:nanohttpd:2.3.1'
+    implementation 'ch.acra:acra:4.9.1'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    implementation 'io.reactivex:rxandroid:0.23.0'
+    implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
 
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.7'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 
-    compile 'org.bouncycastle:bcpkix-jdk15on:1.59'
-    compile 'org.bouncycastle:bcprov-jdk15on:1.59'
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.59'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.59'
 
-    testCompile "org.robolectric:robolectric:3.8"
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:2.7.22"
+    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.7.22'
 
-    androidTestCompile "com.android.support:support-annotations:25.3.1"
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
-}
-
-// generate using: `gradle -q calculateChecksums | sort -V`
-dependencyVerification {
-    verify = [
-            'android.arch.core:common:d34824b794bc92ff8f647a9bb13a7c73de920de5b47075b5d2c4f0770e9b8bfd',
-            'android.arch.core:runtime:83400f7575bcfb8a2eeec64e05590f037bfaed1e56aa3a4214d20e55878445e3',
-            'android.arch.lifecycle:common:614e31cfd33255dc4d5f5d8e62cfa6be2fbbc2a35643a79dc3ed008004c30807',
-            'android.arch.lifecycle:livedata-core:14e57ff8ffb65a80c7e72d91f2076acccdaf2970f234c6261e03a6127eb5206b',
-            'android.arch.lifecycle:runtime:094fd793924dd6a5136753e599ac8174a8147f4a401386b694ba7d818c223e2e',
-            'android.arch.lifecycle:viewmodel:6407c93a5ea9850661dca42a0068d6f3deccefd7228ee69bae1c35d70cbc2557',
-            'cc.mvdan.accesspoint:library:0837b38adb48b66bb1385adb6ade8ecce7002ad815c55abf13517c82193458ea',
-            'ch.acra:acra:d2762968c448757a7d6acc9f141881d9632f664988e9723ece33b5f7c79f3bc9',
-            'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
-            'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
-            'com.android.support.constraint:constraint-layout-solver:fcb4c7d705754ca3d69b1b2c3caf445a425599fda8caabbcf855d98ea0663e4e',
-            'com.android.support.constraint:constraint-layout:d490188709b7bb2f11609beadd7e5eb7538892f308828ec3ff261a74e6ecf47e',
-            'com.android.support:animated-vector-drawable:59670473f6e98fda792f7bef25dd7292b0a3106031c7a5e30eb020bf26f077bd',
-            'com.android.support:appcompat-v7:0c7808fbbc5838d831e32e3c0a6f84e1f2c981deb8f11e010650f2b57923a335',
-            'com.android.support:cardview-v7:8ed955dd037d82a7b4bbcaedb4f896523c3e4c1bf3ca698ce807c350767a2886',
-            'com.android.support:design:7225973f7ee03765008a9c2f17a40b154c6885169fef022276e811c926a2202c',
-            'com.android.support:gridlayout-v7:2f5af33c4be1d3e4e3fa999323265718ac1a4c81df4c0373d6ce8901613b1671',
-            'com.android.support:palette-v7:6d24037fb375c7884f878edeb88c812b87a05c69221513507ecea21c257d6314',
-            'com.android.support:preference-v7:a1798a826b4097d00e49280f412b21af08f9bf1179c2e3838dc339d9f843416d',
-            'com.android.support:recyclerview-v7:d735e4727878e99ef3980c10d15dc3468462fd509d4fb60cb8bd20b0f735085c',
-            'com.android.support:support-annotations:3365960206c3d2b09e845f555e7f88f8effc8d2f00b369e66c4be384029299cf',
-            'com.android.support:support-compat:880ce01ff5be42b233ff8ec0c61cefb7dc3dc9500fea9e24423214813ac27ea2',
-            'com.android.support:support-core-ui:a3ae20e6d5dffba69ac97b99846d2738003af8563843d5f3c9dc4c35b4804241',
-            'com.android.support:support-core-utils:61036832c54e8701aae954fc3bf96d1d80bf8d9dd531bff77d72def456ba087a',
-            'com.android.support:support-fragment:ec72d6ac36a1a0e6523bbddba33d73ffad070b9b3dd246cc44d8727a41ddb5e6',
-            'com.android.support:support-media-compat:55e9837dda88b74a8c812c63a78c63fd83c6c039a8c22d318492663a493585eb',
-            'com.android.support:support-v4:4f41dfc3e89f2738e45c86264a85c0934d055ee8ebe2020e23c97f303b80a48b',
-            'com.android.support:support-vector-drawable:1c0f421114cf4627cf208776d6eb4f76340c78b7e96fe6e12b3e6eb950caf1b9',
-            'com.android.support:transition:c0765b2f3c78696567ec5b3f519d22da1e3df11ac994625adf4bb4dc571caacc',
-            'com.ashokvarma.android:bottom-navigation-bar:f18d740e1777927ad761349298b5d4981cd9f6d2abe70f505abf415ae069baaa',
-            'com.fasterxml.jackson.core:jackson-annotations:6b7802f6c22c09c4a92a2ebeb76e755c3c0a58dfbf419835fae470d89e469b86',
-            'com.fasterxml.jackson.core:jackson-core:256ff34118ab292d1b4f3ee4d2c3e5e5f0f609d8e07c57e8ad1f51c46d4fbb46',
-            'com.fasterxml.jackson.core:jackson-databind:4f74337b6d18664be0f5b15c6664b17aa3972c9c175092328b139b894ff66f19',
-            'com.google.zxing:core:52dd6211bbaf4e600de693834d597e49707f3e6606e1f5d3740fbb8274466abe',
-            'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
-            'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
-            'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
-            'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
-            'info.guardianproject.panic:panic:a7ed9439826db2e9901649892cf9afbe76f00991b768d8f4c26332d7c9406cb2',
-            'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
-            'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
-            'org.bouncycastle:bcpkix-jdk15on:601d85cfbcef76a1cb77cbf755a6234a4ba1d4c02a98d9a81028d471f388694f',
-            'org.bouncycastle:bcprov-jdk15on:1c31e44e331d25e46d293b3e8ee2d07028a67db011e74cb2443285aed1d59c85',
-            'org.jmdns:jmdns:24e7e3a50a579136400e8c9b0750399eb3c7558918bdf52c0ffa5e0fa5aad503',
-            'org.nanohttpd:nanohttpd:de864c47818157141a24c9acb36df0c47d7bf15b7ff48c90610f3eb4e5df0e58',
-            'org.slf4j:slf4j-api:e56288031f5e60652c06e7bb6e9fa410a61231ab54890f7b708fc6adc4107c5b',
-    ]
+    androidTestImplementation 'com.android.support:support-annotations:25.3.1'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test:rules:0.5'
 }
 
 def isCi = "true".equals(System.getenv("CI"))
@@ -131,10 +78,6 @@ android {
 
     compileOptions {
         compileOptions.encoding = "UTF-8"
-
-        // Use Java 1.7, requires minSdk 8
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     aaptOptions {
@@ -271,35 +214,3 @@ task pmdTest(type: Pmd) {
 }
 
 task pmd(dependsOn: [pmdMain, pmdTest]) {}
-
-// This person took the example code below from another blogpost online, however
-// I lost the reference to it:
-// http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
-android.applicationVariants.all { variant ->
-
-    task("generate${variant.name}Javadoc", type: Javadoc) {
-        title = "$name $version API"
-        description "Generates Javadoc for F-Droid."
-        source = variant.javaCompile.source
-
-        def sdkDir
-        Properties properties = new Properties()
-        File localProps = project.rootProject.file('local.properties')
-        if (localProps.exists()) {
-            properties.load(localProps.newDataInputStream())
-            sdkDir = properties.getProperty('sdk.dir')
-        } else {
-            sdkDir = System.getenv('ANDROID_HOME')
-        }
-        if (!sdkDir) {
-            throw new ProjectConfigurationException("Cannot find android sdk. Make sure sdk.dir is defined in local.properties or the environment variable ANDROID_HOME is set.", null)
-        }
-
-        ext.androidJar = "${sdkDir}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-        options.links("http://docs.oracle.com/javase/7/docs/api/");
-        options.links("http://d.android.com/reference/");
-        exclude '**/BuildConfig.java'
-        exclude '**/R.java'
-    }
-}
