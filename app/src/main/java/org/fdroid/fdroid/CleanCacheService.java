@@ -2,6 +2,9 @@ package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -29,6 +32,9 @@ import java.util.concurrent.TimeUnit;
  * is used.
  */
 public class CleanCacheService extends JobIntentService {
+    public static final String TAG = "CleanCacheService";
+
+    private static final int JOB_ID = 0x982374;
 
     /**
      * Schedule or cancel this service to update the app index, according to the
@@ -36,24 +42,38 @@ public class CleanCacheService extends JobIntentService {
      * is changed, or c) on startup, in case we get upgraded.
      */
     public static void schedule(Context context) {
-        // TODO use JobScheduler
         long keepTime = Preferences.get().getKeepCacheTime();
         long interval = TimeUnit.DAYS.toMillis(1);
         if (keepTime < interval) {
             interval = keepTime;
         }
 
-        Intent intent = new Intent(context, CleanCacheService.class);
-        PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
+        if (Build.VERSION.SDK_INT < 21) {
+            Intent intent = new Intent(context, CleanCacheService.class);
+            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
 
-        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarm.cancel(pending);
-        alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                SystemClock.elapsedRealtime() + 5000, interval, pending);
+            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarm.cancel(pending);
+            alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+                    SystemClock.elapsedRealtime() + 5000, interval, pending);
+        } else {
+            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            ComponentName componentName = new ComponentName(context, CleanCacheJobService.class);
+            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
+                    .setRequiresDeviceIdle(true)
+                    .setRequiresCharging(true)
+                    .setPeriodic(interval);
+            if (Build.VERSION.SDK_INT >= 26) {
+                builder.setRequiresBatteryNotLow(true);
+            }
+            jobScheduler.schedule(builder.build());
+
+        }
     }
 
     public static void start(Context context) {
-        enqueueWork(context, CleanCacheService.class, 0x982374, new Intent(context, CleanCacheService.class));
+        enqueueWork(context, CleanCacheService.class, JOB_ID, new Intent(context, CleanCacheService.class));
     }
 
     @Override
