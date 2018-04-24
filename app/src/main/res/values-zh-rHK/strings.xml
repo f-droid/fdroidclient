@@ -7,8 +7,6 @@
     <string name="updates">更新</string>
     <string name="other">其他</string>
     <string name="update_interval">自動更新頻率</string>
-    <string name="automatic_scan_wifi">只透過 Wi-Fi 更新</string>
-    <string name="automatic_scan_wifi_on">只在使用如 Wi-Fi 等沒有限流量的連線時自動更新</string>
     <string name="notify">顯示可更新的應用程式</string>
     <string name="notify_on">應用程式發佈更新時通知我</string>
     <string name="system_installer">系統權限套件</string>

@@ -6,7 +6,6 @@
     <string name="cache_downloaded">Manter apps na caché</string>
     <string name="updates">Actualizacións</string>
     <string name="other">Outro</string>
-    <string name="automatic_scan_wifi">Só mediante wifi</string>
     <string name="notify">Amosar actualizacións disponíbeis</string>
     <string name="app_details">Detalles da ap</string>
     <string name="no_such_app">Non se atopou ese aplicativo.</string>
@@ -64,7 +63,6 @@
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="unstable_updates">Actualizacións inestables</string>
     <string name="update_interval">Intervalo de actualización automática</string>
-    <string name="automatic_scan_wifi_on">Actualizar automáticamente só en redes con acceso ilimitado, como as Wi-Fi</string>
     <string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñibles</string>
     <string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar
         paquetes

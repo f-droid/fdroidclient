@@ -23,8 +23,11 @@
     <string name="other">Other</string>
 
     <string name="update_interval">Automatic update interval</string>
-    <string name="automatic_scan_wifi">Only on Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Only update automatically on unmetered networks like Wi-Fi</string>
+    <string name="over_wifi">Over Wi-Fi</string>
+    <string name="over_data">Over data</string>
+    <string name="over_network_always_summary">Always use this connection when available</string>
+    <string name="over_network_on_demand_summary">Only use this connection when I click to download</string>
+    <string name="over_network_never_summary">Never download anything using this connection</string>
     <string name="update_auto_download">Automatically fetch updates</string>
     <string name="update_auto_download_summary">Updates are downloaded automatically and you are notified to install
         them

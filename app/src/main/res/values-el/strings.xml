@@ -9,8 +9,6 @@
     <string name="updates">Ενημερώσεις</string>
     <string name="other">Άλλα</string>
     <string name="update_interval">Συχνότητα ενημέρωσης</string>
-    <string name="automatic_scan_wifi">Μόνο σε Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Αυτόματη ενημέρωση μόνο σε δίκτυα Wi-Fi</string>
     <string name="notify">Εμφάνιση διαθέσιμων ενημερώσεων</string>
     <string name="notify_on">Εμφάνιση ειδοποίησης όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
     <string name="app_details">Λεπτομέρειες Εφαρμογής</string>

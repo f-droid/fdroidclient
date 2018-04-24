@@ -9,8 +9,6 @@
     <string name="updates">更新</string>
     <string name="other">其他</string>
     <string name="update_interval">自动更新频率</string>
-    <string name="automatic_scan_wifi">仅在Wi-Fi上</string>
-    <string name="automatic_scan_wifi_on">仅在使用 Wi-Fi 等非计量网络时自动更新</string>
     <string name="notify">显示可用更新</string>
     <string name="notify_on">应用可供更新时显示通知</string>
     <string name="system_installer">特权扩展</string>

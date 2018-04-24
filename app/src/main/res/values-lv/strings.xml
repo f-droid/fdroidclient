@@ -7,8 +7,6 @@
     <string name="updates">Atjauninājumi</string>
     <string name="other">Cits</string>
     <string name="update_interval">Automātisko atjauninājumu intervāls</string>
-    <string name="automatic_scan_wifi">Tikai pa Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Atjaunināt automātiski tikai tīklos bez limitiem, kā, piemēram, Wi-Fi</string>
     <string name="notify">Parādīt pieejamos atjauninājumus</string>
     <string name="notify_on">Ziņot, kad atjauninājumi pieejami</string>
     <string name="system_installer">Priviliģētais Pievienojums</string>

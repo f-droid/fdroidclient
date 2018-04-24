@@ -12,9 +12,6 @@
     <string name="updates">Atualizações</string>
     <string name="other">Outros</string>
     <string name="update_interval">Intervalo de atualização automática</string>
-    <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Atualizar automaticamente apenas em redes com acesso ilimitado, como Wi-Fi
-    </string>
     <string name="notify">Mostras atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>

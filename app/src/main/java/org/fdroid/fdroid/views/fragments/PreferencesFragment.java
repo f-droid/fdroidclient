@@ -33,8 +33,9 @@ public class PreferencesFragment extends PreferenceFragment
     public static final String TAG = "PreferencesFragment";
 
     private static final String[] SUMMARIES_TO_UPDATE = {
+            Preferences.PREF_OVER_WIFI,
+            Preferences.PREF_OVER_DATA,
             Preferences.PREF_UPDATE_INTERVAL,
-            Preferences.PREF_UPDATE_ON_WIFI_ONLY,
             Preferences.PREF_UPDATE_NOTIFICATION_ENABLED,
             Preferences.PREF_SHOW_ROOT_APPS,
             Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
@@ -62,6 +63,9 @@ public class PreferencesFragment extends PreferenceFragment
     };
 
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
+
+    private SeekBarPreference overWifiSeekBar;
+    private SeekBarPreference overDataSeekBar;
     private SeekBarPreference updateIntervalSeekBar;
     private SwitchPreference enableProxyCheckPref;
     private SwitchPreference useTorCheckPref;
@@ -80,6 +84,8 @@ public class PreferencesFragment extends PreferenceFragment
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
+        overWifiSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
+        overDataSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
         updateIntervalSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
 
         ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
@@ -111,20 +117,53 @@ public class PreferencesFragment extends PreferenceFragment
         pref.setSummary(getString(resId, pref.getText()));
     }
 
+    private void setNetworkSeekBarSummary(SeekBarPreference seekBarPreference) {
+        int position = seekBarPreference.getValue();
+        if (position == 0) {
+            seekBarPreference.setSummary(R.string.over_network_never_summary);
+        } else if (position == 1) {
+            seekBarPreference.setSummary(R.string.over_network_on_demand_summary);
+        } else if (position == 2) {
+            seekBarPreference.setSummary(R.string.over_network_always_summary);
+        } else {
+            throw new IllegalArgumentException("No such " + seekBarPreference.getTitle() + " position: " + position);
+        }
+    }
+
+    private void enableUpdateInverval() {
+        if (overWifiSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER
+                && overDataSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER) {
+            updateIntervalSeekBar.setEnabled(false);
+            updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[0]);
+        } else {
+            updateIntervalSeekBar.setEnabled(true);
+            updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[updateIntervalSeekBar.getValue()]);
+        }
+    }
+
     private void updateSummary(String key, boolean changing) {
 
         switch (key) {
+
             case Preferences.PREF_UPDATE_INTERVAL:
                 updateIntervalSeekBar.setMax(Preferences.UPDATE_INTERVAL_VALUES.length - 1);
                 updateIntervalSeekBar.setDefaultValue(Preferences.DEFAULT_UPDATE_INTERVAL);
                 int seekBarPosition = updateIntervalSeekBar.getValue();
-                Preference onlyOnWifi = findPreference(Preferences.PREF_UPDATE_ON_WIFI_ONLY);
-                onlyOnWifi.setEnabled(seekBarPosition > 0);
                 updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[seekBarPosition]);
                 break;
 
-            case Preferences.PREF_UPDATE_ON_WIFI_ONLY:
-                checkSummary(key, R.string.automatic_scan_wifi_on);
+            case Preferences.PREF_OVER_WIFI:
+                overWifiSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
+                overWifiSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_WIFI);
+                setNetworkSeekBarSummary(overWifiSeekBar);
+                enableUpdateInverval();
+                break;
+
+            case Preferences.PREF_OVER_DATA:
+                overDataSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
+                overDataSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_DATA);
+                setNetworkSeekBarSummary(overDataSeekBar);
+                enableUpdateInverval();
                 break;
 
             case Preferences.PREF_UPDATE_NOTIFICATION_ENABLED:

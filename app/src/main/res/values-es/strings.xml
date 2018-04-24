@@ -9,9 +9,6 @@
     <string name="updates">Avisos</string>
     <string name="other">Otros</string>
     <string name="update_interval">Intervalo de actualización automática</string>
-    <string name="automatic_scan_wifi">Sólo con Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Actualizar automáticamente solo con Wi-Fi y otras redes de tarifa plana
-    </string>
     <string name="notify">Mostrar actualizaciones disponibles</string>
     <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
     <string name="system_installer">Extensión con permisos de sistema</string>

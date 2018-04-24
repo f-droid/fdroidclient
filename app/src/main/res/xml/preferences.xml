@@ -28,18 +28,22 @@
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/updates">
         <android.support.v7.preference.SeekBarPreference
-                android:key="updateIntervalSeekBarPosition"
-                android:title="@string/update_interval"
+                android:key="overWifi"
+                android:title="@string/over_wifi"
                 android:layout="@layout/preference_seekbar"/>
-        <android.support.v7.preference.CheckBoxPreference
-                android:title="@string/only_on_wifi"
-                android:defaultValue="false"
-                android:key="updateOnWifiOnly"/>
+        <android.support.v7.preference.SeekBarPreference
+                android:key="overData"
+                android:title="@string/over_data"
+                android:layout="@layout/preference_seekbar"/>
         <SwitchPreference
                 android:title="@string/update_auto_download"
                 android:summary="@string/update_auto_download_summary"
                 android:defaultValue="false"
                 android:key="updateAutoDownload"/>
+        <android.support.v7.preference.SeekBarPreference
+                android:key="updateIntervalSeekBarPosition"
+                android:title="@string/update_interval"
+                android:layout="@layout/preference_seekbar"/>
         <SwitchPreference
                 android:title="@string/notify"
                 android:defaultValue="true"

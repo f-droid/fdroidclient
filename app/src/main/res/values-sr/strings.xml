@@ -11,8 +11,6 @@
     <string name="updates">Надоградње</string>
     <string name="other">Остало</string>
     <string name="update_interval">Међувреме самосталног освежавања</string>
-    <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
-    <string name="automatic_scan_wifi_on">Самостално освежавање само на бесплатним мрежама као што је бежична</string>
     <string name="notify">Прикажи доступне надоградње</string>
     <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
     <string name="system_installer">Повлашћено проширење</string>

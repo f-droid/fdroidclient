@@ -9,8 +9,6 @@
     <string name="updates">Güncellemeler</string>
     <string name="other">Diğer</string>
     <string name="update_interval">Kendiliğinden güncelleme aralığı</string>
-    <string name="automatic_scan_wifi">Yalnızca Wi-Fi ile</string>
-    <string name="automatic_scan_wifi_on">Yalnızca Wi-Fi gibi ölçümsüz ağlarda kendiliğinden güncelle</string>
     <string name="notify">Kullanılabilir güncellemeleri göster</string>
     <string name="notify_on">Güncellemeler varsa bir bildirim göster</string>
     <string name="system_installer">Ayrıcalıklı Uzantı</string>

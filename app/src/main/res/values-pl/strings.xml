@@ -123,9 +123,6 @@
         usunięcie jej danych i ustawień)
     </string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
-    <string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez nietaryfowe połączenia, np. Wi-Fi
-    </string>
     <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
     <string name="uninstall_system">Aktualizuj/odinstaluj uprzywilejowany dodatek F-Droida</string>
     <string name="uninstall_system_summary">Pokaż szczegóły uprzywilejowanego dodatku</string>

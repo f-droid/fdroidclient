@@ -19,8 +19,6 @@
     <string name="other">Іншае</string>
 
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
-    <string name="automatic_scan_wifi">Толькі праз Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Аўтаматычна абнаўляць толькі праз нелімітаваныя сеткі, такія як Wi-Fi</string>
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
     <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
     <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>

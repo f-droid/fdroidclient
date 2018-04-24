@@ -11,8 +11,6 @@
     <string name="updates">Cập nhật</string>
     <string name="other">Khác</string>
     <string name="update_interval">Tự động cập nhật định kì</string>
-    <string name="automatic_scan_wifi">Chỉ khi dùng Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Chỉ tự động cập nhật khi dùng các mạng không tính lưu lượng, ví dụ Wi-Fi</string>
     <string name="notify">Hiện các bản cập nhật có sẵn</string>
     <string name="notify_on">Hiện thông báo khi có bản cập nhật</string>
     <string name="system_installer">Phần mở rộng được cấp quyền</string>

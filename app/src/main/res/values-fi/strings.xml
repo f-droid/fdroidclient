@@ -9,8 +9,6 @@
     <string name="updates">Päivitykset</string>
     <string name="other">Muu</string>
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
-    <string name="automatic_scan_wifi">Vain Wi-Fi -yhteydellä</string>
-    <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi</string>
     <string name="notify">Päivitysimoitukset</string>
     <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
     <string name="system_installer">Etuoikeutettu laajennus</string>

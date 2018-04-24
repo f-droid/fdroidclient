@@ -12,8 +12,6 @@
     <string name="updates">Aggiornamenti</string>
     <string name="other">Altro</string>
     <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
-    <string name="automatic_scan_wifi">Solo via Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi applicazioni solo via Wi-Fi</string>
     <string name="notify">Mostra aggiornamenti disponibili</string>
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
     <string name="system_installer">Estensione priviliegiata</string>

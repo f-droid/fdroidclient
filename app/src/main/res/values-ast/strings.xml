@@ -9,8 +9,6 @@
     <string name="updates">Anovamientos</string>
     <string name="other">Otru</string>
     <string name="update_interval">Intervalu automáticu d\'anovamientu</string>
-    <string name="automatic_scan_wifi">Namái na Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Auto-anovar namái en redes non midíes como Wi-Fi</string>
     <string name="notify">Ver los anovamientos disponibles</string>
     <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
     <string name="system_installer">Estensión con privilexos</string>

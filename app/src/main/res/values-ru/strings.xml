@@ -9,10 +9,6 @@
     <string name="updates">Обновления</string>
     <string name="other">Прочее</string>
     <string name="update_interval">Интервал автоматического обновления</string>
-    <string name="automatic_scan_wifi">Только по Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Обновлять автоматически только по нелимитированным соединениям (таким как
-        Wi-Fi)
-    </string>
     <string name="notify">Показывать доступные обновления</string>
     <string name="notify_on">Отображать уведомление когда есть обновления</string>
     <string name="system_installer">Привилегированное расширение</string>

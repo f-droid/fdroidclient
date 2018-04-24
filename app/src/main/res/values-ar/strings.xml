@@ -67,10 +67,6 @@
     <string name="other">أخرى</string>
 
     <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
-    <string name="automatic_scan_wifi">فقط على الشبكات اللاسلكية (Wi-Fi)</string>
-    <string name="automatic_scan_wifi_on">تحديث قوائم التطبيق تلقائيا فقط على الشبكات غير المحدودة بمقدار البيانات مثل
-        (Wi-Fi)
-    </string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
     <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً و أنت تتلقي إشعار لتثبيتها</string>
     <string name="notify">إظهار التحديثات المتوفرة</string>

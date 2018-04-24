@@ -9,10 +9,6 @@
     <string name="enable_nfc_send">Gaitu NFC bidez bidaltzea…</string>
     <string name="cache_downloaded">Gorde aplikazioak cachean</string>
     <string name="updates">Eguneraketak</string>
-    <string name="automatic_scan_wifi">Wi-Fi bidez soilik</string>
-    <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fi bezalako mugatu gabeko
-        sareen bidez soilik
-    </string>
     <string name="notify">Erakutsi eguneraketa eskuragarriak</string>
     <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
     <string name="app_details">Aplikazioaren xehetasunak</string>

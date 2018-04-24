@@ -135,7 +135,6 @@
     <string name="notification_action_install">Տեղադրել</string>
 
     <string name="keep_install_history_summary">Պահել տեղադրման և ապատեղադրման լոգերը F-Droidում</string>
-    <string name="automatic_scan_wifi">Միայն Wi-Fiով</string>
     <string name="notify">Թարմացման ծանուցումներ</string>
     <string name="notify_on">Երբ թարմացում է հասանելի՝ ցույց տալ ծանուցում</string>
     <string name="no_such_app">Այդպիսի ափփ չի գտնվել</string>

@@ -42,8 +42,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
+    public static final String PREF_OVER_WIFI = "overWifi";
+    public static final String PREF_OVER_DATA = "overData";
     public static final String PREF_UPDATE_INTERVAL = "updateIntervalSeekBarPosition";
-    public static final String PREF_UPDATE_ON_WIFI_ONLY = "updateOnWifiOnly";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
     public static final String PREF_THEME = "theme";
@@ -73,9 +74,15 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
 
+    public static final int OVER_NETWORK_NEVER = 0;
+    public static final int OVER_NETWORK_ON_DEMAND = 1;
+    public static final int OVER_NETWORK_ALWAYS = 2;
+
     private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
+    public static final int DEFAULT_OVER_WIFI = OVER_NETWORK_ALWAYS;
+    public static final int DEFAULT_OVER_DATA = OVER_NETWORK_ON_DEMAND;
     public static final int DEFAULT_UPDATE_INTERVAL = 3;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
@@ -98,6 +105,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     @Deprecated
     private static final String OLD_PREF_UPDATE_INTERVAL = "updateInterval";
+    @Deprecated
+    private static final String OLD_PREF_UPDATE_ON_WIFI_ONLY = "updateOnWifiOnly";
 
     public enum Theme {
         light,
@@ -106,7 +115,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         lightWithDarkActionBar, // Obsolete
     }
 
-    private static final long[] UPDATE_INTERVAL_VALUES = {
+    public static final long[] UPDATE_INTERVAL_VALUES = {
             Long.MAX_VALUE,  // never
             DateUtils.WEEK_IN_MILLIS * 2,
             DateUtils.WEEK_IN_MILLIS,
@@ -176,8 +185,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Get the update interval in milliseconds.
      */
     public long getUpdateInterval() {
-        int position = preferences.getInt(PREF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL);
-        return UPDATE_INTERVAL_VALUES[position];
+        if (getOverData() == OVER_NETWORK_NEVER && getOverWifi() == OVER_NETWORK_NEVER) {
+            return UPDATE_INTERVAL_VALUES[0];
+        } else {
+            int position = preferences.getInt(PREF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL);
+            return UPDATE_INTERVAL_VALUES[position];
+        }
     }
 
     /**
@@ -206,6 +219,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         } else if ("0".equals(value)) { // never
             updateInterval = 0;
         }
+
+        // TODO migrate OLD_PREF_UPDATE_ON_WIFI_ONLY
+
         preferences.edit()
                 .putInt(PREF_UPDATE_INTERVAL, updateInterval)
                 .remove(OLD_PREF_UPDATE_INTERVAL)
@@ -334,9 +350,29 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * downloaded in the background.
      */
     public boolean isBackgroundDownloadAllowed() {
-        return FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT ||
-                (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED
-                        && !preferences.getBoolean(PREF_UPDATE_ON_WIFI_ONLY, false));
+        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+            return getOverWifi() == OVER_NETWORK_ALWAYS;
+        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+            return getOverData() == OVER_NETWORK_ALWAYS;
+        }
+        return false;
+    }
+
+    public boolean isOnDemandDownloadAllowed() {
+        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+            return getOverWifi() != OVER_NETWORK_NEVER;
+        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+            return getOverData() != OVER_NETWORK_NEVER;
+        }
+        return false;
+    }
+
+    private int getOverWifi() {
+        return preferences.getInt(PREF_OVER_WIFI, DEFAULT_OVER_WIFI);
+    }
+
+    private int getOverData() {
+        return preferences.getInt(PREF_OVER_DATA, DEFAULT_OVER_DATA);
     }
 
     /**

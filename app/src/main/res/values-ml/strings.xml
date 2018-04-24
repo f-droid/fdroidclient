@@ -93,8 +93,6 @@
     <string name="other">മറ്റുള്ളവ</string>
 
     <string name="update_interval">സ്വതവേ പുതുക്കലിന്റെ ഇടവേള</string>
-    <string name="automatic_scan_wifi">വൈ-ഫൈ യിൽ മാത്രം</string>
-    <string name="automatic_scan_wifi_on">വൈഫൈ പോലെ പരിധിയില്ലാത്ത ശൃഖലകളിൽ മാത്രം സ്വതവേ പുതുക്കുക</string>
     <string name="update_auto_download">പുതുക്കലുകള്‍ സ്വതവേ ലഭ്യമാക്കുക</string>
     <string name="update_auto_download_summary">പുതുക്കലുകള്‍ സ്വതവേ ഡൗൺലോഡ് ചെയ്യുകയും അവ സ്ഥാപിക്കാന്‍ നിങ്ങളെ വിവരം അറിയിക്കുകയും ചെയ്യുക</string>
     <string name="update_auto_install">പുതുക്കലുകള്‍ സ്വതവേ സ്ഥാപിക്കുക</string>

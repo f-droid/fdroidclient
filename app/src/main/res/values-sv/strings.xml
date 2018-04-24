@@ -9,8 +9,6 @@
     <string name="updates">Uppdateringar</string>
     <string name="other">Andra</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
-    <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Uppdatera endast automatiskt på obegränsade nätverk som Wi-Fi</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
     <string name="system_installer">Privilegierad utökning</string>

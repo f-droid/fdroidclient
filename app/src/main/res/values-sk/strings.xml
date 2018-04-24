@@ -14,9 +14,6 @@
     <string name="updates">Obnovy</string>
     <string name="other">Iné</string>
     <string name="update_interval">Interval automat. aktualizácií</string>
-    <string name="automatic_scan_wifi">Iba cez Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Automaticky aktualizovať len na nespoplatnených sieťach, ako napr. Wi-Fi
-    </string>
     <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
     <string name="system_installer">Ukladať balíky do vyr. pamäte</string>

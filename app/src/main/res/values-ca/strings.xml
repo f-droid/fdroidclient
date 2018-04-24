@@ -8,8 +8,6 @@
     <string name="updates">Actualitzacions</string>
     <string name="other">Altres</string>
     <string name="update_interval">Període d\'actualització automàtica</string>
-    <string name="automatic_scan_wifi">Només en Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Actualitza la llista d\'aplicacions en xarxes sense limitació de tràfic, com ara Wi-Fi</string>
     <string name="notify">Mostreu les actualitzacions disponibles</string>
     <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
     <string name="system_installer">Extensió Privilegiada</string>

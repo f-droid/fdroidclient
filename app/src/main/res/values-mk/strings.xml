@@ -20,5 +20,4 @@
     <string name="other">Други</string>
 
     <string name="update_interval">Автоматско ажурирање временски интервал</string>
-    <string name="automatic_scan_wifi">Само на Wi-Fi</string>
 </resources>

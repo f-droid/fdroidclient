@@ -9,10 +9,6 @@
     <string name="updates">Aktualisierungen</string>
     <string name="other">Andere</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
-    <string name="automatic_scan_wifi">Nur über WLAN</string>
-    <string name="automatic_scan_wifi_on">Anwendungsliste nur über gebührenfreie Netze wie WLAN automatisch
-        aktualisieren
-    </string>
     <string name="notify">Aktualisierungsbenachrichtigung</string>
     <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
     <string name="system_installer">Rechteerweiterung</string>

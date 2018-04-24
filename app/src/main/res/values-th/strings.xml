@@ -10,7 +10,6 @@
     <string name="other">อื่นๆ</string>
 
     <string name="update_interval">อัพเดตข้อมูลอัตโนมัติทุกๆ</string>
-    <string name="automatic_scan_wifi">เฉพาะตอนมีสัญญาณ WiFi</string>
     <string name="update_auto_download">ดาวน์โหลดอัพเดตโดยอัตโนมัติ</string>
     <string name="local_repo_name">ชื่อที่ตั้งให้แหล่งโปรแกรมจากเครื่องคุณ</string>
     <string name="login_name">ชื่อผู้ใช้</string>
@@ -241,7 +240,6 @@
     <string name="updates">อัพเดต</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
-    <string name="automatic_scan_wifi_on">อัพเดตข้อมูลรายการโปรแกรมเฉพาะตอนที่ใช้ WiFi</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
     <string name="notify">การแจ้งเตือนอัพเดต</string>
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดตให้ดาวน์โหลด</string>

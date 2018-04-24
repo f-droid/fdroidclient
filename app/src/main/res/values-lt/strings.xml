@@ -6,7 +6,6 @@
     <string name="updates">Atnaujinimai</string>
     <string name="other">Kita</string>
     <string name="update_interval">Automatinis programų sąrašų naujinimas</string>
-    <string name="automatic_scan_wifi">Tik prisijungus prie belaidžio (WiFi)</string>
     <string name="notify">Informuoti</string>
     <string name="notify_on">Pranešti, kai atsiras atnaujinimų</string>
     <string name="local_repo_name">Šio įrenginio saugyklos pavadinimas</string>

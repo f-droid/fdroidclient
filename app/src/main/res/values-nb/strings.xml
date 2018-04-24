@@ -8,8 +8,6 @@
     <string name="updates">Oppdateringer</string>
     <string name="other">Andre</string>
     <string name="update_interval">Intervall for automatisk oppdatering</string>
-    <string name="automatic_scan_wifi">Bare på trådløst</string>
-    <string name="automatic_scan_wifi_on">Bare oppdater automatisk når tilknyttet Wi-Fi</string>
     <string name="notify">Vis tilgjengelig oppdateringer</string>
     <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
     <string name="system_installer">Priviligert tillegg</string>
