@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
@@ -68,7 +69,6 @@ public class UpdateService extends IntentService {
     public static final String EXTRA_MESSAGE = "msg";
     public static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
-    public static final String EXTRA_ADDRESS = "address";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
     public static final String EXTRA_FORCED_UPDATE = "forcedUpdate";
     public static final String EXTRA_PROGRESS = "progress";
@@ -104,7 +104,7 @@ public class UpdateService extends IntentService {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
         if (!TextUtils.isEmpty(address)) {
-            intent.putExtra(EXTRA_ADDRESS, address);
+            intent.setData(Uri.parse(address));
         }
         context.startService(intent);
     }
@@ -376,7 +376,7 @@ public class UpdateService extends IntentService {
         boolean forcedUpdate = false;
         String address = null;
         if (intent != null) {
-            address = intent.getStringExtra(EXTRA_ADDRESS); // TODO switch to Intent.setData()
+            address = intent.getDataString();
             manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
             forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
         }
