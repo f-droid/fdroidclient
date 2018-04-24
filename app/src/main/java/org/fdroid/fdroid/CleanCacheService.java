@@ -1,13 +1,14 @@
 package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
-import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -27,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * and newer.  On older Android, last modified time from {@link File#lastModified()}
  * is used.
  */
-public class CleanCacheService extends IntentService {
+public class CleanCacheService extends JobIntentService {
 
     /**
      * Schedule or cancel this service to update the app index, according to the
@@ -35,6 +36,7 @@ public class CleanCacheService extends IntentService {
      * is changed, or c) on startup, in case we get upgraded.
      */
     public static void schedule(Context context) {
+        // TODO use JobScheduler
         long keepTime = Preferences.get().getKeepCacheTime();
         long interval = TimeUnit.DAYS.toMillis(1);
         if (keepTime < interval) {
@@ -51,18 +53,11 @@ public class CleanCacheService extends IntentService {
     }
 
     public static void start(Context context) {
-        context.startService(new Intent(context, CleanCacheService.class));
-    }
-
-    public CleanCacheService() {
-        super("CleanCacheService");
+        enqueueWork(context, CleanCacheService.class, 0x982374, new Intent(context, CleanCacheService.class));
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        if (intent == null) {
-            return;
-        }
+    protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         deleteExpiredApksFromCache();
         deleteStrayIndexFiles();

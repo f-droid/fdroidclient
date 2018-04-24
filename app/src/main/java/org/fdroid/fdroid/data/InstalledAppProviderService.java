@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.data;
 
-import android.app.IntentService;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +7,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Process;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.JobIntentService;
 import android.util.Log;
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -40,7 +41,7 @@ import java.util.concurrent.TimeUnit;
  * of this stuff.
  */
 @SuppressWarnings("LineLength")
-public class InstalledAppProviderService extends IntentService {
+public class InstalledAppProviderService extends JobIntentService {
     private static final String TAG = "InstalledAppProviderSer";
 
     private static final String ACTION_INSERT = "org.fdroid.fdroid.data.action.INSERT";
@@ -55,10 +56,6 @@ public class InstalledAppProviderService extends IntentService {
      * notifications are rate limited to one per second.
      */
     private PublishSubject<String> packageChangeNotifier;
-
-    public InstalledAppProviderService() {
-        super("InstalledAppProviderService");
-    }
 
     @Override
     public void onCreate() {
@@ -121,7 +118,7 @@ public class InstalledAppProviderService extends IntentService {
         intent.setAction(ACTION_INSERT);
         intent.setData(uri);
         intent.putExtra(EXTRA_PACKAGE_INFO, packageInfo);
-        context.startService(intent);
+        enqueueWork(context, intent);
     }
 
     /**
@@ -138,7 +135,11 @@ public class InstalledAppProviderService extends IntentService {
         Intent intent = new Intent(context, InstalledAppProviderService.class);
         intent.setAction(ACTION_DELETE);
         intent.setData(uri);
-        context.startService(intent);
+        enqueueWork(context, intent);
+    }
+
+    private static void enqueueWork(Context context, Intent intent) {
+        enqueueWork(context, InstalledAppProviderService.class, 0x192834, intent);
     }
 
     /**
@@ -153,7 +154,7 @@ public class InstalledAppProviderService extends IntentService {
      * The installed app cache could get out of sync, e.g. if F-Droid crashed/ or
      * ran out of battery half way through responding to {@link Intent#ACTION_PACKAGE_ADDED}.
      * This method returns immediately, and will continue to work in an
-     * {@link IntentService}.  It doesn't really matter where we put this in the
+     * {@link JobIntentService}.  It doesn't really matter where we put this in the
      * bootstrap process, because it runs in its own thread, at the lowest priority:
      * {@link Process#THREAD_PRIORITY_LOWEST}.
      * <p>
@@ -218,11 +219,8 @@ public class InstalledAppProviderService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        if (intent == null) {
-            return;
-        }
 
         String packageName = intent.getData().getSchemeSpecificPart();
         final String action = intent.getAction();
