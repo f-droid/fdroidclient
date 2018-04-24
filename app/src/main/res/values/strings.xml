@@ -185,7 +185,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="categories__empty_state__no_categories">No categories to display</string>
 
     <string name="preference_category__my_apps">My Apps</string>
-    <string name="preference_manage_installed_apps">Manage Installed Apps</string>
+    <string name="preference_manage_installed_apps">Manage installed apps</string>
 
 
     <string name="details_notinstalled">Not installed</string>
@@ -241,7 +241,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="proxy_port_summary">Your proxy\'s port number (e.g. 8118)</string>
 
     <string name="privacy">Privacy</string>
-    <string name="preventScreenshots_title">Prevent Screenshots</string>
+    <string name="preventScreenshots_title">Prevent screenshots</string>
     <string name="preventScreenshots_summary">Blocks screenshots from being taken and hides app content from recent apps screen</string>
 
     <string name="panic_app_setting_title">Panic Button App</string>
@@ -252,7 +252,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_app_dialog_message">Are you sure that you want to allow %1$s to trigger destructive panic button actions?</string>
     <string name="allow">Allow</string>
 
-    <string name="panic_settings">Panic Button Settings</string>
+    <string name="panic_settings">Panic button settings</string>
     <string name="panic_settings_summary">Actions to be taken in case of emergency</string>
     <string name="panic_exit_title">Exit App</string>
     <string name="panic_exit_summary">App will be closed </string>
