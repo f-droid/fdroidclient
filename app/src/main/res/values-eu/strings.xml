@@ -150,7 +150,6 @@
     <string name="repos_unchanged">Biltegi guztiak egunean daude</string>
     <string name="all_other_repos_fine">Beste biltegiek ez dute errorerik sortu.</string>
     <string name="global_error_updating_repos">Errorea eguneratzean: %s</string>
-    <string name="update_interval_zero">Ez eguneratu automatikoki aplikazio zerrenda</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

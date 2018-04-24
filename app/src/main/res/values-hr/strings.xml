@@ -19,7 +19,6 @@
     <string name="other">Ostalo</string>
 
     <string name="update_interval">Interval automatskog ažuriranja</string>
-    <string name="update_interval_zero">Bez automatskog ažuriranja popisa aplikacija</string>
     <string name="automatic_scan_wifi">Samo na Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Ažuriraj popis aplikacija automatski samo na Wi-Fi</string>
     <string name="update_auto_download">Automatski preuzmi ažuriranja</string>

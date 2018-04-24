@@ -273,7 +273,6 @@
     <string name="install_confirm_update_system">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. היישומון העדכני יקבל גישה אל:</string>
     <string name="install_confirm_update_no_perms">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה הרשאת גישה מיוחדת.</string>
     <string name="install_confirm_update_system_no_perms">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה גישה מיוחדת.</string>
-    <string name="update_interval_zero">אין עדכוני רשימות יישומונים אוטומטית</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

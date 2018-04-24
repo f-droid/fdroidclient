@@ -12,7 +12,6 @@
     <string name="updates">Atualizações</string>
     <string name="other">Outros</string>
     <string name="update_interval">Intervalo de atualização automática</string>
-    <string name="update_interval_zero">Não atualizar a lista de aplicativos automaticamente</string>
     <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Atualizar automaticamente apenas em redes com acesso ilimitado, como Wi-Fi
     </string>

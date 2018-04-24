@@ -23,7 +23,6 @@
     <string name="other">Other</string>
 
     <string name="update_interval">Automatic update interval</string>
-    <string name="update_interval_zero">No automatic app list updates</string>
     <string name="automatic_scan_wifi">Only on Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Only update automatically on unmetered networks like Wi-Fi</string>
     <string name="update_auto_download">Automatically fetch updates</string>
@@ -497,13 +496,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="installing">Installing…</string>
     <string name="uninstalling">Uninstalling…</string>
 
-    <string name="interval_never">Never</string>
-    <string name="interval_1h">Hourly</string>
-    <string name="interval_4h">Every 4 hours</string>
-    <string name="interval_12h">Every 12 hours</string>
-    <string name="interval_1d">Daily</string>
-    <string name="interval_1w">Weekly</string>
-    <string name="interval_2w">Every 2 weeks</string>
+    <string name="interval_never">No automatic app updates</string>
+    <string name="interval_1h">Check for updates hourly</string>
+    <string name="interval_4h">Check for updates every 4 hours</string>
+    <string name="interval_12h">Check for updates every 12 hours</string>
+    <string name="interval_1d">Check for updates daily</string>
+    <string name="interval_1w">Check for updates weekly</string>
+    <string name="interval_2w">Check for updates every 2 weeks</string>
 
     <string name="keep_hour">1 Hour</string>
     <string name="keep_day">1 Day</string>

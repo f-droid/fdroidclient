@@ -15,7 +15,6 @@
     <string name="other">Ander</string>
 
     <string name="update_interval">Automatiese opdaterings interval</string>
-    <string name="update_interval_zero">Geen automatiese prgram lys opdaterings</string>
     <string name="automatic_scan_wifi">Slegs op Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Opdateer slegs automaties wanneer gekoppel aan ongemete netwerke soos Wi-Fi
     </string>

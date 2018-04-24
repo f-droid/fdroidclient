@@ -264,7 +264,6 @@
     <string name="swap_join_same_wifi">Tengstu sama þráðlausa Wi-Fi netinu og vinur þinn</string>
     <string name="swap_intro">Tengstu fólki í nágrenninu og skipstu á forritum við það.</string>
     <string name="swap_qr_isnt_for_swap">QR-kóðinn sem þú skannaðir lítur ekki út eins og býttikóði.</string>
-    <string name="update_interval_zero">Engar sjálfvirkar uppfærslur forritalista</string>
     <string name="automatic_scan_wifi_on">Einungis uppfæra sjálfvirkt þegar tengst er kostnaðarlausum netkerfum á borð
         við Wi-Fi netum
     </string>

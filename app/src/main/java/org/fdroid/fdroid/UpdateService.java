@@ -130,7 +130,7 @@ public class UpdateService extends IntentService {
      * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
      */
     public static void schedule(Context context) {
-        int interval = Preferences.get().getUpdateInterval();
+        long interval = Preferences.get().getUpdateInterval();
 
         if (Build.VERSION.SDK_INT < 21) {
             Intent intent = new Intent(context, UpdateService.class);

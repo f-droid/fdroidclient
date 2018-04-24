@@ -11,7 +11,6 @@
         meF-Droid
     </string>
     <string name="update_interval">Chimirwa chakanatswa chiri automatic</string>
-    <string name="update_interval_zero">Hapana mitara iri automatic yezvakanatswa zvema app</string>
     <string name="automatic_scan_wifi">Pamasaisai eWi-Fi chete</string>
     <string name="automatic_scan_wifi_on">Natsa zviriautomatic pamasaisai asiri metered kunge Wi-Fi chete</string>
     <string name="update_auto_download">Tutunura zvekunatsa zviri automatic</string>

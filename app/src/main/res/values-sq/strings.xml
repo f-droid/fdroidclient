@@ -122,7 +122,6 @@
     <string name="keep_install_history_summary">Mbaje raportin e të gjitha instalimeve dhe çinstalimeve mbrenda F-Droid</string>
     <string name="force_old_index">Forcoje formën e vjetër të indeksit</string>
     <string name="force_old_index_summary">Në rast të gabimeve ose problemeve të pajtueshmërisë, përdoreni XML indeksin e aplikacioneve</string>
-    <string name="update_interval_zero">Mos të freskohet lista e aplikacioneve</string>
     <string name="automatic_scan_wifi_on">Freskoje vetëm në rrjete të pamatura si Wi-Fi</string>
     <string name="update_auto_download">Merr freskimet automatikisht</string>
     <string name="update_auto_download_summary">Freskimet shkarkohen automatikisht dhe ti njoftohesh për të instaluar ato</string>

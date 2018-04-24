@@ -212,7 +212,6 @@
     <string name="theme_dark">Oscuro</string>
     <string name="theme_night">Nocturno</string>
     <string name="unstable_updates_summary">Suxire actualizacións para versións inestables</string>
-    <string name="update_interval_zero">Non actualizar automáticamente o listado de aplicativos</string>
     <string name="uninstall_system_summary">Abre a pantalla de detalles da Privileged Extension para
         actualizala/desinstalala
     </string>

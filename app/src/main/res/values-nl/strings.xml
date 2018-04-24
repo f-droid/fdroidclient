@@ -9,7 +9,6 @@
     <string name="updates">Updates</string>
     <string name="other">Overig</string>
     <string name="update_interval">Automatisch update-interval</string>
-    <string name="update_interval_zero">Geen automatische app-lijstupdates</string>
     <string name="automatic_scan_wifi">Alleen via wifi</string>
     <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
     <string name="notify">Toon beschikbare updates</string>

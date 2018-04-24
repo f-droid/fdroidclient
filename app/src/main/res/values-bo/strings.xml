@@ -85,7 +85,6 @@
     <string name="other">གཞན།</string>
 
     <string name="update_interval">རང་འགུལ་ངང་ནས་གསར་བསྒྱུར་བར་མཚམས།</string>
-    <string name="update_interval_zero">རང་འགུལ་མ་ཡིན་པའི་མཉེས་ཆས་གསར་བསྒྱར་གྱི་ཐོ་གཞུང་།</string>
     <string name="automatic_scan_wifi">ཝཡེ་ཕྷཡེ་ཁོ་ནའི་སྒང་ལ།</string>
     <string name="automatic_scan_wifi_on">ཝཡེ་ཕཡེ་ལྟ་བུ་ཚད་འཇལ་མི་ཐུབ་པའི་རིགས་ལ་རང་འགུལ་གྱི་གསར་བསྒྱུར་ཁོ་ན་བྱེད་དགོས།</string>
     <string name="update_auto_download">རང་འགུལ་ངང་ནས་གསར་བསྒྱར་ལེན།</string>

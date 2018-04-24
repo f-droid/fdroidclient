@@ -9,7 +9,6 @@
     <string name="updates">Aktualisierungen</string>
     <string name="other">Andere</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
-    <string name="update_interval_zero">Anwendungsliste nicht automatisch aktualisieren</string>
     <string name="automatic_scan_wifi">Nur über WLAN</string>
     <string name="automatic_scan_wifi_on">Anwendungsliste nur über gebührenfreie Netze wie WLAN automatisch
         aktualisieren

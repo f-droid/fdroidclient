@@ -11,9 +11,9 @@ import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.SeekBarPreference;
 import android.text.TextUtils;
 import android.view.WindowManager;
-
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
@@ -29,6 +29,7 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
+    public static final String TAG = "PreferencesFragment";
 
     private static final String[] SUMMARIES_TO_UPDATE = {
             Preferences.PREF_UPDATE_INTERVAL,
@@ -49,7 +50,18 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_PROXY_PORT,
     };
 
+    private static final int[] UPDATE_INTERVAL_NAMES = {
+            R.string.interval_never,
+            R.string.interval_2w,
+            R.string.interval_1w,
+            R.string.interval_1d,
+            R.string.interval_12h,
+            R.string.interval_4h,
+            R.string.interval_1h,
+    };
+
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
+    private SeekBarPreference updateIntervalSeekBar;
     private CheckBoxPreference enableProxyCheckPref;
     private CheckBoxPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
@@ -58,11 +70,16 @@ public class PreferencesFragment extends PreferenceFragment
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
+
+        Preferences.get().migrateUpdateIntervalStringToInt();
+
         addPreferencesFromResource(R.xml.preferences);
         useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
+
+        updateIntervalSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
 
         ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
         if (Build.VERSION.SDK_INT >= 24) {
@@ -97,17 +114,12 @@ public class PreferencesFragment extends PreferenceFragment
 
         switch (key) {
             case Preferences.PREF_UPDATE_INTERVAL:
-                ListPreference listPref = (ListPreference) findPreference(
-                        Preferences.PREF_UPDATE_INTERVAL);
-                int interval = Integer.parseInt(listPref.getValue());
-                Preference onlyOnWifi = findPreference(
-                        Preferences.PREF_UPDATE_ON_WIFI_ONLY);
-                onlyOnWifi.setEnabled(interval > 0);
-                if (interval == 0) {
-                    listPref.setSummary(R.string.update_interval_zero);
-                } else {
-                    listPref.setSummary(listPref.getEntry());
-                }
+                updateIntervalSeekBar.setMax(Preferences.UPDATE_INTERVAL_VALUES.length - 1);
+                updateIntervalSeekBar.setDefaultValue(Preferences.DEFAULT_UPDATE_INTERVAL);
+                int seekBarPosition = updateIntervalSeekBar.getValue();
+                Preference onlyOnWifi = findPreference(Preferences.PREF_UPDATE_ON_WIFI_ONLY);
+                onlyOnWifi.setEnabled(seekBarPosition > 0);
+                updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[seekBarPosition]);
                 break;
 
             case Preferences.PREF_UPDATE_ON_WIFI_ONLY:

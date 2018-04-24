@@ -198,7 +198,6 @@
     <string name="swap_success">Wymiana powiodła się!</string>
     <string name="swap_active_hotspot">%1$s (Twój hostpot)</string>
     <string name="swap_switch_to_wifi">Dotknij by połączyć się z tą inną siecią Wi-Fi</string>
-    <string name="update_interval_zero">Wyłącz automatyczne aktualizacje</string>
     <string name="about_source">Kod źródłowy</string>
     <string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi co lokalne repozytorium które
         zostało dodane! Spróbuj połączyć się z siecią %s

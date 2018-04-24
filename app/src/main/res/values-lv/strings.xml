@@ -7,7 +7,6 @@
     <string name="updates">Atjauninājumi</string>
     <string name="other">Cits</string>
     <string name="update_interval">Automātisko atjauninājumu intervāls</string>
-    <string name="update_interval_zero">Neatjaunināt aplikāciju sarakstu automātiski</string>
     <string name="automatic_scan_wifi">Tikai pa Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Atjaunināt automātiski tikai tīklos bez limitiem, kā, piemēram, Wi-Fi</string>
     <string name="notify">Parādīt pieejamos atjauninājumus</string>

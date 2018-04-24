@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.preference.PreferenceManager;
+import android.text.format.DateUtils;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
@@ -41,7 +42,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public static final String PREF_UPDATE_INTERVAL = "updateInterval";
+    public static final String PREF_UPDATE_INTERVAL = "updateIntervalSeekBarPosition";
     public static final String PREF_UPDATE_ON_WIFI_ONLY = "updateOnWifiOnly";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
@@ -75,7 +76,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
-    private static final int DEFAULT_UPDATE_INTERVAL = 24;
+    public static final int DEFAULT_UPDATE_INTERVAL = 3;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -95,12 +96,25 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_PANIC_EXIT = true;
     private static final boolean DEFAULT_HIDE_ON_LONG_PRESS_SEARCH = false;
 
+    @Deprecated
+    private static final String OLD_PREF_UPDATE_INTERVAL = "updateInterval";
+
     public enum Theme {
         light,
         dark,
         night,
         lightWithDarkActionBar, // Obsolete
     }
+
+    private static final long[] UPDATE_INTERVAL_VALUES = {
+            Long.MAX_VALUE,  // never
+            DateUtils.WEEK_IN_MILLIS * 2,
+            DateUtils.WEEK_IN_MILLIS,
+            DateUtils.DAY_IN_MILLIS,
+            DateUtils.HOUR_IN_MILLIS * 12,
+            DateUtils.HOUR_IN_MILLIS * 4,
+            DateUtils.HOUR_IN_MILLIS,
+    };
 
     private boolean showAppsRequiringRoot = DEFAULT_SHOW_ROOT_APPS;
     private boolean showAppsWithAntiFeatures = DEFAULT_SHOW_ANTI_FEATURE_APPS;
@@ -161,16 +175,41 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     /**
      * Get the update interval in milliseconds.
      */
-    public int getUpdateInterval() {
-        int hours;
-        try {
-            String value = preferences.getString(PREF_UPDATE_INTERVAL,
-                    String.valueOf(DEFAULT_UPDATE_INTERVAL));
-            hours = Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            hours = DEFAULT_UPDATE_INTERVAL;
+    public long getUpdateInterval() {
+        int position = preferences.getInt(PREF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL);
+        return UPDATE_INTERVAL_VALUES[position];
+    }
+
+    /**
+     * The original preference was a {@link String}, now it must be a {@link Integer}
+     * since {@link android.support.v7.preference.SeekBarPreference} uses it
+     * directly.
+     */
+    public void migrateUpdateIntervalStringToInt() {
+        if (!preferences.contains(OLD_PREF_UPDATE_INTERVAL)) {
+            return; // already completed
         }
-        return hours * 60 * 60 * 1000;
+        int updateInterval = DEFAULT_UPDATE_INTERVAL;
+        String value = preferences.getString(OLD_PREF_UPDATE_INTERVAL, String.valueOf(24));
+        if ("1".equals(value)) { // 1 hour
+            updateInterval = 6;
+        } else if ("4".equals(value)) { // 4 hours
+            updateInterval = 5;
+        } else if ("12".equals(value)) { // 12 hours
+            updateInterval = 4;
+        } else if ("24".equals(value)) { // 1 day
+            updateInterval = 3;
+        } else if ("168".equals(value)) { // 2 weeks
+            updateInterval = 2;
+        } else if ("336".equals(value)) { // 1 week
+            updateInterval = 1;
+        } else if ("0".equals(value)) { // never
+            updateInterval = 0;
+        }
+        preferences.edit()
+                .putInt(PREF_UPDATE_INTERVAL, updateInterval)
+                .remove(OLD_PREF_UPDATE_INTERVAL)
+                .apply();
     }
 
     /**

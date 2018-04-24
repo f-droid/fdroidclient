@@ -9,7 +9,6 @@
     <string name="updates">Обновления</string>
     <string name="other">Прочее</string>
     <string name="update_interval">Интервал автоматического обновления</string>
-    <string name="update_interval_zero">Не обновлять список приложений автоматически</string>
     <string name="automatic_scan_wifi">Только по Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Обновлять автоматически только по нелимитированным соединениям (таким как
         Wi-Fi)

@@ -241,7 +241,6 @@
     <string name="updates">อัพเดต</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
-    <string name="update_interval_zero">ไม่อัพเดตข้อมูลรายการโปรแกรมโดยอัตโนมัติ</string>
     <string name="automatic_scan_wifi_on">อัพเดตข้อมูลรายการโปรแกรมเฉพาะตอนที่ใช้ WiFi</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
     <string name="notify">การแจ้งเตือนอัพเดต</string>

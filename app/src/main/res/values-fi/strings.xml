@@ -9,7 +9,6 @@
     <string name="updates">Päivitykset</string>
     <string name="other">Muu</string>
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
-    <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
     <string name="automatic_scan_wifi">Vain Wi-Fi -yhteydellä</string>
     <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi</string>
     <string name="notify">Päivitysimoitukset</string>

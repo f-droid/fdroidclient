@@ -9,7 +9,6 @@
     <string name="updates">アップデート</string>
     <string name="other">その他</string>
     <string name="update_interval">自動更新の間隔</string>
-    <string name="update_interval_zero">アプリリストの自動更新を行わない</string>
     <string name="automatic_scan_wifi">Wi-Fi接続時のみ</string>
     <string name="automatic_scan_wifi_on">Wi-Fiなどの従量課金制ではないネットワークのみで自動更新を行います</string>
     <string name="notify">利用可能な更新を表示</string>
