@@ -79,7 +79,7 @@ public class PreferencesFragment extends PreferenceFragment
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
 
-        Preferences.get().migrateUpdateIntervalStringToInt();
+        Preferences.get().migrateOldPreferences();
 
         addPreferencesFromResource(R.xml.preferences);
         useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);

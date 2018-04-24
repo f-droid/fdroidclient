@@ -1,5 +1,6 @@
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -194,13 +195,25 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     /**
+     * Migrate old preferences to new preferences.  These need to be processed
+     * and committed before {@code preferences.xml} is loaded.
+     */
+    @SuppressLint("ApplySharedPref")
+    public void migrateOldPreferences() {
+        SharedPreferences.Editor editor = preferences.edit();
+        if (migrateUpdateIntervalStringToInt(editor) || migrateOnlyOnWifi(editor)) {
+            editor.commit();
+        }
+    }
+
+    /**
      * The original preference was a {@link String}, now it must be a {@link Integer}
      * since {@link android.support.v7.preference.SeekBarPreference} uses it
      * directly.
      */
-    public void migrateUpdateIntervalStringToInt() {
+    private boolean migrateUpdateIntervalStringToInt(SharedPreferences.Editor editor) {
         if (!preferences.contains(OLD_PREF_UPDATE_INTERVAL)) {
-            return; // already completed
+            return false; // already completed
         }
         int updateInterval = DEFAULT_UPDATE_INTERVAL;
         String value = preferences.getString(OLD_PREF_UPDATE_INTERVAL, String.valueOf(24));
@@ -219,13 +232,33 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         } else if ("0".equals(value)) { // never
             updateInterval = 0;
         }
-
-        // TODO migrate OLD_PREF_UPDATE_ON_WIFI_ONLY
-
-        preferences.edit()
+        editor
                 .putInt(PREF_UPDATE_INTERVAL, updateInterval)
-                .remove(OLD_PREF_UPDATE_INTERVAL)
-                .apply();
+                .remove(OLD_PREF_UPDATE_INTERVAL);
+        return true;
+    }
+
+    /**
+     * The original preference was just a "Only on Wifi" checkbox.
+     */
+    private boolean migrateOnlyOnWifi(SharedPreferences.Editor editor) {
+        if (!preferences.contains(OLD_PREF_UPDATE_ON_WIFI_ONLY)) {
+            return false; // already completed
+        }
+        int wifi;
+        int data;
+        if (preferences.getBoolean(OLD_PREF_UPDATE_ON_WIFI_ONLY, true)) {
+            wifi = OVER_NETWORK_ALWAYS;
+            data = OVER_NETWORK_NEVER;
+        } else {
+            wifi = OVER_NETWORK_ALWAYS;
+            data = OVER_NETWORK_ON_DEMAND;
+        }
+        editor
+                .putInt(PREF_OVER_WIFI, wifi)
+                .putInt(PREF_OVER_DATA, data)
+                .remove(OLD_PREF_UPDATE_ON_WIFI_ONLY);
+        return true;
     }
 
     /**
