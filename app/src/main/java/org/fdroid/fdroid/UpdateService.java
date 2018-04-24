@@ -130,7 +130,8 @@ public class UpdateService extends IntentService {
      * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
      */
     public static void schedule(Context context) {
-        long interval = Preferences.get().getUpdateInterval();
+        Preferences prefs = Preferences.get();
+        long interval = prefs.getUpdateInterval();
 
         if (Build.VERSION.SDK_INT < 21) {
             Intent intent = new Intent(context, UpdateService.class);
@@ -148,13 +149,25 @@ public class UpdateService extends IntentService {
         } else {
             Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
             JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-            jobScheduler.cancelAll();
             ComponentName componentName = new ComponentName(context, UpdateJobService.class);
-            JobInfo task = new JobInfo.Builder(0xfedcba, componentName)
-                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
-                    .setOverrideDeadline(interval)
-                    .build();
-            jobScheduler.schedule(task);
+            JobInfo.Builder builder = new JobInfo.Builder(0xfedcba, componentName)
+                    .setRequiresDeviceIdle(true)
+                    .setPeriodic(interval);
+            if (Build.VERSION.SDK_INT >= 26) {
+                builder.setRequiresBatteryNotLow(true)
+                        .setRequiresStorageNotLow(true);
+            }
+            int wifi = prefs.getOverWifi();
+            if (prefs.getOverData() == Preferences.OVER_NETWORK_ALWAYS) {
+                if (Build.VERSION.SDK_INT < 26 || wifi == Preferences.OVER_NETWORK_ALWAYS) {
+                    builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+                } else {
+                    builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_METERED);
+                }
+            } else if (wifi == Preferences.OVER_NETWORK_ALWAYS) {
+                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
+            }
+            jobScheduler.schedule(builder.build());
         }
     }
 

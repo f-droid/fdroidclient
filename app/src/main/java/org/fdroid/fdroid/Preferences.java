@@ -367,11 +367,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return false;
     }
 
-    private int getOverWifi() {
+    public int getOverWifi() {
         return preferences.getInt(PREF_OVER_WIFI, DEFAULT_OVER_WIFI);
     }
 
-    private int getOverData() {
+    public int getOverData() {
         return preferences.getInt(PREF_OVER_DATA, DEFAULT_OVER_DATA);
     }
 
