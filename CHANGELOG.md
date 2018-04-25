@@ -1,3 +1,19 @@
+### 1.3-alpha0 (2018-04-25)
+
+* more battery conscious background operation on Android 5.0 and newer
+
+* make Anti-Features list in App Details clickable
+
+* new Settings for controlling data usage
+
+* switch Settings to Material style
+
+* bumped minimum supported version to Android 4.0 (14)
+
+### 1.2.2 (2018-04-23)
+
+* fix crasher bug on devices running on Android 4.2 or older #1424
+
 ### 1.2.1 (2018-04-18)
 
 * improved automatic mirror selection
