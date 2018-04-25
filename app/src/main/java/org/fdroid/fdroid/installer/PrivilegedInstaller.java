@@ -29,6 +29,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -256,7 +257,7 @@ public class PrivilegedInstaller extends Installer {
                         "device owner has marked the package as uninstallable.");
     }
 
-    public PrivilegedInstaller(Context context, Apk apk) {
+    public PrivilegedInstaller(Context context, @NonNull Apk apk) {
         super(context, apk);
     }
 

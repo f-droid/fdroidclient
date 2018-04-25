@@ -24,11 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import android.support.annotation.NonNull;
 import org.fdroid.fdroid.data.Apk;
 
 public class FileInstaller extends Installer {
 
-    public FileInstaller(Context context, Apk apk) {
+    public FileInstaller(Context context, @NonNull Apk apk) {
         super(context, apk);
     }
 

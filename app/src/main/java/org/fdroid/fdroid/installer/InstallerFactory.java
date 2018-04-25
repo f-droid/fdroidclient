@@ -21,8 +21,8 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -39,11 +39,10 @@ public class InstallerFactory {
      * @param apk     to be installed, always required.
      * @return instance of an Installer
      */
-    public static Installer create(Context context, Apk apk) {
-        if (apk == null || TextUtils.isEmpty(apk.packageName)) {
+    public static Installer create(Context context, @NonNull Apk apk) {
+        if (TextUtils.isEmpty(apk.packageName)) {
             throw new IllegalArgumentException("Apk.packageName must not be empty: " + apk);
         }
-
 
         Installer installer;
         if (!apk.isApk()) {

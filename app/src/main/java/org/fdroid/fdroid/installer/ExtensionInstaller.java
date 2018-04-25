@@ -24,6 +24,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -44,7 +45,7 @@ import java.io.File;
 @Deprecated
 public class ExtensionInstaller extends Installer {
 
-    ExtensionInstaller(Context context, Apk apk) {
+    ExtensionInstaller(Context context, @NonNull Apk apk) {
         super(context, apk);
     }
 
