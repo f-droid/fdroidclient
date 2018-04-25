@@ -30,12 +30,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.preference.PreferenceManager;
@@ -59,7 +62,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateService extends IntentService {
+public class UpdateService extends JobIntentService {
 
     private static final String TAG = "UpdateService";
 
@@ -68,7 +71,6 @@ public class UpdateService extends IntentService {
     public static final String EXTRA_MESSAGE = "msg";
     public static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
-    public static final String EXTRA_ADDRESS = "address";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
     public static final String EXTRA_FORCED_UPDATE = "forcedUpdate";
     public static final String EXTRA_PROGRESS = "progress";
@@ -81,6 +83,7 @@ public class UpdateService extends IntentService {
     public static final int STATUS_INFO = 5;
 
     private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
+    private static final int JOB_ID = 0xfedcba;
 
     private static final int NOTIFY_ID_UPDATING = 0;
 
@@ -92,10 +95,6 @@ public class UpdateService extends IntentService {
 
     private static boolean updating;
 
-    public UpdateService() {
-        super("UpdateService");
-    }
-
     public static void updateNow(Context context) {
         updateRepoNow(context, null);
     }
@@ -104,9 +103,9 @@ public class UpdateService extends IntentService {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
         if (!TextUtils.isEmpty(address)) {
-            intent.putExtra(EXTRA_ADDRESS, address);
+            intent.setData(Uri.parse(address));
         }
-        context.startService(intent);
+        enqueueWork(context, intent);
     }
 
     /**
@@ -117,7 +116,16 @@ public class UpdateService extends IntentService {
     public static void forceUpdateRepo(Context context) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_FORCED_UPDATE, true);
-        context.startService(intent);
+        enqueueWork(context, intent);
+    }
+
+    /**
+     * Add work to the queue for processing now
+     *
+     * @see JobIntentService#enqueueWork(Context, Class, int, Intent)
+     */
+    private static void enqueueWork(Context context, @NonNull Intent intent) {
+        enqueueWork(context, UpdateService.class, JOB_ID, intent);
     }
 
     /**
@@ -150,7 +158,7 @@ public class UpdateService extends IntentService {
             Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
             JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
             ComponentName componentName = new ComponentName(context, UpdateJobService.class);
-            JobInfo.Builder builder = new JobInfo.Builder(0xfedcba, componentName)
+            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
                     .setRequiresDeviceIdle(true)
                     .setPeriodic(interval);
             if (Build.VERSION.SDK_INT >= 26) {
@@ -368,18 +376,13 @@ public class UpdateService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
         final long startTime = System.currentTimeMillis();
-        boolean manualUpdate = false;
-        boolean forcedUpdate = false;
-        String address = null;
-        if (intent != null) {
-            address = intent.getStringExtra(EXTRA_ADDRESS); // TODO switch to Intent.setData()
-            manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
-            forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
-        }
+        boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
+        boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
+        String address = intent.getDataString();
 
         try {
             final Preferences fdroidPrefs = Preferences.get();

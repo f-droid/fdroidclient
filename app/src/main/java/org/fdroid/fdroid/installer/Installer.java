@@ -28,6 +28,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PatternMatcher;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import org.fdroid.fdroid.Utils;
@@ -77,7 +78,7 @@ public abstract class Installer {
      * @param apk must be included so that all the phases of the install process
      *            can get all the data about the app, even after F-Droid was killed
      */
-    Installer(Context context, Apk apk) {
+    Installer(Context context, @NonNull Apk apk) {
         this.context = context;
         this.apk = apk;
     }
@@ -144,9 +145,10 @@ public abstract class Installer {
         }
 
         PackageManager pm = context.getPackageManager();
-        if (Build.VERSION.SDK_INT >= 24 && (
-                pm.getInstallerPackageName(apk.packageName).equals("com.android.packageinstaller")
-                        || pm.getInstallerPackageName(apk.packageName).equals("com.google.android.packageinstaller"))) {
+        String installerPackageName = pm.getInstallerPackageName(apk.packageName);
+        if (Build.VERSION.SDK_INT >= 24 &&
+                ("com.android.packageinstaller".equals(installerPackageName)
+                        || "com.google.android.packageinstaller".equals(installerPackageName))) {
             Utils.debugLog(TAG, "Falling back to default installer for uninstall");
             Intent intent = new Intent(context, DefaultInstallerActivity.class);
             intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);

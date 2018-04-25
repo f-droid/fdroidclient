@@ -1,13 +1,17 @@
 package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
-import android.app.IntentService;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -27,7 +31,10 @@ import java.util.concurrent.TimeUnit;
  * and newer.  On older Android, last modified time from {@link File#lastModified()}
  * is used.
  */
-public class CleanCacheService extends IntentService {
+public class CleanCacheService extends JobIntentService {
+    public static final String TAG = "CleanCacheService";
+
+    private static final int JOB_ID = 0x982374;
 
     /**
      * Schedule or cancel this service to update the app index, according to the
@@ -41,28 +48,36 @@ public class CleanCacheService extends IntentService {
             interval = keepTime;
         }
 
-        Intent intent = new Intent(context, CleanCacheService.class);
-        PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
+        if (Build.VERSION.SDK_INT < 21) {
+            Intent intent = new Intent(context, CleanCacheService.class);
+            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
 
-        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarm.cancel(pending);
-        alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                SystemClock.elapsedRealtime() + 5000, interval, pending);
+            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarm.cancel(pending);
+            alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+                    SystemClock.elapsedRealtime() + 5000, interval, pending);
+        } else {
+            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            ComponentName componentName = new ComponentName(context, CleanCacheJobService.class);
+            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
+                    .setRequiresDeviceIdle(true)
+                    .setRequiresCharging(true)
+                    .setPeriodic(interval);
+            if (Build.VERSION.SDK_INT >= 26) {
+                builder.setRequiresBatteryNotLow(true);
+            }
+            jobScheduler.schedule(builder.build());
+
+        }
     }
 
     public static void start(Context context) {
-        context.startService(new Intent(context, CleanCacheService.class));
-    }
-
-    public CleanCacheService() {
-        super("CleanCacheService");
+        enqueueWork(context, CleanCacheService.class, JOB_ID, new Intent(context, CleanCacheService.class));
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        if (intent == null) {
-            return;
-        }
+    protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         deleteExpiredApksFromCache();
         deleteStrayIndexFiles();

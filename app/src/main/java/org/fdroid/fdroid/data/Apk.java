@@ -70,6 +70,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String versionName;
     public int versionCode;
     public int size; // Size in bytes - 0 means we don't know!
+    @NonNull
     public String hash; // checksum of the APK, in lowercase hex
     public String hashType;
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
@@ -358,7 +359,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     @Override
     @TargetApi(19)
-    public int compareTo(Apk apk) {
+    public int compareTo(@NonNull Apk apk) {
         if (Build.VERSION.SDK_INT < 19) {
             return Integer.valueOf(versionCode).compareTo(apk.versionCode);
         }

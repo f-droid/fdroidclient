@@ -259,9 +259,9 @@ public final class LocalRepoManager {
         try {
             app = SwapService.getAppFromCache(packageName);
             if (app == null) {
-                app = new App(context.getApplicationContext(), pm, packageName);
+                app = App.getInstance(context.getApplicationContext(), pm, packageName);
             }
-            if (!app.isValid()) {
+            if (app == null || !app.isValid()) {
                 return;
             }
         } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {

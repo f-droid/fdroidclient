@@ -24,6 +24,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import org.fdroid.fdroid.data.Apk;
 
 /**
@@ -37,7 +38,7 @@ public class DefaultInstaller extends Installer {
 
     public static final String TAG = "DefaultInstaller";
 
-    DefaultInstaller(Context context, Apk apk) {
+    DefaultInstaller(Context context, @NonNull Apk apk) {
         super(context, apk);
     }
 

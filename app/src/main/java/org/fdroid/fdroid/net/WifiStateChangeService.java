@@ -47,7 +47,7 @@ import java.util.Locale;
  * This also schedules an update to encourage updates happening on
  * unmetered networks like typical WiFi rather than networks that can
  * cost money or have caps.  The logic for checking the state of the
- * internet connection is in {@link org.fdroid.fdroid.UpdateService#onHandleIntent(Intent)}
+ * internet connection is in {@link org.fdroid.fdroid.UpdateService#onHandleWork(Intent)}
  * <p>
  * Some devices send multiple copies of given events, like a Moto G often
  * sends three {@code CONNECTED} events.  So they have to be debounced to

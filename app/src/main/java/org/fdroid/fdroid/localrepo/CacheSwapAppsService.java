@@ -74,8 +74,10 @@ public class CacheSwapAppsService extends IntentService {
         try {
             PackageManager pm = getPackageManager();
             String packageName = intent.getData().getSchemeSpecificPart();
-            App app = new App(this, pm, packageName);
-            SwapService.putAppInCache(packageName, app);
+            App app = App.getInstance(this, pm, packageName);
+            if (app != null) {
+                SwapService.putAppInCache(packageName, app);
+            }
         } catch (CertificateEncodingException | IOException | PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,16 +7,18 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
 /**
- * An {@link IntentService} subclass for tracking whether there is metered or
+ * An {@link JobIntentService} subclass for tracking whether there is metered or
  * unmetered internet available, based on
  * {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION}
  */
-public class ConnectivityMonitorService extends IntentService {
+public class ConnectivityMonitorService extends JobIntentService {
     public static final String TAG = "ConnectivityMonitorServ";
 
     public static final int FLAG_NET_UNAVAILABLE = 0;
@@ -33,10 +34,10 @@ public class ConnectivityMonitorService extends IntentService {
         }
     };
 
-    public ConnectivityMonitorService() {
-        super("ConnectivityMonitorService");
-    }
-
+    /**
+     * Register the {@link BroadcastReceiver} which also starts this
+     * {@code Service} since it is a sticky broadcast.
+     */
     public static void registerAndStart(Context context) {
         context.registerReceiver(CONNECTIVITY_RECEIVER, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
@@ -44,7 +45,7 @@ public class ConnectivityMonitorService extends IntentService {
     public static void start(Context context) {
         Intent intent = new Intent(context, ConnectivityMonitorService.class);
         intent.setAction(ACTION_START);
-        context.startService(intent);
+        enqueueWork(context, ConnectivityMonitorService.class, 0x982ae7b, intent);
     }
 
     /**
@@ -77,8 +78,8 @@ public class ConnectivityMonitorService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        if (intent != null && ACTION_START.equals(intent.getAction())) {
+    protected void onHandleWork(@NonNull Intent intent) {
+        if (ACTION_START.equals(intent.getAction())) {
             FDroidApp.networkState = getNetworkState(this);
             ImageLoader.getInstance().denyNetworkDownloads(!Preferences.get().isBackgroundDownloadAllowed());
         }

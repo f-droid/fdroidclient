@@ -20,11 +20,11 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.Utils;
@@ -37,11 +37,13 @@ import java.io.FileFilter;
  * This service handles the install process of apk files and
  * uninstall process of apps.
  * <p>
- * This service is based on an IntentService because:
- * - no parallel installs/uninstalls should be allowed,
- * i.e., runs sequentially
- * - no cancel operation is needed. Cancelling an installation
- * would be the same as starting uninstall afterwards
+ * This service is based on an JobIntentService because:
+ * <ul>
+ * <li>no parallel installs/uninstalls should be allowed,
+ * i.e., runs sequentially</li>
+ * <li>no cancel operation is needed. Cancelling an installation
+ * would be the same as starting uninstall afterwards</li>
+ * </ul>
  * <p>
  * The download URL is only used as the unique ID that represents this
  * particular apk throughout the whole install process in
@@ -52,23 +54,15 @@ import java.io.FileFilter;
  * <a href="https://developer.android.com/google/play/expansion-files.html">
  * APK Expansion Files</a> spec.
  */
-public class InstallerService extends IntentService {
+public class InstallerService extends JobIntentService {
     public static final String TAG = "InstallerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.InstallerService.action.INSTALL";
     private static final String ACTION_UNINSTALL = "org.fdroid.fdroid.installer.InstallerService.action.UNINSTALL";
 
-    public InstallerService() {
-        super("InstallerService");
-    }
-
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-        if (apk == null) {
-            Utils.debugLog(TAG, "ignoring intent with null EXTRA_APK: " + intent);
-            return;
-        }
         Installer installer = InstallerFactory.create(this, apk);
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
@@ -117,7 +111,7 @@ public class InstallerService extends IntentService {
         intent.setData(localApkUri);
         intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
         intent.putExtra(Installer.EXTRA_APK, apk);
-        context.startService(intent);
+        enqueueWork(context, intent);
     }
 
     /**
@@ -130,7 +124,10 @@ public class InstallerService extends IntentService {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
         intent.putExtra(Installer.EXTRA_APK, apk);
-        context.startService(intent);
+        enqueueWork(context, intent);
     }
 
+    private static void enqueueWork(Context context, @NonNull Intent intent) {
+        enqueueWork(context, InstallerService.class, 0x872394, intent);
+    }
 }

@@ -450,19 +450,24 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
             });
-            if (app.antiFeatures != null) {
+            if (app.antiFeatures != null && app.antiFeatures.length > 0) {
                 StringBuilder sb = new StringBuilder();
+                sb.append("<ul>");
                 for (String af : app.antiFeatures) {
                     String afdesc = descAntiFeature(af);
-                    sb.append("\t• ").append(afdesc).append('\n');
+                    sb.append("<li><a href=\"https://f-droid.org/wiki/page/Antifeature:")
+                            .append(af)
+                            .append("\">")
+                            .append(afdesc)
+                            .append("</a></li>");
                 }
-                if (sb.length() > 0) {
-                    sb.setLength(sb.length() - 1);
-                    antiFeaturesView.setText(sb.toString());
-                } else {
-                    antiFeaturesView.setVisibility(View.GONE);
-                }
+                sb.append("</ul>");
+                antiFeaturesView.setText(Html.fromHtml(sb.toString()));
+                antiFeaturesView.setMovementMethod(LinkMovementMethod.getInstance());
+            } else {
+                antiFeaturesView.setVisibility(View.GONE);
             }
+
             updateAntiFeaturesWarning();
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
@@ -538,6 +543,10 @@ public class AppDetailsRecyclerViewAdapter
                     return itemView.getContext().getString(R.string.antiupstreamnonfreelist);
                 case "NonFreeAssets":
                     return itemView.getContext().getString(R.string.antinonfreeassetslist);
+                case "DisabledAlgorithm":
+                    return itemView.getContext().getString(R.string.antidisabledalgorithmlist);
+                case "KnownVuln":
+                    return itemView.getContext().getString(R.string.antiknownvulnlist);
                 default:
                     return af;
             }
@@ -664,7 +673,8 @@ public class AppDetailsRecyclerViewAdapter
             contentView = (LinearLayout) view.findViewById(R.id.ll_content);
         }
 
-        protected abstract @DrawableRes int getIcon();
+        @DrawableRes
+        protected abstract int getIcon();
 
         /**
          * Depending on whether we are expanded or not, update the icon which indicates whether the
@@ -694,7 +704,8 @@ public class AppDetailsRecyclerViewAdapter
             updateExpandableItem(showVersions);
         }
 
-        protected @DrawableRes int getIcon() {
+        @DrawableRes
+        protected int getIcon() {
             return R.drawable.ic_access_time_24dp_grey600;
         }
     }
@@ -794,7 +805,8 @@ public class AppDetailsRecyclerViewAdapter
             contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
         }
 
-        protected @DrawableRes int getIcon() {
+        @DrawableRes
+        protected int getIcon() {
             return R.drawable.ic_lock_24dp_grey600;
         }
     }
@@ -867,7 +879,8 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
 
-        protected @DrawableRes int getIcon() {
+        @DrawableRes
+        protected int getIcon() {
             return R.drawable.ic_website;
         }
     }

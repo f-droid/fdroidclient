@@ -46,6 +46,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app)
          This permission is deprecated, but necessary for some old superuser
@@ -251,7 +252,10 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".UpdateService"/>
+        <service
+                android:name=".UpdateService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
+                android:exported="false"/>
         <service
                 android:name=".UpdateJobService"
                 android:exported="false"
@@ -261,18 +265,26 @@
                 android:exported="false"/>
         <service
                 android:name=".installer.InstallerService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service
                 android:name=".CleanCacheService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
+                android:exported="false"/>
+        <service
+                android:name=".CleanCacheJobService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service
                 android:name=".DeleteCacheService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service
                 android:name=".net.WifiStateChangeService"
                 android:exported="false"/>
         <service
                 android:name=".net.ConnectivityMonitorService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service android:name=".localrepo.SwapService"/>
         <service
@@ -286,6 +298,7 @@
                 android:exported="false"/>
         <service
                 android:name=".data.InstalledAppProviderService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service
                 android:name=".AppUpdateStatusService"

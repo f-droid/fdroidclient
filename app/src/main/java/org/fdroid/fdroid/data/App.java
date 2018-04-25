@@ -369,15 +369,33 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     /**
      * Instantiate from a locally installed package.
+     * <p>
+     * Initializes an {@link App} instances from an APK file. Since the file
+     * could in the cache, and files can disappear from the cache at any time,
+     * this needs to be quite defensive ensuring that {@code apkFile} still
+     * exists.
      */
-    public App(Context context, PackageManager pm, String packageName)
+    @Nullable
+    public static App getInstance(Context context, PackageManager pm, String packageName)
             throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
-
+        App app = new App();
         PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
-        setFromPackageInfo(pm, packageInfo);
-        this.installedApk = new Apk();
         SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
-        initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
+        if (apkFile.canRead()) {
+            String hashType = "SHA-256";
+            String hash = Utils.getBinaryHash(apkFile, hashType);
+            if (TextUtils.isEmpty(hash)) {
+                return null;
+            }
+            app.installedApk.hashType = hashType;
+            app.installedApk.hash = hash;
+            app.installedApk.sig = Utils.getPackageSig(packageInfo);
+        }
+
+        app.setFromPackageInfo(pm, packageInfo);
+        app.installedApk = new Apk();
+        app.initInstalledApk(context, app.installedApk, packageInfo, apkFile);
+        return app;
     }
 
     /**
@@ -704,22 +722,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.compatible = true;
     }
 
-    /**
-     * Initializes an {@link App} instances from an APK file. Since the file
-     * could in the cache, and files can disappear from the cache at any time,
-     * this needs to be quite defensive ensuring that {@code apkFile} still
-     * exists.
-     */
-    private void initApkFromApkFile(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
-            throws IOException, CertificateEncodingException {
-        if (apkFile.canRead()) {
-            apk.hashType = "sha256";
-            apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
-            apk.sig = Utils.getPackageSig(packageInfo);
-        }
-        initInstalledApk(context, apk, packageInfo, apkFile);
-    }
-
     public static void initInstalledObbFiles(Apk apk) {
         File obbdir = getObbDir(apk.packageName);
         FileFilter filter = new RegexFileFilter("(main|patch)\\.[0-9-][0-9]*\\." + apk.packageName + "\\.obb");
@@ -743,6 +745,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         }
     }
 
+    @SuppressWarnings("EmptyForIteratorPad")
     private void initInstalledApk(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
             throws IOException, CertificateEncodingException {
         apk.compatible = true;
@@ -775,7 +778,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         JarFile apkJar = new JarFile(apkFile);
         HashSet<String> abis = new HashSet<>(3);
         Pattern pattern = Pattern.compile("^lib/([a-z0-9-]+)/.*");
-        for (Enumeration<JarEntry> jarEntries = apkJar.entries(); jarEntries.hasMoreElements();) {
+        for (Enumeration<JarEntry> jarEntries = apkJar.entries(); jarEntries.hasMoreElements(); ) {
             JarEntry jarEntry = jarEntries.nextElement();
             Matcher matcher = pattern.matcher(jarEntry.getName());
             if (matcher.matches()) {
