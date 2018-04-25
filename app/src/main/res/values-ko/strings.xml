@@ -9,9 +9,6 @@
     <string name="updates">업데이트</string>
     <string name="other">기타</string>
     <string name="update_interval">자동 업데이트 간격</string>
-    <string name="update_interval_zero">자동으로 앱 목록을 업데이트하지 않기</string>
-    <string name="automatic_scan_wifi">Wi-Fi에서만</string>
-    <string name="automatic_scan_wifi_on">Wi-Fi와 같이 추가 요금이 부과되지 않는 네트워크에서만 자동으로 업데이트합니다</string>
     <string name="notify">사용 가능한 업데이트 보이기</string>
     <string name="notify_on">업데이트가 사용 가능할 때 알림을 보여줍니다</string>
     <string name="system_installer">특별 권한 확장 기능</string>

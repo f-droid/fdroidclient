@@ -6,7 +6,6 @@
     <string name="updates">Atnaujinimai</string>
     <string name="other">Kita</string>
     <string name="update_interval">Automatinis programų sąrašų naujinimas</string>
-    <string name="automatic_scan_wifi">Tik prisijungus prie belaidžio (WiFi)</string>
     <string name="notify">Informuoti</string>
     <string name="notify_on">Pranešti, kai atsiras atnaujinimų</string>
     <string name="local_repo_name">Šio įrenginio saugyklos pavadinimas</string>
@@ -133,6 +132,5 @@
     <string name="keep_install_history">Saugoti įdiegimų istoriją</string>
     <string name="keep_install_history_summary">Saugoti log bylą visiems įdiegimams ir išdiegimams F-Droid programėlėje</string>
     <string name="force_old_index">Priversti senąjį indeksavimo formatą</string>
-    <string name="update_interval_zero">Nėra automatinio programėlių sąrašo atnaujinimų</string>
     <string name="update_auto_download_summary">Atnaujinimai parsiunčiami automatiškai o Jūs perspėjami juos instaliuoti</string>
 </resources>

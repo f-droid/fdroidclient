@@ -12,7 +12,6 @@
     <string name="other">Annað</string>
 
     <string name="update_interval">Bil milli sjálfvirkra uppfærslna</string>
-    <string name="automatic_scan_wifi">Aðeins á þráðlausu neti</string>
     <string name="update_auto_download">Ná sjálfkrafa í uppfærslur</string>
     <string name="update_auto_download_summary">Sækja uppfærsluskrárnar í bakgrunni og þú færð tilkynningu um að setja þær upp</string>
     <string name="update_auto_install">Setja uppfærslur upp sjálfkrafa</string>
@@ -264,10 +263,6 @@
     <string name="swap_join_same_wifi">Tengstu sama þráðlausa Wi-Fi netinu og vinur þinn</string>
     <string name="swap_intro">Tengstu fólki í nágrenninu og skipstu á forritum við það.</string>
     <string name="swap_qr_isnt_for_swap">QR-kóðinn sem þú skannaðir lítur ekki út eins og býttikóði.</string>
-    <string name="update_interval_zero">Engar sjálfvirkar uppfærslur forritalista</string>
-    <string name="automatic_scan_wifi_on">Einungis uppfæra sjálfvirkt þegar tengst er kostnaðarlausum netkerfum á borð
-        við Wi-Fi netum
-    </string>
     <string name="system_installer_on">Nota forgangsviðbót F-Droid (privileged extension) til að setja upp, uppfæra og
         fjarlægja pakka
     </string>

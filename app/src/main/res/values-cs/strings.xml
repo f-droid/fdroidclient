@@ -8,9 +8,6 @@
     <string name="updates">Aktualizace</string>
     <string name="other">Ostatní</string>
     <string name="update_interval">Interval automatických aktualizací</string>
-    <string name="automatic_scan_wifi">Pouze přes Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Automaticky aktualizovat jen na nezpoplatněných sítích, jako např. Wi-Fi
-    </string>
     <string name="notify">Zobrazit dostupné aktualizace</string>
     <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
     <string name="system_installer">Privilegovaná rozšíření</string>
@@ -282,7 +279,6 @@
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
     <string name="theme_night">Noc</string>
-    <string name="update_interval_zero">Bez automatických aktualizací seznamu aplikací</string>
     <string name="system_install_denied_permissions">Privilegovaná oprávnění nebyla tomuto rozšíření udělena! Nahlašte
         prosím jako chybu!
     </string>

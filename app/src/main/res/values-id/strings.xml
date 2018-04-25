@@ -13,10 +13,6 @@
     <string name="other">Lainnya</string>
 
     <string name="update_interval">Selang waktu pembaruan otomatis</string>
-    <string name="update_interval_zero">Jangan perbarui otomatis daftar aplikasi</string>
-    <string name="automatic_scan_wifi">Hanya pada Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Hanya perbarui secara otomatis pada jaringan tak terbatas seperti Wi-Fi
-    </string>
     <string name="notify">Tampilkan pembaruan yang tersedia</string>
     <string name="notify_on">Beri tahu jika pembaruan aplikasi tersedia</string>
     <string name="system_installer_on">Gunakan F-Droid Privileged Extension untuk memasang, memperbarui, dan mencopot

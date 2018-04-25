@@ -9,9 +9,6 @@
     <string name="other">अन्य</string>
 
     <string name="update_interval">स्वचालित अद्यतन अंतराल</string>
-    <string name="update_interval_zero">कोई स्वचालित एप्लिकेशन अद्यतन नहीं</string>
-    <string name="automatic_scan_wifi">केवल Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">एप्लिकेशन सूचि केवल Wi-Fi पे अपडेट करें</string>
     <string name="notify">नवीनतम सूचनाएं</string>
     <string name="notify_on">सूचित कर्रे जब नवीनतम उपलब्ध हो</string>
     <string name="local_repo_name">स्थानीय कोष का नाम</string>

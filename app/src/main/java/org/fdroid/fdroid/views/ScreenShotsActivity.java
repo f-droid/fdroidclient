@@ -71,7 +71,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        IMAGE_LOADER.denyNetworkDownloads(false);
+        IMAGE_LOADER.denyNetworkDownloads(!Preferences.get().isOnDemandDownloadAllowed());
     }
 
     @Override

@@ -14,9 +14,6 @@
     <string name="other">Andet</string>
 
     <string name="update_interval">Automatisk opdateringsinterval</string>
-    <string name="update_interval_zero">Ingen automatiske opdateringer til applikationslisten</string>
-    <string name="automatic_scan_wifi">Kun på Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Opdater kun automatisk på ubegrænsede netværk som WI-FI</string>
     <string name="notify">Vis tilgængelige opdateringer</string>
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
     <string name="system_installer">Privilegeret Udvidelse</string>

@@ -7,9 +7,6 @@
     <string name="updates">Frissítések</string>
     <string name="other">Egyéb</string>
     <string name="update_interval">Automatikus frissítés időköze</string>
-    <string name="update_interval_zero">Ne frissítsen automatikusan</string>
-    <string name="automatic_scan_wifi">Csak Wi-Fin</string>
-    <string name="automatic_scan_wifi_on">Automatikus frissítés csak forgalomkorlát nélküli kapcsolatokon, például Wi-Fin</string>
     <string name="notify">Elérhető frissítések megjelenítése</string>
     <string name="notify_on">Értesítés megjelenítése, ha frissítés érhető el</string>
     <string name="app_details">Alkalmazás részletei</string>

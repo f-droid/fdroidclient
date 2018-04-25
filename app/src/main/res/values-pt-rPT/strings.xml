@@ -17,10 +17,6 @@
     <string name="other">Outro</string>
 
     <string name="update_interval">Intervalo de atualização automática</string>
-    <string name="update_interval_zero">Não atualizar automaticamente a lista de aplicações</string>
-    <string name="automatic_scan_wifi">Apenas por Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Apenas atualizar a lista de aplicações se estiver ligado a redes Wi-Fi
-    </string>
     <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>

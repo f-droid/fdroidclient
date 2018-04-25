@@ -19,9 +19,6 @@
     <string name="other">دیگر</string>
 
     <string name="update_interval">خودکار تازہ کاری کرنے کا وقفہ</string>
-    <string name="update_interval_zero">کوئی خودکار ایپ فہرست تازہ کاریاں موجود نہیں</string>
-    <string name="automatic_scan_wifi">صرف وائی فائی پر</string>
-    <string name="automatic_scan_wifi_on">اپلی کیشن کی فہرست صرف وائی فائی پر خود بخود اپڈیٹ کریں</string>
     <string name="notify">تازہ کاریوں کی اطلاعات</string>
     <string name="notify_on">اگر تازہ کاری دستیاب ہیں تو اطلاع دیں</string>
     <string name="system_installer">پریولجڈ ایکس ٹینشن</string>

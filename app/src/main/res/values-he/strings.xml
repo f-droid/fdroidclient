@@ -9,8 +9,6 @@
     <string name="other">אחר</string>
 
     <string name="update_interval">תדירות עדכון אוטומטי</string>
-    <string name="automatic_scan_wifi">רק על גבי רשת אלחוטית</string>
-    <string name="automatic_scan_wifi_on">עדכון רשימות יישומונים אוטומטית רק על גבי רשת אלחוטית</string>
     <string name="notify">הצגת עדכונים זמינים</string>
     <string name="notify_on">הצגת התרעה כאשר יש עדכונים</string>
     <string name="system_installer">הרחבה מועדפת</string>
@@ -273,7 +271,6 @@
     <string name="install_confirm_update_system">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. היישומון העדכני יקבל גישה אל:</string>
     <string name="install_confirm_update_no_perms">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה הרשאת גישה מיוחדת.</string>
     <string name="install_confirm_update_system_no_perms">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה גישה מיוחדת.</string>
-    <string name="update_interval_zero">אין עדכוני רשימות יישומונים אוטומטית</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

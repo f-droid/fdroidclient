@@ -24,6 +24,9 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
+/**
+ * Provides scrollable listing of apps for search and category views.
+ */
 public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         CategoryTextWatcher.SearchTermsChangedListener {
 

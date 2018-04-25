@@ -42,7 +42,6 @@
 
     <string name="enable_nfc_send">Activează trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizări automate</string>
-    <string name="automatic_scan_wifi">Doar prin Wi-Fi</string>
     <string name="unstable_updates">Actualizări instabile</string>
     <string name="login_name">Nume utilizator</string>
     <string name="login_password">Parola</string>
@@ -51,11 +50,9 @@
     <string name="login_title">Necesită autentificare</string>
     <string name="system_installer">Extensie privilegiată</string>
     <string name="unstable_updates_summary">Sugerează actualizări și la versiunile instabile</string>
-    <string name="update_interval_zero">Nu actualiza automat lista de pachete</string>
     <string name="repo_error_empty_username">Nume utilizator gol, autentificare neschimbată</string>
 
     <string name="repo_edit_credentials">Schimbă parola</string>
-    <string name="automatic_scan_wifi_on">Actualizează automat doar prin rețele necontorizate precum Wi-Fi</string>
     <string name="local_repo_name">Numele depozitului local</string>
     <string name="local_repo_name_summary">Titlu depozitului local folosit la anunțare: %s</string>
     <string name="notify_on">Arată o notificare atunci când există actualizări ale aplicațiilor</string>

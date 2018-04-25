@@ -95,9 +95,6 @@
     <string name="other">Overig</string>
 
     <string name="update_interval">Automatisch update-interval</string>
-    <string name="update_interval_zero">Geen automatische applijstupdates</string>
-    <string name="automatic_scan_wifi">Alleen via wifi</string>
-    <string name="automatic_scan_wifi_on">Alleen automatisch bijwerken op verbindingen zonder datalimiet gelijk wifi</string>
     <string name="update_auto_download">Download updates automatisch</string>
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en der wordt een melding weergegeven voor ze te installeren</string>
     <string name="update_auto_install">Installeer updates automatisch</string>

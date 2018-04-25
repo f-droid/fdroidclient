@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -375,6 +376,26 @@ public final class Utils {
             Log.w(TAG, "Unable to get certificate fingerprint", e);
         }
         return ret;
+    }
+
+    /**
+     * Get the fingerprint used to represent an APK signing key in F-Droid.
+     * This is a custom fingerprint algorithm that was kind of accidentally
+     * created, but is still in use.
+     */
+    public static String getPackageSig(PackageInfo info) {
+        if (info == null || info.signatures == null || info.signatures.length < 1) {
+            return "";
+        }
+        Signature sig = info.signatures[0];
+        String sigHash = "";
+        try {
+            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
+            sigHash = hash.getHash();
+        } catch (NoSuchAlgorithmException e) {
+            // ignore
+        }
+        return sigHash;
     }
 
     /**

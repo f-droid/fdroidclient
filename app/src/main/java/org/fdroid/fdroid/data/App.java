@@ -712,10 +712,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     private void initApkFromApkFile(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
             throws IOException, CertificateEncodingException {
-        // TODO include signature hash calculation here
         if (apkFile.canRead()) {
             apk.hashType = "sha256";
             apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+            apk.sig = Utils.getPackageSig(packageInfo);
         }
         initInstalledApk(context, apk, packageInfo, apkFile);
     }

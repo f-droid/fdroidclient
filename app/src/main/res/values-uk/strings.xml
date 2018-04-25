@@ -38,9 +38,6 @@
     <string name="delete">Видалити</string>
     <string name="other">Інше</string>
     <string name="update_interval">Інтервал автооновлення</string>
-    <string name="update_interval_zero">Не оновлювати список застосунків автоматично</string>
-    <string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Автоматично оновлювати тільки через нелімітовані мережі, такі як Wi-Fi</string>
     <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
     <string name="system_installer">Привілейоване розширення</string>
     <string name="system_installer_on">Використовувати привілейоване розширення F-Droid для встановлення, оновлення та

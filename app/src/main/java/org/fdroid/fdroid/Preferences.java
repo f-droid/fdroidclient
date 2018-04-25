@@ -1,9 +1,11 @@
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceManager;
+import android.text.format.DateUtils;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
@@ -41,10 +43,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public static final String PREF_UPD_INTERVAL = "updateInterval";
-    public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_OVER_WIFI = "overWifi";
+    public static final String PREF_OVER_DATA = "overData";
+    public static final String PREF_UPDATE_INTERVAL = "updateIntervalSeekBarPosition";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
-    public static final String PREF_UPD_NOTIFY = "updateNotify";
+    public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
     public static final String PREF_THEME = "theme";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ROOT_APPS = "rooted";
@@ -72,10 +75,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
 
+    public static final int OVER_NETWORK_NEVER = 0;
+    public static final int OVER_NETWORK_ON_DEMAND = 1;
+    public static final int OVER_NETWORK_ALWAYS = 2;
+
     private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
-    private static final int DEFAULT_UPD_INTERVAL = 24;
+    public static final int DEFAULT_OVER_WIFI = OVER_NETWORK_ALWAYS;
+    public static final int DEFAULT_OVER_DATA = OVER_NETWORK_ON_DEMAND;
+    public static final int DEFAULT_UPDATE_INTERVAL = 3;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -95,12 +104,27 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_PANIC_EXIT = true;
     private static final boolean DEFAULT_HIDE_ON_LONG_PRESS_SEARCH = false;
 
+    @Deprecated
+    private static final String OLD_PREF_UPDATE_INTERVAL = "updateInterval";
+    @Deprecated
+    private static final String OLD_PREF_UPDATE_ON_WIFI_ONLY = "updateOnWifiOnly";
+
     public enum Theme {
         light,
         dark,
         night,
         lightWithDarkActionBar, // Obsolete
     }
+
+    public static final long[] UPDATE_INTERVAL_VALUES = {
+            Long.MAX_VALUE,  // never
+            DateUtils.WEEK_IN_MILLIS * 2,
+            DateUtils.WEEK_IN_MILLIS,
+            DateUtils.DAY_IN_MILLIS,
+            DateUtils.HOUR_IN_MILLIS * 12,
+            DateUtils.HOUR_IN_MILLIS * 4,
+            DateUtils.HOUR_IN_MILLIS,
+    };
 
     private boolean showAppsRequiringRoot = DEFAULT_SHOW_ROOT_APPS;
     private boolean showAppsWithAntiFeatures = DEFAULT_SHOW_ANTI_FEATURE_APPS;
@@ -161,16 +185,80 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     /**
      * Get the update interval in milliseconds.
      */
-    public int getUpdateInterval() {
-        int hours;
-        try {
-            String value = preferences.getString(PREF_UPD_INTERVAL,
-                    String.valueOf(DEFAULT_UPD_INTERVAL));
-            hours = Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            hours = DEFAULT_UPD_INTERVAL;
+    public long getUpdateInterval() {
+        if (getOverData() == OVER_NETWORK_NEVER && getOverWifi() == OVER_NETWORK_NEVER) {
+            return UPDATE_INTERVAL_VALUES[0];
+        } else {
+            int position = preferences.getInt(PREF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL);
+            return UPDATE_INTERVAL_VALUES[position];
         }
-        return hours * 60 * 60 * 1000;
+    }
+
+    /**
+     * Migrate old preferences to new preferences.  These need to be processed
+     * and committed before {@code preferences.xml} is loaded.
+     */
+    @SuppressLint("ApplySharedPref")
+    public void migrateOldPreferences() {
+        SharedPreferences.Editor editor = preferences.edit();
+        if (migrateUpdateIntervalStringToInt(editor) || migrateOnlyOnWifi(editor)) {
+            editor.commit();
+        }
+    }
+
+    /**
+     * The original preference was a {@link String}, now it must be a {@link Integer}
+     * since {@link android.support.v7.preference.SeekBarPreference} uses it
+     * directly.
+     */
+    private boolean migrateUpdateIntervalStringToInt(SharedPreferences.Editor editor) {
+        if (!preferences.contains(OLD_PREF_UPDATE_INTERVAL)) {
+            return false; // already completed
+        }
+        int updateInterval = DEFAULT_UPDATE_INTERVAL;
+        String value = preferences.getString(OLD_PREF_UPDATE_INTERVAL, String.valueOf(24));
+        if ("1".equals(value)) { // 1 hour
+            updateInterval = 6;
+        } else if ("4".equals(value)) { // 4 hours
+            updateInterval = 5;
+        } else if ("12".equals(value)) { // 12 hours
+            updateInterval = 4;
+        } else if ("24".equals(value)) { // 1 day
+            updateInterval = 3;
+        } else if ("168".equals(value)) { // 2 weeks
+            updateInterval = 2;
+        } else if ("336".equals(value)) { // 1 week
+            updateInterval = 1;
+        } else if ("0".equals(value)) { // never
+            updateInterval = 0;
+        }
+        editor
+                .putInt(PREF_UPDATE_INTERVAL, updateInterval)
+                .remove(OLD_PREF_UPDATE_INTERVAL);
+        return true;
+    }
+
+    /**
+     * The original preference was just a "Only on Wifi" checkbox.
+     */
+    private boolean migrateOnlyOnWifi(SharedPreferences.Editor editor) {
+        if (!preferences.contains(OLD_PREF_UPDATE_ON_WIFI_ONLY)) {
+            return false; // already completed
+        }
+        int wifi;
+        int data;
+        if (preferences.getBoolean(OLD_PREF_UPDATE_ON_WIFI_ONLY, true)) {
+            wifi = OVER_NETWORK_ALWAYS;
+            data = OVER_NETWORK_NEVER;
+        } else {
+            wifi = OVER_NETWORK_ALWAYS;
+            data = OVER_NETWORK_ON_DEMAND;
+        }
+        editor
+                .putInt(PREF_OVER_WIFI, wifi)
+                .putInt(PREF_OVER_DATA, data)
+                .remove(OLD_PREF_UPDATE_ON_WIFI_ONLY);
+        return true;
     }
 
     /**
@@ -283,7 +371,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isUpdateNotificationEnabled() {
-        return preferences.getBoolean(PREF_UPD_NOTIFY, true);
+        return preferences.getBoolean(PREF_UPDATE_NOTIFICATION_ENABLED, true);
     }
 
     public boolean isAutoDownloadEnabled() {
@@ -295,9 +383,29 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * downloaded in the background.
      */
     public boolean isBackgroundDownloadAllowed() {
-        return FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT ||
-                (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED
-                        && !preferences.getBoolean(PREF_UPD_WIFI_ONLY, false));
+        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+            return getOverWifi() == OVER_NETWORK_ALWAYS;
+        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+            return getOverData() == OVER_NETWORK_ALWAYS;
+        }
+        return false;
+    }
+
+    public boolean isOnDemandDownloadAllowed() {
+        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+            return getOverWifi() != OVER_NETWORK_NEVER;
+        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+            return getOverData() != OVER_NETWORK_NEVER;
+        }
+        return false;
+    }
+
+    public int getOverWifi() {
+        return preferences.getInt(PREF_OVER_WIFI, DEFAULT_OVER_WIFI);
+    }
+
+    public int getOverData() {
+        return preferences.getInt(PREF_OVER_DATA, DEFAULT_OVER_DATA);
     }
 
     /**

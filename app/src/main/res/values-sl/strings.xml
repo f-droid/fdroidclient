@@ -47,9 +47,6 @@
     <string name="other">Ostalo</string>
 
     <string name="update_interval">Interval samodejnega posodabljanja</string>
-    <string name="update_interval_zero">Samodejno osveževanje seznama aplikacij onemogočeno</string>
-    <string name="automatic_scan_wifi">Samo na Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Posodobi seznam aplikacij samo na Wi-Fi</string>
     <string name="notify_on">Prikaži obvestilo, ko so na voljo posodobitve</string>
 <string name="back">Nazaj</string>
     <string name="menu_settings">Nastavitve</string>

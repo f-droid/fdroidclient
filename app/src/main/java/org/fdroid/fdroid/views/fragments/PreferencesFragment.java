@@ -6,14 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.SeekBarPreference;
 import android.text.TextUtils;
 import android.view.WindowManager;
-
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
@@ -29,11 +30,13 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
+    public static final String TAG = "PreferencesFragment";
 
     private static final String[] SUMMARIES_TO_UPDATE = {
-            Preferences.PREF_UPD_INTERVAL,
-            Preferences.PREF_UPD_WIFI_ONLY,
-            Preferences.PREF_UPD_NOTIFY,
+            Preferences.PREF_OVER_WIFI,
+            Preferences.PREF_OVER_DATA,
+            Preferences.PREF_UPDATE_INTERVAL,
+            Preferences.PREF_UPDATE_NOTIFICATION_ENABLED,
             Preferences.PREF_SHOW_ROOT_APPS,
             Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
@@ -49,21 +52,47 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_PROXY_PORT,
     };
 
+    private static final int[] UPDATE_INTERVAL_NAMES = {
+            R.string.interval_never,
+            R.string.interval_2w,
+            R.string.interval_1w,
+            R.string.interval_1d,
+            R.string.interval_12h,
+            R.string.interval_4h,
+            R.string.interval_1h,
+    };
+
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
-    private CheckBoxPreference enableProxyCheckPref;
-    private CheckBoxPreference useTorCheckPref;
+
+    private SeekBarPreference overWifiSeekBar;
+    private SeekBarPreference overDataSeekBar;
+    private SeekBarPreference updateIntervalSeekBar;
+    private SwitchPreference enableProxyCheckPref;
+    private SwitchPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
-    private FDroidApp fdroidApp;
+    private int overWifiPrevious;
+    private int overDataPrevious;
+    private int updateIntervalPrevious;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
+
+        Preferences.get().migrateOldPreferences();
+
         addPreferencesFromResource(R.xml.preferences);
-        useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
-        enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
+        enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
+
+        overWifiSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
+        overWifiPrevious = overWifiSeekBar.getValue();
+        overDataSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
+        overDataPrevious = overDataSeekBar.getValue();
+        updateIntervalSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
+        updateIntervalPrevious = updateIntervalSeekBar.getValue();
 
         ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
         if (Build.VERSION.SDK_INT >= 24) {
@@ -78,7 +107,7 @@ public class PreferencesFragment extends PreferenceFragment
     }
 
     private void checkSummary(String key, int resId) {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
+        Preference pref = findPreference(key);
         pref.setSummary(resId);
     }
 
@@ -94,28 +123,56 @@ public class PreferencesFragment extends PreferenceFragment
         pref.setSummary(getString(resId, pref.getText()));
     }
 
+    private void setNetworkSeekBarSummary(SeekBarPreference seekBarPreference) {
+        int position = seekBarPreference.getValue();
+        if (position == 0) {
+            seekBarPreference.setSummary(R.string.over_network_never_summary);
+        } else if (position == 1) {
+            seekBarPreference.setSummary(R.string.over_network_on_demand_summary);
+        } else if (position == 2) {
+            seekBarPreference.setSummary(R.string.over_network_always_summary);
+        } else {
+            throw new IllegalArgumentException("No such " + seekBarPreference.getTitle() + " position: " + position);
+        }
+    }
+
+    private void enableUpdateInverval() {
+        if (overWifiSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER
+                && overDataSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER) {
+            updateIntervalSeekBar.setEnabled(false);
+            updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[0]);
+        } else {
+            updateIntervalSeekBar.setEnabled(true);
+            updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[updateIntervalSeekBar.getValue()]);
+        }
+    }
+
     private void updateSummary(String key, boolean changing) {
 
         switch (key) {
-            case Preferences.PREF_UPD_INTERVAL:
-                ListPreference listPref = (ListPreference) findPreference(
-                        Preferences.PREF_UPD_INTERVAL);
-                int interval = Integer.parseInt(listPref.getValue());
-                Preference onlyOnWifi = findPreference(
-                        Preferences.PREF_UPD_WIFI_ONLY);
-                onlyOnWifi.setEnabled(interval > 0);
-                if (interval == 0) {
-                    listPref.setSummary(R.string.update_interval_zero);
-                } else {
-                    listPref.setSummary(listPref.getEntry());
-                }
+
+            case Preferences.PREF_UPDATE_INTERVAL:
+                updateIntervalSeekBar.setMax(Preferences.UPDATE_INTERVAL_VALUES.length - 1);
+                updateIntervalSeekBar.setDefaultValue(Preferences.DEFAULT_UPDATE_INTERVAL);
+                int seekBarPosition = updateIntervalSeekBar.getValue();
+                updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[seekBarPosition]);
                 break;
 
-            case Preferences.PREF_UPD_WIFI_ONLY:
-                checkSummary(key, R.string.automatic_scan_wifi_on);
+            case Preferences.PREF_OVER_WIFI:
+                overWifiSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
+                overWifiSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_WIFI);
+                setNetworkSeekBarSummary(overWifiSeekBar);
+                enableUpdateInverval();
                 break;
 
-            case Preferences.PREF_UPD_NOTIFY:
+            case Preferences.PREF_OVER_DATA:
+                overDataSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
+                overDataSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_DATA);
+                setNetworkSeekBarSummary(overDataSeekBar);
+                enableUpdateInverval();
+                break;
+
+            case Preferences.PREF_UPDATE_NOTIFICATION_ENABLED:
                 checkSummary(key, R.string.notify_on);
                 break;
 
@@ -123,10 +180,10 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     Activity activity = getActivity();
-                    fdroidApp = (FDroidApp) activity.getApplication();
+                    FDroidApp fdroidApp = (FDroidApp) activity.getApplication();
                     fdroidApp.reloadTheme();
                     fdroidApp.applyTheme(activity);
-                    fdroidApp.forceChangeTheme(activity);
+                    FDroidApp.forceChangeTheme(activity);
                 }
                 break;
 
@@ -190,7 +247,7 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_ENABLE_PROXY:
-                CheckBoxPreference checkPref = (CheckBoxPreference) findPreference(key);
+                SwitchPreference checkPref = (SwitchPreference) findPreference(key);
                 checkPref.setSummary(R.string.enable_proxy_summary);
                 break;
 
@@ -371,6 +428,13 @@ public class PreferencesFragment extends PreferenceFragment
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         Preferences.get().configureProxy();
+
+        if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
+            UpdateService.schedule(getActivity());
+        } else if (Build.VERSION.SDK_INT >= 21 &&
+                (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue())) {
+            UpdateService.schedule(getActivity());
+        }
     }
 
     @Override
@@ -385,5 +449,4 @@ public class PreferencesFragment extends PreferenceFragment
             }
         }
     }
-
 }

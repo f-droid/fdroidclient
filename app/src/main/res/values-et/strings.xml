@@ -14,9 +14,6 @@
     <string name="other">Muu</string>
 
     <string name="update_interval">Automaatne värskendusintervall</string>
-    <string name="update_interval_zero">Ära värskenda rakenduste loendit automaatselt</string>
-    <string name="automatic_scan_wifi">Ainult Wi-Fi ühendusega</string>
-    <string name="automatic_scan_wifi_on">Värskenda rakenduste loendit automaatselt piiramatu andmemahuga võrkudes nagu Wi-Fi</string>
     <string name="update_auto_download">Värskenduste automaatne hankimine</string>
     <string name="update_auto_download_summary">Värskendused laaditakse automaatselt ja sind teavitatakse, et neid paigaldada</string>
     <string name="notify">Kuva saadaolevad värskendused</string>

@@ -17,9 +17,6 @@
     <string name="other">တျခား</string>
 
     <string name="update_interval">အလိုအေလ်ာက္ အသစ္မြမ္းမံမႈ interval</string>
-    <string name="update_interval_zero">အလိုအေလ်ာက္ app စာရင္းအသစ္မြမ္းမံမႈမ်ားမေတြ႕ရပါ</string>
-    <string name="automatic_scan_wifi">ဝိုင္ဖိုင္ျဖင့္သာ</string>
-    <string name="automatic_scan_wifi_on">ဝိုင္ဖိုင္ျဖင့္သာ app စာရင္းမ်ားကိုအလိုအေလ်ာက္ျပဳလုပ္မည္</string>
     <string name="update_auto_download">အသစ္မြမ္းမံမႈမ်ားကိုအလိုအေလ်ာက္ေဒါင္းလုတ္ဆြဲမည္</string>
     <string name="update_auto_download_summary">အေနာက္ပိုင္းတြင္ အသစ္မြမ္းမံမႈမ်ားကိုေဒါင္းလုတ္ဆြဲမည္</string>
     <string name="notify">အသစ္မြမ္းမံမႈ အသိေပးခ်က္မ်ား</string>

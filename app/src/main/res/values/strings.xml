@@ -23,9 +23,11 @@
     <string name="other">Other</string>
 
     <string name="update_interval">Automatic update interval</string>
-    <string name="update_interval_zero">No automatic app list updates</string>
-    <string name="automatic_scan_wifi">Only on Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Only update automatically on unmetered networks like Wi-Fi</string>
+    <string name="over_wifi">Over Wi-Fi</string>
+    <string name="over_data">Over data</string>
+    <string name="over_network_always_summary">Always use this connection when available</string>
+    <string name="over_network_on_demand_summary">Only use this connection when I click to download</string>
+    <string name="over_network_never_summary">Never download anything using this connection</string>
     <string name="update_auto_download">Automatically fetch updates</string>
     <string name="update_auto_download_summary">Updates are downloaded automatically and you are notified to install
         them
@@ -186,7 +188,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="categories__empty_state__no_categories">No categories to display</string>
 
     <string name="preference_category__my_apps">My Apps</string>
-    <string name="preference_manage_installed_apps">Manage Installed Apps</string>
+    <string name="preference_manage_installed_apps">Manage installed apps</string>
 
 
     <string name="details_notinstalled">Not installed</string>
@@ -242,7 +244,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="proxy_port_summary">Your proxy\'s port number (e.g. 8118)</string>
 
     <string name="privacy">Privacy</string>
-    <string name="preventScreenshots_title">Prevent Screenshots</string>
+    <string name="preventScreenshots_title">Prevent screenshots</string>
     <string name="preventScreenshots_summary">Blocks screenshots from being taken and hides app content from recent apps screen</string>
 
     <string name="panic_app_setting_title">Panic Button App</string>
@@ -253,7 +255,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_app_dialog_message">Are you sure that you want to allow %1$s to trigger destructive panic button actions?</string>
     <string name="allow">Allow</string>
 
-    <string name="panic_settings">Panic Button Settings</string>
+    <string name="panic_settings">Panic button settings</string>
     <string name="panic_settings_summary">Actions to be taken in case of emergency</string>
     <string name="panic_exit_title">Exit App</string>
     <string name="panic_exit_summary">App will be closed </string>
@@ -497,13 +499,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="installing">Installing…</string>
     <string name="uninstalling">Uninstalling…</string>
 
-    <string name="interval_never">Never</string>
-    <string name="interval_1h">Hourly</string>
-    <string name="interval_4h">Every 4 hours</string>
-    <string name="interval_12h">Every 12 hours</string>
-    <string name="interval_1d">Daily</string>
-    <string name="interval_1w">Weekly</string>
-    <string name="interval_2w">Every 2 weeks</string>
+    <string name="interval_never">No automatic app updates</string>
+    <string name="interval_1h">Check for updates hourly</string>
+    <string name="interval_4h">Check for updates every 4 hours</string>
+    <string name="interval_12h">Check for updates every 12 hours</string>
+    <string name="interval_1d">Check for updates daily</string>
+    <string name="interval_1w">Check for updates weekly</string>
+    <string name="interval_2w">Check for updates every 2 weeks</string>
 
     <string name="keep_hour">1 Hour</string>
     <string name="keep_day">1 Day</string>

@@ -4,7 +4,6 @@
     <string name="delete">Forigi</string>
     <string name="updates">Ĝisdatigoj</string>
     <string name="other">Aliaj</string>
-    <string name="automatic_scan_wifi">Nur per vifio</string>
     <string name="notify">Montri disponeblajn ĝisdatigojn</string>
     <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponeblaj</string>
     <string name="app_details">Aplikaĵaj detaloj</string>
@@ -99,8 +98,6 @@
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
-    <string name="update_interval_zero">Neniam aŭtomate ĝisdatigi listojn de aplikaĵoj</string>
-    <string name="automatic_scan_wifi_on">Ĝisdatigi listojn aŭtomate nur per netarifaj retoj kiel vifio</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
     <string name="system_installer_on">Uzi privilegian F-Droid-aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn
     </string>

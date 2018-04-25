@@ -6,14 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Process;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
-import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import rx.functions.Action1;
@@ -22,7 +20,6 @@ import rx.subjects.PublishSubject;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -310,7 +307,7 @@ public class InstalledAppProviderService extends IntentService {
         contentValues.put(InstalledAppTable.Cols.VERSION_NAME, packageInfo.versionName);
         contentValues.put(InstalledAppTable.Cols.APPLICATION_LABEL,
                 InstalledAppProvider.getApplicationLabel(context, packageInfo.packageName));
-        contentValues.put(InstalledAppTable.Cols.SIGNATURE, getPackageSig(packageInfo));
+        contentValues.put(InstalledAppTable.Cols.SIGNATURE, Utils.getPackageSig(packageInfo));
         contentValues.put(InstalledAppTable.Cols.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
 
         contentValues.put(InstalledAppTable.Cols.HASH_TYPE, hashType);
@@ -324,25 +321,4 @@ public class InstalledAppProviderService extends IntentService {
         Uri uri = InstalledAppProvider.getAppUri(packageName);
         context.getContentResolver().delete(uri, null, null);
     }
-
-    /**
-     * Get the fingerprint used to represent an APK signing key in F-Droid.
-     * This is a custom fingerprint algorithm that was kind of accidentally
-     * created, but is still in use.
-     */
-    private static String getPackageSig(PackageInfo info) {
-        if (info == null || info.signatures == null || info.signatures.length < 1) {
-            return "";
-        }
-        Signature sig = info.signatures[0];
-        String sigHash = "";
-        try {
-            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
-            sigHash = hash.getHash();
-        } catch (NoSuchAlgorithmException e) {
-            // ignore
-        }
-        return sigHash;
-    }
-
 }
