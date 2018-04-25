@@ -17,6 +17,12 @@ import org.fdroid.fdroid.Preferences;
  * An {@link JobIntentService} subclass for tracking whether there is metered or
  * unmetered internet available, based on
  * {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION}
+ * <p>
+ * {@link Build.VERSION_CODES#N Android 7.0} removed
+ * {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION} so this will
+ * need to be totally changed to support that.
+ *
+ * @see <a href="https://developer.android.com/topic/performance/background-optimization">Background Optimizations</a>
  */
 public class ConnectivityMonitorService extends JobIntentService {
     public static final String TAG = "ConnectivityMonitorServ";
@@ -36,7 +42,9 @@ public class ConnectivityMonitorService extends JobIntentService {
 
     /**
      * Register the {@link BroadcastReceiver} which also starts this
-     * {@code Service} since it is a sticky broadcast.
+     * {@code Service} since it is a sticky broadcast. This cannot be
+     * registered in the manifest, since {@link Build.VERSION_CODES#N Android 7.0}
+     * makes that not work.
      */
     public static void registerAndStart(Context context) {
         context.registerReceiver(CONNECTIVITY_RECEIVER, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
