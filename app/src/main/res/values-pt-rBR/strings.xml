@@ -545,4 +545,19 @@
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="warning_scaning_qr_code">Sua câmera não parece ter focagem automática. Pode ser difícil escanear o código.</string>
+    <string name="repo_add_mirror">Adicionar mirror</string>
+    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar ele como um mirror?</string>
+    <string name="show_root_apps">Incluir aplicativos root</string>
+    <string name="show_root_apps_on">Mostrar aplicativos que requerem privilégios root</string>
+    <string name="show_anti_feature_apps">Incluir aplicativos anti fraude</string>
+    <string name="force_touch_apps">Incluir aplicativos touchscreen</string>
+    <string name="force_touch_apps_on">Mostrar aplicativos touchscreen independente do suporte de hardware</string>
+
+    <string name="repo_official_mirrors">Mirrors oficiais</string>
+    <string name="repo_user_mirrors">Mirrors de usuário</string>
+    <string name="use_bluetooth">Usar Bluetooth</string>
+    <string name="swap_toast_invalid_url">URL invalida para troca: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi ativado</string>
+    <string name="swap_toast_could_not_enable_hotspot">Não foi possível habilitar o Hotspot Wi-Fi!</string>
+
     </resources>

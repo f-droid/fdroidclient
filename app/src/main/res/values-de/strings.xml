@@ -549,4 +549,5 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi-Hotspot aktiviert</string>
     <string name="swap_toast_could_not_enable_hotspot">Konnte WLAN-Hotspot nicht aktivieren!</string>
 
+    <string name="swap_toast_invalid_url">Ungültige URL zum Tauschen: %1$s</string>
     </resources>
