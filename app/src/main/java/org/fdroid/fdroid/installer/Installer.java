@@ -144,9 +144,10 @@ public abstract class Installer {
         }
 
         PackageManager pm = context.getPackageManager();
-        if (Build.VERSION.SDK_INT >= 24 && (
-                pm.getInstallerPackageName(apk.packageName).equals("com.android.packageinstaller")
-                        || pm.getInstallerPackageName(apk.packageName).equals("com.google.android.packageinstaller"))) {
+        String installerPackageName = pm.getInstallerPackageName(apk.packageName);
+        if (Build.VERSION.SDK_INT >= 24 &&
+                ("com.android.packageinstaller".equals(installerPackageName)
+                        || "com.google.android.packageinstaller".equals(installerPackageName))) {
             Utils.debugLog(TAG, "Falling back to default installer for uninstall");
             Intent intent = new Intent(context, DefaultInstallerActivity.class);
             intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
