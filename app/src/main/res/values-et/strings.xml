@@ -529,4 +529,5 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
+    <string name="repo_exists_add_fingerprint">%1$s on juba seadistatud; see lisab teabe uuest võtmest.</string>
     </resources>

@@ -534,7 +534,7 @@
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
     <string name="show_anti_feature_apps">Включить приложения с сомнительным функционалом</string>
-    <string name="show_anti_feature_apps_on">Показывать приложения, включающие функции, которые вам могут не понравиться</string>
+    <string name="show_anti_feature_apps_on">Показывать приложения с функциями, которые могут вам не понравиться</string>
     <string name="force_touch_apps">Включить приложения, требущие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
 
@@ -545,4 +545,8 @@
     <string name="swap_toast_hotspot_enabled">Точка доступа Wi-Fi включена</string>
     <string name="swap_toast_could_not_enable_hotspot">Не удалось включить точку доступа Wi-Fi!</string>
 
+    <string name="repo_exists_add_fingerprint">%1$s уже настроен, это действие добавит новую информацию о ключе.</string>
+    <string name="repo_exists_enable">%1$s уже настроен, подтвердите, что вы хотите снова его включить.</string>
+    <string name="repo_exists_and_enabled">%1$s уже настроен и включен.</string>
+    <string name="repo_delete_to_overwrite">Сначала удалите %1$s, чтобы добавить его с конфликтующим ключом.</string>
     </resources>

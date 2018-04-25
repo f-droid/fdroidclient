@@ -542,4 +542,9 @@
     <string name="repo_exists_add_mirror">Dette er en kopi av %1$s, legg den til som speil?</string>
     <string name="repo_official_mirrors">Offisielle speil</string>
     <string name="repo_user_mirrors">Bruker-speil</string>
+    <string name="use_bluetooth">Bruk Blåtann</string>
+    <string name="swap_toast_invalid_url">Ugyldig nettadresse for utveksling: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Lokalt Wi-Fi -nettverk påskrudd</string>
+    <string name="swap_toast_could_not_enable_hotspot">Kunne ikke skru på lokalt Wi-Fi -nettverk!</string>
+
     </resources>

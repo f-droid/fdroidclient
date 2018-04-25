@@ -567,4 +567,9 @@
     <string name="repo_exists_add_mirror">Custa est una còpia de %1$s, lu cheres annànghere comente isprigu?</string>
     <string name="repo_official_mirrors">Isprigos ufitziales</string>
     <string name="repo_user_mirrors">Isprigos impreadores</string>
+    <string name="use_bluetooth">Imprea su Bluetooth</string>
+    <string name="swap_toast_invalid_url">URL pro cuncàmbiu non vàlidu: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi abilitadu</string>
+    <string name="swap_toast_could_not_enable_hotspot">Impossìbile abilitare s\'Hotspot Wi-Fi!</string>
+
     </resources>
