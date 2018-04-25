@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@SuppressWarnings("LineLength")
 public class ApkProvider extends FDroidProvider {
 
     private static final String TAG = "ApkProvider";
@@ -41,7 +40,8 @@ public class ApkProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        private Helper() { }
+        private Helper() {
+        }
 
         public static void update(Context context, Apk apk) {
             ContentResolver resolver = context.getContentResolver();
@@ -83,19 +83,21 @@ public class ApkProvider extends FDroidProvider {
         /**
          * Find an app which is closest to the version code suggested by the server, with some caveates:
          * <ul>
-         *     <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
-         *     <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>
+         * <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
+         * <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>
          * </ul>
          */
         public static Apk findSuggestedApk(Context context, App app) {
-            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.getMostAppropriateSignature());
+            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode,
+                    app.getMostAppropriateSignature());
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {
             return findApkFromAnyRepo(context, packageName, versionCode, null, Cols.ALL);
         }
 
-        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode, String signature) {
+        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
+                                             String signature) {
             return findApkFromAnyRepo(context, packageName, versionCode, signature, Cols.ALL);
         }
 
@@ -185,7 +187,7 @@ public class ApkProvider extends FDroidProvider {
     protected static final String PATH_REPO_APP = "repo-app";
     private static final String PATH_APKS = "apks";
     private static final String PATH_APP = "app";
-    private static final String PATH_REPO      = "repo";
+    private static final String PATH_REPO = "repo";
     private static final String PATH_APK_ROW_ID = "apk-rowId";
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
@@ -226,27 +228,27 @@ public class ApkProvider extends FDroidProvider {
 
     public static Uri getAppUri(String packageName) {
         return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_APP)
-            .appendPath(packageName)
-            .build();
+                .buildUpon()
+                .appendPath(PATH_APP)
+                .appendPath(packageName)
+                .build();
     }
 
     public static Uri getRepoUri(long repoId) {
         return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_REPO)
-            .appendPath(Long.toString(repoId))
-            .build();
+                .buildUpon()
+                .appendPath(PATH_REPO)
+                .appendPath(Long.toString(repoId))
+                .build();
     }
 
     public static Uri getRepoUri(long repoId, String packageName) {
         return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_REPO_APP)
-            .appendPath(Long.toString(repoId))
-            .appendPath(packageName)
-            .build();
+                .buildUpon()
+                .appendPath(PATH_REPO_APP)
+                .appendPath(Long.toString(repoId))
+                .appendPath(packageName)
+                .build();
     }
 
     public static Uri getApkFromAnyRepoUri(Apk apk) {
@@ -296,10 +298,13 @@ public class ApkProvider extends FDroidProvider {
         private boolean antiFeaturesRequested;
 
         /**
-         * If the query includes anti features, then we group by apk id. This is because joining onto the anti-features
-         * table will result in multiple result rows for each apk (potentially), so we will GROUP_CONCAT each of the
-         * anti features into a single comma separated list for each apk. If we are _not_ including anti features, then
-         * don't group by apk, because when doing a COUNT(*) this will result in the wrong result.
+         * If the query includes anti features, then we group by apk id. This
+         * is because joining onto the anti-features table will result in
+         * multiple result rows for each apk (potentially), so we will
+         * {@code GROUP_CONCAT} each of the anti-features into a single comma-
+         * separated list for each apk. If we are _not_ including anti-
+         * features, then don't group by apk, because when doing a COUNT(*)
+         * this will result in the wrong result.
          */
         @Override
         protected String groupBy() {
@@ -313,8 +318,8 @@ public class ApkProvider extends FDroidProvider {
             final String pkg = PackageTable.NAME;
 
             return apk + " AS apk " +
-                " LEFT JOIN " + app + " AS app ON (app." + AppMetadataTable.Cols.ROW_ID + " = apk." + Cols.APP_ID + ")" +
-                " LEFT JOIN " + pkg + " AS pkg ON (pkg." + PackageTable.Cols.ROW_ID + " = app." + AppMetadataTable.Cols.PACKAGE_ID + ")";
+                    " LEFT JOIN " + app + " AS app ON (app." + AppMetadataTable.Cols.ROW_ID + " = apk." + Cols.APP_ID + ")" + // NOPMD NOCHECKSTYLE LineLength
+                    " LEFT JOIN " + pkg + " AS pkg ON (pkg." + PackageTable.Cols.ROW_ID + " = app." + AppMetadataTable.Cols.PACKAGE_ID + ")"; // NOPMD NOCHECKSTYLE LineLength
         }
 
         @Override
@@ -357,9 +362,11 @@ public class ApkProvider extends FDroidProvider {
                     "apk." + Cols.ROW_ID + " = " + apkAntiFeature + "." + ApkAntiFeatureJoinTable.Cols.APK_ID);
 
             leftJoin(AntiFeatureTable.NAME, antiFeature,
-                    apkAntiFeature + "." + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + " = " + antiFeature + "." + AntiFeatureTable.Cols.ROW_ID);
+                    apkAntiFeature + "." + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + " = "
+                            + antiFeature + "." + AntiFeatureTable.Cols.ROW_ID);
 
-            appendField("group_concat(" + antiFeature + "." + AntiFeatureTable.Cols.NAME + ") as " + Cols.AntiFeatures.ANTI_FEATURES);
+            appendField("group_concat(" + antiFeature + "." + AntiFeatureTable.Cols.NAME + ") as "
+                    + Cols.AntiFeatures.ANTI_FEATURES);
         }
     }
 
@@ -378,11 +385,11 @@ public class ApkProvider extends FDroidProvider {
 
         String selection =
                 alias + Cols.VERSION_CODE + " = ? AND " +
-                alias + Cols.APP_ID + " IN (" + getMetadataIdFromPackageNameQuery() + ")";
+                        alias + Cols.APP_ID + " IN (" + getMetadataIdFromPackageNameQuery() + ")";
 
         List<String> pathSegments = uri.getPathSegments();
         List<String> args = new ArrayList<>(3);
-        args.add(pathSegments.get(1)); // First (0th) path segment is the word "apk" and we are not interested in it.
+        args.add(pathSegments.get(1)); // 0th path segment is the word "apk" and we are not interested in it.
         args.add(pathSegments.get(2));
 
         if (pathSegments.size() >= 4) {
@@ -438,8 +445,8 @@ public class ApkProvider extends FDroidProvider {
         final String[] apkDetails = apkKeys.split(",");
         if (apkDetails.length > MAX_APKS_TO_QUERY) {
             throw new IllegalArgumentException(
-                "Cannot query more than " + MAX_APKS_TO_QUERY + ". " +
-                "You tried to query " + apkDetails.length);
+                    "Cannot query more than " + MAX_APKS_TO_QUERY + ". " +
+                            "You tried to query " + apkDetails.length);
         }
         String alias = includeAlias ? "apk." : "";
         final String[] args = new String[apkDetails.length * 2];
@@ -569,7 +576,9 @@ public class ApkProvider extends FDroidProvider {
     }
 
     protected void ensureAntiFeatures(String[] antiFeatures, long apkId) {
-        db().delete(getApkAntiFeatureJoinTableName(), ApkAntiFeatureJoinTable.Cols.APK_ID + " = ?", new String[] {Long.toString(apkId)});
+        db().delete(getApkAntiFeatureJoinTableName(),
+                ApkAntiFeatureJoinTable.Cols.APK_ID + " = ?",
+                new String[]{Long.toString(apkId)});
         if (antiFeatures != null) {
             Set<String> antiFeatureSet = new HashSet<>();
             for (String antiFeatureName : antiFeatures) {
@@ -594,7 +603,8 @@ public class ApkProvider extends FDroidProvider {
 
     protected long ensureAntiFeature(String antiFeatureName) {
         long antiFeatureId = 0;
-        Cursor cursor = db().query(AntiFeatureTable.NAME, new String[] {AntiFeatureTable.Cols.ROW_ID}, AntiFeatureTable.Cols.NAME + " = ?", new String[]{antiFeatureName}, null, null, null);
+        Cursor cursor = db().query(AntiFeatureTable.NAME, new String[]{AntiFeatureTable.Cols.ROW_ID},
+                AntiFeatureTable.Cols.NAME + " = ?", new String[]{antiFeatureName}, null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
