@@ -492,6 +492,7 @@ public final class Utils {
      * probably warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855
      * for more detail.
      */
+    @Nullable
     public static String getBinaryHash(File apk, String algo) {
         FileInputStream fis = null;
         try {
@@ -514,12 +515,12 @@ public final class Utils {
             } else if (message.contains(" ENOENT ")) {
                 Utils.debugLog(TAG, apk + " vanished: " + message);
             }
-            throw new IllegalArgumentException(e);
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalArgumentException(e);
         } finally {
             closeQuietly(fis);
         }
+        return null;
     }
 
     /**

@@ -94,7 +94,7 @@ public class SwapService extends Service {
         return INSTALLED_APPS.get(packageName);
     }
 
-    static void putAppInCache(String packageName, App app) {
+    static void putAppInCache(String packageName, @NonNull App app) {
         INSTALLED_APPS.put(packageName, app);
     }
 
