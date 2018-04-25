@@ -543,6 +543,10 @@ public class AppDetailsRecyclerViewAdapter
                     return itemView.getContext().getString(R.string.antiupstreamnonfreelist);
                 case "NonFreeAssets":
                     return itemView.getContext().getString(R.string.antinonfreeassetslist);
+                case "DisabledAlgorithm":
+                    return itemView.getContext().getString(R.string.antidisabledalgorithmlist);
+                case "KnownVuln":
+                    return itemView.getContext().getString(R.string.antiknownvulnlist);
                 default:
                     return af;
             }
