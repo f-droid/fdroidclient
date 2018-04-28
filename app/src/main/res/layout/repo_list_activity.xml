@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:title="@string/menu_manage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:theme="?attr/actionBarTheme"
-        app:popupTheme="?attr/actionBarPopupTheme" />
+        android:background="?attr/colorPrimary"
+        android:title="@string/menu_manage"
+        app:theme="?attr/actionBarTheme" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/repo_item"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:listitem="@layout/repo_item" />
 
 </LinearLayout>

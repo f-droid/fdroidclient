@@ -10,8 +10,7 @@
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeDark</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="actionBarTheme">@style/AppThemeLight.Toolbar</item>
-        <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="appDetailsBackground">?android:windowBackground</item>
         <item name="appDetailsCardBackground">#424242</item>
         <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_dark</item>
@@ -35,8 +34,7 @@
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="actionBarTheme">@style/AppThemeLight.Toolbar</item>
-        <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="appDetailsBackground">#fcfcfc</item>
         <item name="appDetailsCardBackground">#ffffff</item>
         <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_light</item>
@@ -105,10 +103,6 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppThemeLight.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:background">@color/fdroid_blue</item>
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
