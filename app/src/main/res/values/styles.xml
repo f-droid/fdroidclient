@@ -23,6 +23,8 @@
         <item name="appListItem">#ffffff</item>
         <item name="lightGrayTextColor">#a6a6a6</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning_white_24dp</item>
+        <item name="backButtonDrawable">@drawable/ic_back_white_24dp</item>
+        <item name="clearButtonDrawable">@drawable/ic_close_white_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
@@ -48,6 +50,8 @@
         <item name="appListItem">#424242</item>
         <item name="lightGrayTextColor">#4a4a4a</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning_black_24dp</item>
+        <item name="backButtonDrawable">@drawable/ic_back_black_24dp</item>
+        <item name="clearButtonDrawable">@drawable/ic_close_black_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
