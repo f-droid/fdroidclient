@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <declare-styleable name="Theme">
         <attr name="appDetailsBackground" format="color" />
         <attr name="appDetailsCardBackground" format="color" />
@@ -12,6 +12,8 @@
         <attr name="appListItem" format="color" />
         <attr name="lightGrayTextColor" format="color" />
         <attr name="antiFeaturesWarning" format="reference" />
+        <attr name="backButtonDrawable" format="reference" />
+        <attr name="clearButtonDrawable" format="reference" />
     </declare-styleable>
 
     <integer name="unhidePin">1337</integer>
