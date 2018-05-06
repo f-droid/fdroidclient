@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_card"
         android:focusable="true"
-        android:background="@drawable/focus"
+        android:background="@drawable/fab_focus"
         android:nextFocusDown="@+id/app_list"
         android:nextFocusRight="@+id/app_list"/>
 
