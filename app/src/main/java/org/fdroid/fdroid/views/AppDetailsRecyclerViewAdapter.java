@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -508,26 +509,14 @@ public class AppDetailsRecyclerViewAdapter
          * Takes into account:
          *  + Whether the app is installed.
          *  + Whether the app can be upgraded.
-         *  + Whether the device is connected to the internet (allows user to queue for downloading
-         *    next time they go online).
+         *
+         * Ideally, it would also take into account whether the device is connected to the internet,
+         * however that ends up with a bit of logic being duplicated in this function. As a result,
+         * this method will delegate to {@link #setInstallButtonTextAndCallback(App, int, View.OnClickListener)}.
+         * That method is responsible for deciding whether to show a 'Queue for download' button or
+         * an actual install/update button.
          */
         private void updateButtons() {
-            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE) {
-                buttonSecondaryView.setVisibility(View.VISIBLE);
-                buttonPrimaryView.setVisibility(View.GONE);
-
-                if (!app.isInstalled(context) || app.canAndWantToUpdate(context)) {
-                    if (app.getPrefs(context).queueForDownload) {
-                        buttonSecondaryView.setText(R.string.app_details__cancel_download_when_online);
-                        buttonSecondaryView.setOnClickListener(onCancelQueueForDownloadWhenOnline);
-                    } else {
-                        buttonSecondaryView.setText(R.string.app_details__download_when_online);
-                        buttonSecondaryView.setOnClickListener(onQueueForDownloadWhenOnline);
-                    }
-                }
-                return;
-            }
-
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
@@ -540,15 +529,11 @@ public class AppDetailsRecyclerViewAdapter
             } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 callbacks.disableAndroidBeam();
-                // Set Install button and hide second button
-                buttonPrimaryView.setText(R.string.menu_install);
-                buttonPrimaryView.setOnClickListener(onInstallClickListener);
-                buttonPrimaryView.setEnabled(true);
+                setInstallButtonTextAndCallback(app, R.string.menu_install, onInstallClickListener);
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(context) && suggestedApk != null) {
-                    buttonPrimaryView.setText(R.string.menu_upgrade);
-                    buttonPrimaryView.setOnClickListener(onUpgradeClickListener);
+                    setInstallButtonTextAndCallback(app, R.string.menu_upgrade, onUpgradeClickListener);
                 } else {
                     if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
@@ -558,6 +543,30 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
                 buttonPrimaryView.setEnabled(true);
+            }
+        }
+
+        /**
+         * Once {@link #updateButtons()} has decided that the user can either update or install an
+         * app, then this method will display the appropriate message. However, before doing this,
+         * it asks if we are connected to the internet. If not, we will display a "Queue for
+         * download" button.
+         * @see #updateButtons()
+         */
+        private void setInstallButtonTextAndCallback(App app, @StringRes int textRes, View.OnClickListener callback) {
+            buttonPrimaryView.setEnabled(true);
+            buttonPrimaryView.setVisibility(View.VISIBLE);
+            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE) {
+                if (app.getPrefs(context).queueForDownload) {
+                    buttonPrimaryView.setText(R.string.app_details__cancel_download_when_online);
+                    buttonPrimaryView.setOnClickListener(onCancelQueueForDownloadWhenOnline);
+                } else {
+                    buttonPrimaryView.setText(R.string.app_details__download_when_online);
+                    buttonPrimaryView.setOnClickListener(onQueueForDownloadWhenOnline);
+                }
+            } else {
+                buttonPrimaryView.setText(textRes);
+                buttonPrimaryView.setOnClickListener(callback);
             }
         }
 
