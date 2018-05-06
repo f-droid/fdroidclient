@@ -512,16 +512,18 @@ public class AppDetailsRecyclerViewAdapter
          *    next time they go online).
          */
         private void updateButtons() {
-            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE && !app.isInstalled(context)) {
+            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE) {
                 buttonSecondaryView.setVisibility(View.VISIBLE);
                 buttonPrimaryView.setVisibility(View.GONE);
 
-                if (app.getPrefs(context).queueForDownload) {
-                    buttonSecondaryView.setText(R.string.app_details__cancel_download_when_online);
-                    buttonSecondaryView.setOnClickListener(onCancelQueueForDownloadWhenOnline);
-                } else {
-                    buttonSecondaryView.setText(R.string.app_details__download_when_online);
-                    buttonSecondaryView.setOnClickListener(onQueueForDownloadWhenOnline);
+                if (!app.isInstalled(context) || app.canAndWantToUpdate(context)) {
+                    if (app.getPrefs(context).queueForDownload) {
+                        buttonSecondaryView.setText(R.string.app_details__cancel_download_when_online);
+                        buttonSecondaryView.setOnClickListener(onCancelQueueForDownloadWhenOnline);
+                    } else {
+                        buttonSecondaryView.setText(R.string.app_details__download_when_online);
+                        buttonSecondaryView.setOnClickListener(onQueueForDownloadWhenOnline);
+                    }
                 }
                 return;
             }
