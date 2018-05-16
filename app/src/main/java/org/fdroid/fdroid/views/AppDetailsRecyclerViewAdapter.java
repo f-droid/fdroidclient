@@ -837,9 +837,6 @@ public class AppDetailsRecyclerViewAdapter
             // License link
             if (!TextUtils.isEmpty(app.license)) {
                 String firstLicense = app.license.split(",")[0];
-                if (firstLicense.endsWith("+")) { // the + is SPDX syntax on top of the license name
-                    firstLicense = firstLicense.substring(0, firstLicense.length() - 1);
-                }
                 String url = "https://spdx.org/licenses/" + firstLicense + ".html";
                 if (uriIsSetAndCanBeOpened(url)) {
                     addLinkItemView(contentView, R.string.menu_license, R.drawable.ic_license, url, app.license);
