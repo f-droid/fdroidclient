@@ -25,6 +25,7 @@ import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -333,6 +334,10 @@ public class AppDetailsRecyclerViewAdapter
             antiFeaturesView = (TextView) view.findViewById(R.id.text_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
             buttonLayout = view.findViewById(R.id.button_layout);
+            //TODO FAB: isUiTelevision variable ?
+            if (Utils.isUiTelevision()) {
+                ((LinearLayout) buttonLayout).setGravity(Gravity.START);
+            }
             buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
             progressLayout = view.findViewById(R.id.progress_layout);
@@ -676,6 +681,9 @@ public class AppDetailsRecyclerViewAdapter
         ExpandableLinearLayoutViewHolder(View view) {
             super(view);
             headerView = (TextView) view.findViewById(R.id.information);
+            headerView.setFocusable(true);
+            //TODO FAB: setbackground with selectableItemBackground
+            Utils.setBackground(headerView, R.drawable.fab_focus_text);
             contentView = (LinearLayout) view.findViewById(R.id.ll_content);
         }
 

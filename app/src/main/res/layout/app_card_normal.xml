@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
     android:layout_height="130dp"
+    android:focusable="true"
     android:background="?attr/categoryPreviewAppCardBackground"
     android:padding="8dp">
 

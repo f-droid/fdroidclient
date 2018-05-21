@@ -60,6 +60,9 @@
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        android:nextFocusDown="@id/primaryButtonView"
                         android:textAppearance="@style/DetailsAppTitleStyle"
                         tools:text="Really Long App Title Which Wraps Around Onto the Second Line" />
 
@@ -158,6 +161,9 @@
                     android:layout_weight="0"
                     android:ellipsize="marquee"
                     app:textAllCaps="true"
+                    android:focusable="true"
+                    android:nextFocusUp="@id/title"
+                    android:nextFocusRight="@id/primaryButtonView"
                     tools:text="Uninstall"/>
 
                 <android.support.v7.widget.AppCompatButton
@@ -170,6 +176,9 @@
                     android:layout_weight="0"
                     android:ellipsize="marquee"
                     app:textAllCaps="true"
+                    android:focusable="true"
+                    android:nextFocusUp="@id/title"
+                    android:nextFocusLeft="@id/secondaryButtonView"
                     tools:text="Run"/>
             </LinearLayout>
         </RelativeLayout>
@@ -187,7 +196,9 @@
             android:paddingBottom="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:focusable="true"
             android:background="?attr/detailPanel"
+            android:nextFocusUp="@id/primaryButtonView"
             tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
 
         <TextView
@@ -202,6 +213,8 @@
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textIsSelectable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
         <TextView

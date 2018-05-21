@@ -28,8 +28,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:contentDescription="@string/updates__tts__download_updates_for_all_apps"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_updates_available" />
+        app:layout_constraintTop_toTopOf="@+id/text_updates_available"/>
 
     <TextView
         android:id="@+id/text_apps_to_update"
@@ -52,6 +54,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_apps_to_update"
+        android:focusable="true"
         android:background="?attr/selectableItemBackground"
         android:textColor="@color/fdroid_blue"
         android:padding="0dp"

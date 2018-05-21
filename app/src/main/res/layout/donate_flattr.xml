@@ -9,4 +9,6 @@
     android:layout_marginEnd="4dp"
     android:layout_marginRight="4dp"
     android:src="@drawable/donation_option_flattr"
+    android:focusable="true"
+    android:background="@drawable/fab_focus_text"
     android:contentDescription="@string/menu_flattr" />

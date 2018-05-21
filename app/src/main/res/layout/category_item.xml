@@ -21,7 +21,7 @@
         android:paddingEnd="18dp"
         tools:layout_editor_absoluteX="0dp"
         android:focusable="true"
-        android:focusableInTouchMode="true" />
+        android:background="@drawable/fab_focus_text"/>
 
     <Button
         android:id="@+id/button"
@@ -40,6 +40,7 @@
         android:textSize="14sp"
         android:textAllCaps="true"
         android:textColor="@color/fdroid_blue"
+        android:focusable="true"
 
         tools:layout_editor_absoluteX="268dp" />
 

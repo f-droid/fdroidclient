@@ -18,6 +18,7 @@ import android.widget.TextView;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -69,23 +70,31 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         });
 
         FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.btn_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
+        if (!Utils.isUiTelevision())
+        {
+            searchFab.setVisibility(View.VISIBLE);
+            searchFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity, AppListActivity.class));
                 }
-            }
-        });
+            });
+            searchFab.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (Preferences.get().hideOnLongPressSearch()) {
+                        HidingManager.showHideDialog(activity);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+        }
+        else
+        {
+            searchFab.setVisibility(View.GONE);
+        }
 
         activity.getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }

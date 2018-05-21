@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import info.guardianproject.netcipher.NetCipher;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -16,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import info.guardianproject.netcipher.NetCipher;
 
 /**
  * Handles shared preferences for FDroid, looking after the names of
@@ -47,6 +48,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_THEME = "theme";
+    public static final String PREF_DISPLAY = "display";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
@@ -242,6 +244,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public Theme getTheme() {
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
+    }
+
+    public String getDisplay() {
+        //Use Utils.isUiTelevision() instead
+        return preferences.getString(PREF_DISPLAY, "C");
     }
 
     public boolean isLocalRepoHttpsEnabled() {

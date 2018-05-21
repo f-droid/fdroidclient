@@ -44,4 +44,8 @@
         <item>night</item>
     </string-array>
 
+    <string-array name="displayValues">
+        <item>C</item><!-- (C)lassic Android device: smartphone/tablet -->
+        <item>T</item><!-- (T)elevision -->
+    </string-array>
 </resources>

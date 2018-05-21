@@ -12,6 +12,8 @@
         <attr name="appListItem" format="color" />
         <attr name="lightGrayTextColor" format="color" />
         <attr name="antiFeaturesWarning" format="reference" />
+        <attr name="buttonNormalBgColor" format="color" />
+        <attr name="categoryNormalBgColor" format="color" />
     </declare-styleable>
 
     <integer name="unhidePin">1337</integer>

@@ -30,4 +30,6 @@
     <dimen name="category_preview__app_list__padding__vertical">18dp</dimen>
 
     <dimen name="banner__padding">4dp</dimen>
+
+    <dimen name="navigation_bar_tv_width">220dp</dimen>
 </resources>

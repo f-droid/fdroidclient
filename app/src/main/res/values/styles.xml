@@ -23,6 +23,8 @@
         <item name="appListItem">#ffffff</item>
         <item name="lightGrayTextColor">#a6a6a6</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning_white_24dp</item>
+        <item name="buttonNormalBgColor">#5a595b</item>
+        <item name="categoryNormalBgColor">#212121</item><!--color of categoryPreviewAppCardBackground-->
     </style>
 
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
@@ -47,6 +49,8 @@
         <item name="appListItem">#424242</item>
         <item name="lightGrayTextColor">#4a4a4a</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning_black_24dp</item>
+        <item name="buttonNormalBgColor">#d6d7d7</item>
+        <item name="categoryNormalBgColor">#faf8ef</item><!--color of categoryPreviewAppCardBackground-->
     </style>
 
     <style name="AppBaseThemeNight" parent="AppThemeDark">
@@ -58,6 +62,7 @@
         <item name="android:windowBackground">@android:color/black</item>
         <item name="detailPanel">@drawable/details_panel_donate_background_night</item>
         <item name="mainTabSwapSplashTint">#111111</item>
+        <item name="buttonNormalBgColor">#5a595b</item>
     </style>
 
     <!-- dark app theme with accent colors following roughly android design guidelines -->

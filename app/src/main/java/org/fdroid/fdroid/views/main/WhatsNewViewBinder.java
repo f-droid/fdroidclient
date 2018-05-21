@@ -43,7 +43,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
 
-        View whatsNewView = activity.getLayoutInflater().inflate(R.layout.main_tab_whats_new, parent, true);
+        View whatsNewView = activity.getLayoutInflater().inflate(Utils.isUiTelevision() ? R.layout.main_tab_whats_new_tv : R.layout.main_tab_whats_new, parent, true);
 
         whatsNewAdapter = new WhatsNewAdapter(activity);
 
@@ -68,23 +68,31 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         });
 
         FloatingActionButton searchFab = (FloatingActionButton) whatsNewView.findViewById(R.id.btn_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
+        if (!Utils.isUiTelevision())
+        {
+            searchFab.setVisibility(View.VISIBLE);
+            searchFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity, AppListActivity.class));
                 }
-            }
-        });
+            });
+            searchFab.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (Preferences.get().hideOnLongPressSearch()) {
+                        HidingManager.showHideDialog(activity);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+        }
+        else
+        {
+            searchFab.setVisibility(View.GONE);
+        }
 
         activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }

@@ -7,4 +7,6 @@
     android:drawableStart="@drawable/ic_website"
     android:layout_marginLeft="@dimen/layout_horizontal_margin"
     android:layout_marginStart="@dimen/layout_horizontal_margin"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
     tools:text="@string/menu_website" />

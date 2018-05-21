@@ -12,7 +12,7 @@
     android:layout_marginBottom="@dimen/details_activity__collapsable_lists__padding__vertical"
     android:clickable="true"
     android:orientation="vertical"
-    tools:ignore="UnusedAttribute">
+    tools:ignore="KeyboardInaccessibleWidget,UnusedAttribute">
 
     <!-- This frame layout is only for showing the material-design-like background ripple when
          selecting the TextView. -->

@@ -15,8 +15,7 @@ import android.text.TextUtils;
 import android.view.WindowManager;
 
 import com.geecko.QuickLyric.view.AppCompatListPreference;
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
+
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
@@ -27,6 +26,9 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -39,6 +41,7 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
+            Preferences.PREF_DISPLAY,
             Preferences.PREF_FORCE_TOUCH_APPS,
             Preferences.PREF_LOCAL_REPO_NAME,
             Preferences.PREF_LANGUAGE,
@@ -129,6 +132,22 @@ public class PreferencesFragment extends PreferenceFragment
                     fdroidApp.reloadTheme();
                     fdroidApp.applyTheme(activity);
                     fdroidApp.forceChangeTheme(activity);
+                }
+                break;
+
+            case Preferences.PREF_DISPLAY:
+                entrySummary(key);
+                if (changing) {
+                    final Activity activity = getActivity();
+                    final Intent intent = activity.getIntent();
+                    if (intent == null) { // when launched as LAUNCHER
+                        return;
+                    }
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    activity.finish();
+                    activity.overridePendingTransition(0, 0);
+                    activity.startActivity(intent);
+                    activity.overridePendingTransition(0, 0);
                 }
                 break;
 

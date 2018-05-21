@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header_height"
         android:foreground="?attr/selectableItemBackground"
-        >
+        android:focusable="true">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

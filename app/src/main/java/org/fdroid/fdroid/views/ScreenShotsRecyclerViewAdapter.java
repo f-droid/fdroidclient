@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

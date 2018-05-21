@@ -21,11 +21,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -86,6 +89,17 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         String translatedName = translateCategory(activity, categoryName);
         heading.setText(translatedName);
         heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
+        try
+        {
+            //TODO FAB: try to find a solution with nextFocusLeftId working always
+            final int mnuTvId = activity.findViewById(R.id.btnLatest).getId();
+            heading.setNextFocusLeftId(mnuTvId);
+        }
+        catch (Exception ex)
+        {
+            //Issue sometimes: couldn't find view with id xxx, but the id has been found!
+            //The view mnuTvId seems not accessible with setNextFocusLeft.
+        }
 
         viewAll.setVisibility(View.INVISIBLE);
 
@@ -222,6 +236,9 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            //TODO FAB: setbackground to check with ?attr/selectableItemBackground
+            Utils.setBackground(view, R.drawable.fab_focus_category);
+
             Resources r = context.getResources();
             int horizontalPadding = (int) r.getDimension(R.dimen.category_preview__app_list__padding__horizontal);
             int horizontalPaddingFirst = (int) r.getDimension(

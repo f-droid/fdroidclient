@@ -43,6 +43,11 @@
                         android:key="pref_category_display">
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/pref_language"
             android:key="language"/>
+        <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/display"
+            android:key="display"
+            android:defaultValue="C"
+            android:entries="@array/displayNames"
+            android:entryValues="@array/displayValues" />
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/theme"
             android:key="theme"
             android:defaultValue="light"

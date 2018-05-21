@@ -14,11 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.Toast;
+
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
@@ -74,7 +78,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        //TODO FAB: externalize to preferences
+        final boolean isUiTelevision = Utils.isUiTelevision();
+        setContentView(isUiTelevision ? R.layout.activity_main_tv : R.layout.activity_main);
+        if (isUiTelevision) {
+            final ViewStub vsContent = (ViewStub) findViewById(R.id.vsContent);
+            vsContent.inflate();
+        }
 
         adapter = new MainViewAdapter(this);
 
@@ -98,12 +108,65 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .setInActiveColor(R.color.bottom_nav_items)
                 .setActiveColor(android.R.color.white)
                 .setMode(BottomNavigationBar.MODE_FIXED)
-                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps))
-                .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
-                .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby))
-                .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.updates).setBadgeItem(updatesBadge))
-                .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
+                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps).setActiveColorResource(R.color.category_money))
+                .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories).setActiveColorResource(R.color.category_money))
+                .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby).setActiveColorResource(R.color.category_money))
+                .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.updates).setActiveColorResource(R.color.category_money).setBadgeItem(updatesBadge))
+                .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings).setActiveColorResource(R.color.category_money))
                 .initialise();
+
+        if (isUiTelevision)
+        {
+            bottomNavigation.setVisibility(View.GONE);
+
+            final View vwSearch = findViewById(R.id.btnSearch);
+            vwSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(view.getContext(), AppListActivity.class));
+                }
+            });
+            final View vwLatest = findViewById(R.id.btnLatest);
+            vwLatest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedMenuId = R.id.whats_new;
+                    setSelectedMenuInNav();
+                }
+            });
+            final View vwCategories = findViewById(R.id.btnCategories);
+            vwCategories.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedMenuId = R.id.categories;
+                    setSelectedMenuInNav();
+                }
+            });
+            final View vwNearby = findViewById(R.id.btnNearby);
+            vwNearby.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedMenuId = R.id.nearby;
+                    setSelectedMenuInNav();
+                }
+            });
+            final View vwUpdates = findViewById(R.id.btnUpdates);
+            vwUpdates.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedMenuId = R.id.updates;
+                    setSelectedMenuInNav();
+                }
+            });
+            final View vwSettings = findViewById(R.id.btnSettings);
+            vwSettings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedMenuId = R.id.settings;
+                    setSelectedMenuInNav();
+                }
+            });
+        }
 
         IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);

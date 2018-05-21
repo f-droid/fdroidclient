@@ -7,8 +7,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
-    android:background="@drawable/fab_focus">
-    <!-- TODO FAB TV was: android:background="?attr/selectableItemBackground"-->
+    android:background="?attr/selectableItemBackground">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
@@ -80,9 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            tools:text="Update"
-            android:focusable="true"
-            android:background="@drawable/fab_focus"/>
+            tools:text="Update"/>
 
     </FrameLayout>
 

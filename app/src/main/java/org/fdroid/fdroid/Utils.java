@@ -23,10 +23,14 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -38,10 +42,13 @@ import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -668,6 +675,27 @@ public final class Utils {
     public static int dpToPx(int dp, Context ctx) {
         Resources r = ctx.getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+    }
+
+    public static Drawable getDrawable(final Context context, @SuppressWarnings("SameParameterValue") final int drawableId)
+    {
+        final int version = Build.VERSION.SDK_INT;
+        return (version >= 22) ? ContextCompat.getDrawable(context, drawableId) : context.getResources().getDrawable(drawableId);
+    }
+
+    public static void setBackground(final View view, @SuppressWarnings("SameParameterValue") final int drawableId)
+    {
+        final Drawable drawableBg = Utils.getDrawable(view.getContext(), drawableId);
+        if (Build.VERSION.SDK_INT >= 16) {
+            view.setBackground(drawableBg);
+        } else {
+            ViewCompat.setBackground(view, drawableBg);
+        }
+    }
+
+    public static boolean isUiTelevision()
+    {
+        return Preferences.get().getDisplay().equalsIgnoreCase("T");
     }
 
     @SuppressWarnings("unused")
