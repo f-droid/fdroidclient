@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nested RelativeLayout with overscan-safe margin -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="27dp"
+    android:layout_marginEnd="40dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="27dp">
+
+    <!-- Screen elements that need to be within the overscan safe area go here -->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_search_white"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_search_white"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnLatest"
+            android:nextFocusLeft="@id/btnSearch"
+            android:nextFocusUp="@id/btnSearch"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/menu_search"
+            app:layout_constraintBottom_toTopOf="@+id/btnLatest"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/btnLatest"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_latest"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_latest"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnCategories"
+            android:nextFocusLeft="@id/btnLatest"
+            android:nextFocusUp="@id/btnSearch"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/main_menu__latest_apps"
+            app:layout_constraintBottom_toTopOf="@+id/btnCategories"
+            app:layout_constraintStart_toStartOf="@+id/btnSearch"
+            app:layout_constraintTop_toBottomOf="@+id/btnSearch"/>
+
+        <Button
+            android:id="@+id/btnCategories"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_categories"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_categories"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnNearby"
+            android:nextFocusLeft="@id/btnCategories"
+            android:nextFocusUp="@id/btnLatest"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/main_menu__categories"
+            app:layout_constraintBottom_toTopOf="@+id/btnNearby"
+            app:layout_constraintStart_toStartOf="@+id/btnLatest"
+            app:layout_constraintTop_toBottomOf="@+id/btnLatest"/>
+
+        <Button
+            android:id="@+id/btnNearby"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_nearby"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_nearby"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnUpdates"
+            android:nextFocusLeft="@id/btnNearby"
+            android:nextFocusUp="@id/btnCategories"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/main_menu__swap_nearby"
+            app:layout_constraintBottom_toTopOf="@+id/btnUpdates"
+            app:layout_constraintStart_toStartOf="@+id/btnCategories"
+            app:layout_constraintTop_toBottomOf="@+id/btnCategories"/>
+
+        <Button
+            android:id="@+id/btnUpdates"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_updates"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_updates"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnSettings"
+            android:nextFocusLeft="@id/btnUpdates"
+            android:nextFocusUp="@id/btnNearby"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/updates"
+            app:layout_constraintBottom_toTopOf="@+id/btnSettings"
+            app:layout_constraintStart_toStartOf="@+id/btnNearby"
+            app:layout_constraintTop_toBottomOf="@+id/btnNearby"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="@dimen/navigation_bar_tv_width"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/ic_settings"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_settings"
+            android:focusable="true"
+            android:gravity="start"
+            android:minLines="1"
+            android:nextFocusDown="@id/btnSettings"
+            android:nextFocusLeft="@id/btnSettings"
+            android:nextFocusUp="@id/btnUpdates"
+            android:padding="8dp"
+            android:singleLine="false"
+            android:text="@string/menu_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btnUpdates"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdates"/>
+
+        <ViewStub
+            android:id="@+id/vsContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout="@layout/activity_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnLatest"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>
