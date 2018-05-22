@@ -203,6 +203,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
 
     <string name="display">Display</string>
+    <string name="displayUi">User interface</string>
 
     <string name="expert">Expert mode</string>
     <string name="expert_on">Show extra info and enable extra settings</string>

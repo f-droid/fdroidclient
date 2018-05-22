@@ -695,7 +695,7 @@ public final class Utils {
 
     public static boolean isUiTelevision()
     {
-        return Preferences.get().getDisplay().equalsIgnoreCase("T");
+        return Preferences.get().getDisplayUi().equalsIgnoreCase("T");
     }
 
     @SuppressWarnings("unused")

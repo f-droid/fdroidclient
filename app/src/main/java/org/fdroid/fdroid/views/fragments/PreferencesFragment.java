@@ -41,7 +41,7 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
-            Preferences.PREF_DISPLAY,
+            Preferences.PREF_DISPLAY_UI,
             Preferences.PREF_FORCE_TOUCH_APPS,
             Preferences.PREF_LOCAL_REPO_NAME,
             Preferences.PREF_LANGUAGE,
@@ -135,12 +135,12 @@ public class PreferencesFragment extends PreferenceFragment
                 }
                 break;
 
-            case Preferences.PREF_DISPLAY:
+            case Preferences.PREF_DISPLAY_UI:
                 entrySummary(key);
                 if (changing) {
                     final Activity activity = getActivity();
                     final Intent intent = activity.getIntent();
-                    if (intent == null) { // when launched as LAUNCHER
+                    if (intent == null) {
                         return;
                     }
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -48,7 +48,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_DISPLAY = "display";
+    public static final String PREF_DISPLAY_UI = "displayUi";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
@@ -246,9 +246,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
     }
 
-    public String getDisplay() {
+    public String getDisplayUi() {
         //Use Utils.isUiTelevision() instead
-        return preferences.getString(PREF_DISPLAY, "C");
+        return preferences.getString(PREF_DISPLAY_UI, "C");
     }
 
     public boolean isLocalRepoHttpsEnabled() {

@@ -25,7 +25,7 @@
         <item>@string/theme_night</item>
     </string-array>
 
-    <string-array name="displayNames">
+    <string-array name="displayUiNames">
         <item>@string/display_classic</item>
         <item>@string/display_television</item>
     </string-array>
