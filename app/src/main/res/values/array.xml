@@ -26,7 +26,7 @@
     </string-array>
 
     <string-array name="displayUiNames">
-        <item>@string/display_classic</item>
-        <item>@string/display_television</item>
+        <item>@string/display_ui_classic</item>
+        <item>@string/display_ui_television</item>
     </string-array>
 </resources>
