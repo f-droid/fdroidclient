@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        //TODO FAB: externalize to preferences
         final boolean isUiTelevision = Utils.isUiTelevision();
         setContentView(isUiTelevision ? R.layout.activity_main_tv : R.layout.activity_main);
         if (isUiTelevision) {

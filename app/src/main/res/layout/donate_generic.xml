@@ -12,5 +12,5 @@
     android:layout_marginRight="4dp"
     android:gravity="center_vertical"
     android:focusable="true"
-    android:background="@drawable/fab_focus_text"
+    android:background="@drawable/focus_text"
     android:text="@string/menu_donate" />

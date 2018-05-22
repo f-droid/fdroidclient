@@ -14,7 +14,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.categories.AppCardController;
 
-//TODO FAB: bug with first item not clickable, bug of "feature graphic?", bug of Bottom Navigation Bar not focusable and clickable
+//TODO TV: bug with first item not clickable with D-pad, bug of "feature graphic?"
 public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     private Cursor cursor;

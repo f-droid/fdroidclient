@@ -21,7 +21,7 @@
         android:paddingEnd="18dp"
         tools:layout_editor_absoluteX="0dp"
         android:focusable="true"
-        android:background="@drawable/fab_focus_text"/>
+        android:background="?attr/selectableItemBackground"/>
 
     <Button
         android:id="@+id/button"

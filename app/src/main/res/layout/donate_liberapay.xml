@@ -9,5 +9,5 @@
     android:layout_marginStart="12dp"
     android:contentDescription="@string/menu_liberapay"
     android:focusable="true"
-    android:background="@drawable/fab_focus_text"
+    android:background="@drawable/focus_text"
     android:src="@drawable/donation_option_liberapay" />

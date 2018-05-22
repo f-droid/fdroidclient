@@ -91,7 +91,10 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
         try
         {
-            //TODO FAB: try to find a solution with nextFocusLeftId working always
+            /* TODO TV: try to find a solution with nextFocusLeftId working all the time.
+             * mnuTvId could be passed as parameter in constructor... here it's just a test.
+             * If you log mnuTvId, you will see mnuTvId is known and constant but the view will be suddently not be accessible!
+             */
             final int mnuTvId = activity.findViewById(R.id.btnLatest).getId();
             heading.setNextFocusLeftId(mnuTvId);
         }
@@ -236,8 +239,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            //TODO FAB: setbackground to check with ?attr/selectableItemBackground
-            Utils.setBackground(view, R.drawable.fab_focus_category);
+            Utils.setBackground(view, R.drawable.focus_category);
 
             Resources r = context.getResources();
             int horizontalPadding = (int) r.getDimension(R.dimen.category_preview__app_list__padding__horizontal);

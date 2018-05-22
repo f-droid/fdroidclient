@@ -677,7 +677,12 @@ public final class Utils {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
-    public static Drawable getDrawable(final Context context, @SuppressWarnings("SameParameterValue") final int drawableId)
+    public static boolean isUiTelevision()
+    {
+        return Preferences.get().getDisplayUi().equalsIgnoreCase("T");
+    }
+
+    private static Drawable getDrawable(final Context context, @SuppressWarnings("SameParameterValue") final int drawableId)
     {
         final int version = Build.VERSION.SDK_INT;
         return (version >= 22) ? ContextCompat.getDrawable(context, drawableId) : context.getResources().getDrawable(drawableId);
@@ -693,9 +698,17 @@ public final class Utils {
         }
     }
 
-    public static boolean isUiTelevision()
+    /***
+     * Set background drawable with an attribute reference (style attribute)
+     * @param view  View
+     * @param attributeId   Attribute Id
+     */
+    public static void setBackgroundWithAttributeReference(final View view, @SuppressWarnings("SameParameterValue") final int attributeId)
     {
-        return Preferences.get().getDisplayUi().equalsIgnoreCase("T");
+        final TypedValue typedValue = new TypedValue();
+        if (view.getContext().getTheme().resolveAttribute(attributeId, typedValue,true)) {
+            Utils.setBackground(view, typedValue.resourceId);
+        }
     }
 
     @SuppressWarnings("unused")

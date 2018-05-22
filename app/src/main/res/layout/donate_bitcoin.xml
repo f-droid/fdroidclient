@@ -10,5 +10,5 @@
     android:layout_marginRight="4dp"
     android:src="@drawable/donation_option_bitcoin"
     android:focusable="true"
-    android:background="@drawable/fab_focus_text"
+    android:background="@drawable/focus_text"
     android:contentDescription="@string/menu_bitcoin" />

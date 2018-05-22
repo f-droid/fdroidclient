@@ -334,7 +334,6 @@ public class AppDetailsRecyclerViewAdapter
             antiFeaturesView = (TextView) view.findViewById(R.id.text_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
             buttonLayout = view.findViewById(R.id.button_layout);
-            //TODO FAB: isUiTelevision variable ?
             if (Utils.isUiTelevision()) {
                 ((LinearLayout) buttonLayout).setGravity(Gravity.START);
             }
@@ -682,8 +681,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
             headerView = (TextView) view.findViewById(R.id.information);
             headerView.setFocusable(true);
-            //TODO FAB: setbackground with selectableItemBackground
-            Utils.setBackground(headerView, R.drawable.fab_focus_text);
+            Utils.setBackgroundWithAttributeReference(headerView, R.attr.selectableItemBackground);
             contentView = (LinearLayout) view.findViewById(R.id.ll_content);
         }
 
