@@ -251,6 +251,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getString(PREF_DISPLAY_UI, "C");
     }
 
+    public void setDisplayUi(final boolean isUiTelevision) {
+        final String value = (isUiTelevision) ? "T" : "C";
+        preferences.edit().putString(PREF_DISPLAY_UI, value).apply();
+    }
+
     public boolean isLocalRepoHttpsEnabled() {
         return false; // disabled until it works well
     }

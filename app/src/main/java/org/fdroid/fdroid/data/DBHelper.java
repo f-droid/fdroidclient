@@ -23,11 +23,15 @@
 
 package org.fdroid.fdroid.data;
 
+import android.app.UiModeManager;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.Preferences;
@@ -272,6 +276,10 @@ public class DBHelper extends SQLiteOpenHelper {
                     defaultRepos[offset + 6], // pushRequests
                     defaultRepos[offset + 7]  // pubkey
             );
+        }
+
+        if (detectIsUiTelevision(context)) {
+            //TODO TV: please set Theme to dark here
         }
     }
 
@@ -1322,4 +1330,95 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(RepoTable.NAME, null, values);
     }
 
+    /***
+     * Detects if it's running on a television and saves the UI preference
+     * @param context
+     * @return true/false
+     */
+    private boolean detectIsUiTelevision(final Context context)
+    {
+        boolean isUiTelevision = false;
+        final String logHeader = "F-Droid: ";
+        final String logEx = "DetectIsUiTelevision (exception)=";
+
+        try
+        {
+            /*
+            * Please let these 3 try/catch, don't group them:
+            * any check can be True depending on brand, implementation, android version...
+            * Can throw execption
+            */
+            try
+            {
+                final UiModeManager uiModeManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+                //noinspection ConstantConditions
+                final boolean isUiModeTypeTelevision = (uiModeManager.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION);
+                Utils.debugLog(TAG,logHeader + "isUiModeTypeTelevision=" + isUiModeTypeTelevision);
+
+                if (isUiModeTypeTelevision)
+                {
+                    isUiTelevision = true;
+                    Preferences.get().setDisplayUi(isUiTelevision);
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Utils.debugLog(TAG,logHeader + logEx + ex.toString());
+            }
+
+            final PackageManager pm = context.getPackageManager();
+
+            try
+            {
+                if (Build.VERSION.SDK_INT >= 16)
+                {
+                    final boolean hasFeatureTelevision = pm.hasSystemFeature(PackageManager.FEATURE_TELEVISION);
+                    Utils.debugLog(TAG,logHeader + "hasFeatureTelevision=" + hasFeatureTelevision);
+                    if (hasFeatureTelevision)
+                    {
+                        isUiTelevision = true;
+                        Preferences.get().setDisplayUi(isUiTelevision);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.debugLog(TAG,logHeader + logEx + ex.toString());
+            }
+
+            try
+            {
+                if (Build.VERSION.SDK_INT >= 21)
+                {
+                    final boolean hasFeatureLeanback = pm.hasSystemFeature(PackageManager.FEATURE_LEANBACK);
+                    Utils.debugLog(TAG,logHeader + "hasFeatureLeanback=" + hasFeatureLeanback);
+                    if (hasFeatureLeanback)
+                    {
+                        isUiTelevision = true;
+                        Preferences.get().setDisplayUi(isUiTelevision);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.debugLog(TAG,logHeader + logEx + ex.toString());
+            }
+
+            //Default
+            Preferences.get().setDisplayUi(isUiTelevision);
+        }
+        catch (Exception ex)
+        {
+            Utils.debugLog(TAG,logHeader + logEx + ex.toString());
+        }
+        finally
+        {
+            Utils.debugLog(TAG,logHeader + "DetectIsUiTelevision=" + isUiTelevision);
+        }
+
+        return isUiTelevision;
+    }
 }
