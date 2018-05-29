@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
+    <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software)
+        applications for the Android platform. The client makes it easy to browse, install, and keep track of updates
+        on your device.
+    </string>
 
     <string name="site_link">https://f-droid.org</string>
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>

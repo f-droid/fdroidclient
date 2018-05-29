@@ -8,6 +8,6 @@
     </style>
 
     <!-- see http://stackoverflow.com/questions/32169303/activity-did-not-call-finish-api-23 -->
-    <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
+    <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar"/>
 
 </resources>
