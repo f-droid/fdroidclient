@@ -1,3 +1,25 @@
+/*
+ * Copyright (C) 2016-2017 Peter Serwylo
+ * Copyright (C) 2017 Christine Emrich
+ * Copyright (C) 2017 Hans-Christoph Steiner
+ * Copyright (C) 2018 Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.views.main;
 
 import android.app.SearchManager;
@@ -65,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private RecyclerView pager;
     private MainViewAdapter adapter;
     private BottomNavigationBar bottomNavigation;
-    private int selectedMenuId = R.id.whats_new;
+    private int selectedMenuId;
     private TextBadgeItem updatesBadge;
 
     @Override
@@ -110,7 +132,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
 
         if (savedInstanceState != null) {
-            selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, R.id.whats_new);
+            selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, (int) adapter.getItemId(0));
+        } else {
+            selectedMenuId = (int) adapter.getItemId(0);
         }
         setSelectedMenuInNav();
 
