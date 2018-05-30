@@ -1,3 +1,28 @@
+/*
+ * Copyright (C) 2014-2018 Hans-Christoph Steiner
+ * Copyright (C) 2014-2017 Peter Serwylo
+ * Copyright (C) 2015-2016 Daniel Martí
+ * Copyright (C) 2015 Dominik Schürmann
+ * Copyright (C) 2018 Torsten Grote
+ * Copyright (C) 2018 dkanada
+ * Copyright (C) 2018 Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.views.fragments;
 
 import android.app.Activity;
@@ -24,6 +49,7 @@ import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -120,7 +146,11 @@ public class PreferencesFragment extends PreferenceFragment
 
     private void textSummary(String key, int resId) {
         EditTextPreference pref = (EditTextPreference) findPreference(key);
-        pref.setSummary(getString(resId, pref.getText()));
+        if (pref == null) {
+            Utils.debugLog(TAG, "null preference found for " + key);
+        } else {
+            pref.setSummary(getString(resId, pref.getText()));
+        }
     }
 
     private void setNetworkSeekBarSummary(SeekBarPreference seekBarPreference) {
