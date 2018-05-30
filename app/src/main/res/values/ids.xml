@@ -6,4 +6,9 @@
     <item type="id" name="whats_new_large_tile"/>
     <item type="id" name="whats_new_small_tile"/>
     <item type="id" name="whats_new_regular_list"/>
+
+    <!-- Make sure these always exist, e.g. in the 'basic' build flavor -->
+    <item type="id" name="whats_new"/>
+    <item type="id" name="categories"/>
+    <item type="id" name="nearby"/>
 </resources>

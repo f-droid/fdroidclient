@@ -170,6 +170,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:0.5'
 }
 
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith("lintBasic")) {
+        android.lintOptions.abortOnError = false
+    }
+}
+
 checkstyle {
     toolVersion = '7.2'
 }

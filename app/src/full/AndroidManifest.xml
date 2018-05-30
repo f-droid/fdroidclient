@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2010-2012 Ciaran Gultnieks
+ * Copyright (C) 2013-2017 Peter Serwylo
+ * Copyright (C) 2014-2015 Daniel Martí
+ * Copyright (C) 2014-2018 Hans-Christoph Steiner
+ * Copyright (C) 2016 Dominik Schürmann
+ * Copyright (C) 2018 Torsten Grote
+ * Copyright (C) 2018 Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.fdroid.fdroid"
+          android:installLocation="auto">
+
+    <uses-feature android:name="android.hardware.nfc" android:required="false"/>
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app)
+         This permission is deprecated, but necessary for some old superuser
+         apps to actually grant superuser access to F-Droid. -->
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+
+    <application>
+
+        <activity
+                android:label="@string/swap"
+                android:name=".views.swap.SwapWorkflowActivity"
+                android:parentActivityName=".views.main.MainActivity"
+                android:theme="@style/SwapTheme.Wizard"
+                android:screenOrientation="portrait"
+                android:configChanges="orientation|keyboardHidden">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.main.MainActivity"/>
+        </activity>
+
+        <receiver android:name=".receiver.WifiStateChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.DeviceStorageReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+                android:name=".net.WifiStateChangeService"
+                android:exported="false"/>
+        <service android:name=".localrepo.SwapService"/>
+
+        <service
+                android:name=".localrepo.CacheSwapAppsService"
+                android:exported="false"/>
+
+        <activity
+                android:name=".views.panic.PanicPreferencesActivity"
+                android:label="@string/panic_settings"
+                android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.main.MainActivity"/>
+
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.CONNECT"/>
+                <action android:name="info.guardianproject.panic.action.DISCONNECT"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".views.panic.PanicResponderActivity"
+                android:noHistory="true"
+                android:theme="@android:style/Theme.NoDisplay">
+
+            <!-- this can never have launchMode singleTask or singleInstance! -->
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".views.panic.ExitActivity"
+                android:theme="@android:style/Theme.NoDisplay"/>
+        <activity
+                android:name=".views.hiding.CalculatorActivity"
+                android:enabled="false"
+                android:icon="@mipmap/ic_calculator_launcher"
+                android:label="@string/hiding_calculator"
+                android:theme="@style/AppThemeLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

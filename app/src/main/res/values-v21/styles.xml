@@ -18,10 +18,6 @@
         <item name="android:windowSharedElementExitTransition">@transition/shared_elements</item>
     </style>
 
-    <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorButtonNormal">#04b9e6</item>
-    </style>
-
     <style name="AppThemeLight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
