@@ -10,7 +10,6 @@ import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.JobIntentService;
-import android.util.Log;
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
@@ -302,7 +301,6 @@ public class InstalledAppProviderService extends JobIntentService {
      *             into the database when under test.
      */
     static void insertAppIntoDb(Context context, PackageInfo packageInfo, String hashType, String hash) {
-        Log.d(TAG, "insertAppIntoDb " + packageInfo.packageName);
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues contentValues = new ContentValues();
         contentValues.put(InstalledAppTable.Cols.Package.NAME, packageInfo.packageName);
@@ -320,7 +318,6 @@ public class InstalledAppProviderService extends JobIntentService {
     }
 
     static void deleteAppFromDb(Context context, String packageName) {
-        Log.d(TAG, "deleteAppFromDb " + packageName);
         Uri uri = InstalledAppProvider.getAppUri(packageName);
         context.getContentResolver().delete(uri, null, null);
     }
