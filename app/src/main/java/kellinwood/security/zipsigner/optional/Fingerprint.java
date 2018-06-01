@@ -7,6 +7,7 @@ import kellinwood.security.zipsigner.Base64;
 import org.bouncycastle.util.encoders.HexTranslator;
 
 import java.security.MessageDigest;
+import java.util.Locale;
 
 /**
  * User: ken
@@ -41,7 +42,7 @@ public class Fingerprint {
                 builder.append((char) hex[i + 1]);
                 if (i != (hex.length - 2)) builder.append(':');
             }
-            return builder.toString().toUpperCase();
+            return builder.toString().toUpperCase(Locale.ENGLISH);
         } catch (Exception x) {
             logger.error(x.getMessage(), x);
         }

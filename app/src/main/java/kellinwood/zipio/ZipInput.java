@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -149,8 +150,8 @@ public class ZipInput implements Closeable {
 
             boolean debug = getLogger().isDebugEnabled();
             if (debug) {
-                getLogger().debug(String.format("EOCD found in %d iterations", scanIterations));
-                getLogger().debug(String.format("Directory entries=%d, size=%d, offset=%d/0x%08x", centralEnd.totalCentralEntries,
+                getLogger().debug(String.format(Locale.ENGLISH, "EOCD found in %d iterations", scanIterations));
+                getLogger().debug(String.format(Locale.ENGLISH, "Directory entries=%d, size=%d, offset=%d/0x%08x", centralEnd.totalCentralEntries,
                         centralEnd.centralDirectorySize, centralEnd.centralStartOffset, centralEnd.centralStartOffset));
 
                 ZipListingHelper.listHeader(getLogger());

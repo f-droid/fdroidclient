@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.util.Locale;
 
 
 /**
@@ -47,7 +48,7 @@ public class ZioEntryInputStream extends InputStream {
         raf = entry.getZipInput().in;
         long dpos = entry.getDataPosition();
         if (dpos >= 0) {
-            if (debug) log.debug(String.format("Seeking to %d", entry.getDataPosition()));
+            if (debug) log.debug(String.format(Locale.ENGLISH, "Seeking to %d", entry.getDataPosition()));
             raf.seek(entry.getDataPosition());
         } else {
             // seeks to, then reads, the local header, causing the 
@@ -78,7 +79,7 @@ public class ZioEntryInputStream extends InputStream {
     @Override
     public int available() throws IOException {
         int available = size - offset;
-        if (debug) log.debug(String.format("Available = %d", available));
+        if (debug) log.debug(String.format(Locale.ENGLISH, "Available = %d", available));
         if (available == 0 && returnDummyByte) return 1;
         else return available;
     }
@@ -119,7 +120,7 @@ public class ZioEntryInputStream extends InputStream {
             if (monitor != null) monitor.write(b, off, numRead);
             offset += numRead;
         }
-        if (debug) log.debug(String.format("Read %d bytes for read(b,%d,%d)", numRead, off, len));
+        if (debug) log.debug(String.format(Locale.ENGLISH, "Read %d bytes for read(b,%d,%d)", numRead, off, len));
         return numRead;
     }
 
@@ -132,7 +133,7 @@ public class ZioEntryInputStream extends InputStream {
     public long skip(long n) throws IOException {
         long numToSkip = Math.min(n, available());
         raf.seek(raf.getFilePointer() + numToSkip);
-        if (debug) log.debug(String.format("Skipped %d bytes", numToSkip));
+        if (debug) log.debug(String.format(Locale.ENGLISH, "Skipped %d bytes", numToSkip));
         return numToSkip;
     }
 }

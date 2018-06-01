@@ -17,6 +17,7 @@ import java.security.KeyStore;
 import java.security.Provider;
 import java.security.Security;
 import java.security.cert.Certificate;
+import java.util.Locale;
 
 
 /**
@@ -60,7 +61,7 @@ public class KeyStoreFileManager {
     public static KeyStore createKeyStore(String keystorePath, char[] password)
             throws Exception {
         KeyStore ks = null;
-        if (keystorePath.toLowerCase().endsWith(".bks")) {
+        if (keystorePath.toLowerCase(Locale.ENGLISH).endsWith(".bks")) {
             ks = KeyStore.getInstance("bks", new BouncyCastleProvider());
         } else ks = new JksKeyStore();
         ks.load(null, password);
@@ -206,7 +207,7 @@ public class KeyStoreFileManager {
 
         try {
             KeyStore ks = loadKeyStore(keystorePath, storePass);
-            if (ks instanceof JksKeyStore) newKeyName = newKeyName.toLowerCase();
+            if (ks instanceof JksKeyStore) newKeyName = newKeyName.toLowerCase(Locale.ENGLISH);
 
             if (ks.containsAlias(newKeyName)) throw new KeyNameConflictException();
 
