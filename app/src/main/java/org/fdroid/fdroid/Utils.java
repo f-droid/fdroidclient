@@ -59,7 +59,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -528,11 +527,19 @@ public final class Utils {
      *
      * @param bytes an array of bytes.
      * @return the bytes represented as a string of hexadecimal digits.
+     * @see <a href="https://stackoverflow.com/a/9855338">source</a>
      */
-    private static String toHexString(byte[] bytes) {
-        BigInteger bi = new BigInteger(1, bytes);
-        return String.format("%0" + (bytes.length << 1) + "X", bi);
+    public static String toHexString(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = HEX_LOOKUP_ARRAY[v >>> 4];
+            hexChars[j * 2 + 1] = HEX_LOOKUP_ARRAY[v & 0x0F];
+        }
+        return new String(hexChars);
     }
+
+    private static final char[] HEX_LOOKUP_ARRAY = "0123456789ABCDEF".toCharArray();
 
     public static int parseInt(String str, int fallback) {
         if (str == null || str.length() == 0) {
