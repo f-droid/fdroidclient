@@ -6,9 +6,9 @@
         <item name="android:minHeight">32dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:padding">12dp</item>
-    </style>qgi
+    </style>
 
-    <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase" />
+    <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase"/>
 
     <style name="DetailsPrimaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">#ffffff</item>

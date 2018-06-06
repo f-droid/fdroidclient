@@ -17,7 +17,7 @@
     <string name="unstable_updates">Unstable updates</string>
     <string name="unstable_updates_summary">Suggest updates to unstable versions</string>
     <string name="keep_install_history">Keep install history</string>
-    <string name="keep_install_history_summary">Store a log of all installs and uninstalls inside F-Droid</string>
+    <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>
@@ -37,7 +37,7 @@
     <string name="notify">Show available updates</string>
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="system_installer">Privileged Extension</string>
-    <string name="system_installer_on">Use F-Droid Privileged Extension to install, update, and remove packages</string>
+    <string name="system_installer_on">Use Privileged Extension to install, update, and remove packages</string>
     <string name="uninstall_system">Update/Uninstall Privileged Extension</string>
     <string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it</string>
     <string name="local_repo_name">Name of your Local Repo</string>
@@ -324,14 +324,14 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
-        apps from it will no longer be available from F-Droid.\n\nNote: All
+        apps from it will no longer be available.\n\nNote: All
         previously installed apps will remain on your device.
     </string>
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
-    <string name="repo_added">Saved F-Droid repository %1$s.</string>
-    <string name="repo_searching_address">Looking for F-Droid repository at\n%1$s</string>
+    <string name="repo_added">Saved package repository %1$s.</string>
+    <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
     <string name="minsdk_or_later">%s or later</string>
     <string name="up_to_maxsdk">Up to %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>

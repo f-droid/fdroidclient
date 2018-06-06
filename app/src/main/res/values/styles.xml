@@ -79,18 +79,18 @@
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
-    <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert" />
+    <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert"/>
     <style name="AlertDialogThemeDark" parent="AlertDialogBaseThemeDark">
         <item name="colorAccent">@color/fdroid_green</item>
         <item name="android:windowBackground">@color/cardview_dark_background</item>
     </style>
 
-    <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert" />
+    <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert"/>
     <style name="AlertDialogThemeLight" parent="AlertDialogBaseThemeLight">
         <item name="colorAccent">@color/fdroid_green</item>
     </style>
 
-    <style name="AlertDialogBaseThemeNight" parent="AlertDialogThemeDark" />
+    <style name="AlertDialogBaseThemeNight" parent="AlertDialogThemeDark"/>
     <style name="AlertDialogThemeNight" parent="AlertDialogBaseThemeNight">
         <item name="android:windowBackground">@color/fdroid_night</item>
     </style>
@@ -122,7 +122,7 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
-    <style name="CaptionText" parent="CaptionTextBase" />
+    <style name="CaptionText" parent="CaptionTextBase"/>
 
     <!-- use this style for a text views that is a paragraph of text -->
     <style name="BodyTextBase">
@@ -130,7 +130,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
     </style>
-    <style name="BodyText" parent="BodyTextBase" />
+    <style name="BodyText" parent="BodyTextBase"/>
 
     <style name="AppListEmptyText">
         <item name="android:id">@android:id/empty</item>
@@ -149,7 +149,7 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
-    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase" />
+    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase"/>
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
@@ -180,7 +180,7 @@
         <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
     </style>
 
-    <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase" />
+    <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase"/>
 
     <style name="SwapTheme.AppList.SwapSuccessDetailsBase">
         <item name="android:gravity">center</item>
@@ -190,7 +190,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase" />
+    <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase"/>
 
     <style name="SwapTheme.StartSwap.MainTextBase">
         <item name="android:gravity">center</item>
@@ -211,7 +211,7 @@
         <item name="android:textColorSecondary">#fff</item>
     </style>
 
-    <style name="SwapTheme.Wizard.Text" parent="SwapTheme.Wizard.TextBase" />
+    <style name="SwapTheme.Wizard.Text" parent="SwapTheme.Wizard.TextBase"/>
 
     <style name="SwapTheme.Wizard.Text.Toolbar" parent="SwapTheme.Wizard.Text">
         <item name="android:textSize">22sp</item>
@@ -232,9 +232,9 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
-    <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase" />
+    <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase"/>
 
-    <style name="SwapTheme.Wizard.QRScanWarningText" parent="@style/SwapTheme.Wizard.MainTextBase" >
+    <style name="SwapTheme.Wizard.QRScanWarningText" parent="@style/SwapTheme.Wizard.MainTextBase">
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
         <item name="android:paddingTop">0dp</item>
@@ -288,7 +288,7 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <style name="AppDetailsLink" parent="AppDetailsLinkBase" />
+    <style name="AppDetailsLink" parent="AppDetailsLinkBase"/>
 
     <style name="AppDetailsSubheaderTextBase">
         <item name="android:layout_width">match_parent</item>
@@ -300,9 +300,9 @@
         <item name="android:drawablePadding">12dp</item>
     </style>
 
-    <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase" />
+    <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase"/>
 
-    <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay" />
+    <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay"/>
 
     <style name="AppThemeLight.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -314,7 +314,7 @@
         <item name="android:src">@drawable/ic_more</item>
     </style>
 
-    <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>

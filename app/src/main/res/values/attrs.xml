@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <declare-styleable name="Theme">
-        <attr name="appDetailsBackground" format="color" />
-        <attr name="appDetailsCardBackground" format="color" />
-        <attr name="categoryPreviewAppCardBackground" format="reference" />
-        <attr name="mainTabSwapBackground" format="color" />
-        <attr name="mainTabSwapSplashTint" format="color" />
-        <attr name="categoryName" format="color" />
-        <attr name="installedApps" format="color" />
-        <attr name="detailPanel" format="reference" />
-        <attr name="appListItem" format="color" />
-        <attr name="lightGrayTextColor" format="color" />
-        <attr name="antiFeaturesWarning" format="reference" />
-        <attr name="backButtonDrawable" format="reference" />
-        <attr name="clearButtonDrawable" format="reference" />
+        <attr name="appDetailsBackground" format="color"/>
+        <attr name="appDetailsCardBackground" format="color"/>
+        <attr name="categoryPreviewAppCardBackground" format="reference"/>
+        <attr name="mainTabSwapBackground" format="color"/>
+        <attr name="mainTabSwapSplashTint" format="color"/>
+        <attr name="categoryName" format="color"/>
+        <attr name="installedApps" format="color"/>
+        <attr name="detailPanel" format="reference"/>
+        <attr name="appListItem" format="color"/>
+        <attr name="lightGrayTextColor" format="color"/>
+        <attr name="antiFeaturesWarning" format="reference"/>
+        <attr name="backButtonDrawable" format="reference"/>
+        <attr name="clearButtonDrawable" format="reference"/>
     </declare-styleable>
 
     <integer name="unhidePin">1337</integer>

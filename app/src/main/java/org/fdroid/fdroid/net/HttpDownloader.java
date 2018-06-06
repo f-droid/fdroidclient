@@ -4,12 +4,12 @@ import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Base64;
 import info.guardianproject.netcipher.NetCipher;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.bouncycastle.util.encoders.Base64;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -151,7 +151,8 @@ public class HttpDownloader extends Downloader {
         if (username != null && password != null) {
             // add authorization header from username / password if set
             String authString = username + ":" + password;
-            connection.setRequestProperty("Authorization", "Basic " + Base64.toBase64String(authString.getBytes()));
+            connection.setRequestProperty("Authorization", "Basic "
+                    + Base64.encodeToString(authString.getBytes(), Base64.NO_WRAP));
         }
         return connection;
     }
