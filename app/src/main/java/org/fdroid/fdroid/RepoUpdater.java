@@ -1,7 +1,8 @@
 /*
+ * Copyright (C) 2018 Senecto Limited
  * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2015-2016 Daniel Martí <mvdan@mvdan.cc>
- * Copyright (C) 2014-2016 Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2014-2018 Hans-Christoph Steiner <hans@eds.org>
  * Copyright (C) 2014-2016 Peter Serwylo <peter@serwylo.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -162,7 +163,7 @@ public class RepoUpdater {
             // successful download, then we will have a file ready to use:
             cacheTag = downloader.getCacheTag();
             processDownloadedFile(downloader.outputFile);
-            processRepoPushRequests();
+            processRepoPushRequests(repoPushRequestList);
         }
         return true;
     }
@@ -448,8 +449,8 @@ public class RepoUpdater {
      * should always accept, prompt the user, or ignore those requests on a
      * per repo basis.
      */
-    void processRepoPushRequests() {
-        for (RepoPushRequest repoPushRequest : repoPushRequestList) {
+    void processRepoPushRequests(List<RepoPushRequest> requestEntries) {
+        for (RepoPushRequest repoPushRequest : requestEntries) {
             String packageName = repoPushRequest.packageName;
             PackageInfo packageInfo = Utils.getPackageInfo(context, packageName);
             if (RepoPushRequest.INSTALL.equals(repoPushRequest.request)) {

@@ -38,7 +38,7 @@ public class RepoPushRequest {
     @Nullable
     public final Integer versionCode;
 
-    public RepoPushRequest(String request, String packageName, String versionCode) {
+    public RepoPushRequest(String request, String packageName, @Nullable String versionCode) {
         this.request = request;
         this.packageName = packageName;
 
