@@ -487,7 +487,11 @@ public class RepoUpdater {
                         || repoPushRequest.versionCode == packageInfo.versionCode) {
                     Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, repoPushRequest.packageName,
                             packageInfo.versionCode);
-                    InstallerService.uninstall(context, apk);
+                    if (apk == null) {
+                        Log.i(TAG, "Push " + repoPushRequest.packageName + " request not found in any repo!");
+                    } else {
+                        InstallerService.uninstall(context, apk);
+                    }
                 } else {
                     Utils.debugLog(TAG, "ignoring request based on versionCode:" + repoPushRequest);
                 }
