@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
+import java.net.URI;
 import java.util.Locale;
 
 public class RepoDetailsActivity extends AppCompatActivity {
@@ -74,6 +76,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private Repo repo;
     private long repoId;
     private View repoView;
+
+    private String shareUrl;
 
     /**
      * Help function to make switching between two view states easier.
@@ -205,6 +209,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
@@ -213,9 +218,14 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 promptForDelete();
                 return true;
             case R.id.menu_enable_nfc:
-                Intent intent = new Intent(this, NfcNotEnabledActivity.class);
+                intent = new Intent(this, NfcNotEnabledActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_share:
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
+                startActivity(Intent.createChooser(intent, "gogogo"));
         }
 
         return super.onOptionsItemSelected(item);
@@ -224,6 +234,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         prepareNfcMenuItems(menu);
+        prepareShareMenuItems(menu);
         return true;
     }
 
@@ -245,6 +256,19 @@ public class RepoDetailsActivity extends AppCompatActivity {
         }
 
         menuItem.setVisible(needsEnableNfcMenuItem);
+    }
+
+    private void prepareShareMenuItems(Menu menu) {
+        if (!TextUtils.isEmpty(repo.address)) {
+            if (!TextUtils.isEmpty(repo.fingerprint)) {
+                shareUrl = Uri.parse(repo.address).buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).toString();
+            } else {
+                shareUrl = repo.address;
+            }
+            menu.findItem(R.id.action_share).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_share).setVisible(false);
+        }
     }
 
     private void setupDescription(View parent, Repo repo) {
