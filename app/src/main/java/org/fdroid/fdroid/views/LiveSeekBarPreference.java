@@ -44,7 +44,6 @@ public class LiveSeekBarPreference extends SeekBarPreference {
                 if (progressChangedRunnable != null) {
                     progressChangedRunnable.run();
                 }
-                value = progress;
                 if (fromUser && !trackingTouch) {
                     persistInt(value);
                 }
@@ -64,6 +63,13 @@ public class LiveSeekBarPreference extends SeekBarPreference {
         seekbar.setProgress(value);
     }
 
+    @Override
+    public void setValue(int value) {
+        super.setValue(value);
+        this.value = value;
+    }
+
+    @Override
     public int getValue() {
         if (value == -1) {
             value = super.getValue();
