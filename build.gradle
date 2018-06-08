@@ -1,10 +1,7 @@
 buildscript {
     repositories {
+        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.1'
@@ -12,10 +9,7 @@ buildscript {
 }
 allprojects {
     repositories {
+        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
 }
