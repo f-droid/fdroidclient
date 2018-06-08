@@ -317,4 +317,8 @@
     <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="DiscreteSeekBar" parent="Base.Widget.AppCompat.SeekBar.Discrete">
+        <item name="tickMark">@drawable/seekbar_tickmark</item>
+    </style>
 </resources>

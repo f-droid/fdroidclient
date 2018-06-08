@@ -49,6 +49,6 @@
              android:progressDrawable="@drawable/seekbar_progress"
              android:thumb="@drawable/seekbar_thumb"
              android:padding="16dip"
-             android:theme="@style/Widget.AppCompat.SeekBar.Discrete"/>
+             android:theme="@style/DiscreteSeekBar"/>
 
 </RelativeLayout>
