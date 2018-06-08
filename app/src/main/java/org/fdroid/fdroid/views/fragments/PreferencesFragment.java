@@ -116,7 +116,7 @@ public class PreferencesFragment extends PreferenceFragment
 
         overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
         overWifiPrevious = overWifiSeekBar.getValue();
-        overWifiSeekBar.setProgressChangedListener(new Runnable() {
+        overWifiSeekBar.setProgressChangedRunnable(new Runnable() {
             @Override
             public void run() {
                 updateSummary(overWifiSeekBar.getKey(), false);
@@ -124,7 +124,7 @@ public class PreferencesFragment extends PreferenceFragment
         });
         overDataSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
         overDataPrevious = overDataSeekBar.getValue();
-        overDataSeekBar.setProgressChangedListener(new Runnable() {
+        overDataSeekBar.setProgressChangedRunnable(new Runnable() {
             @Override
             public void run() {
                 updateSummary(overDataSeekBar.getKey(), false);
@@ -132,7 +132,7 @@ public class PreferencesFragment extends PreferenceFragment
         });
         updateIntervalSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
         updateIntervalPrevious = updateIntervalSeekBar.getValue();
-        updateIntervalSeekBar.setProgressChangedListener(new Runnable() {
+        updateIntervalSeekBar.setProgressChangedRunnable(new Runnable() {
             @Override
             public void run() {
                 updateSummary(updateIntervalSeekBar.getKey(), false);

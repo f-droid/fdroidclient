@@ -8,7 +8,7 @@ import android.widget.SeekBar;
 import org.fdroid.fdroid.R;
 
 public class LiveSeekBarPreference extends SeekBarPreference {
-    private Runnable progressChangedListener;
+    private Runnable progressChangedRunnable;
     private boolean trackingTouch;
     private int value = -1;
 
@@ -41,8 +41,8 @@ public class LiveSeekBarPreference extends SeekBarPreference {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                if (progressChangedListener != null) {
-                    progressChangedListener.run();
+                if (progressChangedRunnable != null) {
+                    progressChangedRunnable.run();
                 }
                 value = progress;
                 if (fromUser && !trackingTouch) {
@@ -71,7 +71,7 @@ public class LiveSeekBarPreference extends SeekBarPreference {
         return value;
     }
 
-    public void setProgressChangedListener(Runnable listener) {
-        progressChangedListener = listener;
+    public void setProgressChangedRunnable(Runnable runnable) {
+        progressChangedRunnable = runnable;
     }
 }
