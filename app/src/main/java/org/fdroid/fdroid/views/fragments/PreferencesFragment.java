@@ -53,6 +53,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.views.LiveSeekBarPreference;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -90,9 +91,9 @@ public class PreferencesFragment extends PreferenceFragment
 
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
 
-    private SeekBarPreference overWifiSeekBar;
-    private SeekBarPreference overDataSeekBar;
-    private SeekBarPreference updateIntervalSeekBar;
+    private LiveSeekBarPreference overWifiSeekBar;
+    private LiveSeekBarPreference overDataSeekBar;
+    private LiveSeekBarPreference updateIntervalSeekBar;
     private SwitchPreference enableProxyCheckPref;
     private SwitchPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
@@ -113,12 +114,30 @@ public class PreferencesFragment extends PreferenceFragment
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
-        overWifiSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
+        overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
         overWifiPrevious = overWifiSeekBar.getValue();
-        overDataSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
+        overWifiSeekBar.setProgressChangedListener(new Runnable() {
+            @Override
+            public void run() {
+                updateSummary(overWifiSeekBar.getKey(), false);
+            }
+        });
+        overDataSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
         overDataPrevious = overDataSeekBar.getValue();
-        updateIntervalSeekBar = (SeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
+        overDataSeekBar.setProgressChangedListener(new Runnable() {
+            @Override
+            public void run() {
+                updateSummary(overDataSeekBar.getKey(), false);
+            }
+        });
+        updateIntervalSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
         updateIntervalPrevious = updateIntervalSeekBar.getValue();
+        updateIntervalSeekBar.setProgressChangedListener(new Runnable() {
+            @Override
+            public void run() {
+                updateSummary(updateIntervalSeekBar.getKey(), false);
+            }
+        });
 
         ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
         if (Build.VERSION.SDK_INT >= 24) {
