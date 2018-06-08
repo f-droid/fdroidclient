@@ -6,7 +6,9 @@
     <!-- to make CI fail on errors until this is fixed
          https://github.com/rtyley/spongycastle/issues/7 -->
     <issue id="InvalidPackage" severity="warning"/>
+
     <issue id="ImpliedQuantity" severity="error"/>
+    <issue id="DefaultLocale" severity="error"/>
 
     <!-- These are important to us, so promote from warning to error -->
     <issue id="UnusedResources" severity="error">

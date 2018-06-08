@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.SequenceInputStream;
 import java.util.Date;
+import java.util.Locale;
 import java.util.zip.CRC32;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
@@ -91,7 +92,7 @@ public class ZioEntry implements Cloneable {
         this.compressedSize = this.size;
 
         if (getLogger().isDebugEnabled())
-            getLogger().debug(String.format("Computing CRC for %s, size=%d", sourceDataFile, size));
+            getLogger().debug(String.format(Locale.ENGLISH, "Computing CRC for %s, size=%d", sourceDataFile, size));
 
         // compute CRC
         CRC32 crc = new CRC32();
@@ -292,10 +293,10 @@ public class ZioEntry implements Cloneable {
             output.writeBytes(alignBytes, 0, numAlignBytes);
         }
 
-        if (debug) getLogger().debug(String.format("Data position 0x%08x", output.getFilePointer()));
+        if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Data position 0x%08x", output.getFilePointer()));
         if (data != null) {
             output.writeBytes(data);
-            if (debug) getLogger().debug(String.format("Wrote %d bytes", data.length));
+            if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", data.length));
         } else {
 
             if (debug) getLogger().debug(String.format("Seeking to position 0x%08x", dataPosition));
@@ -309,10 +310,10 @@ public class ZioEntry implements Cloneable {
                 int numRead = zipInput.in.read(buffer, 0, (int) Math.min(compressedSize - totalCount, bufferSize));
                 if (numRead > 0) {
                     output.writeBytes(buffer, 0, numRead);
-                    if (debug) getLogger().debug(String.format("Wrote %d bytes", numRead));
+                    if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", numRead));
                     totalCount += numRead;
                 } else
-                    throw new IllegalStateException(String.format("EOF reached while copying %s with %d bytes left to go", filename, compressedSize - totalCount));
+                    throw new IllegalStateException(String.format(Locale.ENGLISH, "EOF reached while copying %s with %d bytes left to go", filename, compressedSize - totalCount));
             }
         }
     }
@@ -434,7 +435,7 @@ public class ZioEntry implements Cloneable {
         while (count != size) {
             int numRead = din.read(tmpdata, count, size - count);
             if (numRead < 0)
-                throw new IllegalStateException(String.format("Read failed, expecting %d bytes, got %d instead", size, count));
+                throw new IllegalStateException(String.format(Locale.ENGLISH, "Read failed, expecting %d bytes, got %d instead", size, count));
             count += numRead;
         }
         return tmpdata;

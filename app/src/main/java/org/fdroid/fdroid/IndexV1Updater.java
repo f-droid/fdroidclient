@@ -1,3 +1,25 @@
+/*
+ * Copyright (C) 2017-2018 Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2017 Peter Serwylo <peter@serwylo.com>
+ * Copyright (C) 2017 Chirayu Desai
+ * Copyright (C) 2018 Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid;
 
 import android.content.ContentValues;
@@ -20,6 +42,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
@@ -312,9 +335,8 @@ public class IndexV1Updater extends RepoUpdater {
         repoPersister.commit(contentValues, repo.getId());
         profiler.log("Persited to database.");
 
-
-        // TODO RepoUpdater.processRepoPushRequests(context, repoPushRequestList);
-        Utils.debugLog(TAG, "Repo Push Requests: " + requests);
+        processRepoPushRequests(requests);
+        Utils.debugLog(TAG, "Completed Repo Push Requests: " + requests);
     }
 
     private int getIntRepoValue(Map<String, Object> repoMap, String key) {
@@ -434,4 +456,21 @@ public class IndexV1Updater extends RepoUpdater {
         throw new SigningException("Signing certificate does not match!");
     }
 
+    /**
+     * The {@code index-v1} version of {@link RepoUpdater#processRepoPushRequests(List)}
+     */
+    private void processRepoPushRequests(Map<String, String[]> requests) {
+        if (requests == null) {
+            Utils.debugLog(TAG, "RepoPushRequests are null");
+        } else {
+            List<RepoPushRequest> repoPushRequestList = new ArrayList<>();
+            for (Map.Entry<String, String[]> requestEntry : requests.entrySet()) {
+                String request = requestEntry.getKey();
+                for (String packageName : requestEntry.getValue()) {
+                    repoPushRequestList.add(new RepoPushRequest(request, packageName, null));
+                }
+            }
+            processRepoPushRequests(repoPushRequestList);
+        }
+    }
 }

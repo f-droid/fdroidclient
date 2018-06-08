@@ -21,6 +21,7 @@ import kellinwood.logging.LoggerInterface;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ZipListingHelper {
     public static void listEntry(LoggerInterface log, ZioEntry entry) {
         int ratio = 0;
         if (entry.getSize() > 0) ratio = (100 * (entry.getSize() - entry.getCompressedSize())) / entry.getSize();
-        log.debug(String.format("%8d  %6s %8d %4d%% %s  %08x  %s",
+        log.debug(String.format(Locale.ENGLISH, "%8d  %6s %8d %4d%% %s  %08x  %s",
                 entry.getSize(),
                 entry.getCompression() == 0 ? "Stored" : "Defl:N",
                 entry.getCompressedSize(),

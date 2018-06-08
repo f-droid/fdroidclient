@@ -1,6 +1,8 @@
 
 package kellinwood.security.zipsigner;
 
+import java.util.Locale;
+
 /**
  * Default resource adapter.
  */
@@ -25,7 +27,7 @@ public class DefaultResourceAdapter implements ResourceAdapter {
             case GENERATING_SIGNATURE_BLOCK:
                 return "Generating signature block file";
             case COPYING_ZIP_ENTRY:
-                return String.format("Copying zip entry %d of %d", args[0], args[1]);
+                return String.format(Locale.ENGLISH, "Copying zip entry %d of %d", args[0], args[1]);
             default:
                 throw new IllegalArgumentException("Unknown item " + item);
         }
