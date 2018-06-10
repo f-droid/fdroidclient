@@ -5,10 +5,11 @@ import android.support.v7.preference.PreferenceViewHolder;
 import android.support.v7.preference.SeekBarPreference;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import org.fdroid.fdroid.R;
 
 public class LiveSeekBarPreference extends SeekBarPreference {
-    private Runnable progressChangedRunnable;
+    private SeekBarLiveUpdater seekBarLiveUpdater;
     private boolean trackingTouch;
     private int value = -1;
 
@@ -33,7 +34,7 @@ public class LiveSeekBarPreference extends SeekBarPreference {
     }
 
     @Override
-    public void onBindViewHolder(PreferenceViewHolder holder) {
+    public void onBindViewHolder(final PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
         SeekBar seekbar = holder.itemView.findViewById(R.id.seekbar);
@@ -41,8 +42,12 @@ public class LiveSeekBarPreference extends SeekBarPreference {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                if (progressChangedRunnable != null) {
-                    progressChangedRunnable.run();
+                if (seekBarLiveUpdater != null) {
+                    String message = seekBarLiveUpdater.seekBarUpdated(value);
+                    TextView summary = holder.itemView.findViewById(android.R.id.summary);
+                    if (summary != null) {
+                        summary.setText(message);
+                    }
                 }
                 if (fromUser && !trackingTouch) {
                     persistInt(value);
@@ -77,7 +82,11 @@ public class LiveSeekBarPreference extends SeekBarPreference {
         return value;
     }
 
-    public void setProgressChangedRunnable(Runnable runnable) {
-        progressChangedRunnable = runnable;
+    public void setSeekBarLiveUpdater(SeekBarLiveUpdater updater) {
+        seekBarLiveUpdater = updater;
+    }
+
+    public interface SeekBarLiveUpdater {
+        String seekBarUpdated(int position);
     }
 }

@@ -116,26 +116,26 @@ public class PreferencesFragment extends PreferenceFragment
 
         overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
         overWifiPrevious = overWifiSeekBar.getValue();
-        overWifiSeekBar.setProgressChangedRunnable(new Runnable() {
+        overWifiSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
             @Override
-            public void run() {
-                updateSummary(overWifiSeekBar.getKey(), false);
+            public String seekBarUpdated(int position) {
+                return getNetworkSeekBarSummary(position);
             }
         });
         overDataSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
         overDataPrevious = overDataSeekBar.getValue();
-        overDataSeekBar.setProgressChangedRunnable(new Runnable() {
+        overDataSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
             @Override
-            public void run() {
-                updateSummary(overDataSeekBar.getKey(), false);
+            public String seekBarUpdated(int position) {
+                return getNetworkSeekBarSummary(position);
             }
         });
         updateIntervalSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
         updateIntervalPrevious = updateIntervalSeekBar.getValue();
-        updateIntervalSeekBar.setProgressChangedRunnable(new Runnable() {
+        updateIntervalSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
             @Override
-            public void run() {
-                updateSummary(updateIntervalSeekBar.getKey(), false);
+            public String seekBarUpdated(int position) {
+                return getString(UPDATE_INTERVAL_NAMES[position]);
             }
         });
 
@@ -172,17 +172,21 @@ public class PreferencesFragment extends PreferenceFragment
         }
     }
 
+    private String getNetworkSeekBarSummary(int position) {
+        if (position == 0) {
+            return getString(R.string.over_network_never_summary);
+        } else if (position == 1) {
+            return getString(R.string.over_network_on_demand_summary);
+        } else if (position == 2) {
+            return getString(R.string.over_network_always_summary);
+        } else {
+            throw new IllegalArgumentException("Unknown seekbar position");
+        }
+    }
+
     private void setNetworkSeekBarSummary(SeekBarPreference seekBarPreference) {
         int position = seekBarPreference.getValue();
-        if (position == 0) {
-            seekBarPreference.setSummary(R.string.over_network_never_summary);
-        } else if (position == 1) {
-            seekBarPreference.setSummary(R.string.over_network_on_demand_summary);
-        } else if (position == 2) {
-            seekBarPreference.setSummary(R.string.over_network_always_summary);
-        } else {
-            throw new IllegalArgumentException("No such " + seekBarPreference.getTitle() + " position: " + position);
-        }
+        seekBarPreference.setSummary(getNetworkSeekBarSummary(position));
     }
 
     private void enableUpdateInverval() {
