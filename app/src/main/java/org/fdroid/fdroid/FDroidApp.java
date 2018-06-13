@@ -350,9 +350,11 @@ public class FDroidApp extends Application {
         Preferences.setup(this);
         Languages.setLanguage(this);
 
-        ACRA.init(this);
-        if (isAcraProcess() || HidingManager.isHidden(this)) {
-            return;
+        if (Preferences.get().promptToSendCrashReports()) {
+            ACRA.init(this);
+            if (isAcraProcess() || HidingManager.isHidden(this)) {
+                return;
+            }
         }
 
         PRNGFixes.apply();

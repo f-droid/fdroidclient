@@ -84,6 +84,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_SHOW_ROOT_APPS = "rooted";
     public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
+    public static final String PREF_PROMPT_TO_SEND_CRASH_REPORTS = "promptToSendCrashReports";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
@@ -171,6 +172,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private void uninitialize(String key) {
         initialized.put(key, false);
+    }
+
+    public boolean promptToSendCrashReports() {
+        return preferences.getBoolean(PREF_PROMPT_TO_SEND_CRASH_REPORTS, IGNORED_B);
     }
 
     public boolean isForceOldIndexEnabled() {

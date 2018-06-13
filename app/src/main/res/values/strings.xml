@@ -12,6 +12,10 @@
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
+    <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
+    <string name="prompt_to_send_crash_reports_summary">Gather data about crashes and ask to send them to the
+        developer
+    </string>
     <string name="cache_downloaded">Keep cached apps</string>
     <string name="updates">Updates</string>
     <string name="unstable_updates">Unstable updates</string>

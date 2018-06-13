@@ -116,7 +116,11 @@
     <android.support.v7.preference.PreferenceCategory
             android:key="pref_category_privacy"
             android:title="@string/privacy">
-
+        <SwitchPreference
+                android:key="promptToSendCrashReports"
+                android:title="@string/prompt_to_send_crash_reports"
+                android:summary="@string/prompt_to_send_crash_reports_summary"
+                android:defaultValue="true"/>
         <SwitchPreference
                 android:defaultValue="false"
                 android:key="preventScreenshots"
@@ -137,7 +141,6 @@
                     android:targetClass="org.fdroid.fdroid.views.panic.PanicPreferencesActivity"
                     android:targetPackage="@string/applicationId"/>
         </android.support.v7.preference.PreferenceScreen>
-
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory
