@@ -30,10 +30,12 @@
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="overWifi"
                 android:title="@string/over_wifi"
+                android:defaultValue="@integer/defaultOverWifi"
                 android:layout="@layout/preference_seekbar"/>
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="overData"
                 android:title="@string/over_data"
+                android:defaultValue="@integer/defaultOverData"
                 android:layout="@layout/preference_seekbar"/>
         <SwitchPreference
                 android:title="@string/update_auto_download"
@@ -43,6 +45,7 @@
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="updateIntervalSeekBarPosition"
                 android:title="@string/update_interval"
+                android:defaultValue="@integer/defaultUpdateInterval"
                 android:layout="@layout/preference_seekbar"/>
         <SwitchPreference
                 android:title="@string/notify"
