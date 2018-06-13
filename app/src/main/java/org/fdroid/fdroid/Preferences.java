@@ -121,6 +121,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean IGNORED_B = false;
     private static final int IGNORED_I = -1;
 
+    /**
+     * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
+     */
+    @Deprecated
+    private static final String OLD_PREF_CACHE_APK = "cacheDownloaded";
     @Deprecated
     private static final String OLD_PREF_UPDATE_INTERVAL = "updateInterval";
     @Deprecated
@@ -193,11 +198,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public void setPostPrivilegedInstall(boolean postInstall) {
         preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).apply();
     }
-
-    /**
-     * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
-     */
-    private static final String PREF_CACHE_APK = "cacheDownloaded";
 
     /**
      * Get the update interval in milliseconds.
@@ -299,12 +299,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 return fallbackValue;
         }
 
-        if (preferences.contains(PREF_CACHE_APK)) {
-            if (preferences.getBoolean(PREF_CACHE_APK, false)) {
+        if (preferences.contains(OLD_PREF_CACHE_APK)) {
+            if (preferences.getBoolean(OLD_PREF_CACHE_APK, false)) {
                 value = String.valueOf(Long.MAX_VALUE);
             }
             SharedPreferences.Editor editor = preferences.edit();
-            editor.remove(PREF_CACHE_APK);
+            editor.remove(OLD_PREF_CACHE_APK);
             editor.putString(PREF_KEEP_CACHE_TIME, value);
             editor.apply();
         }
