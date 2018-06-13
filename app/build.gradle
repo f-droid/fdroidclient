@@ -59,32 +59,7 @@ android {
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", defaultConfig.applicationId + applicationIdSuffix
             versionNameSuffix "-debug"
-        }
-    }
-
-    /* set the debug versionCode based on DB verson and how many commits in the repo */
-    applicationVariants.all { variant ->
-        if (variant.buildType.isDebuggable()) {
-            // default to a timestamp, in case anything fails later
-            variant.mergedFlavor.versionCode = new Date().getTime() / 1000
-            try {
-                def stdout = new ByteArrayOutputStream()
-                exec {
-                    commandLine 'git', 'rev-list', '--first-parent', '--count', 'HEAD'
-                    standardOutput = stdout
-                }
-                def commitCount = Integer.parseInt(stdout.toString().trim())
-                stdout = new ByteArrayOutputStream()
-                exec {
-                    commandLine 'sed', '-n', 's,.*DB_VERSION *= *\\([0-9][0-9]*\\).*,\\1,p', 'src/main/java/org/fdroid/fdroid/data/DBHelper.java'
-                    standardOutput = stdout
-                }
-                def dbVersion = Integer.parseInt(stdout.toString().trim())
-                println 'Setting debug versionCode: ' + sprintf("%d%05d", [dbVersion, commitCount])
-                variant.mergedFlavor.versionCode = Integer.parseInt(sprintf("%d%05d", [dbVersion, commitCount]))
-            }
-            catch (ignored) {
-            }
+            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
         }
     }
 
