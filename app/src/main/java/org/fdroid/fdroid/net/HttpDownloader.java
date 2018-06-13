@@ -1,3 +1,24 @@
+/*
+ * Copyright (C) 2014-2017  Peter Serwylo <peter@serwylo.com>
+ * Copyright (C) 2014-2018  Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2015-2016  Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (c) 2018  Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.net;
 
 import android.annotation.TargetApi;
@@ -39,6 +60,11 @@ public class HttpDownloader extends Downloader {
     private URL sourceUrl;
     private HttpURLConnection connection;
     private boolean newFileAvailableOnServer;
+
+    /**
+     * String to append to all HTTP downloads, created in {@link FDroidApp#onCreate()}
+     */
+    public static String queryString;
 
     HttpDownloader(Uri uri, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -142,7 +168,11 @@ public class HttpDownloader extends Downloader {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
         } else {
-            connection = NetCipher.getHttpURLConnection(sourceUrl);
+            if (queryString != null) {
+                connection = NetCipher.getHttpURLConnection(new URL(urlString + "?" + queryString));
+            } else {
+                connection = NetCipher.getHttpURLConnection(sourceUrl);
+            }
         }
 
         connection.setRequestProperty("User-Agent", "F-Droid " + BuildConfig.VERSION_NAME);

@@ -22,6 +22,9 @@
     </string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
+    <string name="send_version_and_uuid">Send version and UUID to servers</string>
+    <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when
+        downloading, takes affect next app restart.</string>
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>

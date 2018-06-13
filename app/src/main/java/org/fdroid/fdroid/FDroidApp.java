@@ -1,5 +1,9 @@
 /*
- * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-2012  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2013-2016  Peter Serwylo <peter@serwylo.com>
+ * Copyright (C) 2014-2018  Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2015-2016  Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (c) 2018  Senecto Limited
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,11 +37,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v4.util.LongSparseArray;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
@@ -66,14 +72,17 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
+import java.util.UUID;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
@@ -480,6 +489,30 @@ public class FDroidApp extends Application {
             UpdateService.forceUpdateRepo(this);
         }
         atStartTime.edit().putInt("build-version", Build.VERSION.SDK_INT).apply();
+
+        final String queryStringKey = "http-downloader-query-string";
+        if (Preferences.get().sendVersionAndUUIDToServers()) {
+            HttpDownloader.queryString = atStartTime.getString(queryStringKey, null);
+            if (HttpDownloader.queryString == null) {
+                UUID uuid = UUID.randomUUID();
+                ByteBuffer buffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE * 2);
+                buffer.putLong(uuid.getMostSignificantBits());
+                buffer.putLong(uuid.getLeastSignificantBits());
+                String id = Base64.encodeToString(buffer.array(),
+                        Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+                StringBuilder builder = new StringBuilder("id=").append(id);
+                String versionName = Uri.encode(Utils.getVersionName(this));
+                if (versionName != null) {
+                    builder.append("&client_version=").append(versionName);
+                }
+                HttpDownloader.queryString = builder.toString();
+            }
+            if (!atStartTime.contains(queryStringKey)) {
+                atStartTime.edit().putString(queryStringKey, HttpDownloader.queryString).apply();
+            }
+        } else {
+            atStartTime.edit().remove(queryStringKey).apply();
+        }
     }
 
     /**

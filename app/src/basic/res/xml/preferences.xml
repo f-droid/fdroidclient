@@ -151,6 +151,12 @@
                 android:defaultValue="false"
                 android:dependency="expert"/>
         <CheckBoxPreference
+                android:key="sendVersionAndUUIDToServers"
+                android:title="@string/send_version_and_uuid"
+                android:summary="@string/send_version_and_uuid_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
                 android:key="forceOldIndex"
                 android:title="@string/force_old_index"
                 android:summary="@string/force_old_index_summary"

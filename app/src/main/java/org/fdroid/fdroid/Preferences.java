@@ -106,6 +106,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
+    public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
 
     public static final int OVER_NETWORK_NEVER = 0;
     public static final int OVER_NETWORK_ON_DEMAND = 1;
@@ -496,6 +497,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     public boolean hideAllNotifications() {
         return preferences.getBoolean(PREF_HIDE_ALL_NOTIFICATIONS, IGNORED_B);
+    }
+
+    /**
+     * Whether to include the version of this app and a randomly generated ID
+     * to the server when downloading from it.
+     */
+    public boolean sendVersionAndUUIDToServers() {
+        return preferences.getBoolean(PREF_SEND_VERSION_AND_UUID_TO_SERVERS, IGNORED_B);
     }
 
     /**
