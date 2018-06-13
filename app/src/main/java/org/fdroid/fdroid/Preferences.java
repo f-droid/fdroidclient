@@ -345,6 +345,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences.edit().putBoolean(PREF_EXPERT, flag).apply();
     }
 
+    public boolean forceTouchApps() {
+        return preferences.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, false);
+    }
+
     public Theme getTheme() {
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
     }

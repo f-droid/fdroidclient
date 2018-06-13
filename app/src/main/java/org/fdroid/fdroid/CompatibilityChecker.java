@@ -1,12 +1,10 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.v7.preference.PreferenceManager;
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
@@ -31,8 +29,7 @@ public class CompatibilityChecker {
 
         context = ctx.getApplicationContext();
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        forceTouchApps = prefs.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, false);
+        forceTouchApps = Preferences.get().forceTouchApps();
 
         PackageManager pm = ctx.getPackageManager();
 
