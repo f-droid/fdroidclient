@@ -39,14 +39,14 @@
             android:visibility="gone"
             android:textSize="0sp"/>
 
-    <SeekBar xmlns:android="http://schemas.android.com/apk/res/android"
+    <org.fdroid.fdroid.views.SeekBarForegroundThumb
              android:id="@+id/seekbar"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_below="@android:id/summary"
              android:layout_alignStart="@android:id/summary"
              android:layout_alignLeft="@android:id/summary"
-             android:progressDrawable="@drawable/seekbar_progress"
+             android:progressDrawable="@drawable/seekbar_bg"
              android:thumb="@drawable/seekbar_thumb"
              android:padding="16dip"
              android:theme="@style/DiscreteSeekBar"/>
