@@ -66,6 +66,12 @@ public class LiveSeekBarPreference extends SeekBarPreference {
             }
         });
         seekbar.setProgress(value);
+
+        if (isEnabled()) {
+            seekbar.setAlpha(1.0f);
+        } else {
+            seekbar.setAlpha(0.3f);
+        }
     }
 
     @Override
