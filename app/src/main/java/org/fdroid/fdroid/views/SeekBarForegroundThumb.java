@@ -75,7 +75,7 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
                 final int saveCount = canvas.save();
                 canvas.translate(getPaddingLeft() - getThumbOffset() + halfThumbW, getHeight() / 2);
                 for (int i = 0; i <= count; i++) {
-                    if(i!=getProgress()) {
+                    if (i != getProgress()) {
                         tickMark.draw(canvas);
                     }
                     canvas.translate(spacing, 0);
