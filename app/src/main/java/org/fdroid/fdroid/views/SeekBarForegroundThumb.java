@@ -13,7 +13,7 @@ import org.fdroid.fdroid.R;
  * Based on https://stackoverflow.com/a/47727128
  */
 public class SeekBarForegroundThumb extends AppCompatSeekBar {
-    private Drawable mTickMark;
+    private Drawable tickMark;
     private Context context;
 
     public SeekBarForegroundThumb(Context context) {
@@ -35,9 +35,9 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
         this.context = context;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mTickMark = context.getDrawable(R.drawable.seekbar_tickmark);
+            tickMark = context.getDrawable(R.drawable.seekbar_tickmark);
         } else {
-            mTickMark = context.getResources().getDrawable(R.drawable.seekbar_tickmark);
+            tickMark = context.getResources().getDrawable(R.drawable.seekbar_tickmark);
         }
     }
 
@@ -61,21 +61,23 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
     }
 
     private void drawTickMarks(Canvas canvas) {
-        if (mTickMark != null) {
+        if (tickMark != null) {
             final int count = getMax();
             if (count > 1) {
-                final int w = mTickMark.getIntrinsicWidth();
-                final int h = mTickMark.getIntrinsicHeight();
+                final int w = tickMark.getIntrinsicWidth();
+                final int h = tickMark.getIntrinsicHeight();
                 final int halfThumbW = getThumbCompat().getIntrinsicWidth() / 2;
                 final int halfW = w >= 0 ? w / 2 : 1;
                 final int halfH = h >= 0 ? h / 2 : 1;
-                mTickMark.setBounds(-halfW, -halfH, halfW, halfH);
-                final float spacing = (getWidth() - getPaddingLeft() - getPaddingRight() + getThumbOffset() * 2 - halfThumbW * 2) / (float) count;
+                tickMark.setBounds(-halfW, -halfH, halfW, halfH);
+                final float spacing = (getWidth() - getPaddingLeft() - getPaddingRight()
+                        + getThumbOffset() * 2 - halfThumbW * 2) / (float) count;
                 final int saveCount = canvas.save();
                 canvas.translate(getPaddingLeft() - getThumbOffset() + halfThumbW, getHeight() / 2);
                 for (int i = 0; i <= count; i++) {
-                    if(i!=getProgress())
-                        mTickMark.draw(canvas);
+                    if(i!=getProgress()) {
+                        tickMark.draw(canvas);
+                    }
                     canvas.translate(spacing, 0);
                 }
                 canvas.restoreToCount(saveCount);
