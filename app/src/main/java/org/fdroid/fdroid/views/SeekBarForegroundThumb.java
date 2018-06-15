@@ -55,11 +55,6 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
         drawTickMarks(canvas);
     }
 
-    @Override
-    public int getThumbOffset() {
-        return super.getThumbOffset();
-    }
-
     private void drawTickMarks(Canvas canvas) {
         if (tickMark != null) {
             final int count = getMax();
