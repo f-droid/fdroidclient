@@ -319,6 +319,6 @@
     <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="DiscreteSeekBar" parent="Base.Widget.AppCompat.SeekBar.Discrete">
-        <item name="tickMark">@drawable/seekbar_tickmark</item>
+        <item name="tickMark">@null</item> <!-- Disable default tickMarks. We draw our own in SeekBarForegroundThumb -->
     </style>
 </resources>

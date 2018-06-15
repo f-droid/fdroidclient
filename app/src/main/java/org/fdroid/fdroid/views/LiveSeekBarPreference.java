@@ -37,7 +37,7 @@ public class LiveSeekBarPreference extends SeekBarPreference {
     public void onBindViewHolder(final PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        SeekBar seekbar = holder.itemView.findViewById(R.id.seekbar);
+        SeekBarForegroundThumb seekbar = holder.itemView.findViewById(R.id.seekbar);
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -66,6 +66,12 @@ public class LiveSeekBarPreference extends SeekBarPreference {
             }
         });
         seekbar.setProgress(value);
+
+        if (isEnabled()) {
+            seekbar.setAlpha(1.0f);
+        } else {
+            seekbar.setAlpha(0.3f);
+        }
     }
 
     @Override
