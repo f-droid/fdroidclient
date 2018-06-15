@@ -501,7 +501,7 @@ public class ManageReposActivity extends AppCompatActivity
                 }
 
                 if (messageRes > 0) {
-                    overwriteMessage.setText(String.format(getString(messageRes), name));
+                    overwriteMessage.setText(getString(messageRes, name));
                     overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
                         overwriteMessage.setTextColor(getResources().getColor(R.color.red));
@@ -839,7 +839,7 @@ public class ManageReposActivity extends AppCompatActivity
             bssid = bssid.toLowerCase(Locale.ENGLISH);
             String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
             if (!bssid.equals(newRepoBssid)) {
-                String msg = String.format(getString(R.string.not_on_same_wifi), newRepo.getSsid());
+                String msg = getString(R.string.not_on_same_wifi, newRepo.getSsid());
                 Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             }
             // TODO we should help the user to the right thing here,
