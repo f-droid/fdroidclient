@@ -22,6 +22,12 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
 
+    defaultConfig {
+        versionCode 1003001
+        versionName getVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
     buildTypes {
         // use proguard on debug too since we have unknowingly broken
         // release builds before.
@@ -31,6 +37,12 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
+            versionNameSuffix "-debug"
+            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
         }
     }
 
@@ -61,21 +73,6 @@ android {
         // see http://tools.android.com/tech-docs/new-build-system/tips#TOC-Improving-Build-Server-performance
         // Skip pre-dexing when running on CI or when disabled via -Dpre-dex=false.
         preDexLibraries = preDexEnabled && !isCi
-    }
-
-    defaultConfig {
-        versionCode 1003001
-        versionName getVersionName()
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        debug {
-            applicationIdSuffix ".debug"
-            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
-            versionNameSuffix "-debug"
-            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
-        }
     }
 
     testOptions {
