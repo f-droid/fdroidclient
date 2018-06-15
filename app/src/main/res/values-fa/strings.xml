@@ -114,7 +114,7 @@
 
 
     <string name="expert">حالت حرفه‌ای</string>
-    <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
+    <string name="show_incompat_versions">شامل نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های کاره‌ای که با این افزاره ناسازگارند</string>
 
     <string name="local_repo">مخزن محلّی</string>
@@ -179,7 +179,8 @@
     <string name="category_Writing">نوشتن</string>
 
     <string name="requesting_root_access_body">در حال درخواست دسترسی ریشه…</string>
-    <string name="empty_can_update_app_list">تبریک! برنامه هایتان به‌روز هستند.</string>
+    <string name="empty_can_update_app_list">تبریک!
+\nکاره‌هایتان به‌روزند.</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
     <string name="root_access_denied_body">یا دستگاهاندرویدیتان روت شده نیست، یا درخواست روت برای اف‌دروید را رد کردید.</string>
@@ -226,13 +227,13 @@
     <string name="perms_description_app">فراهم شده توسّط: %1$s.</string>
     <string name="downloading">در حال بارگیری…</string>
 
-    <string name="interval_never">هرگز</string>
-    <string name="interval_1h">هر ساعت</string>
-    <string name="interval_4h">هر ۴ ساعت</string>
-    <string name="interval_12h">هر ۱۲ ساعت</string>
-    <string name="interval_1d">هر روز</string>
-    <string name="interval_1w">هر هفته</string>
-    <string name="interval_2w">هر ۲ هفته</string>
+    <string name="interval_never">بدون به‌روز رسانی‌های کارهٔ خودکار</string>
+    <string name="interval_1h">بررسی ساعتی برای به‌روز رسانی‌ها</string>
+    <string name="interval_4h">بررسی هر ۴ ساعت برای به‌روز رسانی‌ها</string>
+    <string name="interval_12h">بررسی هر ۱۲ ساعت برای به‌روز رسانی‌ها</string>
+    <string name="interval_1d">بررسی روزانه برای به‌روز رسانی‌ها</string>
+    <string name="interval_1w">بررسی هفتگی برای به‌روز رسانی‌ها</string>
+    <string name="interval_2w">بررسی هر ۲ هفته برای به‌روز رسانی‌ها</string>
 
     <string name="theme_light">روشن</string>
     <string name="theme_dark">تیره</string>
@@ -371,7 +372,7 @@
     <string name="categories__empty_state__no_categories">هیچ دسته‌ای برای نمایش نیست</string>
 
     <string name="preference_category__my_apps">برنامه های من</string>
-    <string name="preference_manage_installed_apps">مدیریت برنامه های نصب شده</string>
+    <string name="preference_manage_installed_apps">مدیریت کاره‌های نصب شده</string>
 
 
     <string name="details_new_in_version">جدید در نگارش %s</string>
@@ -509,4 +510,26 @@
     <string name="repo_exists_and_enabled">%1$s از قبل تنظیم و فعال شده است.</string>
     <string name="repo_delete_to_overwrite">در ابتدا %1$s را پاک کنید تا بتوانید مورد جدید را با کلید نامتعارف اضافه کنید.</string>
     <string name="repo_exists_add_mirror">این یک کپی از %1$s میباشد، آیا میخواهید آن را به عنوان یک mirror اضافه کنید؟</string>
+    <string name="over_wifi">روی وای‌فای</string>
+    <string name="over_data">روی داده</string>
+    <string name="over_network_always_summary">هنگام موجود بودن، همیشه از این اتّصال استفاده شود</string>
+    <string name="over_network_on_demand_summary">هنگام بارگیری، فقط از این اتّصال استفاده شود</string>
+    <string name="over_network_never_summary">هرگز با استفاده از این اتّصال، چیزی بارگیری نشود</string>
+    <string name="antidisabledalgorithmlist">این کاره یک امضای امنیتی ضعیف دارد</string>
+    <string name="antiknownvulnlist">این کاره یک آسیب‌پذیری امنیتی شناخته‌شده دارد</string>
+
+    <string name="show_root_apps">شامل کاره‌های ریشه‌ای</string>
+    <string name="show_root_apps_on">نمایش کاره‌هایی که نیاز به دسترسی ریشه دارند</string>
+    <string name="show_anti_feature_apps">شامل کاره‌های ضدویژگی‌دار</string>
+    <string name="show_anti_feature_apps_on">نمایش کاره‌هایی که نیاز به ضدویژگی دارند</string>
+    <string name="force_touch_apps">شامل کاره‌های لمسی</string>
+    <string name="force_touch_apps_on">نمایش کاره‌هایی که نیاز به صفحهٔ لمسی دارند، فارغ از پشتیبانی سخت‌افزاری</string>
+
+    <string name="repo_official_mirrors">آینه‌های رسمی</string>
+    <string name="repo_user_mirrors">استفاده از آینه‌ها</string>
+    <string name="use_bluetooth">استفاده از بلوتوث</string>
+    <string name="swap_toast_invalid_url">نشانی نامعتبر برای تاخت زدن: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">نقطهٔ داغ وای‌فای فعّال است</string>
+    <string name="swap_toast_could_not_enable_hotspot">نمی‌توان نقطهٔ داغ وای‌فای را فعّال کرد!</string>
+
     </resources>

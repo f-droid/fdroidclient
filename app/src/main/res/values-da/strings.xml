@@ -17,9 +17,7 @@
     <string name="notify">Vis tilgængelige opdateringer</string>
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
     <string name="system_installer">Privilegeret Udvidelse</string>
-    <string name="system_installer_on">Brug F-Droid Privilegeret Udvidelse til at installere, opdatere og fjerne
-        pakker
-    </string>
+    <string name="system_installer_on">Brug Privilegeret Udvidelse til at installere, opdatere og fjerne pakker</string>
     <string name="uninstall_system">Opdater/Afinstaller Privilegeret Udvidelse</string>
     <string name="uninstall_system_summary">Åbn skærmen med detaljer om Privilegeret Udvidelse for at
         opdatere/afinstallere den
@@ -224,7 +222,7 @@
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_post_success">F-Droid Privilegeret udvidelse installeret</string>
     <string name="system_install_post_fail">Installation af F-Droid Privilegeret Udvidelse fejlede</string>
-    <string name="system_install_post_success_message">F-Droid Privilegeret udvidelse blev installeret. Dette tillader F-Droid at installere, opdatere og afinstallere apps af sig selv.</string>
+    <string name="system_install_post_success_message">F-Droid Privilegeret udvidelse blev installeret. Denne gør det muligt for F-Droid selvstændigt at installere, opdatere og afinstallere apps .</string>
     <string name="system_install_post_fail_message">Installation af F-Droid Privilegeret Udvidelse fejlede.
         Installationsmetoden er ikke understøttet af alle Android distributioner, konsulter venligst F-Droid
         fejldatabasen for mere information.
@@ -383,9 +381,9 @@
     <string name="updates__show_updateable_apps">Vis apps</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Hen opdateringer for %1$d app.</item>
-        <item quantity="other">Hen opdateringer for %1$d apps.</item>
-    </plurals>
+	<item quantity="one">Hent opdatering for %1$d app.</item>
+	<item quantity="other">Hent opdateringer for %1$d apps.</item>
+</plurals>
 
     <string name="versions">Versioner</string>
     <string name="clear_search">Ryd søgning</string>
@@ -484,4 +482,17 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     <string name="status_inserting_x_apps">Gemmer app detaljer (%1$d/%2$d) fra %3$s</string>
-</resources>
+<string name="over_data">Over mobildata</string>
+    <string name="over_network_always_summary">Brug altid denne forbindelse når tilgængelig</string>
+    <string name="over_network_on_demand_summary">Brug kun denne forbindelse når jeg klikker for at hente</string>
+    <string name="over_network_never_summary">Hent aldrig noget over denne forbindelse</string>
+    <string name="repo_add_mirror">Tilføj spejl</string>
+    <string name="sort_search">Sorter søgning</string>
+
+    <string name="repo_exists_add_mirror">Dette er en kopi af %1$s, tilføj som et spejl?</string>
+    <string name="antidisabledalgorithmlist">Denne app har en svag sikkerhedssignatur</string>
+    <string name="antiknownvulnlist">Denne app indeholder en kendt sårbarhed</string>
+
+    <string name="show_root_apps">Inkluder root-apps</string>
+    <string name="show_root_apps_on">Vis apps som kræver root-rettigheder</string>
+    </resources>

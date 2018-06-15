@@ -115,19 +115,15 @@
     </string>
     <string name="unknown">Disconnotu</string>
     <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
-    <string name="repo_confirm_delete_body">Burrare unu depòsitu bolet nàrrere
-        chi sas aplicatziones in intro no ant a èssere prus disponìbiles tràmite F-Droid.
-
-        Nota: Totu
-        sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.
-    </string>
+    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles. Nota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
     <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
 
         Depes
         torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.
     </string>
-    <string name="repo_added">Depòsitu F-Droid %1$s sarvadu.</string>
-    <string name="repo_searching_address">Chirchende unu depòsitu F-Droid in\n%1$s</string>
+    <string name="repo_added">Depòsitu de pachetos %1$s sarvadu.</string>
+    <string name="repo_searching_address">Chirchende unu depòsitu de pachetos in
+\n%1$s</string>
     <string name="minsdk_or_later">%s o imbeniente</string>
     <string name="up_to_maxsdk">Finas a %s</string>
     <string name="minsdk_up_to_maxsdk">dae %1$s finas a %2$s</string>
@@ -278,13 +274,13 @@
     <string name="perms_description_app">Frunidu dae %1$s.</string>
     <string name="downloading">Iscarrighende…</string>
 
-    <string name="interval_never">Mai</string>
-    <string name="interval_1h">Cada ora</string>
-    <string name="interval_4h">Cada 4 oras</string>
-    <string name="interval_12h">Cada 12 oras</string>
-    <string name="interval_1d">Cada die</string>
-    <string name="interval_1w">Cada chida</string>
-    <string name="interval_2w">Cada 2 chidas</string>
+    <string name="interval_never">Perunu agiornamentu automàticu</string>
+    <string name="interval_1h">Chirca agiornamentos cada ora</string>
+    <string name="interval_4h">Chirca agiornamentos cada 4 oras</string>
+    <string name="interval_12h">Chirca agiornamentos cada 12 oras</string>
+    <string name="interval_1d">Chirca agiornamentos cada die</string>
+    <string name="interval_1w">Chirca agiornamentos cada chida</string>
+    <string name="interval_2w">Chirca agiornamentos cada 2 chidas</string>
 
     <string name="theme_light">Craru</string>
     <string name="theme_dark">Iscuru</string>
@@ -571,5 +567,13 @@
     <string name="swap_toast_invalid_url">URL pro cuncàmbiu non vàlidu: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi abilitadu</string>
     <string name="swap_toast_could_not_enable_hotspot">Impossìbile abilitare s\'Hotspot Wi-Fi!</string>
+
+    <string name="over_wifi">Impreende su Wi-Fi</string>
+    <string name="over_data">Impreende sa connessione datos</string>
+    <string name="over_network_always_summary">Imprea semper custa connessione cando est disponìbile</string>
+    <string name="over_network_on_demand_summary">Imprea petzi custa connessione cando incarco pro iscarrigare</string>
+    <string name="over_network_never_summary">No iscàrrighes nudda impreende custa connessione</string>
+    <string name="antidisabledalgorithmlist">Custa aplicatzione tenet una firma de seguresa dèbile</string>
+    <string name="antiknownvulnlist">Custa aplicatzione tenet una vulnerabilidade de seguresa connota</string>
 
     </resources>

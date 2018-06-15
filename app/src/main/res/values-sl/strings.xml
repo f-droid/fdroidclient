@@ -1,16 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Nova različica je overovljena z drugim ključem kot starejša. V primeru, da želite
-        namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite
-        pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)
-    </string>
+    <string name="SignatureMismatch">Nova različica je overjena z drugim ključem kot starejša. V primeru, da želite namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)</string>
     <string name="version">Različica</string>
-    <string name="cache_downloaded">Predpomnilnik naloženih aplikacij</string>
+    <string name="cache_downloaded">Ohranite predpomnjene aplikacije</string>
     <string name="updates">Posodobitve</string>
-    <string name="notify">Opozorilo za posodobitve</string>
-    <string name="about_site">Spletna stran:</string>
-    <string name="about_mail">E-pošta:</string>
-    <string name="about_version">Različica:</string>
+    <string name="notify">Pokaži posodobitve, ki so na voljo</string>
+    <string name="about_site">Spletna stran</string>
+    <string name="about_mail">E-pošta</string>
+    <string name="about_version">Različica</string>
     <string name="app_installed">Nameščeno</string>
     <string name="app_not_installed">Ni nameščeno</string>
     <string name="ok">V redu</string>
@@ -30,16 +27,14 @@
     <string name="menu_source">Izvorna koda</string>
     <string name="menu_donate">Prispevek</string>
     <string name="details_notinstalled">Ni nameščeno</string>
-    <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
+    <string name="antiadslist">Ta aplikacija vsebuje oglaševanje</string>
     <string name="expert">Napredno</string>
     <string name="search_hint">Iskanje aplikacij</string>
     <string name="appcompatibility">Združljivost aplikacij</string>
-    <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
+    <string name="show_incompat_versions">Vključi nekompatibilne verzije</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="installIncompatible">Izgleda da aplikacija ni kompatibilna z vašo napravo. Ali jo želite vseeno
-        poskusiti namestiti?
-    </string>
+    <string name="installIncompatible">Izgleda, da aplikacija ni kompatibilna z vašo napravo. Ali jo želite vseeno poskusiti namestiti?</string>
     <string name="delete">Izbriši</string>
     <string name="enable_nfc_send">Omogoči NFC pošiljanje</string>
     <string name="unstable_updates">Nestabilne posodobitve</string>
@@ -111,4 +106,346 @@
     <string name="crash_dialog_text">Zaradi nepričakovane napake se je aplikacija prisilno ustavila. Nam želite v e-pošti posredovati podrobnosti in s tem pomagati odpraviti napako?</string>
     <string name="notification_title_single_update_available">Posodobitev na voljo</string>
     <string name="notification_title_summary_install_error">Namestitev neuspešna</string>
-</resources>
+<string name="by_author_format">od avtorja %s</string>
+    <string name="keep_install_history">Ohranite zgodovino namestitev</string>
+    <string name="over_wifi">Preko Wi-Fi</string>
+    <string name="over_data">Preko mobilnih podatkov</string>
+    <string name="over_network_always_summary">Vedno uporabi to povezavo, ko je na voljo</string>
+    <string name="update_auto_download">Samodejno prenesi posodobitve</string>
+    <string name="update_auto_install">Samodejno namesti posodobitve</string>
+    <string name="links">Povezave</string>
+    <string name="versions">Različice</string>
+    <string name="enable">Omogoči</string>
+    <string name="add_key">Dodaj ključ</string>
+    <string name="overwrite">Prepiši</string>
+    <string name="updates__tts__download_app">Prenesi</string>
+    <string name="not_on_same_wifi">Vaša naprava ni na istem Wi-Fi kto lokalni repozitorij, ki ste ga ravnokar dodali. Poskusite se pridružiti temu omrežju: %s</string>
+    <string name="keep_install_history_summary">Shrani dnevnik namestitev in odstranitev znotaj F-Droida</string>
+    <string name="force_old_index">Prisilna uporaba starejšega načina formatiranja</string>
+    <string name="force_old_index_summary">V primeru napak ali združljivostnih težav, uporabite XML aplikacijski index</string>
+    <string name="over_network_on_demand_summary">Uporabi samo to povezavo, ko kliknem na prenesi</string>
+    <string name="over_network_never_summary">Nikoli ne prenesi ničesar preko te povezave</string>
+    <string name="update_auto_download_summary">Posodobitve so prenesene avtomatsko in boste obveščeni, da jih namestite</string>
+    <string name="update_auto_install_summary">Prenesi in namesti posodobitve v ozadju</string>
+    <string name="system_installer">Priviligirane razširitve</string>
+    <string name="system_installer_on">Uporabi F-Droid priviligirane razširitve za namestitev, posodobitev in odstranjevanje paketov</string>
+    <string name="uninstall_system">Posodobi/zbriši priviligirane razširitve</string>
+    <string name="uninstall_system_summary">Odpri podroben prikaz priviligiranih razširitev za njihovo posodobitev/izbris</string>
+    <string name="local_repo_name">Ime Vašega lokalnega repozitorija</string>
+    <string name="local_repo_name_summary">Oglaševano ime vašega lokalnega repozitorija: %s</string>
+    <string name="local_repo_https_on">Uporabite enkriptirano HTTPS:// povezavo za Vaš lokalni repozitorij</string>
+
+    <string name="login_title">Potrebna je avtentikacija</string>
+    <string name="login_name">Uporabniško ime</string>
+    <string name="login_password">Geslo</string>
+    <string name="repo_edit_credentials">Spremeni geslo</string>
+    <string name="repo_error_empty_username">Prazno uporabniško ime, podatki niso spremenjeni</string>
+
+    <string name="no_such_app">Nobena aplikacija s tem imenom ni bila najdena.</string>
+
+    <string name="app_details_donate_prompt_unknown_author">Kupite razvijalcem od %1$s kavo!</string>
+    <string name="app_details_donate_prompt">%1$s je bila ustvarjeno od %2$s. Kupi jim kavo!</string>
+
+    <string name="app_details__incompatible_mismatched_signature">Različna overitev nameščenih verzij</string>
+    <string name="app_details__no_versions__show_incompat_versions">Če želite vseeno pokazati nekompatibilne verzije, omogočite v nastavitvah možnost \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Nobena verzija ni kompatibilna z overitvijo</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nobena verzija ni kompatibilna z napravo</string>
+    <string name="about_source">Izvorna koda</string>
+    <string name="about_license">Licenca</string>
+
+    <string name="app_incompatible">Nekompatibilno</string>
+    <string name="app_inst_known_source">Nameščeno (iz %s)</string>
+    <string name="app_inst_unknown_source">Nameščeno (iz neznanega vira)</string>
+    <string name="app_version_x_available">Verzija %1$s je na voljo</string>
+    <string name="app_version_x_installed">Verzija %1$s</string>
+    <string name="app_recommended_version_installed">Verzija %1$s(priporočeno)</string>
+    <string name="app__newly_added">Novo</string>
+    <string name="added_on">Dodano dne %s</string>
+    <string name="app__tts__cancel_download">Prekliči prenos</string>
+    <string name="app__install_downloaded_update">Posodobi</string>
+    <string name="app_installed_media">Datoteka nameščena v %s</string>
+    <string name="app_list_download_ready">Preneseno, pripravljeno za namestitev</string>
+    <string name="app_list__dismiss_app_update">Posodobitev ignorirana</string>
+    <string name="app_list__dismiss_vulnerable_app">Varnostna hiba ignorirana</string>
+    <string name="app_list__dismiss_downloading_app">Prenos preklican</string>
+
+    <string name="installed_apps__activity_title">Nameščene aplikacije</string>
+    <string name="installed_app__updates_ignored">Posodobitve ignorirane</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Posodobitve ignorirane za verzijo %1$s</string>
+    <string name="updates__tts__download_updates_for_all_apps">Prenesi vse posodobitve</string>
+
+    <string name="updates__app_with_known_vulnerability__ignore">Ignoriraj</string>
+
+    <string name="updates__hide_updateable_apps">Skrij aplikacije</string>
+    <string name="updates__show_updateable_apps">Prikaži aplikacije</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Prenesi posodobitev za %1$d aplikacijo.</item>
+	<item quantity="two">Prenesi posodobitvi za %1$d aplikaciji.</item>
+	<item quantity="few">Prenesi posodobitve za %1$d aplikacij.</item>
+	<item quantity="other">Prenesi posodobitve za %1$d aplikacij.</item>
+</plurals>
+
+    <string name="repo_add_mirror">Dodaj ogledalo</string>
+    <string name="clear_search">Počisti rezultate</string>
+    <string name="sort_search">Razvrsti rezultate iskanja</string>
+
+    <string name="bluetooth_activity_not_found">Nobena Bluetooth metoda pošiljanja ni bila najdena, izberite eno!</string>
+    <string name="choose_bt_send">Izberite Bluetooth metodo pošiljanja</string>
+
+    <string name="repo_add_fingerprint">Prstni odtis (opcionalno)</string>
+    <string name="repo_exists_and_enabled">%1$s je že nastavljen in omogočen</string>
+    <string name="bad_fingerprint">Slab prstni odtis</string>
+    <string name="invalid_url">To ni veljaven URL naslov.</string>
+    <string name="repo_provider">Vir aplikacij: %s</string>
+
+    <string name="repositories_summary">Dodaj dodatne vire aplikacij</string>
+    <string name="menu_ignore_all">Ignoriraj vse posodobitve</string>
+    <string name="menu_ignore_this">Ignoriraj to posodobitev</string>
+    <string name="menu_email">Pošlji E-mail avtorju</string>
+    <string name="menu_changelog">Spremembe</string>
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Licenca: %s</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="latest__empty_state__no_recent_apps">Ni najdenih nedavnih aplikacij</string>
+    <string name="latest__empty_state__never_updated">Ob posodobitvi seznama aplikacio bodo najnovejše aplikacije prikazane tukaj</string>
+    <string name="categories__empty_state__no_categories">Nobena kategorija ni na voljo za prikaz</string>
+
+    <string name="preference_category__my_apps">Moje aplikacije</string>
+    <string name="details_new_in_version">Novo v verziji %s</string>
+
+    <string name="antifeatureswarning">Ta aplikacija ima lastnosti, ki Vam bodo morda všeč.</string>
+    <string name="antifeatures">Neželjene lastnosti</string>
+    <string name="antinonfreeadlist">Ta aplikacija promovira plačljive dodatke</string>
+    <string name="antinonfreenetlist">Ta aplikacija promovira plačljive internetne storitve</string>
+    <string name="antinonfreedeplist">Ta aplikcija je odvisna od ostalih ne odprtih aplikacijah</string>
+    <string name="antiupstreamnonfreelist">Originalna koda ni popolnoma odprta</string>
+    <string name="antinonfreeassetslist">Ta aplikacija vsebuje neodprte enote</string>
+    <string name="antidisabledalgorithmlist">Ta aplikacija ima šibek varnostni podpis</string>
+    <string name="antiknownvulnlist">Ta aplikacija vsebuje znano varnostno pomanjkljivost</string>
+
+    <string name="display">Prikaži</string>
+
+    <string name="expert_on">Pokaži dodatne informacije in omogoči dodatne nastavitve</string>
+
+    <string name="show_incompat_versions_on">Pokaži verzije aplikacij, ki so nekompatibilne z napravo</string>
+    <string name="show_root_apps">Vključi root aplikacije</string>
+    <string name="show_root_apps_on">Prikaži aplikacije, ki zahtevajo root dostop</string>
+    <string name="show_anti_feature_apps">Vključi aplikcije z proti-lastnostmi</string>
+    <string name="force_touch_apps">Vključi aplikacije, ki potrebujejo zaslone na dotik</string>
+    <string name="local_repo">Lokalni vir aplikacij</string>
+    <string name="local_repo_running">F-Droid je pripravljen na zamenjavo</string>
+    <string name="deleting_repo">Vir aplikacij je v izbrisu…</string>
+    <string name="adding_apks_format">Virom aplikacij se dodaja %s …</string>
+    <string name="icon">Ikona</string>
+    <string name="useTor">Uporabi Tor</string>
+    <string name="proxy">Proksi</string>
+    <string name="enable_proxy_title">Omogoči HTTP proksi</string>
+    <string name="privacy">Zaščita podatkov</string>
+    <string name="preventScreenshots_title">Prepreči slikanje zaslona</string>
+    <string name="panic_app_setting_title">Aplikacija panični gumb</string>
+    <string name="panic_app_unknown_app">Nepoznana aplikacija</string>
+    <string name="panic_app_setting_summary">Nobena aplikacije še ni nastavljena</string>
+    <string name="panic_app_setting_none">Noben</string>
+    <string name="panic_app_dialog_title">Potrdi aplikacijo panika</string>
+    <string name="allow">Dovoli</string>
+
+    <string name="panic_settings">Nastavitve paničnega gumba</string>
+    <string name="panic_settings_summary">Dejanja, ki se zgodijo v stanju urgence</string>
+    <string name="panic_exit_title">Izhod iz aplikacije</string>
+    <string name="panic_exit_summary">Aplikacija se bo zaprla</string>
+    <string name="panic_destructive_actions">Uničujoča dejanja</string>
+    <string name="panic_hide_title">Skrij aplikacijo %s</string>
+    <string name="panic_hide_summary">Aplikacija se bo skrila</string>
+    <string name="panic_hide_warning_title">Zapomni si metodo obnovitve</string>
+    <string name="hiding_calculator">Kalkulator</string>
+    <string name="hiding_dialog_title">Skrij aplikacijo %s zdaj</string>
+    <string name="hide_on_long_search_press_title">Skrij iskalni gumb</string>
+    <string name="hide_on_long_search_press_summary">Dolg pritisk na gumb iskanje bo skril aplikacije</string>
+
+    <string name="download_404">Zahtevana datoteka ni bila najdena.</string>
+    <string name="update_notification_title">Posodabljanje skladišča aplikacij</string>
+    <string name="repos_unchanged">Vsa skladišča aplikacij so posodobljena</string>
+    <string name="global_error_updating_repos">Med posodobitvijo aplikacije %s je prišlo do napake.</string>
+    <string name="no_permissions">Nobena dovoljenja niso v uporabi.</string>
+    <string name="permissions">Dovoljenja</string>
+    <string name="no_handler_app">Vi nimate nobene dostopne aplikacije, ki bi lahk upravljala z %s.</string>
+    <string name="theme">Tema</string>
+    <string name="repo_url">Naslov</string>
+    <string name="repo_num_apps">Število aplikacij</string>
+    <string name="repo_fingerprint">Prstni odtis podpisnega ključa (SHA-256)</string>
+    <string name="repo_description">Opis</string>
+    <string name="repo_official_mirrors">Uradna ogledala</string>
+    <string name="repo_user_mirrors">Uporabnikova ogledala</string>
+    <string name="repo_name">Ime</string>
+    <string name="unknown">Nepoznano</string>
+    <string name="repo_confirm_delete_title">Izbriši skladišče aplikacij?</string>
+    <string name="minsdk_or_later">%s ali kasneje</string>
+    <string name="up_to_maxsdk">Do skupno %s</string>
+    <string name="requires_features">Potrebuje: %1$s</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="category_Theming">Izgled</string>
+    <string name="empty_can_update_app_list">Čestitke!
+\nVaše aplikacije so posodobljene.</string>
+
+    <string name="empty_search_available_app_list">Nobena ujemajoča aplikacija ni na voljo.</string>
+
+    <string name="install_error_unknown">Namestitev ni uspela zaradi neznane napake</string>
+    <string name="uninstall_error_unknown">Odstanitev ni uspela zaradi neznane napake</string>
+    <string name="system_install_post_success">F-Droid priviligirana razširitev je nameščen</string>
+    <string name="system_install_post_fail">Namestitev F-Droid priviligirane razširitve ni uspela</string>
+    <string name="system_install_installing">Nameščanje poteke…</string>
+    <string name="system_install_installing_rebooting">Nameščanje in ponovni zagon sta v teku…</string>
+    <string name="system_install_uninstalling">Odstranjevanje…</string>
+    <string name="system_install_warning">To lahko traja do 10 sekund.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ni interneta? Dobite aplikacije od ljudi blizu Vas!</string>
+    <string name="nearby_splash__find_people_button">Najdite ljudi blizu mene</string>
+    <string name="swap_nfc_title">Dotaknite se, da menjate</string>
+    <string name="swap_join_same_wifi">Pridruži se istemu Wi-Fi, kot je Vaš prijatelj</string>
+    <string name="swap_join_this_hotspot">Pomagajte Vašemu prijatelju najti hotspot</string>
+    <string name="swap">Menjaj aplikacije</string>
+    <string name="swap_success">Menjava uspešna!</string>
+    <string name="swap_no_wifi_network">Ni omrežnih povezav</string>
+    <string name="swap_view_available_networks">Kliknite, če želite odpreti dosegljiva omrežja</string>
+    <string name="swap_switch_to_wifi">Kliknite, da se povežete z Wi-Fi omrežjem</string>
+    <string name="open_qr_code_scanner">Odpri QR skener</string>
+    <string name="swap_confirm_connect">Želite dobiti aplikacije iz lokacije %1$s zdaj?</string>
+    <string name="swap_scan_or_type_url">Ena izmed oseb mora skenirati kodo ali vtipkati URL druge osebe v brskalnik.</string>
+    <string name="swap_choose_apps">Izberi aplikacije</string>
+    <string name="swap_scan_qr">Skeniraj QR kodo</string>
+    <string name="swap_people_nearby">Ljudje v bližini</string>
+    <string name="swap_scanning_for_peers">Iščem ljudi v bližini…</string>
+    <string name="swap_nearby">Izmenjava v bližini</string>
+    <string name="swap_intro">Poveži se in trguj z aplikacijami v Vaši bližini.</string>
+    <string name="swap_visible_bluetooth">Viden preko Bluetooth-a</string>
+    <string name="swap_setting_up_bluetooth">Bluetooth se postavlja…</string>
+    <string name="swap_not_visible_bluetooth">Neviden prek Bluetooth-a</string>
+    <string name="swap_visible_wifi">Viden preko Wi-Fija</string>
+    <string name="swap_setting_up_wifi">Wi-Fi se postavlja…</string>
+    <string name="swap_stopping_wifi">Zaustavljanje Wi-Fija…</string>
+    <string name="swap_not_visible_wifi">Neviden preko Wi-Fija</string>
+    <string name="swap_wifi_device_name">Ime naprave</string>
+    <string name="swap_cant_find_peers">Ne najdete osebe, ki jo iščete?</string>
+    <string name="swap_no_peers_nearby">Ni bilo najdenih oseb v bližini za menjavo.</string>
+    <string name="swap_connecting">Povezujem</string>
+    <string name="swap_confirm">Potrdi zamenjavo</string>
+    <string name="swap_qr_isnt_for_swap">Skenirana QR koda ne izgleda kot koda za izmenjevanje.</string>
+    <string name="use_bluetooth">Uporabi Bluetooth</string>
+    <string name="loading">Nalagam…</string>
+    <string name="swap_connection_misc_error">Napaka pri povezovanju z napravo, z njo ne gre zamenjati!</string>
+    <string name="swap_not_enabled">Menjava ni omogočena</string>
+    <string name="swap_not_enabled_description">Pred menjavo mora biti Vaša naprava napravljena vidna.</string>
+    <string name="swap_toast_invalid_url">Neveljaven URL za zamenjavo: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot omogočen</string>
+    <string name="swap_toast_could_not_enable_hotspot">Ni bilo mogoče omogočiti Wi-Fi Hotspot!</string>
+
+    <string name="install_confirm">potrebuje dostop do</string>
+    <string name="install_confirm_update">Želite namestiti posodobitev obstoječi aplikaciji? Vaši obstoječi podatki bodo izgubljeni. Posodobljena aplikacija bo imela dostop do:</string>
+    <string name="install_confirm_update_system">Želite namestiti posodobitev na vgrajeni aplikaciji? Vaši obstoječi podatki bodo izgubljeni. Posodobljena aplikacija bo imela dostop do:</string>
+    <string name="install_confirm_update_no_perms">Želite namestiti posodobitev tej obstoječi aplikaciji? Vaši obstoječi podatki ne bodo izgubljeni. Aplikacija ne potrebuje posebnih dovoljenj.</string>
+    <string name="install_confirm_update_system_no_perms">Želite namestiti posodobitev tej vgrajeni aplikaciji? Vaši obstoječi podatki ne bodo izgubljeni. Aplikacija ne potrebuje posebnih dovoljenj.</string>
+    <string name="allPerms">Vsi</string>
+    <string name="perm_costs_money">To vas lahko finančno bremeni</string>
+    <string name="uninstall_update_confirm">Želite nadomestiti aplikacijo s tovarniško verzijo?</string>
+    <string name="uninstall_confirm">Želite odstraniti aplikacijo?</string>
+    <string name="download_error">Prenos ni uspel!</string>
+    <string name="download_pending">Čakam na prenos…</string>
+    <string name="install_error_notify_title">Napaka pri nameščanju aplikacije %s</string>
+    <string name="uninstall_error_notify_title">Napaka pri odstranjevanju aplikacije %s</string>
+
+
+    <string name="perms_new_perm_prefix">Novo:</string>
+    <string name="perms_description_app">Priskrbljeno od %1$s.</string>
+    <string name="downloading">V prenosu…</string>
+    <string name="app__tts__downloading_progress">V prenosu, %1$d%% končan</string>
+    <string name="installing">V nameščanju…</string>
+    <string name="uninstalling">Odstranjujem…</string>
+
+    <string name="interval_never">Brez samodejnih posodobitev</string>
+    <string name="interval_1h">Preveri za posodobitvami vsako uro</string>
+    <string name="interval_4h">Preveri za posodobitvami vsake 4 ure</string>
+    <string name="interval_12h">Preveri za posodobitvami vsakih 12 ur</string>
+    <string name="interval_1d">Preveri za posodobitvami vsaki dan</string>
+    <string name="interval_1w">Preveri za posodobitvami vsaki teden</string>
+    <string name="interval_2w">Preveri za posodobitvami vsaka 2 tedna</string>
+
+    <string name="keep_hour">1 ura</string>
+    <string name="keep_day">1 dan</string>
+    <string name="keep_week">1 teden</string>
+    <string name="keep_month">1 mesec</string>
+    <string name="keep_year">1 leto</string>
+    <string name="keep_forever">Za vedno</string>
+
+    <string name="crash_dialog_comment_prompt">Dodatne informacije in komentarje lahko dodate tukaj:</string>
+
+    <string name="notification_title_single_ready_to_install">Pripravljen za namestitev</string>
+    <string name="notification_title_single_ready_to_install_update">Posodobitev pripravljena za namestitev</string>
+    <string name="notification_title_single_install_error">Nameščanje ni bilo uspešno</string>
+    <string name="notification_content_single_downloading">V prenosu \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Posodobitve za \"%1$s\" so v prenosu…</string>
+    <string name="notification_content_single_installing">Nameščam \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Uspešno nameščeno</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d posodobitev</item>
+	<item quantity="two">%1$d posodobitvi</item>
+	<item quantity="few">%1$d posodobitev</item>
+	<item quantity="other">%1$d posodobitve</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d nameščena aplikacija</item>
+	<item quantity="two">%1$d nameščeni aplikaciji</item>
+	<item quantity="few">%1$d nameščene aplikacije</item>
+	<item quantity="other">%1$d nameščene aplikacije</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Posodobitve so na voljo</string>
+    <string name="notification_title_summary_downloading">V prenosu…</string>
+    <string name="notification_title_summary_downloading_update">Prenašam posodobitve…</string>
+    <string name="notification_title_summary_ready_to_install">Pripravljen na namestitev</string>
+    <string name="notification_title_summary_ready_to_install_update">Posodobitev je pripravljena na namestitev</string>
+    <string name="notification_title_summary_installing">Nameščanje poteka</string>
+    <string name="notification_title_summary_installed">Uspešno nameščeno</string>
+    <string name="tts_category_name">Kategorija %1$s</string>
+
+    <string name="details_last_updated_today">Danes posodobljeno</string>
+    <string name="warning_scaning_qr_code">Zgleda, da vaša kamera nima automatskega fokusa. To morda povzroča težave s skeniranjem kode.</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Posodobljeno pred %1$d dnevom</item>
+	<item quantity="two">Posodobljeno pred %1$d dnevoma</item>
+	<item quantity="few">Posodobljeno pred %1$d dnevi</item>
+	<item quantity="other">Posodobljeno pred %1$d dnevi</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Posodobljeno pred %1$d tednom</item>
+	<item quantity="two">Posodobljeno pred %1$d tednoma</item>
+	<item quantity="few">Posodobljeno pred %1$d tedni</item>
+	<item quantity="other">Posodobljeno pred %1$d tedni</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Posodobljeno pred %1$d mesecem</item>
+	<item quantity="two">Posodobljeno pred %1$d mesecema</item>
+	<item quantity="few">Posodobljeno pred %1$d meseci</item>
+	<item quantity="other">Posodobljeno pred %1$d meseci</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Posodobljeno pred %1$d letom</item>
+	<item quantity="two">Posodobljeno pred %1$d letoma</item>
+	<item quantity="few">Posodobljeno pred %1$d leti</item>
+	<item quantity="other">Posodobljeno pred %1$d leti</item>
+</plurals>
+<string name="enable_proxy_summary">Nastavite HTTP Proxy za vse omrežne zahteve</string>
+    <string name="proxy_host">Proxy gost</string>
+    <string name="proxy_port">Proxy vhod</string>
+    <string name="proxy_port_summary">Vhodna številka vašega proksija (npr. 8118)</string>
+
+    <string name="status_inserting_apps">Shranjujem podrobnosti aplikacije</string>
+    <string name="theme_light">Svetlo</string>
+    <string name="theme_dark">Temna</string>
+    <string name="theme_night">Noč</string>
+
+    <string name="requesting_root_access_body">Zahtevnam root dostop …</string>
+    <string name="root_access_denied_title">Root dostop je zavrnjen</string>
+    </resources>

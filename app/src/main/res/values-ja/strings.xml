@@ -4,15 +4,15 @@
     <string name="installIncompatible">アプリはお使いの端末と互換性がありません。それでもインストールしますか？</string>
     <string name="version">バージョン</string>
     <string name="delete">削除</string>
-    <string name="enable_nfc_send">NFC送信を有効にする。。。</string>
+    <string name="enable_nfc_send">NFC送信を有効にする…</string>
     <string name="cache_downloaded">キャッシュしたアプリを残す</string>
-    <string name="updates">アップデート</string>
+    <string name="updates">更新</string>
     <string name="other">その他</string>
     <string name="update_interval">自動更新の間隔</string>
     <string name="notify">利用可能な更新を表示</string>
     <string name="notify_on">アップデートが利用可能になると通知を表示します</string>
     <string name="system_installer">特権拡張機能</string>
-    <string name="system_installer_on">F-Droidの特権拡張機能を使用してパッケージをインストール、更新、および削除します｡</string>
+    <string name="system_installer_on">特権拡張機能を使用してパッケージをインストール、更新、および削除します</string>
     <string name="local_repo_name">ローカルリポジトリの名前</string>
     <string name="local_repo_name_summary">公開するローカルリポジトリのタイトル: %s</string>
     <string name="local_repo_https_on">ローカルリポジトリに暗号化されたHTTPS://接続を使用する</string>
@@ -108,14 +108,15 @@
     <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません。アプリを表示するには、リポジトリを有効にする必要があります。</string>
     <string name="unknown">不明</string>
     <string name="repo_confirm_delete_title">リポジトリを削除しますか？</string>
-    <string name="repo_confirm_delete_body">リポジトリを削除すると、アプリをF-Droidからインストールすることができなくなります。
-\n
-\n注: これまでにインストールたアプリはすべて端末に残ります。</string>
+    <string name="repo_confirm_delete_body">リポジトリを削除すると、リポジトリからアプリが利用できなくなります。 
+\n 
+\n注: これまでにインストールしたアプリはすべて端末に残ります。</string>
     <string name="repo_disabled_notification">%1$sを無効にしました。 
 \n
 \nアプリをインストールするにはこのリポジトリを再度有効にする必要があります。</string>
-    <string name="repo_added">F-Droidリポジトリ%1$sを保存しました。</string>
-    <string name="repo_searching_address">%1$sでF-Droidリポジトリを検索中</string>
+    <string name="repo_added">パッケージリポジトリ%1$sを保存しました。</string>
+    <string name="repo_searching_address">リポジトリを検索中
+\n%1$s</string>
     <string name="minsdk_or_later">%s以上</string>
     <string name="up_to_maxsdk">最大%s</string>
     <string name="minsdk_up_to_maxsdk">%1$sから%2$s</string>
@@ -172,7 +173,7 @@
     <string name="uninstall_error_unknown">不明なエラーのためアンインストールに失敗しました</string>
     <string name="system_install_post_success">F-Droidの特権拡張機能をインストールしました</string>
     <string name="system_install_post_fail">F-Droidの特権拡張機能のインストールに失敗しました</string>
-    <string name="system_install_post_success_message">F-Droid特権拡張機能をインストールしました。これはF-Droid が独自にｱﾌﾟﾘをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ､及びｱﾝｲﾝｽﾄｰﾙをすることができます｡</string>
+    <string name="system_install_post_success_message">F-Droid特権拡張機能はインストール済みです。これによりF-Droidは独自にアプリをインストール、更新、アンインストールすることができます。</string>
     <string name="system_install_post_fail_message">F-Droidの特権拡張機能のインストールに失敗しました。すべてのAndroidでこのインストール方法が使用できる訳ではありません。詳細については、F-Droidのバグトラッカーを参照してください。</string>
     <string name="system_install_installing">インストール中</string>
     <string name="system_install_uninstalling">アンインストール中</string>
@@ -217,7 +218,7 @@
 
     <string name="install_confirm">アクセス権限が必要</string>
     <string name="install_confirm_update">インストール済みのアプリにアップデートをインストールしますか？既存のデータは失われません。更新されたアプリの権限:</string>
-    <string name="install_confirm_update_system">このビルトインアプリに更新をインストールしますか？既存のデータが失われることはありません。更新されたｱﾌﾟﾘのｱｸｾｽ許可:</string>
+    <string name="install_confirm_update_system">このビルトインアプリに更新をインストールしますか？既存のデータが失われることはありません。更新されたアプリの権限:</string>
     <string name="install_confirm_update_no_perms">インストール済みのアプリに更新をインストールしますか？既存のデータが失われることはありません。特別な権限は不要です。</string>
     <string name="install_confirm_update_system_no_perms">ビルトインアプリにアップデートをインストールしますか？既存のデータが失われることはありません。特別な権限は不要です。</string>
     <string name="newPerms">新規</string>
@@ -227,13 +228,13 @@
     <string name="uninstall_confirm">このアプリをアンインストールしてもよろしいですか？</string>
     <string name="perms_new_perm_prefix">新規:</string>
     <string name="perms_description_app">%1$sによって提供されます。</string>
-    <string name="interval_never">なし</string>
-    <string name="interval_1h">1時間毎</string>
-    <string name="interval_4h">4時間毎</string>
-    <string name="interval_12h">12時間毎</string>
-    <string name="interval_1d">毎日</string>
-    <string name="interval_1w">毎週</string>
-    <string name="interval_2w">2週間毎</string>
+    <string name="interval_never">自動アプリ更新しません</string>
+    <string name="interval_1h">1時間毎にチェック</string>
+    <string name="interval_4h">4時間毎にチェック</string>
+    <string name="interval_12h">12時間毎にチェック</string>
+    <string name="interval_1d">毎日チェック</string>
+    <string name="interval_1w">毎週チェック</string>
+    <string name="interval_2w">2週間毎にチェック</string>
 
     <string name="theme_light">ライト</string>
     <string name="theme_dark">ダーク</string>
@@ -262,7 +263,7 @@
     <string name="system_install_button_install">インストール</string>
     <string name="system_install_installing_rebooting">インストール、および再起動中</string>
     <string name="system_install_warning">これには、約10秒程かかります｡</string>
-    <string name="more">詳細はこちら</string>
+    <string name="more">詳細を表示</string>
     <string name="less">詳細を隠す</string>
 
     <string name="status_download_unknown_size">ダウンロード中
@@ -315,7 +316,7 @@
     <string name="update_auto_install">自動的に更新をインストール</string>
     <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストールします</string>
     <string name="keep_install_history">インストール履歴を保存する</string>
-    <string name="keep_install_history_summary">F-Droid内でのすべてのインストールとアンインストールのログを保存します</string>
+    <string name="keep_install_history_summary">すべてのインストールとアンインストールのログはプライベートストアに保存します</string>
     <string name="warning_no_internet">更新できません。インターネットに接続していますか？</string>
     <string name="versions">バージョン</string>
     <string name="app_details_donate_prompt_unknown_author">%1$sの開発者にコーヒーを奢る！</string>
@@ -333,7 +334,7 @@
     <string name="notification_title_summary_update_available">更新が利用可能です</string>
     <string name="notification_title_summary_downloading_update">更新をダウンロードしています</string>
     <string name="notification_title_summary_ready_to_install_update">アップデートをインストールする準備ができました</string>
-    <string name="notification_action_update">アップデート</string>
+    <string name="notification_action_update">更新</string>
     <string name="notification_title_summary_downloading">ダウンロード中</string>
     <string name="notification_title_summary_ready_to_install">インストールの準備完了</string>
     <string name="notification_title_summary_installing">インストール中</string>
@@ -398,7 +399,7 @@
     <string name="nearby_splash__find_people_button">近くの人を探す</string>
     <string name="nearby_splash__both_parties_need_fdroid">お互いが近くで%1$sを使用する必要があります。</string>
 
-    <string name="latest__empty_state__no_recent_apps">最近のアプリが見つかりません</string>
+    <string name="latest__empty_state__no_recent_apps">新着アプリが見つかりません</string>
     <string name="latest__empty_state__never_updated">一度アプリのリストを更新すると、新着のアプリがここに表示されます</string>
     <string name="latest__empty_state__no_enabled_repos">一度リポジトリを有効にして更新すると、新着アプリがここに表示されます</string>
 
@@ -484,7 +485,7 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
-    <string name="repo_add_mirror">ﾐﾗｰを追加</string>
+    <string name="repo_add_mirror">ミラーを追加</string>
     <string name="repo_exists_add_fingerprint">%1$sは既に設定されているため、新しい鍵の情報が追加されます。</string>
     <string name="repo_exists_enable">%1$sはすでに設定されています。再度有効にすることを承認してください。</string>
     <string name="repo_exists_and_enabled">%1$sはすでに設定済みで有効です。</string>
@@ -503,5 +504,13 @@
     <string name="swap_toast_invalid_url">交換の URL が無効: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi ホットスポットが有効です</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ホットスポットを有効にできませんでした!</string>
+
+    <string name="over_wifi">Wi-Fi接続</string>
+    <string name="over_data">データ接続</string>
+    <string name="over_network_always_summary">利用可能な場合には、常にこの接続を使用する</string>
+    <string name="over_network_on_demand_summary">ダウンロードをタップした時のみ、この接続を使用する</string>
+    <string name="over_network_never_summary">この接続を使用して何もダウンロードしない</string>
+    <string name="antidisabledalgorithmlist">このアプリは弱いセキュリティ署名を使用しています</string>
+    <string name="antiknownvulnlist">このアプリは既知のセキュリティ脆弱性が含まれています</string>
 
     </resources>

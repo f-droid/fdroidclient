@@ -175,11 +175,11 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="status_download_unknown_size">Scaricamento\n%2$s da\n%1$s</string>
     <string name="unstable_updates">Aggiornamenti instabili</string>
-    <string name="interval_2w">Ogni 2 settimane</string>
+    <string name="interval_2w">Cerca aggiornamenti ogni 2 settimane</string>
 
-    <string name="interval_4h">Ogni 4 ore</string>
-    <string name="interval_12h">Ogni 12 ore</string>
-    <string name="interval_1h">Ogni ora</string>
+    <string name="interval_4h">Cerca aggiornamenti ogni 4 ore</string>
+    <string name="interval_12h">Cerca aggiornamenti ogni 12 ore</string>
+    <string name="interval_1h">Cerca aggiornamenti ogni ora</string>
     <string name="downloading">Scaricamento…</string>
 
     <string name="download_error">Scaricamento fallito!</string>
@@ -214,9 +214,9 @@
     <string name="swap_scan_qr">Scansiona il codice QR</string>
     <string name="swap_intro">Connettiti e scambia app con le persone vicine.</string>
     <string name="swap_no_peers_nearby">Non sono state trovate persone nelle vicinanze con cui scambiare app.</string>
-    <string name="interval_1w">Settimanalmente</string>
-    <string name="interval_1d">Giornalmente</string>
-    <string name="interval_never">Mai</string>
+    <string name="interval_1w">Cerca aggiornamenti ogni settimana</string>
+    <string name="interval_1d">Cerca aggiornamenti ogni giorno</string>
+    <string name="interval_never">Nessun auto-aggiornamento di app</string>
     <string name="uninstall_update_confirm">Vuoi sostituire questa app con la sua versione originale?</string>
     <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
     <string name="newPerms">Nuovo</string>
@@ -567,4 +567,12 @@
 
     <string name="warning_scaning_qr_code">La tua fotocamera non ha l\'autofocus. Potrebbe essere complicato scansionare il codice.</string>
     <string name="swap_toast_invalid_url">URL per scambio non valido: %1$s</string>
+    <string name="over_wifi">Via Wi-Fi</string>
+    <string name="over_data">Via dati mobili</string>
+    <string name="over_network_always_summary">Usa sempre questa connessione quando disponibile</string>
+    <string name="over_network_on_demand_summary">Usa solo questa connessione quando scarico un\'app</string>
+    <string name="over_network_never_summary">Non scaricare mai nulla usando questa connessione</string>
+    <string name="antidisabledalgorithmlist">Questa app ha una firma di sicurezza debole</string>
+    <string name="antiknownvulnlist">Questa app contiene una vulnerabilità di sicurezza nota</string>
+
     </resources>

@@ -55,7 +55,7 @@
     <string name="expert_on">További információkat jelenít meg, és további beállításokat engedélyez</string>
     <string name="search_hint">Alkalmazások keresése</string>
     <string name="appcompatibility">Alkalmazáskompatibilitás</string>
-    <string name="show_incompat_versions">Inkompatibilis verziók</string>
+    <string name="show_incompat_versions">Inkompatibilis verziók belefoglalása</string>
     <string name="show_incompat_versions_on">Azon alkalmazásverziók megjelenítése, melyek nem kompatibilisek az eszközzel</string>
     <string name="status_download">Letöltés\n%2$s / %3$s (%4$d%%), forrás:\n%1$s</string>
     <string name="status_connecting_to_repo">Kapcsolódás ehhez:\n%1$s</string>
@@ -199,13 +199,13 @@
     <string name="perms_new_perm_prefix">Új:</string>
     <string name="downloading">Letöltés…</string>
 
-    <string name="interval_never">Soha</string>
-    <string name="interval_1h">Óránként</string>
-    <string name="interval_4h">4 óránként</string>
-    <string name="interval_12h">12 óránként</string>
-    <string name="interval_1d">Naponta</string>
-    <string name="interval_1w">Hetente</string>
-    <string name="interval_2w">Kéthetente</string>
+    <string name="interval_never">Nincsenek automatikus alkalmazásfrissítések</string>
+    <string name="interval_1h">Frissítések keresése óránként</string>
+    <string name="interval_4h">Frissítések keresése 4 óránként</string>
+    <string name="interval_12h">Frissítések keresése 12 óránként</string>
+    <string name="interval_1d">Frissítések keresése naponta</string>
+    <string name="interval_1w">Frissítések keresése hetente</string>
+    <string name="interval_2w">Frissítések keresése kéthetente</string>
 
     <string name="theme_light">Világos</string>
     <string name="theme_dark">Sötét</string>
@@ -235,7 +235,7 @@
     <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.
     </string>
     <string name="menu_email">E-mail a készítőnek</string>
-    <string name="useTorSummary">Letöltési forgalom kényszerítése Tor használatára az adatvédelem növeléséért. Orbot szükséges hozzá</string>
+    <string name="useTorSummary">Letöltési forgalom Tor használatára kényszerítése az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
     <string name="antinonfreeassetslist">Ez az alkalmazás nem szabad eszközöket tartalmaz</string>
@@ -311,7 +311,7 @@
     <string name="not_on_same_wifi">Az eszköze nem ugyanazon a Wi-Fi-n van, mint a hozzáadott helyi tároló! Próbáljon ehhez a hálózathoz csatlakozni: %s</string>
     <string name="notification_title_single_update_available">Frissítés érhető el</string>
     <string name="notification_title_summary_install_error">A telepítés sikertelen</string>
-    <string name="force_old_index_summary">Abban az esetben, ha bugok, vagy kompatibilitási problémák vannak, használja az XML alkalmazás indexet</string>
+    <string name="force_old_index_summary">Abban az esetben, ha hibák vagy kompatibilitási problémák vannak, használja az XML alkalmazás indexet</string>
     <string name="app_details_donate_prompt_unknown_author">Vegyen egy kávét a(z) %1$s fejlesztőinek!</string>
     <string name="app_details__no_versions__show_incompat_versions">Az inkompatibilis verziók megjelenítéséhez engedélyezze az „%1$s” beállítást.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nem található kompatibilis aláírással rendelkező verzió</string>
@@ -374,7 +374,7 @@
     <string name="all_other_repos_fine">A többi tároló nem adott hibát.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet? Szerezzen appokat a közelben lévő emberektől!</string>
     <string name="nearby_splash__find_people_button">Közelben lévő emberek keresése</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek %1$s-re van szüksége a funkció használatához.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek szükséges az %1$s a funkció használatához.</string>
 
     <string name="install_error_notify_title">Hiba a(z) %s telepítése közben</string>
     <string name="uninstall_error_notify_title">Hiba a(z) %s eltávolítása közben</string>
@@ -465,4 +465,66 @@
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
     <string name="tts_category_name">Kategória %1$s</string>
 
-</resources>
+<string name="over_wifi">Wi-Fin keresztül</string>
+    <string name="over_network_always_summary">Mindig ezt a kapcsolatot használja, ha elérhető</string>
+    <string name="over_network_on_demand_summary">Csak akkor használja ezt a kapcsolatot, ha a letöltésre kattintok</string>
+    <string name="over_network_never_summary">Soha ne töltsön le semmit ezen a kapcsolaton keresztül</string>
+    <string name="repo_add_mirror">Tükör hozzáadása</string>
+    <string name="sort_search">Keresési eredmények sorba rendezése</string>
+
+    <string name="repo_exists_add_mirror">Ez a(z) %1$s másolata, hozzáadja tükörként?</string>
+    <string name="antidisabledalgorithmlist">Ennek az alkalmazásnak gyönge a biztonsági aláírása</string>
+    <string name="antiknownvulnlist">Ez az alkalmazás ismert biztonsági rést tartalmaz</string>
+
+    <string name="show_root_apps">Root jogot igénylő alkalmazások belefoglalása</string>
+    <string name="over_data">Adatkapcsolaton keresztül</string>
+    <string name="repo_exists_add_fingerprint">A(z) %1$s már be lett állítva, ez új kulcsinformációkat fog hozzáadni.</string>
+    <string name="repo_exists_enable">A(z) %1$s már be lett állítva, erősítse meg, hogy újra engedélyezni akarja.</string>
+    <string name="repo_exists_and_enabled">A(z) %1$s már be lett állítva és engedélyezett.</string>
+    <string name="repo_delete_to_overwrite">Először törölje a(z) %1$s alkalmazást, hogy hozzáadhassa egy ütköző kulccsal.</string>
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="show_root_apps_on">Azon alkalmazások megjelenítése, melyekhez root jogosultság szükséges</string>
+    <string name="show_anti_feature_apps">Előnytelen funkciókkal rendelkező alkalmazások belefoglalása</string>
+    <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek előnytelen funkciókkal rendelkeznek</string>
+    <string name="force_touch_apps">Érintőképernyős alkalmazások belefoglalása</string>
+    <string name="force_touch_apps_on">Azon alkalmazások megjelenítése, melyekhez érintőképernyő szükséges, a hardvertámogatástól függetlenül</string>
+
+    <string name="privacy">Adatvédelem</string>
+    <string name="preventScreenshots_title">Képernyőképek megakadályozása</string>
+    <string name="hiding_calculator">Számológép</string>
+    <string name="preventScreenshots_summary">Megakadályozza, hogy képernyőkép készüljön, és elrejti az alkalmazás tartalmát a nemrég használt alkalmazások képernyőn</string>
+
+    <string name="panic_app_setting_title">Pánikgomb alkalmazás</string>
+    <string name="panic_app_unknown_app">egy ismeretlen alkalmazás</string>
+    <string name="panic_app_setting_summary">Még nem lett alkalmazás beállítva</string>
+    <string name="panic_app_setting_none">Nincs</string>
+    <string name="panic_app_dialog_title">Pánik alkalmazás megerősítése</string>
+    <string name="panic_app_dialog_message">Biztosan engedélyezi, hogy a(z) %1$s destruktív pánikgomb műveleteket indítson el?</string>
+    <string name="allow">Engedélyezés</string>
+
+    <string name="panic_settings">Pánikgomb beállítások</string>
+    <string name="panic_settings_summary">Vészhelyzet esetén elvégzendő műveletek</string>
+    <string name="panic_exit_title">Kilépés az alkalmazásból</string>
+    <string name="panic_exit_summary">Az alkalmazás be lesz zárva</string>
+    <string name="panic_destructive_actions">Destruktív műveletek</string>
+    <string name="panic_hide_title">Az %s elrejtése</string>
+    <string name="panic_hide_summary">Az alkalmazás elrejti magát</string>
+    <string name="panic_hide_warning_title">Jegyezze meg hogy állíthatja vissza</string>
+    <string name="panic_hide_warning_message">Pánikeseménykor ez eltávolítja a(z) %1$s alkalmazást az indítóból. Csak a(z) „%2$d”, a hamis %3$s alkalmazásban történő beírásával állíthatja vissza.</string>
+
+    <string name="hiding_dialog_title">%s elrejtése most</string>
+    <string name="hiding_dialog_message">Biztosan eltávolítja a(z) %1$s alkalmazást az indítóból? Csak a(z) „%2$d”, a hamis %3$s alkalmazásban történő beírásával állíthatja vissza.</string>
+    <string name="hiding_dialog_warning">Figyelmeztetés: A kezdőképernyőre rakott alkalmazásindító is eltávolításra fog kerülni, és kézzel kell majd újra hozzáadnia.</string>
+    <string name="hide_on_long_search_press_title">Elrejtés a keresőgombbal</string>
+    <string name="hide_on_long_search_press_summary">A keresőgomb hosszú megnyomása elrejti az alkalmazást</string>
+
+    <string name="repo_official_mirrors">Hivatalos tükrök</string>
+    <string name="repo_user_mirrors">Felhasználói tükrök</string>
+    <string name="use_bluetooth">Bluetooth használata</string>
+    <string name="swap_toast_invalid_url">Érvénytelen URL a cseréhez: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot engedélyezve</string>
+    <string name="swap_toast_could_not_enable_hotspot">A Wi-Fi Hotspot nem engedélyezhető!</string>
+
+    <string name="warning_scaning_qr_code">A kamerának úgy tűnik nincs autofókusza. Így nehézkes lehet a kód leolvasása.</string>
+    </resources>

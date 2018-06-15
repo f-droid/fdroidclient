@@ -529,4 +529,7 @@
     <string name="repo_add_mirror">Додати дзеркало</string>
     <string name="repo_official_mirrors">Офіційні дзеркала</string>
     <string name="repo_user_mirrors">Дзеркала користувачів</string>
+    <string name="over_wifi">Через Wi-Fi</string>
+    <string name="over_data">Через мобільну мережу</string>
+    <string name="over_network_always_summary">Завжди використовувати це з\'єднання, коли це можливо</string>
     </resources>

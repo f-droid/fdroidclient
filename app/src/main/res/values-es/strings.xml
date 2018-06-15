@@ -253,13 +253,13 @@
     <string name="perms_description_app">Proporcionado por %1$s.</string>
     <string name="downloading">Descargando…</string>
 
-    <string name="interval_never">Nunca</string>
-    <string name="interval_1h">Cada hora</string>
-    <string name="interval_4h">Cada 4 horas</string>
-    <string name="interval_12h">Cada 12 horas</string>
-    <string name="interval_1d">Cada día</string>
-    <string name="interval_1w">Cada semana</string>
-    <string name="interval_2w">Cada 2 semanas</string>
+    <string name="interval_never">No actualizar automáticamente las aplicaciones</string>
+    <string name="interval_1h">Buscar nuevas actualizaciones cada hora</string>
+    <string name="interval_4h">Buscar nuevas actualizaciones cada 4 horas</string>
+    <string name="interval_12h">Buscar nuevas actualizaciones cada 12 horas</string>
+    <string name="interval_1d">Buscar nuevas actualizaciones todos los días</string>
+    <string name="interval_1w">Buscar nuevas actualizaciones cada semana</string>
+    <string name="interval_2w">Buscar nuevas actualizaciones cada 2 semanas</string>
 
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
@@ -555,5 +555,13 @@
     <string name="swap_toast_invalid_url">URL para intercambiar inválida:%1$s</string>
     <string name="swap_toast_hotspot_enabled">Punto de acceso Wi-Fi habilitado</string>
     <string name="swap_toast_could_not_enable_hotspot">¡No se puedo habilitar el punto de acceso Wi-Fi!</string>
+
+    <string name="over_wifi">Descargar usando WiFi</string>
+    <string name="over_data">Descargar usando tus datos</string>
+    <string name="over_network_always_summary">Usar siempre esta conexion cuando este disponible</string>
+    <string name="over_network_on_demand_summary">Usar esta conexion unicamente cuando seleccione descargar</string>
+    <string name="over_network_never_summary">No descargar nada usando esta conexion</string>
+    <string name="antidisabledalgorithmlist">Esta aplicación tiene una firma de seguridad débil</string>
+    <string name="antiknownvulnlist">Esta aplicación contiene una vulnerabilidad de seguridad conocida</string>
 
     </resources>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">F-డ్రాయిడ్</string>
+
+    <string name="updates">నవీకరణలు</string>
+    <string name="ok">సరే</string>
+
+    <string name="yes">అవును</string>
+    <string name="no">కాదు</string>
+    <string name="back">వెనుకకు</string>
+    <string name="cancel">రద్దుచేయి</string>
+    <string name="menu_settings">అమరికలు</string>
+    <string name="menu_search">వెతుకు</string>
+    <string name="menu_launch">నడుపు</string>
+    <string name="menu_share">పంచుకోండి</string>
+    <string name="menu_install">స్థాపించు</string>
+    <string name="main_menu__categories">వర్గాలు</string>
+    <string name="main_menu__swap_nearby">చుట్టుపక్కల</string>
+
+    <string name="next">తదుపరి</string>
+    <string name="pref_language">భాష</string>
+    <string name="category_Games">ఆటలు</string>
+    <string name="system_install_button_install">స్థాపించు</string>
+    <string name="notification_action_cancel">రద్దుచేయి</string>
+    <string name="notification_action_install">స్థాపించు</string>
+
+    <string name="app_details">యాప్ వివరాలు</string>
+    <string name="about_title">F-డ్రాయిడ్ గురించి</string>
+    <string name="more">మరింత</string>
+    <string name="wifi">వై-ఫై</string>
+    <string name="category_Sports_Health">క్రీడలు &amp; ఆరోగ్యం</string>
+    <string name="delete">తొలగించు</string>
+    <string name="login_name">వాడుకరి పేరు</string>
+    <string name="login_password">సంకేతపదం</string>
+    <string name="repo_edit_credentials">సంకేతపదం మార్చు</string>
+    <string name="about_site">వెబ్‌సైటు</string>
+    <string name="about_mail">ఈమెయిలు</string>
+    <string name="about_license">లైసెన్సు</string>
+
+    <string name="app__newly_added">కొత్తది</string>
+    <string name="app__tts__cancel_download">దింపుకోలును రద్దుచేయి</string>
+    <string name="repo_add_add">చేర్చు</string>
+    <string name="links">లంకెలు</string>
+    <string name="menu_website">వెబ్‌సైటు</string>
+    <string name="menu_email">రచయితకి ఈమెయిలు</string>
+    <string name="menu_issues">సమస్యలు</string>
+    <string name="menu_changelog">మార్పులచిట్టా</string>
+    <string name="menu_video">వీడియో</string>
+    <string name="menu_license">లైసెన్సు: %s</string>
+    <string name="menu_donate">విరాళమివ్వండి</string>
+    <string name="menu_bitcoin">బిట్‌కాయిన్</string>
+    <string name="menu_litecoin">లైట్‌కాయిన్</string>
+    <string name="menu_flattr">ఫ్లాట్‌ర్</string>
+    <string name="icon">ప్రతీకం</string>
+    <string name="proxy">ప్రాక్సీ</string>
+    <string name="privacy">అంతరంగికత</string>
+    <string name="panic_app_setting_none">ఏమీలేదు</string>
+    <string name="allow">అనుమతించు</string>
+
+    <string name="theme">అలంకారం</string>
+    <string name="repo_url">చిరునామా</string>
+    <string name="repo_description">వివరణ</string>
+    <string name="repo_name">పేరు</string>
+    <string name="allPerms">అన్నీ</string>
+    <string name="keep_hour">1 గంట</string>
+    <string name="keep_day">1 రోజు</string>
+    <string name="keep_week">1 వారం</string>
+    <string name="keep_month">1 నెల</string>
+    <string name="keep_year">1 సంవత్సరం</string>
+    <string name="keep_forever">ఎప్పటికీ</string>
+
+    <string name="menu_add_repo">కొత్త రిపోజిటరీ</string>
+
+    <string name="main_menu__latest_apps">తాజా</string>
+    <string name="skip">దాటు</string>
+
+    <string name="pref_language_default">సిస్టం డీఫాల్ట్</string>
+
+    <string name="category_Connectivity">బంధత్వం</string>
+    <string name="category_Development">అభివృద్ధి</string>
+    <string name="category_Graphics">గ్రాఫిక్స్</string>
+    <string name="category_Internet">అంతర్జాలం</string>
+    <string name="category_Money">డబ్బు</string>
+    <string name="category_Multimedia">మల్టీమీడియా</string>
+    <string name="category_Phone_SMS">ఫోన్ &amp; ఎస్ఎంఎస్</string>
+    <string name="category_Reading">చదవటం</string>
+    <string name="category_Science_Education">విజ్ఞానం &amp; విద్య</string>
+    <string name="category_Security">రక్షణ</string>
+    <string name="category_Time">సమయం</string>
+    <string name="category_Writing">వ్రాయటం</string>
+
+    <string name="swap_welcome">ఎఫ్-డ్రాయిడ్ కు సుస్వాగతం !</string>
+    <string name="swap_dont_show_again">మళ్ళీ చూపించకు</string>
+    <string name="newPerms">కొత్త</string>
+    <string name="notification_action_update">నవీకరణ</string>
+    <string name="app_list__name__downloading_in_progress">%1$s దిగుమతి అవుతుంది</string>
+    <string name="updates__tts__download_app">దిగుమతి</string>
+    <string name="less">తక్కువ</string>
+
+    <string name="antitracklist">ఈ ఆప్ మీ కార్యకలాపాలను జాడించి నివేదిస్తుంది</string>
+    <string name="warning_no_internet">నవీకరించాలేక పోతున్నారా,మీరు అంతర్జాలానికి ముడిపడే ఉన్నారా?</string>
+    <string name="unsigned">సంతకం లేనిది</string>
+    <string name="unverified">ధృవీకరణ లేనిది</string>
+    <string name="repo_details">రెపోజిటరి</string>
+    <string name="repo_last_update">చివరి నవీకరణ</string>
+    <string name="category_System">వ్యవస్థ</string>
+    <string name="swap_send_fdroid">ఎఫ్-డ్రాయిడ్ ను పంపు</string>
+    <string name="crash_dialog_title">ఎఫ్-డ్రాయిడ్ ఇబ్బంది ఎదుర్కొంది</string>
+    <string name="notification_title_single_update_available">నవీకరణ అందుబాటులో ఉంది</string>
+    <string name="installIncompatible">ఆప్ మీ పరికరంలో సరిగ్గా పనిచెయ్యదు, అయినా స్థాపించాలా ?</string>
+    <string name="version">వర్షన్</string>
+    <string name="by_author_format">%s చే</string>
+    <string name="enable_nfc_send">ఎన్ ఎఫ్ సి శక్తి పరచు…</string>
+    <string name="cache_downloaded">కాషిడ్ ఆప్స్ ని ఉంచు</string>
+    </resources>

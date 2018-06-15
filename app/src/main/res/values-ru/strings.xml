@@ -12,9 +12,7 @@
     <string name="notify">Показывать доступные обновления</string>
     <string name="notify_on">Отображать уведомление когда есть обновления</string>
     <string name="system_installer">Привилегированное расширение</string>
-    <string name="system_installer_on">Использовать привилегированное расширение F-Droid для установки, обновления и
-        удаления пакетов
-    </string>
+    <string name="system_installer_on">Использовать привилегированное расширение для установки, обновления и удаления пакетов</string>
     <string name="local_repo_name">Название локального репозитория</string>
     <string name="local_repo_name_summary">Публичное название вашего локального репозитория: %s</string>
     <string name="local_repo_https_on">Использовать защищенное HTTPS:// соединение для локального репозитория</string>
@@ -111,7 +109,7 @@
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше не будут доступны в F-Droid. 
+    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше доступны не будут. 
 \n 
 \nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
     <string name="repo_disabled_notification">%1$s отключен.
@@ -149,12 +147,12 @@
     <string name="about_source">Исходный код</string>
     <string name="links">Ссылки</string>
     <string name="interval_never">Никогда</string>
-    <string name="interval_1h">Каждый час</string>
-    <string name="interval_4h">Каждые 4 часа</string>
-    <string name="interval_12h">Каждые 12 часов</string>
-    <string name="interval_1d">Ежедневно</string>
-    <string name="interval_1w">Еженедельно</string>
-    <string name="interval_2w">Каждые 2 недели</string>
+    <string name="interval_1h">Проверять обновления ежечасно</string>
+    <string name="interval_4h">Проверять обновления каждые 4 часа</string>
+    <string name="interval_12h">Проверять обновления каждые 12 часов</string>
+    <string name="interval_1d">Проверять обновления ежедневно</string>
+    <string name="interval_1w">Проверять обновления еженедельно</string>
+    <string name="interval_2w">Проверять обновления каждые 2 недели</string>
 
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Темная</string>
@@ -204,7 +202,7 @@
     <string name="status_download_unknown_size">Загрузка
 \n%2$s из
 \n%1$s</string>
-    <string name="repo_added">Сохранен F-Droid репозиторий %1$s.</string>
+    <string name="repo_added">Сохранен репозиторий пакетов %1$s.</string>
     <string name="about_license">Лицензия</string>
 
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>
@@ -215,7 +213,8 @@
     <string name="repo_edit_credentials">Изменить пароль</string>
     <string name="repo_error_empty_username">Не задано имя пользователя, учетные данные не изменены</string>
 
-    <string name="repo_searching_address">Поиск репозитория F-Droid на\n%1$s</string>
+    <string name="repo_searching_address">Поиск репозитория пакетов в
+\n%1$s</string>
     <string name="wifi_ap">Точка доступа</string>
 
     <string name="category_Theming">Темы</string>
@@ -333,7 +332,7 @@
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     <string name="keep_install_history">Хранить историю установок</string>
-    <string name="keep_install_history_summary">Хранить в F-Droid журнал всех установок и удалений</string>
+    <string name="keep_install_history_summary">Хранить журнал всех установок и деинсталляций в приватном магазине</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
@@ -549,4 +548,12 @@
     <string name="repo_exists_enable">%1$s уже настроен, подтвердите, что вы хотите снова его включить.</string>
     <string name="repo_exists_and_enabled">%1$s уже настроен и включен.</string>
     <string name="repo_delete_to_overwrite">Сначала удалите %1$s, чтобы добавить его с конфликтующим ключом.</string>
+    <string name="over_wifi">Через Wi-Fi</string>
+    <string name="over_data">Через мобильную сеть</string>
+    <string name="over_network_always_summary">Всегда использовать это соединение, если оно доступно</string>
+    <string name="over_network_on_demand_summary">Использовать это соединение только для загрузки</string>
+    <string name="antiknownvulnlist">Это приложение содержит известную уязвимость безопасности</string>
+
+    <string name="over_network_never_summary">Никогда не загружать, используя это соединение</string>
+    <string name="antidisabledalgorithmlist">Это приложение имеет слабую подпись безопасности</string>
     </resources>

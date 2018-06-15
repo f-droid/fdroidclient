@@ -69,8 +69,9 @@
     <string name="repo_name">Nomo</string>
     <string name="unknown">Nekonata</string>
     <string name="repo_confirm_delete_title">Ĉu forigi la deponejon?</string>
-    <string name="repo_added">Konservis la F-Droidan deponejon %1$s.</string>
-    <string name="repo_searching_address">Serĉado de F-Droida deponejo ĉe %1$s</string>
+    <string name="repo_added">Konservis deponejon de pakaĵoj %1$s.</string>
+    <string name="repo_searching_address">Serĉado de pakaĵa deponejo ĉe
+\n%1$s</string>
     <string name="minsdk_or_later">%s aŭ posta</string>
     <string name="up_to_maxsdk">Ĝis %s</string>
     <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
@@ -99,8 +100,7 @@
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
-    <string name="system_installer_on">Uzi privilegian F-Droid-aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn
-    </string>
+    <string name="system_installer_on">Uzi privilegian aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn</string>
     <string name="uninstall_system">Ĝisdatigi/malinstali privilegian aldonaĵon</string>
     <string name="uninstall_system_summary">Malfermi detalan ekranon de privilegia aldonaĵo por ĝisdatigi/malinstali ĝin</string>
     <string name="local_repo_name">Nomo de via loka deponejo</string>
@@ -165,7 +165,7 @@
 \n%1$s</string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
     <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigitaj</string>
-    <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis erarojn.</string>
+    <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis eraroj.</string>
     <string name="global_error_updating_repos">Eraro dum ĝisdatigado: %s</string>
     <string name="permissions">Permesoj</string>
     <string name="no_handler_app">Vi ne havas iun ajn disponeblan aplikaĵon, kiu povas trakti %s.</string>
@@ -180,11 +180,9 @@
     <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn,
         kiujn ĝi liveras.
     </string>
-    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke aplikaĵojn ĝi liveras ne plu estos
-        disponeblaj en F-Droid.
-
-        Rigardu: ĉiuj antaŭe konservitaj aplikaĵoj restos en via aparato.
-    </string>
+    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke ĝiaj aplikaĵoj ne plu montriĝos en F-Droid.
+\n
+\nRimarko: ĉiuj antaŭe instalitaj aplikaĵoj restos en via aparato.</string>
     <string name="repo_disabled_notification">%1$s malaktiva. Vi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
     <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al tiu ĉi reto: %s</string>
     <string name="pref_language">Lingvo</string>
@@ -292,13 +290,13 @@
     <string name="downloading">Elŝutado…</string>
 
     <string name="perms_description_app">Liverita per %1$s.</string>
-    <string name="interval_never">Neniam</string>
-    <string name="interval_1h">Ĉiuhore</string>
-    <string name="interval_4h">Ĉiuj 4 horoj</string>
-    <string name="interval_12h">Ĉiuj 12 horoj</string>
-    <string name="interval_1d">Ĉiutage</string>
-    <string name="interval_1w">Ĉiusemajne</string>
-    <string name="interval_2w">Ĉiuj 2 semajnoj</string>
+    <string name="interval_never">Sen aŭtomataj ĝisdatigoj</string>
+    <string name="interval_1h">Kontroli pri ĝisdatigoj ĉiuhore</string>
+    <string name="interval_4h">Kontroli pri ĝisdatigoj ĉiu-4-hore</string>
+    <string name="interval_12h">Kontroli pri ĝisdatigoj ĉiu-12-hore</string>
+    <string name="interval_1d">Kontroli pri ĝisdatigoj ĉiutage</string>
+    <string name="interval_1w">Kontroli pri ĝisdatigoj ĉiusemajne</string>
+    <string name="interval_2w">Kontroli pri ĝisdatigoj ĉiu-2-semajne</string>
 
     <string name="theme_light">Hela</string>
     <string name="theme_dark">Malhela</string>
@@ -339,7 +337,7 @@
     <string name="update_auto_install">Aŭtomate instali ĝisdatigojn</string>
     <string name="update_auto_install_summary">Elŝuti kaj instali ĝisdatigojn de aplikaĵoj fone</string>
     <string name="keep_install_history">Konservi historion de instaladoj</string>
-    <string name="keep_install_history_summary">Memori historion de instaladoj kaj malinstaladoj en F-Droid</string>
+    <string name="keep_install_history_summary">Memori historion de instaladoj kaj malinstaladoj en privata konservejo</string>
     <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la Interreto?</string>
     <string name="versions">Versioj</string>
     <string name="app_details_donate_prompt_unknown_author">Bonvolu aĉeti kafon por programistoj de %1$s!</string>
@@ -486,8 +484,8 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
 
     <string name="privacy">Privateco</string>
-    <string name="preventScreenshots_title">Bloki ekranokopiojn</string>
-    <string name="preventScreenshots_summary">Bloki fari ekranokopiojn kaj kaŝi enhavon ĉe ekrano de lastaj aplikaĵoj</string>
+    <string name="preventScreenshots_title">Bloki ekrankopiojn</string>
+    <string name="preventScreenshots_summary">Bloki fari ekran-kopiojn kaj kaŝi enhavon ĉe ekrano de lastaj aplikaĵoj</string>
 
     <string name="panic_app_setting_title">Aplikaĵo de panika butono</string>
     <string name="panic_app_unknown_app">nekonata aplikaĵo</string>
@@ -497,7 +495,7 @@
     <string name="panic_app_dialog_message">Ĉu vi certas, ke vi volas permesi al %1$s por agordi detruajn agojn de panika butono?</string>
     <string name="allow">Permesi</string>
 
-    <string name="panic_settings">Agordoj de Panika Butono</string>
+    <string name="panic_settings">Agordoj de panika butono</string>
     <string name="panic_settings_summary">Agoj por esti prenita en kazo de krizo</string>
     <string name="panic_exit_title">Fermi aplikaĵon</string>
     <string name="panic_exit_summary">Aplikaĵo fermiĝos</string>
@@ -538,5 +536,13 @@
     <string name="swap_toast_invalid_url">Erara ligilo por interŝanĝi: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Vifi-retkaptejo aktiva</string>
     <string name="swap_toast_could_not_enable_hotspot">Ne povis aktivigi vifi-retkaptejon!</string>
+
+    <string name="over_wifi">Tra vifio</string>
+    <string name="over_data">Tra datum-konekto</string>
+    <string name="over_network_always_summary">Ĉiam uzi tiun ĉi konekton kiam disponebla</string>
+    <string name="over_network_on_demand_summary">Nur uzi tiun ĉi konekton kiam mi elektas elŝuti</string>
+    <string name="over_network_never_summary">Neniam elŝuti ion ajn per tiu ĉi konekto</string>
+    <string name="antidisabledalgorithmlist">Tiu ĉi aplikaĵo posedas malfortan sekurecan subskribon</string>
+    <string name="antiknownvulnlist">Tiu ĉi aplikaĵo posedas sekurecan vundeblon</string>
 
     </resources>

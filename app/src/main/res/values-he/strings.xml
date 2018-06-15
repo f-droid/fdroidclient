@@ -12,7 +12,7 @@
     <string name="notify">הצגת עדכונים זמינים</string>
     <string name="notify_on">הצגת התרעה כאשר יש עדכונים</string>
     <string name="system_installer">הרחבה מועדפת</string>
-    <string name="system_installer_on">ניתן להשתמש בהרחבת F-Droid מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
+    <string name="system_installer_on">ניתן להשתמש בהרחבה מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
     <string name="uninstall_system">עדכון/הסרה של הרחבה מועדפת</string>
     <string name="uninstall_system_summary">יש לפתוח את מסך הפרטים על הרחבה מועדפת כדי לעדכן/להסיר אותה</string>
     <string name="local_repo_name">שם המאגר המקומי שלך</string>
@@ -131,7 +131,7 @@
     <string name="repo_name">שם</string>
     <string name="unknown">לא ידוע</string>
     <string name="repo_confirm_delete_title">למחוק מאגר?</string>
-    <string name="repo_added">מאגר F-Droid שמור %1$s.</string>
+    <string name="repo_added">מאגר חבילות שמור %1$s.</string>
     <string name="minsdk_or_later">%s ומעלה</string>
     <string name="up_to_maxsdk">עד %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s עד %2$s</string>
@@ -200,7 +200,7 @@
 
     <string name="app_incompatible">אין תאימות</string>
     <string name="back">אחורה</string>
-    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר ה־F-Droid אצל 
+    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר חבילות אצל 
 \n%1$s</string>
     <string name="wifi">רשת אלחוטית</string>
     <string name="wifi_ap">נקודת גישה</string>
@@ -227,13 +227,13 @@
     <string name="swap_connecting">מתבצע חיבור</string>
     <string name="loading">בטעינה…</string>
 
-    <string name="interval_never">אף פעם</string>
-    <string name="interval_1h">מדי שעה</string>
-    <string name="interval_4h">כל 4 שעות</string>
-    <string name="interval_12h">כל 12 שעות</string>
-    <string name="interval_1d">מדי יום</string>
-    <string name="interval_1w">מדי שבוע</string>
-    <string name="interval_2w">כל שבועיים</string>
+    <string name="interval_never">לא לעדכן את היישומונים אוטומטית</string>
+    <string name="interval_1h">לחפש עדכונים כל שעה</string>
+    <string name="interval_4h">לחפש עדכונים כל 4 שעות</string>
+    <string name="interval_12h">לחפש עדכונים כל 12 שעות</string>
+    <string name="interval_1d">לחפש עדכונים מדי יום</string>
+    <string name="interval_1w">לחפש עדכונים מדי שבוע</string>
+    <string name="interval_2w">לחפש עדכונים כל שבועיים</string>
 
     <string name="theme_light">בהירה</string>
     <string name="theme_dark">אפלה</string>
@@ -259,7 +259,7 @@
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
-    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid. 
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד. 
 \n 
 \nהערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
     <string name="repo_disabled_notification">%1$s נוטרל. 
@@ -319,7 +319,7 @@
     <string name="download_pending">בהמתנה להתחלת ההורדה…</string>
 
     <string name="keep_install_history">לשמור על היסטוריית ההתקנות</string>
-    <string name="keep_install_history_summary">אחסון יומן של כל ההתקנות וההסרות ב־F-Droid</string>
+    <string name="keep_install_history_summary">אחסון יומן של כל ההתקנות וההסרות באחסון פרטי</string>
     <string name="update_auto_install">התקנת עדכונים אוטומטית</string>
     <string name="update_auto_install_summary">הורדה והתקנת עדכונים ליישומונים ברקע</string>
     <string name="app_details_donate_prompt_unknown_author">הזמנת המפתח של %1$s לקפה!</string>
@@ -549,5 +549,13 @@
     <string name="swap_toast_invalid_url">כתובת שגויה להחלפה: %1$s</string>
     <string name="swap_toast_hotspot_enabled">נקודת גישה אלחוטית פעילה</string>
     <string name="swap_toast_could_not_enable_hotspot">לא ניתן להפעיל נקודת גישה אלחוטית!</string>
+
+    <string name="over_wifi">דרך רשת אלחוטית</string>
+    <string name="over_data">דרך תקשורת נתונים</string>
+    <string name="over_network_always_summary">תמיד להשתמש בחיבור הזה כשהוא זמין</string>
+    <string name="over_network_on_demand_summary">להשתמש אך ורק בחיבור הזה בעת לחיצה על הורדה</string>
+    <string name="over_network_never_summary">לא להוריד שום דבר עם החיבור הזה</string>
+    <string name="antidisabledalgorithmlist">ליישומון זה יש חתימת אבטחה חלשה</string>
+    <string name="antiknownvulnlist">יישומון זה מכיל חולשת אבטחה ידועה</string>
 
     </resources>
