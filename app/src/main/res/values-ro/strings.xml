@@ -140,7 +140,7 @@
     <string name="pref_language_default">Setare implicită sistem</string>
 
     <string name="up_to_maxsdk">Până la %s</string>
-    <string name="repo_searching_address">Căutare depozit F-Droid la
+    <string name="repo_searching_address">Căutare depozit de pachete la 
 \n%1$s</string>
     <string name="repo_confirm_delete_title">Șterge depozit?</string>
     <string name="repo_description">Descriere</string>
@@ -164,7 +164,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_settings">Setări</string>
     <string name="menu_manage">Depozite</string>
-    <string name="repo_added">Depozit F-Droid salvat %1$s.</string>
+    <string name="repo_added">Depozit de pachete salvat %1$s.</string>
     <string name="minsdk_or_later">%s sau mai nou</string>
     <string name="minsdk_up_to_maxsdk">%1$s pana la %2$s</string>
     <string name="pref_language">Limba</string>
@@ -225,25 +225,25 @@
     <string name="crash_dialog_title">F-Droid s-a oprit</string>
     <string name="theme_light">Luminoasă</string>
     <string name="theme_dark">Întunecată</string>
-    <string name="interval_1h">O dată pe oră</string>
+    <string name="interval_1h">Verificare actualizări o dată pe oră</string>
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="allPerms">Toate</string>
     <string name="uninstall_update_confirm">Vrei sa înlocuiești aceasta aplicație cu versiunea din fabrica?</string>
     <string name="download_error">Descărcare eșuată!</string>
 
-    <string name="interval_2w">O data la 2 săptămâni</string>
+    <string name="interval_2w">Verificare actualizări o dată la 2 săptămâni</string>
 
-    <string name="interval_4h">La fiecare 4 ore</string>
+    <string name="interval_4h">Verificare actualizări o dată la 4 ore</string>
     <string name="uninstall_confirm">Vrei sa dezinstalezi aceasta aplicație?</string>
     <string name="perm_costs_money">Aceasta s-ar putea să coste bani</string>
     <string name="newPerms">Nou</string>
     <string name="downloading">Descărcare…</string>
 
-    <string name="interval_never">Niciodată</string>
+    <string name="interval_never">Fără actualizări automate de aplicații</string>
     <string name="perms_description_app">Disponibil de la %1$s.</string>
-    <string name="interval_1w">Săptămânal</string>
-    <string name="interval_1d">Zilnic</string>
-    <string name="interval_12h">La fiecare 12 ore</string>
+    <string name="interval_1w">Verificare actualizări săptămânal</string>
+    <string name="interval_1d">Verificare actualizări zilnic</string>
+    <string name="interval_12h">Verificare actualizări o dată la 12 ore</string>
     <string name="swap_not_enabled">Schimbul nu este activat</string>
     <string name="swap_not_visible_wifi">Nu este vizibil prin Wi-Fi</string>
     <string name="enable_proxy_summary">Configurează proxy HTTP pentru toate conexiunile de rețea</string>
@@ -292,14 +292,16 @@
     <string name="update_auto_install">Instalează automat actualizările</string>
     <string name="update_auto_install_summary">Descarcă și instalează actualizările aplicațiilor în fundal</string>
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
-    <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal în F-Droid</string>
-    <string name="system_installer_on">Folosiți F-Droid Extension pentru a instala, actualiza și a înlătura pachete</string>
+    <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal privat</string>
+    <string name="system_installer_on">Folosiți Privileged Extension pentru a instala, actualiza și a înlătura pachete</string>
     <string name="empty_can_update_app_list">Felicitări!\nAplicațiile tale sunt la zi.</string>
     <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
 \nVa trebui sa reactivați acest depozit pentru a putea instala aplicații din el.</string>
-    <string name="repo_confirm_delete_body">Ștergerea unui depozit presupune ca aplicațiile din el să nu mai fie disponibile în F-Droid. Notă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dumneavoastră.</string>
+    <string name="repo_confirm_delete_body">Ștergerea unui depozit înseamnă ca aplicațiile din el nu vor mai fie disponibile.
+\n
+\nNotă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dumneavoastră.</string>
     <string name="repo_not_yet_updated">Acest depozit nu a fost folosit încă. Trebuie sa îl activați pentru a putea vedea ce aplicații are disponibile.</string>
     <string name="unsigned_description">Asta înseamnă că lista de aplicații nu a putut fi verificata. Ar trebui sa fiți atenți cu aplicațiile descărcate din indexuri nesemnate.</string>
     <string name="warning_no_internet">Nu se poate face actualizarea, există conexiune la Internet?</string>
@@ -513,4 +515,19 @@
     <string name="repo_exists_add_mirror">Acesta este o copie a %1$s, îl adăugăm ca server de rezervă?</string>
     <string name="repo_official_mirrors">Servere de rezervă oficiale</string>
     <string name="repo_user_mirrors">Folosire servere de rezervă</string>
+    <string name="over_wifi">Prin Wi-Fi</string>
+    <string name="over_data">Prin date mobile</string>
+    <string name="over_network_always_summary">Folosește mereu această conexiune dacă este disponibilă</string>
+    <string name="over_network_on_demand_summary">Folosește această conexiune doar dacă apăs descărcare</string>
+    <string name="over_network_never_summary">Nu descărca niciodată nimic prin această conexiune</string>
+    <string name="antidisabledalgorithmlist">Aplicația are o semnătură slab securizată</string>
+    <string name="antiknownvulnlist">Aplicația conține o vulnerabilitate de securitate cunoscută</string>
+
+    <string name="use_bluetooth">Folosește Bluetooth</string>
+    <string name="swap_cant_find_peers">Nu găsiți ceea ce căutați?</string>
+    <string name="swap_no_peers_nearby">Nu au fost găsite persoane în apropiere cu care să faceți schimburi.</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activat</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nu s-a putut crea hotspot Wi-Fi!</string>
+
+    <string name="swap_toast_invalid_url">Adresă invalidă pentru schimb: %1$s</string>
     </resources>

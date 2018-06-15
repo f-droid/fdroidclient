@@ -12,7 +12,7 @@
     <string name="notify">Toon beschikbare updates</string>
     <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
     <string name="system_installer">Systeemrechtenextensie</string>
-    <string name="system_installer_on">Gebruik de F-Droid-systeemrechtenextensie om pakketten te installeren, bij te werken en verwijderen</string>
+    <string name="system_installer_on">Gebruik de systeemrechtenextensie om pakketten te installeren, bij te werken en verwijderen</string>
     <string name="local_repo_name">Naam van collectie gedeelde apps</string>
     <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
     <string name="local_repo_https_on">Gebruik versleutelde HTTPS://-verbinding voor gedeelde apps</string>
@@ -113,19 +113,13 @@
     </string>
     <string name="unknown">Onbekend</string>
     <string name="repo_confirm_delete_title">Softwarebron verwijderen?</string>
-    <string name="repo_confirm_delete_body">Als een bron verwijderd wordt, zijn de apps in die bron niet meer
-        beschikbaar via F-Droid.
-
-        Let op: eerder geïnstalleerde apps blijven op je apparaat staan.
-    </string>
+    <string name="repo_confirm_delete_body">Als een bron verwijderd wordt, zijn de apps in die bron niet meer beschikbaar. Let op: eerder geïnstalleerde apps blijven op je apparaat staan.</string>
     <string name="repo_disabled_notification">%1$s uitgeschakeld.
 
         Je moet deze bron weer inschakelen indien je er apps van wil installeren.
     </string>
-    <string name="repo_added">F-Droid-bron %1$s opgeslagen.</string>
-    <string name="repo_searching_address">Zoeken naar F-Droid-bron op
-        %1$s
-    </string>
+    <string name="repo_added">Pakketbron %1$s opgeslagen.</string>
+    <string name="repo_searching_address">Zoeken naar pakketbron op %1$s</string>
     <string name="minsdk_or_later">%s of later</string>
     <string name="up_to_maxsdk">Tot en met %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
@@ -172,10 +166,10 @@
     <string name="empty_can_update_app_list">Al je apps zijn up-to-date!</string>
 
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
-    <string name="uninstall_error_unknown">Kon niet deïnstalleren door een onbekende fout</string>
+    <string name="uninstall_error_unknown">Kon niet verwijderen door een onbekende fout</string>
     <string name="system_install_installing">Installeren…</string>
     <string name="system_install_uninstalling">Deïnstalleren…</string>
-    <string name="system_uninstall_button">Deïnstalleren</string>
+    <string name="system_uninstall_button">Verwijderen</string>
 
     <string name="swap_nfc_title">Raak aan om uit te wisselen</string>
     <string name="swap_nfc_description">Als je vriend F-Droid heeft geïnstalleerd en NFC is ingeschakeld, hou dan de
@@ -234,19 +228,19 @@
     <string name="allPerms">Alles</string>
     <string name="perm_costs_money">Dit kan geld kosten</string>
     <string name="uninstall_update_confirm">Wil je deze app vervangen door de fabrieksversie?</string>
-    <string name="uninstall_confirm">Wil je deze app deïnstalleren?</string>
+    <string name="uninstall_confirm">Wil je deze app verwijderen?</string>
 
     <string name="perms_new_perm_prefix">Nieuw:</string>
     <string name="perms_description_app">Aangeboden door %1$s.</string>
     <string name="downloading">Downloaden…</string>
 
-    <string name="interval_never">Nooit</string>
-    <string name="interval_1h">Elk uur</string>
-    <string name="interval_4h">Elke 4 uur</string>
-    <string name="interval_12h">Elke 12 uur</string>
-    <string name="interval_1d">Dagelijks</string>
-    <string name="interval_1w">Wekelijks</string>
-    <string name="interval_2w">Elke 2 weken</string>
+    <string name="interval_never">Geen automatische app-updates</string>
+    <string name="interval_1h">Elk uur controleren op updates</string>
+    <string name="interval_4h">Elke 4 uur controleren op updates</string>
+    <string name="interval_12h">Elke 12 uren controleren op updates</string>
+    <string name="interval_1d">Dagelijks controleren op updates</string>
+    <string name="interval_1w">Wekelijks controleren op updates</string>
+    <string name="interval_2w">Elke 2 weken controleren op updates</string>
 
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
@@ -278,13 +272,13 @@
     <string name="system_install_button_install">Installeren</string>
     <string name="system_install_post_success">F-Droid-systeemrechtenextensie is geïnstalleerd</string>
     <string name="system_install_post_fail">Installatie van F-Droid-systeemrechtenextensie is mislukt</string>
-    <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, updaten en deïnstalleren.</string>
+    <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, bijwerken en verwijderen.</string>
     <string name="system_install_post_fail_message">De installatie van de F-Droid-systeemrechtenextensie is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor meer informatie.</string>
     <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
     <string name="system_install_question">Wil je de F-Droid-systeemrechtenextensie installeren?</string>
     <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
     <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
-    <string name="system_uninstall">Wil je de F-Droid-systeemrechtenextensie deïnstalleren?</string>
+    <string name="system_uninstall">Wil je de F-Droid-systeemrechtenextensie verwijderen?</string>
     <string name="download_error">Download mislukt!</string>
 
     <string name="theme_night">Nacht</string>
@@ -338,7 +332,7 @@
     <string name="update_auto_install">Installeer updates automatisch</string>
     <string name="update_auto_install_summary">Download en installeer updates in de achtergrond</string>
     <string name="keep_install_history">Bewaar installatiegeschiedenis</string>
-    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in F-Droid</string>
+    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in een privéopslagplaats</string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
     <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!</string>
@@ -535,5 +529,13 @@
     <string name="swap_toast_invalid_url">Ongeldige URL voor uitwisselen: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wifi-hotspot ingeschakeld</string>
     <string name="swap_toast_could_not_enable_hotspot">Kon wifi-hotspot niet inschakelen!</string>
+
+    <string name="over_wifi">Via wifi</string>
+    <string name="over_data">Via mobiel netwerk</string>
+    <string name="over_network_always_summary">Deze verbinding altijd gebruiken indien beschikbaar</string>
+    <string name="over_network_on_demand_summary">Deze verbinding alleen gebruiken wanneer ik tik om te downloaden</string>
+    <string name="over_network_never_summary">Nooit downloaden via deze verbinding</string>
+    <string name="antidisabledalgorithmlist">Deze app heeft een zwakke beveiligingshandtekening</string>
+    <string name="antiknownvulnlist">Deze app bevat een bekend probleem in de beveiliging</string>
 
     </resources>

@@ -18,7 +18,7 @@
     <string name="system_installer_on">Usar extensão privilegiada do F-Droid para instalar, atualizar e remover
         pacotes
     </string>
-    <string name="local_repo_name">Nome do seu repositório local</string>
+    <string name="local_repo_name">Nome do seu Repositório Local</string>
     <string name="local_repo_name_summary">Título anunciado do seu repositório local: %s</string>
     <string name="local_repo_https_on">Usar conexão HTTPS:// criptografada para o repositório local</string>
     <string name="app_details">Detalhes do aplicativo</string>
@@ -48,7 +48,7 @@
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
     <string name="menu_search">Procurar</string>
-    <string name="menu_add_repo">Novo repositório</string>
+    <string name="menu_add_repo">Novo Repositório</string>
     <string name="menu_launch">Executar</string>
     <string name="menu_share">Compartilhar</string>
     <string name="menu_install">Instalar</string>
@@ -72,7 +72,7 @@
     <string name="expert_on">Mostrar informações extras e habilitar os ajustes extras</string>
     <string name="search_hint">Procurar aplicativos</string>
     <string name="appcompatibility">Compatibilidade de aplicativo</string>
-    <string name="show_incompat_versions">Versões incompatíveis</string>
+    <string name="show_incompat_versions">Incluir versões incompatíveis</string>
     <string name="show_incompat_versions_on">Mostrar versões de aplicativos que são incompatíveis com o dispositivo</string>
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">O F-Droid está pronto para permutar</string>
@@ -143,7 +143,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimídia</string>
     <string name="category_Navigation">Navegação</string>
-    <string name="category_Phone_SMS">Telefone e SMS</string>
+    <string name="category_Phone_SMS">Telefone &amp; SMS</string>
     <string name="category_Reading">Leitura</string>
     <string name="category_Science_Education">Ciência e Educação</string>
     <string name="category_Security">Segurança</string>
@@ -165,7 +165,7 @@
     <string name="swap_confirm_connect">Você quer obter aplicativos de %1$s agora?</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="uninstall_system">Atualizar/desinstalar extensão privilegiada</string>
+    <string name="uninstall_system">Atualizar/Desinstalar Extensão Privilegiada</string>
     <string name="uninstall_system_summary">Abrir tela de detalhes da extensão privilegiada para
         atualizá-la/desinstalá-la
     </string>
@@ -218,7 +218,7 @@
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Graphics">Gráficos</string>
     <string name="category_Money">Dinheiro</string>
-    <string name="category_Sports_Health">Esportes e saúde</string>
+    <string name="category_Sports_Health">Esportes &amp; Saúde</string>
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
@@ -272,10 +272,10 @@
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">Baixando…</string>
 
-    <string name="interval_never">Nunca</string>
-    <string name="interval_1h">Por Hora</string>
-    <string name="interval_4h">A cada 4 horas</string>
-    <string name="interval_12h">A cada 12 horas</string>
+    <string name="interval_never">Sem atualizações automáticas de aplicativos</string>
+    <string name="interval_1h">Checar por atualização a cada hora</string>
+    <string name="interval_4h">Checar atualizações a cada 4 horas</string>
+    <string name="interval_12h">Checar atualizações a cada 12 horas</string>
     <string name="interval_1d">Diariamente</string>
     <string name="interval_1w">Semanalmente</string>
     <string name="interval_2w">A cada 2 semanas</string>
@@ -334,9 +334,7 @@
     <string name="repo_provider">Repositório: %s</string>
 
     <string name="update_auto_download">Obter atualizações automaticamente</string>
-    <string name="update_auto_download_summary">As atualizações são baixar automaticamente e você é notificado para
-        instalá-las
-    </string>
+    <string name="update_auto_download_summary">As atualizações são baixadas automaticamente e você é notificado para instalá-las</string>
     <string name="download_pending">Esperando para iniciar o download…</string>
 
     <string name="system_install_not_supported">A instalação da extensão privilegiada do F-Droid atualmente não é
@@ -363,13 +361,13 @@
     </string>
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
     <string name="update_auto_install_summary">Baixar e instalar atualizações em segundo plano</string>
-    <string name="warning_no_internet">Não é possível atualizar. Você está conectado à Internet?</string>
+    <string name="warning_no_internet">Não é possível atualizar, você está conectado à Internet?</string>
     <string name="versions">Versões</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café para os desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s é criado por %2$s. Pague um café para eles!</string>
 
     <string name="repositories_summary">Acrescentar fontes adicionais de aplicativos</string>
-    <string name="notification_title_single_update_available">Atualização disponível</string>
+    <string name="notification_title_single_update_available">Atualização Disponível</string>
     <string name="notification_title_single_ready_to_install">Pronto para instalar</string>
     <string name="notification_title_single_ready_to_install_update">Atualização pronta para instalar</string>
     <string name="notification_title_single_install_error">Falha na instalação</string>
@@ -384,7 +382,7 @@
     <string name="notification_title_summary_ready_to_install_update">Atualização pronta para instalar</string>
     <string name="notification_title_summary_installing">Instalando</string>
     <string name="notification_title_summary_installed">Instalado com sucesso</string>
-    <string name="notification_title_summary_install_error">Falha na instalação</string>
+    <string name="notification_title_summary_install_error">Falha na Instalação</string>
     <string name="notification_action_update">Atualizar</string>
     <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
@@ -549,7 +547,7 @@
     <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar ele como um mirror?</string>
     <string name="show_root_apps">Incluir aplicativos root</string>
     <string name="show_root_apps_on">Mostrar aplicativos que requerem privilégios root</string>
-    <string name="show_anti_feature_apps">Incluir aplicativos anti fraude</string>
+    <string name="show_anti_feature_apps">Incluir aplicativos antifraude</string>
     <string name="force_touch_apps">Incluir aplicativos touchscreen</string>
     <string name="force_touch_apps_on">Mostrar aplicativos touchscreen independente do suporte de hardware</string>
 
@@ -560,4 +558,17 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível habilitar o Hotspot Wi-Fi!</string>
 
+    <string name="over_wifi">Sobre Wi-Fi</string>
+    <string name="over_data">Sobre dados</string>
+    <string name="over_network_always_summary">Sempre use essa conexão quando ela estiver disponível</string>
+    <string name="over_network_on_demand_summary">Apenas use essa conexão quando eu clicar para baixar</string>
+    <string name="over_network_never_summary">Nunca baixe nada usando essa conexão</string>
+    <string name="repo_exists_add_fingerprint">%1$s já está configurado, isto irá adicionar nova informação de chave.</string>
+    <string name="repo_exists_enable">%1$s já esta ativado, confirme que você quer reativar ele.</string>
+    <string name="repo_exists_and_enabled">%1$s já está configurado e ativado.</string>
+    <string name="repo_delete_to_overwrite">Primeiro apague %1$s para poder adicionar isso com uma chave conflitante.</string>
+    <string name="antidisabledalgorithmlist">Este aplicativo tem um assinatura de segurança fraca</string>
+    <string name="antiknownvulnlist">Este aplicativo contém uma falha de segurança já conhecida</string>
+
+    <string name="show_anti_feature_apps_on">Mostrar aplicativos que requerem anti-funcões</string>
     </resources>

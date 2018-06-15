@@ -15,7 +15,7 @@
     <string name="unstable_updates">Нестабільныя абнаўленні</string>
     <string name="unstable_updates_summary">Прапаноўваць абнаўленні да нестабільных версій</string>
     <string name="keep_install_history">Зберагаць гісторыю ўсталёвак</string>
-    <string name="keep_install_history_summary">Захоўваць лог усіх усталёвак і выдаленняў у F-Droid</string>
+    <string name="keep_install_history_summary">Захоўваць лог усіх усталёвак і выдаленняў з прыватнай крамы</string>
     <string name="other">Іншае</string>
 
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
@@ -197,21 +197,16 @@
     </string>
     <string name="unknown">Невядома</string>
     <string name="repo_confirm_delete_title">Выдаліць рэпазіторый?</string>
-    <string name="repo_confirm_delete_body">Выдаленне рэпазіторыя азначае, што праграмы
-        ў ім болей не будуць даступныя з F-Droid.
-
-        Увага: усе папярэдне ўсталяваныя праграмы
-        застануцца на вашай прыладзе.
-    </string>
+    <string name="repo_confirm_delete_body">Выдаленне рэпазіторыя азначае, што праграмы ў ім болей не будуць даступныя.
+\n
+\nУвага: усе папярэдне ўсталяваныя праграмы застануцца на вашай прыладзе.</string>
     <string name="repo_disabled_notification">%1$s адключаны.
 
         Для ўсталявання праграм з
         гэтага рэпазіторыя неабходна ўключыць яго.
     </string>
-    <string name="repo_added">F-Droid-рэпазіторый %1$s захаваны.</string>
-    <string name="repo_searching_address">Агляд рэпазіторыя F-Droid на
-        %1$s
-    </string>
+    <string name="repo_added">Рэпазіторый пакетаў %1$s захаваны.</string>
+    <string name="repo_searching_address">Агляд рэпазіторыя пакетаў на %1$s</string>
     <string name="minsdk_or_later">%s ці пазней</string>
     <string name="up_to_maxsdk">Да %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s да %2$s</string>
@@ -348,13 +343,13 @@
     <string name="installing">Усталёўка…</string>
     <string name="uninstalling">Выдаленне…</string>
 
-    <string name="interval_never">Ніколі</string>
-    <string name="interval_1h">Штогадзінна</string>
-    <string name="interval_4h">Кожныя 4 гадзіны</string>
-    <string name="interval_12h">Кожныя 12 гадзін</string>
-    <string name="interval_1d">Штодзённа</string>
-    <string name="interval_1w">Штотыднёва</string>
-    <string name="interval_2w">Кожныя 2 тыдні</string>
+    <string name="interval_never">Не абнаўляць праграмы аўтаматычна</string>
+    <string name="interval_1h">Штогадзінна правяраць абнаўленні</string>
+    <string name="interval_4h">Правяраць абнаўленні кожныя 4 гадзіны</string>
+    <string name="interval_12h">Правяраць абнаўленні кожныя 12 гадзін</string>
+    <string name="interval_1d">Правяраць абнаўленні штодзённа</string>
+    <string name="interval_1w">Правяраць абнаўленні штотыднёва</string>
+    <string name="interval_2w">Правяраць абнаўленні кожныя 2 тыдні</string>
 
     <string name="keep_hour">1 гадзіна</string>
     <string name="keep_day">1 дзень</string>
@@ -386,7 +381,7 @@
     <string name="notification_title_summary_downloading">Спампоўка…</string>
     <string name="notification_title_summary_downloading_update">Спампоўка абнаўлення…</string>
     <string name="notification_title_summary_ready_to_install">Гатовая да ўсталёўкі</string>
-    <string name="notification_title_summary_ready_to_install_update">Абнаўленна гатовае да ўсталёўкі</string>
+    <string name="notification_title_summary_ready_to_install_update">Гатовае да ўсталёўкі абнаўленне</string>
     <string name="notification_title_summary_installing">Усталёўка</string>
     <string name="notification_title_summary_installed">Паспяхова ўсталёвана</string>
     <string name="notification_title_summary_install_error">Не атрымалася ўсталяваць</string>
@@ -418,7 +413,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Абнаўленні ігнаруюцца для версіі %1$s</string>
 
     <string name="preference_category__my_apps">Мае праграмы</string>
-    <string name="preference_manage_installed_apps">Кіраваць усталяванымі праграмамі</string>
+    <string name="preference_manage_installed_apps">Кіраванне усталяванымі праграмамі</string>
 
 
     <string name="tts_category_name">Катэгорыя %1$s</string>
@@ -588,5 +583,13 @@
     <string name="swap_toast_invalid_url">Некарэктны URL для абмену: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot уключаны</string>
     <string name="swap_toast_could_not_enable_hotspot">Не атрымалася ўключыць Wi-Fi Hotspot!</string>
+
+    <string name="over_wifi">Праз Wi-Fi</string>
+    <string name="over_data">Праз мабільную сетку</string>
+    <string name="over_network_always_summary">Заўсёды выкарыстоўваць гэта злучэнне пры даступнасці</string>
+    <string name="over_network_on_demand_summary">Выкарыстоўваць гэта злучэнне толька для спампоўкі</string>
+    <string name="over_network_never_summary">Ніколі нічога не спампоўваць праз гэта злучэнне</string>
+    <string name="antidisabledalgorithmlist">Гэтая праграма мае слабы подпіс бяспекі</string>
+    <string name="antiknownvulnlist">Гэтая праграма змяшчае вядомую ўразлівасць бяспекі</string>
 
     </resources>

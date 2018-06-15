@@ -9,7 +9,7 @@
     <string name="other">Inne</string>
     <string name="notify">Pokaż dostępne aktualizacje</string>
     <string name="system_installer">Uprzywilejowany dodatek</string>
-    <string name="system_installer_on">Używaj dodatku uprzywilejowanego F-Droida by instalować, aktualizować i usuwać paczki</string>
+    <string name="system_installer_on">Używaj uprzywilejowanego dodatku, aby instalować, aktualizować i usuwać paczki</string>
     <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
     <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
     <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS</string>
@@ -85,11 +85,9 @@
     <string name="repo_name">Nazwa</string>
     <string name="unknown">Nieznany</string>
     <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>
-    <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej
-        dostępne w F-Droid.
-
-        Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.
-    </string>
+    <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
+\n
+\nUwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
     <string name="minsdk_or_later">%s lub nowszy</string>
     <string name="up_to_maxsdk">Wsparcie do %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
@@ -162,8 +160,9 @@
     <string name="repo_disabled_notification">Wyłączono %1$s.\n\nAby ponownie móc instalować z niego aplikacje musisz je
         włączyć ponownie.
     </string>
-    <string name="repo_added">Dodano repozytorium %1$s.</string>
-    <string name="repo_searching_address">Szukam repozytorium F-Droida pod adresem:\n%1$s</string>
+    <string name="repo_added">Dodano repozytorium paczek %1$s.</string>
+    <string name="repo_searching_address">Szukam repozytorium paczek pod adresem:
+\n%1$s</string>
     <string name="pref_language">Język aplikacji</string>
     <string name="pref_language_default">Domyślny systemowy</string>
 
@@ -257,13 +256,13 @@
     <string name="perms_description_app">Dostarczone przez %1$s.</string>
     <string name="downloading">Pobieranie…</string>
 
-    <string name="interval_never">Nigdy</string>
-    <string name="interval_1h">Co godzinę</string>
-    <string name="interval_4h">Co 4 godziny</string>
-    <string name="interval_12h">Co 12 godzin</string>
-    <string name="interval_1d">Co dobę</string>
-    <string name="interval_1w">Co tydzień</string>
-    <string name="interval_2w">Co 2 tygodnie</string>
+    <string name="interval_never">Brak automatycznych aktualizacji</string>
+    <string name="interval_1h">Sprawdzaj aktualizacje co godzinę</string>
+    <string name="interval_4h">Sprawdzaj aktualizacje co 4 godziny</string>
+    <string name="interval_12h">Sprawdzaj aktualizacje co 12 godzin</string>
+    <string name="interval_1d">Sprawdzaj aktualizacje codziennie</string>
+    <string name="interval_1w">Sprawdzaj aktualizacje co tydzień</string>
+    <string name="interval_2w">Sprawdzaj aktualizacje co 2 tygodnie</string>
 
     <string name="theme_light">Jasny</string>
     <string name="theme_dark">Ciemny</string>
@@ -339,9 +338,7 @@
     <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
     <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
     <string name="keep_install_history">Zachowaj historię instalacji</string>
-    <string name="keep_install_history_summary">Zapisuje w dzienniku F-Droida historię wszystkich instalacji i
-        dezinstalacji
-    </string>
+    <string name="keep_install_history_summary">Zapisuje w obszarze prywatnym aplikacji historię wszystkich instalacji i dezinstalacji</string>
     <string name="warning_no_internet">Nie można zaktualizować, czy jesteś połączony z Internetem?</string>
     <string name="versions">Wersje</string>
     <string name="app_details_donate_prompt_unknown_author">Sponsoruj kawę dla programistów %1$s!</string>
@@ -564,5 +561,13 @@
     <string name="swap_toast_invalid_url">Błędny URL wymiany: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Włączono hotspot Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Nie można włączyć hotspotu Wi-Fi!</string>
+
+    <string name="over_wifi">Przez Wi-Fi</string>
+    <string name="over_data">Przez połączenie danych</string>
+    <string name="over_network_always_summary">Zawsze używaj tego połączenia, jeżeli dostępne</string>
+    <string name="over_network_on_demand_summary">Używaj tego połączenia tylko wtedy, gdy wybiorę pobierz</string>
+    <string name="over_network_never_summary">Nie pobieraj czegokolwiek przez to połączenie</string>
+    <string name="antidisabledalgorithmlist">Ta aplikacja posiada słabą sygnaturę bezpieczeństwa</string>
+    <string name="antiknownvulnlist">Ta aplikacja ma znaną podatność bezpieczeństwa</string>
 
     </resources>

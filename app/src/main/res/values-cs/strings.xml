@@ -11,9 +11,7 @@
     <string name="notify">Zobrazit dostupné aktualizace</string>
     <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
     <string name="system_installer">Privilegovaná rozšíření</string>
-    <string name="system_installer_on">Použít privilegovaná rozšíření F-Droid k instalování, aktualizaci a odebírání
-        balíčků
-    </string>
+    <string name="system_installer_on">Použít privilegovaná rozšíření k instalování, aktualizaci a odebírání balíčků</string>
     <string name="local_repo_name">Název místního repozitáře</string>
     <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
     <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
@@ -93,9 +91,9 @@
         Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.
     </string>
     <string name="repo_confirm_delete_title">Odebrat repositář?</string>
-    <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné v
-        F-Droidu.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.
-    </string>
+    <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.
+\n
+\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
     <string name="repo_disabled_notification">%1$s zakázáno.
 
         Pro instalaci aplikací z tohoto repozitáře ho bude nejprve třeba znovu povolit.
@@ -178,8 +176,9 @@
     <string name="repo_details">Repozitář</string>
     <string name="repo_url">Adresa</string>
     <string name="unknown">Neznámý</string>
-    <string name="repo_added">Uložit F-Droid repozitář %1$s.</string>
-    <string name="repo_searching_address">VyhledáváníF-Droid repozitáře na\n%1$s</string>
+    <string name="repo_added">Uložen repozitář balíčků %1$s.</string>
+    <string name="repo_searching_address">Vyhledávání repozitáře balíčků na
+\n%1$s</string>
     <string name="up_to_maxsdk">Až do %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s až do %2$s</string>
     <string name="login_title">Vyžadováno ověření</string>
@@ -268,13 +267,13 @@
     <string name="perms_description_app">Poskytováno %1$s.</string>
     <string name="downloading">Stahování…</string>
 
-    <string name="interval_never">Nikdy</string>
-    <string name="interval_1h">Každou hodinu</string>
-    <string name="interval_4h">Každé 4 hodiny</string>
-    <string name="interval_12h">Každých 12 hodin</string>
-    <string name="interval_1d">Denně</string>
-    <string name="interval_1w">Týdenně</string>
-    <string name="interval_2w">Každé 2 týdny</string>
+    <string name="interval_never">Žádné automatické aktualizace aplikace</string>
+    <string name="interval_1h">Zjišťovat aktualizace každou hodinu</string>
+    <string name="interval_4h">Zjišťovat aktualizace každé 4 hodiny</string>
+    <string name="interval_12h">Zjišťovat aktualizace  každých 12 hodin</string>
+    <string name="interval_1d">Zjišťovat aktualizace každý den</string>
+    <string name="interval_1w">Zjišťovat aktualizace každý týden</string>
+    <string name="interval_2w">Zjišťovat aktualizace  každé 2 týdny</string>
 
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
@@ -349,8 +348,7 @@
     <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. Odeslat vývojářům podrobnosti e-mailem a pomoci tak s nápravou?</string>
     <string name="crash_dialog_comment_prompt">Zde můžete přidat další informace a komentáře:</string>
     <string name="keep_install_history">Uchovat historii instalací</string>
-    <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích v F-Droid-e
-    </string>
+    <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích soukromém úložišti</string>
     <string name="update_auto_install">Automaticky nainstalovat aktualizace</string>
     <string name="update_auto_install_summary">Převzít a nainstalovat aktualizace aplikací na pozadí</string>
     <string name="versions">Verze</string>
@@ -558,5 +556,13 @@
     <string name="swap_toast_invalid_url">Neplatná URL adresa pro prohození: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi přístupový bod zapnut</string>
     <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout Wi-Fi přístupový bod!</string>
+
+    <string name="over_wifi">Přes Wi-Fi</string>
+    <string name="over_data">Přes mobilní data</string>
+    <string name="over_network_always_summary">Pokud je k dispozici, vždy použít toto připojení</string>
+    <string name="over_network_on_demand_summary">Toto připojení použít pouze pokud kliknu na stahování</string>
+    <string name="over_network_never_summary">Přes toto připojení nikdy nic nestahovat</string>
+    <string name="antidisabledalgorithmlist">Tato aplikace má slabý bezpečnostní podpis</string>
+    <string name="antiknownvulnlist">Tato aplikace má známou zranitelnost v zabezpečení</string>
 
     </resources>

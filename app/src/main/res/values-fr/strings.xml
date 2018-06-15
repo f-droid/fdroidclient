@@ -11,10 +11,8 @@
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
-    <string name="system_installer">Permissions étendues</string>
-    <string name="system_installer_on">Utiliser F-Droid Privileged Extension pour installer, mettre à jour et supprimer
-        des paquets
-    </string>
+    <string name="system_installer">Extension de privilège</string>
+    <string name="system_installer_on">Utiliser l\'extension de privilège pour installer, mettre à jour et supprimer des paquets</string>
     <string name="local_repo_name">Nom de votre dépôt local</string>
     <string name="local_repo_name_summary">Le nom public de votre dépôt local : %s</string>
     <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
@@ -47,7 +45,7 @@
     <string name="repo_exists_enable">%1$s est déjà configuré, confirmez que vous voulez le réactiver.</string>
     <string name="repo_exists_and_enabled">%1$s est déjà configuré et activé.</string>
     <string name="malformed_repo_uri">URI de dépôt malformé ignoré : %s</string>
-    <string name="menu_manage">Gestion des dépôts</string>
+    <string name="menu_manage">Dépôts</string>
     <string name="menu_search">Rechercher</string>
     <string name="menu_add_repo">Nouveau dépôt</string>
     <string name="menu_launch">Lancer</string>
@@ -117,12 +115,9 @@
     </string>
     <string name="unknown">Inconnu</string>
     <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie
-        que ses applis ne seront plus disponibles via F-Droid.
-
-        Note : toutes
-        les applis précédemment installées vont rester sur votre appareil.
-    </string>
+    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications ne seront plus disponibles.
+\n
+\nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
     <string name="repo_disabled_notification">%1$s a été désactivé.
 
         Vous devez
@@ -161,7 +156,7 @@
 
     <string name="unstable_updates">Mises à jour instables</string>
     <string name="unstable_updates_summary">Proposer les mises à jour de versions instables</string>
-    <string name="uninstall_system">Mettre à jour/désinstaller l\'appli F-Droid Privileged Extension</string>
+    <string name="uninstall_system">Mettre à jour/désinstaller l\'extension de privilège</string>
     <string name="about_source">Code source</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Liens</string>
@@ -204,12 +199,12 @@
     <string name="perms_new_perm_prefix">Nouveauté :</string>
     <string name="downloading">Téléchargement…</string>
 
-    <string name="interval_never">Jamais</string>
-    <string name="interval_4h">Toutes les 4 heures</string>
-    <string name="interval_12h">Toutes les 12 heures</string>
-    <string name="interval_1d">Chaque jour</string>
-    <string name="interval_1w">Chaque semaine</string>
-    <string name="interval_2w">Toutes les 2 semaines</string>
+    <string name="interval_never">Pas de mises à jour automatiques</string>
+    <string name="interval_4h">Chercher les mises à jour toutes les 4 heures</string>
+    <string name="interval_12h">Chercher les mises à jour toutes les 12 heures</string>
+    <string name="interval_1d">Chercher les mises à jour quotidiennement</string>
+    <string name="interval_1w">Chercher les mises à jour une fois par semaine</string>
+    <string name="interval_2w">Chercher les mises à jour toutes les 2 semaines</string>
 
     <string name="theme_light">Clair</string>
     <string name="theme_dark">Sombre</string>
@@ -219,10 +214,9 @@
 
 
     <string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) de %1$s</string>
-    <string name="repo_added">Le dépôt F-Droid %1$s a été sauvegardé.</string>
-    <string name="repo_searching_address">Recherche d\'un dépôt F-Droid sur
-        \n%1$s
-    </string>
+    <string name="repo_added">Le dépôt d\'applications %1$s a été enregistré.</string>
+    <string name="repo_searching_address">Recherche d\'un dépôt d\'applications sur
+\n%1$s</string>
     <string name="category_Graphics">Graphisme</string>
     <string name="empty_installed_app_list">Aucune appli installée.\n\nIl y a des applis sur votre appareil, mais aucune
         n\'est disponible sur F-Droid. Vous devriez peut-être mettre à jour vos dépôts, ou vos applis ne sont pas
@@ -259,11 +253,9 @@
     <string name="swap_qr_isnt_for_swap">Le code QR que vous avez scanné ne ressemble pas à un code d\'échange.</string>
     <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer l\'échange.</string>
 
-    <string name="interval_1h">Toutes les heures</string>
+    <string name="interval_1h">Chercher les mises à jour toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
-    <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'appli F-Droid Privileged Extension pour la
-        mettre à jour/la désinstaller
-    </string>
+    <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'extension de privilège pour la mettre à jour/la désinstaller</string>
     <string name="status_download_unknown_size">Téléchargement de
         \n%2$s depuis
         \n%1$s
@@ -281,18 +273,15 @@
         l\'application ! Veuillez créer un rapport de bug !
     </string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_post_success">F-Droid Privileged Extension installée</string>
-    <string name="system_install_post_fail">Échec de l\'installation de F-Droid Privileged Extension</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension installé. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applis de son propre chef.</string>
-    <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid Privileged Extension. La méthode
-        d\'installation utilisée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de
-        donnée de bogues pour plus d\'informations.
-    </string>
+    <string name="system_install_post_success">L\'extension de privilège de F-Droid a été installée</string>
+    <string name="system_install_post_fail">Échec de l\'installation de l\'extension de privilège de F-Droid</string>
+    <string name="system_install_post_success_message">L\'extension de privilège de F-Droid est installée. Elle permet à F-Droid d\'installer, mettre à jour ou désinstaller des applications sans action de votre part.</string>
+    <string name="system_install_post_fail_message">Échec de l\'installation de l\'extension de privilège de F-Droid. La méthode d\'installation utilisée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
     <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
-    <string name="system_install_question">Voulez-vous installer F-Droid Privileged Extension ?</string>
+    <string name="system_install_question">Voulez-vous installer l\'extension de privilège de F-Droid ?</string>
     <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
     <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
-    <string name="system_uninstall">Voulez-vous désinstaller F-Droid Privileged Extension ?</string>
+    <string name="system_uninstall">Voulez-vous désinstaller l\'extension de privilège de F-Droid ?</string>
     <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
@@ -335,9 +324,7 @@
     </string>
     <string name="download_pending">Téléchargement en attente…</string>
 
-    <string name="system_install_not_supported">L\'installation de F-Droid Privileged Extension n\'est pas supportée
-        pour l\'instant sur Android 5.1 et plus.
-    </string>
+    <string name="system_install_not_supported">L\'installation de l\'extension de privilège de F-Droid n\'est pour l\'instant pas supportée sur Android 5.1 et plus.</string>
 
     <string name="keep_hour">1 heure</string>
     <string name="keep_day">1 jour</string>
@@ -358,9 +345,7 @@
     <string name="update_auto_install_summary">Télécharger et installer les mises à jour des applications en
         arrière-plan
     </string>
-    <string name="keep_install_history_summary">Enregistrer un journal de toutes les installations et désinstallations
-        au sein de F-Droid
-    </string>
+    <string name="keep_install_history_summary">Conserver la liste de toutes les installations et désinstallations dans un journal privé</string>
     <string name="warning_no_internet">Impossible de mettre à jour, êtes-vous connecté à Internet ?</string>
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrir un café aux développeurs de %1$s !</string>
@@ -509,7 +494,7 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     <string name="privacy">Vie privée</string>
-    <string name="preventScreenshots_title">Interdire les copies écran</string>
+    <string name="preventScreenshots_title">Bloquer les captures d\'écran</string>
     <string name="preventScreenshots_summary">Bloque les copies écran et masque le contenu d\'application dans les applications récentes</string>
 
     <string name="panic_app_unknown_app">une application inconnue</string>
@@ -524,7 +509,7 @@
 
     <string name="panic_settings">Paramètres du bouton d\'urgence</string>
     <string name="panic_settings_summary">Actions à exécuter en cas d\'urgence</string>
-    <string name="panic_app_setting_title">Application Bouton d\'urgence</string>
+    <string name="panic_app_setting_title">Application bouton d\'urgence</string>
     <string name="panic_app_dialog_title">Confirmer l\'application d\'urgence ?</string>
     <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions destructrices du bouton d\'urgence ?</string>
     <string name="panic_destructive_actions">Actions destructrices</string>
@@ -533,14 +518,14 @@
 
     <string name="hiding_calculator">Calculatrice</string>
     <string name="hiding_dialog_title">Masquer %s maintenant</string>
-    <string name="hiding_dialog_message">Êtes-vous sûr de vouloir supprimer %1$s du lanceur ? Vous ne pourrez restaurer cette application qu\'en tapant « %2$d » dans la fausse application %3$s.</string>
+    <string name="hiding_dialog_message">Êtes-vous sûr de vouloir supprimer %1$s du lanceur ? Vous ne pourrez la restaurer qu\'en tapant « %2$d » dans la fausse application %3$s.</string>
     <string name="hiding_dialog_warning">Attention : les raccourcis d\'applications sur l\'écran d\'accueil seront aussi supprimés et devront être rajoutés manuellement.</string>
     <string name="sort_search">Trier la recherche</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="hide_on_long_search_press_title">Cacher à l\'aide du bouton de recherche</string>
-    <string name="hide_on_long_search_press_summary">Appuyez longuement sur le bouton de recherche pour cacher l\'application</string>
+    <string name="hide_on_long_search_press_summary">Appuyer longtemps sur le bouton de recherche masquera l\'application</string>
 
 <string name="warning_scaning_qr_code">Votre appareil-photo n’a pas de mise au point automatique. Il sera peut-être difficile de scanner le code.</string>
     <string name="show_root_apps">Inclure les applications root</string>
@@ -559,5 +544,13 @@
     <string name="swap_toast_invalid_url">URL invalide pour l\'échange : %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activé</string>
     <string name="swap_toast_could_not_enable_hotspot">Impossible d\'activer le Wi-Fi Hotspot !</string>
+
+    <string name="over_wifi">Via Wi-Fi</string>
+    <string name="over_data">Via le réseau mobile</string>
+    <string name="over_network_always_summary">Toujours utiliser cette connexion si disponible</string>
+    <string name="over_network_on_demand_summary">Utiliser cette connexion seulement lors du clic sur télécharger</string>
+    <string name="over_network_never_summary">Ne jamais télécharger sur cette connexion</string>
+    <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
+    <string name="antiknownvulnlist">Cette application contient une vulnérabilité de sécurité</string>
 
     </resources>

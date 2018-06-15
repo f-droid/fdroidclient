@@ -12,7 +12,7 @@
     <string name="notify">Aktualisierungsbenachrichtigung</string>
     <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
     <string name="system_installer">Rechteerweiterung</string>
-    <string name="system_installer_on">Rechteerweiterung für F-Droid verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
+    <string name="system_installer_on">Verwenden Sie die Rechteerweiterung, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
     <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
     <string name="local_repo_name_summary">Der verwendete Titel Ihrer lokalen Paketquelle: %s</string>
     <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
@@ -53,7 +53,7 @@
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
-    <string name="menu_upgrade">Update</string>
+    <string name="menu_upgrade">Aktualisieren</string>
     <string name="menu_donate">Spenden</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese Anwendung enthält Werbung</string>
@@ -111,21 +111,17 @@
     </string>
     <string name="unknown">Unbekannt</string>
     <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
-    <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
-        Anwendungen daraus werden nicht mehr in F-Droid verfügbar sein.
-
-        Hinweis: Alle
-        zuvor installierten Anwendungen bleiben auf Ihrem Gerät.
-    </string>
+    <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet, Anwendungen daraus werden nicht mehr verfügbar sein.
+\n
+\nHinweis: Alle zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
     <string name="repo_disabled_notification">»%1$s« deaktiviert.
 
         Sie müssen diese Paketquelle wieder aktivieren,
         um Anwendungen daraus installieren zu können.
     </string>
-    <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert.</string>
-    <string name="repo_searching_address">Nach F-Droid-Paketquelle wird unter
-        %1$s gesucht
-    </string>
+    <string name="repo_added">Paketquelle %1$s gespeichert.</string>
+    <string name="repo_searching_address">Nach Paketquelle wird gesucht unter
+\n%1$s</string>
     <string name="minsdk_or_later">%s oder später</string>
     <string name="up_to_maxsdk">Bis zu %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
@@ -189,11 +185,11 @@
 
     <string name="newPerms">Neu</string>
     <string name="perms_new_perm_prefix">Neu:</string>
-    <string name="interval_1h">Stündlich</string>
-    <string name="interval_4h">Alle 4 Stunden</string>
-    <string name="interval_12h">Alle 12 Stunden</string>
-    <string name="interval_1d">Täglich</string>
-    <string name="interval_1w">Wöchentlich</string>
+    <string name="interval_1h">Stündlich nach Aktualisierungen suchen</string>
+    <string name="interval_4h">Alle 4 Stunden nach Aktualisierungen suchen</string>
+    <string name="interval_12h">Alle 12 Stunden nach Aktualisierungen suchen</string>
+    <string name="interval_1d">Täglich nach Aktualisierungen suchen</string>
+    <string name="interval_1w">Wöchentlich nach Aktualisierungen suchen</string>
     <string name="more">Mehr</string>
     <string name="less">Weniger</string>
 
@@ -207,8 +203,8 @@
 
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
-    <string name="interval_never">Nie</string>
-    <string name="interval_2w">Alle zwei Wochen</string>
+    <string name="interval_never">Keine automatischen App-Aktualisierungen</string>
+    <string name="interval_2w">Alle zwei Wochen nach Aktualisierungen suchen</string>
 
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
@@ -345,9 +341,7 @@
         installieren
     </string>
     <string name="keep_install_history">Installationsverlauf behalten</string>
-    <string name="keep_install_history_summary">Ein Protokoll aller Installationen und Deinstallationen von F-Droid
-        speichern
-    </string>
+    <string name="keep_install_history_summary">Ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee kaufen!</string>
@@ -546,8 +540,16 @@
     <string name="repo_user_mirrors">Benutzer-Spiegel</string>
     <string name="repo_delete_to_overwrite">Löschen Sie zuerst %1$s, um es mit einem widersprüchlichen Schlüssel hinzuzufügen.</string>
     <string name="use_bluetooth">Bluetooth nutzen</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi-Hotspot aktiviert</string>
-    <string name="swap_toast_could_not_enable_hotspot">Konnte WLAN-Hotspot nicht aktivieren!</string>
+    <string name="swap_toast_hotspot_enabled">WLAN-Hotspot aktiviert</string>
+    <string name="swap_toast_could_not_enable_hotspot">WLAN-Hotspot konnte nicht aktiviert werden!</string>
 
-    <string name="swap_toast_invalid_url">Ungültige URL zum Tauschen: %1$s</string>
+    <string name="swap_toast_invalid_url">Ungültige Adresse zum Tauschen: %1$s</string>
+    <string name="over_wifi">Über WLAN</string>
+    <string name="over_data">über Mobilfunk</string>
+    <string name="over_network_always_summary">Diese Verbindung immer verwenden, wenn sie verfügbar ist</string>
+    <string name="over_network_on_demand_summary">Diese Verbindung nur verwenden, wenn ich zum Download klicke</string>
+    <string name="over_network_never_summary">Niemals etwas über diese Verbindung herunterladen</string>
+    <string name="antidisabledalgorithmlist">Diese App hat eine schwache Sicherheitssignatur</string>
+    <string name="antiknownvulnlist">Diese Anwendung enthält eine bekannte Sicherheitslücke</string>
+
     </resources>

@@ -12,14 +12,13 @@
     <string name="notify">Kullanılabilir güncellemeleri göster</string>
     <string name="notify_on">Güncellemeler varsa bir bildirim göster</string>
     <string name="system_installer">Ayrıcalıklı Uzantı</string>
-    <string name="system_installer_on">Paket kurmak, güncellemek ve kaldırmak için F-Droid Ayrıcalıklı Uzantıyı kullan
-    </string>
-    <string name="local_repo_name">Yerel Deponuzun Adı</string>
+    <string name="system_installer_on">Paket kurmak, güncellemek ve kaldırmak için Ayrıcalıklı Uzantıyı kullan</string>
+    <string name="local_repo_name">Yerel deponuzun adı</string>
     <string name="local_repo_name_summary">Yerel deponuzun duyurulan adı: %s</string>
     <string name="local_repo_https_on">Yerel depo için şifrelenmiş HTTPS:// bağlantısı kullan</string>
     <string name="app_details">Uygulama Ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
-    <string name="about_title">F-Droid Hakkında</string>
+    <string name="about_title">F-Droid hakkında</string>
     <string name="about_site">İnternet sitesi</string>
     <string name="about_mail">E-posta</string>
     <string name="about_version">Sürüm</string>
@@ -82,11 +81,11 @@
     <string name="next">İleri</string>
     <string name="skip">Geç</string>
     <string name="proxy">Vekil</string>
-    <string name="enable_proxy_title">HTTP Vekilini Etkinleştir</string>
+    <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
     <string name="enable_proxy_summary">HTTP Vekilini tüm ağ istekleri için yapılandır</string>
-    <string name="proxy_host">Vekil Sunucu</string>
+    <string name="proxy_host">Vekil sunucu</string>
     <string name="proxy_host_summary">Vekil sunucu adı (örn. 127.0.0.1)</string>
-    <string name="proxy_port">Vekil Bağlantı Noktası</string>
+    <string name="proxy_port">Vekil bağlantı noktası</string>
     <string name="proxy_port_summary">Vekil bağlantı noktası (örn. 8118)</string>
     <string name="status_download">İndiriliyor
         %1$s konumundan
@@ -118,21 +117,17 @@
     </string>
     <string name="unknown">Bilinmiyor</string>
     <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
-    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların bundan
-        böyle F-Droid\'den sağlanamayacağı anlamına gelir.
-
-        Not: Tüm
-        önceden kurulan uygulamalar aygıtınızda kalacaktır.
-    </string>
+    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların artık bulunamayacağı anlamına gelir.
+\n
+\nNot: Önceden kurulan tüm uygulamalar aygıtınızda kalacaktır.</string>
     <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.
 
         Oradan uygulama indirmek için
         bu depoyu tekrar etkinleştirmeniz gerekecektir.
     </string>
-    <string name="repo_added">F-Droid deposu %1$s kaydedildi.</string>
-    <string name="repo_searching_address">%1$s konumunda
-        F-Droid deposu aranıyor
-    </string>
+    <string name="repo_added">Paket deposu %1$s kaydedildi.</string>
+    <string name="repo_searching_address">%1$s konumunda paket deposu
+\naranıyor</string>
     <string name="minsdk_or_later">%s veya sonrası</string>
     <string name="up_to_maxsdk">%s değerine kadar</string>
     <string name="minsdk_up_to_maxsdk">%1$s değerinden %2$s değerine kadar</string>
@@ -279,13 +274,13 @@
     <string name="perms_description_app">%1$s tarafından sağlanmıştır.</string>
     <string name="downloading">İndiriliyor…</string>
 
-    <string name="interval_never">Asla</string>
-    <string name="interval_1h">Her saat</string>
-    <string name="interval_4h">Her 4 saatte</string>
-    <string name="interval_12h">Her 12 saatte</string>
-    <string name="interval_1d">Her gün</string>
-    <string name="interval_1w">Her hafta</string>
-    <string name="interval_2w">Her 2 haftada</string>
+    <string name="interval_never">Kendiliğinden uygulama güncellemesi yok</string>
+    <string name="interval_1h">Güncellemeleri saatlik denetle</string>
+    <string name="interval_4h">Güncellemeleri her 4 saatte denetle</string>
+    <string name="interval_12h">Güncellemeleri her 12 saatte denetle</string>
+    <string name="interval_1d">Güncellemeleri her gün denetle</string>
+    <string name="interval_1w">Güncellemeleri her hafta denetle</string>
+    <string name="interval_2w">Güncellemeleri her 2 haftada denetle</string>
 
     <string name="theme_light">Aydınlık</string>
     <string name="theme_dark">Karanlık</string>
@@ -318,7 +313,7 @@
     <string name="update_auto_download_summary">Güncellemeler kendiliğinden indirilir ve siz onları kurmak için bilgilendirilirsiniz</string>
     <string name="repo_provider">Depo: %s</string>
 
-    <string name="useTor">Tor Kullan</string>
+    <string name="useTor">Tor kullan</string>
     <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
     <string name="useTorSummary">Artırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl. Orbot gerektirir</string>
     <string name="download_pending">İndirmeye başlamak için bekleniyor…</string>
@@ -342,8 +337,7 @@
     <string name="keep_forever">Daima</string>
 
     <string name="keep_install_history">Kurulum geçmişi tut</string>
-    <string name="keep_install_history_summary">F-Droid içindeki tüm kurulumların ve kaldırmaların günlüğünü depola
-    </string>
+    <string name="keep_install_history_summary">Tüm kurulumların ve kaldırmaların bir günlüğünü özel bir depoda sakla</string>
     <string name="update_auto_install">Güncellemeleri kendiliğinden kur</string>
     <string name="warning_no_internet">Güncellenemiyor, İnternete bağlı mısınız?</string>
     <string name="update_auto_install_summary">Uygulama güncellemelerini arka planda indir ve kur</string>
@@ -395,7 +389,7 @@
     </string>
 
     <string name="preference_category__my_apps">Uygulamalarım</string>
-    <string name="preference_manage_installed_apps">Kurulu Uygulamaları Yönet</string>
+    <string name="preference_manage_installed_apps">Kurulu uygulamaları yönet</string>
 
 
     <string name="tts_category_name">Kategori %1$s</string>
@@ -496,7 +490,7 @@
     <string name="updates__app_with_known_vulnerability__ignore">Yok say</string>
 
     <string name="privacy">Gizlilik</string>
-    <string name="preventScreenshots_title">Ekran Görüntüsü Almayı Engelle</string>
+    <string name="preventScreenshots_title">Ekran görüntüsü almayı engelle</string>
     <string name="preventScreenshots_summary">Ekran görüntüsü almayı engeller ve uygulama içeriğini en son uygulamalar ekranında gizler</string>
 
     <string name="panic_app_setting_title">Panik Düğmesi Uygulaması</string>
@@ -507,7 +501,7 @@
     <string name="panic_app_dialog_message">%1$s uygulamasının yıkıcı panik düğmesi eylemlerini tetiklemesine izin vermek istediğinize emin misiniz?</string>
     <string name="allow">İzin Ver</string>
 
-    <string name="panic_settings">Panik Düğmesi Ayarları</string>
+    <string name="panic_settings">Panik düğmesi ayarları</string>
     <string name="panic_settings_summary">Acil durumda uygulanacak eylemler</string>
     <string name="panic_exit_title">Uygulamadan Çık</string>
     <string name="panic_exit_summary">Uygulama kapatılacak</string>
@@ -548,5 +542,13 @@
     <string name="swap_toast_invalid_url">Takas için geçersiz URL: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot etkin</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi Hotspot etkinleştirilemedi!</string>
+
+    <string name="over_wifi">Wi-Fi üzerinden</string>
+    <string name="over_data">Veri üzerinden</string>
+    <string name="over_network_always_summary">Uygunken her zaman bu bağlantıyı kullan</string>
+    <string name="over_network_on_demand_summary">İndire tıkladığımda yalnızca bu bağlantıyı kullan</string>
+    <string name="over_network_never_summary">Asla bu bağlantıyı kullanarak bir şeyler indirme</string>
+    <string name="antidisabledalgorithmlist">Bu uygulamanın zayıf güvenlikli imzası var</string>
+    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik zafiyeti içerir</string>
 
     </resources>

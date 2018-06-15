@@ -11,9 +11,7 @@
     <string name="notify">Mostreu les actualitzacions disponibles</string>
     <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
     <string name="system_installer">Extensió Privilegiada</string>
-    <string name="system_installer_on">Instal·la, actualitza i suprimeix paquets fent servir l\'extensió privilegiada de
-        l\'F-Droid
-    </string>
+    <string name="system_installer_on">Instal·la, actualitza i suprimeix paquets fent servir l\'extensió privilegiada</string>
     <string name="local_repo_name">Nom del vostre dipòsit local</string>
     <string name="local_repo_name_summary">Títol per difondre el vostre dipòsit local: %s</string>
     <string name="local_repo_https_on">Connexió encriptada (HTTPS://) per els dipòsits locals</string>
@@ -111,12 +109,14 @@
     </string>
     <string name="unknown">Desconegut</string>
     <string name="repo_confirm_delete_title">Voleu suprimir el dipòsit?</string>
-    <string name="repo_confirm_delete_body">Suprimir-ho implica que les aplicacions d\'aquest dipòsit ja no seran accessibles des de l\'F-Droid. Nota: No perdreu les aplicacions ja instal·lades.</string>
+    <string name="repo_confirm_delete_body">Suprimir-ho implica que les aplicacions d\'aquest dipòsit ja no seran accessibles.
+\n
+\nNota: No perdreu les aplicacions ja instal·lades.</string>
     <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.
 \n
 \nHabiliteu el dipòsit novament per instal·lar les aplicacions que conté.</string>
-    <string name="repo_added">S\'ha desat el dipòsit %1$s de l\'F-Droid.</string>
-    <string name="repo_searching_address">S\'està cercant un dipòsit de l\'F-Droid a
+    <string name="repo_added">S\'ha desat el dipòsit %1$s del paquet.</string>
+    <string name="repo_searching_address">S\'està cercant un dipòsit del paquet a 
 \n%1$s</string>
     <string name="minsdk_or_later">%s o més recent</string>
     <string name="up_to_maxsdk">Fins a %s</string>
@@ -197,13 +197,13 @@
 
     <string name="wifi_ap">Punt d\'accés</string>
 
-    <string name="interval_never">Mai</string>
-    <string name="interval_1h">Cada hora</string>
-    <string name="interval_4h">Cada 4 hores</string>
-    <string name="interval_12h">Cada 12 hores</string>
-    <string name="interval_1d">Diàriament</string>
-    <string name="interval_1w">Setmanalment</string>
-    <string name="interval_2w">Cada dues setmanes</string>
+    <string name="interval_never">No actualitzis les apps automàticament</string>
+    <string name="interval_1h">Cerca actualitzacions cada hora</string>
+    <string name="interval_4h">Cerca actualitzacions cada 4 hores</string>
+    <string name="interval_12h">Cerca actualitzacions cada 12 hores</string>
+    <string name="interval_1d">Cerca actualitzacions diàriament</string>
+    <string name="interval_1w">Cerca actualitzacions setmanalment</string>
+    <string name="interval_2w">Cerca actualitzacions cada dues setmanes</string>
 
     <string name="theme_light">Clar</string>
     <string name="theme_dark">Fosc</string>
@@ -225,7 +225,8 @@
     </string>
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
-    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.</string>
+    <string name="empty_can_update_app_list">Enhorabona!
+\nLes vostres aplicacions estan actualitzades.</string>
 
     <string name="system_install_denied_signature">La signatura de l\'extensió no és valida! Si podeu, informeu d\'aquest error!</string>
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu,
@@ -328,9 +329,7 @@
 
     <string name="keep_hour">1 hora</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
-    <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes
-        per l\'F-Droid
-    </string>
+    <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions en un emmagatzemament privat</string>
     <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
     <string name="update_auto_install_summary">Baixa i instal·la actualitzacions d\'aplicacions en rerefons</string>
     <string name="versions">Versions</string>
@@ -378,7 +377,7 @@
     </string>
 
     <string name="preference_category__my_apps">Les meves aplicacions</string>
-    <string name="preference_manage_installed_apps">Administració d\'aplicacions instal·lades</string>
+    <string name="preference_manage_installed_apps">Gestiona les aplicacions instal·lades</string>
 
 
     <string name="tts_category_name">Categoria %1$s</string>
@@ -490,7 +489,7 @@
     <string name="panic_app_dialog_message">Esteu segurs que voleu permetre que %1$s iniciï accions destructives de \"Botó del pànic\"?</string>
     <string name="allow">Permetre</string>
 
-    <string name="panic_settings">Configuració del Botó del pànic</string>
+    <string name="panic_settings">Configuració del botó del pànic</string>
     <string name="panic_settings_summary">Accions a dur a terme en cas d\'emergència</string>
     <string name="panic_exit_title">Sortir de l\'app</string>
     <string name="panic_exit_summary">L\'app es tancarà</string>
@@ -508,4 +507,37 @@
 
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Amaga %s ara</string>
+    <string name="over_wifi">Amb wifi</string>
+    <string name="over_data">Amb dades</string>
+    <string name="over_network_always_summary">Fes servir aquesta connexió si està disponible</string>
+    <string name="over_network_on_demand_summary">Fes servir aquesta connexió quan faci clic per a descarregar</string>
+    <string name="over_network_never_summary">No descarreguis res amb aquesta connexió</string>
+    <string name="repo_add_mirror">Afegeix una rèplica</string>
+    <string name="repo_exists_and_enabled">%1$s ja és configurat i activat.</string>
+    <string name="repo_exists_add_mirror">Això és una còpia de %1$s, voleu afegir-la com a rèplica?</string>
+    <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
+    <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
+
+    <string name="show_root_apps">Inclou aplicacions amb accés d\'administrador</string>
+    <string name="show_anti_feature_apps">Inclou aplicacions amb característiques indesitjades</string>
+    <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen característiques indesitjades</string>
+    <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>
+    <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tinc</string>
+
+    <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
+    <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
+
+    <string name="repo_official_mirrors">Rèpliques oficials</string>
+    <string name="repo_user_mirrors">Rèpliques mantingudes per usuaris</string>
+    <string name="use_bluetooth">Usa bluetooth</string>
+    <string name="swap_toast_hotspot_enabled">Punt d\'accés wifi actiu</string>
+    <string name="swap_toast_could_not_enable_hotspot">No ha estat possible activar el punt d\'accés wifi!</string>
+
+    <string name="warning_scaning_qr_code">Sembla que la càmera no té sistema d\'autoenfocament. Potser difícil d\'escanejar el codi.</string>
+    <string name="repo_exists_add_fingerprint">%1$s ja està configurat, això afegirà informació de la nova clau.</string>
+    <string name="repo_exists_enable">%1$s ja està configurat, confirmeu que el voleu reactivar.</string>
+    <string name="repo_delete_to_overwrite">Elimineu primer %1$s per tal d\'afegir-ho amb una clau conflictiva.</string>
+    <string name="hiding_dialog_message">Esteu segur que voleu eliminar %1$s del llançador? Tan sols escrivint \"%2$d\" a l\'app %3$s simulada podreu restaurar-ho.</string>
+    <string name="hide_on_long_search_press_title">Amagueu amb el botó de cerca</string>
+    <string name="swap_toast_invalid_url">URL incorrecta per l\'intercanvi: %1$s</string>
     </resources>

@@ -198,13 +198,13 @@
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="downloading">Descargando…</string>
 
-    <string name="interval_never">Xamáis</string>
-    <string name="interval_1h">Cada hora</string>
-    <string name="interval_4h">Cada 4 horas</string>
-    <string name="interval_12h">Cada 12 horas</string>
-    <string name="interval_1d">Cada día</string>
-    <string name="interval_1w">Semanalmente</string>
-    <string name="interval_2w">Cada dúas semanas</string>
+    <string name="interval_never">Non anovar app automáticamente</string>
+    <string name="interval_1h">Buscar anovacións cada hora</string>
+    <string name="interval_4h">Buscar anovacións cada 4 horas</string>
+    <string name="interval_12h">Buscar anovacións cada 12 horas</string>
+    <string name="interval_1d">Buscar anovacións cada día</string>
+    <string name="interval_1w">Buscar anovacións semanalmente</string>
+    <string name="interval_2w">Buscar anovacións cada dúas semanas</string>
 
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
@@ -432,9 +432,9 @@
     <string name="crash_dialog_comment_prompt">Pode engadir información adicional e comentarios aquí:</string>
 
     <plurals name="notification_summary_more">
-        <item quantity="one">máis +%1$d …</item>
-        <item quantity="other">máis +%1$d …</item>
-    </plurals>
+	<item quantity="one">máis +%1$d …</item>
+	<item quantity="other">+%1$d máis …</item>
+</plurals>
     <string name="notification_title_single_ready_to_install">Preparado para anovar</string>
     <string name="notification_title_single_ready_to_install_update">Anovación lista para instalar</string>
     <string name="notification_title_single_install_error">Fallou a instalación</string>
@@ -532,4 +532,27 @@
     <string name="repo_exists_and_enabled">%1$s xa está configurado e activado.</string>
     <string name="repo_delete_to_overwrite">Elimine primeiro %1$s para engadir isto cunha clave en conflito.</string>
     <string name="repo_exists_add_mirror">Isto é unha copia de %1$s, engadila como réplica?</string>
+    <string name="over_wifi">vía Wi-Fi</string>
+    <string name="over_data">vía rede de datos</string>
+    <string name="over_network_always_summary">Usar sempre esta conexión cando estea disponíbel</string>
+    <string name="over_network_on_demand_summary">Usar esta conexión só cando escolla descargar</string>
+    <string name="over_network_never_summary">Non descargar nada usando esta conexión</string>
+    <string name="antidisabledalgorithmlist">Este aplicativo ten unha sinatura de seguridade feble</string>
+    <string name="antiknownvulnlist">Esta aplicación contén unha vulnerabilidade de seguridade coñecida</string>
+
+    <string name="show_root_apps">Incluir aplicativos con permiso de administrador</string>
+    <string name="show_root_apps_on">Amosar aplicativos que requiren privilexios de administrador</string>
+    <string name="show_anti_feature_apps">Incluir aplicativos con anti-funcionalidades</string>
+    <string name="show_anti_feature_apps_on">Amosar aplicativos que requiren de anti-funcionalidades</string>
+    <string name="force_touch_apps">Incluir aplicativos de pantalla táctil</string>
+    <string name="force_touch_apps_on">Amosar aplicativos que requiren pantalla táctil mesmo se non hai soporte físico</string>
+
+    <string name="repo_official_mirrors">Réplicas oficiais</string>
+    <string name="repo_user_mirrors">Réplicas de usuario</string>
+    <string name="use_bluetooth">Usar Bluetooth</string>
+    <string name="swap_toast_invalid_url">URL inválida para troco: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Activado o Ponto de acceso Wi-Fi</string>
+    <string name="swap_toast_could_not_enable_hotspot">Non foi posíbel activar o Ponto de acceso Wi-Fi!</string>
+
+    <string name="warning_scaning_qr_code">A súa cámara non parece ter enfoque automático. Pode ser difícil escanear o código.</string>
     </resources>

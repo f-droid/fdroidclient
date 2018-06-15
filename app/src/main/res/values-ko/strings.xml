@@ -267,13 +267,13 @@
     <string name="perms_description_app">%1$s 제공.</string>
     <string name="downloading">다운로드 중…</string>
 
-    <string name="interval_never">없음</string>
-    <string name="interval_1h">1시간</string>
-    <string name="interval_4h">4시간마다</string>
-    <string name="interval_12h">12시간마다</string>
-    <string name="interval_1d">매일</string>
-    <string name="interval_1w">매주</string>
-    <string name="interval_2w">2주마다</string>
+    <string name="interval_never">자동 앱 업데이트 없음</string>
+    <string name="interval_1h">1시간마다 업데이트를 확인</string>
+    <string name="interval_4h">4시간마다 업데이트를 확인</string>
+    <string name="interval_12h">12시간마다 업데이트를 확인</string>
+    <string name="interval_1d">매일 업데이트를 확인</string>
+    <string name="interval_1w">매주 업데이트를 확인</string>
+    <string name="interval_2w">2주마다 업데이트를 확인</string>
 
     <string name="theme_light">밝음</string>
     <string name="theme_dark">어두움</string>
@@ -496,4 +496,12 @@
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi 핫스팟을 활성화할 수 없었습니다!</string>
 
     <string name="warning_scaning_qr_code">당신의 카메라가 오토포커스를 가진 것으로 보이지 않습니다. 코드를 스캔하는데 어려울 수도 있습니다.</string>
+    <string name="over_wifi">Wi-Fi를 통해</string>
+    <string name="over_data">데이터를 통해</string>
+    <string name="over_network_always_summary">항상 이 연결을 사용 가능할 때 사용합니다</string>
+    <string name="over_network_on_demand_summary">이 연결한 내가 다운로드를 클릭할 때 사용합니다</string>
+    <string name="over_network_never_summary">이 연결을 사용하여 아무 것도 다운로드하지 않습니다</string>
+    <string name="antidisabledalgorithmlist">이 앱은 약한 보안 서명이 있습니다</string>
+    <string name="antiknownvulnlist">이 앱은 알려진 보안 취약점을 포함합니다</string>
+
     </resources>

@@ -111,8 +111,6 @@
     <string name="perms_new_perm_prefix">Amaynut:</string>
     <string name="downloading">Azdam…</string>
     <string name="installing">Asbeddi…</string>
-    <string name="interval_1d">quotidien</string>
-    <string name="interval_1w">s dduṛt</string>
     <string name="keep_hour">1 asrag</string>
     <string name="keep_day">ass</string>
     <string name="keep_month">aggur</string>
@@ -156,7 +154,6 @@
     <string name="swap_choose_apps">Fren Asnas</string>
     <string name="swap_wifi_device_name">Isem n yibenk</string>
     <string name="swap_confirm">Sentem ambaddal</string>
-    <string name="interval_never">Warǧin</string>
     <string name="keep_week">1 n umalas</string>
     <string name="keep_forever">Yal tikelt</string>
 
@@ -179,7 +176,7 @@
     <string name="app_name">F-Droid</string>
 
     <string name="menu_uninstall">Kkes</string>
-    <string name="preference_manage_installed_apps">Isefrak Isnasen Ibedden</string>
+    <string name="preference_manage_installed_apps">Asefrak n isnasen ibedden</string>
 
 
     <string name="category_Connectivity">Tuqqniwt</string>

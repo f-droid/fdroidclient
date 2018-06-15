@@ -157,7 +157,7 @@
         apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.
     </string>
     <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi yang lama. Untuk memasang versi yang baru, versi yang lama harus dihapus terlebih dahulu. Silakan lakukan ini dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh apl tersebut)</string>
-    <string name="interval_12h">Setiap 12 jam</string>
+    <string name="interval_12h">Cek pembaruan setiap 12 jam</string>
     <string name="downloading">Mengunduh…</string>
 
     <string name="login_title">Dibutuhkan otentikasi</string>
@@ -309,12 +309,12 @@
 
     <string name="perms_new_perm_prefix">Baru:</string>
     <string name="perms_description_app">Disediakan oleh %1$s.</string>
-    <string name="interval_never">Tidak pernah</string>
-    <string name="interval_1h">Perjam</string>
-    <string name="interval_4h">Setiap 4 jam</string>
-    <string name="interval_1d">Perhari</string>
-    <string name="interval_1w">Perpekan</string>
-    <string name="interval_2w">Setiap 2 pekan</string>
+    <string name="interval_never">Tidak ada pembaruan aplikasi otomatis</string>
+    <string name="interval_1h">Cek pembaruan setiap jam</string>
+    <string name="interval_4h">Cek pembaruan setiap 4 jam</string>
+    <string name="interval_1d">Cek pembaruan setiap hari</string>
+    <string name="interval_1w">Cek pembaruan setiap minggu</string>
+    <string name="interval_2w">Cek pembaruan setiap 2 minggu</string>
 
     <string name="theme_light">Terang</string>
     <string name="theme_dark">Gelap</string>
@@ -407,7 +407,7 @@
         <item quantity="other">Unduh pembaruan untuk %1$d apl.</item>
     </plurals>
 
-    <string name="preference_manage_installed_apps">Kelola Apl Terpasang</string>
+    <string name="preference_manage_installed_apps">Kelola aplikasi terpasang</string>
 
 
     <string name="tts_category_name">Kategori %1$s</string>
@@ -499,7 +499,7 @@
     <string name="panic_app_dialog_message">Apakah Anda yakin ingin mengizinkan %1$s untuk menjalankan tindakan destruktif tombol panik?</string>
     <string name="allow">Izinkan</string>
 
-    <string name="panic_settings">Pengaturan Tombol Panik</string>
+    <string name="panic_settings">Pengaturan tombol panik</string>
     <string name="panic_settings_summary">Tindakan yang akan diambil dalam keadaan darurat</string>
     <string name="panic_exit_title">Keluar Aplikasi</string>
     <string name="panic_exit_summary">Aplikasi akan ditutup</string>
@@ -536,4 +536,17 @@
     <string name="repo_official_mirrors">Mirror resmi</string>
     <string name="repo_user_mirrors">Mirror pengguna</string>
     <string name="warning_scaning_qr_code">Kamera kamu sepertinya tidak memiliki autofokus. Mungkin akan susah untuk memindai kode.</string>
+    <string name="over_wifi">Melalui Wi-Fi</string>
+    <string name="over_data">Melalui data</string>
+    <string name="over_network_always_summary">Selalu gunakan koneksi ini ketika tersedia</string>
+    <string name="over_network_on_demand_summary">Hanya gunakan koneksi ini ketika saya klik untuk mengunduh</string>
+    <string name="over_network_never_summary">Tidak pernah mengunduh apapun dengan koneksi ini</string>
+    <string name="antidisabledalgorithmlist">Aplikasi ini mempunyai tanda tangan keamanan yang lemah</string>
+    <string name="antiknownvulnlist">Aplikasi ini berisi kerentanan keamanan yang dikenal</string>
+
+    <string name="use_bluetooth">Gunakan Bluetooth</string>
+    <string name="swap_toast_invalid_url">URL tidak valid untuk swapping: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi nyala</string>
+    <string name="swap_toast_could_not_enable_hotspot">Tidak dapat menyalakan Hotspot Wi-Fi!</string>
+
     </resources>

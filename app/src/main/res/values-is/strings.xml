@@ -238,13 +238,13 @@
     <string name="installing">Set inn…</string>
     <string name="uninstalling">Tek út uppsetningu…</string>
 
-    <string name="interval_never">Aldrei</string>
-    <string name="interval_1h">Á klukkustundar fresti</string>
-    <string name="interval_4h">Á 4 klukkustunda fresti</string>
-    <string name="interval_12h">Á 12 klukkustunda fresti</string>
-    <string name="interval_1d">Daglega</string>
-    <string name="interval_1w">Vikulega</string>
-    <string name="interval_2w">Á 2. vikna fresti</string>
+    <string name="interval_never">Engar sjálfvirkar uppfærslur forrita</string>
+    <string name="interval_1h">Athuga með uppfærslur á klukkustundar fresti</string>
+    <string name="interval_4h">Athuga með uppfærslur á 4 klukkustunda fresti</string>
+    <string name="interval_12h">Athuga með uppfærslur á 12 klukkustunda fresti</string>
+    <string name="interval_1d">Athuga með uppfærslur daglega</string>
+    <string name="interval_1w">Athuga með uppfærslur vikulega</string>
+    <string name="interval_2w">Athuga með uppfærslur á tveggja vikna fresti</string>
 
     <string name="keep_hour">1 klukkustund</string>
     <string name="keep_day">1 dagur</string>
@@ -583,5 +583,13 @@
     <string name="swap_toast_invalid_url">Ógild slóð fyrir býtti: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi aðgangspunktur virkur</string>
     <string name="swap_toast_could_not_enable_hotspot">Gat ekki virkjað Wi-Fi aðgangspunkt!</string>
+
+    <string name="over_wifi">Um Wi-Fi-net</string>
+    <string name="over_data">Um gagnatengingu</string>
+    <string name="over_network_always_summary">Alltaf nota þessa tengingu þegar hún er tiltæk</string>
+    <string name="over_network_on_demand_summary">Einungis nota þessa tengingu þegar ég smelli á niðurhal</string>
+    <string name="over_network_never_summary">Aldrei sækja neitt með þessari tengingu</string>
+    <string name="antidisabledalgorithmlist">Þetta forrit er með veika öryggisundirritun</string>
+    <string name="antiknownvulnlist">Þetta forrit inniheldur þekktan öryggisveikleika</string>
 
     </resources>

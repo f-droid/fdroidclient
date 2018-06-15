@@ -109,15 +109,15 @@
     <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru den på for å se programmene den tilbyr.</string>
     <string name="unknown">Ukjent</string>
     <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
-    <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være
-        tilgjengelige i F-droid.
-        \n\nMerk: Alle tidligere installerte programmer vil fremdeles være å finne på din enhet.
-    </string>
+    <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være tilgjengelige. 
+\n
+\nMerk: Alle tidligere installerte programmer vil fremdeles være å finne på din enhet.</string>
     <string name="repo_disabled_notification">Avskrudde \"%1$s\".
 \n
 \nDu må skru på denne pakkebrønnen igjen for å installere programmer fra den.</string>
-    <string name="repo_added">Lagret F-Droid-pakkebrønnen %1$s.</string>
-    <string name="repo_searching_address">Ser etter F-Droid-pakkebrønn på\n%1$s</string>
+    <string name="repo_added">Lagret pakkebrønnen %1$s.</string>
+    <string name="repo_searching_address">Ser etter pakkebrønn på
+\n%1$s</string>
     <string name="minsdk_or_later">%s eller senere</string>
     <string name="up_to_maxsdk">Opptil %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
@@ -222,7 +222,7 @@
     <string name="perms_description_app">Tilbudt av %1$s.</string>
     <string name="downloading">Laster ned…</string>
 
-    <string name="interval_never">Aldri</string>
+    <string name="interval_never">Ingen automatiske programoppdateringer</string>
     <string name="interval_1h">Timevis</string>
     <string name="interval_4h">Hver fjerde time</string>
     <string name="interval_12h">Hver tolvte time</string>
@@ -349,8 +349,7 @@
     </string>
 
     <string name="keep_install_history">Behold installasjonshistorikk</string>
-    <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer gjort i F-droid
-    </string>
+    <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer i et privat lager</string>
     <string name="update_auto_install">Installer oppdateringer automatisk</string>
     <string name="update_auto_install_summary">Last ned og installer programoppdateringer i bakgrunnen</string>
     <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
@@ -546,5 +545,17 @@
     <string name="swap_toast_invalid_url">Ugyldig nettadresse for utveksling: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Lokalt Wi-Fi -nettverk påskrudd</string>
     <string name="swap_toast_could_not_enable_hotspot">Kunne ikke skru på lokalt Wi-Fi -nettverk!</string>
+
+    <string name="over_wifi">Over Wi-Fi</string>
+    <string name="over_data">Over data</string>
+    <string name="over_network_always_summary">Alltid bruk denne tilkoblingen når tilgjengelig</string>
+    <string name="over_network_on_demand_summary">Kun bruk denne tilkoblingen når jeg klikker for å laste ned</string>
+    <string name="over_network_never_summary">Aldri last ned noe på denne tilkoblingen</string>
+    <string name="repo_exists_add_fingerprint">%1$s er allerede satt opp, dette legger til ny nøkkelinformasjon.</string>
+    <string name="repo_exists_enable">%1$s er allerede satt opp, bekreft at du ønsker å slå det på igjen.</string>
+    <string name="repo_exists_and_enabled">%1$s er allerede satt opp og påslått.</string>
+    <string name="repo_delete_to_overwrite">Slett %1$s først for å legge til dette uten en konflikterende nøkkel.</string>
+    <string name="antidisabledalgorithmlist">Dette programmet har en svak sikkerhetssignatur</string>
+    <string name="antiknownvulnlist">Dette programmet inneholder en kjent sikkerhetsfeil</string>
 
     </resources>
