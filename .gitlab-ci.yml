@@ -12,9 +12,10 @@ stages:
 before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
   - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
-  - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}"
+  - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
 
 .test-template: &test-template
+  stage: test
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
@@ -30,7 +31,6 @@ before_script:
 # Run the most important first. Then we can decide whether to ignore
 # the style tests if the rest of the more meaningful tests pass.
 test:
-  stage: test
   <<: *test-template
   script:
     - export EXITVALUE=0
@@ -44,7 +44,7 @@ test:
     - ./tools/check-format-strings.py
     - ./tools/remove-unused-and-blank-translations.py
     - echo "These are unused or blank translations that should be removed:"
-    - git --no-pager diff --ignore-all-space --name-only --exit-code || export EXITVALUE=1
+    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || export EXITVALUE=1
     - exit $EXITVALUE
 
 errorprone:
@@ -54,34 +54,34 @@ errorprone:
     - ./gradlew assembleDebug
   allow_failure: true
 
-connected14:
-  stage: test
-  <<: *test-template
-  variables:
-    AVD_SDK: "14"
+.connected-template: &connected-template
   script:
     - ./gradlew assembleDebug
-    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-$AVD_SDK"
-    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-${AVD_SDK};default;armeabi-v7a"
-    - echo no | android --verbose create avd --name fcl-test-$AVD_SDK --target android-$AVD_SDK
-    - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
-    - ./tools/wait-for-emulator
+    - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null
+    - if ! avdmanager list avd | grep "Name. avd$AVD_SDK$"; then
+          rm -rf ~/.android/avd  $ANDROID_HOME/system-images;
+          echo y | sdkmanager "$AVD_PACKAGE" > /dev/null;
+          echo no | avdmanager create avd --name avd$AVD_SDK --tag "$AVD_TAG" --package "$AVD_PACKAGE";
+          avdmanager list avd;
+      fi
+    - emulator64-arm -avd avd$AVD_SDK -no-audio -no-window -no-snapstorage &
+    - wait-for-emulator
     - adb shell input keyevent 82 &
-    - ./gradlew connectedCheck || adb -e logcat -d '*:E' > logcat.txt
+    - ./gradlew connectedCheck || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
 
 connected24:
-  stage: test
+  only:
+    - fdroid/fdroidclient@master
+  <<: *test-template
   variables:
     AVD_SDK: "24"
+    AVD_TAG: "default"
+    AVD_PACKAGE: "system-images;android-${AVD_SDK};${AVD_TAG};armeabi-v7a"
+  <<: *connected-template
+
+connected25:
   <<: *test-template
-  script:
-    - ./gradlew assembleDebug
-    - android list avd
-    - emulator64-arm -avd fcl-test-$AVD_SDK -no-audio -no-window &
-    - ./tools/wait-for-emulator
-    - adb shell input keyevent 82 &
-    - adb devices
-    - ./gradlew connectedCheck || adb -e logcat -d '*:E' > logcat.txt
+  <<: *connected-template
 
 deploy_nightly:
   stage: deploy
