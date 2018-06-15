@@ -1,3 +1,9 @@
+### 1.3-alpha1 (2018-06-15)
+
+* improved Settings for controlling data usage
+
+* support push install/uninstall requests in index-v1
+
 ### 1.3-alpha0 (2018-04-25)
 
 * more battery conscious background operation on Android 5.0 and newer
