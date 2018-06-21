@@ -271,6 +271,9 @@ public class ManageReposActivity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
+                            if (isImportingRepo) {
+                                ManageReposActivity.this.finish();
+                            }
                         }
                     });
 
