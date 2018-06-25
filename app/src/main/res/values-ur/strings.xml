@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">ایف-ڈیرائڈ</string>
     <string name="SignatureMismatch">نیا ورژن پرانے ورژن کیی کے ساتھ دستخط کیا گیا ہے۔ نیا ورژن نصب کرنے کے لیے، پرانے ورژن کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم کا اندرونی ڈیٹا جو اطلاقیہ نے محفوظ کیا ہو، مٹا دیا جائے گا)</string>
     <string name="installIncompatible">ایپ آپ کے آلے سے مطابقت نہیں رکھتی ، پھر بھی انسٹال کریں؟</string>
@@ -103,8 +103,8 @@
     <string name="crash_dialog_text">ایپ کو روکنے پر مجبور کرنے میں ایک غیر متوقع خرابی پیش آگئی۔ کیا آپ مسئلے کو حل کرنے میں مدد کے لیے تفصیلات ای میل کرنا چاہیں گے؟</string>
     <string name="crash_dialog_title">ف- ڈیوڈ تباہ ہو گیا</string>
     <string name="swap_send_fdroid">F-Droid بھیجیں۔</string>
-    <string tools:ignore="UnusedResources" name="category_System">نظام</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">کھیل اور صحت</string>
+    <string name="category_System">نظام</string>
+    <string name="category_Sports_Health">کھیل اور صحت</string>
     <string name="not_on_same_wifi">آپ کی ڈیوائس اسی وائی فائی پر نہیں ہے جیسا کہ مقامی ریپو آپ نے ابھی شامل کیا ہے! اس نیٹ ورک میں شامل ہونے کی کوشش کریں: %s
 \nاردو</string>
     <string name="repo_last_update">آخری اپ ڈیٹ۔</string>
@@ -319,7 +319,7 @@
         <item quantity="one">%d دیکھیں</item>
         <item quantity="other">تمام%d دیکھیں</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Theming">تھیمنگ</string>
+    <string name="category_Theming">تھیمنگ</string>
     <string name="wifi_ap">ہاٹ سپاٹ</string>
     <string name="requires_features">درکار ہے:%1$s</string>
     <string name="share_repository">ذخیرہ شیئر کریں۔</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="system_installer_on">Cleachd Leudachan pribhleidean F-Droid airson pacaidean a stàladh, ùrachadh ’s a thoirt air falbh</string>
     <string name="system_installer">Leudachan pribhleidean F-Droid</string>
     <string name="install_history_and_metrics">Eachdraidh nan stàlaidhean ’s a’ mheatrachd</string>
@@ -385,20 +385,20 @@
     <string name="empty_installed_app_list">Cha deach aplacaid a stàladh.
 \n
 \nTha aplacaidean air an uidheam agad ach chan eil iad ri fhaighinn o F-Droid. ’S dòcha gum bu chòir dhut na h-ionadan-tasgaidh agad ùrachadh no nach eil na h-aplacaidean agad ri fhaighinn sna h-ionadan-tasgaidh idir.</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Sgrìobhadh</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Àm</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Ùrlaran</string>
-    <string tools:ignore="UnusedResources" name="category_System">An siostam</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Tèarainteachd</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Leughadh</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Seòladaireachd</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Ioma-mheadhanan</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Airgead</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Eadar-lìon</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grafaigeachd</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Geamannan</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Leasachadh</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Comas-ceangail</string>
+    <string name="category_Writing">Sgrìobhadh</string>
+    <string name="category_Time">Àm</string>
+    <string name="category_Theming">Ùrlaran</string>
+    <string name="category_System">An siostam</string>
+    <string name="category_Security">Tèarainteachd</string>
+    <string name="category_Reading">Leughadh</string>
+    <string name="category_Navigation">Seòladaireachd</string>
+    <string name="category_Multimedia">Ioma-mheadhanan</string>
+    <string name="category_Money">Airgead</string>
+    <string name="category_Internet">Eadar-lìon</string>
+    <string name="category_Graphics">Grafaigeachd</string>
+    <string name="category_Games">Geamannan</string>
+    <string name="category_Development">Leasachadh</string>
+    <string name="category_Connectivity">Comas-ceangail</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="wifi">WiFi</string>
     <string name="pref_language_default">Bun-roghainn an t-siostaim</string>
@@ -478,9 +478,9 @@
         <item quantity="few">Luchdaich a-nuas ùrachaidhean air %1$d aplacaidean.</item>
         <item quantity="other">Luchdaich a-nuas ùrachaidhean air %1$d aplacaid.</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Spòrs ⁊ slàinte</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Saidheans ⁊ foghlam</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Fòn ⁊ SMS</string>
+    <string name="category_Sports_Health">Spòrs ⁊ slàinte</string>
+    <string name="category_Science_Education">Saidheans ⁊ foghlam</string>
+    <string name="category_Phone_SMS">Fòn ⁊ SMS</string>
     <string name="app_list__dismiss_installing_app">Chaidh sgur dhen stàladh</string>
     <string name="undo">Neo-dhèan</string>
     <string name="warning_scaning_qr_code">Tha coltas nach eil fòcas fèin-obrachail aig a’ chamara agad. Dh’fhaoidte gum bi e doirbh an còd a sganadh.</string>

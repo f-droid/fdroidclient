@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="ok">Sige</string>
     <string name="yes">Oo</string>
     <string name="back">Balik</string>
@@ -138,24 +138,24 @@
     <string name="unverified">Di-beripikado</string>
     <string name="pref_language">Wika</string>
     <string name="pref_language_default">Ipagpaubaya</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Konektibidad</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Pagde-develop</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Laro</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Nabigasyon</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Pagbabasa</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Tawag &amp; Text</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Agham &amp; Edukasyon</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Seguridad</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Oras</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Pagsusulat</string>
+    <string name="category_Connectivity">Konektibidad</string>
+    <string name="category_Development">Pagde-develop</string>
+    <string name="category_Games">Laro</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Navigation">Nabigasyon</string>
+    <string name="category_Reading">Pagbabasa</string>
+    <string name="category_Phone_SMS">Tawag &amp; Text</string>
+    <string name="category_Science_Education">Agham &amp; Edukasyon</string>
+    <string name="category_Security">Seguridad</string>
+    <string name="category_Time">Oras</string>
+    <string name="category_Writing">Pagsusulat</string>
     <string name="not_on_same_wifi">Wala ka sa Wi-Fi ng lokal na repo na kakadagdag mo lang! Subukan mong sumali sa network na ito: %s</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Palakasan &amp; Kalusugan</string>
-    <string tools:ignore="UnusedResources" name="category_System">Sistema</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grapiks</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Pananalapi</string>
+    <string name="category_Sports_Health">Palakasan &amp; Kalusugan</string>
+    <string name="category_System">Sistema</string>
+    <string name="category_Graphics">Grapiks</string>
+    <string name="category_Money">Pananalapi</string>
     <string name="swap_dont_show_again">Wag na ito ipakita</string>
     <string name="notification_action_update">I-update</string>
     <string name="notification_action_cancel">Ikansela</string>
@@ -331,7 +331,7 @@
     <string name="share_repository">Ibahagi ang Repositoryo</string>
     <string name="requires_features">Kailangan: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Pagtetema</string>
+    <string name="category_Theming">Pagtetema</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Tingnan %d</item>
         <item quantity="other">Tingnan lahat %d</item>
