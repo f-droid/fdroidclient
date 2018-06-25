@@ -345,8 +345,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 } else {
                     startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
                 }
+                finish();
             } else if (parser.getErrorMessage() != null) {
                 Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
+                finish();
             }
         }
     }

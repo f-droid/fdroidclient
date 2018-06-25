@@ -271,6 +271,9 @@ public class ManageReposActivity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
+                            if (isImportingRepo) {
+                                ManageReposActivity.this.finish();
+                            }
                         }
                     });
 
@@ -785,7 +788,7 @@ public class ManageReposActivity extends AppCompatActivity
                         repo.userMirrors = new String[]{url};
                     } else {
                         int last = repo.userMirrors.length;
-                        repo.userMirrors = Arrays.copyOf(repo.userMirrors, last);
+                        repo.userMirrors = Arrays.copyOf(repo.userMirrors, last + 1);
                         repo.userMirrors[last] = url;
                     }
                     values.put(RepoTable.Cols.USER_MIRRORS, Utils.serializeCommaSeparatedString(repo.userMirrors));
