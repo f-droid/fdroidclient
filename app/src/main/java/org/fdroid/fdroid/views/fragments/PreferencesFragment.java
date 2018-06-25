@@ -37,7 +37,9 @@ import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.SeekBarPreference;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.WindowManager;
 import info.guardianproject.netcipher.NetCipher;
@@ -91,6 +93,7 @@ public class PreferencesFragment extends PreferenceFragment
 
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
 
+    private PreferenceGroup otherPrefGroup;
     private LiveSeekBarPreference overWifiSeekBar;
     private LiveSeekBarPreference overDataSeekBar;
     private LiveSeekBarPreference updateIntervalSeekBar;
@@ -109,6 +112,8 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.get().migrateOldPreferences();
 
         addPreferencesFromResource(R.xml.preferences);
+        otherPrefGroup = (PreferenceGroup) findPreference("pref_category_other");
+
         useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
@@ -284,6 +289,15 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_EXPERT:
                 checkSummary(key, R.string.expert_on);
+                boolean isExpertMode = Preferences.get().expertMode();
+                for (int i = 0; i < otherPrefGroup.getPreferenceCount(); i++) {
+                    Preference pref = otherPrefGroup.getPreference(i);
+                    if (TextUtils.equals(Preferences.PREF_EXPERT, pref.getDependency())) {
+                        pref.setVisible(isExpertMode);
+                    }
+                    RecyclerView recyclerView = getListView();
+                    recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount() - 1);
+                }
                 break;
 
             case Preferences.PREF_PRIVILEGED_INSTALLER:
@@ -355,9 +369,8 @@ public class PreferencesFragment extends PreferenceFragment
         // is no benefit showing it to them (it will only be disabled and we can't offer any
         // way to easily install from here.
         if (Build.VERSION.SDK_INT > 19 && !installed) {
-            PreferenceCategory other = (PreferenceCategory) findPreference("pref_category_other");
             if (pref != null) {
-                other.removePreference(pref);
+                otherPrefGroup.removePreference(pref);
             }
         } else {
             pref.setEnabled(installed);
@@ -383,8 +396,7 @@ public class PreferencesFragment extends PreferenceFragment
     private void initUpdatePrivilegedExtensionPreference() {
         if (Build.VERSION.SDK_INT > 19) {
             // this will never work on newer Android versions, so hide it
-            PreferenceCategory other = (PreferenceCategory) findPreference("pref_category_other");
-            other.removePreference(updatePrivilegedExtensionPref);
+            otherPrefGroup.removePreference(updatePrivilegedExtensionPref);
             return;
         }
         updatePrivilegedExtensionPref.setPersistent(false);

@@ -145,6 +145,12 @@
                 android:defaultValue="false"
                 android:dependency="expert"/>
         <CheckBoxPreference
+                android:key="hideAllNotifications"
+                android:title="@string/hide_all_notifications"
+                android:summary="@string/hide_all_notifications_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
                 android:key="forceOldIndex"
                 android:title="@string/force_old_index"
                 android:summary="@string/force_old_index_summary"

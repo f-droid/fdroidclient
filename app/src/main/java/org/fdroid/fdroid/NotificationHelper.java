@@ -162,7 +162,7 @@ class NotificationHelper {
             return;
         }
 
-        if (!notificationManager.areNotificationsEnabled()) {
+        if (!notificationManager.areNotificationsEnabled() || Preferences.get().hideAllNotifications()) {
             return;
         }
 
@@ -193,7 +193,7 @@ class NotificationHelper {
     }
 
     private void createSummaryNotifications() {
-        if (!notificationManager.areNotificationsEnabled()) {
+        if (!notificationManager.areNotificationsEnabled() || Preferences.get().hideAllNotifications()) {
             return;
         }
 

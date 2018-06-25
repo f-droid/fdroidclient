@@ -319,14 +319,14 @@ public class UpdateService extends JobIntentService {
                     } else {
                         notificationBuilder.setProgress(100, 0, true);
                     }
-                    notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+                    setNotification();
                     break;
                 case STATUS_ERROR_GLOBAL:
                     text = context.getString(R.string.global_error_updating_repos, message);
                     notificationBuilder.setContentText(text)
                             .setCategory(NotificationCompat.CATEGORY_ERROR)
                             .setSmallIcon(android.R.drawable.ic_dialog_alert);
-                    notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+                    setNotification();
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
                     break;
                 case STATUS_ERROR_LOCAL:
@@ -344,7 +344,7 @@ public class UpdateService extends JobIntentService {
                     notificationBuilder.setContentText(text)
                             .setCategory(NotificationCompat.CATEGORY_ERROR)
                             .setSmallIcon(android.R.drawable.ic_dialog_info);
-                    notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+                    setNotification();
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
                     break;
                 case STATUS_COMPLETE_WITH_CHANGES:
@@ -353,11 +353,17 @@ public class UpdateService extends JobIntentService {
                     text = context.getString(R.string.repos_unchanged);
                     notificationBuilder.setContentText(text)
                             .setCategory(NotificationCompat.CATEGORY_SERVICE);
-                    notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+                    setNotification();
                     break;
             }
         }
     };
+
+    private void setNotification() {
+        if (Preferences.get().isUpdateNotificationEnabled()) {
+            notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+        }
+    }
 
     /**
      * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
@@ -404,7 +410,7 @@ public class UpdateService extends JobIntentService {
             }
 
             updating = true;
-            notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+            setNotification();
             LocalBroadcastManager.getInstance(this).registerReceiver(updateStatusReceiver,
                     new IntentFilter(LOCAL_ACTION_STATUS));
 
