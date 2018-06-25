@@ -31,16 +31,24 @@ import android.os.PatternMatcher;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLKeyException;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLProtocolException;
 import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.net.HttpRetryException;
+import java.net.NoRouteToHostException;
 import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 /**
  * DownloaderService is a service that handles asynchronous download requests
@@ -215,7 +223,10 @@ public class DownloaderService extends Service {
             }
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, originalUrlString);
-        } catch (ConnectException | SocketTimeoutException e) {
+        } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
+                | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
+                | UnknownHostException e) {
+            Log.e(TAG, e.getLocalizedMessage());
             sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, originalUrlString);
         } catch (IOException e) {
             e.printStackTrace();
