@@ -12,7 +12,7 @@
     <string name="notify">사용 가능한 업데이트 보이기</string>
     <string name="notify_on">업데이트가 사용 가능할 때 알림을 보여줍니다</string>
     <string name="system_installer">특별 권한 확장 기능</string>
-    <string name="system_installer_on">패키지를 설치, 업데이트, 제거를 위해 F-Droid 특별 권한 확장 기능을 사용합니다</string>
+    <string name="system_installer_on">패키지를 설치, 업데이트, 제거를 위해 특별 권한 확장 기능을 사용합니다</string>
     <string name="local_repo_name">로컬 저장소의 이름</string>
     <string name="local_repo_name_summary">로컬 저장소의 홍보 제목: %s</string>
     <string name="local_repo_https_on">로컬 저장소에 암호화된 HTTPS:// 연결을 사용</string>
@@ -109,14 +109,14 @@
     <string name="repo_not_yet_updated">이 저장소는 아직 사용되지 않았습니다. 저장소가 제공하는 앱을 보려면 이를 활성화해야 합니다.</string>
     <string name="unknown">알 수 없음</string>
     <string name="repo_confirm_delete_title">저장소를 삭제하시겠습니까?</string>
-    <string name="repo_confirm_delete_body">저장소를 삭제하는 것은 저장소의 앱을 F-Droid에서 더 이상 구할 수 없다는 것을 뜻합니다. 
-\n
+    <string name="repo_confirm_delete_body">저장소를 삭제하는 것은 저장소로부터 앱을 더 이상 구할 수 없다는 것을 뜻합니다. 
+\n 
 \n참고: 이전에 설치된 모든 앱은 당신의 장치에 남아있게 됩니다.</string>
     <string name="repo_disabled_notification">\"%1$s\"을(를) 비활성화했습니다. 
 \n
 \n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.</string>
-    <string name="repo_added">F-Droid 저장소 %1$s 저장되었습니다.</string>
-    <string name="repo_searching_address">%1$s에서 F-Droid 저장소 찾는 중</string>
+    <string name="repo_added">패키지 저장소 %1$s 저장되었습니다.</string>
+    <string name="repo_searching_address">%1$s에서 패키지 저장소를 찾는 중</string>
     <string name="minsdk_or_later">%s 또는 나중에</string>
     <string name="up_to_maxsdk">최대 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 최대 %2$s</string>
@@ -328,7 +328,7 @@
     <string name="notification_title_summary_install_error">설치에 실패되었습니다</string>
     <string name="by_author_format">%s 제작</string>
     <string name="keep_install_history">설치 내역 유지</string>
-    <string name="keep_install_history_summary">F-Droid 안에 모든 설치 및 제거의 기록을 보관합니다</string>
+    <string name="keep_install_history_summary">개인 저장소의 모든 설치 및 제거의 기록을 보관합니다</string>
     <string name="force_old_index">이전 색인 형식을 강제</string>
     <string name="force_old_index_summary">버그나 호환성 이슈가 있는 경우, XML 앱 색인을 사용합니다</string>
     <string name="update_auto_install">자동으로 업데이트 설치</string>

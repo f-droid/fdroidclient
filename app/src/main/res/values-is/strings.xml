@@ -146,10 +146,8 @@
     <string name="repo_name">Heiti</string>
     <string name="unknown">Óþekkt</string>
     <string name="repo_confirm_delete_title">Eyða hugbúnaðarsafni?</string>
-    <string name="repo_added">Vistaði F-Droid hugbúnaðarsafnið %1$s.</string>
-    <string name="repo_searching_address">Leita að F-Droid hugbúnaðarsafni á
-        %1$s
-    </string>
+    <string name="repo_added">Vistaði  %1$s hugbúnaðarsafnið.</string>
+    <string name="repo_searching_address">Leita að hugbúnaðarsafni á %1$s</string>
     <string name="minsdk_or_later">%s eða nýrra</string>
     <string name="up_to_maxsdk">Upp að %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s allt að %2$s</string>
@@ -390,9 +388,7 @@
         um atvikið til að hjálpa við að laga þetta ?
     </string>
     <string name="keep_install_history">Halda yfirliti yfir uppsetningar</string>
-    <string name="keep_install_history_summary">Geyma annál yfir allar uppsetningar og fjarlægingar forrita innan
-        F-Droid
-    </string>
+    <string name="keep_install_history_summary">Geyma upplýsingar yfir allar uppsetningar og fjarlægingar í einkaannál</string>
     <string name="warning_no_internet">Get ekki uppfært, ertu tengdur við internetið?</string>
     <string name="versions">Útgáfur</string>
     <string name="app_details_donate_prompt_unknown_author">Kauptu einn kaffibolla handa forriturum %1$s!</string>

@@ -15,9 +15,7 @@
     <string name="notify">Mostra aggiornamenti disponibili</string>
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
     <string name="system_installer">Estensione priviliegiata</string>
-    <string name="system_installer_on">Usa l\'estensione privilegiata di F-Droid per installare, aggiornare e rimuovere
-        i pacchetti
-    </string>
+    <string name="system_installer_on">Usa l\'estensione privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
     <string name="local_repo_name">Nome del tuo repo locale</string>
     <string name="local_repo_name_summary">Il titolo visualizzato del tuo repo: %s</string>
     <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repo locali</string>
@@ -120,12 +118,9 @@
     </string>
     <string name="unknown">Sconosciuto</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
-    <string name="repo_confirm_delete_body">Eliminare un repository implica
-        che le app contenute non saranno più disponibili su F-Droid.
-
-        Nota: Tutte
-        le applicazioni installate precedentemente rimarranno sul dispositivo.
-    </string>
+    <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili.
+\n
+\nNota: tutte le app installate precedentemente rimarranno sul dispositivo.</string>
     <string name="repo_disabled_notification">%1$s è disabilitato.
 
         È necessario
@@ -254,10 +249,9 @@
     <string name="status_inserting_apps">Salvataggio dettagli applicazione</string>
     <string name="repo_details">Repository</string>
     <string name="repo_url">Indirizzo</string>
-    <string name="repo_added">Salvato il repository F-Droid %1$s.</string>
-    <string name="repo_searching_address">Ricerca del repository F-Droid su
-        %1$s
-    </string>
+    <string name="repo_added">Salvato il repository del pacchetto %1$s.</string>
+    <string name="repo_searching_address">Ricerca del repository del pacchetto su
+\n%1$s</string>
     <string name="pref_language">Lingua</string>
     <string name="pref_language_default">Predefinita di sistema</string>
 
@@ -367,9 +361,7 @@
     <string name="update_auto_install_summary">Scarica e installa automaticamente gli aggiornamenti in background
     </string>
     <string name="keep_install_history">Mantieni cronologia installazione</string>
-    <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni all\'interno di
-        F-Droid
-    </string>
+    <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni in un archivio privato</string>
     <string name="versions">Versioni</string>
     <string name="warning_no_internet">Impossibile aggiornare, sei connesso ad Internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>

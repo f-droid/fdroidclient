@@ -14,9 +14,7 @@
     <string name="notify">Hiện các bản cập nhật có sẵn</string>
     <string name="notify_on">Hiện thông báo khi có bản cập nhật</string>
     <string name="system_installer">Phần mở rộng được cấp quyền</string>
-    <string name="system_installer_on">Dùng phần mở rộng được cấp quyền của F-Droid để cài đặt, cập nhật và gỡ bỏ ứng
-        dụng
-    </string>
+    <string name="system_installer_on">Dùng phần mở rộng được cấp quyền để cài đặt, cập nhật và gỡ bỏ ứng dụng</string>
     <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>
     <string name="local_repo_https_on">Dùng kết nối HTTPS:// mã hoá cho kho nội bộ</string>
     <string name="app_details">Thông tin ứng dụng</string>
@@ -106,14 +104,14 @@
         các ứng dụng trong kho.
     </string>
     <string name="repo_confirm_delete_title">Xoá kho?</string>
-    <string name="repo_confirm_delete_body">Nếu xoá kho, ứng dụng trong kho sẽ không xuất hiện trong F-Droid.
-        \n\nChú ý: Ứng dụng đã cài trước đó sẽ vẫn còn trên thiết bị của bạn.
-    </string>
+    <string name="repo_confirm_delete_body">Nếu xoá kho, ứng dụng trong kho sẽ không xuất hiện nữa.
+\n
+\nChú ý: Ứng dụng đã cài trước đó sẽ vẫn còn trên thiết bị của bạn.</string>
     <string name="repo_disabled_notification">Đã tắt %1$s.
         \n\nBạn sẽ cần phải kích hoạt lại để cài ứng dụng từ kho này.
     </string>
-    <string name="repo_added">Đã lưu kho F-Droid %1$s.</string>
-    <string name="repo_searching_address">Đang tìm kho F-Droid tại địa chỉ %1$s</string>
+    <string name="repo_added">Đã lưu kho ứng dụng %1$s.</string>
+    <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ %1$s</string>
     <string name="minsdk_or_later">%s hoặc mới hơn</string>
     <string name="up_to_maxsdk">Đến %s</string>
     <string name="minsdk_up_to_maxsdk">Từ %1$s đến %2$s</string>
@@ -264,13 +262,13 @@
     <string name="perms_description_app">Được cung cấp bởi %1$s.</string>
     <string name="downloading">Đang tải về…</string>
 
-    <string name="interval_never">Không bao giờ</string>
-    <string name="interval_1h">Hàng giờ</string>
-    <string name="interval_4h">Mỗi 4 giờ</string>
-    <string name="interval_12h">Mỗi 12 giờ</string>
-    <string name="interval_1d">Hàng ngày</string>
-    <string name="interval_1w">Hàng tuần</string>
-    <string name="interval_2w">Mỗi 2 tuần</string>
+    <string name="interval_never">Không tự động cập nhật</string>
+    <string name="interval_1h">Kiểm tra cập nhật hàng giờ</string>
+    <string name="interval_4h">Kiểm tra cập nhật mỗi 4 giờ</string>
+    <string name="interval_12h">Kiểm tra cập nhật mỗi 12 giờ</string>
+    <string name="interval_1d">Kiểm tra cập nhật hàng ngày</string>
+    <string name="interval_1w">Kiểm tra cập nhật hàng tuần</string>
+    <string name="interval_2w">Kiểm tra cập nhật mỗi 2 tuần</string>
 
     <string name="theme_light">Sáng</string>
     <string name="theme_dark">Tối</string>
@@ -312,7 +310,7 @@
 
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>
-    <string name="preference_manage_installed_apps">Quản lý các ứng dụng đã cài đặt</string>
+    <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
 
 
     <string name="notification_action_update">Cập nhật</string>
@@ -329,7 +327,7 @@
     <string name="notification_title_summary_install_error">Cài đặt thất bại</string>
     <string name="by_author_format">của %s</string>
     <string name="keep_install_history">Lưu lịch sử cài đặt</string>
-    <string name="keep_install_history_summary">Lưu lại lịch sử cài đặt và gỡ bỏ ứng dụng trong F-Droid</string>
+    <string name="keep_install_history_summary">Lưu lại lịch sử cài đặt và gỡ bỏ ứng dụng trong bộ nhớ riêng</string>
     <string name="force_old_index">Bắt buộc dùng định dạng chỉ mục cũ</string>
     <string name="force_old_index_summary">Khi xảy ra lỗi hoặc vấn đề về tính tương thích, sử dụng danh mục ứng dụng bằng định dạng XML</string>
     <string name="update_auto_download">Tự động tải các bản cập nhật</string>
@@ -485,4 +483,41 @@
     <plurals name="details_last_update_years">
         <item quantity="other">Được cập nhật %1$d năm trước</item>
     </plurals>
-</resources>
+<string name="over_wifi">Bằng Wi-Fi</string>
+    <string name="over_data">Bằng dữ liệu di động</string>
+    <string name="over_network_always_summary">Luôn dùng kết nối này nếu có thể</string>
+    <string name="over_network_on_demand_summary">Chỉ sử dụng kết nối này khi nhấn nút tải xuống</string>
+    <string name="over_network_never_summary">Không bao giờ tải xuống bằng kết nối này</string>
+    <string name="sort_search">Sắp xếp kết quả tìm kiếm</string>
+
+    <string name="menu_liberapay">Liberapay</string>
+
+    <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
+    <string name="antiknownvulnlist">Ứng dụng này có lỗ hổng bảo mật đã bị phát hiện</string>
+
+    <string name="show_root_apps">Hiện ứng dụng root</string>
+    <string name="show_root_apps_on">Hiện các ứng dụng cần quyền root</string>
+    <string name="show_anti_feature_apps">Hiện ứng dụng có tính năng không mong muốn</string>
+    <string name="show_anti_feature_apps_on">Hiện các ứng dụng có một số tính năng không mong muốn</string>
+    <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>
+    <string name="force_touch_apps_on">Hiển thị các ứng dụng cần màn hình cảm ứng bất kể thiết bị của bạn có hỗ trợ hay không</string>
+
+    <string name="panic_app_setting_title">Ứng dụng nút khẩn cấp</string>
+    <string name="panic_settings">Cài đặt nút khẩn cấp</string>
+    <string name="panic_hide_warning_message">Trong trường hợp khẩn cấp, việc này sẽ ẩn %1$s khỏi launcher. Bạn chỉ có thể khôi phục ứng dụng bằng cách gõ \"%2$d\" trong ứng dụng giả có tên %3$s.</string>
+
+    <string name="hiding_calculator">Máy tính</string>
+    <string name="hiding_dialog_title">Ẩn %s ngay</string>
+    <string name="hiding_dialog_message">Bạn có muốn ẩn biểu tượng %1$s? Bạn chỉ có thể lấy lại biểu tượng bằng cách gõ \"%2$d\" trong ứng dụng %3$s giả.</string>
+    <string name="hiding_dialog_warning">Chú ý: Các biểu tượng trên màn hình chính cũng sẽ bị xoá và phải được thêm lại bằng tay.</string>
+    <string name="hide_on_long_search_press_title">Ẩn bằng nút tìm kiếm</string>
+    <string name="hide_on_long_search_press_summary">Nhấn giữ nút tìm kiếm để ẩn ứng dụng</string>
+
+    <string name="repo_official_mirrors">Máy chủ dự phòng chính thức</string>
+    <string name="repo_user_mirrors">Máy chủ dự phòng do người dùng quản lí</string>
+    <string name="use_bluetooth">Dùng Bluetooth</string>
+    <string name="swap_toast_hotspot_enabled">Đã bật điểm phát Wi-Fi</string>
+    <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
+
+    <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
+    </resources>

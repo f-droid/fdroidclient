@@ -314,7 +314,7 @@
     <string name="update_auto_install">自动安装更新</string>
     <string name="update_auto_install_summary">在后台下载和更新应用</string>
     <string name="keep_install_history">保留安装纪录</string>
-    <string name="keep_install_history_summary">在F-Droid内记录所有安装和卸载</string>
+    <string name="keep_install_history_summary">在应用的私有存储内记录所有安装和卸载</string>
     <string name="warning_no_internet">无法更新，您有可用的网络连接吗？</string>
 <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">分类</string>
@@ -493,8 +493,8 @@
     <string name="use_bluetooth">使用蓝牙</string>
     <string name="over_wifi">通过Wi-Fi</string>
     <string name="over_data">通过数据连接</string>
-    <string name="over_network_always_summary">此连接可用时必须使用</string>
-    <string name="over_network_on_demand_summary">当我点击下载时才使用此连接</string>
+    <string name="over_network_always_summary">当此连接可用时，总是使用它</string>
+    <string name="over_network_on_demand_summary">仅当我点击下载时才使用此连接</string>
     <string name="over_network_never_summary">从不使用此连接下载任何内容</string>
     <string name="antidisabledalgorithmlist">这个应用程序的安全签章较弱</string>
     <string name="antiknownvulnlist">这个应用程序包含已知的安全漏洞</string>
@@ -504,4 +504,7 @@
     <string name="repo_exists_and_enabled">%1$s已设立並启用。</string>
     <string name="repo_delete_to_overwrite">先删除%1$s，以便添加互不兼容的钥匙。</string>
     <string name="repo_exists_add_mirror">这是%1$s的副本，您要将其添加为镜像吗？</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi 热点已启用</string>
+    <string name="swap_toast_could_not_enable_hotspot">无法启用 Wi-Fi 热点！</string>
+
     </resources>

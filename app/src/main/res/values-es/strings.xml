@@ -124,10 +124,9 @@
     <string name="repo_disabled_notification">%1$s deshabilitado.
         \n\nNecesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.
     </string>
-    <string name="repo_added">Guardado el repositorio de F-Droid %1$s.</string>
-    <string name="repo_searching_address">Buscando repositorio de F-Droid en
-        \n%1$s
-    </string>
+    <string name="repo_added">Repositorio de paquetes guardado %1$s.</string>
+    <string name="repo_searching_address">Buscando repositorio de paquetes en
+\n%1$s</string>
     <string name="minsdk_or_later">%s o posterior</string>
     <string name="up_to_maxsdk">Hasta %s</string>
     <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
@@ -349,9 +348,7 @@
     <string name="update_auto_install_summary">Descargar e instalar las actualizaciones en segundo plano</string>
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
-    <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en
-        F-Droid
-    </string>
+    <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
     <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>

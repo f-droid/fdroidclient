@@ -49,7 +49,7 @@
     <string name="antinonfreeadlist">Az alkalmazás nem szabad szoftver kiegészítőket támogat</string>
     <string name="antinonfreenetlist">Az alkalmazás nem szabad szoftver alapú hálózati szolgáltatásokat támogat</string>
     <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad szoftver alkalmazásoktól függ</string>
-    <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
+    <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad szoftver</string>
     <string name="display">Megjelenés</string>
     <string name="expert">Szakértő mód</string>
     <string name="expert_on">További információkat jelenít meg, és további beállításokat engedélyez</string>
@@ -238,7 +238,7 @@
     <string name="useTorSummary">Letöltési forgalom Tor használatára kényszerítése az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
-    <string name="antinonfreeassetslist">Ez az alkalmazás nem szabad eszközöket tartalmaz</string>
+    <string name="antinonfreeassetslist">Ez az alkalmazás nem szabad szoftver eszközöket tartalmaz</string>
 
     <string name="requires_features">Szükséges: %1$s</string>
     <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az
