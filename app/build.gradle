@@ -15,9 +15,18 @@ def getVersionName = { ->
 def isCi = "true".equals(System.getenv("CI"))
 def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
+def fullApplicationId = "org.fdroid.fdroid"
+def basicApplicationId = "org.fdroid.basic"
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        versionCode 1003001
+        versionName getVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
 
     buildTypes {
         // use proguard on debug too since we have unknowingly broken
@@ -28,6 +37,26 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
+            versionNameSuffix "-debug"
+            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
+        }
+    }
+
+    flavorDimensions "base"
+    productFlavors {
+        full {
+            dimension "base"
+            applicationId fullApplicationId
+            resValue "string", "applicationId", fullApplicationId
+        }
+        basic {
+            dimension "base"
+            applicationId basicApplicationId
+            resValue "string", "applicationId", basicApplicationId
         }
     }
 
@@ -44,23 +73,6 @@ android {
         // see http://tools.android.com/tech-docs/new-build-system/tips#TOC-Improving-Build-Server-performance
         // Skip pre-dexing when running on CI or when disabled via -Dpre-dex=false.
         preDexLibraries = preDexEnabled && !isCi
-    }
-
-    defaultConfig {
-        versionCode 1003001
-        versionName getVersionName()
-        applicationId 'org.fdroid.fdroid'
-        resValue "string", "applicationId", applicationId
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        debug {
-            applicationIdSuffix ".debug"
-            resValue "string", "applicationId", defaultConfig.applicationId + applicationIdSuffix
-            versionNameSuffix "-debug"
-            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
-        }
     }
 
     testOptions {
@@ -125,13 +137,10 @@ dependencies {
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.google.zxing:core:3.3.2'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201602271131'
-    implementation 'cc.mvdan.accesspoint:library:0.2.0'
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
     implementation 'info.guardianproject.panic:panic:0.5'
     implementation 'commons-io:commons-io:2.5'
     implementation 'commons-net:commons-net:3.5'
-    implementation 'org.jmdns:jmdns:3.5.3'
-    implementation 'org.nanohttpd:nanohttpd:2.3.1'
     implementation 'ch.acra:acra:4.9.1'
     implementation 'io.reactivex:rxjava:1.1.0'
     implementation 'io.reactivex:rxandroid:0.23.0'
@@ -142,16 +151,26 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 
-    implementation 'org.bouncycastle:bcpkix-jdk15on:1.59'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.59'
+    fullImplementation 'org.bouncycastle:bcpkix-jdk15on:1.59'
+    fullImplementation 'cc.mvdan.accesspoint:library:0.2.0'
+    fullImplementation 'org.jmdns:jmdns:3.5.3'
+    fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
 
     testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'org.bouncycastle:bcprov-jdk15on:1.59'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.7.22'
 
     androidTestImplementation 'com.android.support:support-annotations:25.3.1'
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test:rules:0.5'
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith("lintBasic")) {
+        android.lintOptions.abortOnError = false
+    }
 }
 
 checkstyle {

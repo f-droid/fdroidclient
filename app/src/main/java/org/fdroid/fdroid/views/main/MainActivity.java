@@ -44,6 +44,7 @@ import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -114,14 +115,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         updatesBadge = new TextBadgeItem().hide(false);
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
+        if (BuildConfig.FLAVOR.startsWith("full")) {
+            bottomNavigation
+                    .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps))
+                    .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
+                    .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby));
+        }
         bottomNavigation.setTabSelectedListener(this)
                 .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
                 .setInActiveColor(R.color.bottom_nav_items)
                 .setActiveColor(android.R.color.white)
                 .setMode(BottomNavigationBar.MODE_FIXED)
-                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps))
-                .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
-                .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby))
                 .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.updates).setBadgeItem(updatesBadge))
                 .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
                 .initialise();

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SwapTheme.StartSwap.MainText" parent="SwapTheme.StartSwap.MainTextBase">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.Text" parent="SwapTheme.Wizard.TextBase">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+</resources>

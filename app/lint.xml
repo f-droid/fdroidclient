@@ -36,7 +36,7 @@
     </issue>
 
     <issue id="ProtectedPermissions" severity="error">
-        <ignore path="src/main/AndroidManifest.xml"/>
+        <ignore path="src/full/AndroidManifest.xml"/>
     </issue>
 
     <!-- these should be fixed, but it'll be a chunk of work -->

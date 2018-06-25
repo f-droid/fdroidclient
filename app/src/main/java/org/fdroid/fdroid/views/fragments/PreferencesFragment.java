@@ -206,21 +206,18 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_UPDATE_INTERVAL:
                 updateIntervalSeekBar.setMax(Preferences.UPDATE_INTERVAL_VALUES.length - 1);
-                updateIntervalSeekBar.setDefaultValue(Preferences.DEFAULT_UPDATE_INTERVAL);
                 int seekBarPosition = updateIntervalSeekBar.getValue();
                 updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[seekBarPosition]);
                 break;
 
             case Preferences.PREF_OVER_WIFI:
                 overWifiSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
-                overWifiSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_WIFI);
                 setNetworkSeekBarSummary(overWifiSeekBar);
                 enableUpdateInverval();
                 break;
 
             case Preferences.PREF_OVER_DATA:
                 overDataSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
-                overDataSeekBar.setDefaultValue(Preferences.DEFAULT_OVER_DATA);
                 setNetworkSeekBarSummary(overDataSeekBar);
                 enableUpdateInverval();
                 break;

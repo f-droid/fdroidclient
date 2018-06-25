@@ -15,7 +15,4 @@
         <attr name="backButtonDrawable" format="reference"/>
         <attr name="clearButtonDrawable" format="reference"/>
     </declare-styleable>
-
-    <integer name="unhidePin">1337</integer>
-
 </resources>

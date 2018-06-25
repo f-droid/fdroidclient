@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceScreen android:title="@string/about_title">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/applicationId"
+                android:targetClass="org.fdroid.fdroid.AboutActivity"/>
+    </android.support.v7.preference.PreferenceScreen>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/preference_category__my_apps">
+        <android.support.v7.preference.PreferenceScreen android:title="@string/preference_manage_installed_apps">
+            <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="@string/applicationId"
+                    android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity"/>
+        </android.support.v7.preference.PreferenceScreen>
+        <android.support.v7.preference.PreferenceScreen
+                android:title="@string/menu_manage"
+                android:summary="@string/repositories_summary">
+            <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="@string/applicationId"
+                    android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"/>
+        </android.support.v7.preference.PreferenceScreen>
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/updates">
+        <org.fdroid.fdroid.views.LiveSeekBarPreference
+                android:key="overWifi"
+                android:title="@string/over_wifi"
+                android:defaultValue="@integer/defaultOverWifi"
+                android:layout="@layout/preference_seekbar"/>
+        <org.fdroid.fdroid.views.LiveSeekBarPreference
+                android:key="overData"
+                android:title="@string/over_data"
+                android:defaultValue="@integer/defaultOverData"
+                android:layout="@layout/preference_seekbar"/>
+        <SwitchPreference
+                android:title="@string/update_auto_download"
+                android:summary="@string/update_auto_download_summary"
+                android:defaultValue="false"
+                android:key="updateAutoDownload"/>
+        <org.fdroid.fdroid.views.LiveSeekBarPreference
+                android:key="updateIntervalSeekBarPosition"
+                android:title="@string/update_interval"
+                android:defaultValue="@integer/defaultUpdateInterval"
+                android:layout="@layout/preference_seekbar"/>
+        <SwitchPreference
+                android:title="@string/notify"
+                android:defaultValue="true"
+                android:key="updateNotify"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/display"
+                                                      android:key="pref_category_display">
+        <ListPreference
+                android:title="@string/pref_language"
+                android:key="language"/>
+        <ListPreference
+                android:title="@string/theme"
+                android:key="theme"
+                android:defaultValue="light"
+                android:entries="@array/themeNames"
+                android:entryValues="@array/themeValues"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/appcompatibility">
+        <SwitchPreference
+                android:title="@string/show_incompat_versions"
+                android:defaultValue="false"
+                android:key="incompatibleVersions"/>
+        <SwitchPreference
+                android:title="@string/show_root_apps"
+                android:defaultValue="true"
+                android:key="rooted"/>
+        <SwitchPreference
+                android:title="@string/show_anti_feature_apps"
+                android:defaultValue="false"
+                android:key="showAntiFeatureApps"/>
+        <SwitchPreference
+                android:title="@string/force_touch_apps"
+                android:defaultValue="false"
+                android:key="ignoreTouchscreen"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/proxy">
+        <SwitchPreference
+                android:key="useTor"
+                android:summary="@string/useTorSummary"
+                android:title="@string/useTor"/>
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="enableProxy"
+                android:title="@string/enable_proxy_title"
+                android:summary="@string/enable_proxy_summary"/>
+        <EditTextPreference
+                android:key="proxyHost"
+                android:title="@string/proxy_host"
+                android:summary="@string/proxy_host_summary"
+                android:dependency="enableProxy"/>
+        <EditTextPreference
+                android:key="proxyPort"
+                android:title="@string/proxy_port"
+                android:summary="@string/proxy_port_summary"
+                android:dependency="enableProxy"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+            android:key="pref_category_privacy"
+            android:title="@string/privacy">
+
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="preventScreenshots"
+                android:summary="@string/preventScreenshots_summary"
+                android:title="@string/preventScreenshots_title"/>
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+            android:title="@string/other"
+            android:key="pref_category_other">
+        <ListPreference
+                android:title="@string/cache_downloaded"
+                android:key="keepCacheFor"
+                android:defaultValue="86400000"
+                android:entries="@array/keepCacheNames"
+                android:entryValues="@array/keepCacheValues"/>
+        <SwitchPreference
+                android:title="@string/expert"
+                android:defaultValue="false"
+                android:key="expert"/>
+        <CheckBoxPreference
+                android:key="unstableUpdates"
+                android:title="@string/unstable_updates"
+                android:summary="@string/unstable_updates_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
+                android:key="keepInstallHistory"
+                android:title="@string/keep_install_history"
+                android:summary="@string/keep_install_history_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
+                android:key="forceOldIndex"
+                android:title="@string/force_old_index"
+                android:summary="@string/force_old_index_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
+                android:title="@string/system_installer"
+                android:defaultValue="false"
+                android:key="privilegedInstaller"
+                android:persistent="false"
+                android:dependency="expert"/>
+        <Preference
+                android:title="@string/uninstall_system"
+                android:summary="@string/uninstall_system_summary"
+                android:key="uninstallPrivilegedApp"
+                android:dependency="expert"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>

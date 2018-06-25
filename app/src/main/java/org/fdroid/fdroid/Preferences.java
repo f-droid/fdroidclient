@@ -1,3 +1,25 @@
+/*
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2013-2017  Peter Serwylo <peter@serwylo.com>
+ * Copyright (C) 2013-2016  Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (C) 2014-2018  Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2018  Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 package org.fdroid.fdroid;
 
 import android.annotation.SuppressLint;
@@ -26,6 +48,14 @@ import java.util.concurrent.TimeUnit;
  * (using {@link Preferences#setup(android.content.Context)} before it gets
  * accessed via the {@link org.fdroid.fdroid.Preferences#get()}
  * singleton method.
+ * <p>
+ * All defaults should be set in {@code res/xml/preferences.xml}.  The one
+ * exception is {@link Preferences#PREF_LOCAL_REPO_NAME} since it needs to be
+ * generated per install. The preferences are only written out explicitly when
+ * the user changes the preferences.  So the default values need to be reloaded
+ * every time F-Droid starts.  The various {@link SharedPreferences} getters are
+ * using {@code false} and {@code -1} as fallback default values to help catch
+ * problems with the proper default loading as quickly as possible.
  */
 public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -34,6 +64,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
+        PreferenceManager.setDefaultValues(context, R.xml.preferences, true);
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
@@ -79,31 +110,22 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final int OVER_NETWORK_ON_DEMAND = 1;
     public static final int OVER_NETWORK_ALWAYS = 2;
 
-    private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
-    private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
-    private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
-    public static final int DEFAULT_OVER_WIFI = OVER_NETWORK_ALWAYS;
-    public static final int DEFAULT_OVER_DATA = OVER_NETWORK_ON_DEMAND;
-    public static final int DEFAULT_UPDATE_INTERVAL = 3;
-    private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
-    //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
-    private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
-    private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
-    private static final boolean DEFAULT_KEEP_INSTALL_HISTORY = false;
-    //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
-    private static final boolean DEFAULT_EXPERT = false;
-    private static final boolean DEFAULT_ENABLE_PROXY = false;
-    public static final String DEFAULT_THEME = "light";
+    // these preferences are not listed in preferences.xml so the defaults are set here
     @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
-    public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
-    public static final int DEFAULT_PROXY_PORT = 8118;
+    public static final String DEFAULT_PROXY_HOST = "127.0.0.1"; // TODO move to preferences.xml
+    public static final int DEFAULT_PROXY_PORT = 8118; // TODO move to preferences.xml
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
-    private static final boolean DEFAULT_FORCE_OLD_INDEX = false;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
-    private static final boolean DEFAULT_PREVENT_SCREENSHOTS = false;
     private static final boolean DEFAULT_PANIC_EXIT = true;
-    private static final boolean DEFAULT_HIDE_ON_LONG_PRESS_SEARCH = false;
 
+    private static final boolean IGNORED_B = false;
+    private static final int IGNORED_I = -1;
+
+    /**
+     * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
+     */
+    @Deprecated
+    private static final String OLD_PREF_CACHE_APK = "cacheDownloaded";
     @Deprecated
     private static final String OLD_PREF_UPDATE_INTERVAL = "updateInterval";
     @Deprecated
@@ -126,8 +148,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             DateUtils.HOUR_IN_MILLIS,
     };
 
-    private boolean showAppsRequiringRoot = DEFAULT_SHOW_ROOT_APPS;
-    private boolean showAppsWithAntiFeatures = DEFAULT_SHOW_ANTI_FEATURE_APPS;
+    private boolean showAppsRequiringRoot;
+    private boolean showAppsWithAntiFeatures;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
@@ -150,7 +172,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isForceOldIndexEnabled() {
-        return preferences.getBoolean(PREF_FORCE_OLD_INDEX, DEFAULT_FORCE_OLD_INDEX);
+        return preferences.getBoolean(PREF_FORCE_OLD_INDEX, IGNORED_B);
     }
 
     public void setForceOldIndex(boolean flag) {
@@ -166,7 +188,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * @see org.fdroid.fdroid.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
      */
     public boolean isPrivilegedInstallerEnabled() {
-        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, DEFAULT_PRIVILEGED_INSTALLER);
+        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, IGNORED_B);
     }
 
     public boolean isPostPrivilegedInstall() {
@@ -178,18 +200,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     /**
-     * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
-     */
-    private static final String PREF_CACHE_APK = "cacheDownloaded";
-
-    /**
      * Get the update interval in milliseconds.
      */
     public long getUpdateInterval() {
         if (getOverData() == OVER_NETWORK_NEVER && getOverWifi() == OVER_NETWORK_NEVER) {
             return UPDATE_INTERVAL_VALUES[0];
         } else {
-            int position = preferences.getInt(PREF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL);
+            int position = preferences.getInt(PREF_UPDATE_INTERVAL, IGNORED_I);
             return UPDATE_INTERVAL_VALUES[position];
         }
     }
@@ -215,7 +232,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         if (!preferences.contains(OLD_PREF_UPDATE_INTERVAL)) {
             return false; // already completed
         }
-        int updateInterval = DEFAULT_UPDATE_INTERVAL;
+        int updateInterval = 3;
         String value = preferences.getString(OLD_PREF_UPDATE_INTERVAL, String.valueOf(24));
         if ("1".equals(value)) { // 1 hour
             updateInterval = 6;
@@ -265,8 +282,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Time in millis to keep cached files.  Anything that has been around longer will be deleted
      */
     public long getKeepCacheTime() {
-        String value = preferences.getString(PREF_KEEP_CACHE_TIME,
-                String.valueOf(DEFAULT_KEEP_CACHE_TIME));
+        String value = preferences.getString(PREF_KEEP_CACHE_TIME, null);
+        long fallbackValue = TimeUnit.DAYS.toMillis(1);
 
         // the first time this was migrated, it was botched, so reset to default
         switch (value) {
@@ -279,15 +296,15 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.remove(PREF_KEEP_CACHE_TIME);
                 editor.apply();
-                return Preferences.DEFAULT_KEEP_CACHE_TIME;
+                return fallbackValue;
         }
 
-        if (preferences.contains(PREF_CACHE_APK)) {
-            if (preferences.getBoolean(PREF_CACHE_APK, false)) {
+        if (preferences.contains(OLD_PREF_CACHE_APK)) {
+            if (preferences.getBoolean(OLD_PREF_CACHE_APK, false)) {
                 value = String.valueOf(Long.MAX_VALUE);
             }
             SharedPreferences.Editor editor = preferences.edit();
-            editor.remove(PREF_CACHE_APK);
+            editor.remove(OLD_PREF_CACHE_APK);
             editor.putString(PREF_KEEP_CACHE_TIME, value);
             editor.apply();
         }
@@ -295,7 +312,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         try {
             return Long.parseLong(value);
         } catch (NumberFormatException e) {
-            return DEFAULT_KEEP_CACHE_TIME;
+            return fallbackValue;
         }
     }
 
@@ -306,7 +323,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * asking), or whether there is no apps because we have never actually asked to update the repos.
      */
     public boolean hasTriedEmptyUpdate() {
-        return preferences.getBoolean(PREF_TRIED_EMPTY_UPDATE, false);
+        return preferences.getBoolean(PREF_TRIED_EMPTY_UPDATE, IGNORED_B);
     }
 
     public void setTriedEmptyUpdate(boolean value) {
@@ -314,7 +331,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean getUnstableUpdates() {
-        return preferences.getBoolean(PREF_UNSTABLE_UPDATES, DEFAULT_UNSTABLE_UPDATES);
+        return preferences.getBoolean(PREF_UNSTABLE_UPDATES, IGNORED_B);
     }
 
     public void setUnstableUpdates(boolean value) {
@@ -322,11 +339,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isKeepingInstallHistory() {
-        return preferences.getBoolean(PREF_KEEP_INSTALL_HISTORY, DEFAULT_KEEP_INSTALL_HISTORY);
+        return preferences.getBoolean(PREF_KEEP_INSTALL_HISTORY, IGNORED_B);
     }
 
     public boolean showIncompatibleVersions() {
-        return preferences.getBoolean(PREF_SHOW_INCOMPAT_VERSIONS, DEFAULT_SHOW_INCOMPAT_VERSIONS);
+        return preferences.getBoolean(PREF_SHOW_INCOMPAT_VERSIONS, IGNORED_B);
     }
 
     public boolean showNfcDuringSwap() {
@@ -338,15 +355,19 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean expertMode() {
-        return preferences.getBoolean(PREF_EXPERT, DEFAULT_EXPERT);
+        return preferences.getBoolean(PREF_EXPERT, IGNORED_B);
     }
 
     public void setExpertMode(boolean flag) {
         preferences.edit().putBoolean(PREF_EXPERT, flag).apply();
     }
 
+    public boolean forceTouchApps() {
+        return preferences.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, IGNORED_B);
+    }
+
     public Theme getTheme() {
-        return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
+        return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, null));
     }
 
     public boolean isLocalRepoHttpsEnabled() {
@@ -375,7 +396,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isAutoDownloadEnabled() {
-        return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, false);
+        return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
     }
 
     /**
@@ -401,11 +422,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public int getOverWifi() {
-        return preferences.getInt(PREF_OVER_WIFI, DEFAULT_OVER_WIFI);
+        return preferences.getInt(PREF_OVER_WIFI, IGNORED_I);
     }
 
     public int getOverData() {
-        return preferences.getInt(PREF_OVER_DATA, DEFAULT_OVER_DATA);
+        return preferences.getInt(PREF_OVER_DATA, IGNORED_I);
     }
 
     /**
@@ -415,11 +436,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public boolean isTorEnabled() {
         // TODO enable once Orbot can auto-start after first install
         //return preferences.getBoolean(PREF_USE_TOR, OrbotHelper.requestStartTor(context));
-        return preferences.getBoolean(PREF_USE_TOR, false);
+        return preferences.getBoolean(PREF_USE_TOR, IGNORED_B);
     }
 
     private boolean isProxyEnabled() {
-        return preferences.getBoolean(PREF_ENABLE_PROXY, DEFAULT_ENABLE_PROXY);
+        return preferences.getBoolean(PREF_ENABLE_PROXY, IGNORED_B);
     }
 
     /**
@@ -453,7 +474,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean preventScreenshots() {
-        return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, DEFAULT_PREVENT_SCREENSHOTS);
+        return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, IGNORED_B);
     }
 
     public boolean panicExit() {
@@ -461,11 +482,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean panicHide() {
-        return preferences.getBoolean(PREF_PANIC_HIDE, false);
+        return preferences.getBoolean(PREF_PANIC_HIDE, IGNORED_B);
     }
 
     public boolean hideOnLongPressSearch() {
-        return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, DEFAULT_HIDE_ON_LONG_PRESS_SEARCH);
+        return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, IGNORED_B);
     }
 
     /**
@@ -477,7 +498,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public boolean showAppsRequiringRoot() {
         if (!isInitialized(PREF_SHOW_ROOT_APPS)) {
             initialize(PREF_SHOW_ROOT_APPS);
-            showAppsRequiringRoot = preferences.getBoolean(PREF_SHOW_ROOT_APPS, DEFAULT_SHOW_ROOT_APPS);
+            showAppsRequiringRoot = preferences.getBoolean(PREF_SHOW_ROOT_APPS, IGNORED_B);
         }
         return showAppsRequiringRoot;
     }
@@ -496,8 +517,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
         if (!isInitialized(PREF_SHOW_ANTI_FEATURE_APPS)) {
             initialize(PREF_SHOW_ANTI_FEATURE_APPS);
-            showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS,
-                    DEFAULT_SHOW_ANTI_FEATURE_APPS);
+            showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS, IGNORED_B);
         }
         return showAppsWithAntiFeatures;
     }

@@ -1,42 +1,65 @@
+/*
+ * Copyright (C) 2016-2017 Peter Serwylo
+ * Copyright (C) 2017 Mikael von Pfaler
+ * Copyright (C) 2018 Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.views.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseIntArray;
+import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
+import android.widget.PopupMenu;
 import org.fdroid.fdroid.R;
 
 /**
- * Represents the five main views that are accessible from the main view. These are:
- *  + Whats new
- *  + Categories
- *  + Nearby
- *  + Updates
- *  + Settings
- *
- *  It is responsible for understanding the relationship between each main view that is reachable
- *  from the bottom navigation, and its position.
- *
- *  It doesn't need to do very much other than redirect requests from the {@link MainActivity}s
- *  {@link RecyclerView} to the relevant "bind*()" method
- *  of the {@link MainViewController}.
+ * Represents the main views that are accessible from the main screen via each
+ * tab.  They are set and loaded dynamically from {@code menu/main_activity_screens.xml}
+ * This class is responsible for understanding the relationship between each
+ * tab view that is reachable from the bottom navigation, and its position.
+ * <p>
+ * It doesn't need to do very much other than redirect requests from the {@link MainActivity}s
+ * {@link RecyclerView} to the relevant "bind*()" method
+ * of the {@link MainViewController}.
+ * <p>
+ * {@link PopupMenu} is used as a hack to get a disposable {@link Menu} instance
+ * for parsing and reading the menu XML.
  */
 class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
-    private final SparseIntArray positionToId = new SparseIntArray();
+    private final SparseIntArray positionToId;
 
     private final AppCompatActivity activity;
 
     MainViewAdapter(AppCompatActivity activity) {
         this.activity = activity;
         setHasStableIds(true);
-        positionToId.put(0, R.id.whats_new);
-        positionToId.put(1, R.id.categories);
-        positionToId.put(2, R.id.nearby);
-        positionToId.put(3, R.id.updates);
-        positionToId.put(4, R.id.settings);
+
+        PopupMenu p = new PopupMenu(activity, null);
+        Menu menu = p.getMenu();
+        activity.getMenuInflater().inflate(R.menu.main_activity_screens, menu);
+        positionToId = new SparseIntArray(menu.size());
+        for (int i = 0; i < menu.size(); i++) {
+            positionToId.append(i, menu.getItem(i).getItemId());
+        }
     }
 
     @Override
