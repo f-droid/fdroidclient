@@ -24,6 +24,8 @@
     <string name="hide_all_notifications_summary">Prevent all actions from showing in the status bar and notification
         drawer.
     </string>
+    <string name="install_history">Install history</string>
+    <string name="install_history_summary">View the private log of all installs and uninstalls</string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
     <string name="send_version_and_uuid">Send version and UUID to servers</string>

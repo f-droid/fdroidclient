@@ -24,6 +24,16 @@
                     android:targetPackage="@string/applicationId"
                     android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"/>
         </android.support.v7.preference.PreferenceScreen>
+        <android.support.v7.preference.PreferenceScreen
+                android:key="installHistory"
+                android:visible="false"
+                android:title="@string/install_history"
+                android:summary="@string/install_history_summary">
+            <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="@string/applicationId"
+                    android:targetClass="org.fdroid.fdroid.views.InstallHistoryActivity"/>
+        </android.support.v7.preference.PreferenceScreen>
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/updates">
