@@ -1,3 +1,11 @@
+### 1.3-alpha2 (2018-06-25)
+
+* Settings improvements
+
+* new Expert Setting for disabling all notifications
+
+* huge improvements for custom "whitelabel" F-Droid versions
+
 ### 1.3-alpha1 (2018-06-15)
 
 * improved Settings for controlling data usage
