@@ -212,7 +212,16 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         }
     }
 
+    /**
+     * The built-in BouncyCastle was stripped down in {@link Build.VERSION_CODES#S}
+     * so that {@code SHA1withRSA} and {@code SHA256withRSA} are no longer included.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/issues/2338">Nearby Swap Crash on Android 12: no such algorithm: SHA1WITHRSA for provider BC</a>
+     */
     public static void enableBouncyCastle() {
+        if (Build.VERSION.SDK_INT >= 31) {
+            Security.removeProvider("BC");
+        }
         Security.addProvider(BOUNCYCASTLE_PROVIDER);
     }
 
