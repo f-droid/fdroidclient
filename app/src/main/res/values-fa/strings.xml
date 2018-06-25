@@ -68,7 +68,7 @@
     <string name="unstable_updates_summary">پیشنهاد به‌روز رسانی به نگارش‌های ناپایدار</string>
     <string name="notify">نمایش به روزرسانی های موجود</string>
     <string name="system_installer">افزونه مجاز</string>
-    <string name="system_installer_on">استفاده از افزونهٔ مجاز اف‌دروید برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
+    <string name="system_installer_on">استفاده از افزونهٔ مجاز برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
     <string name="uninstall_system">به‌روز رسانی/حذف افزونهٔ ممتاز</string>
     <string name="uninstall_system_summary">گشودن صفحهٔ جزییات افزونهٔ مجاز برای به‌روز رسانی/حذف آن</string>
     <string name="local_repo_name">نام مخزن محلّی شما</string>
@@ -242,14 +242,15 @@
 
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایجاد نکردند.</string>
     <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن برنامه هایی که فراهم می‌کند، باید فعّالش کنید.</string>
-    <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که برنامه هایش دیگر در اف‌دروید موجود نخواهند بود.
-\n
+    <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که برنامه هایش دیگر موجود نخواهند بود. 
+\n 
 \nتوجّه: تمام برنامه نصب شدهٔ پیشین، روی دستگاهتان باقی خواهند ماند.</string>
     <string name="repo_disabled_notification">%1$s غیرفعّال شد.
 \n
 \nبرای نصب برنامه ها از آن، باید دوباره فعّالش کنید.</string>
-    <string name="repo_added">مخزن اف‌دروید %1$s ذخیره شد.</string>
-    <string name="repo_searching_address">در حال گشتن به دنبال مخزن اف‌دروید در\n%1$s</string>
+    <string name="repo_added">مخزن بستهٔ %1$s ذخیره شد.</string>
+    <string name="repo_searching_address">در حال گشتن به دنبال مخزن بسته در
+\n%1$s</string>
     <string name="empty_installed_app_list">هیچ برنامه ای نصب نشده است.
 \n
 \nبرنامه هایی روی دستگاهتان وجود دارند، ولی در اف‌دروید موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان برنامه هایتان را موجود ندارند یا باید به‌روز شوند.</string>
@@ -326,7 +327,7 @@
 
 
 <string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
-    <string name="keep_install_history_summary">نگه داشتن گزارشی ار تمام نصب و حذف‌ها در اف‌دروید</string>
+    <string name="keep_install_history_summary">نگه داشتن گزارشی از تمام نصب و حذف‌ها در یک فضای خصوصی</string>
     <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_install_summary">بارگیری و نصب کاره‌های به‌روز در پس‌زمینه</string>
     <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهندهٔ %1$s!</string>

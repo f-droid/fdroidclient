@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">F-డ్రాయిడ్</string>
+<resources><string name="app_name">ఎఫ్-డ్రాయిడ్</string>
 
     <string name="updates">నవీకరణలు</string>
     <string name="ok">సరే</string>
@@ -68,7 +68,7 @@
     <string name="keep_year">1 సంవత్సరం</string>
     <string name="keep_forever">ఎప్పటికీ</string>
 
-    <string name="menu_add_repo">కొత్త రిపోజిటరీ</string>
+    <string name="menu_add_repo">కొత్త రిపోజిటరీ/గిడ్డంగి</string>
 
     <string name="main_menu__latest_apps">తాజా</string>
     <string name="skip">దాటు</string>
@@ -111,4 +111,212 @@
     <string name="by_author_format">%s చే</string>
     <string name="enable_nfc_send">ఎన్ ఎఫ్ సి శక్తి పరచు…</string>
     <string name="cache_downloaded">కాషిడ్ ఆప్స్ ని ఉంచు</string>
+    <string name="menu_manage">గిడ్డంగిలు</string>
+    <string name="menu_uninstall">నివర్తించు</string>
+    <string name="menu_upgrade">నవీకరణించు</string>
+    <string name="preference_manage_installed_apps">సంస్థాపించిన అప్ లను నిర్వహించు</string>
+
+
+    <string name="details_notinstalled">సంస్థాపన చేసి లేదు</string>
+    <string name="category_Navigation">నౌకాయానం</string>
+    <string name="system_uninstall_button">నివర్తించు</string>
+    <string name="app_list__name__successfully_installed">%1$s సంస్థాపన అయ్యింది</string>
+    <string name="not_on_same_wifi">మీరు జోడించిన స్థానిక రిపో మీ పరికరం అదే Wi-Fi లో లేదు! ఈ నెట్వర్క్లో చేరడానికి ప్రయత్నించండి:%s</string>
+    <string name="notification_title_summary_install_error">వ్యవస్థాపన విఫలమైంది</string>
+    <string name="other">ఇతర</string>
+
+    <string name="update_interval">స్వయంచాలక నవీకరణ విరామం</string>
+    <string name="over_wifi">Wi-Fi ద్వారా</string>
+    <string name="over_network_on_demand_summary">నేను దింపుకోటానికి నొక్కినప్పుడు మాత్రమే ఈ కనెక్షన్ను ఉపయోగించండి</string>
+    <string name="over_network_never_summary">ఈ కనెక్షన్ని ఉపయోగించి ఏదికూడా దింపుకోకూడదు</string>
+    <string name="update_auto_download">నవీకరణలను స్వయంచాలకంగా పొందడం</string>
+    <string name="notify">అందుబాటులో ఉన్న నవీకరణలను చూపించు</string>
+    <string name="local_repo_name">మీ స్థానిక రెపో పేరు</string>
+    <string name="local_repo_name_summary">మీ స్థానిక రెపో యొక్క ప్రకటన శీర్షిక: %s</string>
+    <string name="login_title">ప్రామాణీకరణ అవసరం</string>
+    <string name="no_such_app">అటువంటి అనువర్తనం కనుగొనబడలేదు.</string>
+
+    <string name="app_details_donate_prompt">%2$s ద్వారా %1$s సృష్టించబడింది. వారికి ఒక కాఫీ కొనండి!</string>
+
+    <string name="about_version">వెర్షన్</string>
+    <string name="about_source">సోర్స్ కోడ్</string>
+    <string name="app_incompatible">అననుకూల</string>
+    <string name="app_installed">స్థాపితమయ్యింది</string>
+    <string name="app_not_installed">స్థాపించలేదు</string>
+    <string name="app_inst_known_source">(%s నుండి) స్థాపితమయ్యింది</string>
+    <string name="app_inst_unknown_source">(తెలియని మూలం నుండి) స్థాపితమయ్యింది</string>
+    <string name="app_version_x_available">%1$s వెర్షన్ అందుబాటులో ఉంది</string>
+    <string name="app_version_x_installed">%1$s వెర్షన్</string>
+    <string name="app_recommended_version_installed">%1$s వెర్షన్ (సిఫార్సు చేయబడింది)</string>
+    <string name="added_on">%sలో జోడించబడింది</string>
+    <string name="app__install_downloaded_update">నవీకరణ</string>
+    <string name="app_installed_media">ఫైలు %s కు వ్యవస్థాపించబడింది</string>
+    <string name="app_list_download_ready">దింపుకోలు పూర్తయినది, వ్యవస్థాపనకు సిద్ధముగా ఉంది</string>
+    <string name="app_list__dismiss_app_update">నవీకరణ విస్మరించబడింది</string>
+    <string name="app_list__dismiss_vulnerable_app">బలహీనతని విస్మరించబడింది</string>
+    <string name="app_list__dismiss_downloading_app">దింపుకోలు రద్దు చేయబడింది</string>
+
+    <string name="installed_apps__activity_title">వ్యవస్థాపించిన అనువర్తనాలు</string>
+    <string name="installed_app__updates_ignored">నవీకరణలు విస్మరించబడ్డాయి</string>
+    <string name="updates__tts__download_updates_for_all_apps">అన్ని నవీకరణలను దింపుకోండి</string>
+
+    <string name="updates__app_with_known_vulnerability__ignore">పట్టించుకోకుండా</string>
+
+    <string name="updates__hide_updateable_apps">అనువర్తనాలను దాచు</string>
+    <string name="updates__show_updateable_apps">అనువర్తనాలను చూపు</string>
+    <string name="repo_add_title">క్రొత్త రిపోజిటరీని జోడించు</string>
+    <string name="repo_add_mirror">అద్దం జోడించండి</string>
+    <string name="versions">వెర్షన్లు</string>
+    <string name="enable">చేతనపరచు</string>
+    <string name="overwrite">తిరిగి రాస్తుంది</string>
+    <string name="choose_bt_send">బ్లూటూత్ పంపు పద్ధతి ఎంచుకోండి</string>
+
+    <string name="repo_add_url">రిపోజిటరీ చిరునామా</string>
+    <string name="repo_add_fingerprint">వేలిముద్ర (ఇష్ట ప్రకారమైన)</string>
+    <string name="bad_fingerprint">చెడు వేలిముద్ర</string>
+    <string name="invalid_url">ఇది చెల్లుబాటు అయ్యే URL కాదు.</string>
+    <string name="repo_provider">రిపోజిటరీ: %s</string>
+
+    <string name="menu_ignore_all">అన్ని నవీకరణలను విస్మరించండి</string>
+    <string name="menu_ignore_this">ఈ నవీకరణను విస్మరించండి</string>
+    <string name="menu_source">మూల కోడ్</string>
+    <string name="latest__empty_state__no_recent_apps">ఇటీవలి అనువర్తనాలు కనుగొనబడలేదు</string>
+    <string name="categories__empty_state__no_categories">ప్రదర్శించడానికి వర్గాలు లేవు</string>
+
+    <string name="preference_category__my_apps">నా అనువర్తనాలు</string>
+    <string name="antiadslist">ఈ అనువర్తనం ప్రకటనలు కలిగి ఉంది</string>
+    <string name="antinonfreeadlist">ఈ అనువర్తనం ఉచితం కానీ పొడిగింతలను ప్రోత్సహిస్తుంది</string>
+    <string name="antinonfreenetlist">ఈ అనువర్తనం ఉచితం కానీ నెట్వర్క్ సేవలను ప్రోత్సహిస్తుంది</string>
+    <string name="antinonfreedeplist">ఈ అనువర్తనం ఇతర ఉచితం కానీ అనువర్తనాలపై ఆధారపడి ఉంటుంది</string>
+    <string name="antiupstreamnonfreelist">అప్స్ట్రీమ్ సోర్స్ కోడ్ పూర్తిగా ఉచితం కాదు</string>
+    <string name="antinonfreeassetslist">ఈ అనువర్తనం ఉచితం కానీ ఆస్తులను కలిగి ఉంది</string>
+    <string name="antidisabledalgorithmlist">ఈ అనువర్తనం బలహీన భద్రతా సంతకం కలిగి ఉంది</string>
+    <string name="antiknownvulnlist">ఈ అనువర్తనం తెలిసిన భద్రతా దుర్బలత్వాన్ని కలిగి ఉంది</string>
+
+    <string name="display">ప్రదర్శన</string>
+
+    <string name="expert">నిపుణుడు మోడ్</string>
+    <string name="expert_on">అదనపు సమాచారం చూపించు మరియు అదనపు అమరికలను చేతనపరచు</string>
+
+    <string name="search_hint">అనువర్తనాలను శోధించు</string>
+
+    <string name="appcompatibility">అనువర్తన అనుకూలత</string>
+    <string name="show_incompat_versions">సరిపడలేని వెర్షన్లను చేర్చండి</string>
+    <string name="show_root_apps">రూట్ అనువర్తనాలను చేర్చండి</string>
+    <string name="show_root_apps_on">రూట్ అధికారాలు అవసరమయ్యే అనువర్తనాలను చూపించు</string>
+    <string name="force_touch_apps">టచ్స్క్రీన్ అనువర్తనాలను చేర్చండి</string>
+    <string name="local_repo">స్థానిక రెపో</string>
+    <string name="local_repo_running">F- Droid మారడానికి సిద్ధంగా ఉంది</string>
+    <string name="touch_to_configure_local_repo">వివరాలను వీక్షించడానికి మరియు ఇతరులు మీ అనువర్తనాలను మారడానికి అనుమతించడానికి తాకండి.</string>
+    <string name="deleting_repo">ప్రస్తుత రెపోని తొలగిస్తోంది…</string>
+    <string name="adding_apks_format">రిపోకి %sని జోడిస్తోంది…</string>
+    <string name="useTor">టోర్ ఉపయోగించండి</string>
+    <string name="enable_proxy_title">HTTP ప్రాక్సీని చేతనపరచు</string>
+    <string name="preventScreenshots_title">తెరపట్లను నిరోధించండి</string>
+    <string name="panic_app_unknown_app">తెలియని అనువర్తనం</string>
+    <string name="panic_exit_title">అనువర్తనాన్ని నిష్క్రమించండి</string>
+    <string name="panic_exit_summary">అనువర్తనం మూసివేయబడుతుంది</string>
+    <string name="panic_destructive_actions">విధ్వంసక చర్యలు</string>
+    <string name="panic_hide_title">%sని దాచు</string>
+    <string name="panic_hide_warning_title">ఎలా పునరుద్ధరించాలో గుర్తుంచుకోండి</string>
+    <string name="hiding_calculator">క్యాలిక్యులేటర్</string>
+    <string name="hiding_dialog_title">ఇప్పుడు %sని దాచు</string>
+    <string name="hide_on_long_search_press_title">శోధన బటన్తో దాచు</string>
+    <string name="hide_on_long_search_press_summary">చాలాసేపు శోధన బటన్ను నొక్కినప్పుడు అనువర్తనం దాచబడుతుంది</string>
+
+    <string name="download_404">అభ్యర్థించిన ఫైల్ కనుగొనబడలేదు.</string>
+    <string name="update_notification_title">రిపోజిటరీలను నవీకరిస్తోంది</string>
+    <string name="repos_unchanged">అన్ని రిపోజిటరీలు తాజావి</string>
+    <string name="all_other_repos_fine">అన్ని ఇతర రేపోలు లోపాలు సృష్టించలేదు.</string>
+    <string name="global_error_updating_repos">నవీకరణ సమయంలో లోపం: %s</string>
+    <string name="no_permissions">అనుమతులు ఏవీ ఉపయోగించబడవు.</string>
+    <string name="permissions">అనుమతులు</string>
+    <string name="repo_num_apps">అనువర్తనాల సంఖ్య</string>
+    <string name="unknown">తెలియని</string>
+    <string name="repo_confirm_delete_title">రిపోజిటరీని తొలగించాలా?</string>
+    <string name="minsdk_or_later">%s లేదా తరువాత</string>
+    <string name="up_to_maxsdk">%s వరకు</string>
+    <string name="minsdk_up_to_maxsdk">%1$s వరకు %2$s</string>
+    <string name="requires_features">అవసరం: %1$s</string>
+    <string name="wifi_ap">హాట్స్పాట్</string>
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">%d ని వీక్షించండి</item>
+	<item quantity="other">మొత్తం %d ని వీక్షించండి</item>
+</plurals>
+
+    <string name="empty_can_update_app_list">అభినందనలు!
+\nమీ అనువర్తనాలు తాజాగా ఉన్నాయి.</string>
+
+    <string name="empty_search_available_app_list">సరిపోలే అనువర్తనాలు అందుబాటులో లేవు.</string>
+
+    <string name="install_error_unknown">తెలియని లోపం కారణంగా వ్యవస్థాపించడం విఫలమైంది</string>
+    <string name="system_install_installing">స్థాపిస్తోంది…</string>
+    <string name="system_install_uninstalling">నిర్మూలిస్తోంది…</string>
+    <string name="system_install_warning">ఇది 10 సెకన్లు వరకు పడుతుంది.</string>
+    <string name="nearby_splash__find_people_button">నా సమీపంలో ఉన్న వ్యక్తులను కనుగొనండి</string>
+    <string name="swap_nfc_title">మారడానికి తాకండి</string>
+    <string name="swap_join_same_wifi">మీ స్నేహితుని వలె అదే Wi-Fi లో చేరండి</string>
+    <string name="swap_join_this_hotspot">మీ స్నేహితుడు మీ హాట్ స్పాట్లో చేరడానికి సహాయపడండి</string>
+    <string name="swap">అనువర్తనాలను మార్పిడి చేయి</string>
+    <string name="swap_no_wifi_network">ఇంకా నెట్వర్క్ లేదు</string>
+    <string name="swap_view_available_networks">అందుబాటులో ఉన్న నెట్వర్క్లను తెరవడానికి నొక్కండి</string>
+    <string name="swap_switch_to_wifi">Wi-Fi నెట్వర్క్కు మారడానికి నొక్కండి</string>
+    <string name="open_qr_code_scanner">QR స్కానర్ను తెరవండి</string>
+    <string name="swap_confirm_connect">మీరు ఇప్పుడు %1$s నుండి అనువర్తనాలను పొందాలనుకుంటున్నారా?</string>
+    <string name="swap_choose_apps">అనువర్తనాలను ఎంచుకోండి</string>
+    <string name="swap_scan_qr">QR కోడ్ను స్కాన్ చేయండి</string>
+    <string name="swap_people_nearby">సమీపంలోవున్న ప్రజలు</string>
+    <string name="swap_scanning_for_peers">సమీపంలోని వ్యక్తుల కోసం శోధిస్తోంది …</string>
+    <string name="swap_visible_bluetooth">బ్లూటూత్ ద్వారా కనిపిస్తుంది</string>
+    <string name="swap_not_visible_bluetooth">బ్లూటూత్ ద్వారా కనిపించదు</string>
+    <string name="swap_visible_wifi">Wi-Fi ద్వారా కనిపిస్తుంది</string>
+    <string name="swap_stopping_wifi">Wi-Fi ని నిలిపివేస్తోంది…</string>
+    <string name="swap_not_visible_wifi">Wi-Fi ద్వారా కనిపించదు</string>
+    <string name="swap_wifi_device_name">పరికరం పేరు</string>
+    <string name="swap_cant_find_peers">మీరు వెతుకుతున్న వారిని కనుగొనలేదా?</string>
+    <string name="use_bluetooth">బ్లూటూత్ను ఉపయోగించండి</string>
+    <string name="loading">లోడ్ అవుతోంది…</string>
+    <string name="interval_1h">గంట గంటకు నవీకరణల కోసం తనిఖీ చేయండి</string>
+    <string name="interval_4h">ప్రతి 4 గంటలకు నవీకరణలను తనిఖీ చేయండి</string>
+    <string name="interval_12h">ప్రతి 12 గంటలకు నవీకరణలను తనిఖీ చేయండి</string>
+    <string name="interval_1d">రోజువారీ నవీకరణల కోసం తనిఖీ చేయండి</string>
+    <string name="interval_1w">ప్రతి వారం నవీకరణలను తనిఖీ చేయండి</string>
+    <string name="interval_2w">ప్రతి రెండు వారాలకు నవీకరణలను తనిఖీ చేయండి</string>
+
+    <string name="crash_dialog_comment_prompt">మీరు ఇక్కడ అదనపు సమాచారం మరియు వ్యాఖ్యలను జోడించవచ్చు:</string>
+
+    <string name="notification_title_single_ready_to_install">స్థాపించడానికి సిద్ధంగా ఉంది</string>
+    <string name="notification_title_summary_update_available">అందుబాటులో నవీకరణ</string>
+    <string name="notification_title_summary_installed">విజయవంతంగా  స్థాపించబడింది</string>
+    <string name="details_last_updated_today">ఈ రోజు నవీకరించబడింది</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">%1$dరోజు క్రితం నవీకరించబడింది</item>
+	<item quantity="other">%1$d రోజుల క్రితం నవీకరించబడింది</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">%1$d వారం క్రితం నవీకరించబడింది</item>
+	<item quantity="other">%1$d వారాల క్రితం నవీకరించబడింది</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">%1$d నెల క్రితం నవీకరించబడింది</item>
+	<item quantity="other">%1$d నెలల క్రితం నవీకరించబడింది</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">%1$d సంవత్సరం క్రితం నవీకరించబడింది</item>
+	<item quantity="other">%1$d సంవత్సరాల క్రితం నవీకరించబడింది</item>
+</plurals>
+<string name="enable_proxy_summary">అన్ని నెట్వర్క్ అభ్యర్ధనల కోసం HTTP ప్రాక్సీని కాన్ఫిగర్ చేయండి</string>
+    <string name="proxy_host">ప్రాక్సీ హోస్ట్</string>
+    <string name="proxy_host_summary">మీ ప్రాక్సీ హోస్ట్ పేరు (ఉదా. 127.0.0.1)</string>
+    <string name="proxy_port">ప్రాక్సీ పోర్ట్</string>
+    <string name="proxy_port_summary">మీ ప్రాక్సీ పోర్ట్ సంఖ్య (ఉదా. 8118)</string>
+
+    <string name="status_inserting_apps">అనువర్తన వివరాలను భద్రపరుస్తోంది</string>
+    <string name="theme_light">వెలుతురు</string>
+    <string name="theme_dark">చీకటి</string>
+    <string name="theme_night">రాత్రి</string>
+
+    <string name="requesting_root_access_body">రూట్ ప్రాప్యతను అభ్యర్థిస్తోంది…</string>
+    <string name="root_access_denied_title">రూటు యాక్సెస్ నిరాకరించబడింది</string>
     </resources>
