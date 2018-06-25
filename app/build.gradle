@@ -64,11 +64,13 @@ android {
             dimension "base"
             applicationId fullApplicationId
             resValue "string", "applicationId", fullApplicationId
+            resConfigs "en", "xxhdpi" // quicker builds with only English and hires
         }
         basic {
             dimension "base"
             applicationId basicApplicationId
             resValue "string", "applicationId", basicApplicationId
+            resConfigs "en", "xxhdpi" // quicker builds with only English and hires
         }
     }
 
