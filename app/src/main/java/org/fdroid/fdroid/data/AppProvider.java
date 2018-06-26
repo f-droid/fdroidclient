@@ -1061,7 +1061,6 @@ public class AppProvider extends FDroidProvider {
      * about are compatible, and 0 otherwise.
      */
     private void updateCompatibleFlags() {
-        Utils.debugLog(TAG, "Calculating whether apps are compatible, based on whether any of their apks are compatible");
 
         final String apk = getApkTableName();
         final String app = getTableName();
@@ -1086,7 +1085,6 @@ public class AppProvider extends FDroidProvider {
      * @see #updateSuggestedFromLatest(String)
      */
     private void updateSuggestedFromUpstream(@Nullable String packageName) {
-        Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
@@ -1144,7 +1142,6 @@ public class AppProvider extends FDroidProvider {
      * @see #updateSuggestedFromUpstream(String)
      */
     private void updateSuggestedFromLatest(@Nullable String packageName) {
-        Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
