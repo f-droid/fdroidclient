@@ -488,15 +488,15 @@ public class AppDetails2 extends AppCompatActivity
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
-                    adapter.setProgress(-1, -1, R.string.download_pending);
+                    adapter.setIndeterminateProgress(R.string.download_pending);
                 } else {
-                    adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax, 0);
+                    adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax);
                 }
                 break;
 
             case ReadyToInstall:
                 if (justReceived) {
-                    adapter.clearProgress();
+                    adapter.setIndeterminateProgress(R.string.installing);
                     localBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
                 }
@@ -517,6 +517,9 @@ public class AppDetails2 extends AppCompatActivity
                 break;
 
             case Installing:
+                adapter.setIndeterminateProgress(R.string.installing);
+                break;
+
             case Installed:
             case UpdateAvailable:
             case InstallError:
@@ -553,7 +556,7 @@ public class AppDetails2 extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    adapter.setProgress(-1, -1, R.string.installing);
+                    adapter.setIndeterminateProgress(R.string.installing);
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
                     adapter.clearProgress();
@@ -625,7 +628,7 @@ public class AppDetails2 extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    adapter.setProgress(-1, -1, R.string.uninstalling);
+                    adapter.setIndeterminateProgress(R.string.uninstalling);
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     adapter.clearProgress();
