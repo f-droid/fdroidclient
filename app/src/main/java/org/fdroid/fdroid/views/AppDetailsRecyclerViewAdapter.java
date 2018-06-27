@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -33,7 +34,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -920,7 +923,12 @@ public class AppDetailsRecyclerViewAdapter
                     + " " + apk.versionName
                     + (isSuggested ? "  ☆" : ""));
 
-            status.setText(getInstalledStatus(apk));
+            String statusText = getInstalledStatus(apk);
+            status.setText(statusText);
+
+            if ("Installed".equals(statusText)) {
+                version.setTextColor(ContextCompat.getColor(context, R.color.fdroid_blue));
+            }
 
             repository.setText(context.getString(R.string.repo_provider,
                     RepoProvider.Helper.findById(context, apk.repoId).getName()));
