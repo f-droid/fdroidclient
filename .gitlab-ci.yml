@@ -88,6 +88,7 @@ deploy_nightly:
   only:
     - master
   script:
+    - test -z "$DEBUG_KEYSTORE" && exit 0
     - sed -i
         's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
         app/src/main/res/values*/strings.xml
