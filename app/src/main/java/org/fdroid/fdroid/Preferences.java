@@ -189,7 +189,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * @see org.fdroid.fdroid.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
      */
     public boolean isPrivilegedInstallerEnabled() {
-        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, IGNORED_B);
+        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, true);
     }
 
     public boolean isPostPrivilegedInstall() {
