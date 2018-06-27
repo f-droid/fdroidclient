@@ -223,9 +223,7 @@
     <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
     <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estis instalita. Tio ĉi ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.</string>
     <string name="system_install_post_fail_message">Instalado de privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli da informoj.</string>
-    <string name="system_install_installing">Instalado…</string>
     <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>
-    <string name="system_install_uninstalling">Malinstalado…</string>
     <string name="system_install_question">Ĉu vi volas instali privilegian F-Droid-aldonaĵon?</string>
     <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundoj.</string>
     <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundoj kaj la aparato estos poste <b>restartita</b>.</string>

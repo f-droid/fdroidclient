@@ -153,8 +153,6 @@
     <string name="category_Time">Час</string>
     <string name="category_Writing">Писане</string>
 
-    <string name="system_install_installing">Инсталиране…</string>
-    <string name="system_install_uninstalling">Деинсталиране…</string>
     <string name="swap_connecting">Свързване</string>
     <string name="loading">Зареждане…</string>
     <string name="allPerms">Всички</string>

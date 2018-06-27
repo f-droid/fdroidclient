@@ -289,9 +289,7 @@
         Il metodo di installazione non è supportato da tutte le distribuzioni di Android, per favore consulta le
         segnalazioni di bug per maggiori informazioni.
     </string>
-    <string name="system_install_installing">Installazione…</string>
     <string name="system_install_installing_rebooting">Installazione e riavvio…</string>
-    <string name="system_install_uninstalling">Disinstallazione…</string>
     <string name="system_install_question">Vuoi installare l\'estensione privilegiata di F-Droid?</string>
     <string name="system_install_warning">Questo può richiedere fino a 10 secondi.</string>
     <string name="system_install_warning_lollipop">Questo può richiedere fino a 10 secondi e il dispositivo verrà <b>riavviato</b> successivamente.</string>

@@ -403,9 +403,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for
         more information.
     </string>
-    <string name="system_install_installing">Installing…</string>
     <string name="system_install_installing_rebooting">Installing and rebooting…</string>
-    <string name="system_install_uninstalling">Uninstalling…</string>
     <string name="system_install_question">Do you want to install F-Droid Privileged Extension?</string>
     <string name="system_install_warning">This takes up to 10 seconds.</string>
     <string name="system_install_warning_lollipop">This takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b>

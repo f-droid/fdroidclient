@@ -202,8 +202,6 @@
         đặt này không được tất cả các bản Android hỗ trợ, hãy truy cập trình theo dõi lỗi của F-Droid để biết thêm thông
         tin.
     </string>
-    <string name="system_install_installing">Đang cài đặt…</string>
-    <string name="system_install_uninstalling">Đang gỡ bỏ…</string>
     <string name="system_install_question">Bạn có muốn cài đặt phần mở rộng F-Droid được cấp quyền không?</string>
     <string name="system_install_warning_lollipop">Việc cài đặt mất tối đa 10 giây, sau đó máy sẽ<b>khởi động lại</b>.</string>
     <string name="system_uninstall">Bạn có muốn gỡ bỏ phần mở rộng F-Droid được cấp quyền không?</string>

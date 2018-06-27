@@ -220,9 +220,7 @@
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
     <string name="system_install_button_install">Kur</string>
-    <string name="system_install_installing">Kuruluyor…</string>
     <string name="system_install_installing_rebooting">Kuruluyor ve aygıt yeniden başlatılıyor…</string>
-    <string name="system_install_uninstalling">Kaldırılıyor…</string>
     <string name="system_install_warning">Bu 10 saniye kadar bir sürer.</string>
     <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir sürer ve ardından aygıt<b>yeniden başlatılacak</b>.</string>
     <string name="system_uninstall_button">Kaldır</string>

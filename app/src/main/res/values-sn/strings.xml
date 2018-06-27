@@ -284,9 +284,7 @@
         wekuvakirira hauna kutsigirwa nepanguro dzese dzeAndroid, tinokumbira kuti wofefeta chisvukudza chezvipfukuto
         cheF-Droid kuti uwane mashoko mamwe.
     </string>
-    <string name="system_install_installing">Kuvakirira…</string>
     <string name="system_install_installing_rebooting">Kuvakirira nekutangidza kubatidza muchina…</string>
-    <string name="system_install_uninstalling">Kubvisa kuvakirira…</string>
     <string name="system_install_question">Urikuda kuvakirira tambanudzo dzechihesvuro dzeF-Droid here?</string>
     <string name="system_install_warning">Izvi zvichatora kusvika 10 masekondi.</string>
     <string name="system_install_warning_lollipop">Izvi zvinotora kusvika 10 masekondi nekuzotangidza kubatidza

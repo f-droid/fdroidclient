@@ -285,9 +285,7 @@
     <string name="system_install_post_success">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു</string>
     <string name="system_install_post_fail">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="system_install_post_success_message">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു. ഇത് പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിനെ സ്വയം പ്രാപ്തമാക്കുന്നു.</string>
-    <string name="system_install_installing">സ്ഥാപിക്കുന്നു…</string>
     <string name="system_install_installing_rebooting">സ്ഥാപിക്കുന്നു, റീബൂട്ട് ചെയ്യുന്നു…</string>
-    <string name="system_install_uninstalling">ഒഴിവാക്കുന്നു…</string>
     <string name="system_install_question">നിങ്ങൾക്ക് പ്രത്യേകാവകാശ എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കണോ?</string>
     <string name="system_install_warning">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും.</string>
     <string name="system_install_warning_lollipop">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും. ശേഷം ഉപകരണം <b>റീബൂട്ട്</b> ചെയ്യും.</string>

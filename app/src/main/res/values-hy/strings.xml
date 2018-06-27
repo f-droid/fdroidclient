@@ -85,9 +85,7 @@
     <string name="category_Sports_Health">Սպորտ և առողջություն</string>
     <string name="category_System">Համակարգ</string>
     <string name="system_install_button_install">Տեղադրել</string>
-    <string name="system_install_installing">Տեղադրում եմ…</string>
     <string name="system_install_installing_rebooting">Տեղադրում և վերագործարկում եմ…</string>
-    <string name="system_install_uninstalling">Ապատեղադրում եմ…</string>
     <string name="system_install_warning">Սա կտևի մոտ 10 վայրկյան։</string>
     <string name="system_install_warning_lollipop">Սա կտևի մոտ 10 վայրկյան և այնուհետև սարքը<b>կվերագործարկվի</b>։
     </string>

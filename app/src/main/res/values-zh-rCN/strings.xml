@@ -200,9 +200,7 @@
     <string name="system_install_post_fail">安装 F-Droid 特权扩展失败</string>
     <string name="system_install_post_success_message">F-Droid 特权扩展已安装。通过该扩展，F-Droid 可自动安装，升级和卸载应用。</string>
     <string name="system_install_post_fail_message">F-Droid 特权扩展的安装失败。不是所有版本的 Android 都支持该安装方式，请咨询 F-Droid 的 bug 跟踪系统以获取更多信息。</string>
-    <string name="system_install_installing">安装中…</string>
     <string name="system_install_installing_rebooting">安装并重启中…</string>
-    <string name="system_install_uninstalling">卸载中…</string>
     <string name="system_install_question">你确定要安装 F-Droid 的特权扩展吗？</string>
     <string name="system_install_warning">这最多需要10秒。</string>
     <string name="system_install_warning_lollipop">该步骤最多需 10 秒钟，之后设备将<b>重启</b>。</string>

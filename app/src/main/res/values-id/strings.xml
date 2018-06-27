@@ -241,9 +241,7 @@
     <string name="system_install_post_fail_message">Pemasangan F-Droid Privileged Extension gagal. Metode pemasangan
         tidak didukung oleh semua distribusi Android, harap hubungi pelacak kutu F-Droid untuk info selanjutnya.
     </string>
-    <string name="system_install_installing">Memasang…</string>
     <string name="system_install_installing_rebooting">Memasang dan booting ulang…</string>
-    <string name="system_install_uninstalling">Mencopot pemasangan…</string>
     <string name="system_install_question">Anda ingin memasang F-Droid Privileged Extension?</string>
     <string name="system_install_warning">Ini memakan waktu hingga 10 detik.</string>
     <string name="system_install_warning_lollipop">Ini memakan waktu 10 detik dan perangkat akan <b>dinyalakan ulang</b>.</string>

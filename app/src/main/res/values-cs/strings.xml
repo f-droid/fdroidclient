@@ -245,9 +245,7 @@
     <string name="install_confirm">vyžaduje přístup k</string>
     <string name="system_install_post_success">Rozšíření F-Droid pro oprávnění úspěšně nainstalováno</string>
     <string name="system_install_post_fail">Instalace prigilegovaného rozšíření F-Droid selhala</string>
-    <string name="system_install_installing">Instalace…</string>
     <string name="system_install_installing_rebooting">Instalace a restart…</string>
-    <string name="system_install_uninstalling">Deinstalace…</string>
     <string name="system_install_question">Chcete instalovat rozšíření oprávnění F-Droidu?</string>
     <string name="system_install_warning">To může trvat až 10 vteřin.</string>
     <string name="system_install_warning_lollipop">To může trvat až 10 vteřin a poté bude přístroj<b>restartován</b>.</string>

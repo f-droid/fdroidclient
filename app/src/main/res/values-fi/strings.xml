@@ -227,8 +227,6 @@
     <string name="category_Writing">Kirjoittaminen</string>
 
     <string name="system_install_button_install">Asenna</string>
-    <string name="system_install_installing">Asennetaan…</string>
-    <string name="system_install_uninstalling">Poistetaan…</string>
     <string name="system_install_warning">Tämä kestää jopa 10 sekuntia.</string>
     <string name="system_install_warning_lollipop">Tämä voi kestää jopa 10 sekuntia ja laite tullaan
         <b>käynnistämään uudelleen</b>

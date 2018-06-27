@@ -199,8 +199,6 @@
         instalação não é suportado por todas as distribuições do Android, por favor consulte o rastreador de bugs do
         F-Droid para mais informações.
     </string>
-    <string name="system_install_installing">Instalando…</string>
-    <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">Você quer instalar a extensão privilegiada do F-Droid?</string>
     <string name="system_install_warning_lollipop">Isto leva até 10 segundos e posteriormente o dispositivo será <b>reinicializado</b>.</string>
     <string name="system_uninstall">Você quer desinstalar a extensão privilegiada do F-Droid?</string>

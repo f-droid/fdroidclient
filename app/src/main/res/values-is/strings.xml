@@ -183,9 +183,7 @@
     <string name="install_error_unknown">Mistókst að setja inn vegna óþekktrar villu</string>
     <string name="uninstall_error_unknown">Mistókst að fjarlægja vegna óþekktrar villu</string>
     <string name="system_install_button_install">Setja inn</string>
-    <string name="system_install_installing">Set inn…</string>
     <string name="system_install_installing_rebooting">Set inn og endurræsi…</string>
-    <string name="system_install_uninstalling">Tek út uppsetningu…</string>
     <string name="system_install_warning">Þetta tekur allt að 10 sekúndum.</string>
     <string name="system_uninstall_button">Fjarlægja</string>
     <string name="swap_nfc_title">Snertu til að býtta</string>

@@ -167,8 +167,6 @@
 
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon niet verwijderen door een onbekende fout</string>
-    <string name="system_install_installing">Installeren…</string>
-    <string name="system_install_uninstalling">Deïnstalleren…</string>
     <string name="system_uninstall_button">Verwijderen</string>
 
     <string name="swap_nfc_title">Raak aan om uit te wisselen</string>

@@ -148,8 +148,6 @@
 
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
-    <string name="system_install_installing">安裝中…</string>
-    <string name="system_install_uninstalling">卸載中…</string>
     <string name="system_uninstall_button">卸載</string>
 
     <string name="swap_nfc_title">觸碰來交換</string>

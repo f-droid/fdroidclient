@@ -230,9 +230,7 @@
         akatsaren berri!
     </string>
     <string name="system_install_button_install">Instalatu</string>
-    <string name="system_install_installing">Instalatzen…</string>
     <string name="system_install_installing_rebooting">Instalatzen eta berrabiarazten…</string>
-    <string name="system_install_uninstalling">Desinstalatzen…</string>
     <string name="system_install_question">Pribilegiodun F-Droid Luzapena instalatu nahi duzu?</string>
     <string name="system_install_warning">Honek gehienez 10s emango ditu.</string>
     <string name="system_install_warning_lollipop">Honek gehienez 10s emango ditu eta ondoren gailua <b>berrabiarazi</b> egingo da.</string>
