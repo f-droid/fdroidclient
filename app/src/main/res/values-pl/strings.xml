@@ -568,4 +568,6 @@
     <string name="antidisabledalgorithmlist">Ta aplikacja posiada słabą sygnaturę bezpieczeństwa</string>
     <string name="antiknownvulnlist">Ta aplikacja ma znaną podatność bezpieczeństwa</string>
 
+    <string name="hide_all_notifications">Ukryj wszystkie powiadomienia</string>
+    <string name="hide_all_notifications_summary">Nie pozwalaj akcjom wyświetlać się na pasku stanu lub w obszarze powiadomień.</string>
     </resources>

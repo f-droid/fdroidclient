@@ -524,4 +524,6 @@
     <string name="antidisabledalgorithmlist">這個應用程式的安全簽章較弱</string>
     <string name="antiknownvulnlist">這個應用程式包含了已知的安全性漏洞</string>
 
+    <string name="hide_all_notifications">隱藏所有通知</string>
+    <string name="hide_all_notifications_summary">避免在狀態列和通知欄中顯示所有操作。</string>
     </resources>

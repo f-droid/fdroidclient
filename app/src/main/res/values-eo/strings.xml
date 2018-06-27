@@ -543,4 +543,6 @@
     <string name="antidisabledalgorithmlist">Tiu ĉi aplikaĵo posedas malfortan sekurecan subskribon</string>
     <string name="antiknownvulnlist">Tiu ĉi aplikaĵo posedas sekurecan vundeblon</string>
 
+    <string name="hide_all_notifications">Kaŝi ĉiujn sciigojn</string>
+    <string name="hide_all_notifications_summary">Malpermesi al agoj anonci sin ĉe la stata breto aŭ la sciiga areo.</string>
     </resources>

@@ -10,7 +10,7 @@
 
     <string name="update_interval">תדירות עדכון אוטומטי</string>
     <string name="notify">הצגת עדכונים זמינים</string>
-    <string name="notify_on">הצגת התרעה כאשר יש עדכונים</string>
+    <string name="notify_on">הצגת התראה כאשר יש עדכונים</string>
     <string name="system_installer">הרחבה מועדפת</string>
     <string name="system_installer_on">ניתן להשתמש בהרחבה מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
     <string name="uninstall_system">עדכון/הסרה של הרחבה מועדפת</string>
@@ -313,7 +313,7 @@
     <string name="useTorSummary">אילוץ העברת תעבורת ההורדה דרך Tor להגברת הפרטיות. דורש Orbot</string>
     <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
     <string name="update_auto_download">הורדת עדכונים אוטומטית</string>
-    <string name="update_auto_download_summary">העדכונים מתקבלים אוטומטית ותופיע הודעה להתקין אותם</string>
+    <string name="update_auto_download_summary">העדכונים מתקבלים אוטומטית ותופיע התראה להתקין אותם</string>
     <string name="download_pending">בהמתנה להתחלת ההורדה…</string>
 
     <string name="keep_install_history">לשמור על היסטוריית ההתקנות</string>
@@ -556,4 +556,6 @@
     <string name="antidisabledalgorithmlist">ליישומון זה יש חתימת אבטחה חלשה</string>
     <string name="antiknownvulnlist">יישומון זה מכיל חולשת אבטחה ידועה</string>
 
+    <string name="hide_all_notifications">הסתרת כל ההתראות</string>
+    <string name="hide_all_notifications_summary">למנוע מכל הפעולות להופיע בשורת המצב ובמגירת ההתראות.</string>
     </resources>

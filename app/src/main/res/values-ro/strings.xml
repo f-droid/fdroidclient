@@ -528,4 +528,6 @@
     <string name="swap_toast_could_not_enable_hotspot">Nu s-a putut crea hotspot Wi-Fi!</string>
 
     <string name="swap_toast_invalid_url">Adresă invalidă pentru schimb: %1$s</string>
+    <string name="hide_all_notifications">Ascunde toate notificările</string>
+    <string name="hide_all_notifications_summary">Se previne apariția mesajelor în bara de stare și in zona de notificare.</string>
     </resources>

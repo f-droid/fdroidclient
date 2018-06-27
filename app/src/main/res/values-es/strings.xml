@@ -559,4 +559,5 @@
     <string name="antidisabledalgorithmlist">Esta aplicación tiene una firma de seguridad débil</string>
     <string name="antiknownvulnlist">Esta aplicación contiene una vulnerabilidad de seguridad conocida</string>
 
+    <string name="hide_all_notifications">Ocultar todas las notificaciones</string>
     </resources>

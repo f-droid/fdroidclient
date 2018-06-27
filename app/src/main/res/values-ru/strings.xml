@@ -554,4 +554,6 @@
 
     <string name="over_network_never_summary">Никогда не загружать, используя это соединение</string>
     <string name="antidisabledalgorithmlist">Это приложение имеет слабую подпись безопасности</string>
+    <string name="hide_all_notifications">Скрыть все уведомления</string>
+    <string name="hide_all_notifications_summary">Запретить показ всех действий в строке состояния и панели уведомлений.</string>
     </resources>
