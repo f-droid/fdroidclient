@@ -1,3 +1,15 @@
+### 1.3-alpha3 (2018-06-27)
+
+* fix bug that disabled Privileged Extension
+
+* prevent crash loop after rapid install/uninstall cycling
+
+* add expert option to send debug version/UUID on each HTTP download
+
+* allow user to disable ACRA entirely with a preference
+
+* basic Install History viewer, available only when logging is enabled
+
 ### 1.3-alpha2 (2018-06-25)
 
 * Settings improvements
