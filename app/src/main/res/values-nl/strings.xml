@@ -536,4 +536,6 @@
     <string name="antidisabledalgorithmlist">Deze app heeft een zwakke beveiligingshandtekening</string>
     <string name="antiknownvulnlist">Deze app bevat een bekend probleem in de beveiliging</string>
 
+    <string name="hide_all_notifications">Alle meldingen verbergen</string>
+    <string name="hide_all_notifications_summary">Voorkom dat handelingen weergegeven worden in de statusbalk en meldingen.</string>
     </resources>

@@ -575,4 +575,6 @@
     <string name="antidisabledalgorithmlist">Aplikazio honek segurtasun sinadura ahula du</string>
     <string name="antiknownvulnlist">Aplikazio honek segurtasun arazo ezagun bat du</string>
 
+    <string name="hide_all_notifications">Ezkutatu jakinarazpen guztiak</string>
+    <string name="hide_all_notifications_summary">Eragotzi ekintza guztiei egoera barran eta jakinarazpenen tiraderan agertzea.</string>
     </resources>

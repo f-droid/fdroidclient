@@ -358,8 +358,8 @@
     <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
     <string name="keep_install_history">Sarva s\'istòria de sas installatziones</string>
-    <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in
-\n F-Droid</string>
+    <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in 
+\n un\'archìviu locale</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">Cùmbida unu cafè a sos isvilupadores de %1$s!</string>
@@ -574,4 +574,6 @@
     <string name="antidisabledalgorithmlist">Custa aplicatzione tenet una firma de seguresa dèbile</string>
     <string name="antiknownvulnlist">Custa aplicatzione tenet una vulnerabilidade de seguresa connota</string>
 
+    <string name="hide_all_notifications">Istichi totu sas notìficas</string>
+    <string name="hide_all_notifications_summary">Non permìtere a sas atzione de èssere ammustradas in sa barra de istadu e in sa lista de sas notìficas.</string>
     </resources>

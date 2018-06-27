@@ -551,4 +551,6 @@
     <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
     <string name="antiknownvulnlist">Cette application contient une vulnérabilité de sécurité</string>
 
+    <string name="hide_all_notifications">Masquer toutes les notifications</string>
+    <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>
     </resources>

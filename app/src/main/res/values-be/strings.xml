@@ -590,4 +590,6 @@
     <string name="antidisabledalgorithmlist">Гэтая праграма мае слабы подпіс бяспекі</string>
     <string name="antiknownvulnlist">Гэтая праграма змяшчае вядомую ўразлівасць бяспекі</string>
 
+    <string name="hide_all_notifications">Схаваць усе абвесткі</string>
+    <string name="hide_all_notifications_summary">Прадухіліць усе дзеянні ад паказу ў радку стану і панэлі абвестак.</string>
     </resources>

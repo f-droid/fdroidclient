@@ -549,4 +549,6 @@
     <string name="antidisabledalgorithmlist">Bu uygulamanın zayıf güvenlikli imzası var</string>
     <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik zafiyeti içerir</string>
 
+    <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
+    <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     </resources>
