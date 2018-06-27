@@ -32,6 +32,7 @@ import org.fdroid.fdroid.data.Apk;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Objects;
 
 /**
  * This service handles the install process of apk files and
@@ -63,6 +64,9 @@ public class InstallerService extends JobIntentService {
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        if (apk == null) {
+            return;
+        }
         Installer installer = InstallerFactory.create(this, apk);
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
@@ -98,12 +102,17 @@ public class InstallerService extends JobIntentService {
     }
 
     /**
-     * Install an apk from {@link Uri}
+     * Install an apk from {@link Uri}.
+     * <p>
+     * This does not include the same level of input validation as
+     * {@link #uninstall(Context, Apk)} since this is called in one place where
+     * the input has already been validated.
      *
      * @param context     this app's {@link Context}
      * @param localApkUri {@link Uri} pointing to (downloaded) local apk file
      * @param downloadUri {@link Uri} where the apk has been downloaded from
      * @param apk         apk object of app that should be installed
+     * @see #uninstall(Context, Apk)
      */
     public static void install(Context context, Uri localApkUri, Uri downloadUri, Apk apk) {
         Intent intent = new Intent(context, InstallerService.class);
@@ -115,12 +124,24 @@ public class InstallerService extends JobIntentService {
     }
 
     /**
-     * Uninstall an app
+     * Uninstall an app.  {@link Objects#requireNonNull(Object)} is used to
+     * enforce the {@code @NonNull} requirement, since that annotation alone
+     * is not enough to catch all possible nulls.
+     * <p>
+     * If you quickly cycle between installing an app and uninstalling it, then
+     * {@link org.fdroid.fdroid.data.App#installedApk} will still be null when
+     * {@link org.fdroid.fdroid.AppDetails2#startUninstall()} calls
+     * this method.  It is better to crash earlier here, before the {@link Intent}
+     * is sent with a null {@link Apk} instance since this service is set to
+     * receive Sticky Intents.  That means they will automatically be resent
+     * by the system until they successfully complete.  If an {@code Intent}
+     * with a null {@code Apk} is sent, it'll crash.
      *
      * @param context this app's {@link Context}
      * @param apk     {@link Apk} instance of the app that will be uninstalled
      */
-    public static void uninstall(Context context, Apk apk) {
+    public static void uninstall(Context context, @NonNull Apk apk) {
+        Objects.requireNonNull(apk);
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
         intent.putExtra(Installer.EXTRA_APK, apk);
