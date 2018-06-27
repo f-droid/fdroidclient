@@ -227,9 +227,7 @@
         Installationsmetoden er ikke understøttet af alle Android distributioner, konsulter venligst F-Droid
         fejldatabasen for mere information.
     </string>
-    <string name="system_install_installing">Installerer…</string>
     <string name="system_install_installing_rebooting">Installerer og genstarter…</string>
-    <string name="system_install_uninstalling">Afinstallerer…</string>
     <string name="system_install_question">Vil du installere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_install_warning">Dette tager op til 10 sekunder.</string>
     <string name="system_install_warning_lollipop">Dette tager op til 10 sekunder og enheden vil <b>genstarte</b> bagefter.</string>

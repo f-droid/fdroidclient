@@ -162,8 +162,6 @@
     <string name="category_Time">Temps</string>
     <string name="category_Writing">Per a escriure</string>
 
-    <string name="system_install_installing">Instal·lant…</string>
-    <string name="system_install_uninstalling">S\'està desinstal·lant…</string>
     <string name="system_uninstall_button">Desinstal·la</string>
 
     <string name="unstable_updates">Actualitzacions inestables</string>

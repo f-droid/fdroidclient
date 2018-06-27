@@ -176,8 +176,6 @@
     <string name="category_Sports_Health">Sport &amp; Santé</string>
     <string name="empty_can_update_app_list">Félicitations !\nVos applications sont à jour.</string>
 
-    <string name="system_install_installing">Installation…</string>
-    <string name="system_install_uninstalling">Désinstallation…</string>
     <string name="swap_nfc_description">Si votre ami possède F-Droid, activez les communications NFC et rapprochez vos
         appareils.
     </string>

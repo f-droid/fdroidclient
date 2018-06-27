@@ -223,9 +223,7 @@
     <string name="system_install_button_install">Установить</string>
     <string name="system_install_post_success">Привилегированное расширение F-Droid успешно установлено</string>
     <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
-    <string name="system_install_installing">Установка…</string>
     <string name="system_install_installing_rebooting">Установка и перезагрузка…</string>
-    <string name="system_install_uninstalling">Удаление…</string>
     <string name="downloading">Загрузка…</string>
 
     <string name="system_uninstall_button">Удалить</string>

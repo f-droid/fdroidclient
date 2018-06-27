@@ -164,8 +164,6 @@
     <string name="system_install_post_fail">התקנת הרחבת F-Droid מועדף נכשלה</string>
     <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה. מצב זה מאפשר ליישומון F-Droid להתקין, לשדרג ולהסיר התקנת יישומונים באופן עצמאי.</string>
     <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, נא לפנות למערכת מעקב הבאגים של F-Droid לקבלת מידע נוסף.</string>
-    <string name="system_install_installing">מתבצעת התקנה…</string>
-    <string name="system_install_uninstalling">מתבצעת הסרה…</string>
     <string name="system_install_question">להתקין את הרחבת F-Droid מועדף?</string>
     <string name="system_install_warning_lollipop">פעולה זו אורכת עד 10 שניות וההתקן <b>יאותחל</b> לאחר מכן.</string>
     <string name="system_uninstall">להסיר את הרחבת F-Droid מועדף?</string>

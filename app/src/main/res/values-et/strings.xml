@@ -250,9 +250,7 @@
     <string name="system_install_post_fail_message">F-Droid privilegeeritud laienduse paigaldamine nurjus. Kõik Androidi
         väljalasked ei toeta paigaldamise meetodit. Lisateavet leiad F-Droidi veahaldusest.
     </string>
-    <string name="system_install_installing">Paigaldamine…</string>
     <string name="system_install_installing_rebooting">Paigaldamine ja taaskäivitamine…</string>
-    <string name="system_install_uninstalling">Eemaldamine…</string>
     <string name="system_install_question">Kas sa soovid paigaldada F-Droidi priviligeeritud laienduse?</string>
     <string name="system_install_warning">Selleks kulub kuni 10 sekundit.</string>
     <string name="system_install_warning_lollipop">Selleks kulub kuni 10 sekundit ja seadmele tehakse hiljem<b> taaskäivitus</b>.</string>

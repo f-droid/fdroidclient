@@ -144,9 +144,7 @@
     <string name="category_Time">Час</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
     <string name="system_install_button_install">Встановити</string>
-    <string name="system_install_installing">Встановлення…</string>
     <string name="system_install_installing_rebooting">Встановлення та перезавантаження…</string>
-    <string name="system_install_uninstalling">Видалення…</string>
     <string name="system_uninstall_button">Видалити</string>
 
     <string name="swap_join_same_wifi">Приєднайтеся до того самого Wi-Fi, що і ваш друг</string>

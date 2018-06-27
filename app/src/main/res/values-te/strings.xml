@@ -251,8 +251,6 @@
     <string name="empty_search_available_app_list">సరిపోలే అనువర్తనాలు అందుబాటులో లేవు.</string>
 
     <string name="install_error_unknown">తెలియని లోపం కారణంగా వ్యవస్థాపించడం విఫలమైంది</string>
-    <string name="system_install_installing">స్థాపిస్తోంది…</string>
-    <string name="system_install_uninstalling">నిర్మూలిస్తోంది…</string>
     <string name="system_install_warning">ఇది 10 సెకన్లు వరకు పడుతుంది.</string>
     <string name="nearby_splash__find_people_button">నా సమీపంలో ఉన్న వ్యక్తులను కనుగొనండి</string>
     <string name="swap_nfc_title">మారడానికి తాకండి</string>

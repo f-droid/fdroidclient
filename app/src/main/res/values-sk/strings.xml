@@ -207,8 +207,6 @@
     <string name="uninstall_error_unknown">Neodinštalované vďaka neznámej chybe</string>
     <string name="system_install_post_success">Privilegovaný doplnok F-Droidu bol nainštalovaný</string>
     <string name="system_install_post_fail">Inštalácia Oprávneného Rozšírenia F-Droidu zlyhala</string>
-    <string name="system_install_installing">Inštalovanie…</string>
-    <string name="system_install_uninstalling">Odinštalovávanie…</string>
     <string name="system_install_question">Chcete nainštalovať F-Droid ako systémovú aplikáciu?</string>
     <string name="system_install_warning_lollipop">Chcete nainštalovať privilegovaný F-Droid?
 \nTrvá to do 10s a zariadenie sa následne<b>reštartuje</b>.</string>

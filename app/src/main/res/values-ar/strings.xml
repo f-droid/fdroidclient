@@ -233,9 +233,7 @@
     <string name="system_install_post_fail">فشل تثبيت إضافة اف-درويد المميزة</string>
     <string name="system_install_post_success_message">تم تثبيت إضافة اف-درويد المميزة بنجاح. وهذا يسمح لإف-درويد بتثبيت وتحديث وإلغاء تثبيت التطبيقات من تلقاء نفسه.</string>
     <string name="system_install_post_fail_message">فشل التثبيت إضافة اف-درويد المميزة. طريقة التثبيت غير مدعومة لجميع توزيعات الأندرويد، يرجى الرجوع إلى اف-درويد لتعقب علة الأخطاء لمزيد من المعلومات.</string>
-    <string name="system_install_installing">جاري التثبيت …</string>
     <string name="system_install_installing_rebooting">جاري التثبيت وإعادة التشغيل …</string>
-    <string name="system_install_uninstalling">جاري إلغاء التثبيت …</string>
     <string name="system_install_question">هل تريد تثبيت إضافة اف-درويد المميزة ؟</string>
     <string name="system_install_warning">ذلك سيستغرق فترة تصل إلى 10 ثواني.</string>
     <string name="system_install_warning_lollipop">ذلك سيستغرق فترة تصل إلى 10 ثواني، وسوف يتم <b>إعادة تشغيل</b> بعد ذلك.</string>

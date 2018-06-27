@@ -226,9 +226,7 @@
     <string name="system_install_button_install">Installieren</string>
     <string name="system_install_post_success">Rechteerweiterung für F-Droid erfolgreich installiert</string>
     <string name="system_install_post_fail">Installation der F-Droid-Rechteerweiterung fehlgeschlagen</string>
-    <string name="system_install_installing">Installation läuft …</string>
     <string name="system_install_installing_rebooting">Installation und Neustart läuft …</string>
-    <string name="system_install_uninstalling">Wird deinstalliert …</string>
     <string name="system_install_warning">Das wird bis zu 10 Sekunden dauern.</string>
     <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend <b>neu gestartet</b>.</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>

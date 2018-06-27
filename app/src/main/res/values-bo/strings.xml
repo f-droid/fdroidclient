@@ -265,9 +265,7 @@
     <string name="system_install_post_success">ཨེཕ་རོཌ་ཁེ་ཕན་འཕཪ་མ་འགྲིག་བཅུག་བྱས་ཟིན།</string>
     <string name="system_install_post_fail">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="status_inserting_x_apps">མཉེན་ཆས་ཀྱི་ཞིབ་ཕྲ་ཉར་ཚགས་བྱེད་བཞིན་པ། (%1$d/%2$d) ནས་ %3$s</string>
-    <string name="system_install_installing">འགྲིག་བཅུག་བྱེད་བཞིན་པ།…</string>
     <string name="system_install_installing_rebooting">འགྲིག་བཅུག་དང་སྐྱར་སློང་བྱེད་བཞིན་པ།….…</string>
-    <string name="system_install_uninstalling">འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་བཞིན་པ།……</string>
     <string name="system_install_question">ཁྱེད་རང་ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག་བྱེད་འདོད་ཡོད་དམ།</string>
     <string name="system_install_warning">འདི་ལ་སྐར་ཆ་ ༡༠ བར་འགོར་གྱི་རེད།</string>
     <string name="system_install_warning_lollipop">འདི་ལ་སྐར་ཆ་ ༡༠ ཙམ་འགོར་གྱི་རེད་ལ་ཡོ་བྱད་འདི་<b> 1སྐྱར་སློང་</b> 2 རྗེས་ལ།</string>

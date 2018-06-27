@@ -224,9 +224,7 @@
         συστήματος. Η μέθοδος εγκατάστασης δεν υποστηρίζεται από όλες τις διανομές Android, μπορείτε να συμβουλευτείτε
         τον ανιχνευτή σφαλμάτων του F-Droid για περισσότερες πληροφορίες.
     </string>
-    <string name="system_install_installing">Εγκατάσταση…</string>
     <string name="system_install_installing_rebooting">Εγκατάσταση και επανεκκίνηση…</string>
-    <string name="system_install_uninstalling">Απεγκατάσταση…</string>
     <string name="system_install_question">Θέλετε να εγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος;</string>
     <string name="system_install_warning">Αυτό διαρκεί έως 10 δευτερόλεπτα.</string>
     <string name="system_install_warning_lollipop">Αυτό διαρκεί έως 10 δευτερόλεπτα και η συσκευή θα <b>επανεκκινηθεί</b> έπειτα.</string>

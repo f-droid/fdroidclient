@@ -263,9 +263,7 @@
     <string name="system_install_post_fail">نصب افزونهٔ مجاز اف‌دروید ناموفق بود</string>
     <string name="system_install_post_success_message">افزونه ی مجاز اف‌دروید با موفّقیت نصب شد. این کار به اف‌دروید اجازه می‌دهد برنامه ها را توسّط خودش نصب کرده، ارتفا دهد و حدف کند.</string>
     <string name="system_install_post_fail_message">نصب افزونه ی مجاز اف‌دروید شکست خورد. روش نصب توسّط همهٔ توزیع‌های اندروید پشتیبانی نمی‌شود. لطفاً برای اطّلاعات بیش‌تر با ردیاب مشکل اف‌دروید مشاوره کنید.</string>
-    <string name="system_install_installing">در حال نصب…</string>
     <string name="system_install_installing_rebooting">در حال نصب و راه‌انداری دوباره…</string>
-    <string name="system_install_uninstalling">در حال حذف نصب…</string>
     <string name="system_install_question">می‌خواهید افزونهٔ مجاز اف‌دروید را نصب کنید؟</string>
     <string name="system_install_warning">این کار بیش از ۱۰ ثانیه زمان می‌برد.</string>
     <string name="system_install_warning_lollipop">این کار بیش از ۱۰ ثانیه زمان برده و پس از آن، افزاره <b>راه‌اندازی مجدّد</b> خواهد شد.</string>

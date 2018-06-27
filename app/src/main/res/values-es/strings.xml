@@ -197,8 +197,6 @@
     <string name="system_install_post_fail">Fallo en la instalación de la extensión de F-Droid con permisos de sistema
     </string>
     <string name="system_install_post_success_message">Se ha instalado la extensión privilegiada de F-Droid. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
-    <string name="system_install_installing">Instalando…</string>
-    <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Deseas instalar la extensión de F-Droid con permisos de sistema?</string>
     <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo se <b>reiniciará</b>.</string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>

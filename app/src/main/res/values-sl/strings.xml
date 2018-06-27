@@ -298,9 +298,7 @@
     <string name="uninstall_error_unknown">Odstanitev ni uspela zaradi neznane napake</string>
     <string name="system_install_post_success">F-Droid priviligirana razširitev je nameščen</string>
     <string name="system_install_post_fail">Namestitev F-Droid priviligirane razširitve ni uspela</string>
-    <string name="system_install_installing">Nameščanje poteke…</string>
     <string name="system_install_installing_rebooting">Nameščanje in ponovni zagon sta v teku…</string>
-    <string name="system_install_uninstalling">Odstranjevanje…</string>
     <string name="system_install_warning">To lahko traja do 10 sekund.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ni interneta? Dobite aplikacije od ljudi blizu Vas!</string>
     <string name="nearby_splash__find_people_button">Najdite ljudi blizu mene</string>

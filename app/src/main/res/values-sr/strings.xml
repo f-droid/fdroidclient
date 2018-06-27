@@ -188,8 +188,6 @@
 
     <string name="system_install_post_success">Ф-дроид повлашћено проширење је уграђено</string>
     <string name="system_install_post_fail">Инсталација повлашћеног проширења за Ф-дроид није успела</string>
-    <string name="system_install_installing">Инсталирам…</string>
-    <string name="system_install_uninstalling">Уклањам…</string>
     <string name="system_uninstall_button">Уклони</string>
 
     <string name="swap_nfc_title">Тапните за размену</string>

@@ -180,8 +180,6 @@
     <string name="system_install_post_fail">Instalacja uprzywilejowanego dodatku nie powiodła się</string>
     <string name="system_install_post_success_message">Zainstalowano uprzywilejowany dodatek. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
     <string name="system_install_post_fail_message">Instalacja uprzywilejowanego dodatku nie powiodła się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
-    <string name="system_install_installing">Instalowanie…</string>
-    <string name="system_install_uninstalling">Dezinstalacja…</string>
     <string name="system_install_question">Czy chcesz zainstalować uprzywilejowany dodatek?</string>
     <string name="system_uninstall">Czy chcesz odinstalować uprzywilejowany dodatek?</string>
     <string name="system_uninstall_button">Odinstaluj</string>

@@ -210,9 +210,7 @@
     <string name="system_install_post_fail">F-Droid 특별 권한 확장 기능의 설치가 실패됨</string>
     <string name="system_install_post_success_message">F-Droid 특별 권한 확장 기능이 설치되었습니다. 이는 F-Droid가 자체적으로 앱을 설치, 업데이트 및 제거할 수 있게 합니다.</string>
     <string name="system_install_post_fail_message">F-Droid 특별 권한 확장 기능의 설치가 실패했습니다. 설치 방법은 모든 Android 배포판에서 지원되는 것은 아닙니다. F-Droid 버그 트래커에서 더 많은 정보를 참조하세요.</string>
-    <string name="system_install_installing">설치 중…</string>
     <string name="system_install_installing_rebooting">설치 및 다시 시작 중…</string>
-    <string name="system_install_uninstalling">제거 중…</string>
     <string name="system_install_question">F-Droid 특별 권한 확장 기능을 설치하시겠습니까?</string>
     <string name="system_install_warning">최대 10초가 걸립니다.</string>
     <string name="system_install_warning_lollipop">최대 10초가 걸리며 이후 장치가 <b>다시 시작</b>됩니다.</string>

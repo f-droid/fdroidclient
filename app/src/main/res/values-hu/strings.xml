@@ -171,9 +171,7 @@
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>
     <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készítsen hibajelentést!</string>
     <string name="system_install_button_install">Telepítés</string>
-    <string name="system_install_installing">Telepítés…</string>
     <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
-    <string name="system_install_uninstalling">Eltávolítás…</string>
     <string name="system_install_warning">Ez legfeljebb 10 másodpercig tart.</string>
     <string name="system_install_warning_lollipop">Ez akár legfeljebb 10 másodpercig tart, majd az eszköz <b>újraindul</b>.</string>
     <string name="system_uninstall_button">Eltávolítás</string>

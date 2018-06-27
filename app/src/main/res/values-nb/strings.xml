@@ -183,9 +183,7 @@
     <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_installing">Installerer…</string>
     <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
-    <string name="system_install_uninstalling">Avinstallerer…</string>
     <string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
     <string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
     <string name="system_uninstall_button">Avinstaller</string>

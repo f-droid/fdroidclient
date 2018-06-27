@@ -258,9 +258,7 @@
         Instalacijska metoda nije podržana na svim Android verzijama, pogledajte F-Droid bug tracker za više
         informacija.
     </string>
-    <string name="system_install_installing">Instalacija…</string>
     <string name="system_install_installing_rebooting">Instalacija i ponovno pokretanje…</string>
-    <string name="system_install_uninstalling">Uklanjanje…</string>
     <string name="system_install_question">Želite li instalirati F-Droid privilegirano proširenje?</string>
     <string name="system_install_warning">Ovo može potrajati desetak sekundi.</string>
     <string name="system_install_warning_lollipop">Ovo može potrajati desetak sekundi, nakon čega će se Vaš uređaj<b>

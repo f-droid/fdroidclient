@@ -265,9 +265,7 @@
         усталёўкі не падтрымліваецца ўсімі сістэмамі Android. Калі ласка, завітайце на форум F-Droid за дадатковай
         інфармацыяй.
     </string>
-    <string name="system_install_installing">Усталёўка…</string>
     <string name="system_install_installing_rebooting">Усталёўка і перазагрузка…</string>
-    <string name="system_install_uninstalling">Выдаленне…</string>
     <string name="system_install_question">Жадаеце ўсталяваць прывілеваны дадатак F-Droid?</string>
     <string name="system_install_warning">Гэта зойме прыблізнва 10 секунд.</string>
     <string name="system_install_warning_lollipop">Гэта зойме прыблізна 10 секунд, пасля чаго прылада будзе<b> перазагружана</b>.</string>

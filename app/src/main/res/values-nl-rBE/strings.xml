@@ -343,9 +343,7 @@
     <string name="system_install_post_fail">Installatie van F-Droid-systeemrechtenextensie is mislukt</string>
     <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, bijwerken en verwijderen.</string>
     <string name="system_install_post_fail_message">De installatie van de F-Droid-systeemrechtenextensie is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Bekijkt den F-Droid-bugtracker voor meer informatie.</string>
-    <string name="system_install_installing">Installeren…</string>
     <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
-    <string name="system_install_uninstalling">Verwijderen…</string>
     <string name="system_install_question">Wilt ge de F-Droid-systeemrechtenextensie installeren?</string>
     <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
     <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>

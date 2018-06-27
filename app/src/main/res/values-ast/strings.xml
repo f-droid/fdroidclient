@@ -224,8 +224,6 @@
     <string name="system_install_post_success">Instalada la estensión F-Droid con privilexos</string>
     <string name="system_install_post_fail">Fallo la instalación de la estensión F-Droid con privilexos</string>
     <string name="system_install_post_success_message">Instalada la estensión F-Droid con privilexos. Esto permite a F-Droid instalar, anovar y desinstalar apps por sigo mesmu.</string>
-    <string name="system_install_installing">Instalando…</string>
-    <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Quies instalar la estensión F-Droid con privilexos?</string>
     <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y el preséu <b>reaniciaráse</b> darréu.</string>
     <string name="system_uninstall">¿Quies desinstalar la estensión F-Droid con privilexos?</string>

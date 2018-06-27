@@ -79,7 +79,7 @@ abstract class InstallExtension {
     }
 
     public String getInstallingString() {
-        return context.getString(R.string.system_install_installing);
+        return context.getString(R.string.installing);
     }
 
     String getInstallPath() {

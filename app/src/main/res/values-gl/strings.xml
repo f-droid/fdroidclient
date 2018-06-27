@@ -163,9 +163,7 @@
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
     <string name="system_install_button_install">Instalar</string>
     <string name="system_install_post_fail">Fallou a instalación de F-Droid Privileged Extension</string>
-    <string name="system_install_installing">Instalando…</string>
     <string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
-    <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_warning">Levará máis de 10 segundos.</string>
     <string name="system_install_warning_lollipop">Levará arredor de 10 segundos e o dispositivo será <b>reiniciado</b> a continuación.</string>
     <string name="system_uninstall">Desexas desinstalar F-Droid Privileged Extension?</string>

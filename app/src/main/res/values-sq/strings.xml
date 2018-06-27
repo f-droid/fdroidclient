@@ -300,9 +300,7 @@
 </plurals>
 
     <string name="system_install_post_fail">Instalimi i F-Droid Zgjatjes së Privilegjuar ka dështuar</string>
-    <string name="system_install_installing">Duke instaluar…</string>
     <string name="system_install_installing_rebooting">Instalimi dhe rebooting…</string>
-    <string name="system_install_uninstalling">Duke çinstaluar…</string>
     <string name="system_install_question">A dëshironi të instaloni F-Droid Zgjerimin e Privilegjuar?</string>
     <string name="system_install_warning_lollipop">Kjo zgjat deri në 10 sekonda dhe pastaj pajisja do të <b>restartohet</b>.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nuk ka Internet? Merrni aplikacione nga njerëzit pranë jush!</string>

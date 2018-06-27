@@ -132,9 +132,7 @@
     <string name="category_System">系統</string>
     <string name="category_Time">時間</string>
     <string name="system_install_button_install">安裝</string>
-    <string name="system_install_installing">安裝中…</string>
     <string name="system_install_installing_rebooting">正在安裝和重新啟動…</string>
-    <string name="system_install_uninstalling">解除安裝中…</string>
     <string name="system_uninstall_button">解除安裝</string>
 
     <string name="open_qr_code_scanner">開啟 QR 碼掃描器</string>

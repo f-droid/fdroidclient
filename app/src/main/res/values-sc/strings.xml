@@ -205,8 +205,6 @@
         est faddida. Su mètodu de installatzione no est suportadu dae totu sas versiones de Android, pro piaghere
         consulta su sistema de gestione de sos errores de F-Droid pro àteras informatziones.
     </string>
-    <string name="system_install_installing">Installende…</string>
-    <string name="system_install_uninstalling">Disinstallende…</string>
     <string name="system_install_question">Boles installare s’estensione F-Droid cun permissos de sistema?</string>
     <string name="system_install_warning_lollipop">Custu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere <b>torradu a allùghere</b>.</string>
     <string name="system_uninstall">Boles disinstallare s’estensione F-Droid cun permissos de sistema?</string>

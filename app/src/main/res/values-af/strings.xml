@@ -261,9 +261,7 @@
         installasie metode word nie ondersteun deur alle Android weergawes nie, raadpleeg asseblief die F-Droid
         bug-tracker vir meer inligting.
     </string>
-    <string name="system_install_installing">Installeer tans…</string>
     <string name="system_install_installing_rebooting">Installeer en reboot…</string>
-    <string name="system_install_uninstalling">Deïnstalleer…</string>
     <string name="system_install_question">Wil F-Droid voorreg uitbreiding installeer?</string>
     <string name="system_install_warning">Dit neem tot 10 sekondes.</string>
     <string name="system_install_warning_lollipop">Dit neem tot 10 sekondes en die toestel sal <b>reboot</b> daarna.</string>

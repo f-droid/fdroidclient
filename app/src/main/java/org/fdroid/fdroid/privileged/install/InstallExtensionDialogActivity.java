@@ -309,7 +309,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                     FDroidApp.getCurThemeResId());
 
             progressDialog = new ProgressDialog(theme);
-            progressDialog.setMessage(getString(R.string.system_install_uninstalling));
+            progressDialog.setMessage(getString(R.string.uninstalling));
             progressDialog.setIndeterminate(true);
             progressDialog.setCancelable(false);
             progressDialog.show();

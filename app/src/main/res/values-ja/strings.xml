@@ -175,8 +175,6 @@
     <string name="system_install_post_fail">F-Droidの特権拡張機能のインストールに失敗しました</string>
     <string name="system_install_post_success_message">F-Droid特権拡張機能はインストール済みです。これによりF-Droidは独自にアプリをインストール、更新、アンインストールすることができます。</string>
     <string name="system_install_post_fail_message">F-Droidの特権拡張機能のインストールに失敗しました。すべてのAndroidでこのインストール方法が使用できる訳ではありません。詳細については、F-Droidのバグトラッカーを参照してください。</string>
-    <string name="system_install_installing">インストール中</string>
-    <string name="system_install_uninstalling">アンインストール中</string>
     <string name="system_install_question">F-Droidの特権拡張機能をインストールしてもよろしいですか？</string>
     <string name="system_install_warning_lollipop">これには約10秒程かかり、その後端末が<b>再起動</b> されます｡</string>
     <string name="system_uninstall">F-Droidの特権拡張機能をアンインストールしてもよろしいですか？</string>
