@@ -24,6 +24,16 @@
                     android:targetPackage="@string/applicationId"
                     android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"/>
         </android.support.v7.preference.PreferenceScreen>
+        <android.support.v7.preference.PreferenceScreen
+                android:key="installHistory"
+                android:visible="false"
+                android:title="@string/install_history"
+                android:summary="@string/install_history_summary">
+            <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="@string/applicationId"
+                    android:targetClass="org.fdroid.fdroid.views.InstallHistoryActivity"/>
+        </android.support.v7.preference.PreferenceScreen>
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/updates">
@@ -110,13 +120,16 @@
     <android.support.v7.preference.PreferenceCategory
             android:key="pref_category_privacy"
             android:title="@string/privacy">
-
+        <SwitchPreference
+                android:key="promptToSendCrashReports"
+                android:title="@string/prompt_to_send_crash_reports"
+                android:summary="@string/prompt_to_send_crash_reports_summary"
+                android:defaultValue="true"/>
         <SwitchPreference
                 android:defaultValue="false"
                 android:key="preventScreenshots"
                 android:summary="@string/preventScreenshots_summary"
                 android:title="@string/preventScreenshots_title"/>
-
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory
@@ -148,6 +161,12 @@
                 android:key="hideAllNotifications"
                 android:title="@string/hide_all_notifications"
                 android:summary="@string/hide_all_notifications_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
+                android:key="sendVersionAndUUIDToServers"
+                android:title="@string/send_version_and_uuid"
+                android:summary="@string/send_version_and_uuid_summary"
                 android:defaultValue="false"
                 android:dependency="expert"/>
         <CheckBoxPreference

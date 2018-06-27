@@ -111,12 +111,7 @@ public class RepoUpdater {
     }
 
     protected String getIndexUrl(@NonNull Repo repo) {
-        String url = repo.address + "/index.jar";
-        String versionName = Utils.getVersionName(context);
-        if (versionName != null) {
-            url += "?client_version=" + versionName;
-        }
-        return url;
+        return repo.address + "/index.jar";
     }
 
     public boolean hasChanged() {

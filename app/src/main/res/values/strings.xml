@@ -12,6 +12,10 @@
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
+    <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
+    <string name="prompt_to_send_crash_reports_summary">Gather data about crashes and ask to send them to the
+        developer
+    </string>
     <string name="cache_downloaded">Keep cached apps</string>
     <string name="updates">Updates</string>
     <string name="unstable_updates">Unstable updates</string>
@@ -20,8 +24,13 @@
     <string name="hide_all_notifications_summary">Prevent all actions from showing in the status bar and notification
         drawer.
     </string>
+    <string name="install_history">Install history</string>
+    <string name="install_history_summary">View the private log of all installs and uninstalls</string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
+    <string name="send_version_and_uuid">Send version and UUID to servers</string>
+    <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when
+        downloading, takes affect next app restart.</string>
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>

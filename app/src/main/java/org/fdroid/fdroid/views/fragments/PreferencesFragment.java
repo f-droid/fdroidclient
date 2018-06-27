@@ -337,10 +337,13 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_KEEP_INSTALL_HISTORY:
                 CheckBoxPreference p = (CheckBoxPreference) findPreference(key);
+                Preference installHistory = findPreference("installHistory");
                 if (p.isChecked()) {
                     InstallHistoryService.register(getActivity());
+                    installHistory.setVisible(true);
                 } else {
                     InstallHistoryService.unregister(getActivity());
+                    installHistory.setVisible(false);
                 }
                 break;
         }
