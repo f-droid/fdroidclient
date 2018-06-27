@@ -68,8 +68,6 @@ public class FileInstaller extends Installer {
 
     @Override
     protected void uninstallPackage() {
-        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
-
         Intent uninstallIntent = new Intent(context, FileInstallerActivity.class);
         uninstallIntent.setAction(FileInstallerActivity.ACTION_UNINSTALL_FILE);
         uninstallIntent.putExtra(Installer.EXTRA_APK, apk);
