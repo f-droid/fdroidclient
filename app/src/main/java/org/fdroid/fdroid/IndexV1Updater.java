@@ -335,8 +335,10 @@ public class IndexV1Updater extends RepoUpdater {
         repoPersister.commit(contentValues, repo.getId());
         profiler.log("Persited to database.");
 
-        processRepoPushRequests(requests);
-        Utils.debugLog(TAG, "Completed Repo Push Requests: " + requests);
+        if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {
+            processRepoPushRequests(requests);
+            Utils.debugLog(TAG, "Completed Repo Push Requests: " + requests);
+        }
     }
 
     private int getIntRepoValue(Map<String, Object> repoMap, String key) {
