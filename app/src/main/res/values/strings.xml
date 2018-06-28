@@ -345,6 +345,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </string>
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
+    <string name="share_repository">Share Repository</string>
     <string name="minsdk_or_later">%s or later</string>
     <string name="up_to_maxsdk">Up to %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
