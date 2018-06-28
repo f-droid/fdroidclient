@@ -4,29 +4,19 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ServiceInfo;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
-
-import org.fdroid.fdroid.AppUpdateStatusService;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
-import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.installer.InstallManagerService;
-import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.localrepo.CacheSwapAppsService;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.DownloaderService;
-import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 /**
  * This class is encapsulating all methods related to hiding the app from the launcher
  * and restoring it.
- *
+ * <p>
  * It can tell you whether the app is hidden, what the PIN to restore is
  * and show confirmation dialogs before hiding.
  */
@@ -107,17 +97,16 @@ public class HidingManager {
      * Stops all running services, so nothing can pop up and reveal F-Droid's existence on the system
      */
     private static void stopServices(Context context) {
-        context.stopService(new Intent(context, UpdateService.class));
-        context.stopService(new Intent(context, DownloaderService.class));
-        context.stopService(new Intent(context, InstallerService.class));
-        context.stopService(new Intent(context, CleanCacheService.class));
-        context.stopService(new Intent(context, WifiStateChangeService.class));
-        context.stopService(new Intent(context, SwapService.class));
-        context.stopService(new Intent(context, InstallManagerService.class));
-        context.stopService(new Intent(context, InstallHistoryService.class));
-        context.stopService(new Intent(context, CacheSwapAppsService.class));
-        context.stopService(new Intent(context, InstalledAppProviderService.class));
-        context.stopService(new Intent(context, AppUpdateStatusService.class));
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(),
+                    PackageManager.GET_SERVICES);
+            for (ServiceInfo serviceInfo : packageInfo.services) {
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(context, serviceInfo.name));
+                context.stopService(intent);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
-
 }
