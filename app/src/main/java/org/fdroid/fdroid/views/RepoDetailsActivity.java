@@ -22,7 +22,6 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +38,6 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
-import java.net.URI;
 import java.util.Locale;
 
 public class RepoDetailsActivity extends AppCompatActivity {
@@ -225,7 +223,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
-                startActivity(Intent.createChooser(intent, "gogogo"));
+                startActivity(Intent.createChooser(intent,
+                        getResources().getString(R.string.share_repository)));
         }
 
         return super.onOptionsItemSelected(item);
@@ -261,7 +260,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private void prepareShareMenuItems(Menu menu) {
         if (!TextUtils.isEmpty(repo.address)) {
             if (!TextUtils.isEmpty(repo.fingerprint)) {
-                shareUrl = Uri.parse(repo.address).buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).toString();
+                shareUrl = Uri.parse(repo.address).buildUpon()
+                        .appendQueryParameter("fingerprint", repo.fingerprint).toString();
             } else {
                 shareUrl = repo.address;
             }
