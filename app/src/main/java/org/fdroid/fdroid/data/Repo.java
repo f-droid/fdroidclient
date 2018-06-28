@@ -26,6 +26,7 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
@@ -61,46 +62,69 @@ public class Repo extends ValueObject {
 
     public static final int INT_UNSET_VALUE = -1;
     // these are never set by the Apk/package index metadata
+    @JsonIgnore
     protected long id;
+    @JsonIgnore
+    public boolean inuse;
+    @JsonIgnore
+    public int priority;
+    @JsonIgnore
+    public Date lastUpdated;
+    @JsonIgnore
+    public boolean isSwap;
+    /**
+     * last etag we updated from, null forces update
+     */
+    @JsonIgnore
+    public String lastetag;
+    /**
+     * How to treat push requests included in this repo's index XML. This comes
+     * from {@code default_repo.xml} or perhaps user input.  It should never be
+     * settable from the server-side.
+     */
+    @JsonIgnore
+    public int pushRequests = PUSH_REQUEST_IGNORE;
 
     public String address;
     public String name;
     public String description;
     public String icon;
-    /** index version, i.e. what fdroidserver built it - 0 if not specified */
+    /**
+     * index version, i.e. what fdroidserver built it - 0 if not specified
+     */
     public int version;
-    public boolean inuse;
-    public int priority;
-    /** The signing certificate, {@code null} for a newly added repo */
+    /**
+     * The signing certificate, {@code null} for a newly added repo
+     */
     public String signingCertificate;
     /**
      * The SHA1 fingerprint of {@link #signingCertificate}, set to {@code null} when a
      * newly added repo did not include fingerprint. It should never be an
-     * empty {@link String}, i.e. {@code ""} */
+     * empty {@link String}, i.e. {@code ""}
+     */
     public String fingerprint;
-    /** maximum age of index that will be accepted - 0 for any */
+    /**
+     * maximum age of index that will be accepted - 0 for any
+     */
     public int maxage;
-    /** last etag we updated from, null forces update */
-    public String lastetag;
-    public Date lastUpdated;
-    public boolean isSwap;
 
     public String username;
     public String password;
 
-    /** When the signed repo index was generated, used to protect against replay attacks */
+    /**
+     * When the signed repo index was generated, used to protect against replay attacks
+     */
     public long timestamp;
 
-    /** Official mirrors of this repo, considered automatically interchangeable */
+    /**
+     * Official mirrors of this repo, considered automatically interchangeable
+     */
     public String[] mirrors;
 
     /**
      * Mirrors added by the user, either by UI input or by attaching removeable storage
      */
     public String[] userMirrors;
-
-    /** How to treat push requests included in this repo's index XML */
-    public int pushRequests = PUSH_REQUEST_IGNORE;
 
     public Repo() {
     }
