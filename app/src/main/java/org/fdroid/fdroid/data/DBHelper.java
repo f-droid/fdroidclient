@@ -46,6 +46,12 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import org.json.*;
+
+
 /**
  * This is basically a singleton used to represent the database at the core
  * of all of the {@link android.content.ContentProvider}s used at the core
@@ -56,6 +62,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
+    private static final String EXTERNAL_REPO_PATH = "/oem/fdroid/default_repos.json";
 
     public static final int REPO_XML_ARG_COUNT = 8;
 
@@ -276,7 +283,72 @@ public class DBHelper extends SQLiteOpenHelper {
                     defaultRepos[offset + 7]  // pubkey
             );
         }
+
+        // Load a couple default repos from /oem in json format
+        loadExternalRepos(db);
     }
+
+
+    private String readFile(String file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader (file));
+        String         line = null;
+        StringBuilder  stringBuilder = new StringBuilder();
+        String         ls = System.getProperty("line.separator");
+
+        try {
+            while((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                stringBuilder.append(ls);
+            }
+            return stringBuilder.toString();
+        } finally {
+            reader.close();
+        }
+    }
+
+    private void loadExternalRepos(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Loading external repos: Opening " + EXTERNAL_REPO_PATH);
+
+        JSONObject repos_json;
+        try {
+            String json_contents = readFile(EXTERNAL_REPO_PATH);
+            repos_json = new JSONObject(json_contents);
+        } catch (Exception e) {
+            Utils.debugLog(TAG, "Error loading " + EXTERNAL_REPO_PATH);
+            return;
+        }
+        Utils.debugLog(TAG, EXTERNAL_REPO_PATH + " successfully opened.");
+
+        JSONArray repos;
+        try {
+            repos = repos_json.getJSONArray("default_repos");
+        } catch (JSONException e) {
+            Utils.debugLog(TAG, "Default repos json file has wrong root, should be 'default_repos'");
+            return;
+        }
+        Utils.debugLog(TAG, "Root 'default_repos' found.");
+
+        try {
+            for (int i = 0; i < repos.length(); i++) {
+                insertRepo(
+                    db,
+                    repos.getJSONObject(i).getString("name"),
+                    repos.getJSONObject(i).getString("address"),
+                    repos.getJSONObject(i).getString("description"),
+                    repos.getJSONObject(i).getString("version"),
+                    repos.getJSONObject(i).getString("enabled"),
+                    repos.getJSONObject(i).getString("priority"),
+                    repos.getJSONObject(i).getString("pushRequests"),
+                    repos.getJSONObject(i).getString("pubkey")
+                );
+            }
+        } catch (JSONException e) {
+            Utils.debugLog(TAG, "Error loading at least one external json repository from " + EXTERNAL_REPO_PATH);
+            return;
+        }
+        Utils.debugLog(TAG, "All external repositories successfully added!");
+    }
+
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
