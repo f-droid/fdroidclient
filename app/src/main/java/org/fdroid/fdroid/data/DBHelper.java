@@ -62,7 +62,7 @@ import org.json.*;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
-    private static final String EXTERNAL_REPO_PATH = "/oem/fdroid/default_repos.json";
+    private static final String OEM_DEFAULT_REPOS_PATH = "/oem/fdroid/default_repos.json";
 
     public static final int REPO_XML_ARG_COUNT = 8;
 
@@ -285,70 +285,62 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         // Load a couple default repos from /oem in json format
-        loadExternalRepos(db);
+        loadOemDefaultRepos(db);
     }
 
-
     private String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader (file));
-        String         line = null;
-        StringBuilder  stringBuilder = new StringBuilder();
-        String         ls = System.getProperty("line.separator");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        StringBuilder stringBuilder = new StringBuilder();
 
         try {
+            String ls = System.getProperty("line.separator");
+            String line = null;
             while((line = reader.readLine()) != null) {
                 stringBuilder.append(line);
                 stringBuilder.append(ls);
             }
-            return stringBuilder.toString();
         } finally {
             reader.close();
         }
+
+        return stringBuilder.toString();
     }
 
-    private void loadExternalRepos(SQLiteDatabase db) {
-        Utils.debugLog(TAG, "Loading external repos: Opening " + EXTERNAL_REPO_PATH);
+    private void loadOemDefaultRepos(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Loading external repos: Opening " + OEM_DEFAULT_REPOS_PATH);
 
-        JSONObject repos_json;
+        JSONArray reposArray;
         try {
-            String json_contents = readFile(EXTERNAL_REPO_PATH);
-            repos_json = new JSONObject(json_contents);
+            String jsonContents = readFile(OEM_DEFAULT_REPOS_PATH);
+            reposArray = new JSONArray(jsonContents);
         } catch (Exception e) {
-            Utils.debugLog(TAG, "Error loading " + EXTERNAL_REPO_PATH);
+            Utils.debugLog(TAG, "Error loading " + OEM_DEFAULT_REPOS_PATH);
+            Utils.debugLog(TAG, "Exception: " + e.getMessage());
             return;
         }
-        Utils.debugLog(TAG, EXTERNAL_REPO_PATH + " successfully opened.");
-
-        JSONArray repos;
-        try {
-            repos = repos_json.getJSONArray("default_repos");
-        } catch (JSONException e) {
-            Utils.debugLog(TAG, "Default repos json file has wrong root, should be 'default_repos'");
-            return;
-        }
-        Utils.debugLog(TAG, "Root 'default_repos' found.");
+        Utils.debugLog(TAG, OEM_DEFAULT_REPOS_PATH + " successfully opened.");
 
         try {
-            for (int i = 0; i < repos.length(); i++) {
+            for (int i = 0; i < reposArray.length(); i++) {
                 insertRepo(
                     db,
-                    repos.getJSONObject(i).getString("name"),
-                    repos.getJSONObject(i).getString("address"),
-                    repos.getJSONObject(i).getString("description"),
-                    repos.getJSONObject(i).getString("version"),
-                    repos.getJSONObject(i).getString("enabled"),
-                    repos.getJSONObject(i).getString("priority"),
-                    repos.getJSONObject(i).getString("pushRequests"),
-                    repos.getJSONObject(i).getString("pubkey")
+                    reposArray.getJSONObject(i).getString("name"),
+                    reposArray.getJSONObject(i).getString("address"),
+                    reposArray.getJSONObject(i).getString("description"),
+                    reposArray.getJSONObject(i).getString("version"),
+                    reposArray.getJSONObject(i).getString("enabled"),
+                    reposArray.getJSONObject(i).getString("priority"),
+                    reposArray.getJSONObject(i).getString("pushRequests"),
+                    reposArray.getJSONObject(i).getString("pubkey")
                 );
             }
-        } catch (JSONException e) {
-            Utils.debugLog(TAG, "Error loading at least one external json repository from " + EXTERNAL_REPO_PATH);
+        } catch (Exception e) {
+            Utils.debugLog(TAG, "Error loading at least one external json repository from " + OEM_DEFAULT_REPOS_PATH);
+            Utils.debugLog(TAG, "Exception: " + e.getMessage());
             return;
         }
         Utils.debugLog(TAG, "All external repositories successfully added!");
     }
-
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
