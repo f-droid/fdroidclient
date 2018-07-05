@@ -51,7 +51,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import org.json.*;
 
-
 /**
  * This is basically a singleton used to represent the database at the core
  * of all of the {@link android.content.ContentProvider}s used at the core
@@ -322,16 +321,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
         try {
             for (int i = 0; i < reposArray.length(); i++) {
+                JSONObject repo = reposArray.getJSONObject(i);
                 insertRepo(
                     db,
-                    reposArray.getJSONObject(i).getString("name"),
-                    reposArray.getJSONObject(i).getString("address"),
-                    reposArray.getJSONObject(i).getString("description"),
-                    reposArray.getJSONObject(i).getString("version"),
-                    reposArray.getJSONObject(i).getString("enabled"),
-                    reposArray.getJSONObject(i).getString("priority"),
-                    reposArray.getJSONObject(i).getString("pushRequests"),
-                    reposArray.getJSONObject(i).getString("pubkey")
+                    repo.getString("name"),
+                    repo.getString("address"),
+                    repo.getString("description"),
+                    repo.getString("version"),
+                    repo.getString("enabled"),
+                    repo.getString("priority"),
+                    repo.getString("pushRequests"),
+                    repo.getString("pubkey")
                 );
             }
         } catch (Exception e) {
