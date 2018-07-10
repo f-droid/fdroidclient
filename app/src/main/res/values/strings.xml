@@ -218,6 +218,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
     <string name="antidisabledalgorithmlist">This app has a weak security signature</string>
     <string name="antiknownvulnlist">This app contains a known security vulnerability</string>
+    <string name="antinosourcesince">The source code is no longer available, no updates possible.</string>
 
     <string name="display">Display</string>
 
