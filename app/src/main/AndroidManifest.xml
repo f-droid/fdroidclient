@@ -280,9 +280,6 @@
                 android:name=".data.InstalledAppProviderService"
                 android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
-        <service
-                android:name=".AppUpdateStatusService"
-                android:exported="false"/>
 
 
         <!-- Warning: Please add all new services to HidingManager -->

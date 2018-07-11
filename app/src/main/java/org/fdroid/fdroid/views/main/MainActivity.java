@@ -395,7 +395,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
      * There are a bunch of reasons why we would get notified about app statuses.
      * The ones we are interested in are those which would result in the "items requiring user interaction"
      * to increase or decrease:
-     * * Bulk updates of ready-to-install-apps (relating to {@link org.fdroid.fdroid.AppUpdateStatusService}.
      * * Change in status to:
      * * {@link AppUpdateStatusManager.Status#ReadyToInstall} (Causes the count to go UP by one)
      * * {@link AppUpdateStatusManager.Status#Installed} (Causes the count to go DOWN by one)

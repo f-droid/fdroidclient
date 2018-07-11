@@ -372,7 +372,6 @@ public class FDroidApp extends Application {
         }
 
         InstalledAppProviderService.compareToPackageManager(this);
-        AppUpdateStatusService.scanDownloadedApks(this);
 
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,
