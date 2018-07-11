@@ -295,6 +295,8 @@ public class PreferencesFragment extends PreferenceFragment
                     if (TextUtils.equals(Preferences.PREF_EXPERT, pref.getDependency())) {
                         pref.setVisible(isExpertMode);
                     }
+                }
+                if (changing) {
                     RecyclerView recyclerView = getListView();
                     recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount() - 1);
                 }
