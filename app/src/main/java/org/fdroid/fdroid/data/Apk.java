@@ -257,6 +257,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                             + "Schema.ApkTable.Cols.NAME set in order to calculate URL "
                             + "[package: " + packageName
                             + ", versionCode: " + versionCode
+                            + ", apkName: " + apkName
+                            + ", repoAddress: " + repoAddress
                             + ", repoId: " + repoId + "]");
         }
     }
