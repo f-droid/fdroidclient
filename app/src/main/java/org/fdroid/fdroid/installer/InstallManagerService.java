@@ -215,7 +215,7 @@ public class InstallManagerService extends Service {
 
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
 
-        registerApkDownloaderReceivers(urlString);
+        registerPackageDownloaderReceivers(urlString);
         getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
         getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256);
 
@@ -313,7 +313,11 @@ public class InstallManagerService extends Service {
                 DownloaderService.getIntentFilter(obbUrlString));
     }
 
-    private void registerApkDownloaderReceivers(String urlString) {
+    /**
+     * Register a {@link BroadcastReceiver} for tracking download progress for a
+     * give {@code urlString}.  There can be multiple of these registered at a time.
+     */
+    private void registerPackageDownloaderReceivers(String urlString) {
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
@@ -349,7 +353,7 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.ReadyToInstall, null);
 
                         localBroadcastManager.unregisterReceiver(this);
-                        registerInstallerReceivers(downloadUri);
+                        registerInstallReceiver(downloadUri);
 
                         Apk apk = appUpdateStatusManager.getApk(urlString);
                         if (apk != null) {
@@ -379,7 +383,11 @@ public class InstallManagerService extends Service {
                 DownloaderService.getIntentFilter(urlString));
     }
 
-    private void registerInstallerReceivers(Uri downloadUri) {
+    /**
+     * Register a {@link BroadcastReceiver} for tracking install progress for a
+     * give {@link Uri}.  There can be multiple of these registered at a time.
+     */
+    private void registerInstallReceiver(Uri downloadUri) {
 
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
