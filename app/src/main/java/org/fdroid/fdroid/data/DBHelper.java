@@ -57,7 +57,6 @@ import org.xmlpull.v1.*;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
-    
     public static final int REPO_XML_ARG_COUNT = 8;
 
     private static DBHelper instance;
@@ -245,6 +244,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_TABLE_PACKAGE);
         db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
@@ -290,20 +290,19 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /*
-    * Look for external repositories under { "/oem", "/odm", "/vendor", "/system" } in this order and only load the first one.
+    * Look for external repositories under { "/oem", "/odm", "/vendor", "/system" }
     * If ROOT is one of those paths and 'packageName' is the name of the package 
-    * that contains this class, then we look under 'root'/etc/'packageName'/default_repos.xml
+    * that contains this class, then we look under 'root'/etc/'packageName'/additional_repos.xml
     */
     private List<String> loadDefaultReposExternal() {
+        List<String> externalRepos = new LinkedList<>();
         final String packageName = context.getPackageName();
         for (String root : Arrays.asList("/oem", "/odm", "/vendor", "/system")) {
-            String defaultReposPath = root + "/etc/" + packageName + "/default_repos.xml";
+            String defaultReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
             try {
                 File defaultReposFile = new File(defaultReposPath);
-
-                // Only try loading external repos once. Even if this one fails, we will not try the other roots
                 if (defaultReposFile.exists() && defaultReposFile.isFile()) {
-                    return parseXmlRepos(defaultReposFile);
+                    externalRepos.addAll(parseXmlRepos(defaultReposFile));
                 }
             } catch (Exception e) {
                 Utils.debugLog(TAG, "Error loading " + defaultReposPath);
@@ -311,7 +310,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 break;
             }
         }
-        return new LinkedList<>();
+        return externalRepos;
     }
 
     private List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
