@@ -68,7 +68,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             }
         });
 
-        FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.btn_search);
+        FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.fab_search);
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
