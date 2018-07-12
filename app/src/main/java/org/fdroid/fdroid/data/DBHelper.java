@@ -43,13 +43,9 @@ import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import org.json.*;
+import java.util.*;
+import java.io.*;
+import org.xmlpull.v1.*;
 
 /**
  * This is basically a singleton used to represent the database at the core
@@ -261,10 +257,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
-        Log.debugLog(TAG, "TEST PACKAGE NAME: " + context.getPackage());
-
         // Always, load the internal defaults afterwards. This way, F-Droid native repos can never be deleted
-        List<String> default_repos = loadDefaultReposInternal();
+        List<String> defaultRepos = loadDefaultReposInternal();
 
         // Insert all the repos into the database
         if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
@@ -273,169 +267,93 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         // Load a couple external default repos from one of { "/oem", "/odm", "/vendor", "/system" }
-        int minPriority = (default_repos.size() / REPO_XML_ARG_COUNT) + 1;
-        default_repos.addAll(loadDefaultReposExternal(minPriority));
+        defaultRepos.addAll(loadDefaultReposExternal());
 
-        for (int i = 0; i < defaultRepos.size; i += REPO_XML_ARG_COUNT) {
+        Utils.debugLog(TAG, "defaultRepos.size(): " + defaultRepos.size());
+        for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
             insertRepo(
                     db,
-                    defaultRepos[i],     // name
-                    defaultRepos[i + 1], // address
-                    defaultRepos[i + 2], // description
-                    defaultRepos[i + 3], // version
-                    defaultRepos[i + 4], // enabled
-                    defaultRepos[i + 5], // priority
-                    defaultRepos[i + 6], // pushRequests
-                    defaultRepos[i + 7]  // pubkey
+                    defaultRepos.get(i),     // name
+                    defaultRepos.get(i + 1), // address
+                    defaultRepos.get(i + 2), // description
+                    defaultRepos.get(i + 3), // version
+                    defaultRepos.get(i + 4), // enabled
+                    defaultRepos.get(i + 5), // priority
+                    defaultRepos.get(i + 6), // pushRequests
+                    defaultRepos.get(i + 7)  // pubkey
             );
         }
     }
 
-    private void loadDefaultReposInternal() {
-        return new LinkedList<String>(context.getResources().getStringArray(R.array.default_repos));
+    private List<String> loadDefaultReposInternal() {
+        return new LinkedList<>(Arrays.asList(context.getResources().getStringArray(R.array.default_repos)));
     }
 
     /*
     * Look for external repositories under { "/oem", "/odm", "/vendor", "/system" } in this order and only load the first one.
     * If ROOT is one of those paths and 'packageName' is the name of the package 
-    * that contains this class, then we look under ROOT/etc/'packageName'/default_repos.xml
+    * that contains this class, then we look under 'root'/etc/'packageName'/default_repos.xml
     */
-    private loadDefaultReposExternal(int minPriority) {
-        final String packageName = context.getPackage();
-        for (String root : { "/oem", "/odm", "/vendor", "/system" }) {
+    private List<String> loadDefaultReposExternal() {
+        final String packageName = context.getPackageName();
+        for (String root : Arrays.asList("/oem", "/odm", "/vendor", "/system")) {
             String defaultReposPath = root + "/etc/" + packageName + "/default_repos.xml";
             try {
                 File defaultReposFile = new File(defaultReposPath);
+
                 // Only try loading external repos once. Even if this one fails, we will not try the other roots
                 if (defaultReposFile.exists() && defaultReposFile.isFile()) {
-                    return parseXmlRepos(defaultReposFile, minPriority);
+                    return parseXmlRepos(defaultReposFile);
                 }
             } catch (Exception e) {
                 Utils.debugLog(TAG, "Error loading " + defaultReposPath);
                 Utils.debugLog(TAG, "Exception: " + e.getMessage());
-                return;
+                break;
             }
         }
+        return new LinkedList<>();
     }
 
-    private List<String> parseXmlRepos(File defaultReposFile, int minPriority) {
-        List<String> default_repos = LinkedList<>();
-        try {
-            InputStream xmlInputStream = new FileInputStream(defaultReposFile);
-            XmlPullParserFactoryfactory = XmlPullParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            XmlPullParser parser = factory.newPullParser();
-            parser.setInput(is, "UTF-8");
-    
-            // Type of piece of xml file, can be END_DOCUMENT, TEXT, END_TAG, START_TAG, ... We only care about TEXT.
-            int eventType = parser.getEventType();
+    private List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
+        List<String> defaultRepos = new LinkedList<>();
+        InputStream xmlInputStream = null;
+        xmlInputStream = new FileInputStream(defaultReposFile);
+        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        XmlPullParser parser = factory.newPullParser();
+        parser.setInput(xmlInputStream, "UTF-8");
 
-            static final int PRIORITY_INDEX = 5;
-            int indexItem = 0;
-            /* Walk through all TEXT pieces of the xml file and put them into our list of default repos.
-            * This could be improved by structuring the content for example into a list of lists where each contained list represents a repository, but
-            * we do it the traditional way.
-            */
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String tagname = parser.getName();
-                switch (eventType) {
-                    /*
-                    * This checks whether the current repository does not violate the priority constraint: Its priority is higher or equal to minPrioriry.
-                    * minPriority is at least the number of internal repos plus one. This way, the external repos can never be shown before the internal ones in the UI.
-                    *
-                    * Very ugly though. We count the number of items read in the xml file, because the items are not named but just rowed one after another.
-                    * We also skip one event here, namely the text event after the START_TAG event.
-                    */
-                    case XmlPullParser.START_TAG:
-                        if (indexItem == PRIORITY_INDEX) {
-                            parser.next();
-                            int priority = Integer.parseInt(parser.getText());
-                            // If some repository violates the priority constraint, immediately dismiss this whole external set of repos
-                            if (priority > minPriority) {
-                                return new LinkedList<>();
-                            }
-                        }
-                        indexItem++;
-                        if (indexItem > 7) { indexItem -= 7; }
-                        break;
-                    case XmlPullParser.TEXT:
-                        default_repos.add(parser.getText()); // This is a piece of real information in the xml file
-                        break;
-                }
-                eventType = parser.next();
+        // Type of piece of xml file, can be END_DOCUMENT, TEXT, END_TAG, START_TAG, ...
+        int eventType = parser.getEventType();
+
+        boolean isItem = false;
+        /* Walk through all TEXT pieces of the xml file and put them into our list of default repos.
+        * This could be improved by structuring the content for example into a list of lists where each contained list represents a repository, but
+        * we do it the traditional way.
+        */
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            String tagname = parser.getName();
+            switch (eventType) {
+                case XmlPullParser.START_TAG:
+                    if (tagname.equals("item")) {
+                        isItem = true;
+                    }
+                    break;
+                case XmlPullParser.END_TAG:
+                    isItem = false;
+                    break;
+                case XmlPullParser.TEXT:
+                    if (isItem) {
+                        defaultRepos.add(new String(parser.getText())); // This is a piece of real information in the xml file
+                    }
+                    break;
             }
-    
-        } catch (XmlPullParserException e) {
-            Utils.debugLog(TAG, "Error loading " + defaultReposFile.getAbsolutePath());
-            Utils.debugLog(TAG, "Exception: " + e.getMessage());
-            return;
-        } catch (IOException e) {
-            Utils.debugLog(TAG, "Error loading " + defaultReposFile.getAbsolutePath());
-            Utils.debugLog(TAG, "Exception: " + e.getMessage());
-            return;
+            
+            eventType = parser.next();
         }
-        return default_repos;
+        xmlInputStream.close();
+        return defaultRepos;
     }
-
-    /*
-    * The following two functions might be useful in the future to add repositories in json format as proposed in 
-    * https://gitlab.com/fdroid/fdroidclient/merge_requests/705
-    * 
-    private String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        StringBuilder stringBuilder = new StringBuilder();
-
-        try {
-            String ls = System.getProperty("line.separator");
-            String line = null;
-            while((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
-                stringBuilder.append(ls);
-            }
-        } finally {
-            reader.close();
-        }
-
-        return stringBuilder.toString();
-    }
-
-    private void loadOemDefaultRepos(SQLiteDatabase db) {
-        Utils.debugLog(TAG, "Loading external repos: Opening " + OEM_DEFAULT_REPOS_PATH);
-
-        JSONArray reposArray;
-        try {
-            String jsonContents = readFile(OEM_DEFAULT_REPOS_PATH);
-            reposArray = new JSONArray(jsonContents);
-        } catch (Exception e) {
-            Utils.debugLog(TAG, "Error loading " + OEM_DEFAULT_REPOS_PATH);
-            Utils.debugLog(TAG, "Exception: " + e.getMessage());
-            return;
-        }
-        Utils.debugLog(TAG, OEM_DEFAULT_REPOS_PATH + " successfully opened.");
-
-        try {
-            for (int i = 0; i < reposArray.length(); i++) {
-                JSONObject repo = reposArray.getJSONObject(i);
-                insertRepo(
-                    db,
-                    repo.getString("name"),
-                    repo.getString("address"),
-                    repo.getString("description"),
-                    repo.getString("version"),
-                    repo.getString("enabled"),
-                    repo.getString("priority"),
-                    repo.getString("pushRequests"),
-                    repo.getString("pubkey")
-                );
-            }
-        } catch (Exception e) {
-            Utils.debugLog(TAG, "Error loading at least one external json repository from " + OEM_DEFAULT_REPOS_PATH);
-            Utils.debugLog(TAG, "Exception: " + e.getMessage());
-            return;
-        }
-        Utils.debugLog(TAG, "All external repositories successfully added!");
-    }
-    */
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
