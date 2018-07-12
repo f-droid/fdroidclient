@@ -381,6 +381,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         App app = new App();
         PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
         SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
+        app.installedApk = new Apk();
         if (apkFile.canRead()) {
             String hashType = "SHA-256";
             String hash = Utils.getBinaryHash(apkFile, hashType);
@@ -389,11 +390,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
             app.installedApk.hashType = hashType;
             app.installedApk.hash = hash;
-            app.installedApk.sig = Utils.getPackageSig(packageInfo);
         }
 
         app.setFromPackageInfo(pm, packageInfo);
-        app.installedApk = new Apk();
         app.initInstalledApk(context, app.installedApk, packageInfo, apkFile);
         return app;
     }
