@@ -550,6 +550,8 @@ public class AppDetailsRecyclerViewAdapter
                     return itemView.getContext().getString(R.string.antidisabledalgorithmlist);
                 case "KnownVuln":
                     return itemView.getContext().getString(R.string.antiknownvulnlist);
+                case "NoSourceSince":
+                    return itemView.getContext().getString(R.string.antinosourcesince);
                 default:
                     return af;
             }
