@@ -442,9 +442,14 @@ public class RepoUpdater {
      * Server index XML can include optional {@code install} and {@code uninstall}
      * requests.  This processes those requests, figuring out whether the client
      * should always accept, prompt the user, or ignore those requests on a
-     * per repo basis.
+     * per repo basis.  There is also a global preference as a failsafe.
+     *
+     * @see Preferences#allowPushRequests()
      */
     void processRepoPushRequests(List<RepoPushRequest> requestEntries) {
+        if (!Preferences.get().allowPushRequests()) {
+            return;
+        }
         for (RepoPushRequest repoPushRequest : requestEntries) {
             String packageName = repoPushRequest.packageName;
             PackageInfo packageInfo = Utils.getPackageInfo(context, packageName);

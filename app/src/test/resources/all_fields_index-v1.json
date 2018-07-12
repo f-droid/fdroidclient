@@ -7,6 +7,12 @@
         "address": "https://guardianproject.info/fdroid/repo",
         "description": "The official app repository of The Guardian Project. Applications in this repository are official binaries build by the original application developers and signed by the same key as the APKs that are released in the Google Play store. ",
         "secret": "trying to sneak something in",
+        "pushRequests": 2,
+        "inuse": true,
+        "isSwap": true,
+        "priority": 99999,
+        "id": 99999,
+        "lastetag": "foobar",
         "mirrors": [
             "http://bdf2wcxujkg6qqff.onion/fdroid/repo",
             "https://guardianproject.info/fdroid/repo",

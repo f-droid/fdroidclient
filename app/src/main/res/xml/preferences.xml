@@ -191,6 +191,12 @@
                 android:defaultValue="false"
                 android:dependency="expert"/>
         <CheckBoxPreference
+                android:key="allowPushRequests"
+                android:title="@string/allow_push_requests"
+                android:summary="@string/allow_push_requests_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
                 android:key="forceOldIndex"
                 android:title="@string/force_old_index"
                 android:summary="@string/force_old_index_summary"

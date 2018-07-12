@@ -108,6 +108,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
+    public static final String PREF_ALLOW_PUSH_REQUESTS = "allowPushRequests";
 
     public static final int OVER_NETWORK_NEVER = 0;
     public static final int OVER_NETWORK_ON_DEMAND = 1;
@@ -510,6 +511,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     public boolean sendVersionAndUUIDToServers() {
         return preferences.getBoolean(PREF_SEND_VERSION_AND_UUID_TO_SERVERS, IGNORED_B);
+    }
+
+    /**
+     * Whether push requests are globally enabled or disabled.
+     *
+     * @see org.fdroid.fdroid.data.RepoPushRequest
+     * @see RepoUpdater#processRepoPushRequests(List)
+     */
+    public boolean allowPushRequests() {
+        return preferences.getBoolean(PREF_ALLOW_PUSH_REQUESTS, IGNORED_B);
     }
 
     /**

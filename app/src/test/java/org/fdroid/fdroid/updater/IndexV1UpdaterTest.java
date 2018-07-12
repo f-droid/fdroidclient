@@ -49,6 +49,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -88,6 +89,11 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         IOUtils.closeQuietly(indexInputStream);
         List<App> apps = AppProvider.Helper.all(context.getContentResolver());
         assertEquals("63 apps present", 63, apps.size());
+
+        // these should never be set from the JSON, only by fdroidclient
+        assertEquals(Repo.PUSH_REQUEST_IGNORE, repo.pushRequests);
+        assertFalse(repo.isSwap);
+        assertNotEquals(99999, repo.priority);
 
         String[] packages = {
                 "fake.app.one",
@@ -420,10 +426,17 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
         assertEquals(1, apps.length);
         assertEquals(1, packages.size());
-        List<Apk> cacerts =  packages.get("info.guardianproject.cacert");
+        List<Apk> cacerts = packages.get("info.guardianproject.cacert");
         assertEquals(2, cacerts.size());
         assertEquals(1488828510109L, repo.timestamp);
         assertEquals("GPLv3", apps[0].license);
+
+        // these should never be set from the JSON, only by fdroidclient
+        assertEquals(Repo.PUSH_REQUEST_IGNORE, repo.pushRequests);
+        assertFalse(repo.inuse);
+        assertFalse(repo.isSwap);
+        assertNotEquals(99999, repo.priority);
+        assertNotEquals("foobar", repo.lastetag);
 
         Set<String> appFields = getFields(apps[0]);
         for (String field : appFields) {
