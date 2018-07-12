@@ -567,7 +567,7 @@ public class SwapService extends Service {
         return new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
-                .setSmallIcon(R.drawable.ic_swap)
+                .setSmallIcon(R.drawable.ic_nearby)
                 .setContentIntent(contentIntent)
                 .build();
     }

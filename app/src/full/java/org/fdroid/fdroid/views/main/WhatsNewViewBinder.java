@@ -67,7 +67,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             }
         });
 
-        FloatingActionButton searchFab = (FloatingActionButton) whatsNewView.findViewById(R.id.btn_search);
+        FloatingActionButton searchFab = (FloatingActionButton) whatsNewView.findViewById(R.id.fab_search);
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

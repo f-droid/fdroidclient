@@ -14,6 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.UpdateService;
@@ -266,11 +267,17 @@ public class WifiStateChangeService extends IntentService {
                                 // java.lang.IllegalArgumentException: Value [64] not in range [0,32]
                                 continue;
                             }
-                            if (inetAddress.equals(address.getAddress()) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
+                            try {
                                 String cidr = String.format(Locale.ENGLISH, "%s/%d",
                                         FDroidApp.ipAddressString, networkPrefixLength);
                                 FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
                                 break;
+                            } catch (IllegalArgumentException e) {
+                                if (BuildConfig.DEBUG) {
+                                    e.printStackTrace();
+                                } else {
+                                    Log.i(TAG, e.getLocalizedMessage());
+                                }
                             }
                         }
                     }

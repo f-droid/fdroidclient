@@ -21,10 +21,8 @@
               android:layout_below="@android:id/title"
               android:layout_alignLeft="@android:id/title"
               android:layout_alignStart="@android:id/title"
-              android:textAppearance="?attr/textAppearanceListItemSmall"
+              android:textAppearance="?attr/textAppearanceListItemSecondary"
               android:textColor="?android:attr/textColorSecondary"
-              android:singleLine="true"
-              android:ellipsize="marquee"
               android:fadingEdge="horizontal"/>
 
     <!-- @+id/seekbar_value must be present in a SeekBarPreference, but we don't use it -->
