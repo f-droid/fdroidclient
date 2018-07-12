@@ -13,6 +13,9 @@
 -dontnote android.support.**
 -dontnote **ILicensingService
 
+# Needed for espresso https://stackoverflow.com/a/21706087
+-dontwarn org.xmlpull.v1.**
+
 # StrongHttpsClient and its support classes are totally unused, so the
 # ch.boye.httpclientandroidlib.** classes are also unneeded
 -dontwarn info.guardianproject.netcipher.client.**

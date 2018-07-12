@@ -27,7 +27,15 @@ android {
     defaultConfig {
         versionCode 1003051
         versionName getVersionName()
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        /*
+          The Android Testing Support Library collects analytics to continuously improve the testing
+          experience. More specifically, it uploads a hash of the package name of the application
+          under test for each invocation. If you do not wish to upload this data, you can opt-out by
+          passing the following argument to the test runner: disableAnalytics "true".
+         */
+        testInstrumentationRunnerArguments disableAnalytics: 'true'
     }
 
     buildTypes {
@@ -165,9 +173,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.7.22'
 
-    androidTestImplementation 'com.android.support:support-annotations:25.3.1'
-    androidTestImplementation 'com.android.support.test:runner:0.5'
-    androidTestImplementation 'com.android.support.test:rules:0.5'
+    androidTestImplementation 'com.android.support:support-annotations:27.1.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 }
 
 tasks.whenTaskAdded { task ->
