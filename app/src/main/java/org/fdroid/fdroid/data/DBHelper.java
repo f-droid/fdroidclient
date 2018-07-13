@@ -258,18 +258,13 @@ public class DBHelper extends SQLiteOpenHelper {
         ensureIndexes(db);
 
         // Always, load the internal defaults afterwards. This way, F-Droid native repos can never be deleted
-        List<String> defaultRepos = loadDefaultReposInternal();
+        List<String> defaultRepos = loadDefaultRepos();
 
         // Insert all the repos into the database
         if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
             throw new IllegalArgumentException(
-                    "default_repo.xml array does not have the right number of elements");
+                    "At least one of the internally or externally loaded default repos does not have " + REPO_XML_ARG_COUNT + " entries.");
         }
-
-        // Load a couple external default repos from one of { "/oem", "/odm", "/vendor", "/system" }
-        defaultRepos.addAll(loadDefaultReposExternal());
-
-        Utils.debugLog(TAG, "defaultRepos.size(): " + defaultRepos.size());
         for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
             insertRepo(
                     db,
@@ -278,15 +273,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     defaultRepos.get(i + 2), // description
                     defaultRepos.get(i + 3), // version
                     defaultRepos.get(i + 4), // enabled
-                    defaultRepos.get(i + 5), // priority
+                    Integer.toString(i),     // priority; currently ignored
                     defaultRepos.get(i + 6), // pushRequests
                     defaultRepos.get(i + 7)  // pubkey
             );
         }
-    }
-
-    private List<String> loadDefaultReposInternal() {
-        return new LinkedList<>(Arrays.asList(context.getResources().getStringArray(R.array.default_repos)));
     }
 
     /*
@@ -294,25 +285,31 @@ public class DBHelper extends SQLiteOpenHelper {
     * If ROOT is one of those paths and 'packageName' is the name of the package 
     * that contains this class, then we look under 'root'/etc/'packageName'/additional_repos.xml
     */
-    private List<String> loadDefaultReposExternal() {
-        List<String> externalRepos = new LinkedList<>();
+    private List<String> loadDefaultRepos() {
+        // First, take the built-in repos.
+        List<String> externalRepos = new LinkedList<>(Arrays.asList(context.getResources().getStringArray(R.array.default_repos)));
+
+        // Second, take the external repos. We will later prioritize the repos according their order in the list externalRepos.
         final String packageName = context.getPackageName();
-        for (String root : Arrays.asList("/oem", "/odm", "/vendor", "/system")) {
-            String defaultReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
+        for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
+            String additionalReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
             try {
-                File defaultReposFile = new File(defaultReposPath);
+                File defaultReposFile = new File(additionalReposPath);
                 if (defaultReposFile.exists() && defaultReposFile.isFile()) {
                     externalRepos.addAll(parseXmlRepos(defaultReposFile));
                 }
             } catch (Exception e) {
-                Utils.debugLog(TAG, "Error loading " + defaultReposPath);
+                Utils.debugLog(TAG, "Error loading " + additionalReposPath);
                 Utils.debugLog(TAG, "Exception: " + e.getMessage());
-                break;
+                continue;
             }
         }
         return externalRepos;
     }
 
+    /*
+    * Take an xml file in the same format as the internal default_repos.xml and parse it into a list of items.
+    */
     private List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
         List<String> defaultRepos = new LinkedList<>();
         InputStream xmlInputStream = null;
@@ -325,31 +322,34 @@ public class DBHelper extends SQLiteOpenHelper {
         // Type of piece of xml file, can be END_DOCUMENT, TEXT, END_TAG, START_TAG, ...
         int eventType = parser.getEventType();
 
-        boolean isItem = false;
         /* Walk through all TEXT pieces of the xml file and put them into our list of default repos.
         * This could be improved by structuring the content for example into a list of lists where each contained list represents a repository, but
         * we do it the traditional way.
         */
+        boolean isItem = false;
         while (eventType != XmlPullParser.END_DOCUMENT) {
             String tagname = parser.getName();
             switch (eventType) {
+                // If an item starts, remember that in isItem
                 case XmlPullParser.START_TAG:
                     if (tagname.equals("item")) {
                         isItem = true;
                     }
                     break;
+                // If an item ends, also remember that in isItem
                 case XmlPullParser.END_TAG:
                     isItem = false;
                     break;
+                // If this is a textblock of an item tag, extract that into defaultRepos
                 case XmlPullParser.TEXT:
                     if (isItem) {
                         defaultRepos.add(new String(parser.getText())); // This is a piece of real information in the xml file
                     }
                     break;
             }
-            
             eventType = parser.next();
         }
+
         xmlInputStream.close();
         return defaultRepos;
     }
