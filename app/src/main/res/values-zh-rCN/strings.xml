@@ -117,7 +117,7 @@
 
     <string name="unstable_updates">不稳定更新</string>
     <string name="unstable_updates_summary">建议更新至不稳定的版本</string>
-    <string name="system_installer_on">使用F-Droid特权扩展安装、更新和卸载应用</string>
+    <string name="system_installer_on">使用特权扩展安装、更新和卸载应用</string>
     <string name="uninstall_system">更新或卸载特权扩展</string>
     <string name="uninstall_system_summary">打开详情以更新或卸载特权扩展</string>
     <string name="local_repo_name">本地软件源的名称</string>
@@ -168,9 +168,9 @@
     <string name="permissions">权限</string>
     <string name="repo_details">软件源</string>
     <string name="repo_url">地址</string>
-    <string name="repo_added">已保存 F-Droid 软件源 %1$s。</string>
-    <string name="repo_searching_address">正在 %1$s
-\n里查找 F-Droid 软件源</string>
+    <string name="repo_added">已保存软件源 %1$s。</string>
+    <string name="repo_searching_address">正在 %1$s 
+\n里查找软件源</string>
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
 
@@ -262,13 +262,13 @@
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="downloading">下载中…</string>
 
-    <string name="interval_never">从不</string>
-    <string name="interval_1h">每小时</string>
-    <string name="interval_4h">每 4 小时</string>
-    <string name="interval_12h">每 12 小时</string>
-    <string name="interval_1d">每天</string>
-    <string name="interval_1w">每周</string>
-    <string name="interval_2w">每两周</string>
+    <string name="interval_never">不自动更新应用</string>
+    <string name="interval_1h">每小时检查一次更新</string>
+    <string name="interval_4h">每 4 小时检查一次更新</string>
+    <string name="interval_12h">每 12 小时检查一次更新</string>
+    <string name="interval_1d">每天检查一次更新</string>
+    <string name="interval_1w">每周检查一次更新</string>
+    <string name="interval_2w">每两周检查一次更新</string>
 
     <string name="theme_light">明亮</string>
     <string name="theme_dark">夜间</string>
@@ -494,7 +494,7 @@
     <string name="over_network_always_summary">当此连接可用时，总是使用它</string>
     <string name="over_network_on_demand_summary">仅当我点击下载时才使用此连接</string>
     <string name="over_network_never_summary">从不使用此连接下载任何内容</string>
-    <string name="antidisabledalgorithmlist">这个应用程序的安全签章较弱</string>
+    <string name="antidisabledalgorithmlist">这个应用程序的安全签名较弱</string>
     <string name="antiknownvulnlist">这个应用程序包含已知的安全漏洞</string>
 
     <string name="repo_exists_add_fingerprint">%1$s已经设立，此举将会加入新的钥匙信息。</string>
@@ -504,5 +504,12 @@
     <string name="repo_exists_add_mirror">这是%1$s的副本，您要将其添加为镜像吗？</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi 热点已启用</string>
     <string name="swap_toast_could_not_enable_hotspot">无法启用 Wi-Fi 热点！</string>
+
+    <string name="prompt_to_send_crash_reports">提示发送崩溃报告</string>
+    <string name="prompt_to_send_crash_reports_summary">收集有关崩溃的数据并询问是否发送给开发人员</string>
+    <string name="hide_all_notifications">隐藏所有通知</string>
+    <string name="install_history">安装历史</string>
+    <string name="send_version_and_uuid">发送版本和 UUID 到服务器</string>
+    <string name="antinosourcesince">源代码不再可用，无法更新。</string>
 
     </resources>

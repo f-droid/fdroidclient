@@ -142,8 +142,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         lightWithDarkActionBar, // Obsolete
     }
 
+    public static final long UPDATE_INTERVAL_DISABLED = Long.MAX_VALUE;
     public static final long[] UPDATE_INTERVAL_VALUES = {
-            Long.MAX_VALUE,  // never
+            UPDATE_INTERVAL_DISABLED,
             DateUtils.WEEK_IN_MILLIS * 2,
             DateUtils.WEEK_IN_MILLIS,
             DateUtils.DAY_IN_MILLIS,
@@ -211,12 +212,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Get the update interval in milliseconds.
      */
     public long getUpdateInterval() {
-        if (getOverData() == OVER_NETWORK_NEVER && getOverWifi() == OVER_NETWORK_NEVER) {
-            return UPDATE_INTERVAL_VALUES[0];
-        } else {
-            int position = preferences.getInt(PREF_UPDATE_INTERVAL, IGNORED_I);
-            return UPDATE_INTERVAL_VALUES[position];
-        }
+        int position = preferences.getInt(PREF_UPDATE_INTERVAL, IGNORED_I);
+        return UPDATE_INTERVAL_VALUES[position];
     }
 
     /**

@@ -20,7 +20,7 @@ public class UpdateJobService extends JobService {
 
     @Override
     public boolean onStopJob(JobParameters params) {
-        // TODO this should gracefully stop UpdateService
+        UpdateService.stopNow(this);
         return true;
     }
 }
