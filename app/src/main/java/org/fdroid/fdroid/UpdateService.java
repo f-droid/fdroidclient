@@ -93,8 +93,6 @@ public class UpdateService extends JobIntentService {
     private NotificationCompat.Builder notificationBuilder;
     private AppUpdateStatusManager appUpdateStatusManager;
 
-    private static boolean updating;
-
     public static void updateNow(Context context) {
         updateRepoNow(context, null);
     }
@@ -184,7 +182,7 @@ public class UpdateService extends JobIntentService {
      * the app to users, so they know something is happening.
      */
     public static boolean isUpdating() {
-        return updating;
+        return updateService != null;
     }
 
     private static volatile boolean isScheduleIfStillOnWifiRunning;
@@ -230,11 +228,22 @@ public class UpdateService extends JobIntentService {
             isScheduleIfStillOnWifiRunning = false;
             return null;
         }
+
+    }
+
+    private static UpdateService updateService;
+
+    public static void stopNow(Context context) {
+        if (updateService != null) {
+            updateService.stopSelf(JOB_ID);
+            updateService = null;
+        }
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        updateService = this;
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -263,6 +272,7 @@ public class UpdateService extends JobIntentService {
         super.onDestroy();
         notificationManager.cancel(NOTIFY_ID_UPDATING);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateStatusReceiver);
+        updateService = null;
     }
 
     public static void sendStatus(Context context, int statusCode) {
@@ -409,7 +419,6 @@ public class UpdateService extends JobIntentService {
                 return;
             }
 
-            updating = true;
             setNotification();
             LocalBroadcastManager.getInstance(this).registerReceiver(updateStatusReceiver,
                     new IntentFilter(LOCAL_ACTION_STATUS));
@@ -498,8 +507,6 @@ public class UpdateService extends JobIntentService {
         } catch (Exception e) {
             Log.e(TAG, "Exception during update processing", e);
             sendStatus(this, STATUS_ERROR_GLOBAL, e.getMessage());
-        } finally {
-            updating = false;
         }
 
         long time = System.currentTimeMillis() - startTime;
