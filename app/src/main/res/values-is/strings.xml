@@ -586,4 +586,12 @@
     <string name="antidisabledalgorithmlist">Þetta forrit er með veika öryggisundirritun</string>
     <string name="antiknownvulnlist">Þetta forrit inniheldur þekktan öryggisveikleika</string>
 
+    <string name="prompt_to_send_crash_reports">Spyrja hvort eigi að senda villuskýrslur</string>
+    <string name="prompt_to_send_crash_reports_summary">Safna upplýsingum um hrun og senda til forritara</string>
+    <string name="hide_all_notifications">Fela allar tilkynningar</string>
+    <string name="hide_all_notifications_summary">Koma í veg fyrir að tilkynningar um öll atvik birtist á stöðuslá og í tilkynningabakka.</string>
+    <string name="install_history">Ferill uppsetninga</string>
+    <string name="install_history_summary">Skoða einkaannál yfir uppsetningar og fjarlægingar á hugbúnaði</string>
+    <string name="send_version_and_uuid">Senda útgáfu og UUID-auðkenni til netþjóna</string>
+    <string name="share_repository">Deila hugbúnaðarsafni</string>
     </resources>

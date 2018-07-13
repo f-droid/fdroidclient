@@ -172,7 +172,7 @@
 \n您的應用程式都是最新的。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
-    <string name="repo_exists_add_fingerprint">%1$s已經設立，此舉將會加入新的金鑰資訊。</string>
+    <string name="repo_exists_add_fingerprint">%1$s 已安裝，這將會加入新的金鑰資訊。</string>
     <string name="repo_delete_to_overwrite">先刪除 %1$s，以便加入互不相容的金鑰。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     <string name="system_installer">特權擴充套件</string>
@@ -219,12 +219,12 @@
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗！</string>
 
-    <string name="system_installer_on">使用 特權擴充套件安裝、更新和移除應用程式</string>
+    <string name="system_installer_on">使用特權擴充套件安裝、更新和移除應用程式</string>
     <string name="uninstall_system">更新或解除安裝特權擴充套件</string>
     <string name="uninstall_system_summary">開啟特權擴充套件的詳細資料來更新或解除安裝</string>
     <string name="repo_error_empty_username">使用者名稱空白，憑證未更改</string>
 
-    <string name="repo_exists_enable">%1$s已經設立。請確認您要重新啟用它。</string>
+    <string name="repo_exists_enable">%1$s 已安裝，請確認您要重新啟用它。</string>
     <string name="repo_exists_and_enabled">%1$s 已安裝並啟用。</string>
     <string name="malformed_repo_uri">略過異常的軟體庫 URI：%s</string>
     <string name="repo_provider">軟體庫：%s</string>
@@ -251,7 +251,7 @@
     <string name="status_processing_xml_percent">正在處理來自 %1$s 的 %2$s / %3$s (%4$d%%)</string>
     <string name="status_connecting_to_repo">正連線至\n%1$s</string>
     <string name="update_auto_download">自動取得更新</string>
-    <string name="update_auto_download_summary">自動下載更新程式並顯示安裝通知</string>
+    <string name="update_auto_download_summary">自動下載更新的程式並通知您安裝</string>
     <string name="no_handler_app">您沒有任何可處理 %s 的應用程式。</string>
     <string name="up_to_maxsdk">直到 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 直到 %2$s</string>
@@ -369,7 +369,7 @@
         <item quantity="other">查看全部 %d</item>
     </plurals>
 
-    <string name="app_recommended_version_installed">版本%1$s （推薦）</string>
+    <string name="app_recommended_version_installed">版本 %1$s （推薦）</string>
     <string name="app__newly_added">最新</string>
 
     <string name="installed_apps__activity_title">已安裝的應用程式</string>
@@ -398,7 +398,7 @@
 	<item quantity="other">為 %1$d 個應用程式下載更新。</item>
 </plurals>
 
-    <string name="details_new_in_version">版本%s的新功能</string>
+    <string name="details_new_in_version">在版本 %s 的新功能</string>
 
     <string name="antifeatureswarning">此應用程式可能有您不喜歡的功能。</string>
     <plurals name="details_last_update_days">
@@ -520,10 +520,17 @@
     <string name="over_data">透過行動網路</string>
     <string name="over_network_always_summary">當此連線能用時一直使用</string>
     <string name="over_network_on_demand_summary">當我按下載時才使用此連線</string>
-    <string name="over_network_never_summary">從不使用此連線下載任何內容</string>
+    <string name="over_network_never_summary">絕不使用此連線下載任何內容</string>
     <string name="antidisabledalgorithmlist">這個應用程式的安全簽章較弱</string>
     <string name="antiknownvulnlist">這個應用程式包含了已知的安全性漏洞</string>
 
     <string name="hide_all_notifications">隱藏所有通知</string>
     <string name="hide_all_notifications_summary">避免在狀態列和通知欄中顯示所有操作。</string>
+    <string name="prompt_to_send_crash_reports">提示發送崩潰報告</string>
+    <string name="prompt_to_send_crash_reports_summary">收集有關崩潰的資料和要求將它們發送給開發人員</string>
+    <string name="install_history">安裝履歷</string>
+    <string name="install_history_summary">檢視所有安裝和解除安裝的個人日誌</string>
+    <string name="send_version_and_uuid">將版本和 UUID 發送到伺服器</string>
+    <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，這會影響下一次應用程式重新啟動。</string>
+    <string name="share_repository">分享軟體庫</string>
     </resources>

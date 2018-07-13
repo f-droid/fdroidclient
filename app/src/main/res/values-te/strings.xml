@@ -168,7 +168,7 @@
     <string name="repo_add_mirror">అద్దం జోడించండి</string>
     <string name="versions">వెర్షన్లు</string>
     <string name="enable">చేతనపరచు</string>
-    <string name="overwrite">తిరిగి రాస్తుంది</string>
+    <string name="overwrite">తిరగరాయి</string>
     <string name="choose_bt_send">బ్లూటూత్ పంపు పద్ధతి ఎంచుకోండి</string>
 
     <string name="repo_add_url">రిపోజిటరీ చిరునామా</string>
@@ -285,7 +285,7 @@
     <string name="crash_dialog_comment_prompt">మీరు ఇక్కడ అదనపు సమాచారం మరియు వ్యాఖ్యలను జోడించవచ్చు:</string>
 
     <string name="notification_title_single_ready_to_install">స్థాపించడానికి సిద్ధంగా ఉంది</string>
-    <string name="notification_title_summary_update_available">అందుబాటులో నవీకరణ</string>
+    <string name="notification_title_summary_update_available">తాజాకరణ అందుబాటులో ఉంది</string>
     <string name="notification_title_summary_installed">విజయవంతంగా  స్థాపించబడింది</string>
     <string name="details_last_updated_today">ఈ రోజు నవీకరించబడింది</string>
     <plurals name="details_last_update_days">
@@ -317,4 +317,29 @@
 
     <string name="requesting_root_access_body">రూట్ ప్రాప్యతను అభ్యర్థిస్తోంది…</string>
     <string name="root_access_denied_title">రూటు యాక్సెస్ నిరాకరించబడింది</string>
+    <string name="install_history">స్థాపన చరిత్ర</string>
+    <string name="repo_official_mirrors">అధికారిక మిర్రర్లు</string>
+    <string name="repo_user_mirrors">వాడుకరి మిర్రర్లు</string>
+    <string name="perms_new_perm_prefix">కొత్తది:</string>
+    <string name="downloading">దింపుకుంటోంది…</string>
+    <string name="installing">స్థాపిస్తోంది…</string>
+    <string name="notification_title_single_ready_to_install_update">తాజాకరణ స్థాపించడానికి తయారుగావుంది</string>
+    <string name="notification_title_single_install_error">స్థాపన విఫలమైంది</string>
+    <string name="notification_content_single_downloading">\"%1$s\"ను దింపుకుంటోంది…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\"కి తాజాకరణను దింపుకుంటోంది…</string>
+    <string name="notification_content_single_installing">\"%1$s\"ను స్థాపిస్తోంది…</string>
+    <string name="notification_content_single_installed">విజయవంతగా స్థాపితమైంది</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d తాజాకరణ</item>
+	<item quantity="other">%1$d తాజాకరణలు</item>
+</plurals>
+    <string name="notification_title_summary_downloading">దింపుకుంటోంది…</string>
+    <string name="notification_title_summary_downloading_update">తాజాకరణను దింపుకుంటోంది…</string>
+    <string name="notification_title_summary_ready_to_install">స్థాపనకు తయారుగావుంది</string>
+    <string name="notification_title_summary_ready_to_install_update">తాజాకరణ స్థాపనకు తయారుగావుంది</string>
+    <string name="notification_title_summary_installing">స్తాపిస్తోంది</string>
+    <string name="clear_search">శోధనను తుడిచివేయి</string>
+    <string name="sort_search">శోధనను క్రమీకరించు</string>
+
+    <string name="bluetooth_activity_not_found">బ్లూటూత్ పంపే పంపిన పద్ధతి కనుగొనబడలేదు, ఒక్కదాన్ని ఎంచుకోండి!</string>
     </resources>

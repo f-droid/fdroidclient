@@ -545,4 +545,11 @@
 
     <string name="hide_all_notifications">Kaŝi ĉiujn sciigojn</string>
     <string name="hide_all_notifications_summary">Malpermesi al agoj anonci sin ĉe la stata breto aŭ la sciiga areo.</string>
+    <string name="prompt_to_send_crash_reports">Proponi sendi raportojn pri paneoj</string>
+    <string name="prompt_to_send_crash_reports_summary">Kolekti datumojn pri misfunkcioj kaj peti pri sendi ilin al programistoj</string>
+    <string name="install_history">Historio de instaladoj</string>
+    <string name="install_history_summary">Montri privatan protokolon pri ĉiuj (mal)instaladoj</string>
+    <string name="send_version_and_uuid">Sendi version kaj identigilon al serviloj</string>
+    <string name="send_version_and_uuid_summary">Ampleksi version de aplikaĵo kaj hazardan unikan identigilon (UUID) dum elŝutado, efikas post la sekva restarto de aplikaĵo.</string>
+    <string name="share_repository">Kunhavigi deponejon</string>
     </resources>

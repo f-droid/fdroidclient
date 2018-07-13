@@ -538,4 +538,13 @@
     <string name="hiding_dialog_message">Esteu segur que voleu eliminar %1$s del llançador? Tan sols escrivint \"%2$d\" a l\'app %3$s simulada podreu restaurar-ho.</string>
     <string name="hide_on_long_search_press_title">Amagueu amb el botó de cerca</string>
     <string name="swap_toast_invalid_url">URL incorrecta per l\'intercanvi: %1$s</string>
+    <string name="prompt_to_send_crash_reports">Enviar informes de fallida</string>
+    <string name="prompt_to_send_crash_reports_summary">Recopil·lar informació de les fallides i preguntar per enviar-la al desenvolupador</string>
+    <string name="hide_all_notifications">Ocultar totes les notificacions</string>
+    <string name="hide_all_notifications_summary">Evitar que es mostrin les accions a la barra d\'estat i les notificacions.</string>
+    <string name="install_history">Historial d\'instal·lació</string>
+    <string name="install_history_summary">Mostrar el registre privat de totes les instal·lacions i desinstal·lacions</string>
+    <string name="send_version_and_uuid">Enviar la versió i l\'UUID als servidors</string>
+    <string name="send_version_and_uuid_summary">Incloure la versió de l\'app i un ID aleatori i únic per les descàrregues necessita que l\'aplicació es reinicii.</string>
+    <string name="share_repository">Compartir repositori</string>
     </resources>

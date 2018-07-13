@@ -330,7 +330,7 @@
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     <string name="keep_install_history">Хранить историю установок</string>
-    <string name="keep_install_history_summary">Хранить журнал всех установок и деинсталляций в приватном магазине</string>
+    <string name="keep_install_history_summary">Хранить журнал всех установок и деинсталляций в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
@@ -556,4 +556,11 @@
     <string name="antidisabledalgorithmlist">Это приложение имеет слабую подпись безопасности</string>
     <string name="hide_all_notifications">Скрыть все уведомления</string>
     <string name="hide_all_notifications_summary">Запретить показ всех действий в строке состояния и панели уведомлений.</string>
+    <string name="prompt_to_send_crash_reports">Запрос на отправку отчетов о сбоях</string>
+    <string name="prompt_to_send_crash_reports_summary">Сбор информации о сбоях и запрос на отправку ее разработчику</string>
+    <string name="install_history">История инсталляций</string>
+    <string name="install_history_summary">Просмотр личного журнала всех установок и удалений</string>
+    <string name="send_version_and_uuid">Отправить версию и UUID на сервер</string>
+    <string name="send_version_and_uuid_summary">Включить в эту версию приложения случайный и уникальный идентификатор при загрузке, который вступает в силу при следующем перезапуске приложения.</string>
+    <string name="share_repository">Поделиться репозиторием</string>
     </resources>
