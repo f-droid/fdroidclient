@@ -402,9 +402,9 @@ public class UpdateService extends JobIntentService {
                     sendNoInternetToast();
                 }
                 return;
-            } else if (manualUpdate || forcedUpdate) {
+            } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "manually requested or forced update");
-            } else if (!fdroidPrefs.isBackgroundDownloadAllowed()) {
+            } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
             }
