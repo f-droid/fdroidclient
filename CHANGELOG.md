@@ -1,3 +1,19 @@
+### 1.3-alpha4 (2018-07-13)
+
+* fix Data/WiFi preferences to properly schedule Updats
+
+* fix Install/Uninstall events for clearer feedback
+
+* track pending installs properly, stop fake repeating updates
+
+* add support for Repo Push Requests when using Index V1
+
+* support NoSourceSince anti-feature
+
+* share menu item for repos
+
+* fix a few crasher bugs
+
 ### 1.3-alpha3 (2018-06-27)
 
 * fix bug that disabled Privileged Extension
