@@ -488,15 +488,15 @@ public class AppDetails2 extends AppCompatActivity
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
-                    adapter.setProgress(-1, -1, R.string.download_pending);
+                    adapter.setIndeterminateProgress(R.string.download_pending);
                 } else {
-                    adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax, 0);
+                    adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax);
                 }
                 break;
 
             case ReadyToInstall:
                 if (justReceived) {
-                    adapter.clearProgress();
+                    adapter.setIndeterminateProgress(R.string.installing);
                     localBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
                 }
@@ -517,6 +517,9 @@ public class AppDetails2 extends AppCompatActivity
                 break;
 
             case Installing:
+                adapter.setIndeterminateProgress(R.string.installing);
+                break;
+
             case Installed:
             case UpdateAvailable:
             case InstallError:
@@ -553,7 +556,7 @@ public class AppDetails2 extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    adapter.setProgress(-1, -1, R.string.installing);
+                    adapter.setIndeterminateProgress(R.string.installing);
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
                     adapter.clearProgress();
@@ -625,7 +628,7 @@ public class AppDetails2 extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    adapter.setProgress(-1, -1, R.string.uninstalling);
+                    adapter.setIndeterminateProgress(R.string.uninstalling);
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     adapter.clearProgress();
@@ -762,18 +765,29 @@ public class AppDetails2 extends AppCompatActivity
         installApk(apkToInstall);
     }
 
+    /**
+     * Uninstall the app from the current screen.  Since there are many ways
+     * to uninstall an app, including from Google Play, {@code adb uninstall},
+     * or Settings -> Apps, this method cannot ever be sure that the app isn't
+     * already being uninstalled.  So it needs to check that we can actually
+     * get info on the installed app, otherwise, just call it interrupted and
+     * quit.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1435">issue #1435</a>
+     */
     @Override
     public void uninstallApk() {
         Apk apk = app.installedApk;
         if (apk == null) {
-            // TODO ideally, app would be refreshed immediately after install, then this
-            // workaround would be unnecessary - unless it is a media file
             apk = app.getMediaApkifInstalled(getApplicationContext());
             if (apk == null) {
                 // When the app isn't a media file - the above workaround refers to this.
                 apk = app.getInstalledApk(this);
                 if (apk == null) {
-                    throw new IllegalStateException("Couldn't find installed apk for " + app.packageName);
+                    Log.d(TAG, "Couldn't find installed apk for " + app.packageName);
+                    Toast.makeText(this, R.string.uninstall_error_unknown, Toast.LENGTH_SHORT).show();
+                    uninstallReceiver.onReceive(this, new Intent(Installer.ACTION_UNINSTALL_INTERRUPTED));
+                    return;
                 }
             }
             app.installedApk = apk;

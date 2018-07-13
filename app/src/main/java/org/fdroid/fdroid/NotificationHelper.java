@@ -45,6 +45,12 @@ class NotificationHelper {
     private static final int MAX_UPDATES_TO_SHOW = 5;
     private static final int MAX_INSTALLED_TO_SHOW = 10;
 
+    /**
+     * Unique ID used to represent this specific package's install process,
+     * including {@link Notification}s, also known as {@code urlString}.
+     *
+     * @see org.fdroid.fdroid.installer.InstallManagerService
+     */
     static final String EXTRA_NOTIFICATION_KEY = "key";
     private static final String GROUP_UPDATES = "updates";
     private static final String GROUP_INSTALLED = "installed";

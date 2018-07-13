@@ -200,6 +200,15 @@ public abstract class Installer {
     }
 
     private void sendBroadcastUninstall(String action, PendingIntent pendingIntent, String errorMessage) {
+        sendBroadcastUninstall(context, apk, action, pendingIntent, errorMessage);
+    }
+
+    static void sendBroadcastUninstall(Context context, Apk apk, String action) {
+        sendBroadcastUninstall(context, apk, action, null, null);
+    }
+
+    private static void sendBroadcastUninstall(Context context, Apk apk, String action,
+                                               PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", apk.packageName, null);
 
         Intent intent = new Intent(action);

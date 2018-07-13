@@ -7,9 +7,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -40,6 +42,10 @@ import java.io.IOException;
  * For example, if this {@code InstallManagerService} gets killed, Android will cache
  * and then redeliver the {@link Intent} for us, which includes all of the data needed
  * for {@code InstallManagerService} to do its job for the whole lifecycle of an install.
+ * This {@code Service} never stops itself after completing the action, e.g.
+ * {@code {@link #stopSelf(int)}}, so {@code Intent}s are sometimes redelivered even
+ * though they are no longer valid.  {@link #onStartCommand(Intent, int, int)} checks
+ * first that the incoming {@code Intent} is not an invalid, redelivered {@code Intent}.
  * <p>
  * The canonical URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
@@ -61,6 +67,11 @@ import java.io.IOException;
  * This also handles downloading OBB "APK Extension" files for any APK that has one
  * assigned to it.  OBB files are queued up for download before the APK so that they
  * are hopefully in place before the APK starts.  That is not guaranteed though.
+ * <p>
+ * There may be multiple, available APK files with the same hash. Although it
+ * is not a security issue to install one or the other, they may have different
+ * metadata to display in the client.  Thus, it may result in weirdness if one
+ * has a different name/description/summary, etc).
  *
  * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
  */
@@ -71,18 +82,10 @@ public class InstallManagerService extends Service {
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.installer.action.CANCEL";
 
-    /**
-     * The install manager service needs to monitor downloaded apks so that it can wait for a user to
-     * install them and respond accordingly. Usually the thing which starts listening for such events
-     * does so directly after a download is complete. This works great, except when the user then
-     * subsequently closes F-Droid and opens it at a later date. Under these circumstances, a background
-     * service will scan all downloaded apks and notify the user about them. When it does so, the
-     * install manager service needs to add listeners for if the apks get installed.
-     */
-    private static final String ACTION_MANAGE_DOWNLOADED_APKS = "org.fdroid.fdroid.installer.action.ACTION_MANAGE_DOWNLOADED_APKS";
-
     private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
     private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
+
+    private static SharedPreferences pendingInstalls;
 
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager appUpdateStatusManager;
@@ -119,8 +122,16 @@ public class InstallManagerService extends Service {
         intentFilter.addDataScheme("package");
         registerReceiver(broadcastReceiver, intentFilter);
         running = true;
+        pendingInstalls = getPendingInstalls(this);
     }
 
+    /**
+     * If this {@link Service} is stopped, then all of the various
+     * {@link BroadcastReceiver}s need to unregister themselves if they get
+     * called.  There can be multiple {@code BroadcastReceiver}s registered,
+     * so it can't be done with a simple call here. So {@link #running} is the
+     * signal to all the existing {@code BroadcastReceiver}s to unregister.
+     */
     @Override
     public void onDestroy() {
         running = false;
@@ -145,18 +156,13 @@ public class InstallManagerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
 
-        String action = intent.getAction();
-
-        if (ACTION_MANAGE_DOWNLOADED_APKS.equals(action)) {
-            registerInstallerReceiversForDownlaodedApks();
-            return START_NOT_STICKY;
-        }
-
         String urlString = intent.getDataString();
         if (TextUtils.isEmpty(urlString)) {
             Utils.debugLog(TAG, "empty urlString, nothing to do");
             return START_NOT_STICKY;
         }
+
+        String action = intent.getAction();
 
         if (ACTION_CANCEL.equals(action)) {
             DownloaderService.cancel(this, urlString);
@@ -165,10 +171,14 @@ public class InstallManagerService extends Service {
                 DownloaderService.cancel(this, apk.getPatchObbUrl());
                 DownloaderService.cancel(this, apk.getMainObbUrl());
             }
-            appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
             appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
-        } else if (!ACTION_INSTALL.equals(action)) {
+        } else if (ACTION_INSTALL.equals(action)) {
+            if (!isPendingInstall(urlString)) {
+                Log.i(TAG, "Ignoring INSTALL that is not Pending Install: " + intent);
+                return START_NOT_STICKY;
+            }
+        } else {
             Log.i(TAG, "Ignoring unknown intent action: " + intent);
             return START_NOT_STICKY;
         }
@@ -204,9 +214,8 @@ public class InstallManagerService extends Service {
         DownloaderService.setTimeout(FDroidApp.getTimeout());
 
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
-        appUpdateStatusManager.markAsPendingInstall(urlString);
 
-        registerApkDownloaderReceivers(urlString);
+        registerPackageDownloaderReceivers(urlString);
         getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
         getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256);
 
@@ -304,7 +313,11 @@ public class InstallManagerService extends Service {
                 DownloaderService.getIntentFilter(obbUrlString));
     }
 
-    private void registerApkDownloaderReceivers(String urlString) {
+    /**
+     * Register a {@link BroadcastReceiver} for tracking download progress for a
+     * give {@code urlString}.  There can be multiple of these registered at a time.
+     */
+    private void registerPackageDownloaderReceivers(String urlString) {
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
@@ -340,7 +353,7 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.ReadyToInstall, null);
 
                         localBroadcastManager.unregisterReceiver(this);
-                        registerInstallerReceivers(downloadUri);
+                        registerInstallReceiver(downloadUri);
 
                         Apk apk = appUpdateStatusManager.getApk(urlString);
                         if (apk != null) {
@@ -348,7 +361,6 @@ public class InstallManagerService extends Service {
                         }
                         break;
                     case Downloader.ACTION_INTERRUPTED:
-                        appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
                         appUpdateStatusManager.setDownloadError(urlString, intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
                         localBroadcastManager.unregisterReceiver(this);
                         break;
@@ -357,7 +369,6 @@ public class InstallManagerService extends Service {
                             DownloaderService.queue(context, FDroidApp.getMirror(mirrorUrlString, repoId), repoId, urlString);
                             DownloaderService.setTimeout(FDroidApp.getTimeout());
                         } catch (IOException e) {
-                            appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
                             appUpdateStatusManager.setDownloadError(urlString, intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
                             localBroadcastManager.unregisterReceiver(this);
                         }
@@ -373,20 +384,10 @@ public class InstallManagerService extends Service {
     }
 
     /**
-     * For each app in the {@link AppUpdateStatusManager.Status#ReadyToInstall} state, setup listeners
-     * so that if the user installs it then we can respond accordingly. This makes sure that whether
-     * the user just finished downloading it, or whether they downloaded it a day ago but have not yet
-     * installed it, we get the same experience upon completing an install.
+     * Register a {@link BroadcastReceiver} for tracking install progress for a
+     * give {@link Uri}.  There can be multiple of these registered at a time.
      */
-    private void registerInstallerReceiversForDownlaodedApks() {
-        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(this).getAll()) {
-            if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                registerInstallerReceivers(Uri.parse(appStatus.getUniqueKey()));
-            }
-        }
-    }
-
-    private void registerInstallerReceivers(Uri downloadUri) {
+    private void registerInstallReceiver(Uri downloadUri) {
 
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
@@ -402,9 +403,8 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installing, null);
                         break;
                     case Installer.ACTION_INSTALL_COMPLETE:
-                        appUpdateStatusManager.markAsNoLongerPendingInstall(downloadUrl);
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installed, null);
-                        Apk apkComplete =  appUpdateStatusManager.getApk(downloadUrl);
+                        Apk apkComplete = appUpdateStatusManager.getApk(downloadUrl);
 
                         if (apkComplete != null && apkComplete.isApk()) {
                             try {
@@ -419,7 +419,6 @@ public class InstallManagerService extends Service {
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
-                        appUpdateStatusManager.markAsNoLongerPendingInstall(downloadUrl);
                         if (!TextUtils.isEmpty(errorMessage)) {
                             appUpdateStatusManager.setApkError(apk, errorMessage);
                         } else {
@@ -443,13 +442,20 @@ public class InstallManagerService extends Service {
     }
 
     /**
-     * Install an APK, checking the cache and downloading if necessary before starting the process.
-     * All notifications are sent as an {@link Intent} via local broadcasts to be received by
+     * Install an APK, checking the cache and downloading if necessary before
+     * starting the process.  All notifications are sent as an {@link Intent}
+     * via local broadcasts to be received by {@link BroadcastReceiver}s per
+     * {@code urlString}.  This also marks a given APK as in the process of
+     * being installed, with the {@code urlString} of the download used as the
+     * unique ID,
+     * <p>
+     * and the file hash used to verify that things are the same.
      *
      * @param context this app's {@link Context}
      */
-    public static void queue(Context context, App app, Apk apk) {
+    public static void queue(Context context, App app, @NonNull Apk apk) {
         String urlString = apk.getUrl();
+        putPendingInstall(context, urlString, apk.packageName);
         Uri downloadUri = Uri.parse(urlString);
         Installer.sendBroadcastInstall(context, downloadUri, Installer.ACTION_INSTALL_STARTED, apk,
                 null, null);
@@ -463,15 +469,46 @@ public class InstallManagerService extends Service {
     }
 
     public static void cancel(Context context, String urlString) {
+        removePendingInstall(context, urlString);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(urlString));
         context.startService(intent);
     }
 
-    public static void managePreviouslyDownloadedApks(Context context) {
-        Intent intent = new Intent(context, InstallManagerService.class);
-        intent.setAction(ACTION_MANAGE_DOWNLOADED_APKS);
-        context.startService(intent);
+    /**
+     * Is the APK that matches the provided {@code hash} still waiting to be
+     * installed?  This restarts the install process for this APK if it was
+     * interrupted somehow, like if F-Droid was killed before the download
+     * completed, or the device lost power in the middle of the install
+     * process.
+     */
+    public boolean isPendingInstall(String urlString) {
+        return pendingInstalls.contains(urlString);
+    }
+
+    /**
+     * Mark a given APK as in the process of being installed, with
+     * the {@code urlString} of the download used as the unique ID,
+     * and the file hash used to verify that things are the same.
+     *
+     * @see #isPendingInstall(String)
+     */
+    public static void putPendingInstall(Context context, String urlString, String packageName) {
+        if (pendingInstalls == null) {
+            pendingInstalls = getPendingInstalls(context);
+        }
+        pendingInstalls.edit().putString(urlString, packageName).apply();
+    }
+
+    public static void removePendingInstall(Context context, String urlString) {
+        if (pendingInstalls == null) {
+            pendingInstalls = getPendingInstalls(context);
+        }
+        pendingInstalls.edit().remove(urlString).apply();
+    }
+
+    private static SharedPreferences getPendingInstalls(Context context) {
+        return context.getSharedPreferences("pending-installs", Context.MODE_PRIVATE);
     }
 }

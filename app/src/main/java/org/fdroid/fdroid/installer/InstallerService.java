@@ -142,6 +142,9 @@ public class InstallerService extends JobIntentService {
      */
     public static void uninstall(Context context, @NonNull Apk apk) {
         Objects.requireNonNull(apk);
+
+        Installer.sendBroadcastUninstall(context, apk, Installer.ACTION_UNINSTALL_STARTED);
+
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
         intent.putExtra(Installer.EXTRA_APK, apk);

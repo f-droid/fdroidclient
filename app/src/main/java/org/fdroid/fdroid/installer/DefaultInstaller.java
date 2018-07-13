@@ -63,8 +63,6 @@ public class DefaultInstaller extends Installer {
 
     @Override
     protected void uninstallPackage() {
-        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
-
         Intent uninstallIntent = new Intent(context, DefaultInstallerActivity.class);
         uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
         uninstallIntent.putExtra(Installer.EXTRA_APK, apk);

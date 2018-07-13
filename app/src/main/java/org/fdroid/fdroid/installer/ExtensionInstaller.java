@@ -78,8 +78,6 @@ public class ExtensionInstaller extends Installer {
 
     @Override
     protected void uninstallPackage() {
-        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
-
         Intent uninstallIntent = new Intent(context, InstallExtensionDialogActivity.class);
         uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
 

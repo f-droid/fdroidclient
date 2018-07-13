@@ -355,8 +355,6 @@ public class PrivilegedInstaller extends Installer {
 
     @Override
     protected void uninstallPackage() {
-        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
-
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
