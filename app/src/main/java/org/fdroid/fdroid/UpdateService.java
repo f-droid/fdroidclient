@@ -138,6 +138,12 @@ public class UpdateService extends JobIntentService {
     public static void schedule(Context context) {
         Preferences prefs = Preferences.get();
         long interval = prefs.getUpdateInterval();
+        int data = prefs.getOverData();
+        int wifi = prefs.getOverWifi();
+        boolean scheduleNewJob =
+                interval != Preferences.UPDATE_INTERVAL_DISABLED
+                        && data != Preferences.OVER_NETWORK_NEVER
+                        && wifi != Preferences.OVER_NETWORK_NEVER;
 
         if (Build.VERSION.SDK_INT < 21) {
             Intent intent = new Intent(context, UpdateService.class);
@@ -145,7 +151,7 @@ public class UpdateService extends JobIntentService {
 
             AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarm.cancel(pending);
-            if (interval > 0) {
+            if (scheduleNewJob) {
                 alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
                         SystemClock.elapsedRealtime() + 5000, interval, pending);
                 Utils.debugLog(TAG, "Update scheduler alarm set");
@@ -163,17 +169,19 @@ public class UpdateService extends JobIntentService {
                 builder.setRequiresBatteryNotLow(true)
                         .setRequiresStorageNotLow(true);
             }
-            int wifi = prefs.getOverWifi();
-            if (prefs.getOverData() == Preferences.OVER_NETWORK_ALWAYS) {
-                if (Build.VERSION.SDK_INT < 26 || wifi == Preferences.OVER_NETWORK_ALWAYS) {
-                    builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
-                } else {
-                    builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_METERED);
-                }
-            } else if (wifi == Preferences.OVER_NETWORK_ALWAYS) {
+            if (data == Preferences.OVER_NETWORK_ALWAYS && wifi == Preferences.OVER_NETWORK_ALWAYS) {
+                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+            } else {
                 builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
             }
-            jobScheduler.schedule(builder.build());
+
+            jobScheduler.cancel(JOB_ID);
+            if (scheduleNewJob) {
+                jobScheduler.schedule(builder.build());
+                Utils.debugLog(TAG, "Update scheduler alarm set");
+            } else {
+                Utils.debugLog(TAG, "Update scheduler alarm not set");
+            }
         }
     }
 
