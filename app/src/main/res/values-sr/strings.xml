@@ -498,4 +498,6 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа надоградите апликацију.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
 
-</resources>
+<string name="hide_all_notifications">Сакриј сва обавештења</string>
+    <string name="install_history">Историјат уградњи</string>
+    </resources>

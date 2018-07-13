@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all intern lagrad data som tillhör appen kommer att raderas när den avinstalleras.)</string>
-    <string name="installIncompatible">Appen är inte kompatibel med din enhet, installera ändå?</string>
+    <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
     <string name="delete">Ta bort</string>
     <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
@@ -11,8 +11,8 @@
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
-    <string name="system_installer">Privilegierad utökning</string>
-    <string name="system_installer_on">Använd privilegierad utökning för att installera, uppdatera och ta bort paket</string>
+    <string name="system_installer">Priviligerat tillägg</string>
+    <string name="system_installer_on">Använd Privileged Extension för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
     <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
@@ -36,8 +36,8 @@
     <string name="enable">Aktivera</string>
     <string name="add_key">Lägg till en nyckel</string>
     <string name="overwrite">Skriv över</string>
-    <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
-    <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
+    <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth hittades, välj en!</string>
+    <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
     <string name="repo_add_url">Förrådsadress</string>
     <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
@@ -61,7 +61,7 @@
     <string name="antinonfreeadlist">Den här appen uppmuntrar icke-fria tillägg</string>
     <string name="antinonfreenetlist">Den här appen uppmuntrar icke-fria nätverkstjänster</string>
     <string name="antinonfreedeplist">Den här appen är beroende av andra icke-fria appar</string>
-    <string name="antiupstreamnonfreelist">Källkoden från uppströms är inte fullständigt fri</string>
+    <string name="antiupstreamnonfreelist">Källkoden från uppström är inte fullständigt fri</string>
     <string name="display">Visning</string>
     <string name="expert">Expertläge</string>
     <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
@@ -109,21 +109,19 @@
         Du måste aktivera det för att se apparna det tillhandahåller.
     </string>
     <string name="unknown">Okänd</string>
-    <string name="repo_confirm_delete_title">Ta bort förråd?</string>
-    <string name="repo_confirm_delete_body">Att ta bort ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
+    <string name="repo_confirm_delete_title">Radera förråd?</string>
+    <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
 \n 
-\nObservera: Alla tidigare installerade appar kommer kvarstå på din enhet.</string>
+\nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
     <string name="repo_disabled_notification">Inaktiverade %1$s. 
 \n 
-\nDu kommer behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
+\nDu kommer att behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
     <string name="repo_searching_address">Söker efter paketförråd på 
 \n%1$s</string>
     <string name="minsdk_or_later">%s eller senare</string>
     <string name="up_to_maxsdk">Upp till %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
-    <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök
-        ansluta till detta nätverk: %s
-    </string>
+    <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
     <string name="requires_features">Kräver: %1$s</string>
     <string name="category_Development">Utveckling</string>
     <string name="category_Games">Spel</string>
@@ -147,14 +145,14 @@
     <string name="open_qr_code_scanner">Öppna QR-läsare</string>
     <string name="swap_welcome">Välkommen till F-Droid!</string>
     <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name">F-Droid/F-Droid</string>
 
     <string name="unstable_updates">Instabila uppdateringar</string>
     <string name="unstable_updates_summary">Föreslå uppdateringar till instabila versioner</string>
-    <string name="app_incompatible">Ej kompatibel</string>
+    <string name="app_incompatible">Inkompatibel</string>
     <string name="links">Länkar</string>
-    <string name="uninstall_system">Uppdatera/avinstallera Privilegierad utökning</string>
-    <string name="uninstall_system_summary">Öppna detaljrutan för Privilegierad utökning för att uppdatera/avinstallera det</string>
+    <string name="uninstall_system">Uppdatera/avinstallera Privileged Extension</string>
+    <string name="uninstall_system_summary">Öppna detaljrutan för Privileged Extension för att uppdatera/avinstallera det</string>
     <string name="about_source">Källkod</string>
     <string name="more">Mer</string>
     <string name="less">Mindre</string>
@@ -172,7 +170,7 @@
     <string name="status_download_unknown_size">Hämtar
 \n%2$s från
 \n%1$s</string>
-    <string name="update_notification_title">Uppdaterar fil-förråden</string>
+    <string name="update_notification_title">Uppdaterar filförråd</string>
     <string name="permissions">Tillstånd</string>
     <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>
@@ -205,7 +203,7 @@
     <string name="category_Theming">Temasättning</string>
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivande</string>
-    <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
+    <string name="empty_search_available_app_list">Inga matchande applikationer är tillgängliga.</string>
     <string name="empty_installed_app_list">Inga appar har installerats.\n\nDet finns appar på din enhet, men de är inte
         tillgängliga från F-Droid. Detta kan bero på att du behöver uppdatera dina förråd, eller så har förråden
         verkligen inte dina appar tillgängliga.
@@ -216,18 +214,18 @@
     <string name="repo_provider">Förråd: %s</string>
 
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
-    <string name="system_install_denied_signature">Signaturen för utökningen är fel! Skapa en felrapport!</string>
+    <string name="system_install_denied_signature">Signaturen för filändelsen är fel! Var snäll och skapa en buggrapport!</string>
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
     <string name="system_install_button_install">Installera</string>
     <string name="system_install_post_success">F-Droid privilegierad utökning har installerats</string>
-    <string name="system_install_post_fail">Installationen av F-Droid privilegierad utökning misslyckades</string>
-    <string name="system_install_post_success_message">F-Droid privilegierad utökning. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.</string>
-    <string name="system_install_post_fail_message">Installationen av F-Droid privilegierad utökning har misslyckats. Installationsmetoden stöds inte av alla Android-distributioner, kontakta F-Droid felbevakare för mer information.</string>
-    <string name="system_install_installing_rebooting">Installerar och starta om…</string>
-    <string name="system_install_question">Vill du installera F-Droid Privilegierad utökning?</string>
+    <string name="system_install_post_fail">Installationen av F-Droid Privileged Extension misslyckades</string>
+    <string name="system_install_post_success_message">F-Droid Privileged Extension installerad. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.</string>
+    <string name="system_install_post_fail_message">Installationen av F-Droid Privileged Extension har misslyckats. Installationsmetoden stöds inte av alla Android-distributioner, ta hjälp av F-Droids felbevakare för mer information.</string>
+    <string name="system_install_installing_rebooting">Installerar och startar om…</string>
+    <string name="system_install_question">Vill du installera F-Droid Privileged Extension?</string>
     <string name="system_install_warning">Detta tar upp till 10 sekunder.</string>
     <string name="system_install_warning_lollipop">Detta tar upp till 10 sekunder och enheten kommer att <b>startas om</b> efteråt.</string>
-    <string name="system_uninstall">Vill du avinstallera F-Droid Privilegierad utökning?</string>
+    <string name="system_uninstall">Vill du avinstallera F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Avinstallera</string>
 
     <string name="swap_nfc_title">Tryck för att utbyta</string>
@@ -302,15 +300,13 @@
 
     <string name="crash_dialog_title">F-Droid har kraschat</string>
     <string name="crash_dialog_text">Ett oväntat fel tvingade appen att avslutas. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
-    <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
+    <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>
     <string name="swap_nearby">Utbyt nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
     <string name="update_auto_download_summary">Uppdateringar hämtas automatiskt och du får ett meddelande om att
         installera dem
     </string>
-    <string name="system_install_not_supported">Installation av F-Droids priviligerade utökning stöds för närvarande
-        inte i Android 5.1 eller senare.
-    </string>
+    <string name="system_install_not_supported">Installation av F-Droid Privileged Extension stöds för närvarande inte i Android 5.1 eller senare.</string>
 
     <string name="download_pending">Väntar på att påbörja hämtning…</string>
 
@@ -328,11 +324,11 @@
     <string name="installing">Installerar…</string>
     <string name="uninstalling">Avinstallera…</string>
 
-    <string name="keep_install_history">Behåll installeringshistorik</string>
+    <string name="keep_install_history">Behåll installationshistorik</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
-    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till Internet?</string>
+    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till utvecklarna av %1$s!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
@@ -411,9 +407,9 @@
         <item quantity="other">Uppdaterad för %1$d dagar sedan</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Inget Internet? Få appar från personer nära dig!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\".</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"i närheten\".</string>
 
     <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittade</string>
     <string name="latest__empty_state__never_updated">När din lista med appar har uppdaterats bör de senaste apparna visas här</string>
@@ -484,21 +480,21 @@
     <string name="allow">Tillåt</string>
 
     <string name="panic_settings">Panikknappsinställningar</string>
-    <string name="panic_settings_summary">Återgärder i nödfall</string>
+    <string name="panic_settings_summary">Åtrgärder som ska ske i nödfall</string>
     <string name="panic_exit_title">Avsluta app</string>
     <string name="panic_exit_summary">Appen kommer att stängas</string>
     <string name="panic_destructive_actions">Destruktiva Åtgärder</string>
     <string name="panic_hide_title">Göm %s</string>
     <string name="panic_hide_summary">Appen kommer att gömmas</string>
 
-    <string name="preventScreenshots_summary">Förhindrar skärmdumpar och döljer appinnehåll från senaste skärmar</string>
+    <string name="preventScreenshots_summary">Förhindrar skärmdumpar och döljer appinnehåll från senaste skärmar-fönstret</string>
 
     <string name="panic_app_setting_title">Panikknappsapp</string>
     <string name="sort_search">Sortera sökning</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="panic_hide_warning_title">Kom ihåg hur du återställer</string>
+    <string name="panic_hide_warning_title">Kom ihåg hur man återställer</string>
     <string name="panic_hide_warning_message">Under en panikhändelse kommer detta ta bort %1$s från startaren. Att bara skriva in \"%2$d\" i %3$s fejk-app kan återställa det.</string>
 
     <string name="hiding_calculator">Kalkylator</string>
@@ -514,7 +510,7 @@
     <string name="over_network_on_demand_summary">Använd endast denna anslutning när jag klickar för att hämta</string>
     <string name="over_network_never_summary">Hämta aldrig någonting via denna anslutning</string>
     <string name="repo_add_mirror">Lägg till spegel</string>
-    <string name="repo_exists_add_fingerprint">%1$s är redan inställaded, detta kommer att lägga till ny nyckelinformation.</string>
+    <string name="repo_exists_add_fingerprint">%1$s är redan installerad, detta kommer att lägga till ny nyckelinformation.</string>
     <string name="repo_exists_enable">%1$s är redan installerad, bekräfta att du vill återaktivera den.</string>
     <string name="repo_exists_and_enabled">%1$s är redan installerad och aktiverad.</string>
     <string name="repo_delete_to_overwrite">Ta först bort %1$s för att lägga till denna med en nyckel som står i konflikt.</string>
@@ -524,10 +520,10 @@
 
     <string name="show_root_apps">Inkludera root-appar</string>
     <string name="show_root_apps_on">Visa appar som kräver root-privilegier</string>
-    <string name="show_anti_feature_apps">Inkludera mot-funktions-appar</string>
+    <string name="show_anti_feature_apps">Inkludera mot-funktionsappar</string>
     <string name="show_anti_feature_apps_on">Vis appar som kräver mot-funktioner</string>
     <string name="force_touch_apps">Inkludera pekskärmsappar</string>
-    <string name="force_touch_apps_on">Vis appar som kräver pekskärm oavsett hårdvarustöd</string>
+    <string name="force_touch_apps_on">Visa appar som kräver pekskärm oavsett hårdvarustöd</string>
 
     <string name="repo_official_mirrors">Officiella speglar</string>
     <string name="repo_user_mirrors">Användarspeglar</string>
@@ -537,4 +533,13 @@
     <string name="swap_toast_could_not_enable_hotspot">Kunde inte aktivera Wi-Fi-accesspunkt!</string>
 
     <string name="warning_scaning_qr_code">Din kamera verkar inte har autofokus. Det kan vara svårt att läsa av koden.</string>
+    <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
+    <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
+    <string name="hide_all_notifications">Dölj alla notifieringar</string>
+    <string name="hide_all_notifications_summary">Förhindra alla händelser från att visas i statusfältet samt notifieringsfönstret.</string>
+    <string name="install_history">Installationshistorik</string>
+    <string name="install_history_summary">Visa privat logg av samtliga installationer och avinstallationer</string>
+    <string name="send_version_and_uuid">Sänd versionnummer och UUID till servrarna</string>
+    <string name="send_version_and_uuid_summary">Inkludera appens versionnummer samt en slumpvald, unik ID vid nedladdning. Börjar gälla först efter omstart.</string>
+    <string name="share_repository">Dela ut filförråd</string>
     </resources>

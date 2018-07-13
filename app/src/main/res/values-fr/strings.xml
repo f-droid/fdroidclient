@@ -553,4 +553,11 @@
 
     <string name="hide_all_notifications">Masquer toutes les notifications</string>
     <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>
+    <string name="prompt_to_send_crash_reports">Invitation à envoyer des rapports de plantage</string>
+    <string name="prompt_to_send_crash_reports_summary">Recueillir des informations de débogage et proposer de les envoyer à l\'équipe de développement</string>
+    <string name="install_history">Historique d\'installation</string>
+    <string name="install_history_summary">Voir le journal privé des installations et désinstallations</string>
+    <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
+    <string name="send_version_and_uuid_summary">Inclure dans cette version de l\'application un identifiant aléatoire et unique lors du téléchargement, qui prend effet au prochain redémarrage de l\'application.</string>
+    <string name="share_repository">Partager le dépôt</string>
     </resources>

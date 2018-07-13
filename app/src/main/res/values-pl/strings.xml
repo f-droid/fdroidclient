@@ -447,17 +447,15 @@
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
     <string name="menu_license">Licencja: %s</string>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d Aktualizacja</item>
-        <item quantity="few">%1$d Aktualizacje</item>
-        <item quantity="many">%1$d Aktualizacji</item>
-        <item quantity="other">%1$d Aktualizacji</item>
-    </plurals>
+	<item quantity="one">%1$d aktualizacja</item>
+	<item quantity="few">%1$d aktualizacje</item>
+	<item quantity="many">%1$d aktualizacji</item>
+</plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d Zainstalowana Aplikacja</item>
-        <item quantity="few">%1$d Zainstalowane Aplikacje</item>
-        <item quantity="many">%1$d Zainstalowanych Aplikacji</item>
-        <item quantity="other">%1$d Zainstalowanych Aplikacji</item>
-    </plurals>
+	<item quantity="one">%1$d zainstalowana aplikacja</item>
+	<item quantity="few">%1$d zainstalowane aplikacje</item>
+	<item quantity="many">%1$d zainstalowanych aplikacji</item>
+</plurals>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d powiadomienie więcej…</item>
         <item quantity="few">+%1$d powiadomienia więcej…</item>
@@ -486,7 +484,7 @@
     <string name="download_404">Nie znaleziono żądanego pliku.</string>
     <string name="force_old_index">Wymuś starszy format indeksu</string>
     <string name="force_old_index_summary">W przypadku błędów lub problemów z kompatybilnością, użyj indeksu XML aplikacji</string>
-    <string name="app_list_download_ready">Zainstalowany i gotowy do instalacji</string>
+    <string name="app_list_download_ready">Pobrany i gotowy do instalacji</string>
 
     <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
     <string name="app_installed_media">Plik zainstalowany do %s</string>
@@ -570,4 +568,15 @@
 
     <string name="hide_all_notifications">Ukryj wszystkie powiadomienia</string>
     <string name="hide_all_notifications_summary">Nie pozwalaj akcjom wyświetlać się na pasku stanu lub w obszarze powiadomień.</string>
+    <string name="prompt_to_send_crash_reports">Proponuj wysyłanie raportów o awariach</string>
+    <string name="prompt_to_send_crash_reports_summary">Zbieraj dane o awariach i proponuj wysyłanie ich do programistów</string>
+    <string name="install_history">Historia instalacji</string>
+    <string name="install_history_summary">Wyświetl prywatny dziennik wszystkich instalacji i dezinstalacji</string>
+    <string name="send_version_and_uuid">Przesyłaj na serwery wersję i UUID</string>
+    <string name="send_version_and_uuid_summary">Umieść wersję aplikacji i losowy unikalny identyfikator podczas pobierań, wymagany restart aplikacji.</string>
+    <string name="share_repository">Udostępnij repozytorium</string>
+    <string name="allow_push_requests">Pozwól repozytorium na instalowanie/odinstalowywanie aplikacji</string>
+    <string name="allow_push_requests_summary">Repozytorium metadane może zawierać żądania push do instalowania lub odinstalowywania aplikacji</string>
+    <string name="antinosourcesince">Kod źródłowy nie jest już dostępny, nie są możliwe aktualizacje.</string>
+
     </resources>

@@ -40,22 +40,20 @@
     <string name="update_interval">Інтервал автооновлення</string>
     <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
     <string name="system_installer">Привілейоване розширення</string>
-    <string name="system_installer_on">Використовувати привілейоване розширення F-Droid для встановлення, оновлення та
-        видалення пакетів
-    </string>
+    <string name="system_installer_on">Використовувати привілейоване розширення для встановлення, оновлення та видалення пакетів</string>
     <string name="uninstall_system">Оновити/Видалити привілейоване розширення F-Droid</string>
     <string name="uninstall_system_summary">Відкрити деталі привілейованого розширення F-Droid для його оновлення/видалення</string>
     <string name="theme_dark">Темна</string>
     <string name="theme_light">Світла</string>
-    <string name="interval_4h">Кожні 4 години</string>
-    <string name="interval_12h">Кожні 12 годин</string>
-    <string name="interval_1d">Щоденно</string>
-    <string name="interval_1w">Щотижня</string>
-    <string name="interval_2w">Кожні 2 тижні</string>
+    <string name="interval_4h">Перевіряти оновлення кожні 4 години</string>
+    <string name="interval_12h">Перевіряти оновлення кожні 12 годин</string>
+    <string name="interval_1d">Перевіряти оновлення щоденно</string>
+    <string name="interval_1w">Перевіряти оновлення щотижнево</string>
+    <string name="interval_2w">Перевіряти оновлення кожні 2 тижня</string>
 
-    <string name="interval_1h">Щогодинно</string>
+    <string name="interval_1h">Перевіряти оновлення щогодинно</string>
     <string name="unstable_updates">Нестабільні оновлення</string>
-    <string name="interval_never">Ніколи</string>
+    <string name="interval_never">Не оновлювати додатки автоматично</string>
     <string name="downloading">Завантаження…</string>
 
     <string name="app_details">Деталі застосунку</string>
@@ -193,7 +191,7 @@
 
     <string name="display">Вигляд</string>
 
-    <string name="show_incompat_versions">Несумісні версії</string>
+    <string name="show_incompat_versions">Увімкнути несумісні версії</string>
     <string name="show_incompat_versions_on">Показувати версії застосунків, які несумісні з цим пристроєм</string>
     <string name="local_repo_running">F-Droid готовий до обміну</string>
     <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
@@ -204,8 +202,8 @@
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список застосунків не може бути перевірено. Ви маєте бути обачними з застосунками, які завантажуєте з непідписаних джерел.</string>
     <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Ввімкніть його, аби побачити застосунки, які він містить.</string>
-    <string name="repo_confirm_delete_body">Видалення репозиторію означає, що застосунки з нього не будуть доступні з F-Droid. 
-\n 
+    <string name="repo_confirm_delete_body">Видалення репозиторію означає, що застосунки з нього не будуть доступні.
+\n
 \nПримітка: Всі раніше встановленні застосунки залишаться на вашому пристрої.</string>
     <string name="repo_disabled_notification">%1$s відключено.
 \n
@@ -267,13 +265,13 @@
     <string name="swap_cant_find_peers">Не можете знайти кого шукаєте?</string>
     <string name="swap_no_peers_nearby">Не вдалося знайти людей поблизу для обміну.</string>
     <string name="swap_qr_isnt_for_swap">QR-код, який ви просканували, не схожий на код обміну.</string>
-    <string name="repo_added">F-Droid ропозиторій %1$s збережено.</string>
+    <string name="repo_added">Ропозиторій пакетів %1$s збережено.</string>
     <string name="category_Theming">Тематика</string>
     <string name="swap_connection_misc_error">Трапилась помилка під час з\'єднання з пристроєм, не можливо продовжити обмін з ним!</string>
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
     <string name="status_download_unknown_size">Завантаження\n%2$s з\n%1$s</string>
-    <string name="repo_searching_address">Перегляд репозиторію F-Droid на
+    <string name="repo_searching_address">Перегляд репозиторію пакетів на 
 \n%1$s</string>
     <string name="more">Більше</string>
     <string name="less">Менше</string>
@@ -333,7 +331,7 @@
     <string name="update_auto_install_summary">Завантажте та встановіть оновлення застосунків у фоновому режимі</string>
     <string name="update_auto_install">Автоматичне встановлення оновлень</string>
     <string name="keep_install_history">Зберігати історію встановлення</string>
-    <string name="keep_install_history_summary">Зберігати звіт про всі встановлення та видалення в F-Droid</string>
+    <string name="keep_install_history_summary">Зберігати звіт про всі встановлення та видалення в приватному сховищі</string>
     <string name="versions">Версії</string>
     <string name="warning_no_internet">Не вдається оновити, чи підключені ви до Інтернету?</string>
     <string name="repositories_summary">Додати додаткові джерела застосунку</string>
@@ -498,7 +496,7 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ігнорувати</string>
 
     <string name="privacy">Конфіденційність</string>
-    <string name="preventScreenshots_title">Запобігання скріншотам</string>
+    <string name="preventScreenshots_title">Запобігання знімків екрану</string>
     <string name="panic_app_unknown_app">невідомий застосунок</string>
     <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
     <string name="panic_app_setting_none">Жоден</string>
@@ -530,4 +528,25 @@
     <string name="over_wifi">Через Wi-Fi</string>
     <string name="over_data">Через мобільну мережу</string>
     <string name="over_network_always_summary">Завжди використовувати це з\'єднання, коли це можливо</string>
+    <string name="prompt_to_send_crash_reports">Запит на надсилання звітів про неполадки</string>
+    <string name="prompt_to_send_crash_reports_summary">Збір інформації про неполадки та запит на надсилання її розробнику</string>
+    <string name="hide_all_notifications">Приховати всі сповіщення</string>
+    <string name="hide_all_notifications_summary">Заборонити показ всіх дій в рядку стану та панелі сповіщень.</string>
+    <string name="install_history">Історія встановлень</string>
+    <string name="install_history_summary">Перегляд особистого журналу всіх встановлень та вилучень</string>
+    <string name="send_version_and_uuid">Надіслати версію та UUID на сервер</string>
+    <string name="over_network_on_demand_summary">Використовувати це з\'єднання лише для завантаження</string>
+    <string name="over_network_never_summary">Ніколи не завантажувати, використовуючи це з\'єднання</string>
+    <string name="repo_exists_add_fingerprint">%1$s вже встановлено, ця дія додасть нову інформацію про ключ.</string>
+    <string name="repo_exists_enable">%1$s вже налаштовано, підтвердьте, що бажаєте наново увімкнути.</string>
+    <string name="repo_exists_and_enabled">%1$s вже налаштовано і увімкнуто.</string>
+    <string name="repo_delete_to_overwrite">Спершу видаліть %1$s, аби додати його з конфліктним ключем.</string>
+    <string name="show_root_apps">Увімкнути root додатки</string>
+    <string name="show_root_apps_on">Показати додатки, які потребують root привілеїв</string>
+    <string name="share_repository">Поділитися репозиторієм</string>
+    <string name="use_bluetooth">Використовувати Bluetooth</string>
+    <string name="swap_toast_hotspot_enabled">Точку доступу Wi-Fi увімкнуто</string>
+    <string name="swap_toast_could_not_enable_hotspot">Не вдалося увімкнути Wi-Fi точку доступу!</string>
+
+    <string name="warning_scaning_qr_code">Ваша камера не підтримує автофокус. Сканування коду може йти з труднощами.</string>
     </resources>

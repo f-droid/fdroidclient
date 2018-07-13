@@ -338,8 +338,8 @@
     <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und
         installieren
     </string>
-    <string name="keep_install_history">Installationsverlauf behalten</string>
-    <string name="keep_install_history_summary">Ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher</string>
+    <string name="keep_install_history">Installationsverlauf aufbewahren</string>
+    <string name="keep_install_history_summary">Ein Protokoll zu allen Installationen und Deinstallationen in einem privaten Speicher anlegen</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee kaufen!</string>
@@ -549,5 +549,18 @@
     <string name="over_network_never_summary">Niemals etwas über diese Verbindung herunterladen</string>
     <string name="antidisabledalgorithmlist">Diese App hat eine schwache Sicherheitssignatur</string>
     <string name="antiknownvulnlist">Diese Anwendung enthält eine bekannte Sicherheitslücke</string>
+
+    <string name="prompt_to_send_crash_reports_summary">Daten zu Abstürzen sammeln und vor ihrem Versand an den Entwickler nachfragen</string>
+    <string name="hide_all_notifications">Alle Benachrichtigungen verbergen</string>
+    <string name="install_history">Installationsverlauf</string>
+    <string name="install_history_summary">Das private Protokoll zu allen Installationen und Deinstallationen ansehen</string>
+    <string name="send_version_and_uuid">Version und UUID an Server verschicken</string>
+    <string name="prompt_to_send_crash_reports">Aufforderung zum Versand von Absturzberichten</string>
+    <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
+    <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
+    <string name="share_repository">Paketquelle teilen</string>
+    <string name="allow_push_requests">Repos erlauben, Apps zu installieren/deinstallieren</string>
+    <string name="allow_push_requests_summary">Repo-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Anwendungen enthalten</string>
+    <string name="antinosourcesince">Der Quellcode ist nicht mehr verfügbar, keine Updates möglich.</string>
 
     </resources>

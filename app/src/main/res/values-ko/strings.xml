@@ -502,4 +502,13 @@
     <string name="antidisabledalgorithmlist">이 앱은 약한 보안 서명이 있습니다</string>
     <string name="antiknownvulnlist">이 앱은 알려진 보안 취약점을 포함합니다</string>
 
+    <string name="prompt_to_send_crash_reports">충돌 보고서를 보낼지를 확인</string>
+    <string name="prompt_to_send_crash_reports_summary">충돌에 대한 데이터를 수집하여 개발자에게 그것들을 보내도록 요청합니다</string>
+    <string name="hide_all_notifications">모든 알림 숨기기</string>
+    <string name="hide_all_notifications_summary">상태 표시줄과 알림 상자의 모든 작업이 표시되는 것을 막습니다.</string>
+    <string name="install_history">설치 내역</string>
+    <string name="install_history_summary">모든 설치 및 제거의 개인 기록을 봅니다</string>
+    <string name="send_version_and_uuid">버전과 UUID를 서버로 보내기</string>
+    <string name="send_version_and_uuid_summary">이 앱의 버전과 임의의, 고유한 ID를 포함하며, 다음에 앱을 다시 시작하면 영향을 받습니다.</string>
+    <string name="share_repository">저장소 공유</string>
     </resources>

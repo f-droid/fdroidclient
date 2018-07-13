@@ -70,7 +70,7 @@
     <string name="search_hint">Buscar aplicaciones</string>
     <string name="appcompatibility">Compatibilidad de aplicaciones</string>
     <string name="show_incompat_versions">Incluir versiones incompatibles</string>
-    <string name="show_incompat_versions_on">Mostrar las versiones incompatibles de las aplicaciones</string>
+    <string name="show_incompat_versions_on">Listar las versiones incompatibles de las aplicaciones</string>
     <string name="local_repo">Repo local</string>
     <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
     <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
@@ -117,10 +117,9 @@
     </string>
     <string name="unknown">Desconocido</string>
     <string name="repo_confirm_delete_title">¿Borrar repositorio?</string>
-    <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán
-        disponibles en F-Droid.
-        \n\nNota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.
-    </string>
+    <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles. 
+\n
+\nNota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s deshabilitado.
         \n\nNecesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.
     </string>
@@ -538,11 +537,11 @@
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
     <string name="repo_exists_add_mirror">Esto es una copia de %1$s, ¿agregarlo como réplica?</string>
     <string name="show_root_apps">Incluir aplicaciones con acceso de administrador</string>
-    <string name="show_root_apps_on">Mostrar aplicaciones que requieren privilegios de administrador</string>
-    <string name="show_anti_feature_apps">Incluir aplicaciones con anti-características</string>
-    <string name="show_anti_feature_apps_on">Mostrar aplicaciones que requieren anti-características</string>
+    <string name="show_root_apps_on">Listar aplicaciones que requieren privilegios de administrador</string>
+    <string name="show_anti_feature_apps">Incluir aplicaciones controvertidas</string>
+    <string name="show_anti_feature_apps_on">Listar aplicaciones que requieren características controvertidas</string>
     <string name="force_touch_apps">Incluir aplicaciones de pantalla táctil</string>
-    <string name="force_touch_apps_on">Mostrar aplicaciones que requieren pantalla táctil sin importar si hay soporte hardware</string>
+    <string name="force_touch_apps_on">Listar aplicaciones que requieren pantalla táctil sin importar si hay soporte hardware</string>
 
     <string name="repo_official_mirrors">Réplicas oficiales</string>
     <string name="repo_user_mirrors">Réplicas de usuario</string>
@@ -560,4 +559,12 @@
     <string name="antiknownvulnlist">Esta aplicación contiene una vulnerabilidad de seguridad conocida</string>
 
     <string name="hide_all_notifications">Ocultar todas las notificaciones</string>
+    <string name="prompt_to_send_crash_reports_summary">Recopilar datos sobre fallos y pedir que se los envíen al desarrollador</string>
+    <string name="install_history">Historial de instalación</string>
+    <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
+    <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
+    <string name="send_version_and_uuid_summary">Incluir la versión de esta aplicación, un ID aleatorio y único cuando se está descargando, toma efecto en el próximo reinicio de la aplicación.</string>
+    <string name="share_repository">Compartir Repositorio</string>
+    <string name="prompt_to_send_crash_reports">Preguntar si mandar informes de fallo</string>
+    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     </resources>

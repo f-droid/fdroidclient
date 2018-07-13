@@ -558,4 +558,15 @@
 
     <string name="hide_all_notifications">הסתרת כל ההתראות</string>
     <string name="hide_all_notifications_summary">למנוע מכל הפעולות להופיע בשורת המצב ובמגירת ההתראות.</string>
+    <string name="prompt_to_send_crash_reports">הצגת בקשה לשליחת דוחות קריסה</string>
+    <string name="prompt_to_send_crash_reports_summary">איסוף נתונים על קריסות ולשאול האם לשלוח אותם למפתחים</string>
+    <string name="install_history">היסטוריית התקנה</string>
+    <string name="install_history_summary">הצגת יומן ההתקנות וההסרות הפרטי</string>
+    <string name="send_version_and_uuid">שליחת גרסה ומזהה ייחודי גלובלי לשרתים</string>
+    <string name="send_version_and_uuid_summary">לכלול את גרסת היישומון ומזהה אקראי וייחודי בעת ההורדה, יחול עם הפעלת היישומון מחדש.</string>
+    <string name="share_repository">שיתוף מאגר</string>
+    <string name="antinosourcesince">קוד המקור אינו זמין עוד, אין עדכונים.</string>
+
+    <string name="allow_push_requests">לאפשר למאגרים להתקין/להסיר יישומונים</string>
+    <string name="allow_push_requests_summary">נתוני העל של המאגרים כוללים בקשות דחיפה להתקין או להסיר יישומונים</string>
     </resources>

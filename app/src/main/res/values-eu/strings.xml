@@ -577,4 +577,13 @@
 
     <string name="hide_all_notifications">Ezkutatu jakinarazpen guztiak</string>
     <string name="hide_all_notifications_summary">Eragotzi ekintza guztiei egoera barran eta jakinarazpenen tiraderan agertzea.</string>
+    <string name="prompt_to_send_crash_reports">Galdetu kraskatze txostenak bidaltzeko</string>
+    <string name="prompt_to_send_crash_reports_summary">Jaso kraskatzeei buruzko datuak eta galdetu garatzaileari bidaltzeko</string>
+    <string name="install_history">Instalazio historiala</string>
+    <string name="install_history_summary">Ikusi instalazio eta desinstalazio guztien egunkari pribatua</string>
+    <string name="send_version_and_uuid">Bidali bertsioa eta UUID zerbitzarietara</string>
+    <string name="send_version_and_uuid_summary">Gehitu aplikazio honen bertsioa eta ausazko ID bakan  bat deskargatzean, hurrengo aplikazioa berrabiarazi eta gero aplikatuko da.</string>
+    <string name="share_repository">Partekatu biltegia</string>
+    <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango dira eguneraketak egin.</string>
+
     </resources>

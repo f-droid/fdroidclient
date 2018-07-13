@@ -576,4 +576,11 @@
 
     <string name="hide_all_notifications">Istichi totu sas notìficas</string>
     <string name="hide_all_notifications_summary">Non permìtere a sas atzione de èssere ammustradas in sa barra de istadu e in sa lista de sas notìficas.</string>
+    <string name="prompt_to_send_crash_reports">Pedi de imbiare raportos a pitzu de sos arrestos anòmalos</string>
+    <string name="prompt_to_send_crash_reports_summary">Boddi datos a pitzu de sos arrestos anòmalos e imbia·los a sos isvilupadores</string>
+    <string name="install_history">Cronologia de sas installatziones</string>
+    <string name="install_history_summary">Leghe su registru privadu de totu sas installatziones e disinstallatziones</string>
+    <string name="send_version_and_uuid">Imbia sa versione e s\'UUID a sos servers</string>
+    <string name="send_version_and_uuid_summary">Inclue sa versione de custa aplicatzione e un\'ID ùnicu a casu cando ses iscarrighende. At a tènnere efetu a pustis de s\'allughìngiu imbeniente de s\'aplicatzione.</string>
+    <string name="share_repository">Cumpartzi Depòsitu</string>
     </resources>
