@@ -23,7 +23,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        versionCode 1003003
+        versionCode 1003004
         versionName getVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
