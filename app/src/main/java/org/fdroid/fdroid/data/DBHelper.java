@@ -257,8 +257,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
-        // Always, load the internal defaults afterwards. This way, F-Droid native repos can never be deleted
-        List<String> defaultRepos = loadDefaultRepos();
+        // Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added ones on the Manage Repos screen.
+        List<String> defaultRepos = loadAdditionalRepos();
+        List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        defaultRepos.addAll(internalRepos);
 
         // Insert all the repos into the database
         if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
@@ -281,13 +283,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /*
-    * Look for external repositories under { "/oem", "/odm", "/vendor", "/system" }
+    * Look for external repositories under { "/system", "/vendor", "/odm", "/oem" }
     * If ROOT is one of those paths and 'packageName' is the name of the package 
     * that contains this class, then we look under 'root'/etc/'packageName'/additional_repos.xml
     */
-    private List<String> loadDefaultRepos() {
+    private List<String> loadAdditionalRepos() {
         // First, take the built-in repos.
-        List<String> externalRepos = new LinkedList<>(Arrays.asList(context.getResources().getStringArray(R.array.default_repos)));
+        List<String> externalRepos = new LinkedList<>();
 
         // Second, take the external repos. We will later prioritize the repos according their order in the list externalRepos.
         final String packageName = context.getPackageName();
