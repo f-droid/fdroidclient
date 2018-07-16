@@ -332,6 +332,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 case ReadyToInstall:
                     return getViewStateReadyToInstall(app);
 
+                case PendingInstall:
                 case Downloading:
                     return getViewStateDownloading(app, appStatus);
 

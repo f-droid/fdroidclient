@@ -115,6 +115,8 @@ public class InstallerService extends JobIntentService {
      * @see #uninstall(Context, Apk)
      */
     public static void install(Context context, Uri localApkUri, Uri downloadUri, Apk apk) {
+        Installer.sendBroadcastInstall(context, downloadUri, Installer.ACTION_INSTALL_STARTED, apk,
+                null, null);
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);

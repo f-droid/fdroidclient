@@ -91,13 +91,14 @@ public final class AppUpdateStatusManager {
     private static final String LOGTAG = "AppUpdateStatusManager";
 
     public enum Status {
+        PendingInstall,
         DownloadInterrupted,
         UpdateAvailable,
         Downloading,
         ReadyToInstall,
         Installing,
         Installed,
-        InstallError
+        InstallError,
     }
 
     public static AppUpdateStatusManager getInstance(Context context) {

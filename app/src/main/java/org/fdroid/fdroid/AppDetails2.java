@@ -485,6 +485,7 @@ public class AppDetails2 extends AppCompatActivity
         }
 
         switch (newStatus.status) {
+            case PendingInstall:
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
