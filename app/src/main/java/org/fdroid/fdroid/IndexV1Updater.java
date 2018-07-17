@@ -429,14 +429,14 @@ public class IndexV1Updater extends RepoUpdater {
         String certFromJar = Hasher.hex(rawCertFromJar);
 
         if (TextUtils.isEmpty(certFromJar)) {
-            throw new SigningException(SIGNED_FILE_NAME + " must have an included signing certificate!");
+            throw new SigningException(repo, SIGNED_FILE_NAME + " must have an included signing certificate!");
         }
 
         if (repo.signingCertificate == null) {
             if (repo.fingerprint != null) {
                 String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
                 if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
-                    throw new SigningException("Supplied certificate fingerprint does not match!");
+                    throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
                 }
             }
             Utils.debugLog(TAG, "Saving new signing certificate to database for " + repo.address);
@@ -448,14 +448,14 @@ public class IndexV1Updater extends RepoUpdater {
         }
 
         if (TextUtils.isEmpty(repo.signingCertificate)) {
-            throw new SigningException("A empty repo signing certificate is invalid!");
+            throw new SigningException(repo, "A empty repo signing certificate is invalid!");
         }
 
         if (repo.signingCertificate.equals(certFromJar)) {
             return; // we have a match!
         }
 
-        throw new SigningException("Signing certificate does not match!");
+        throw new SigningException(repo, "Signing certificate does not match!");
     }
 
     /**

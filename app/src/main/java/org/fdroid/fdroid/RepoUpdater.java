@@ -351,6 +351,10 @@ public class RepoUpdater {
         public SigningException(String message) {
             super("Repository was not signed correctly: " + message);
         }
+
+        public SigningException(Repo repo, String message) {
+            super((repo == null ? "Repository" : repo.name) + " was not signed correctly: " + message);
+        }
     }
 
     /**
@@ -395,7 +399,7 @@ public class RepoUpdater {
             String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
             if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
                     || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
-                throw new SigningException("Supplied certificate fingerprint does not match!");
+                throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
             }
         } // else - no info to check things are valid, so just Trust On First Use
 
@@ -426,7 +430,7 @@ public class RepoUpdater {
         if (TextUtils.isEmpty(repo.signingCertificate)
                 || TextUtils.isEmpty(certFromJar)
                 || TextUtils.isEmpty(certFromIndexXml)) {
-            throw new SigningException("A empty repo or signing certificate is invalid!");
+            throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
         }
 
         // though its called repo.signingCertificate, its actually a X509 certificate
@@ -435,7 +439,7 @@ public class RepoUpdater {
                 && certFromIndexXml.equals(certFromJar)) {
             return; // we have a match!
         }
-        throw new SigningException("Signing certificate does not match!");
+        throw new SigningException(repo, "Signing certificate does not match!");
     }
 
     /**
