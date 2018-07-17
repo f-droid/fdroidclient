@@ -101,6 +101,8 @@ public class PreferencesFragment extends PreferenceFragment
     private SwitchPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
+    private CheckBoxPreference keepInstallHistoryPref;
+    private Preference installHistoryPref;
     private long currentKeepCacheTime;
     private int overWifiPrevious;
     private int overDataPrevious;
@@ -113,6 +115,10 @@ public class PreferencesFragment extends PreferenceFragment
 
         addPreferencesFromResource(R.xml.preferences);
         otherPrefGroup = (PreferenceGroup) findPreference("pref_category_other");
+
+        keepInstallHistoryPref = (CheckBoxPreference) findPreference(Preferences.PREF_KEEP_INSTALL_HISTORY);
+        installHistoryPref = findPreference("installHistory");
+        installHistoryPref.setVisible(keepInstallHistoryPref.isChecked());
 
         useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
@@ -338,14 +344,12 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_KEEP_INSTALL_HISTORY:
-                CheckBoxPreference p = (CheckBoxPreference) findPreference(key);
-                Preference installHistory = findPreference("installHistory");
-                if (p.isChecked()) {
+                if (keepInstallHistoryPref.isChecked()) {
                     InstallHistoryService.register(getActivity());
-                    installHistory.setVisible(true);
+                    installHistoryPref.setVisible(true);
                 } else {
                     InstallHistoryService.unregister(getActivity());
-                    installHistory.setVisible(false);
+                    installHistoryPref.setVisible(false);
                 }
                 break;
         }
