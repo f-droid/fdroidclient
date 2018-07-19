@@ -145,7 +145,7 @@ public class AppProvider extends FDroidProvider {
 
     /**
      * A QuerySelection which is aware of the option/need to join onto the
-     * installed apps table. Not that the base classes
+     * installed apps table. Note that the base classes
      * {@link org.fdroid.fdroid.data.QuerySelection#add(QuerySelection)} and
      * {@link org.fdroid.fdroid.data.QuerySelection#add(String, String[])} methods
      * will only return the base class {@link org.fdroid.fdroid.data.QuerySelection}
@@ -1206,7 +1206,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * Returns a query which requires two parameters to be bdeatound. These are (in order):
+     * Returns a query which requires two parameters to be bound. These are (in order):
      *  1) The repo version that introduced density specific icons
      *  2) The dir to density specific icons for the current device.
      */
