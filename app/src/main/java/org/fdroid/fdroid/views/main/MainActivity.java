@@ -164,10 +164,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
      * don't try to do it automatically again.
      */
     private void initialRepoUpdateIfRequired() {
-        Preferences prefs = Preferences.get();
-        if (!prefs.hasTriedEmptyUpdate()) {
+        if (!Preferences.get().isIndexNeverUpdated()) {
             Utils.debugLog(TAG, "We haven't done an update yet. Forcing repo update.");
-            prefs.setTriedEmptyUpdate(true);
             UpdateService.updateNow(this);
         }
     }

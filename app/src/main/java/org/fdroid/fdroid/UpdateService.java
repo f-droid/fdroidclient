@@ -29,7 +29,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -41,7 +40,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -82,7 +80,6 @@ public class UpdateService extends JobIntentService {
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
 
-    private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
     private static final int JOB_ID = 0xfedcba;
 
     private static final int NOTIFY_ID_UPDATING = 0;
@@ -498,10 +495,7 @@ public class UpdateService extends JobIntentService {
                 }
             }
 
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-            SharedPreferences.Editor e = prefs.edit();
-            e.putLong(STATE_LAST_UPDATED, System.currentTimeMillis());
-            e.apply();
+            fdroidPrefs.setLastUpdateCheck(System.currentTimeMillis());
 
             if (errorRepos == 0) {
                 if (changes) {

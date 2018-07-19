@@ -1095,7 +1095,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static void resetTransient(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Removing all index tables, they will be recreated next time F-Droid updates.");
 
-        Preferences.get().setTriedEmptyUpdate(false);
+        Preferences.get().resetLastUpdateCheck();
 
         db.beginTransaction();
         try {
@@ -1147,7 +1147,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
 
-        Preferences.get().setTriedEmptyUpdate(false);
+        Preferences.get().resetLastUpdateCheck();
 
         db.execSQL("drop table " + AppMetadataTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);

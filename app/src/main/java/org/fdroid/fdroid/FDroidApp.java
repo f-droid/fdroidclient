@@ -403,7 +403,6 @@ public class FDroidApp extends Application {
         CleanCacheService.schedule(this);
 
         notificationHelper = new NotificationHelper(getApplicationContext());
-        UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 
         // There are a couple things to pay attention to with this config: memory usage,
@@ -452,7 +451,12 @@ public class FDroidApp extends Application {
                 .build();
         ImageLoader.getInstance().init(config);
 
+        if (preferences.isIndexNeverUpdated()) {
+            // force this check to ensure it starts fetching the index on initial runs
+            networkState = ConnectivityMonitorService.getNetworkState(this);
+        }
         ConnectivityMonitorService.registerAndStart(this);
+        UpdateService.schedule(getApplicationContext());
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);
