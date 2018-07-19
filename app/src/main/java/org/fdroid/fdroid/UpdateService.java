@@ -84,6 +84,7 @@ public class UpdateService extends JobIntentService {
 
     private static final int NOTIFY_ID_UPDATING = 0;
 
+    private static UpdateService updateService;
     private static Handler toastHandler;
 
     private NotificationManager notificationManager;
@@ -189,6 +190,8 @@ public class UpdateService extends JobIntentService {
     /**
      * Whether or not a repo update is currently in progress. Used to show feedback throughout
      * the app to users, so they know something is happening.
+     *
+     * @see <a href="https://stackoverflow.com/a/608600">set a global variable when it is running that your client can check</a>
      */
     public static boolean isUpdating() {
         return updateService != null;
@@ -239,8 +242,6 @@ public class UpdateService extends JobIntentService {
         }
 
     }
-
-    private static UpdateService updateService;
 
     public static void stopNow(Context context) {
         if (updateService != null) {

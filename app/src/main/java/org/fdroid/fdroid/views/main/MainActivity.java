@@ -158,13 +158,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigation.selectTab(adapter.adapterPositionFromItemId(selectedMenuId));
     }
 
-    /**
-     * The first time the app is run, we will have an empty app list. To deal with this, we will
-     * attempt to update with the default repo. However, if we have tried this at least once, then
-     * don't try to do it automatically again.
-     */
     private void initialRepoUpdateIfRequired() {
-        if (!Preferences.get().isIndexNeverUpdated()) {
+        if (Preferences.get().isIndexNeverUpdated() && !UpdateService.isUpdating()) {
             Utils.debugLog(TAG, "We haven't done an update yet. Forcing repo update.");
             UpdateService.updateNow(this);
         }
