@@ -715,9 +715,14 @@ public class ManageReposActivity extends AppCompatActivity
                     path = path.substring(0, path.length() - 1);
                 }
             }
-            return new URI(uri.getScheme().toLowerCase(Locale.ENGLISH),
+            String scheme = uri.getScheme();
+            String host = uri.getHost();
+            if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {
+                return urlString;
+            }
+            return new URI(scheme.toLowerCase(Locale.ENGLISH),
                     uri.getUserInfo(),
-                    uri.getHost().toLowerCase(Locale.ENGLISH),
+                    host.toLowerCase(Locale.ENGLISH),
                     uri.getPort(),
                     path,
                     uri.getQuery(),
