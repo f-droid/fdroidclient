@@ -13,8 +13,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -124,6 +125,14 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private void explainEmptyStateToUser() {
+        if (Preferences.get().isIndexNeverUpdated() && UpdateService.isUpdating()) {
+            LinearLayout linearLayout = (LinearLayout) appList.getParent();
+            linearLayout.addView(new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge));
+            emptyState.setVisibility(View.GONE);
+            appList.setVisibility(View.GONE);
+            return;
+        }
+
         StringBuilder emptyStateText = new StringBuilder();
         emptyStateText.append(activity.getString(R.string.latest__empty_state__no_recent_apps));
         emptyStateText.append("\n\n");
