@@ -123,6 +123,10 @@ public class UpdateService extends JobIntentService {
      * @see JobIntentService#enqueueWork(Context, Class, int, Intent)
      */
     private static void enqueueWork(Context context, @NonNull Intent intent) {
+        if (!Preferences.get().isOnDemandDownloadAllowed()) {
+            Toast.makeText(context, R.string.updates_disabled_by_settings, Toast.LENGTH_LONG).show();
+        }
+
         enqueueWork(context, UpdateService.class, JOB_ID, intent);
     }
 

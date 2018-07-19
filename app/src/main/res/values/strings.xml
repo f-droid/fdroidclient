@@ -129,6 +129,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="one">Download update for %1$d app.</item>
         <item quantity="other">Download updates for %1$d apps.</item>
     </plurals>
+    <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
 
     <string name="ok">OK</string>
 
