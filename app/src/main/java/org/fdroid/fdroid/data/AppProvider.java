@@ -1233,12 +1233,7 @@ public class AppProvider extends FDroidProvider {
                     app + "." + Cols.ICON +
                 ") " +
                 " FROM " +
-                apk +
-                " JOIN " + repo + " ON (" + repo + "." + RepoTable.Cols._ID + " = " + apk + "." + ApkTable.Cols.REPO_ID + ") " +
-                " WHERE " +
-                app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
-                apk + "." + ApkTable.Cols.VERSION_CODE + " = " + app + "." + Cols.SUGGESTED_VERSION_CODE;
-
+                repo + " WHERE " + repo + "." + RepoTable.Cols._ID + " = " + app + "." + Cols.REPO_ID;
         return "UPDATE " + app + " SET "
             + Cols.ICON_URL + " = ( " + iconUrlQuery + " )";
     }
