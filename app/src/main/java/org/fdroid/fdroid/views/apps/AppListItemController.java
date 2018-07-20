@@ -334,6 +334,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 case Downloading:
                     return getViewStateDownloading(app, appStatus);
 
+                case Installing:
+                    return getViewStateInstalling(app);
+
                 case Installed:
                     return getViewStateInstalled(app);
 
@@ -341,6 +344,16 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                     return getViewStateDefault(app);
             }
         }
+    }
+
+    protected AppListItemState getViewStateInstalling(@NonNull App app) {
+        CharSequence mainText = activity.getString(
+                R.string.app_list__name__downloading_in_progress, app.name);
+
+        return new AppListItemState(app)
+                .setMainText(mainText)
+                .showActionButton(null)
+                .setStatusText(activity.getString(R.string.notification_content_single_installing, app.name));
     }
 
     protected AppListItemState getViewStateInstalled(@NonNull App app) {
