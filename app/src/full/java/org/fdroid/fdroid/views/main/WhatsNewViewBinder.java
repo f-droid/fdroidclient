@@ -41,6 +41,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final TextView emptyState;
     private final RecyclerView appList;
 
+    private ProgressBar progressBar;
+
     WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
 
@@ -126,8 +128,13 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private void explainEmptyStateToUser() {
         if (Preferences.get().isIndexNeverUpdated() && UpdateService.isUpdating()) {
+            if (progressBar != null) {
+                return;
+            }
             LinearLayout linearLayout = (LinearLayout) appList.getParent();
-            linearLayout.addView(new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge));
+            progressBar = new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge);
+            progressBar.setId(R.id.progress_bar);
+            linearLayout.addView(progressBar);
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.GONE);
             return;
