@@ -349,8 +349,9 @@ public class FDroidApp extends Application {
         }
         Preferences.setup(this);
         Languages.setLanguage(this);
+        Preferences preferences = Preferences.get();
 
-        if (Preferences.get().promptToSendCrashReports()) {
+        if (preferences.promptToSendCrashReports()) {
             ACRA.init(this);
             if (isAcraProcess() || HidingManager.isHidden(this)) {
                 return;
@@ -359,16 +360,15 @@ public class FDroidApp extends Application {
 
         PRNGFixes.apply();
 
-        curTheme = Preferences.get().getTheme();
-        Preferences.get().configureProxy();
+        curTheme = preferences.getTheme();
+        preferences.configureProxy();
 
         // bug specific to exactly 5.0 makes it only work with the old index
         // which includes an ugly, hacky workaround
         // https://gitlab.com/fdroid/fdroidclient/issues/1014
         if (Build.VERSION.SDK_INT == 21) {
-            Preferences p = Preferences.get();
-            p.setExpertMode(true);
-            p.setForceOldIndex(true);
+            preferences.setExpertMode(true);
+            preferences.setForceOldIndex(true);
         }
 
         InstalledAppProviderService.compareToPackageManager(this);
@@ -376,7 +376,7 @@ public class FDroidApp extends Application {
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,
         // so that the newly updated list will correctly filter relevant apps.
-        Preferences.get().registerAppsRequiringRootChangeListener(new Preferences.ChangeListener() {
+        preferences.registerAppsRequiringRootChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
                 getContentResolver().notifyChange(AppProvider.getContentUri(), null);
@@ -386,14 +386,14 @@ public class FDroidApp extends Application {
         // If the user changes the preference to do with filtering anti-feature apps,
         // it is easier to just notify a change in the app provider,
         // so that the newly updated list will correctly filter relevant apps.
-        Preferences.get().registerAppsRequiringAntiFeaturesChangeListener(new Preferences.ChangeListener() {
+        preferences.registerAppsRequiringAntiFeaturesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
                 getContentResolver().notifyChange(AppProvider.getContentUri(), null);
             }
         });
 
-        Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
+        preferences.registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
                 AppProvider.Helper.calcSuggestedApks(FDroidApp.this);
@@ -403,7 +403,6 @@ public class FDroidApp extends Application {
         CleanCacheService.schedule(this);
 
         notificationHelper = new NotificationHelper(getApplicationContext());
-        UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 
         // There are a couple things to pay attention to with this config: memory usage,
@@ -452,21 +451,26 @@ public class FDroidApp extends Application {
                 .build();
         ImageLoader.getInstance().init(config);
 
+        if (preferences.isIndexNeverUpdated()) {
+            // force this check to ensure it starts fetching the index on initial runs
+            networkState = ConnectivityMonitorService.getNetworkState(this);
+        }
         ConnectivityMonitorService.registerAndStart(this);
+        UpdateService.schedule(getApplicationContext());
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);
         // if the HTTPS pref changes, then update all affected things
-        Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
+        preferences.registerLocalRepoHttpsListeners(new ChangeListener() {
             @Override
             public void onPreferenceChange() {
                 WifiStateChangeService.start(getApplicationContext(), null);
             }
         });
 
-        configureTor(Preferences.get().isTorEnabled());
+        configureTor(preferences.isTorEnabled());
 
-        if (Preferences.get().isKeepingInstallHistory()) {
+        if (preferences.isKeepingInstallHistory()) {
             InstallHistoryService.register(this);
         }
 
@@ -492,7 +496,7 @@ public class FDroidApp extends Application {
         atStartTime.edit().putInt("build-version", Build.VERSION.SDK_INT).apply();
 
         final String queryStringKey = "http-downloader-query-string";
-        if (Preferences.get().sendVersionAndUUIDToServers()) {
+        if (preferences.sendVersionAndUUIDToServers()) {
             HttpDownloader.queryString = atStartTime.getString(queryStringKey, null);
             if (HttpDownloader.queryString == null) {
                 UUID uuid = UUID.randomUUID();

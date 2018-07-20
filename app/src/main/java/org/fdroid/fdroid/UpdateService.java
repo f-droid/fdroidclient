@@ -29,7 +29,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -41,7 +40,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -82,11 +80,11 @@ public class UpdateService extends JobIntentService {
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
 
-    private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
     private static final int JOB_ID = 0xfedcba;
 
     private static final int NOTIFY_ID_UPDATING = 0;
 
+    private static UpdateService updateService;
     private static Handler toastHandler;
 
     private NotificationManager notificationManager;
@@ -118,11 +116,19 @@ public class UpdateService extends JobIntentService {
     }
 
     /**
-     * Add work to the queue for processing now
+     * Add work to the queue for processing now.
+     * <p>
+     * This also shows a {@link Toast} if the Data/WiFi Settings make it so the
+     * update process is not allowed to run and the device is attached to a
+     * network (e.g. is not offline or in Airplane Mode).
      *
      * @see JobIntentService#enqueueWork(Context, Class, int, Intent)
      */
     private static void enqueueWork(Context context, @NonNull Intent intent) {
+        if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
+            Toast.makeText(context, R.string.updates_disabled_by_settings, Toast.LENGTH_LONG).show();
+        }
+
         enqueueWork(context, UpdateService.class, JOB_ID, intent);
     }
 
@@ -188,6 +194,8 @@ public class UpdateService extends JobIntentService {
     /**
      * Whether or not a repo update is currently in progress. Used to show feedback throughout
      * the app to users, so they know something is happening.
+     *
+     * @see <a href="https://stackoverflow.com/a/608600">set a global variable when it is running that your client can check</a>
      */
     public static boolean isUpdating() {
         return updateService != null;
@@ -238,8 +246,6 @@ public class UpdateService extends JobIntentService {
         }
 
     }
-
-    private static UpdateService updateService;
 
     public static void stopNow(Context context) {
         if (updateService != null) {
@@ -494,10 +500,7 @@ public class UpdateService extends JobIntentService {
                 }
             }
 
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-            SharedPreferences.Editor e = prefs.edit();
-            e.putLong(STATE_LAST_UPDATED, System.currentTimeMillis());
-            e.apply();
+            fdroidPrefs.setLastUpdateCheck(System.currentTimeMillis());
 
             if (errorRepos == 0) {
                 if (changes) {

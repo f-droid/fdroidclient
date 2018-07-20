@@ -101,7 +101,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
-    public static final String PREF_TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
@@ -114,10 +113,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final int OVER_NETWORK_ON_DEMAND = 1;
     public static final int OVER_NETWORK_ALWAYS = 2;
 
+    // not shown in Settings
+    private static final String PREF_LAST_UPDATE_CHECK = "lastUpdateCheck";
+
     // these preferences are not listed in preferences.xml so the defaults are set here
     @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1"; // TODO move to preferences.xml
     public static final int DEFAULT_PROXY_PORT = 8118; // TODO move to preferences.xml
+    private static final int DEFAULT_LAST_UPDATE_CHECK = -1;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
     private static final boolean DEFAULT_PANIC_EXIT = true;
@@ -321,18 +324,23 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    /**
-     * Used the first time F-Droid is installed to flag whether or not we have tried to request
-     * apps from the repo. This is used so that when there is no apps available, we can differentiate
-     * between whether the repos actually have no apps (in which case we don't need to continue
-     * asking), or whether there is no apps because we have never actually asked to update the repos.
-     */
-    public boolean hasTriedEmptyUpdate() {
-        return preferences.getBoolean(PREF_TRIED_EMPTY_UPDATE, IGNORED_B);
+    public long getLastUpdateCheck() {
+        return preferences.getLong(PREF_LAST_UPDATE_CHECK, DEFAULT_LAST_UPDATE_CHECK);
     }
 
-    public void setTriedEmptyUpdate(boolean value) {
-        preferences.edit().putBoolean(PREF_TRIED_EMPTY_UPDATE, value).apply();
+    public void setLastUpdateCheck(long lastUpdateCheck) {
+        preferences.edit().putLong(PREF_LAST_UPDATE_CHECK, lastUpdateCheck).apply();
+    }
+
+    public void resetLastUpdateCheck() {
+        setLastUpdateCheck(DEFAULT_LAST_UPDATE_CHECK);
+    }
+
+    /**
+     * The first time the app has been run since fresh install or clearing all data.
+     */
+    public boolean isIndexNeverUpdated() {
+        return getLastUpdateCheck() == DEFAULT_LAST_UPDATE_CHECK;
     }
 
     public boolean getUnstableUpdates() {

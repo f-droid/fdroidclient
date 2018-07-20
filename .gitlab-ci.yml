@@ -70,17 +70,12 @@ errorprone:
     - ./gradlew connectedCheck || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
 
 connected24:
-  only:
-    - fdroid/fdroidclient@master
+  retry: 1
   <<: *test-template
   variables:
     AVD_SDK: "24"
     AVD_TAG: "default"
     AVD_PACKAGE: "system-images;android-${AVD_SDK};${AVD_TAG};armeabi-v7a"
-  <<: *connected-template
-
-connected25:
-  <<: *test-template
   <<: *connected-template
 
 deploy_nightly:
