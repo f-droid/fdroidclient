@@ -362,7 +362,7 @@ public class AppDetails2 extends AppCompatActivity
                 if (resultCode == Activity.RESULT_OK) {
                     Uri uri = data.getData();
                     Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
-                    startInstall(apk);
+                    InstallManagerService.queue(this, app, apk);
                 }
                 break;
             case REQUEST_UNINSTALL_DIALOG:
@@ -441,10 +441,6 @@ public class AppDetails2 extends AppCompatActivity
             return;
         }
 
-        startInstall(apk);
-    }
-
-    private void startInstall(Apk apk) {
         InstallManagerService.queue(this, app, apk);
     }
 
