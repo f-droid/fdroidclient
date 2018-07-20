@@ -378,11 +378,17 @@ public class AppDetailsRecyclerViewAdapter
             progressLabel.setText(resIdString);
             progressLabel.setContentDescription(context.getString(R.string.downloading));
             progressPercent.setText("");
+            if (resIdString == R.string.installing || resIdString == R.string.uninstalling) {
+                progressCancel.setVisibility(View.GONE);
+            } else {
+                progressCancel.setVisibility(View.VISIBLE);
+            }
         }
 
         public void setProgress(long bytesDownloaded, long totalBytes) {
             progressLayout.setVisibility(View.VISIBLE);
             buttonLayout.setVisibility(View.GONE);
+            progressCancel.setVisibility(View.VISIBLE);
 
             progressBar.setMax(Utils.bytesToKb(totalBytes));
             progressBar.setProgress(Utils.bytesToKb(bytesDownloaded));
