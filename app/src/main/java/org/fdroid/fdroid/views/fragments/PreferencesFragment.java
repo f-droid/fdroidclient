@@ -44,7 +44,6 @@ import android.text.TextUtils;
 import android.view.WindowManager;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
-import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
@@ -100,7 +99,6 @@ public class PreferencesFragment extends PreferenceFragment
     private SwitchPreference enableProxyCheckPref;
     private SwitchPreference useTorCheckPref;
     private Preference updateAutoDownloadPref;
-    private Preference updatePrivilegedExtensionPref;
     private CheckBoxPreference keepInstallHistoryPref;
     private Preference installHistoryPref;
     private long currentKeepCacheTime;
@@ -123,7 +121,6 @@ public class PreferencesFragment extends PreferenceFragment
         useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
-        updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
         overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
         overWifiPrevious = overWifiSeekBar.getValue();
@@ -402,28 +399,6 @@ public class PreferencesFragment extends PreferenceFragment
         }
     }
 
-    private void initUpdatePrivilegedExtensionPreference() {
-        if (Build.VERSION.SDK_INT > 19) {
-            // this will never work on newer Android versions, so hide it
-            otherPrefGroup.removePreference(updatePrivilegedExtensionPref);
-            return;
-        }
-        updatePrivilegedExtensionPref.setPersistent(false);
-        updatePrivilegedExtensionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                // Open details of F-Droid Privileged
-                Intent intent = new Intent(getActivity(), AppDetails2.class);
-                intent.putExtra(AppDetails2.EXTRA_APPID,
-                        PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
-                startActivity(intent);
-
-                return true;
-            }
-        });
-    }
-
     /**
      * If a user specifies they want to fetch updates automatically, then start the download of relevant
      * updates as soon as they enable the feature.
@@ -490,7 +465,6 @@ public class PreferencesFragment extends PreferenceFragment
 
         initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
-        initUpdatePrivilegedExtensionPreference();
         initUseTorPreference();
     }
 

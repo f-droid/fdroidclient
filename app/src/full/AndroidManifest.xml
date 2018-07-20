@@ -43,11 +43,6 @@
     <uses-permission android:name="android.permission.NFC"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
-    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app)
-         This permission is deprecated, but necessary for some old superuser
-         apps to actually grant superuser access to F-Droid. -->
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
-
     <application>
 
         <activity

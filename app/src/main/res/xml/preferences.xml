@@ -207,11 +207,6 @@
                 android:key="privilegedInstaller"
                 android:persistent="false"
                 android:dependency="expert"/>
-        <Preference
-                android:title="@string/uninstall_system"
-                android:summary="@string/uninstall_system_summary"
-                android:key="uninstallPrivilegedApp"
-                android:dependency="expert"/>
     </android.support.v7.preference.PreferenceCategory>
 
 </android.support.v7.preference.PreferenceScreen>

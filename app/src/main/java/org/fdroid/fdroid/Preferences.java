@@ -91,7 +91,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
-    public static final String PREF_UNINSTALL_PRIVILEGED_APP = "uninstallPrivilegedApp";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
     public static final String PREF_LANGUAGE = "language";
