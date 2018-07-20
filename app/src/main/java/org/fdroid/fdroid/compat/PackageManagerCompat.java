@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -33,7 +32,7 @@ public class PackageManagerCompat {
         if (Build.VERSION.SDK_INT < 11) return;
         try {
             if (Build.VERSION.SDK_INT >= 24 && PrivilegedInstaller.isDefault(context)) {
-                mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid.privileged");
+                mPm.setInstallerPackageName(packageName, PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
             } else {
                 mPm.setInstallerPackageName(packageName, BuildConfig.APPLICATION_ID);
             }

@@ -31,6 +31,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -67,8 +68,7 @@ public class PrivilegedInstaller extends Installer {
 
     private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT
             = "org.fdroid.fdroid.privileged.IPrivilegedService";
-    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME
-            = "org.fdroid.fdroid.privileged";
+    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = BuildConfig.PRIVILEGED_EXTENSION_PACKAGE_NAME;
 
     public static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;

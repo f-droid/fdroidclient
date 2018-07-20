@@ -191,17 +191,8 @@
                 android:finishOnTaskLaunch="true"/>
         <activity android:name=".views.ScreenShotsActivity"/>
         <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <activity
-                android:name=".privileged.install.InstallExtensionDialogActivity"
-                android:theme="@style/AppThemeTransparent"/>
         <activity android:name=".data.ObbUrlActivity"
                   android:theme="@android:style/Theme.NoDisplay"/>
-        <receiver
-                android:name=".privileged.install.InstallExtensionBootReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
         <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
         <activity
                 android:name=".installer.DefaultInstallerActivity"

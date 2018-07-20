@@ -17,6 +17,8 @@ def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
 def fullApplicationId = "org.fdroid.fdroid"
 def basicApplicationId = "org.fdroid.basic"
+// yes, this actually needs both quotes https://stackoverflow.com/a/41391841
+def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
     compileSdkVersion 27
@@ -35,6 +37,7 @@ android {
             minifyEnabled true
             useProguard true
             shrinkResources true
+            buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
