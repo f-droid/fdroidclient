@@ -1,3 +1,13 @@
+### 1.3-alpha5 (2018-07-21)
+
+* overhaul install button logic to avoid false presses
+
+* improved first time run experience
+
+* export install/uninstall history
+
+* more whitelabeling improvements
+
 ### 1.3-alpha4 (2018-07-13)
 
 * fix Data/WiFi preferences to properly schedule Updats
