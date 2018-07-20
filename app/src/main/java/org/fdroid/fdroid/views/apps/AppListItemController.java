@@ -56,7 +56,7 @@ import java.util.Iterator;
  * </ul>
  * <p>
  * The state of the UI is defined in a dumb {@link AppListItemState} class, then applied to the UI
- * in the {@link #refreshView(App, AppUpdateStatus)} method.
+ * in the {@link #updateAppStatus(App, AppUpdateStatus)}  method.
  */
 public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
@@ -220,15 +220,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * Updates both the progress bar and the circular install button (which shows progress around the outside of
-     * the circle). Also updates the app label to indicate that the app is being downloaded.
-     */
-    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatus status) {
-        currentStatus = status;
-        refreshView(app, status);
-    }
-
-    /**
+     * Updates both the progress bar and the circular install button (which
+     * shows progress around the outside of the circle). Also updates the app
+     * label to indicate that the app is being downloaded.
+     * <p>
      * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatus)}
      * and then updates the relevant widgets depending on that state.
      * <p>
@@ -238,7 +233,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
      * @see AppListItemState
      * @see #getCurrentViewState(App, AppUpdateStatus)
      */
-    private void refreshView(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
+    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
+        currentStatus = appStatus;
 
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
