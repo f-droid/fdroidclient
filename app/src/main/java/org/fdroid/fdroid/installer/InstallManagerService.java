@@ -176,7 +176,6 @@ public class InstallManagerService extends Service {
                 DownloaderService.cancel(this, apk.getPatchObbUrl());
                 DownloaderService.cancel(this, apk.getMainObbUrl());
             }
-            appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
         } else if (ACTION_INSTALL.equals(action)) {
             if (!isPendingInstall(urlString)) {

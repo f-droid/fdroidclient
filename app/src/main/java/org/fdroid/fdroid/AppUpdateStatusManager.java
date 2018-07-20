@@ -427,6 +427,7 @@ public final class AppUpdateStatusManager {
                 entry.errorText = errorText;
                 entry.intent = null;
                 notifyChange(entry, true);
+                removeApk(url);
             }
         }
     }
