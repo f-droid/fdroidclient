@@ -490,11 +490,24 @@ public class InstallManagerService extends Service {
     }
 
     /**
+     * Look up by {@code packageName} whether it is a Pending Install.
+     *
+     * @see #isPendingInstall(String)
+     */
+    public static boolean isPendingInstall(Context context, String packageName) {
+        if (pendingInstalls == null) {
+            pendingInstalls = getPendingInstalls(context);
+        }
+        return pendingInstalls.getAll().values().contains(packageName);
+    }
+
+    /**
      * Mark a given APK as in the process of being installed, with
      * the {@code urlString} of the download used as the unique ID,
      * and the file hash used to verify that things are the same.
      *
      * @see #isPendingInstall(String)
+     * @see #isPendingInstall(Context, String)
      */
     public static void putPendingInstall(Context context, String urlString, String packageName) {
         if (pendingInstalls == null) {

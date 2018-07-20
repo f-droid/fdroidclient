@@ -43,6 +43,7 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.main.MainActivity;
@@ -57,8 +58,6 @@ public class AppDetailsRecyclerViewAdapter
 
     public interface AppDetailsRecyclerViewAdapterCallbacks {
 
-        boolean isAppDownloading();
-
         void enableAndroidBeam();
 
         void disableAndroidBeam();
@@ -68,8 +67,6 @@ public class AppDetailsRecyclerViewAdapter
         void installApk();
 
         void installApk(Apk apk);
-
-        void upgradeApk();
 
         void uninstallApk();
 
@@ -490,9 +487,11 @@ public class AppDetailsRecyclerViewAdapter
             buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
-            if (callbacks.isAppDownloading()) {
+            if (InstallManagerService.isPendingInstall(context, app.packageName)) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
+                buttonLayout.setVisibility(View.GONE);
+                progressLayout.setVisibility(View.VISIBLE);
             } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 callbacks.disableAndroidBeam();
@@ -500,6 +499,8 @@ public class AppDetailsRecyclerViewAdapter
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setOnClickListener(onInstallClickListener);
                 buttonPrimaryView.setEnabled(true);
+                buttonLayout.setVisibility(View.VISIBLE);
+                progressLayout.setVisibility(View.GONE);
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(context) && suggestedApk != null) {
@@ -514,10 +515,8 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
                 buttonPrimaryView.setEnabled(true);
-            }
-            if (callbacks.isAppDownloading()) {
-                buttonLayout.setVisibility(View.GONE);
-                progressLayout.setVisibility(View.VISIBLE);
+                buttonLayout.setVisibility(View.VISIBLE);
+                progressLayout.setVisibility(View.GONE);
             } else {
                 buttonLayout.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
@@ -1103,7 +1102,7 @@ public class AppDetailsRecyclerViewAdapter
     private final View.OnClickListener onUpgradeClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            callbacks.upgradeApk();
+            callbacks.installApk();
         }
     };
 

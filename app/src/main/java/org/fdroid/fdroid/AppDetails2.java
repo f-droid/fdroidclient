@@ -373,6 +373,12 @@ public class AppDetails2 extends AppCompatActivity
         }
     }
 
+    @Override
+    public void installApk() {
+        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
+        installApk(apkToInstall);
+    }
+
     // Install the version of this app denoted by 'app.curApk'.
     @Override
     public void installApk(final Apk apk) {
@@ -426,12 +432,6 @@ public class AppDetails2 extends AppCompatActivity
     }
 
     private void initiateInstall(Apk apk) {
-        if (isAppDownloading()) {
-            Log.i(TAG, "Ignoring request to install " + apk.packageName + " version " + apk.versionName
-                    + ", as we are already downloading (either that or a different version).");
-            return;
-        }
-
         Installer installer = InstallerFactory.create(this, apk);
         Intent intent = installer.getPermissionScreen();
         if (intent != null) {
@@ -706,11 +706,6 @@ public class AppDetails2 extends AppCompatActivity
     }
 
     @Override
-    public boolean isAppDownloading() {
-        return currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Downloading;
-    }
-
-    @Override
     public void enableAndroidBeam() {
         NfcHelper.setAndroidBeam(this, app.packageName);
     }
@@ -734,7 +729,7 @@ public class AppDetails2 extends AppCompatActivity
 
     @Override
     public void installCancel() {
-        if (isAppDownloading()) {
+        if (currentStatus != null) {
             InstallManagerService.cancel(this, currentStatus.getUniqueKey());
         }
     }
@@ -748,18 +743,6 @@ public class AppDetails2 extends AppCompatActivity
             // This can happen when the app was just uninstalled.
             Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void installApk() {
-        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
-        installApk(apkToInstall);
-    }
-
-    @Override
-    public void upgradeApk() {
-        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
-        installApk(apkToInstall);
     }
 
     /**
