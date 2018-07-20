@@ -116,12 +116,16 @@ public class UpdateService extends JobIntentService {
     }
 
     /**
-     * Add work to the queue for processing now
+     * Add work to the queue for processing now.
+     * <p>
+     * This also shows a {@link Toast} if the Data/WiFi Settings make it so the
+     * update process is not allowed to run and the device is attached to a
+     * network (e.g. is not offline or in Airplane Mode).
      *
      * @see JobIntentService#enqueueWork(Context, Class, int, Intent)
      */
     private static void enqueueWork(Context context, @NonNull Intent intent) {
-        if (!Preferences.get().isOnDemandDownloadAllowed()) {
+        if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
             Toast.makeText(context, R.string.updates_disabled_by_settings, Toast.LENGTH_LONG).show();
         }
 
