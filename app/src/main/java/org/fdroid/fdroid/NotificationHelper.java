@@ -230,6 +230,7 @@ class NotificationHelper {
                 case UpdateAvailable:
                     return new NotificationCompat.Action(R.drawable.ic_file_download, context.getString(R.string.notification_action_update), entry.intent);
 
+                case PendingInstall:
                 case Downloading:
                 case Installing:
                     return new NotificationCompat.Action(R.drawable.ic_cancel, context.getString(R.string.notification_action_cancel), entry.intent);
@@ -245,6 +246,7 @@ class NotificationHelper {
         switch (status) {
             case UpdateAvailable:
                 return context.getString(R.string.notification_title_single_update_available);
+            case PendingInstall:
             case Downloading:
                 return app.name;
             case ReadyToInstall:
@@ -263,6 +265,7 @@ class NotificationHelper {
         switch (status) {
             case UpdateAvailable:
                 return app.name;
+            case PendingInstall:
             case Downloading:
                 return context.getString(app.isInstalled(context) ? R.string.notification_content_single_downloading_update : R.string.notification_content_single_downloading, app.name);
             case ReadyToInstall:
@@ -281,6 +284,7 @@ class NotificationHelper {
         switch (status) {
             case UpdateAvailable:
                 return context.getString(R.string.notification_title_summary_update_available);
+            case PendingInstall:
             case Downloading:
                 return context.getString(app.isInstalled(context) ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
             case ReadyToInstall:

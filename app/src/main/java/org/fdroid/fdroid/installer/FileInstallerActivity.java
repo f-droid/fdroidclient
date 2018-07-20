@@ -145,7 +145,6 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private void installPackage(Uri localApkUri, Uri downloadUri, Apk apk) {
         Utils.debugLog(TAG, "Installing: " + localApkUri.getPath());
-        installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
         File path = apk.getMediaInstallPath(activity.getApplicationContext());
         path.mkdirs();
         try {

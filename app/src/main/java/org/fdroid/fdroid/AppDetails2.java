@@ -362,7 +362,7 @@ public class AppDetails2 extends AppCompatActivity
                 if (resultCode == Activity.RESULT_OK) {
                     Uri uri = data.getData();
                     Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
-                    startInstall(apk);
+                    InstallManagerService.queue(this, app, apk);
                 }
                 break;
             case REQUEST_UNINSTALL_DIALOG:
@@ -371,6 +371,12 @@ public class AppDetails2 extends AppCompatActivity
                 }
                 break;
         }
+    }
+
+    @Override
+    public void installApk() {
+        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
+        installApk(apkToInstall);
     }
 
     // Install the version of this app denoted by 'app.curApk'.
@@ -426,12 +432,6 @@ public class AppDetails2 extends AppCompatActivity
     }
 
     private void initiateInstall(Apk apk) {
-        if (isAppDownloading()) {
-            Log.i(TAG, "Ignoring request to install " + apk.packageName + " version " + apk.versionName
-                    + ", as we are already downloading (either that or a different version).");
-            return;
-        }
-
         Installer installer = InstallerFactory.create(this, apk);
         Intent intent = installer.getPermissionScreen();
         if (intent != null) {
@@ -441,10 +441,6 @@ public class AppDetails2 extends AppCompatActivity
             return;
         }
 
-        startInstall(apk);
-    }
-
-    private void startInstall(Apk apk) {
         InstallManagerService.queue(this, app, apk);
     }
 
@@ -485,6 +481,7 @@ public class AppDetails2 extends AppCompatActivity
         }
 
         switch (newStatus.status) {
+            case PendingInstall:
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
@@ -709,11 +706,6 @@ public class AppDetails2 extends AppCompatActivity
     }
 
     @Override
-    public boolean isAppDownloading() {
-        return currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Downloading;
-    }
-
-    @Override
     public void enableAndroidBeam() {
         NfcHelper.setAndroidBeam(this, app.packageName);
     }
@@ -737,7 +729,7 @@ public class AppDetails2 extends AppCompatActivity
 
     @Override
     public void installCancel() {
-        if (isAppDownloading()) {
+        if (currentStatus != null) {
             InstallManagerService.cancel(this, currentStatus.getUniqueKey());
         }
     }
@@ -751,18 +743,6 @@ public class AppDetails2 extends AppCompatActivity
             // This can happen when the app was just uninstalled.
             Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void installApk() {
-        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
-        installApk(apkToInstall);
-    }
-
-    @Override
-    public void upgradeApk() {
-        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
-        installApk(apkToInstall);
     }
 
     /**

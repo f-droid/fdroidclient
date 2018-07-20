@@ -34,7 +34,13 @@ import java.io.IOException;
 /**
  * Manages the whole process when a background update triggers an install or the user
  * requests an APK to be installed.  It handles checking whether the APK is cached,
- * downloading it, putting up and maintaining a {@link Notification}, and more.
+ * downloading it, putting up and maintaining a {@link Notification}, and more. This
+ * {@code Service} tracks packages that are in the process as "Pending Installs".
+ * Then {@link DownloaderService} and {@link InstallerService} individually track
+ * packages for those phases of the whole install process.  Each of those
+ * {@code Services} have their own related events.  For tracking status during the
+ * whole process, {@link AppUpdateStatusManager} tracks the status as represented by
+ * {@link AppUpdateStatusManager.AppUpdateStatus}.
  * <p>
  * The {@link App} and {@link Apk} instances are sent via
  * {@link Intent#putExtra(String, android.os.Bundle)}
@@ -103,7 +109,6 @@ public class InstallManagerService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Utils.debugLog(TAG, "creating Service");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
 
@@ -171,7 +176,6 @@ public class InstallManagerService extends Service {
                 DownloaderService.cancel(this, apk.getPatchObbUrl());
                 DownloaderService.cancel(this, apk.getMainObbUrl());
             }
-            appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
         } else if (ACTION_INSTALL.equals(action)) {
             if (!isPendingInstall(urlString)) {
@@ -455,14 +459,12 @@ public class InstallManagerService extends Service {
      */
     public static void queue(Context context, App app, @NonNull Apk apk) {
         String urlString = apk.getUrl();
+        AppUpdateStatusManager.getInstance(context).addApk(apk, AppUpdateStatusManager.Status.PendingInstall, null);
         putPendingInstall(context, urlString, apk.packageName);
-        Uri downloadUri = Uri.parse(urlString);
-        Installer.sendBroadcastInstall(context, downloadUri, Installer.ACTION_INSTALL_STARTED, apk,
-                null, null);
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
-        intent.setData(downloadUri);
+        intent.setData(Uri.parse(urlString));
         intent.putExtra(EXTRA_APP, app);
         intent.putExtra(EXTRA_APK, apk);
         context.startService(intent);
@@ -488,11 +490,24 @@ public class InstallManagerService extends Service {
     }
 
     /**
+     * Look up by {@code packageName} whether it is a Pending Install.
+     *
+     * @see #isPendingInstall(String)
+     */
+    public static boolean isPendingInstall(Context context, String packageName) {
+        if (pendingInstalls == null) {
+            pendingInstalls = getPendingInstalls(context);
+        }
+        return pendingInstalls.getAll().values().contains(packageName);
+    }
+
+    /**
      * Mark a given APK as in the process of being installed, with
      * the {@code urlString} of the download used as the unique ID,
      * and the file hash used to verify that things are the same.
      *
      * @see #isPendingInstall(String)
+     * @see #isPendingInstall(Context, String)
      */
     public static void putPendingInstall(Context context, String urlString, String packageName) {
         if (pendingInstalls == null) {

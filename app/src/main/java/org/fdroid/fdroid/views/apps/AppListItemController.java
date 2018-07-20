@@ -56,7 +56,7 @@ import java.util.Iterator;
  * </ul>
  * <p>
  * The state of the UI is defined in a dumb {@link AppListItemState} class, then applied to the UI
- * in the {@link #refreshView(App, AppUpdateStatus)} method.
+ * in the {@link #updateAppStatus(App, AppUpdateStatus)}  method.
  */
 public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
@@ -220,15 +220,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * Updates both the progress bar and the circular install button (which shows progress around the outside of
-     * the circle). Also updates the app label to indicate that the app is being downloaded.
-     */
-    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatus status) {
-        currentStatus = status;
-        refreshView(app, status);
-    }
-
-    /**
+     * Updates both the progress bar and the circular install button (which
+     * shows progress around the outside of the circle). Also updates the app
+     * label to indicate that the app is being downloaded.
+     * <p>
      * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatus)}
      * and then updates the relevant widgets depending on that state.
      * <p>
@@ -238,7 +233,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
      * @see AppListItemState
      * @see #getCurrentViewState(App, AppUpdateStatus)
      */
-    private void refreshView(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
+    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatus appStatus) {
+        currentStatus = appStatus;
 
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
@@ -289,12 +285,14 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             if (viewState.shouldShowActionButton()) {
                 installButton.setVisibility(View.GONE);
             } else if (viewState.showProgress()) {
+                installButton.setEnabled(false);
                 installButton.setVisibility(View.VISIBLE);
                 installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
                 int progressAsDegrees = viewState.getProgressMax() <= 0 ? 0 :
                         (int) (((float) viewState.getProgressCurrent() / viewState.getProgressMax()) * 360);
                 installButton.setImageLevel(progressAsDegrees);
             } else if (viewState.shouldShowInstall()) {
+                installButton.setEnabled(true);
                 installButton.setVisibility(View.VISIBLE);
                 installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download));
             } else {
@@ -332,8 +330,12 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 case ReadyToInstall:
                     return getViewStateReadyToInstall(app);
 
+                case PendingInstall:
                 case Downloading:
                     return getViewStateDownloading(app, appStatus);
+
+                case Installing:
+                    return getViewStateInstalling(app);
 
                 case Installed:
                     return getViewStateInstalled(app);
@@ -342,6 +344,16 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                     return getViewStateDefault(app);
             }
         }
+    }
+
+    protected AppListItemState getViewStateInstalling(@NonNull App app) {
+        CharSequence mainText = activity.getString(
+                R.string.app_list__name__downloading_in_progress, app.name);
+
+        return new AppListItemState(app)
+                .setMainText(mainText)
+                .showActionButton(null)
+                .setStatusText(activity.getString(R.string.notification_content_single_installing, app.name));
     }
 
     protected AppListItemState getViewStateInstalled(@NonNull App app) {
