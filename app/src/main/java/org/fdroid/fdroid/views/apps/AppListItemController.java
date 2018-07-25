@@ -108,7 +108,12 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         installButton = (ImageView) itemView.findViewById(R.id.install);
         if (installButton != null) {
-            installButton.setOnClickListener(onActionClicked);
+            installButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onActionButtonPressed(currentApp);
+                }
+            });
 
             if (Build.VERSION.SDK_INT >= 21) {
                 installButton.setOutlineProvider(new ViewOutlineProvider() {
@@ -140,7 +145,14 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         secondaryButton = (Button) itemView.findViewById(R.id.secondary_button);
 
         if (actionButton != null) {
-            actionButton.setOnClickListener(onActionClicked);
+            actionButton.setEnabled(true);
+            actionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    actionButton.setEnabled(false);
+                    onActionButtonPressed(currentApp);
+                }
+            });
         }
 
         if (secondaryButton != null) {
@@ -440,18 +452,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     };
 
     @SuppressWarnings("FieldCanBeLocal")
-    private final View.OnClickListener onActionClicked = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (currentApp == null) {
-                return;
-            }
-
-            onActionButtonPressed(currentApp);
-        }
-    };
-
-    @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onSecondaryButtonClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -463,7 +463,11 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
-    protected void onActionButtonPressed(@NonNull App app) {
+    protected void onActionButtonPressed(App app) {
+        if (app == null) {
+            return;
+        }
+
         // When the button says "Run", then launch the app.
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
             Intent intent = activity.getPackageManager().getLaunchIntentForPackage(app.packageName);
@@ -484,9 +488,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
                     " to " + apkFilePath);
 
-            // TODO: This seems like a bit of a hack. Is there a better way to do this by changing
-            // the Installer API so that we can ask it to install without having to get it to fire
-            // off an intent which we then listen for and action?
             final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
             final BroadcastReceiver receiver = new BroadcastReceiver() {
                 @Override
