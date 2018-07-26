@@ -306,6 +306,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 continue;
             }
         }
+
+        final int PRIORITY_INDEX = 5;
+        for (int i = PRIORITY_INDEX; i < externalRepos.size(); i += REPO_XML_ARG_COUNT) {
+            externalRepos.add(i, "0");
+        }
+        
         return externalRepos;
     }
 
