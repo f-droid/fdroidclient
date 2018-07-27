@@ -6,7 +6,6 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
@@ -95,7 +94,6 @@ public class InstallManagerService extends Service {
 
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager appUpdateStatusManager;
-    private BroadcastReceiver broadcastReceiver;
     private boolean running = false;
 
     /**
@@ -111,21 +109,6 @@ public class InstallManagerService extends Service {
         super.onCreate();
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getData() == null) return;
-                String packageName = intent.getData().getSchemeSpecificPart();
-                for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(packageName)) {
-                    appUpdateStatusManager.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
-                }
-            }
-        };
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        intentFilter.addDataScheme("package");
-        registerReceiver(broadcastReceiver, intentFilter);
         running = true;
         pendingInstalls = getPendingInstalls(this);
     }
@@ -140,7 +123,6 @@ public class InstallManagerService extends Service {
     @Override
     public void onDestroy() {
         running = false;
-        unregisterReceiver(broadcastReceiver);
         super.onDestroy();
     }
 

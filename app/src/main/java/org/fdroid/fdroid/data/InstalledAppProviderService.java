@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.JobIntentService;
 import android.util.Log;
 import org.acra.ACRA;
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import rx.functions.Action1;
@@ -31,13 +32,21 @@ import java.util.concurrent.TimeUnit;
  * versus what Android says is installed, or processing {@link Intent}s that come
  * from {@link android.content.BroadcastReceiver}s for {@link Intent#ACTION_PACKAGE_ADDED}
  * and {@link Intent#ACTION_PACKAGE_REMOVED}
- * <p/>
+ * <p>
  * Since {@link android.content.ContentProvider#insert(Uri, ContentValues)} does not check
  * for duplicate records, it is entirely the job of this service to ensure that it is not
  * inserting duplicate versions of the same installed APK. On that note,
  * {@link #insertAppIntoDb(Context, PackageInfo, String, String)} and
  * {@link #deleteAppFromDb(Context, String)} are both static methods to enable easy testing
  * of this stuff.
+ * <p>
+ * This also updates the {@link AppUpdateStatusManager.Status status} of any
+ * package installs that are still in progress.  Most importantly, this
+ * provides the final {@link AppUpdateStatusManager.Status#Installed status update}
+ * to mark the end of the installation process.  It also errors out installation
+ * processes where some outside factor uninstalled the package while the F-Droid
+ * process was underway, e.g. uninstalling via {@code adb}, updates via Google
+ * Play, Yalp, etc.
  */
 @SuppressWarnings("LineLength")
 public class InstalledAppProviderService extends JobIntentService {
@@ -221,11 +230,15 @@ public class InstalledAppProviderService extends JobIntentService {
     protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
+        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
         String packageName = intent.getData().getSchemeSpecificPart();
         final String action = intent.getAction();
         if (ACTION_INSERT.equals(action)) {
             PackageInfo packageInfo = getPackageInfo(intent, packageName);
             if (packageInfo != null) {
+                for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+                    ausm.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
+                }
                 File apk = getPathToInstalledApk(packageInfo);
                 if (apk == null) {
                     return;
@@ -244,6 +257,9 @@ public class InstalledAppProviderService extends JobIntentService {
             }
         } else if (ACTION_DELETE.equals(action)) {
             deleteAppFromDb(this, packageName);
+            for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+                ausm.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.InstallError, null);
+            }
         }
         packageChangeNotifier.onNext(packageName);
     }
