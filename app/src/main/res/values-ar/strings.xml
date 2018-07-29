@@ -72,7 +72,7 @@
     <string name="notify">إظهار التحديثات المتوفرة</string>
     <string name="notify_on">أظهر تنبيه عندما تتوفر تحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
-    <string name="system_installer_on">استخدام ملحقات اف-درويد المميزة لتثبيت وتحديث وإزالة الحزم</string>
+    <string name="system_installer_on">استخدام الملحقات المميزة لتثبيت وتحديث وإزالة الحزم</string>
     <string name="uninstall_system">تحديث/إلغاء التثبيت للملحقات المميزة</string>
     <string name="uninstall_system_summary">فتح تفاصيل شاشة الملحقات المميزة لتحديث / إلغاء للتثبيت</string>
     <string name="local_repo_name_summary">عنوان المعلن لديك في المستودعات المحلية: %s</string>
@@ -177,19 +177,15 @@
     <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الآن.
         تحتاج إلى تمكينها من عرض التطبيقات التي يقدمها.
     </string>
-    <string name="repo_confirm_delete_body">حذف المستودع يعني أنه
-        من التطبيقات لم يعد متاحا من اف-درويد.
-
-        ملاحظة:
-        ستبقى جميع التطبيقات المثبتة مسبقا على جهازك.
-    </string>
+    <string name="repo_confirm_delete_body">حذف المستودع يعني أن التطبيقات الواقعة فيها لم تعد متاحة. ملاحظة: ستبقى جميع التطبيقات المثبتة مسبقا على جهازك.</string>
     <string name="repo_disabled_notification">تعطيل %1$s.
 
         سوف
         تحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.
     </string>
-    <string name="repo_added">مستودع المحفوظات التابع لاف-درويد %1$s.</string>
-    <string name="repo_searching_address">أبحث عن مستودع اف-درويد في\n%1$s</string>
+    <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>
+    <string name="repo_searching_address">ابحث عن مستودع الحزمة في
+\n%1$s</string>
     <string name="minsdk_or_later">%s أو فيما بعد</string>
     <string name="up_to_maxsdk">حتى %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s حتى %2$s</string>
@@ -313,12 +309,12 @@
     <string name="uninstalling">جاري إلغاء التثبيت …</string>
 
     <string name="interval_never">ايقاف التحديثات التلقائية للتطبيق</string>
-    <string name="interval_1h">كل ساعة</string>
-    <string name="interval_4h">كل 4 ساعات</string>
-    <string name="interval_12h">كل 12 ساعة</string>
-    <string name="interval_1d">يومياً</string>
-    <string name="interval_1w">أسبوعياً</string>
-    <string name="interval_2w">كل أسبوعين</string>
+    <string name="interval_1h">ابحث عن التحديثات كل ساعة</string>
+    <string name="interval_4h">البحث عن التحديثات كل 4 ساعات</string>
+    <string name="interval_12h">البحث عن التحديثات كل 12 ساعة</string>
+    <string name="interval_1d">البحث عن التحديثات يومياً</string>
+    <string name="interval_1w">البحث عن التحديثات أسبوعياً</string>
+    <string name="interval_2w">البحث عن التحديثات كل أسبوعين</string>
 
     <string name="keep_hour">ساعة</string>
     <string name="keep_day">يوم</string>
@@ -335,7 +331,7 @@
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
     <string name="keep_install_history">الحفاظ على تاريخ التثبيت</string>
-    <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في اف-درويد</string>
+    <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في مخزن خاص</string>
     <string name="update_auto_install">تثبيت التحديثات تلقائياً</string>
     <string name="update_auto_install_summary">تحميل و تثبيت تحديث التطبيقات في الخلفية</string>
     <string name="versions">النُسخ</string>
@@ -565,7 +561,7 @@
 
     <string name="force_touch_apps_on">عرض التطبيقات التي تتطلب شاشة تعمل باللمس بغض النظر عن دعم الأجهزة</string>
 
-    <string name="hiding_dialog_message">هل أنت متأكد من أنك تريد إزالة %1$s من درج التطبيقات ? فقط اكتب \"%2$d\" في المزيف %3$s التطبيق يمكنه استرداده .</string>
+    <string name="hiding_dialog_message">هل أنت متأكد من أنك تريد إزالة %1$s من درج التطبيقات؟ فقط اكتب \"%2$d\" في المزيف %3$s التطبيق يمكنه استرداده.</string>
     <string name="hiding_dialog_warning">تحذير: سيتم أيضًا إزالة أي اختصار للتطبيق على الشاشة الرئيسية ويجب إعادة إضافته يدويًا.</string>
     <string name="swap_toast_invalid_url">عنوان URL غير صالح للتبديل : %1$s</string>
     <string name="warning_scaning_qr_code">لا يبدو أن الكاميرا تحتوي على تركيز تلقائي للصورة. قد يكون من الصعب قراءة الرمز.</string>
