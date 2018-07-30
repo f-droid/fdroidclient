@@ -109,7 +109,8 @@ public class AppDetails2 extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         supportPostponeEnterTransition();
 
-        if (!reset(getPackageNameFromIntent(getIntent()))) {
+        resetCurrentApp(getPackageNameFromIntent(getIntent()));
+        if (app == null) {
             finish();
             return;
         }
@@ -185,27 +186,6 @@ public class AppDetails2 extends AppCompatActivity
             return null;
         }
         return intent.getStringExtra(EXTRA_APPID);
-    }
-
-    /**
-     * If passed null, this will show a message to the user ("Could not find app ..." or something
-     * like that) and then finish the activity.
-     */
-    private void setApp(App newApp) {
-        if (newApp == null) {
-            Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-        app = newApp;
-
-        // Remove all "installed" statuses for this app, since we are now viewing it.
-        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
-        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
-            if (status.status == AppUpdateStatusManager.Status.Installed) {
-                ausm.removeApk(status.getUniqueKey());
-            }
-        }
     }
 
     /**
@@ -673,27 +653,40 @@ public class AppDetails2 extends AppCompatActivity
 
     /**
      * Reset the display and list contents. Used when entering the activity, and
-     * also when something has been installed/uninstalled.
-     * Return true if the app was found, false otherwise.
+     * also when something has been installed/uninstalled.  An index update or
+     * other external factors might have changed since {@code app} was set
+     * before.  This also removes all pending installs with
+     * {@link AppUpdateStatusManager.Status#Installed Installed}
+     * status for this {@code packageName}, to prevent any lingering open ones from
+     * messing up any action that the user might take.  They sometimes might not get
+     * removed while F-Droid was in the background.
+     * <p>
+     * Shows a {@link Toast} if no {@link App} was found matching {@code packageName}.
      */
-    private boolean reset(String packageName) {
-
-        Utils.debugLog(TAG, "Getting application details for " + packageName);
-        App newApp = null;
-
-        if (!TextUtils.isEmpty(packageName)) {
-            newApp = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
+    private void resetCurrentApp(String packageName) {
+        if (TextUtils.isEmpty(packageName)) {
+            return;
         }
+        app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
 
-        setApp(newApp);
-        return this.app != null;
+        //
+        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.Installed) {
+                ausm.removeApk(status.getUniqueKey());
+            }
+        }
+        if (app == null) {
+            Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void onAppChanged() {
         recyclerView.post(new Runnable() {
             @Override
             public void run() {
-                if (!reset(app.packageName)) {
+                resetCurrentApp(app.packageName);
+                if (app == null) {
                     AppDetails2.this.finish();
                     return;
                 }
