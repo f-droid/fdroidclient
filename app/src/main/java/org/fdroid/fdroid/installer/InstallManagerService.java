@@ -51,6 +51,8 @@ import java.io.IOException;
  * {@code {@link #stopSelf(int)}}, so {@code Intent}s are sometimes redelivered even
  * though they are no longer valid.  {@link #onStartCommand(Intent, int, int)} checks
  * first that the incoming {@code Intent} is not an invalid, redelivered {@code Intent}.
+ * {@link #isPendingInstall(String)} and other checks are used to check whether to
+ * process the redelivered {@code Intent} or not.
  * <p>
  * The canonical URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
@@ -472,24 +474,11 @@ public class InstallManagerService extends Service {
     }
 
     /**
-     * Look up by {@code packageName} whether it is a Pending Install.
-     *
-     * @see #isPendingInstall(String)
-     */
-    public static boolean isPendingInstall(Context context, String packageName) {
-        if (pendingInstalls == null) {
-            pendingInstalls = getPendingInstalls(context);
-        }
-        return pendingInstalls.getAll().values().contains(packageName);
-    }
-
-    /**
      * Mark a given APK as in the process of being installed, with
      * the {@code urlString} of the download used as the unique ID,
      * and the file hash used to verify that things are the same.
      *
      * @see #isPendingInstall(String)
-     * @see #isPendingInstall(Context, String)
      */
     public static void putPendingInstall(Context context, String urlString, String packageName) {
         if (pendingInstalls == null) {

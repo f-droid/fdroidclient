@@ -699,6 +699,13 @@ public class AppDetails2 extends AppCompatActivity
     }
 
     @Override
+    public boolean isAppDownloading() {
+        return currentStatus != null &&
+                (currentStatus.status == AppUpdateStatusManager.Status.PendingInstall
+                        || currentStatus.status == AppUpdateStatusManager.Status.Downloading);
+    }
+
+    @Override
     public void enableAndroidBeam() {
         NfcHelper.setAndroidBeam(this, app.packageName);
     }

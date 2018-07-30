@@ -101,6 +101,10 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
     }
 
     private final AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks dummyCallbacks = new AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks() { // NOCHECKSTYLE LineLength
+        @Override
+        public boolean isAppDownloading() {
+            return false;
+        }
 
         @Override
         public void enableAndroidBeam() {
