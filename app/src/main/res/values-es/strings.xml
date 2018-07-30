@@ -567,4 +567,8 @@
     <string name="share_repository">Compartir Repositorio</string>
     <string name="prompt_to_send_crash_reports">Preguntar si mandar informes de fallo</string>
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
+    <string name="send_install_history">Enviar historial de instalación</string>
+    <string name="allow_push_requests">Permitir que los repositorios instalen/desinstalen aplicaciones</string>
+    <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
+
     </resources>
