@@ -565,4 +565,10 @@
     <string name="send_version_and_uuid">Send versjon og UUID til tjenere</string>
     <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID ved nadlasting. Trer i kraft ved neste programomstart.</string>
     <string name="share_repository">Del pakkebrønn</string>
+    <string name="send_install_history">Send installasjonshistorikk</string>
+    <string name="send_history_csv">%s installasjonshistorikk som CSV-fil</string>
+    <string name="allow_push_requests">Tillat pakkebrønner å installere/avinstallere programmer</string>
+    <string name="allow_push_requests_summary">Pakkebrønnsmetadata kan inneholde push-forespørsler om installasjon eller avinstallasjon av programmer</string>
+    <string name="antinosourcesince">Kildekoden er ikke lenger tilgengelig, ingen oppgraderinger mulig.</string>
+
     </resources>

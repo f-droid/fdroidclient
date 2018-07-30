@@ -569,4 +569,25 @@
     <string name="hiding_dialog_warning">تحذير: سيتم أيضًا إزالة أي اختصار للتطبيق على الشاشة الرئيسية ويجب إعادة إضافته يدويًا.</string>
     <string name="swap_toast_invalid_url">عنوان URL غير صالح للتبديل : %1$s</string>
     <string name="warning_scaning_qr_code">لا يبدو أن الكاميرا تحتوي على تركيز تلقائي للصورة. قد يكون من الصعب قراءة الرمز.</string>
+    <string name="prompt_to_send_crash_reports">تنبيه لإرسال تقارير الأعطال</string>
+    <string name="prompt_to_send_crash_reports_summary">اجمع بيانات حول الأعطال واطلب إرسالها إلى مطوّر البرامج</string>
+    <string name="hide_all_notifications">اخفاء جميع التنبيهات</string>
+    <string name="hide_all_notifications_summary">منع جميع الإجراءات من الظهور في شريط المعلومات ودرج الإشعارات.</string>
+    <string name="install_history">تاريخ التثبيت</string>
+    <string name="install_history_summary">عرض السجل الخاص لجميع عمليات التثبيت وعمليات الإزالة</string>
+    <string name="send_version_and_uuid">إرسال نسخة و عنوان UUID إلى الخوادم</string>
+    <string name="send_version_and_uuid_summary">تضمين إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل ، يسري مفعوله عند إعادة تشغيل التطبيق التالية.</string>
+    <string name="allow_push_requests">السماح للمستودعات بتثبيت / إلغاء تثبيت التطبيقات</string>
+    <string name="allow_push_requests_summary">يمكن أن تتضمن بيانات تعريف المستودع طلبات الدفع لتثبيت التطبيقات أو إلغاء تثبيتها</string>
+    <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
+    <string name="repo_exists_add_mirror">هذه نسخة من %1$s ، هل تريد إضافتها كمرآة؟</string>
+    <string name="antinosourcesince">لم يعد الكود المصدري متاحا ، ولا توجد تحديثات ممكنة.</string>
+
+    <string name="panic_hide_warning_message">في حالة الهلع ، سيؤدي هذا إلى إزالة%1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
+
+    <string name="share_repository">مشاركة المستودع</string>
+    <string name="send_install_history">إرسال محفوظات التثبيت</string>
+    <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
+    <string name="updates_disabled_by_settings">جميع التحديثات معطلة عن طريق إعدادات البيانات / واي فاي</string>
+
     </resources>

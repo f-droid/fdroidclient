@@ -256,7 +256,7 @@
     <string name="up_to_maxsdk">直到 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 直到 %2$s</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
-    <string name="repo_searching_address">在 %1$s 查看封裝的軟體庫</string>
+    <string name="repo_searching_address">正在 %1$s 查看封裝的軟體庫</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的本地軟體庫不在同一個 Wi-Fi 網路上！請試著加入此網路：%s</string>
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。
@@ -326,7 +326,7 @@
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能存取同個網路，你們其中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR 碼看起來並不是一個交換碼。</string>
     <string name="swap_connection_misc_error">連線到裝置時發生錯誤，不能與它進行交換！</string>
-    <string name="keep_install_history">保留安裝紀錄</string>
+    <string name="keep_install_history">保留安裝履歷</string>
     <string name="keep_install_history_summary">將所有的安裝和解除安裝記錄存儲在專用儲存區</string>
     <string name="update_auto_install">自動安裝更新</string>
     <string name="update_auto_install_summary">在背景下載並更新應用程式</string>
@@ -533,4 +533,12 @@
     <string name="send_version_and_uuid">將版本和 UUID 發送到伺服器</string>
     <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，這會影響下一次應用程式重新啟動。</string>
     <string name="share_repository">分享軟體庫</string>
+    <string name="allow_push_requests">允許軟體庫去安裝/解除安裝應用程式</string>
+    <string name="allow_push_requests_summary">軟體庫中介資料，可以包含安裝或解除安裝應用程式的推播請求</string>
+    <string name="antinosourcesince">原始碼不再能取得，無法更新。</string>
+
+    <string name="send_install_history">傳送安裝履歷</string>
+    <string name="send_history_csv">%s 安裝履歷為 CSV 檔案</string>
+    <string name="updates_disabled_by_settings">所有更新都被行動數據／WiFi 設定所停用</string>
+
     </resources>

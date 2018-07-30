@@ -531,4 +531,21 @@
     <string name="swap_toast_hotspot_enabled">نقطهٔ داغ وای‌فای فعّال است</string>
     <string name="swap_toast_could_not_enable_hotspot">نمی‌توان نقطهٔ داغ وای‌فای را فعّال کرد!</string>
 
+    <string name="prompt_to_send_crash_reports">اعلان فرستادن گزارش‌های خرابی</string>
+    <string name="prompt_to_send_crash_reports_summary">جمع‌آوری داده دربارهٔ خرابی‌ها و پرسش برای فرستادنشان به توسعه‌دهنده</string>
+    <string name="hide_all_notifications">نهفتن تمام آگاه‌سازی‌ها</string>
+    <string name="hide_all_notifications_summary">جلوگیری تمام عمل‌ها از نشان داده شدن در نوار وضعیت و کشوی آگاه‌سازی.</string>
+    <string name="send_install_history">فرستادن تاریخچهٔ نصب</string>
+    <string name="send_history_csv">تاریخچهٔ نصب %s در قالب پروندهٔ csv</string>
+    <string name="install_history">تاریخچهٔ نصب</string>
+    <string name="install_history_summary">نمایش گزارش شخصی از تمام نصب و حذف‌ها</string>
+    <string name="send_version_and_uuid">فرستادن نگارش و UUID به کارسازها</string>
+    <string name="send_version_and_uuid_summary">شامل نگارش این کاره و یک شناسهٔ یکتای تصادفی هنگام بارگیری، شروع دوبارهٔ بعدی کاره را تحت تأثیر قرار می‌دهد.</string>
+    <string name="allow_push_requests">اجازه به مخازن برای نصب/حذف کاره‌ها</string>
+    <string name="allow_push_requests_summary">فردادهٔ مخزن می‌تواند شامل درخواست‌های ارسالی برای نصب یا حذف برنامه‌ها باشد</string>
+    <string name="updates_disabled_by_settings">تمامی به‌روز رسانی‌ها به دست تنظیمات داده/وای‌فای مسدود شده‌اند</string>
+
+    <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست، به‌روز رسانی ناممکن است.</string>
+
+    <string name="share_repository">هم‌رسانی مخزن</string>
     </resources>

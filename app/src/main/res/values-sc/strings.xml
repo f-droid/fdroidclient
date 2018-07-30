@@ -582,5 +582,13 @@
     <string name="install_history_summary">Leghe su registru privadu de totu sas installatziones e disinstallatziones</string>
     <string name="send_version_and_uuid">Imbia sa versione e s\'UUID a sos servers</string>
     <string name="send_version_and_uuid_summary">Inclue sa versione de custa aplicatzione e un\'ID ùnicu a casu cando ses iscarrighende. At a tènnere efetu a pustis de s\'allughìngiu imbeniente de s\'aplicatzione.</string>
-    <string name="share_repository">Cumpartzi Depòsitu</string>
+    <string name="share_repository">Cumpartzi su depòsitu</string>
+    <string name="allow_push_requests">Permiti a sos depòsitos de installare/disinstallare aplicatziones</string>
+    <string name="allow_push_requests_summary">Sos metadatos de sos depòsitos podent incluire rechestas de installare o disinstallare aplicatziones</string>
+    <string name="antinosourcesince">Su còdighe mitza no est prus disponìbile, no est possìbile fàghere agiornamentos.</string>
+
+    <string name="send_install_history">Imbia sa cronologia de sas installatziones</string>
+    <string name="send_history_csv">%s sa cronologia de sas installatziones comente unu documentu CSV</string>
+    <string name="updates_disabled_by_settings">Totu sos agiornamentos disabilitados dae sas impostatziones Datos/Wi-Fi</string>
+
     </resources>

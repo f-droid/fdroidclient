@@ -547,4 +547,12 @@
     <string name="send_version_and_uuid">Enviar la versió i l\'UUID als servidors</string>
     <string name="send_version_and_uuid_summary">Incloure la versió de l\'app i un ID aleatori i únic per les descàrregues necessita que l\'aplicació es reinicii.</string>
     <string name="share_repository">Compartir repositori</string>
+    <string name="send_install_history">Envia l\'historial d\'instal·lacions</string>
+    <string name="send_history_csv">%s historial d\'instal·lacions com a fitxer CSV</string>
+    <string name="allow_push_requests">Permet als repositoris instal·lar/desinstal·lar apps</string>
+    <string name="allow_push_requests_summary">Les meta-dades del repositori poden incloure «push requests» per tal d\'instal·lar o desinstal·lar apps</string>
+    <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
+
+    <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar.</string>
+
     </resources>
