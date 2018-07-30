@@ -452,7 +452,7 @@
     </plurals>
 <string name="app_list__name__successfully_installed">%1$s instalatu da</string>
     <string name="menu_video">Bideoa</string>
-    <string name="latest__empty_state__no_recent_apps">Ez da oraintsuko aplikaziorik aurkitu</string>
+    <string name="latest__empty_state__no_recent_apps">Ez da azken aplikaziorik aurkitu</string>
     <string name="app__tts__cancel_download">Utzi deskarga</string>
     <string name="menu_license">Lizentzia: %s</string>
     <string name="latest__empty_state__never_updated">Zure aplikazioen zerrenda eguneratzen denean, azken aplikazioak hemen agertuko dira</string>
@@ -585,5 +585,11 @@
     <string name="send_version_and_uuid_summary">Gehitu aplikazio honen bertsioa eta ausazko ID bakan  bat deskargatzean, hurrengo aplikazioa berrabiarazi eta gero aplikatuko da.</string>
     <string name="share_repository">Partekatu biltegia</string>
     <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango dira eguneraketak egin.</string>
+
+    <string name="send_install_history">Bidali instalazioen historiala</string>
+    <string name="send_history_csv">%s instalazioen historiala CSV fitxategi gisa</string>
+    <string name="allow_push_requests">Baimendu biltegiei aplikazioak instalatzea/desinstalatzea</string>
+    <string name="allow_push_requests_summary">Biltegien metadatuek aplikazioak instalatzeko edo desinstalatzeko push eskariak izan ditzakete</string>
+    <string name="updates_disabled_by_settings">Eguneraketa guztiak desgaituta datu/WiFi ezarpenetan</string>
 
     </resources>

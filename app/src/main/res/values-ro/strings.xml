@@ -292,7 +292,8 @@
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
     <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal privat</string>
     <string name="system_installer_on">Folosiți Privileged Extension pentru a instala, actualiza și a înlătura pachete</string>
-    <string name="empty_can_update_app_list">Felicitări!\nAplicațiile tale sunt la zi.</string>
+    <string name="empty_can_update_app_list">Felicitări!
+\nAplicațiile dumneavoastră sunt la zi.</string>
     <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
@@ -361,7 +362,7 @@
 
     <string name="latest__empty_state__never_updated">Odată actualizată lista de aplicații, cele mai noi ar trebui să apară aici</string>
     <string name="latest__empty_state__no_recent_apps">Nu s-a găsit nici o aplicație recentă</string>
-    <string name="main_menu__swap_nearby">Local</string>
+    <string name="main_menu__swap_nearby">Schimb</string>
 
     <string name="main_menu__categories">Categorii</string>
     <string name="main_menu__latest_apps">Noutăți</string>
@@ -397,7 +398,7 @@
     <string name="menu_license">Licență: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nu aveți acces la Internet? Descărcați aplicații de la persoanele din apropiere!</string>
     <string name="nearby_splash__find_people_button">Găsește persoane</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea face schimb.</string>
 
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplicație instalată</item>
@@ -439,8 +440,8 @@
     <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în această locație. Va rugăm sa i-o acordați în ecranul următor pentru a putea continua cu instalarea.</string>
 
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
-    <string name="not_on_same_wifi">Dispozitivul tău nu este pe același Wi-Fi ca depozitul local pe care tocmai l-ai adăugat! Încearcă să te conectezi la această rețea : %s</string>
-    <string name="touch_to_configure_local_repo">Atinge pentru a vedea detalii și a permite celorlalți să își împartă aplicațiile tale.</string>
+    <string name="not_on_same_wifi">Dispozitivul dumneavoastră nu este pe același Wi-Fi ca depozitul local pe care tocmai l-ați adăugat! Încearcați să vă conectați la această rețea : %s</string>
+    <string name="touch_to_configure_local_repo">Atingeți pentru a vedea detalii și a permite celorlalți să primească aplicațiile dumneavoastră.</string>
     <string name="system_install_denied_signature">Semnătura acestei extensii este greșită! Te rog să creezi un bug report!</string>
     <string name="system_install_warning_lollipop">Această acțiune durează până la 10 secunde iar dispozitivul se va <b>restarta</b> după aceea.</string>
     <string name="swap_nfc_description">Dacă prietenul tău are F-Droid și NFC activat, atingeți-vă dispozitivele.</string>
@@ -523,7 +524,7 @@
 
     <string name="use_bluetooth">Folosește Bluetooth</string>
     <string name="swap_cant_find_peers">Nu găsiți ceea ce căutați?</string>
-    <string name="swap_no_peers_nearby">Nu au fost găsite persoane în apropiere cu care să faceți schimburi.</string>
+    <string name="swap_no_peers_nearby">Nu au fost găsite persoane în apropiere cu care să faceți schimb.</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activat</string>
     <string name="swap_toast_could_not_enable_hotspot">Nu s-a putut crea hotspot Wi-Fi!</string>
 
@@ -549,4 +550,12 @@
     <string name="system_install_not_supported">Instalarea F-Droid Privileged Extension nu este momentan suportată pe Android 5.1 sau mai nou.</string>
 
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
+    <string name="allow_push_requests">Permite depozitelor sa dez/instaleze aplicații</string>
+    <string name="allow_push_requests_summary">Metadatele depozitelor pot include acțiuni de instalare sau dezinstalare aplicații</string>
+    <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza.</string>
+
+    <string name="send_install_history">Trimite istoricul instalărilor</string>
+    <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>
+    <string name="updates_disabled_by_settings">Toate actualizările sunt oprite din setările de date mobile/Wi-Fi</string>
+
     </resources>

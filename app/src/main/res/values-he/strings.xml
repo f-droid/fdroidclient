@@ -569,4 +569,8 @@
 
     <string name="allow_push_requests">לאפשר למאגרים להתקין/להסיר יישומונים</string>
     <string name="allow_push_requests_summary">נתוני העל של המאגרים כוללים בקשות דחיפה להתקין או להסיר יישומונים</string>
+    <string name="send_install_history">שליחת היסטוריית ההתקנות</string>
+    <string name="send_history_csv">%s היסטוריית ההתקנות כקובץ CSV</string>
+    <string name="updates_disabled_by_settings">כל העדכונים מושבתים בהגדרות תקשורת הנתונים/רשת אלחוטית</string>
+
     </resources>

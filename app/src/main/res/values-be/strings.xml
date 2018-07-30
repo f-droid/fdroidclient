@@ -603,4 +603,8 @@
     <string name="allow_push_requests_summary">Метаданыя рэпазіторыяў можа ўключаць запыты на ўсталяванне ці выдаленне праграм</string>
     <string name="antinosourcesince">Зыходны код больш недаступны — абноўленні немагчымыя.</string>
 
+    <string name="send_install_history">Адправіць гісторыю ўсталёвак</string>
+    <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>
+    <string name="updates_disabled_by_settings">Усе абноўленні адключаныя праз надады перадачы даных</string>
+
     </resources>

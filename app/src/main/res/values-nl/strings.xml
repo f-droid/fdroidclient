@@ -538,4 +538,15 @@
 
     <string name="hide_all_notifications">Alle meldingen verbergen</string>
     <string name="hide_all_notifications_summary">Voorkom dat handelingen weergegeven worden in de statusbalk en meldingen.</string>
+    <string name="prompt_to_send_crash_reports">Vraag om crashrapporten te versturen</string>
+    <string name="prompt_to_send_crash_reports_summary">Verzamel gegevens over crashes en vraag om ze naar de ontwikkelaar te sturen</string>
+    <string name="install_history">Installatiegeschiedenis</string>
+    <string name="install_history_summary">Bekijk het privélogboek van alle installaties en deïnstallaties</string>
+    <string name="send_version_and_uuid">Stuur versie en UUID naar de servers</string>
+    <string name="send_version_and_uuid_summary">Voeg het versienummer van deze app toe en een willekeurige unieke ID tijdens het downloaden. Werkt als je de app opnieuw start.</string>
+    <string name="allow_push_requests">Sta bronnen toe om apps te installeren en verwijderen</string>
+    <string name="allow_push_requests_summary">Bron-metagegevens kunnen push requests bevatten om apps te installeren of verwijderen</string>
+    <string name="antinosourcesince">De broncode is niet langer beschikbaar, geen updates mogelijk.</string>
+
+    <string name="share_repository">Deel bron</string>
     </resources>

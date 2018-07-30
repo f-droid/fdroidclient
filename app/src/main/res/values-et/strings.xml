@@ -19,9 +19,7 @@
     <string name="notify">Kuva saadaolevad värskendused</string>
     <string name="notify_on">Kuva teade, kui värskendused on saadaval</string>
     <string name="system_installer">Priviligeeritud laiendus</string>
-    <string name="system_installer_on">"Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks F-Droidi
-        priviligeeritud laiendust"
-    </string>
+    <string name="system_installer_on">Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks priviligeeritud laiendust</string>
     <string name="uninstall_system">Värskenda/eemalda priviligeeritud laiendus</string>
     <string name="uninstall_system_summary">Priviligeeritud laienduse värskendamiseks/eemaldamiseks ava detailne vaade
     </string>
@@ -369,7 +367,7 @@
     <string name="notification_title_summary_install_error">Paigaldamine nurjus</string>
     <string name="by_author_format">autor: %s</string>
     <string name="keep_install_history">Säilita paigalduse ajalugu</string>
-    <string name="keep_install_history_summary">Salvesta F-Droidis kõik paigaldamised ja eemaldamised</string>
+    <string name="keep_install_history_summary">Salvesta kõigi paigaldamiste ja eemaldamiste logi privaathoidukohas</string>
     <string name="force_old_index">Sunni vana indeksi vorming</string>
     <string name="force_old_index_summary">Kasuta vigade või ühilduvusprobleemide ilmnemisel rakenduste XML indeksit</string>
     <string name="update_auto_install">Paigalda värskendused automaatselt</string>
@@ -528,4 +526,6 @@
 
 <string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
     <string name="repo_exists_add_fingerprint">%1$s on juba seadistatud; see lisab teabe uuest võtmest.</string>
+    <string name="repo_exists_enable">%1$s on juba üles seatud; kinnita, et soovid ta uuesti lubada.</string>
+    <string name="repo_exists_and_enabled">%1$s on juba seadistatud ja lubatud.</string>
     </resources>

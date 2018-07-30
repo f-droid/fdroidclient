@@ -511,4 +511,12 @@
     <string name="send_version_and_uuid">버전과 UUID를 서버로 보내기</string>
     <string name="send_version_and_uuid_summary">이 앱의 버전과 임의의, 고유한 ID를 포함하며, 다음에 앱을 다시 시작하면 영향을 받습니다.</string>
     <string name="share_repository">저장소 공유</string>
+    <string name="send_install_history">설치 내역 보내기</string>
+    <string name="send_history_csv">설치 내역을 CSV 파일로 %s</string>
+    <string name="allow_push_requests">저장소에 앱을 설치/제거할 수 있도록 하기</string>
+    <string name="allow_push_requests_summary">저장소 메타데이터에는 설치 또는 제거를 위한 푸시 요청을 포함할 수 있습니다</string>
+    <string name="updates_disabled_by_settings">모든 업데이트가 데이터/WiFi 설정에 의해 비활성화됨</string>
+
+    <string name="antinosourcesince">소스 코드는 더 이상 사용 가능하지 않으며, 업데이트 가능성은 없습니다.</string>
+
     </resources>

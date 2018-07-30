@@ -547,4 +547,16 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi nyala</string>
     <string name="swap_toast_could_not_enable_hotspot">Tidak dapat menyalakan Hotspot Wi-Fi!</string>
 
+    <string name="prompt_to_send_crash_reports">Minta mengirim laporan kerusakan</string>
+    <string name="prompt_to_send_crash_reports_summary">Kumpulkan data tentang mogok dan minta untuk mengirimnya ke pengembang</string>
+    <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
+    <string name="hide_all_notifications_summary">Cegah semua tindakan ditampilkan di bilah status dan bilah notifikasi.</string>
+    <string name="send_install_history">Kirim Riwayat Instal</string>
+    <string name="send_history_csv">%s instal sejarah sebagai file CSV</string>
+    <string name="install_history">Riwayat instal</string>
+    <string name="install_history_summary">Lihat log pribadi dari semua pemasangan dan uninstal</string>
+    <string name="send_version_and_uuid">Kirim versi dan UUID ke server</string>
+    <string name="send_version_and_uuid_summary">Sertakan versi aplikasi ini dan ID acak dan unik saat mengunduh, akan memengaruhi aplikasi berikutnya untuk memulai ulang.</string>
+    <string name="allow_push_requests">Izinkan repo untuk menginstal/menghapus aplikasi</string>
+    <string name="allow_push_requests_summary">Repo metadata dapat menyertakan permintaan push untuk menginstal atau menghapus aplikasi</string>
     </resources>
