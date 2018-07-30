@@ -232,8 +232,6 @@
     <string name="expert_on">Pokaži dodatne informacije in omogoči dodatne nastavitve</string>
 
     <string name="show_incompat_versions_on">Pokaži verzije aplikacij, ki so nekompatibilne z napravo</string>
-    <string name="show_root_apps">Vključi root aplikacije</string>
-    <string name="show_root_apps_on">Prikaži aplikacije, ki zahtevajo root dostop</string>
     <string name="show_anti_feature_apps">Vključi aplikcije z proti-lastnostmi</string>
     <string name="force_touch_apps">Vključi aplikacije, ki potrebujejo zaslone na dotik</string>
     <string name="local_repo">Lokalni vir aplikacij</string>

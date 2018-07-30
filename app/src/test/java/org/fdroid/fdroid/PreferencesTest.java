@@ -118,8 +118,6 @@ public class PreferencesTest {
                 preferences.showAppsWithAntiFeatures());
         assertEquals(defaults.getBoolean(Preferences.PREF_SHOW_INCOMPAT_VERSIONS, false),
                 preferences.showIncompatibleVersions());
-        assertEquals(defaults.getBoolean(Preferences.PREF_SHOW_ROOT_APPS, false),
-                preferences.showAppsRequiringRoot());
         assertEquals(defaults.getBoolean(Preferences.PREF_UPDATE_NOTIFICATION_ENABLED, false),
                 preferences.isUpdateNotificationEnabled());
 

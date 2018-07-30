@@ -518,8 +518,6 @@
     <string name="antidisabledalgorithmlist">Denna app har en svag säkerhetssignatur</string>
     <string name="antiknownvulnlist">Denna app innehåller en känd säkerhetsårbarhet</string>
 
-    <string name="show_root_apps">Inkludera root-appar</string>
-    <string name="show_root_apps_on">Visa appar som kräver root-privilegier</string>
     <string name="show_anti_feature_apps">Inkludera mot-funktionsappar</string>
     <string name="show_anti_feature_apps_on">Vis appar som kräver mot-funktioner</string>
     <string name="force_touch_apps">Inkludera pekskärmsappar</string>

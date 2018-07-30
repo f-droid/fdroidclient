@@ -541,8 +541,6 @@
     <string name="repo_exists_enable">%1$s вже налаштовано, підтвердьте, що бажаєте наново увімкнути.</string>
     <string name="repo_exists_and_enabled">%1$s вже налаштовано і увімкнуто.</string>
     <string name="repo_delete_to_overwrite">Спершу видаліть %1$s, аби додати його з конфліктним ключем.</string>
-    <string name="show_root_apps">Увімкнути root додатки</string>
-    <string name="show_root_apps_on">Показати додатки, які потребують root привілеїв</string>
     <string name="share_repository">Поділитися репозиторієм</string>
     <string name="use_bluetooth">Використовувати Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Точку доступу Wi-Fi увімкнуто</string>

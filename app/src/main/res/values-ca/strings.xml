@@ -499,7 +499,6 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps_on">Mostra aplicacions que requereixen privilegis d\'administrador</string>
     <string name="panic_hide_warning_title">Recorda com restaurar-ho</string>
     <string name="panic_hide_warning_message">En una situació de pànic, això esborrarà %1$s del menú. Només es podrà restaurar escrivint \"%2$d\" a la falsa aplicació %3$s.</string>
 
@@ -516,7 +515,6 @@
     <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
     <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
 
-    <string name="show_root_apps">Inclou aplicacions amb accés d\'administrador</string>
     <string name="show_anti_feature_apps">Inclou aplicacions amb característiques indesitjades</string>
     <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen característiques indesitjades</string>
     <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>

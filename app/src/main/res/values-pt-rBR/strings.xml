@@ -543,8 +543,6 @@
     <string name="warning_scaning_qr_code">Sua câmera não parece ter focagem automática. Pode ser difícil escanear o código.</string>
     <string name="repo_add_mirror">Adicionar mirror</string>
     <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar ele como um mirror?</string>
-    <string name="show_root_apps">Incluir aplicativos root</string>
-    <string name="show_root_apps_on">Mostrar aplicativos que requerem privilégios root</string>
     <string name="show_anti_feature_apps">Incluir aplicativos antifraude</string>
     <string name="force_touch_apps">Incluir aplicativos touchscreen</string>
     <string name="force_touch_apps_on">Mostrar aplicativos touchscreen independente do suporte de hardware</string>

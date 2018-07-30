@@ -532,8 +532,6 @@
     <string name="repo_exists_add_mirror">Questa è una copia di %1$s, aggiungerla come mirror?</string>
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps">Includi app di root</string>
-    <string name="show_root_apps_on">Mostra le app che richiedono privilegi di root</string>
     <string name="show_anti_feature_apps">Includi app con anti-caratteristiche</string>
     <string name="show_anti_feature_apps_on">Mostra app che richiedono anti-caratteristiche</string>
     <string name="force_touch_apps">Includi app tattili</string>

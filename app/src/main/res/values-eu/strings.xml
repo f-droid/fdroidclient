@@ -547,8 +547,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
-    <string name="show_root_apps">Sartu root aplikazioak</string>
-    <string name="show_root_apps_on">Erakutsi root baimenak behar dituzten aplikazioak</string>
     <string name="show_anti_feature_apps">Sartu ezaugarri zalantzagarriak dituzten aplikazioak</string>
     <string name="show_anti_feature_apps_on">Erakutsi ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
     <string name="force_touch_apps">Sartu ukimen pantaila darabilten aplikazioak</string>

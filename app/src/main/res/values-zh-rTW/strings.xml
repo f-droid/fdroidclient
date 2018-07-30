@@ -500,8 +500,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">您的相機似乎沒有自動對焦。掃描代碼可能會很困難。</string>
-    <string name="show_root_apps">包括 root 應用程式</string>
-    <string name="show_root_apps_on">顯示需要 root 授權的應用程式</string>
     <string name="show_anti_feature_apps">包括反特徵應用程式</string>
     <string name="show_anti_feature_apps_on">顯示需要反特徵的應用程式</string>
     <string name="force_touch_apps">包括觸控式螢幕的應用程式</string>

@@ -82,10 +82,6 @@
                 android:defaultValue="false"
                 android:key="incompatibleVersions"/>
         <SwitchPreference
-                android:title="@string/show_root_apps"
-                android:defaultValue="true"
-                android:key="rooted"/>
-        <SwitchPreference
                 android:title="@string/show_anti_feature_apps"
                 android:defaultValue="false"
                 android:key="showAntiFeatureApps"/>

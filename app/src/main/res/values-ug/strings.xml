@@ -215,7 +215,6 @@
     <string name="antifeatures">ئىقتىدار-قارشى</string>
     <string name="expert_on">قوشۇمچە ئۇچۇرلانى كۆرسەت ۋە قوشۇمچە تەڭشەكلەرنى قوزغات</string>
 
-    <string name="show_root_apps_on">يىلتىز ھۇقۇقىنى تەلەپ قىلىدىغان ئۇيغۇلىمىلارنى كۆرسەت</string>
     <string name="show_anti_feature_apps">ئىقتىدار-چەكلەش ئۇيغۇلىمىلىرىنى ئۆز ئىچىگە ئالىدۇ</string>
     <string name="local_repo">يەرلىك ئامبار</string>
     <string name="deleting_repo">ھازىرقى ئامبار ئۆچۈرۈلىۋاتىدۇ…</string>

@@ -545,8 +545,6 @@
     <string name="repo_exists_add_mirror">Esta é uma cópia de %1$s, deseja adicionar como \'mirror\'?</string>
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps">Incluir aplicações \'root\'</string>
-    <string name="show_root_apps_on">Mostrar aplicações que necessitam de acesso \'root\'</string>
     <string name="show_anti_feature_apps">Incluir aplicações com anti-funcionalidades</string>
     <string name="show_anti_feature_apps_on">Mostrar aplicações que necessitem de anti-funcionalidades</string>
     <string name="force_touch_apps">Incluir aplicações \'touchscreen\'</string>

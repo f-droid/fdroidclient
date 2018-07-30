@@ -493,8 +493,6 @@
     <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
     <string name="antiknownvulnlist">Ứng dụng này có lỗ hổng bảo mật đã bị phát hiện</string>
 
-    <string name="show_root_apps">Hiện ứng dụng root</string>
-    <string name="show_root_apps_on">Hiện các ứng dụng cần quyền root</string>
     <string name="show_anti_feature_apps">Hiện ứng dụng có tính năng không mong muốn</string>
     <string name="show_anti_feature_apps_on">Hiện các ứng dụng có một số tính năng không mong muốn</string>
     <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>

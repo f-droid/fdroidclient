@@ -48,7 +48,7 @@ public class StandardAppListItemController extends AppListItemController {
 
     private boolean shouldShowInstall(@NonNull App app) {
         boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled(activity.getApplicationContext());
-        boolean shouldAllow = app.compatible && !app.isFiltered();
+        boolean shouldAllow = app.compatible && !app.isDisabledByAntiFeatures();
 
         return installable && shouldAllow;
     }

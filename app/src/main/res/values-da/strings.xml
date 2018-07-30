@@ -491,6 +491,4 @@
     <string name="antidisabledalgorithmlist">Denne app har en svag sikkerhedssignatur</string>
     <string name="antiknownvulnlist">Denne app indeholder en kendt sårbarhed</string>
 
-    <string name="show_root_apps">Inkluder root-apps</string>
-    <string name="show_root_apps_on">Vis apps som kræver root-rettigheder</string>
     </resources>

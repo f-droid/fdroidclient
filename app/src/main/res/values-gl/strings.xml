@@ -538,8 +538,6 @@
     <string name="antidisabledalgorithmlist">Este aplicativo ten unha sinatura de seguridade feble</string>
     <string name="antiknownvulnlist">Esta aplicación contén unha vulnerabilidade de seguridade coñecida</string>
 
-    <string name="show_root_apps">Incluir aplicativos con permiso de administrador</string>
-    <string name="show_root_apps_on">Amosar aplicativos que requiren privilexios de administrador</string>
     <string name="show_anti_feature_apps">Incluir aplicativos con anti-funcionalidades</string>
     <string name="show_anti_feature_apps_on">Amosar aplicativos que requiren de anti-funcionalidades</string>
     <string name="force_touch_apps">Incluir aplicativos de pantalla táctil</string>

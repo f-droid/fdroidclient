@@ -81,7 +81,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
     public static final String PREF_THEME = "theme";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
-    public static final String PREF_SHOW_ROOT_APPS = "rooted";
     public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_PROMPT_TO_SEND_CRASH_REPORTS = "promptToSendCrashReports";
@@ -155,12 +154,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             DateUtils.HOUR_IN_MILLIS,
     };
 
-    private boolean showAppsRequiringRoot;
     private boolean showAppsWithAntiFeatures;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
-    private final List<ChangeListener> showAppsRequiringRootListeners = new ArrayList<>();
     private final List<ChangeListener> showAppsRequiringAntiFeaturesListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
@@ -531,20 +528,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
-     * in PREF_SHOW_ROOT_APPS.
-     */
-    public boolean showAppsRequiringRoot() {
-        if (!isInitialized(PREF_SHOW_ROOT_APPS)) {
-            initialize(PREF_SHOW_ROOT_APPS);
-            showAppsRequiringRoot = preferences.getBoolean(PREF_SHOW_ROOT_APPS, IGNORED_B);
-        }
-        return showAppsRequiringRoot;
-    }
-
-    /**
-     * This is cached as it is called several times inside app list adapters.
-     * Providing it here means the shared preferences file only needs to be
-     * read once, and we will keep our copy up to date by listening to changes
      * in PREF_SHOW_ANTI_FEATURE_APPS.
      */
     public boolean showAppsWithAntiFeatures() {
@@ -558,14 +541,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS, IGNORED_B);
         }
         return showAppsWithAntiFeatures;
-    }
-
-    public void registerAppsRequiringRootChangeListener(ChangeListener listener) {
-        showAppsRequiringRootListeners.add(listener);
-    }
-
-    public void unregisterAppsRequiringRootChangeListener(ChangeListener listener) {
-        showAppsRequiringRootListeners.remove(listener);
     }
 
     public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
@@ -590,11 +565,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         uninitialize(key);
 
         switch (key) {
-            case PREF_SHOW_ROOT_APPS:
-                for (ChangeListener listener : showAppsRequiringRootListeners) {
-                    listener.onPreferenceChange();
-                }
-                break;
             case PREF_SHOW_ANTI_FEATURE_APPS:
                 for (ChangeListener listener : showAppsRequiringAntiFeaturesListeners) {
                     listener.onPreferenceChange();

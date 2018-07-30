@@ -526,8 +526,6 @@
     <string name="hide_on_long_search_press_summary">Appuyer longtemps sur le bouton de recherche masquera l\'application</string>
 
 <string name="warning_scaning_qr_code">Votre appareil-photo n’a pas de mise au point automatique. Il sera peut-être difficile de scanner le code.</string>
-    <string name="show_root_apps">Inclure les applications root</string>
-    <string name="show_root_apps_on">Afficher les applications nécessitant les privilèges root</string>
     <string name="repo_add_mirror">Ajouter un miroir</string>
     <string name="repo_delete_to_overwrite">Veuillez d\'abord supprimer %1$s pour pouvoir l\'ajouter avec la clé en conflit.</string>
     <string name="repo_exists_add_mirror">Il s\'agit d\'une copie de %1$s, l\'ajouter comme miroir ?</string>

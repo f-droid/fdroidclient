@@ -479,8 +479,6 @@
     <string name="repo_exists_and_enabled">%1$s은(는) 이미 설정되어 있으며, 활성화됩니다.</string>
     <string name="repo_delete_to_overwrite">이것과 충돌하는 키를 추가하려면 먼저 %1$s을(를) 삭제합니다.</string>
     <string name="repo_exists_add_mirror">이것은 %1$s의 복사본입니다, 그것을 미러로 추가하시겠습니까?</string>
-    <string name="show_root_apps">루트 앱을 포함</string>
-    <string name="show_root_apps_on">루트 권한이 필요한 앱을 보여주기</string>
     <string name="show_anti_feature_apps">안티 기능 앱을 포함</string>
     <string name="show_anti_feature_apps_on">안티 기능이 필요한 앱을 보여주기</string>
     <string name="force_touch_apps">터치스크린 앱을 포함</string>

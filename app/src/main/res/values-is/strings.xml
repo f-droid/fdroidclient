@@ -561,8 +561,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
-    <string name="show_root_apps">Hafa með rótaraðgangsforrit</string>
-    <string name="show_root_apps_on">Birta forrit sem þurfa rótaraðgang</string>
     <string name="show_anti_feature_apps">Hafa með forrit með ókostum</string>
     <string name="show_anti_feature_apps_on">Birta forrit með óæskilegum eiginleikum</string>
     <string name="force_touch_apps">Hafa með forrit sem þurfa snertiskjá</string>

@@ -508,8 +508,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Je camera lijkt niet over autofocus te beschikken. Het scannen van de code kan moeilijk zijn.</string>
-    <string name="show_root_apps">Root-apps tonen</string>
-    <string name="show_root_apps_on">Toon apps die root-privileges vereisen</string>
     <string name="show_anti_feature_apps">Apps met antifuncties tonen</string>
     <string name="show_anti_feature_apps_on">Toon apps die antifuncties bevatten</string>
     <string name="force_touch_apps">Aanraakschermapps tonen</string>
