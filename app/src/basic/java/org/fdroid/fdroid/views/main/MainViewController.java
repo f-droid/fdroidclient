@@ -48,8 +48,11 @@ class MainViewController extends RecyclerView.ViewHolder {
         this.frame = frame;
     }
 
+    /**
+     * @see WhatsNewViewBinder
+     */
     public void bindWhatsNewView() {
-        throw new IllegalStateException("unimplemented");
+        new WhatsNewViewBinder(activity, frame);
     }
 
     /**

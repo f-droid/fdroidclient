@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.categories.AppCardController;
@@ -57,10 +58,19 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public int getItemViewType(int position) {
+        int relativePositionInCycle = position % 5;
+
+        if (BuildConfig.FLAVOR.startsWith("basic")) {
+            if (relativePositionInCycle > 0) {
+                return R.id.whats_new_small_tile;
+            } else {
+                return R.id.whats_new_regular_list;
+            }
+        }
+
         if (position == 0) {
             return R.id.whats_new_feature;
         } else {
-            int relativePositionInCycle = position % 5;
             switch (relativePositionInCycle) {
                 case 1:
                 case 2:
