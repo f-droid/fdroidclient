@@ -28,6 +28,7 @@ package org.fdroid.fdroid.views.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
@@ -156,11 +157,18 @@ public class PreferencesFragment extends PreferenceFragment
             languagePref.setEntries(languages.getAllNames());
             languagePref.setEntryValues(languages.getSupportedLocales());
         }
+
+        if (getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) {
+            PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_appcompatibility");
+            category.removePreference(findPreference(Preferences.PREF_FORCE_TOUCH_APPS));
+        }
     }
 
     private void checkSummary(String key, int resId) {
         Preference pref = findPreference(key);
-        pref.setSummary(resId);
+        if (pref != null) {
+            pref.setSummary(resId);
+        }
     }
 
     private void entrySummary(String key) {
