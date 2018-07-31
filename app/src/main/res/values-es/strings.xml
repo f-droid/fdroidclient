@@ -536,8 +536,6 @@
     <string name="repo_exists_and_enabled">%1$s ya está configurado y habilitado.</string>
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
     <string name="repo_exists_add_mirror">Esto es una copia de %1$s, ¿agregarlo como réplica?</string>
-    <string name="show_root_apps">Incluir aplicaciones con acceso de administrador</string>
-    <string name="show_root_apps_on">Listar aplicaciones que requieren privilegios de administrador</string>
     <string name="show_anti_feature_apps">Incluir aplicaciones controvertidas</string>
     <string name="show_anti_feature_apps_on">Listar aplicaciones que requieren características controvertidas</string>
     <string name="force_touch_apps">Incluir aplicaciones de pantalla táctil</string>

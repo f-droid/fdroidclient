@@ -43,7 +43,6 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.main.MainActivity;
@@ -57,6 +56,8 @@ public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface AppDetailsRecyclerViewAdapterCallbacks {
+
+        boolean isAppDownloading();
 
         void enableAndroidBeam();
 
@@ -487,7 +488,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
-            if (InstallManagerService.isPendingInstall(context, app.packageName)) {
+            if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
                 buttonLayout.setVisibility(View.GONE);

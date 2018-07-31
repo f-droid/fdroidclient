@@ -538,8 +538,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Twój aparat nie posiada autofokusu. Mogą wystąpić trudności ze zeskanowaniem kodu.</string>
-    <string name="show_root_apps">Uwzględnij aplikacje roota</string>
-    <string name="show_root_apps_on">Pokaż aplikacje wymagające do działania uprawnień roota</string>
     <string name="show_anti_feature_apps">Uwzględnij (trochę) niefajne aplikacje</string>
     <string name="show_anti_feature_apps_on">Pokaż aplikacje zawierające niepożądane funkcje</string>
     <string name="force_touch_apps">Uwzględnij aplikacje dotykowe</string>

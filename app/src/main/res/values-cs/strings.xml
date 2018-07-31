@@ -537,8 +537,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
-    <string name="show_root_apps">Zahrnout aplikace vyžadující root přístup</string>
-    <string name="show_root_apps_on">Zobrazit aplikace které vyžadují práva root</string>
     <string name="show_anti_feature_apps">Zahrnout aplikace s funkcemi které nejsou v zájmu uživatele</string>
     <string name="show_anti_feature_apps_on">Zobrazit aplikace které vyžadují funkce které nejsou v zájmu uživatele</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>

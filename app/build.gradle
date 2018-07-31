@@ -139,7 +139,6 @@ dependencies {
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.google.zxing:core:3.3.2'
-    implementation 'eu.chainfire:libsuperuser:1.0.0.201602271131'
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
     implementation 'info.guardianproject.panic:panic:0.5'
     implementation 'commons-io:commons-io:2.5'

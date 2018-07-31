@@ -64,7 +64,7 @@ public class UpdateableAppsHeader extends AppUpdateData {
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private UpdateableAppsHeader header;
 
@@ -81,8 +81,22 @@ public class UpdateableAppsHeader extends AppUpdateData {
             appsToUpdate = (TextView) itemView.findViewById(R.id.text_apps_to_update);
             toggleAppsToUpdate = (Button) itemView.findViewById(R.id.button_toggle_apps_to_update);
 
-            toggleAppsToUpdate.setOnClickListener(this);
-            downloadAll.setOnClickListener(this);
+            toggleAppsToUpdate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    header.adapter.toggleAllUpdateableApps();
+                    updateToggleButtonText();
+                }
+            });
+
+            downloadAll.setVisibility(View.VISIBLE);
+            downloadAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downloadAll.setVisibility(View.GONE);
+                    UpdateService.autoDownloadUpdates(header.activity);
+                }
+            });
         }
 
         public void bindHeader(UpdateableAppsHeader header) {
@@ -99,16 +113,6 @@ public class UpdateableAppsHeader extends AppUpdateData {
 
             appsToUpdate.setText(TextUtils.join(", ", appNames));
             updateToggleButtonText();
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (v == toggleAppsToUpdate) {
-                header.adapter.toggleAllUpdateableApps();
-                updateToggleButtonText();
-            } else if (v == downloadAll) {
-                UpdateService.autoDownloadUpdates(header.activity);
-            }
         }
 
         private void updateToggleButtonText() {

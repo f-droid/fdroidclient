@@ -243,8 +243,6 @@
     <string name="appcompatibility">Përshtatja e Aplikacioneve</string>
     <string name="show_incompat_versions">Përfshije verzione jo përshtatshme</string>
     <string name="show_incompat_versions_on">Shfaqe verzione të aplikacioneve që janë nuk përshtaten me pajisjen tuaj</string>
-    <string name="show_root_apps">Përfshije aplikacionet rrënjë</string>
-    <string name="show_root_apps_on">Shfaqe aplikacionet që kërkojnë privilegjet rrënjë</string>
     <string name="show_anti_feature_apps">Përfshije aplikacionet kundër-veçori</string>
     <string name="show_anti_feature_apps_on">Shfaqe aplikacione që kërkojnë kundër-veçori</string>
     <string name="force_touch_apps">Përfshije aplikacionet me gjurmë gishtore</string>

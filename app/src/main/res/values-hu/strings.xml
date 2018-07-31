@@ -473,7 +473,6 @@
     <string name="antidisabledalgorithmlist">Ennek az alkalmazásnak gyönge a biztonsági aláírása</string>
     <string name="antiknownvulnlist">Ez az alkalmazás ismert biztonsági rést tartalmaz</string>
 
-    <string name="show_root_apps">Root jogot igénylő alkalmazások belefoglalása</string>
     <string name="over_data">Adatkapcsolaton keresztül</string>
     <string name="repo_exists_add_fingerprint">A(z) %1$s már be lett állítva, ez új kulcsinformációkat fog hozzáadni.</string>
     <string name="repo_exists_enable">A(z) %1$s már be lett állítva, erősítse meg, hogy újra engedélyezni akarja.</string>
@@ -481,7 +480,6 @@
     <string name="repo_delete_to_overwrite">Először törölje a(z) %1$s alkalmazást, hogy hozzáadhassa egy ütköző kulccsal.</string>
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps_on">Azon alkalmazások megjelenítése, melyekhez root jogosultság szükséges</string>
     <string name="show_anti_feature_apps">Előnytelen funkciókkal rendelkező alkalmazások belefoglalása</string>
     <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek előnytelen funkciókkal rendelkeznek</string>
     <string name="force_touch_apps">Érintőképernyős alkalmazások belefoglalása</string>

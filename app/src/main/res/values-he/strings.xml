@@ -532,8 +532,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
-    <string name="show_root_apps">לכלול גירסאות שדורשות גישת על</string>
-    <string name="show_root_apps_on">הצגת יישומונים שדורשים גישת על למכשיר</string>
     <string name="show_anti_feature_apps">לכלול יישומונים שמכילים תכונות שליליות</string>
     <string name="show_anti_feature_apps_on">הצגת יישומונים שדורשים תכונות שליליות</string>
     <string name="force_touch_apps">לכלול יישומוני מסך מגע</string>

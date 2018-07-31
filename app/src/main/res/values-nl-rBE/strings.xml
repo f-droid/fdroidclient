@@ -238,8 +238,6 @@
     <string name="appcompatibility">Compatibiliteit van app</string>
     <string name="show_incompat_versions">Incompatibele versies tonen</string>
     <string name="show_incompat_versions_on">Toont app-versies die niet compatibel zijn met uw apparaat</string>
-    <string name="show_root_apps">Root-apps tonen</string>
-    <string name="show_root_apps_on">Toont apps die root-privileges vereisen</string>
     <string name="show_anti_feature_apps">Apps met antifuncties tonen</string>
     <string name="show_anti_feature_apps_on">Toont apps die antifuncties bevatten</string>
     <string name="force_touch_apps">Aanraakschermapps tonen</string>

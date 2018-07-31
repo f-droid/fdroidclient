@@ -522,8 +522,6 @@
 
     <string name="panic_hide_warning_title">Wiederherstellungsmethode merken</string>
 <string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
-    <string name="show_root_apps">Root-Apps einbeziehen</string>
-    <string name="show_root_apps_on">Apps anzeigen, die Root-Berechtigungen benötigen</string>
     <string name="repo_add_mirror">Mirror hinzufügen</string>
     <string name="repo_exists_add_fingerprint">%1$s ist bereits eingerichtet, dies fügt neue Schlüsselinformationen hinzu.</string>
     <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie, dass Sie erneut aktivieren möchten.</string>

@@ -202,8 +202,6 @@
 
     <string name="appcompatibility">అనువర్తన అనుకూలత</string>
     <string name="show_incompat_versions">సరిపడలేని వెర్షన్లను చేర్చండి</string>
-    <string name="show_root_apps">రూట్ అనువర్తనాలను చేర్చండి</string>
-    <string name="show_root_apps_on">రూట్ అధికారాలు అవసరమయ్యే అనువర్తనాలను చూపించు</string>
     <string name="force_touch_apps">టచ్స్క్రీన్ అనువర్తనాలను చేర్చండి</string>
     <string name="local_repo">స్థానిక రెపో</string>
     <string name="local_repo_running">F- Droid మారడానికి సిద్ధంగా ఉంది</string>

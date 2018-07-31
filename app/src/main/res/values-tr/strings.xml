@@ -521,8 +521,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Kameranızın kendiliğinden odaklanması yok gibi görünüyor. Kodu taramak zor olabilir.</string>
-    <string name="show_root_apps">Kök uygulamalarını içer</string>
-    <string name="show_root_apps_on">Kök yetkileri gerektiren uygulamaları göster</string>
     <string name="show_anti_feature_apps">Karşıt-özellikli uygulamaları içer</string>
     <string name="show_anti_feature_apps_on">Karşıt-özellikler gerektiren uygulamaları göster</string>
     <string name="force_touch_apps">Dokunmatik ekran uygulamalarını içer</string>

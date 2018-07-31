@@ -373,16 +373,6 @@ public class FDroidApp extends Application {
 
         InstalledAppProviderService.compareToPackageManager(this);
 
-        // If the user changes the preference to do with filtering rooted apps,
-        // it is easier to just notify a change in the app provider,
-        // so that the newly updated list will correctly filter relevant apps.
-        preferences.registerAppsRequiringRootChangeListener(new Preferences.ChangeListener() {
-            @Override
-            public void onPreferenceChange() {
-                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-            }
-        });
-
         // If the user changes the preference to do with filtering anti-feature apps,
         // it is easier to just notify a change in the app provider,
         // so that the newly updated list will correctly filter relevant apps.

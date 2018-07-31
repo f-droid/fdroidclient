@@ -480,8 +480,6 @@
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
     <string name="antiknownvulnlist">Tämä sovellus sisältää tunnetun haavoittuvuuden</string>
 
-    <string name="show_root_apps">Sisällytä root-sovellukset</string>
-    <string name="show_root_apps_on">Näytä sovellukset, jotka vaativat root-oikeudet</string>
     <string name="show_anti_feature_apps">Sisällytä anti-ominaisuus -sovellukset</string>
     <string name="show_anti_feature_apps_on">Näytä sovellukset, jotka vaativat anti-ominaisuuksia</string>
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>

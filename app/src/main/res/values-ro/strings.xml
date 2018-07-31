@@ -499,8 +499,6 @@
 <string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps">Include root</string>
-    <string name="show_root_apps_on">Se listează și aplicațiile ce necesită acces de tip administrator (root)</string>
     <string name="show_anti_feature_apps">Include caracteristici periculoase</string>
     <string name="show_anti_feature_apps_on">Se listează și aplicațiile ce prezintă caracteristici periculoase (ex. urmărire)</string>
     <string name="force_touch_apps">Include ecran tactil</string>

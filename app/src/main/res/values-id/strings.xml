@@ -514,8 +514,6 @@
     <string name="repo_exists_add_mirror">Ini adalah salinan dari %1$s, tambahkan sebagai mirror?</string>
     <string name="menu_liberapay">Liberapay</string>
 
-    <string name="show_root_apps">Termasuk apl root</string>
-    <string name="show_root_apps_on">Tampilkan apl yg butuh akses root</string>
     <string name="show_anti_feature_apps">Termasuk apl anti-fitur</string>
     <string name="show_anti_feature_apps_on">Tampilkan apl yg butuh anti-fitur</string>
     <string name="force_touch_apps">Termasuk apl layar sentuh</string>

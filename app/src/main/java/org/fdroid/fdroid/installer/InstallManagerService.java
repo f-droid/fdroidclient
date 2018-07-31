@@ -6,7 +6,6 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
@@ -52,6 +51,8 @@ import java.io.IOException;
  * {@code {@link #stopSelf(int)}}, so {@code Intent}s are sometimes redelivered even
  * though they are no longer valid.  {@link #onStartCommand(Intent, int, int)} checks
  * first that the incoming {@code Intent} is not an invalid, redelivered {@code Intent}.
+ * {@link #isPendingInstall(String)} and other checks are used to check whether to
+ * process the redelivered {@code Intent} or not.
  * <p>
  * The canonical URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
@@ -95,7 +96,6 @@ public class InstallManagerService extends Service {
 
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager appUpdateStatusManager;
-    private BroadcastReceiver broadcastReceiver;
     private boolean running = false;
 
     /**
@@ -111,21 +111,6 @@ public class InstallManagerService extends Service {
         super.onCreate();
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getData() == null) return;
-                String packageName = intent.getData().getSchemeSpecificPart();
-                for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(packageName)) {
-                    appUpdateStatusManager.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
-                }
-            }
-        };
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        intentFilter.addDataScheme("package");
-        registerReceiver(broadcastReceiver, intentFilter);
         running = true;
         pendingInstalls = getPendingInstalls(this);
     }
@@ -140,7 +125,6 @@ public class InstallManagerService extends Service {
     @Override
     public void onDestroy() {
         running = false;
-        unregisterReceiver(broadcastReceiver);
         super.onDestroy();
     }
 
@@ -490,24 +474,11 @@ public class InstallManagerService extends Service {
     }
 
     /**
-     * Look up by {@code packageName} whether it is a Pending Install.
-     *
-     * @see #isPendingInstall(String)
-     */
-    public static boolean isPendingInstall(Context context, String packageName) {
-        if (pendingInstalls == null) {
-            pendingInstalls = getPendingInstalls(context);
-        }
-        return pendingInstalls.getAll().values().contains(packageName);
-    }
-
-    /**
      * Mark a given APK as in the process of being installed, with
      * the {@code urlString} of the download used as the unique ID,
      * and the file hash used to verify that things are the same.
      *
      * @see #isPendingInstall(String)
-     * @see #isPendingInstall(Context, String)
      */
     public static void putPendingInstall(Context context, String urlString, String packageName) {
         if (pendingInstalls == null) {

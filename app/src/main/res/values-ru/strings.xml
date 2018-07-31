@@ -526,8 +526,6 @@
     <string name="hide_on_long_search_press_summary">Длительное нажатие кнопки поиска скроет приложение</string>
 
 <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
-    <string name="show_root_apps">Включить root-приложения</string>
-    <string name="show_root_apps_on">Показать приложения, требующие привилегий root</string>
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
     <string name="show_anti_feature_apps">Включить приложения с сомнительным функционалом</string>

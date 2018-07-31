@@ -76,15 +76,12 @@
                 android:entryValues="@array/themeValues"/>
     </android.support.v7.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/appcompatibility">
+    <android.support.v7.preference.PreferenceCategory android:title="@string/appcompatibility"
+                                                      android:key="pref_category_appcompatibility">
         <SwitchPreference
                 android:title="@string/show_incompat_versions"
                 android:defaultValue="false"
                 android:key="incompatibleVersions"/>
-        <SwitchPreference
-                android:title="@string/show_root_apps"
-                android:defaultValue="true"
-                android:key="rooted"/>
         <SwitchPreference
                 android:title="@string/show_anti_feature_apps"
                 android:defaultValue="false"

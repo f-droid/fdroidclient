@@ -28,6 +28,7 @@ package org.fdroid.fdroid.views.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
@@ -65,7 +66,6 @@ public class PreferencesFragment extends PreferenceFragment
             Preferences.PREF_OVER_DATA,
             Preferences.PREF_UPDATE_INTERVAL,
             Preferences.PREF_UPDATE_NOTIFICATION_ENABLED,
-            Preferences.PREF_SHOW_ROOT_APPS,
             Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
@@ -157,11 +157,18 @@ public class PreferencesFragment extends PreferenceFragment
             languagePref.setEntries(languages.getAllNames());
             languagePref.setEntryValues(languages.getSupportedLocales());
         }
+
+        if (getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) {
+            PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_appcompatibility");
+            category.removePreference(findPreference(Preferences.PREF_FORCE_TOUCH_APPS));
+        }
     }
 
     private void checkSummary(String key, int resId) {
         Preference pref = findPreference(key);
-        pref.setSummary(resId);
+        if (pref != null) {
+            pref.setSummary(resId);
+        }
     }
 
     private void entrySummary(String key) {
@@ -247,10 +254,6 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_SHOW_INCOMPAT_VERSIONS:
                 checkSummary(key, R.string.show_incompat_versions_on);
-                break;
-
-            case Preferences.PREF_SHOW_ROOT_APPS:
-                checkSummary(key, R.string.show_root_apps_on);
                 break;
 
             case Preferences.PREF_SHOW_ANTI_FEATURE_APPS:

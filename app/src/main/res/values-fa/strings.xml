@@ -517,8 +517,6 @@
     <string name="antidisabledalgorithmlist">این کاره یک امضای امنیتی ضعیف دارد</string>
     <string name="antiknownvulnlist">این کاره یک آسیب‌پذیری امنیتی شناخته‌شده دارد</string>
 
-    <string name="show_root_apps">شامل کاره‌های ریشه‌ای</string>
-    <string name="show_root_apps_on">نمایش کاره‌هایی که نیاز به دسترسی ریشه دارند</string>
     <string name="show_anti_feature_apps">شامل کاره‌های ضدویژگی‌دار</string>
     <string name="show_anti_feature_apps_on">نمایش کاره‌هایی که نیاز به ضدویژگی دارند</string>
     <string name="force_touch_apps">شامل کاره‌های لمسی</string>

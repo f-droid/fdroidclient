@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.io.filefilter.RegexFileFilter;
-import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -1008,15 +1007,17 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         boolean canUpdate = hasUpdates();
         AppPrefs prefs = getPrefs(context);
         boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < suggestedVersionCode;
-        return canUpdate && wantsUpdate && !isFiltered();
+        return canUpdate && wantsUpdate && !isDisabledByAntiFeatures();
     }
 
     /**
-     * Whether the app is filtered or not based on AntiFeatures and root
-     * permission (set in the Settings page)
+     * @return if the given app should be filtered out based on the
+     * {@link Preferences#PREF_SHOW_ANTI_FEATURE_APPS Show Anti-Features Setting}
      */
-    public boolean isFiltered() {
-        return new AppFilter().filter(this);
+    public boolean isDisabledByAntiFeatures() {
+        return this.antiFeatures != null
+                && this.antiFeatures.length > 0
+                && !Preferences.get().showAppsWithAntiFeatures();
     }
 
     @Nullable

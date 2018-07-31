@@ -515,8 +515,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
-    <string name="show_root_apps">Inkluzivi ĉefuzantajn aplikaĵojn</string>
-    <string name="show_root_apps_on">Montri aplikaĵojn, kiuj postulas ĉefuzantan aliron (root)</string>
     <string name="show_anti_feature_apps">Inkluzivi aplikaĵojn kun fiebloj</string>
     <string name="show_anti_feature_apps_on">Montri aplikaĵojn, kiuj enhavas nedeziratajn eblojn</string>
     <string name="force_touch_apps">Inkluzivi tuŝekranajn aplikaĵojn</string>

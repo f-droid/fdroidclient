@@ -562,8 +562,6 @@
     <string name="menu_liberapay">Liberapay</string>
 
 <string name="warning_scaning_qr_code">Ваша камеры не падтрымлівае аўтафокус. Сканаванне кода можа быць абцяжаранае.</string>
-    <string name="show_root_apps">Паказваць root-прыкладанні</string>
-    <string name="show_root_apps_on">Паказваць прыкладанні, які патрабуюць root-прывілей</string>
     <string name="force_touch_apps">Паказваць прыкладанні для сэнсарнага экрана</string>
     <string name="force_touch_apps_on">Паказваць прыкладанні, якія патрабуюць сэнсарны экран незалежна ад наяўнасці апаратнай падтрымкі</string>
 
