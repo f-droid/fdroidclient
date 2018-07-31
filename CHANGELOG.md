@@ -1,3 +1,9 @@
+### 1.3 (2018-07-31)
+
+* large overhaul to make status updates more reliable
+
+* fixed many bugs around the wrong button showing
+
 ### 1.3-alpha5 (2018-07-21)
 
 * overhaul install button logic to avoid false presses
