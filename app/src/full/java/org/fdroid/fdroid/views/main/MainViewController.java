@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.fragments.PreferencesFragment;
+import org.fdroid.fdroid.views.PreferencesFragment;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 

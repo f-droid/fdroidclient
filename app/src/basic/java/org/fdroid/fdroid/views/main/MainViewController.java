@@ -25,7 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.widget.FrameLayout;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.fragments.PreferencesFragment;
+import org.fdroid.fdroid.views.PreferencesFragment;
 import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 
 /**
