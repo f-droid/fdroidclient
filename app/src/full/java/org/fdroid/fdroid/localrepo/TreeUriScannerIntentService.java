@@ -29,8 +29,9 @@ import android.support.v4.provider.DocumentFile;
 import android.util.Log;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.IndexUpdater;
+import org.fdroid.fdroid.IndexV1Updater;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -72,10 +73,12 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     public static void scan(Context context, Uri data) {
-        Intent intent = new Intent(context, TreeUriScannerIntentService.class);
-        intent.setAction(ACTION_SCAN_TREE_URI);
-        intent.setData(data);
-        context.startService(intent);
+        if (Preferences.get().isScanRemovableStorageEnabled()) {
+            Intent intent = new Intent(context, TreeUriScannerIntentService.class);
+            intent.setAction(ACTION_SCAN_TREE_URI);
+            intent.setData(data);
+            context.startService(intent);
+        }
     }
 
     @Override

@@ -92,6 +92,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
+    public static final String PREF_SCAN_REMOVABLE_STORAGE = "scanRemovableStorage";
     public static final String PREF_LANGUAGE = "language";
     public static final String PREF_USE_TOR = "useTor";
     public static final String PREF_ENABLE_PROXY = "enableProxy";
@@ -398,6 +399,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public String getLocalRepoName() {
         return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
+    }
+
+    public boolean isScanRemovableStorageEnabled() {
+        return preferences.getBoolean(PREF_SCAN_REMOVABLE_STORAGE, true);
     }
 
     public boolean isUpdateNotificationEnabled() {

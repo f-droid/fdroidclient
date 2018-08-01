@@ -30,8 +30,9 @@ import android.os.Environment;
 import android.os.Process;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.IndexUpdater;
+import org.fdroid.fdroid.IndexV1Updater;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
@@ -52,6 +53,11 @@ import java.util.List;
  * only ever allow for reading repos, never writing.  It also will not work
  * for removeable storage devices plugged in via USB, since do not show up as
  * "External Storage"
+ * <p>
+ * Scanning the removable storage requires that the user allowed it.  This
+ * requires both the {@link Preferences#isScanRemovableStorageEnabled()}
+ * and the {@link android.Manifest.permission#READ_EXTERNAL_STORAGE}
+ * permission to be enabled.
  *
  * @see TreeUriScannerIntentService TreeUri method for writing repos to be shared
  * @see <a href="https://stackoverflow.com/a/40201333">Universal way to write to external SD card on Android</a>
@@ -69,9 +75,11 @@ public class SDCardScannerService extends IntentService {
     }
 
     public static void scan(Context context) {
-        Intent intent = new Intent(context, SDCardScannerService.class);
-        intent.setAction(ACTION_SCAN);
-        context.startService(intent);
+        if (Preferences.get().isScanRemovableStorageEnabled()) {
+            Intent intent = new Intent(context, SDCardScannerService.class);
+            intent.setAction(ACTION_SCAN);
+            context.startService(intent);
+        }
     }
 
     @Override
