@@ -29,4 +29,9 @@ public class HidingManager {
     public static boolean isHidden(Context context) {
         return false;
     }
+
+    public static void showHideDialog(final Context context) {
+        throw new IllegalStateException("unimplemented");
+    }
+
 }

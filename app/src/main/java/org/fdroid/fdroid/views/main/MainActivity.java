@@ -115,9 +115,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         updatesBadge = new TextBadgeItem().hide(false);
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
+        bottomNavigation
+                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps));
         if (BuildConfig.FLAVOR.startsWith("full")) {
             bottomNavigation
-                    .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps))
                     .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
                     .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby));
         }
