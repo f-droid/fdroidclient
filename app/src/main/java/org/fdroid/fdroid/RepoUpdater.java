@@ -83,6 +83,9 @@ import java.util.jar.JarFile;
 public class RepoUpdater {
     private static final String TAG = "RepoUpdater";
 
+    public static final String SIGNED_FILE_NAME = "index.jar";
+    public static final String DATA_FILE_NAME = "index.xml";
+
     final String indexUrl;
 
     @NonNull
@@ -205,7 +208,7 @@ public class RepoUpdater {
             FDroidApp.disableBouncyCastleOnLollipop();
 
             JarFile jarFile = new JarFile(downloadedFile, true);
-            JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
+            JarEntry indexEntry = (JarEntry) jarFile.getEntry(RepoUpdater.DATA_FILE_NAME);
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
                     processIndexListener, repo.address, (int) indexEntry.getSize());
 
