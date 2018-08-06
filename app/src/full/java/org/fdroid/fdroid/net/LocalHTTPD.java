@@ -69,17 +69,6 @@ public class LocalHTTPD extends NanoHTTPD {
         return newUri;
     }
 
-    private void requestSwap(String repo) {
-        Utils.debugLog(TAG, "Received request to swap with " + repo);
-        Utils.debugLog(TAG, "Showing confirm screen to check whether that is okay with the user.");
-
-        Uri repoUri = Uri.parse(repo);
-        Intent intent = new Intent(context, SwapWorkflowActivity.class);
-        intent.setData(repoUri);
-        intent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
-        intent.putExtra(SwapWorkflowActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
     }
 
     @Override
@@ -111,7 +100,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     return newFixedLengthResponse(Response.Status.BAD_REQUEST, MIME_PLAINTEXT,
                             "Requires 'repo' parameter to be posted.");
                 }
-                requestSwap(session.getParms().get("repo"));
+                SwapWorkflowActivity.requestSwap(context, session.getParms().get("repo"));
                 return newFixedLengthResponse(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
         }
         return newFixedLengthResponse("");
