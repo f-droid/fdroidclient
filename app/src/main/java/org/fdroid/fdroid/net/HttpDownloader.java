@@ -53,7 +53,7 @@ import java.net.URL;
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
-    private static final String HEADER_FIELD_ETAG = "ETag";
+    static final String HEADER_FIELD_ETAG = "ETag";
 
     private final String username;
     private final String password;
