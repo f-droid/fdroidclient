@@ -167,6 +167,7 @@ public class HttpDownloader extends Downloader {
         if (isSwapUrl(sourceUrl)) {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
+            connection.setRequestProperty("Connection", "Close"); // avoid keep-alive
         } else {
             if (queryString != null) {
                 connection = NetCipher.getHttpURLConnection(new URL(urlString + "?" + queryString));
