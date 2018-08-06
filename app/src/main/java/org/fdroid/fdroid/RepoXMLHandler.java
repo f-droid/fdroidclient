@@ -22,7 +22,6 @@ package org.fdroid.fdroid;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -129,11 +128,11 @@ public class RepoXMLHandler extends DefaultHandler {
                     if (currentApkHashType == null || "md5".equals(currentApkHashType)) {
                         if (curapk.hash == null) {
                             curapk.hash = str;
-                            curapk.hashType = "SHA-256";
+                            curapk.hashType = "sha256";
                         }
                     } else if ("sha256".equals(currentApkHashType)) {
                         curapk.hash = str;
-                        curapk.hashType = "SHA-256";
+                        curapk.hashType = "sha256";
                     }
                     break;
                 case ApkTable.Cols.SIGNATURE:

@@ -240,7 +240,7 @@ public class InstallManagerService extends Service {
      * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
      */
     private void getObb(final String urlString, String obbUrlString,
-                        final File obbDestFile, final String sha256) {
+                        final File obbDestFile, final String hash) {
         if (obbDestFile == null || obbDestFile.exists() || TextUtils.isEmpty(obbUrlString)) {
             return;
         }
@@ -267,7 +267,7 @@ public class InstallManagerService extends Service {
                             + " to " + localApkUri);
 
                     try {
-                        if (Hasher.isFileMatchingHash(localFile, sha256, "SHA-256")) {
+                        if (Hasher.isFileMatchingHash(localFile, hash, "sha256")) {
                             Utils.debugLog(TAG, "Installing OBB " + localFile + " to " + obbDestFile);
                             FileUtils.forceMkdirParent(obbDestFile);
                             FileUtils.copyFile(localFile, obbDestFile);
@@ -280,7 +280,7 @@ public class InstallManagerService extends Service {
                                 }
                             }
                         } else {
-                            Utils.debugLog(TAG, localFile + " deleted, did not match hash: " + sha256);
+                            Utils.debugLog(TAG, localFile + " deleted, did not match hash: " + hash);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
