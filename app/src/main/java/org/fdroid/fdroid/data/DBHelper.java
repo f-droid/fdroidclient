@@ -257,16 +257,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
-        // Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added ones on the Manage Repos screen.
-        List<String> defaultRepos = loadAdditionalRepos();
-        List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
-        defaultRepos.addAll(internalRepos);
+        List<String> defaultRepos = DBHelper.loadDefaultRepos(context);
 
-        // Insert all the repos into the database
-        if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
-            throw new IllegalArgumentException(
-                    "At least one of the internally or externally loaded default repos does not have " + REPO_XML_ARG_COUNT + " entries.");
-        }
         for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
             insertRepo(
                     db,
@@ -282,23 +274,38 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    private static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
+        // Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added ones on the Manage Repos screen.
+        String packageName = context.getPackageName();
+        List<String> defaultRepos = DBHelper.loadAdditionalRepos(packageName);
+        List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        defaultRepos.addAll(internalRepos);
+
+        // Insert all the repos into the database
+        if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
+            throw new IllegalArgumentException(
+                    "At least one of the internally or externally loaded default repos does not have " + REPO_XML_ARG_COUNT + " entries.");
+        }
+
+        return defaultRepos;
+    }
+
     /*
     * Look for external repositories under { "/system", "/vendor", "/odm", "/oem" }
     * If ROOT is one of those paths and 'packageName' is the name of the package 
     * that contains this class, then we look under 'root'/etc/'packageName'/additional_repos.xml
     */
-    private List<String> loadAdditionalRepos() {
+    private static List<String> loadAdditionalRepos(String packageName) {
         // First, take the built-in repos.
         List<String> externalRepos = new LinkedList<>();
 
         // Second, take the external repos. We will later prioritize the repos according their order in the list externalRepos.
-        final String packageName = context.getPackageName();
         for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
             String additionalReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
             try {
                 File defaultReposFile = new File(additionalReposPath);
                 if (defaultReposFile.exists() && defaultReposFile.isFile()) {
-                    externalRepos.addAll(parseXmlRepos(defaultReposFile));
+                    externalRepos.addAll(DBHelper.parseXmlRepos(defaultReposFile));
                 }
             } catch (Exception e) {
                 Utils.debugLog(TAG, "Error loading " + additionalReposPath);
@@ -318,7 +325,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /*
     * Take an xml file in the same format as the internal default_repos.xml and parse it into a list of items.
     */
-    private List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
+    private static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
         List<String> defaultRepos = new LinkedList<>();
         InputStream xmlInputStream = null;
         xmlInputStream = new FileInputStream(defaultReposFile);
