@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
-import android.webkit.MimeTypeMap;
 import fi.iki.elonen.NanoHTTPD;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
@@ -40,6 +39,11 @@ public class LocalHTTPD extends NanoHTTPD {
         if (useHttps) {
             enableHTTPS();
         }
+        MIME_TYPES = new HashMap<>(); // ignore nanohttpd's list
+        MIME_TYPES.put("apk", "application/vnd.android.package-archive");
+        MIME_TYPES.put("html", "text/html");
+        MIME_TYPES.put("png", "image/png");
+        MIME_TYPES.put("xml", "application/xml");
     }
 
     /**
@@ -294,16 +298,6 @@ public class LocalHTTPD extends NanoHTTPD {
         Response res = newFixedLengthResponse(status, mimeType, message);
         res.addHeader("Accept-Ranges", "bytes");
         return res;
-    }
-
-    private static String getAndroidMimeTypeForFile(String uri) {
-        String type = null;
-        String extension = MimeTypeMap.getFileExtensionFromUrl(uri);
-        if (extension != null) {
-            MimeTypeMap mime = MimeTypeMap.getSingleton();
-            type = mime.getMimeTypeFromExtension(extension);
-        }
-        return type;
     }
 
     private String findIndexFileInDirectory(File directory) {
