@@ -577,4 +577,8 @@
     <string name="allow_push_requests_summary">Repozytorium metadane może zawierać żądania push do instalowania lub odinstalowywania aplikacji</string>
     <string name="antinosourcesince">Kod źródłowy nie jest już dostępny, nie są możliwe aktualizacje.</string>
 
+    <string name="send_install_history">Wyślij historię instalacji</string>
+    <string name="send_history_csv">%s zainstaluj historię jako plik CSV</string>
+    <string name="updates_disabled_by_settings">Wszystkie aktualizacje wyłączone przez ustawienia danych/WiFi</string>
+
     </resources>

@@ -547,4 +547,8 @@
     <string name="antinosourcesince">De broncode is niet langer beschikbaar, geen updates mogelijk.</string>
 
     <string name="share_repository">Deel bron</string>
+    <string name="send_install_history">Verzend installatiegeschiedenis</string>
+    <string name="send_history_csv">%s installatiegeschiedenis als CSV-bestand</string>
+    <string name="updates_disabled_by_settings">Alle updates uitgeschakeld door Data / WiFi-instellingen</string>
+
     </resources>
