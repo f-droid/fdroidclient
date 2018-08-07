@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -51,19 +50,16 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -103,7 +99,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SwapView currentView;
     private boolean hasPreparedLocalRepo;
-    private PrepareSwapRepo updateSwappableAppsTask;
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
@@ -504,12 +499,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // as we are starting over now.
         getService().swapWith(null);
 
-        if (!getService().isEnabled()) {
-            if (!LocalRepoManager.get(this).getIndexJar().exists()) {
-                Utils.debugLog(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
-                new PrepareInitialSwapRepo().execute();
-            }
-        }
+        LocalRepoService.create(this);
 
         inflateSwapView(R.layout.swap_start_swap);
     }
@@ -591,30 +581,34 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, BuildConfig.APPLICATION_ID);
     }
 
-    // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
-    // If the local repo is running, then we can ask it what apps it is swapping and compare with that.
-    // Otherwise, probably will need to scan the file system.
+    /**
+     * TODO: Figure out whether they have changed since last time LocalRepoService
+     * was run.  If the local repo is running, then we can ask it what apps it is
+     * swapping and compare with that. Otherwise, probably will need to scan the
+     * file system.
+     */
     public void onAppsSelected() {
-        if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
-            updateSwappableAppsTask = new PrepareSwapRepo(getService().getAppsToSwap());
-            updateSwappableAppsTask.execute();
+        if (hasPreparedLocalRepo) {
+            onLocalRepoPrepared();
+        } else {
+            LocalRepoService.create(this, getService().getAppsToSwap());
             getService().setCurrentView(R.layout.swap_connecting);
             inflateSwapView(R.layout.swap_connecting);
-        } else {
-            onLocalRepoPrepared();
         }
     }
 
     /**
      * Once the UpdateAsyncTask has finished preparing our repository index, we can
      * show the next screen to the user. This will be one of two things:
-     * * If we directly selected a peer to swap with initially, we will skip straight to getting
-     * the list of apps from that device.
-     * * Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
-     * then we want to show a QR code or NFC dialog.
+     * <ol>
+     * <li>If we directly selected a peer to swap with initially, we will skip straight to getting
+     * the list of apps from that device.</li>
+     * <li>Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
+     * then we want to show a QR code or NFC dialog.</li>
+     * </ol>
      */
     public void onLocalRepoPrepared() {
-        updateSwappableAppsTask = null;
+        // TODO ditch this, use a message from LocalRepoService.  Maybe?
         hasPreparedLocalRepo = true;
         if (getService().isConnectingWithPeer()) {
             startSwappingWithPeer();
@@ -637,6 +631,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // during the wifi qr code being shown too.
         boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
 
+        // TODO move all swap-specific preferences to a SharedPreferences instance for SwapWorkflowActivity
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             inflateSwapView(R.layout.swap_nfc);
             return true;
@@ -779,82 +774,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         service.getBluetoothSwap().startInBackground();  // TODO replace with Intent to SwapService
     }
 
-    class PrepareInitialSwapRepo extends PrepareSwapRepo {
-        PrepareInitialSwapRepo() {
-            super(new HashSet<>(Arrays.asList(new String[]{BuildConfig.APPLICATION_ID})));
-        }
-    }
-
-    class PrepareSwapRepo extends AsyncTask<Void, Void, Void> {
-
+    public class PrepareSwapRepo {
         public static final String ACTION = "PrepareSwapRepo.Action";
         public static final String EXTRA_MESSAGE = "PrepareSwapRepo.Status.Message";
         public static final String EXTRA_TYPE = "PrepareSwapRepo.Action.Type";
         public static final int TYPE_STATUS = 0;
         public static final int TYPE_COMPLETE = 1;
         public static final int TYPE_ERROR = 2;
-
-        @NonNull
-        protected final Set<String> selectedApps;
-
-        @NonNull
-        protected final Uri sharingUri;
-
-        @NonNull
-        protected final Context context;
-
-        PrepareSwapRepo(@NonNull Set<String> apps) {
-            context = SwapWorkflowActivity.this;
-            selectedApps = apps;
-            sharingUri = Utils.getSharingUri(FDroidApp.repo);
-        }
-
-        private void broadcast(int type) {
-            broadcast(type, null);
-        }
-
-        private void broadcast(int type, String message) {
-            Intent intent = new Intent(ACTION);
-            intent.putExtra(EXTRA_TYPE, type);
-            if (message != null) {
-                Utils.debugLog(TAG, "Preparing swap: " + message);
-                intent.putExtra(EXTRA_MESSAGE, message);
-            }
-            LocalBroadcastManager.getInstance(SwapWorkflowActivity.this).sendBroadcast(intent);
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                final LocalRepoManager lrm = LocalRepoManager.get(context);
-                broadcast(TYPE_STATUS, getString(R.string.deleting_repo));
-                lrm.deleteRepo();
-                for (String app : selectedApps) {
-                    broadcast(TYPE_STATUS, String.format(getString(R.string.adding_apks_format), app));
-                    lrm.addApp(context, app);
-                }
-                lrm.writeIndexPage(sharingUri.toString());
-                broadcast(TYPE_STATUS, getString(R.string.writing_index_jar));
-                lrm.writeIndexJar();
-                broadcast(TYPE_STATUS, getString(R.string.linking_apks));
-                lrm.copyApksToRepo();
-                broadcast(TYPE_STATUS, getString(R.string.copying_icons));
-                // run the icon copy without progress, its not a blocker
-                new Thread() {
-                    @Override
-                    public void run() {
-                        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
-                        lrm.copyIconsToRepo();
-                    }
-                }.start();
-
-                broadcast(TYPE_COMPLETE);
-            } catch (Exception e) {
-                broadcast(TYPE_ERROR);
-                Log.e(TAG, "", e);
-            }
-            return null;
-        }
     }
 
     /**

@@ -81,6 +81,9 @@
                 android:name=".localrepo.CacheSwapAppsService"
                 android:exported="false"/>
         <service
+                android:name=".localrepo.LocalRepoService"
+                android:exported="false"/>
+        <service
                 android:name=".localrepo.TreeUriScannerIntentService"
                 android:exported="false"/>
         <service

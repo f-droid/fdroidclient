@@ -21,6 +21,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.InstalledApp;
+import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -244,6 +246,10 @@ public final class LocalRepoManager {
      */
     public File getIndexJar() {
         return xmlIndexJar;
+    }
+
+    public File getWebRoot() {
+        return webRoot;
     }
 
     public void deleteRepo() {
