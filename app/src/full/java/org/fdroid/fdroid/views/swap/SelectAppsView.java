@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -32,14 +31,13 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 
-public class SelectAppsView extends ListView implements
-        SwapWorkflowActivity.InnerView,
+public class SelectAppsView extends SwapView implements
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
 
@@ -60,33 +58,31 @@ public class SelectAppsView extends ListView implements
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
-    }
-
     private SwapService getState() {
         return getActivity().getState();
     }
 
     private static final int LOADER_INSTALLED_APPS = 253341534;
 
+    private ListView listView;
     private AppListAdapter adapter;
     private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        adapter = new AppListAdapter(this, getContext(),
+        listView = findViewById(R.id.list);
+        adapter = new AppListAdapter(listView, getContext(),
                 getContext().getContentResolver().query(InstalledAppProvider.getContentUri(),
                         InstalledAppTable.Cols.ALL, null, null, null));
 
-        setAdapter(adapter);
-        setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listView.setAdapter(adapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_INSTALLED_APPS, null, this);
 
-        setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 toggleAppSelected(position);
             }
@@ -116,28 +112,6 @@ public class SelectAppsView extends ListView implements
 
         searchView.setOnQueryTextListener(this);
         return true;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_SELECT_APPS;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it
-        // so that it is, or so that this doesn't go back there.
-        return getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : SwapService.STEP_JOIN_WIFI;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_bright_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_choose_apps);
     }
 
     private void toggleAppSelected(int position) {
@@ -174,13 +148,13 @@ public class SelectAppsView extends ListView implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
 
-        for (int i = 0; i < getCount(); i++) {
-            Cursor c = (Cursor) getItemAtPosition(i);
+        for (int i = 0; i < listView.getCount(); i++) {
+            Cursor c = (Cursor) listView.getItemAtPosition(i);
             String packageName = c.getString(c.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
             getState().ensureFDroidSelected();
             for (String selected : getState().getAppsToSwap()) {
                 if (TextUtils.equals(packageName, selected)) {
-                    setItemChecked(i, true);
+                    listView.setItemChecked(i, true);
                 }
             }
         }

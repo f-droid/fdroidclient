@@ -2,6 +2,8 @@
 
 <org.fdroid.fdroid.views.swap.NfcView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:swap="http://schemas.android.com/apk/res-auto"
+        swap:toolbarTitle="@string/swap_nfc_title"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -3,6 +3,8 @@
 <org.fdroid.fdroid.views.swap.JoinWifiView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:swap="http://schemas.android.com/apk/res-auto"
+        swap:toolbarTitle="@string/swap_join_same_wifi"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

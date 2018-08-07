@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.util.AttributeSet;
@@ -11,12 +10,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 
-public class NfcView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
+public class NfcView extends SwapView {
 
     public NfcView(Context context) {
         super(context);
@@ -33,10 +31,6 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     @TargetApi(21)
     public NfcView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
@@ -60,30 +54,10 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                getActivity().showWifiQr();
+                getActivity().inflateInnerView(R.layout.swap_wifi_qr);
                 return true;
             }
         });
         return true;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_SHOW_NFC;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        return SwapService.STEP_JOIN_WIFI;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_nfc_title);
     }
 }

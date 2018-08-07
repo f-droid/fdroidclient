@@ -3,10 +3,13 @@
 <org.fdroid.fdroid.views.swap.SendFDroidView
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:swap="http://schemas.android.com/apk/res-auto"
+        swap:toolbarTitle="@string/swap_send_fdroid"
         android:background="@color/swap_blue"
         android:layout_height="match_parent"
         android:layout_width="wrap_content">
 
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
     <LinearLayout android:orientation="vertical"
                   android:gravity="center"
                   android:layout_width="wrap_content"
@@ -46,5 +49,5 @@
                 style="@style/SwapTheme.Wizard.QRScanWarningText"/>
 
     </LinearLayout>
-
+    </ScrollView>
 </org.fdroid.fdroid.views.swap.SendFDroidView>

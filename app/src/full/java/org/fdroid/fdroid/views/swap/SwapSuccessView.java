@@ -12,7 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -47,7 +46,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -55,8 +54,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SwapSuccessView extends ListView implements
-        SwapWorkflowActivity.InnerView,
+public class SwapSuccessView extends SwapView implements
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
 
@@ -75,10 +73,6 @@ public class SwapSuccessView extends ListView implements
     @TargetApi(21)
     public SwapSuccessView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     private static final int LOADER_SWAPABLE_APPS = 759283741;
@@ -102,8 +96,8 @@ public class SwapSuccessView extends ListView implements
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
                 AppProvider.getRepoUri(repo), AppMetadataTable.Cols.ALL, null, null, null));
-
-        setAdapter(adapter);
+        ListView listView = findViewById(R.id.list);
+        listView.setAdapter(adapter);
 
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_SWAPABLE_APPS, null, this);
@@ -161,26 +155,6 @@ public class SwapSuccessView extends ListView implements
 
         searchView.setOnQueryTextListener(this);
         return true;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_SWAP_SUCCESS;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        return SwapService.STEP_INTRO;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_bright_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_success);
     }
 
     @Override

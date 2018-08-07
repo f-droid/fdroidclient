@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.InitialLoadingView
+<org.fdroid.fdroid.localrepo.SwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:swap="http://schemas.android.com/apk/res-auto"
+        swap:toolbarTitle="@string/swap"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,4 +26,4 @@
             android:textColor="@android:color/white"
             android:layout_centerHorizontal="true"/>
 
-</org.fdroid.fdroid.views.swap.InitialLoadingView>
+</org.fdroid.fdroid.localrepo.SwapView>

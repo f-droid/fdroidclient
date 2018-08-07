@@ -7,6 +7,9 @@
 <org.fdroid.fdroid.views.swap.StartSwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:swap="http://schemas.android.com/apk/res-auto"
+        swap:toolbarColor="@color/swap_bright_blue"
+        swap:toolbarTitle="@string/swap_nearby"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

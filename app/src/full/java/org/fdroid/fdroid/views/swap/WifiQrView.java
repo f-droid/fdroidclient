@@ -7,31 +7,26 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
 import java.util.Locale;
 import java.util.Set;
 
-public class WifiQrView extends ScrollView implements SwapWorkflowActivity.InnerView {
+public class WifiQrView extends SwapView {
 
     private static final String TAG = "WifiQrView";
 
@@ -50,10 +45,6 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     @TargetApi(21)
     public WifiQrView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
@@ -96,32 +87,6 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         super.onDetachedFromWindow();
 
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(onWifiStateChanged);
-    }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        return false;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_WIFI_QR;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
-        return SwapService.STEP_JOIN_WIFI;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_scan_qr);
     }
 
     private void setUIFromWifi() {
