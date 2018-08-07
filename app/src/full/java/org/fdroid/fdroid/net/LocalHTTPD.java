@@ -47,6 +47,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
@@ -218,8 +219,32 @@ public class LocalHTTPD extends NanoHTTPD {
         return msg.toString();
     }
 
+    /**
+     * {@link Response#setKeepAlive(boolean)} alone does not seem to stop
+     * setting the {@code Connection} header to {@code keep-alive}, so also
+     * just directly set that header.
+     */
+    public static Response addResponseHeaders(Response response) {
+        response.setKeepAlive(false);
+        response.setGzipEncoding(false);
+        response.addHeader("Connection", "close");
+        response.addHeader("Content-Security-Policy",
+                "default-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline';");
+        return response;
+    }
+
+    public static Response newFixedLengthResponse(String msg) {
+        return addResponseHeaders(NanoHTTPD.newFixedLengthResponse(msg));
+    }
+
+    public static Response newFixedLengthResponse(Response.IStatus status, String mimeType,
+                                                  InputStream data, long totalBytes) {
+        return addResponseHeaders(NanoHTTPD.newFixedLengthResponse(status, mimeType, data, totalBytes));
+    }
+
     public static Response newFixedLengthResponse(IStatus status, String mimeType, String message) {
         Response response = NanoHTTPD.newFixedLengthResponse(status, mimeType, message);
+        addResponseHeaders(response);
         response.addHeader("Accept-Ranges", "bytes");
         return response;
     }
@@ -377,6 +402,7 @@ public class LocalHTTPD extends NanoHTTPD {
             // Change return code and add Content-Range header when skipping is
             // requested
             long fileLen = file.length();
+
             if (headerIfRangeMissingOrMatching && range != null && startFrom >= 0 && startFrom < fileLen) {
                 // range request that matches current etag
                 // and the startFrom of the range is satisfiable
@@ -437,12 +463,13 @@ public class LocalHTTPD extends NanoHTTPD {
             res = getForbiddenResponse("Reading file failed.");
         }
 
-        return res;
+        return addResponseHeaders(res);
     }
 
     private Response newFixedFileResponse(File file, String mime) throws FileNotFoundException {
         Response res;
         res = newFixedLengthResponse(Response.Status.OK, mime, new FileInputStream(file), (int) file.length());
+        addResponseHeaders(res);
         res.addHeader("Accept-Ranges", "bytes");
         return res;
     }
@@ -457,12 +484,5 @@ public class LocalHTTPD extends NanoHTTPD {
         } catch (LocalRepoKeyStore.InitException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-    protected Response addCORSHeaders(Map<String, String> queryHeaders, Response resp, String cors) {
-        resp.addHeader("Access-Control-Allow-Credentials", "false");
-        resp.addHeader("Access-Control-Allow-Methods", "GET, POST, HEAD");
-        // TODO add HTTP Content Security Policy headers
-        return resp;
     }
 }
