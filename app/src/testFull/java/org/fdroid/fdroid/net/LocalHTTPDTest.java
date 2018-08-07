@@ -125,8 +125,7 @@ public class LocalHTTPDTest {
 
     @Test
     public void doTest404() throws Exception {
-        URL url = new URL("http://localhost:8888/xxx/yyy.html");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        HttpURLConnection connection = getNoKeepAliveConnection("http://localhost:8888/xxx/yyy.html");
         connection.setReadTimeout(5000);
         connection.connect();
         Assert.assertEquals(404, connection.getResponseCode());
@@ -193,7 +192,7 @@ public class LocalHTTPDTest {
     }
 
     @Test
-    public void testHeadRequest() throws IOException {
+    public void testHeadRequest() throws IOException, InterruptedException {
         File indexFile = new File(webRoot, "index.html");
         IOUtils.copy(classLoader.getResourceAsStream("index.html"),
                 new FileOutputStream(indexFile));
@@ -212,6 +211,7 @@ public class LocalHTTPDTest {
 
         assertEquals(200, connection.getResponseCode());
         connection.disconnect();
+        Thread.sleep(100000);
     }
 
     @Test
@@ -340,9 +340,7 @@ public class LocalHTTPDTest {
     public void testRangeHeaderWithStartPositionOnly() throws IOException {
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("http://localhost:8888/testdir/test.html");
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestProperty("Connection", "close");
+            connection = getNoKeepAliveConnection("http://localhost:8888/testdir/test.html");
             connection.addRequestProperty("range", "bytes=10-");
             connection.setReadTimeout(5000);
             String responseString = IOUtils.toString(connection.getInputStream(), "UTF-8");
@@ -414,10 +412,8 @@ public class LocalHTTPDTest {
         while (status == -1) {
             System.out.println("testIfNoneMatchHeader connect attempt");
             try {
-                URL url = new URL("http://localhost:8888/testdir/test.html");
-                connection = (HttpURLConnection) url.openConnection();
+                connection = getNoKeepAliveConnection("http://localhost:8888/testdir/test.html");
                 connection.setRequestProperty("if-none-match", "*");
-                connection.setRequestProperty("Connection", "close");
                 connection.connect();
                 status = connection.getResponseCode();
             } finally {
@@ -445,5 +441,12 @@ public class LocalHTTPDTest {
                 connection.disconnect();
             }
         }
+    }
+
+    private HttpURLConnection getNoKeepAliveConnection(String urlString) throws IOException {
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("Connection", "Close"); // avoid keep-alive
+        return connection;
     }
 }
