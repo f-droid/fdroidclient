@@ -123,6 +123,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
 
+    public static void requestSwap(Context context, String repo) {
+        Uri repoUri = Uri.parse(repo);
+        Intent intent = new Intent(context, SwapWorkflowActivity.class);
+        intent.setData(repoUri);
+        intent.putExtra(EXTRA_CONFIRM, true);
+        intent.putExtra(EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override

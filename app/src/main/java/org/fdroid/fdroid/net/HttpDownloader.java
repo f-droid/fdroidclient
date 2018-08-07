@@ -53,7 +53,7 @@ import java.net.URL;
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
-    private static final String HEADER_FIELD_ETAG = "ETag";
+    static final String HEADER_FIELD_ETAG = "ETag";
 
     private final String username;
     private final String password;
@@ -167,6 +167,7 @@ public class HttpDownloader extends Downloader {
         if (isSwapUrl(sourceUrl)) {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
+            connection.setRequestProperty("Connection", "Close"); // avoid keep-alive
         } else {
             if (queryString != null) {
                 connection = NetCipher.getHttpURLConnection(new URL(urlString + "?" + queryString));

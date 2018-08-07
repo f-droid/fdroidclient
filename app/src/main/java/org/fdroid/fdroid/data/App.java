@@ -382,7 +382,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
         app.installedApk = new Apk();
         if (apkFile.canRead()) {
-            String hashType = "SHA-256";
+            String hashType = "sha256";
             String hash = Utils.getBinaryHash(apkFile, hashType);
             if (TextUtils.isEmpty(hash)) {
                 return null;

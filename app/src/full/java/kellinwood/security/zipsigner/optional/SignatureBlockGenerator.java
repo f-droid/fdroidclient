@@ -38,10 +38,10 @@ public class SignatureBlockGenerator {
 
             CMSSignedDataGenerator gen = new CMSSignedDataGenerator();
 
-            JcaContentSignerBuilder jcaContentSignerBuilder = new JcaContentSignerBuilder(keySet.getSignatureAlgorithm()).setProvider("SC");
+            JcaContentSignerBuilder jcaContentSignerBuilder = new JcaContentSignerBuilder(keySet.getSignatureAlgorithm()).setProvider("BC");
             ContentSigner sha1Signer = jcaContentSignerBuilder.build(keySet.getPrivateKey());
 
-            JcaDigestCalculatorProviderBuilder jcaDigestCalculatorProviderBuilder = new JcaDigestCalculatorProviderBuilder().setProvider("SC");
+            JcaDigestCalculatorProviderBuilder jcaDigestCalculatorProviderBuilder = new JcaDigestCalculatorProviderBuilder().setProvider("BC");
             DigestCalculatorProvider digestCalculatorProvider = jcaDigestCalculatorProviderBuilder.build();
 
             JcaSignerInfoGeneratorBuilder jcaSignerInfoGeneratorBuilder = new JcaSignerInfoGeneratorBuilder(digestCalculatorProvider);
