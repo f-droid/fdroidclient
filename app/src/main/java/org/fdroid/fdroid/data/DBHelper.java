@@ -274,7 +274,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    private static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
+    public static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
         // Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added ones on the Manage Repos screen.
         String packageName = context.getPackageName();
         List<String> defaultRepos = DBHelper.loadAdditionalRepos(packageName);
