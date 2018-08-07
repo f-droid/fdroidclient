@@ -1,3 +1,9 @@
+### 1.3.1 (2018-08-07)
+
+* big overhaul of core nearby/swap plumbing
+
+* TLSv1.3 support, when the device supports it
+
 ### 1.3 (2018-07-31)
 
 * large overhaul to make status updates more reliable
