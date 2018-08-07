@@ -276,6 +276,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        super.onDowngrade(db, oldVersion, newVersion);
+        resetTransient(context);
+    }
+
+    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         Utils.debugLog(TAG, "Upgrading database from v" + oldVersion + " v" + newVersion);
