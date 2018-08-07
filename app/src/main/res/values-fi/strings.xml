@@ -553,5 +553,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Nähdäksesi yhteensopimattomatkin versiot, käytä \"%1$s\" asetusta.</string>
     <string name="prompt_to_send_crash_reports">Pyydä lähettämään kaatumisraportteja</string>
     <string name="prompt_to_send_crash_reports_summary">Kerää tietoja kaatumisista ja pyydä lähettämään ne kehittäjälle</string>
-    <string name="install_history">Asennus historia</string>
+    <string name="install_history">Asennushistoria</string>
+    <string name="send_install_history">Lähetä asennushistoria</string>
+    <string name="send_history_csv">%s asenna historia CSV-tiedostona</string>
     </resources>

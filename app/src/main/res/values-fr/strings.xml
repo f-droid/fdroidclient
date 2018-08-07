@@ -558,4 +558,6 @@
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
     <string name="send_version_and_uuid_summary">Inclure dans cette version de l\'application un identifiant aléatoire et unique lors du téléchargement, qui prend effet au prochain redémarrage de l\'application.</string>
     <string name="share_repository">Partager le dépôt</string>
+    <string name="send_install_history">Envoyer l\'historique des installations</string>
+    <string name="allow_push_requests">Autoriser les dépôts à installer/désinstaller des applications</string>
     </resources>

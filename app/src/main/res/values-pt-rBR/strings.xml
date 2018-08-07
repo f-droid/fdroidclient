@@ -15,9 +15,7 @@
     <string name="notify">Mostras atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
-    <string name="system_installer_on">Usar extensão privilegiada do F-Droid para instalar, atualizar e remover
-        pacotes
-    </string>
+    <string name="system_installer_on">Usar Extensão Privilegiada para instalar, atualizar e remover pacotes</string>
     <string name="local_repo_name">Nome do seu Repositório Local</string>
     <string name="local_repo_name_summary">Título anunciado do seu repositório local: %s</string>
     <string name="local_repo_https_on">Usar conexão HTTPS:// criptografada para o repositório local</string>
@@ -116,21 +114,17 @@
     </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que
-        os aplicativos do mesmo não estarão mais disponíveis pelo F-Droid.
-
-        Nota: Todos
-        os aplicativos previamente instalados permanecerão no seu dispositivo.
-    </string>
+    <string name="repo_confirm_delete_body">Ao remover um repositório, os aplicativos fornecidos pelo mesmo não estarão mais disponíveis. 
+\n
+\nNota: Todos os aplicativos já instalados permanecerão no seu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s desativado.
 
         Você precisará
         reativar este repositório para instalar aplicativos a partir dele.
     </string>
-    <string name="repo_added">Repositório F-Droid %1$s salvo.</string>
-    <string name="repo_searching_address">Procurando por repositório F-Droid em
-        %1$s
-    </string>
+    <string name="repo_added">Repositório de pacotes %1$s salvo.</string>
+    <string name="repo_searching_address">Procurando por repositório de pacotes em
+\n%1$s</string>
     <string name="minsdk_or_later">%s ou posterior</string>
     <string name="up_to_maxsdk">Até %s</string>
     <string name="minsdk_up_to_maxsdk">De %1$s até %2$s</string>
@@ -354,9 +348,7 @@
     <string name="uninstalling">Desinstalando…</string>
 
     <string name="keep_install_history">Manter o histórico de instalação</string>
-    <string name="keep_install_history_summary">Armazenar um registro de todas as instalações e desinstalações do
-        F-Droid
-    </string>
+    <string name="keep_install_history_summary">Armazenar um registro privado de todas as instalações e desinstalações</string>
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
     <string name="update_auto_install_summary">Baixar e instalar atualizações em segundo plano</string>
     <string name="warning_no_internet">Não é possível atualizar, você está conectado à Internet?</string>
@@ -567,4 +559,19 @@
     <string name="antiknownvulnlist">Este aplicativo contém uma falha de segurança já conhecida</string>
 
     <string name="show_anti_feature_apps_on">Mostrar aplicativos que requerem anti-funcões</string>
+    <string name="prompt_to_send_crash_reports">Perguntar antes de enviar relatórios de falhas</string>
+    <string name="prompt_to_send_crash_reports_summary">Reunir dados sobre falhas e enviar pro desenvolvedor</string>
+    <string name="hide_all_notifications">Ocultar todas as notificações</string>
+    <string name="hide_all_notifications_summary">Não mostrar nenhuma ação na barra de estado nem no painel de notificações.</string>
+    <string name="send_install_history">Enviar histórico de instalações</string>
+    <string name="send_history_csv">Histórico de instalações de %s em arquivo CSV</string>
+    <string name="install_history">Histórico de instalações</string>
+    <string name="install_history_summary">Ver o registro privado de todas as instalações e desinstalações</string>
+    <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
+    <string name="send_version_and_uuid_summary">Enviar a versão do aplicativo e um ID gerado aleatoriamente ao baixar. Tem efeito após reiniciar o aplicativo.</string>
+    <string name="allow_push_requests">Repositórios permitidos para instalar/desinstalar aplicativos</string>
+    <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas por causa das configurações de Dados/WiFi</string>
+
+    <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponivel.</string>
+
     </resources>
