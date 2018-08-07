@@ -228,6 +228,9 @@ public class DBHelper extends SQLiteOpenHelper {
      * Only used for testing. Not quite sure how to mock a singleton variable like this.
      */
     public static void clearDbHelperSingleton() {
+        if (instance != null) {
+            instance.close();
+        }
         instance = null;
     }
 
