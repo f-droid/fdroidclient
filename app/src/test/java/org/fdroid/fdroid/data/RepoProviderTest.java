@@ -49,7 +49,6 @@ import static org.junit.Assert.assertNull;
 public class RepoProviderTest extends FDroidProviderTest {
 
     private static final String[] COLS = RepoTable.Cols.ALL;
-    private static final String TAG = "RepoProviderTest";
 
     @Test
     public void countEnabledRepos() {
@@ -193,8 +192,6 @@ public class RepoProviderTest extends FDroidProviderTest {
         */
         
         String packageName = context.getPackageName();
-        Utils.debugLog(TAG, "canAddAdditionalRepos; packageName: " + packageName);
-
         FileOutputStream outputStream = new FileOutputStream("/oem/etc/" + packageName + "/additional_repos.xml");
         outputStream.write(("<?xml version=\"1.0\" encoding=\"utf-8\"?>
                     <resources>
