@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -221,7 +222,7 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
+    public Cursor query(@NonNull Uri uri, String[] projection,
                         String customSelection, String[] selectionArgs, String sortOrder) {
         if (sortOrder == null) {
             sortOrder = Cols.APPLICATION_LABEL;
@@ -261,7 +262,7 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
 
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
@@ -279,7 +280,7 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
 
         if (MATCHER.match(uri) != CODE_LIST) {
             throw new UnsupportedOperationException("Insert not supported for " + uri + ".");
@@ -309,7 +310,7 @@ public class InstalledAppProvider extends FDroidProvider {
      * row, if one exists.  This just throws {@link UnsupportedOperationException}
      */
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("\"Update' not supported for installed appp provider."
                 + " Instead, you should insert, and it will overwrite the relevant rows if one exists.");
     }

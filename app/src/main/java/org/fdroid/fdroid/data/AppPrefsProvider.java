@@ -117,7 +117,7 @@ public class AppPrefsProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
+    public Cursor query(@NonNull Uri uri, String[] projection,
                         String customSelection, String[] selectionArgs, String sortOrder) {
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
@@ -137,19 +137,19 @@ public class AppPrefsProvider extends FDroidProvider {
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         db().insertOrThrow(getTableName(), null, values);
         getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
         return getAppUri(values.getAsString(Cols.PACKAGE_NAME));
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }

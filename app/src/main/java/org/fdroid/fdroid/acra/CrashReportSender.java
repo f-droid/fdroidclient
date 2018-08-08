@@ -22,8 +22,7 @@ public class CrashReportSender implements ReportSender {
         this.config = config;
     }
 
-    public void send(@NonNull Context context, @NonNull CrashReportData errorContent)
-            throws ReportSenderException {
+    public void send(@NonNull Context context, @NonNull CrashReportData errorContent) {
         Intent emailIntent = new Intent("android.intent.action.SENDTO");
         emailIntent.setData(Uri.fromParts("mailto", this.config.mailTo(), (String) null));
         emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
