@@ -228,6 +228,9 @@ public class DBHelper extends SQLiteOpenHelper {
      * Only used for testing. Not quite sure how to mock a singleton variable like this.
      */
     public static void clearDbHelperSingleton() {
+        if (instance != null) {
+            instance.close();
+        }
         instance = null;
     }
 
@@ -273,6 +276,12 @@ public class DBHelper extends SQLiteOpenHelper {
                     defaultRepos[offset + 7]  // pubkey
             );
         }
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        super.onDowngrade(db, oldVersion, newVersion);
+        resetTransient(context);
     }
 
     @Override
