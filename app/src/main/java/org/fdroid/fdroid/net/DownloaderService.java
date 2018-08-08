@@ -271,29 +271,31 @@ public class DownloaderService extends Service {
 
     /**
      * Add a URL to the download queue.
-     * <p/>
+     * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context   this app's {@link Context}
-     * @param urlString The URL to add to the download queue
+     * @param context         this app's {@link Context}
+     * @param mirrorUrlString The URL to add to the download queue
+     * @param repoId          the database ID number representing one repo
+     * @param urlString       the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String urlString, long repoId, String originalUrlString) {
-        if (TextUtils.isEmpty(urlString)) {
+    public static void queue(Context context, String mirrorUrlString, long repoId, String urlString) {
+        if (TextUtils.isEmpty(mirrorUrlString)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
+        Utils.debugLog(TAG, "Preparing " + mirrorUrlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(mirrorUrlString));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
-        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, originalUrlString);
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, urlString);
         context.startService(intent);
     }
 
     /**
      * Remove a URL to the download queue, even if it is currently downloading.
-     * <p/>
+     * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
      * @param context   this app's {@link Context}
