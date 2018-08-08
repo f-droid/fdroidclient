@@ -16,7 +16,7 @@ import static org.junit.Assert.fail;
 
 public class HttpDownloaderTest {
 
-    String[] urls = {
+    final String[] urls = {
             "https://en.wikipedia.org/wiki/Index.html",
             "https://mirrors.kernel.org/debian/dists/stable/Release",
             "https://f-droid.org/repo/index.jar",
