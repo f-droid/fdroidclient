@@ -38,6 +38,7 @@ import org.robolectric.annotation.Config;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -189,45 +190,50 @@ public class RepoProviderTest extends FDroidProviderTest {
             7) pubkey
         */
         String packageName = context.getPackageName();
-        FileOutputStream outputStream = new FileOutputStream("/oem/etc/" + packageName + "/additional_repos.xml");
-        outputStream.write(("<?xml version=\"1.0\" encoding=\"utf-8\"?>
-                    <resources>
-                        <string-array name=\"default_repos\">
+        String filepath = "/oem/etc/" + packageName + "/additional_repos.xml";
+        try {
+            FileOutputStream outputStream = new FileOutputStream(filepath);
+            outputStream.write(("<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                        + "<resources>"
+                            + "<string-array name=\"default_repos\">"
+                                +"<!-- name -->"
+                                +"<item>oem0Name</item>"
+                                +"<!-- address -->"
+                                +"<item>https://www.oem0.com/yeah/repo</item>"
+                                +"<!-- description -->"
+                                +"<item>I'm the first oem repo.</item>"
+                                +"<!-- version -->"
+                                +"<item>22</item>"
+                                +"<!-- enabled -->"
+                                +"<item>1</item>"
+                                +"<!-- push requests -->"
+                                +"<item>ignore</item>"
+                                +"<!-- pubkey -->"
+                                +"<item>fffff2313aaaaabcccc111</item>"
 
-                            <!-- name -->
-                            <item>oem0Name</item>
-                            <!-- address -->
-                            <item>https://www.oem0.com/yeah/repo</item>
-                            <!-- description -->
-                            <item>I'm the first oem repo.</item>
-                            <!-- version -->
-                            <item>22</item>
-                            <!-- enabled -->
-                            <item>1</item>
-                            <!-- push requests -->
-                            <item>ignore</item>
-                            <!-- pubkey -->
-                            <item>fffff2313aaaaabcccc111</item>
-
-                            <!-- name -->
-                            <item>oem1MyNameIs</item>
-                            <!-- address -->
-                            <item>https://www.mynameis.com/rapper/repo</item>
-                            <!-- description -->
-                            <item>Who is the first repo?</item>
-                            <!-- version -->
-                            <item>22</item>
-                            <!-- enabled -->
-                            <item>0</item>
-                            <!-- push requests -->
-                            <item>ignore</item>
-                            <!-- pubkey -->
-                            <item>ddddddd2313aaaaabcccc111</item>
-
-                        </string-array>
-                    </resources>"
-                    ).getBytes());
-        outputStream.close();
+                                +"<!-- name -->"
+                                +"<item>oem1MyNameIs</item>"
+                                +"<!-- address -->"
+                                +"<item>https://www.mynameis.com/rapper/repo</item>"
+                                +"<!-- description -->"
+                                +"<item>Who is the first repo?</item>"
+                                +"<!-- version -->"
+                                +"<item>22</item>"
+                                +"<!-- enabled -->"
+                                +"<item>0</item>"
+                                +"<!-- push requests -->"
+                                +"<item>ignore</item>"
+                                +"<!-- pubkey -->"
+                                +"<item>ddddddd2313aaaaabcccc111</item>"
+                            +"</string-array>"
+                        +"</resources>"
+                        ).getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            Utils.debugLog("RepoProviderTest::canAddAdditionalRepos()", "failed creating/writing file " + filepath);
+            Utils.debugLog("RepoProviderTest::canAddAdditionalRepos()", e.getMessage());
+            return;
+        }
 
         // Load the actual repos
         List<String> defaultRepos = DBHelper.loadDefaultRepos(context);
