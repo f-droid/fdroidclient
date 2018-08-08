@@ -82,7 +82,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     @NonNull
     @Override
     public MainViewController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MainViewController holder = createEmptyView();
+        MainViewController holder = createEmptyView(activity);
         switch (viewType) {
             case R.id.whats_new:
                 holder.bindWhatsNewView();
@@ -106,7 +106,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
         return holder;
     }
 
-    private MainViewController createEmptyView() {
+    static MainViewController createEmptyView(AppCompatActivity activity) {
         FrameLayout frame = new FrameLayout(activity);
         frame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
