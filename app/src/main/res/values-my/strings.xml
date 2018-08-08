@@ -188,12 +188,6 @@
     <string name="category_Time">အခ်ိန္</string>
     <string name="category_Writing">ေရးသားျခင္း</string>
 
-    <string name="requesting_root_access_body">Root ရယူျခင္းေတာင္းဆိုေနသည္…</string>
-    <string name="root_access_denied_title">Root ရယူမႈျငင္းဆိုခ့ဲသည္</string>
-    <string name="system_install_button_install">သြင္းမည္</string>
-    <string name="system_install_installing_rebooting">သြင္းေနသည္ ျပီးေတာ့ ျပန္လည္ စတင္ေနသည္</string>
-    <string name="system_install_warning">၄င္းသည္ ၁၀ စကၠန္႔ေလာက္ၾကာသည္</string>
-    <string name="system_uninstall_button">ျဖဳတ္ေနသည္</string>
     <string name="swap_join_same_wifi">သင့္သူငယ္ခ်င္းႏွင့္တူညီေသာ ဝိုင္ဖိုင္ကိုခ်ိတ္မည္</string>
     <string name="swap_no_wifi_network">ကြန္ရက္မရွိပါ</string>
     <string name="open_qr_code_scanner">က်ဴအာ စကန္နာကိုဖြင့္မည္</string>
@@ -253,7 +247,6 @@
     <string name="keep_install_history_summary">F-Droid အတွင်း သွင်းထားသည် နှင့် ဖြုတ်ထားသည့်မှတ်တမ်းတစ်ခုကို သိမ်းထားမည်</string>
     <string name="update_auto_install">အသစ်ထွက်ရှိမှုများကိုအလိုအလျောက်သွင်းမည်</string>
     <string name="update_auto_install_summary">အနောက်လုပ်ငန်းစဉ်များတွင် အသစ်ထွက်ရှိသော အက်ပ်စ်များကို ဒေါင်းပြီး ထည့်သွင်းမည်</string>
-    <string name="uninstall_system">အိတ်ရှ်တန်းရှင်းများကို အသစ်မွမ်းမံခြင်း၊ ဖြုတ်ခြင်းများပြုလုပ်မည်</string>
     <string name="app_details_donate_prompt_unknown_author">ရေးတဲ့သူတွေကို %1$s တန်ကော်ဖီတစ်ခွက်တော့တိုက်သင့်ပါတယ်!</string>
     <string name="app_version_x_available">ဗားရှင်း %1$s ထွက်ရှိပါသည်</string>
     <string name="app_version_x_installed">ဗားရှင်း %1$s</string>

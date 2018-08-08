@@ -139,11 +139,6 @@
     <string name="category_Science_Education">Wissenschaft &amp; Bildung</string>
     <string name="category_Security">Sicherheit</string>
     <string name="category_System">System</string>
-    <string name="requesting_root_access_body">Root-Zugriff wird angefordert …</string>
-    <string name="root_access_denied_title">Root-Zugriff verweigert</string>
-    <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff
-        für F-Droid verweigert.
-    </string>
     <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander
         halten.
     </string>
@@ -181,8 +176,6 @@
     <string name="category_Theming">Aussehen</string>
     <string name="category_Writing">Schreiben</string>
 
-    <string name="system_uninstall_button">Deinstallieren</string>
-
     <string name="newPerms">Neu</string>
     <string name="perms_new_perm_prefix">Neu:</string>
     <string name="interval_1h">Stündlich nach Aktualisierungen suchen</string>
@@ -208,8 +201,6 @@
 
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="uninstall_system">Rechteerweiterung aktualisieren oder deinstallieren</string>
-    <string name="uninstall_system_summary">Detailansicht öffnen, um die Rechteerweiterung zu aktualisieren oder deinstallieren</string>
     <string name="menu_settings">Optionen</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -221,14 +212,7 @@
     <string name="permissions">Berechtigungen</string>
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
-    <string name="system_install_denied_signature">Die Signatur der Erweiterung ist falsch! Bitte einen Fehlerbericht erstellen!</string>
     <string name="system_install_denied_permissions">Die Genehmigungen für die Sonderrechte der Erweiterung wurden nicht erteilt! Bitte einen Fehlerbericht erstellen!</string>
-    <string name="system_install_button_install">Installieren</string>
-    <string name="system_install_post_success">Rechteerweiterung für F-Droid erfolgreich installiert</string>
-    <string name="system_install_post_fail">Installation der F-Droid-Rechteerweiterung fehlgeschlagen</string>
-    <string name="system_install_installing_rebooting">Installation und Neustart läuft …</string>
-    <string name="system_install_warning">Das wird bis zu 10 Sekunden dauern.</string>
-    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend <b>neu gestartet</b>.</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
@@ -241,10 +225,6 @@
     <string name="swap_scanning_for_peers">Nach Leuten in der Nähe wird gesucht …</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="system_install_post_success_message">Die F-Droid-Rechteerweiterung wurde installiert. F-Droid wird dadurch die selbständige Installation, Aktualisierung und Entfernung von Anwendungen erlaubt.</string>
-    <string name="system_install_post_fail_message">Die Installation der F-Droid-Rechteerweiterung ist fehlgeschlagen. Diese Installationsmethode wird nicht durch alle Android-Distributionen unterstützt, bitte in der F-Droid-Fehlerdatenbank nach weiteren Informationen sehen.</string>
-    <string name="system_install_question">Möchten Sie die F-Droid-Rechteerweiterung installieren?</string>
-    <string name="system_uninstall">Möchten Sie die F-Droid-Rechteerweiterung deinstallieren?</string>
     <string name="swap_visible_bluetooth">Über Bluetooth sichtbar</string>
     <string name="swap_setting_up_bluetooth">Bluetooth wird eingestellt …</string>
     <string name="swap_not_visible_bluetooth">Über Bluetooth nicht sichtbar</string>
@@ -323,7 +303,6 @@
     <string name="keep_week">1 Woche</string>
     <string name="keep_month">1 Monat</string>
     <string name="keep_year">1 Jahr</string>
-    <string name="system_install_not_supported">Die Installation der F-Droid-Rechteerweiterung wird auf Android 5.1 oder höher derzeit nicht unterstützt.</string>
 
     <string name="keep_forever">Immer</string>
 

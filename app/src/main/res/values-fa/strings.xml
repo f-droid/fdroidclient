@@ -69,8 +69,6 @@
     <string name="notify">نمایش به روزرسانی های موجود</string>
     <string name="system_installer">افزونه مجاز</string>
     <string name="system_installer_on">استفاده از افزونهٔ مجاز برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
-    <string name="uninstall_system">به‌روز رسانی/حذف افزونهٔ ممتاز</string>
-    <string name="uninstall_system_summary">گشودن صفحهٔ جزییات افزونهٔ مجاز برای به‌روز رسانی/حذف آن</string>
     <string name="local_repo_name">نام مخزن محلّی شما</string>
     <string name="local_repo_name_summary">عنوان تبلیغاتی مخزن محلّی شما: %s</string>
     <string name="local_repo_https_on">استفاده از ارتباط رمز شدهٔ http برای مخزن محلّی</string>
@@ -178,13 +176,8 @@
     <string name="category_Time">زمان</string>
     <string name="category_Writing">نوشتن</string>
 
-    <string name="requesting_root_access_body">در حال درخواست دسترسی ریشه…</string>
     <string name="empty_can_update_app_list">تبریک!
 \nکاره‌هایتان به‌روزند.</string>
-
-    <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
-    <string name="root_access_denied_body">یا دستگاهاندرویدیتان روت شده نیست، یا درخواست روت برای اف‌دروید را رد کردید.</string>
-    <string name="system_uninstall_button">حذف نصب</string>
 
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
@@ -256,18 +249,7 @@
 \nبرنامه هایی روی دستگاهتان وجود دارند، ولی در اف‌دروید موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان برنامه هایتان را موجود ندارند یا باید به‌روز شوند.</string>
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
-    <string name="system_install_denied_signature">امضای افزونه اشتباه است! لطفاً یک گزارش خطا ایجاد کنید!</string>
     <string name="system_install_denied_permissions">دسترسی های مجاز به افزونه داده نشده است! لطفاً یک گزارش خطا ایجاد کنید!</string>
-    <string name="system_install_button_install">نصب</string>
-    <string name="system_install_post_success">افزونه ی مجاز اف‌دروید نصب شد</string>
-    <string name="system_install_post_fail">نصب افزونهٔ مجاز اف‌دروید ناموفق بود</string>
-    <string name="system_install_post_success_message">افزونه ی مجاز اف‌دروید با موفّقیت نصب شد. این کار به اف‌دروید اجازه می‌دهد برنامه ها را توسّط خودش نصب کرده، ارتفا دهد و حدف کند.</string>
-    <string name="system_install_post_fail_message">نصب افزونه ی مجاز اف‌دروید شکست خورد. روش نصب توسّط همهٔ توزیع‌های اندروید پشتیبانی نمی‌شود. لطفاً برای اطّلاعات بیش‌تر با ردیاب مشکل اف‌دروید مشاوره کنید.</string>
-    <string name="system_install_installing_rebooting">در حال نصب و راه‌انداری دوباره…</string>
-    <string name="system_install_question">می‌خواهید افزونهٔ مجاز اف‌دروید را نصب کنید؟</string>
-    <string name="system_install_warning">این کار بیش از ۱۰ ثانیه زمان می‌برد.</string>
-    <string name="system_install_warning_lollipop">این کار بیش از ۱۰ ثانیه زمان برده و پس از آن، افزاره <b>راه‌اندازی مجدّد</b> خواهد شد.</string>
-    <string name="system_uninstall">می‌خواهید افزونهٔ مجاز اف‌دروید را حذف کنید؟</string>
     <string name="swap_nfc_description">اگر دوستتان اف‌دروید دارد و NFC اش روشن است، دستگاه هایتان را با هم تماس بدهید.</string>
     <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکی از شما می‌تواند یک هاتسپات وای‌فای ایجاد کند.</string>
     <string name="swap_qr_isnt_for_swap">رمز QR ای که اسکن کردید، شبیه یک رمز تبادل نیست.</string>
@@ -307,8 +289,6 @@
     <string name="update_auto_download">دریافت خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_download_summary">به‌روز رسانی‌ها به صورت خودکار بارگیری شده و برای نصبشان آگاه می‌شوید</string>
     <string name="download_pending">در انتظار شروع بارگیری…</string>
-
-    <string name="system_install_not_supported">در حال حاضر نصب افزونهٔ مجاز اف‌دروید روی اندروید ۵.۱ یا بالاتر پشتیبانی نمی‌شود.</string>
 
     <string name="keep_hour">۱ ساعت</string>
     <string name="keep_day">۱ روز</string>

@@ -76,10 +76,6 @@
     <string name="category_Time">Kohë</string>
     <string name="category_Writing">Shkrim</string>
 
-    <string name="system_install_button_install">Instalo</string>
-    <string name="system_install_warning">Kjo zgjat deri në 10 sekonda.</string>
-    <string name="system_uninstall_button">Çinstalo</string>
-
     <string name="swap_welcome">Mirëserdhe në F-Droid!</string>
     <string name="swap_dont_show_again">Mos e shfaq më këtë</string>
     <string name="swap_people_nearby">Njerëz afër</string>
@@ -129,8 +125,6 @@
     <string name="notify_on">Njoftoje kur freskimet janë të mundshme</string>
     <string name="system_installer">Zgjerimi i Privilegjuar</string>
     <string name="system_installer_on">Përdore F-Droid Zgjerimin e Privilegjuar për instalim, përditshmëritë, dhe hiqjen e paketave</string>
-    <string name="uninstall_system">Freskoje/Çinstaloje Zgjerimin e Privilegjuar</string>
-    <string name="uninstall_system_summary">Hape ekranin e detajeve të Zgjerimit të Privilegjuar për përdishmërimin/uninstailimin e tij</string>
     <string name="local_repo_name">Emri i Depos Lokale</string>
     <string name="local_repo_name_summary">Titulli i reklamuar të depos suaj lokale %s</string>
     <string name="local_repo_https_on">Përdore encryptimin HTTPS:// për koneksionin për depon lokala</string>
@@ -297,10 +291,6 @@
 	<item quantity="other">Shiko të gjithë %d</item>
 </plurals>
 
-    <string name="system_install_post_fail">Instalimi i F-Droid Zgjatjes së Privilegjuar ka dështuar</string>
-    <string name="system_install_installing_rebooting">Instalimi dhe rebooting…</string>
-    <string name="system_install_question">A dëshironi të instaloni F-Droid Zgjerimin e Privilegjuar?</string>
-    <string name="system_install_warning_lollipop">Kjo zgjat deri në 10 sekonda dhe pastaj pajisja do të <b>restartohet</b>.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nuk ka Internet? Merrni aplikacione nga njerëzit pranë jush!</string>
     <string name="nearby_splash__find_people_button">Gjeni njerëz pranë meje</string>
     <string name="nearby_splash__both_parties_need_fdroid">Të dyja palët duhet %1$s për të përdorur afër.</string>

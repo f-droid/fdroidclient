@@ -178,14 +178,8 @@
 
     <string name="empty_search_available_app_list">Engin samsvarandi forrit tiltæk.</string>
 
-    <string name="requesting_root_access_body">Bið um rótaraðgang…</string>
-    <string name="root_access_denied_title">Rótaraðgangi var hafnað</string>
     <string name="install_error_unknown">Mistókst að setja inn vegna óþekktrar villu</string>
     <string name="uninstall_error_unknown">Mistókst að fjarlægja vegna óþekktrar villu</string>
-    <string name="system_install_button_install">Setja inn</string>
-    <string name="system_install_installing_rebooting">Set inn og endurræsi…</string>
-    <string name="system_install_warning">Þetta tekur allt að 10 sekúndum.</string>
-    <string name="system_uninstall_button">Fjarlægja</string>
     <string name="swap_nfc_title">Snertu til að býtta</string>
     <string name="swap">Skiptast á forritum</string>
     <string name="swap_success">Býttin heppnuðust!</string>
@@ -262,10 +256,6 @@
     <string name="system_installer_on">Nota forgangsviðbót F-Droid (privileged extension) til að setja upp, uppfæra og
         fjarlægja pakka
     </string>
-    <string name="uninstall_system">Uppfæra/Fjarlægja forgangsviðbót</string>
-    <string name="uninstall_system_summary">Opnaðu skjáinn með ítarupplýsingum um forgangsviðbótina til að
-        uppfæra/fjarlægja hana
-    </string>
     <string name="local_repo_name_summary">Útsent heiti staðværa hugbúnaðarsafnsins þíns: %s</string>
     <string name="local_repo_https_on">Nota dulritaða HTTPS:// tengingu fyrir staðvært hugbúnaðarsafn</string>
 
@@ -283,19 +273,6 @@
 
     <string name="system_install_denied_permissions">Forgangsheimildum hefur ekki verið úthlutað til viðbótarinnar!
         Sendu endilega inn villuskýrslu!
-    </string>
-    <string name="system_install_post_success">Setti upp F-Droid forgangsviðbótina</string>
-    <string name="system_install_post_fail">Innsetning á F-Droid forgangsviðbót mistókst</string>
-    <string name="system_install_post_success_message">F-Droid forgangsviðbótin hefur verið sett upp. Það gerir F-Droid
-        sjálfu kleift að setja upp, uppfæra og fjarlægja forrit.
-    </string>
-    <string name="system_install_post_fail_message">Innsetning á F-Droid forgangsviðbót mistókst. Uppsetningaraðferðin
-        er ekki studd á öllum Android dreifingum, skoðaðu villumeldingavef F-Droid til að finna nánari upplýsingar.
-    </string>
-    <string name="system_install_question">Ert þú viss um að þú viljir setja upp F-Droid forgagsviðbótina?</string>
-    <string name="system_uninstall">Ert þú viss um að þú viljir fjarlægja F-Droid forgagsviðbótina?</string>
-    <string name="system_install_not_supported">Innsetning á F-Droid forgangsviðbótinni er ekki ennþá studd á Android
-        5.1 eða nýrri.
     </string>
 
     <string name="SignatureMismatch">Nýja útgáfan er undirrituð með öðrum lykli en gamla útgáfan. Til að setja inn nýju
@@ -345,12 +322,6 @@
         uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.
     </string>
     <string name="empty_can_update_app_list">Til hamingju!\nÖll forritin þín eru af nýjustu útgáfu.</string>
-    <string name="root_access_denied_body">Annað hvort er Android tækið þitt ekki með rótaraðgang (rooted) eða að þú
-        hefur neitað F-Droid um rótarheimildir.
-    </string>
-    <string name="system_install_denied_signature">Undirritun viðbótarinnar er röng! Sendu endilega inn villuskýrslu!
-    </string>
-    <string name="system_install_warning_lollipop">Þetta tekur allt að 10 sekúndum og tækið verður <b>endurræst</b> í kjölfarið.</string>
     <string name="swap_nfc_description">Ef vinur þinn er með F-Droid og kveikt á NFC, látið þá tækin ykkar snertast.
     </string>
     <string name="swap_join_same_wifi_desc">Til að gera býtti í gegnum þráðlaust net, gakktu úr skugga um að þið séuð á

@@ -83,8 +83,6 @@
     <string name="category_Time">ۋاقىت</string>
     <string name="category_Writing">يېزىقچىلىق</string>
 
-    <string name="system_install_button_install">ئورنىتىش</string>
-    <string name="system_uninstall_button">يۇيىۋېتىش</string>
     <string name="swap_welcome">ف-درويدقا خۇش كەلدىڭىز!</string>
     <string name="swap_dont_show_again">بۇنى تەكرار كۆرسەتمە</string>
     <string name="newPerms">يېڭى</string>
@@ -140,7 +138,6 @@
     <string name="notify_on">يېڭىلانمىلارغا ئېرىشكىلى بولسا ئۇقتۇرۇش بېرىش</string>
     <string name="system_installer">ئالاھىدە ھوقۇقلۇق كېڭەيتمەلەر</string>
     <string name="system_installer_on">ئالاھىدە ھوقۇقلۇق كېڭەيتمەلەرنى ئىشلىتىپ بوغچىلارنى ئورنىتىش،يېڭىلاش،ۋە يۇيىۋېتىش</string>
-    <string name="uninstall_system">ئالاھىدە ھوقۇقلۇق كېڭەيتمەلەرنى يېڭىلا\\يۇيىۋەت</string>
     <string name="local_repo_name">يەرلىك ئامبىرىڭىزنىڭ ئىسمى</string>
     <string name="local_repo_name_summary">يەرلىك ئامبىرىڭىزنىڭ سىرتقا قارىتا ئىسمى: %s</string>
     <string name="local_repo_https_on">يەرلىك ئامبار ئۈچۈن مەخپىيلەشتۈرۈلگەن HTTPS:// ئۇلىنىشىنى ئىشلىتىڭ</string>

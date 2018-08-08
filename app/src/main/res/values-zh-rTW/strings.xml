@@ -131,9 +131,6 @@
     <string name="category_Sports_Health">運動與健康</string>
     <string name="category_System">系統</string>
     <string name="category_Time">時間</string>
-    <string name="system_install_button_install">安裝</string>
-    <string name="system_install_installing_rebooting">正在安裝和重新啟動…</string>
-    <string name="system_uninstall_button">解除安裝</string>
 
     <string name="open_qr_code_scanner">開啟 QR 碼掃描器</string>
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
@@ -198,7 +195,6 @@
     <string name="status_inserting_apps">正在儲存應用程式的詳細資料</string>
     <string name="unsigned">未簽署</string>
     <string name="repo_url">網址</string>
-    <string name="root_access_denied_title">Root 權限被拒絕</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="swap_join_this_hotspot">幫助您的朋友加入您的熱點</string>
     <string name="swap">交換應用程式</string>
@@ -220,8 +216,6 @@
     <string name="download_error">下載失敗！</string>
 
     <string name="system_installer_on">使用特權擴充套件安裝、更新和移除應用程式</string>
-    <string name="uninstall_system">更新或解除安裝特權擴充套件</string>
-    <string name="uninstall_system_summary">開啟特權擴充套件的詳細資料來更新或解除安裝</string>
     <string name="repo_error_empty_username">使用者名稱空白，憑證未更改</string>
 
     <string name="repo_exists_enable">%1$s 已安裝，請確認您要重新啟用它。</string>
@@ -258,23 +252,12 @@
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
     <string name="repo_searching_address">正在 %1$s 查看封裝的軟體庫</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的本地軟體庫不在同一個 Wi-Fi 網路上！請試著加入此網路：%s</string>
-    <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。
 \n
 \n在您的裝置上有應用程式，但 F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的軟體庫，或是軟體庫真的沒有您可用的應用程式。</string>
-    <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
-    <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！
-</string>
     <string name="system_install_denied_permissions">擴充未被授予特權權限！請建立一份錯誤報告！
 </string>
-    <string name="system_install_post_success">F-Droid 特權擴充已安裝</string>
-    <string name="system_install_post_fail">安裝的 F-Droid 特權擴充失敗</string>
-    <string name="system_install_question">您想要安裝 F-Droid 特權擴充嗎？</string>
-    <string name="system_uninstall">您想要解除安裝 F-Droid 特權擴充嗎？</string>
-    <string name="system_install_not_supported">目前 FDroid 還不支援在 Android5.1 或更高的版本安裝特權擴充。</string>
 
-    <string name="system_install_warning">這需要 10 秒以上的時間。</string>
-    <string name="system_install_warning_lollipop">這需要 10 秒以上的時間而且該裝置將在之後<b>重新開機</b>。</string>
     <string name="swap_nfc_description">如果您的朋友有 F-Droid 並且已開啟NFC，那把你們的裝置相互貼近。</string>
     <string name="swap_join_same_wifi">將您朋友加入相同的 Wi-Fi</string>
     <string name="swap_no_wifi_network">尚沒有網路</string>
@@ -289,10 +272,6 @@
     <string name="swap_visible_wifi">經由 Wi-Fi 可看見</string>
     <string name="swap_not_visible_wifi">經由 Wi-Fi 不可看見</string>
     <string name="swap_connecting">正在連線</string>
-    <string name="system_install_post_success_message">F-Droid 特權擴充已安裝。這允許 F-Droid 自行安裝、更新以及解除安裝應用程式。</string>
-    <string name="system_install_post_fail_message">F-Droid 特權擴充安裝失敗。此安裝方式並不支援所有發行的 Android 版本，請查閱 F-Droid 的 bug
-        追蹤以取得詳細資訊。
-    </string>
     <string name="keep_forever">永遠</string>
 
     <string name="keep_hour">一小時</string>

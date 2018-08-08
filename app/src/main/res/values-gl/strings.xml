@@ -67,7 +67,6 @@
     <string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar
         paquetes
     </string>
-    <string name="uninstall_system">Actualizar/Desinstalar Privileged Extension</string>
     <string name="local_repo_name">Nome do teu repositorio local</string>
     <string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
 
@@ -161,13 +160,6 @@
     <string name="category_Writing">Escrita</string>
 
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
-    <string name="system_install_button_install">Instalar</string>
-    <string name="system_install_post_fail">Fallou a instalación de F-Droid Privileged Extension</string>
-    <string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
-    <string name="system_install_warning">Levará máis de 10 segundos.</string>
-    <string name="system_install_warning_lollipop">Levará arredor de 10 segundos e o dispositivo será <b>reiniciado</b> a continuación.</string>
-    <string name="system_uninstall">Desexas desinstalar F-Droid Privileged Extension?</string>
-    <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca para intercambiar</string>
     <string name="swap">Intercambiar aplicativos</string>
@@ -208,9 +200,6 @@
     <string name="theme_dark">Oscuro</string>
     <string name="theme_night">Nocturno</string>
     <string name="unstable_updates_summary">Suxire actualizacións para versións inestables</string>
-    <string name="uninstall_system_summary">Abre a pantalla de detalles da Privileged Extension para
-        actualizala/desinstalala
-    </string>
     <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
 
     <string name="proxy_host">Servidor Proxy</string>
@@ -248,19 +237,10 @@
     </string>
     <string name="empty_can_update_app_list">Parabéns!\nTodas as súas apps están actualizadas.</string>
 
-    <string name="requesting_root_access_body">Pedindo acceso root…</string>
-    <string name="root_access_denied_title">Acceso root denegado</string>
-    <string name="root_access_denied_body">Pode que o teu dispositivo Android non esté rooteado ou que denegases o
-        acceso root para F-Droid.
-    </string>
     <string name="install_error_unknown">Fallou a instalación debido a un error descoñecido</string>
-    <string name="system_install_denied_signature">A firma da extensión é errónea! Por favor, crea unha incidencia!
-    </string>
     <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantizados para a
         extensión! Por favor, crea unha incidencia!
     </string>
-    <string name="system_install_post_success">A Extensión Privilexiada de F-Droid foi instalada</string>
-    <string name="system_install_question">Desexas instalar F-Droid Privileged Extension?</string>
     <string name="swap_nfc_description">Se o seu amigo ten F-Droid e o NFC activado, achegade os dispositivos.</string>
     <string name="swap_join_same_wifi">Únete á mesma rede Wi-Fi que o teu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, asegúrate de estar na mesma rede. Se non
@@ -299,12 +279,7 @@
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-    <string name="system_install_post_success_message">A Extensión Privilexiada de F-Droid Privileged Extension está instalada. Isto permite ao F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
-    <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de
-        instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros
-        de F-Droid para máis información.
-    </string>
-<string name="menu_settings">Preferencias</string>
+    <string name="menu_settings">Preferencias</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Veciñanza</string>
@@ -475,8 +450,6 @@
     <string name="latest__empty_state__no_enabled_repos">Unha vez que habilite e actualice un repositorio, as aplicacións máis recentes serán amosadas aquí</string>
 
     <string name="empty_search_available_app_list">Nengún aplicativo coincidente disponíbel.</string>
-
-    <string name="system_install_not_supported">Polo de agora non é posíbel instalar a Extensión Privilexiada de F-Droid en sistemas Android &gt; 5.1.</string>
 
     <plurals name="details_last_update_weeks">
         <item quantity="one">Actualizado hai %1$d semana</item>

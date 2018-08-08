@@ -132,9 +132,6 @@
     <string name="category_Science_Education">科学と教育</string>
     <string name="category_Security">セキュリティ</string>
     <string name="category_System">システム</string>
-    <string name="requesting_root_access_body">root権限の要求中</string>
-    <string name="root_access_denied_title">rootへのアクセスが拒否されました</string>
-    <string name="root_access_denied_body">この端末はroot化されていないか、F-Droidのrootへのアクセスが拒否されました｡</string>
     <string name="swap_nfc_description">友だちがF-DroidとNFCを持っているなら、一緒にお使いの端末をタッチしてください。</string>
     <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
     <string name="swap">アプリの交換</string>
@@ -143,8 +140,6 @@
     <string name="open_qr_code_scanner">QRコードスキャナーを開く</string>
     <string name="swap_welcome">F-Droidへようこそ！</string>
     <string name="swap_confirm_connect">今すぐ%1$sからアプリを取得しますか？</string>
-    <string name="uninstall_system">特権拡張機能をインストール、またはアンインストール</string>
-    <string name="uninstall_system_summary">特権拡張機能の詳細画面を開いて、アプリをインストール、またはアンインストールします</string>
     <string name="app_incompatible">互換性がありません</string>
     <string name="links">リンク</string>
 
@@ -171,14 +166,6 @@
 
     <string name="install_error_unknown">不明なエラーのためインストールに失敗しました</string>
     <string name="uninstall_error_unknown">不明なエラーのためアンインストールに失敗しました</string>
-    <string name="system_install_post_success">F-Droidの特権拡張機能をインストールしました</string>
-    <string name="system_install_post_fail">F-Droidの特権拡張機能のインストールに失敗しました</string>
-    <string name="system_install_post_success_message">F-Droid特権拡張機能はインストール済みです。これによりF-Droidは独自にアプリをインストール、更新、アンインストールすることができます。</string>
-    <string name="system_install_post_fail_message">F-Droidの特権拡張機能のインストールに失敗しました。すべてのAndroidでこのインストール方法が使用できる訳ではありません。詳細については、F-Droidのバグトラッカーを参照してください。</string>
-    <string name="system_install_question">F-Droidの特権拡張機能をインストールしてもよろしいですか？</string>
-    <string name="system_install_warning_lollipop">これには約10秒程かかり、その後端末が<b>再起動</b> されます｡</string>
-    <string name="system_uninstall">F-Droidの特権拡張機能をアンインストールしてもよろしいですか？</string>
-    <string name="system_uninstall_button">アンインストール</string>
 
     <string name="swap_success">正常に交換しました！</string>
     <string name="swap_active_hotspot">%1$s(自分のホットスポット)</string>
@@ -256,11 +243,7 @@
 
     <string name="repo_details">リポジトリ</string>
     <string name="repo_url">アドレス</string>
-    <string name="system_install_denied_signature">拡張機能の署名が間違っています！バグレポートを送ってください！</string>
     <string name="system_install_denied_permissions">特権が拡張機能に付与されていません！バグレポートを送ってください！</string>
-    <string name="system_install_button_install">インストール</string>
-    <string name="system_install_installing_rebooting">インストール、および再起動中</string>
-    <string name="system_install_warning">これには、約10秒程かかります｡</string>
     <string name="more">詳細を表示</string>
     <string name="less">詳細を隠す</string>
 
@@ -294,8 +277,6 @@
     <string name="update_auto_download">アプリの自動更新</string>
     <string name="update_auto_download_summary">自動的にアップデートをダウンロードして、インストール通知をします</string>
     <string name="download_pending">ダウンロードの開始を待っています</string>
-
-    <string name="system_install_not_supported">F-Droidの特権拡張機能のインストールは、現在Android 5.1以降でサポートされていません。</string>
 
     <string name="keep_hour">1時間</string>
     <string name="keep_day">1日</string>

@@ -35,7 +35,6 @@
     <string name="category_Time">Akud</string>
     <string name="category_Writing">Tira</string>
 
-    <string name="system_install_button_install">Sbedd</string>
     <string name="newPerms">Amaynut</string>
     <string name="notification_action_update">Mucceḍ</string>
     <string name="notification_action_cancel">Sefsex</string>
@@ -171,7 +170,6 @@
     <string name="status_inserting_apps">Rnu tazmilt i usnas</string>
     <string name="theme_night">Iḍ</string>
 
-    <string name="root_access_denied_title">Anekcum s uẓar yegdel</string>
     <string name="app_name">F-Droid</string>
 
     <string name="menu_uninstall">Kkes</string>
@@ -181,7 +179,6 @@
     <string name="category_Connectivity">Tuqqniwt</string>
     <string name="category_Money">Tadrimt</string>
     <string name="category_Science_Education">Tussna &amp; Usegmi</string>
-    <string name="system_uninstall_button">Kkes</string>
     <string name="swap_welcome">Ansuf γer F-Droid !</string>
     <string name="swap_dont_show_again">Ur d-skan ara tikkelt-nniḍen</string>
     <string name="app_list__name__downloading_in_progress">Asider n %1$s</string>
@@ -199,7 +196,6 @@
     <string name="keep_install_history">Ḥrez amazray n usebded</string>
     <string name="notify">Sken ileqman yellan</string>
     <string name="system_installer">Isiγzaf Yettwasirgen</string>
-    <string name="uninstall_system">Leqqem/Kkes asiγzef yettwasirgen</string>
     <string name="local_repo_name">Isem n ukufi-ik adigan</string>
     <string name="local_repo_https_on">Seqdec tuqqna HTTPS:// tawgelhant i ukufi adigan</string>
 

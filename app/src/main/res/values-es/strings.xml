@@ -143,9 +143,6 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguridad</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">Solicitando acceso administrativo…</string>
-    <string name="root_access_denied_title">Acceso administrativo («root») denegado</string>
-    <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso administrativo a F-Droid.</string>
     <string name="swap_nfc_description">Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
     <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
     <string name="swap">Intercambiar aplicaciones</string>
@@ -161,10 +158,6 @@
     <string name="links">Enlaces</string>
 
     <string name="back">Volver</string>
-    <string name="uninstall_system">Actualiza/Desinstala la extensión con permisos de sistema</string>
-    <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión con permisos de sistema para
-        actualizarla/desinstalarla
-    </string>
     <string name="bad_fingerprint">Huella digital incorrecta</string>
     <string name="invalid_url">No es una URL válida.</string>
     <string name="menu_changelog">Historial de cambios</string>
@@ -192,14 +185,6 @@
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
-    <string name="system_install_post_success">La extensión privilegiada de F-Droid se ha instalado</string>
-    <string name="system_install_post_fail">Fallo en la instalación de la extensión de F-Droid con permisos de sistema
-    </string>
-    <string name="system_install_post_success_message">Se ha instalado la extensión privilegiada de F-Droid. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
-    <string name="system_install_question">¿Deseas instalar la extensión de F-Droid con permisos de sistema?</string>
-    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo se <b>reiniciará</b>.</string>
-    <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
-    <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Tocar para intercambiar</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verificad que estáis en la misma red. Si no tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.</string>
@@ -261,10 +246,6 @@
     <string name="theme_dark">Oscuro</string>
     <string name="unstable_updates">Actualizaciones inestables</string>
     <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
-    <string name="system_install_post_fail_message">La instalación de la extensión de F-Droid con permisos de sistema ha
-        fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor,
-        consulta el sistema de gestión de incidencias de F-Droid para más información.
-    </string>
     <string name="install_confirm_update_system">¿Quieres instalar una actualización de esta aplicación integrada? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
     <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización para esta aplicación integrada? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
@@ -279,12 +260,6 @@
     <string name="permissions">Permisos</string>
     <string name="repo_details">Repositorio</string>
     <string name="repo_url">Dirección</string>
-    <string name="system_install_denied_signature">¡La firma de la extensión es incorrecta! ¡Por favor, informa sobre
-        este fallo!
-    </string>
-    <string name="system_install_button_install">Instalar</string>
-    <string name="system_install_installing_rebooting">Instalando y reiniciando…</string>
-    <string name="system_install_warning">Esto tardará unos 10 segundos.</string>
     <string name="download_error">¡Descarga fallida!</string>
 
     <string name="theme_night">Noche</string>
@@ -323,10 +298,6 @@
         instalarlas
     </string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
-
-    <string name="system_install_not_supported">La instalación de la extensión con permisos de sistema de F-Droid no
-        está actualmente disponible para Android 5.1 o superiores.
-    </string>
 
     <string name="keep_day">1 día</string>
     <string name="keep_week">1 semana</string>

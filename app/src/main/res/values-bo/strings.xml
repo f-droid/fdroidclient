@@ -38,8 +38,6 @@
     <string name="category_Time">དུས་ཚོད།</string>
     <string name="category_Writing">འབྲི་བཞིན་པ།</string>
 
-    <string name="system_install_button_install">འགྲིག་བཅུག</string>
-    <string name="system_uninstall_button">འགྲིག་བཅུག་ཕྱིར་འཐེན།</string>
     <string name="swap_welcome">ཨེཕ་རོཌ་ཕེབས་པར་དགའ་བསུ་ཞུ།!</string>
     <string name="swap_dont_show_again">འདི་ཡང་སྐྱར་མ་སྟོན་རོགས།</string>
     <string name="newPerms">གསར་པ།</string>
@@ -93,8 +91,6 @@
     <string name="notify_on">གལ་སྲིད་གསར་བསྒྱུར་རིགས་ཡོད་ན་བརྡ་ལན་སྟོན་རོགས།</string>
     <string name="system_installer">ཁེ་ཕན་འཕར་མ།</string>
     <string name="system_installer_on">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་བེད་སྤྱོད་བྱས་ཏེ་འགྲིག་བཅུག་དང་། གསར་བསྒྱུར། ཐུམ་སྒྲིལ་མེད་པ་བཟོས།</string>
-    <string name="uninstall_system">ཁེ་ཕན་འཕཪ་མ་གསར་བསྒྱར།/འགྲིག་བཅུག་ཕྱིར་འཐེན།</string>
-    <string name="uninstall_system_summary">གསར་བསྒྱུར་དང་/ཕྱིར་འཐེན་གྱི་ཆེད་དུ་དྲྭ་ཤེལ་གྱི་ཁེ་ཕན་འཕར་མ་ཞིབ་ཕྲ་དེ་སྒོ་ཕྱེས།</string>
     <string name="local_repo_name">ཁྱེད་རང་གི་རཱེ་པ་བསྟི་གནས་ཀྱི་མིང་།</string>
     <string name="local_repo_name_summary">ཁྱེད་རང་གི་རཱེ་པོ་བསྟི་གནས་ཀྱི་ཁྱབ་བསྒྲགས་འགོ་བརྗོད།:%s</string>
     <string name="local_repo_https_on">HTTPS གསང་སྡོམ་བེད་སྤྱོད་://རཱེ་པོ་བསྟི་གནས་ལ་མཐུད་ཀ།</string>
@@ -262,15 +258,7 @@
 
     <string name="install_error_unknown">རྒྱུས་མེད་པའི་སྐྱོན་ཞིག་བྱུང་བའི་རྐྱེན་གྱིས་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="uninstall_error_unknown">རྒྱུས་མེད་པའི་སྐྱོན་ཞིག་བྱུང་བའི་རྐྱེན་གྱིས་འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་ཐུབ་མ་སོང་།</string>
-    <string name="system_install_post_success">ཨེཕ་རོཌ་ཁེ་ཕན་འཕཪ་མ་འགྲིག་བཅུག་བྱས་ཟིན།</string>
-    <string name="system_install_post_fail">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="status_inserting_x_apps">མཉེན་ཆས་ཀྱི་ཞིབ་ཕྲ་ཉར་ཚགས་བྱེད་བཞིན་པ། (%1$d/%2$d) ནས་ %3$s</string>
-    <string name="system_install_installing_rebooting">འགྲིག་བཅུག་དང་སྐྱར་སློང་བྱེད་བཞིན་པ།….…</string>
-    <string name="system_install_question">ཁྱེད་རང་ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག་བྱེད་འདོད་ཡོད་དམ།</string>
-    <string name="system_install_warning">འདི་ལ་སྐར་ཆ་ ༡༠ བར་འགོར་གྱི་རེད།</string>
-    <string name="system_install_warning_lollipop">འདི་ལ་སྐར་ཆ་ ༡༠ ཙམ་འགོར་གྱི་རེད་ལ་ཡོ་བྱད་འདི་<b> 1སྐྱར་སློང་</b> 2 རྗེས་ལ།</string>
-    <string name="system_uninstall">ཁྱེད་རང་ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མའི་འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་འདོད་ཡོད་དམ།</string>
-    <string name="system_install_not_supported">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མའི་འགྲིག་བཅུག་དེ་ད་ལྟ་ཨིན་ཀྲོཌ་5.1 དང་ཡང་ན་ཕྱི་མ་རྣམས་ཀྱི་སྒང་ལ་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་མིན་འདུག</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">དྲྭ་རྒྱ་མིན་འདུག ཁྱེད་རང་གི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མིའི་ཁྲིད་ནས་མཉེན་ཆས་འདི་ལེན་རོགས།!</string>
     <string name="nearby_splash__find_people_button">ངའི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མི་འཚོལ།</string>
@@ -336,10 +324,7 @@
     <string name="app_permission_storage">ཨེཕ་རོཌ་གསོག་ཉར་ཁང་ནང་ལ་འདི་བཅུག་པའི་ཆེད་དུ་གསོག་ཉར་ཆོག་མཆན་དགོས། དྲྭ་ཤེལ་རྗེས་མ་དེའི་སྒང་ལ་སྒྲིག་བཅུག་བྱས་པ་དང་མཉམ་དུ་མུ་མཐུད་ཆོག་གི་རེད།</string>
 
     <string name="antinonfreeadlist">མཉེན་ཆས་འདི་རིན་མེད་མ་ཡིན་པའི་ཆ་རྐྱེན་འཕར་མ་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་ཡོད།</string>
-    <string name="system_install_denied_signature">མིང་རྟགས་ཀྱི་འཇུག་མཐུད་དེ་ནོར་འདུག སྐྱོན་ཅན་ཡིན་པའི་བརྡ་གཏོང་རོགས།</string>
     <string name="system_install_denied_permissions">མཇུག་མཐུད་དེ་ལ་ཁེ་ཕན་ཆོག་མཆན་སྤྲད་མེད། སྐྱོན་ཅན་ཡིན་པའི་བརྡ་གཏོང་རོགས།!</string>
-    <string name="system_install_post_success_message">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག འདིས་ཨེཕ་རོཌ་རང་ཉིད་ཀྱིས་འགྲིག་བཅུག་དང་། གསར་བསྒྱུར། འགྲིག་བཅུག་ཕྱིར་འཐེན་བཅས་བྱེད་ཐུབ།</string>
-    <string name="system_install_post_fail_message">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་། འགྲིག་བཅུག་གི་ཐབས་ལམ་འདི་ཨེན་ཀྲེན་འགྲེམ་སྤེལ་ཞུ་མཁན་གྱིས་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་མེད། གནས་ཚུལ་འཕར་མའི་ཆེད་དུ་ཨེཕ་རོཌ་སྐྱོན་དེད་མཁན་ལ་ལམ་སྟོན་ཞུས།</string>
     <string name="install_confirm_update">ད་ལྟ་ཡོད་བཞིན་པའི་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། གསར་བསྒྱུར་བྱས་ཟིན་པའི་མཉེན་ཆས་འདི་དག་རག་ཐུབ།:</string>
     <string name="install_confirm_update_system">ད་ལྟ་ཡོད་བཞིན་པའི་ནང་འགྲིག་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། གསར་བསྒྱུར་བྱས་ཟིན་པའི་མཉེན་ཆས་འདི་དག་རག་ཐུབ།:</string>
     <string name="install_confirm_update_no_perms">ད་ལྟ་ཡོད་བཞིན་པའི་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། འདི་ལྟ་ཐུབ་པའི་ཆེད་དུ་དམིགས་བསལ་གྱི་དགོས་མཁོ་མེད།</string>
@@ -430,10 +415,6 @@
     <string name="theme_light">དཀར་མདངས།</string>
     <string name="theme_dark">ནག་པོ།</string>
     <string name="theme_night">མཚན་མོ།</string>
-
-    <string name="requesting_root_access_body">ཡོ་བྱད་ཨ་མ་ལྟ་ཐུབ་པར་རེ་སྐུལ་ཞུ་བཞིན་པ།</string>
-    <string name="root_access_denied_title">ཡོ་བྱད་ཨ་མ་ལྟ་བར་འགོག་རྐྱེན།</string>
-    <string name="root_access_denied_body">གཅིག་བྱས་ན་ཁྱེད་རང་གི་ཨེན་ཀྲོཌ་ཡོ་བྱད་འདི་ཆོག་མཆན་ཆ་ཚང་ཡོད་པའི་ཡོ་བྱད་ཨ་མ་བཟོས་མེད་པའམ་ཡང་ན་ཁྱེད་རང་གིས་ཨེཕ་རོཌ་ལ་ཡོ་བྱད་ཨ་མ་ལྟ་ཡག་བཀག་འདུག</string>
 
     <string name="tts_category_name">སྡེ་ཚན་%1$s</string>
 

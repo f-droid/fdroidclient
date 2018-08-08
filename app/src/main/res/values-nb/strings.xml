@@ -135,11 +135,6 @@
     <string name="category_Science_Education">Vitenskap &amp; utdanning</string>
     <string name="category_Security">Sikkerhet</string>
     <string name="category_System">System</string>
-    <string name="requesting_root_access_body">Etterspør root-tilgang…</string>
-    <string name="root_access_denied_title">Root-tilgang nektet</string>
-    <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet
-        F-droid root-tilgang.
-    </string>
     <string name="swap_nfc_description">Hvis din venn har F-Droid og NFC påslått, sammenfør enhetene.</string>
     <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
     <string name="swap">Sirkuler programvare</string>
@@ -182,11 +177,6 @@
 
     <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
-    <string name="system_install_button_install">Installer</string>
-    <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
-    <string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
-    <string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
-    <string name="system_uninstall_button">Avinstaller</string>
 
     <string name="swap_switch_to_wifi">Trykk for å bytte Wi-Fi-nettverk</string>
     <string name="swap_dont_show_again">Ikke vis dette igjen</string>
@@ -229,9 +219,6 @@
     <string name="interval_2w">Sjekk etter oppdateringer annenhver uke</string>
 
     <string name="theme_light">Lyst</string>
-    <string name="uninstall_system">Oppdater/avinstaller priviligert tillegg</string>
-    <string name="uninstall_system_summary">Åpne detaljvisning av priviligert tillegg for å oppdatere/avinstallere det
-    </string>
     <string name="more">Mer</string>
     <string name="less">Mindre</string>
 
@@ -249,21 +236,9 @@
     <string name="empty_can_update_app_list">Gratulerer!
 \nAlle programmene dine er av nyeste dato.</string>
 
-    <string name="system_install_denied_signature">Signaturen til tillegget er feil! Send inn en feilrapport om dette
-        omgående!
-    </string>
     <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en
         feilrapport om dette omgående!
     </string>
-    <string name="system_install_post_success">F-Droid-rettighetsutvidelse installert</string>
-    <string name="system_install_post_fail">Installasjon av F-Droid som priviligert tillegg feilet</string>
-    <string name="system_install_post_success_message">F-Droid installert som priviligert tillegg. Dette lar F-droid installere, oppgradere og avinstallere programmer på egenhånd.</string>
-    <string name="system_install_post_fail_message">Installasjon av F-droid som priviligert tillegg feilet.
-        Installasjonsmetoden støttes ikke av alle Android-distribusjoner, henvend deg til feilrettingsoversikten for
-        ytterligere informasjon.
-    </string>
-    <string name="system_install_question">Ønsker du å installere F-Droid som priviligert tillegg?</string>
-    <string name="system_uninstall">Ønsker du å avinstallere F-Droid som priviligert tillegg?</string>
     <string name="swap_nfc_title">Trykk for å sirkulere</string>
     <string name="swap_join_same_wifi_desc">For å sirkulere ved bruk av Wi-Fi, forsikre deg om at dere er på samme
         nettverk. Hvis så ikke er tilfelle, kan du sette opp ditt eget mobiltrådløsnett.
@@ -341,10 +316,6 @@
 
     <string name="installing">Installerer…</string>
     <string name="uninstalling">Avinstallerer…</string>
-
-    <string name="system_install_not_supported">Installasjon av priviligert tillegg for F-droid er for tiden ikke
-        støttet på Android 5.1 eller senere.
-    </string>
 
     <string name="keep_install_history">Behold installasjonshistorikk</string>
     <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer i et privat lager</string>

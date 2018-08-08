@@ -84,12 +84,6 @@
     <string name="category_Security">Անվտանգություն</string>
     <string name="category_Sports_Health">Սպորտ և առողջություն</string>
     <string name="category_System">Համակարգ</string>
-    <string name="system_install_button_install">Տեղադրել</string>
-    <string name="system_install_installing_rebooting">Տեղադրում և վերագործարկում եմ…</string>
-    <string name="system_install_warning">Սա կտևի մոտ 10 վայրկյան։</string>
-    <string name="system_install_warning_lollipop">Սա կտևի մոտ 10 վայրկյան և այնուհետև սարքը<b>կվերագործարկվի</b>։
-    </string>
-    <string name="system_uninstall_button">Ապատեղադրել</string>
     <string name="swap_dont_show_again">Այլևս ցույց չտալ սա</string>
     <string name="swap_wifi_device_name">Սարքի անվանում</string>
     <string name="loading">Բեռնում եմ…</string>

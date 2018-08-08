@@ -73,8 +73,6 @@
     <string name="notify_on">أظهر تنبيه عندما تتوفر تحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام الملحقات المميزة لتثبيت وتحديث وإزالة الحزم</string>
-    <string name="uninstall_system">تحديث/إلغاء التثبيت للملحقات المميزة</string>
-    <string name="uninstall_system_summary">فتح تفاصيل شاشة الملحقات المميزة لتحديث / إلغاء للتثبيت</string>
     <string name="local_repo_name_summary">عنوان المعلن لديك في المستودعات المحلية: %s</string>
     <string name="local_repo_https_on">استخدام تشفير HTTPS: // المتصل بالمستودعات المحلية</string>
 
@@ -215,27 +213,9 @@
 \nإنَّ كافة تطبيقاتك مُحدّثة.</string>
     <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
 
-    <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
-    <string name="root_access_denied_title">لا يمكن الوصول إلى النواة</string>
-    <string name="root_access_denied_body">إما جهاز الأندرويد الخاص بك ليس ممدد النواة أو كنت قد رفضت وصول إلى النواة
-        لاف-درويد.
-    </string>
     <string name="install_error_unknown">فشل في التثبيت بسبب خطأ مجهول</string>
     <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
-    <string name="system_install_denied_signature">توقيع الإضافة خاطئ ! يرجى إنشاء تقرير عن الخطأ !</string>
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للإضافة! يرجى إنشاء تقرير عن خطأ!</string>
-    <string name="system_install_button_install">تثبيت</string>
-    <string name="system_install_post_success">تم تثبيت إضافات اف-درويد المميزة</string>
-    <string name="system_install_post_fail">فشل تثبيت إضافة اف-درويد المميزة</string>
-    <string name="system_install_post_success_message">تم تثبيت إضافة اف-درويد المميزة بنجاح. وهذا يسمح لإف-درويد بتثبيت وتحديث وإلغاء تثبيت التطبيقات من تلقاء نفسه.</string>
-    <string name="system_install_post_fail_message">فشل التثبيت إضافة اف-درويد المميزة. طريقة التثبيت غير مدعومة لجميع توزيعات الأندرويد، يرجى الرجوع إلى اف-درويد لتعقب علة الأخطاء لمزيد من المعلومات.</string>
-    <string name="system_install_installing_rebooting">جاري التثبيت وإعادة التشغيل …</string>
-    <string name="system_install_question">هل تريد تثبيت إضافة اف-درويد المميزة ؟</string>
-    <string name="system_install_warning">ذلك سيستغرق فترة تصل إلى 10 ثواني.</string>
-    <string name="system_install_warning_lollipop">ذلك سيستغرق فترة تصل إلى 10 ثواني، وسوف يتم <b>إعادة تشغيل</b> بعد ذلك.</string>
-    <string name="system_uninstall">هل تريد إلغاء تثبيت إضافة اف-درويد المميزة ؟</string>
-    <string name="system_uninstall_button">إلغاء التثبيت</string>
-    <string name="system_install_not_supported">إضافة اف-درويد المميزة غير مدعومة حالياً للتثبيت على الأندرويد النسخة 5.1 فما أحدث.</string>
 
     <string name="swap_nfc_title">إختر باللمس للتبديل</string>
     <string name="swap_nfc_description">إذا كان صديقك لديه اف-درويد او NFC على قيد التشغيل يمكنك توصيل الأجهزة معا.

@@ -22,10 +22,6 @@
     <string name="system_installer_on">Shandisa tambanudzo inechihesvuro yeF-Droid kuti uvakirire, unatse nekubvisa
         mapakeji
     </string>
-    <string name="uninstall_system">Natsa/Bvisa chivakirirwa patambanudzo ane chihesvuro</string>
-    <string name="uninstall_system_summary">Vhura chivhitivhiti chinezvizere chetambanudzo chine chihesvuro kuti
-        uinatse/uibvise chivakirirwa
-    </string>
     <string name="local_repo_name">Zita repfimbi rakamanikwa</string>
     <string name="local_repo_name_summary">Musoro wepfimbi yakamanikwa wakashambadzwa: %s</string>
     <string name="local_repo_https_on">Shandisa chihako cheHTTPS:// chakakwedekerwa kuitira pfimbi yakamanikwa</string>
@@ -261,40 +257,10 @@
     </string>
     <string name="empty_search_available_app_list">Hapana maApps akatevedzera aripo.</string>
 
-    <string name="requesting_root_access_body">Kukumbira hupindwa pamudzi…</string>
-    <string name="root_access_denied_title">Hupindwa pamudzi kwanyimwa</string>
-    <string name="root_access_denied_body">Muchina wako weAndroid hauna kuenda pamudzi kana kuti wanyima hupindwa
-        pamudzi kuF-Droid.
-    </string>
     <string name="install_error_unknown">Tatadza kuvakirira nenhau yekanganiso isingazivikanwe</string>
     <string name="uninstall_error_unknown">Tatadza kubvisa kuvakirira nenhau yekanganiso isirikuzivikanwe</string>
-    <string name="system_install_denied_signature">Chicherechedzo chechihesvuro ichi chatadzwa! Chikumbiro, sika dudziro
-        yezvipfukuto!
-    </string>
     <string name="system_install_denied_permissions">Mibvumo ine tambanudzo haina kupihwa kuchihesvuro! Chikumbiro, sika
         dudziro rezvipfukuto!
-    </string>
-    <string name="system_install_button_install">Vakirira</string>
-    <string name="system_install_post_success">Budiriro pakuvakirira Tambanudzo ine chihesvuro cheF-Droid</string>
-    <string name="system_install_post_fail">Kuvakirira tambanudzo yechihesvuro cheF-Droid kwaramba</string>
-    <string name="system_install_post_success_message">Tambanudzo ine chihesvuro cheF-Droid chabudirira kuvakirirwa.
-        Izvi zvinobvumira F-Droid kuti ivakirire, ikwidziridze ne kubvisa kuvakirira pamaApps yega.
-    </string>
-    <string name="system_install_post_fail_message">Kuvakirira kwetambanudzo ine chihesvuro cheF-Droid kwaramba. Mutowo
-        wekuvakirira hauna kutsigirwa nepanguro dzese dzeAndroid, tinokumbira kuti wofefeta chisvukudza chezvipfukuto
-        cheF-Droid kuti uwane mashoko mamwe.
-    </string>
-    <string name="system_install_installing_rebooting">Kuvakirira nekutangidza kubatidza muchina…</string>
-    <string name="system_install_question">Urikuda kuvakirira tambanudzo dzechihesvuro dzeF-Droid here?</string>
-    <string name="system_install_warning">Izvi zvichatora kusvika 10 masekondi.</string>
-    <string name="system_install_warning_lollipop">Izvi zvinotora kusvika 10 masekondi nekuzotangidza kubatidza
-        <b>muchina</b>
-        mushure mazvo.
-    </string>
-    <string name="system_uninstall">Urikuda kubvisa kuvakirira tambanudzo dzechihesvuro paF-Droid here?</string>
-    <string name="system_uninstall_button">Bvisa kuvakirira</string>
-    <string name="system_install_not_supported">Kuvakirira uku kwetambanudzo dzchihesvuro hakutsigirwe parizvino
-        paAndroid 5.1 zvichikwira.
     </string>
 
     <string name="swap_nfc_description">Kana shamwari yako yakabatidza F-Droid neNFC ita kuti michina yenyu ibatane.

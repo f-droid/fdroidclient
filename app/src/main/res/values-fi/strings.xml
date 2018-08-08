@@ -109,11 +109,6 @@
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
     <string name="category_System">Järjestelmä</string>
-    <string name="requesting_root_access_body">Pyydetään root-oikeuksia…</string>
-    <string name="root_access_denied_title">Root-oikeudet kielletty</string>
-    <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin
-        root-oikeuksiin pääsyn.
-    </string>
     <string name="swap_nfc_description">Jos ystävälläsi on F-Droid asennettuna ja NFC päällä, koskettakaa laitteitanne
         yhteen.
     </string>
@@ -169,9 +164,6 @@
 
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
-    <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>
-    <string name="uninstall_system_summary">Avaa Privileged Extensionin asetussivu päivittääksesi tai poistaaksesi sen
-    </string>
     <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
 
     <string name="bad_fingerprint">Huono sormenjälki</string>
@@ -223,13 +215,6 @@
     <string name="category_Time">Aika</string>
     <string name="category_Writing">Kirjoittaminen</string>
 
-    <string name="system_install_button_install">Asenna</string>
-    <string name="system_install_warning">Tämä kestää jopa 10 sekuntia.</string>
-    <string name="system_install_warning_lollipop">Tämä voi kestää jopa 10 sekuntia ja laite tullaan
-        <b>käynnistämään uudelleen</b>
-        sen jälkeen.
-    </string>
-    <string name="system_uninstall_button">Poista</string>
     <string name="swap_active_hotspot">%1$s (sinun hotspot)</string>
     <string name="swap_dont_show_again">Älä näytä tätä uudelleen</string>
     <string name="swap_scan_qr">Skannaa QR-koodi</string>
@@ -271,9 +256,6 @@
     <string name="empty_search_available_app_list">Haulla ei löytynyt tuloksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
-    <string name="system_install_denied_signature">Laajennuksen allekirjoitus on väärä! Ole hyvä ja luo vikailmoitus!
-    </string>
-    <string name="system_install_installing_rebooting">Asennetaan ja käynnistetään uudelleen…</string>
     <string name="swap_nfc_title">Vaihda koskettamalla</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, sinun tulee olla samassa verkossa.
         Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-hotspotin.
@@ -335,17 +317,6 @@
     </string>
     <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia!
         Luo virheraportti!
-    </string>
-    <string name="system_install_post_success">F-Droid Privileged Extension asennettu</string>
-    <string name="system_install_post_fail">F-Droid Privileged Extensionin asennus epäonnistui</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension on asennettu. Sen avulla F-Droidin voi asentaa, päivittää ja poistaa sovelluksia omillaan.</string>
-    <string name="system_install_post_fail_message">F-Droid Privileged Extensionin asennus epäonnistui. Kaikki
-        Android-versiot eivät tue tätä asennustapaa. Konsultoi F-Droidin virhehakua saadaksesi lisätietoa.
-    </string>
-    <string name="system_install_question">Haluatko asentaa F-Droid Privileged Extensionin?</string>
-    <string name="system_uninstall">Haluatko poistaa F-Droid Privileged Extensionin asennuksen?</string>
-    <string name="system_install_not_supported">F-Droid Privileged Extensionin asennusta ei tueta Android 5.1+
-        -versioissa.
     </string>
 
     <string name="versions">Versiot</string>

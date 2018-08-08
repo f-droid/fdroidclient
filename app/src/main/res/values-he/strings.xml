@@ -13,8 +13,6 @@
     <string name="notify_on">הצגת התראה כאשר יש עדכונים</string>
     <string name="system_installer">הרחבה מועדפת</string>
     <string name="system_installer_on">ניתן להשתמש בהרחבה מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
-    <string name="uninstall_system">עדכון/הסרה של הרחבה מועדפת</string>
-    <string name="uninstall_system_summary">יש לפתוח את מסך הפרטים על הרחבה מועדפת כדי לעדכן/להסיר אותה</string>
     <string name="local_repo_name">שם המאגר המקומי שלך</string>
     <string name="local_repo_name_summary">הכותרת המעודכנת של המאגר המקומי שלך: %s</string>
     <string name="local_repo_https_on">שימוש בחיבור //:HTTPS עבור מאגר מקומי</string>
@@ -155,19 +153,8 @@
     <string name="empty_can_update_app_list">ברכותינו!
 \nהיישומונים שלך עדכניים.</string>
 
-    <string name="requesting_root_access_body">בקשה לגישת על (root)…</string>
-    <string name="root_access_denied_title">גישת על (root) נאסרה</string>
-    <string name="root_access_denied_body">או שלמכשיר האנדרואיד שלך אין גישת על (root) או שדחית את הגישה ל־F-Droid.</string>
     <string name="install_error_unknown">ההתקנה נכשלה עקב שגיאה בלתי ידועה</string>
     <string name="uninstall_error_unknown">ההסרה נכשלה עקב שגיאה בלתי ידועה</string>
-    <string name="system_install_post_success">הרחבת F-Droid מועדף הותקנה</string>
-    <string name="system_install_post_fail">התקנת הרחבת F-Droid מועדף נכשלה</string>
-    <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה. מצב זה מאפשר ליישומון F-Droid להתקין, לשדרג ולהסיר התקנת יישומונים באופן עצמאי.</string>
-    <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, נא לפנות למערכת מעקב הבאגים של F-Droid לקבלת מידע נוסף.</string>
-    <string name="system_install_question">להתקין את הרחבת F-Droid מועדף?</string>
-    <string name="system_install_warning_lollipop">פעולה זו אורכת עד 10 שניות וההתקן <b>יאותחל</b> לאחר מכן.</string>
-    <string name="system_uninstall">להסיר את הרחבת F-Droid מועדף?</string>
-    <string name="system_uninstall_button">הסרה</string>
 
     <string name="swap_nfc_description">אם לחברך יש F-Droid ו־NFC פעיל הצמידו את המכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרפות לאותה רשת אלחוטית כמו חברך</string>
@@ -286,10 +273,6 @@
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
     <string name="repo_url">כתובת</string>
-    <string name="system_install_denied_signature">החתימה של ההרחבה שגויה! נא לדווח על באג!</string>
-    <string name="system_install_button_install">התקנה</string>
-    <string name="system_install_installing_rebooting">מתבצעים התקנה ואתחול…</string>
-    <string name="system_install_warning">פעולה זו אורכת עד 10 שניות.</string>
     <string name="theme_night">לילה</string>
     <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! נא לדווח על באג!</string>
     <string name="login_title">נדרש אימות</string>
@@ -393,7 +376,6 @@
     <string name="notification_title_single_update_available">ישנו עדכון</string>
     <string name="notification_title_summary_install_error">התקנה נכשלה</string>
     <string name="download_404">הקובץ המבוקש לא נמצא.</string>
-    <string name="system_install_not_supported">התקנת הרחבת F-Droid מועדף אינה נתמכת כעת על אנדרואיד 5.1 ומעלה.</string>
 
     <string name="install_error_notify_title">שגיאה בהתקנת %s</string>
     <string name="uninstall_error_notify_title">שגיאה בהסרת %s</string>

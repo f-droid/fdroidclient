@@ -29,8 +29,6 @@
     <string name="system_installer_on">Выкарыстоўваць прывілеяваны дадатак для ўсталёўкі, абнаўлення ці выдалення
         пакетаў
     </string>
-    <string name="uninstall_system">Абнавіць/Выдаліць прывілеяваны дадатак</string>
-    <string name="uninstall_system_summary">Паказаць дэталі прывілеяванага дадатка для абнаўлення/выдалення</string>
     <string name="local_repo_name">Назва вашага лакальнага рэпазіторыя</string>
     <string name="local_repo_name_summary">Ваш лакальны рэпазіторый прапануецца пад назвай: %s</string>
     <string name="local_repo_https_on">Выкарыстоўваць шыфраванае HTTPS-злучэнне для лакальнага рэпазіторыя</string>
@@ -244,35 +242,10 @@
         або вашы рэпазіторыі не змяшчаюць такіх праграм.
     </string>
     <string name="empty_can_update_app_list">Віншуем!\nВашы праграмы маюць апошнія версіі.</string>
-    <string name="requesting_root_access_body">Запыт root-доступу…</string>
-    <string name="root_access_denied_title">Адмоўлена ў root-доступе</string>
-    <string name="root_access_denied_body">Альбо ваша прылада не мае root-доступу, альбо вы адхілілі запыт ад F-Droid.
-    </string>
     <string name="install_error_unknown">На атрымалася ўсталяваць праз невядомую памылку</string>
     <string name="uninstall_error_unknown">На атрымалася выдаліць праз невядомую памылку</string>
-    <string name="system_install_denied_signature">Подпіс дадатаку некарэктны! Калі ласка, паведаміце пра памылку!
-    </string>
     <string name="system_install_denied_permissions">Прывілеяваныя дазволы не былі нададзены дадатаку! Калі ласка,
         паведаміце пра памылку!
-    </string>
-    <string name="system_install_button_install">Усталяваць</string>
-    <string name="system_install_post_success">Прывілеяваны дадатак F-Droid усталяваны</string>
-    <string name="system_install_post_fail">Не атрымалася ўсталяваць прывілеяваны дадатак F-Droid</string>
-    <string name="system_install_post_success_message">Прывілеяваны дадатак F-Droid усталяваны. Гэта дазволіць F-Droid
-        усталёўваць, абнаўляць і выдаляць праграмы.
-    </string>
-    <string name="system_install_post_fail_message">Не атрымалася ўсталяваць прывілеяваны дадатак F-Droid. Метад
-        усталёўкі не падтрымліваецца ўсімі сістэмамі Android. Калі ласка, завітайце на форум F-Droid за дадатковай
-        інфармацыяй.
-    </string>
-    <string name="system_install_installing_rebooting">Усталёўка і перазагрузка…</string>
-    <string name="system_install_question">Жадаеце ўсталяваць прывілеваны дадатак F-Droid?</string>
-    <string name="system_install_warning">Гэта зойме прыблізнва 10 секунд.</string>
-    <string name="system_install_warning_lollipop">Гэта зойме прыблізна 10 секунд, пасля чаго прылада будзе<b> перазагружана</b>.</string>
-    <string name="system_uninstall">Жадаеце выдаліць прывілеяваны дадатак F-Droid?</string>
-    <string name="system_uninstall_button">Выдаліць</string>
-    <string name="system_install_not_supported">Усталёўка прывілеяванага дадатаку F-Droid у цяперашні час не
-        падтрымліваецца сістэмамі Android 5.1 ці пазней.
     </string>
 
     <string name="swap_nfc_title">Датыкнуцца для абмену</string>

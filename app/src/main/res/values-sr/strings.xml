@@ -143,11 +143,6 @@
     <string name="category_Science_Education">Наука и образовање</string>
     <string name="category_Security">Безбедност</string>
     <string name="category_System">Систем</string>
-    <string name="requesting_root_access_body">Захтевам корени приступ…</string>
-    <string name="root_access_denied_title">Корени приступ је одбијен</string>
-    <string name="root_access_denied_body">Или ваш Андроид уређај нема корени приступ или сте Ф-дроиду одбили корени
-        приступ.
-    </string>
     <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, спојите ваше уређаје.</string>
     <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
     <string name="swap">Размена апликација</string>
@@ -160,8 +155,6 @@
 
     <string name="unstable_updates">Надоградње нестабилних</string>
     <string name="unstable_updates_summary">Предлагање надоградњи на нестабилна издања</string>
-    <string name="uninstall_system">Надогради/уклони повлашћено проширење</string>
-    <string name="uninstall_system_summary">Отвара појединости повлашћеног проширења ради надоградње/уклањања</string>
     <string name="about_source">Изворни кôд</string>
     <string name="app_incompatible">Неодговарајуће</string>
     <string name="links">Везе</string>
@@ -185,10 +178,6 @@
     <string name="category_Theming">Теме</string>
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
-
-    <string name="system_install_post_success">Ф-дроид повлашћено проширење је уграђено</string>
-    <string name="system_install_post_fail">Инсталација повлашћеног проширења за Ф-дроид није успела</string>
-    <string name="system_uninstall_button">Уклони</string>
 
     <string name="swap_nfc_title">Тапните за размену</string>
     <string name="swap_success">Размена је успела!</string>
@@ -222,8 +211,6 @@
     <string name="local_repo_name_summary">Објављени назив месне ризнице: %s</string>
     <string name="install_error_unknown">Инсталација није успела услед непознате грешке</string>
     <string name="uninstall_error_unknown">Уклањање није успело услед непознате грешке</string>
-    <string name="system_install_question">Желите ли да инсталирате повлашћено проширење Ф-дроида?</string>
-    <string name="system_uninstall">Желите ли да уклоните повлашћено проширење Ф-дроида?</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">захтева приступ следећем</string>
     <string name="perm_costs_money">Ово може да вас кошта</string>
@@ -239,7 +226,6 @@
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца адресу друге особе у прегледачу.
     </string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
-    <string name="system_install_warning_lollipop">Ово траје десетак секунди и уређај ће након тога<b>поново да се покрене</b>.</string>
     <string name="empty_can_update_app_list">Честитке!\nВаше апликације су надограђене.</string>
 
     <string name="swap_people_nearby">Људи у близини</string>
@@ -263,23 +249,14 @@
     <string name="permissions">Дозволе</string>
     <string name="repo_details">Ризница</string>
     <string name="repo_url">Адреса</string>
-    <string name="system_install_denied_signature">Потпис проширења је погрешан! Пријавите грешку!</string>
-    <string name="system_install_button_install">Угради</string>
     <string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!
     </string>
-    <string name="system_install_installing_rebooting">Инсталирам и поново покрећем…</string>
-    <string name="system_install_warning">Ово траје десетак секунди.</string>
     <string name="theme_night">Ноћ</string>
     <string name="menu_bitcoin">Биткојн</string>
     <string name="menu_litecoin">Лајткојн</string>
     <string name="menu_flattr">Флатр</string>
 
 
-    <string name="system_install_post_success_message">Повлашћено проширење Ф-дроида је успешно уграђено. Оно омогућује Ф-дроиду да сам уграђује, надограђује и уклања програме.</string>
-    <string name="system_install_post_fail_message">Инсталација повлашћеног проширења Ф-дроида није успела. Овај начин
-        инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више
-        података.
-    </string>
     <string name="menu_settings">Поставке</string>
     <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, не можемо размењивати са њим!</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате
@@ -326,10 +303,6 @@
     <string name="update_auto_download">Аутоматски добављај надоградње</string>
     <string name="update_auto_download_summary">Надоградње се преузимају аутоматски и бићете обавештени пре уградње</string>
     <string name="download_pending">Чекам на почетак преузимања…</string>
-
-    <string name="system_install_not_supported">Инсталирање Повлашћеног проширење за Ф-дроид тренутно није подржано на
-        Андроиду 5.1 и новијем.
-    </string>
 
     <string name="keep_hour">1 сат</string>
     <string name="keep_day">1 дан</string>

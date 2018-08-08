@@ -132,11 +132,6 @@
     <string name="category_Science_Education">Наука и образование</string>
     <string name="category_Security">Безопасность</string>
     <string name="category_System">Системные</string>
-    <string name="requesting_root_access_body">Запрос root доступа…</string>
-    <string name="root_access_denied_title">Отказано в root доступе</string>
-    <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от
-        F-Droid.
-    </string>
     <string name="swap_join_same_wifi">Подключитесь к той же Wi-Fi сети, что и ваш друг</string>
     <string name="swap">Обмен приложениями</string>
     <string name="swap_no_wifi_network">Нет сети в данный момент</string>
@@ -183,9 +178,6 @@
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместимо</string>
-    <string name="uninstall_system">Обновить/Удалить Привилегированное расширение</string>
-    <string name="uninstall_system_summary">Открыть окно деталей Привилегированного расширения для изменения/удаления
-    </string>
     <string name="more">Детали</string>
     <string name="less">Меньше</string>
 
@@ -218,15 +210,8 @@
     <string name="wifi_ap">Точка доступа</string>
 
     <string name="category_Theming">Темы</string>
-    <string name="system_install_denied_signature">Подпись расширения неверна! Создайте отчет об ошибке!</string>
     <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Создайте отчет об ошибке!</string>
-    <string name="system_install_button_install">Установить</string>
-    <string name="system_install_post_success">Привилегированное расширение F-Droid успешно установлено</string>
-    <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
-    <string name="system_install_installing_rebooting">Установка и перезагрузка…</string>
     <string name="downloading">Загрузка…</string>
-
-    <string name="system_uninstall_button">Удалить</string>
 
     <string name="menu_email">Написать автору</string>
     <string name="antinonfreeassetslist">Это приложение включает в себя ресурсы с закрытым исходным кодом</string>
@@ -235,8 +220,6 @@
 
     <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
 
-    <string name="system_install_warning">Это займет до 10 секунд.</string>
-    <string name="system_install_warning_lollipop">Это займет до 10 секунд, после чего устройство будет <b>перезагружено</b>.</string>
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
     <string name="swap_scan_qr">Сканировать QR-код</string>
@@ -269,13 +252,6 @@
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Требуется Orbot</string>
     <string name="repo_provider">Репозиторий: %s</string>
 
-    <string name="system_install_post_success_message">Привилегированное дополнение F-Droid установлено. Это позволяет F-Droid самостоятельно устанавливать, обновлять и удалять приложения.</string>
-    <string name="system_install_post_fail_message">Установка привилегированного приложения F-Droid не удалась.
-        Используемый метод установки поддерживается не всеми дистрибутивами Android, за дополнительной информацией
-        обратитесь к системе отслеживания ошибок F-Droid.
-    </string>
-    <string name="system_install_question">Вы хотите установить привилегированное расширение F-Droid?</string>
-    <string name="system_uninstall">Вы хотите удалить привилегированное расширение F-Droid?</string>
     <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включен NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите своему другу присоединиться к вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
@@ -309,7 +285,6 @@
     <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне и выводить уведомление для их
         установки
     </string>
-    <string name="system_install_not_supported">Установка привилегированного расширения F-Droid в настоящее время не поддерживается на Android 5.1 и новее.</string>
 
     <string name="download_pending">Ожидание начала загрузки…</string>
 

@@ -56,8 +56,6 @@
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">Use Privileged Extension to install, update, and remove packages</string>
-    <string name="uninstall_system">Update/Uninstall Privileged Extension</string>
-    <string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it</string>
     <string name="local_repo_name">Name of your Local Repo</string>
     <string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
@@ -395,39 +393,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="empty_search_available_app_list">No matching applications available.</string>
 
-    <string name="requesting_root_access_body">Requesting root access…</string>
-    <string name="root_access_denied_title">Root access denied</string>
-    <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for
-        F-Droid.
-    </string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
-    <string name="system_install_denied_signature">The signature of the extension is wrong! Please create a bug
-        report!
-    </string>
     <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension!
         Please create a bug report!
-    </string>
-    <string name="system_install_button_install">Install</string>
-    <string name="system_install_post_success">F-Droid Privileged Extension installed</string>
-    <string name="system_install_post_fail">Installation of F-Droid Privileged Extension failed</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension installed.
-        This allows F-Droid to install, update and uninstall apps on its own.
-    </string>
-    <string name="system_install_post_fail_message">The installation of F-Droid Privileged Extension has failed. The
-        installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for
-        more information.
-    </string>
-    <string name="system_install_installing_rebooting">Installing and rebooting…</string>
-    <string name="system_install_question">Do you want to install F-Droid Privileged Extension?</string>
-    <string name="system_install_warning">This takes up to 10 seconds.</string>
-    <string name="system_install_warning_lollipop">This takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b>
-        afterwards.
-    </string>
-    <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
-    <string name="system_uninstall_button">Uninstall</string>
-    <string name="system_install_not_supported">Installation of F-Droid Privileged Extension is currently not supported
-        on Android 5.1 or later.
     </string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>

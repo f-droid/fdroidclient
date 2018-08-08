@@ -19,7 +19,6 @@
     <string name="next">తదుపరి</string>
     <string name="pref_language">భాష</string>
     <string name="category_Games">ఆటలు</string>
-    <string name="system_install_button_install">స్థాపించు</string>
     <string name="notification_action_cancel">రద్దుచేయి</string>
     <string name="notification_action_install">స్థాపించు</string>
 
@@ -119,7 +118,6 @@
 
     <string name="details_notinstalled">సంస్థాపన చేసి లేదు</string>
     <string name="category_Navigation">నౌకాయానం</string>
-    <string name="system_uninstall_button">నివర్తించు</string>
     <string name="app_list__name__successfully_installed">%1$s సంస్థాపన అయ్యింది</string>
     <string name="not_on_same_wifi">మీరు జోడించిన స్థానిక రిపో మీ పరికరం అదే Wi-Fi లో లేదు! ఈ నెట్వర్క్లో చేరడానికి ప్రయత్నించండి:%s</string>
     <string name="notification_title_summary_install_error">వ్యవస్థాపన విఫలమైంది</string>
@@ -249,7 +247,6 @@
     <string name="empty_search_available_app_list">సరిపోలే అనువర్తనాలు అందుబాటులో లేవు.</string>
 
     <string name="install_error_unknown">తెలియని లోపం కారణంగా వ్యవస్థాపించడం విఫలమైంది</string>
-    <string name="system_install_warning">ఇది 10 సెకన్లు వరకు పడుతుంది.</string>
     <string name="nearby_splash__find_people_button">నా సమీపంలో ఉన్న వ్యక్తులను కనుగొనండి</string>
     <string name="swap_nfc_title">మారడానికి తాకండి</string>
     <string name="swap_join_same_wifi">మీ స్నేహితుని వలె అదే Wi-Fi లో చేరండి</string>
@@ -313,8 +310,6 @@
     <string name="theme_dark">చీకటి</string>
     <string name="theme_night">రాత్రి</string>
 
-    <string name="requesting_root_access_body">రూట్ ప్రాప్యతను అభ్యర్థిస్తోంది…</string>
-    <string name="root_access_denied_title">రూటు యాక్సెస్ నిరాకరించబడింది</string>
     <string name="install_history">స్థాపన చరిత్ర</string>
     <string name="repo_official_mirrors">అధికారిక మిర్రర్లు</string>
     <string name="repo_user_mirrors">వాడుకరి మిర్రర్లు</string>

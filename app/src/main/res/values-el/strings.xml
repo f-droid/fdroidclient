@@ -104,10 +104,6 @@
     <string name="system_installer_on">Χρησιμοποιήστε την επέκταση του F-Droid με δικαιώματα συστήματος για να
         εγκαταστήσετε, ενημερώσετε και καταργήσετε πακέτα
     </string>
-    <string name="uninstall_system">Ενημέρωση/απεγκατάσταση της επέκτασης με δικαιώματα συστήματος</string>
-    <string name="uninstall_system_summary">Άνοιγμα οθόνης λεπτομερειών της Επέκτασης με δικαιώματα συστήματος για την
-        ενημέρωση/απεγκατάστασή της
-    </string>
     <string name="local_repo_name">Όνομα του Αποθετηρίου σας</string>
     <string name="local_repo_name_summary">Ο διαφημιζόμενος τίτλος του τοπικού αποθετηρίου σας: %s</string>
     <string name="local_repo_https_on">Χρήση κρυπτογραφημένης σύνδεσης HTTPS:// για το τοπικό αποθετήριο</string>
@@ -202,34 +198,11 @@
     </string>
     <string name="empty_can_update_app_list">Συγχαρητήρια!\nΌλες οι εφαρμογές σας είναι ενημερωμένες (ή τα αποθετήρια σας δεν έχουν ανανεωθεί).</string>
 
-    <string name="requesting_root_access_body">Αίτηση πρόσβασης υπερχρήστη…</string>
-    <string name="root_access_denied_title">Άρνηση πρόσβασης υπερχρήστη</string>
-    <string name="root_access_denied_body">Είτε η συσκευή σας Android δε έχει ενεργοποιημένο υπερχρήστη ή έχετε αρνηθεί
-        την πρόσβαση υπερχρήστη για το F-Droid.
-    </string>
     <string name="install_error_unknown">Απέτυχε η εγκατάσταση λόγω άγνωστου προβλήματος</string>
     <string name="uninstall_error_unknown">Αποτυχία απεγκατάστασης λόγω άγνωστου σφάλματος</string>
-    <string name="system_install_denied_signature">Η υπογραφή της επέκτασης είναι λάθος! Παρακαλώ δημιουργήστε μια
-        αναφορά σφάλματος!
-    </string>
     <string name="system_install_denied_permissions">Τα δικαιώματα συστήματος δεν έχουν χορηγηθεί στην επέκταση!
         Παρακαλώ δημιουργήστε μια αναφορά σφάλματος!
     </string>
-    <string name="system_install_button_install">Εγκατάσταση</string>
-    <string name="system_install_post_success">Έγινε η  εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος</string>
-    <string name="system_install_post_fail">Απέτυχε η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος
-    </string>
-    <string name="system_install_post_success_message">Έγινε η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος. Αυτό επιτρέπει στο F-Droid να εγκαθιστά, αναβαθμίζει και απεγκαθιστά εφαρμογές από μόνο του.</string>
-    <string name="system_install_post_fail_message">Απέτυχε η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα
-        συστήματος. Η μέθοδος εγκατάστασης δεν υποστηρίζεται από όλες τις διανομές Android, μπορείτε να συμβουλευτείτε
-        τον ανιχνευτή σφαλμάτων του F-Droid για περισσότερες πληροφορίες.
-    </string>
-    <string name="system_install_installing_rebooting">Εγκατάσταση και επανεκκίνηση…</string>
-    <string name="system_install_question">Θέλετε να εγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος;</string>
-    <string name="system_install_warning">Αυτό διαρκεί έως 10 δευτερόλεπτα.</string>
-    <string name="system_install_warning_lollipop">Αυτό διαρκεί έως 10 δευτερόλεπτα και η συσκευή θα <b>επανεκκινηθεί</b> έπειτα.</string>
-    <string name="system_uninstall">Θέλετε να απεγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος?</string>
-    <string name="system_uninstall_button">Απεγκατάσταση</string>
 
     <string name="swap_join_same_wifi">Γίνετε μέλος του ίδιου ασύρματου δικτύου με τον φίλο σας</string>
     <string name="swap">Ανταλλαγή εφαρμογών</string>
@@ -343,10 +316,6 @@
 
     <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα. Απαιτείται εγκατάσταση του Orbot</string>
     <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο internet;</string>
-
-    <string name="system_install_not_supported">Η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος προς το
-        παρόν δεν υποστηρίζεται στο Android 5.1 ή νεότερη έκδοση.
-    </string>
 
     <string name="swap_stopping_wifi">Διακοπή ασύρματου δικτύου Wi-Fi…</string>
     <string name="download_pending">Περιμένετε να αρχίσει η λήψη…</string>

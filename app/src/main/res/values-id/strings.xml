@@ -18,8 +18,6 @@
     <string name="system_installer_on">Gunakan F-Droid Privileged Extension untuk memasang, memperbarui, dan mencopot
         paket
     </string>
-    <string name="uninstall_system">Perbarui/Copot Privileged Extension</string>
-    <string name="uninstall_system_summary">Buka layar detail Privileged Extension untuk memperbarui/mencopotnya</string>
     <string name="local_repo_name">Nama Repo Lokal Anda</string>
     <string name="local_repo_name_summary">Judul repo lokal Anda yang disiarkan: %s</string>
     <string name="local_repo_https_on">Gunakan sambungan HTTPS:// terenkripsi untuk repo lokal</string>
@@ -223,30 +221,11 @@
         pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.
     </string>
     <string name="empty_can_update_app_list">Selamat!\nApl Anda sudah yang paling baru.</string>
-    <string name="requesting_root_access_body">Meminta akses root…</string>
-    <string name="root_access_denied_title">Akses root ditolak</string>
-    <string name="root_access_denied_body">Mungkin perangkat Android anda yang belum diroot atau anda telah menolak
-        akses root untuk F-Droid.
-    </string>
     <string name="install_error_unknown">Gagal memasang karena galat yang tidak diketahui</string>
     <string name="uninstall_error_unknown">Gagal mencopot pemasangan karena galat yang tidak diketahui</string>
-    <string name="system_install_denied_signature">Tanda tangan ekstensi ini salah! Harap buat laporan kutu!</string>
     <string name="system_install_denied_permissions">Izin istimewa belum diberikan ke ekstensi! Harap buat laporan
         kutu!
     </string>
-    <string name="system_install_button_install">Pasang</string>
-    <string name="system_install_post_success">F-Droid Privileged Extension telah terpasang</string>
-    <string name="system_install_post_fail">Pemasangan F-Droid Privileged Extension gagal</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension telah terpasang. Ini mengijinkan F-Droid untuk memasang, meningkatkan dan mencopot pemasangan apl sendiri.</string>
-    <string name="system_install_post_fail_message">Pemasangan F-Droid Privileged Extension gagal. Metode pemasangan
-        tidak didukung oleh semua distribusi Android, harap hubungi pelacak kutu F-Droid untuk info selanjutnya.
-    </string>
-    <string name="system_install_installing_rebooting">Memasang dan booting ulang…</string>
-    <string name="system_install_question">Anda ingin memasang F-Droid Privileged Extension?</string>
-    <string name="system_install_warning">Ini memakan waktu hingga 10 detik.</string>
-    <string name="system_install_warning_lollipop">Ini memakan waktu 10 detik dan perangkat akan <b>dinyalakan ulang</b>.</string>
-    <string name="system_uninstall">Anda ingin mencopot pemasangan F-Droid Privileged Extension?</string>
-    <string name="system_uninstall_button">Copot pemasangan</string>
 
     <string name="swap_nfc_title">Ketuk untuk swap</string>
     <string name="swap_nfc_description">Jika teman anda memiliki F-Droid dan NFC yang dihidupkan ketuk perangkat
@@ -326,10 +305,6 @@
         memasangnya
     </string>
     <string name="download_pending">Menunggu untuk mulai unduhan…</string>
-
-    <string name="system_install_not_supported">Pemasangan F-Droid Privileged Extension saat ini tidak tersedia di
-        Android 5.1 atau lebih baru.
-    </string>
 
     <string name="keep_hour">1 Jam</string>
     <string name="keep_day">1 Hari</string>

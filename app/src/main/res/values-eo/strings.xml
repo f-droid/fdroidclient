@@ -101,8 +101,6 @@
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
     <string name="system_installer_on">Uzi privilegian aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn</string>
-    <string name="uninstall_system">Ĝisdatigi/malinstali privilegian aldonaĵon</string>
-    <string name="uninstall_system_summary">Malfermi detalan ekranon de privilegia aldonaĵo por ĝisdatigi/malinstali ĝin</string>
     <string name="local_repo_name">Nomo de via loka deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
     <string name="local_repo_https_on">Uzi ĉifritan HTTPS:// konekton por loka deponejo</string>
@@ -206,29 +204,11 @@
     </string>
     <string name="empty_search_available_app_list">Neniuj kongruaj aplikaĵoj disponeblaj.</string>
     <string name="empty_can_update_app_list">Bonege!\nĈiuj viaj aplikaĵoj estas ĝisdataj.</string>
-    <string name="requesting_root_access_body">Petado pri ĉefuzanta aliro…</string>
-    <string name="root_access_denied_title">Ĉefuzanta aliro malpermesita</string>
-    <string name="root_access_denied_body">Aŭ via Androida aparato ne havas ĉefuzantan aliron, aŭ vi malpermesis
-        ĉefuzantan aliron al F-Droid.
-    </string>
     <string name="install_error_unknown">Instalo malsukcesis pro nekonata eraro</string>
     <string name="uninstall_error_unknown">Malinstalo malsukcesis pro nekonata eraro</string>
-    <string name="system_install_denied_signature">La subskribo de aldonaĵo estas erara! Bonvolu krei erar-raporton!
-    </string>
-    <string name="system_install_button_install">Instali</string>
     <string name="system_install_denied_permissions">La privilegia aldonaĵo ne akiris ĉefuzantan permeson! Bonvolu krei
         erar-raporton!
     </string>
-    <string name="system_install_post_success">Privilegia F-Droid-aldonaĵo instalita</string>
-    <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
-    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estis instalita. Tio ĉi ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.</string>
-    <string name="system_install_post_fail_message">Instalado de privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli da informoj.</string>
-    <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>
-    <string name="system_install_question">Ĉu vi volas instali privilegian F-Droid-aldonaĵon?</string>
-    <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundoj.</string>
-    <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundoj kaj la aparato estos poste <b>restartita</b>.</string>
-    <string name="system_uninstall">Ĉu vi certe volas malinstali privilegian F-Droid-aldonaĵon?</string>
-    <string name="system_uninstall_button">Malinstali</string>
 
     <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
     <string name="swap_nfc_description">Se via amiko havas F-Droid kaj aktivigan NFC, vi povas tuŝi viajn aparatojn
@@ -315,8 +295,6 @@
         instali
     </string>
     <string name="download_pending">Atendado je instalado…</string>
-
-    <string name="system_install_not_supported">Instalado de privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en Android 5.1 aŭ posta.</string>
 
     <string name="keep_hour">1 horo</string>
     <string name="keep_day">1 tago</string>

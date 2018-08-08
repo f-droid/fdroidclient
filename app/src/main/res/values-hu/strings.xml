@@ -170,12 +170,6 @@
 
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt meghiúsult</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>
-    <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készítsen hibajelentést!</string>
-    <string name="system_install_button_install">Telepítés</string>
-    <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
-    <string name="system_install_warning">Ez legfeljebb 10 másodpercig tart.</string>
-    <string name="system_install_warning_lollipop">Ez akár legfeljebb 10 másodpercig tart, majd az eszköz <b>újraindul</b>.</string>
-    <string name="system_uninstall_button">Eltávolítás</string>
 
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
@@ -229,10 +223,6 @@
     <string name="useTor">Tor használata</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="requesting_root_access_body">Root hozzáférés kérése…</string>
-    <string name="root_access_denied_title">Root hozzáférés megtagadva</string>
-    <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.
-    </string>
     <string name="menu_email">E-mail a készítőnek</string>
     <string name="useTorSummary">Letöltési forgalom Tor használatára kényszerítése az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
@@ -280,8 +270,6 @@
     <string name="keep_install_history_summary">Az összes telepítés és eltávolítás naplójának tárolása egy privát tárolóban</string>
     <string name="update_auto_install">Frissítések automatikus telepítése</string>
     <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése a háttérben</string>
-    <string name="uninstall_system">Kiváltságos kiterjesztés frissítése/törlése</string>
-    <string name="uninstall_system_summary">A kiváltságos kiterjesztés részleteinek megnyitása a frissítéshez/törléshez</string>
     <string name="versions">Verziók</string>
     <string name="local_repo_running">Az F-Droid cserére kész</string>
 <string name="main_menu__latest_apps">Legújabb</string>
@@ -434,13 +422,6 @@
     </plurals>
 
     <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
-    <string name="system_install_post_success">Az F-Droid privilegizált kiterjesztés telepítve</string>
-    <string name="system_install_post_fail">Az F-Droid privilegizált kiterjesztés telepítése meghiúsult</string>
-    <string name="system_install_post_success_message">Az F-Droid privilegizált kiterjesztés telepítve. Ezzel az F-Droid beavatkozás nélkül tud alkalmazásokat telepíteni, frissíteni és eltávolítani.</string>
-    <string name="system_install_post_fail_message">Az F-Droid privilegizált kiterjesztés telepítése meghiúsult. A telepítési módszert nem minden Android disztribúció támogatja, további információkért keresse fel az F-Droid hibakövető rendszerét.</string>
-    <string name="system_install_question">Telepíti az F-Droid privilegizált kiterjesztést?</string>
-    <string name="system_uninstall">Eltávolítja az F-Droid privilegizált kiterjesztést?</string>
-    <string name="system_install_not_supported">Az F-Droid privilegizált kiterjesztés telepítése jelenleg nem támogatott Android 5.1 vagy későbbi rendszerek esetén.</string>
 
     <string name="swap_nfc_title">Érintés a cseréhez</string>
     <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi Hotspotot hozhat létre.</string>

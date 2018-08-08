@@ -47,8 +47,6 @@
     <string name="category_Time">Tijd</string>
     <string name="category_Writing">Schrijven</string>
 
-    <string name="system_install_button_install">Installeren</string>
-    <string name="system_uninstall_button">Verwijderen</string>
     <string name="swap_welcome">Welkom bij F-Droid!</string>
     <string name="swap_dont_show_again">Toont dit niet opnieuw</string>
     <string name="newPerms">Nieuw</string>
@@ -103,8 +101,6 @@
     <string name="notify_on">Toont een melding wanneer dat er updates beschikbaar zijn</string>
     <string name="system_installer">Systeemrechtenextensie</string>
     <string name="system_installer_on">Gebruikt de systeemrechtenextensie voor pakketten te installeren, bij te werken en verwijderen</string>
-    <string name="uninstall_system">Systeemrechtenextensie bijwerken/verwijderen</string>
-    <string name="uninstall_system_summary">Opent detailscherm van systeemrechtenextensie voor deze bij te werken of te verwijderen</string>
     <string name="local_repo_name">Naam van collectie gedeelde apps</string>
     <string name="local_repo_name_summary">De geadverteerden titel van uw collectie gedeelde apps: %s</string>
     <string name="local_repo_https_on">Gebruikt een versleutelde HTTPS://-verbinding voor gedeelde apps</string>
@@ -335,18 +331,7 @@
 
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon niet verwijderen door een onbekende fout</string>
-    <string name="system_install_denied_signature">De handtekening van de extensie klopt niet! Dient een bugmelding in!</string>
     <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Dient een bugmelding in!</string>
-    <string name="system_install_post_success">F-Droid-systeemrechtenextensie is geïnstalleerd</string>
-    <string name="system_install_post_fail">Installatie van F-Droid-systeemrechtenextensie is mislukt</string>
-    <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, bijwerken en verwijderen.</string>
-    <string name="system_install_post_fail_message">De installatie van de F-Droid-systeemrechtenextensie is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Bekijkt den F-Droid-bugtracker voor meer informatie.</string>
-    <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
-    <string name="system_install_question">Wilt ge de F-Droid-systeemrechtenextensie installeren?</string>
-    <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
-    <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
-    <string name="system_uninstall">Wilt ge de F-Droid-systeemrechtenextensie verwijderen?</string>
-    <string name="system_install_not_supported">Installatie van de F-Droid-systeemrechtenextensie wordt voor het moment niet ondersteund op Android 5.1 of hoger.</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen in de buurt!</string>
     <string name="nearby_splash__find_people_button">Zoekt mensen in de buurt</string>
@@ -496,9 +481,6 @@
     <string name="theme_dark">Donker</string>
     <string name="theme_night">Nacht</string>
 
-    <string name="requesting_root_access_body">Roottoegang aanvragen…</string>
-    <string name="root_access_denied_title">Roottoegang geweigerd</string>
-    <string name="root_access_denied_body">Uw Android-apparaat is niet geroot, of ge hebt F-Droid geen roottoegang gegeven.</string>
     <string name="over_wifi">Via wifi</string>
     <string name="over_data">Via mobiel netwerk</string>
     <string name="over_network_always_summary">Deze verbinding altijd gebruiken indien beschikbaar</string>
