@@ -160,6 +160,7 @@ dependencies {
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
 
     testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation "com.android.support.test:monitor:1.0.2"
     testImplementation 'org.bouncycastle:bcprov-jdk15on:1.59'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.7.22'
