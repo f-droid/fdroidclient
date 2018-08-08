@@ -42,16 +42,16 @@ public class SanitizedFile extends File {
      * the path to an installed .apk on disk. In such situations, we can't meaningfully
      * sanitize it, but will still need to pass to a function which only allows SanitizedFile's
      * as arguments (because they interact with, e.g. shells).
-     *
+     * <p>
      * To illustrate, imagine perfectly valid file path: "/tmp/../secret/file.txt",
      * one cannot distinguish between:
-     *
-     *   "/tmp/" (known safe directory) + "../secret/file.txt" (suspicious looking file name)
-     *
-     *     and
-     *
-     *   "/tmp/../secret/" (known safe directory) + "file.txt" (known safe file name)
-     *
+     * <p>
+     * "/tmp/" (known safe directory) + "../secret/file.txt" (suspicious looking file name)
+     * <p>
+     * and
+     * <p>
+     * "/tmp/../secret/" (known safe directory) + "file.txt" (known safe file name)
+     * <p>
      * I guess the best this method offers us is the ability to uniquely trace the different
      * ways in which files are created and handled. It should make it easier to find and
      * prevent suspect usages of methods which only expect SanitizedFile's, but are given
@@ -62,7 +62,7 @@ public class SanitizedFile extends File {
     }
 
     /**
-     * @see {@link org.fdroid.fdroid.data.SanitizedFile#knownSanitized(String)}
+     * @see org.fdroid.fdroid.data.SanitizedFile#knownSanitized(String)
      */
     public static SanitizedFile knownSanitized(File file) {
         return new SanitizedFile(file);

@@ -10,9 +10,6 @@ import org.acra.collections.ImmutableSet;
 import org.acra.collector.CrashReportData;
 import org.acra.config.ACRAConfiguration;
 import org.acra.sender.ReportSender;
-import org.acra.sender.ReportSenderException;
-
-import java.util.Iterator;
 
 public class CrashReportSender implements ReportSender {
 
@@ -24,7 +21,7 @@ public class CrashReportSender implements ReportSender {
 
     public void send(@NonNull Context context, @NonNull CrashReportData errorContent) {
         Intent emailIntent = new Intent("android.intent.action.SENDTO");
-        emailIntent.setData(Uri.fromParts("mailto", this.config.mailTo(), (String) null));
+        emailIntent.setData(Uri.fromParts("mailto", this.config.mailTo(), null));
         emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         String[] subjectBody = this.buildSubjectBody(context, errorContent);
         emailIntent.putExtra("android.intent.extra.SUBJECT", subjectBody[0]);
@@ -33,17 +30,14 @@ public class CrashReportSender implements ReportSender {
     }
 
     private String[] buildSubjectBody(Context context, CrashReportData errorContent) {
-        ImmutableSet fields = this.config.getReportFields();
+        ImmutableSet<ReportField> fields = this.config.getReportFields();
         if (fields.isEmpty()) {
             return new String[]{"No ACRA Report Fields found."};
         }
 
         String subject = context.getPackageName() + " Crash Report";
         StringBuilder builder = new StringBuilder();
-        Iterator var4 = fields.iterator();
-
-        while (var4.hasNext()) {
-            ReportField field = (ReportField) var4.next();
+        for (ReportField field : fields) {
             builder.append(field.toString()).append('=');
             builder.append(errorContent.get(field));
             builder.append('\n');
