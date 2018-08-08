@@ -15,6 +15,7 @@
         <ignore path="src/main/res/drawable/category_**.png" />
         <ignore path="src/main/res/values/dimens.xml"/>
         <ignore path="src/main/res/values/styles.xml"/>
+        <ignore path="src/full/res/values/styles.xml"/>
         <!-- keep a single strings.xml for all build flavors -->
         <ignore path="src/main/res/values**/strings.xml"/>
     </issue>
