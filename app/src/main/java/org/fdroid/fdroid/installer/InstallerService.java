@@ -23,12 +23,15 @@ package org.fdroid.fdroid.installer;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -131,8 +134,8 @@ public class InstallerService extends JobIntentService {
      * is not enough to catch all possible nulls.
      * <p>
      * If you quickly cycle between installing an app and uninstalling it, then
-     * {@link org.fdroid.fdroid.data.App#installedApk} will still be null when
-     * {@link org.fdroid.fdroid.AppDetails2#startUninstall()} calls
+     * {@link App#installedApk} will still be null when
+     * {@link AppDetails2#startUninstall()} calls
      * this method.  It is better to crash earlier here, before the {@link Intent}
      * is sent with a null {@link Apk} instance since this service is set to
      * receive Sticky Intents.  That means they will automatically be resent
@@ -143,7 +146,9 @@ public class InstallerService extends JobIntentService {
      * @param apk     {@link Apk} instance of the app that will be uninstalled
      */
     public static void uninstall(Context context, @NonNull Apk apk) {
-        Objects.requireNonNull(apk);
+        if (Build.VERSION.SDK_INT >= 19) {
+            Objects.requireNonNull(apk);
+        }
 
         Installer.sendBroadcastUninstall(context, apk, Installer.ACTION_UNINSTALL_STARTED);
 
