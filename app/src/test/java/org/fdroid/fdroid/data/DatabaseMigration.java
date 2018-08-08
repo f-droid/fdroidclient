@@ -38,6 +38,7 @@ public class DatabaseMigration {
         Preferences.setupForTests(context);
         SQLiteOpenHelper opener = new MigrationRunningOpenHelper(context);
         opener.getReadableDatabase();
+        opener.close();
     }
 
     /**
