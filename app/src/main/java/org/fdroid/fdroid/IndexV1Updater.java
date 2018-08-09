@@ -47,11 +47,19 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLKeyException;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLProtocolException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ConnectException;
+import java.net.HttpRetryException;
+import java.net.NoRouteToHostException;
+import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -94,6 +102,7 @@ public class IndexV1Updater extends RepoUpdater {
     /**
      * @return whether this successfully found an index of this version
      * @throws RepoUpdater.UpdateException
+     * @see org.fdroid.fdroid.net.DownloaderService#handleIntent(android.content.Intent)
      */
     @Override
     public boolean update() throws RepoUpdater.UpdateException {
@@ -119,7 +128,10 @@ public class IndexV1Updater extends RepoUpdater {
             }
 
             processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
-        } catch (ConnectException | SocketTimeoutException e) {
+        } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
+                | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
+                | ProtocolException | UnknownHostException e) {
+            // if the above list changes, also change below and in DownloaderService.handleIntent()
             Utils.debugLog(TAG, "Trying to download the index from a mirror");
             // Mirror logic here, so that the default download code is untouched.
             String mirrorUrl;
@@ -146,7 +158,9 @@ public class IndexV1Updater extends RepoUpdater {
 
                     processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
                     break;
-                } catch (ConnectException | SocketTimeoutException e2) {
+                } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
+                        | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
+                        | ProtocolException | UnknownHostException e2) {
                     // We'll just let this try the next mirror
                     Utils.debugLog(TAG, "Trying next mirror");
                 } catch (IOException e2) {

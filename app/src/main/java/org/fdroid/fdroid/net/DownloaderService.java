@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.HttpRetryException;
 import java.net.NoRouteToHostException;
+import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -193,6 +194,7 @@ public class DownloaderService extends Service {
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
+     * @see org.fdroid.fdroid.IndexV1Updater#update()
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
@@ -225,7 +227,8 @@ public class DownloaderService extends Service {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, originalUrlString);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | UnknownHostException e) {
+                | ProtocolException | UnknownHostException e) {
+            // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, e.getLocalizedMessage());
             sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, originalUrlString);
         } catch (IOException e) {
