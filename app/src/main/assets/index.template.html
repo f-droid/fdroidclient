@@ -71,6 +71,28 @@
             color: #fff;
         }
 
+        details {
+            margin-left: 1em;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul > li {
+            padding: 1em 0;
+        }
+
+        ul > li a {
+            font-size: xx-large;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul > li a img {
+            padding-right: 0.5em;
+        }
+
         #download-from-web {
             padding-left: 2em;
             padding-right: 2em;
@@ -105,5 +127,12 @@
             <img src="swap-tick-not-done.png" class="tick not-done" alt="Not done" />
         </li>
     </ol>
+    <br/><br/><br/><br/>
+    <details>
+      <summary>Available Apps</summary>
+      <ul>
+        {{APP_LIST}}
+      </ul>
+    </details>
 </body>
 </html>
