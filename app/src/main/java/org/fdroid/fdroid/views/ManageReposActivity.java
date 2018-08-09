@@ -37,6 +37,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
@@ -81,6 +83,8 @@ public class ManageReposActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
     private static final String TAG = "ManageReposActivity";
 
+    public static final String EXTRA_FINISH_AFTER_ADDING_REPO = "finishAfterAddingRepo";
+
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
 
     private enum AddRepoState {
@@ -95,7 +99,7 @@ public class ManageReposActivity extends AppCompatActivity
      * True if activity started with an intent such as from QR code. False if
      * opened from, e.g. the main menu.
      */
-    private boolean isImportingRepo;
+    private boolean finishAfterAddingRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +161,16 @@ public class ManageReposActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.action_add_repo:
                 showAddRepo();
+                return true;
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent) || isTaskRoot()) {
+                    TaskStackBuilder.create(this)
+                            .addNextIntentWithParentStack(upIntent)
+                            .startActivities();
+                } else {
+                    NavUtils.navigateUpTo(this, upIntent);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -274,7 +288,7 @@ public class ManageReposActivity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            if (isImportingRepo) {
+                            if (finishAfterAddingRepo) {
                                 ManageReposActivity.this.finish();
                             }
                         }
@@ -789,7 +803,7 @@ public class ManageReposActivity extends AppCompatActivity
             if (addRepoDialog.isShowing()) {
                 addRepoDialog.dismiss();
             }
-            if (isImportingRepo) {
+            if (finishAfterAddingRepo) {
                 setResult(RESULT_OK);
                 finish();
             }
@@ -800,7 +814,7 @@ public class ManageReposActivity extends AppCompatActivity
         /* an URL from a click, NFC, QRCode scan, etc */
         NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
         if (newRepoConfig.isValidRepo()) {
-            isImportingRepo = true;
+            finishAfterAddingRepo = intent.getBooleanExtra(EXTRA_FINISH_AFTER_ADDING_REPO, true);
             showAddRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint(),
                     newRepoConfig.getUsername(), newRepoConfig.getPassword());
             checkIfNewRepoOnSameWifi(newRepoConfig);

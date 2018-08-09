@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.net.URI;
@@ -88,6 +89,7 @@ public class AddRepoIntentService extends IntentService {
                 }
             }
         }
+        intent.putExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO, false);
         intent.setComponent(new ComponentName(this, MainActivity.class));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

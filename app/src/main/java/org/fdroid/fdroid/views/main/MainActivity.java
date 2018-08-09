@@ -353,7 +353,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     confirmIntent.setData(intent.getData());
                     startActivityForResult(confirmIntent, REQUEST_SWAP);
                 } else {
-                    startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
+                    Intent clean = new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class);
+                    if (intent.hasExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO)) {
+                        clean.putExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO,
+                                intent.getBooleanExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO, true));
+                    }
+                    startActivity(clean);
                 }
                 finish();
             } else if (parser.getErrorMessage() != null) {
