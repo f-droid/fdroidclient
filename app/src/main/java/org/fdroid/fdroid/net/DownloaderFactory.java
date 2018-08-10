@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import org.fdroid.fdroid.data.Repo;
@@ -29,11 +30,11 @@ public class DownloaderFactory {
         Downloader downloader;
 
         String scheme = uri.getScheme();
-        if ("bluetooth".equals(scheme)) {
+        if (BluetoothDownloader.SCHEME.equals(scheme)) {
             downloader = new BluetoothDownloader(uri, destFile);
-        } else if ("content".equals(scheme)) {
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
             downloader = new TreeUriDownloader(uri, destFile);
-        } else if ("file".equals(scheme)) {
+        } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             downloader = new LocalFileDownloader(uri, destFile);
         } else {
             final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
