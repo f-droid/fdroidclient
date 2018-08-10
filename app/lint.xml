@@ -25,6 +25,13 @@
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
     <issue id="GetInstance" severity="error"/>
     <issue id="PackageManagerGetSignatures" severity="error"/>
+    <issue id="TrustAllX509TrustManager" severity="error">
+      <!-- these come from included libraries -->
+        <ignore path="org/apache/commons/net/ftp/FTPSTrustManager.class"/>
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$1.class"/>
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$2.class"/>
+        <ignore path="org/apache/commons/net/util/TrustManagerUtils$TrustManager.class"/>
+    </issue>
 
     <issue id="PluralsCandidate" severity="error"/>
     <issue id="HardcodedText" severity="error"/>
