@@ -9,6 +9,8 @@
 
     <issue id="ImpliedQuantity" severity="error"/>
     <issue id="DefaultLocale" severity="error"/>
+    <issue id="NewApi" severity="error"/>
+    <issue id="InlinedApi" severity="error"/>
 
     <!-- These are important to us, so promote from warning to error -->
     <issue id="UnusedResources" severity="error">
