@@ -24,6 +24,7 @@
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
     <issue id="GetInstance" severity="error"/>
+    <issue id="PackageManagerGetSignatures" severity="error"/>
 
     <issue id="PluralsCandidate" severity="error"/>
     <issue id="HardcodedText" severity="error"/>

@@ -273,7 +273,13 @@ public class InstalledAppProviderService extends JobIntentService {
      * <p>
      * Can still return null, as there is potentially race conditions to do with uninstalling apps
      * such that querying the {@link PackageManager} for a given package may throw an exception.
+     * <p>
+     * The {@code PackageManagerGetSignatures} lint check is not relevant here since this is doing
+     * nothing related to verifying the signature.  The APK signatures are just processed to
+     * produce the unique ID of the signer to determine compatibility.  This {@code Service} does
+     * nothing related to checking valid APK signatures.
      */
+    @SuppressWarnings("PackageManagerGetSignatures")
     @Nullable
     private PackageInfo getPackageInfo(Intent intent, String packageName) {
         PackageInfo packageInfo = intent.getParcelableExtra(EXTRA_PACKAGE_INFO);
