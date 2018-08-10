@@ -2,22 +2,19 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-
-import java.io.IOException;
-import java.net.InetAddress;
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action0;
+import rx.subscriptions.Subscriptions;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Action0;
-import rx.subscriptions.Subscriptions;
+import java.io.IOException;
+import java.net.InetAddress;
 
 @SuppressWarnings("LineLength")
 final class BonjourFinder extends PeerFinder implements ServiceListener {
@@ -58,7 +55,7 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
         Utils.debugLog(TAG, "Requested Bonjour (mDNS) scan for peers.");
 
         if (wifiManager == null) {
-            wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             multicastLock = wifiManager.createMulticastLock(context.getPackageName());
             multicastLock.setReferenceCounted(false);
         }
