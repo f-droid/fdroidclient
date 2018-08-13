@@ -28,7 +28,6 @@ import android.net.Uri;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -47,8 +46,7 @@ import java.util.List;
 public class InstallHistoryService extends IntentService {
     public static final String TAG = "InstallHistoryService";
 
-    public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".installer";
-    public static final Uri LOG_URI = Uri.parse("content://" + AUTHORITY + "/install_history/all");
+    public static final Uri LOG_URI = Uri.parse("content://" + Installer.AUTHORITY + "/install_history/all");
 
     private static BroadcastReceiver broadcastReceiver;
 

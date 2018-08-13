@@ -171,6 +171,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_add_repo">New Repository</string>
 
     <string name="menu_launch">Run</string>
+    <string name="menu_open">Open</string>
     <string name="menu_share">Share</string>
     <string name="menu_install">Install</string>
     <string name="menu_uninstall">Uninstall</string>

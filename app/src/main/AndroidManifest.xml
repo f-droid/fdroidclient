@@ -129,7 +129,7 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/install_history_file_provider"/>
+                    android:resource="@xml/installer_file_provider"/>
         </provider>
 
         <activity
