@@ -1,6 +1,7 @@
 package org.fdroid.fdroid;
 
 import android.app.Instrumentation;
+import android.os.Build;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.ViewInteraction;
@@ -43,8 +44,21 @@ import static org.junit.Assert.assertTrue;
 public class MainActivityEspressoTest {
     public static final String TAG = "MainActivityEspressoTest";
 
+    /**
+     * ARM emulators are too slow to run these tests in a useful way.  The sad
+     * thing is that it would probably work if Android didn't put up the ANR
+     * "Process system isn't responding" on boot each time.  There seems to be no
+     * way to increase the ANR timeout.
+     */
     @BeforeClass
     public static void classSetUp() {
+        Log.i(TAG, "setUp " + isEmulator() + " " + Build.SUPPORTED_ABIS[0]);
+        if (Build.SUPPORTED_ABIS[0].startsWith("arm") && isEmulator()) {
+            Log.e(TAG, "SKIPPING TEST: ARM emulators are too slow to run these tests in a useful way");
+            org.junit.Assume.assumeTrue(false);
+            return;
+        }
+
         IdlingPolicies.setIdlingResourceTimeout(10, TimeUnit.MINUTES);
         IdlingPolicies.setMasterPolicyTimeout(10, TimeUnit.MINUTES);
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
@@ -62,6 +76,17 @@ public class MainActivityEspressoTest {
     @AfterClass
     public static void classTearDown() {
         SystemAnimations.enableAll(InstrumentationRegistry.getTargetContext());
+    }
+
+    public static boolean isEmulator() {
+        return Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || "google_sdk".equals(Build.PRODUCT);
     }
 
     @Rule
