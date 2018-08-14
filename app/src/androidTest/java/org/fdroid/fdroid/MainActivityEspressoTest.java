@@ -9,6 +9,9 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 import android.view.View;
 import org.fdroid.fdroid.views.BannerUpdatingRepos;
@@ -71,6 +74,15 @@ public class MainActivityEspressoTest {
             e.printStackTrace();
         }
         SystemAnimations.disableAll(InstrumentationRegistry.getTargetContext());
+
+        // dismiss the ANR or any other system dialogs that might be there
+        UiObject button = new UiObject(new UiSelector().text("Wait").enabled(true));
+        try {
+            button.click();
+        } catch (UiObjectNotFoundException e) {
+            Log.d(TAG, e.getLocalizedMessage());
+        }
+        new UiWatchers().registerAnrAndCrashWatchers();
     }
 
     @AfterClass
