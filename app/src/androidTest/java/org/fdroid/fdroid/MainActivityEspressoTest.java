@@ -1,19 +1,25 @@
 package org.fdroid.fdroid;
 
+import android.app.Instrumentation;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.UiDevice;
 import android.util.Log;
 import android.view.View;
 import org.fdroid.fdroid.views.BannerUpdatingRepos;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.hamcrest.Matchers;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -37,8 +43,25 @@ import static org.junit.Assert.assertTrue;
 public class MainActivityEspressoTest {
     public static final String TAG = "MainActivityEspressoTest";
 
-    static {
+    @BeforeClass
+    public static void classSetUp() {
         IdlingPolicies.setIdlingResourceTimeout(10, TimeUnit.MINUTES);
+        IdlingPolicies.setMasterPolicyTimeout(10, TimeUnit.MINUTES);
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        try {
+            UiDevice.getInstance(instrumentation)
+                    .executeShellCommand("pm grant "
+                            + instrumentation.getTargetContext().getPackageName()
+                            + " android.permission.SET_ANIMATION_SCALE");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SystemAnimations.disableAll(InstrumentationRegistry.getTargetContext());
+    }
+
+    @AfterClass
+    public static void classTearDown() {
+        SystemAnimations.enableAll(InstrumentationRegistry.getTargetContext());
     }
 
     @Rule
@@ -130,7 +153,7 @@ public class MainActivityEspressoTest {
     }
 
     @Test
-    public void showLatest() throws InterruptedException {
+    public void showLatest() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
         }

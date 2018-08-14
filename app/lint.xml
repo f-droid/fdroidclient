@@ -50,6 +50,7 @@
     </issue>
 
     <issue id="ProtectedPermissions" severity="error">
+        <ignore path="src/debug/AndroidManifest.xml"/>
         <ignore path="src/full/AndroidManifest.xml"/>
     </issue>
 
