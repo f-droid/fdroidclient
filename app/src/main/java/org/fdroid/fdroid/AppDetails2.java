@@ -34,7 +34,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
@@ -61,7 +60,6 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
-import org.fdroid.fdroid.views.OverscrollLinearLayoutManager;
 import org.fdroid.fdroid.views.ShareChooserDialog;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
@@ -80,8 +78,6 @@ public class AppDetails2 extends AppCompatActivity
 
     private FDroidApp fdroidApp;
     private App app;
-    private CoordinatorLayout coordinatorLayout;
-    private AppBarLayout appBarLayout;
     private RecyclerView recyclerView;
     private AppDetailsRecyclerViewAdapter adapter;
     private LocalBroadcastManager localBroadcastManager;
@@ -117,48 +113,14 @@ public class AppDetails2 extends AppCompatActivity
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
-        appBarLayout = (AppBarLayout) coordinatorLayout.findViewById(R.id.app_bar);
         recyclerView = (RecyclerView) findViewById(R.id.rvDetails);
         adapter = new AppDetailsRecyclerViewAdapter(this, app, this);
-        OverscrollLinearLayoutManager lm = new OverscrollLinearLayoutManager(this,
-                LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
 
         // Has to be invoked after AppDetailsRecyclerViewAdapter is created.
         refreshStatus();
 
-        /* The recyclerView/AppBarLayout combo has a bug that prevents a "fling" from the bottom
-         * to continue all the way to the top by expanding the AppBarLayout. It will instead stop
-         * with the app bar in a collapsed state. See here: https://code.google.com/p/android/issues/detail?id=177729
-         * Not sure this is the exact issue, but it is true that while in a fling the RecyclerView will
-         * consume the scroll events quietly, without calling the nested scrolling mechanism.
-         * We fix this behavior by using an OverscrollLinearLayoutManager that will give us information
-         * of overscroll, i.e. when we have not consumed all of a scroll event, and use this information
-         * to send the scroll to the app bar layout so that it will expand itself.
-         */
-        lm.setOnOverscrollListener(new OverscrollLinearLayoutManager.OnOverscrollListener() {
-            @Override
-            public int onOverscrollX(int overscroll) {
-                return 0;
-            }
-
-            @Override
-            public int onOverscrollY(int overscroll) {
-                int consumed = 0;
-                if (overscroll < 0) {
-                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)
-                            appBarLayout.getLayoutParams();
-                    CoordinatorLayout.Behavior behavior = lp.getBehavior();
-                    if (behavior != null && behavior instanceof AppBarLayout.Behavior) {
-                        ((AppBarLayout.Behavior) behavior).onNestedScroll(
-                                coordinatorLayout, appBarLayout, recyclerView, 0, 0, 0, overscroll);
-                        consumed = overscroll; // Consume all of it!
-                    }
-                }
-                return consumed;
-            }
-        });
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
 
