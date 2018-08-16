@@ -17,6 +17,7 @@ import android.view.View;
 import org.fdroid.fdroid.views.BannerUpdatingRepos;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.hamcrest.Matchers;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -99,6 +100,18 @@ public class MainActivityEspressoTest {
                 || Build.MANUFACTURER.contains("Genymotion")
                 || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
                 || "google_sdk".equals(Build.PRODUCT);
+    }
+
+    /**
+     * Placate {@link android.os.StrictMode}
+     *
+     * @see <a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/6f3a38f3afd79ed6dddcef5c83cb442d6749e2ff"> Run finalizers before counting for StrictMode</a>
+     */
+    @After
+    public void tearDown() {
+        System.gc();
+        System.runFinalization();
+        System.gc();
     }
 
     @Rule
