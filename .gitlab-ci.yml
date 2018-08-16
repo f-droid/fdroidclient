@@ -54,6 +54,8 @@ errorprone:
     - ./gradlew assembleDebug
   allow_failure: true
 
+# once these prove stable, the task should be switched to
+# connectedCheck to test all the build flavors
 .connected-template: &connected-template
   script:
     - ./gradlew assembleDebug
@@ -67,7 +69,7 @@ errorprone:
     - emulator64-arm -avd avd$AVD_SDK -no-audio -no-window -no-snapstorage &
     - wait-for-emulator
     - adb shell input keyevent 82 &
-    - ./gradlew connectedCheck || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
+    - ./gradlew connectedFullDebugAndroidTest || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
 
 connected24:
   retry: 1
