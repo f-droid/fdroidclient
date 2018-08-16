@@ -437,6 +437,10 @@ public class AppDetailsRecyclerViewAdapter
                 sbWhatsNew.append(app.whatsNew);
                 whatsNewView.setText(sbWhatsNew);
                 whatsNewView.setVisibility(View.VISIBLE);
+
+                // Set focus on the header section to prevent auto scrolling to
+                // the changelog if its content becomes too long to fit on screen.
+                recyclerView.requestChildFocus(itemView, itemView);
             }
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
