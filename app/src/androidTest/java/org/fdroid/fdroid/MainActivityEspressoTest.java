@@ -20,6 +20,7 @@ import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityEspressoTest {
