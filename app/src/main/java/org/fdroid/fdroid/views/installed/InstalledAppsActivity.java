@@ -22,17 +22,20 @@ package org.fdroid.fdroid.views.installed;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
@@ -100,4 +103,35 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
         adapter.setApps(null);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.installed_apps, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_share:
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("packageName,versionCode,versionName\n");
+                for (int i = 0; i < adapter.getItemCount(); i++) {
+                    App app = adapter.getItem(i);
+                    if (app != null) {
+                        stringBuilder.append(app.packageName).append(',')
+                                .append(app.installedVersionCode).append(',')
+                                .append(app.installedVersionName).append('\n');
+                    }
+                }
+                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this)
+                        .setSubject(getString(R.string.send_installed_apps))
+                        .setChooserTitle(R.string.send_installed_apps)
+                        .setText(stringBuilder.toString())
+                        .setType("text/csv");
+                startActivity(intentBuilder.getIntent());
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Schema;
@@ -57,5 +56,14 @@ class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemC
     public void setApps(@Nullable Cursor cursor) {
         this.cursor = cursor;
         notifyDataSetChanged();
+    }
+
+    @Nullable
+    public App getItem(int position) {
+        if (cursor == null) {
+            return null;
+        }
+        cursor.moveToPosition(position);
+        return new App(cursor);
     }
 }
