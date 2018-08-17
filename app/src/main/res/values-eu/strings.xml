@@ -293,7 +293,7 @@
     <string name="permissions">Baimenak</string>
     <string name="theme_night">Gaua</string>
     <string name="menu_settings">Ezarpenak</string>
-    <string name="update_auto_download">Jaso eguneraketak automatikoki</string>
+    <string name="update_auto_download">Deskargatu eguneraketak automatikoki</string>
     <string name="update_auto_download_summary">Eguneraketak automatikoki deskargatzen dira eta berauek instalatzeko jakinarazten zaizu</string>
     <string name="login_title">Autentifikazioa behar da</string>
     <string name="login_name">Erabiltzaile-izena</string>

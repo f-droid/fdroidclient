@@ -537,8 +537,19 @@
 
     <string name="prompt_to_send_crash_reports">Dotázat se na odeslání hlášení o pádu</string>
     <string name="prompt_to_send_crash_reports_summary">Shromáždí důležitá data o pádu aplikace a před odesláním vývojářúm se dotáže</string>
-    <string name="hide_all_notifications">Nezobrazovat žádná upozornění</string>
+    <string name="hide_all_notifications">Skrýt všechna upozornění</string>
     <string name="hide_all_notifications_summary">Nezobrazovat žádná upozornění v notifikační liště ani ve stavovém řádku.</string>
     <string name="install_history">Historie instalací</string>
     <string name="install_history_summary">Zobrazí soukromý seznam všech instalací a odinstalací</string>
+    <string name="send_install_history">Odeslat historii instalací</string>
+    <string name="send_history_csv">%s historii instalací jako CSV soubor</string>
+    <string name="send_version_and_uuid">Poslat verzi a nikde se neopakující identifikátor na servery</string>
+    <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodný, neopakující se identifikátor (změna se projeví po restartu aplikace).</string>
+    <string name="allow_push_requests">Umožnit repozitářům instalovat/odinstalovat aplikace</string>
+    <string name="allow_push_requests_summary">Metadata repozitáře mohou obsahovat push požadavky na instalaci nebo odinstalaci aplikací</string>
+    <string name="updates_disabled_by_settings">Veškeré aktualizace vypnuty kvůli nastavením dat/WiFi</string>
+
+    <string name="antinosourcesince">Zdrojový kód už není k dispozici, aktualizace nejsou možné.</string>
+
+    <string name="share_repository">Sdílet repozitář</string>
     </resources>
