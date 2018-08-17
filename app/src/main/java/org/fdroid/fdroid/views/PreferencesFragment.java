@@ -23,7 +23,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views.fragments;
+package org.fdroid.fdroid.views;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -55,7 +55,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.views.LiveSeekBarPreference;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {

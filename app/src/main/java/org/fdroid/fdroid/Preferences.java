@@ -193,7 +193,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * of the Privileged Extension.  The preference provides a way to disable using the
      * Privileged Extension even though its installed.
      *
-     * @see org.fdroid.fdroid.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
+     * @see org.fdroid.fdroid.views.PreferencesFragment#initPrivilegedInstallerPreference()
      */
     public boolean isPrivilegedInstallerEnabled() {
         return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, true);

@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.HttpRetryException;
 import java.net.NoRouteToHostException;
+import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -193,6 +194,7 @@ public class DownloaderService extends Service {
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
+     * @see org.fdroid.fdroid.IndexV1Updater#update()
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
@@ -225,7 +227,8 @@ public class DownloaderService extends Service {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, originalUrlString);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | UnknownHostException e) {
+                | ProtocolException | UnknownHostException e) {
+            // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, e.getLocalizedMessage());
             sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, originalUrlString);
         } catch (IOException e) {
@@ -271,29 +274,31 @@ public class DownloaderService extends Service {
 
     /**
      * Add a URL to the download queue.
-     * <p/>
+     * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context   this app's {@link Context}
-     * @param urlString The URL to add to the download queue
+     * @param context         this app's {@link Context}
+     * @param mirrorUrlString The URL to add to the download queue
+     * @param repoId          the database ID number representing one repo
+     * @param urlString       the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String urlString, long repoId, String originalUrlString) {
-        if (TextUtils.isEmpty(urlString)) {
+    public static void queue(Context context, String mirrorUrlString, long repoId, String urlString) {
+        if (TextUtils.isEmpty(mirrorUrlString)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
+        Utils.debugLog(TAG, "Preparing " + mirrorUrlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(mirrorUrlString));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
-        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, originalUrlString);
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, urlString);
         context.startService(intent);
     }
 
     /**
      * Remove a URL to the download queue, even if it is currently downloading.
-     * <p/>
+     * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
      * @param context   this app's {@link Context}

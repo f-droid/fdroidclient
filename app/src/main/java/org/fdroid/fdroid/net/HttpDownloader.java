@@ -37,7 +37,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -106,7 +105,7 @@ public class HttpDownloader extends Downloader {
      * @see <a href="http://lucb1e.com/rp/cookielesscookies">Cookieless cookies</a>
      */
     @Override
-    public void download() throws ConnectException, IOException, InterruptedException {
+    public void download() throws IOException, InterruptedException {
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
         tmpConn.setRequestMethod("HEAD");

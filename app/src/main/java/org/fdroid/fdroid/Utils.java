@@ -362,7 +362,7 @@ public final class Utils {
         String ret = null;
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            MessageDigest digest = MessageDigest.getInstance("sha256");
             digest.update(key);
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
