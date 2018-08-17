@@ -72,7 +72,7 @@ errorprone:
     - emulator64-arm -avd avd$AVD_SDK -no-audio -no-window -no-snapstorage &
     - wait-for-emulator
     - adb shell input keyevent 82 &
-    - ./gradlew connectedFullDebugAndroidTest || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
+    - ./gradlew connectedFullDebugAndroidTest || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected24:
   retry: 1
