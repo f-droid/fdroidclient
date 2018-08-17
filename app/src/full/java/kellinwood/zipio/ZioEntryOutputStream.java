@@ -28,18 +28,25 @@ public class ZioEntryOutputStream extends OutputStream {
     int crcValue = 0;
     OutputStream wrapped;
     OutputStream downstream;
+    Deflater deflater;
 
     public ZioEntryOutputStream(int compression, OutputStream wrapped) {
         this.wrapped = wrapped;
-        if (compression != 0)
-            downstream = new DeflaterOutputStream(wrapped, new Deflater(Deflater.BEST_COMPRESSION, true));
-        else downstream = wrapped;
+        if (compression != 0) {
+            deflater = new Deflater(Deflater.BEST_COMPRESSION, true);
+            downstream = new DeflaterOutputStream(wrapped, deflater);
+        } else {
+            downstream = wrapped;
+        }
     }
 
     public void close() throws IOException {
         downstream.flush();
         downstream.close();
         crcValue = (int) crc.getValue();
+        if (deflater != null) {
+            deflater.end();
+        }
     }
 
     public int getCRC() {
