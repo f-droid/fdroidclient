@@ -32,7 +32,7 @@
     <string name="repo_add_url">Adres repozytorium</string>
     <string name="repo_add_fingerprint">Podpis cyfrowy (opcjonalnie)</string>
     <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
-    <string name="menu_search">Wyszukaj</string>
+    <string name="menu_search">Szukaj</string>
     <string name="menu_add_repo">Nowe repozytorium</string>
     <string name="menu_launch">Uruchom</string>
     <string name="menu_share">Udostępnij</string>
@@ -40,8 +40,8 @@
     <string name="menu_uninstall">Odinstaluj</string>
     <string name="menu_ignore_this">Ignoruj tę aktualizację</string>
     <string name="menu_website">Strona internetowa</string>
-    <string name="menu_upgrade">Uaktualnij</string>
-    <string name="details_notinstalled">Nie zainstalowano</string>
+    <string name="menu_upgrade">Zaaktualizuj</string>
+    <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
     <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>
@@ -81,7 +81,7 @@
     <string name="repo_num_apps">Liczba aplikacji</string>
     <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego (SHA-256)</string>
     <string name="repo_description">Opis</string>
-    <string name="repo_last_update">Ostatnia modyfikacja</string>
+    <string name="repo_last_update">Najnowsza aktualizacja</string>
     <string name="repo_name">Nazwa</string>
     <string name="unknown">Nieznany</string>
     <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>
@@ -157,7 +157,7 @@
     <string name="repo_added">Dodano repozytorium paczek %1$s.</string>
     <string name="repo_searching_address">Szukam repozytorium paczek pod adresem:
 \n%1$s</string>
-    <string name="pref_language">Język aplikacji</string>
+    <string name="pref_language">Język</string>
     <string name="pref_language_default">Domyślny systemowy</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -339,7 +339,7 @@
     <string name="notification_title_summary_installing">Instalowanie</string>
     <string name="notification_title_summary_installed">Instalacja powiodła się</string>
     <string name="notification_title_summary_install_error">Instalacja zakończona niepowodzeniem</string>
-    <string name="notification_action_update">Aktualizuj</string>
+    <string name="notification_action_update">Aktualizacja</string>
     <string name="notification_action_cancel">Anuluj</string>
     <string name="notification_action_install">Zainstaluj</string>
 

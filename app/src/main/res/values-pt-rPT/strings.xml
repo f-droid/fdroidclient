@@ -20,9 +20,7 @@
     <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
-    <string name="system_installer_on">Utilizar a extensão privilegiada do F-Droid para instalar, atualizar e remover
-        pacotes
-    </string>
+    <string name="system_installer_on">Utilizar a extensão privilegiada para instalar, atualizar e remover pacotes</string>
     <string name="local_repo_name">Nome do seu repositório local</string>
     <string name="local_repo_name_summary">O título anunciado do seu repositório local: %s</string>
     <string name="local_repo_https_on">Utilizar ligação HTTPS:// para o repositório local</string>
@@ -156,18 +154,16 @@
     </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">Ao apagar um repositório, as aplicações por ele
-        disponibilizadas não estarão disponíveis no F-Droid.
-
-        Nota:
-        todas as aplicações instaladas não serão afetadas.
-    </string>
+    <string name="repo_confirm_delete_body">Ao apagar um repositório, as aplicações por ele disponibilizadas ficarão indisponíveis.
+\n
+\nNota: todas as aplicações instaladas não serão afetadas.</string>
     <string name="repo_disabled_notification">%1$s desativado.
 
         Tem que ativar o repositório para poder instalar aplicações.
     </string>
     <string name="repo_added">Repositório %1$s guardado.</string>
-    <string name="repo_searching_address">A procurar um repositório F-Droid em\n%1$s</string>
+    <string name="repo_searching_address">A procurar um repositório de pacote em
+\n%1$s</string>
     <string name="minsdk_or_later">%s ou posterior</string>
     <string name="up_to_maxsdk">Até %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s até %2$s</string>
@@ -344,7 +340,7 @@
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
     <string name="update_auto_install_summary">Descarregar e instalar atualizações em segundo plano</string>
     <string name="keep_install_history">Manter histórico de instalação</string>
-    <string name="keep_install_history_summary">Guardar registo de instalações e remoções através do F-Droid</string>
+    <string name="keep_install_history_summary">Guardar registo de instalações e desinstalações em lojas privadas</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café aos programadores de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s foi criado por %2$s. Pague-lhes um café!</string>
 
@@ -535,4 +531,30 @@
     <string name="repo_official_mirrors">\'Mirrors\' oficiais</string>
     <string name="repo_user_mirrors">\'Mirrors\' do utilizador</string>
     <string name="warning_scaning_qr_code">Parece que a sua câmara não possui foco automático. Poderá ser difícil digitalizar o código.</string>
+    <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
+    <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
+    <string name="hide_all_notifications">Ocultar todas as notificações</string>
+    <string name="send_install_history">Enviar histórico de instalações</string>
+    <string name="install_history">Histórico de instalação</string>
+    <string name="over_wifi">Em Wi-fi</string>
+    <string name="over_data">Em dados móveis</string>
+    <string name="over_network_always_summary">Utilizar sempre esta ligação se disposnível</string>
+    <string name="over_network_on_demand_summary">Apenas utilizar esta ligação ao clicar em Descarregar</string>
+    <string name="over_network_never_summary">Nunca descarregar através desta ligação</string>
+    <string name="share_repository">Partilhar repositório</string>
+    <string name="use_bluetooth">Utilizar Bluetooth</string>
+    <string name="hide_all_notifications_summary">Impedir exibição de todas as ações na barra de estado e nas notificações.</string>
+    <string name="install_history_summary">Ver registo privado de todas as instalações e desinstalações</string>
+    <string name="send_version_and_uuid">Enviar versão e UUID para os servidores</string>
+    <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
+    <string name="updates_disabled_by_settings">Atualizações proibidas pelas definições de dados/Wi-fi</string>
+
+    <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
+    <string name="antiknownvulnlist">Esta aplicação contém uma vulnerabilidade conhecida</string>
+    <string name="antinosourcesince">O código fonte já não está disponível e não é possível a atualização.</string>
+
+    <string name="swap_toast_invalid_url">URL inválido para trocas: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Hotspot Wifi ativado</string>
+    <string name="swap_toast_could_not_enable_hotspot">Hotspot Wifi não ativado!</string>
+
     </resources>

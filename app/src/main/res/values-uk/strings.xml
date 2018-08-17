@@ -526,4 +526,6 @@
     <string name="swap_toast_could_not_enable_hotspot">Не вдалося увімкнути Wi-Fi точку доступу!</string>
 
     <string name="warning_scaning_qr_code">Ваша камера не підтримує автофокус. Сканування коду може йти з труднощами.</string>
+    <string name="send_install_history">Надіслати історію встановлення</string>
+    <string name="send_history_csv">%s історія встановлень як CSV file</string>
     </resources>

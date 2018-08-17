@@ -71,7 +71,7 @@
     <string name="menu_launch">執行</string>
     <string name="menu_share">分享</string>
     <string name="menu_install">安裝</string>
-    <string name="menu_uninstall">卸載</string>
+    <string name="menu_uninstall">解除安裝</string>
     <string name="menu_ignore_all">忽略所有更新</string>
     <string name="menu_ignore_this">忽略此更新</string>
     <string name="menu_website">網站</string>
@@ -223,7 +223,7 @@
     <string name="malformed_repo_uri">略過異常的軟體庫 URI：%s</string>
     <string name="repo_provider">軟體庫：%s</string>
 
-    <string name="menu_email">電子郵件作者</string>
+    <string name="menu_email">寄電子郵件給作者</string>
     <string name="menu_issues">問題</string>
     <string name="local_repo_running">F-Droid 已準備好交換</string>
     <string name="touch_to_configure_local_repo">點觸以便檢視詳細資料並允許其他去交換您的應用程式。</string>
@@ -401,7 +401,7 @@
     <string name="menu_video">影片</string>
     <string name="details_last_updated_today">今天更新</string>
     <string name="app__tts__cancel_download">取消下載</string>
-    <string name="app__tts__downloading_progress">正在下載的 %1$d%% 完成</string>
+    <string name="app__tts__downloading_progress">正在下載，%1$d%% 完成</string>
     <string name="menu_license">授權：%s</string>
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d 更多…</item>
