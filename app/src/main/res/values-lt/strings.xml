@@ -96,8 +96,6 @@
     <string name="category_Time">Laikas</string>
     <string name="category_Writing">Rašymas</string>
 
-    <string name="system_install_button_install">Įdiegti</string>
-    <string name="system_uninstall_button">Išdiegti</string>
     <string name="swap_dont_show_again">Daugiau to nerodyti</string>
     <string name="newPerms">Nauja</string>
     <string name="notification_action_update">Atnaujinti</string>

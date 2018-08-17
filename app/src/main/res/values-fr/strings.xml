@@ -140,11 +140,6 @@
     <string name="category_Science_Education">Science &amp; Éducation</string>
     <string name="category_Security">Sécurité</string>
     <string name="category_System">Système</string>
-    <string name="requesting_root_access_body">Demande d\'accès aux privilèges root…</string>
-    <string name="root_access_denied_title">Privilèges root refusés</string>
-    <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur ce système Android, soit
-        vous les avez refusés à F-Droid.
-    </string>
     <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
     <string name="swap">Échanger des applis</string>
     <string name="swap_no_wifi_network">Aucun réseau</string>
@@ -156,7 +151,6 @@
 
     <string name="unstable_updates">Mises à jour instables</string>
     <string name="unstable_updates_summary">Proposer les mises à jour de versions instables</string>
-    <string name="uninstall_system">Mettre à jour/désinstaller l\'extension de privilège</string>
     <string name="about_source">Code source</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Liens</string>
@@ -253,7 +247,6 @@
 
     <string name="interval_1h">Chercher les mises à jour toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
-    <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'extension de privilège pour la mettre à jour/la désinstaller</string>
     <string name="status_download_unknown_size">Téléchargement de
         \n%2$s depuis
         \n%1$s
@@ -264,23 +257,9 @@
     <string name="category_Theming">Personnalisation</string>
     <string name="category_Writing">Écriture</string>
 
-    <string name="system_install_denied_signature">La signature de l\'application est erronée ! Veuillez créer un
-        rapport de bug !
-    </string>
     <string name="system_install_denied_permissions">Les autorisations privilégiées n\'ont pas été accordée à
         l\'application ! Veuillez créer un rapport de bug !
     </string>
-    <string name="system_install_button_install">Installer</string>
-    <string name="system_install_post_success">L\'extension de privilège de F-Droid a été installée</string>
-    <string name="system_install_post_fail">Échec de l\'installation de l\'extension de privilège de F-Droid</string>
-    <string name="system_install_post_success_message">L\'extension de privilège de F-Droid est installée. Elle permet à F-Droid d\'installer, mettre à jour ou désinstaller des applications sans action de votre part.</string>
-    <string name="system_install_post_fail_message">Échec de l\'installation de l\'extension de privilège de F-Droid. La méthode d\'installation utilisée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
-    <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
-    <string name="system_install_question">Voulez-vous installer l\'extension de privilège de F-Droid ?</string>
-    <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
-    <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
-    <string name="system_uninstall">Voulez-vous désinstaller l\'extension de privilège de F-Droid ?</string>
-    <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
@@ -321,8 +300,6 @@
         les installer
     </string>
     <string name="download_pending">Téléchargement en attente…</string>
-
-    <string name="system_install_not_supported">L\'installation de l\'extension de privilège de F-Droid n\'est pour l\'instant pas supportée sur Android 5.1 et plus.</string>
 
     <string name="keep_hour">1 heure</string>
     <string name="keep_day">1 jour</string>

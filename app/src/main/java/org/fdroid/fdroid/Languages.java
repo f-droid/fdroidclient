@@ -73,12 +73,12 @@ public final class Languages {
         return singleton;
     }
 
-    @TargetApi(17)
     /**
      * Handles setting the language if it is different than the current language,
      * or different than the current system-wide locale.  The preference is cleared
      * if the language matches the system-wide locale or "System Default" is chosen.
      */
+    @TargetApi(17)
     public static void setLanguage(final ContextWrapper contextWrapper) {
         if (Build.VERSION.SDK_INT >= 24) {
             Utils.debugLog(TAG, "Languages.setLanguage() ignored on >= android-24");

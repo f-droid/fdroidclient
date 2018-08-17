@@ -462,12 +462,14 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     @JsonProperty("uses-permission")
-    private void setUsesPermission(Object[][] permissions) { // NOPMD
+    @SuppressWarnings("unused")
+    private void setUsesPermission(Object[][] permissions) {
         setRequestedPermissions(permissions, 0);
     }
 
     @JsonProperty("uses-permission-sdk-23")
-    private void setUsesPermissionSdk23(Object[][] permissions) { // NOPMD
+    @SuppressWarnings("unused")
+    private void setUsesPermissionSdk23(Object[][] permissions) {
         setRequestedPermissions(permissions, 23);
     }
 

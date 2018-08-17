@@ -25,7 +25,6 @@
     <string name="system_installer_on">Gebruik F-Droid bevoorregte uitbreiding om pakkettete te installeer, verander of
         verwyder
     </string>
-    <string name="uninstall_system">Opdateer/Verwyder bevoorregte uitbreiding</string>
     <string name="local_repo_https_on">Gebruik geenkripteerde HTTPS:// verbinding vir lokale repo</string>
 
     <string name="login_title">Verifikasie word vereis</string>
@@ -186,9 +185,6 @@
         Let wel: Alle voorheen geïnstalleerde programme sal op jou toestel bly.
     </string>
     <string name="cache_downloaded">Hou gebergte programme</string>
-    <string name="uninstall_system_summary">Wys die bevoorregte uitbreiding detail besonderhede skerm vir opdatering of
-        verdydering
-    </string>
     <string name="touch_to_configure_local_repo">Tas om details te wys en laat ander toe om jou programme te deel.</string>
     <string name="copying_icons">Kopieer program simbooltjie na die argief…</string>
     <string name="icon">Simbooltjie</string>
@@ -240,35 +236,10 @@
     </string>
     <string name="empty_can_update_app_list">Geluk!\nJou programme is op datum.</string>
 
-    <string name="requesting_root_access_body">Versoek root toegang…</string>
-    <string name="root_access_denied_title">Root toegang geweier</string>
-    <string name="root_access_denied_body">Jou Android toestel is nie ge-root nie of jy het root toegang geweier vir
-        F-Droid.
-    </string>
     <string name="install_error_unknown">Installasie onsuksesvol vanweë \'n onbekende fout</string>
     <string name="uninstall_error_unknown">Deïnstallasie onsuksesvol vanweë \'n onbekende fout</string>
-    <string name="system_install_denied_signature">Die handtekening van die uitbreiding is verkeerd! Skep asseblief \'n
-        foutverslag!
-    </string>
     <string name="system_install_denied_permissions">Die voorreg toestemming is nie toegestaan vir die uitbreiding nie!
         Skep asseblief \'n foutverslag!
-    </string>
-    <string name="system_install_button_install">Installeer</string>
-    <string name="system_install_post_success">F-Droid bevoorregte uitbreiding geïnstalleer</string>
-    <string name="system_install_post_fail">Installasie van F-Droid voorreg uitbreiding het misluk</string>
-    <string name="system_install_post_success_message">F-Droid voorreg uitbreiding is geïnstalleer. Dit stel F-Droid in staat om programme onafhanklik te installeer, opgradeer en de-ïnstalleer.</string>
-    <string name="system_install_post_fail_message">Installasie van die F-Droid voorreg uitbreiding het misluk. Die
-        installasie metode word nie ondersteun deur alle Android weergawes nie, raadpleeg asseblief die F-Droid
-        bug-tracker vir meer inligting.
-    </string>
-    <string name="system_install_installing_rebooting">Installeer en reboot…</string>
-    <string name="system_install_question">Wil F-Droid voorreg uitbreiding installeer?</string>
-    <string name="system_install_warning">Dit neem tot 10 sekondes.</string>
-    <string name="system_install_warning_lollipop">Dit neem tot 10 sekondes en die toestel sal <b>reboot</b> daarna.</string>
-    <string name="system_uninstall">Wil jy F-Droid voorreg uitbreiding deïnstalleer?</string>
-    <string name="system_uninstall_button">Deïnstalleer</string>
-    <string name="system_install_not_supported">Installasie van F-Droid voorreg uitbreiding word tans nie ondersteun op
-        Android 5.1 of later nie.
     </string>
 
     <string name="swap_nfc_title">Tas om te deel</string>

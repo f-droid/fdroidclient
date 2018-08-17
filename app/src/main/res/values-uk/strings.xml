@@ -41,8 +41,6 @@
     <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
     <string name="system_installer">Привілейоване розширення</string>
     <string name="system_installer_on">Використовувати привілейоване розширення для встановлення, оновлення та видалення пакетів</string>
-    <string name="uninstall_system">Оновити/Видалити привілейоване розширення F-Droid</string>
-    <string name="uninstall_system_summary">Відкрити деталі привілейованого розширення F-Droid для його оновлення/видалення</string>
     <string name="theme_dark">Темна</string>
     <string name="theme_light">Світла</string>
     <string name="interval_4h">Перевіряти оновлення кожні 4 години</string>
@@ -141,9 +139,6 @@
     <string name="category_System">Система</string>
     <string name="category_Time">Час</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
-    <string name="system_install_button_install">Встановити</string>
-    <string name="system_install_installing_rebooting">Встановлення та перезавантаження…</string>
-    <string name="system_uninstall_button">Видалити</string>
 
     <string name="swap_join_same_wifi">Приєднайтеся до того самого Wi-Fi, що і ваш друг</string>
     <string name="swap_view_available_networks">Натисніть, аби відкрити доступні мережі</string>
@@ -167,7 +162,6 @@
     <string name="empty_can_update_app_list">Вітаємо!\nВаші застосунки оновлені.</string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
-    <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
     <string name="swap_nfc_description">Якщо у вашого друга є F-Droid і у вас обох включений NFC, прикладіть пристрої один до одного.</string>
     <string name="swap_no_wifi_network">Мережа відсутня</string>
     <string name="swap_confirm_connect">Бажаєте отримати застосунки з %1$s зараз?</string>
@@ -215,14 +209,6 @@
         додали! Спробуйте приєднатися до цієї мережі: %s
     </string>
     <string name="category_Development">Розробка</string>
-    <string name="requesting_root_access_body">Запит кореневого доступу…</string>
-    <string name="root_access_denied_title">Керований доступ відхилено</string>
-    <string name="root_access_denied_body">Ваш пристрій не має кореневого доступу, або ж вам відмовлено в кореневому доступі для F-Droid.</string>
-    <string name="system_install_denied_signature">Підпис розширення неправильний! Будь ласка, створіть звіт про помилку!</string>
-    <string name="system_install_post_success">Привілейоване розширення F-Droid встановлене</string>
-    <string name="system_install_post_fail">Встановлення привілейованої розширення F-Droid не вдалося</string>
-    <string name="system_install_question">Бажаєте встановити привілейоване розширення F-Droid?</string>
-    <string name="system_uninstall">Бажаєте видалити привілейоване розширення F-Droid?</string>
     <string name="swap_nfc_title">Натисніть для обміну</string>
     <string name="swap">Обмін застосунками</string>
     <string name="swap_success">Обмін пройшов удало!</string>
@@ -238,8 +224,6 @@
     <string name="category_Writing">Написання</string>
 
     <string name="system_install_denied_permissions">Привілейовані дозволи на розширення не надано! Будь ласка, створіть звіт про помилку!</string>
-    <string name="system_install_post_success_message">Привілейоване розширення F-Droid встановлено. Це дозволяє F-Droid самостійно встановлювати, оновлювати та видаляти застосунки.</string>
-    <string name="system_install_warning_lollipop">Це забере приблизно 10 секунд, після чого пристрій буде <b>перезавантажено</b>.</string>
     <string name="swap_active_hotspot">%1$s (ваша точка доступу)</string>
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
@@ -255,7 +239,6 @@
     <string name="empty_installed_app_list">Жодного застосунку не встановлено. 
 \n 
 \nНа вашому пристрої є застосунки, що не доступні в F-Droid. Це може бути тому, що вам потрібно оновити свої репозиторії, або ж репозиторії не містять доступних застосунків.</string>
-    <string name="system_install_post_fail_message">Не вдалося встановити привілейоване розширення F-Droid. Метод встановлення підтримується не усіма дистрибутивами Android, для отримання додаткової інформації, будь ласка, проконсультуйтеся з F-Droid bug tracker.</string>
     <string name="swap_join_same_wifi_desc">Для обміну через Wi-Fi, переконайтеся, що ви знаходитесь в одній й тій самій
         мережі. Якщо ж ви не маєте доступу до тієї ж мережі, єдине що лишається, це створити власну Wi-Fi точку доступу.
     </string>
@@ -316,10 +299,6 @@
     <string name="keep_month">1 місяць</string>
     <string name="keep_year">1 рік</string>
     <string name="keep_forever">Завжди</string>
-
-    <string name="system_install_not_supported">На поточний момент встановлення привілейованого розширення F-Droid не
-        підтримується системами Android 5.1 чи старше.
-    </string>
 
     <string name="install_error_notify_title">Помилка встановлення %s</string>
     <string name="uninstall_error_notify_title">Помилка видалення %s</string>

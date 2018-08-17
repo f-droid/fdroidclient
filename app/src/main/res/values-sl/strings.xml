@@ -76,8 +76,6 @@
     <string name="category_Time">Čas</string>
     <string name="category_Writing">Pisanje</string>
 
-    <string name="system_install_button_install">Namesti</string>
-    <string name="system_uninstall_button">Odstrani</string>
     <string name="swap_welcome">Dobrodošli v F-Droid!</string>
     <string name="swap_dont_show_again">Tega ne prikaži ponovno</string>
     <string name="newPerms">Novo</string>
@@ -129,8 +127,6 @@
     <string name="update_auto_install_summary">Prenesi in namesti posodobitve v ozadju</string>
     <string name="system_installer">Priviligirane razširitve</string>
     <string name="system_installer_on">Uporabi F-Droid priviligirane razširitve za namestitev, posodobitev in odstranjevanje paketov</string>
-    <string name="uninstall_system">Posodobi/zbriši priviligirane razširitve</string>
-    <string name="uninstall_system_summary">Odpri podroben prikaz priviligiranih razširitev za njihovo posodobitev/izbris</string>
     <string name="local_repo_name">Ime Vašega lokalnega repozitorija</string>
     <string name="local_repo_name_summary">Oglaševano ime vašega lokalnega repozitorija: %s</string>
     <string name="local_repo_https_on">Uporabite enkriptirano HTTPS:// povezavo za Vaš lokalni repozitorij</string>
@@ -294,10 +290,6 @@
 
     <string name="install_error_unknown">Namestitev ni uspela zaradi neznane napake</string>
     <string name="uninstall_error_unknown">Odstanitev ni uspela zaradi neznane napake</string>
-    <string name="system_install_post_success">F-Droid priviligirana razširitev je nameščen</string>
-    <string name="system_install_post_fail">Namestitev F-Droid priviligirane razširitve ni uspela</string>
-    <string name="system_install_installing_rebooting">Nameščanje in ponovni zagon sta v teku…</string>
-    <string name="system_install_warning">To lahko traja do 10 sekund.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ni interneta? Dobite aplikacije od ljudi blizu Vas!</string>
     <string name="nearby_splash__find_people_button">Najdite ljudi blizu mene</string>
     <string name="swap_nfc_title">Dotaknite se, da menjate</string>
@@ -442,6 +434,4 @@
     <string name="theme_dark">Temna</string>
     <string name="theme_night">Noč</string>
 
-    <string name="requesting_root_access_body">Zahtevnam root dostop …</string>
-    <string name="root_access_denied_title">Root dostop je zavrnjen</string>
-    </resources>
+</resources>

@@ -34,9 +34,9 @@ public class RepoDetails implements RepoXMLHandler.IndexReceiver {
     public String icon;
     public String[] mirrors;
 
-    public List<Apk> apks = new ArrayList<>();
-    public List<App> apps = new ArrayList<>();
-    public List<RepoPushRequest> repoPushRequestList = new ArrayList<>();
+    public final List<Apk> apks = new ArrayList<>();
+    public final List<App> apps = new ArrayList<>();
+    public final List<RepoPushRequest> repoPushRequestList = new ArrayList<>();
 
     @Override
     public void receiveRepo(String name, String description, String signingCert, int maxage,

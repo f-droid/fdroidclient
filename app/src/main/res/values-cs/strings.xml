@@ -110,21 +110,12 @@
     <string name="category_Science_Education">Věda a vzdělání</string>
     <string name="category_Security">Zabezpečení</string>
     <string name="category_System">Systém</string>
-    <string name="requesting_root_access_body">Získávám root oprávnění…</string>
-    <string name="root_access_denied_title">Root přístup odepřen</string>
-    <string name="root_access_denied_body">Buď toto Android zařízení není rootnuté, nebo jsi odepřel F-Droidu opránění
-        roota.
-    </string>
     <string name="swap_join_same_wifi">Připojte oba přístroje na stejnou Wi-Fi</string>
     <string name="swap_no_wifi_network">Zatím žádná síť</string>
     <string name="swap_view_available_networks">(Dotykem zobraz dostupné sítě)</string>
     <string name="open_qr_code_scanner">Otevřít čtečku QR kódů</string>
     <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
     <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
-    <string name="uninstall_system">Aktualizovat/odinstalovat privilegovaná rozšíření</string>
-    <string name="uninstall_system_summary">Otevřít obrazovku detailů privilegovaných rozšíření pro
-        aktualizaci/deinstalaci
-    </string>
     <string name="about_source">Zdrojový kód</string>
     <string name="app_incompatible">Nekompatibilní</string>
     <string name="app_inst_known_source">Nainstalováno (z %s)</string>
@@ -214,8 +205,6 @@
 
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
-    <string name="system_install_denied_signature">Podpis rozšíření není správný! Nahlaste chybu vývojářům!</string>
-    <string name="system_install_button_install">Nainstalovat</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
@@ -243,14 +232,6 @@
     <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 
     <string name="install_confirm">vyžaduje přístup k</string>
-    <string name="system_install_post_success">Rozšíření F-Droid pro oprávnění úspěšně nainstalováno</string>
-    <string name="system_install_post_fail">Instalace prigilegovaného rozšíření F-Droid selhala</string>
-    <string name="system_install_installing_rebooting">Instalace a restart…</string>
-    <string name="system_install_question">Chcete instalovat rozšíření oprávnění F-Droidu?</string>
-    <string name="system_install_warning">To může trvat až 10 vteřin.</string>
-    <string name="system_install_warning_lollipop">To může trvat až 10 vteřin a poté bude přístroj<b>restartován</b>.</string>
-    <string name="system_uninstall">Chcete odinstalovat privilegované rozšíření F-Droid?</string>
-    <string name="system_uninstall_button">Odinstalovat</string>
 
     <string name="swap_nfc_title">Ťuknout pro výměnu</string>
     <string name="swap_switch_to_wifi">Dotykem přepnout síť Wi-Fi</string>
@@ -286,10 +267,6 @@
     <string name="status_inserting_apps">Ukládání podrobností o aplikaci</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
 
-    <string name="system_install_post_success_message">Rozšíření F-Droid pro oprávnění úspěšně nainstalováno. Toto dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.</string>
-    <string name="system_install_post_fail_message">Instalace oprávněného rozšíření F-Droidu selhala. Tato instalační
-        metoda není podporována všemi distribucemi Androidu. Pro více informací se podívejte na bug tracker F-Droidu.
-    </string>
     <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, přibližte svá zařízení k sobě.
     </string>
     <string name="update_auto_download">Stahovat aktualizace automaticky</string>
@@ -298,9 +275,6 @@
 
     <string name="useTor">Použít Tor</string>
     <string name="useTorSummary">Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot</string>
-    <string name="system_install_not_supported">Instalace rozšíření oprávnění F-Droidu není momentálně podporována na
-        Androidu 5.1 nebo pozdějším.
-    </string>
 
     <string name="swap_join_same_wifi_desc">Pro kopírování po Wi-Fi musí být oba na stejné síti. Pokud nemáte přístup ke
         stejné síti, může jeden z vás vytvořit vlastní Wi-Fi hotspot.

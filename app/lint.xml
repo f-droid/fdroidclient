@@ -9,17 +9,31 @@
 
     <issue id="ImpliedQuantity" severity="error"/>
     <issue id="DefaultLocale" severity="error"/>
+    <issue id="NewApi" severity="error"/>
+    <issue id="InlinedApi" severity="error"/>
 
     <!-- These are important to us, so promote from warning to error -->
     <issue id="UnusedResources" severity="error">
         <ignore path="src/main/res/drawable/category_**.png" />
         <ignore path="src/main/res/values/dimens.xml"/>
         <ignore path="src/main/res/values/styles.xml"/>
+        <ignore path="src/full/res/values/styles.xml"/>
+        <!-- keep a single strings.xml for all build flavors -->
+        <ignore path="src/main/res/values**/strings.xml"/>
     </issue>
     <issue id="AppCompatMethod" severity="error"/>
     <issue id="NestedScrolling" severity="error"/>
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
+    <issue id="GetInstance" severity="error"/>
+    <issue id="PackageManagerGetSignatures" severity="error"/>
+    <issue id="TrustAllX509TrustManager" severity="error">
+      <!-- these come from included libraries -->
+        <ignore path="org/apache/commons/net/ftp/FTPSTrustManager.class"/>
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$1.class"/>
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$2.class"/>
+        <ignore path="org/apache/commons/net/util/TrustManagerUtils$TrustManager.class"/>
+    </issue>
 
     <issue id="PluralsCandidate" severity="error"/>
     <issue id="HardcodedText" severity="error"/>
@@ -36,6 +50,7 @@
     </issue>
 
     <issue id="ProtectedPermissions" severity="error">
+        <ignore path="src/debug/AndroidManifest.xml"/>
         <ignore path="src/full/AndroidManifest.xml"/>
     </issue>
 

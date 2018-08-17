@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -767,7 +768,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(@NonNull Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
 
         // Queries which are for the main list of apps should not include swap apps.
@@ -910,7 +911,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
         if (MATCHER.match(uri) != REPO) {
             throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
         }
@@ -934,7 +935,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         long packageId = PackageProvider.Helper.ensureExists(getContext(), values.getAsString(Cols.Package.PACKAGE_NAME));
         values.remove(Cols.Package.PACKAGE_NAME);
         values.put(Cols.PACKAGE_ID, packageId);
@@ -994,7 +995,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         if (MATCHER.match(uri) != CALC_SUGGESTED_APKS) {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }

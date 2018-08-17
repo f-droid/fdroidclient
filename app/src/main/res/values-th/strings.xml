@@ -156,10 +156,6 @@
     <string name="category_Time">เวลาและวันที่</string>
     <string name="category_Writing">การเขียน</string>
 
-    <string name="requesting_root_access_body">กำลังขอใช้สิทธิ์ผู้ดูแลระบบ…</string>
-    <string name="root_access_denied_title">การขอสิทธิ์ผู้ดูแลระบบถูกปฏิเสธ</string>
-    <string name="system_install_button_install">ติดตั้ง</string>
-    <string name="system_uninstall_button">ถอนการติดตั้ง</string>
     <string name="swap_nfc_title">แตะเพื่อแบ่งปันโปรแกรม</string>
     <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้
         เพียงแค่นำเครื่องมาแตะกัน
@@ -249,7 +245,6 @@
     <string name="system_installer_on">ใช้ส่วนขยายช่วยติดตั้งของ F-Droid เพื่อจัดการติดตั้ง, อัพเดต,
         และถอนการติดตั้งโปรแกรม
     </string>
-    <string name="uninstall_system">อัพเดต/ถอนส่วนขยายช่วยติดตั้ง</string>
     <string name="repo_error_empty_username">ชื่อผู้ใช้ว่างเปล่า, จะไม่มีการเปลี่ยนข้อมูลรหัสผ่านใดๆ ทั้งสิ้น</string>
 
     <string name="added_on">เพิ่มมาเมื่อ %s</string>
@@ -257,9 +252,6 @@
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
     <string name="overwrite">เขียนทับ</string>
 
-    <string name="uninstall_system_summary">แสดงรายละเอียดสถานะส่วนขยายช่วยติดตั้ง
-        และ/หรือทำการอัพเดต/ถอนการติดตั้งส่วนขยายนี้
-    </string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
 
@@ -277,15 +269,6 @@
 
     <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
     <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
-    <string name="system_install_post_success">ติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid เสร็จสิ้น</string>
-    <string name="system_install_post_fail">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว</string>
-    <string name="system_install_installing_rebooting">กำลังติดตั้งและรีบูตเครื่อง…</string>
-    <string name="system_install_question">ต้องการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid?</string>
-    <string name="system_install_warning">จะใช้เวลาสูงสุด 10 วินาที</string>
-    <string name="system_uninstall">ต้องการถอนส่วนขยายช่วยติดตั้งของ F-Droid?</string>
-    <string name="system_install_not_supported">ไม่รองรับการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid บน Android รุ่น 5.1
-        หรือสูงกว่า
-    </string>
 
     <string name="swap_no_wifi_network">ยังไม่พบเครือข่าย</string>
     <string name="swap_view_available_networks">แสดงเครือข่ายที่มีทั้งหมด</string>
@@ -311,9 +294,6 @@
     <string name="swap_active_hotspot">%1$s (เครื่องส่งของคุณ)</string>
     <string name="swap_join_this_hotspot">บอกวิธีให้เพื่อนคุณเชื่อมต่อกับเครื่องส่งของคุณ</string>
     <string name="swap_join_same_wifi">ต่อเข้าเครือข่าย WiFi เดียวกันกับเพื่อนของคุณ</string>
-    <string name="system_install_warning_lollipop">ขั้นตอนนี้จะใช้เวลาอย่างมาก 10 วินาที แล้วเครื่องของคุณจะทำการ
-        <b>รีสตาร์ต</b>
-    </string>
     <string name="empty_can_update_app_list">ทุกโปรแกรมเป็นรุ่นใหม่สุดแล้ว
 
         ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)
@@ -342,25 +322,12 @@
     <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
     <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
     <string name="swap_confirm_connect">ยืนยันเพื่อรับโปรแกรมจาก %1$s</string>
-    <string name="system_install_post_success_message">ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งเสร็จสิ้น, ตอนนี้ F-Droid
-        จะสามารถติดตั้ง/อัพเกรด/ถอนการติดตั้งโปรแกรมต่างๆ ได้ด้วยตัวเองแล้ว
-    </string>
-    <string name="system_install_post_fail_message">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว,
-        เนื่องจากวิธีติดตั้งนี้อาจจะไม่ได้รองรับใน Android ทุกรุ่น,
-        คุณสามารถอ่านรายละเอียดเพิ่มเติมได้ในส่วนเว็บไซต์ติดตามปัญหาของ F-Droid
-    </string>
     <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi,
         คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ
         WiFi ของตัวเองแทนได้เช่นกัน
     </string>
     <string name="system_install_denied_permissions">ส่วนขยายช่วยติดตั้งทำงาน
         แต่กลับไม่ได้รับสิทธิ์ในการจัดการโปรแกรมจากระบบ, หากเป็นไปได้ ช่วยรายงานปัญหานี้ไปที่ทีมพัฒนา F-Droid ด้วย
-    </string>
-    <string name="system_install_denied_signature">ลายเซ็นที่ประทับอยู่บนส่วนขยายช่วยติดตั้งนั้นไม่ถูกต้อง, หากเป็นไปได้
-        กรุณาแจ้งปัญหานี้ไปที่ทีมพัฒนาของ F-Droid ด้วย
-    </string>
-    <string name="root_access_denied_body">เกิดข้อผิดพลาดเนื่องจากเครื่องของคุณไม่มีรูท
-        หรือคุณปฏิเสธการให้สิทธิ์ผู้ดูแลระบบกับ F-Droid
     </string>
     <string name="empty_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่
 

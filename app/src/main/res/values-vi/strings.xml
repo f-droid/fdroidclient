@@ -129,10 +129,6 @@
     <string name="category_Science_Education">Khoa học &amp; giáo dục</string>
     <string name="category_Security">Bảo mật</string>
     <string name="category_System">Hệ thống</string>
-    <string name="requesting_root_access_body">Đang yêu cầu quyền root…</string>
-    <string name="root_access_denied_title">Bị từ chối quyền root</string>
-    <string name="root_access_denied_body">Thiết bị của bạn chưa được root hoặc bạn đã từ chối quyền root của F-Droid.
-    </string>
     <string name="swap_nfc_description">Nếu bạn của bạn có F-Droid và đã bật NFC, hãy chạm hai thiết bị vào nhau.
     </string>
     <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
@@ -146,8 +142,6 @@
 
     <string name="unstable_updates">Cập nhật bản không ổn định</string>
     <string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
-    <string name="uninstall_system">Cập nhật / Gỡ bỏ phần mở rộng F-Droid được cấp quyền</string>
-    <string name="uninstall_system_summary">Mở phần thông tin về phần mở rộng được cấp quyền để gỡ bỏ nó</string>
     <string name="links">Liên kết</string>
 
     <string name="back">Quay lại</string>
@@ -195,17 +189,6 @@
 
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
-    <string name="system_install_post_success">Cài đặt phần mở rộng F-Droid được cấp quyền thành công</string>
-    <string name="system_install_post_fail">Cài đặt phần mở rộng F-Droid được cấp quyền thất bại</string>
-    <string name="system_install_post_success_message">Phần mở rộng F-Droid được cấp quyền đã được cài đặt thành công. Nó cho phép F-Droid tự cài đặt, cập nhật và gỡ bỏ ứng dụng.</string>
-    <string name="system_install_post_fail_message">Cài đặt phần mở rộng F-Droid được cấp quyền đã thất bại. Cách cài
-        đặt này không được tất cả các bản Android hỗ trợ, hãy truy cập trình theo dõi lỗi của F-Droid để biết thêm thông
-        tin.
-    </string>
-    <string name="system_install_question">Bạn có muốn cài đặt phần mở rộng F-Droid được cấp quyền không?</string>
-    <string name="system_install_warning_lollipop">Việc cài đặt mất tối đa 10 giây, sau đó máy sẽ<b>khởi động lại</b>.</string>
-    <string name="system_uninstall">Bạn có muốn gỡ bỏ phần mở rộng F-Droid được cấp quyền không?</string>
-    <string name="system_uninstall_button">Gỡ bỏ</string>
 
     <string name="swap_nfc_title">Chạm để trao đổi</string>
     <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu
@@ -282,14 +265,8 @@
     <string name="system_install_denied_permissions">Phần mở rộng chưa được cấp quyền nâng cao! Hãy thông báo lỗi này
         cho chúng tôi!
     </string>
-    <string name="system_install_button_install">Cài đặt</string>
-    <string name="system_install_installing_rebooting">Đang cài đặt và khởi động lại…</string>
-    <string name="system_install_warning">Việc này mất tối đa 10 giây.</string>
     <string name="theme_night">Đen</string>
     <string name="menu_settings">Tuỳ chọn</string>
-    <string name="system_install_denied_signature">Mã kiểm tra của phần mở rộng sai. Xin hãy báo lại lỗi này cho nhóm
-        phát triển!
-    </string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>
     <string name="login_title">Yêu cầu xác thực</string>
@@ -413,8 +390,6 @@
     </plurals>
 
     <string name="empty_search_available_app_list">Không tìm thấy ứng dụng tương ứng.</string>
-
-    <string name="system_install_not_supported">Phần mở rộng F-Droid được cấp quyền không hỗ trợ Android từ 5.1 trở lên.</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy cài đặt ứng dụng từ những thiết bị xung quanh bạn!</string>
     <string name="nearby_splash__find_people_button">Tìm những người xung quanh</string>

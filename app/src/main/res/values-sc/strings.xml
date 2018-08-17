@@ -141,11 +141,6 @@
     <string name="category_Science_Education">Iscièntzia e educatzione</string>
     <string name="category_Security">Seguràntzia</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">Pedinde s\'atzessu root…</string>
-    <string name="root_access_denied_title">Atzessu root dennegadu</string>
-    <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a
-        F-droid.
-    </string>
     <string name="swap_nfc_description">Si s\'amigu tuo tenet F-Droid e s’NFC allutos pone a cuntatu sos duos
         dispositivos.
     </string>
@@ -183,10 +178,6 @@
     <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, impossìbile cumpartzire sas aplicatziones!</string>
     <string name="unstable_updates">Agiornamentos instàbiles</string>
     <string name="unstable_updates_summary">Cussigia agiornamentos a versiones instàbiles</string>
-    <string name="uninstall_system">Disinstalla s’estensione cun permissos de sistema</string>
-    <string name="uninstall_system_summary">Aberi s’ischermada de sas minujas de s’estensione \"F-Droid cun permissos de
-        sistema\" pro l’agiornare/disinstallare
-    </string>
     <string name="about_source">Còdighe mitza</string>
     <string name="bad_fingerprint">Imprenta/arrastu isballiada</string>
     <string name="category_Connectivity">Connetividade</string>
@@ -196,19 +187,6 @@
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempus</string>
     <string name="category_Writing">Iscritura</string>
-
-    <string name="system_install_post_success">S’estensione F-Droid cun sos permissos de sistema est istada intallada</string>
-    <string name="system_install_post_fail">Installatzione de s’estensione F-Droid cun permissos de sistema faddida
-    </string>
-    <string name="system_install_post_success_message">S’estensione F-Droid cun permissos de sistema est istada installada. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones pro contu suo.</string>
-    <string name="system_install_post_fail_message">S’installatzione de s’estensione F-Droid cun permissos de sistema
-        est faddida. Su mètodu de installatzione no est suportadu dae totu sas versiones de Android, pro piaghere
-        consulta su sistema de gestione de sos errores de F-Droid pro àteras informatziones.
-    </string>
-    <string name="system_install_question">Boles installare s’estensione F-Droid cun permissos de sistema?</string>
-    <string name="system_install_warning_lollipop">Custu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere <b>torradu a allùghere</b>.</string>
-    <string name="system_uninstall">Boles disinstallare s’estensione F-Droid cun permissos de sistema?</string>
-    <string name="system_uninstall_button">Disinstalla</string>
 
     <string name="swap_nfc_title">Toca pro cumpartzire</string>
     <string name="swap_join_same_wifi_desc">Pro cumpartzire impreende su Wi-Fi, ista atentu a istare in sa matessi
@@ -289,15 +267,9 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="system_install_denied_signature">Sa firma de s’estensione est isballiada! Pro piaghere crea una
-        sinnalatzione de errore!
-    </string>
     <string name="system_install_denied_permissions">Sos permissos de sistema non sunt istados cuntzessos a
         s’estensione! Pro piaghere crea una sinnalatzione de errore!
     </string>
-    <string name="system_install_button_install">Installa</string>
-    <string name="system_install_installing_rebooting">Installende e torrende a allùere…</string>
-    <string name="system_install_warning">Custu podet durare finas a 10 segundos.</string>
     <string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
     <string name="status_download_unknown_size">Iscarrighende\n%2$s dae\n%1$s</string>
@@ -336,10 +308,6 @@
         retzire una notìfica pro los installare
     </string>
     <string name="download_pending">Isetende pro incumintzare s\'iscarrigamentu…</string>
-
-    <string name="system_install_not_supported">S\'installatzione de s\'estensione F-Droid cun permissos de sistema no
-        est, pro como, suportada pro Android 5.1 o prus nou.
-    </string>
 
     <string name="keep_hour">1 Ora</string>
     <string name="keep_day">1 Die</string>

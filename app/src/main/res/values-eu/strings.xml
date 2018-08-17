@@ -74,10 +74,6 @@
     <string name="update_interval">Eguneratze-maiztasuna</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili pribilegiodun luzapena paketeak instalatu, eguneratu eta kentzeko</string>
-    <string name="uninstall_system">Eguneratu/Desinstalatu Pribilegiodun Luzapena</string>
-    <string name="uninstall_system_summary">Ireki Pribilegiodun Luzapenaren xehetasunen pantaila berau eguneratu edo
-        desinstalatzeko
-    </string>
     <string name="about_source">Iturburu kodea</string>
     <string name="app_incompatible">Bateraezina</string>
     <string name="app_inst_known_source">Instalatuta (%stik)</string>
@@ -217,24 +213,11 @@
     </string>
     <string name="empty_can_update_app_list">Zorionak!\nZure aplikazioak egunean daude.</string>
 
-    <string name="requesting_root_access_body">Root baimena eskatzen…</string>
-    <string name="root_access_denied_title">Root baimena ukatu da</string>
-    <string name="root_access_denied_body">Bietako bat, zure Android gailuan ez dago root baimena eskuratzea edo zuk
-        ukatu diozu F-Droid aplikazioari root baimena.
-    </string>
     <string name="install_error_unknown">Instalazioak huts egin du errore ezezagun bat dela eta</string>
     <string name="uninstall_error_unknown">Ezin izan da desinstalatu errore ezezagun bat dela eta</string>
-    <string name="system_install_denied_signature">Luzapen honen sinadura okerra da! Mesedez eman akatsaren berri!
-    </string>
     <string name="system_install_denied_permissions">Ez zaizkio pribilegiodun baimenak eman luzapenari! Mesedez eman
         akatsaren berri!
     </string>
-    <string name="system_install_button_install">Instalatu</string>
-    <string name="system_install_installing_rebooting">Instalatzen eta berrabiarazten…</string>
-    <string name="system_install_question">Pribilegiodun F-Droid Luzapena instalatu nahi duzu?</string>
-    <string name="system_install_warning">Honek gehienez 10s emango ditu.</string>
-    <string name="system_install_warning_lollipop">Honek gehienez 10s emango ditu eta ondoren gailua <b>berrabiarazi</b> egingo da.</string>
-    <string name="system_uninstall_button">Desinstalatu</string>
 
     <string name="swap_join_this_hotspot">Lagundu adiskideari zure Wi-Fi gunera konektatzen</string>
     <string name="swap">Partekatu aplikazioak</string>
@@ -266,14 +249,6 @@
     <string name="swap_send_fdroid">Bidali F-Droid</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
-    <string name="system_install_post_success">Pribilegiodun F-Droid Luzapena instalatu da</string>
-    <string name="system_install_post_fail">Huts egin du Pribilegiodun F-Droid Luzapena instalatzea</string>
-    <string name="system_install_post_success_message">Pribilegiodun F-Droid Luzapena instalatu da. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.</string>
-    <string name="system_install_post_fail_message">Pribilegiodun F-Droid Luzapenaren instalazioak huts egin du.
-        Instalazio metodoa ez dabil Android banaketa guztietan, Kontsultatu F-Droid Bug Trackerra informazio
-        gehiagorako.
-    </string>
-    <string name="system_uninstall">Pribilegiodun F-Droid Luzapena desinstalatu nahi duzu?</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>
     <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu gailuak elkarrekin.
     </string>
@@ -359,10 +334,6 @@
     <string name="keep_month">Hilabete 1</string>
     <string name="keep_year">Urte 1</string>
     <string name="keep_forever">Betirako</string>
-
-    <string name="system_install_not_supported">Android 5.1 bertsiotik aurrera ezin da Pribilegiodun F-Droid Luzapena
-        instalatu.
-    </string>
 
     <string name="update_auto_install">Instalatu eguneraketak automatikoki</string>
     <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan

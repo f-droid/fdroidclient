@@ -56,7 +56,6 @@
     <string name="local_repo_name">Numele depozitului local</string>
     <string name="local_repo_name_summary">Titlu depozitului local folosit la anunțare: %s</string>
     <string name="notify_on">Arată o notificare atunci când există actualizări ale aplicațiilor</string>
-    <string name="uninstall_system">Actualizează/Dezinstalează extensia privilegiată</string>
     <string name="local_repo_https_on">Folosește o conexiune criptată HTTPS:// pentru depozitul local</string>
 
     <string name="about_source">Cod sursă</string>
@@ -119,9 +118,6 @@
     <string name="invalid_url">Aceasta nu este o adresă URL validă.</string>
     <string name="bad_fingerprint">Amprentă eronată</string>
     <string name="install_error_unknown">Instalare eșuată din cauza unei erori necunoscute</string>
-    <string name="root_access_denied_body">Fie dispozitivul nu are acces administrator (root) fie tocmai ați refuzat cererea de permisiuni root pentru F-Droid.</string>
-    <string name="root_access_denied_title">Acces administrator (root) refuzat</string>
-    <string name="requesting_root_access_body">Se cer permisiuni root…</string>
     <string name="empty_search_available_app_list">Nici o aplicatie disponibila nu se potriveste.</string>
     <string name="category_Writing">Scris</string>
 
@@ -187,17 +183,13 @@
     <string name="category_Time">Timp</string>
 
     <string name="uninstall_error_unknown">O eroare necunoscută a împiedicat instalarea</string>
-    <string name="system_install_installing_rebooting">Instalare și repornire dispozitiv…</string>
-    <string name="system_install_warning">Aceasta poate dura până la 10 secunde.</string>
     <string name="swap_nfc_title">Atinge pentru schimb</string>
     <string name="swap_join_this_hotspot">Ajută-ți prietenii să se conecteze la hotspot-ul tău</string>
-    <string name="system_uninstall_button">Dezinstalare</string>
 
     <string name="swap_join_same_wifi">Conectează-te la aceeași rețea Wi-Fi ca și prietenii tăi</string>
     <string name="swap">Schimb de aplicații</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
     <string name="swap_no_wifi_network">Nici o rețea încă</string>
-    <string name="system_install_button_install">Instalare</string>
     <string name="swap_dont_show_again">Nu mai arăta asta</string>
     <string name="swap_people_nearby">Persoane în apropiere</string>
     <string name="swap_nearby">Schimb în apropiere</string>
@@ -442,8 +434,6 @@
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
     <string name="not_on_same_wifi">Dispozitivul dumneavoastră nu este pe același Wi-Fi ca depozitul local pe care tocmai l-ați adăugat! Încearcați să vă conectați la această rețea : %s</string>
     <string name="touch_to_configure_local_repo">Atingeți pentru a vedea detalii și a permite celorlalți să primească aplicațiile dumneavoastră.</string>
-    <string name="system_install_denied_signature">Semnătura acestei extensii este greșită! Te rog să creezi un bug report!</string>
-    <string name="system_install_warning_lollipop">Această acțiune durează până la 10 secunde iar dispozitivul se va <b>restarta</b> după aceea.</string>
     <string name="swap_nfc_description">Dacă prietenul tău are F-Droid și NFC activat, atingeți-vă dispozitivele.</string>
     <string name="swap_view_available_networks">Atinge pentru a vedea rețelele deschise disponibile</string>
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
@@ -535,17 +525,9 @@
     <string name="install_history_summary">Vizualizare jurnal privat al tuturor instalărilor și dezinstalărilor</string>
     <string name="send_version_and_uuid">Trimite serverului versiunea și identificatorul UUID</string>
     <string name="send_version_and_uuid_summary">Versiunea aplicației și un identificator aleator, unic, sunt trimise atunci când se fac descarcărcări. Setarea intră în vigoare la următoarea repornire a aplicației.</string>
-    <string name="uninstall_system_summary">Deschideți detaliile aplicației Privileged Extension pentru a o actualiza/dezinstala</string>
     <string name="share_repository">Partajare depozit</string>
     <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
-    <string name="system_install_post_success">F-Droid Privileged Extension a fost instalată</string>
-    <string name="system_install_post_fail">Instalarea F-Droid Privileged Extension a eșuat</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension a fost instalată. Aceasta va permite F-Droid să instaleze, actualizeze și dezinstaleze aplicații în mod automat.</string>
-    <string name="system_install_question">Doriți să instalați F-Droid Privileged Extension?</string>
-    <string name="system_uninstall">Doriți să dezinstalați F-Droid Privileged Extension?</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
-    <string name="system_install_post_fail_message">Instalarea F-Droid Privileged Extension a eșuat. Metoda de instalare nu este suportată de toate distribuțiile de Android, vă rugăm să consultați lista de probleme F-Droid pentru mai multe informații.</string>
-    <string name="system_install_not_supported">Instalarea F-Droid Privileged Extension nu este momentan suportată pe Android 5.1 sau mai nou.</string>
 
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
     <string name="allow_push_requests">Permite depozitelor sa dez/instaleze aplicații</string>

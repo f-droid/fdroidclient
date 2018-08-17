@@ -285,11 +285,11 @@ public final class Utils {
                 || fingerprint.matches(".*[^0-9a-fA-F].*")) { // its a hex string
             return context.getString(R.string.bad_fingerprint);
         }
-        String displayFP = fingerprint.substring(0, 2);
+        StringBuilder displayFP = new StringBuilder(fingerprint.substring(0, 2));
         for (int i = 2; i < fingerprint.length(); i = i + 2) {
-            displayFP += " " + fingerprint.substring(i, i + 2);
+            displayFP.append(" ").append(fingerprint.substring(i, i + 2));
         }
-        return displayFP;
+        return displayFP.toString();
     }
 
     @NonNull

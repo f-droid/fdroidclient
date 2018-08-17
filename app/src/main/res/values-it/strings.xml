@@ -143,10 +143,6 @@
     <string name="category_Science_Education">Scienza ed educazione</string>
     <string name="category_Security">Sicurezza</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">Richiesta dei permessi di root…</string>
-    <string name="root_access_denied_title">Accesso root negato</string>
-    <string name="root_access_denied_body">Il tuo telefono non ha i permessi di root oppure li hai negati a F-Droid.
-    </string>
     <string name="swap_join_same_wifi">Collegati alla stessa rete Wi-Fi del tuo amico</string>
     <string name="swap">Invia app</string>
     <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
@@ -225,10 +221,6 @@
     <string name="theme_night">Notte</string>
     <string name="permissions">Autorizzazioni</string>
     <string name="unstable_updates_summary">Suggerisci aggiornamenti a versioni non stabili</string>
-    <string name="uninstall_system">Aggiorna/disinstalla l\'estensione privilegiata</string>
-    <string name="uninstall_system_summary">Apri la schermata dell\'estensione privilegiata per aggiornarla o
-        disinstallarla
-    </string>
     <string name="login_title">Autenticazione richiesta</string>
     <string name="login_name">Nome utente</string>
     <string name="login_password">Password</string>
@@ -275,26 +267,9 @@
 
     <string name="install_error_unknown">Installazione fallita a causa di un errore sconosciuto</string>
     <string name="uninstall_error_unknown">Disinstallazione fallita a causa di un errore sconosciuto</string>
-    <string name="system_install_denied_signature">La firma dell\'estensione è sbagliata! Per favore segnala questo
-        problema!
-    </string>
     <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore
         segnala questo problema!
     </string>
-    <string name="system_install_button_install">Installa</string>
-    <string name="system_install_post_success">Estensione privilegiata di F-Droid installata</string>
-    <string name="system_install_post_fail">Installazione dell\'estensione privilegiata di F-Droid fallita</string>
-    <string name="system_install_post_success_message">L\'estensione privilegiata di F-Droid è stata installata. Questo permette a F-Droid di installare, aggiornare e disinstallare applicazioni indipendentemente.</string>
-    <string name="system_install_post_fail_message">L\'installazione dell\'estensione privilegiata di F-Droid è fallita.
-        Il metodo di installazione non è supportato da tutte le distribuzioni di Android, per favore consulta le
-        segnalazioni di bug per maggiori informazioni.
-    </string>
-    <string name="system_install_installing_rebooting">Installazione e riavvio…</string>
-    <string name="system_install_question">Vuoi installare l\'estensione privilegiata di F-Droid?</string>
-    <string name="system_install_warning">Questo può richiedere fino a 10 secondi.</string>
-    <string name="system_install_warning_lollipop">Questo può richiedere fino a 10 secondi e il dispositivo verrà <b>riavviato</b> successivamente.</string>
-    <string name="system_uninstall">Vuoi disinstallare l\'estensione privilegiata di F-Droid?</string>
-    <string name="system_uninstall_button">Disinstalla</string>
 
     <string name="swap_nfc_title">Tocca per scambiare</string>
     <string name="swap_nfc_description">Se il tuo amico ha F-Droid e NFC attivato, sovrapponete i vostri dispositivi.</string>
@@ -334,10 +309,6 @@
     <string name="update_auto_download_summary">Gli aggiornamenti vengono scaricati automaticamente e ti sarai notificato per installarli</string>
     <string name="update_auto_download">Ottieni automaticamente gli aggiornamenti</string>
     <string name="repo_provider">Repository: %s</string>
-
-    <string name="system_install_not_supported">L\'installazione di Estensione Privilegiata di F-Droid non è attualmente
-        supportata su Android 5.1 o superiori.
-    </string>
 
     <string name="download_pending">In attesa di avviare lo scaricamento…</string>
 

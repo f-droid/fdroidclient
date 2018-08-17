@@ -47,8 +47,6 @@
     <string name="category_Time">സമയം</string>
     <string name="category_Writing">എഴുത്ത്</string>
 
-    <string name="system_install_button_install">സ്ഥാപിക്കുക</string>
-    <string name="system_uninstall_button">ഒഴിവാക്കുക</string>
     <string name="swap_welcome">എഫ്-ഡ്രോയ്ഡിലേക്ക് സ്വാഗതം!</string>
     <string name="swap_dont_show_again">ഇനി കാണിക്കേണ്ട</string>
     <string name="newPerms">പുതിയത്</string>
@@ -101,8 +99,6 @@
     <string name="notify_on">പുതുക്കലുകൾ ലഭ്യമാകുമ്പോൾ ഒരു അറിയിപ്പ് കാണിക്കുക</string>
     <string name="system_installer">പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ്</string>
     <string name="system_installer_on">പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിന്റെ പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ് ഉപയോഗിക്കുക</string>
-    <string name="uninstall_system">പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ് പുതുക്കുക/ഒഴിവാക്കുക</string>
-    <string name="uninstall_system_summary">പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ് പുതുക്കാനും ഒഴിവാക്കാനും അതിന്റെ വിശദാംശങ്ങള്‍ കാണിക്കുക</string>
     <string name="local_repo_name">നിങ്ങളുടെ പ്രാദേശിക സംഭരണിയുടെ പേര്</string>
     <string name="local_repo_name_summary">നിങ്ങളുടെ പ്രാദേശിക സംഭരണിയുടെ പരസ്യപേര്: %s</string>
     <string name="local_repo_https_on">പ്രാദേശിക സംഭരണിക്ക് വേണ്ടി എൻക്രിപ്റ്റഡ് HTTPS:// കണക്ഷൻ ഉപയോഗിക്കുക</string>
@@ -280,17 +276,7 @@
     <string name="empty_can_update_app_list">അഭിനന്ദനങ്ങൾ!\nനിങ്ങളുടെ പ്രയോഗങ്ങളെല്ലാം കാലികമാണ് (അല്ലെങ്കിൽ നിങ്ങളുടെ സംഭരണികള്‍ കാലഹരണപ്പെട്ടതാണ്).</string>
     <string name="install_error_unknown">ഒരു അജ്ഞാത പിശക് കാരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="uninstall_error_unknown">കാരണം ഒരു അജ്ഞാത പിശക് ഒഴിവാക്കല്‍ പരാജയപ്പെട്ടു</string>
-    <string name="system_install_denied_signature">വിപുലീകരണത്തിന്റെ ഒപ്പ് തെറ്റാണ്! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
     <string name="system_install_denied_permissions">പ്രത്യേക അനുമതികൾ വിപുലീകരണത്തിന് നൽകിയിട്ടില്ല! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
-    <string name="system_install_post_success">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു</string>
-    <string name="system_install_post_fail">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
-    <string name="system_install_post_success_message">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു. ഇത് പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിനെ സ്വയം പ്രാപ്തമാക്കുന്നു.</string>
-    <string name="system_install_installing_rebooting">സ്ഥാപിക്കുന്നു, റീബൂട്ട് ചെയ്യുന്നു…</string>
-    <string name="system_install_question">നിങ്ങൾക്ക് പ്രത്യേകാവകാശ എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കണോ?</string>
-    <string name="system_install_warning">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും.</string>
-    <string name="system_install_warning_lollipop">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും. ശേഷം ഉപകരണം <b>റീബൂട്ട്</b> ചെയ്യും.</string>
-    <string name="system_uninstall">നിങ്ങൾക്ക് പ്രത്യേകാവകാശ എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം ഒഴിവാക്കണോ?</string>
-    <string name="system_install_not_supported">എഫ്-ഡ്രോയ്ഡിന്റെ പ്രത്യേകാവകാശ വിപുലീകരണം നിലവിൽ Android 5.1 ഓ അല്ലെങ്കിൽ പുതിയതോ പിന്തുണയ്ക്കുന്നില്ല.</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">ഇന്റർനെറ്റ് ഇല്ലേ? നിങ്ങളുടെ അടുത്തുള്ള ആളുകളിൽ നിന്ന് പ്രയോഗങ്ങള്‍ സ്വീകരിക്കൂ!</string>
     <string name="nearby_splash__find_people_button">എന്റെ അരികിലുള്ള ആളുകളെ കണ്ടെത്തുക</string>
@@ -416,9 +402,6 @@
     <string name="theme_dark">ഇരുണ്ട നിറം</string>
     <string name="theme_night">രാത്രി</string>
 
-    <string name="requesting_root_access_body">റൂട്ട് അനുമതി ആവശ്യപ്പെടുന്നു…</string>
-    <string name="root_access_denied_title">റൂട്ട് അനുമതി നിഷേധിക്കപ്പെട്ടു</string>
-    <string name="system_install_post_fail_message">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു. ഈ രീതി എല്ലാ ആന്‍ഡ്രോയ്ഡ് വിതരണങ്ങളും പിന്തുണയ്ക്കുന്നില്ല, കൂടുതൽ വിവരങ്ങൾക്ക് എഫ്-ഡ്രോയ്ഡ് ബഗ് ട്രാക്കർ പരിശോധിക്കുക.</string>
     <string name="swap_nfc_description">നിങ്ങളുടെ സുഹൃത്തിന് എഫ്-ഡ്രോയ്ഡ് ഉണ്ടെങ്കിൽ, നിങ്ങളുടെ രണ്ട് ഉപകരണങ്ങളിലും NFC ഒന്നിച്ചു സജ്ജമാക്കുകയാണെങ്കില്‍.</string>
     <string name="swap_join_same_wifi_desc">വൈ-ഫൈ ഉപയോഗിച്ച് കെെമാറ്റം ചെയ്യാൻ, നിങ്ങൾ ഒരേ നെറ്റ്വർക്കിൽ ആണെന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഒരേ നെറ്റ്വർക്കിലേക്ക് പ്രവേശനം ഇല്ലെങ്കിൽ, നിങ്ങളിൽ ഒരാള്‍ക്ക് വൈഫൈ ഹോട്ട്സ്പോട്ട് സൃഷ്ടിക്കാം.</string>
     <string name="swap_confirm_connect">നിങ്ങൾക്ക് ഇപ്പോൾ %1$s ൽ  നിന്ന് പ്രയോഗങ്ങള്‍ സ്വീകരിക്കണോ?</string>

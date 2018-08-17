@@ -126,8 +126,6 @@
     <string name="category_Science_Education">Наука и образование</string>
     <string name="category_Security">Сигурност</string>
     <string name="category_System">Система</string>
-    <string name="requesting_root_access_body">Изисква Root достъп…</string>
-    <string name="root_access_denied_title">Root достъпът е отказан</string>
     <string name="swap_nfc_description">Ако приятелят ви има F-Droid и е активирал NFC, докоснете телефоните си.
     </string>
     <string name="swap_join_same_wifi">Свържете се към една и съща Wi-Fi мрежа с приятеля си</string>
@@ -223,21 +221,7 @@
     <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
     <string name="app_incompatible">Несъвместимо</string>
     <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
-    <string name="system_install_post_success">Привилегированото разширение на F-Droid е инсталирано</string>
-    <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
-    <string name="system_install_question">Желаете ли F-Droid да бъде инсталирано като привилегировано приложение?
-    </string>
-    <string name="system_install_warning_lollipop">Инсталцията отнема около 10 секунди, след което устройството ще бъде <b>рестартирано</b>.</string>
-    <string name="system_uninstall">Желаете ли F-Droid да бъде деинсталиран като привилегировано приложение?</string>
-    <string name="system_uninstall_button">Деинсталиране</string>
 
-    <string name="uninstall_system">Деинсталиране/актуализиране на привилегирован F-Droid</string>
-    <string name="uninstall_system_summary">Отворете екрана с подробности на привилегированото F-Droid приложение за да
-        го деинсталирате
-    </string>
-    <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.
-    </string>
-    <string name="system_install_post_success_message">Привилегировано разширение на F-Droid е инсталирано. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения самостоятелно.</string>
     <string name="more">Повече</string>
     <string name="less">По-малко</string>
 
@@ -251,8 +235,6 @@
     <string name="permissions">Разрешения</string>
     <string name="repo_details">Хранилище</string>
     <string name="repo_url">Адрес</string>
-    <string name="system_install_installing_rebooting">Инсталиране и рестартиране…</string>
-    <string name="system_install_warning">Отнема до 10 секунди.</string>
     <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез Wi-Fi е необходимо да сте в една мрежа. Ако
         нямате достъп до една и съща мрежа единият можете да създадете нова.
     </string>
@@ -263,7 +245,6 @@
     <string name="repo_added">Хранилището %1$s е записано.</string>
     <string name="repo_searching_address">Търсене на хранилище в\n%1$s</string>
     <string name="unsigned">Неподписано</string>
-    <string name="system_install_button_install">Инсталиране</string>
     <string name="swap_confirm">Потвърдете размяната</string>
     <string name="swap_connection_misc_error">Възникна грешка при свързване с устройството, размяната не може да се осъществи!</string>
     <string name="newPerms">Нови</string>
@@ -311,13 +292,8 @@
     <string name="crash_dialog_comment_prompt">Тук можете да добавяте допълнителна информация и коментари:</string>
     <string name="empty_search_available_app_list">Няма съвпадения сред достъпните приложения.</string>
 
-    <string name="system_install_denied_signature">Подписът на разширението е грешен! Моля създайте доклад за грвшка!</string>
     <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля
         създайте бъг репорт!
-    </string>
-    <string name="system_install_post_fail_message">Инсталацията на F-Droid Privileged Extension плъгина се провали. Не
-        всички варианти на Андроид поддържат метода на инсталация. За повече информация се консултирайте с бъг тракера
-        на F-Droid.
     </string>
     <string name="linking_apks">Прилагане на APK файловете към хранилището…</string>
     <string name="update_auto_download">Автоматично изтегляне на актуализации</string>
@@ -479,7 +455,6 @@
     <string name="preventScreenshots_summary">Забрана на снимките на екрана на приложението и скриване от списъка с последни приложения</string>
 
     <string name="status_inserting_x_apps">Запазване (%1$d/%2$d) от %3$s</string>
-    <string name="system_install_not_supported">Засега инсталирането на привилегированото разширение на F-Droid не се поддържа на Андроид версия 5.1 или по-нова.</string>
 
     <string name="nearby_splash__both_parties_need_fdroid">За споделянето на приложения с други около вас, и двете устройства трябва да използват %1$s.</string>
     <string name="app_installed_media">Файлът е инсталиран в %s</string>

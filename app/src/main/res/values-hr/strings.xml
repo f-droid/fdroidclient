@@ -27,10 +27,6 @@
     <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i
         uklonili pakete
     </string>
-    <string name="uninstall_system">Ažuriraj/ukloni povlašteno proširenje</string>
-    <string name="uninstall_system_summary">Otvori ekran sa detaljima o povlaštenom proširenju kako bi ga
-        ažurirali/uklonili
-    </string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
     <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
@@ -237,37 +233,10 @@
         su Vam repozitoriji zastarjeli).
     </string>
 
-    <string name="requesting_root_access_body">Zahtjevam root pristup…</string>
-    <string name="root_access_denied_title">Root pristup odbijen</string>
-    <string name="root_access_denied_body">Ili Vaš Android uređaj nije rootan ili niste dali root pristup F-Droidu.
-    </string>
     <string name="install_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
     <string name="uninstall_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
-    <string name="system_install_denied_signature">Potpis proširenja je pogrešan! Molimo napravite zapis o greški!
-    </string>
     <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite
         zapis o greški!
-    </string>
-    <string name="system_install_button_install">Instaliraj</string>
-    <string name="system_install_post_success">Uspješno instalirano F-Droid privilegirano proširenje</string>
-    <string name="system_install_post_fail">Instalacija F-Droid privilegiranog proširenja nije uspjela</string>
-    <string name="system_install_post_success_message">F-Droid privilegirano proširenje je uspješno instalirano. Ono
-        dopušta F-Droidu samostalnu instalaciju, nadogradnju i uklanjanje aplikacija.
-    </string>
-    <string name="system_install_post_fail_message">Instalacija F-Droid privilegiranog proširenja nije uspjela.
-        Instalacijska metoda nije podržana na svim Android verzijama, pogledajte F-Droid bug tracker za više
-        informacija.
-    </string>
-    <string name="system_install_installing_rebooting">Instalacija i ponovno pokretanje…</string>
-    <string name="system_install_question">Želite li instalirati F-Droid privilegirano proširenje?</string>
-    <string name="system_install_warning">Ovo može potrajati desetak sekundi.</string>
-    <string name="system_install_warning_lollipop">Ovo može potrajati desetak sekundi, nakon čega će se Vaš uređaj<b>
-        ponovno pokrenuti</b>.
-    </string>
-    <string name="system_uninstall">Želite li ukloniti F-Droid privilegirano proširenje?</string>
-    <string name="system_uninstall_button">Ukloni</string>
-    <string name="system_install_not_supported">Instalacija F-Droid privilegiranog proširenja trenutno nije podržana na
-        Android 5.1 ili kasnijem.
     </string>
 
     <string name="swap_nfc_title">Dodirnite za razmjenu</string>

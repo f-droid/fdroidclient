@@ -143,11 +143,6 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguranza</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">Solicitando l\'accesu root…</string>
-    <string name="root_access_denied_title">Refugóse l\'accesu root</string>
-    <string name="root_access_denied_body">O\'l to preséu Android nun ta rootexáu o refuguesti l\'accesu root pa
-        F-Droid.
-    </string>
     <string name="swap_nfc_description">Si\'l to collaciu tien F-Droid y NFC activáu, axuntái los vuesos preseos pela
         parte d\'atras.
     </string>
@@ -188,10 +183,6 @@
     <string name="swap_success">¡Intercambéu esitosu!</string>
     <string name="theme_dark">Escuru</string>
     <string name="theme_light">Claru</string>
-    <string name="uninstall_system">Anovar/Instalar estensión con privilexos</string>
-    <string name="uninstall_system_summary">Abre la pantalla de detalles de la estensión con privilexos
-        p\'anovala/desinstalala
-    </string>
     <string name="about_source">Códigu fonte</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Enllaces</string>
@@ -221,13 +212,6 @@
 
     <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
-    <string name="system_install_post_success">Instalada la estensión F-Droid con privilexos</string>
-    <string name="system_install_post_fail">Fallo la instalación de la estensión F-Droid con privilexos</string>
-    <string name="system_install_post_success_message">Instalada la estensión F-Droid con privilexos. Esto permite a F-Droid instalar, anovar y desinstalar apps por sigo mesmu.</string>
-    <string name="system_install_question">¿Quies instalar la estensión F-Droid con privilexos?</string>
-    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y el preséu <b>reaniciaráse</b> darréu.</string>
-    <string name="system_uninstall">¿Quies desinstalar la estensión F-Droid con privilexos?</string>
-    <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca pa intercambiar</string>
     <string name="swap_join_same_wifi_desc">Pa intercambiar usando W-FI asegúrate que tais na mesma rede. Si nun tienéis
@@ -260,7 +244,6 @@
 
     <string name="perms_description_app">Forníu por %1$s.</string>
     <string name="interval_1h">Cada hora</string>
-    <string name="system_install_post_fail_message">Falló la instalación de la estensión F-Droid con privilexos. El métodu d\'instalación nun ta sofitáu por toles distribuciones Android, por favor consulta\'l siguimientu de fallos de F-Droid pa más información.</string>
     <string name="swap_not_enabled">Intercambéu non habilitáu</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
     <string name="unstable_updates_summary">Suxer l\'anovamientu a versiones inestables</string>
@@ -274,13 +257,9 @@
 
     <string name="download_error">¡Falló la descarga!</string>
 
-    <string name="system_install_denied_signature">La robla d\'esta estensión ye incorreuta. ¡Por favor, crea un informe de fallu!</string>
     <string name="system_install_denied_permissions">¡Nun s\'otorgaron permisos root pa la estensión! ¡Por favor, crea
         un informe de fallu!
     </string>
-    <string name="system_install_button_install">Instalar</string>
-    <string name="system_install_installing_rebooting">Instalando y reaniciando…</string>
-    <string name="system_install_warning">Tardará fasta 10 segundos.</string>
     <string name="repo_details">Repositoriu</string>
     <string name="repo_url">Direición</string>
     <string name="perms_new_perm_prefix">Nuevo:</string>
@@ -315,10 +294,6 @@
         instalaos
     </string>
     <string name="repo_provider">Repositoriu: %s</string>
-
-    <string name="system_install_not_supported">Anguaño la instalación de la estensión con privilexos de F-Droid nun ta
-        sofitada n\'Android 5.1 o mayor.
-    </string>
 
     <string name="download_pending">Esperando p\'aniciar al descarga…</string>
 

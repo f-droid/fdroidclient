@@ -65,6 +65,13 @@ public class PasswordObfuscator {
         return result;
     }
 
+    /**
+     * <b>This uses the AES-ECB cipher which is known to be insecure</b>
+     *
+     * @see <a href="https://blog.filippo.io/the-ecb-penguin/">The ECB Penguin</a>
+     */
+    @Deprecated
+    @SuppressWarnings("GetInstance")
     public String encode(String junk, char[] password) {
         if (password == null) return null;
         try {
@@ -84,6 +91,13 @@ public class PasswordObfuscator {
         return null;
     }
 
+    /**
+     * <b>This uses the AES-ECB cipher which is known to be insecure</b>
+     *
+     * @see <a href="https://blog.filippo.io/the-ecb-penguin/">The ECB Penguin</a>
+     */
+    @Deprecated
+    @SuppressWarnings("GetInstance")
     public char[] decode(String junk, String password) {
         if (password == null) return null;
         try {

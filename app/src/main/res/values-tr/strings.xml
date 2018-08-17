@@ -145,11 +145,6 @@
     <string name="category_Science_Education">Bilim ve Eğitim</string>
     <string name="category_Security">Güvenlik</string>
     <string name="category_System">Sistem</string>
-    <string name="requesting_root_access_body">Kök erişimi isteniyor…</string>
-    <string name="root_access_denied_title">Kök erişimi engellendi</string>
-    <string name="root_access_denied_body">Ya Android aygıtınız köklenmemiş ya da F-Droid için kök erişimini
-        engellediniz.
-    </string>
     <string name="swap_nfc_description">Arkadaşınızda F-Droid varsa ve NFC açıksa aygıtlarınızı birbirine dokundurun.
     </string>
     <string name="swap_join_same_wifi">Arkadaşınızla aynı Wi-Fi\'ye katılın</string>
@@ -219,11 +214,6 @@
     <string name="empty_can_update_app_list">Tebrikler!\nUygulamalarınız güncel.</string>
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
-    <string name="system_install_button_install">Kur</string>
-    <string name="system_install_installing_rebooting">Kuruluyor ve aygıt yeniden başlatılıyor…</string>
-    <string name="system_install_warning">Bu 10 saniye kadar bir sürer.</string>
-    <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir sürer ve ardından aygıt<b>yeniden başlatılacak</b>.</string>
-    <string name="system_uninstall_button">Kaldır</string>
 
     <string name="swap_nfc_title">Takas yapmak için dokunun</string>
     <string name="swap_success">Takas başarılı oldu!</string>
@@ -287,20 +277,9 @@
     <string name="crash_dialog_title">F-Droid çöktü</string>
     <string name="crash_dialog_text">Uygulamanın durmasına neden olan beklenmedik bir hata oluştu. Sorunun giderilmesine yardım etmek için ayrıntıları e-posta ile yollamak ister misiniz?</string>
     <string name="crash_dialog_comment_prompt">Ek bilgi ve yorumları buraya ekleyebilirsiniz:</string>
-    <string name="uninstall_system">Ayrıcalıklı Uzantıyı Güncelle/Kaldır</string>
-    <string name="uninstall_system_summary">Güncellemek/kaldırmak için Ayrıcalıklı Uzantı\'nın ayrıntılar ekranını
-        açın
-    </string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="system_install_denied_signature">Uzantının imzası yanlış! Lütfen bir hata bildirimi oluşturun!</string>
     <string name="system_install_denied_permissions">Uzantıya ayrıcalıklı izinler verilmemiştir! Lütfen bir hata bildirimi oluşturun!</string>
-    <string name="system_install_post_success">F-Droid Ayrıcalıklı Uzantı kuruldu</string>
-    <string name="system_install_post_fail">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız</string>
-    <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı kuruldu. Bu, F-Droid\'in kendi başına uygulamaları kurmasına, güncellemesine ve kaldırmasına izin verir.</string>
-    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız oldu. Kurulum yöntemi her Android dağıtımı tarafından desteklenmez, daha çok bilgi için lütfen F-Droid hata izleyicisine başvurun.</string>
-    <string name="system_install_question">F-Droid Ayrıcalıklı Uzantı\'yı kurmak istiyor musunuz?</string>
-    <string name="system_uninstall">F-Droid Ayrıcalıklı Uzantı\'yı kaldırmak istiyor musunuz?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer
         aynı ağa erişiminiz yoksa, biriniz bir Wi-Fi Hotspot oluşturabilir.
     </string>
@@ -315,10 +294,6 @@
     <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
     <string name="useTorSummary">Artırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl. Orbot gerektirir</string>
     <string name="download_pending">İndirmeye başlamak için bekleniyor…</string>
-
-    <string name="system_install_not_supported">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu şu anda Android 5.1 ve sonraki
-        sürümlerde desteklenmemektedir.
-    </string>
 
     <string name="install_error_notify_title">%s kurulumu sırasında hata</string>
     <string name="uninstall_error_notify_title">%s kaldırılması sırasında hata</string>

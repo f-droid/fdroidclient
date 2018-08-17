@@ -107,8 +107,6 @@
     <string name="category_Science_Education">科學與教育</string>
     <string name="category_Security">安全與保安</string>
     <string name="category_System">系統</string>
-    <string name="requesting_root_access_body">正在要求 root 權限…</string>
-    <string name="root_access_denied_title">Root 權限被拒絕</string>
     <string name="swap">交換應用程式</string>
     <string name="swap_no_wifi_network">沒有網絡連線</string>
     <string name="open_qr_code_scanner">開啟 QR 碼掃描器</string>
@@ -148,7 +146,6 @@
 
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
-    <string name="system_uninstall_button">卸載</string>
 
     <string name="swap_nfc_title">觸碰來交換</string>
     <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。</string>
@@ -229,8 +226,6 @@
     <string name="permissions">存取權</string>
     <string name="repo_details">軟件庫</string>
     <string name="repo_url">網址</string>
-    <string name="uninstall_system">更新或卸載系統權限套件</string>
-    <string name="uninstall_system_summary">開啟系統權限套件的詳情以更新或卸載套件</string>
     <string name="login_name">用戶名</string>
     <string name="login_password">密碼</string>
     <string name="repo_edit_credentials">更改密碼</string>
@@ -244,15 +239,6 @@
     <string name="linking_apks">正在連接 APK 檔至軟件庫…</string>
     <string name="status_processing_xml_percent">正在從 %1$s 處理 %2$s / %3$s（%4$d%%）</string>
     <string name="repo_not_yet_updated">此軟件庫還未啟用。您需要啟用倉庫才可以檢視其中的應用程式。</string>
-    <string name="system_install_button_install">安裝</string>
-    <string name="system_install_post_success">已安裝 F-Droid 系統權限套件</string>
-    <string name="system_install_post_fail">F-Droid 系統權限套件安裝失敗</string>
-    <string name="system_install_post_success_message">已安裝 F-Droid 系統權限套件，F-Droid 現在可以自行安裝、更新及卸載應用程式。</string>
-    <string name="system_install_installing_rebooting">正在安裝和重新啟動…</string>
-    <string name="system_install_question">您要安裝 F-Droid 系統權限套件嗎？</string>
-    <string name="system_install_warning">安裝過程只需最多 10 秒鐘。</string>
-    <string name="system_install_warning_lollipop">安裝過程最多只需 10 秒鐘，而裝置將會在安裝後<b>重新啟動</b>。</string>
-    <string name="system_uninstall">您想卸載 F-Droid 系統權限套件嗎？</string>
     <string name="swap_join_same_wifi">與您的朋友加入同一個 Wi-Fi 網絡</string>
     <string name="swap_join_same_wifi_desc">若要透過 Wi-Fi 進行交換，請確保雙方已加入同一個網絡。如果您不能加入同一個網絡，您可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
@@ -266,8 +252,6 @@
 \n
 \nF-Droid 並不提供您裝置上的應用程式。您可以嘗試更新您的軟件庫，但若更新後此頁還沒有顯示任何應用程式，您的倉庫的確不提供裝置現有的程式。</string>
 
-    <string name="root_access_denied_body">您的 Android 裝置還未取得 root 權限，或 F-Droid 已被拒 root 權限。</string>
-    <string name="system_install_denied_signature">套件的簽署不正確！請提交一份錯誤報告！</string>
     <string name="system_install_denied_permissions">套件尚未得到系統權限！
 請提交一份錯誤報告！
 </string>
@@ -277,9 +261,6 @@
     <string name="login_title">需要驗證</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
 
-    <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker
-        以取得更多資訊。
-    </string>
     <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
     <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供更多有關此問題的資料嗎？</string>
@@ -293,8 +274,6 @@
     <string name="update_auto_download">自動下載更新</string>
     <string name="update_auto_download_summary">F-Droid 將會自動下載更新，下載完畢後會通知您安裝有關更新</string>
     <string name="repo_provider">軟件庫：%s</string>
-
-    <string name="system_install_not_supported">F-Droid 系統權限套件現不支援 Android 5.1 或更新的版本。</string>
 
     <string name="download_pending">正等待下載開始…</string>
     <string name="install_error_notify_title">安裝 %s 時發生錯誤</string>

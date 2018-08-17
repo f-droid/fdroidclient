@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
 
@@ -123,7 +124,7 @@ public class PackageProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
+    public Cursor query(@NonNull Uri uri, String[] projection,
                         String customSelection, String[] selectionArgs, String sortOrder) {
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
@@ -150,12 +151,12 @@ public class PackageProvider extends FDroidProvider {
      * F-Droid client or not.
      */
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         long rowId = db().insertOrThrow(getTableName(), null, values);
         getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
         return getPackageIdUri(rowId);
@@ -166,7 +167,7 @@ public class PackageProvider extends FDroidProvider {
      * new app all together as far as Android is concerned.
      */
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Update not supported for " + uri + ".");
     }
 }

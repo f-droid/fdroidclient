@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -360,7 +361,7 @@ public class RepoProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
+    public Cursor query(@NonNull Uri uri, String[] projection,
                         String selection, String[] selectionArgs, String sortOrder) {
 
         if (TextUtils.isEmpty(sortOrder)) {
@@ -393,7 +394,7 @@ public class RepoProvider extends FDroidProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
 
         // Don't let people specify arbitrary priorities. Instead, we are responsible
         // for making sure that newly created repositories by default have the highest priority.
@@ -439,7 +440,7 @@ public class RepoProvider extends FDroidProvider {
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
 
         QuerySelection selection = new QuerySelection(where, whereArgs);
         switch (MATCHER.match(uri)) {
@@ -463,7 +464,7 @@ public class RepoProvider extends FDroidProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
 
         // When the priority of a repo changes, we need to update the "preferred metadata" foreign
         // key in the package table to point to the best possible record in the app metadata table.

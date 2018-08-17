@@ -135,9 +135,6 @@
     <string name="category_Science_Education">Onderwijs &amp; wetenschap</string>
     <string name="category_Security">Beveiliging</string>
     <string name="category_System">Systeem</string>
-    <string name="requesting_root_access_body">Roottoegang aanvragen…</string>
-    <string name="root_access_denied_title">Roottoegang geweigerd</string>
-    <string name="root_access_denied_body">Je Android-apparaat is niet geroot, of je hebt F-Droid geen roottoegang gegeven.</string>
     <string name="swap_join_same_wifi">Verbind met hetzelfde wifinetwerk als je vriend</string>
     <string name="swap">Wissel apps uit</string>
     <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
@@ -167,7 +164,6 @@
 
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon niet verwijderen door een onbekende fout</string>
-    <string name="system_uninstall_button">Verwijderen</string>
 
     <string name="swap_nfc_title">Raak aan om uit te wisselen</string>
     <string name="swap_nfc_description">Als je vriend F-Droid heeft geïnstalleerd en NFC is ingeschakeld, hou dan de
@@ -244,8 +240,6 @@
     <string name="theme_dark">Donker</string>
     <string name="unstable_updates">Instabiele updates</string>
     <string name="unstable_updates_summary">Geef updates weer voor instabiele versies</string>
-    <string name="uninstall_system">Systeemrechtenextensie bijwerken/verwijderen</string>
-    <string name="uninstall_system_summary">Open detailscherm van systeemrechtenextensie om deze bij te werken of te verwijderen</string>
     <string name="more">Meer</string>
     <string name="less">Minder</string>
 
@@ -261,22 +255,9 @@
     <string name="permissions">Machtigingen</string>
     <string name="repo_details">Bron</string>
     <string name="repo_url">Adres</string>
-    <string name="system_install_denied_signature">De handtekening van de extensie klopt niet! Maak een bugrapport
-        aan!
-    </string>
     <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Maak een bugrapport
         aan!
     </string>
-    <string name="system_install_button_install">Installeren</string>
-    <string name="system_install_post_success">F-Droid-systeemrechtenextensie is geïnstalleerd</string>
-    <string name="system_install_post_fail">Installatie van F-Droid-systeemrechtenextensie is mislukt</string>
-    <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, bijwerken en verwijderen.</string>
-    <string name="system_install_post_fail_message">De installatie van de F-Droid-systeemrechtenextensie is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor meer informatie.</string>
-    <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
-    <string name="system_install_question">Wil je de F-Droid-systeemrechtenextensie installeren?</string>
-    <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
-    <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
-    <string name="system_uninstall">Wil je de F-Droid-systeemrechtenextensie verwijderen?</string>
     <string name="download_error">Download mislukt!</string>
 
     <string name="theme_night">Nacht</string>
@@ -310,7 +291,6 @@
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een
         melding weergegeven om ze te installeren
     </string>
-    <string name="system_install_not_supported">Installatie van de F-Droid-systeemrechtenextensie wordt op het moment niet ondersteund op Android 5.1 of hoger.</string>
 
     <string name="download_pending">Wachten op start van download…</string>
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>

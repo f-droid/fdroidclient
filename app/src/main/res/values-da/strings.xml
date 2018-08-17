@@ -18,10 +18,6 @@
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
     <string name="system_installer">Privilegeret Udvidelse</string>
     <string name="system_installer_on">Brug Privilegeret Udvidelse til at installere, opdatere og fjerne pakker</string>
-    <string name="uninstall_system">Opdater/Afinstaller Privilegeret Udvidelse</string>
-    <string name="uninstall_system_summary">Åbn skærmen med detaljer om Privilegeret Udvidelse for at
-        opdatere/afinstallere den
-    </string>
     <string name="local_repo_name">Dit Lokale Depots navn</string>
     <string name="local_repo_name_summary">Dit lokale depots annoncerede titel: %s</string>
     <string name="local_repo_https_on">Brug krypteret HTTPS:// forbindelse til lokalt depot</string>
@@ -206,33 +202,12 @@
 \nDer er apps på din enhed, men de er ikke tilgængelige i F-Droid. Det kan være fordi, at du skal opdatere dine depoter eller også tilbyder depoterne reelt ikke dine apps.</string>
     <string name="empty_can_update_app_list">Tillykke!\nDine apps er opdaterede.</string>
 
-    <string name="requesting_root_access_body">Anmoder om root-adgang…</string>
-    <string name="root_access_denied_title">Root-adgang nægtet</string>
-    <string name="root_access_denied_body">Enten er din Android-enhed ikke rooted eller også har du nægtet F-Droid
-        root-adgang.
-    </string>
     <string name="install_error_unknown">Kunne ikke installere på grund af en ukendt fejl</string>
     <string name="linking_apks">Kobler APK\'er sammen med depotet…</string>
     <string name="uninstall_error_unknown">Afinstallation mislykkedes grundet en ukendt fejl</string>
-    <string name="system_install_denied_signature">Udvidelsens signatur er forkert! Opret venligst en fejlrapport!
-    </string>
     <string name="system_install_denied_permissions">De privilegerede tilladelser er ikke blevet givet til udvidelsen!
         Opret venligst en fejlrapport!
     </string>
-    <string name="system_install_button_install">Installer</string>
-    <string name="system_install_post_success">F-Droid Privilegeret udvidelse installeret</string>
-    <string name="system_install_post_fail">Installation af F-Droid Privilegeret Udvidelse fejlede</string>
-    <string name="system_install_post_success_message">F-Droid Privilegeret udvidelse blev installeret. Denne gør det muligt for F-Droid selvstændigt at installere, opdatere og afinstallere apps .</string>
-    <string name="system_install_post_fail_message">Installation af F-Droid Privilegeret Udvidelse fejlede.
-        Installationsmetoden er ikke understøttet af alle Android distributioner, konsulter venligst F-Droid
-        fejldatabasen for mere information.
-    </string>
-    <string name="system_install_installing_rebooting">Installerer og genstarter…</string>
-    <string name="system_install_question">Vil du installere F-Droid Privilegeret Udvidelse?</string>
-    <string name="system_install_warning">Dette tager op til 10 sekunder.</string>
-    <string name="system_install_warning_lollipop">Dette tager op til 10 sekunder og enheden vil <b>genstarte</b> bagefter.</string>
-    <string name="system_uninstall">Vil du afinstallere F-Droid Privilegeret Udvidelse?</string>
-    <string name="system_uninstall_button">Afinstaller</string>
 
     <string name="swap_nfc_title">Rør for at udveksle</string>
     <string name="swap_nfc_description">Hvis din ven har F-Droid og NFC slået til, lad da jeres enheder røre hinanden.
@@ -318,9 +293,6 @@
 
     <string name="useTor">Brug Tor</string>
     <string name="useTorSummary">Hent altid gennem Tor for øget beskyttelse af privatlivet. Kræver Orbot</string>
-    <string name="system_install_not_supported">Installation af F-Droid Priviligeret Udvidelse er i øjeblikket ikke
-        understøttet på Android 5.1 eller senere.
-    </string>
 
     <string name="swap_stopping_wifi">Deaktiverer Wi-Fi…</string>
     <string name="download_pending">Venter på at kunne begynde hentning…</string>

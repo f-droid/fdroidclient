@@ -136,8 +136,6 @@
     <string name="update_auto_download_summary">Atjauninājumi tiek lejupielādēti automātiski un jūs tiekat paziņots, lai instalētu</string>
     <string name="update_auto_install">Automātiski instalēt atjauninājumus</string>
     <string name="update_auto_install_summary">Lejupielādēt un instalēt aplikācijas fonā</string>
-    <string name="uninstall_system">Atjaunināt/Atinstalēt Priviliģēto Pievienojumu</string>
-    <string name="uninstall_system_summary">Atvērt informācijas ekrānu par Priviliģēto Pievienojumu, lai to atjauninātu/atinstalētu</string>
     <string name="local_repo_name_summary">Jūsu lokālā repozitorija reklamētais nosaukums: %s</string>
     <string name="login_title">Ir vajadzīga autentikācija</string>
     <string name="login_name">Lietotājvārds</string>

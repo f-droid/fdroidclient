@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- package name must be unique so suffix with "tests" so package loader doesn't ignore us -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="org.fdroid.fdroid.tests"
           android:versionCode="1"
           android:versionName="1.0">
+    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18"/>
     <!-- We add an application tag here just so that we can indicate that
          this package needs to link against the android.test library,
          which is needed when building test cases. -->
@@ -12,12 +14,4 @@
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--
-    This declares that this application uses the instrumentation test runner targeting
-    the package of org.fdroid.fdroid.  To run the tests use the command:
-    "adb shell am instrument -w org.fdroid.fdroid.tests/android.test.InstrumentationTestRunner"
-    -->
-    <instrumentation android:name="com.zutubi.android.junitreport.JUnitReportTestRunner"
-                     android:targetPackage="org.fdroid.fdroid"
-                     android:label="Tests for org.fdroid.fdroid" />
 </manifest>

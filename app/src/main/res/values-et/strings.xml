@@ -20,9 +20,6 @@
     <string name="notify_on">Kuva teade, kui värskendused on saadaval</string>
     <string name="system_installer">Priviligeeritud laiendus</string>
     <string name="system_installer_on">Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks priviligeeritud laiendust</string>
-    <string name="uninstall_system">Värskenda/eemalda priviligeeritud laiendus</string>
-    <string name="uninstall_system_summary">Priviligeeritud laienduse värskendamiseks/eemaldamiseks ava detailne vaade
-    </string>
     <string name="local_repo_name">Kohaliku hoidla nimi</string>
     <string name="local_repo_name_summary">Kohaliku hoidla reklaamitud nimi: %s</string>
     <string name="local_repo_https_on">Kasuta kohaliku hoidlaga krüpteeritud HTTPS:// ühendust</string>
@@ -113,7 +110,6 @@
         rakenduste puudumine nendes hoidlates.
     </string>
     <string name="empty_can_update_app_list">Palju õnne!\nSu rakendused on ajakohased.</string>
-    <string name="system_install_denied_signature">Laienduse signatuur on vale! Palun teavita veast!</string>
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!
     </string>
@@ -237,26 +233,8 @@
 
     <string name="empty_search_available_app_list">Sobivaid rakendusi ei ole.</string>
 
-    <string name="requesting_root_access_body">Soovitakse juurkasutaja õiguseid…</string>
-    <string name="root_access_denied_title">Juurkasutajana ligipääs keelatud</string>
     <string name="install_error_unknown">Paigaldamine nurjus tundmatu vea tõttu</string>
     <string name="uninstall_error_unknown">Eemaldamine nurjus tundmatu vea tõttu</string>
-    <string name="system_install_button_install">Paigalda</string>
-    <string name="system_install_post_success">F-Droidi privilegeeritud laiendus on paigaldatud</string>
-    <string name="system_install_post_fail">F-Droid privilegeeritud laienduse paigaldamine nurjus</string>
-    <string name="system_install_post_success_message">F-Droid privilegeeritud laiendus on paigaldatud. See võimaldab F-Droidil paigaldada, uuendada ja eemaldada rakendusi iseseisvalt.</string>
-    <string name="system_install_post_fail_message">F-Droid privilegeeritud laienduse paigaldamine nurjus. Kõik Androidi
-        väljalasked ei toeta paigaldamise meetodit. Lisateavet leiad F-Droidi veahaldusest.
-    </string>
-    <string name="system_install_installing_rebooting">Paigaldamine ja taaskäivitamine…</string>
-    <string name="system_install_question">Kas sa soovid paigaldada F-Droidi priviligeeritud laienduse?</string>
-    <string name="system_install_warning">Selleks kulub kuni 10 sekundit.</string>
-    <string name="system_install_warning_lollipop">Selleks kulub kuni 10 sekundit ja seadmele tehakse hiljem<b> taaskäivitus</b>.</string>
-    <string name="system_uninstall">Kas soovid eemaldada F-Droidi priviligeeritud laienduse?</string>
-    <string name="system_uninstall_button">Eemalda</string>
-    <string name="system_install_not_supported">Android 5.1 ja uuematega ei ole hetkel F-Droidi privilegeeritud
-        laienduse paigaldamine toetatud.
-    </string>
 
     <string name="swap_nfc_title">Vahetamiseks puuduta</string>
     <string name="swap_nfc_description">Kui su sõbral on F-Droid ja NFC on sisselülitatud, siis pange oma seadmed
@@ -338,9 +316,6 @@
 
     <string name="crash_dialog_title">F-Droidi tabas krahh</string>
     <string name="crash_dialog_comment_prompt">Sa saad lisada täiendavat informatsiooni ja kommentaare siia:</string>
-    <string name="root_access_denied_body">Su Android seade ei ole kas lahti lukustatud või sa oled keelanud F-Droidile
-        juurkasutaja õigused.
-    </string>
     <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs
         samasse võrku, siis saab teist üks luua WiFi tööpunkti.
     </string>

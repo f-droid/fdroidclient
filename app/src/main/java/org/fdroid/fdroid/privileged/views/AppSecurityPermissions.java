@@ -1,20 +1,20 @@
 /*
-**
-** Copyright 2007, The Android Open Source Project
-** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
+ **
+ ** Copyright 2007, The Android Open Source Project
+ ** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
+ **
+ ** Licensed under the Apache License, Version 2.0 (the "License");
+ ** you may not use this file except in compliance with the License.
+ ** You may obtain a copy of the License at
+ **
+ **     http://www.apache.org/licenses/LICENSE-2.0
+ **
+ ** Unless required by applicable law or agreed to in writing, software
+ ** distributed under the License is distributed on an "AS IS" BASIS,
+ ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ** See the License for the specific language governing permissions and
+ ** limitations under the License.
+ */
 
 package org.fdroid.fdroid.privileged.views;
 
@@ -65,17 +65,17 @@ import java.util.Set;
  * extended information consisting of all groups and permissions.
  * To use this view define a LinearLayout or any ViewGroup and add this
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
- * <p/>
+ * <p>
  * NOTES:
- * Based on AOSP core/java/android/widget/AppSecurityPermissions.java
- * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
- * Reviewed against frameworks/base/core/java/android/widget/AppSecurityPermissions.java
+ * Based on AOSP {@code core/java/android/widget/AppSecurityPermissions.java},
+ * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d,
+ * Reviewed against {@code frameworks/base/core/java/android/widget/AppSecurityPermissions.java},
  * from commit {@code android-8.1.0_r2}
- * <p/>
+ * <p>
  * To update this file, Start from latest included commit and include changes
  * until the newest commit with care:
- * github.com/android/platform_frameworks_base/blob/master/core/java/android/widget/AppSecurityPermissions.java
- * <p/>
+ * <a href="http://github.com/android/platform_frameworks_base/blob/master/core/java/android/widget/AppSecurityPermissions">android/widget/AppSecurityPermissions.java</a>
+ * <p>
  * This file has a different code style than the rest of fdroidclient because
  * it is kept in sync with the file from AOSP.  Please maintain the original
  * AOSP code style so it is easy to track changes.
@@ -426,6 +426,7 @@ public class AppSecurityPermissions {
         return permView;
     }
 
+    @TargetApi(23)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
