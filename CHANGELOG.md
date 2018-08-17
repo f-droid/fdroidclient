@@ -1,3 +1,13 @@
+### 1.4-alpha0 (2018-08-17)
+
+* show "Open" button when media is installed and viewable
+
+* retry index downloads from mirrors
+
+* add Share button to "Installed Apps" to export CSV list
+
+* add clickable list of APKs to the swap HTML index page 
+
 ### 1.3.1 (2018-08-07)
 
 * big overhaul of core nearby/swap plumbing
