@@ -147,10 +147,24 @@ public final class LocalRepoManager {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(indexHtml)));
 
+            StringBuilder builder = new StringBuilder();
+            for (App app : apps.values()) {
+                builder.append("<li><a href=\"/fdroid/repo/")
+                        .append(app.installedApk.apkName)
+                        .append("\"><img width=\"32\" height=\"32\" src=\"/fdroid/repo/icons/")
+                        .append(app.packageName)
+                        .append("_")
+                        .append(app.installedApk.versionCode)
+                        .append(".png\">")
+                        .append(app.name)
+                        .append("</a></li>\n");
+            }
+
             String line;
             while ((line = in.readLine()) != null) {
                 line = line.replaceAll("\\{\\{REPO_URL\\}\\}", repoAddress);
                 line = line.replaceAll("\\{\\{CLIENT_URL\\}\\}", fdroidClientURL);
+                line = line.replaceAll("\\{\\{APP_LIST\\}\\}", builder.toString());
                 out.write(line);
             }
             in.close();

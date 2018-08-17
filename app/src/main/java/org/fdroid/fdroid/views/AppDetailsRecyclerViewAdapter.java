@@ -7,10 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -28,6 +30,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,6 +38,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -43,10 +47,12 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.main.MainActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -512,9 +518,42 @@ public class AppDetailsRecyclerViewAdapter
                     buttonPrimaryView.setText(R.string.menu_upgrade);
                     buttonPrimaryView.setOnClickListener(onUpgradeClickListener);
                 } else {
+                    Apk mediaApk = app.getMediaApkifInstalled(context);
                     if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
                         buttonPrimaryView.setOnClickListener(onLaunchClickListener);
+                    } else if (!app.isApk && mediaApk != null) {
+                        final File installedFile = new File(mediaApk.getMediaInstallPath(context), mediaApk.apkName);
+                        if (!installedFile.toString().startsWith(context.getApplicationInfo().dataDir)) {
+                            final Intent viewIntent = new Intent(Intent.ACTION_VIEW);
+                            Uri uri = FileProvider.getUriForFile(context, Installer.AUTHORITY, installedFile);
+                            String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+                                    FilenameUtils.getExtension(installedFile.getName()));
+                            viewIntent.setDataAndType(uri, mimeType);
+                            if (Build.VERSION.SDK_INT < 19) {
+                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            } else {
+                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                                        | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                            }
+                            if (context.getPackageManager().queryIntentActivities(viewIntent, 0).size() > 0) {
+                                buttonPrimaryView.setText(R.string.menu_open);
+                                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        try {
+                                            context.startActivity(viewIntent);
+                                        } catch (ActivityNotFoundException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            } else {
+                                buttonPrimaryView.setVisibility(View.GONE);
+                            }
+                        } else {
+                            buttonPrimaryView.setVisibility(View.GONE);
+                        }
                     } else {
                         buttonPrimaryView.setVisibility(View.GONE);
                     }
