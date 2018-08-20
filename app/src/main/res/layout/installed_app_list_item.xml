@@ -9,7 +9,8 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground"
+    android:focusable="true">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
