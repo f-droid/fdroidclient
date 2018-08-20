@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
@@ -16,14 +17,15 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
         this.activity = activity;
     }
 
+    @NonNull
     @Override
-    public AppCardController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new AppCardController(activity, activity.getLayoutInflater()
                 .inflate(R.layout.app_card_normal, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(AppCardController holder, int position) {
+    public void onBindViewHolder(@NonNull AppCardController holder, int position) {
         cursor.moveToPosition(position);
         holder.bindApp(new App(cursor));
     }

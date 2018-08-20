@@ -90,7 +90,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.share_chooser, container, false);
         setupView(v);
         return v;
@@ -153,8 +153,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
                 return VIEWTYPE_INTENT;
             }
 
+            @NonNull
             @Override
-            public VH onCreateViewHolder(ViewGroup parent, int viewType) {
+            public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate((viewType == 1)
                         ? R.layout.share_header_item
                         : R.layout.share_item, parent, false);
@@ -162,7 +163,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             }
 
             @Override
-            public void onBindViewHolder(VH holder, int position) {
+            public void onBindViewHolder(@NonNull VH holder, int position) {
                 if (getItemViewType(position) == VIEWTYPE_SWAP) {
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override

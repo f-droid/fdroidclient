@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,19 +28,20 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         recyclerView.addItemDecoration(appListDecorator);
     }
 
     @Override
-    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.removeItemDecoration(appListDecorator);
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
+    @NonNull
     @Override
-    public AppCardController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout;
         if (viewType == R.id.whats_new_feature) {
             layout = R.layout.app_card_featured;
@@ -88,7 +90,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     }
 
     @Override
-    public void onBindViewHolder(AppCardController holder, int position) {
+    public void onBindViewHolder(@NonNull AppCardController holder, int position) {
         cursor.moveToPosition(position);
         final App app = new App(cursor);
         holder.bindApp(app);

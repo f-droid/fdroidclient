@@ -184,7 +184,7 @@ public class AppCardController extends RecyclerView.ViewHolder
                 && loadedImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
-                public void onGenerated(Palette palette) {
+                public void onGenerated(@NonNull Palette palette) {
                     featuredImage.setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
                 }
             });

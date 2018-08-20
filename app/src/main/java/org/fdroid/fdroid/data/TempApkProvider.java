@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -75,7 +76,7 @@ public class TempApkProvider extends ApkProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         if (MATCHER.match(uri) == CODE_INIT) {
             initTable(Long.parseLong(uri.getLastPathSegment()));
             return null;
@@ -85,12 +86,12 @@ public class TempApkProvider extends ApkProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
     }
 

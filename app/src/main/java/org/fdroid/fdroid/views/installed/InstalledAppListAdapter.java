@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.installed;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -32,14 +33,15 @@ class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemC
         return cursor.getLong(cursor.getColumnIndex(Schema.AppMetadataTable.Cols.ROW_ID));
     }
 
+    @NonNull
     @Override
-    public InstalledAppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public InstalledAppListItemController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = activity.getLayoutInflater().inflate(R.layout.installed_app_list_item, parent, false);
         return new InstalledAppListItemController(activity, view);
     }
 
     @Override
-    public void onBindViewHolder(InstalledAppListItemController holder, int position) {
+    public void onBindViewHolder(@NonNull InstalledAppListItemController holder, int position) {
         if (cursor == null) {
             return;
         }

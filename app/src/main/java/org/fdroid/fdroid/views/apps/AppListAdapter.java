@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.apps;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
@@ -25,14 +26,15 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public StandardAppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StandardAppListItemController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new StandardAppListItemController(activity, activity.getLayoutInflater()
                 .inflate(R.layout.app_list_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(StandardAppListItemController holder, int position) {
+    public void onBindViewHolder(@NonNull StandardAppListItemController holder, int position) {
         cursor.moveToPosition(position);
         final App app = new App(cursor);
         holder.bindModel(app);
@@ -50,13 +52,13 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         recyclerView.addItemDecoration(divider);
     }
 
     @Override
-    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.removeItemDecoration(divider);
         super.onDetachedFromRecyclerView(recyclerView);
     }

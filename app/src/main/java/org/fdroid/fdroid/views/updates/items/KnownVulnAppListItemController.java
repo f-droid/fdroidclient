@@ -88,6 +88,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         return true;
     }
 
+    @NonNull
     @Override
     protected DismissResult onDismissApp(@NonNull App app) {
         this.ignoreVulnerableApp(app);

@@ -1,6 +1,8 @@
 package org.fdroid.fdroid.net;
 
 import android.net.Uri;
+import android.support.annotation.NonNull;
+
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
@@ -243,12 +245,12 @@ public abstract class Downloader {
         }
 
         @Override
-        public int read(byte[] buffer) throws IOException {
+        public int read(@NonNull byte[] buffer) throws IOException {
             return toWrap.read(buffer);
         }
 
         @Override
-        public int read(byte[] buffer, int byteOffset, int byteCount) throws IOException {
+        public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
             return toWrap.read(buffer, byteOffset, byteCount);
         }
 

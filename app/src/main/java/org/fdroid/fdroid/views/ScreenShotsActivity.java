@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -125,7 +126,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
         @Nullable
         @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
 
             DisplayImageOptions displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
@@ -146,7 +147,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
     @TargetApi(11)
     public static class DepthPageTransformer implements ViewPager.PageTransformer {
 
-        public void transformPage(View view, float position) {
+        public void transformPage(@NonNull View view, float position) {
             int pageWidth = view.getWidth();
 
             if (position <= 0) {

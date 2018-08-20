@@ -261,7 +261,7 @@ public class FeatureImage extends AppCompatImageView {
                 if (loadedImage != null) {
                     new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                         @Override
-                        public void onGenerated(Palette palette) {
+                        public void onGenerated(@NonNull Palette palette) {
                             if (palette != null) {
                                 setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
                             }
