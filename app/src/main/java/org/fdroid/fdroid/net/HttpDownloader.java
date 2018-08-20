@@ -78,7 +78,6 @@ public class HttpDownloader extends Downloader {
      * @param destFile Where the download is saved
      * @param username Username for HTTP Basic Auth, use {@code null} to ignore
      * @param password Password for HTTP Basic Auth, use {@code null} to ignore
-     * @throws FileNotFoundException
      * @throws MalformedURLException
      */
     HttpDownloader(Uri uri, File destFile, String username, String password)
