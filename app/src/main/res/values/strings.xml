@@ -83,8 +83,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="about_title">About F-Droid</string>
     <string name="about_version">Version</string>
     <string name="about_site">Website</string>
+    <string name="about_forum">Support forum</string>
     <string name="about_source">Source code</string>
-    <string name="about_mail">E-mail</string>
     <string name="about_license">License</string>
 
     <string name="app_incompatible">Incompatible</string>

@@ -28,11 +28,11 @@
             style="@style/BodyText" />
 
         <TextView
-            android:text="@string/about_mail"
+            android:text="@string/about_forum"
             style="@style/CaptionText" />
         <TextView
-            android:text="@string/team_email"
-            android:autoLink="email"
+            android:text="@string/forum_link"
+            android:autoLink="web"
             style="@style/BodyText" />
 
         <TextView
