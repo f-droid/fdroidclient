@@ -16,7 +16,6 @@
     <string name="no_such_app">没有此类应用。</string>
     <string name="about_title">关于F-Droid</string>
     <string name="about_site">网站</string>
-    <string name="about_mail">电邮地址</string>
     <string name="about_version">版本</string>
     <string name="app_installed">已安装</string>
     <string name="app_not_installed">未安装</string>

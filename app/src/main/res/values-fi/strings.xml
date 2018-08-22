@@ -22,7 +22,6 @@
     <string name="no_such_app">Sovellusta ei löytynyt.</string>
     <string name="about_title">Tietoa F-Droidista</string>
     <string name="about_site">Verkkosivu</string>
-    <string name="about_mail">Sähköposti</string>
     <string name="about_version">Versio</string>
     <string name="app_installed">Asennettu</string>
     <string name="app_not_installed">Ei asennettu</string>

@@ -22,7 +22,6 @@
     <string name="no_such_app">No se encontró la aplicación.</string>
     <string name="about_title">Acerca de F-Droid</string>
     <string name="about_site">Sitio web</string>
-    <string name="about_mail">Correo electrónico</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalado</string>
     <string name="app_not_installed">No instalado</string>

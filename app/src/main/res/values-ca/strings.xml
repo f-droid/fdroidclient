@@ -19,7 +19,6 @@
     <string name="no_such_app">No s\'ha trobat l\'aplicació.</string>
     <string name="about_title">Quant a l\'F-Droid</string>
     <string name="about_site">Pàgina web</string>
-    <string name="about_mail">Correu-e</string>
     <string name="about_version">Versió</string>
     <string name="app_installed">Instal·lat</string>
     <string name="app_not_installed">No està instal·lat</string>

@@ -20,7 +20,6 @@
     <string name="no_such_app">Böyle bir uygulama yok.</string>
     <string name="about_title">F-Droid hakkında</string>
     <string name="about_site">İnternet sitesi</string>
-    <string name="about_mail">E-posta</string>
     <string name="about_version">Sürüm</string>
     <string name="app_installed">Kurulu</string>
     <string name="app_not_installed">Kurulu değil</string>

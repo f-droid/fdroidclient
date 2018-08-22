@@ -20,7 +20,6 @@
     <string name="no_such_app">Aucune appli trouvée.</string>
     <string name="about_title">À propos de F-Droid</string>
     <string name="about_site">Site web</string>
-    <string name="about_mail">Courriel</string>
     <string name="about_version">Version</string>
     <string name="app_installed">Installée</string>
     <string name="app_not_installed">Non installée</string>

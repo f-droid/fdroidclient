@@ -9,7 +9,6 @@
     <string name="notify_on">نمایش یک اعلان هنگام موجود بودن به‌روز رسانی‌ها</string>
     <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
     <string name="about_title">دربارهٔ F-Droid</string>
-    <string name="about_mail">ایمیل</string>
     <string name="app_installed">نصب شده</string>
     <string name="app_not_installed">نصب نشده</string>
     <string name="added_on">در %s افزوده شد</string>

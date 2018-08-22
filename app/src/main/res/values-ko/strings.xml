@@ -20,7 +20,6 @@
     <string name="no_such_app">앱을 찾을 수 없습니다.</string>
     <string name="about_title">F-Droid 정보</string>
     <string name="about_site">웹사이트</string>
-    <string name="about_mail">이메일</string>
     <string name="about_version">버전</string>
     <string name="app_installed">설치됨</string>
     <string name="app_not_installed">설치되지 않음</string>

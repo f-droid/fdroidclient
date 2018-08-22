@@ -21,7 +21,6 @@
     <string name="no_such_app">Нема таквог програма.</string>
     <string name="about_title">О Ф-дроиду</string>
     <string name="about_site">Мрежна страница</string>
-    <string name="about_mail">Е-пошта</string>
     <string name="about_version">Издање</string>
     <string name="app_installed">Уграђена</string>
     <string name="app_not_installed">Није уграђена</string>

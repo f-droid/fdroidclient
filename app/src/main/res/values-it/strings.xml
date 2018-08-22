@@ -23,7 +23,6 @@
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title">Informazioni su F-Droid</string>
     <string name="about_site">Sito web</string>
-    <string name="about_mail">E-mail</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installato</string>
     <string name="app_not_installed">Non installato</string>

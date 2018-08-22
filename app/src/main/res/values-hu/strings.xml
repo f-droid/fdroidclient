@@ -13,7 +13,6 @@
     <string name="no_such_app">Nem található ilyen alkalmazás.</string>
     <string name="about_title">Az F-Droid</string>
     <string name="about_site">Weboldal</string>
-    <string name="about_mail">E-mail</string>
     <string name="about_version">Verzió</string>
     <string name="app_installed">Telepítve</string>
     <string name="app_not_installed">Nincs telepítve</string>
