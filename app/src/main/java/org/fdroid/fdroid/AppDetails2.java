@@ -109,8 +109,8 @@ public class AppDetails2 extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         supportPostponeEnterTransition();
 
-        resetCurrentApp(getPackageNameFromIntent(getIntent()));
-        if (app == null) {
+        String packageName = getPackageNameFromIntent(getIntent());
+        if (!resetCurrentApp(packageName)) {
             finish();
             return;
         }
@@ -662,10 +662,12 @@ public class AppDetails2 extends AppCompatActivity
      * removed while F-Droid was in the background.
      * <p>
      * Shows a {@link Toast} if no {@link App} was found matching {@code packageName}.
+     *
+     * @return whether the {@link App} for a given {@code packageName} is still available
      */
-    private void resetCurrentApp(String packageName) {
+    private boolean resetCurrentApp(String packageName) {
         if (TextUtils.isEmpty(packageName)) {
-            return;
+            return false;
         }
         app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
 
@@ -678,15 +680,18 @@ public class AppDetails2 extends AppCompatActivity
         }
         if (app == null) {
             Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
+            return false;
         }
+
+        return true;
     }
 
     private void onAppChanged() {
         recyclerView.post(new Runnable() {
             @Override
             public void run() {
-                resetCurrentApp(app.packageName);
-                if (app == null) {
+                String packageName = app != null ? app.packageName : null;
+                if (!resetCurrentApp(packageName)) {
                     AppDetails2.this.finish();
                     return;
                 }
