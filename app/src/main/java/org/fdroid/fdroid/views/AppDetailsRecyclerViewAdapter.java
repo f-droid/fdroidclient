@@ -18,6 +18,7 @@ import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
@@ -26,11 +27,12 @@ import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,7 +47,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.privileged.views.AppDiff;
@@ -54,6 +56,7 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -103,6 +106,9 @@ public class AppDetailsRecyclerViewAdapter
 
     private HeaderViewHolder headerView;
 
+    private Apk downloadedApk;
+    private final HashMap<Integer, Boolean> versionsExpandTracker = new HashMap<>();
+
     public AppDetailsRecyclerViewAdapter(Context context, @NonNull App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         this.context = context;
         this.callbacks = callbacks;
@@ -125,6 +131,9 @@ public class AppDetailsRecyclerViewAdapter
                 compatibleVersionsDifferentSig.add(apk);
                 if (allowBySig) {
                     versions.add(apk);
+                    if (!versionsExpandTracker.containsKey(apk.versionCode)) {
+                        versionsExpandTracker.put(apk.versionCode, false);
+                    }
                 }
             }
         }
@@ -142,11 +151,18 @@ public class AppDetailsRecyclerViewAdapter
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
         addItem(VIEWTYPE_VERSIONS);
+        if (showVersions) {
+            setShowVersions(true);
+        }
 
         notifyDataSetChanged();
     }
 
     void setShowVersions(boolean showVersions) {
+        setShowVersions(showVersions, false);
+    }
+
+    void setShowVersions(boolean showVersions, boolean scrollTo) {
         this.showVersions = showVersions;
         boolean itemsWereRemoved = items.removeAll(versions);
         int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
@@ -158,11 +174,26 @@ public class AppDetailsRecyclerViewAdapter
         if (showVersions) {
             items.addAll(startIndex, versions);
             notifyItemRangeInserted(startIndex, versions.size());
-            if (recyclerView != null) {
-                ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(startIndex - 1, 0);
+            if (recyclerView != null && scrollTo) {
+                final LinearSmoothScroller smoothScroller = new LinearSmoothScroller(context) {
+                    @Override
+                    protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+                        // The default speed of smooth scrolling doesn't look good
+                        // and it's too fast when it happens while inserting
+                        // multiple recycler view items
+                        return 75f / displayMetrics.densityDpi;
+                    }
+                };
+                // Expanding the version list reveals up to 5 items by default
+                int visibleVersionLimit = Math.min(versions.size(), 5);
+                smoothScroller.setTargetPosition(startIndex + visibleVersionLimit - 1);
+                recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
             }
         } else if (itemsWereRemoved) {
             notifyItemRangeRemoved(startIndex, versions.size());
+            if (recyclerView != null && scrollTo) {
+                recyclerView.smoothScrollToPosition(startIndex - 1);
+            }
         }
     }
 
@@ -205,9 +236,23 @@ public class AppDetailsRecyclerViewAdapter
                 uriIsSetAndCanBeOpened(app.getLiberapayUri());
     }
 
+    private void notifyVersionViewsChanged() {
+        int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
+        notifyItemRangeChanged(startIndex, versions.size());
+    }
+
+    public void notifyAboutDownloadedApk(final Apk apk) {
+        downloadedApk = apk;
+        notifyVersionViewsChanged();
+    }
+
     public void clearProgress() {
         if (headerView != null) {
             headerView.clearProgress();
+        }
+        if (downloadedApk != null) {
+            notifyVersionViewsChanged();
+            downloadedApk = null;
         }
     }
 
@@ -757,7 +802,7 @@ public class AppDetailsRecyclerViewAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    setShowVersions(!showVersions);
+                    setShowVersions(!showVersions, true);
                     updateExpandableItem(showVersions);
                 }
             });
@@ -945,134 +990,224 @@ public class AppDetailsRecyclerViewAdapter
 
     private class VersionViewHolder extends RecyclerView.ViewHolder {
         final TextView version;
-        final TextView status;
+        final TextView statusInstalled;
+        final TextView statusSuggested;
+        final TextView statusIncompatible;
+        final TextView added;
+        final ImageView expandArrow;
+        final View expandedLayout;
         final TextView repository;
         final TextView size;
         final TextView api;
+        final Button buttonInstallUpgrade;
+        final Button buttonDowngrade;
+        Button buttonAction;
+        final View busyIndicator;
         final TextView incompatibleReasons;
-        final TextView buildtype;
-        final TextView added;
-        final TextView nativecode;
+
+        private Apk apk;
 
         VersionViewHolder(View view) {
             super(view);
             version = (TextView) view.findViewById(R.id.version);
-            status = (TextView) view.findViewById(R.id.status);
+            statusInstalled = (TextView) view.findViewById(R.id.status_installed);
+            statusSuggested = (TextView) view.findViewById(R.id.status_suggested);
+            statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
+            added = (TextView) view.findViewById(R.id.added);
+            expandArrow = (ImageView) view.findViewById(R.id.expand_arrow);
+            expandedLayout = (View) view.findViewById(R.id.expanded_layout);
             repository = (TextView) view.findViewById(R.id.repository);
             size = (TextView) view.findViewById(R.id.size);
             api = (TextView) view.findViewById(R.id.api);
+            buttonInstallUpgrade = (Button) view.findViewById(R.id.button_install_upgrade);
+            buttonDowngrade = (Button) view.findViewById(R.id.button_downgrade);
+            busyIndicator = (View) view.findViewById(R.id.busy_indicator);
             incompatibleReasons = (TextView) view.findViewById(R.id.incompatible_reasons);
-            buildtype = (TextView) view.findViewById(R.id.buildtype);
-            added = (TextView) view.findViewById(R.id.added);
-            nativecode = (TextView) view.findViewById(R.id.nativecode);
 
             int margin = context.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
             int padding = context.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
-            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), margin + padding + ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
+            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), margin + ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
         }
 
         public void bindModel(final Apk apk) {
-            java.text.DateFormat df = DateFormat.getDateFormat(context);
+            this.apk = apk;
 
-            boolean isSuggested = apk.versionCode == app.suggestedVersionCode &&
+            boolean isAppInstalled = app.isInstalled(context);
+            boolean isApkInstalled = apk.versionCode == app.installedVersionCode;
+            boolean isApkSuggested = apk.versionCode == app.suggestedVersionCode &&
                     TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
+            boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
+                    downloadedApk.compareTo(apk) == 0;
 
-            version.setText(context.getString(R.string.version)
-                    + " " + apk.versionName
-                    + (isSuggested ? "  ☆" : ""));
+            // Version name and statuses
+            version.setText(apk.versionName);
+            statusSuggested.setVisibility(isApkSuggested && apk.compatible ? View.VISIBLE : View.GONE);
+            statusInstalled.setVisibility(isApkInstalled ? View.VISIBLE : View.GONE);
+            statusIncompatible.setVisibility(!apk.compatible ? View.VISIBLE : View.GONE);
 
-            String statusText = getInstalledStatus(apk);
-            status.setText(statusText);
-
-            if ("Installed".equals(statusText)) {
-                version.setTextColor(ContextCompat.getColor(context, R.color.fdroid_blue));
-            }
-
-            repository.setText(context.getString(R.string.repo_provider,
-                    RepoProvider.Helper.findById(context, apk.repoId).getName()));
-
-            if (apk.size > 0) {
-                size.setText(Utils.getFriendlySize(apk.size));
-                size.setVisibility(View.VISIBLE);
+            // Version name width correction in case it's
+            // too long to prevent truncating the statuses
+            if (statusSuggested.getVisibility() == View.VISIBLE ||
+                    statusInstalled.getVisibility() == View.VISIBLE ||
+                    statusIncompatible.getVisibility() == View.VISIBLE) {
+                int maxWidth = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.4);
+                version.setMaxWidth(maxWidth);
             } else {
-                size.setVisibility(View.GONE);
+                version.setMaxWidth(Integer.MAX_VALUE);
             }
 
-            if (!Preferences.get().expertMode()) {
-                api.setVisibility(View.GONE);
-            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
-                api.setText(context.getString(R.string.minsdk_up_to_maxsdk,
-                        Utils.getAndroidVersionName(apk.minSdkVersion),
-                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
-                api.setVisibility(View.VISIBLE);
-            } else if (apk.minSdkVersion > 0) {
-                api.setText(context.getString(R.string.minsdk_or_later,
-                        Utils.getAndroidVersionName(apk.minSdkVersion)));
-                api.setVisibility(View.VISIBLE);
-            } else if (apk.maxSdkVersion > 0) {
-                api.setText(context.getString(R.string.up_to_maxsdk,
-                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
-                api.setVisibility(View.VISIBLE);
+            // Added date
+            java.text.DateFormat df = DateFormat.getDateFormat(context);
+            added.setText(context.getString(R.string.added_on, df.format(apk.added)));
+
+            // Repository name, APK size and required Android version
+            Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
+            repository.setText(repo != null ? repo.getName() : context.getString(R.string.unknown));
+            size.setText(context.getString(R.string.app_size, Utils.getFriendlySize(apk.size)));
+            api.setText(getApiText(apk));
+
+            // Figuring out whether to show Install/Upgrade button or Downgrade button
+            buttonDowngrade.setVisibility(View.GONE);
+            buttonInstallUpgrade.setVisibility(View.GONE);
+            buttonInstallUpgrade.setText(context.getString(R.string.menu_install));
+            showActionButton(buttonInstallUpgrade, isApkInstalled, isApkDownloading);
+            if (isAppInstalled && !isApkInstalled) {
+                if (apk.versionCode > app.installedVersionCode) {
+                    // Change the label to indicate that pressing this
+                    // button will result in upgrading the installed app
+                    buttonInstallUpgrade.setText(R.string.menu_upgrade);
+                } else {
+                    // The Downgrade button should be shown in this case
+                    buttonInstallUpgrade.setVisibility(View.GONE);
+                    showActionButton(buttonDowngrade, false, isApkDownloading);
+                }
             }
 
-            if (apk.srcname != null) {
-                buildtype.setText("source");
-            } else {
-                buildtype.setText("bin");
-            }
+            // Show busy indicator when the APK is being downloaded
+            busyIndicator.setVisibility(isApkDownloading ? View.VISIBLE : View.GONE);
 
-            if (apk.added != null) {
-                added.setText(context.getString(R.string.added_on,
-                        df.format(apk.added)));
-                added.setVisibility(View.VISIBLE);
-            } else {
-                added.setVisibility(View.GONE);
-            }
-
-            if (Preferences.get().expertMode() && apk.nativecode != null) {
-                nativecode.setText(TextUtils.join(" ", apk.nativecode));
-                nativecode.setVisibility(View.VISIBLE);
-            } else {
-                nativecode.setVisibility(View.GONE);
-            }
-
-            boolean mismatchedSig = app.installedSig != null && !TextUtils.equals(app.installedSig, apk.sig);
-
-            if (apk.incompatibleReasons != null) {
-                incompatibleReasons.setText(
-                        context.getResources().getString(
-                                R.string.requires_features,
-                                TextUtils.join(", ", apk.incompatibleReasons)));
-                incompatibleReasons.setVisibility(View.VISIBLE);
-            } else if (mismatchedSig) {
-                incompatibleReasons.setText(
-                        context.getString(R.string.app_details__incompatible_mismatched_signature));
-                incompatibleReasons.setVisibility(View.VISIBLE);
+            // Display incompatible reasons when the app
+            // isn't compatible and the expert mode is enabled
+            if (Preferences.get().expertMode() && !apk.compatible) {
+                String incompatibleReasonsText = getIncompatibleReasonsText(apk);
+                if (incompatibleReasonsText != null) {
+                    incompatibleReasons.setVisibility(View.VISIBLE);
+                    incompatibleReasons.setText(incompatibleReasonsText);
+                } else {
+                    incompatibleReasons.setVisibility(View.GONE);
+                }
             } else {
                 incompatibleReasons.setVisibility(View.GONE);
             }
 
-            // Disable it all if it isn't compatible...
-            final View[] views = {
-                    itemView,
-                    version,
-                    status,
-                    repository,
-                    size,
-                    api,
-                    buildtype,
-                    added,
-                    nativecode,
-            };
-            for (final View v : views) {
-                v.setEnabled(apk.compatible && !mismatchedSig);
-            }
+            // Expand the view if it was previously expanded or when downloading
+            expand(versionsExpandTracker.get(apk.versionCode) || isApkDownloading);
+
+            // Toggle expanded view when clicking the whole version item
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    callbacks.installApk(apk);
+                    toggleExpanded();
                 }
             });
+        }
+
+        private String getApiText(final Apk apk) {
+            String apiText = "Android ";
+            if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
+                apiText += context.getString(R.string.minsdk_up_to_maxsdk,
+                        Utils.getAndroidVersionName(apk.minSdkVersion),
+                        Utils.getAndroidVersionName(apk.maxSdkVersion));
+            } else if (apk.minSdkVersion > 0) {
+                apiText += context.getString(R.string.minsdk_or_later,
+                        Utils.getAndroidVersionName(apk.minSdkVersion));
+            } else if (apk.maxSdkVersion > 0) {
+                apiText += context.getString(R.string.up_to_maxsdk,
+                        Utils.getAndroidVersionName(apk.maxSdkVersion));
+            }
+            return apiText;
+        }
+
+        private String getIncompatibleReasonsText(final Apk apk) {
+            if (apk.incompatibleReasons != null) {
+                return context.getResources().getString(R.string.requires_features,
+                        TextUtils.join(", ", apk.incompatibleReasons));
+            } else {
+                boolean mismatchedSig = app.installedSig != null
+                        && !TextUtils.equals(app.installedSig, apk.sig);
+                if (mismatchedSig) {
+                    return context.getString(R.string.app_details__incompatible_mismatched_signature);
+                }
+            }
+            return null;
+        }
+
+        private void showActionButton(Button button, boolean isApkInstalled, boolean isApkDownloading) {
+            buttonAction = button;
+            if (isApkDownloading) {
+                // Don't show the button in this case
+                // as the busy indicator will take its place
+                buttonAction.setVisibility(View.GONE);
+            } else {
+                // The button should be shown but it should be also disabled
+                // if either the APK isn't compatible or it's already installed
+                // or also when some other APK is currently being downloaded
+                buttonAction.setVisibility(View.VISIBLE);
+                boolean buttonActionDisabled = !apk.compatible || isApkInstalled ||
+                        callbacks.isAppDownloading();
+                buttonAction.setEnabled(!buttonActionDisabled);
+                buttonAction.setAlpha(buttonActionDisabled ? 0.15f : 1f);
+                buttonAction.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        callbacks.installApk(apk);
+                    }
+                });
+            }
+        }
+
+        private void expand(boolean expand) {
+            versionsExpandTracker.put(apk.versionCode, expand);
+            expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
+            expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
+                    R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600));
+
+            // This is required to make these labels
+            // auto-scrollable when they are too long
+            version.setSelected(expand);
+            repository.setSelected(expand);
+            size.setSelected(expand);
+            api.setSelected(expand);
+        }
+
+        private void toggleExpanded() {
+            if (busyIndicator.getVisibility() == View.VISIBLE) {
+                // Don't allow collapsing the view when the busy indicator
+                // is shown because the APK is being downloaded and it's quite important
+                return;
+            }
+
+            boolean expand = !versionsExpandTracker.get(apk.versionCode);
+            expand(expand);
+
+            if (expand) {
+                // Scroll the versions view to a correct position so it can show the whole item
+                final LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
+                final int currentPosition = getAdapterPosition();
+                if (currentPosition >= lm.findLastCompletelyVisibleItemPosition()) {
+                    // Do it only if the item is near the bottom of current viewport
+                    recyclerView.getViewTreeObserver()
+                            .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                                @Override
+                                public void onGlobalLayout() {
+                                    // Expanded item dimensions should be already calculated at this moment
+                                    // so it's possible to correctly scroll to a given position
+                                    recyclerView.smoothScrollToPosition(currentPosition);
+                                    recyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                                }
+                            });
+                }
+            }
         }
     }
 
@@ -1096,31 +1231,6 @@ public class AppDetailsRecyclerViewAdapter
                 onLinkClicked(url);
             }
         });
-    }
-
-    private String getInstalledStatus(final Apk apk) {
-        // Definitely not installed.
-        if (apk.versionCode != app.installedVersionCode) {
-            return context.getString(R.string.app_not_installed);
-        }
-        // Definitely installed this version.
-        if (apk.sig != null && apk.sig.equals(app.installedSig)) {
-            return context.getString(R.string.app_installed);
-        }
-        // Installed the same version, but from someplace else.
-        final String installerPkgName;
-        try {
-            installerPkgName = context.getPackageManager().getInstallerPackageName(app.packageName);
-        } catch (IllegalArgumentException e) {
-            Log.w("AppDetailsAdapter", "Application " + app.packageName + " is not installed anymore");
-            return context.getString(R.string.app_not_installed);
-        }
-        if (TextUtils.isEmpty(installerPkgName)) {
-            return context.getString(R.string.app_inst_unknown_source);
-        }
-        final String installerLabel = InstalledAppProvider
-                .getApplicationLabel(context, installerPkgName);
-        return context.getString(R.string.app_inst_known_source, installerLabel);
     }
 
     private void onLinkClicked(String url) {
