@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="installIncompatible">יישומון זו אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה?</string>
-    <string name="version">גירסה</string>
+    <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
     <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
@@ -22,7 +22,7 @@
 
     <string name="about_title">על אודות F-Droid</string>
     <string name="about_site">אתר</string>
-    <string name="about_version">גירסה</string>
+    <string name="about_version">גרסה</string>
     <string name="app_installed">מותקן</string>
     <string name="app_not_installed">לא מותקן</string>
     <string name="app_inst_known_source">מותקן (מתוך %s)</string>
@@ -85,8 +85,8 @@
     <string name="search_hint">חיפוש יישומונים</string>
 
     <string name="appcompatibility">תאימות היישומון</string>
-    <string name="show_incompat_versions">לכלול גירסאות שאינן תואמות</string>
-    <string name="show_incompat_versions_on">הצגת גירסאות היישומון שאינן תואמות להתקן</string>
+    <string name="show_incompat_versions">לכלול גרסאות שאינן תואמות</string>
+    <string name="show_incompat_versions_on">הצגת גרסאות היישומון שאינן תואמות להתקן</string>
 
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid מוכנה להחלפה</string>
@@ -174,7 +174,7 @@
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכול</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
-    <string name="uninstall_update_confirm">להחליף יישומון זה בגירסת היצרן?</string>
+    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן?</string>
     <string name="uninstall_confirm">להסיר יישומון זה?</string>
 
     <string name="perms_new_perm_prefix">חדש:</string>
@@ -222,7 +222,7 @@
     <string name="theme_light">בהירה</string>
     <string name="theme_dark">אפלה</string>
     <string name="unstable_updates">עדכונים לא יציבים</string>
-    <string name="unstable_updates_summary">הצעת עדכונים לגירסאות לא יציבות</string>
+    <string name="unstable_updates_summary">הצעת עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
     <string name="swap_nfc_title">יש לגעת כדי להחליף</string>
     <string name="swap_nearby">החלפה בקרבת מקום</string>
@@ -236,7 +236,7 @@
     <string name="swap_intro">ניתן להתחבר ולהחליף יישומונים עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">אין אפשרות למצוא אנשים בקרבת מקום כדי להחליף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה בעת ההתחברות להתקן, אין אפשרות לבצע מולו החלפה!</string>
-    <string name="SignatureMismatch">היגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגירסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
+    <string name="SignatureMismatch">הגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגרסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
     <string name="repo_exists_add_fingerprint">%1$s כבר מותקן, פעולה זו תוסיף מידע מפתח חדש.</string>
     <string name="repo_exists_enable">%1$s כבר מותקן, נא לאמת כדי לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">%1$s כבר מותקן וזמין.</string>
@@ -305,9 +305,9 @@
     <string name="app_details_donate_prompt_unknown_author">הזמנת המפתח של %1$s לקפה!</string>
     <string name="app_details_donate_prompt">%1$s נוצר ע״י %2$s. למה לא לפנק אותם בקפה?</string>
 
-    <string name="app_version_x_available">גירסה %1$s זמינה</string>
-    <string name="app_version_x_installed">גירסה %1$s</string>
-    <string name="app_recommended_version_installed">גירסה %1$s (מומלצת)</string>
+    <string name="app_version_x_available">גרסה %1$s זמינה</string>
+    <string name="app_version_x_installed">גרסה %1$s</string>
+    <string name="app_recommended_version_installed">גרסה %1$s (מומלצת)</string>
     <string name="app__newly_added">חדש</string>
     <string name="app__tts__cancel_download">ביטול הורדה</string>
     <string name="app__install_downloaded_update">עדכון</string>
@@ -317,7 +317,7 @@
 
     <string name="installed_apps__activity_title">יישומונים מותקנים</string>
     <string name="installed_app__updates_ignored">עדכונים בהתעלמות</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגירסה %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגרסה %1$s</string>
     <string name="updates__tts__download_app">הורדה</string>
     <string name="updates__tts__download_updates_for_all_apps">הורדת כל העדכונים</string>
 
@@ -331,7 +331,7 @@
         <item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
     </plurals>
 
-    <string name="versions">גירסאות</string>
+    <string name="versions">גרסאות</string>
     <string name="clear_search">פינוי החיפוש</string>
 
     <string name="repositories_summary">הוספת מקורות נוספים ליישומונים</string>
@@ -351,7 +351,7 @@
     <string name="preference_manage_installed_apps">ניהול יישומונים מותקנים</string>
 
 
-    <string name="details_new_in_version">חדש בגירסה %s</string>
+    <string name="details_new_in_version">חדש בגרסה %s</string>
 
     <string name="antifeatureswarning">ייתכן שביישומון זה ישנן תכונות שלא תישאנה חן בעיניך.</string>
     <string name="antifeatures">תכונות שליליות</string>
@@ -465,11 +465,11 @@
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
     <string name="app_permission_storage">ל־F-Droid נדרשת הרשאה לגשת לאחסון כדי להתקין זאת לאחסון. נא להרשות זאת במסך הבא כדי להמשיך בהתקנה.</string>
 
-    <string name="app_details__incompatible_mismatched_signature">חתימה שונה מהגירסה המותקנת</string>
-    <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגירסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">אין גירסאות עם חתימה תואמת</string>
-    <string name="app_details__no_versions__none_compatible_with_device">אין גירסאות תואמות להתקן זה</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">הגירסה המותקנת אינה תואמת לכל הגירסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גירסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
+    <string name="app_details__incompatible_mismatched_signature">חתימה שונה מהגרסה המותקנת</string>
+    <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגרסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
+    <string name="app_details__no_versions__no_compatible_signatures">אין גרסאות עם חתימה תואמת</string>
+    <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. אנו ממליצים להסיר את היישומון הזה מיידית.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">מצאנו חולשה אצל %1$s. אנו ממליצים לשדרג את היישומון הזה ליגרסה החדשה ביותר מיידית.</string>
@@ -552,4 +552,8 @@
     <string name="send_history_csv">%s היסטוריית ההתקנות כקובץ CSV</string>
     <string name="updates_disabled_by_settings">כל העדכונים מושבתים בהגדרות תקשורת הנתונים/רשת אלחוטית</string>
 
+    <string name="send_installed_apps">שיתוף היישומונים המותקנים</string>
+    <string name="send_installed_apps_csv">יישומונים שהותקנו דרך F-Droid כקובץ CSV</string>
+    <string name="menu_open">פתיחה</string>
+    <string name="about_forum">פורום תמיכה</string>
     </resources>

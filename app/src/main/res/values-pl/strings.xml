@@ -560,4 +560,7 @@
     <string name="send_history_csv">%s zainstaluj historię jako plik CSV</string>
     <string name="updates_disabled_by_settings">Wszystkie aktualizacje wyłączone przez ustawienia danych/WiFi</string>
 
+    <string name="send_installed_apps">Udostępnij zainstalowane aplikacje</string>
+    <string name="send_installed_apps_csv">Aplikacje zainstalowane przez F-Droid jako plik CSV</string>
+    <string name="menu_open">Otwórz</string>
     </resources>

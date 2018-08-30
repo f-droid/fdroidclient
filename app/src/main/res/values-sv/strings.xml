@@ -10,11 +10,11 @@
     <string name="other">Andra</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
-    <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
+    <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
     <string name="system_installer">Priviligerat tillägg</string>
-    <string name="system_installer_on">Använd Privileged Extension för att installera, uppdatera och ta bort paket</string>
+    <string name="system_installer_on">Använd Privilegierat tillägg för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
-    <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
+    <string name="local_repo_name_summary">Den annonserade titeln på ditt lokala förråd: %s</string>
     <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
     <string name="app_details">Detaljer för app</string>
     <string name="no_such_app">Hittade ingen sådan app.</string>
@@ -37,7 +37,7 @@
     <string name="overwrite">Skriv över</string>
     <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth hittades, välj en!</string>
     <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
-    <string name="repo_add_url">Förrådsadress</string>
+    <string name="repo_add_url">Adress till filförrådet</string>
     <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
     <string name="menu_manage">Förråd</string>
@@ -55,7 +55,7 @@
     <string name="menu_upgrade">Uppgradera</string>
     <string name="menu_donate">Donera</string>
     <string name="details_notinstalled">Inte installerad</string>
-    <string name="antiadslist">Denna app innehåller reklam</string>
+    <string name="antiadslist">Den här appen innehåller reklam</string>
     <string name="antitracklist">Den här appen spårar och rapporterar om din aktivitet</string>
     <string name="antinonfreeadlist">Den här appen uppmuntrar icke-fria tillägg</string>
     <string name="antinonfreenetlist">Den här appen uppmuntrar icke-fria nätverkstjänster</string>
@@ -174,7 +174,7 @@
     <string name="login_name">Användarnamn</string>
     <string name="login_password">Lösenord</string>
     <string name="repo_edit_credentials">Ändra lösenord</string>
-    <string name="repo_error_empty_username">Tomt användarnamn, oförändrade användaruppgifter</string>
+    <string name="repo_error_empty_username">Tomt användarnamn, användaruppgifterna har inte ändrats</string>
 
     <string name="about_license">Licens</string>
 
@@ -283,9 +283,7 @@
     <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>
     <string name="swap_nearby">Utbyt nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
-    <string name="update_auto_download_summary">Uppdateringar hämtas automatiskt och du får ett meddelande om att
-        installera dem
-    </string>
+    <string name="update_auto_download_summary">Uppdateringar laddas automatiskt ner och du blir aviserad om att installera dem</string>
 
     <string name="download_pending">Väntar på att påbörja hämtning…</string>
 
@@ -306,11 +304,11 @@
     <string name="keep_install_history">Behåll installationshistorik</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
-    <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
+    <string name="update_auto_install_summary">Ladda ner och installera uppdateringsappar i bakgrunden</string>
     <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till utvecklarna av %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
+    <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
 
     <string name="repositories_summary">Lägg till ytterligare källor till appar</string>
     <string name="app_version_x_available">Version %1$s är tillgänglig</string>
@@ -373,13 +371,13 @@
     <string name="updates__show_updateable_apps">Visa appar</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Hämta uppdatering för %1$d app.</item>
-        <item quantity="other">Hämta uppdatering för %1$d appar.</item>
-    </plurals>
+	<item quantity="one">Ladda ner uppdatering för %1$d-appen.</item>
+	<item quantity="other">Ladda ner uppdatering för %1$d-apparna.</item>
+</plurals>
 
-    <string name="details_new_in_version">Nytt i version %s</string>
+    <string name="details_new_in_version">Nyheter i versionen %s</string>
 
-    <string name="antifeatureswarning">Denna app har funktioner som du kanske inte gillar.</string>
+    <string name="antifeatureswarning">Den här appen har funktioner som du kanske inte tycker om.</string>
     <string name="antifeatures">Anti-funktioner</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Uppdaterad för %1$d dag sedan</item>
@@ -437,7 +435,7 @@
     <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">Olika signaturer till installerad version</string>
     <string name="app_details__no_versions__show_incompat_versions">För att visa inkompatibla versioner här ändå, aktivera inställningen \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Inga versioner har kompatibel signatur</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Inga versioner med kompatibel signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Inga versioner är kompatibla med enheten</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
 
@@ -485,9 +483,9 @@
 
 <string name="over_wifi">Över Wi-Fi</string>
     <string name="over_data">Över data</string>
-    <string name="over_network_always_summary">Använd alltid denna anslutning när den är tillgänglig</string>
-    <string name="over_network_on_demand_summary">Använd endast denna anslutning när jag klickar för att hämta</string>
-    <string name="over_network_never_summary">Hämta aldrig någonting via denna anslutning</string>
+    <string name="over_network_always_summary">Använd alltid den här anslutningen när den är tillgänglig</string>
+    <string name="over_network_on_demand_summary">Använd endast den här anslutningen när jag klickar för att ladda ner</string>
+    <string name="over_network_never_summary">Ladda aldrig ner något via den här anslutningen</string>
     <string name="repo_add_mirror">Lägg till spegel</string>
     <string name="repo_exists_add_fingerprint">%1$s är redan installerad, detta kommer att lägga till ny nyckelinformation.</string>
     <string name="repo_exists_enable">%1$s är redan installerad, bekräfta att du vill återaktivera den.</string>
@@ -519,4 +517,14 @@
     <string name="send_version_and_uuid">Sänd versionnummer och UUID till servrarna</string>
     <string name="send_version_and_uuid_summary">Inkludera appens versionnummer samt en slumpvald, unik ID vid nedladdning. Börjar gälla först efter omstart.</string>
     <string name="share_repository">Dela ut filförråd</string>
+    <string name="send_install_history">Skicka installationshistorik</string>
+    <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
+    <string name="allow_push_requests">Tillåt filförråd att installera/avinstallera appar</string>
+    <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Data/WiFi-inställningar</string>
+
+    <string name="send_installed_apps">Dela installerade appar</string>
+    <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>
+    <string name="menu_open">Öppna</string>
+    <string name="antinosourcesince">Källkoden är inte längre tillgänglig, inga uppdateringar möjliga.</string>
+
     </resources>

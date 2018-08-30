@@ -93,14 +93,15 @@
         kasutamiseks pead sa hoidla lubama.
     </string>
     <string name="repo_confirm_delete_title">Kas kustutada hoidla?</string>
-    <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et hoidla pakutavad rakendused ei ole enam
-        F-Droidist saadaval.\n\nMärkus: paigaldatud rakendused jäävad seadmesse alles.
-    </string>
+    <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et hoidla pakutavad rakendused ei ole enam saadaval.
+\n
+\nMärkus: paigaldatud rakendused jäävad seadmesse alles.</string>
     <string name="repo_disabled_notification">%1$s on keelatud.\n\nSellest hoidlast rakenduste paigaldamiseks pead sa
         hoidla lubama.
     </string>
-    <string name="repo_added">Salvestatu F-Droidi hoidla %1$s.</string>
-    <string name="repo_searching_address">Otsitakse F-Droidi hoidlat aadressil\n%1$s</string>
+    <string name="repo_added">Salvestatu paketi hoidla %1$s.</string>
+    <string name="repo_searching_address">Otsitakse paketihoidlat aadressil
+\n%1$s</string>
     <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas Wi-Fi võrgus! Proovi liituda
         selle võrguga: %s
     </string>
@@ -159,7 +160,7 @@
     <string name="search_hint">Otsi rakendusi</string>
 
     <string name="appcompatibility">Rakenduse ühilduvus</string>
-    <string name="show_incompat_versions">Ühildumatud versioonid</string>
+    <string name="show_incompat_versions">Kaasa ka ühildumatud versioonid</string>
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
 
     <string name="local_repo_running">F-Droid on valmis vahetama</string>
@@ -294,13 +295,13 @@
     <string name="installing">Paigaldamine…</string>
     <string name="uninstalling">Eemaldamine…</string>
 
-    <string name="interval_never">Mitte kunagi</string>
-    <string name="interval_1h">Iga tunni järel</string>
-    <string name="interval_4h">Iga 4 tunni järel</string>
-    <string name="interval_12h">Iga 12 tunni järel</string>
-    <string name="interval_1d">Iga päev</string>
-    <string name="interval_1w">Iga nädal</string>
-    <string name="interval_2w">Iga 2 nädala järel</string>
+    <string name="interval_never">Ära uuenda rakendusi automaatselt</string>
+    <string name="interval_1h">Kontrolli uuendusi iga tunni järel</string>
+    <string name="interval_4h">Kontrolli uunedusi iga 4 tunni järel</string>
+    <string name="interval_12h">Kontrolli uuendusi iga 12 tunni järel</string>
+    <string name="interval_1d">Kontrolli uuendusi iga päev</string>
+    <string name="interval_1w">Kontrolli uuendusi iga nädal</string>
+    <string name="interval_2w">Kontrolli uuendusi iga 2 nädala järel</string>
 
     <string name="keep_hour">1 tund</string>
     <string name="keep_day">1 päev</string>
@@ -502,4 +503,46 @@
     <string name="repo_exists_add_fingerprint">%1$s on juba seadistatud; see lisab teabe uuest võtmest.</string>
     <string name="repo_exists_enable">%1$s on juba üles seatud; kinnita, et soovid ta uuesti lubada.</string>
     <string name="repo_exists_and_enabled">%1$s on juba seadistatud ja lubatud.</string>
+    <string name="repo_delete_to_overwrite">Konflikti lahendamiseks kustuta esmalt %1$s ning lisa varamu teise võtmega.</string>
+    <string name="prompt_to_send_crash_reports">Küsi luba krahhiraportite saatmiseks</string>
+    <string name="prompt_to_send_crash_reports_summary">Kogu krahhide andmeid  ja küsi luba nende saatmiseks arendajale</string>
+    <string name="hide_all_notifications">Paida kõik märguanded</string>
+    <string name="hide_all_notifications_summary">Väldi kõigi tegevuste kuvamist olekuribal ja märguannete sahtlis.</string>
+    <string name="send_install_history">Saada paigalduste ajalugu</string>
+    <string name="send_history_csv">%s paigalduste ajalugu CSV failina</string>
+    <string name="install_history">Paigalduste ajalugu</string>
+    <string name="install_history_summary">Vaata kõigi paigalduste ja eemaldamiste privaatset logi</string>
+    <string name="send_version_and_uuid">Saada versioon ja UUID serveritesse</string>
+    <string name="send_version_and_uuid_summary">Lisa allalaadimisel selle rakenduse versioon ja juhuslik unikaalne ID; mõjub rakenduse järgmisest taaskäivitamisest.</string>
+    <string name="allow_push_requests">Luba repositooriumitel rakendusi paigaldada/eemaldada</string>
+    <string name="allow_push_requests_summary">Repositooriumi metaandmed võivad sisaldada rakenduste paigaldamise või eemaldamise nõudeid</string>
+    <string name="over_wifi">Üle Wi-Fi</string>
+    <string name="over_data">Üle andmeühenduse</string>
+    <string name="over_network_always_summary">Kasuta alati seda ühendust, kui see on saadaval</string>
+    <string name="over_network_on_demand_summary">Kasuta seda ühendust ainult siis, kui ma allalaadimiseks klõpsan</string>
+    <string name="over_network_never_summary">Ära kasuta seda ühendust alla laadimiseks mitte kunagi</string>
+    <string name="send_installed_apps">Jaga paigaldatud rakendusi</string>
+    <string name="send_installed_apps_csv">F-Droidi paigaldatud rakendused CSV failina</string>
+    <string name="updates_disabled_by_settings">Kõik uuendused, mida Data/Wi-Fi seaded keelavad</string>
+
+    <string name="repo_add_mirror">Lisa peegel</string>
+    <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisada ta peegliks?</string>
+    <string name="menu_open">Ava</string>
+    <string name="antidisabledalgorithmlist">Sellel rakendusel on nõrk turvasignatuur</string>
+    <string name="antiknownvulnlist">Sellel rakendusel on tuntud turvanõrkus</string>
+    <string name="antinosourcesince">Lähtekood ei ole enam saadaval, uuendused ei ole enam võimalikud.</string>
+
+    <string name="show_anti_feature_apps">Kaasa vastandomadustega rakendused</string>
+    <string name="show_anti_feature_apps_on">Kuva rakendused, mis vajavad vastandomadusi</string>
+    <string name="force_touch_apps">Kaasa puuteekraani rakendused</string>
+    <string name="force_touch_apps_on">Kaasa rakendused, mis vajavad puuteekraani sõltumata riistvara toest</string>
+
+    <string name="repo_official_mirrors">Ametlikud peeglid</string>
+    <string name="repo_user_mirrors">Kasuta peegleid</string>
+    <string name="share_repository">Jaga repositooriumit</string>
+    <string name="use_bluetooth">Kasuta Bluetoothi</string>
+    <string name="swap_toast_invalid_url">Vigane URL vahetamiseks: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi ühenduspunkt lubatud</string>
+    <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ühenduspunkti lubamine nurjus!</string>
+
     </resources>

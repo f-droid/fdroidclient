@@ -535,4 +535,7 @@
     <string name="send_history_csv">Historio de instaladoj de %s kiel CSV-dosiero</string>
     <string name="updates_disabled_by_settings">Ĉiuj ĝisdatigoj malaktivigitaj per agordoj de konektoj</string>
 
+    <string name="send_installed_apps">Kunhavigi instalitajn aplikaĵojn</string>
+    <string name="send_installed_apps_csv">Aplikaĵoj instalitaj per F-Droid kiel CSV-dosiero</string>
+    <string name="menu_open">Malfermi</string>
     </resources>

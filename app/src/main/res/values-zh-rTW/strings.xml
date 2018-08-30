@@ -517,4 +517,8 @@
     <string name="send_history_csv">%s 安裝履歷為 CSV 檔案</string>
     <string name="updates_disabled_by_settings">所有更新都被行動數據／WiFi 設定所停用</string>
 
+    <string name="send_installed_apps">分享已安裝的應用程式</string>
+    <string name="menu_open">開啟</string>
+    <string name="send_installed_apps_csv">F-Droid 透過 CSV 檔案已安裝的應用程式</string>
+    <string name="about_forum">支援論壇</string>
     </resources>

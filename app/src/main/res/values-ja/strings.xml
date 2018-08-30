@@ -388,8 +388,8 @@
     <string name="app__tts__downloading_progress">ダウンロード中、%1$d%%完了</string>
     <string name="menu_license">ライセンス: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="other">さらに+%1$d</item>
-    </plurals>
+	<item quantity="other">さらに+%1$d…</item>
+</plurals>
     <plurals name="notification_summary_updates">
         <item quantity="other">%1$d個の更新</item>
     </plurals>
@@ -489,4 +489,24 @@
     <string name="antidisabledalgorithmlist">このアプリは弱いセキュリティ署名を使用しています</string>
     <string name="antiknownvulnlist">このアプリは既知のセキュリティ脆弱性が含まれています</string>
 
+    <string name="prompt_to_send_crash_reports">クラッシュレポート送信の確認</string>
+    <string name="prompt_to_send_crash_reports_summary">クラッシュに関するデータを収集して開発者に送信します</string>
+    <string name="hide_all_notifications">すべての通知を非表示</string>
+    <string name="hide_all_notifications_summary">ステータスバーと通知ドロワーの表示からすべてのアクションを防止します。</string>
+    <string name="send_install_history">インストール履歴を送信</string>
+    <string name="send_history_csv">%s のインストール履歴を CSV ファイルとして</string>
+    <string name="install_history">インストール履歴</string>
+    <string name="install_history_summary">すべてのインストールとアンインストールのプライベートログを表示します</string>
+    <string name="send_version_and_uuid">バージョンおよび UUID をサーバーに送信</string>
+    <string name="send_version_and_uuid_summary">ダウンロード時に、このアプリのバージョン、ランダムな一意の ID を含めます。アプリを再起動すると反映します。</string>
+    <string name="allow_push_requests">リポジトリにアプリのインストール/アンインストールを許可</string>
+    <string name="allow_push_requests_summary">リポジトリのメタデータに、アプリをインストールまたはアンインストールするプッシュリクエストを含めることができます</string>
+    <string name="send_installed_apps">インストールされたアプリを共有</string>
+    <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
+    <string name="updates_disabled_by_settings">データ/WiFi の設定によってすべての更新が無効です</string>
+
+    <string name="menu_open">開く</string>
+    <string name="antinosourcesince">ソースコードはもう利用できません。更新できません。</string>
+
+    <string name="share_repository">リポジトリを共有</string>
     </resources>

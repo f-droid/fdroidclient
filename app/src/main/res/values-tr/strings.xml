@@ -538,4 +538,7 @@
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>
     <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/WiFi Ayarları tarafından devre dışı bırakıldı</string>
 
+    <string name="send_installed_apps">Kurulu uygulamaları paylaş</string>
+    <string name="send_installed_apps_csv">F-Droid tarafıdan kurulmuş uygulamalar, CSV dosyası olarak</string>
+    <string name="menu_open">Aç</string>
     </resources>

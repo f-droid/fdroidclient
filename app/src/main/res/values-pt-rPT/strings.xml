@@ -160,7 +160,7 @@
 
         Tem que ativar o repositório para poder instalar aplicações.
     </string>
-    <string name="repo_added">Repositório %1$s guardado.</string>
+    <string name="repo_added">Pacote do repositório guardado %1$s.</string>
     <string name="repo_searching_address">A procurar um repositório de pacote em
 \n%1$s</string>
     <string name="minsdk_or_later">%s ou posterior</string>
@@ -556,4 +556,10 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wifi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Hotspot Wifi não ativado!</string>
 
+    <string name="send_history_csv">%s instalação através do histórico contido no ficheiro CSV</string>
+    <string name="send_version_and_uuid_summary">Inclua a versão desta aplicação e um ID único e aleatório ao fazer o download, entrará em vigor na próxima reinicialização da aplicação.</string>
+    <string name="allow_push_requests_summary">Metadados do repositório podem incluir algumas solicitações para instalar ou desinstalar aplicações</string>
+    <string name="send_installed_apps">Partilha as aplicações instaladas</string>
+    <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid via ficheiro CSV</string>
+    <string name="menu_open">Abrir</string>
     </resources>

@@ -571,4 +571,8 @@
     <string name="allow_push_requests_summary">Lýsigögn hugbúnaðarsafna geta innihaldið sendibeiðnir til að setja upp eða fjarlægja forrit</string>
     <string name="updates_disabled_by_settings">Allar uppfærslur eru óvirkar vegna stillinga fyrir gögn eða þráðlaust net</string>
 
+    <string name="about_forum">Vefspjall fyrir aðstoð</string>
+    <string name="send_installed_apps">Deila uppsettum forritum</string>
+    <string name="send_installed_apps_csv">Forrit uppsett af F-Droid sem CSV-skrá</string>
+    <string name="menu_open">Opna</string>
     </resources>
