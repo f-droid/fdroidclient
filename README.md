@@ -38,9 +38,7 @@ to what Google Play does.
 
 This used to be the case, but no longer is. Now the [Privileged
 Extension](https://gitlab.com/fdroid/privileged-extension) is the one that should be placed in
-the system. It can be bundled with a ROM or installed via a zip, or
-alternatively F-Droid can install it as a system app using root.
-
+the system. It can be bundled with a ROM or installed via a zip.
 ## License
 
 This program is Free Software: You can use, study share and improve it at your
