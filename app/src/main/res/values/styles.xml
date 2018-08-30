@@ -170,6 +170,18 @@
         <item name="android:drawablePadding">12dp</item>
     </style>
 
+    <style name="AppVersionStatus">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase"/>
 
     <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay"/>

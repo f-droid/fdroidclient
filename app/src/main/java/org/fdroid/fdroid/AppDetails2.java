@@ -427,6 +427,7 @@ public class AppDetails2 extends AppCompatActivity
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
+                    adapter.notifyAboutDownloadedApk(newStatus.apk);
                     adapter.setIndeterminateProgress(R.string.download_pending);
                 } else {
                     adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax);

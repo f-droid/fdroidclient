@@ -87,6 +87,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="about_source">Source code</string>
     <string name="about_license">License</string>
 
+    <string name="app_suggested">Suggested</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="app_installed">Installed</string>
     <string name="app_not_installed">Not Installed</string>
@@ -101,6 +102,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app__install_downloaded_update">Update</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
+    <string name="app_size">Size: %1$s</string>
 
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
@@ -187,6 +189,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_license">License: %s</string>
     <string name="menu_source">Source Code</string>
     <string name="menu_upgrade">Upgrade</string>
+    <string name="menu_downgrade">Downgrade</string>
     <string name="menu_donate">Donate</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
