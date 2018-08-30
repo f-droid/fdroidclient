@@ -538,4 +538,8 @@
 
     <string name="send_installed_apps_csv">Applis installées via F-Droid comme fichier CSV</string>
     <string name="about_forum">Forum d\'assistance</string>
+    <string name="app_suggested">Suggéré</string>
+    <string name="app_size">Taille : %1$s</string>
+
+    <string name="menu_downgrade">Rétrograder</string>
     </resources>
