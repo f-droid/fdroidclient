@@ -11,7 +11,6 @@
     <string name="no_such_app">Non se atopou ese aplicativo.</string>
     <string name="about_title">Sobre F-Droid</string>
     <string name="about_site">Sitio web</string>
-    <string name="about_mail">Enderezo electrónico</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalada</string>
     <string name="app_not_installed">Non instalada</string>

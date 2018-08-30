@@ -15,7 +15,6 @@
     <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
     <string name="about_title">Σχετικά με το F-Droid</string>
     <string name="about_site">Ιστοσελίδα</string>
-    <string name="about_mail">Ηλ. ταχυδρομείο</string>
     <string name="about_version">Έκδοση</string>
     <string name="app_installed">Εγκατεστημένο</string>
     <string name="app_not_installed">Δεν είναι εγκατεστημένο</string>

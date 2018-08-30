@@ -6,7 +6,6 @@
     <string name="local_repo_name">اسم مستودعك المحلي</string>
     <string name="app_details">تفاصيل التطبيق</string>
     <string name="about_site">الموقع الإلكتروني</string>
-    <string name="about_mail">البريد الإلكتروني</string>
     <string name="about_version">النسخة</string>
     <string name="app_installed">مثبت</string>
     <string name="app_not_installed">غير مثبت</string>

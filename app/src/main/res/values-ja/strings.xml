@@ -20,7 +20,6 @@
     <string name="no_such_app">該当するアプリが見つかりませんでした。</string>
     <string name="about_title">F-Droidについて</string>
     <string name="about_site">ウェブサイト</string>
-    <string name="about_mail">メール</string>
     <string name="about_version">バージョン</string>
     <string name="app_installed">インストール済み</string>
     <string name="app_not_installed">未インストール</string>
