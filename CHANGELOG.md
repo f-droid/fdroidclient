@@ -1,3 +1,11 @@
+### 1.4-alpha1 (2018-08-30)
+
+* huge overhaul of the "Versions" list in the App Details screen, and
+  many other UI improvements, thanks to new contributor @wsdfhjxc
+
+* fixes to allow keyboard/d-pad navigation in more places, thanks to
+  new contributor @doeffinger
+
 ### 1.4-alpha0 (2018-08-17)
 
 * show "Open" button when media is installed and viewable
