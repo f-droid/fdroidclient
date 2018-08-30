@@ -23,14 +23,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryController> {
         this.loaderManager = loaderManager;
     }
 
+    @NonNull
     @Override
-    public CategoryController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CategoryController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new CategoryController(activity, loaderManager, activity.getLayoutInflater()
                 .inflate(R.layout.category_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(CategoryController holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryController holder, int position) {
         holder.bindModel(unlocalizedCategoryNames.get(position));
     }
 

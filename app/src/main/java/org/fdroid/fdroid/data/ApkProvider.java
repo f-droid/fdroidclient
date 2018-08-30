@@ -485,7 +485,8 @@ public class ApkProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(@NonNull Uri uri, String[] projection, String selection,
+                        String[] selectionArgs, String sortOrder) {
 
         QuerySelection query = new QuerySelection(selection, selectionArgs);
 
@@ -554,7 +555,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         boolean saveAntiFeatures = false;
         String[] antiFeatures = null;
         if (values.containsKey(Cols.AntiFeatures.ANTI_FEATURES)) {
@@ -626,7 +627,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     @Override
-    public int delete(Uri uri, String where, String[] whereArgs) {
+    public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
 
         QuerySelection query = new QuerySelection(where, whereArgs);
 
@@ -652,7 +653,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         if (MATCHER.match(uri) != CODE_APK_FROM_REPO) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }

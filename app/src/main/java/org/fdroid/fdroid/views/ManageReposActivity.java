@@ -858,6 +858,7 @@ public class ManageReposActivity extends AppCompatActivity
 
     private RepoAdapter repoAdapter;
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         Uri uri = RepoProvider.allExceptSwapUri();
@@ -872,12 +873,12 @@ public class ManageReposActivity extends AppCompatActivity
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> cursorLoader, Cursor cursor) {
         repoAdapter.swapCursor(cursor);
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> cursorLoader) {
         repoAdapter.swapCursor(null);
     }
 

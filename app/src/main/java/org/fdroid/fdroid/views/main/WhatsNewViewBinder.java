@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.main;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -92,6 +93,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id != LOADER_ID) {
@@ -109,7 +111,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         if (loader.getId() != LOADER_ID) {
             return;
         }
@@ -160,7 +162,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         if (loader.getId() != LOADER_ID) {
             return;
         }

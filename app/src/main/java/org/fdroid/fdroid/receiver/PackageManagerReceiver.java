@@ -14,7 +14,7 @@ import org.fdroid.fdroid.data.InstalledAppProviderService;
  * {@link Intent#EXTRA_REPLACING} and instead handles updates by just deleting then
  * inserting the app being updated in direct response to the {@code Intent}s from
  * the system.  This is also necessary because there are no other checks to prevent
- * multiple copies of the same app being inserted into {@Link InstalledAppProvider}.
+ * multiple copies of the same app being inserted into {@link InstalledAppProviderService}.
  */
 public class PackageManagerReceiver extends BroadcastReceiver {
     private static final String TAG = "PackageManagerReceiver";

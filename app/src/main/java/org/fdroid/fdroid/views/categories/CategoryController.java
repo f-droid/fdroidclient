@@ -133,6 +133,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         return Color.HSVToColor(hsv);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == currentCategory.hashCode() + 1) {
@@ -162,7 +163,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         int topAppsId = currentCategory.hashCode();
         int countAllAppsId = topAppsId + 1;
 
@@ -184,7 +185,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         appCardsAdapter.setAppCursor(null);
     }
 

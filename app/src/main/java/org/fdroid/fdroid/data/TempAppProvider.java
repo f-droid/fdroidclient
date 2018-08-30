@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
@@ -131,7 +132,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         switch (MATCHER.match(uri)) {
             case CODE_INIT:
                 initTable(Long.parseLong(uri.getLastPathSegment()));
@@ -146,12 +147,12 @@ public class TempAppProvider extends AppProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Update not supported for " + uri + ".");
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
+    public Cursor query(@NonNull Uri uri, String[] projection,
                         String customSelection, String[] selectionArgs, String sortOrder) {
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
         switch (MATCHER.match(uri)) {

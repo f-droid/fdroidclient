@@ -21,6 +21,7 @@
 
 package org.fdroid.fdroid.views.main;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseIntArray;
@@ -63,7 +64,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     }
 
     @Override
-    public void onViewDetachedFromWindow(MainViewController holder) {
+    public void onViewDetachedFromWindow(@NonNull MainViewController holder) {
         long viewType = getItemId(holder.getAdapterPosition());
         if (viewType == R.id.updates) {
             holder.unbindUpdates();
@@ -71,15 +72,16 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     }
 
     @Override
-    public void onViewAttachedToWindow(MainViewController holder) {
+    public void onViewAttachedToWindow(@NonNull MainViewController holder) {
         long viewType = getItemId(holder.getAdapterPosition());
         if (viewType == R.id.updates) {
             holder.bindUpdates();
         }
     }
 
+    @NonNull
     @Override
-    public MainViewController onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MainViewController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MainViewController holder = createEmptyView();
         switch (viewType) {
             case R.id.whats_new:
@@ -112,7 +114,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     }
 
     @Override
-    public void onBindViewHolder(MainViewController holder, int position) {
+    public void onBindViewHolder(@NonNull MainViewController holder, int position) {
         // The binding happens in onCreateViewHolder. This is because we never have more than one of
         // each type of view in this main activity. Therefore, there is no benefit to re-binding new
         // data each time we navigate back to an item, as the recycler view will just use the one we

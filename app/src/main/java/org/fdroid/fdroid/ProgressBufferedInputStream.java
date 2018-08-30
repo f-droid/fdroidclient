@@ -1,5 +1,7 @@
 package org.fdroid.fdroid;
 
+import android.support.annotation.NonNull;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +26,7 @@ class ProgressBufferedInputStream extends BufferedInputStream {
     }
 
     @Override
-    public int read(byte[] buffer, int byteOffset, int byteCount) throws IOException {
+    public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
         if (progressListener != null) {
             currentBytes += byteCount;
             /* don't send every change to keep things efficient.  333333 bytes to keep all

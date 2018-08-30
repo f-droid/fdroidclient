@@ -178,6 +178,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         return string.toString();
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(
@@ -191,7 +192,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         appAdapter.setAppCursor(cursor);
         if (cursor.getCount() > 0) {
             emptyState.setVisibility(View.GONE);
@@ -203,7 +204,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         appAdapter.setAppCursor(null);
     }
 

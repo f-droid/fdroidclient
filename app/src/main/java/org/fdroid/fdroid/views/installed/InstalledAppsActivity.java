@@ -21,6 +21,7 @@ package org.fdroid.fdroid.views.installed;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.CursorLoader;
@@ -76,6 +77,7 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
         getSupportLoaderManager().restartLoader(0, null, this);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(
@@ -86,7 +88,7 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         adapter.setApps(cursor);
 
         if (adapter.getItemCount() == 0) {
@@ -99,7 +101,7 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adapter.setApps(null);
     }
 
