@@ -40,6 +40,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.SeekBarPreference;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.WindowManager;
@@ -105,6 +106,8 @@ public class PreferencesFragment extends PreferenceFragment
     private int overDataPrevious;
     private int updateIntervalPrevious;
 
+    private LinearSmoothScroller topScroller;
+
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
 
@@ -161,6 +164,13 @@ public class PreferencesFragment extends PreferenceFragment
             PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_appcompatibility");
             category.removePreference(findPreference(Preferences.PREF_FORCE_TOUCH_APPS));
         }
+
+        topScroller = new LinearSmoothScroller(getActivity()) {
+            @Override
+            protected int getVerticalSnapPreference() {
+                return SNAP_TO_START;
+            }
+        };
     }
 
     private void checkSummary(String key, int resId) {
@@ -294,16 +304,23 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_EXPERT:
                 checkSummary(key, R.string.expert_on);
+                int expertPreferencesCount = 0;
                 boolean isExpertMode = Preferences.get().expertMode();
                 for (int i = 0; i < otherPrefGroup.getPreferenceCount(); i++) {
                     Preference pref = otherPrefGroup.getPreference(i);
                     if (TextUtils.equals(Preferences.PREF_EXPERT, pref.getDependency())) {
                         pref.setVisible(isExpertMode);
+                        expertPreferencesCount++;
                     }
                 }
                 if (changing) {
                     RecyclerView recyclerView = getListView();
-                    recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount() - 1);
+                    int preferencesCount = recyclerView.getAdapter().getItemCount();
+                    if (!isExpertMode) {
+                        expertPreferencesCount = 0;
+                    }
+                    topScroller.setTargetPosition(preferencesCount - expertPreferencesCount - 1);
+                    recyclerView.getLayoutManager().startSmoothScroll(topScroller);
                 }
                 break;
 
