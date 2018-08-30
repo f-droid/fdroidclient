@@ -143,4 +143,31 @@
 <string name="SignatureMismatch">नया व्हर्जन भिन्न की से साईन किया हुवा है।नया व्हर्जन इन्स्टॉल करनेकेलिए पुराना अनइंस्टाल करें।कृपया फिर से कोशिश करें। ( याद रहे कि अनइंस्टाल करनेके बाद ऐप डेटा डिलेट हो जायेगा।)</string>
     <string name="keep_install_history">इनस्टॉल हिस्ट्री रखें</string>
     <string name="keep_install_history_summary">सभी इन्स्टॉल एवं अनइंस्टॉल लॉग को एफ-ड्रॉइड में रखें</string>
-</resources>
+<string name="menu_settings">सेटिंग्स</string>
+    <string name="menu_search">खोज़</string>
+    <string name="menu_share">साझा करें</string>
+    <string name="main_menu__latest_apps">नवीनतम</string>
+    <string name="main_menu__categories">श्रेणियां</string>
+    <string name="skip">छोड़ें</string>
+
+    <string name="pref_language">भाषा</string>
+    <string name="category_Games">खेल</string>
+    <string name="category_Internet">ईंटरनेट</string>
+    <string name="category_Money">पैसे</string>
+    <string name="category_Navigation">पथ प्रदर्शन</string>
+    <string name="category_Reading">पठन</string>
+    <string name="category_Security">सुरक्षा</string>
+    <string name="category_Writing">लेख</string>
+
+    <string name="notification_action_update">अद्यतन</string>
+    <string name="notification_action_cancel">रद्द करें</string>
+    <string name="app_list__name__downloading_in_progress">%1$s डाउनलोडिंग</string>
+    <string name="warning_no_internet">अद्यतन नही हो सकता। क्या आप इंटरनेट से जुड़े हैं?</string>
+    <string name="unverified">असत्यापित</string>
+    <string name="repo_last_update">अंतिम अद्यतन</string>
+    <string name="wifi">वाई-फाई</string>
+    <string name="category_Sports_Health">खेल एवं स्वास्थ्य</string>
+    <string name="notification_title_single_update_available">नवीन अद्यतन उपलब्ध</string>
+    <string name="notification_title_summary_install_error">अद्यतन असफल</string>
+    <string name="by_author_format">%s के द्वारा</string>
+    </resources>

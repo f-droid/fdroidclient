@@ -577,4 +577,7 @@
     <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>
     <string name="updates_disabled_by_settings">Усе абноўленні адключаныя праз надады перадачы даных</string>
 
+    <string name="send_installed_apps">Абагуліць усталяваныя праграмы</string>
+    <string name="send_installed_apps_csv">Праграмы, усталяваныя F-Droid як CSV-файл</string>
+    <string name="menu_open">Адкрыць</string>
     </resources>

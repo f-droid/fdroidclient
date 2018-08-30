@@ -498,4 +498,7 @@
 
     <string name="antinosourcesince">소스 코드는 더 이상 사용 가능하지 않으며, 업데이트 가능성은 없습니다.</string>
 
+    <string name="send_installed_apps">설치된 앱 공유</string>
+    <string name="send_installed_apps_csv">F-Droid에 의해 CSV 파일로 설치된 앱</string>
+    <string name="menu_open">열기</string>
     </resources>

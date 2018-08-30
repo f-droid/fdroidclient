@@ -543,4 +543,8 @@
     <string name="send_history_csv">%s история установок как CSV-файл</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
 
+    <string name="send_installed_apps">Поделиться установленными приложениями</string>
+    <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
+    <string name="menu_open">Открыть</string>
+    <string name="about_forum">Форум поддержки</string>
     </resources>

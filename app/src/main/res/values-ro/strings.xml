@@ -537,4 +537,8 @@
     <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>
     <string name="updates_disabled_by_settings">Toate actualizările sunt oprite din setările de date mobile/Wi-Fi</string>
 
+    <string name="send_installed_apps">Partajează aplicațiile instalate</string>
+    <string name="send_installed_apps_csv">Lista de aplicații instalate ca fișier CSV</string>
+    <string name="menu_open">Deschide</string>
+    <string name="about_forum">Forum suport tehnic</string>
     </resources>
