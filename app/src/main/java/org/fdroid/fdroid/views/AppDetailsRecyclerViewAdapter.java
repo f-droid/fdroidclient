@@ -1034,11 +1034,12 @@ public class AppDetailsRecyclerViewAdapter
             this.apk = apk;
 
             boolean isAppInstalled = app.isInstalled(context);
-            boolean isApkInstalled = apk.versionCode == app.installedVersionCode;
+            boolean isApkInstalled = apk.versionCode == app.installedVersionCode &&
+                    TextUtils.equals(apk.sig, app.installedSig);
             boolean isApkSuggested = apk.versionCode == app.suggestedVersionCode &&
                     TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
-                    downloadedApk.compareTo(apk) == 0;
+                    downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
 
             // Version name and statuses
             version.setText(apk.versionName);
