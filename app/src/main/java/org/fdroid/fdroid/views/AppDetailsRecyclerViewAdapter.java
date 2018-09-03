@@ -1077,7 +1077,7 @@ public class AppDetailsRecyclerViewAdapter
                     // Change the label to indicate that pressing this
                     // button will result in upgrading the installed app
                     buttonInstallUpgrade.setText(R.string.menu_upgrade);
-                } else {
+                } else if (apk.versionCode < app.installedVersionCode) {
                     // The Downgrade button should be shown in this case
                     buttonInstallUpgrade.setVisibility(View.GONE);
                     showActionButton(buttonDowngrade, false, isApkDownloading);
