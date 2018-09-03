@@ -107,7 +107,7 @@ public class AppDetailsRecyclerViewAdapter
     private HeaderViewHolder headerView;
 
     private Apk downloadedApk;
-    private final HashMap<Integer, Boolean> versionsExpandTracker = new HashMap<>();
+    private final HashMap<String, Boolean> versionsExpandTracker = new HashMap<>();
 
     public AppDetailsRecyclerViewAdapter(Context context, @NonNull App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         this.context = context;
@@ -131,8 +131,8 @@ public class AppDetailsRecyclerViewAdapter
                 compatibleVersionsDifferentSig.add(apk);
                 if (allowBySig) {
                     versions.add(apk);
-                    if (!versionsExpandTracker.containsKey(apk.versionCode)) {
-                        versionsExpandTracker.put(apk.versionCode, false);
+                    if (!versionsExpandTracker.containsKey(apk.apkName)) {
+                        versionsExpandTracker.put(apk.apkName, false);
                     }
                 }
             }
@@ -1034,11 +1034,12 @@ public class AppDetailsRecyclerViewAdapter
             this.apk = apk;
 
             boolean isAppInstalled = app.isInstalled(context);
-            boolean isApkInstalled = apk.versionCode == app.installedVersionCode;
+            boolean isApkInstalled = apk.versionCode == app.installedVersionCode &&
+                    TextUtils.equals(apk.sig, app.installedSig);
             boolean isApkSuggested = apk.versionCode == app.suggestedVersionCode &&
                     TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
-                    downloadedApk.compareTo(apk) == 0;
+                    downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
 
             // Version name and statuses
             version.setText(apk.versionName);
@@ -1077,7 +1078,7 @@ public class AppDetailsRecyclerViewAdapter
                     // Change the label to indicate that pressing this
                     // button will result in upgrading the installed app
                     buttonInstallUpgrade.setText(R.string.menu_upgrade);
-                } else {
+                } else if (apk.versionCode < app.installedVersionCode) {
                     // The Downgrade button should be shown in this case
                     buttonInstallUpgrade.setVisibility(View.GONE);
                     showActionButton(buttonDowngrade, false, isApkDownloading);
@@ -1102,7 +1103,7 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Expand the view if it was previously expanded or when downloading
-            expand(versionsExpandTracker.get(apk.versionCode) || isApkDownloading);
+            expand(versionsExpandTracker.get(apk.apkName) || isApkDownloading);
 
             // Toggle expanded view when clicking the whole version item
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -1168,7 +1169,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void expand(boolean expand) {
-            versionsExpandTracker.put(apk.versionCode, expand);
+            versionsExpandTracker.put(apk.apkName, expand);
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
                     R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600));
@@ -1188,7 +1189,7 @@ public class AppDetailsRecyclerViewAdapter
                 return;
             }
 
-            boolean expand = !versionsExpandTracker.get(apk.versionCode);
+            boolean expand = !versionsExpandTracker.get(apk.apkName);
             expand(expand);
 
             if (expand) {
