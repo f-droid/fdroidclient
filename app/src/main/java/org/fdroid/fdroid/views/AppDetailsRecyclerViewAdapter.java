@@ -1005,6 +1005,7 @@ public class AppDetailsRecyclerViewAdapter
         Button buttonAction;
         final View busyIndicator;
         final TextView incompatibleReasons;
+        final TextView targetArch;
 
         private Apk apk;
 
@@ -1024,6 +1025,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonDowngrade = (Button) view.findViewById(R.id.button_downgrade);
             busyIndicator = (View) view.findViewById(R.id.busy_indicator);
             incompatibleReasons = (TextView) view.findViewById(R.id.incompatible_reasons);
+            targetArch = (TextView) view.findViewById(R.id.target_arch);
 
             int margin = context.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
             int padding = context.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
@@ -1088,18 +1090,32 @@ public class AppDetailsRecyclerViewAdapter
             // Show busy indicator when the APK is being downloaded
             busyIndicator.setVisibility(isApkDownloading ? View.VISIBLE : View.GONE);
 
-            // Display incompatible reasons when the app
-            // isn't compatible and the expert mode is enabled
-            if (Preferences.get().expertMode() && !apk.compatible) {
-                String incompatibleReasonsText = getIncompatibleReasonsText(apk);
-                if (incompatibleReasonsText != null) {
-                    incompatibleReasons.setVisibility(View.VISIBLE);
-                    incompatibleReasons.setText(incompatibleReasonsText);
+            // Display when the expert mode is enabled
+            if (Preferences.get().expertMode()) {
+                // Display incompatible reasons when the app isn't compatible
+                if (!apk.compatible) {
+                    String incompatibleReasonsText = getIncompatibleReasonsText(apk);
+                    if (incompatibleReasonsText != null) {
+                        incompatibleReasons.setVisibility(View.VISIBLE);
+                        incompatibleReasons.setText(incompatibleReasonsText);
+                    } else {
+                        incompatibleReasons.setVisibility(View.GONE);
+                    }
+                    targetArch.setVisibility(View.GONE);
                 } else {
+                    // Display target architecture when the app is compatible
+                    String targetArchText = getTargetArchText(apk);
+                    if (targetArchText != null) {
+                        targetArch.setVisibility(View.VISIBLE);
+                        targetArch.setText(targetArchText);
+                    } else {
+                        targetArch.setVisibility(View.GONE);
+                    }
                     incompatibleReasons.setVisibility(View.GONE);
                 }
             } else {
                 incompatibleReasons.setVisibility(View.GONE);
+                targetArch.setVisibility(View.GONE);
             }
 
             // Expand the view if it was previously expanded or when downloading
@@ -1140,6 +1156,26 @@ public class AppDetailsRecyclerViewAdapter
                 if (mismatchedSig) {
                     return context.getString(R.string.app_details__incompatible_mismatched_signature);
                 }
+            }
+            return null;
+        }
+
+        private String getTargetArchText(final Apk apk) {
+            if (apk.nativecode == null) {
+                return null;
+            }
+            String currentArch = System.getProperty("os.arch");
+            List<String> customArchs = new ArrayList<>();
+            for (String arch : apk.nativecode) {
+                // Gather only archs different than current arch
+                if (!TextUtils.equals(arch, currentArch)) {
+                    customArchs.add(arch);
+                }
+            }
+            String archs = TextUtils.join(", ", customArchs);
+            if (!archs.isEmpty()) {
+                // Reuse "Requires: ..." string to display this
+                return context.getResources().getString(R.string.requires_features, archs);
             }
             return null;
         }

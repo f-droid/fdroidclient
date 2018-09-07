@@ -167,5 +167,12 @@
             android:visibility="gone"
             tools:visibility="visible"
             tools:text="Requires: armeabi-v7a" />
+
+        <TextView android:id="@+id/target_arch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/lightGrayTextColor"
+            android:textSize="12sp"
+            android:visibility="gone" />
     </LinearLayout>
 </RelativeLayout>
