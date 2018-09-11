@@ -428,6 +428,9 @@ public class UpdateService extends JobIntentService {
                 return;
             } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "manually requested or forced update");
+                if (forcedUpdate) {
+                    DBHelper.resetTransient(this);
+                }
             } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
@@ -460,10 +463,6 @@ public class UpdateService extends JobIntentService {
                 }
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-
-                if (forcedUpdate) {
-                    DBHelper.resetTransient(this);
-                }
 
                 try {
                     RepoUpdater updater = new IndexV1Updater(this, repo);
