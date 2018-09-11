@@ -20,19 +20,24 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.IntentService;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Process;
 import android.support.v4.provider.DocumentFile;
 import android.util.Log;
+import android.widget.Toast;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -57,8 +62,11 @@ import java.util.jar.JarInputStream;
  * {@link android.os.Build.VERSION_CODES#KITKAT android-19}, this approach is only
  * workable if {@link android.content.Intent#ACTION_OPEN_DOCUMENT_TREE} is available.
  * It was added in {@link android.os.Build.VERSION_CODES#LOLLIPOP android-21}.
+ * {@link android.os.storage.StorageVolume#createAccessIntent(String)} is also
+ * necessary to do this with any kind of rational UX.
  *
- * @see <a href="https://commonsware.com/blog/2017/11/15/storage-situation-removable-storage.html"> The Storage Situation: Removable Storage </a>
+ * @see <a href="https://commonsware.com/blog/2017/11/15/storage-situation-removable-storage.html">The Storage Situation: Removable Storage </a>
+ * @see <a href="https://commonsware.com/blog/2016/11/18/be-careful-scoped-directory-access.html">Be Careful with Scoped Directory Access</a>
  * @see <a href="https://developer.android.com/training/articles/scoped-directory-access.html">Using Scoped Directory Access</a>
  * @see <a href="https://developer.android.com/guide/topics/providers/document-provider.html">Open Files using Storage Access Framework</a>
  */
@@ -78,6 +86,25 @@ public class TreeUriScannerIntentService extends IntentService {
             intent.setAction(ACTION_SCAN_TREE_URI);
             intent.setData(data);
             context.startService(intent);
+        }
+    }
+
+    /**
+     * Now determine if it is External Storage that must be handled by the
+     * {@link TreeUriScannerIntentService} or whether it is External Storage
+     * like an SD Card that can be directly accessed via the file system.
+     */
+    public static void onActivityResult(Activity activity, Intent intent) {
+        Uri uri = intent.getData();
+        if (uri != null) {
+            if (Build.VERSION.SDK_INT >= 19) {
+                ContentResolver contentResolver = activity.getContentResolver();
+                int perms = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+                contentResolver.takePersistableUriPermission(uri, perms);
+            }
+            String msg = String.format(activity.getString(R.string.swap_toast_using_path), uri.toString());
+            Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
+            scan(activity, uri);
         }
     }
 

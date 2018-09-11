@@ -458,7 +458,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- The word "nearby" should be the same as used for Google/Android Nearby. This is a button label, it should ideally be 10-20 characters. -->
     <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
-    <string name="nearby_splash__read_external_storage">SD Cards can be used to swap!</string>
+    <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
+    <string name="nearby_splash__document_tree">Search USB OTG for repos and mirrors.</string>
     <!-- This is a button label for a small button, the text needs to be under 10 characters, the shorter the better. Also, a literal translation probably will miss the point. "Try it" is more a saying than two words. Google has been pushing these short buttons, like "Got it" and "Try now" so this button is trying to match those buttons in Android. -->
     <string name="nearby_splash__request_permission">Try it</string>
 

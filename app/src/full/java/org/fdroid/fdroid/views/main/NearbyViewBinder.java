@@ -2,13 +2,20 @@ package org.fdroid.fdroid.views.main;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.UriPermission;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.provider.DocumentFile;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.nearby.TreeUriUtils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
@@ -130,6 +139,32 @@ class NearbyViewBinder {
                     }
                 }
             });
+        }
+
+        if (Build.VERSION.SDK_INT < 24) {
+            return;
+        }
+        StorageManager storageManager = (StorageManager) activity.getSystemService(Context.STORAGE_SERVICE);
+        for (StorageVolume storageVolume : storageManager.getStorageVolumes()) {
+            if (storageVolume.isRemovable() && !storageVolume.isPrimary()) {
+                Log.i(TAG, "StorageVolume: " + storageVolume);
+                final Intent intent = storageVolume.createAccessIntent(null);
+                if (intent == null) {
+                    Utils.debugLog(TAG, "Got null Storage Volume access Intent");
+                    return;
+                }
+                TextView storageVolumeText = swapView.findViewById(R.id.storage_volume_text);
+                storageVolumeText.setVisibility(View.VISIBLE);
+                Button requestStorageVolume = swapView.findViewById(R.id.request_storage_volume_button);
+                requestStorageVolume.setText(storageVolume.getDescription(activity));
+                requestStorageVolume.setVisibility(View.VISIBLE);
+                requestStorageVolume.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                    }
+                });
+            }
         }
     }
 }

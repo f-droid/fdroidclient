@@ -91,7 +91,7 @@ public class TreeUriDownloader extends Downloader {
 
     @Override
     protected long totalDownloadSize() {
-        return documentFile.length();
+        return documentFile.length(); // TODO how should this actually be implemented?
     }
 
     @Override

@@ -58,11 +58,12 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import java.lang.reflect.Field;
 
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
+    public static final int REQUEST_STORAGE_ACCESS = 0x40E5;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -244,6 +246,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         // here and once in onResume(). However, the method deals with this by ensuring it only
         // handles the same intent once.
         checkForAddRepoIntent(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_STORAGE_ACCESS) {
+            TreeUriScannerIntentService.onActivityResult(this, data);
+        }
     }
 
     @Override
