@@ -31,8 +31,8 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.view.ViewTreeObserver;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -543,11 +543,11 @@ public class AppDetailsRecyclerViewAdapter
                 sb.append("<ul>");
                 for (String af : app.antiFeatures) {
                     String afdesc = descAntiFeature(af);
-                    sb.append("<li><a href=\"https://f-droid.org/wiki/page/Antifeature:")
+                    sb.append("<li><div><a href=\"https://f-droid.org/wiki/page/Antifeature:")
                             .append(af)
                             .append("\">")
                             .append(afdesc)
-                            .append("</a></li>");
+                            .append("</a></div></li>");
                 }
                 sb.append("</ul>");
                 antiFeaturesView.setText(Html.fromHtml(sb.toString()));
