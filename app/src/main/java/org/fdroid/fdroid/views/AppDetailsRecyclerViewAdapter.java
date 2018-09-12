@@ -92,7 +92,8 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_LINKS = 3;
     private static final int VIEWTYPE_PERMISSIONS = 4;
     private static final int VIEWTYPE_VERSIONS = 5;
-    private static final int VIEWTYPE_VERSION = 6;
+    private static final int VIEWTYPE_NO_VERSIONS = 6;
+    private static final int VIEWTYPE_VERSION = 7;
 
     private final Context context;
     @NonNull
@@ -123,6 +124,7 @@ public class AppDetailsRecyclerViewAdapter
         versions = new ArrayList<>();
         compatibleVersionsDifferentSig = new ArrayList<>();
         final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
+        ensureInstalledApkExists(apks);
         boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         for (final Apk apk : apks) {
             boolean allowByCompatibility = apk.compatible || showIncompatibleVersions;
@@ -150,12 +152,28 @@ public class AppDetailsRecyclerViewAdapter
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
-        addItem(VIEWTYPE_VERSIONS);
-        if (showVersions) {
-            setShowVersions(true);
+        if (versions.size() > 0) {
+            addItem(VIEWTYPE_VERSIONS);
+            if (showVersions) {
+                setShowVersions(true);
+            }
+        } else {
+            addItem(VIEWTYPE_NO_VERSIONS);
         }
 
         notifyDataSetChanged();
+    }
+
+    private void ensureInstalledApkExists(final List<Apk> apks) {
+        Apk installedApk = app.getInstalledApk(this.context);
+        // These conditions should be enough to determine if the installedApk
+        // is a generated dummy or a proper APK containing data from a repository.
+        if (installedApk != null && installedApk.added == null && installedApk.sig == null) {
+            installedApk.compatible = true;
+            installedApk.sig = app.installedSig;
+            installedApk.maxSdkVersion = -1;
+            apks.add(installedApk);
+        }
     }
 
     void setShowVersions(boolean showVersions) {
@@ -290,11 +308,10 @@ public class AppDetailsRecyclerViewAdapter
                 return new PermissionsViewHolder(permissions);
             case VIEWTYPE_VERSIONS:
                 View versionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
-                if (versions.size() == 0) {
-                    return new NoVersionsViewHolder(versionsView);
-                } else {
-                    return new VersionsViewHolder(versionsView);
-                }
+                return new VersionsViewHolder(versionsView);
+            case VIEWTYPE_NO_VERSIONS:
+                View noVersionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
+                return new NoVersionsViewHolder(noVersionsView);
             case VIEWTYPE_VERSION:
                 View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 return new VersionViewHolder(version);
@@ -318,6 +335,7 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_LINKS:
             case VIEWTYPE_PERMISSIONS:
             case VIEWTYPE_VERSIONS:
+            case VIEWTYPE_NO_VERSIONS:
                 ((AppDetailsViewHolder) holder).bindModel();
                 break;
 
@@ -1042,6 +1060,8 @@ public class AppDetailsRecyclerViewAdapter
                     TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
                     downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
+            boolean isApkInstalledDummy = apk.versionCode == app.installedVersionCode &&
+                    apk.compatible && apk.size == 0 && apk.maxSdkVersion == -1;
 
             // Version name and statuses
             version.setText(apk.versionName);
@@ -1061,14 +1081,25 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Added date
-            java.text.DateFormat df = DateFormat.getDateFormat(context);
-            added.setText(context.getString(R.string.added_on, df.format(apk.added)));
+            if (apk.added != null) {
+                java.text.DateFormat df = DateFormat.getDateFormat(context);
+                added.setVisibility(View.VISIBLE);
+                added.setText(context.getString(R.string.added_on, df.format(apk.added)));
+            } else {
+                added.setVisibility(View.INVISIBLE);
+            }
 
             // Repository name, APK size and required Android version
             Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
-            repository.setText(repo != null ? repo.getName() : context.getString(R.string.unknown));
+            if (repo != null) {
+                repository.setVisibility(View.VISIBLE);
+                repository.setText(repo.getName());
+            } else {
+                repository.setVisibility(View.INVISIBLE);
+            }
             size.setText(context.getString(R.string.app_size, Utils.getFriendlySize(apk.size)));
             api.setText(getApiText(apk));
+
 
             // Figuring out whether to show Install/Upgrade button or Downgrade button
             buttonDowngrade.setVisibility(View.GONE);
@@ -1121,13 +1152,21 @@ public class AppDetailsRecyclerViewAdapter
             // Expand the view if it was previously expanded or when downloading
             expand(versionsExpandTracker.get(apk.apkName) || isApkDownloading);
 
-            // Toggle expanded view when clicking the whole version item
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleExpanded();
-                }
-            });
+            // Toggle expanded view when clicking the whole version item,
+            // unless it's an installed app version dummy item - it doesn't
+            // contain any meaningful info, so there is no reason to expand it.
+            if (!isApkInstalledDummy) {
+                expandArrow.setAlpha(1f);
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleExpanded();
+                    }
+                });
+            } else {
+                expandArrow.setAlpha(0.3f);
+                itemView.setOnClickListener(null);
+            }
         }
 
         private String getApiText(final Apk apk) {
