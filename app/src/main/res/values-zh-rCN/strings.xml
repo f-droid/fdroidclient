@@ -405,7 +405,7 @@
     <string name="force_old_index">强制使用旧索引格式</string>
     <string name="force_old_index_summary">如果出现错误或兼容问题，请使用XML应用索引</string>
     <string name="app_installed_media">文件已安装到%s</string>
-    <string name="app_permission_storage">F-Droid需要存储权限以安装此到存储。请允许此权限并在下一个屏幕上继续进行安装。</string>
+    <string name="app_permission_storage">F-Droid 需要存储权限以安装到存储。请在下一个界面允许此权限以继续进行安装。</string>
 
     <string name="app_list_download_ready">已下载，安装准备就绪</string>
 
@@ -493,10 +493,14 @@
     <string name="hide_all_notifications_summary">避免在状态栏和通知抽屉中显示任何操作。</string>
     <string name="send_install_history">发送安装历史</string>
     <string name="send_history_csv">以 CSV 文件 %s 安装历史</string>
-    <string name="install_history_summary">浏览关于所有安装与卸载的私有日志</string>
+    <string name="install_history_summary">浏览所有关于安装与卸载的私有日志</string>
     <string name="send_version_and_uuid_summary">在下载时包含此应用的版本和一个随机的唯一 ID，在应用下一次启动时生效。</string>
     <string name="allow_push_requests">允许软件源去安装/卸载应用</string>
     <string name="send_installed_apps">分享已安装的应用程序</string>
     <string name="share_repository">分享软件源</string>
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
+    <string name="about_forum">论坛</string>
+    <string name="app_size">大小：%1$s</string>
+
+    <string name="menu_downgrade">降级</string>
     </resources>

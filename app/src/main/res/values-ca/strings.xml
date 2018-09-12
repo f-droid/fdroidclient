@@ -530,4 +530,12 @@
 
     <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar.</string>
 
+    <string name="about_forum">Fòrum de suport</string>
+    <string name="app_suggested">Suggerit</string>
+    <string name="app_size">Mida: %1$s</string>
+
+    <string name="send_installed_apps">Compartir apps instal·lades</string>
+    <string name="send_installed_apps_csv">Apps instal·lades per F-Droid a través d\'un fitxer CSV</string>
+    <string name="menu_open">Obrir</string>
+    <string name="menu_downgrade">Revertir versió</string>
     </resources>

@@ -545,4 +545,8 @@
     <string name="send_installed_apps_csv">Programmer installert av F-Droid fra CSV-fil</string>
     <string name="menu_open">Åpne</string>
     <string name="about_forum">Brukerstøtteforum</string>
+    <string name="app_suggested">Foreslått</string>
+    <string name="app_size">Størrelse: %1$s</string>
+
+    <string name="menu_downgrade">Nedgrader</string>
     </resources>

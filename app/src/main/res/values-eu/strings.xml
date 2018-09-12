@@ -563,4 +563,9 @@
     <string name="send_installed_apps">Partekatu instalatutako aplikazioak</string>
     <string name="send_installed_apps_csv">F-Droid-ek instalatutako aplikazioak CSV fitxategi gisa</string>
     <string name="menu_open">Ireki</string>
+    <string name="about_forum">Laguntza foroa</string>
+    <string name="app_suggested">Iradokitua</string>
+    <string name="app_size">Neurria: %1$s</string>
+
+    <string name="menu_downgrade">Atzeratu bertsioa</string>
     </resources>

@@ -6,7 +6,7 @@
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
     <string name="enable_nfc_send">Aktifkan Pengirimian NFC…</string>
-    <string name="cache_downloaded">Simpan hasil unduhan</string>
+    <string name="cache_downloaded">Simpan cache aplikasi</string>
     <string name="updates">Pembaruan</string>
     <string name="unstable_updates">Pembaruan tidak stabil</string>
     <string name="unstable_updates_summary">Sarankan pembaruan ke versi tidak stabil</string>
@@ -15,9 +15,7 @@
     <string name="update_interval">Selang waktu pembaruan otomatis</string>
     <string name="notify">Tampilkan pembaruan yang tersedia</string>
     <string name="notify_on">Beri tahu jika pembaruan aplikasi tersedia</string>
-    <string name="system_installer_on">Gunakan F-Droid Privileged Extension untuk memasang, memperbarui, dan mencopot
-        paket
-    </string>
+    <string name="system_installer_on">Gunakan Privileged Extension untuk memasang, memperbarui, dan mencopot paket</string>
     <string name="local_repo_name">Nama Repo Lokal Anda</string>
     <string name="local_repo_name_summary">Judul repo lokal Anda yang disiarkan: %s</string>
     <string name="local_repo_https_on">Gunakan sambungan HTTPS:// terenkripsi untuk repo lokal</string>
@@ -147,12 +145,9 @@
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
     </string>
     <string name="repo_confirm_delete_title">Hapus Repositori?</string>
-    <string name="repo_confirm_delete_body">Menghapus repositori artinya
-        aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.
-
-        Catatan: Semua
-        apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.
-    </string>
+    <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak lagi tersedia. 
+\n
+\nCatatan: Semua apl yang sebelumnya dipasang akan tetap ada di perangkat Anda.</string>
     <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi yang lama. Untuk memasang versi yang baru, versi yang lama harus dihapus terlebih dahulu. Silakan lakukan ini dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh apl tersebut)</string>
     <string name="interval_12h">Cek pembaruan setiap 12 jam</string>
     <string name="downloading">Mengunduh…</string>
@@ -183,8 +178,9 @@
         Anda akan
         butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.
     </string>
-    <string name="repo_added">Repository F-Droid tersimpan %1$s.</string>
-    <string name="repo_searching_address">Mencari repositori F-Droid di\n%1$s</string>
+    <string name="repo_added">Paket Repositori tersimpan %1$s.</string>
+    <string name="repo_searching_address">Mencari paket repositori di
+\n%1$s</string>
     <string name="minsdk_or_later">%s atau nanti</string>
     <string name="up_to_maxsdk">Hingga %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s hingga %2$s</string>
@@ -320,7 +316,7 @@
     <string name="uninstalling">Mencopot pemasangan…</string>
 
     <string name="keep_install_history">Simpan riwayat pemasangan</string>
-    <string name="keep_install_history_summary">Simpan semua log pemasangan dan pencopotan di F-Droid</string>
+    <string name="keep_install_history_summary">Simpan semua log pemasangan dan pencopotan di Toko Pribadi</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>
     <string name="update_auto_install_summary">Unduh dan pasang pembaruan apl di latar belakang</string>
     <string name="warning_no_internet">Tidak bisa memperbarui, apakah Anda tersambung ke Internet?</string>
@@ -531,4 +527,17 @@
     <string name="send_version_and_uuid_summary">Sertakan versi aplikasi ini dan ID acak dan unik saat mengunduh, akan memengaruhi aplikasi berikutnya untuk memulai ulang.</string>
     <string name="allow_push_requests">Izinkan repo untuk menginstal/menghapus aplikasi</string>
     <string name="allow_push_requests_summary">Repo metadata dapat menyertakan permintaan push untuk menginstal atau menghapus aplikasi</string>
+    <string name="about_forum">Forum bantuan</string>
+    <string name="app_suggested">Disarankan</string>
+    <string name="app_size">Ukuran: %1$s</string>
+
+    <string name="send_installed_apps">Bagikan apl terpasang</string>
+    <string name="send_installed_apps_csv">Apl dipasang oleh F-Droid sebagai berkas CSV</string>
+    <string name="updates_disabled_by_settings">Semua pambaharuan dinonaktifkan oleh Pengaturan Data/Wifi</string>
+
+    <string name="menu_open">Buka</string>
+    <string name="menu_downgrade">Turunkan</string>
+    <string name="antinosourcesince">Sumber kode ini sudah tidak tersedia, tidak akan ada pembaharuan.</string>
+
+    <string name="share_repository">Bagikan Repositori</string>
     </resources>

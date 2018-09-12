@@ -559,4 +559,9 @@
     <string name="send_installed_apps">Cumpartzi sas aplicatziones installadas</string>
     <string name="send_installed_apps_csv">Aplicatziones installadas dae F-Droid comente unu documentu CSV</string>
     <string name="menu_open">Abertu</string>
+    <string name="about_forum">Forum de suportu</string>
+    <string name="app_suggested">Cunsigiadas</string>
+    <string name="app_size">Mannària: %1$s</string>
+
+    <string name="menu_downgrade">Disinstalla agiornamentu</string>
     </resources>

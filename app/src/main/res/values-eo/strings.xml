@@ -538,4 +538,9 @@
     <string name="send_installed_apps">Kunhavigi instalitajn aplikaĵojn</string>
     <string name="send_installed_apps_csv">Aplikaĵoj instalitaj per F-Droid kiel CSV-dosiero</string>
     <string name="menu_open">Malfermi</string>
+    <string name="about_forum">Subtena forumo</string>
+    <string name="app_suggested">Konsilinda</string>
+    <string name="app_size">Grando: %1$s</string>
+
+    <string name="menu_downgrade">Malpromocii</string>
     </resources>

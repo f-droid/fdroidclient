@@ -427,7 +427,7 @@
     <string name="app_list_download_ready">已下載，安裝準備就緒</string>
 
     <string name="app_installed_media">檔案已安裝到 %s</string>
-    <string name="app_permission_storage">F-Droid 需要檔案存取權以將其安裝到裝置。請在下一個畫面允許以繼續安裝。</string>
+    <string name="app_permission_storage">F-Droid 需要檔案存取權以將其安裝到裝置。請在下一個畫面允許以便繼續安裝。</string>
 
     <string name="status_inserting_x_apps">正從 %3$s 儲存應用程式的詳細資訊 (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signature">與已安裝版本的簽署不符</string>
@@ -521,4 +521,8 @@
     <string name="menu_open">開啟</string>
     <string name="send_installed_apps_csv">F-Droid 透過 CSV 檔案已安裝的應用程式</string>
     <string name="about_forum">支援論壇</string>
+    <string name="app_suggested">建議</string>
+    <string name="app_size">大小：%1$s</string>
+
+    <string name="menu_downgrade">降低</string>
     </resources>

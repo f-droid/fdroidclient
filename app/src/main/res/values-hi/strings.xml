@@ -170,4 +170,5 @@
     <string name="notification_title_single_update_available">नवीन अद्यतन उपलब्ध</string>
     <string name="notification_title_summary_install_error">अद्यतन असफल</string>
     <string name="by_author_format">%s के द्वारा</string>
+    <string name="hide_all_notifications">सभी अधिसूचनाएं छुपाएं</string>
     </resources>

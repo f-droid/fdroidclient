@@ -551,4 +551,12 @@
     <string name="antinosourcesince">Zdrojový kód už není k dispozici, aktualizace nejsou možné.</string>
 
     <string name="share_repository">Sdílet repozitář</string>
+    <string name="about_forum">Diskuzní fórum podpory</string>
+    <string name="app_suggested">Doporučeno</string>
+    <string name="app_size">Velikost: %1$s</string>
+
+    <string name="send_installed_apps">Sdílet instalátory nainstalovaných aplikací</string>
+    <string name="send_installed_apps_csv">Seznam aplikací nainstalovaných prostřednictvím F-Droid v podobě CSV souboru</string>
+    <string name="menu_open">Otevřít</string>
+    <string name="menu_downgrade">Vrátit na starší verzi</string>
     </resources>
