@@ -556,4 +556,8 @@
     <string name="send_installed_apps_csv">יישומונים שהותקנו דרך F-Droid כקובץ CSV</string>
     <string name="menu_open">פתיחה</string>
     <string name="about_forum">פורום תמיכה</string>
+    <string name="app_suggested">הצעה</string>
+    <string name="app_size">גודל: %1$s</string>
+
+    <string name="menu_downgrade">שנמוך</string>
     </resources>

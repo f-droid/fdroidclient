@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Да бисте инсталирали ново
         издање, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке апликације.)
     </string>
-    <string name="installIncompatible">Пакет не одговара вашем уређају, инсталирати свеједно?</string>
+    <string name="installIncompatible">Пакет не одговара вашем уређају, свеједно инсталирати?</string>
     <string name="version">Издање</string>
     <string name="delete">Обриши</string>
     <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
@@ -22,10 +22,10 @@
     <string name="about_title">О Ф-дроиду</string>
     <string name="about_site">Мрежна страница</string>
     <string name="about_version">Издање</string>
-    <string name="app_installed">Уграђена</string>
-    <string name="app_not_installed">Није уграђена</string>
-    <string name="app_inst_known_source">Уграђен (са %s)</string>
-    <string name="app_inst_unknown_source">Уграђен (са непознатог извора)</string>
+    <string name="app_installed">Инсталирана</string>
+    <string name="app_not_installed">Није инсталирана</string>
+    <string name="app_inst_known_source">Инсталирана (са %s)</string>
+    <string name="app_inst_unknown_source">Инсталирана (са непознатог извора)</string>
     <string name="added_on">Додат %s</string>
     <string name="ok">У реду</string>
     <string name="yes">Да</string>
@@ -300,7 +300,7 @@
     <string name="repo_provider">Ризница: %s</string>
 
     <string name="update_auto_download">Аутоматски добављај надоградње</string>
-    <string name="update_auto_download_summary">Надоградње се преузимају аутоматски и бићете обавештени пре уградње</string>
+    <string name="update_auto_download_summary">Надоградње се преузимају аутоматски и бићете обавештени пре инсталације</string>
     <string name="download_pending">Чекам на почетак преузимања…</string>
 
     <string name="keep_hour">1 сат</string>
@@ -310,17 +310,17 @@
     <string name="keep_year">1 годину</string>
     <string name="keep_forever">заувек</string>
 
-    <string name="install_error_notify_title">Грешка уградње %s</string>
+    <string name="install_error_notify_title">Грешка при инсталирању %s</string>
     <string name="uninstall_error_notify_title">Грешка уклањања %s</string>
 
 
-    <string name="installing">Уграђујем…</string>
+    <string name="installing">Инсталирам…</string>
     <string name="uninstalling">Уклањам…</string>
 
-    <string name="update_auto_install">Аутоматски уграђуј надоградње</string>
-    <string name="update_auto_install_summary">Преузимање и уградња апликација у позадини</string>
-    <string name="keep_install_history">Чувај историјат уградњи</string>
-    <string name="keep_install_history_summary">Чувај запис свих уградњи и уклањања унутар Ф-дроида</string>
+    <string name="update_auto_install">Аутоматски инсталирај надоградње</string>
+    <string name="update_auto_install_summary">Преузимање и инсталација апликација у позадини</string>
+    <string name="keep_install_history">Чувај историјат инсталације</string>
+    <string name="keep_install_history_summary">Чувај запис свих инсталација и уклањања унутар Ф-дроида</string>
     <string name="versions">Издања</string>
     <string name="warning_no_internet">Не могу да освежим, да ли сте повезани на интернет?</string>
     <string name="app_details_donate_prompt_unknown_author">Почастите програмере %1$s кафом!</string>
@@ -336,23 +336,23 @@
 
 
     <string name="notification_title_single_update_available">Доступна надоградња</string>
-    <string name="notification_title_single_ready_to_install">Спреман за уградњу</string>
+    <string name="notification_title_single_ready_to_install">Спреман за инсталацију</string>
     <string name="notification_title_single_ready_to_install_update">Надоградња спремна</string>
     <string name="notification_title_single_install_error">Уградња није успела</string>
     <string name="notification_content_single_downloading">Преузимам „%1$s“…</string>
     <string name="notification_content_single_downloading_update">Преузимам надоградњу за „%1$s“…</string>
-    <string name="notification_content_single_installing">Уграђујем „%1$s“…</string>
-    <string name="notification_content_single_installed">Успешно уграђено</string>
+    <string name="notification_content_single_installing">Инсталирам „%1$s“…</string>
+    <string name="notification_content_single_installed">Инсталација успешна</string>
     <string name="notification_title_summary_update_available">Надоградња доступна</string>
     <string name="notification_title_summary_downloading">Преузимам…</string>
     <string name="notification_title_summary_downloading_update">Преузимам надоградњу…</string>
-    <string name="notification_title_summary_ready_to_install">Спреман за уградњу</string>
-    <string name="notification_title_summary_installing">Уграђујем</string>
-    <string name="notification_title_summary_installed">Успешно уграђено</string>
-    <string name="notification_title_summary_install_error">Уградња није успела</string>
+    <string name="notification_title_summary_ready_to_install">Спреман за инсталацију</string>
+    <string name="notification_title_summary_installing">Инсталирам</string>
+    <string name="notification_title_summary_installed">Успешно инсталирано</string>
+    <string name="notification_title_summary_install_error">Инсталација није успела</string>
     <string name="notification_action_update">Надогради</string>
     <string name="notification_action_cancel">Одустани</string>
-    <string name="notification_action_install">Угради</string>
+    <string name="notification_action_install">Инсталирај</string>
 
     <string name="main_menu__swap_nearby">Оближње</string>
     <plurals name="button_view_all_apps_in_category">
@@ -365,12 +365,12 @@
     <string name="app_recommended_version_installed">Издање %1$s (препоручено)</string>
     <string name="app__newly_added">Ново</string>
 
-    <string name="installed_apps__activity_title">Уграђене</string>
+    <string name="installed_apps__activity_title">Инсталиране апликације</string>
     <string name="installed_app__updates_ignored">Надоградње занемарене</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Надоградње за издање %1$s занемарене</string>
 
     <string name="preference_category__my_apps">Моје апликације</string>
-    <string name="preference_manage_installed_apps">Управљај уграђеним апликацијама</string>
+    <string name="preference_manage_installed_apps">Управљај инсталираним апликацијама</string>
 
 
     <string name="tts_category_name">Категорија %1$s</string>
@@ -406,7 +406,7 @@
         <item quantity="few">Надограђена пре %1$d дана</item>
         <item quantity="other">Надограђена пре %1$d дана</item>
     </plurals>
-    <string name="app_list__name__successfully_installed">%1$s уграђена</string>
+    <string name="app_list__name__successfully_installed">%1$s инсталирана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обе стране треба да користе %1$s да би користиле ово.</string>
@@ -434,10 +434,10 @@
         <item quantity="other">%1$d надоградњи</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d апл. уграђена</item>
-        <item quantity="few">%1$d апл. уграђене</item>
-        <item quantity="other">%1$d апл. уграђено</item>
-    </plurals>
+	<item quantity="one">%1$d апл. инсталирана</item>
+	<item quantity="few">%1$d апл. инсталиране</item>
+	<item quantity="other">%1$d апл. инсталирано</item>
+</plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Надограђена пре %1$d седмицу</item>
         <item quantity="few">Надограђена пре %1$d седмице</item>
@@ -455,10 +455,10 @@
     </plurals>
 <string name="force_old_index">Присили стари формат индекса</string>
     <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите ИксМЛ индекс апликација</string>
-    <string name="app_installed_media">Фајл уграђен у %s</string>
-    <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште да би уградио у складиште. Одобрите приступ на следећем екрану да бисте наставили уградњу.</string>
+    <string name="app_installed_media">Фајл инсталиран у %s</string>
+    <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште да би инсталирао у складиште. Одобрите приступ на следећем екрану да бисте наставили инсталацију.</string>
 
-    <string name="app_list_download_ready">Преузето, спремо за уградњу</string>
+    <string name="app_list_download_ready">Преузето, спремно за инсталацију</string>
 
     <string name="download_404">Захтевани фајл није нађен.</string>
     <string name="status_inserting_x_apps">Уписујем детаље апликација (%1$d/%2$d) од %3$s</string>
@@ -471,5 +471,11 @@
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
 
 <string name="hide_all_notifications">Сакриј сва обавештења</string>
-    <string name="install_history">Историјат уградњи</string>
+    <string name="install_history">Историјат инсталације</string>
+    <string name="send_install_history">Шаљи историјат инсталације</string>
+    <string name="about_forum">Форум за подршку</string>
+    <string name="app_suggested">Предложено</string>
+    <string name="app_size">Величина: %1$s</string>
+
+    <string name="send_installed_apps">Подели инсталиране апликације</string>
     </resources>

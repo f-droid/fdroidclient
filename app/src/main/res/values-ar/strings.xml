@@ -490,14 +490,14 @@
     <plurals name="details_last_update_days">
 	<item quantity="zero">تم تحديثه منذ %1$d يوم</item>
 	<item quantity="one">تم تحديثه منذ %1$d يوم</item>
-	<item quantity="two">تم تحديثه منذ %1$d يومين</item>
+	<item quantity="two">تم تحديثه منذ يومين</item>
 	<item quantity="few">تم تحديثه منذ %1$d أيام</item>
 	<item quantity="many">تم تحديثه منذ %1$d أيام</item>
 	<item quantity="other">تم تحديثه منذ %1$d أيام</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="zero">تم تحديثه قبل %1$d أسابيع</item>
-	<item quantity="one">تم تحديثه قبل %1$d أسبوع</item>
+	<item quantity="one">تم تحديثه قبل أسبوع</item>
 	<item quantity="two">تم تحديثه قبل %1$d أسبوعين</item>
 	<item quantity="few">تم تحديثه قبل %1$d أسابيع</item>
 	<item quantity="many">تم تحديثه قبل %1$d أسابيع</item>
@@ -505,19 +505,19 @@
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="zero">تم تحديثه قبل %1$d أشهر</item>
-	<item quantity="one">تم تحديثه قبل %1$d شهر</item>
+	<item quantity="one">تم تحديثه قبل شهر</item>
 	<item quantity="two">تم تحديثه قبل %1$d شهرين</item>
 	<item quantity="few">تم تحديثه قبل %1$d أشهر</item>
 	<item quantity="many">تم تحديثه قبل %1$d أشهر</item>
 	<item quantity="other">تم تحديثه قبل %1$d أشهر</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="zero">تم تحديثه قبل %1$d سنوات</item>
-	<item quantity="one">تم تحديثه قبل %1$d سنة</item>
-	<item quantity="two">تم تحديثه قبل %1$d سنتين</item>
-	<item quantity="few">تم تحديثه قبل %1$d سنوات</item>
-	<item quantity="many">تم تحديثه قبل %1$d سنوات</item>
-	<item quantity="other">تم تحديثه قبل %1$d سنوات</item>
+	<item quantity="zero">تم تحديثه منذ %1$d سنوات</item>
+	<item quantity="one">تم تحديثه منذ سنة</item>
+	<item quantity="two">تم تحديثه منذ %1$d سنتين</item>
+	<item quantity="few">تم تحديثه منذ %1$d سنوات</item>
+	<item quantity="many">تم تحديثه منذ %1$d سنوات</item>
+	<item quantity="other">تم تحديثه منذ %1$d سنوات</item>
 </plurals>
     <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
     <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
@@ -563,4 +563,9 @@
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
     <string name="updates_disabled_by_settings">جميع التحديثات معطلة عن طريق إعدادات البيانات / واي فاي</string>
 
+    <string name="about_forum">منتدى الدعم</string>
+    <string name="app_size">الحجم: %1$s</string>
+
+    <string name="send_installed_apps">شارك التطبيقات المثبّتة</string>
+    <string name="menu_open">إفتح</string>
     </resources>

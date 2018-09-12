@@ -545,4 +545,9 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi ühenduspunkt lubatud</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ühenduspunkti lubamine nurjus!</string>
 
+    <string name="about_forum">Toe foorum</string>
+    <string name="app_suggested">Soovitatud</string>
+    <string name="app_size">Suurus: %1$s</string>
+
+    <string name="menu_downgrade">Varasem versioon</string>
     </resources>

@@ -530,4 +530,12 @@
     <string name="send_history_csv">%s installatiegeschiedenis als CSV-bestand</string>
     <string name="updates_disabled_by_settings">Alle updates uitgeschakeld door Data / WiFi-instellingen</string>
 
+    <string name="about_forum">Supportforum</string>
+    <string name="app_suggested">Aanbevolen</string>
+    <string name="app_size">Grootte: %1$s</string>
+
+    <string name="send_installed_apps">Deel geïnstalleerde apps</string>
+    <string name="send_installed_apps_csv">Apps geïnstalleerd door F-Droid als CSV-bestand</string>
+    <string name="menu_open">Openen</string>
+    <string name="menu_downgrade">Degraderen</string>
     </resources>

@@ -10,7 +10,7 @@
     <string name="about_title">Despre F-Droid</string>
     <string name="about_site">Site web</string>
     <string name="about_version">Versiune</string>
-    <string name="app_installed">Instalat</string>
+    <string name="app_installed">Instalată</string>
     <string name="app_not_installed">Nu este instalat</string>
     <string name="ok">Aplică</string>
     <string name="yes">Da</string>
@@ -26,7 +26,7 @@
     <string name="menu_ignore_all">Ignoră toate actualizările</string>
     <string name="menu_website">Site web</string>
     <string name="menu_donate">Donează</string>
-    <string name="details_notinstalled">Nu e instalat</string>
+    <string name="details_notinstalled">Nu e instalată</string>
     <string name="display">Afișează</string>
     <string name="expert">Setări expert</string>
     <string name="theme">Temă</string>
@@ -375,7 +375,7 @@
     <string name="installed_app__updates_ignored">Actualizări ignorate</string>
     <string name="installed_apps__activity_title">Aplicații instalate</string>
 
-    <string name="app_list__name__successfully_installed">%1$s instalat</string>
+    <string name="app_list__name__successfully_installed">%1$s instalată</string>
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
 
@@ -541,4 +541,8 @@
     <string name="send_installed_apps_csv">Lista de aplicații instalate ca fișier CSV</string>
     <string name="menu_open">Deschide</string>
     <string name="about_forum">Forum suport tehnic</string>
+    <string name="app_suggested">Recomandată</string>
+    <string name="app_size">Mărime: %1$s</string>
+
+    <string name="menu_downgrade">Retrogradare</string>
     </resources>

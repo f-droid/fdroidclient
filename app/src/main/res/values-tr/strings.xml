@@ -445,7 +445,7 @@
 
     <string name="status_inserting_x_apps">Uygulama ayrıntıları (%1$d/%2$d) %3$s konumundan kaydediliyor</string>
     <string name="app_installed_media">Dosya %s konumuna kuruldu</string>
-    <string name="app_permission_storage">F-Droid depolama bunu depolamaya kurmak için depolama iznine gerek duyar. Lütfen kurmaya devam etmek için bir sonraki ekranda izin verin.</string>
+    <string name="app_permission_storage">F-Droid, bunu depolamaya kurmak için depolama iznine gereksinir. Lütfen kurulumu sürdürmek için sonraki ekranda izin verin.</string>
 
     <string name="app_details__incompatible_mismatched_signature">Kurulu sürümden farklı imza</string>
     <string name="app_details__no_versions__show_incompat_versions">Burada uyumsuz sürümleri yinede göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
@@ -541,4 +541,9 @@
     <string name="send_installed_apps">Kurulu uygulamaları paylaş</string>
     <string name="send_installed_apps_csv">F-Droid tarafıdan kurulmuş uygulamalar, CSV dosyası olarak</string>
     <string name="menu_open">Aç</string>
+    <string name="about_forum">Destek forumu</string>
+    <string name="app_suggested">Önerilen</string>
+    <string name="app_size">Boyut: %1$s</string>
+
+    <string name="menu_downgrade">Sürüm düşürme</string>
     </resources>

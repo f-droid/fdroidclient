@@ -580,4 +580,9 @@
     <string name="send_installed_apps">Абагуліць усталяваныя праграмы</string>
     <string name="send_installed_apps_csv">Праграмы, усталяваныя F-Droid як CSV-файл</string>
     <string name="menu_open">Адкрыць</string>
+    <string name="about_forum">Форум падтрымкі</string>
+    <string name="app_suggested">Прапанаваны</string>
+    <string name="app_size">Памер: %1$s</string>
+
+    <string name="menu_downgrade">Адкат</string>
     </resources>

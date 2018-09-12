@@ -73,7 +73,7 @@
     <string name="proxy_port_summary">Numer portu proxy (np. 8118)</string>
     <string name="status_connecting_to_repo">Łączenie z\n%1$s</string>
     <string name="repos_unchanged">Brak aktualizacji w repozytoriach</string>
-    <string name="all_other_repos_fine">Żadne inne repozytorium nie zgłosiło błędów.</string>
+    <string name="all_other_repos_fine">Wszystkie inne repozytoria nie powodowały błędów.</string>
     <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>
     <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s.</string>
     <string name="theme">Motyw</string>
@@ -525,7 +525,7 @@
     <string name="repo_add_mirror">Dodaj serwer lustrzany</string>
     <string name="repo_exists_add_fingerprint">%1$s jest już skonfigurowany, to doda informacje o nowym kluczu.</string>
     <string name="repo_exists_enable">%1$s jest już skonfigurowany, potwierdź że chcesz go reaktywować.</string>
-    <string name="repo_exists_and_enabled">%1$s został już skonfigurowany i aktywowany.</string>
+    <string name="repo_exists_and_enabled">%1$s jest już skonfigurowany i włączony.</string>
     <string name="repo_delete_to_overwrite">Najpierw usuń %1$s, aby dodać ten z konfliktującym kluczem.</string>
     <string name="repo_exists_add_mirror">To jest kopia %1$s, czy dodać ją jako serwer lustrzany?</string>
     <string name="repo_official_mirrors">Oficjalne serwery lustrzane</string>
@@ -563,4 +563,9 @@
     <string name="send_installed_apps">Udostępnij zainstalowane aplikacje</string>
     <string name="send_installed_apps_csv">Aplikacje zainstalowane przez F-Droid jako plik CSV</string>
     <string name="menu_open">Otwórz</string>
+    <string name="about_forum">Forum pomocy technicznej</string>
+    <string name="app_suggested">Sugerowane</string>
+    <string name="app_size">Rozmiar: %1$s</string>
+
+    <string name="menu_downgrade">Nachylenie (ang. Downgrade)</string>
     </resources>

@@ -550,4 +550,11 @@
     <string name="antinosourcesince">Il codice sorgente non è più disponibile, aggiornamenti non possibili.</string>
 
     <string name="share_repository">Condividi repository</string>
+    <string name="about_forum">Forum supporto</string>
+    <string name="app_suggested">Consigliato</string>
+    <string name="app_size">Dimensione: %1$s</string>
+
+    <string name="send_installed_apps">Condividi applicazioni installate</string>
+    <string name="menu_open">Apri</string>
+    <string name="menu_downgrade">Disinstalla aggiornamento</string>
     </resources>

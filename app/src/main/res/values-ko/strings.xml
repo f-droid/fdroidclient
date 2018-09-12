@@ -501,4 +501,9 @@
     <string name="send_installed_apps">설치된 앱 공유</string>
     <string name="send_installed_apps_csv">F-Droid에 의해 CSV 파일로 설치된 앱</string>
     <string name="menu_open">열기</string>
+    <string name="about_forum">지원 포럼</string>
+    <string name="app_suggested">제안됨</string>
+    <string name="app_size">크기: %1$s</string>
+
+    <string name="menu_downgrade">다운그레이드</string>
     </resources>

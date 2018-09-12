@@ -95,7 +95,7 @@
         \n%1$s
     </string>
     <string name="repos_unchanged">Todos los repositorios están actualizados</string>
-    <string name="all_other_repos_fine">El resto de los repos no crearon errores.</string>
+    <string name="all_other_repos_fine">El resto de los repositorios no crearon errores.</string>
     <string name="global_error_updating_repos">Error en la actualización: %s</string>
     <string name="no_permissions">No se usan permisos.</string>
     <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
@@ -538,5 +538,17 @@
     <string name="send_install_history">Enviar historial de instalación</string>
     <string name="allow_push_requests">Permitir que los repositorios instalen/desinstalen aplicaciones</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
+
+    <string name="send_history_csv">%s instalar histórico como un archivo CSV</string>
+    <string name="allow_push_requests_summary">Los metadatos del repositorio pueden incluir peticiones «push» para instalar o desinstalar aplicaciones</string>
+    <string name="about_forum">Foro de soporte</string>
+    <string name="app_suggested">Sugerido</string>
+    <string name="app_size">Tamaño: %1$s</string>
+
+    <string name="send_installed_apps">Compartir aplicaciones instaladas</string>
+    <string name="send_installed_apps_csv">Aplicaciones instaladas por F-Droid como archivo CSV</string>
+    <string name="menu_open">Abrir</string>
+    <string name="menu_downgrade">Desactualizar</string>
+    <string name="antinosourcesince">El código fuente ya no está disponible, no se puede actualizar.</string>
 
     </resources>

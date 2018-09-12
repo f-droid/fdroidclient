@@ -556,10 +556,15 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wifi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Hotspot Wifi não ativado!</string>
 
-    <string name="send_history_csv">%s instalação através do histórico contido no ficheiro CSV</string>
-    <string name="send_version_and_uuid_summary">Inclua a versão desta aplicação e um ID único e aleatório ao fazer o download, entrará em vigor na próxima reinicialização da aplicação.</string>
-    <string name="allow_push_requests_summary">Metadados do repositório podem incluir algumas solicitações para instalar ou desinstalar aplicações</string>
-    <string name="send_installed_apps">Partilha as aplicações instaladas</string>
-    <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid via ficheiro CSV</string>
+    <string name="send_history_csv">%s instale o histórico como arquivo CSV</string>
+    <string name="send_version_and_uuid_summary">Inclua a versão deste app e uma identificação aleatória e original ao transferir, entrando em efeito apos a reinicialização seguinte do app.</string>
+    <string name="allow_push_requests_summary">Os metadados do repo podem incluir solicitações push para instalar ou desinstalar apps</string>
+    <string name="send_installed_apps">Compartilhar apps instalados</string>
+    <string name="send_installed_apps_csv">Apps instalados pelo F-Droid como arquivo CSV</string>
     <string name="menu_open">Abrir</string>
+    <string name="about_forum">Fórum de suporte</string>
+    <string name="app_suggested">Sugerido</string>
+    <string name="app_size">Tamanho: %1$s</string>
+
+    <string name="menu_downgrade">Downgrade</string>
     </resources>

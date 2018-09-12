@@ -550,4 +550,9 @@
     <string name="hide_on_long_search_press_summary">Затиснення пошувого ґудзика приховає застосунок</string>
 
     <string name="swap_toast_invalid_url">URL для обміну є хибним: %1$s</string>
+    <string name="about_forum">Форум підтримки</string>
+    <string name="app_suggested">Запровоновано</string>
+    <string name="app_size">Розмір: %1$s</string>
+
+    <string name="menu_downgrade">Понизити версію</string>
     </resources>
