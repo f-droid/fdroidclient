@@ -265,10 +265,11 @@ public final class Utils {
             "5.0",   // 21
             "5.1",   // 22
             "6.0",   // 23
-            "7.0",   // 24,
-            "7.1",   // 25,
-            "8.0",   // 26,
+            "7.0",   // 24
+            "7.1",   // 25
+            "8.0",   // 26
             "8.1",   // 27
+            "9.0",   // 28
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
