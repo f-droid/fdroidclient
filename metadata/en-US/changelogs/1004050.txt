@@ -1,0 +1,13 @@
+* huge overhaul of the "Versions" list in the App Details screen, and many other UI improvements, thanks to new contributor @wsdfhjxc
+
+* fix keyboard/d-pad navigation in many places, thanks to new contributor @doeffinger
+
+* show "Open" button when media is installed and viewable
+
+* add Share button to "Installed Apps" to export CSV list
+
+* add clickable list of APKs to the swap HTML index page 
+
+* retry index downloads from mirrors
+
+* fix "Send F-Droid via Bluetooth" on recent Android versions

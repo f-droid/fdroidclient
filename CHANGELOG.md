@@ -1,3 +1,7 @@
+### 1.4 (2018-09-12)
+
+* polish up new "Versions" list and other UI fixes
+
 ### 1.4-alpha1 (2018-08-30)
 
 * huge overhaul of the "Versions" list in the App Details screen, and
