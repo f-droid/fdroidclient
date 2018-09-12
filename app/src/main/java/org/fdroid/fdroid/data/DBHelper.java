@@ -1127,6 +1127,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("DROP TABLE " + ApkAntiFeatureJoinTable.NAME);
             }
 
+            if (tableExists(db, InstalledAppTable.NAME)) {
+                db.execSQL("DROP TABLE " + InstalledAppTable.NAME);
+            }
+
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
 
@@ -1137,6 +1141,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_CAT_JOIN);
             db.execSQL(CREATE_TABLE_ANTI_FEATURE);
             db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
+            db.execSQL(CREATE_TABLE_INSTALLED_APP);
             clearRepoEtags(db);
             ensureIndexes(db);
             db.setTransactionSuccessful();
