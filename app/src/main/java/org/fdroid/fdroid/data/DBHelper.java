@@ -332,7 +332,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /*
     * Take an xml file in the same format as the internal default_repos.xml and parse it into a list of items.
     */
-    private static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
+    public static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
         List<String> defaultRepos = new LinkedList<>();
         InputStream xmlInputStream = null;
         xmlInputStream = new FileInputStream(defaultReposFile);
