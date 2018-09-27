@@ -5,25 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="24dp"
-    android:paddingLeft="24dp"
     tools:ignore="RtlSymmetry">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after (via the @+id/app_name). -->
     <ImageView
         android:id="@+id/icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="32dp"
         android:layout_height="32dp"
         tools:src="@drawable/ic_launcher"
         android:scaleType="fitCenter"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        tools:ignore="ContentDescription" />
+        android:layout_margin="16dp"
+        tools:ignore="ContentDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/app_name"
@@ -34,10 +29,7 @@
         android:textColor="?attr/installedApps"
         android:lines="1"
         android:ellipsize="end"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/install"
         app:layout_constraintTop_toTopOf="@+id/icon"
@@ -46,15 +38,11 @@
     <ImageView
         android:id="@+id/install"
         tools:src="@drawable/ic_download"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/updates__tts__download_app"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:elevation="2dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/icon"
         app:layout_constraintBottom_toBottomOf="@+id/icon" />

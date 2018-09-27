@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="?appDetailsCardBackground">
 
     <TextView
         android:id="@+id/text_updates_available"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_download_all"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        tools:text="Download updates for 3 apps" />
-
-    <ImageView
-        android:id="@+id/button_download_all"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_download_progress_0"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="@string/updates__tts__download_updates_for_all_apps"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_updates_available" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        tools:text="Download updates for 3 apps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_download_all"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_apps_to_update"
@@ -40,24 +30,36 @@
         android:ellipsize="end"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_download_all"
         app:layout_constraintTop_toBottomOf="@+id/text_updates_available" />
 
     <Button
+        android:id="@+id/button_download_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Update all"
+        android:textAllCaps="true"
+        android:contentDescription="@string/updates__tts__download_updates_for_all_apps"
+        style="@style/DetailsPrimaryButtonStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_updates_available"
+        app:layout_constraintBottom_toBottomOf="@+id/text_apps_to_update" />
+
+    <Button
         android:id="@+id/button_toggle_apps_to_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_apps_to_update"
         android:background="?attr/selectableItemBackground"
-        android:textColor="@color/fdroid_blue"
-        android:padding="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:padding="10dp"
         tools:text="Show apps"
-        android:textAllCaps="true" />
-
+        android:textColor="@color/fdroid_blue"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_apps_to_update" />
 </android.support.constraint.ConstraintLayout>
