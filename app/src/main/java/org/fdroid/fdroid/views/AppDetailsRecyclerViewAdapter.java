@@ -1093,7 +1093,7 @@ public class AppDetailsRecyclerViewAdapter
             Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
             if (repo != null) {
                 repository.setVisibility(View.VISIBLE);
-                repository.setText(repo.getName());
+                repository.setText("Repository: " + repo.getName());
             } else {
                 repository.setVisibility(View.INVISIBLE);
             }
@@ -1170,7 +1170,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private String getApiText(final Apk apk) {
-            String apiText = "Android ";
+            String apiText = "Version: ";
             if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
                 apiText += context.getString(R.string.minsdk_up_to_maxsdk,
                         Utils.getAndroidVersionName(apk.minSdkVersion),

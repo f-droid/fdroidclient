@@ -90,13 +90,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_suggested">Suggested</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="app_installed">Installed</string>
+    <string name="app__newly_added">New</string>
     <string name="app_not_installed">Not Installed</string>
     <string name="app_inst_known_source">Installed (from %s)</string>
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
     <string name="app_version_x_available">Version %1$s available</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Recommended)</string>
-    <string name="app__newly_added">New</string>
     <string name="added_on">Added on %s</string>
     <string name="app__tts__cancel_download">Cancel download</string>
     <string name="app__install_downloaded_update">Update</string>
@@ -355,9 +355,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
     <string name="share_repository">Share Repository</string>
-    <string name="minsdk_or_later">%s or later</string>
-    <string name="up_to_maxsdk">Up to %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
+    <string name="minsdk_or_later">%s+</string>
+    <string name="up_to_maxsdk">1.0-%s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s-%2$s</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining
         this network: %s
     </string>

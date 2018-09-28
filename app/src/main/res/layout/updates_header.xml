@@ -52,10 +52,10 @@
 
     <Button
         android:id="@+id/button_toggle_apps_to_update"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:background="?attr/selectableItemBackground"
-        android:padding="10dp"
         tools:text="Show apps"
         android:textColor="@color/fdroid_blue"
         android:textAllCaps="true"
