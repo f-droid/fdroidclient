@@ -265,42 +265,45 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
-        List<String> defaultRepos = DBHelper.loadDefaultRepos(context);
+        List<String> initialRepos = DBHelper.loadInitialRepos(context);
 
-        for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ITEM_COUNT) {
+        for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             insertRepo(
                     db,
-                    defaultRepos.get(i),     // name
-                    defaultRepos.get(i + 1), // address
-                    defaultRepos.get(i + 2), // description
-                    defaultRepos.get(i + 3), // version
-                    defaultRepos.get(i + 4), // enabled
-                    defaultRepos.get(i + 5), // priority
-                    defaultRepos.get(i + 6), // pushRequests
-                    defaultRepos.get(i + 7)  // pubkey
+                    initialRepos.get(i),     // name
+                    initialRepos.get(i + 1), // address
+                    initialRepos.get(i + 2), // description
+                    initialRepos.get(i + 3), // version
+                    initialRepos.get(i + 4), // enabled
+                    initialRepos.get(i + 5), // priority
+                    initialRepos.get(i + 6), // pushRequests
+                    initialRepos.get(i + 7)  // pubkey
             );
         }
     }
 
     /**
-     * Load additional repos first, then internal repos. This way, internal
-     * repos will be shown after the OEM-added ones on the Manage Repos
+     * Load Additional Repos first, then Default Repos. This way, Default
+     * Repos will be shown after the OEM-added ones on the Manage Repos
      * screen.  This throws a hard {@code Exception} on parse errors since
-     * this file is built into the APK.  So it should fail as hard and fast
+     * Default Repos are built into the APK.  So it should fail as hard and fast
      * as possible so the developer catches the problem.
+     * <p>
+     * Additional Repos ({@code additional_repos.xml}) come from the ROM,
+     * while Default Repos ({@code default_repos.xml} is built into the APK.
      */
-    public static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
+    public static List<String> loadInitialRepos(Context context) throws IllegalArgumentException {
         String packageName = context.getPackageName();
-        List<String> defaultRepos = DBHelper.loadAdditionalRepos(packageName);
-        List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
-        defaultRepos.addAll(internalRepos);
+        List<String> initialRepos = DBHelper.loadAdditionalRepos(packageName);
+        List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        initialRepos.addAll(defaultRepos);
 
-        if (defaultRepos.size() % REPO_XML_ITEM_COUNT != 0) {
+        if (initialRepos.size() % REPO_XML_ITEM_COUNT != 0) {
             throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
-                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
+                    initialRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
         }
 
-        return defaultRepos;
+        return initialRepos;
     }
 
     /**

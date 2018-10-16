@@ -278,7 +278,7 @@ public class DBHelperTest {
         outputStream.close();
 
         try {
-            List<String> initialRepos = DBHelper.loadDefaultRepos(context);
+            List<String> initialRepos = DBHelper.loadInitialRepos(context);
 
             // Construct the repos that we should have loaded
             List<String> oem0 = Arrays.asList("oem0Name", "https://www.oem0.com/yeah/repo", "I'm the first oem repo.",
