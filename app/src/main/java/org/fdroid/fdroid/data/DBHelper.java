@@ -306,8 +306,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     initialRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
         }
 
-        final int DESCRIPTION_INDEX = 2;
-        for (int i = DESCRIPTION_INDEX; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
+        final int descriptionIndex = 2;
+        for (int i = descriptionIndex; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             String description = initialRepos.get(i);
             initialRepos.set(i, description.replaceAll("\\s+", " "));
         }
@@ -363,7 +363,7 @@ public class DBHelper extends SQLiteOpenHelper {
             String tagname = parser.getName();
             switch (eventType) {
                 case XmlPullParser.START_TAG:
-                    if (tagname.equals("item")) {
+                    if ("item".equals(tagname)) {
                         isItem = true;
                     }
                     break;
@@ -380,8 +380,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         xmlInputStream.close();
 
-        final int PRIORITY_INDEX = 5;
-        for (int i = PRIORITY_INDEX; i < repoItems.size(); i += REPO_XML_ITEM_COUNT) {
+        final int priorityIndex = 5;
+        for (int i = priorityIndex; i < repoItems.size(); i += REPO_XML_ITEM_COUNT) {
             repoItems.add(i, "0");
         }
 
