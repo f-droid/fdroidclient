@@ -318,13 +318,13 @@ public class DBHelper extends SQLiteOpenHelper {
     private static List<String> loadAdditionalRepos(String packageName) {
         List<String> externalRepos = new LinkedList<>();
         for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
-            File defaultReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
+            File additionalReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
             try {
-                if (defaultReposFile.isFile()) {
-                    externalRepos.addAll(DBHelper.parseXmlRepos(defaultReposFile));
+                if (additionalReposFile.isFile()) {
+                    externalRepos.addAll(DBHelper.parseXmlRepos(additionalReposFile));
                 }
             } catch (Exception e) {
-                Log.e(TAG, "Error loading " + defaultReposFile + ": " + e.getMessage());
+                Log.e(TAG, "Error loading " + additionalReposFile + ": " + e.getMessage());
             }
         }
 
