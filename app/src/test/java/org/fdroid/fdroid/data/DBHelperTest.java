@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.text.TextUtils;
 import android.util.Log;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.TestUtils;
@@ -230,7 +231,7 @@ public class DBHelperTest {
             if (oemEtcDir.canWrite() || new File("/").canWrite()) {
                 oemEtcPackageDir.mkdirs();
             }
-            if (!oemEtcPackageDir.isDirectory()) {
+            if (TextUtils.isEmpty(System.getenv("CI")) && !oemEtcPackageDir.isDirectory()) {
                 Log.e(TAG, "Cannot create " + oemEtcDir + ", skipping test!");
                 return;
             }
