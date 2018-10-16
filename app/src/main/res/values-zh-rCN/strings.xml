@@ -94,9 +94,6 @@
     <string name="repo_disabled_notification">已禁用 %1$s。
 \n
 \n需重新启用该资源库才能安装其中的应用。</string>
-    <string name="minsdk_or_later">%s 及以上</string>
-    <string name="up_to_maxsdk">最大 %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s 到 %2$s</string>
     <string name="not_on_same_wifi">您的设备与刚添加的本地软件源不在同一个 Wi-Fi 网络下！请加入此网络：%s</string>
     <string name="requires_features">需要：%1$s</string>
     <string name="category_Development">开发</string>
@@ -316,14 +313,14 @@
     <string name="app_version_x_available">版本%1$s可用</string>
     <string name="app_version_x_installed">版本%1$s</string>
     <string name="app_recommended_version_installed">版本%1$s（推荐使用）</string>
-    <string name="app__newly_added">新品</string>
+    <string name="app_new">新品</string>
     <string name="app__tts__cancel_download">取消下載</string>
     <string name="app__install_downloaded_update">更新</string>
 
     <string name="installed_apps__activity_title">已安装的应用</string>
     <string name="installed_app__updates_ignored">已忽略的更新</string>
     <string name="installed_app__updates_ignored_for_suggested_version">已忽略%1$s版本更新</string>
-    <string name="updates__tts__download_updates_for_all_apps">下载所有更新</string>
+    <string name="update_all">下载所有更新</string>
 
     <string name="updates__hide_updateable_apps">隐藏应用</string>
     <string name="updates__show_updateable_apps">显示应用</string>

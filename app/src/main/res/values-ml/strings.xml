@@ -127,7 +127,7 @@
     <string name="app_version_x_available">പതിപ്പ് %1$s ലഭ്യമാണ്</string>
     <string name="app_version_x_installed">പതിപ്പ് %1$s</string>
     <string name="app_recommended_version_installed">പതിപ്പ് %1$s (അനുശാസിക്കുന്നത്‌)</string>
-    <string name="app__newly_added">പുതിയത്</string>
+    <string name="app_new">പുതിയത്</string>
     <string name="added_on">%s ന് ചേർത്തത്</string>
     <string name="app__tts__cancel_download">ഡൗൺലോഡ് റദ്ദാക്കുക</string>
     <string name="app__install_downloaded_update">പുതുക്കുക</string>
@@ -135,7 +135,7 @@
     <string name="installed_apps__activity_title">സ്ഥാപിച്ചിട്ടുള്ള പ്രയോഗങ്ങള്‍</string>
     <string name="installed_app__updates_ignored">പുതുക്കലുകള്‍ അവഗണിച്ചു</string>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s പതിപ്പിന്റെ പുതുക്കലുകള്‍ അവഗണിച്ചു</string>
-    <string name="updates__tts__download_updates_for_all_apps">എല്ലാ പുതുക്കലുകളും ഡൌണ്‍ലോഡ് ചെയ്യുക</string>
+    <string name="update_all">എല്ലാ പുതുക്കലുകളും ഡൌണ്‍ലോഡ് ചെയ്യുക</string>
 
     <string name="updates__hide_updateable_apps">പ്രയോഗങ്ങള്‍ മറയ്ക്കുക</string>
     <string name="updates__show_updateable_apps">പ്രയോഗങ്ങള്‍ കാണിക്കുക</string>
@@ -257,9 +257,6 @@
     <string name="repo_added">എഫ്-ഡ്രോയ്ഡ് സങ്കേതം %1$s സൂക്ഷിച്ചു.</string>
     <string name="repo_searching_address">എഫ്-ഡ്രോയ്ഡ് സംഭരണിക്ക് വേണ്ടി തിരയുന്നു
 \n%1$s ല്‍</string>
-    <string name="minsdk_or_later">%s ഓ പുതിയതോ</string>
-    <string name="up_to_maxsdk">%s വരെ</string>
-    <string name="minsdk_up_to_maxsdk">%1$s മുതല്‍ %2$s വരെ</string>
     <string name="requires_features">വേണ്ടത്: %1$s</string>
     <string name="wifi_ap">ഹോട്ട്സ്പോട്ട്</string>
 

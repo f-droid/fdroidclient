@@ -123,9 +123,6 @@
     <string name="repo_added">Depòsitu de pachetos %1$s sarvadu.</string>
     <string name="repo_searching_address">Chirchende unu depòsitu de pachetos in
 \n%1$s</string>
-    <string name="minsdk_or_later">%s o imbeniente</string>
-    <string name="up_to_maxsdk">Finas a %s</string>
-    <string name="minsdk_up_to_maxsdk">dae %1$s finas a %2$s</string>
     <string name="not_on_same_wifi">Su dispositivu tuo no est in sa matessi retza Wi-Fi de su depòsitu locale chi as
         annantu como! Proa a intrare in custa retza: %s
     </string>
@@ -368,7 +365,7 @@
     <string name="clear_search">Inneta sa chirca</string>
 
     <string name="app_recommended_version_installed">Versione %1$s (Racumandada)</string>
-    <string name="app__newly_added">Noa</string>
+    <string name="app_new">Noa</string>
 
     <string name="installed_apps__activity_title">Aplicatziones installadas</string>
     <string name="installed_app__updates_ignored">Agiornamentos ignorados</string>
@@ -390,7 +387,7 @@
     <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
 
     <string name="updates__tts__download_app">Iscàrriga</string>
-    <string name="updates__tts__download_updates_for_all_apps">Iscàrriga totu sos agiornamentos</string>
+    <string name="update_all">Iscàrriga totu sos agiornamentos</string>
 
     <string name="updates__hide_updateable_apps">Istichi sas aplicatziones</string>
     <string name="updates__show_updateable_apps">Ammustra sas aplicatziones</string>

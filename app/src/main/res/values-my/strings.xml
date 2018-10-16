@@ -159,9 +159,6 @@
     <string name="deleting_repo">ယခုလက္ရွိ ရီပိုကိုဖ်က္ေနသည္.…</string>
     <string name="all_other_repos_fine">တျခားရီပိုအားလံုးသည္ ခ်ိဳ႕ယြင္းခ်က္မ်ားမရွိပါ.</string>
     <string name="global_error_updating_repos">အသစ္မြမ္းမံစဥ္ခ်ိဳ႕ယြင္းခ်က္ - %s</string>
-    <string name="minsdk_or_later">%s သို႔မဟုတ္ ေနာက္မွ</string>
-    <string name="up_to_maxsdk">%s ထိ</string>
-    <string name="minsdk_up_to_maxsdk">%1$s %2$s ထိ</string>
     <string name="requires_features">လိုအပ္သည္- %1$s</string>
     <string name="pref_language">ဘာသာစကား</string>
     <string name="pref_language_default">စနစ္မူလအတိုင္း</string>
@@ -250,7 +247,7 @@
     <string name="app_version_x_available">ဗားရှင်း %1$s ထွက်ရှိပါသည်</string>
     <string name="app_version_x_installed">ဗားရှင်း %1$s</string>
     <string name="app_recommended_version_installed">ဗားရှင်း %1$s (အကြံပြုသည်)</string>
-    <string name="app__newly_added">အသစ်</string>
+    <string name="app_new">အသစ်</string>
     <string name="app__install_downloaded_update">အသစ်ထွက်ရှိခြင်း</string>
 
     <string name="app_list__name__downloading_in_progress">%1$s ကိုဒေါင်းလုတ်ဆွဲနေသည်</string>
@@ -259,7 +256,7 @@
     <string name="installed_apps__activity_title">သွင်းခဲ့သော အက်ပ်စ်များ</string>
     <string name="installed_app__updates_ignored">အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှူမည်</string>
     <string name="installed_app__updates_ignored_for_suggested_version">ဗားရှင်း %1$s အတွက် အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှုမည်</string>
-    <string name="updates__tts__download_updates_for_all_apps">အသစ်ထွက်ရှိမှုအားလုံးကိုဒေါင်းလုတ်ဆွဲမည်</string>
+    <string name="update_all">အသစ်ထွက်ရှိမှုအားလုံးကိုဒေါင်းလုတ်ဆွဲမည်</string>
 
     <string name="updates__hide_updateable_apps">ဖျောက်ထားသောအက်ပ်စ်များ</string>
     <string name="updates__show_updateable_apps">အက်ပ်စ်များကိုပြမည်</string>

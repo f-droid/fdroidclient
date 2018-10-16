@@ -201,9 +201,6 @@
     <string name="repo_disabled_notification">%1$s відключено.
 \n
 \nВам необхідно ввімкнути репозиторій, щоб встановлювати застосунки з нього.</string>
-    <string name="minsdk_or_later">%s чи старше</string>
-    <string name="up_to_maxsdk">До %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
     <string name="not_on_same_wifi">Ваш пристрій не в тій самій Wi-Fi мережі, що й локальне сховище, яке ви щойно додали! Спробуйте приєднатися до цієї мережі: %s</string>
     <string name="category_Development">Розробка</string>
     <string name="swap_nfc_title">Натисніть для обміну</string>
@@ -336,7 +333,7 @@
     <string name="app_version_x_available">Доступна версія %1$s</string>
     <string name="app_version_x_installed">Версія %1$s</string>
     <string name="app_recommended_version_installed">Версія %1$s (Рекомендовано)</string>
-    <string name="app__newly_added">Нова</string>
+    <string name="app_new">Нова</string>
 
     <string name="installed_apps__activity_title">Встановлені застосунки</string>
     <string name="installed_app__updates_ignored">Проігноровані оновлення</string>
@@ -359,7 +356,7 @@
     <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s встановлено</string>
 
-    <string name="updates__tts__download_updates_for_all_apps">Завантажити всі оновлення</string>
+    <string name="update_all">Завантажити всі оновлення</string>
 
     <string name="updates__hide_updateable_apps">Приховати застосунки</string>
     <string name="updates__show_updateable_apps">Показати застосунки</string>

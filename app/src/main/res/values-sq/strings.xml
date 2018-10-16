@@ -151,7 +151,7 @@
     <string name="app_version_x_available">Verzioni %1$s është i mundshëm</string>
     <string name="app_version_x_installed">Verzioni %1$s</string>
     <string name="app_recommended_version_installed">Verzioni %1$s (Rekomandohet)</string>
-    <string name="app__newly_added">E re</string>
+    <string name="app_new">E re</string>
     <string name="app__tts__cancel_download">Anuloje shkarkimin</string>
     <string name="app__install_downloaded_update">Freskim</string>
     <string name="app_installed_media">Dosja është instaluar në %s</string>
@@ -165,7 +165,7 @@
     <string name="installed_apps__activity_title">Aplikacionet e Instaluara</string>
     <string name="installed_app__updates_ignored">Freskimet nuk u morrën parasysh</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Freskimet nuk u pranuan për Verzionin %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Shkarko të gjitha freskimet</string>
+    <string name="update_all">Shkarko të gjitha freskimet</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Ne kemi gjetur një dobësi me %1$s. Ne rekomandojmë që të uninstaloni aplikacionin menjëherë.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ne kemi gjetur një dobësi me %1$s. Ne rekomandojmë që të bëni upgrade te një verzion tjetër menjëherë.</string>
@@ -281,9 +281,6 @@
     <string name="repo_user_mirrors">Pasqyrat e përdoruesit</string>
     <string name="unknown">Panjohur</string>
     <string name="repo_confirm_delete_title">Të fshijë depon?</string>
-    <string name="minsdk_or_later">%s ose më vonë</string>
-    <string name="up_to_maxsdk">Deri më %s</string>
-    <string name="minsdk_up_to_maxsdk">nga %1$s deri më %2$s</string>
     <string name="requires_features">Nevojitet: %1$s</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Shiko %d</item>

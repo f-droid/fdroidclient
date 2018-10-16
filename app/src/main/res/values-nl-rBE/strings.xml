@@ -135,7 +135,7 @@
     <string name="app_version_x_available">Versie %1$s is beschikbaar</string>
     <string name="app_version_x_installed">Versie %1$s</string>
     <string name="app_recommended_version_installed">Versie %1$s (aanbevolen)</string>
-    <string name="app__newly_added">Nieuw</string>
+    <string name="app_new">Nieuw</string>
     <string name="added_on">Toegevoegd op %s</string>
     <string name="app__tts__cancel_download">Download annuleren</string>
     <string name="app__install_downloaded_update">Bijwerken</string>
@@ -150,7 +150,7 @@
     <string name="installed_apps__activity_title">Geïnstalleerde apps</string>
     <string name="installed_app__updates_ignored">Updates genegeerd</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates genegeerd voor versie %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Alle updates downloaden</string>
+    <string name="update_all">Alle updates downloaden</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Der zit een kwetsbaarheid in %1$s. We raden aan dezen app direct te verwijderen.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Der zit een kwetsbaarheid in %1$s. We raden aan direct bij te werken naar de meest recente versie.</string>
@@ -309,9 +309,6 @@
     <string name="repo_disabled_notification">%1$s uitgeschakeld. Ge moet dezen bron terug inschakelen indien dat ge der apps van wilt installeren.</string>
     <string name="repo_added">Pakketbron %1$s opgeslagen.</string>
     <string name="repo_searching_address">Zoeken naar pakketbron op %1$s</string>
-    <string name="minsdk_or_later">%s of later</string>
-    <string name="up_to_maxsdk">Tot en met %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
     <string name="requires_features">Benodigd: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
 

@@ -119,7 +119,7 @@
     <string name="app_version_x_available">ཐོན་རིམ་ %1$s ཡོད།</string>
     <string name="app_version_x_installed">ཐོན་རིམ་ %1$s</string>
     <string name="app_recommended_version_installed">ཐོན་རིམ་ %1$s (ངོ་སྤྲོད།)</string>
-    <string name="app__newly_added">གསར་པ།</string>
+    <string name="app_new">གསར་པ།</string>
     <string name="added_on">%sའདིའི་སྒང་ལ་ཁ་སྣོན།</string>
     <string name="app__tts__cancel_download">ཕབ་ལེན་བརྩི་མེད།</string>
     <string name="app__install_downloaded_update">གསར་བསྒྱུར།</string>
@@ -129,7 +129,7 @@
     <string name="installed_apps__activity_title">མཉེན་ཆས་ཁག་འགྲིག་བཅུག</string>
     <string name="installed_app__updates_ignored">གསར་བསྒྱུར་ཁག་ལ་ཡ་བྱས་མ་སོང་།</string>
     <string name="installed_app__updates_ignored_for_suggested_version">ཐོན་རིམ་ %1$s འདིའི་གསར་བསྒྱུར་ཁག་ལ་ཡ་བྱས་ན་སོང་།</string>
-    <string name="updates__tts__download_updates_for_all_apps">གསར་བསྒྱུར་ཚང་མ་ཕབ་ལེན་བྱེད།</string>
+    <string name="update_all">གསར་བསྒྱུར་ཚང་མ་ཕབ་ལེན་བྱེད།</string>
 
     <string name="updates__hide_updateable_apps">མཉེན་ཆས་སྦས།</string>
     <string name="updates__show_updateable_apps">མཉེན་ཆས་སྟོན།</string>
@@ -240,9 +240,6 @@
     <string name="repo_added">ཨེཕ་རོཌ་མཛོད་ཁང་ཉར་ཚགས་%1$s</string>
     <string name="repo_searching_address">ཨེཕ་རོཌ་མཛོད་ཁང་འདི་ནས་་འཚོལ། 
 \n%1$s</string>
-    <string name="minsdk_or_later">%s ཡང་ན་རྗེས་ལ།</string>
-    <string name="up_to_maxsdk">%s འདི་བར།</string>
-    <string name="minsdk_up_to_maxsdk">%1$s འདི་ནས་དེའི་བར་དུ། %2$s</string>
     <string name="requires_features">དགོས་མཁོ་:%1$s</string>
     <string name="wifi_ap">དྲྭ་འཛོམས།</string>
 

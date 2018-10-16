@@ -134,8 +134,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="pref_language_default">Setare implicită sistem</string>
 
-    <string name="up_to_maxsdk">Până la %s</string>
-    <string name="repo_searching_address">Căutare depozit de pachete la 
+    <string name="repo_searching_address">Căutare depozit de pachete la
 \n%1$s</string>
     <string name="repo_confirm_delete_title">Șterge depozit?</string>
     <string name="repo_description">Descriere</string>
@@ -160,8 +159,6 @@
     <string name="menu_settings">Setări</string>
     <string name="menu_manage">Depozite</string>
     <string name="repo_added">Depozit de pachete salvat %1$s.</string>
-    <string name="minsdk_or_later">%s sau mai nou</string>
-    <string name="minsdk_up_to_maxsdk">%1$s pana la %2$s</string>
     <string name="pref_language">Limba</string>
     <string name="antiupstreamnonfreelist">Codul sursa originar nu este în totalitatea lui software liber</string>
     <string name="unsigned">Nesemnat</string>
@@ -368,7 +365,7 @@
     <string name="updates__show_updateable_apps">Arata aplicațiile</string>
 
     <string name="updates__hide_updateable_apps">Ascunde aplicațiile</string>
-    <string name="updates__tts__download_updates_for_all_apps">Descarca toate actualizările</string>
+    <string name="update_all">Descarca toate actualizările</string>
 
     <string name="updates__tts__download_app">Descarcă</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizări ignorate pentru versiunea %1$s</string>
@@ -379,7 +376,7 @@
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
 
-    <string name="app__newly_added">Nou</string>
+    <string name="app_new">Nou</string>
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandată)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibilă</string>

@@ -132,9 +132,6 @@
     </string>
     <string name="repo_added">Uložený F-Droid repozitár %1$s.</string>
     <string name="repo_searching_address">Hľadá sa repozitár F-Droidu na %1$s</string>
-    <string name="minsdk_or_later">%s alebo neskôr</string>
-    <string name="up_to_maxsdk">Do %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s do %2$s</string>
     <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve
         pridali! Skúste sa pripojiť na túto sieť: %s
     </string>
@@ -362,7 +359,7 @@
     <string name="app_version_x_available">Je dostupná verzia %1$s</string>
     <string name="app_version_x_installed">Verzia %1$s</string>
     <string name="app_recommended_version_installed">Verzia %1$s (odporúčaná)</string>
-    <string name="app__newly_added">Novinka</string>
+    <string name="app_new">Novinka</string>
     <string name="app__install_downloaded_update">Aktualizovať</string>
 
     <string name="app_list__name__downloading_in_progress">Sťahovanie %1$s</string>
@@ -372,7 +369,7 @@
     <string name="installed_app__updates_ignored">Vynechané aktualizácie</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Vynechané aktualizácie pre verziu %1$s</string>
     <string name="updates__tts__download_app">Stiahnuť</string>
-    <string name="updates__tts__download_updates_for_all_apps">Stiahnuť všetky aktualizácie</string>
+    <string name="update_all">Stiahnuť všetky aktualizácie</string>
 
     <string name="updates__hide_updateable_apps">Skryť aplikácie</string>
     <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>

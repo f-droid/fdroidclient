@@ -155,7 +155,7 @@
     <string name="app_version_x_available">نەشىر %1$s ئېرىشىشچان</string>
     <string name="app_version_x_installed">نەشىر %1$s</string>
     <string name="app_recommended_version_installed">نەشىر %1$s (تەۋسىيە)</string>
-    <string name="app__newly_added">يېڭى</string>
+    <string name="app_new">يېڭى</string>
     <string name="app__tts__cancel_download">چۈشۈرۈشتىن ۋازكەچ</string>
     <string name="app__install_downloaded_update">يېڭىلا</string>
     <string name="app_installed_media">ھۆججەت %s گە ئورنىتىلدى</string>
@@ -169,7 +169,7 @@
     <string name="installed_apps__activity_title">ئورنىتىلغان ئۇيغۇلىمىلار</string>
     <string name="installed_app__updates_ignored">ئېتىبارسىزلانغان يېڭىلانمىلار</string>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s نەشىرى ئۈچۈن يېڭىلانمىلار ساقىتىلدى</string>
-    <string name="updates__tts__download_updates_for_all_apps">بارلىق يېڭىلانمىلارنى چۈشۈرۈش</string>
+    <string name="update_all">بارلىق يېڭىلانمىلارنى چۈشۈرۈش</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s دىن تۆشۈكۈك بايقىدۇق. بۇ ئۇيغۇلىمىنى دەرھال يۇيىۋېتىشىڭىزنى تەۋسىيە قىلىمىز.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s دىن تۆشۈكۈك بايقىدۇق. بۇ ئۇيغۇلىمىنى دەرھال يېڭى نەشىرىگە ئۆرلىتىشىڭىزنى تەۋسىيە قىلىمىز.</string>

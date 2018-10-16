@@ -62,7 +62,7 @@
     <string name="ok">ಸರಿ</string>
 
     <string name="app_version_x_installed">%1$s ನೆಯ ಆವೃತ್ತಿ</string>
-    <string name="app__newly_added">ಹೊಸತು</string>
+    <string name="app_new">ಹೊಸತು</string>
     <string name="added_on">%s ನಂದು ಸೇರಿಸಲಾಯಿತು</string>
     <string name="app_installed">ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
     <string name="app_not_installed">ಅನುಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ</string>

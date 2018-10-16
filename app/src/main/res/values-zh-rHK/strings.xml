@@ -92,8 +92,6 @@
     <string name="repo_added">已儲存 F-Droid 軟件庫 %1$s。</string>
     <string name="repo_searching_address">在 %1$s
 搜索 F-Droid 軟件庫</string>
-    <string name="minsdk_or_later">%s 或以後</string>
-    <string name="up_to_maxsdk">直至 %s</string>
     <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
     <string name="requires_features">需要：%1$s</string>
     <string name="category_Development">開發</string>
@@ -187,7 +185,6 @@
     <string name="install_confirm_update_system">您是否要更新此內置應用程式？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system_no_perms">您是否要更新此內置應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
     <string name="next">下一步</string>
-    <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     <string name="SignatureMismatch">新版的應用程式使用了一個不相同的鑰匙簽署。若要安裝新版本，您必須先卸載舊版本。（註：卸載將會刪除應用程式內的資料）</string>
     <string name="download_error">下載失敗！</string>
 
@@ -307,7 +304,7 @@
     <string name="installed_apps__activity_title">已安裝的應用程式</string>
     <string name="installed_app__updates_ignored">已略過的更新</string>
     <string name="installed_app__updates_ignored_for_suggested_version">已略過 %1$s 版的更新</string>
-    <string name="updates__tts__download_updates_for_all_apps">下載所有更新</string>
+    <string name="update_all">下載所有更新</string>
 
     <string name="updates__hide_updateable_apps">隱藏應用程式</string>
     <string name="updates__show_updateable_apps">顯示應用程式</string>
@@ -376,7 +373,7 @@
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 天前更新</item>
     </plurals>
-<string name="app__newly_added">最新</string>
+<string name="app_new">最新</string>
     <string name="latest__empty_state__no_recent_apps">找不到近期用過的應用程式</string>
     <string name="categories__empty_state__no_categories">沒有可顯示的程式分類</string>
 

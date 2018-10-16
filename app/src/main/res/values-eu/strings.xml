@@ -175,9 +175,6 @@
     <string name="repo_added">%1$s pakete-biltegia gorde da.</string>
     <string name="repo_searching_address">Pakete-biltegia hemen bilatzen:
 \n%1$s</string>
-    <string name="minsdk_or_later">%s edo berriagoa</string>
-    <string name="up_to_maxsdk">%s arte</string>
-    <string name="minsdk_up_to_maxsdk">%1$stik %2$sra</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_language_default">Sistemaren lehenetsia</string>
 
@@ -375,7 +372,7 @@
 
 
     <string name="app_recommended_version_installed">%1$s bertsioa (Aholkatutakoa)</string>
-    <string name="app__newly_added">Berria</string>
+    <string name="app_new">Berria</string>
 
     <string name="installed_apps__activity_title">Instalatutako aplikazioak</string>
     <string name="installed_app__updates_ignored">Eguneraketak ezikusita</string>
@@ -397,7 +394,7 @@
     <string name="app_list__name__downloading_in_progress">%1$s deskargatzen</string>
 
     <string name="updates__tts__download_app">Deskargatu</string>
-    <string name="updates__tts__download_updates_for_all_apps">Deskargatu eguneraketa guztiak</string>
+    <string name="update_all">Deskargatu eguneraketa guztiak</string>
 
     <string name="updates__hide_updateable_apps">Ezkutatu aplikazioak</string>
     <string name="updates__show_updateable_apps">Erakutsi aplikazioak</string>

@@ -111,7 +111,6 @@
     <string name="repo_description">描述</string>
     <string name="repo_name">名稱</string>
     <string name="unknown">未知</string>
-    <string name="minsdk_or_later">%s 或更新</string>
     <string name="requires_features">需要：%1$s</string>
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設</string>
@@ -246,8 +245,6 @@
     <string name="update_auto_download">自動取得更新</string>
     <string name="update_auto_download_summary">自動下載更新的程式並通知您安裝</string>
     <string name="no_handler_app">您沒有任何可處理 %s 的應用程式。</string>
-    <string name="up_to_maxsdk">直到 %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s 直到 %2$s</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
     <string name="repo_searching_address">正在 %1$s 查看封裝的軟體庫</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的本地軟體庫不在同一個 Wi-Fi 網路上！請試著加入此網路：%s</string>
@@ -348,7 +345,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">版本 %1$s （推薦）</string>
-    <string name="app__newly_added">最新</string>
+    <string name="app_new">最新</string>
 
     <string name="installed_apps__activity_title">已安裝的應用程式</string>
     <string name="installed_app__updates_ignored">已忽略的更新</string>
@@ -367,7 +364,7 @@
 
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
 
-    <string name="updates__tts__download_updates_for_all_apps">下載所有更新</string>
+    <string name="update_all">下載所有更新</string>
 
     <string name="updates__hide_updateable_apps">隱藏應用程式</string>
     <string name="updates__show_updateable_apps">顯示應用程式</string>

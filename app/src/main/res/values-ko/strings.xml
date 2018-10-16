@@ -116,9 +116,6 @@
 \n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.</string>
     <string name="repo_added">패키지 저장소 %1$s 저장되었습니다.</string>
     <string name="repo_searching_address">%1$s에서 패키지 저장소를 찾는 중</string>
-    <string name="minsdk_or_later">%s 또는 나중에</string>
-    <string name="up_to_maxsdk">최대 %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s 최대 %2$s</string>
     <string name="not_on_same_wifi">당신의 장치는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크 상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
     <string name="requires_features">필요: %1$s</string>
     <string name="category_Development">개발</string>
@@ -321,7 +318,7 @@
     <string name="app_version_x_available">버전 %1$s 사용 가능</string>
     <string name="app_version_x_installed">버전 %1$s</string>
     <string name="app_recommended_version_installed">버전 %1$s (권장)</string>
-    <string name="app__newly_added">신규</string>
+    <string name="app_new">신규</string>
     <string name="app__tts__cancel_download">다운로드 취소</string>
     <string name="app__install_downloaded_update">업데이트</string>
     <string name="app_installed_media">%s에 설치된 파일</string>
@@ -332,7 +329,7 @@
     <string name="installed_apps__activity_title">설치된 앱</string>
     <string name="installed_app__updates_ignored">업데이트 무시됨</string>
     <string name="installed_app__updates_ignored_for_suggested_version">버전 %1$s의 업데이트 무시됨</string>
-    <string name="updates__tts__download_updates_for_all_apps">모든 업데이트 다운로드</string>
+    <string name="update_all">모든 업데이트 다운로드</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">무시</string>
 

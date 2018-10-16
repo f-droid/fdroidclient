@@ -88,9 +88,6 @@
         Θα χρειαστεί
         να το ενεργοποιήσετε ξανά για να εγκαταστήσετε εφαρμογές από αυτό.
     </string>
-    <string name="minsdk_or_later">%s ή αργότερα</string>
-    <string name="up_to_maxsdk">Μέχρι %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s μέχρι %2$s</string>
     <string name="not_on_same_wifi">Η συσκευή σας δεν είναι στο ίδιο ασύρματο δίκτυο με το τοπικό αποθετήριο που μόλις
         προσθέσατε! Δοκιμάστε να συνδεθείτε σε αυτό το δίκτυο: %s
     </string>
@@ -343,14 +340,14 @@
     <string name="app_version_x_available">Η Έκδοση %1$s είναι διαθέσιμη</string>
     <string name="app_version_x_installed">Έκδοση %1$s</string>
     <string name="app_recommended_version_installed">Έκδοση %1$s (Συνιστάται)</string>
-    <string name="app__newly_added">Νέα</string>
+    <string name="app_new">Νέα</string>
     <string name="app__tts__cancel_download">Ακύρωση λήψης</string>
     <string name="app__install_downloaded_update">Ενημέρωση</string>
 
     <string name="installed_apps__activity_title">Εγκατεστημένες εφαρμογές</string>
     <string name="installed_app__updates_ignored">Οι ενημερώσεις αγνοήθηκαν</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Οι ενημερώσεις αγνοήθηκαν για την Έκδοση %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Λήψη όλων των ενημερώσεων</string>
+    <string name="update_all">Λήψη όλων των ενημερώσεων</string>
 
     <string name="updates__hide_updateable_apps">Απόκρυψη εφαρμογών</string>
     <string name="updates__show_updateable_apps">Προβολή εφαρμογών</string>

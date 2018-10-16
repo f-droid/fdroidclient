@@ -24,7 +24,7 @@
     <string name="app_inst_known_source">Տեղադրված (%s կողմից)</string>
     <string name="app_inst_unknown_source">Տեղադրված (անհայտ աղբյուրից)</string>
     <string name="app_version_x_installed">Տարբերակ %1$s</string>
-    <string name="app__newly_added">Նոր</string>
+    <string name="app_new">Նոր</string>
 
     <string name="installed_apps__activity_title">Տեղադրված ափփեր</string>
     <string name="installed_app__updates_ignored">Առհամարված թարմացումներ</string>
@@ -72,7 +72,6 @@
     <string name="repo_description">Նկարագրություն</string>
     <string name="repo_last_update">Վերջին թարմացում</string>
     <string name="repo_name">Անուն</string>
-    <string name="minsdk_up_to_maxsdk">%1$sից մինչև %2$s</string>
     <string name="pref_language">Լեզու</string>
     <string name="pref_language_default">Համակարգի լռելյայնը</string>
 
@@ -158,7 +157,6 @@
     <string name="unverified">Չվավերացված</string>
     <string name="repo_num_apps">Ափփերի քանակ</string>
     <string name="unknown">Անհայտ</string>
-    <string name="up_to_maxsdk">Մինչև %s</string>
     <string name="requires_features">Պահանջում է. %1$s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Development">Ծրագրավորում</string>

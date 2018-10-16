@@ -117,9 +117,6 @@
 \nDu kommer att behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
     <string name="repo_searching_address">Söker efter paketförråd på 
 \n%1$s</string>
-    <string name="minsdk_or_later">%s eller senare</string>
-    <string name="up_to_maxsdk">Upp till %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
     <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
     <string name="requires_features">Kräver: %1$s</string>
     <string name="category_Development">Utveckling</string>
@@ -314,7 +311,7 @@
     <string name="app_version_x_available">Version %1$s är tillgänglig</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Rekommenderad)</string>
-    <string name="app__newly_added">Ny</string>
+    <string name="app_new">Ny</string>
 
     <string name="installed_apps__activity_title">Installerade appar</string>
     <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
@@ -365,7 +362,7 @@
     <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
 
     <string name="updates__tts__download_app">Hämta</string>
-    <string name="updates__tts__download_updates_for_all_apps">Hämta alla uppdateringar</string>
+    <string name="update_all">Hämta alla uppdateringar</string>
 
     <string name="updates__hide_updateable_apps">Göm appar</string>
     <string name="updates__show_updateable_apps">Visa appar</string>

@@ -119,9 +119,6 @@
     </string>
     <string name="repo_added">Pakketbron %1$s opgeslagen.</string>
     <string name="repo_searching_address">Zoeken naar pakketbron op %1$s</string>
-    <string name="minsdk_or_later">%s of later</string>
-    <string name="up_to_maxsdk">Tot en met %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
     <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde wifinetwerk als de lokale bron die je zojuist hebt toegevoegd! Probeer om netwerk %s bij te treden</string>
     <string name="requires_features">Benodigd: %1$s</string>
     <string name="category_Development">Ontwikkeling</string>
@@ -318,7 +315,7 @@
     <string name="app_version_x_available">Versie %1$s is beschikbaar</string>
     <string name="app_version_x_installed">Versie %1$s</string>
     <string name="app_recommended_version_installed">Versie %1$s (aanbevolen)</string>
-    <string name="app__newly_added">Nieuw</string>
+    <string name="app_new">Nieuw</string>
     <string name="app__install_downloaded_update">Bijwerken</string>
 
     <string name="app_list__name__downloading_in_progress">%1$s wordt gedownload</string>
@@ -327,7 +324,7 @@
     <string name="installed_app__updates_ignored">Updates genegeerd</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates genegeerd voor versie %1$s</string>
     <string name="updates__tts__download_app">Downloaden</string>
-    <string name="updates__tts__download_updates_for_all_apps">Alle updates downloaden</string>
+    <string name="update_all">Alle updates downloaden</string>
 
     <string name="updates__hide_updateable_apps">Apps verbergen</string>
     <string name="updates__show_updateable_apps">Apps weergeven</string>

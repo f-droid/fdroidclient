@@ -223,7 +223,7 @@
     <string name="app_version_x_available">Versija %1$s pasiekiama</string>
     <string name="app_version_x_installed">Versija %1$s</string>
     <string name="app_recommended_version_installed">Versija %1$s (rekomenduojama)</string>
-    <string name="app__newly_added">Nauja</string>
+    <string name="app_new">Nauja</string>
     <string name="app__tts__cancel_download">Atšaukti siuntimą</string>
     <string name="app__install_downloaded_update">Atnaujinti</string>
     <string name="app_installed_media">Failas suinstaliuotas %s</string>
@@ -237,7 +237,7 @@
     <string name="send_installed_apps">Pasidalinti suinstaliuotomis programomis</string>
     <string name="installed_app__updates_ignored">Atnaujinimai praleisti</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Atnaujinimai praleisti %1$s versijai</string>
-    <string name="updates__tts__download_updates_for_all_apps">Atsiųsti visus atnaujinimus</string>
+    <string name="update_all">Atsiųsti visus atnaujinimus</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">Ignoruoti</string>
 

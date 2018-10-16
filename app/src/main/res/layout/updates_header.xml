@@ -43,7 +43,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:textAllCaps="true"
-        android:text="@string/updates__tts__download_updates_for_all_apps"
+        android:text="@string/update_all"
         style="@style/DetailsPrimaryButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_updates_available"

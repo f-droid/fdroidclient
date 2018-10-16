@@ -111,9 +111,6 @@
     </string>
     <string name="repo_added">Đã lưu kho ứng dụng %1$s.</string>
     <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ %1$s</string>
-    <string name="minsdk_or_later">%s hoặc mới hơn</string>
-    <string name="up_to_maxsdk">Đến %s</string>
-    <string name="minsdk_up_to_maxsdk">Từ %1$s đến %2$s</string>
     <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng
         này: %s
     </string>
@@ -320,7 +317,7 @@
     <string name="app_version_x_available">Đã có phiên bản %1$s</string>
     <string name="app_version_x_installed">Phiên bản %1$s</string>
     <string name="app_recommended_version_installed">Phiên bản %1$s (Khuyên dùng)</string>
-    <string name="app__newly_added">Mới</string>
+    <string name="app_new">Mới</string>
     <string name="app__tts__cancel_download">Dừng tải xuống</string>
     <string name="app__install_downloaded_update">Cập nhật</string>
     <string name="app_installed_media">Đã cài đặt tập tin vào %s</string>
@@ -334,7 +331,7 @@
     <string name="installed_apps__activity_title">Ứng dụng đã cài đặt</string>
     <string name="installed_app__updates_ignored">Đã bỏ qua các cập nhật</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Đã bỏ qua cập nhật với phiên bản %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Tải về tất cả các bản cập nhật</string>
+    <string name="update_all">Tải về tất cả các bản cập nhật</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn gỡ bỏ ứng dụng này ngay lập tức.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn cập nhật phiên bản mới nhất ngay lập tức.</string>

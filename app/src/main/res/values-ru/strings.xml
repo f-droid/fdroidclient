@@ -114,9 +114,6 @@
     <string name="repo_disabled_notification">%1$s отключен.
 \n
 \nДля установки приложений из этого репозитория вам необходимо повторно включить его.</string>
-    <string name="minsdk_or_later">%s или новее</string>
-    <string name="up_to_maxsdk">До %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
     <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий,
         который вы только что добавили! Попробуйте присоединиться к этой сети: %s
     </string>
@@ -308,7 +305,7 @@
     <string name="warning_no_internet">Не удается обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
-    <string name="updates__tts__download_updates_for_all_apps">Скачать все обновления</string>
+    <string name="update_all">Скачать все обновления</string>
 
     <string name="updates__hide_updateable_apps">Скрыть приложения</string>
     <string name="updates__show_updateable_apps">Показать приложения</string>
@@ -339,7 +336,7 @@
 
     <string name="app_version_x_available">Доступна версия %1$s</string>
     <string name="app_version_x_installed">Версия %1$s</string>
-    <string name="app__newly_added">Новое</string>
+    <string name="app_new">Новое</string>
     <string name="app_list__name__successfully_installed">%1$s установлено</string>
 
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>

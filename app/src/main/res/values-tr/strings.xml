@@ -127,9 +127,6 @@
     <string name="repo_added">Paket deposu %1$s kaydedildi.</string>
     <string name="repo_searching_address">%1$s konumunda paket deposu
 \naranıyor</string>
-    <string name="minsdk_or_later">%s veya sonrası</string>
-    <string name="up_to_maxsdk">%s değerine kadar</string>
-    <string name="minsdk_up_to_maxsdk">%1$s değerinden %2$s değerine kadar</string>
     <string name="not_on_same_wifi">Aygıtınız eklemiş olduğunuz yerel deponuzla aynı Wi-Fi\'de değildir. Şu ağa
         katılmayı deneyin: %s
     </string>
@@ -353,7 +350,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">Sürüm %1$s (Önerilen)</string>
-    <string name="app__newly_added">Yeni</string>
+    <string name="app_new">Yeni</string>
 
     <string name="installed_apps__activity_title">Kurulu Uygulamalar</string>
     <string name="installed_app__updates_ignored">Yok sayılan güncellemeler</string>
@@ -375,7 +372,7 @@
     <string name="app_list__name__downloading_in_progress">%1$s indiriliyor</string>
 
     <string name="updates__tts__download_app">İndir</string>
-    <string name="updates__tts__download_updates_for_all_apps">Tüm güncellemeleri indir</string>
+    <string name="update_all">Tüm güncellemeleri indir</string>
 
     <string name="updates__hide_updateable_apps">Uygulamaları gizle</string>
     <string name="updates__show_updateable_apps">Uygulamaları göster</string>

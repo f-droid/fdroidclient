@@ -148,7 +148,7 @@
     <string name="app_version_x_available">Ir pieejama %1$s versija</string>
     <string name="app_version_x_installed">Versija %1$s</string>
     <string name="app_recommended_version_installed">Versija %1$s (Ieteiktā)</string>
-    <string name="app__newly_added">Jauna</string>
+    <string name="app_new">Jauna</string>
     <string name="app__tts__cancel_download">Atcelt lejupielādi</string>
     <string name="app__install_downloaded_update">Atjaunināt</string>
     <string name="app_installed_media">Fails ieinstalēts uz %s</string>

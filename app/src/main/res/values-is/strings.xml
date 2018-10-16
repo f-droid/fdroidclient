@@ -147,9 +147,6 @@
     <string name="repo_confirm_delete_title">Eyða hugbúnaðarsafni?</string>
     <string name="repo_added">Vistaði  %1$s hugbúnaðarsafnið.</string>
     <string name="repo_searching_address">Leita að hugbúnaðarsafni á %1$s</string>
-    <string name="minsdk_or_later">%s eða nýrra</string>
-    <string name="up_to_maxsdk">Upp að %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s allt að %2$s</string>
     <string name="requires_features">Krefst: %1$s</string>
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
@@ -365,7 +362,7 @@
     <string name="app_version_x_available">%1$s-útgáfan er tiltæk</string>
     <string name="app_version_x_installed">Útgáfa %1$s</string>
     <string name="app_recommended_version_installed">Útgáfa %1$s (mælt með)</string>
-    <string name="app__newly_added">Nýtt</string>
+    <string name="app_new">Nýtt</string>
 
     <string name="installed_apps__activity_title">Uppsett forrit</string>
     <string name="installed_app__updates_ignored">Hunsaðar uppfærslur</string>
@@ -420,7 +417,7 @@
     <string name="app__install_downloaded_update">Uppfæra</string>
 
 
-    <string name="updates__tts__download_updates_for_all_apps">Sækja allar uppfærslur</string>
+    <string name="update_all">Sækja allar uppfærslur</string>
 
     <string name="updates__hide_updateable_apps">Fela forrit</string>
     <string name="updates__show_updateable_apps">Birta forrit</string>

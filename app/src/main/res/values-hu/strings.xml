@@ -68,7 +68,6 @@
     <string name="repo_disabled_notification">%1$s letiltva.
 \n
 \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
-    <string name="minsdk_or_later">Android %s vagy későbbi</string>
     <string name="delete">Törlés</string>
     <string name="app_name">F-Droid</string>
 
@@ -283,7 +282,7 @@
     <string name="notification_action_install">Telepítés</string>
 
     <string name="updates__tts__download_app">Letöltés</string>
-    <string name="app__newly_added">Új</string>
+    <string name="app_new">Új</string>
     <string name="app__install_downloaded_update">Frissítés</string>
 
     <string name="installed_apps__activity_title">Telepített alkalmazások</string>
@@ -310,7 +309,7 @@
     <string name="app_list__dismiss_downloading_app">Letöltés megszakítva</string>
 
     <string name="installed_app__updates_ignored">Frissítések figyelmen kívül hagyva</string>
-    <string name="updates__tts__download_updates_for_all_apps">Összes frissítés letöltése</string>
+    <string name="update_all">Összes frissítés letöltése</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Egy sebezhetőség található a(z) %1$s alkalmazásban. Az alkalmazás azonnali eltávolítása ajánlott.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezhetőség található a(z) %1$s appban. Azonnali frissítés ajánlott a legújabb verzióra.</string>
@@ -341,8 +340,6 @@
     <string name="download_404">A kért fájl nem található.</string>
     <string name="unsigned_description">Ez azt jelenti, hogy az alkalmazások listája nem ellenőrizhető. Óvatosnak kell lennie a hitelesítetlen indexekből letöltött alkalmazásokkal.</string>
     <string name="repo_added">A(z) %1$s csomagtároló mentve.</string>
-    <string name="up_to_maxsdk">%s-ig</string>
-    <string name="minsdk_up_to_maxsdk">%1$s-től %2$s-ig</string>
     <string name="by_author_format">Készítette: %s</string>
     <string name="force_old_index">Régi indexformátum kényszerítése</string>
     <string name="app_details_donate_prompt">A(z) %1$s alkalmazást %2$s készítette. Vegyen nekik egy kávét!</string>

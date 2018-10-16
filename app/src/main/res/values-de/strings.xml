@@ -121,9 +121,6 @@
     <string name="repo_added">Paketquelle %1$s gespeichert.</string>
     <string name="repo_searching_address">Nach Paketquelle wird gesucht unter
 \n%1$s</string>
-    <string name="minsdk_or_later">%s oder später</string>
-    <string name="up_to_maxsdk">Bis zu %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
     <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte
         Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s
     </string>
@@ -354,7 +351,7 @@
 
     <string name="main_menu__swap_nearby">Nah</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
-    <string name="app__newly_added">Neu</string>
+    <string name="app_new">Neu</string>
 
     <string name="installed_apps__activity_title">Installierte Anwendungen</string>
     <string name="installed_app__updates_ignored">Ignorierte Aktualisierungen</string>
@@ -376,7 +373,7 @@
     <string name="app_list__name__downloading_in_progress">%1$s wird heruntergeladen</string>
 
     <string name="updates__tts__download_app">Herunterladen</string>
-    <string name="updates__tts__download_updates_for_all_apps">Alle Aktualisierungen herunterladen</string>
+    <string name="update_all">Alle Aktualisierungen herunterladen</string>
 
     <string name="updates__hide_updateable_apps">Anwendungen ausblenden</string>
     <string name="updates__show_updateable_apps">Anwendungen anzeigen</string>

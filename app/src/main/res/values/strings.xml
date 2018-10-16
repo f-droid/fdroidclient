@@ -90,7 +90,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_suggested">Suggested</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="app_installed">Installed</string>
-    <string name="app__newly_added">New</string>
+    <string name="app_new">New</string>
     <string name="app_not_installed">Not Installed</string>
     <string name="app_inst_known_source">Installed (from %s)</string>
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
@@ -125,7 +125,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
     some descriptive text for the TTS engine -->
     <string name="updates__tts__download_app">Download</string>
-    <string name="updates__tts__download_updates_for_all_apps">Update all</string>
+    <string name="update_all">Update all</string>
     <string name="updates__hide_updateable_apps">Hide apps</string>
     <string name="updates__show_updateable_apps">Show apps</string>
     <plurals name="updates__download_updates_for_apps">
@@ -356,9 +356,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
     <string name="share_repository">Share Repository</string>
-    <string name="minsdk_or_later">%s+</string>
-    <string name="up_to_maxsdk">1.0-%s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s-%2$s</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining
         this network: %s
     </string>

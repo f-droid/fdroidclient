@@ -193,9 +193,6 @@
     </string>
     <string name="repo_added">Spremljen F-Droid repozitorij %1$s.</string>
     <string name="repo_searching_address">Tražim F-Drroid repozitorij na\n%1$s</string>
-    <string name="minsdk_or_later">%s ili kasnije</string>
-    <string name="up_to_maxsdk">Do %s</string>
-    <string name="minsdk_up_to_maxsdk">Od %1$s do %2$s</string>
     <string name="not_on_same_wifi">Vaš uređaj nije na istoj Wi-Fi mreži kao i lokalni repozitorij koji ste upravo
         dodali! Probajte se spojiti na ovu mrežu: %s
     </string>

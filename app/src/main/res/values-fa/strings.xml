@@ -54,9 +54,6 @@
     <string name="repo_name">نام</string>
     <string name="unsigned_description">این یعنی فهرست برنامه‌ها نتوانست تأیید شود. باید مراقب برنامه‌های بارگیری شده از فهرست های امضا نشده باشید.</string>
     <string name="unknown">ناشناخته</string>
-    <string name="minsdk_or_later">%s یا جدیدتر</string>
-    <string name="up_to_maxsdk">تا %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s تا %2$s</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
     <string name="app_name">اف‌دروید</string>
 
@@ -313,7 +310,7 @@
     <string name="app_version_x_available">نگارش %1$s موجود است</string>
     <string name="app_version_x_installed">نگارش %1$s</string>
     <string name="app_recommended_version_installed">نگارش %1$s (توصیه شده)</string>
-    <string name="app__newly_added">جدید</string>
+    <string name="app_new">جدید</string>
     <string name="app__tts__cancel_download">لغو بارگیری</string>
     <string name="app__install_downloaded_update">به‌روز رسانی</string>
 
@@ -324,7 +321,7 @@
     <string name="installed_app__updates_ignored">صرف‌نظر از به‌روز رسانی</string>
     <string name="installed_app__updates_ignored_for_suggested_version">از به‌روز رسانی برای نگارش صرف‌نظر شده است %1$s</string>
     <string name="updates__tts__download_app">بارگیری</string>
-    <string name="updates__tts__download_updates_for_all_apps">بارگیری تمام به‌روز رسانی‌ها</string>
+    <string name="update_all">بارگیری تمام به‌روز رسانی‌ها</string>
 
     <string name="updates__hide_updateable_apps">مخفی کردن برنامه ها</string>
     <string name="updates__show_updateable_apps">نمایش برنامه ها</string>

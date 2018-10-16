@@ -165,9 +165,6 @@
 \nDu skal genaktivere dette depot for at installere apps fra det.</string>
     <string name="repo_added">Gemte F-Droid depot %1$s.</string>
     <string name="repo_searching_address">Leder efter F-Droid depot på\n%1$s</string>
-    <string name="minsdk_or_later">%s eller nyere</string>
-    <string name="up_to_maxsdk">Op til %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s op til %2$s</string>
     <string name="not_on_same_wifi">Din enhed er ikke på samme Wi-Fi som det lokale depot du lige tilføjede! Prøv at
         tilslutte dig dette netværk: %s
     </string>
@@ -337,14 +334,14 @@
     <string name="app_version_x_available">Version %1$s tilgængelig</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Anbefalet)</string>
-    <string name="app__newly_added">Nyhed</string>
+    <string name="app_new">Nyhed</string>
     <string name="app__tts__cancel_download">Stop download</string>
     <string name="app__install_downloaded_update">Opdatér</string>
 
     <string name="installed_apps__activity_title">Installerede Apps</string>
     <string name="installed_app__updates_ignored">Opdateringer ignoreres</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Opdateringer ignoreres for version %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Hent alle opdateringer</string>
+    <string name="update_all">Hent alle opdateringer</string>
 
     <string name="updates__hide_updateable_apps">Skjul apps</string>
     <string name="updates__show_updateable_apps">Vis apps</string>

@@ -125,9 +125,6 @@
     </string>
     <string name="repo_added">Сачувана је ризница Ф-дроида %1$s.</string>
     <string name="repo_searching_address">Тражим ризницу Ф-дроида на\n%1$s</string>
-    <string name="minsdk_or_later">%s или новији</string>
-    <string name="up_to_maxsdk">До %s</string>
-    <string name="minsdk_up_to_maxsdk">Од %1$s до %2$s</string>
     <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали!
         Придружите се овој мрежи: %s
     </string>
@@ -363,7 +360,7 @@
 
     <string name="notification_title_summary_ready_to_install_update">Надоградња спремна</string>
     <string name="app_recommended_version_installed">Издање %1$s (препоручено)</string>
-    <string name="app__newly_added">Ново</string>
+    <string name="app_new">Ново</string>
 
     <string name="installed_apps__activity_title">Инсталиране апликације</string>
     <string name="installed_app__updates_ignored">Надоградње занемарене</string>
@@ -380,7 +377,7 @@
     <string name="app_list__name__downloading_in_progress">Преузимам %1$s</string>
 
     <string name="updates__tts__download_app">Преузми</string>
-    <string name="updates__tts__download_updates_for_all_apps">Преузми све надоградње</string>
+    <string name="update_all">Преузми све надоградње</string>
 
     <string name="updates__hide_updateable_apps">Сакриј апликације</string>
     <string name="updates__show_updateable_apps">Прикажи апликације</string>
