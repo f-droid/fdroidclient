@@ -36,10 +36,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-import java.io.FileOutputStream;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
