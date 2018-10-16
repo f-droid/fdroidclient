@@ -65,7 +65,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
-    public static final int REPO_XML_ARG_COUNT = 8;
+    public static final int REPO_XML_ITEM_COUNT = 8;
 
     private static DBHelper instance;
     private static final String DATABASE_NAME = "fdroid";
@@ -267,7 +267,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         List<String> defaultRepos = DBHelper.loadDefaultRepos(context);
 
-        for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
+        for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ITEM_COUNT) {
             insertRepo(
                     db,
                     defaultRepos.get(i),     // name
@@ -295,9 +295,9 @@ public class DBHelper extends SQLiteOpenHelper {
         List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
         defaultRepos.addAll(internalRepos);
 
-        if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
+        if (defaultRepos.size() % REPO_XML_ITEM_COUNT != 0) {
             throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
-                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ARG_COUNT + ") != 0");
+                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
         }
 
         return defaultRepos;
@@ -368,16 +368,16 @@ public class DBHelper extends SQLiteOpenHelper {
         xmlInputStream.close();
 
         final int PRIORITY_INDEX = 5;
-        for (int i = PRIORITY_INDEX; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
+        for (int i = PRIORITY_INDEX; i < defaultRepos.size(); i += REPO_XML_ITEM_COUNT) {
             defaultRepos.add(i, "0");
         }
 
-        if (defaultRepos.size() % REPO_XML_ARG_COUNT == 0) {
+        if (defaultRepos.size() % REPO_XML_ITEM_COUNT == 0) {
             return defaultRepos;
         }
 
         Log.e(TAG, "Ignoring " + additionalReposFile + ", wrong number of items: "
-                + defaultRepos.size() + " % " + (REPO_XML_ARG_COUNT - 1) + " != 0");
+                + defaultRepos.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
         return new LinkedList<>();
     }
 
@@ -703,10 +703,10 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
         String fdroidPubKey = defaultRepos[7];
         String fdroidAddress = defaultRepos[1];
-        String fdroidArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT + 1];
-        String gpPubKey = defaultRepos[REPO_XML_ARG_COUNT * 2 + 7];
-        String gpAddress = defaultRepos[REPO_XML_ARG_COUNT * 2 + 1];
-        String gpArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT * 3 + 1];
+        String fdroidArchiveAddress = defaultRepos[REPO_XML_ITEM_COUNT + 1];
+        String gpPubKey = defaultRepos[REPO_XML_ITEM_COUNT * 2 + 7];
+        String gpAddress = defaultRepos[REPO_XML_ITEM_COUNT * 2 + 1];
+        String gpArchiveAddress = defaultRepos[REPO_XML_ITEM_COUNT * 3 + 1];
 
         updateRepoPriority(db, fdroidPubKey, fdroidAddress, 1);
         updateRepoPriority(db, fdroidPubKey, fdroidArchiveAddress, 2);
@@ -957,8 +957,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
-        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
-            int offset = i * REPO_XML_ARG_COUNT;
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ITEM_COUNT; i++) {
+            int offset = i * REPO_XML_ITEM_COUNT;
             insertNameAndDescription(db,
                     defaultRepos[offset],     // name
                     defaultRepos[offset + 1], // address

@@ -73,7 +73,7 @@ public class DBHelperTest {
                 "</string-array>" +
                 "</resources>";
         List<String> repos = getReposFromXml(oneRepoXml);
-        assertEquals("Should contain one repo's worth of items", DBHelper.REPO_XML_ARG_COUNT, repos.size());
+        assertEquals("Should contain one repo's worth of items", DBHelper.REPO_XML_ITEM_COUNT, repos.size());
     }
 
     @Test
@@ -171,7 +171,7 @@ public class DBHelperTest {
         String validXml = IOUtils.toString(input, "UTF-8");
 
         List<String> repos = getReposFromXml(validXml);
-        assertEquals(2 * DBHelper.REPO_XML_ARG_COUNT, repos.size());
+        assertEquals(2 * DBHelper.REPO_XML_ITEM_COUNT, repos.size());
         assertEquals("Repo Name", repos.get(8));
         assertEquals("https://www.oem0.com/yeah/repo", repos.get(9));
     }
