@@ -281,14 +281,16 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added
+     * ones on the Manage Repos screen.
+     */
     public static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
-        // Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added ones on the Manage Repos screen.
         String packageName = context.getPackageName();
         List<String> defaultRepos = DBHelper.loadAdditionalRepos(packageName);
         List<String> internalRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
         defaultRepos.addAll(internalRepos);
 
-        // Insert all the repos into the database
         if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
             throw new IllegalArgumentException(
                     "At least one of the internally or externally loaded default repos does not have " + REPO_XML_ARG_COUNT + " entries.");
@@ -297,16 +299,17 @@ public class DBHelper extends SQLiteOpenHelper {
         return defaultRepos;
     }
 
-    /*
-    * Look for external repositories under { "/system", "/vendor", "/odm", "/oem" }
-    * If ROOT is one of those paths and 'packageName' is the name of the package 
-    * that contains this class, then we look under 'root'/etc/'packageName'/additional_repos.xml
-    */
+    /**
+     * Look for additional, initial repositories from the device's filesystem.
+     * These can be added as part of the ROM ({@code /system} or included later
+     * by vendors/OEMs ({@code /vendor}, {@code /odm}, {@code /oem}). These are
+     * always added at a lower priority than the repos embedded in the APK via
+     * {@code default_repos.xml}.
+     * <p>
+     * ROM has the lowest priority, then Vendor, ODM, and OEM.
+     */
     private static List<String> loadAdditionalRepos(String packageName) {
-        // First, take the built-in repos.
         List<String> externalRepos = new LinkedList<>();
-
-        // Second, take the external repos. We will later prioritize the repos according their order in the list externalRepos.
         for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
             String additionalReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
             try {
@@ -329,9 +332,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return externalRepos;
     }
 
-    /*
-    * Take an xml file in the same format as the internal default_repos.xml and parse it into a list of items.
-    */
+    /**
+     * Parse {@code additional_repos.xml} into a list of items. Walk through
+     * all TEXT pieces of the xml file and put them into a single list of repo
+     * elements.  Each repo is defined as eight elements in that list.
+     * {@code additional_repos.xml} has seven elements per repo because it is
+     * not allowed to set the priority since that would give it the power to
+     * override {@code default_repos.xml}.
+     */
     public static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
         List<String> defaultRepos = new LinkedList<>();
         InputStream xmlInputStream = null;
@@ -341,28 +349,19 @@ public class DBHelper extends SQLiteOpenHelper {
         XmlPullParser parser = factory.newPullParser();
         parser.setInput(xmlInputStream, "UTF-8");
 
-        // Type of piece of xml file, can be END_DOCUMENT, TEXT, END_TAG, START_TAG, ...
         int eventType = parser.getEventType();
-
-        /* Walk through all TEXT pieces of the xml file and put them into our list of default repos.
-        * This could be improved by structuring the content for example into a list of lists where each contained list represents a repository, but
-        * we do it the traditional way.
-        */
         boolean isItem = false;
         while (eventType != XmlPullParser.END_DOCUMENT) {
             String tagname = parser.getName();
             switch (eventType) {
-                // If an item starts, remember that in isItem
                 case XmlPullParser.START_TAG:
                     if (tagname.equals("item")) {
                         isItem = true;
                     }
                     break;
-                // If an item ends, also remember that in isItem
                 case XmlPullParser.END_TAG:
                     isItem = false;
                     break;
-                // If this is a textblock of an item tag, extract that into defaultRepos
                 case XmlPullParser.TEXT:
                     if (isItem) {
                         defaultRepos.add(new String(parser.getText())); // This is a piece of real information in the xml file
