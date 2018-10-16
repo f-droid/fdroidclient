@@ -42,17 +42,18 @@ import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.File;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
-import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * This is basically a singleton used to represent the database at the core
@@ -282,8 +283,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Load additional repos first, then internal repos. This way, internal repos will be shown after the OEM-added
-     * ones on the Manage Repos screen.
+     * Load additional repos first, then internal repos. This way, internal
+     * repos will be shown after the OEM-added ones on the Manage Repos
+     * screen.  This throws a hard {@code Exception} on parse errors since
+     * this file is built into the APK.  So it should fail as hard and fast
+     * as possible so the developer catches the problem.
      */
     public static List<String> loadDefaultRepos(Context context) throws IllegalArgumentException {
         String packageName = context.getPackageName();
@@ -292,8 +296,8 @@ public class DBHelper extends SQLiteOpenHelper {
         defaultRepos.addAll(internalRepos);
 
         if (defaultRepos.size() % REPO_XML_ARG_COUNT != 0) {
-            throw new IllegalArgumentException(
-                    "At least one of the internally or externally loaded default repos does not have " + REPO_XML_ARG_COUNT + " entries.");
+            throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
+                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ARG_COUNT + ") != 0");
         }
 
         return defaultRepos;
@@ -311,24 +315,16 @@ public class DBHelper extends SQLiteOpenHelper {
     private static List<String> loadAdditionalRepos(String packageName) {
         List<String> externalRepos = new LinkedList<>();
         for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
-            String additionalReposPath = root + "/etc/" + packageName + "/additional_repos.xml";
+            File defaultReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
             try {
-                File defaultReposFile = new File(additionalReposPath);
-                if (defaultReposFile.exists() && defaultReposFile.isFile()) {
+                if (defaultReposFile.isFile()) {
                     externalRepos.addAll(DBHelper.parseXmlRepos(defaultReposFile));
                 }
             } catch (Exception e) {
-                Utils.debugLog(TAG, "Error loading " + additionalReposPath);
-                Utils.debugLog(TAG, "Exception: " + e.getMessage());
-                continue;
+                Log.e(TAG, "Error loading " + defaultReposFile + ": " + e.getMessage());
             }
         }
 
-        final int PRIORITY_INDEX = 5;
-        for (int i = PRIORITY_INDEX; i < externalRepos.size(); i += REPO_XML_ARG_COUNT) {
-            externalRepos.add(i, "0");
-        }
-        
         return externalRepos;
     }
 
@@ -342,8 +338,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     public static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
         List<String> defaultRepos = new LinkedList<>();
-        InputStream xmlInputStream = null;
-        xmlInputStream = new FileInputStream(defaultReposFile);
+        InputStream xmlInputStream = new FileInputStream(additionalReposFile);
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
         XmlPullParser parser = factory.newPullParser();
@@ -364,15 +359,26 @@ public class DBHelper extends SQLiteOpenHelper {
                     break;
                 case XmlPullParser.TEXT:
                     if (isItem) {
-                        defaultRepos.add(new String(parser.getText())); // This is a piece of real information in the xml file
+                        defaultRepos.add(parser.getText());
                     }
                     break;
             }
             eventType = parser.next();
         }
-
         xmlInputStream.close();
-        return defaultRepos;
+
+        final int PRIORITY_INDEX = 5;
+        for (int i = PRIORITY_INDEX; i < defaultRepos.size(); i += REPO_XML_ARG_COUNT) {
+            defaultRepos.add(i, "0");
+        }
+
+        if (defaultRepos.size() % REPO_XML_ARG_COUNT == 0) {
+            return defaultRepos;
+        }
+
+        Log.e(TAG, "Ignoring " + additionalReposFile + ", wrong number of items: "
+                + defaultRepos.size() + " % " + (REPO_XML_ARG_COUNT - 1) + " != 0");
+        return new LinkedList<>();
     }
 
     @Override
