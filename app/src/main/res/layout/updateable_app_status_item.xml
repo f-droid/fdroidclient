@@ -4,85 +4,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?appDetailsCardBackground">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
     <ImageView
         android:id="@+id/icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        tools:src="@drawable/ic_launcher"
-        android:scaleType="fitCenter"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        tools:ignore="ContentDescription" />
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/ic_launcher"
+        tools:ignore="ContentDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/app_name"
+    <LinearLayout
+        android:id="@+id/text_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize"
-        android:textSize="16sp"
-        android:textColor="?attr/installedApps"
-        android:maxLines="2"
-        android:ellipsize="end"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/action_button"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintBottom_toTopOf="@id/progress_bar"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="@string/app_list_download_ready"
-        style="@style/AppListItemStatusText"
-        app:layout_constraintTop_toBottomOf="@+id/app_name"
-        app:layout_constraintStart_toEndOf="@+id/icon"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:visibility="gone"
-        tools:visibility="visible"/>
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize"
+            android:textSize="16sp"
+            android:textColor="?attr/installedApps"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/app_list_download_ready"
+            style="@style/AppListItemStatusText"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:visibility="gone"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/app_name"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/cancel_button"
-        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/cancel_button"
-        android:contentDescription="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_cancel"
+        android:contentDescription="@string/cancel"
         android:background="@android:color/transparent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/progress_bar"
         app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        android:visibility="gone"
         tools:visibility="visible" />
 
     <Button
@@ -94,9 +93,9 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Update" />
 
 </android.support.constraint.ConstraintLayout>

@@ -505,7 +505,7 @@ public class AppDetailsRecyclerViewAdapter
                         suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
                 sbWhatsNew.append(app.whatsNew);
-                whatsNewView.setText(sbWhatsNew);
+                whatsNewView.setText(trimTrailingNewlines(sbWhatsNew));
                 whatsNewView.setVisibility(View.VISIBLE);
 
                 // Set focus on the header section to prevent auto scrolling to
@@ -540,17 +540,15 @@ public class AppDetailsRecyclerViewAdapter
             });
             if (app.antiFeatures != null && app.antiFeatures.length > 0) {
                 StringBuilder sb = new StringBuilder();
-                sb.append("<ul>");
                 for (String af : app.antiFeatures) {
                     String afdesc = descAntiFeature(af);
-                    sb.append("<li><div><a href=\"https://f-droid.org/wiki/page/Antifeature:")
+                    sb.append("<p><a href=\"https://f-droid.org/wiki/page/Antifeature:")
                             .append(af)
                             .append("\">")
                             .append(afdesc)
-                            .append("</a></div></li>");
+                            .append("</a></p>");
                 }
-                sb.append("</ul>");
-                antiFeaturesView.setText(Html.fromHtml(sb.toString()));
+                antiFeaturesView.setText(trimTrailingNewlines(Html.fromHtml(sb.toString())));
                 antiFeaturesView.setMovementMethod(LinkMovementMethod.getInstance());
             } else {
                 antiFeaturesView.setVisibility(View.GONE);
@@ -1093,7 +1091,7 @@ public class AppDetailsRecyclerViewAdapter
             Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
             if (repo != null) {
                 repository.setVisibility(View.VISIBLE);
-                repository.setText("Repository: " + repo.getName());
+                repository.setText(String.format(repo.getName(), context.getString(R.string.app_repository)));
             } else {
                 repository.setVisibility(View.INVISIBLE);
             }
@@ -1170,7 +1168,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private String getApiText(final Apk apk) {
-            String apiText = "Version: ";
+            String apiText = "Android: ";
             if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
                 apiText += context.getString(R.string.minsdk_up_to_maxsdk,
                         Utils.getAndroidVersionName(apk.minSdkVersion),

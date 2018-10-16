@@ -102,6 +102,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app__install_downloaded_update">Update</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
+    <string name="app_repository">Repository: %1$s</string>
     <string name="app_size">Size: %1$s</string>
 
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
@@ -116,15 +117,15 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="send_installed_apps_csv">Apps installed by F-Droid as CSV file</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
-    <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
-    some descriptive text for the TTS engine -->
-    <string name="updates__tts__download_app">Download</string>
-    <string name="updates__tts__download_updates_for_all_apps">Download all updates</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">We found a vulnerability with %1$s. We recommend uninstalling this app immediately.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">We found a vulnerability with %1$s. We recommend upgrading to the newest version immediately.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignore</string>
 
+    <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
+    some descriptive text for the TTS engine -->
+    <string name="updates__tts__download_app">Download</string>
+    <string name="updates__tts__download_updates_for_all_apps">Update all</string>
     <string name="updates__hide_updateable_apps">Hide apps</string>
     <string name="updates__show_updateable_apps">Show apps</string>
     <plurals name="updates__download_updates_for_apps">
