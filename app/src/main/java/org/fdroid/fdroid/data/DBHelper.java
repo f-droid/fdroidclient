@@ -274,7 +274,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     defaultRepos.get(i + 2), // description
                     defaultRepos.get(i + 3), // version
                     defaultRepos.get(i + 4), // enabled
-                    Integer.toString(i),     // priority; currently ignored
+                    defaultRepos.get(i + 5), // priority
                     defaultRepos.get(i + 6), // pushRequests
                     defaultRepos.get(i + 7)  // pubkey
             );
