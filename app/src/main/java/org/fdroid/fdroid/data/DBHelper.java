@@ -321,7 +321,7 @@ public class DBHelper extends SQLiteOpenHelper {
             File additionalReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
             try {
                 if (additionalReposFile.isFile()) {
-                    repoItems.addAll(DBHelper.parseXmlRepos(additionalReposFile));
+                    repoItems.addAll(DBHelper.parseAdditionalReposXml(additionalReposFile));
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Error loading " + additionalReposFile + ": " + e.getMessage());
@@ -339,7 +339,8 @@ public class DBHelper extends SQLiteOpenHelper {
      * not allowed to set the priority since that would give it the power to
      * override {@code default_repos.xml}.
      */
-    public static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
+    public static List<String> parseAdditionalReposXml(File additionalReposFile)
+            throws IOException, XmlPullParserException {
         List<String> repoItems = new LinkedList<>();
         InputStream xmlInputStream = new FileInputStream(additionalReposFile);
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();

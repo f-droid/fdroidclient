@@ -36,7 +36,7 @@ public class DBHelperTest {
         outputStream.close();
 
         // Now parse that xml file
-        return DBHelper.parseXmlRepos(additionalReposXml);
+        return DBHelper.parseAdditionalReposXml(additionalReposXml);
     }
 
     protected Context context;
