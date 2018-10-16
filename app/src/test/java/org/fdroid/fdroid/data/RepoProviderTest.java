@@ -166,7 +166,7 @@ public class RepoProviderTest extends FDroidProviderTest {
             assertRepo(
                     defaultRepos.get(i),
                     reposFromXml[offset + 1], // address
-                    reposFromXml[offset + 2], // description
+                    reposFromXml[offset + 2].replaceAll("\\s+", " "), // description
                     Utils.calcFingerprint(reposFromXml[offset + 7]), // pubkey
                     reposFromXml[offset]      // name
             );

@@ -291,6 +291,9 @@ public class DBHelper extends SQLiteOpenHelper {
      * <p>
      * Additional Repos ({@code additional_repos.xml}) come from the ROM,
      * while Default Repos ({@code default_repos.xml} is built into the APK.
+     * <p>
+     * This also cleans up the whitespace in the description item, since the
+     * XML parsing will include the linefeeds and indenting in the description.
      */
     public static List<String> loadInitialRepos(Context context) throws IllegalArgumentException {
         String packageName = context.getPackageName();
@@ -301,6 +304,12 @@ public class DBHelper extends SQLiteOpenHelper {
         if (initialRepos.size() % REPO_XML_ITEM_COUNT != 0) {
             throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
                     initialRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
+        }
+
+        final int DESCRIPTION_INDEX = 2;
+        for (int i = DESCRIPTION_INDEX; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
+            String description = initialRepos.get(i);
+            initialRepos.set(i, description.replaceAll("\\s+", " "));
         }
 
         return initialRepos;
