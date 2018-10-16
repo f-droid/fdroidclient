@@ -316,19 +316,19 @@ public class DBHelper extends SQLiteOpenHelper {
      * ROM has the lowest priority, then Vendor, ODM, and OEM.
      */
     private static List<String> loadAdditionalRepos(String packageName) {
-        List<String> externalRepos = new LinkedList<>();
+        List<String> repoItems = new LinkedList<>();
         for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
             File additionalReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
             try {
                 if (additionalReposFile.isFile()) {
-                    externalRepos.addAll(DBHelper.parseXmlRepos(additionalReposFile));
+                    repoItems.addAll(DBHelper.parseXmlRepos(additionalReposFile));
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Error loading " + additionalReposFile + ": " + e.getMessage());
             }
         }
 
-        return externalRepos;
+        return repoItems;
     }
 
     /**
@@ -340,7 +340,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * override {@code default_repos.xml}.
      */
     public static List<String> parseXmlRepos(File defaultReposFile) throws IOException, XmlPullParserException {
-        List<String> defaultRepos = new LinkedList<>();
+        List<String> repoItems = new LinkedList<>();
         InputStream xmlInputStream = new FileInputStream(additionalReposFile);
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -362,7 +362,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     break;
                 case XmlPullParser.TEXT:
                     if (isItem) {
-                        defaultRepos.add(parser.getText());
+                        repoItems.add(parser.getText());
                     }
                     break;
             }
@@ -371,16 +371,16 @@ public class DBHelper extends SQLiteOpenHelper {
         xmlInputStream.close();
 
         final int PRIORITY_INDEX = 5;
-        for (int i = PRIORITY_INDEX; i < defaultRepos.size(); i += REPO_XML_ITEM_COUNT) {
-            defaultRepos.add(i, "0");
+        for (int i = PRIORITY_INDEX; i < repoItems.size(); i += REPO_XML_ITEM_COUNT) {
+            repoItems.add(i, "0");
         }
 
-        if (defaultRepos.size() % REPO_XML_ITEM_COUNT == 0) {
-            return defaultRepos;
+        if (repoItems.size() % REPO_XML_ITEM_COUNT == 0) {
+            return repoItems;
         }
 
         Log.e(TAG, "Ignoring " + additionalReposFile + ", wrong number of items: "
-                + defaultRepos.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
+                + repoItems.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
         return new LinkedList<>();
     }
 
