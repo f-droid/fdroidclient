@@ -373,7 +373,7 @@
     </plurals>
     <string name="details_last_updated_today">今日更新</string>
     <string name="app_list__name__successfully_installed">%1$sをインストールしました</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">インターネット接続がありませんか？近くの人からアプリをもらってみましょう！</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">インターネット接続がありませんか？近くの人からアプリを受け取りましょう！</string>
     <string name="nearby_splash__find_people_button">近くの人を探す</string>
     <string name="nearby_splash__both_parties_need_fdroid">お互いが近くで%1$sを使用する必要があります。</string>
 
@@ -509,4 +509,9 @@
     <string name="antinosourcesince">ソースコードはもう利用できません。更新できません。</string>
 
     <string name="share_repository">リポジトリを共有</string>
+    <string name="about_forum">サポートフォーラム</string>
+    <string name="app_suggested">提案</string>
+    <string name="app_size">サイズ: %1$s</string>
+
+    <string name="menu_downgrade">ダウングレード</string>
     </resources>

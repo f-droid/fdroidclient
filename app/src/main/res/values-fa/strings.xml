@@ -432,7 +432,7 @@
     <string name="app_list_download_ready">بارگزاری شده است، آماده ی نصب</string>
 
     <string name="app_installed_media">فایل در %s نصب شد</string>
-    <string name="app_permission_storage">اف دروید برای نصب روی این فضا به دسترسی فضای ذخیره سازی نیاز دارد. لطفا جهت ادامه ی نصب در صفحه ی بعدی این اجازه را بدهید.</string>
+    <string name="app_permission_storage">اف دروید برای نصب روی این فضا، نیاز به دسترسی فضای ذخیره‌سازی دارد. لطفاً جهت ادامهٔ نصب، این اجازه را در صفحهٔ بعدی بدهید.</string>
 
     <string name="status_inserting_x_apps">ذخیره سازی جزئیات برنامه (%1$d/%2$d) از %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">امضای متفاوت با نگارشِ نصب‌شده</string>
@@ -525,4 +525,12 @@
     <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست، به‌روز رسانی ناممکن است.</string>
 
     <string name="share_repository">هم‌رسانی مخزن</string>
+    <string name="about_forum">انجمن پشتیبانی</string>
+    <string name="app_suggested">پیشنهادی</string>
+    <string name="app_size">اندازه: %1$s</string>
+
+    <string name="send_installed_apps">هم‌رسانی کاره‌های نصب‌شده</string>
+    <string name="send_installed_apps_csv">کاره‌های نصب‌شده از اف‌دروید در قالب پروندهٔ csv</string>
+    <string name="menu_open">گشودن</string>
+    <string name="menu_downgrade">پایین بردن</string>
     </resources>

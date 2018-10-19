@@ -478,4 +478,22 @@
     <string name="app_size">Величина: %1$s</string>
 
     <string name="send_installed_apps">Подели инсталиране апликације</string>
+    <string name="prompt_to_send_crash_reports">Питај да шаљеш извештај о рушењу</string>
+    <string name="prompt_to_send_crash_reports_summary">Скупљај податке у рушењима и питај да се пошаљу програмерима</string>
+    <string name="hide_all_notifications_summary">Забрани приказ свих радњи и из статусне траке и из фиоке.</string>
+    <string name="install_history_summary">Види приватни дневник свих инсталација и брисања</string>
+    <string name="send_version_and_uuid">Пошаљу верзију и UUID серверима</string>
+    <string name="send_version_and_uuid_summary">Укључи верзију ове апликације и случајни, јединствени ID приликом скидања, узима ефекта од следећег стартовања апликације.</string>
+    <string name="allow_push_requests">Дозволи складиштима да инсталирају/бришу апликације</string>
+    <string name="over_wifi">Преко бежичне мреже</string>
+    <string name="over_data">Преко мобилне мреже</string>
+    <string name="over_network_always_summary">Увек користи овај тип везе када је доступна</string>
+    <string name="over_network_on_demand_summary">Користи овај тип мреже само када ја кликнем на скидање</string>
+    <string name="over_network_never_summary">Никад ништа не скидај преко овог типа мреже</string>
+    <string name="app_details__incompatible_mismatched_signature">Различити потписи од инсталиране верзије</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Нема верзија са компатибилним потписом</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Нема верзије компатибилне са уређајем</string>
+    <string name="sort_search">Сортирај претрагу</string>
+
+    <string name="menu_open">Отвори</string>
     </resources>

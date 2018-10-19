@@ -26,7 +26,7 @@
     <string name="app_inst_known_source">Geïnstalleerd (van %s)</string>
     <string name="app_inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
     <string name="added_on">Toegevoegd op %s</string>
-    <string name="ok">Oké</string>
+    <string name="ok">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="repo_add_title">Nieuwe bron toevoegen</string>

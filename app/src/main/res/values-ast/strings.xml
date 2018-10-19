@@ -12,9 +12,7 @@
     <string name="notify">Ver los anovamientos disponibles</string>
     <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
     <string name="system_installer">Estensión con privilexos</string>
-    <string name="system_installer_on">Usa la estensión F-droid con privilexos pa instalar, anovar y desaniciar
-        paquetes
-    </string>
+    <string name="system_installer_on">Usa la estensión con privilexos pa instalar, anovar y desaniciar paquetes</string>
     <string name="local_repo_name">Nome del to depósitu llocal</string>
     <string name="local_repo_name_summary">El títulu alvertíu del to repositoriu llocal: %s</string>
     <string name="local_repo_https_on">Usar conexón HTTPS:// cifrada pal to repositoriu llocal</string>
@@ -69,8 +67,8 @@
     <string name="expert_on">Amuesa información estra y habilita axustes estra</string>
     <string name="search_hint">Guetar apps</string>
     <string name="appcompatibility">Compatibilidá d\'app</string>
-    <string name="show_incompat_versions">Versiones incompatibles</string>
-    <string name="show_incompat_versions_on">Amuesa les versiones d\'aplicaciones incompatibles col preséu</string>
+    <string name="show_incompat_versions">Incluir versiones incompatibles</string>
+    <string name="show_incompat_versions_on">Amuesa les versiones d\'aplicaciones que son incompatibles col preséu</string>
     <string name="local_repo">Repositoriu llocal</string>
     <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
     <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos
@@ -114,17 +112,17 @@
     </string>
     <string name="unknown">Desconocíu</string>
     <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
-    <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán
-        disponibles dende F-Droid.
-        \n\nNota: Toles aplicaciones instalaes d\'enantes quedaránse nel preséu.
-    </string>
+    <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles. 
+\n
+\nNota: Toles aplicaciones instalaes d\'enantes quedarán nel preséu.</string>
     <string name="repo_disabled_notification">Deshabilitóse %1$s.
 
         Precisarás
         rehabilitar esti repositoriu pa instalar aplicaciones dende elli.
     </string>
-    <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s.</string>
-    <string name="repo_searching_address">Guetando repositorios F-Droid en\n%1$s</string>
+    <string name="repo_added">Guardóse\'l repositoriu d e paquetes %1$s.</string>
+    <string name="repo_searching_address">Guetando\'l repositoriu de paquetes en
+\n%1$s</string>
     <string name="minsdk_or_later">%s ó posterior</string>
     <string name="up_to_maxsdk">Fasta %s</string>
     <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
@@ -154,16 +152,16 @@
     <string name="swap_confirm_connect">¿Quies consiguir aplicaciones de %1$s agora?</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="interval_12h">Cada 12 hores</string>
-    <string name="interval_1d">Caldía</string>
-    <string name="interval_1w">Selmanalmente</string>
-    <string name="interval_2w">Cada 2 selmanes</string>
+    <string name="interval_12h">Buscar anovamientos cada 12 hores</string>
+    <string name="interval_1d">Buscar anovamientos caldía</string>
+    <string name="interval_1w">Buscar anovamientos selmanalmente</string>
+    <string name="interval_2w">Buscar anovamientos cada 2 selmanes</string>
 
-    <string name="interval_4h">Cada 4 hores</string>
+    <string name="interval_4h">Buscar anovamientos cada 4 hores</string>
     <string name="unstable_updates">Anovamientos inestables</string>
     <string name="downloading">Baxando…</string>
 
-    <string name="interval_never">Enxamás</string>
+    <string name="interval_never">Nun anovar automáticamente les aplicaciones</string>
     <string name="uninstall_update_confirm">¿Quies trocar esta aplicación pola versión de fábrica?</string>
     <string name="perm_costs_money">Quiciabes esto te cueste perres</string>
     <string name="loading">Cargando…</string>
@@ -242,7 +240,7 @@
     <string name="uninstall_confirm">¿Quies desinstalar esta aplicación?</string>
 
     <string name="perms_description_app">Forníu por %1$s.</string>
-    <string name="interval_1h">Cada hora</string>
+    <string name="interval_1h">Buscar anovamientos cada hora</string>
     <string name="swap_not_enabled">Intercambéu non habilitáu</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
     <string name="unstable_updates_summary">Suxer l\'anovamientu a versiones inestables</string>
@@ -313,9 +311,7 @@
     <string name="update_auto_install_summary">Baxa ya instala de fondu anovamientos d\'aplicaciones</string>
     <string name="update_auto_install">Instalar automáticamente anovamientos</string>
     <string name="keep_install_history">Caltener historial d\'instalación</string>
-    <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones dientro de
-        F-Droid
-    </string>
+    <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones nun almacén priváu</string>
     <string name="warning_no_internet">Nun pué anovase, ¿tas coneutáu a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a sidres!</string>
@@ -463,18 +459,18 @@
     <string name="updates__app_with_known_vulnerability__ignore">Inorar</string>
 
     <string name="privacy">Intimidá</string>
-    <string name="preventScreenshots_title">Bloquiar les captures de pantalla</string>
+    <string name="preventScreenshots_title">Torgar les captures de pantalla</string>
     <string name="preventScreenshots_summary">Torga la toma d\'imáxenes de pantalla y anubre\'l conteníu de la pantalla d\'aplicaciones recién</string>
 
-    <string name="panic_app_setting_title">App de «Botón del espantu»</string>
-    <string name="panic_app_unknown_app">una app desconocida</string>
-    <string name="panic_app_setting_summary">Nun se definió nenguna app</string>
+    <string name="panic_app_setting_title">Aplicación botón de medrana</string>
+    <string name="panic_app_unknown_app">una aplicación desconocida</string>
+    <string name="panic_app_setting_summary">Nun esbillasti denguna aplicación</string>
     <string name="panic_app_setting_none">Nenguna</string>
-    <string name="panic_app_dialog_title">Confirmar «App del espantu»</string>
+    <string name="panic_app_dialog_title">Confirmar aplicación de medrana</string>
     <string name="panic_app_dialog_message">¿Confirmes que quies permitir a %1$s llanzar les aiciones destructives de «Botón del espantu»?</string>
     <string name="allow">Permitir</string>
 
-    <string name="panic_settings">Configuración del Botón del espantu</string>
+    <string name="panic_settings">Configuración del botón del espantu</string>
     <string name="panic_settings_summary">Aiciones a facer en casu d\'emerxencia</string>
     <string name="panic_exit_title">Salir de la app</string>
     <string name="panic_exit_summary">Zarraráse la app</string>
@@ -482,4 +478,24 @@
     <string name="panic_hide_title">Tapecer %s</string>
     <string name="panic_hide_summary">Tapeceráse la app</string>
 
-</resources>
+<string name="repo_exists_add_fingerprint">%1$s yá ta configuráu, esto añadirá la información nueva sobre la clave.</string>
+    <string name="repo_exists_enable">%1$s yá ta configuráu, confirma que quies volver a activalu.</string>
+    <string name="repo_exists_and_enabled">%1$s yá ta configuráu y activáu.</string>
+    <string name="repo_delete_to_overwrite">Primero desanicia %1$s p\'agregar esti con una clave en conflictu.</string>
+    <string name="prompt_to_send_crash_reports">Entrugar si mandar informes de fallu</string>
+    <string name="prompt_to_send_crash_reports_summary">Collechar datos de los fallos y entrugar pa unvialos al desendolcador</string>
+    <string name="hide_all_notifications">Tapecer toles notificaciones</string>
+    <string name="hide_all_notifications_summary">Torgar qu\'apaezan toles aiciones na barra d\'estáu y nel panel de notificaciones.</string>
+    <string name="send_install_history">Unviar l\'historial d\'instalaciones</string>
+    <string name="send_history_csv">%s historial d\'instalaciones como ficheru CSV</string>
+    <string name="install_history">Historial d\'instalación</string>
+    <string name="install_history_summary">Ver el rexistru priváu de toles instalaciones y desinstalaciones</string>
+    <string name="send_version_and_uuid">Unviar versión y UUID a los sirvidores</string>
+    <string name="send_version_and_uuid_summary">Incluir la versión d\'esta aplicación, y un ID al debalu y únicu al descargar; tendrá efectu nel siguiente reaniciu de l\'aplicación.</string>
+    <string name="allow_push_requests">Permitir que los repositorios instalen/desinstalen aplicaciones</string>
+    <string name="over_wifi">Usando Wi-Fi</string>
+    <string name="over_data">Usando la rede de datos</string>
+    <string name="over_network_always_summary">Usar siempre esta conexón cuando tea disponible</string>
+    <string name="over_network_on_demand_summary">Usar sólo esta conexón cuando pulsie descargar</string>
+    <string name="over_network_never_summary">Nunca descargar nada usando esta conexón</string>
+    </resources>

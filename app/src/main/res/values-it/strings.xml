@@ -557,4 +557,5 @@
     <string name="send_installed_apps">Condividi applicazioni installate</string>
     <string name="menu_open">Apri</string>
     <string name="menu_downgrade">Disinstalla aggiornamento</string>
+    <string name="send_installed_apps_csv">App installate da F-Droid come file CSV</string>
     </resources>

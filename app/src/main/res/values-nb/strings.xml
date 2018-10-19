@@ -513,7 +513,7 @@
     <string name="swap_toast_could_not_enable_hotspot">Kunne ikke skru på lokalt Wi-Fi-nettverk!</string>
 
     <string name="over_wifi">Over Wi-Fi</string>
-    <string name="over_data">Over data</string>
+    <string name="over_data">Over mobildata</string>
     <string name="over_network_always_summary">Alltid bruk denne tilkoblingen når tilgjengelig</string>
     <string name="over_network_on_demand_summary">Kun bruk denne tilkoblingen når jeg klikker for å laste ned</string>
     <string name="over_network_never_summary">Aldri last ned noe på denne tilkoblingen</string>
@@ -526,7 +526,7 @@
 
     <string name="hide_all_notifications">Skjul alle merknader</string>
     <string name="hide_all_notifications_summary">Ikke vis noen handlinger i statusfeltet og merknadsskuffen.</string>
-    <string name="prompt_to_send_crash_reports">Spør om forsendelse av krasjrapporter.</string>
+    <string name="prompt_to_send_crash_reports">Forespør krasjrapportinnsending.</string>
     <string name="prompt_to_send_crash_reports_summary">Henter data om krasj, og sender dem til utvikleren</string>
     <string name="install_history">Installer historikk</string>
     <string name="install_history_summary">Vis privat loggføring for alle in- og av-installasjoner</string>
