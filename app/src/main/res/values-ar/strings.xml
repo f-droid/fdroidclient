@@ -147,17 +147,17 @@
     <string name="useTorSummary">إجبار حركة التحميل من خلال تور لزيادة الخصوصية. تطبيق أوربوت مطلوب</string>
     <string name="proxy">خدمة الوكيل (البروكسي)</string>
     <string name="enable_proxy_title">تمكين وكيل (البروكسي) HTTP</string>
-    <string name="enable_proxy_summary">تكوين وكيل (بروكسي) HTTP لجميع طلبات الشبكة</string>
-    <string name="proxy_host">مضيف الوكيل (البروكسي)</string>
-    <string name="proxy_host_summary">اسم المضيف الوكيل (مثل 127.0.0.1)</string>
-    <string name="proxy_port">منفذ الوكيل (البروكسي)</string>
-    <string name="proxy_port_summary">رقم منفذ الوكيل الخاص بك (على سبيل المثال 8118)</string>
+    <string name="enable_proxy_summary">إعداد وكيل بروكسي HTTP لجميع طلبات الشبكة</string>
+    <string name="proxy_host">مضيف البروكسي</string>
+    <string name="proxy_host_summary">اسم مضيف البروكسي (مثال 127.0.0.1)</string>
+    <string name="proxy_port">مَنفَذ البروكسي</string>
+    <string name="proxy_port_summary">رقم منفذ البروكسي الخاص بك (مثلا 8118)</string>
 
     <string name="status_download">تحميل\n%2$s / %3$s (%4$d%%) من\n%1$s</string>
 
     <string name="status_download_unknown_size">تحميل\n%2$s من\n%1$s</string>
     <string name="update_notification_title">تحديث المستودعات</string>
-    <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) من %1$s</string>
+    <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) مِن %1$s</string>
     <string name="status_connecting_to_repo">الاتصال بـ
 \n %1$s</string>
     <string name="status_inserting_apps">حفظ تفاصيل التطبيق</string>
@@ -166,7 +166,7 @@
     <string name="global_error_updating_repos">خطأ أثناء التحديث: %s</string>
     <string name="no_permissions">لا يوجد تصريحات مستخدمة.</string>
     <string name="permissions">تصريحات</string>
-    <string name="no_handler_app">ليس لديك أي برنامج متاح يمكن التعامل معها %s.</string>
+    <string name="no_handler_app">ليس لديك أي تطبيق متاح يمكنه التعامل مع %s.</string>
     <string name="repo_details">مستودع</string>
     <string name="repo_url">العنوان</string>
     <string name="repo_fingerprint">بصمة توقيع المفتاح (SHA-256)</string>
@@ -302,9 +302,9 @@
     <string name="keep_year">سنة</string>
     <string name="keep_forever">إلى الأبد</string>
 
-    <string name="theme_light">فاتح</string>
-    <string name="theme_dark">داكن</string>
-    <string name="theme_night">ليلي</string>
+    <string name="theme_light">فاتحة</string>
+    <string name="theme_dark">داكنة</string>
+    <string name="theme_night">ليلية</string>
 
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
@@ -321,7 +321,7 @@
     <string name="categories__empty_state__no_categories">ليس هناك فئات لعرضها</string>
 
     <string name="preference_category__my_apps">تطبيقاتي</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت ؟ أحصل علي التطبيقات من الأشخاص بالقرب منك !</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت؟ أحصل على تطبيقات مِن أشخاص بالقرب منك!</string>
     <string name="nearby_splash__find_people_button">إبحث عن أشخاص بالقرب مني</string>
     <string name="nearby_splash__both_parties_need_fdroid">يحتاج كلا الطرفين إلى %1$s للمبادلة.</string>
 
@@ -365,11 +365,11 @@
     <string name="notification_content_single_downloading">جاري تنزيل \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">جاري تنزيل تحديث \"%1$s\"…</string>
     <string name="notification_title_summary_update_available">تحديث متوفر</string>
-    <string name="notification_title_summary_downloading">جاري تنزيل …</string>
-    <string name="notification_title_summary_downloading_update">جاري تنزيل التحديث …</string>
+    <string name="notification_title_summary_downloading">التنزيل جارٍ…</string>
+    <string name="notification_title_summary_downloading_update">جاري تنزيل التحديث…</string>
     <string name="notification_action_update">تحديث</string>
     <string name="notification_action_cancel">إلغاء</string>
-    <string name="details_last_updated_today">حُدِّثت اليوم</string>
+    <string name="details_last_updated_today">حُدِّث اليوم</string>
     <string name="updates__tts__download_app">تحميل</string>
     <string name="by_author_format">بواسطة %s</string>
     <string name="app_details_donate_prompt_unknown_author">اشتري لمطوري  %1$s كأسا من القهوة!</string>
@@ -389,7 +389,7 @@
     <string name="menu_license">الرخصة: %s</string>
     <string name="download_404">الملف المطلوب غير موجود.</string>
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
-    <string name="tts_category_name">التصنيف  %1$s</string>
+    <string name="tts_category_name">الفئة %1$s</string>
 
     <string name="app_details_donate_prompt">%1$s تم تطويره من طرف %2$s. إشتري لهم مشروبا !</string>
 
@@ -430,29 +430,29 @@
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
-        <item quantity="zero">لاشئ…</item>
-        <item quantity="one">واحد تحديث…</item>
-        <item quantity="two">تحديثان…</item>
-        <item quantity="few">تحديثات…</item>
-        <item quantity="many">بعض تحديث…</item>
-        <item quantity="other">+%1$d بكثرة…</item>
-    </plurals>
+	<item quantity="zero">+%1$d المزيد…</item>
+	<item quantity="one">+%1$d المزيد…</item>
+	<item quantity="two">+%1$d المزيد…</item>
+	<item quantity="few">+%1$d المزيد…</item>
+	<item quantity="many">+%1$d المزيد…</item>
+	<item quantity="other">+%1$d المزيد…</item>
+</plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="zero">لا تحديثات</item>
-        <item quantity="one">تحديث واحد</item>
-        <item quantity="two">تحديثان</item>
-        <item quantity="few">تحديثات</item>
-        <item quantity="many">تحاديث</item>
-        <item quantity="other">التحاديث</item>
-    </plurals>
+	<item quantity="zero">لا تحديثات</item>
+	<item quantity="one">تحديث واحد</item>
+	<item quantity="two">تحديثان</item>
+	<item quantity="few">%1$d التحديثات</item>
+	<item quantity="many">%1$d تحديثات</item>
+	<item quantity="other">%1$d تحديثات</item>
+</plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="zero">لا شئ</item>
-        <item quantity="one">تطبيق واحد</item>
-        <item quantity="two">تطبيقان</item>
-        <item quantity="few">تطبيقات</item>
-        <item quantity="many">تطابيق</item>
-        <item quantity="other">التطبيقات</item>
-    </plurals>
+	<item quantity="zero">لا شيء</item>
+	<item quantity="one">تطبيق واحد</item>
+	<item quantity="two">تطبيقان</item>
+	<item quantity="few">%1$d التطبيقات</item>
+	<item quantity="many">%1$d تطبيقات</item>
+	<item quantity="other">%1$d تطبيقات</item>
+</plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
     <string name="preventScreenshots_summary">أخفاء لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الأخيرة</string>
@@ -568,4 +568,7 @@
 
     <string name="send_installed_apps">شارك التطبيقات المثبّتة</string>
     <string name="menu_open">إفتح</string>
+    <string name="app_suggested">إقتراحات</string>
+    <string name="send_installed_apps_csv">التطبيقات المثبتة بواسطة F-Droid  كملف CSV</string>
+    <string name="menu_downgrade">تراجع عن الترقية</string>
     </resources>

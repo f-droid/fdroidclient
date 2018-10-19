@@ -40,7 +40,7 @@
     <string name="menu_uninstall">Odinstaluj</string>
     <string name="menu_ignore_this">Ignoruj tę aktualizację</string>
     <string name="menu_website">Strona internetowa</string>
-    <string name="menu_upgrade">Zaaktualizuj</string>
+    <string name="menu_upgrade">Zaktualizuj</string>
     <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
@@ -252,7 +252,7 @@
     <string name="theme_dark">Ciemny</string>
     <string name="unstable_updates">Wersje niestabilne</string>
     <string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
-    <string name="menu_bitcoin">Bitcon</string>
+    <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
 
@@ -467,7 +467,7 @@
 
     <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
     <string name="app_installed_media">Plik zainstalowany do %s</string>
-    <string name="app_permission_storage">F-Droid potrzebuje uprawnienia do pamięci, aby tam to zainstalować. Udziel go na następnym ekranie, aby kontynuować instalację.</string>
+    <string name="app_permission_storage">F-Droid potrzebuje pozwolenia na przechowywanie, aby zainstalować to w pamięci masowej. Proszę pozwolić na następnym ekranie, aby kontynuować instalację.</string>
 
     <string name="app_details__incompatible_mismatched_signature">Inna sygnatura niż zainstalowanej wersji</string>
     <string name="app_details__no_versions__show_incompat_versions">Aby pomimo tego wyświetlić niekompatybilne wersje, włącz ustawienie „%1$s” w opcjach.</string>
@@ -567,5 +567,5 @@
     <string name="app_suggested">Sugerowane</string>
     <string name="app_size">Rozmiar: %1$s</string>
 
-    <string name="menu_downgrade">Nachylenie (ang. Downgrade)</string>
+    <string name="menu_downgrade">Cofnij do starszej wersji</string>
     </resources>

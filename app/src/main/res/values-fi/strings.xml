@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
     <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
     <string name="updates">Päivitykset</string>
-    <string name="other">Muu</string>
+    <string name="other">Muut</string>
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
     <string name="notify">Näytä saatavilla olevat päivitykset</string>
     <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
@@ -97,7 +97,7 @@
     <string name="repo_disabled_notification">%1$s poistettu käytöstä. Sinun pitää ottaa tämä sovelluslähde uudelleen
         käyttöön asentaaksesi sieltä sovelluksia.
     </string>
-    <string name="requires_features">Edellyttää: %1$s</string>
+    <string name="requires_features">Vaatii: %1$s</string>
     <string name="category_Development">Kehittäminen</string>
     <string name="category_Games">Pelit</string>
     <string name="category_Internet">Internet</string>
@@ -237,8 +237,8 @@
     </string>
     <string name="no_handler_app">Sinulla ei ole yhtään sovellusta, joka voi käsitellä %s.</string>
     <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
-    <string name="repo_searching_address">"Etsitään  sovelluslähdettä osoitteesta
-\n%1$s"</string>
+    <string name="repo_searching_address">Etsitään sovelluslähdettä osoitteesta
+\n%1$s</string>
     <string name="minsdk_or_later">%s tai uudempi</string>
     <string name="category_Connectivity">Liitettävyys</string>
     <string name="category_Graphics">Grafiikka</string>
@@ -250,8 +250,8 @@
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
     <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu tarkistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
-    <string name="up_to_maxsdk">%s asti</string>
-    <string name="minsdk_up_to_maxsdk">%1$s alkaen %2$s asti</string>
+    <string name="up_to_maxsdk">Korkeintaan %s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s - %2$s</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt tuloksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -345,11 +345,11 @@
     <string name="repositories_summary">Lisää muita sovelluslähteitä</string>
     <string name="menu_video">Video</string>
     <string name="main_menu__latest_apps">Uusimmat</string>
-    <string name="main_menu__categories">Kategoriat</string>
+    <string name="main_menu__categories">Luokat</string>
     <string name="latest__empty_state__no_recent_apps">Viimeaikaisia sovelluksia ei löytynyt</string>
     <string name="latest__empty_state__never_updated">"Kun sovelluslistasi on päivitetty, uusimpien sovelluksien pitäisi näkyä tässä
 \n "</string>
-    <string name="categories__empty_state__no_categories">Ei näytettäviä kategorioita</string>
+    <string name="categories__empty_state__no_categories">Ei näytettäviä luokkia</string>
 
     <string name="preference_category__my_apps">Omat sovellukset</string>
     <string name="preference_manage_installed_apps">Hallitse asennettuja sovelluksia</string>
@@ -403,13 +403,13 @@
 
     <string name="nearby_splash__both_parties_need_fdroid">Molemmilla osapuolilla tulee olla %1$s ominaisuuden käyttämiseksi.</string>
 
-    <string name="tts_category_name">Kategoria %1$s</string>
+    <string name="tts_category_name">Luokka %1$s</string>
 
     <string name="antifeatures">Anti-ominaisuudet</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Näytä sovellus %1$d kategoriassa %2$s</item>
-        <item quantity="other">Näytä kaikki %1$d -sovellukset kategoriasta %2$s</item>
-    </plurals>
+	<item quantity="one">Näytä %1$d-sovellus %2$s-luokassa</item>
+	<item quantity="other">Näytä kaikki %1$d sovellukset %2$s-luokasta</item>
+</plurals>
 
 <string name="by_author_format">tekijältä %s</string>
     <string name="hide_all_notifications">Piilota kaikki ilmoitukset</string>
@@ -526,4 +526,25 @@
     <string name="install_history">Asennushistoria</string>
     <string name="send_install_history">Lähetä asennushistoria</string>
     <string name="send_history_csv">%s asenna historia CSV-tiedostona</string>
+    <string name="install_history_summary">Tarkastele kaikkien asennusten ja poistojen yksityistä lokia</string>
+    <string name="send_version_and_uuid">Lähetä versio ja UUID palvelimille</string>
+    <string name="send_version_and_uuid_summary">Sisällytä sovelluksen versio ja satunnainen, yksilöivä tunniste ladattaessa. Voimassa uudelleenkäynnistyksen jälkeen.</string>
+    <string name="allow_push_requests">Salli sovelluslähteiden asentaa/poistaa sovelluksia</string>
+    <string name="allow_push_requests_summary">Sovelluslähteen metatietoihin voi sisältyä push-pyyntöjä sovellusten asentamiseen tai poistamiseen</string>
+    <string name="about_forum">Tukifoorumi</string>
+    <string name="app_suggested">Suositeltu</string>
+    <string name="app_size">Koko: %1$s</string>
+
+    <string name="send_installed_apps">Jaa asennetut sovellukset</string>
+    <string name="send_installed_apps_csv">Sovellukset, jotka F-Droid asentanut CSV-tiedostona</string>
+    <string name="updates_disabled_by_settings">Kaikki päivitykset poistettu käytöstä Data/WiFi-asetuksissa</string>
+
+    <string name="repo_exists_add_fingerprint">%1$s on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
+    <string name="repo_exists_enable">%1$s on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
+    <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
+    <string name="menu_open">Avaa</string>
+    <string name="menu_downgrade">Alenna</string>
+    <string name="antinosourcesince">Lähdekoodi ei ole enää käytettävissä, päivitykset eivät mahdollisia.</string>
+
+    <string name="share_repository">Jaa sovelluslähde</string>
     </resources>

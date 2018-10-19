@@ -222,4 +222,33 @@
     <string name="status_processing_xml_percent">Asesfer n  %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="notification_title_single_ready_to_install">Iwjed i usebded</string>
     <string name="notification_title_single_ready_to_install_update">Alqem iwjed i usebded</string>
-</resources>
+<string name="hide_all_notifications">Ffer akk Ilγa</string>
+    <string name="install_history">Amazray n usebded</string>
+    <string name="send_install_history">Azen amazray n usebded</string>
+    <string name="over_wifi">Γef Wi-Fi</string>
+    <string name="enable_proxy_title">Rmed Aproksi HTTP</string>
+    <string name="privacy">Tabaḍnit</string>
+    <string name="preventScreenshots_title">Sewḥel tuṭṭfiwin n ugdil</string>
+    <string name="panic_exit_title">Ffeγ seg usnas-ayi</string>
+    <string name="panic_hide_title">Ffer %s</string>
+    <string name="hiding_calculator">Tamsiḍent</string>
+    <string name="hiding_dialog_title">Ffer %s tura</string>
+    <string name="status_download">Asider n
+\n%2$s / %3$s (%4$d%%) si
+\n%1$s</string>
+
+    <string name="status_download_unknown_size">Asider n
+\n%2$s si
+\n%1$s</string>
+    <string name="download_404">Afaylu i tettnadiḍ ulac-it.</string>
+    <string name="update_notification_title">Aleqqem n ikufiyen</string>
+    <string name="status_connecting_to_repo">Tuqna γer
+\n%1$s</string>
+    <string name="global_error_updating_repos">Tuccḍa di uleqqem: %s</string>
+    <string name="repo_num_apps">Amḍan n isnasen</string>
+    <string name="share_repository">Bḍu akufi</string>
+    <string name="requires_features">Ilaq: %1$s</string>
+    <string name="swap_no_wifi_network">Ulac tuqqna</string>
+    <string name="swap_scan_qr">Semḍen tangalt QR</string>
+    <string name="swap_setting_up_bluetooth">Asbadu n Blutut…</string>
+    </resources>

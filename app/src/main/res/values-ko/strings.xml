@@ -429,7 +429,7 @@
     <string name="panic_app_setting_summary">설정된 앱이 없습니다</string>
     <string name="panic_app_setting_none">없음</string>
     <string name="panic_app_dialog_title">패닉 앱 구성</string>
-    <string name="panic_app_dialog_message">%1$s 앱을 파괴적인 패닉 버튼 동작을 트리거하도록 허용하고 싶은 것이 확실합니까?</string>
+    <string name="panic_app_dialog_message">정말 %1$s 앱을 파괴적인 패닉 버튼 동작을 트리거하도록 허용하기를 원합니까\?</string>
     <string name="allow">허용</string>
 
     <string name="panic_settings">패닉 버튼 설정</string>

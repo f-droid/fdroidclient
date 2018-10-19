@@ -547,4 +547,9 @@
     <string name="swap_toast_could_not_enable_hotspot">Δεν ήταν δυνατή η ενεργοποίηση του Wi-Fi Hotspot!</string>
 
     <string name="warning_scaning_qr_code">Η κάμερά σας φαίνεται πως δεν υποστηρίζει αυτόματη εστίαση. Μπορεί να αποβεί δύσκολο να σαρωθεί ο κωδικός.</string>
+    <string name="about_forum">Φόρουμ υποστήριξης</string>
+    <string name="app_suggested">Προτεινόμενα</string>
+    <string name="app_size">Μέγεθος: %1$s</string>
+
+    <string name="menu_downgrade">Επιστροφή σε προηγούμενη έκδοση</string>
     </resources>

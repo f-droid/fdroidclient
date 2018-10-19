@@ -543,9 +543,14 @@
 
     <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponivel.</string>
 
-    <string name="allow_push_requests_summary">Repo metadata pode incluir requisições para instalar ou desinstalar apps</string>
+    <string name="allow_push_requests_summary">Repositório de metadados podem incluir solicitações de envio para instalar ou desinstalar aplicativos</string>
     <string name="send_installed_apps">Compartilhar aplicativos instalados</string>
     <string name="send_installed_apps_csv">Aplicativos instalados por F-Droid com arquivo CSV</string>
     <string name="menu_open">Abrir</string>
     <string name="share_repository">Compartilhar Repositório</string>
+    <string name="about_forum">Fórum de suporte</string>
+    <string name="app_suggested">Sugerido</string>
+    <string name="app_size">Tamanho: %1$s</string>
+
+    <string name="menu_downgrade">Rebaixamento</string>
     </resources>

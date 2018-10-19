@@ -75,9 +75,16 @@
 
 
     <string name="details_notinstalled">நிறுவப்படவில்லை</string>
-    <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளது</string>
+    <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளன</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
     </string>
 <string name="menu_launch">இயக்க</string>
     <string name="main_menu__latest_apps">சமீபத்திய</string>
+    <string name="main_menu__categories">பகுப்புகள்</string>
+    <string name="category_Internet">இணையம்</string>
+    <string name="category_Money">பணம்</string>
+    <string name="newPerms">புதியன</string>
+    <string name="notification_action_install">நிறுவு</string>
+
+    <string name="repo_details">களஞ்சியம்</string>
     </resources>

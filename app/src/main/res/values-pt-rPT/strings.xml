@@ -30,11 +30,11 @@
 
     <string name="about_title">Sobre o F-Droid</string>
     <string name="about_version">Versão</string>
-    <string name="about_site">Sítio web</string>
+    <string name="about_site">Site</string>
     <string name="about_source">Código fonte</string>
     <string name="app_incompatible">Incompatível</string>
-    <string name="app_installed">Instaladas</string>
-    <string name="app_not_installed">Não instaladas</string>
+    <string name="app_installed">Instalada</string>
+    <string name="app_not_installed">Não instalada</string>
     <string name="app_inst_known_source">Instalada (de %s)</string>
     <string name="app_inst_unknown_source">Instalada (de fonte desconhecida)</string>
 
@@ -73,7 +73,7 @@
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
     <string name="menu_ignore_this">Ignorar esta atualização</string>
-    <string name="menu_website">Sitio web</string>
+    <string name="menu_website">Site</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registo de alterações</string>
     <string name="menu_source">Código-fonte</string>
@@ -341,13 +341,13 @@
     <string name="keep_install_history">Manter histórico de instalação</string>
     <string name="keep_install_history_summary">Guardar registo de instalações e desinstalações em lojas privadas</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café aos programadores de %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s foi criado por %2$s. Pague-lhes um café!</string>
+    <string name="app_details_donate_prompt">%1$s foi criado por %2$s. Pode oferecer um café!</string>
 
     <string name="app_version_x_available">Versão %1$s disponível</string>
     <string name="app_version_x_installed">Versão %1$s</string>
     <string name="app_recommended_version_installed">Versão %1$s (recomendada)</string>
     <string name="app__newly_added">Nova</string>
-    <string name="app__install_downloaded_update">Atualização</string>
+    <string name="app__install_downloaded_update">Atualizar</string>
 
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
@@ -376,7 +376,7 @@
     <string name="main_menu__swap_nearby">Vizinhança</string>
 
     <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
-    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações mais recentes serão mostradas aqui</string>
+    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações for atualizada, as aplicações mais recentes serão mostradas aqui</string>
     <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e o atualizar, as aplicações mais recentes serão mostradas aqui</string>
 
     <string name="categories__empty_state__no_categories">Nenhuma categoria para mostrar</string>
@@ -518,7 +518,7 @@
     <string name="force_touch_apps">Incluir aplicações \'touchscreen\'</string>
     <string name="force_touch_apps_on">Mostrar aplicações que necessitem de \'touchscreen\' mesmo que equipamento não tenha suporte</string>
 
-    <string name="panic_app_setting_title">Aplicação de pânico</string>
+    <string name="panic_app_setting_title">Aplicação Botão de pânico</string>
     <string name="panic_app_dialog_title">Confirmar aplicação de pânico</string>
     <string name="panic_app_dialog_message">Tem a certeza de que deseja permitir que %1$s ative as ações do botão de pânico?</string>
     <string name="panic_settings">Definições do botão de pânico</string>
@@ -556,14 +556,14 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wifi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Hotspot Wifi não ativado!</string>
 
-    <string name="send_history_csv">%s instale o histórico como arquivo CSV</string>
+    <string name="send_history_csv">%s instalar história como ficheiro CSV</string>
     <string name="send_version_and_uuid_summary">Inclua a versão deste app e uma identificação aleatória e original ao transferir, entrando em efeito apos a reinicialização seguinte do app.</string>
     <string name="allow_push_requests_summary">Os metadados do repo podem incluir solicitações push para instalar ou desinstalar apps</string>
-    <string name="send_installed_apps">Compartilhar apps instalados</string>
-    <string name="send_installed_apps_csv">Apps instalados pelo F-Droid como arquivo CSV</string>
+    <string name="send_installed_apps">Partilhar aplicações instaladas</string>
+    <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
     <string name="menu_open">Abrir</string>
     <string name="about_forum">Fórum de suporte</string>
-    <string name="app_suggested">Sugerido</string>
+    <string name="app_suggested">Sugerida</string>
     <string name="app_size">Tamanho: %1$s</string>
 
     <string name="menu_downgrade">Downgrade</string>
