@@ -42,8 +42,17 @@ import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -56,8 +65,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
-
-    public static final int REPO_XML_ARG_COUNT = 8;
+    public static final int REPO_XML_ITEM_COUNT = 8;
 
     private static DBHelper instance;
     private static final String DATABASE_NAME = "fdroid";
@@ -257,25 +265,133 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
-        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
-        if (defaultRepos.length % REPO_XML_ARG_COUNT != 0) {
-            throw new IllegalArgumentException(
-                    "default_repo.xml array does not have the right number of elements");
-        }
-        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
-            int offset = i * REPO_XML_ARG_COUNT;
+        List<String> initialRepos = DBHelper.loadInitialRepos(context);
+
+        for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             insertRepo(
                     db,
-                    defaultRepos[offset],     // name
-                    defaultRepos[offset + 1], // address
-                    defaultRepos[offset + 2], // description
-                    defaultRepos[offset + 3], // version
-                    defaultRepos[offset + 4], // enabled
-                    defaultRepos[offset + 5], // priority
-                    defaultRepos[offset + 6], // pushRequests
-                    defaultRepos[offset + 7]  // pubkey
+                    initialRepos.get(i),     // name
+                    initialRepos.get(i + 1), // address
+                    initialRepos.get(i + 2), // description
+                    initialRepos.get(i + 3), // version
+                    initialRepos.get(i + 4), // enabled
+                    initialRepos.get(i + 5), // priority
+                    initialRepos.get(i + 6), // pushRequests
+                    initialRepos.get(i + 7)  // pubkey
             );
         }
+    }
+
+    /**
+     * Load Additional Repos first, then Default Repos. This way, Default
+     * Repos will be shown after the OEM-added ones on the Manage Repos
+     * screen.  This throws a hard {@code Exception} on parse errors since
+     * Default Repos are built into the APK.  So it should fail as hard and fast
+     * as possible so the developer catches the problem.
+     * <p>
+     * Additional Repos ({@code additional_repos.xml}) come from the ROM,
+     * while Default Repos ({@code default_repos.xml} is built into the APK.
+     * <p>
+     * This also cleans up the whitespace in the description item, since the
+     * XML parsing will include the linefeeds and indenting in the description.
+     */
+    public static List<String> loadInitialRepos(Context context) throws IllegalArgumentException {
+        String packageName = context.getPackageName();
+        List<String> initialRepos = DBHelper.loadAdditionalRepos(packageName);
+        List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        initialRepos.addAll(defaultRepos);
+
+        if (initialRepos.size() % REPO_XML_ITEM_COUNT != 0) {
+            throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
+                    initialRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
+        }
+
+        final int descriptionIndex = 2;
+        for (int i = descriptionIndex; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
+            String description = initialRepos.get(i);
+            initialRepos.set(i, description.replaceAll("\\s+", " "));
+        }
+
+        return initialRepos;
+    }
+
+    /**
+     * Look for additional, initial repositories from the device's filesystem.
+     * These can be added as part of the ROM ({@code /system} or included later
+     * by vendors/OEMs ({@code /vendor}, {@code /odm}, {@code /oem}). These are
+     * always added at a lower priority than the repos embedded in the APK via
+     * {@code default_repos.xml}.
+     * <p>
+     * ROM has the lowest priority, then Vendor, ODM, and OEM.
+     */
+    private static List<String> loadAdditionalRepos(String packageName) {
+        List<String> repoItems = new LinkedList<>();
+        for (String root : Arrays.asList("/system", "/vendor", "/odm", "/oem")) {
+            File additionalReposFile = new File(root + "/etc/" + packageName + "/additional_repos.xml");
+            try {
+                if (additionalReposFile.isFile()) {
+                    repoItems.addAll(DBHelper.parseAdditionalReposXml(additionalReposFile));
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error loading " + additionalReposFile + ": " + e.getMessage());
+            }
+        }
+
+        return repoItems;
+    }
+
+    /**
+     * Parse {@code additional_repos.xml} into a list of items. Walk through
+     * all TEXT pieces of the xml file and put them into a single list of repo
+     * elements.  Each repo is defined as eight elements in that list.
+     * {@code additional_repos.xml} has seven elements per repo because it is
+     * not allowed to set the priority since that would give it the power to
+     * override {@code default_repos.xml}.
+     */
+    public static List<String> parseAdditionalReposXml(File additionalReposFile)
+            throws IOException, XmlPullParserException {
+        List<String> repoItems = new LinkedList<>();
+        InputStream xmlInputStream = new FileInputStream(additionalReposFile);
+        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        XmlPullParser parser = factory.newPullParser();
+        parser.setInput(xmlInputStream, "UTF-8");
+
+        int eventType = parser.getEventType();
+        boolean isItem = false;
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            String tagname = parser.getName();
+            switch (eventType) {
+                case XmlPullParser.START_TAG:
+                    if ("item".equals(tagname)) {
+                        isItem = true;
+                    }
+                    break;
+                case XmlPullParser.END_TAG:
+                    isItem = false;
+                    break;
+                case XmlPullParser.TEXT:
+                    if (isItem) {
+                        repoItems.add(parser.getText());
+                    }
+                    break;
+            }
+            eventType = parser.next();
+        }
+        xmlInputStream.close();
+
+        final int priorityIndex = 5;
+        for (int i = priorityIndex; i < repoItems.size(); i += REPO_XML_ITEM_COUNT) {
+            repoItems.add(i, "0");
+        }
+
+        if (repoItems.size() % REPO_XML_ITEM_COUNT == 0) {
+            return repoItems;
+        }
+
+        Log.e(TAG, "Ignoring " + additionalReposFile + ", wrong number of items: "
+                + repoItems.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
+        return new LinkedList<>();
     }
 
     @Override
@@ -600,10 +716,10 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
         String fdroidPubKey = defaultRepos[7];
         String fdroidAddress = defaultRepos[1];
-        String fdroidArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT + 1];
-        String gpPubKey = defaultRepos[REPO_XML_ARG_COUNT * 2 + 7];
-        String gpAddress = defaultRepos[REPO_XML_ARG_COUNT * 2 + 1];
-        String gpArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT * 3 + 1];
+        String fdroidArchiveAddress = defaultRepos[REPO_XML_ITEM_COUNT + 1];
+        String gpPubKey = defaultRepos[REPO_XML_ITEM_COUNT * 2 + 7];
+        String gpAddress = defaultRepos[REPO_XML_ITEM_COUNT * 2 + 1];
+        String gpArchiveAddress = defaultRepos[REPO_XML_ITEM_COUNT * 3 + 1];
 
         updateRepoPriority(db, fdroidPubKey, fdroidAddress, 1);
         updateRepoPriority(db, fdroidPubKey, fdroidArchiveAddress, 2);
@@ -854,8 +970,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
-        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
-            int offset = i * REPO_XML_ARG_COUNT;
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ITEM_COUNT; i++) {
+            int offset = i * REPO_XML_ITEM_COUNT;
             insertNameAndDescription(db,
                     defaultRepos[offset],     // name
                     defaultRepos[offset + 1], // address

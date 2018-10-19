@@ -157,16 +157,16 @@ public class RepoProviderTest extends FDroidProviderTest {
         assertEquals(defaultRepos.size(), 4); // based on app/src/main/res/default_repo.xml
 
         String[] reposFromXml = context.getResources().getStringArray(R.array.default_repos);
-        if (reposFromXml.length % DBHelper.REPO_XML_ARG_COUNT != 0) {
+        if (reposFromXml.length % DBHelper.REPO_XML_ITEM_COUNT != 0) {
             throw new IllegalArgumentException(
                     "default_repo.xml array does not have the right number of elements");
         }
-        for (int i = 0; i < reposFromXml.length / DBHelper.REPO_XML_ARG_COUNT; i++) {
-            int offset = i * DBHelper.REPO_XML_ARG_COUNT;
+        for (int i = 0; i < reposFromXml.length / DBHelper.REPO_XML_ITEM_COUNT; i++) {
+            int offset = i * DBHelper.REPO_XML_ITEM_COUNT;
             assertRepo(
                     defaultRepos.get(i),
                     reposFromXml[offset + 1], // address
-                    reposFromXml[offset + 2], // description
+                    reposFromXml[offset + 2].replaceAll("\\s+", " "), // description
                     Utils.calcFingerprint(reposFromXml[offset + 7]), // pubkey
                     reposFromXml[offset]      // name
             );
