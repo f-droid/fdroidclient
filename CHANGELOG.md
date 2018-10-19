@@ -1,3 +1,7 @@
+### 1.5-alpha0 (2018-10-19)
+
+* add repos via additional_repos.xml from ROM, OEM, Vendor.
+
 ### 1.4 (2018-09-12)
 
 * polish up new "Versions" list and other UI fixes
