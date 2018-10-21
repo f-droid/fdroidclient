@@ -468,7 +468,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        // When the button says "Run", then launch the app.
+        // When the button says "Open", then launch the app.
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
             Intent intent = activity.getPackageManager().getLaunchIntentForPackage(app.packageName);
             if (intent != null) {
