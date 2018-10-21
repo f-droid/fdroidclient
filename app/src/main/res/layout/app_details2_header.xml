@@ -135,7 +135,7 @@
                     android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
-            <!-- Install, Uninstall, Upgrade, Open buttons -->
+            <!-- Install, Uninstall, Update, Open buttons -->
             <LinearLayout
                 android:id="@+id/button_layout"
                 android:layout_width="match_parent"

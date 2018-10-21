@@ -1101,7 +1101,7 @@ public class AppDetailsRecyclerViewAdapter
             api.setText(getApiText(apk));
 
 
-            // Figuring out whether to show Install/Upgrade button or Downgrade button
+            // Figuring out whether to show Install/Update button or Downgrade button
             buttonDowngrade.setVisibility(View.GONE);
             buttonInstallUpgrade.setVisibility(View.GONE);
             buttonInstallUpgrade.setText(context.getString(R.string.menu_install));
@@ -1109,7 +1109,7 @@ public class AppDetailsRecyclerViewAdapter
             if (isAppInstalled && !isApkInstalled) {
                 if (apk.versionCode > app.installedVersionCode) {
                     // Change the label to indicate that pressing this
-                    // button will result in upgrading the installed app
+                    // button will result in updating the installed app
                     buttonInstallUpgrade.setText(R.string.menu_upgrade);
                 } else if (apk.versionCode < app.installedVersionCode) {
                     // The Downgrade button should be shown in this case

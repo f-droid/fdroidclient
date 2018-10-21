@@ -67,7 +67,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         Apk installedApk = app.getInstalledApk(activity);
         if (installedApk == null) {
             throw new IllegalStateException(
-                    "Tried to upgrade or uninstall app with known vulnerability but it doesn't seem to be installed");
+                    "Tried to update or uninstall app with known vulnerability but it doesn't seem to be installed");
         }
 
         Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
