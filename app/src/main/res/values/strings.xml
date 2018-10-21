@@ -406,7 +406,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
-    <string name="nearby_splash__find_people_button">Find people near me</string>
+    <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
