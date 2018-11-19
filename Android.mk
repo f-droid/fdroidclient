@@ -10,7 +10,7 @@ fdroid_root  := $(LOCAL_PATH)
 fdroid_dir   := app
 fdroid_out   := $(PWD)/$(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
 fdroid_build := $(fdroid_root)/$(fdroid_dir)/build
-fdroid_apk   := build/outputs/apk/$(fdroid_dir)-release-unsigned.apk
+fdroid_apk   := build/outputs/apk/full/release/$(fdroid_dir)-full-release-unsigned.apk
 
 $(fdroid_root)/$(fdroid_dir)/$(fdroid_apk):
 	rm -Rf $(fdroid_build)
