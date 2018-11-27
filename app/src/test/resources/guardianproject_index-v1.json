@@ -328,7 +328,7 @@
                 "apkName": "Courier-0.1.8.apk",
                 "hash": "e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -336,7 +336,7 @@
                 "packageName": "info.guardianproject.courier",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 16536125,
-                "targetSdkVersion": "15",
+                "targetSdkVersion":  15,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -379,7 +379,7 @@
                 "apkName": "Courier-0.1.9.apk",
                 "hash": "bf6566da1f90831887f5bf5605f8d816b1f7f694969459dec599b8bc01a827d3",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -387,7 +387,7 @@
                 "packageName": "info.guardianproject.courier",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 16484753,
-                "targetSdkVersion": "15",
+                "targetSdkVersion":  15,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -432,11 +432,11 @@
                 "apkName": "CACertMan-0.0.2-alpha-20111011.apk",
                 "hash": "251ebd40ce4a281a2292692707fb1e9c91428994cbad80a416a297db51069eb8",
                 "hashType": "sha256",
-                "minSdkVersion": "7",
+                "minSdkVersion":  7,
                 "packageName": "info.guardianproject.cacert",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 172263,
-                "targetSdkVersion": "7",
+                "targetSdkVersion":  7,
                 "versionCode": 4,
                 "versionName": "0.0.2.20111012"
             },
@@ -445,11 +445,11 @@
                 "apkName": "CACertMan-0.0.2-20110906.apk",
                 "hash": "c217c49abe5134007ceb2623a6189a73fa02af9d2b2bbcc5cbc4cb5da7b36a5d",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.cacert",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 170305,
-                "targetSdkVersion": "8",
+                "targetSdkVersion":  8,
                 "versionCode": 3,
                 "versionName": "0.0.2-20110906"
             }
@@ -460,11 +460,11 @@
                 "apkName": "ChatSecureVoiceMessaging-0.2.apk",
                 "hash": "abae18cc9cfa62fca5dce072c4c50d41b4fece506967ce9a3e2711cd1031dbee",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "packageName": "info.guardianproject.soundrecorder",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 394212,
-                "targetSdkVersion": "10",
+                "targetSdkVersion":  10,
                 "uses-permission": [
                     [
                         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -497,11 +497,11 @@
                 "apkName": "Orweb-release-0.6.1.apk",
                 "hash": "103f4a98fa282923c07e445b2a383e946b6c15e10ed08005af3d0743249a0359",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "packageName": "info.guardianproject.browser",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 931433,
-                "targetSdkVersion": "19",
+                "targetSdkVersion":  19,
                 "uses-permission": [
                     [
                         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -524,11 +524,11 @@
                 "apkName": "Orweb-0.7.1.apk",
                 "hash": "949d65d6e8a1eadd0aa626bdc7c5a3e2b0dbe5a38dea1d725cce2a34ec84f0d4",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "packageName": "info.guardianproject.browser",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 2424394,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -551,11 +551,11 @@
                 "apkName": "Orweb-release-0.7.apk",
                 "hash": "763541f43f5dc136744b4361fe67d36f25cc036526d6c3e934287d72d1b411ab",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "packageName": "info.guardianproject.browser",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1244875,
-                "targetSdkVersion": "18",
+                "targetSdkVersion":  18,
                 "uses-permission": [
                     [
                         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -580,7 +580,7 @@
                 "apkName": "NoteCipher-beta-0.1.apk",
                 "hash": "b560a3d6364c32990ea7505f53b019f64fde597d67513f41a50e7d034af48caa",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -588,7 +588,7 @@
                 "packageName": "info.guardianproject.notepadbot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 7321123,
-                "targetSdkVersion": "19",
+                "targetSdkVersion":  19,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -611,14 +611,14 @@
                 "apkName": "NoteCipher-0.0.7.apk",
                 "hash": "8fa7536a87634c6b3441053c4f16315e4fd5aa6ef672a0026a594c107308d7bf",
                 "hashType": "sha256",
-                "minSdkVersion": "7",
+                "minSdkVersion":  7,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "info.guardianproject.notepadbot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 3731119,
-                "targetSdkVersion": "17",
+                "targetSdkVersion":  17,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -637,14 +637,14 @@
                 "apkName": "NoteCipher-0.0.7.1.apk",
                 "hash": "da518f13206d2218234bfcc83205b7b2b81ec67a4cc448f818c617332235e700",
                 "hashType": "sha256",
-                "minSdkVersion": "11",
+                "minSdkVersion":  11,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "info.guardianproject.notepadbot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 3729342,
-                "targetSdkVersion": "17",
+                "targetSdkVersion":  17,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -665,14 +665,14 @@
                 "apkName": "Orfox-1.2.1-TorBrowser-6.5-Fennec45.5.1-build2.apk",
                 "hash": "d43032e79c7c31cabb194b8c1c4b14fbf73dd2cfda958ba415879ddf2f38ace2",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi-v7a"
                 ],
                 "packageName": "info.guardianproject.orfox",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 35273126,
-                "targetSdkVersion": "22",
+                "targetSdkVersion":  22,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -743,14 +743,14 @@
                 "apkName": "Orfox-1.2-TorBrowser-6.5-Fennec45.4.0.apk",
                 "hash": "9b5f6614b94a47ae561e8c974d42056ba6cb6da520766deda09aec3699aeff94",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi-v7a"
                 ],
                 "packageName": "info.guardianproject.orfox",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 35242066,
-                "targetSdkVersion": "22",
+                "targetSdkVersion":  22,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -823,11 +823,11 @@
                 "apkName": "ChatSecurePluginOpenEmoji-release-v1.apk",
                 "hash": "131c1ebaf795c3f053701285699f0b7e517de1c7fdba56e247b1ec31766b2808",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.chatsecure.emoji.core",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1814271,
-                "targetSdkVersion": "17",
+                "targetSdkVersion":  17,
                 "versionCode": 1,
                 "versionName": "1.0"
             }
@@ -838,14 +838,14 @@
                 "apkName": "PixelKnot-release-0.3.1.apk",
                 "hash": "a3101fe8a2d47ab205cb00459fa62c639a6fac4538f6cd9d06eb48d2965c4d21",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "info.guardianproject.pixelknot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 3976822,
-                "targetSdkVersion": "17",
+                "targetSdkVersion":  17,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -868,7 +868,7 @@
                 "apkName": "PixelKnot-release-1.0.0.apk",
                 "hash": "f97557cf7ec81ade50c308c5552dc6dc827d0e02ce90f84b1df6b7477d9f5a39",
                 "hashType": "sha256",
-                "minSdkVersion": "17",
+                "minSdkVersion":  17,
                 "nativecode": [
                     "arm64-v8a",
                     "armeabi",
@@ -881,7 +881,7 @@
                 "packageName": "info.guardianproject.pixelknot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1983586,
-                "targetSdkVersion": "25",
+                "targetSdkVersion":  25,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -908,14 +908,14 @@
                 "apkName": "PixelKnot-release-0.3.3.apk",
                 "hash": "6beede8519a9e87ba8edaa5a76f203cfefd5f39eb911e789031cc6e911714b89",
                 "hashType": "sha256",
-                "minSdkVersion": "14",
+                "minSdkVersion":  14,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "info.guardianproject.pixelknot",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 4751233,
-                "targetSdkVersion": "17",
+                "targetSdkVersion":  17,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -940,7 +940,7 @@
                 "apkName": "CameraV-release-0.2.4.apk",
                 "hash": "a10eefaed5a12c353525b07e655f6959fe1eb06cd5c549be56afaca6db0c6ce0",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "armeabi",
                     "armeabi-v7a",
@@ -949,7 +949,7 @@
                 "packageName": "org.witness.informacam.app",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 24062229,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.KILL_BACKGROUND_PROCESSES",
@@ -1036,7 +1036,7 @@
                 "apkName": "CameraVApp-release-0.2.6.apk",
                 "hash": "508f453e26c8c83dba858b53b21d909d549fe5646d01eb198c96c22d8e521e7c",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "armeabi",
                     "armeabi-v7a",
@@ -1045,7 +1045,7 @@
                 "packageName": "org.witness.informacam.app",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 24123646,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.KILL_BACKGROUND_PROCESSES",
@@ -1132,7 +1132,7 @@
                 "apkName": "CameraVApp-release-0.2.2.apk",
                 "hash": "8b17cbe2a5cb777b49f5ef67a390f9d9d68765c90213ac64f3ca0456860dc9b7",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "armeabi",
                     "armeabi-v7a",
@@ -1141,7 +1141,7 @@
                 "packageName": "org.witness.informacam.app",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 24283932,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.KILL_BACKGROUND_PROCESSES",
@@ -1230,11 +1230,11 @@
                 "apkName": "Checkey-0.1.2.apk",
                 "hash": "754701dbac52de5ca3930c2393970c03ef9aa07d1456911e9bf254d6014e0645",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.checkey",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 842881,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1249,11 +1249,11 @@
                 "apkName": "Checkey-0.1.1.apk",
                 "hash": "2d81f339bb69626af42e8868dc6928c9072ebcbae76e1ff5ac8172e78ebe9cdd",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.checkey",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 967083,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1268,11 +1268,11 @@
                 "apkName": "Checkey-0.1.apk",
                 "hash": "a8e3c102d5279a3029d0eebdeda2ffdbe1f8a3493ea7dbdc31a11affc708ee57",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.checkey",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 878679,
-                "targetSdkVersion": "19",
+                "targetSdkVersion":  19,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1289,11 +1289,11 @@
                 "apkName": "LilDebi-0.5.2-release.apk",
                 "hash": "07fa3dfb690e44eb540942ba2a51718c72351c91a253a56a0c90649f6d8903dd",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.lildebi",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1861790,
-                "targetSdkVersion": "19",
+                "targetSdkVersion":  19,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -1336,11 +1336,11 @@
                 "apkName": "LilDebi-0.5.3-release.apk",
                 "hash": "01c5a8e1fd778c141e70633d14f1b69228d6f492961098616e0446c116cf9e44",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.lildebi",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1879560,
-                "targetSdkVersion": "19",
+                "targetSdkVersion":  19,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -1383,12 +1383,12 @@
                 "apkName": "LilDebi-0.5.4-release.apk",
                 "hash": "2c490376d8853fae04e79541f5d61e66a42ed0e890208945a11036c4a7b111da",
                 "hashType": "sha256",
-                "maxSdkVersion": "20",
-                "minSdkVersion": "8",
+                "maxSdkVersion":  20,
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.lildebi",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1876705,
-                "targetSdkVersion": "20",
+                "targetSdkVersion":  20,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -1433,7 +1433,7 @@
                 "apkName": "ChatSecure-v14.2.2.apk",
                 "hash": "9d4620fec0c7837ddffccde7918d7a7db0976fbcd361b96659abd93b5cc0d9e3",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -1441,7 +1441,7 @@
                 "packageName": "info.guardianproject.otr.app.im",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 10502135,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.CHANGE_WIFI_MULTICAST_STATE",
@@ -1520,7 +1520,7 @@
                 "apkName": "ChatSecure-v14.2.3a.apk",
                 "hash": "36d7d71c8a2115bdd2bd63bb639af286ee3242cce11cdb5c53378d1a7f35528e",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -1528,7 +1528,7 @@
                 "packageName": "info.guardianproject.otr.app.im",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 10502397,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.CHANGE_WIFI_MULTICAST_STATE",
@@ -1607,7 +1607,7 @@
                 "apkName": "ChatSecure-v14.2.1.apk",
                 "hash": "f82a3a7a823f5540b335743eb1399d0fd1f61bc68958750b5ef6aa0d95ad9a54",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -1615,7 +1615,7 @@
                 "packageName": "info.guardianproject.otr.app.im",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 10463010,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.CHANGE_WIFI_MULTICAST_STATE",
@@ -1696,7 +1696,7 @@
                 "apkName": "Orbot-v15.2.0-RC-5-arm.apk",
                 "hash": "51c7e2b6a6de542e0d44f82d89ddf1d3216ec7a28297381ef15b12da2f3246f7",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "arm64-v8a",
                     "armeabi",
@@ -1705,7 +1705,7 @@
                 "packageName": "org.torproject.android",
                 "sig": "8bd7e51b479aeba908ff46ada3305a29",
                 "size": 7600548,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "uses-permission": [
                     [
                         "android.permission.ACCESS_SUPERUSER",
@@ -1732,7 +1732,7 @@
                 "apkName": "Orbot-v15.2.0-RC-7-multi.apk",
                 "hash": "8dc3edf0a9799eb23b5e478e15547e38831b28cc3e88b049aa5f41b7b72e7bf9",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "arm64-v8a",
                     "armeabi",
@@ -1742,7 +1742,7 @@
                 "packageName": "org.torproject.android",
                 "sig": "8bd7e51b479aeba908ff46ada3305a29",
                 "size": 12457510,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "uses-permission": [
                     [
                         "android.permission.ACCESS_SUPERUSER",
@@ -1769,7 +1769,7 @@
                 "apkName": "Orbot-v15.2.0-RC-8-multi.apk",
                 "hash": "3758e1b6e6b9a3b7848b253d08d6c0b1b1b3223184da4bd2ba1aaff8cf676357",
                 "hashType": "sha256",
-                "minSdkVersion": "16",
+                "minSdkVersion":  16,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -1777,7 +1777,7 @@
                 "packageName": "org.torproject.android",
                 "sig": "8bd7e51b479aeba908ff46ada3305a29",
                 "size": 12296544,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "uses-permission": [
                     [
                         "android.permission.ACCESS_SUPERUSER",
@@ -1806,14 +1806,14 @@
                 "apkName": "ObscuraCam-1.2-FINAL.apk",
                 "hash": "fc4b1e26b09ab79b1ab174e8985b89985a0110f9d97d2b0472e529c85e3a1d89",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "org.witness.sscphase1",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 1728825,
-                "targetSdkVersion": "8",
+                "targetSdkVersion":  8,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -1836,14 +1836,14 @@
                 "apkName": "ObscuraCam-2.0-RC2b.apk",
                 "hash": "eeea54985c96769524ec82fb1d3599b193a2d20d1f57f3afc4c97b11bd48df8f",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "nativecode": [
                     "armeabi"
                 ],
                 "packageName": "org.witness.sscphase1",
                 "sig": "a0eeebb161f946e3516945fae8a92a3e",
                 "size": 8240221,
-                "targetSdkVersion": "11",
+                "targetSdkVersion":  11,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -1880,11 +1880,11 @@
                 "apkName": "LocationPrivacy-0.3.apk",
                 "hash": "ec2b2c6e3a99422fbe8229711dfc7b741961c2ba7bc171c745818d8b76fc4d63",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "packageName": "info.guardianproject.locationprivacy",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 1130602,
-                "targetSdkVersion": "22",
+                "targetSdkVersion":  22,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1899,11 +1899,11 @@
                 "apkName": "LocationPrivacy-0.1.apk",
                 "hash": "130cfcc8b916682d974aa4e13385b47bdc23d07b0de852640563b880aeb61d1f",
                 "hashType": "sha256",
-                "minSdkVersion": "8",
+                "minSdkVersion":  8,
                 "packageName": "info.guardianproject.locationprivacy",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 818384,
-                "targetSdkVersion": "21",
+                "targetSdkVersion":  21,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1918,11 +1918,11 @@
                 "apkName": "LocationPrivacy-0.2.apk",
                 "hash": "3cad63152ef9b04e1c2b880c286a80c65c083880612aaa36c0c4480b96adfea8",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "packageName": "info.guardianproject.locationprivacy",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 1129409,
-                "targetSdkVersion": "22",
+                "targetSdkVersion":  22,
                 "uses-permission": [
                     [
                         "android.permission.INTERNET",
@@ -1939,11 +1939,11 @@
                 "apkName": "Ripple-0.1.apk",
                 "hash": "9fd24cbb3552123e6ee119f912f1646dd21cd7a683734a8d502d8b44854a284b",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "packageName": "info.guardianproject.ripple",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 1670285,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "versionCode": 2,
                 "versionName": "0.1"
             },
@@ -1952,11 +1952,11 @@
                 "apkName": "Ripple-0.0.apk",
                 "hash": "025894a5f3a39a288ee60bb6c9cc2c559d395f22fed020d1086308ba12df85a3",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "packageName": "info.guardianproject.ripple",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 1664407,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "versionCode": 1,
                 "versionName": "0.0"
             },
@@ -1965,11 +1965,11 @@
                 "apkName": "Ripple-0.2-release.apk",
                 "hash": "4b14b1b402f0197e1e6ffe2c11e052432fc8a52749f5f02d9cc67799658df239",
                 "hashType": "sha256",
-                "minSdkVersion": "10",
+                "minSdkVersion":  10,
                 "packageName": "info.guardianproject.ripple",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 1669315,
-                "targetSdkVersion": "23",
+                "targetSdkVersion":  23,
                 "versionCode": 75,
                 "versionName": "0.2"
             }
