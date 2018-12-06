@@ -47,7 +47,7 @@
                 "apkName": "Courier-0.1.8.apk",
                 "hash": "e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -56,7 +56,7 @@
                 "secret": "trying to sneak something in",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 16536125,
-                "targetSdkVersion": "15",
+                "targetSdkVersion":  15,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
@@ -99,7 +99,7 @@
                 "apkName": "Courier-0.0.apk",
                 "hash": "2353d1235e8da843fae5ac44be6152e513123e717e5c8a7b6d913d7720566b5a",
                 "hashType": "sha256",
-                "minSdkVersion": "9",
+                "minSdkVersion":  9,
                 "nativecode": [
                     "armeabi",
                     "x86"
@@ -107,7 +107,7 @@
                 "packageName": "info.guardianproject.courier",
                 "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
                 "size": 16536125,
-                "targetSdkVersion": "15",
+                "targetSdkVersion":  15,
                 "uses-permission": [
                     [
                         "android.permission.READ_EXTERNAL_STORAGE",
