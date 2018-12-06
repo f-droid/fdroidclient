@@ -135,7 +135,7 @@
                     android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
-            <!-- Install, Uninstall, Upgrade, Run buttons -->
+            <!-- Install, Uninstall, Update, Open buttons -->
             <LinearLayout
                 android:id="@+id/button_layout"
                 android:layout_width="match_parent"
@@ -170,7 +170,7 @@
                     android:layout_weight="0"
                     android:ellipsize="marquee"
                     app:textAllCaps="true"
-                    tools:text="Run"/>
+                    tools:text="Open"/>
             </LinearLayout>
         </RelativeLayout>
 

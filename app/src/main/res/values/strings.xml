@@ -122,7 +122,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="updates__tts__download_updates_for_all_apps">Download all updates</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">We found a vulnerability with %1$s. We recommend uninstalling this app immediately.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">We found a vulnerability with %1$s. We recommend upgrading to the newest version immediately.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">We found a vulnerability with %1$s. We recommend updating to the newest version immediately.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignore</string>
 
     <string name="updates__hide_updateable_apps">Hide apps</string>
@@ -174,7 +174,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>
 
-    <string name="menu_launch">Run</string>
+    <string name="menu_launch">Open</string>
     <string name="menu_open">Open</string>
     <string name="menu_share">Share</string>
     <string name="menu_install">Install</string>
@@ -188,7 +188,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_video">Video</string>
     <string name="menu_license">License: %s</string>
     <string name="menu_source">Source Code</string>
-    <string name="menu_upgrade">Upgrade</string>
+    <string name="menu_upgrade">Update</string>
     <string name="menu_downgrade">Downgrade</string>
     <string name="menu_donate">Donate</string>
     <string name="menu_bitcoin">Bitcoin</string>
@@ -406,7 +406,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
-    <string name="nearby_splash__find_people_button">Find people near me</string>
+    <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
