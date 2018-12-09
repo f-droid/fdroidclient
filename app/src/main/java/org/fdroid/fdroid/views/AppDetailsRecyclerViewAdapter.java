@@ -504,8 +504,8 @@ public class AppDetailsRecyclerViewAdapter
                 sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version,
                         suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
-                sbWhatsNew.append(app.whatsNew);
-                whatsNewView.setText(trimTrailingNewlines(sbWhatsNew));
+                sbWhatsNew.append(trimTrailingNewlines(Html.fromHtml(app.whatsNew)));
+                whatsNewView.setText(sbWhatsNew);
                 whatsNewView.setVisibility(View.VISIBLE);
 
                 // Set focus on the header section to prevent auto scrolling to
@@ -1091,7 +1091,7 @@ public class AppDetailsRecyclerViewAdapter
             Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
             if (repo != null) {
                 repository.setVisibility(View.VISIBLE);
-                repository.setText(String.format(repo.getName(), context.getString(R.string.app_repository)));
+                repository.setText(String.format(context.getString(R.string.app_repository), repo.getName()));
             } else {
                 repository.setVisibility(View.INVISIBLE);
             }

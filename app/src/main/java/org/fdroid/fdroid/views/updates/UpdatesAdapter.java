@@ -138,7 +138,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void toggleAllUpdateableApps() {
         showAllUpdateableApps = !showAllUpdateableApps;
         populateItems();
-        notifyDataSetChanged();
     }
 
     /**

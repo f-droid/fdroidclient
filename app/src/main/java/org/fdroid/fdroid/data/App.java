@@ -397,6 +397,16 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     /**
+     * In order to format all in coming descriptions before they are written
+     * out to the database and used elsewhere, this is needed to intercept
+     * the setting of {@link App#description} to insert the format method.
+     */
+    @JsonProperty("description")
+    private void setDescription(String description) { // NOPMD
+        this.description = formatDescription(description);
+    }
+
+    /**
      * Parses the {@code localized} block in the incoming index metadata,
      * choosing the best match in terms of locale/language while filling as
      * many fields as possible.  It first sets up a locale list based on user

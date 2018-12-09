@@ -184,11 +184,11 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textIsSelectable="true"
@@ -215,11 +215,11 @@
             android:id="@+id/label_anti_features"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:scrollbars="none"
             android:text="@string/antifeatures"
             android:textStyle="bold"
@@ -230,23 +230,24 @@
             android:id="@+id/text_anti_features"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:scrollbars="none"
-            tools:text="\t• This app tracks and reports your activity."
+            tools:text="This app tracks and reports your activity."
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/description_more"
+            style="@style/DetailsMoreButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
             android:text="@string/more"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            style="@style/DetailsMoreButtonStyle" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
