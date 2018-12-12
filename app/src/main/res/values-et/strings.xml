@@ -115,7 +115,7 @@
     </string>
     <string name="menu_settings">Seaded</string>
     <string name="menu_search">Otsi</string>
-    <string name="menu_launch">Käivita</string>
+    <string name="menu_launch">Ava</string>
     <string name="menu_share">Jaga</string>
     <string name="menu_install">Paigalda</string>
     <string name="menu_uninstall">Eemalda</string>
@@ -136,7 +136,7 @@
     <string name="install_confirm_update_system_no_perms">Kas sa soovid paigaldada värskenduse sellele sisse ehitatud
         rakendusele? Sinu olemasolevad andmed jäävad ales. Värskendatud rakendus ei vaja erilist ligipääsu.
     </string>
-    <string name="menu_upgrade">Uuenda</string>
+    <string name="menu_upgrade">Värskenda</string>
     <string name="menu_donate">Toeta</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>

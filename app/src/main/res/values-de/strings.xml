@@ -43,7 +43,7 @@
     <string name="menu_manage">Paketquellen</string>
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Paketquelle hinzufügen</string>
-    <string name="menu_launch">Starten</string>
+    <string name="menu_launch">Öffnen</string>
     <string name="menu_share">Empfehlen</string>
     <string name="menu_install">Installieren</string>
     <string name="menu_uninstall">Entfernen</string>
@@ -459,7 +459,7 @@
     <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">In „%1$s” wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu deinstallieren.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">In „%1$s” wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu aktualisieren.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">In „%1$s” wurde eine Sicherheitslücke festgestellt. Es wird empfohlen, diese App unverzüglich zu aktualisieren.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorieren</string>
 
     <string name="privacy">Datenschutz</string>

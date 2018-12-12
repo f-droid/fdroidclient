@@ -43,7 +43,7 @@
     <string name="menu_manage">Pakkebrønner</string>
     <string name="menu_search">Søk</string>
     <string name="menu_add_repo">Ny pakkebrønn</string>
-    <string name="menu_launch">Kjør</string>
+    <string name="menu_launch">Åpne</string>
     <string name="menu_share">Del</string>
     <string name="menu_install">Installer</string>
     <string name="menu_uninstall">Avinstaller</string>

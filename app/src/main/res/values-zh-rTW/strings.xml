@@ -67,7 +67,7 @@
     <string name="invalid_url">無效的網址。</string>
     <string name="menu_settings">設定</string>
     <string name="menu_search">搜尋</string>
-    <string name="menu_launch">執行</string>
+    <string name="menu_launch">開啟</string>
     <string name="menu_share">分享</string>
     <string name="menu_install">安裝</string>
     <string name="menu_uninstall">解除安裝</string>
@@ -384,7 +384,7 @@
     <string name="app_list__name__successfully_installed">已安裝 %1$s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">沒有網路嗎？從您附近的人下載應用程式！
 </string>
-    <string name="nearby_splash__find_people_button">找我附近的人</string>
+    <string name="nearby_splash__find_people_button">找附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">雙方都需要 %1$s 才能在附近使用。</string>
 
     <string name="latest__empty_state__no_recent_apps">找不到最近使用的應用程式</string>
@@ -438,7 +438,7 @@
     <string name="app_list__dismiss_downloading_app">已取消下載</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">我們發現了 %1$s 的漏洞，建議您立即解除安裝此應用程式。</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">我們發現了 %1$s 的漏洞，建議您立即更新至最新版本。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">我們發現了 %1$s 的漏洞，建議您進行更新至最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
 
     <string name="privacy">隱私權</string>

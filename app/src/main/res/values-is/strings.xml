@@ -70,7 +70,7 @@
     <string name="menu_search">Leita</string>
     <string name="menu_add_repo">Nýtt hugbúnaðarsafn</string>
 
-    <string name="menu_launch">Keyra</string>
+    <string name="menu_launch">Opna</string>
     <string name="menu_share">Deila</string>
     <string name="menu_install">Setja inn</string>
     <string name="menu_uninstall">Fjarlægja</string>
@@ -441,7 +441,7 @@
     <string name="antifeatures">Neikvæðir eiginleikar</string>
     <string name="download_404">Umbeðin skrá fannst ekki.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ekkert Internet? Fáðu forrit frá fólki í nágrenninu!</string>
-    <string name="nearby_splash__find_people_button">Finna fólk nálægt mér</string>
+    <string name="nearby_splash__find_people_button">Finna fólk í nágrenninu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Báðir aðilar þurfa %1$s til að nota í nálægð.</string>
 
     <string name="app__tts__downloading_progress">Hleð niður, %1$d%% lokið</string>

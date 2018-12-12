@@ -44,7 +44,7 @@
     <string name="menu_manage">Depòsitos</string>
     <string name="menu_search">Chirca</string>
     <string name="menu_add_repo">Depòsitu nou</string>
-    <string name="menu_launch">Allughe</string>
+    <string name="menu_launch">Aberi</string>
     <string name="menu_share">Cumpartzi</string>
     <string name="menu_install">Installa</string>
     <string name="menu_uninstall">Disinstalla</string>
@@ -555,7 +555,7 @@
 
     <string name="send_installed_apps">Cumpartzi sas aplicatziones installadas</string>
     <string name="send_installed_apps_csv">Aplicatziones installadas dae F-Droid comente unu documentu CSV</string>
-    <string name="menu_open">Abertu</string>
+    <string name="menu_open">Aberi</string>
     <string name="about_forum">Forum de suportu</string>
     <string name="app_suggested">Cunsigiadas</string>
     <string name="app_size">Mannària: %1$s</string>

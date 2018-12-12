@@ -92,7 +92,7 @@
     <string name="bad_fingerprint">Невірний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє вашу активність</string>
-    <string name="antinonfreedeplist">Цей застосунок залежить від іншого не-безкоштовного застосунку</string>
+    <string name="antinonfreedeplist">Цей застосунок залежить від іншого не-вільного застосунку</string>
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
 
     <string name="local_repo">Локальна комора даних</string>
@@ -178,9 +178,9 @@
     <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Ігнорування неправильного URI комори даних: %s</string>
 
-    <string name="antinonfreeadlist">Цей застосунок пропонує не-безкоштовні надбудови</string>
-    <string name="antinonfreenetlist">Цей застосунок пропонує не-безкоштовні мережеві послуги</string>
-    <string name="antiupstreamnonfreelist">Вихідний код випуску не повністю безкоштовний</string>
+    <string name="antinonfreeadlist">Цей застосунок пропонує не-вільні надбудови</string>
+    <string name="antinonfreenetlist">Цей застосунок пропонує не-вільні мережеві послуги</string>
+    <string name="antiupstreamnonfreelist">Вихідний код випуску не є повністю вільним</string>
 
     <string name="display">Вигляд</string>
 
@@ -273,7 +273,7 @@
     <string name="crash_dialog_title">F-Droid зазнав збою</string>
     <string name="crash_dialog_text">Сталася неочікувана помилка, змусивши застосунок зупинитися. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
     <string name="crash_dialog_comment_prompt">Можете ввести додаткову інформацію та коментарі тут:</string>
-    <string name="antinonfreeassetslist">Цей застосунок містить не-безкоштовні активи</string>
+    <string name="antinonfreeassetslist">Цей застосунок містить не-вільні ресурси</string>
 
     <string name="menu_email">Написати листа авторові</string>
     <string name="useTor">Використовувати Tor</string>

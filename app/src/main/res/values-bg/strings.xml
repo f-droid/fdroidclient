@@ -68,7 +68,7 @@
     <string name="expert_on">Показва допълнителна информация и настройки</string>
     <string name="search_hint">Търсене на приложения</string>
     <string name="appcompatibility">Съвместимост на приложението</string>
-    <string name="show_incompat_versions">Несъвместими версии</string>
+    <string name="show_incompat_versions">Включи несъвместими версии</string>
     <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството</string>
     <string name="local_repo">Локално хранилище</string>
     <string name="deleting_repo">Изтриване на хранилището…</string>
@@ -102,10 +102,8 @@
         трябва да го активирате.
     </string>
     <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
-    <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в
-        F-Droid.
-        Бележка: Всички вече инсталирани приложения ще останат на устройството.
-    </string>
+    <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.
+\nБележка: Всички вече инсталирани приложения ще останат на устройството.</string>
     <string name="repo_disabled_notification">\"%1$s\" е деактивирано. За да инсталирате приложения от него ще трябва да
         го активирате наново.
     </string>
@@ -152,8 +150,8 @@
     <string name="loading">Зареждане…</string>
     <string name="allPerms">Всички</string>
     <string name="perm_costs_money">Може да ви струва пари</string>
-    <string name="interval_never">Никога</string>
-    <string name="interval_1h">Всеки час</string>
+    <string name="interval_never">Без автоматични актуализации</string>
+    <string name="interval_1h">Проверка за актуализации на всеки час</string>
     <string name="interval_1d">Всеки ден</string>
     <string name="interval_4h">През 4 часа</string>
     <string name="interval_12h">През 12 часа</string>
@@ -181,16 +179,14 @@
         F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите,
         който ползвате.
     </string>
-    <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични версии.</string>
+    <string name="empty_can_update_app_list">Поздравления!
+\nВсички приложения са актуализирани до последните налични версии.</string>
 
     <string name="install_confirm">има нужда от достъп до</string>
     <string name="install_confirm_update">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_system">Потвърдете актуализацията на вграденото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_no_perms">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия не изисква разрешения за достъп.</string>
-    <string name="install_confirm_update_system_no_perms">Желаете ли актуализацията за вграденото приложение да бъде
-        инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за
-        достъп.
-    </string>
+    <string name="install_confirm_update_system_no_perms">Желаете ли актуализацията на вграденото приложение да бъде инсталирана\? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за достъп.</string>
     <string name="swap_send_fdroid">Изпрати F-Droid</string>
     <string name="swap_scan_qr">Сканирай QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
@@ -295,9 +291,7 @@
     <string name="update_auto_download">Автоматично изтегляне на актуализации</string>
     <string name="update_auto_install">Автоматично инсталиране на актуализации</string>
     <string name="keep_install_history">Запазване на история за инсталираните приложения</string>
-    <string name="keep_install_history_summary">Запазване на дневник за всички инсталирани и деинсталирани приложение
-        във F-Droid
-    </string>
+    <string name="keep_install_history_summary">Запазване на дневник за всички инсталирани и деинсталирани приложения</string>
     <string name="update_auto_download_summary">Обновленията се свалят автоматично и получавате известие за да ги
         инсталирате
     </string>
@@ -470,4 +464,37 @@
     <string name="panic_destructive_actions">Унищожителни действия</string>
     <string name="panic_hide_title">Скриване на %s</string>
     <string name="panic_hide_summary">Приложението ще се скрие само</string>
-</resources>
+<string name="prompt_to_send_crash_reports">Питай дали да се изпраща отчет за срив</string>
+    <string name="prompt_to_send_crash_reports_summary">Събирай данни за сривове и предлагай да бъдат изпращани на разработчика</string>
+    <string name="hide_all_notifications">Скрий всички известия</string>
+    <string name="hide_all_notifications_summary">Спри показването на всички действия в статус лентата и лентата за уведомления.</string>
+    <string name="send_install_history">Изпрати история на Инсталирането</string>
+    <string name="send_history_csv">%s история на инсталрането като csv файл</string>
+    <string name="install_history">История на Инсталирането</string>
+    <string name="install_history_summary">Покажи частния журнал на всяка инсталация и деинсталация</string>
+    <string name="send_version_and_uuid">Изпрати версия и UUID към сървърите</string>
+    <string name="allow_push_requests">Разреши на хранилищата да инсталират/деинсталират приложения</string>
+    <string name="allow_push_requests_summary">Метаданни от хранилищата могат да включват заявки за инсталиране или деинсталиране на приложения</string>
+    <string name="over_wifi">Чрез Wi-Fi</string>
+    <string name="over_data">Чрез данни</string>
+    <string name="over_network_always_summary">Винаги използвай тази връзка когато е възможно</string>
+    <string name="over_network_on_demand_summary">Използвай тази връзка само когато избера Изтегли</string>
+    <string name="over_network_never_summary">Никога не използвай тази връзка за изтегляне</string>
+    <string name="app_suggested">Предложено</string>
+    <string name="app_size">Размер: %1$s</string>
+
+    <string name="send_installed_apps">Сподели инсталираните приложения</string>
+    <string name="send_installed_apps_csv">Приложенията инсталирани от F-Droid като CSV файл</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Игнорирай</string>
+
+    <string name="repo_add_mirror">Добави огледално хранилище</string>
+    <string name="sort_search">Сортирай търсенето</string>
+
+    <string name="menu_open">Отвори</string>
+    <string name="antiknownvulnlist">Това приложение има познат проблем със сигурността</string>
+    <string name="show_anti_feature_apps">Включи приложенията с anti-feature</string>
+    <string name="show_anti_feature_apps_on">Покажи приложения които имат anti-features</string>
+    <string name="hiding_calculator">Калкулатор</string>
+    <string name="hiding_dialog_title">Скрий %s Сега</string>
+    <string name="use_bluetooth">Използвай Bluetooth</string>
+    </resources>

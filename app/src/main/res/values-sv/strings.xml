@@ -240,10 +240,7 @@
 
     <string name="install_confirm">behöver åtkomst till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering
-        till denna inbyggda app? Befintlig data försvinner inte.
-        Den uppdaterade appen kommer att få åtkomst till:
-    </string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering till denna inbyggda app\? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
     <string name="install_confirm_update_no_perms">Vill du installera en uppdatering
         till denna befintlig app? Din befintliga data försvinner inte.
         Den kräver inte någon särskild åtkomst.
@@ -338,7 +335,7 @@
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Installationen lyckades</string>
+    <string name="notification_content_single_installed">Installerades framgångsrikt</string>
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
@@ -479,7 +476,7 @@
     <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att gömma appen</string>
 
 <string name="over_wifi">Över Wi-Fi</string>
-    <string name="over_data">Över data</string>
+    <string name="over_data">Över mobildata</string>
     <string name="over_network_always_summary">Använd alltid den här anslutningen när den är tillgänglig</string>
     <string name="over_network_on_demand_summary">Använd endast den här anslutningen när jag klickar för att ladda ner</string>
     <string name="over_network_never_summary">Ladda aldrig ner något via den här anslutningen</string>
@@ -517,7 +514,7 @@
     <string name="send_install_history">Skicka installationshistorik</string>
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
     <string name="allow_push_requests">Tillåt filförråd att installera/avinstallera appar</string>
-    <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Data/WiFi-inställningar</string>
+    <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Mobildata/Wi-Fi-inställningar</string>
 
     <string name="send_installed_apps">Dela installerade appar</string>
     <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>

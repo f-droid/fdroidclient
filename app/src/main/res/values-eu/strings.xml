@@ -32,7 +32,7 @@
     <string name="menu_manage">Kudeatu biltegiak</string>
     <string name="menu_search">Bilatu</string>
     <string name="menu_add_repo">Biltegi berria</string>
-    <string name="menu_launch">Exekutatu</string>
+    <string name="menu_launch">Ireki</string>
     <string name="menu_share">Partekatu</string>
     <string name="menu_install">Instalatu</string>
     <string name="menu_uninstall">Desinstalatu</string>
@@ -41,7 +41,7 @@
     <string name="menu_website">Webgunea</string>
     <string name="menu_issues">Arazoak</string>
     <string name="menu_source">Iturburu-kodea</string>
-    <string name="menu_upgrade">Bertsio-berritu</string>
+    <string name="menu_upgrade">Eguneratu</string>
     <string name="menu_donate">Egin dohaintza</string>
     <string name="details_notinstalled">Instalatu gabe</string>
     <string name="antiadslist">Aplikazio honek iragarkiak ditu</string>
@@ -428,7 +428,7 @@
     <string name="categories__empty_state__no_categories">Ez dago kategoriarik erakusteko</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Internetik ez? Eskuratu aplikazioak inguruko jendearengandik!</string>
-    <string name="nearby_splash__find_people_button">Aurkitu inguruko jendea</string>
+    <string name="nearby_splash__find_people_button">Aurkitu jendea inguruan</string>
     <string name="nearby_splash__both_parties_need_fdroid">Biek %1$s erabili behar dute inguruan elkar aurkitzeko.</string>
 
     <string name="app__tts__downloading_progress">Deskargatzen, %1$d%% osatua</string>
