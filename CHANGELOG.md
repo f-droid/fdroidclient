@@ -1,4 +1,8 @@
-### 1.5-alpha0 (2018-10-19)
+### 1.5-alpha1 (2018-10-19)
+
+* UX and language cleanup of App Details
+
+### 1.5-alpha0 (2018-12-12)
 
 * add repos via additional_repos.xml from ROM, OEM, Vendor.
 
