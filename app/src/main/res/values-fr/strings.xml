@@ -47,7 +47,7 @@
     <string name="menu_manage">Dépôts</string>
     <string name="menu_search">Rechercher</string>
     <string name="menu_add_repo">Nouveau dépôt</string>
-    <string name="menu_launch">Lancer</string>
+    <string name="menu_launch">Ouvrir</string>
     <string name="menu_share">Partager</string>
     <string name="menu_install">Installer</string>
     <string name="menu_uninstall">Désinstaller</string>
@@ -376,11 +376,11 @@
     <string name="antifeatures">Fonctionnalités problématiques</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Afficher (%d)</item>
-	<item quantity="other">Afficher tout (%d)</item>
+	<item quantity="other">Tout afficher (%d)</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez les applications depuis les appareils de votre entourage !</string>
-    <string name="nearby_splash__find_people_button">Trouvez des personnes autour de vous</string>
+    <string name="nearby_splash__find_people_button">Rechercher des personnes à proximité</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
 
     <string name="tts_category_name">Catégorie %1$s</string>
@@ -454,7 +454,7 @@
     <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons trouvé une vulnérabilité dans %1$s. Nous recommandons de désinstaller cette application immédiatement.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons trouvé une vulnérabilité dans %1$s. Nous recommandons de mettre à jour vers la nouvelle version immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons trouvé une vulnérabilité dans %1$s. Nous recommandons d\'installer la nouvelle version immédiatement.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     <string name="privacy">Vie privée</string>
@@ -535,7 +535,7 @@
 
     <string name="send_installed_apps_csv">Applis installées via F-Droid comme fichier CSV</string>
     <string name="about_forum">Forum d\'assistance</string>
-    <string name="app_suggested">Suggéré</string>
+    <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
 
     <string name="menu_downgrade">Rétrograder</string>

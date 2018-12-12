@@ -45,7 +45,7 @@
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
-    <string name="menu_launch">Ejecutar</string>
+    <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
@@ -54,7 +54,7 @@
     <string name="menu_website">Página web</string>
     <string name="menu_issues">Incidencias</string>
     <string name="menu_source">Código fuente</string>
-    <string name="menu_upgrade">Actualización (a nueva versión)</string>
+    <string name="menu_upgrade">Actualizar</string>
     <string name="menu_donate">Donar</string>
     <string name="details_notinstalled">No instalado</string>
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
@@ -397,7 +397,7 @@
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado</string>
     <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes Internet? ¡Descarga aplicaciones de gente cercana!</string>
-    <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
+    <string name="nearby_splash__find_people_button">Encontrar personas cerca</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
 
     <string name="latest__empty_state__no_recent_apps">No se encontraron aplicaciones recientes</string>

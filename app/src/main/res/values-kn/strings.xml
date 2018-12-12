@@ -80,4 +80,16 @@
     <string name="other">ಇತರೆ</string>
 
     <string name="delete">ಅಳಿಸು</string>
-</resources>
+<string name="main_menu__categories">ವಿಂಗಡಣೆಗಳು</string>
+    <string name="category_Internet">ಅಂತರ್ಜಾಲ</string>
+    <string name="category_Money">ಹಣ</string>
+    <string name="category_Reading">ಓದು</string>
+    <string name="category_Science_Education">ವಿಜ್ಞಾನ ಮತ್ತು ಶಿಕ್ಷಣ</string>
+    <string name="category_Writing">ಬರವಣಿಗೆ</string>
+
+    <string name="newPerms">ನವೀನ</string>
+    <string name="notification_action_cancel">ತ್ಯಜಿಸು</string>
+    <string name="app_list__name__downloading_in_progress">%1$s ಇಳಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="updates__tts__download_app">ಇಳಿಸು</string>
+    <string name="repo_details">ಭಂಡಾರ</string>
+    </resources>

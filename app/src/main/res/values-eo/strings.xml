@@ -27,7 +27,7 @@
     <string name="menu_manage">Deponejoj</string>
     <string name="menu_search">Serĉi</string>
     <string name="menu_add_repo">Nova deponejo</string>
-    <string name="menu_launch">Lanĉi</string>
+    <string name="menu_launch">Malfermi</string>
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_install">Instali</string>
     <string name="menu_uninstall">Malinstali</string>
@@ -452,7 +452,7 @@
     <string name="app_list__dismiss_downloading_app">Elŝuto nuligita</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi ĝin al la plej nova versio.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Oni trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi ĝin al la plej nova versio.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
 
     <string name="privacy">Privateco</string>

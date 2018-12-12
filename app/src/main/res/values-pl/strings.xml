@@ -34,13 +34,13 @@
     <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
     <string name="menu_search">Szukaj</string>
     <string name="menu_add_repo">Nowe repozytorium</string>
-    <string name="menu_launch">Uruchom</string>
+    <string name="menu_launch">Otwórz</string>
     <string name="menu_share">Udostępnij</string>
     <string name="menu_install">Zainstaluj</string>
     <string name="menu_uninstall">Odinstaluj</string>
     <string name="menu_ignore_this">Ignoruj tę aktualizację</string>
     <string name="menu_website">Strona internetowa</string>
-    <string name="menu_upgrade">Zaktualizuj</string>
+    <string name="menu_upgrade">Aktualizuj</string>
     <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
@@ -405,7 +405,7 @@
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s zainstalowano</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu? Pobierz aplikacje od ludzi w pobliżu!</string>
-    <string name="nearby_splash__find_people_button">Znajdź ludzi w pobliżu</string>
+    <string name="nearby_splash__find_people_button">Znajdź osoby w pobliżu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć pobliskiej wymiany.</string>
 
     <string name="latest__empty_state__no_recent_apps">Brak najnowszych aplikacji</string>
@@ -477,7 +477,7 @@
     <string name="app_list__dismiss_downloading_app">Anulowano pobieranie</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Znaleziono podatność bezpieczeństwa w %1$s. Zaleca się bezzwłocznie odinstalować tę aplikację.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Znaleziono podatność bezpieczeństwa w %1$s. Zaleca się bezzwłocznie zaktualizować aplikację do najnowszej wersji.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Zidentyfikowaliśmy lukę w zabezpieczeniach w %1$s. Zalecamy natychmiastowe uaktualnienie do najnowszej wersji.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoruj</string>
 
     <string name="privacy">Prywatność</string>

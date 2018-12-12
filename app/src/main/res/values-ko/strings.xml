@@ -43,7 +43,7 @@
     <string name="menu_manage">저장소</string>
     <string name="menu_search">검색</string>
     <string name="menu_add_repo">새로운 저장소</string>
-    <string name="menu_launch">실행</string>
+    <string name="menu_launch">열기</string>
     <string name="menu_share">공유</string>
     <string name="menu_install">설치</string>
     <string name="menu_uninstall">제거</string>
@@ -52,7 +52,7 @@
     <string name="menu_website">웹사이트</string>
     <string name="menu_issues">이슈</string>
     <string name="menu_source">소스 코드</string>
-    <string name="menu_upgrade">업그레이드</string>
+    <string name="menu_upgrade">업데이트</string>
     <string name="menu_donate">기부</string>
     <string name="details_notinstalled">설치되지 않음</string>
     <string name="antiadslist">이 앱에는 광고를 포함합니다</string>
@@ -362,7 +362,7 @@
     </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">인터넷이 안되나요? 근처 사람들로부터 앱을 받으세요!</string>
-    <string name="nearby_splash__find_people_button">내 근처의 사람들 찾기</string>
+    <string name="nearby_splash__find_people_button">근처 사람들 찾기</string>
     <string name="nearby_splash__both_parties_need_fdroid">근처에 사용할 양 당사자는 %1$s가 필요합니다.</string>
 
     <string name="app__tts__downloading_progress">다운로드 중, %1$d%% 완료</string>
@@ -415,7 +415,7 @@
 
     <string name="app_list__dismiss_vulnerable_app">취약점이 무시됨</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 이 앱을 제거할 것을 권장합니다.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 최신 버전으로 업그레이드할 것을 권장합니다.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 최신 버전으로 업데이트할 것을 권장합니다.</string>
     <string name="antifeatures">안티 기능</string>
     <string name="privacy">개인정보 보호</string>
     <string name="preventScreenshots_title">스크린샷 방지</string>

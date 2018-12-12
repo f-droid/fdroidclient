@@ -14,8 +14,8 @@
     <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
     <string name="notify">Mostra aggiornamenti disponibili</string>
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
-    <string name="system_installer">Estensione priviliegiata</string>
-    <string name="system_installer_on">Usa l\'estensione privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
+    <string name="system_installer">Estensione Privilegiata</string>
+    <string name="system_installer_on">Usa l\'Estensione Privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
     <string name="local_repo_name">Nome del tuo repo locale</string>
     <string name="local_repo_name_summary">Il titolo visualizzato del tuo repo: %s</string>
     <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repo locali</string>
@@ -45,7 +45,7 @@
     <string name="menu_manage">Repository</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nuovo repository</string>
-    <string name="menu_launch">Avvia</string>
+    <string name="menu_launch">Apri</string>
     <string name="menu_share">Condividi</string>
     <string name="menu_install">Installa</string>
     <string name="menu_uninstall">Disinstalla</string>
@@ -431,7 +431,7 @@
     <string name="app__tts__downloading_progress">Scaricamento, %1$d%% completato</string>
     <string name="download_404">Il file richiesto non è stato trovato.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Senza Internet? Ottieni le app da persone vicine a te!</string>
-    <string name="nearby_splash__find_people_button">Trova persone vicine a me</string>
+    <string name="nearby_splash__find_people_button">Trova persone nelle vicinanze</string>
     <string name="nearby_splash__both_parties_need_fdroid">Entrambe le parti hanno bisogno di %1$s per l\'uso nelle vicinanze.</string>
 
     <plurals name="notification_summary_more">
@@ -466,7 +466,7 @@
     <string name="app_list__dismiss_downloading_app">Download annullato</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo di disinstallare questa applicazione immediatamente.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo di aggiornare all\'ultima versione immediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo immediatamente di aggiornare all\'ultima versione.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
 
     <string name="privacy">Privacy</string>
