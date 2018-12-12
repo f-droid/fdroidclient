@@ -66,7 +66,7 @@
 
     <string name="app_installed">Yettusbedd</string>
     <string name="app_not_installed">Ur yebdid ara</string>
-    <string name="app__newly_added">Amaynut</string>
+    <string name="app_new">Amaynut</string>
     <string name="added_on">Yettwarna ar %s</string>
     <string name="app__tts__cancel_download">Sefsex asider</string>
     <string name="app__install_downloaded_update">Mucceḍ</string>
@@ -145,8 +145,6 @@
     <string name="adding_apks_format">Timerna n  %s ar ukufi…</string>
     <string name="repos_unchanged">Akk ikuffiyen ttwaleqmen</string>
     <string name="all_other_repos_fine">Ikufiyen nniḍen ur d-ggaren ara tuccḍiwin.</string>
-    <string name="minsdk_or_later">%s neɣ ugar</string>
-    <string name="minsdk_up_to_maxsdk">%1$s arama d %2$s</string>
     <string name="swap_active_hotspot">%1$s (taneqqiḍt-ik n unekcum)</string>
     <string name="swap_choose_apps">Fren Asnas</string>
     <string name="swap_wifi_device_name">Isem n yibenk</string>

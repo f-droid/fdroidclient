@@ -181,9 +181,6 @@
     <string name="repo_added">Paket Repositori tersimpan %1$s.</string>
     <string name="repo_searching_address">Mencari paket repositori di
 \n%1$s</string>
-    <string name="minsdk_or_later">%s atau nanti</string>
-    <string name="up_to_maxsdk">Hingga %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s hingga %2$s</string>
     <string name="not_on_same_wifi">Perangkat Anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru Anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Membutuhkan: %1$s</string>
     <string name="pref_language">Bahasa</string>
@@ -359,14 +356,14 @@
 
     <string name="main_menu__swap_nearby">Dekat</string>
     <string name="app_recommended_version_installed">Versi %1$s (Direkomendasikan)</string>
-    <string name="app__newly_added">Baru</string>
+    <string name="app_new">Baru</string>
     <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>
 
     <string name="installed_apps__activity_title">Apl Terpasang</string>
     <string name="installed_app__updates_ignored">Pembaruan diabaikan</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Pembaruan diabaikan untuk Versi %1$s</string>
     <string name="updates__tts__download_app">Unduh</string>
-    <string name="updates__tts__download_updates_for_all_apps">Unduh semua pembaruan</string>
+    <string name="update_all">Unduh semua pembaruan</string>
 
     <string name="updates__hide_updateable_apps">Sembunyikan apl</string>
     <string name="updates__show_updateable_apps">Tampilkan apl</string>

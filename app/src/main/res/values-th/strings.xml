@@ -132,8 +132,6 @@
         โปรแกรมที่มาจากแหล่งนี้จะไม่มีขึ้นให้ดาวน์โหลดในรายการของ F-Droid อีกต่อไป\n\nหมายเหตุ:
         โปรแกรมที่คุณดาวน์โหลดและติดตั้งแล้ว จะยังคงติดตั้งและใช้งานได้อยู่ตามเดิม
     </string>
-    <string name="minsdk_or_later">%s หรือสูงกว่า</string>
-    <string name="up_to_maxsdk">จนถึง %s</string>
     <string name="pref_language">ภาษา</string>
     <string name="pref_language_default">ใช้ภาษาของเครื่อง</string>
 
@@ -299,7 +297,6 @@
     </string>
     <string name="wifi_ap">เครื่องส่ง WiFi</string>
 
-    <string name="minsdk_up_to_maxsdk">%1$s ถึง %2$s</string>
     <string name="repo_searching_address">กำลังค้นหาแหล่งโปรแกรม F-Droid ที่
         %1$s
     </string>

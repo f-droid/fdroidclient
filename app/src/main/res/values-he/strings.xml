@@ -129,9 +129,6 @@
     <string name="unknown">לא ידוע</string>
     <string name="repo_confirm_delete_title">למחוק מאגר?</string>
     <string name="repo_added">מאגר חבילות שמור %1$s.</string>
-    <string name="minsdk_or_later">%s ומעלה</string>
-    <string name="up_to_maxsdk">עד %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s עד %2$s</string>
     <string name="requires_features">נדרש: %1$s</string>
     <string name="pref_language">שפה</string>
     <string name="pref_language_default">ברירת המחדל של המערכת</string>
@@ -308,7 +305,7 @@
     <string name="app_version_x_available">גרסה %1$s זמינה</string>
     <string name="app_version_x_installed">גרסה %1$s</string>
     <string name="app_recommended_version_installed">גרסה %1$s (מומלצת)</string>
-    <string name="app__newly_added">חדש</string>
+    <string name="app_new">חדש</string>
     <string name="app__tts__cancel_download">ביטול הורדה</string>
     <string name="app__install_downloaded_update">עדכון</string>
 
@@ -319,7 +316,7 @@
     <string name="installed_app__updates_ignored">עדכונים בהתעלמות</string>
     <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגרסה %1$s</string>
     <string name="updates__tts__download_app">הורדה</string>
-    <string name="updates__tts__download_updates_for_all_apps">הורדת כל העדכונים</string>
+    <string name="update_all">הורדת כל העדכונים</string>
 
     <string name="updates__hide_updateable_apps">הסתרת יישומונים</string>
     <string name="updates__show_updateable_apps">הצגת יישומונים</string>

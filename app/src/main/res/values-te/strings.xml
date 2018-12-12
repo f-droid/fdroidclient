@@ -34,7 +34,7 @@
     <string name="about_site">వెబ్‌సైటు</string>
     <string name="about_license">లైసెన్సు</string>
 
-    <string name="app__newly_added">కొత్తది</string>
+    <string name="app_new">కొత్తది</string>
     <string name="app__tts__cancel_download">దింపుకోలును రద్దుచేయి</string>
     <string name="repo_add_add">చేర్చు</string>
     <string name="links">లంకెలు</string>
@@ -155,7 +155,7 @@
 
     <string name="installed_apps__activity_title">వ్యవస్థాపించిన అనువర్తనాలు</string>
     <string name="installed_app__updates_ignored">నవీకరణలు విస్మరించబడ్డాయి</string>
-    <string name="updates__tts__download_updates_for_all_apps">అన్ని నవీకరణలను దింపుకోండి</string>
+    <string name="update_all">అన్ని నవీకరణలను దింపుకోండి</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">పట్టించుకోకుండా</string>
 
@@ -229,9 +229,6 @@
     <string name="repo_num_apps">అనువర్తనాల సంఖ్య</string>
     <string name="unknown">తెలియని</string>
     <string name="repo_confirm_delete_title">రిపోజిటరీని తొలగించాలా?</string>
-    <string name="minsdk_or_later">%s లేదా తరువాత</string>
-    <string name="up_to_maxsdk">%s వరకు</string>
-    <string name="minsdk_up_to_maxsdk">%1$s వరకు %2$s</string>
     <string name="requires_features">అవసరం: %1$s</string>
     <string name="wifi_ap">హాట్స్పాట్</string>
 

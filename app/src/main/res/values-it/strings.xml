@@ -125,9 +125,6 @@
         È necessario
         abilitare nuovamente questo repository per installare le app contenute.
     </string>
-    <string name="minsdk_or_later">%s o successivi</string>
-    <string name="up_to_maxsdk">Fino a %s</string>
-    <string name="minsdk_up_to_maxsdk">da %1$s fino a %2$s</string>
     <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repo locale che hai aggiunto!
         Prova a collegarti a questa rete: %s
     </string>
@@ -384,7 +381,7 @@
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
     <string name="app_recommended_version_installed">Versione %1$s (Raccomandata)</string>
-    <string name="app__newly_added">Nuovo</string>
+    <string name="app_new">Nuovo</string>
     <string name="app__tts__cancel_download">Annulla scaricamento</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
 
@@ -393,7 +390,7 @@
     <string name="installed_apps__activity_title">App Installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Scarica tutti gli aggiornamenti</string>
+    <string name="update_all">Scarica tutti gli aggiornamenti</string>
 
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>

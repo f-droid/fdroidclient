@@ -163,9 +163,6 @@
     <string name="repo_added">Pacote do repositório guardado %1$s.</string>
     <string name="repo_searching_address">A procurar um repositório de pacote em
 \n%1$s</string>
-    <string name="minsdk_or_later">%s ou posterior</string>
-    <string name="up_to_maxsdk">Até %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s até %2$s</string>
     <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente
         entrar nesta rede: %s
     </string>
@@ -346,7 +343,7 @@
     <string name="app_version_x_available">Versão %1$s disponível</string>
     <string name="app_version_x_installed">Versão %1$s</string>
     <string name="app_recommended_version_installed">Versão %1$s (recomendada)</string>
-    <string name="app__newly_added">Nova</string>
+    <string name="app_new">Nova</string>
     <string name="app__install_downloaded_update">Atualizar</string>
 
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
@@ -357,7 +354,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
     </string>
     <string name="updates__tts__download_app">Descarregar</string>
-    <string name="updates__tts__download_updates_for_all_apps">Descarregar todas as atualizações</string>
+    <string name="update_all">Descarregar todas as atualizações</string>
 
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>

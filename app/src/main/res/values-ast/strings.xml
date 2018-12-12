@@ -123,9 +123,6 @@
     <string name="repo_added">Guardóse\'l repositoriu d e paquetes %1$s.</string>
     <string name="repo_searching_address">Guetando\'l repositoriu de paquetes en
 \n%1$s</string>
-    <string name="minsdk_or_later">%s ó posterior</string>
-    <string name="up_to_maxsdk">Fasta %s</string>
-    <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
     <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante
         d\'amestar! Tenta de xunite a esta rede: %s
     </string>
@@ -346,7 +343,7 @@
 
     <string name="app_list__name__successfully_installed">instalóse %1$s</string>
     <string name="updates__tts__download_app">Baxar</string>
-    <string name="updates__tts__download_updates_for_all_apps">Baxar tolos anovamientos</string>
+    <string name="update_all">Baxar tolos anovamientos</string>
 
     <string name="updates__hide_updateable_apps">Anubrir aplicaciones</string>
     <string name="updates__show_updateable_apps">Amosar aplicaciones</string>
@@ -387,7 +384,7 @@
     <string name="by_author_format">per %s</string>
     <string name="force_old_index">Forzar l\'antiguu formatu d\'índiz</string>
     <string name="force_old_index_summary">En casu d\'haber fallos o problemes de compatibilidá, usa l\'índiz XML de la app</string>
-    <string name="app__newly_added">Nueva</string>
+    <string name="app_new">Nueva</string>
     <string name="app__tts__cancel_download">Encaboxar descarga</string>
     <string name="menu_email">Mandar un corréu al autor</string>
     <string name="menu_video">Videu</string>

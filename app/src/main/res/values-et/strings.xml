@@ -203,9 +203,6 @@
         ettevaatlik allkirjastamata indeksitest rakenduste alla laadimisel.
     </string>
     <string name="unknown">Tundmatu</string>
-    <string name="minsdk_or_later">%s või uuem</string>
-    <string name="up_to_maxsdk">Kuni %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s kuni %2$s</string>
     <string name="requires_features">Nõuab: %1$s</string>
     <string name="pref_language">Keel</string>
     <string name="pref_language_default">Süsteemi vaikesäte</string>
@@ -359,7 +356,7 @@
     <string name="app_version_x_available">Versioon %1$s on saadaval</string>
     <string name="app_version_x_installed">Versioon %1$s</string>
     <string name="app_recommended_version_installed">Versioon %1$s (soovitatav)</string>
-    <string name="app__newly_added">Uus</string>
+    <string name="app_new">Uus</string>
     <string name="app__tts__cancel_download">Tühista allalaadimine</string>
     <string name="app__install_downloaded_update">Värskenda</string>
     <string name="app_installed_media">Fail paigaldati asukohta %s</string>
@@ -373,7 +370,7 @@
     <string name="installed_apps__activity_title">Paigaldatud rakendused</string>
     <string name="installed_app__updates_ignored">Värskendusi ignoreeriti</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Versiooni %1$s värskendust ignoreeriti</string>
-    <string name="updates__tts__download_updates_for_all_apps">Laadi alla kõik värskendused</string>
+    <string name="update_all">Laadi alla kõik värskendused</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s sees leiti haavatavus. Soovitatav on see rakendus koheselt eemaldada.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s sees leiti haavatavus. Soovitatav on värskendada koheselt see rakendus uusimale versioonile.</string>

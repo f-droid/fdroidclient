@@ -88,9 +88,6 @@
     <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
 \n
 \nUwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
-    <string name="minsdk_or_later">%s lub nowszy</string>
-    <string name="up_to_maxsdk">Wsparcie do %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
     <string name="requires_features">Wymaga: %1$s</string>
     <string name="category_Development">Tworzenie</string>
     <string name="category_Games">Gry</string>
@@ -359,7 +356,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">Wersja %1$s (zalecana)</string>
-    <string name="app__newly_added">Nowa</string>
+    <string name="app_new">Nowa</string>
 
     <string name="installed_apps__activity_title">Zainstalowane aplikacje</string>
     <string name="installed_app__updates_ignored">Zignorowane aktualizacje</string>
@@ -383,7 +380,7 @@
     <string name="app_list__name__downloading_in_progress">Pobieranie %1$s</string>
 
     <string name="updates__tts__download_app">Pobierz</string>
-    <string name="updates__tts__download_updates_for_all_apps">Pobierz wszystkie aktualizacje</string>
+    <string name="update_all">Pobierz wszystkie aktualizacje</string>
 
     <string name="updates__hide_updateable_apps">Ukryj aplikacje</string>
     <string name="updates__show_updateable_apps">Pokaż aplikacje</string>

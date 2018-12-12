@@ -71,9 +71,6 @@
     <string name="repo_added">Konservis deponejon de pakaĵoj %1$s.</string>
     <string name="repo_searching_address">Serĉado de pakaĵa deponejo ĉe
 \n%1$s</string>
-    <string name="minsdk_or_later">%s aŭ posta</string>
-    <string name="up_to_maxsdk">Ĝis %s</string>
-    <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
     <string name="requires_features">Postulas: %1$s</string>
     <string name="category_Development">Programado</string>
     <string name="category_Games">Ludoj</string>
@@ -354,7 +351,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
-    <string name="app__newly_added">Nova</string>
+    <string name="app_new">Nova</string>
 
     <string name="installed_apps__activity_title">Instalitaj aplikaĵoj</string>
     <string name="installed_app__updates_ignored">Ignorataj ĝisdatigoj</string>
@@ -375,7 +372,7 @@
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
 
     <string name="updates__tts__download_app">Elŝuti</string>
-    <string name="updates__tts__download_updates_for_all_apps">Elŝuti ĉiujn ĝisdatigojn</string>
+    <string name="update_all">Elŝuti ĉiujn ĝisdatigojn</string>
 
     <string name="updates__hide_updateable_apps">Kaŝi aplikaĵojn</string>
     <string name="updates__show_updateable_apps">Montri aplikaĵojn</string>

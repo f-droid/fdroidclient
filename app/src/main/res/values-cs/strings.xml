@@ -97,7 +97,6 @@
 
         Pro instalaci aplikací z tohoto repozitáře ho bude nejprve třeba znovu povolit.
     </string>
-    <string name="minsdk_or_later">%s nebo novější</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
     <string name="category_Development">Vývoj</string>
     <string name="category_Games">Hry</string>
@@ -169,8 +168,6 @@
     <string name="repo_added">Uložen repozitář balíčků %1$s.</string>
     <string name="repo_searching_address">Vyhledávání repozitáře balíčků na
 \n%1$s</string>
-    <string name="up_to_maxsdk">Až do %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s až do %2$s</string>
     <string name="login_title">Vyžadováno ověření</string>
     <string name="login_name">Uživatelské jméno</string>
     <string name="login_password">Heslo</string>
@@ -357,7 +354,7 @@
     <string name="notification_action_install">Nainstalovat</string>
 
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
-    <string name="app__newly_added">Nové</string>
+    <string name="app_new">Nové</string>
 
     <string name="installed_apps__activity_title">Nainstalované aplikace</string>
     <string name="installed_app__updates_ignored">Ignorované aktualizace</string>
@@ -376,7 +373,7 @@
     <string name="app_list__name__downloading_in_progress">Stahování %1$s</string>
 
     <string name="updates__tts__download_app">Stáhnout</string>
-    <string name="updates__tts__download_updates_for_all_apps">Stáhnout všechny aktualizace</string>
+    <string name="update_all">Stáhnout všechny aktualizace</string>
 
 <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>

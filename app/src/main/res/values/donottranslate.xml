@@ -16,6 +16,9 @@
     <string name="https">https://</string>
 
     <string name="app_details_subject">%1$s on F-Droid</string>
+    <string name="minsdk_or_later">%s+</string>
+    <string name="up_to_maxsdk">1.0-%s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s-%2$s</string>
 
     <!-- The unset value is set to a string that is impossible to be a valid Java package name. This
      prevents abuse by creating malware with the same packageName as the unset string. -->

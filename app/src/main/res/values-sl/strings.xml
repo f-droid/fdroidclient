@@ -154,7 +154,7 @@
     <string name="app_version_x_available">Verzija %1$s je na voljo</string>
     <string name="app_version_x_installed">Verzija %1$s</string>
     <string name="app_recommended_version_installed">Verzija %1$s(priporočeno)</string>
-    <string name="app__newly_added">Novo</string>
+    <string name="app_new">Novo</string>
     <string name="added_on">Dodano dne %s</string>
     <string name="app__tts__cancel_download">Prekliči prenos</string>
     <string name="app__install_downloaded_update">Posodobi</string>
@@ -167,7 +167,7 @@
     <string name="installed_apps__activity_title">Nameščene aplikacije</string>
     <string name="installed_app__updates_ignored">Posodobitve ignorirane</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Posodobitve ignorirane za verzijo %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Prenesi vse posodobitve</string>
+    <string name="update_all">Prenesi vse posodobitve</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">Ignoriraj</string>
 
@@ -276,8 +276,6 @@
     <string name="repo_name">Ime</string>
     <string name="unknown">Nepoznano</string>
     <string name="repo_confirm_delete_title">Izbriši skladišče aplikacij?</string>
-    <string name="minsdk_or_later">%s ali kasneje</string>
-    <string name="up_to_maxsdk">Do skupno %s</string>
     <string name="requires_features">Potrebuje: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
 

@@ -41,18 +41,15 @@
                     android:layout_height="match_parent"
                     android:paddingTop="3dp">
 
-                    <TextView android:id="@+id/status_suggested"
-                        style="@style/AppVersionStatus"
-                        android:background="@drawable/app_version_item_status_suggested"
-                        android:textColor="#429fff"
-                        android:text="@string/app_suggested" />
-
                     <TextView android:id="@+id/status_installed"
                         style="@style/AppVersionStatus"
                         android:background="@drawable/app_version_item_status_installed"
                         android:textColor="#19c878"
                         android:textStyle="bold"
                         android:text="@string/app_installed" />
+
+                    <include layout="@layout/app_status_suggested"
+                        android:id="@+id/status_suggested" />
 
                     <TextView android:id="@+id/status_incompatible"
                         style="@style/AppVersionStatus"

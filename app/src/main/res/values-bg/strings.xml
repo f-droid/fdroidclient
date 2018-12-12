@@ -109,8 +109,6 @@
     <string name="repo_disabled_notification">\"%1$s\" е деактивирано. За да инсталирате приложения от него ще трябва да
         го активирате наново.
     </string>
-    <string name="up_to_maxsdk">До %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
     <string name="not_on_same_wifi">Вашето устройство не е в една и съща Wi-Fi мрежа с локалното хранилище, което
         добавихте! Опитайте да се свържете към тази мрежа: %s
     </string>
@@ -275,7 +273,6 @@
     <string name="unverified">Непотвърдено</string>
     <string name="unsigned_description">Това означава че списъкът на приложенията не е бил потвърден. Бъдете внимателни с приложения, изтеглени от неудостоверени индекси.</string>
     <string name="unknown">Неизвестно</string>
-    <string name="minsdk_or_later">%s или по-късно</string>
     <string name="wifi_ap">Хотспот</string>
 
     <string name="swap_join_this_hotspot">Помогнете на приятеля Ви да се включи към хотспота Ви</string>
@@ -311,7 +308,7 @@
     <string name="app_version_x_available">Версия %1$s е достъпна</string>
     <string name="app_version_x_installed">Версия %1$s</string>
     <string name="app_recommended_version_installed">Версия %1$s (Препоръчителна)</string>
-    <string name="app__newly_added">Ново</string>
+    <string name="app_new">Ново</string>
     <string name="app__install_downloaded_update">Обновяване</string>
 
     <string name="app_list__name__downloading_in_progress">Изтегляне на %1$s</string>
@@ -321,7 +318,7 @@
     <string name="installed_app__updates_ignored">Обновленията са отхвърлени</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновленията са отхвърлени за версия %1$s
     </string>
-    <string name="updates__tts__download_updates_for_all_apps">Изтегляне на всички обновления</string>
+    <string name="update_all">Изтегляне на всички обновления</string>
 
     <string name="updates__hide_updateable_apps">Скриване на приложения</string>
     <string name="updates__show_updateable_apps">Показване на приложения</string>

@@ -218,9 +218,6 @@
     </string>
     <string name="repo_added">Gardado o repositorio %1$s de F-Droid.</string>
     <string name="repo_searching_address">Buscando o repositorio F-Droid en\n%1$s</string>
-    <string name="minsdk_or_later">%s ou maior</string>
-    <string name="up_to_maxsdk">Por riba de %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s está por riba de %2$s</string>
     <string name="not_on_same_wifi">O teu dispositivo non está na mesma rede Wi-Fi que o repositorio local que
         engadiches! Intenta unirte á mesma rede: %s
     </string>
@@ -327,7 +324,7 @@
     <string name="app_version_x_available">Versión %1$s disponíbel</string>
     <string name="app_version_x_installed">Versión %1$s</string>
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
-    <string name="app__newly_added">Nova</string>
+    <string name="app_new">Nova</string>
     <string name="app__tts__cancel_download">Cancelar descarga</string>
     <string name="app__install_downloaded_update">Anovar</string>
     <string name="app_installed_media">Ficheiro instalado en %s</string>
@@ -339,7 +336,7 @@
     <string name="installed_apps__activity_title">Aplicacións instaladas</string>
     <string name="installed_app__updates_ignored">Anovacións ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Anovacións ignoradas para a versión %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">Descargar todas as anovacións</string>
+    <string name="update_all">Descargar todas as anovacións</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendamos desinstalar esta app inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Atopamos unha vulnerabilidade en %1$s. Recomendamos actualizar á nova versión inmediatamente.</string>

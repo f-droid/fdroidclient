@@ -214,9 +214,6 @@
     <string name="repo_searching_address">Pfimbi yeF-Droid irikutsvagirwa pa
         %1$s
     </string>
-    <string name="minsdk_or_later">%s kana pashure</string>
-    <string name="up_to_maxsdk">Kusvika pa %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s kusvika pa %2$s</string>
     <string name="not_on_same_wifi">Muchina wako hausi pamasaisai eWi-Fi mamwe chete nepfimbi yakamanikwa yawabva
         kuwedzera! Yedza kukochekedza pamasaisai aya: %s
     </string>
@@ -398,7 +395,7 @@
     <string name="app_version_x_available">Version %1$s yavapo</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Inoyambirwa)</string>
-    <string name="app__newly_added">Itsva</string>
+    <string name="app_new">Itsva</string>
     <string name="app__install_downloaded_update">Natsa</string>
 
     <string name="app_list__name__downloading_in_progress">Kututunura %1$s</string>
@@ -409,7 +406,7 @@
     <string name="updates__tts__download_app">Bhatani rekututunura riri mukati memutsara rakaratidzwa muscreen
         rinoshandisa icon chete
     </string>
-    <string name="updates__tts__download_updates_for_all_apps">Tutunura wedzero dzese</string>
+    <string name="update_all">Tutunura wedzero dzese</string>
 
     <string name="updates__hide_updateable_apps">Hwandisa maApps</string>
     <string name="updates__show_updateable_apps">Ratidza maApps</string>

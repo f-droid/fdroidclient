@@ -183,9 +183,6 @@
     <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>
     <string name="repo_searching_address">ابحث عن مستودع الحزمة في
 \n%1$s</string>
-    <string name="minsdk_or_later">%s أو فيما بعد</string>
-    <string name="up_to_maxsdk">حتى %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s حتى %2$s</string>
     <string name="not_on_same_wifi">جهازك ليس على الإنترنت اللاسلكي نفسه مع المستودع المحلي الذي قمت بإضافتها فقط! حاول
         الانضمام إلى هذه الشبكة: %s
     </string>
@@ -347,11 +344,11 @@
     <string name="app_version_x_available">النسخة %1$s متوفر</string>
     <string name="app_version_x_installed">النسخة %1$s</string>
     <string name="app_recommended_version_installed">النسخة %1$s (مُستحب)</string>
-    <string name="app__newly_added">جديد</string>
+    <string name="app_new">جديد</string>
     <string name="app__install_downloaded_update">تحديث</string>
 
     <string name="app_list__name__downloading_in_progress">تنزيل %1$s</string>
-    <string name="updates__tts__download_updates_for_all_apps">قم بتنزيل كل التحديثات</string>
+    <string name="update_all">قم بتنزيل كل التحديثات</string>
 
     <string name="updates__hide_updateable_apps">إخفاء التطبيقات</string>
     <string name="updates__show_updateable_apps">أظهر التطبيقات</string>

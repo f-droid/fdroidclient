@@ -29,8 +29,8 @@
     </style>
 
     <style name="DetailsMoreButtonStyle">
-        <item name="android:padding">5dp</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/fdroid_blue</item>
     </style>

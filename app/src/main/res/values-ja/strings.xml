@@ -116,9 +116,6 @@
     <string name="repo_added">パッケージリポジトリ%1$sを保存しました。</string>
     <string name="repo_searching_address">リポジトリを検索中
 \n%1$s</string>
-    <string name="minsdk_or_later">%s以上</string>
-    <string name="up_to_maxsdk">最大%s</string>
-    <string name="minsdk_up_to_maxsdk">%1$sから%2$s</string>
     <string name="not_on_same_wifi">あなたの端末は追加したローカルリポジトリと同じWi-Fiに接続されていません。このネットワークに接続してみてください: %s</string>
     <string name="requires_features">必須: %1$s</string>
     <string name="category_Development">開発</string>
@@ -335,7 +332,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">バージョン%1$s(推奨)</string>
-    <string name="app__newly_added">新規</string>
+    <string name="app_new">新規</string>
 
     <string name="installed_apps__activity_title">インストール済みのアプリ</string>
     <string name="installed_app__updates_ignored">アップデートが無視されています</string>
@@ -355,7 +352,7 @@
     <string name="app_list__name__downloading_in_progress">%1$sをダウンロード中</string>
 
     <string name="updates__tts__download_app">ダウンロード</string>
-    <string name="updates__tts__download_updates_for_all_apps">すべての更新をダウンロード</string>
+    <string name="update_all">すべての更新をダウンロード</string>
 
     <string name="updates__hide_updateable_apps">アプリを非表示</string>
     <string name="updates__show_updateable_apps">アプリを表示</string>

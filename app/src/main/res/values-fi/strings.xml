@@ -239,7 +239,6 @@
     <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
     <string name="repo_searching_address">Etsitään sovelluslähdettä osoitteesta
 \n%1$s</string>
-    <string name="minsdk_or_later">%s tai uudempi</string>
     <string name="category_Connectivity">Liitettävyys</string>
     <string name="category_Graphics">Grafiikka</string>
     <string name="empty_installed_app_list">Ei asennettuja sovelluksia.
@@ -250,8 +249,6 @@
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
     <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu tarkistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
-    <string name="up_to_maxsdk">Korkeintaan %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s - %2$s</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt tuloksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -323,14 +320,14 @@
 <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
-    <string name="app__newly_added">Uusi</string>
+    <string name="app_new">Uusi</string>
     <string name="app__install_downloaded_update">Päivitys</string>
 
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s on asennettu</string>
 
     <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
-    <string name="updates__tts__download_updates_for_all_apps">Lataa kaikki päivitykset</string>
+    <string name="update_all">Lataa kaikki päivitykset</string>
 
     <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
     <string name="updates__show_updateable_apps">Näytä sovellukset</string>

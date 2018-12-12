@@ -117,9 +117,6 @@
     <string name="repo_added">Lagret pakkebrønnen %1$s.</string>
     <string name="repo_searching_address">Ser etter pakkebrønn på
 \n%1$s</string>
-    <string name="minsdk_or_later">%s eller senere</string>
-    <string name="up_to_maxsdk">Opptil %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
     <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale Wi-Fi-nettet som pakkebrønnen du nettopp la
         til! Prøv å koble til dette nettverket: %s
     </string>
@@ -328,7 +325,7 @@
     <string name="app_version_x_available">Versjon %1$s er tilgjengelig</string>
     <string name="app_version_x_installed">Versjon %1$s</string>
     <string name="app_recommended_version_installed">Versjon %1$s (Anbefales)</string>
-    <string name="app__newly_added">Ny</string>
+    <string name="app_new">Ny</string>
 
     <string name="installed_apps__activity_title">Installerte programmer</string>
     <string name="installed_app__updates_ignored">Oppdateringer ignorert</string>
@@ -375,7 +372,7 @@
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
 
     <string name="updates__tts__download_app">Last ned</string>
-    <string name="updates__tts__download_updates_for_all_apps">Last ned alle oppdateringer</string>
+    <string name="update_all">Last ned alle oppdateringer</string>
 
     <string name="updates__hide_updateable_apps">Skjul programmer</string>
     <string name="updates__show_updateable_apps">Vis programmer</string>

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import org.fdroid.fdroid.R;
@@ -69,16 +68,16 @@ public class UpdateableAppsHeader extends AppUpdateData {
         private UpdateableAppsHeader header;
 
         private final TextView updatesAvailable;
-        private final ImageView downloadAll;
         private final TextView appsToUpdate;
+        private final Button downloadAll;
         private final Button toggleAppsToUpdate;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             updatesAvailable = (TextView) itemView.findViewById(R.id.text_updates_available);
-            downloadAll = (ImageView) itemView.findViewById(R.id.button_download_all);
             appsToUpdate = (TextView) itemView.findViewById(R.id.text_apps_to_update);
+            downloadAll = (Button) itemView.findViewById(R.id.button_download_all);
             toggleAppsToUpdate = (Button) itemView.findViewById(R.id.button_toggle_apps_to_update);
 
             toggleAppsToUpdate.setOnClickListener(new View.OnClickListener() {

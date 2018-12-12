@@ -118,9 +118,6 @@
     <string name="repo_disabled_notification">%1$s a été désactivé
 \n
 \nVous devez réactiver ce dépôt pour installer les applis qu\'il contient.</string>
-    <string name="minsdk_or_later">%s ou plus récent</string>
-    <string name="up_to_maxsdk">Jusqu\'à %s</string>
-    <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
     <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez
         d\'ajouter ! Essayez de rejoindre ce réseau : %s
     </string>
@@ -349,7 +346,7 @@
 
 
     <string name="app_recommended_version_installed">Version %1$s (recommandée)</string>
-    <string name="app__newly_added">Nouveau</string>
+    <string name="app_new">Nouveau</string>
     <string name="app__install_downloaded_update">Mettre à jour</string>
 
     <string name="app_list__name__downloading_in_progress">Téléchargement de %1$s en cours</string>
@@ -359,7 +356,7 @@
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
-    <string name="updates__tts__download_updates_for_all_apps">Télécharger toutes les mises jour</string>
+    <string name="update_all">Télécharger toutes les mises jour</string>
 
     <string name="updates__hide_updateable_apps">Masquer les applis</string>
     <string name="updates__show_updateable_apps">Afficher les applications</string>

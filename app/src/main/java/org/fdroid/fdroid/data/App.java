@@ -508,8 +508,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
 
-        whatsNew = getLocalizedEntry(localized, localesToUse, "whatsNew");
-        String value = getLocalizedEntry(localized, localesToUse, "video");
+        String value = getLocalizedEntry(localized, localesToUse, "whatsNew");
+        if (!TextUtils.isEmpty(value)) {
+            whatsNew = value;
+        }
+        value = getLocalizedEntry(localized, localesToUse, "video");
         if (!TextUtils.isEmpty(value)) {
             video = value.split("\n", 1)[0];
         }

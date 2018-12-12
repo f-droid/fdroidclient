@@ -125,9 +125,6 @@
     <string name="repo_added">Repositorio de paquetes guardado %1$s.</string>
     <string name="repo_searching_address">Buscando repositorio de paquetes en
 \n%1$s</string>
-    <string name="minsdk_or_later">%s o posterior</string>
-    <string name="up_to_maxsdk">Hasta %s</string>
-    <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
     <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Wi-Fi que el repo que acabas de añadir! Intenta
         unirte a esta red: %s
     </string>
@@ -357,7 +354,7 @@
     <string name="notification_action_install">Instalar</string>
 
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
-    <string name="app__newly_added">Novedad</string>
+    <string name="app_new">Novedad</string>
 
     <string name="installed_apps__activity_title">Aplicaciones instaladas</string>
     <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
@@ -379,7 +376,7 @@
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
 
     <string name="updates__tts__download_app">Actualizaciones</string>
-    <string name="updates__tts__download_updates_for_all_apps">Descargar todas las actualizaciones</string>
+    <string name="update_all">Descargar todas las actualizaciones</string>
 
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>

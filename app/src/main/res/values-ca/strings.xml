@@ -117,9 +117,6 @@
     <string name="repo_added">S\'ha desat el dipòsit %1$s del paquet.</string>
     <string name="repo_searching_address">S\'està cercant un dipòsit del paquet a 
 \n%1$s</string>
-    <string name="minsdk_or_later">%s o més recent</string>
-    <string name="up_to_maxsdk">Fins a %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s fins a %2$s</string>
     <string name="not_on_same_wifi">El dipòsit local que acabeu d\'afegir i el vostre dispositiu no són a la mateixa
         Wi-Fi. Proveu amb aquesta xarxa: %s
     </string>
@@ -343,7 +340,7 @@
     <string name="notification_action_install">Instal·leu</string>
 
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
-    <string name="app__newly_added">Nou</string>
+    <string name="app_new">Nou</string>
 
     <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Ignoreu les actualitzacions</string>
@@ -366,7 +363,7 @@
     <string name="app_list__name__downloading_in_progress">Baixant %1$s</string>
 
     <string name="updates__tts__download_app">Baixa</string>
-    <string name="updates__tts__download_updates_for_all_apps">Baixa totes les actualitzacions</string>
+    <string name="update_all">Baixa totes les actualitzacions</string>
 
     <string name="updates__hide_updateable_apps">Amaga</string>
     <string name="updates__show_updateable_apps">Mostra</string>

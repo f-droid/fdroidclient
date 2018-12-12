@@ -204,9 +204,6 @@
     </string>
     <string name="repo_added">Рэпазіторый пакетаў %1$s захаваны.</string>
     <string name="repo_searching_address">Агляд рэпазіторыя пакетаў на %1$s</string>
-    <string name="minsdk_or_later">%s ці пазней</string>
-    <string name="up_to_maxsdk">Да %s</string>
-    <string name="minsdk_up_to_maxsdk">%1$s да %2$s</string>
     <string name="not_on_same_wifi">Ваша прылада не знаходзіцца ў той жа сетцы Wi-Fi, што і лакальны рэпазіторый, які вы
         толькі дадалі. Паспрабуйце далучыцца да сеткі «%s»
     </string>
@@ -376,7 +373,7 @@
     </plurals>
 
     <string name="app_recommended_version_installed">Версія %1$s (рэкамендуецца)</string>
-    <string name="app__newly_added">Новая</string>
+    <string name="app_new">Новая</string>
 
     <string name="installed_apps__activity_title">Усталяваныя праграмы</string>
     <string name="installed_app__updates_ignored">Абнаўленні ігнаруюцца</string>
@@ -399,7 +396,7 @@
     <string name="app_list__name__downloading_in_progress">Спампоўка %1$s</string>
 
     <string name="updates__tts__download_app">Спампаваць</string>
-    <string name="updates__tts__download_updates_for_all_apps">Спампаваць усе абнаўленні</string>
+    <string name="update_all">Спампаваць усе абнаўленні</string>
 
     <string name="updates__hide_updateable_apps">Схаваць праграмы</string>
     <string name="updates__show_updateable_apps">Паказаць праграмы</string>
