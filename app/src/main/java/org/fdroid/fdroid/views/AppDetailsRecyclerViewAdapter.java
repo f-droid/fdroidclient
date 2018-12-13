@@ -504,7 +504,7 @@ public class AppDetailsRecyclerViewAdapter
                 sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version,
                         suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
-                sbWhatsNew.append(trimTrailingNewlines(Html.fromHtml(app.whatsNew)));
+                sbWhatsNew.append(app.whatsNew);
                 whatsNewView.setText(sbWhatsNew);
                 whatsNewView.setVisibility(View.VISIBLE);
 
