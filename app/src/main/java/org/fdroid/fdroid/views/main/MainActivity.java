@@ -41,7 +41,7 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
-import org.fdroid.fdroid.AppDetails2;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.BuildConfig;
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             setSelectedMenuInNav();
         }
 
-        // AppDetails2 and RepoDetailsActivity set different NFC actions, so reset here
+        // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent(getIntent());
     }
@@ -309,8 +309,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         if (!TextUtils.isEmpty(packageName)) {
             Utils.debugLog(TAG, "FDroid launched via app link for '" + packageName + "'");
-            Intent intentToInvoke = new Intent(this, AppDetails2.class);
-            intentToInvoke.putExtra(AppDetails2.EXTRA_APPID, packageName);
+            Intent intentToInvoke = new Intent(this, AppDetailsActivity.class);
+            intentToInvoke.putExtra(AppDetailsActivity.EXTRA_APPID, packageName);
             startActivity(intentToInvoke);
             finish();
         } else if (!TextUtils.isEmpty(query)) {

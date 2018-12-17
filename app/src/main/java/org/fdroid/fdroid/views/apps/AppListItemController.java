@@ -27,7 +27,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import org.fdroid.fdroid.AppDetails2;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.R;
@@ -422,8 +422,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
 
-            Intent intent = new Intent(activity, AppDetails2.class);
-            intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
+            Intent intent = new Intent(activity, AppDetailsActivity.class);
+            intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.packageName);
             if (Build.VERSION.SDK_INT >= 21) {
                 String transitionAppIcon = activity.getString(R.string.transition_app_item_icon);
                 Pair<View, String> iconTransitionPair = Pair.create((View) icon, transitionAppIcon);

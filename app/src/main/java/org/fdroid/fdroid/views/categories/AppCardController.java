@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import org.fdroid.fdroid.AppDetails2;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -144,7 +144,7 @@ public class AppCardController extends RecyclerView.ViewHolder
     }
 
     /**
-     * When the user clicks/touches an app card, we launch the {@link AppDetails2} activity in response.
+     * When the user clicks/touches an app card, we launch the {@link AppDetailsActivity} activity in response.
      */
     @Override
     public void onClick(View v) {
@@ -152,8 +152,8 @@ public class AppCardController extends RecyclerView.ViewHolder
             return;
         }
 
-        Intent intent = new Intent(activity, AppDetails2.class);
-        intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
+        Intent intent = new Intent(activity, AppDetailsActivity.class);
+        intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.packageName);
         if (Build.VERSION.SDK_INT >= 21) {
             Pair<View, String> iconTransitionPair = Pair.create((View) icon,
                     activity.getString(R.string.transition_app_item_icon));

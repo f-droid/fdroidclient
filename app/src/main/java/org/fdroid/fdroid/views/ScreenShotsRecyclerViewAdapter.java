@@ -14,7 +14,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
 /**
- * Loads and displays the small screenshots that are inline in {@link org.fdroid.fdroid.AppDetails2}
+ * Loads and displays the small screenshots that are inline in {@link AppDetailsActivity}
  */
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final String[] screenshots;

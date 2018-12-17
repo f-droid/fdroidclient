@@ -19,11 +19,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.views;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,6 +33,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -49,6 +52,11 @@ import android.view.ViewTreeObserver;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NfcHelper;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -59,22 +67,23 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
-import org.fdroid.fdroid.views.ShareChooserDialog;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
 
-public class AppDetails2 extends AppCompatActivity
+public class AppDetailsActivity extends AppCompatActivity
         implements ShareChooserDialog.ShareChooserDialogListener,
         AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
     public static final String EXTRA_APPID = "appid";
-    private static final String TAG = "AppDetails2";
+    private static final String TAG = "AppDetailsActivity";
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 2;
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
+
+    @SuppressWarnings("unused")
+    protected BluetoothAdapter bluetoothAdapter;
 
     private FDroidApp fdroidApp;
     private App app;
@@ -110,6 +119,8 @@ public class AppDetails2 extends AppCompatActivity
             finish();
             return;
         }
+
+        bluetoothAdapter = getBluetoothAdapter();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
@@ -254,7 +265,7 @@ public class AppDetails2 extends AppCompatActivity
             shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary
                     + ") - https://f-droid.org/app/" + app.packageName);
 
-            boolean showNearbyItem = app.isInstalled(getApplicationContext()) && fdroidApp.bluetoothAdapter != null;
+            boolean showNearbyItem = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
             CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
             ShareChooserDialog.createChooser(coordinatorLayout, this, this, shareIntent, showNearbyItem);
             return true;
@@ -531,7 +542,7 @@ public class AppDetails2 extends AppCompatActivity
                                 getString(R.string.install_error_notify_title),
                                 app.name);
 
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
                         alertBuilder.setTitle(title);
                         alertBuilder.setMessage(errorMessage);
                         alertBuilder.setNeutralButton(android.R.string.ok, null);
@@ -584,7 +595,7 @@ public class AppDetails2 extends AppCompatActivity
                     if (!TextUtils.isEmpty(errorMessage)) {
                         Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
 
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
                         Uri uri = intent.getData();
                         if (uri == null) {
                             alertBuilder.setTitle(getString(R.string.uninstall_error_notify_title, ""));
@@ -656,7 +667,7 @@ public class AppDetails2 extends AppCompatActivity
             public void run() {
                 String packageName = app != null ? app.packageName : null;
                 if (!resetCurrentApp(packageName)) {
-                    AppDetails2.this.finish();
+                    AppDetailsActivity.this.finish();
                     return;
                 }
                 AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) recyclerView.getAdapter();
@@ -682,6 +693,16 @@ public class AppDetails2 extends AppCompatActivity
     @Override
     public void disableAndroidBeam() {
         NfcHelper.disableAndroidBeam(this);
+    }
+
+    @TargetApi(18)
+    private BluetoothAdapter getBluetoothAdapter() {
+        // to use the new, recommended way of getting the adapter
+        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
+        if (Build.VERSION.SDK_INT < 18) {
+            return BluetoothAdapter.getDefaultAdapter();
+        }
+        return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
     @Override

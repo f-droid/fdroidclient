@@ -27,6 +27,7 @@ import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
@@ -154,7 +155,7 @@ class NotificationHelper {
         } else if ((entry.status == AppUpdateStatusManager.Status.Downloading ||
                 entry.status == AppUpdateStatusManager.Status.ReadyToInstall ||
                 entry.status == AppUpdateStatusManager.Status.InstallError) &&
-                AppDetails2.isAppVisible(entry.app.packageName)) {
+                AppDetailsActivity.isAppVisible(entry.app.packageName)) {
             // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
             return true;
         }

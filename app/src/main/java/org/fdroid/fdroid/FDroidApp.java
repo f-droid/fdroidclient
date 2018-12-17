@@ -27,8 +27,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -131,9 +129,6 @@ public class FDroidApp extends Application {
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.bouncycastle.jce.provider.BouncyCastleProvider BOUNCYCASTLE_PROVIDER;
-
-    @SuppressWarnings("unused")
-    BluetoothAdapter bluetoothAdapter;
 
     /**
      * The construction of this notification helper has side effects including listening and
@@ -393,7 +388,6 @@ public class FDroidApp extends Application {
         CleanCacheService.schedule(this);
 
         notificationHelper = new NotificationHelper(getApplicationContext());
-        bluetoothAdapter = getBluetoothAdapter();
 
         // There are a couple things to pay attention to with this config: memory usage,
         // especially on small devices; and, image processing vulns, since images are
@@ -557,16 +551,6 @@ public class FDroidApp extends Application {
             }
         }
         return 2;
-    }
-
-    @TargetApi(18)
-    private BluetoothAdapter getBluetoothAdapter() {
-        // to use the new, recommended way of getting the adapter
-        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
-        if (Build.VERSION.SDK_INT < 18) {
-            return BluetoothAdapter.getDefaultAdapter();
-        }
-        return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
     private SharedPreferences getAtStartTimeSharedPreferences() {

@@ -173,7 +173,7 @@
         </activity>
 
         <activity
-                android:name=".AppDetails2"
+                android:name=".views.AppDetailsActivity"
                 android:label="@string/app_details"
                 android:exported="true"
                 android:parentActivityName=".views.main.MainActivity"
