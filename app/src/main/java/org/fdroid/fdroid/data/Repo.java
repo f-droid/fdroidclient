@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -338,20 +339,29 @@ public class Repo extends ValueObject {
         }
     }
 
+    /**
+     * The main repo URL is included in the mirror list, so it only makes
+     * sense to activate this logic if there are more than one entry in the
+     * mirror list.
+     */
     public boolean hasMirrors() {
         return (mirrors != null && mirrors.length > 1)
                 || (userMirrors != null && userMirrors.length > 0);
     }
 
+    /**
+     * @return {@link List} of valid URLs to reach this repo, including the canonical URL
+     */
     public List<String> getMirrorList() {
-        final ArrayList<String> allMirrors = new ArrayList<String>();
+        final HashSet<String> allMirrors = new HashSet<>();
         if (userMirrors != null) {
             allMirrors.addAll(Arrays.asList(userMirrors));
         }
         if (mirrors != null) {
             allMirrors.addAll(Arrays.asList(mirrors));
         }
-        return allMirrors;
+        allMirrors.add(address);
+        return new ArrayList<>(allMirrors);
     }
 
     /**
@@ -360,19 +370,26 @@ public class Repo extends ValueObject {
     public int getMirrorCount() {
         int count = 0;
         for (String m : getMirrorList()) {
-            if (!m.equals(address)) {
-                if (FDroidApp.isUsingTor()) {
-                    count++;
-                } else {
-                    if (!m.contains(".onion")) {
-                        count++;
-                    }
-                }
+            if (FDroidApp.isUsingTor()) {
+                count++;
+            } else if (!m.contains(".onion")) {
+                count++;
             }
         }
         return count;
     }
 
+    /**
+     * The mirror logic assumes that it has a mirrors list with at least once
+     * valid entry in it.  In the index format as defined by {@code fdroid update},
+     * there is always at least one valid URL: the canonical URL.  That also means
+     * if there is only one item in the mirrors list, there are no other URLs to try.
+     * <p>
+     * The initial state of the repos in the database also include the canonical
+     * URL in the mirrors list so the mirror logic works on the first index
+     * update.  That makes it possible to do the first index update via SD Card
+     * or USB OTG drive.
+     */
     public String getMirror(String lastWorkingMirror) {
         if (TextUtils.isEmpty(lastWorkingMirror)) {
             lastWorkingMirror = address;
@@ -382,7 +399,7 @@ public class Repo extends ValueObject {
         if (shuffledMirrors.size() > 1) {
             for (String m : shuffledMirrors) {
                 // Return a non default, and not last used mirror
-                if (!m.equals(address) && !m.equals(lastWorkingMirror)) {
+                if (!m.equals(lastWorkingMirror)) {
                     if (FDroidApp.isUsingTor()) {
                         return m;
                     } else {
