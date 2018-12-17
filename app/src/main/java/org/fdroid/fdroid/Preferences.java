@@ -518,7 +518,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Whether push requests are globally enabled or disabled.
      *
      * @see org.fdroid.fdroid.data.RepoPushRequest
-     * @see RepoUpdater#processRepoPushRequests(List)
+     * @see IndexUpdater#processRepoPushRequests(List)
      */
     public boolean allowPushRequests() {
         return preferences.getBoolean(PREF_ALLOW_PUSH_REQUESTS, IGNORED_B);

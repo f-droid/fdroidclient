@@ -12,9 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -71,14 +71,14 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
     }
 
     @Test
-    public void testIndexV1Processing() throws IOException, RepoUpdater.UpdateException {
+    public void testIndexV1Processing() throws IOException, IndexUpdater.UpdateException {
         List<Repo> repos = RepoProvider.Helper.all(context);
         for (Repo repo : repos) {
             RepoProvider.Helper.remove(context, repo.getId());
         }
         assertEquals("No repos present", 0, RepoProvider.Helper.all(context).size());
         assertEquals("No apps present", 0, AppProvider.Helper.all(context.getContentResolver()).size());
-        Repo repo = MultiRepoUpdaterTest.createRepo("Testy", TESTY_JAR, context, TESTY_CERT);
+        Repo repo = MultiIndexUpdaterTest.createRepo("Testy", TESTY_JAR, context, TESTY_CERT);
         repo.timestamp = 1481222110;
         IndexV1Updater updater = new IndexV1Updater(context, repo);
         JarFile jarFile = new JarFile(TestUtils.copyResourceToTempFile(TESTY_JAR), true);
@@ -131,10 +131,10 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         assertEquals(1, AppProvider.Helper.findInstalledAppsWithKnownVulns(context).size());
     }
 
-    @Test(expected = RepoUpdater.SigningException.class)
-    public void testIndexV1WithWrongCert() throws IOException, RepoUpdater.UpdateException {
+    @Test(expected = IndexUpdater.SigningException.class)
+    public void testIndexV1WithWrongCert() throws IOException, IndexUpdater.UpdateException {
         String badCert = "308202ed308201d5a003020102020426ffa009300d06092a864886f70d01010b05003027310b300906035504061302444531183016060355040a130f4e4f47415050532050726f6a656374301e170d3132313030363132303533325a170d3337303933303132303533325a3027310b300906035504061302444531183016060355040a130f4e4f47415050532050726f6a65637430820122300d06092a864886f70d01010105000382010f003082010a02820101009a8d2a5336b0eaaad89ce447828c7753b157459b79e3215dc962ca48f58c2cd7650df67d2dd7bda0880c682791f32b35c504e43e77b43c3e4e541f86e35a8293a54fb46e6b16af54d3a4eda458f1a7c8bc1b7479861ca7043337180e40079d9cdccb7e051ada9b6c88c9ec635541e2ebf0842521c3024c826f6fd6db6fd117c74e859d5af4db04448965ab5469b71ce719939a06ef30580f50febf96c474a7d265bb63f86a822ff7b643de6b76e966a18553c2858416cf3309dd24278374bdd82b4404ef6f7f122cec93859351fc6e5ea947e3ceb9d67374fe970e593e5cd05c905e1d24f5a5484f4aadef766e498adf64f7cf04bddd602ae8137b6eea40722d0203010001a321301f301d0603551d0e04160414110b7aa9ebc840b20399f69a431f4dba6ac42a64300d06092a864886f70d01010b0500038201010007c32ad893349cf86952fb5a49cfdc9b13f5e3c800aece77b2e7e0e9c83e34052f140f357ec7e6f4b432dc1ed542218a14835acd2df2deea7efd3fd5e8f1c34e1fb39ec6a427c6e6f4178b609b369040ac1f8844b789f3694dc640de06e44b247afed11637173f36f5886170fafd74954049858c6096308fc93c1bc4dd5685fa7a1f982a422f2a3b36baa8c9500474cf2af91c39cbec1bc898d10194d368aa5e91f1137ec115087c31962d8f76cd120d28c249cf76f4c70f5baa08c70a7234ce4123be080cee789477401965cfe537b924ef36747e8caca62dfefdd1a6288dcb1c4fd2aaa6131a7ad254e9742022cfd597d2ca5c660ce9e41ff537e5a4041e37"; // NOCHECKSTYLE LineLength
-        Repo repo = MultiRepoUpdaterTest.createRepo("Testy", TESTY_JAR, context, badCert);
+        Repo repo = MultiIndexUpdaterTest.createRepo("Testy", TESTY_JAR, context, badCert);
         IndexV1Updater updater = new IndexV1Updater(context, repo);
         JarFile jarFile = new JarFile(TestUtils.copyResourceToTempFile(TESTY_JAR), true);
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1Updater.DATA_FILE_NAME);
@@ -144,9 +144,9 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         getClass().getResourceAsStream("foo");
     }
 
-    @Test(expected = RepoUpdater.UpdateException.class)
-    public void testIndexV1WithOldTimestamp() throws IOException, RepoUpdater.UpdateException {
-        Repo repo = MultiRepoUpdaterTest.createRepo("Testy", TESTY_JAR, context, TESTY_CERT);
+    @Test(expected = IndexUpdater.UpdateException.class)
+    public void testIndexV1WithOldTimestamp() throws IOException, IndexUpdater.UpdateException {
+        Repo repo = MultiIndexUpdaterTest.createRepo("Testy", TESTY_JAR, context, TESTY_CERT);
         repo.timestamp = System.currentTimeMillis() / 1000;
         IndexV1Updater updater = new IndexV1Updater(context, repo);
         JarFile jarFile = new JarFile(TestUtils.copyResourceToTempFile(TESTY_JAR), true);
@@ -157,28 +157,28 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         getClass().getResourceAsStream("foo");
     }
 
-    @Test(expected = RepoUpdater.SigningException.class)
-    public void testIndexV1WithBadTestyJarNoManifest() throws IOException, RepoUpdater.UpdateException {
+    @Test(expected = IndexUpdater.SigningException.class)
+    public void testIndexV1WithBadTestyJarNoManifest() throws IOException, IndexUpdater.UpdateException {
         testBadTestyJar("testy.at.or.at_no-MANIFEST.MF_index-v1.jar");
     }
 
-    @Test(expected = RepoUpdater.SigningException.class)
-    public void testIndexV1WithBadTestyJarNoSigningCert() throws IOException, RepoUpdater.UpdateException {
+    @Test(expected = IndexUpdater.SigningException.class)
+    public void testIndexV1WithBadTestyJarNoSigningCert() throws IOException, IndexUpdater.UpdateException {
         testBadTestyJar("testy.at.or.at_no-.RSA_index-v1.jar");
     }
 
-    @Test(expected = RepoUpdater.SigningException.class)
-    public void testIndexV1WithBadTestyJarNoSignature() throws IOException, RepoUpdater.UpdateException {
+    @Test(expected = IndexUpdater.SigningException.class)
+    public void testIndexV1WithBadTestyJarNoSignature() throws IOException, IndexUpdater.UpdateException {
         testBadTestyJar("testy.at.or.at_no-.SF_index-v1.jar");
     }
 
-    @Test(expected = RepoUpdater.SigningException.class)
-    public void testIndexV1WithBadTestyJarNoSignatureFiles() throws IOException, RepoUpdater.UpdateException {
+    @Test(expected = IndexUpdater.SigningException.class)
+    public void testIndexV1WithBadTestyJarNoSignatureFiles() throws IOException, IndexUpdater.UpdateException {
         testBadTestyJar("testy.at.or.at_no-signature_index-v1.jar");
     }
 
-    private void testBadTestyJar(String jar) throws IOException, RepoUpdater.UpdateException {
-        Repo repo = MultiRepoUpdaterTest.createRepo("Testy", jar, context, TESTY_CERT);
+    private void testBadTestyJar(String jar) throws IOException, IndexUpdater.UpdateException {
+        Repo repo = MultiIndexUpdaterTest.createRepo("Testy", jar, context, TESTY_CERT);
         IndexV1Updater updater = new IndexV1Updater(context, repo);
         JarFile jarFile = new JarFile(TestUtils.copyResourceToTempFile(jar), true);
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1Updater.DATA_FILE_NAME);

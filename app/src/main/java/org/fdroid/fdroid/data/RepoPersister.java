@@ -9,7 +9,7 @@ import android.os.RemoteException;
 import android.support.annotation.NonNull;
 
 import org.fdroid.fdroid.CompatibilityChecker;
-import org.fdroid.fdroid.RepoUpdater;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class RepoPersister {
         checker = new CompatibilityChecker(context);
     }
 
-    public void saveToDb(App app, List<Apk> packages) throws RepoUpdater.UpdateException {
+    public void saveToDb(App app, List<Apk> packages) throws IndexUpdater.UpdateException {
         appsToSave.add(app);
         apksToSave.put(app.packageName, packages);
 
@@ -64,13 +64,13 @@ public class RepoPersister {
         }
     }
 
-    public void commit(ContentValues repoDetailsToSave, long repoIdToCommit) throws RepoUpdater.UpdateException {
+    public void commit(ContentValues repoDetailsToSave, long repoIdToCommit) throws IndexUpdater.UpdateException {
         flushBufferToDb();
         TempAppProvider.Helper.commitAppsAndApks(context, repoIdToCommit);
         RepoProvider.Helper.update(context, repo, repoDetailsToSave);
     }
 
-    private void flushBufferToDb() throws RepoUpdater.UpdateException {
+    private void flushBufferToDb() throws IndexUpdater.UpdateException {
         if (!hasBeenInitialized) {
             // This is where we will store all of the metadata before commiting at the
             // end of the process. This is due to the fact that we can't verify the cert
@@ -90,7 +90,7 @@ public class RepoPersister {
         }
     }
 
-    private void flushApksToDbInBatch(Map<String, Long> appIds) throws RepoUpdater.UpdateException {
+    private void flushApksToDbInBatch(Map<String, Long> appIds) throws IndexUpdater.UpdateException {
         List<Apk> apksToSaveList = new ArrayList<>();
         for (Map.Entry<String, List<Apk>> entries : apksToSave.entrySet()) {
             for (Apk apk : entries.getValue()) {
@@ -106,7 +106,7 @@ public class RepoPersister {
         try {
             context.getContentResolver().applyBatch(TempApkProvider.getAuthority(), apkOperations);
         } catch (RemoteException | OperationApplicationException e) {
-            throw new RepoUpdater.UpdateException("An internal error occurred while updating the database", e);
+            throw new IndexUpdater.UpdateException("An internal error occurred while updating the database", e);
         }
     }
 
@@ -115,14 +115,14 @@ public class RepoPersister {
      * Then, will query the database for the ID + packageName for each of these apps, so that they
      * can be returned and the relevant apks can be joined to the app table correctly.
      */
-    private Map<String, Long> flushAppsToDbInBatch() throws RepoUpdater.UpdateException {
+    private Map<String, Long> flushAppsToDbInBatch() throws IndexUpdater.UpdateException {
         ArrayList<ContentProviderOperation> appOperations = insertApps(appsToSave);
 
         try {
             context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
             return getIdsForPackages(appsToSave);
         } catch (RemoteException | OperationApplicationException e) {
-            throw new RepoUpdater.UpdateException("An internal error occurred while updating the database", e);
+            throw new IndexUpdater.UpdateException("An internal error occurred while updating the database", e);
         }
     }
 

@@ -2,7 +2,7 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.RepoUpdater;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.Repo;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 @Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
-public class Issue763MultiRepo extends MultiRepoUpdaterTest {
+public class Issue763MultiRepo extends MultiIndexUpdaterTest {
 
     private Repo microGRepo;
     private Repo antoxRepo;
@@ -42,31 +42,31 @@ public class Issue763MultiRepo extends MultiRepoUpdaterTest {
     }
 
     @Test
-    public void antoxRepo() throws RepoUpdater.UpdateException {
+    public void antoxRepo() throws IndexUpdater.UpdateException {
         assertAntoxEmpty();
         setEnabled(microGRepo, true);
         updateAntox();
         assertAntoxExists();
     }
 
-    private void updateAntox() throws RepoUpdater.UpdateException {
-        updateRepo(new RepoUpdater(context, antoxRepo), "index.antox.jar");
+    private void updateAntox() throws IndexUpdater.UpdateException {
+        updateRepo(new IndexUpdater(context, antoxRepo), "index.antox.jar");
     }
 
     @Test
-    public void microGRepo() throws RepoUpdater.UpdateException {
+    public void microGRepo() throws IndexUpdater.UpdateException {
         assertMicroGEmpty();
         setEnabled(microGRepo, true);
         updateMicroG();
         assertMicroGExists();
     }
 
-    private void updateMicroG() throws RepoUpdater.UpdateException {
-        updateRepo(new RepoUpdater(context, microGRepo), "index.microg.jar");
+    private void updateMicroG() throws IndexUpdater.UpdateException {
+        updateRepo(new IndexUpdater(context, microGRepo), "index.microg.jar");
     }
 
     @Test
-    public void antoxAndMicroG() throws RepoUpdater.UpdateException {
+    public void antoxAndMicroG() throws IndexUpdater.UpdateException {
         assertMicroGEmpty();
         assertAntoxEmpty();
 

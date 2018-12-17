@@ -53,7 +53,7 @@ public class NfcHelper {
     }
 
     @TargetApi(16)
-    static void disableAndroidBeam(Activity activity) {
+    public static void disableAndroidBeam(Activity activity) {
         if (Build.VERSION.SDK_INT < 16) {
             return;
         }

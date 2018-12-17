@@ -80,8 +80,8 @@ import java.util.jar.JarFile;
  * FDroid!  Avoid modifying it when possible, if you absolutely must, be very,
  * very careful with the changes that you are making!
  */
-public class RepoUpdater {
-    private static final String TAG = "RepoUpdater";
+public class IndexUpdater {
+    private static final String TAG = "IndexUpdater";
 
     public static final String SIGNED_FILE_NAME = "index.jar";
     public static final String DATA_FILE_NAME = "index.xml";
@@ -106,7 +106,7 @@ public class RepoUpdater {
      *
      * @param repo A {@link Repo} read out of the local database
      */
-    public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
+    public IndexUpdater(@NonNull Context context, @NonNull Repo repo) {
         this.context = context;
         this.repo = repo;
         this.persister = new RepoPersister(context, repo);
@@ -208,7 +208,7 @@ public class RepoUpdater {
             FDroidApp.disableBouncyCastleOnLollipop();
 
             JarFile jarFile = new JarFile(downloadedFile, true);
-            JarEntry indexEntry = (JarEntry) jarFile.getEntry(RepoUpdater.DATA_FILE_NAME);
+            JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexUpdater.DATA_FILE_NAME);
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
                     processIndexListener, repo.address, (int) indexEntry.getSize());
 
@@ -249,14 +249,14 @@ public class RepoUpdater {
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
         public void onProgress(String urlString, long bytesRead, long totalBytes) {
-            UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
+            UpdateService.reportDownloadProgress(context, IndexUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
         public void onProgress(String urlString, long bytesRead, long totalBytes) {
-            UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
+            UpdateService.reportProcessIndexProgress(context, IndexUpdater.this, bytesRead, totalBytes);
         }
     };
 

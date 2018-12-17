@@ -467,9 +467,9 @@ public class UpdateService extends JobIntentService {
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
 
                 try {
-                    RepoUpdater updater = new IndexV1Updater(this, repo);
+                    IndexUpdater updater = new IndexV1Updater(this, repo);
                     if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
-                        updater = new RepoUpdater(getBaseContext(), repo);
+                        updater = new IndexUpdater(getBaseContext(), repo);
                         updater.update();
                     }
 
@@ -479,7 +479,7 @@ public class UpdateService extends JobIntentService {
                     } else {
                         unchangedRepos++;
                     }
-                } catch (RepoUpdater.UpdateException e) {
+                } catch (IndexUpdater.UpdateException e) {
                     errorRepos++;
                     repoErrors.add(e.getMessage());
                     Log.e(TAG, "Error updating repository " + repo.address, e);
@@ -555,7 +555,7 @@ public class UpdateService extends JobIntentService {
         }
     }
 
-    public static void reportDownloadProgress(Context context, RepoUpdater updater,
+    public static void reportDownloadProgress(Context context, IndexUpdater updater,
                                               long bytesRead, long totalBytes) {
         Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
@@ -576,7 +576,7 @@ public class UpdateService extends JobIntentService {
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
-    public static void reportProcessIndexProgress(Context context, RepoUpdater updater,
+    public static void reportProcessIndexProgress(Context context, IndexUpdater updater,
                                                   long bytesRead, long totalBytes) {
         Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSize = Utils.getFriendlySize(bytesRead);
@@ -598,7 +598,7 @@ public class UpdateService extends JobIntentService {
      * "Saving app details" sent to the user. If you know how many apps you have
      * processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    public static void reportProcessingAppsProgress(Context context, RepoUpdater updater,
+    public static void reportProcessingAppsProgress(Context context, IndexUpdater updater,
                                                     int appsSaved, int totalApps) {
         Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         if (totalApps > 0) {

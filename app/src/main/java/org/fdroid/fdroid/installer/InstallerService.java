@@ -28,7 +28,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.fdroid.AppDetails2;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -135,7 +135,7 @@ public class InstallerService extends JobIntentService {
      * <p>
      * If you quickly cycle between installing an app and uninstalling it, then
      * {@link App#installedApk} will still be null when
-     * {@link AppDetails2#startUninstall()} calls
+     * {@link AppDetailsActivity#startUninstall()} calls
      * this method.  It is better to crash earlier here, before the {@link Intent}
      * is sent with a null {@link Apk} instance since this service is set to
      * receive Sticky Intents.  That means they will automatically be resent

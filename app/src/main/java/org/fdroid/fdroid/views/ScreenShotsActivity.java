@@ -28,7 +28,7 @@ import org.fdroid.fdroid.data.AppProvider;
  * Full screen view of an apps screenshots to swipe through. This will always
  * download the image, even if the user has said not to use "unmetered" networks,
  * e.g. WiFi.  That is because the user has to click on the thumbnail in
- * {@link org.fdroid.fdroid.AppDetails2} in order to bring up this activity.
+ * {@link AppDetailsActivity} in order to bring up this activity.
  * That makes it a specific request for that image, rather than regular
  * background loading.
  */

@@ -19,6 +19,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -532,16 +533,16 @@ public final class AppUpdateStatusManager {
 
     /**
      * Get a {@link PendingIntent} for a {@link Notification} to send when it
-     * is clicked.  {@link AppDetails2} handles {@code Intent}s that are missing
-     * or bad {@link AppDetails2#EXTRA_APPID}, so it does not need to be checked
+     * is clicked.  {@link AppDetailsActivity} handles {@code Intent}s that are missing
+     * or bad {@link AppDetailsActivity#EXTRA_APPID}, so it does not need to be checked
      * here.
      */
     private PendingIntent getAppDetailsIntent(Apk apk) {
-        Intent notifyIntent = new Intent(context, AppDetails2.class)
-                .putExtra(AppDetails2.EXTRA_APPID, apk.packageName);
+        Intent notifyIntent = new Intent(context, AppDetailsActivity.class)
+                .putExtra(AppDetailsActivity.EXTRA_APPID, apk.packageName);
 
         return TaskStackBuilder.create(context)
-                .addParentStack(AppDetails2.class)
+                .addParentStack(AppDetailsActivity.class)
                 .addNextIntent(notifyIntent)
                 .getPendingIntent(apk.packageName.hashCode(), PendingIntent.FLAG_UPDATE_CURRENT);
     }
