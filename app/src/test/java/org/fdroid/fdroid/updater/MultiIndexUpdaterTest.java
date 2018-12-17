@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.RepoUpdater;
-import org.fdroid.fdroid.RepoUpdater.UpdateException;
+import org.fdroid.fdroid.IndexUpdater;
+import org.fdroid.fdroid.IndexUpdater.UpdateException;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -31,9 +31,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
+public abstract class MultiIndexUpdaterTest extends FDroidProviderTest {
     @SuppressWarnings("unused")
-    private static final String TAG = "AcceptableMultiRepoUpdaterTest"; // NOPMD
+    private static final String TAG = "AcceptableMultiIndexUpdaterTest"; // NOPMD
 
     protected static final String REPO_MAIN = "Test F-Droid repo";
     protected static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
@@ -171,12 +171,12 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return RepoProvider.Helper.findByAddress(context, uri);
     }
 
-    protected RepoUpdater createRepoUpdater(String name, String uri, Context context) {
-        return new RepoUpdater(context, createRepo(name, uri, context));
+    protected IndexUpdater createRepoUpdater(String name, String uri, Context context) {
+        return new IndexUpdater(context, createRepo(name, uri, context));
     }
 
-    protected RepoUpdater createRepoUpdater(String name, String uri, Context context, String signingCert) {
-        return new RepoUpdater(context, createRepo(name, uri, context, signingCert));
+    protected IndexUpdater createRepoUpdater(String name, String uri, Context context, String signingCert) {
+        return new IndexUpdater(context, createRepo(name, uri, context, signingCert));
     }
 
     protected IndexV1Updater createIndexV1Updater(String name, String uri, Context context, String signingCert) {
@@ -195,7 +195,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         updateRepo(createRepoUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
     }
 
-    protected void updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
+    protected void updateRepo(IndexUpdater updater, String indexJarPath) throws UpdateException {
         File indexJar = TestUtils.copyResourceToTempFile(indexJarPath);
         try {
             if (updater instanceof IndexV1Updater) {

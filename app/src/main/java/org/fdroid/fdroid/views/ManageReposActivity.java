@@ -54,8 +54,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
@@ -568,7 +568,7 @@ public class ManageReposActivity extends AppCompatActivity
                             return addressWithoutIndex;
                         }
 
-                        final Uri uri = builder.appendPath(RepoUpdater.SIGNED_FILE_NAME).build();
+                        final Uri uri = builder.appendPath(IndexUpdater.SIGNED_FILE_NAME).build();
 
                         try {
                             if (checkForRepository(uri)) {

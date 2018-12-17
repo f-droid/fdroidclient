@@ -16,8 +16,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -104,7 +104,7 @@ public final class LocalRepoManager {
         repoDir = new SanitizedFile(fdroidDir, "repo");
         repoDirCaps = new SanitizedFile(fdroidDirCaps, "REPO");
         iconsDir = new SanitizedFile(repoDir, "icons");
-        xmlIndexJar = new SanitizedFile(repoDir, RepoUpdater.SIGNED_FILE_NAME);
+        xmlIndexJar = new SanitizedFile(repoDir, IndexUpdater.SIGNED_FILE_NAME);
         xmlIndexJarUnsigned = new SanitizedFile(repoDir, "index.unsigned.jar");
 
         if (!fdroidDir.exists() && !fdroidDir.mkdir()) {
@@ -496,7 +496,7 @@ public final class LocalRepoManager {
     public void writeIndexJar() throws IOException, XmlPullParserException, LocalRepoKeyStore.InitException {
         BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);
-        JarEntry je = new JarEntry(RepoUpdater.DATA_FILE_NAME);
+        JarEntry je = new JarEntry(IndexUpdater.DATA_FILE_NAME);
         jo.putNextEntry(je);
         new IndexXmlBuilder().build(context, apps, jo);
         jo.close();

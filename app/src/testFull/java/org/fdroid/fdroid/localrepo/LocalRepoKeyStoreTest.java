@@ -3,7 +3,7 @@ package org.fdroid.fdroid.localrepo;
 import android.content.Context;
 import android.text.TextUtils;
 import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.RepoUpdater;
+import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,13 +28,13 @@ import static org.junit.Assert.assertNotNull;
 public class LocalRepoKeyStoreTest {
 
     @Test
-    public void testSignZip() throws IOException, LocalRepoKeyStore.InitException, RepoUpdater.SigningException {
+    public void testSignZip() throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.SigningException {
         Context context = RuntimeEnvironment.application;
 
         File xmlIndexJarUnsigned = File.createTempFile(getClass().getName(), "unsigned.jar");
         BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);
-        JarEntry je = new JarEntry(RepoUpdater.DATA_FILE_NAME);
+        JarEntry je = new JarEntry(IndexUpdater.DATA_FILE_NAME);
         jo.putNextEntry(je);
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("smallRepo.xml");
         IOUtils.copy(inputStream, jo);
@@ -45,13 +45,13 @@ public class LocalRepoKeyStoreTest {
         Certificate localCert = localRepoKeyStore.getCertificate();
         assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-        File xmlIndexJar = File.createTempFile(getClass().getName(), RepoUpdater.SIGNED_FILE_NAME);
+        File xmlIndexJar = File.createTempFile(getClass().getName(), IndexUpdater.SIGNED_FILE_NAME);
         localRepoKeyStore.signZip(xmlIndexJarUnsigned, xmlIndexJar);
 
         JarFile jarFile = new JarFile(xmlIndexJar, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(RepoUpdater.DATA_FILE_NAME);
+        JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexUpdater.DATA_FILE_NAME);
         byte[] data = IOUtils.toByteArray(jarFile.getInputStream(indexEntry));
         assertEquals(17187, data.length);
-        assertNotNull(RepoUpdater.getSigningCertFromJar(indexEntry));
+        assertNotNull(IndexUpdater.getSigningCertFromJar(indexEntry));
     }
 }
