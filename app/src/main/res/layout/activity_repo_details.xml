@@ -18,7 +18,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/repoView"
+            android:id="@+id/repo_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -85,8 +85,7 @@
 
             <TextView
                 android:id="@+id/text_official_mirrors"
-                style="@style/CaptionText"
-                android:textColor="@android:color/black"
+                style="@style/BodyText"
                 android:visibility="gone" />
 
             <!-- mirrors added by the user -->
@@ -98,8 +97,7 @@
 
             <TextView
                 android:id="@+id/text_user_mirrors"
-                style="@style/CaptionText"
-                android:textColor="@android:color/black"
+                style="@style/BodyText"
                 android:visibility="gone" />
 
             <!-- The credentials used to access this repo (optional) -->
