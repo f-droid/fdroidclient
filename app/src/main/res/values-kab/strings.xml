@@ -153,8 +153,8 @@
     <string name="keep_forever">Yal tikelt</string>
 
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d nniḍen …</item>
-        <item quantity="other">+%1$d nniḍen …</item>
+    <item quantity="one">+%1$d nnayeḍ …</item>
+    <item quantity="other">+%1$d nniḍen …</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d n lqem</item>
@@ -263,4 +263,5 @@
     <string name="useTor">Seqdec Tor</string>
     <string name="panic_app_unknown_app">Asnas arussin</string>
     <string name="repo_user_mirrors">Lemriyat n useqdac</string>
+    <string name="app_repository">Akufi: %1$s</string>
 </resources>
