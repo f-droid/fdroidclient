@@ -541,4 +541,4 @@
     <string name="menu_downgrade">Rétrograder</string>
     <string name="allow_push_requests_summary">Les méta-data des dépôts peuvent contenir des requêtes pour installer ou désinstaller des applications.</string>
     <string name="app_repository">Dépôt : %1$s</string>
-    </resources>
+</resources>
