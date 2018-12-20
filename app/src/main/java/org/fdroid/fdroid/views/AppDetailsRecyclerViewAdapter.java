@@ -1010,6 +1010,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView statusInstalled;
         final TextView statusSuggested;
         final TextView statusIncompatible;
+        final TextView versionCode;
         final TextView added;
         final ImageView expandArrow;
         final View expandedLayout;
@@ -1031,6 +1032,7 @@ public class AppDetailsRecyclerViewAdapter
             statusInstalled = (TextView) view.findViewById(R.id.status_installed);
             statusSuggested = (TextView) view.findViewById(R.id.status_suggested);
             statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
+            versionCode = view.findViewById(R.id.versionCode);
             added = (TextView) view.findViewById(R.id.added);
             expandArrow = (ImageView) view.findViewById(R.id.expand_arrow);
             expandedLayout = (View) view.findViewById(R.id.expanded_layout);
@@ -1121,6 +1123,7 @@ public class AppDetailsRecyclerViewAdapter
 
             // Display when the expert mode is enabled
             if (Preferences.get().expertMode()) {
+                versionCode.setText(String.format(Locale.ENGLISH, " (%d) ", apk.versionCode));
                 // Display incompatible reasons when the app isn't compatible
                 if (!apk.compatible) {
                     String incompatibleReasonsText = getIncompatibleReasonsText(apk);
@@ -1143,6 +1146,7 @@ public class AppDetailsRecyclerViewAdapter
                     incompatibleReasons.setVisibility(View.GONE);
                 }
             } else {
+                versionCode.setText("");
                 incompatibleReasons.setVisibility(View.GONE);
                 targetArch.setVisibility(View.GONE);
             }
@@ -1244,6 +1248,7 @@ public class AppDetailsRecyclerViewAdapter
         private void expand(boolean expand) {
             versionsExpandTracker.put(apk.apkName, expand);
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
+            versionCode.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
                     R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600));
 
