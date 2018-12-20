@@ -417,7 +417,7 @@
     <string name="app__install_downloaded_update">Uppfæra</string>
 
 
-    <string name="update_all">Sækja allar uppfærslur</string>
+    <string name="update_all">Uppfæra allt</string>
 
     <string name="updates__hide_updateable_apps">Fela forrit</string>
     <string name="updates__show_updateable_apps">Birta forrit</string>
@@ -576,4 +576,5 @@
     <string name="app_size">Stærð: %1$s</string>
 
     <string name="menu_downgrade">Færa niður</string>
+    <string name="app_repository">Hugbúnaðarsafn: %1$s</string>
     </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">此应用的新版本使用了与旧版本不同的密钥来签名。在安装新版本之前，必须先卸载旧版本。请先卸载旧版本再尝试安装。（请注意，卸载应用时将删除其所有内部数据）</string>
     <string name="installIncompatible">此应用与您的设备不兼容，是否继续安装？</string>
@@ -37,7 +37,7 @@
     <string name="menu_manage">软件源</string>
     <string name="menu_search">搜索</string>
     <string name="menu_add_repo">添加软件源</string>
-    <string name="menu_launch">运行</string>
+    <string name="menu_launch">打开</string>
     <string name="menu_share">分享</string>
     <string name="menu_install">安装</string>
     <string name="menu_uninstall">卸载</string>
@@ -107,7 +107,7 @@
     <string name="category_Security">安全</string>
     <string name="category_System">系统</string>
     <string name="swap_welcome">欢迎使用 F-Droid！</string>
-    <string name="app_name">F-Droid 特权扩展</string>
+    <string name="app_name">F-Droid</string>
 
     <string name="unstable_updates">不稳定更新</string>
     <string name="unstable_updates_summary">建议更新至不稳定的版本</string>
@@ -320,7 +320,7 @@
     <string name="installed_apps__activity_title">已安装的应用</string>
     <string name="installed_app__updates_ignored">已忽略的更新</string>
     <string name="installed_app__updates_ignored_for_suggested_version">已忽略%1$s版本更新</string>
-    <string name="update_all">下载所有更新</string>
+    <string name="update_all">全部更新</string>
 
     <string name="updates__hide_updateable_apps">隐藏应用</string>
     <string name="updates__show_updateable_apps">显示应用</string>
@@ -418,7 +418,7 @@
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">我们发现了关于%1$s的漏洞，建议您立刻卸载此应用。</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">我们发现了关于%1$s的漏洞，建议您立即更新至最新版本。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">我们发现了关于 %1$s 的漏洞，建议您立即更新至最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
 
     <string name="privacy">隐私</string>
@@ -505,5 +505,5 @@
     <string name="menu_open">打开</string>
     <string name="allow_push_requests_summary">软件源的元数据可以含有安装或卸载应用的推送请求</string>
     <string name="updates_disabled_by_settings">由于数据/WiFi 设置全部更新已禁用</string>
-
-    </resources>
+    <string name="app_repository">软件库：%1$s</string>
+</resources>

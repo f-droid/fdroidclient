@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -370,7 +370,7 @@
     <string name="installed_apps__activity_title">Paigaldatud rakendused</string>
     <string name="installed_app__updates_ignored">Värskendusi ignoreeriti</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Versiooni %1$s värskendust ignoreeriti</string>
-    <string name="update_all">Laadi alla kõik värskendused</string>
+    <string name="update_all">Värskenda kõik</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s sees leiti haavatavus. Soovitatav on see rakendus koheselt eemaldada.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s sees leiti haavatavus. Soovitatav on värskendada koheselt see rakendus uusimale versioonile.</string>
@@ -547,4 +547,5 @@
     <string name="app_size">Suurus: %1$s</string>
 
     <string name="menu_downgrade">Varasem versioon</string>
-    </resources>
+    <string name="app_repository">Hoidla: %1$s</string>
+</resources>
