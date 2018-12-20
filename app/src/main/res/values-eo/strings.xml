@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versio</string>
     <string name="delete">Forigi</string>
@@ -541,4 +541,4 @@
 
     <string name="menu_downgrade">Malpromocii</string>
     <string name="app_repository">Deponejo: %1$s</string>
-    </resources>
+</resources>
