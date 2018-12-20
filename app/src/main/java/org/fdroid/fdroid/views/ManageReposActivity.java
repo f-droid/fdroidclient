@@ -556,7 +556,8 @@ public class ManageReposActivity extends AppCompatActivity
                         return originalAddress;
                     }
 
-                    if (originalAddress.startsWith(ContentResolver.SCHEME_CONTENT)) {
+                    if (originalAddress.startsWith(ContentResolver.SCHEME_CONTENT)
+                            || originalAddress.startsWith(ContentResolver.SCHEME_FILE)) {
                         // TODO check whether there is read access
                         return originalAddress;
                     }

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.localrepo.SDCardScannerService;
 import org.fdroid.fdroid.localrepo.TreeUriScannerIntentService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -47,6 +48,7 @@ import java.io.File;
  * write access to the the removable storage.
  *
  * @see TreeUriScannerIntentService
+ * @see org.fdroid.fdroid.localrepo.SDCardScannerService
  */
 class NearbyViewBinder {
     public static final String TAG = "NearbyViewBinder";
@@ -114,7 +116,7 @@ class NearbyViewBinder {
                         ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
                                 MainActivity.REQUEST_STORAGE_PERMISSIONS);
                     } else {
-                        // TODO do something
+                        SDCardScannerService.scan(activity);
                     }
                 }
             });

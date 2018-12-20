@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.peers.WifiPeer;
@@ -53,8 +54,9 @@ public class NewRepoConfig {
         String scheme = uri.getScheme();
         host = uri.getHost();
         port = uri.getPort();
-        if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {
+        if (TextUtils.isEmpty(scheme) || (TextUtils.isEmpty(host) && !"file".equals(scheme))) {
             errorMessage = String.format(context.getString(R.string.malformed_repo_uri), uri);
+            Log.i(TAG, errorMessage);
             isValidRepo = false;
             return;
         }
@@ -82,7 +84,7 @@ public class NewRepoConfig {
         host = host.toLowerCase(Locale.ENGLISH);
 
         if (uri.getPath() == null
-                || !Arrays.asList("https", "http", "fdroidrepos", "fdroidrepo", "content").contains(scheme)) {
+                || !Arrays.asList("https", "http", "fdroidrepos", "fdroidrepo", "content", "file").contains(scheme)) {
             isValidRepo = false;
             return;
         }
