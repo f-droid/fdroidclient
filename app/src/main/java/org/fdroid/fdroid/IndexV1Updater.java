@@ -62,8 +62,10 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
@@ -87,7 +89,7 @@ import java.util.jar.JarFile;
 public class IndexV1Updater extends IndexUpdater {
     public static final String TAG = "IndexV1Updater";
 
-    private static final String SIGNED_FILE_NAME = "index-v1.jar";
+    public static final String SIGNED_FILE_NAME = "index-v1.jar";
     public static final String DATA_FILE_NAME = "index-v1.json";
 
     public IndexV1Updater(@NonNull Context context, @NonNull Repo repo) {
@@ -95,8 +97,15 @@ public class IndexV1Updater extends IndexUpdater {
     }
 
     @Override
+    /**
+     * Storage Access Framework URLs have a crazy encoded path within the URL path.
+     */
     protected String getIndexUrl(@NonNull Repo repo) {
-        return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
+        if (repo.address.startsWith("content://")) {
+            return repo.address + "%2F" + SIGNED_FILE_NAME;
+        } else {
+            return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
+        }
     }
 
     /**
@@ -284,7 +293,14 @@ public class IndexV1Updater extends IndexUpdater {
         repo.name = getStringRepoValue(repoMap, "name");
         repo.icon = getStringRepoValue(repoMap, "icon");
         repo.description = getStringRepoValue(repoMap, "description");
-        repo.mirrors = getStringArrayRepoValue(repoMap, "mirrors");
+
+        // ensure the canonical URL is included in the "mirrors" list
+        List<String> mirrorsList = getStringListRepoValue(repoMap, "mirrors");
+        HashSet<String> mirrors = new HashSet<>(mirrorsList.size() + 1);
+        mirrors.addAll(mirrorsList);
+        mirrors.add(repo.address);
+        repo.mirrors = mirrors.toArray(new String[mirrors.size()]);
+
         // below are optional, can be default value
         repo.maxage = getIntRepoValue(repoMap, "maxage");
         repo.version = getIntRepoValue(repoMap, "version");
@@ -372,13 +388,12 @@ public class IndexV1Updater extends IndexUpdater {
     }
 
     @SuppressWarnings("unchecked")
-    private String[] getStringArrayRepoValue(Map<String, Object> repoMap, String key) {
+    private List<String> getStringListRepoValue(Map<String, Object> repoMap, String key) {
         Object value = repoMap.get(key);
         if (value != null && value instanceof ArrayList) {
-            ArrayList<String> list = (ArrayList<String>) value;
-            return list.toArray(new String[list.size()]);
+            return (List<String>) value;
         }
-        return null;
+        return Collections.emptyList();
     }
 
     private HashMap<String, Object> parseRepo(ObjectMapper mapper, JsonParser parser) throws IOException {

@@ -31,6 +31,10 @@ public class DownloaderFactory {
         String scheme = uri.getScheme();
         if ("bluetooth".equals(scheme)) {
             downloader = new BluetoothDownloader(uri, destFile);
+        } else if ("content".equals(scheme)) {
+            downloader = new TreeUriDownloader(uri, destFile);
+        } else if ("file".equals(scheme)) {
+            downloader = new LocalFileDownloader(uri, destFile);
         } else {
             final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
             Repo repo = RepoProvider.Helper.findByUrl(context, uri, projection);

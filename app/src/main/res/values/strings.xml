@@ -59,6 +59,10 @@
     <string name="local_repo_name">Name of your Local Repo</string>
     <string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
+    <string name="scan_removable_storage_title">Scan removable storage</string>
+    <string name="scan_removable_storage_summary">Look for package repos on removable storage like SD Cards
+        and USB thumb drives
+    </string>
 
     <string name="login_title">Authentication required</string>
     <string name="login_name">Username</string>
@@ -406,6 +410,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
     <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
+    <string name="nearby_splash__read_external_storage">SD Cards can be used to swap!</string>
+    <string name="nearby_splash__request_permission">Try it</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.
@@ -452,6 +458,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_connection_misc_error">Error occurred while connecting to device, can\'t swap with it!</string>
     <string name="swap_not_enabled">Swapping not enabled</string>
     <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
+    <string name="swap_toast_using_path">Using %1$s</string>
+    <string name="swap_toast_not_removable_storage">That choice did not match any removeable storage devices, try
+        again!</string>
+    <string name="swap_toast_find_removeable_storage">Choose your removeable SD Card or USB</string>
     <string name="swap_toast_invalid_url">Invalid URL for swapping: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot enabled</string>
     <string name="swap_toast_could_not_enable_hotspot">Could not enable Wi-Fi Hotspot!</string>

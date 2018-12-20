@@ -34,13 +34,13 @@ public class FDroidRepoUpdateTest extends MultiIndexUpdaterTest {
 
     protected void updateEarlier() throws IndexUpdater.UpdateException {
         Utils.debugLog(TAG, "Updating earlier version of F-Droid repo");
-        updateRepo(createRepoUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
+        updateRepo(createIndexUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
                 "index.fdroid.2016-10-30.jar");
     }
 
     protected void updateLater() throws IndexUpdater.UpdateException {
         Utils.debugLog(TAG, "Updating later version of F-Droid repo");
-        updateRepo(createRepoUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
+        updateRepo(createIndexUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
                 "index.fdroid.2016-11-10.jar");
     }
 

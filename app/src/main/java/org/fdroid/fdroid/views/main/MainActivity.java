@@ -30,6 +30,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +42,6 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.BuildConfig;
@@ -52,6 +52,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
+
+    static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
+    static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -204,6 +208,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         // here and once in onResume(). However, the method deals with this by ensuring it only
         // handles the same intent once.
         checkForAddRepoIntent(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) { // NOCHECKSTYLE LineLength
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_LOCATION_PERMISSIONS) {
+            startActivity(new Intent(this, SwapWorkflowActivity.class));
+        }
     }
 
     @Override
@@ -341,7 +353,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     confirmIntent.setData(intent.getData());
                     startActivityForResult(confirmIntent, REQUEST_SWAP);
                 } else {
-                    startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
+                    Intent clean = new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class);
+                    if (intent.hasExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO)) {
+                        clean.putExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO,
+                                intent.getBooleanExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO, true));
+                    }
+                    startActivity(clean);
                 }
                 finish();
             } else if (parser.getErrorMessage() != null) {

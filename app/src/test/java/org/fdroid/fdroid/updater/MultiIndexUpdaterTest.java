@@ -171,11 +171,11 @@ public abstract class MultiIndexUpdaterTest extends FDroidProviderTest {
         return RepoProvider.Helper.findByAddress(context, uri);
     }
 
-    protected IndexUpdater createRepoUpdater(String name, String uri, Context context) {
+    protected IndexUpdater createIndexUpdater(String name, String uri, Context context) {
         return new IndexUpdater(context, createRepo(name, uri, context));
     }
 
-    protected IndexUpdater createRepoUpdater(String name, String uri, Context context, String signingCert) {
+    protected IndexUpdater createIndexUpdater(String name, String uri, Context context, String signingCert) {
         return new IndexUpdater(context, createRepo(name, uri, context, signingCert));
     }
 
@@ -184,15 +184,15 @@ public abstract class MultiIndexUpdaterTest extends FDroidProviderTest {
     }
 
     protected void updateConflicting() throws UpdateException {
-        updateRepo(createRepoUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
+        updateRepo(createIndexUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
     }
 
     protected void updateMain() throws UpdateException {
-        updateRepo(createRepoUpdater(REPO_MAIN, REPO_MAIN_URI, context), "multiRepo.normal.jar");
+        updateRepo(createIndexUpdater(REPO_MAIN, REPO_MAIN_URI, context), "multiRepo.normal.jar");
     }
 
     protected void updateArchive() throws UpdateException {
-        updateRepo(createRepoUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
+        updateRepo(createIndexUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
     }
 
     protected void updateRepo(IndexUpdater updater, String indexJarPath) throws UpdateException {

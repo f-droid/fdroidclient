@@ -96,6 +96,11 @@
         <EditTextPreference
                 android:key="localRepoName"
                 android:title="@string/local_repo_name"/>
+        <SwitchPreference
+                android:key="scanRemovableStorage"
+                android:defaultValue="true"
+                android:title="@string/scan_removable_storage_title"
+                android:summary="@string/scan_removable_storage_summary"/>
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/proxy">

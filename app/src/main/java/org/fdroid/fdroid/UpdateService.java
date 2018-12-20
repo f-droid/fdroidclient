@@ -26,6 +26,7 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -406,6 +407,13 @@ public class UpdateService extends JobIntentService {
         });
     }
 
+    private static boolean isLocalRepoAddress(String address) {
+        return address != null &&
+                (address.startsWith(BluetoothDownloader.SCHEME)
+                        || address.startsWith(ContentResolver.SCHEME_CONTENT)
+                        || address.startsWith(ContentResolver.SCHEME_FILE));
+    }
+
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
@@ -417,16 +425,38 @@ public class UpdateService extends JobIntentService {
 
         try {
             final Preferences fdroidPrefs = Preferences.get();
+
+            // Grab some preliminary information, then we can release the
+            // database while we do all the downloading, etc...
+            List<Repo> repos = RepoProvider.Helper.all(this);
+
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
-            if (address != null && address.startsWith(BluetoothDownloader.SCHEME)) {
-                Utils.debugLog(TAG, "skipping internet check, this is bluetooth");
+            if (isLocalRepoAddress(address)) {
+                Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
-                Utils.debugLog(TAG, "No internet, cannot update");
-                if (manualUpdate) {
-                    sendNoInternetToast();
+                boolean foundLocalRepo = false;
+                for (Repo repo : repos) {
+                    if (isLocalRepoAddress(repo.address)) {
+                        foundLocalRepo = true;
+                    } else {
+                        for (String mirrorAddress : repo.getMirrorList()) {
+                            if (isLocalRepoAddress(mirrorAddress)) {
+                                foundLocalRepo = true;
+                                //localRepos.add(repo);
+                                //FDroidApp.setLastWorkingMirror(repo.getId(), mirrorAddress);
+                                break;
+                            }
+                        }
+                    }
                 }
-                return;
+                if (!foundLocalRepo) {
+                    Utils.debugLog(TAG, "No internet, cannot update");
+                    if (manualUpdate) {
+                        sendNoInternetToast();
+                    }
+                    return;
+                }
             } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "manually requested or forced update");
                 if (forcedUpdate) {
@@ -441,10 +471,6 @@ public class UpdateService extends JobIntentService {
             setNotification();
             LocalBroadcastManager.getInstance(this).registerReceiver(updateStatusReceiver,
                     new IntentFilter(LOCAL_ACTION_STATUS));
-
-            // Grab some preliminary information, then we can release the
-            // database while we do all the downloading, etc...
-            List<Repo> repos = RepoProvider.Helper.all(this);
 
             int unchangedRepos = 0;
             int updatedRepos = 0;
@@ -482,7 +508,8 @@ public class UpdateService extends JobIntentService {
                 } catch (IndexUpdater.UpdateException e) {
                     errorRepos++;
                     repoErrors.add(e.getMessage());
-                    Log.e(TAG, "Error updating repository " + repo.address, e);
+                    Log.e(TAG, "Error updating repository " + repo.address);
+                    e.printStackTrace();
                 }
 
                 // now that downloading the index is done, start downloading updates

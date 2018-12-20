@@ -43,6 +43,7 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
+import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -114,7 +115,11 @@ public class IndexUpdater {
     }
 
     protected String getIndexUrl(@NonNull Repo repo) {
-        return repo.address + "/index.jar";
+        if (repo.address.startsWith("content://")) {
+            return repo.address + TreeUriDownloader.ESCAPED_SLASH + SIGNED_FILE_NAME;
+        } else {
+            return repo.address + "/" + SIGNED_FILE_NAME;
+        }
     }
 
     public boolean hasChanged() {
