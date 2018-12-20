@@ -372,7 +372,7 @@
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
 
     <string name="updates__tts__download_app">Elŝuti</string>
-    <string name="update_all">Elŝuti ĉiujn ĝisdatigojn</string>
+    <string name="update_all">Ĝisdatigi ĉion</string>
 
     <string name="updates__hide_updateable_apps">Kaŝi aplikaĵojn</string>
     <string name="updates__show_updateable_apps">Montri aplikaĵojn</string>
@@ -540,4 +540,5 @@
     <string name="app_size">Grando: %1$s</string>
 
     <string name="menu_downgrade">Malpromocii</string>
+    <string name="app_repository">Deponejo: %1$s</string>
     </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -354,7 +354,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
     </string>
     <string name="updates__tts__download_app">Descarregar</string>
-    <string name="update_all">Descarregar todas as atualizações</string>
+    <string name="update_all">Atualizar todos</string>
 
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
@@ -564,4 +564,5 @@
     <string name="app_size">Tamanho: %1$s</string>
 
     <string name="menu_downgrade">Downgrade</string>
-    </resources>
+    <string name="app_repository">Repositório: %1$s</string>
+</resources>

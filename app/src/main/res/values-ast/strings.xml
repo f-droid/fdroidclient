@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente a la vieya. Pa instalala ha desinstalase la vieya primero. Fai esto y volvi tentalo, por favor. Decátate que la desinstalación va desaniciar cualesquier datu internu atroxáu pola aplicación.</string>
     <string name="installIncompatible">L\'aplicación ye incompatible col preséu, ¿instalala de toes toes\?</string>
@@ -43,7 +43,7 @@
     <string name="menu_manage">Depósitos</string>
     <string name="menu_search">Guetar</string>
     <string name="menu_add_repo">Depósitu nuevu</string>
-    <string name="menu_launch">Executar</string>
+    <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
@@ -324,7 +324,7 @@
 
     <string name="app_list__name__successfully_installed">Instalóse %1$s</string>
     <string name="updates__tts__download_app">Baxar</string>
-    <string name="update_all">Baxar tolos anovamientos</string>
+    <string name="update_all">Anovar too</string>
 
     <string name="updates__hide_updateable_apps">Anubrir aplicaciones</string>
     <string name="updates__show_updateable_apps">Amosar aplicaciones</string>
@@ -511,4 +511,5 @@
     <string name="hiding_dialog_warning">Alvertencia: Cualesquier atayu de l\'aplicación na pantalla d\'aniciu tamién va desaniciase y va precisar amestase de nueves a mano.</string>
     <string name="repo_user_mirrors">Espeyos del usuariu</string>
     <string name="share_repository">Compartición del depósitu</string>
-    </resources>
+    <string name="app_repository">Repositoriu: %1$s</string>
+</resources>

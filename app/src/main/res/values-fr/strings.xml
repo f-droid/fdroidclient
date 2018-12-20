@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application)</string>
     <string name="installIncompatible">Application incompatible avec votre appareil, l\'installer quand même ?</string>
@@ -6,7 +6,7 @@
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
     <string name="cache_downloaded">Conserver les applications en cache</string>
-    <string name="updates">Mises à jour</string>
+    <string name="updates">MàJ</string>
     <string name="other">Divers</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
@@ -202,9 +202,9 @@
     <string name="repo_searching_address">Recherche d\'un dépôt d\'applications sur
 \n%1$s</string>
     <string name="category_Graphics">Graphisme</string>
-    <string name="empty_installed_app_list">Aucune appli installée.
-\n
-\nDes applis sont installées sur votre appareil, mais aucune n\'est disponible sur F-Droid. Vous devriez actualiser vos dépôts ou ajouter de nouveaux dépôts.</string>
+    <string name="empty_installed_app_list">Aucune application installée. 
+\n 
+\nDes applications sont présentes sur votre appareil, mais aucune n\'est disponible sur F-Droid. Vous devriez actualiser vos dépôts ou ajouter de nouveaux dépôts dans F-Droid pour augmenter vos chances d\'obtenir des mises à jour pour vos applications.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
     <string name="swap_nfc_title">Rapprochez vos appareils pour échanger</string>
@@ -259,7 +259,7 @@
 
     <string name="permissions">Autorisations</string>
     <string name="theme_night">Nuit</string>
-    <string name="menu_settings">Paramètres</string>
+    <string name="menu_settings">Options</string>
     <string name="login_title">Identification requise</string>
     <string name="login_name">Nom d\'utilisateur</string>
     <string name="login_password">Mot de passe</string>
@@ -340,9 +340,9 @@
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Effacer la recherche</string>
 
-    <string name="main_menu__latest_apps">Nouveautés</string>
+    <string name="main_menu__latest_apps">Nouveau</string>
     <string name="main_menu__categories">Catégories</string>
-    <string name="main_menu__swap_nearby">À proximité</string>
+    <string name="main_menu__swap_nearby">Autour</string>
 
 
     <string name="app_recommended_version_installed">Version %1$s (recommandée)</string>
@@ -356,7 +356,7 @@
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
-    <string name="update_all">Télécharger toutes les mises jour</string>
+    <string name="update_all">Tout mettre à jour</string>
 
     <string name="updates__hide_updateable_apps">Masquer les applis</string>
     <string name="updates__show_updateable_apps">Afficher les applications</string>
@@ -528,7 +528,7 @@
     <string name="allow_push_requests">Autoriser les dépôts à installer/désinstaller des applications</string>
     <string name="send_installed_apps">Partager les applis installées</string>
     <string name="menu_open">Ouvrir</string>
-    <string name="antinosourcesince">Le code source n\'est désormais plus en accès libre, les mises à jour ne sont plus possibles.</string>
+    <string name="antinosourcesince">Le code source n\'est désormais plus en accès libre, les mises à jour ne sont plus proposées.</string>
 
     <string name="send_history_csv">%s historique d\'installation sous forme de fichier CSV</string>
     <string name="updates_disabled_by_settings">Les mises à jour sont désactivées en raison des paramètres Données / Wifi</string>
@@ -540,4 +540,5 @@
 
     <string name="menu_downgrade">Rétrograder</string>
     <string name="allow_push_requests_summary">Les méta-data des dépôts peuvent contenir des requêtes pour installer ou désinstaller des applications.</string>
+    <string name="app_repository">Dépôt : %1$s</string>
     </resources>

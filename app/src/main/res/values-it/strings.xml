@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
@@ -390,7 +390,7 @@
     <string name="installed_apps__activity_title">App Installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
-    <string name="update_all">Scarica tutti gli aggiornamenti</string>
+    <string name="update_all">Aggiorna tutti</string>
 
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
@@ -555,4 +555,5 @@
     <string name="menu_open">Apri</string>
     <string name="menu_downgrade">Disinstalla aggiornamento</string>
     <string name="send_installed_apps_csv">App installate da F-Droid come file CSV</string>
-    </resources>
+    <string name="app_repository">Repository: %1$s</string>
+</resources>

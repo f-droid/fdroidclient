@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versiune</string>
     <string name="delete">Șterge</string>
@@ -365,7 +365,7 @@
     <string name="updates__show_updateable_apps">Arata aplicațiile</string>
 
     <string name="updates__hide_updateable_apps">Ascunde aplicațiile</string>
-    <string name="update_all">Descarca toate actualizările</string>
+    <string name="update_all">Actualizează tot</string>
 
     <string name="updates__tts__download_app">Descarcă</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizări ignorate pentru versiunea %1$s</string>
@@ -376,7 +376,7 @@
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
 
-    <string name="app_new">Nou</string>
+    <string name="app_new">Nouă</string>
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandată)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibilă</string>
@@ -542,4 +542,5 @@
     <string name="app_size">Mărime: %1$s</string>
 
     <string name="menu_downgrade">Retrogradare</string>
-    </resources>
+    <string name="app_repository">Depozit: %1$s</string>
+</resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible Anwendung. Trotzdem installieren?</string>
@@ -548,4 +548,5 @@
     <string name="app_size">Größe: %1$s</string>
 
     <string name="menu_downgrade">Downgrade</string>
+    <string name="app_repository">Paketquelle: %1$s</string>
     </resources>

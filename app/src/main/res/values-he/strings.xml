@@ -316,7 +316,7 @@
     <string name="installed_app__updates_ignored">עדכונים בהתעלמות</string>
     <string name="installed_app__updates_ignored_for_suggested_version">עדכונים בהתעלמות לגרסה %1$s</string>
     <string name="updates__tts__download_app">הורדה</string>
-    <string name="update_all">הורדת כל העדכונים</string>
+    <string name="update_all">לעדכן הכול</string>
 
     <string name="updates__hide_updateable_apps">הסתרת יישומונים</string>
     <string name="updates__show_updateable_apps">הצגת יישומונים</string>
@@ -557,4 +557,5 @@
     <string name="app_size">גודל: %1$s</string>
 
     <string name="menu_downgrade">שנמוך</string>
+    <string name="app_repository">מאגר: %1$s</string>
     </resources>

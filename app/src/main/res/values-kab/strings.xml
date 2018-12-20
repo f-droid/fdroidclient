@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources><string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
 
@@ -11,7 +11,7 @@
     <string name="menu_search">Nadi</string>
     <string name="menu_add_repo">Akufi Ajdid</string>
 
-    <string name="menu_launch">Serreḥ</string>
+    <string name="menu_launch">Ldi</string>
     <string name="menu_share">Bḍu</string>
     <string name="menu_install">Sbedd</string>
     <string name="menu_upgrade">Leqqem</string>
@@ -249,4 +249,18 @@
     <string name="swap_no_wifi_network">Ulac tuqqna</string>
     <string name="swap_scan_qr">Semḍen tangalt QR</string>
     <string name="swap_setting_up_bluetooth">Asbadu n Blutut…</string>
-    </resources>
+    <string name="app_size">Teγzi: %1$s</string>
+    <string name="installed_apps__activity_title">Isnasen yettusbedden</string>
+    <string name="send_installed_apps">Bḍu isnasen yettusbedden</string>
+    <string name="update_all">Leqqem kullec</string>
+    <string name="updates__show_updateable_apps">Sken isnasen</string>
+    <string name="repo_add_mirror">Rnu lemri</string>
+    <string name="clear_search">Sfeḍ anadi</string>
+    <string name="sort_search">Smizzwer anadi</string>
+    <string name="menu_open">Ldi</string>
+    <string name="menu_liberapay">Liberapay</string>
+    <string name="deleting_repo">Tukksa n ukufi…</string>
+    <string name="useTor">Seqdec Tor</string>
+    <string name="panic_app_unknown_app">Asnas arussin</string>
+    <string name="repo_user_mirrors">Lemriyat n useqdac</string>
+</resources>

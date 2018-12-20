@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Η νέα έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί από την παλιά. Για εγκατάσταση της νέας έκδοσης, πρέπει να γίνει πρώτα απεγκατάσταση της παλιάς. Παρακαλώ κάντε το αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει τα δεδομένα της εφαρμογής)</string>
     <string name="installIncompatible">Η εφαρμογή δεν είναι συμβατή με τη συσκευή σας. Θέλετε να την εγκαταστήσετε παρόλα αυτά;</string>
@@ -36,7 +36,7 @@
     <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
     <string name="menu_search">Αναζήτηση</string>
     <string name="menu_add_repo">Νέο Αποθετήριο</string>
-    <string name="menu_launch">Εκτέλεση</string>
+    <string name="menu_launch">Άνοιγμα</string>
     <string name="menu_share">Διαμοιρασμός</string>
     <string name="menu_install">Εγκατάσταση</string>
     <string name="menu_uninstall">Απεγκατάσταση</string>
@@ -45,7 +45,7 @@
     <string name="menu_website">Ιστοσελίδα</string>
     <string name="menu_issues">Προβλήματα</string>
     <string name="menu_source">Πηγαίος κώδικας</string>
-    <string name="menu_upgrade">Αναβάθμιση</string>
+    <string name="menu_upgrade">Ενημέρωση</string>
     <string name="menu_donate">Δωρεά</string>
     <string name="details_notinstalled">Μη εγκατεστημένο</string>
     <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
@@ -347,7 +347,7 @@
     <string name="installed_apps__activity_title">Εγκατεστημένες εφαρμογές</string>
     <string name="installed_app__updates_ignored">Οι ενημερώσεις αγνοήθηκαν</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Οι ενημερώσεις αγνοήθηκαν για την Έκδοση %1$s</string>
-    <string name="update_all">Λήψη όλων των ενημερώσεων</string>
+    <string name="update_all">Ενημέρωση όλων</string>
 
     <string name="updates__hide_updateable_apps">Απόκρυψη εφαρμογών</string>
     <string name="updates__show_updateable_apps">Προβολή εφαρμογών</string>
@@ -375,7 +375,7 @@
     <string name="notification_title_summary_installing">Εγκαθίσταται</string>
     <string name="notification_title_summary_installed">Εγκαταστάθηκε με επιτυχία</string>
     <string name="details_last_updated_today">Ενημερώθηκαν σήμερα</string>
-    <string name="main_menu__swap_nearby">Κοντά σας</string>
+    <string name="main_menu__swap_nearby">Κοντινά</string>
 
     <string name="updates__tts__download_app">Κατέβασμα</string>
     <string name="by_author_format">Από %s</string>
@@ -399,7 +399,7 @@
     <string name="app_list__dismiss_downloading_app">Ακύρωση λήψης</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Βρέθηκε ευπάθεια με %1$s. Συνίσταται να απεγκαταστήσετε αυτή την εφαρμογή αμέσως.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Βρέθηκε ευπάθεια με %1$s. Συνίσταται να αναβαθμίσετε αυτή την εφαρμογή αμέσως στη νεότερη έκδοση.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Βρέθηκε ευπάθεια με %1$s. Συνίσταται να ενημερώσετε αυτή την εφαρμογή αμέσως στη νεότερη έκδοση.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Αγνοήστε</string>
 
     <plurals name="updates__download_updates_for_apps">
@@ -444,7 +444,7 @@
     <string name="empty_search_available_app_list">Δεν βρέθηκαν εφαρμογές.</string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Δεν έχετε σύνδεση στο διαδίκτυο; Κατεβάστε εφαρμογές από άλλους που είναι κοντά σας!</string>
-    <string name="nearby_splash__find_people_button">Βρείτε άλλους κοντά μου</string>
+    <string name="nearby_splash__find_people_button">Εύρεση κοντινών ανθρώπων</string>
     <string name="nearby_splash__both_parties_need_fdroid">Και οι δύο πρέπει να %1$s για να χρησιμοποιήσουν το \"Κοντά\".</string>
 
     <string name="app__tts__downloading_progress">Λήψη,  %1$d%% ολοκληρώθηκε</string>
@@ -549,4 +549,5 @@
     <string name="app_size">Μέγεθος: %1$s</string>
 
     <string name="menu_downgrade">Επιστροφή σε προηγούμενη έκδοση</string>
-    </resources>
+    <string name="app_repository">Αποθετήριο: %1$s</string>
+</resources>

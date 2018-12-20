@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -364,7 +364,7 @@
 
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
 
-    <string name="update_all">下載所有更新</string>
+    <string name="update_all">全部更新</string>
 
     <string name="updates__hide_updateable_apps">隱藏應用程式</string>
     <string name="updates__show_updateable_apps">顯示應用程式</string>
@@ -522,4 +522,5 @@
     <string name="app_size">大小：%1$s</string>
 
     <string name="menu_downgrade">降級</string>
-    </resources>
+    <string name="app_repository">軟體庫：%1$s</string>
+</resources>

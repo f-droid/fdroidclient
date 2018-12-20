@@ -561,4 +561,5 @@
     <string name="app_size">Mannària: %1$s</string>
 
     <string name="menu_downgrade">Disinstalla agiornamentu</string>
+    <string name="app_repository">Depòsitu: %1$s</string>
     </resources>
