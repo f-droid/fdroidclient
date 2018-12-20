@@ -89,7 +89,7 @@ import java.util.jar.JarFile;
 public class IndexV1Updater extends IndexUpdater {
     public static final String TAG = "IndexV1Updater";
 
-    private static final String SIGNED_FILE_NAME = "index-v1.jar";
+    public static final String SIGNED_FILE_NAME = "index-v1.jar";
     public static final String DATA_FILE_NAME = "index-v1.json";
 
     public IndexV1Updater(@NonNull Context context, @NonNull Repo repo) {
@@ -97,8 +97,15 @@ public class IndexV1Updater extends IndexUpdater {
     }
 
     @Override
+    /**
+     * Storage Access Framework URLs have a crazy encoded path within the URL path.
+     */
     protected String getIndexUrl(@NonNull Repo repo) {
-        return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
+        if (repo.address.startsWith("content://")) {
+            return repo.address + "%2F" + SIGNED_FILE_NAME;
+        } else {
+            return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
+        }
     }
 
     /**

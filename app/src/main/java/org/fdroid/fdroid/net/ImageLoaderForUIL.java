@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.os.Build;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import java.io.IOException;
@@ -28,6 +29,10 @@ public class ImageLoaderForUIL implements com.nostra13.universalimageloader.core
             case HTTP:
             case HTTPS:
                 return DownloaderFactory.create(context, imageUri).getInputStream();
+            case CONTENT:
+                if (Build.VERSION.SDK_INT >= 19) {
+                    return DownloaderFactory.create(context, imageUri).getInputStream();
+                }
         }
         return new BaseImageDownloader(context).getStream(imageUri, extra);
     }

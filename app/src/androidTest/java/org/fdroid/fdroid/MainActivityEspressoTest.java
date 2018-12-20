@@ -1,5 +1,6 @@
 package org.fdroid.fdroid;
 
+import android.Manifest;
 import android.app.Instrumentation;
 import android.os.Build;
 import android.support.test.InstrumentationRegistry;
@@ -7,6 +8,7 @@ import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
@@ -119,6 +121,14 @@ public class MainActivityEspressoTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule =
             new ActivityTestRule<>(MainActivity.class);
+
+    @Rule
+    public GrantPermissionRule accessCoarseLocationPermissionRule = GrantPermissionRule.grant(
+            Manifest.permission.ACCESS_COARSE_LOCATION);
+
+    @Rule
+    public GrantPermissionRule writeExternalStoragePermissionRule = GrantPermissionRule.grant(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     @Test
     public void bottomNavFlavorCheck() {

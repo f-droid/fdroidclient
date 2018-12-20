@@ -82,7 +82,7 @@ public class NewRepoConfig {
         host = host.toLowerCase(Locale.ENGLISH);
 
         if (uri.getPath() == null
-                || !Arrays.asList("https", "http", "fdroidrepos", "fdroidrepo").contains(scheme)) {
+                || !Arrays.asList("https", "http", "fdroidrepos", "fdroidrepo", "content").contains(scheme)) {
             isValidRepo = false;
             return;
         }

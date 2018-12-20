@@ -22,6 +22,7 @@ package org.fdroid.fdroid.views;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -552,6 +553,11 @@ public class ManageReposActivity extends AppCompatActivity
 
                     if (fingerprintRepoMap.containsKey(fingerprint)) {
                         statusCode = REFRESH_DIALOG;
+                        return originalAddress;
+                    }
+
+                    if (originalAddress.startsWith(ContentResolver.SCHEME_CONTENT)) {
+                        // TODO check whether there is read access
                         return originalAddress;
                     }
 

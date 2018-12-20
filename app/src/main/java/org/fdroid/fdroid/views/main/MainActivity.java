@@ -41,7 +41,6 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.BuildConfig;
@@ -52,6 +51,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
+
+    static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 

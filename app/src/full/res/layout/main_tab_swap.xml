@@ -54,6 +54,37 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp" />
 
+    <LinearLayout
+            android:id="@+id/readExternalStorage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/text2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/nearby_splash__read_external_storage"
+                android:gravity="fill"
+                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:textSize="17sp"
+                android:textColor="?attr/lightGrayTextColor"/>
+        <Button
+                android:id="@+id/requestReadExternalStorage"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="@string/nearby_splash__request_permission"
+                style="@style/SwapTheme.Wizard.OptionButton"/>
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
