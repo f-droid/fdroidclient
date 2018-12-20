@@ -6,7 +6,7 @@
     <string name="delete">Löschen</string>
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
     <string name="cache_downloaded">Zwischengespeicherte Apps behalten</string>
-    <string name="updates">Aktualisierungen</string>
+    <string name="updates">Aufgaben</string>
     <string name="other">Andere</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
     <string name="notify">Aktualisierungsbenachrichtigung</string>
@@ -549,4 +549,4 @@
 
     <string name="menu_downgrade">Downgrade</string>
     <string name="app_repository">Paketquelle: %1$s</string>
-    </resources>
+</resources>
