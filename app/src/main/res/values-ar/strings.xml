@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">الإصدار</string>
     <string name="delete">حذف</string>
@@ -24,7 +24,7 @@
     <string name="repo_add_fingerprint">البصمة (اختياري)</string>
     <string name="menu_manage">المستودعات</string>
     <string name="menu_search">بحث</string>
-    <string name="menu_launch">تشغيل</string>
+    <string name="menu_launch">فتح</string>
     <string name="menu_share">مشاركة</string>
     <string name="menu_install">تثبيت</string>
     <string name="menu_uninstall">إلغاء التثبيت</string>
@@ -317,7 +317,7 @@
 
     <string name="preference_category__my_apps">تطبيقاتي</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت؟ أحصل على تطبيقات مِن أشخاص بالقرب منك!</string>
-    <string name="nearby_splash__find_people_button">إبحث عن أشخاص بالقرب مني</string>
+    <string name="nearby_splash__find_people_button">البحث عن أشخاص مِن حوالي</string>
     <string name="nearby_splash__both_parties_need_fdroid">يحتاج كلا الطرفين إلى %1$s للمبادلة.</string>
 
     <string name="main_menu__latest_apps">الجديد</string>
@@ -346,7 +346,7 @@
     <string name="app__install_downloaded_update">تحديث</string>
 
     <string name="app_list__name__downloading_in_progress">تنزيل %1$s</string>
-    <string name="update_all">قم بتنزيل كل التحديثات</string>
+    <string name="update_all">تحديث الكل</string>
 
     <string name="updates__hide_updateable_apps">إخفاء التطبيقات</string>
     <string name="updates__show_updateable_apps">أظهر التطبيقات</string>
@@ -418,35 +418,35 @@
     <string name="app_list__dismiss_app_update">التحديث تم تجاهله</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلي أحدث إصدار في الحال.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة التطبيقات، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، الطبيقات الأخيرة سوف تظهر هنا</string>
 
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
-	<item quantity="zero">+%1$d المزيد…</item>
-	<item quantity="one">+%1$d المزيد…</item>
-	<item quantity="two">+%1$d المزيد…</item>
-	<item quantity="few">+%1$d المزيد…</item>
-	<item quantity="many">+%1$d المزيد…</item>
-	<item quantity="other">+%1$d المزيد…</item>
+    <item quantity="zero">+%1$d آخر…</item>
+    <item quantity="one">+%1$d آخر…</item>
+    <item quantity="two">+%1$d آخرين…</item>
+    <item quantity="few">+%1$d أخرى…</item>
+    <item quantity="many">+%1$d آخرين…</item>
+    <item quantity="other">+%1$d آخرون…</item>
 </plurals>
     <plurals name="notification_summary_updates">
-	<item quantity="zero">لا تحديثات</item>
-	<item quantity="one">تحديث واحد</item>
-	<item quantity="two">تحديثان</item>
-	<item quantity="few">%1$d التحديثات</item>
-	<item quantity="many">%1$d تحديثات</item>
-	<item quantity="other">%1$d تحديثات</item>
+    <item quantity="zero">لا تحديثات</item>
+    <item quantity="one">تحديث واحد</item>
+    <item quantity="two">تحديثان</item>
+    <item quantity="few">%1$d تحديثات</item>
+    <item quantity="many">%1$d تحديث</item>
+    <item quantity="other">%1$d تحديثات</item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="zero">لا شيء</item>
-	<item quantity="one">تطبيق واحد</item>
-	<item quantity="two">تطبيقان</item>
-	<item quantity="few">%1$d التطبيقات</item>
-	<item quantity="many">%1$d تطبيقات</item>
-	<item quantity="other">%1$d تطبيقات</item>
+    <item quantity="zero">لا شيء</item>
+    <item quantity="one">تطبيق واحد منصب</item>
+    <item quantity="two">تطبيقان منصبان</item>
+    <item quantity="few">%1$d تطبيقات منصبة</item>
+    <item quantity="many">%1$d تطبيق منصب</item>
+    <item quantity="other">%1$d تطبيقات منصبة</item>
 </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
@@ -566,4 +566,8 @@
     <string name="app_suggested">إقتراحات</string>
     <string name="send_installed_apps_csv">التطبيقات المثبتة بواسطة F-Droid  كملف CSV</string>
     <string name="menu_downgrade">تراجع عن الترقية</string>
-    </resources>
+    <string name="scan_removable_storage_title">مسح ذاكرة التخزين القابلة للإزالة</string>
+    <string name="app_repository">المستودع: %1$s</string>
+    <string name="nearby_splash__request_permission">جرّبه</string>
+    <string name="swap_toast_using_path">يستخدِم %1$s</string>
+</resources>

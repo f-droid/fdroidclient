@@ -521,4 +521,11 @@
 
     <string name="menu_downgrade">降級</string>
     <string name="app_repository">軟體庫：%1$s</string>
+    <string name="scan_removable_storage_title">掃描行動儲存器</string>
+    <string name="scan_removable_storage_summary">尋找行動存儲裝置上的套裝軟體庫，例如 SD 卡和 USB 驅動器</string>
+    <string name="nearby_splash__read_external_storage">SD 卡可用來交換！</string>
+    <string name="nearby_splash__request_permission">試試看</string>
+    <string name="swap_toast_using_path">使用 %1$s</string>
+    <string name="swap_toast_not_removable_storage">那個選擇不符合任何行動儲存裝置，請再試一次！</string>
+    <string name="swap_toast_find_removeable_storage">選擇您的行動儲存 SD 卡或 USB</string>
 </resources>

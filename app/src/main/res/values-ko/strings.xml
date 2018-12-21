@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">새 버전은 오래된 것과 다른 키로 서명되어 있습니다. 새 버전을 설치하려면, 오래된 것은 먼저 제거해야 합니다. 이를 수행하고 다시 시도해주세요. (제거하는 것은 앱에 저장된 모든 내부 데이터가 지워집니다)</string>
-    <string name="installIncompatible">앱이 당신의 장치와 호환되지 않는데, 어쨌든 설치하겠습니까?</string>
+    <string name="installIncompatible">앱이 당신의 기기와 호환되지 않는데, 그래도 설치하겠습니까\?</string>
     <string name="version">버전</string>
     <string name="delete">삭제</string>
     <string name="enable_nfc_send">NFC 전송 활성화…</string>
@@ -67,7 +67,7 @@
     <string name="search_hint">앱 검색</string>
     <string name="appcompatibility">앱 호환성</string>
     <string name="show_incompat_versions">호환되지 않는 버전을 포함</string>
-    <string name="show_incompat_versions_on">장치와 호환되지 않는 앱 버전을 보여줍니다</string>
+    <string name="show_incompat_versions_on">기기와 호환되지 않는 앱 버전을 보여줍니다</string>
     <string name="local_repo">로컬 저장소</string>
     <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
     <string name="touch_to_configure_local_repo">자세한 사항를 보고 상대방이 당신의 앱을 교환할 수 있도록 하려면 누르세요.</string>
@@ -110,13 +110,13 @@
     <string name="repo_confirm_delete_title">저장소를 삭제하시겠습니까?</string>
     <string name="repo_confirm_delete_body">저장소를 삭제하는 것은 저장소로부터 앱을 더 이상 구할 수 없다는 것을 뜻합니다. 
 \n 
-\n참고: 이전에 설치된 모든 앱은 당신의 장치에 남아있게 됩니다.</string>
+\n참고: 이전에 설치된 모든 앱은 당신의 기기에 남아있게 됩니다.</string>
     <string name="repo_disabled_notification">\"%1$s\"을(를) 비활성화했습니다. 
 \n
 \n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.</string>
     <string name="repo_added">패키지 저장소 %1$s 저장되었습니다.</string>
     <string name="repo_searching_address">%1$s에서 패키지 저장소를 찾는 중</string>
-    <string name="not_on_same_wifi">당신의 장치는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크 상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
+    <string name="not_on_same_wifi">당신의 기기는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크 상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
     <string name="requires_features">필요: %1$s</string>
     <string name="category_Development">개발</string>
     <string name="category_Games">게임</string>
@@ -128,7 +128,7 @@
     <string name="category_Science_Education">과학 및 교육</string>
     <string name="category_Security">보안</string>
     <string name="category_System">시스템</string>
-    <string name="swap_nfc_description">상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 장치를 서로 맞대세요.</string>
+    <string name="swap_nfc_description">상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 기기를 서로 맞대세요.</string>
     <string name="swap_join_same_wifi">상대방과 같은 Wi-Fi에 접속하세요</string>
     <string name="swap">앱 교환하기</string>
     <string name="swap_no_wifi_network">아직 네트워크 없음</string>
@@ -187,9 +187,9 @@
     <string name="category_Time">시간</string>
     <string name="category_Writing">작성</string>
 
-    <string name="empty_installed_app_list">설치된 앱이 없습니다.
-\n
-\n당신의 장치에 앱이 있지만, 그 앱은 F-Droid에서 구할 수 없습니다. 저장소를 업데이트해야 하거나, 저장소에 정말로 사용 가능한 앱이 없기 때문인 것 같습니다.</string>
+    <string name="empty_installed_app_list">설치된 앱이 없습니다. 
+\n 
+\n당신의 기기에 앱이 있지만, 그 앱은 F-Droid에서 구할 수 없습니다. 저장소를 업데이트해야 하거나, 저장소에 정말로 사용 가능한 앱이 없기 때문인 것 같습니다.</string>
     <string name="empty_can_update_app_list">축하합니다!\n당신의 앱이 최신입니다.</string>
 
     <string name="install_error_unknown">알 수 없는 오류로 인해 설치에 실패했습니다</string>
@@ -197,7 +197,7 @@
     <string name="system_install_denied_permissions">특별 권한이 확장 기능에 부여되지 않았습니다! 버그 보고를 작성해주세요!</string>
 
     <string name="swap_nfc_title">터치하여 교환하기</string>
-    <string name="swap_join_same_wifi_desc">Wi-Fi를 사용해 교환하려면, 같은 네트워크에 있는지를 확인하세요. 만약 같은 네트워크에 접근할 수 없다면, 장치 하나에서 Wi-Fi 핫스팟을 시작할 수 있습니다.</string>
+    <string name="swap_join_same_wifi_desc">Wi-Fi를 사용해 교환하려면, 같은 네트워크에 있는지를 확인하세요. 만약 같은 네트워크에 접근할 수 없다면, 기기 중 하나에서 Wi-Fi 핫스팟을 시작할 수 있습니다.</string>
     <string name="swap_join_this_hotspot">상대방이 당신의 핫스팟에 접속하도록 도와주기</string>
     <string name="swap_success">교환 성공!</string>
     <string name="swap_active_hotspot">%1$s (당신의 핫스팟)</string>
@@ -216,7 +216,7 @@
     <string name="swap_visible_wifi">Wi-Fi를 통해 보여짐</string>
     <string name="swap_setting_up_wifi">Wi-Fi 설정 중…</string>
     <string name="swap_not_visible_wifi">Wi-Fi를 통해 보여지지 않음</string>
-    <string name="swap_wifi_device_name">장치 이름</string>
+    <string name="swap_wifi_device_name">기기 이름</string>
     <string name="swap_cant_find_peers">찾고 있는 사람을 찾을 수 없습니까?</string>
     <string name="swap_send_fdroid">F-Droid 보내기</string>
     <string name="swap_no_peers_nearby">근처에 교환할 수 있는 사람들을 찾을 수 없었습니다.</string>
@@ -224,7 +224,7 @@
     <string name="swap_confirm">교환 확인</string>
     <string name="swap_qr_isnt_for_swap">스캔한 QR 코드는 교환 코드가 아닌 것으로 파악됩니다.</string>
     <string name="loading">불러오는 중…</string>
-    <string name="swap_connection_misc_error">장치에 연결하는 동안 오류가 발생했습니다. 교환할 수 없습니다!</string>
+    <string name="swap_connection_misc_error">기기에 연결하는 동안 오류가 발생하여, 교환할 수 없습니다!</string>
 
     <string name="install_confirm">다음에의 접근 권한이 필요합니다</string>
     <string name="install_confirm_update">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
@@ -312,7 +312,7 @@
 
     <string name="app_details__incompatible_mismatched_signature">설치된 버전의 서명과 다름</string>
     <string name="app_details__no_versions__no_compatible_signatures">호환되는 서명으로 된 버전이 없습니다</string>
-    <string name="app_details__no_versions__none_compatible_with_device">장치와 호환되는 버전이 없습니다</string>
+    <string name="app_details__no_versions__none_compatible_with_device">기기와 호환되는 버전이 없습니다</string>
     <string name="app_version_x_available">버전 %1$s 사용 가능</string>
     <string name="app_version_x_installed">버전 %1$s</string>
     <string name="app_recommended_version_installed">버전 %1$s (권장)</string>
@@ -327,7 +327,7 @@
     <string name="installed_apps__activity_title">설치된 앱</string>
     <string name="installed_app__updates_ignored">업데이트 무시됨</string>
     <string name="installed_app__updates_ignored_for_suggested_version">버전 %1$s의 업데이트 무시됨</string>
-    <string name="update_all">모든 업데이트 다운로드</string>
+    <string name="update_all">모두 업데이트</string>
 
     <string name="updates__app_with_known_vulnerability__ignore">무시</string>
 
@@ -501,4 +501,12 @@
     <string name="app_size">크기: %1$s</string>
 
     <string name="menu_downgrade">다운그레이드</string>
-    </resources>
+    <string name="scan_removable_storage_title">이동식 저장공간을 스캔</string>
+    <string name="scan_removable_storage_summary">SD 카드와 USB 메모리와 같은 이동식 저장공간에서 패키지 저장소를 찾아봅니다</string>
+    <string name="app_repository">저장소: %1$s</string>
+    <string name="nearby_splash__read_external_storage">SD 카드는 교환하는 데 사용될 수 있습니다!</string>
+    <string name="nearby_splash__request_permission">시도해보세요</string>
+    <string name="swap_toast_using_path">%1$s을 사용</string>
+    <string name="swap_toast_not_removable_storage">그 선택은 어떠한 이동식 저장공간 기기와도 일치하지 않았습니다, 다시 시도하세요!</string>
+    <string name="swap_toast_find_removeable_storage">여러분의 이동식 SD 카드 또는 USB를 선택하세요</string>
+</resources>

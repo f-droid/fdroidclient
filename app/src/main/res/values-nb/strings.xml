@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet.)</string>
     <string name="installIncompatible">Programmet er ikke kompatibelt med ditt utstyr, installer likevel?</string>
@@ -544,4 +544,12 @@
     <string name="app_size">Størrelse: %1$s</string>
 
     <string name="menu_downgrade">Nedgrader</string>
-    </resources>
+    <string name="scan_removable_storage_title">Skann flyttbart medium</string>
+    <string name="scan_removable_storage_summary">Se etter pakkebrønner på flyttbare medium som SD-kort og USB-minnepinner</string>
+    <string name="app_repository">Pakkebrønn: %1$s</string>
+    <string name="nearby_splash__read_external_storage">SD-kort kan ikke brukes til sidevekslingsfil.</string>
+    <string name="nearby_splash__request_permission">Prøv det</string>
+    <string name="swap_toast_using_path">Bruker %1$s</string>
+    <string name="swap_toast_not_removable_storage">Det valget samsvarte ikke med noe flyttbart medium, prøv igjen.</string>
+    <string name="swap_toast_find_removeable_storage">Velg ditt flyttbare SD-kort eller USB</string>
+</resources>

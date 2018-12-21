@@ -546,4 +546,11 @@
 
     <string name="menu_downgrade">Varasem versioon</string>
     <string name="app_repository">Hoidla: %1$s</string>
+    <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
+    <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>
+    <string name="nearby_splash__read_external_storage">SD kaarte saab kasutada vahetamiseks!</string>
+    <string name="nearby_splash__request_permission">Proovi seda</string>
+    <string name="swap_toast_using_path">Kasutatakse %1$s</string>
+    <string name="swap_toast_not_removable_storage">See valik ei vastanud mitte ühelegi eemaldatavale mäluseadmele. Proovi uuesti!</string>
+    <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD kaart või uSB mälupulk</string>
 </resources>

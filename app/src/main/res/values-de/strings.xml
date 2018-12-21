@@ -547,4 +547,11 @@
 
     <string name="menu_downgrade">Downgrade</string>
     <string name="app_repository">Paketquelle: %1$s</string>
+    <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
+    <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
+    <string name="nearby_splash__read_external_storage">SD-Karten können zum Tausch verwendet werden!</string>
+    <string name="nearby_splash__request_permission">Versuchen Sie es</string>
+    <string name="swap_toast_using_path">Verwendung von %1$s</string>
+    <string name="swap_toast_not_removable_storage">Diese Wahl passte nicht zu irgendwelchen Wechselspeichern, versuchen Sie es noch einmal!</string>
+    <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
 </resources>
