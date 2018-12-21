@@ -347,7 +347,7 @@
 
     <string name="main_menu__latest_apps">Mais recentes</string>
     <string name="main_menu__categories">Categorias</string>
-    <string name="main_menu__swap_nearby">Próximo</string>
+    <string name="main_menu__swap_nearby">Por perto</string>
 
 
     <plurals name="button_view_all_apps_in_category">

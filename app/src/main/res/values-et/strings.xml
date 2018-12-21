@@ -320,7 +320,7 @@
     </string>
 <string name="main_menu__latest_apps">Uusimad</string>
     <string name="main_menu__categories">Kategooriad</string>
-    <string name="main_menu__swap_nearby">Lähedal</string>
+    <string name="main_menu__swap_nearby">Läheduses</string>
 
     <string name="preference_manage_installed_apps">Halda paigaldatud rakendusi</string>
 

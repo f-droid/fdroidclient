@@ -323,7 +323,7 @@
 
     <string name="main_menu__latest_apps">Último</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Cercanía</string>
+    <string name="main_menu__swap_nearby">Cercano</string>
 
 
     <plurals name="button_view_all_apps_in_category">

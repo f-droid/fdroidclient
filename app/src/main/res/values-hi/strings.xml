@@ -173,7 +173,7 @@
     <string name="menu_install">इंस्टॉल करें</string>
     <string name="menu_uninstall">स्थापना रद्द करें</string>
     <string name="menu_upgrade">अपडेट करें</string>
-    <string name="main_menu__swap_nearby">आपके निकट</string>
+    <string name="main_menu__swap_nearby">आस–पास</string>
     <string name="preference_manage_installed_apps">स्थापित एप्स संशोधित करें</string>
     <string name="details_notinstalled">स्थापित नहीं है</string>
     <string name="next">अगला</string>

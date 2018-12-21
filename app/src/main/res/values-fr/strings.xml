@@ -340,7 +340,7 @@
 
     <string name="main_menu__latest_apps">Nouveau</string>
     <string name="main_menu__categories">Catégories</string>
-    <string name="main_menu__swap_nearby">Autour</string>
+    <string name="main_menu__swap_nearby">À proximité</string>
 
 
     <string name="app_recommended_version_installed">Version %1$s (recommandée)</string>

@@ -349,7 +349,7 @@
     <string name="notification_action_cancel">Одустани</string>
     <string name="notification_action_install">Инсталирај</string>
 
-    <string name="main_menu__swap_nearby">Оближње</string>
+    <string name="main_menu__swap_nearby">У околини</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Прикажи %d</item>
         <item quantity="few">Прикажи све %d</item>

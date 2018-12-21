@@ -337,7 +337,7 @@
     <string name="repositories_summary">Voeg extra pakketbronnen voor apps toe</string>
     <string name="main_menu__latest_apps">Nieuwste</string>
     <string name="main_menu__categories">Categorieën</string>
-    <string name="main_menu__swap_nearby">Dichtbij</string>
+    <string name="main_menu__swap_nearby">In de buurt</string>
 
     <string name="preference_category__my_apps">Mijn apps</string>
     <string name="preference_manage_installed_apps">Beheer geïnstalleerde apps</string>

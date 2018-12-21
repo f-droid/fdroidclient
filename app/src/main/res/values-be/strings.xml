@@ -350,7 +350,7 @@
 
     <string name="main_menu__latest_apps">Апошнія</string>
     <string name="main_menu__categories">Катэгорыі</string>
-    <string name="main_menu__swap_nearby">Блізка</string>
+    <string name="main_menu__swap_nearby">Паблізу</string>
 
 
     <plurals name="button_view_all_apps_in_category">

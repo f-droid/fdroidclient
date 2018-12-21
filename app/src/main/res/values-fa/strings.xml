@@ -328,7 +328,7 @@
     <string name="menu_video">ویدیو</string>
     <string name="main_menu__latest_apps">جدیدترین</string>
     <string name="main_menu__categories">دسته‌ها</string>
-    <string name="main_menu__swap_nearby">نزدیک</string>
+    <string name="main_menu__swap_nearby">اطراف</string>
 
     <string name="latest__empty_state__no_recent_apps">کارهٔ جدیدی پیدا نشد</string>
     <string name="latest__empty_state__never_updated">پس از به‌روز رسانی فهرست کاره‌های‌تان، جدیدترین کاره‌ها در این‌‌جا نمایش می‌یابند</string>

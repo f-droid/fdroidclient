@@ -340,7 +340,7 @@
 
     <string name="main_menu__latest_apps">Останні</string>
     <string name="main_menu__categories">Категорії</string>
-    <string name="main_menu__swap_nearby">Сусідні</string>
+    <string name="main_menu__swap_nearby">Поруч</string>
 
     <string name="preference_category__my_apps">Мої застосунки</string>
     <string name="preference_manage_installed_apps">Керування встановленими застосунками</string>

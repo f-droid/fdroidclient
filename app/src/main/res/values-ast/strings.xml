@@ -353,7 +353,7 @@
 
     <string name="antifeatureswarning">Esta aplicación tien carauterístiques que quiciabes nun te presten.</string>
     <string name="main_menu__latest_apps">Novedaes</string>
-<string name="main_menu__swap_nearby">Cercanía</string>
+<string name="main_menu__swap_nearby">Cercano</string>
 
     <string name="notification_title_summary_install_error">Falló la instalación</string>
     <string name="by_author_format">por %s</string>

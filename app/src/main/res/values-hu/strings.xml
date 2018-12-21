@@ -272,7 +272,7 @@
     <string name="local_repo_running">Az F-Droid cserére kész</string>
 <string name="main_menu__latest_apps">Legújabb</string>
     <string name="main_menu__categories">Kategóriák</string>
-    <string name="main_menu__swap_nearby">Közelben</string>
+    <string name="main_menu__swap_nearby">Közeli</string>
 
     <string name="preference_manage_installed_apps">Telepített alkalmazások kezelése</string>
 

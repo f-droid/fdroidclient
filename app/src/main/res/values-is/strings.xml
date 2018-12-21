@@ -370,7 +370,7 @@
     <string name="repositories_summary">Bæta við öðrum upptökum fyrir hugbúnað</string>
     <string name="main_menu__latest_apps">Nýjustu</string>
     <string name="main_menu__categories">Flokkar</string>
-    <string name="main_menu__swap_nearby">Nálægt</string>
+    <string name="main_menu__swap_nearby">Í grenndinni</string>
 
     <string name="preference_category__my_apps">Forritin mín</string>
     <string name="preference_manage_installed_apps">Sýsla með uppsett forrit</string>

@@ -343,7 +343,7 @@
 
     <string name="main_menu__latest_apps">Ostatnie</string>
     <string name="main_menu__categories">Kategorie</string>
-    <string name="main_menu__swap_nearby">Blisko</string>
+    <string name="main_menu__swap_nearby">W pobliżu</string>
 
 
     <plurals name="button_view_all_apps_in_category">

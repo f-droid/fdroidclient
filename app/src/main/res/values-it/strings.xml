@@ -359,7 +359,7 @@
     <string name="notification_action_cancel">Annulla</string>
     <string name="notification_action_install">Installa</string>
 
-    <string name="main_menu__swap_nearby">Vicino</string>
+    <string name="main_menu__swap_nearby">Qui vicino</string>
 <string name="preference_category__my_apps">Mie App</string>
     <string name="preference_manage_installed_apps">Gestisci app installate</string>
 

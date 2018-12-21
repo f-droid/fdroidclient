@@ -18,6 +18,7 @@
     <string name="login_password">கடவுச்சொல்</string>
     <string name="repo_edit_credentials">கடவுச்சொல்லை மாற்று</string>
     <string name="repo_error_empty_username">பயனர் பெயர் கொடுக்கப்படாததால் எந்த மாற்றமும் இல்லை</string>
+    <string name="main_menu__swap_nearby">அருகிலுள்ளவை</string>
 
     <string name="app_details">செயலி விபரங்கள்</string>
     <string name="no_such_app">அப்படி எந்த செயலியும் இல்லை</string>

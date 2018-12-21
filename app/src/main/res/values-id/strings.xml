@@ -352,7 +352,7 @@
         <item quantity="other">Tampilkan semua %d</item>
     </plurals>
 
-    <string name="main_menu__swap_nearby">Dekat</string>
+    <string name="main_menu__swap_nearby">Di sekitar</string>
     <string name="app_recommended_version_installed">Versi %1$s (Direkomendasikan)</string>
     <string name="app_new">Baru</string>
     <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>

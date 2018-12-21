@@ -347,7 +347,7 @@
     <string name="main_menu__categories">Kategorien</string>
 
 
-    <string name="main_menu__swap_nearby">Nah</string>
+    <string name="main_menu__swap_nearby">In der Nähe</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
 

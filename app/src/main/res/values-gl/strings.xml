@@ -276,7 +276,7 @@
     <string name="menu_settings">Preferencias</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Veciñanza</string>
+    <string name="main_menu__swap_nearby">Cerca</string>
 
     <string name="preference_manage_installed_apps">Xestionar aplicacións instaladas</string>
 

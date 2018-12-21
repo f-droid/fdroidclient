@@ -17,6 +17,7 @@
     <string name="unstable_updates">Nestabilna ažuriranja</string>
     <string name="unstable_updates_summary">Predloži ažuriranja za nestabilne verzije</string>
     <string name="other">Ostalo</string>
+    <string name="main_menu__swap_nearby">U blizini</string>
 
     <string name="update_interval">Interval automatskog ažuriranja</string>
     <string name="update_auto_download">Automatski preuzmi ažuriranja</string>

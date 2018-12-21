@@ -275,7 +275,7 @@
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư. Cần ứng dụng Orbot</string>
-<string name="main_menu__swap_nearby">Gần đây</string>
+<string name="main_menu__swap_nearby">Lân cận</string>
 
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>

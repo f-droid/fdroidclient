@@ -23,6 +23,7 @@
     <string name="about_site">เว็บไซต์</string>
     <string name="about_source">ซอร์สโค้ด</string>
     <string name="about_license">สัญญาอนุญาต</string>
+    <string name="main_menu__swap_nearby">ใกล้เคียง</string>
 
     <string name="app_incompatible">เข้ากันไม่ได้</string>
     <string name="app_installed">ติดตั้งอยู่</string>

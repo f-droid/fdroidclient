@@ -358,7 +358,7 @@
     <string name="installed_app__updates_ignored">Ignorované aktualizace</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aktualizace na verzi %1$s jsou ignorovány</string>
 
-    <string name="main_menu__swap_nearby">Poblíž</string>
+    <string name="main_menu__swap_nearby">Nablízku</string>
 
     <string name="preference_category__my_apps">Moje aplikace</string>
     <string name="preference_manage_installed_apps">Spravovat nainstalované aplikace</string>

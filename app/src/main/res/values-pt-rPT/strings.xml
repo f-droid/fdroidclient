@@ -368,7 +368,7 @@
     <string name="repositories_summary">Adicionar mais fontes de aplicações</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorias</string>
-    <string name="main_menu__swap_nearby">Vizinhança</string>
+    <string name="main_menu__swap_nearby">Próximo</string>
 
     <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
     <string name="latest__empty_state__never_updated">Assim que a lista de aplicações for atualizada, as aplicações mais recentes serão mostradas aqui</string>

@@ -315,7 +315,7 @@
 
     <string name="main_menu__latest_apps">Senaste</string>
     <string name="main_menu__categories">Kategorier</string>
-    <string name="main_menu__swap_nearby">Nära</string>
+    <string name="main_menu__swap_nearby">I närheten</string>
 
     <string name="preference_category__my_apps">Mina appar</string>
     <string name="preference_manage_installed_apps">Hantera installerade appar</string>

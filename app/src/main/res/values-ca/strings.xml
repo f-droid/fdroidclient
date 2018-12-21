@@ -314,7 +314,7 @@
 
     <string name="main_menu__latest_apps">Novetats</string>
     <string name="main_menu__categories">Categories</string>
-    <string name="main_menu__swap_nearby">Al voltant</string>
+    <string name="main_menu__swap_nearby">A prop</string>
 
     <string name="notification_title_single_update_available">Actualització disponible</string>
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>

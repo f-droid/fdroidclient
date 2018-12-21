@@ -311,7 +311,7 @@
     <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til Internettet?</string>
 <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
-    <string name="main_menu__swap_nearby">I nærheden</string>
+    <string name="main_menu__swap_nearby">Tæt på</string>
 
     <string name="preference_manage_installed_apps">Administrer installerede apps</string>
 

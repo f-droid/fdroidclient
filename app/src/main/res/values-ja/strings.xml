@@ -322,7 +322,7 @@
 
     <string name="main_menu__latest_apps">新着</string>
     <string name="main_menu__categories">カテゴリ</string>
-    <string name="main_menu__swap_nearby">Nearby</string>
+    <string name="main_menu__swap_nearby">付近</string>
 
 
     <plurals name="button_view_all_apps_in_category">
