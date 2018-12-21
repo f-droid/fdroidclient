@@ -52,7 +52,7 @@
     <string name="repo_provider">แหล่งโปรแกรม: %s</string>
 
     <string name="menu_manage">แหล่งโปรแกรม</string>
-    <string name="menu_settings">ตั้งค่า</string>
+    <string name="menu_settings">การตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
 

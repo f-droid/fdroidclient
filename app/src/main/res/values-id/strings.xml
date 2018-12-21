@@ -139,7 +139,7 @@
     <string name="repo_last_update">Terakhir diperbarui</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="menu_settings">Pengaturan</string>
+    <string name="menu_settings">Setelan</string>
     <string name="unsigned_description">Ini artinya daftar apl tersebut tidak bisa diverifikasi. Anda harus berhati-hati dengan apl yang diunduh dari daftar yang tidak terverifikasi.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.

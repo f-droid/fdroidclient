@@ -273,7 +273,7 @@
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-    <string name="menu_settings">Preferencias</string>
+    <string name="menu_settings">Configuración</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Cerca</string>

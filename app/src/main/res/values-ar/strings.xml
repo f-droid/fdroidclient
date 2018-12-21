@@ -103,7 +103,7 @@
     <string name="malformed_repo_uri">تجاهل عناوين URI للمستودعات  التالفة : %s</string>
     <string name="repo_provider">مستودع: %s</string>
 
-    <string name="menu_settings">إعدادات</string>
+    <string name="menu_settings">الإعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
 
     <string name="menu_website">الموقع الإلكتروني</string>

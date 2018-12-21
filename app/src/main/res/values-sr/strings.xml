@@ -251,7 +251,7 @@
     <string name="menu_flattr">Флатр</string>
 
 
-    <string name="menu_settings">Поставке</string>
+    <string name="menu_settings">Подешавања</string>
     <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, не можемо размењивати са њим!</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате
         приступ истој мрежи, једно од вас може да направи бежичну врућу тачку.

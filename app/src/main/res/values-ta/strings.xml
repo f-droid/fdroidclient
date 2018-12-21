@@ -54,7 +54,7 @@
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
     <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
-    <string name="menu_settings">அமைப்புகள்</string>
+    <string name="menu_settings">அமைப்பு</string>
     <string name="menu_search">தேடல்</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>
 

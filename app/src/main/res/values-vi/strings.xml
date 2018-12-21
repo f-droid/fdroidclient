@@ -260,7 +260,7 @@
         cho chúng tôi!
     </string>
     <string name="theme_night">Đen</string>
-    <string name="menu_settings">Tuỳ chọn</string>
+    <string name="menu_settings">Cài đặt</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>
     <string name="login_title">Yêu cầu xác thực</string>

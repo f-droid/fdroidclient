@@ -257,7 +257,7 @@
 
     <string name="permissions">Autorisations</string>
     <string name="theme_night">Nuit</string>
-    <string name="menu_settings">Options</string>
+    <string name="menu_settings">Paramètres</string>
     <string name="login_title">Identification requise</string>
     <string name="login_name">Nom d\'utilisateur</string>
     <string name="login_password">Mot de passe</string>

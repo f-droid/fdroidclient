@@ -171,7 +171,7 @@
     <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
     <string name="bad_fingerprint">Empremta digital incorrecta</string>
     <string name="invalid_url">L\'adreça URL és invàlida.</string>
-    <string name="menu_settings">Opcions</string>
+    <string name="menu_settings">Configuració</string>
     <string name="menu_changelog">Registre de canvis</string>
     <string name="status_download_unknown_size">S\'està baixant\n%2$s des de\n%1$s</string>
     <string name="status_processing_xml_percent">S\'està processant %2$s / %3$s (%4$d%%) de %1$s</string>

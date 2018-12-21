@@ -78,7 +78,7 @@
     <string name="repo_provider">Repository: %s</string>
 
     <string name="menu_manage">Repository မ်ား</string>
-    <string name="menu_settings">ျပင္ဆင္ရန္</string>
+    <string name="menu_settings">ဆက်တင်များ</string>
     <string name="menu_search">ရွာေဖြမည္</string>
     <string name="menu_add_repo">Repository အသစ္</string>
 
