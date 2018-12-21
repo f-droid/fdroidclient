@@ -542,4 +542,11 @@
 
     <string name="menu_downgrade">Sürüm düşürme</string>
     <string name="app_repository">Depo: %1$s</string>
+    <string name="scan_removable_storage_title">Çıkarılabilir depolama alanını tara</string>
+    <string name="scan_removable_storage_summary">SD Kart ve USB sürücüleri gibi çıkarılabilir depolama birimlerinde paket depolarına bakın</string>
+    <string name="nearby_splash__read_external_storage">SD Kartlar takas için kullanılabilir!</string>
+    <string name="nearby_splash__request_permission">Deneyin</string>
+    <string name="swap_toast_using_path">%1$s kullanıyor</string>
+    <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
+    <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
 </resources>

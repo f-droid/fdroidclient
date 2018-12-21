@@ -6,7 +6,7 @@
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
     <string name="cache_downloaded">Conserver les applications en cache</string>
-    <string name="updates">MàJ</string>
+    <string name="updates">En cours</string>
     <string name="other">Divers</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
@@ -539,4 +539,9 @@
     <string name="menu_downgrade">Rétrograder</string>
     <string name="allow_push_requests_summary">Les méta-data des dépôts peuvent contenir des requêtes pour installer ou désinstaller des applications.</string>
     <string name="app_repository">Dépôt : %1$s</string>
+    <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
+    <string name="nearby_splash__request_permission">Essayer</string>
+    <string name="swap_toast_using_path">Utilisation de %1$s</string>
+    <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
+    <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
 </resources>

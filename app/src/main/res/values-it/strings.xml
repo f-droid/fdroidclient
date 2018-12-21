@@ -554,4 +554,5 @@
     <string name="menu_downgrade">Disinstalla aggiornamento</string>
     <string name="send_installed_apps_csv">App installate da F-Droid come file CSV</string>
     <string name="app_repository">Repository: %1$s</string>
+    <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
 </resources>
