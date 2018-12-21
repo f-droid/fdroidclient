@@ -456,8 +456,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="use_bluetooth">Use Bluetooth</string>
     <string name="loading">Loading…</string>
     <string name="swap_connection_misc_error">Error occurred while connecting to device, can\'t swap with it!</string>
-    <string name="swap_not_enabled">Swapping not enabled</string>
-    <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
+    <string name="not_visible_nearby">Nearby not enabled</string>
+    <string name="not_visible_nearby_description">Before swapping with nearby devices, make your device visible.</string>
     <string name="swap_toast_using_path">Using %1$s</string>
     <string name="swap_toast_not_removable_storage">That choice did not match any removeable storage devices, try
         again!</string>

@@ -250,8 +250,6 @@
     <string name="swap_connection_misc_error">En feil inntraff under tilkobling til enheten, klarer ikke å sirkulere med
         den.
     </string>
-    <string name="swap_not_enabled">Sirkulering ikke påskrudd</string>
-    <string name="swap_not_enabled_description">Før sirkulering må din enhet være i synlig modus.</string>
 
     <string name="install_confirm_update">Ønsker du å installere en oppdatering
         til dette eksisterende programmet? Dataen du har vil ikke

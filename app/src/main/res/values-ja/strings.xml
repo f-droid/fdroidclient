@@ -194,8 +194,6 @@
     <string name="downloading">ダウンロード中</string>
 
     <string name="swap_connection_misc_error">端末への接続中にエラーが発生しました。交換できません！</string>
-    <string name="swap_not_enabled">交換が無効です</string>
-    <string name="swap_not_enabled_description">交換する前に、お使いの端末が表示されている必要があります。</string>
 
     <string name="install_confirm">アクセス権限が必要</string>
     <string name="install_confirm_update">インストール済みのアプリにアップデートをインストールしますか？既存のデータは失われません。更新されたアプリの権限:</string>
@@ -324,7 +322,7 @@
 
     <string name="main_menu__latest_apps">新着</string>
     <string name="main_menu__categories">カテゴリ</string>
-    <string name="main_menu__swap_nearby">Nearby</string>
+    <string name="main_menu__swap_nearby">付近</string>
 
 
     <plurals name="button_view_all_apps_in_category">

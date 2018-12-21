@@ -235,8 +235,6 @@
     <string name="swap_qr_isnt_for_swap">QR-koden du läst av ser inte ut som en utbytarkod.</string>
     <string name="loading">Öppnar…</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
-    <string name="swap_not_enabled">Utbyta inte aktiverat</string>
-    <string name="swap_not_enabled_description">Innan utbyte måste din enhet synliggöras.</string>
 
     <string name="install_confirm">behöver åtkomst till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
@@ -317,7 +315,7 @@
 
     <string name="main_menu__latest_apps">Senaste</string>
     <string name="main_menu__categories">Kategorier</string>
-    <string name="main_menu__swap_nearby">Nära</string>
+    <string name="main_menu__swap_nearby">I närheten</string>
 
     <string name="preference_category__my_apps">Mina appar</string>
     <string name="preference_manage_installed_apps">Hantera installerade appar</string>

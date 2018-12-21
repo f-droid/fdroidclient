@@ -19,6 +19,8 @@
     <string name="added_on">Shtuar me %s</string>
 
     <string name="ok">OK</string>
+    <string name="main_menu__categories">Kategoritë</string>
+    <string name="main_menu__swap_nearby">Në afërsi</string>
 
     <string name="yes">Po</string>
     <string name="no">Jo</string>
@@ -34,7 +36,7 @@
     <string name="bluetooth_activity_not_found">Nuk u gjet ndonjë mënyrë dërgimi me Bluetooth, zgjidhni një!</string>
     <string name="choose_bt_send">Zgjidhni mënyrën e dërgimit me Bluetooth</string>
 
-    <string name="menu_settings">Rregullimet</string>
+    <string name="menu_settings">Cilësimet</string>
     <string name="menu_search">Kërko</string>
     <string name="menu_share">Shpërndaj</string>
     <string name="menu_install">Instalo</string>

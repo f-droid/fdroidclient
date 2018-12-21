@@ -224,8 +224,6 @@
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>
     <string name="loading">Načítání…</string>
-    <string name="swap_not_enabled">Výměna není povolena</string>
-    <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 
     <string name="install_confirm">vyžaduje přístup k</string>
 
@@ -360,7 +358,7 @@
     <string name="installed_app__updates_ignored">Ignorované aktualizace</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aktualizace na verzi %1$s jsou ignorovány</string>
 
-    <string name="main_menu__swap_nearby">Poblíž</string>
+    <string name="main_menu__swap_nearby">Nablízku</string>
 
     <string name="preference_category__my_apps">Moje aplikace</string>
     <string name="preference_manage_installed_apps">Spravovat nainstalované aplikace</string>

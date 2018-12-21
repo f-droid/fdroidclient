@@ -249,7 +249,7 @@
     <string name="more">Viac</string>
     <string name="less">Menej</string>
 
-    <string name="menu_settings">Nastaviť</string>
+    <string name="menu_settings">Nastavenia</string>
     <string name="menu_email">Poslať e-mail autorovi</string>
     <string name="antinonfreeassetslist">Táto aplikácia obsahuje proprietárne časti</string>
 
@@ -274,8 +274,6 @@
     <string name="swap_confirm">Potvrdiť výmenu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevyzerá ako kód na výmenu.</string>
     <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční!</string>
-    <string name="swap_not_enabled">Výmena nie je povolená</string>
-    <string name="swap_not_enabled_description">Pred výmenou musí byť zariadenie viditeľné.</string>
 
     <string name="install_confirm_update">Chcete nainštalovať aktualizáciu
         k tejto existujúcej aplikácií? Dáta aplikácie nebudú

@@ -17,6 +17,8 @@
     <string name="unstable_updates">Nestabilna ažuriranja</string>
     <string name="unstable_updates_summary">Predloži ažuriranja za nestabilne verzije</string>
     <string name="other">Ostalo</string>
+    <string name="main_menu__categories">Kategorije</string>
+    <string name="main_menu__swap_nearby">U blizini</string>
 
     <string name="update_interval">Interval automatskog ažuriranja</string>
     <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
@@ -279,8 +281,6 @@
     <string name="swap_connection_misc_error">Došlo je do greške prilikom spajanja na uređaj, čini se da razmjena nije
         moguća.
     </string>
-    <string name="swap_not_enabled">Razmjena nije omogućena</string>
-    <string name="swap_not_enabled_description">Vaš uređaj mora biti vidljiv prije razmjene.</string>
 
     <string name="install_confirm">treba pristup</string>
     <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?

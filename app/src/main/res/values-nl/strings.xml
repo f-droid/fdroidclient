@@ -206,8 +206,6 @@
     <string name="swap_qr_isnt_for_swap">De QR-code die je gescand hebt lijkt geen uitwisselcode te zijn.</string>
     <string name="loading">Laden…</string>
     <string name="swap_connection_misc_error">Fout bij verbinden met apparaat, we kunnen er niet mee uit te wisselen!</string>
-    <string name="swap_not_enabled">Uitwisselen niet ingeschakeld</string>
-    <string name="swap_not_enabled_description">Voordat we kunnen uitwisselen moet het apparaat zichtbaar gemaakt worden.</string>
 
     <string name="install_confirm">heeft toegang nodig tot</string>
     <string name="install_confirm_update">Wil je een update voor deze app installeren? De bestaande gegevens zullen niet verloren gaan. De geüpdatete app zal toegang krijgen tot:</string>
@@ -339,7 +337,7 @@
     <string name="repositories_summary">Voeg extra pakketbronnen voor apps toe</string>
     <string name="main_menu__latest_apps">Nieuwste</string>
     <string name="main_menu__categories">Categorieën</string>
-    <string name="main_menu__swap_nearby">Dichtbij</string>
+    <string name="main_menu__swap_nearby">In de buurt</string>
 
     <string name="preference_category__my_apps">Mijn apps</string>
     <string name="preference_manage_installed_apps">Beheer geïnstalleerde apps</string>

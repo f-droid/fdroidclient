@@ -8,13 +8,13 @@
     <string name="no">కాదు</string>
     <string name="back">వెనుకకు</string>
     <string name="cancel">రద్దుచేయి</string>
-    <string name="menu_settings">అమరికలు</string>
+    <string name="menu_settings">సెట్టింగ్‌లు</string>
     <string name="menu_search">వెతుకు</string>
     <string name="menu_launch">నడుపు</string>
     <string name="menu_share">పంచుకోండి</string>
     <string name="menu_install">స్థాపించు</string>
     <string name="main_menu__categories">వర్గాలు</string>
-    <string name="main_menu__swap_nearby">చుట్టుపక్కల</string>
+    <string name="main_menu__swap_nearby">సమీపంలోనివి</string>
 
     <string name="next">తదుపరి</string>
     <string name="pref_language">భాష</string>

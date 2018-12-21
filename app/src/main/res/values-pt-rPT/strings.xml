@@ -263,8 +263,6 @@
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
-    <string name="swap_not_enabled">Troca não ativa</string>
-    <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>
 
     <string name="install_confirm">requer acesso a</string>
     <string name="more">Mais</string>
@@ -370,7 +368,7 @@
     <string name="repositories_summary">Adicionar mais fontes de aplicações</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorias</string>
-    <string name="main_menu__swap_nearby">Vizinhança</string>
+    <string name="main_menu__swap_nearby">Próximo</string>
 
     <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
     <string name="latest__empty_state__never_updated">Assim que a lista de aplicações for atualizada, as aplicações mais recentes serão mostradas aqui</string>

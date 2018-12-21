@@ -41,7 +41,7 @@
     <string name="next">ಮುಂದೆ</string>
     <string name="details_new_in_version">%s ನೇ ಆವೃತ್ತಿಯಲ್ಲಿ ಹೊಸತು</string>
 
-    <string name="main_menu__swap_nearby">ಹತ್ತಿರದ</string>
+    <string name="main_menu__swap_nearby">ಹತ್ತಿರವೇನಿದೆ</string>
 
     <string name="main_menu__latest_apps">ಇತ್ತೀಚಿನ</string>
     <string name="menu_donate">ದೇಣಿಗೆ</string>
@@ -49,7 +49,7 @@
     <string name="menu_email">ಲೇಖಕರ ಇ-ಅಂಚೆ</string>
     <string name="menu_share">ಹಂಚಿರಿ</string>
     <string name="menu_search">ಹುಡುಕಿ</string>
-    <string name="menu_settings">ಆದ್ಯತೆಗಳು</string>
+    <string name="menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="back">ಹಿಂದಕ್ಕೆ</string>
     <string name="links">ಕೊಂಡಿಗಳು</string>
     <string name="versions">ಆವೃತ್ತಿಗಳು</string>
@@ -80,7 +80,8 @@
     <string name="other">ಇತರೆ</string>
 
     <string name="delete">ಅಳಿಸು</string>
-<string name="main_menu__categories">ವಿಂಗಡಣೆಗಳು</string>
+<string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
+    <string name="updates">ವಿಭಾಗಗಳು</string>
     <string name="category_Internet">ಅಂತರ್ಜಾಲ</string>
     <string name="category_Money">ಹಣ</string>
     <string name="category_Reading">ಓದು</string>

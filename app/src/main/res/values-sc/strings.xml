@@ -216,8 +216,6 @@
     <string name="swap_confirm">Cunfirma cumpartzidura</string>
     <string name="swap_qr_isnt_for_swap">Su còdighe QR iscansidu non paret unu còdighe de cumpartzidura.</string>
     <string name="loading">Carrighende…</string>
-    <string name="swap_not_enabled">Cumpartzidura non abilitada</string>
-    <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>
 
     <string name="install_confirm">at a tènnere atzessu a</string>
     <string name="install_confirm_update">Boles installare un’agiornamentu

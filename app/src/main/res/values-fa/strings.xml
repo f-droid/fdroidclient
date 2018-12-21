@@ -251,8 +251,6 @@
     <string name="swap_qr_isnt_for_swap">رمز QR ای که اسکن کردید، شبیه یک رمز تبادل نیست.</string>
     <string name="loading">در حال بارگزاری…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به دستگاه خطایی رخ داد، نمی‌توان تبادل کرد!</string>
-    <string name="swap_not_enabled">تبادل فعّال نیست</string>
-    <string name="swap_not_enabled_description">پیش از تبادل، دستگاهتان باید قابل مشاهده باشد.</string>
 
     <string name="install_confirm">نیازمند دسترسی به</string>
     <string name="install_confirm_update">می‌خواهید به‌روزرسانی‌ای برای این کاره نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. کارهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
@@ -330,7 +328,7 @@
     <string name="menu_video">ویدیو</string>
     <string name="main_menu__latest_apps">جدیدترین</string>
     <string name="main_menu__categories">دسته‌ها</string>
-    <string name="main_menu__swap_nearby">نزدیک</string>
+    <string name="main_menu__swap_nearby">اطراف</string>
 
     <string name="latest__empty_state__no_recent_apps">کارهٔ جدیدی پیدا نشد</string>
     <string name="latest__empty_state__never_updated">پس از به‌روز رسانی فهرست کاره‌های‌تان، جدیدترین کاره‌ها در این‌‌جا نمایش می‌یابند</string>

@@ -212,8 +212,6 @@
     <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.</string>
     <string name="loading">Ładowanie…</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem wymiana nie powiodła się!</string>
-    <string name="swap_not_enabled">Wymiana nie jest włączona</string>
-    <string name="swap_not_enabled_description">Przed wymiana, musisz ustawić swoje urządzenie jako widoczne.</string>
 
     <string name="install_confirm">wymaga dostępu do</string>
     <string name="install_confirm_update">Czy chcesz zaktualizować tą aplikację? Aktualizacja dostanie dostęp do:
@@ -345,7 +343,7 @@
 
     <string name="main_menu__latest_apps">Ostatnie</string>
     <string name="main_menu__categories">Kategorie</string>
-    <string name="main_menu__swap_nearby">Blisko</string>
+    <string name="main_menu__swap_nearby">W pobliżu</string>
 
 
     <plurals name="button_view_all_apps_in_category">

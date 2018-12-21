@@ -271,8 +271,6 @@
     <string name="swap_confirm">Kinnita vahetus</string>
     <string name="swap_qr_isnt_for_swap">Skannitud QR-kood ei paista olevat vahetamise kood.</string>
     <string name="loading">Laadimine…</string>
-    <string name="swap_not_enabled">Vahetamine ei ole lubatud</string>
-    <string name="swap_not_enabled_description">Enne vahetamist pead tegema seadme nähtavaks.</string>
 
     <string name="install_confirm">vajab juurdepääsu</string>
     <string name="newPerms">Uus</string>
@@ -322,7 +320,7 @@
     </string>
 <string name="main_menu__latest_apps">Uusimad</string>
     <string name="main_menu__categories">Kategooriad</string>
-    <string name="main_menu__swap_nearby">Lähedal</string>
+    <string name="main_menu__swap_nearby">Läheduses</string>
 
     <string name="preference_manage_installed_apps">Halda paigaldatud rakendusi</string>
 

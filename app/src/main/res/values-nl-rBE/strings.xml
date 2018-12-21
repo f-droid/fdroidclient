@@ -369,8 +369,6 @@
     <string name="use_bluetooth">Bluetooth gebruiken</string>
     <string name="loading">Laden…</string>
     <string name="swap_connection_misc_error">Fout bij verbinden met apparaat, we kunnen der niet mee uitwisselen!</string>
-    <string name="swap_not_enabled">Uitwisselen niet ingeschakeld</string>
-    <string name="swap_not_enabled_description">Vooraleer dat we kunnen uitwisselen moet het apparaat zichtbaar gemaakt worden.</string>
     <string name="swap_toast_invalid_url">Ongeldigen URL voor uitwisselen: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wifi-hotspot ingeschakeld</string>
     <string name="swap_toast_could_not_enable_hotspot">Kon wifi-hotspot niet inschakelen!</string>

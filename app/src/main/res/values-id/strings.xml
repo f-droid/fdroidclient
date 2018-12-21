@@ -139,7 +139,7 @@
     <string name="repo_last_update">Terakhir diperbarui</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="menu_settings">Pengaturan</string>
+    <string name="menu_settings">Setelan</string>
     <string name="unsigned_description">Ini artinya daftar apl tersebut tidak bisa diverifikasi. Anda harus berhati-hati dengan apl yang diunduh dari daftar yang tidak terverifikasi.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
@@ -261,8 +261,6 @@
     <string name="swap_qr_isnt_for_swap">Kode QR yang kamu pindai tidak terlihat seperti kode swap.</string>
     <string name="loading">Memuat…</string>
     <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
-    <string name="swap_not_enabled">Swap dinonaktifkan</string>
-    <string name="swap_not_enabled_description">Sebelum swap, perangkat anda harus dibuat terlihat.</string>
 
     <string name="install_confirm">butuh akses ke</string>
     <string name="install_confirm_update">Apakah Anda ingin memasang pembaruan ke apl ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
@@ -354,7 +352,7 @@
         <item quantity="other">Tampilkan semua %d</item>
     </plurals>
 
-    <string name="main_menu__swap_nearby">Dekat</string>
+    <string name="main_menu__swap_nearby">Di sekitar</string>
     <string name="app_recommended_version_installed">Versi %1$s (Direkomendasikan)</string>
     <string name="app_new">Baru</string>
     <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>

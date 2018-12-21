@@ -210,7 +210,6 @@
     <string name="swap_setting_up_wifi">Configurando\'l Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Invisible na Wi-Fi</string>
     <string name="swap_no_peers_nearby">Nun pudo alcontrase xente cercano cola qu\'intercambiar.</string>
-    <string name="swap_not_enabled_description">Enantes d\'intercambiar, el preséu ha ser visible.</string>
 
     <string name="install_confirm">precisa acceder a</string>
     <string name="install_confirm_update">¿Quies instalar un anovamientu d\'esta aplicación\? Los datos esistentes nun van perdese. L\'aplicación anovada va consiguir l\'accesu a:</string>
@@ -223,7 +222,6 @@
 
     <string name="perms_description_app">Forníu por %1$s.</string>
     <string name="interval_1h">Comprueba anovamientos cada hora</string>
-    <string name="swap_not_enabled">Nun s\'activó l\'intercambéu</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
     <string name="unstable_updates_summary">Suxer los anovamientos a versiones inestables</string>
     <string name="wifi_ap">Puntu Wi-Fi</string>
@@ -355,7 +353,7 @@
 
     <string name="antifeatureswarning">Esta aplicación tien carauterístiques que quiciabes nun te presten.</string>
     <string name="main_menu__latest_apps">Novedaes</string>
-<string name="main_menu__swap_nearby">Cercanía</string>
+<string name="main_menu__swap_nearby">Cercano</string>
 
     <string name="notification_title_summary_install_error">Falló la instalación</string>
     <string name="by_author_format">por %s</string>

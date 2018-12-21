@@ -197,7 +197,7 @@
 
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="menu_settings">Optionen</string>
+    <string name="menu_settings">Einstellungen</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -242,8 +242,6 @@
     <string name="swap_nearby">Tausch in der Nähe</string>
     <string name="loading">Ladevorgang …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
-    <string name="swap_not_enabled">Tauschen ist nicht aktiviert</string>
-    <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
 
     <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser Anwendung installieren? Ihre bestehenden
@@ -349,7 +347,7 @@
     <string name="main_menu__categories">Kategorien</string>
 
 
-    <string name="main_menu__swap_nearby">Nah</string>
+    <string name="main_menu__swap_nearby">In der Nähe</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
 

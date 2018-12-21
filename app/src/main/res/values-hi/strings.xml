@@ -84,9 +84,7 @@
     <string name="allPerms">सब</string>
     <string name="newPerms">नया</string>
     <string name="install_confirm">क्या आप यह एप्लीकेशन इनस्टॉल करना चाहते हैं? ये पहुंच मिल जाएगी:</string>
-    <string name="swap_not_enabled_description">अदला-बदली से पहले, आपका यन्त्र दिखाई देना चाइये|</string>
 
-    <string name="swap_not_enabled">अदला-बदली आसक्षम</string>
     <string name="loading">लोड हो रहा है…</string>
     <string name="swap_connection_misc_error">यन्त्र को जोड़ने मैं एक समस्या आ गयी| यन्त्र से अदला-बदली नहीं हो सकती|
     </string>
@@ -141,7 +139,7 @@
 <string name="SignatureMismatch">नया संस्करण किसी दूसरी \'की\' से साईन किया हुआ है। इस नये संस्करण को स्थापित करने के लिए पुराने वाले को अस्थापित करें। कृपया फिर से कोशिश करें। (याद रखें कि अस्थापित करने के बाद ऐप्लिकेशन डेटा नष्ट हो जायेगा)</string>
     <string name="keep_install_history">स्थापना इतिहास देखें</string>
     <string name="keep_install_history_summary">सभी स्थापनाओं और अस्थापनाओं के लॉग को F-Droid में रखें</string>
-<string name="menu_settings">सेटिंग्स</string>
+<string name="menu_settings">सेटिंग</string>
     <string name="menu_search">खोज़</string>
     <string name="menu_share">साझा करें</string>
     <string name="main_menu__latest_apps">नवीनतम</string>
@@ -175,7 +173,7 @@
     <string name="menu_install">इंस्टॉल करें</string>
     <string name="menu_uninstall">स्थापना रद्द करें</string>
     <string name="menu_upgrade">अपडेट करें</string>
-    <string name="main_menu__swap_nearby">आपके निकट</string>
+    <string name="main_menu__swap_nearby">आस–पास</string>
     <string name="preference_manage_installed_apps">स्थापित एप्स संशोधित करें</string>
     <string name="details_notinstalled">स्थापित नहीं है</string>
     <string name="next">अगला</string>

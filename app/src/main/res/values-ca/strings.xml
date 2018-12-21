@@ -171,7 +171,7 @@
     <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
     <string name="bad_fingerprint">Empremta digital incorrecta</string>
     <string name="invalid_url">L\'adreça URL és invàlida.</string>
-    <string name="menu_settings">Opcions</string>
+    <string name="menu_settings">Configuració</string>
     <string name="menu_changelog">Registre de canvis</string>
     <string name="status_download_unknown_size">S\'està baixant\n%2$s des de\n%1$s</string>
     <string name="status_processing_xml_percent">S\'està processant %2$s / %3$s (%4$d%%) de %1$s</string>
@@ -247,8 +247,6 @@
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
     <string name="loading">S\'està carregant…</string>
     <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
-    <string name="swap_not_enabled">Intercanvi no activat</string>
-    <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
     <string name="install_confirm">necessita accés a</string>
     <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
@@ -316,7 +314,7 @@
 
     <string name="main_menu__latest_apps">Novetats</string>
     <string name="main_menu__categories">Categories</string>
-    <string name="main_menu__swap_nearby">Al voltant</string>
+    <string name="main_menu__swap_nearby">A prop</string>
 
     <string name="notification_title_single_update_available">Actualització disponible</string>
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>

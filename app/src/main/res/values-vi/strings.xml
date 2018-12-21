@@ -215,9 +215,7 @@
     <string name="swap_confirm">Xác nhận trao đổi</string>
     <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
     <string name="loading">Đang tải…</string>
-    <string name="swap_not_enabled">Trao đổi đang tắt</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>
-    <string name="swap_not_enabled_description">Trước khi trao đổi, máy của bạn phải nhìn thấy được qua mạng.</string>
 
     <string name="install_confirm">cần truy cập</string>
     <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
@@ -262,7 +260,7 @@
         cho chúng tôi!
     </string>
     <string name="theme_night">Đen</string>
-    <string name="menu_settings">Tuỳ chọn</string>
+    <string name="menu_settings">Cài đặt</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>
     <string name="login_title">Yêu cầu xác thực</string>
@@ -277,7 +275,7 @@
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư. Cần ứng dụng Orbot</string>
-<string name="main_menu__swap_nearby">Gần đây</string>
+<string name="main_menu__swap_nearby">Lân cận</string>
 
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>

@@ -23,6 +23,8 @@
     <string name="about_site">เว็บไซต์</string>
     <string name="about_source">ซอร์สโค้ด</string>
     <string name="about_license">สัญญาอนุญาต</string>
+    <string name="main_menu__categories">หมวดหมู่</string>
+    <string name="main_menu__swap_nearby">ใกล้เคียง</string>
 
     <string name="app_incompatible">เข้ากันไม่ได้</string>
     <string name="app_installed">ติดตั้งอยู่</string>
@@ -51,7 +53,7 @@
     <string name="repo_provider">แหล่งโปรแกรม: %s</string>
 
     <string name="menu_manage">แหล่งโปรแกรม</string>
-    <string name="menu_settings">ตั้งค่า</string>
+    <string name="menu_settings">การตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
 
@@ -168,8 +170,6 @@
     <string name="swap_confirm">ยืนยันการส่งต่อ</string>
     <string name="loading">กำลังโหลด…</string>
     <string name="swap_connection_misc_error">การเชื่อมต่อกับอีกเครื่องล้มเหลว, ไม่สามารถส่งต่อโปรแกรมได้</string>
-    <string name="swap_not_enabled">ไม่เปิดใช้การส่งต่อโปรแกรม</string>
-    <string name="swap_not_enabled_description">ก่อนจะทำการส่งต่อโปรแกรม, เครื่องของคุณจะต้องปรากฎตัวก่อน</string>
 
     <string name="install_confirm">ต้องการเข้าถึง</string>
     <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่

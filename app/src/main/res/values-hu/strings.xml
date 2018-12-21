@@ -272,7 +272,7 @@
     <string name="local_repo_running">Az F-Droid cserére kész</string>
 <string name="main_menu__latest_apps">Legújabb</string>
     <string name="main_menu__categories">Kategóriák</string>
-    <string name="main_menu__swap_nearby">Közelben</string>
+    <string name="main_menu__swap_nearby">Közeli</string>
 
     <string name="preference_manage_installed_apps">Telepített alkalmazások kezelése</string>
 
@@ -433,8 +433,6 @@
     <string name="swap_confirm">Csere megerősítése</string>
     <string name="swap_qr_isnt_for_swap">A beolvasott QR-kód nem tűnik cserekódnak.</string>
     <string name="swap_connection_misc_error">Hiba történt az eszközhöz kapcsolódás során, nem lehet vele cserélni!</string>
-    <string name="swap_not_enabled">A csere nem engedélyezett</string>
-    <string name="swap_not_enabled_description">A csere előtt láthatóvá kell tennie az eszközét.</string>
 
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
     <string name="tts_category_name">Kategória %1$s</string>

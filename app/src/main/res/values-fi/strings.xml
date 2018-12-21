@@ -278,8 +278,6 @@
     <string name="swap_confirm">Vahvista vaihto</string>
     <string name="swap_qr_isnt_for_swap">Skannaamasi QR-koodi ei näytä vaihtamiseen tarkoitetulta koodilta.</string>
     <string name="swap_connection_misc_error">Tapahtui virhe yhdistettäessä laitteeseen, vaihtaminen ei onnistu!</string>
-    <string name="swap_not_enabled">Vaihtaminen ei ole käytössä</string>
-    <string name="swap_not_enabled_description">Ennen vaihtamista, laitteesi täytyy tehdä näkyväksi.</string>
 
     <string name="install_confirm">tarvitsee luvan käyttää</string>
     <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Nykyiset tietosi eivät häviä. Päivitetty sovellus saa luvan käyttää:</string>

@@ -192,9 +192,7 @@
     <string name="less">顯示較少</string>
 
     <string name="theme_night">深夜色系</string>
-    <string name="swap_not_enabled_description">在交換之前，您的裝置必須可被其他裝置發現。</string>
 
-    <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="swap_connection_misc_error">與裝置連接時發生了問題，未能進行交換！</string>
     <string name="loading">正在載入…</string>
     <string name="swap_qr_isnt_for_swap">您所掃描的 QR 碼不是一個交換碼。</string>

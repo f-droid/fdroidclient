@@ -227,8 +227,6 @@
     <string name="swap_send_fdroid">שליחת F-Droid</string>
     <string name="swap_confirm">אימות ההחלפה</string>
     <string name="swap_qr_isnt_for_swap">קוד ה־QR שסרקת לא נראה כמו קוד החלפה.</string>
-    <string name="swap_not_enabled">ההחלפה מנוטרלת</string>
-    <string name="swap_not_enabled_description">בטרם ביצוע החלפה, על מכשירך להיות גלוי.</string>
 
     <string name="swap_intro">ניתן להתחבר ולהחליף יישומונים עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">אין אפשרות למצוא אנשים בקרבת מקום כדי להחליף עמם.</string>

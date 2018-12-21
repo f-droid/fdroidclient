@@ -261,8 +261,6 @@
         intercambio.
     </string>
     <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio!</string>
-    <string name="swap_not_enabled">Intercambio non dispoñible</string>
-    <string name="swap_not_enabled_description">Antes do intercambio, o teu dispositivo debe estar visible.</string>
 
     <string name="install_confirm">require acceso a</string>
     <string name="install_confirm_update">Desexas instalar unha actualización deste aplicativo existente? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
@@ -275,10 +273,10 @@
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-    <string name="menu_settings">Preferencias</string>
+    <string name="menu_settings">Configuración</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Veciñanza</string>
+    <string name="main_menu__swap_nearby">Cerca</string>
 
     <string name="preference_manage_installed_apps">Xestionar aplicacións instaladas</string>
 

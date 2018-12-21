@@ -243,8 +243,6 @@
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
     <string name="loading">Prilaborado…</string>
     <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, ne povas interŝanĝi kun ĝi!</string>
-    <string name="swap_not_enabled">Interŝanĝo malaktiva</string>
-    <string name="swap_not_enabled_description">Antaŭ interŝanĝo via aparato devas esti videbla.</string>
 
     <string name="install_confirm">postulas permeson al</string>
     <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>

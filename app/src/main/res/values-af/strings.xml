@@ -295,8 +295,6 @@
     <string name="swap_qr_isnt_for_swap">Die QR kode jy geskandeer het lyk nie soos \'n uitruil kode nie.</string>
     <string name="loading">Laai tans…</string>
     <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie asof ons kan uitruil nie!</string>
-    <string name="swap_not_enabled">Uitruil nie geaktiveer nie</string>
-    <string name="swap_not_enabled_description">Voor uitruil, moet jou toestel sigbaar gemaak word.</string>
 
     <string name="install_confirm">benodig toegang tot</string>
     <string name="install_confirm_update">Wil jy \'n opdatering installeer

@@ -239,8 +239,6 @@
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
     <string name="loading">Yükleniyor…</string>
     <string name="swap_connection_misc_error">Aygıta bağlanılırken hata oluştu, onunla takas yapılamaz!</string>
-    <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>
-    <string name="swap_not_enabled_description">Takas yapmadan önce aygıtınızın görünebilir yapılmalıdır.</string>
 
     <string name="install_confirm">erişmesi gerekenler</string>
     <string name="install_confirm_update">Var olan bu uygulama için bir güncelleme kurmak istiyor musunuz? Var olan verileriniz kaybolmayacak. Güncellenmiş uygulamanın şunlara erişimi olacak:</string>
@@ -321,7 +319,7 @@
     <string name="repositories_summary">Ek uygulama kaynakları ekle</string>
     <string name="main_menu__latest_apps">En Son</string>
     <string name="main_menu__categories">Kategoriler</string>
-    <string name="main_menu__swap_nearby">Yakında</string>
+    <string name="main_menu__swap_nearby">Etrafımda</string>
 
 
     <string name="notification_title_single_update_available">Güncelleme Var</string>

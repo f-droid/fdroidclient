@@ -212,7 +212,6 @@
     <string name="swap_setting_up_wifi">Налаштовую Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Не видимий через Wi-Fi</string>
     <string name="swap_confirm">Підтвердьте обмін</string>
-    <string name="swap_not_enabled">Обмін не увімкнено</string>
     <string name="wifi_ap">Точка доступу</string>
 
     <string name="category_Writing">Написання</string>
@@ -222,7 +221,6 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="swap_not_enabled_description">Перед обміном, ви повинні зробити пристрій видимим.</string>
 
     <string name="install_confirm_update">Бажаєте встановити оновлення для існуючого застосунку? Це не видалить ваші наявні дані. Оновлений застосунок матиме доступ до:</string>
     <string name="install_confirm_update_system">Бажаєте встановити оновлення на вбудований застосунок? Ваші наявні дані не буде втрачено. Оновлений застосунок матиме доступ до:</string>
@@ -253,7 +251,7 @@
     <string name="more">Більше</string>
     <string name="less">Менше</string>
 
-    <string name="menu_settings">Параметри</string>
+    <string name="menu_settings">Налаштування</string>
     <string name="permissions">Привілеї</string>
     <string name="theme_night">Нічна</string>
     <string name="category_Connectivity">Зв\'язок</string>
@@ -342,7 +340,7 @@
 
     <string name="main_menu__latest_apps">Останні</string>
     <string name="main_menu__categories">Категорії</string>
-    <string name="main_menu__swap_nearby">Сусідні</string>
+    <string name="main_menu__swap_nearby">Поруч</string>
 
     <string name="preference_category__my_apps">Мої застосунки</string>
     <string name="preference_manage_installed_apps">Керування встановленими застосунками</string>

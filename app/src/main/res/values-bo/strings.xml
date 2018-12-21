@@ -295,8 +295,6 @@
     <string name="swap_qr_isnt_for_swap">ཁྱེད་རང་གིས་འཚག་རྒྱག་པའི་QR ཨང་རྟགས་འདི་བརྗེ་ལེན་ཨང་རྟགས་དང་འདྲ་མཚུངས་མིན་འདུག</string>
     <string name="loading">བཅུག་བཞིན་པ།..…</string>
     <string name="swap_connection_misc_error">ཡོ་བྱད་ལ་མཐུད་པའི་སྐབས་སུ་སྐྱོན་ཤོར་སོང་བས་དེ་དང་མཉམ་དུ་བརྗེ་ལེན་བྱེད་ཐུབ་ཀྱི་མིན་འདུག!</string>
-    <string name="swap_not_enabled">བརྗེ་ལེན་སྒོ་ཕྱེས་མིན་འདུག</string>
-    <string name="swap_not_enabled_description">བརྗེ་ལེན་མ་བྱེད་གོང་ལ་ཁྱེད་རང་གི་ཡོ་བྱད་དེ་ངེས་པར་དུ་མཐོང་ཐུབ་པ་བཟོ་དགོས།</string>
 
     <string name="install_confirm">འདི་ལྟ་ཐུབ་པ་དགོས།</string>
     <string name="bluetooth_activity_not_found">བྷུ་ལུ་ཊུཐ་གཏོང་ཐབས་རྙེད་མ་སོང་། གཅིག་འདེམས།!</string>

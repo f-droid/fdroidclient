@@ -245,8 +245,6 @@
     <string name="swap_qr_isnt_for_swap">Den QR-kode du skannede ligner ikke en udvekslingskode.</string>
     <string name="loading">Indlæser…</string>
     <string name="swap_connection_misc_error">Der opstod en fejl under forbindelsen til enheden, kan udveksle med den!</string>
-    <string name="swap_not_enabled">Udveksling ikke aktiveret</string>
-    <string name="swap_not_enabled_description">Inden udveksling skal din enhed gøres synlig.</string>
 
     <string name="install_confirm">kræver adgang til</string>
     <string name="install_confirm_update">Vil du installere en opdatering til eksisterende app? Dine eksisterende data vil ikke gå tabt. Den opdaterede app vil få adgang til:</string>
@@ -313,7 +311,7 @@
     <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til Internettet?</string>
 <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
-    <string name="main_menu__swap_nearby">I nærheden</string>
+    <string name="main_menu__swap_nearby">Tæt på</string>
 
     <string name="preference_manage_installed_apps">Administrer installerede apps</string>
 

@@ -322,8 +322,6 @@
     <string name="use_bluetooth">Uporabi Bluetooth</string>
     <string name="loading">Nalagam…</string>
     <string name="swap_connection_misc_error">Napaka pri povezovanju z napravo, z njo ne gre zamenjati!</string>
-    <string name="swap_not_enabled">Menjava ni omogočena</string>
-    <string name="swap_not_enabled_description">Pred menjavo mora biti Vaša naprava napravljena vidna.</string>
     <string name="swap_toast_invalid_url">Neveljaven URL za zamenjavo: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot omogočen</string>
     <string name="swap_toast_could_not_enable_hotspot">Ni bilo mogoče omogočiti Wi-Fi Hotspot!</string>

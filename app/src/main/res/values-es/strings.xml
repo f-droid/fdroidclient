@@ -211,8 +211,6 @@
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="loading">Cargando…</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. ¡No podemos intercambiar con él!</string>
-    <string name="swap_not_enabled">Intercambio no activado</string>
-    <string name="swap_not_enabled_description">Antes de intercambiar, el dispositivo debe ser visible.</string>
 
     <string name="install_confirm">¿Quiere instalar esta aplicación? Tendrá acceso a</string>
     <string name="install_confirm_update">¿Quieres instalar una actualización de
@@ -325,7 +323,7 @@
 
     <string name="main_menu__latest_apps">Último</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Cercanía</string>
+    <string name="main_menu__swap_nearby">Cercano</string>
 
 
     <plurals name="button_view_all_apps_in_category">
