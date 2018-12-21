@@ -37,7 +37,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -56,6 +60,8 @@ import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+
+import java.lang.reflect.Field;
 
 /**
  * Main view shown to users upon starting F-Droid.
@@ -133,7 +139,34 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .setMode(BottomNavigationBar.MODE_FIXED)
                 .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.updates).setBadgeItem(updatesBadge))
                 .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
+                .setAnimationDuration(0)
                 .initialise();
+
+        // turn off animation, scaling, and truncate labels in the middle
+        final LinearLayout linearLayout = bottomNavigation.findViewById(R.id.bottom_navigation_bar_item_container);
+        final int childCount = linearLayout.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View fixedBottomNavigationTab = linearLayout.getChildAt(i);
+            try {
+                Field labelScale = fixedBottomNavigationTab.getClass().getDeclaredField("labelScale");
+                labelScale.setAccessible(true);
+                labelScale.set(fixedBottomNavigationTab, 1.0f);
+            } catch (IllegalAccessException | NoSuchFieldException | IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+
+            final View container = fixedBottomNavigationTab.findViewById(R.id.fixed_bottom_navigation_container);
+            container.setPadding(
+                    2,
+                    container.getPaddingTop(),
+                    2,
+                    container.getPaddingBottom()
+            );
+
+            final TextView title = fixedBottomNavigationTab.findViewById(R.id.fixed_bottom_navigation_title);
+            title.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        }
 
         IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
