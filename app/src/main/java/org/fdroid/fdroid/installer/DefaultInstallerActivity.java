@@ -23,6 +23,7 @@ package org.fdroid.fdroid.installer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -78,11 +79,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
         }
         // https://code.google.com/p/android/issues/detail?id=205827
         if ((Build.VERSION.SDK_INT < 24)
-                && (!uri.getScheme().equals("file"))) {
+                && (!ContentResolver.SCHEME_FILE.equals(uri.getScheme()))) {
             throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
         }
         if ((Build.VERSION.SDK_INT >= 24)
-                && (!uri.getScheme().equals("content"))) {
+                && (!ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()))) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
 
