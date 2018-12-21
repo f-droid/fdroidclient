@@ -120,9 +120,10 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         assertEquals("repo.icon should be set", "fdroid-icon.png", repoFromDb.icon);
         String description = "This is a repository of apps to be used with F-Droid. Applications in this repository are either official binaries built by the original application developers, or are binaries built from source by the admin of f-droid.org using the tools on https://gitlab.com/u/fdroid. "; // NOCHECKSTYLE LineLength
         assertEquals("repo.description should be set", description, repoFromDb.description);
-        assertEquals("repo.mirrors should have items", 2, repo.mirrors.length);
+        assertEquals("repo.mirrors should have items", 3, repo.mirrors.length);
         assertEquals("repo.mirrors first URL", "http://frkcchxlcvnb4m5a.onion/fdroid/repo", repo.mirrors[0]);
         assertEquals("repo.mirrors second URL", "http://testy.at.or.at/fdroid/repo", repo.mirrors[1]);
+        assertEquals("repo.mirrors third URL", "testy.at.or.at_index-v1.jar", repo.mirrors[2]);
 
         // Make sure the per-apk anti features which are new in index v1 get added correctly.
         assertEquals(0, AppProvider.Helper.findInstalledAppsWithKnownVulns(context).size());
