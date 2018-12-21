@@ -56,6 +56,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.localrepo.SDCardScannerService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -248,6 +249,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_LOCATION_PERMISSIONS) {
             startActivity(new Intent(this, SwapWorkflowActivity.class));
+        } else if (requestCode == REQUEST_STORAGE_PERMISSIONS) {
+            Toast.makeText(this,
+                    this.getString(R.string.scan_removable_storage_toast, ""),
+                    Toast.LENGTH_SHORT).show();
+            SDCardScannerService.scan(this);
         }
     }
 
