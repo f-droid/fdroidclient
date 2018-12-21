@@ -43,6 +43,7 @@
     <string name="enable">Միացնել</string>
     <string name="add_key">Ավելացնել բանալի</string>
     <string name="clear_search">Մաքրել որոնումը</string>
+    <string name="main_menu__categories">Կատեգորիաներ</string>
     <string name="main_menu__swap_nearby">Մոտակայքում</string>
 
     <string name="menu_search">Որոնել</string>

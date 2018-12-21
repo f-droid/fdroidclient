@@ -272,7 +272,7 @@
     <string name="menu_issues">ထွက်ရှိမှုများ</string>
     <string name="menu_video">ဗွီဒီယို</string>
     <string name="main_menu__latest_apps">နောက်ဆုံး</string>
-    <string name="main_menu__categories">ခေါင်းစဉ်</string>
+    <string name="main_menu__categories">အမျိုးအစားများ</string>
     <string name="main_menu__swap_nearby">အနီးတဝိုက်</string>
 
     <string name="latest__empty_state__no_recent_apps">မကြာသေးခင်က အက်ပ်စ်များမတွေ့ပါ</string>

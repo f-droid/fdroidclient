@@ -19,7 +19,7 @@
     <string name="menu_uninstall">ഒഴിവാക്കുക</string>
     <string name="menu_upgrade">പുതുക്കുക</string>
     <string name="main_menu__latest_apps">പുതിയത്</string>
-    <string name="main_menu__categories">ഇനങ്ങള്‍</string>
+    <string name="main_menu__categories">വിഭാഗങ്ങള്‍</string>
     <string name="main_menu__swap_nearby">സമീപം</string>
 
     <string name="preference_manage_installed_apps">പ്രയോഗങ്ങളെ നിയന്ത്രിക്കുക</string>

@@ -19,6 +19,7 @@
     <string name="other">دیگر</string>
     <string name="main_menu__swap_nearby">قریبی</string>
     <string name="menu_settings">ترتیبات</string>
+    <string name="main_menu__categories">زمرے</string>
 
     <string name="update_interval">خودکار تازہ کاری کرنے کا وقفہ</string>
     <string name="notify">تازہ کاریوں کی اطلاعات</string>

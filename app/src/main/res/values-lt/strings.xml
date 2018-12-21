@@ -70,7 +70,7 @@
     <string name="back">Atgal</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="main_menu__latest_apps">Naujausios</string>
-    <string name="main_menu__categories">Kategorijos</string>
+    <string name="main_menu__categories">Kategorije</string>
     <string name="main_menu__swap_nearby">U okolini</string>
 
     <string name="preference_manage_installed_apps">Tvarkyti įdiegtas programėles</string>

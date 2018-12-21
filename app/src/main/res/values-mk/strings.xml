@@ -20,6 +20,7 @@
     <string name="other">Други</string>
     <string name="main_menu__swap_nearby">Во близина</string>
     <string name="menu_settings">Поставки</string>
+    <string name="main_menu__categories">Категории</string>
 
     <string name="update_interval">Автоматско ажурирање временски интервал</string>
 </resources>
