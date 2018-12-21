@@ -117,13 +117,6 @@ class NearbyViewBinder {
                 @RequiresApi(api = 21)
                 @Override
                 public void onClick(View v) {
-                    File storage = externalStorage.getParentFile();
-                    File[] files = storage.listFiles();
-                    String msg = "";
-                    if (files != null) for (File f : files) {
-                        msg += "|" + f.getName();
-                    }
-                    Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
                     if (Build.VERSION.SDK_INT >= 23
                             && (externalStorage == null || !externalStorage.canRead())
                             && PackageManager.PERMISSION_GRANTED
@@ -131,11 +124,13 @@ class NearbyViewBinder {
                         ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
                                 MainActivity.REQUEST_STORAGE_PERMISSIONS);
                     } else {
+                        Toast.makeText(activity,
+                                activity.getString(R.string.scan_removable_storage_toast, externalStorage),
+                                Toast.LENGTH_SHORT).show();
                         SDCardScannerService.scan(activity);
                     }
                 }
             });
-
         }
     }
 }
