@@ -307,8 +307,6 @@
     <string name="swap_qr_isnt_for_swap">നിങ്ങൾ സ്കാന്‍ ചെയ്ത QR കോഡ് ഒരു സ്വാപ്പ് കോഡ് പോലെ തോന്നുന്നില്ല.</string>
     <string name="loading">ലോഡുചെയ്യുന്നു…</string>
     <string name="swap_connection_misc_error">ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യുമ്പോൾ പിശക് സംഭവിച്ചു, അതുമായി കെെമാറ്റം ചെയ്യാന്‍ പറ്റുന്നില്ല!</string>
-    <string name="swap_not_enabled">കെെമാറ്റം സജ്ജമല്ല</string>
-    <string name="swap_not_enabled_description">കെെമാറ്റം ചെയ്യുന്നതിനു മ‌ുമ്പ് നിങ്ങളുടെ ഉപകരണം ദൃശ്യമാക്കേണ്ടതുണ്ട്.</string>
 
     <string name="install_confirm">അനുമതി ആവശ്യമുണ്ട്</string>
     <string name="allPerms">എല്ലാം</string>

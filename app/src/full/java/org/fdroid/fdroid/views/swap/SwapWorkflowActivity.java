@@ -424,8 +424,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void startQrWorkflow() {
         if (!getService().isEnabled()) {
             new AlertDialog.Builder(this)
-                    .setTitle(R.string.swap_not_enabled)
-                    .setMessage(R.string.swap_not_enabled_description)
+                    .setTitle(R.string.not_visible_nearby)
+                    .setMessage(R.string.not_visible_nearby_description)
                     .setCancelable(true)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override

@@ -224,8 +224,6 @@
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>
     <string name="loading">Načítání…</string>
-    <string name="swap_not_enabled">Výměna není povolena</string>
-    <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 
     <string name="install_confirm">vyžaduje přístup k</string>
 

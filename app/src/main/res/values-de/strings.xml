@@ -242,8 +242,6 @@
     <string name="swap_nearby">Tausch in der Nähe</string>
     <string name="loading">Ladevorgang …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
-    <string name="swap_not_enabled">Tauschen ist nicht aktiviert</string>
-    <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
 
     <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser Anwendung installieren? Ihre bestehenden

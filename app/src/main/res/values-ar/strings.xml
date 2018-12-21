@@ -254,8 +254,6 @@
     <string name="swap_qr_isnt_for_swap">رمز الاستجابة السريعة الذي تم التقاطه لا يبدو وكأنه رمز المبادلة.</string>
     <string name="loading">يتم التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
-    <string name="swap_not_enabled">المبادلة غير فعالة</string>
-    <string name="swap_not_enabled_description">قبل المبادلة، يجب أن يكون جهازك ظاهر.</string>
 
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
     <string name="install_confirm_update">هل تريد تحديث

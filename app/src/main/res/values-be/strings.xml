@@ -278,8 +278,6 @@
     <string name="swap_qr_isnt_for_swap">QR-код, які вы адсканавалі, не выглядае як код абмену.</string>
     <string name="loading">Загрузка…</string>
     <string name="swap_connection_misc_error">Здарылася памылка падчас злучэння з прыладай. Немагчыма прадоўжыць абмен!</string>
-    <string name="swap_not_enabled">Абмен не ўключаны</string>
-    <string name="swap_not_enabled_description">Перад абменам, вы павінны зрабіць прыладу бачнай.</string>
 
     <string name="install_confirm">патрабуе доступ да</string>
     <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены. Абноўленная праграма атрымае доступ да:</string>

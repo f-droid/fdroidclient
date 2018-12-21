@@ -209,7 +209,6 @@
     <string name="swap_send_fdroid">傳送F-Droid</string>
     <string name="swap_no_peers_nearby">找不到附近的人來進行交換。</string>
     <string name="swap_confirm">確認交換</string>
-    <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗！</string>
 
@@ -286,7 +285,6 @@
     <string name="download_pending">等待開始下載…</string>
     <string name="install_confirm">需要存取</string>
     <string name="loading">正在載入…</string>
-    <string name="swap_not_enabled_description">在交換之前，您的裝置必須可以被看見。</string>
 
     <string name="uninstall_update_confirm">您確定要以原始版本取代此應用程式嗎？</string>
     <string name="install_error_notify_title">%s 安裝時錯誤</string>

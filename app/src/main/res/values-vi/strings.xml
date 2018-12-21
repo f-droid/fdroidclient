@@ -215,9 +215,7 @@
     <string name="swap_confirm">Xác nhận trao đổi</string>
     <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
     <string name="loading">Đang tải…</string>
-    <string name="swap_not_enabled">Trao đổi đang tắt</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>
-    <string name="swap_not_enabled_description">Trước khi trao đổi, máy của bạn phải nhìn thấy được qua mạng.</string>
 
     <string name="install_confirm">cần truy cập</string>
     <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>

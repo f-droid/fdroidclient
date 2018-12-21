@@ -84,9 +84,7 @@
     <string name="allPerms">सब</string>
     <string name="newPerms">नया</string>
     <string name="install_confirm">क्या आप यह एप्लीकेशन इनस्टॉल करना चाहते हैं? ये पहुंच मिल जाएगी:</string>
-    <string name="swap_not_enabled_description">अदला-बदली से पहले, आपका यन्त्र दिखाई देना चाइये|</string>
 
-    <string name="swap_not_enabled">अदला-बदली आसक्षम</string>
     <string name="loading">लोड हो रहा है…</string>
     <string name="swap_connection_misc_error">यन्त्र को जोड़ने मैं एक समस्या आ गयी| यन्त्र से अदला-बदली नहीं हो सकती|
     </string>

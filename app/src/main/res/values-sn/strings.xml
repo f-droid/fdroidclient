@@ -305,8 +305,6 @@
     <string name="swap_connection_misc_error">Pane kanganiso yaitika pakuhakira kumuchina, hatisi kukwanisa kutsinhana
         nayo.
     </string>
-    <string name="swap_not_enabled">Kutsinhana hakuna kubvumirwa</string>
-    <string name="swap_not_enabled_description">Tisati tatsinhana, muchina wako unofanirwa kuita kuti uwonekwe.</string>
 
     <string name="install_confirm">inoda hupindwa pa</string>
     <string name="install_confirm_update">Unoda kuvakirira chekunatsa

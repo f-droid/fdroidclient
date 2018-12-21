@@ -200,10 +200,7 @@
     <string name="swap_not_visible_wifi">Не сте видими чрез Wi-Fi</string>
     <string name="swap_setting_up_wifi">Настройване на Wi-Fi…</string>
     <string name="swap_setting_up_bluetooth">Настройване на Bluetooth…</string>
-    <string name="swap_not_enabled_description">Преди да осъществите размяна вашето устройство трябва да бъде видимо.
-    </string>
 
-    <string name="swap_not_enabled">Забранена размяна</string>
     <string name="swap_nearby">Размяна с устройства наоколо</string>
     <string name="local_repo_running">F-Droid e в готовност за размяна</string>
     <string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>

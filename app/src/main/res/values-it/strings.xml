@@ -207,7 +207,6 @@
     <string name="uninstall_update_confirm">Vuoi sostituire questa app con la sua versione originale?</string>
     <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
     <string name="newPerms">Nuovo</string>
-    <string name="swap_not_enabled_description">Prima dello scambio, il tuo dispositivo deve essere visibile.</string>
 
     <string name="swap_confirm">Conferma lo scambio</string>
     <string name="swap_qr_isnt_for_swap">Il codice QR che hai scansionato non sembra essere un codice di scambio.
@@ -280,7 +279,6 @@
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
-    <string name="swap_not_enabled">Scambio non abilitato</string>
     <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata
         di questa app? I dati presenti
         non saranno rimossi. Non è richiesto alcun accesso speciale.

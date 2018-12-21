@@ -261,8 +261,6 @@
     <string name="swap_qr_isnt_for_swap">Kode QR yang kamu pindai tidak terlihat seperti kode swap.</string>
     <string name="loading">Memuat…</string>
     <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
-    <string name="swap_not_enabled">Swap dinonaktifkan</string>
-    <string name="swap_not_enabled_description">Sebelum swap, perangkat anda harus dibuat terlihat.</string>
 
     <string name="install_confirm">butuh akses ke</string>
     <string name="install_confirm_update">Apakah Anda ingin memasang pembaruan ke apl ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>

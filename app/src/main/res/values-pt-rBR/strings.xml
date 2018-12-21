@@ -216,8 +216,6 @@
     <string name="swap_qr_isnt_for_swap">O código QR que você escaneou não parece com um código de permuta.</string>
     <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não foi possível trocar com ele!</string>
-    <string name="swap_not_enabled">Permuta não habilitada</string>
-    <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
     <string name="install_confirm">necessário acesso à</string>
     <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo já existente? Seus dados não serão perdidos. O aplicativo atualizado terá acesso a:</string>

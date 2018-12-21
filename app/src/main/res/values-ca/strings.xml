@@ -247,8 +247,6 @@
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
     <string name="loading">S\'està carregant…</string>
     <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
-    <string name="swap_not_enabled">Intercanvi no activat</string>
-    <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
     <string name="install_confirm">necessita accés a</string>
     <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>

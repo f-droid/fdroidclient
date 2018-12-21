@@ -274,8 +274,6 @@
     <string name="swap_confirm">Potvrdiť výmenu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevyzerá ako kód na výmenu.</string>
     <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční!</string>
-    <string name="swap_not_enabled">Výmena nie je povolená</string>
-    <string name="swap_not_enabled_description">Pred výmenou musí byť zariadenie viditeľné.</string>
 
     <string name="install_confirm_update">Chcete nainštalovať aktualizáciu
         k tejto existujúcej aplikácií? Dáta aplikácie nebudú

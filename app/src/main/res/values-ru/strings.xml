@@ -273,8 +273,6 @@
     <string name="swap_confirm">Подтвердить обмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>
     <string name="swap_connection_misc_error">При подключении к устройству произошла ошибка, невозможно провести с ним обмен!</string>
-    <string name="swap_not_enabled">Обмен не включен</string>
-    <string name="swap_not_enabled_description">Для выполнения обмена следует сделать ваше устройство видимым.</string>
 
     <string name="perms_description_app">Предоставлено %1$s.</string>
     <string name="update_auto_download">Получать обновления автоматически</string>

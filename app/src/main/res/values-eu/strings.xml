@@ -254,8 +254,6 @@
     </string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
-    <string name="swap_not_enabled">Trukea ez dago gaituta</string>
-    <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgai jarri behar duzu.</string>
 
     <string name="install_confirm">baimen hauek behar ditu</string>
     <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa

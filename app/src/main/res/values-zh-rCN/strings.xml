@@ -222,8 +222,6 @@
     <string name="swap_qr_isnt_for_swap">你扫描的二维码似乎不是一个交换代码。</string>
     <string name="loading">加载中…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
-    <string name="swap_not_enabled">未启用交换功能</string>
-    <string name="swap_not_enabled_description">交换之前，你的设备必须是可见的。</string>
 
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">是否更新现有应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>

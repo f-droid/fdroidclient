@@ -279,8 +279,6 @@
     <string name="swap_connection_misc_error">Došlo je do greške prilikom spajanja na uređaj, čini se da razmjena nije
         moguća.
     </string>
-    <string name="swap_not_enabled">Razmjena nije omogućena</string>
-    <string name="swap_not_enabled_description">Vaš uređaj mora biti vidljiv prije razmjene.</string>
 
     <string name="install_confirm">treba pristup</string>
     <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?

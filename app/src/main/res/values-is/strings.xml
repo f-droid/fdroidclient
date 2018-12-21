@@ -206,7 +206,6 @@
     <string name="swap_connecting">Tengist</string>
     <string name="swap_confirm">Staðfesta býtti</string>
     <string name="loading">Hleð inn…</string>
-    <string name="swap_not_enabled">Forritabýtti eru óvirk</string>
     <string name="install_confirm">þarf aðgang að</string>
     <string name="newPerms">Nýtt</string>
     <string name="allPerms">Allt</string>
@@ -327,7 +326,6 @@
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
     <string name="swap_connection_misc_error">Villa kom upp við að tengjast við tækið, ekki er hægt að nota það við býtti!</string>
-    <string name="swap_not_enabled_description">Áður en farið er í að býtta þarf að gera tækið þitt sýnilegt.</string>
 
     <string name="install_confirm_update">Viltu setja inn uppfærslu á þessu forriti? Fyrirliggjandi gögn sem þú átt
         tapast ekki.

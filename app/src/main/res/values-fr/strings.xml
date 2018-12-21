@@ -234,7 +234,6 @@
     <string name="swap_connecting">Connexion en cours</string>
     <string name="swap_confirm">Confirmez l\'échange</string>
     <string name="swap_qr_isnt_for_swap">Le code QR que vous avez scanné ne semble pas être un code d\'échange.</string>
-    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer l\'échange.</string>
 
     <string name="interval_1h">Vérifier les mises à jour toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
@@ -252,7 +251,6 @@
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
-    <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
     <string name="less">Moins</string>

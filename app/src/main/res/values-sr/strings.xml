@@ -187,7 +187,6 @@
     <string name="swap_connecting">Повезујем се</string>
     <string name="swap_confirm">Потврди размену</string>
     <string name="loading">Учитавам…</string>
-    <string name="swap_not_enabled">Размена није укључена</string>
     <string name="newPerms">Ново</string>
     <string name="allPerms">Све</string>
     <string name="perms_new_perm_prefix">Ново:</string>
@@ -213,7 +212,6 @@
     <string name="uninstall_update_confirm">Желите ли да замените ову апликацију фабрички уграђеном?</string>
     <string name="uninstall_confirm">Желите ли да уклоните ову аликацију?</string>
 
-    <string name="swap_not_enabled_description">Пре размене, ваш уређај мора бити видљив.</string>
 
     <string name="swap_visible_bluetooth">Видљив преко блутута</string>
     <string name="swap_not_visible_bluetooth">Нисам видљив преко блутута</string>

@@ -228,8 +228,6 @@
     <string name="swap_qr_isnt_for_swap">Ο κώδικας QR που σαρώσατε δεν μοιάζει με έναν κωδικό ανταλλαγής.</string>
     <string name="loading">Φόρτωση…</string>
     <string name="swap_connection_misc_error">Παρουσιάστηκε σφάλμα κατά τη σύνδεση με την συσκευή, φαίνεται ότι δεν μπορούμε να ανταλλάξουμε με αυτή!</string>
-    <string name="swap_not_enabled">Η ανταλλαγή δεν είναι ενεργοποιημένη</string>
-    <string name="swap_not_enabled_description">Πριν από την ανταλλαγή, η συσκευή σας πρέπει να προβάλλεται.</string>
 
     <string name="install_confirm">χρειάζεται πρόσβαση σε</string>
     <string name="install_confirm_update">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;

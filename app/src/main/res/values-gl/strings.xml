@@ -261,8 +261,6 @@
         intercambio.
     </string>
     <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio!</string>
-    <string name="swap_not_enabled">Intercambio non dispoñible</string>
-    <string name="swap_not_enabled_description">Antes do intercambio, o teu dispositivo debe estar visible.</string>
 
     <string name="install_confirm">require acceso a</string>
     <string name="install_confirm_update">Desexas instalar unha actualización deste aplicativo existente? Os teus datos existentes non se perderán. A actualización require acceso a:</string>

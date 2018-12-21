@@ -168,8 +168,6 @@
     <string name="swap_confirm">ยืนยันการส่งต่อ</string>
     <string name="loading">กำลังโหลด…</string>
     <string name="swap_connection_misc_error">การเชื่อมต่อกับอีกเครื่องล้มเหลว, ไม่สามารถส่งต่อโปรแกรมได้</string>
-    <string name="swap_not_enabled">ไม่เปิดใช้การส่งต่อโปรแกรม</string>
-    <string name="swap_not_enabled_description">ก่อนจะทำการส่งต่อโปรแกรม, เครื่องของคุณจะต้องปรากฎตัวก่อน</string>
 
     <string name="install_confirm">ต้องการเข้าถึง</string>
     <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่

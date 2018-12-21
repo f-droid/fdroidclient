@@ -230,7 +230,6 @@
     <string name="interval_1w">Verificare actualizări săptămânal</string>
     <string name="interval_1d">Verificare actualizări zilnic</string>
     <string name="interval_12h">Verificare actualizări o dată la 12 ore</string>
-    <string name="swap_not_enabled">Schimbul nu este activat</string>
     <string name="swap_not_visible_wifi">Nu este vizibil prin Wi-Fi</string>
     <string name="enable_proxy_summary">Configurează proxy HTTP pentru toate conexiunile de rețea</string>
     <string name="repos_unchanged">Toate depozitele sunt actualizate</string>
@@ -435,7 +434,6 @@
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
     <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
     <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
-    <string name="swap_not_enabled_description">Înaintea schimbului, dispozitivul tău trebuie făcut vizibil.</string>
 
     <string name="app_details__incompatible_mismatched_signature">Semnătură diferită de cea instalată</string>
     <string name="app_details__no_versions__show_incompat_versions">Pentru a afișa aici și versiunile incompatibile, activați setarea \"%1$s\".</string>
