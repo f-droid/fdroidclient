@@ -1193,12 +1193,11 @@ public class AppProvider extends FDroidProvider {
 
     private void updateIconUrls() {
         final String appTable = getTableName();
-        final String apkTable = getApkTableName();
         final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
         Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        String query = getIconUpdateQuery(appTable, apkTable);
+        String query = getIconUpdateQuery(appTable);
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
         };
@@ -1210,7 +1209,7 @@ public class AppProvider extends FDroidProvider {
      *  1) The repo version that introduced density specific icons
      *  2) The dir to density specific icons for the current device.
      */
-    private static String getIconUpdateQuery(String app, String apk) {
+    private static String getIconUpdateQuery(String app) {
 
         final String repo = RepoTable.NAME;
 
