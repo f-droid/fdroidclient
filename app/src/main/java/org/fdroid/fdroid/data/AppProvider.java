@@ -145,7 +145,7 @@ public class AppProvider extends FDroidProvider {
 
     /**
      * A QuerySelection which is aware of the option/need to join onto the
-     * installed apps table. Not that the base classes
+     * installed apps table. Note that the base classes
      * {@link org.fdroid.fdroid.data.QuerySelection#add(QuerySelection)} and
      * {@link org.fdroid.fdroid.data.QuerySelection#add(String, String[])} methods
      * will only return the base class {@link org.fdroid.fdroid.data.QuerySelection}
@@ -1193,12 +1193,11 @@ public class AppProvider extends FDroidProvider {
 
     private void updateIconUrls() {
         final String appTable = getTableName();
-        final String apkTable = getApkTableName();
         final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
         Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        String query = getIconUpdateQuery(appTable, apkTable);
+        String query = getIconUpdateQuery(appTable);
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
         };
@@ -1206,11 +1205,11 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * Returns a query which requires two parameters to be bdeatound. These are (in order):
+     * Returns a query which requires two parameters to be bound. These are (in order):
      *  1) The repo version that introduced density specific icons
      *  2) The dir to density specific icons for the current device.
      */
-    private static String getIconUpdateQuery(String app, String apk) {
+    private static String getIconUpdateQuery(String app) {
 
         final String repo = RepoTable.NAME;
 
@@ -1233,12 +1232,7 @@ public class AppProvider extends FDroidProvider {
                     app + "." + Cols.ICON +
                 ") " +
                 " FROM " +
-                apk +
-                " JOIN " + repo + " ON (" + repo + "." + RepoTable.Cols._ID + " = " + apk + "." + ApkTable.Cols.REPO_ID + ") " +
-                " WHERE " +
-                app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
-                apk + "." + ApkTable.Cols.VERSION_CODE + " = " + app + "." + Cols.SUGGESTED_VERSION_CODE;
-
+                repo + " WHERE " + repo + "." + RepoTable.Cols._ID + " = " + app + "." + Cols.REPO_ID;
         return "UPDATE " + app + " SET "
             + Cols.ICON_URL + " = ( " + iconUrlQuery + " )";
     }

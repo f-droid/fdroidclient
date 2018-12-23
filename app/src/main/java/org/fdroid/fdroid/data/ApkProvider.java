@@ -81,7 +81,7 @@ public class ApkProvider extends FDroidProvider {
         }
 
         /**
-         * Find an app which is closest to the version code suggested by the server, with some caveates:
+         * Find an app which is closest to the version code suggested by the server, with some caveats:
          * <ul>
          * <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
          * <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>

@@ -363,7 +363,7 @@ public class IndexV1Updater extends IndexUpdater {
             contentValues.put(Schema.RepoTable.Cols.MIRRORS, Utils.serializeCommaSeparatedString(repo.mirrors));
         }
         repoPersister.commit(contentValues, repo.getId());
-        profiler.log("Persited to database.");
+        profiler.log("Persisted to database.");
 
         if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {
             processRepoPushRequests(requests);
