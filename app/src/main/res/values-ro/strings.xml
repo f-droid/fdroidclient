@@ -548,4 +548,6 @@
     <string name="swap_toast_using_path">Se folosește %1$s</string>
     <string name="swap_toast_not_removable_storage">Alegerea nu se potrivește cu nici un dispozitiv de stocare, încercați din nou!</string>
     <string name="swap_toast_find_removeable_storage">Alegeți cardul SD sau unitatea USB</string>
+    <string name="not_visible_nearby">Modul de schimb nu este activat</string>
+    <string name="not_visible_nearby_description">Înainte de a face schimb cu dispozitivele din apropiere, faceți-vă dispozitivul vizibil.</string>
 </resources>

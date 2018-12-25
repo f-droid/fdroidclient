@@ -57,7 +57,7 @@
     <string name="app_name">اف-درويد</string>
 
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
-    <string name="installIncompatible">التطبيق غير متوافق مع جهازك. تثبيته علي أية حال؟</string>
+    <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
     <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
@@ -88,7 +88,7 @@
     <string name="about_license">الرخصة</string>
 
     <string name="app_incompatible">غير متوافق</string>
-    <string name="added_on">تمت الإضافة في %s</string>
+    <string name="added_on">تمت إضافته في %s</string>
 
     <string name="links">الروابط</string>
     <string name="more">المزيد</string>
@@ -316,7 +316,7 @@
     <string name="categories__empty_state__no_categories">ليس هناك فئات لعرضها</string>
 
     <string name="preference_category__my_apps">تطبيقاتي</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت؟ أحصل على تطبيقات مِن أشخاص بالقرب منك!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت؟ أحصل على تطبيقات مِن أشخاص مِن حولك!</string>
     <string name="nearby_splash__find_people_button">البحث عن أشخاص مِن حوالي</string>
     <string name="nearby_splash__both_parties_need_fdroid">يحتاج كلا الطرفين إلى %1$s للمبادلة.</string>
 

@@ -440,7 +440,7 @@
     <string name="force_old_index_summary">I tilfelle det er feil eller kompabilitetsproblemer, bruk XML-programindeksen</string>
     <string name="app_permission_storage">F-droid trenger lagringstilgang for å installere til dette lagringsmediet. Tillat det på neste skjerm for å fortsette installasjonen.</string>
 
-    <string name="app_list_download_ready">Nedlastet, klar til å installere</string>
+    <string name="app_list_download_ready">Nedlastet, klar til installasjon</string>
 
     <string name="download_404">Den etterspurte fila ble ikke funnet.</string>
     <string name="status_inserting_x_apps">Lagrer programdetaljer (%1$d/%2$d) fra %3$s</string>
@@ -552,4 +552,6 @@
     <string name="swap_toast_using_path">Bruker %1$s</string>
     <string name="swap_toast_not_removable_storage">Det valget samsvarte ikke med noe flyttbart medium, prøv igjen.</string>
     <string name="swap_toast_find_removeable_storage">Velg ditt flyttbare SD-kort eller USB</string>
+    <string name="not_visible_nearby">I nærheten er ikke påslått</string>
+    <string name="not_visible_nearby_description">Før utveksling med enheter i nærheten må du gjøre din synlig.</string>
 </resources>

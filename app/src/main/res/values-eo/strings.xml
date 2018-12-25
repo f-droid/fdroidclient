@@ -539,4 +539,13 @@
 
     <string name="menu_downgrade">Malpromocii</string>
     <string name="app_repository">Deponejo: %1$s</string>
+    <string name="scan_removable_storage_title">Skani demeteblan konservejon</string>
+    <string name="scan_removable_storage_summary">Serĉi deponejojn de pakaĵoj en demetebla konservejo (SD-kartoj aŭ memor-bastonetoj)</string>
+    <string name="nearby_splash__read_external_storage">Eblas interŝanĝi aplikaĵojn per SD-kartoj!</string>
+    <string name="nearby_splash__request_permission">Provu tion</string>
+    <string name="not_visible_nearby">Proksima interŝanĝo estas malŝaltita</string>
+    <string name="not_visible_nearby_description">Antaŭ interŝanĝi kun proksimaj aparatoj, igi vian aparaton videbla.</string>
+    <string name="swap_toast_using_path">Uzas %1$s</string>
+    <string name="swap_toast_not_removable_storage">Tio ĉi ne estas demetebla konservejo, bonvolu reprovi!</string>
+    <string name="swap_toast_find_removeable_storage">Elektu demeteblan SD-karton aŭ memor-bastoneton</string>
 </resources>

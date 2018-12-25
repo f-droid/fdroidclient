@@ -571,4 +571,5 @@
 
     <string name="menu_downgrade">Адкат</string>
     <string name="app_repository">Рэпазіторый: %1$s</string>
+    <string name="scan_removable_storage_title">Сканаваць зменнае сховішча</string>
 </resources>

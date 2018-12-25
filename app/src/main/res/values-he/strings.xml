@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="installIncompatible">יישומון זו אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה?</string>
     <string name="version">גרסה</string>
@@ -556,4 +556,13 @@
 
     <string name="menu_downgrade">שנמוך</string>
     <string name="app_repository">מאגר: %1$s</string>
-    </resources>
+    <string name="scan_removable_storage_title">סריקת אחסון נתיק</string>
+    <string name="scan_removable_storage_summary">איתור מאגרי חבילות בהתקנים נתיקים כגון כרטיסי SD וכונני דיסק און קי</string>
+    <string name="nearby_splash__read_external_storage">ניתן להשתמש בכונני SD בתור זיכרון החלפה!</string>
+    <string name="nearby_splash__request_permission">בואו ננסה</string>
+    <string name="not_visible_nearby">קרבה לא מופעלת</string>
+    <string name="not_visible_nearby_description">בטרם החלפה עם מכשירים בקרבת מקום עליך להפעיל את גילוי המכשיר שלך.</string>
+    <string name="swap_toast_using_path">נעשה שימוש ב־%1$s</string>
+    <string name="swap_toast_not_removable_storage">הבחירה הזאת אינה תואמת לאף התקן נתיק, נא לנסות שוב!</string>
+    <string name="swap_toast_find_removeable_storage">נא לבחור כרטיס SD או דיסק און קי נתיקים</string>
+</resources>

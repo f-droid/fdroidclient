@@ -544,4 +544,7 @@
     <string name="swap_toast_using_path">Utilisation de %1$s</string>
     <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
     <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
+    <string name="nearby_splash__read_external_storage">Les cartes SD peuvent être utilisées pour les échanges !</string>
+    <string name="not_visible_nearby">Appareil non visible</string>
+    <string name="not_visible_nearby_description">Pour échanger avec les appareils proches, vous devez d\'abord rendre visible votre appareil.</string>
 </resources>
