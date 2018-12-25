@@ -60,6 +60,7 @@
     <string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
     <string name="scan_removable_storage_title">Scan removable storage</string>
+    <string name="scan_removable_storage_toast">Scanning %s…</string>
     <string name="scan_removable_storage_summary">Look for package repos on removable storage like SD Cards
         and USB thumb drives
     </string>

@@ -26,7 +26,6 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -91,9 +90,11 @@ class ApkVerifier {
         Utils.debugLog(TAG, "expectedTargetSdkVersion: " + expectedTargetSdkVersion);
         if (expectedTargetSdkVersion == Apk.SDK_VERSION_MIN_VALUE) {
             // NOTE: In old fdroidserver versions, targetSdkVersion was not stored inside the repo!
-            Log.w(TAG, "Skipping check for targetSdkVersion, not available in this repo!");
+            Log.w(TAG, "Skipping check for targetSdkVersion, not available in this app or repo!");
         } else if (localTargetSdkVersion != expectedTargetSdkVersion) {
-            throw new ApkVerificationException("TargetSdkVersion of apk file is not the expected targetSdkVersion!");
+            throw new ApkVerificationException(
+                    String.format("TargetSdkVersion of apk file (%d) is not the expected targetSdkVersion (%d)!",
+                            localTargetSdkVersion, expectedTargetSdkVersion));
         }
     }
 
