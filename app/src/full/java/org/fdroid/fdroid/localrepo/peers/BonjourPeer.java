@@ -38,7 +38,11 @@ public class BonjourPeer extends WifiPeer {
 
     @Override
     public int hashCode() {
-        return getFingerprint().hashCode();
+        String fingerprint = getFingerprint();
+        if (fingerprint == null) {
+            return 0;
+        }
+        return fingerprint.hashCode();
     }
 
     @Override
