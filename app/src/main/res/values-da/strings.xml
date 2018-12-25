@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -75,7 +75,7 @@
     <string name="menu_search">Søg</string>
     <string name="menu_add_repo">Nyt Depot</string>
 
-    <string name="menu_launch">Kør</string>
+    <string name="menu_launch">Åbne</string>
     <string name="menu_share">Del</string>
     <string name="menu_install">Installer</string>
     <string name="menu_uninstall">Afinstaller</string>
@@ -85,7 +85,7 @@
     <string name="menu_issues">Problemer</string>
     <string name="menu_changelog">Ændringslog</string>
     <string name="menu_source">Kildekode</string>
-    <string name="menu_upgrade">Opgrader</string>
+    <string name="menu_upgrade">Opdatere</string>
     <string name="menu_donate">Doner</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -281,7 +281,7 @@
     <string name="crash_dialog_title">F-Droid er gået ned</string>
     <string name="crash_dialog_text">En uventet fejl har tvunget applikationen til at stoppe. Vil du sende en e-mail med detaljer som hjælper med at ordne problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan tilføje ekstra information og kommentarer her:</string>
-    <string name="update_auto_download">Hent automatisk opdateringer</string>
+    <string name="update_auto_download">Hente automatisk opdateringer</string>
     <string name="update_auto_download_summary">Opdateringer hentes automatisk, og du vil blive underrettet når de er klar til installation</string>
     <string name="repo_provider">Depot: %s</string>
 
@@ -305,19 +305,19 @@
     <string name="keep_forever">Forevigt</string>
 
     <string name="keep_install_history">Behold installationshistorik</string>
-    <string name="keep_install_history_summary">Opbevar en log af installationer og afinstallationer i F-Droid</string>
+    <string name="keep_install_history_summary">Gemme logfil over alle installationer og afinstalleringer i et privat lager</string>
     <string name="update_auto_install">Installer automatisk opdateringer</string>
     <string name="update_auto_install_summary">Download og installer app opdateringer i baggrunden</string>
     <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til Internettet?</string>
 <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
-    <string name="main_menu__swap_nearby">Tæt på</string>
+    <string name="main_menu__swap_nearby">Nærheden</string>
 
-    <string name="preference_manage_installed_apps">Administrer installerede apps</string>
+    <string name="preference_manage_installed_apps">Administrere installerede programmer</string>
 
 
     <string name="notification_action_update">Opdatér</string>
-    <string name="notification_action_cancel">Annullér</string>
+    <string name="notification_action_cancel">Annullere</string>
     <string name="notification_action_install">Installér</string>
 
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
@@ -326,20 +326,20 @@
     <string name="notification_title_single_update_available">Opdatering tilgængelig</string>
     <string name="notification_title_summary_install_error">Installationen fejlede</string>
     <string name="by_author_format">af %s</string>
-    <string name="app_details_donate_prompt_unknown_author">Gi\' en kop kaffe til udviklerne bag %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s er udviklet af %2$s. Gi\' dem en kop kaffe!</string>
+    <string name="app_details_donate_prompt_unknown_author">Giv udviklerne af %1$s en kop kaffe!</string>
+    <string name="app_details_donate_prompt">%1$s er udviklet af %2$s. Giv dem en kop kaffe!</string>
 
     <string name="app_version_x_available">Version %1$s tilgængelig</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Anbefalet)</string>
-    <string name="app_new">Nyhed</string>
+    <string name="app_new">Ny</string>
     <string name="app__tts__cancel_download">Stop download</string>
     <string name="app__install_downloaded_update">Opdatér</string>
 
-    <string name="installed_apps__activity_title">Installerede Apps</string>
+    <string name="installed_apps__activity_title">Installerede programmer</string>
     <string name="installed_app__updates_ignored">Opdateringer ignoreres</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Opdateringer ignoreres for version %1$s</string>
-    <string name="update_all">Hent alle opdateringer</string>
+    <string name="update_all">Opdatere alle</string>
 
     <string name="updates__hide_updateable_apps">Skjul apps</string>
     <string name="updates__show_updateable_apps">Vis apps</string>
@@ -442,7 +442,7 @@
     <string name="app_list__dismiss_downloading_app">Hentning annulleret</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du afinstallerer denne app med det samme.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi har fundet en sårbarhed med %1$s. Vi anbefaler, at du opgraderer til den nyeste version med det samme.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi har fundet en sårbarhed i %1$s. Opgradering til nyeste version anbefales med det samme.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
 
     <string name="status_inserting_x_apps">Gemmer app detaljer (%1$d/%2$d) fra %3$s</string>
@@ -456,5 +456,50 @@
     <string name="repo_exists_add_mirror">Dette er en kopi af %1$s, tilføj som et spejl?</string>
     <string name="antidisabledalgorithmlist">Denne app har en svag sikkerhedssignatur</string>
     <string name="antiknownvulnlist">Denne app indeholder en kendt sårbarhed</string>
-
-    </resources>
+    <string name="prompt_to_send_crash_reports">Spørge for at sende nedbrud rapporter</string>
+    <string name="hide_all_notifications">Skjule alle påmindelser</string>
+    <string name="send_install_history">Sende installeringhistorik</string>
+    <string name="send_history_csv">%s installeringhistorik som CSV fil</string>
+    <string name="install_history">Installeringhistorik</string>
+    <string name="send_version_and_uuid">Sende version og UUID til servere</string>
+    <string name="allow_push_requests">Tillade depoter at installere/afinstallere programmer</string>
+    <string name="over_wifi">Over trådløs</string>
+    <string name="scan_removable_storage_title">Skanne fjernbar lager</string>
+    <string name="about_forum">Support forum</string>
+    <string name="app_suggested">Foreslået</string>
+    <string name="app_repository">Depot: %1$s</string>
+    <string name="app_size">Størrelse: %1$s</string>
+    <string name="send_installed_apps">Dele installerede programmer</string>
+    <string name="send_installed_apps_csv">Programmer installeret af F-Droid som CSV fil</string>
+    <string name="repo_exists_add_fingerprint">%1$s er opsat, dette vil tilføje ny nøgle information.</string>
+    <string name="menu_open">Åbne</string>
+    <string name="menu_downgrade">Nedgradere</string>
+    <string name="menu_liberapay">Liberapay</string>
+    <string name="show_anti_feature_apps">Inkludere anti-funktion programmer</string>
+    <string name="show_anti_feature_apps_on">Vise programmer der kræver anti-funktioner</string>
+    <string name="force_touch_apps">Inkludere berørings-skærm programmer</string>
+    <string name="privacy">Privatliv</string>
+    <string name="preventScreenshots_title">Forhindre skærmaftryk</string>
+    <string name="panic_app_setting_title">Panik knap program</string>
+    <string name="panic_app_unknown_app">ukendt program</string>
+    <string name="panic_app_setting_none">Ingen</string>
+    <string name="panic_app_dialog_title">Bekræfte panik program</string>
+    <string name="allow">Tillade</string>
+    <string name="panic_settings">Panik knap opsætning</string>
+    <string name="panic_exit_title">Afslutte program</string>
+    <string name="panic_exit_summary">Programmet bliver lukket</string>
+    <string name="panic_hide_title">Skjule %s</string>
+    <string name="panic_hide_summary">Program vil skjule sig selv</string>
+    <string name="hiding_calculator">Regnemaskine</string>
+    <string name="hiding_dialog_title">Skjule %s nu</string>
+    <string name="hide_on_long_search_press_title">Skjule med søge knap</string>
+    <string name="repo_official_mirrors">Officielle spejle</string>
+    <string name="repo_user_mirrors">Bruger spejle</string>
+    <string name="share_repository">Dele depot</string>
+    <string name="nearby_splash__request_permission">Prøv det</string>
+    <string name="use_bluetooth">Brug bluetooth</string>
+    <string name="not_visible_nearby">Nær ikke aktiveret</string>
+    <string name="swap_toast_using_path">Bruger %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Trådløs brændpunkt aktiveret</string>
+    <string name="swap_toast_could_not_enable_hotspot">Kunne ikke aktivere trådløs brændpunkt!</string>
+</resources>

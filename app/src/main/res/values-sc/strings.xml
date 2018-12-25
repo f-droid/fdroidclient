@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
     <string name="installIncompatible">S\'aplicatzione no est compatìbile cun su dispositivu tuo, la cheres installare su matessi?</string>
@@ -385,7 +385,7 @@
     <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
 
     <string name="updates__tts__download_app">Iscàrriga</string>
-    <string name="update_all">Iscàrriga totu sos agiornamentos</string>
+    <string name="update_all">Agiorna totu</string>
 
     <string name="updates__hide_updateable_apps">Istichi sas aplicatziones</string>
     <string name="updates__show_updateable_apps">Ammustra sas aplicatziones</string>
@@ -560,4 +560,13 @@
 
     <string name="menu_downgrade">Disinstalla agiornamentu</string>
     <string name="app_repository">Depòsitu: %1$s</string>
-    </resources>
+    <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
+    <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>
+    <string name="nearby_splash__read_external_storage">Sas ischedas SD podent èssere impreadas pro sos cuncàmbios!</string>
+    <string name="nearby_splash__request_permission">Proa·lu</string>
+    <string name="not_visible_nearby">Dispositivu non visìbile</string>
+    <string name="not_visible_nearby_description">In antis de cuncambiare cun sos dispositivu a curtzu depes impostare su tuo comente visìbile.</string>
+    <string name="swap_toast_using_path">Impreende %1$s</string>
+    <string name="swap_toast_not_removable_storage">Perunu dispositivu disponìbile pro cussa issèbera, torra a proare!</string>
+    <string name="swap_toast_find_removeable_storage">Issèbera s\'ischeda SD o sa memòria USB rimovìbile tua</string>
+</resources>

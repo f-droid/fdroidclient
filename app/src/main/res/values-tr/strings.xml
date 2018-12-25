@@ -549,4 +549,6 @@
     <string name="swap_toast_using_path">%1$s kullanıyor</string>
     <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
     <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
+    <string name="not_visible_nearby">Yakında etkin değil</string>
+    <string name="not_visible_nearby_description">Yakındaki cihazlarla değiştirmeden önce cihazınızı görünür yapın.</string>
 </resources>

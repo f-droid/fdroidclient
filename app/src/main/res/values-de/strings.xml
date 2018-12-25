@@ -208,7 +208,7 @@
     <string name="permissions">Berechtigungen</string>
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
-    <string name="system_install_denied_permissions">Die Genehmigungen für die Sonderrechte der Erweiterung wurden nicht erteilt! Bitte einen Fehlerbericht erstellen!</string>
+    <string name="system_install_denied_permissions">Der Erweiterung wurden keine Sonderrechte erteilt! Bitte einen Fehlerbericht erstellen!</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
@@ -217,8 +217,8 @@
     <string name="swap_dont_show_again">Nicht wieder anzeigen</string>
     <string name="swap_choose_apps">Anwendungen auswählen</string>
     <string name="swap_scan_qr">QR-Code einlesen</string>
-    <string name="swap_people_nearby">Leute in der Nähe</string>
-    <string name="swap_scanning_for_peers">Nach Leuten in der Nähe wird gesucht …</string>
+    <string name="swap_people_nearby">Tauschpartner</string>
+    <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
     <string name="wifi_ap">Hotspot</string>
 
     <string name="swap_visible_bluetooth">Über Bluetooth sichtbar</string>
@@ -230,10 +230,10 @@
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser
         eingeben.
     </string>
-    <string name="swap_intro">Mit Leuten in der Nähe verbinden und Anwendungen tauschen.</string>
+    <string name="swap_intro">Mit Mitmenschen verbinden und Anwendungen tauschen.</string>
     <string name="swap_wifi_device_name">Gerätename</string>
     <string name="swap_cant_find_peers">Nicht den Gesuchten gefunden?</string>
-    <string name="swap_no_peers_nearby">Keine Leute in der Nähe zum Tauschen gefunden.</string>
+    <string name="swap_no_peers_nearby">Keinen Tauschpartner gefunden.</string>
     <string name="swap_confirm">Tausch bestätigen</string>
     <string name="swap_qr_isnt_for_swap">Der QR-Code, den Sie eingelesen haben, sieht nicht wie ein Tauschcode aus.</string>
     <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn
@@ -347,7 +347,7 @@
     <string name="main_menu__categories">Kategorien</string>
 
 
-    <string name="main_menu__swap_nearby">In der Nähe</string>
+    <string name="main_menu__swap_nearby">Tausch</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
 
@@ -396,9 +396,9 @@
     </plurals>
 
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet? Apps von Menschen in der Nähe herunterladen!</string>
-    <string name="nearby_splash__find_people_button">Menschen in der Nähe finden</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Nahfunktion zu verwenden.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Mitmenschen herunterladen!</string>
+    <string name="nearby_splash__find_people_button">Tauschpartner finden</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Tauschfunktion zu verwenden.</string>
 
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
     <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
@@ -554,4 +554,6 @@
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte nicht zu irgendwelchen Wechselspeichern, versuchen Sie es noch einmal!</string>
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
+    <string name="not_visible_nearby">Tauschfunktion nicht aktiviert</string>
+    <string name="not_visible_nearby_description">Vor dem Tausch mit benachbarten Geräten müssen Sie Ihr Gerät sichtbar machen.</string>
 </resources>

@@ -528,4 +528,6 @@
     <string name="swap_toast_using_path">使用 %1$s</string>
     <string name="swap_toast_not_removable_storage">那個選擇不符合任何行動儲存裝置，請再試一次！</string>
     <string name="swap_toast_find_removeable_storage">選擇您的行動儲存 SD 卡或 USB</string>
+    <string name="not_visible_nearby">附近未啟用</string>
+    <string name="not_visible_nearby_description">在與附近的裝置交換之前，請將您的裝置顯現出來。</string>
 </resources>

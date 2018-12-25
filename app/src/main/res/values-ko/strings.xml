@@ -509,4 +509,6 @@
     <string name="swap_toast_using_path">%1$s을 사용</string>
     <string name="swap_toast_not_removable_storage">그 선택은 어떠한 이동식 저장공간 기기와도 일치하지 않았습니다, 다시 시도하세요!</string>
     <string name="swap_toast_find_removeable_storage">여러분의 이동식 SD 카드 또는 USB를 선택하세요</string>
+    <string name="not_visible_nearby">근처가 활성화되지 않음</string>
+    <string name="not_visible_nearby_description">근처 기기와 교환하기 전에, 당신의 기기를 보이게 해주세요.</string>
 </resources>
