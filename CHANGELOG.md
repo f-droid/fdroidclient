@@ -1,8 +1,20 @@
-### 1.5-alpha1 (2018-10-19)
+### 1.5 (2018-12-26)
+
+* Nearby swap bug fixes and improvements
+
+* update language and translations about Nearby and swap
+
+### 1.5-alpha2 (2018-12-21)
+
+* support swapping via SD Cards
+
+* display versionCode in expanded Versions list entries in Expert Mode
+
+### 1.5-alpha1 (2018-12-12)
 
 * UX and language cleanup of App Details
 
-### 1.5-alpha0 (2018-12-12)
+### 1.5-alpha0 (2018-10-19)
 
 * add repos via additional_repos.xml from ROM, OEM, Vendor.
 
