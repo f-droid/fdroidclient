@@ -516,7 +516,7 @@
     <string name="over_wifi">Descargar usando WiFi</string>
     <string name="over_data">Descargar usando tus datos</string>
     <string name="over_network_always_summary">Usar siempre esta conexion cuando este disponible</string>
-    <string name="over_network_on_demand_summary">Usar esta conexion unicamente cuando seleccione descargar</string>
+    <string name="over_network_on_demand_summary">Usar esta conexion únicamente cuando seleccione descargar</string>
     <string name="over_network_never_summary">No descargar nada usando esta conexion</string>
     <string name="antidisabledalgorithmlist">Esta aplicación tiene una firma de seguridad débil</string>
     <string name="antiknownvulnlist">Esta aplicación contiene una vulnerabilidad de seguridad conocida</string>
