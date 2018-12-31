@@ -335,7 +335,7 @@ public class ApkProvider extends FDroidProvider {
                 antiFeaturesRequested = true;
                 addAntiFeatures();
             } else if (field.equals(Cols._ID)) {
-                appendField("rowid", "apk", "_id");
+                appendField(Cols.ROW_ID, "apk", Cols._ID);
             } else if (field.equals(Cols._COUNT)) {
                 appendField("COUNT(*) AS " + Cols._COUNT);
             } else if (field.equals(Cols._COUNT_DISTINCT)) {
