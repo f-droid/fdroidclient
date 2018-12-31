@@ -18,12 +18,13 @@ package kellinwood.logging;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public abstract class AbstractLogger implements LoggerInterface {
 
     protected String category;
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
 
     public AbstractLogger(String category) {
         this.category = category;

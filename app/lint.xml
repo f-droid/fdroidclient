@@ -9,6 +9,7 @@
 
     <issue id="ImpliedQuantity" severity="error"/>
     <issue id="DefaultLocale" severity="error"/>
+    <issue id="SimpleDateFormat" severity="error"/>
     <issue id="NewApi" severity="error"/>
     <issue id="InlinedApi" severity="error"/>
 
