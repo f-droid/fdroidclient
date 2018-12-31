@@ -306,6 +306,7 @@ public final class PRNGFixes {
         }
     }
 
+    @SuppressLint("HardwareIds")
     private static byte[] getBuildFingerprintAndDeviceSerial() {
         StringBuilder result = new StringBuilder();
         String fingerprint = Build.FINGERPRINT;
