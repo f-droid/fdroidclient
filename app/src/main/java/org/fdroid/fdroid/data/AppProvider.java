@@ -692,19 +692,6 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args).add(queryPackageName(packageName));
     }
 
-    /**
-     * Same as {@link AppProvider#querySingle(String, long)} except it is used for the purpose
-     * of an UPDATE query rather than a SELECT query. This means that it must use a subquery to get
-     * the {@link Cols.Package#PACKAGE_ID} rather than the join which is already in place for that
-     * table. The reason is because UPDATE queries cannot include joins in SQLite.
-     */
-    protected AppQuerySelection querySingleForUpdate(String packageName, long repoId) {
-        final String selection = Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() +
-                ") AND " + Cols.REPO_ID + " = ? ";
-        final String[] args = {packageName, Long.toString(repoId)};
-        return new AppQuerySelection(selection, args);
-    }
-
     private AppQuerySelection queryExcludeSwap() {
         // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
         // being no apks for the app in the result set. In that case, we can't tell if it is from
