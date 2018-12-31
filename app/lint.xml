@@ -23,6 +23,7 @@
     </issue>
     <issue id="AppCompatMethod" severity="error"/>
     <issue id="NestedScrolling" severity="error"/>
+    <issue id="Typos" severity="error"/>
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
     <issue id="GetInstance" severity="error"/>
