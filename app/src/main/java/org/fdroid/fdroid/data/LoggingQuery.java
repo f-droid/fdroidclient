@@ -161,7 +161,7 @@ final class LoggingQuery {
         return plan;
     }
 
-    public static Cursor query(SQLiteDatabase db, String query, String[] queryBuilderArgs) {
+    public static Cursor rawQuery(SQLiteDatabase db, String query, String[] queryBuilderArgs) {
         return new LoggingQuery(db, query, queryBuilderArgs).rawQuery();
     }
 
