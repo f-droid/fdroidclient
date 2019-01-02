@@ -132,7 +132,7 @@ public class MainActivityEspressoTest {
 
     @Test
     public void bottomNavFlavorCheck() {
-        onView(withText(R.string.updates)).check(matches(isDisplayed()));
+        onView(withText(R.string.main_menu__updates)).check(matches(isDisplayed()));
         onView(withText(R.string.menu_settings)).check(matches(isDisplayed()));
         onView(withText("THIS SHOULD NOT SHOW UP ANYWHERE!!!")).check(doesNotExist());
 
@@ -170,9 +170,9 @@ public class MainActivityEspressoTest {
 
     @Test
     public void showUpdates() {
-        ViewInteraction updatesBottonNavButton = onView(allOf(withText(R.string.updates), isDisplayed()));
+        ViewInteraction updatesBottonNavButton = onView(allOf(withText(R.string.main_menu__updates), isDisplayed()));
         updatesBottonNavButton.perform(click());
-        onView(withText(R.string.updates)).check(matches(isDisplayed()));
+        onView(withText(R.string.main_menu__updates)).check(matches(isDisplayed()));
     }
 
     @Test
