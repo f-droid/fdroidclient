@@ -205,6 +205,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="main_menu__latest_apps">Latest</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Nearby</string>
+    <string name="main_menu__updates">Updates</string>
 
     <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
     <string name="latest__empty_state__never_updated">Once your list of apps has been updated, the latest apps should

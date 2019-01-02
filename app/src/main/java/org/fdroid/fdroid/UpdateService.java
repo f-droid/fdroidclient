@@ -507,7 +507,7 @@ public class UpdateService extends JobIntentService {
                     }
                 } catch (IndexUpdater.UpdateException e) {
                     errorRepos++;
-                    repoErrors.add(e.getMessage());
+                    repoErrors.add(e.getLocalizedMessage());
                     Log.e(TAG, "Error updating repository " + repo.address);
                     e.printStackTrace();
                 }
