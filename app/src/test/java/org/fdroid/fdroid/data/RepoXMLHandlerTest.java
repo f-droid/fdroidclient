@@ -27,12 +27,18 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.mock.MockRepo;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,6 +54,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
@@ -124,6 +131,33 @@ public class RepoXMLHandlerTest {
         });
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSimpleIndexWithCorruptedPackageName() throws Throwable {
+        Repo expectedRepo = new Repo();
+        expectedRepo.name = "F-Droid";
+        expectedRepo.signingCertificate = "308201ee30820157a0030201020204300d845b300d06092a864886f70d01010b0500302a3110300e060355040b1307462d44726f6964311630140603550403130d70616c6174736368696e6b656e301e170d3134303432373030303633315a170d3431303931323030303633315a302a3110300e060355040b1307462d44726f6964311630140603550403130d70616c6174736368696e6b656e30819f300d06092a864886f70d010101050003818d0030818902818100a439472e4b6d01141bfc94ecfe131c7c728fdda670bb14c57ca60bd1c38a8b8bc0879d22a0a2d0bc0d6fdd4cb98d1d607c2caefbe250a0bd0322aedeb365caf9b236992fac13e6675d3184a6c7c6f07f73410209e399a9da8d5d7512bbd870508eebacff8b57c3852457419434d34701ccbf692267cbc3f42f1c5d1e23762d790203010001a321301f301d0603551d0e041604140b1840691dab909746fde4bfe28207d1cae15786300d06092a864886f70d01010b05000381810062424c928ffd1b6fd419b44daafef01ca982e09341f7077fb865905087aeac882534b3bd679b51fdfb98892cef38b63131c567ed26c9d5d9163afc775ac98ad88c405d211d6187bde0b0d236381cc574ba06ef9080721a92ae5a103a7301b2c397eecc141cc850dd3e123813ebc41c59d31ddbcb6e984168280c53272f6a442b"; // NOCHECKSTYLE LineLength
+        expectedRepo.description = "The official repository of the F-Droid client. Applications in this repository are either official binaries built by the original application developers, or are binaries built from source by the admin of f-droid.org using the tools on https://gitorious.org/f-droid.";  // NOCHECKSTYLE LineLength
+        expectedRepo.timestamp = 1398733213;
+
+        InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("simpleIndexWithCorruptedPackageName.xml");
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        SAXParser parser = factory.newSAXParser();
+        XMLReader reader = parser.getXMLReader();
+        RepoDetails repoDetails = new RepoDetails();
+        MockRepo mockRepo = new MockRepo(100, Repo.PUSH_REQUEST_IGNORE);
+        RepoXMLHandler handler = new RepoXMLHandler(mockRepo, repoDetails);
+        reader.setContentHandler(handler);
+        InputSource is = new InputSource(new BufferedInputStream(inputStream));
+        try {
+            reader.parse(is);
+        } catch (org.xml.sax.SAXException e) {
+            throw e.getCause();
+        }
+        fail();
+    }
+
     @Test
     public void testPushRequestsRepoIgnore() {
         Repo expectedRepo = new Repo();
@@ -188,17 +222,17 @@ public class RepoXMLHandlerTest {
         repoPushRequest = new RepoPushRequest("install", "--", "123");
         assertEquals(repoPushRequest.request, "install");
         assertEquals(repoPushRequest.packageName, null);
-        assertEquals(repoPushRequest.versionCode, new Integer(123));
+        assertEquals(repoPushRequest.versionCode, Integer.valueOf(123));
 
         repoPushRequest = new RepoPushRequest("uninstall", "Robert'); DROP TABLE Students; --", "123");
         assertEquals(repoPushRequest.request, "uninstall");
         assertEquals(repoPushRequest.packageName, null);
-        assertEquals(repoPushRequest.versionCode, new Integer(123));
+        assertEquals(repoPushRequest.versionCode, Integer.valueOf(123));
 
         repoPushRequest = new RepoPushRequest("badrquest", "asdfasdfasdf", "123");
         assertEquals(repoPushRequest.request, null);
         assertEquals(repoPushRequest.packageName, "asdfasdfasdf");
-        assertEquals(repoPushRequest.versionCode, new Integer(123));
+        assertEquals(repoPushRequest.versionCode, Integer.valueOf(123));
     }
 
     @Test

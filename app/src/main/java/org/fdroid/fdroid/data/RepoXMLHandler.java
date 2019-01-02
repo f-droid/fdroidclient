@@ -22,7 +22,6 @@ package org.fdroid.fdroid.data;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.xml.sax.Attributes;
@@ -330,8 +329,8 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes)
+            throws SAXException {
         super.startElement(uri, localName, qName, attributes);
 
         if ("repo".equals(localName)) {
@@ -353,7 +352,11 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
             curapp.repoId = repo.getId();
-            curapp.packageName = attributes.getValue("", "id");
+            try {
+                curapp.setPackageName(attributes.getValue("", "id"));
+            } catch (IllegalArgumentException e) {
+                throw new SAXException(e);
+            }
 
             // To appease the NON NULL constraint in the DB. Usually there is a description, and it
             // is quite difficult to get an app to _not_ have a description when using fdroidserver.

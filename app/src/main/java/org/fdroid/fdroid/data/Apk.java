@@ -460,6 +460,20 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return null;
     }
 
+    /**
+     * Set the Package Name property while ensuring it is sanitized.
+     */
+    @JsonProperty("packageName")
+    @SuppressWarnings("unused")
+    void setPackageName(String packageName) {
+        if (Utils.isSafePackageName(packageName)) {
+            this.packageName = packageName;
+        } else {
+            throw new IllegalArgumentException("Repo index package entry includes unsafe packageName: '"
+                    + packageName + "'");
+        }
+    }
+
     @JsonProperty("uses-permission")
     @SuppressWarnings("unused")
     private void setUsesPermission(Object[][] permissions) {
