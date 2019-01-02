@@ -28,7 +28,7 @@ import java.util.Locale;
  */
 public class ZipListingHelper {
 
-    static DateFormat dateFormat = new SimpleDateFormat("MM-dd-yy HH:mm");
+    static DateFormat dateFormat = new SimpleDateFormat("MM-dd-yy HH:mm", Locale.ENGLISH);
 
     public static void listHeader(LoggerInterface log) {
         log.debug(" Length   Method    Size  Ratio   Date   Time   CRC-32    Name");

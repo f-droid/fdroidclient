@@ -20,10 +20,6 @@ abstract class QueryBuilder {
 
     public abstract void addField(String field);
 
-    protected int fieldCount() {
-        return fields.size();
-    }
-
     public void addFields(String[] fields) {
         for (final String field : fields) {
             addField(field);

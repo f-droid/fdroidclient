@@ -10,6 +10,7 @@ package org.fdroid.fdroid.compat;
  * freely, as long as the origin is not misrepresented.
  */
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Process;
 import android.util.Log;
@@ -31,18 +32,23 @@ import java.security.Security;
 
 /**
  * Fixes for the output of the default PRNG having low entropy.
- *
+ * <p>
  * The fixes need to be applied via {@link #apply()} before any use of Java
  * Cryptography Architecture primitives. A good place to invoke them is in the
  * application's {@code onCreate}.
+ *
+ * @see <a href="http://android-developers.blogspot.jp/2013/08/some-securerandom-thoughts.html">Some SecureRandom Thoughts</a>
  */
 public final class PRNGFixes {
 
     private static final byte[] BUILD_FINGERPRINT_AND_DEVICE_SERIAL =
-        getBuildFingerprintAndDeviceSerial();
+            getBuildFingerprintAndDeviceSerial();
 
-    /** Hidden constructor to prevent instantiation. */
-    private PRNGFixes() { }
+    /**
+     * Hidden constructor to prevent instantiation.
+     */
+    private PRNGFixes() {
+    }
 
     /**
      * Applies all fixes.
@@ -131,7 +137,7 @@ public final class PRNGFixes {
                 rng2.getProvider().getClass())) {
             throw new SecurityException(
                     "SecureRandom.getInstance(\"SHA1PRNG\") backed by wrong"
-                    + " Provider: " + rng2.getProvider().getClass());
+                            + " Provider: " + rng2.getProvider().getClass());
         }
     }
 
@@ -146,7 +152,7 @@ public final class PRNGFixes {
             super("LinuxPRNG",
                     1.0,
                     "A Linux-specific random number provider that uses"
-                        + " /dev/urandom");
+                            + " /dev/urandom");
             // Although /dev/urandom is not a SHA-1 PRNG, some apps
             // explicitly request a SHA1PRNG SecureRandom and we thus need to
             // prevent them from getting the default implementation whose output
@@ -300,6 +306,7 @@ public final class PRNGFixes {
         }
     }
 
+    @SuppressLint("HardwareIds")
     private static byte[] getBuildFingerprintAndDeviceSerial() {
         StringBuilder result = new StringBuilder();
         String fingerprint = Build.FINGERPRINT;

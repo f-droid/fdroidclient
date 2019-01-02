@@ -9,6 +9,7 @@
 
     <issue id="ImpliedQuantity" severity="error"/>
     <issue id="DefaultLocale" severity="error"/>
+    <issue id="SimpleDateFormat" severity="error"/>
     <issue id="NewApi" severity="error"/>
     <issue id="InlinedApi" severity="error"/>
 
@@ -23,10 +24,12 @@
     </issue>
     <issue id="AppCompatMethod" severity="error"/>
     <issue id="NestedScrolling" severity="error"/>
+    <issue id="Typos" severity="error"/>
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
     <issue id="GetInstance" severity="error"/>
     <issue id="PackageManagerGetSignatures" severity="error"/>
+    <issue id="HardwareIds" severity="error"/>
     <issue id="TrustAllX509TrustManager" severity="error">
       <!-- these come from included libraries -->
         <ignore path="org/apache/commons/net/ftp/FTPSTrustManager.class"/>
