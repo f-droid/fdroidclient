@@ -38,6 +38,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
+import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.InstallerService;

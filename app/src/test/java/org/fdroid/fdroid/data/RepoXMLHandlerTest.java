@@ -20,17 +20,13 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.updater;
+package org.fdroid.fdroid.data;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -884,7 +880,7 @@ public class RepoXMLHandlerTest {
     }
 
     @NonNull
-    static RepoDetails getFromFile(ClassLoader classLoader, String indexFilename, int pushRequests) {
+    public static RepoDetails getFromFile(ClassLoader classLoader, String indexFilename, int pushRequests) {
         Log.i(TAG, "test file: " + classLoader.getResource(indexFilename));
         InputStream inputStream = classLoader.getResourceAsStream(indexFilename);
         return RepoDetails.getFromFile(inputStream, pushRequests);
