@@ -161,6 +161,51 @@ public class RepoXMLHandlerTest {
     }
 
     @Test
+    public void testPushRequestsRepoCorruption() {
+        RepoPushRequest repoPushRequest;
+        repoPushRequest = new RepoPushRequest(null, null, null);  // request with no data
+        assertEquals(repoPushRequest.request, null);
+        assertEquals(repoPushRequest.packageName, null);
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("install", "org.fdroid.fdroid", "999999999999");
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("install", "org.fdroid.fdroid",
+                String.valueOf(((long) Integer.MAX_VALUE) + 1));
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("install", "org.fdroid.fdroid",
+                String.valueOf(((long) Integer.MIN_VALUE) - 1));
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("Robert'); DROP TABLE Students; --", "org.fdroid.fdroid", null);
+        assertEquals(repoPushRequest.request, null);
+        assertEquals(repoPushRequest.packageName, "org.fdroid.fdroid");
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("install", "Robert'); DROP TABLE Students; --", "123.1.1");
+        assertEquals(repoPushRequest.request, "install");
+        assertEquals(repoPushRequest.packageName, null);
+        assertEquals(repoPushRequest.versionCode, null);
+
+        repoPushRequest = new RepoPushRequest("install", "--", "123");
+        assertEquals(repoPushRequest.request, "install");
+        assertEquals(repoPushRequest.packageName, null);
+        assertEquals(repoPushRequest.versionCode, new Integer(123));
+
+        repoPushRequest = new RepoPushRequest("uninstall", "Robert'); DROP TABLE Students; --", "123");
+        assertEquals(repoPushRequest.request, "uninstall");
+        assertEquals(repoPushRequest.packageName, null);
+        assertEquals(repoPushRequest.versionCode, new Integer(123));
+
+        repoPushRequest = new RepoPushRequest("badrquest", "asdfasdfasdf", "123");
+        assertEquals(repoPushRequest.request, null);
+        assertEquals(repoPushRequest.packageName, "asdfasdfasdf");
+        assertEquals(repoPushRequest.versionCode, new Integer(123));
+    }
+
+    @Test
     public void testMediumRepo() {
         Repo expectedRepo = new Repo();
         expectedRepo.name = "Guardian Project Official Releases";

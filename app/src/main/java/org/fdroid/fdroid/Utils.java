@@ -76,6 +76,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 public final class Utils {
 
@@ -97,6 +98,8 @@ public final class Utils {
 
     private static DisplayImageOptions.Builder defaultDisplayImageOptionsBuilder;
     private static DisplayImageOptions repoAppDisplayImageOptions;
+
+    private static Pattern safePackageNamePattern;
 
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
@@ -619,6 +622,21 @@ public final class Utils {
         sb.setSpan(light, appName.length(), toFormat.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         return sb;
+    }
+
+    /**
+     * This is not strict validation of the package name, this is just to make
+     * sure that the package name is not used as an attack vector, e.g. SQL
+     * Injection.
+     */
+    public static boolean isSafePackageName(@Nullable String packageName) {
+        if (TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+        if (safePackageNamePattern == null) {
+            safePackageNamePattern = Pattern.compile("[a-zA-Z0-9._]+");
+        }
+        return safePackageNamePattern.matcher(packageName).matches();
     }
 
     /**

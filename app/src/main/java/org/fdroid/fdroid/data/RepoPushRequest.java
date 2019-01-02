@@ -20,6 +20,10 @@
 package org.fdroid.fdroid.data;
 
 import android.support.annotation.Nullable;
+import org.fdroid.fdroid.Utils;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents action requests embedded in the index XML received from a repo.
@@ -32,15 +36,33 @@ public class RepoPushRequest {
 
     public static final String INSTALL = "install";
     public static final String UNINSTALL = "uninstall";
+    public static final List<String> VALID_REQUESTS = Arrays.asList(INSTALL, UNINSTALL);
 
     public final String request;
     public final String packageName;
     @Nullable
     public final Integer versionCode;
 
+    /**
+     * Create a new instance.  {@code request} is validated against the list of
+     * valid install requests.  {@code packageName} has a safety validation to
+     * make sure that only valid Android/Java Package Name characters are included.
+     * If validation fails, the the values are set to {@code null}, which are
+     * handled in {@link org.fdroid.fdroid.IndexV1Updater#processRepoPushRequests(List)}
+     * or {@link org.fdroid.fdroid.IndexUpdater#processRepoPushRequests(List)}
+     */
     public RepoPushRequest(String request, String packageName, @Nullable String versionCode) {
-        this.request = request;
-        this.packageName = packageName;
+        if (VALID_REQUESTS.contains(request)) {
+            this.request = request;
+        } else {
+            this.request = null;
+        }
+
+        if (Utils.isSafePackageName(packageName)) {
+            this.packageName = packageName;
+        } else {
+            this.packageName = null;
+        }
 
         Integer i;
         try {

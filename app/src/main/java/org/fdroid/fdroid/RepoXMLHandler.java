@@ -344,8 +344,7 @@ public class RepoXMLHandler extends DefaultHandler {
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
             repoTimestamp = parseLong(attributes.getValue("", "timestamp"), 0);
             repoIcon = attributes.getValue("", "icon");
-        } else if (RepoPushRequest.INSTALL.equals(localName)
-                || RepoPushRequest.UNINSTALL.equals(localName)) {
+        } else if (RepoPushRequest.VALID_REQUESTS.contains(localName)) {
             if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {
                 RepoPushRequest r = new RepoPushRequest(
                         localName,
