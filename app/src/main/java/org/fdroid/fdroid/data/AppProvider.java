@@ -892,7 +892,7 @@ public class AppProvider extends FDroidProvider {
         query.addOrderBy(sortOrder);
         query.addLimit(limit);
 
-        Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
+        Cursor cursor = LoggingQuery.rawQuery(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

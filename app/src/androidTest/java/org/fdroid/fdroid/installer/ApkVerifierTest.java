@@ -28,7 +28,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import org.fdroid.fdroid.AssetUtils;
-import org.fdroid.fdroid.RepoXMLHandler;
+import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;

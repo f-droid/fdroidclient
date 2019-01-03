@@ -16,7 +16,6 @@ import android.webkit.MimeTypeMap;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
@@ -459,6 +458,20 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             return requestedPermissionsSet.toArray(new String[requestedPermissionsSet.size()]);
         }
         return null;
+    }
+
+    /**
+     * Set the Package Name property while ensuring it is sanitized.
+     */
+    @JsonProperty("packageName")
+    @SuppressWarnings("unused")
+    void setPackageName(String packageName) {
+        if (Utils.isSafePackageName(packageName)) {
+            this.packageName = packageName;
+        } else {
+            throw new IllegalArgumentException("Repo index package entry includes unsafe packageName: '"
+                    + packageName + "'");
+        }
     }
 
     @JsonProperty("uses-permission")

@@ -131,7 +131,7 @@ public class AppPrefsProvider extends FDroidProvider {
         query.addFields(projection);
         query.addOrderBy(sortOrder);
 
-        Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
+        Cursor cursor = LoggingQuery.rawQuery(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

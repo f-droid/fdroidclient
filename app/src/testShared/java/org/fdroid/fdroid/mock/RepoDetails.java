@@ -2,7 +2,7 @@ package org.fdroid.fdroid.mock;
 
 import android.support.annotation.NonNull;
 
-import org.fdroid.fdroid.RepoXMLHandler;
+import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.RepoPushRequest;

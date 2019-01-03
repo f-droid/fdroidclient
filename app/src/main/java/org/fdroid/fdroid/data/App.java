@@ -407,6 +407,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     /**
+     * Set the Package Name property while ensuring it is sanitized.
+     */
+    @JsonProperty("packageName")
+    void setPackageName(String packageName) {
+        if (Utils.isSafePackageName(packageName)) {
+            this.packageName = packageName;
+        } else {
+            throw new IllegalArgumentException("Repo index app entry includes unsafe packageName: '"
+                    + packageName + "'");
+        }
+    }
+
+    /**
      * Parses the {@code localized} block in the incoming index metadata,
      * choosing the best match in terms of locale/language while filling as
      * many fields as possible.  It first sets up a locale list based on user

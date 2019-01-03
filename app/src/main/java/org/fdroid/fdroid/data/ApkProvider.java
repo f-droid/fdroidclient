@@ -533,7 +533,7 @@ public class ApkProvider extends FDroidProvider {
         queryBuilder.addSelection(query);
         queryBuilder.addOrderBy(sortOrder);
 
-        Cursor cursor = LoggingQuery.query(db(), queryBuilder.toString(), queryBuilder.getArgs());
+        Cursor cursor = LoggingQuery.rawQuery(db(), queryBuilder.toString(), queryBuilder.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

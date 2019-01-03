@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.apache.commons.io.IOUtils;
@@ -25,6 +26,7 @@ import org.fdroid.fdroid.data.InstalledAppTestUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
+import org.fdroid.fdroid.data.RepoXMLHandlerTest;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
@@ -156,6 +158,26 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         updater.processIndexV1(indexInputStream, indexEntry, "fakeEtag");
         fail(); // it should never reach here, it should throw a SigningException
         getClass().getResourceAsStream("foo");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIndexV1WithCorruptAppPackageName() throws Throwable {
+        try {
+            testBadTestyJar("testy.at.or.at_corrupt_app_package_name_index-v1.jar");
+        } catch (JsonMappingException e) {
+            throw e.getCause();
+        }
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIndexV1WithCorruptPackageName() throws Throwable {
+        try {
+            testBadTestyJar("testy.at.or.at_corrupt_package_name_index-v1.jar");
+        } catch (JsonMappingException e) {
+            throw e.getCause();
+        }
+        fail();
     }
 
     @Test(expected = IndexUpdater.SigningException.class)
