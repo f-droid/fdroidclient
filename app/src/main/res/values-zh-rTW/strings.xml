@@ -530,4 +530,6 @@
     <string name="swap_toast_find_removeable_storage">選擇您的行動儲存 SD 卡或 USB</string>
     <string name="not_visible_nearby">附近未啟用</string>
     <string name="not_visible_nearby_description">在與附近的裝置交換之前，請將您的裝置顯現出來。</string>
+    <string name="scan_removable_storage_toast">正在掃描 %s…</string>
+    <string name="main_menu__updates">更新</string>
 </resources>

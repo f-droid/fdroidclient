@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application)</string>
+    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l\'ancienne version de l\'application (attention : cette opération supprimera toutes les données de l\'application).</string>
     <string name="installIncompatible">Application incompatible avec votre appareil, l\'installer quand même ?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
     <string name="cache_downloaded">Conserver les applications en cache</string>
-    <string name="updates">En cours</string>
+    <string name="updates">Mises à jour</string>
     <string name="other">Divers</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
@@ -214,14 +214,13 @@
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
-    <string name="swap_scan_or_type_url">Une personne doit scanner ce code ou saisir le lien dans un navigateur web.
-    </string>
+    <string name="swap_scan_or_type_url">La personne doit scanner ce code ou saisir le lien ci-dessous dans son navigateur web.</string>
     <string name="swap_choose_apps">Sélectionnez des applis</string>
     <string name="swap_scan_qr">Scannez le code QR</string>
     <string name="swap_people_nearby">Personnes à proximité</string>
-    <string name="swap_scanning_for_peers">Recherche de personnes à proximité…</string>
-    <string name="swap_nearby">Échange à proximité</string>
-    <string name="swap_intro">Connectez-vous et échangez des applis avec des personnes à proximité.</string>
+    <string name="swap_scanning_for_peers">Recherche des personnes à proximité…</string>
+    <string name="swap_nearby">Échange d\'applications</string>
+    <string name="swap_intro">Connectez-vous et échangez des applications avec des personnes autour de vous.</string>
     <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Activation du Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Non visible via Bluetooth</string>
@@ -230,7 +229,7 @@
     <string name="swap_not_visible_wifi">Non visible via Wi-Fi</string>
     <string name="swap_wifi_device_name">Nom de l\'appareil</string>
     <string name="swap_send_fdroid">Envoyer F-Droid</string>
-    <string name="swap_no_peers_nearby">Impossible de trouver des personnes à proximité.</string>
+    <string name="swap_no_peers_nearby">Aucune personne n\'a été trouvée à proximité.</string>
     <string name="swap_connecting">Connexion en cours</string>
     <string name="swap_confirm">Confirmez l\'échange</string>
     <string name="swap_qr_isnt_for_swap">Le code QR que vous avez scanné ne semble pas être un code d\'échange.</string>
@@ -249,7 +248,7 @@
 
     <string name="system_install_denied_permissions">Les autorisations privilégiées n\'ont pas été accordées à l\'application ! Veuillez signaler ce bug !</string>
 
-    <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
+    <string name="swap_cant_find_peers">Vous n\'avez pas trouvé ce que vous cherchez \?</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
@@ -338,7 +337,7 @@
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Effacer la recherche</string>
 
-    <string name="main_menu__latest_apps">Nouveau</string>
+    <string name="main_menu__latest_apps">Nouveautés</string>
     <string name="main_menu__categories">Catégories</string>
     <string name="main_menu__swap_nearby">À proximité</string>
 
@@ -377,7 +376,7 @@
 	<item quantity="other">Tout afficher (%d)</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez les applications depuis les appareils de votre entourage !</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet \? Installez des applications depuis les appareils à proximité !</string>
     <string name="nearby_splash__find_people_button">Rechercher des personnes à proximité</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
 
@@ -547,4 +546,7 @@
     <string name="nearby_splash__read_external_storage">Les cartes SD peuvent être utilisées pour les échanges !</string>
     <string name="not_visible_nearby">Appareil non visible</string>
     <string name="not_visible_nearby_description">Pour échanger avec les appareils proches, vous devez d\'abord rendre visible votre appareil.</string>
+    <string name="scan_removable_storage_toast">Recherche de %s…</string>
+    <string name="scan_removable_storage_summary">Recherche de dépôts sur les périphériques amovibles tels que les cartes SD ou clés USB</string>
+    <string name="main_menu__updates">Mises à jour</string>
 </resources>

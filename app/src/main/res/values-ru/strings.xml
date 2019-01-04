@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Новая версия приложения подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте еще раз (при удалении приложения все его данные будут потеряны).</string>
     <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить?</string>
@@ -43,7 +43,7 @@
     <string name="menu_manage">Репозитории</string>
     <string name="menu_search">Поиск</string>
     <string name="menu_add_repo">Новый репозиторий</string>
-    <string name="menu_launch">Запустить</string>
+    <string name="menu_launch">Открыть</string>
     <string name="menu_share">Поделиться</string>
     <string name="menu_install">Установить</string>
     <string name="menu_uninstall">Удалить</string>
@@ -303,7 +303,7 @@
     <string name="warning_no_internet">Не удается обновить. Вы подключены к Интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
-    <string name="update_all">Скачать все обновления</string>
+    <string name="update_all">Обновить всё</string>
 
     <string name="updates__hide_updateable_apps">Скрыть приложения</string>
     <string name="updates__show_updateable_apps">Показать приложения</string>
@@ -322,7 +322,7 @@
     <string name="installed_apps__activity_title">Установленные приложения</string>
     <string name="main_menu__swap_nearby">Рядом</string>
 
-    <string name="nearby_splash__find_people_button">Найти людей рядом со мной</string>
+    <string name="nearby_splash__find_people_button">Найти людей рядом</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
@@ -458,7 +458,7 @@
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно удалить это приложение.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновиться до новейшей версии.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновить приложение.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>
 
     <string name="privacy">Приватность</string>
@@ -546,4 +546,15 @@
     <string name="app_size">Размер: %1$s</string>
 
     <string name="menu_downgrade">Ранняя версия</string>
-    </resources>
+    <string name="scan_removable_storage_toast">Сканирование %s…</string>
+    <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
+    <string name="app_repository">Репозиторий %1$s</string>
+    <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
+    <string name="nearby_splash__read_external_storage">SD-карты могут быть заменены!</string>
+    <string name="nearby_splash__request_permission">Попробуй</string>
+    <string name="not_visible_nearby">Никто поблизости не подключен</string>
+    <string name="not_visible_nearby_description">Перед заменой устройств, находящихся поблизости, сделайте устройство видимым.</string>
+    <string name="swap_toast_using_path">Использования %1$s</string>
+    <string name="swap_toast_not_removable_storage">Этот выбор не совпадает ни с одним съемным устройством хранения данных, попробуйте еще раз!</string>
+    <string name="swap_toast_find_removeable_storage">Выберите съемную SD-карту или USB-накопитель</string>
+</resources>

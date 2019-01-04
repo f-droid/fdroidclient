@@ -555,4 +555,10 @@
     <string name="send_installed_apps_csv">App installate da F-Droid come file CSV</string>
     <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
+    <string name="scan_removable_storage_toast">Scansione %s…</string>
+    <string name="nearby_splash__request_permission">Provala</string>
+    <string name="not_visible_nearby">Nearby non attivo</string>
+    <string name="swap_toast_using_path">Usando %1$s</string>
+    <string name="swap_toast_not_removable_storage">Quella scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
+    <string name="swap_toast_find_removeable_storage">Seleziona scheda SD o USB</string>
 </resources>

@@ -9,7 +9,7 @@
     <string name="menu_manage">Ikufan</string>
     <string name="menu_settings">Iγewwaṛen</string>
     <string name="menu_search">Nadi</string>
-    <string name="menu_add_repo">Akufi Ajdid</string>
+    <string name="menu_add_repo">Akufi Amaynut</string>
 
     <string name="menu_launch">Ldi</string>
     <string name="menu_share">Bḍu</string>
@@ -61,7 +61,7 @@
     <string name="repo_edit_credentials">Snifel Awal Uffir</string>
     <string name="about_version">Lqem</string>
     <string name="about_site">Asmel n web</string>
-    <string name="about_source">Tangalt taγbalut</string>
+    <string name="about_source">Tangalt taγbalutt</string>
     <string name="about_license">Turagt</string>
 
     <string name="app_installed">Yettusbedd</string>
@@ -72,7 +72,7 @@
     <string name="app__install_downloaded_update">Mucceḍ</string>
     <string name="updates__hide_updateable_apps">&amp;Ffer</string>
     <string name="repo_add_add">Rnu</string>
-    <string name="links">Isγewnan</string>
+    <string name="links">Iseγwan</string>
     <string name="versions">Ileqman</string>
     <string name="enable">Rmed</string>
     <string name="add_key">Rnu tasarutt n usenneftaɣ</string>
@@ -84,7 +84,7 @@
     <string name="menu_issues">Uguren</string>
     <string name="menu_video">Ividyuten</string>
     <string name="menu_license">%s Turagt</string>
-    <string name="menu_source">Tangalt taɣbalut</string>
+    <string name="menu_source">Tangalt taγbalut</string>
     <string name="menu_donate">Tawsa</string>
     <string name="antifeatures">Timahilin</string>
     <string name="display">Askan</string>
@@ -211,7 +211,7 @@
 
     <string name="latest__empty_state__no_recent_apps">Ulac isnasen ineggura yettwafen</string>
     <string name="preference_category__my_apps">Isnasen-iw</string>
-    <string name="details_new_in_version">Lqem amaynut di %s</string>
+    <string name="details_new_in_version">D amaynut di lqem %s</string>
 
     <string name="details_last_updated_today">Yettwalqem ass-a</string>
     <string name="proxy_host_summary">Asenneftaɣ n upruksi-ik (m.d. 127.0.0.1)</string>
@@ -261,7 +261,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="deleting_repo">Tukksa n ukufi…</string>
     <string name="useTor">Seqdec Tor</string>
-    <string name="panic_app_unknown_app">Asnas arussin</string>
+    <string name="panic_app_unknown_app">d asnas arussin</string>
     <string name="repo_user_mirrors">Lemriyat n useqdac</string>
     <string name="app_repository">Akufi: %1$s</string>
     <string name="category_Graphics">Tiẓrudlifin</string>

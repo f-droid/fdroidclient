@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="installIncompatible">Aplikacja niekompatybilna z Twoim urządzeniem, czy zainstalować ją mimo to?</string>
     <string name="version">Wersja</string>
@@ -564,4 +564,14 @@
 
     <string name="menu_downgrade">Cofnij do starszej wersji</string>
     <string name="app_repository">Repozytorium: %1$s</string>
-    </resources>
+    <string name="scan_removable_storage_title">Zeskanuj pamięć wymienną</string>
+    <string name="scan_removable_storage_toast">Skanowanie %s…</string>
+    <string name="scan_removable_storage_summary">Poszukaj repozytoriów pakietów na wymiennych nośnikach, takich jak karty SD i pamięci USB</string>
+    <string name="nearby_splash__read_external_storage">Karty SD mogą być używane do wymiany!</string>
+    <string name="nearby_splash__request_permission">Spróbuj</string>
+    <string name="not_visible_nearby">W pobliżu nie jest włączone</string>
+    <string name="not_visible_nearby_description">Przed wymianą z urządzeniami znajdującymi się w pobliżu upewnij się, że urządzenie jest ustawione jako widoczne.</string>
+    <string name="swap_toast_using_path">Wykorzystujesz %1$s</string>
+    <string name="swap_toast_not_removable_storage">Ten wybór nie pasował do żadnych usuwalnych urządzeń pamięci masowej, spróbuj ponownie!</string>
+    <string name="swap_toast_find_removeable_storage">Wybierz wymienną kartę SD lub USB</string>
+</resources>

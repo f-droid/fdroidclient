@@ -569,4 +569,6 @@
     <string name="swap_toast_using_path">Impreende %1$s</string>
     <string name="swap_toast_not_removable_storage">Perunu dispositivu disponìbile pro cussa issèbera, torra a proare!</string>
     <string name="swap_toast_find_removeable_storage">Issèbera s\'ischeda SD o sa memòria USB rimovìbile tua</string>
+    <string name="scan_removable_storage_toast">Iscansende %s…</string>
+    <string name="main_menu__updates">Agiornamentos</string>
 </resources>

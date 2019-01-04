@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta předchozí. Před instalací nové verze je nutné tu předchozí odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
     <string name="installIncompatible">Aplikace není kompatibilní s vaším zařízením – chcete se přesto pokusit o instalaci?</string>
@@ -37,7 +37,7 @@
     <string name="menu_manage">Repozitáře</string>
     <string name="menu_search">Hledat</string>
     <string name="menu_add_repo">Nový repozitář</string>
-    <string name="menu_launch">Spustit</string>
+    <string name="menu_launch">Otevřít</string>
     <string name="menu_share">Sdílet</string>
     <string name="menu_install">Nainstalovat</string>
     <string name="menu_uninstall">Odinstalovat</string>
@@ -371,7 +371,7 @@
     <string name="app_list__name__downloading_in_progress">Stahování %1$s</string>
 
     <string name="updates__tts__download_app">Stáhnout</string>
-    <string name="update_all">Stáhnout všechny aktualizace</string>
+    <string name="update_all">Aktualizovat vše</string>
 
 <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>
@@ -425,7 +425,7 @@
     </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Není k dispozici připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
-    <string name="nearby_splash__find_people_button">Najít lidi poblíž</string>
+    <string name="nearby_splash__find_people_button">Najít zařízení poblíž</string>
     <string name="nearby_splash__both_parties_need_fdroid">Je třeba, aby obě strany používaly %1$s aby bylo možné využít funkce poblíž.</string>
 
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
@@ -554,4 +554,16 @@
     <string name="send_installed_apps_csv">Seznam aplikací nainstalovaných prostřednictvím F-Droid v podobě CSV souboru</string>
     <string name="menu_open">Otevřít</string>
     <string name="menu_downgrade">Vrátit na starší verzi</string>
-    </resources>
+    <string name="scan_removable_storage_title">Prohledat odpojitelné úložiště</string>
+    <string name="scan_removable_storage_toast">Prohledávám %s…</string>
+    <string name="scan_removable_storage_summary">Hledat repozitáře v odpojitelných úložištích (např. SD karty a USB disky)</string>
+    <string name="app_repository">Repozitář: %1$s</string>
+    <string name="nearby_splash__read_external_storage">SD karty lze použít k výměně!</string>
+    <string name="nearby_splash__request_permission">Vyskoušet</string>
+    <string name="not_visible_nearby">Funkce Poblíž je vypnuta</string>
+    <string name="not_visible_nearby_description">Před sdílením se zařízeními poblíž, zapněte viditelnost tohoto zařízení.</string>
+    <string name="swap_toast_using_path">Používám %1$s</string>
+    <string name="swap_toast_not_removable_storage">Vybraná složka neodpovídá žádným odpojitelným úložištím, zkuste to znovu!</string>
+    <string name="swap_toast_find_removeable_storage">Vyberte vaši SD kartu nebo USB flash disk</string>
+    <string name="main_menu__updates">Aktualizace</string>
+</resources>

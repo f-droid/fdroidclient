@@ -565,4 +565,6 @@
     <string name="swap_toast_using_path">נעשה שימוש ב־%1$s</string>
     <string name="swap_toast_not_removable_storage">הבחירה הזאת אינה תואמת לאף התקן נתיק, נא לנסות שוב!</string>
     <string name="swap_toast_find_removeable_storage">נא לבחור כרטיס SD או דיסק און קי נתיקים</string>
+    <string name="scan_removable_storage_toast">%s בסריקה…</string>
+    <string name="main_menu__updates">עדכונים</string>
 </resources>

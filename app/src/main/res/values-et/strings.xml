@@ -553,4 +553,7 @@
     <string name="swap_toast_using_path">Kasutatakse %1$s</string>
     <string name="swap_toast_not_removable_storage">See valik ei vastanud mitte ühelegi eemaldatavale mäluseadmele. Proovi uuesti!</string>
     <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD kaart või uSB mälupulk</string>
+    <string name="scan_removable_storage_toast">%s skannimine…</string>
+    <string name="not_visible_nearby">Naabrus pole lubatud</string>
+    <string name="not_visible_nearby_description">Tee enda seade enne vahetamist naabruses oleva seadmega nähtavaks.</string>
 </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Нова версія підписана іншим ключем чим існуюча. Щоб встановити нову версію, спочатку потрібно видалити існуючу. Будь ласка, спробуйте ще раз. (Зауважте, що при видаленні будуть видалені будь-які внутрішні дані, що зберігаються в застосунку)</string>
     <string name="version">Версія</string>
@@ -20,7 +20,7 @@
     <string name="menu_manage">Репозиторії</string>
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Новий репозиторій</string>
-    <string name="menu_launch">Запустити</string>
+    <string name="menu_launch">Відкрити</string>
     <string name="menu_install">Встановити</string>
     <string name="menu_uninstall">Видалити</string>
     <string name="menu_website">Сайт</string>
@@ -92,7 +92,7 @@
     <string name="bad_fingerprint">Невірний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє вашу активність</string>
-    <string name="antinonfreedeplist">Цей застосунок залежить від іншого не-вільного застосунку</string>
+    <string name="antinonfreedeplist">Застосунок залежить від інших невільних застосунків</string>
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
 
     <string name="local_repo">Локальна комора даних</string>
@@ -179,7 +179,7 @@
     <string name="malformed_repo_uri">Ігнорування неправильного URI комори даних: %s</string>
 
     <string name="antinonfreeadlist">Цей застосунок пропонує не-вільні надбудови</string>
-    <string name="antinonfreenetlist">Цей застосунок пропонує не-вільні мережеві послуги</string>
+    <string name="antinonfreenetlist">Застосунок пропонує невільні мережеві послуги</string>
     <string name="antiupstreamnonfreelist">Вихідний код випуску не є повністю вільним</string>
 
     <string name="display">Вигляд</string>
@@ -331,7 +331,7 @@
     <string name="app_version_x_available">Доступна версія %1$s</string>
     <string name="app_version_x_installed">Версія %1$s</string>
     <string name="app_recommended_version_installed">Версія %1$s (Рекомендовано)</string>
-    <string name="app_new">Нова</string>
+    <string name="app_new">Нові</string>
 
     <string name="installed_apps__activity_title">Встановлені застосунки</string>
     <string name="installed_app__updates_ignored">Проігноровані оновлення</string>
@@ -354,7 +354,7 @@
     <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s встановлено</string>
 
-    <string name="update_all">Завантажити всі оновлення</string>
+    <string name="update_all">Оновити все</string>
 
     <string name="updates__hide_updateable_apps">Приховати застосунки</string>
     <string name="updates__show_updateable_apps">Показати застосунки</string>
@@ -370,7 +370,7 @@
 
     <string name="antifeatureswarning">Цей застосунок містить функції, які можуть бути вам не до вподоби.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немає Інтернету? Отримуйте застосунки від людей поруч із вами!</string>
-    <string name="nearby_splash__find_people_button">Знайти людей навколо мене</string>
+    <string name="nearby_splash__find_people_button">Знайти людей поблизу</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Оновлено %1$s день тому</item>
         <item quantity="few">Оновлено %1$d дні тому</item>
@@ -550,4 +550,15 @@
     <string name="app_size">Розмір: %1$s</string>
 
     <string name="menu_downgrade">Понизити версію</string>
-    </resources>
+    <string name="scan_removable_storage_title">Сканувати знімне сховище</string>
+    <string name="scan_removable_storage_toast">Сканування %s…</string>
+    <string name="scan_removable_storage_summary">Шукайте пакувальні репозиції на знімних носіях, таких як картки SD і флеш-накопичувачі USB</string>
+    <string name="app_repository">Репозиторій: %1$s</string>
+    <string name="nearby_splash__read_external_storage">SD-карти доступні для заміни!</string>
+    <string name="nearby_splash__request_permission">Спробуй це</string>
+    <string name="not_visible_nearby">Поруч не ввімкнено</string>
+    <string name="not_visible_nearby_description">Перш ніж здійснювати заміну пристроїв поблизу, зробіть свій пристрій видимим.</string>
+    <string name="swap_toast_using_path">Використання %1$s</string>
+    <string name="swap_toast_not_removable_storage">Вибір не збігається з жодними видаленими пристроями зберігання даних, повторіть спробу!</string>
+    <string name="swap_toast_find_removeable_storage">Виберіть знімну картку SD або USB</string>
+</resources>

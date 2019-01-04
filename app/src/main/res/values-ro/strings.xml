@@ -336,7 +336,7 @@
     </plurals>
 
     <string name="antifeatures">Caracteristici negative</string>
-    <string name="antifeatureswarning">Aceasta aplicație are caracteristici ce ar putea sa nu îți placă.</string>
+    <string name="antifeatureswarning">Această aplicație are caracteristici ce ar putea să nu vă placă.</string>
     <string name="details_new_in_version">Nou în versiunea %s</string>
 
     <string name="preference_manage_installed_apps">Gestionează aplicațiile instalate</string>
@@ -550,4 +550,5 @@
     <string name="swap_toast_find_removeable_storage">Alegeți cardul SD sau unitatea USB</string>
     <string name="not_visible_nearby">Modul de schimb nu este activat</string>
     <string name="not_visible_nearby_description">Înainte de a face schimb cu dispozitivele din apropiere, faceți-vă dispozitivul vizibil.</string>
+    <string name="scan_removable_storage_toast">Scanare %s…</string>
 </resources>

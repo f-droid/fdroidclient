@@ -551,4 +551,6 @@
     <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
     <string name="not_visible_nearby">Yakında etkin değil</string>
     <string name="not_visible_nearby_description">Yakındaki cihazlarla değiştirmeden önce cihazınızı görünür yapın.</string>
+    <string name="scan_removable_storage_toast">%s taranıyor…</string>
+    <string name="main_menu__updates">Güncellemeler</string>
 </resources>

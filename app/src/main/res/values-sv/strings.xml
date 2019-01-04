@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all internt lagrad data som tillhör appen kommer att raderas när det avinstalleras)</string>
     <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
@@ -43,7 +43,7 @@
     <string name="menu_manage">Förråd</string>
     <string name="menu_search">Sök</string>
     <string name="menu_add_repo">Nytt förråd</string>
-    <string name="menu_launch">Kör</string>
+    <string name="menu_launch">Öppna</string>
     <string name="menu_share">Dela</string>
     <string name="menu_install">Installera</string>
     <string name="menu_uninstall">Avinstallera</string>
@@ -52,7 +52,7 @@
     <string name="menu_website">Webbplats</string>
     <string name="menu_issues">Fel</string>
     <string name="menu_source">Källkod</string>
-    <string name="menu_upgrade">Uppgradera</string>
+    <string name="menu_upgrade">Uppdatera</string>
     <string name="menu_donate">Donera</string>
     <string name="details_notinstalled">Inte installerad</string>
     <string name="antiadslist">Den här appen innehåller reklam</string>
@@ -525,4 +525,7 @@
     <string name="app_size">Storlek: %1$s</string>
 
     <string name="menu_downgrade">Nedgradera</string>
-    </resources>
+    <string name="scan_removable_storage_title">Skanna borttagningsbart lagringsutrymme</string>
+    <string name="scan_removable_storage_toast">Skannar %s…</string>
+    <string name="swap_toast_using_path">Använder %1$s</string>
+</resources>
