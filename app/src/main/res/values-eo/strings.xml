@@ -548,4 +548,6 @@
     <string name="swap_toast_using_path">Uzas %1$s</string>
     <string name="swap_toast_not_removable_storage">Tio ĉi ne estas demetebla konservejo, bonvolu reprovi!</string>
     <string name="swap_toast_find_removeable_storage">Elektu demeteblan SD-karton aŭ memor-bastoneton</string>
+    <string name="scan_removable_storage_toast">Skanado de %s…</string>
+    <string name="main_menu__updates">Ĝisdatigoj</string>
 </resources>

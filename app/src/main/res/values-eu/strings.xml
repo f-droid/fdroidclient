@@ -564,4 +564,15 @@
 
     <string name="menu_downgrade">Atzeratu bertsioa</string>
     <string name="app_repository">Biltegia: %1$s</string>
+    <string name="scan_removable_storage_title">Eskaneatu gailu kengarria</string>
+    <string name="scan_removable_storage_toast">%s eskaneatzen…</string>
+    <string name="scan_removable_storage_summary">Bilatu paketeen biltegiak biltegi kengarrietan, esaterako SD txartelak edo USB giltzak edo diskoak</string>
+    <string name="nearby_splash__read_external_storage">SD txartelak trukerako erabili daitezke!</string>
+    <string name="nearby_splash__request_permission">Probatu</string>
+    <string name="not_visible_nearby">Ingurua ez dago aktibo</string>
+    <string name="not_visible_nearby_description">Inguruko gailuekin trukea egin aurretik, egin zure gailua ikusgai.</string>
+    <string name="swap_toast_using_path">%1$s erabiltzen</string>
+    <string name="swap_toast_not_removable_storage">Aukera hori ez dator bat inolako biltegi gailu kengarriarekin, saiatu berriro!</string>
+    <string name="swap_toast_find_removeable_storage">Hautatu zure SD txartel edo USB kengarria</string>
+    <string name="main_menu__updates">Eguneraketak</string>
 </resources>

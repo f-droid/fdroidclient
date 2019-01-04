@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe desinstalarse antes. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Instalarla de todos modos?</string>
@@ -352,7 +352,7 @@
     <string name="notification_action_install">Instalar</string>
 
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
-    <string name="app_new">Novedad</string>
+    <string name="app_new">Nuevo</string>
 
     <string name="installed_apps__activity_title">Aplicaciones instaladas</string>
     <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
@@ -374,7 +374,7 @@
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
 
     <string name="updates__tts__download_app">Actualizaciones</string>
-    <string name="update_all">Descargar todas las actualizaciones</string>
+    <string name="update_all">Actualizar todo</string>
 
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
@@ -545,5 +545,7 @@
     <string name="menu_open">Abrir</string>
     <string name="menu_downgrade">Desactualizar</string>
     <string name="antinosourcesince">El código fuente ya no está disponible, no se puede actualizar.</string>
-
-    </resources>
+    <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
+    <string name="scan_removable_storage_toast">Escaneando %s…</string>
+    <string name="app_repository">Repositorio: %1$s</string>
+</resources>

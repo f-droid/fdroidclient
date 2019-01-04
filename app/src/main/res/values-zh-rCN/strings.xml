@@ -504,4 +504,14 @@
     <string name="allow_push_requests_summary">软件源的元数据可以含有安装或卸载应用的推送请求</string>
     <string name="updates_disabled_by_settings">由于数据/WiFi 设置全部更新已禁用</string>
     <string name="app_repository">软件库：%1$s</string>
+    <string name="scan_removable_storage_title">扫描可移动存储器</string>
+    <string name="scan_removable_storage_toast">正在扫描 %s…</string>
+    <string name="scan_removable_storage_summary">寻找可移动存储设备上的软件包存储库，比如 SD 卡和 USB 闪存驱动器</string>
+    <string name="nearby_splash__read_external_storage">SD 卡可以用来交换！</string>
+    <string name="nearby_splash__request_permission">试试看</string>
+    <string name="not_visible_nearby">附近功能未启用</string>
+    <string name="not_visible_nearby_description">在与附近的设备交换之前，使您的设备可见。</string>
+    <string name="swap_toast_using_path">使用 %1$s</string>
+    <string name="swap_toast_not_removable_storage">选择无法匹配任何可移动存储设备，请重试！</string>
+    <string name="swap_toast_find_removeable_storage">选择您的可移动 SD 卡或 USB</string>
 </resources>

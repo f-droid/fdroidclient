@@ -554,4 +554,5 @@
     <string name="swap_toast_find_removeable_storage">Velg ditt flyttbare SD-kort eller USB</string>
     <string name="not_visible_nearby">I nærheten er ikke påslått</string>
     <string name="not_visible_nearby_description">Før utveksling med enheter i nærheten må du gjøre din synlig.</string>
+    <string name="scan_removable_storage_toast">Skanner %s…</string>
 </resources>

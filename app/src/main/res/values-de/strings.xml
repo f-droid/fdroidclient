@@ -197,7 +197,7 @@
 
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_settings">Optionen</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -395,7 +395,7 @@
     </plurals>
 
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Mitmenschen herunterladen!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps mit Menschen in Ihrer Nähe tauschen!</string>
     <string name="nearby_splash__find_people_button">Tauschpartner finden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Tauschfunktion zu verwenden.</string>
 
@@ -555,4 +555,5 @@
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
     <string name="not_visible_nearby">Tauschfunktion nicht aktiviert</string>
     <string name="not_visible_nearby_description">Vor dem Tausch mit benachbarten Geräten müssen Sie Ihr Gerät sichtbar machen.</string>
+    <string name="scan_removable_storage_toast">%s scannen …</string>
 </resources>

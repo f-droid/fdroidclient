@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -64,7 +64,7 @@
     <string name="menu_search">Cari</string>
     <string name="menu_add_repo">Repositori Baru</string>
 
-    <string name="menu_launch">Jalankan</string>
+    <string name="menu_launch">Buka</string>
     <string name="menu_share">Berbagi</string>
     <string name="menu_install">Pasang</string>
     <string name="menu_uninstall">Copot</string>
@@ -74,7 +74,7 @@
     <string name="menu_issues">Masalah</string>
     <string name="menu_changelog">Catatan Perubahan</string>
     <string name="menu_source">Kode Sumber</string>
-    <string name="menu_upgrade">Tingkatkan</string>
+    <string name="menu_upgrade">Perbarui</string>
     <string name="menu_donate">Donasi</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -361,7 +361,7 @@
     <string name="installed_app__updates_ignored">Pembaruan diabaikan</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Pembaruan diabaikan untuk Versi %1$s</string>
     <string name="updates__tts__download_app">Unduh</string>
-    <string name="update_all">Unduh semua pembaruan</string>
+    <string name="update_all">Unduh semua</string>
 
     <string name="updates__hide_updateable_apps">Sembunyikan apl</string>
     <string name="updates__show_updateable_apps">Tampilkan apl</string>
@@ -449,7 +449,7 @@
 
     <string name="app_list__dismiss_vulnerable_app">Kerentanan diabaikan</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan sebuah celah keamanan dengan %1$s. Kami merekomendasikan mencabut pemasangan aplikasi ini segera.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan sebuah celah keamanan dengan %1$s. Kami merekomendasikan memutakhirkan aplikasi ke versi terbaru segera.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan celah keamanan dengan %1$s. Kami rekomendasikan perbarui aplikasi ke versi terbaru segera.</string>
     <string name="privacy">Privasi</string>
     <string name="preventScreenshots_title">Cegah tangkapan layar</string>
     <string name="preventScreenshots_summary">Blok pengambilan tangkapan layar dan sembunyikan isi aplikasi dari layar aplikasi saat ini</string>
@@ -535,4 +535,11 @@
     <string name="antinosourcesince">Sumber kode ini sudah tidak tersedia, tidak akan ada pembaharuan.</string>
 
     <string name="share_repository">Bagikan Repositori</string>
-    </resources>
+    <string name="scan_removable_storage_title">Pindai penyimpanan eksternal</string>
+    <string name="scan_removable_storage_toast">Memindai %s…</string>
+    <string name="app_repository">Repositori: %1$s</string>
+    <string name="main_menu__updates">Pembaruan</string>
+    <string name="nearby_splash__request_permission">Cobalah</string>
+    <string name="swap_toast_using_path">Menggunakan %1$s</string>
+    <string name="swap_toast_find_removeable_storage">Pilih Kartu SD atau USB eksternal</string>
+</resources>

@@ -352,7 +352,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
     </string>
     <string name="updates__tts__download_app">Descarregar</string>
-    <string name="update_all">Atualizar todos</string>
+    <string name="update_all">Atualizar tudo</string>
 
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
@@ -552,8 +552,8 @@
     <string name="swap_toast_could_not_enable_hotspot">Hotspot Wifi não ativado!</string>
 
     <string name="send_history_csv">%s instalar história como ficheiro CSV</string>
-    <string name="send_version_and_uuid_summary">Inclua a versão deste app e uma identificação aleatória e original ao transferir, entrando em efeito apos a reinicialização seguinte do app.</string>
-    <string name="allow_push_requests_summary">Os metadados do repo podem incluir solicitações push para instalar ou desinstalar apps</string>
+    <string name="send_version_and_uuid_summary">Inclui a versão desta aplicação e uma identificação aleatória e original ao descarregar e produz efeitos após reiniciar a aplicação.</string>
+    <string name="allow_push_requests_summary">Os meta-dados do repositório podem incluir pedidos push para instalar ou desinstalar aplicações</string>
     <string name="send_installed_apps">Partilhar aplicações instaladas</string>
     <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
     <string name="menu_open">Abrir</string>
@@ -563,4 +563,14 @@
 
     <string name="menu_downgrade">Downgrade</string>
     <string name="app_repository">Repositório: %1$s</string>
+    <string name="scan_removable_storage_title">Analizar armazenamento removível</string>
+    <string name="scan_removable_storage_toast">Analisando %s…</string>
+    <string name="scan_removable_storage_summary">Procure por repositórios de pacotes em armazenamento removível como cartões SD e chaves de memória USB</string>
+    <string name="nearby_splash__read_external_storage">Cartões SD podem ser usados para trocar!</string>
+    <string name="nearby_splash__request_permission">Experimente</string>
+    <string name="not_visible_nearby">Nearby não ativado</string>
+    <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o seu dispositivo visível.</string>
+    <string name="swap_toast_using_path">Utilizando %1$s</string>
+    <string name="swap_toast_not_removable_storage">A escolha não correspondeu a um dispositivo de armazenamento removível, tente novamente!</string>
+    <string name="swap_toast_find_removeable_storage">Escolha o seu cartão removível SD ou USB</string>
 </resources>
