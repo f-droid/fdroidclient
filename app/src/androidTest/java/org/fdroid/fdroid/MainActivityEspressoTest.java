@@ -48,7 +48,6 @@ import static org.junit.Assert.assertTrue;
 
 @Ignore
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class MainActivityEspressoTest {
     public static final String TAG = "MainActivityEspressoTest";
 
@@ -151,7 +150,7 @@ public class MainActivityEspressoTest {
         }
     }
 
-    @Test
+    @LargeTest
     public void showSettings() {
         ViewInteraction settingsBottonNavButton = onView(
                 allOf(withText(R.string.menu_settings), isDisplayed()));
@@ -168,14 +167,14 @@ public class MainActivityEspressoTest {
         onView(withText(R.string.installed_apps__activity_title)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void showUpdates() {
         ViewInteraction updatesBottonNavButton = onView(allOf(withText(R.string.main_menu__updates), isDisplayed()));
         updatesBottonNavButton.perform(click());
         onView(withText(R.string.main_menu__updates)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void startSwap() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -189,7 +188,7 @@ public class MainActivityEspressoTest {
         onView(withText(R.string.swap_send_fdroid)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void showCategories() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -214,7 +213,7 @@ public class MainActivityEspressoTest {
                 .perform(click());
     }
 
-    @Test
+    @LargeTest
     public void showLatest() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -236,7 +235,7 @@ public class MainActivityEspressoTest {
                 .perform(click());
     }
 
-    @Test
+    @LargeTest
     public void showSearch() {
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(withId(R.id.fab_search)).check(doesNotExist());
