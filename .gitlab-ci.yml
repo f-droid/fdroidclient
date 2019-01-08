@@ -96,7 +96,7 @@ errorprone:
     - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.test.suitebuilder.annotation.LargeTest
     - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
 
-connected 24 default armeabi-v7a:
+connected 22 default armeabi-v7a:
   retry: 1
   only:
     - merge_requests
