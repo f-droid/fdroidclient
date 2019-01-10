@@ -1,8 +1,16 @@
+### 1.5.1 (2018-01-07)
+
+* Removed incomplete translations that were accidentally added in 1.5
+
+* Fix screenshot background on dark themes (#1618)
+
 ### 1.5 (2018-12-26)
 
 * Nearby swap bug fixes and improvements
 
 * update language and translations about Nearby and swap
+
+* Fix displaying of icons for self-built apps (#1108)
 
 ### 1.5-alpha2 (2018-12-21)
 
