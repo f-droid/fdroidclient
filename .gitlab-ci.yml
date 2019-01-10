@@ -12,6 +12,7 @@ stages:
 before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
   - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+  - alias sdkmanager="sdkmanager --no_https"
   - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
 
 .test-template: &test-template
@@ -58,9 +59,17 @@ errorprone:
 # connectedCheck to test all the build flavors
 .connected-template: &connected-template
   script:
-    - ./gradlew assembleDebug
-    - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null
+    - ./gradlew assembleFullDebug
+    - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
+    - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
+    - export AVD_ARCH=`echo $CI_JOB_NAME | awk '{print $4}'`
+    - export AVD_PACKAGE="system-images;android-${AVD_SDK};${AVD_TAG};${AVD_ARCH}"
+    - echo $AVD_PACKAGE
+    - emulator -accel-check || true
+    - alias sdkmanager
+    - echo y | sdkmanager "emulator" "platforms;android-$AVD_SDK" > /dev/null
     - if ! avdmanager list avd | grep "Name. avd$AVD_SDK$"; then
+          set -x;
           rm -rf ~/.android/avd  $ANDROID_HOME/system-images;
           echo y | sdkmanager "$AVD_PACKAGE" > /dev/null;
           echo no | avdmanager create avd --name avd$AVD_SDK --tag "$AVD_TAG" --package "$AVD_PACKAGE" --sdcard 64M --device "Nexus 5";
@@ -68,20 +77,89 @@ errorprone:
           sed -i '/^hw\.ramSize\s*=.*/d' ~/.android/avd/*.avd/config.ini;
           echo "hw.ramSize=$RAMSIZE" >> ~/.android/avd/*.avd/config.ini;
           avdmanager list avd;
+          set +x;
       fi
-    - emulator64-arm -avd avd$AVD_SDK -no-audio -no-window -no-snapstorage &
+    - adb start-server
+    - ls -l ~/.android
+    - emulator -avd avd$AVD_SDK
+        -no-audio
+        -no-jni
+        -no-snapstorage
+        -no-window
+        -skip-adb-auth
+        -verbose
+        -wipe-data
+        &
     - wait-for-emulator
+    - adb devices
     - adb shell input keyevent 82 &
-    - ./gradlew connectedFullDebugAndroidTest || (adb -e logcat -d > logcat.txt; exit 1)
+    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.test.suitebuilder.annotation.LargeTest
+    - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
 
-connected24:
+connected 22 default armeabi-v7a:
   retry: 1
+  only:
+    - merge_requests
   <<: *test-template
-  variables:
-    AVD_SDK: "24"
-    AVD_TAG: "default"
-    AVD_PACKAGE: "system-images;android-${AVD_SDK};${AVD_TAG};armeabi-v7a"
   <<: *connected-template
+
+.kvm-template: &kvm-template
+  tags:
+    - fdroid
+    - kvm
+  only:
+    - merge_requests
+    - branches@fdroid/fdroidclient
+  <<: *test-template
+  <<: *connected-template
+
+connected 17 default x86:
+  <<: *kvm-template
+
+connected 18 default x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 19 default x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 21 default x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 22 default x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 23 default x86:
+  <<: *kvm-template
+
+connected 24 google_apis x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 25 default x86:
+  <<: *kvm-template
+
+connected 26 google_apis x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 27 google_apis_playstore x86:
+  <<: *kvm-template
+  only:
+    - master@fdroid/fdroidclient
+
+connected 28 default x86_64:
+  <<: *kvm-template
+
 
 deploy_nightly:
   stage: deploy

@@ -2,11 +2,15 @@
 package org.fdroid.fdroid.net;
 
 import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
 import org.fdroid.fdroid.ProgressListener;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -15,22 +19,37 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class HttpDownloaderTest {
+    private static final String TAG = "HttpDownloaderTest";
 
-    final String[] urls = {
-            "https://en.wikipedia.org/wiki/Index.html",
-            "https://mirrors.kernel.org/debian/dists/stable/Release",
-            "https://f-droid.org/repo/index.jar",
-            // sites that use SNI for HTTPS
-            "https://guardianproject.info/fdroid/repo/index.jar",
-            //"https://microg.org/fdroid/repo/index.jar",
-            //"https://grobox.de/fdroid/repo/index.jar",
-    };
+    static final String[] URLS;
+
+    // https://developer.android.com/reference/javax/net/ssl/SSLContext
+    static {
+        ArrayList<String> tempUrls = new ArrayList<>(Arrays.asList(
+                "https://f-droid.org/repo/index-v1.jar",
+                // sites that use SNI for HTTPS
+                "https://mirrors.kernel.org/debian/dists/stable/Release",
+                "https://fdroid.tetaneutral.net/fdroid/repo/index-v1.jar",
+                "https://ftp.fau.de/fdroid/repo/index-v1.jar",
+                //"https://microg.org/fdroid/repo/index-v1.jar",
+                //"https://grobox.de/fdroid/repo/index.jar",
+                "https://guardianproject.info/fdroid/repo/index-v1.jar"
+        ));
+        if (Build.VERSION.SDK_INT >= 22) {
+            tempUrls.addAll(Arrays.asList(
+                    "https://en.wikipedia.org/wiki/Index.html", // no SNI but weird ipv6 lookup issues
+                    "https://mirror.cyberbits.eu/fdroid/repo/index-v1.jar"  // TLSv1.2 only and SNI
+            ));
+        }
+        URLS = tempUrls.toArray(new String[tempUrls.size()]);
+    }
 
     private boolean receivedProgress;
 
     @Test
     public void downloadUninterruptedTest() throws IOException, InterruptedException {
-        for (String urlString : urls) {
+        for (String urlString : URLS) {
+            Log.i(TAG, "URL: " + urlString);
             Uri uri = Uri.parse(urlString);
             File destFile = File.createTempFile("dl-", "");
             HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);

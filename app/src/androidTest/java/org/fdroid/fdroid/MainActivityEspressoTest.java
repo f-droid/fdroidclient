@@ -21,8 +21,8 @@ import org.fdroid.fdroid.views.main.MainActivity;
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,30 +45,36 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
 
-@Ignore
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class MainActivityEspressoTest {
     public static final String TAG = "MainActivityEspressoTest";
 
     /**
+     * Emulators older than {@code android-25} seem to fail at running Espresso tests.
+     * <p>
      * ARM emulators are too slow to run these tests in a useful way.  The sad
      * thing is that it would probably work if Android didn't put up the ANR
      * "Process system isn't responding" on boot each time.  There seems to be no
      * way to increase the ANR timeout.
      */
+    private static boolean canRunEspresso() {
+        if (Build.VERSION.SDK_INT < 25
+                || (Build.SUPPORTED_ABIS[0].startsWith("arm") && isEmulator())) {
+            Log.e(TAG, "SKIPPING TEST: ARM emulators are too slow to run these tests in a useful way");
+            return false;
+        }
+        return true;
+    }
+
     @BeforeClass
     public static void classSetUp() {
-        Log.i(TAG, "setUp " + isEmulator() + " " + Build.SUPPORTED_ABIS[0]);
-        if (Build.SUPPORTED_ABIS[0].startsWith("arm") && isEmulator()) {
-            Log.e(TAG, "SKIPPING TEST: ARM emulators are too slow to run these tests in a useful way");
-            org.junit.Assume.assumeTrue(false);
-            return;
-        }
-
         IdlingPolicies.setIdlingResourceTimeout(10, TimeUnit.MINUTES);
         IdlingPolicies.setMasterPolicyTimeout(10, TimeUnit.MINUTES);
+        if (!canRunEspresso()) {
+            return;
+        }
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         try {
             UiDevice.getInstance(instrumentation)
@@ -104,6 +110,11 @@ public class MainActivityEspressoTest {
                 || Build.MANUFACTURER.contains("Genymotion")
                 || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
                 || "google_sdk".equals(Build.PRODUCT);
+    }
+
+    @Before
+    public void setUp() {
+        assumeTrue(canRunEspresso());
     }
 
     /**
@@ -151,7 +162,7 @@ public class MainActivityEspressoTest {
         }
     }
 
-    @Test
+    @LargeTest
     public void showSettings() {
         ViewInteraction settingsBottonNavButton = onView(
                 allOf(withText(R.string.menu_settings), isDisplayed()));
@@ -168,14 +179,14 @@ public class MainActivityEspressoTest {
         onView(withText(R.string.installed_apps__activity_title)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void showUpdates() {
         ViewInteraction updatesBottonNavButton = onView(allOf(withText(R.string.main_menu__updates), isDisplayed()));
         updatesBottonNavButton.perform(click());
         onView(withText(R.string.main_menu__updates)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void startSwap() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -189,7 +200,7 @@ public class MainActivityEspressoTest {
         onView(withText(R.string.swap_send_fdroid)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @LargeTest
     public void showCategories() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -214,7 +225,7 @@ public class MainActivityEspressoTest {
                 .perform(click());
     }
 
-    @Test
+    @LargeTest
     public void showLatest() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -236,7 +247,7 @@ public class MainActivityEspressoTest {
                 .perform(click());
     }
 
-    @Test
+    @LargeTest
     public void showSearch() {
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(withId(R.id.fab_search)).check(doesNotExist());
