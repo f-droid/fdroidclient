@@ -121,11 +121,6 @@ connected 18 default x86:
   only:
     - master@fdroid/fdroidclient
 
-connected 19 default x86:
-  <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
-
 connected 21 default x86:
   <<: *kvm-template
   only:
@@ -138,11 +133,6 @@ connected 22 default x86:
 
 connected 23 default x86:
   <<: *kvm-template
-
-connected 24 google_apis x86:
-  <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
 
 connected 25 default x86:
   <<: *kvm-template
