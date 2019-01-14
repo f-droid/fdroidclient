@@ -389,6 +389,10 @@ public class Repo extends ValueObject {
      * URL in the mirrors list so the mirror logic works on the first index
      * update.  That makes it possible to do the first index update via SD Card
      * or USB OTG drive.
+     *
+     * @see FDroidApp#resetMirrorVars()
+     * @see FDroidApp#getMirror(String, Repo)
+     * @see FDroidApp#getTimeout()
      */
     public String getMirror(String lastWorkingMirror) {
         if (TextUtils.isEmpty(lastWorkingMirror)) {
