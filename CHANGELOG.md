@@ -1,4 +1,4 @@
-### 1.5.1 (2018-01-07)
+### 1.5.1 (2019-01-07)
 
 * Removed incomplete translations that were accidentally added in 1.5
 
