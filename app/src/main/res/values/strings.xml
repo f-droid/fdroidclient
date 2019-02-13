@@ -51,7 +51,7 @@
         them
     </string>
     <string name="update_auto_install">Automatically install updates</string>
-    <string name="update_auto_install_summary">Download and install update apps in the background</string>
+    <string name="update_auto_install_summary">Download and update apps in the background, showing a notification</string>
     <string name="notify">Show available updates</string>
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="system_installer">Privileged Extension</string>
