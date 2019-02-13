@@ -13,17 +13,23 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -114,6 +120,14 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
+
+        RecyclerView officialMirrorListView = findViewById(R.id.official_mirror_list);
+        officialMirrorListView.setLayoutManager(new LinearLayoutManager(this));
+        officialMirrorListView.setAdapter(new MirrorAdapter(repo.mirrors));
+
+        RecyclerView userMirrorListView = findViewById(R.id.user_mirror_list);
+        userMirrorListView.setLayoutManager(new LinearLayoutManager(this));
+        userMirrorListView.setAdapter(new MirrorAdapter(repo.userMirrors));
 
         if (repo.address.startsWith("content://")) {
             // no need to show a QR Code, it is not shareable
@@ -347,30 +361,14 @@ public class RepoDetailsActivity extends AppCompatActivity {
         if (repo.mirrors != null) {
             TextView officialMirrorsLabel = repoView.findViewById(R.id.label_official_mirrors);
             officialMirrorsLabel.setVisibility(View.VISIBLE);
-            TextView officialMirrorsText = repoView.findViewById(R.id.text_official_mirrors);
-            officialMirrorsText.setVisibility(View.VISIBLE);
-            StringBuilder builder = new StringBuilder();
-            for (String url : repo.mirrors) {
-                builder.append("• ");
-                builder.append(url);
-                builder.append('\n');
-            }
-            builder.setLength(Math.max(builder.length() - 1, 0));
-            officialMirrorsText.setText(builder.toString());
+            RecyclerView officialMirrorList = repoView.findViewById(R.id.official_mirror_list);
+            officialMirrorList.setVisibility(View.VISIBLE);
         }
         if (repo.userMirrors != null) {
             TextView userMirrorsLabel = repoView.findViewById(R.id.label_user_mirrors);
             userMirrorsLabel.setVisibility(View.VISIBLE);
-            TextView userMirrorsText = repoView.findViewById(R.id.text_user_mirrors);
-            userMirrorsText.setVisibility(View.VISIBLE);
-            StringBuilder builder = new StringBuilder();
-            for (String url : repo.userMirrors) {
-                builder.append("• ");
-                builder.append(url);
-                builder.append('\n');
-            }
-            builder.setLength(Math.max(builder.length() - 1, 0));
-            userMirrorsText.setText(builder.toString());
+            RecyclerView userMirrorList = repoView.findViewById(R.id.user_mirror_list);
+            userMirrorList.setVisibility(View.VISIBLE);
         }
 
         name.setText(repo.name);
@@ -463,5 +461,52 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 });
 
         credentialsDialog.show();
+    }
+
+    private class MirrorAdapter extends RecyclerView.Adapter<MirrorAdapter.MirrorViewHolder> {
+        private String[] mirrors;
+
+        class MirrorViewHolder extends RecyclerView.ViewHolder {
+            View view;
+
+            MirrorViewHolder(View view) {
+                super(view);
+                this.view = view;
+            }
+        }
+
+        MirrorAdapter(String[] mirrors) {
+            this.mirrors = mirrors;
+        }
+
+        @NonNull
+        @Override
+        public MirrorAdapter.MirrorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_item, parent, false);
+            return new MirrorViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MirrorViewHolder holder, int position) {
+            TextView repoNameTextView = holder.view.findViewById(R.id.repo_name);
+            repoNameTextView.setText(mirrors[position]);
+
+            CompoundButton switchView = holder.view.findViewById(R.id.repo_switch);
+            switchView.setChecked(true);
+
+            View repoUnverified = holder.view.findViewById(R.id.repo_unverified);
+            repoUnverified.setVisibility(View.GONE);
+
+            View repoUnsigned = holder.view.findViewById(R.id.repo_unsigned);
+            repoUnsigned.setVisibility(View.GONE);
+        }
+
+        @Override
+        public int getItemCount() {
+            if (mirrors == null) {
+                return 0;
+            }
+            return mirrors.length;
+        }
     }
 }
