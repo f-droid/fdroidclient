@@ -454,6 +454,7 @@ public class FDroidApp extends Application {
         ImageLoader.getInstance().init(config);
 
         if (preferences.isIndexNeverUpdated()) {
+            preferences.setDefaultForDataOnlyConnection(this);
             // force this check to ensure it starts fetching the index on initial runs
             networkState = ConnectivityMonitorService.getNetworkState(this);
         }
