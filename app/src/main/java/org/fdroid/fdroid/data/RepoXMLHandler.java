@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid.data;
 
+import android.Manifest;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -98,6 +99,10 @@ public class RepoXMLHandler extends DefaultHandler {
         if ("application".equals(localName) && curapp != null) {
             onApplicationParsed();
         } else if ("package".equals(localName) && curapk != null && curapp != null) {
+            if (Build.VERSION.SDK_INT >= 16 &&
+                    requestedPermissionsSet.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                requestedPermissionsSet.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
             int size = requestedPermissionsSet.size();
             curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
             requestedPermissionsSet.clear();

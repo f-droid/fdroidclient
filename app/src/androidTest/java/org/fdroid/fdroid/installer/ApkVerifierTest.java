@@ -26,13 +26,12 @@ import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
-
 import org.fdroid.fdroid.AssetUtils;
-import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,6 +44,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -103,7 +103,7 @@ public class ApkVerifierTest {
     public void testNulls() {
         assertTrue(ApkVerifier.requestedPermissionsEqual(null, null));
 
-        String[] perms = new String[] {"Blah"};
+        String[] perms = new String[]{"Blah"};
         assertFalse(ApkVerifier.requestedPermissionsEqual(perms, null));
         assertFalse(ApkVerifier.requestedPermissionsEqual(null, perms));
     }
@@ -290,7 +290,7 @@ public class ApkVerifierTest {
     public void testExtendedPerms() throws IOException,
             ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
         RepoDetails actualDetails = getFromFile(extendedPermsXml);
-        HashSet<String> expectedSet = new HashSet<>(Arrays.asList(new String[]{
+        HashSet<String> expectedSet = new HashSet<>(Arrays.asList(
                 "android.permission.ACCESS_NETWORK_STATE",
                 "android.permission.ACCESS_WIFI_STATE",
                 "android.permission.INTERNET",
@@ -301,8 +301,8 @@ public class ApkVerifierTest {
                 "android.permission.READ_CONTACTS",
                 "android.permission.WRITE_CONTACTS",
                 "android.permission.READ_CALENDAR",
-                "android.permission.WRITE_CALENDAR",
-        }));
+                "android.permission.WRITE_CALENDAR"
+        ));
         if (Build.VERSION.SDK_INT <= 18) {
             expectedSet.add("android.permission.READ_EXTERNAL_STORAGE");
             expectedSet.add("android.permission.WRITE_EXTERNAL_STORAGE");
@@ -343,6 +343,87 @@ public class ApkVerifierTest {
         Uri uri = Uri.fromFile(extendedPermissionsApk);
         ApkVerifier apkVerifier = new ApkVerifier(instrumentation.getContext(), uri, apk);
         apkVerifier.verifyApk();
+    }
+
+    @Test
+    public void testImpliedPerms() throws IOException {
+        RepoDetails actualDetails = getFromFile(extendedPermsXml);
+        TreeSet<String> expectedSet = new TreeSet<>(Arrays.asList(
+                "android.permission.ACCESS_NETWORK_STATE",
+                "android.permission.ACCESS_WIFI_STATE",
+                "android.permission.INTERNET",
+                "android.permission.READ_CALENDAR",
+                "android.permission.READ_CONTACTS",
+                "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.READ_SYNC_SETTINGS",
+                "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
+                "android.permission.WRITE_CALENDAR",
+                "android.permission.WRITE_CONTACTS",
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.WRITE_SYNC_SETTINGS",
+                "org.dmfs.permission.READ_TASKS",
+                "org.dmfs.permission.WRITE_TASKS"
+        ));
+        if (Build.VERSION.SDK_INT <= 22) { // maxSdkVersion="22"
+            expectedSet.addAll(Arrays.asList(
+                    "android.permission.AUTHENTICATE_ACCOUNTS",
+                    "android.permission.GET_ACCOUNTS",
+                    "android.permission.MANAGE_ACCOUNTS"
+            ));
+        }
+        Apk apk = actualDetails.apks.get(1);
+        Log.i(TAG, "APK: " + apk.apkName);
+        HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
+        for (String permission : expectedSet) {
+            if (!actualSet.contains(permission)) {
+                Log.i(TAG, permission + " in expected but not actual! (android-"
+                        + Build.VERSION.SDK_INT + ")");
+            }
+        }
+        for (String permission : actualSet) {
+            if (!expectedSet.contains(permission)) {
+                Log.i(TAG, permission + " in actual but not expected! (android-"
+                        + Build.VERSION.SDK_INT + ")");
+            }
+        }
+        String[] expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
+        assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
+
+        expectedSet = new TreeSet<>(Arrays.asList(
+                "android.permission.ACCESS_NETWORK_STATE",
+                "android.permission.ACCESS_WIFI_STATE",
+                "android.permission.AUTHENTICATE_ACCOUNTS",
+                "android.permission.GET_ACCOUNTS",
+                "android.permission.INTERNET",
+                "android.permission.MANAGE_ACCOUNTS",
+                "android.permission.READ_CALENDAR",
+                "android.permission.READ_CONTACTS",
+                "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.READ_SYNC_SETTINGS",
+                "android.permission.WRITE_CALENDAR",
+                "android.permission.WRITE_CONTACTS",
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.WRITE_SYNC_SETTINGS",
+                "org.dmfs.permission.READ_TASKS",
+                "org.dmfs.permission.WRITE_TASKS"
+        ));
+        expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
+        apk = actualDetails.apks.get(2);
+        Log.i(TAG, "APK: " + apk.apkName);
+        actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
+        for (String permission : expectedSet) {
+            if (!actualSet.contains(permission)) {
+                Log.i(TAG, permission + " in expected but not actual! (android-"
+                        + Build.VERSION.SDK_INT + ")");
+            }
+        }
+        for (String permission : actualSet) {
+            if (!expectedSet.contains(permission)) {
+                Log.i(TAG, permission + " in actual but not expected! (android-"
+                        + Build.VERSION.SDK_INT + ")");
+            }
+        }
+        assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
     }
 
     @NonNull
