@@ -1,0 +1,19 @@
+F-Droid is an installable catalogue of FOSS (Free and Open Source
+Software) applications for the Android platform. The client makes it
+easy to browse, install, and keep track of updates on your device.
+
+It connects to any F-Droid compatible repositories. The default repo
+is hosted at f-droid.org, which contains only bona fide Free and Open
+Source Software.
+
+Android itself is open in the sense that you are free to install apks
+from anywhere you wish, but there are many good reasons for using
+F-Droid as your free software app manager:
+
+* Be notified when updates are available
+* optionally download and install updates automatically
+* Keep track of older and beta versions
+* Filter apps that aren't compatible with the device
+* Find apps via categories and searchable descriptions
+* Access associated urls for donations, source code etc.
+* Stay safe by checking repo index signatures and apk hashes

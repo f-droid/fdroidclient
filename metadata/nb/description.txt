@@ -1,0 +1,8 @@
+F-Droid er en installerbar katalog av fri programvare for Android-plattformen. Klienten gjør det enkelt å utforske, installere og holde oppsyn med oppdateringer på din enhet.
+
+Tilkobling blir gjort til enhver F-droid-kompatibel pakkebrønn. Vertskap for den offisielle pakkebrønnen er f-droid.org, som også kun inneholder fri programvare og åpen kildekode.
+
+Android i seg selv er åpent i den utstrekning at du kan installer APK-er selv fra der du måtte ønske, men det er mange gode grunner til å bruke F-Droid som din friprog-pakkebehandler:
+
+* Få beskjed når nye oppdateringer er tilgjengelige * Valgfri nedlasting og automatisk installasjon * Hold oppsyn med gamle versjoner og betaversjoner * Filtrer programmer som ikke er kompatible med enheten * Finn programmer via kategorier og søkbare beskrivelser * Tilgang til tilknyttede nettadresser for donasjoner, kildekode osv. * Hold deg trygg ved å sjekke pakkebrønnsindeksen signaturer og APK-sjekksummer
+
