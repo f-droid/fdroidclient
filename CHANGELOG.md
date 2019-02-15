@@ -1,3 +1,19 @@
+### 1.6-alpha0 (2019-02-15)
+
+* handle implied READ_EXTERNAL_STORAGE permissions, which trigger a
+  permissions prompt on installs with Privileged Extension (#1702)
+
+* sanitize index data to reduce the threats from the server
+
+* set Read Timeout to trigger mirror use when reads are slow
+
+* fix missing icons for those who do not use WiFi (#1592)
+
+* use separate titles for Updates pref and Updates tab, so that they
+  can be better translated
+
+* UI fixes from @ConnyDuck (#1636, #1618)
+
 ### 1.5.1 (2019-01-07)
 
 * Removed incomplete translations that were accidentally added in 1.5
