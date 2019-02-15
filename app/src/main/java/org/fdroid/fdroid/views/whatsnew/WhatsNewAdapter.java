@@ -11,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
@@ -102,6 +103,10 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     }
 
     public void setAppsCursor(Cursor cursor) {
+        if (this.cursor == cursor) {
+            //don't notify when the cursor did not change
+            return;
+        }
         this.cursor = cursor;
         notifyDataSetChanged();
     }
