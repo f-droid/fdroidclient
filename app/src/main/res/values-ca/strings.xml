@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
     <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
@@ -424,7 +424,7 @@
         <item quantity="one">Actualitzada fa %1$d any</item>
         <item quantity="other">Actualitzada fa %1$d anys</item>
     </plurals>
-<string name="by_author_format">per %s</string>
+    <string name="by_author_format">per %s</string>
     <string name="download_404">No s\'ha trobat l\'arxiu sol·licitat.</string>
     <string name="force_old_index">Forceu el format d\'índex antic</string>
     <string name="force_old_index_summary">En cas d\'errors o problemes de compatibilitat, utilitzeu l\'índex d\'aplicació XML</string>
@@ -467,7 +467,7 @@
     <string name="panic_hide_title">Amagueu %s</string>
     <string name="panic_hide_summary">L\'app s\'ocultarà</string>
 
-<string name="sort_search">Ordena els resultats de la cerca</string>
+    <string name="sort_search">Ordena els resultats de la cerca</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
@@ -533,4 +533,4 @@
     <string name="send_installed_apps_csv">Apps instal·lades per F-Droid a través d\'un fitxer CSV</string>
     <string name="menu_open">Obrir</string>
     <string name="menu_downgrade">Revertir versió</string>
-    </resources>
+</resources>

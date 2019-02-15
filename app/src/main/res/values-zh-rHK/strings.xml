@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
@@ -288,7 +288,7 @@
     <string name="keep_install_history_summary">在 F-Droid 中儲存所有安裝及卸載的紀錄</string>
     <string name="update_auto_install">自動安裝更新</string>
     <string name="update_auto_install_summary">在背景下載及安裝應用程式更新</string>
-<string name="app_version_x_available">已可以下載 %1$s 版</string>
+    <string name="app_version_x_available">已可以下載 %1$s 版</string>
     <string name="app_details_donate_prompt_unknown_author">給 %1$s 的開發者買一杯咖啡吧！</string>
     <string name="app_details_donate_prompt">%2$s 是 %1$s 的開發者，給他們買一杯咖啡吧！</string>
 
@@ -371,7 +371,7 @@
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 天前更新</item>
     </plurals>
-<string name="app_new">最新</string>
+    <string name="app_new">最新</string>
     <string name="latest__empty_state__no_recent_apps">找不到近期用過的應用程式</string>
     <string name="categories__empty_state__no_categories">沒有可顯示的程式分類</string>
 
@@ -402,7 +402,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">%1$d 年前更新</item>
     </plurals>
-<string name="force_old_index">必須使用舊索引格式</string>
+    <string name="force_old_index">必須使用舊索引格式</string>
     <plurals name="notification_summary_more">
         <item quantity="other">還有 %1$d 則通知…</item>
     </plurals>

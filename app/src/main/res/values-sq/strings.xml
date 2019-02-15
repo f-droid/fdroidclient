@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -108,7 +108,7 @@
     <string name="about_license">Licenca</string>
 
     <string name="app_incompatible">I mospërputhshëm</string>
-<string name="menu_launch">Zbotoje</string>
+    <string name="menu_launch">Zbotoje</string>
     <string name="by_author_format">nga %s</string>
     <string name="enable_nfc_send">Mundësoje dërgimin e NFC…</string>
     <string name="cache_downloaded">Mbaje aplikacionet nga (cache)</string>
@@ -294,4 +294,4 @@
     <string name="nearby_splash__both_parties_need_fdroid">Të dyja palët duhet %1$s për të përdorur afër.</string>
 
     <string name="swap_join_same_wifi">Të bashkohen në të njëjtin rrjet Wi-Fi si miku juaj</string>
-    </resources>
+</resources>

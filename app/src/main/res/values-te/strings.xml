@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">ఎఫ్-డ్రాయిడ్</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">ఎఫ్-డ్రాయిడ్</string>
 
     <string name="updates">నవీకరణలు</string>
     <string name="ok">సరే</string>
@@ -295,7 +296,7 @@
 	<item quantity="one">%1$d సంవత్సరం క్రితం నవీకరించబడింది</item>
 	<item quantity="other">%1$d సంవత్సరాల క్రితం నవీకరించబడింది</item>
 </plurals>
-<string name="enable_proxy_summary">అన్ని నెట్వర్క్ అభ్యర్ధనల కోసం HTTP ప్రాక్సీని కాన్ఫిగర్ చేయండి</string>
+    <string name="enable_proxy_summary">అన్ని నెట్వర్క్ అభ్యర్ధనల కోసం HTTP ప్రాక్సీని కాన్ఫిగర్ చేయండి</string>
     <string name="proxy_host">ప్రాక్సీ హోస్ట్</string>
     <string name="proxy_host_summary">మీ ప్రాక్సీ హోస్ట్ పేరు (ఉదా. 127.0.0.1)</string>
     <string name="proxy_port">ప్రాక్సీ పోర్ట్</string>
@@ -331,4 +332,4 @@
     <string name="sort_search">శోధనను క్రమీకరించు</string>
 
     <string name="bluetooth_activity_not_found">బ్లూటూత్ పంపే పంపిన పద్ధతి కనుగొనబడలేదు, ఒక్కదాన్ని ఎంచుకోండి!</string>
-    </resources>
+</resources>

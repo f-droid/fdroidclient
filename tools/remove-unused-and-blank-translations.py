@@ -68,6 +68,7 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
 
     result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
     result = re.sub(r'resources><string', r'resources>\n    <string', result)
+    result = re.sub(r'[ \t]*<string name', r'    <string name', result)
     result = re.sub(r'[ \t]*</resources>', r'</resources>', result)
 
     with open(str_path, 'w+') as f:

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -338,5 +338,5 @@
 
         ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่
     </string>
-<string name="main_menu__latest_apps">ล่าสุด</string>
+    <string name="main_menu__latest_apps">ล่าสุด</string>
 </resources>

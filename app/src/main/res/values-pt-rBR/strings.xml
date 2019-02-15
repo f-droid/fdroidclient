@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova
         versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga
@@ -46,7 +46,7 @@
     <string name="menu_manage">Repositórios</string>
     <string name="menu_search">Procurar</string>
     <string name="menu_add_repo">Novo Repositório</string>
-    <string name="menu_launch">Executar</string>
+    <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
@@ -366,7 +366,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
     </string>
     <string name="updates__tts__download_app">Download</string>
-    <string name="update_all">Baixar todas as atualizações</string>
+    <string name="update_all">Atualize tudo</string>
 
     <string name="updates__hide_updateable_apps">Esconder aplicativos</string>
     <string name="updates__show_updateable_apps">Mostrar aplicativos</string>
@@ -402,7 +402,7 @@
     <string name="antifeatureswarning">Este aplicativo tem características que você pode não gostar.</string>
     <string name="antifeatures">Características indesejadas</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Baixe aplicativos de pessoas próximas a você!</string>
-    <string name="nearby_splash__find_people_button">Encontrar pessoas próximas de mim</string>
+    <string name="nearby_splash__find_people_button">Encontre pessoas próximas</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam do %1$s para uso próximo.</string>
 
     <string name="details_last_updated_today">Atualizado hoje</string>
@@ -438,7 +438,7 @@
         <item quantity="one">Atualizado %1$d ano atrás</item>
         <item quantity="other">Atualizado %1$d anos atrás</item>
     </plurals>
-<string name="by_author_format">por %s</string>
+    <string name="by_author_format">por %s</string>
     <string name="download_404">O arquivo solicitado não foi encontrado.</string>
     <string name="force_old_index">Forçar um formato de índice antigo</string>
     <string name="force_old_index_summary">Se existirem bugs ou problemas de compatibilidade, use o índice XML do aplicativo</string>
@@ -459,7 +459,7 @@
     <string name="app_list__dismiss_downloading_app">Baixar cancelado</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nós encontramos uma vulnerabilidade com o %1$s. Nós recomendamos desinstalar o aplicativo imediatamente.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nós encontramos uma vulnerabilidade com o %1$s. Nós recomendamos atualizar para a versão mais nova imediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontramos uma vulnerabilidade com %1$s. Recomendamos atualizar para a versão mais recente imediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
 
     <string name="privacy">Privacidade</string>
@@ -492,7 +492,7 @@
     <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
     <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um tempo longo vai esconder o app</string>
 
-<string name="sort_search">Classificação da pesquisa</string>
+    <string name="sort_search">Classificação da pesquisa</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
@@ -548,4 +548,16 @@
     <string name="app_size">Tamanho: %1$s</string>
 
     <string name="menu_downgrade">Rebaixamento</string>
-    </resources>
+    <string name="scan_removable_storage_title">Verificar armazenamento removível</string>
+    <string name="scan_removable_storage_toast">Escaneando %s…</string>
+    <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>
+    <string name="app_repository">Repositório: %1$s</string>
+    <string name="main_menu__updates">Atualizações</string>
+    <string name="nearby_splash__read_external_storage">Cartões SD podem ser usados para trocar!</string>
+    <string name="nearby_splash__request_permission">Tente</string>
+    <string name="not_visible_nearby">Próximo não ativado</string>
+    <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o dispositivo visível.</string>
+    <string name="swap_toast_using_path">Usando %1$s</string>
+    <string name="swap_toast_not_removable_storage">Essa escolha não corresponde a nenhum dispositivo de armazenamento removível, tente novamente!</string>
+    <string name="swap_toast_find_removeable_storage">Escolha o seu cartão SD ou USB removível</string>
+</resources>

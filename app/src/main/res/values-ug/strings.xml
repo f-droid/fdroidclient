@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">بۇ يېڭى نەشرىگە كونا نەشرىنىڭكىگە ئوخشىمايدىغان ئاچقۇچ بىلەن ئىمزا قويۇلغان. ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)</string>
     <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟
@@ -58,7 +58,7 @@
     <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
     <string name="no_handler_app">سىزنىڭ %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئۇيغۇلىمىڭىز يوق.</string>
     <string name="theme">ئۇسلۇب</string>
-<string name="app_name">ف-درويد</string>
+    <string name="app_name">ف-درويد</string>
 
     <string name="back">قايتىش</string>
     <string name="menu_settings">تەڭشەكلەر</string>
@@ -284,4 +284,4 @@
 
     <string name="empty_search_available_app_list">ماس كېلىدىغان ئۇيغۇلىما يوق.</string>
 
-    </resources>
+</resources>

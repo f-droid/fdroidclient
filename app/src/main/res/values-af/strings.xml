@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
@@ -375,7 +375,7 @@
     <string name="notification_action_cancel">Kanselleer</string>
     <string name="notification_action_install">Installeer</string>
 
-<string name="app_recommended_version_installed">Weergawe %1$s (aanbeveel)</string>
+    <string name="app_recommended_version_installed">Weergawe %1$s (aanbeveel)</string>
     <string name="app_new">Nuwe</string>
     <string name="app__tts__cancel_download">Kanselleer aflaai</string>
     <string name="app__install_downloaded_update">Opdateer</string>
@@ -464,13 +464,13 @@
         <item quantity="one">\'n Jaar gelede opgedateer</item>
         <item quantity="other">%1$d jare gelede opgedateer</item>
     </plurals>
-<string name="app_installed_media">Lêer geïnstalleer na %s</string>
+    <string name="app_installed_media">Lêer geïnstalleer na %s</string>
     <string name="app_permission_storage">F-Droid het stoor toestemming nodig. Laat dit toe op die volgende skerm om voort te gaan met installasie.</string>
 
     <string name="app_list_download_ready">Afgelaai, gereed om te installeer</string>
 
     <string name="status_inserting_x_apps">Stoor program besonderhede (%1$d/%2$d) vanaf %3$s</string>
-<string name="prompt_to_send_crash_reports">Versoek \'n katastrofiese fout rapport</string>
+    <string name="prompt_to_send_crash_reports">Versoek \'n katastrofiese fout rapport</string>
     <string name="prompt_to_send_crash_reports_summary">Versamel data oor \'n katastrofiese foute en vra aan om dit na ontwikkelaar te stuur</string>
     <string name="hide_all_notifications">Verberg alle aanmeldings</string>
     <string name="hide_all_notifications_summary">Verhoed alle aksies van vertoon in die status balk en aanmeldings laaitjie.</string>
@@ -479,4 +479,4 @@
     <string name="install_history">Installasie geskiedenis</string>
     <string name="install_history_summary">Wys die private joernaal van alle instellasies en verwyderings</string>
     <string name="send_version_and_uuid">Stuur weergawe en UUID na servers</string>
-    </resources>
+</resources>

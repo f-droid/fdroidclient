@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="updates">Amucceḍ</string>
+<resources>
+    <string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
 
     <string name="yes">Ih</string>
@@ -70,7 +71,7 @@
     <string name="added_on">Yettwarna ar %s</string>
     <string name="app__tts__cancel_download">Sefsex asider</string>
     <string name="app__install_downloaded_update">Mucceḍ</string>
-    <string name="updates__hide_updateable_apps">&amp;Ffer</string>
+    <string name="updates__hide_updateable_apps">Ffer isnasen</string>
     <string name="repo_add_add">Rnu</string>
     <string name="links">Iseγwan</string>
     <string name="versions">Ileqman</string>
@@ -220,7 +221,7 @@
     <string name="status_processing_xml_percent">Asesfer n  %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="notification_title_single_ready_to_install">Iwjed i usebded</string>
     <string name="notification_title_single_ready_to_install_update">Alqem iwjed i usebded</string>
-<string name="hide_all_notifications">Ffer akk Ilγa</string>
+    <string name="hide_all_notifications">Ffer akk Ilγa</string>
     <string name="install_history">Amazray n usebded</string>
     <string name="send_install_history">Azen amazray n usebded</string>
     <string name="over_wifi">Γef Wi-Fi</string>

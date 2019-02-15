@@ -410,7 +410,7 @@
     <string name="notification_title_summary_installing">A instalar</string>
     <string name="notification_title_summary_installed">Instalação efetuada</string>
     <string name="notification_title_summary_install_error">Falha ao instalar</string>
-    <string name="notification_action_update">Atualização</string>
+    <string name="notification_action_update">Atualizar</string>
     <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
 
@@ -456,7 +456,7 @@
         <item quantity="one">Atualizada há %1$d ano</item>
         <item quantity="other">Atualizada há %1$d anos</item>
     </plurals>
-<string name="force_old_index">Impor formato de índice antigo</string>
+    <string name="force_old_index">Impor formato de índice antigo</string>
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidade, utilizar o índice XML</string>
     <string name="app_installed_media">Ficheiro instalado em %s</string>
     <string name="app_permission_storage">O F-Droid necessita de aceder ao armazenamento. Por favor conceda essa permissão no próximo ecrã para continuar com a instalação.</string>
@@ -482,7 +482,7 @@
     <string name="preventScreenshots_title">Impedir captura de ecrã</string>
     <string name="preventScreenshots_summary">Impede as capturas de ecrã e oculta o conteúdo da aplicação do ecrã de aplicações recentes</string>
 
-    <string name="panic_app_unknown_app">uma aplicação desconhecida</string>
+    <string name="panic_app_unknown_app">uma aplicação desconhecia</string>
     <string name="panic_app_setting_summary">Nenhuma aplicação definida</string>
     <string name="panic_app_setting_none">Nenhuma</string>
     <string name="allow">Permitir</string>
@@ -498,7 +498,7 @@
     <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisa</string>
     <string name="hide_on_long_search_press_summary">Toque longo no botão de pesquisa oculta a aplicação</string>
 
-<string name="repo_add_mirror">Adicionar \'mirror\'</string>
+    <string name="repo_add_mirror">Adicionar \'mirror\'</string>
     <string name="sort_search">Ordenar pesquisa</string>
 
     <string name="repo_exists_add_fingerprint">%1$s já está configurado e esta ação adiciona a informação da chave.</string>
@@ -573,4 +573,5 @@
     <string name="swap_toast_using_path">Utilizando %1$s</string>
     <string name="swap_toast_not_removable_storage">A escolha não correspondeu a um dispositivo de armazenamento removível, tente novamente!</string>
     <string name="swap_toast_find_removeable_storage">Escolha o seu cartão removível SD ou USB</string>
+    <string name="main_menu__updates">Atualizações</string>
 </resources>

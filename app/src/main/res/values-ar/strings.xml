@@ -55,7 +55,6 @@
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
     <string name="app_name">اف-درويد</string>
-
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
@@ -64,48 +63,38 @@
     <string name="unstable_updates">تحديثات غير مستقرة</string>
     <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات الغير المستقرة</string>
     <string name="other">أخرى</string>
-
     <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
     <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً و أنت تتلقي إشعار لتثبيتها</string>
     <string name="notify">إظهار التحديثات المتوفرة</string>
-    <string name="notify_on">أظهر تنبيه عندما تتوفر تحديثات</string>
+    <string name="notify_on">أظهر إشعارا عندما تتوفر هناك تحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام الملحقات المميزة لتثبيت وتحديث وإزالة الحزم</string>
     <string name="local_repo_name_summary">عنوان المعلن لديك في المستودعات المحلية: %s</string>
     <string name="local_repo_https_on">استخدام تشفير HTTPS: // المتصل بالمستودعات المحلية</string>
-
     <string name="login_title">يستلزم التوثيق</string>
     <string name="login_name">اسم المستخدم</string>
     <string name="login_password">كلمة المرور</string>
     <string name="repo_edit_credentials">تغيير كلمة المرور</string>
     <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات الاعتماد</string>
-
     <string name="no_such_app">لم يتم العثور على مثل هذا التطبيق.</string>
-
     <string name="about_title">معلومات عن اف-درويد</string>
     <string name="about_source">الشفرة المصدرية</string>
     <string name="about_license">الرخصة</string>
-
     <string name="app_incompatible">غير متوافق</string>
     <string name="added_on">تمت إضافته في %s</string>
-
     <string name="links">الروابط</string>
     <string name="more">المزيد</string>
     <string name="less">تقليل</string>
-
     <string name="back">إلى الخلف</string>
     <string name="overwrite">استبدال</string>
-
     <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
     <string name="bad_fingerprint">البصمة خاطئة</string>
     <string name="invalid_url">هذا ليس عنوان URL صالح للاستخدام.</string>
     <string name="malformed_repo_uri">تجاهل عناوين URI للمستودعات  التالفة : %s</string>
     <string name="repo_provider">مستودع: %s</string>
-
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
-
     <string name="menu_website">الموقع الإلكتروني</string>
     <string name="menu_issues">الأخطاء</string>
     <string name="menu_changelog">سجل التغييرات</string>
@@ -113,8 +102,6 @@
     <string name="menu_bitcoin">عملة البيتكوين (BitCoin)</string>
     <string name="menu_litecoin">عملة اللايت كوين (Litecoin)</string>
     <string name="menu_flattr">حساب فلاتر (Flattr)</string>
-
-
     <string name="details_notinstalled">لم يتم التثبيت</string>
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
@@ -123,18 +110,13 @@
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
-
     <string name="display">المظهر</string>
-
     <string name="expert">الوضع المتقدم</string>
     <string name="expert_on">إظهار معلومات إضافية وتمكين إعدادات إضافية</string>
-
     <string name="search_hint">بحث في التطبيقات</string>
-
     <string name="appcompatibility">توافق التطبيق</string>
     <string name="show_incompat_versions">إضافة الإصدارات غير المتوافقة</string>
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير المتوافقة مع الجهاز</string>
-
     <string name="local_repo_running">اف-درويد على استعداد للتبديل</string>
     <string name="touch_to_configure_local_repo">إستخدم اللمس لعرض تفاصيل والسماح للآخرين لمبادلة التطبيقات الخاصة بك.
     </string>
@@ -152,9 +134,7 @@
     <string name="proxy_host_summary">اسم مضيف البروكسي (مثال 127.0.0.1)</string>
     <string name="proxy_port">مَنفَذ البروكسي</string>
     <string name="proxy_port_summary">رقم منفذ البروكسي الخاص بك (مثلا 8118)</string>
-
     <string name="status_download">تحميل\n%2$s / %3$s (%4$d%%) من\n%1$s</string>
-
     <string name="status_download_unknown_size">تحميل\n%2$s من\n%1$s</string>
     <string name="update_notification_title">تحديث المستودعات</string>
     <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) مِن %1$s</string>
@@ -183,16 +163,12 @@
     <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>
     <string name="repo_searching_address">ابحث عن مستودع الحزمة في
 \n%1$s</string>
-    <string name="not_on_same_wifi">جهازك ليس على الإنترنت اللاسلكي نفسه مع المستودع المحلي الذي قمت بإضافتها فقط! حاول
-        الانضمام إلى هذه الشبكة: %s
-    </string>
+    <string name="not_on_same_wifi">جهازك ليس على الشبكة اللاسلكية نفسها مع المستودع المحلي الذي قمت بإضافتها فقط! حاول الانضمام إلى هذه الشبكة: %s</string>
     <string name="requires_features">احتياجات: %1$s</string>
     <string name="pref_language">اللغة</string>
     <string name="pref_language_default">النظام الافتراضي</string>
-
     <string name="wifi">شبكة لاسلكية (واي-فاي)</string>
     <string name="wifi_ap">نقاط الإنترنت</string>
-
     <string name="category_Connectivity">الاتصال</string>
     <string name="category_Graphics">الرسومات</string>
     <string name="category_Money">المالية</string>
@@ -201,18 +177,15 @@
     <string name="category_Theming">السمات</string>
     <string name="category_Time">الوقت</string>
     <string name="category_Writing">الكتابة</string>
-
     <string name="empty_installed_app_list">لا يوجد تطبيقات مثبتة.\n\nهناك تطبيقات على جهازك، ولكن لم تكن متوفرة في
         اف-درويد. يمكن أنك تحتاج إلى تحديث المستودعات الخاصة بك، أو المستودعات بالفعل لا تملك تطبيقات متوفرة خاصة بك.
     </string>
     <string name="empty_can_update_app_list">تهانينا !
 \nإنَّ كافة تطبيقاتك مُحدّثة.</string>
     <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
-
     <string name="install_error_unknown">فشل في التثبيت بسبب خطأ مجهول</string>
     <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للإضافة! يرجى إنشاء تقرير عن خطأ!</string>
-
     <string name="swap_nfc_title">إختر باللمس للتبديل</string>
     <string name="swap_nfc_description">إذا كان صديقك لديه اف-درويد او NFC على قيد التشغيل يمكنك توصيل الأجهزة معا.
     </string>
@@ -254,7 +227,6 @@
     <string name="swap_qr_isnt_for_swap">رمز الاستجابة السريعة الذي تم التقاطه لا يبدو وكأنه رمز المبادلة.</string>
     <string name="loading">يتم التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
-
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
     <string name="install_confirm_update">هل تريد تحديث
 \n هذا التطبيق الموجود ؟ لن تفقد بياناتك الموجودة.
@@ -274,14 +246,11 @@
     <string name="download_pending">في الانتظار لبدء التنزيل …</string>
     <string name="install_error_notify_title">خطأ في تثبيت %s</string>
     <string name="uninstall_error_notify_title">خطأ في إلغاء تثبيت %s</string>
-
-
     <string name="perms_new_perm_prefix">جديد :</string>
     <string name="perms_description_app">المقدمة من %1$s.</string>
     <string name="downloading">جاري التنزيل …</string>
     <string name="installing">جاري التثبيت …</string>
     <string name="uninstalling">جاري إلغاء التثبيت …</string>
-
     <string name="interval_never">ايقاف التحديثات التلقائية للتطبيق</string>
     <string name="interval_1h">ابحث عن التحديثات كل ساعة</string>
     <string name="interval_4h">البحث عن التحديثات كل 4 ساعات</string>
@@ -289,44 +258,35 @@
     <string name="interval_1d">البحث عن التحديثات يومياً</string>
     <string name="interval_1w">البحث عن التحديثات أسبوعياً</string>
     <string name="interval_2w">البحث عن التحديثات كل أسبوعين</string>
-
     <string name="keep_hour">ساعة</string>
     <string name="keep_day">يوم</string>
     <string name="keep_week">أسبوع</string>
     <string name="keep_month">شهر</string>
     <string name="keep_year">سنة</string>
     <string name="keep_forever">إلى الأبد</string>
-
     <string name="theme_light">فاتحة</string>
     <string name="theme_dark">داكنة</string>
     <string name="theme_night">ليلية</string>
-
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
     <string name="keep_install_history">الحفاظ على تاريخ التثبيت</string>
     <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في مخزن خاص</string>
     <string name="update_auto_install">تثبيت التحديثات تلقائياً</string>
-    <string name="update_auto_install_summary">تحميل و تثبيت تحديث التطبيقات في الخلفية</string>
+    <string name="update_auto_install_summary">تنزيل وتثبيت تحديثات التطبيقات التي تُظهر إشعارا في الخلفية</string>
     <string name="versions">النُسخ</string>
     <string name="warning_no_internet">لا يمكن التحديث. تَحقّق من ربطك بالإنترنت ؟</string>
-    <string name="main_menu__swap_nearby">حولك</string>
-
+    <string name="main_menu__swap_nearby">قريبة منك</string>
     <string name="main_menu__categories">الفئات</string>
     <string name="categories__empty_state__no_categories">ليس هناك فئات لعرضها</string>
-
     <string name="preference_category__my_apps">تطبيقاتي</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت؟ أحصل على تطبيقات مِن أشخاص مِن حولك!</string>
     <string name="nearby_splash__find_people_button">البحث عن أشخاص مِن حوالي</string>
     <string name="nearby_splash__both_parties_need_fdroid">يحتاج كلا الطرفين إلى %1$s للمبادلة.</string>
-
-    <string name="main_menu__latest_apps">الجديد</string>
-
+    <string name="main_menu__latest_apps">الأحدث</string>
     <string name="app_list__name__successfully_installed">تم تثبيت %1$s بنجاح</string>
     <string name="installed_apps__activity_title">التطبيقات المثبتة</string>
     <string name="preference_manage_installed_apps">إدارة التطبيقات المثبتة</string>
-
-
     <string name="notification_title_single_ready_to_install">جاهز للتثبيت</string>
     <string name="notification_title_single_ready_to_install_update">التحديث جاهز للتثبيت</string>
     <string name="notification_title_single_install_error">فشل التثبيت</string>
@@ -338,21 +298,16 @@
     <string name="notification_title_summary_installed">تم التثبيت بنجاح</string>
     <string name="notification_title_summary_install_error">فشل التثبيت</string>
     <string name="notification_action_install">تثبيت</string>
-
     <string name="app_version_x_available">النسخة %1$s متوفر</string>
     <string name="app_version_x_installed">النسخة %1$s</string>
     <string name="app_recommended_version_installed">النسخة %1$s (مُستحب)</string>
     <string name="app_new">جديد</string>
     <string name="app__install_downloaded_update">تحديث</string>
-
     <string name="app_list__name__downloading_in_progress">تنزيل %1$s</string>
     <string name="update_all">تحديث الكل</string>
-
     <string name="updates__hide_updateable_apps">إخفاء التطبيقات</string>
     <string name="updates__show_updateable_apps">أظهر التطبيقات</string>
-
     <string name="clear_search">مسح البحث</string>
-
     <string name="menu_video">فيديو</string>
     <string name="latest__empty_state__no_recent_apps">لم يتم العثور على تطبيقات حالية</string>
     <string name="antifeatureswarning">لدى هذا التطبيق ميزات قد لا تعجبك.</string>
@@ -379,23 +334,17 @@
         <item quantity="many">حمل التحديثات ل  %1$s تطبيقا.</item>
         <item quantity="other">حمل التحديثات ل  %1$s تطبيق.</item>
     </plurals>
-
     <string name="repositories_summary">أضف مصادر إضافية للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
     <string name="download_404">الملف المطلوب غير موجود.</string>
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
     <string name="tts_category_name">الفئة %1$s</string>
-
     <string name="app_details_donate_prompt">%1$s تم تطويره من طرف %2$s. إشتري لهم مشروبا !</string>
-
     <string name="app_installed_media">تم تثبيت الملف على %s</string>
     <string name="app_list_download_ready">تم تنزيله و جاهز للتثبيت</string>
     <string name="app_list__dismiss_downloading_app">تم إلغاء التنزيل</string>
-
     <string name="updates__app_with_known_vulnerability__ignore">تخطي</string>
-
     <string name="details_new_in_version">مُستجدَّات النسخة %s</string>
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="zero">عرض %d</item>
         <item quantity="one">عرض الكل %d</item>
@@ -404,7 +353,6 @@
         <item quantity="many">عرض الكل %d</item>
         <item quantity="other">عرض الكل %d</item>
     </plurals>
-
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
     <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، إستخدم أرشفة تطبيق XML</string>
     <string name="app_details__incompatible_mismatched_signature">توقيع مختلف عن التطبيق المُثبت</string>
@@ -412,46 +360,42 @@
     <string name="app_details__no_versions__no_compatible_signatures">لا نسخ مع توقعيات متوافقة</string>
     <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">النسخة المُثبتة غير متوافقة مع أي نسخة متوفرة. إلغاء ثبيت التطبيق سوف يمكنك من رؤية وتثبيت النسخ المتكاملة. هذا يحدث عادةً حينما يتم تثبيت التطبيق من خلال متجر جوجل بلاي أو أي مصدر أخر, إذا تم توقيعها بتوقيع مختلف.</string>
-
     <string name="app_permission_storage">أف-درويد يحتاج لإذن التخزين لكي يثبت هذا. من فضلك إسمح بذلك في الشاشة التالية لكي تُكمل مع التثبيت.</string>
-
     <string name="app_list__dismiss_app_update">التحديث تم تجاهله</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة التطبيقات، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، الطبيقات الأخيرة سوف تظهر هنا</string>
-
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
-    <item quantity="zero">+%1$d آخر…</item>
-    <item quantity="one">+%1$d آخر…</item>
-    <item quantity="two">+%1$d آخرين…</item>
-    <item quantity="few">+%1$d أخرى…</item>
-    <item quantity="many">+%1$d آخرين…</item>
-    <item quantity="other">+%1$d آخرون…</item>
-</plurals>
+        <item quantity="zero">لاشيء</item>
+        <item quantity="one">+%1$d آخر…</item>
+        <item quantity="two">آخرين…</item>
+        <item quantity="few">+%1$d أخرى…</item>
+        <item quantity="many">+%1$d آخرين…</item>
+        <item quantity="other">+%1$d آخرون…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
-    <item quantity="zero">لا تحديثات</item>
-    <item quantity="one">تحديث واحد</item>
-    <item quantity="two">تحديثان</item>
-    <item quantity="few">%1$d تحديثات</item>
-    <item quantity="many">%1$d تحديث</item>
-    <item quantity="other">%1$d تحديثات</item>
-</plurals>
+        <item quantity="zero">لا تحديثات</item>
+        <item quantity="one">تحديث واحد</item>
+        <item quantity="two">تحديثان</item>
+        <item quantity="few">%1$d تحديثات</item>
+        <item quantity="many">%1$d تحديث</item>
+        <item quantity="other">%1$d تحديث</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-    <item quantity="zero">لا شيء</item>
-    <item quantity="one">تطبيق واحد منصب</item>
-    <item quantity="two">تطبيقان منصبان</item>
-    <item quantity="few">%1$d تطبيقات منصبة</item>
-    <item quantity="many">%1$d تطبيق منصب</item>
-    <item quantity="other">%1$d تطبيقات منصبة</item>
-</plurals>
+        <item quantity="zero">لا شيء</item>
+        <item quantity="one">تطبيق واحد منصب</item>
+        <item quantity="two">تطبيقان منصبان</item>
+        <item quantity="few">%1$d تطبيقات منصبة</item>
+        <item quantity="many">%1$d تطبيقات منصبة</item>
+        <item quantity="other">%1$d تطبيق تم تنصيبه</item>
+    </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
     <string name="preventScreenshots_summary">أخفاء لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الأخيرة</string>
-
     <string name="panic_app_setting_title">زر الهلع للتطبيق</string>
     <string name="panic_app_unknown_app">تطبيق غير معروف</string>
     <string name="panic_app_setting_summary">لم يتم تحديد اي تطبيق</string>
@@ -459,7 +403,6 @@
     <string name="panic_app_dialog_title">تحديد تطبيق الهلع</string>
     <string name="panic_app_dialog_message">هل أنت متأكد من أنك تريد السماح ل %1$s بتشغيل إجراءات زر الهلع المدمرة؟</string>
     <string name="allow">السماح</string>
-
     <string name="panic_settings">اعدادات زر الهلع</string>
     <string name="panic_settings_summary">الإجراءات الواجب اتخاذها في حالة الطوارئ</string>
     <string name="panic_exit_title">اغلاق التطبيق</string>
@@ -467,59 +410,54 @@
     <string name="panic_destructive_actions">الإجراءات التدميرية</string>
     <string name="panic_hide_title">إخفاء %s</string>
     <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
-
-<string name="menu_liberapay">ليبراباي</string>
-
+    <string name="menu_liberapay">ليبراباي</string>
     <string name="panic_hide_warning_title">تذكر كيفية الإسترجاع</string>
     <string name="hiding_calculator">الحاسبة</string>
     <string name="hiding_dialog_title">إخفاء %s الآن</string>
     <string name="repo_add_mirror">إضافة مستودع مِرآة</string>
     <string name="sort_search">ترتيب حسب</string>
-
     <string name="force_touch_apps">إضافة التطبيقات التي تتطلّب لمس الشاشة</string>
     <string name="hide_on_long_search_press_title">الإخفاء عن طريق زر البحث</string>
     <string name="hide_on_long_search_press_summary">الضغط المُطوّل على زر البحث يُمكّن مِن إخفاء التطبيق</string>
-
     <string name="repo_official_mirrors">مستودعات المِرآة الرسمية</string>
     <string name="repo_user_mirrors">مستخدم مستودعات المرايا البديلة</string>
     <plurals name="details_last_update_days">
-	<item quantity="zero">تم تحديثه منذ %1$d يوم</item>
-	<item quantity="one">تم تحديثه منذ %1$d يوم</item>
-	<item quantity="two">تم تحديثه منذ يومين</item>
-	<item quantity="few">تم تحديثه منذ %1$d أيام</item>
-	<item quantity="many">تم تحديثه منذ %1$d أيام</item>
-	<item quantity="other">تم تحديثه منذ %1$d أيام</item>
-</plurals>
+        <item quantity="zero">لم يتم تحديثه</item>
+        <item quantity="one">تم تحديثه منذ %1$d يوم</item>
+        <item quantity="two">تم تحديثه منذ يومين</item>
+        <item quantity="few">تم تحديثه منذ %1$d أيام</item>
+        <item quantity="many">تم تحديثه منذ %1$d أيام</item>
+        <item quantity="other">تم تحديثه منذ %1$d يوم</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="zero">تم تحديثه قبل %1$d أسابيع</item>
-	<item quantity="one">تم تحديثه قبل أسبوع</item>
-	<item quantity="two">تم تحديثه قبل %1$d أسبوعين</item>
-	<item quantity="few">تم تحديثه قبل %1$d أسابيع</item>
-	<item quantity="many">تم تحديثه قبل %1$d أسابيع</item>
-	<item quantity="other">تم تحديثه قبل %1$d أسابيع</item>
-</plurals>
+        <item quantity="zero">تم تحديثه قبل %1$d أسابيع</item>
+        <item quantity="one">تم تحديثه قبل أسبوع</item>
+        <item quantity="two">تم تحديثه قبل %1$d أسبوعين</item>
+        <item quantity="few">تم تحديثه قبل %1$d أسابيع</item>
+        <item quantity="many">تم تحديثه قبل %1$d أسابيع</item>
+        <item quantity="other">تم تحديثه قبل %1$d أسبوع</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="zero">تم تحديثه قبل %1$d أشهر</item>
-	<item quantity="one">تم تحديثه قبل شهر</item>
-	<item quantity="two">تم تحديثه قبل %1$d شهرين</item>
-	<item quantity="few">تم تحديثه قبل %1$d أشهر</item>
-	<item quantity="many">تم تحديثه قبل %1$d أشهر</item>
-	<item quantity="other">تم تحديثه قبل %1$d أشهر</item>
-</plurals>
+        <item quantity="zero">تم تحديثه قبل %1$d أشهر</item>
+        <item quantity="one">تم تحديثه قبل شهر</item>
+        <item quantity="two">تم تحديثه قبل %1$d شهرين</item>
+        <item quantity="few">تم تحديثه قبل %1$d أشهر</item>
+        <item quantity="many">تم تحديثه قبل %1$d أشهر</item>
+        <item quantity="other">تم تحديثه قبل %1$d أشهر</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="zero">تم تحديثه منذ %1$d سنوات</item>
-	<item quantity="one">تم تحديثه منذ سنة</item>
-	<item quantity="two">تم تحديثه منذ %1$d سنتين</item>
-	<item quantity="few">تم تحديثه منذ %1$d سنوات</item>
-	<item quantity="many">تم تحديثه منذ %1$d سنوات</item>
-	<item quantity="other">تم تحديثه منذ %1$d سنوات</item>
-</plurals>
+        <item quantity="zero">تم تحديثه منذ %1$d سنوات</item>
+        <item quantity="one">تم تحديثه منذ سنة</item>
+        <item quantity="two">تم تحديثه منذ %1$d سنتين</item>
+        <item quantity="few">تم تحديثه منذ %1$d سنوات</item>
+        <item quantity="many">تم تحديثه منذ %1$d سنوات</item>
+        <item quantity="other">تم تحديثه منذ %1$d سنوات</item>
+    </plurals>
     <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
     <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
     <string name="use_bluetooth">إستخدم البلوتوث</string>
     <string name="swap_toast_hotspot_enabled">تم تفعيل نقطة الواي فاي</string>
     <string name="swap_toast_could_not_enable_hotspot">تعذر تشغيل نقطة الواي فاي !</string>
-
     <string name="over_wifi">على الواي فاي</string>
     <string name="over_data">في وضع بيانات الجوال</string>
     <string name="over_network_always_summary">إستخدم دائما هذا الإتصال عند توفره</string>
@@ -530,9 +468,7 @@
     <string name="repo_exists_and_enabled">%1$s تم إعداده وتفعيله.</string>
     <string name="antidisabledalgorithmlist">هذا التطبيق لديه توقيع أمان ضعيف</string>
     <string name="antiknownvulnlist">يحتوي هذا التطبيق على ثغرة أمنية معروفة</string>
-
     <string name="force_touch_apps_on">عرض التطبيقات التي تتطلب شاشة تعمل باللمس بغض النظر عن دعم الأجهزة</string>
-
     <string name="hiding_dialog_message">هل أنت متأكد من أنك تريد إزالة %1$s من درج التطبيقات؟ فقط اكتب \"%2$d\" في المزيف %3$s التطبيق يمكنه استرداده.</string>
     <string name="hiding_dialog_warning">تحذير: سيتم أيضًا إزالة أي اختصار للتطبيق على الشاشة الرئيسية ويجب إعادة إضافته يدويًا.</string>
     <string name="swap_toast_invalid_url">عنوان URL غير صالح للتبديل : %1$s</string>
@@ -550,17 +486,13 @@
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
     <string name="repo_exists_add_mirror">هذه نسخة من %1$s ، هل تريد إضافتها كمرآة؟</string>
     <string name="antinosourcesince">لم يعد الكود المصدري متاحا ، ولا توجد تحديثات ممكنة.</string>
-
     <string name="panic_hide_warning_message">في حالة الهلع ، سيؤدي هذا إلى إزالة%1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
-
     <string name="share_repository">مشاركة المستودع</string>
     <string name="send_install_history">إرسال محفوظات التثبيت</string>
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
     <string name="updates_disabled_by_settings">جميع التحديثات معطلة عن طريق إعدادات البيانات / واي فاي</string>
-
     <string name="about_forum">منتدى الدعم</string>
     <string name="app_size">الحجم: %1$s</string>
-
     <string name="send_installed_apps">شارك التطبيقات المثبّتة</string>
     <string name="menu_open">إفتح</string>
     <string name="app_suggested">إقتراحات</string>
@@ -570,4 +502,12 @@
     <string name="app_repository">المستودع: %1$s</string>
     <string name="nearby_splash__request_permission">جرّبه</string>
     <string name="swap_toast_using_path">يستخدِم %1$s</string>
+    <string name="scan_removable_storage_toast">جارٍ مسح %s…</string>
+    <string name="main_menu__updates">التحديثات</string>
+    <string name="not_visible_nearby">خدمة \"Nearby\" غير مفعّلة</string>
+    <string name="swap_toast_find_removeable_storage">اختر بطاقة ذاكرة التخزين أو USB</string>
+    <string name="scan_removable_storage_summary">البحث عن مستودعات الحزم في اجهزة التخزين القابلة للإزالة مثل محركات أقراص usb وبطاقات SD</string>
+    <string name="nearby_splash__read_external_storage">لا يمكن استخدام بطاقات SD ل swap!</string>
+    <string name="not_visible_nearby_description">قبل المشاركة مع الأجهزة القريبة، أجعل الجهاز الخاص بك مرئياً.</string>
+    <string name="swap_toast_not_removable_storage">هذا الخيار لم يتتطابق مع أي جهاز تخزين قابل للإزالة، حاول مرة أخرى!</string>
 </resources>

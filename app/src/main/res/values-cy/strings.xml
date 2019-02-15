@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">F-Droid</string>
+    <string name="updates">Diweddariadau</string>
+    <string name="ok">Iawn</string>
+    <string name="yes">Iawn</string>
+    <string name="no">Na</string>
+    <string name="back">Nôl</string>
+    <string name="cancel">Diddymu</string>
+    <string name="menu_settings">Gosodiadau</string>
+    <string name="menu_launch">Agor</string>
+    <string name="menu_share">Rhannu</string>
+    <string name="menu_install">Gosod</string>
+    <string name="menu_uninstall">Dadosod</string>
+    <string name="menu_upgrade">Diweddaru</string>
+    <string name="main_menu__latest_apps">Diweddaraf</string>
+    <string name="main_menu__categories">Categorïau</string>
+    <string name="main_menu__swap_nearby">Agos</string>
+    <string name="preference_manage_installed_apps">Rheoli apiau wedi\'u gosod</string>
+    <string name="details_notinstalled">Heb eu gosod</string>
+    <string name="next">Nesaf</string>
+    <string name="skip">Neidio</string>
+    <string name="pref_language">Iaith</string>
+    <string name="pref_language_default">Rhagosodiad System</string>
+    <string name="category_Connectivity">Cysylltedd</string>
+    <string name="category_Development">Datblygiad</string>
+    <string name="category_Games">Gemau</string>
+</resources>

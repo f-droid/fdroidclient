@@ -426,7 +426,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">Diperbarui %1$d tahun yang lalu</item>
     </plurals>
-<string name="by_author_format">oleh %s</string>
+    <string name="by_author_format">oleh %s</string>
     <string name="download_404">Berkas yang diminta tidak ditemukan.</string>
     <string name="force_old_index">Paksa format indeks lama</string>
     <string name="force_old_index_summary">Jika terdapat bug atau masalah kompatibilitas, gunakan indeks apl XML</string>
@@ -471,7 +471,7 @@
     <string name="panic_hide_summary">Aplikasi akan sembunyi dengan sendirinya</string>
     <string name="sort_search">Atur pencarian</string>
 
-<string name="repo_add_mirror">Tambah mirror</string>
+    <string name="repo_add_mirror">Tambah mirror</string>
     <string name="repo_exists_add_fingerprint">%1$s sudah diatur, ini akan menambah informasi kunci baru.</string>
     <string name="repo_exists_enable">%1$s sudah diatur, konfirmasikan bahwa kamu ingin mengaktifkannya lagi.</string>
     <string name="repo_exists_and_enabled">%1$s sudah diatur dan telah diaktifkan.</string>

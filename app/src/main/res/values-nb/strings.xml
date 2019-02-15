@@ -394,7 +394,7 @@
         <item quantity="one">Oppdatert for %1$d dag siden</item>
         <item quantity="other">Oppdatert for %1$d dager siden</item>
     </plurals>
-<string name="app__tts__cancel_download">Avbryt nedlasting</string>
+    <string name="app__tts__cancel_download">Avbryt nedlasting</string>
     <string name="app_list__name__successfully_installed">%1$s installert</string>
     <string name="menu_video">Video</string>
     <string name="latest__empty_state__no_recent_apps">Ingen nylige programmer funnet</string>
@@ -433,7 +433,7 @@
         <item quantity="one">Oppdatert for %1$d år siden</item>
         <item quantity="other">Oppdatert for %1$d år siden</item>
     </plurals>
-<string name="version">Versjon</string>
+    <string name="version">Versjon</string>
     <string name="by_author_format">av %s</string>
     <string name="force_old_index">Tving gjennom gammelt indeksformat</string>
     <string name="app_installed_media">Fil installert til %s</string>
@@ -488,7 +488,7 @@
     <string name="hide_on_long_search_press_title">Skjul med søke-knappen</string>
     <string name="hide_on_long_search_press_summary">Å trykke lenge på søkeknappen vil skjule programmet</string>
 
-<string name="sort_search">Sorter søk</string>
+    <string name="sort_search">Sorter søk</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
@@ -555,4 +555,5 @@
     <string name="not_visible_nearby">I nærheten er ikke påslått</string>
     <string name="not_visible_nearby_description">Før utveksling med enheter i nærheten må du gjøre din synlig.</string>
     <string name="scan_removable_storage_toast">Skanner %s…</string>
+    <string name="main_menu__updates">Oppgraderinger</string>
 </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை.
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
@@ -79,7 +79,7 @@
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளன</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
     </string>
-<string name="menu_launch">இயக்க</string>
+    <string name="menu_launch">இயக்க</string>
     <string name="main_menu__latest_apps">சமீபத்திய</string>
     <string name="main_menu__categories">வகைகள்</string>
     <string name="category_Internet">இணையம்</string>
@@ -88,4 +88,4 @@
     <string name="notification_action_install">நிறுவு</string>
 
     <string name="repo_details">களஞ்சியம்</string>
-    </resources>
+</resources>

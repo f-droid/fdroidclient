@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op: bij het verwijderen worden de interne gegevens van de app ook verwijderd)</string>
     <string name="installIncompatible">Deze app is niet compatibel met je apparaat. Toch installeren?</string>
@@ -43,7 +43,7 @@
     <string name="menu_manage">Bronnen</string>
     <string name="menu_search">Zoeken</string>
     <string name="menu_add_repo">Nieuwe bron</string>
-    <string name="menu_launch">Uitvoeren</string>
+    <string name="menu_launch">Openen</string>
     <string name="menu_share">Delen</string>
     <string name="menu_install">Installeren</string>
     <string name="menu_uninstall">Verwijderen</string>
@@ -111,7 +111,7 @@
         Schakel ze in om de beschikbare apps te kunnen zien.
     </string>
     <string name="unknown">Onbekend</string>
-    <string name="repo_confirm_delete_title">Softwarebron verwijderen?</string>
+    <string name="repo_confirm_delete_title">Pakketbron verwijderen\?</string>
     <string name="repo_confirm_delete_body">Als een bron verwijderd wordt, zijn de apps in die bron niet meer beschikbaar. Let op: eerder geïnstalleerde apps blijven op je apparaat staan.</string>
     <string name="repo_disabled_notification">%1$s uitgeschakeld.
 
@@ -255,7 +255,7 @@
     <string name="download_error">Download mislukt!</string>
 
     <string name="theme_night">Nacht</string>
-    <string name="menu_settings">Instellingen</string>
+    <string name="menu_settings">Voorkeuren</string>
     <string name="login_name">Gebruikersnaam</string>
     <string name="login_password">Wachtwoord</string>
     <string name="repo_edit_credentials">Wachtwoord wijzigen</string>
@@ -303,7 +303,7 @@
 
     <string name="update_auto_install">Installeer updates automatisch</string>
     <string name="update_auto_install_summary">Download en installeer updates in de achtergrond</string>
-    <string name="keep_install_history">Bewaar installatiegeschiedenis</string>
+    <string name="keep_install_history">Installatiegeschiedenis bewaren</string>
     <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in een privéopslagplaats</string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
@@ -322,7 +322,7 @@
     <string name="installed_app__updates_ignored">Updates genegeerd</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates genegeerd voor versie %1$s</string>
     <string name="updates__tts__download_app">Downloaden</string>
-    <string name="update_all">Alle updates downloaden</string>
+    <string name="update_all">Alles bijwerken</string>
 
     <string name="updates__hide_updateable_apps">Apps verbergen</string>
     <string name="updates__show_updateable_apps">Apps weergeven</string>
@@ -367,9 +367,9 @@
     <string name="notification_title_summary_installing">Wordt geïnstalleerd</string>
     <string name="notification_title_summary_installed">Geïnstalleerd</string>
     <string name="notification_title_summary_install_error">Installatie mislukt</string>
-    <string name="notification_action_update">Update</string>
-    <string name="notification_action_cancel">Annuleer</string>
-    <string name="notification_action_install">Installeer</string>
+    <string name="notification_action_update">Bijwerken</string>
+    <string name="notification_action_cancel">Annuleren</string>
+    <string name="notification_action_install">Installeren</string>
 
     <string name="tts_category_name">Categorie %1$s</string>
 
@@ -424,7 +424,7 @@
 	<item quantity="one">%1$d jaar geleden bijgewerkt</item>
 	<item quantity="other">%1$d jaar geleden bijgewerkt</item>
 </plurals>
-<string name="by_author_format">door %s</string>
+    <string name="by_author_format">door %s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="force_old_index">Oud indexformaat afdwingen</string>
     <string name="force_old_index_summary">Gebruik de XML-app-index in geval van programmafouten of compatibiliteitsproblemen</string>
@@ -481,7 +481,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Je camera lijkt niet over autofocus te beschikken. Het scannen van de code kan moeilijk zijn.</string>
+    <string name="warning_scaning_qr_code">Je camera lijkt niet over autofocus te beschikken. Het scannen van de code kan moeilijk zijn.</string>
     <string name="show_anti_feature_apps">Apps met antifuncties tonen</string>
     <string name="show_anti_feature_apps_on">Toon apps die antifuncties bevatten</string>
     <string name="force_touch_apps">Aanraakschermapps tonen</string>
@@ -520,17 +520,29 @@
     <string name="allow_push_requests_summary">Bron-metagegevens kunnen push requests bevatten om apps te installeren of verwijderen</string>
     <string name="antinosourcesince">De broncode is niet langer beschikbaar, geen updates mogelijk.</string>
 
-    <string name="share_repository">Deel bron</string>
-    <string name="send_install_history">Verzend installatiegeschiedenis</string>
+    <string name="share_repository">Bron delen</string>
+    <string name="send_install_history">Installatiegeschiedenis verzenden</string>
     <string name="send_history_csv">%s installatiegeschiedenis als CSV-bestand</string>
-    <string name="updates_disabled_by_settings">Alle updates uitgeschakeld door Data / WiFi-instellingen</string>
+    <string name="updates_disabled_by_settings">Alle updates uitgeschakeld door data-/wifi-instellingen</string>
 
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Aanbevolen</string>
     <string name="app_size">Grootte: %1$s</string>
 
-    <string name="send_installed_apps">Deel geïnstalleerde apps</string>
+    <string name="send_installed_apps">Geïnstalleerde apps delen</string>
     <string name="send_installed_apps_csv">Apps geïnstalleerd door F-Droid als CSV-bestand</string>
     <string name="menu_open">Openen</string>
     <string name="menu_downgrade">Degraderen</string>
-    </resources>
+    <string name="scan_removable_storage_title">Verwijderbare opslag scannen</string>
+    <string name="scan_removable_storage_toast">%s wordt gescand…</string>
+    <string name="scan_removable_storage_summary">Zoek naar pakketbronnen op verwijderbare opslagmedia, zoals SD-kaarten en USB-sticks</string>
+    <string name="app_repository">Pakketbron: %1$s</string>
+    <string name="main_menu__updates">Updates</string>
+    <string name="nearby_splash__read_external_storage">SD-kaarten kunnen gebruikt worden om te swappen!</string>
+    <string name="not_visible_nearby_description">Maak je apparaat eerst zichtbaar vooraleer uit te wisselen met apparaten in de buurt.</string>
+    <string name="nearby_splash__request_permission">Probeer het</string>
+    <string name="not_visible_nearby">Dichtbij niet ingeschakeld</string>
+    <string name="swap_toast_using_path">Maakt gebruik van %1$s</string>
+    <string name="swap_toast_not_removable_storage">De gemaakte keuze kwam niet overeen met een verwijderbaar medium, probeer het opnieuw!</string>
+    <string name="swap_toast_find_removeable_storage">Kies je verwijderbare SD-kaart of USB-stick</string>
+</resources>

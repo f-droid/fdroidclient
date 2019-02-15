@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, antes debe desinstalar a anterior. Por favor, fágao e ténteo de novo. (Ao desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
     <string name="installIncompatible">App incompatíbel co seu dispositivo. Instalar aínda así?</string>
@@ -25,7 +25,7 @@
     <string name="menu_manage">Xestionar repositorios</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Novo repositorio</string>
-    <string name="menu_launch">Executar</string>
+    <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
@@ -63,9 +63,7 @@
     <string name="unstable_updates">Actualizacións inestables</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñibles</string>
-    <string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar
-        paquetes
-    </string>
+    <string name="system_installer_on">Utiliza Privileged Extension para instalar, actualizar e eliminar paquetes</string>
     <string name="local_repo_name">Nome do teu repositorio local</string>
     <string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
 
@@ -209,15 +207,15 @@
     </string>
     <string name="unknown">Descoñecido</string>
     <string name="repo_confirm_delete_title">Eliminar o repositorio?</string>
-    <string name="repo_confirm_delete_body">Eliminar un repositorio implica que os seus aplicativos deixen de estar
-        dispoñibles en F-Droid.\n\nNota: Todos os aplicativos instalados anteriormente se conservarán no teu
-        dispositivo.
-    </string>
+    <string name="repo_confirm_delete_body">Eliminar un repositorio implica que os seus aplicativos deixen de estar dispoñibles.
+\n
+\nNota: Todos os aplicativos instalados anteriormente se conservarán no teu dispositivo.</string>
     <string name="repo_disabled_notification">Desactivado %1$s.\n\nTerás que volver a activar o repositorio para
         instalar os seus aplicativos.
     </string>
-    <string name="repo_added">Gardado o repositorio %1$s de F-Droid.</string>
-    <string name="repo_searching_address">Buscando o repositorio F-Droid en\n%1$s</string>
+    <string name="repo_added">Gardado o repositorio de paquetes %1$s .</string>
+    <string name="repo_searching_address">Buscando o repositorio de paquetes en
+\n%1$s</string>
     <string name="not_on_same_wifi">O teu dispositivo non está na mesma rede Wi-Fi que o repositorio local que
         engadiches! Intenta unirte á mesma rede: %s
     </string>
@@ -295,7 +293,7 @@
     <string name="notification_title_summary_install_error">Instalación falida</string>
     <string name="by_author_format">por %s</string>
     <string name="keep_install_history">Manter o historial de instalacións</string>
-    <string name="keep_install_history_summary">Gardar un rexistro de todas as instalacións e desinstalacións en F-Droid</string>
+    <string name="keep_install_history_summary">Gardar un rexistro de todas as instalacións e desinstalacións nun almacenamento privado</string>
     <string name="force_old_index">Forzar o antigo formato de índice</string>
     <string name="force_old_index_summary">En caso de erros ou incompatibilidades, utilizar o índice XML</string>
     <string name="update_auto_download">Obter anovacións automáticamente</string>
@@ -334,7 +332,7 @@
     <string name="installed_apps__activity_title">Aplicacións instaladas</string>
     <string name="installed_app__updates_ignored">Anovacións ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Anovacións ignoradas para a versión %1$s</string>
-    <string name="update_all">Descargar todas as anovacións</string>
+    <string name="update_all">Anovar todo</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendamos desinstalar esta app inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Atopamos unha vulnerabilidade en %1$s. Recomendamos actualizar á nova versión inmediatamente.</string>
@@ -376,7 +374,7 @@
     </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet? Baixa aplicativos de persoas próximas!</string>
-    <string name="nearby_splash__find_people_button">Atopar persoas próximas a min</string>
+    <string name="nearby_splash__find_people_button">Atopar persoas nas proximidades</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisan do %1$s para uso próximo.</string>
 
     <string name="swap_stopping_wifi">Detendo o Wi-Fi…</string>
@@ -491,7 +489,7 @@
     <string name="hide_on_long_search_press_title">Ocultar co botón de busca</string>
     <string name="hide_on_long_search_press_summary">Premer longo no botón de busca oculta o aplicativo</string>
 
-<string name="repo_add_mirror">Engadir réplica</string>
+    <string name="repo_add_mirror">Engadir réplica</string>
     <string name="repo_exists_add_fingerprint">%1$s xa está configurado, isto engadirá nova información clave.</string>
     <string name="repo_exists_enable">%1$s xa está configurado, confirma que queres reactivalo.</string>
     <string name="repo_exists_and_enabled">%1$s xa está configurado e activado.</string>
@@ -518,4 +516,38 @@
     <string name="swap_toast_could_not_enable_hotspot">Non foi posíbel activar o Ponto de acceso Wi-Fi!</string>
 
     <string name="warning_scaning_qr_code">A súa cámara non parece ter enfoque automático. Pode ser difícil escanear o código.</string>
-    </resources>
+    <string name="prompt_to_send_crash_reports">Preguntar antes de enviar relatorios de erros</string>
+    <string name="prompt_to_send_crash_reports_summary">Recoller datos sobre os erros e preguntar para os enviar ao desenvolvedor</string>
+    <string name="hide_all_notifications">Ocultar todas as notificacións</string>
+    <string name="hide_all_notifications_summary">Non amosar nengunha acción na barra de estado nen no panel de notificacións.</string>
+    <string name="send_install_history">Enviar historial de instalación</string>
+    <string name="send_history_csv">Histórico de instalacións de %s en arquivo CSV</string>
+    <string name="install_history">Histórico de instalacións</string>
+    <string name="install_history_summary">Ver o rexistro privado de todas as instalacións e desinstalacións</string>
+    <string name="send_version_and_uuid">Enviar versión e UUID para os servidores</string>
+    <string name="send_version_and_uuid_summary">Enviar a versión do aplicativo e un ID xerado aleatoriamente ao baixar. Ten efeito após reiniciar o aplicativo.</string>
+    <string name="allow_push_requests">Permitir aos repositorios instalar e desinstalar aplictivos</string>
+    <string name="allow_push_requests_summary">Os metadados do repositorio poden incluir pedidos push para instalar ou desinstalar aplicativos</string>
+    <string name="scan_removable_storage_title">Analizar almacenamento extraíbel</string>
+    <string name="scan_removable_storage_toast">Analizando %s…</string>
+    <string name="scan_removable_storage_summary">Procure repositorios de paquetes en almacenamento extraíbel como tarxetas SD e chaves de memoria USB</string>
+    <string name="about_forum">Foro de soporte</string>
+    <string name="app_suggested">Suxerido</string>
+    <string name="app_repository">Repositorio: %1$s</string>
+    <string name="app_size">Tamaño: %1$s</string>
+    <string name="send_installed_apps">Compartir aplicativos instalados</string>
+    <string name="send_installed_apps_csv">Aplicativos instalados por F-Droid con arquivo CSV</string>
+    <string name="updates_disabled_by_settings">Todas as actualizacións están desactivadas por causa dos axustes de Dados/WiFi</string>
+    <string name="menu_open">Abrir</string>
+    <string name="menu_downgrade">Rebaixamento</string>
+    <string name="main_menu__updates">Actualizacións</string>
+    <string name="antinosourcesince">O código fonte xá non está disponíbel e non é posíbel a actualización.</string>
+    <string name="share_repository">Compartir Repositorio</string>
+    <string name="nearby_splash__read_external_storage">As tarxetas SD pódense usar para trocar!</string>
+    <string name="nearby_splash__request_permission">Experimente</string>
+    <string name="not_visible_nearby">Proximidade non actividada</string>
+    <string name="not_visible_nearby_description">Antes de trocar con dispositivos próximos, torne o dispositivo visíbel.</string>
+    <string name="swap_toast_using_path">Usando %1$s</string>
+    <string name="swap_toast_not_removable_storage">Esa escolla non corresponde a ningún dispositivo de almacenamento extraíbel, tente novamente!</string>
+    <string name="swap_toast_find_removeable_storage">Escolla a súa tarxeta SD ou USB extraíbel</string>
+</resources>

@@ -230,7 +230,7 @@
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser
         eingeben.
     </string>
-    <string name="swap_intro">Mit Mitmenschen verbinden und Anwendungen tauschen.</string>
+    <string name="swap_intro">Mit Mitmenschen verbinden und Anwendungen austauschen.</string>
     <string name="swap_wifi_device_name">Gerätename</string>
     <string name="swap_cant_find_peers">Nicht den Gesuchten gefunden?</string>
     <string name="swap_no_peers_nearby">Keinen Tauschpartner gefunden.</string>
@@ -239,7 +239,7 @@
     <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn
         Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
     </string>
-    <string name="swap_nearby">Tausch in der Nähe</string>
+    <string name="swap_nearby">Direkttausch</string>
     <string name="loading">Ladevorgang …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
 
@@ -345,8 +345,8 @@
 
     <string name="main_menu__latest_apps">Neueste</string>
     <string name="main_menu__categories">Kategorien</string>
-    <string name="main_menu__updates">Aufgaben</string>
-    <string name="main_menu__swap_nearby">Tausch</string>
+    <string name="main_menu__updates">Aktualisierungen</string>
+    <string name="main_menu__swap_nearby">Direkt</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
 
@@ -370,7 +370,7 @@
     <string name="app_list__name__downloading_in_progress">%1$s wird heruntergeladen</string>
 
     <string name="updates__tts__download_app">Herunterladen</string>
-    <string name="update_all">Alle Aktualisierungen herunterladen</string>
+    <string name="update_all">Alle aktualisieren</string>
 
     <string name="updates__hide_updateable_apps">Anwendungen ausblenden</string>
     <string name="updates__show_updateable_apps">Anwendungen anzeigen</string>
@@ -397,7 +397,7 @@
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps mit Menschen in Ihrer Nähe tauschen!</string>
     <string name="nearby_splash__find_people_button">Tauschpartner finden</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Tauschfunktion zu verwenden.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
 
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
     <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
@@ -435,7 +435,7 @@
         <item quantity="one">Vor %1$d Jahr aktualisiert</item>
         <item quantity="other">Vor %1$d Jahren aktualisiert</item>
     </plurals>
-<string name="by_author_format">von %s</string>
+    <string name="by_author_format">von %s</string>
     <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
     <string name="force_old_index">Altes Index-Format erzwingen</string>
     <string name="force_old_index_summary">Sollten Fehler oder Kompatibilitätsprobleme auftauchen, bitte den XML-App-Index verwenden.</string>
@@ -493,7 +493,7 @@
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="panic_hide_warning_title">Wiederherstellungsmethode merken</string>
-<string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
+    <string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
     <string name="repo_add_mirror">Mirror hinzufügen</string>
     <string name="repo_exists_add_fingerprint">%1$s ist bereits eingerichtet, dies fügt neue Schlüsselinformationen hinzu.</string>
     <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie, dass Sie erneut aktivieren möchten.</string>
@@ -553,7 +553,7 @@
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte nicht zu irgendwelchen Wechselspeichern, versuchen Sie es noch einmal!</string>
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
-    <string name="not_visible_nearby">Tauschfunktion nicht aktiviert</string>
+    <string name="not_visible_nearby">Direkttausch nicht aktiviert</string>
     <string name="not_visible_nearby_description">Vor dem Tausch mit benachbarten Geräten müssen Sie Ihr Gerät sichtbar machen.</string>
     <string name="scan_removable_storage_toast">%s scannen …</string>
 </resources>

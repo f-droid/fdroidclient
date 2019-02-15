@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri salausavaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
@@ -43,7 +43,7 @@
     <string name="menu_manage">Hallitse sovelluslähteitä</string>
     <string name="menu_search">Etsi</string>
     <string name="menu_add_repo">Uusi sovelluslähde</string>
-    <string name="menu_launch">Suorita</string>
+    <string name="menu_launch">Avaa</string>
     <string name="menu_share">Jaa</string>
     <string name="menu_install">Asenna</string>
     <string name="menu_uninstall">Poista</string>
@@ -315,7 +315,7 @@
 
     <string name="versions">Versiot</string>
     <string name="warning_no_internet">Päivitys epäonnistui, oletko yhteydessä internettiin?</string>
-<string name="app_version_x_available">Versio %1$s saatavilla</string>
+    <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
     <string name="app_new">Uusi</string>
@@ -331,9 +331,9 @@
     <string name="updates__show_updateable_apps">Näytä sovellukset</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Lataa päivitys sovellukselle %1$d.</item>
-        <item quantity="other">Lataa päivitykset sovelluksille %1$d.</item>
-    </plurals>
+    <item quantity="one">Lataa päivitys %1$d:lle sovellukselle.</item>
+    <item quantity="other">Lataa päivitykset %1$d:lle sovellukselle.</item>
+</plurals>
 
     <string name="clear_search">Tyhjennä haku</string>
 
@@ -380,7 +380,7 @@
 	<item quantity="one">Päivitetty %1$d päivä sitten</item>
 	<item quantity="other">Päivitetty %1$d päivää sitten</item>
 </plurals>
-<string name="installed_app__updates_ignored">Päivitykset ohitetaan</string>
+    <string name="installed_app__updates_ignored">Päivitykset ohitetaan</string>
     <string name="app_details_donate_prompt_unknown_author">Osta sovelluksen %1$s kehittäjille kahvi!</string>
     <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Osta heille kahvi!</string>
 
@@ -406,7 +406,7 @@
 	<item quantity="other">Näytä kaikki %1$d sovellukset %2$s-luokasta</item>
 </plurals>
 
-<string name="by_author_format">tekijältä %s</string>
+    <string name="by_author_format">tekijältä %s</string>
     <string name="hide_all_notifications">Piilota kaikki ilmoitukset</string>
     <string name="hide_all_notifications_summary">Estä kaikkien toimintojen näkyminen tilapalkissa ja ilmoitusruudussa.</string>
     <string name="force_old_index">Pakota vanha ideksiformaatti</string>
@@ -514,7 +514,7 @@
 	<item quantity="one">Päivitetty %1$d vuosi sitten</item>
 	<item quantity="other">Päivitetty %1$d vuotta sitten</item>
 </plurals>
-<string name="app_details__incompatible_mismatched_signature">Poikkeava allekirjoitus asennettuun versioon nähden</string>
+    <string name="app_details__incompatible_mismatched_signature">Poikkeava allekirjoitus asennettuun versioon nähden</string>
     <string name="app_details__no_versions__show_incompat_versions">Nähdäksesi yhteensopimattomatkin versiot, käytä \"%1$s\" asetusta.</string>
     <string name="prompt_to_send_crash_reports">Pyydä lähettämään kaatumisraportteja</string>
     <string name="prompt_to_send_crash_reports_summary">Kerää tietoja kaatumisista ja pyydä lähettämään ne kehittäjälle</string>
@@ -542,4 +542,4 @@
     <string name="antinosourcesince">Lähdekoodi ei ole enää käytettävissä, päivitykset eivät mahdollisia.</string>
 
     <string name="share_repository">Jaa sovelluslähde</string>
-    </resources>
+</resources>

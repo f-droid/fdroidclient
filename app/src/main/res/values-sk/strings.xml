@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">Nová verzia je podpísaná iným kľúčom ako tá stará. Pred inštaláciou novej verzie je
         nutné starú odinštalovať. Urobte to a skúste znovu. (Pozor! Odinštalovanie zmaže všetky interné dáta uložené
@@ -372,7 +372,7 @@
     <string name="updates__hide_updateable_apps">Skryť aplikácie</string>
     <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>
 
-<string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
+    <string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
         <item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
@@ -426,7 +426,7 @@
         <item quantity="few">Od poslednej aktualizácie prešli %1$d dni</item>
         <item quantity="other">Od poslednej aktualizácie prešlo %1$d dní</item>
     </plurals>
-<string name="by_author_format">autor %s</string>
+    <string name="by_author_format">autor %s</string>
     <string name="force_old_index">Pôvodný index</string>
     <string name="force_old_index_summary">V prípade problémov s kompatibilitou alebo chýb, použiť index vo formáte XML</string>
     <string name="download_404">Požadovaný súbor sa nenašiel.</string>

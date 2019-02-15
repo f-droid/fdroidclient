@@ -452,7 +452,7 @@
         <item quantity="many">עודכן לפני %1$d שנים</item>
         <item quantity="other">עודכן לפני %1$d שנים</item>
     </plurals>
-<string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
+    <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
     <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומונים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>
 
@@ -507,7 +507,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
+    <string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
     <string name="show_anti_feature_apps">לכלול יישומונים שמכילים תכונות שליליות</string>
     <string name="show_anti_feature_apps_on">הצגת יישומונים שדורשים תכונות שליליות</string>
     <string name="force_touch_apps">לכלול יישומוני מסך מגע</string>
