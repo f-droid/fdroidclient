@@ -289,7 +289,7 @@
     <string name="keep_install_history">保留安装纪录</string>
     <string name="keep_install_history_summary">在应用的私有存储内记录所有安装和卸载</string>
     <string name="warning_no_internet">无法更新，您是否已连接至互联网？</string>
-<string name="main_menu__latest_apps">最新</string>
+    <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">分类</string>
     <string name="main_menu__swap_nearby">附近</string>
 
@@ -395,7 +395,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">更新于 %1$d 年前</item>
     </plurals>
-<string name="by_author_format">作者：%s</string>
+    <string name="by_author_format">作者：%s</string>
     <string name="download_404">找不到所请求的文件。</string>
     <string name="force_old_index">强制使用旧索引格式</string>
     <string name="force_old_index_summary">如果出现错误或兼容问题，请使用 XML 应用索引</string>
@@ -452,7 +452,7 @@
     <string name="hide_on_long_search_press_title">用搜索按钮隐藏</string>
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
 
-<string name="warning_scaning_qr_code">您的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
+    <string name="warning_scaning_qr_code">您的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
     <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
     <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用程序</string>
     <string name="repo_add_mirror">添加镜像</string>
@@ -514,4 +514,5 @@
     <string name="swap_toast_using_path">使用 %1$s</string>
     <string name="swap_toast_not_removable_storage">选择无法匹配任何可移动存储设备，请重试！</string>
     <string name="swap_toast_find_removeable_storage">选择您的可移动 SD 卡或 USB</string>
+    <string name="main_menu__updates">更新</string>
 </resources>

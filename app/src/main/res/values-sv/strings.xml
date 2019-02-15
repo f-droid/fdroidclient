@@ -357,7 +357,7 @@
     <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
 
     <string name="updates__tts__download_app">Hämta</string>
-    <string name="update_all">Hämta alla uppdateringar</string>
+    <string name="update_all">Uppdatera alla</string>
 
     <string name="updates__hide_updateable_apps">Göm appar</string>
     <string name="updates__show_updateable_apps">Visa appar</string>
@@ -377,7 +377,7 @@
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
-    <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
+    <string name="nearby_splash__find_people_button">Hitta personer i närheten</string>
     <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"i närheten\".</string>
 
     <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittade</string>
@@ -415,7 +415,7 @@
 	<item quantity="one">Uppdaterades för %1$d år sedan</item>
 	<item quantity="other">Uppdaterades för %1$d år sedan</item>
 </plurals>
-<string name="by_author_format">av %s</string>
+    <string name="by_author_format">av %s</string>
     <string name="download_404">Den begärda filen hittades inte.</string>
     <string name="force_old_index">Tvinga gammalt indexformat</string>
     <string name="force_old_index_summary">Om det finns fel eller kompatibilitetsproblem, använd XML-appindexet</string>
@@ -436,7 +436,7 @@
     <string name="app_list__dismiss_downloading_app">Hämtning avbruten</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi hittade en sårbarhet hos %1$s. Du rekommenderas avinstallera denna app omedelbart.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi hittade en sårbarhet hos %1$s. Du rekommenderas uppgradera till den nyaste versionen omedelbart.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi hittade en sårbarhet hos %1$s. Du rekommenderas uppdatera till den nyaste versionen omedelbart.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorera</string>
 
     <string name="privacy">Integritet</string>
@@ -473,7 +473,7 @@
     <string name="hide_on_long_search_press_title">Göm med sökknappen</string>
     <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att gömma appen</string>
 
-<string name="over_wifi">Över Wi-Fi</string>
+    <string name="over_wifi">Över Wi-Fi</string>
     <string name="over_data">Över mobildata</string>
     <string name="over_network_always_summary">Använd alltid den här anslutningen när den är tillgänglig</string>
     <string name="over_network_on_demand_summary">Använd endast den här anslutningen när jag klickar för att ladda ner</string>
@@ -528,4 +528,13 @@
     <string name="scan_removable_storage_title">Skanna borttagningsbart lagringsutrymme</string>
     <string name="scan_removable_storage_toast">Skannar %s…</string>
     <string name="swap_toast_using_path">Använder %1$s</string>
+    <string name="scan_removable_storage_summary">Leta efter paketförråd på flyttbar lagring som SD-kort och USB-minnen</string>
+    <string name="app_repository">Förråd: %1$s</string>
+    <string name="main_menu__updates">Uppdateringar</string>
+    <string name="nearby_splash__read_external_storage">SD-kort kan användas för att byta!</string>
+    <string name="nearby_splash__request_permission">Prova</string>
+    <string name="not_visible_nearby">I närheten inte aktiverat</string>
+    <string name="not_visible_nearby_description">Gör din enhet synlig innan du byter med närliggande enheter.</string>
+    <string name="swap_toast_not_removable_storage">Det valet matchade inte några borttagbara lagringsenheter, försök igen!</string>
+    <string name="swap_toast_find_removeable_storage">Välj borttagbart SD-kort eller USB</string>
 </resources>

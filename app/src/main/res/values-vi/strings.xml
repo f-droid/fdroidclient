@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">Phiên bản mới có mã khoá khác với phiên bản cũ. Để cài đặt phiên bản mới phải xoá
         phiên bản cũ trước. Hãy xoá phiên bản cũ và thử lại. (Chú ý rằng khi xoá ứng dụng, dữ liệu ứng dụng sẽ bị mất)
@@ -275,7 +275,7 @@
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư. Cần ứng dụng Orbot</string>
-<string name="main_menu__swap_nearby">Lân cận</string>
+    <string name="main_menu__swap_nearby">Lân cận</string>
 
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>
@@ -450,7 +450,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">Được cập nhật %1$d năm trước</item>
     </plurals>
-<string name="over_wifi">Bằng Wi-Fi</string>
+    <string name="over_wifi">Bằng Wi-Fi</string>
     <string name="over_data">Bằng dữ liệu di động</string>
     <string name="over_network_always_summary">Luôn dùng kết nối này nếu có thể</string>
     <string name="over_network_on_demand_summary">Chỉ sử dụng kết nối này khi nhấn nút tải xuống</string>
@@ -485,4 +485,4 @@
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
 
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
-    </resources>
+</resources>

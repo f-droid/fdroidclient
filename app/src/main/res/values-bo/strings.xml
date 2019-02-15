@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="menu_manage">མཛོད་ཁང་།</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="menu_manage">མཛོད་ཁང་།</string>
     <string name="menu_settings">སྒྲིག་བཀོད།</string>
     <string name="menu_search">འཚོལ།</string>
     <string name="menu_add_repo">མཛོད་ཁང་གསར་པ།</string>
@@ -398,7 +399,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">གསར་བསྒྱུར་%1$d ལོ་ཤས་གོང་ལ་བྱས་ཟིན།</item>
     </plurals>
-<string name="enable_proxy_summary">དྲྭ་རྒྱའི་རེ་སྐུལ་ཆ་ཚང་ལ་ HTTP ངོ་ཚབ་སྒྲིག་བཀོད་བྱས།</string>
+    <string name="enable_proxy_summary">དྲྭ་རྒྱའི་རེ་སྐུལ་ཆ་ཚང་ལ་ HTTP ངོ་ཚབ་སྒྲིག་བཀོད་བྱས།</string>
     <string name="proxy_host">དོ་བདག་ངོ་ཚབ།</string>
     <string name="proxy_host_summary">ཁྱེད་རང་གི་ངོ་ཚབ་ཀྱི་དོ་བདག་མིང་(དཔེར་ན། 127.0.0.1)</string>
     <string name="proxy_port">ངོ་ཚབ་མཐུད་སྒོ།</string>

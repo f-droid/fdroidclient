@@ -408,7 +408,7 @@
 
     <string name="categories__empty_state__no_categories">No hay categorías para mostrar</string>
 
-<string name="menu_video">Vídeo</string>
+    <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar descarga</string>
     <string name="app__tts__downloading_progress">Descargando, %1$d%% completado</string>
     <string name="menu_license">Licencia: %s</string>
@@ -436,7 +436,7 @@
         <item quantity="one">Actualizado hace un año</item>
         <item quantity="other">Actualizado hace %1$d años</item>
     </plurals>
-<string name="by_author_format">por %s</string>
+    <string name="by_author_format">por %s</string>
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
     <string name="force_old_index">Forzar al formato de índice antiguo</string>
     <string name="force_old_index_summary">En caso de que haya problemas o incopatibilidades, usa el índice XML de la aplicación</string>
@@ -480,7 +480,7 @@
     <string name="panic_hide_title">Ocultar %s</string>
     <string name="panic_hide_summary">La aplicación se ocultará</string>
 
-<string name="sort_search">Ordenar resultados</string>
+    <string name="sort_search">Ordenar resultados</string>
 
     <string name="menu_liberapay">Liberapay</string>
 
@@ -548,4 +548,13 @@
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="app_repository">Repositorio: %1$s</string>
+    <string name="scan_removable_storage_summary">Busque repositorios de paquetes en almacenamiento extraíble como tarjetas SD y unidades USB</string>
+    <string name="main_menu__updates">Actualizaciones</string>
+    <string name="nearby_splash__read_external_storage">Las tarjetas SD se pueden utilizar como swap!</string>
+    <string name="nearby_splash__request_permission">Inténtalo otra vez</string>
+    <string name="not_visible_nearby">Nearby no habilitado</string>
+    <string name="not_visible_nearby_description">Antes de intercambiar con dispositivos cercanos, haga visible su dispositivo.</string>
+    <string name="swap_toast_using_path">Utilizando %1$s</string>
+    <string name="swap_toast_not_removable_storage">Esa opción no coincide con ningún dispositivo de almacenamiento extraíble, ¡inténtalo de nuevo!</string>
+    <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
 </resources>

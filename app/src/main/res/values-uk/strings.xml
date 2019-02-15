@@ -377,7 +377,7 @@
         <item quantity="many">Оновлено %1$d днів тому</item>
         <item quantity="other">Оновлено %1$d днів тому</item>
     </plurals>
-<string name="updates__tts__download_app">Завантажити</string>
+    <string name="updates__tts__download_app">Завантажити</string>
     <string name="by_author_format">від %s</string>
     <string name="app__tts__cancel_download">Скасувати завантаження</string>
     <string name="menu_video">Відео</string>
@@ -446,7 +446,7 @@
         <item quantity="many">Оновлено %1$d років тому</item>
         <item quantity="other">Оновлено %1$d років тому</item>
     </plurals>
-<string name="app_details__incompatible_mismatched_signature">Різний підпис до встановленої версії</string>
+    <string name="app_details__incompatible_mismatched_signature">Різний підпис до встановленої версії</string>
     <string name="app_details__no_versions__show_incompat_versions">У будь-якому разі, щоб показати несумісні версії тут, увімкніть параметр \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Немає версій із сумісним підписом</string>
     <string name="app_details__no_versions__none_compatible_with_device">Немає версій, сумісних із пристроєм</string>
@@ -475,7 +475,7 @@
 
     <string name="panic_exit_title">Вийти з додатку</string>
     <string name="panic_hide_title">Приховати %s</string>
-<string name="sort_search">Розсортувати за пошуком</string>
+    <string name="sort_search">Розсортувати за пошуком</string>
 
     <string name="menu_liberapay">Liberapay</string>
 

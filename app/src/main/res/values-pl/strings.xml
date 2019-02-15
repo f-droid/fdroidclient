@@ -454,7 +454,7 @@
         <item quantity="many">Uaktualniono %1$d lat temu</item>
         <item quantity="other">Uaktualniono %1$d lat temu</item>
     </plurals>
-<string name="by_author_format">od %s</string>
+    <string name="by_author_format">od %s</string>
     <string name="download_404">Nie znaleziono żądanego pliku.</string>
     <string name="force_old_index">Wymuś starszy format indeksu</string>
     <string name="force_old_index_summary">W przypadku błędów lub problemów z kompatybilnością, użyj indeksu XML aplikacji</string>
@@ -511,7 +511,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Twój aparat nie posiada autofokusu. Mogą wystąpić trudności ze zeskanowaniem kodu.</string>
+    <string name="warning_scaning_qr_code">Twój aparat nie posiada autofokusu. Mogą wystąpić trudności ze zeskanowaniem kodu.</string>
     <string name="show_anti_feature_apps">Uwzględnij (trochę) niefajne aplikacje</string>
     <string name="show_anti_feature_apps_on">Pokaż aplikacje zawierające niepożądane funkcje</string>
     <string name="force_touch_apps">Uwzględnij aplikacje dotykowe</string>
@@ -574,4 +574,5 @@
     <string name="swap_toast_using_path">Wykorzystujesz %1$s</string>
     <string name="swap_toast_not_removable_storage">Ten wybór nie pasował do żadnych usuwalnych urządzeń pamięci masowej, spróbuj ponownie!</string>
     <string name="swap_toast_find_removeable_storage">Wybierz wymienną kartę SD lub USB</string>
+    <string name="main_menu__updates">Aktualizacje</string>
 </resources>

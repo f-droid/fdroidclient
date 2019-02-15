@@ -373,7 +373,7 @@
     <string name="updates__tts__download_app">Stáhnout</string>
     <string name="update_all">Aktualizovat vše</string>
 
-<string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
+    <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>
     <string name="force_old_index">vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou, použít XML rejstřík aplikací</string>
@@ -471,7 +471,7 @@
         <item quantity="few">Aktualizováno před %1$d roky</item>
         <item quantity="other">Aktualizováno před %1$d lety</item>
     </plurals>
-<string name="privacy">Soukromí</string>
+    <string name="privacy">Soukromí</string>
     <string name="preventScreenshots_title">Zabránit pořizování snímků obrazovky</string>
     <string name="preventScreenshots_summary">Blokuje pořizování snímků obrazovky a skrývá aplikace v seznamu nedávno použitých</string>
 
@@ -504,7 +504,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
+    <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
     <string name="show_anti_feature_apps">Zahrnout aplikace s funkcemi které nejsou v zájmu uživatele</string>
     <string name="show_anti_feature_apps_on">Zobrazit aplikace které vyžadují funkce které nejsou v zájmu uživatele</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>

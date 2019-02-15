@@ -450,7 +450,7 @@
         <item quantity="one">Agiornada %1$d annu a como</item>
         <item quantity="other">Agiornada %1$d annos a como</item>
     </plurals>
-<string name="by_author_format">de %s</string>
+    <string name="by_author_format">de %s</string>
     <string name="download_404">Su documentu pedidu no est istadu agatadu.</string>
     <string name="force_old_index">Fortza su formatu betzu de s\'ìnditze</string>
     <string name="force_old_index_summary">In casu chi bi siant errores o problemas de compatibilidade, imprea s\'ìnditze XML de s\'aplicatzione</string>
@@ -507,7 +507,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
+    <string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
     <string name="show_anti_feature_apps">Inclue sas aplicatziones cun anti-funtzionalidades</string>
     <string name="show_anti_feature_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de anti-funtzionalidades</string>
     <string name="force_touch_apps">Inclue sas aplicatziones chi impreant s\'ischermu tàtile</string>

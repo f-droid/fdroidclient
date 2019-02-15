@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Tegye ezt meg, és próbálja újra. (Figyelem: az eltávolítás törli az alkalmazás minden tárolt adatát.)</string>
     <string name="installIncompatible">Az alkalmazás nem kompatibilis ezzel az eszközzel, ennek ellenére is telepíti?</string>
@@ -270,7 +270,7 @@
     <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése a háttérben</string>
     <string name="versions">Verziók</string>
     <string name="local_repo_running">Az F-Droid cserére kész</string>
-<string name="main_menu__latest_apps">Legújabb</string>
+    <string name="main_menu__latest_apps">Legújabb</string>
     <string name="main_menu__categories">Kategóriák</string>
     <string name="main_menu__swap_nearby">Közeli</string>
 
@@ -410,7 +410,7 @@
         <item quantity="one">%1$d éve frissítve</item>
         <item quantity="other">%1$d éve frissítve</item>
     </plurals>
-<string name="app_installed_media">A fájl telepítve ide: %s</string>
+    <string name="app_installed_media">A fájl telepítve ide: %s</string>
     <string name="status_inserting_x_apps">Alkalmazás részleteinek mentése (%1$d / %2$d), forrás: %3$s</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">%d megtekintése</item>
@@ -437,7 +437,7 @@
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
     <string name="tts_category_name">Kategória %1$s</string>
 
-<string name="over_wifi">Wi-Fin keresztül</string>
+    <string name="over_wifi">Wi-Fin keresztül</string>
     <string name="over_network_always_summary">Mindig ezt a kapcsolatot használja, ha elérhető</string>
     <string name="over_network_on_demand_summary">Csak akkor használja ezt a kapcsolatot, ha a letöltésre kattint</string>
     <string name="over_network_never_summary">Soha ne töltsön le semmit ezen a kapcsolaton keresztül</string>
@@ -522,4 +522,4 @@
 
     <string name="menu_open">Megnyitás</string>
     <string name="menu_downgrade">Visszaállás</string>
-    </resources>
+</resources>

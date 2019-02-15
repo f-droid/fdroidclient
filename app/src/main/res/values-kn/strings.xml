@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
 
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಅನುಸ್ಥಾಪಿಸು</string>
@@ -80,7 +81,7 @@
     <string name="other">ಇತರೆ</string>
 
     <string name="delete">ಅಳಿಸು</string>
-<string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
+    <string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
     <string name="updates">ವಿಭಾಗಗಳು</string>
     <string name="category_Internet">ಅಂತರ್ಜಾಲ</string>
     <string name="category_Money">ಹಣ</string>
@@ -93,4 +94,4 @@
     <string name="app_list__name__downloading_in_progress">%1$s ಇಳಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="updates__tts__download_app">ಇಳಿಸು</string>
     <string name="repo_details">ಭಂಡಾರ</string>
-    </resources>
+</resources>

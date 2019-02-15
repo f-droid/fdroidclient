@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="installIncompatible">به‌نظر می‌رسد این کاره با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی نصب کنید؟</string>
     <string name="delete">حذف</string>
@@ -249,7 +249,7 @@
     <string name="swap_nfc_description">اگر دوست‌تان اف‌دروید دارد و NFC اش روشن است، دستگاه‌های‌تان را با هم تماس بدهید.</string>
     <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکی از شما می‌تواند یک هاتسپات وای‌فای ایجاد کند.</string>
     <string name="swap_qr_isnt_for_swap">رمز QR ای که اسکن کردید، شبیه یک رمز تبادل نیست.</string>
-    <string name="loading">در حال بارگزاری…</string>
+    <string name="loading">در حال بار کردن…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به دستگاه خطایی رخ داد، نمی‌توان تبادل کرد!</string>
 
     <string name="install_confirm">نیازمند دسترسی به</string>
@@ -290,7 +290,7 @@
     <string name="uninstall_error_notify_title">خطا در حذف نصب %s</string>
 
 
-<string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
+    <string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
     <string name="keep_install_history_summary">نگه داشتن گزارشی از تمام نصب و حذف‌ها در یک فضای خصوصی</string>
     <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_install_summary">بارگیری و نصب کاره‌های به‌روز در پس‌زمینه</string>
@@ -311,7 +311,7 @@
     <string name="installed_app__updates_ignored">صرف‌نظر از به‌روز رسانی</string>
     <string name="installed_app__updates_ignored_for_suggested_version">از به‌روز رسانی برای نگارش صرف‌نظر شده است %1$s</string>
     <string name="updates__tts__download_app">بارگیری</string>
-    <string name="update_all">بارگیری تمام به‌روز رسانی‌ها</string>
+    <string name="update_all">به‌روز رسانی همه</string>
 
     <string name="updates__hide_updateable_apps">مخفی کردن کاره‌ها</string>
     <string name="updates__show_updateable_apps">نمایش کاره‌ها</string>
@@ -387,7 +387,7 @@
         <item quantity="one">%1$d روز پیش به‌روز شده</item>
         <item quantity="other">%1$d روز پیش به‌روز شده‌</item>
     </plurals>
-<string name="menu_license">پروانه: %s</string>
+    <string name="menu_license">پروانه: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d بیش‌تر…</item>
         <item quantity="other">+%1$d بیش‌تر…</item>
@@ -412,7 +412,7 @@
         <item quantity="one">%1$d سال پیش به‌روز شده</item>
         <item quantity="other">%1$d سال پیش به‌روز شده</item>
     </plurals>
-<string name="by_author_format">توسط %s</string>
+    <string name="by_author_format">توسط %s</string>
     <string name="download_404">فایل درخواستی یافت نشد.</string>
     <string name="force_old_index">استفاده اجباری از قالب فهرست قدیمی</string>
     <string name="force_old_index_summary">در صورت وجود باگ یا مشکلات عدم سازگاری، از فهرست xml کاره استفاده کنید</string>
@@ -468,7 +468,7 @@
 
     <string name="menu_liberapay">لیبراپی</string>
 
-<string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
+    <string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
     <string name="repo_add_mirror">افزودن mirror</string>
     <string name="repo_exists_add_fingerprint">%1$s از قبل تنظیم شده است، این عملیات اطلاعات کلید جدید را اضافه میکند.</string>
     <string name="repo_exists_enable">%1$s از قبل تنظیم شده است، در صورتی که میخواهید، فعال کردن مجدد آن را تایید نمایید.</string>
@@ -520,4 +520,16 @@
     <string name="send_installed_apps_csv">کاره‌های نصب‌شده از اف‌دروید در قالب پروندهٔ csv</string>
     <string name="menu_open">گشودن</string>
     <string name="menu_downgrade">پایین بردن</string>
-    </resources>
+    <string name="scan_removable_storage_title">پویش رسانهٔ جداشدنی</string>
+    <string name="scan_removable_storage_toast">در حال پویش %s…</string>
+    <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی رسانهٔ جداشدنی مثل کارت‌های SD و حافظه‌های USB</string>
+    <string name="app_repository">مخزن: %1$s</string>
+    <string name="main_menu__updates">به‌روز رسانی‌ها</string>
+    <string name="nearby_splash__read_external_storage">کارت SD می‌تواند برای تاخت زدن استفاده شود!</string>
+    <string name="nearby_splash__request_permission">بیازماییدش</string>
+    <string name="not_visible_nearby">اطراف فعّال نیست</string>
+    <string name="not_visible_nearby_description">پیش از تاخت زدن با دستگاه‌های اطراف، دستگاهتان را قابل مشاهده کنید.</string>
+    <string name="swap_toast_using_path">از طریق %1$s</string>
+    <string name="swap_toast_not_removable_storage">آن گزینه با هیچ رسانهٔ جداشدنی‌ای مطابقت نداشت. دوباره تلاش کنید!</string>
+    <string name="swap_toast_find_removeable_storage">کارت SD یا USB جداشدنیتان را برگزینید</string>
+</resources>

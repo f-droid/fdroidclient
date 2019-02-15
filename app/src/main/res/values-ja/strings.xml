@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">新しいバージョンは、以前のものと異なる暗号鍵で署名されています。新しいバージョンをインストールするには、まず以前のバージョンをアンインストールする必要があります。その後、再度実行してください。(アプリをアンインストールすると保存されたデータが消去されることに注意してください)</string>
     <string name="installIncompatible">アプリはお使いの端末と互換性がありません。それでもインストールしますか？</string>
@@ -52,7 +52,7 @@
     <string name="menu_website">ウェブサイト</string>
     <string name="menu_issues">課題</string>
     <string name="menu_source">ソースコード</string>
-    <string name="menu_upgrade">アップグレード</string>
+    <string name="menu_upgrade">更新</string>
     <string name="menu_donate">寄付する</string>
     <string name="details_notinstalled">未インストール</string>
     <string name="antiadslist">このアプリは広告を表示します</string>
@@ -305,7 +305,7 @@
     <string name="notification_content_single_installing">「%1$s」をインストール中…</string>
     <string name="notification_content_single_installed">正常にインストールしました</string>
     <string name="notification_title_summary_update_available">更新が利用可能です</string>
-    <string name="notification_title_summary_downloading_update">更新をダウンロードしています</string>
+    <string name="notification_title_summary_downloading_update">更新をダウンロードしています…</string>
     <string name="notification_title_summary_ready_to_install_update">アップデートをインストールする準備ができました</string>
     <string name="notification_action_update">更新</string>
     <string name="notification_title_summary_downloading">ダウンロード中…</string>
@@ -350,7 +350,7 @@
     <string name="app_list__name__downloading_in_progress">%1$sをダウンロード中</string>
 
     <string name="updates__tts__download_app">ダウンロード</string>
-    <string name="update_all">すべての更新をダウンロード</string>
+    <string name="update_all">すべて更新</string>
 
     <string name="updates__hide_updateable_apps">アプリを非表示</string>
     <string name="updates__show_updateable_apps">アプリを表示</string>
@@ -400,7 +400,7 @@
     <plurals name="details_last_update_years">
         <item quantity="other">%1$d年前に更新</item>
     </plurals>
-<string name="by_author_format">開発者: %s</string>
+    <string name="by_author_format">開発者: %s</string>
     <string name="download_404">要求されたファイルが見つかりませんでした。</string>
     <string name="force_old_index">古いインデックスフォーマットを強制する</string>
     <string name="force_old_index_summary">バグや互換性の問題がある場合に、XMLアプリインデックスを使用します</string>
@@ -421,7 +421,7 @@
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
 
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$sで脆弱性を発見しました。今すぐにこのアプリをアンインストールすることをおすすめします。</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$sで脆弱性を発見しました。今すぐに最新バージョンへのアップグレードすることをおすすめします。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$sで脆弱性を発見しました。今すぐに最新バージョンへの更新することをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
 
     <string name="privacy">プライバシー</string>
@@ -457,7 +457,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
+    <string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
     <string name="repo_add_mirror">ミラーを追加</string>
     <string name="repo_exists_add_fingerprint">%1$sは既に設定されているため、新しい鍵の情報が追加されます。</string>
     <string name="repo_exists_enable">%1$sはすでに設定されています。再度有効にすることを承認してください。</string>
@@ -509,4 +509,16 @@
     <string name="app_size">サイズ: %1$s</string>
 
     <string name="menu_downgrade">ダウングレード</string>
-    </resources>
+    <string name="scan_removable_storage_title">リムーバルストレージをスキャン</string>
+    <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
+    <string name="scan_removable_storage_summary">SDカードやUSBメモリなどのリムーバブルストレージでパッケージレポジトリを探します</string>
+    <string name="app_repository">リポジトリ: %1$s</string>
+    <string name="main_menu__updates">更新</string>
+    <string name="nearby_splash__read_external_storage">SDカードを使って交換することができます!</string>
+    <string name="nearby_splash__request_permission">試してください</string>
+    <string name="not_visible_nearby">Nearbyが有効ではありません</string>
+    <string name="not_visible_nearby_description">近くのデバイスと交換する前に、デバイスを表示可能にしてください。</string>
+    <string name="swap_toast_using_path">%1$sを使用</string>
+    <string name="swap_toast_not_removable_storage">選択したものは、どのリムーバブルストレージデバイスとも一致しませんでした。もう一度やり直してください!</string>
+    <string name="swap_toast_find_removeable_storage">お使いの取り外し可能SDカードまたはUSBを選択してください</string>
+</resources>

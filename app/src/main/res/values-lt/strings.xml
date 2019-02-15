@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="version">Versija</string>
     <string name="delete">Šalinti</string>
@@ -65,7 +65,7 @@
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir mokymasis</string>
     <string name="swap_welcome">Sveikiname, jūs naudojate F-Droid!</string>
-<string name="app_name">F-Droid</string>
+    <string name="app_name">F-Droid</string>
 
     <string name="back">Atgal</string>
     <string name="menu_settings">Nustatymai</string>
@@ -130,7 +130,7 @@
     <string name="keep_install_history_summary">Saugoti log bylą visiems įdiegimams ir išdiegimams F-Droid programėlėje</string>
     <string name="force_old_index">Priversti senąjį indeksavimo formatą</string>
     <string name="update_auto_download_summary">Atnaujinimai parsiunčiami automatiškai o Jūs perspėjami juos instaliuoti</string>
-<string name="latest__empty_state__no_recent_apps">Nerasta naujų programų</string>
+    <string name="latest__empty_state__no_recent_apps">Nerasta naujų programų</string>
     <string name="latest__empty_state__never_updated">Kai jūsų programų sąrašas bus atnaujintas, naujausios programos bus rodomos čia</string>
     <string name="categories__empty_state__no_categories">Nėra rodomų kategorijų</string>
 
@@ -292,4 +292,4 @@
     <string name="repo_official_mirrors">Oficialūs veidrodžiai</string>
     <string name="unknown">Nežinomas</string>
     <string name="repo_added">Išsaugota paketo saugykla %1$s.</string>
-    </resources>
+</resources>

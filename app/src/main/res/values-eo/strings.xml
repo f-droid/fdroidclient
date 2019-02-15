@@ -429,7 +429,7 @@
         <item quantity="one">Ĝisdatigita antaŭ %1$d jaro</item>
         <item quantity="other">Ĝisdatigita antaŭ %1$d jaroj</item>
     </plurals>
-<string name="by_author_format">de %s</string>
+    <string name="by_author_format">de %s</string>
     <string name="download_404">Ne trovis petitan dosieron.</string>
     <string name="force_old_index">Devigi malnovan formon de indekso</string>
     <string name="force_old_index_summary">Por okazo de eraroj aŭ kongruec-problemoj, uzi XML-indekson de aplikaĵoj</string>
@@ -486,7 +486,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
+    <string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
     <string name="show_anti_feature_apps">Inkluzivi aplikaĵojn kun fiebloj</string>
     <string name="show_anti_feature_apps_on">Montri aplikaĵojn, kiuj enhavas nedeziratajn eblojn</string>
     <string name="force_touch_apps">Inkluzivi tuŝekranajn aplikaĵojn</string>

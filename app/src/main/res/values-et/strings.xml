@@ -318,7 +318,7 @@
     <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
         Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?
     </string>
-<string name="main_menu__latest_apps">Uusimad</string>
+    <string name="main_menu__latest_apps">Uusimad</string>
     <string name="main_menu__categories">Kategooriad</string>
     <string name="main_menu__swap_nearby">Läheduses</string>
 
@@ -460,7 +460,7 @@
         <item quantity="one">Värskendati %1$d aasta tagasi</item>
         <item quantity="other">Värskendati %1$d aastat tagasi</item>
     </plurals>
-<string name="privacy">Privaatsus</string>
+    <string name="privacy">Privaatsus</string>
     <string name="preventScreenshots_title">Väldi ekraanitõmmiseid</string>
     <string name="preventScreenshots_summary">Keelab ekraanitõmmiste tegemise ja peidab rakenduse sisu viimaste rakenduste vaatest</string>
 
@@ -494,7 +494,7 @@
 
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
+    <string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
     <string name="repo_exists_add_fingerprint">%1$s on juba seadistatud; see lisab teabe uuest võtmest.</string>
     <string name="repo_exists_enable">%1$s on juba üles seatud; kinnita, et soovid ta uuesti lubada.</string>
     <string name="repo_exists_and_enabled">%1$s on juba seadistatud ja lubatud.</string>
@@ -556,4 +556,5 @@
     <string name="scan_removable_storage_toast">%s skannimine…</string>
     <string name="not_visible_nearby">Naabrus pole lubatud</string>
     <string name="not_visible_nearby_description">Tee enda seade enne vahetamist naabruses oleva seadmega nähtavaks.</string>
+    <string name="main_menu__updates">Värskendused</string>
 </resources>

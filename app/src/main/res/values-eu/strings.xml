@@ -415,7 +415,7 @@
         <item quantity="one">Orain dela egun %1$d eguneratua</item>
         <item quantity="other">Orain dela %1$d egun eguneratua</item>
     </plurals>
-<string name="app_list__name__successfully_installed">%1$s instalatu da</string>
+    <string name="app_list__name__successfully_installed">%1$s instalatu da</string>
     <string name="menu_video">Bideoa</string>
     <string name="latest__empty_state__no_recent_apps">Ez da azken aplikaziorik aurkitu</string>
     <string name="app__tts__cancel_download">Utzi deskarga</string>
@@ -458,7 +458,7 @@
         <item quantity="one">Orain dela urte %1$d eguneratua</item>
         <item quantity="other">Orain dela %1$d urte eguneratua</item>
     </plurals>
-<string name="app_list_download_ready">Deskargatuta, instalatzeko prest</string>
+    <string name="app_list_download_ready">Deskargatuta, instalatzeko prest</string>
 
     <string name="status_inserting_x_apps">Aplikazioaren xehetasunak gordetzen (%1$d/%2$d) %3$s(e)tik</string>
     <string name="app_installed_media">Fitxategia hemen instalatu da: %s</string>
@@ -511,7 +511,7 @@
     <string name="sort_search">Ordenatu bilaketa</string>
     <string name="menu_liberapay">Liberapay</string>
 
-<string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
+    <string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
     <string name="show_anti_feature_apps">Sartu ezaugarri zalantzagarriak dituzten aplikazioak</string>
     <string name="show_anti_feature_apps_on">Erakutsi ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
     <string name="force_touch_apps">Sartu ukimen pantaila darabilten aplikazioak</string>

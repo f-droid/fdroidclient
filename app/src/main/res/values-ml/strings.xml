@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">എഫ്-ഡ്രോയ്ഡ്</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">എഫ്-ഡ്രോയ്ഡ്</string>
 
     <string name="updates">പുതുക്കലുകള്‍</string>
     <string name="ok">ശരി</string>
@@ -391,7 +392,7 @@
         <item quantity="one">%1$d കൊല്ലം മുന്നെ പുതുക്കിയത്</item>
         <item quantity="other">%1$d കൊല്ലങ്ങള്‍ മുന്നെ പുതുക്കിയത്</item>
     </plurals>
-<string name="status_inserting_apps">പ്രയോഗ വിവരങ്ങള്‍ സൂക്ഷിക്കുന്നു</string>
+    <string name="status_inserting_apps">പ്രയോഗ വിവരങ്ങള്‍ സൂക്ഷിക്കുന്നു</string>
     <string name="theme_light">ഇളം നിറം</string>
     <string name="theme_dark">ഇരുണ്ട നിറം</string>
     <string name="theme_night">രാത്രി</string>
@@ -412,5 +413,5 @@
     <string name="perms_description_app">%1$s നൽകിയത്.</string>
     <string name="enable_proxy_summary">എല്ലാ നെറ്റ്വർക്ക് അഭ്യർത്ഥനകൾക്കും പ്രോക്സി ക്രമീകരിക്കുക</string>
     <string name="proxy_host">പ്രോക്സി ഹോസ്റ്റ്</string>
-<string name="hide_all_notifications">എല്ലാ അറിയിപ്പുകളും മറയ്ക്കൂ</string>
-    </resources>
+    <string name="hide_all_notifications">എല്ലാ അറിയിപ്പുകളും മറയ്ക്കൂ</string>
+</resources>

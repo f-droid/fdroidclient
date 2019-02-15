@@ -353,7 +353,7 @@
 
     <string name="antifeatureswarning">Esta aplicación tien carauterístiques que quiciabes nun te presten.</string>
     <string name="main_menu__latest_apps">Novedaes</string>
-<string name="main_menu__swap_nearby">Cercano</string>
+    <string name="main_menu__swap_nearby">Cercano</string>
 
     <string name="notification_title_summary_install_error">Falló la instalación</string>
     <string name="by_author_format">por %s</string>
@@ -410,7 +410,7 @@
         <item quantity="one">Anovóse hai %1$d añu</item>
         <item quantity="other">Anovóse hai %1$d años</item>
     </plurals>
-<string name="app_list_download_ready">Baxóse y ta pa instalar</string>
+    <string name="app_list_download_ready">Baxóse y ta pa instalar</string>
 
     <string name="status_inserting_x_apps">Guardando detalles d\'aplicaciones (%1$d/%2$d) de %3$s</string>
     <string name="app_installed_media">El ficheru instalóse en %s</string>
@@ -450,7 +450,7 @@
     <string name="panic_hide_title">Anubrir %s</string>
     <string name="panic_hide_summary">L\'aplicación va anubrise</string>
 
-<string name="repo_exists_add_fingerprint">%1$s yá se configuró, esto va amestar la información de la clave nueva.</string>
+    <string name="repo_exists_add_fingerprint">%1$s yá se configuró, esto va amestar la información de la clave nueva.</string>
     <string name="repo_exists_enable">%1$s yá se configuró, confirma que quies reactivalu.</string>
     <string name="repo_exists_and_enabled">%1$s yá se configuró y activó.</string>
     <string name="repo_delete_to_overwrite">Primero desanicia %1$s p\'amestar esti con un clave en conflictu.</string>

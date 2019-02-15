@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">Nova različica je overjena z drugim ključem kot starejša. V primeru, da želite namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)</string>
     <string name="version">Različica</string>
@@ -42,7 +42,7 @@
 
     <string name="update_interval">Interval samodejnega posodabljanja</string>
     <string name="notify_on">Prikaži obvestilo, ko so na voljo posodobitve</string>
-<string name="back">Nazaj</string>
+    <string name="back">Nazaj</string>
     <string name="menu_settings">Nastavitve</string>
     <string name="menu_launch">Zaženi</string>
     <string name="menu_share">Deli</string>
@@ -103,7 +103,7 @@
     <string name="crash_dialog_text">Zaradi nepričakovane napake se je aplikacija prisilno ustavila. Nam želite v e-pošti posredovati podrobnosti in s tem pomagati odpraviti napako?</string>
     <string name="notification_title_single_update_available">Posodobitev na voljo</string>
     <string name="notification_title_summary_install_error">Namestitev neuspešna</string>
-<string name="by_author_format">od avtorja %s</string>
+    <string name="by_author_format">od avtorja %s</string>
     <string name="keep_install_history">Ohranite zgodovino namestitev</string>
     <string name="over_wifi">Preko Wi-Fi</string>
     <string name="over_data">Preko mobilnih podatkov</string>
@@ -419,7 +419,7 @@
 	<item quantity="few">Posodobljeno pred %1$d leti</item>
 	<item quantity="other">Posodobljeno pred %1$d leti</item>
 </plurals>
-<string name="enable_proxy_summary">Nastavite HTTP Proxy za vse omrežne zahteve</string>
+    <string name="enable_proxy_summary">Nastavite HTTP Proxy za vse omrežne zahteve</string>
     <string name="proxy_host">Proxy gost</string>
     <string name="proxy_port">Proxy vhod</string>
     <string name="proxy_port_summary">Vhodna številka vašega proksija (npr. 8118)</string>

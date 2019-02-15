@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Да бисте инсталирали ново
         издање, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке апликације.)
@@ -448,7 +448,7 @@
         <item quantity="few">Надограђена пре %1$d године</item>
         <item quantity="other">Надограђена пре %1$d година</item>
     </plurals>
-<string name="force_old_index">Присили стари формат индекса</string>
+    <string name="force_old_index">Присили стари формат индекса</string>
     <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите ИксМЛ индекс апликација</string>
     <string name="app_installed_media">Фајл инсталиран у %s</string>
     <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште да би инсталирао у складиште. Одобрите приступ на следећем екрану да бисте наставили инсталацију.</string>
@@ -465,7 +465,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа надоградите апликацију.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
 
-<string name="hide_all_notifications">Сакриј сва обавештења</string>
+    <string name="hide_all_notifications">Сакриј сва обавештења</string>
     <string name="install_history">Историјат инсталације</string>
     <string name="send_install_history">Шаљи историјат инсталације</string>
     <string name="about_forum">Форум за подршку</string>
@@ -491,4 +491,4 @@
     <string name="sort_search">Сортирај претрагу</string>
 
     <string name="menu_open">Отвори</string>
-    </resources>
+</resources>

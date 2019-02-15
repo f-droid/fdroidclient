@@ -1,14 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Kako bi instalirali novu
-        verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno.
-        (Napomena: Uklanjanje će obrisati sve interne podatke aplikacije)
-    </string>
-    <string name="installIncompatible">Čini se da ovaj paket nije kompatibilan s Vašim uređajem. Želite li ga svejedno
-        pokušati instalirati?
-    </string>
+    <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Da biste instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: uklanjanje će obrisati sve interne podatke aplikacije)</string>
+    <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>
     <string name="version">Verzija</string>
     <string name="delete">Obriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>
@@ -22,13 +17,11 @@
 
     <string name="update_interval">Interval automatskog ažuriranja</string>
     <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
-    <string name="update_auto_download_summary">Preuzmi datoteke ažuriranja u pozadini</string>
-    <string name="notify">Obavijesti ažuriranja</string>
+    <string name="update_auto_download_summary">Ažuriranja su preuzeta automatski i Vi ste obaviješteni o instalaciji</string>
+    <string name="notify">Prikaži dostupna ažuriranja</string>
     <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
     <string name="system_installer">Povlašteno proširenje</string>
-    <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i
-        uklonili pakete
-    </string>
+    <string name="system_installer_on">Koristi povlašteno proširenje za instaliranje, ažuriranje i uklanjanje paketa</string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
     <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
@@ -87,7 +80,7 @@
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
 
-    <string name="menu_launch">Pokreni</string>
+    <string name="menu_launch">Otvori</string>
     <string name="menu_share">Dijeli</string>
     <string name="menu_install">Instaliraj</string>
     <string name="menu_uninstall">Ukloni</string>
@@ -98,7 +91,7 @@
     <string name="menu_issues">Problemi</string>
     <string name="menu_changelog">Zapis o promjenama</string>
     <string name="menu_source">Izvorni kod</string>
-    <string name="menu_upgrade">Nadogradi</string>
+    <string name="menu_upgrade">Ažuriraj</string>
     <string name="menu_donate">Doniraj</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -146,9 +139,9 @@
     <string name="enable_proxy_title">Omogući HTTP Proxy</string>
     <string name="enable_proxy_summary">Postavi HTTP Proxy za sve mrežne zahtjeve</string>
     <string name="proxy_host">Proxy poslužitelj</string>
-    <string name="proxy_host_summary">Postavi ime proxya (npr. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Naziv poslužitelja Vašeg proxyja (npr. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
-    <string name="proxy_port_summary">Postavi broj proxy porta (npr. 8118)</string>
+    <string name="proxy_port_summary">Broj priključka Vašeg proxyja (npr. 8118)</string>
 
     <string name="status_download">Preuzimam\n%2$s / %3$s (%4$d%%) sa\n%1$s</string>
 
@@ -156,7 +149,7 @@
     <string name="update_notification_title">Ažuriram repozitorije</string>
     <string name="status_processing_xml_percent">Obrađujem %2$s / %3$s (%4$d%%) od %1$s</string>
     <string name="status_connecting_to_repo">Spajam se na\n%1$s</string>
-    <string name="status_inserting_apps">Spremam detalje aplikacija</string>
+    <string name="status_inserting_apps">Spremanje detalja aplikacije</string>
     <string name="repos_unchanged">Svi repozitoriji su ažurirani</string>
     <string name="all_other_repos_fine">Ostali repozitoriji nisu stvorili probleme.</string>
     <string name="global_error_updating_repos">Greška prilikom ažuriranja: %s</string>
@@ -318,11 +311,11 @@
 
     <string name="interval_never">Nikada</string>
     <string name="interval_1h">Svako sat vremena</string>
-    <string name="interval_4h">Svaka 4 sata</string>
-    <string name="interval_12h">Svako 12 sati</string>
-    <string name="interval_1d">Dnevno</string>
-    <string name="interval_1w">Tjedno</string>
-    <string name="interval_2w">Svako 2 tjedna</string>
+    <string name="interval_4h">Provjeri ažuriranja svaka 4 sata</string>
+    <string name="interval_12h">Provjeri ažuriranja svakih 12 sati</string>
+    <string name="interval_1d">Provjeri ažuriranja dnevno</string>
+    <string name="interval_1w">Provjeri ažuriranja tjedno</string>
+    <string name="interval_2w">Provjeri ažuriranja svaka 2 tjedna</string>
 
     <string name="keep_hour">1 sat</string>
     <string name="keep_day">1 dan</string>
@@ -336,15 +329,110 @@
     <string name="theme_night">Noćna</string>
 
     <string name="crash_dialog_title">F-Droid se srušio</string>
-    <string name="crash_dialog_text">Dogodila se neočekivana greša,
-        aplikacija je prisilno zaustavljena.Želite li poslati detalje
-        kvara putem e-maila kako bi ga popravili?
-    </string>
+    <string name="crash_dialog_text">Dogodila se neočekivana greška, aplikacija je prisilno zaustavljena. Želite li poslati detalje kvara putem e-pošte da bismo ga popravili\?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
     <string name="keep_install_history">Zadrži povijest instalacija</string>
     <string name="update_auto_install">Automatski instaliraj ažuriranja</string>
     <string name="update_auto_install_summary">Preuzmi i instaliraj ažuriranja aplikacija u pozadini</string>
-    <string name="keep_install_history_summary">Spremi zapisnik o svim instaliranim i obrisanim aplikacijama unutar
-        F-Droida
-    </string>
+    <string name="keep_install_history_summary">Spremi zapisnik o svim instaliranim i obrisanim aplikacijama unutar privatne trgovine</string>
+    <string name="main_menu__latest_apps">Najnovije</string>
+    <string name="preference_manage_installed_apps">Upravljaj instaliranim aplikacijama</string>
+    <string name="notification_action_update">Ažuriraj</string>
+    <string name="notification_action_cancel">Odustani</string>
+    <string name="notification_action_install">Instaliraj</string>
+    <string name="app_list__name__downloading_in_progress">Preuzimanje %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s instaliran</string>
+    <string name="updates__tts__download_app">Preuzmi</string>
+    <string name="warning_no_internet">Nije moguće ažurirati, jeste li spojeni na internet\?</string>
+    <string name="notification_title_single_update_available">Dostupno ažuriranje</string>
+    <string name="notification_title_summary_install_error">Instalacija nije uspjela</string>
+    <string name="by_author_format">od %s</string>
+    <string name="prompt_to_send_crash_reports">Pitaj za slanje izvješća o rušenju</string>
+    <string name="prompt_to_send_crash_reports_summary">Skupi podatke o rušenju i pitaj za slanje razvijatelju</string>
+    <string name="hide_all_notifications">Sakrij sve obavijesti</string>
+    <string name="hide_all_notifications_summary">Ne prikazuj radnje u statusnoj traci i ploči s obavijestima.</string>
+    <string name="send_install_history">Šalji povijest instalacija</string>
+    <string name="install_history">Povijest instalacija</string>
+    <string name="app_details__incompatible_mismatched_signature">Različit potpis u odnosu na instaliranu verziju</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Nema verzija s kompatibilnim potpisom</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nema verzija kompatibilnih s uređajem</string>
+    <string name="about_forum">Forum podrške</string>
+    <string name="app_suggested">Predloženo</string>
+    <string name="app_new">Novo</string>
+    <string name="app_version_x_available">Dostupna inačica %1$s</string>
+    <string name="app_version_x_installed">Verzija %1$s</string>
+    <string name="app_recommended_version_installed">Verzija %1$s (preporučeno)</string>
+    <string name="app__tts__cancel_download">Prekini preuzimanje</string>
+    <string name="app__install_downloaded_update">Ažuriraj</string>
+    <string name="app_repository">Repozitorij: %1$s</string>
+    <string name="app_size">Veličina: %1$s</string>
+    <string name="app_list_download_ready">Preuzeto, spremno za instalaciju</string>
+    <string name="app_list__dismiss_app_update">Ažuriranje ignorirano</string>
+    <string name="app_list__dismiss_vulnerable_app">Ranjivost ignorirana</string>
+    <string name="app_list__dismiss_downloading_app">Preuzimanje poništeno</string>
+    <string name="installed_apps__activity_title">Instalirane aplikacije</string>
+    <string name="send_installed_apps">Podijeli instalirane aplikacije</string>
+    <string name="installed_app__updates_ignored">Ažuriranja ignorirana</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Ignoriraj</string>
+    <string name="panic_settings">Postavke tipke za uzbunu</string>
+    <string name="panic_settings_summary">Radnje koje će se poduzeti u hitnom slučaju</string>
+    <string name="panic_exit_title">Izlaz iz aplikacije</string>
+    <string name="panic_exit_summary">Aplikacija će biti zatvorena</string>
+    <string name="panic_destructive_actions">Destruktivne radnje</string>
+    <string name="panic_hide_title">Sakrij %s</string>
+    <string name="panic_hide_summary">Aplikacija će se sakriti</string>
+    <string name="panic_hide_warning_title">Zapamtite kako vratiti</string>
+    <string name="hiding_calculator">Kalkulator</string>
+    <string name="hiding_dialog_title">Sakrij %s sada</string>
+    <string name="hide_on_long_search_press_title">Sakrij s tipkom za pretraživanje</string>
+    <plurals name="notification_summary_more">
+    <item quantity="one">+%1$d više…</item>
+    <item quantity="few">+%1$d više…</item>
+    <item quantity="other">+%1$d više…</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">Spremno za instalaciju</string>
+    <string name="notification_title_single_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
+    <string name="notification_title_single_install_error">Instalacija nije uspjela</string>
+    <string name="notification_content_single_downloading">Preuzima se \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Preuzima se ažuriranje za \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instalira se \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Uspješno instalirano</string>
+    <plurals name="notification_summary_updates">
+    <item quantity="one">%1$d ažuriranje</item>
+    <item quantity="few">%1$d ažuriranja</item>
+    <item quantity="other">%1$d ažuriranja</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+    <item quantity="one">%1$d aplikacija instalirana</item>
+    <item quantity="few">%1$d aplikacije instalirane</item>
+    <item quantity="other">%1$d aplikacija instalirano</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Dostupno ažuriranje</string>
+    <string name="notification_title_summary_downloading">Preuzimanje…</string>
+    <string name="notification_title_summary_downloading_update">Preuzimanje ažuriranja…</string>
+    <string name="notification_title_summary_ready_to_install">Spremno za instalaciju</string>
+    <string name="notification_title_summary_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
+    <string name="notification_title_summary_installing">Instaliranje</string>
+    <string name="notification_title_summary_installed">Uspješno instalirano</string>
+    <string name="details_last_updated_today">Ažurirano danas</string>
+    <plurals name="details_last_update_days">
+    <item quantity="one">Ažurirano prije %1$d dan</item>
+    <item quantity="few">Ažurirano prije %1$d dana</item>
+    <item quantity="other">Ažurirano prije %1$d dana</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+    <item quantity="one">Ažurirano prije %1$d tjedna</item>
+    <item quantity="few">Ažurirano prije %1$d tjedna</item>
+    <item quantity="other">Ažurirano prije %1$d tjedana</item>
+</plurals>
+    <plurals name="details_last_update_months">
+    <item quantity="one">Ažurirano prije %1$d mjeseca</item>
+    <item quantity="few">Ažurirano prije %1$d mjeseca</item>
+    <item quantity="other">Ažurirano prije %1$d mjeseci</item>
+</plurals>
+    <plurals name="details_last_update_years">
+    <item quantity="one">Ažurirano prije %1$d godine</item>
+    <item quantity="few">Ažurirano prije %1$d godine</item>
+    <item quantity="other">Ažurirano prije %1$d godina</item>
+</plurals>
 </resources>

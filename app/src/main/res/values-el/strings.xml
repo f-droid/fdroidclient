@@ -482,7 +482,7 @@
         <item quantity="one">Αναβαθμίστηκε %1$d χρόνο πριν</item>
         <item quantity="other">Αναβαθμίστηκε %1$d χρόνια πριν</item>
     </plurals>
-<string name="prompt_to_send_crash_reports">Ερώτηση πριν την αποστολή αναφοράς σφαλμάτων</string>
+    <string name="prompt_to_send_crash_reports">Ερώτηση πριν την αποστολή αναφοράς σφαλμάτων</string>
     <string name="prompt_to_send_crash_reports_summary">Να γίνεται συλλογή δεδομένων για κρασαρίσματα και να μου γίνεται ερώτηση για αποστολή αυτών στους προγραμματιστές</string>
     <string name="hide_all_notifications">Απόκρυψη όλων των ειδοποιήσεων</string>
     <string name="hide_all_notifications_summary">Απόκρυψη όλων των ενεργειών από την γραμμή κατάστασης και το συρτάρι ειδοποιήσεων.</string>

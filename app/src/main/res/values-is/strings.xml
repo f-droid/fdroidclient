@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="version">Útgáfa</string>
     <string name="delete">Eyða</string>
     <string name="login_name">Notandanafn</string>
@@ -10,12 +9,11 @@
     <string name="updates">Uppfærslur</string>
     <string name="unstable_updates">Óstöðugar uppfærslur</string>
     <string name="other">Annað</string>
-
     <string name="update_interval">Bil milli sjálfvirkra uppfærslna</string>
     <string name="update_auto_download">Ná sjálfkrafa í uppfærslur</string>
     <string name="update_auto_download_summary">Sækja uppfærsluskrárnar í bakgrunni og þú færð tilkynningu um að setja þær upp</string>
     <string name="update_auto_install">Setja uppfærslur upp sjálfkrafa</string>
-    <string name="update_auto_install_summary">Sækja uppfærslur og uppfæra forrit í bakgrunni</string>
+    <string name="update_auto_install_summary">Sækja og uppfæra forrit í bakgrunni, birta um það tilkynningu</string>
     <string name="notify">Birta tiltækar uppfærslur</string>
     <string name="notify_on">Birta tilkynningu þegar uppfærslur eru tiltækar</string>
     <string name="system_installer">Forgangsviðbót</string>
@@ -25,23 +23,18 @@
     <string name="repo_edit_credentials">Breyta lykilorði</string>
     <string name="app_details">Nánar um forrit</string>
     <string name="no_such_app">Engin slík forrit fundust.</string>
-
     <string name="about_title">Um F-Droid</string>
     <string name="about_version">Útgáfa</string>
     <string name="about_site">Vefsvæði</string>
     <string name="about_source">Upprunakóði</string>
     <string name="about_license">Notkunarleyfi</string>
-
     <string name="app_incompatible">Ósamhæft</string>
     <string name="app_installed">Uppsett</string>
     <string name="app_not_installed">Ekki uppsett</string>
     <string name="app_inst_known_source">Uppsett (frá %s)</string>
     <string name="app_inst_unknown_source">Uppsett (af óþekktum uppruna)</string>
-
     <string name="added_on">Bætti við %s</string>
-
     <string name="ok">Í lagi</string>
-
     <string name="yes">Já</string>
     <string name="no">Nei</string>
     <string name="repo_add_title">Bæta við nýju hugbúnaðarsafni</string>
@@ -49,27 +42,22 @@
     <string name="links">Tenglar</string>
     <string name="more">Meira</string>
     <string name="less">Minna</string>
-
     <string name="back">Til baka</string>
     <string name="cancel">Hætta við</string>
     <string name="enable">Virkja</string>
     <string name="add_key">Bæta við lykli</string>
     <string name="overwrite">Skrifa yfir</string>
-
     <string name="bluetooth_activity_not_found">Engin aðferð til sendingar með Bluetooth fannst, veldu eina!</string>
     <string name="choose_bt_send">Veldu aðferð til sendingar með Bluetooth</string>
-
     <string name="repo_add_url">Vistfang hugbúnaðarsafns</string>
     <string name="repo_add_fingerprint">Fingrafar (valkvætt)</string>
     <string name="bad_fingerprint">Gallað fingrafar</string>
     <string name="invalid_url">Þetta er ekki gild vefslóð.</string>
     <string name="repo_provider">Hugbúnaðarsafn: %s</string>
-
     <string name="menu_manage">Hugbúnaðarsöfn</string>
     <string name="menu_settings">Stillingar</string>
     <string name="menu_search">Leita</string>
     <string name="menu_add_repo">Nýtt hugbúnaðarsafn</string>
-
     <string name="menu_launch">Opna</string>
     <string name="menu_share">Deila</string>
     <string name="menu_install">Setja inn</string>
@@ -86,16 +74,11 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Ekki uppsett</string>
-
     <string name="antiadslist">Þetta forrit inniheldur auglýsingar</string>
     <string name="display">Birting</string>
-
     <string name="expert">Fyrir sérfræðinga</string>
     <string name="search_hint">Leita að forritum</string>
-
     <string name="appcompatibility">Samhæfni forrits</string>
     <string name="show_incompat_versions">Hafa með ósamhæfðar útgáfur</string>
     <string name="local_repo">Staðvært hugbúnaðarsafn</string>
@@ -105,7 +88,6 @@
     <string name="icon">Táknmynd</string>
     <string name="next">Næsta</string>
     <string name="skip">Sleppa</string>
-
     <string name="useTor">Nota Tor</string>
     <string name="useTorSummary">Þvinga niðurhalsumferð í gegnum Tor til að auka gagnaleynd. Þarfnast Orbot</string>
     <string name="proxy">Milliþjónn</string>
@@ -116,7 +98,6 @@
         %2$s / %3$s (%4$d%%) frá
         %1$s
     </string>
-
     <string name="status_download_unknown_size">Sæki
 
         %2$s frá
@@ -150,10 +131,8 @@
     <string name="requires_features">Krefst: %1$s</string>
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
-
     <string name="wifi">Þráðlaust Wi-Fi net</string>
     <string name="wifi_ap">Tengipunktur (hotspot)</string>
-
     <string name="category_Connectivity">Tengingar</string>
     <string name="category_Development">Þróun</string>
     <string name="category_Games">Leikir</string>
@@ -171,9 +150,7 @@
     <string name="category_Theming">Þemu</string>
     <string name="category_Time">Tími</string>
     <string name="category_Writing">Skrifa</string>
-
     <string name="empty_search_available_app_list">Engin samsvarandi forrit tiltæk.</string>
-
     <string name="install_error_unknown">Mistókst að setja inn vegna óþekktrar villu</string>
     <string name="uninstall_error_unknown">Mistókst að fjarlægja vegna óþekktrar villu</string>
     <string name="swap_nfc_title">Snertu til að býtta</string>
@@ -215,14 +192,11 @@
     <string name="download_pending">Bíð eftir að niðurhal hefjist…</string>
     <string name="install_error_notify_title">Villa við uppsetningu á %s</string>
     <string name="uninstall_error_notify_title">Villa við að fjarlægja %s</string>
-
-
     <string name="perms_new_perm_prefix">Nýtt:</string>
     <string name="perms_description_app">Útgefið af %1$s.</string>
     <string name="downloading">Sæki…</string>
     <string name="installing">Set inn…</string>
     <string name="uninstalling">Tek út uppsetningu…</string>
-
     <string name="interval_never">Engar sjálfvirkar uppfærslur forrita</string>
     <string name="interval_1h">Athuga með uppfærslur á klukkustundar fresti</string>
     <string name="interval_4h">Athuga með uppfærslur á 4 klukkustunda fresti</string>
@@ -230,18 +204,15 @@
     <string name="interval_1d">Athuga með uppfærslur daglega</string>
     <string name="interval_1w">Athuga með uppfærslur vikulega</string>
     <string name="interval_2w">Athuga með uppfærslur á tveggja vikna fresti</string>
-
     <string name="keep_hour">1 klukkustund</string>
     <string name="keep_day">1 dagur</string>
     <string name="keep_week">1 vika</string>
     <string name="keep_month">1 mánuður</string>
     <string name="keep_year">1 ár</string>
     <string name="keep_forever">Að eilífu</string>
-
     <string name="theme_light">Ljóst</string>
     <string name="theme_dark">Dökkt</string>
     <string name="theme_night">Næturhamur</string>
-
     <string name="crash_dialog_title">F-Droid hrundi</string>
     <string name="crash_dialog_comment_prompt">Þú getur bætt hér við aukaupplýsingum og athugasemdum:</string>
     <string name="unstable_updates_summary">Stinga upp á uppfærslum í óstöðugar útgáfur</string>
@@ -253,9 +224,7 @@
     </string>
     <string name="local_repo_name_summary">Útsent heiti staðværa hugbúnaðarsafnsins þíns: %s</string>
     <string name="local_repo_https_on">Nota dulritaða HTTPS:// tengingu fyrir staðvært hugbúnaðarsafn</string>
-
     <string name="repo_error_empty_username">Autt notandanafn, óbreyttar heimildir</string>
-
     <string name="malformed_repo_uri">Hunsa gallaða URI-slóð hugbúnaðarsafns: %s</string>
     <string name="antitracklist">Þetta forrit fylgist með og gefur skýrslu um hegðun þína</string>
     <string name="antinonfreeadlist">Þetta forrit ýtir undir notkun ófrjálsra viðbóta</string>
@@ -263,13 +232,10 @@
     <string name="antinonfreedeplist">Þetta forrit er háð öðrum ófrjálsum forritum</string>
     <string name="antiupstreamnonfreelist">Grunnkóði útgefanda er ekki fullkomlega frjáls</string>
     <string name="antinonfreeassetslist">Þetta forrit inniheldur ófrjáls tilföng</string>
-
     <string name="expert_on">Birta viðbótarupplýsingar og virkja aukastillingar</string>
-
     <string name="system_install_denied_permissions">Forgangsheimildum hefur ekki verið úthlutað til viðbótarinnar!
         Sendu endilega inn villuskýrslu!
     </string>
-
     <string name="SignatureMismatch">Nýja útgáfan er undirrituð með öðrum lykli en gamla útgáfan. Til að setja inn nýju
         útgáfuna verður að fjarlægja fyrst þá eldri. Gerðu þetta og prófaðu aftur. (Athugaðu að fjarlæging forritsins
         mun hreinsa út öll gögn sem forritið geymir)
@@ -279,7 +245,6 @@
     <string name="repo_exists_enable">%1$s er þegar uppsett, staðfestu að þú viljir endurvirkja það.</string>
     <string name="repo_exists_and_enabled">%1$s er þegar uppsett og virkjað.</string>
     <string name="show_incompat_versions_on">Birta útgáfur forrita sem eru ósamhæfðar tækinu</string>
-
     <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að
         býtta við þig á forritum.
     </string>
@@ -289,7 +254,6 @@
     <string name="enable_proxy_summary">Stilla HTTP-milliþjón fyrir allar beiðnir á neti</string>
     <string name="proxy_host_summary">Vélarheiti milliþjónsins þíns (t.d. 127.0.0.1)</string>
     <string name="proxy_port_summary">Númerið á gátt milliþjónsins þíns (t.d. 8118)</string>
-
     <string name="repo_fingerprint">Fingrafar undirritunarlykilsins (SHA-256)</string>
     <string name="unsigned_description">Þetta þýðir að ekki var hægt að sannreyna
         listann yfir forritin. Þú ættir að fara varlega varðandi
@@ -326,7 +290,6 @@
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
     <string name="swap_connection_misc_error">Villa kom upp við að tengjast við tækið, ekki er hægt að nota það við býtti!</string>
-
     <string name="install_confirm_update">Viltu setja inn uppfærslu á þessu forriti? Fyrirliggjandi gögn sem þú átt
         tapast ekki.
         Uppfærða forritið mun fá aðgang að:
@@ -356,26 +319,20 @@
     <string name="versions">Útgáfur</string>
     <string name="app_details_donate_prompt_unknown_author">Kauptu einn kaffibolla handa forriturum %1$s!</string>
     <string name="app_details_donate_prompt">%1$s er hannað af %2$s. Kauptu einn kaffibolla handa þeim!</string>
-
     <string name="app_version_x_available">%1$s-útgáfan er tiltæk</string>
     <string name="app_version_x_installed">Útgáfa %1$s</string>
     <string name="app_recommended_version_installed">Útgáfa %1$s (mælt með)</string>
     <string name="app_new">Nýtt</string>
-
     <string name="installed_apps__activity_title">Uppsett forrit</string>
     <string name="installed_app__updates_ignored">Hunsaðar uppfærslur</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Hunsaðar uppfærslur fyrir %1$s-útgáfuna</string>
     <string name="clear_search">Hreinsa leit</string>
-
     <string name="repositories_summary">Bæta við öðrum upptökum fyrir hugbúnað</string>
     <string name="main_menu__latest_apps">Nýjustu</string>
     <string name="main_menu__categories">Flokkar</string>
     <string name="main_menu__swap_nearby">Í grenndinni</string>
-
     <string name="preference_category__my_apps">Forritin mín</string>
     <string name="preference_manage_installed_apps">Sýsla með uppsett forrit</string>
-
-
     <string name="notification_title_single_update_available">Uppfærsla tiltæk</string>
     <string name="notification_title_single_ready_to_install">Tilbúin til uppsetningar</string>
     <string name="notification_title_single_ready_to_install_update">Uppfærsla tilbúin til uppsetningar</string>
@@ -395,53 +352,41 @@
     <string name="notification_action_update">Uppfæra</string>
     <string name="notification_action_cancel">Hætta við</string>
     <string name="notification_action_install">Setja upp</string>
-
     <string name="tts_category_name">Flokkur %1$s</string>
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Skoða %d</item>
         <item quantity="other">Skoða öll %d</item>
     </plurals>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Skoða %1$d forritið í %2$s flokknum</item>
         <item quantity="other">Skoða öll %1$d forritin í %2$s flokknum</item>
     </plurals>
-<string name="app_list__name__downloading_in_progress">Sæki %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Sæki %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s er uppsett</string>
     <string name="updates__tts__download_app">Sækja</string>
     <string name="by_author_format">frá %s</string>
     <string name="app__tts__cancel_download">Hætta við niðurhal</string>
     <string name="app__install_downloaded_update">Uppfæra</string>
-
-
     <string name="update_all">Uppfæra allt</string>
-
     <string name="updates__hide_updateable_apps">Fela forrit</string>
     <string name="updates__show_updateable_apps">Birta forrit</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Sækja uppfærslu fyrir %1$d forrit.</item>
         <item quantity="other">Sækja uppfærslur fyrir %1$d forrit.</item>
     </plurals>
-
     <string name="menu_video">Myndskeið</string>
     <string name="menu_license">Notkunarleyfi: %s</string>
     <string name="latest__empty_state__no_recent_apps">Engin nýleg forrit fundust</string>
     <string name="latest__empty_state__never_updated">Þegar listinn yfir forrit hefur verið uppfærður, ættu nýjustu forritin að birtast hér</string>
     <string name="latest__empty_state__no_enabled_repos">Þegar þú hefur virkjað hugbúnaðarsafn og uppfært það, ættu nýjustu forritin að birtast hér</string>
-
     <string name="categories__empty_state__no_categories">Engir flokkar til að birta</string>
-
     <string name="details_new_in_version">Nýtt í útgáfu %s</string>
-
     <string name="antifeatureswarning">Þetta forrit er með eiginleika sem ekki er víst að þér líki við.</string>
     <string name="antifeatures">Neikvæðir eiginleikar</string>
     <string name="download_404">Umbeðin skrá fannst ekki.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ekkert Internet? Fáðu forrit frá fólki í nágrenninu!</string>
     <string name="nearby_splash__find_people_button">Finna fólk í nágrenninu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Báðir aðilar þurfa %1$s til að nota í nálægð.</string>
-
     <string name="app__tts__downloading_progress">Hleð niður, %1$d%% lokið</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d til viðbótar…</item>
@@ -472,30 +417,25 @@
         <item quantity="one">Uppfært fyrir %1$d ári síðan</item>
         <item quantity="other">Uppfært fyrir %1$d árum</item>
     </plurals>
-<string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
+    <string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
     <string name="force_old_index_summary">Ef um er að ræða galla eða vandamál með samhæfni, má nota XML-yfirlitsvísi forritsins</string>
     <string name="app_details__incompatible_mismatched_signature">Undirritun er önnur en á uppsettri útgáfu</string>
     <string name="app_details__no_versions__show_incompat_versions">Til að birta hér samt ósamhæfðar útgáfur, virkjaðu þá \"%1$s\" stillinguna.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Engin útgáfa með samhæfða undirritun</string>
     <string name="app_details__no_versions__none_compatible_with_device">Engar útgáfur samhæfanlegar við tækið</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Uppsetta útgáfan er ekki samhæfð við neinar tiltækar útgáfur. Ef þú hendir forritinu út, geturðu skoðað og sett upp samhæfða útgáfu. Þetta gerist oft með forrit sem sett eru upp í gegnum Google Play eða aðrar slíkar leiðir, ef forritin eru undirrituð með mismunandi skilríkjum.</string>
-
     <string name="app_installed_media">Skrá sett upp í %s</string>
     <string name="app_permission_storage">F-Droid þarf aðgang að gagnageymslum til að geta sett þetta upp í geymsluminni. Þú ættir að heimila þetta á næsta skjá til þess að halda áfram með uppsetninguna.</string>
-
     <string name="app_list_download_ready">Þegar sótt, tilbúið til uppsetningar</string>
     <string name="app_list__dismiss_app_update">Uppfærsla hunsuð</string>
     <string name="app_list__dismiss_vulnerable_app">Öryggisgalli hunsaður</string>
     <string name="app_list__dismiss_downloading_app">Hætt við niðurhal</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði fjarlægt strax.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði strax uppfært í nýjustu útgáfuna.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Hunsa</string>
-
     <string name="privacy">Gagnaleynd</string>
     <string name="preventScreenshots_title">Hindra skjámyndatöku</string>
     <string name="preventScreenshots_summary">Hindrar að skjámyndir séu teknar og felur efni forritsins frá því að birtast á skjánum yfir nýleg forrit</string>
-
     <string name="panic_app_setting_title">Forrit fyrir neyðarhnapp</string>
     <string name="panic_app_unknown_app">óþekkt forrit</string>
     <string name="panic_app_setting_summary">Ekkert forrit hefur verið stillt</string>
@@ -503,7 +443,6 @@
     <string name="panic_app_dialog_title">Staðfesta neyðarhnappsforrit</string>
     <string name="panic_app_dialog_message">Ertu viss um að þú viljir leyfa %1$s að setja í gang óafturkræfar aðgerðir neyðarhnappsins?</string>
     <string name="allow">Leyfa</string>
-
     <string name="panic_settings">Stillingar neyðarhnapps</string>
     <string name="panic_settings_summary">Aðgerðir sem á að framkvæma í neyðartilfellum</string>
     <string name="panic_exit_title">Hætta í forriti</string>
@@ -511,11 +450,9 @@
     <string name="panic_destructive_actions">Óafturkræfar aðgerðir</string>
     <string name="panic_hide_title">Fela %s</string>
     <string name="panic_hide_summary">Forrit mun fela sig</string>
-
     <string name="status_inserting_x_apps">Vista ítarupplýsingar um forrit (%1$d/%2$d) frá %3$s</string>
     <string name="panic_hide_warning_title">Muna hvernig á að endurheimta</string>
     <string name="panic_hide_warning_message">Við neyðaratvik mun þetta fjarlægja %1$s úr ræsinum. Aðeins með því að skrifa \"%2$d\" í falska %3$s forritið er hægt að endurheimta það.</string>
-
     <string name="hiding_calculator">Reiknivél</string>
     <string name="hiding_dialog_title">Fela %s núna</string>
     <string name="hiding_dialog_message">Ertu viss um að þú viljir fjarlægja %1$s úr ræsinum? Aðeins með því að skrifa \"%2$d\" í falska %3$s forritið er hægt að endurheimta það.</string>
@@ -524,13 +461,11 @@
     <string name="hide_on_long_search_press_summary">Ef ýtt er lengi mun leitarhnappurinn fela forritið</string>
     <string name="sort_search">Raða leit</string>
     <string name="menu_liberapay">Liberapay</string>
-
-<string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
+    <string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
     <string name="show_anti_feature_apps">Hafa með forrit með ókostum</string>
     <string name="show_anti_feature_apps_on">Birta forrit með óæskilegum eiginleikum</string>
     <string name="force_touch_apps">Hafa með forrit sem þurfa snertiskjá</string>
     <string name="force_touch_apps_on">Birta forrit sem þurfa nauðsynlega snertiskjá hvort sem slíkt er til staðar eður ei</string>
-
     <string name="repo_add_mirror">Bæta við spegli</string>
     <string name="repo_exists_add_mirror">Þetta er afrit af %1$s, bæta því við sem spegli?</string>
     <string name="repo_official_mirrors">Opinberir speglar</string>
@@ -540,7 +475,6 @@
     <string name="swap_toast_invalid_url">Ógild slóð fyrir býtti: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi aðgangspunktur virkur</string>
     <string name="swap_toast_could_not_enable_hotspot">Gat ekki virkjað Wi-Fi aðgangspunkt!</string>
-
     <string name="over_wifi">Um Wi-Fi-net</string>
     <string name="over_data">Um gagnatengingu</string>
     <string name="over_network_always_summary">Alltaf nota þessa tengingu þegar hún er tiltæk</string>
@@ -548,7 +482,6 @@
     <string name="over_network_never_summary">Aldrei sækja neitt með þessari tengingu</string>
     <string name="antidisabledalgorithmlist">Þetta forrit er með veika öryggisundirritun</string>
     <string name="antiknownvulnlist">Þetta forrit inniheldur þekktan öryggisveikleika</string>
-
     <string name="prompt_to_send_crash_reports">Spyrja hvort eigi að senda villuskýrslur</string>
     <string name="prompt_to_send_crash_reports_summary">Safna upplýsingum um hrun og senda til forritara</string>
     <string name="hide_all_notifications">Fela allar tilkynningar</string>
@@ -561,18 +494,26 @@
     <string name="send_history_csv">%s feril uppsetninga sem CSV-skrá</string>
     <string name="allow_push_requests">Leyfa hugbúnaðarsöfnum að fjarlægja/setja upp hugbúnað</string>
     <string name="antinosourcesince">Grunnkóðinn er ekki lengur tiltækur, engar uppfærslur eru mögulegar.</string>
-
     <string name="send_version_and_uuid_summary">Hafa með við niðurhal útgáfu þessa forrits og tilviljanakennt einstakt auðkenni, tekur gildi við næstu ræsingu forritsins.</string>
     <string name="allow_push_requests_summary">Lýsigögn hugbúnaðarsafna geta innihaldið sendibeiðnir til að setja upp eða fjarlægja forrit</string>
     <string name="updates_disabled_by_settings">Allar uppfærslur eru óvirkar vegna stillinga fyrir gögn eða þráðlaust net</string>
-
     <string name="about_forum">Vefspjall fyrir aðstoð</string>
     <string name="send_installed_apps">Deila uppsettum forritum</string>
     <string name="send_installed_apps_csv">Forrit uppsett af F-Droid sem CSV-skrá</string>
     <string name="menu_open">Opna</string>
     <string name="app_suggested">Tillögur</string>
     <string name="app_size">Stærð: %1$s</string>
-
     <string name="menu_downgrade">Færa niður</string>
     <string name="app_repository">Hugbúnaðarsafn: %1$s</string>
-    </resources>
+    <string name="scan_removable_storage_title">Skanna útskiptanlega geymslumiðla</string>
+    <string name="scan_removable_storage_toast">Skoða %s…</string>
+    <string name="scan_removable_storage_summary">Athugaðu með pakkasöfn á útskiptanlegum geymslumiðlum eins og SD-minniskortum eða USB-minnislyklum</string>
+    <string name="main_menu__updates">Uppfærslur</string>
+    <string name="nearby_splash__read_external_storage">Nota má SD-minniskort til að skiptast á!</string>
+    <string name="nearby_splash__request_permission">Prófaðu</string>
+    <string name="not_visible_nearby">Skynjun nálægra tækja er óvirk</string>
+    <string name="not_visible_nearby_description">Áður en þú skiptist á við nálæg tæki, skaltu gera tækið þitt sýnilegt.</string>
+    <string name="swap_toast_using_path">Nota %1$s</string>
+    <string name="swap_toast_not_removable_storage">Þessi valkostur stemmdi ekki neina útskiptanlega gagnamiðla, endilega reyndu aftur!</string>
+    <string name="swap_toast_find_removeable_storage">Veldu útskiptanlegt SD-minniskort eða USB</string>
+</resources>

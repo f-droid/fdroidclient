@@ -1,0 +1,7 @@
+* HTTP ETag'in bir izleme çerezi olarak kullanılmasını önler
+
+* Geliştirilmiş ekran görüntüsü düzeni
+
+* Düzgün temp ve önbelleğe alınmış dosyaları temizleme
+
+* Karanlık mod düzeltmeleri
