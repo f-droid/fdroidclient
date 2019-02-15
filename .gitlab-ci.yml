@@ -121,18 +121,11 @@ connected 18 default x86:
   only:
     - master@fdroid/fdroidclient
 
-connected 21 default x86:
-  <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
-
-connected 22 default x86:
-  <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
-
 connected 23 default x86:
   <<: *kvm-template
+  allow_failure: true
+  only:
+    - master@fdroid/fdroidclient
 
 connected 25 default x86:
   <<: *kvm-template
