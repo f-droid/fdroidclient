@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
@@ -36,6 +37,10 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
     }
 
     public void setAppCursor(Cursor cursor) {
+        if (this.cursor == cursor) {
+            //don't notify when the cursor did not change
+            return;
+        }
         this.cursor = cursor;
         notifyDataSetChanged();
     }
