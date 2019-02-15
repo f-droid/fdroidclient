@@ -176,6 +176,7 @@ public class HttpDownloader extends Downloader {
 
         connection.setRequestProperty("User-Agent", "F-Droid " + BuildConfig.VERSION_NAME);
         connection.setConnectTimeout(getTimeout());
+        connection.setReadTimeout(getTimeout());
 
         if (Build.VERSION.SDK_INT < 19) { // gzip encoding can be troublesome on old Androids
             connection.setRequestProperty("Accept-Encoding", "identity");

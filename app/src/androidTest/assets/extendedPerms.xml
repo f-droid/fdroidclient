@@ -68,7 +68,7 @@
             </permissions>
             <uses-permission name="android.permission.GET_ACCOUNTS" maxSdkVersion="22" />
             <uses-permission name="android.permission.READ_EXTERNAL_STORAGE" maxSdkVersion="18" />
-            <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE" maxSdkVersion="18" />
+            <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission name="android.permission.AUTHENTICATE_ACCOUNTS" maxSdkVersion="22" />
             <uses-permission name="android.permission.MANAGE_ACCOUNTS" maxSdkVersion="22" />
         </package>
@@ -85,7 +85,7 @@
             <targetSdkVersion>23</targetSdkVersion>
             <added>2016-06-26</added>
             <permissions>
-                org.dmfs.permission.READ_TASKS,READ_EXTERNAL_STORAGE,WRITE_CONTACTS,GET_ACCOUNTS,AUTHENTICATE_ACCOUNTS,WRITE_EXTERNAL_STORAGE,READ_CALENDAR,ACCESS_WIFI_STATE,org.dmfs.permission.WRITE_TASKS,ACCESS_NETWORK_STATE,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,INTERNET,MANAGE_ACCOUNTS,WRITE_SYNC_SETTINGS
+                org.dmfs.permission.READ_TASKS,WRITE_CONTACTS,GET_ACCOUNTS,AUTHENTICATE_ACCOUNTS,WRITE_EXTERNAL_STORAGE,READ_CALENDAR,ACCESS_WIFI_STATE,org.dmfs.permission.WRITE_TASKS,ACCESS_NETWORK_STATE,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,INTERNET,MANAGE_ACCOUNTS,WRITE_SYNC_SETTINGS
             </permissions>
         </package>
         <package>

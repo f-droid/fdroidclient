@@ -71,6 +71,7 @@ import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.localrepo.SDCardScannerService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -126,7 +127,7 @@ public class FDroidApp extends Application {
 
     private static volatile LongSparseArray<String> lastWorkingMirrorArray = new LongSparseArray<>(1);
     private static volatile int numTries = Integer.MAX_VALUE;
-    private static volatile int timeout = 10000;
+    private static volatile int timeout = Downloader.DEFAULT_TIMEOUT;
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.bouncycastle.jce.provider.BouncyCastleProvider BOUNCYCASTLE_PROVIDER;
@@ -244,10 +245,26 @@ public class FDroidApp extends Application {
         repo = new Repo();
     }
 
+    /**
+     * @see #getMirror(String, Repo)
+     */
     public static String getMirror(String urlString, long repoId) throws IOException {
         return getMirror(urlString, RepoProvider.Helper.findById(getInstance(), repoId));
     }
 
+    /**
+     * Each time this is called, it will return a mirror from the pool of
+     * mirrors.  If it reaches the end of the list of mirrors, it will start
+     * again from the stop, while setting the timeout to
+     * {@link Downloader#SECOND_TIMEOUT}.  If it reaches the end of the list
+     * again, it will do one last pass through the list with the timeout set to
+     * {@link Downloader#LONGEST_TIMEOUT}.  After that, this gives up with a
+     * {@link IOException}.
+     *
+     * @see #resetMirrorVars()
+     * @see #getTimeout()
+     * @see Repo#getMirror(String)
+     */
     public static String getMirror(String urlString, Repo repo2) throws IOException {
         if (repo2.hasMirrors()) {
             String lastWorkingMirror = lastWorkingMirrorArray.get(repo2.getId());
@@ -255,11 +272,11 @@ public class FDroidApp extends Application {
                 lastWorkingMirror = repo2.address;
             }
             if (numTries <= 0) {
-                if (timeout == 10000) {
-                    timeout = 30000;
+                if (timeout == Downloader.DEFAULT_TIMEOUT) {
+                    timeout = Downloader.SECOND_TIMEOUT;
                     numTries = Integer.MAX_VALUE;
-                } else if (timeout == 30000) {
-                    timeout = 60000;
+                } else if (timeout == Downloader.SECOND_TIMEOUT) {
+                    timeout = Downloader.LONGEST_TIMEOUT;
                     numTries = Integer.MAX_VALUE;
                 } else {
                     Utils.debugLog(TAG, "Mirrors: Giving up");
@@ -291,7 +308,7 @@ public class FDroidApp extends Application {
             lastWorkingMirrorArray.removeAt(i);
         }
         numTries = Integer.MAX_VALUE;
-        timeout = 10000;
+        timeout = Downloader.DEFAULT_TIMEOUT;
     }
 
     @Override
@@ -437,6 +454,7 @@ public class FDroidApp extends Application {
         ImageLoader.getInstance().init(config);
 
         if (preferences.isIndexNeverUpdated()) {
+            preferences.setDefaultForDataOnlyConnection(this);
             // force this check to ensure it starts fetching the index on initial runs
             networkState = ConnectivityMonitorService.getNetworkState(this);
         }

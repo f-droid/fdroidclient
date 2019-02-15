@@ -38,6 +38,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +55,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -132,6 +135,14 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         InstalledAppTestUtils.install(context, "com.waze", 1019841, "v3.9.5.4", "362488e7be5ea0689b4e97d989ae1404",
                 "cbbdb8c5dafeccd7dd7b642dde0477d3489e18ac366e3c8473d5c07e5f735a95");
         assertEquals(1, AppProvider.Helper.findInstalledAppsWithKnownVulns(context).size());
+
+        Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, "io.proto.player", 1110);
+        assertNotNull("We should find this APK", apk);
+        assertEquals("io.proto.player-1.apk", apk.apkName);
+        HashSet<String> requestedPermissions = new HashSet<>(Arrays.asList(apk.requestedPermissions));
+        assertTrue(requestedPermissions.contains(android.Manifest.permission.READ_EXTERNAL_STORAGE));
+        assertTrue(requestedPermissions.contains(android.Manifest.permission.WRITE_EXTERNAL_STORAGE));
+        assertFalse(requestedPermissions.contains(android.Manifest.permission.READ_CALENDAR));
     }
 
     @Test(expected = IndexUpdater.SigningException.class)

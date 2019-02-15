@@ -25,6 +25,8 @@ package org.fdroid.fdroid;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
@@ -441,6 +443,26 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public int getOverData() {
         return preferences.getInt(PREF_OVER_DATA, IGNORED_I);
+    }
+
+    /**
+     * Some users never use WiFi, this lets us check for that state on first run.
+     */
+    public void setDefaultForDataOnlyConnection(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) {
+            return;
+        }
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null || !activeNetwork.isConnectedOrConnecting()) {
+            return;
+        }
+        if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+            NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            if (!wifiNetwork.isConnectedOrConnecting()) {
+                preferences.edit().putInt(PREF_OVER_DATA, OVER_NETWORK_ALWAYS).apply();
+            }
+        }
     }
 
     /**

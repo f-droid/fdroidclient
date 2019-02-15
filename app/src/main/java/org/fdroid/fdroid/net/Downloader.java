@@ -2,7 +2,7 @@ package org.fdroid.fdroid.net;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-
+import android.text.format.DateUtils;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
@@ -33,6 +33,10 @@ public abstract class Downloader {
     public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_CANONICAL_URL";
     public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MIRROR_URL";
 
+    public static final int DEFAULT_TIMEOUT = 10000;
+    public static final int SECOND_TIMEOUT = (int) DateUtils.MINUTE_IN_MILLIS;
+    public static final int LONGEST_TIMEOUT = 600000; // 10 minutes
+
     private volatile boolean cancelled = false;
     private volatile long bytesRead;
     private volatile long totalBytes;
@@ -43,7 +47,7 @@ public abstract class Downloader {
     String cacheTag;
     boolean notFound;
 
-    private volatile int timeout = 10000;
+    private volatile int timeout = DEFAULT_TIMEOUT;
 
     /**
      * For sending download progress, should only be called in {@link #progressTask}
