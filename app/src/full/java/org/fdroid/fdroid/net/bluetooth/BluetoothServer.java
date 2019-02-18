@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-
+import fi.iki.elonen.NanoHTTPD;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
@@ -15,12 +15,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import fi.iki.elonen.NanoHTTPD;
 
 /**
  * Act as a layer on top of LocalHTTPD server, by forwarding requests served
@@ -157,7 +156,7 @@ public class BluetoothServer extends Thread {
             Response.Builder builder = null;
 
             try {
-                int statusCode = 404;
+                int statusCode = HttpURLConnection.HTTP_NOT_FOUND;
                 int totalSize = -1;
 
                 if (request.getMethod().equals(Request.Methods.HEAD)) {

@@ -115,7 +115,7 @@ public class HttpDownloader extends Downloader {
         tmpConn.disconnect();
         newFileAvailableOnServer = false;
         switch (statusCode) {
-            case 200:
+            case HttpURLConnection.HTTP_OK:
                 contentLength = tmpConn.getContentLength();
                 if (!TextUtils.isEmpty(etag) && etag.equals(cacheTag)) {
                     Utils.debugLog(TAG, urlString + " is cached, not downloading");
@@ -123,7 +123,7 @@ public class HttpDownloader extends Downloader {
                 }
                 newFileAvailableOnServer = true;
                 break;
-            case 404:
+            case HttpURLConnection.HTTP_NOT_FOUND:
                 notFound = true;
                 return;
             default:

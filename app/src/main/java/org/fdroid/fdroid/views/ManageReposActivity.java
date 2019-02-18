@@ -571,8 +571,6 @@ public class ManageReposActivity extends AppCompatActivity
 
                 private int statusCode = -1;
                 private static final int REFRESH_DIALOG = Integer.MAX_VALUE;
-                private static final int HTTP_UNAUTHORIZED = 401;
-                private static final int HTTP_OK = 200;
 
                 @Override
                 protected String doInBackground(String... params) {
@@ -630,7 +628,8 @@ public class ManageReposActivity extends AppCompatActivity
 
                     statusCode = connection.getResponseCode();
 
-                    return statusCode == HTTP_UNAUTHORIZED || statusCode == HTTP_OK;
+                    return statusCode == HttpURLConnection.HTTP_UNAUTHORIZED
+                            || statusCode == HttpURLConnection.HTTP_OK;
                 }
 
                 @Override
@@ -644,7 +643,7 @@ public class ManageReposActivity extends AppCompatActivity
 
                     if (addRepoDialog.isShowing()) {
 
-                        if (statusCode == HTTP_UNAUTHORIZED) {
+                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
 
                             final View view = getLayoutInflater().inflate(R.layout.login, null);
                             final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
