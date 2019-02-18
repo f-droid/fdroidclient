@@ -1,0 +1,7 @@
+* komið í veg fyrir að HTTP ETag sé notað sem rakningarkökur
+
+* bætt framsetning skjámynda
+
+* betri hreinsun bráðabirgðaskráa og skyndiminnis
+
+* ýmsar lagfæringar á dökku viðmóti

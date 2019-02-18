@@ -1,0 +1,17 @@
+* sjálfvirkur niðurskurður eða eyðing úr skyndiminni þegar pláss er lítið
+
+* bætt afköst á tækjum með lítið minni
+
+* öll niðurhöl virða "Aðeins yfir Wi-Fi"
+
+* minnkuð minnisnotkun þegar lítið er eftir á tæki
+
+* bæta við sérsniðnum speglum með því að smella á tengla, skanna QR-kóða, o.s.frv
+
+* bætt sjálfvirkt val spegla
+
+* miklar lagfæringar varðandi býtti/nálægt
+
+* lagfærð villa varðandi endurteknar uppfærslutilkynningar (#1271)
+
+* F-Droid þekkir núna slóðir á daglegar prufuútgáfur frá GitLab

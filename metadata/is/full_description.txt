@@ -1,0 +1,20 @@
+F-Droid er uppsetjanlegt safn frjálsra forrita fyrir
+Android. Sjálft F-Droid forritið auðveldar að skoða, setja upp
+og halda utan um uppfærslur á tækinu þínu.
+
+Það tengist við hvert það hugbúnaðarsafn sem er samhæfanlegt
+við F-Droid. Sjálfgefna hugbúnaðarsafnið er hýst á f-droid.org,
+sem inniheldur einungis hreinan opinn og frjálsan hugbúnað.
+
+Sjálft Android-stýrikerfið er opið í þeim skilningi að þér er frjálst
+að setja upp APK-pakka hvaðan sem þér sýnist, en eftir sem áður
+eru margar góðar ástæður fyrir því að nota F-Droid fyrir almenna
+hugbúnaðarstjórnun:
+
+* Fáðu tilkynningar þegar uppfærslur eru gefnar út
+* Mögulegt er að sækja og setja uppfærslur upp sjálfvirkt
+* Haltu utan um eldri útgáfur og prófunarútgáfur
+* Síaðu út forrit sem ekki eru samhæfð tækinu þínu
+* Finndu forrit eftir flokkum og leitanlegum lýsingum
+* Smelltu á slóðir á styrki til útgefenda, grunnkóða o.s.frv.
+* Tryggðu öryggið með því að athuga undirritanir hugbúnaðarsafna og gátsummur APK-pakka

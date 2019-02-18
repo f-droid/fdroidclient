@@ -1,0 +1,7 @@
+* stuðningur við opinbera hugbúnaðarspegla fyrir hvaða safn sem er, með sjálvirku vali sem byggist á framboði
+
+* mörg atriði viðmóts fínpússuð, auk bætts stöðugleika og villuleiðréttinga
+
+* nýjar gagnaverndarstillingar: gera skjámyndiróvirkar; hætta við í neyð
+
+* ný tungumál: Kóreska (ko) og Víetnamska (vi)

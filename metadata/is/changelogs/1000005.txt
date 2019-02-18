@@ -1,0 +1,3 @@
+* lagfærð villa sem kom í veg fyrir að þýðingar sæjust í Android >= 7.0
+
+* lagfært hrun við uppfærslu á gagnagrunni úr 1.0-alpha3 --> 1.0-alpha4 #1181

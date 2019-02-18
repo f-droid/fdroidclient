@@ -1,0 +1,7 @@
+* strokubendingum bætt við á uppfærsluflipa
+
+* birtar aðvaranir með aðgerðum þegar um þekktar öryggisveilur er að ræða
+
+* uppfærslur á þýðingum
+
+* lagfæringar á dökku viðmóti

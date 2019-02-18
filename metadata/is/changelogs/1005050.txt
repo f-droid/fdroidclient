@@ -1,0 +1,13 @@
+* stuðningur við býtti með SD-minniskortum
+
+* villuleiðréttingar og endurbætur á býttum við nálæga aðila
+
+* meiri endurbætur á "Nánar um forrit" skjánum
+
+* uppfærslur tungumála og þýðinga varðandi 'Nálægt' og 'Býtti'
+
+* endurbætur á rökleiðslu varðandi táknmyndir forrita
+
+* bætt við söfnum með additional_repos.xml fá ROM, OEM, framleiðanda.
+
+* birting á versionCode í viðauknum lista yfir útgáfur í sérfræðingaham
