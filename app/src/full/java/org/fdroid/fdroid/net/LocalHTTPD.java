@@ -50,13 +50,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.TimeZone;
 
 /**
  * A HTTP server for serving the files that are being swapped via WiFi, etc.
@@ -78,6 +83,14 @@ public class LocalHTTPD extends NanoHTTPD {
     private final Context context;
 
     protected List<File> rootDirs;
+
+    // Date format specified by RFC 7231 section 7.1.1.1.
+    private static final DateFormat RFC_1123 = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+
+    static {
+        RFC_1123.setLenient(false);
+        RFC_1123.setTimeZone(TimeZone.getTimeZone("GMT"));
+    }
 
     /**
      * Configure and start the webserver.  This also sets the MIME Types only
@@ -430,6 +443,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     res.addHeader("Content-Length", "" + newLen);
                     res.addHeader("Content-Range", "bytes " + startFrom + "-" + endAt + "/" + fileLen);
                     res.addHeader("ETag", etag);
+                    res.addHeader("Last-Modified", RFC_1123.format(new Date(file.lastModified())));
                 }
             } else {
 
@@ -457,6 +471,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     res = newFixedFileResponse(file, mime);
                     res.addHeader("Content-Length", "" + fileLen);
                     res.addHeader("ETag", etag);
+                    res.addHeader("Last-Modified", RFC_1123.format(new Date(file.lastModified())));
                 }
             }
         } catch (IOException ioe) {
