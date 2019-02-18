@@ -107,9 +107,9 @@ connected 22 default armeabi-v7a:
   tags:
     - fdroid
     - kvm
+  allow_failure: true
   only:
-    - merge_requests
-    - branches@fdroid/fdroidclient
+    - branches@eighthave/fdroidclient
   <<: *test-template
   <<: *connected-template
 
@@ -118,27 +118,21 @@ connected 17 default x86:
 
 connected 18 default x86:
   <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
 
 connected 23 default x86:
   <<: *kvm-template
-  allow_failure: true
-  only:
-    - master@fdroid/fdroidclient
 
 connected 25 default x86:
   <<: *kvm-template
+  allow_failure: false
+  only:
+    - merge_requests
 
 connected 26 google_apis x86:
   <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
 
 connected 27 google_apis_playstore x86:
   <<: *kvm-template
-  only:
-    - master@fdroid/fdroidclient
 
 connected 28 default x86_64:
   <<: *kvm-template

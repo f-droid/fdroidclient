@@ -1,7 +1,9 @@
 package org.fdroid.fdroid;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.Instrumentation;
+import android.content.Context;
 import android.os.Build;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.IdlingPolicies;
@@ -94,6 +96,13 @@ public class MainActivityEspressoTest {
             Log.d(TAG, e.getLocalizedMessage());
         }
         new UiWatchers().registerAnrAndCrashWatchers();
+
+        Context context = instrumentation.getTargetContext();
+        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager.getMemoryInfo(mi);
+        long percentAvail = mi.availMem / mi.totalMem;
+        Log.i(TAG, "RAM: " + mi.availMem + " / " + mi.totalMem + " = " + percentAvail);
     }
 
     @AfterClass

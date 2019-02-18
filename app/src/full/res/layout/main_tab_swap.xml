@@ -69,17 +69,17 @@
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp">
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/nearby_splash__read_external_storage"
-                android:gravity="fill"
                 android:paddingRight="5dp"
                 android:paddingEnd="5dp"
                 android:textSize="17sp"
                 android:textColor="?attr/lightGrayTextColor"/>
         <Button
                 android:id="@+id/requestReadExternalStorage"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/nearby_splash__request_permission"
                 style="@style/SwapTheme.Wizard.OptionButton"/>

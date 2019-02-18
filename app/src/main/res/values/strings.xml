@@ -17,8 +17,11 @@
         developer
     </string>
     <string name="cache_downloaded">Keep cached apps</string>
+    <!-- as in software updates -->
     <string name="updates">Updates</string>
+    <!-- as in software updates -->
     <string name="unstable_updates">Unstable updates</string>
+    <!-- as in software updates -->
     <string name="unstable_updates_summary">Suggest updates to unstable versions</string>
     <string name="hide_all_notifications">Hide all notifications</string>
     <string name="hide_all_notifications_summary">Prevent all actions from showing in the status bar and notification
@@ -118,6 +121,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_list__dismiss_downloading_app">Download canceled</string>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
+    <!-- Should be exactly the same as the standard word for "Share" throughout Android and apps -->
     <string name="send_installed_apps">Share installed apps</string>
     <string name="send_installed_apps_csv">Apps installed by F-Droid as CSV file</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
@@ -176,12 +180,14 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="menu_manage">Repositories</string>
     <string name="repositories_summary">Add additional sources of apps</string>
+    <!-- This should be exactly the same as the standard word for Settings throughout Android and apps -->
     <string name="menu_settings">Settings</string>
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>
 
     <string name="menu_launch">Open</string>
     <string name="menu_open">Open</string>
+    <!-- This should be exactly the same as the standard word for Share throughout Android and apps -->
     <string name="menu_share">Share</string>
     <string name="menu_install">Install</string>
     <string name="menu_uninstall">Uninstall</string>
@@ -199,12 +205,23 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_donate">Donate</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
+    <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_flattr">Flattr</string>
+    <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_liberapay">Liberapay</string>
 
     <string name="main_menu__latest_apps">Latest</string>
     <string name="main_menu__categories">Categories</string>
+    <!-- Should be the same term used in the Google Nearby Settings -->
     <string name="main_menu__swap_nearby">Nearby</string>
+    <!--
+        The updates tab isn't only about software updates. It is also about queued offline installs, in progress
+        installs, known vulnerabilities, and in the future, also donation reminders and other things. In English,
+        you can also say "do you have an update on your progress?" or "Keep me updated on how things are going".
+        That combined with "software updates" is why the tab is called "Updates". Ideally, the Updates Tab would
+        actually be a different word than the word used for "software update" to highlight that the Updates Tab is
+        more than just software updates.
+    -->
     <string name="main_menu__updates">Updates</string>
 
     <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
@@ -286,6 +303,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_app_dialog_message">Are you sure that you want to allow %1$s to trigger destructive panic button actions?</string>
     <string name="allow">Allow</string>
 
+    <!-- "panic button" is a well known concept in English, it is good to find a similar metaphor in your language -->
     <string name="panic_settings">Panic button settings</string>
     <string name="panic_settings_summary">Actions to be taken in case of emergency</string>
     <string name="panic_exit_title">Exit App</string>
@@ -296,6 +314,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_hide_warning_title">Remember how to restore</string>
     <string name="panic_hide_warning_message">In a panic event, this will remove %1$s from the launcher. Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
 
+    <!-- The name of a fake calculator app used as a disguise -->
     <string name="hiding_calculator">Calculator</string>
     <string name="hiding_dialog_title">Hide %s Now</string>
     <string name="hiding_dialog_message">Are you sure you want to remove %1$s from the launcher? Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
@@ -328,7 +347,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>
     <string name="global_error_updating_repos">Error during update: %s</string>
     <string name="warning_no_internet">Cannot update, are you connected to the Internet?</string>
+    <!-- Should be exactly the same as the standard word for Permissions throughout Android and apps -->
     <string name="no_permissions">No permissions are used.</string>
+    <!-- Should be exactly the same as the standard word for Permissions throughout Android and apps -->
     <string name="permissions">Permissions</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
     <string name="theme">Theme</string>
@@ -361,6 +382,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </string>
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
+    <!-- Should be exactly the same as the standard word for "Share" throughout Android and apps -->
     <string name="share_repository">Share Repository</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining
         this network: %s
@@ -542,6 +564,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_content_single_downloading_update">Downloading update for \"%1$s\"&#8230;</string>
     <string name="notification_content_single_installing">Installing \"%1$s\"&#8230;</string>
     <string name="notification_content_single_installed">Successfully installed</string>
+    <!-- as in software updates -->
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Update</item>
         <item quantity="other">%1$d Updates</item>
