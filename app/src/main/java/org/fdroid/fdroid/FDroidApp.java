@@ -263,7 +263,7 @@ public class FDroidApp extends Application {
      *
      * @see #resetMirrorVars()
      * @see #getTimeout()
-     * @see Repo#getMirror(String)
+     * @see Repo#getRandomMirror(String)
      */
     public static String getMirror(String urlString, Repo repo2) throws IOException {
         if (repo2.hasMirrors()) {
@@ -286,7 +286,7 @@ public class FDroidApp extends Application {
             if (numTries == Integer.MAX_VALUE) {
                 numTries = repo2.getMirrorCount();
             }
-            String mirror = repo2.getMirror(lastWorkingMirror);
+            String mirror = repo2.getRandomMirror(lastWorkingMirror);
             String newUrl = urlString.replace(lastWorkingMirror, mirror);
             Utils.debugLog(TAG, "Trying mirror " + mirror + " after " + lastWorkingMirror + " failed," +
                     " timeout=" + timeout / 1000 + "s");

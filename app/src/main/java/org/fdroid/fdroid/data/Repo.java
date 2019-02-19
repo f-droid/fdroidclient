@@ -380,12 +380,16 @@ public class Repo extends ValueObject {
     }
 
     /**
+     * Get a random mirror URL from the list of mirrors for this repo. It will
+     * remove the URL in {@code mirrorToSkip} from consideration before choosing
+     * which mirror to return.
+     * <p>
      * The mirror logic assumes that it has a mirrors list with at least once
      * valid entry in it.  In the index format as defined by {@code fdroid update},
      * there is always at least one valid URL: the canonical URL.  That also means
      * if there is only one item in the mirrors list, there are no other URLs to try.
      * <p>
-     * The initial state of the repos in the database also include the canonical
+     * The initial state of the repos in the database also includes the canonical
      * URL in the mirrors list so the mirror logic works on the first index
      * update.  That makes it possible to do the first index update via SD Card
      * or USB OTG drive.
@@ -394,16 +398,16 @@ public class Repo extends ValueObject {
      * @see FDroidApp#getMirror(String, Repo)
      * @see FDroidApp#getTimeout()
      */
-    public String getMirror(String lastWorkingMirror) {
-        if (TextUtils.isEmpty(lastWorkingMirror)) {
-            lastWorkingMirror = address;
+    public String getRandomMirror(String mirrorToSkip) {
+        if (TextUtils.isEmpty(mirrorToSkip)) {
+            mirrorToSkip = address;
         }
         List<String> shuffledMirrors = getMirrorList();
-        Collections.shuffle(shuffledMirrors);
         if (shuffledMirrors.size() > 1) {
+            Collections.shuffle(shuffledMirrors);
             for (String m : shuffledMirrors) {
                 // Return a non default, and not last used mirror
-                if (!m.equals(lastWorkingMirror)) {
+                if (!m.equals(mirrorToSkip)) {
                     if (FDroidApp.isUsingTor()) {
                         return m;
                     } else {
