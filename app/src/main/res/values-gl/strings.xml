@@ -57,7 +57,6 @@
     <string name="no_handler_app">Non tes ningun aplicativo dispoñíbel que poida manexar %s.</string>
     <string name="theme">Tema</string>
     <string name="app_name">F-Droid</string>
-
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="unstable_updates">Actualizacións inestables</string>
@@ -66,40 +65,30 @@
     <string name="system_installer_on">Utiliza Privileged Extension para instalar, actualizar e eliminar paquetes</string>
     <string name="local_repo_name">Nome do teu repositorio local</string>
     <string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
-
     <string name="about_source">Código fonte</string>
     <string name="app_incompatible">Incompatibel</string>
     <string name="app_inst_known_source">Instalado (dende %s)</string>
     <string name="app_inst_unknown_source">Instalado (dende unha fonte descoñecida)</string>
-
     <string name="links">Ligazóns</string>
     <string name="more">Máis</string>
     <string name="less">Menos</string>
-
     <string name="back">Atrás</string>
     <string name="enable">Activar</string>
     <string name="add_key">Engadir chave</string>
     <string name="overwrite">Sobreescribir</string>
-
     <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!
     </string>
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
-
     <string name="repo_add_fingerprint">Pegada dixital (opcional)</string>
     <string name="bad_fingerprint">Pegada dixital incorrecta</string>
     <string name="invalid_url">Ésta non é unha URL válida.</string>
     <string name="malformed_repo_uri">Ignorouse unha URL de repositorio mal formada: %s</string>
-
     <string name="menu_changelog">Historial de cambios</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="expert_on">Amosar información adicional e activar axustes adicionais</string>
-
     <string name="show_incompat_versions_on">Amosar versións de aplicativos que son incompatibeis co dispositivo</string>
-
     <string name="local_repo">Repositorio local</string>
     <string name="local_repo_running">F-Droid está listo para o intercambio</string>
     <string name="touch_to_configure_local_repo">Toca para ver detalles e permitir ós demáis o intercambio dos teus
@@ -112,13 +101,11 @@
     <string name="icon">Icona</string>
     <string name="next">Seguinte</string>
     <string name="skip">Saltar</string>
-
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Activar Proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar Proxy HTTP para tódalas peticións de rede</string>
     <string name="proxy_port">Porto do Proxy</string>
     <string name="proxy_port_summary">Número de porto do seu proxy (p.e. 8118)</string>
-
     <string name="status_download_unknown_size">Descargando
 \n%2$s desde
 \n%1$s</string>
@@ -155,9 +142,7 @@
     <string name="category_Theming">Customización</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
-
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
-
     <string name="swap_nfc_title">Toca para intercambiar</string>
     <string name="swap">Intercambiar aplicativos</string>
     <string name="swap_success">Intercambio exitoso!</string>
@@ -184,7 +169,6 @@
     <string name="uninstall_confirm">Desexas desinstalar este aplicativo?</string>
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="downloading">Descargando…</string>
-
     <string name="interval_never">Non anovar app automáticamente</string>
     <string name="interval_1h">Buscar anovacións cada hora</string>
     <string name="interval_4h">Buscar anovacións cada 4 horas</string>
@@ -192,13 +176,11 @@
     <string name="interval_1d">Buscar anovacións cada día</string>
     <string name="interval_1w">Buscar anovacións semanalmente</string>
     <string name="interval_2w">Buscar anovacións cada dúas semanas</string>
-
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
     <string name="theme_night">Nocturno</string>
     <string name="unstable_updates_summary">Suxire actualizacións para versións inestables</string>
     <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
-
     <string name="proxy_host">Servidor Proxy</string>
     <string name="proxy_host_summary">Nome do seu proxy (p.e. 127.0.0.1)</string>
     <string name="unsigned_description">Isto significa que o listado de apps podería non ser verificado. Deberías ter coidado cos aplicativos descargados desde índices sen asinar.</string>
@@ -222,15 +204,12 @@
     <string name="requires_features">Require: %1$s</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Por defecto do sistema</string>
-
     <string name="wifi_ap">Punto de acceso</string>
-
     <string name="empty_installed_app_list">Non hay aplicativos instalados.\n\nExisten aplicativos no teu dispositivo,
         pero non están dispoñibles dende F-Droid. Isto pode deberse a que necesitas actualizar os repositorios, ou éstes
         carecen dos teus aplicativos.
     </string>
     <string name="empty_can_update_app_list">Parabéns!\nTodas as súas apps están actualizadas.</string>
-
     <string name="install_error_unknown">Fallou a instalación debido a un error descoñecido</string>
     <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantizados para a
         extensión! Por favor, crea unha incidencia!
@@ -259,7 +238,6 @@
         intercambio.
     </string>
     <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio!</string>
-
     <string name="install_confirm">require acceso a</string>
     <string name="install_confirm_update">Desexas instalar unha actualización deste aplicativo existente? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
     <string name="install_confirm_update_system">Desexas instalar unha actualización para este aplicativo do sistema? Os
@@ -268,21 +246,16 @@
     <string name="install_confirm_update_no_perms">Desexas instalar unha actualización de este aplicativo existente? Os teus datos existentes non se perderán. A actualización non require privilexios especiais.</string>
     <string name="install_confirm_update_system_no_perms">Desexas instalar unha actualización para este aplicativo do sistema? Os teus datos existentes non se perderán.  Non require privilexios especiais.</string>
     <string name="download_error">Descarga falida!</string>
-
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
     <string name="menu_settings">Configuración</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Cerca</string>
-
     <string name="preference_manage_installed_apps">Xestionar aplicacións instaladas</string>
-
-
     <string name="notification_action_update">Anovar</string>
     <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
-
     <string name="app_list__name__downloading_in_progress">Baixando %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
     <string name="updates__tts__download_app">Descargar</string>
@@ -307,16 +280,13 @@
     <string name="login_password">Contrasinal</string>
     <string name="repo_edit_credentials">Cambiar contrasinal</string>
     <string name="repo_error_empty_username">Nome de usuario baldeiro, non se cambiaron as credenciais</string>
-
     <string name="app_details_donate_prompt_unknown_author">Convida a un café aos desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s foi creado por %2$s. Págalles un café!</string>
-
     <string name="app_details__incompatible_mismatched_signature">A sinatura difire da versión actualmente instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para amosar versións incompatibeis aquí de todos modos, activa a opción \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Non hai versións con sinatura compatíbel</string>
     <string name="app_details__no_versions__none_compatible_with_device">Non hai versión compatibeis co dispositivo</string>
     <string name="about_license">Licenza</string>
-
     <string name="app_version_x_available">Versión %1$s disponíbel</string>
     <string name="app_version_x_installed">Versión %1$s</string>
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
@@ -328,42 +298,33 @@
     <string name="app_list__dismiss_app_update">Anovación ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
-
     <string name="installed_apps__activity_title">Aplicacións instaladas</string>
     <string name="installed_app__updates_ignored">Anovacións ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Anovacións ignoradas para a versión %1$s</string>
     <string name="update_all">Anovar todo</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendamos desinstalar esta app inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Atopamos unha vulnerabilidade en %1$s. Recomendamos actualizar á nova versión inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
-
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Amosar apps</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Baixar anovación para %1$d app.</item>
         <item quantity="other">Baixar anovacións para %1$d apps.</item>
     </plurals>
-
     <string name="versions">Versións</string>
     <string name="clear_search">Limpar a busca</string>
-
     <string name="repo_provider">Repositorio: %s</string>
-
     <string name="repositories_summary">Adicionar máis fontes de aplicativos</string>
     <string name="menu_email">Enderezo electrónico do autor</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Licenza: %s</string>
     <string name="latest__empty_state__no_recent_apps">Non se atoparon aplicativos recentes</string>
     <string name="categories__empty_state__no_categories">Non hai categorías para amosar</string>
-
     <string name="preference_category__my_apps">Miñas apps</string>
     <string name="details_new_in_version">Novidades da versión %s</string>
-
     <string name="antifeatureswarning">Este aplicativo ten características que poderían non gustar.</string>
     <string name="antifeatures">Características indesexadas</string>
     <string name="antinonfreeassetslist">Este app contén elementos non-libres</string>
-
     <string name="useTor">Utilice Tor</string>
     <string name="useTorSummary">Forzar a descarga a través de Tor para maior intimidade. Require Orbot</string>
     <string name="download_404">O ficheiro solicitado non foi atopado.</string>
@@ -372,34 +333,27 @@
         <item quantity="one">Ver %d</item>
         <item quantity="other">Ver todas as %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet? Baixa aplicativos de persoas próximas!</string>
     <string name="nearby_splash__find_people_button">Atopar persoas nas proximidades</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisan do %1$s para uso próximo.</string>
-
     <string name="swap_stopping_wifi">Detendo o Wi-Fi…</string>
     <string name="download_pending">Agardando para iniciar a descarga…</string>
     <string name="install_error_notify_title">Erro ao instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
-
-
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="installing">Instalando…</string>
     <string name="uninstalling">Desinstalando…</string>
-
     <string name="keep_hour">1 hora</string>
     <string name="keep_day">1 día</string>
     <string name="keep_week">1 semana</string>
     <string name="keep_month">1 mes</string>
     <string name="keep_year">1 ano</string>
     <string name="keep_forever">Para sempre</string>
-
     <string name="crash_dialog_comment_prompt">Pode engadir información adicional e comentarios aquí:</string>
-
     <plurals name="notification_summary_more">
-	<item quantity="one">máis +%1$d …</item>
-	<item quantity="other">+%1$d máis …</item>
-</plurals>
+        <item quantity="one">máis +%1$d …</item>
+        <item quantity="other">+%1$d máis …</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Preparado para anovar</string>
     <string name="notification_title_single_ready_to_install_update">Anovación lista para instalar</string>
     <string name="notification_title_single_install_error">Fallou a instalación</string>
@@ -423,26 +377,20 @@
     <string name="notification_title_summary_installing">Instalando</string>
     <string name="notification_title_summary_installed">Instalada con éxito</string>
     <string name="tts_category_name">Categoría %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Ver %1$d aplicativo na categoría %2$s</item>
         <item quantity="other">Ver todos os %1$d aplicativos da categoría %2$s</item>
     </plurals>
-
     <string name="details_last_updated_today">Anovada hoxe</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Anovada %1$s día atrás</item>
         <item quantity="other">Anovada %1$s días atrás</item>
     </plurals>
     <string name="app_details__no_versions__explain_incompatible_signatures">A versión instalada non é compatíbel con ningunha das versións dispoñibeis. Desinstalar a aplicación permitiralle ver e instalar as versións compatibeis. Isto acontece habitualmente con apps instaladas através de Google Play ou outras fontes, se foron asinadas cun certificado diferente.</string>
-
     <string name="app_permission_storage">O F-Droid precisa permiso para acceder ao almacenamento. Por favor conceda ese permiso na seguinte pantalla para continuar coa instalación.</string>
-
     <string name="latest__empty_state__never_updated">Unha vez que a lista de aplicacións estiver actualizada, as aplicacións máis recentes serán amosadas aquí</string>
     <string name="latest__empty_state__no_enabled_repos">Unha vez que habilite e actualice un repositorio, as aplicacións máis recentes serán amosadas aquí</string>
-
     <string name="empty_search_available_app_list">Nengún aplicativo coincidente disponíbel.</string>
-
     <plurals name="details_last_update_weeks">
         <item quantity="one">Actualizado hai %1$d semana</item>
         <item quantity="other">Actualizado hai %1$d semanas</item>
@@ -457,13 +405,10 @@
     </plurals>
     <string name="status_inserting_apps">Gardando os detalles das apps</string>
     <string name="sort_search">Ordear busca</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="privacy">Privacidade</string>
     <string name="preventScreenshots_title">Impedir capturas de pantalla</string>
     <string name="preventScreenshots_summary">Impide a captura de pantalla e oculta o contido da aplicación na pantalla de aplicacións recentes</string>
-
     <string name="panic_app_setting_title">App de botón do pánico</string>
     <string name="panic_app_unknown_app">unha app descoñecida</string>
     <string name="panic_app_setting_summary">App sen definir</string>
@@ -471,7 +416,6 @@
     <string name="panic_app_dialog_title">Confirmar App do pánico</string>
     <string name="panic_app_dialog_message">Seguro que desexa permitir que %1$s desencadene accións destrutivas do botón de pánico?</string>
     <string name="allow">Permitir</string>
-
     <string name="panic_settings">Axustes do botón do pánico</string>
     <string name="panic_settings_summary">Accións a tomar en caso de emerxencia</string>
     <string name="panic_exit_title">Saír da aplicación</string>
@@ -481,14 +425,12 @@
     <string name="panic_hide_summary">A aplicación agocharase</string>
     <string name="panic_hide_warning_title">Lembrar como restaurar</string>
     <string name="panic_hide_warning_message">Nunha situación de pânico, borrarase %1$s do menu. Para restaurar, abonda dixitar \"%2$d\" no aplicativo falso %3$s.</string>
-
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Agochar %s agora</string>
     <string name="hiding_dialog_message">Está seguro de que quere borrar %1$s do menú? Abonda dixitar \"%2$d\" no aplicativo falso %3$s para restaurar.</string>
     <string name="hiding_dialog_warning">Atención: Todos os atallos de aplicativos na pantalla inicial tamén serán borrados e precisarán ser re-adicionados manualmente.</string>
     <string name="hide_on_long_search_press_title">Ocultar co botón de busca</string>
     <string name="hide_on_long_search_press_summary">Premer longo no botón de busca oculta o aplicativo</string>
-
     <string name="repo_add_mirror">Engadir réplica</string>
     <string name="repo_exists_add_fingerprint">%1$s xa está configurado, isto engadirá nova información clave.</string>
     <string name="repo_exists_enable">%1$s xa está configurado, confirma que queres reactivalo.</string>
@@ -502,19 +444,16 @@
     <string name="over_network_never_summary">Non descargar nada usando esta conexión</string>
     <string name="antidisabledalgorithmlist">Este aplicativo ten unha sinatura de seguridade feble</string>
     <string name="antiknownvulnlist">Esta aplicación contén unha vulnerabilidade de seguridade coñecida</string>
-
     <string name="show_anti_feature_apps">Incluir aplicativos con anti-funcionalidades</string>
     <string name="show_anti_feature_apps_on">Amosar aplicativos que requiren de anti-funcionalidades</string>
     <string name="force_touch_apps">Incluir aplicativos de pantalla táctil</string>
     <string name="force_touch_apps_on">Amosar aplicativos que requiren pantalla táctil mesmo se non hai soporte físico</string>
-
     <string name="repo_official_mirrors">Réplicas oficiais</string>
     <string name="repo_user_mirrors">Réplicas de usuario</string>
     <string name="use_bluetooth">Usar Bluetooth</string>
     <string name="swap_toast_invalid_url">URL inválida para troco: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Activado o Ponto de acceso Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Non foi posíbel activar o Ponto de acceso Wi-Fi!</string>
-
     <string name="warning_scaning_qr_code">A súa cámara non parece ter enfoque automático. Pode ser difícil escanear o código.</string>
     <string name="prompt_to_send_crash_reports">Preguntar antes de enviar relatorios de erros</string>
     <string name="prompt_to_send_crash_reports_summary">Recoller datos sobre os erros e preguntar para os enviar ao desenvolvedor</string>

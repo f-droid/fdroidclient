@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="SignatureMismatch">Новая версія падпісаная ключом, адрозным ад старой. Для ўсталёўкі новай версіі неабходна спачатку выдаліць старую. Зрабіце гэта і паспрабуйце зноў. (Майце на ўвазе, што выдаленне дадатка прывядзе да знішчэння ўсіх яго даных)</string>
     <string name="installIncompatible">Дадатак несумяшчальны з вашай прыладай. Усё адно ўсталяваць\?</string>
     <string name="version">Версія</string>
@@ -14,7 +13,6 @@
     <string name="keep_install_history">Весці гісторыю ўсталёвак</string>
     <string name="keep_install_history_summary">Захоўваць лог усіх усталёвак і выдаленняў з прыватнай крамы</string>
     <string name="other">Іншае</string>
-
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
     <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
@@ -27,35 +25,27 @@
     <string name="local_repo_name">Назва вашага лакальнага рэпазіторыя</string>
     <string name="local_repo_name_summary">Ваш лакальны рэпазіторый прапануецца пад назвай: %s</string>
     <string name="local_repo_https_on">Выкарыстоўваць шыфраванае HTTPS-злучэнне для лакальнага рэпазіторыя</string>
-
     <string name="login_title">Патрабуецца аўтэнтыфікацыя</string>
     <string name="login_name">Імя карыстальніка</string>
     <string name="login_password">Пароль</string>
     <string name="repo_edit_credentials">Змяніць пароль</string>
     <string name="repo_error_empty_username">Пустое імя карыстальніка, паўнамоцтвы не змененыя</string>
-
     <string name="app_details">Апісанне дадатка</string>
     <string name="no_such_app">Дадатак не знойдзены.</string>
-
     <string name="app_details_donate_prompt_unknown_author">Ахвяраваць распрацоўшчыкам %1$s на каву!</string>
     <string name="app_details_donate_prompt">%1$s створаны %2$s. Ахвяруйце ім на каву!</string>
-
     <string name="about_title">Пра F-Droid</string>
     <string name="about_version">Версія</string>
     <string name="about_site">Сайт</string>
     <string name="about_source">Зыходны код</string>
     <string name="about_license">Ліцэнзія</string>
-
     <string name="app_incompatible">Несумяшчальны</string>
     <string name="app_installed">Усталяваная</string>
     <string name="app_not_installed">Не ўсталявана</string>
     <string name="app_inst_known_source">Усталявана (з %s)</string>
     <string name="app_inst_unknown_source">Усталявана (з невядомай крыніцы)</string>
-
     <string name="added_on">Дададзена %s</string>
-
     <string name="ok">Добра</string>
-
     <string name="yes">Так</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Дадаць новы рэпазіторый</string>
@@ -64,29 +54,24 @@
     <string name="versions">Версіі</string>
     <string name="more">Больш</string>
     <string name="less">Менш</string>
-
     <string name="back">Назад</string>
     <string name="cancel">Скасаваць</string>
     <string name="enable">Уключыць</string>
     <string name="add_key">Дадаць ключ</string>
     <string name="overwrite">Перазапісаць</string>
-
     <string name="bluetooth_activity_not_found">Не знойдзена метада адпраўлення праз Bluetooth, абярыце адзін!</string>
     <string name="choose_bt_send">Абраць метад адпраўлення праз Bluetooth</string>
-
     <string name="repo_add_url">Адрас рэпазіторыя</string>
     <string name="repo_add_fingerprint">Адбітак (неабавязковы)</string>
     <string name="bad_fingerprint">Дрэнны адбітак</string>
     <string name="invalid_url">Гэта непрыдатны URL.</string>
     <string name="malformed_repo_uri">Ігнараванне непрыдатнага URI рэпазіторыя: %s</string>
     <string name="repo_provider">Рэпазіторый: %s</string>
-
     <string name="menu_manage">Рэпазіторыі</string>
     <string name="repositories_summary">Дадаць дадатковыя крыніцы дадаткаў</string>
     <string name="menu_settings">Налады</string>
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Новы рэпазіторый</string>
-
     <string name="menu_launch">Адкрыць</string>
     <string name="menu_share">Падзяліцца</string>
     <string name="menu_install">Усталяваць</string>
@@ -103,10 +88,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Не ўсталявана</string>
-
     <string name="antiadslist">Гэты дадатак змяшчае рэкламу</string>
     <string name="antitracklist">Гэты дадатак адсочвае вашую актыўнасць</string>
     <string name="antinonfreeadlist">Гэты дадатак прапануе несвабодныя дапаўненні</string>
@@ -114,18 +96,13 @@
     <string name="antinonfreedeplist">Гэты дадатак залежыць ад іншых несвабодных дадаткаў</string>
     <string name="antiupstreamnonfreelist">Зыходны код не поўнасцю вольны</string>
     <string name="antinonfreeassetslist">У дадатка ёсць несвабоднае змесціва</string>
-
     <string name="display">Выгляд</string>
-
     <string name="expert">Экспертны рэжым</string>
     <string name="expert_on">Паказаць дадатковую інфармацыю і ўключыць дадатковыя налады</string>
-
     <string name="search_hint">Пошук дадаткаў</string>
-
     <string name="appcompatibility">Сумяшчальнасць</string>
     <string name="show_incompat_versions">Паказваць несумяшчальныя версіі</string>
     <string name="show_incompat_versions_on">Паказваць версіі дадаткаў несумяшчальных з прыладай</string>
-
     <string name="local_repo">Лакальны рэпазіторый</string>
     <string name="local_repo_running">F-Droid гатовы да абмену</string>
     <string name="touch_to_configure_local_repo">Дакраніцеся, каб праглядзець падрабязнасці і дазволіць абмен паміж дадаткамі.</string>
@@ -137,7 +114,6 @@
     <string name="icon">Значок</string>
     <string name="next">Далей</string>
     <string name="skip">Прамінуць</string>
-
     <string name="useTor">Выкарыстоўваць Tor</string>
     <string name="useTorSummary">Сілком спампоўваць праз Tor для лепшай прыватнасці. Патрабуе Orbot</string>
     <string name="proxy">Проксі</string>
@@ -147,9 +123,7 @@
     <string name="proxy_host_summary">Назва хоста вашага проксі (напрыклад 127.0.0.1)</string>
     <string name="proxy_port">Проксі-порт</string>
     <string name="proxy_port_summary">Нумар порта вашага проксі (напрыклад 8118)</string>
-
     <string name="status_download">Спампоўванне %2$s / %3$s (%4$d%%) з %1$s</string>
-
     <string name="status_download_unknown_size">Спампоўванне %2$s з %1$s</string>
     <string name="update_notification_title">Абнаўленне рэпазіторыяў</string>
     <string name="status_processing_xml_percent">Апрацоўка %2$s / %3$s (%4$d%%) з %1$s</string>
@@ -188,10 +162,8 @@
     <string name="requires_features">Патрабуецца: %1$s</string>
     <string name="pref_language">Мова</string>
     <string name="pref_language_default">Прадвызначаная сістэмная</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Пункт доступу</string>
-
     <string name="category_Connectivity">Сувязь</string>
     <string name="category_Development">Распрацоўка</string>
     <string name="category_Games">Гульні</string>
@@ -209,14 +181,12 @@
     <string name="category_Theming">Тэмы</string>
     <string name="category_Time">Час</string>
     <string name="category_Writing">Напісанне</string>
-
     <string name="empty_installed_app_list">Усталяваныя дадаткі адсутнічаюць. На вашай прыладзе ёсць дадаткі, але яны недаступныя праз F-Droid. Магчыма вам неабходна абнавіць рэпазіторыі, альбо вашыя рэпазіторыі не змяшчаюць гэтых дадаткаў.</string>
     <string name="empty_can_update_app_list">Віншуем!
 \nВа ўсіх дадаткаў найноўшыя версіі.</string>
     <string name="install_error_unknown">На атрымалася ўсталяваць праз невядомую памылку</string>
     <string name="uninstall_error_unknown">На атрымалася выдаліць праз невядомую памылку</string>
     <string name="system_install_denied_permissions">Пашырэнне не мае прывіліяваных дазволаў! Калі ласка, паведаміце пра памылку!</string>
-
     <string name="swap_nfc_title">Дакрануцца для абмену</string>
     <string name="swap_nfc_description">Калі ваш сябар мае F-Droid і ўключаны NFC, проста дакраніцеся прыладамі.</string>
     <string name="swap_join_same_wifi">Падлучыцеся да той самай сеткі Wi-Fi, што і ваш сябар</string>
@@ -257,7 +227,6 @@
     <string name="swap_qr_isnt_for_swap">QR-код, які вы адсканавалі, не выглядае як код абмену.</string>
     <string name="loading">Загрузка…</string>
     <string name="swap_connection_misc_error">Падчас злучэння з прыладай адбылася памылка. Немагчыма працягнуць абмен!</string>
-
     <string name="install_confirm">патрабуе доступ да</string>
     <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне ўсталяванага дадатка\? Наяўныя даныя не будуць выдаленыя. Абноўлены дадатак атрымае доступ да:</string>
     <string name="install_confirm_update_system">Хочаце ўсталяваць абнаўленне ўбудаванага дадатка\? Наяўныя даныя не будуць выдаленыя. Абноўлены дадатак атрымае доступ да:</string>
@@ -272,14 +241,11 @@
     <string name="download_pending">Чаканне пачатку спампоўвання…</string>
     <string name="install_error_notify_title">Памылка ўсталёўкі %s</string>
     <string name="uninstall_error_notify_title">Памылка выдалення %s</string>
-
-
     <string name="perms_new_perm_prefix">Новыя:</string>
     <string name="perms_description_app">Прадастаўлена %1$s.</string>
     <string name="downloading">Спампоўванне…</string>
     <string name="installing">Усталёўка…</string>
     <string name="uninstalling">Выдаленне…</string>
-
     <string name="interval_never">Не абнаўляць аўтаматычна</string>
     <string name="interval_1h">Штогадзінна правяраць на абнаўленні</string>
     <string name="interval_4h">Правяраць на абнаўленні кожныя 4 гадзіны</string>
@@ -287,22 +253,18 @@
     <string name="interval_1d">Правяраць на абнаўленні штодзённа</string>
     <string name="interval_1w">Правяраць на абнаўленні штотыднёва</string>
     <string name="interval_2w">Правяраць на абнаўленні кожныя 2 тыдні</string>
-
     <string name="keep_hour">1 гадзіна</string>
     <string name="keep_day">1 дзень</string>
     <string name="keep_week">1 тыдзень</string>
     <string name="keep_month">1 месяц</string>
     <string name="keep_year">1 год</string>
     <string name="keep_forever">Заўсёды</string>
-
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Цёмная</string>
     <string name="theme_night">Начная</string>
-
     <string name="crash_dialog_title">F-Droid даў хібу</string>
     <string name="crash_dialog_text">Узнікла нечаканая памылка, што прывяла да аварыйнага спынення дадатка. Хочаце адпавіць электронны ліст з падрабязнасцямі, каб дапамагчы выправіць гэтую праблему\?</string>
     <string name="crash_dialog_comment_prompt">Можаце ўвясці дадатковую інфармацыю і каментары сюды:</string>
-
     <string name="notification_title_single_update_available">Даступна абнаўленне</string>
     <string name="notification_title_single_ready_to_install">Гатовая да ўсталёўкі</string>
     <string name="notification_title_single_ready_to_install_update">Абнаўленне гатовае да ўсталёўкі</string>
@@ -322,58 +284,42 @@
     <string name="notification_action_update">Абнавіць</string>
     <string name="notification_action_cancel">Скасаваць</string>
     <string name="notification_action_install">Усталяваць</string>
-
     <string name="app_version_x_available">Версія %1$s даступная</string>
     <string name="app_version_x_installed">Версія %1$s</string>
     <string name="clear_search">Ачысціць пошук</string>
-
     <string name="main_menu__latest_apps">Апошнія</string>
     <string name="main_menu__categories">Катэгорыі</string>
     <string name="main_menu__swap_nearby">Паблізу</string>
-
-
     <plurals name="button_view_all_apps_in_category">
-    <item quantity="one">Праглядзець %d дадатак</item>
-    <item quantity="few">Праглядзець усе %d дадатка</item>
-    <item quantity="many">Праглядзець усе %d дадаткаў</item>
-</plurals>
-
+        <item quantity="one">Праглядзець %d дадатак</item>
+        <item quantity="few">Праглядзець усе %d дадатка</item>
+        <item quantity="many">Праглядзець усе %d дадаткаў</item>
+    </plurals>
     <string name="app_recommended_version_installed">Версія %1$s (рэкамендуецца)</string>
     <string name="app_new">Новы</string>
-
     <string name="installed_apps__activity_title">Усталяваныя дадаткі</string>
     <string name="installed_app__updates_ignored">Абнаўленні ігнаруюцца</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Абнаўленні ігнаруюцца для версіі %1$s</string>
-
     <string name="preference_category__my_apps">Мае дадаткі</string>
     <string name="preference_manage_installed_apps">Кіраванне ўсталяванымі дадаткамі</string>
-
-
     <string name="tts_category_name">Катэгорыя %1$s</string>
-
     <plurals name="tts_view_all_in_category">
-    <item quantity="one">Паказаць %1$s дадатак з катэгорыі %2$s</item>
-    <item quantity="few">Паказаць %1$s дадатка з катэгорыі %2$s</item>
-    <item quantity="many">Паказаць %1$s дадаткаў з катэгорыі %2$s</item>
-</plurals>
+        <item quantity="one">Паказаць %1$s дадатак з катэгорыі %2$s</item>
+        <item quantity="few">Паказаць %1$s дадатка з катэгорыі %2$s</item>
+        <item quantity="many">Паказаць %1$s дадаткаў з катэгорыі %2$s</item>
+    </plurals>
     <string name="app__install_downloaded_update">Абнавіць</string>
-
     <string name="app_list__name__downloading_in_progress">Спампоўванне %1$s</string>
-
     <string name="updates__tts__download_app">Спампаваць</string>
     <string name="update_all">Абнавіць усе</string>
-
     <string name="updates__hide_updateable_apps">Схаваць дадаткі</string>
     <string name="updates__show_updateable_apps">Паказаць дадаткі</string>
-
     <plurals name="updates__download_updates_for_apps">
-    <item quantity="one">Спампаваць абнаўленне для %1$d дадатка.</item>
-    <item quantity="few">Спампаваць абнаўленні для %1$d дадаткаў.</item>
-    <item quantity="many">Спампаваць абнаўленні для %1$d дадаткаў.</item>
-</plurals>
-
+        <item quantity="one">Спампаваць абнаўленне для %1$d дадатка.</item>
+        <item quantity="few">Спампаваць абнаўленні для %1$d дадаткаў.</item>
+        <item quantity="many">Спампаваць абнаўленні для %1$d дадаткаў.</item>
+    </plurals>
     <string name="details_new_in_version">Навае ў версіі %s</string>
-
     <string name="antifeatures">Непажаданыя функцыі</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Абноўлена %1$d дзень таму</item>
@@ -386,14 +332,11 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту\? Атрымайце дадаткі ад людзей паблізу!</string>
     <string name="nearby_splash__find_people_button">Знайсці людзей паблізу</string>
     <string name="nearby_splash__both_parties_need_fdroid">Абодвум бакам патрабуецца %1$s для выкарыстання паблізу.</string>
-
     <string name="categories__empty_state__no_categories">Няма катэгорый для паказу</string>
-
     <string name="latest__empty_state__no_recent_apps">Няма новых дадаткаў</string>
     <string name="menu_video">Відэа</string>
     <string name="latest__empty_state__never_updated">Як толькі спіс дадаткаў абновіцца, тут з\'явяцца найноўшыя праграмы</string>
     <string name="latest__empty_state__no_enabled_repos">Як толькі вы ўключыце рэпазіторыі і абновіце іх, тут з\'явяцца найноўшыя дадаткі</string>
-
     <string name="details_last_updated_today">Абноўлена сёння</string>
     <string name="app__tts__cancel_download">Скасаваць спампоўванне</string>
     <string name="app__tts__downloading_progress">Спампоўванне, %1$d%% скончана</string>
@@ -405,10 +348,10 @@
         <item quantity="other">%1$d абнаўленняў</item>
     </plurals>
     <plurals name="notification_summary_installed">
-    <item quantity="one">%1$d дадатак ўсталяваны</item>
-    <item quantity="few">%1$d дадатка ўсталявана</item>
-    <item quantity="many">%1$d  ўсталявана</item>
-</plurals>
+        <item quantity="one">%1$d дадатак ўсталяваны</item>
+        <item quantity="few">%1$d дадатка ўсталявана</item>
+        <item quantity="many">%1$d  ўсталявана</item>
+    </plurals>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d больш…</item>
         <item quantity="few">+%1$d больш…</item>
@@ -416,50 +359,43 @@
         <item quantity="other">+%1$d больш…</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-    <item quantity="one">Абноўлена %1$s тыдзень назад</item>
-    <item quantity="few">Абноўлена %1$s тыдні назад</item>
-    <item quantity="many">Абноўлена %1$s тыдняў назад</item>
-</plurals>
+        <item quantity="one">Абноўлена %1$s тыдзень назад</item>
+        <item quantity="few">Абноўлена %1$s тыдні назад</item>
+        <item quantity="many">Абноўлена %1$s тыдняў назад</item>
+    </plurals>
     <plurals name="details_last_update_months">
-    <item quantity="one">Абноўлена %1$s месяц назад</item>
-    <item quantity="few">Абноўлена %1$s месяцы назад</item>
-    <item quantity="many">Абноўлена %1$s месяцаў назад</item>
-</plurals>
+        <item quantity="one">Абноўлена %1$s месяц назад</item>
+        <item quantity="few">Абноўлена %1$s месяцы назад</item>
+        <item quantity="many">Абноўлена %1$s месяцаў назад</item>
+    </plurals>
     <plurals name="details_last_update_years">
-    <item quantity="one">Абноўлена %1$s год назад</item>
-    <item quantity="few">Абноўлена %1$s гады назад</item>
-    <item quantity="many">Абноўлена %1$s гадоў назад</item>
-</plurals>
+        <item quantity="one">Абноўлена %1$s год назад</item>
+        <item quantity="few">Абноўлена %1$s гады назад</item>
+        <item quantity="many">Абноўлена %1$s гадоў назад</item>
+    </plurals>
     <string name="by_author_format">ад %s</string>
     <string name="download_404">Запытаны файл не знойдзены.</string>
     <string name="force_old_index">Прымусова ўжываць стары фармат індэкса</string>
     <string name="force_old_index_summary">У выпадку, калі ёсць памылкі або праблемы сумясцімасці, выкарыстоўвайце XML-індэкс</string>
     <string name="app_list_download_ready">Спампавана, гатова да ўсталёўкі</string>
-
     <string name="status_inserting_x_apps">Захаванне дэталяў (%1$d/%2$d) з %3$s</string>
     <string name="app_installed_media">Файл усталяваны ў %s</string>
     <string name="app_permission_storage">F-Droid патрабуецца дазвол на ўсталёўку гэтага ў сховішча. Калі ласка, дайце дазвол на наступным экране для працягу ўсталёўкі.</string>
-
     <string name="app_details__incompatible_mismatched_signature">Подпіс адрозніваецца ад подпіса ўсталяванай версіі</string>
     <string name="app_details__no_versions__show_incompat_versions">Каб заўсёды паказваць несумяшчальныя версіі, ўключыце параметр «%1$s».</string>
     <string name="app_details__no_versions__no_compatible_signatures">Версіі з сумяшчальным подпісам адсутнічаюць</string>
     <string name="app_details__no_versions__none_compatible_with_device">Версіі, сумяшчальныя з прыладай, адсутнічаюць</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Усталяваная версія несумяшчальная з даступнымі версіямі. Выдаленне дадатка дазволіць убачыць і ўсталяваць сумяшчальныя версіі. Гэта часта адбываецца з дадаткамі, што ўсталёўваюцца праз Google Play ці іншыя крыніцы і падпісваюцца рознымі сертыфікатамі.</string>
-
     <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных дадаткаў.</string>
-
     <string name="app_list__dismiss_app_update">Абнаўленне ігнаруецца</string>
     <string name="app_list__dismiss_vulnerable_app">Уразлівасць ігнаруецца</string>
     <string name="app_list__dismiss_downloading_app">Спампоўка скасаваная</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Мы знайшлі ўразлівасць з %1$s. Мы рэкамендуем неадкладна выдаліць гэты дадатак.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Мы знайшлі ўразлівасць у %1$s. Мы рэкамендуем неадкладна абнавіцца да найноўшай версіі.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ігнараваць</string>
-
     <string name="privacy">Прыватнасць</string>
     <string name="preventScreenshots_title">Прадухіліць здымкі экрана</string>
     <string name="preventScreenshots_summary">Блакуе здымкі экрана з апошніх дадаткаў</string>
-
     <string name="panic_app_setting_title">Дадатак трывожнай кнопкі</string>
     <string name="panic_app_unknown_app">невядомы дадатак</string>
     <string name="panic_app_setting_summary">Ніводнага дадатка не ўсталявана</string>
@@ -467,33 +403,26 @@
     <string name="panic_app_dialog_title">Пацвердзіць трывожны дадатак</string>
     <string name="panic_app_dialog_message">Вы ўпэўненыя, што хочаце дазволіць %1$s выклікаць разбуральныя дзеянні трывожнай кнопкі\?</string>
     <string name="allow">Дазволіць</string>
-
     <string name="panic_settings">Налады трывожнай кнопкі</string>
     <string name="panic_settings_summary">Дзеянні, якія неабходна зрабіць у выпадку надзвычайнай сітуацыі</string>
     <string name="panic_exit_summary">Дадатак закрыецца</string>
     <string name="panic_destructive_actions">Разбуральныя дзеянні</string>
     <string name="panic_hide_title">Схаваць %s</string>
     <string name="panic_hide_summary">Дадатак схавае сам сябе</string>
-
     <string name="panic_exit_title">Выйсці з дадатка</string>
     <string name="panic_hide_warning_title">Запомніць як аднаўляць</string>
     <string name="sort_search">Сартаваць знойдзенае</string>
-
     <string name="panic_hide_warning_message">У выпадку панікі, гэта выдаліць %1$s з панэлі пуску. Толькі ўвод «%2$d» у фальшывым дадатку %3$s можа аднавіць гэта.</string>
-
     <string name="hiding_calculator">Калькулятар</string>
     <string name="hiding_dialog_title">Схаваць %s зараз жа</string>
     <string name="hiding_dialog_message">Вы ўпэўненыя, што хочаце выдаліць %1$s з панэлі запуску\? Толькі ўвод «%2$d» у фальшывым дадатку %3$s можа аднавіць гэта.</string>
     <string name="hiding_dialog_warning">Папярэджанне: кожны значок  на галоўным экране таксама будзе выдалены, і спатрэбіцца паўторна дадаць яго ўласнаручна.</string>
     <string name="hide_on_long_search_press_title">Схаваць з кнопкай пошуку</string>
     <string name="hide_on_long_search_press_summary">Працяглы націск кнопкі пошуку схавае дадатак</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="warning_scaning_qr_code">Ваша камера не падтрымлівае аўтафокус. Сканаваць код можа быць цяжка.</string>
     <string name="force_touch_apps">Паказваць дадаткі для сэнсарнага экрана</string>
     <string name="force_touch_apps_on">Паказваць дадаткі, якім патрабуецца сэнсарны экран незалежна ад наяўнасці апаратнай падтрымкі</string>
-
     <string name="repo_add_mirror">Дадаць люстэрка</string>
     <string name="repo_exists_add_fingerprint">%1$s ужо наладжаны, гэта абновіць інфармацыю аб ключы.</string>
     <string name="repo_exists_enable">%1$s ужо наладжаны, пацвердзіце што хочаце ўключыць яго.</string>
@@ -508,7 +437,6 @@
     <string name="swap_toast_invalid_url">Хібны URL для абмену: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot уключаны</string>
     <string name="swap_toast_could_not_enable_hotspot">Не атрымалася ўключыць Wi-Fi Hotspot!</string>
-
     <string name="over_wifi">Праз Wi-Fi</string>
     <string name="over_data">Праз мабільную сетку</string>
     <string name="over_network_always_summary">Заўсёды выкарыстоўваць гэтае злучэнне пры даступнасці</string>
@@ -516,7 +444,6 @@
     <string name="over_network_never_summary">Ніколі нічога не спампоўваць праз гэтае злучэнне</string>
     <string name="antidisabledalgorithmlist">Гэты дадатак мае слабы подпіс бяспекі</string>
     <string name="antiknownvulnlist">Гэты дадатак змяшчае вядомую ўразлівасць бяспекі</string>
-
     <string name="hide_all_notifications">Схаваць усе апавяшчэнні</string>
     <string name="hide_all_notifications_summary">Прадухіліць усе дзеянні па адлюстраванні ў радку стану і панэлі апавяшчэнняў.</string>
     <string name="install_history">Гісторыя ўсталёвак</string>
@@ -529,18 +456,15 @@
     <string name="allow_push_requests">Дазволіць рэпазіторыям усталёўваць/выдаляць дадаткі</string>
     <string name="allow_push_requests_summary">Метаданыя рэпазіторыяў могуць уключаць запыты на ўсталёўку ці выдаленне дадаткаў</string>
     <string name="antinosourcesince">Зыходны код больш не даступны — абнаўляць немагчыма.</string>
-
     <string name="send_install_history">Адправіць гісторыю ўсталёвак</string>
     <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>
     <string name="updates_disabled_by_settings">Усе абнаўленні выключаныя ў наладах перадачы даных</string>
-
     <string name="send_installed_apps">Падзяліцца ўсталяванымі дадаткамі</string>
     <string name="send_installed_apps_csv">Дадаткі, ўсталяваныя F-Droid як CSV-файл</string>
     <string name="menu_open">Адкрыць</string>
     <string name="about_forum">Форум падтрымкі</string>
     <string name="app_suggested">Прапанаваная</string>
     <string name="app_size">Памер: %1$s</string>
-
     <string name="menu_downgrade">Вяртанне да папярэдняй версіі</string>
     <string name="app_repository">Рэпазіторый: %1$s</string>
     <string name="scan_removable_storage_title">Сканаваць рухомае сховішча</string>

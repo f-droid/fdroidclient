@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu: eemaldamisel kustutatakse rakendusega seotud andmed.)</string>
     <string name="installIncompatible">Rakendus ei ühildu su seadmega. Kas paigaldada ta ikkagi?</string>
     <string name="version">Versioon</string>
@@ -12,7 +11,6 @@
     <string name="unstable_updates">Ebastabiilsed värskendused</string>
     <string name="unstable_updates_summary">Soovita värskendamist ebastabiilsetele versioonidele</string>
     <string name="other">Muu</string>
-
     <string name="update_interval">Automaatne värskendusintervall</string>
     <string name="update_auto_download">Värskenduste automaatne hankimine</string>
     <string name="update_auto_download_summary">Värskendused laaditakse automaatselt ja sind teavitatakse, et neid paigaldada</string>
@@ -23,32 +21,25 @@
     <string name="local_repo_name">Kohaliku hoidla nimi</string>
     <string name="local_repo_name_summary">Kohaliku hoidla reklaamitud nimi: %s</string>
     <string name="local_repo_https_on">Kasuta kohaliku hoidlaga krüpteeritud HTTPS:// ühendust</string>
-
     <string name="login_title">Autentimine on nõutav</string>
     <string name="login_name">Kasutajanimi</string>
     <string name="login_password">Salasõna</string>
     <string name="repo_edit_credentials">Muuda salasõna</string>
     <string name="repo_error_empty_username">Kasutajanimi on tühi, mandaati ei muudetud</string>
-
     <string name="app_details">Rakenduse andmed</string>
     <string name="no_such_app">Sellist rakendust ei leitud.</string>
-
     <string name="about_title">Programmist F-Droid</string>
     <string name="about_version">Versioon</string>
     <string name="about_site">Veebileht</string>
     <string name="about_source">Lähtekood</string>
     <string name="about_license">Litsents</string>
-
     <string name="app_incompatible">Ühildumatu</string>
     <string name="app_installed">Paigaldatud</string>
     <string name="app_not_installed">Paigaldamata</string>
     <string name="app_inst_known_source">Paigaldatud (%s)</string>
     <string name="app_inst_unknown_source">Paigaldatud (tundmatust allikast)</string>
-
     <string name="added_on">Lisatud %s</string>
-
     <string name="ok">Ok</string>
-
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="repo_add_title">Lisa uus hoidla</string>
@@ -56,29 +47,23 @@
     <string name="links">Lingid</string>
     <string name="more">Rohkem</string>
     <string name="less">Vähem</string>
-
     <string name="back">Tagasi</string>
     <string name="cancel">Loobu</string>
     <string name="enable">Luba</string>
     <string name="add_key">Lisa võti</string>
     <string name="overwrite">Kirjuta üle</string>
-
     <string name="bluetooth_activity_not_found">Bluetoothiga saatmisviise ei leitud. Valige üks!</string>
     <string name="choose_bt_send">Vali Bluetoothiga saatmise viis</string>
-
     <string name="repo_add_url">Hoidla aadress</string>
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
     <string name="install_confirm_update">Kas sa soovid paigaldada selle rakenduse värskenduse? Olemasolevad andmed jäävad alles. Värskendatud rakendus saab ligipääsu:</string>
     <string name="menu_email">Saada autorile meil</string>
-
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
     <string name="repo_provider">Hoidla: %s</string>
-
     <string name="menu_manage">Hoidlad</string>
     <string name="menu_add_repo">Uus hoidla</string>
-
     <string name="antitracklist">See rakendus jälgib ja raporteerib su aktiivsusest</string>
     <string name="local_repo">Kohalik hoidla</string>
     <string name="deleting_repo">Kustutatakse praegust hoidlat…</string>
@@ -141,35 +126,26 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Pole paigaldatud</string>
-
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
     <string name="antinonfreenetlist">See rakendus edendab mitte-vabu võrguteenuseid</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
     <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu varasid</string>
-
     <string name="display">Kuva</string>
-
     <string name="expert">Eksperdi režiim</string>
     <string name="expert_on">Näita täiendavat infot ja luba täiendavad seaded</string>
-
     <string name="search_hint">Otsi rakendusi</string>
-
     <string name="appcompatibility">Rakenduse ühilduvus</string>
     <string name="show_incompat_versions">Kaasa ka ühildumatud versioonid</string>
     <string name="show_incompat_versions_on">Kuva seadmega ühildumatute rakenduste versioonid</string>
-
     <string name="local_repo_running">F-Droid on valmis vahetama</string>
     <string name="touch_to_configure_local_repo">Üksikasjade vaatamiseks puuduta ja luba teistel vahetada su rakendusi.</string>
     <string name="writing_index_jar">Kirjutatakse signeeritud indeksi faili (index.jar)…</string>
     <string name="icon">Ikoon</string>
     <string name="next">Järgmine</string>
     <string name="skip">Jäta vahele</string>
-
     <string name="useTor">Kasuta Tori</string>
     <string name="useTorSummary">Kohusta privaatsuse suurendamiseks alla laadimisel Tor võrgu kasutamine. Vajalik on Orbot</string>
     <string name="proxy">Puhverserver</string>
@@ -179,11 +155,9 @@
     <string name="proxy_host_summary">Sinu puhverserveri nimi (nt 127.0.0.1)</string>
     <string name="proxy_port">Puhverserver port</string>
     <string name="proxy_port_summary">Sinu puhverserveri pordi number (nt 8118)</string>
-
     <string name="status_download">Allalaadimine
 \n%2$s / %3$s (%4$d%%) masinast
 \n%1$s</string>
-
     <string name="status_download_unknown_size">%2$s\nalla laadimine\nmasinast %1$s</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) kokku %1$s töödeldud</string>
     <string name="status_connecting_to_repo">Ühenduse loomine\n%1$s</string>
@@ -206,10 +180,8 @@
     <string name="requires_features">Nõuab: %1$s</string>
     <string name="pref_language">Keel</string>
     <string name="pref_language_default">Süsteemi vaikesäte</string>
-
     <string name="wifi">WiFi</string>
     <string name="wifi_ap">Tööpunkt</string>
-
     <string name="category_Connectivity">Ühenduvus</string>
     <string name="category_Development">Arendus</string>
     <string name="category_Games">Mängud</string>
@@ -227,12 +199,9 @@
     <string name="category_Theming">Teemad</string>
     <string name="category_Time">Aeg</string>
     <string name="category_Writing">Kirjutamine</string>
-
     <string name="empty_search_available_app_list">Sobivaid rakendusi ei ole.</string>
-
     <string name="install_error_unknown">Paigaldamine nurjus tundmatu vea tõttu</string>
     <string name="uninstall_error_unknown">Eemaldamine nurjus tundmatu vea tõttu</string>
-
     <string name="swap_nfc_title">Vahetamiseks puuduta</string>
     <string name="swap_nfc_description">Kui su sõbral on F-Droid ja NFC on sisselülitatud, siis pange oma seadmed
         lähestikku.
@@ -271,7 +240,6 @@
     <string name="swap_confirm">Kinnita vahetus</string>
     <string name="swap_qr_isnt_for_swap">Skannitud QR-kood ei paista olevat vahetamise kood.</string>
     <string name="loading">Laadimine…</string>
-
     <string name="install_confirm">vajab juurdepääsu</string>
     <string name="newPerms">Uus</string>
     <string name="allPerms">Kõik</string>
@@ -282,14 +250,11 @@
     <string name="download_pending">Oodatakse allalaadimise algamist…</string>
     <string name="install_error_notify_title">Viga %s paigaldamisel</string>
     <string name="uninstall_error_notify_title">Viga %s eemaldamisel</string>
-
-
     <string name="perms_new_perm_prefix">Uus:</string>
     <string name="perms_description_app">Tagas %1$s.</string>
     <string name="downloading">Allalaadimine…</string>
     <string name="installing">Paigaldamine…</string>
     <string name="uninstalling">Eemaldamine…</string>
-
     <string name="interval_never">Ära uuenda rakendusi automaatselt</string>
     <string name="interval_1h">Kontrolli uuendusi iga tunni järel</string>
     <string name="interval_4h">Kontrolli uunedusi iga 4 tunni järel</string>
@@ -297,18 +262,15 @@
     <string name="interval_1d">Kontrolli uuendusi iga päev</string>
     <string name="interval_1w">Kontrolli uuendusi iga nädal</string>
     <string name="interval_2w">Kontrolli uuendusi iga 2 nädala järel</string>
-
     <string name="keep_hour">1 tund</string>
     <string name="keep_day">1 päev</string>
     <string name="keep_week">1 nädal</string>
     <string name="keep_month">1 kuu</string>
     <string name="keep_year">1 aasta</string>
     <string name="keep_forever">Igavesti</string>
-
     <string name="theme_light">Hele</string>
     <string name="theme_dark">Tume</string>
     <string name="theme_night">Öö</string>
-
     <string name="crash_dialog_title">F-Droidi tabas krahh</string>
     <string name="crash_dialog_comment_prompt">Sa saad lisada täiendavat informatsiooni ja kommentaare siia:</string>
     <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs
@@ -321,14 +283,10 @@
     <string name="main_menu__latest_apps">Uusimad</string>
     <string name="main_menu__categories">Kategooriad</string>
     <string name="main_menu__swap_nearby">Läheduses</string>
-
     <string name="preference_manage_installed_apps">Halda paigaldatud rakendusi</string>
-
-
     <string name="notification_action_update">Värskenda</string>
     <string name="notification_action_cancel">Loobu</string>
     <string name="notification_action_install">Paigalda</string>
-
     <string name="app_list__name__downloading_in_progress">Allalaadimine %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s paigaldatud</string>
     <string name="updates__tts__download_app">Laadi alla</string>
@@ -344,13 +302,11 @@
     <string name="update_auto_install_summary">Laadi alla ja paigalda rakenduste värskendused taustal</string>
     <string name="app_details_donate_prompt_unknown_author">Osta %1$s  arendajatele kohvi!</string>
     <string name="app_details_donate_prompt">%1$s loojad on %2$s. Osta neile kohvi!</string>
-
     <string name="app_details__incompatible_mismatched_signature">Signatuur erineb paigaldatud versiooni omast</string>
     <string name="app_details__no_versions__show_incompat_versions">Mitteühilduvate versioonide siin kuvamiseks lülita sisse \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Ühilduvate signatuuridega versioone ei ole</string>
     <string name="app_details__no_versions__none_compatible_with_device">Seadmega ühilduvaid versioone ei ole</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Paigaldatud versioon ei ühildu mitte ühegi kättesaadava versiooniga. Rakenduse eemaldamine lubab sul vaadata ja paigaldada ühilduvaid versioone. Seda juhtub tihti rakendustega, mis on paigaldatud Google Playst või teistest allikatest, kui nad on signeeritud erineva sertifikaadiga.</string>
-
     <string name="app_version_x_available">Versioon %1$s on saadaval</string>
     <string name="app_version_x_installed">Versioon %1$s</string>
     <string name="app_recommended_version_installed">Versioon %1$s (soovitatav)</string>
@@ -359,43 +315,34 @@
     <string name="app__install_downloaded_update">Värskenda</string>
     <string name="app_installed_media">Fail paigaldati asukohta %s</string>
     <string name="app_permission_storage">F-Droid vajab sellele seadmele paigaldamisel salvestusõigust. Palun luba see järgmisel ekraanil, et jätkata paigaldust.</string>
-
     <string name="app_list_download_ready">Alla laetud, valmis paigaldamiseks</string>
     <string name="app_list__dismiss_app_update">Värskendust ignoreeriti</string>
     <string name="app_list__dismiss_vulnerable_app">Haavatavust ignoreeriti</string>
     <string name="app_list__dismiss_downloading_app">Allalaadimine tühistatud</string>
-
     <string name="installed_apps__activity_title">Paigaldatud rakendused</string>
     <string name="installed_app__updates_ignored">Värskendusi ignoreeriti</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Versiooni %1$s värskendust ignoreeriti</string>
     <string name="update_all">Värskenda kõik</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s sees leiti haavatavus. Soovitatav on see rakendus koheselt eemaldada.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s sees leiti haavatavus. Soovitatav on värskendada koheselt see rakendus uusimale versioonile.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoreeri</string>
-
     <string name="updates__hide_updateable_apps">Peida rakendused</string>
     <string name="updates__show_updateable_apps">Kuva rakendused</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Laadi alla %1$d rakenduse värskendus.</item>
         <item quantity="other">Laadi alla %1$d rakenduse värskendus.</item>
     </plurals>
-
     <string name="versions">Versioonid</string>
     <string name="clear_search">Tühjenda otsing</string>
-
     <string name="repositories_summary">Lisa täiendavaid rakenduste allikaid</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Litsents: %s</string>
     <string name="latest__empty_state__no_recent_apps">Hiljutisi rakendusi ei leitud</string>
     <string name="latest__empty_state__never_updated">Kui su rakenduste loend on värskendatud, kuvatakse siia uusimad rakendused</string>
     <string name="latest__empty_state__no_enabled_repos">Repositooriumi lubamise ja värskendamise järel peaksid siia kuvatama hiljutised rakendused</string>
-
     <string name="categories__empty_state__no_categories">Kuvamiseks kategooriaid ei ole</string>
-
     <string name="preference_category__my_apps">Minu rakendused</string>
     <string name="details_new_in_version">Uus versioonis %s</string>
-
     <string name="antifeatureswarning">Sellel rakendusel on funktsioone, mis ei pruugi sulle meeldida.</string>
     <string name="antifeatures">Anti funktsioonid</string>
     <string name="download_404">Soovitud faili ei leitud.</string>
@@ -404,11 +351,9 @@
         <item quantity="one">Kuva %d</item>
         <item quantity="other">Kuva kõik %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">Internetti ei ole? Hangi rakendused sinu lähedal olevatelt inimestelt!</string>
     <string name="nearby_splash__find_people_button">Otsi inimesi mu lähedal</string>
     <string name="nearby_splash__both_parties_need_fdroid">Naabriotsinguks peab mõlemal osapoolel olema %1$s.</string>
-
     <string name="app__tts__downloading_progress">Allalaadimine, %1$d%% valmis</string>
     <plurals name="notification_summary_more">
         <item quantity="one">veel +%1$d…</item>
@@ -437,12 +382,10 @@
     <string name="notification_title_summary_installing">Paigaldamine</string>
     <string name="notification_title_summary_installed">Edukalt paigaldatud</string>
     <string name="tts_category_name">Kategooria %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Kuva %1$d rakendus kategoorias %2$s</item>
         <item quantity="other">Kuva kõik %1$d rakendust kategoorias %2$s</item>
     </plurals>
-
     <string name="details_last_updated_today">Värskendati täna</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Värskendati %1$d päev tagasi</item>
@@ -463,7 +406,6 @@
     <string name="privacy">Privaatsus</string>
     <string name="preventScreenshots_title">Väldi ekraanitõmmiseid</string>
     <string name="preventScreenshots_summary">Keelab ekraanitõmmiste tegemise ja peidab rakenduse sisu viimaste rakenduste vaatest</string>
-
     <string name="panic_app_setting_title">Paanikanupu rakendus</string>
     <string name="panic_app_unknown_app">tundmatu rakendus</string>
     <string name="panic_app_setting_summary">Ühtegi rakendust ei ole määratud</string>
@@ -471,7 +413,6 @@
     <string name="panic_app_dialog_title">Kinnitada paanika rakendus</string>
     <string name="panic_app_dialog_message">Kas sa oled kindel, et %1$s tohib käivitada kõike hävitava paanikanupu tegevused?</string>
     <string name="allow">Luba</string>
-
     <string name="panic_settings">Paanikanupu seaded</string>
     <string name="panic_settings_summary">Tegevused, mida hädaolukorras rakendada</string>
     <string name="panic_exit_title">Välju rakendusest</string>
@@ -479,21 +420,16 @@
     <string name="panic_destructive_actions">Hävitavad tegevused</string>
     <string name="panic_hide_title">Peida %s</string>
     <string name="panic_hide_summary">Rakendus peidab end ise</string>
-
     <string name="hiding_calculator">Kalkulaator</string>
     <string name="hide_on_long_search_press_summary">Pikk vajutus otsingunupul peidab rakenduse</string>
-
     <string name="panic_hide_warning_title">Meenuta, kuidas taastada</string>
     <string name="panic_hide_warning_message">Paanika sündmuse korral eemaldab see %1$s käivitajast. Ainult \"%2$d\" sisestamine võltsrakendusse %3$s saab selle taastada.</string>
-
     <string name="hiding_dialog_title">Peida %s nüüd</string>
     <string name="hiding_dialog_message">Kas sa oled kindel, et soovid käivitajast eemaldada rakenduse %1$s? Ainult \"%2$d\" sisestamine võltsrakendusse %3$s taastab selle.</string>
     <string name="hiding_dialog_warning">Hoiatus: avakuvalt eemaldatakse ka kõigi rakenduste otseteed ja need on vaja käsitsi uuesti lisada.</string>
     <string name="hide_on_long_search_press_title">Peida otsingunupuga</string>
     <string name="sort_search">Otsingu sortimine</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
     <string name="repo_exists_add_fingerprint">%1$s on juba seadistatud; see lisab teabe uuest võtmest.</string>
     <string name="repo_exists_enable">%1$s on juba üles seatud; kinnita, et soovid ta uuesti lubada.</string>
@@ -519,19 +455,16 @@
     <string name="send_installed_apps">Jaga paigaldatud rakendusi</string>
     <string name="send_installed_apps_csv">F-Droidi paigaldatud rakendused CSV failina</string>
     <string name="updates_disabled_by_settings">Kõik uuendused, mida Data/Wi-Fi seaded keelavad</string>
-
     <string name="repo_add_mirror">Lisa peegel</string>
     <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisada ta peegliks?</string>
     <string name="menu_open">Ava</string>
     <string name="antidisabledalgorithmlist">Sellel rakendusel on nõrk turvasignatuur</string>
     <string name="antiknownvulnlist">Sellel rakendusel on tuntud turvanõrkus</string>
     <string name="antinosourcesince">Lähtekood ei ole enam saadaval, uuendused ei ole enam võimalikud.</string>
-
     <string name="show_anti_feature_apps">Kaasa vastandomadustega rakendused</string>
     <string name="show_anti_feature_apps_on">Kuva rakendused, mis vajavad vastandomadusi</string>
     <string name="force_touch_apps">Kaasa puuteekraani rakendused</string>
     <string name="force_touch_apps_on">Kaasa rakendused, mis vajavad puuteekraani sõltumata riistvara toest</string>
-
     <string name="repo_official_mirrors">Ametlikud peeglid</string>
     <string name="repo_user_mirrors">Kasuta peegleid</string>
     <string name="share_repository">Jaga repositooriumit</string>
@@ -539,11 +472,9 @@
     <string name="swap_toast_invalid_url">Vigane URL vahetamiseks: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi ühenduspunkt lubatud</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ühenduspunkti lubamine nurjus!</string>
-
     <string name="about_forum">Toe foorum</string>
     <string name="app_suggested">Soovitatud</string>
     <string name="app_size">Suurus: %1$s</string>
-
     <string name="menu_downgrade">Varasem versioon</string>
     <string name="app_repository">Hoidla: %1$s</string>
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
