@@ -395,7 +395,7 @@ public class Repo extends ValueObject {
      * or USB OTG drive.
      *
      * @see FDroidApp#resetMirrorVars()
-     * @see FDroidApp#getMirror(String, Repo)
+     * @see FDroidApp#switchUrlToNewMirror(String, Repo)
      * @see FDroidApp#getTimeout()
      */
     public String getRandomMirror(String mirrorToSkip) {

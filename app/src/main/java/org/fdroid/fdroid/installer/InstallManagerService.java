@@ -11,6 +11,7 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,6 +24,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -211,7 +213,7 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + urlString + " " + apkFilePath);
-            DownloaderService.queue(this, urlString, apk.repoId, urlString);
+            DownloaderService.queue(this, switchUrlToNewMirror(urlString, apk.repoId), apk.repoId, urlString);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + urlString + " " + apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
@@ -219,7 +221,7 @@ public class InstallManagerService extends Service {
         } else {
             Utils.debugLog(TAG, "delete and download again " + urlString + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queue(this, urlString, apk.repoId, urlString);
+            DownloaderService.queue(this, switchUrlToNewMirror(urlString, apk.repoId), apk.repoId, urlString);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -230,6 +232,24 @@ public class InstallManagerService extends Service {
         intent.setData(uri);
         intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
         localBroadcastManager.sendBroadcast(intent);
+    }
+
+    /**
+     * Tries to return a version of {@code urlString} from a mirror, if there
+     * is an error, it just returns {@code urlString}.
+     *
+     * @see FDroidApp#getNewMirrorOnError(String, org.fdroid.fdroid.data.Repo)
+     */
+    public String getNewMirrorOnError(@Nullable String urlString, long repoId) {
+        try {
+            return FDroidApp.getNewMirrorOnError(urlString, RepoProvider.Helper.findById(this, repoId));
+        } catch (IOException e) {
+            return urlString;
+        }
+    }
+
+    public String switchUrlToNewMirror(@Nullable String urlString, long repoId) {
+        return FDroidApp.switchUrlToNewMirror(urlString, RepoProvider.Helper.findById(this, repoId));
     }
 
     /**
@@ -290,13 +310,13 @@ public class InstallManagerService extends Service {
                 } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
                 } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
-                    DownloaderService.queue(context, urlString, 0, urlString);
+                    DownloaderService.queue(context, getNewMirrorOnError(urlString, 0), 0, urlString);
                 } else {
                     throw new RuntimeException("intent action not handled!");
                 }
             }
         };
-        DownloaderService.queue(this, obbUrlString, 0, obbUrlString);
+        DownloaderService.queue(this, switchUrlToNewMirror(obbUrlString, 0), 0, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }
@@ -354,7 +374,9 @@ public class InstallManagerService extends Service {
                         break;
                     case Downloader.ACTION_CONNECTION_FAILED:
                         try {
-                            DownloaderService.queue(context, FDroidApp.getMirror(mirrorUrlString, repoId), repoId, urlString);
+                            String currentUrlString = FDroidApp.getNewMirrorOnError(mirrorUrlString,
+                                    RepoProvider.Helper.findById(InstallManagerService.this, repoId));
+                            DownloaderService.queue(context, currentUrlString, repoId, urlString);
                             DownloaderService.setTimeout(FDroidApp.getTimeout());
                         } catch (IOException e) {
                             appUpdateStatusManager.setDownloadError(urlString, intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
