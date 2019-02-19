@@ -63,7 +63,6 @@ import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -114,7 +113,7 @@ public class ManageReposActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ListView repoList = (ListView) findViewById(R.id.list);
-        repoAdapter = RepoAdapter.create(this, null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
+        repoAdapter = new RepoAdapter(this);
         repoAdapter.setEnabledListener(this);
         repoList.setAdapter(repoAdapter);
         repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
