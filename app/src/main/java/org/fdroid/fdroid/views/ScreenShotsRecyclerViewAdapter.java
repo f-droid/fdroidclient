@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.RepoProvider;
 
 /**
  * Loads and displays the small screenshots that are inline in {@link AppDetailsActivity}
@@ -30,6 +31,7 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 .showImageOnFail(R.drawable.screenshot_placeholder)
                 .showImageOnLoading(R.drawable.screenshot_placeholder)
                 .showImageForEmptyUri(R.drawable.screenshot_placeholder)
+                .extraForDownloader(RepoProvider.Helper.findById(context, app.repoId))
                 .build();
     }
 

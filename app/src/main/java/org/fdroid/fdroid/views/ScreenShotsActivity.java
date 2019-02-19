@@ -23,6 +23,8 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 
 /**
  * Full screen view of an apps screenshots to swipe through. This will always
@@ -38,6 +40,9 @@ public class ScreenShotsActivity extends AppCompatActivity {
     private static final String EXTRA_START_POSITION = "EXTRA_START_POSITION";
 
     private static final ImageLoader IMAGE_LOADER = ImageLoader.getInstance();
+
+    private static Repo activeRepo;
+    private Repo repo;
 
     public static Intent getStartIntent(Context context, String packageName, int startPosition) {
         Intent intent = new Intent(context, ScreenShotsActivity.class);
@@ -58,6 +63,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
         int startPosition = getIntent().getIntExtra(EXTRA_START_POSITION, 0);
 
         App app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
+        repo = RepoProvider.Helper.findById(this, app.repoId);
         String[] screenshots = app.getAllScreenshots(this);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.screenshot_view_pager);
@@ -69,10 +75,15 @@ public class ScreenShotsActivity extends AppCompatActivity {
         viewPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
+    /**
+     * Set the {@code activeRepo} based on this instance's stored {@code repo},
+     * since there might be more than one instance of this {@code Activity}.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         IMAGE_LOADER.denyNetworkDownloads(!Preferences.get().isOnDemandDownloadAllowed());
+        activeRepo = repo;
     }
 
     @Override
@@ -121,7 +132,11 @@ public class ScreenShotsActivity extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            screenshotUrl = getArguments() != null ? getArguments().getString(ARG_SCREENSHOT_URL) : null;
+            screenshotUrl = null;
+            Bundle args = getArguments();
+            if (args != null) {
+                screenshotUrl = args.getString(ARG_SCREENSHOT_URL);
+            }
         }
 
         @Nullable
@@ -133,6 +148,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
                     .showImageOnFail(R.drawable.screenshot_placeholder)
                     .showImageOnLoading(R.drawable.screenshot_placeholder)
                     .showImageForEmptyUri(R.drawable.screenshot_placeholder)
+                    .extraForDownloader(activeRepo)
                     .build();
 
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);

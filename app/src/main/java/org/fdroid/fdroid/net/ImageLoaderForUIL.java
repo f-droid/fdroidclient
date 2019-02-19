@@ -3,6 +3,8 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.os.Build;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.data.Repo;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +30,12 @@ public class ImageLoaderForUIL implements com.nostra13.universalimageloader.core
         switch (Scheme.ofUri(imageUri)) {
             case HTTP:
             case HTTPS:
-                return DownloaderFactory.create(context, imageUri).getInputStream();
+                if (extra != null && extra.getClass().equals(Repo.class)) {
+                    return DownloaderFactory.create(context, FDroidApp.switchUrlToNewMirror(imageUri, (Repo) extra))
+                            .getInputStream();
+                } else {
+                    return DownloaderFactory.create(context, imageUri).getInputStream();
+                }
             case CONTENT:
                 if (Build.VERSION.SDK_INT >= 19) {
                     return DownloaderFactory.create(context, imageUri).getInputStream();
