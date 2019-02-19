@@ -209,7 +209,7 @@ public class InstallManagerService extends Service {
         getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
         getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256);
 
-        File apkFilePath = ApkCache.getApkDownloadPath(this, intent.getData());
+        File apkFilePath = ApkCache.getApkDownloadPath(this, apk.getUrl());
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + urlString + " " + apkFilePath);

@@ -115,7 +115,8 @@ public class ApkCache {
     /**
      * Get the full path for where an APK URL will be downloaded into.
      */
-    public static SanitizedFile getApkDownloadPath(Context context, Uri uri) {
+    public static SanitizedFile getApkDownloadPath(Context context, String urlString) {
+        Uri uri = Uri.parse(urlString);
         File dir = new File(getApkCacheDir(context), uri.getHost() + "-" + uri.getPort());
         if (!dir.exists()) {
             dir.mkdirs();

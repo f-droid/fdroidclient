@@ -27,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.R;
@@ -39,6 +38,7 @@ import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.updates.DismissResult;
 
 import java.io.File;
@@ -483,8 +483,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
 
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            Uri apkDownloadUri = Uri.parse(currentStatus.apk.getUrl());
-            File apkFilePath = ApkCache.getApkDownloadPath(activity, apkDownloadUri);
+            String urlString = currentStatus.apk.getUrl();
+            File apkFilePath = ApkCache.getApkDownloadPath(activity, urlString);
             Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
                     " to " + apkFilePath);
 
@@ -505,6 +505,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 }
             };
 
+            Uri apkDownloadUri = Uri.parse(urlString);
             broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
             Installer installer = InstallerFactory.create(activity, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);

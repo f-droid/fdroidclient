@@ -198,10 +198,10 @@ public class DownloaderService extends Service {
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, uri);
         long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
-        String originalUrlString = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
-        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, originalUrlString);
+        String canonicalUrlString = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrlString);
+        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrlString);
 
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
@@ -219,22 +219,22 @@ public class DownloaderService extends Service {
             downloader.download();
             if (downloader.isNotFound()) {
                 sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
-                        repoId, originalUrlString);
+                        repoId, canonicalUrlString);
             } else {
-                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, originalUrlString);
+                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrlString);
             }
         } catch (InterruptedException e) {
-            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, originalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrlString);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
                 | ProtocolException | UnknownHostException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, e.getLocalizedMessage());
-            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, originalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrlString);
         } catch (IOException e) {
             e.printStackTrace();
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile,
-                    e.getLocalizedMessage(), repoId, originalUrlString);
+                    e.getLocalizedMessage(), repoId, canonicalUrlString);
         } finally {
             if (downloader != null) {
                 downloader.close();
