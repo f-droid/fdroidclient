@@ -1,0 +1,13 @@
+* miklar endurbætur á "Útgáfur" listanum á ítarlega skjánum og margar endurbætur á viðmóti, með þökkum til @wsdfhjxc
+
+* lagfæring á flakki með lyklaborði/d-platta, með þökkum til @doeffinger
+
+* sýndur "Opna"-hnappur þegar gagnamiðlar eru settir upp
+
+* deilihnappi bætt við "Uppsett forrit" til að flytja út CSV-lista
+
+* bætt við lista yfir APK-pakka á HTML-atriðaskrá
+
+* reynt aftur að hlaða inn atriðavísum frá speglum
+
+* lagfært "Senda F-Droid með Bluetooth" í nýlegum útgáfum Android

@@ -1,0 +1,21 @@
+v1.3.1
+* miklar lagfæringar varðandi virkni býtti/nálægt
+
+* TLSv1.3 stuðningur, þegar stutt er af tæki
+
+v1.3
+* áreiðanlegri hnappar og stöðuuppfærslur
+
+* yfirhalning á stillingaskjám þ.m.t. á gagnanotkun
+
+* rafhlöðuvænar bakgrunnsaðgerðir á Android 5.0 og nýrri
+
+* deilivalmynd fyrir hugbúnaðarsöfn
+
+* hægt að gera hrunskýrslur óvirkar
+
+* virkjuð skoðun á uppsetningum við innskráningu
+
+* listi yfir neikvæða eiginleika, bætt inn NoSourceSince
+
+* Android 4.0 er núna lágmarksútgáfa

@@ -1,0 +1,12 @@
+* meðhöndlun nauðsynlegra READ_EXTERNAL_STORAGE heimilda, sem ræsir
+  beiðni um heimildir þegar sett er upp með Privileged Extension (#1702)
+
+* hreinsun gagna atriðavísis til að minnka öryggisáhættu gagnvart þjónum
+
+* "Tímamörk lesturs" ræsir notkun spegla þegar umferð er hæggeng
+
+* lagfæringar á táknmyndum fyrir þá sem ekki eru á Wi-Fi (#1592)
+
+* notar aðskilda titla fyrir stillingar uppfærslna og uppfærsluskjá, betra fyrir þýðendur
+
+* lagfæringar á viðmóti frá @ConnyDuck (#1636, #1618)
