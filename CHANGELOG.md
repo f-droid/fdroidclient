@@ -1,3 +1,13 @@
+### 1.6-alpha1 (2019-02-20)
+
+* add switches in RepoDetails to disable any or all mirrors (#1696)
+
+* choose random mirror for each package/APK download
+
+* make all APK downloads be cached per-repo, not per-mirror
+
+* handle Apache and Nginx ETags when checking if index is current (#1708)
+
 ### 1.6-alpha0 (2019-02-15)
 
 * handle implied READ_EXTERNAL_STORAGE permissions, which trigger a
