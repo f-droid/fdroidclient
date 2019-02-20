@@ -336,16 +336,34 @@ public class RepoDetailsActivity extends AppCompatActivity {
     }
 
     private void updateRepoView() {
+        TextView officialMirrorsLabel = repoView.findViewById(R.id.label_official_mirrors);
+        RecyclerView officialMirrorList = repoView.findViewById(R.id.official_mirror_list);
+        if ((repo.mirrors != null && repo.mirrors.length > 1)
+                || (repo.userMirrors != null && repo.userMirrors.length > 0)) {
+            // don't show this if there is only the canonical URL available, and no other mirrors
+            officialMirrorsLabel.setVisibility(View.VISIBLE);
+            officialMirrorList.setVisibility(View.VISIBLE);
+        } else {
+            officialMirrorsLabel.setVisibility(View.GONE);
+            officialMirrorList.setVisibility(View.GONE);
+        }
+
+        TextView userMirrorsLabel = repoView.findViewById(R.id.label_user_mirrors);
+        RecyclerView userMirrorList = repoView.findViewById(R.id.user_mirror_list);
+        if (repo.userMirrors != null && repo.userMirrors.length > 0) {
+            userMirrorsLabel.setVisibility(View.VISIBLE);
+            userMirrorList.setVisibility(View.VISIBLE);
+        } else {
+            userMirrorsLabel.setVisibility(View.GONE);
+            userMirrorList.setVisibility(View.GONE);
+        }
+
         if (repo.hasBeenUpdated()) {
             updateViewForExistingRepo(repoView);
         } else {
-            updateViewForNewRepo(repoView);
+            setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
+            setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
         }
-    }
-
-    private void updateViewForNewRepo(View repoView) {
-        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
-        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
     }
 
     private void updateViewForExistingRepo(View repoView) {
@@ -355,19 +373,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         TextView name = repoView.findViewById(R.id.text_repo_name);
         TextView numApps = repoView.findViewById(R.id.text_num_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
-
-        if (repo.mirrors != null) {
-            TextView officialMirrorsLabel = repoView.findViewById(R.id.label_official_mirrors);
-            officialMirrorsLabel.setVisibility(View.VISIBLE);
-            RecyclerView officialMirrorList = repoView.findViewById(R.id.official_mirror_list);
-            officialMirrorList.setVisibility(View.VISIBLE);
-        }
-        if (repo.userMirrors != null) {
-            TextView userMirrorsLabel = repoView.findViewById(R.id.label_user_mirrors);
-            userMirrorsLabel.setVisibility(View.VISIBLE);
-            RecyclerView userMirrorList = repoView.findViewById(R.id.user_mirror_list);
-            userMirrorList.setVisibility(View.VISIBLE);
-        }
 
         name.setText(repo.name);
 
