@@ -43,6 +43,7 @@ test_lint_pmd_checkstyle:
     - ./gradlew pmd || export EXITVALUE=1
     - ./gradlew checkstyle || export EXITVALUE=1
     - ./tools/check-format-strings.py || export EXITVALUE=1
+    - ./tools/check-fastlane-whitespace.py || export EXITVALUE=1
     - ./tools/remove-unused-and-blank-translations.py || export EXITVALUE=1
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || export EXITVALUE=1
