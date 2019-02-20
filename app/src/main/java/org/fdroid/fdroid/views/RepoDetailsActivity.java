@@ -13,17 +13,23 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +44,8 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Locale;
 
 public class RepoDetailsActivity extends AppCompatActivity {
@@ -76,6 +84,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private View repoView;
     private String shareUrl;
 
+    private MirrorAdapter adapterToNotify;
+
     /**
      * Help function to make switching between two view states easier.
      * Perhaps there is a better way to do this. I recall that using Adobe
@@ -103,17 +113,19 @@ public class RepoDetailsActivity extends AppCompatActivity {
         repoView = findViewById(R.id.repo_view);
 
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
-        final String[] projection = {
-                RepoTable.Cols.NAME,
-                RepoTable.Cols.ADDRESS,
-                RepoTable.Cols.FINGERPRINT,
-                RepoTable.Cols.MIRRORS,
-                RepoTable.Cols.USER_MIRRORS,
-        };
-        repo = RepoProvider.Helper.findById(this, repoId, projection);
+        repo = RepoProvider.Helper.findById(this, repoId);
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
+
+        RecyclerView officialMirrorListView = findViewById(R.id.official_mirror_list);
+        officialMirrorListView.setLayoutManager(new LinearLayoutManager(this));
+        adapterToNotify = new MirrorAdapter(repo, repo.mirrors);
+        officialMirrorListView.setAdapter(adapterToNotify);
+
+        RecyclerView userMirrorListView = findViewById(R.id.user_mirror_list);
+        userMirrorListView.setLayoutManager(new LinearLayoutManager(this));
+        userMirrorListView.setAdapter(new MirrorAdapter(repo, repo.userMirrors));
 
         if (repo.address.startsWith("content://")) {
             // no need to show a QR Code, it is not shareable
@@ -324,16 +336,34 @@ public class RepoDetailsActivity extends AppCompatActivity {
     }
 
     private void updateRepoView() {
+        TextView officialMirrorsLabel = repoView.findViewById(R.id.label_official_mirrors);
+        RecyclerView officialMirrorList = repoView.findViewById(R.id.official_mirror_list);
+        if ((repo.mirrors != null && repo.mirrors.length > 1)
+                || (repo.userMirrors != null && repo.userMirrors.length > 0)) {
+            // don't show this if there is only the canonical URL available, and no other mirrors
+            officialMirrorsLabel.setVisibility(View.VISIBLE);
+            officialMirrorList.setVisibility(View.VISIBLE);
+        } else {
+            officialMirrorsLabel.setVisibility(View.GONE);
+            officialMirrorList.setVisibility(View.GONE);
+        }
+
+        TextView userMirrorsLabel = repoView.findViewById(R.id.label_user_mirrors);
+        RecyclerView userMirrorList = repoView.findViewById(R.id.user_mirror_list);
+        if (repo.userMirrors != null && repo.userMirrors.length > 0) {
+            userMirrorsLabel.setVisibility(View.VISIBLE);
+            userMirrorList.setVisibility(View.VISIBLE);
+        } else {
+            userMirrorsLabel.setVisibility(View.GONE);
+            userMirrorList.setVisibility(View.GONE);
+        }
+
         if (repo.hasBeenUpdated()) {
             updateViewForExistingRepo(repoView);
         } else {
-            updateViewForNewRepo(repoView);
+            setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
+            setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
         }
-    }
-
-    private void updateViewForNewRepo(View repoView) {
-        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
-        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
     }
 
     private void updateViewForExistingRepo(View repoView) {
@@ -343,35 +373,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         TextView name = repoView.findViewById(R.id.text_repo_name);
         TextView numApps = repoView.findViewById(R.id.text_num_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
-
-        if (repo.mirrors != null) {
-            TextView officialMirrorsLabel = repoView.findViewById(R.id.label_official_mirrors);
-            officialMirrorsLabel.setVisibility(View.VISIBLE);
-            TextView officialMirrorsText = repoView.findViewById(R.id.text_official_mirrors);
-            officialMirrorsText.setVisibility(View.VISIBLE);
-            StringBuilder builder = new StringBuilder();
-            for (String url : repo.mirrors) {
-                builder.append("• ");
-                builder.append(url);
-                builder.append('\n');
-            }
-            builder.setLength(Math.max(builder.length() - 1, 0));
-            officialMirrorsText.setText(builder.toString());
-        }
-        if (repo.userMirrors != null) {
-            TextView userMirrorsLabel = repoView.findViewById(R.id.label_user_mirrors);
-            userMirrorsLabel.setVisibility(View.VISIBLE);
-            TextView userMirrorsText = repoView.findViewById(R.id.text_user_mirrors);
-            userMirrorsText.setVisibility(View.VISIBLE);
-            StringBuilder builder = new StringBuilder();
-            for (String url : repo.userMirrors) {
-                builder.append("• ");
-                builder.append(url);
-                builder.append('\n');
-            }
-            builder.setLength(Math.max(builder.length() - 1, 0));
-            userMirrorsText.setText(builder.toString());
-        }
 
         name.setText(repo.name);
 
@@ -463,5 +464,99 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 });
 
         credentialsDialog.show();
+    }
+
+    private class MirrorAdapter extends RecyclerView.Adapter<MirrorAdapter.MirrorViewHolder> {
+        private final Repo repo;
+        private final String[] mirrors;
+
+        class MirrorViewHolder extends RecyclerView.ViewHolder {
+            View view;
+
+            MirrorViewHolder(View view) {
+                super(view);
+                this.view = view;
+            }
+        }
+
+        MirrorAdapter(Repo repo, String[] mirrors) {
+            this.repo = repo;
+            this.mirrors = mirrors;
+        }
+
+        @NonNull
+        @Override
+        public MirrorAdapter.MirrorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_item, parent, false);
+            return new MirrorViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MirrorViewHolder holder, final int position) {
+            TextView repoNameTextView = holder.view.findViewById(R.id.repo_name);
+            repoNameTextView.setText(mirrors[position]);
+
+            final String itemMirror = mirrors[position];
+            boolean enabled = true;
+            if (repo.disabledMirrors != null) {
+                for (String disabled : repo.disabledMirrors) {
+                    if (TextUtils.equals(itemMirror, disabled)) {
+                        enabled = false;
+                        break;
+                    }
+                }
+            }
+            CompoundButton switchView = holder.view.findViewById(R.id.repo_switch);
+            switchView.setChecked(enabled);
+            switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    HashSet<String> disabledMirrors;
+                    if (repo.disabledMirrors == null) {
+                        disabledMirrors = new HashSet<>(1);
+                    } else {
+                        disabledMirrors = new HashSet<>(Arrays.asList(repo.disabledMirrors));
+                    }
+
+                    if (isChecked) {
+                        disabledMirrors.remove(itemMirror);
+                    } else {
+                        disabledMirrors.add(itemMirror);
+                    }
+
+                    int totalMirrors = (repo.mirrors == null ? 0 : repo.mirrors.length)
+                            + (repo.userMirrors == null ? 0 : repo.userMirrors.length);
+                    if (disabledMirrors.size() == totalMirrors) {
+                        // if all mirrors are disabled, re-enable canonical repo as mirror
+                        disabledMirrors.remove(repo.address);
+                        adapterToNotify.notifyItemChanged(0);
+                    }
+
+                    if (disabledMirrors.size() == 0) {
+                        repo.disabledMirrors = null;
+                    } else {
+                        repo.disabledMirrors = disabledMirrors.toArray(new String[disabledMirrors.size()]);
+                    }
+                    final ContentValues values = new ContentValues(1);
+                    values.put(RepoTable.Cols.DISABLED_MIRRORS,
+                            Utils.serializeCommaSeparatedString(repo.disabledMirrors));
+                    RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
+                }
+            });
+
+            View repoUnverified = holder.view.findViewById(R.id.repo_unverified);
+            repoUnverified.setVisibility(View.GONE);
+
+            View repoUnsigned = holder.view.findViewById(R.id.repo_unsigned);
+            repoUnsigned.setVisibility(View.GONE);
+        }
+
+        @Override
+        public int getItemCount() {
+            if (mirrors == null) {
+                return 0;
+            }
+            return mirrors.length;
+        }
     }
 }

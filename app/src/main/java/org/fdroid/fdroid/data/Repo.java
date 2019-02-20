@@ -86,6 +86,9 @@ public class Repo extends ValueObject {
     @JsonIgnore
     public int pushRequests = PUSH_REQUEST_IGNORE;
 
+    /**
+     * The canonical URL of the repo.
+     */
     public String address;
     public String name;
     public String description;
@@ -125,7 +128,14 @@ public class Repo extends ValueObject {
     /**
      * Mirrors added by the user, either by UI input or by attaching removeable storage
      */
+    @JsonIgnore
     public String[] userMirrors;
+
+    /**
+     * Mirrors that have been manually disabled by the user.
+     */
+    @JsonIgnore
+    public String[] disabledMirrors;
 
     public Repo() {
     }
@@ -192,6 +202,9 @@ public class Repo extends ValueObject {
                     break;
                 case Cols.USER_MIRRORS:
                     userMirrors = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.DISABLED_MIRRORS:
+                    disabledMirrors = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.PUSH_REQUESTS:
                     pushRequests = cursor.getInt(i);
@@ -334,6 +347,10 @@ public class Repo extends ValueObject {
             userMirrors = Utils.parseCommaSeparatedString(values.getAsString(Cols.USER_MIRRORS));
         }
 
+        if (values.containsKey(Cols.DISABLED_MIRRORS)) {
+            disabledMirrors = Utils.parseCommaSeparatedString(values.getAsString(Cols.DISABLED_MIRRORS));
+        }
+
         if (values.containsKey(Cols.PUSH_REQUESTS)) {
             pushRequests = toInt(values.getAsInteger(Cols.PUSH_REQUESTS));
         }
@@ -345,8 +362,9 @@ public class Repo extends ValueObject {
      * mirror list.
      */
     public boolean hasMirrors() {
-        return (mirrors != null && mirrors.length > 1)
-                || (userMirrors != null && userMirrors.length > 0);
+        List<String> mirrorList = getMirrorList();
+        int size = mirrorList.size();
+        return size > 1 || (size == 1 && !mirrorList.contains(address));
     }
 
     /**
@@ -361,6 +379,9 @@ public class Repo extends ValueObject {
             allMirrors.addAll(Arrays.asList(mirrors));
         }
         allMirrors.add(address);
+        if (disabledMirrors != null) {
+            allMirrors.removeAll(Arrays.asList(disabledMirrors));
+        }
         return new ArrayList<>(allMirrors);
     }
 
@@ -382,9 +403,11 @@ public class Repo extends ValueObject {
     /**
      * Get a random mirror URL from the list of mirrors for this repo. It will
      * remove the URL in {@code mirrorToSkip} from consideration before choosing
-     * which mirror to return.
+     * which mirror to return.  {@link #getMirrorList()} returns a list of all
+     * known mirrors <b>minus</b> the mirrors that have been disabled by the
+     * user preference, e.g. {@link #disabledMirrors}.
      * <p>
-     * The mirror logic assumes that it has a mirrors list with at least once
+     * The mirror logic assumes that it has a mirrors list with at least one
      * valid entry in it.  In the index format as defined by {@code fdroid update},
      * there is always at least one valid URL: the canonical URL.  That also means
      * if there is only one item in the mirrors list, there are no other URLs to try.
@@ -394,6 +417,8 @@ public class Repo extends ValueObject {
      * update.  That makes it possible to do the first index update via SD Card
      * or USB OTG drive.
      *
+     * @see #getMirrorList()
+     * @see #disabledMirrors
      * @see FDroidApp#resetMirrorVars()
      * @see FDroidApp#switchUrlToNewMirror(String, Repo)
      * @see FDroidApp#getTimeout()
@@ -403,7 +428,7 @@ public class Repo extends ValueObject {
             mirrorToSkip = address;
         }
         List<String> shuffledMirrors = getMirrorList();
-        if (shuffledMirrors.size() > 1) {
+        if (shuffledMirrors.size() > 0) {
             Collections.shuffle(shuffledMirrors);
             for (String m : shuffledMirrors) {
                 // Return a non default, and not last used mirror
@@ -419,6 +444,6 @@ public class Repo extends ValueObject {
                 }
             }
         }
-        return null; // In case we are out of mirrors.
+        return address; // In case we are out of mirrors.
     }
 }

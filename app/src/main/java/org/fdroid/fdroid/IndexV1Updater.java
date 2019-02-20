@@ -65,9 +65,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -295,7 +295,7 @@ public class IndexV1Updater extends IndexUpdater {
         repo.description = getStringRepoValue(repoMap, "description");
 
         // ensure the canonical URL is included in the "mirrors" list as the first entry
-        TreeSet<String> mirrors = new TreeSet<>();
+        LinkedHashSet<String> mirrors = new LinkedHashSet<>();
         mirrors.add(repo.address);
         mirrors.addAll(getStringListRepoValue(repoMap, "mirrors"));
         repo.mirrors = mirrors.toArray(new String[mirrors.size()]);
