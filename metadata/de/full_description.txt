@@ -5,4 +5,3 @@ Er verbindet sich mit jeder mit F-Droid kompatiblen Paketquelle. Die Standardque
 Android selbst ist dahingehend offen, dass jeder selbst entscheiden kann, welche APKs er installieren möchte. Es gibt allerdings gute Gründe, F-Droid als App-Manager für freie Software zu verwenden:
 
 * Benachrichtigungen zu verfügbaren Aktualisierungen erhalten * wahlweise Aktualisierungen automatisch herunterladen und installieren * den Überblick über ältere und Beta-Versionen behalten * Aussortieren von nicht mit dem Gerät kompatiblen Apps * Apps nach Kategorien und durchsuchbaren Beschreibungen finden * Zugang zu verknüpften Internetadressen mit Quelltext, Spendenmöglichkeiten, usw. * Sicherheit durch Überprüfung von Quell-Signaturen und APK-Hashes
-
