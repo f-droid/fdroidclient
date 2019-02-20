@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -132,7 +133,7 @@ public class Response {
     public static class Builder {
 
         private InputStream contentStream;
-        private int statusCode = 200;
+        private int statusCode = HttpURLConnection.HTTP_OK;
         private int fileSize = -1;
         private String etag;
 

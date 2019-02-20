@@ -39,6 +39,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v4.util.LongSparseArray;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -66,7 +67,6 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.localrepo.SDCardScannerService;
@@ -246,13 +246,6 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * @see #getMirror(String, Repo)
-     */
-    public static String getMirror(String urlString, long repoId) throws IOException {
-        return getMirror(urlString, RepoProvider.Helper.findById(getInstance(), repoId));
-    }
-
-    /**
      * Each time this is called, it will return a mirror from the pool of
      * mirrors.  If it reaches the end of the list of mirrors, it will start
      * again from the stop, while setting the timeout to
@@ -260,17 +253,18 @@ public class FDroidApp extends Application {
      * again, it will do one last pass through the list with the timeout set to
      * {@link Downloader#LONGEST_TIMEOUT}.  After that, this gives up with a
      * {@link IOException}.
+     * <p>
+     * {@link #lastWorkingMirrorArray} is used to track the last mirror URL used,
+     * so it can be used in the string replacement operating when converting a
+     * download URL to point to a different mirror.  Download URLs can be
+     * anything from {@code index-v1.jar} to APKs to icons to screenshots.
      *
      * @see #resetMirrorVars()
      * @see #getTimeout()
-     * @see Repo#getMirror(String)
+     * @see Repo#getRandomMirror(String)
      */
-    public static String getMirror(String urlString, Repo repo2) throws IOException {
+    public static String getNewMirrorOnError(@Nullable String urlString, Repo repo2) throws IOException {
         if (repo2.hasMirrors()) {
-            String lastWorkingMirror = lastWorkingMirrorArray.get(repo2.getId());
-            if (lastWorkingMirror == null) {
-                lastWorkingMirror = repo2.address;
-            }
             if (numTries <= 0) {
                 if (timeout == Downloader.DEFAULT_TIMEOUT) {
                     timeout = Downloader.SECOND_TIMEOUT;
@@ -286,24 +280,37 @@ public class FDroidApp extends Application {
             if (numTries == Integer.MAX_VALUE) {
                 numTries = repo2.getMirrorCount();
             }
-            String mirror = repo2.getMirror(lastWorkingMirror);
-            String newUrl = urlString.replace(lastWorkingMirror, mirror);
-            Utils.debugLog(TAG, "Trying mirror " + mirror + " after " + lastWorkingMirror + " failed," +
-                    " timeout=" + timeout / 1000 + "s");
-            lastWorkingMirrorArray.put(repo2.getId(), mirror);
             numTries--;
-            return newUrl;
+            return switchUrlToNewMirror(urlString, repo2);
         } else {
             throw new IOException("No mirrors available");
         }
+    }
+
+    /**
+     * Switch the URL in {@code urlString} to come from a random mirror.
+     */
+    public static String switchUrlToNewMirror(@Nullable String urlString, Repo repo2) {
+        String lastWorkingMirror = lastWorkingMirrorArray.get(repo2.getId());
+        if (lastWorkingMirror == null) {
+            lastWorkingMirror = repo2.address;
+        }
+        String mirror = repo2.getRandomMirror(lastWorkingMirror);
+        lastWorkingMirrorArray.put(repo2.getId(), mirror);
+        return urlString.replace(lastWorkingMirror, mirror);
     }
 
     public static int getTimeout() {
         return timeout;
     }
 
+    /**
+     * Reset the retry counter and timeout to defaults, and set the last
+     * working mirror to the canonical URL.
+     *
+     * @see #getNewMirrorOnError(String, Repo)
+     */
     public static void resetMirrorVars() {
-        // Reset last working mirror, numtries, and timeout
         for (int i = 0; i < lastWorkingMirrorArray.size(); i++) {
             lastWorkingMirrorArray.removeAt(i);
         }

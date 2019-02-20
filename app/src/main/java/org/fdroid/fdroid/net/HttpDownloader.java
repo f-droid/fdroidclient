@@ -95,12 +95,35 @@ public class HttpDownloader extends Downloader {
     }
 
     /**
-     * Get a remote file, checking the HTTP response code and the {@code etag}.
-     * In order to prevent the {@code etag} from being used as a form of tracking
-     * cookie, this code never sends the {@code etag} to the server.  Instead, it
-     * uses a {@code HEAD} request to get the {@code etag} from the server, then
-     * only issues a {@code GET} if the {@code etag} has changed.
+     * Get a remote file, checking the HTTP response code, if it has changed since
+     * the last time a download was tried.
+     * <p>
+     * If the {@code ETag} does not match, it could be caused by the previous
+     * download of the same file coming from a mirror running on a different
+     * webserver, e.g. Apache vs Nginx.  {@code Content-Length} and
+     * {@code Last-Modified} are used to check whether the file has changed since
+     * those are more standardized than {@code ETag}.  Plus, Nginx and Apache 2.4
+     * defaults use only those two values to generate the {@code ETag} anyway.
+     * Unfortunately, other webservers and CDNs have totally different methods
+     * for generating the {@code ETag}.  And mirrors that are syncing using a
+     * method other than {@code rsync} could easily have different {@code Last-Modified}
+     * times on the exact same file.  On top of that, some services like GitHub's
+     * raw file support {@code raw.githubusercontent.com} and GitLab's raw file
+     * support do not set the {@code Last-Modified} header at all.  So ultimately,
+     * then {@code ETag} needs to be used first and foremost, then this calculated
+     * {@code ETag} can serve as a common fallback.
+     * <p>
+     * In order to prevent the {@code ETag} from being used as a form of tracking
+     * cookie, this code never sends the {@code ETag} to the server.  Instead, it
+     * uses a {@code HEAD} request to get the {@code ETag} from the server, then
+     * only issues a {@code GET} if the {@code ETag} has changed.
+     * <p>
+     * This uses a integer value for {@code Last-Modified} to avoid enabling the
+     * use of that value as some kind of "cookieless cookie".  One second time
+     * resolution should be plenty since these files change more on the time
+     * space of minutes or hours.
      *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1708">update index from any available mirror</a>
      * @see <a href="http://lucb1e.com/rp/cookielesscookies">Cookieless cookies</a>
      */
     @Override
@@ -108,22 +131,32 @@ public class HttpDownloader extends Downloader {
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
         tmpConn.setRequestMethod("HEAD");
-        String etag = tmpConn.getHeaderField(HEADER_FIELD_ETAG);
 
         int contentLength = -1;
         int statusCode = tmpConn.getResponseCode();
         tmpConn.disconnect();
         newFileAvailableOnServer = false;
         switch (statusCode) {
-            case 200:
+            case HttpURLConnection.HTTP_OK:
+                String headETag = tmpConn.getHeaderField(HEADER_FIELD_ETAG);
                 contentLength = tmpConn.getContentLength();
-                if (!TextUtils.isEmpty(etag) && etag.equals(cacheTag)) {
-                    Utils.debugLog(TAG, urlString + " is cached, not downloading");
-                    return;
+                if (!TextUtils.isEmpty(cacheTag)) {
+                    if (cacheTag.equals(headETag)) {
+                        Utils.debugLog(TAG, urlString + " cached, not downloading: " + headETag);
+                        return;
+                    } else {
+                        String calcedETag = String.format("\"%x-%x\"",
+                                tmpConn.getLastModified() / 1000, contentLength);
+                        if (calcedETag.equals(headETag)) {
+                            Utils.debugLog(TAG, urlString + " cached based on calced ETag, not downloading: " +
+                                    headETag);
+                            return;
+                        }
+                    }
                 }
                 newFileAvailableOnServer = true;
                 break;
-            case 404:
+            case HttpURLConnection.HTTP_NOT_FOUND:
                 notFound = true;
                 return;
             default:

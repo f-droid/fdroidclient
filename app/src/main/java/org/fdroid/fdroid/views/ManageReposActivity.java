@@ -63,7 +63,6 @@ import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -114,7 +113,7 @@ public class ManageReposActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ListView repoList = (ListView) findViewById(R.id.list);
-        repoAdapter = RepoAdapter.create(this, null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
+        repoAdapter = new RepoAdapter(this);
         repoAdapter.setEnabledListener(this);
         repoList.setAdapter(repoAdapter);
         repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -571,8 +570,6 @@ public class ManageReposActivity extends AppCompatActivity
 
                 private int statusCode = -1;
                 private static final int REFRESH_DIALOG = Integer.MAX_VALUE;
-                private static final int HTTP_UNAUTHORIZED = 401;
-                private static final int HTTP_OK = 200;
 
                 @Override
                 protected String doInBackground(String... params) {
@@ -630,7 +627,8 @@ public class ManageReposActivity extends AppCompatActivity
 
                     statusCode = connection.getResponseCode();
 
-                    return statusCode == HTTP_UNAUTHORIZED || statusCode == HTTP_OK;
+                    return statusCode == HttpURLConnection.HTTP_UNAUTHORIZED
+                            || statusCode == HttpURLConnection.HTTP_OK;
                 }
 
                 @Override
@@ -644,7 +642,7 @@ public class ManageReposActivity extends AppCompatActivity
 
                     if (addRepoDialog.isShowing()) {
 
-                        if (statusCode == HTTP_UNAUTHORIZED) {
+                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
 
                             final View view = getLayoutInflater().inflate(R.layout.login, null);
                             final AlertDialog credentialsDialog = new AlertDialog.Builder(context)

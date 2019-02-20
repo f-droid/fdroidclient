@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.Repo;
 
 public class RepoAdapter extends CursorAdapter {
@@ -21,23 +22,8 @@ public class RepoAdapter extends CursorAdapter {
 
     private EnabledListener enabledListener;
 
-    public static RepoAdapter create(Context context, Cursor cursor, int flags) {
-        return new RepoAdapter(context, cursor, flags);
-    }
-
-    private RepoAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
-        inflater = LayoutInflater.from(context);
-    }
-
-    public RepoAdapter(Context context, Cursor c, boolean autoRequery) {
-        super(context, c, autoRequery);
-        inflater = LayoutInflater.from(context);
-    }
-
-    @SuppressWarnings("deprecation")
-    private RepoAdapter(Context context, Cursor c) {
-        super(context, c);
+    RepoAdapter(Context context) {
+        super(context, null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
         inflater = LayoutInflater.from(context);
     }
 

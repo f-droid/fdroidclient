@@ -141,7 +141,7 @@ public class IndexV1Updater extends IndexUpdater {
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
                 | ProtocolException | UnknownHostException e) {
             // if the above list changes, also change below and in DownloaderService.handleIntent()
-            Utils.debugLog(TAG, "Trying to download the index from a mirror");
+            Utils.debugLog(TAG, "Trying to download the index from a mirror: " + e.getMessage());
             // Mirror logic here, so that the default download code is untouched.
             String mirrorUrl;
             String prevMirrorUrl = indexUrl;
@@ -149,7 +149,7 @@ public class IndexV1Updater extends IndexUpdater {
             int n = repo.getMirrorCount() * 3; // 3 is the number of timeouts we have. 10s, 30s & 60s
             for (int i = 0; i <= n; i++) {
                 try {
-                    mirrorUrl = FDroidApp.getMirror(prevMirrorUrl, repo);
+                    mirrorUrl = FDroidApp.getNewMirrorOnError(prevMirrorUrl, repo);
                     prevMirrorUrl = mirrorUrl;
                     downloader = DownloaderFactory.create(context, mirrorUrl);
                     downloader.setCacheTag(repo.lastetag);
