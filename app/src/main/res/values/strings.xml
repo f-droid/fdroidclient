@@ -134,8 +134,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
     some descriptive text for the TTS engine -->
     <string name="updates__tts__download_app">Download</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="update_all">Update all</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="updates__hide_updateable_apps">Hide apps</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="updates__show_updateable_apps">Show apps</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Download update for %1$d app.</item>
@@ -143,6 +146,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </plurals>
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
 
+    <!-- This should be exactly the same as the standard word for Cancel throughout OK and apps -->
     <string name="ok">OK</string>
 
     <string name="yes">Yes</string>
@@ -156,6 +160,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="less">Less</string>
 
     <string name="back">Back</string>
+    <!-- This should be exactly the same as the standard word for Cancel throughout Android and apps -->
     <string name="cancel">Cancel</string>
     <string name="enable">Enable</string>
     <string name="add_key">Add Key</string>
@@ -189,7 +194,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_open">Open</string>
     <!-- This should be exactly the same as the standard word for Share throughout Android and apps -->
     <string name="menu_share">Share</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="menu_install">Install</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="menu_uninstall">Uninstall</string>
     <string name="menu_ignore_all">Ignore All Updates</string>
     <string name="menu_ignore_this">Ignore This Update</string>
@@ -432,9 +439,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </string>
 
     <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
+    <!-- The word "nearby" should be the same as used for Google/Android Nearby. This is a button label, it should ideally be 10-20 characters. -->
     <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
     <string name="nearby_splash__read_external_storage">SD Cards can be used to swap!</string>
+    <!-- This is a button label for a small button, the text needs to be under 10 characters, the shorter the better. Also, a literal translation probably will miss the point. "Try it" is more a saying than two words. Google has been pushing these short buttons, like "Got it" and "Try now" so this button is trying to match those buttons in Android. -->
     <string name="nearby_splash__request_permission">Try it</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
