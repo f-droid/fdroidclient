@@ -97,6 +97,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + RepoTable.Cols.ICON + " string, "
             + RepoTable.Cols.MIRRORS + " string, "
             + RepoTable.Cols.USER_MIRRORS + " string, "
+            + RepoTable.Cols.DISABLED_MIRRORS + " string, "
             + RepoTable.Cols.PUSH_REQUESTS + " integer not null default " + Repo.PUSH_REQUEST_IGNORE
             + ");";
 
@@ -223,7 +224,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 79;
+    protected static final int DB_VERSION = 80;
 
     private final Context context;
 
@@ -448,6 +449,17 @@ public class DBHelper extends SQLiteOpenHelper {
         addLiberapayID(db, oldVersion);
         addUserMirrorsFields(db, oldVersion);
         removeNotNullFromVersionName(db, oldVersion);
+        addDisabledMirrorsFields(db, oldVersion);
+    }
+
+    private void addDisabledMirrorsFields(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 80) {
+            return;
+        }
+        if (!columnExists(db, RepoTable.NAME, RepoTable.Cols.DISABLED_MIRRORS)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.DISABLED_MIRRORS + " field to " + RepoTable.NAME + " table in db.");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.DISABLED_MIRRORS + " string;");
+        }
     }
 
     private void removeNotNullFromVersionName(SQLiteDatabase db, int oldVersion) {
