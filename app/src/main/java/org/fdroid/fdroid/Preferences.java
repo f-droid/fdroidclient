@@ -109,6 +109,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
     public static final String PREF_ALLOW_PUSH_REQUESTS = "allowPushRequests";
+    public static final String PREF_RANDOMIZE_INDEX_DOWNLOAD = "randomizeIndexDownload";
 
     public static final int OVER_NETWORK_NEVER = 0;
     public static final int OVER_NETWORK_ON_DEMAND = 1;
@@ -549,6 +550,17 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     public boolean allowPushRequests() {
         return preferences.getBoolean(PREF_ALLOW_PUSH_REQUESTS, IGNORED_B);
+    }
+
+    /**
+     * Try downloading the index update from a random mirror rather than always
+     * starting with the canonical URL.
+     *
+     * @see IndexV1Updater#update()
+     * @see FDroidApp#switchUrlToNewMirror(String, org.fdroid.fdroid.data.Repo)
+     */
+    public boolean randomizeIndexDownload() {
+        return preferences.getBoolean(PREF_RANDOMIZE_INDEX_DOWNLOAD, IGNORED_B);
     }
 
     /**

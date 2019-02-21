@@ -181,6 +181,12 @@
                 android:defaultValue="false"
                 android:dependency="expert"/>
         <CheckBoxPreference
+                android:key="randomizeIndexDownload"
+                android:title="@string/randomize_index_downloads"
+                android:summary="@string/randomize_index_downloads_summary"
+                android:defaultValue="false"
+                android:dependency="expert"/>
+        <CheckBoxPreference
                 android:key="hideAllNotifications"
                 android:title="@string/hide_all_notifications"
                 android:summary="@string/hide_all_notifications_summary"

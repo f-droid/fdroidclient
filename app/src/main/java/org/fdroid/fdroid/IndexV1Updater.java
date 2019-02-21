@@ -122,8 +122,12 @@ public class IndexV1Updater extends IndexUpdater {
         }
         Downloader downloader = null;
         try {
-            // read file name from file
-            downloader = DownloaderFactory.create(context, indexUrl);
+            if (Preferences.get().randomizeIndexDownload() && indexUrl.startsWith(repo.address)) {
+                Utils.debugLog(TAG, Preferences.PREF_RANDOMIZE_INDEX_DOWNLOAD + " enabled, randomizing URL.");
+                downloader = DownloaderFactory.create(context, FDroidApp.switchUrlToNewMirror(indexUrl, repo));
+            } else {
+                downloader = DownloaderFactory.create(context, indexUrl);
+            }
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();
