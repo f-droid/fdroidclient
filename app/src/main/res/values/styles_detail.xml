@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DetailsButtonStyleBase">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:minHeight">32dp</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">18dp</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase"/>
@@ -16,7 +20,11 @@
     </style>
 
     <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
-        <item name="android:padding">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
     </style>
 
     <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
@@ -25,14 +33,19 @@
     </style>
 
     <style name="DetailsSecondaryButtonStyleSmall" parent="DetailsSecondaryButtonStyle">
-        <item name="android:padding">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
     </style>
 
-    <style name="DetailsMoreButtonStyle">
+    <style name="DetailsMoreButtonStyle" parent="DetailsButtonStyle">
         <item name="android:padding">8dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/fdroid_blue</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="DetailsAppTitleStyle" parent="TextAppearance.AppCompat.Title">

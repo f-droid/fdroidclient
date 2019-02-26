@@ -135,19 +135,18 @@
                     tools:text="Android 4.1 or later" />
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatButton android:id="@+id/button_install_upgrade"
-                style="@style/DetailsButtonStyle"
+            <Button
+                android:id="@+id/button_install_upgrade"
+                style="@style/DetailsSecondaryButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"
-                app:textAllCaps="true"
-                tools:text="@string/menu_install"
-                android:textColor="@color/fdroid_blue"
-                android:background="@drawable/app_version_button_bg_selector_install_upgrade" />
+                tools:text="@string/menu_install"/>
 
-            <android.support.v7.widget.AppCompatButton android:id="@+id/button_downgrade"
+            <Button
+                android:id="@+id/button_downgrade"
                 style="@style/DetailsButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -157,8 +156,7 @@
                 app:textAllCaps="true"
                 android:text="@string/menu_downgrade"
                 android:textColor="#b87032"
-                android:background="@drawable/app_version_button_bg_selector_downgrade"
-                tools:visibility="gone" />
+                android:background="@drawable/app_version_button_bg_selector_downgrade" />
 
             <ProgressBar android:id="@+id/busy_indicator"
                 android:layout_width="wrap_content"

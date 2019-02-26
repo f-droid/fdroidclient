@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase">
+        <item name="android:stateListAnimator">@null</item>  <!-- no elevation change on hover -->
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+</resources>
