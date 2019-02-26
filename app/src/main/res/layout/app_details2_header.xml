@@ -29,7 +29,7 @@
                 android:id="@+id/icon_and_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp">
+                android:paddingBottom="12dp">
 
                 <ImageView
                     android:id="@+id/icon"
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon_and_name"
-                android:paddingBottom="2dp"
+                android:paddingBottom="4dp"
                 android:clipToPadding="false"
                 android:visibility="visible"
                 android:gravity="end">
@@ -148,7 +148,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
-                    app:textAllCaps="true"
                     tools:text="Uninstall"/>
 
                 <android.support.v7.widget.AppCompatButton
@@ -160,7 +159,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
-                    app:textAllCaps="true"
                     tools:text="Open"/>
             </LinearLayout>
         </RelativeLayout>
@@ -246,8 +244,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
-            android:text="@string/more"
-            android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/more" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
