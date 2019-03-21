@@ -153,7 +153,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"
-                app:textAllCaps="true"
                 android:text="@string/menu_downgrade"
                 android:textColor="#b87032"
                 android:background="@drawable/app_version_button_bg_selector_downgrade" />
