@@ -45,17 +45,24 @@
 
     <string name="update_interval">Automatic update interval</string>
     <string name="over_wifi">Over Wi-Fi</string>
+    <!-- "data" as in cellular internet service -->
     <string name="over_data">Over data</string>
     <string name="over_network_always_summary">Always use this connection when available</string>
     <string name="over_network_on_demand_summary">Only use this connection when I click to download</string>
     <string name="over_network_never_summary">Never download anything using this connection</string>
+    <!-- as in software updates -->
     <string name="update_auto_download">Automatically fetch updates</string>
+    <!-- as in software updates -->
     <string name="update_auto_download_summary">Updates are downloaded automatically and you are notified to install
         them
     </string>
+    <!-- as in software updates -->
     <string name="update_auto_install">Automatically install updates</string>
+    <!-- as in software updates -->
     <string name="update_auto_install_summary">Download and update apps in the background, showing a notification</string>
+    <!-- as in software updates -->
     <string name="notify">Show available updates</string>
+    <!-- as in software updates -->
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">Use Privileged Extension to install, update, and remove packages</string>
@@ -144,6 +151,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="one">Download update for %1$d app.</item>
         <item quantity="other">Download updates for %1$d apps.</item>
     </plurals>
+    <!-- "updates" as in software updates, "Data" as in cellular internet service -->
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
 
     <!-- This should be exactly the same as the standard word for Cancel throughout OK and apps -->
@@ -216,19 +224,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_flattr">Flattr</string>
     <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_liberapay">Liberapay</string>
-
+    <!-- The bottom bar button label -->
     <string name="main_menu__latest_apps">Latest</string>
+    <!-- The bottom bar button label -->
     <string name="main_menu__categories">Categories</string>
-    <!-- Should be the same term used in the Google Nearby Settings -->
+    <!-- The bottom bar button label.  Should be the same term used in the Google Nearby Settings -->
     <string name="main_menu__swap_nearby">Nearby</string>
-    <!--
-        The updates tab isn't only about software updates. It is also about queued offline installs, in progress
-        installs, known vulnerabilities, and in the future, also donation reminders and other things. In English,
-        you can also say "do you have an update on your progress?" or "Keep me updated on how things are going".
-        That combined with "software updates" is why the tab is called "Updates". Ideally, the Updates Tab would
-        actually be a different word than the word used for "software update" to highlight that the Updates Tab is
-        more than just software updates.
-    -->
+    <!-- The bottom bar button label.  The updates tab isn't only about software updates. It is also about queued offline installs, in progress installs, known vulnerabilities, and in the future, also donation reminders and other things. In English, you can also say "do you have an update on your progress?" or "Keep me updated on how things are going". That combined with "software updates" is why the tab is called "Updates". Ideally, the Updates Tab would actually be a different word than the word used for "software update" to highlight that the Updates Tab is more than just software updates. -->
     <string name="main_menu__updates">Updates</string>
 
     <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
@@ -533,13 +535,19 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app__tts__downloading_progress">Downloading, %1$d%% complete</string>
     <string name="installing">Installing…</string>
     <string name="uninstalling">Uninstalling…</string>
-
+    <!-- "updates" as in software updates -->
     <string name="interval_never">No automatic app updates</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_1h">Check for updates hourly</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_4h">Check for updates every 4 hours</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_12h">Check for updates every 12 hours</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_1d">Check for updates daily</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_1w">Check for updates weekly</string>
+    <!-- "updates" as in software updates -->
     <string name="interval_2w">Check for updates every 2 weeks</string>
 
     <string name="keep_hour">1 Hour</string>
