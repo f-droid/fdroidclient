@@ -54,7 +54,6 @@ errorprone:
   script:
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew assembleDebug
-  allow_failure: true
 
 # once these prove stable, the task should be switched to
 # connectedCheck to test all the build flavors
@@ -99,8 +98,6 @@ errorprone:
 
 connected 22 default armeabi-v7a:
   retry: 1
-  only:
-    - merge_requests
   <<: *test-template
   <<: *connected-template
 
@@ -125,9 +122,6 @@ connected 23 default x86:
 
 connected 25 default x86:
   <<: *kvm-template
-  allow_failure: false
-  only:
-    - merge_requests
 
 connected 26 google_apis x86:
   <<: *kvm-template
