@@ -1,0 +1,7 @@
+* Verwendung des HTTP ETag als Überwachungs-Cookie verhindern
+
+* Verbesserte Bildschirmfotodarstellung
+
+* Saubere Löschung temporärer und zwischengespeicherter Dateien
+
+* Lösungen für das dunkle Design

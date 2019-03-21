@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
     <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
@@ -41,7 +41,7 @@
     <string name="menu_manage">Gestiona els dipòsits</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nou dipòsit</string>
-    <string name="menu_launch">Executa</string>
+    <string name="menu_launch">Obre</string>
     <string name="menu_share">Comparteix</string>
     <string name="menu_install">Instal·la</string>
     <string name="menu_uninstall">Desinstal·la</string>
@@ -139,11 +139,9 @@
     <string name="swap_welcome">Benvingut a F-Droid!</string>
     <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
     <string name="app_name">F-Droid</string>
-
     <string name="about_source">Codi font</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Enllaços</string>
-
     <string name="back">Torna</string>
     <string name="pref_language">Idioma</string>
     <string name="wifi">Wi-Fi</string>
@@ -154,17 +152,13 @@
     <string name="category_Connectivity">Connectivitat</string>
     <string name="category_Time">Temps</string>
     <string name="category_Writing">Per a escriure</string>
-
     <string name="unstable_updates">Actualitzacions inestables</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="update_notification_title">Actualitzant els dipòsits</string>
     <string name="more">Més</string>
     <string name="less">Menys</string>
-
     <string name="permissions">Permisos</string>
     <string name="enable_nfc_send">Habilita l\'enviament NFC…</string>
     <string name="unstable_updates_summary">Suggereix actualitzacions a versions inestables</string>
@@ -178,9 +172,7 @@
     <string name="repo_details">Dipòsit</string>
     <string name="repo_url">Adreça</string>
     <string name="pref_language_default">Predeterminat del sistema</string>
-
     <string name="wifi_ap">Punt d\'accés</string>
-
     <string name="interval_never">No actualitzis les apps automàticament</string>
     <string name="interval_1h">Cerca actualitzacions cada hora</string>
     <string name="interval_4h">Cerca actualitzacions cada 4 hores</string>
@@ -188,7 +180,6 @@
     <string name="interval_1d">Cerca actualitzacions diàriament</string>
     <string name="interval_1w">Cerca actualitzacions setmanalment</string>
     <string name="interval_2w">Cerca actualitzacions cada dues setmanes</string>
-
     <string name="theme_light">Clar</string>
     <string name="theme_dark">Fosc</string>
     <string name="theme_night">Nit</string>
@@ -198,11 +189,9 @@
     <string name="uninstall_update_confirm">Voleu restaurar l\'aplicació per la versió de fàbrica?</string>
     <string name="uninstall_confirm">Voleu suprimir aquesta aplicació?</string>
     <string name="download_error">Error en la baixada!</string>
-
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Proporcionat per %1$s.</string>
     <string name="downloading">S\'està baixant…</string>
-
     <string name="empty_installed_app_list">Cap aplicació instal·lada\n\nTeniu aplicacions al vostre dispositiu, però no
         estan disponibles a F-Droid. Això podria ser perquè necessiteu actualitzar els repositoris o perquè els
         repositoris no contenen les vostres aplicacions.
@@ -211,7 +200,6 @@
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
     <string name="empty_can_update_app_list">Enhorabona!
 \nLes vostres aplicacions estan actualitzades.</string>
-
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu,
         informeu d\'aquest error!
     </string>
@@ -247,7 +235,6 @@
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
     <string name="loading">S\'està carregant…</string>
     <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
-
     <string name="install_confirm">necessita accés a</string>
     <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_system">Voleu instal·lar una actualització
@@ -261,61 +248,48 @@
     <string name="login_password">Contrasenya</string>
     <string name="repo_edit_credentials">Canvieu la contrasenya</string>
     <string name="repo_error_empty_username">El nom d\'usuari és buit, les credencials no s\'han canviat</string>
-
     <string name="about_license">Llicència</string>
-
     <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
     <string name="status_inserting_apps">S\'està desant els detalls de l\'aplicació</string>
-
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
     <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un error inesperat. Voleu enviar els detalls per correu-e per ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
-
     <string name="menu_email">Escriviu un correu electrònic a l\'autor</string>
     <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
     <string name="useTor">Usi Tor</string>
     <string name="useTorSummary">Força el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
     <string name="repo_provider">Repositori: %s</string>
-
     <string name="update_auto_download">Obtingueu actualitzacions de forma automàtica</string>
     <string name="update_auto_download_summary">Les descàrregues es descarreguen automàticament i sereu avisats per
         instal·lar-les
     </string>
     <string name="download_pending">S\'està esperant que comenci la baixada…</string>
-
     <string name="keep_forever">Per sempre</string>
-
     <string name="keep_day">1 dia</string>
     <string name="keep_week">1 setmana</string>
     <string name="keep_month">1 mes</string>
     <string name="keep_year">1 any</string>
     <string name="install_error_notify_title">Error instal·lant %s</string>
     <string name="uninstall_error_notify_title">Error desinstal·lant %s</string>
-
-
     <string name="installing">Instal·lant…</string>
     <string name="uninstalling">Desinstal·lant…</string>
-
     <string name="keep_hour">1 hora</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions en un emmagatzemament privat</string>
     <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
-    <string name="update_auto_install_summary">Baixa i instal·la actualitzacions d\'aplicacions en rerefons</string>
+    <string name="update_auto_install_summary">Baixa i actualitza aplicacions en segon pla, mostrant una notificació</string>
     <string name="versions">Versions</string>
     <string name="warning_no_internet">No es pot actualitzar: esteu connectat a internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Convideu els desenvolupadors de %1$s a un cafè!</string>
     <string name="app_details_donate_prompt">%2$s ha creat %1$s. Convideu-los a un cafè!</string>
-
     <string name="repositories_summary">Administració d\'orígens addicionals</string>
     <string name="app_version_x_available">Versió %1$s disponible</string>
     <string name="app_version_x_installed">Versió %1$s</string>
     <string name="clear_search">Netegeu la cerca</string>
-
     <string name="main_menu__latest_apps">Novetats</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">A prop</string>
-
     <string name="notification_title_single_update_available">Actualització disponible</string>
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>
     <string name="notification_title_single_ready_to_install_update">Actualització llesta per a ser instal·lada</string>
@@ -336,43 +310,31 @@
     <string name="notification_action_update">Actualitza</string>
     <string name="notification_action_cancel">Cancel·leu</string>
     <string name="notification_action_install">Instal·leu</string>
-
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
-    <string name="app_new">Nou</string>
-
+    <string name="app_new">Nova</string>
     <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Ignoreu les actualitzacions</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Les actualitzacions s\'han ignorat per la versió
         %1$s
     </string>
-
     <string name="preference_category__my_apps">Les meves aplicacions</string>
     <string name="preference_manage_installed_apps">Gestiona les aplicacions instal·lades</string>
-
-
     <string name="tts_category_name">Categoria %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Mostra %1$d aplicació de la categoria %2$s</item>
         <item quantity="other">Mostra les %1$d aplicacions de la categoria %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Actualitza</string>
-
     <string name="app_list__name__downloading_in_progress">Baixant %1$s</string>
-
     <string name="updates__tts__download_app">Baixa</string>
-    <string name="update_all">Baixa totes les actualitzacions</string>
-
+    <string name="update_all">Actualitza-les totes</string>
     <string name="updates__hide_updateable_apps">Amaga</string>
     <string name="updates__show_updateable_apps">Mostra</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">%1$d actualització disponible:</item>
         <item quantity="other">%1$d actualitzacions disponibles:</item>
     </plurals>
-
     <string name="details_new_in_version">Novetats a la versió %s</string>
-
     <string name="antifeatureswarning">Aquesta aplicació conté característiques potser no desitjables.</string>
     <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
@@ -384,13 +346,10 @@
     <string name="nearby_splash__download_apps_from_people_nearby">No teniu internet? Aconseguiu aplicacions de la gent que tingueu al voltant!</string>
     <string name="nearby_splash__find_people_button">Cerca persones al voltant</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten l\'%1$s per utilitzar aquesta característica.</string>
-
     <string name="latest__empty_state__no_recent_apps">No s\'han trobat aplicacions recents</string>
     <string name="latest__empty_state__never_updated">Un cop actualitzada la vostra llista d\'aplicacions, les més recents es mostraran aquí</string>
     <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori d\'aplicacions, les més recents es mostraran aquí</string>
-
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
-
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancel·la la baixada</string>
     <string name="menu_license">Llicència: %s</string>
@@ -398,7 +357,6 @@
         <item quantity="one">Mostra %d</item>
         <item quantity="other">Mostra els %d</item>
     </plurals>
-
     <string name="app__tts__downloading_progress">Baixant, %1$d%% completat</string>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d actualització</item>
@@ -433,24 +391,19 @@
     <string name="app_details__no_versions__no_compatible_signatures">No hi ha versions amb signatura compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hi ha versions compatibles amb el dispositiu</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La versió instal·lada no és compatible amb cap versió disponible. desinstal·lau la versió per poder veure i instal·lar versions compatibles. Això passa amb aplicacions instal·lades des del Google Play o altres fonts, si s\'han signat amb un certificat diferent.</string>
-
     <string name="app_installed_media">Fitxer instal·lat a %s</string>
     <string name="app_permission_storage">F-Droid necessita permisos d\'emmagatzematge per instal·lar. Doneu permisos a la pantalla següent per procedir amb la instal·lació.</string>
-
     <string name="app_list_download_ready">S\'ha baixat i ja es pot instal·lar</string>
     <string name="app_list__dismiss_app_update">Actualització ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitat ignorada</string>
     <string name="app_list__dismiss_downloading_app">Baixada cancel·lada</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem suprimir aquesta aplicació immediatament.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S\'ha trobat una vulnerabilitat a %1$s. Us recomanem actualitzar immediatament a la versió més recent.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
-
     <string name="status_inserting_x_apps">S\'estan desant els detalls de l\'aplicació (%1$d/%2$d) des de %3$s</string>
     <string name="privacy">Privadesa</string>
     <string name="preventScreenshots_title">Bloca les captures de pantalla</string>
     <string name="preventScreenshots_summary">Bloca les captures de pantalla i amaga el contingut de la pantalla d\'aplicacions recents</string>
-
     <string name="panic_app_setting_title">App \"Botó del pànic\"</string>
     <string name="panic_app_unknown_app">una app desconeguda</string>
     <string name="panic_app_setting_summary">No heu definit cap app</string>
@@ -458,7 +411,6 @@
     <string name="panic_app_dialog_title">App \"Confirmeu pànic\"</string>
     <string name="panic_app_dialog_message">Esteu segurs que voleu permetre que %1$s iniciï accions destructives de \"Botó del pànic\"?</string>
     <string name="allow">Permetre</string>
-
     <string name="panic_settings">Configuració del botó del pànic</string>
     <string name="panic_settings_summary">Accions a dur a terme en cas d\'emergència</string>
     <string name="panic_exit_title">Sortir de l\'app</string>
@@ -466,14 +418,10 @@
     <string name="panic_destructive_actions">Accions destructives</string>
     <string name="panic_hide_title">Amagueu %s</string>
     <string name="panic_hide_summary">L\'app s\'ocultarà</string>
-
     <string name="sort_search">Ordena els resultats de la cerca</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="panic_hide_warning_title">Recorda com restaurar-ho</string>
     <string name="panic_hide_warning_message">En una situació de pànic, això esborrarà %1$s del menú. Només es podrà restaurar escrivint \"%2$d\" a la falsa aplicació %3$s.</string>
-
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Amaga %s ara</string>
     <string name="over_wifi">Amb wifi</string>
@@ -486,21 +434,17 @@
     <string name="repo_exists_add_mirror">Això és una còpia de %1$s, voleu afegir-la com a rèplica?</string>
     <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
     <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
-
     <string name="show_anti_feature_apps">Inclou aplicacions amb característiques indesitjades</string>
     <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen característiques indesitjades</string>
     <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tinc</string>
-
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
     <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
-
     <string name="repo_official_mirrors">Rèpliques oficials</string>
     <string name="repo_user_mirrors">Rèpliques mantingudes per usuaris</string>
     <string name="use_bluetooth">Usa bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Punt d\'accés wifi actiu</string>
     <string name="swap_toast_could_not_enable_hotspot">No ha estat possible activar el punt d\'accés wifi!</string>
-
     <string name="warning_scaning_qr_code">Sembla que la càmera no té sistema d\'autoenfocament. Potser difícil d\'escanejar el codi.</string>
     <string name="repo_exists_add_fingerprint">%1$s ja està configurat, això afegirà informació de la nova clau.</string>
     <string name="repo_exists_enable">%1$s ja està configurat, confirmeu que el voleu reactivar.</string>
@@ -522,15 +466,24 @@
     <string name="allow_push_requests">Permet als repositoris instal·lar/desinstal·lar apps</string>
     <string name="allow_push_requests_summary">Les meta-dades del repositori poden incloure «push requests» per tal d\'instal·lar o desinstal·lar apps</string>
     <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
-
     <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar.</string>
-
     <string name="about_forum">Fòrum de suport</string>
     <string name="app_suggested">Suggerit</string>
     <string name="app_size">Mida: %1$s</string>
-
     <string name="send_installed_apps">Compartir apps instal·lades</string>
     <string name="send_installed_apps_csv">Apps instal·lades per F-Droid a través d\'un fitxer CSV</string>
     <string name="menu_open">Obrir</string>
     <string name="menu_downgrade">Revertir versió</string>
+    <string name="scan_removable_storage_title">Escaneja emmagatzematge extraïble</string>
+    <string name="scan_removable_storage_toast">Escanejant %s…</string>
+    <string name="scan_removable_storage_summary">Cerca dipòsits de paquets en emmagatzematge extraïble com targetes SD i memòries USB</string>
+    <string name="app_repository">Dipòsit: %1$s</string>
+    <string name="main_menu__updates">Actualitzacions</string>
+    <string name="nearby_splash__read_external_storage">Les targetes SD poden utilitzar-se per intercanviar!</string>
+    <string name="nearby_splash__request_permission">Prova-ho</string>
+    <string name="not_visible_nearby">Al voltant no habilitat</string>
+    <string name="not_visible_nearby_description">Abans d\'intercanviar amb dispositius propers, feu el vostre dispositiu visible.</string>
+    <string name="swap_toast_using_path">Utilitzant %1$s</string>
+    <string name="swap_toast_not_removable_storage">Aquesta tria no concorda amb cap dispositiu d\'emmagatzematge extraïble, torneu-ho a provar!</string>
+    <string name="swap_toast_find_removeable_storage">Trieu la vostra targeta SD extraïble o USB</string>
 </resources>

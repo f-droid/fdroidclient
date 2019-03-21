@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ایف-ڈیرائڈ</string>
-
     <string name="SignatureMismatch">نیا ورژن مختلف کیی کے ساتھ دستخط کیا گیا ہے۔ نیا ورژن نصب کرنے کے لیے، پرانے ورژن
         کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم
         کا اندرونی ڈیٹا جو اطلاقیہ نے محفوظ کیا ہو، مٹا دیا جائے گا)
@@ -20,7 +19,6 @@
     <string name="main_menu__swap_nearby">قریبی</string>
     <string name="menu_settings">ترتیبات</string>
     <string name="main_menu__categories">زمرے</string>
-
     <string name="update_interval">خودکار تازہ کاری کرنے کا وقفہ</string>
     <string name="notify">تازہ کاریوں کی اطلاعات</string>
     <string name="notify_on">اگر تازہ کاری دستیاب ہیں تو اطلاع دیں</string>
@@ -32,4 +30,17 @@
     <string name="update_auto_download">خودکار اپڈیٹس ڈاؤنلوڈ کریں</string>
     <string name="update_auto_download_summary">اپڈیٹ والی فائلوں کو پسِ منظر ڈاؤنلوڈ کریں</string>
     <string name="system_installer_on">F-Droid Privileged Extension کے ذریعے پیکج کو انسٹال، اپڈیٹ اور حذف کریں</string>
+    <string name="ok">ٹھیک ہے</string>
+    <string name="yes">ٹھیک</string>
+    <string name="no">نہیں</string>
+    <string name="back">واپس</string>
+    <string name="menu_manage">ریپازیٹری</string>
+    <string name="menu_search">تلاش</string>
+    <string name="menu_add_repo">نئی ریپازیٹری</string>
+    <string name="menu_launch">کھولیں</string>
+    <string name="menu_share">اشتراک کریں</string>
+    <string name="menu_install">اسٹال کریں</string>
+    <string name="menu_uninstall">ان انسٹال</string>
+    <string name="menu_upgrade">اپڈیٹ</string>
+    <string name="main_menu__latest_apps">تارہ ترین</string>
 </resources>

@@ -1,0 +1,4 @@
+* ŝaltiloj sur la ekrano de deponejaj detaloj por malŝalti elektitajn (aŭ ĉiujn) spegul-servilojn (#1696)
+* elekti hazardan spegul-servilon por ĉiu elŝuto
+* kaŝmemorigi pakaĵojn de apoj laŭ deponejo, ne laŭ spegul-servilo
+* pritrakti ETags de Apache kaj NGINX dum kontroli ĉu la indekso estas aktuala (#1708)

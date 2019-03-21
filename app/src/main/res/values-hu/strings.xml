@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Tegye ezt meg, és próbálja újra. (Figyelem: az eltávolítás törli az alkalmazás minden tárolt adatát.)</string>
     <string name="installIncompatible">Az alkalmazás nem kompatibilis ezzel az eszközzel, ennek ellenére is telepíti?</string>
@@ -31,7 +31,7 @@
     <string name="menu_manage">Tárolók</string>
     <string name="menu_search">Keresés</string>
     <string name="menu_add_repo">Új tároló</string>
-    <string name="menu_launch">Indítás</string>
+    <string name="menu_launch">Megnyitás</string>
     <string name="menu_share">Megosztás</string>
     <string name="menu_install">Telepítés</string>
     <string name="menu_uninstall">Eltávolítás</string>
@@ -70,7 +70,6 @@
 \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
     <string name="delete">Törlés</string>
     <string name="app_name">F-Droid</string>
-
     <string name="enable_nfc_send">NFC küldés engedélyezése…</string>
     <string name="unstable_updates">Instabil frissítések</string>
     <string name="unstable_updates_summary">Frissítések ajánlása instabil verziókra</string>
@@ -79,30 +78,23 @@
     <string name="local_repo_name">Helyi tároló neve</string>
     <string name="local_repo_name_summary">A helyi tárolója közzétett címe: %s</string>
     <string name="local_repo_https_on">Titkosított HTTPS:// kapcsolat használata a helyi tárolóhoz</string>
-
     <string name="login_title">Hitelesítés szükséges</string>
     <string name="login_name">Felhasználónév</string>
     <string name="login_password">Jelszó</string>
     <string name="repo_edit_credentials">Jelszó megváltoztatása</string>
     <string name="repo_error_empty_username">Üres felhasználónév, a hitelesítési adatok nem változtak</string>
-
     <string name="about_source">Forráskód</string>
     <string name="about_license">Licenc</string>
-
     <string name="app_incompatible">Inkompatibilis</string>
     <string name="app_inst_known_source">Telepítve (innen: %s)</string>
     <string name="app_inst_unknown_source">Telepítve (ismeretlen forrásból)</string>
-
     <string name="links">Hivatkozások</string>
     <string name="more">Több</string>
     <string name="less">Kevesebb</string>
-
     <string name="back">Vissza</string>
-
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>
     <string name="invalid_url">Ez nem egy érvényes URL.</string>
     <string name="malformed_repo_uri">Hibás tároló URI figyelmen kívül hagyása: %s</string>
-
     <string name="menu_settings">Beállítások</string>
     <string name="menu_changelog">Változásnapló</string>
     <string name="local_repo">Helyi tároló</string>
@@ -111,7 +103,6 @@
     <string name="icon">Ikon</string>
     <string name="next">Következő</string>
     <string name="skip">Kihagyás</string>
-
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">HTTP proxy engedélyezése</string>
     <string name="enable_proxy_summary">HTTP proxy beállítása minden hálózati kéréshez</string>
@@ -119,7 +110,6 @@
     <string name="proxy_host_summary">A proxy kiszolgálóneve (pl. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
     <string name="proxy_port_summary">A proxy kiszolgáló portszáma (pl. 8118)</string>
-
     <string name="status_download_unknown_size">Letöltés\n%2$s, forrás:\n%1$s</string>
     <string name="status_inserting_apps">Alkalmazásadatok részleteinek mentése</string>
     <string name="global_error_updating_repos">Hiba a frissítés során: %s</string>
@@ -141,7 +131,6 @@
 \n%1$s</string>
     <string name="pref_language">Nyelv</string>
     <string name="pref_language_default">Rendszer alapértelmezése</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="category_Connectivity">Kapcsolódás</string>
     <string name="category_Development">Fejlesztés</string>
@@ -165,10 +154,8 @@
 \n
 \nVannak alkalmazások a készülékén, de azok nem érhetőek el az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az alkalmazásai.</string>
     <string name="empty_can_update_app_list">Gratulálunk!\nMinden alkalmazása naprakész.</string>
-
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt meghiúsult</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>
-
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
     <string name="install_confirm_update">Szeretne telepíteni egy frissítést ehhez a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
@@ -186,10 +173,8 @@
     <string name="uninstall_update_confirm">Szeretné lecserélni ezt az alkalmazást a gyári verzióra?</string>
     <string name="uninstall_confirm">Szeretné eltávolítani ezt az alkalmazást?</string>
     <string name="download_error">Letöltés sikertelen!</string>
-
     <string name="perms_new_perm_prefix">Új:</string>
     <string name="downloading">Letöltés…</string>
-
     <string name="interval_never">Nincsenek automatikus alkalmazásfrissítések</string>
     <string name="interval_1h">Frissítések keresése óránként</string>
     <string name="interval_4h">Frissítések keresése 4 óránként</string>
@@ -197,11 +182,9 @@
     <string name="interval_1d">Frissítések keresése naponta</string>
     <string name="interval_1w">Frissítések keresése hetente</string>
     <string name="interval_2w">Frissítések keresése kéthetente</string>
-
     <string name="theme_light">Világos</string>
     <string name="theme_dark">Sötét</string>
     <string name="theme_night">Éjszakai</string>
-
     <string name="crash_dialog_title">Az F-Droid összeomlott</string>
     <string name="crash_dialog_text">Egy váratlan hiba következtében az alkalmazásnak le kellett állnia. Szeretné
         elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?
@@ -211,22 +194,17 @@
     <string name="update_auto_download_summary">A frissítések a háttérben letöltődnek, majd megjelenik egy értesítés a telepítéshez</string>
     <string name="choose_bt_send">Válassza ki a Bluetooth küldési módot</string>
     <string name="repo_provider">Tároló: %s</string>
-
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="copying_icons">Alkalmazásikonok másolása a tárolóba…</string>
     <string name="useTor">Tor használata</string>
     <string name="wifi_ap">Hotspot</string>
-
     <string name="menu_email">E-mail a készítőnek</string>
     <string name="useTorSummary">Letöltési forgalom Tor használatára kényszerítése az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
     <string name="antinonfreeassetslist">Az alkalmazás nem szabad szoftveres eszközöket tartalmaz</string>
-
     <string name="requires_features">Szükséges: %1$s</string>
     <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az
         eszközeiket.
@@ -256,35 +234,28 @@
     <string name="download_pending">Várakozás a letöltés elkezdésére…</string>
     <string name="installing">Telepítés…</string>
     <string name="uninstalling">Eltávolítás…</string>
-
     <string name="keep_hour">1 óra</string>
     <string name="keep_day">1 nap</string>
     <string name="keep_week">1 hét</string>
     <string name="keep_month">1 hónap</string>
     <string name="keep_year">1 év</string>
     <string name="keep_forever">Örökké</string>
-
     <string name="keep_install_history">Telepítési előzmények megtartása</string>
     <string name="keep_install_history_summary">Az összes telepítés és eltávolítás naplójának tárolása egy privát tárolóban</string>
     <string name="update_auto_install">Frissítések automatikus telepítése</string>
-    <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése a háttérben</string>
+    <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése a háttérben, értesítés mutatása</string>
     <string name="versions">Verziók</string>
     <string name="local_repo_running">Az F-Droid cserére kész</string>
     <string name="main_menu__latest_apps">Legújabb</string>
     <string name="main_menu__categories">Kategóriák</string>
     <string name="main_menu__swap_nearby">Közeli</string>
-
     <string name="preference_manage_installed_apps">Telepített alkalmazások kezelése</string>
-
-
     <string name="notification_action_update">Frissítés</string>
     <string name="notification_action_cancel">Mégse</string>
     <string name="notification_action_install">Telepítés</string>
-
     <string name="updates__tts__download_app">Letöltés</string>
     <string name="app_new">Új</string>
     <string name="app__install_downloaded_update">Frissítés</string>
-
     <string name="installed_apps__activity_title">Telepített alkalmazások</string>
     <string name="menu_video">Videó</string>
     <string name="preference_category__my_apps">Saját alkalmazások</string>
@@ -300,39 +271,29 @@
     <string name="app_details__no_versions__no_compatible_signatures">Nem található kompatibilis aláírással rendelkező verzió</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nem található az eszközével kompatibilis verzió</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">A telepített verzió nem kompatibilis egyetlen elérhető verzióval sem. Az alkalmazás törlése lehetőséget ad a kompatibilis verziók megtekintésére, és telepítésére. Ez gyakran olyan alkalmazásoknál fordul elő, amik a Google Play áruházból, vagy egyéb forrásból lettek telepítve, és egy másik tanúsítvánnyal vannak aláírva.</string>
-
     <string name="app_permission_storage">Az F-Droidnak tárhely engedéllyel kell rendelkeznie, hogy erre a tárhelyre telepíthessen. A telepítés folytatásához engedélyezze a következő képernyőn.</string>
-
     <string name="app_list_download_ready">Letöltve, készen áll a telepítésre</string>
     <string name="app_list__dismiss_app_update">Frissítés figyelmen kívül hagyva</string>
     <string name="app_list__dismiss_vulnerable_app">Sebezhetőség figyelmen kívül hagyva</string>
     <string name="app_list__dismiss_downloading_app">Letöltés megszakítva</string>
-
     <string name="installed_app__updates_ignored">Frissítések figyelmen kívül hagyva</string>
-    <string name="update_all">Összes frissítés letöltése</string>
-
+    <string name="update_all">Összes frissítése</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Egy sebezhetőség található a(z) %1$s alkalmazásban. Az alkalmazás azonnali eltávolítása ajánlott.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezhetőség található a(z) %1$s appban. Azonnali frissítés ajánlott a legújabb verzióra.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezhetőség található ebben az appban: %1$s. Azonnali frissítés ajánlott a legújabb verzióra.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Figyelmen kívül hagyás</string>
-
     <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
     <string name="updates__show_updateable_apps">Alkalmazások megjelenítése</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Frissítés letöltése %1$d alkalmazáshoz.</item>
-	<item quantity="other">Frissítés letöltése %1$d alkalmazáshoz.</item>
-</plurals>
-
+        <item quantity="one">Frissítés letöltése %1$d alkalmazáshoz.</item>
+        <item quantity="other">Frissítés letöltése %1$d alkalmazáshoz.</item>
+    </plurals>
     <string name="clear_search">Keresés törlése</string>
-
     <string name="menu_license">Licenc: %s</string>
     <string name="latest__empty_state__no_recent_apps">Nincsenek legutóbbi alkalmazások</string>
     <string name="latest__empty_state__never_updated">Amint az alkalmazáslista frissítésre kerül, a legújabb alkalmazások itt fognak megjelenni</string>
     <string name="latest__empty_state__no_enabled_repos">Amint engedélyez egy tárolót, és frissíti azt, a legújabb alkalmazások itt fognak megjelenni</string>
-
     <string name="categories__empty_state__no_categories">Nincsenek megjelenítendő kategóriák</string>
-
     <string name="details_new_in_version">Újdonság a(z) %s verzióban</string>
-
     <string name="antifeatureswarning">Ennek az alkalmazásnak vannak előnytelen funkciói.</string>
     <string name="antifeatures">Előnytelen funkciók</string>
     <string name="touch_to_configure_local_repo">Érintse meg a részletek megtekintéséhez, és a másokkal történő alkalmazáscsere lehetővé tételéhez.</string>
@@ -343,7 +304,6 @@
     <string name="by_author_format">Készítette: %s</string>
     <string name="force_old_index">Régi indexformátum kényszerítése</string>
     <string name="app_details_donate_prompt">A(z) %1$s alkalmazást %2$s készítette. Vegyen nekik egy kávét!</string>
-
     <string name="app_details__incompatible_mismatched_signature">A telepített verziótól eltérő aláírás</string>
     <string name="app_version_x_available">%1$s verzió elérhető</string>
     <string name="app_version_x_installed">%1$s verzió</string>
@@ -356,11 +316,8 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet? Szerezzen appokat a közelben lévő emberektől!</string>
     <string name="nearby_splash__find_people_button">Közelben lévő emberek keresése</string>
     <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek szükséges az %1$s a funkció használatához.</string>
-
     <string name="install_error_notify_title">Hiba a(z) %s telepítése közben</string>
     <string name="uninstall_error_notify_title">Hiba a(z) %s eltávolítása közben</string>
-
-
     <string name="app__tts__downloading_progress">Letöltés, %1$d%% kész</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d további…</item>
@@ -392,7 +349,6 @@
         <item quantity="one">%1$d alkalmazás megtekintése a(z) %2$s kategóriában</item>
         <item quantity="other">Mind a(z) %1$d alkalmazás megtekintése a(z) %2$s kategóriából</item>
     </plurals>
-
     <string name="details_last_updated_today">Ma frissítve</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Tegnap frissítve</item>
@@ -413,12 +369,10 @@
     <string name="app_installed_media">A fájl telepítve ide: %s</string>
     <string name="status_inserting_x_apps">Alkalmazás részleteinek mentése (%1$d / %2$d), forrás: %3$s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">%d megtekintése</item>
-	<item quantity="other">%d megtekintése</item>
-</plurals>
-
+        <item quantity="one">%d megtekintése</item>
+        <item quantity="other">%d megtekintése</item>
+    </plurals>
     <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
-
     <string name="swap_nfc_title">Érintés a cseréhez</string>
     <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi Hotspotot hozhat létre.</string>
     <string name="swap_join_this_hotspot">Segítsen a barátjának csatlakozni a hotspothoz</string>
@@ -433,38 +387,31 @@
     <string name="swap_confirm">Csere megerősítése</string>
     <string name="swap_qr_isnt_for_swap">A beolvasott QR-kód nem tűnik cserekódnak.</string>
     <string name="swap_connection_misc_error">Hiba történt az eszközhöz kapcsolódás során, nem lehet vele cserélni!</string>
-
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
     <string name="tts_category_name">Kategória %1$s</string>
-
     <string name="over_wifi">Wi-Fin keresztül</string>
     <string name="over_network_always_summary">Mindig ezt a kapcsolatot használja, ha elérhető</string>
     <string name="over_network_on_demand_summary">Csak akkor használja ezt a kapcsolatot, ha a letöltésre kattint</string>
     <string name="over_network_never_summary">Soha ne töltsön le semmit ezen a kapcsolaton keresztül</string>
     <string name="repo_add_mirror">Tükör hozzáadása</string>
     <string name="sort_search">Keresési eredmények sorba rendezése</string>
-
     <string name="repo_exists_add_mirror">Ez a(z) %1$s másolata, hozzáadja tükörként?</string>
     <string name="antidisabledalgorithmlist">Az alkalmazásnak gyenge a biztonsági aláírása</string>
     <string name="antiknownvulnlist">Az alkalmazás ismert biztonsági rést tartalmaz</string>
-
     <string name="over_data">Adatkapcsolaton keresztül</string>
     <string name="repo_exists_add_fingerprint">A(z) %1$s már be lett állítva, ez új kulcsinformációkat fog hozzáadni.</string>
     <string name="repo_exists_enable">A(z) %1$s már be lett állítva, erősítse meg, hogy újra engedélyezni akarja.</string>
     <string name="repo_exists_and_enabled">A(z) %1$s már be lett állítva és engedélyezett.</string>
     <string name="repo_delete_to_overwrite">Először törölje a(z) %1$s alkalmazást, hogy hozzáadhassa egy ütköző kulccsal.</string>
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="show_anti_feature_apps">Előnytelen funkciókkal rendelkező alkalmazások belefoglalása</string>
     <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek előnytelen funkciókkal rendelkeznek</string>
     <string name="force_touch_apps">Érintőképernyős alkalmazások belefoglalása</string>
     <string name="force_touch_apps_on">Azon alkalmazások megjelenítése, melyekhez érintőképernyő szükséges, a hardvertámogatástól függetlenül</string>
-
     <string name="privacy">Adatvédelem</string>
     <string name="preventScreenshots_title">Képernyőképek megakadályozása</string>
     <string name="hiding_calculator">Számológép</string>
     <string name="preventScreenshots_summary">Megakadályozza, hogy képernyőkép készüljön, és elrejti az alkalmazás tartalmát a nemrég használt alkalmazások képernyőn</string>
-
     <string name="panic_app_setting_title">Pánikgomb alkalmazás</string>
     <string name="panic_app_unknown_app">egy ismeretlen alkalmazás</string>
     <string name="panic_app_setting_summary">Még nem lett alkalmazás beállítva</string>
@@ -472,7 +419,6 @@
     <string name="panic_app_dialog_title">Pánik alkalmazás megerősítése</string>
     <string name="panic_app_dialog_message">Biztosan engedélyezi, hogy a(z) %1$s destruktív pánikgomb műveleteket indítson el?</string>
     <string name="allow">Engedélyezés</string>
-
     <string name="panic_settings">Pánikgomb beállítások</string>
     <string name="panic_settings_summary">Vészhelyzet esetén elvégzendő műveletek</string>
     <string name="panic_exit_title">Kilépés az alkalmazásból</string>
@@ -482,20 +428,17 @@
     <string name="panic_hide_summary">Az alkalmazás elrejti magát</string>
     <string name="panic_hide_warning_title">Jegyezze meg hogy állíthatja vissza</string>
     <string name="panic_hide_warning_message">Pánikeseménykor ez eltávolítja a(z) %1$s alkalmazást az indítóból. Csak a(z) „%2$d”, a hamis %3$s alkalmazásban történő beírásával állíthatja vissza.</string>
-
     <string name="hiding_dialog_title">%s elrejtése most</string>
     <string name="hiding_dialog_message">Biztosan eltávolítja a(z) %1$s alkalmazást az indítóból? Csak a(z) „%2$d”, a hamis %3$s alkalmazásban történő beírásával állíthatja vissza.</string>
     <string name="hiding_dialog_warning">Figyelmeztetés: A kezdőképernyőre rakott alkalmazásindító is eltávolításra fog kerülni, és kézzel kell majd újra hozzáadnia.</string>
     <string name="hide_on_long_search_press_title">Elrejtés a keresőgombbal</string>
     <string name="hide_on_long_search_press_summary">A keresőgomb hosszú megnyomása elrejti az alkalmazást</string>
-
     <string name="repo_official_mirrors">Hivatalos tükrök</string>
     <string name="repo_user_mirrors">Felhasználói tükrök</string>
     <string name="use_bluetooth">Bluetooth használata</string>
     <string name="swap_toast_invalid_url">Érvénytelen URL a cseréhez: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot engedélyezve</string>
     <string name="swap_toast_could_not_enable_hotspot">A Wi-Fi Hotspot nem engedélyezhető!</string>
-
     <string name="warning_scaning_qr_code">A kamerának úgy tűnik nincs autofókusza. Így nehézkes lehet a kód leolvasása.</string>
     <string name="prompt_to_send_crash_reports">Kérdezzen az összeomlási jelentések küldésekor</string>
     <string name="prompt_to_send_crash_reports_summary">Adatok begyűjtése az összeomlásokról, és annak megkérdezése, hogy elküldje azokat a fejlesztőnek</string>
@@ -508,18 +451,27 @@
     <string name="allow_push_requests">Engedélyezés a tárolóknak, hogy alkalmazásokat telepítsenek vagy távolítsanak el</string>
     <string name="allow_push_requests_summary">A tároló metaadatai tartalmazhatnak alkalmazások telepítését vagy eltávolítását okozó küldési kéréseket</string>
     <string name="antinosourcesince">A forráskód többé nem érhető el, a frissítések nem lehetségesek.</string>
-
     <string name="share_repository">Tároló megosztása</string>
     <string name="send_install_history">Telepítési előzmények elküldése</string>
     <string name="send_history_csv">%s telepítési előzmények CSV fájlként</string>
     <string name="about_forum">Támogatói fórum</string>
     <string name="app_suggested">Javasolt</string>
     <string name="app_size">Méret: %1$s</string>
-
     <string name="send_installed_apps">Telepített alkalmazások megosztása</string>
     <string name="send_installed_apps_csv">Az F-Droid által telepített alkalmazások CSV fájlként</string>
     <string name="updates_disabled_by_settings">Összes frissítés letiltva az Adat/WiFi-beállításokban</string>
-
     <string name="menu_open">Megnyitás</string>
     <string name="menu_downgrade">Visszaállás</string>
+    <string name="scan_removable_storage_title">Cserélhető adattárolók szkennelése</string>
+    <string name="scan_removable_storage_toast">Keresés: %s…</string>
+    <string name="scan_removable_storage_summary">Keressen csomag tárolókat olyan cserélhető adattárolókon is, mint az SD kártyák és az USB pendrive-ok</string>
+    <string name="app_repository">Tároló: %1$s</string>
+    <string name="main_menu__updates">Frissítések</string>
+    <string name="nearby_splash__read_external_storage">SD kártyák használhatók a cseréhez!</string>
+    <string name="nearby_splash__request_permission">Próbálja meg</string>
+    <string name="not_visible_nearby">„Közelben” nem engedélyezett</string>
+    <string name="not_visible_nearby_description">Mielőtt cserélnél a közeli eszközökkel, tedd az eszközödet láthatóvá.</string>
+    <string name="swap_toast_using_path">Ezt használ: %1$s</string>
+    <string name="swap_toast_not_removable_storage">Az a választás nem felel meg egyik cserélhető adattárolónak sem, próbáld meg újra!</string>
+    <string name="swap_toast_find_removeable_storage">Válasszon eltávolítható SD kártyát vagy USB-t</string>
 </resources>

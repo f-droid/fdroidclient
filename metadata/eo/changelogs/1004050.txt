@@ -1,0 +1,6 @@
+* tute refarita sekcio “versioj” sur la ekrano de aplikaĵaj detaloj, multajn aliajn plibonigojn al la fasado danke al nia nova kontribuanto @wsdfhjxc
+* plibonigita navigado per klavaro/D-stirilo danke al nia nova kontribuanto @doeffinger
+* montri butonon “malfermi” ĉe aŭdvidaĵoj
+* aldonis butonon “kunhavigi” por instalitaj aplikaĵoj por elporti CSV-liston
+* reprovi elŝuti indekson el spegul-serviloj
+* riparita “send F-Droid per Bludento” ĉe pli novaj versioj de Android

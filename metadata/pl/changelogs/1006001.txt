@@ -1,0 +1,7 @@
+* Dodano przełączanie do RepoDetails, aby wyłączyć wszystkie lustera (#1696)
+
+* Wybór losowego lustra dla każdego pakietu/pobrania APK
+
+* Wszystkie pliki APK pobierają buforowane dane z repozytorium, a nie z lustra
+
+* Obsługuj Apache i ETags NGINX podczas sprawdzania, czy index jest aktualny (#1708)

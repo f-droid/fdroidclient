@@ -1,0 +1,3 @@
+* Große UI-Leistungsverbesserungen speziell bei aktiviertem Archiv
+
+* Absturzursachen behoben

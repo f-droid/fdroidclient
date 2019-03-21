@@ -1,0 +1,7 @@
+* rofum bætt við RepoDetails til að slökkva á öllum speglum (#1696)
+
+* val á handahófskenndum spegli fyrir hvert niðurhal pakka/APK
+
+* öll APK-niðurhöl í skyndiminni eftir hugbúnaðarsafni, ekki eftir spegli
+
+* meðhöndlun Apache og NGINX ETags þegar athugað er hvort atriðavísir sé nýr (#1708)

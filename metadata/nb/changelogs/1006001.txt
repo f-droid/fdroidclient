@@ -1,0 +1,7 @@
+* Brytere lagt til i pakkebrønnsdetaljer for å skru av ett eller alle speil (#1696)
+
+* Valg for tilfeldig speil for hver pakke/APK-nedlasting
+
+* Alle APK-nedlastinger hurtiglagret per pekkebrønn, ikke per speil
+
+* Håndtering av NGINX ETags når det sjekkes at indeksen er oppdatert (#1708)

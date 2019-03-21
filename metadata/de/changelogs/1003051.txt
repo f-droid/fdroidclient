@@ -1,0 +1,21 @@
+v1.3.1
+* Überarbeitung des Kerns der Tausch-Einrichtung
+
+* TLSv1.3-Unterstützung, falls es das Gerät tut
+
+v1.3
+* Verlässlichere Buttons und Status-Updates
+
+* Überholte Einstellungen inkl. neuer Steuerung der Datennutzung
+
+* Akkusparende Hintergrundarbeiten ab Android 5.0
+
+* Teilen-Menüeintrag für Repos
+
+* Absturzberichte in Einstellungen abschalten
+
+* Installationsverlaufsansicht bei aktivem Protokoll
+
+* Anklickbare Anti-Features-Liste, NoSourceSince ergänzt
+
+* Minimalanforderung Android 4.0

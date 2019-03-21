@@ -1,0 +1,9 @@
+* Daha güvenilir düğmeler ve durum güncellemeleri
+* Yeni veri kullanım kontrollerini içeren ayarların yenilenmesi
+* Android 5.0 ve daha yeni sürümlerde bilinçli pil arka plan işlemi
+* Depolar için paylaş menü öğesi
+* Ayarlar bölümündeki kilitlenme raporlarını kapatın
+* Günlüğe kaydetme etkinken Geçmiş görüntüleyiciyi yükleyin
+* Tıklanabilir Anti-Özellik listesi, NoSourceSince eklendi
+* Artık en düşük Android 4.0 destekleniyor
+* Özel beyaz etiketli F-Droid sürümleri için büyük geliştirmeler

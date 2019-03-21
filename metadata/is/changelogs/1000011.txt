@@ -12,7 +12,7 @@ F-Droid er komið í útgáfu 1.0!
 
 * studd uppsetning á  margmiðlunarskrám, OTA, ZIP, o.s.frv.
 
-* bættar varnir gegn eftirliti (HTTP etag, TLS, o.s.frv.)
+* bættar varnir gegn eftirliti (HTTP ETag, TLS, o.s.frv.)
 
 * uppfærsla að fullu í bakgrunni með Privileged Extension
 

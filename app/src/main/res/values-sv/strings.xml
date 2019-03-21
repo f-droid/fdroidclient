@@ -137,7 +137,6 @@
     <string name="swap_welcome">Välkommen till F-Droid!</string>
     <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
     <string name="app_name">F-Droid</string>
-
     <string name="unstable_updates">Instabila uppdateringar</string>
     <string name="unstable_updates_summary">Föreslå uppdateringar till instabila versioner</string>
     <string name="app_incompatible">Inkompatibel</string>
@@ -145,7 +144,6 @@
     <string name="about_source">Källkod</string>
     <string name="more">Mer</string>
     <string name="less">Mindre</string>
-
     <string name="back">Bakåt</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>
     <string name="invalid_url">Det här är inte en giltig webbadress.</string>
@@ -154,8 +152,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="status_download_unknown_size">Hämtar
 \n%2$s från
 \n%1$s</string>
@@ -165,26 +161,21 @@
     <string name="repo_url">Adress</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemstandard</string>
-
     <string name="wifi">Trådlöst</string>
     <string name="login_title">Autentisering krävs</string>
     <string name="login_name">Användarnamn</string>
     <string name="login_password">Lösenord</string>
     <string name="repo_edit_credentials">Ändra lösenord</string>
     <string name="repo_error_empty_username">Tomt användarnamn, användaruppgifterna har inte ändrats</string>
-
     <string name="about_license">Licens</string>
-
     <string name="menu_email">E-posta författare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
-
     <string name="useTor">Använd Tor</string>
     <string name="useTorSummary">Tvinga nerladdningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar app-detaljer</string>
     <string name="repo_added">Sparat paketförråd %1$s.</string>
     <string name="wifi_ap">Surfzon</string>
-
     <string name="category_Connectivity">Anslutbarhet</string>
     <string name="category_Graphics">Grafik</string>
     <string name="category_Money">Pengar</string>
@@ -198,13 +189,10 @@
         verkligen inte dina appar tillgängliga.
     </string>
     <string name="empty_can_update_app_list">Grattis!\nDina appar är uppdaterade.</string>
-
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="repo_provider">Förråd: %s</string>
-
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
-
     <string name="swap_nfc_title">Tryck för att byta</string>
     <string name="swap_nfc_description">Om din vän har F-Droid och NFC påslaget, lägg samman era enheter.</string>
     <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en wifi-surfzon.</string>
@@ -222,10 +210,10 @@
     <string name="swap_visible_bluetooth">Synlig via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ställer in Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Inte synlig via Bluetooth</string>
-    <string name="swap_visible_wifi">Synlig via wifi</string>
-    <string name="swap_setting_up_wifi">Ställer in wifi…</string>
-    <string name="swap_stopping_wifi">Stoppar wifi…</string>
-    <string name="swap_not_visible_wifi">Inte synlig via wifi</string>
+    <string name="swap_visible_wifi">Synlig via Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Ställer in Wi-Fi…</string>
+    <string name="swap_stopping_wifi">Stoppar Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Inte synlig via Wi-Fi</string>
     <string name="swap_wifi_device_name">Enhetsnamn</string>
     <string name="swap_cant_find_peers">Det går inte att hitta den du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
@@ -235,7 +223,6 @@
     <string name="swap_qr_isnt_for_swap">QR-koden du läst av ser inte ut som en utbytarkod.</string>
     <string name="loading">Öppnar…</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
-
     <string name="install_confirm">behöver åtkomst till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
     <string name="install_confirm_update_system">Vill du installera en uppdatering till denna inbyggda app\? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
@@ -253,11 +240,9 @@
     <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
     <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>
     <string name="download_error">Hämtning misslyckades!</string>
-
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tillhandahålls av %1$s.</string>
     <string name="downloading">Hämtar…</string>
-
     <string name="interval_never">Inga automatiska app-uppdateringar</string>
     <string name="interval_1h">Leta efter uppdateringar varje timme</string>
     <string name="interval_4h">Leta efter uppdateringar var fjärde timme</string>
@@ -265,67 +250,52 @@
     <string name="interval_1d">Leta efter uppdateringar dagligen</string>
     <string name="interval_1w">Leta efter uppdateringar varje vecka</string>
     <string name="interval_2w">Leta efter uppdateringar varannan vecka</string>
-
-    <string name="theme_light">Ljus</string>
-    <string name="theme_dark">Mörk</string>
+    <string name="theme_light">Ljust</string>
+    <string name="theme_dark">Mörkt</string>
     <string name="theme_night">Natt</string>
-
     <string name="crash_dialog_title">F-Droid har kraschat</string>
     <string name="crash_dialog_text">Ett oväntat fel tvingade appen att avslutas. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>
     <string name="swap_nearby">Utbyt nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
     <string name="update_auto_download_summary">Uppdateringar laddas automatiskt ner och du blir aviserad om att installera dem</string>
-
     <string name="download_pending">Väntar på att påbörja hämtning…</string>
-
     <string name="keep_hour">1 timme</string>
     <string name="keep_day">1 dag</string>
     <string name="keep_week">1 vecka</string>
     <string name="keep_month">1 månad</string>
     <string name="keep_year">1 år</string>
     <string name="keep_forever">För evigt</string>
-
     <string name="install_error_notify_title">Fel vid installation %s</string>
     <string name="uninstall_error_notify_title">Fel vid avinstallation av %s</string>
-
-
     <string name="installing">Installerar…</string>
     <string name="uninstalling">Avinstallera…</string>
-
     <string name="keep_install_history">Behåll installationshistorik</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
-    <string name="update_auto_install_summary">Ladda ner och installera uppdateringsappar i bakgrunden</string>
+    <string name="update_auto_install_summary">Hämta och uppdatera appar i bakgrunden, visar en avisering</string>
     <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till %1$s-utvecklarna!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
-
     <string name="repositories_summary">Lägg till ytterligare källor till appar</string>
     <string name="app_version_x_available">Version %1$s är tillgänglig</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Rekommenderad)</string>
     <string name="app_new">Ny</string>
-
     <string name="installed_apps__activity_title">Installerade appar</string>
     <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Uppdateringar ignorerade för version %1$s</string>
     <string name="clear_search">Rensa sök</string>
-
     <string name="main_menu__latest_apps">Senaste</string>
     <string name="main_menu__categories">Kategorier</string>
     <string name="main_menu__swap_nearby">I närheten</string>
-
     <string name="preference_category__my_apps">Mina appar</string>
     <string name="preference_manage_installed_apps">Hantera installerade appar</string>
-
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Visa %d</item>
         <item quantity="other">Visa alla %d</item>
     </plurals>
-
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_single_ready_to_install">Färdig att installera</string>
     <string name="notification_title_single_ready_to_install_update">Uppdatering färdig att installera</string>
@@ -345,47 +315,36 @@
     <string name="notification_action_update">Uppdatering</string>
     <string name="notification_action_cancel">Avbryt</string>
     <string name="notification_action_install">Installera</string>
-
     <string name="tts_category_name">Kategori %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Visa %1$d app i %2$s kategorin</item>
         <item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
     </plurals>
     <string name="app__install_downloaded_update">Uppdatera</string>
-
     <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
-
     <string name="updates__tts__download_app">Hämta</string>
     <string name="update_all">Uppdatera alla</string>
-
-    <string name="updates__hide_updateable_apps">Göm appar</string>
+    <string name="updates__hide_updateable_apps">Dölj appar</string>
     <string name="updates__show_updateable_apps">Visa appar</string>
-
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Ladda ner uppdatering för %1$d-appen.</item>
-	<item quantity="other">Ladda ner uppdatering för %1$d-apparna.</item>
-</plurals>
-
+        <item quantity="one">Ladda ner uppdatering för %1$d-appen.</item>
+        <item quantity="other">Ladda ner uppdatering för %1$d-apparna.</item>
+    </plurals>
     <string name="details_new_in_version">Nyheter i versionen %s</string>
-
     <string name="antifeatureswarning">Den här appen har funktioner som du kanske inte tycker om.</string>
     <string name="antifeatures">Anti-funktioner</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uppdaterades för %1$d dag sedan</item>
-	<item quantity="other">Uppdaterades för %1$d dagar sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterades för %1$d dag sedan</item>
+        <item quantity="other">Uppdaterades för %1$d dagar sedan</item>
+    </plurals>
     <string name="app_list__name__successfully_installed">%1$s installerad</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer i närheten</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"i närheten\".</string>
-
+    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"I närheten\".</string>
     <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittade</string>
     <string name="latest__empty_state__never_updated">När din lista med appar har uppdaterats bör de senaste apparna visas här</string>
     <string name="latest__empty_state__no_enabled_repos">När du aktiverar ett förråd och låter uppdatera det bör de senaste apparna visas här</string>
-
     <string name="categories__empty_state__no_categories">Inga kategorier att visa</string>
-
     <string name="menu_video">Video</string>
     <string name="details_last_updated_today">Uppdaterades idag</string>
     <string name="app__tts__cancel_download">Avbryt hämtning</string>
@@ -404,41 +363,36 @@
         <item quantity="other">%1$d appar installerade</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uppdaterades för %1$d vecka sedan</item>
-	<item quantity="other">Uppdaterades för %1$d veckor sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterades för %1$d vecka sedan</item>
+        <item quantity="other">Uppdaterades för %1$d veckor sedan</item>
+    </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uppdaterades för %1$d månad sedan</item>
-	<item quantity="other">Uppdaterades för %1$d månader sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterades för %1$d månad sedan</item>
+        <item quantity="other">Uppdaterades för %1$d månader sedan</item>
+    </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uppdaterades för %1$d år sedan</item>
-	<item quantity="other">Uppdaterades för %1$d år sedan</item>
-</plurals>
+        <item quantity="one">Uppdaterades för %1$d år sedan</item>
+        <item quantity="other">Uppdaterades för %1$d år sedan</item>
+    </plurals>
     <string name="by_author_format">av %s</string>
     <string name="download_404">Den begärda filen hittades inte.</string>
     <string name="force_old_index">Tvinga gammalt indexformat</string>
     <string name="force_old_index_summary">Om det finns fel eller kompatibilitetsproblem, använd XML-appindexet</string>
     <string name="app_installed_media">Fil installerad till %s</string>
     <string name="app_permission_storage">F-Droid behöver lagringstillstånd för att installera detta till lagring. Vänligen tillåt det på nästa skärm för att fortsätta med installationen.</string>
-
     <string name="app_list_download_ready">Hämtat, redo att installera</string>
-
     <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">Olika signaturer till installerad version</string>
     <string name="app_details__no_versions__show_incompat_versions">För att visa inkompatibla versioner här ändå, aktivera inställningen \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Inga versioner med kompatibel signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Inga versioner är kompatibla med enheten</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
-
     <string name="app_list__dismiss_app_update">Uppdatering ignorerad</string>
     <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorerad</string>
     <string name="app_list__dismiss_downloading_app">Hämtning avbruten</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi hittade en sårbarhet hos %1$s. Du rekommenderas avinstallera denna app omedelbart.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi hittade en sårbarhet hos %1$s. Du rekommenderas uppdatera till den nyaste versionen omedelbart.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorera</string>
-
     <string name="privacy">Integritet</string>
     <string name="preventScreenshots_title">Förhindra skärmdumpar</string>
     <string name="panic_app_unknown_app">en okänd app</string>
@@ -447,32 +401,25 @@
     <string name="panic_app_dialog_title">Bekräfta Panikapp</string>
     <string name="panic_app_dialog_message">Är du säker på att du vill tillåta %1$s att utlösa destruktiva panikknappsåtgärder?</string>
     <string name="allow">Tillåt</string>
-
     <string name="panic_settings">Panikknappsinställningar</string>
     <string name="panic_settings_summary">Åtrgärder som ska ske i nödfall</string>
     <string name="panic_exit_title">Avsluta appen</string>
     <string name="panic_exit_summary">Appen kommer att stängas</string>
     <string name="panic_destructive_actions">Destruktiva Åtgärder</string>
-    <string name="panic_hide_title">Göm %s</string>
-    <string name="panic_hide_summary">Appen kommer att gömmas</string>
-
+    <string name="panic_hide_title">Dölj %s</string>
+    <string name="panic_hide_summary">Appen kommer att dölja sig själv</string>
     <string name="preventScreenshots_summary">Förhindrar skärmdumpar och döljer appinnehåll från senaste skärmar-fönstret</string>
-
     <string name="panic_app_setting_title">Panikknappsapp</string>
     <string name="sort_search">Sortera sökning</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="panic_hide_warning_title">Kom ihåg hur man återställer</string>
     <string name="panic_hide_warning_message">I en paniksituation kommer detta ta bort %1$s från startaren. Att bara skriva \"%2$d\" i fejk- %3$s appen kan återställa det.</string>
-
     <string name="hiding_calculator">Kalkylator</string>
-    <string name="hiding_dialog_title">Göm %s Nu</string>
+    <string name="hiding_dialog_title">Dölj %s Nu</string>
     <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva \"%2$d\" i fejkappen %3$s kan återställa det.</string>
     <string name="hiding_dialog_warning">Varning: Alla app-genvägar på hemskärmen kommer också att tas bort och kommer att behöva läggas till igen manuellt.</string>
-    <string name="hide_on_long_search_press_title">Göm med sökknappen</string>
+    <string name="hide_on_long_search_press_title">Dölj med sökknappen</string>
     <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att gömma appen</string>
-
     <string name="over_wifi">Över Wi-Fi</string>
     <string name="over_data">Över mobildata</string>
     <string name="over_network_always_summary">Använd alltid den här anslutningen när den är tillgänglig</string>
@@ -486,19 +433,16 @@
     <string name="repo_exists_add_mirror">Detta är en kopia av %1$s, lägg till det som en spegel?</string>
     <string name="antidisabledalgorithmlist">Denna app har en svag säkerhetssignatur</string>
     <string name="antiknownvulnlist">Denna app innehåller en känd säkerhetsårbarhet</string>
-
     <string name="show_anti_feature_apps">Inkludera mot-funktionsappar</string>
     <string name="show_anti_feature_apps_on">Vis appar som kräver mot-funktioner</string>
     <string name="force_touch_apps">Inkludera pekskärmsappar</string>
     <string name="force_touch_apps_on">Visa appar som kräver pekskärm oavsett hårdvarustöd</string>
-
     <string name="repo_official_mirrors">Officiella speglar</string>
     <string name="repo_user_mirrors">Användarspeglar</string>
     <string name="use_bluetooth">Använd Bluetooth</string>
     <string name="swap_toast_invalid_url">Ogiltig URL för växling: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi-accesspunkt aktiverad</string>
     <string name="swap_toast_could_not_enable_hotspot">Kunde inte aktivera Wi-Fi-accesspunkt!</string>
-
     <string name="warning_scaning_qr_code">Din kamera verkar inte ha autofokus. Det kan bli svårt att skanna koden.</string>
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
@@ -513,19 +457,16 @@
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
     <string name="allow_push_requests">Tillåt filförråd att installera/avinstallera appar</string>
     <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Mobildata/Wi-Fi-inställningar</string>
-
     <string name="send_installed_apps">Dela installerade appar</string>
     <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>
     <string name="menu_open">Öppna</string>
     <string name="antinosourcesince">Källkoden är inte längre tillgänglig, inga uppdateringar möjliga.</string>
-
     <string name="allow_push_requests_summary">Förråd-metadata kan innehålla push-förfrågningar för att installera eller avinstallera appar</string>
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Föreslagna</string>
     <string name="app_size">Storlek: %1$s</string>
-
     <string name="menu_downgrade">Nedgradera</string>
-    <string name="scan_removable_storage_title">Skanna borttagningsbart lagringsutrymme</string>
+    <string name="scan_removable_storage_title">Skanna flyttbar lagring</string>
     <string name="scan_removable_storage_toast">Skannar %s…</string>
     <string name="swap_toast_using_path">Använder %1$s</string>
     <string name="scan_removable_storage_summary">Leta efter paketförråd på flyttbar lagring som SD-kort och USB-minnen</string>

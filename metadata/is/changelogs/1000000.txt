@@ -1,7 +1,7 @@
-* Stuðningur við uppsetningu á skrám með margmiðlunargögnum, OTA, ZIP, o.s.frv.
+* stuðningur við uppsetningu á skrám með margmiðlunargögnum, OTA, ZIP, o.s.frv.
 
-* Fullur stuðningur við APK-pakka sem undirritaðir eru með mörgum mismunandi dulritunarlyklum
+* fullur stuðningur við APK-pakka sem undirritaðir eru með mörgum mismunandi dulritunarlyklum
 
-* Ný þýðing á tíbetsku
+* ný þýðing á tíbetsku
 
-* Tengd forrit og flokkar eru fjarlægð eftir að hugbúnaðarsafn er gert óvirkt
+* tengd forrit og flokkar eru fjarlægð eftir að slökkt er á hugbúnaðarsafni

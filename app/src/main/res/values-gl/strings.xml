@@ -272,7 +272,7 @@
     <string name="update_auto_download">Obter anovacións automáticamente</string>
     <string name="update_auto_download_summary">As anovacións descárganse automaticamente e será notificado para as instalar</string>
     <string name="update_auto_install">Instalar as anovacións automaticamente</string>
-    <string name="update_auto_install_summary">Baixar e instalar anovacións en segundo plano</string>
+    <string name="update_auto_install_summary">Baixar e actualizar aplicacións en segundo plano, mostrando notificación</string>
     <string name="system_installer">Extensión privilexiada</string>
     <string name="local_repo_name_summary">O título anunciado do seu repositorio local: %s</string>
     <string name="login_title">Requírese autenticación</string>
@@ -483,7 +483,7 @@
     <string name="antinosourcesince">O código fonte xá non está disponíbel e non é posíbel a actualización.</string>
     <string name="share_repository">Compartir Repositorio</string>
     <string name="nearby_splash__read_external_storage">As tarxetas SD pódense usar para trocar!</string>
-    <string name="nearby_splash__request_permission">Experimente</string>
+    <string name="nearby_splash__request_permission">Probe</string>
     <string name="not_visible_nearby">Proximidade non actividada</string>
     <string name="not_visible_nearby_description">Antes de trocar con dispositivos próximos, torne o dispositivo visíbel.</string>
     <string name="swap_toast_using_path">Usando %1$s</string>

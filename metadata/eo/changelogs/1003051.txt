@@ -1,0 +1,13 @@
+1.3.1:
+* tute refarita kerno de funkcio “proksime”
+* subteno por TLS 1.3 (se disponebla per aparato)
+
+1.3:
+* pli fidindaj butonoj kaj aktualigoj de statoj
+* gravaj ŝanĝoj en agordoj, inkluzivante agordon pri uzo de datum-konekto
+* pil-konscia funkciado en fono ĉe Android ≥ 5.0
+* menu-elemento por kunhavigi deponejojn
+* eblo malŝalti raportojn pri paneoj
+* (malnepre) spuri historion de instaloj
+* klakebla listo de fiebloj, nova fieblo: “fontkodo nedisponebla ekde”
+* minimuma Android versio: 4.0

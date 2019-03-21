@@ -1,0 +1,18 @@
+F-Droid är en installerbar katalog över libre programvaror
+för Android. F-Droid-klientappen gör det det lätt att
+bläddra, installera och hålla reda på uppdateringar på enheten.
+
+Den ansluter till alla F-Droid kompatibla förråd. Standard förrådet
+är värd på f-droid.org som innehåller endast bona fide libre programvaror.
+
+Android själv är öppen i den meningen att du är fri att installera APK:er
+från var du vill, men det finns många goda skäl att använda
+F-Droid som din libre programhanterare:
+
+* Få meddelande när uppdateringar är tillgängliga
+* Hämta och installera uppdateringar automatiskt
+* Håll koll på äldre och betaversioner
+* Filtrera bort appar som inte är kompatibla med enheten
+* Hitta appar via kategorier och sökbara beskrivningar
+* Tillgång associerade webbadresser för donationer, källkod o.s.v.
+* Håll dig säker genom att kontrollera förrådindex-signaturer och APK-hashar

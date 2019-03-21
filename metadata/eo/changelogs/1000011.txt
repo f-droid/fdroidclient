@@ -1,0 +1,12 @@
+F-Droid 1.0!
+
+Tiu ĉi ĝisdatigo liveras multajn ŝanĝojn:
+* tute refarita laborfluo pri ĝisdatigi apojn
+* tute tradukeblaj priskriboj
+* sekcio “kio estas nova” montranta ŝanĝoj en nova versio
+* ekrankopioj k grafikaĵoj
+* subteno por instali aŭdvidaĵojn, OTA, ZIP k aliajn dosierojn
+* pli bona protekto kontraŭ spurado (HTTP ETag, TLS, ktp.)
+* plene fonajn ĝisdatigojn per la privilegia aldonaĵo
+* donacoj por programistoj de aplikaĵoj
+* pli rapida ĝisdatigado de indekso

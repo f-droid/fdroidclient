@@ -17,7 +17,7 @@
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
     <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
     <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>
-    <string name="update_auto_install_summary">Спампоўваць і ўсталёўваць абнаўленні ў фоне</string>
+    <string name="update_auto_install_summary">Спампоўваць і абнаўляць ў фоне, паказваючы апавяшчэнне</string>
     <string name="notify">Паказаць даступныя абнаўленні</string>
     <string name="notify_on">Паказваць апавяшчэнні аб даступных абнаўленнях</string>
     <string name="system_installer">Прывілеяванае пашырэнне</string>
@@ -472,7 +472,7 @@
     <string name="scan_removable_storage_summary">Шукаць рэпазіторыі пакункаў на рухомых носьбітах кшталту SD-картак і USB-назапашвальнікаў</string>
     <string name="main_menu__updates">Абнаўленні</string>
     <string name="nearby_splash__read_external_storage">SD-карткі могуць выкарыстоўвацца для абмену!</string>
-    <string name="nearby_splash__request_permission">Паспрабуйце гэта</string>
+    <string name="nearby_splash__request_permission">Паспытай</string>
     <string name="not_visible_nearby">Побач не ўключаны</string>
     <string name="not_visible_nearby_description">Перад абменам з бліжэйшымі прыладамі, зрабіце вашую прыладу бачнай.</string>
     <string name="swap_toast_using_path">Выкарыстанне %1$s</string>

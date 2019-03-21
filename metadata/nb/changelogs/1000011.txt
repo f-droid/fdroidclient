@@ -1,0 +1,21 @@
+F-Droid er 1.0!
+
+Mange store endringer:
+
+* Helt overhalt arbeidsflyt for oppgradering av programmer
+
+* Helt oversettbare programsammendrag og beskrivelser
+
+* "Nyheter" viser endringer i nåværende utgave
+
+* Skjermavbildninger og funksjonsgrafikk
+
+* Støtte for installasjonsmedia, OTA, ZIP, osv. -filer.
+
+* Forbedret beskyttelse mot sporing (HTTP ETag, TLS, osv.)
+
+* Oppgraderinger helt i bakgrunnen med priviligert tillegg
+
+* Donasjoner til utviklere framhevet
+
+* Mye raskere indeksoppdateringer

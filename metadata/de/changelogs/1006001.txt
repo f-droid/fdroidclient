@@ -1,0 +1,7 @@
+* Schalter zu Paketquellendetails hinzugefügt, um Spiegel einzeln oder komplett abzuschalten (#1696)
+
+* Zufällige Auswahl eines Spiegels für jeden Paket-/APK-Download
+
+* Alle APK-Downloads werden pro Paketquelle, nicht pro Spiegel zwischengespeichert
+
+* Verarbeitung von Apache und NGINX ETags bei Prüfung des Index auf Aktualität (#1708)

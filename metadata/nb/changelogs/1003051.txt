@@ -1,0 +1,21 @@
+v1.3.1
+* Stor fundamentsoverhaling for "I nærheten/Bytting"
+
+* TLSv1.3-støtte, hvis enhetsstøtten er der
+
+v1.3
+* Mer pålitelige knapper og statusoppdateringer
+
+* Innstillinger forbedret, nye databrukkontroller
+
+* Bakgrunnsoperasjoner tar hensyn til batteritilstand på Android 
+
+* Deling av menyelement for pakkebrønner
+
+* Kræsjrapporter av i innstillinger
+
+* Installasjonshistorikkvisning ved påskrudd logging
+
+* Klikkbar antifunksjonsliste, ny NoSourceSince
+
+* Ingen støtte for eldre enn Android 4.0

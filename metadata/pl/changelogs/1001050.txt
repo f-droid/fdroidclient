@@ -1,0 +1,7 @@
+* Obsługa oficjalnych serwerów lustrzanych dla dowolnego repo, z automatyczną selekcją w zależności od dostępności 
+ 
+* Wiele polskich interfejsów, a także stabilność i poprawki błędów 
+ 
+* Nowe preferencje prywatności: Zapobiegaj zrzutom ekranu; exit on panic 
+ 
+* Nowe języki: koreański (ko) i wietnamski (vi)

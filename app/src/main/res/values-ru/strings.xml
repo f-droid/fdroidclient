@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Использовать защищенное HTTPS:// соединение для локального репозитория</string>
     <string name="app_details">Описание приложения</string>
     <string name="no_such_app">Приложение не найдено.</string>
-    <string name="about_title">О F-Droid</string>
+    <string name="about_title">Об F-Droid</string>
     <string name="about_site">Сайт</string>
     <string name="about_version">Версия</string>
     <string name="app_installed">Установлено</string>
@@ -66,7 +66,7 @@
     <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
     <string name="search_hint">Поиск приложений</string>
     <string name="appcompatibility">Совместимость приложений</string>
-    <string name="show_incompat_versions">Включить несовместимые версии</string>
+    <string name="show_incompat_versions">Включая несовместимые версии</string>
     <string name="show_incompat_versions_on">Показать версии приложений, несовместимые с устройством</string>
     <string name="local_repo">Локальный репозиторий</string>
     <string name="local_repo_running">F-Droid готов к обмену</string>
@@ -144,7 +144,6 @@
     <string name="interval_1d">Проверять обновления ежедневно</string>
     <string name="interval_1w">Проверять обновления еженедельно</string>
     <string name="interval_2w">Проверять обновления каждые 2 недели</string>
-
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Темная</string>
     <string name="unstable_updates">Нестабильные обновления</string>
@@ -156,7 +155,6 @@
     <string name="category_Sports_Health">Спорт и здоровье</string>
     <string name="category_Time">Время</string>
     <string name="app_name">F-Droid</string>
-
     <string name="update_notification_title">Обновление репозиториев</string>
     <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
     <string name="install_error_unknown">Не удалось установить из-за неизвестной ошибки</string>
@@ -164,19 +162,16 @@
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
     <string name="pref_language_default">Системный</string>
-
     <string name="theme_night">Ночная</string>
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
 \nНа вашем устройстве есть приложения, но они недоступны из F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
     <string name="empty_can_update_app_list">Поздравляем!\nВаши приложения обновлены.</string>
-
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместимо</string>
     <string name="more">Детали</string>
     <string name="less">Меньше</string>
-
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Неверный отпечаток ключа</string>
     <string name="invalid_url">URL некорректен.</string>
@@ -184,15 +179,12 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="touch_to_configure_local_repo">Коснитесь чтобы посмотреть подробную информацию и позволить другим пользователям скачивать ваши приложения.</string>
     <string name="status_download_unknown_size">Загрузка
 \n%2$s из
 \n%1$s</string>
     <string name="repo_added">Сохранен репозиторий пакетов %1$s.</string>
     <string name="about_license">Лицензия</string>
-
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>
     <string name="category_Connectivity">Связь</string>
     <string name="login_title">Требуется аутентификация</string>
@@ -200,22 +192,16 @@
     <string name="login_password">Пароль</string>
     <string name="repo_edit_credentials">Изменить пароль</string>
     <string name="repo_error_empty_username">Не задано имя пользователя, учетные данные не изменены</string>
-
     <string name="repo_searching_address">Поиск репозитория пакетов в
 \n%1$s</string>
     <string name="wifi_ap">Точка доступа</string>
-
     <string name="category_Theming">Темы</string>
     <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Создайте отчет об ошибке!</string>
     <string name="downloading">Загрузка…</string>
-
     <string name="menu_email">Написать автору</string>
     <string name="antinonfreeassetslist">Это приложение включает в себя ресурсы с закрытым исходным кодом</string>
-
     <string name="category_Writing">Работа с текстом</string>
-
     <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
-
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
     <string name="swap_scan_qr">Сканировать QR-код</string>
@@ -237,7 +223,6 @@
     <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
     <string name="uninstall_confirm">Хотите удалить это приложение?</string>
     <string name="download_error">Загрузка не удалась!</string>
-
     <string name="perms_new_perm_prefix">Новые:</string>
     <string name="crash_dialog_title">Произошел сбой F-Droid</string>
     <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с
@@ -247,7 +232,6 @@
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Требуется Orbot</string>
     <string name="repo_provider">Репозиторий: %s</string>
-
     <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включен NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите своему другу присоединиться к вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
@@ -273,29 +257,22 @@
     <string name="swap_confirm">Подтвердить обмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>
     <string name="swap_connection_misc_error">При подключении к устройству произошла ошибка, невозможно провести с ним обмен!</string>
-
     <string name="perms_description_app">Предоставлено %1$s.</string>
     <string name="update_auto_download">Получать обновления автоматически</string>
     <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне и выводить уведомление для их
         установки
     </string>
-
     <string name="download_pending">Ожидание начала загрузки…</string>
-
     <string name="keep_hour">1 час</string>
     <string name="keep_day">1 день</string>
     <string name="keep_week">1 неделя</string>
     <string name="keep_month">1 месяц</string>
     <string name="keep_year">1 год</string>
     <string name="keep_forever">Всегда</string>
-
     <string name="install_error_notify_title">Ошибка установки %s</string>
     <string name="uninstall_error_notify_title">Ошибка удаления %s</string>
-
-
     <string name="installing">Установка…</string>
     <string name="uninstalling">Удаление…</string>
-
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     <string name="keep_install_history">Хранить историю установок</string>
@@ -304,24 +281,17 @@
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
     <string name="update_all">Обновить всё</string>
-
     <string name="updates__hide_updateable_apps">Скрыть приложения</string>
     <string name="updates__show_updateable_apps">Показать приложения</string>
-
     <string name="clear_search">Очистить поиск</string>
-
     <string name="repositories_summary">Добавить дополнительные источники приложений</string>
     <string name="main_menu__categories">Категории</string>
     <string name="preference_manage_installed_apps">Управление установленными приложениями</string>
-
-
     <string name="antifeatureswarning">У этого приложения есть функции, которые могут вам не понравиться.</string>
     <string name="details_new_in_version">Новое в версии %s</string>
-
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
     <string name="main_menu__swap_nearby">Рядом</string>
-
     <string name="nearby_splash__find_people_button">Найти людей рядом</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
@@ -329,23 +299,18 @@
     <string name="notification_title_summary_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_action_cancel">Отмена</string>
     <string name="notification_action_install">Установить</string>
-
     <string name="tts_category_name">Категория %1$s</string>
-
     <string name="app_version_x_available">Доступна версия %1$s</string>
     <string name="app_version_x_installed">Версия %1$s</string>
     <string name="app_new">Новые</string>
     <string name="app_list__name__successfully_installed">%1$s установлено</string>
-
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Посмотреть %d приложение</item>
         <item quantity="few">Посмотреть %d приложения</item>
         <item quantity="many">Посмотреть %d приложений</item>
         <item quantity="other">Посмотреть %d приложений</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Получайте приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
@@ -365,17 +330,14 @@
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
     <string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
-
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендуемая)</string>
     <string name="app__install_downloaded_update">Обновить</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Скачать обновления для %1$d приложения.</item>
         <item quantity="few">Скачать обновления для %1$d приложений.</item>
         <item quantity="many">Скачать обновления для %1$d приложений.</item>
         <item quantity="other">Скачать обновления для %1$d приложений.</item>
     </plurals>
-
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
     <string name="installed_app__updates_ignored">Игнорируемые обновления</string>
@@ -383,8 +345,7 @@
     <string name="main_menu__latest_apps">Новинки</string>
     <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые последние приложения</string>
     <string name="latest__empty_state__no_enabled_repos">Как только вы включите репозиторий и разрешите ему обновляться, тут появятся самые последние приложения</string>
-
-    <string name="antifeatures">Сомнительный функционал</string>
+    <string name="antifeatures">Неприятные особенности</string>
     <string name="notification_title_summary_installing">Установка</string>
     <string name="notification_title_summary_installed">Успешно установлено</string>
     <string name="notification_title_summary_install_error">Установка не удалась</string>
@@ -394,10 +355,8 @@
         <item quantity="many">Посмотреть %1$d приложений в категории %2$s</item>
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
     </plurals>
-
     <string name="latest__empty_state__no_recent_apps">Не найдено недавно обновленных приложений</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s чтобы передавать приложения.</string>
-
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Отменить скачивание</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
@@ -442,33 +401,25 @@
     <string name="force_old_index">Старый формат индекса (принудительно)</string>
     <string name="force_old_index_summary">Использовать индекс приложений XML в случае проблем с совместимостью</string>
     <string name="app_list_download_ready">Загружено, готово к установке</string>
-
     <string name="status_inserting_x_apps">Сохранение данных приложений (%1$d/%2$d) из %3$s</string>
     <string name="app_installed_media">Файл установлен в %s</string>
     <string name="app_permission_storage">Для установки в хранилище F-Droid нуждается в соответствующем разрешении. Его можно предоставить на следующем экране.</string>
-
     <string name="app_details__incompatible_mismatched_signature">У установленной версии другая подпись</string>
     <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии включите параметр \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Нет версий с совместимой подписью</string>
     <string name="app_details__no_versions__none_compatible_with_device">Нет версий, совместимых с устройством</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Установленная версия несовместима со всеми доступными версиями. Удаление приложения позволит вам установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников.</string>
-
     <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимость игнорируется</string>
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно удалить это приложение.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновить приложение.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>
-
     <string name="privacy">Приватность</string>
     <string name="preventScreenshots_title">Запретить скриншоты</string>
     <string name="preventScreenshots_summary">Блокирует скриншоты и скрывает содержимое из последних приложений</string>
-
     <string name="sort_search">Сортировка поиска</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="panic_app_setting_title">Выбор тревожной кнопки</string>
     <string name="panic_app_unknown_app">неизвестное приложение</string>
     <string name="panic_app_setting_summary">Приложение не установлено</string>
@@ -476,7 +427,6 @@
     <string name="panic_app_dialog_title">Подтвердить тревожную кнопку</string>
     <string name="panic_app_dialog_message">Вы уверены, что хотите разрешить %1$s запускать действия тревожной кнопки?</string>
     <string name="allow">Разрешить</string>
-
     <string name="panic_settings">Настройка тревожной кнопки</string>
     <string name="panic_settings_summary">Меры, которые необходимо принять в экстренных случаях</string>
     <string name="panic_exit_title">Выйти из приложения</string>
@@ -486,29 +436,25 @@
     <string name="panic_hide_summary">Приложение скроет себя</string>
     <string name="panic_hide_warning_title">Запомните как восстановить</string>
     <string name="panic_hide_warning_message">Нажатие тревожной кнопки удалит %1$s из лаунчера. Восстановление возможно только после ввода \"%2$d\" в фейковом приложении %3$s.</string>
-
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Скрыть %s сейчас</string>
     <string name="hiding_dialog_message">Вы уверены, что хотите удалить %1$s из лаунчера? Восстановление возможно только после ввода \"%2$d\" в фейковом приложении %3$s.</string>
     <string name="hiding_dialog_warning">Предупреждение: все ярлыки приложений на главном экране также будут удалены и должны быть добавлены вручную.</string>
     <string name="hide_on_long_search_press_title">Скрыть с помощью кнопки поиска</string>
     <string name="hide_on_long_search_press_summary">Длительное нажатие кнопки поиска скроет приложение</string>
-
     <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
-    <string name="show_anti_feature_apps">Включить приложения с сомнительным функционалом</string>
-    <string name="show_anti_feature_apps_on">Показывать приложения с функциями, которые могут вам не понравиться</string>
+    <string name="show_anti_feature_apps">Включая приложения с неприятными особенностями</string>
+    <string name="show_anti_feature_apps_on">Показывать приложения обладающие неприятными особенностями</string>
     <string name="force_touch_apps">Включить приложения, требущие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
-
     <string name="repo_official_mirrors">Официальные зеркала</string>
     <string name="repo_user_mirrors">Пользовательские зеркала</string>
     <string name="use_bluetooth">Использовать Bluetooth</string>
     <string name="swap_toast_invalid_url">Недопустимый URL для замены: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Точка доступа Wi-Fi включена</string>
     <string name="swap_toast_could_not_enable_hotspot">Не удалось включить точку доступа Wi-Fi!</string>
-
     <string name="repo_exists_add_fingerprint">%1$s уже настроен, это действие добавит новую информацию о ключе.</string>
     <string name="repo_exists_enable">%1$s уже настроен, подтвердите, что вы хотите снова его включить.</string>
     <string name="repo_exists_and_enabled">%1$s уже настроен и включен.</string>
@@ -518,7 +464,6 @@
     <string name="over_network_always_summary">Всегда использовать это соединение, если оно доступно</string>
     <string name="over_network_on_demand_summary">Использовать это соединение только для загрузки</string>
     <string name="antiknownvulnlist">Это приложение содержит известную уязвимость безопасности</string>
-
     <string name="over_network_never_summary">Никогда не загружать, используя это соединение</string>
     <string name="antidisabledalgorithmlist">Это приложение имеет слабую подпись безопасности</string>
     <string name="hide_all_notifications">Скрыть все уведомления</string>
@@ -533,18 +478,15 @@
     <string name="allow_push_requests">Разрешить репозиториям устанавливать и удалять приложения</string>
     <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на установку или удаление приложений</string>
     <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
-
     <string name="send_install_history">Отправить историю установок</string>
     <string name="send_history_csv">%s история установок как CSV-файл</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
-
     <string name="send_installed_apps">Поделиться установленными приложениями</string>
     <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
     <string name="menu_open">Открыть</string>
     <string name="about_forum">Форум поддержки</string>
     <string name="app_suggested">На выбор</string>
     <string name="app_size">Размер: %1$s</string>
-
     <string name="menu_downgrade">Ранняя версия</string>
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>

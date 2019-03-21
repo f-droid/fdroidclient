@@ -153,7 +153,8 @@
     <string name="empty_installed_app_list">Geen apps geïnstalleerd. 
 \n 
 \nEr bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je bronnen moet bijwerken, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
-    <string name="empty_can_update_app_list">Al je apps zijn up-to-date!</string>
+    <string name="empty_can_update_app_list">Gefeliciteerd!
+\nAlle apps zijn up-to-date.</string>
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon niet verwijderen door een onbekende fout</string>
     <string name="swap_nfc_title">Raak aan om uit te wisselen</string>
@@ -277,7 +278,7 @@
     <string name="keep_year">1 jaar</string>
     <string name="keep_forever">Voor altijd</string>
     <string name="update_auto_install">Installeer updates automatisch</string>
-    <string name="update_auto_install_summary">Download en installeer updates in de achtergrond</string>
+    <string name="update_auto_install_summary">Download en werk apps bij in de achtergrond, met een melding</string>
     <string name="keep_install_history">Installatiegeschiedenis bewaren</string>
     <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in een privéopslagplaats</string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
@@ -375,7 +376,7 @@
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">%1$d maand geleden bijgewerkt</item>
-        <item quantity="other">%1$d maand geleden bijgewerkt</item>
+        <item quantity="other">%1$d maanden geleden bijgewerkt</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">%1$d jaar geleden bijgewerkt</item>
@@ -480,7 +481,7 @@
     <string name="main_menu__updates">Updates</string>
     <string name="nearby_splash__read_external_storage">SD-kaarten kunnen gebruikt worden om te swappen!</string>
     <string name="not_visible_nearby_description">Maak je apparaat eerst zichtbaar vooraleer uit te wisselen met apparaten in de buurt.</string>
-    <string name="nearby_splash__request_permission">Probeer het</string>
+    <string name="nearby_splash__request_permission">Proberen</string>
     <string name="not_visible_nearby">Dichtbij niet ingeschakeld</string>
     <string name="swap_toast_using_path">Maakt gebruik van %1$s</string>
     <string name="swap_toast_not_removable_storage">De gemaakte keuze kwam niet overeen met een verwijderbaar medium, probeer het opnieuw!</string>

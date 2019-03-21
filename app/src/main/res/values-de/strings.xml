@@ -138,7 +138,7 @@
     <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander
         halten.
     </string>
-    <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN-Netzwerk wie Ihr Freund verbinden</string>
+    <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN wie Ihr Freund verbinden</string>
     <string name="swap">Apps tauschen</string>
     <string name="swap_no_wifi_network">Noch kein Netzwerk</string>
     <string name="swap_view_available_networks">Antippen, um verfügbare Netzwerke zu öffnen</string>
@@ -490,7 +490,7 @@
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
     <string name="nearby_splash__read_external_storage">SD-Karten können zum Tausch verwendet werden!</string>
-    <string name="nearby_splash__request_permission">Versuchen Sie es</string>
+    <string name="nearby_splash__request_permission">Ausprobieren</string>
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte nicht zu irgendwelchen Wechselspeichern, versuchen Sie es noch einmal!</string>
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>

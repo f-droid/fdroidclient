@@ -1,0 +1,15 @@
+* Automatisk nedskjæring eller sletting av hurtiglager ved lite lagringsplass
+
+* Forbedret ytelse på enheter med lite minne
+
+* Alle nedlastinger respekterer "Kun på Wi-Fi"
+
+* Redusert minnebruk ved lite minne
+
+* Skann QR-koder eller klikk lenker for alle nye egendefinerte speil forpakkebrønner
+
+* Mange feilrettinger og forbedringer av nærheten/bytting
+
+* Én gjentagende oppgraderingsmerknad fikset (#1271)
+
+* F-Droid gjenkjenner nattlige nettadresser fra GitLab

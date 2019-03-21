@@ -1,0 +1,13 @@
+* Storoverhaling av versjonsliste i programdetaljer. Mange andre grensesnittsforbedringer, fra ny bidragsyter, @wsdfhjxc
+
+* Fiks for tastatur/styrekorsnavigasjon, fra ny bidragsyter @doeffinger
+
+* Vis "Åpne"-knapp når media er installert og visbart
+
+* Ny "Del"-knapp i "Installerte programmer" for eksport av CSV-liste
+
+* Ny klikkbar liste over APK-er i Byttings-HTML-indeksside
+
+* Opportunistisk forsøk på nedlasting av indeks fra speil
+
+*Fiks "Send F-Droid via Blåtann" på nye Android-versjoner

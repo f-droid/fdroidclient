@@ -1,0 +1,2 @@
+* riparis eraron, kiu malebligis montri tradukojn ĉe Android 7.0 aŭ pli nova
+* riparis paneon dum ĝisdatigi datumbazon (1.0-alpha3 → 1.0-alpha4) (#1181)

@@ -1,0 +1,12 @@
+* Implizierte READ_EXTERNAL_STORAGE-Berechtigung verarbeiten, die eine
+  Abfrage bei Installationen mit der Rechteerweiterung auslöst (#1702)
+
+* Indexdaten bereinigt, um die Servergefährdung zu reduzieren
+
+* "Read Timeout" ruft bei langsamem Einlesen Spiegel auf
+
+* Fehlende Symbole bei jenen, die kein WLAN nutzen, repariert (#1592)
+
+* Unterschiedliche Titel für Updates in den Einstellungen und auf dem Tab aus Übersetzungsgründen
+
+* Korrekturen an der Oberfläche von @ConnyDuck (#1636, #1618)

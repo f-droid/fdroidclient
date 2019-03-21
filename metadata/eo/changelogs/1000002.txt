@@ -1,0 +1,4 @@
+* preventi uzi HTTP ETag por spuri
+* plibonigita ekrano de ekrankopioj
+* ĝuste forviŝado de kaŝmemoro (portempaj dosieroj)
+* plibonigoj al malhela reĝimo

@@ -1,0 +1,4 @@
+* aldonis gestojn por la langeto de ĝisdatigoj
+* montri avertojn kun agoj pri konataj sekurecaj vundeblecoj sur la langeto de ĝisdatigoj 
+* ĝisdatigis tradukojn
+* riparoj pri malhela etoso

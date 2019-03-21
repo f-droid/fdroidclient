@@ -2,6 +2,6 @@
 
 * mörg atriði viðmóts fínpússuð, auk bætts stöðugleika og villuleiðréttinga
 
-* nýjar gagnaverndarstillingar: gera skjámyndiróvirkar; hætta við í neyð
+* nýjar gagnaverndarstillingar: gera skjámyndir óvirkar; hætta við í neyð
 
 * ný tungumál: Kóreska (ko) og Víetnamska (vi)

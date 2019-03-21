@@ -1,0 +1,7 @@
+* Müsaitlik durumuna göre otomatik seçim ile herhangi bir depo için resmi aynalama için destek
+
+* Çok sayıda kullanıcı arabirimi iyileştirmeleri, kararlılık ve hata düzeltmeleri
+
+* Yeni gizlilik tercihleri: Ekran görüntülerini önleme; panikte çıkış
+
+* Yeni diller: Korece (ko) ve Vietnamca (vi)

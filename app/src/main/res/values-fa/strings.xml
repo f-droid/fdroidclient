@@ -56,7 +56,6 @@
     <string name="unknown">ناشناخته</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
     <string name="app_name">اف‌دروید</string>
-
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شده توسط کاره را در حافظه داخلی پاک می‌کند)</string>
     <string name="version">نگارش</string>
     <string name="enable_nfc_send">فعّال کردن ارسال NFC…</string>
@@ -68,34 +67,27 @@
     <string name="local_repo_name">نام مخزن محلّی شما</string>
     <string name="local_repo_name_summary">عنوان تبلیغاتی مخزن محلّی شما: %s</string>
     <string name="local_repo_https_on">استفاده از ارتباط رمز شدهٔ http برای مخزن محلّی</string>
-
     <string name="login_title">نیاز به تأیید هویت</string>
     <string name="login_name">نام کاربری</string>
     <string name="login_password">گذرواژه</string>
     <string name="repo_edit_credentials">تغییر گذرواژه</string>
     <string name="repo_error_empty_username">نام کاربری خالی، مشخّصات تغییری نکرد</string>
-
     <string name="app_details">جزییات کاره</string>
     <string name="about_version">نگارش</string>
     <string name="about_site">پایگاه وب</string>
     <string name="about_source">کد مبدأ</string>
     <string name="about_license">پروانه</string>
-
     <string name="app_incompatible">ناسازگار</string>
     <string name="app_inst_known_source">نصب شده (از %s)</string>
     <string name="app_inst_unknown_source">نصب شده (از مبدأ ناشناس)</string>
-
     <string name="links">پیوندها</string>
     <string name="more">بیشتر</string>
     <string name="less">کمتر</string>
-
     <string name="back">بازگشت</string>
-
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
-
     <string name="menu_launch">بازکردن</string>
     <string name="menu_ignore_all">نادیده گرفتن تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">نادیده گرفتن این به‌روز رسانی</string>
@@ -105,12 +97,9 @@
     <string name="menu_bitcoin">بیت‌کوین</string>
     <string name="menu_litecoin">لایت‌کوین</string>
     <string name="menu_flattr">فلتر</string>
-
-
     <string name="expert">حالت حرفه‌ای</string>
     <string name="show_incompat_versions">شامل نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های کاره‌ای که با این افزاره ناسازگارند</string>
-
     <string name="local_repo">مخزن محلّی</string>
     <string name="local_repo_running">اف‌دروید آمادهٔ تبادل است</string>
     <string name="touch_to_configure_local_repo">برای دیدن جزییات و اجازه به دیگران برای تبادل کاره‌های‌تان، لمس کنید.</string>
@@ -122,7 +111,6 @@
     <string name="copying_icons">در حال کپی کردن آیکون کاره‌ها در مخزن…</string>
     <string name="next">بعدی</string>
     <string name="skip">پرش</string>
-
     <string name="proxy">پروکسی</string>
     <string name="enable_proxy_title">فعّال کردن پروکسی http</string>
     <string name="enable_proxy_summary">پیکربندی پروکسی http برای تمام درخواست‌های شبکه</string>
@@ -130,7 +118,6 @@
     <string name="proxy_host_summary">نام میزبان پروکسی (مثلاً 127.0.0.1)</string>
     <string name="proxy_port">درگاه پروکسی</string>
     <string name="proxy_port_summary">شمارهٔ درگاه پروکسی (مثلاً 8118)</string>
-
     <string name="status_download_unknown_size">در حال بارگیری\n%2$s از\n%1$s</string>
     <string name="update_notification_title">در حال به‌روز رسانی مخزن‌ها</string>
     <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$d%%) از %1$s</string>
@@ -150,10 +137,8 @@
 \nلطفاً به این شبکه وصل شوید: %s</string>
     <string name="pref_language">زبان</string>
     <string name="pref_language_default">پیش فرض سیستم</string>
-
     <string name="wifi">وای‌فای</string>
     <string name="wifi_ap">هاتسپات</string>
-
     <string name="category_Connectivity">اتّصال</string>
     <string name="category_Development">توسعه</string>
     <string name="category_Games">بازی</string>
@@ -171,10 +156,8 @@
     <string name="category_Theming">شخصی‌سازی</string>
     <string name="category_Time">زمان</string>
     <string name="category_Writing">نوشتن</string>
-
     <string name="empty_can_update_app_list">تبریک!
 \nکاره‌هایتان به‌روزند.</string>
-
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
     <string name="swap_join_this_hotspot">دوست‌تان را در پیوستن به هاتسپات‌تان راهنمایی کنید</string>
@@ -211,11 +194,9 @@
     <string name="allPerms">همه</string>
     <string name="perm_costs_money">ممکن است این کار برایتان خرج داشته باشد</string>
     <string name="download_error">بارگیری ناموفق!</string>
-
     <string name="perms_new_perm_prefix">جدید:</string>
     <string name="perms_description_app">فراهم شده توسّط: %1$s.</string>
     <string name="downloading">در حال بارگیری…</string>
-
     <string name="interval_never">بدون به‌روز رسانی‌های کارهٔ خودکار</string>
     <string name="interval_1h">بررسی ساعتی برای به‌روز رسانی‌ها</string>
     <string name="interval_4h">بررسی هر ۴ ساعت برای به‌روز رسانی‌ها</string>
@@ -223,12 +204,10 @@
     <string name="interval_1d">بررسی روزانه برای به‌روز رسانی‌ها</string>
     <string name="interval_1w">بررسی هفتگی برای به‌روز رسانی‌ها</string>
     <string name="interval_2w">بررسی هر ۲ هفته برای به‌روز رسانی‌ها</string>
-
     <string name="theme_light">روشن</string>
     <string name="theme_dark">تیره</string>
     <string name="theme_night">شب</string>
     <string name="malformed_repo_uri">نادیده گرفتن نشانی اینترنتی مخزن ناهنجار: %s</string>
-
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایجاد نکردند.</string>
     <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن کاره‌هایی که فراهم می‌کند باید فعّالش کنید.</string>
     <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر موجود نخواهند بود. 
@@ -251,7 +230,6 @@
     <string name="swap_qr_isnt_for_swap">رمز QR ای که اسکن کردید، شبیه یک رمز تبادل نیست.</string>
     <string name="loading">در حال بار کردن…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به دستگاه خطایی رخ داد، نمی‌توان تبادل کرد!</string>
-
     <string name="install_confirm">نیازمند دسترسی به</string>
     <string name="install_confirm_update">می‌خواهید به‌روزرسانی‌ای برای این کاره نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. کارهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
     <string name="install_confirm_update_system">می‌خواهید به‌روزرسانی‌ای برای این کارهٔ داخلی نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. کارهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
@@ -261,9 +239,7 @@
     <string name="uninstall_confirm">می‌خواهید این نرم‌افزار را حذف کنید؟</string>
     <string name="menu_email">ایمیل به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای پولی است</string>
-
     <string name="empty_search_available_app_list">چنین کاره‌هایی موجود نیستند.</string>
-
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که کاره را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل، رایانامه بفرستید؟</string>
     <string name="crash_dialog_comment_prompt">در این‌جا می‌توانید اطّلاعات اضافی و نظرها را بیفزایید:</string>
@@ -271,77 +247,58 @@
     <string name="useTorSummary">اجبار ترافیک بارگیری به استفاده از تور برای محرمانگی بیش‌تر. به Orbot نیاز است</string>
     <string name="swap_stopping_wifi">در حال توقّف وای‌فای…</string>
     <string name="repo_provider">مخزن: %s</string>
-
     <string name="update_auto_download">دریافت خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_download_summary">به‌روز رسانی‌ها به صورت خودکار بارگیری شده و برای نصبشان آگاه می‌شوید</string>
     <string name="download_pending">در انتظار شروع بارگیری…</string>
-
     <string name="keep_hour">۱ ساعت</string>
     <string name="keep_day">۱ روز</string>
     <string name="keep_week">۱ هفته</string>
     <string name="keep_month">۱ ماه</string>
     <string name="keep_year">۱ سال</string>
     <string name="keep_forever">برای همیشه</string>
-
     <string name="uninstalling">در حال حذف نصب…</string>
-
     <string name="installing">در حال نصب…</string>
     <string name="install_error_notify_title">خطای نصب %s</string>
     <string name="uninstall_error_notify_title">خطا در حذف نصب %s</string>
-
-
     <string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
     <string name="keep_install_history_summary">نگه داشتن گزارشی از تمام نصب و حذف‌ها در یک فضای خصوصی</string>
     <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
-    <string name="update_auto_install_summary">بارگیری و نصب کاره‌های به‌روز در پس‌زمینه</string>
+    <string name="update_auto_install_summary">بارگیری و به‌روز رسانی کاره‌ها در پس‌زمینه، با نمایش یک آگاهی</string>
     <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهندهٔ %1$s!</string>
     <string name="app_details_donate_prompt">‫%1$s به دست %2$s ایجاد شده است. برایش قهوه بخرید!</string>
-
     <string name="app_version_x_available">نگارش %1$s موجود است</string>
     <string name="app_version_x_installed">نگارش %1$s</string>
     <string name="app_recommended_version_installed">نگارش %1$s (توصیه شده)</string>
     <string name="app_new">جدید</string>
     <string name="app__tts__cancel_download">لغو بارگیری</string>
     <string name="app__install_downloaded_update">به‌روز رسانی</string>
-
     <string name="app_list__name__downloading_in_progress">در حال بارگیری %1$s</string>
     <string name="app_list__name__successfully_installed">‫%1$s نصب شد</string>
-
     <string name="installed_apps__activity_title">کاره‌های نصب شده</string>
     <string name="installed_app__updates_ignored">صرف‌نظر از به‌روز رسانی</string>
     <string name="installed_app__updates_ignored_for_suggested_version">از به‌روز رسانی برای نگارش صرف‌نظر شده است %1$s</string>
     <string name="updates__tts__download_app">بارگیری</string>
     <string name="update_all">به‌روز رسانی همه</string>
-
     <string name="updates__hide_updateable_apps">مخفی کردن کاره‌ها</string>
     <string name="updates__show_updateable_apps">نمایش کاره‌ها</string>
-
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">بارگیری به‌روز رسانی برای %1$d کاره.</item>
-	<item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d کاره.</item>
-</plurals>
-
+        <item quantity="one">بارگیری به‌روز رسانی برای %1$d کاره.</item>
+        <item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d کاره.</item>
+    </plurals>
     <string name="versions">نگارش‌ها</string>
     <string name="clear_search">پاک‌سازی جست‌وجو</string>
-
     <string name="repositories_summary">افزودن منابع اضافی برای کاره‌ها</string>
     <string name="menu_video">ویدیو</string>
     <string name="main_menu__latest_apps">جدیدترین</string>
     <string name="main_menu__categories">دسته‌ها</string>
     <string name="main_menu__swap_nearby">اطراف</string>
-
     <string name="latest__empty_state__no_recent_apps">کارهٔ جدیدی پیدا نشد</string>
     <string name="latest__empty_state__never_updated">پس از به‌روز رسانی فهرست کاره‌های‌تان، جدیدترین کاره‌ها در این‌‌جا نمایش می‌یابند</string>
     <string name="latest__empty_state__no_enabled_repos">به محض فعّال و به‌روز کردن یک مخزن، جدیدترین کاره‌ها باید در این‌جا نمایش می‌یابند</string>
-
     <string name="categories__empty_state__no_categories">هیچ دسته‌ای برای نمایش نیست</string>
-
     <string name="preference_category__my_apps">کاره‌های من</string>
     <string name="preference_manage_installed_apps">مدیریت کاره‌های نصب شده</string>
-
-
     <string name="details_new_in_version">جدید در نگارش %s</string>
-
     <string name="antifeatureswarning">این کاره ویژگی‌هایی دارد که شاید نپسندید.</string>
     <string name="antifeatures">ضد ویژگی‌ها</string>
     <string name="warning_no_internet">نمی‌توان به‌روزرسانی کرد. به اینترنت وصل هستید؟</string>
@@ -349,11 +306,9 @@
         <item quantity="one">نمایش %d</item>
         <item quantity="other">نمایش‌ همه %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">اینترنت ندارید؟ کاره‌ها را از افراد در نزدیکی خود بگیرید!</string>
     <string name="nearby_splash__find_people_button">یافتن اطرافیانم</string>
     <string name="nearby_splash__both_parties_need_fdroid">برای استفاده از این ویژگی، دو طرف به %1$s نیاز دارند.</string>
-
     <string name="app__tts__downloading_progress">در حال بارگیری، %1$d%% کامل</string>
     <string name="notification_title_single_update_available">به‌روز رسانی موجود است</string>
     <string name="notification_title_single_ready_to_install">آماده برای نصب</string>
@@ -374,14 +329,11 @@
     <string name="notification_action_update">به‌روز رسانی</string>
     <string name="notification_action_cancel">لغو</string>
     <string name="notification_action_install">نصب</string>
-
     <string name="tts_category_name">دستهٔ %1$s</string>
-
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">نمایش %1$d کاره در دستهٔ %2$s</item>
-	<item quantity="other">نمایش تمام %1$d کاره از دستهٔ %2$s</item>
-</plurals>
-
+        <item quantity="one">نمایش %1$d کاره در دستهٔ %2$s</item>
+        <item quantity="other">نمایش تمام %1$d کاره از دستهٔ %2$s</item>
+    </plurals>
     <string name="details_last_updated_today">امروز به‌روز شده</string>
     <plurals name="details_last_update_days">
         <item quantity="one">%1$d روز پیش به‌روز شده</item>
@@ -417,38 +369,31 @@
     <string name="force_old_index">استفاده اجباری از قالب فهرست قدیمی</string>
     <string name="force_old_index_summary">در صورت وجود باگ یا مشکلات عدم سازگاری، از فهرست xml کاره استفاده کنید</string>
     <string name="app_list_download_ready">بارگزاری شده است، آماده ی نصب</string>
-
     <string name="app_installed_media">فایل در %s نصب شد</string>
     <string name="app_permission_storage">اف دروید برای نصب روی این فضا، نیاز به دسترسی فضای ذخیره‌سازی دارد. لطفاً جهت ادامهٔ نصب، این اجازه را در صفحهٔ بعدی بدهید.</string>
-
     <string name="status_inserting_x_apps">ذخیره‌سازی جزئیات کاره (%1$d/%2$d) از %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">امضای متفاوت با نگارشِ نصب‌شده</string>
     <string name="app_details__no_versions__show_incompat_versions">برای نمایش نگارش‌های ناسازگار، تنظیمات «%1$s» را فعّال کنید.</string>
     <string name="app_details__no_versions__no_compatible_signatures">هیچ نگارشی با امضای سازگار وجود ندارد</string>
     <string name="app_details__no_versions__none_compatible_with_device">هیچ نگارش سازگار با افزاره‌ای وجود ندارد</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">نگارش نصب‌شده با هیچ نگارش موجودی سازگار نیست. حذف نصب کاره، شما را قادر به مشاهده و نصب نگارش‌های سازگار می‌کند. این مشکل اغلب با کاره‌های نصب‌شده از گوگل‌پلی یا دیگر منابعی رخ می‌دهد که با گواهی‌نامهٔ متفاوتی امضا شده‌اند.</string>
-
     <string name="app_list__dismiss_app_update">به‌روز رسانی نادیده گرفته شد</string>
     <string name="app_list__dismiss_vulnerable_app">آسیب‌پذیری نادیده گرفته شد</string>
     <string name="app_list__dismiss_downloading_app">بارگیری لغو شد</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود فوراً این کاره را حذف نصب کنید.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود بلافاصله به جدیدترین نگارش ارتقا دهید.</string>
     <string name="updates__app_with_known_vulnerability__ignore">نادیده گرفتن</string>
-
     <string name="privacy">حریم خصوصی</string>
     <string name="panic_app_unknown_app">یک کارهٔ ناشناخته</string>
     <string name="panic_app_setting_summary">هیچ کاره‌ای تنظیم نشده است</string>
     <string name="panic_app_setting_none">هیچ کدام</string>
     <string name="allow">اجازه دادن</string>
-
     <string name="panic_exit_title">خروج از کاره</string>
     <string name="panic_exit_summary">کاره بسته خواهد شد</string>
     <string name="panic_destructive_actions">اقدامات مخرب</string>
     <string name="panic_hide_title">پنهان کردن %s</string>
     <string name="preventScreenshots_title">جلوگیری از نماگرفت‌ها</string>
     <string name="preventScreenshots_summary">نماگرفت‌ها را مسدود و محتوای کاره را از صفحهٔ کاره‌های اخیر پنهان می‌کند</string>
-
     <string name="panic_app_setting_title">کارهٔ دکمهٔ اضطرار</string>
     <string name="panic_app_dialog_title">تأیید کارهٔ اضطرار</string>
     <string name="panic_app_dialog_message">مطمئنید که می‌خواهید به %1$s اجازهٔ راه‌اندازی عمل‌های دکمهٔ اضطرار را بدهید؟</string>
@@ -457,7 +402,6 @@
     <string name="panic_hide_summary">کاره خودش را پنهان خواهد کرد</string>
     <string name="panic_hide_warning_title">روش بازگردانی را به‌خاطر بسپرید</string>
     <string name="panic_hide_warning_message">در صورت اضطرار، این عمل %1$s را از اجراگر برمی‌دارد و فقط نوشتن «%2$d» در کارهٔ تقلّبی %3$s می‌تواند بازش گرداند.</string>
-
     <string name="hiding_calculator">ماشین‌حساب</string>
     <string name="hiding_dialog_title">اکنون %s پنهان شود</string>
     <string name="hiding_dialog_message">مطمئنید که می‌خواهید %1$s را از اجراگر بردارید؟ فقط نوشتن «%2$d» در کارهٔ تقلّبی %3$s می‌تواند بازش گرداند.</string>
@@ -465,9 +409,7 @@
     <string name="hide_on_long_search_press_title">پنهان کردن با دکمهٔ جست‌وجو</string>
     <string name="hide_on_long_search_press_summary">لمس طولانی دکمهٔ جست‌وجو، کاره را پنهان می‌کند</string>
     <string name="sort_search">چینش جست‌وجو</string>
-
     <string name="menu_liberapay">لیبراپی</string>
-
     <string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
     <string name="repo_add_mirror">افزودن mirror</string>
     <string name="repo_exists_add_fingerprint">%1$s از قبل تنظیم شده است، این عملیات اطلاعات کلید جدید را اضافه میکند.</string>
@@ -482,19 +424,16 @@
     <string name="over_network_never_summary">هرگز با استفاده از این اتّصال، چیزی بارگیری نشود</string>
     <string name="antidisabledalgorithmlist">این کاره یک امضای امنیتی ضعیف دارد</string>
     <string name="antiknownvulnlist">این کاره یک آسیب‌پذیری امنیتی شناخته‌شده دارد</string>
-
     <string name="show_anti_feature_apps">شامل کاره‌های ضدویژگی‌دار</string>
     <string name="show_anti_feature_apps_on">نمایش کاره‌هایی که نیاز به ضدویژگی دارند</string>
     <string name="force_touch_apps">شامل کاره‌های لمسی</string>
     <string name="force_touch_apps_on">نمایش کاره‌هایی که نیاز به صفحهٔ لمسی دارند، فارغ از پشتیبانی سخت‌افزاری</string>
-
     <string name="repo_official_mirrors">آینه‌های رسمی</string>
     <string name="repo_user_mirrors">استفاده از آینه‌ها</string>
     <string name="use_bluetooth">استفاده از بلوتوث</string>
     <string name="swap_toast_invalid_url">نشانی نامعتبر برای تاخت زدن: %1$s</string>
     <string name="swap_toast_hotspot_enabled">نقطهٔ داغ وای‌فای فعّال است</string>
     <string name="swap_toast_could_not_enable_hotspot">نمی‌توان نقطهٔ داغ وای‌فای را فعّال کرد!</string>
-
     <string name="prompt_to_send_crash_reports">اعلان فرستادن گزارش‌های خرابی</string>
     <string name="prompt_to_send_crash_reports_summary">جمع‌آوری داده دربارهٔ خرابی‌ها و پرسش برای فرستادنشان به توسعه‌دهنده</string>
     <string name="hide_all_notifications">نهفتن تمام آگاه‌سازی‌ها</string>
@@ -508,14 +447,11 @@
     <string name="allow_push_requests">اجازه به مخازن برای نصب/حذف کاره‌ها</string>
     <string name="allow_push_requests_summary">فرادادهٔ مخزن می‌تواند شامل درخواست‌های ارسالی برای نصب یا حذف کاره‌ها باشد</string>
     <string name="updates_disabled_by_settings">تمامی به‌روز رسانی‌ها به دست تنظیمات داده/وای‌فای مسدود شده‌اند</string>
-
     <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست، به‌روز رسانی ناممکن است.</string>
-
     <string name="share_repository">هم‌رسانی مخزن</string>
     <string name="about_forum">انجمن پشتیبانی</string>
     <string name="app_suggested">پیشنهادی</string>
     <string name="app_size">اندازه: %1$s</string>
-
     <string name="send_installed_apps">هم‌رسانی کاره‌های نصب‌شده</string>
     <string name="send_installed_apps_csv">کاره‌های نصب‌شده از اف‌دروید در قالب پروندهٔ csv</string>
     <string name="menu_open">گشودن</string>
