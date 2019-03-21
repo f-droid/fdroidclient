@@ -142,7 +142,7 @@ public class IndexUpdater {
                 }
             }
 
-            throw new UpdateException("Error getting index file", e);
+            throw new UpdateException("Error getting F-Droid index file", e);
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
             e.printStackTrace();
