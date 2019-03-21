@@ -1,21 +1,21 @@
 v1.3.1
-* big overhaul of core nearby/swap plumbing
+* Big overhaul of core Nearby/Swap plumbing
 
 * TLSv1.3 support, when the device supports it
 
 v1.3
-* more reliable buttons and status updates
+* More reliable buttons and status updates
 
-* overhaul of Settings including new data usage controls
+* Overhaul of Settings including new data usage controls
 
-* battery conscious background operation on Android 5.0 and newer
+* Battery conscious background operation on Android 5.0 and newer
 
 * Share menu item for repos
 
-* disable crash reports in Settings
+* Turn off crash reports in Settings
 
 * Install History viewer when logging is enabled
 
-* clickable Anti-Features list, added NoSourceSince
+* Clickable Anti-Features list, added NoSourceSince
 
 * Android 4.0 is now the minimum supported

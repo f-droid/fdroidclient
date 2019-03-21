@@ -489,7 +489,7 @@
     <string name="scan_removable_storage_summary">Busque repositorios de paquetes en almacenamiento extraíble como tarjetas SD y unidades USB</string>
     <string name="main_menu__updates">Actualizaciones</string>
     <string name="nearby_splash__read_external_storage">Las tarjetas SD se pueden utilizar como swap!</string>
-    <string name="nearby_splash__request_permission">Inténtalo otra vez</string>
+    <string name="nearby_splash__request_permission">Probar</string>
     <string name="not_visible_nearby">Nearby no habilitado</string>
     <string name="not_visible_nearby_description">Antes de intercambiar con dispositivos cercanos, haga visible su dispositivo.</string>
     <string name="swap_toast_using_path">Utilizando %1$s</string>

@@ -1,0 +1,12 @@
+* Håndtering av implisitte READ_EXTERNAL_STORAGE-tilganger, som utløser en
+  tilgangsforespørsel på installasjoner med priviligert utvidelse (#1702)
+
+* Mulig indeksdata innsnevret for å redusere mulige trusler fra tjeneren
+
+* "Lesningstidsavbrudd" utløser speilbruk når lesing går tregt
+
+* Fiks for manglende ikoner for dem som ikke nytter Wi-Fi (#1592)
+
+* Bruk egne flis for oppgraderingsinnstillinger og -fane, for å hjelpe oversettelsene
+
+* Grensesnittsfikser fra @ConnyDuck (#1636, #1618)

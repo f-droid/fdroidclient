@@ -108,31 +108,25 @@
     <string name="category_System">系统</string>
     <string name="swap_welcome">欢迎使用 F-Droid！</string>
     <string name="app_name">F-Droid</string>
-
     <string name="unstable_updates">不稳定更新</string>
     <string name="unstable_updates_summary">建议更新至不稳定的版本</string>
     <string name="system_installer_on">使用特权扩展安装、更新和卸载应用</string>
     <string name="local_repo_name">本地软件源的名称</string>
     <string name="local_repo_name_summary">本地软件源的对外名称：%s</string>
     <string name="local_repo_https_on">本地软件源使用加密的 HTTPS:// 连接</string>
-
     <string name="login_title">需要验证</string>
     <string name="login_name">用户名</string>
     <string name="login_password">密码</string>
     <string name="repo_edit_credentials">更改密码</string>
     <string name="repo_error_empty_username">用户名被留空，没有更改验证信息</string>
-
     <string name="about_source">源码</string>
     <string name="app_incompatible">不兼容</string>
     <string name="app_inst_known_source">已安装（来自%s）</string>
     <string name="app_inst_unknown_source">已安装（来源未知）</string>
-
     <string name="links">链接</string>
     <string name="more">显示更多</string>
     <string name="less">收起</string>
-
     <string name="back">返回</string>
-
     <string name="bad_fingerprint">指纹无效</string>
     <string name="invalid_url">地址无效。</string>
     <string name="menu_settings">设置</string>
@@ -140,8 +134,6 @@
     <string name="menu_bitcoin">比特币</string>
     <string name="menu_litecoin">莱特币</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="local_repo_running">F-Droid 已准备好交换应用</string>
     <string name="touch_to_configure_local_repo">触摸可查看详细信息以及允许其他人与你交换应用程序。</string>
     <string name="adding_apks_format">正在添加 %s 到软件源…</string>
@@ -150,7 +142,6 @@
     <string name="copying_icons">正在复制应用程序图标到软件源…</string>
     <string name="next">下一步</string>
     <string name="skip">跳过</string>
-
     <string name="status_download_unknown_size">下载中\n%2$s 来自\n%1$s</string>
     <string name="update_notification_title">正在更新库</string>
     <string name="status_processing_xml_percent">处理中 %2$s / %3$s (%4$d%%) 来自 %1$s</string>
@@ -165,10 +156,8 @@
 \n里查找软件源</string>
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Wi-Fi 热点</string>
-
     <string name="category_Connectivity">连接</string>
     <string name="category_Graphics">图像</string>
     <string name="category_Money">理财</string>
@@ -176,16 +165,13 @@
     <string name="category_Theming">主题</string>
     <string name="category_Time">时间</string>
     <string name="category_Writing">记录</string>
-
     <string name="empty_installed_app_list">应用程序未安装。
 \n
 \n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。</string>
     <string name="empty_can_update_app_list">好棒！您的应用是最新的啦。</string>
-
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致卸载失败</string>
     <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报告 BUG ！</string>
-
     <string name="swap_nfc_title">点击开始交换</string>
     <string name="swap_nfc_description">如果您朋友的设备上有 F-Droid ，开启 NFC 把你们的设备互相贴近。</string>
     <string name="swap_join_same_wifi">与你的朋友连上同一个 Wi-Fi</string>
@@ -222,7 +208,6 @@
     <string name="swap_qr_isnt_for_swap">你扫描的二维码似乎不是一个交换代码。</string>
     <string name="loading">加载中…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
-
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">是否更新现有应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>
     <string name="install_confirm_update_system">是否更新该内置应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>
@@ -234,11 +219,9 @@
     <string name="uninstall_update_confirm">你要把这个程序换成出厂版本吗？</string>
     <string name="uninstall_confirm">确定要卸载此应用程序吗？</string>
     <string name="download_error">下载失败！</string>
-
     <string name="perms_new_perm_prefix">新的：</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="downloading">下载中…</string>
-
     <string name="interval_never">不自动更新应用</string>
     <string name="interval_1h">每小时检查一次更新</string>
     <string name="interval_4h">每 4 小时检查一次更新</string>
@@ -246,60 +229,46 @@
     <string name="interval_1d">每天检查一次更新</string>
     <string name="interval_1w">每周检查一次更新</string>
     <string name="interval_2w">每两周检查一次更新</string>
-
     <string name="theme_light">明亮</string>
     <string name="theme_dark">夜间</string>
     <string name="theme_night">黑暗</string>
     <string name="about_license">许可协议</string>
-
     <string name="empty_search_available_app_list">没有符合条件的应用程序可用。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>
-
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">该应用包含非自由资产</string>
-
     <string name="crash_dialog_title">F-Droid 已停止运行</string>
     <string name="crash_dialog_text">本应用因意外问题而停止运行。您愿意通过电子邮件向我们提供细节信息，以协助修复此问题吗？</string>
     <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
     <string name="repo_provider">软件源：%s</string>
-
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">强制下载流量通过 Tor 以增强隐私保障。需要 Orbot</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="update_auto_download">自动取得更新</string>
     <string name="update_auto_download_summary">自动下载更新并显示安装通知</string>
     <string name="download_pending">正在等待开始下载…</string>
-
     <string name="keep_hour">1 小时</string>
     <string name="keep_day">1 天</string>
     <string name="keep_week">1 周</string>
     <string name="keep_month">1 个月</string>
     <string name="keep_year">1 年</string>
     <string name="keep_forever">永远</string>
-
     <string name="install_error_notify_title">安装 %s 出错</string>
     <string name="uninstall_error_notify_title">卸载 %s 时出错</string>
-
-
     <string name="installing">安装中…</string>
     <string name="uninstalling">卸载中…</string>
-
     <string name="update_auto_install">自动安装更新</string>
-    <string name="update_auto_install_summary">在后台下载和更新应用</string>
+    <string name="update_auto_install_summary">在后台下载并更新应用，显示通知</string>
     <string name="keep_install_history">保留安装纪录</string>
     <string name="keep_install_history_summary">在应用的私有存储内记录所有安装和卸载</string>
     <string name="warning_no_internet">无法更新，您是否已连接至互联网？</string>
     <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">分类</string>
     <string name="main_menu__swap_nearby">附近</string>
-
     <string name="preference_manage_installed_apps">管理已安装的应用</string>
-
-
     <string name="notification_action_update">更新</string>
     <string name="notification_action_cancel">取消</string>
     <string name="notification_action_install">安装</string>
-
     <string name="app_list__name__downloading_in_progress">正在下载 %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s 已安装</string>
     <string name="updates__tts__download_app">下载</string>
@@ -307,51 +276,40 @@
     <string name="notification_title_summary_install_error">安装失败</string>
     <string name="app_details_donate_prompt_unknown_author">给%1$s的开发者买一杯咖啡吧！</string>
     <string name="app_details_donate_prompt">%1$s由%2$s开发，给他们买一杯咖啡吧！</string>
-
     <string name="app_version_x_available">版本%1$s可用</string>
     <string name="app_version_x_installed">版本%1$s</string>
     <string name="app_recommended_version_installed">版本%1$s（推荐使用）</string>
     <string name="app_new">新品</string>
     <string name="app__tts__cancel_download">取消下載</string>
     <string name="app__install_downloaded_update">更新</string>
-
     <string name="installed_apps__activity_title">已安装的应用</string>
     <string name="installed_app__updates_ignored">已忽略的更新</string>
     <string name="installed_app__updates_ignored_for_suggested_version">已忽略%1$s版本更新</string>
     <string name="update_all">全部更新</string>
-
     <string name="updates__hide_updateable_apps">隐藏应用</string>
     <string name="updates__show_updateable_apps">显示应用</string>
-
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="other">为 %1$d 个应用下载更新。</item>
-</plurals>
-
+        <item quantity="other">为 %1$d 个应用下载更新。</item>
+    </plurals>
     <string name="versions">版本</string>
     <string name="clear_search">清除搜索</string>
-
     <string name="repositories_summary">添加其他软件库</string>
     <string name="menu_video">视频</string>
     <string name="menu_license">许可证：%s</string>
     <string name="latest__empty_state__no_recent_apps">找不到最近使用的应用</string>
     <string name="latest__empty_state__never_updated">应用程序列表更新之后，最新应用将在这里显示</string>
     <string name="latest__empty_state__no_enabled_repos">启用软件源并对其更新之后，最新应用将在这里显示</string>
-
     <string name="categories__empty_state__no_categories">没有可显示的分类</string>
-
     <string name="preference_category__my_apps">我的应用</string>
     <string name="details_new_in_version">版本%s的新功能</string>
-
     <string name="antifeatureswarning">此应用有一些您未必喜欢的功能。</string>
     <string name="antifeatures">Anti-feature</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">没有连上互联网？请从附近的 F-Droid 用户那里获取应用！</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方都需要 %1$s 才可使用附近的人功能。</string>
-
     <string name="app__tts__downloading_progress">正在下载，完成 %1$d%%</string>
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d 更多…</item>
@@ -377,11 +335,9 @@
     <string name="notification_title_summary_installing">正在安装</string>
     <string name="notification_title_summary_installed">安装成功</string>
     <string name="tts_category_name">类别 %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="other">在 %2$s 的类别中查看全部 %1$d 个应用</item>
     </plurals>
-
     <string name="details_last_updated_today">今天更新</string>
     <plurals name="details_last_update_days">
         <item quantity="other">更新于 %1$d 天前</item>
@@ -401,34 +357,27 @@
     <string name="force_old_index_summary">如果出现错误或兼容问题，请使用 XML 应用索引</string>
     <string name="app_installed_media">文件已安装到%s</string>
     <string name="app_permission_storage">F-Droid 需要存储权限以安装到存储。请在下一个界面允许此权限以继续进行安装。</string>
-
     <string name="app_list_download_ready">已下载，安装准备就绪</string>
-
     <string name="status_inserting_x_apps">正在从 %3$s 保存应用程序的详细信息 (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signature">与已安装版本的签署不符</string>
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
     <string name="app_details__no_versions__no_compatible_signatures">没有兼容签署的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">没有与装置兼容的版本</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">已安装版本不与任何可用版本兼容。卸载该应用将让您可以查看和安装兼容的版本。这种情况通常发生在通过 Google Play 或其他软件源安装的应用上，如果它们是由不同的证书签署的。</string>
-
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">我们发现了关于%1$s的漏洞，建议您立刻卸载此应用。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">我们发现了关于 %1$s 的漏洞，建议您立即更新至最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
-
     <string name="privacy">隐私</string>
     <string name="preventScreenshots_title">防止屏幕截图</string>
     <string name="preventScreenshots_summary">阻止屏幕截图，且在最近的应用屏幕中隐藏应用内容</string>
-
     <string name="panic_app_setting_title">应急按钮应用程序</string>
     <string name="panic_app_unknown_app">未知的应用程序</string>
     <string name="panic_app_setting_summary">没有设置任何应用程序</string>
     <string name="panic_app_dialog_message">您确认要允许 %1$s 触发破坏式的应急按钮动作吗？</string>
     <string name="allow">允许</string>
-
     <string name="panic_settings">应急按钮设置</string>
     <string name="panic_settings_summary">危急状况下要采取的行动</string>
     <string name="panic_exit_title">退出应用程序</string>
@@ -437,28 +386,23 @@
     <string name="panic_hide_title">隐藏 %s</string>
     <string name="panic_hide_summary">应用程序将隐藏自己</string>
     <string name="sort_search">搜索排序</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="panic_app_dialog_title">确认紧急应用</string>
     <string name="panic_destructive_actions">危险动作</string>
     <string name="panic_hide_warning_title">请记住如何还原</string>
     <string name="panic_hide_warning_message">在紧急情况下，这将从启动器中移除 %1$s。只有在假的 %3$s 应用中输入“%2$d”才能恢复它。</string>
-
     <string name="hiding_calculator">计算器</string>
     <string name="hiding_dialog_title">立即隐藏 %s</string>
     <string name="hiding_dialog_message">确定要从启动器中移除 %1$s 吗？只有在假的 %3$s 应用中输入“%2$d”才能恢复它。</string>
     <string name="hiding_dialog_warning">警告：主屏幕上的任何应用快捷方式也将被移除，需要手动重新添加。</string>
     <string name="hide_on_long_search_press_title">用搜索按钮隐藏</string>
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
-
     <string name="warning_scaning_qr_code">您的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
     <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
     <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用程序</string>
     <string name="repo_add_mirror">添加镜像</string>
     <string name="force_touch_apps">包括触屏应用</string>
     <string name="force_touch_apps_on">显示需要触控式屏幕的应用程序，无论硬件是否支持</string>
-
     <string name="repo_official_mirrors">官方镜像</string>
     <string name="repo_user_mirrors">用户镜像</string>
     <string name="use_bluetooth">使用蓝牙</string>
@@ -469,7 +413,6 @@
     <string name="over_network_never_summary">从不使用此连接下载任何内容</string>
     <string name="antidisabledalgorithmlist">这个应用程序的安全签名较弱</string>
     <string name="antiknownvulnlist">这个应用程序包含已知的安全漏洞</string>
-
     <string name="repo_exists_add_fingerprint">%1$s已经设立，此举将会加入新的钥匙信息。</string>
     <string name="repo_exists_enable">%1$s已经设立。请确认您要重启它。</string>
     <string name="repo_exists_and_enabled">%1$s已设立並启用。</string>
@@ -477,14 +420,12 @@
     <string name="repo_exists_add_mirror">这是%1$s的副本，您要将其添加为镜像吗？</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi 热点已启用</string>
     <string name="swap_toast_could_not_enable_hotspot">无法启用 Wi-Fi 热点！</string>
-
     <string name="prompt_to_send_crash_reports">提示发送崩溃报告</string>
     <string name="prompt_to_send_crash_reports_summary">收集有关崩溃的数据并询问是否发送给本应用的开发者</string>
     <string name="hide_all_notifications">隐藏所有通知</string>
     <string name="install_history">安装历史</string>
     <string name="send_version_and_uuid">发送版本和 UUID 到服务器</string>
     <string name="antinosourcesince">源代码不再可用，无法更新。</string>
-
     <string name="hide_all_notifications_summary">阻止所有活动在状态栏和通知菜单中显示。</string>
     <string name="send_install_history">发送安装历史</string>
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
@@ -496,7 +437,6 @@
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
     <string name="about_forum">支持论坛</string>
     <string name="app_size">大小：%1$s</string>
-
     <string name="menu_downgrade">降级</string>
     <string name="app_suggested">建议</string>
     <string name="send_installed_apps_csv">通过 F-Droid 安装的应用程序列表，以 CSV 格式文件存储</string>

@@ -1,0 +1,18 @@
+F-Droid, Android platformu için özgür yazılım uygulamalarının
+yüklenebileceği bir dizinidir. F-Droid istemci uygulaması,
+cihazınızdaki güncellemelere göz atmayı, yüklemeyi ve izlemeyi kolaylaştırır.
+
+Herhangi bir F-Droid uyumlu depolara bağlanır. Varsayılan depo,
+yalnızca iyi niyetli özgür yazılımları içeren f-droid.org adresinde barındırılmaktadır.
+
+Android'in kendisi, APK'ları istediğiniz yerden yüklemek için özgür
+olduğunuz anlamında açıktır. Ancak özgür yazılım uygulama yöneticiniz
+olarak F-Droid'i kullanmanız için birçok iyi neden vardır:
+
+* Güncellemeler olduğunda bildirim alın
+* İsteğe bağlı olarak güncellemeleri otomatik olarak indirin ve yükleyin
+* Eski ve beta sürümlerini takip edin
+* Cihaz ile uyumlu olmayan uygulamaları filtreleyin
+* Kategoriler ve aranabilir açıklamalar aracılığıyla uygulamaları bulun
+* Bağış, kaynak kodu vb. ile ilişkili bağlantılara erişin
+* Depo dizin imzalarını ve APK hash'lerini kontrol ederek güvende kalın

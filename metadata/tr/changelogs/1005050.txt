@@ -1,0 +1,13 @@
+* SD Kartlarla takas desteği
+
+* Yakındaki takas hata düzeltmeleri ve iyileştirmeler
+
+* "Uygulama Ayrıntıları" ekranında daha fazla iyileştirme
+
+* Yakınınızdaki dil çevirileri güncelleme ve değiştirme
+
+* Geliştirilmiş uygulama simgesi seçimi mantığı
+
+* ROM, OEM, Vendor'dan yerleşik additional_repos.xml aracılığıyla depo ekleyin.
+
+* Uzman Modu'ndaki genişletilmiş Sürümler listesi girişlerinde versionCode'u görüntüleyin

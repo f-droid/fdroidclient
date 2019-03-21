@@ -1,0 +1,12 @@
+F-Droid estas instalebla katalogo de liberaj aplikaĵoj por Android. La kliento plifaciligas foliumadon, instaladon kaj spuradon de ĝisdatigoj ĉe via aparato.
+
+Ĝi konektas al ĉiuj F-Droid-kongruaj deponejoj. La ĉefa deponejo estas gastigata ĉe f-droid.org kaj enhavas nur vere liberan programaron.
+
+Android mem estas malferma tiel, ke vi povas instali aplikaĵojn de iu ajn fonto, sed estas kelkaj bonaj kialoj por uzi F-Droid kiel vian instal-administrilon:
+* ricevi sciigojn pri disponeblaj ĝisdatigoj
+* (malnepre) elŝuti kaj instali ĝisdatigojn aŭtomate
+* spuri malnovajn kaj betajn versiojn
+* filtri aplikaĵojn nekongruajn kun via aparato
+* esplori aplikaĵojn laŭ kategorioj kaj per serĉeblaj priskriboj
+* aliri ligilojn por donaci, fontkodo, ktp.
+* esti sekura per kontroli signaturojn kaj kontrolsumojn (haketaĵojn) de apoj

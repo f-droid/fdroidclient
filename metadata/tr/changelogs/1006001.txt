@@ -1,0 +1,7 @@
+* Aynaların herhangi birini veya tümünü kapatmak için RepoDetails öğesine eklenen anahtarlar (#1696)
+
+* Her paket/APK  indirme için rastgele ayna seçimi
+
+* Tüm APK indirmeleri ayna başına değil, depo başına önbelleğe alınır
+
+* Dizinin güncel olup olmadığını kontrol ederken Apache ve NGINX ETag'lerini kullanın (#1708)

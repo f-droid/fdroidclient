@@ -1,0 +1,10 @@
+* Gestión de los permisos implícitos READ_EXTERNAL_STORAGE, que desencadenan
+  una solicitud de permisos en instalaciones con la extensión de permisos de sistema (#1702)
+
+* Datos del índice saneados para reducir posibles amenazas desde el servidor
+
+* "Tiempo de lectura agotado" desencadena el uso de réplica cuando las lecturas son lentas
+
+* Uso de títulos separados para preferencias y pestaña de actualización, facilitando traducciones
+
+* Correcciones de interfaz, de @ConnyDuck (#1636, #1618)

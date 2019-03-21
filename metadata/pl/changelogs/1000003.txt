@@ -1,0 +1,3 @@
+* Poprawa wydajności dużego interfejsu użytkownika, zwłaszcza przy włączonym archiwum
+
+* Naprawiono błędy crasher

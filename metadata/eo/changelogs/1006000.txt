@@ -1,0 +1,6 @@
+* ĝuste pritrakti la permeson READ_EXTERNAL_STORAGE, kiu kaŭzis montri averton dum instali per la privilegia aldonaĵo (#1702)
+* plisekurigitaj indeksaj datumoj por etigi riskojn el la servilo
+* tro longa tempo de konektado aktivigas uzon de spegul-servilo
+* riparis mankajn piktogramojn por tiuj, kiuj ne uzas vifion (#1592)
+* uzi apartajn vortojn por agordoj de ĝisdatigojn kaj por langeto de ĝisdatigoj por plifaciligi tradukon
+* korektoj al la fasado (danke al @ConnyDuck – #1636, #1618)

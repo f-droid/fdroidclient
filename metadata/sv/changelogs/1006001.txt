@@ -1,0 +1,7 @@
+* Växlar tillagda för RepoDetails för att stänga av någon eller alla speglar (#1696)
+
+* Val av slumpmässig spegel för varje paket/APK-hämtning
+
+* Alla APK-hämtningar cachade per förråd, inte per spegel
+
+* Hantera Apache och NGINX ETags när du kontrollerar om indexet är aktuellt (#1708)

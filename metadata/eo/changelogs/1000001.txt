@@ -1,0 +1,2 @@
+* riparis eraron pri forigi aplikaĵojn el deponejoj (#568)
+* pli rapida ĝisdatigado de indekso

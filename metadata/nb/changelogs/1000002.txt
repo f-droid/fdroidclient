@@ -1,0 +1,7 @@
+* Forhindring av HTTP ETag brukt som sporingskake
+
+* Forbedret skjermavbildningsanordning
+
+* Ordentlig opprenskning i midlertidige og hurtiglagrede filer
+
+* Fikser for mørk drakt

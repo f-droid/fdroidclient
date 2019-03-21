@@ -1,0 +1,3 @@
+* Store forbedringer av grensesnittsytelse, spesielt med arkiv påskrudd
+
+* Noen kræsjfeil fikset

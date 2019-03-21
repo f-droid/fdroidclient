@@ -2,20 +2,20 @@ F-Droid is 1.0!
 
 This release includes lots of big changes:
 
-* completely overhauled workflow for updating apps
+* Completely overhauled workflow for updating apps
 
-* fully translatable app summaries and descriptions
+* Fully translatable app summaries and descriptions
 
 * "What's New" section to show changes in current release
 
-* screenshots and feature graphics
+* Screenshots and feature graphics
 
-* Support installing media, OTA, ZIP, etc files
+* Support installing media, OTA, ZIP, etc. files
 
-* improved protection against tracking (HTTP etag, TLS, etc.)
+* Improved protection against tracking (HTTP ETag, TLS, etc.)
 
-* fully background updates with Privileged Extension
+* Fully background updates with Privileged Extension
 
-* highlight donations to app developers
+* Highlight donations to app developers
 
-* much faster index updates
+* Much faster index updates

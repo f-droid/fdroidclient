@@ -1,0 +1,3 @@
+* Naprawiono błędy uniemożliwiające tłumaczenie na Androidzie> = 7.0 
+ 
+* Naprawiono awarię aktualizacji DB z 1.0-alpha3 → 1.0-alpha4 #1181

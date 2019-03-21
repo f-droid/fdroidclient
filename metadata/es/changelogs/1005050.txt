@@ -1,0 +1,13 @@
+* Intercambio vía tarjetas SD soportado
+
+* Intercambio de cercanía: correcciones y mejoras
+
+* Más mejoras de "Detalles de la aplicación"
+
+* Actualización de idioma y traducciones sobre Cercanía e Intercambio
+
+* Mejorada la lógica de selección de icono de la aplicación
+
+* Agregar repos vía additional_repos.xml incorporado desde ROM, OEM, proveedor.
+
+* Mostrar código de versión en las entradas expandidas de lista de versiones en modo experto

@@ -1,0 +1,3 @@
+* Nå vises oversettelser på Android >= 7.0
+
+* Fiks for databaseoppgraderingskræsj fra 1.0-alpha3 → 1.0-alpha4 #1181

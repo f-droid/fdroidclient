@@ -1,0 +1,13 @@
+* Støtte for programbytting via SD-kort
+
+* Forbedringer og feilrettinger for "I nærheten"
+
+* Ytterligere forbedringer av programdetaljer
+
+* Språk og oversettelser oppdatert for "I Nærheten" og "Bytting"
+
+* Forbedret programikonutvelgingslogikk
+
+* Tillegg av pakkebrønner via innebygd additional_repos.xml fra Rom, OEM, eller tilbyder.
+
+* Vis versionCode i utvidede versjonslisteoppføringer i ekspertmodus

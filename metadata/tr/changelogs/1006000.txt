@@ -1,0 +1,11 @@
+* Ayrıcalıklı Uzantılı kurulumlarda izin istemi tetikleyen READ_EXTERNAL_STORAGE izinlerini işle (#1702)
+
+* Dizin verileri, sunucudan gelebilecek olası tehditleri azaltmak için temizlendi
+
+* "Zaman aşımını oku" okur yavaş olduğunda ayna kullanımını tetikler
+
+* Wi-Fi kullanmayanlar için eksik simgeler düzeltildi (#1592)
+
+* Çeviriye yardımcı olmak için Güncelleme tercihleri ve Güncelleme sekmesi için ayrı başlıklar kullanımı
+
+* @ConnyDuck öğesinden UI düzeltildi(#1636, #1618)

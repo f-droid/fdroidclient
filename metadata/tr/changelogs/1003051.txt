@@ -1,0 +1,14 @@
+v1.3.1
+
+* Etrafımda/Takas çekirdeği için büyük revizyon
+* TLS 1.3 desteği, cihaz desteklediğinde
+
+v1.3
+
+* Daha güvenilir düğmeler ve durum güncellemeleri
+* Yeni veri kullanım kontrol ayarlarının yenilenmesi
+* Android 5.0 ve daha yeni sürümlerde pil için bilinçli arka plan işlemi
+* Depolar için paylaşılan menü öğesi
+* Ayarlar bölümündeki kilitlenme raporlarını kapatın
+* Günlüğe kaydetme etkinken Geçmiş görüntüleyiciyi etkinleştirin
+* Tıklanabilir Anti-Özellikler listesi, NoSourceSince eklendi

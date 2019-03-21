@@ -1,0 +1,13 @@
+* Unterstützt Tauschen über SD-Karten
+
+* Direkttausch-Korrekturen und Verbesserungen
+
+* Weitere Verbesserung der "App-Details"
+
+* Sprach- und Übersetzungsverbesserung zu Direkt und Tausch
+
+* Verbesserte App-Symbol-Auswahllogik
+
+* Quellen über, vom ROM, OEM, Anbieter integrierte, additional_repos.xml hinzufügen.
+
+* Anzeige des versionCode in erweiterter Versionsliste im Expertenmodus

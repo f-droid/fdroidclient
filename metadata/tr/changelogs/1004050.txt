@@ -1,0 +1,11 @@
+* Yeni katılımcı @wsdfhjxc sayesinde "Uygulama Ayrıntıları" ndaki "Sürümler" listesinin ve diğer UI geliştirmelerinin büyük revizyonu
+
+* Yeni katılımcı @doeffinger sayesinde birçok yerde klavye/D-pad gezinti düzeltmesi
+
+* Medya yüklendiğinde ve görüntülenebilirken "Aç" düğmesini gösterme
+
+* CSV listesini dışa aktarmak için "Yüklü Uygulamalar" seçeneğine Paylaş düğmesi ekleme
+
+* Takas HTML dizin sayfasına APK'ların tıklanabilir listesini ekleme
+
+* Aynalardan dizin indirmeyi yeniden deneme

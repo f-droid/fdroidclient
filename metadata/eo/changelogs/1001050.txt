@@ -1,0 +1,4 @@
+* subteno por oficialaj spegul-serviloj por ĉiu deponejo, kun aŭtomate elekto surbaze de disponeblo
+* plenaj plibonigoj al aplikaĵa fasado, kaj pri stabilo kaj erar-riparoj
+* novaj privatecaj agordoj: preventi fari ekrankopiojn, panika butono
+* novaj lingvoj: Korea (ko) kaj Vjetnama (vi)

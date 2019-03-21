@@ -1,0 +1,7 @@
+* Støtte for offisielle speil for enhver pakkebrønn, med automatiske valg etter tilgjengelighet
+
+* Mye grensesnittspuss, sågar også stabilitetsforbedringer og feilrettinger
+
+* Nye personvernsinnstillinger: Forhindring av skjermavbildninger, avslutter ved panikk
+
+* Nye språk: Koreansk (ko) og vietnamesisk (vi)

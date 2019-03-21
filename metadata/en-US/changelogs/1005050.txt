@@ -1,13 +1,13 @@
-* support swapping via SD Cards
+* Swapping via SD cards supported
 
-* Nearby swap bug fixes and improvements
+* Nearby Swap bugfixes and improvements
 
-* more improvements on the "App Details" screen
+* Further improvement of "App Details"
 
-* update language and translations about Nearby and swap
+* Update language and translations about Nearby and Swap
 
-* improved app icon selection logic
+* Improved app icon selection logic
 
-* add repos via built-in additional_repos.xml from ROM, OEM, Vendor.
+* Add repos via built-in additional_repos.xml from ROM, OEM, vendor.
 
-* display versionCode in expanded Versions list entries in Expert Mode
+* Display versionCode in expanded versions list entries in Expert mode

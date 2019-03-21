@@ -1,0 +1,7 @@
+* subteno por interŝanĝi per SD-kartoj
+* plibonigoj kaj erar-riparoj al la funkcio “proksime”
+* pliaj plibonigoj al la ekrano de aplikaĵaj detaloj
+* plibonigis tekstojn kaj tradukojn por “proksima interŝanĝo”
+* plibonigita logiko pri elekti aplikaĵan piktogramon
+* aldoni deponejojn per enkonstruita (ekz. de ROM, sistemo, ktp.) dosiero “additional_repos.xml”
+* montri kod-version sur etendita listo de versioj (aktivigu la agordon “altnivelo”)

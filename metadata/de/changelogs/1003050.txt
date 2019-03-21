@@ -1,0 +1,19 @@
+* Verlässlichere Buttons und Status-Updates
+
+* Überholte Einstellungen inkl. neuer Optionen zur Datennutzung
+
+* Akkusparende Hintergrundarbeiten ab Android 5.0
+
+* Teilen-Menüeintrag für Repos
+
+* Absturzberichte in Einstellungen abschalten
+
+* Installationsverlaufsansicht bei aktivem Protokoll
+
+* Anklickbare Anti-Features, NoSourceSince ergänzt
+
+* Minimale Android-Version 4.0 
+
+* Große Neuerungen für eigene Whitelabel-Versionen
+
+* Experteneinstellung um Debug-Version+UUID beim Download zu senden

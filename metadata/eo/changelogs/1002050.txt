@@ -1,0 +1,8 @@
+* aŭtomate redukti aŭ malplenigi kaŝmemoron kiam mankas spaco
+* plibonigita rendimento ĉe aparatoj kun malmulte da memoro
+* nun ĉiuj elŝutoj respektas la agordon “nur tra vifio”
+* malpliigi uzon de memoro kiam ĝi mankas
+* eblo por aldoni spegul-servilojn por ĉiu deponejo per klaki ligilon, skani QR-kodon, ktp.
+* multaj plibonigoj al “proksime”
+* riparis eraron pri remontrado de ĝisdatigaj sciigoj (#1271)
+* rekoni ligilojn de antaŭ-alfaj versioj de aplikaĵoj el GitLab

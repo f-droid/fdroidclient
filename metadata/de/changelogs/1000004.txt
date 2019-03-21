@@ -1,0 +1,7 @@
+* Wischgeste zum Aufgaben-Tab hinzugefügt
+
+* Warnungen mit Anweisungen bei bekannten Risiken auf dem Aufgaben-Tab 
+
+* Aktualisierte Übersetzungen
+
+* Reparaturen am dunklen Design

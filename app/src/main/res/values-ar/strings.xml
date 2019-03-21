@@ -391,7 +391,7 @@
         <item quantity="two">تطبيقان منصبان</item>
         <item quantity="few">%1$d تطبيقات منصبة</item>
         <item quantity="many">%1$d تطبيقات منصبة</item>
-        <item quantity="other">%1$d تطبيق تم تنصيبه</item>
+        <item quantity="other">%1$d تطبيقات منصبة</item>
     </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
@@ -439,19 +439,19 @@
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="zero">تم تحديثه قبل %1$d أشهر</item>
-        <item quantity="one">تم تحديثه قبل شهر</item>
+        <item quantity="one">تم تحديثه قبل شهر واحد</item>
         <item quantity="two">تم تحديثه قبل %1$d شهرين</item>
         <item quantity="few">تم تحديثه قبل %1$d أشهر</item>
-        <item quantity="many">تم تحديثه قبل %1$d أشهر</item>
-        <item quantity="other">تم تحديثه قبل %1$d أشهر</item>
+        <item quantity="many">تم تحديثه قبل %1$d شهرا</item>
+        <item quantity="other">تم تحديثه قبل %1$d شهرا</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="zero">تم تحديثه منذ %1$d سنوات</item>
-        <item quantity="one">تم تحديثه منذ سنة</item>
+        <item quantity="one">تم تحديثه منذ سنة واحدة</item>
         <item quantity="two">تم تحديثه منذ %1$d سنتين</item>
         <item quantity="few">تم تحديثه منذ %1$d سنوات</item>
         <item quantity="many">تم تحديثه منذ %1$d سنوات</item>
-        <item quantity="other">تم تحديثه منذ %1$d سنوات</item>
+        <item quantity="other">تم تحديثه منذ %1$d سنة</item>
     </plurals>
     <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
     <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
@@ -510,4 +510,12 @@
     <string name="nearby_splash__read_external_storage">لا يمكن استخدام بطاقات SD ل swap!</string>
     <string name="not_visible_nearby_description">قبل المشاركة مع الأجهزة القريبة، أجعل الجهاز الخاص بك مرئياً.</string>
     <string name="swap_toast_not_removable_storage">هذا الخيار لم يتتطابق مع أي جهاز تخزين قابل للإزالة، حاول مرة أخرى!</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="zero">إظهار التطبيقات  %1$d في الفئة %2$s</item>
+        <item quantity="one">إظهار التطبيق  %1$d الوحيد في الفئة %2$s</item>
+        <item quantity="two">إظهار التطبيقين %1$d في الفئة %2$s</item>
+        <item quantity="few">إظهار التطبيقات %1$d في هذه الفئة %2$s</item>
+        <item quantity="many">إظهار التطبيقات %1$d في الفئة %2$s</item>
+        <item quantity="other">إظهار التطبيقات %1$d في الفئة %2$s</item>
+    </plurals>
 </resources>

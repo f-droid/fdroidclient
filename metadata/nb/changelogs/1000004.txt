@@ -1,0 +1,7 @@
+* Håndvendinger for oppgraderingsfane
+
+* Vis advarsler med handlinger i oppgraderingsfane for KnownVulns
+
+* Oversettelser oppdatert
+
+* Fikser for mørk drakt

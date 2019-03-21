@@ -1,0 +1,7 @@
+* Agregados interruptores a los detalles del Repo para desactivar alguna o todas las réplicas (#1696)
+
+* Elección de réplica aleatoria para cada descarga de paquete/APK
+
+* Todas las descargas de APK se guardan en caché por repo, no por réplica
+
+* Gestión de ETags de Apache y NGINX ETags cuando se comprueba si el índice está actualizado (#1708)
