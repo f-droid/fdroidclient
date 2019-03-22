@@ -146,6 +146,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String sourceCode;
 
+    public String translation;
+
     public String video;
 
     public String changelog;
@@ -272,6 +274,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.SOURCE_CODE:
                     sourceCode = cursor.getString(i);
+                    break;
+                case Cols.TRANSLATION:
+                    translation = cursor.getString(i);
                     break;
                 case Cols.VIDEO:
                     video = cursor.getString(i);
@@ -936,6 +941,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.WEBSITE, webSite);
         values.put(Cols.ISSUE_TRACKER, issueTracker);
         values.put(Cols.SOURCE_CODE, sourceCode);
+        values.put(Cols.TRANSLATION, translation);
         values.put(Cols.VIDEO, video);
         values.put(Cols.CHANGELOG, changelog);
         values.put(Cols.DONATE, donate);
@@ -1161,6 +1167,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.webSite);
         dest.writeString(this.issueTracker);
         dest.writeString(this.sourceCode);
+        dest.writeString(this.translation);
         dest.writeString(this.video);
         dest.writeString(this.changelog);
         dest.writeString(this.donate);
@@ -1211,6 +1218,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.webSite = in.readString();
         this.issueTracker = in.readString();
         this.sourceCode = in.readString();
+        this.translation = in.readString();
         this.video = in.readString();
         this.changelog = in.readString();
         this.donate = in.readString();

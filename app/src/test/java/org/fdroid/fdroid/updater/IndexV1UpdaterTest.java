@@ -329,6 +329,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "suggestedVersionName",
                 "summary",
                 "tenInchScreenshots",
+                "translation",
                 "tvBanner",
                 "tvScreenshots",
                 "upstreamVersionCode",

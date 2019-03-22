@@ -981,6 +981,11 @@ public class AppDetailsRecyclerViewAdapter
                 addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.issueTracker);
             }
 
+            // Translation button
+            if (uriIsSetAndCanBeOpened(app.translation)) {
+                addLinkItemView(contentView, R.string.menu_translation, R.drawable.ic_translation, app.translation);
+            }
+
             // Changelog button
             if (uriIsSetAndCanBeOpened(app.changelog)) {
                 addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, app.changelog);
