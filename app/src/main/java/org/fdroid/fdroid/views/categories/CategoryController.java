@@ -55,7 +55,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         appCardsAdapter = new AppPreviewAdapter(activity);
 
-        viewAll = (Button) itemView.findViewById(R.id.button);
+        viewAll = (Button) itemView.findViewById(R.id.view_all_button);
         viewAll.setOnClickListener(onViewAll);
 
         heading = (TextView) itemView.findViewById(R.id.name);

@@ -1,102 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/mainTabSwapBackground">
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/nearby_splash__download_apps_from_people_nearby"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="?attr/lightGrayTextColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nearby_splash__find_people_button"
-        style="@style/DetailsSecondaryButtonStyle"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="@string/nearby_splash__both_parties_need_fdroid"
-        android:textSize="15sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="?attr/lightGrayTextColor"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp" />
-
-    <LinearLayout
-            android:id="@+id/readExternalStorage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/text2"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp">
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/nearby_splash__read_external_storage"
-                android:paddingRight="5dp"
-                android:paddingEnd="5dp"
-                android:textSize="17sp"
-                android:textColor="?attr/lightGrayTextColor"/>
-        <Button
-                android:id="@+id/requestReadExternalStorage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/nearby_splash__request_permission"
-                style="@style/SwapTheme.Wizard.OptionButton"/>
-    </LinearLayout>
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/mainTabSwapBackground">
 
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/nearby_splash"
-        android:importantForAccessibility="no"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text2"
-        android:layout_marginTop="36dp"
-        android:tint="?attr/mainTabSwapSplashTint"
-        android:scaleType="fitXY" />
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/nearby_splash"
+            android:importantForAccessibility="no"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/both_parties_need_fdroid_text"
+            android:layout_marginTop="36dp"
+            android:tint="?attr/mainTabSwapSplashTint"
+            android:scaleType="fitXY"
+            tools:targetApi="jelly_bean"/>
 
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/nearby_splash__download_apps_from_people_nearby"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="?attr/lightGrayTextColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/find_people_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nearby_splash__find_people_button"
+            style="@style/DetailsSecondaryButtonStyle"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="24dp" android:layout_marginLeft="8dp" android:layout_marginRight="8dp"/>
+
+    <TextView
+            android:id="@+id/both_parties_need_fdroid_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="@string/nearby_splash__both_parties_need_fdroid"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="?attr/lightGrayTextColor"
+            app:layout_constraintTop_toBottomOf="@+id/find_people_button"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"/>
+
+    <TextView
+            android:id="@+id/read_external_storage_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/nearby_splash__read_external_storage"
+            android:textSize="20sp"
+            android:textColor="?attr/lightGrayTextColor"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="24dp" android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/both_parties_need_fdroid_text"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+    <Button
+            android:id="@+id/request_read_external_storage_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nearby_splash__request_permission"
+            style="@style/DetailsSecondaryButtonStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/read_external_storage_text"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 </android.support.constraint.ConstraintLayout>

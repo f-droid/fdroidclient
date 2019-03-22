@@ -58,13 +58,13 @@ class NearbyViewBinder {
     NearbyViewBinder(final Activity activity, FrameLayout parent) {
         View swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, parent, true);
 
-        TextView subtext = swapView.findViewById(R.id.text2);
+        TextView subtext = swapView.findViewById(R.id.both_parties_need_fdroid_text);
         subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid,
                 activity.getString(R.string.app_name)));
 
         ImageView nearbySplash = swapView.findViewById(R.id.image);
 
-        Button startButton = swapView.findViewById(R.id.button);
+        Button startButton = swapView.findViewById(R.id.find_people_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,9 +110,10 @@ class NearbyViewBinder {
                 || PackageManager.PERMISSION_GRANTED
                 != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
             nearbySplash.setVisibility(View.GONE);
-            View readExternalStorage = swapView.findViewById(R.id.readExternalStorage);
-            readExternalStorage.setVisibility(View.VISIBLE);
-            Button requestReadExternalStorage = swapView.findViewById(R.id.requestReadExternalStorage);
+            TextView readExternalStorageText = swapView.findViewById(R.id.read_external_storage_text);
+            readExternalStorageText.setVisibility(View.VISIBLE);
+            Button requestReadExternalStorage = swapView.findViewById(R.id.request_read_external_storage_button);
+            requestReadExternalStorage.setVisibility(View.VISIBLE);
             requestReadExternalStorage.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = 21)
                 @Override

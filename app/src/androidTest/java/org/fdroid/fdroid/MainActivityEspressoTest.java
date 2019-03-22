@@ -204,7 +204,7 @@ public class MainActivityEspressoTest {
                 allOf(withText(R.string.main_menu__swap_nearby), isDisplayed()));
         nearbyBottonNavButton.perform(click());
         ViewInteraction findPeopleButton = onView(
-                allOf(withId(R.id.button), withText(R.string.nearby_splash__find_people_button), isDisplayed()));
+                allOf(withId(R.id.find_people_button), withText(R.string.nearby_splash__find_people_button), isDisplayed()));
         findPeopleButton.perform(click());
         onView(withText(R.string.swap_send_fdroid)).check(matches(isDisplayed()));
     }
