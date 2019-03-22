@@ -347,6 +347,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "installedVersionCode",
                 "installedVersionName",
                 "isApk",
+                "isLocalized",
                 "preferredSigner",
                 "prefs",
                 "TAG",
