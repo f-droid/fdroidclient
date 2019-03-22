@@ -74,16 +74,18 @@ public class PreferencesTest {
      * Check that the defaults are being set when using
      * {@link PreferenceManager#getDefaultSharedPreferences(Context)}, and that
      * the values match.  {@link Preferences#Preferences(Context)} sets the
-     * value of {@link Preferences#PREF_LOCAL_REPO_NAME} dynamically, so there
-     * is one more preference.
+     * values of {@link Preferences#PREF_LOCAL_REPO_NAME} and
+     * {@link Preferences#PREF_AUTO_DOWNLOAD_INSTALL_UPDATES} dynamically, so
+     * there are two more preferences.
      */
     @Test
     public void testSetDefaultValues() {
         Preferences.setupForTests(CONTEXT);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(CONTEXT);
-        assertEquals(defaults.getAll().size() + 1, sharedPreferences.getAll().size());
+        assertEquals(defaults.getAll().size() + 2, sharedPreferences.getAll().size());
         assertTrue(sharedPreferences.contains(Preferences.PREF_LOCAL_REPO_NAME));
+        assertTrue(sharedPreferences.contains(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES));
 
         Map<String, ?> entries = sharedPreferences.getAll();
         for (Map.Entry<String, ?> entry : defaults.getAll().entrySet()) {
@@ -104,8 +106,6 @@ public class PreferencesTest {
         Preferences.setupForTests(CONTEXT);
         Preferences preferences = Preferences.get();
 
-        assertEquals(defaults.getBoolean(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, false),
-                preferences.isAutoDownloadEnabled());
         assertEquals(defaults.getBoolean(Preferences.PREF_EXPERT, false),
                 preferences.expertMode());
         assertEquals(defaults.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, false),
