@@ -44,16 +44,18 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     @Override
     public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout;
-        if (viewType == R.id.whats_new_feature) {
-            layout = R.layout.app_card_featured;
-        } else if (viewType == R.id.whats_new_large_tile) {
-            layout = R.layout.app_card_large;
-        } else if (viewType == R.id.whats_new_small_tile) {
-            layout = R.layout.app_card_horizontal;
-        } else if (viewType == R.id.whats_new_regular_list) {
-            layout = R.layout.app_card_list_item;
-        } else {
-            throw new IllegalArgumentException("Unknown view type when rendering \"Whats New\": " + viewType);
+        switch (viewType) {
+            case R.id.whats_new_large_tile:
+                layout = R.layout.app_card_large;
+                break;
+            case R.id.whats_new_small_tile:
+                layout = R.layout.app_card_horizontal;
+                break;
+            case R.id.whats_new_regular_list:
+                layout = R.layout.app_card_list_item;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown view type when rendering \"Whats New\": " + viewType);
         }
 
         return new AppCardController(activity, activity.getLayoutInflater().inflate(layout, parent, false));
@@ -72,7 +74,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
         }
 
         if (position == 0) {
-            return R.id.whats_new_feature;
+            return R.id.whats_new_regular_list;
         } else {
             switch (relativePositionInCycle) {
                 case 1:
@@ -145,11 +147,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
             int verticalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__vertical);
 
             int relativePositionInCycle = position % 5;
-            if (position == 0) {
-                // Don't set any padding for the first item as the FeatureImage behind it needs to butt right
-                // up against the left/top/right of the screen.
-                outRect.set(0, 0, 0, verticalPadding);
-            } else if (relativePositionInCycle != 0) {
+            if (relativePositionInCycle != 0) {
                 // The item on the left will have both left and right padding. The item on the right
                 // will only have padding on the right. This will allow the same amount of padding
                 // on the left, centre, and right of the grid, rather than double the padding in the
@@ -161,7 +159,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
                 int paddingRight = isLtr ? horizontalPadding : paddingStart;
                 outRect.set(paddingLeft, 0, paddingRight, verticalPadding);
             } else {
-                outRect.set(horizontalPadding, 0, horizontalPadding, verticalPadding);
+                outRect.set(horizontalPadding, position == 0 ? verticalPadding : 0, horizontalPadding, verticalPadding);
             }
         }
     }
