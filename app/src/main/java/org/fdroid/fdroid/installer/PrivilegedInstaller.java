@@ -265,7 +265,7 @@ public class PrivilegedInstaller extends Installer {
         PackageManager pm = context.getPackageManager();
         try {
             pm.getPackageInfo(PRIVILEGED_EXTENSION_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
-            return true;
+            return pm.getApplicationInfo(PRIVILEGED_EXTENSION_PACKAGE_NAME, 0).enabled;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
