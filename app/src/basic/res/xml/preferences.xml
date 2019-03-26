@@ -50,7 +50,6 @@
         <SwitchPreference
                 android:title="@string/update_auto_download"
                 android:summary="@string/update_auto_download_summary"
-                android:defaultValue="true"
                 android:key="updateAutoDownload"/>
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="updateIntervalSeekBarPosition"

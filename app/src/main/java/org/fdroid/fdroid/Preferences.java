@@ -32,6 +32,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.net.InetSocketAddress;
@@ -69,11 +70,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         PreferenceManager.setDefaultValues(context, R.xml.preferences, true);
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
+        SharedPreferences.Editor editor = preferences.edit();
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
-            preferences.edit()
-                    .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
-                    .apply();
+            editor.putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
         }
+        if (!preferences.contains(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES)) {
+            editor.putBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES,
+                    PrivilegedInstaller.isExtensionInstalledCorrectly(context)
+                            != PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES);
+        }
+        editor.apply();
     }
 
     public static final String PREF_OVER_WIFI = "overWifi";
