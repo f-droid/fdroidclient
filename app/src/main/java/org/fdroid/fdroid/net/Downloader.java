@@ -204,10 +204,16 @@ public abstract class Downloader {
      * Send progress updates on a timer to avoid flooding receivers with pointless events.
      */
     private final TimerTask progressTask = new TimerTask() {
+        private long lastBytesRead = Long.MIN_VALUE;
+        private long lastTotalBytes = Long.MIN_VALUE;
+
         @Override
         public void run() {
-            if (downloaderProgressListener != null) {
+            if (downloaderProgressListener != null
+                    && (bytesRead != lastBytesRead || totalBytes != lastTotalBytes)) {
                 downloaderProgressListener.onProgress(bytesRead, totalBytes);
+                lastBytesRead = bytesRead;
+                lastTotalBytes = totalBytes;
             }
         }
     };
