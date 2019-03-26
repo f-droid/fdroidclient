@@ -73,7 +73,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
         if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
-            Uri uri = Uri.parse(suggestedApk.getUrl());
+            Uri uri = Uri.parse(suggestedApk.getCanonicalUrl());
             manager.registerReceiver(installReceiver, Installer.getInstallIntentFilter(uri));
             InstallManagerService.queue(activity, app, suggestedApk);
         } else {

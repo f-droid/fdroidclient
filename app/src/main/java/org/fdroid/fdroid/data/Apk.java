@@ -263,8 +263,17 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
     }
 
+    /**
+     * Get the URL that points to the canonical download source for this
+     * package.  This is also used as the unique ID for tracking downloading,
+     * progress, and notifications throughout the whole install process.  It
+     * is guaranteed to uniquely represent this file since it points to a file
+     * on the file system of the canonical webserver.
+     *
+     * @see org.fdroid.fdroid.installer.InstallManagerService
+     */
     @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
-    public String getUrl() {
+    public String getCanonicalUrl() {
         checkRepoAddress();
         return repoAddress + "/" + apkName.replace(" ", "%20");
     }
@@ -527,7 +536,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public File getMediaInstallPath(Context context) {
         File path = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_DOWNLOADS); // Default for all other non-apk/media files
-        String fileExtension = MimeTypeMap.getFileExtensionFromUrl(this.getUrl());
+        String fileExtension = MimeTypeMap.getFileExtensionFromUrl(this.getCanonicalUrl());
         if (TextUtils.isEmpty(fileExtension)) return path;
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         String[] mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension).split("/");

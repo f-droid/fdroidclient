@@ -133,7 +133,7 @@ public final class AppUpdateStatusManager {
          * @see org.fdroid.fdroid.installer.InstallManagerService
          */
         public String getUniqueKey() {
-            return apk.getUrl();
+            return apk.getCanonicalUrl();
         }
 
         /**
@@ -321,7 +321,7 @@ public final class AppUpdateStatusManager {
             ContentResolver resolver = context.getContentResolver();
             App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repoId);
             AppUpdateStatus ret = new AppUpdateStatus(app, apk, status, intent);
-            appMapping.put(apk.getUrl(), ret);
+            appMapping.put(apk.getCanonicalUrl(), ret);
             return ret;
         }
     }
@@ -347,7 +347,7 @@ public final class AppUpdateStatusManager {
         }
 
         synchronized (appMapping) {
-            AppUpdateStatus entry = appMapping.get(apk.getUrl());
+            AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry != null) {
                 updateApkInternal(entry, status, pendingIntent);
             } else {
@@ -435,7 +435,7 @@ public final class AppUpdateStatusManager {
 
     public void setApkError(Apk apk, String errorText) {
         synchronized (appMapping) {
-            AppUpdateStatus entry = appMapping.get(apk.getUrl());
+            AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry == null) {
                 entry = createAppEntry(apk, Status.InstallError, null);
             }

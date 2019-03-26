@@ -483,9 +483,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
 
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            String urlString = currentStatus.apk.getUrl();
+            String urlString = currentStatus.apk.getCanonicalUrl();
             File apkFilePath = ApkCache.getApkDownloadPath(activity, urlString);
-            Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
+            Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getCanonicalUrl() +
                     " to " + apkFilePath);
 
             final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);

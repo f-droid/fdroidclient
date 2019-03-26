@@ -209,7 +209,7 @@ public class InstallManagerService extends Service {
         getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
         getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256);
 
-        File apkFilePath = ApkCache.getApkDownloadPath(this, apk.getUrl());
+        File apkFilePath = ApkCache.getApkDownloadPath(this, apk.getCanonicalUrl());
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + urlString + " " + apkFilePath);
@@ -464,7 +464,7 @@ public class InstallManagerService extends Service {
      * @param context this app's {@link Context}
      */
     public static void queue(Context context, App app, @NonNull Apk apk) {
-        String urlString = apk.getUrl();
+        String urlString = apk.getCanonicalUrl();
         AppUpdateStatusManager.getInstance(context).addApk(apk, AppUpdateStatusManager.Status.PendingInstall, null);
         putPendingInstall(context, urlString, apk.packageName);
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
