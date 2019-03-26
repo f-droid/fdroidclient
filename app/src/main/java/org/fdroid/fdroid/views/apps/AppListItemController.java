@@ -477,7 +477,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 // Once it is explicitly launched by the user, then we can pretty much forget about
                 // any sort of notification that the app was successfully installed. It should be
                 // apparent to the user because they just launched it.
-                AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getUniqueKey());
+                AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getCanonicalUrl());
             }
             return;
         }
@@ -534,6 +534,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+        InstallManagerService.cancel(activity, currentStatus.getCanonicalUrl());
     }
 }

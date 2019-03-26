@@ -59,7 +59,7 @@ public class AppStatusListItemController extends AppListItemController {
         CharSequence message = null;
         if (status != null) {
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
-            manager.removeApk(status.getUniqueKey());
+            manager.removeApk(status.getCanonicalUrl());
             switch (status.status) {
                 case Downloading:
                     cancelDownload();
