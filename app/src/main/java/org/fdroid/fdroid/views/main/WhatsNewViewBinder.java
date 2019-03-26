@@ -23,12 +23,13 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -100,11 +101,31 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             return null;
         }
 
+        // select that have all required items:
+        String selection = "(" + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.SUMMARY + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.DESCRIPTION + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.LICENSE + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.WHATSNEW + " != ''";
+        if (!"en".equals(Locale.getDefault().getLanguage())) {
+            // only require localization if using a non-English locale
+            selection += " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.IS_LOCALIZED + " = 1";
+        }
+        //  and at least one optional item:
+        selection += ") AND ("
+                + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.SEVEN_INCH_SCREENSHOTS + " IS NOT NULL "
+                + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.PHONE_SCREENSHOTS + " IS NOT NULL "
+                + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS + " IS NOT NULL "
+                + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.TV_SCREENSHOTS + " IS NOT NULL "
+                + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " IS NOT NULL "
+                + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.FEATURE_GRAPHIC + " IS NOT NULL "
+                + ")";
+
         return new CursorLoader(
                 activity,
                 AppProvider.getRecentlyUpdatedUri(),
-                Schema.AppMetadataTable.Cols.ALL,
-                null,
+                AppMetadataTable.Cols.ALL,
+                selection,
                 null,
                 null
         );

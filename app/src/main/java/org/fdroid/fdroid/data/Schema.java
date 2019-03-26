@@ -12,11 +12,13 @@ public interface Schema {
     /**
      * A package is essentially the app that a developer builds and wants you to install on your
      * device. It differs from entries in:
-     *  * {@link ApkTable} because they are specific builds of a particular package. Many different
-     *    builds of the same package can exist.
-     *  * {@link AppMetadataTable} because this is metdata about a package which is specified by a
-     *    given repo. Different repos can provide the same package with different descriptions,
-     *    categories, etc.
+     * <ul>
+     * <li>{@link ApkTable} because they are specific builds of a particular package. Many different
+     * builds of the same package can exist.</li>
+     * <li>{@link AppMetadataTable} because this is metdata about a package which is specified by a
+     * given repo. Different repos can provide the same package with different descriptions,
+     * categories, etc.</li>
+     * </ul>
      */
     interface PackageTable {
 
@@ -78,6 +80,7 @@ public interface Schema {
      * An entry in this table signifies that an app is in a particular category. Each repo can
      * classify its apps in separate categories, and so the same record in {@link PackageTable}
      * can be in the same category multiple times, if multiple repos think that is the case.
+     *
      * @see CategoryTable
      * @see AppMetadataTable
      */
@@ -90,12 +93,14 @@ public interface Schema {
 
             /**
              * Foreign key to {@link AppMetadataTable}.
+             *
              * @see AppMetadataTable
              */
             String APP_METADATA_ID = "appMetadataId";
 
             /**
              * Foreign key to {@link CategoryTable}.
+             *
              * @see CategoryTable
              */
             String CATEGORY_ID = "categoryId";
@@ -121,6 +126,7 @@ public interface Schema {
 
     /**
      * An entry in this table signifies that an apk has a particular anti feature.
+     *
      * @see AntiFeatureTable
      * @see ApkTable
      */
@@ -131,12 +137,14 @@ public interface Schema {
         interface Cols {
             /**
              * Foreign key to {@link ApkTable}.
+             *
              * @see ApkTable
              */
             String APK_ID = "apkId";
 
             /**
              * Foreign key to {@link AntiFeatureTable}.
+             *
              * @see AntiFeatureTable
              */
             String ANTI_FEATURE_ID = "antiFeatureId";
@@ -174,6 +182,7 @@ public interface Schema {
             String WEBSITE = "webURL";
             String ISSUE_TRACKER = "trackerURL";
             String SOURCE_CODE = "sourceURL";
+            String TRANSLATION = "translation";
             String VIDEO = "video";
             String CHANGELOG = "changelogURL";
             String DONATE = "donateURL";
@@ -199,6 +208,7 @@ public interface Schema {
             String TV_SCREENSHOTS = "tvScreenshots";
             String WEAR_SCREENSHOTS = "wearScreenshots";
             String IS_APK = "isApk";
+            String IS_LOCALIZED = "isLocalized";
 
             interface SuggestedApk {
                 String VERSION_NAME = "suggestedApkVersion";
@@ -233,28 +243,29 @@ public interface Schema {
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
+                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED,
             };
 
             /**
              * Superset of {@link Cols#ALL_COLS} including fields from other tables and also an alias
              * to satisfy the Android requirement for an "_ID" field.
+             *
              * @see Cols#ALL_COLS
              */
             String[] ALL = {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
+                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

@@ -98,6 +98,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String preferredSigner;
     @JsonIgnore
     public boolean isApk;
+    @JsonIgnore
+    private boolean isLocalized = false;
 
     /**
      * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
@@ -143,6 +145,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String issueTracker;
 
     public String sourceCode;
+
+    public String translation;
 
     public String video;
 
@@ -271,6 +275,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.SOURCE_CODE:
                     sourceCode = cursor.getString(i);
                     break;
+                case Cols.TRANSLATION:
+                    translation = cursor.getString(i);
+                    break;
                 case Cols.VIDEO:
                     video = cursor.getString(i);
                     break;
@@ -348,6 +355,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.IS_APK:
                     isApk = cursor.getInt(i) == 1;
+                    break;
+                case Cols.IS_LOCALIZED:
+                    isLocalized = cursor.getInt(i) == 1;
                     break;
                 case Cols.InstalledApp.VERSION_CODE:
                     installedVersionCode = cursor.getInt(i);
@@ -468,6 +478,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     @JsonProperty("localized")
     private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
+        if (localized.size() > 1) {
+            isLocalized = true;
+        }
+
         Locale defaultLocale = Locale.getDefault();
         String languageTag = defaultLocale.getLanguage();
         String countryTag = defaultLocale.getCountry();
@@ -927,6 +941,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.WEBSITE, webSite);
         values.put(Cols.ISSUE_TRACKER, issueTracker);
         values.put(Cols.SOURCE_CODE, sourceCode);
+        values.put(Cols.TRANSLATION, translation);
         values.put(Cols.VIDEO, video);
         values.put(Cols.CHANGELOG, changelog);
         values.put(Cols.DONATE, donate);
@@ -953,6 +968,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.WEAR_SCREENSHOTS, Utils.serializeCommaSeparatedString(wearScreenshots));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
         values.put(Cols.IS_APK, isApk ? 1 : 0);
+        values.put(Cols.IS_LOCALIZED, isLocalized ? 1 : 0);
 
         return values;
     }
@@ -1151,6 +1167,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.webSite);
         dest.writeString(this.issueTracker);
         dest.writeString(this.sourceCode);
+        dest.writeString(this.translation);
         dest.writeString(this.video);
         dest.writeString(this.changelog);
         dest.writeString(this.donate);
@@ -1178,6 +1195,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeStringArray(this.tvScreenshots);
         dest.writeStringArray(this.wearScreenshots);
         dest.writeByte(this.isApk ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isLocalized ? (byte) 1 : (byte) 0);
         dest.writeString(this.installedVersionName);
         dest.writeInt(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
@@ -1200,6 +1218,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.webSite = in.readString();
         this.issueTracker = in.readString();
         this.sourceCode = in.readString();
+        this.translation = in.readString();
         this.video = in.readString();
         this.changelog = in.readString();
         this.donate = in.readString();
@@ -1229,6 +1248,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.tvScreenshots = in.createStringArray();
         this.wearScreenshots = in.createStringArray();
         this.isApk = in.readByte() != 0;
+        this.isLocalized = in.readByte() != 0;
         this.installedVersionName = in.readString();
         this.installedVersionCode = in.readInt();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());

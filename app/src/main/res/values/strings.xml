@@ -210,11 +210,18 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_ignore_this">Ignore This Update</string>
     <string name="menu_website">Website</string>
     <string name="menu_email">E-Mail Author</string>
+    <!-- The title for the link that points to the issue tracker for this app -->
     <string name="menu_issues">Issues</string>
+    <!-- The title for the link that points to the Changelog document for this app -->
     <string name="menu_changelog">Changelog</string>
+    <!-- The title for the link that points to a demo video for this app -->
     <string name="menu_video">Video</string>
+    <!-- The title for the link that points to the license for this app -->
     <string name="menu_license">License: %s</string>
+    <!-- The title for the link that points to the source code for this app -->
     <string name="menu_source">Source Code</string>
+    <!-- The title for the link that points to the translation service for this app -->
+    <string name="menu_translation">Translation</string>
     <string name="menu_upgrade">Update</string>
     <string name="menu_downgrade">Downgrade</string>
     <string name="menu_donate">Donate</string>

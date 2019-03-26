@@ -143,6 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.WEBSITE + " text, "
             + AppMetadataTable.Cols.ISSUE_TRACKER + " text, "
             + AppMetadataTable.Cols.SOURCE_CODE + " text, "
+            + AppMetadataTable.Cols.TRANSLATION + " text, "
             + AppMetadataTable.Cols.VIDEO + " string, "
             + AppMetadataTable.Cols.CHANGELOG + " text, "
             + AppMetadataTable.Cols.PREFERRED_SIGNER + " text,"
@@ -169,6 +170,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.TV_SCREENSHOTS + " string,"
             + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " string,"
             + AppMetadataTable.Cols.IS_APK + " boolean,"
+            + AppMetadataTable.Cols.IS_LOCALIZED + " boolean,"
             + "primary key(" + AppMetadataTable.Cols.PACKAGE_ID + ", " + AppMetadataTable.Cols.REPO_ID + "));";
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
@@ -224,7 +226,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 80;
+    protected static final int DB_VERSION = 82;
 
     private final Context context;
 
@@ -450,6 +452,32 @@ public class DBHelper extends SQLiteOpenHelper {
         addUserMirrorsFields(db, oldVersion);
         removeNotNullFromVersionName(db, oldVersion);
         addDisabledMirrorsFields(db, oldVersion);
+        addIsLocalized(db, oldVersion);
+        addTranslation(db, oldVersion);
+    }
+
+    private void addTranslation(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 82) {
+            return;
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.TRANSLATION)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.TRANSLATION + " field to "
+                    + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
+                    + AppMetadataTable.Cols.TRANSLATION + " string;");
+        }
+    }
+
+    private void addIsLocalized(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 81) {
+            return;
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.IS_LOCALIZED)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.IS_LOCALIZED + " field to "
+                    + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
+                    + AppMetadataTable.Cols.IS_LOCALIZED + " boolean;");
+        }
     }
 
     private void addDisabledMirrorsFields(SQLiteDatabase db, int oldVersion) {
