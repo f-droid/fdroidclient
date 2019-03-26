@@ -11,7 +11,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
@@ -159,7 +158,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
                 int paddingRight = isLtr ? horizontalPadding : paddingStart;
                 outRect.set(paddingLeft, 0, paddingRight, verticalPadding);
             } else {
-                outRect.set(horizontalPadding, position == 0 ? verticalPadding : 0, horizontalPadding, verticalPadding);
+                outRect.set(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
             }
         }
     }
