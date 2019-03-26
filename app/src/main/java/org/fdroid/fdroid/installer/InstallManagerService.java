@@ -464,23 +464,23 @@ public class InstallManagerService extends Service {
      * @param context this app's {@link Context}
      */
     public static void queue(Context context, App app, @NonNull Apk apk) {
-        String urlString = apk.getCanonicalUrl();
+        String canonicalUrl = apk.getCanonicalUrl();
         AppUpdateStatusManager.getInstance(context).addApk(apk, AppUpdateStatusManager.Status.PendingInstall, null);
-        putPendingInstall(context, urlString, apk.packageName);
-        Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
+        putPendingInstall(context, canonicalUrl, apk.packageName);
+        Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + canonicalUrl);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(EXTRA_APP, app);
         intent.putExtra(EXTRA_APK, apk);
         context.startService(intent);
     }
 
-    public static void cancel(Context context, String urlString) {
-        removePendingInstall(context, urlString);
+    public static void cancel(Context context, String canonicalUrl) {
+        removePendingInstall(context, canonicalUrl);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_CANCEL);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(canonicalUrl));
         context.startService(intent);
     }
 
@@ -491,29 +491,29 @@ public class InstallManagerService extends Service {
      * completed, or the device lost power in the middle of the install
      * process.
      */
-    public boolean isPendingInstall(String urlString) {
-        return pendingInstalls.contains(urlString);
+    public boolean isPendingInstall(String canonicalUrl) {
+        return pendingInstalls.contains(canonicalUrl);
     }
 
     /**
      * Mark a given APK as in the process of being installed, with
-     * the {@code urlString} of the download used as the unique ID,
+     * the {@code canonicalUrl} of the download used as the unique ID,
      * and the file hash used to verify that things are the same.
      *
      * @see #isPendingInstall(String)
      */
-    public static void putPendingInstall(Context context, String urlString, String packageName) {
+    public static void putPendingInstall(Context context, String canonicalUrl, String packageName) {
         if (pendingInstalls == null) {
             pendingInstalls = getPendingInstalls(context);
         }
-        pendingInstalls.edit().putString(urlString, packageName).apply();
+        pendingInstalls.edit().putString(canonicalUrl, packageName).apply();
     }
 
-    public static void removePendingInstall(Context context, String urlString) {
+    public static void removePendingInstall(Context context, String canonicalUrl) {
         if (pendingInstalls == null) {
             pendingInstalls = getPendingInstalls(context);
         }
-        pendingInstalls.edit().remove(urlString).apply();
+        pendingInstalls.edit().remove(canonicalUrl).apply();
     }
 
     private static SharedPreferences getPendingInstalls(Context context) {

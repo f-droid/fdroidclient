@@ -199,9 +199,9 @@ public class DownloaderService extends Service {
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
-        String canonicalUrlString = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
-        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrlString);
-        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrlString);
+        String canonicalUrl = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
+        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
@@ -219,22 +219,22 @@ public class DownloaderService extends Service {
             downloader.download();
             if (downloader.isNotFound()) {
                 sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
-                        repoId, canonicalUrlString);
+                        repoId, canonicalUrl);
             } else {
-                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrlString);
+                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
             }
         } catch (InterruptedException e) {
-            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
                 | ProtocolException | UnknownHostException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, e.getLocalizedMessage());
-            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
         } catch (IOException e) {
             e.printStackTrace();
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile,
-                    e.getLocalizedMessage(), repoId, canonicalUrlString);
+                    e.getLocalizedMessage(), repoId, canonicalUrl);
         } finally {
             if (downloader != null) {
                 downloader.close();
@@ -247,8 +247,8 @@ public class DownloaderService extends Service {
         sendBroadcast(uri, action, null, null);
     }
 
-    private void sendBroadcast(Uri uri, String action, File file, long repoId, String originalUrlString) {
-        sendBroadcast(uri, action, file, null, repoId, originalUrlString);
+    private void sendBroadcast(Uri uri, String action, File file, long repoId, String canonicalUrl) {
+        sendBroadcast(uri, action, file, null, repoId, canonicalUrl);
     }
 
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage) {
@@ -256,10 +256,10 @@ public class DownloaderService extends Service {
     }
 
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage, long repoId,
-                               String originalUrlString) {
+                               String canonicalUrl) {
         Intent intent = new Intent(action);
-        if (originalUrlString != null) {
-            intent.setData(Uri.parse(originalUrlString));
+        if (canonicalUrl != null) {
+            intent.setData(Uri.parse(canonicalUrl));
         }
         if (file != null) {
             intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
@@ -280,10 +280,10 @@ public class DownloaderService extends Service {
      * @param context         this app's {@link Context}
      * @param mirrorUrlString The URL to add to the download queue
      * @param repoId          the database ID number representing one repo
-     * @param urlString       the URL used as the unique ID throughout F-Droid
+     * @param canonicalUrl    the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String mirrorUrlString, long repoId, String urlString) {
+    public static void queue(Context context, String mirrorUrlString, long repoId, String canonicalUrl) {
         if (TextUtils.isEmpty(mirrorUrlString)) {
             return;
         }
@@ -292,7 +292,7 @@ public class DownloaderService extends Service {
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(mirrorUrlString));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
-        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, urlString);
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
     }
 
