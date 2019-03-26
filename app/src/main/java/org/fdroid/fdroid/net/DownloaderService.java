@@ -32,9 +32,11 @@ import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -277,23 +279,52 @@ public class DownloaderService extends Service {
      * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context         this app's {@link Context}
-     * @param mirrorUrlString The URL to add to the download queue
-     * @param repoId          the database ID number representing one repo
-     * @param canonicalUrl    the URL used as the unique ID throughout F-Droid
+     * @param context      this app's {@link Context}
+     * @param mirrorUrl    The URL to add to the download queue
+     * @param repoId       the database ID number representing one repo
+     * @param canonicalUrl the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String mirrorUrlString, long repoId, String canonicalUrl) {
-        if (TextUtils.isEmpty(mirrorUrlString)) {
+    public static void queue(Context context, String mirrorUrl, long repoId, String canonicalUrl) {
+        if (TextUtils.isEmpty(mirrorUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing " + mirrorUrlString + " to go into the download queue");
+        Utils.debugLog(TAG, "Preparing " + mirrorUrl + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
-        intent.setData(Uri.parse(mirrorUrlString));
+        intent.setData(Uri.parse(mirrorUrl));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
         intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
+    }
+
+    /**
+     * Add a package to the download queue, choosing a random mirror to
+     * download from.
+     *
+     * @param canonicalUrl the URL used as the unique ID throughout F-Droid,
+     *                     needed here to support canceling active downloads
+     */
+    public static void queueUsingRandomMirror(Context context, long repoId, String canonicalUrl) {
+        String mirrorUrl = FDroidApp.switchUrlToNewMirror(canonicalUrl,
+                RepoProvider.Helper.findById(context, repoId));
+        queue(context, mirrorUrl, repoId, canonicalUrl);
+    }
+
+    /**
+     * Tries to return a version of {@code urlString} from a mirror, if there
+     * is an error, it just returns {@code urlString}.
+     *
+     * @see FDroidApp#getNewMirrorOnError(String, org.fdroid.fdroid.data.Repo)
+     */
+    public static void queueUsingDifferentMirror(Context context, long repoId, String canonicalUrl) {
+        try {
+            String mirrorUrl = FDroidApp.getNewMirrorOnError(canonicalUrl,
+                    RepoProvider.Helper.findById(context, repoId));
+            queue(context, mirrorUrl, repoId, canonicalUrl);
+        } catch (IOException e) {
+            queue(context, canonicalUrl, repoId, canonicalUrl);
+        }
     }
 
     /**
@@ -345,10 +376,10 @@ public class DownloaderService extends Service {
     /**
      * Get a prepared {@link IntentFilter} for use for matching this service's action events.
      *
-     * @param urlString The full file URL to match.
+     * @param canonicalUrl the URL used as the unique ID for the specific package
      */
-    public static IntentFilter getIntentFilter(String urlString) {
-        Uri uri = Uri.parse(urlString);
+    public static IntentFilter getIntentFilter(String canonicalUrl) {
+        Uri uri = Uri.parse(canonicalUrl);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Downloader.ACTION_STARTED);
         intentFilter.addAction(Downloader.ACTION_PROGRESS);
