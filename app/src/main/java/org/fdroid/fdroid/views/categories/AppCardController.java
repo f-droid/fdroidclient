@@ -2,30 +2,22 @@ package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.views.apps.FeatureImage;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
@@ -33,10 +25,9 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
  * + {@link R.id#icon} ({@link ImageView}, required)
  * + {@link R.id#summary} ({@link TextView}, required)
  * + {@link R.id#new_tag} ({@link TextView}, optional)
- * + {@link R.id#featured_image} ({@link ImageView}, optional)
  */
 public class AppCardController extends RecyclerView.ViewHolder
-        implements ImageLoadingListener, View.OnClickListener {
+        implements View.OnClickListener {
 
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
@@ -58,13 +49,6 @@ public class AppCardController extends RecyclerView.ViewHolder
     @Nullable
     private final TextView newTag;
 
-    /**
-     * Wide and short image for branding the app. If it is not present in the metadata then F-Droid
-     * will draw some abstract art instead.
-     */
-    @Nullable
-    private final FeatureImage featuredImage;
-
     @Nullable
     private App currentApp;
 
@@ -78,7 +62,6 @@ public class AppCardController extends RecyclerView.ViewHolder
         icon = (ImageView) findViewAndEnsureNonNull(itemView, R.id.icon);
         summary = (TextView) findViewAndEnsureNonNull(itemView, R.id.summary);
 
-        featuredImage = (FeatureImage) itemView.findViewById(R.id.featured_image);
         newTag = (TextView) itemView.findViewById(R.id.new_tag);
 
         itemView.setOnClickListener(this);
@@ -113,25 +96,7 @@ public class AppCardController extends RecyclerView.ViewHolder
             }
         }
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions(), this);
-
-        if (featuredImage != null) {
-            featuredImage.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
-            featuredImage.setImageDrawable(null);
-
-            // Note: We could call the convenience function
-            // loadImageAndDisplay(ImageLoader, DisplayImageOptions, String, String)
-            // which includes a fallback for when currentApp.featureGraphic is empty. However we need
-            // to take care of also loading the icon (regardless of whether there is a featureGraphic
-            // or not for this app) so that we can display the icon to the user. We will use the
-            // load complete listener for the icon to decide whether we need to extract the colour
-            // from that icon and assign to the `FeatureImage` (or whether we should wait for the
-            // feature image to be loaded).
-            if (!TextUtils.isEmpty(app.featureGraphic)) {
-                featuredImage.loadImageAndDisplay(ImageLoader.getInstance(),
-                        Utils.getRepoAppDisplayImageOptions(), app.getFeatureGraphicUrl(activity));
-            }
-        }
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
     }
 
     private boolean isConsideredNew(@NonNull App app) {
@@ -166,44 +131,4 @@ public class AppCardController extends RecyclerView.ViewHolder
             activity.startActivity(intent);
         }
     }
-
-    // =============================================================================================
-    //  Icon loader callbacks
-    //
-    //  Most are unused, the main goal is to specify a background colour for the featured image if
-    //  no featured image is specified in the apps metadata. If an image is specified, then it will
-    //  get loaded using the `FeatureImage.loadImageAndDisplay()` method and so we don't need to do
-    //  anything special here.
-    // =============================================================================================
-
-    @Override
-    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        if (currentApp != null
-                && TextUtils.isEmpty(currentApp.featureGraphic)
-                && featuredImage != null
-                && loadedImage != null) {
-            new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                @Override
-                public void onGenerated(@NonNull Palette palette) {
-                    featuredImage.setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
-                }
-            });
-        }
-    }
-
-    @Override
-    public void onLoadingStarted(String imageUri, View view) {
-        // Do nothing
-    }
-
-    @Override
-    public void onLoadingCancelled(String imageUri, View view) {
-        // Do nothing
-    }
-
-    @Override
-    public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-        // Do nothing
-    }
-
 }

@@ -2,7 +2,6 @@
 <resources>
     <item type="id" name="preference_fragment_parent"/>
 
-    <item type="id" name="whats_new_feature"/>
     <item type="id" name="whats_new_large_tile"/>
     <item type="id" name="whats_new_small_tile"/>
     <item type="id" name="whats_new_regular_list"/>
