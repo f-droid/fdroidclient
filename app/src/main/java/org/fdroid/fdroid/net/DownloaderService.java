@@ -211,7 +211,7 @@ public class DownloaderService extends Service {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                    intent.setData(uri);
+                    intent.setData(canonicalUrl);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                     localBroadcastManager.sendBroadcast(intent);
