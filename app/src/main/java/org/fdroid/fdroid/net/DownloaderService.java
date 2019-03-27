@@ -200,8 +200,8 @@ public class DownloaderService extends Service {
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
-        String canonicalUrl = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+        final long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
+        final Uri canonicalUrl = Uri.parse(intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL));
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
@@ -249,7 +249,7 @@ public class DownloaderService extends Service {
         sendBroadcast(uri, action, null, null);
     }
 
-    private void sendBroadcast(Uri uri, String action, File file, long repoId, String canonicalUrl) {
+    private void sendBroadcast(Uri uri, String action, File file, long repoId, Uri canonicalUrl) {
         sendBroadcast(uri, action, file, null, repoId, canonicalUrl);
     }
 
@@ -258,10 +258,10 @@ public class DownloaderService extends Service {
     }
 
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage, long repoId,
-                               String canonicalUrl) {
+                               Uri canonicalUrl) {
         Intent intent = new Intent(action);
         if (canonicalUrl != null) {
-            intent.setData(Uri.parse(canonicalUrl));
+            intent.setData(canonicalUrl);
         }
         if (file != null) {
             intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
