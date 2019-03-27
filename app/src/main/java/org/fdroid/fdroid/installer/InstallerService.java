@@ -74,7 +74,7 @@ public class InstallerService extends JobIntentService {
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            Uri canonicalUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+            Uri canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
             installer.installPackage(uri, canonicalUri);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage();
@@ -124,7 +124,7 @@ public class InstallerService extends JobIntentService {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
-        intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, canonicalUri);
+        intent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri);
         intent.putExtra(Installer.EXTRA_APK, apk);
         enqueueWork(context, intent);
     }

@@ -72,9 +72,7 @@ public final class AppUpdateStatusManager {
      */
     public static final String BROADCAST_APPSTATUS_REMOVED = "org.fdroid.fdroid.installer.appstatus.appchange.remove";
 
-    public static final String EXTRA_APK_URL = "urlstring";
     public static final String EXTRA_STATUS = "status";
-
     public static final String EXTRA_REASON_FOR_CHANGE = "reason";
 
     public static final String REASON_READY_TO_INSTALL = "readytoinstall";
@@ -291,7 +289,7 @@ public final class AppUpdateStatusManager {
     private void notifyAdd(AppUpdateStatus entry) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_ADDED);
-            broadcastIntent.putExtra(EXTRA_APK_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }
@@ -300,7 +298,7 @@ public final class AppUpdateStatusManager {
     private void notifyChange(AppUpdateStatus entry, boolean isStatusUpdate) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_CHANGED);
-            broadcastIntent.putExtra(EXTRA_APK_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             broadcastIntent.putExtra(EXTRA_IS_STATUS_UPDATE, isStatusUpdate);
             localBroadcastManager.sendBroadcast(broadcastIntent);
@@ -310,7 +308,7 @@ public final class AppUpdateStatusManager {
     private void notifyRemove(AppUpdateStatus entry) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_REMOVED);
-            broadcastIntent.putExtra(EXTRA_APK_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }

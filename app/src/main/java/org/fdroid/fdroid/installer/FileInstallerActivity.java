@@ -53,7 +53,7 @@ public class FileInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         localApkUri = intent.getData();
-        canonicalUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+        canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         installer = new FileInstaller(this, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {

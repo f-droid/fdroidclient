@@ -14,7 +14,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
-        String canonicalUrl = intent.getStringExtra(NotificationHelper.EXTRA_NOTIFICATION_KEY);
+        String canonicalUrl = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
         switch (intent.getAction()) {
             case NotificationHelper.BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
                 manager.clearAllUpdates();

@@ -47,7 +47,7 @@ public class DefaultInstaller extends Installer {
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
-        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, canonicalUri);
+        installIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri);
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 

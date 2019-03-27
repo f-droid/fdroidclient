@@ -68,6 +68,7 @@ import java.io.IOException;
  * <li>for a {@code String} ID, use {@code canonicalUrl}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
  * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
+ * <li>for an {@link Intent} extra, use {@link org.fdroid.fdroid.net.Downloader#EXTRA_CANONICAL_URL}
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
  * include caching of the generated {@code String}, so it should be plenty fast.

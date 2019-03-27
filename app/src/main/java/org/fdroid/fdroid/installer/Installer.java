@@ -64,15 +64,6 @@ public abstract class Installer {
     public static final String ACTION_UNINSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_INTERRUPTED";
     public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_USER_INTERACTION";
 
-    /**
-     * The URI where the APK was originally downloaded from. This is also used
-     * as the unique ID representing this in the whole install process in
-     * {@link InstallManagerService}, there is is generally known as the
-     * "download URL" since it is the URL used to download the APK.
-     *
-     * @see Intent#EXTRA_ORIGINATING_URI
-     */
-    static final String EXTRA_DOWNLOAD_URI = "org.fdroid.fdroid.installer.Installer.extra.DOWNLOAD_URI";
     public static final String EXTRA_APK = "org.fdroid.fdroid.installer.Installer.extra.APK";
     public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";

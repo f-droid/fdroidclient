@@ -46,13 +46,6 @@ class NotificationHelper {
     private static final int MAX_UPDATES_TO_SHOW = 5;
     private static final int MAX_INSTALLED_TO_SHOW = 10;
 
-    /**
-     * Unique ID used to represent this specific package's install process,
-     * including {@link Notification}s, also known as {@code urlString}.
-     *
-     * @see org.fdroid.fdroid.installer.InstallManagerService
-     */
-    static final String EXTRA_NOTIFICATION_KEY = "key";
     private static final String GROUP_UPDATES = "updates";
     private static final String GROUP_INSTALLED = "installed";
 
@@ -93,14 +86,14 @@ class NotificationHelper {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED:
                         updateStatusLists();
                         createSummaryNotifications();
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         if (entry != null) {
                             createNotification(entry);
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED:
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         updateStatusLists();
                         if (entry != null) {
@@ -111,7 +104,7 @@ class NotificationHelper {
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
                         notificationManager.cancel(url, NOTIFY_ID_UPDATES);
                         updateStatusLists();
@@ -346,7 +339,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
-        intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getCanonicalUrl());
+        intentDeleted.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
@@ -435,7 +428,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
-        intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getCanonicalUrl());
+        intentDeleted.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
