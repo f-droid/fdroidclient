@@ -836,9 +836,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app, @NonNull final Apk apk) {
-        Uri downloadUri = Uri.parse(apk.getCanonicalUrl());
         localBroadcastManager.registerReceiver(installReceiver,
-                Installer.getInstallIntentFilter(downloadUri));
+                Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
         InstallManagerService.queue(this, app, apk);
     }
 

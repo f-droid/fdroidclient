@@ -449,7 +449,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 if (justReceived) {
                     adapter.setIndeterminateProgress(R.string.installing);
                     localBroadcastManager.registerReceiver(installReceiver,
-                            Installer.getInstallIntentFilter(Uri.parse(newStatus.getCanonicalUrl())));
+                            Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
                 }
                 break;
 

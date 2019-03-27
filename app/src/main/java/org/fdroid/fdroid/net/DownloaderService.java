@@ -75,17 +75,18 @@ import java.net.UnknownHostException;
  * long as necessary (and will not block the application's main loop), but
  * only one request will be processed at a time.
  * <p>
- * The full URL for the file to download is also used as the unique ID to
+ * The Canonical URL for the file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
  * of {@link Intent#setData(Uri)}, where the core data of an {@code Intent} is
  * a {@code Uri}.  For places that need an {@code int} ID,
  * {@link String#hashCode()} should be used to get a reproducible, unique {@code int}
- * from any {@code urlString}.  The full URL is guaranteed to be unique since
+ * from any {@code canonicalUrl}.  That full URL is guaranteed to be unique since
  * it points to a file on a filesystem.  This is more important with media files
  * than with APKs since there is not reliable standard for a unique ID for
  * media files, unlike APKs with {@code packageName} and {@code versionCode}.
  *
  * @see android.app.IntentService
+ * @see org.fdroid.fdroid.installer.InstallManagerService
  */
 public class DownloaderService extends Service {
     private static final String TAG = "DownloaderService";
@@ -332,18 +333,18 @@ public class DownloaderService extends Service {
      * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context   this app's {@link Context}
-     * @param urlString The URL to remove from the download queue
+     * @param context      this app's {@link Context}
+     * @param canonicalUrl The URL to remove from the download queue
      * @see #queue(Context, String, long, String)
      */
-    public static void cancel(Context context, String urlString) {
-        if (TextUtils.isEmpty(urlString)) {
+    public static void cancel(Context context, String canonicalUrl) {
+        if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
+        Utils.debugLog(TAG, "Preparing cancellation of " + canonicalUrl + " download");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(canonicalUrl));
         context.startService(intent);
     }
 
@@ -352,21 +353,21 @@ public class DownloaderService extends Service {
      * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
      * in {@link android.app.Activity#onResume()}.
      */
-    public static boolean isQueuedOrActive(String urlString) {
-        if (TextUtils.isEmpty(urlString)) { //NOPMD - suggests unreadable format
+    public static boolean isQueuedOrActive(String canonicalUrl) {
+        if (TextUtils.isEmpty(canonicalUrl)) { //NOPMD - suggests unreadable format
             return false;
         }
         if (serviceHandler == null) {
             return false; // this service is not even running
         }
-        return serviceHandler.hasMessages(urlString.hashCode()) || isActive(urlString);
+        return serviceHandler.hasMessages(canonicalUrl.hashCode()) || isActive(canonicalUrl);
     }
 
     /**
      * Check if a URL is actively being downloaded.
      */
-    private static boolean isActive(String urlString) {
-        return downloader != null && TextUtils.equals(urlString, downloader.urlString);
+    private static boolean isActive(String downloadUrl) {
+        return downloader != null && TextUtils.equals(downloadUrl, downloader.urlString);
     }
 
     public static void setTimeout(int ms) {

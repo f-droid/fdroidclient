@@ -165,23 +165,23 @@ public abstract class Installer {
         return intent;
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action, PendingIntent pendingIntent) {
-        sendBroadcastInstall(context, downloadUri, action, apk, pendingIntent, null);
+    void sendBroadcastInstall(Uri canonicalUri, String action, PendingIntent pendingIntent) {
+        sendBroadcastInstall(context, canonicalUri, action, apk, pendingIntent, null);
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action) {
-        sendBroadcastInstall(context, downloadUri, action, apk, null, null);
+    void sendBroadcastInstall(Uri canonicalUri, String action) {
+        sendBroadcastInstall(context, canonicalUri, action, apk, null, null);
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
-        sendBroadcastInstall(context, downloadUri, action, apk, null, errorMessage);
+    void sendBroadcastInstall(Uri canonicalUri, String action, String errorMessage) {
+        sendBroadcastInstall(context, canonicalUri, action, apk, null, errorMessage);
     }
 
     static void sendBroadcastInstall(Context context,
-                                     Uri downloadUri, String action, Apk apk,
+                                     Uri canonicalUri, String action, Apk apk,
                                      PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
-        intent.setData(downloadUri);
+        intent.setData(canonicalUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
         intent.putExtra(Installer.EXTRA_APK, apk);
         if (!TextUtils.isEmpty(errorMessage)) {
@@ -226,18 +226,32 @@ public abstract class Installer {
 
     /**
      * Gets an {@link IntentFilter} for matching events from the install
-     * process based on the original download URL as a {@link Uri}.
+     * process based on {@code canonicalUri}, which is the global unique
+     * ID for a package going through the install process.
+     *
+     * @see InstallManagerService for more about {@code canonicalUri}
      */
-    public static IntentFilter getInstallIntentFilter(Uri uri) {
+    public static IntentFilter getInstallIntentFilter(Uri canonicalUri) {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_COMPLETE);
         intentFilter.addAction(Installer.ACTION_INSTALL_INTERRUPTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_USER_INTERACTION);
-        intentFilter.addDataScheme(uri.getScheme());
-        intentFilter.addDataAuthority(uri.getHost(), String.valueOf(uri.getPort()));
-        intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
+        intentFilter.addDataScheme(canonicalUri.getScheme());
+        intentFilter.addDataAuthority(canonicalUri.getHost(), String.valueOf(canonicalUri.getPort()));
+        intentFilter.addDataPath(canonicalUri.getPath(), PatternMatcher.PATTERN_LITERAL);
         return intentFilter;
+    }
+
+    /**
+     * Gets an {@link IntentFilter} for matching events from the install
+     * process based on {@code canonicalUrl}, which is the global unique
+     * ID for a package going through the install process.
+     *
+     * @see InstallManagerService for more about {@code canonicalUrl}
+     */
+    public static IntentFilter getInstallIntentFilter(String canonicalUrl) {
+        return getInstallIntentFilter(Uri.parse(canonicalUrl));
     }
 
     public static IntentFilter getUninstallIntentFilter(String packageName) {
@@ -262,20 +276,20 @@ public abstract class Installer {
      * is prompted with the system installer dialog, which shows all the
      * permissions that the APK is requesting.
      *
-     * @param localApkUri points to the local copy of the APK to be installed
-     * @param downloadUri serves as the unique ID for all actions related to the
-     *                    installation of that specific APK
+     * @param localApkUri  points to the local copy of the APK to be installed
+     * @param canonicalUri serves as the unique ID for all actions related to the
+     *                     installation of that specific APK
      * @see InstallManagerService
      * @see <a href="https://issuetracker.google.com/issues/37091886">ACTION_INSTALL_PACKAGE Fails For Any Possible Uri</a>
      */
-    public void installPackage(Uri localApkUri, Uri downloadUri) {
+    public void installPackage(Uri localApkUri, Uri canonicalUri) {
         Uri sanitizedUri;
 
         try {
             sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk);
         } catch (IOException e) {
             Utils.debugLog(TAG, e.getMessage(), e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
+            sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         }
 
@@ -285,7 +299,7 @@ public abstract class Installer {
             apkVerifier.verifyApk();
         } catch (ApkVerifier.ApkVerificationException e) {
             Utils.debugLog(TAG, e.getMessage(), e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
+            sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         } catch (ApkVerifier.ApkPermissionUnequalException e) {
             // if permissions of apk are not the ones listed in the repo
@@ -295,15 +309,15 @@ public abstract class Installer {
                 Utils.debugLog(TAG, e.getMessage(), e);
                 Utils.debugLog(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
-                defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
+                defaultInstaller.installPackageInternal(sanitizedUri, canonicalUri);
                 return;
             }
         }
 
-        installPackageInternal(sanitizedUri, downloadUri);
+        installPackageInternal(sanitizedUri, canonicalUri);
     }
 
-    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri);
+    protected abstract void installPackageInternal(Uri localApkUri, Uri canonicalUri);
 
     /**
      * Uninstall app as defined by {@link Installer#apk} in

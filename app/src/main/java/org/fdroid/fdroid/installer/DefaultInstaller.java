@@ -43,11 +43,11 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
+    protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
-        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
+        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, canonicalUri);
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 
@@ -57,7 +57,7 @@ public class DefaultInstaller extends Installer {
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_USER_INTERACTION,
+        sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_USER_INTERACTION,
                 installPendingIntent);
     }
 

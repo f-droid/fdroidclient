@@ -13,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -40,7 +39,10 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private Apk apk;
     private Uri localApkUri;
-    private Uri downloadUri;
+    /**
+     * @see InstallManagerService
+     */
+    private Uri canonicalUri;
 
     private int act = 0;
 
@@ -51,12 +53,12 @@ public class FileInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         localApkUri = intent.getData();
-        downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+        canonicalUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         installer = new FileInstaller(this, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {
             if (hasStoragePermission()) {
-                installPackage(localApkUri, downloadUri, apk);
+                installPackage(localApkUri, canonicalUri, apk);
             } else {
                 requestPermission();
                 act = 1;
@@ -110,7 +112,7 @@ public class FileInstallerActivity extends FragmentActivity {
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         if (act == 1) {
-                            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED);
+                            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
                         } else if (act == 2) {
                             installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED);
                         }
@@ -129,13 +131,13 @@ public class FileInstallerActivity extends FragmentActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (act == 1) {
-                        installPackage(localApkUri, downloadUri, apk);
+                        installPackage(localApkUri, canonicalUri, apk);
                     } else if (act == 2) {
                         uninstallPackage(apk);
                     }
                 } else {
                     if (act == 1) {
-                        installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED);
+                        installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
                     } else if (act == 2) {
                         installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED);
                     }
@@ -144,7 +146,7 @@ public class FileInstallerActivity extends FragmentActivity {
         }
     }
 
-    private void installPackage(Uri localApkUri, Uri downloadUri, Apk apk) {
+    private void installPackage(Uri localApkUri, Uri canonicalUri, Apk apk) {
         Utils.debugLog(TAG, "Installing: " + localApkUri.getPath());
         File path = apk.getMediaInstallPath(activity.getApplicationContext());
         path.mkdirs();
@@ -152,15 +154,15 @@ public class FileInstallerActivity extends FragmentActivity {
             FileUtils.copyFileToDirectory(new File(localApkUri.getPath()), path);
         } catch (IOException e) {
             Utils.debugLog(TAG, "Failed to copy: " + e.getMessage());
-            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED);
+            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
         }
         if (apk.isMediaInstalled(activity.getApplicationContext())) { // Copying worked
             Utils.debugLog(TAG, "Copying worked: " + localApkUri.getPath());
             Toast.makeText(this, String.format(this.getString(R.string.app_installed_media), path.toString()),
                     Toast.LENGTH_LONG).show();
-            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
+            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
         } else {
-            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED);
+            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
         }
         finish();
     }

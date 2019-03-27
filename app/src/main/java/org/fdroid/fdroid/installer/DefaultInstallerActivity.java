@@ -48,7 +48,10 @@ public class DefaultInstallerActivity extends FragmentActivity {
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;
 
-    private Uri downloadUri;
+    /**
+     * @see InstallManagerService
+     */
+    private Uri canonicalUri;
 
     // for the broadcasts
     private DefaultInstaller installer;
@@ -63,7 +66,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         installer = new DefaultInstaller(this, apk);
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
             Uri localApkUri = intent.getData();
-            downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+            canonicalUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
             installPackage(localApkUri);
         } else if (ACTION_UNINSTALL_PACKAGE.equals(action)) {
             uninstallPackage(apk.packageName);
@@ -120,7 +123,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
             startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "ActivityNotFoundException", e);
-            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
+            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "This Android rom does not support ACTION_INSTALL_PACKAGE!");
             finish();
         }
@@ -169,23 +172,23 @@ public class DefaultInstallerActivity extends FragmentActivity {
                  * never executed on Androids < 4.0
                  */
                 if (Build.VERSION.SDK_INT < 14) {
-                    installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
+                    installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
 
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        installer.sendBroadcastInstall(downloadUri,
+                        installer.sendBroadcastInstall(canonicalUri,
                                 Installer.ACTION_INSTALL_COMPLETE);
                         break;
                     case Activity.RESULT_CANCELED:
-                        installer.sendBroadcastInstall(downloadUri,
+                        installer.sendBroadcastInstall(canonicalUri,
                                 Installer.ACTION_INSTALL_INTERRUPTED);
                         break;
                     case Activity.RESULT_FIRST_USER:
                     default:
                         // AOSP returns Activity.RESULT_FIRST_USER on error
-                        installer.sendBroadcastInstall(downloadUri,
+                        installer.sendBroadcastInstall(canonicalUri,
                                 Installer.ACTION_INSTALL_INTERRUPTED,
                                 getString(R.string.install_error_unknown));
                         break;

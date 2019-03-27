@@ -483,8 +483,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
 
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            String urlString = currentStatus.apk.getCanonicalUrl();
-            File apkFilePath = ApkCache.getApkDownloadPath(activity, urlString);
+            String canonicalUrl = currentStatus.apk.getCanonicalUrl();
+            File apkFilePath = ApkCache.getApkDownloadPath(activity, canonicalUrl);
             Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getCanonicalUrl() +
                     " to " + apkFilePath);
 
@@ -505,10 +505,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 }
             };
 
-            Uri apkDownloadUri = Uri.parse(urlString);
-            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
+            Uri canonicalUri = Uri.parse(canonicalUrl);
+            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(canonicalUri));
             Installer installer = InstallerFactory.create(activity, currentStatus.apk);
-            installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);
+            installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
             final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
             InstallManagerService.queue(activity, app, suggestedApk);

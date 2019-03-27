@@ -129,7 +129,7 @@ public final class AppUpdateStatusManager {
 
         /**
          * @return the unique ID used to represent this specific package's install process
-         * also known as {@code urlString}.
+         * also known as {@code canonicalUrl}.
          * @see org.fdroid.fdroid.installer.InstallManagerService
          */
         public String getCanonicalUrl() {
@@ -225,9 +225,9 @@ public final class AppUpdateStatusManager {
     }
 
     @Nullable
-    public AppUpdateStatus get(String key) {
+    public AppUpdateStatus get(String canonicalUrl) {
         synchronized (appMapping) {
-            return appMapping.get(key);
+            return appMapping.get(canonicalUrl);
         }
     }
 
@@ -420,16 +420,15 @@ public final class AppUpdateStatusManager {
     /**
      * @param errorText If null, then it is likely because the user cancelled the download.
      */
-    // TODO should url actually be canonicalUrl?
-    public void setDownloadError(String url, @Nullable String errorText) {
+    public void setDownloadError(String canonicalUrl, @Nullable String errorText) {
         synchronized (appMapping) {
-            AppUpdateStatus entry = appMapping.get(url);
+            AppUpdateStatus entry = appMapping.get(canonicalUrl);
             if (entry != null) {
                 entry.status = Status.DownloadInterrupted;
                 entry.errorText = errorText;
                 entry.intent = null;
                 notifyChange(entry, true);
-                removeApk(url);
+                removeApk(canonicalUrl);
             }
         }
     }
