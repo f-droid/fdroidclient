@@ -1,0 +1,13 @@
+* Latest Tab now highlights apps that provide descriptions, translations, screenshots
+
+* Auto-download from mirrors, to speed up downloads and reduce load on f-droid.org
+
+* Disable mirrors using new switches in RepoDetails (#1696)
+
+* More efficient download caching (per-repo; across different webservers #1708)
+
+* Fix installs requiring Unknown Sources with Privileged Extension (#1702)
+
+* Fix missing icons for those not using Wi-Fi (#1592)
+
+* Improved translations for Updates tab vs preference

@@ -1,3 +1,18 @@
+### 1.6-alpha2 (2019-03-28)
+
+* Latest Tab now highlights apps that provide descriptions,
+  translations, screenshots
+
+* Auto-download from mirrors, to speed up downloads and reduce load on
+  f-droid.org
+
+* More efficient download caching (per-repo; across different
+  webservers #1708)
+
+* Fix problems canceling downloads (#1727, #1736, #1742)
+
+* Fix downloading OBB files from repos (#1403)
+
 ### 1.6-alpha1 (2019-02-20)
 
 * add switches in RepoDetails to disable any or all mirrors (#1696)
