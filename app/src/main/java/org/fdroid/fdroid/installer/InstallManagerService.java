@@ -207,8 +207,8 @@ public class InstallManagerService extends Service {
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
 
         registerPackageDownloaderReceivers(canonicalUrl);
-        getObb(canonicalUrl, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
-        getObb(canonicalUrl, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256);
+        getMainObb(canonicalUrl, apk);
+        getPatchObb(canonicalUrl, apk);
 
         File apkFilePath = ApkCache.getApkDownloadPath(this, apk.getCanonicalUrl());
         long apkFileSize = apkFilePath.length();
@@ -235,6 +235,14 @@ public class InstallManagerService extends Service {
         localBroadcastManager.sendBroadcast(intent);
     }
 
+    private void getMainObb(final String canonicalUrl, Apk apk) {
+        getObb(canonicalUrl, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256, apk.repoId);
+    }
+
+    private void getPatchObb(final String canonicalUrl, Apk apk) {
+        getObb(canonicalUrl, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256, apk.repoId);
+    }
+
     /**
      * Check if any OBB files are available, and if so, download and install them. This
      * also deletes any obsolete OBB files, per the spec, since there can be only one
@@ -243,7 +251,7 @@ public class InstallManagerService extends Service {
      * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
      */
     private void getObb(final String canonicalUrl, String obbUrlString,
-                        final File obbDestFile, final String hash) {
+                        final File obbDestFile, final String hash, final long repoId) {
         if (obbDestFile == null || obbDestFile.exists() || TextUtils.isEmpty(obbUrlString)) {
             return;
         }
@@ -293,13 +301,13 @@ public class InstallManagerService extends Service {
                 } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
                 } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
-                    DownloaderService.queueUsingDifferentMirror(context, 0, canonicalUrl);
+                    DownloaderService.queueUsingDifferentMirror(context, repoId, canonicalUrl);
                 } else {
                     throw new RuntimeException("intent action not handled!");
                 }
             }
         };
-        DownloaderService.queueUsingRandomMirror(this, 0, obbUrlString);
+        DownloaderService.queueUsingRandomMirror(this, repoId, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }
