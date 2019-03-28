@@ -97,6 +97,7 @@ public class DownloaderService extends Service {
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
     private static volatile Downloader downloader;
+    private static volatile String activeCanonicalUrl;
     private LocalBroadcastManager localBroadcastManager;
     private static volatile int timeout;
 
@@ -139,16 +140,21 @@ public class DownloaderService extends Service {
             Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
             return START_NOT_STICKY;
         }
+        String canonicalUrl = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+        if (canonicalUrl == null) {
+            Utils.debugLog(TAG, "Received Intent with no EXTRA_CANONICAL_URL: " + intent);
+            return START_NOT_STICKY;
+        }
 
         if (ACTION_CANCEL.equals(intent.getAction())) {
             Utils.debugLog(TAG, "Cancelling download of " + uriString);
-            Integer whatToRemove = uriString.hashCode();
+            Integer whatToRemove = canonicalUrl.hashCode();
             if (serviceHandler.hasMessages(whatToRemove)) {
                 Utils.debugLog(TAG, "Removing download with ID of " + whatToRemove
                         + " from service handler, then sending interrupted event.");
                 serviceHandler.removeMessages(whatToRemove);
-                sendBroadcast(intent.getData(), Downloader.ACTION_INTERRUPTED);
-            } else if (isActive(uriString)) {
+                sendCancelledBroadcast(intent.getData(), canonicalUrl);
+            } else if (isActive(canonicalUrl)) {
                 downloader.cancelDownload();
             } else {
                 Utils.debugLog(TAG, "ACTION_CANCEL called on something not queued or running"
@@ -158,7 +164,7 @@ public class DownloaderService extends Service {
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
             msg.obj = intent;
-            msg.what = uriString.hashCode();
+            msg.what = canonicalUrl.hashCode();
             serviceHandler.sendMessage(msg);
             Utils.debugLog(TAG, "Queued download of " + uriString);
         } else {
@@ -207,6 +213,7 @@ public class DownloaderService extends Service {
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
         try {
+            activeCanonicalUrl = canonicalUrl.toString();
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
@@ -244,18 +251,15 @@ public class DownloaderService extends Service {
             }
         }
         downloader = null;
+        activeCanonicalUrl = null;
     }
 
-    private void sendBroadcast(Uri uri, String action) {
-        sendBroadcast(uri, action, null, null);
+    private void sendCancelledBroadcast(Uri uri, String canonicalUrl) {
+        sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, null, 0, Uri.parse(canonicalUrl));
     }
 
     private void sendBroadcast(Uri uri, String action, File file, long repoId, Uri canonicalUrl) {
         sendBroadcast(uri, action, file, null, repoId, canonicalUrl);
-    }
-
-    private void sendBroadcast(Uri uri, String action, File file, String errorMessage) {
-        sendBroadcast(uri, action, file, errorMessage, 0, null);
     }
 
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage, long repoId,
@@ -345,6 +349,7 @@ public class DownloaderService extends Service {
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(canonicalUrl));
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
     }
 
@@ -367,7 +372,7 @@ public class DownloaderService extends Service {
      * Check if a URL is actively being downloaded.
      */
     private static boolean isActive(String downloadUrl) {
-        return downloader != null && TextUtils.equals(downloadUrl, downloader.urlString);
+        return downloader != null && TextUtils.equals(downloadUrl, activeCanonicalUrl);
     }
 
     public static void setTimeout(int ms) {
