@@ -60,8 +60,17 @@ class MainViewController extends RecyclerView.ViewHolder {
         new CategoriesViewBinder(activity, frame);
     }
 
+    /**
+     * {@link android.os.Environment#isExternalStorageRemovable()} sometimes
+     * throughs {@link IllegalArgumentException}s when it can't find the
+     * storage.
+     */
     public void bindSwapView() {
-        new NearbyViewBinder(activity, frame);
+        try {
+            new NearbyViewBinder(activity, frame);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
