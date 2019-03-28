@@ -198,7 +198,7 @@ public class IndexV1Updater extends IndexUpdater {
         JarFile jarFile = new JarFile(outputFile, true);
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
         InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                processIndexListener, repo.address, (int) indexEntry.getSize());
+                processIndexListener, (int) indexEntry.getSize());
         processIndexV1(indexInputStream, indexEntry, cacheTag);
     }
 

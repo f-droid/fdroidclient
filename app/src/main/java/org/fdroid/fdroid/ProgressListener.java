@@ -19,6 +19,6 @@ import java.net.URL;
  */
 public interface ProgressListener {
 
-    void onProgress(String urlString, long bytesRead, long totalBytes);
+    void onProgress(long bytesRead, long totalBytes);
 
 }

@@ -70,7 +70,7 @@ public class HttpDownloaderTest {
         final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
-            public void onProgress(String urlString, long bytesRead, long totalBytes) {
+            public void onProgress(long bytesRead, long totalBytes) {
                 receivedProgress = true;
             }
         });
@@ -132,7 +132,7 @@ public class HttpDownloaderTest {
         final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
-            public void onProgress(String urlString, long bytesRead, long totalBytes) {
+            public void onProgress(long bytesRead, long totalBytes) {
                 receivedProgress = true;
                 latch.countDown();
             }

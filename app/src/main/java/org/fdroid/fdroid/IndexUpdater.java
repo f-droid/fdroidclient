@@ -216,7 +216,7 @@ public class IndexUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexUpdater.DATA_FILE_NAME);
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processIndexListener, repo.address, (int) indexEntry.getSize());
+                    processIndexListener, (int) indexEntry.getSize());
 
             // Process the index...
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -254,14 +254,14 @@ public class IndexUpdater {
 
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
-        public void onProgress(String urlString, long bytesRead, long totalBytes) {
+        public void onProgress(long bytesRead, long totalBytes) {
             UpdateService.reportDownloadProgress(context, IndexUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
-        public void onProgress(String urlString, long bytesRead, long totalBytes) {
+        public void onProgress(long bytesRead, long totalBytes) {
             UpdateService.reportProcessIndexProgress(context, IndexUpdater.this, bytesRead, totalBytes);
         }
     };

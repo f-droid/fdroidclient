@@ -207,7 +207,7 @@ public abstract class Downloader {
         @Override
         public void run() {
             if (downloaderProgressListener != null) {
-                downloaderProgressListener.onProgress(urlString, bytesRead, totalBytes);
+                downloaderProgressListener.onProgress(bytesRead, totalBytes);
             }
         }
     };
