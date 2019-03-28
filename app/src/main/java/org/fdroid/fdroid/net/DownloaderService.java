@@ -32,9 +32,13 @@ import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.LogPrinter;
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -73,17 +77,18 @@ import java.net.UnknownHostException;
  * long as necessary (and will not block the application's main loop), but
  * only one request will be processed at a time.
  * <p>
- * The full URL for the file to download is also used as the unique ID to
+ * The Canonical URL for the file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
  * of {@link Intent#setData(Uri)}, where the core data of an {@code Intent} is
  * a {@code Uri}.  For places that need an {@code int} ID,
  * {@link String#hashCode()} should be used to get a reproducible, unique {@code int}
- * from any {@code urlString}.  The full URL is guaranteed to be unique since
+ * from any {@code canonicalUrl}.  That full URL is guaranteed to be unique since
  * it points to a file on a filesystem.  This is more important with media files
  * than with APKs since there is not reliable standard for a unique ID for
  * media files, unlike APKs with {@code packageName} and {@code versionCode}.
  *
  * @see android.app.IntentService
+ * @see org.fdroid.fdroid.installer.InstallManagerService
  */
 public class DownloaderService extends Service {
     private static final String TAG = "DownloaderService";
@@ -94,10 +99,13 @@ public class DownloaderService extends Service {
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
     private static volatile Downloader downloader;
+    private static volatile String activeCanonicalUrl;
     private LocalBroadcastManager localBroadcastManager;
     private static volatile int timeout;
 
     private final class ServiceHandler extends Handler {
+        static final String TAG = "ServiceHandler";
+
         ServiceHandler(Looper looper) {
             super(looper);
         }
@@ -119,6 +127,9 @@ public class DownloaderService extends Service {
         thread.start();
 
         serviceLooper = thread.getLooper();
+        if (BuildConfig.DEBUG) {
+            serviceLooper.setMessageLogging(new LogPrinter(Log.DEBUG, ServiceHandler.TAG));
+        }
         serviceHandler = new ServiceHandler(serviceLooper);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
@@ -131,21 +142,27 @@ public class DownloaderService extends Service {
             return START_NOT_STICKY;
         }
 
-        String uriString = intent.getDataString();
-        if (uriString == null) {
+        String downloadUrl = intent.getDataString();
+        if (downloadUrl == null) {
             Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
+            return START_NOT_STICKY;
+        }
+        String canonicalUrl = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+        if (canonicalUrl == null) {
+            Utils.debugLog(TAG, "Received Intent with no EXTRA_CANONICAL_URL: " + intent);
             return START_NOT_STICKY;
         }
 
         if (ACTION_CANCEL.equals(intent.getAction())) {
-            Utils.debugLog(TAG, "Cancelling download of " + uriString);
-            Integer whatToRemove = uriString.hashCode();
+            Utils.debugLog(TAG, "Cancelling download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                    + " downloading from " + downloadUrl);
+            Integer whatToRemove = canonicalUrl.hashCode();
             if (serviceHandler.hasMessages(whatToRemove)) {
                 Utils.debugLog(TAG, "Removing download with ID of " + whatToRemove
                         + " from service handler, then sending interrupted event.");
                 serviceHandler.removeMessages(whatToRemove);
-                sendBroadcast(intent.getData(), Downloader.ACTION_INTERRUPTED);
-            } else if (isActive(uriString)) {
+                sendCancelledBroadcast(intent.getData(), canonicalUrl);
+            } else if (isActive(canonicalUrl)) {
                 downloader.cancelDownload();
             } else {
                 Utils.debugLog(TAG, "ACTION_CANCEL called on something not queued or running"
@@ -155,9 +172,10 @@ public class DownloaderService extends Service {
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
             msg.obj = intent;
-            msg.what = uriString.hashCode();
+            msg.what = canonicalUrl.hashCode();
             serviceHandler.sendMessage(msg);
-            Utils.debugLog(TAG, "Queued download of " + uriString);
+            Utils.debugLog(TAG, "Queued download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                    + " using " + downloadUrl);
         } else {
             Utils.debugLog(TAG, "Received Intent with unknown action: " + intent);
         }
@@ -198,18 +216,19 @@ public class DownloaderService extends Service {
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
-        String canonicalUrlString = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
-        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrlString);
-        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrlString);
+        final long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
+        final Uri canonicalUrl = Uri.parse(intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL));
+        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
+        sendBroadcast(uri, Downloader.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
         try {
+            activeCanonicalUrl = canonicalUrl.toString();
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
-                public void onProgress(String urlString, long bytesRead, long totalBytes) {
+                public void onProgress(long bytesRead, long totalBytes) {
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                    intent.setData(uri);
+                    intent.setData(canonicalUrl);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                     localBroadcastManager.sendBroadcast(intent);
@@ -219,47 +238,44 @@ public class DownloaderService extends Service {
             downloader.download();
             if (downloader.isNotFound()) {
                 sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
-                        repoId, canonicalUrlString);
+                        repoId, canonicalUrl);
             } else {
-                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrlString);
+                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
             }
         } catch (InterruptedException e) {
-            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
                 | ProtocolException | UnknownHostException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, e.getLocalizedMessage());
-            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrlString);
+            sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
         } catch (IOException e) {
             e.printStackTrace();
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile,
-                    e.getLocalizedMessage(), repoId, canonicalUrlString);
+                    e.getLocalizedMessage(), repoId, canonicalUrl);
         } finally {
             if (downloader != null) {
                 downloader.close();
             }
         }
         downloader = null;
+        activeCanonicalUrl = null;
     }
 
-    private void sendBroadcast(Uri uri, String action) {
-        sendBroadcast(uri, action, null, null);
+    private void sendCancelledBroadcast(Uri uri, String canonicalUrl) {
+        sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, null, 0, Uri.parse(canonicalUrl));
     }
 
-    private void sendBroadcast(Uri uri, String action, File file, long repoId, String originalUrlString) {
-        sendBroadcast(uri, action, file, null, repoId, originalUrlString);
-    }
-
-    private void sendBroadcast(Uri uri, String action, File file, String errorMessage) {
-        sendBroadcast(uri, action, file, errorMessage, 0, null);
+    private void sendBroadcast(Uri uri, String action, File file, long repoId, Uri canonicalUrl) {
+        sendBroadcast(uri, action, file, null, repoId, canonicalUrl);
     }
 
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage, long repoId,
-                               String originalUrlString) {
+                               Uri canonicalUrl) {
         Intent intent = new Intent(action);
-        if (originalUrlString != null) {
-            intent.setData(Uri.parse(originalUrlString));
+        if (canonicalUrl != null) {
+            intent.setData(canonicalUrl);
         }
         if (file != null) {
             intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
@@ -277,23 +293,53 @@ public class DownloaderService extends Service {
      * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context         this app's {@link Context}
-     * @param mirrorUrlString The URL to add to the download queue
-     * @param repoId          the database ID number representing one repo
-     * @param urlString       the URL used as the unique ID throughout F-Droid
+     * @param context      this app's {@link Context}
+     * @param mirrorUrl    The URL to add to the download queue
+     * @param repoId       the database ID number representing one repo
+     * @param canonicalUrl the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String mirrorUrlString, long repoId, String urlString) {
-        if (TextUtils.isEmpty(mirrorUrlString)) {
+    public static void queue(Context context, String mirrorUrl, long repoId, String canonicalUrl) {
+        if (TextUtils.isEmpty(mirrorUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing " + mirrorUrlString + " to go into the download queue");
+        Utils.debugLog(TAG, "Queue download " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                + " using " + mirrorUrl);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
-        intent.setData(Uri.parse(mirrorUrlString));
+        intent.setData(Uri.parse(mirrorUrl));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
-        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, urlString);
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
+    }
+
+    /**
+     * Add a package to the download queue, choosing a random mirror to
+     * download from.
+     *
+     * @param canonicalUrl the URL used as the unique ID throughout F-Droid,
+     *                     needed here to support canceling active downloads
+     */
+    public static void queueUsingRandomMirror(Context context, long repoId, String canonicalUrl) {
+        String mirrorUrl = FDroidApp.switchUrlToNewMirror(canonicalUrl,
+                RepoProvider.Helper.findById(context, repoId));
+        queue(context, mirrorUrl, repoId, canonicalUrl);
+    }
+
+    /**
+     * Tries to return a version of {@code urlString} from a mirror, if there
+     * is an error, it just returns {@code urlString}.
+     *
+     * @see FDroidApp#getNewMirrorOnError(String, org.fdroid.fdroid.data.Repo)
+     */
+    public static void queueUsingDifferentMirror(Context context, long repoId, String canonicalUrl) {
+        try {
+            String mirrorUrl = FDroidApp.getNewMirrorOnError(canonicalUrl,
+                    RepoProvider.Helper.findById(context, repoId));
+            queue(context, mirrorUrl, repoId, canonicalUrl);
+        } catch (IOException e) {
+            queue(context, canonicalUrl, repoId, canonicalUrl);
+        }
     }
 
     /**
@@ -301,18 +347,19 @@ public class DownloaderService extends Service {
      * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context   this app's {@link Context}
-     * @param urlString The URL to remove from the download queue
+     * @param context      this app's {@link Context}
+     * @param canonicalUrl The URL to remove from the download queue
      * @see #queue(Context, String, long, String)
      */
-    public static void cancel(Context context, String urlString) {
-        if (TextUtils.isEmpty(urlString)) {
+    public static void cancel(Context context, String canonicalUrl) {
+        if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
+        Utils.debugLog(TAG, "Send cancel for " + canonicalUrl.hashCode() + "/" + canonicalUrl);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(Uri.parse(canonicalUrl));
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
     }
 
@@ -321,21 +368,21 @@ public class DownloaderService extends Service {
      * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
      * in {@link android.app.Activity#onResume()}.
      */
-    public static boolean isQueuedOrActive(String urlString) {
-        if (TextUtils.isEmpty(urlString)) { //NOPMD - suggests unreadable format
+    public static boolean isQueuedOrActive(String canonicalUrl) {
+        if (TextUtils.isEmpty(canonicalUrl)) { //NOPMD - suggests unreadable format
             return false;
         }
         if (serviceHandler == null) {
             return false; // this service is not even running
         }
-        return serviceHandler.hasMessages(urlString.hashCode()) || isActive(urlString);
+        return serviceHandler.hasMessages(canonicalUrl.hashCode()) || isActive(canonicalUrl);
     }
 
     /**
      * Check if a URL is actively being downloaded.
      */
-    private static boolean isActive(String urlString) {
-        return downloader != null && TextUtils.equals(urlString, downloader.urlString);
+    private static boolean isActive(String downloadUrl) {
+        return downloader != null && TextUtils.equals(downloadUrl, activeCanonicalUrl);
     }
 
     public static void setTimeout(int ms) {
@@ -345,10 +392,10 @@ public class DownloaderService extends Service {
     /**
      * Get a prepared {@link IntentFilter} for use for matching this service's action events.
      *
-     * @param urlString The full file URL to match.
+     * @param canonicalUrl the URL used as the unique ID for the specific package
      */
-    public static IntentFilter getIntentFilter(String urlString) {
-        Uri uri = Uri.parse(urlString);
+    public static IntentFilter getIntentFilter(String canonicalUrl) {
+        Uri uri = Uri.parse(canonicalUrl);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Downloader.ACTION_STARTED);
         intentFilter.addAction(Downloader.ACTION_PROGRESS);

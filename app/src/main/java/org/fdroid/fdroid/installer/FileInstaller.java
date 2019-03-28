@@ -23,7 +23,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
 import android.support.annotation.NonNull;
 import org.fdroid.fdroid.data.Apk;
 
@@ -44,15 +43,15 @@ public class FileInstaller extends Installer {
     }
 
     @Override
-    public void installPackage(Uri localApkUri, Uri downloadUri) {
-        installPackageInternal(localApkUri, downloadUri);
+    public void installPackage(Uri localApkUri, Uri canonicalUri) {
+        installPackageInternal(localApkUri, canonicalUri);
     }
 
     @Override
-    protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
+    protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
         Intent installIntent = new Intent(context, FileInstallerActivity.class);
         installIntent.setAction(FileInstallerActivity.ACTION_INSTALL_FILE);
-        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
+        installIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri);
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 
@@ -62,7 +61,7 @@ public class FileInstaller extends Installer {
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_USER_INTERACTION,
+        sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_USER_INTERACTION,
                 installPendingIntent);
     }
 

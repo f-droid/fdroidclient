@@ -28,10 +28,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -74,8 +74,8 @@ public class InstallerService extends JobIntentService {
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            Uri downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
-            installer.installPackage(uri, downloadUri);
+            Uri canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
+            installer.installPackage(uri, canonicalUri);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage();
             new Thread() {
@@ -111,19 +111,20 @@ public class InstallerService extends JobIntentService {
      * {@link #uninstall(Context, Apk)} since this is called in one place where
      * the input has already been validated.
      *
-     * @param context     this app's {@link Context}
-     * @param localApkUri {@link Uri} pointing to (downloaded) local apk file
-     * @param downloadUri {@link Uri} where the apk has been downloaded from
-     * @param apk         apk object of app that should be installed
+     * @param context      this app's {@link Context}
+     * @param localApkUri  {@link Uri} pointing to (downloaded) local apk file
+     * @param canonicalUri {@link Uri} used as the global unique ID for the package
+     * @param apk          apk object of app that should be installed
      * @see #uninstall(Context, Apk)
+     * @see InstallManagerService
      */
-    public static void install(Context context, Uri localApkUri, Uri downloadUri, Apk apk) {
-        Installer.sendBroadcastInstall(context, downloadUri, Installer.ACTION_INSTALL_STARTED, apk,
+    public static void install(Context context, Uri localApkUri, Uri canonicalUri, Apk apk) {
+        Installer.sendBroadcastInstall(context, canonicalUri, Installer.ACTION_INSTALL_STARTED, apk,
                 null, null);
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
-        intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
+        intent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri);
         intent.putExtra(Installer.EXTRA_APK, apk);
         enqueueWork(context, intent);
     }

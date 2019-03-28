@@ -5,12 +5,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -73,8 +71,8 @@ public class KnownVulnAppListItemController extends AppListItemController {
         Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
         if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
-            Uri uri = Uri.parse(suggestedApk.getUrl());
-            manager.registerReceiver(installReceiver, Installer.getInstallIntentFilter(uri));
+            manager.registerReceiver(installReceiver,
+                    Installer.getInstallIntentFilter(suggestedApk.getCanonicalUrl()));
             InstallManagerService.queue(activity, app, suggestedApk);
         } else {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
@@ -141,7 +139,8 @@ public class KnownVulnAppListItemController extends AppListItemController {
 
                     try {
                         uninstallPendingIntent.send();
-                    } catch (PendingIntent.CanceledException ignored) { }
+                    } catch (PendingIntent.CanceledException ignored) {
+                    }
                     break;
             }
         }

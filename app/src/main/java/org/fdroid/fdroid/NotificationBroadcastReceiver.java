@@ -14,7 +14,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
-        String notificationKey = intent.getStringExtra(NotificationHelper.EXTRA_NOTIFICATION_KEY);
+        String canonicalUrl = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
         switch (intent.getAction()) {
             case NotificationHelper.BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
                 manager.clearAllUpdates();
@@ -25,13 +25,13 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
             case NotificationHelper.BROADCAST_NOTIFICATIONS_UPDATE_CLEARED:
                 // If clearing apps in state "InstallError" (like when auto-cancelling) we
                 // remove them from the status manager entirely.
-                AppUpdateStatusManager.AppUpdateStatus appUpdateStatus = manager.get(notificationKey);
+                AppUpdateStatusManager.AppUpdateStatus appUpdateStatus = manager.get(canonicalUrl);
                 if (appUpdateStatus != null && appUpdateStatus.status == AppUpdateStatusManager.Status.InstallError) {
-                    manager.removeApk(notificationKey);
+                    manager.removeApk(canonicalUrl);
                 }
                 break;
             case NotificationHelper.BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED:
-                manager.removeApk(notificationKey);
+                manager.removeApk(canonicalUrl);
                 break;
         }
     }

@@ -479,7 +479,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             }
 
             // Check if we have moved into the ReadyToInstall or Installed state.
-            AppUpdateStatus status = manager.get(intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
+            AppUpdateStatus status = manager.get(
+                    intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
             boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
             if (isStatusChange
                     && status != null

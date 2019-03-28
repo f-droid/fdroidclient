@@ -477,15 +477,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 // Once it is explicitly launched by the user, then we can pretty much forget about
                 // any sort of notification that the app was successfully installed. It should be
                 // apparent to the user because they just launched it.
-                AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getUniqueKey());
+                AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getCanonicalUrl());
             }
             return;
         }
 
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            String urlString = currentStatus.apk.getUrl();
-            File apkFilePath = ApkCache.getApkDownloadPath(activity, urlString);
-            Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
+            String canonicalUrl = currentStatus.apk.getCanonicalUrl();
+            File apkFilePath = ApkCache.getApkDownloadPath(activity, canonicalUrl);
+            Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getCanonicalUrl() +
                     " to " + apkFilePath);
 
             final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
@@ -505,10 +505,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 }
             };
 
-            Uri apkDownloadUri = Uri.parse(urlString);
-            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
+            Uri canonicalUri = Uri.parse(canonicalUrl);
+            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(canonicalUri));
             Installer installer = InstallerFactory.create(activity, currentStatus.apk);
-            installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);
+            installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
             final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
             InstallManagerService.queue(activity, app, suggestedApk);
@@ -534,6 +534,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        InstallManagerService.cancel(activity, currentStatus.getUniqueKey());
+        InstallManagerService.cancel(activity, currentStatus.getCanonicalUrl());
     }
 }

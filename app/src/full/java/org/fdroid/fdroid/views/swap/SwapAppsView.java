@@ -314,10 +314,8 @@ public class SwapAppsView extends ListView implements
                     }
 
                     if (apk != null) {
-                        String urlString = apk.getUrl();
-
                         // TODO unregister receivers? or will they just die with this instance
-                        IntentFilter downloadFilter = DownloaderService.getIntentFilter(urlString);
+                        IntentFilter downloadFilter = DownloaderService.getIntentFilter(apk.getCanonicalUrl());
                         localBroadcastManager.registerReceiver(downloadReceiver, downloadFilter);
                     }
 

@@ -113,10 +113,16 @@ public class ApkCache {
     }
 
     /**
-     * Get the full path for where an APK URL will be downloaded into.
+     * Get the full path for where an package URL will be downloaded into.
      */
     public static SanitizedFile getApkDownloadPath(Context context, String urlString) {
-        Uri uri = Uri.parse(urlString);
+        return getApkDownloadPath(context, Uri.parse(urlString));
+    }
+
+    /**
+     * Get the full path for where an package URL will be downloaded into.
+     */
+    public static SanitizedFile getApkDownloadPath(Context context, Uri uri) {
         File dir = new File(getApkCacheDir(context), uri.getHost() + "-" + uri.getPort());
         if (!dir.exists()) {
             dir.mkdirs();

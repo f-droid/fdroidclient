@@ -29,9 +29,16 @@ public abstract class Downloader {
     public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
     public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
-    public static final String EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.ERROR_REPO_ID";
-    public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_CANONICAL_URL";
-    public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MIRROR_URL";
+    public static final String EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID";
+    public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL";
+    /**
+     * Unique ID used to represent this specific package's install process,
+     * including {@link android.app.Notification}s, also known as {@code canonicalUrl}.
+     *
+     * @see org.fdroid.fdroid.installer.InstallManagerService
+     * @see android.content.Intent#EXTRA_ORIGINATING_URI
+     */
+    public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL";
 
     public static final int DEFAULT_TIMEOUT = 10000;
     public static final int SECOND_TIMEOUT = (int) DateUtils.MINUTE_IN_MILLIS;
@@ -204,10 +211,16 @@ public abstract class Downloader {
      * Send progress updates on a timer to avoid flooding receivers with pointless events.
      */
     private final TimerTask progressTask = new TimerTask() {
+        private long lastBytesRead = Long.MIN_VALUE;
+        private long lastTotalBytes = Long.MIN_VALUE;
+
         @Override
         public void run() {
-            if (downloaderProgressListener != null) {
-                downloaderProgressListener.onProgress(urlString, bytesRead, totalBytes);
+            if (downloaderProgressListener != null
+                    && (bytesRead != lastBytesRead || totalBytes != lastTotalBytes)) {
+                downloaderProgressListener.onProgress(bytesRead, totalBytes);
+                lastBytesRead = bytesRead;
+                lastTotalBytes = totalBytes;
             }
         }
     };

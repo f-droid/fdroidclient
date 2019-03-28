@@ -171,9 +171,9 @@ public class AppDetailsActivity extends AppCompatActivity
             AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
             for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
                 if (status.status == AppUpdateStatusManager.Status.Installed) {
-                    ausm.removeApk(status.getUniqueKey());
+                    ausm.removeApk(status.getCanonicalUrl());
                 } else {
-                    ausm.refreshApk(status.getUniqueKey());
+                    ausm.refreshApk(status.getCanonicalUrl());
                 }
             }
         }
@@ -449,7 +449,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 if (justReceived) {
                     adapter.setIndeterminateProgress(R.string.installing);
                     localBroadcastManager.registerReceiver(installReceiver,
-                            Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
+                            Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
                 }
                 break;
 
@@ -459,7 +459,7 @@ public class AppDetailsActivity extends AppCompatActivity
                         Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
                     } else {
                         String msg = newStatus.errorText;
-                        if (!newStatus.getUniqueKey().equals(msg)) msg += " " + newStatus.getUniqueKey();
+                        if (!newStatus.getCanonicalUrl().equals(msg)) msg += " " + newStatus.getCanonicalUrl();
                         Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     }
@@ -491,9 +491,9 @@ public class AppDetailsActivity extends AppCompatActivity
                     AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
             if (currentStatus != null
                     && isRemoving
-                    && !TextUtils.equals(status.getUniqueKey(), currentStatus.getUniqueKey())) {
+                    && !TextUtils.equals(status.getCanonicalUrl(), currentStatus.getCanonicalUrl())) {
                 Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
-                        + status.getUniqueKey() + " not " + currentStatus.getUniqueKey());
+                        + status.getCanonicalUrl() + " not " + currentStatus.getCanonicalUrl());
             } else if (status != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
                 Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
                         + status.apk.packageName + " not " + app.packageName);
@@ -650,7 +650,7 @@ public class AppDetailsActivity extends AppCompatActivity
         AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
         for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
             if (status.status == AppUpdateStatusManager.Status.Installed) {
-                ausm.removeApk(status.getUniqueKey());
+                ausm.removeApk(status.getCanonicalUrl());
             }
         }
         if (app == null) {
@@ -720,7 +720,7 @@ public class AppDetailsActivity extends AppCompatActivity
     @Override
     public void installCancel() {
         if (currentStatus != null) {
-            InstallManagerService.cancel(this, currentStatus.getUniqueKey());
+            InstallManagerService.cancel(this, currentStatus.getCanonicalUrl());
         }
     }
 

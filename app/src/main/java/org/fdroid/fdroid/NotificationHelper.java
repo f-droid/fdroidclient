@@ -46,13 +46,6 @@ class NotificationHelper {
     private static final int MAX_UPDATES_TO_SHOW = 5;
     private static final int MAX_INSTALLED_TO_SHOW = 10;
 
-    /**
-     * Unique ID used to represent this specific package's install process,
-     * including {@link Notification}s, also known as {@code urlString}.
-     *
-     * @see org.fdroid.fdroid.installer.InstallManagerService
-     */
-    static final String EXTRA_NOTIFICATION_KEY = "key";
     private static final String GROUP_UPDATES = "updates";
     private static final String GROUP_INSTALLED = "installed";
 
@@ -93,14 +86,14 @@ class NotificationHelper {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED:
                         updateStatusLists();
                         createSummaryNotifications();
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         if (entry != null) {
                             createNotification(entry);
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED:
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         updateStatusLists();
                         if (entry != null) {
@@ -111,7 +104,7 @@ class NotificationHelper {
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
-                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        url = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
                         notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
                         notificationManager.cancel(url, NOTIFY_ID_UPDATES);
                         updateStatusLists();
@@ -164,8 +157,8 @@ class NotificationHelper {
 
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
         if (shouldIgnoreEntry(entry)) {
-            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+            notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
+            notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
             return;
         }
 
@@ -177,23 +170,23 @@ class NotificationHelper {
         if (entry.status == AppUpdateStatusManager.Status.Installed) {
             if (useStackedNotifications()) {
                 notification = createInstalledNotification(entry);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, notification);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
+                notificationManager.notify(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED, notification);
             } else if (installed.size() == 1) {
                 notification = createInstalledNotification(entry);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
             }
         } else {
             if (useStackedNotifications()) {
                 notification = createUpdateNotification(entry);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, notification);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
+                notificationManager.notify(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES, notification);
             } else if (updates.size() == 1) {
                 notification = createUpdateNotification(entry);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
+                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
             }
         }
@@ -346,7 +339,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
-        intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
+        intentDeleted.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
@@ -435,7 +428,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
-        intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
+        intentDeleted.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
@@ -540,7 +533,7 @@ class NotificationHelper {
                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                     // Need to check that the notification is still valid, and also that the image
                     // is indeed cached now, so we won't get stuck in an endless loop.
-                    AppUpdateStatusManager.AppUpdateStatus oldEntry = appUpdateStatusManager.get(entry.getUniqueKey());
+                    AppUpdateStatusManager.AppUpdateStatus oldEntry = appUpdateStatusManager.get(entry.getCanonicalUrl());
                     if (oldEntry != null
                             && oldEntry.app != null
                             && oldEntry.app.iconUrl != null

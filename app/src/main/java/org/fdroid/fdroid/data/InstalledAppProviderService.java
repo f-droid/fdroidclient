@@ -237,7 +237,7 @@ public class InstalledAppProviderService extends JobIntentService {
             PackageInfo packageInfo = getPackageInfo(intent, packageName);
             if (packageInfo != null) {
                 for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
-                    ausm.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
+                    ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.Installed, null);
                 }
                 File apk = getPathToInstalledApk(packageInfo);
                 if (apk == null) {
@@ -258,7 +258,7 @@ public class InstalledAppProviderService extends JobIntentService {
         } else if (ACTION_DELETE.equals(action)) {
             deleteAppFromDb(this, packageName);
             for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
-                ausm.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.InstallError, null);
+                ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.InstallError, null);
             }
         }
         packageChangeNotifier.onNext(packageName);
