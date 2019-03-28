@@ -32,6 +32,8 @@ import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.LogPrinter;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
@@ -102,6 +104,8 @@ public class DownloaderService extends Service {
     private static volatile int timeout;
 
     private final class ServiceHandler extends Handler {
+        static final String TAG = "ServiceHandler";
+
         ServiceHandler(Looper looper) {
             super(looper);
         }
@@ -123,6 +127,9 @@ public class DownloaderService extends Service {
         thread.start();
 
         serviceLooper = thread.getLooper();
+        if (BuildConfig.DEBUG) {
+            serviceLooper.setMessageLogging(new LogPrinter(Log.DEBUG, ServiceHandler.TAG));
+        }
         serviceHandler = new ServiceHandler(serviceLooper);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
@@ -135,8 +142,8 @@ public class DownloaderService extends Service {
             return START_NOT_STICKY;
         }
 
-        String uriString = intent.getDataString();
-        if (uriString == null) {
+        String downloadUrl = intent.getDataString();
+        if (downloadUrl == null) {
             Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
             return START_NOT_STICKY;
         }
@@ -147,7 +154,8 @@ public class DownloaderService extends Service {
         }
 
         if (ACTION_CANCEL.equals(intent.getAction())) {
-            Utils.debugLog(TAG, "Cancelling download of " + uriString);
+            Utils.debugLog(TAG, "Cancelling download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                    + " downloading from " + downloadUrl);
             Integer whatToRemove = canonicalUrl.hashCode();
             if (serviceHandler.hasMessages(whatToRemove)) {
                 Utils.debugLog(TAG, "Removing download with ID of " + whatToRemove
@@ -166,7 +174,8 @@ public class DownloaderService extends Service {
             msg.obj = intent;
             msg.what = canonicalUrl.hashCode();
             serviceHandler.sendMessage(msg);
-            Utils.debugLog(TAG, "Queued download of " + uriString);
+            Utils.debugLog(TAG, "Queued download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                    + " using " + downloadUrl);
         } else {
             Utils.debugLog(TAG, "Received Intent with unknown action: " + intent);
         }
@@ -294,7 +303,8 @@ public class DownloaderService extends Service {
         if (TextUtils.isEmpty(mirrorUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing " + mirrorUrl + " to go into the download queue");
+        Utils.debugLog(TAG, "Queue download " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                + " using " + mirrorUrl);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(mirrorUrl));
@@ -345,7 +355,7 @@ public class DownloaderService extends Service {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Preparing cancellation of " + canonicalUrl + " download");
+        Utils.debugLog(TAG, "Send cancel for " + canonicalUrl.hashCode() + "/" + canonicalUrl);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(canonicalUrl));

@@ -159,6 +159,7 @@ public class InstallManagerService extends Service {
             DownloaderService.cancel(this, canonicalUrl);
             Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
             if (apk != null) {
+                Utils.debugLog(TAG, "also canceling OBB downloads");
                 DownloaderService.cancel(this, apk.getPatchObbUrl());
                 DownloaderService.cancel(this, apk.getMainObbUrl());
             }
