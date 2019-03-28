@@ -578,7 +578,8 @@ public final class Utils {
         Date result;
         try {
             result = format.parse(str);
-        } catch (ParseException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ParseException e) {
+            e.printStackTrace();
             result = fallback;
         }
         return result;
