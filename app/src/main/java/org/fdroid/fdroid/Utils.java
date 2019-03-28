@@ -27,6 +27,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -42,6 +44,7 @@ import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
@@ -100,6 +103,8 @@ public final class Utils {
     private static DisplayImageOptions repoAppDisplayImageOptions;
 
     private static Pattern safePackageNamePattern;
+
+    private static Handler toastHandler;
 
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
@@ -839,5 +844,22 @@ public final class Utils {
             long duration = System.currentTimeMillis() - startTime;
             Utils.debugLog(logTag, "[" + duration + "ms] " + message);
         }
+    }
+
+    /**
+     * In order to send a {@link Toast} from a {@link android.app.Service}, we
+     * have to do these tricks.
+     */
+    public static void showToastFromService(final Context context, final String msg, final int length) {
+        if (toastHandler == null) {
+            toastHandler = new Handler(Looper.getMainLooper());
+        }
+        toastHandler.post(new Runnable() {
+
+            @Override
+            public void run() {
+                Toast.makeText(context.getApplicationContext(), msg, length).show();
+            }
+        });
     }
 }
