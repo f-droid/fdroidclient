@@ -92,7 +92,7 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public void download() throws IOException, InterruptedException {
-        downloadFromStream(1024, false);
+        downloadFromStream(false);
         connection.closeQuietly();
     }
 

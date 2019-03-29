@@ -81,6 +81,6 @@ public class LocalFileDownloader extends Downloader {
         } else if (fileLength > 0) {
             resumable = true;
         }
-        downloadFromStream(8192, resumable);
+        downloadFromStream(resumable);
     }
 }

@@ -175,7 +175,7 @@ public class HttpDownloader extends Downloader {
         }
         setupConnection(resumable);
         Utils.debugLog(TAG, "downloading " + urlString + " (is resumable: " + resumable + ")");
-        downloadFromStream(8192, resumable);
+        downloadFromStream(resumable);
         cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
