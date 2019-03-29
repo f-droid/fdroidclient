@@ -288,9 +288,9 @@ public class SwapAppsView extends ListView implements
                 @Override
                 public void onChange(boolean selfChange) {
                     Activity activity = getActivity();
-                    if (activity != null) {
+                    if (activity != null && app != null) {
                         app = AppProvider.Helper.findSpecificApp(
-                                getActivity().getContentResolver(),
+                                activity.getContentResolver(),
                                 app.packageName,
                                 app.repoId,
                                 AppMetadataTable.Cols.ALL);

@@ -81,8 +81,6 @@ class NearbyViewBinder {
         });
 
         if (Build.VERSION.SDK_INT >= 21) {
-            Log.i(TAG, "Environment.isExternalStorageRemovable(activity.getExternalFilesDir(\"\")) " +
-                    Environment.isExternalStorageRemovable(activity.getExternalFilesDir("")));
             File[] dirs = activity.getExternalFilesDirs("");
             if (dirs != null) {
                 for (File dir : dirs) {

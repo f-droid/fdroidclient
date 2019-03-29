@@ -19,7 +19,6 @@
 package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
-import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.job.JobInfo;
@@ -33,8 +32,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -87,7 +84,6 @@ public class UpdateService extends JobIntentService {
     private static final int NOTIFY_ID_UPDATING = 0;
 
     private static UpdateService updateService;
-    private static Handler toastHandler;
 
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
@@ -391,22 +387,6 @@ public class UpdateService extends JobIntentService {
         }
     }
 
-    /**
-     * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
-     */
-    private void sendNoInternetToast() {
-        if (toastHandler == null) {
-            toastHandler = new Handler(Looper.getMainLooper());
-        }
-        toastHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(),
-                        R.string.warning_no_internet, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     private static boolean isLocalRepoAddress(String address) {
         return address != null &&
                 (address.startsWith(BluetoothDownloader.SCHEME)
@@ -453,7 +433,7 @@ public class UpdateService extends JobIntentService {
                 if (!foundLocalRepo) {
                     Utils.debugLog(TAG, "No internet, cannot update");
                     if (manualUpdate) {
-                        sendNoInternetToast();
+                        Utils.showToastFromService(this, getString(R.string.warning_no_internet), Toast.LENGTH_SHORT);
                     }
                     return;
                 }
