@@ -89,6 +89,7 @@ errorprone:
         -skip-adb-auth
         -verbose
         -wipe-data
+        -debug-all
         &
     - wait-for-emulator
     - adb devices
@@ -97,9 +98,9 @@ errorprone:
     - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected 22 default armeabi-v7a:
-  retry: 1
   <<: *test-template
   <<: *connected-template
+  allow_failure: true
 
 .kvm-template: &kvm-template
   tags:
@@ -111,12 +112,6 @@ connected 22 default armeabi-v7a:
   <<: *test-template
   <<: *connected-template
 
-connected 17 default x86:
-  <<: *kvm-template
-
-connected 18 default x86:
-  <<: *kvm-template
-
 connected 23 default x86:
   <<: *kvm-template
 
@@ -125,11 +120,17 @@ connected 25 default x86:
 
 connected 26 google_apis x86:
   <<: *kvm-template
+  only:
+    - branches@fdroid/fdroidclient
+    - branches@eighthave/fdroidclient
 
 connected 27 google_apis_playstore x86:
   <<: *kvm-template
 
 connected 28 default x86_64:
+  <<: *kvm-template
+
+connected Q default x86_64:
   <<: *kvm-template
 
 
