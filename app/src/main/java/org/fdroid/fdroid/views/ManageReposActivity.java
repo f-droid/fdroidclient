@@ -182,6 +182,14 @@ public class ManageReposActivity extends AppCompatActivity
             ClipData data = clipboardManager.getPrimaryClip();
             if (data.getItemCount() > 0) {
                 text = data.getItemAt(0).getText();
+
+                if (text == null) {
+                    Uri uri = data.getItemAt(0).getUri();
+
+                    if (uri != null) {
+                        text = uri.toString();
+                    }
+                }
             }
         }
         return text != null ? text.toString() : null;
