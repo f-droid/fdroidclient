@@ -640,28 +640,21 @@ public class FDroidApp extends Application {
         }
     }
 
-    private static boolean useTor;
-
     /**
      * Set the proxy settings based on whether Tor should be enabled or not.
      */
     private static void configureTor(boolean enabled) {
-        useTor = enabled;
-        if (useTor) {
+        if (enabled) {
             NetCipher.useTor();
         } else {
             NetCipher.clearProxy();
         }
     }
 
-    public static void checkStartTor(Context context) {
-        if (useTor) {
+    public static void checkStartTor(Context context, Preferences preferences) {
+        if (preferences.isTorEnabled()) {
             OrbotHelper.requestStartTor(context);
         }
-    }
-
-    public static boolean isUsingTor() {
-        return useTor;
     }
 
     public static Context getInstance() {
