@@ -388,7 +388,8 @@ public class FDroidApp extends Application {
         PRNGFixes.apply();
 
         curTheme = preferences.getTheme();
-        preferences.configureProxy();
+        configureProxy(preferences);
+
 
         // bug specific to exactly 5.0 makes it only work with the old index
         // which includes an ugly, hacky workaround
@@ -484,8 +485,6 @@ public class FDroidApp extends Application {
                 WifiStateChangeService.start(getApplicationContext(), null);
             }
         });
-
-        configureTor(preferences.isTorEnabled());
 
         if (preferences.isKeepingInstallHistory()) {
             InstallHistoryService.register(this);
@@ -641,11 +640,15 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * Set the proxy settings based on whether Tor should be enabled or not.
+     * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
+     *
+     * Must be called on App startup and after every proxy configuration change.
      */
-    private static void configureTor(boolean enabled) {
-        if (enabled) {
+    public static void configureProxy(Preferences preferences) {
+        if (preferences.isTorEnabled()) {
             NetCipher.useTor();
+        } else if (preferences.isProxyEnabled()) {
+            NetCipher.setProxy(preferences.getProxyHost(), preferences.getProxyPort());
         } else {
             NetCipher.clearProxy();
         }

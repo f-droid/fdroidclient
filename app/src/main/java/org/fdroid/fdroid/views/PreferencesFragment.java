@@ -455,12 +455,12 @@ public class PreferencesFragment extends PreferenceFragment
                 if ((Boolean) enabled) {
                     final Activity activity = getActivity();
                     enableProxyCheckPref.setEnabled(false);
-                    if (OrbotHelper.isOrbotInstalled(activity)) {
-                        NetCipher.useTor();
-                    } else {
+                    if (!OrbotHelper.isOrbotInstalled(activity)) {
                         Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
                         activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
                     }
+                    // NetCipher gets configured to use Tor in onPause()
+                    // via a call to FDroidApp.configureProxy()
                 } else {
                     enableProxyCheckPref.setEnabled(true);
                     NetCipher.clearProxy();
@@ -491,7 +491,7 @@ public class PreferencesFragment extends PreferenceFragment
     public void onPause() {
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-        Preferences.get().configureProxy();
+        FDroidApp.configureProxy(Preferences.get());
 
         if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
             UpdateService.schedule(getActivity());
