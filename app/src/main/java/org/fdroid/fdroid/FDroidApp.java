@@ -4,6 +4,7 @@
  * Copyright (C) 2014-2018  Hans-Christoph Steiner <hans@eds.org>
  * Copyright (C) 2015-2016  Daniel Martí <mvdan@mvdan.cc>
  * Copyright (c) 2018  Senecto Limited
+ * Copyright (C) 2019 Michael Pöhn <michael.poehn@fsfe.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

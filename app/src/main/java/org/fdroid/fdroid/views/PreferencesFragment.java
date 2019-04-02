@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2019 Michael Pöhn
  * Copyright (C) 2014-2018 Hans-Christoph Steiner
  * Copyright (C) 2014-2017 Peter Serwylo
  * Copyright (C) 2015-2016 Daniel Martí
@@ -26,6 +27,7 @@
 package org.fdroid.fdroid.views;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -44,7 +46,7 @@ import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.WindowManager;
-import info.guardianproject.netcipher.NetCipher;
+
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
@@ -121,7 +123,9 @@ public class PreferencesFragment extends PreferenceFragment
         installHistoryPref.setVisible(keepInstallHistoryPref.isChecked());
 
         useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
+        useTorCheckPref.setOnPreferenceChangeListener(useTorChangedListener);
         enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        enableProxyCheckPref.setOnPreferenceChangeListener(proxyEnabledChangedListener);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
 
         overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
@@ -445,30 +449,37 @@ public class PreferencesFragment extends PreferenceFragment
     /**
      * The default for "Use Tor" is dynamically set based on whether Orbot is installed.
      */
-    private void initUseTorPreference() {
-        boolean useTor = Preferences.get().isTorEnabled();
-        useTorCheckPref.setDefaultValue(useTor);
-        useTorCheckPref.setChecked(useTor);
-        useTorCheckPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object enabled) {
-                if ((Boolean) enabled) {
-                    final Activity activity = getActivity();
-                    enableProxyCheckPref.setEnabled(false);
-                    if (!OrbotHelper.isOrbotInstalled(activity)) {
-                        Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
-                        activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
-                    }
-                    // NetCipher gets configured to use Tor in onPause()
-                    // via a call to FDroidApp.configureProxy()
-                } else {
-                    enableProxyCheckPref.setEnabled(true);
-                    NetCipher.clearProxy();
-                }
-                return true;
-            }
-        });
+    private void initUseTorPreference(Context context) {
+        useTorCheckPref.setDefaultValue(OrbotHelper.isOrbotInstalled(context));
+        useTorCheckPref.setChecked(Preferences.get().isTorEnabled());
     }
+
+    private final Preference.OnPreferenceChangeListener useTorChangedListener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object enabled) {
+            if ((Boolean) enabled) {
+                enableProxyCheckPref.setChecked(false);
+                final Activity activity = getActivity();
+                if (!OrbotHelper.isOrbotInstalled(activity)) {
+                    Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
+                    activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
+                }
+                // NetCipher gets configured to use Tor in onPause()
+                // via a call to FDroidApp.configureProxy()
+            }
+            return true;
+        }
+    };
+
+    private final Preference.OnPreferenceChangeListener proxyEnabledChangedListener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object enabled) {
+            if ((Boolean) enabled) {
+                useTorCheckPref.setChecked(false);
+            }
+            return true;
+        }
+    };
 
     @Override
     public void onResume() {
@@ -484,7 +495,7 @@ public class PreferencesFragment extends PreferenceFragment
 
         initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
-        initUseTorPreference();
+        initUseTorPreference(getActivity().getApplicationContext());
     }
 
     @Override
