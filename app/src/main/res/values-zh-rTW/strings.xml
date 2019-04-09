@@ -457,4 +457,5 @@
     <string name="not_visible_nearby_description">在與附近的裝置交換之前，請讓您的裝置可見於其他裝置。</string>
     <string name="scan_removable_storage_toast">正在掃描 %s…</string>
     <string name="main_menu__updates">更新</string>
+    <string name="menu_translation">翻譯</string>
 </resources>
