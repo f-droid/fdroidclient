@@ -1,0 +1,13 @@
+* Flipinn "Nýjustu" leggur áherslu á forrit með lýsingum, þýðingum og myndum
+
+* Sjálfvirkt niðurhal frá speglum, hraðar niðurhali og minnkar álag á f-droid.org
+
+* Speglar gerðir óvirkir með nýjum rofum í RepoDetails (#1696)
+
+* Afkastameiri geymsla í biðminni (per-safn; yfir mismunandi vefþjóna #1708)
+
+* Löguð uppsetning frá óþekktum upptökum með P.Extension (#1702)
+
+* Lagaðar táknmyndir sem vantar þegar ekki er notað Wi-Fi (#1592)
+
+* Betri þýðingar á uppfærsluflipa og kjörstillingum
