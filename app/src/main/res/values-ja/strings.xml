@@ -138,7 +138,6 @@
     <string name="swap_confirm_connect">今すぐ%1$sからアプリを取得しますか？</string>
     <string name="app_incompatible">互換性がありません</string>
     <string name="links">リンク</string>
-
     <string name="back">戻る</string>
     <string name="bad_fingerprint">フィンガープリントが間違っています</string>
     <string name="invalid_url">有効なURLではありません。</string>
@@ -147,10 +146,8 @@
     <string name="status_processing_xml_percent">%1$sから%2$s/%3$s(%4$d%%)処理中</string>
     <string name="pref_language">言語</string>
     <string name="pref_language_default">システムの既定</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">ホットスポット</string>
-
     <string name="empty_installed_app_list">アプリがインストールされていません。
 \n
 \n端末にアプリはありますが、F-Droidからは利用できません。リポジトリを更新する必要があるか、リポジトリからアプリが利用できない可能性があります。</string>
@@ -159,15 +156,12 @@
     <string name="swap_join_this_hotspot">友達がホットスポットに接続するのを助けましょう</string>
     <string name="empty_can_update_app_list">おめでとうございます！
 \nすべてのアプリが最新です。</string>
-
     <string name="install_error_unknown">不明なエラーのためインストールに失敗しました</string>
     <string name="uninstall_error_unknown">不明なエラーのためアンインストールに失敗しました</string>
-
     <string name="swap_success">正常に交換しました！</string>
     <string name="swap_active_hotspot">%1$s(自分のホットスポット)</string>
     <string name="swap_switch_to_wifi">タップしてWi-Fiネットワークに切り替える</string>
     <string name="app_name">F-Droid</string>
-
     <string name="swap_dont_show_again">今後表示しない</string>
     <string name="swap_scan_or_type_url">どちらかがコードを読み取るか、URLをブラウザに入力する必要があります。</string>
     <string name="swap_choose_apps">アプリを選択</string>
@@ -190,11 +184,8 @@
     <string name="swap_confirm">交換の確認</string>
     <string name="swap_qr_isnt_for_swap">読み取ったQRコードは交換コードではないようです。</string>
     <string name="loading">読み込み中</string>
-
     <string name="downloading">ダウンロード中</string>
-
     <string name="swap_connection_misc_error">端末への接続中にエラーが発生しました。交換できません！</string>
-
     <string name="install_confirm">アクセス権限が必要</string>
     <string name="install_confirm_update">インストール済みのアプリにアップデートをインストールしますか？既存のデータは失われません。更新されたアプリの権限:</string>
     <string name="install_confirm_update_system">このビルトインアプリに更新をインストールしますか？既存のデータが失われることはありません。更新されたアプリの権限:</string>
@@ -214,7 +205,6 @@
     <string name="interval_1d">毎日チェック</string>
     <string name="interval_1w">毎週チェック</string>
     <string name="interval_2w">2週間毎にチェック</string>
-
     <string name="theme_light">ライト</string>
     <string name="theme_dark">ダーク</string>
     <string name="about_source">ソースコード</string>
@@ -225,22 +215,17 @@
     <string name="category_Theming">テーマ</string>
     <string name="category_Time">日付と時刻</string>
     <string name="category_Writing">執筆</string>
-
     <string name="unstable_updates">非安定版に更新</string>
     <string name="unstable_updates_summary">非安定版への更新を提案します</string>
     <string name="download_error">ダウンロードに失敗しました！</string>
-
     <string name="menu_bitcoin">ビットコイン</string>
     <string name="menu_litecoin">ライトコイン</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="repo_details">リポジトリ</string>
     <string name="repo_url">アドレス</string>
     <string name="system_install_denied_permissions">特権が拡張機能に付与されていません！バグレポートを送ってください！</string>
     <string name="more">詳細を表示</string>
     <string name="less">詳細を隠す</string>
-
     <string name="status_download_unknown_size">ダウンロード中
 \n%2$s
 \n%1$sから</string>
@@ -252,40 +237,31 @@
     <string name="login_password">パスワード</string>
     <string name="repo_edit_credentials">パスワードを変更</string>
     <string name="repo_error_empty_username">ユーザー名が空です。資格情報は変更されていません</string>
-
     <string name="about_license">ライセンス</string>
     <string name="empty_search_available_app_list">一致する利用可能なアプリはありません。</string>
     <string name="status_inserting_apps">アプリの詳細を保存中</string>
-
     <string name="crash_dialog_title">F-Droidがクラッシュしました</string>
     <string name="crash_dialog_text">アプリを強制的に停止させる予期しないエラーが発生しました。問題を修正するために、詳細をメールで送信してもよろしいですか？</string>
     <string name="crash_dialog_comment_prompt">ここに追加の情報やコメントを追加できます:</string>
     <string name="antinonfreeassetslist">このアプリにはフリーではないアセットが含まれています</string>
-
     <string name="menu_email">作者にメールする</string>
     <string name="useTor">Torを使用する</string>
     <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして、プライバシーを高めます。Orbotが必要です</string>
     <string name="swap_stopping_wifi">Wi-Fiの停止中</string>
     <string name="repo_provider">リポジトリ: %s</string>
-
     <string name="update_auto_download">アプリの自動更新</string>
     <string name="update_auto_download_summary">自動的にアップデートをダウンロードして、インストール通知をします</string>
     <string name="download_pending">ダウンロードの開始を待っています</string>
-
     <string name="keep_hour">1時間</string>
     <string name="keep_day">1日</string>
     <string name="keep_week">1週間</string>
     <string name="keep_month">1ヶ月</string>
     <string name="keep_year">1年間</string>
     <string name="keep_forever">永久</string>
-
     <string name="install_error_notify_title">%sのインストール時にエラー</string>
     <string name="uninstall_error_notify_title">%sのアンインストール時にエラー</string>
-
-
     <string name="installing">インストール中</string>
     <string name="uninstalling">アンインストール中</string>
-
     <string name="update_auto_install">自動的に更新をインストール</string>
     <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストールします</string>
     <string name="keep_install_history">インストール履歴を保存する</string>
@@ -294,7 +270,6 @@
     <string name="versions">バージョン</string>
     <string name="app_details_donate_prompt_unknown_author">%1$sの開発者にコーヒーを奢る！</string>
     <string name="app_details_donate_prompt">%1$sは%2$sによって作成されました。彼らにコーヒーを奢ろう！</string>
-
     <string name="repositories_summary">アプリのソースを追加します</string>
     <string name="notification_title_single_update_available">更新が利用可能です</string>
     <string name="notification_title_single_ready_to_install">インストールの準備完了</string>
@@ -315,52 +290,36 @@
     <string name="notification_title_summary_install_error">インストールに失敗しました</string>
     <string name="notification_action_cancel">キャンセル</string>
     <string name="notification_action_install">インストール</string>
-
     <string name="app_version_x_available">バージョン%1$sが利用可能です</string>
     <string name="app_version_x_installed">バージョン%1$s</string>
     <string name="clear_search">検索の削除</string>
-
     <string name="main_menu__latest_apps">新着</string>
     <string name="main_menu__categories">カテゴリ</string>
     <string name="main_menu__swap_nearby">付近</string>
-
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d個のアプリをすべて表示</item>
     </plurals>
-
     <string name="app_recommended_version_installed">バージョン%1$s(推奨)</string>
     <string name="app_new">新規</string>
-
     <string name="installed_apps__activity_title">インストール済みのアプリ</string>
     <string name="installed_app__updates_ignored">アップデートが無視されています</string>
     <string name="installed_app__updates_ignored_for_suggested_version">バージョン%1$sのアップデートを無視しました</string>
-
     <string name="preference_category__my_apps">マイアプリ</string>
     <string name="preference_manage_installed_apps">インストール済みのアプリを管理</string>
-
-
     <string name="tts_category_name">カテゴリ%1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="other">%2$sカテゴリの%1$d個のアプリをすべて表示</item>
     </plurals>
     <string name="app__install_downloaded_update">更新</string>
-
     <string name="app_list__name__downloading_in_progress">%1$sをダウンロード中</string>
-
     <string name="updates__tts__download_app">ダウンロード</string>
     <string name="update_all">すべて更新</string>
-
     <string name="updates__hide_updateable_apps">アプリを非表示</string>
     <string name="updates__show_updateable_apps">アプリを表示</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">%1$d個のアプリの更新をダウンロードします。</item>
     </plurals>
-
     <string name="details_new_in_version">バージョン%sの新機能</string>
-
     <string name="antifeatureswarning">このアプリは好ましくないかもしれない機能を含んでいます。</string>
     <string name="antifeatures">好ましくない機能</string>
     <plurals name="details_last_update_days">
@@ -371,20 +330,17 @@
     <string name="nearby_splash__download_apps_from_people_nearby">インターネット接続がありませんか？近くの人からアプリを受け取りましょう！</string>
     <string name="nearby_splash__find_people_button">近くの人を探す</string>
     <string name="nearby_splash__both_parties_need_fdroid">お互いが近くで%1$sを使用する必要があります。</string>
-
     <string name="latest__empty_state__no_recent_apps">新着アプリが見つかりません</string>
     <string name="latest__empty_state__never_updated">一度アプリのリストを更新すると、新着のアプリがここに表示されます</string>
     <string name="latest__empty_state__no_enabled_repos">一度リポジトリを有効にして更新すると、新着アプリがここに表示されます</string>
-
     <string name="categories__empty_state__no_categories">表示できるカテゴリがありません</string>
-
     <string name="menu_video">動画</string>
     <string name="app__tts__cancel_download">ダウンロードをキャンセル</string>
     <string name="app__tts__downloading_progress">ダウンロード中、%1$d%%完了</string>
     <string name="menu_license">ライセンス: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="other">さらに+%1$d…</item>
-</plurals>
+        <item quantity="other">さらに+%1$d…</item>
+    </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="other">%1$d個の更新</item>
     </plurals>
@@ -405,29 +361,23 @@
     <string name="force_old_index">古いインデックスフォーマットを強制する</string>
     <string name="force_old_index_summary">バグや互換性の問題がある場合に、XMLアプリインデックスを使用します</string>
     <string name="app_list_download_ready">ダウンロードが完了しました。今すぐインストールできます</string>
-
     <string name="app_installed_media">%sにファイルをインストールしました</string>
     <string name="app_permission_storage">F-Droidがストレージにインストールするためにはストレージの権限が必要です。インストールを続行するには次の画面で許可してください。</string>
-
     <string name="status_inserting_x_apps">%3$sよりアプリの詳細(%1$d/%2$d)を保存中</string>
     <string name="app_details__incompatible_mismatched_signature">インストールされたバージョンと署名が異なります</string>
     <string name="app_details__no_versions__show_incompat_versions">ここに互換性のないバージョンを表示するには、「%1$s」設定を有効にします。</string>
     <string name="app_details__no_versions__no_compatible_signatures">互換性のある署名のバージョンがありません</string>
     <string name="app_details__no_versions__none_compatible_with_device">端末と互換性のあるバージョンがありません</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">インストールされているバージョンは、利用可能なバージョンと互換性がありません。アプリをアンインストールすると、互換性のあるバージョンを表示したりインストールすることができます。これは多くの場合、Google Playやその他のソースからインストールされたアプリが、別の証明書で署名されている場合に発生します。</string>
-
     <string name="app_list__dismiss_app_update">アップデートを無視しました</string>
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$sで脆弱性を発見しました。今すぐにこのアプリをアンインストールすることをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$sで脆弱性を発見しました。今すぐに最新バージョンへの更新することをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
-
     <string name="privacy">プライバシー</string>
     <string name="preventScreenshots_title">スクリーンショットの防止</string>
     <string name="preventScreenshots_summary">スクリーンショットの撮影を防止するとともに、アプリ履歴にアプリの内容が表示されないようにします</string>
-
     <string name="panic_app_setting_title">パニックボタンのアプリ</string>
     <string name="panic_app_unknown_app">不明のアプリ</string>
     <string name="panic_app_setting_summary">アプリが設定されていません</string>
@@ -435,7 +385,6 @@
     <string name="panic_app_dialog_title">パニックアプリを設定</string>
     <string name="panic_app_dialog_message">%1$sを破壊的なパニックボタンとして動作させることを許可してもよろしいですか？</string>
     <string name="allow">許可</string>
-
     <string name="panic_settings">パニックボタンの設定</string>
     <string name="panic_settings_summary">緊急時のアクション</string>
     <string name="panic_exit_title">アプリを終了</string>
@@ -443,10 +392,8 @@
     <string name="panic_destructive_actions">破壊的なアクション</string>
     <string name="panic_hide_title">%sを非表示にする</string>
     <string name="panic_hide_summary">アプリは自ら隠れます</string>
-
     <string name="panic_hide_warning_title">復元方法を記憶する</string>
     <string name="panic_hide_warning_message">緊急事態が起きた時に、これは%1$sをランチャーから削除します。偽の「%3$s」アプリで「%2$d」と入力することで復元します。</string>
-
     <string name="hiding_calculator">電卓</string>
     <string name="hiding_dialog_title">今すぐ%sを非表示にする</string>
     <string name="hiding_dialog_message">本当に%1$sをランチャーから削除してもよろしいですか？偽の「%3$s」アプリで「%2$d」と入力することで復元することができます。</string>
@@ -454,9 +401,7 @@
     <string name="hide_on_long_search_press_title">検索ボタンで非表示にする</string>
     <string name="hide_on_long_search_press_summary">検索ボタンを長押しすることでアプリを非表示にすることができます</string>
     <string name="sort_search">検索の並び替え</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="warning_scaning_qr_code">お使いのカメラはオートフォーカスがないようです。コードをスキャンするのが難しいことがあるかもしれません。</string>
     <string name="repo_add_mirror">ミラーを追加</string>
     <string name="repo_exists_add_fingerprint">%1$sは既に設定されているため、新しい鍵の情報が追加されます。</string>
@@ -468,14 +413,12 @@
     <string name="show_anti_feature_apps_on">好ましくない機能の使用を必要とするアプリを表示します</string>
     <string name="force_touch_apps">タッチスクリーンの使用が必要なアプリ</string>
     <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を必要とするアプリを表示します</string>
-
     <string name="repo_official_mirrors">公式ミラー</string>
     <string name="repo_user_mirrors">ユーザーによるミラー</string>
     <string name="use_bluetooth">Bluetooth を使用する</string>
     <string name="swap_toast_invalid_url">交換の URL が無効: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi ホットスポットが有効です</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ホットスポットを有効にできませんでした!</string>
-
     <string name="over_wifi">Wi-Fi接続</string>
     <string name="over_data">データ接続</string>
     <string name="over_network_always_summary">利用可能な場合には、常にこの接続を使用する</string>
@@ -483,7 +426,6 @@
     <string name="over_network_never_summary">この接続を使用して何もダウンロードしない</string>
     <string name="antidisabledalgorithmlist">このアプリは弱いセキュリティ署名を使用しています</string>
     <string name="antiknownvulnlist">このアプリは既知のセキュリティ脆弱性が含まれています</string>
-
     <string name="prompt_to_send_crash_reports">クラッシュレポート送信の確認</string>
     <string name="prompt_to_send_crash_reports_summary">クラッシュに関するデータを収集して開発者に送信します</string>
     <string name="hide_all_notifications">すべての通知を非表示</string>
@@ -499,15 +441,12 @@
     <string name="send_installed_apps">インストールされたアプリを共有</string>
     <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
     <string name="updates_disabled_by_settings">データ/WiFi の設定によってすべての更新が無効です</string>
-
     <string name="menu_open">開く</string>
     <string name="antinosourcesince">ソースコードはもう利用できません。更新できません。</string>
-
     <string name="share_repository">リポジトリを共有</string>
     <string name="about_forum">サポートフォーラム</string>
     <string name="app_suggested">提案</string>
     <string name="app_size">サイズ: %1$s</string>
-
     <string name="menu_downgrade">ダウングレード</string>
     <string name="scan_removable_storage_title">リムーバルストレージをスキャン</string>
     <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
@@ -521,4 +460,5 @@
     <string name="swap_toast_using_path">%1$sを使用</string>
     <string name="swap_toast_not_removable_storage">選択したものは、どのリムーバブルストレージデバイスとも一致しませんでした。もう一度やり直してください!</string>
     <string name="swap_toast_find_removeable_storage">お使いの取り外し可能SDカードまたはUSBを選択してください</string>
+    <string name="menu_translation">翻訳</string>
 </resources>
