@@ -1,0 +1,19 @@
+* Hobetutako botoiak, egoera-eguneraketak
+
+* Ezarpenak berreginda, datuen erabilera kudeatzeko aukera
+
+* Bateria aintzat duen bigarren planoko jarduera Android 5.0-tik gora
+
+* Biltegiak partekatzeko aukera
+
+* Kraskatze txostenak desgaitzeko aukera
+
+* Instalazioen historiala egunkaria aktibatzean
+
+* Ezaugarri zalantzagarrien zerrenda, iturbururik ez gehituta
+
+* Android 4.0 da gutxienekoa orain
+
+* Marka zuriko F-Droid-en hobekuntza
+
+* Adituentzako ezarpena arazte bertsioa eta UUID bidaltzeko

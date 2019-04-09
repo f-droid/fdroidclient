@@ -1,0 +1,13 @@
+* Azkenak fitxak deskripzioak, itzulpenak  pantaila-argazkiak... dituzten aplikazioak lehenesten ditu
+
+* Deskarga automatikoa ispiluetatik, azkartzeko eta karga baretzeko
+
+* Desgaitu ispiluak RepoDetails-etik (#1696)
+
+* Deskargen cache eraginkorragoa (#1708)
+
+* Pribilegiodun luzapenarekin ere baimentzea eskatzea konponduta (#1702)
+
+* Wifi a gabe ikonoak faltan konponduta (#1592)
+
+* Itzulpen hobeak eguneraketak eta hobespenetan

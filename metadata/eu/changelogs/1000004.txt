@@ -1,0 +1,7 @@
+* Keinuak hatzak pasatuz eguneraketak fitxan
+
+* Abisuak bistaratzen dira eguneraketen fitxan arazo ezagunentzat
+
+* Itzulpenak eguneratuta
+
+* Hobekuntzak interfaze ilunean

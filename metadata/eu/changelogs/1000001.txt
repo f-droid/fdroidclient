@@ -1,0 +1,3 @@
+* Aplikazioak biltegietatik kentzea konponduta (#568)
+
+* Indizearen eguneratze azkarragoa

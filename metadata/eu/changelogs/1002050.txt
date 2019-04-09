@@ -1,0 +1,15 @@
+* Automatikoki kimatu edo ezabatu cachea espazio gutxi badago
+
+* Errendimendu hobetua memoria gutxiko gailuetan
+
+* Deskarga guztiek hartzen dute aintzat "wifi bidez" hobespena
+
+* Memoria erabilera gutxiagotzen da gutxi dagoenean
+
+* Gehitu ispiluak biltegiei esteka edo QR kode bidez
+
+* Ingurukoekin partekatzea hobetua
+
+* Jakinarazpen errepikakorren iturri bat konponduta (#1271)
+
+* F-Droid-ek GitLab-eko F-Droid Nightly estekak ulertzen ditu

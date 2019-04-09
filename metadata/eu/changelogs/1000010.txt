@@ -1,0 +1,21 @@
+F-Droid 1.0 kalean!
+
+Bertsio honek aldaketa ugari ditu:
+
+* Aplikazioak eguneratzeko prozesu berria
+
+* Aplikazioen deskripzioak  erabat itzuli daitezke
+
+* "Zer dago berri" atala berrikuntzak ikusteko
+
+* Argazki-pantailak
+
+* Multimedia, OTA, ZIP... fitxategiak instalatzeko aukera
+
+* Jarraipenaren kontrako babes hobea  (HTTP ETag, TLS, eta abar.)
+
+* Eguneratzeak bigarren planoan pribilegiodun gehigarriarekin
+
+* Aplikazioen garatzaileei dohaintza egiteko estekak
+
+* Indizearen eguneratze azkarragoa

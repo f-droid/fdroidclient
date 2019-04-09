@@ -1,0 +1,13 @@
+* Bertsioen eta aplikazioaren xehetasunetan hobekuntzak, @wsdfhjxc erabiltzaileari esker
+
+* Teklatu edo D-pad bidezko nabigazioa hobetuta,  @doeffinger erabiltzaileari esker
+
+* Erakutsi "ireki" botoia instalatutako multimedia ikusi daitekeenean
+
+* Partekatu botoia "instalatutako aplikazioak" atalean, CSV zerrenda ateratzeko
+
+* APK fitxategien zerrenda partekatu ataleko HTML indizean
+
+* Saiatu berriro indizea ispiluetatik deskargatzean
+
+* "Bidali F-Droid Bluetooth bidez" botoia konponduta

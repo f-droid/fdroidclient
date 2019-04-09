@@ -506,4 +506,5 @@
     <string name="swap_toast_not_removable_storage">Aukera hori ez dator bat inolako biltegi gailu kengarriarekin, saiatu berriro!</string>
     <string name="swap_toast_find_removeable_storage">Hautatu zure SD txartel edo USB kengarria</string>
     <string name="main_menu__updates">Eguneraketak</string>
+    <string name="menu_translation">Itzulpena</string>
 </resources>

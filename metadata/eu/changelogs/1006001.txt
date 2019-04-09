@@ -1,0 +1,7 @@
+* Ispiluak desgaitzeko aukera gehitu da biltegien zehetasunetara (#1696)
+
+* Ausazko ispiluaren aukeraketa pakete/apk bakoitzaren deskargarako
+
+* APK guztien deskargak biltegiko cacheatzen dira, ez ispiluko
+
+* Kudeatu Apache eta NGINX ETag etiketak indizea egunean dagoen egiaztatzean (#1708)

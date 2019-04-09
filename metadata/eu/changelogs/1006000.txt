@@ -1,0 +1,11 @@
+* Kudeatu READ_EXTERNAL_STORAGE baimen inplizitua, eskari bat abiatuz pribilegiodun gehigarria erabiltzean (#1702)
+
+* Indizeko datuak garbituta, zerbitzariko mehatsuak gutxiagotzeko
+
+* Irakurketa denbora-mugak isipiluen erabilera aktibatzen du motel dabilenean
+
+* Wifia erabiltzen ez denean falta diren ikonoak konponduta (#1592)
+
+* Izenburu desberdinak eguneraketen hobespenetan eta eguneraketak fitxan
+
+* Interfazean hobekuntzak @ConnyDuck erabiltzaileari esker  (#1636, #1618)

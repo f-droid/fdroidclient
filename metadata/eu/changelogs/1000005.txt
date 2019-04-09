@@ -1,0 +1,3 @@
+* Android >= 7.0 bertsioetan itzulpenak ikustea eragzten zuen akatsa konponduta
+
+* Datu-basearen bertsioa 1.0-alpha3 → 1.0-alpha4 eguneratzean kraskatzea konponduta #1181

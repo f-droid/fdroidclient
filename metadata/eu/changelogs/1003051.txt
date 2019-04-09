@@ -1,0 +1,21 @@
+v1.3.1
+* Ingurukoekin partekatzeko kodea berreginda
+
+* TLSv1.3 euskarria, gailuak onartzean
+
+v1.3
+* Hobetutako botoiak eta egoera eguneraketak
+
+* Ezarpenak berreginda, datuen erabilera kudeatzeko aukerak
+
+* Android 5.0 eta berriagoetan bateria aintzat duen bigarren planoko jarduera
+
+* Biltegiak partekatzeko aukera
+
+* Kraskatze txostenak desgaitzeko aukera
+
+* Instalazioen historiala egunkaria aktibatzean
+
+* Ezaugarri zalantzagarrien zerrenda, iturbururik ez gehituta
+
+* Android 4.0 da gutxienekoa

@@ -1,0 +1,7 @@
+* HTTP ETag jarraipena egiteko erabiltzea eragotzita
+
+* Pantaila-argazkien disposizio hobea
+
+* Une bateko eta cacheko fitxategiak behar bezala garbitzen dira
+
+* Hobekuntzak modu ilunean

@@ -1,0 +1,13 @@
+* SD txartelen bidezko partekatzea onartzen da
+
+* Hobekuntzak ingurukoekin partekatzean
+
+* Aplikazioen xehetasunak hobetuta
+
+* Ingurukoekin partekatzeari buruzko itzulpen hobetuak
+
+* Aplikazioaren ikonoa hautatzeko logika hobetua
+
+* Gehitu biltegiak additional_repos.xml erabilita, ROM edo ekoizleentzat.
+
+* Bistaratu bertsio kodea hedatutako bertsioen zerrendan, modu adituan

@@ -1,0 +1,7 @@
+* Edozien biltegiren ispilu ofizialak onartzen ditu, aukeraketa automatikoa eskuragarritasunaren arabera
+
+* Hobekuntzak interfazean, egonkortasunean eta akatsen konponketa
+
+* Probatutatun hobespen berriak: Galarazi argazki-pantailak, irten larrialdian
+
+* Hizkuntza berriak: Koreera (ko) eta Vietnamera (vi)
