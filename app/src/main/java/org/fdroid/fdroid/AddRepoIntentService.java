@@ -69,7 +69,7 @@ public class AddRepoIntentService extends IntentService {
         try {
             urlString = normalizeUrl(uri);
         } catch (URISyntaxException e) {
-            Log.i(TAG, e.getLocalizedMessage());
+            Log.i(TAG, "Bad URI: " + e.getLocalizedMessage());
             return;
         }
 

@@ -276,7 +276,7 @@ public class WifiStateChangeService extends IntentService {
                                 if (BuildConfig.DEBUG) {
                                     e.printStackTrace();
                                 } else {
-                                    Log.i(TAG, e.getLocalizedMessage());
+                                    Log.i(TAG, "Getting subnet failed: " + e.getLocalizedMessage());
                                 }
                             }
                         }

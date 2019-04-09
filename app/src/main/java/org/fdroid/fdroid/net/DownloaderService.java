@@ -248,7 +248,7 @@ public class DownloaderService extends Service {
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
                 | ProtocolException | UnknownHostException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
-            Log.e(TAG, e.getLocalizedMessage());
+            Log.e(TAG, "CONNECTION_FAILED: " + e.getLocalizedMessage());
             sendBroadcast(uri, Downloader.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
         } catch (IOException e) {
             e.printStackTrace();
