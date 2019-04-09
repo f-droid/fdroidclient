@@ -487,4 +487,5 @@
     <string name="scan_removable_storage_toast">Recherche de %s…</string>
     <string name="scan_removable_storage_summary">Recherche de dépôts sur les périphériques amovibles tels que les cartes SD ou clés USB</string>
     <string name="main_menu__updates">Mises à jour</string>
+    <string name="menu_translation">Traduction</string>
 </resources>
