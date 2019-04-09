@@ -27,7 +27,10 @@ public class DeleteCacheService extends JobIntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         Log.w(TAG, "Deleting all cached contents!");
         try {
-            FileUtils.deleteDirectory(getCacheDir());
+            File cacheDir = getCacheDir();
+            if (cacheDir != null) {
+                FileUtils.deleteDirectory(cacheDir);
+            }
             for (File dir : ContextCompat.getExternalCacheDirs(this)) {
                 FileUtils.deleteDirectory(dir);
             }
