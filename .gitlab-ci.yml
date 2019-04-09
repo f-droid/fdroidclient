@@ -66,8 +66,15 @@ errorprone:
     - export AVD_PACKAGE="system-images;android-${AVD_SDK};${AVD_TAG};${AVD_ARCH}"
     - echo $AVD_PACKAGE
     - emulator -accel-check || true
+
+    - if [[ "$AVD_ARCH" != arm* ]]; then
+          set -x; echo y | sdkmanager "emulator" > /dev/null; set +x;
+      elif [[ "$AVD_SDK" == Q ]]; then
+          set -x; echo y | sdkmanager --channel=2 "emulator" > /dev/null; set +x;
+      fi
+
     - alias sdkmanager
-    - echo y | sdkmanager "emulator" "platforms;android-$AVD_SDK" > /dev/null
+    - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null
     - if ! avdmanager list avd | grep "Name. avd$AVD_SDK$"; then
           set -x;
           rm -rf ~/.android/avd  $ANDROID_HOME/system-images;
@@ -81,6 +88,7 @@ errorprone:
       fi
     - adb start-server
     - ls -l ~/.android
+    - emulator -version
     - emulator -avd avd$AVD_SDK
         -no-audio
         -no-jni
@@ -98,9 +106,9 @@ errorprone:
     - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected 22 default armeabi-v7a:
+  retry: 1
   <<: *test-template
   <<: *connected-template
-  allow_failure: true
 
 .kvm-template: &kvm-template
   tags:

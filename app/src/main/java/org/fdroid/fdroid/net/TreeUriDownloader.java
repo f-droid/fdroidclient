@@ -96,7 +96,7 @@ public class TreeUriDownloader extends Downloader {
 
     @Override
     public void download() throws IOException, InterruptedException {
-        downloadFromStream(8192, false);
+        downloadFromStream(false);
     }
 
     @Override

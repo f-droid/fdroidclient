@@ -116,7 +116,7 @@ public abstract class Downloader {
         return notFound;
     }
 
-    void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
+    void downloadFromStream(boolean resumable) throws IOException, InterruptedException {
         Utils.debugLog(TAG, "Downloading from stream");
         InputStream input = null;
         OutputStream outputStream = new FileOutputStream(outputFile, resumable);
@@ -127,7 +127,7 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(input, bufferSize, outputStream);
+            copyInputToOutputStream(input, 8192, outputStream);
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
