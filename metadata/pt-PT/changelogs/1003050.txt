@@ -1,0 +1,19 @@
+* Botões e estado de atualizações mais confiáveis
+
+* Configurações revistas, novos controlos de uso de dados
+
+* Uso em segundo plano consciente da bateria no Android 5.0+
+
+* Item do menu partilhar para repositórios
+
+* Desativa relatórios de falhas
+
+* Visualizador de histórico de instalação, ao usar o registo
+
+* Lista de características indesejáveis, adicionado NoSourceSince
+
+* Versão mínima: Android 4.0
+
+* Melhorias em versões do F-Droid whitelabel
+
+* Configurações para enviar versão+UUID

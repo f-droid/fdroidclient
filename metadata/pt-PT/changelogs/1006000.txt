@@ -1,0 +1,12 @@
+* Lida com permissões READ_EXTERNAL_STORAGE implícitas, que acionam um
+  pedido de permissões em instalações com extensão privilegiada (#1702)
+
+* Dados de índice saneados para reduzir possíveis ameaças do servidor
+
+* "Read Timeout" aciona o uso do espelho
+
+* Corrige ícones ausentes quando não se usa Wi-Fi (#1592)
+
+* Usa títulos separados para preferências e aba de atualizações, para ajudar na tradução
+
+* Correções na interface por @ConnyDuck (#1636, #1618)

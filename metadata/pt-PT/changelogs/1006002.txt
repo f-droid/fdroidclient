@@ -1,0 +1,11 @@
+* Última aba agora destaca aplicações que fornecem descrições, traduções, capturas de ecrã
+
+* Descarregar automático de servidores espelho para reduzir carga no f-droid.org
+
+* Opção de desativar servidores espelho em RepoDetails (# 1696)
+
+* Cache de descarregar mais eficiente (por repo; através de diferentes servidores web #1708)
+
+* Correção em instalações que requerem fontes desconhecidas com Extensão Privilegiada (#1702)
+
+* Correção de ícones em falta para aqueles que não usam Wi-Fi (#1592)

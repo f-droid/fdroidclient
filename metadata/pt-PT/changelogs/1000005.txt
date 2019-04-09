@@ -1,0 +1,3 @@
+* Correção de erro que evitava que as traduções fossem mostradas no Android >= 7.0
+
+* Correção de bloqueio na atualização da base de dados de 1.0-alpha3 → 1.0-alpha4 #1181
