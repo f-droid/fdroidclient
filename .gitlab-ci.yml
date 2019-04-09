@@ -69,6 +69,8 @@ errorprone:
 
     - if [[ "$AVD_ARCH" != arm* ]]; then
           set -x; echo y | sdkmanager "emulator" > /dev/null; set +x;
+      elif [[ "$AVD_SDK" == Q ]]; then
+          set -x; echo y | sdkmanager --channel=2 "emulator" > /dev/null; set +x;
       fi
 
     - alias sdkmanager
