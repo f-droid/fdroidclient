@@ -478,4 +478,5 @@
     <string name="not_visible_nearby_description">Gör din enhet synlig innan du byter med närliggande enheter.</string>
     <string name="swap_toast_not_removable_storage">Det valet matchade inte några borttagbara lagringsenheter, försök igen!</string>
     <string name="swap_toast_find_removeable_storage">Välj borttagbart SD-kort eller USB</string>
+    <string name="menu_translation">Översättning</string>
 </resources>
