@@ -455,4 +455,5 @@
     <string name="swap_toast_not_removable_storage">选择无法匹配任何可移动存储设备，请重试！</string>
     <string name="swap_toast_find_removeable_storage">选择您的可移动 SD 卡或 USB</string>
     <string name="main_menu__updates">更新</string>
+    <string name="menu_translation">翻译</string>
 </resources>
