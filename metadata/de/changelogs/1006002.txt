@@ -1,0 +1,13 @@
+* "Neueste" hebt Apps mit Beschreibungen, Übersetzungen, Bildern hervor
+
+* Autom. Mirror-Downloads für schnellere Downloads und geringere f-droid.org-Belastung
+
+* Mit Schaltern in Repo-Details Mirrors deaktivieren (#1696)
+
+* Effizienteres Download-Caching (pro Repo; über Webserver hinweg #1708)
+
+* Lösung für App-Installationen "Unbekannter Herkunft" mit der Rechteerweiterung (#1702)
+
+* Laden fehlender Icons wenn kein WLAN (#1592)
+
+* Unterschiedliche "Updates"-Übersetzung auf Tab/in Einstellungen
