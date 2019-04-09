@@ -1,3 +1,13 @@
+### 1.6 (2019-04-10)
+
+* update F-Droid after all other updates (#1556)
+
+* Improve adding repos from the clipboard (e.g. Firefox Klar)
+
+* swap usability improvements
+
+* many crash fixes in swap and background services
+
 ### 1.6-alpha2 (2019-03-28)
 
 * Latest Tab now highlights apps that provide descriptions,
