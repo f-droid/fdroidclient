@@ -478,4 +478,5 @@
     <string name="swap_toast_using_path">Выкарыстанне %1$s</string>
     <string name="swap_toast_not_removable_storage">Гэты выбар не адпавядае рухомаму носьбіту, паспрабуйце яшчэ раз!</string>
     <string name="swap_toast_find_removeable_storage">Абярыце SD-картку ці USB-назапашвальнік</string>
+    <string name="menu_translation">Пераклад</string>
 </resources>
