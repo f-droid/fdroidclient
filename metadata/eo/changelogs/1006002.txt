@@ -1,0 +1,7 @@
+* langeto “novaj” emfazas apojn liverantajn priskribojn, tradukojn, ekrankopiojn
+* aŭtomate elŝuti el spugul‑serviloj por etigi ŝarĝon de f-droid.org
+* eblo malaktivigi spegul‑servilojn ĉe detaloj de deponejo (#1696)
+* pli efika kaŝmemorigo de elŝutoj (por deponejo, tra diversaj serviloj; #1708) 
+* ripari eraron pri bezono aktivigi “nekonatajn fontojn” kun la privilegia aldonaĵo (#1702)
+* ripari eraron pri mankantaj piktogramoj, por tiuj, kiu ne uzas vifion (#1592)
+* korektitaj tradukoj
