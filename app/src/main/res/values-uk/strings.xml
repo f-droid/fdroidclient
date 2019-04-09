@@ -412,7 +412,7 @@
     <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
     <string name="panic_app_setting_none">Жоден</string>
     <string name="allow">Дозволити</string>
-    <string name="panic_exit_title">Вийти з додатку</string>
+    <string name="panic_exit_title">Вийти з застосунку</string>
     <string name="panic_hide_title">Приховати %s</string>
     <string name="sort_search">Розсортувати за пошуком</string>
     <string name="menu_liberapay">Liberapay</string>
@@ -422,9 +422,9 @@
     <string name="panic_app_dialog_message">Ви впевнені, що бажаєте дозволити %1$s виконувати дію тривожної кнопки?</string>
     <string name="panic_settings">Налаштування тривожної кнопки</string>
     <string name="panic_settings_summary">Заходи, які необхідно прийняти в екстерних випадках</string>
-    <string name="panic_exit_summary">Додаток буде закрито</string>
+    <string name="panic_exit_summary">Застосунок буде закрито</string>
     <string name="panic_destructive_actions">Деструктивні дії</string>
-    <string name="panic_hide_summary">Додаток приховає себе</string>
+    <string name="panic_hide_summary">Застосунок приховає себе</string>
     <string name="panic_hide_warning_title">Запам\'ятайте, як відновити</string>
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Приховати %s зараз</string>
@@ -476,7 +476,7 @@
     <string name="hide_on_long_search_press_summary">Затиснення пошувого ґудзика приховає застосунок</string>
     <string name="swap_toast_invalid_url">URL для обміну є хибним: %1$s</string>
     <string name="about_forum">Форум підтримки</string>
-    <string name="app_suggested">Запровоновано</string>
+    <string name="app_suggested">Запропоновано</string>
     <string name="app_size">Розмір: %1$s</string>
     <string name="menu_downgrade">Понизити версію</string>
     <string name="scan_removable_storage_title">Сканувати знімне сховище</string>
@@ -491,4 +491,5 @@
     <string name="swap_toast_not_removable_storage">Вибір не збігається з жодними видаленими пристроями зберігання даних, повторіть спробу!</string>
     <string name="swap_toast_find_removeable_storage">Виберіть знімну картку SD або USB</string>
     <string name="main_menu__updates">Оновлення</string>
+    <string name="menu_translation">Назва посилання, що веде до сервісу перекладів для цього застосунку</string>
 </resources>
