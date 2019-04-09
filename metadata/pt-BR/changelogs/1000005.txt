@@ -1,0 +1,3 @@
+* Correção de erro que evitava que traduções fossem mostradas em Android >= 7.0
+
+* Correção de travamento na atualização de BD de 1.0-alpha3 → 1.0-alpha4 #1181

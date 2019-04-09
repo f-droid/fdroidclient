@@ -1,0 +1,17 @@
+* Auto. apara/apaga cache quando armazenamento é baixo
+
+* Melhor desempenho em dispositivos com pouca memória
+
+* Downloads agora respeitam "Somente no Wi-Fi"
+
+* Reduz o uso de memória quando o dispositivo está baixo
+
+* Adiciona espelhos personalizados por meio de links, códigos QR, etc.
+
+* Melhoria na seleção automática de espelhos
+
+* Correções de erros "Permuta"/"Por perto"
+
+* Corrigida a repetição de notificações de atualização (#1271)
+
+* Faz F-Droid reconhecer URLs de nightly do GitLab

@@ -1,0 +1,7 @@
+* Gestos de deslize adicionados à aba Atualizações
+
+* Exibe avisos com ações na aba Atualizações de KnownVulns
+
+* Traduções atualizadas
+
+* Correções de UI escura

@@ -1,0 +1,13 @@
+* Melhorias de "Versões" em "Detalhes do aplicativo", entre outras na interface, graças a @wsdfhjxc
+
+* Correção da navegação por teclado/direcional, graças a @doeffinger
+
+* Mostra "Abrir" quando a mídia estiver instalada e visível
+
+* Exporta para CSV no "Compartilhar" para "Aplicativos instalados"
+
+* Adiciona uma lista clicável de APKs à página de índice HTML de permuta
+
+* Tenta novamente downloads de índice de espelhos
+
+* Corrige "Enviar F-Droid por Bluetooth" em versões recentes do Android

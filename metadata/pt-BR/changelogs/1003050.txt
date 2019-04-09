@@ -1,0 +1,19 @@
+* Botões e atualizações de status mais confiáveis
+
+* Configurações revisadas, novos controles de uso de dados
+
+* Uso em segundo plano consciente da bateria no Android 5.0+
+
+* Compartilha item de menu para repositórios
+
+* Desativa relatórios de falhas
+
+* Visualizador de histórico de instalação, ao usar o registro
+
+* Lista de antirrecursos clicáveis, adicionado NoSourceSince
+
+* Versão mínima: Android 4.0
+
+* Melhorias em versões do F-Droid whitelabel
+
+* Configurações para enviar versão+UUID

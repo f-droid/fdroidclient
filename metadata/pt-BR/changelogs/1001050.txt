@@ -1,0 +1,7 @@
+* Suporte a espelhos oficiais de qualquer repositório, com seleção automática baseada na disponibilidade
+
+* Muito polimento de UI, bem como estabilidade e correções de bugs
+
+* Novas preferências de privacidade: Evitar capturas de tela; sair em pânico
+
+* Novas línguas: coreano (ko) e vietnamita (vi)

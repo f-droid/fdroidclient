@@ -1,0 +1,11 @@
+* Última aba agora destaca aplicativos que fornecem descrições, traduções, capturas de tela
+
+* Baixa automaticamente de espelhos, para acelerar downloads e reduzir a carga no f-droid.org
+
+* Desative espelhos usando novas opções no RepoDetails (# 1696)
+
+* Cache de download mais eficiente (por repo; através de diferentes servidores web #1708)
+
+* Corrige instalações que requerem fontes desconhecidas com Extensão Privilegiada (#1702)
+
+* Corrige ícones ausentes para aqueles que não usam Wi-Fi (#1592)
