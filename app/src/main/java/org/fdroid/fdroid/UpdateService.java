@@ -544,11 +544,26 @@ public class UpdateService extends JobIntentService {
         }
     }
 
+    /**
+     * Queues all apps needing update.  If this app itself (e.g. F-Droid) needs
+     * to be updated, it is queued last.
+     */
     public static void autoDownloadUpdates(Context context) {
         List<App> canUpdate = AppProvider.Helper.findCanUpdate(context, Schema.AppMetadataTable.Cols.ALL);
+        String packageName = context.getPackageName();
+        App updateLastApp = null;
+        Apk updateLastApk = null;
         for (App app : canUpdate) {
+            if (TextUtils.equals(packageName, app.packageName)) {
+                updateLastApp = app;
+                updateLastApk = ApkProvider.Helper.findSuggestedApk(context, app);
+                continue;
+            }
             Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
             InstallManagerService.queue(context, app, apk);
+        }
+        if (updateLastApp != null && updateLastApk != null) {
+            InstallManagerService.queue(context, updateLastApp, updateLastApk);
         }
     }
 
