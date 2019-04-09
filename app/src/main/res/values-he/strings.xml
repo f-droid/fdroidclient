@@ -491,4 +491,5 @@
     <string name="swap_toast_find_removeable_storage">נא לבחור כרטיס SD או דיסק און קי נתיקים</string>
     <string name="scan_removable_storage_toast">%s בסריקה…</string>
     <string name="main_menu__updates">עדכונים</string>
+    <string name="menu_translation">תרגום</string>
 </resources>
