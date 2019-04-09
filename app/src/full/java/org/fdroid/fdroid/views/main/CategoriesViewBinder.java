@@ -18,6 +18,7 @@ import android.widget.TextView;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -60,6 +61,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         final SwipeRefreshLayout swipeToRefresh =
                 (SwipeRefreshLayout) categoriesView.findViewById(R.id.swipe_to_refresh);
+        Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

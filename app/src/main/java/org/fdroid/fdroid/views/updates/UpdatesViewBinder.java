@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 
 public class UpdatesViewBinder {
 
@@ -38,6 +39,7 @@ public class UpdatesViewBinder {
         emptyImage = (ImageView) view.findViewById(R.id.image);
 
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
+        Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

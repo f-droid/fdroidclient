@@ -64,6 +64,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) whatsNewView
                 .findViewById(R.id.swipe_to_refresh);
+        Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
