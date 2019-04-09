@@ -67,11 +67,12 @@ errorprone:
     - echo $AVD_PACKAGE
     - emulator -accel-check || true
 
-    - if [[ "$AVD_ARCH" != arm* ]]; then
+    - if [[ "$AVD_SDK" == Q ]]; then
+          set -x; echo y | sdkmanager --channel=3 "emulator" > /dev/null; set +x;
+    - elif [[ "$AVD_ARCH" != arm* ]]; then
           set -x; echo y | sdkmanager "emulator" > /dev/null; set +x;
-      elif [[ "$AVD_SDK" == Q ]]; then
-          set -x; echo y | sdkmanager --channel=2 "emulator" > /dev/null; set +x;
       fi
+    - grep Revision $ANDROID_HOME/emulator/source.properties
 
     - alias sdkmanager
     - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null
@@ -97,7 +98,7 @@ errorprone:
         -skip-adb-auth
         -verbose
         -wipe-data
-        -debug-all
+        -debug all,-hw_control,-qemud,-sensors,-surface
         &
     - wait-for-emulator
     - adb devices
