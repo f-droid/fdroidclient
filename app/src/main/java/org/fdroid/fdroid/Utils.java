@@ -33,6 +33,7 @@ import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -861,5 +862,12 @@ public final class Utils {
                 Toast.makeText(context.getApplicationContext(), msg, length).show();
             }
         });
+    }
+
+    public static void applySwipeLayoutColors(SwipeRefreshLayout swipeLayout) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = swipeLayout.getContext().getTheme();
+        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        swipeLayout.setColorSchemeColors(typedValue.data);
     }
 }
