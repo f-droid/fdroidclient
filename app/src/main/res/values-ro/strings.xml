@@ -38,50 +38,39 @@
     <string name="menu_email">E-mail autor</string>
     <string name="SignatureMismatch">Noua versiune este semnată cu o cheie diferită față de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie întâi dezinstalată. Vă rugam sa faceți asta și să reîncercați. (Nu uitați că procesul de dezinstalare al aplicației o să șteargă datele interne stocate ale acesteia)</string>
     <string name="app_name">F-Droid</string>
-
     <string name="enable_nfc_send">Activează trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizări automate</string>
     <string name="unstable_updates">Actualizări instabile</string>
     <string name="login_name">Nume utilizator</string>
     <string name="login_password">Parola</string>
     <string name="no_such_app">Nu există aceasta aplicație.</string>
-
     <string name="login_title">Necesită autentificare</string>
     <string name="system_installer">Extensie privilegiată</string>
     <string name="unstable_updates_summary">Sugerează actualizări și la versiunile instabile</string>
     <string name="repo_error_empty_username">Nume utilizator gol, autentificare neschimbată</string>
-
     <string name="repo_edit_credentials">Schimbă parola</string>
     <string name="local_repo_name">Numele depozitului local</string>
     <string name="local_repo_name_summary">Titlu depozitului local, gazduit de dispozitivul dumneavoastră, folosit la anunțare: %s</string>
     <string name="notify_on">Arată o notificare atunci când există actualizări ale aplicațiilor</string>
     <string name="local_repo_https_on">Folosește o conexiune criptată HTTPS:// pentru depozitul local</string>
-
     <string name="about_source">Cod sursă</string>
     <string name="about_license">Licență</string>
-
     <string name="app_incompatible">Incompatibil</string>
     <string name="app_inst_known_source">Instalat (din %s)</string>
     <string name="app_inst_unknown_source">Instalat (din sursă necunoscută)</string>
-
     <string name="added_on">Adăugat pe %s</string>
-
     <string name="more">Mai mult</string>
     <string name="less">Mai puțin</string>
-
     <string name="back">Înapoi</string>
     <string name="links">Legături</string>
     <string name="add_key">Adaugă cheie</string>
     <string name="overwrite">Suprascrie</string>
-
     <string name="bluetooth_activity_not_found">Nu a fost găsită o metodă Bluetooth de a trimite, alegeți una!</string>
     <string name="choose_bt_send">Alegeți metoda de a trimite prin Bluetooth</string>
-
     <string name="repo_add_url">Adresă depozit</string>
     <string name="repo_add_fingerprint">Amprenta (opțională)</string>
     <string name="icon">Iconiță</string>
     <string name="skip">Sări</string>
-
     <string name="proxy">Proxy</string>
     <string name="linking_apks">Se asociază APK-urile cu depozitul…</string>
     <string name="writing_index_jar">Scriere index semnat (index.jar)…</string>
@@ -91,18 +80,13 @@
     <string name="show_incompat_versions">Include incompatibile</string>
     <string name="appcompatibility">Compatibilitate aplicații</string>
     <string name="expert_on">Arata informații și setări suplimentare</string>
-
     <string name="search_hint">Caută aplicații</string>
-
     <string name="antinonfreeassetslist">Aceasta aplicație conține resurse ce nu sunt la disponibile la liber</string>
-
     <string name="antinonfreedeplist">Aplicația depinde de alte aplicații ce nu sunt software liber</string>
     <string name="antinonfreenetlist">Aplicația promovează servicii de rețea ce nu sunt accesibile la liber</string>
     <string name="antinonfreeadlist">Aplicația promovează anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicația îți înregistrează și raportează activitatea undeva</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_upgrade">Actualizează</string>
     <string name="menu_source">Codul sursă</string>
@@ -111,15 +95,12 @@
     <string name="menu_changelog">Listă schimbări</string>
     <string name="menu_share">Trimite</string>
     <string name="menu_add_repo">Depozit nou</string>
-
     <string name="malformed_repo_uri">Se ignoră adresa coruptă URL a depozitului: %s</string>
-
     <string name="invalid_url">Aceasta nu este o adresă URL validă.</string>
     <string name="bad_fingerprint">Amprentă eronată</string>
     <string name="install_error_unknown">Instalare eșuată din cauza unei erori necunoscute</string>
     <string name="empty_search_available_app_list">Nici o aplicatie disponibila nu se potriveste.</string>
     <string name="category_Writing">Scris</string>
-
     <string name="category_Theming">Teme</string>
     <string name="category_System">Sistem</string>
     <string name="category_Science_Education">Știință &amp; educație</string>
@@ -130,10 +111,8 @@
     <string name="category_Graphics">Grafică</string>
     <string name="category_Development">Dezvoltare programe</string>
     <string name="wifi_ap">Hotspot</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="pref_language_default">Setare implicită sistem</string>
-
     <string name="repo_searching_address">Căutare depozit de pachete la
 \n%1$s</string>
     <string name="repo_confirm_delete_title">Șterge depozit?</string>
@@ -148,7 +127,6 @@
 \n%2$s din
 \n%1$s</string>
     <string name="proxy_port_summary">Portul configurat pentru proxy (ex. 8118)</string>
-
     <string name="proxy_host_summary">Numele sau adresa gazdei proxy (ex. 127.0.0.1)</string>
     <string name="proxy_host">Gazdă proxy</string>
     <string name="enable_proxy_title">Activează proxy HTTP</string>
@@ -171,17 +149,14 @@
     <string name="status_download">Descărcare
 \n%2$s / %3$s (%4$d%%) din
 \n%1$s</string>
-
     <string name="update_notification_title">Actualizare depozit</string>
     <string name="status_connecting_to_repo">Conectare la\n%1$s</string>
     <string name="global_error_updating_repos">Eroare la actualizare: %s</string>
     <string name="permissions">Permisiuni</string>
     <string name="category_Time">Timp</string>
-
     <string name="uninstall_error_unknown">O eroare necunoscută a împiedicat instalarea</string>
     <string name="swap_nfc_title">Atinge pentru schimb</string>
     <string name="swap_join_this_hotspot">Ajută-ți prietenii să se conecteze la hotspot-ul tău</string>
-
     <string name="swap_join_same_wifi">Conectează-te la aceeași rețea Wi-Fi ca și prietenii tăi</string>
     <string name="swap">Schimb de aplicații</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
@@ -207,7 +182,6 @@
     <string name="swap_connecting">Conectare</string>
     <string name="swap_send_fdroid">Trimite F-Droid</string>
     <string name="theme_night">Noapte</string>
-
     <string name="crash_dialog_title">F-Droid s-a oprit</string>
     <string name="theme_light">Luminoasă</string>
     <string name="theme_dark">Întunecată</string>
@@ -216,15 +190,12 @@
     <string name="allPerms">Toate</string>
     <string name="uninstall_update_confirm">Vrei sa înlocuiești aceasta aplicație cu versiunea din fabrica?</string>
     <string name="download_error">Descărcare eșuată!</string>
-
     <string name="interval_2w">Verificare actualizări o dată la 2 săptămâni</string>
-
     <string name="interval_4h">Verificare actualizări o dată la 4 ore</string>
     <string name="uninstall_confirm">Vrei sa dezinstalezi aceasta aplicație?</string>
     <string name="perm_costs_money">Aceasta s-ar putea să coste bani</string>
     <string name="newPerms">Noi</string>
     <string name="downloading">Descărcare…</string>
-
     <string name="interval_never">Fără actualizări automate de aplicații</string>
     <string name="perms_description_app">Disponibil de la %1$s.</string>
     <string name="interval_1w">Verificare actualizări săptămânal</string>
@@ -242,7 +213,6 @@
     <string name="repo_details">Depozit</string>
     <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
     <string name="repo_provider">Depozit: %s</string>
-
     <string name="update_auto_download">Descarcă automat actualizările</string>
     <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le
         instala
@@ -255,24 +225,18 @@
     <string name="install_confirm_update_no_perms">Sigur doriții să instalați o actualizare pentru această aplicație existentă? Datele curente nu se vor pierde. Nu necesită vreun acces special.</string>
     <string name="install_confirm_update_system_no_perms">Sigur doriți să instalați o actualizare pentru o aplicație inclusă în Android? Datele curente nu se vor pierde. Nu necesită vreun acces special.</string>
     <string name="crash_dialog_comment_prompt">Puteți adăuga informații și comentarii aici:</string>
-
     <string name="download_pending">Așteptare pornire descărcare…</string>
-
     <string name="keep_hour">O oră</string>
     <string name="keep_day">O zi</string>
     <string name="keep_week">O săptămână</string>
     <string name="keep_month">O lună</string>
     <string name="keep_year">Un an</string>
     <string name="keep_forever">Totdeauna</string>
-
     <string name="crash_dialog_text">O eroare neașteptată s-a produs forțând oprirea aplicației. Doriți să trimite-ți un e-mail cu detalii pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="uninstalling">Dezinstalare…</string>
-
     <string name="installIncompatible">Aplicația nu este compatibilă cu dispozitivul dumneavoastră. Instalați oricum?</string>
     <string name="installing">Instalare…</string>
     <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
-
-
     <string name="install_error_notify_title">Eroare la instalarea %s</string>
     <string name="update_auto_install">Instalează automat actualizările</string>
     <string name="update_auto_install_summary">Descarcă și instalează actualizările aplicațiilor în fundal</string>
@@ -293,7 +257,6 @@
     <string name="warning_no_internet">Nu se poate face actualizarea, există conexiune la Internet?</string>
     <string name="versions">Versiuni</string>
     <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpără-le o cafea!</string>
-
     <string name="app_details_donate_prompt_unknown_author">Cumpără dezvoltatorului %1$s o cafea!</string>
     <string name="repositories_summary">Adaugă surse adiționale de aplicații</string>
     <string name="notification_title_single_update_available">Actualizare disponibilă</string>
@@ -315,9 +278,7 @@
     <string name="notification_action_update">Actualizare</string>
     <string name="notification_action_cancel">Anulează</string>
     <string name="notification_action_install">Instalare</string>
-
     <string name="tts_category_name">Categorie %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Vezi singura aplicație din categoria %2$s</item>
         <item quantity="few">Vezi toate cele %1$d aplicații din categoria %2$s</item>
@@ -334,47 +295,34 @@
         <item quantity="few">Toate cele %d</item>
         <item quantity="other">Toate cele %d</item>
     </plurals>
-
     <string name="antifeatures">Caracteristici negative</string>
     <string name="antifeatureswarning">Această aplicație are caracteristici ce ar putea să nu vă placă.</string>
     <string name="details_new_in_version">Nou în versiunea %s</string>
-
     <string name="preference_manage_installed_apps">Gestionează aplicațiile instalate</string>
-
-
     <string name="preference_category__my_apps">Aplicațiile mele</string>
     <string name="categories__empty_state__no_categories">Nici o categorie de arătat</string>
-
     <string name="latest__empty_state__no_enabled_repos">Odată ce ai activat și actualizat un depozit, cele mai noi aplicații ar trebui să apară aici</string>
-
     <string name="latest__empty_state__never_updated">Odată actualizată lista de aplicații, cele mai noi ar trebui să apară aici</string>
     <string name="latest__empty_state__no_recent_apps">Nu s-a găsit nici o aplicație recentă</string>
     <string name="main_menu__swap_nearby">În apropiere</string>
-
     <string name="main_menu__categories">Categorii</string>
     <string name="main_menu__latest_apps">Noutăți</string>
     <string name="clear_search">Curata căutarea</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Descarca actualizarea pentru %1$d aplicatie.</item>
         <item quantity="few">Descarca actualizari pentru %1$d aplicatii.</item>
         <item quantity="other">Descarca actualizari pentru %1$d de aplicatii.</item>
     </plurals>
-
     <string name="updates__show_updateable_apps">Arata aplicațiile</string>
-
     <string name="updates__hide_updateable_apps">Ascunde aplicațiile</string>
     <string name="update_all">Actualizează tot</string>
-
     <string name="updates__tts__download_app">Descarcă</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizări ignorate pentru versiunea %1$s</string>
     <string name="installed_app__updates_ignored">Actualizări ignorate</string>
     <string name="installed_apps__activity_title">Aplicații instalate</string>
-
     <string name="app_list__name__successfully_installed">%1$s instalată</string>
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
-
     <string name="app_new">Nouă</string>
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandată)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
@@ -386,7 +334,6 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Nu aveți acces la Internet? Descărcați aplicații de la persoanele din apropiere!</string>
     <string name="nearby_splash__find_people_button">Găsește persoane</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea face schimb în apropiere.</string>
-
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplicație instalată</item>
         <item quantity="few">%1$d aplicații instalate</item>
@@ -422,10 +369,8 @@
     <string name="by_author_format">de %s</string>
     <string name="download_404">Fișierul dorit nu a fost găsit.</string>
     <string name="app_list_download_ready">Descărcat, gata de instalare</string>
-
     <string name="app_installed_media">Fișierul instalat în %s</string>
     <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în această locație. Va rugăm sa i-o acordați în ecranul următor pentru a putea continua cu instalarea.</string>
-
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
     <string name="not_on_same_wifi">Dispozitivul dumneavoastră nu este pe aceeași rețea Wi-Fi cu depozitul local pe care tocmai l-ați adăugat! Încearcați să vă conectați la această rețea: %s</string>
     <string name="touch_to_configure_local_repo">Atingeți pentru a vedea detalii și a permite celorlalți să primească aplicațiile dumneavoastră.</string>
@@ -434,25 +379,20 @@
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
     <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
     <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
-
     <string name="app_details__incompatible_mismatched_signature">Semnătură diferită de cea instalată</string>
     <string name="app_details__no_versions__show_incompat_versions">Pentru a afișa aici și versiunile incompatibile, activați setarea \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nici o versiune nu are o semnătură compatibilă</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nici o versiune nu este compatibilă cu acest dispozitiv</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Versiunea instalată nu este compatibilă cu cele disponibile. Dacă dezinstalați aplicația veți putea vedea și instala versiunile compatibile. Acesta se întâmplă cel mai des atunci când aplicațiile sunt instalate din Google Play sau din alte surse, dacă sunt semnate cu un certificat diferit.</string>
-
     <string name="app_list__dismiss_app_update">Actualizare ignorată</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitate ignorată</string>
     <string name="app_list__dismiss_downloading_app">Descărcare anulată</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">S-a detectat o vulnerabilitate în %1$s. Se recomandă dezinstalarea imediată a acestei aplicații.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S-a detectat o vulnerabilitate în %1$s. Se recomandă actualizarea imediată la cea mai nouă versiune.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoră</string>
-
     <string name="privacy">Intimitate</string>
     <string name="preventScreenshots_title">Previne poze cu aplicația</string>
     <string name="preventScreenshots_summary">Blochează posibilitatea de a înregistra ecranul aplicației și ascunde conținutul în lista de aplicații recente</string>
-
     <string name="panic_app_setting_title">Aplicație buton de panică</string>
     <string name="panic_app_unknown_app">o aplicație necunoscută</string>
     <string name="panic_app_setting_summary">Nu a fost setată o aplicație</string>
@@ -460,7 +400,6 @@
     <string name="panic_app_dialog_title">Confirmă aplicația buton de panică</string>
     <string name="panic_app_dialog_message">Sunteți siguri că doriți să permiteți aplicației %1$s să efectueze acțiuni distructive la apăsarea butonului de panică?</string>
     <string name="allow">Permite</string>
-
     <string name="panic_settings">Setări buton de panică</string>
     <string name="panic_settings_summary">Acțiuni ce se vor executa în caz de urgență</string>
     <string name="panic_exit_title">Ieșire aplicație</string>
@@ -468,26 +407,21 @@
     <string name="panic_destructive_actions">Actiuni distructive</string>
     <string name="panic_hide_title">Ascunde %s</string>
     <string name="panic_hide_summary">Aplicația se va ascunde</string>
-
     <string name="panic_hide_warning_title">Țineți minte cum să restaurați</string>
     <string name="hiding_calculator">Calculator</string>
     <string name="hiding_dialog_title">Ascunde %s acum</string>
     <string name="hide_on_long_search_press_title">Ascunde cu butonul de căutare</string>
     <string name="sort_search">Sortare căutare</string>
-
     <string name="panic_hide_warning_message">În caz de urgență, se va elimina %1$s din lansator. Doar scriind \"%2$d\" în aplicația falsă %3$s veți putea să o restaurați.</string>
-
     <string name="hiding_dialog_message">Sigur doriți să eliminați %1$s din lansator? Doar scriind \"%2$d\" în aplicația falsă %3$s veți putea să o restaurați.</string>
     <string name="hiding_dialog_warning">Atenție: Orice scurtătură din ecranul de pornire va fi de asemenea eliminată și va trebui adăugată din nou manual.</string>
     <string name="hide_on_long_search_press_summary">Aplicația va fi ascunsă dacă se apasă lung butonul de căutare</string>
     <string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="show_anti_feature_apps">Include caracteristici periculoase</string>
     <string name="show_anti_feature_apps_on">Se listează și aplicațiile ce prezintă caracteristici periculoase (ex. urmărire)</string>
     <string name="force_touch_apps">Include ecran tactil</string>
     <string name="force_touch_apps_on">Se listează și aplicațiile ce necesită un ecran tactil indiferent dacă dispozitivul suportă sau nu</string>
-
     <string name="repo_add_mirror">Adaugă server de rezervă</string>
     <string name="repo_exists_add_fingerprint">%1$s este deja setat, se vor adăuga informațiile despre cheia nouă.</string>
     <string name="repo_exists_enable">%1$s este deja setat, confirmați că doriți să îl reactivați.</string>
@@ -503,13 +437,11 @@
     <string name="over_network_never_summary">Nu descărca niciodată nimic prin această conexiune</string>
     <string name="antidisabledalgorithmlist">Aplicația are o semnătură slab securizată</string>
     <string name="antiknownvulnlist">Aplicația conține o vulnerabilitate de securitate cunoscută</string>
-
     <string name="use_bluetooth">Folosește Bluetooth</string>
     <string name="swap_cant_find_peers">Nu găsiți ceea ce căutați?</string>
     <string name="swap_no_peers_nearby">Nu au fost găsite persoane în apropiere cu care să faceți schimb.</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activat</string>
     <string name="swap_toast_could_not_enable_hotspot">Nu s-a putut crea hotspot Wi-Fi!</string>
-
     <string name="swap_toast_invalid_url">Adresă invalidă pentru schimb: %1$s</string>
     <string name="hide_all_notifications">Ascunde toate notificările</string>
     <string name="hide_all_notifications_summary">Se previne apariția mesajelor în bara de stare și in zona de notificare.</string>
@@ -522,23 +454,19 @@
     <string name="share_repository">Partajare depozit</string>
     <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
-
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
     <string name="allow_push_requests">Permite depozitelor sa dez/instaleze aplicații</string>
     <string name="allow_push_requests_summary">Metadatele depozitelor pot include acțiuni de instalare sau dezinstalare aplicații</string>
     <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza.</string>
-
     <string name="send_install_history">Trimite istoricul instalărilor</string>
     <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>
     <string name="updates_disabled_by_settings">Toate actualizările sunt oprite din setările de date mobile/Wi-Fi</string>
-
     <string name="send_installed_apps">Partajează aplicațiile instalate</string>
     <string name="send_installed_apps_csv">Lista de aplicații instalate ca fișier CSV</string>
     <string name="menu_open">Deschide</string>
     <string name="about_forum">Forum suport tehnic</string>
     <string name="app_suggested">Recomandată</string>
     <string name="app_size">Mărime: %1$s</string>
-
     <string name="menu_downgrade">Retrogradare</string>
     <string name="app_repository">Depozit: %1$s</string>
     <string name="scan_removable_storage_title">Căutare pe mediile de stocare</string>
@@ -552,4 +480,5 @@
     <string name="not_visible_nearby_description">Înainte de a face schimb cu dispozitivele din apropiere, faceți-vă dispozitivul vizibil.</string>
     <string name="scan_removable_storage_toast">Scanare %s…</string>
     <string name="main_menu__updates">Actualizări</string>
+    <string name="menu_translation">Traducere</string>
 </resources>
