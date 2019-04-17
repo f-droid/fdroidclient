@@ -437,7 +437,7 @@
     <string name="panic_app_dialog_message">Tem a certeza de que quer permitir que %1$s ative as ações do botão de pânico\?</string>
     <string name="panic_settings">Definições do botão de pânico</string>
     <string name="panic_hide_summary">A aplicação ocultar-se-á</string>
-    <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
+    <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_dialog_message">Tem a certeza de que quer remover %1$s do ecrã inicial\? Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_dialog_warning">Aviso: qualquer atalho existente no ecrã será removido e terá que ser adicionado manualmente.</string>
     <string name="repo_official_mirrors">Servidores espelho oficiais</string>
