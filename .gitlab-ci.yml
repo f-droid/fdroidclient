@@ -142,7 +142,7 @@ connected Q default x86_64:
   <<: *kvm-template
 
 
-deploy_nightly:
+pages:
   stage: deploy
   only:
     - master
