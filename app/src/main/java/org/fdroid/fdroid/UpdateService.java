@@ -236,7 +236,7 @@ public class UpdateService extends JobIntentService {
                     Utils.debugLog(TAG, "scheduling update because there is good internet");
                     schedule(context);
                 }
-            } catch (Exception e) {
+            } catch (Throwable e) { // NOPMD
                 Utils.debugLog(TAG, e.getMessage());
             }
             isScheduleIfStillOnWifiRunning = false;
