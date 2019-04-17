@@ -82,8 +82,10 @@ errorprone:
           echo y | sdkmanager "$AVD_PACKAGE" > /dev/null;
           echo no | avdmanager create avd --name avd$AVD_SDK --tag "$AVD_TAG" --package "$AVD_PACKAGE" --sdcard 64M --device "Nexus 5";
           export RAMSIZE="$((`sed -n 's,^MemAvailable:[^0-9]*\([0-9][0-9]*\)[^0-9]*$,\1,p' /proc/meminfo` * 3 / 4 / 1024))";
-          sed -i '/^hw\.ramSize\s*=.*/d' ~/.android/avd/*.avd/config.ini;
-          echo "hw.ramSize=$RAMSIZE" >> ~/.android/avd/*.avd/config.ini;
+          if [ $RAMSIZE -lt 4096 ]; then
+              sed -i '/^hw\.ramSize\s*=.*/d' ~/.android/avd/*.avd/config.ini;
+              echo "hw.ramSize=$RAMSIZE" >> ~/.android/avd/*.avd/config.ini;
+          fi;
           avdmanager list avd;
           set +x;
       fi
