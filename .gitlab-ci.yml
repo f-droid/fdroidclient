@@ -67,10 +67,17 @@ errorprone:
     - echo $AVD_PACKAGE
     - emulator -accel-check || true
 
+    # Use bleeding edge for Q, or download proven emulator version, based on
+    # https://aur.archlinux.org/android-emulator.git
     - if [[ "$AVD_SDK" == Q ]]; then
           set -x; echo y | sdkmanager --channel=3 "emulator" > /dev/null; set +x;
-    - elif [[ "$AVD_ARCH" != arm* ]]; then
-          set -x; echo y | sdkmanager "emulator" > /dev/null; set +x;
+      else
+          set -x;
+          rm -rf $ANDROID_HOME/emulator;
+          wget -q http://dl.google.com/android/repository/emulator-linux-5264690.zip;
+          echo "48c1cda2bdf3095d9d9d5c010fbfb3d6d673e3ea  emulator-linux-5264690.zip" | sha1sum -c;
+          unzip -qq -d $ANDROID_HOME emulator-linux-5264690.zip;
+          set +x;
       fi
     - grep Revision $ANDROID_HOME/emulator/source.properties
 
@@ -89,6 +96,7 @@ errorprone:
           avdmanager list avd;
           set +x;
       fi
+    - grep -v '^License' $ANDROID_HOME/system-images/android-$AVD_SDK/$AVD_TAG/$AVD_ARCH/source.properties
     - adb start-server
     - ls -l ~/.android
     - emulator -version
