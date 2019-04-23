@@ -49,6 +49,7 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
+@LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityEspressoTest {
     public static final String TAG = "MainActivityEspressoTest";

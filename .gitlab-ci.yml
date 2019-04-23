@@ -105,7 +105,7 @@ errorprone:
     - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
-    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.test.suitebuilder.annotation.LargeTest
+    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest
     - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected 22 default armeabi-v7a:
