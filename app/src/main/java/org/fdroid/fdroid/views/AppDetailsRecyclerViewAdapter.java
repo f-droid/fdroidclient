@@ -555,11 +555,16 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             updateAntiFeaturesWarning();
-            buttonSecondaryView.setText(R.string.menu_uninstall);
-            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
-            buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
+            buttonSecondaryView.setText(R.string.menu_uninstall);
+            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callbacks.uninstallApk();
+                }
+            });
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
@@ -568,22 +573,37 @@ public class AppDetailsRecyclerViewAdapter
             } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 callbacks.disableAndroidBeam();
+                progressLayout.setVisibility(View.GONE);
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
-                buttonPrimaryView.setOnClickListener(onInstallClickListener);
                 buttonPrimaryView.setEnabled(true);
                 buttonLayout.setVisibility(View.VISIBLE);
-                progressLayout.setVisibility(View.GONE);
+                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        callbacks.installApk();
+                    }
+                });
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(context) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
-                    buttonPrimaryView.setOnClickListener(onUpgradeClickListener);
+                    buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            callbacks.installApk();
+                        }
+                    });
                 } else {
                     Apk mediaApk = app.getMediaApkifInstalled(context);
                     if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
-                        buttonPrimaryView.setOnClickListener(onLaunchClickListener);
+                        buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                callbacks.launchApk();
+                            }
+                        });
                     } else if (!app.isApk && mediaApk != null) {
                         final File installedFile = new File(mediaApk.getMediaInstallPath(context), mediaApk.apkName);
                         if (!installedFile.toString().startsWith(context.getApplicationInfo().dataDir)) {
@@ -1323,34 +1343,6 @@ public class AppDetailsRecyclerViewAdapter
             callbacks.openUrl(url);
         }
     }
-
-    private final View.OnClickListener onInstallClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            callbacks.installApk();
-        }
-    };
-
-    private final View.OnClickListener onUnInstallClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            callbacks.uninstallApk();
-        }
-    };
-
-    private final View.OnClickListener onUpgradeClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            callbacks.installApk();
-        }
-    };
-
-    private final View.OnClickListener onLaunchClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            callbacks.launchApk();
-        }
-    };
 
     private boolean uriIsSetAndCanBeOpened(String s) {
         if (TextUtils.isEmpty(s)) {
