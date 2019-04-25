@@ -114,7 +114,10 @@ errorprone:
     - adb devices
     - adb shell input keyevent 82 &
     - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest
-    - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
+    - ./gradlew connectedFullDebugAndroidTest $FLAG
+      || ./gradlew connectedFullDebugAndroidTest $FLAG
+      || ./gradlew connectedFullDebugAndroidTest $FLAG
+      || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected 22 default armeabi-v7a:
   retry: 1
