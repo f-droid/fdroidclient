@@ -67,10 +67,17 @@ errorprone:
     - echo $AVD_PACKAGE
     - emulator -accel-check || true
 
+    # Use bleeding edge for Q, or download proven emulator version, based on
+    # https://aur.archlinux.org/android-emulator.git
     - if [[ "$AVD_SDK" == Q ]]; then
           set -x; echo y | sdkmanager --channel=3 "emulator" > /dev/null; set +x;
-    - elif [[ "$AVD_ARCH" != arm* ]]; then
-          set -x; echo y | sdkmanager "emulator" > /dev/null; set +x;
+      else
+          set -x;
+          rm -rf $ANDROID_HOME/emulator;
+          wget -q http://dl.google.com/android/repository/emulator-linux-5264690.zip;
+          echo "48c1cda2bdf3095d9d9d5c010fbfb3d6d673e3ea  emulator-linux-5264690.zip" | sha1sum -c;
+          unzip -qq -d $ANDROID_HOME emulator-linux-5264690.zip;
+          set +x;
       fi
     - grep Revision $ANDROID_HOME/emulator/source.properties
 
@@ -81,14 +88,15 @@ errorprone:
           rm -rf ~/.android/avd  $ANDROID_HOME/system-images;
           echo y | sdkmanager "$AVD_PACKAGE" > /dev/null;
           echo no | avdmanager create avd --name avd$AVD_SDK --tag "$AVD_TAG" --package "$AVD_PACKAGE" --sdcard 64M --device "Nexus 5";
-          export RAMSIZE="$((`sed -n 's,^MemAvailable:[^0-9]*\([0-9][0-9]*\)[^0-9]*$,\1,p' /proc/meminfo` * 3 / 4 / 1024))";
-          if [ $RAMSIZE -lt 4096 ]; then
+          export RAMSIZE="`sed -n 's,^MemAvailable:[^0-9]*\([0-9][0-9]*\)[^0-9]*$,\1,p' /proc/meminfo`";
+          if [ $RAMSIZE -le 2048 ]; then
               sed -i '/^hw\.ramSize\s*=.*/d' ~/.android/avd/*.avd/config.ini;
-              echo "hw.ramSize=$RAMSIZE" >> ~/.android/avd/*.avd/config.ini;
+              echo "hw.ramSize=1024" >> ~/.android/avd/*.avd/config.ini;
           fi;
           avdmanager list avd;
           set +x;
       fi
+    - grep -v '^License' $ANDROID_HOME/system-images/android-$AVD_SDK/$AVD_TAG/$AVD_ARCH/source.properties
     - adb start-server
     - ls -l ~/.android
     - emulator -version
@@ -105,8 +113,11 @@ errorprone:
     - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
-    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.test.suitebuilder.annotation.LargeTest
-    - ./gradlew connectedFullDebugAndroidTest $FLAG || (adb -e logcat -d > logcat.txt; exit 1)
+    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest
+    - ./gradlew connectedFullDebugAndroidTest $FLAG
+      || ./gradlew connectedFullDebugAndroidTest $FLAG
+      || ./gradlew connectedFullDebugAndroidTest $FLAG
+      || (adb -e logcat -d > logcat.txt; exit 1)
 
 connected 22 default armeabi-v7a:
   retry: 1
