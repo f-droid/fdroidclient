@@ -156,7 +156,7 @@ connected Q default x86_64:
   <<: *kvm-template
 
 
-pages:
+deploy_nightly:
   stage: deploy
   only:
     - master
