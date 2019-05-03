@@ -37,6 +37,9 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/swap_light_blue"
             android:textColor="@android:color/white"
+            android:maxEms="10"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="@string/menu_install"
             tools:ignore="UnusedAttribute" />
 
