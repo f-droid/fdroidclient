@@ -21,26 +21,26 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.SwapService;
 
 // TODO: Use this for the "Preparing local repo" dialog also.
-public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
+public class ConnectingView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
     @SuppressWarnings("unused")
-    private static final String TAG = "SwapConnecting";
+    private static final String TAG = "ConnectingView";
 
-    public SwapConnecting(Context context) {
+    public ConnectingView(Context context) {
         super(context);
     }
 
-    public SwapConnecting(Context context, AttributeSet attrs) {
+    public ConnectingView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @TargetApi(11)
-    public SwapConnecting(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ConnectingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(21)
-    public SwapConnecting(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ConnectingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
