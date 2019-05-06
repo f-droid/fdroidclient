@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_alignParentTop="true"
-        tools:showIn="@layout/swap_blank">
+        tools:showIn="@layout/swap_start_swap">
 
     <ImageView
             android:layout_width="match_parent"

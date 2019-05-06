@@ -349,7 +349,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 break;
             case SwapService.STEP_CONNECTING:
                 // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
-                inflateInnerView(R.layout.swap_blank);
+                inflateInnerView(R.layout.swap_start_swap);
                 break;
         }
     }
@@ -414,7 +414,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         }
 
-        inflateInnerView(R.layout.swap_blank);
+        inflateInnerView(R.layout.swap_start_swap);
     }
 
     private void showConfirmSwap(@NonNull NewRepoConfig config) {
