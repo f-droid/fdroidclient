@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.ConfirmReceive
+<org.fdroid.fdroid.views.swap.ConfirmReceiveView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
@@ -74,4 +74,4 @@
 
     </LinearLayout>
 
-</org.fdroid.fdroid.views.swap.ConfirmReceive>
+</org.fdroid.fdroid.views.swap.ConfirmReceiveView>

@@ -10,29 +10,28 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.SwapService;
 
-public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivity.InnerView {
+public class ConfirmReceiveView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 
     private NewRepoConfig config;
 
-    public ConfirmReceive(Context context) {
+    public ConfirmReceiveView(Context context) {
         super(context);
     }
 
-    public ConfirmReceive(Context context, AttributeSet attrs) {
+    public ConfirmReceiveView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ConfirmReceive(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ConfirmReceiveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(21)
-    public ConfirmReceive(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ConfirmReceiveView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
