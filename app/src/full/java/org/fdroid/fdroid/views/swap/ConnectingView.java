@@ -146,7 +146,7 @@ public class ConnectingView extends LinearLayout implements SwapWorkflowActivity
 
         @Override
         protected void onComplete() {
-            getActivity().showSwapConnected();
+            getActivity().showSwapSuccess();
         }
 
     }

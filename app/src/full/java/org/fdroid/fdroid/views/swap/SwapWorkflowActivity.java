@@ -344,8 +344,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             case SwapService.STEP_WIFI_QR:
                 showWifiQr();
                 break;
-            case SwapService.STEP_SUCCESS:
-                showSwapConnected();
+            case SwapService.STEP_SWAP_SUCCESS:
+                showSwapSuccess();
                 break;
             case SwapService.STEP_CONNECTING:
                 // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
@@ -545,7 +545,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_send_fdroid);
     }
 
-    public void showSwapConnected() {
+    public void showSwapSuccess() {
         inflateInnerView(R.layout.swap_success);
     }
 

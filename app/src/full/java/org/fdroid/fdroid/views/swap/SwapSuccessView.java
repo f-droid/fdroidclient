@@ -55,25 +55,25 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SwapAppsView extends ListView implements
+public class SwapSuccessView extends ListView implements
         SwapWorkflowActivity.InnerView,
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
 
-    public SwapAppsView(Context context) {
+    public SwapSuccessView(Context context) {
         super(context);
     }
 
-    public SwapAppsView(Context context, AttributeSet attrs) {
+    public SwapSuccessView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SwapAppsView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SwapSuccessView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(21)
-    public SwapAppsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SwapSuccessView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -165,7 +165,7 @@ public class SwapAppsView extends ListView implements
 
     @Override
     public int getStep() {
-        return SwapService.STEP_SUCCESS;
+        return SwapService.STEP_SWAP_SUCCESS;
     }
 
     @Override

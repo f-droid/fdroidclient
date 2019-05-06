@@ -140,7 +140,7 @@ public class SwapService extends Service {
     public static final int STEP_SHOW_NFC = 4;
     public static final int STEP_WIFI_QR = 5;
     public static final int STEP_CONNECTING = 6;
-    public static final int STEP_SUCCESS = 7;
+    public static final int STEP_SWAP_SUCCESS = 7;
     public static final int STEP_CONFIRM_SWAP = 8;
 
     /**
@@ -276,7 +276,7 @@ public class SwapService extends Service {
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-            STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
+            STEP_CONNECTING, STEP_SWAP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {
     }
