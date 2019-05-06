@@ -20,13 +20,19 @@ import android.provider.Settings;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -228,9 +234,99 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        boolean parent = super.onPrepareOptionsMenu(menu);
-        boolean inner = currentView != null && currentView.buildMenu(menu, getMenuInflater());
-        return parent || inner;
+
+        MenuInflater menuInflater = getMenuInflater();
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_select_apps:
+                menuInflater.inflate(R.menu.swap_next_search, menu);
+                setUpNextButton(menu, R.string.next);
+                setUpSearchView(menu);
+                return true;
+            case R.layout.swap_success:
+                menuInflater.inflate(R.menu.swap_search, menu);
+                setUpSearchView(menu);
+                return true;
+            case R.layout.swap_join_wifi:
+                menuInflater.inflate(R.menu.swap_next, menu);
+                setUpNextButton(menu, R.string.next);
+                return true;
+            case R.layout.swap_nfc:
+                menuInflater.inflate(R.menu.swap_next, menu);
+                setUpNextButton(menu, R.string.skip);
+                return true;
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void setUpNextButton(Menu menu, @StringRes int titleResId) {
+        MenuItem next = menu.findItem(R.id.action_next);
+        CharSequence title = getString(titleResId);
+        next.setTitle(title);
+        next.setTitleCondensed(title);
+        MenuItemCompat.setShowAsAction(next,
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                sendNext();
+                return true;
+            }
+        });
+    }
+
+    void sendNext() {
+        int currentLayoutResId = currentView.getLayoutResId();
+        switch (currentLayoutResId) {
+            case R.layout.swap_select_apps:
+                onAppsSelected();
+                break;
+            case R.layout.swap_join_wifi:
+                inflateSwapView(R.layout.swap_select_apps);
+                break;
+            case R.layout.swap_nfc:
+                inflateSwapView(R.layout.swap_wifi_qr);
+                break;
+        }
+    }
+
+    private void setUpSearchView(Menu menu) {
+        SearchView searchView = new SearchView(this);
+
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        MenuItemCompat.setActionView(searchMenuItem, searchView);
+        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String newText) {
+                String currentFilterString = currentView.getCurrentFilterString();
+                String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
+                if (currentFilterString == null && newFilter == null) {
+                    return true;
+                }
+                if (currentFilterString != null && currentFilterString.equals(newFilter)) {
+                    return true;
+                }
+                currentView.setCurrentFilterString(newFilter);
+                if (currentView instanceof SelectAppsView) {
+                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
+                            (SelectAppsView) currentView);
+                } else if (currentView instanceof SwapSuccessView) {
+                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
+                            (SwapSuccessView) currentView);
+                } else {
+                    throw new IllegalStateException(currentView.getClass() + " does not have Loader!");
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return true;
+            }
+        });
     }
 
     @Override

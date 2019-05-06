@@ -5,6 +5,7 @@
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarColor="@color/swap_bright_blue"
         swap:toolbarTitle="@string/swap_success"
+        android:id="@+id/swap_success"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -6,8 +6,6 @@ import android.content.res.TypedArray;
 import android.support.annotation.ColorInt;
 import android.support.annotation.LayoutRes;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.RelativeLayout;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -24,6 +22,8 @@ public class SwapView extends RelativeLayout {
     public final String toolbarTitle;
 
     private int layoutResId;
+
+    protected String currentFilterString;
 
     public SwapView(Context context) {
         this(context, null);
@@ -48,10 +48,6 @@ public class SwapView extends RelativeLayout {
         a.recycle();
     }
 
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        return false;
-    }
     @LayoutRes
     public int getLayoutResId() {
         return layoutResId;
@@ -59,6 +55,14 @@ public class SwapView extends RelativeLayout {
 
     public void setLayoutResId(@LayoutRes int layoutResId) {
         this.layoutResId = layoutResId;
+    }
+
+    public String getCurrentFilterString() {
+        return this.currentFilterString;
+    }
+
+    public void setCurrentFilterString(String currentFilterString) {
+        this.currentFilterString = currentFilterString;
     }
 
     public SwapWorkflowActivity getActivity() {

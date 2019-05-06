@@ -18,15 +18,10 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
-import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -54,9 +49,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SwapSuccessView extends SwapView implements
-        LoaderManager.LoaderCallbacks<Cursor>,
-        SearchView.OnQueryTextListener {
+public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
+    private static final String TAG = "SwapAppsView";
 
     public SwapSuccessView(Context context) {
         super(context);
@@ -74,9 +68,6 @@ public class SwapSuccessView extends SwapView implements
     public SwapSuccessView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-
-    private static final int LOADER_SWAPABLE_APPS = 759283741;
-    private static final String TAG = "SwapAppsView";
 
     private Repo repo;
     private AppListAdapter adapter;
@@ -100,7 +91,7 @@ public class SwapSuccessView extends SwapView implements
         listView.setAdapter(adapter);
 
         // either reconnect with an existing loader or start a new one
-        getActivity().getSupportLoaderManager().initLoader(LOADER_SWAPABLE_APPS, null, this);
+        getActivity().getSupportLoaderManager().initLoader(R.layout.swap_success, null, this);
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
@@ -143,21 +134,6 @@ public class SwapSuccessView extends SwapView implements
     }
 
     @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-
-        inflater.inflate(R.menu.swap_search, menu);
-
-        SearchView searchView = new SearchView(getActivity());
-
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        MenuItemCompat.setActionView(searchMenuItem, searchView);
-        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-
-        searchView.setOnQueryTextListener(this);
-        return true;
-    }
-
-    @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
         Uri uri = TextUtils.isEmpty(currentFilterString)
                 ? AppProvider.getRepoUri(repo)
@@ -175,26 +151,6 @@ public class SwapSuccessView extends SwapView implements
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         adapter.swapCursor(null);
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
-        if (currentFilterString == null && newFilter == null) {
-            return true;
-        }
-        if (currentFilterString != null && currentFilterString.equals(newFilter)) {
-            return true;
-        }
-        currentFilterString = newFilter;
-        getActivity().getSupportLoaderManager().restartLoader(LOADER_SWAPABLE_APPS, null, this);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        // this is not needed since we respond to every change in text
-        return true;
     }
 
     private class AppListAdapter extends CursorAdapter {

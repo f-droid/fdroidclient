@@ -6,14 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.MenuItemCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -98,22 +93,6 @@ public class JoinWifiView extends SwapView {
 
     private void openAvailableNetworks() {
         getActivity().startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-    }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.swap_next, menu);
-        MenuItem next = menu.findItem(R.id.action_next);
-        MenuItemCompat.setShowAsAction(next,
-                MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-        next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                getActivity().inflateInnerView(R.layout.swap_select_apps);
-                return true;
-            }
-        });
-        return true;
     }
 
     private final BroadcastReceiver onWifiStateChange = new BroadcastReceiver() {

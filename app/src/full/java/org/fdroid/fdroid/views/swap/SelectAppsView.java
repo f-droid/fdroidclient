@@ -13,16 +13,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
-import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -37,9 +32,7 @@ import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 
-public class SelectAppsView extends SwapView implements
-        LoaderManager.LoaderCallbacks<Cursor>,
-        SearchView.OnQueryTextListener {
+public class SelectAppsView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public SelectAppsView(Context context) {
         super(context);
@@ -62,11 +55,8 @@ public class SelectAppsView extends SwapView implements
         return getActivity().getState();
     }
 
-    private static final int LOADER_INSTALLED_APPS = 253341534;
-
     private ListView listView;
     private AppListAdapter adapter;
-    private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
@@ -80,38 +70,13 @@ public class SelectAppsView extends SwapView implements
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         // either reconnect with an existing loader or start a new one
-        getActivity().getSupportLoaderManager().initLoader(LOADER_INSTALLED_APPS, null, this);
+        getActivity().getSupportLoaderManager().initLoader(R.layout.swap_select_apps, null, this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 toggleAppSelected(position);
             }
         });
-    }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-
-        inflater.inflate(R.menu.swap_next_search, menu);
-        MenuItem nextMenuItem = menu.findItem(R.id.action_next);
-        int flags = MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT;
-        MenuItemCompat.setShowAsAction(nextMenuItem, flags);
-        nextMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                getActivity().onAppsSelected();
-                return true;
-            }
-        });
-
-        SearchView searchView = new SearchView(getActivity());
-
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        MenuItemCompat.setActionView(searchMenuItem, searchView);
-        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
-
-        searchView.setOnQueryTextListener(this);
-        return true;
     }
 
     private void toggleAppSelected(int position) {
@@ -163,26 +128,6 @@ public class SelectAppsView extends SwapView implements
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         adapter.swapCursor(null);
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
-        if (currentFilterString == null && newFilter == null) {
-            return true;
-        }
-        if (currentFilterString != null && currentFilterString.equals(newFilter)) {
-            return true;
-        }
-        currentFilterString = newFilter;
-        getActivity().getSupportLoaderManager().restartLoader(LOADER_INSTALLED_APPS, null, this);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        // this is not needed since we respond to every change in text
-        return true;
     }
 
     private class AppListAdapter extends CursorAdapter {
