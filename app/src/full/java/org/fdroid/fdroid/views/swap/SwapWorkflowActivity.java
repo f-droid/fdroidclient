@@ -217,7 +217,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
         setSupportActionBar(toolbar);
 
-        container = (ViewGroup) findViewById(R.id.fragment_container);
+        container = (ViewGroup) findViewById(R.id.container);
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);

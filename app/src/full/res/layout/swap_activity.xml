@@ -17,7 +17,7 @@
             tools:ignore="UnusedAttribute"/>
 
     <FrameLayout
-            android:id="@+id/fragment_container"
+            android:id="@+id/container"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
 
