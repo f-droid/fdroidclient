@@ -897,6 +897,10 @@ public class RepoXMLHandlerTest {
         List<App> apps = actualDetails.apps;
         assertNotNull(apps);
         assertEquals(apps.size(), appCount);
+        for (App app: apps) {
+            assertTrue("Added should have been set", app.added.getTime() > 0);
+            assertTrue("Last Updated should have been set", app.lastUpdated.getTime() > 0);
+        }
 
         List<Apk> apks = actualDetails.apks;
         assertNotNull(apks);

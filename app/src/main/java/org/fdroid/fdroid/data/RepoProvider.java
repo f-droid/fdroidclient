@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;
@@ -278,7 +277,8 @@ public class RepoProvider extends FDroidProvider {
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
-                    lastUpdate = Utils.parseDate(cursor.getString(0), null);
+                    String dateString = cursor.getString(0);
+                    lastUpdate = Utils.parseTime(dateString, Utils.parseDate(dateString, null));
                 }
                 cursor.close();
             }

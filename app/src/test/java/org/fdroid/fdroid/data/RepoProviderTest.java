@@ -95,7 +95,7 @@ public class RepoProviderTest extends FDroidProviderTest {
 
     private Repo setLastUpdate(Repo repo, Date date) {
         ContentValues values = new ContentValues(1);
-        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatDate(date, null));
+        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(date, null));
         RepoProvider.Helper.update(context, repo, values);
         return RepoProvider.Helper.findByAddress(context, repo.address);
     }
