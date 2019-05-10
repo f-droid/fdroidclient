@@ -1,3 +1,11 @@
+### 1.6.1 (2019-05-10)
+
+* Updated translations
+
+* fixed button size issues #1678
+
+* stopped random background crashes
+
 ### 1.6 (2019-04-10)
 
 * update F-Droid after all other updates (#1556)
