@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">Den nye version er signeret med en nøgle, som er forskellig fra den gamle nøgle. Den gamle version skal afinstalleres før den nye version kan installeres. Gør venligst dette, og forsøg igen. (Bemærk at afinstallation sletter al data programmet har lagret internt)</string>
-    <string name="installIncompatible">App er ikke kompatibel med enhed. Installer alligevel\?</string>
+    <string name="installIncompatible">Program er ikke kompatibel med enhed, installere alligevel\?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC Send…</string>
@@ -226,13 +226,13 @@
     <string name="perms_new_perm_prefix">Nye:</string>
     <string name="perms_description_app">Udbudt af %1$s.</string>
     <string name="downloading">Henter…</string>
-    <string name="interval_never">Aldrig</string>
-    <string name="interval_1h">Hver time</string>
-    <string name="interval_4h">Hver fjerde time</string>
-    <string name="interval_12h">Hver tolvte time</string>
-    <string name="interval_1d">Dagligt</string>
-    <string name="interval_1w">Ugentligt</string>
-    <string name="interval_2w">Hver anden uge</string>
+    <string name="interval_never">Ingen automatisk program opdatering</string>
+    <string name="interval_1h">Kontrollere for opdateringer hver time</string>
+    <string name="interval_4h">Kontrollere for opdateringer hver 4. time</string>
+    <string name="interval_12h">Kontrollere for opdateringer hver 12. time</string>
+    <string name="interval_1d">Kontrollere for opdateringer dagligt</string>
+    <string name="interval_1w">Kontrollere for opdateringer ugentlig</string>
+    <string name="interval_2w">Kontrollere for opdateringer hver anden uge</string>
     <string name="theme_light">Lys</string>
     <string name="theme_dark">Mørk</string>
     <string name="theme_night">Nat</string>
@@ -267,7 +267,7 @@
     <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
     <string name="main_menu__swap_nearby">Nærheden</string>
-    <string name="preference_manage_installed_apps">Håndter installerede programmer</string>
+    <string name="preference_manage_installed_apps">Håndtere installerede programmer</string>
     <string name="notification_action_update">Opdater</string>
     <string name="notification_action_cancel">Annuller</string>
     <string name="notification_action_install">Installér</string>
@@ -316,7 +316,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Ingen Internet? Hent apps fra folk i nærheden af dig!</string>
     <string name="nearby_splash__find_people_button">Find personer i nærheden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte i nærheden.</string>
-    <string name="app__tts__downloading_progress">Henter, %1$d%% hentet</string>
+    <string name="app__tts__downloading_progress">Henter, %1$d%% udført</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d mere…</item>
         <item quantity="other">+%1$d mere…</item>
@@ -447,9 +447,25 @@
     <string name="panic_destructive_actions">Destruktive handlinger</string>
     <string name="panic_hide_warning_title">Huske hvordan der gendannes</string>
     <string name="nearby_splash__read_external_storage">SD-kort kan bruges til at udveksle!</string>
-    <string name="repo_exists_and_enabled">%1$s er allerede konfigureret og aktiveret</string>
+    <string name="repo_exists_and_enabled">%1$s er allerede opsat og aktiveret.</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Den installerede version er ikke kompatibel med nogen af de tilgængelige versioner. Hvis du afinstallerer appen kan du se og installere kompatible versioner. Dette sker ofte med apps installeret via Google Play eller andre kilder, hvis de er signeret med et andet certifikat.</string>
-    <string name="repo_exists_enable">%1$s er allerede konfigureret. Bekræft at du vil slå den til igen.</string>
+    <string name="repo_exists_enable">%1$s er allerede opsat, bekræft at den skal gen-aktiveres.</string>
     <string name="panic_app_dialog_message">Er du sikker på, at du vil tillade %1$s at udføre destruktive handlinger fra panikknappen\?</string>
     <string name="hiding_dialog_message">Er du sikker på, at du vil fjerne %1$s fra appmenuen\? Genvejen kan kun genoprettes ved at taste \"%2$d\" i den falske %3$s app.</string>
+    <string name="repo_delete_to_overwrite">Først slettes %1$s for at tilføje den med en modstridende nøgle.</string>
+    <string name="preventScreenshots_summary">Blokere skærmbilleder fra at blive taget og skjuler program indhold fra den seneste program skærm</string>
+    <string name="hiding_dialog_warning">Advarsel: Enhver program genvej på startskærmen fjernes også og skal tilføjes manuelt.</string>
+    <string name="allow_push_requests_summary">Arkiv metadata kan omfatte skubbe forespørgsler for at installere og afinstallere programmer</string>
+    <string name="scan_removable_storage_summary">Se efter pakke arkiv på fjern-bare lagerenheder som SD-kort og USB-drev</string>
+    <string name="menu_translation">Oversættelse</string>
+    <string name="main_menu__updates">Opdateringer</string>
+    <string name="antinosourcesince">Kilde kode er ikke længere tilgængelig, ingen opdateringer mulig.</string>
+    <string name="force_touch_apps_on">Vise programmer der kræver berørings-skærm uanset hardware understøttelse</string>
+    <string name="panic_hide_warning_message">"I en panik hændelse, vil dette fjerne  %1$s fra starteren. Kun ved at indtaste \"%2$d\" i det falske %3$s program kan genskabe det."</string>
+    <string name="hide_on_long_search_press_summary">Langt tryk på søge knappen vil skjule programmet</string>
+    <string name="not_visible_nearby_description">Før bytte med nærved enheder, gør denne enhed synlig.</string>
+    <string name="swap_toast_not_removable_storage">Valget passer ikke med nogen fjern-bare lagerenheder, prøv igen!</string>
+    <string name="swap_toast_find_removeable_storage">Vælg fjern-bar SD-kort eller USB</string>
+    <string name="swap_toast_invalid_url">Ugyldig URL for bytning: %1$s</string>
+    <string name="warning_scaning_qr_code">Kameraet ser ikke ud til at have auto fokus. Det kan være svært at skanne koden.</string>
 </resources>
