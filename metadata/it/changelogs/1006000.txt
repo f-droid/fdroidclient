@@ -1,0 +1,12 @@
+* Gestione autorizzazione READ_EXTERNAL_STORAGE, che innesca una
+  richiesta su installazioni con Estensione Privilegiata (#1702)
+
+* Dati dell'indice controllati per ridurre possibili minacce dal server
+
+* "Timeout Lettura" attiva l'uso di mirror quando le letture sono lente
+
+* Corregge icone mancanti per chi non usa il Wi-Fi (#1592)
+
+* Usa titoli separati per schede preferenze e aggiornamenti , per aiutare le traduzioni
+
+* Correzioni interfaccia da @ConnyDuck (#1636, #1618)

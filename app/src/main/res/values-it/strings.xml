@@ -504,4 +504,5 @@
     <string name="main_menu__updates">Aggiornamenti</string>
     <string name="nearby_splash__read_external_storage">Le schede SD possono essere usate per lo scambio!</string>
     <string name="not_visible_nearby_description">Prima di scambiare con dispositivi vicini, rendi il tuo visibile.</string>
+    <string name="menu_translation">Traduzione</string>
 </resources>
