@@ -147,9 +147,9 @@ public class HttpDownloader extends Downloader {
                     } else {
                         String calcedETag = String.format("\"%x-%x\"",
                                 tmpConn.getLastModified() / 1000, contentLength);
-                        if (calcedETag.equals(headETag)) {
+                        if (cacheTag.equals(calcedETag)) {
                             Utils.debugLog(TAG, urlString + " cached based on calced ETag, not downloading: " +
-                                    headETag);
+                                    calcedETag);
                             return;
                         }
                     }
