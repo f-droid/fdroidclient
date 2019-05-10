@@ -200,6 +200,7 @@ public class IndexV1Updater extends IndexUpdater {
         InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
                 processIndexListener, (int) indexEntry.getSize());
         processIndexV1(indexInputStream, indexEntry, cacheTag);
+        jarFile.close();
     }
 
     /**
