@@ -11,6 +11,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -19,6 +20,7 @@ import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
 import static org.fdroid.fdroid.Assert.assertResultCount;
@@ -35,6 +37,13 @@ import static org.junit.Assert.assertTrue;
 public class AppProviderTest extends FDroidProviderTest {
 
     private static final String[] PROJ = Cols.ALL;
+
+    @BeforeClass
+    public static void setRandomTimeZone() {
+        TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT-%d:%02d",
+                System.currentTimeMillis() % 12, System.currentTimeMillis() % 60)));
+        System.out.println("TIME ZONE for this test: " + TimeZone.getDefault());
+    }
 
     @Before
     public void setup() {

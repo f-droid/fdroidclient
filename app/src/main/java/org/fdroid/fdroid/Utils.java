@@ -79,6 +79,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -95,6 +96,8 @@ public final class Utils {
 
     private static final SimpleDateFormat TIME_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
+
+    private static final TimeZone UTC = TimeZone.getTimeZone("Etc/GMT");
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
@@ -384,7 +387,7 @@ public final class Utils {
             }
             ret = formatter.toString();
             formatter.close();
-        } catch (Exception e) {
+        } catch (Throwable e) { // NOPMD
             Log.w(TAG, "Unable to get certificate fingerprint", e);
         }
         return ret;
@@ -583,6 +586,7 @@ public final class Utils {
         }
         Date result;
         try {
+            format.setTimeZone(UTC);
             result = format.parse(str);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ParseException e) {
             e.printStackTrace();
@@ -595,21 +599,34 @@ public final class Utils {
         if (date == null) {
             return fallback;
         }
+        format.setTimeZone(UTC);
         return format.format(date);
     }
 
+    /**
+     * Parses a date string into UTC time
+     */
     public static Date parseDate(String str, Date fallback) {
         return parseDateFormat(DATE_FORMAT, str, fallback);
     }
 
+    /**
+     * Formats UTC time into a date string
+     */
     public static String formatDate(Date date, String fallback) {
         return formatDateFormat(DATE_FORMAT, date, fallback);
     }
 
+    /**
+     * Parses a date/time string into UTC time
+     */
     public static Date parseTime(String str, Date fallback) {
         return parseDateFormat(TIME_FORMAT, str, fallback);
     }
 
+    /**
+     * Formats UTC time into a date/time string
+     */
     public static String formatTime(Date date, String fallback) {
         return formatDateFormat(TIME_FORMAT, date, fallback);
     }

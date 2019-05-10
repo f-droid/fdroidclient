@@ -414,7 +414,7 @@ public class IndexUpdater {
 
         Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
         ContentValues values = new ContentValues(2);
-        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatDate(new Date(), ""));
+        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));
         values.put(RepoTable.Cols.SIGNING_CERT, Hasher.hex(rawCertFromJar));
         RepoProvider.Helper.update(context, repo, values);
     }

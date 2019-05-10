@@ -28,13 +28,11 @@ public class DeleteCacheService extends JobIntentService {
         Log.w(TAG, "Deleting all cached contents!");
         try {
             File cacheDir = getCacheDir();
-            if (cacheDir != null) {
-                FileUtils.deleteDirectory(cacheDir);
-            }
+            FileUtils.deleteDirectory(cacheDir);
             for (File dir : ContextCompat.getExternalCacheDirs(this)) {
                 FileUtils.deleteDirectory(dir);
             }
-        } catch (Exception e) {
+        } catch (Throwable e) { // NOPMD
             // ignored
         }
     }
