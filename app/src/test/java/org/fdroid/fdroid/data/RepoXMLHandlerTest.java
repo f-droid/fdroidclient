@@ -29,6 +29,7 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.fdroid.fdroid.mock.RepoDetails;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -48,6 +49,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -62,6 +64,16 @@ public class RepoXMLHandlerTest {
     private static final String TAG = "RepoXMLHandlerTest";
 
     private static final String FAKE_SIGNING_CERT = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345"; // NOCHECKSTYLE LineLength
+
+    /**
+     * Set to random time zone to make sure that the dates are properly parsed.
+     */
+    @BeforeClass
+    public static void setRandomTimeZone() {
+        TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT-%d:%02d",
+                System.currentTimeMillis() % 12, System.currentTimeMillis() % 60)));
+        System.out.println("TIME ZONE for this test: " + TimeZone.getDefault());
+    }
 
     @Test
     public void testExtendedPerms() throws IOException {
@@ -129,6 +141,12 @@ public class RepoXMLHandlerTest {
                 "org.gege.caldavsyncadapter",
                 "info.guardianproject.checkey",
         });
+        for (App app : actualDetails.apps) {
+            if ("org.mozilla.firefox".equals(app.packageName)) {
+                assertEquals(1411776000000L, app.added.getTime());
+                assertEquals(1411862400000L, app.lastUpdated.getTime());
+            }
+        }
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -897,7 +915,7 @@ public class RepoXMLHandlerTest {
         List<App> apps = actualDetails.apps;
         assertNotNull(apps);
         assertEquals(apps.size(), appCount);
-        for (App app: apps) {
+        for (App app : apps) {
             assertTrue("Added should have been set", app.added.getTime() > 0);
             assertTrue("Last Updated should have been set", app.lastUpdated.getTime() > 0);
         }

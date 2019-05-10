@@ -30,6 +30,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -37,6 +38,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -47,6 +49,16 @@ import static org.junit.Assert.assertNull;
 public class RepoProviderTest extends FDroidProviderTest {
 
     private static final String[] COLS = RepoTable.Cols.ALL;
+
+    /**
+     * Set to random time zone to make sure that the dates are properly parsed.
+     */
+    @BeforeClass
+    public static void setRandomTimeZone() {
+        TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT-%d:%02d",
+                System.currentTimeMillis() % 12, System.currentTimeMillis() % 60)));
+        System.out.println("TIME ZONE for this test: " + TimeZone.getDefault());
+    }
 
     @Test
     public void countEnabledRepos() {

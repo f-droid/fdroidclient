@@ -7,10 +7,12 @@ import android.net.Uri;
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockRepo;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -18,6 +20,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static org.fdroid.fdroid.Assert.assertCantDelete;
 import static org.fdroid.fdroid.Assert.assertResultCount;
@@ -33,6 +36,13 @@ import static org.junit.Assert.fail;
 public class ApkProviderTest extends FDroidProviderTest {
 
     private static final String[] PROJ = Cols.ALL;
+
+    @BeforeClass
+    public static void setRandomTimeZone() {
+        TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT-%d:%02d",
+                System.currentTimeMillis() % 12, System.currentTimeMillis() % 60)));
+        System.out.println("TIME ZONE for this test: " + TimeZone.getDefault());
+    }
 
     @Test
     public void testAppApks() {
@@ -153,7 +163,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test
     public void testCount() {
-        String[] projectionCount = new String[] {Cols._COUNT};
+        String[] projectionCount = new String[]{Cols._COUNT};
 
         for (int i = 0; i < 13; i++) {
             Assert.insertApk(context, "com.example", i);
@@ -315,11 +325,12 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertNull(apk.added);
         assertNull(apk.hashType);
 
-        apk.antiFeatures = new String[] {"KnownVuln", "Other anti feature"};
-        apk.features = new String[] {"one", "two", "three" };
-        long dateTimestamp = System.currentTimeMillis();
-        apk.added = new Date(dateTimestamp);
+        apk.antiFeatures = new String[]{"KnownVuln", "Other anti feature"};
+        apk.features = new String[]{"one", "two", "three"};
         apk.hashType = "i'm a hash type";
+
+        Date testTime = Utils.parseDate(Utils.formatTime(new Date(System.currentTimeMillis()), null), null);
+        apk.added = testTime;
 
         ApkProvider.Helper.update(context, apk);
 
@@ -340,9 +351,10 @@ public class ApkProviderTest extends FDroidProviderTest {
 
         assertArrayEquals(new String[]{"KnownVuln", "Other anti feature"}, updatedApk.antiFeatures);
         assertArrayEquals(new String[]{"one", "two", "three"}, updatedApk.features);
-        assertEquals(new Date(dateTimestamp).getYear(), updatedApk.added.getYear());
-        assertEquals(new Date(dateTimestamp).getMonth(), updatedApk.added.getMonth());
-        assertEquals(new Date(dateTimestamp).getDay(), updatedApk.added.getDay());
+        assertEquals(testTime.getYear(), updatedApk.added.getYear());
+        assertEquals(testTime.getYear(), updatedApk.added.getYear());
+        assertEquals(testTime.getMonth(), updatedApk.added.getMonth());
+        assertEquals(testTime.getDay(), updatedApk.added.getDay());
         assertEquals("i'm a hash type", updatedApk.hashType);
     }
 
@@ -381,8 +393,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            Cols.Package.PACKAGE_NAME,
-            Cols.HASH,
+                Cols.Package.PACKAGE_NAME,
+                Cols.HASH,
         };
 
         Apk apkLessFields = ApkProvider.Helper.findApkFromAnyRepo(context, "com.example", 11, null, projection);

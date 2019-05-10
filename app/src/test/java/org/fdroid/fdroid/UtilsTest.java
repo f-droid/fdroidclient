@@ -10,6 +10,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.io.File;
+import java.util.Date;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -77,9 +79,9 @@ public class UtilsTest {
         assertEquals("three", tripleValue[2]);
 
         assertNull(Utils.serializeCommaSeparatedString(null));
-        assertNull(Utils.serializeCommaSeparatedString(new String[] {}));
-        assertEquals("Single", Utils.serializeCommaSeparatedString(new String[] {"Single"}));
-        assertEquals("One,TWO,three", Utils.serializeCommaSeparatedString(new String[] {"One", "TWO", "three"}));
+        assertNull(Utils.serializeCommaSeparatedString(new String[]{}));
+        assertEquals("Single", Utils.serializeCommaSeparatedString(new String[]{"Single"}));
+        assertEquals("One,TWO,three", Utils.serializeCommaSeparatedString(new String[]{"One", "TWO", "three"}));
     }
 
     @Test
@@ -192,4 +194,25 @@ public class UtilsTest {
     }
     // TODO write tests that work with a Certificate
 
+    @Test
+    public void testIndexDatesWithTimeZones() {
+        for (int h = 0; h < 12; h++) {
+            for (int m = 0; m < 60; m = m + 15) {
+                TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT+%d%02d", h, m)));
+
+                String timeString = "2017-11-27_20:13:24";
+                Date time = Utils.parseTime(timeString, null);
+                assertEquals("The String representation must match", timeString, Utils.formatTime(time, null));
+                assertEquals(timeString + " failed to parse", 1511813604000L, time.getTime());
+                assertEquals("time zones should match", -((h * 60) + m), time.getTimezoneOffset());
+
+                TimeZone.setDefault(TimeZone.getTimeZone(String.format("GMT+%d%02d", h, m)));
+                String dateString = "2017-11-27";
+                Date date = Utils.parseDate(dateString, null);
+                assertEquals("The String representation must match", dateString, Utils.formatDate(date, null));
+                assertEquals(dateString + " failed to parse", 1511740800000L, date.getTime());
+                assertEquals("time zones should match", -((h * 60) + m), date.getTimezoneOffset());
+            }
+        }
+    }
 }
