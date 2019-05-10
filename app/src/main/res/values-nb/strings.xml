@@ -497,4 +497,5 @@
     <string name="not_visible_nearby_description">Før utveksling med enheter i nærheten må du gjøre din synlig.</string>
     <string name="scan_removable_storage_toast">Skanner %s…</string>
     <string name="main_menu__updates">Oppgraderinger</string>
+    <string name="menu_translation">Oversettelse</string>
 </resources>
