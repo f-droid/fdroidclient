@@ -325,7 +325,7 @@
         <item quantity="other">Ver todos (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
-    <string name="nearby_splash__find_people_button">Encontrar pessoas nas proximidades</string>
+    <string name="nearby_splash__find_people_button">Procurar pessoas pertas</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="notification_title_single_update_available">Atualização disponível</string>
     <string name="notification_title_single_ready_to_install">Pronta para instalação</string>
