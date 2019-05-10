@@ -23,7 +23,7 @@
     <string name="ok">确定</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="repo_add_title">添加新的软件源</string>
+    <string name="repo_add_title">添加新的存储库</string>
     <string name="repo_add_add">添加</string>
     <string name="cancel">取消</string>
     <string name="enable">启用</string>
@@ -31,12 +31,12 @@
     <string name="overwrite">覆盖</string>
     <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个！</string>
     <string name="choose_bt_send">选择蓝牙发送方式</string>
-    <string name="repo_add_url">软件源地址</string>
+    <string name="repo_add_url">存储库地址</string>
     <string name="repo_add_fingerprint">指纹（可选）</string>
-    <string name="malformed_repo_uri">忽略异常的软件源 URI：%s</string>
-    <string name="menu_manage">软件源</string>
+    <string name="malformed_repo_uri">忽略异常的存储库 URI：%s</string>
+    <string name="menu_manage">存储库</string>
     <string name="menu_search">搜索</string>
-    <string name="menu_add_repo">添加软件源</string>
+    <string name="menu_add_repo">添加存储库</string>
     <string name="menu_launch">打开</string>
     <string name="menu_share">分享</string>
     <string name="menu_install">安装</string>
@@ -62,8 +62,8 @@
     <string name="appcompatibility">应用兼容性</string>
     <string name="show_incompat_versions">包括不兼容的版本</string>
     <string name="show_incompat_versions_on">显示与该设备不兼容的应用程序版本</string>
-    <string name="local_repo">本地软件源</string>
-    <string name="deleting_repo">正在删除当前软件源…</string>
+    <string name="local_repo">本地存储库</string>
+    <string name="deleting_repo">正在删除当前存储库…</string>
     <string name="icon">图标</string>
     <string name="proxy">代理</string>
     <string name="enable_proxy_title">启用 http 代理</string>
@@ -85,16 +85,16 @@
     <string name="repo_last_update">最近更新</string>
     <string name="repo_name">名称</string>
     <string name="unsigned_description">这表示应用列表无法通过验证。对于从未签名索引下载的应用，应谨慎处理。</string>
-    <string name="repo_not_yet_updated">该软件源尚未使用。 你需要启用它才能查看该软件源提供的应用程序。</string>
+    <string name="repo_not_yet_updated">该存储库尚未使用。 你需要启用它才能查看该存储库提供的应用程序。</string>
     <string name="unknown">未知</string>
-    <string name="repo_confirm_delete_title">删除软件源？</string>
-    <string name="repo_confirm_delete_body">删除软件源意味着来自该软件源的软件将不再提供。 
+    <string name="repo_confirm_delete_title">删除存储库？</string>
+    <string name="repo_confirm_delete_body">删除存储库意味着来自该存储库的软件将不再提供。 
 \n 
 \n注意：之前安装的所有应用会保留在您的设备上。</string>
-    <string name="repo_disabled_notification">已禁用 %1$s。
-\n
-\n需重新启用该资源库才能安装其中的应用。</string>
-    <string name="not_on_same_wifi">您的设备与刚添加的本地软件源不在同一个 Wi-Fi 网络下！请加入此网络：%s</string>
+    <string name="repo_disabled_notification">已禁用 %1$s。 
+\n 
+\n需重新启用该存储库才能安装其中的应用。</string>
+    <string name="not_on_same_wifi">您的设备与刚添加的本地存储库不在同一个 Wi-Fi 网络下！请加入此网络：%s</string>
     <string name="requires_features">需要：%1$s</string>
     <string name="category_Development">开发</string>
     <string name="category_Games">游戏</string>
@@ -111,9 +111,9 @@
     <string name="unstable_updates">不稳定更新</string>
     <string name="unstable_updates_summary">建议更新至不稳定的版本</string>
     <string name="system_installer_on">使用特权扩展安装、更新和卸载应用</string>
-    <string name="local_repo_name">本地软件源的名称</string>
-    <string name="local_repo_name_summary">本地软件源的对外名称：%s</string>
-    <string name="local_repo_https_on">本地软件源使用加密的 HTTPS:// 连接</string>
+    <string name="local_repo_name">本地存储库的名称</string>
+    <string name="local_repo_name_summary">本地存储库的对外名称：%s</string>
+    <string name="local_repo_https_on">本地存储库使用加密的 HTTPS:// 连接</string>
     <string name="login_title">需要验证</string>
     <string name="login_name">用户名</string>
     <string name="login_password">密码</string>
@@ -136,24 +136,24 @@
     <string name="menu_flattr">Flattr</string>
     <string name="local_repo_running">F-Droid 已准备好交换应用</string>
     <string name="touch_to_configure_local_repo">触摸可查看详细信息以及允许其他人与你交换应用程序。</string>
-    <string name="adding_apks_format">正在添加 %s 到软件源…</string>
+    <string name="adding_apks_format">正在添加 %s 到存储库…</string>
     <string name="writing_index_jar">正在写入已签名的索引文件（index.jar）…</string>
-    <string name="linking_apks">正在链接APK到软件源……</string>
-    <string name="copying_icons">正在复制应用程序图标到软件源…</string>
+    <string name="linking_apks">正在链接APK到存储库……</string>
+    <string name="copying_icons">正在复制应用程序图标到存储库…</string>
     <string name="next">下一步</string>
     <string name="skip">跳过</string>
     <string name="status_download_unknown_size">下载中\n%2$s 来自\n%1$s</string>
     <string name="update_notification_title">正在更新库</string>
     <string name="status_processing_xml_percent">处理中 %2$s / %3$s (%4$d%%) 来自 %1$s</string>
-    <string name="repos_unchanged">所有的软件库已是最新的</string>
-    <string name="all_other_repos_fine">所有其他的软件源并没有产生错误。</string>
+    <string name="repos_unchanged">所有的存储库已是最新的</string>
+    <string name="all_other_repos_fine">所有其他的存储库并没有产生错误。</string>
     <string name="global_error_updating_repos">更新出错: %s</string>
     <string name="permissions">权限</string>
-    <string name="repo_details">软件源</string>
+    <string name="repo_details">存储库</string>
     <string name="repo_url">地址</string>
-    <string name="repo_added">已保存软件源 %1$s。</string>
+    <string name="repo_added">已保存存储库 %1$s。</string>
     <string name="repo_searching_address">正在 %1$s 
-\n里查找软件源</string>
+\n里查找存储库</string>
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
     <string name="wifi">Wi-Fi</string>
@@ -165,9 +165,9 @@
     <string name="category_Theming">主题</string>
     <string name="category_Time">时间</string>
     <string name="category_Writing">记录</string>
-    <string name="empty_installed_app_list">应用程序未安装。
-\n
-\n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。</string>
+    <string name="empty_installed_app_list">应用程序未安装。 
+\n 
+\n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的存储库，或者在库里真的没有这些应用程序。</string>
     <string name="empty_can_update_app_list">好棒！您的应用是最新的啦。</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致卸载失败</string>
@@ -240,7 +240,7 @@
     <string name="crash_dialog_title">F-Droid 已停止运行</string>
     <string name="crash_dialog_text">本应用因意外问题而停止运行。您愿意通过电子邮件向我们提供细节信息，以协助修复此问题吗？</string>
     <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
-    <string name="repo_provider">软件源：%s</string>
+    <string name="repo_provider">存储库：%s</string>
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">强制下载流量通过 Tor 以增强隐私保障。需要 Orbot</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
@@ -293,12 +293,12 @@
     </plurals>
     <string name="versions">版本</string>
     <string name="clear_search">清除搜索</string>
-    <string name="repositories_summary">添加其他软件库</string>
+    <string name="repositories_summary">添加其他存储库</string>
     <string name="menu_video">视频</string>
     <string name="menu_license">许可证：%s</string>
     <string name="latest__empty_state__no_recent_apps">找不到最近使用的应用</string>
     <string name="latest__empty_state__never_updated">应用程序列表更新之后，最新应用将在这里显示</string>
-    <string name="latest__empty_state__no_enabled_repos">启用软件源并对其更新之后，最新应用将在这里显示</string>
+    <string name="latest__empty_state__no_enabled_repos">启用存储库并对其更新之后，最新应用将在这里显示</string>
     <string name="categories__empty_state__no_categories">没有可显示的分类</string>
     <string name="preference_category__my_apps">我的应用</string>
     <string name="details_new_in_version">版本%s的新功能</string>
@@ -363,7 +363,7 @@
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
     <string name="app_details__no_versions__no_compatible_signatures">没有兼容签署的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">没有与装置兼容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">已安装版本不与任何可用版本兼容。卸载该应用将让您可以查看和安装兼容的版本。这种情况通常发生在通过 Google Play 或其他软件源安装的应用上，如果它们是由不同的证书签署的。</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">已安装版本不与任何可用版本兼容。卸载该应用将让您可以查看和安装兼容的版本。这种情况通常发生在通过 Google Play 或其他存储库安装的应用上，如果它们是由不同的证书签署的。</string>
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
@@ -431,9 +431,9 @@
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
     <string name="install_history_summary">浏览所有关于安装与卸载的私有日志</string>
     <string name="send_version_and_uuid_summary">在下载时包含此应用的版本和一个随机唯一 ID，将在下次重新启动应用程序时生效。</string>
-    <string name="allow_push_requests">允许软件源去安装/卸载应用</string>
+    <string name="allow_push_requests">允许存储库去安装/卸载应用</string>
     <string name="send_installed_apps">分享已安装的应用程序</string>
-    <string name="share_repository">分享软件源</string>
+    <string name="share_repository">分享存储库</string>
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
     <string name="about_forum">支持论坛</string>
     <string name="app_size">大小：%1$s</string>
@@ -441,12 +441,12 @@
     <string name="app_suggested">建议</string>
     <string name="send_installed_apps_csv">通过 F-Droid 安装的应用程序列表，以 CSV 格式文件存储</string>
     <string name="menu_open">打开</string>
-    <string name="allow_push_requests_summary">软件源的元数据可以含有安装或卸载应用的推送请求</string>
+    <string name="allow_push_requests_summary">存储库的元数据可以含有安装或卸载应用的推送请求</string>
     <string name="updates_disabled_by_settings">由于数据/WiFi 设置全部更新已禁用</string>
-    <string name="app_repository">软件库：%1$s</string>
+    <string name="app_repository">存储库：%1$s</string>
     <string name="scan_removable_storage_title">扫描可移动存储器</string>
     <string name="scan_removable_storage_toast">正在扫描 %s…</string>
-    <string name="scan_removable_storage_summary">寻找可移动存储设备上的软件包存储库，比如 SD 卡和 USB 闪存驱动器</string>
+    <string name="scan_removable_storage_summary">寻找可移动存储设备上的存储库，比如 SD 卡和 USB 闪存驱动器</string>
     <string name="nearby_splash__read_external_storage">SD 卡可以用来交换！</string>
     <string name="nearby_splash__request_permission">试试看</string>
     <string name="not_visible_nearby">附近功能未启用</string>
