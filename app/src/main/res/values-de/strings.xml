@@ -6,7 +6,7 @@
     <string name="delete">Löschen</string>
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
     <string name="cache_downloaded">Zwischengespeicherte Apps behalten</string>
-    <string name="updates">Aktualisierungen</string>
+    <string name="updates">Updates</string>
     <string name="other">Andere</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
     <string name="notify">Aktualisierungsbenachrichtigung</string>
@@ -186,7 +186,7 @@
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
     <string name="system_install_denied_permissions">Der Erweiterung wurden keine Sonderrechte erteilt! Bitte einen Fehlerbericht erstellen!</string>
-    <string name="swap_nfc_title">Berühren, um zu tauschen</string>
+    <string name="swap_nfc_title">Tausche durch Berührung</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
     <string name="swap_active_hotspot">%1$s (Ihr Hotspot)</string>

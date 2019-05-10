@@ -3,7 +3,7 @@
 
 * Indexdaten bereinigt, um die Servergefährdung zu reduzieren
 
-* "Read Timeout" ruft bei langsamem Einlesen Spiegel auf
+* „Read Timeout“ ruft bei langsamem Einlesen Spiegel auf
 
 * Fehlende Symbole bei jenen, die kein WLAN nutzen, repariert (#1592)
 

@@ -1,13 +1,13 @@
-* Überarbeitung der "Versionen"-Liste in den "App-Details" und viele UI-Verbesserungen, dank des neuen Mitarbeiters @wsdfhjxc
+* Überarbeitung der „Versionen“-Liste in den „App-Details“ und viele UI-Verbesserungen, dank des neuen Mitarbeiters @wsdfhjxc
 
 * Korrektur der Tastatur/D-pad-Navigation, dank des neuen Mitarbeiters @doeffinger
 
-* "Öffnen"-Button wenn Medien installiert und sichtbar sind
+* „Öffnen“-Button wenn Medien installiert und sichtbar sind
 
-* Teilen-Button in "Installierten Apps" zum CSV-Listenexport
+* Teilen-Button in „Installierten Apps“ zum CSV-Listenexport
 
 * Klickbare APK-Liste auf der Tausch-HTML-Indexseite
 
 * Index-Download von Spiegel wiederholen
 
-* "F-Droid per Bluetooth senden"-Reparatur für neue Android-Versionen
+* „F-Droid per Bluetooth senden“-Reparatur für neue Android-Versionen
