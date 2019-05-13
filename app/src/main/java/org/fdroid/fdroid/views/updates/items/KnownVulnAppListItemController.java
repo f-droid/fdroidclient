@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -22,7 +24,7 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
-import org.fdroid.fdroid.views.updates.DismissResult;
+import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 /**
  * Tell the user that an app they have installed has a known vulnerability.
@@ -86,11 +88,9 @@ public class KnownVulnAppListItemController extends AppListItemController {
         return true;
     }
 
-    @NonNull
     @Override
-    protected DismissResult onDismissApp(@NonNull App app) {
+    protected void onDismissApp(@NonNull final App app, UpdatesAdapter adapter) {
         this.ignoreVulnerableApp(app);
-        return new DismissResult(activity.getString(R.string.app_list__dismiss_vulnerable_app), false);
     }
 
     @Override
@@ -98,9 +98,26 @@ public class KnownVulnAppListItemController extends AppListItemController {
         this.ignoreVulnerableApp(app);
     }
 
-    private void ignoreVulnerableApp(@NonNull App app) {
+    private void ignoreVulnerableApp(@NonNull final App app) {
+        setIgnoreVulnerableApp(app, true);
+
+        Snackbar.make(
+                itemView,
+                R.string.app_list__dismiss_vulnerable_app,
+                Snackbar.LENGTH_LONG
+        )
+                .setAction(R.string.undo, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        setIgnoreVulnerableApp(app, false);
+                    }
+                })
+                .show();
+    }
+
+    private void setIgnoreVulnerableApp(@NonNull App app, boolean ignore) {
         AppPrefs prefs = app.getPrefs(activity);
-        prefs.ignoreVulnerabilities = true;
+        prefs.ignoreVulnerabilities = ignore;
         AppPrefsProvider.Helper.update(activity, app, prefs);
         refreshUpdatesList();
     }

@@ -1,9 +1,7 @@
 package org.fdroid.fdroid.views.updates;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.widget.Toast;
 
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.updates.items.AppStatusListItemController;
@@ -33,11 +31,9 @@ import org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController;
  */
 public class UpdatesItemTouchCallback extends ItemTouchHelper.Callback {
 
-    private final Context context;
     private final UpdatesAdapter adapter;
 
-    public UpdatesItemTouchCallback(Context context, UpdatesAdapter adapter) {
-        this.context = context;
+    public UpdatesItemTouchCallback(UpdatesAdapter adapter) {
         this.adapter = adapter;
     }
 
@@ -62,15 +58,7 @@ public class UpdatesItemTouchCallback extends ItemTouchHelper.Callback {
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         AppListItemController controller = (AppListItemController) viewHolder;
-        DismissResult result = controller.onDismiss();
-
-        if (result.message != null) {
-            Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show();
-        }
-
-        if (result.requiresAdapterRefresh) {
-            adapter.refreshStatuses();
-        }
+        controller.onDismiss(adapter);
     }
 
     @Override
