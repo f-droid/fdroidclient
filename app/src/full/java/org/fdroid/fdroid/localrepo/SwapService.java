@@ -15,7 +15,7 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
-import android.support.annotation.IntDef;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -46,8 +46,6 @@ import rx.schedulers.Schedulers;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
@@ -129,43 +127,21 @@ public class SwapService extends Service {
         return peerFinder;
     }
 
-    // ==========================================================
-    //                 Manage the current step
-    // ("Step" refers to the current view being shown in the UI)
-    // ==========================================================
-
     public static final int STEP_INTRO = 1;
-    public static final int STEP_SELECT_APPS = 2;
-    public static final int STEP_JOIN_WIFI = 3;
-    public static final int STEP_SHOW_NFC = 4;
-    public static final int STEP_WIFI_QR = 5;
-    public static final int STEP_CONNECTING = 6;
-    public static final int STEP_SUCCESS = 7;
-    public static final int STEP_CONFIRM_SWAP = 8;
 
-    /**
-     * Special view, that we don't really want to actually store against the
-     * {@link SwapService#step}. Rather, we use it for the purpose of specifying
-     * we are in the state waiting for the {@link SwapService} to get started and
-     * bound to the {@link SwapWorkflowActivity}.
-     */
-    public static final int STEP_INITIAL_LOADING = 9;
-
-    @SwapStep
-    private int step = STEP_INTRO;
+    @LayoutRes
+    private int currentView = STEP_INTRO;
 
     /**
      * Current screen that the swap process is up to.
-     * Will be one of the SwapState.STEP_* values.
      */
-    @SwapStep
-    public int getStep() {
-        return step;
+    @LayoutRes
+    public int getCurrentView() {
+        return currentView;
     }
 
-    public SwapService setStep(@SwapStep int step) {
-        this.step = step;
-        return this;
+    public void setCurrentView(@LayoutRes int currentView) {
+        this.currentView = currentView;
     }
 
     @NonNull
@@ -267,18 +243,6 @@ public class SwapService extends Service {
     @Nullable
     public Repo getPeerRepo() {
         return peerRepo;
-    }
-
-    /**
-     * Ensure that we don't get put into an incorrect state, by forcing people to pass valid
-     * states to setStep. Ideally this would be done by requiring an enum or something to
-     * be passed rather than in integer, however that is harder to persist on disk than an int.
-     * This is the same as, e.g. {@link Context#getSystemService(String)}
-     */
-    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-            STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface SwapStep {
     }
 
     // =================================================

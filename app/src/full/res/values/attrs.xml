@@ -3,4 +3,8 @@
 
     <integer name="unhidePin">1337</integer>
 
+    <declare-styleable name="SwapView">
+        <attr name="toolbarColor" format="color"/>
+        <attr name="toolbarTitle" format="string"/>
+    </declare-styleable>
 </resources>

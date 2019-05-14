@@ -7,16 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiConfiguration;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,13 +21,13 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import rx.Subscriber;
@@ -40,7 +36,7 @@ import rx.Subscription;
 import java.util.ArrayList;
 
 @SuppressWarnings("LineLength")
-public class StartSwapView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
+public class StartSwapView extends SwapView {
 
     private static final String TAG = "StartSwapView";
 
@@ -58,7 +54,6 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
         super(context, attrs);
     }
 
-    @TargetApi(11)
     public StartSwapView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
@@ -89,10 +84,6 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
             return convertView;
         }
 
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     private SwapService getManager() {
@@ -456,35 +447,4 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
     private void onPeerSelected(Peer peer) {
         getActivity().swapWith(peer);
     }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        return false;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_INTRO;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        // TODO: Currently this is handleed by the SwapWorkflowActivity as a special case, where
-        // if getStep is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
-        // bit messy. It would be nicer if this was handled using the same mechanism as everything
-        // else.
-        return SwapService.STEP_INTRO;
-    }
-
-    @Override
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_bright_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_nearby);
-    }
-
 }

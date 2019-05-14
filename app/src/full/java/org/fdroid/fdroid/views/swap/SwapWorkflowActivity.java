@@ -17,20 +17,25 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import cc.mvdan.accesspoint.WifiApControl;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -48,6 +53,7 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.HttpDownloader;
@@ -68,6 +74,7 @@ import java.util.TimerTask;
  */
 @SuppressWarnings("LineLength")
 public class SwapWorkflowActivity extends AppCompatActivity {
+    private static final String TAG = "SwapWorkflowActivity";
 
     /**
      * When connecting to a swap, we then go and initiate a connection with that
@@ -87,28 +94,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private ViewGroup container;
 
-    /**
-     * A UI component (subclass of {@link View}) which forms part of the swap workflow.
-     * There is a one to one mapping between an {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity.InnerView}
-     * and a {@link SwapService.SwapStep}, and these views know what
-     * the previous view before them should be.
-     */
-    public interface InnerView {
-        /** @return True if the menu should be shown. */
-        boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
-
-        /** @return The step that this view represents. */
-        @SwapService.SwapStep int getStep();
-
-        @SwapService.SwapStep int getPreviousStep();
-
-        @ColorRes int getToolbarColour();
-
-        String getToolbarTitle();
-    }
-
-    private static final String TAG = "SwapWorkflowActivity";
-
     private static final int CONNECT_TO_SWAP = 1;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SWAP = 2;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
@@ -116,7 +101,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
 
     private Toolbar toolbar;
-    private InnerView currentView;
+    private SwapView currentView;
     private boolean hasPreparedLocalRepo;
     private PrepareSwapRepo updateSwappableAppsTask;
     private NewRepoConfig confirmSwapConfig;
@@ -165,12 +150,50 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (currentView.getStep() == SwapService.STEP_INTRO) {
-            SwapService.stop(this);
+        if (currentView.getLayoutResId() == SwapService.STEP_INTRO) {
+            SwapService.stop(this);  // TODO SwapService should always be running, while swap is running
             finish();
         } else {
-            int nextStep = currentView.getPreviousStep();
-            getService().setStep(nextStep);
+            // TODO: Currently StartSwapView is handleed by the SwapWorkflowActivity as a special case, where
+            // if getLayoutResId is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
+            // bit messy. It would be nicer if this was handled using the same mechanism as everything
+            // else.
+            int nextStep = -1;
+            switch (currentView.getLayoutResId()) {
+                case R.layout.swap_confirm_receive:
+                    nextStep = SwapService.STEP_INTRO;
+                    break;
+                case R.layout.swap_connecting:
+                    nextStep = R.layout.swap_select_apps;
+                    break;
+                case R.layout.swap_initial_loading:
+                    nextStep = R.layout.swap_join_wifi;
+                    break;
+                case R.layout.swap_join_wifi:
+                    nextStep = SwapService.STEP_INTRO;
+                    break;
+                case R.layout.swap_nfc:
+                    nextStep = R.layout.swap_join_wifi;
+                    break;
+                case R.layout.swap_select_apps:
+                    // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it
+                    // so that it is, or so that this doesn't go back there.
+                    nextStep = getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : R.layout.swap_join_wifi;
+                    break;
+                case R.layout.swap_send_fdroid:
+                    nextStep = SwapService.STEP_INTRO;
+                    break;
+                case R.layout.swap_start_swap:
+                    nextStep = SwapService.STEP_INTRO;
+                    break;
+                case R.layout.swap_success:
+                    nextStep = SwapService.STEP_INTRO;
+                    break;
+                case R.layout.swap_wifi_qr:
+                    nextStep = R.layout.swap_join_wifi;
+                    break;
+            }
+            getService().setCurrentView(nextStep);
             showRelevantView();
         }
     }
@@ -194,7 +217,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
         setSupportActionBar(toolbar);
 
-        container = (ViewGroup) findViewById(R.id.fragment_container);
+        container = (ViewGroup) findViewById(R.id.container);
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
@@ -211,9 +234,99 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        boolean parent = super.onPrepareOptionsMenu(menu);
-        boolean inner = currentView != null && currentView.buildMenu(menu, getMenuInflater());
-        return parent || inner;
+
+        MenuInflater menuInflater = getMenuInflater();
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_select_apps:
+                menuInflater.inflate(R.menu.swap_next_search, menu);
+                setUpNextButton(menu, R.string.next);
+                setUpSearchView(menu);
+                return true;
+            case R.layout.swap_success:
+                menuInflater.inflate(R.menu.swap_search, menu);
+                setUpSearchView(menu);
+                return true;
+            case R.layout.swap_join_wifi:
+                menuInflater.inflate(R.menu.swap_next, menu);
+                setUpNextButton(menu, R.string.next);
+                return true;
+            case R.layout.swap_nfc:
+                menuInflater.inflate(R.menu.swap_next, menu);
+                setUpNextButton(menu, R.string.skip);
+                return true;
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void setUpNextButton(Menu menu, @StringRes int titleResId) {
+        MenuItem next = menu.findItem(R.id.action_next);
+        CharSequence title = getString(titleResId);
+        next.setTitle(title);
+        next.setTitleCondensed(title);
+        MenuItemCompat.setShowAsAction(next,
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                sendNext();
+                return true;
+            }
+        });
+    }
+
+    void sendNext() {
+        int currentLayoutResId = currentView.getLayoutResId();
+        switch (currentLayoutResId) {
+            case R.layout.swap_select_apps:
+                onAppsSelected();
+                break;
+            case R.layout.swap_join_wifi:
+                inflateSwapView(R.layout.swap_select_apps);
+                break;
+            case R.layout.swap_nfc:
+                inflateSwapView(R.layout.swap_wifi_qr);
+                break;
+        }
+    }
+
+    private void setUpSearchView(Menu menu) {
+        SearchView searchView = new SearchView(this);
+
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        MenuItemCompat.setActionView(searchMenuItem, searchView);
+        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String newText) {
+                String currentFilterString = currentView.getCurrentFilterString();
+                String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
+                if (currentFilterString == null && newFilter == null) {
+                    return true;
+                }
+                if (currentFilterString != null && currentFilterString.equals(newFilter)) {
+                    return true;
+                }
+                currentView.setCurrentFilterString(newFilter);
+                if (currentView instanceof SelectAppsView) {
+                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
+                            (SelectAppsView) currentView);
+                } else if (currentView instanceof SwapSuccessView) {
+                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
+                            (SwapSuccessView) currentView);
+                } else {
+                    throw new IllegalStateException(currentView.getClass() + " does not have Loader!");
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return true;
+            }
+        });
     }
 
     @Override
@@ -310,7 +423,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void showRelevantView(boolean forceReload) {
 
         if (service == null) {
-            showInitialLoading();
+            inflateSwapView(R.layout.swap_initial_loading);
             return;
         }
 
@@ -323,62 +436,50 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        if (!forceReload && (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep())) {
+        if (!forceReload && (container.getVisibility() == View.GONE || currentView != null && currentView.getLayoutResId() == service.getCurrentView())) {
             // Already showing the correct step, so don't bother changing anything.
             return;
         }
 
-        switch (service.getStep()) {
+        int currentView = service.getCurrentView();
+        switch (currentView) {
             case SwapService.STEP_INTRO:
                 showIntro();
+                return;
+            case R.layout.swap_nfc:
+                if (!attemptToShowNfc()) {
+                    inflateSwapView(R.layout.swap_wifi_qr);
+                    return;
+                }
                 break;
-            case SwapService.STEP_SELECT_APPS:
-                showSelectApps();
-                break;
-            case SwapService.STEP_SHOW_NFC:
-                showNfc();
-                break;
-            case SwapService.STEP_JOIN_WIFI:
-                showJoinWifi();
-                break;
-            case SwapService.STEP_WIFI_QR:
-                showWifiQr();
-                break;
-            case SwapService.STEP_SUCCESS:
-                showSwapConnected();
-                break;
-            case SwapService.STEP_CONNECTING:
+            case R.layout.swap_connecting:
                 // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
-                inflateInnerView(R.layout.swap_blank);
-                break;
+                inflateSwapView(R.layout.swap_start_swap);
+                return;
         }
+        inflateSwapView(currentView);
     }
 
     public SwapService getState() {
         return service;
     }
 
-    private void showNfc() {
-        if (!attemptToShowNfc()) {
-            showWifiQr();
-        }
-    }
-
-    private InnerView inflateInnerView(@LayoutRes int viewRes) {
+    public SwapView inflateSwapView(@LayoutRes int viewRes) {
         container.removeAllViews();
         View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
-        currentView = (InnerView) view;
+        currentView = (SwapView) view;
+        currentView.setLayoutResId(viewRes);
 
         // Don't actually set the step to STEP_INITIAL_LOADING, as we are going to use this view
         // purely as a placeholder for _whatever view is meant to be shown_.
-        if (currentView.getStep() != SwapService.STEP_INITIAL_LOADING) {
+        if (currentView.getLayoutResId() != R.layout.swap_initial_loading) {
             if (service == null) {
                 throw new IllegalStateException("We are not in the STEP_INITIAL_LOADING state, but the service is not ready.");
             }
-            service.setStep(currentView.getStep());
+            service.setCurrentView(currentView.getLayoutResId());
         }
 
-        toolbar.setBackgroundColor(getResources().getColor(currentView.getToolbarColour()));
+        toolbar.setBackgroundColor(currentView.getToolbarColour());
         toolbar.setTitle(currentView.getToolbarTitle());
         toolbar.setNavigationIcon(R.drawable.ic_close_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -398,10 +499,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         finish();
     }
 
-    private void showInitialLoading() {
-        inflateInnerView(R.layout.swap_initial_loading);
-    }
-
     public void showIntro() {
         // If we were previously swapping with a specific client, forget that we were doing that,
         // as we are starting over now.
@@ -414,11 +511,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         }
 
-        inflateInnerView(R.layout.swap_blank);
+        inflateSwapView(R.layout.swap_start_swap);
     }
 
     private void showConfirmSwap(@NonNull NewRepoConfig config) {
-        ((ConfirmReceive) inflateInnerView(R.layout.swap_confirm_receive)).setup(config);
+        ((ConfirmReceiveView) inflateSwapView(R.layout.swap_confirm_receive)).setup(config);
+        TextView descriptionTextView = (TextView) findViewById(R.id.text_description);
+        descriptionTextView.setText(getResources().getString(R.string.swap_confirm_connect, config.getHost()));
     }
 
     public void startQrWorkflow() {
@@ -435,12 +534,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     })
                     .create().show();
         } else {
-            showWifiQr();
+            inflateSwapView(R.layout.swap_wifi_qr);
         }
-    }
-
-    public void showSelectApps() {
-        inflateInnerView(R.layout.swap_select_apps);
     }
 
     /**
@@ -471,7 +566,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (adapter == null
                 || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
                 || (!adapter.isEnabled() && getService().getWifiSwap().isConnected())) {
-            showSendFDroid();
+            inflateSwapView(R.layout.swap_send_fdroid);
         } else {
             sendFDroidBluetooth();
         }
@@ -503,8 +598,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
             updateSwappableAppsTask = new PrepareSwapRepo(getService().getAppsToSwap());
             updateSwappableAppsTask.execute();
-            getService().setStep(SwapService.STEP_CONNECTING);
-            inflateInnerView(R.layout.swap_connecting);
+            getService().setCurrentView(R.layout.swap_connecting);
+            inflateSwapView(R.layout.swap_connecting);
         } else {
             onLocalRepoPrepared();
         }
@@ -513,10 +608,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     /**
      * Once the UpdateAsyncTask has finished preparing our repository index, we can
      * show the next screen to the user. This will be one of two things:
-     *  * If we directly selected a peer to swap with initially, we will skip straight to getting
-     *    the list of apps from that device.
-     *  * Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
-     *    then we want to show a QR code or NFC dialog.
+     * * If we directly selected a peer to swap with initially, we will skip straight to getting
+     * the list of apps from that device.
+     * * Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
+     * then we want to show a QR code or NFC dialog.
      */
     public void onLocalRepoPrepared() {
         updateSwappableAppsTask = null;
@@ -524,29 +619,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (getService().isConnectingWithPeer()) {
             startSwappingWithPeer();
         } else if (!attemptToShowNfc()) {
-            showWifiQr();
+            inflateSwapView(R.layout.swap_wifi_qr);
         }
     }
 
     private void startSwappingWithPeer() {
         getService().connectToPeer();
-        inflateInnerView(R.layout.swap_connecting);
-    }
-
-    private void showJoinWifi() {
-        inflateInnerView(R.layout.swap_join_wifi);
-    }
-
-    public void showWifiQr() {
-        inflateInnerView(R.layout.swap_wifi_qr);
-    }
-
-    public void showSendFDroid() {
-        inflateInnerView(R.layout.swap_send_fdroid);
-    }
-
-    public void showSwapConnected() {
-        inflateInnerView(R.layout.swap_success);
+        inflateSwapView(R.layout.swap_connecting);
     }
 
     private boolean attemptToShowNfc() {
@@ -559,7 +638,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
 
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
-            inflateInnerView(R.layout.swap_nfc);
+            inflateSwapView(R.layout.swap_nfc);
             return true;
         }
         return false;
@@ -567,20 +646,20 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void swapWith(Peer peer) {
         getService().swapWith(peer);
-        showSelectApps();
+        inflateSwapView(R.layout.swap_select_apps);
     }
 
     /**
      * This is for when we initiate a swap by viewing the "Are you sure you want to swap with" view
      * This can arise either:
-     *   * As a result of scanning a QR code (in which case we likely already have a repo setup) or
-     *   * As a result of the other device selecting our device in the "start swap" screen, in which
-     *     case we are likely just sitting on the start swap screen also, and haven't configured
-     *     anything yet.
+     * * As a result of scanning a QR code (in which case we likely already have a repo setup) or
+     * * As a result of the other device selecting our device in the "start swap" screen, in which
+     * case we are likely just sitting on the start swap screen also, and haven't configured
+     * anything yet.
      */
     public void swapWith(NewRepoConfig repoConfig) {
         Peer peer = repoConfig.toPeer();
-        if (getService().getStep() == SwapService.STEP_INTRO || getService().getStep() == SwapService.STEP_CONFIRM_SWAP) {
+        if (getService().getCurrentView() == SwapService.STEP_INTRO || getService().getCurrentView() == R.layout.swap_confirm_receive) {
             // This will force the "Select apps to swap" workflow to begin.
             // TODO: Find a better way to decide whether we need to select the apps. Not sure if we
             //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
@@ -784,15 +863,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * the harder it becomes to reason about and debug the whole thing. Thus,this class
      * will periodically dump the state to logcat so that it is easier to see when certain
      * protocols are enabled/disabled.
-     *
+     * <p>
      * To view only this output from logcat:
-     *
-     *  adb logcat | grep 'Swap Status'
-     *
+     * <p>
+     * adb logcat | grep 'Swap Status'
+     * <p>
      * To exclude this output from logcat (it is very noisy):
-     *
-     *  adb logcat | grep -v 'Swap Status'
-     *
+     * <p>
+     * adb logcat | grep -v 'Swap Status'
      */
     class SwapDebug {
 
@@ -826,11 +904,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             Utils.debugLog("Swap Status", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
 
             new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        new SwapDebug().logStatus();
-                    }
-                }, 1000
+                                     @Override
+                                     public void run() {
+                                         new SwapDebug().logStatus();
+                                     }
+                                 }, 1000
             );
         }
     }

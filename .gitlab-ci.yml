@@ -79,7 +79,8 @@ errorprone:
           unzip -qq -d $ANDROID_HOME emulator-linux-5264690.zip;
           set +x;
       fi
-    - grep Revision $ANDROID_HOME/emulator/source.properties
+    - grep -v '^License' $ANDROID_HOME/tools/source.properties
+                         $ANDROID_HOME/emulator/source.properties
 
     - alias sdkmanager
     - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null

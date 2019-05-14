@@ -5,47 +5,37 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 
-// TODO: Use this for the "Preparing local repo" dialog also.
-public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
+public class ConnectingView extends SwapView {
 
     @SuppressWarnings("unused")
-    private static final String TAG = "SwapConnecting";
+    private static final String TAG = "ConnectingView";
 
-    public SwapConnecting(Context context) {
+    public ConnectingView(Context context) {
         super(context);
     }
 
-    public SwapConnecting(Context context, AttributeSet attrs) {
+    public ConnectingView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @TargetApi(11)
-    public SwapConnecting(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ConnectingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(21)
-    public SwapConnecting(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ConnectingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
@@ -83,9 +73,9 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
     /**
      * Listens for feedback about a local repository being prepared:
-     *  * Apk files copied to the LocalHTTPD webroot
-     *  * index.html file prepared
-     *  * Icons will be copied to the webroot in the background and so are not part of this process.
+     * * Apk files copied to the LocalHTTPD webroot
+     * * index.html file prepared
+     * * Icons will be copied to the webroot in the background and so are not part of this process.
      */
     class PrepareSwapReceiver extends Receiver {
 
@@ -116,7 +106,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
     /**
      * Listens for feedback about a repo update process taking place.
-     *  * Tracks an index.jar download and show the progress messages
+     * Tracks an index.jar download and show the progress messages
      */
     class ConnectSwapReceiver extends Receiver {
 
@@ -146,7 +136,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
         @Override
         protected void onComplete() {
-            getActivity().showSwapConnected();
+            getActivity().inflateSwapView(R.layout.swap_success);
         }
 
     }
@@ -165,8 +155,9 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         public void onReceive(Context context, Intent intent) {
 
             TextView progressText = (TextView) findViewById(R.id.heading);
-            TextView errorText    = (TextView) findViewById(R.id.error);
-            Button   backButton   = (Button) findViewById(R.id.back);
+            ProgressBar progressBar = findViewById(R.id.progress_bar);
+            TextView errorText = (TextView) findViewById(R.id.error);
+            Button backButton = (Button) findViewById(R.id.back);
 
             String message;
             if (intent.hasExtra(getMessageExtra())) {
@@ -177,11 +168,13 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             }
 
             progressText.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
             errorText.setVisibility(View.GONE);
             backButton.setVisibility(View.GONE);
 
             if (isError(intent)) {
                 progressText.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
                 errorText.setVisibility(View.VISIBLE);
                 backButton.setVisibility(View.VISIBLE);
                 return;
@@ -191,30 +184,5 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
                 onComplete();
             }
         }
-    }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        return true;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_CONNECTING;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        return SwapService.STEP_SELECT_APPS;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_bright_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_connecting);
     }
 }

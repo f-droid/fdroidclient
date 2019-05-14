@@ -7,28 +7,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
-public class SendFDroidView extends ScrollView implements SwapWorkflowActivity.InnerView {
+public class SendFDroidView extends SwapView {
 
     private static final String TAG = "SendFDroidView";
 
@@ -47,10 +42,6 @@ public class SendFDroidView extends ScrollView implements SwapWorkflowActivity.I
     @TargetApi(21)
     public SendFDroidView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
@@ -94,31 +85,6 @@ public class SendFDroidView extends ScrollView implements SwapWorkflowActivity.I
         super.onDetachedFromWindow();
 
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(onWifiStateChanged);
-    }
-
-    @Override
-    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
-        return false;
-    }
-
-    @Override
-    public int getStep() {
-        return SwapService.STEP_INTRO;
-    }
-
-    @Override
-    public int getPreviousStep() {
-        return SwapService.STEP_INTRO;
-    }
-
-    @ColorRes
-    public int getToolbarColour() {
-        return R.color.swap_blue;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_send_fdroid);
     }
 
     @SuppressLint("HardwareIds")
