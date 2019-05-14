@@ -385,13 +385,16 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * exists.
      */
     @Nullable
-    public static App getInstance(Context context, PackageManager pm, String packageName)
+    public static App getInstance(Context context, PackageManager pm, InstalledApp installedApp, String packageName)
             throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
         App app = new App();
         PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
         SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
         app.installedApk = new Apk();
-        if (apkFile.canRead()) {
+        if (installedApp != null) {
+            app.installedApk.hashType = installedApp.getHashType();
+            app.installedApk.hash = installedApp.getHash();
+        } else if (apkFile.canRead()) {
             String hashType = "sha256";
             String hash = Utils.getBinaryHash(apkFile, hashType);
             if (TextUtils.isEmpty(hash)) {

@@ -27,7 +27,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -53,7 +52,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Central service which manages all of the different moving parts of swap which are required
@@ -74,11 +72,6 @@ public class SwapService extends Service {
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
 
-    /**
-     * A cache of parsed APKs from the file system.
-     */
-    private static final ConcurrentHashMap<String, App> INSTALLED_APPS = new ConcurrentHashMap<>();
-
     private static SharedPreferences swapPreferences;
     private static BluetoothAdapter bluetoothAdapter;
     private static WifiManager wifiManager;
@@ -86,14 +79,6 @@ public class SwapService extends Service {
     public static void stop(Context context) {
         Intent intent = new Intent(context, SwapService.class);
         context.stopService(intent);
-    }
-
-    static App getAppFromCache(String packageName) {
-        return INSTALLED_APPS.get(packageName);
-    }
-
-    static void putAppInCache(String packageName, @NonNull App app) {
-        INSTALLED_APPS.put(packageName, app);
     }
 
     // ==========================================================
@@ -446,8 +431,6 @@ public class SwapService extends Service {
         startForeground(NOTIFICATION, createNotification());
 
         deleteAllSwapRepos();
-
-        CacheSwapAppsService.startCaching(this);
 
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
