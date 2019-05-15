@@ -506,6 +506,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 setUpFromWifi();
                 setUpQrScannerButton();
                 break;
+            case R.layout.swap_nfc:
+                setUpNfcView();
+                break;
         }
 
         return currentView;
@@ -1050,5 +1053,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void setUpNfcView() {
+        CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
+        dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Preferences.get().setShowNfcDuringSwap(!isChecked);
+            }
+        });
+
     }
 }
