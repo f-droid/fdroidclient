@@ -435,11 +435,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        // This is separate from the switch statement below, because it is usually populated
-        // during onResume, when there is a high probability of not having a swap service
-        // available. Thus, we were unable to set the state of the swap service appropriately.
         if (confirmSwapConfig != null) {
-            showConfirmSwap(confirmSwapConfig);
+            inflateSwapView(R.layout.swap_confirm_receive);
+            setUpConfirmReceive();
             confirmSwapConfig = null;
             return;
         }
@@ -526,12 +524,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         LocalRepoService.create(this);
 
         inflateSwapView(R.layout.swap_start_swap);
-    }
-
-    private void showConfirmSwap(@NonNull NewRepoConfig config) {
-        ((ConfirmReceiveView) inflateSwapView(R.layout.swap_confirm_receive)).setup(config);
-        TextView descriptionTextView = (TextView) findViewById(R.id.text_description);
-        descriptionTextView.setText(getResources().getString(R.string.swap_confirm_connect, config.getHost()));
     }
 
     public void startQrWorkflow() {
@@ -989,6 +981,36 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     initiateQrScan();
+                }
+            });
+        }
+    }
+
+    private void setUpConfirmReceive() {
+        TextView descriptionTextView = findViewById(R.id.text_description);
+        if (descriptionTextView != null) {
+            descriptionTextView.setText(getString(R.string.swap_confirm_connect, confirmSwapConfig.getHost()));
+        }
+
+        Button confirmReceiveYes = container.findViewById(R.id.confirm_receive_yes);
+        if (confirmReceiveYes != null) {
+            findViewById(R.id.confirm_receive_yes).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    denySwap();
+                }
+            });
+        }
+
+        Button confirmReceiveNo = container.findViewById(R.id.confirm_receive_no);
+        if (confirmReceiveNo != null) {
+            findViewById(R.id.confirm_receive_no).setOnClickListener(new View.OnClickListener() {
+
+                private final NewRepoConfig config = confirmSwapConfig;
+
+                @Override
+                public void onClick(View v) {
+                    swapWith(config);
                 }
             });
         }
