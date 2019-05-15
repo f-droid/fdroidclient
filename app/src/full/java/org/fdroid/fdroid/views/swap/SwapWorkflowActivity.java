@@ -36,6 +36,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -506,8 +507,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         switch (currentView.getLayoutResId()) {
             case R.layout.swap_send_fdroid:
+                setUpFromWifi();
+                setUpUseBluetoothButton();
+                break;
             case R.layout.swap_wifi_qr:
                 setUpFromWifi();
+                setUpQrScannerButton();
                 break;
         }
 
@@ -967,6 +972,31 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 qrWarningMessage.setVisibility(View.VISIBLE);
             }
+        }
+    }
+
+    private void setUpUseBluetoothButton() {
+        Button useBluetooth = findViewById(R.id.btn_use_bluetooth);
+        if (useBluetooth != null) {
+            useBluetooth.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showIntro();
+                    sendFDroidBluetooth();
+                }
+            });
+        }
+    }
+
+    private void setUpQrScannerButton() {
+        Button openQr = findViewById(R.id.btn_qr_scanner);
+        if (openQr != null) {
+            openQr.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    initiateQrScan();
+                }
+            });
         }
     }
 }
