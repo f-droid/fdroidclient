@@ -41,6 +41,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -210,7 +211,6 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                         default:
                             throw new RuntimeException("intent action not handled!");
                     }
-
                 }
             };
 
@@ -261,6 +261,25 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 resetView();
             }
 
+            private final OnClickListener cancelListener = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (apk != null) {
+                        InstallManagerService.cancel(getContext(), apk.getCanonicalUrl());
+                    }
+                }
+            };
+
+            private final OnClickListener installListener = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (apk != null && (app.hasUpdates() || app.compatible)) {
+                        getActivity().install(app, apk);
+                        showProgress();
+                    }
+                }
+            };
+
             private void resetView() {
 
                 if (app == null) {
@@ -279,6 +298,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);
                     btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(installListener);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.GONE);
                 } else if (app.isInstalled(getContext())) {
@@ -289,29 +309,26 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.VISIBLE);
                     statusInstalled.setVisibility(View.GONE);
+                } else if (progressView.getVisibility() == View.VISIBLE) {
+                    btnInstall.setText(R.string.cancel);
+                    btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(cancelListener);
+                    statusIncompatible.setVisibility(View.GONE);
+                    statusInstalled.setVisibility(View.GONE);
                 } else {
                     btnInstall.setText(R.string.menu_install);
                     btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(installListener);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.GONE);
                 }
-
-                OnClickListener installListener = new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (apk != null && (app.hasUpdates() || app.compatible)) {
-                            getActivity().install(app, apk);
-                            showProgress();
-                        }
-                    }
-                };
-
-                btnInstall.setOnClickListener(installListener);
             }
 
             private void showProgress() {
+                btnInstall.setText(R.string.cancel);
+                btnInstall.setVisibility(View.VISIBLE);
+                btnInstall.setOnClickListener(cancelListener);
                 progressView.setVisibility(View.VISIBLE);
-                btnInstall.setVisibility(View.GONE);
                 statusInstalled.setVisibility(View.GONE);
                 statusIncompatible.setVisibility(View.GONE);
             }
