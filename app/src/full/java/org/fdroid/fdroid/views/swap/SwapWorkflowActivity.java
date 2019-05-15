@@ -1129,8 +1129,21 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver repoUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            setUpConnectingProgressText(intent.getStringExtra(UpdateService.EXTRA_MESSAGE));
+            String message = intent.getStringExtra(UpdateService.EXTRA_MESSAGE);
+            if (message == null) {
+                CharSequence[] repoErrors = intent.getCharSequenceArrayExtra(UpdateService.EXTRA_REPO_ERRORS);
+                if (repoErrors != null) {
+                    StringBuilder msgBuilder = new StringBuilder();
+                    for (CharSequence error : repoErrors) {
+                        if (msgBuilder.length() > 0) {
+                            msgBuilder.append(" + ");
+                        }
+                        msgBuilder.append(error);
+                    }
+                    message = msgBuilder.toString();
+                }
+            }
+            setUpConnectingProgressText(message);
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);

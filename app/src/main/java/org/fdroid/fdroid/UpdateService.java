@@ -487,7 +487,12 @@ public class UpdateService extends JobIntentService {
                     }
                 } catch (IndexUpdater.UpdateException e) {
                     errorRepos++;
-                    repoErrors.add(e.getLocalizedMessage());
+                    Throwable cause = e.getCause();
+                    if (cause == null) {
+                        repoErrors.add(e.getLocalizedMessage());
+                    } else {
+                        repoErrors.add(e.getLocalizedMessage() + " ⇨ " + cause.getLocalizedMessage());
+                    }
                     Log.e(TAG, "Error updating repository " + repo.address);
                     e.printStackTrace();
                 }
