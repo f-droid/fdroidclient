@@ -3,6 +3,7 @@ package org.fdroid.fdroid.localrepo;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -11,8 +12,8 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE;
@@ -43,7 +44,7 @@ public class LocalRepoService extends IntentService {
     public static final String ACTION_CREATE = "org.fdroid.fdroid.localrepo.action.CREATE";
     public static final String EXTRA_PACKAGE_NAMES = "org.fdroid.fdroid.localrepo.extra.PACKAGE_NAMES";
 
-    private final HashSet<String> selectedApps = new HashSet<>();
+    private String[] currentlyProcessedApps = new String[0];
 
     private GenerateLocalRepoThread thread;
 
@@ -70,17 +71,19 @@ public class LocalRepoService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         String[] packageNames = intent.getStringArrayExtra(EXTRA_PACKAGE_NAMES);
         if (packageNames == null || packageNames.length == 0) {
             Utils.debugLog(TAG, "no packageNames found, quiting");
             return;
         }
+        Arrays.sort(packageNames);
 
-        boolean changed = Collections.addAll(selectedApps, packageNames);
-        if (!changed) {
+        if (Arrays.equals(currentlyProcessedApps, packageNames)) {
             Utils.debugLog(TAG, "packageNames list unchanged, quiting");
             return;
         }
+        currentlyProcessedApps = packageNames;
 
         if (thread != null) {
             thread.interrupt();
@@ -95,11 +98,11 @@ public class LocalRepoService extends IntentService {
         @Override
         public void run() {
             android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-            runProcess(LocalRepoService.this, selectedApps);
+            runProcess(LocalRepoService.this, currentlyProcessedApps);
         }
     }
 
-    public static void runProcess(Context context, Set<String> selectedApps) {
+    public static void runProcess(Context context, String[] selectedApps) {
         try {
             final LocalRepoManager lrm = LocalRepoManager.get(context);
             broadcast(context, ACTION_PROGRESS, R.string.deleting_repo);
