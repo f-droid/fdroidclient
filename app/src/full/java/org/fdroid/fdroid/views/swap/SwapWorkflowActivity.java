@@ -37,7 +37,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import cc.mvdan.accesspoint.WifiApControl;
@@ -49,6 +52,7 @@ import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -336,6 +340,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         localBroadcastManager.registerReceiver(onWifiStateChanged,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
+        localBroadcastManager.registerReceiver(prepareSwapReceiver,
+                new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
+        localBroadcastManager.registerReceiver(repoUpdateReceiver,
+                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
         checkIncomingIntent();
         showRelevantView();
@@ -346,6 +354,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         super.onPause();
 
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
+        localBroadcastManager.unregisterReceiver(prepareSwapReceiver);
+        localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
     }
 
     /**
@@ -509,6 +519,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             case R.layout.swap_nfc:
                 setUpNfcView();
                 break;
+            case R.layout.swap_connecting:
+                setUpConnectingView();
+                break;
         }
 
         return currentView;
@@ -617,7 +630,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     /**
-     * Once the UpdateAsyncTask has finished preparing our repository index, we can
+     * Once the LocalRepoService has finished preparing our repository index, we can
      * show the next screen to the user. This will be one of two things:
      * <ol>
      * <li>If we directly selected a peer to swap with initially, we will skip straight to getting
@@ -1064,5 +1077,96 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setUpConnectingProgressText(String message) {
+        TextView progressText = container.findViewById(R.id.progress_text);
+        if (progressText != null && message != null) {
+            progressText.setVisibility(View.VISIBLE);
+            progressText.setText(message);
+        }
+    }
+
+    /**
+     * Listens for feedback about a local repository being prepared, like APK
+     * files copied to the LocalHTTPD webroot, the {@code index.html} generated,
+     * etc.  Icons will be copied to the webroot in the background and so are
+     * not part of this process.
+     */
+    private final BroadcastReceiver prepareSwapReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setUpConnectingProgressText(intent.getStringExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_MESSAGE));
+
+            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+            Button backButton = container.findViewById(R.id.back);
+
+            if (progressBar == null || backButton == null) {
+                Utils.debugLog(TAG, "prepareSwapReceiver received intent without view: " + intent);
+                return;
+            }
+
+            int type = intent.getIntExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE, -1);
+            if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_ERROR) {
+                progressBar.setVisibility(View.GONE);
+                backButton.setVisibility(View.VISIBLE);
+                return;
+            } else {
+                progressBar.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.GONE);
+            }
+
+            if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_COMPLETE) {
+                onLocalRepoPrepared();
+            }
+        }
+    };
+
+    /**
+     * Listens for feedback about a repo update process taking place.
+     * Tracks an index.jar download and show the progress messages
+     */
+    private final BroadcastReceiver repoUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            setUpConnectingProgressText(intent.getStringExtra(UpdateService.EXTRA_MESSAGE));
+
+            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+            Button backButton = container.findViewById(R.id.back);
+
+            if (progressBar == null || backButton == null) {
+                Utils.debugLog(TAG, "repoUpdateReceiver received intent without view: " + intent);
+                return;
+            }
+
+            int status = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+            if (status == UpdateService.STATUS_ERROR_GLOBAL ||
+                    status == UpdateService.STATUS_ERROR_LOCAL ||
+                    status == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
+                progressBar.setVisibility(View.GONE);
+                backButton.setVisibility(View.VISIBLE);
+                return;
+            } else {
+                progressBar.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.GONE);
+            }
+
+            if (status == UpdateService.STATUS_COMPLETE_AND_SAME
+                    || status == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                inflateSwapView(R.layout.swap_success);
+            }
+        }
+    };
+
+    private void setUpConnectingView() {
+        TextView heading = container.findViewById(R.id.progress_text);
+        heading.setText(R.string.swap_connecting);
+        container.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showIntro();
+            }
+        });
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.ConnectingView
+<org.fdroid.fdroid.localrepo.SwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarColor="@color/swap_bright_blue"
@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
     <TextView
-            android:id="@+id/heading"
+            android:id="@+id/progress_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -25,28 +25,17 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:layout_centerInParent="true"
-            android:layout_below="@+id/heading"/>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:id="@+id/error"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:text="@string/swap_connection_misc_error"
-            android:visibility="gone"
-            android:padding="30dp"/>
+            android:layout_below="@+id/progress_text"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/error"
+            android:layout_below="@+id/progress_text"
             android:id="@+id/back"
             android:backgroundTint="@color/swap_light_blue"
             android:textColor="@android:color/white"
             android:visibility="gone"
             android:text="@string/back"/>
 
-</org.fdroid.fdroid.views.swap.ConnectingView>
+</org.fdroid.fdroid.localrepo.SwapView>
