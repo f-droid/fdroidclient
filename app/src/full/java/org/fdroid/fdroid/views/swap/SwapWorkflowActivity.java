@@ -9,7 +9,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.LightingColorFilter;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -34,6 +36,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import cc.mvdan.accesspoint.WifiApControl;
@@ -43,6 +46,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -56,10 +60,14 @@ import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.HttpDownloader;
+import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -328,8 +336,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        localBroadcastManager.registerReceiver(onWifiStateChanged,
+                new IntentFilter(WifiStateChangeService.BROADCAST));
+
         checkIncomingIntent();
         showRelevantView();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        localBroadcastManager.unregisterReceiver(onWifiStateChanged);
     }
 
     /**
@@ -485,6 +503,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         });
         container.addView(view);
         supportInvalidateOptionsMenu();
+
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_send_fdroid:
+            case R.layout.swap_wifi_qr:
+                setUpFromWifi();
+                break;
+        }
 
         return currentView;
     }
@@ -877,4 +902,71 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    private final BroadcastReceiver onWifiStateChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setUpFromWifi();
+        }
+    };
+
+    private void setUpFromWifi() {
+        String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
+
+        // the fingerprint is not useful on the button label
+        String buttonLabel = scheme + FDroidApp.ipAddressString + ":" + FDroidApp.port;
+        TextView ipAddressView = container.findViewById(R.id.device_ip_address);
+        if (ipAddressView != null) {
+            ipAddressView.setText(buttonLabel);
+        }
+
+        String qrUriString = null;
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_send_fdroid:
+                qrUriString = buttonLabel;
+                break;
+            case R.layout.swap_wifi_qr:
+                Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
+                StringBuilder qrUrlBuilder = new StringBuilder(scheme);
+                qrUrlBuilder.append(sharingUri.getHost());
+                if (sharingUri.getPort() != 80) {
+                    qrUrlBuilder.append(':');
+                    qrUrlBuilder.append(sharingUri.getPort());
+                }
+                qrUrlBuilder.append(sharingUri.getPath());
+                boolean first = true;
+
+                Set<String> names = sharingUri.getQueryParameterNames();
+                for (String name : names) {
+                    if (!"ssid".equals(name)) {
+                        if (first) {
+                            qrUrlBuilder.append('?');
+                            first = false;
+                        } else {
+                            qrUrlBuilder.append('&');
+                        }
+                        qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
+                        qrUrlBuilder.append('=');
+                        qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
+                    }
+                }
+                qrUriString = qrUrlBuilder.toString();
+                break;
+        }
+
+        ImageView qrImage = container.findViewById(R.id.wifi_qr_code);
+        if (qrUriString != null && qrImage != null) {
+            Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
+            new QrGenAsyncTask(SwapWorkflowActivity.this, R.id.wifi_qr_code).execute(qrUriString);
+
+            // Replace all blacks with the background blue.
+            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
+
+            final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
+            if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
+                qrWarningMessage.setVisibility(View.GONE);
+            } else {
+                qrWarningMessage.setVisibility(View.VISIBLE);
+            }
+        }
+    }
 }
