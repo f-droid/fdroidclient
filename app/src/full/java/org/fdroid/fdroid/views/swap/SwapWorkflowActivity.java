@@ -62,6 +62,7 @@ import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
 import java.util.Date;
@@ -71,6 +72,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
 /**
  * This activity will do its best to show the most relevant screen about swapping to the user.
@@ -89,13 +92,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * among each other offering swaps.
      */
     public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
-    public static final String EXTRA_CONFIRM = "EXTRA_CONFIRM";
-
-    /**
-     * Ensure that we don't try to handle specific intents more than once in onResume()
-     * (e.g. the "Do you want to swap back with ..." intent).
-     */
-    public static final String EXTRA_SWAP_INTENT_HANDLED = "swapIntentHandled";
 
     private ViewGroup container;
 
@@ -113,10 +109,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private WifiManager wifiManager;
 
     public static void requestSwap(Context context, String repo) {
-        Uri repoUri = Uri.parse(repo);
-        Intent intent = new Intent(context, SwapWorkflowActivity.class);
-        intent.setData(repoUri);
-        intent.putExtra(EXTRA_CONFIRM, true);
+        requestSwap(context, Uri.parse(repo));
+    }
+
+    public static void requestSwap(Context context, Uri uri) {
+        Intent intent = new Intent(MainActivity.ACTION_REQUEST_SWAP, uri, context, SwapWorkflowActivity.class);
         intent.putExtra(EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
@@ -358,19 +355,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     private void checkIncomingIntent() {
         Intent intent = getIntent();
+        if (!ACTION_REQUEST_SWAP.equals(intent.getAction())) {
+            return;
+        }
         Uri uri = intent.getData();
         if (uri != null && !HttpDownloader.isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
             String msg = getString(R.string.swap_toast_invalid_url, uri);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return;
         }
-
-        if (intent.getBooleanExtra(EXTRA_CONFIRM, false) && !intent.getBooleanExtra(EXTRA_SWAP_INTENT_HANDLED, false)) {
-            // Storing config in this variable will ensure that when showRelevantView() is next
-            // run, it will show the connect swap view (if the service is available).
-            intent.putExtra(EXTRA_SWAP_INTENT_HANDLED, true);
-            confirmSwapConfig = new NewRepoConfig(this, intent);
-        }
+        confirmSwapConfig = new NewRepoConfig(this, intent);
     }
 
     public void promptToSelectWifiNetwork() {

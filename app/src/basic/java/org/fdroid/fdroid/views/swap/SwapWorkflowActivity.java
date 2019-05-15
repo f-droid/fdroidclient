@@ -19,10 +19,15 @@
 
 package org.fdroid.fdroid.views.swap;
 
+import android.content.Context;
+import android.net.Uri;
+
 /**
  * Dummy version for basic app flavor.
  */
 public class SwapWorkflowActivity {
     public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
     public static final String EXTRA_CONFIRM = "EXTRA_CONFIRM";
+    public static void requestSwap(Context context, Uri uri) {
+    };
 }

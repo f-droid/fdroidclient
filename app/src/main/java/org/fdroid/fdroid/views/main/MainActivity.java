@@ -92,10 +92,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
+    public static final String ACTION_REQUEST_SWAP = "requestSwap";
 
     private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
-
-    private static final int REQUEST_SWAP = 3;
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
@@ -390,10 +389,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             NewRepoConfig parser = new NewRepoConfig(this, intent);
             if (parser.isValidRepo()) {
                 if (parser.isFromSwap()) {
-                    Intent confirmIntent = new Intent(this, SwapWorkflowActivity.class);
-                    confirmIntent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
-                    confirmIntent.setData(intent.getData());
-                    startActivityForResult(confirmIntent, REQUEST_SWAP);
+                    SwapWorkflowActivity.requestSwap(this, intent.getData());
                 } else {
                     Intent clean = new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class);
                     if (intent.hasExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO)) {
