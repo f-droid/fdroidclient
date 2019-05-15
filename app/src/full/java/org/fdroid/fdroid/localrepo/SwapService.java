@@ -35,6 +35,7 @@ import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WifiSwap;
+import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 import rx.Observable;
@@ -190,6 +191,10 @@ public class SwapService extends Service {
                             "POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\"): " + responseCode);
                 } catch (IOException e) {
                     Log.e(TAG, "Error while asking server to swap with us", e);
+                    Intent intent = new Intent(Downloader.ACTION_INTERRUPTED);
+                    intent.setData(Uri.parse(repo.address));
+                    intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
+                    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
                 } finally {
                     conn.disconnect();
                 }

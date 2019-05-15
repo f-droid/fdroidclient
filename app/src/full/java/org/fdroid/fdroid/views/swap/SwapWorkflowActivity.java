@@ -57,6 +57,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
@@ -64,6 +66,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
+import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.main.MainActivity;
@@ -225,6 +228,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         container = (ViewGroup) findViewById(R.id.container);
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
+                new IntentFilter(Downloader.ACTION_INTERRUPTED));
+
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         new SwapDebug().logStatus();
@@ -232,6 +238,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        localBroadcastManager.unregisterReceiver(downloaderInterruptedReceiver);
         unbindService(serviceConnection);
         super.onDestroy();
     }
@@ -1168,6 +1175,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (status == UpdateService.STATUS_COMPLETE_AND_SAME
                     || status == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
                 inflateSwapView(R.layout.swap_success);
+            }
+        }
+    };
+
+    private final BroadcastReceiver downloaderInterruptedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Repo repo = RepoProvider.Helper.findByUrl(context, intent.getData(), null);
+            if (repo != null && repo.isSwap) {
+                setUpConnectingProgressText(intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
             }
         }
     };
