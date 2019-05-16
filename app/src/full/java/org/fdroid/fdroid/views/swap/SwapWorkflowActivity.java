@@ -102,7 +102,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private ViewGroup container;
 
-    private static final int CONNECT_TO_SWAP = 1;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SWAP = 2;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
@@ -134,17 +133,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder binder) {
-            Utils.debugLog(TAG, "Swap service connected. Will hold onto it so we can talk to it regularly.");
             service = ((SwapService.Binder) binder).getService();
             showRelevantView();
         }
 
-        // TODO: What causes this? Do we need to stop swapping explicitly when this is invoked?
         @Override
         public void onServiceDisconnected(ComponentName className) {
-            Utils.debugLog(TAG, "Swap service disconnected");
+            finish();
             service = null;
-            // TODO: What to do about the UI in this instance?
         }
     };
 
@@ -153,10 +149,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @NonNull
     public SwapService getService() {
-        if (service == null) {
-            // *Slightly* more informative than a null-pointer error that would otherwise happen.
-            throw new IllegalStateException("Trying to access swap service before it was initialized.");
-        }
         return service;
     }
 
@@ -177,9 +169,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     break;
                 case R.layout.swap_connecting:
                     nextStep = R.layout.swap_select_apps;
-                    break;
-                case R.layout.swap_initial_loading:
-                    nextStep = R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_join_wifi:
                     nextStep = STEP_INTRO;
@@ -215,12 +204,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         ((FDroidApp) getApplication()).setSecureWindow(this);
         super.onCreate(savedInstanceState);
 
-        // The server should not be doing anything or occupying any (noticeable) resources
-        // until we actually ask it to enable swapping. Therefore, we will start it nice and
-        // early so we don't have to wait until it is connected later.
-        Intent service = new Intent(this, SwapService.class);
-        if (bindService(service, serviceConnection, Context.BIND_AUTO_CREATE)) {
-            startService(service);
+        currentView = new SwapView(this); // dummy placeholder to avoid NullPointerExceptions;
+
+        if (!bindService(new Intent(this, SwapService.class), serviceConnection,
+                BIND_ABOVE_CLIENT | BIND_IMPORTANT)) {
+            Toast.makeText(this, "ERROR: cannot bind to SwapService!", Toast.LENGTH_LONG).show();
+            finish();
         }
 
         setContentView(R.layout.swap_activity);
@@ -357,7 +346,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
         checkIncomingIntent();
-        showRelevantView();
     }
 
     @Override
@@ -446,26 +434,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showRelevantView() {
-        showRelevantView(false);
-    }
-
-    private void showRelevantView(boolean forceReload) {
-
-        if (service == null) {
-            inflateSwapView(R.layout.swap_initial_loading);
-            return;
-        }
 
         if (confirmSwapConfig != null) {
             inflateSwapView(R.layout.swap_confirm_receive);
             setUpConfirmReceive();
             confirmSwapConfig = null;
-            return;
-        }
-
-        if (!forceReload
-                && (container.getVisibility() == View.GONE || currentView != null && currentView.getLayoutResId() == currentSwapViewLayoutRes)) {
-            // Already showing the correct step, so don't bother changing anything.
             return;
         }
 
@@ -491,20 +464,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         return service;
     }
 
-    public SwapView inflateSwapView(@LayoutRes int viewRes) {
+    public void inflateSwapView(@LayoutRes int viewRes) {
         container.removeAllViews();
         View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (SwapView) view;
         currentView.setLayoutResId(viewRes);
-
-        // Don't actually set the step to STEP_INITIAL_LOADING, as we are going to use this view
-        // purely as a placeholder for _whatever view is meant to be shown_.
-        if (currentView.getLayoutResId() != R.layout.swap_initial_loading) {
-            if (service == null) {
-                throw new IllegalStateException("We are not in the STEP_INITIAL_LOADING state, but the service is not ready.");
-            }
-            currentSwapViewLayoutRes = currentView.getLayoutResId();
-        }
+        currentSwapViewLayoutRes = viewRes;
 
         toolbar.setBackgroundColor(currentView.getToolbarColour());
         toolbar.setTitle(currentView.getToolbarTitle());
@@ -534,8 +499,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 setUpConnectingView();
                 break;
         }
-
-        return currentView;
     }
 
     private void onToolbarCancel() {
@@ -734,8 +697,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     Toast.makeText(this, R.string.swap_qr_isnt_for_swap, Toast.LENGTH_SHORT).show();
                 }
             }
-        } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
-            finish();
         } else if (requestCode == REQUEST_WRITE_SETTINGS_PERMISSION) {
             if (Build.VERSION.SDK_INT >= 23 && Settings.System.canWrite(this)) {
                 setupWifiAP();
@@ -809,11 +770,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, discoverableTimeout);
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
-
-        if (service == null) {
-            throw new IllegalStateException("Can't start Bluetooth swap because service is null for some strange reason.");
-        }
-
         service.getBluetoothSwap().startInBackground();  // TODO replace with Intent to SwapService
     }
 
@@ -897,7 +853,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 case Installer.ACTION_INSTALL_COMPLETE:
                     localBroadcastManager.unregisterReceiver(this);
 
-                    showRelevantView(true);
+                    showRelevantView();
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
                     localBroadcastManager.unregisterReceiver(this);

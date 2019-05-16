@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SDCardScannerService;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.TreeUriScannerIntentService;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.io.File;
 
@@ -75,7 +75,7 @@ class NearbyViewBinder {
                     ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
                             MainActivity.REQUEST_LOCATION_PERMISSIONS);
                 } else {
-                    activity.startActivity(new Intent(activity, SwapWorkflowActivity.class));
+                    SwapService.start(activity);
                 }
             }
         });

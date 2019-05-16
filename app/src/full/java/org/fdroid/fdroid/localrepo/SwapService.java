@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -72,9 +73,19 @@ public class SwapService extends Service {
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
 
+    private static LocalBroadcastManager localBroadcastManager;
     private static SharedPreferences swapPreferences;
     private static BluetoothAdapter bluetoothAdapter;
     private static WifiManager wifiManager;
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, SwapService.class);
+        if (Build.VERSION.SDK_INT < 26) {
+            context.startService(intent);
+        } else {
+            context.startForegroundService(intent);
+        }
+    }
 
     public static void stop(Context context) {
         Intent intent = new Intent(context, SwapService.class);
@@ -413,12 +424,8 @@ public class SwapService extends Service {
 
     public void onCreate() {
         super.onCreate();
-
-        Utils.debugLog(TAG, "Creating swap service.");
         startForeground(NOTIFICATION, createNotification());
-
-        deleteAllSwapRepos();
-
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -455,9 +462,16 @@ public class SwapService extends Service {
         }
     }
 
+    /**
+     * This is for setting things up for when the {@code SwapService} was
+     * started by the user clicking on the initial start button. The things
+     * that must be run always on start-up go in {@link #onCreate()}.
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY;
+        deleteAllSwapRepos();
+        startActivity(new Intent(this, SwapWorkflowActivity.class));
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -525,7 +539,6 @@ public class SwapService extends Service {
     }
 
     private void initTimer() {
-        // TODO replace by Android scheduler
         if (timer != null) {
             Utils.debugLog(TAG, "Cancelling existing timeout timer so timeout can be reset.");
             timer.cancel();
@@ -537,6 +550,8 @@ public class SwapService extends Service {
             @Override
             public void run() {
                 Utils.debugLog(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
+                String msg = getString(R.string.swap_toast_closing_nearby_after_timeout);
+                Utils.showToastFromService(SwapService.this, msg, android.widget.Toast.LENGTH_LONG);
                 stop(SwapService.this);
             }
         }, TIMEOUT);

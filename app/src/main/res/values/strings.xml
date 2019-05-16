@@ -517,6 +517,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_toast_invalid_url">Invalid URL for swapping: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot enabled</string>
     <string name="swap_toast_could_not_enable_hotspot">Could not enable Wi-Fi Hotspot!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Nearby closed since it was idle.</string>
 
     <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update

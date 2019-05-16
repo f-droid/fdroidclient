@@ -21,7 +21,7 @@ public class SwapView extends RelativeLayout {
     public final int toolbarColor;
     public final String toolbarTitle;
 
-    private int layoutResId;
+    private int layoutResId = -1;
 
     protected String currentFilterString;
 
