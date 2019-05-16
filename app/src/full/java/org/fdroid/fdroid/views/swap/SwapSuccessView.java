@@ -50,6 +50,12 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This is a view that shows a listing of all apps in the swap repo that this
+ * just connected to.  The app listing and search should be replaced by
+ * {@link org.fdroid.fdroid.views.apps.AppListActivity}'s plumbing.
+ */
+// TODO merge this with AppListActivity, perhaps there could be AppListView?
 public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "SwapAppsView";
 
@@ -72,19 +78,11 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
 
     private Repo repo;
     private AppListAdapter adapter;
-    private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         repo = getActivity().getState().getPeerRepo();
-
-        /*
-        if (repo == null) {
-            TODO: Uh oh, something stuffed up for this to happen.
-            TODO: What is the best course of action from here?
-        }
-        */
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
                 AppProvider.getRepoUri(repo), AppMetadataTable.Cols.ALL, null, null, null));
@@ -173,7 +171,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             TextView statusInstalled;
             TextView statusIncompatible;
 
-            private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            private class DownloadReceiver extends BroadcastReceiver {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     switch (intent.getAction()) {
@@ -195,9 +193,11 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             }
                             break;
                         case Downloader.ACTION_COMPLETE:
+                            localBroadcastManager.unregisterReceiver(this);
                             resetView();
                             break;
                         case Downloader.ACTION_INTERRUPTED:
+                            localBroadcastManager.unregisterReceiver(this);
                             if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
                                 String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
                                         + " " + intent.getDataString();
@@ -212,7 +212,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             throw new RuntimeException("intent action not handled!");
                     }
                 }
-            };
+            }
 
             private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
@@ -244,9 +244,8 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     }
 
                     if (apk != null) {
-                        // TODO unregister receivers? or will they just die with this instance
-                        IntentFilter downloadFilter = DownloaderService.getIntentFilter(apk.getCanonicalUrl());
-                        localBroadcastManager.registerReceiver(downloadReceiver, downloadFilter);
+                        localBroadcastManager.registerReceiver(new DownloadReceiver(),
+                                DownloaderService.getIntentFilter(apk.getCanonicalUrl()));
                     }
 
                     // NOTE: Instead of continually unregistering and re-registering the observer

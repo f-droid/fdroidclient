@@ -839,12 +839,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app, @NonNull final Apk apk) {
-        localBroadcastManager.registerReceiver(installReceiver,
+        localBroadcastManager.registerReceiver(new InstallReceiver(),
                 Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
         InstallManagerService.queue(this, app, apk);
     }
 
-    private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
+    private class InstallReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
@@ -857,7 +857,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
                     localBroadcastManager.unregisterReceiver(this);
-                    // TODO: handle errors!
+                    String errorMessage = intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+                    if (errorMessage != null) {
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+                    }
                     break;
                 case Installer.ACTION_INSTALL_USER_INTERACTION:
                     PendingIntent installPendingIntent =
@@ -874,7 +877,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     throw new RuntimeException("intent action not handled!");
             }
         }
-    };
+    }
 
     private final BroadcastReceiver onWifiStateChanged = new BroadcastReceiver() {
         @Override
