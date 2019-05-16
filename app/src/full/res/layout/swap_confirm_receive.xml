@@ -54,7 +54,6 @@
             android:layout_marginTop="45dp">
         <!-- 80px * 0.56 = 45dp -->
 
-        <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Deny"-->
         <Button
                 android:id="@+id/confirm_receive_yes"
                 android:text="@string/no"
@@ -65,7 +64,6 @@
                 android:layout_marginRight="25dp"
                 tools:ignore="UnusedAttribute"/>
 
-        <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm" -->
         <Button
                 android:id="@+id/confirm_receive_no"
                 android:text="@string/yes"

@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- TODO: Add paddingStart in places where there is only paddingLeft. However Android Studio lint
-     gives an error, which is discussed here:
-     http://stackoverflow.com/questions/27449776/conflicting-lint-messages-regarding-paddingstart-usage?lq=1
-     -->
 <org.fdroid.fdroid.views.swap.StartSwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -31,6 +26,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:tint="@color/swap_grey_icon"
+                android:contentDescription="@string/use_bluetooth"
                 android:src="@drawable/ic_bluetooth_white"/>
 
         <LinearLayout
@@ -79,6 +75,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:tint="@color/swap_grey_icon"
+                android:contentDescription="@string/wifi"
                 android:src="@drawable/ic_network_wifi_white"/>
 
         <LinearLayout
@@ -168,6 +165,7 @@
                 android:drawablePadding="10dp"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
+                android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:background="@android:color/transparent"/>
 
@@ -181,6 +179,7 @@
                 android:drawablePadding="10dp"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
+                android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:background="@android:color/transparent"/>
 
