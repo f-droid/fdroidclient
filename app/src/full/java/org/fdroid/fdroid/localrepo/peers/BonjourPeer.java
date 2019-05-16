@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.net.Uri;
 import android.os.Parcel;
+import android.text.TextUtils;
 
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.impl.FDroidServiceInfo;
@@ -29,9 +30,9 @@ public class BonjourPeer extends WifiPeer {
 
     @Override
     public boolean equals(Object peer) {
-        if (peer != null && peer instanceof BonjourPeer) {
+        if (peer instanceof BonjourPeer) {
             BonjourPeer that = (BonjourPeer) peer;
-            return this.getFingerprint().equals(that.getFingerprint());
+            return TextUtils.equals(this.getFingerprint(), that.getFingerprint());
         }
         return false;
     }

@@ -2,7 +2,7 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
-
+import android.text.TextUtils;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
@@ -31,9 +31,8 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public boolean equals(Object peer) {
-        return peer != null
-                && peer instanceof BluetoothPeer
-                && ((BluetoothPeer) peer).device.getAddress().equals(device.getAddress());
+        return peer instanceof BluetoothPeer
+                && TextUtils.equals(((BluetoothPeer) peer).device.getAddress(), device.getAddress());
     }
 
     @Override
@@ -48,7 +47,7 @@ public class BluetoothPeer implements Peer {
 
     /**
      * Return the fingerprint of the signing key, or {@code null} if it is not set.
-     *
+     * <p>
      * This is not yet stored for Bluetooth connections. Once a device is connected to a bluetooth
      * socket, if we trust it enough to accept a fingerprint from it somehow, then we may as well
      * trust it enough to receive an index from it that contains a fingerprint we can use.
