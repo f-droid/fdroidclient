@@ -43,10 +43,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
@@ -71,7 +71,7 @@ public final class LocalRepoManager {
             "swap-tick-not-done.png",
     };
 
-    private final Map<String, App> apps = new HashMap<>();
+    private final Map<String, App> apps = new ConcurrentHashMap<>();
 
     private final SanitizedFile xmlIndexJar;
     private final SanitizedFile xmlIndexJarUnsigned;
