@@ -77,6 +77,7 @@ public class SwapService extends Service {
     private static SharedPreferences swapPreferences;
     private static BluetoothAdapter bluetoothAdapter;
     private static WifiManager wifiManager;
+    private static Timer pollConnectedSwapRepoTimer;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, SwapService.class);
@@ -126,12 +127,6 @@ public class SwapService extends Service {
     @NonNull
     public Set<String> getAppsToSwap() {
         return appsToSwap;
-    }
-
-    public void refreshSwap() {
-        if (peer != null) {
-            connectTo(peer, false);
-        }
     }
 
     public void connectToPeer() {
@@ -444,8 +439,12 @@ public class SwapService extends Service {
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
+        localBroadcastManager.registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
+        localBroadcastManager.registerReceiver(onBluetoothSwapStateChange,
+                new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
+        localBroadcastManager.registerReceiver(onWifiSwapStateChange,
+                new IntentFilter(SwapService.WIFI_STATE_CHANGE));
 
         if (getBluetoothVisibleUserPreference()) {
             Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
@@ -485,7 +484,9 @@ public class SwapService extends Service {
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
+        localBroadcastManager.unregisterReceiver(onWifiChange);
+        localBroadcastManager.unregisterReceiver(onBluetoothSwapStateChange);
+        localBroadcastManager.unregisterReceiver(onWifiSwapStateChange);
 
         if (bluetoothAdapter != null && !wasBluetoothEnabledBeforeSwap()) {
             bluetoothAdapter.disable();
@@ -494,6 +495,8 @@ public class SwapService extends Service {
         if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
             wifiManager.setWifiEnabled(false);
         }
+
+        stopPollingConnectedSwapRepo();
 
         //TODO getBluetoothSwap().stopInBackground();
         getWifiSwap().stopInBackground();
@@ -538,6 +541,27 @@ public class SwapService extends Service {
         }
     }
 
+    private void startPollingConnectedSwapRepo() {
+        stopPollingConnectedSwapRepo();
+        pollConnectedSwapRepoTimer = new Timer("pollConnectedSwapRepoTimer", true);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (peer != null) {
+                    connectTo(peer, false);
+                }
+            }
+        };
+        pollConnectedSwapRepoTimer.schedule(timerTask, 5000);
+    }
+
+    public void stopPollingConnectedSwapRepo() {
+        if (pollConnectedSwapRepoTimer != null) {
+            pollConnectedSwapRepoTimer.cancel();
+            pollConnectedSwapRepoTimer = null;
+        }
+    }
+
     private void initTimer() {
         if (timer != null) {
             Utils.debugLog(TAG, "Cancelling existing timeout timer so timeout can be reset.");
@@ -545,7 +569,7 @@ public class SwapService extends Service {
         }
 
         Utils.debugLog(TAG, "Initializing swap timeout to " + TIMEOUT + "ms minutes");
-        timer = new Timer();
+        timer = new Timer(TAG, true);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -557,7 +581,6 @@ public class SwapService extends Service {
         }, TIMEOUT);
     }
 
-    @SuppressWarnings("FieldCanBeLocal") // The constructor will get bloated if these are all local...
     private final Preferences.ChangeListener httpsEnabledListener = new Preferences.ChangeListener() {
         @Override
         public void onPreferenceChange() {
@@ -566,7 +589,6 @@ public class SwapService extends Service {
         }
     };
 
-    @SuppressWarnings("FieldCanBeLocal") // The constructor will get bloated if these are all local...
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
@@ -575,4 +597,38 @@ public class SwapService extends Service {
         }
     };
 
+    private final BroadcastReceiver onBluetoothSwapStateChange = new SwapStateChangeReceiver();
+    private final BroadcastReceiver onWifiSwapStateChange = new SwapStateChangeReceiver();
+
+    /**
+     * When swapping is setup, then start the index polling.
+     */
+    private class SwapStateChangeReceiver extends BroadcastReceiver {
+        private final BroadcastReceiver pollForUpdatesReceiver = new PollForUpdatesReceiver();
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
+                localBroadcastManager.registerReceiver(pollForUpdatesReceiver,
+                        new IntentFilter());
+            } else if (intent.hasExtra(SwapService.EXTRA_STOPPING) || intent.hasExtra(SwapService.EXTRA_STOPPED)) {
+                localBroadcastManager.unregisterReceiver(pollForUpdatesReceiver);
+            }
+        }
+    }
+
+    /**
+     * Reschedule an index update if the last one was successful.
+     */
+    private class PollForUpdatesReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1)) {
+                case UpdateService.STATUS_COMPLETE_AND_SAME:
+                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
+                    startPollingConnectedSwapRepo();
+                    break;
+            }
+        }
+    }
 }

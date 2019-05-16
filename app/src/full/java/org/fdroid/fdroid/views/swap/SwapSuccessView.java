@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -31,7 +30,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -47,8 +45,6 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * This is a view that shows a listing of all apps in the swap repo that this
@@ -94,8 +90,6 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
-
-        schedulePollForUpdates();
     }
 
     /**
@@ -109,29 +103,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
     }
 
-    private void pollForUpdates() {
-        if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals(BuildConfig.APPLICATION_ID))) { // NOCHECKSTYLE LineLength
-            Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
-            return;
-        }
-
-        Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
-        getActivity().getSwapService().refreshSwap();
-    }
-
-    private void schedulePollForUpdates() {
-        Utils.debugLog(TAG, "Scheduling poll for updated swap repo in 5 seconds.");
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Looper.prepare();
-                pollForUpdates();
-                Looper.loop();
-            }
-        }, 5000);
-    }
-
+    @NonNull
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
         Uri uri = TextUtils.isEmpty(currentFilterString)
@@ -143,12 +115,12 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adapter.swapCursor(null);
     }
 
@@ -392,17 +364,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                         }
                     });
                     break;
-
-                case UpdateService.STATUS_ERROR_GLOBAL:
-                    // TODO: Well, if we can't get the index, we probably can't swapp apps.
-                    // Tell the user something helpful?
-                    break;
-
-                case UpdateService.STATUS_COMPLETE_AND_SAME:
-                    schedulePollForUpdates();
-                    break;
             }
         }
     };
-
 }
