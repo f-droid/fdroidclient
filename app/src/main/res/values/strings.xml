@@ -456,6 +456,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- This is a button label for a small button, the text needs to be under 10 characters, the shorter the better. Also, a literal translation probably will miss the point. "Try it" is more a saying than two words. Google has been pushing these short buttons, like "Got it" and "Try now" so this button is trying to match those buttons in Android. -->
     <string name="nearby_splash__request_permission">Try it</string>
 
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.
     </string>
@@ -464,7 +465,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
         access to the same network, one of you can create a Wi-Fi Hotspot.
     </string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap">Swap apps</string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_active_hotspot">%1$s (your hotspot)</string>
@@ -476,10 +479,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.
     </string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_choose_apps">Choose Apps</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should be less than 15 characters. -->
     <string name="swap_scan_qr">Scan QR Code</string>
     <string name="swap_people_nearby">People Nearby</string>
     <string name="swap_scanning_for_peers">Searching for nearby people…</string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_nearby">Nearby Swap</string>
     <string name="swap_intro">Connect and trade apps with people near you.</string>
     <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
@@ -491,9 +497,12 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_not_visible_wifi">Not visible via Wi-Fi</string>
     <string name="swap_wifi_device_name">Device Name</string>
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
+    <!-- This is a button label, it must be the right size, or the layout gets messed up. It should be less than 15 characters. -->
     <string name="swap_send_fdroid">Send F-Droid</string>
     <string name="swap_no_peers_nearby">Could not find people nearby to swap with.</string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_connecting">Connecting</string>
+    <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_confirm">Confirm swap</string>
     <string name="swap_qr_isnt_for_swap">The QR code you scanned doesn\'t look like a swap code.</string>
     <string name="use_bluetooth">Use Bluetooth</string>
