@@ -52,10 +52,6 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private SwapService getState() {
-        return getActivity().getState();
-    }
-
     private ListView listView;
     private AppListAdapter adapter;
 
@@ -83,14 +79,14 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
     private void toggleAppSelected(int position) {
         Cursor c = (Cursor) adapter.getItem(position);
         String packageName = c.getString(c.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
-        if (getState().hasSelectedPackage(packageName)) {
-            getState().deselectPackage(packageName);
+        if (getActivity().getSwapService().hasSelectedPackage(packageName)) {
+            getActivity().getSwapService().deselectPackage(packageName);
             adapter.updateCheckedIndicatorView(position, false);
         } else {
-            getState().selectPackage(packageName);
+            getActivity().getSwapService().selectPackage(packageName);
             adapter.updateCheckedIndicatorView(position, true);
         }
-        LocalRepoService.create(getContext(), getState().getAppsToSwap());
+        LocalRepoService.create(getContext(), getActivity().getSwapService().getAppsToSwap());
     }
 
     @Override
@@ -117,8 +113,8 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         for (int i = 0; i < listView.getCount(); i++) {
             Cursor c = (Cursor) listView.getItemAtPosition(i);
             String packageName = c.getString(c.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
-            getState().ensureFDroidSelected();
-            for (String selected : getState().getAppsToSwap()) {
+            getActivity().getSwapService().ensureFDroidSelected();
+            for (String selected : getActivity().getSwapService().getAppsToSwap()) {
                 if (TextUtils.equals(packageName, selected)) {
                     listView.setItemChecked(i, true);
                 }

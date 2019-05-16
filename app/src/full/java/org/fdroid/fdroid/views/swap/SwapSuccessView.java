@@ -82,7 +82,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        repo = getActivity().getState().getPeerRepo();
+        repo = getActivity().getSwapService().getPeerRepo();
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
                 AppProvider.getRepoUri(repo), AppMetadataTable.Cols.ALL, null, null, null));
@@ -117,7 +117,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         }
 
         Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
-        getActivity().getService().refreshSwap();
+        getActivity().getSwapService().refreshSwap();
     }
 
     private void schedulePollForUpdates() {

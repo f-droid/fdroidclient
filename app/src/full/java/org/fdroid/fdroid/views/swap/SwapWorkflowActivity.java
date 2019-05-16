@@ -149,14 +149,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private SwapService service;
 
     @NonNull
-    public SwapService getService() {
+    public SwapService getSwapService() {
         return service;
     }
 
     @Override
     public void onBackPressed() {
         if (currentView.getLayoutResId() == STEP_INTRO) {
-            SwapService.stop(this);  // TODO SwapService should always be running, while swap is running
+            SwapService.stop(this);
             finish();
         } else {
             // TODO: Currently StartSwapView is handleed by the SwapWorkflowActivity as a special case, where
@@ -178,9 +178,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     nextStep = R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_select_apps:
-                    // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it
-                    // so that it is, or so that this doesn't go back there.
-                    nextStep = getState().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
+                    nextStep = getSwapService().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_send_fdroid:
                     nextStep = STEP_INTRO;
@@ -473,10 +471,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateSwapView(currentSwapViewLayoutRes);
     }
 
-    public SwapService getState() {
-        return service;
-    }
-
     public void inflateSwapView(@LayoutRes int viewRes) {
         container.removeAllViews();
         View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
@@ -522,7 +516,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void showIntro() {
         // If we were previously swapping with a specific client, forget that we were doing that,
         // as we are starting over now.
-        getService().swapWith(null);
+        getSwapService().swapWith(null);
 
         LocalRepoService.create(this);
 
@@ -530,7 +524,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void startQrWorkflow() {
-        if (!getService().isEnabled()) {
+        if (!getSwapService().isEnabled()) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.not_visible_nearby)
                     .setMessage(R.string.not_visible_nearby_description)
@@ -574,7 +568,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter == null
                 || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
-                || (!adapter.isEnabled() && getService().getWifiSwap().isConnected())) {
+                || (!adapter.isEnabled() && getSwapService().getWifiSwap().isConnected())) {
             inflateSwapView(R.layout.swap_send_fdroid);
         } else {
             sendFDroidBluetooth();
@@ -610,7 +604,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (hasPreparedLocalRepo) {
             onLocalRepoPrepared();
         } else {
-            LocalRepoService.create(this, getService().getAppsToSwap());
+            LocalRepoService.create(this, getSwapService().getAppsToSwap());
             currentSwapViewLayoutRes = R.layout.swap_connecting;
             inflateSwapView(R.layout.swap_connecting);
         }
@@ -629,7 +623,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void onLocalRepoPrepared() {
         // TODO ditch this, use a message from LocalRepoService.  Maybe?
         hasPreparedLocalRepo = true;
-        if (getService().isConnectingWithPeer()) {
+        if (getSwapService().isConnectingWithPeer()) {
             startSwappingWithPeer();
         } else if (!attemptToShowNfc()) {
             inflateSwapView(R.layout.swap_wifi_qr);
@@ -637,7 +631,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void startSwappingWithPeer() {
-        getService().connectToPeer();
+        getSwapService().connectToPeer();
         inflateSwapView(R.layout.swap_connecting);
     }
 
@@ -659,7 +653,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void swapWith(Peer peer) {
-        getService().swapWith(peer);
+        getSwapService().swapWith(peer);
         inflateSwapView(R.layout.swap_select_apps);
     }
 
@@ -679,7 +673,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
             swapWith(peer);
         } else {
-            getService().swapWith(repoConfig.toPeer());
+            getSwapService().swapWith(repoConfig.toPeer());
             startSwappingWithPeer();
         }
     }
@@ -728,7 +722,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             if (resultCode != RESULT_CANCELED) {
                 Utils.debugLog(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
-                getState().getBluetoothSwap().startInBackground(); // TODO replace with Intent to SwapService
+                getSwapService().getBluetoothSwap().startInBackground(); // TODO replace with Intent to SwapService
             } else {
                 Utils.debugLog(TAG, "User chose not to make Bluetooth discoverable, so doing nothing");
                 SwapService.putBluetoothVisibleUserPreference(false);
