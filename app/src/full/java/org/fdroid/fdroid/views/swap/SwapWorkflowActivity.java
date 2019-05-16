@@ -107,6 +107,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
+    private static final int STEP_INTRO = 1;  // TODO remove this special case, only use layoutResIds
 
     private Toolbar toolbar;
     private SwapView currentView;
@@ -114,6 +115,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
+
+    @LayoutRes
+    private int currentSwapViewLayoutRes = STEP_INTRO;
 
     public static void requestSwap(Context context, String repo) {
         requestSwap(context, Uri.parse(repo));
@@ -158,7 +162,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (currentView.getLayoutResId() == SwapService.STEP_INTRO) {
+        if (currentView.getLayoutResId() == STEP_INTRO) {
             SwapService.stop(this);  // TODO SwapService should always be running, while swap is running
             finish();
         } else {
@@ -169,7 +173,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             int nextStep = -1;
             switch (currentView.getLayoutResId()) {
                 case R.layout.swap_confirm_receive:
-                    nextStep = SwapService.STEP_INTRO;
+                    nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_connecting:
                     nextStep = R.layout.swap_select_apps;
@@ -178,7 +182,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     nextStep = R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_join_wifi:
-                    nextStep = SwapService.STEP_INTRO;
+                    nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_nfc:
                     nextStep = R.layout.swap_join_wifi;
@@ -186,22 +190,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 case R.layout.swap_select_apps:
                     // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it
                     // so that it is, or so that this doesn't go back there.
-                    nextStep = getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : R.layout.swap_join_wifi;
+                    nextStep = getState().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_send_fdroid:
-                    nextStep = SwapService.STEP_INTRO;
+                    nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_start_swap:
-                    nextStep = SwapService.STEP_INTRO;
+                    nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_success:
-                    nextStep = SwapService.STEP_INTRO;
+                    nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_wifi_qr:
                     nextStep = R.layout.swap_join_wifi;
                     break;
             }
-            getService().setCurrentView(nextStep);
+            currentSwapViewLayoutRes = nextStep;
             showRelevantView();
         }
     }
@@ -459,14 +463,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        if (!forceReload && (container.getVisibility() == View.GONE || currentView != null && currentView.getLayoutResId() == service.getCurrentView())) {
+        if (!forceReload
+                && (container.getVisibility() == View.GONE || currentView != null && currentView.getLayoutResId() == currentSwapViewLayoutRes)) {
             // Already showing the correct step, so don't bother changing anything.
             return;
         }
 
-        int currentView = service.getCurrentView();
-        switch (currentView) {
-            case SwapService.STEP_INTRO:
+        switch (currentSwapViewLayoutRes) {
+            case STEP_INTRO:
                 showIntro();
                 return;
             case R.layout.swap_nfc:
@@ -480,7 +484,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 inflateSwapView(R.layout.swap_start_swap);
                 return;
         }
-        inflateSwapView(currentView);
+        inflateSwapView(currentSwapViewLayoutRes);
     }
 
     public SwapService getState() {
@@ -499,7 +503,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (service == null) {
                 throw new IllegalStateException("We are not in the STEP_INITIAL_LOADING state, but the service is not ready.");
             }
-            service.setCurrentView(currentView.getLayoutResId());
+            currentSwapViewLayoutRes = currentView.getLayoutResId();
         }
 
         toolbar.setBackgroundColor(currentView.getToolbarColour());
@@ -631,7 +635,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             onLocalRepoPrepared();
         } else {
             LocalRepoService.create(this, getService().getAppsToSwap());
-            getService().setCurrentView(R.layout.swap_connecting);
+            currentSwapViewLayoutRes = R.layout.swap_connecting;
             inflateSwapView(R.layout.swap_connecting);
         }
     }
@@ -693,7 +697,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void swapWith(NewRepoConfig repoConfig) {
         Peer peer = repoConfig.toPeer();
-        if (getService().getCurrentView() == SwapService.STEP_INTRO || getService().getCurrentView() == R.layout.swap_confirm_receive) {
+        if (currentSwapViewLayoutRes == STEP_INTRO || currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
             // This will force the "Select apps to swap" workflow to begin.
             // TODO: Find a better way to decide whether we need to select the apps. Not sure if we
             //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
