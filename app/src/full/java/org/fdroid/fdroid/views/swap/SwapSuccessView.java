@@ -195,6 +195,9 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                         case Downloader.ACTION_COMPLETE:
                             localBroadcastManager.unregisterReceiver(this);
                             resetView();
+                            statusInstalled.setText(R.string.installing);
+                            statusInstalled.setVisibility(View.VISIBLE);
+                            btnInstall.setVisibility(View.GONE);
                             break;
                         case Downloader.ACTION_INTERRUPTED:
                             localBroadcastManager.unregisterReceiver(this);
@@ -304,6 +307,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.VISIBLE);
+                    statusInstalled.setText(R.string.app_installed);
                 } else if (!app.compatible) {
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.VISIBLE);
