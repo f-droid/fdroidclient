@@ -111,6 +111,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SwapView currentView;
     private boolean hasPreparedLocalRepo;
+    private boolean newIntent;
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
@@ -346,6 +347,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
         checkIncomingIntent();
+
+        if (newIntent) {
+            showRelevantView();
+            newIntent = false;
+        }
     }
 
     @Override
@@ -355,6 +361,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
         localBroadcastManager.unregisterReceiver(prepareSwapReceiver);
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        newIntent = true;
     }
 
     /**
