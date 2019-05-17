@@ -78,6 +78,7 @@
                 android:exported="false"/>
         <service android:name=".localrepo.SwapService"/>
 
+        <service android:name=".localrepo.LocalHTTPDManager"/>
         <service
                 android:name=".localrepo.LocalRepoService"
                 android:exported="false"/>

@@ -133,23 +133,17 @@ public class SwapService extends Service {
         if (getPeer() == null) {
             throw new IllegalStateException("Cannot connect to peer, no peer has been selected.");
         }
-        connectTo(getPeer(), getPeer().shouldPromptForSwapBack());
+        connectTo(getPeer());
+        if (isEnabled() && getPeer().shouldPromptForSwapBack()) {
+            askServerToSwapWithUs(peerRepo);
+        }
     }
 
-    public void connectTo(@NonNull Peer peer, boolean requestSwapBack) {
+    public void connectTo(@NonNull Peer peer) {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
-
         peerRepo = ensureRepoExists(peer);
-
-        // Only ask server to swap with us, if we are actually running a local repo service.
-        // It is possible to have a swap initiated without first starting a swap, in which
-        // case swapping back is pointless.
-        if (isEnabled() && requestSwapBack) {
-            askServerToSwapWithUs(peerRepo);
-        }
-
         UpdateService.updateRepoNow(this, peer.getRepoAddress());
     }
 
@@ -184,7 +178,9 @@ public class SwapService extends Service {
                     intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
                     LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
                 } finally {
-                    conn.disconnect();
+                    if (conn != null) {
+                        conn.disconnect();
+                    }
                 }
                 return null;
             }
@@ -362,7 +358,7 @@ public class SwapService extends Service {
     }
 
     public boolean isEnabled() {
-        return bluetoothSwap.isConnected() || wifiSwap.isConnected();
+        return bluetoothSwap.isConnected() || LocalHTTPDManager.isAlive();
     }
 
     // ==========================================
@@ -492,6 +488,7 @@ public class SwapService extends Service {
             bluetoothAdapter.disable();
         }
 
+        LocalHTTPDManager.stop(this);
         if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
             wifiManager.setWifiEnabled(false);
         }
@@ -548,7 +545,7 @@ public class SwapService extends Service {
             @Override
             public void run() {
                 if (peer != null) {
-                    connectTo(peer, false);
+                    connectTo(peer);
                 }
             }
         };

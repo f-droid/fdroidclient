@@ -63,6 +63,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -886,5 +889,27 @@ public final class Utils {
         Resources.Theme theme = swipeLayout.getContext().getTheme();
         theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
         swipeLayout.setColorSchemeColors(typedValue.data);
+    }
+
+    public static boolean canConnectToSocket(String host, int port) {
+        try {
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress(host, port), 5);
+            socket.close();
+            return true;
+        } catch (IOException e) {
+            // Could not connect.
+            return false;
+        }
+    }
+
+    public static boolean isServerSocketInUse(int port) {
+        try {
+            (new ServerSocket(port)).close();
+            return false;
+        } catch (IOException e) {
+            // Could not connect.
+            return true;
+        }
     }
 }
