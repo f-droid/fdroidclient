@@ -16,6 +16,9 @@ import javax.jmdns.ServiceListener;
 import java.io.IOException;
 import java.net.InetAddress;
 
+import static org.fdroid.fdroid.localrepo.BonjourManager.HTTPS_SERVICE_TYPE;
+import static org.fdroid.fdroid.localrepo.BonjourManager.HTTP_SERVICE_TYPE;
+
 @SuppressWarnings("LineLength")
 final class BonjourFinder extends PeerFinder implements ServiceListener {
 
@@ -38,9 +41,6 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
     }
 
     private static final String TAG = "BonjourFinder";
-
-    private static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
-    private static final String HTTPS_SERVICE_TYPE = "_https._tcp.local.";
 
     private JmDNS jmdns;
     private WifiManager wifiManager;

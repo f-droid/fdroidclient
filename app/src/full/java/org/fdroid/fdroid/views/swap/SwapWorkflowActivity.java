@@ -816,8 +816,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 String bluetooth = service.getBluetoothSwap().isConnected() ? "Y" : " N";
                 String wifi = service.getWifiSwap().isConnected() ? "Y" : " N";
-                String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Y" : " N";
-                message += "Swap { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
 
                 BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
                 bluetooth = "N/A";

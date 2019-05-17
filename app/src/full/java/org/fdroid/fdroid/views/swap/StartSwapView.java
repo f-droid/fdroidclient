@@ -26,6 +26,7 @@ import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.BonjourManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -318,15 +319,15 @@ public class StartSwapView extends SwapView {
         viewWifiNetwork = (TextView) findViewById(R.id.wifi_network);
 
         wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
-        wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
-        setWifiSwitchState(getActivity().getSwapService().isBonjourDiscoverable(), true);
+        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                BonjourManager.setVisible(getContext(), isChecked);
+                SwapService.putWifiVisibleUserPreference(isChecked);
+            }
+        });
 
         textWifiVisible = findViewById(R.id.wifi_visible);
-        if (getActivity().getSwapService().isBonjourDiscoverable()) {
-            textWifiVisible.setText(R.string.swap_visible_wifi);
-        } else {
-            textWifiVisible.setText(R.string.swap_not_visible_wifi);
-        }
 
         // Note that this is only listening for the WifiSwap, whereas we start both the WifiSwap
         // and the Bonjour service at the same time. Technically swap will work fine without

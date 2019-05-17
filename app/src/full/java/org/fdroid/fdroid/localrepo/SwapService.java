@@ -369,10 +369,6 @@ public class SwapService extends Service {
         return bluetoothSwap.isDiscoverable();
     }
 
-    public boolean isBonjourDiscoverable() {
-        return wifiSwap.isConnected() && wifiSwap.getBonjour().isConnected();
-    }
-
     // ===============================================================
     //        Old SwapService stuff being merged into that.
     // ===============================================================
