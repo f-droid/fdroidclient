@@ -7,7 +7,7 @@
         app:showAsAction="ifRoom|withText"
         android:id="@+id/whats_new" />
     <item
-        android:title="@string/updates"
+        android:title="@string/main_menu__updates"
         android:icon="@drawable/ic_updates"
         app:showAsAction="ifRoom|withText"
         android:id="@+id/updates" />

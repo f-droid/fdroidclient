@@ -343,14 +343,21 @@ public class FDroidApp extends Application {
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
         if (level >= TRIM_MEMORY_BACKGROUND) {
-            ImageLoader.getInstance().clearMemoryCache();
+            clearImageLoaderMemoryCache();
         }
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        ImageLoader.getInstance().clearMemoryCache();
+        clearImageLoaderMemoryCache();
+    }
+
+    private void clearImageLoaderMemoryCache() {
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        if (imageLoader.isInited()) {
+            imageLoader.clearMemoryCache();
+        }
     }
 
     @Override
