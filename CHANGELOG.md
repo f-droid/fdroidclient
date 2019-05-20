@@ -1,3 +1,26 @@
+### 1.7-alpha0 (2019-05-20)
+
+* major refactor of "Nearby" UI code, to prepare for rewriting guts
+
+* show "undo" after swiping away items from the Updates tab (thanks @Hocuri!)
+
+* fix ETag handling when connecting to nginx mirrors #1737
+
+* fix issues with "Latest" display caused by mishandling time zones #1757
+
+* ignore all unimportant crashes in background services
+
+* do not use Privileged Extension if it was disabled in Settings
+
+### 1.6.2 (2019-05-20)
+
+* fixed issue where cached indexes were wrongly redownloaded (#1737),
+  thanks to @amiraliakbari for tracking it down!
+
+* fixed wrong string for the translated title of the Updates Tab (#1785)
+
+* fixed crashes on very low memory when starting
+
 ### 1.6.1 (2019-05-10)
 
 * Updated translations
