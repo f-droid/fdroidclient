@@ -296,6 +296,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="icon">Icon</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    <string name="try_again">Try again</string>
 
     <string name="useTor">Use Tor</string>
     <string name="useTorSummary">Force download traffic through Tor for increased privacy. Requires Orbot</string>

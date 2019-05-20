@@ -1099,9 +1099,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             setUpConnectingProgressText(intent.getStringExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_MESSAGE));
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
-            Button backButton = container.findViewById(R.id.back);
+            Button tryAgainButton = container.findViewById(R.id.try_again);
 
-            if (progressBar == null || backButton == null) {
+            if (progressBar == null || tryAgainButton == null) {
                 Utils.debugLog(TAG, "prepareSwapReceiver received intent without view: " + intent);
                 return;
             }
@@ -1109,11 +1109,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             int type = intent.getIntExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE, -1);
             if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_ERROR) {
                 progressBar.setVisibility(View.GONE);
-                backButton.setVisibility(View.VISIBLE);
+                tryAgainButton.setVisibility(View.VISIBLE);
                 return;
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                backButton.setVisibility(View.GONE);
+                tryAgainButton.setVisibility(View.GONE);
             }
 
             if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_COMPLETE) {
@@ -1133,9 +1133,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             setUpConnectingProgressText(intent.getStringExtra(UpdateService.EXTRA_MESSAGE));
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
-            Button backButton = container.findViewById(R.id.back);
+            Button tryAgainButton = container.findViewById(R.id.try_again);
 
-            if (progressBar == null || backButton == null) {
+            if (progressBar == null || tryAgainButton == null) {
                 Utils.debugLog(TAG, "repoUpdateReceiver received intent without view: " + intent);
                 return;
             }
@@ -1145,11 +1145,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     status == UpdateService.STATUS_ERROR_LOCAL ||
                     status == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
                 progressBar.setVisibility(View.GONE);
-                backButton.setVisibility(View.VISIBLE);
+                tryAgainButton.setVisibility(View.VISIBLE);
                 return;
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                backButton.setVisibility(View.GONE);
+                tryAgainButton.setVisibility(View.GONE);
             }
 
             if (status == UpdateService.STATUS_COMPLETE_AND_SAME
@@ -1162,10 +1162,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpConnectingView() {
         TextView heading = container.findViewById(R.id.progress_text);
         heading.setText(R.string.swap_connecting);
-        container.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+        container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showIntro();
+                onAppsSelected();
             }
         });
     }
