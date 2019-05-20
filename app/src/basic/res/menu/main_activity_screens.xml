@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:ignore="MenuTitle">
+    <!-- android:title and android:icon are set dynamically in MainActivity -->
     <item
-        android:title="@string/main_menu__latest_apps"
-        android:icon="@drawable/ic_latest"
-        app:showAsAction="ifRoom|withText"
-        android:id="@+id/whats_new" />
+            app:showAsAction="ifRoom|withText"
+            android:id="@+id/whats_new"/>
     <item
-        android:title="@string/main_menu__updates"
-        android:icon="@drawable/ic_updates"
-        app:showAsAction="ifRoom|withText"
-        android:id="@+id/updates" />
+            app:showAsAction="ifRoom|withText"
+            android:id="@+id/updates"/>
     <item
-        android:title="@string/menu_settings"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom|withText"
-        android:id="@+id/settings" />
+            app:showAsAction="ifRoom|withText"
+            android:id="@+id/settings"/>
 </menu>
