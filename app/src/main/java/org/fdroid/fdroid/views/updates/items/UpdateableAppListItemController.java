@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.updates.items;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -12,7 +13,7 @@ import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
-import org.fdroid.fdroid.views.updates.DismissResult;
+import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.
@@ -39,14 +40,27 @@ public class UpdateableAppListItemController extends AppListItemController {
     }
 
     @Override
-    @NonNull
-    protected DismissResult onDismissApp(@NonNull App app) {
-        AppPrefs prefs = app.getPrefs(activity);
+    protected void onDismissApp(@NonNull final App app, UpdatesAdapter adapter) {
+        final AppPrefs prefs = app.getPrefs(activity);
         prefs.ignoreThisUpdate = app.suggestedVersionCode;
+
+        Snackbar.make(
+                itemView,
+                R.string.app_list__dismiss_app_update,
+                Snackbar.LENGTH_LONG
+        )
+                .setAction(R.string.undo, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        prefs.ignoreThisUpdate = 0;
+                        AppPrefsProvider.Helper.update(activity, app, prefs);
+                    }
+                })
+                .show();
+
 
         // The act of updating here will trigger a re-query of the "can update" apps, so no need to do anything else
         // to update the UI in response to this.
         AppPrefsProvider.Helper.update(activity, app, prefs);
-        return new DismissResult(activity.getString(R.string.app_list__dismiss_app_update), false);
     }
 }

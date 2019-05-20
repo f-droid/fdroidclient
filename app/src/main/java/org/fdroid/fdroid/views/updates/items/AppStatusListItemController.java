@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.updates.items;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -11,7 +12,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
-import org.fdroid.fdroid.views.updates.DismissResult;
+import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 /**
  * Shows apps which are:
@@ -52,22 +53,41 @@ public class AppStatusListItemController extends AppListItemController {
         return true;
     }
 
-    @NonNull
     @Override
-    protected DismissResult onDismissApp(@NonNull App app) {
+    protected void onDismissApp(@NonNull final App app, final UpdatesAdapter adapter) {
         AppUpdateStatus status = getCurrentStatus();
-        CharSequence message = null;
         if (status != null) {
-            AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
+            final AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(activity);
+            final AppUpdateStatus appUpdateStatus = manager.get(status.getCanonicalUrl());
             manager.removeApk(status.getCanonicalUrl());
+
+
             switch (status.status) {
+
                 case Downloading:
                     cancelDownload();
-                    message = activity.getString(R.string.app_list__dismiss_downloading_app);
+                    Snackbar.make(itemView, R.string.app_list__dismiss_downloading_app, Snackbar.LENGTH_SHORT).show();
                     break;
+
+                case ReadyToInstall:
+                    if (appUpdateStatus != null) {
+                        Snackbar.make(
+                                itemView,
+                                R.string.app_list__dismiss_installing_app,
+                                Snackbar.LENGTH_LONG
+                        ).setAction(R.string.undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                manager.addApk(appUpdateStatus.apk, appUpdateStatus.status, appUpdateStatus.intent);
+                                adapter.refreshStatuses();
+                            }
+                        }).show();
+                        break;
+                    }
             }
         }
 
-        return new DismissResult(message, true);
+        adapter.refreshStatuses();
     }
+
 }

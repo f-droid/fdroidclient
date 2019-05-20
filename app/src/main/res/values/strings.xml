@@ -619,7 +619,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="details_last_updated_today">Updated today</string>
     <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
-    <plurals name="details_last_update_days">
+	<string name="undo">Undo</string>
+	<string name="app_list__dismiss_installing_app">Installation cancelled</string>
+	<plurals name="details_last_update_days">
         <item quantity="one">Updated %1$d day ago</item>
         <item quantity="other">Updated %1$d days ago</item>
     </plurals>

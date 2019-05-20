@@ -26,7 +26,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.R;
@@ -39,7 +41,7 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.views.AppDetailsActivity;
-import org.fdroid.fdroid.views.updates.DismissResult;
+import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.io.File;
 import java.util.Iterator;
@@ -206,29 +208,24 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * If able, forwards the request onto {@link #onDismissApp(App)}.
+     * If able, forwards the request onto {@link #onDismissApp(App, UpdatesAdapter)}.
      * This mainly exists to keep the API consistent, in that the {@link App} is threaded through to the relevant
      * method with a guarantee that it is not null, rather than every method having to check if it is null or not.
      */
-    @NonNull
-    public final DismissResult onDismiss() {
+    public final void onDismiss(UpdatesAdapter adapter) {
         if (currentApp != null && canDismiss()) {
-            return onDismissApp(currentApp);
+            onDismissApp(currentApp, adapter);
         }
-
-        return new DismissResult();
     }
 
     /**
      * Override to respond to the user swiping an app to dismiss it from the list.
+     * @param app The app that was swiped away
+     * @param updatesAdapter The adapter. Can be used for refreshing the adapter with adapter.refreshStatuses().
      *
-     * @return Optionally return a description of what you did if it is not obvious to the user. It will be shown as
-     * a {@link android.widget.Toast} for a {@link android.widget.Toast#LENGTH_SHORT} time.
      * @see #canDismiss() This must also be overriden and should return true.
      */
-    @NonNull
-    protected DismissResult onDismissApp(@NonNull App app) {
-        return new DismissResult();
+    protected void onDismissApp(@NonNull App app, UpdatesAdapter updatesAdapter) {
     }
 
     /**
