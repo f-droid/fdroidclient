@@ -294,7 +294,7 @@
     <string name="clear_search">Suche löschen</string>
     <string name="main_menu__latest_apps">Neueste</string>
     <string name="main_menu__categories">Kategorien</string>
-    <string name="main_menu__updates">Aktualisierungen</string>
+    <string name="main_menu__updates">Aufgaben</string>
     <string name="main_menu__swap_nearby">Direkt</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
