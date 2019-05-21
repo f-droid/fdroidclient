@@ -59,10 +59,12 @@ public class WifiStateChangeService extends IntentService {
     private static final String TAG = "WifiStateChangeService";
 
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
+    public static final String EXTRA_STATUS = "wifiStateChangeStatus";
 
     private WifiManager wifiManager;
     private static WifiInfoThread wifiInfoThread;
     private static int previousWifiState = Integer.MIN_VALUE;
+    private static int wifiState;
 
     public WifiStateChangeService() {
         super("WifiStateChangeService");
@@ -86,7 +88,7 @@ public class WifiStateChangeService extends IntentService {
         Utils.debugLog(TAG, "WiFi change service started.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        int wifiState = wifiManager.getWifiState();
+        wifiState = wifiManager.getWifiState();
         if (ni == null || ni.isConnected()) {
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (previousWifiState != wifiState &&
@@ -219,6 +221,7 @@ public class WifiStateChangeService extends IntentService {
                 return;
             }
             Intent intent = new Intent(BROADCAST);
+            intent.putExtra(EXTRA_STATUS, wifiState);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
         }
     }

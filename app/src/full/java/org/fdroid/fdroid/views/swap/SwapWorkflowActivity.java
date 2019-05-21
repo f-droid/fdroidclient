@@ -27,6 +27,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -61,6 +62,8 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.localrepo.BonjourManager;
+import org.fdroid.fdroid.localrepo.LocalHTTPDManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
@@ -343,6 +346,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
         localBroadcastManager.registerReceiver(repoUpdateReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
 
         checkIncomingIntent();
 
@@ -359,6 +363,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
         localBroadcastManager.unregisterReceiver(prepareSwapReceiver);
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
+        localBroadcastManager.unregisterReceiver(bonjourStatus);
     }
 
     @Override
@@ -388,17 +393,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void promptToSelectWifiNetwork() {
-        //
-        // On Android >= 5.0, the neutral button is the one by itself off to the left of a dialog
-        // (not the negative button). Thus, the layout of this dialogs buttons should be:
-        //
-        // |                                 |
-        // +---------------------------------+
-        // | Cancel           Hotspot   WiFi |
-        // +---------------------------------+
-        //
-        // TODO: Investigate if this should be set dynamically for earlier APIs.
-        //
         new AlertDialog.Builder(this)
                 .setTitle(R.string.swap_join_same_wifi)
                 .setMessage(R.string.swap_join_same_wifi_desc)
@@ -505,6 +499,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             case R.layout.swap_connecting:
                 setUpConnectingView();
                 break;
+            case R.layout.swap_start_swap:
+                setUpStartVisibility();
+                break;
         }
     }
 
@@ -568,7 +565,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter == null
                 || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
-                || (!adapter.isEnabled() && getSwapService().getWifiSwap().isConnected())) {
+                || (!adapter.isEnabled() && LocalHTTPDManager.isAlive())) {
             inflateSwapView(R.layout.swap_send_fdroid);
         } else {
             sendFDroidBluetooth();
@@ -814,8 +811,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (service == null) {
                 message = "No swap service";
             } else {
-                String bluetooth = service.getBluetoothSwap().isConnected() ? "Y" : " N";
-                String wifi = service.getWifiSwap().isConnected() ? "Y" : " N";
+                String bluetooth = getSwapService().getBluetoothSwap().isConnected() ? "Y" : " N";
 
                 BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
                 bluetooth = "N/A";
@@ -826,12 +822,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
                     bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
                 }
-
-                message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
             }
 
             Date now = new Date();
-            Utils.debugLog("Swap Status", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
+            Utils.debugLog("SWAP_STATUS",
+                    now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
 
             new Timer().schedule(new TimerTask() {
                                      @Override
@@ -888,6 +883,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             setUpFromWifi();
+
+            int wifiStatus = -1;
+            TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
+            if (textWifiVisible != null) {
+                intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1);
+            }
+            switch (wifiStatus) {
+                case WifiManager.WIFI_STATE_ENABLING:
+                    textWifiVisible.setText(R.string.swap_setting_up_wifi);
+                    break;
+                case WifiManager.WIFI_STATE_ENABLED:
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
+                    break;
+                case WifiManager.WIFI_STATE_DISABLING:
+                case WifiManager.WIFI_STATE_DISABLED:
+                    textWifiVisible.setText(R.string.swap_stopping_wifi);
+                    break;
+                case WifiManager.WIFI_STATE_UNKNOWN:
+                    break;
+            }
         }
     };
 
@@ -987,6 +1002,100 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             tapView.setText(R.string.swap_view_available_networks);
         }
     }
+
+    private void setUpStartVisibility() {
+        TextView viewWifiNetwork = findViewById(R.id.wifi_network);
+
+        viewWifiNetwork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptToSelectWifiNetwork();
+            }
+        });
+
+        SwitchCompat wifiSwitch = findViewById(R.id.switch_wifi);
+        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Context context = getApplicationContext();
+                if (isChecked) {
+                    wifiManager.setWifiEnabled(true);
+                    BonjourManager.start(context);
+                }
+                BonjourManager.setVisible(context, isChecked);
+                SwapService.putWifiVisibleUserPreference(isChecked);
+            }
+        });
+
+        if (SwapService.getWifiVisibleUserPreference()) {
+            wifiSwitch.setChecked(true);
+        } else {
+            wifiSwitch.setChecked(false);
+        }
+    }
+
+    private final BroadcastReceiver bonjourStatus = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
+            TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
+            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null
+                    || !BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            int status = intent.getIntExtra(BonjourManager.EXTRA_STATUS, -1);
+            Log.i(TAG, "BonjourManager.EXTRA_STATUS: " + status);
+            switch (status) {
+                case BonjourManager.STATUS_STARTING:
+                    textWifiVisible.setText(R.string.swap_setting_up_wifi);
+                    peopleNearbyText.setText(R.string.swap_starting);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_STARTED:
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
+                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_NOT_VISIBLE:
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
+                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_VISIBLE:
+                    textWifiVisible.setText(R.string.swap_visible_wifi);
+                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_STOPPING:
+                    textWifiVisible.setText(R.string.swap_stopping_wifi);
+                    if (!BluetoothManager.isAlive()) {
+                        peopleNearbyText.setText(R.string.swap_stopping);
+                        peopleNearbyText.setVisibility(View.VISIBLE);
+                        peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                case BonjourManager.STATUS_STOPPED:
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
+                    if (!BluetoothManager.isAlive()) {
+                        peopleNearbyText.setVisibility(View.GONE);
+                        peopleNearbyProgress.setVisibility(View.GONE);
+                    }
+                    break;
+                case BonjourManager.STATUS_ERROR:
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
+                    peopleNearbyText.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.GONE);
+                default:
+                    throw new IllegalArgumentException("Bad intent: " + intent);
+            }
+        }
+    };
 
     private void setUpUseBluetoothButton() {
         Button useBluetooth = findViewById(R.id.btn_use_bluetooth);

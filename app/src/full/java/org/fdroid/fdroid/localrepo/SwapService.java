@@ -33,8 +33,6 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
-import org.fdroid.fdroid.localrepo.type.SwapType;
-import org.fdroid.fdroid.localrepo.type.WifiSwap;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -336,27 +334,6 @@ public class SwapService extends Service {
         swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED_BEFORE_SWAP, visible).apply();
     }
 
-    /**
-     * Handles checking if the {@link SwapService} is running, and only restarts it if it was running.
-     */
-    public void stopWifiIfEnabled(final boolean restartAfterStopping) {
-        if (wifiSwap.isConnected()) {
-            new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... params) {
-                    Utils.debugLog(TAG, "Stopping the currently running WiFi swap service (on background thread)");
-                    wifiSwap.stop();
-
-                    if (restartAfterStopping) {
-                        Utils.debugLog(TAG, "Restarting WiFi swap service after stopping (still on background thread)");
-                        wifiSwap.start();
-                    }
-                    return null;
-                }
-            }.execute();
-        }
-    }
-
     public boolean isEnabled() {
         return bluetoothSwap.isConnected() || LocalHTTPDManager.isAlive();
     }
@@ -373,9 +350,7 @@ public class SwapService extends Service {
     //        Old SwapService stuff being merged into that.
     // ===============================================================
 
-    public static final String BONJOUR_STATE_CHANGE = "org.fdroid.fdroid.BONJOUR_STATE_CHANGE";
     public static final String BLUETOOTH_STATE_CHANGE = "org.fdroid.fdroid.BLUETOOTH_STATE_CHANGE";
-    public static final String WIFI_STATE_CHANGE = "org.fdroid.fdroid.WIFI_STATE_CHANGE";
     public static final String EXTRA_STARTING = "STARTING";
     public static final String EXTRA_STARTED = "STARTED";
     public static final String EXTRA_STOPPING = "STOPPING";
@@ -384,8 +359,7 @@ public class SwapService extends Service {
     private static final int NOTIFICATION = 1;
 
     private final Binder binder = new Binder();
-    private SwapType bluetoothSwap;
-    private WifiSwap wifiSwap;
+    private BluetoothSwap bluetoothSwap;
 
     private static final int TIMEOUT = 15 * 60 * 1000; // 15 mins
 
@@ -395,12 +369,8 @@ public class SwapService extends Service {
     @Nullable
     private Timer timer;
 
-    public SwapType getBluetoothSwap() {
+    public BluetoothSwap getBluetoothSwap() {
         return bluetoothSwap;
-    }
-
-    public WifiSwap getWifiSwap() {
-        return wifiSwap;
     }
 
     public class Binder extends android.os.Binder {
@@ -415,6 +385,8 @@ public class SwapService extends Service {
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
+        LocalHTTPDManager.start(this);
+
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter != null) {
             SwapService.putBluetoothEnabledBeforeSwap(bluetoothAdapter.isEnabled());
@@ -427,7 +399,6 @@ public class SwapService extends Service {
 
         appsToSwap.addAll(deserializePackages(swapPreferences.getString(KEY_APPS_TO_SWAP, "")));
         bluetoothSwap = BluetoothSwap.create(this);
-        wifiSwap = new WifiSwap(this, wifiManager);
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
@@ -435,8 +406,6 @@ public class SwapService extends Service {
                 new IntentFilter(WifiStateChangeService.BROADCAST));
         localBroadcastManager.registerReceiver(onBluetoothSwapStateChange,
                 new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
-        localBroadcastManager.registerReceiver(onWifiSwapStateChange,
-                new IntentFilter(SwapService.WIFI_STATE_CHANGE));
 
         if (getBluetoothVisibleUserPreference()) {
             Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
@@ -445,12 +414,8 @@ public class SwapService extends Service {
             Utils.debugLog(TAG, "Bluetooth was NOT enabled last time user swapped, starting not visible.");
         }
 
-        if (getWifiVisibleUserPreference()) {
-            Utils.debugLog(TAG, "Previously the user enabled WiFi swap, so enabling again automatically.");
-            wifiSwap.startInBackground(); // TODO replace with Intent to SwapService
-        } else {
-            Utils.debugLog(TAG, "WiFi was NOT enabled last time user swapped, starting not visible.");
-        }
+        BonjourManager.start(this);
+        BonjourManager.setVisible(this, getWifiVisibleUserPreference());
     }
 
     /**
@@ -478,12 +443,12 @@ public class SwapService extends Service {
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         localBroadcastManager.unregisterReceiver(onWifiChange);
         localBroadcastManager.unregisterReceiver(onBluetoothSwapStateChange);
-        localBroadcastManager.unregisterReceiver(onWifiSwapStateChange);
 
         if (bluetoothAdapter != null && !wasBluetoothEnabledBeforeSwap()) {
             bluetoothAdapter.disable();
         }
 
+        BonjourManager.stop(this);
         LocalHTTPDManager.stop(this);
         if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
             wifiManager.setWifiEnabled(false);
@@ -492,7 +457,6 @@ public class SwapService extends Service {
         stopPollingConnectedSwapRepo();
 
         //TODO getBluetoothSwap().stopInBackground();
-        getWifiSwap().stopInBackground();
 
         if (timer != null) {
             timer.cancel();
@@ -574,24 +538,33 @@ public class SwapService extends Service {
         }, TIMEOUT);
     }
 
+    private void restartWiFiServices() {
+        boolean hasIp = FDroidApp.ipAddressString != null;
+        if (hasIp) {
+            LocalHTTPDManager.restart(this);
+            BonjourManager.restart(this);
+            BonjourManager.setVisible(this, getWifiVisibleUserPreference());
+        } else {
+            BonjourManager.stop(this);
+            LocalHTTPDManager.stop(this);
+        }
+    }
+
     private final Preferences.ChangeListener httpsEnabledListener = new Preferences.ChangeListener() {
         @Override
         public void onPreferenceChange() {
-            Log.i(TAG, "Swap over HTTPS preference changed.");
-            stopWifiIfEnabled(true);
+            restartWiFiServices();
         }
     };
 
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
-            boolean hasIp = FDroidApp.ipAddressString != null;
-            stopWifiIfEnabled(hasIp);
+            restartWiFiServices();
         }
     };
 
     private final BroadcastReceiver onBluetoothSwapStateChange = new SwapStateChangeReceiver();
-    private final BroadcastReceiver onWifiSwapStateChange = new SwapStateChangeReceiver();
 
     /**
      * When swapping is setup, then start the index polling.

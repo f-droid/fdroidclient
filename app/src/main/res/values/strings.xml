@@ -488,6 +488,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_nearby">Nearby Swap</string>
     <string name="swap_intro">Connect and trade apps with people near you.</string>
+    <string name="swap_starting">Starting…</string>
+    <string name="swap_stopping">Stopping…</string>
     <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Setting up Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Not visible via Bluetooth</string>

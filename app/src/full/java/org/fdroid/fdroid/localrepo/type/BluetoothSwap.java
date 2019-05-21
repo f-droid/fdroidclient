@@ -5,15 +5,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 @SuppressWarnings("LineLength")
-public final class BluetoothSwap extends SwapType {
+public class BluetoothSwap {
 
     private static final String TAG = "BluetoothSwap";
     public static final String BLUETOOTH_NAME_TAG = "FDroid:";
@@ -24,12 +26,17 @@ public final class BluetoothSwap extends SwapType {
     private final BluetoothAdapter adapter;
     private boolean isDiscoverable;
 
+    private boolean isConnected;
+
+    @NonNull
+    protected final Context context;
+
     @Nullable
     private BluetoothServer server;
 
     private String deviceBluetoothName;
 
-    public static SwapType create(@NonNull Context context) {
+    public static BluetoothSwap create(@NonNull Context context) {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter == null) {
             return new NoBluetoothType(context);
@@ -42,21 +49,18 @@ public final class BluetoothSwap extends SwapType {
     }
 
     private BluetoothSwap(@NonNull Context context, @NonNull BluetoothAdapter adapter) {
-        super(context);
+        this.context = context;
         this.adapter = adapter;
     }
 
-    @Override
     public boolean isDiscoverable() {
         return isDiscoverable;
     }
 
-    @Override
     public boolean isConnected() {
-        return server != null && server.isRunning() && super.isConnected();
+        return server != null && server.isRunning() && isConnected;
     }
 
-    @Override
     public synchronized void start() {
         if (isConnected()) {
             Utils.debugLog(TAG, "already running, quitting start()");
@@ -128,26 +132,10 @@ public final class BluetoothSwap extends SwapType {
         }
     }
 
-    /**
-     * Don't try to start BT in the background. you can only start/stop a BT server once, else new connections don't work.
-     */
-    @Override
-    public void stopInBackground() {
-        stop();
-    }
-
-    @Override
     public void stop() {
         if (server != null && server.isAlive()) {
             server.close();
             setConnected(false);
-
-            /*
-            if (receiver != null) {
-                context.unregisterReceiver(receiver);
-                receiver = null;
-            }
-            */
         } else {
             Log.i(TAG, "Attempting to stop Bluetooth swap, but it is not currently running.");
         }
@@ -158,15 +146,50 @@ public final class BluetoothSwap extends SwapType {
         adapter.setName(deviceBluetoothName);
     }
 
-    @Override
-    public String getBroadcastAction() {
+    protected String getBroadcastAction() {
         return SwapService.BLUETOOTH_STATE_CHANGE;
     }
 
-    private static class NoBluetoothType extends SwapType {
+    protected final void setConnected(boolean connected) {
+        if (connected) {
+            isConnected = true;
+            sendBroadcast(SwapService.EXTRA_STARTED);
+        } else {
+            isConnected = false;
+            sendBroadcast(SwapService.EXTRA_STOPPED);
+        }
+    }
+
+    /**
+     * Sends either a {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTING},
+     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTED} or
+     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STOPPED} broadcast.
+     */
+    protected final void sendBroadcast(String extra) {
+        if (getBroadcastAction() != null) {
+            Intent intent = new Intent(getBroadcastAction());
+            intent.putExtra(extra, true);
+            Utils.debugLog(TAG, "Sending broadcast " + extra + " from " + getClass().getSimpleName());
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        }
+    }
+
+    public void startInBackground() {
+        // TODO switch to thread which is killed if still running, like WiFiStateChangeService
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                start();
+                return null;
+            }
+        }.execute();
+    }
+
+
+    private static class NoBluetoothType extends BluetoothSwap {
 
         NoBluetoothType(@NonNull Context context) {
-            super(context);
+            super(context, null);
         }
 
         @Override

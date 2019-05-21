@@ -91,7 +91,7 @@
                     android:id="@+id/wifi_visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/swap_not_visible_wifi"
+                    tools:text="@string/swap_starting"
                     android:textSize="18sp"/>
 
             <TextView
@@ -114,7 +114,6 @@
         <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="false"
                 android:id="@+id/switch_wifi"/>
 
     </LinearLayout>
