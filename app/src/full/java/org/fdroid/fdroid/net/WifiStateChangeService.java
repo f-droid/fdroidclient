@@ -127,6 +127,7 @@ public class WifiStateChangeService extends IntentService {
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
+                        setSsidFromWifiInfo(wifiInfo);
                         DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
                         if (dhcpInfo != null) {
                             String netmask = formatIpAddress(dhcpInfo.netmask);
@@ -168,17 +169,7 @@ public class WifiStateChangeService extends IntentService {
                     return;
                 }
 
-                if (wifiInfo != null) {
-                    String ssid = wifiInfo.getSSID();
-                    Utils.debugLog(TAG, "Have wifi info, connected to " + ssid);
-                    if (ssid != null) {
-                        FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
-                    }
-                    String bssid = wifiInfo.getBSSID();
-                    if (bssid != null) {
-                        FDroidApp.bssid = bssid;
-                    }
-                }
+                setSsidFromWifiInfo(wifiInfo);
 
                 String scheme;
                 if (Preferences.get().isLocalRepoHttpsEnabled()) {
@@ -229,6 +220,20 @@ public class WifiStateChangeService extends IntentService {
             }
             Intent intent = new Intent(BROADCAST);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
+        }
+    }
+
+    private void setSsidFromWifiInfo(WifiInfo wifiInfo) {
+        if (wifiInfo != null) {
+            String ssid = wifiInfo.getSSID();
+            Utils.debugLog(TAG, "Have wifi info, connected to " + ssid);
+            if (ssid != null) {
+                FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
+            }
+            String bssid = wifiInfo.getBSSID();
+            if (bssid != null) {
+                FDroidApp.bssid = bssid;
+            }
         }
     }
 
