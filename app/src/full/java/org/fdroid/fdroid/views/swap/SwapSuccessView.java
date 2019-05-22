@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.CursorAdapter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -221,6 +224,46 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     if (apk != null) {
                         localBroadcastManager.registerReceiver(new DownloadReceiver(),
                                 DownloaderService.getIntentFilter(apk.getCanonicalUrl()));
+                        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                switch (intent.getAction()) {
+                                    case Installer.ACTION_INSTALL_STARTED:
+                                        statusInstalled.setText(R.string.installing);
+                                        statusInstalled.setVisibility(View.VISIBLE);
+                                        btnInstall.setVisibility(View.GONE);
+                                        progressView.setIndeterminate(true);
+                                        progressView.setVisibility(View.VISIBLE);
+                                        break;
+                                    case Installer.ACTION_INSTALL_USER_INTERACTION:
+                                        PendingIntent installPendingIntent =
+                                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                                        try {
+                                            installPendingIntent.send();
+                                        } catch (PendingIntent.CanceledException e) {
+                                            Log.e(TAG, "PI canceled", e);
+                                        }
+                                        break;
+                                    case Installer.ACTION_INSTALL_COMPLETE:
+                                        localBroadcastManager.unregisterReceiver(this);
+                                        statusInstalled.setText(R.string.app_installed);
+                                        statusInstalled.setVisibility(View.VISIBLE);
+                                        btnInstall.setVisibility(View.GONE);
+                                        progressView.setVisibility(View.GONE);
+                                        break;
+                                    case Installer.ACTION_INSTALL_INTERRUPTED:
+                                        localBroadcastManager.unregisterReceiver(this);
+                                        statusInstalled.setVisibility(View.GONE);
+                                        btnInstall.setVisibility(View.VISIBLE);
+                                        progressView.setVisibility(View.GONE);
+                                        String errorMessage = intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+                                        if (errorMessage != null) {
+                                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                                        }
+                                        break;
+                                }
+                            }
+                        }, Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
                     }
 
                     // NOTE: Instead of continually unregistering and re-registering the observer
@@ -248,8 +291,8 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 @Override
                 public void onClick(View v) {
                     if (apk != null && (app.hasUpdates() || app.compatible)) {
-                        getActivity().install(app, apk);
                         showProgress();
+                        InstallManagerService.queue(getContext(), app, apk);
                     }
                 }
             };

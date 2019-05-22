@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -55,13 +54,9 @@ import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.InstallManagerService;
-import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.BluetoothManager;
 import org.fdroid.fdroid.localrepo.BonjourManager;
 import org.fdroid.fdroid.localrepo.LocalHTTPDManager;
@@ -835,47 +830,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                                      }
                                  }, 1000
             );
-        }
-    }
-
-    public void install(@NonNull final App app, @NonNull final Apk apk) {
-        localBroadcastManager.registerReceiver(new InstallReceiver(),
-                Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
-        InstallManagerService.queue(this, app, apk);
-    }
-
-    private class InstallReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case Installer.ACTION_INSTALL_STARTED:
-                    break;
-                case Installer.ACTION_INSTALL_COMPLETE:
-                    localBroadcastManager.unregisterReceiver(this);
-
-                    showRelevantView();
-                    break;
-                case Installer.ACTION_INSTALL_INTERRUPTED:
-                    localBroadcastManager.unregisterReceiver(this);
-                    String errorMessage = intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
-                    if (errorMessage != null) {
-                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
-                    }
-                    break;
-                case Installer.ACTION_INSTALL_USER_INTERACTION:
-                    PendingIntent installPendingIntent =
-                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-
-                    try {
-                        installPendingIntent.send();
-                    } catch (PendingIntent.CanceledException e) {
-                        Log.e(TAG, "PI canceled", e);
-                    }
-
-                    break;
-                default:
-                    throw new RuntimeException("intent action not handled!");
-            }
         }
     }
 
