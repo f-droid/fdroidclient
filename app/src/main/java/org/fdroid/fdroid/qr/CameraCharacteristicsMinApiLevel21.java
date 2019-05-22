@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap.device.camera;
+package org.fdroid.fdroid.qr;
 
 import android.annotation.TargetApi;
 import android.content.Context;

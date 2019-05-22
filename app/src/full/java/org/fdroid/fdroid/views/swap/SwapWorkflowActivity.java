@@ -52,7 +52,6 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -71,8 +70,9 @@ import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
+import org.fdroid.fdroid.qr.QrGenAsyncTask;
 import org.fdroid.fdroid.views.main.MainActivity;
-import org.fdroid.fdroid.views.swap.device.camera.CameraCharacteristicsChecker;
 
 import java.util.Date;
 import java.util.HashMap;
