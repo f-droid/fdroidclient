@@ -118,6 +118,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
+    private BluetoothAdapter bluetoothAdapter;
 
     @LayoutRes
     private int currentSwapViewLayoutRes = STEP_INTRO;
@@ -227,6 +228,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(Downloader.ACTION_INTERRUPTED));
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         new SwapDebug().logStatus();
     }
@@ -561,10 +564,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void sendFDroid() {
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        if (adapter == null
+        if (bluetoothAdapter == null
                 || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
-                || (!adapter.isEnabled() && LocalHTTPDManager.isAlive())) {
+                || (!bluetoothAdapter.isEnabled() && LocalHTTPDManager.isAlive())) {
             inflateSwapView(R.layout.swap_send_fdroid);
         } else {
             sendFDroidBluetooth();
@@ -577,7 +579,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * automatically enable Bluetooth.
      */
     public void sendFDroidBluetooth() {
-        if (BluetoothAdapter.getDefaultAdapter().isEnabled()) {
+        if (bluetoothAdapter.isEnabled()) {
             sendFDroidApk();
         } else {
             Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
@@ -742,12 +744,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * involves pairing and connecting with other devices.
      */
     public void startBluetoothSwap() {
-
-        Utils.debugLog(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-
-        if (adapter != null) {
-            if (adapter.isEnabled()) {
+        if (bluetoothAdapter != null) {
+            if (bluetoothAdapter.isEnabled()) {
                 Utils.debugLog(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
                 ensureBluetoothDiscoverableThenStart();
             } else {
@@ -760,7 +758,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void ensureBluetoothDiscoverableThenStart() {
         Utils.debugLog(TAG, "Ensuring Bluetooth is in discoverable mode.");
-        if (BluetoothAdapter.getDefaultAdapter().getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+        if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
 
             // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
             // is cancelled prematurely.
@@ -803,14 +801,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 String bluetooth = getSwapService().getBluetoothSwap().isConnected() ? "Y" : " N";
 
-                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
                 bluetooth = "N/A";
-                if (adapter != null) {
+                if (bluetoothAdapter != null) {
                     Map<Integer, String> scanModes = new HashMap<>(3);
                     scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CON");
                     scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CON_DISC");
                     scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
-                    bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
+                    bluetooth = "\"" + bluetoothAdapter.getName() + "\" - "
+                            + scanModes.get(bluetoothAdapter.getScanMode());
                 }
             }
 
