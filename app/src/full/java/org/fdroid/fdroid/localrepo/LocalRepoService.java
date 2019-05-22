@@ -8,18 +8,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
-
-import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE;
-import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.TYPE_COMPLETE;
-import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.TYPE_ERROR;
-import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.TYPE_STATUS;
 
 /**
  * Handles setting up and generating the local repo used to swap apps, including
@@ -35,14 +29,14 @@ import static org.fdroid.fdroid.views.swap.SwapWorkflowActivity.PrepareSwapRepo.
 public class LocalRepoService extends IntentService {
     public static final String TAG = "LocalRepoService";
 
-    public static final String ACTION_PROGRESS = "org.fdroid.fdroid.localrepo.LocalRepoService.action.PROGRESS";
-    public static final String ACTION_COMPLETE = "org.fdroid.fdroid.localrepo.LocalRepoService.action.COMPLETE";
-    public static final String ACTION_ERROR = "org.fdroid.fdroid.localrepo.LocalRepoService.action.ERROR";
-
-    public static final String EXTRA_MESSAGE = "org.fdroid.fdroid.localrepo.LocalRepoService.extra.MESSAGE";
-
     public static final String ACTION_CREATE = "org.fdroid.fdroid.localrepo.action.CREATE";
     public static final String EXTRA_PACKAGE_NAMES = "org.fdroid.fdroid.localrepo.extra.PACKAGE_NAMES";
+
+    public static final String ACTION_STATUS = "localRepoStatusAction";
+    public static final String EXTRA_STATUS = "localRepoStatusExtra";
+    public static final int STATUS_STARTED = 0;
+    public static final int STATUS_PROGRESS = 1;
+    public static final int STATUS_ERROR = 2;
 
     private String[] currentlyProcessedApps = new String[0];
 
@@ -105,19 +99,19 @@ public class LocalRepoService extends IntentService {
     public static void runProcess(Context context, String[] selectedApps) {
         try {
             final LocalRepoManager lrm = LocalRepoManager.get(context);
-            broadcast(context, ACTION_PROGRESS, R.string.deleting_repo);
+            broadcast(context, STATUS_PROGRESS, R.string.deleting_repo);
             lrm.deleteRepo();
             for (String app : selectedApps) {
-                broadcast(context, ACTION_PROGRESS, context.getString(R.string.adding_apks_format, app));
+                broadcast(context, STATUS_PROGRESS, context.getString(R.string.adding_apks_format, app));
                 lrm.addApp(context, app);
             }
             String urlString = Utils.getSharingUri(FDroidApp.repo).toString();
             lrm.writeIndexPage(urlString);
-            broadcast(context, ACTION_PROGRESS, R.string.writing_index_jar);
+            broadcast(context, STATUS_PROGRESS, R.string.writing_index_jar);
             lrm.writeIndexJar();
-            broadcast(context, ACTION_PROGRESS, R.string.linking_apks);
+            broadcast(context, STATUS_PROGRESS, R.string.linking_apks);
             lrm.copyApksToRepo();
-            broadcast(context, ACTION_PROGRESS, R.string.copying_icons);
+            broadcast(context, STATUS_PROGRESS, R.string.copying_icons);
             // run the icon copy without progress, its not a blocker
             new Thread() {
                 @Override
@@ -127,9 +121,9 @@ public class LocalRepoService extends IntentService {
                 }
             }.start();
 
-            broadcast(context, ACTION_COMPLETE, null);
+            broadcast(context, STATUS_STARTED, null);
         } catch (IOException | XmlPullParserException | LocalRepoKeyStore.InitException e) {
-            broadcast(context, ACTION_ERROR, e.getLocalizedMessage());
+            broadcast(context, STATUS_ERROR, e.getLocalizedMessage());
             e.printStackTrace();
         }
     }
@@ -137,30 +131,16 @@ public class LocalRepoService extends IntentService {
     /**
      * Translate Android style broadcast {@link Intent}s to {@code PrepareSwapRepo}
      */
-    static void broadcast(Context context, String action, String message) {
-        Intent intent = new Intent(context, SwapWorkflowActivity.class);
-        intent.setAction(SwapWorkflowActivity.PrepareSwapRepo.ACTION);
-        switch (action) {
-            case ACTION_PROGRESS:
-                intent.putExtra(EXTRA_TYPE, TYPE_STATUS);
-                break;
-            case ACTION_COMPLETE:
-                intent.putExtra(EXTRA_TYPE, TYPE_COMPLETE);
-                break;
-            case ACTION_ERROR:
-                intent.putExtra(EXTRA_TYPE, TYPE_ERROR);
-                break;
-            default:
-                throw new IllegalArgumentException("unsupported action");
-        }
+    static void broadcast(Context context, int status, String message) {
+        Intent intent = new Intent(ACTION_STATUS);
+        intent.putExtra(EXTRA_STATUS, status);
         if (message != null) {
-            Utils.debugLog(TAG, "Preparing swap: " + message);
-            intent.putExtra(EXTRA_MESSAGE, message);
+            intent.putExtra(Intent.EXTRA_TEXT, message);
         }
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
-    static void broadcast(Context context, String action, int resId) {
-        broadcast(context, action, context.getString(resId));
+    static void broadcast(Context context, int status, int resId) {
+        broadcast(context, status, context.getString(resId));
     }
 }

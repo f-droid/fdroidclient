@@ -342,8 +342,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         localBroadcastManager.registerReceiver(onWifiStateChanged,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
-        localBroadcastManager.registerReceiver(prepareSwapReceiver,
-                new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
+        localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
         localBroadcastManager.registerReceiver(repoUpdateReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
@@ -361,7 +360,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         super.onPause();
 
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
-        localBroadcastManager.unregisterReceiver(prepareSwapReceiver);
+        localBroadcastManager.unregisterReceiver(localRepoStatus);
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
         localBroadcastManager.unregisterReceiver(bonjourStatus);
     }
@@ -777,15 +776,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         service.getBluetoothSwap().startInBackground();  // TODO replace with Intent to SwapService
     }
 
-    public class PrepareSwapRepo {
-        public static final String ACTION = "PrepareSwapRepo.Action";
-        public static final String EXTRA_MESSAGE = "PrepareSwapRepo.Status.Message";
-        public static final String EXTRA_TYPE = "PrepareSwapRepo.Action.Type";
-        public static final int TYPE_STATUS = 0;
-        public static final int TYPE_COMPLETE = 1;
-        public static final int TYPE_ERROR = 2;
-    }
-
     /**
      * Helper class to try and make sense of what the swap workflow is currently doing.
      * The more technologies are involved in the process (e.g. Bluetooth/Wifi/NFC/etc)
@@ -1177,10 +1167,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * etc.  Icons will be copied to the webroot in the background and so are
      * not part of this process.
      */
-    private final BroadcastReceiver prepareSwapReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver localRepoStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            setUpConnectingProgressText(intent.getStringExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_MESSAGE));
+            setUpConnectingProgressText(intent.getStringExtra(Intent.EXTRA_TEXT));
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
@@ -1190,18 +1180,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return;
             }
 
-            int type = intent.getIntExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE, -1);
-            if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_ERROR) {
-                progressBar.setVisibility(View.GONE);
-                tryAgainButton.setVisibility(View.VISIBLE);
-                return;
-            } else {
-                progressBar.setVisibility(View.VISIBLE);
-                tryAgainButton.setVisibility(View.GONE);
-            }
-
-            if (type == SwapWorkflowActivity.PrepareSwapRepo.TYPE_COMPLETE) {
-                onLocalRepoPrepared();
+            switch (intent.getIntExtra(LocalRepoService.EXTRA_STATUS, -1)) {
+                case LocalRepoService.STATUS_PROGRESS:
+                    progressBar.setVisibility(View.VISIBLE);
+                    tryAgainButton.setVisibility(View.GONE);
+                    break;
+                case LocalRepoService.STATUS_STARTED:
+                    progressBar.setVisibility(View.VISIBLE);
+                    tryAgainButton.setVisibility(View.GONE);
+                    onLocalRepoPrepared();
+                    break;
+                case LocalRepoService.STATUS_ERROR:
+                    progressBar.setVisibility(View.GONE);
+                    tryAgainButton.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Bogus intent: " + intent);
             }
         }
     };
