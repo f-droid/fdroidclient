@@ -36,10 +36,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -345,7 +347,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
         localBroadcastManager.registerReceiver(repoUpdateReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bonjourFound, new IntentFilter(BonjourManager.ACTION_FOUND));
+        localBroadcastManager.registerReceiver(bonjourRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
         localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bluetoothFound, new IntentFilter(BluetoothManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
 
         registerReceiver(bluetoothScanModeChanged,
@@ -368,7 +373,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
         localBroadcastManager.unregisterReceiver(localRepoStatus);
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
+        localBroadcastManager.unregisterReceiver(bonjourFound);
+        localBroadcastManager.unregisterReceiver(bonjourRemoved);
         localBroadcastManager.unregisterReceiver(bonjourStatus);
+        localBroadcastManager.unregisterReceiver(bluetoothFound);
         localBroadcastManager.unregisterReceiver(bluetoothStatus);
     }
 
@@ -1060,6 +1068,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    private final BroadcastReceiver bonjourFound = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            if (peopleNearbyList != null) {
+                ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
+                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
+            }
+        }
+    };
+
+    private final BroadcastReceiver bonjourRemoved = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            if (peopleNearbyList != null) {
+                ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
+                peopleNearbyAdapter.remove((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
+            }
+        }
+    };
+
     private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -1132,7 +1162,17 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 default:
                     throw new IllegalArgumentException("Bad intent: " + intent);
             }
+        }
+    };
 
+    private final BroadcastReceiver bluetoothFound = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            if (peopleNearbyList != null) {
+                ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
+                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BluetoothManager.EXTRA_PEER));
+            }
         }
     };
 

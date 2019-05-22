@@ -153,7 +153,6 @@ dependencies {
     implementation 'commons-net:commons-net:3.6'
     implementation 'ch.acra:acra:4.9.1'
     implementation 'io.reactivex:rxjava:1.1.0'
-    implementation 'io.reactivex:rxandroid:0.23.0'
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.5'
 

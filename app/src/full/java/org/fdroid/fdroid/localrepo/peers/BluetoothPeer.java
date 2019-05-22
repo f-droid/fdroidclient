@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.localrepo.peers;
 
+import android.bluetooth.BluetoothClass.Device;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import org.fdroid.fdroid.R;
 
@@ -11,7 +13,22 @@ public class BluetoothPeer implements Peer {
 
     private final BluetoothDevice device;
 
-    public BluetoothPeer(BluetoothDevice device) {
+    /**
+     * Return a instance if the {@link BluetoothDevice} is a device that could
+     * host a swap repo.
+     */
+    @Nullable
+    public static BluetoothPeer getInstance(@Nullable BluetoothDevice device) {
+        if (device != null && device.getName() != null &&
+                (device.getBluetoothClass().getDeviceClass() == Device.COMPUTER_HANDHELD_PC_PDA
+                        || device.getBluetoothClass().getDeviceClass() == Device.COMPUTER_PALM_SIZE_PC_PDA
+                        || device.getBluetoothClass().getDeviceClass() == Device.PHONE_SMART)) {
+            return new BluetoothPeer(device);
+        }
+        return null;
+    }
+
+    private BluetoothPeer(BluetoothDevice device) {
         this.device = device;
     }
 

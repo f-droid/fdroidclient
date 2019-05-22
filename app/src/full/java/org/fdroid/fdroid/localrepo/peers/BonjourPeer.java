@@ -2,16 +2,39 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.net.Uri;
 import android.os.Parcel;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import org.fdroid.fdroid.FDroidApp;
 
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.impl.FDroidServiceInfo;
 
 public class BonjourPeer extends WifiPeer {
+    private static final String TAG = "BonjourPeer";
+
+    public static final String FINGERPRINT = "fingerprint";
+    public static final String NAME = "name";
+    public static final String PATH = "path";
+    public static final String TYPE = "type";
 
     private final FDroidServiceInfo serviceInfo;
 
-    public BonjourPeer(ServiceInfo serviceInfo) {
+    /**
+     * Return a instance if the {@link ServiceInfo} is fully resolved and does
+     * not represent this device, but something else on the network.
+     */
+    @Nullable
+    public static BonjourPeer getInstance(ServiceInfo serviceInfo) {
+        String type = serviceInfo.getPropertyString(TYPE);
+        String fingerprint = serviceInfo.getPropertyString(FINGERPRINT);
+        if (type == null || !type.startsWith("fdroidrepo")
+                || TextUtils.equals(FDroidApp.repo.fingerprint, fingerprint)) {
+            return null;
+        }
+        return new BonjourPeer(serviceInfo);
+    }
+
+    private BonjourPeer(ServiceInfo serviceInfo) {
         this.serviceInfo = new FDroidServiceInfo(serviceInfo);
         this.name = serviceInfo.getDomain();
         this.uri = Uri.parse(this.serviceInfo.getRepoAddress());

@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.peers.BonjourPeer;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
@@ -30,9 +32,9 @@ import java.util.HashMap;
 public class BonjourManager {
     private static final String TAG = "BonjourManager";
 
-    public static final String ACTION_ADDED = "BonjourAdded";
-    public static final String ACTION_RESOLVED = "BonjourResolved";
-    public static final String ACTION_REMOVED = "BonjourRemoved";
+    public static final String ACTION_FOUND = "BonjourNewPeer";
+    public static final String ACTION_REMOVED = "BonjourPeerRemoved";
+    public static final String EXTRA_BONJOUR_PEER = "extraBonjourPeer";
 
     public static final String ACTION_STATUS = "BonjourStatus";
     public static final String EXTRA_STATUS = "BonjourStatusExtra";
@@ -56,6 +58,7 @@ public class BonjourManager {
     private static volatile HandlerThread handlerThread;
     private static ServiceInfo pairService;
     private static JmDNS jmdns;
+    private static WifiManager.MulticastLock multicastLock;
 
     public static boolean isAlive() {
         return handlerThread != null && handlerThread.isAlive();
@@ -116,6 +119,8 @@ public class BonjourManager {
         }
         sendBroadcast(STATUS_STARTING, null);
 
+        final WifiManager wifiManager = (WifiManager) context.getApplicationContext()
+                .getSystemService(Context.WIFI_SERVICE);
         handlerThread = new HandlerThread("BonjourManager", Process.THREAD_PRIORITY_LESS_FAVORABLE) {
             @Override
             protected void onLooperPrepared() {
@@ -124,6 +129,11 @@ public class BonjourManager {
                     jmdns = JmDNS.create(address);
                     jmdns.addServiceListener(HTTP_SERVICE_TYPE, httpServiceListener);
                     jmdns.addServiceListener(HTTPS_SERVICE_TYPE, httpsServiceListener);
+
+                    multicastLock = wifiManager.createMulticastLock(context.getPackageName());
+                    multicastLock.setReferenceCounted(false);
+                    multicastLock.acquire();
+
                     sendBroadcast(STATUS_STARTED, null);
                 } catch (IOException e) {
                     if (handler != null) {
@@ -155,15 +165,15 @@ public class BonjourManager {
 
             private void handleVisible(String localRepoName, boolean useHttps) {
                 HashMap<String, String> values = new HashMap<>();
-                values.put("path", "/fdroid/repo");
-                values.put("name", localRepoName);
-                values.put("fingerprint", FDroidApp.repo.fingerprint);
+                values.put(BonjourPeer.PATH, "/fdroid/repo");
+                values.put(BonjourPeer.NAME, localRepoName);
+                values.put(BonjourPeer.FINGERPRINT, FDroidApp.repo.fingerprint);
                 String type;
                 if (useHttps) {
-                    values.put("type", "fdroidrepos");
+                    values.put(BonjourPeer.TYPE, "fdroidrepos");
                     type = HTTPS_SERVICE_TYPE;
                 } else {
-                    values.put("type", "fdroidrepo");
+                    values.put(BonjourPeer.TYPE, "fdroidrepo");
                     type = HTTP_SERVICE_TYPE;
                 }
                 ServiceInfo newPairService = ServiceInfo.create(type, localRepoName, FDroidApp.port, 0, 0, values);
@@ -190,6 +200,9 @@ public class BonjourManager {
             }
 
             private void handleStop() {
+                if (multicastLock != null) {
+                    multicastLock.release();
+                }
                 if (jmdns != null) {
                     jmdns.unregisterAllServices();
                     Utils.closeQuietly(jmdns);
@@ -228,9 +241,14 @@ public class BonjourManager {
         start(context, localRepoName, useHttps, httpServiceListener, httpsServiceListener);
     }
 
-    private static void sendBroadcast(String action, String message) {
+    private static void sendBroadcast(String action, ServiceInfo serviceInfo) {
+        BonjourPeer bonjourPeer = BonjourPeer.getInstance(serviceInfo);
+        if (bonjourPeer == null) {
+            Utils.debugLog(TAG, "IGNORING: " + serviceInfo);
+            return;
+        }
         Intent intent = new Intent(action);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.putExtra(EXTRA_BONJOUR_PEER, bonjourPeer);
         LocalBroadcastManager.getInstance(context.get()).sendBroadcast(intent);
     }
 
@@ -250,20 +268,17 @@ public class BonjourManager {
     private static class SwapServiceListener implements ServiceListener {
         @Override
         public void serviceAdded(ServiceEvent serviceEvent) {
-            Utils.debugLog(TAG, "Service added: " + serviceEvent.getInfo());
-            sendBroadcast(ACTION_ADDED, serviceEvent.getInfo().toString());
+            // ignored, we only need resolved info
         }
 
         @Override
         public void serviceRemoved(ServiceEvent serviceEvent) {
-            Utils.debugLog(TAG, "Service removed: " + serviceEvent.getInfo());
-            sendBroadcast(ACTION_REMOVED, serviceEvent.getInfo().toString());
+            sendBroadcast(ACTION_REMOVED, serviceEvent.getInfo());
         }
 
         @Override
         public void serviceResolved(ServiceEvent serviceEvent) {
-            Utils.debugLog(TAG, "Service resolved: " + serviceEvent.getInfo());
-            sendBroadcast(ACTION_RESOLVED, serviceEvent.getInfo().toString());
+            sendBroadcast(ACTION_FOUND, serviceEvent.getInfo());
         }
     }
 }

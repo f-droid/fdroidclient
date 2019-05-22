@@ -1,8 +1,11 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -11,6 +14,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.peers.BluetoothPeer;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 import java.lang.ref.WeakReference;
@@ -25,6 +30,9 @@ import java.lang.ref.WeakReference;
  */
 public class BluetoothManager {
     private static final String TAG = "BluetoothManager";
+
+    public static final String ACTION_FOUND = "BluetoothNewPeer";
+    public static final String EXTRA_PEER = "extraBluetoothPeer";
 
     public static final String ACTION_STATUS = "BluetoothStatus";
     public static final String EXTRA_STATUS = "BluetoothStatusExtra";
@@ -74,6 +82,9 @@ public class BluetoothManager {
         handlerThread = new HandlerThread("BluetoothManager", Process.THREAD_PRIORITY_LESS_FAVORABLE) {
             @Override
             protected void onLooperPrepared() {
+                LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(context);
+                localBroadcastManager.registerReceiver(bluetoothDeviceFound,
+                        new IntentFilter(BluetoothDevice.ACTION_FOUND));
                 bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if (!bluetoothAdapter.enable()) {
                     sendBroadcast(STATUS_ERROR, context.getString(R.string.swap_error_cannot_start_bluetooth));
@@ -85,12 +96,17 @@ public class BluetoothManager {
                 } else {
                     sendBroadcast(STATUS_ERROR, context.getString(R.string.swap_error_cannot_start_bluetooth));
                 }
+                for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
+                    sendFoundBroadcast(context, device);
+                }
             }
         };
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
+                LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(context);
+                localBroadcastManager.unregisterReceiver(bluetoothDeviceFound);
                 bluetoothServer.close();
                 if (bluetoothAdapter != null) {
                     bluetoothAdapter.cancelDiscovery();
@@ -131,5 +147,24 @@ public class BluetoothManager {
             intent.putExtra(Intent.EXTRA_TEXT, message);
         }
         LocalBroadcastManager.getInstance(context.get()).sendBroadcast(intent);
+    }
+
+    private static final BroadcastReceiver bluetoothDeviceFound = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            sendFoundBroadcast(context, (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
+        }
+    };
+
+    private static void sendFoundBroadcast(Context context, BluetoothDevice device) {
+        BluetoothPeer bluetoothPeer = BluetoothPeer.getInstance(device);
+        if (bluetoothPeer == null) {
+            Utils.debugLog(TAG, "IGNORING: " + device);
+            return;
+        }
+        Intent intent = new Intent(ACTION_FOUND);
+        intent.putExtra(EXTRA_PEER, bluetoothPeer);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 }

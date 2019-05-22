@@ -31,14 +31,9 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -55,9 +50,7 @@ import java.util.TimerTask;
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps.
  */
-@SuppressWarnings("LineLength")
 public class SwapService extends Service {
-
     private static final String TAG = "SwapService";
 
     private static final String SHARED_PREFERENCES = "swap-state";
@@ -69,6 +62,7 @@ public class SwapService extends Service {
 
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
+    private final Set<Peer> activePeers = new HashSet<>();
 
     private static LocalBroadcastManager localBroadcastManager;
     private static SharedPreferences swapPreferences;
@@ -90,39 +84,14 @@ public class SwapService extends Service {
         context.stopService(intent);
     }
 
-    /**
-     * Search for peers to swap
-     */
-    private Observable<Peer> peerFinder;
-
-    /**
-     * Call {@link Observable#subscribe()} on this in order to be notified of peers
-     * which are found. Call {@link Subscription#unsubscribe()} on the resulting
-     * subscription when finished and you no longer want to scan for peers.
-     * <p>
-     * The returned object will scan for peers on a background thread, and emit
-     * found peers on the mian thread.
-     * <p>
-     * Invoking this in multiple places will return the same, cached, peer finder.
-     * That is, if in the past it already found some peers, then you subscribe
-     * to it in the future, the future subscriber will still receive the peers
-     * that were found previously.
-     * TODO: What about removing peers that no longer are present?
-     */
-    public Observable<Peer> scanForPeers() {
-        Utils.debugLog(TAG, "Scanning for nearby devices to swap with...");
-        if (peerFinder == null) {
-            peerFinder = PeerFinder.createObservable(getApplicationContext())
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .distinct();
-        }
-        return peerFinder;
-    }
-
     @NonNull
     public Set<String> getAppsToSwap() {
         return appsToSwap;
+    }
+
+    @NonNull
+    public Set<Peer> getActivePeers() {
+        return activePeers;
     }
 
     public void connectToPeer() {
@@ -387,6 +356,9 @@ public class SwapService extends Service {
 
         localBroadcastManager.registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
         localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bluetoothPeerFound, new IntentFilter(BluetoothManager.ACTION_FOUND));
+        localBroadcastManager.registerReceiver(bonjourPeerFound, new IntentFilter(BonjourManager.ACTION_FOUND));
+        localBroadcastManager.registerReceiver(bonjourPeerRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
         localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
 
         BonjourManager.start(this);
@@ -418,6 +390,9 @@ public class SwapService extends Service {
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         localBroadcastManager.unregisterReceiver(onWifiChange);
         localBroadcastManager.unregisterReceiver(bluetoothStatus);
+        localBroadcastManager.unregisterReceiver(bluetoothPeerFound);
+        localBroadcastManager.unregisterReceiver(bonjourPeerFound);
+        localBroadcastManager.unregisterReceiver(bonjourPeerRemoved);
 
         unregisterReceiver(bluetoothScanModeChanged);
 
@@ -595,6 +570,27 @@ public class SwapService extends Service {
                     BluetoothManager.start(SwapService.this);
                     break;
             }
+        }
+    };
+
+    private final BroadcastReceiver bluetoothPeerFound = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            activePeers.add((Peer) intent.getParcelableExtra(BluetoothManager.EXTRA_PEER));
+        }
+    };
+
+    private final BroadcastReceiver bonjourPeerFound = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            activePeers.add((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
+        }
+    };
+
+    private final BroadcastReceiver bonjourPeerRemoved = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            activePeers.remove((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
         }
     };
 }

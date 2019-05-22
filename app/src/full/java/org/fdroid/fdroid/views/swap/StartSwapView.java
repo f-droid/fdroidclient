@@ -31,8 +31,6 @@ import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import rx.Subscriber;
-import rx.Subscription;
 
 import java.util.ArrayList;
 
@@ -57,7 +55,7 @@ public class StartSwapView extends SwapView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
+    class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
 
         PeopleNearbyAdapter(Context context) {
             super(context, 0, new ArrayList<Peer>());
@@ -94,44 +92,13 @@ public class StartSwapView extends SwapView {
     private PeopleNearbyAdapter peopleNearbyAdapter;
 
     /**
-     * When peers are emitted by the peer finder, add them to the adapter
-     * so that they will show up in the list of peers.
-     */
-    private final Subscriber<Peer> onPeerFound = new Subscriber<Peer>() {
-
-        @Override
-        public void onCompleted() {
-            uiShowNotSearchingForPeers();
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            uiShowNotSearchingForPeers();
-        }
-
-        @Override
-        public void onNext(Peer peer) {
-            Utils.debugLog(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
-            peopleNearbyAdapter.add(peer);
-        }
-    };
-
-    private Subscription peerFinderSubscription;
-
-    /**
      * Remove relevant listeners/subscriptions/etc so that they do not receive and process events
      * when this view is not in use.
      * <p>
-     * TODO: Not sure if this is the best place to handle being removed from the view.
      */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (peerFinderSubscription != null) {
-            peerFinderSubscription.unsubscribe();
-            peerFinderSubscription = null;
-        }
-
         if (bluetoothSwitch != null) {
             bluetoothSwitch.setOnCheckedChangeListener(null);
         }
@@ -142,10 +109,6 @@ public class StartSwapView extends SwapView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-
-        if (peerFinderSubscription == null) {
-            peerFinderSubscription = getActivity().getSwapService().scanForPeers().subscribe(onPeerFound);
-        }
 
         uiInitPeers();
         uiInitBluetooth();
@@ -184,6 +147,7 @@ public class StartSwapView extends SwapView {
 
         peopleNearbyAdapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(peopleNearbyAdapter);
+        peopleNearbyAdapter.addAll(getActivity().getSwapService().getActivePeers());
 
         peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
