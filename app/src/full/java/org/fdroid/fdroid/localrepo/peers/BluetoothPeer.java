@@ -4,9 +4,10 @@ import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 import android.text.TextUtils;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
 public class BluetoothPeer implements Peer {
+
+    private static final String BLUETOOTH_NAME_TAG = "FDroid:";
 
     private final BluetoothDevice device;
 
@@ -21,7 +22,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getName() {
-        return device.getName().replaceAll("^" + BluetoothSwap.BLUETOOTH_NAME_TAG, "");
+        return device.getName().replaceAll("^" + BLUETOOTH_NAME_TAG, "");
     }
 
     @Override

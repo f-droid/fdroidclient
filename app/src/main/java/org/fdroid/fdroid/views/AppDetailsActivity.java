@@ -25,7 +25,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -702,7 +701,7 @@ public class AppDetailsActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT < 18) {
             return BluetoothAdapter.getDefaultAdapter();
         }
-        return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
+        return ((android.bluetooth.BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
     @Override

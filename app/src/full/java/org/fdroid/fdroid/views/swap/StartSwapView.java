@@ -26,6 +26,7 @@ import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.BluetoothManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -135,7 +136,6 @@ public class StartSwapView extends SwapView {
             bluetoothSwitch.setOnCheckedChangeListener(null);
         }
 
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(onBluetoothSwapStateChanged);
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(onWifiNetworkChanged);
     }
 
@@ -168,13 +168,6 @@ public class StartSwapView extends SwapView {
             @Override
             public void onClick(View v) {
                 getActivity().sendFDroid();
-            }
-        });
-
-        findViewById(R.id.btn_qr_scanner).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().startQrWorkflow();
             }
         });
     }
@@ -218,55 +211,15 @@ public class StartSwapView extends SwapView {
             viewBluetoothId.setVisibility(bluetooth.isEnabled() ? View.VISIBLE : View.GONE);
 
             textBluetoothVisible = findViewById(R.id.bluetooth_visible);
-            if (getActivity().getSwapService().isBluetoothDiscoverable()) {
-                textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
-            } else {
-                textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
-            }
 
             bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
-            Utils.debugLog(TAG, getActivity().getSwapService().isBluetoothDiscoverable()
-                    ? "Initially marking switch as checked, because Bluetooth is discoverable."
-                    : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
             bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
-            setBluetoothSwitchState(getActivity().getSwapService().isBluetoothDiscoverable(), true);
-
-            LocalBroadcastManager.getInstance(getContext()).registerReceiver(onBluetoothSwapStateChanged,
-                    new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
-
+            bluetoothSwitch.setChecked(SwapService.getBluetoothVisibleUserPreference());
+            bluetoothSwitch.setEnabled(true);
+            bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
         } else {
             findViewById(R.id.bluetooth_info).setVisibility(View.GONE);
         }
-    }
-
-    private final BroadcastReceiver onBluetoothSwapStateChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
-                Utils.debugLog(TAG, "Bluetooth service is starting (setting toggle to disabled, not checking because we will wait for an intent that bluetooth is actually enabled)");
-                bluetoothSwitch.setEnabled(false);
-                textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
-                // bluetoothSwitch.setChecked(true);
-            } else {
-                if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
-                    Utils.debugLog(TAG, "Bluetooth service has started (updating text to visible, but not marking as checked).");
-                    textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
-                    bluetoothSwitch.setEnabled(true);
-                    // bluetoothSwitch.setChecked(true);
-                } else {
-                    Utils.debugLog(TAG, "Bluetooth service has stopped (setting switch to not-visible).");
-                    textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
-                    setBluetoothSwitchState(false, true);
-                }
-            }
-        }
-    };
-
-    private void setBluetoothSwitchState(boolean isChecked, boolean isEnabled) {
-        bluetoothSwitch.setOnCheckedChangeListener(null);
-        bluetoothSwitch.setChecked(isChecked);
-        bluetoothSwitch.setEnabled(isEnabled);
-        bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
     }
 
     private final CompoundButton.OnCheckedChangeListener onBluetoothSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
@@ -281,7 +234,7 @@ public class StartSwapView extends SwapView {
                 // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
             } else {
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, disabling Bluetooth swap.");
-                getActivity().getSwapService().getBluetoothSwap().stop();
+                BluetoothManager.stop(getContext());
                 textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                 viewBluetoothId.setVisibility(View.GONE);
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");

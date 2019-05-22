@@ -62,11 +62,13 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.localrepo.BluetoothManager;
 import org.fdroid.fdroid.localrepo.BonjourManager;
 import org.fdroid.fdroid.localrepo.LocalHTTPDManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
+import org.fdroid.fdroid.localrepo.peers.BluetoothPeer;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.Downloader;
@@ -349,6 +351,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.registerReceiver(repoUpdateReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
+
+        registerReceiver(bluetoothScanModeChanged,
+                new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
 
         checkIncomingIntent();
 
@@ -362,10 +368,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        unregisterReceiver(bluetoothScanModeChanged);
+
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
         localBroadcastManager.unregisterReceiver(localRepoStatus);
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
         localBroadcastManager.unregisterReceiver(bonjourStatus);
+        localBroadcastManager.unregisterReceiver(bluetoothStatus);
     }
 
     @Override
@@ -520,24 +529,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         LocalRepoService.create(this);
 
         inflateSwapView(R.layout.swap_start_swap);
-    }
-
-    public void startQrWorkflow() {
-        if (!getSwapService().isEnabled()) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.not_visible_nearby)
-                    .setMessage(R.string.not_visible_nearby_description)
-                    .setCancelable(true)
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing. The dialog will get dismissed anyway, which is all we ever wanted...
-                        }
-                    })
-                    .create().show();
-        } else {
-            inflateSwapView(R.layout.swap_wifi_qr);
-        }
     }
 
     /**
@@ -720,7 +711,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             if (resultCode != RESULT_CANCELED) {
                 Utils.debugLog(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
-                getSwapService().getBluetoothSwap().startInBackground(); // TODO replace with Intent to SwapService
+                BluetoothManager.start(this);
             } else {
                 Utils.debugLog(TAG, "User chose not to make Bluetooth discoverable, so doing nothing");
                 SwapService.putBluetoothVisibleUserPreference(false);
@@ -759,20 +750,41 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void ensureBluetoothDiscoverableThenStart() {
         Utils.debugLog(TAG, "Ensuring Bluetooth is in discoverable mode.");
         if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
-
-            // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
-            // is cancelled prematurely.
-
-            // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
-            final int discoverableTimeout = 3600;
-
             Utils.debugLog(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, discoverableTimeout);
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 3600); // 1 hour
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
-        service.getBluetoothSwap().startInBackground();  // TODO replace with Intent to SwapService
+        BluetoothManager.start(this);
     }
+
+    private final BroadcastReceiver bluetoothScanModeChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
+            if (bluetoothSwitch == null || textBluetoothVisible == null
+                    || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            switch (intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, -1)) {
+                case BluetoothAdapter.SCAN_MODE_NONE:
+                    textBluetoothVisible.setText(R.string.disabled);
+                    bluetoothSwitch.setEnabled(true);
+                    break;
+
+                case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+                    textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                    bluetoothSwitch.setEnabled(true);
+                    break;
+
+                case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
+                    textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
+                    bluetoothSwitch.setEnabled(true);
+                    break;
+            }
+        }
+    };
 
     /**
      * Helper class to try and make sense of what the swap workflow is currently doing.
@@ -799,7 +811,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (service == null) {
                 message = "No swap service";
             } else {
-                String bluetooth = getSwapService().getBluetoothSwap().isConnected() ? "Y" : " N";
+                String bluetooth;
 
                 bluetooth = "N/A";
                 if (bluetoothAdapter != null) {
@@ -1015,6 +1027,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_scan_qr).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inflateSwapView(R.layout.swap_wifi_qr);
+            }
+        });
+
         if (SwapService.getWifiVisibleUserPreference()) {
             wifiSwitch.setChecked(true);
         } else {
@@ -1082,6 +1101,82 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 default:
                     throw new IllegalArgumentException("Bad intent: " + intent);
             }
+        }
+    };
+
+    private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
+            TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
+            TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
+            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
+                    || peopleNearbyText == null || peopleNearbyProgress == null
+                    || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            int status = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, -1);
+            Log.i(TAG, "BluetoothManager.EXTRA_STATUS: " + status);
+            switch (status) {
+                case BluetoothManager.STATUS_STARTING:
+                    bluetoothSwitch.setEnabled(false);
+                    textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
+                    textDeviceIdBluetooth.setVisibility(View.VISIBLE);
+                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BluetoothManager.STATUS_STARTED:
+                    bluetoothSwitch.setEnabled(true);
+                    textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                    textDeviceIdBluetooth.setVisibility(View.VISIBLE);
+                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    peopleNearbyText.setVisibility(View.VISIBLE);
+                    peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BluetoothManager.STATUS_STOPPING:
+                    bluetoothSwitch.setEnabled(false);
+                    textBluetoothVisible.setText(R.string.swap_stopping);
+                    textDeviceIdBluetooth.setVisibility(View.GONE);
+                    if (!BonjourManager.isAlive()) {
+                        peopleNearbyText.setText(R.string.swap_stopping);
+                        peopleNearbyText.setVisibility(View.VISIBLE);
+                        peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                case BluetoothManager.STATUS_STOPPED:
+                    bluetoothSwitch.setEnabled(true);
+                    textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
+                    textDeviceIdBluetooth.setVisibility(View.GONE);
+                    if (!BonjourManager.isAlive()) {
+                        peopleNearbyText.setVisibility(View.GONE);
+                        peopleNearbyProgress.setVisibility(View.GONE);
+                    }
+
+                    ListView peopleNearbyView = container.findViewById(R.id.list_people_nearby);
+                    if (peopleNearbyView == null) {
+                        break;
+                    }
+                    ArrayAdapter peopleNearbyAdapter = (ArrayAdapter) peopleNearbyView.getAdapter();
+                    for (int i = 0; i < peopleNearbyAdapter.getCount(); i++) {
+                        Peer peer = (Peer) peopleNearbyAdapter.getItem(i);
+                        if (peer.getClass().equals(BluetoothPeer.class)) {
+                            Utils.debugLog(TAG, "Removing bluetooth peer: " + peer.getName());
+                            peopleNearbyAdapter.remove(peer);
+                        }
+                    }
+                    break;
+                case BluetoothManager.STATUS_ERROR:
+                    bluetoothSwitch.setEnabled(true);
+                    textBluetoothVisible.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
+                    textDeviceIdBluetooth.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Bad intent: " + intent);
+            }
+
         }
     };
 

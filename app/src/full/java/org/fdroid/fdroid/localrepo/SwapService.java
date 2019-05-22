@@ -32,7 +32,6 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.peers.PeerFinder;
-import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -91,10 +90,9 @@ public class SwapService extends Service {
         context.stopService(intent);
     }
 
-    // ==========================================================
-    //                 Search for peers to swap
-    // ==========================================================
-
+    /**
+     * Search for peers to swap
+     */
     private Observable<Peer> peerFinder;
 
     /**
@@ -132,7 +130,7 @@ public class SwapService extends Service {
             throw new IllegalStateException("Cannot connect to peer, no peer has been selected.");
         }
         connectTo(getPeer());
-        if (isEnabled() && getPeer().shouldPromptForSwapBack()) {
+        if (LocalHTTPDManager.isAlive() && getPeer().shouldPromptForSwapBack()) {
             askServerToSwapWithUs(peerRepo);
         }
     }
@@ -334,32 +332,9 @@ public class SwapService extends Service {
         swapPreferences.edit().putBoolean(SwapService.KEY_WIFI_ENABLED_BEFORE_SWAP, visible).apply();
     }
 
-    public boolean isEnabled() {
-        return bluetoothSwap.isConnected() || LocalHTTPDManager.isAlive();
-    }
-
-    // ==========================================
-    //    Interacting with Bluetooth adapter
-    // ==========================================
-
-    public boolean isBluetoothDiscoverable() {
-        return bluetoothSwap.isDiscoverable();
-    }
-
-    // ===============================================================
-    //        Old SwapService stuff being merged into that.
-    // ===============================================================
-
-    public static final String BLUETOOTH_STATE_CHANGE = "org.fdroid.fdroid.BLUETOOTH_STATE_CHANGE";
-    public static final String EXTRA_STARTING = "STARTING";
-    public static final String EXTRA_STARTED = "STARTED";
-    public static final String EXTRA_STOPPING = "STOPPING";
-    public static final String EXTRA_STOPPED = "STOPPED";
-
     private static final int NOTIFICATION = 1;
 
     private final Binder binder = new Binder();
-    private BluetoothSwap bluetoothSwap;
 
     private static final int TIMEOUT = 15 * 60 * 1000; // 15 mins
 
@@ -368,10 +343,6 @@ public class SwapService extends Service {
      */
     @Nullable
     private Timer timer;
-
-    public BluetoothSwap getBluetoothSwap() {
-        return bluetoothSwap;
-    }
 
     public class Binder extends android.os.Binder {
         public SwapService getService() {
@@ -390,6 +361,11 @@ public class SwapService extends Service {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter != null) {
             SwapService.putBluetoothEnabledBeforeSwap(bluetoothAdapter.isEnabled());
+            if (bluetoothAdapter.isEnabled()) {
+                BluetoothManager.start(this);
+            }
+            registerReceiver(bluetoothScanModeChanged,
+                    new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
         }
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
@@ -398,21 +374,12 @@ public class SwapService extends Service {
         }
 
         appsToSwap.addAll(deserializePackages(swapPreferences.getString(KEY_APPS_TO_SWAP, "")));
-        bluetoothSwap = BluetoothSwap.create(this);
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
-        localBroadcastManager.registerReceiver(onWifiChange,
-                new IntentFilter(WifiStateChangeService.BROADCAST));
-        localBroadcastManager.registerReceiver(onBluetoothSwapStateChange,
-                new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
-
-        if (getBluetoothVisibleUserPreference()) {
-            Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
-            bluetoothSwap.startInBackground(); // TODO replace with Intent to SwapService
-        } else {
-            Utils.debugLog(TAG, "Bluetooth was NOT enabled last time user swapped, starting not visible.");
-        }
+        localBroadcastManager.registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
+        localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
 
         BonjourManager.start(this);
         BonjourManager.setVisible(this, getWifiVisibleUserPreference());
@@ -442,11 +409,11 @@ public class SwapService extends Service {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         localBroadcastManager.unregisterReceiver(onWifiChange);
-        localBroadcastManager.unregisterReceiver(onBluetoothSwapStateChange);
+        localBroadcastManager.unregisterReceiver(bluetoothStatus);
 
-        if (bluetoothAdapter != null && !wasBluetoothEnabledBeforeSwap()) {
-            bluetoothAdapter.disable();
-        }
+        unregisterReceiver(bluetoothScanModeChanged);
+
+        BluetoothManager.stop(this);
 
         BonjourManager.stop(this);
         LocalHTTPDManager.stop(this);
@@ -455,8 +422,6 @@ public class SwapService extends Service {
         }
 
         stopPollingConnectedSwapRepo();
-
-        //TODO getBluetoothSwap().stopInBackground();
 
         if (timer != null) {
             timer.cancel();
@@ -564,7 +529,8 @@ public class SwapService extends Service {
         }
     };
 
-    private final BroadcastReceiver onBluetoothSwapStateChange = new SwapStateChangeReceiver();
+    private final BroadcastReceiver bluetoothStatus = new SwapStateChangeReceiver();
+    private final BroadcastReceiver localRepoStatus = new SwapStateChangeReceiver();
 
     /**
      * When swapping is setup, then start the index polling.
@@ -574,10 +540,13 @@ public class SwapService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
+            int bluetoothStatus = intent.getIntExtra(BluetoothManager.ACTION_STATUS, -1);
+            int wifiStatus = intent.getIntExtra(LocalRepoService.EXTRA_STATUS, -1);
+            if (bluetoothStatus == BluetoothManager.STATUS_STARTED
+                    || wifiStatus == LocalRepoService.STATUS_STARTED) {
                 localBroadcastManager.registerReceiver(pollForUpdatesReceiver,
-                        new IntentFilter());
-            } else if (intent.hasExtra(SwapService.EXTRA_STOPPING) || intent.hasExtra(SwapService.EXTRA_STOPPED)) {
+                        new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+            } else {
                 localBroadcastManager.unregisterReceiver(pollForUpdatesReceiver);
             }
         }
@@ -597,4 +566,23 @@ public class SwapService extends Service {
             }
         }
     }
+
+    /**
+     * Handle events if the user or system changes the Bluetooth setup outside of F-Droid.
+     */
+    private final BroadcastReceiver bluetoothScanModeChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, -1)) {
+                case BluetoothAdapter.SCAN_MODE_NONE:
+                    BluetoothManager.stop(SwapService.this);
+                    break;
+
+                case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
+                case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+                    BluetoothManager.start(SwapService.this);
+                    break;
+            }
+        }
+    };
 }

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 import fi.iki.elonen.NanoHTTPD;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
 import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 
@@ -34,18 +33,9 @@ public class BluetoothServer extends Thread {
     private final List<ClientConnection> clients = new ArrayList<>();
 
     private final File webRoot;
-    private final BluetoothSwap swap;
-    private boolean isRunning;
 
-    public BluetoothServer(BluetoothSwap swap, File webRoot) {
+    public BluetoothServer(File webRoot) {
         this.webRoot = webRoot;
-        this.swap = swap;
-
-        start();
-    }
-
-    public boolean isRunning() {
-        return isRunning;
     }
 
     public void close() {
@@ -64,15 +54,12 @@ public class BluetoothServer extends Thread {
     @Override
     public void run() {
 
-        isRunning = true;
         final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
         try {
             serverSocket = adapter.listenUsingInsecureRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
         } catch (IOException e) {
             Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now", e);
-            swap.stop();
-            isRunning = false;
             return;
         }
 
@@ -102,7 +89,6 @@ public class BluetoothServer extends Thread {
                 Log.e(TAG, "Error receiving client connection over Bluetooth server socket, will continue listening for other clients", e);
             }
         }
-        isRunning = false;
     }
 
     private static class ClientConnection extends Thread {

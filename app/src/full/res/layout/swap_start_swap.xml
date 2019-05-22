@@ -42,7 +42,7 @@
                     android:id="@+id/bluetooth_visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/swap_visible_bluetooth"
+                    tools:text="@string/swap_not_visible_bluetooth"
                     android:textSize="18sp"/>
 
             <TextView
@@ -169,7 +169,7 @@
                 android:background="@android:color/transparent"/>
 
         <Button
-                android:id="@+id/btn_qr_scanner"
+                android:id="@+id/btn_scan_qr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_qr_grey"
