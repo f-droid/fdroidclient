@@ -484,7 +484,11 @@ public class SwapService extends Service {
         }
     }
 
-    private void initTimer() {
+    /**
+     * Sets or resets the idel timer for {@link #TIMEOUT}ms, once the timer
+     * expires, this service and all things that rely on it will be stopped.
+     */
+    public void initTimer() {
         if (timer != null) {
             Utils.debugLog(TAG, "Cancelling existing timeout timer so timeout can be reset.");
             timer.cancel();

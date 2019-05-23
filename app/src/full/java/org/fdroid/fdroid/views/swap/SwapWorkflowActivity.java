@@ -472,6 +472,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void inflateSwapView(@LayoutRes int viewRes) {
+        getSwapService().initTimer();
+
         container.removeAllViews();
         View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (SwapView) view;
