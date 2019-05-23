@@ -659,7 +659,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
             swapWith(peer);
         } else {
-            getSwapService().swapWith(repoConfig.toPeer());
+            getSwapService().swapWith(peer);
             startSwappingWithPeer();
         }
     }
@@ -1286,10 +1286,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     status == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
                 progressBar.setVisibility(View.GONE);
                 tryAgainButton.setVisibility(View.VISIBLE);
+                getSwapService().removeCurrentPeerFromActive();
                 return;
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 tryAgainButton.setVisibility(View.GONE);
+                getSwapService().addCurrentPeerToActive();
             }
 
             if (status == UpdateService.STATUS_COMPLETE_AND_SAME

@@ -230,6 +230,14 @@ public class SwapService extends Service {
         this.peer = peer;
     }
 
+    public void addCurrentPeerToActive() {
+        activePeers.add(peer);
+    }
+
+    public void removeCurrentPeerFromActive() {
+        activePeers.remove(peer);
+    }
+
     public boolean isConnectingWithPeer() {
         return peer != null;
     }
