@@ -58,6 +58,7 @@ public class SwapService extends Service {
     private static final String KEY_BLUETOOTH_ENABLED = "bluetoothEnabled";
     private static final String KEY_WIFI_ENABLED = "wifiEnabled";
     private static final String KEY_BLUETOOTH_ENABLED_BEFORE_SWAP = "bluetoothEnabledBeforeSwap";
+    private static final String KEY_BLUETOOTH_NAME_BEFORE_SWAP = "bluetoothNameBeforeSwap";
     private static final String KEY_WIFI_ENABLED_BEFORE_SWAP = "wifiEnabledBeforeSwap";
 
     @NonNull
@@ -299,6 +300,14 @@ public class SwapService extends Service {
 
     public static void putBluetoothEnabledBeforeSwap(boolean visible) {
         swapPreferences.edit().putBoolean(SwapService.KEY_BLUETOOTH_ENABLED_BEFORE_SWAP, visible).apply();
+    }
+
+    public static String getBluetoothNameBeforeSwap() {
+        return swapPreferences.getString(SwapService.KEY_BLUETOOTH_NAME_BEFORE_SWAP, null);
+    }
+
+    public static void putBluetoothNameBeforeSwap(String name) {
+        swapPreferences.edit().putString(SwapService.KEY_BLUETOOTH_NAME_BEFORE_SWAP, name).apply();
     }
 
     public static boolean wasWifiEnabledBeforeSwap() {

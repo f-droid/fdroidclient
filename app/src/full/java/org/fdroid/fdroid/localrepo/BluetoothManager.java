@@ -86,6 +86,10 @@ public class BluetoothManager {
                 localBroadcastManager.registerReceiver(bluetoothDeviceFound,
                         new IntentFilter(BluetoothDevice.ACTION_FOUND));
                 bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                String name = bluetoothAdapter.getName();
+                if (name != null) {
+                    SwapService.putBluetoothNameBeforeSwap(name);
+                }
                 if (!bluetoothAdapter.enable()) {
                     sendBroadcast(STATUS_ERROR, context.getString(R.string.swap_error_cannot_start_bluetooth));
                     return;
@@ -112,6 +116,10 @@ public class BluetoothManager {
                     bluetoothAdapter.cancelDiscovery();
                     if (!SwapService.wasBluetoothEnabledBeforeSwap()) {
                         bluetoothAdapter.disable();
+                    }
+                    String name = SwapService.getBluetoothNameBeforeSwap();
+                    if (name != null) {
+                        bluetoothAdapter.setName(name);
                     }
                 }
                 handlerThread.quit();
