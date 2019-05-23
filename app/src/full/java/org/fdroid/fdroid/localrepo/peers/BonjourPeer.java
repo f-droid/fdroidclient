@@ -29,15 +29,6 @@ public class BonjourPeer extends WifiPeer {
     }
 
     @Override
-    public boolean equals(Object peer) {
-        if (peer instanceof BonjourPeer) {
-            BonjourPeer that = (BonjourPeer) peer;
-            return TextUtils.equals(this.getFingerprint(), that.getFingerprint());
-        }
-        return false;
-    }
-
-    @Override
     public int hashCode() {
         String fingerprint = getFingerprint();
         if (fingerprint == null) {
