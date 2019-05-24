@@ -2,7 +2,7 @@
 
 * Verbesserte Leistung auf Geräten mit wenig Speicher
 
-* Alle Downloads respektieren "Nur über WLAN"-Vorgabe
+* Alle Downloads respektieren „Nur über WLAN“-Vorgabe
 
 * Geringere Speicherauslastung bei wenig Speicher
 

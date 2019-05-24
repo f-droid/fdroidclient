@@ -2,7 +2,7 @@
 
 * Direkttausch-Korrekturen und Verbesserungen
 
-* Weitere Verbesserung der "App-Details"
+* Weitere Verbesserung der „App-Details“
 
 * Sprach- und Übersetzungsverbesserung zu Direkt und Tausch
 

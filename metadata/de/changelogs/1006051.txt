@@ -1,0 +1,3 @@
+* Aktualisierte Übersetzungen
+* Probleme mit der Button-Größe behoben #1678
+* Zufällige Hintergrundabstürze beendet

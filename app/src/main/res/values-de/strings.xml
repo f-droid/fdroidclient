@@ -12,9 +12,9 @@
     <string name="notify">Aktualisierungsbenachrichtigung</string>
     <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
     <string name="system_installer">Rechteerweiterung</string>
-    <string name="system_installer_on">Verwenden Sie die Rechteerweiterung, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
+    <string name="system_installer_on">Rechteerweiterung verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
     <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
-    <string name="local_repo_name_summary">Der verwendete Titel Ihrer lokalen Paketquelle: %s</string>
+    <string name="local_repo_name_summary">Der Titel Ihrer lokalen Paketquelle lautet: %s</string>
     <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
     <string name="app_details">App-Details</string>
     <string name="no_such_app">Keine solche App gefunden.</string>
@@ -47,8 +47,8 @@
     <string name="menu_share">Empfehlen</string>
     <string name="menu_install">Installieren</string>
     <string name="menu_uninstall">Entfernen</string>
-    <string name="menu_ignore_all">Alle Aktua. ignorieren</string>
-    <string name="menu_ignore_this">Diese Aktua. ignorieren</string>
+    <string name="menu_ignore_all">Alle Updates ignorieren</string>
+    <string name="menu_ignore_this">Dieses Update ignorieren</string>
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
@@ -101,8 +101,8 @@
     <string name="repo_description">Beschreibung</string>
     <string name="repo_last_update">Letzte Aktualisierung</string>
     <string name="repo_name">Name</string>
-    <string name="unsigned_description">Die Liste der Apps konnte nicht überprüft werden. Sie sollten bei Apps vorsichtig sein, wenn sie aus nicht signierten Quellen heruntergeladen wurden.</string>
-    <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
+    <string name="unsigned_description">Die Liste der Apps konnte nicht überprüft werden. Sie sollten bei Apps vorsichtig sein, die aus nicht signierten Quellen heruntergeladen wurden.</string>
+    <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
     <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
     <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden. 
@@ -186,7 +186,7 @@
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
     <string name="system_install_denied_permissions">Der Erweiterung wurden keine Sonderrechte erteilt! Bitte einen Fehlerbericht erstellen!</string>
-    <string name="swap_nfc_title">Berühren, um zu tauschen</string>
+    <string name="swap_nfc_title">Tausche durch Berührung</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
     <string name="swap_active_hotspot">%1$s (Ihr Hotspot)</string>
@@ -267,8 +267,8 @@
     <string name="keep_install_history_summary">Ein Protokoll zu allen Installationen und Deinstallationen in einem privaten Speicher anlegen</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
-    <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee kaufen!</string>
-    <string name="app_details_donate_prompt">Spendieren Sie %2$s einen Kaffee für die Erstellung von %1$s!</string>
+    <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
+    <string name="app_details_donate_prompt">%2$s einen Kaffee für die Erstellung von %1$s spendieren!</string>
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
     <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
@@ -294,7 +294,7 @@
     <string name="clear_search">Suche löschen</string>
     <string name="main_menu__latest_apps">Neueste</string>
     <string name="main_menu__categories">Kategorien</string>
-    <string name="main_menu__updates">Aktualisierungen</string>
+    <string name="main_menu__updates">Aufgaben</string>
     <string name="main_menu__swap_nearby">Direkt</string>
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
@@ -370,7 +370,7 @@
     <string name="by_author_format">von %s</string>
     <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
     <string name="force_old_index">Altes Index-Format erzwingen</string>
-    <string name="force_old_index_summary">Sollten Fehler oder Kompatibilitätsprobleme auftauchen, bitte den XML-App-Index verwenden.</string>
+    <string name="force_old_index_summary">Bei Fehlern oder Kompatibilitätsproblemen den XML-App-Index verwenden.</string>
     <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation!</string>
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
@@ -416,7 +416,7 @@
     <string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
     <string name="repo_add_mirror">Mirror hinzufügen</string>
     <string name="repo_exists_add_fingerprint">%1$s ist bereits eingerichtet, dies fügt neue Schlüsselinformationen hinzu.</string>
-    <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie, dass Sie erneut aktivieren möchten.</string>
+    <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie die erneute Aktivierung.</string>
     <string name="repo_exists_and_enabled">%1$s ist bereits eingerichtet und aktiviert.</string>
     <string name="repo_exists_add_mirror">Dies ist eine Kopie von %1$s, als Spiegel hinzufügen?</string>
     <string name="show_anti_feature_apps">Apps mit unerwünschten Merkmalen</string>
