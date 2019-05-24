@@ -26,25 +26,17 @@ import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.BluetoothManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import rx.Subscriber;
-import rx.Subscription;
 
 import java.util.ArrayList;
 
 @SuppressWarnings("LineLength")
 public class StartSwapView extends SwapView {
-
     private static final String TAG = "StartSwapView";
-
-    // TODO: Is there a way to guarantee which of these constructors the inflater will call?
-    // Especially on different API levels? It would be nice to only have the one which accepts
-    // a Context, but I'm not sure if that is correct or not. As it stands, this class provides
-    // constructors which match each of the ones available in the parent class.
-    // The same is true for the other views in the swap process too.
 
     public StartSwapView(Context context) {
         super(context);
@@ -63,7 +55,7 @@ public class StartSwapView extends SwapView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
+    class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
 
         PeopleNearbyAdapter(Context context) {
             super(context, 0, new ArrayList<Peer>());
@@ -83,19 +75,12 @@ public class StartSwapView extends SwapView {
 
             return convertView;
         }
-
-    }
-
-    private SwapService getManager() {
-        return getActivity().getState();
     }
 
     @Nullable /* Emulators typically don't have bluetooth adapters */
     private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
-    private SwitchCompat wifiSwitch;
     private SwitchCompat bluetoothSwitch;
-    private TextView textWifiVisible;
     private TextView viewBluetoothId;
     private TextView textBluetoothVisible;
     private TextView viewWifiId;
@@ -107,54 +92,17 @@ public class StartSwapView extends SwapView {
     private PeopleNearbyAdapter peopleNearbyAdapter;
 
     /**
-     * When peers are emitted by the peer finder, add them to the adapter
-     * so that they will show up in the list of peers.
-     */
-    private final Subscriber<Peer> onPeerFound = new Subscriber<Peer>() {
-
-        @Override
-        public void onCompleted() {
-            uiShowNotSearchingForPeers();
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            uiShowNotSearchingForPeers();
-        }
-
-        @Override
-        public void onNext(Peer peer) {
-            Utils.debugLog(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
-            peopleNearbyAdapter.add(peer);
-        }
-    };
-
-    private Subscription peerFinderSubscription;
-
-    /**
      * Remove relevant listeners/subscriptions/etc so that they do not receive and process events
      * when this view is not in use.
      * <p>
-     * TODO: Not sure if this is the best place to handle being removed from the view.
      */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (peerFinderSubscription != null) {
-            peerFinderSubscription.unsubscribe();
-            peerFinderSubscription = null;
-        }
-
-        if (wifiSwitch != null) {
-            wifiSwitch.setOnCheckedChangeListener(null);
-        }
-
         if (bluetoothSwitch != null) {
             bluetoothSwitch.setOnCheckedChangeListener(null);
         }
 
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(onWifiSwapStateChanged);
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(onBluetoothSwapStateChanged);
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(onWifiNetworkChanged);
     }
 
@@ -162,15 +110,10 @@ public class StartSwapView extends SwapView {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        if (peerFinderSubscription == null) {
-            peerFinderSubscription = getManager().scanForPeers().subscribe(onPeerFound);
-        }
-
         uiInitPeers();
         uiInitBluetooth();
         uiInitWifi();
         uiInitButtons();
-        uiShowSearchingForPeers();
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 onWifiNetworkChanged, new IntentFilter(WifiStateChangeService.BROADCAST));
@@ -190,13 +133,6 @@ public class StartSwapView extends SwapView {
                 getActivity().sendFDroid();
             }
         });
-
-        findViewById(R.id.btn_qr_scanner).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().startQrWorkflow();
-            }
-        });
     }
 
     /**
@@ -211,6 +147,7 @@ public class StartSwapView extends SwapView {
 
         peopleNearbyAdapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(peopleNearbyAdapter);
+        peopleNearbyAdapter.addAll(getActivity().getSwapService().getActivePeers());
 
         peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -219,11 +156,6 @@ public class StartSwapView extends SwapView {
                 onPeerSelected(peer);
             }
         });
-    }
-
-    private void uiShowSearchingForPeers() {
-        peopleNearbyText.setText(getContext().getString(R.string.swap_scanning_for_peers));
-        peopleNearbyProgress.setVisibility(View.VISIBLE);
     }
 
     private void uiShowNotSearchingForPeers() {
@@ -238,68 +170,22 @@ public class StartSwapView extends SwapView {
     private void uiInitBluetooth() {
         if (bluetooth != null) {
 
-            textBluetoothVisible = (TextView) findViewById(R.id.bluetooth_visible);
-
             viewBluetoothId = (TextView) findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
             viewBluetoothId.setVisibility(bluetooth.isEnabled() ? View.VISIBLE : View.GONE);
 
-            int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
-            textBluetoothVisible.setText(textResource);
+            textBluetoothVisible = findViewById(R.id.bluetooth_visible);
 
             bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
-            Utils.debugLog(TAG, getManager().isBluetoothDiscoverable()
-                    ? "Initially marking switch as checked, because Bluetooth is discoverable."
-                    : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
             bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
-            setBluetoothSwitchState(getManager().isBluetoothDiscoverable(), true);
-
-            LocalBroadcastManager.getInstance(getContext()).registerReceiver(onBluetoothSwapStateChanged, new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
-
+            bluetoothSwitch.setChecked(SwapService.getBluetoothVisibleUserPreference());
+            bluetoothSwitch.setEnabled(true);
+            bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
         } else {
             findViewById(R.id.bluetooth_info).setVisibility(View.GONE);
         }
     }
 
-    /**
-     * @see StartSwapView#onWifiSwapStateChanged
-     */
-    private final BroadcastReceiver onBluetoothSwapStateChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
-                Utils.debugLog(TAG, "Bluetooth service is starting (setting toggle to disabled, not checking because we will wait for an intent that bluetooth is actually enabled)");
-                bluetoothSwitch.setEnabled(false);
-                textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
-                // bluetoothSwitch.setChecked(true);
-            } else {
-                if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
-                    Utils.debugLog(TAG, "Bluetooth service has started (updating text to visible, but not marking as checked).");
-                    textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
-                    bluetoothSwitch.setEnabled(true);
-                    // bluetoothSwitch.setChecked(true);
-                } else {
-                    Utils.debugLog(TAG, "Bluetooth service has stopped (setting switch to not-visible).");
-                    textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
-                    setBluetoothSwitchState(false, true);
-                }
-            }
-        }
-    };
-
-    /**
-     * @see StartSwapView#setWifiSwitchState(boolean, boolean)
-     */
-    private void setBluetoothSwitchState(boolean isChecked, boolean isEnabled) {
-        bluetoothSwitch.setOnCheckedChangeListener(null);
-        bluetoothSwitch.setChecked(isChecked);
-        bluetoothSwitch.setEnabled(isEnabled);
-        bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
-    }
-
-    /**
-     * @see StartSwapView#onWifiSwitchToggled
-     */
     private final CompoundButton.OnCheckedChangeListener onBluetoothSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -312,7 +198,7 @@ public class StartSwapView extends SwapView {
                 // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
             } else {
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, disabling Bluetooth swap.");
-                getManager().getBluetoothSwap().stop();
+                BluetoothManager.stop(getContext());
                 textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                 viewBluetoothId.setVisibility(View.GONE);
                 Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");
@@ -326,105 +212,8 @@ public class StartSwapView extends SwapView {
         viewWifiId = (TextView) findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView) findViewById(R.id.wifi_network);
 
-        wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
-        wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
-        setWifiSwitchState(getManager().isBonjourDiscoverable(), true);
-
-        textWifiVisible = (TextView) findViewById(R.id.wifi_visible);
-        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
-        textWifiVisible.setText(textResource);
-
-        // Note that this is only listening for the WifiSwap, whereas we start both the WifiSwap
-        // and the Bonjour service at the same time. Technically swap will work fine without
-        // Bonjour, and that is more of a convenience. Thus, we should show feedback once wifi
-        // is ready, even if Bonjour is not yet.
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(onWifiSwapStateChanged,
-                new IntentFilter(SwapService.WIFI_STATE_CHANGE));
-
-        viewWifiNetwork.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().promptToSelectWifiNetwork();
-            }
-        });
-
         uiUpdateWifiNetwork();
     }
-
-    /**
-     * When the WiFi swap service is started or stopped, update the UI appropriately.
-     * This includes both the in-transit states of "Starting" and "Stopping". In these two cases,
-     * the UI should be disabled to prevent the user quickly switching back and forth - causing
-     * multiple start/stop actions to be sent to the swap service.
-     */
-    private final BroadcastReceiver onWifiSwapStateChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
-                Utils.debugLog(TAG, "WiFi service is starting (setting toggle to checked, but disabled).");
-                textWifiVisible.setText(R.string.swap_setting_up_wifi);
-                setWifiSwitchState(true, false);
-            } else if (intent.hasExtra(SwapService.EXTRA_STOPPING)) {
-                Utils.debugLog(TAG, "WiFi service is stopping (setting toggle to unchecked and disabled).");
-                textWifiVisible.setText(R.string.swap_stopping_wifi);
-                setWifiSwitchState(false, false);
-            } else {
-                if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
-                    Utils.debugLog(TAG, "WiFi service has started (setting toggle to visible).");
-                    textWifiVisible.setText(R.string.swap_visible_wifi);
-                    setWifiSwitchState(true, true);
-                } else {
-                    Utils.debugLog(TAG, "WiFi service has stopped (setting toggle to not-visible).");
-                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                    setWifiSwitchState(false, true);
-                }
-            }
-            uiUpdateWifiNetwork();
-        }
-    };
-
-    /**
-     * Helper function to set the "enable wifi" switch, but prevents the listeners from
-     * being notified. This enables the UI to be updated without triggering further enable/disable
-     * events being queued.
-     * <p>
-     * This is required because the SwitchCompat and its parent classes will always try to notify
-     * their listeners if there is one (e.g. http://stackoverflow.com/a/15523518).
-     * <p>
-     * The fact that this method also deals with enabling/disabling the switch is more of a convenience
-     * Nigh on all times this UI wants to change the state of the switch, it is also interested in
-     * ensuring the enabled state of the switch.
-     */
-    private void setWifiSwitchState(boolean isChecked, boolean isEnabled) {
-        wifiSwitch.setOnCheckedChangeListener(null);
-        wifiSwitch.setChecked(isChecked);
-        wifiSwitch.setEnabled(isEnabled);
-        wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
-    }
-
-    /**
-     * When the wifi switch is:
-     * <p>
-     * Toggled on: Ask the swap service to ensure wifi swap is running.
-     * Toggled off: Ask the swap service to prevent the wifi swap service from running.
-     * <p>
-     * Both of these actions will be performed in a background thread which will send broadcast
-     * intents when they are completed.
-     */
-    private final CompoundButton.OnCheckedChangeListener onWifiSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
-                Utils.debugLog(TAG, "Received onCheckChanged(true) for WiFi swap, asking in background thread to ensure WiFi swap is running.");
-                getManager().getWifiSwap().ensureRunningInBackground();
-            } else {
-                Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
-                getManager().getWifiSwap().stopInBackground();
-            }
-            SwapService.putWifiVisibleUserPreference(isChecked);
-            uiUpdateWifiNetwork();
-        }
-    };
 
     private void uiUpdateWifiNetwork() {
 

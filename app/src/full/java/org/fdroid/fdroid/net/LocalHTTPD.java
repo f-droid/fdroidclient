@@ -49,6 +49,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -80,7 +81,7 @@ public class LocalHTTPD extends NanoHTTPD {
      */
     public static final String[] INDEX_FILE_NAMES = {"index.html"};
 
-    private final Context context;
+    private final WeakReference<Context> context;
 
     protected List<File> rootDirs;
 
@@ -101,7 +102,7 @@ public class LocalHTTPD extends NanoHTTPD {
     public LocalHTTPD(Context context, String hostname, int port, File webRoot, boolean useHttps) {
         super(hostname, port);
         rootDirs = Collections.singletonList(webRoot);
-        this.context = context.getApplicationContext();
+        this.context = new WeakReference<>(context.getApplicationContext());
         if (useHttps) {
             enableHTTPS();
         }
@@ -370,7 +371,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     return newFixedLengthResponse(Response.Status.BAD_REQUEST, MIME_PLAINTEXT,
                             "Requires 'repo' parameter to be posted.");
                 }
-                SwapWorkflowActivity.requestSwap(context, session.getParms().get("repo"));
+                SwapWorkflowActivity.requestSwap(context.get(), session.getParms().get("repo"));
                 return newFixedLengthResponse(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
         }
         return newFixedLengthResponse("");
@@ -491,7 +492,7 @@ public class LocalHTTPD extends NanoHTTPD {
 
     private void enableHTTPS() {
         try {
-            LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
+            LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context.get());
             SSLServerSocketFactory factory = NanoHTTPD.makeSSLSocketFactory(
                     localRepoKeyStore.getKeyStore(),
                     localRepoKeyStore.getKeyManagers());

@@ -1,16 +1,34 @@
 package org.fdroid.fdroid.localrepo.peers;
 
+import android.bluetooth.BluetoothClass.Device;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
-
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
 public class BluetoothPeer implements Peer {
 
+    private static final String BLUETOOTH_NAME_TAG = "FDroid:";
+
     private final BluetoothDevice device;
 
-    public BluetoothPeer(BluetoothDevice device) {
+    /**
+     * Return a instance if the {@link BluetoothDevice} is a device that could
+     * host a swap repo.
+     */
+    @Nullable
+    public static BluetoothPeer getInstance(@Nullable BluetoothDevice device) {
+        if (device != null && device.getName() != null &&
+                (device.getBluetoothClass().getDeviceClass() == Device.COMPUTER_HANDHELD_PC_PDA
+                        || device.getBluetoothClass().getDeviceClass() == Device.COMPUTER_PALM_SIZE_PC_PDA
+                        || device.getBluetoothClass().getDeviceClass() == Device.PHONE_SMART)) {
+            return new BluetoothPeer(device);
+        }
+        return null;
+    }
+
+    private BluetoothPeer(BluetoothDevice device) {
         this.device = device;
     }
 
@@ -21,7 +39,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getName() {
-        return device.getName().replaceAll("^" + BluetoothSwap.BLUETOOTH_NAME_TAG, "");
+        return device.getName().replaceAll("^" + BLUETOOTH_NAME_TAG, "");
     }
 
     @Override
@@ -31,9 +49,8 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public boolean equals(Object peer) {
-        return peer != null
-                && peer instanceof BluetoothPeer
-                && ((BluetoothPeer) peer).device.getAddress().equals(device.getAddress());
+        return peer instanceof BluetoothPeer
+                && TextUtils.equals(((BluetoothPeer) peer).device.getAddress(), device.getAddress());
     }
 
     @Override
@@ -48,7 +65,7 @@ public class BluetoothPeer implements Peer {
 
     /**
      * Return the fingerprint of the signing key, or {@code null} if it is not set.
-     *
+     * <p>
      * This is not yet stored for Bluetooth connections. Once a device is connected to a bluetooth
      * socket, if we trust it enough to accept a fingerprint from it somehow, then we may as well
      * trust it enough to receive an index from it that contains a fingerprint we can use.

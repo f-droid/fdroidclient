@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +12,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -21,6 +21,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.CursorAdapter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -41,14 +41,20 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.SwapView;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
+/**
+ * This is a view that shows a listing of all apps in the swap repo that this
+ * just connected to.  The app listing and search should be replaced by
+ * {@link org.fdroid.fdroid.views.apps.AppListActivity}'s plumbing.
+ */
+// TODO merge this with AppListActivity, perhaps there could be AppListView?
 public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "SwapAppsView";
 
@@ -71,19 +77,11 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
 
     private Repo repo;
     private AppListAdapter adapter;
-    private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        repo = getActivity().getState().getPeerRepo();
-
-        /*
-        if (repo == null) {
-            TODO: Uh oh, something stuffed up for this to happen.
-            TODO: What is the best course of action from here?
-        }
-        */
+        repo = getActivity().getSwapService().getPeerRepo();
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
                 AppProvider.getRepoUri(repo), AppMetadataTable.Cols.ALL, null, null, null));
@@ -95,8 +93,6 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
-
-        schedulePollForUpdates();
     }
 
     /**
@@ -110,29 +106,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
     }
 
-    private void pollForUpdates() {
-        if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals(BuildConfig.APPLICATION_ID))) { // NOCHECKSTYLE LineLength
-            Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
-            return;
-        }
-
-        Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
-        getActivity().getService().refreshSwap();
-    }
-
-    private void schedulePollForUpdates() {
-        Utils.debugLog(TAG, "Scheduling poll for updated swap repo in 5 seconds.");
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Looper.prepare();
-                pollForUpdates();
-                Looper.loop();
-            }
-        }, 5000);
-    }
-
+    @NonNull
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
         Uri uri = TextUtils.isEmpty(currentFilterString)
@@ -144,12 +118,12 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adapter.swapCursor(null);
     }
 
@@ -172,7 +146,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             TextView statusInstalled;
             TextView statusIncompatible;
 
-            private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            private class DownloadReceiver extends BroadcastReceiver {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     switch (intent.getAction()) {
@@ -194,9 +168,14 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             }
                             break;
                         case Downloader.ACTION_COMPLETE:
+                            localBroadcastManager.unregisterReceiver(this);
                             resetView();
+                            statusInstalled.setText(R.string.installing);
+                            statusInstalled.setVisibility(View.VISIBLE);
+                            btnInstall.setVisibility(View.GONE);
                             break;
                         case Downloader.ACTION_INTERRUPTED:
+                            localBroadcastManager.unregisterReceiver(this);
                             if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
                                 String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
                                         + " " + intent.getDataString();
@@ -210,9 +189,8 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                         default:
                             throw new RuntimeException("intent action not handled!");
                     }
-
                 }
-            };
+            }
 
             private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
@@ -244,9 +222,48 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     }
 
                     if (apk != null) {
-                        // TODO unregister receivers? or will they just die with this instance
-                        IntentFilter downloadFilter = DownloaderService.getIntentFilter(apk.getCanonicalUrl());
-                        localBroadcastManager.registerReceiver(downloadReceiver, downloadFilter);
+                        localBroadcastManager.registerReceiver(new DownloadReceiver(),
+                                DownloaderService.getIntentFilter(apk.getCanonicalUrl()));
+                        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                switch (intent.getAction()) {
+                                    case Installer.ACTION_INSTALL_STARTED:
+                                        statusInstalled.setText(R.string.installing);
+                                        statusInstalled.setVisibility(View.VISIBLE);
+                                        btnInstall.setVisibility(View.GONE);
+                                        progressView.setIndeterminate(true);
+                                        progressView.setVisibility(View.VISIBLE);
+                                        break;
+                                    case Installer.ACTION_INSTALL_USER_INTERACTION:
+                                        PendingIntent installPendingIntent =
+                                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                                        try {
+                                            installPendingIntent.send();
+                                        } catch (PendingIntent.CanceledException e) {
+                                            Log.e(TAG, "PI canceled", e);
+                                        }
+                                        break;
+                                    case Installer.ACTION_INSTALL_COMPLETE:
+                                        localBroadcastManager.unregisterReceiver(this);
+                                        statusInstalled.setText(R.string.app_installed);
+                                        statusInstalled.setVisibility(View.VISIBLE);
+                                        btnInstall.setVisibility(View.GONE);
+                                        progressView.setVisibility(View.GONE);
+                                        break;
+                                    case Installer.ACTION_INSTALL_INTERRUPTED:
+                                        localBroadcastManager.unregisterReceiver(this);
+                                        statusInstalled.setVisibility(View.GONE);
+                                        btnInstall.setVisibility(View.VISIBLE);
+                                        progressView.setVisibility(View.GONE);
+                                        String errorMessage = intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+                                        if (errorMessage != null) {
+                                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                                        }
+                                        break;
+                                }
+                            }
+                        }, Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
                     }
 
                     // NOTE: Instead of continually unregistering and re-registering the observer
@@ -260,6 +277,25 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 }
                 resetView();
             }
+
+            private final OnClickListener cancelListener = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (apk != null) {
+                        InstallManagerService.cancel(getContext(), apk.getCanonicalUrl());
+                    }
+                }
+            };
+
+            private final OnClickListener installListener = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (apk != null && (app.hasUpdates() || app.compatible)) {
+                        showProgress();
+                        InstallManagerService.queue(getContext(), app, apk);
+                    }
+                }
+            };
 
             private void resetView() {
 
@@ -279,39 +315,38 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);
                     btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(installListener);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.GONE);
                 } else if (app.isInstalled(getContext())) {
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.VISIBLE);
+                    statusInstalled.setText(R.string.app_installed);
                 } else if (!app.compatible) {
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.VISIBLE);
                     statusInstalled.setVisibility(View.GONE);
+                } else if (progressView.getVisibility() == View.VISIBLE) {
+                    btnInstall.setText(R.string.cancel);
+                    btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(cancelListener);
+                    statusIncompatible.setVisibility(View.GONE);
+                    statusInstalled.setVisibility(View.GONE);
                 } else {
                     btnInstall.setText(R.string.menu_install);
                     btnInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setOnClickListener(installListener);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.GONE);
                 }
-
-                OnClickListener installListener = new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (apk != null && (app.hasUpdates() || app.compatible)) {
-                            getActivity().install(app, apk);
-                            showProgress();
-                        }
-                    }
-                };
-
-                btnInstall.setOnClickListener(installListener);
             }
 
             private void showProgress() {
+                btnInstall.setText(R.string.cancel);
+                btnInstall.setVisibility(View.VISIBLE);
+                btnInstall.setOnClickListener(cancelListener);
                 progressView.setVisibility(View.VISIBLE);
-                btnInstall.setVisibility(View.GONE);
                 statusInstalled.setVisibility(View.GONE);
                 statusIncompatible.setVisibility(View.GONE);
             }
@@ -372,17 +407,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                         }
                     });
                     break;
-
-                case UpdateService.STATUS_ERROR_GLOBAL:
-                    // TODO: Well, if we can't get the index, we probably can't swapp apps.
-                    // Tell the user something helpful?
-                    break;
-
-                case UpdateService.STATUS_COMPLETE_AND_SAME:
-                    schedulePollForUpdates();
-                    break;
             }
         }
     };
-
 }

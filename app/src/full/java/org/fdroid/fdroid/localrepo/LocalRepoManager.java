@@ -21,6 +21,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.InstalledApp;
+import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -41,10 +43,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
@@ -69,7 +71,7 @@ public final class LocalRepoManager {
             "swap-tick-not-done.png",
     };
 
-    private final Map<String, App> apps = new HashMap<>();
+    private final Map<String, App> apps = new ConcurrentHashMap<>();
 
     private final SanitizedFile xmlIndexJar;
     private final SanitizedFile xmlIndexJarUnsigned;
@@ -246,6 +248,10 @@ public final class LocalRepoManager {
         return xmlIndexJar;
     }
 
+    public File getWebRoot() {
+        return webRoot;
+    }
+
     public void deleteRepo() {
         deleteContents(repoDir);
     }
@@ -270,12 +276,10 @@ public final class LocalRepoManager {
     }
 
     public void addApp(Context context, String packageName) {
-        App app;
+        App app = null;
         try {
-            app = SwapService.getAppFromCache(packageName);
-            if (app == null) {
-                app = App.getInstance(context.getApplicationContext(), pm, packageName);
-            }
+            InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(context, packageName);
+            app = App.getInstance(context, pm, installedApp, packageName);
             if (app == null || !app.isValid()) {
                 return;
             }

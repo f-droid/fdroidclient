@@ -37,6 +37,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.Utils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -76,10 +77,15 @@ public class LocalHTTPDTest {
     private static Thread serverStartThread;
     private static File webRoot;
 
+    private final int port = 38723;
+    private final String baseUrl = "http://localhost:" + port;
+
     @Before
     public void setUp() throws Exception {
         ShadowLog.stream = System.out;
         classLoader = getClass().getClassLoader();
+
+        assertFalse(Utils.isServerSocketInUse(port));
 
         final Context context = RuntimeEnvironment.application.getApplicationContext();
         webRoot = context.getFilesDir();
@@ -99,7 +105,7 @@ public class LocalHTTPDTest {
                 localHttpd = new LocalHTTPD(
                         context,
                         "localhost",
-                        8888,
+                        port,
                         webRoot,
                         false);
                 try {
@@ -112,7 +118,9 @@ public class LocalHTTPDTest {
         });
         serverStartThread.start();
         // give the server some tine to start.
-        Thread.sleep(100);
+        do {
+            Thread.sleep(100);
+        } while (!Utils.isServerSocketInUse(port));
     }
 
     @After
@@ -125,7 +133,7 @@ public class LocalHTTPDTest {
 
     @Test
     public void doTest404() throws Exception {
-        HttpURLConnection connection = getNoKeepAliveConnection("http://localhost:8888/xxx/yyy.html");
+        HttpURLConnection connection = getNoKeepAliveConnection(baseUrl + "/xxx/yyy.html");
         connection.setReadTimeout(5000);
         connection.connect();
         Assert.assertEquals(404, connection.getResponseCode());
@@ -134,14 +142,14 @@ public class LocalHTTPDTest {
 
     @Test
     public void doSomeBasicTest() throws Exception {
-        URL url = new URL("http://localhost:8888/testdir/test.html");
+        URL url = new URL(baseUrl + "/testdir/test.html");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         String string = IOUtils.toString(connection.getInputStream(), "UTF-8");
         Assert.assertEquals("<html>\n<head>\n<title>dummy</title>\n</head>\n<body>\n\t<h1>it works</h1>\n</body>\n</html>", string);
         connection.disconnect();
 
-        url = new URL("http://localhost:8888/");
+        url = new URL(baseUrl + "/");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         string = IOUtils.toString(connection.getInputStream(), "UTF-8");
@@ -149,7 +157,7 @@ public class LocalHTTPDTest {
         assertTrue(string.indexOf("testdir") > 0);
         connection.disconnect();
 
-        url = new URL("http://localhost:8888/testdir");
+        url = new URL(baseUrl + "/testdir");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         string = IOUtils.toString(connection.getInputStream(), "UTF-8");
@@ -158,7 +166,7 @@ public class LocalHTTPDTest {
 
         IOUtils.copy(classLoader.getResourceAsStream("index.microg.jar"),
                 new FileOutputStream(new File(webRoot, "index.microg.jar")));
-        url = new URL("http://localhost:8888/index.microg.jar");
+        url = new URL(baseUrl + "/index.microg.jar");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         byte[] actual = IOUtils.toByteArray(connection.getInputStream());
@@ -168,7 +176,7 @@ public class LocalHTTPDTest {
 
         IOUtils.copy(classLoader.getResourceAsStream("extendedPerms.xml"),
                 new FileOutputStream(new File(webRoot, "extendedPerms.xml")));
-        url = new URL("http://localhost:8888/extendedPerms.xml");
+        url = new URL(baseUrl + "/extendedPerms.xml");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         actual = IOUtils.toByteArray(connection.getInputStream());
@@ -183,7 +191,7 @@ public class LocalHTTPDTest {
         String mimeType = "application/vnd.android.package-archive";
         IOUtils.copy(classLoader.getResourceAsStream(fileName),
                 new FileOutputStream(new File(webRoot, fileName)));
-        URL url = new URL("http://localhost:8888/" + fileName);
+        URL url = new URL(baseUrl + "/" + fileName);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("HEAD");
         assertEquals(200, connection.getResponseCode());
@@ -197,7 +205,7 @@ public class LocalHTTPDTest {
         IOUtils.copy(classLoader.getResourceAsStream("index.html"),
                 new FileOutputStream(indexFile));
 
-        URL url = new URL("http://localhost:8888/");
+        URL url = new URL(baseUrl + "/");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("HEAD");
         String mimeType = "text/html";
@@ -211,12 +219,11 @@ public class LocalHTTPDTest {
 
         assertEquals(200, connection.getResponseCode());
         connection.disconnect();
-        Thread.sleep(100000);
     }
 
     @Test
     public void testPostRequest() throws IOException {
-        URL url = new URL("http://localhost:8888/request-swap");
+        URL url = new URL(baseUrl + "/request-swap");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoInput(true);
@@ -224,7 +231,7 @@ public class LocalHTTPDTest {
 
         OutputStream outputStream = connection.getOutputStream();
         OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-        writer.write("repo=http://localhost:8888");
+        writer.write("repo=" + baseUrl);
         writer.flush();
         writer.close();
         outputStream.close();
@@ -235,14 +242,14 @@ public class LocalHTTPDTest {
 
     @Test
     public void testBadPostRequest() throws IOException {
-        URL url = new URL("http://localhost:8888/request-swap");
+        URL url = new URL(baseUrl + "/request-swap");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoInput(true);
         connection.setDoOutput(true);
         OutputStream outputStream = connection.getOutputStream();
         OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-        writer.write("repolkasdfkjhttp://localhost:8888");
+        writer.write("repolkasdfkj" + baseUrl);
         writer.flush();
         writer.close();
         outputStream.close();
@@ -294,7 +301,7 @@ public class LocalHTTPDTest {
     @Test
     public void testURLContainsParentDirectory() throws IOException {
         HttpURLConnection connection = null;
-        URL url = new URL("http://localhost:8888/testdir/../index.html");
+        URL url = new URL(baseUrl + "/testdir/../index.html");
         try {
             connection = (HttpURLConnection) url.openConnection();
             Assert.assertEquals("The response status should be 403(Forbidden), " + "since the server won't serve requests with '../' due to security reasons",
@@ -315,7 +322,7 @@ public class LocalHTTPDTest {
             assertTrue(indexDir.mkdir());
             IOUtils.copy(classLoader.getResourceAsStream("index.html"),
                     new FileOutputStream(new File(indexDir, "index.html")));
-            URL url = new URL("http://localhost:8888/" + dirName);
+            URL url = new URL(baseUrl + "/" + dirName);
             connection = (HttpURLConnection) url.openConnection();
             String responseString = IOUtils.toString(connection.getInputStream(), "UTF-8");
             Assert.assertThat("When the URL ends with a directory, and if an index.html file is present in that directory," + " the server should respond with that file",
@@ -323,7 +330,7 @@ public class LocalHTTPDTest {
 
             IOUtils.copy(classLoader.getResourceAsStream("index.html"),
                     new FileOutputStream(new File(webRoot, "index.html")));
-            url = new URL("http://localhost:8888/");
+            url = new URL(baseUrl + "/");
             connection = (HttpURLConnection) url.openConnection();
             responseString = IOUtils.toString(connection.getInputStream(), "UTF-8");
             Assert.assertThat("When the URL ends with a directory, and if an index.html file is present in that directory,"
@@ -340,7 +347,7 @@ public class LocalHTTPDTest {
     public void testRangeHeaderWithStartPositionOnly() throws IOException {
         HttpURLConnection connection = null;
         try {
-            connection = getNoKeepAliveConnection("http://localhost:8888/testdir/test.html");
+            connection = getNoKeepAliveConnection(baseUrl + "/testdir/test.html");
             connection.addRequestProperty("range", "bytes=10-");
             connection.setReadTimeout(5000);
             String responseString = IOUtils.toString(connection.getInputStream(), "UTF-8");
@@ -365,7 +372,7 @@ public class LocalHTTPDTest {
     public void testRangeStartGreaterThanFileLength() throws IOException {
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("http://localhost:8888/testdir/test.html");
+            URL url = new URL(baseUrl + "/testdir/test.html");
             connection = (HttpURLConnection) url.openConnection();
             connection.addRequestProperty("range", "bytes=1000-");
             connection.connect();
@@ -384,7 +391,7 @@ public class LocalHTTPDTest {
     public void testRangeHeaderWithStartAndEndPosition() throws IOException {
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("http://localhost:8888/testdir/test.html");
+            URL url = new URL(baseUrl + "/testdir/test.html");
             connection = (HttpURLConnection) url.openConnection();
             connection.addRequestProperty("range", "bytes=10-40");
             String responseString = IOUtils.toString(connection.getInputStream(), "UTF-8");
@@ -412,7 +419,7 @@ public class LocalHTTPDTest {
         while (status == -1) {
             System.out.println("testIfNoneMatchHeader connect attempt");
             try {
-                connection = getNoKeepAliveConnection("http://localhost:8888/testdir/test.html");
+                connection = getNoKeepAliveConnection(baseUrl + "/testdir/test.html");
                 connection.setRequestProperty("if-none-match", "*");
                 connection.connect();
                 status = connection.getResponseCode();
@@ -430,7 +437,7 @@ public class LocalHTTPDTest {
     public void testRangeHeaderAndIfNoneMatchHeader() throws IOException {
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("http://localhost:8888/testdir/test.html");
+            URL url = new URL(baseUrl + "/testdir/test.html");
             connection = (HttpURLConnection) url.openConnection();
             connection.addRequestProperty("range", "bytes=10-20");
             connection.addRequestProperty("if-none-match", "*");

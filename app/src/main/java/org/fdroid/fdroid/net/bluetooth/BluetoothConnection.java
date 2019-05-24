@@ -47,7 +47,7 @@ public class BluetoothConnection {
         Utils.closeQuietly(socket);
     }
 
-    public void close() throws IOException {
+    public void close() {
         closeQuietly();
     }
 }

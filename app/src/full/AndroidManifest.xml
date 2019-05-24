@@ -52,6 +52,7 @@
                 android:label="@string/swap"
                 android:name=".views.swap.SwapWorkflowActivity"
                 android:parentActivityName=".views.main.MainActivity"
+                android:launchMode="singleTask"
                 android:theme="@style/SwapTheme.Wizard"
                 android:screenOrientation="portrait"
                 android:configChanges="orientation|keyboardHidden">
@@ -77,8 +78,9 @@
                 android:exported="false"/>
         <service android:name=".localrepo.SwapService"/>
 
+        <service android:name=".localrepo.LocalHTTPDManager"/>
         <service
-                android:name=".localrepo.CacheSwapAppsService"
+                android:name=".localrepo.LocalRepoService"
                 android:exported="false"/>
         <service
                 android:name=".localrepo.TreeUriScannerIntentService"

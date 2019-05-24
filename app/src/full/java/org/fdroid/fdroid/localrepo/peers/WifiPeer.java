@@ -2,7 +2,7 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.net.Uri;
 import android.os.Parcel;
-
+import android.text.TextUtils;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.NewRepoConfig;
 
@@ -24,6 +24,35 @@ public class WifiPeer implements Peer {
         this.name = name;
         this.uri = uri;
         this.shouldPromptForSwapBack = shouldPromptForSwapBack;
+    }
+
+    /**
+     * Return if this instance points to the same device as that instance, even
+     * if some of the configuration details are not the same, like whether one
+     * instance supplies the fingerprint and the other does not, then use IP
+     * address and port number.
+     */
+    @Override
+    public boolean equals(Object peer) {
+        if (peer instanceof BluetoothPeer) {
+            return false;
+        }
+        String fingerprint = getFingerprint();
+        if (this instanceof BonjourPeer && peer instanceof BonjourPeer) {
+            BonjourPeer that = (BonjourPeer) peer;
+            return TextUtils.equals(this.getFingerprint(), that.getFingerprint());
+        } else {
+            WifiPeer that = (WifiPeer) peer;
+            if (!TextUtils.isEmpty(fingerprint) && TextUtils.equals(this.getFingerprint(), that.getFingerprint())) {
+                return true;
+            }
+            return TextUtils.equals(this.getRepoAddress(), that.getRepoAddress());
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return (uri.getHost() + uri.getPort()).hashCode();
     }
 
     @Override

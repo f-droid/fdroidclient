@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.NfcView
+<org.fdroid.fdroid.localrepo.SwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarTitle="@string/swap_nfc_title"
@@ -35,4 +35,4 @@
             android:layout_below="@+id/text_description"
             android:layout_centerHorizontal="true"/>
 
-</org.fdroid.fdroid.views.swap.NfcView>
+</org.fdroid.fdroid.localrepo.SwapView>

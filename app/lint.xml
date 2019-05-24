@@ -40,6 +40,8 @@
 
     <issue id="PluralsCandidate" severity="error"/>
     <issue id="HardcodedText" severity="error"/>
+    <issue id="RtlCompat" severity="error"/>
+    <issue id="RtlEnabled" severity="error"/>
 
     <!-- both the correct and deprecated locales need to be present for
          them to be recognized on all devices -->
