@@ -1,0 +1,7 @@
+* Gestos de deslizar adicionados à aba Atualizações
+
+* Mostra avisos com ações na aba Atualizações para vulnerabilidades conhecidas
+
+* Traduções atualizadas
+
+* Correções de interface com tema escuro

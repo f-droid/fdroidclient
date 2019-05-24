@@ -1,0 +1,3 @@
+* Grande melhoria no desempenho da interface, especialmente com arquivo ativado
+
+* Corrigidos erros que causavam bloqueio

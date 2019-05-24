@@ -1,0 +1,13 @@
+* Última aba agora destaca aplicações com descrições, traduções e capturas de ecrã
+
+* Descarrega automaticamente de servidores espelho
+
+* Desativa servidores espelho usando novas opções no RepoDetails (#1696)
+
+* Cache de descarregar mais eficiente (#1708)
+
+* Correção em instalações que requerem fontes desconhecidas com Extensão Privilegiada (#1702)
+
+* Correção de ícones em falta para aqueles que não usam Wi-Fi (#1592)
+
+* Traduções melhoradas para aba Atualizações vs preferência

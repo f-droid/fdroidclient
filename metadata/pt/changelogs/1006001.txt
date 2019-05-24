@@ -1,0 +1,7 @@
+* Botões adicionados ao RepoDetails para desligar um ou todos os espelhos (#1696)
+
+* Escolha de espelho aleatório para cada pacote/descarregamento de APK
+
+* Todos os descarregamentos do APK em cache por repositório, não por espelho
+
+* Lida com ETags de Apache e NGINX ao verificar se o índice é atual (# 1708)
