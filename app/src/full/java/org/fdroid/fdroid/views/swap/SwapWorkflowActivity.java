@@ -512,6 +512,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             case R.layout.swap_nfc:
                 setUpNfcView();
                 break;
+            case R.layout.swap_select_apps:
+                LocalRepoService.create(this, getSwapService().getAppsToSwap());
+                break;
             case R.layout.swap_connecting:
                 setUpConnectingView();
                 break;
