@@ -478,6 +478,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_active_hotspot">%1$s (your hotspot)</string>
     <string name="swap_visible_hotspot">Visible via hotspot</string>
+    <string name="swap_blank_wifi_ssid">(blank)</string>
+    <string name="swap_hidden_wifi_ssid">(hidden)</string>
     <string name="swap_setting_up_hotspot">Setting up hotspot…</string>
     <string name="swap_stopping_hotspot">Stopping hotspot…</string>
     <string name="swap_view_available_networks">Tap to open available networks</string>
