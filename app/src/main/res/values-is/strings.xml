@@ -517,4 +517,6 @@
     <string name="swap_toast_not_removable_storage">Þessi valkostur stemmdi ekki neina útskiptanlega gagnamiðla, endilega reyndu aftur!</string>
     <string name="swap_toast_find_removeable_storage">Veldu útskiptanlegt SD-minniskort eða USB</string>
     <string name="menu_translation">Þýðing</string>
+    <string name="undo">Afturkalla</string>
+    <string name="app_list__dismiss_installing_app">Hætt við uppsetningu</string>
 </resources>
