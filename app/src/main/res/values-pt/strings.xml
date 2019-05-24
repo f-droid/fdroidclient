@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="updates">Atualizações</string>
     <string name="ok">OK</string>
@@ -25,20 +25,20 @@
     <string name="skip">Ignorar</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Conectividade</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Desenvolvimento</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Jogos</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Gráficos</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Finanças</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimédia</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navegação</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefone e SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Leitura</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Ciência e educação</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Segurança</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Tempo</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Escrita</string>
+    <string name="category_Connectivity">Conectividade</string>
+    <string name="category_Development">Desenvolvimento</string>
+    <string name="category_Games">Jogos</string>
+    <string name="category_Graphics">Gráficos</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Money">Finanças</string>
+    <string name="category_Multimedia">Multimédia</string>
+    <string name="category_Navigation">Navegação</string>
+    <string name="category_Phone_SMS">Telefone e SMS</string>
+    <string name="category_Reading">Leitura</string>
+    <string name="category_Science_Education">Ciência e educação</string>
+    <string name="category_Security">Segurança</string>
+    <string name="category_Time">Tempo</string>
+    <string name="category_Writing">Escrita</string>
     <string name="swap_welcome">Bem-vindo ao F-Droid!</string>
     <string name="swap_dont_show_again">Não mostrar novamente</string>
     <string name="newPerms">Novas</string>
@@ -60,8 +60,8 @@
     <string name="repo_last_update">Última atualização</string>
     <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Desporto e saúde</string>
-    <string tools:ignore="UnusedResources" name="category_System">Sistema</string>
+    <string name="category_Sports_Health">Desporto e saúde</string>
+    <string name="category_System">Sistema</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
     <string name="crash_dialog_text">Ocorreu um erro inesperado e a aplicação foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro\?</string>
@@ -317,7 +317,7 @@
     <string name="share_repository">Partilhar repositório</string>
     <string name="requires_features">Requer: %1$s</string>
     <string name="wifi_ap">Ponto de acesso (hotspot)</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Temas</string>
+    <string name="category_Theming">Temas</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
         <item quantity="other">Ver todos (%d)</item>
