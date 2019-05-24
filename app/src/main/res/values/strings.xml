@@ -477,6 +477,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_active_hotspot">%1$s (your hotspot)</string>
+    <string name="swap_visible_hotspot">Visible via hotspot</string>
+    <string name="swap_setting_up_hotspot">Setting up hotspot…</string>
+    <string name="swap_stopping_hotspot">Stopping hotspot…</string>
     <string name="swap_view_available_networks">Tap to open available networks</string>
     <string name="swap_switch_to_wifi">Tap to switch to a Wi-Fi network</string>
     <string name="open_qr_code_scanner">Open QR Scanner</string>

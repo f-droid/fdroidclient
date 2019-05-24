@@ -223,6 +223,10 @@ public class StartSwapView extends SwapView {
         WifiApControl wifiAp = WifiApControl.getInstance(getActivity());
         if (wifiAp != null && wifiAp.isWifiApEnabled()) {
             WifiConfiguration config = wifiAp.getConfiguration();
+            TextView textWifiVisible = findViewById(R.id.wifi_visible);
+            if (textWifiVisible != null) {
+                textWifiVisible.setText(R.string.swap_visible_hotspot);
+            }
             viewWifiNetwork.setText(getContext().getString(R.string.swap_active_hotspot, config.SSID));
         } else if (TextUtils.isEmpty(FDroidApp.ssid)) {
             // not connected to or setup with any wifi network

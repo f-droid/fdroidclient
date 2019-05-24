@@ -117,6 +117,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
     private WifiManager wifiManager;
+    private WifiApControl wifiApControl;
     private BluetoothAdapter bluetoothAdapter;
 
     @LayoutRes
@@ -227,6 +228,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(Downloader.ACTION_INTERRUPTED));
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiApControl = WifiApControl.getInstance(this);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -442,7 +444,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setupWifiAP() {
-        WifiApControl wifiApControl = WifiApControl.getInstance(this);
         if (wifiApControl == null) {
             Log.e(TAG, "WiFi AP is null");
             Toast.makeText(this, R.string.swap_toast_could_not_enable_hotspot, Toast.LENGTH_LONG).show();
@@ -1052,7 +1053,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
                     break;
                 case BonjourManager.STATUS_VISIBLE:
-                    textWifiVisible.setText(R.string.swap_visible_wifi);
+                    if (wifiApControl != null && wifiApControl.isEnabled()) {
+                        textWifiVisible.setText(R.string.swap_visible_hotspot);
+                    } else {
+                        textWifiVisible.setText(R.string.swap_visible_wifi);
+                    }
                     peopleNearbyText.setText(R.string.swap_scanning_for_peers);
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
