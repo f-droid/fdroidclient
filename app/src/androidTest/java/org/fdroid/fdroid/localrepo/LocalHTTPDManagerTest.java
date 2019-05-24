@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+@LargeTest
 @RunWith(AndroidJUnit4.class)
 public class LocalHTTPDManagerTest {
     private static final String TAG = "LocalHTTPDManagerTest";

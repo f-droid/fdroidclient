@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Looper;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.filters.LargeTest;
 import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.BuildConfig;
@@ -46,6 +47,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@LargeTest
 public class SwapRepoEmulatorTest {
     public static final String TAG = "SwapRepoEmulatorTest";
 
