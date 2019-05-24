@@ -492,4 +492,6 @@
     <string name="scan_removable_storage_toast">%s בסריקה…</string>
     <string name="main_menu__updates">עדכונים</string>
     <string name="menu_translation">תרגום</string>
+    <string name="undo">שחזור</string>
+    <string name="app_list__dismiss_installing_app">ההתקנה בוטלה</string>
 </resources>
