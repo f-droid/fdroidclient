@@ -269,7 +269,7 @@
     <string name="panic_hide_title">Ocultar %s</string>
     <string name="panic_hide_summary">A aplicação ocultar-se-á</string>
     <string name="panic_hide_warning_title">Memorizar tipo de restauro</string>
-    <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
+    <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Ocultar %s agora</string>
     <string name="hiding_dialog_message">Tem a certeza de que quer remover %1$s do ecrã inicial\? Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
