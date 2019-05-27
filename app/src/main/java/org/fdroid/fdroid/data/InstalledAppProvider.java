@@ -32,7 +32,7 @@ public class InstalledAppProvider extends FDroidProvider {
          * @return The keys are the package names, and their corresponding values are
          * the {@link PackageInfo#lastUpdateTime last update time} in milliseconds.
          */
-        public static Map<String, Long> all(Context context) {
+        public static Map<String, Long> lastUpdateTimes(Context context) {
 
             Map<String, Long> cachedInfo = new HashMap<>();
 

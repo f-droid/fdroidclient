@@ -35,7 +35,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
 
     @Test
     public void insertSingleApp() {
-        Map<String, Long> foundBefore = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        Map<String, Long> foundBefore = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
         assertEquals(foundBefore.size(), 0);
 
         ContentValues values = new ContentValues();
@@ -49,7 +49,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         values.put(Cols.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
         contentResolver.insert(InstalledAppProvider.getContentUri(), values);
 
-        Map<String, Long> foundAfter = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        Map<String, Long> foundAfter = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
         assertEquals(1, foundAfter.size());
         assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
 

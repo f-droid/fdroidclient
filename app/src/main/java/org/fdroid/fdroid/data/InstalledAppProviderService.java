@@ -176,7 +176,7 @@ public class InstalledAppProviderService extends JobIntentService {
      */
     public static void compareToPackageManager(Context context) {
         Utils.debugLog(TAG, "Comparing package manager to our installed app cache.");
-        Map<String, Long> cachedInfo = InstalledAppProvider.Helper.all(context);
+        Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
 
         List<PackageInfo> packageInfoList = context.getPackageManager()
                 .getInstalledPackages(PackageManager.GET_SIGNATURES);
