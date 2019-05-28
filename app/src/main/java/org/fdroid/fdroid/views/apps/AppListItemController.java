@@ -22,15 +22,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -45,6 +45,7 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Supports the following layouts:
@@ -63,6 +64,8 @@ import java.util.Iterator;
 public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "AppListItemController";
+
+    private static Preferences prefs;
 
     protected final Activity activity;
 
@@ -98,6 +101,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final Button secondaryButton;
 
     @Nullable
+    private final CheckBox checkBox;
+
+    @Nullable
     private App currentApp;
 
     @Nullable
@@ -107,6 +113,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     public AppListItemController(final Activity activity, View itemView) {
         super(itemView);
         this.activity = activity;
+        if (prefs == null) {
+            prefs = Preferences.get();
+        }
 
         installButton = (ImageView) itemView.findViewById(R.id.install);
         if (installButton != null) {
@@ -145,6 +154,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
         secondaryButton = (Button) itemView.findViewById(R.id.secondary_button);
+        checkBox = itemView.findViewById(R.id.checkbox);
 
         if (actionButton != null) {
             actionButton.setEnabled(true);
@@ -220,9 +230,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     /**
      * Override to respond to the user swiping an app to dismiss it from the list.
-     * @param app The app that was swiped away
-     * @param updatesAdapter The adapter. Can be used for refreshing the adapter with adapter.refreshStatuses().
      *
+     * @param app            The app that was swiped away
+     * @param updatesAdapter The adapter. Can be used for refreshing the adapter with adapter.refreshStatuses().
      * @see #canDismiss() This must also be overridden and should return true.
      */
     protected void onDismissApp(@NonNull App app, UpdatesAdapter updatesAdapter) {
@@ -326,6 +336,18 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             } else {
                 secondaryStatus.setVisibility(View.VISIBLE);
                 secondaryStatus.setText(statusText);
+            }
+        }
+
+        if (checkBox != null) {
+            if (viewState.shouldShowCheckBox()) {
+                itemView.setOnClickListener(selectInstalledAppListener);
+                checkBox.setChecked(viewState.isCheckBoxChecked());
+                checkBox.setVisibility(View.VISIBLE);
+                status.setVisibility(View.GONE);
+                secondaryStatus.setVisibility(View.GONE);
+            } else {
+                checkBox.setVisibility(View.GONE);
             }
         }
     }
@@ -533,4 +555,18 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         InstallManagerService.cancel(activity, currentStatus.getCanonicalUrl());
     }
+
+    private final View.OnClickListener selectInstalledAppListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Set<String> wipeSet = prefs.getPanicTmpSelectedSet();
+            checkBox.toggle();
+            if (checkBox.isChecked()) {
+                wipeSet.add(currentApp.packageName);
+            } else {
+                wipeSet.remove(currentApp.packageName);
+            }
+            prefs.setPanicTmpSelectedSet(wipeSet);
+        }
+    };
 }

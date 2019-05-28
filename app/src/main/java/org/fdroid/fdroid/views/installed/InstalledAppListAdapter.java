@@ -11,14 +11,14 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Schema;
 
-class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
+public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
 
-    private final Activity activity;
+    protected final Activity activity;
 
     @Nullable
     private Cursor cursor;
 
-    InstalledAppListAdapter(Activity activity) {
+    protected InstalledAppListAdapter(Activity activity) {
         this.activity = activity;
         setHasStableIds(true);
     }

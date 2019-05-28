@@ -35,10 +35,12 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -107,6 +109,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
+    public static final String PREF_PANIC_WIPE_SET = "panicWipeSet";
+    public static final String PREF_PANIC_TMP_SELECTED_SET = "panicTmpSelectedSet";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
@@ -513,6 +517,22 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean hideOnLongPressSearch() {
         return preferences.getBoolean(PREF_HIDE_ON_LONG_PRESS_SEARCH, IGNORED_B);
+    }
+
+    public Set<String> getPanicTmpSelectedSet() {
+        return preferences.getStringSet(Preferences.PREF_PANIC_TMP_SELECTED_SET, Collections.<String>emptySet());
+    }
+
+    public void setPanicTmpSelectedSet(Set<String> selectedSet) {
+        preferences.edit().putStringSet(Preferences.PREF_PANIC_TMP_SELECTED_SET, selectedSet).apply();
+    }
+
+    public Set<String> getPanicWipeSet() {
+        return preferences.getStringSet(Preferences.PREF_PANIC_WIPE_SET, Collections.<String>emptySet());
+    }
+
+    public void setPanicWipeSet(Set<String> selectedSet) {
+        preferences.edit().putStringSet(Preferences.PREF_PANIC_WIPE_SET, selectedSet).apply();
     }
 
     /**

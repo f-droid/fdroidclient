@@ -28,4 +28,10 @@
 
     </android.support.v7.preference.PreferenceCategory>
 
+    <android.support.v7.preference.PreferenceCategory
+            android:key="pref_panic_apps_to_uninstall"
+            android:title="@string/panic_apps_to_uninstall">
+
+    </android.support.v7.preference.PreferenceCategory>
+
 </android.support.v7.preference.PreferenceScreen>
