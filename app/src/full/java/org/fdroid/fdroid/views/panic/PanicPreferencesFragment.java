@@ -33,9 +33,7 @@ import java.util.ArrayList;
 public class PanicPreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static final String PREF_EXIT = Preferences.PREF_PANIC_EXIT;
     private static final String PREF_APP = "pref_panic_app";
-    private static final String PREF_HIDE = Preferences.PREF_PANIC_HIDE;
 
     private PackageManager pm;
     private ListPreference prefApp;
@@ -47,9 +45,9 @@ public class PanicPreferencesFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.preferences_panic);
 
         pm = getActivity().getPackageManager();
-        prefExit = (CheckBoxPreference) findPreference(PREF_EXIT);
+        prefExit = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_EXIT);
         prefApp = (ListPreference) findPreference(PREF_APP);
-        prefHide = (CheckBoxPreference) findPreference(PREF_HIDE);
+        prefHide = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_HIDE);
         prefHide.setTitle(getString(R.string.panic_hide_title, getString(R.string.app_name)));
 
         if (PanicResponder.checkForDisconnectIntent(getActivity())) {
@@ -98,11 +96,13 @@ public class PanicPreferencesFragment extends PreferenceFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(PREF_HIDE) && sharedPreferences.getBoolean(PREF_HIDE, false)) {
+        if (key.equals(Preferences.PREF_PANIC_HIDE)
+                && sharedPreferences.getBoolean(Preferences.PREF_PANIC_HIDE, false)) {
             showHideConfirmationDialog();
         }
         // disable "hiding" if "exit" gets disabled
-        if (key.equals(PREF_EXIT) && !sharedPreferences.getBoolean(PREF_EXIT, true)) {
+        if (key.equals(Preferences.PREF_PANIC_EXIT)
+                && !sharedPreferences.getBoolean(Preferences.PREF_PANIC_EXIT, true)) {
             prefHide.setChecked(false);
         }
     }
