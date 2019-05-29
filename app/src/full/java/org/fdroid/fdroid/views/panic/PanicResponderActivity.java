@@ -21,7 +21,7 @@ public class PanicResponderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        if (intent == null || !Panic.isTriggerIntent(intent)) {
+        if (!Panic.isTriggerIntent(intent)) {
             finish();
             return;
         }
