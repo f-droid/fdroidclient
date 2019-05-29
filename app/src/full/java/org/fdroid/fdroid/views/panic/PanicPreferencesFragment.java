@@ -117,7 +117,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
         categoryAppsToUninstall.setEnabled(true);
         if (wipeSet.size() > 0) {
             for (String packageName : wipeSet) {
-                Preference preference = new Preference(getActivity());
+                Preference preference = new DestructivePreference(getActivity());
                 preference.setSingleLineTitle(true);
                 preference.setIntent(intent);
                 categoryAppsToUninstall.addPreference(preference);
