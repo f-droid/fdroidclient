@@ -43,6 +43,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
     private ListPreference prefApp;
     private CheckBoxPreference prefExit;
     private CheckBoxPreference prefHide;
+    private CheckBoxPreference prefResetRepos;
     private PreferenceCategory categoryAppsToUninstall;
 
     @Override
@@ -54,6 +55,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
         prefApp = (ListPreference) findPreference(PREF_APP);
         prefHide = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_HIDE);
         prefHide.setTitle(getString(R.string.panic_hide_title, getString(R.string.app_name)));
+        prefResetRepos = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_RESET_REPOS);
         categoryAppsToUninstall = (PreferenceCategory) findPreference("pref_panic_apps_to_uninstall");
 
         if (PanicResponder.checkForDisconnectIntent(getActivity())) {
@@ -77,9 +79,12 @@ public class PanicPreferencesFragment extends PreferenceFragment
                 if (packageName.equals(Panic.PACKAGE_NAME_NONE)) {
                     prefHide.setChecked(false);
                     prefHide.setEnabled(false);
+                    prefResetRepos.setChecked(false);
+                    prefResetRepos.setEnabled(false);
                     getActivity().setResult(Activity.RESULT_CANCELED);
                 } else {
                     prefHide.setEnabled(true);
+                    prefResetRepos.setEnabled(true);
                 }
                 showPanicApp(packageName);
                 return true;
@@ -212,6 +217,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
                 prefApp.setSummary(pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
                 prefApp.setIcon(pm.getApplicationIcon(packageName));
                 prefHide.setEnabled(true);
+                prefResetRepos.setEnabled(true);
                 showWipeList();
             } catch (PackageManager.NameNotFoundException e) {
                 // revert back to no app, just to be safe
@@ -293,6 +299,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
             @Override
             public void onCancel(DialogInterface dialogInterface) {
                 prefHide.setChecked(false);
+                prefResetRepos.setChecked(false);
             }
         });
         builder.setView(R.layout.dialog_app_hiding);

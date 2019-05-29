@@ -35,12 +35,6 @@ public class Issue763MultiRepo extends MultiIndexUpdaterTest {
         antoxRepo = createRepo("Tox", "https://pkg.tox.chat/fdroid/repo", context, antoxCert);
     }
 
-    public void setEnabled(Repo repo, boolean enabled) {
-        ContentValues values = new ContentValues(1);
-        values.put(Schema.RepoTable.Cols.IN_USE, enabled ? 1 : 0);
-        RepoProvider.Helper.update(context, repo, values);
-    }
-
     @Test
     public void antoxRepo() throws IndexUpdater.UpdateException {
         assertAntoxEmpty();

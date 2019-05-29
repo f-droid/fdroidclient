@@ -334,6 +334,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="panic_hide_summary">App will hide itself</string>
     <string name="panic_hide_warning_title">Remember how to restore</string>
     <string name="panic_hide_warning_message">In a panic event, this will remove %1$s from the launcher. Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
+    <string name="panic_reset_repos_title">Reset repos</string>
+    <string name="panic_reset_repos_summary">Force the repo setup back to defaults</string>
 
     <!-- The name of a fake calculator app used as a disguise -->
     <string name="hiding_calculator">Calculator</string>

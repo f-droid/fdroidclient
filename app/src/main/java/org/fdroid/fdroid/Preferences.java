@@ -109,6 +109,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
+    public static final String PREF_PANIC_RESET_REPOS = "pref_panic_reset_repos";
     public static final String PREF_PANIC_WIPE_SET = "panicWipeSet";
     public static final String PREF_PANIC_TMP_SELECTED_SET = "panicTmpSelectedSet";
     public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
@@ -513,6 +514,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean panicHide() {
         return preferences.getBoolean(PREF_PANIC_HIDE, IGNORED_B);
+    }
+
+    public boolean panicResetRepos() {
+        return preferences.getBoolean(PREF_PANIC_RESET_REPOS, IGNORED_B);
     }
 
     public boolean hideOnLongPressSearch() {
