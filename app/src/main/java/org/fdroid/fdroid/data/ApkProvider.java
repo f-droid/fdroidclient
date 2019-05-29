@@ -93,18 +93,13 @@ public class ApkProvider extends FDroidProvider {
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {
-            return findApkFromAnyRepo(context, packageName, versionCode, null, Cols.ALL);
+            return findApkFromAnyRepo(context, packageName, versionCode, null);
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
                                              String signature) {
-            return findApkFromAnyRepo(context, packageName, versionCode, signature, Cols.ALL);
-        }
-
-        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
-                                             @Nullable String signature, String[] projection) {
             final Uri uri = getApkFromAnyRepoUri(packageName, versionCode, signature);
-            return findByUri(context, uri, projection);
+            return findByUri(context, uri, Cols.ALL);
         }
 
         public static Apk findByUri(Context context, Uri uri, String[] projection) {
