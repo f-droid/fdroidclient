@@ -30,7 +30,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
-import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.SwapView;
 
 public class SelectAppsView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -61,7 +60,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         listView = findViewById(R.id.list);
         adapter = new AppListAdapter(listView, getContext(),
                 getContext().getContentResolver().query(InstalledAppProvider.getContentUri(),
-                        InstalledAppTable.Cols.ALL, null, null, null));
+                        null, null, null, null));
 
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -97,13 +96,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         } else {
             uri = InstalledAppProvider.getSearchUri(currentFilterString);
         }
-        return new CursorLoader(
-                getActivity(),
-                uri,
-                InstalledAppTable.Cols.ALL,
-                null,
-                null,
-                InstalledAppTable.Cols.APPLICATION_LABEL);
+        return new CursorLoader(getActivity(), uri, null, null, null, null);
     }
 
     @Override

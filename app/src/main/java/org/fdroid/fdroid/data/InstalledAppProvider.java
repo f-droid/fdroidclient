@@ -37,8 +37,7 @@ public class InstalledAppProvider extends FDroidProvider {
             Map<String, Long> cachedInfo = new HashMap<>();
 
             final Uri uri = InstalledAppProvider.getContentUri();
-            final String[] projection = Cols.ALL;
-            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -58,7 +57,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
         @Nullable
         public static InstalledApp findByPackageName(Context context, String packageName) {
-            Cursor cursor = context.getContentResolver().query(getAppUri(packageName), Cols.ALL, null, null, null);
+            Cursor cursor = context.getContentResolver().query(getAppUri(packageName), null, null, null, null);
             if (cursor == null) {
                 return null;
             }
@@ -249,9 +248,10 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         QueryBuilder query = new QueryBuilder();
-        query.addFields(projection);
-        if (projection.length == 0) {
-            query.addField(Cols._ID);
+        if (projection == null || projection.length == 0) {
+            query.addFields(Cols.ALL);
+        } else {
+            query.addFields(projection);
         }
         query.addSelection(selection);
         query.addOrderBy(sortOrder);
