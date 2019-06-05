@@ -72,7 +72,7 @@ public class RepoPersister {
 
     private void flushBufferToDb() throws IndexUpdater.UpdateException {
         if (!hasBeenInitialized) {
-            // This is where we will store all of the metadata before commiting at the
+            // This is where we will store all of the metadata before committing at the
             // end of the process. This is due to the fact that we can't verify the cert
             // the index was signed with until we've finished reading it - and we don't
             // want to put stuff in the real database until we are sure it is from a

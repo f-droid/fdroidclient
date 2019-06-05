@@ -12,7 +12,7 @@ F-Droid as your libre software app manager:
 * Get notified when updates are available
 * Optionally download and install updates automatically
 * Keep track of older and beta versions
-* Filter out apps uncompatible with the device
+* Filter out apps incompatible with the device
 * Find apps via categories and searchable descriptions
 * Access associated URLs for donations, source code etc.
 * Stay safe by checking repo index signatures and APK hashes

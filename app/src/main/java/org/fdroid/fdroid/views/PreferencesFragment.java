@@ -421,7 +421,7 @@ public class PreferencesFragment extends PreferenceFragment
     /**
      * If a user specifies they want to fetch updates automatically, then start the download of relevant
      * updates as soon as they enable the feature.
-     * Also, if the user has the priv extention installed then change the label to indicate that it
+     * Also, if the user has the priv extension installed then change the label to indicate that it
      * will actually _install_ apps, not just fetch their .apk file automatically.
      */
     private void initAutoFetchUpdatesPreference() {

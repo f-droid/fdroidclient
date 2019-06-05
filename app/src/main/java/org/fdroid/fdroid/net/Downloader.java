@@ -140,7 +140,7 @@ public abstract class Downloader {
 
     /**
      * After every network operation that could take a while, we will check if an
-     * interrupt occured during that blocking operation. The goal is to ensure we
+     * interrupt occurred during that blocking operation. The goal is to ensure we
      * don't move onto another slow, network operation if we have cancelled the
      * download.
      *

@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 public class OverscrollLinearLayoutManager extends LinearLayoutManager {
 
     /**
-     * A listener interface to get overscroll infromation.
+     * A listener interface to get overscroll information.
      */
     public interface OnOverscrollListener {
         /**

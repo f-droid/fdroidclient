@@ -55,7 +55,7 @@ public class CategoryTextWatcher implements TextWatcher {
         // right to the start. This could be if we are removing everything (in which case
         // there is no text to span), or we are removing somewhere from after the category
         // back to the start (in which case we've removed the category anyway and don't need
-        // to explicilty request it to be removed.
+        // to explicitly request it to be removed.
         if (start == 0 && removingOrReplacing) {
             return;
         }
@@ -119,7 +119,7 @@ public class CategoryTextWatcher implements TextWatcher {
 
     /**
      * Ensures that a {@link CategorySpan} is in {@param textToSpannify} if required.
-     * Will firstly remove all existing category spans, and then add back one if neccesary.
+     * Will firstly remove all existing category spans, and then add back one if necessary.
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
      */
