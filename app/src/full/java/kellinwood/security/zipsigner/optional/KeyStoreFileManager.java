@@ -113,7 +113,7 @@ public class KeyStoreFileManager {
         File keystoreFile = new File(keystorePath);
         try {
             if (keystoreFile.exists()) {
-                // I've had some trouble saving new verisons of the keystore file in which the file becomes empty/corrupt.
+                // I've had some trouble saving new versions of the keystore file in which the file becomes empty/corrupt.
                 // Saving the new version to a new file and creating a backup of the old version.
                 File tmpFile = File.createTempFile(keystoreFile.getName(), null, keystoreFile.getParentFile());
                 FileOutputStream fos = new FileOutputStream(tmpFile);

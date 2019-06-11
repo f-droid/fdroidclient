@@ -47,7 +47,7 @@ import java.util.List;
 
 /**
  * An {@link IntentService} subclass for scanning removable "external storage"
- * for F-Droid package repos, e.g. SD Cards. This is intented to support
+ * for F-Droid package repos, e.g. SD Cards. This is intended to support
  * sharable package repos, so it ignores non-removable storage, like the fake
  * emulated sdcard from devices with only built-in storage.  This method will
  * only ever allow for reading repos, never writing.  It also will not work

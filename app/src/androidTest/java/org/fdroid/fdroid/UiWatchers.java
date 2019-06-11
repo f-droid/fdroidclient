@@ -117,7 +117,7 @@ public class UiWatchers {
                 return false; // no trigger
             }
         });
-        Log.i(LOG_TAG, "Registed GUI Exception watchers");
+        Log.i(LOG_TAG, "Registered GUI Exception watchers");
     }
 
     public void onAnrDetected(String errorText) {

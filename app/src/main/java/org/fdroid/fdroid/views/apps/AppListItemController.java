@@ -223,7 +223,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
      * @param app The app that was swiped away
      * @param updatesAdapter The adapter. Can be used for refreshing the adapter with adapter.refreshStatuses().
      *
-     * @see #canDismiss() This must also be overriden and should return true.
+     * @see #canDismiss() This must also be overridden and should return true.
      */
     protected void onDismissApp(@NonNull App app, UpdatesAdapter updatesAdapter) {
     }

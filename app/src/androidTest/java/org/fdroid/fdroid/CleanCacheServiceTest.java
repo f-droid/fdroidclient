@@ -57,9 +57,9 @@ public class CleanCacheServiceTest {
         assertFalse(first.exists());
         assertFalse(second.exists());
 
-        // make sure it doesn't freak out on a non-existant file
-        File nonexistant = new File(tempDir, "nonexistant");
-        CleanCacheService.clearOldFiles(nonexistant, 1);
+        // make sure it doesn't freak out on a non-existent file
+        File nonexistent = new File(tempDir, "nonexistent");
+        CleanCacheService.clearOldFiles(nonexistent, 1);
         CleanCacheService.clearOldFiles(null, 1);
     }
 }

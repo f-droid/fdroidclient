@@ -517,7 +517,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     // wait for that service to notify us, and then we will respond in appObserver.
 
                     // Having said that, there are some cases where the PackageManager doesn't
-                    // return control back to us until after it has already braodcast to the
+                    // return control back to us until after it has already broadcast to the
                     // InstalledAppProviderService. This means that we are not listening for any
                     // feedback from InstalledAppProviderService (we intentionally stop listening in
                     // onPause). Empirically, this happens when upgrading an app rather than a clean

@@ -141,7 +141,7 @@ public class Netstat {
                     try {
                         c.setStatus(STATES[Integer.parseInt(statusHexa, 16) - 1]);
                     } catch (Exception ex) {
-                        c.setStatus(STATES[11]); // unknwon
+                        c.setStatus(STATES[11]); // unknown
                     }
                     c.setPID(-1); // unknown
                     c.setPName("UNKNOWN");
@@ -174,7 +174,7 @@ public class Netstat {
                     try {
                         c.setStatus(STATES[Integer.parseInt(statusHexa, 16) - 1]);
                     } catch (Exception ex) {
-                        c.setStatus(STATES[11]); // unknwon
+                        c.setStatus(STATES[11]); // unknown
                     }
                     c.setPID(-1); // unknown
                     c.setPName("UNKNOWN");
@@ -208,7 +208,7 @@ public class Netstat {
                     try {
                         c.setStatus(STATES[Integer.parseInt(statusHexa, 16) - 1]);
                     } catch (Exception ex) {
-                        c.setStatus(STATES[11]); // unknwon
+                        c.setStatus(STATES[11]); // unknown
                     }
                     c.setPID(-1); // unknown
                     c.setPName("UNKNOWN");
