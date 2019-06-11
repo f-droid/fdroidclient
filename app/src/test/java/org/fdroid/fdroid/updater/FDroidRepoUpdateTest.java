@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.updater;
 
 import org.fdroid.fdroid.BuildConfig;

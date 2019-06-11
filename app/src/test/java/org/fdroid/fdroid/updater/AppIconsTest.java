@@ -66,7 +66,7 @@ public class AppIconsTest extends MultiIndexUpdaterTest {
 
     private void assertIconUrl(String expectedUrl) {
         App app = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
-                "org.adaway", new String[] {Schema.AppMetadataTable.Cols.ICON_URL});
+                "org.adaway", new String[]{Schema.AppMetadataTable.Cols.ICON_URL});
 
         assertEquals(app.iconUrl, expectedUrl);
     }

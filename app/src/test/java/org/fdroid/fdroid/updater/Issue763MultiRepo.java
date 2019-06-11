@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.updater;
 
-import android.content.ContentValues;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.data.Apk;
@@ -105,7 +104,7 @@ public class Issue763MultiRepo extends MultiIndexUpdaterTest {
     private void assertAntoxExists() {
         String packageName = "chat.tox.antox";
         List<Apk> actualApksAfterUpdate = ApkProvider.Helper.findByRepo(context, antoxRepo, Schema.ApkTable.Cols.ALL);
-        int[] expectedVersions = new int[] {15421};
+        int[] expectedVersions = new int[]{15421};
 
         assertApp(packageName, expectedVersions);
         assertApksExist(actualApksAfterUpdate, packageName, expectedVersions);
@@ -115,17 +114,17 @@ public class Issue763MultiRepo extends MultiIndexUpdaterTest {
         List<Apk> actualApksAfterUpdate = ApkProvider.Helper.findByRepo(context, microGRepo, Schema.ApkTable.Cols.ALL);
 
         String vendingPackage = "com.android.vending";
-        int[] expectedVendingVersions = new int[] {1};
+        int[] expectedVendingVersions = new int[]{1};
         assertApp(vendingPackage, expectedVendingVersions);
         assertApksExist(actualApksAfterUpdate, vendingPackage, expectedVendingVersions);
 
         String gmsPackage = "com.google.android.gms";
-        int[] expectedGmsVersions = new int[] {11059462, 10545451, 10545440, 10087438, 10087435, 9258259, 8492252, };
+        int[] expectedGmsVersions = new int[]{11059462, 10545451, 10545440, 10087438, 10087435, 9258259, 8492252};
         assertApp(gmsPackage, expectedGmsVersions);
         assertApksExist(actualApksAfterUpdate, gmsPackage, expectedGmsVersions);
 
         String gsfPackage = "com.google.android.gsf";
-        int[] expectedGsfVersions = new int[] {8};
+        int[] expectedGsfVersions = new int[]{8};
         assertApp(gsfPackage, expectedGsfVersions);
         assertApksExist(actualApksAfterUpdate, gsfPackage, expectedGsfVersions);
     }

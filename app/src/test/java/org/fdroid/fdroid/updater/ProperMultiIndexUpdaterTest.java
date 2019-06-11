@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
@@ -41,7 +40,8 @@ public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({"Conflicting", "Normal"})
-    public @interface RepoIdentifier { }
+    public @interface RepoIdentifier {
+    }
 
     @Test
     public void appsRemovedFromRepo() throws IndexUpdater.UpdateException {
@@ -310,7 +310,9 @@ public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
         assertAdAwayMetadata(adaway, id);
     }
 
-    /** @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String) */
+    /**
+     * @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String)
+     */
     private void assertAdAwayMetadata(App adaway, @RepoIdentifier String id) {
         assertNotNull(adaway);
         assertEquals(String.format("AdAway", id),
@@ -338,7 +340,9 @@ public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
         assertAdbMetadata(adb, id);
     }
 
-    /** @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String) */
+    /**
+     * @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String)
+     */
     private void assertAdbMetadata(App adb, @RepoIdentifier String id) {
         assertNotNull(adb);
         assertEquals("adbWireless", adb.name);
@@ -355,7 +359,9 @@ public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
         assertCalendarMetadata(calendar, id);
     }
 
-    /** @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String) */
+    /**
+     * @see ProperMultiIndexUpdaterTest#assert2048Metadata(Repo, String)
+     */
     private void assertCalendarMetadata(App calendar, @RepoIdentifier String id) {
         assertNotNull(calendar);
         assertEquals("Add to calendar",

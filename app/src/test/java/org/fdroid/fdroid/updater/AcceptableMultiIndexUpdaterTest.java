@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
