@@ -40,8 +40,7 @@ import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
 
 public class SelectInstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -89,11 +88,7 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(
-                this,
-                AppProvider.getInstalledUri(),
-                Schema.AppMetadataTable.Cols.ALL,
-                null, null, null);
+        return new CursorLoader(this, InstalledAppProvider.getAllAppsUri(), null, null, null, null);
     }
 
     @Override

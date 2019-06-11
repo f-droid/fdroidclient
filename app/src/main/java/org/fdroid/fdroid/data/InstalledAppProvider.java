@@ -15,9 +15,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -27,6 +30,23 @@ public class InstalledAppProvider extends FDroidProvider {
     private static final String TAG = "InstalledAppProvider";
 
     public static class Helper {
+
+        public static App[] all(Context context) {
+            ArrayList<App> appList = new ArrayList<>();
+            Cursor cursor = context.getContentResolver().query(InstalledAppProvider.getAllAppsUri(),
+                    null, null, null, null);
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        appList.add(new App(cursor));
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+            }
+            return appList.toArray(new App[0]);
+        }
 
         /**
          * @return The keys are the package names, and their corresponding values are
@@ -79,6 +99,8 @@ public class InstalledAppProvider extends FDroidProvider {
 
     private static final String PATH_SEARCH = "search";
     private static final int CODE_SEARCH = CODE_SINGLE + 1;
+    private static final String PATH_ALL_APPS = "allApps";
+    private static final int CODE_ALL_APPS = CODE_SEARCH + 1;
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
@@ -99,11 +121,16 @@ public class InstalledAppProvider extends FDroidProvider {
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
+        MATCHER.addURI(getAuthority(), PATH_ALL_APPS, CODE_ALL_APPS);
         MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
+    }
+
+    public static Uri getAllAppsUri() {
+        return getContentUri().buildUpon().appendPath(PATH_ALL_APPS).build();
     }
 
     /**
@@ -228,6 +255,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
+        QueryBuilder query = null;
         switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 selection = selectNotSystemSignature(selection);
@@ -241,16 +269,30 @@ public class InstalledAppProvider extends FDroidProvider {
                 selection = selection.add(querySearch(uri.getLastPathSegment()));
                 break;
 
+            case CODE_ALL_APPS:
+                selection = selectNotSystemSignature(selection);
+                query = new QueryBuilder();
+                query.addField(Cols._ID);
+                query.appendField(Cols.APPLICATION_LABEL, null, Schema.AppMetadataTable.Cols.NAME);
+                query.appendField(Cols.VERSION_CODE, null, AppMetadataTable.Cols.UPSTREAM_VERSION_CODE);
+                query.appendField(Cols.VERSION_NAME, null, AppMetadataTable.Cols.UPSTREAM_VERSION_NAME);
+                query.appendField(PackageTable.Cols.PACKAGE_NAME, PackageTable.NAME,
+                        AppMetadataTable.Cols.Package.PACKAGE_NAME);
+                break;
+
             default:
                 String message = "Invalid URI for installed app content provider: " + uri;
                 Log.e(TAG, message);
                 throw new UnsupportedOperationException(message);
         }
 
-        QueryBuilder query = new QueryBuilder();
-        if (projection == null || projection.length == 0) {
+        if (query != null) { // NOPMD
+            // the fields are already setup above
+        } else if (projection == null || projection.length == 0) {
+            query = new QueryBuilder();
             query.addFields(Cols.ALL);
         } else {
+            query = new QueryBuilder();
             query.addFields(projection);
         }
         query.addSelection(selection);
@@ -279,6 +321,12 @@ public class InstalledAppProvider extends FDroidProvider {
         return count;
     }
 
+    /**
+     * {@link Cols.Package#NAME} is not included in the database here, because
+     * it is included only in the {@link PackageTable}, since there are large
+     * cross-table queries needed to handle the complexity of multiple repos
+     * potentially serving the same apps.
+     */
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
 

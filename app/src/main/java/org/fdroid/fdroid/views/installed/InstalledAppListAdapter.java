@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.installed;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Schema;
 
 public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
 
@@ -30,7 +30,8 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
         }
 
         cursor.moveToPosition(position);
-        return cursor.getLong(cursor.getColumnIndex(Schema.AppMetadataTable.Cols.ROW_ID));
+        // TODO this should be based on Schema.InstalledAppProvider.Cols._ID
+        return cursor.getLong(cursor.getColumnIndex(BaseColumns._ID));
     }
 
     @NonNull

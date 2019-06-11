@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Build;
@@ -186,7 +187,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
+        if (app.iconUrl == null) {
+            try {
+                icon.setImageDrawable(activity.getPackageManager().getApplicationIcon(app.packageName));
+            } catch (PackageManager.NameNotFoundException e) {
+                // ignored
+            }
+        } else {
+            ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
+        }
 
         // Figures out the current install/update/download/etc status for the app we are viewing.
         // Then, asks the view to update itself to reflect this status.
