@@ -454,7 +454,8 @@ public class PreferencesFragment extends PreferenceFragment
         useTorCheckPref.setChecked(Preferences.get().isTorEnabled());
     }
 
-    private final Preference.OnPreferenceChangeListener useTorChangedListener = new Preference.OnPreferenceChangeListener() {
+    private final Preference.OnPreferenceChangeListener useTorChangedListener =
+            new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object enabled) {
             if ((Boolean) enabled) {
@@ -471,7 +472,8 @@ public class PreferencesFragment extends PreferenceFragment
         }
     };
 
-    private final Preference.OnPreferenceChangeListener proxyEnabledChangedListener = new Preference.OnPreferenceChangeListener() {
+    private final Preference.OnPreferenceChangeListener proxyEnabledChangedListener =
+            new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object enabled) {
             if ((Boolean) enabled) {

@@ -31,13 +31,9 @@ import android.os.Build;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
-import info.guardianproject.netcipher.NetCipher;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
