@@ -153,7 +153,7 @@ connected 27 google_apis_playstore x86:
 connected 28 default x86_64:
   <<: *kvm-template
 
-connected Q default x86_64:
+connected 29 default x86_64:
   <<: *kvm-template
 
 
