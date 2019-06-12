@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     protected void onResume() {
         super.onResume();
 
-        FDroidApp.checkStartTor(this);
+        FDroidApp.checkStartTor(this, Preferences.get());
 
         if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);

@@ -31,13 +31,9 @@ import android.os.Build;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
-import info.guardianproject.netcipher.NetCipher;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -481,20 +477,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_USE_TOR, IGNORED_B);
     }
 
-    private boolean isProxyEnabled() {
+    public boolean isProxyEnabled() {
         return preferences.getBoolean(PREF_ENABLE_PROXY, IGNORED_B);
-    }
-
-    /**
-     * Configure the proxy settings based on whether its enabled and set up. This must be
-     * run once at app startup, then whenever any of these settings changes.
-     */
-    public void configureProxy() {
-        if (isProxyEnabled()) {
-            // if "Use Tor" is set, NetCipher will ignore these proxy settings
-            SocketAddress sa = new InetSocketAddress(getProxyHost(), getProxyPort());
-            NetCipher.setProxy(new Proxy(Proxy.Type.HTTP, sa));
-        }
     }
 
     public String getProxyHost() {

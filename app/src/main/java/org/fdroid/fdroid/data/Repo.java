@@ -28,6 +28,7 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
@@ -390,9 +391,12 @@ public class Repo extends ValueObject {
      * Get the number of available mirrors, including the canonical repo.
      */
     public int getMirrorCount() {
+
+        final boolean isTorEnabled = Preferences.get().isTorEnabled();
+
         int count = 0;
         for (String m : getMirrorList()) {
-            if (FDroidApp.isUsingTor()) {
+            if (isTorEnabled) {
                 count++;
             } else if (!m.contains(".onion")) {
                 count++;
@@ -430,11 +434,14 @@ public class Repo extends ValueObject {
         }
         List<String> shuffledMirrors = getMirrorList();
         if (shuffledMirrors.size() > 0) {
+
+            final boolean isTorEnabled = Preferences.get().isTorEnabled();
+
             Collections.shuffle(shuffledMirrors);
             for (String m : shuffledMirrors) {
                 // Return a non default, and not last used mirror
                 if (!m.equals(mirrorToSkip)) {
-                    if (FDroidApp.isUsingTor()) {
+                    if (isTorEnabled) {
                         return m;
                     } else {
                         // Filter-out onion mirrors for non-tor connections

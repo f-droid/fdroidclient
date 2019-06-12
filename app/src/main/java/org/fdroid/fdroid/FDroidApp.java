@@ -4,6 +4,7 @@
  * Copyright (C) 2014-2018  Hans-Christoph Steiner <hans@eds.org>
  * Copyright (C) 2015-2016  Daniel Martí <mvdan@mvdan.cc>
  * Copyright (c) 2018  Senecto Limited
+ * Copyright (C) 2019 Michael Pöhn <michael.poehn@fsfe.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -388,7 +389,8 @@ public class FDroidApp extends Application {
         PRNGFixes.apply();
 
         curTheme = preferences.getTheme();
-        preferences.configureProxy();
+        configureProxy(preferences);
+
 
         // bug specific to exactly 5.0 makes it only work with the old index
         // which includes an ugly, hacky workaround
@@ -484,8 +486,6 @@ public class FDroidApp extends Application {
                 WifiStateChangeService.start(getApplicationContext(), null);
             }
         });
-
-        configureTor(preferences.isTorEnabled());
 
         if (preferences.isKeepingInstallHistory()) {
             InstallHistoryService.register(this);
@@ -640,28 +640,25 @@ public class FDroidApp extends Application {
         }
     }
 
-    private static boolean useTor;
-
     /**
-     * Set the proxy settings based on whether Tor should be enabled or not.
+     * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
+     *
+     * Must be called on App startup and after every proxy configuration change.
      */
-    private static void configureTor(boolean enabled) {
-        useTor = enabled;
-        if (useTor) {
+    public static void configureProxy(Preferences preferences) {
+        if (preferences.isTorEnabled()) {
             NetCipher.useTor();
+        } else if (preferences.isProxyEnabled()) {
+            NetCipher.setProxy(preferences.getProxyHost(), preferences.getProxyPort());
         } else {
             NetCipher.clearProxy();
         }
     }
 
-    public static void checkStartTor(Context context) {
-        if (useTor) {
+    public static void checkStartTor(Context context, Preferences preferences) {
+        if (preferences.isTorEnabled()) {
             OrbotHelper.requestStartTor(context);
         }
-    }
-
-    public static boolean isUsingTor() {
-        return useTor;
     }
 
     public static Context getInstance() {

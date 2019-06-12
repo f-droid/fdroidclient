@@ -60,6 +60,7 @@ import android.widget.Toast;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -128,7 +129,7 @@ public class ManageReposActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        FDroidApp.checkStartTor(this);
+        FDroidApp.checkStartTor(this, Preferences.get());
 
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
