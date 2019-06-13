@@ -436,7 +436,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isOnDemandDownloadAllowed() {
-        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT
+                || FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_DEVICE_AP_WITHOUT_INTERNET) {
             return getOverWifi() != OVER_NETWORK_NEVER;
         } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
             return getOverData() != OVER_NETWORK_NEVER;
