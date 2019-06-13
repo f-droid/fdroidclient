@@ -77,13 +77,6 @@ public class RepoProviderTest extends FDroidProviderTest {
         assertEquals(0, RepoProvider.Helper.countEnabledRepos(context));
     }
 
-    private Repo setEnabled(Repo repo, boolean enabled) {
-        ContentValues enable = new ContentValues(1);
-        enable.put(RepoTable.Cols.IN_USE, enabled);
-        RepoProvider.Helper.update(context, repo, enable);
-        return RepoProvider.Helper.findByAddress(context, repo.address);
-    }
-
     @Test
     public void lastUpdated() {
         assertNull(RepoProvider.Helper.lastUpdate(context));

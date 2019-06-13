@@ -86,25 +86,38 @@ public class ApkProvider extends FDroidProvider {
          * <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
          * <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>
          * </ul>
+         * If all else fails, try to return some {@link Apk} that will install something,
+         * rather than returning a null and triggering a {@link NullPointerException}.
          */
+        @Nullable
         public static Apk findSuggestedApk(Context context, App app) {
-            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode,
-                    app.getMostAppropriateSignature());
+            String mostAppropriateSignature = app.getMostAppropriateSignature();
+            Apk apk = findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode,
+                    mostAppropriateSignature);
+            if (apk == null && (mostAppropriateSignature == null || !app.isInstalled(context))) {
+                List<Apk> apks = findByPackageName(context, app.packageName);
+                for (Apk availableApk : apks) {
+                    if (availableApk.sig.equals(mostAppropriateSignature)) {
+                        apk = availableApk;
+                        break;
+                    }
+                }
+                if (apk == null && apks.size() > 0) {
+                    apk = apks.get(0);
+                }
+            }
+            return apk;
+
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {
-            return findApkFromAnyRepo(context, packageName, versionCode, null, Cols.ALL);
+            return findApkFromAnyRepo(context, packageName, versionCode, null);
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
                                              String signature) {
-            return findApkFromAnyRepo(context, packageName, versionCode, signature, Cols.ALL);
-        }
-
-        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
-                                             @Nullable String signature, String[] projection) {
             final Uri uri = getApkFromAnyRepoUri(packageName, versionCode, signature);
-            return findByUri(context, uri, projection);
+            return findByUri(context, uri, Cols.ALL);
         }
 
         public static Apk findByUri(Context context, Uri uri, String[] projection) {

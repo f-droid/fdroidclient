@@ -392,23 +392,6 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("xxxxyyyy", apk.hash);
         assertEquals("a hash type", apk.hashType);
 
-        String[] projection = {
-                Cols.Package.PACKAGE_NAME,
-                Cols.HASH,
-        };
-
-        Apk apkLessFields = ApkProvider.Helper.findApkFromAnyRepo(context, "com.example", 11, null, projection);
-
-        assertNotNull(apkLessFields);
-
-        assertEquals("com.example", apkLessFields.packageName);
-        assertEquals("xxxxyyyy", apkLessFields.hash);
-
-        // Didn't ask for these fields, so should be their default values...
-        assertNull(apkLessFields.hashType);
-        assertNull(apkLessFields.versionName);
-        assertEquals(0, apkLessFields.versionCode);
-
         Apk notFound = ApkProvider.Helper.findApkFromAnyRepo(context, "com.doesnt.exist", 1000);
         assertNull(notFound);
     }

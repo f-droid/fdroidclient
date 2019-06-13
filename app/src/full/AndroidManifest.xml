@@ -105,6 +105,10 @@
             </intent-filter>
         </activity>
         <activity
+                android:name=".views.panic.SelectInstalledAppsActivity"
+                android:parentActivityName=".views.panic.PanicPreferencesActivity"/>
+
+        <activity
                 android:name=".views.panic.PanicResponderActivity"
                 android:noHistory="true"
                 android:theme="@android:style/Theme.NoDisplay">

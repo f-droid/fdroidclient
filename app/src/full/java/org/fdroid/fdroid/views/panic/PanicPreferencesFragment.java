@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.graphics.LightingColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -20,37 +21,42 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import info.guardianproject.panic.Panic;
 import info.guardianproject.panic.PanicResponder;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class PanicPreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static final String PREF_EXIT = Preferences.PREF_PANIC_EXIT;
     private static final String PREF_APP = "pref_panic_app";
-    private static final String PREF_HIDE = Preferences.PREF_PANIC_HIDE;
 
     private PackageManager pm;
     private ListPreference prefApp;
     private CheckBoxPreference prefExit;
     private CheckBoxPreference prefHide;
+    private CheckBoxPreference prefResetRepos;
+    private PreferenceCategory categoryAppsToUninstall;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences_panic);
 
         pm = getActivity().getPackageManager();
-        prefExit = (CheckBoxPreference) findPreference(PREF_EXIT);
+        prefExit = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_EXIT);
         prefApp = (ListPreference) findPreference(PREF_APP);
-        prefHide = (CheckBoxPreference) findPreference(PREF_HIDE);
+        prefHide = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_HIDE);
         prefHide.setTitle(getString(R.string.panic_hide_title, getString(R.string.app_name)));
+        prefResetRepos = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_RESET_REPOS);
+        categoryAppsToUninstall = (PreferenceCategory) findPreference("pref_panic_apps_to_uninstall");
 
         if (PanicResponder.checkForDisconnectIntent(getActivity())) {
             // the necessary action should have been performed by the check already
@@ -73,9 +79,12 @@ public class PanicPreferencesFragment extends PreferenceFragment
                 if (packageName.equals(Panic.PACKAGE_NAME_NONE)) {
                     prefHide.setChecked(false);
                     prefHide.setEnabled(false);
+                    prefResetRepos.setChecked(false);
+                    prefResetRepos.setEnabled(false);
                     getActivity().setResult(Activity.RESULT_CANCELED);
                 } else {
                     prefHide.setEnabled(true);
+                    prefResetRepos.setEnabled(true);
                 }
                 showPanicApp(packageName);
                 return true;
@@ -88,6 +97,48 @@ public class PanicPreferencesFragment extends PreferenceFragment
     public void onStart() {
         super.onStart();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+        if (!PrivilegedInstaller.isDefault(getActivity())) {
+            getPreferenceScreen().removePreference(categoryAppsToUninstall);
+            return;
+        }
+        showWipeList();
+    }
+
+    private void showWipeList() {
+        Intent intent = new Intent(getActivity(), SelectInstalledAppsActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        Set<String> wipeSet = Preferences.get().getPanicWipeSet();
+        categoryAppsToUninstall.removeAll();
+        if (Panic.PACKAGE_NAME_NONE.equals(prefApp.getValue())) {
+            categoryAppsToUninstall.setEnabled(false);
+            return;
+        }
+        categoryAppsToUninstall.setEnabled(true);
+        if (wipeSet.size() > 0) {
+            for (String packageName : wipeSet) {
+                Preference preference = new DestructivePreference(getActivity());
+                preference.setSingleLineTitle(true);
+                preference.setIntent(intent);
+                categoryAppsToUninstall.addPreference(preference);
+                try {
+                    preference.setTitle(pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
+                    preference.setIcon(pm.getApplicationIcon(packageName));
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                    preference.setTitle(packageName);
+                }
+            }
+        } else {
+            Preference preference = new Preference(getActivity());
+            preference.setIntent(intent);
+            Drawable icon = getResources().getDrawable(R.drawable.ic_add_circle_outline_white);
+            icon.setColorFilter(new LightingColorFilter(0, getResources().getColor(R.color.swap_light_grey_icon)));
+            preference.setSingleLineTitle(true);
+            preference.setTitle(R.string.panic_add_apps_to_uninstall);
+            preference.setIcon(icon);
+            categoryAppsToUninstall.addPreference(preference);
+        }
     }
 
     @Override
@@ -98,11 +149,13 @@ public class PanicPreferencesFragment extends PreferenceFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(PREF_HIDE) && sharedPreferences.getBoolean(PREF_HIDE, false)) {
+        if (key.equals(Preferences.PREF_PANIC_HIDE)
+                && sharedPreferences.getBoolean(Preferences.PREF_PANIC_HIDE, false)) {
             showHideConfirmationDialog();
         }
         // disable "hiding" if "exit" gets disabled
-        if (key.equals(PREF_EXIT) && !sharedPreferences.getBoolean(PREF_EXIT, true)) {
+        if (key.equals(Preferences.PREF_PANIC_EXIT)
+                && !sharedPreferences.getBoolean(Preferences.PREF_PANIC_EXIT, true)) {
             prefHide.setChecked(false);
         }
     }
@@ -156,6 +209,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
 
             // disable destructive panic actions
             prefHide.setEnabled(false);
+            showWipeList();
         } else {
             // try to display connected panic app
             try {
@@ -163,6 +217,8 @@ public class PanicPreferencesFragment extends PreferenceFragment
                 prefApp.setSummary(pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
                 prefApp.setIcon(pm.getApplicationIcon(packageName));
                 prefHide.setEnabled(true);
+                prefResetRepos.setEnabled(true);
+                showWipeList();
             } catch (PackageManager.NameNotFoundException e) {
                 // revert back to no app, just to be safe
                 PanicResponder.setTriggerPackageName(getActivity(), Panic.PACKAGE_NAME_NONE);
@@ -243,6 +299,7 @@ public class PanicPreferencesFragment extends PreferenceFragment
             @Override
             public void onCancel(DialogInterface dialogInterface) {
                 prefHide.setChecked(false);
+                prefResetRepos.setChecked(false);
             }
         });
         builder.setView(R.layout.dialog_app_hiding);

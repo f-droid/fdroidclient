@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.data;
 
+import android.content.ContentValues;
 import android.content.ContextWrapper;
 import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
@@ -26,4 +27,10 @@ public abstract class FDroidProviderTest {
         DBHelper.clearDbHelperSingleton();
     }
 
+    protected Repo setEnabled(Repo repo, boolean enabled) {
+        ContentValues enable = new ContentValues(1);
+        enable.put(Schema.RepoTable.Cols.IN_USE, enabled);
+        RepoProvider.Helper.update(context, repo, enable);
+        return RepoProvider.Helper.findByAddress(context, repo.address);
+    }
 }

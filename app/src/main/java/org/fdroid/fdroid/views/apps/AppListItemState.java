@@ -2,12 +2,12 @@ package org.fdroid.fdroid.views.apps;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
 /**
  * A dumb model which is used to specify what should/should not be shown  in an {@link AppListItemController}.
+ *
  * @see AppListItemController and its subclasses.
  */
 public class AppListItemState {
@@ -20,6 +20,8 @@ public class AppListItemState {
     private int progressCurrent = -1;
     private int progressMax = -1;
     private boolean showInstallButton;
+    private boolean showCheckBox;
+    private boolean isCheckBoxChecked;
 
     public AppListItemState(@NonNull App app) {
         this.app = app;
@@ -63,6 +65,9 @@ public class AppListItemState {
 
     @Nullable
     public CharSequence getMainText() {
+        if (showCheckBox) {
+            return app.name;
+        }
         return mainText != null
                 ? mainText
                 : Utils.formatAppNameAndSummary(app.name, app.summary);
@@ -113,4 +118,23 @@ public class AppListItemState {
     public CharSequence getSecondaryStatusText() {
         return secondaryStatusText;
     }
+
+    public boolean shouldShowCheckBox() {
+        return showCheckBox;
+    }
+
+    public boolean isCheckBoxChecked() {
+        return isCheckBoxChecked;
+    }
+
+    /**
+     * Enable the {@link android.widget.CheckBox} display and set the on/off status
+     * e.g. {@link android.widget.CheckBox#isChecked()}
+     */
+    public AppListItemState setCheckBoxStatus(boolean checked) {
+        this.showCheckBox = true;
+        this.isCheckBoxChecked = checked;
+        return this;
+    }
+
 }

@@ -20,6 +20,7 @@ import java.util.Map;
 import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
 import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -35,7 +36,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
 
     @Test
     public void insertSingleApp() {
-        Map<String, Long> foundBefore = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        Map<String, Long> foundBefore = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
         assertEquals(foundBefore.size(), 0);
 
         ContentValues values = new ContentValues();
@@ -49,7 +50,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         values.put(Cols.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
         contentResolver.insert(InstalledAppProvider.getContentUri(), values);
 
-        Map<String, Long> foundAfter = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        Map<String, Long> foundAfter = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
         assertEquals(1, foundAfter.size());
         assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
 
@@ -72,6 +73,39 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
     }
 
     @Test
+    public void testHelperAll() {
+        final String packageName0 = "com.0";
+        final String packageName1 = "com.1";
+        final String packageName2 = "com.2";
+
+        App[] apps = InstalledAppProvider.Helper.all(context);
+        assertEquals(0, apps.length);
+
+        insertInstalledApp(packageName0, 0, "v0");
+        insertInstalledApp(packageName1, 1, "v1");
+        insertInstalledApp(packageName2, 2, "v2");
+
+        assertResultCount(contentResolver, 3, InstalledAppProvider.getContentUri());
+        assertResultCount(contentResolver, 3, InstalledAppProvider.getAllAppsUri());
+        assertIsInstalledVersionInDb(contentResolver, packageName0, 0, "v0");
+        assertIsInstalledVersionInDb(contentResolver, packageName1, 1, "v1");
+        assertIsInstalledVersionInDb(contentResolver, packageName2, 2, "v2");
+
+        apps = InstalledAppProvider.Helper.all(context);
+        assertEquals(3, apps.length);
+        assertEquals(packageName0, apps[0].packageName);
+        assertEquals("v0", apps[0].upstreamVersionName);
+        assertEquals(0, apps[0].upstreamVersionCode);
+        assertEquals(packageName1, apps[1].packageName);
+        assertEquals("v1", apps[1].upstreamVersionName);
+        assertEquals(1, apps[1].upstreamVersionCode);
+        assertEquals(packageName2, apps[2].packageName);
+        assertEquals("v2", apps[2].upstreamVersionName);
+        assertEquals(2, apps[2].upstreamVersionCode);
+        assertNotEquals(packageName0, apps[2].packageName);
+    }
+
+    @Test
     public void testInsert() {
 
         assertResultCount(contentResolver, 0, InstalledAppProvider.getContentUri());
@@ -84,6 +118,9 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertIsInstalledVersionInDb(contentResolver, "com.example.com1", 1, "v1");
         assertIsInstalledVersionInDb(contentResolver, "com.example.com2", 2, "v2");
         assertIsInstalledVersionInDb(contentResolver, "com.example.com3", 3, "v3");
+
+        App[] apps = InstalledAppProvider.Helper.all(context);
+        assertEquals(3, apps.length);
     }
 
     @Test
