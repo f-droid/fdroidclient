@@ -412,7 +412,9 @@ public class SwapService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         deleteAllSwapRepos();
-        startActivity(new Intent(this, SwapWorkflowActivity.class));
+        Intent startUiIntent = new Intent(this, SwapWorkflowActivity.class);
+        startUiIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startUiIntent);
         return START_NOT_STICKY;
     }
 
