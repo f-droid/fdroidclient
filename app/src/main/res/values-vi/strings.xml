@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Phiên bản mới có mã khoá khác với phiên bản cũ. Để cài đặt phiên bản mới phải xoá
         phiên bản cũ trước. Hãy xoá phiên bản cũ và thử lại. (Chú ý rằng khi xoá ứng dụng, dữ liệu ứng dụng sẽ bị mất)
@@ -45,7 +45,7 @@
     <string name="menu_manage">Kho ứng dụng</string>
     <string name="menu_search">Tìm kiếm</string>
     <string name="menu_add_repo">Thêm kho ứng dụng mới</string>
-    <string name="menu_launch">Chạy</string>
+    <string name="menu_launch">Mở</string>
     <string name="menu_share">Chia sẻ</string>
     <string name="menu_install">Cài đặt</string>
     <string name="menu_uninstall">Gỡ bỏ</string>
@@ -54,7 +54,7 @@
     <string name="menu_website">Trang web</string>
     <string name="menu_issues">Vấn đề</string>
     <string name="menu_source">Mã nguồn</string>
-    <string name="menu_upgrade">Nâng cấp</string>
+    <string name="menu_upgrade">Cập nhật</string>
     <string name="menu_donate">Ủng hộ</string>
     <string name="details_notinstalled">Chưa cài đặt</string>
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
@@ -135,11 +135,9 @@
     <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
     <string name="app_name">F-Droid</string>
-
     <string name="unstable_updates">Cập nhật bản không ổn định</string>
     <string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
     <string name="links">Liên kết</string>
-
     <string name="back">Quay lại</string>
     <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
     <string name="about_source">Mã nguồn</string>
@@ -149,8 +147,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
     <string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
     <string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>
@@ -165,10 +161,8 @@
     <string name="unknown">Không rõ</string>
     <string name="pref_language">Ngôn ngữ</string>
     <string name="pref_language_default">Mặc định</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
-
     <string name="category_Connectivity">Kết nối</string>
     <string name="category_Graphics">Đồ hoạ</string>
     <string name="category_Money">Tài chính</string>
@@ -176,16 +170,13 @@
     <string name="category_Theming">Giao diện</string>
     <string name="category_Time">Thời gian</string>
     <string name="category_Writing">Soạn thảo</string>
-
     <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy bạn, nhưng những ứng dụng
         này không nằm trong F-Droid. Có thể bạn cần cập nhật các kho ứng dụng, hoặc trong các kho không có ứng dụng bạn
         đang dùng.
     </string>
     <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
-
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
-
     <string name="swap_nfc_title">Chạm để trao đổi</string>
     <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu
         không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.
@@ -216,7 +207,6 @@
     <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
     <string name="loading">Đang tải…</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>
-
     <string name="install_confirm">cần truy cập</string>
     <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
     <string name="install_confirm_update_system">Bạn có muốn cập nhật ứng dụng hệ thống này không? Dữ liệu đã có sẽ
@@ -232,11 +222,9 @@
     <string name="uninstall_update_confirm">Bạn có muốn thay thế ứng dụng này bằng phiên bản xuất xưởng không?</string>
     <string name="uninstall_confirm">Bạn có muốn gỡ bỏ ứng dụng này không?</string>
     <string name="download_error">Tải về thất bại!</string>
-
     <string name="perms_new_perm_prefix">Mới:</string>
     <string name="perms_description_app">Được cung cấp bởi %1$s.</string>
     <string name="downloading">Đang tải về…</string>
-
     <string name="interval_never">Không tự động cập nhật</string>
     <string name="interval_1h">Kiểm tra cập nhật hàng giờ</string>
     <string name="interval_4h">Kiểm tra cập nhật mỗi 4 giờ</string>
@@ -244,14 +232,12 @@
     <string name="interval_1d">Kiểm tra cập nhật hàng ngày</string>
     <string name="interval_1w">Kiểm tra cập nhật hàng tuần</string>
     <string name="interval_2w">Kiểm tra cập nhật mỗi 2 tuần</string>
-
     <string name="theme_light">Sáng</string>
     <string name="theme_dark">Tối</string>
     <string name="all_other_repos_fine">Tất cả các kho khác không có lỗi.</string>
     <string name="swap_join_this_hotspot">Giúp đỡ bạn của bạn vào điểm truy cập</string>
     <string name="more">Thêm</string>
     <string name="less">Ít hơn</string>
-
     <string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
     <string name="permissions">Quyền</string>
     <string name="repo_details">Kho ứng dụng</string>
@@ -268,24 +254,18 @@
     <string name="login_password">Mật khẩu</string>
     <string name="repo_edit_credentials">Đổi mật khẩu</string>
     <string name="repo_error_empty_username">Tên người dùng trống, không đổi được mật khẩu</string>
-
     <string name="about_license">Giấy phép</string>
-
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư. Cần ứng dụng Orbot</string>
     <string name="main_menu__swap_nearby">Lân cận</string>
-
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>
     <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
-
-
     <string name="notification_action_update">Cập nhật</string>
     <string name="notification_action_cancel">Hủy bỏ</string>
     <string name="notification_action_install">Cài đặt</string>
-
     <string name="app_list__name__downloading_in_progress">Đang tải %1$s</string>
     <string name="app_list__name__successfully_installed">Đã cài đặt %1$s</string>
     <string name="updates__tts__download_app">Tải xuống</string>
@@ -305,13 +285,11 @@
     <string name="update_auto_install_summary">Tải và cài đặt ngầm các bản cập nhật</string>
     <string name="app_details_donate_prompt_unknown_author">Hãy mua một ly cà phê cho nhà phát triển ứng dụng %1$s!</string>
     <string name="app_details_donate_prompt">Ứng dụng %1$s được %2$s tạo ra. Hãy mua một ly cà phê cho nhà phát triển!</string>
-
     <string name="app_details__incompatible_mismatched_signature">Chữ kí ứng dụng khác với phiên bản đã cài đặt</string>
     <string name="app_details__no_versions__show_incompat_versions">Để hiển thị cả những phiên bản không tương tích, hãy bật tuỳ chọn \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Không phiên bản nào có chữ kí tương thích</string>
     <string name="app_details__no_versions__none_compatible_with_device">Không phiên bản nào tương thích với thiết bị</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Phiên bản đã cài đặt không tương thích với bất kì phiên bản nào ở đây. Việc gỡ bỏ ứng dụng này sẽ giúp bạn xem và cài đặt các phiên bản tương thích. Trường hợp này hay xảy ra với các ứng dụng cài từ Cửa hàng Play hoặc các nguồn khác nếu ứng dụng được kí bởi chứng chỉ khác.</string>
-
     <string name="app_version_x_available">Đã có phiên bản %1$s</string>
     <string name="app_version_x_installed">Phiên bản %1$s</string>
     <string name="app_recommended_version_installed">Phiên bản %1$s (Khuyên dùng)</string>
@@ -320,94 +298,72 @@
     <string name="app__install_downloaded_update">Cập nhật</string>
     <string name="app_installed_media">Đã cài đặt tập tin vào %s</string>
     <string name="app_permission_storage">F-Droid cần quyền truy cập bộ nhớ lưu trữ để cài đặt. Hãy chọn Cho phép trong hộp thoại sau đây để tiếp tục cài đặt.</string>
-
     <string name="app_list_download_ready">Đã tải, sẵn sàng cài đặt</string>
     <string name="app_list__dismiss_app_update">Đã bỏ qua bản cập nhật</string>
     <string name="app_list__dismiss_vulnerable_app">Đã bỏ qua lỗ hổng bảo mật</string>
     <string name="app_list__dismiss_downloading_app">Đã huỷ bỏ tải xuống</string>
-
     <string name="installed_apps__activity_title">Ứng dụng đã cài đặt</string>
     <string name="installed_app__updates_ignored">Đã bỏ qua các cập nhật</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Đã bỏ qua cập nhật với phiên bản %1$s</string>
     <string name="update_all">Tải về tất cả các bản cập nhật</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn gỡ bỏ ứng dụng này ngay lập tức.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn cập nhật phiên bản mới nhất ngay lập tức.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Bỏ qua</string>
-
     <string name="updates__hide_updateable_apps">Ẩn ứng dụng</string>
     <string name="updates__show_updateable_apps">Hiển thị ứng dụng</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">Tải các bản cập nhật của %1$d ứng dụng.</item>
     </plurals>
-
     <string name="versions">Các phiên bản</string>
     <string name="clear_search">Xoá tìm kiếm</string>
-
     <string name="repo_provider">Kho: %s</string>
-
     <string name="repositories_summary">Thêm các nguồn ứng dụng khác</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Giấy phép: %s</string>
     <string name="latest__empty_state__no_recent_apps">Không có ứng dụng mới cập nhật</string>
     <string name="latest__empty_state__never_updated">Các ứng dụng mới nhất sẽ hiện lên ở đây sau khi danh sách ứng dụng của bạn được cập nhật</string>
     <string name="latest__empty_state__no_enabled_repos">Khi bạn bật một kho ứng dụng và cập nhật nó, các ứng dụng mới nhất sẽ hiện lên ở đây</string>
-
     <string name="categories__empty_state__no_categories">Không có mục nào</string>
-
     <string name="preference_category__my_apps">Ứng dụng của tôi</string>
     <string name="details_new_in_version">Những điểm mới trong phiên bản %s</string>
-
     <string name="antifeatureswarning">Ứng dụng này có thể có các tính năng không mong muốn.</string>
     <string name="antifeatures">Tính năng không mong muốn</string>
     <string name="antinonfreeassetslist">Ứng dụng này có những phần không tự do</string>
-
     <string name="privacy">Quyền riêng tư</string>
     <string name="preventScreenshots_title">Chặn chụp màn hình</string>
     <string name="preventScreenshots_summary">Không cho phép chụp màn hình và ẩn nội dung ứng dụng trong màn hình các ứng dụng gần đây</string>
-
     <string name="panic_app_setting_summary">Chưa đặt ứng dụng</string>
     <string name="panic_app_setting_none">Không có</string>
     <string name="allow">Cho phép</string>
-
     <string name="panic_settings_summary">Những hành động sẽ thực hiện trong trường hợp khẩn cấp</string>
     <string name="panic_exit_title">Thoát ứng dụng</string>
     <string name="panic_exit_summary">Ứng dụng sẽ được đóng</string>
     <string name="panic_hide_title">Ẩn %s</string>
     <string name="panic_hide_summary">Ứng dúng sẽ tự ẩn</string>
-
     <string name="download_404">Không tìm thấy tập tin được yêu cầu.</string>
     <string name="status_inserting_x_apps">Đang lưu thông tin ứng dụng (%1$d/%2$d) từ %3$s</string>
     <string name="repo_fingerprint">Mã SHA-256 của khoá dùng để kí kho ứng dụng</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">Xem %d ứng dụng</item>
     </plurals>
-
     <string name="empty_search_available_app_list">Không tìm thấy ứng dụng tương ứng.</string>
-
     <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy cài đặt ứng dụng từ những thiết bị xung quanh bạn!</string>
     <string name="nearby_splash__find_people_button">Tìm những người xung quanh</string>
     <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có ứng dụng %1$s để sử dụng tính năng Xung quanh.</string>
-
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>
     <string name="download_pending">Đang chờ tải về…</string>
     <string name="install_error_notify_title">Lỗi khi cài đặt %s</string>
     <string name="uninstall_error_notify_title">Lỗi khi gỡ bỏ %s</string>
-
-
     <string name="app__tts__downloading_progress">Đang tải, hoàn thành %1$d%%</string>
     <string name="installing">Đang cài đặt…</string>
     <string name="uninstalling">Đang gỡ bỏ…</string>
-
     <string name="keep_hour">1 giờ</string>
     <string name="keep_day">1 ngày</string>
     <string name="keep_week">1 tuần</string>
     <string name="keep_month">1 tháng</string>
     <string name="keep_year">1 năm</string>
     <string name="keep_forever">Mãi mãi</string>
-
     <string name="crash_dialog_comment_prompt">Bạn có thể đưa thêm thông tin và bình luận ở đây:</string>
-
     <plurals name="notification_summary_more">
         <item quantity="other">và còn +%1$d…</item>
     </plurals>
@@ -432,11 +388,9 @@
     <string name="notification_title_summary_installing">Đang cài đặt</string>
     <string name="notification_title_summary_installed">Cài đặt thành công</string>
     <string name="tts_category_name">Mục %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="other">Xem tất cả %1$d ứng dụng trong mục %2$s</item>
     </plurals>
-
     <string name="details_last_updated_today">Được cập nhật hôm nay</string>
     <plurals name="details_last_update_days">
         <item quantity="other">Được cập nhật %1$d ngày trước</item>
@@ -456,33 +410,35 @@
     <string name="over_network_on_demand_summary">Chỉ sử dụng kết nối này khi nhấn nút tải xuống</string>
     <string name="over_network_never_summary">Không bao giờ tải xuống bằng kết nối này</string>
     <string name="sort_search">Sắp xếp kết quả tìm kiếm</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
     <string name="antiknownvulnlist">Ứng dụng này có lỗ hổng bảo mật đã bị phát hiện</string>
-
     <string name="show_anti_feature_apps">Hiện ứng dụng có tính năng không mong muốn</string>
     <string name="show_anti_feature_apps_on">Hiện các ứng dụng có một số tính năng không mong muốn</string>
     <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>
     <string name="force_touch_apps_on">Hiển thị các ứng dụng cần màn hình cảm ứng bất kể thiết bị của bạn có hỗ trợ hay không</string>
-
     <string name="panic_app_setting_title">Ứng dụng nút khẩn cấp</string>
     <string name="panic_settings">Cài đặt nút khẩn cấp</string>
     <string name="panic_hide_warning_message">Trong trường hợp khẩn cấp, việc này sẽ ẩn %1$s khỏi launcher. Bạn chỉ có thể khôi phục ứng dụng bằng cách gõ \"%2$d\" trong ứng dụng giả có tên %3$s.</string>
-
     <string name="hiding_calculator">Máy tính</string>
     <string name="hiding_dialog_title">Ẩn %s ngay</string>
     <string name="hiding_dialog_message">Bạn có muốn ẩn biểu tượng %1$s? Bạn chỉ có thể lấy lại biểu tượng bằng cách gõ \"%2$d\" trong ứng dụng %3$s giả.</string>
     <string name="hiding_dialog_warning">Chú ý: Các biểu tượng trên màn hình chính cũng sẽ bị xoá và phải được thêm lại bằng tay.</string>
     <string name="hide_on_long_search_press_title">Ẩn bằng nút tìm kiếm</string>
     <string name="hide_on_long_search_press_summary">Nhấn giữ nút tìm kiếm để ẩn ứng dụng</string>
-
     <string name="repo_official_mirrors">Máy chủ dự phòng chính thức</string>
     <string name="repo_user_mirrors">Máy chủ dự phòng do người dùng quản lí</string>
     <string name="use_bluetooth">Dùng Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Đã bật điểm phát Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
-
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
+    <string name="hide_all_notifications">Giấu mọi thông báo</string>
+    <string name="hide_all_notifications_summary">Ngăn mọi thao tác không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
+    <string name="prompt_to_send_crash_reports_summary">Thu thập thông tin khi app gặp lỗi và gửi đến nhà phát triển</string>
+    <string name="install_history">Lịch sử cài đặt</string>
+    <string name="install_history_summary">Xem nhật ký của từng lượt cài đặt và gỡ bỏ</string>
+    <string name="send_version_and_uuid">Gửi phiên bản và UUID đến máy chủ</string>
+    <string name="send_version_and_uuid_summary">Đính kèm phiên bản app này và một ID ngẫu nhiên khi download, có hiệu lực sau khi khởi động lại.</string>
+    <string name="send_install_history">Gửi Lịch sử Cài đặt</string>
+    <string name="send_history_csv">%s lịch sử cài đặt dưới dạng CSV</string>
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">F-Droid</string>
+    <string name="updates">আপডেট</string>
+    <string name="ok">ঠিক আছে</string>
+    <string name="yes">হ্যাঁ</string>
+    <string name="no">না</string>
+    <string name="back">ফিরে</string>
+</resources>

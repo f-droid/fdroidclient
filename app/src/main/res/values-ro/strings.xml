@@ -168,7 +168,7 @@
     <string name="swap_not_visible_bluetooth">Nu este vizibil prin Bluetooth</string>
     <string name="swap_wifi_device_name">Nume dispozitiv</string>
     <string name="swap_confirm">Confirmă schimb</string>
-    <string name="swap_success">Schimb realizat cu succes!</string>
+    <string name="swap_success">Schimb realizat!</string>
     <string name="swap_switch_to_wifi">Atinge pentru a trece la o rețea Wi-Fi</string>
     <string name="swap_confirm_connect">Vreți sa luați aplicații de la %1$s acum?</string>
     <string name="swap_welcome">Bine ați venit la F-Droid!</string>
@@ -481,4 +481,6 @@
     <string name="scan_removable_storage_toast">Scanare %s…</string>
     <string name="main_menu__updates">Actualizări</string>
     <string name="menu_translation">Traducere</string>
+    <string name="undo">Anulare</string>
+    <string name="app_list__dismiss_installing_app">Instalare anulată</string>
 </resources>

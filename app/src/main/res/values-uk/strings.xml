@@ -78,7 +78,7 @@
     <string name="bad_fingerprint">Невірний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє вашу активність</string>
-    <string name="antinonfreedeplist">Застосунок залежить від інших невільних застосунків</string>
+    <string name="antinonfreedeplist">Цей застосунок залежить від інших невільних застосунків</string>
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
     <string name="local_repo">Локальна комора даних</string>
     <string name="deleting_repo">Видалення поточної комори даних…</string>
@@ -159,7 +159,7 @@
     <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Ігнорування неправильного URI комори даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує не-вільні надбудови</string>
-    <string name="antinonfreenetlist">Застосунок пропонує невільні мережеві послуги</string>
+    <string name="antinonfreenetlist">Цей застосунок просуває невільні мережеві послуги</string>
     <string name="antiupstreamnonfreelist">Вихідний код випуску не є повністю вільним</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
@@ -492,4 +492,6 @@
     <string name="swap_toast_find_removeable_storage">Виберіть знімну картку SD або USB</string>
     <string name="main_menu__updates">Оновлення</string>
     <string name="menu_translation">Назва посилання, що веде до сервісу перекладів для цього застосунку</string>
+    <string name="undo">Повернути</string>
+    <string name="app_list__dismiss_installing_app">Встановлення скасовано</string>
 </resources>

@@ -178,7 +178,7 @@
     <string name="swap_nfc_title">Tocar para intercambiar</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verificad que estáis en la misma red. Si no tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
-    <string name="swap_success">¡Intercambio realizado con éxito!</string>
+    <string name="swap_success">¡Intercambio exitoso!</string>
     <string name="swap_active_hotspot">%1$s (tu punto de acceso)</string>
     <string name="swap_switch_to_wifi">Tocar para cambiar a una red Wi-Fi</string>
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
@@ -495,4 +495,5 @@
     <string name="swap_toast_using_path">Utilizando %1$s</string>
     <string name="swap_toast_not_removable_storage">Esa opción no coincide con ningún dispositivo de almacenamiento extraíble, ¡inténtalo de nuevo!</string>
     <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
+    <string name="menu_translation">Traducción</string>
 </resources>

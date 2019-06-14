@@ -113,9 +113,8 @@
     </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">Ao remover um repositório, os aplicativos fornecidos pelo mesmo não estarão mais disponíveis. 
-\n
-\nNota: Todos os aplicativos já instalados permanecerão no seu dispositivo.</string>
+    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis. 
+\nNota: Todos os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s desativado.
 \n
 \nVocê precisará reativar este repositório para instalar aplicativos a partir dele.</string>
@@ -467,17 +466,17 @@
     <string name="prompt_to_send_crash_reports">Perguntar antes de enviar relatórios de falhas</string>
     <string name="prompt_to_send_crash_reports_summary">Reunir dados sobre falhas e enviar pro desenvolvedor</string>
     <string name="hide_all_notifications">Ocultar todas notificações</string>
-    <string name="hide_all_notifications_summary">Não mostrar nenhuma ação na barra de estado nem no painel de notificações.</string>
+    <string name="hide_all_notifications_summary">Prevenir ações de se mostrarem na barra de estados e de notificações.</string>
     <string name="send_install_history">Enviar histórico de instalações</string>
     <string name="send_history_csv">Histórico de instalações de %s em arquivo CSV</string>
     <string name="install_history">Histórico de instalações</string>
-    <string name="install_history_summary">Ver o registro privado de todas as instalações e desinstalações</string>
+    <string name="install_history_summary">Visualizar o registro privado de todas instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
-    <string name="send_version_and_uuid_summary">Enviar a versão do aplicativo e um ID gerado aleatoriamente ao baixar. Tem efeito após reiniciar o aplicativo.</string>
+    <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um aleatório, único ID enquanto baixar, torna-se efetivo após a reinicialização do aplicativo.</string>
     <string name="allow_push_requests">Repositórios permitidos para instalar/desinstalar aplicativos</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas por causa das configurações de Dados/WiFi</string>
     <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível.</string>
-    <string name="allow_push_requests_summary">Repositório de metadados podem incluir solicitações de envio para instalar ou desinstalar aplicativos</string>
+    <string name="allow_push_requests_summary">Repositório de metadados pode incluir requisições de envio para instalar ou desinstalar aplicativos</string>
     <string name="send_installed_apps">Compartilhar aplicativos instalados</string>
     <string name="send_installed_apps_csv">Aplicativos instalados por F-Droid com arquivo CSV</string>
     <string name="menu_open">Abrir</string>
@@ -485,7 +484,7 @@
     <string name="about_forum">Fórum de suporte</string>
     <string name="app_suggested">Sugerido</string>
     <string name="app_size">Tamanho: %1$s</string>
-    <string name="menu_downgrade">Rebaixamento</string>
+    <string name="menu_downgrade">Desatualizar</string>
     <string name="scan_removable_storage_title">Verificar armazenamento removível</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>
@@ -499,4 +498,6 @@
     <string name="swap_toast_not_removable_storage">Essa escolha não corresponde a nenhum dispositivo de armazenamento removível, tente novamente!</string>
     <string name="swap_toast_find_removeable_storage">Escolha o seu cartão SD ou USB removível</string>
     <string name="menu_translation">Tradução</string>
+    <string name="undo">Desfazer</string>
+    <string name="app_list__dismiss_installing_app">Instalação cancelada</string>
 </resources>

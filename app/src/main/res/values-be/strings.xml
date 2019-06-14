@@ -479,4 +479,6 @@
     <string name="swap_toast_not_removable_storage">Гэты выбар не адпавядае рухомаму носьбіту, паспрабуйце яшчэ раз!</string>
     <string name="swap_toast_find_removeable_storage">Абярыце SD-картку ці USB-назапашвальнік</string>
     <string name="menu_translation">Пераклад</string>
+    <string name="undo">Адрабіць</string>
+    <string name="app_list__dismiss_installing_app">Усталёўка скасаваная</string>
 </resources>

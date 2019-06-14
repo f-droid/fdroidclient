@@ -16,10 +16,8 @@
     <string name="update_interval">Interval automat. aktualizácií</string>
     <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
-    <string name="system_installer">Ukladať balíky do vyr. pamäte</string>
-    <string name="system_installer_on">Používať Oprávnené Rozšírenie F-Droidu na inštaláciu, aktualizácie a odstránenie
-        balíkov
-    </string>
+    <string name="system_installer">Rozšírenie Oprávnení</string>
+    <string name="system_installer_on">Použiť Rozšírenie oprávnení na inštaláciu, aktualizácie a odstránenie balíkov</string>
     <string name="local_repo_name">Meno miestneho repozitára</string>
     <string name="local_repo_name_summary">Zverejnený názov miestneho repozitára: %s</string>
     <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny repozitár</string>
@@ -299,7 +297,7 @@
     <string name="installing">Inštalácia…</string>
     <string name="uninstalling">Odinštalovávanie…</string>
     <string name="update_auto_install">Automaticky nainštalovať aktualizácie</string>
-    <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí</string>
+    <string name="update_auto_install_summary">Prevziať a aktualizovať aplikácie na pozadí, so zobrazením upozornenia</string>
     <string name="warning_no_internet">Nemožno aktualizovať, máte prístup na Internet?</string>
     <string name="keep_install_history">Uchovať históriu inštalácií</string>
     <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaných a odinštalovaných aplikáciach v F-Droid-e</string>
@@ -329,7 +327,7 @@
     <string name="app_version_x_available">Je dostupná verzia %1$s</string>
     <string name="app_version_x_installed">Verzia %1$s</string>
     <string name="app_recommended_version_installed">Verzia %1$s (odporúčaná)</string>
-    <string name="app_new">Novinka</string>
+    <string name="app_new">Nové</string>
     <string name="app__install_downloaded_update">Aktualizovať</string>
     <string name="app_list__name__downloading_in_progress">Sťahovanie %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s nainštalovaná</string>
@@ -337,7 +335,7 @@
     <string name="installed_app__updates_ignored">Vynechané aktualizácie</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Vynechané aktualizácie pre verziu %1$s</string>
     <string name="updates__tts__download_app">Stiahnuť</string>
-    <string name="update_all">Stiahnuť všetky aktualizácie</string>
+    <string name="update_all">Aktualizovať všetko</string>
     <string name="updates__hide_updateable_apps">Skryť aplikácie</string>
     <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>
     <string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
@@ -440,4 +438,26 @@
     <string name="over_network_always_summary">Vždy použiť toto pripojenie, keď je dostupné</string>
     <string name="over_network_never_summary">Nikdy nič nesťahovať cez toto pripojenie</string>
     <string name="menu_open">Otvoriť</string>
+    <string name="prompt_to_send_crash_reports">Opýtať sa na odoslanie hlásení o páde</string>
+    <string name="prompt_to_send_crash_reports_summary">Zhromaždiť údaje o páde aplikácie a pýtať sa, či ich odoslať vývojárom</string>
+    <string name="hide_all_notifications_summary">Nezobrazovať nijakú aktivitu v notifikačnej lište ani v stavovom riadku.</string>
+    <string name="send_history_csv">%s história inštalácií ako CSV súbor</string>
+    <string name="install_history_summary">Zobraziť súkromný záznam o všetkých inštaláciách a deinštaláciách</string>
+    <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor (zmena sa prejaví po reštarte aplikácie).</string>
+    <string name="allow_push_requests">Povoliť repozitárom nainštalovať/odinštalovať aplikácie</string>
+    <string name="allow_push_requests_summary">Metadáta repozitára môžu obsahovať push požiadavky na inštaláciu alebo deinštaláciu aplikácií</string>
+    <string name="over_network_on_demand_summary">Toto pripojenie použiť len keď kliknem na sťahovanie</string>
+    <string name="scan_removable_storage_title">Prehľadať odpojiteľné úložisko</string>
+    <string name="scan_removable_storage_toast">Prehľadáva sa %s…</string>
+    <string name="scan_removable_storage_summary">Hľadať repozitáre balíkov na odpojiteľnom úložisku ako sú SD karty a USB kľúče</string>
+    <string name="about_forum">Diskusné fórum podpory</string>
+    <string name="app_suggested">Odporúčané</string>
+    <string name="app_repository">Repozitár: %1$s</string>
+    <string name="app_size">Veľkosť: %1$s</string>
+    <string name="send_installed_apps_csv">Zoznam aplikácií nainštalovaných F-Droidom v podobe CSV souboru</string>
+    <string name="send_installed_apps">Zdieľať balíčky nainštalovaných aplikácií</string>
+    <string name="updates_disabled_by_settings">Všetky aktualizácie sú vypnuté kôli nastaveniu Mobilných dát/WiFi</string>
+    <string name="repo_add_mirror">Pridať zrkadlo repozitára</string>
+    <string name="sort_search">Zoradiť vyhľadávanie</string>
+    <string name="repo_exists_add_fingerprint">%1$s je už nastavené, týmto pridáte informáciu o novom kľúči.</string>
 </resources>

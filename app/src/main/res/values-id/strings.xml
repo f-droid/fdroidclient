@@ -126,7 +126,7 @@
     <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak lagi tersedia. 
 \n
 \nCatatan: Semua apl yang sebelumnya dipasang akan tetap ada di perangkat Anda.</string>
-    <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi yang lama. Untuk memasang versi yang baru, versi yang lama harus dihapus terlebih dahulu. Silakan lakukan ini dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh apl tersebut)</string>
+    <string name="SignatureMismatch">Versi terbaru telah diamankan menggunakan kunci yang berbeda dengan versi lama. Untuk memasang versi terbaru, versi lama harus dicopot terlebih dahulu. Silakan lakukan ini dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
     <string name="interval_12h">Cek pembaruan setiap 12 jam</string>
     <string name="downloading">Mengunduh…</string>
     <string name="login_title">Dibutuhkan otentikasi</string>
@@ -467,5 +467,11 @@
     <string name="main_menu__updates">Pembaruan</string>
     <string name="nearby_splash__request_permission">Cobalah</string>
     <string name="swap_toast_using_path">Menggunakan %1$s</string>
-    <string name="swap_toast_find_removeable_storage">Pilih Kartu SD atau USB eksternal</string>
+    <string name="swap_toast_find_removeable_storage">Pilih Kartu SD atau USB eksternal Anda</string>
+    <string name="scan_removable_storage_summary">Cari repo paket di dalam simpanan dapat dilepas seperti Kartu SD dan flash disk USB</string>
+    <string name="menu_translation">Terjemahan</string>
+    <string name="nearby_splash__read_external_storage">Kartu SD dapat digunakan untuk swap!</string>
+    <string name="not_visible_nearby">Perangkat terdekat tidak menyala</string>
+    <string name="not_visible_nearby_description">Sebelum bertukar dengan alat terdekat, atur supaya perangkat anda terlihat.</string>
+    <string name="swap_toast_not_removable_storage">Pilihan tersebut tidak sesuai dengan perangkat penyimpanan luar manapun, cobalah kembali!</string>
 </resources>

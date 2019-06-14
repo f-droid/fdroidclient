@@ -512,4 +512,6 @@
     <string name="scan_removable_storage_toast">Iscansende %s…</string>
     <string name="main_menu__updates">Agiornamentos</string>
     <string name="menu_translation">Tradutzione</string>
+    <string name="undo">Annulla</string>
+    <string name="app_list__dismiss_installing_app">Installatzione annullada</string>
 </resources>

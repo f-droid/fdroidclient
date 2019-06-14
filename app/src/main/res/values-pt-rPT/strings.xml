@@ -209,7 +209,7 @@
     <string name="theme_dark">Escuro</string>
     <string name="swap_confirm_connect">Quer obter agora as aplicações de %1$s\?</string>
     <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador de Internet.</string>
-    <string name="swap_scan_qr">Digitalizar código QR</string>
+    <string name="swap_scan_qr">Escanear Código QR</string>
     <string name="swap_people_nearby">Pessoas próximas</string>
     <string name="swap_scanning_for_peers">A pesquisar pessoas próximas…</string>
     <string name="swap_nearby">Troca próxima</string>
@@ -325,7 +325,7 @@
         <item quantity="other">Ver todos (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
-    <string name="nearby_splash__find_people_button">Encontrar pessoas nas proximidades</string>
+    <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="notification_title_single_update_available">Atualização disponível</string>
     <string name="notification_title_single_ready_to_install">Pronta para instalação</string>
@@ -489,4 +489,6 @@
     <string name="swap_toast_find_removeable_storage">Escolha o seu cartão removível SD ou USB</string>
     <string name="main_menu__updates">Atualizações</string>
     <string name="menu_translation">Tradução</string>
+    <string name="undo">Desfazer</string>
+    <string name="app_list__dismiss_installing_app">Instalação cancelada</string>
 </resources>

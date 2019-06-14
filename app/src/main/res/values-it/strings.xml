@@ -117,9 +117,9 @@
     </string>
     <string name="unknown">Sconosciuto</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
-    <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili.
-\n
-\nNota: tutte le app installate precedentemente rimarranno sul dispositivo.</string>
+    <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili. 
+\n 
+\nNota: Tutte le app installate precedentemente rimarranno sul dispositivo.</string>
     <string name="repo_disabled_notification">%1$s è disabilitato.
 
         È necessario
@@ -192,12 +192,12 @@
     <string name="swap_dont_show_again">Non mostrare più</string>
     <string name="swap_switch_to_wifi">Tocca per passare ad una rete Wi-Fi</string>
     <string name="swap_choose_apps">Scegli le app</string>
-    <string name="swap_scan_qr">Scansiona il codice QR</string>
+    <string name="swap_scan_qr">Scansiona QR code</string>
     <string name="swap_intro">Connettiti e scambia app con le persone vicine.</string>
     <string name="swap_no_peers_nearby">Non sono state trovate persone nelle vicinanze con cui scambiare app.</string>
     <string name="interval_1w">Cerca aggiornamenti ogni settimana</string>
     <string name="interval_1d">Cerca aggiornamenti ogni giorno</string>
-    <string name="interval_never">Nessun auto-aggiornamento di app</string>
+    <string name="interval_never">Nessun aggiornamento automatico delle app</string>
     <string name="uninstall_update_confirm">Vuoi sostituire questa app con la sua versione originale?</string>
     <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
     <string name="newPerms">Nuovo</string>
@@ -256,7 +256,7 @@
         Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.
     </string>
     <string name="swap_join_this_hotspot">Aiuta il tuo amico a collegarsi al tuo hotspot</string>
-    <string name="swap_success">Scambio avvenuto con successo!</string>
+    <string name="swap_success">Scambio avvenuto!</string>
     <string name="swap_active_hotspot">%1$s (il tuo hotspot)</string>
     <string name="swap_scan_or_type_url">Una persona deve scansionare il codice o inserire l\'URL dell\'altro in un
         browser.
@@ -420,7 +420,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Abbiamo trovato una vulnerabilità in %1$s. Ti raccomandiamo immediatamente di aggiornare all\'ultima versione.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
     <string name="privacy">Privacy</string>
-    <string name="preventScreenshots_title">Impedisci schermate</string>
+    <string name="preventScreenshots_title">Impedisci screenshot</string>
     <string name="preventScreenshots_summary">Blocca l\'acquisizione di screenshot e nascondi il contenuto dell\'app dalla schermata delle app recenti</string>
     <string name="panic_app_unknown_app">un\'applicazione sconosciuta</string>
     <string name="panic_app_setting_summary">Nessuna applicazione è stata impostata</string>
@@ -496,12 +496,15 @@
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
     <string name="scan_removable_storage_toast">Scansione %s…</string>
     <string name="nearby_splash__request_permission">Provala</string>
-    <string name="not_visible_nearby">Nearby non attivo</string>
+    <string name="not_visible_nearby">Nearby non attivato</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
     <string name="swap_toast_not_removable_storage">Quella scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
     <string name="swap_toast_find_removeable_storage">Seleziona scheda SD o USB</string>
-    <string name="scan_removable_storage_summary">Cerca repository di pacchetti su supporti removibili come schede SD e chiavette USB</string>
+    <string name="scan_removable_storage_summary">Cerca repository di pacchetti su archivi rimovibili come schede SD e chiavette USB</string>
     <string name="main_menu__updates">Aggiornamenti</string>
     <string name="nearby_splash__read_external_storage">Le schede SD possono essere usate per lo scambio!</string>
     <string name="not_visible_nearby_description">Prima di scambiare con dispositivi vicini, rendi il tuo visibile.</string>
+    <string name="menu_translation">Traduzione</string>
+    <string name="undo">Annulla</string>
+    <string name="app_list__dismiss_installing_app">Installazione annullata</string>
 </resources>

@@ -468,4 +468,5 @@
     <string name="swap_toast_using_path">از طریق %1$s</string>
     <string name="swap_toast_not_removable_storage">آن گزینه با هیچ رسانهٔ جداشدنی‌ای مطابقت نداشت. دوباره تلاش کنید!</string>
     <string name="swap_toast_find_removeable_storage">کارت SD یا USB جداشدنیتان را برگزینید</string>
+    <string name="menu_translation">ترجمه</string>
 </resources>

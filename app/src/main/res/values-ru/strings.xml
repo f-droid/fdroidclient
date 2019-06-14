@@ -306,10 +306,9 @@
     <string name="app_list__name__successfully_installed">%1$s установлено</string>
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Посмотреть %d приложение</item>
-        <item quantity="few">Посмотреть %d приложения</item>
-        <item quantity="many">Посмотреть %d приложений</item>
-        <item quantity="other">Посмотреть %d приложений</item>
+        <item quantity="one">%d приложение</item>
+        <item quantity="few">%d приложения</item>
+        <item quantity="many">%d приложений</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Получайте приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
@@ -492,7 +491,7 @@
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий %1$s</string>
     <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
-    <string name="nearby_splash__read_external_storage">SD-карты могут быть заменены!</string>
+    <string name="nearby_splash__read_external_storage">Можно обмениваться приложениями на SD картах памяти!</string>
     <string name="nearby_splash__request_permission">Попробуй</string>
     <string name="not_visible_nearby">Устройство не видимо</string>
     <string name="not_visible_nearby_description">Перед обменом с устройством находящимся поблизости, сделайте ваше устройство видимым.</string>
@@ -500,4 +499,7 @@
     <string name="swap_toast_not_removable_storage">Этот выбор не совпадает ни с одним съемным устройством хранения данных, попробуйте еще раз!</string>
     <string name="swap_toast_find_removeable_storage">Выберите съемную SD-карту или USB-накопитель</string>
     <string name="main_menu__updates">Обновления</string>
+    <string name="menu_translation">Перевод</string>
+    <string name="undo">Отменить</string>
+    <string name="app_list__dismiss_installing_app">Установка отменена</string>
 </resources>

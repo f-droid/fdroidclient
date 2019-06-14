@@ -52,7 +52,7 @@
     <string name="menu_website">Nettside</string>
     <string name="menu_issues">Problemoversikt</string>
     <string name="menu_source">Kildekode</string>
-    <string name="menu_upgrade">Oppgrader</string>
+    <string name="menu_upgrade">Oppdater</string>
     <string name="menu_donate">Doner</string>
     <string name="details_notinstalled">Ikke installert</string>
     <string name="antiadslist">Dette programmet inneholder reklame</string>
@@ -229,7 +229,7 @@
     <string name="swap_join_this_hotspot">Hjelp en venn å ta del i ditt mobiltrådløsnett</string>
     <string name="swap_success">Vellykket sirkulering!</string>
     <string name="swap_active_hotspot">%1$s (ditt mobiltrådløsnett)</string>
-    <string name="swap_nearby">Sirkulering i umiddelbar nærhet</string>
+    <string name="swap_nearby">Sirkulering i nærheten</string>
     <string name="swap_intro">Koble til og utveksle programmer med folk i nærheten av deg.</string>
     <string name="swap_no_peers_nearby">Fant ingen i nærheten å sirkulere med.</string>
     <string name="swap_confirm">Bekreft sirkulering</string>
@@ -337,7 +337,7 @@
     <string name="app__install_downloaded_update">Oppdater</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
     <string name="updates__tts__download_app">Last ned</string>
-    <string name="update_all">Oppgrader alle</string>
+    <string name="update_all">Oppdater alle</string>
     <string name="updates__hide_updateable_apps">Skjul programmer</string>
     <string name="updates__show_updateable_apps">Vis programmer</string>
     <plurals name="updates__download_updates_for_apps">
@@ -410,7 +410,7 @@
     <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorert</string>
     <string name="app_list__dismiss_downloading_app">Nedlasting avbrutt</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fant en sårbarhet i %1$s. Det anbefales å avinstallere dette programmet umiddelbart.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Det er funnet en sårbarhet i %1$s. Det anbefales å hente den nyeste versjonen umiddelbart.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Det er funnet en sårbarhet i %1$s. Det anbefales å oppdatere til den nyeste versjonen umiddelbart.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
     <string name="privacy">Personvern</string>
     <string name="preventScreenshots_title">Forhindre skjermavbildninger</string>
@@ -476,7 +476,7 @@
     <string name="send_history_csv">%s installasjonshistorikk som CSV-fil</string>
     <string name="allow_push_requests">Tillat pakkebrønner å installere/avinstallere programmer</string>
     <string name="allow_push_requests_summary">Pakkebrønnsmetadata kan inneholde push-forespørsler om installasjon eller avinstallasjon av programmer</string>
-    <string name="antinosourcesince">Kildekoden er ikke lenger tilgengelig, ingen oppgraderinger mulig.</string>
+    <string name="antinosourcesince">Kildekoden er ikke lenger tilgjengelig, ingen oppdateringer mulig.</string>
     <string name="updates_disabled_by_settings">Alle oppdateringer avskrudd av Data/Wi-Fi-innstillinger</string>
     <string name="send_installed_apps">Del installerte programmer</string>
     <string name="send_installed_apps_csv">Programmer installert av F-Droid fra CSV-fil</string>
@@ -488,7 +488,7 @@
     <string name="scan_removable_storage_title">Skann flyttbart medium</string>
     <string name="scan_removable_storage_summary">Se etter pakkebrønner på flyttbare medium som SD-kort og USB-minnepinner</string>
     <string name="app_repository">Pakkebrønn: %1$s</string>
-    <string name="nearby_splash__read_external_storage">SD-kort kan ikke brukes til bytting.</string>
+    <string name="nearby_splash__read_external_storage">SD-kort kan ikke brukes til sirkulering!</string>
     <string name="nearby_splash__request_permission">Prøv det</string>
     <string name="swap_toast_using_path">Bruker %1$s</string>
     <string name="swap_toast_not_removable_storage">Det valget samsvarte ikke med noe flyttbart medium, prøv igjen.</string>
@@ -496,5 +496,8 @@
     <string name="not_visible_nearby">I nærheten er ikke påslått</string>
     <string name="not_visible_nearby_description">Før utveksling med enheter i nærheten må du gjøre din synlig.</string>
     <string name="scan_removable_storage_toast">Skanner %s…</string>
-    <string name="main_menu__updates">Oppgraderinger</string>
+    <string name="main_menu__updates">Oppdateringer</string>
+    <string name="menu_translation">Oversettelse</string>
+    <string name="undo">Angre</string>
+    <string name="app_list__dismiss_installing_app">Installasjon avbrutt</string>
 </resources>

@@ -54,7 +54,7 @@
     <string name="category_Science_Education">العلوم و التعليم</string>
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
-    <string name="app_name">اف-درويد</string>
+    <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
@@ -138,7 +138,7 @@
     <string name="status_download_unknown_size">تحميل\n%2$s من\n%1$s</string>
     <string name="update_notification_title">تحديث المستودعات</string>
     <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) مِن %1$s</string>
-    <string name="status_connecting_to_repo">الاتصال بـ
+    <string name="status_connecting_to_repo">جارٍ الاتصال بـ 
 \n %1$s</string>
     <string name="status_inserting_apps">حفظ تفاصيل التطبيق</string>
     <string name="repos_unchanged">جميع المستودعات محدثة</string>
@@ -206,7 +206,7 @@
     <string name="swap_dont_show_again">عدم إظهار ذلك مرة أخرى</string>
     <string name="swap_scan_or_type_url">شخص واحد يحتاج إلى فحص الرمز، أو كتابة عنوان الرابط الآخر في المتصفح.</string>
     <string name="swap_choose_apps">اختيار التطبيقات</string>
-    <string name="swap_scan_qr">التقاط رمز الاستجابة السريعة</string>
+    <string name="swap_scan_qr">امسح الرمز</string>
     <string name="swap_people_nearby">أشخاص حولي</string>
     <string name="swap_scanning_for_peers">البحث عن أشخاص بالقرب مني …</string>
     <string name="swap_nearby">المبادلة في مكان قريب</string>
@@ -518,4 +518,7 @@
         <item quantity="many">إظهار التطبيقات %1$d في الفئة %2$s</item>
         <item quantity="other">إظهار التطبيقات %1$d في الفئة %2$s</item>
     </plurals>
+    <string name="menu_translation">الترجمة</string>
+    <string name="undo">تراجع</string>
+    <string name="app_list__dismiss_installing_app">تم إلغاء التثبيت</string>
 </resources>

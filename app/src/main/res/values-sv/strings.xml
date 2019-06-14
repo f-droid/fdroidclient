@@ -327,8 +327,8 @@
     <string name="updates__hide_updateable_apps">Dölj appar</string>
     <string name="updates__show_updateable_apps">Visa appar</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Ladda ner uppdatering för %1$d-appen.</item>
-        <item quantity="other">Ladda ner uppdatering för %1$d-apparna.</item>
+        <item quantity="one">Hämta uppdatering för %1$d app.</item>
+        <item quantity="other">Hämta uppdateringar för %1$d appar.</item>
     </plurals>
     <string name="details_new_in_version">Nyheter i versionen %s</string>
     <string name="antifeatureswarning">Den här appen har funktioner som du kanske inte tycker om.</string>
@@ -341,7 +341,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer i närheten</string>
     <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"I närheten\".</string>
-    <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittade</string>
+    <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittades</string>
     <string name="latest__empty_state__never_updated">När din lista med appar har uppdaterats bör de senaste apparna visas här</string>
     <string name="latest__empty_state__no_enabled_repos">När du aktiverar ett förråd och låter uppdatera det bör de senaste apparna visas här</string>
     <string name="categories__empty_state__no_categories">Inga kategorier att visa</string>
@@ -419,12 +419,12 @@
     <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva \"%2$d\" i fejkappen %3$s kan återställa det.</string>
     <string name="hiding_dialog_warning">Varning: Alla app-genvägar på hemskärmen kommer också att tas bort och kommer att behöva läggas till igen manuellt.</string>
     <string name="hide_on_long_search_press_title">Dölj med sökknappen</string>
-    <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att gömma appen</string>
+    <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att dölja appen</string>
     <string name="over_wifi">Över Wi-Fi</string>
     <string name="over_data">Över mobildata</string>
     <string name="over_network_always_summary">Använd alltid den här anslutningen när den är tillgänglig</string>
-    <string name="over_network_on_demand_summary">Använd endast den här anslutningen när jag klickar för att ladda ner</string>
-    <string name="over_network_never_summary">Ladda aldrig ner något via den här anslutningen</string>
+    <string name="over_network_on_demand_summary">Använd endast den här anslutningen när jag klickar för att hämta</string>
+    <string name="over_network_never_summary">Hämta aldrig något via den här anslutningen</string>
     <string name="repo_add_mirror">Lägg till spegel</string>
     <string name="repo_exists_add_fingerprint">%1$s är redan installerad, detta kommer att lägga till ny nyckelinformation.</string>
     <string name="repo_exists_enable">%1$s är redan installerad, bekräfta att du vill återaktivera den.</string>
@@ -434,7 +434,7 @@
     <string name="antidisabledalgorithmlist">Denna app har en svag säkerhetssignatur</string>
     <string name="antiknownvulnlist">Denna app innehåller en känd säkerhetsårbarhet</string>
     <string name="show_anti_feature_apps">Inkludera mot-funktionsappar</string>
-    <string name="show_anti_feature_apps_on">Vis appar som kräver mot-funktioner</string>
+    <string name="show_anti_feature_apps_on">Visa appar som kräver mot-funktioner</string>
     <string name="force_touch_apps">Inkludera pekskärmsappar</string>
     <string name="force_touch_apps_on">Visa appar som kräver pekskärm oavsett hårdvarustöd</string>
     <string name="repo_official_mirrors">Officiella speglar</string>
@@ -455,7 +455,7 @@
     <string name="share_repository">Dela förråd</string>
     <string name="send_install_history">Skicka installationshistorik</string>
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
-    <string name="allow_push_requests">Tillåt filförråd att installera/avinstallera appar</string>
+    <string name="allow_push_requests">Tillåt förråd att installera/avinstallera appar</string>
     <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Mobildata/Wi-Fi-inställningar</string>
     <string name="send_installed_apps">Dela installerade appar</string>
     <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>
@@ -479,4 +479,6 @@
     <string name="swap_toast_not_removable_storage">Det valet matchade inte några borttagbara lagringsenheter, försök igen!</string>
     <string name="swap_toast_find_removeable_storage">Välj borttagbart SD-kort eller USB</string>
     <string name="menu_translation">Översättning</string>
+    <string name="undo">Ångra</string>
+    <string name="app_list__dismiss_installing_app">Installationen avbröts</string>
 </resources>

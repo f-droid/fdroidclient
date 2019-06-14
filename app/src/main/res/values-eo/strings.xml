@@ -479,7 +479,7 @@
     <string name="scan_removable_storage_title">Skani demeteblan konservejon</string>
     <string name="scan_removable_storage_summary">Serĉi deponejojn de pakaĵoj en demetebla konservejo (SD-kartoj aŭ memor-bastonetoj)</string>
     <string name="nearby_splash__read_external_storage">Eblas interŝanĝi aplikaĵojn per SD-kartoj!</string>
-    <string name="nearby_splash__request_permission">Provu</string>
+    <string name="nearby_splash__request_permission">Provi</string>
     <string name="not_visible_nearby">Proksima interŝanĝo estas malŝaltita</string>
     <string name="not_visible_nearby_description">Antaŭ interŝanĝi kun proksimaj aparatoj, igi vian aparaton videbla.</string>
     <string name="swap_toast_using_path">Uzas %1$s</string>
@@ -488,4 +488,6 @@
     <string name="scan_removable_storage_toast">Skanado de %s…</string>
     <string name="main_menu__updates">Ĝisdatigoj</string>
     <string name="menu_translation">Traduko</string>
+    <string name="undo">Malfari</string>
+    <string name="app_list__dismiss_installing_app">Nuligis instaladon</string>
 </resources>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l\'ancienne version de l\'application avant de réessayer. (Attention : la désinstallation supprimera toutes les données de l\'application)</string>
     <string name="installIncompatible">Application incompatible avec votre appareil, l\'installer quand même ?</string>
@@ -197,7 +197,7 @@
 \nDes applications sont présentes sur votre appareil, mais aucune n\'est disponible sur F-Droid. Vous devriez actualiser vos dépôts ou ajouter de nouveaux dépôts dans F-Droid pour augmenter vos chances d\'obtenir des mises à jour pour vos applications.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
-    <string name="swap_nfc_title">Rapprochez vos appareils pour échanger</string>
+    <string name="swap_nfc_title">Touchez pour échanger</string>
     <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si
         vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.
     </string>
@@ -338,7 +338,7 @@
         <item quantity="other">Tout afficher (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet \? Installez des applications depuis les appareils à proximité !</string>
-    <string name="nearby_splash__find_people_button">Rechercher des personnes à proximité</string>
+    <string name="nearby_splash__find_people_button">Personnes à proximité</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
     <string name="tts_category_name">Catégorie %1$s</string>
     <plurals name="tts_view_all_in_category">
@@ -488,4 +488,6 @@
     <string name="scan_removable_storage_summary">Recherche de dépôts sur les périphériques amovibles tels que les cartes SD ou clés USB</string>
     <string name="main_menu__updates">Mises à jour</string>
     <string name="menu_translation">Traduction</string>
-</resources>
+<string name="undo">Annuler</string>
+	<string name="app_list__dismiss_installing_app">Installation annulée</string>
+	</resources>

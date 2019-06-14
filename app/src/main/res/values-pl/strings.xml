@@ -159,7 +159,7 @@
     <string name="empty_can_update_app_list">Wspaniale!\nWszystkie Twoje aplikacje są w najnowszych wersjach.</string>
     <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
-    <string name="swap_nfc_title">Dotknij by dokonać wymiany</string>
+    <string name="swap_nfc_title">Dotknij, aby się wymienić</string>
     <string name="swap_join_same_wifi_desc">By dokonać wymiany przez Wi-Fi musisz upewnić się, że oba urządzenia są w
         tej samej sieci. Jeśli nie macie dostępu do tej samej sieci, możesz utworzyć hotspota.
     </string>
@@ -186,7 +186,7 @@
     <string name="swap_scan_qr">Skanuj kod QR</string>
     <string name="swap_people_nearby">Ludzie w okolicy</string>
     <string name="swap_scanning_for_peers">Wyszukiwanie ludzi w tej okolicy…</string>
-    <string name="swap_nearby">Wymiana z pobliskimi urządzeniami</string>
+    <string name="swap_nearby">Wymiana w pobliżu</string>
     <string name="swap_intro">Połącz się i wymień się aplikacjami z pobliskimi urządzeniami.</string>
     <string name="swap_visible_bluetooth">Widoczność przez Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ustawiania Bluetooth…</string>
@@ -513,4 +513,6 @@
     <string name="swap_toast_find_removeable_storage">Wybierz wymienną kartę SD lub USB</string>
     <string name="main_menu__updates">Aktualizacje</string>
     <string name="menu_translation">Tłumaczenie</string>
+    <string name="undo">Cofnij</string>
+    <string name="app_list__dismiss_installing_app">Anulowano instalację</string>
 </resources>

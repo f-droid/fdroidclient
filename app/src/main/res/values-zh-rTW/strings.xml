@@ -458,4 +458,6 @@
     <string name="scan_removable_storage_toast">正在掃描 %s…</string>
     <string name="main_menu__updates">更新</string>
     <string name="menu_translation">翻譯</string>
+    <string name="undo">復原</string>
+    <string name="app_list__dismiss_installing_app">安裝已取消</string>
 </resources>

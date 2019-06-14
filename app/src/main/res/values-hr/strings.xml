@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Da biste instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: uklanjanje će obrisati sve interne podatke aplikacije)</string>
     <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>
     <string name="version">Verzija</string>
@@ -14,9 +13,8 @@
     <string name="other">Ostalo</string>
     <string name="main_menu__categories">Kategorije</string>
     <string name="main_menu__swap_nearby">U blizini</string>
-
     <string name="update_interval">Interval automatskog ažuriranja</string>
-    <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
+    <string name="update_auto_download">Automatski dohvati ažuriranja</string>
     <string name="update_auto_download_summary">Ažuriranja su preuzeta automatski i Vi ste obaviješteni o instalaciji</string>
     <string name="notify">Prikaži dostupna ažuriranja</string>
     <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
@@ -25,32 +23,25 @@
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
     <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
-
     <string name="login_title">Zahtjevana autentikacija</string>
     <string name="login_name">Korisničko ime</string>
     <string name="login_password">Lozinka</string>
     <string name="repo_edit_credentials">Promijeni lozinku</string>
     <string name="repo_error_empty_username">Prazno korisničko ime, podaci nisu promjenjeni</string>
-
     <string name="app_details">Detalji aplikacije</string>
     <string name="no_such_app">Nije pronađena takva aplikacija.</string>
-
     <string name="about_title">O F-Droidu</string>
     <string name="about_version">Verzija</string>
     <string name="about_site">Web stranica</string>
     <string name="about_source">Izvorni kod</string>
     <string name="about_license">Licenca</string>
-
     <string name="app_incompatible">Nekompatibilno</string>
     <string name="app_installed">Instalirano</string>
     <string name="app_not_installed">Nije instalirano</string>
     <string name="app_inst_known_source">Instalirano (sa %s)</string>
     <string name="app_inst_unknown_source">Instalirano (sa nepoznatog izvora)</string>
-
     <string name="added_on">Dodano %s</string>
-
     <string name="ok">OK</string>
-
     <string name="yes">Da</string>
     <string name="no">Ne</string>
     <string name="repo_add_title">Dodaj novi repozitorij</string>
@@ -58,28 +49,23 @@
     <string name="links">Poveznice</string>
     <string name="more">Više</string>
     <string name="less">Manje</string>
-
     <string name="back">Natrag</string>
     <string name="cancel">Otkaži</string>
     <string name="enable">Omogući</string>
     <string name="add_key">Dodaj ključ</string>
     <string name="overwrite">Prepiši</string>
-
     <string name="bluetooth_activity_not_found">Nije pronađena metoda slanja preko Bluetootha, odaberite jednu!</string>
     <string name="choose_bt_send">Odaberi metodu slanja preko Bluetootha</string>
-
     <string name="repo_add_url">Adresa repozitorija</string>
     <string name="repo_add_fingerprint">Otisak prsta (opcionalno)</string>
     <string name="bad_fingerprint">Loš otisak prsta</string>
     <string name="invalid_url">Ovo nije valjan URL.</string>
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
     <string name="repo_provider">Repozitorij: %s</string>
-
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_settings">Postavke</string>
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
-
     <string name="menu_launch">Otvori</string>
     <string name="menu_share">Dijeli</string>
     <string name="menu_install">Instaliraj</string>
@@ -96,10 +82,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Nije instalirano</string>
-
     <string name="antiadslist">Ova aplikacija sadržava oglase</string>
     <string name="antitracklist">Ova aplikacija prati i javlja Vašu aktivnost</string>
     <string name="antinonfreeadlist">Ova aplikacija promovira neslobodne dodatke</string>
@@ -107,18 +90,13 @@
     <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim neslobodnim aplikacijama</string>
     <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren/slobodan</string>
     <string name="antinonfreeassetslist">Ova aplikacija sadrži neslobodne resurse</string>
-
     <string name="display">Prikaz</string>
-
     <string name="expert">Napredno</string>
     <string name="expert_on">Prikaži dodatne informacije i omogući dodatne postavke</string>
-
     <string name="search_hint">Pretraži aplikacije</string>
-
     <string name="appcompatibility">Kompatibilnost aplikacija</string>
-    <string name="show_incompat_versions">Nekompatibilne verzije</string>
-    <string name="show_incompat_versions_on">Prikaži verzije nekompatibilne s ovim uređajem</string>
-
+    <string name="show_incompat_versions">Uključi nekompatibilne verzije</string>
+    <string name="show_incompat_versions_on">Prikaži verzije koje su nekompatibilne s ovim uređajem</string>
     <string name="local_repo">Lokalni repozitorij</string>
     <string name="local_repo_running">F-Droid je spreman za razmjenu</string>
     <string name="touch_to_configure_local_repo">Dodirnite za detalje i dopuštanje drugima da razmjenjuju Vaše
@@ -132,9 +110,8 @@
     <string name="icon">Ikona</string>
     <string name="next">Sljedeće</string>
     <string name="skip">Preskoči</string>
-
     <string name="useTor">Koristi Tor</string>
-    <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost</string>
+    <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost. Zahtjeva Orbot</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Omogući HTTP Proxy</string>
     <string name="enable_proxy_summary">Postavi HTTP Proxy za sve mrežne zahtjeve</string>
@@ -142,9 +119,7 @@
     <string name="proxy_host_summary">Naziv poslužitelja Vašeg proxyja (npr. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
     <string name="proxy_port_summary">Broj priključka Vašeg proxyja (npr. 8118)</string>
-
     <string name="status_download">Preuzimam\n%2$s / %3$s (%4$d%%) sa\n%1$s</string>
-
     <string name="status_download_unknown_size">Preuzimam\n%2$s sa\n%1$s</string>
     <string name="update_notification_title">Ažuriram repozitorije</string>
     <string name="status_processing_xml_percent">Obrađujem %2$s / %3$s (%4$d%%) od %1$s</string>
@@ -175,29 +150,23 @@
     </string>
     <string name="unknown">Nepoznato</string>
     <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
-    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da
-        aplikacije iz njega više neće biti dostupne kroz F-Droid.
-
-        Napomena: Sve
-        instalirane aplikacije će ostati na Vašem uređaju.
-    </string>
+    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da aplikacije iz njega više neće biti dostupne. Napomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
     <string name="repo_disabled_notification">Onemogućeno %1$s.
 
         Morat će te
         ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.
     </string>
-    <string name="repo_added">Spremljen F-Droid repozitorij %1$s.</string>
-    <string name="repo_searching_address">Tražim F-Drroid repozitorij na\n%1$s</string>
+    <string name="repo_added">Spremljen repozitorij paketa %1$s.</string>
+    <string name="repo_searching_address">Tražim repozitorij paketa na
+\n%1$s</string>
     <string name="not_on_same_wifi">Vaš uređaj nije na istoj Wi-Fi mreži kao i lokalni repozitorij koji ste upravo
         dodali! Probajte se spojiti na ovu mrežu: %s
     </string>
     <string name="requires_features">Zahtjeva: %1$s</string>
     <string name="pref_language">Jezik</string>
     <string name="pref_language_default">Zadani jezik sustava</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
-
     <string name="category_Connectivity">Povezivanje</string>
     <string name="category_Development">Razvoj</string>
     <string name="category_Games">Igre</string>
@@ -220,18 +189,15 @@
         nisu dostupne iz F-Droida. Možda trebate ažurirati svoje repozitorije, ili ti repozitoriji stvarno nemaju Vaše
         aplikacije.
     </string>
-    <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke!\nSve aplikacije su ažurirane (ili
-        su Vam repozitoriji zastarjeli).
-    </string>
-
+    <string name="empty_can_update_app_list">Čestitke!
+\nVaše aplikacije su ažurirane.</string>
     <string name="install_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
     <string name="uninstall_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
     <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite
         zapis o greški!
     </string>
-
     <string name="swap_nfc_title">Dodirnite za razmjenu</string>
-    <string name="swap_nfc_description">Ako Vaš prijatelj ima F-Droid i uključen NFC, dodirnite se uređajima.</string>
+    <string name="swap_nfc_description">Ako Vaš prijatelj ima F-Droid i uključen NFC, dodirnite uređaje.</string>
     <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
     <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako
         nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.
@@ -271,10 +237,7 @@
     <string name="swap_confirm">Potvrdi razmjenu</string>
     <string name="swap_qr_isnt_for_swap">Čini se da QR kod koji ste skenirali nije kod za razmjenu.</string>
     <string name="loading">Učitavanje…</string>
-    <string name="swap_connection_misc_error">Došlo je do greške prilikom spajanja na uređaj, čini se da razmjena nije
-        moguća.
-    </string>
-
+    <string name="swap_connection_misc_error">Greška prilikom spajanja na uređaj, razmjena nije moguća!</string>
     <string name="install_confirm">treba pristup</string>
     <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?
         Vaši podaci neće biti izgubljeni.
@@ -297,43 +260,37 @@
     <string name="perm_costs_money">Ovo se može naplaćivati</string>
     <string name="uninstall_update_confirm">Želite li zamijeniti ovu aplikaciju sa tvorničkom verzijom?</string>
     <string name="uninstall_confirm">Želite li ukloniti ovu aplikaciju?</string>
-    <string name="download_error">Preuzimanje neuspješno</string>
+    <string name="download_error">Preuzimanje neuspješno!</string>
     <string name="download_pending">Čekanje na početak preuzimanja…</string>
     <string name="install_error_notify_title">Greška pri instalaciji %s</string>
     <string name="uninstall_error_notify_title">Greška pri uklanjanju %s</string>
-
-
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="perms_description_app">Pruža %1$s.</string>
     <string name="downloading">Preuzimanje…</string>
     <string name="installing">Instaliram…</string>
     <string name="uninstalling">Uklanjam…</string>
-
-    <string name="interval_never">Nikada</string>
-    <string name="interval_1h">Svako sat vremena</string>
+    <string name="interval_never">Bez automatskih ažuriranja aplikacija</string>
+    <string name="interval_1h">Provjeri ažurnost svakih sat vremena</string>
     <string name="interval_4h">Provjeri ažuriranja svaka 4 sata</string>
     <string name="interval_12h">Provjeri ažuriranja svakih 12 sati</string>
     <string name="interval_1d">Provjeri ažuriranja dnevno</string>
     <string name="interval_1w">Provjeri ažuriranja tjedno</string>
     <string name="interval_2w">Provjeri ažuriranja svaka 2 tjedna</string>
-
     <string name="keep_hour">1 sat</string>
     <string name="keep_day">1 dan</string>
     <string name="keep_week">1 tjedan</string>
     <string name="keep_month">1 mjesec</string>
     <string name="keep_year">1 godina</string>
     <string name="keep_forever">Zauvijek</string>
-
     <string name="theme_light">Svijetla</string>
     <string name="theme_dark">Tamna</string>
     <string name="theme_night">Noćna</string>
-
     <string name="crash_dialog_title">F-Droid se srušio</string>
     <string name="crash_dialog_text">Dogodila se neočekivana greška, aplikacija je prisilno zaustavljena. Želite li poslati detalje kvara putem e-pošte da bismo ga popravili\?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
     <string name="keep_install_history">Zadrži povijest instalacija</string>
     <string name="update_auto_install">Automatski instaliraj ažuriranja</string>
-    <string name="update_auto_install_summary">Preuzmi i instaliraj ažuriranja aplikacija u pozadini</string>
+    <string name="update_auto_install_summary">Preuzmi i ažuriraj aplikacije u pozadini, prikazujući obavijest</string>
     <string name="keep_install_history_summary">Spremi zapisnik o svim instaliranim i obrisanim aplikacijama unutar privatne trgovine</string>
     <string name="main_menu__latest_apps">Najnovije</string>
     <string name="preference_manage_installed_apps">Upravljaj instaliranim aplikacijama</string>
@@ -386,10 +343,10 @@
     <string name="hiding_dialog_title">Sakrij %s sada</string>
     <string name="hide_on_long_search_press_title">Sakrij s tipkom za pretraživanje</string>
     <plurals name="notification_summary_more">
-    <item quantity="one">+%1$d više…</item>
-    <item quantity="few">+%1$d više…</item>
-    <item quantity="other">+%1$d više…</item>
-</plurals>
+        <item quantity="one">+%1$d više…</item>
+        <item quantity="few">+%1$d više…</item>
+        <item quantity="other">+%1$d više…</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">Spremno za instalaciju</string>
     <string name="notification_title_single_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
     <string name="notification_title_single_install_error">Instalacija nije uspjela</string>
@@ -398,15 +355,15 @@
     <string name="notification_content_single_installing">Instalira se \"%1$s\"…</string>
     <string name="notification_content_single_installed">Uspješno instalirano</string>
     <plurals name="notification_summary_updates">
-    <item quantity="one">%1$d ažuriranje</item>
-    <item quantity="few">%1$d ažuriranja</item>
-    <item quantity="other">%1$d ažuriranja</item>
-</plurals>
+        <item quantity="one">%1$d ažuriranje</item>
+        <item quantity="few">%1$d ažuriranja</item>
+        <item quantity="other">%1$d ažuriranja</item>
+    </plurals>
     <plurals name="notification_summary_installed">
-    <item quantity="one">%1$d aplikacija instalirana</item>
-    <item quantity="few">%1$d aplikacije instalirane</item>
-    <item quantity="other">%1$d aplikacija instalirano</item>
-</plurals>
+        <item quantity="one">%1$d aplikacija instalirana</item>
+        <item quantity="few">%1$d aplikacije instalirane</item>
+        <item quantity="other">%1$d aplikacija instalirano</item>
+    </plurals>
     <string name="notification_title_summary_update_available">Dostupno ažuriranje</string>
     <string name="notification_title_summary_downloading">Preuzimanje…</string>
     <string name="notification_title_summary_downloading_update">Preuzimanje ažuriranja…</string>
@@ -416,23 +373,30 @@
     <string name="notification_title_summary_installed">Uspješno instalirano</string>
     <string name="details_last_updated_today">Ažurirano danas</string>
     <plurals name="details_last_update_days">
-    <item quantity="one">Ažurirano prije %1$d dan</item>
-    <item quantity="few">Ažurirano prije %1$d dana</item>
-    <item quantity="other">Ažurirano prije %1$d dana</item>
-</plurals>
+        <item quantity="one">Ažurirano prije %1$d dan</item>
+        <item quantity="few">Ažurirano prije %1$d dana</item>
+        <item quantity="other">Ažurirano prije %1$d dana</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-    <item quantity="one">Ažurirano prije %1$d tjedna</item>
-    <item quantity="few">Ažurirano prije %1$d tjedna</item>
-    <item quantity="other">Ažurirano prije %1$d tjedana</item>
-</plurals>
+        <item quantity="one">Ažurirano prije %1$d tjedna</item>
+        <item quantity="few">Ažurirano prije %1$d tjedna</item>
+        <item quantity="other">Ažurirano prije %1$d tjedana</item>
+    </plurals>
     <plurals name="details_last_update_months">
-    <item quantity="one">Ažurirano prije %1$d mjeseca</item>
-    <item quantity="few">Ažurirano prije %1$d mjeseca</item>
-    <item quantity="other">Ažurirano prije %1$d mjeseci</item>
-</plurals>
+        <item quantity="one">Ažurirano prije %1$d mjeseca</item>
+        <item quantity="few">Ažurirano prije %1$d mjeseca</item>
+        <item quantity="other">Ažurirano prije %1$d mjeseci</item>
+    </plurals>
     <plurals name="details_last_update_years">
-    <item quantity="one">Ažurirano prije %1$d godine</item>
-    <item quantity="few">Ažurirano prije %1$d godine</item>
-    <item quantity="other">Ažurirano prije %1$d godina</item>
-</plurals>
+        <item quantity="one">Ažurirano prije %1$d godine</item>
+        <item quantity="few">Ažurirano prije %1$d godine</item>
+        <item quantity="other">Ažurirano prije %1$d godina</item>
+    </plurals>
+    <string name="install_history_summary">Pregledaj privatne log zapise svih instaliranih i deinstaliranih aplikacija</string>
+    <string name="send_version_and_uuid">Pošalji inačicu sustava i UUID uređaja na poslužitelj</string>
+    <string name="repo_exists_add_fingerprint">%1$s je već podešen, ovo će dodati nove ključne informacije.</string>
+    <string name="repo_exists_enable">%1$s je već podešen, potvrdite da ga želite ponovo uključiti.</string>
+    <string name="repo_exists_and_enabled">%1$s je već podešen i omogućen.</string>
+    <string name="force_old_index">Prisili korištenje starog indeks formata</string>
+    <string name="send_version_and_uuid_summary">Koristi verziju i nasumični, jedinstven identifikator ove aplikacije prilikom preuzimanja; stupa u efekt nakon ponovnog pokretanja aplikacije.</string>
 </resources>

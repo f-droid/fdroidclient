@@ -196,7 +196,7 @@
     </string>
     <string name="swap_join_this_hotspot">Lagundu adiskideari zure Wi-Fi gunera konektatzen</string>
     <string name="swap">Partekatu aplikazioak</string>
-    <string name="swap_success">Partekatzea arrakastatsua!</string>
+    <string name="swap_success">Ongi partekatu da!</string>
     <string name="swap_no_wifi_network">Ez dago sarerik oraindik</string>
     <string name="swap_active_hotspot">%1$s (zure Wi-Fi gunea)</string>
     <string name="swap_view_available_networks">Ukitu eskuragarri dauden sareak irekitzeko</string>
@@ -507,4 +507,6 @@
     <string name="swap_toast_find_removeable_storage">Hautatu zure SD txartel edo USB kengarria</string>
     <string name="main_menu__updates">Eguneraketak</string>
     <string name="menu_translation">Itzulpena</string>
+    <string name="undo">Desegin</string>
+    <string name="app_list__dismiss_installing_app">Instalazioa ezeztatu da</string>
 </resources>
