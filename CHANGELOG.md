@@ -1,3 +1,11 @@
+### 1.7-alpha1 (2019-06-14)
+
+* overhauled nearby swap using the device's hotspot AP
+
+* add new panic responses: app uninstalls and reset repos to default
+
+* fix proxy support on first start
+
 ### 1.7-alpha0 (2019-05-20)
 
 * major refactor of "Nearby" UI code, to prepare for rewriting guts
