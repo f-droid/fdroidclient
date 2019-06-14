@@ -105,6 +105,7 @@
                     android:id="@+id/wifi_network"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="150dp"
                     tools:text="wifi network name"
                     android:textColor="@color/swap_bright_blue"
                     android:textSize="16sp"/>

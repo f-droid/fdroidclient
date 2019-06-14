@@ -9,9 +9,16 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.JobIntentService;
+import android.util.Log;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 /**
  * An {@link JobIntentService} subclass for tracking whether there is metered or
@@ -30,6 +37,7 @@ public class ConnectivityMonitorService extends JobIntentService {
     public static final int FLAG_NET_UNAVAILABLE = 0;
     public static final int FLAG_NET_METERED = 1;
     public static final int FLAG_NET_NO_LIMIT = 2;
+    public static final int FLAG_NET_DEVICE_AP_WITHOUT_INTERNET = 3;
 
     private static final String ACTION_START = "org.fdroid.fdroid.net.action.CONNECTIVITY_MONITOR";
 
@@ -59,7 +67,14 @@ public class ConnectivityMonitorService extends JobIntentService {
     /**
      * Gets the state of internet availability, whether there is no connection at all,
      * whether the connection has no usage limit (like most WiFi), or whether this is
-     * a metered connection like most cellular plans or hotspot WiFi connections.
+     * a metered connection like most cellular plans or hotspot WiFi connections. This
+     * also detects whether the device has a hotspot AP enabled but the mobile
+     * connection does not provide internet.  That is a special case that is useful
+     * for nearby swapping, but nothing else.
+     * <p>
+     * {@link NullPointerException}s are ignored in the hotspot detection since that
+     * detection should not affect normal usage at all, and there are often weird
+     * cases when looking through the network devices, especially on bad ROMs.
      */
     public static int getNetworkState(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
@@ -67,6 +82,31 @@ public class ConnectivityMonitorService extends JobIntentService {
             return FLAG_NET_UNAVAILABLE;
         }
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork == null && Build.VERSION.SDK_INT >= 21 && cm.getAllNetworks().length == 0) {
+            try {
+                Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+                while (networkInterfaces.hasMoreElements()) {
+                    NetworkInterface netIf = networkInterfaces.nextElement();
+                    if (netIf.getDisplayName().contains("wlan0")
+                            || netIf.getDisplayName().contains("eth0")
+                            || netIf.getDisplayName().contains("ap0")) {
+                        for (Enumeration<InetAddress> addr = netIf.getInetAddresses(); addr.hasMoreElements();) {
+                            InetAddress inetAddress = addr.nextElement();
+                            if (inetAddress.isLoopbackAddress() || inetAddress instanceof Inet6Address) {
+                                continue;
+                            }
+                            Log.i(TAG, "FLAG_NET_DEVICE_AP_WITHOUT_INTERNET: " + netIf.getDisplayName()
+                                    + " " + inetAddress);
+                            return FLAG_NET_DEVICE_AP_WITHOUT_INTERNET; // NOPMD
+                        }
+                    }
+                }
+            } catch (SocketException | NullPointerException e) { // NOPMD
+                // ignored
+            }
+        }
+
         if (activeNetwork == null || !activeNetwork.isConnected()) {
             return FLAG_NET_UNAVAILABLE;
         }

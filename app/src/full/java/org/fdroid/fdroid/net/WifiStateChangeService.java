@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -13,10 +14,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import cc.mvdan.accesspoint.WifiApControl;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
@@ -89,8 +92,9 @@ public class WifiStateChangeService extends IntentService {
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         wifiState = wifiManager.getWifiState();
-        if (ni == null || ni.isConnected()) {
-            Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
+        Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
+        if (ni == null
+                || ni.getState() == NetworkInfo.State.CONNECTED || ni.getState() == NetworkInfo.State.DISCONNECTED) {
             if (previousWifiState != wifiState &&
                     (wifiState == WifiManager.WIFI_STATE_ENABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
@@ -110,7 +114,6 @@ public class WifiStateChangeService extends IntentService {
     }
 
     public class WifiInfoThread extends Thread {
-        private static final String TAG = "WifiInfoThread";
 
         @Override
         public void run() {
@@ -129,7 +132,7 @@ public class WifiStateChangeService extends IntentService {
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
-                        setSsidFromWifiInfo(wifiInfo);
+                        setSsid(wifiInfo);
                         DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
                         if (dhcpInfo != null) {
                             String netmask = formatIpAddress(dhcpInfo.netmask);
@@ -147,14 +150,13 @@ public class WifiStateChangeService extends IntentService {
                             setIpInfoFromNetworkInterface();
                         }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
-                            || wifiState == WifiManager.WIFI_STATE_DISABLING) {
+                            || wifiState == WifiManager.WIFI_STATE_DISABLING
+                            || wifiState == WifiManager.WIFI_STATE_UNKNOWN) {
                         // try once to see if its a hotspot
                         setIpInfoFromNetworkInterface();
                         if (FDroidApp.ipAddressString == null) {
                             return;
                         }
-                    } else { // a hotspot can be active during WIFI_STATE_UNKNOWN
-                        setIpInfoFromNetworkInterface();
                     }
 
                     if (retryCount > 120) {
@@ -171,7 +173,7 @@ public class WifiStateChangeService extends IntentService {
                     return;
                 }
 
-                setSsidFromWifiInfo(wifiInfo);
+                setSsid(wifiInfo);
 
                 String scheme;
                 if (Preferences.get().isLocalRepoHttpsEnabled()) {
@@ -226,16 +228,35 @@ public class WifiStateChangeService extends IntentService {
         }
     }
 
-    private void setSsidFromWifiInfo(WifiInfo wifiInfo) {
-        if (wifiInfo != null) {
+    private void setSsid(WifiInfo wifiInfo) {
+        if (wifiInfo != null && wifiInfo.getBSSID() != null) {
             String ssid = wifiInfo.getSSID();
             Utils.debugLog(TAG, "Have wifi info, connected to " + ssid);
-            if (ssid != null) {
+            if (ssid == null) {
+                FDroidApp.ssid = getString(R.string.swap_blank_wifi_ssid);
+            } else {
                 FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
             }
-            String bssid = wifiInfo.getBSSID();
-            if (bssid != null) {
-                FDroidApp.bssid = bssid;
+            FDroidApp.bssid = wifiInfo.getBSSID();
+        } else {
+            WifiApControl wifiApControl = WifiApControl.getInstance(this);
+            Utils.debugLog(TAG, "WifiApControl: " + wifiApControl);
+            if (wifiApControl == null && FDroidApp.ipAddressString != null) {
+                wifiInfo = wifiManager.getConnectionInfo();
+                if (wifiInfo != null && wifiInfo.getBSSID() != null) {
+                    setSsid(wifiInfo);
+                } else {
+                    FDroidApp.ssid = getString(R.string.swap_active_hotspot, "");
+                }
+            } else if (wifiApControl != null && wifiApControl.isEnabled()) {
+                WifiConfiguration wifiConfiguration = wifiApControl.getConfiguration();
+                Utils.debugLog(TAG, "WifiConfiguration: " + wifiConfiguration);
+                if (wifiConfiguration.hiddenSSID) {
+                    FDroidApp.ssid = getString(R.string.swap_hidden_wifi_ssid);
+                } else {
+                    FDroidApp.ssid = wifiConfiguration.SSID;
+                }
+                FDroidApp.bssid = wifiConfiguration.BSSID;
             }
         }
     }

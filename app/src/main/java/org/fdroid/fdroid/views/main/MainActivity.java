@@ -57,6 +57,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.SDCardScannerService;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
@@ -250,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_LOCATION_PERMISSIONS) {
             WifiStateChangeService.start(this, null);
-            startActivity(new Intent(this, SwapWorkflowActivity.class));
+            SwapService.start(this);
         } else if (requestCode == REQUEST_STORAGE_PERMISSIONS) {
             Toast.makeText(this,
                     this.getString(R.string.scan_removable_storage_toast, ""),

@@ -39,7 +39,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="No network yet"
+            tools:text="@string/swap_no_wifi_network"
             android:id="@+id/wifi_ssid"
             style="@style/SwapTheme.Wizard.WifiSSID"
             android:layout_below="@id/wifi_icon"
