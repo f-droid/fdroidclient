@@ -461,7 +461,7 @@
     <string name="main_menu__updates">Opdateringer</string>
     <string name="antinosourcesince">Kilde kode er ikke længere tilgængelig, ingen opdateringer mulig.</string>
     <string name="force_touch_apps_on">Vise programmer der kræver berørings-skærm uanset hardware understøttelse</string>
-    <string name="panic_hide_warning_message">"I en panik hændelse, vil dette fjerne  %1$s fra starteren. Kun ved at indtaste \"%2$d\" i det falske %3$s program kan genskabe det."</string>
+    <string name="panic_hide_warning_message">I en panik hændelse, vil dette fjerne  %1$s fra starteren. Kun ved at indtaste \"%2$d\" i det falske %3$s program kan genskabe det.</string>
     <string name="hide_on_long_search_press_summary">Langt tryk på søge knappen vil skjule programmet</string>
     <string name="not_visible_nearby_description">Før bytte med nærved enheder, gør denne enhed synlig.</string>
     <string name="swap_toast_not_removable_storage">Valget passer ikke med nogen fjern-bare lagerenheder, prøv igen!</string>
