@@ -75,7 +75,7 @@ import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -234,7 +234,7 @@ public class FDroidApp extends Application {
 
     /**
      * Initialize the settings needed to run a local swap repo. This should
-     * only ever be called in {@link org.fdroid.fdroid.net.WifiStateChangeService.WifiInfoThread},
+     * only ever be called in {@link WifiStateChangeService.WifiInfoThread},
      * after the single init call in {@link FDroidApp#onCreate()}.
      */
     public static void initWifiSettings() {

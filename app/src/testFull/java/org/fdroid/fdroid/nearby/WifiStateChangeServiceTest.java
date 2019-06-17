@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net;
+package org.fdroid.fdroid.nearby;
 
 import org.junit.Test;
 

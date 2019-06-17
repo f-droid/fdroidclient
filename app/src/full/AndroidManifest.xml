@@ -74,7 +74,7 @@
         </receiver>
 
         <service
-                android:name=".net.WifiStateChangeService"
+                android:name=".nearby.WifiStateChangeService"
                 android:exported="false"/>
         <service android:name=".nearby.SwapService"/>
 

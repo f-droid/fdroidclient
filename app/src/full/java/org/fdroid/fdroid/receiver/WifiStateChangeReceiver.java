@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.nearby.WifiStateChangeService;
 
 public class WifiStateChangeReceiver extends BroadcastReceiver {
     private static final String TAG = "WifiStateChangeReceiver";

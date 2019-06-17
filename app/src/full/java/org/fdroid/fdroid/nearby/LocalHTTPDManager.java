@@ -10,8 +10,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.net.LocalHTTPD;
-import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.io.IOException;
 import java.net.BindException;

@@ -23,10 +23,10 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
-import org.fdroid.fdroid.net.LocalHTTPD;
 import org.junit.Test;
 
 import java.io.File;
@@ -52,7 +52,7 @@ public class SwapRepoEmulatorTest {
     public static final String TAG = "SwapRepoEmulatorTest";
 
     /**
-     * @see org.fdroid.fdroid.net.WifiStateChangeService.WifiInfoThread#run()
+     * @see org.fdroid.fdroid.nearby.WifiStateChangeService.WifiInfoThread#run()
      */
     @Test
     public void testSwap()

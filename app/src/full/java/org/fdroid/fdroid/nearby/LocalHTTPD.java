@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net;
+package org.fdroid.fdroid.nearby;
 
 /*
  * #%L
@@ -38,8 +38,6 @@ import android.net.Uri;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response.IStatus;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
-import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import javax.net.ssl.SSLServerSocketFactory;
 import java.io.File;

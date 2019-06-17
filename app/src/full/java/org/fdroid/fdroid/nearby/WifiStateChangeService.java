@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net;
+package org.fdroid.fdroid.nearby;
 
 import android.app.IntentService;
 import android.content.ComponentName;
@@ -23,8 +23,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
-import org.fdroid.fdroid.nearby.LocalRepoManager;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
