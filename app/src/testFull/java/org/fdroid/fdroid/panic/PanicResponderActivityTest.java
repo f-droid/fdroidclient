@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.panic;
+package org.fdroid.fdroid.panic;
 
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.FDroidProviderTest;

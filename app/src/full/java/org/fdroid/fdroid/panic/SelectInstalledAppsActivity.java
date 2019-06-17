@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views.panic;
+package org.fdroid.fdroid.panic;
 
 import android.annotation.SuppressLint;
 import android.content.res.Resources;

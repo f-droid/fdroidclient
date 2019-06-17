@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.panic;
+package org.fdroid.fdroid.panic;
 
 import android.content.Context;
 import android.support.v7.preference.Preference;

@@ -90,7 +90,7 @@
                 android:exported="false"/>
 
         <activity
-                android:name=".views.panic.PanicPreferencesActivity"
+                android:name=".panic.PanicPreferencesActivity"
                 android:label="@string/panic_settings"
                 android:parentActivityName=".views.main.MainActivity">
             <meta-data
@@ -105,11 +105,11 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".views.panic.SelectInstalledAppsActivity"
-                android:parentActivityName=".views.panic.PanicPreferencesActivity"/>
+                android:name=".panic.SelectInstalledAppsActivity"
+                android:parentActivityName=".panic.PanicPreferencesActivity"/>
 
         <activity
-                android:name=".views.panic.PanicResponderActivity"
+                android:name=".panic.PanicResponderActivity"
                 android:noHistory="true"
                 android:theme="@android:style/Theme.NoDisplay">
 
@@ -121,7 +121,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".views.panic.ExitActivity"
+                android:name=".panic.ExitActivity"
                 android:theme="@android:style/Theme.NoDisplay"/>
         <activity
                 android:name=".views.hiding.CalculatorActivity"

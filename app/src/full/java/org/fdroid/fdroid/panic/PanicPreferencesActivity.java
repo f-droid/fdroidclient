@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.panic;
+package org.fdroid.fdroid.panic;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
