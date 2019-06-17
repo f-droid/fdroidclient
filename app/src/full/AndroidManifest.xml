@@ -61,7 +61,7 @@
                     android:value=".views.main.MainActivity"/>
         </activity>
 
-        <receiver android:name=".receiver.WifiStateChangeReceiver">
+        <receiver android:name=".nearby.WifiStateChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.wifi.STATE_CHANGE"/>
             </intent-filter>

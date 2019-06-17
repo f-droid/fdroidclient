@@ -37,7 +37,7 @@ import java.util.Locale;
  * Handle state changes to the device's wifi, storing the required bits.
  * The {@link Intent} that starts it either has no extras included,
  * which is how it can be triggered by code, or it came in from the system
- * via {@link  org.fdroid.fdroid.receiver.WifiStateChangeReceiver}, in
+ * via {@link WifiStateChangeReceiver}, in
  * which case an instance of {@link NetworkInfo} is included.
  * <p>
  * The work is done in a {@link Thread} so that new incoming {@code Intents}
@@ -278,7 +278,7 @@ public class WifiStateChangeService extends IntentService {
             while (networkInterfaces.hasMoreElements()) {
                 NetworkInterface netIf = networkInterfaces.nextElement();
 
-                for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements();) {
+                for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements(); ) {
                     InetAddress inetAddress = inetAddresses.nextElement();
                     if (inetAddress.isLoopbackAddress() || inetAddress instanceof Inet6Address) {
                         continue;
