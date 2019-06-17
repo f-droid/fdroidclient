@@ -43,7 +43,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.localrepo.SwapView;
+import org.fdroid.fdroid.nearby.SwapView;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 

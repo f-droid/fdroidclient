@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

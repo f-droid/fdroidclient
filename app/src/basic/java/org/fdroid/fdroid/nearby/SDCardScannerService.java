@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 

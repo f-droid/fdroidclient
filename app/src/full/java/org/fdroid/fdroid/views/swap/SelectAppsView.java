@@ -29,8 +29,8 @@ import android.widget.TextView;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import org.fdroid.fdroid.localrepo.LocalRepoService;
-import org.fdroid.fdroid.localrepo.SwapView;
+import org.fdroid.fdroid.nearby.LocalRepoService;
+import org.fdroid.fdroid.nearby.SwapView;
 
 public class SelectAppsView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.localrepo.SwapView
+<org.fdroid.fdroid.nearby.SwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
@@ -57,4 +57,4 @@
             android:paddingBottom="20dp"/>
     <!-- android:layout_above="@id/btn_learn_more_about_wifi" -->
 
-</org.fdroid.fdroid.localrepo.SwapView>
+</org.fdroid.fdroid.nearby.SwapView>

@@ -1,10 +1,8 @@
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.util.Log;
 import kellinwood.security.zipsigner.ZipSigner;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Utils;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.GeneralName;
@@ -18,6 +16,8 @@ import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;

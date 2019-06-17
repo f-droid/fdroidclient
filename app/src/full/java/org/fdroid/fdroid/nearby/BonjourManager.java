@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.peers.BonjourPeer;
+import org.fdroid.fdroid.nearby.peers.BonjourPeer;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;

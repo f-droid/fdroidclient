@@ -76,17 +76,17 @@
         <service
                 android:name=".net.WifiStateChangeService"
                 android:exported="false"/>
-        <service android:name=".localrepo.SwapService"/>
+        <service android:name=".nearby.SwapService"/>
 
-        <service android:name=".localrepo.LocalHTTPDManager"/>
+        <service android:name=".nearby.LocalHTTPDManager"/>
         <service
-                android:name=".localrepo.LocalRepoService"
+                android:name=".nearby.LocalRepoService"
                 android:exported="false"/>
         <service
-                android:name=".localrepo.TreeUriScannerIntentService"
+                android:name=".nearby.TreeUriScannerIntentService"
                 android:exported="false"/>
         <service
-                android:name=".localrepo.SDCardScannerService"
+                android:name=".nearby.SDCardScannerService"
                 android:exported="false"/>
 
         <activity

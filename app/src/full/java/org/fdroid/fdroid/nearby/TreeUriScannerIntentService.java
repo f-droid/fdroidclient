@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
 import android.app.IntentService;
@@ -66,7 +66,7 @@ import java.util.jar.JarInputStream;
 public class TreeUriScannerIntentService extends IntentService {
     public static final String TAG = "TreeUriScannerIntentSer";
 
-    private static final String ACTION_SCAN_TREE_URI = "org.fdroid.fdroid.localrepo.action.SCAN_TREE_URI";
+    private static final String ACTION_SCAN_TREE_URI = "org.fdroid.fdroid.nearby.action.SCAN_TREE_URI";
 
     public TreeUriScannerIntentService() {
         super("TreeUriScannerIntentService");

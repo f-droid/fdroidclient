@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.localrepo.SwapView
+<org.fdroid.fdroid.nearby.SwapView
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
@@ -57,4 +57,4 @@
 
     </LinearLayout>
     </ScrollView>
-</org.fdroid.fdroid.localrepo.SwapView>
+</org.fdroid.fdroid.nearby.SwapView>

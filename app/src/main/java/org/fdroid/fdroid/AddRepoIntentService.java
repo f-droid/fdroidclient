@@ -21,8 +21,8 @@ import java.util.Locale;
 /**
  * Handles requests to add new repos via URLs.  This is an {@code IntentService}
  * so that requests are queued, which is necessary when either
- * {@link org.fdroid.fdroid.localrepo.TreeUriScannerIntentService} or
- * {@link org.fdroid.fdroid.localrepo.SDCardScannerService} finds multiple
+ * {@link org.fdroid.fdroid.nearby.TreeUriScannerIntentService} or
+ * {@link org.fdroid.fdroid.nearby.SDCardScannerService} finds multiple
  * repos on a disk.  This should hopefully also serve as the beginnings of
  * a new architecture for handling these requests.  This does all the
  * processing first, up front, then only launches UI as needed.

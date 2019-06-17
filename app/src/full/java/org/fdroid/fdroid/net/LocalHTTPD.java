@@ -38,7 +38,7 @@ import android.net.Uri;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response.IStatus;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
+import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import javax.net.ssl.SSLServerSocketFactory;

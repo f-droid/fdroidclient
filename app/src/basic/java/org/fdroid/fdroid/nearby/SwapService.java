@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Senecto Limited
+ * Copyright (C) 2018 Hans-Christoph Steiner <hans@eds.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,14 +17,14 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.localrepo.peers;
+package org.fdroid.fdroid.nearby;
 
-import org.fdroid.fdroid.data.NewRepoConfig;
+import android.content.Context;
 
 /**
  * Dummy version for basic app flavor.
  */
-public class WifiPeer {
-    public WifiPeer(NewRepoConfig config) {
+public class SwapService {
+    public static void start(Context context) {
     }
 }

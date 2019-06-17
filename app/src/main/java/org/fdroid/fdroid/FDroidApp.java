@@ -70,7 +70,7 @@ import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.localrepo.SDCardScannerService;
+import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;

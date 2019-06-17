@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -31,7 +31,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;

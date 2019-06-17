@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -386,7 +386,7 @@ public final class LocalRepoManager {
         }
 
         /**
-         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * Alias for {@link org.fdroid.fdroid.nearby.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * That accepts a number instead of string.
          *
          * @see IndexXmlBuilder#tag(String, String)
@@ -396,7 +396,7 @@ public final class LocalRepoManager {
         }
 
         /**
-         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * Alias for {@link org.fdroid.fdroid.nearby.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * that accepts a date instead of a string.
          *
          * @see IndexXmlBuilder#tag(String, String)

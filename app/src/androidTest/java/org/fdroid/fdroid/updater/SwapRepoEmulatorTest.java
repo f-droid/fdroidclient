@@ -23,9 +23,9 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.LocalRepoService;
+import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
+import org.fdroid.fdroid.nearby.LocalRepoManager;
+import org.fdroid.fdroid.nearby.LocalRepoService;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.junit.Test;
 

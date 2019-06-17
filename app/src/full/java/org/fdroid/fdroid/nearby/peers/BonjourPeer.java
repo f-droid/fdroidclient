@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.peers;
+package org.fdroid.fdroid.nearby.peers;
 
 import android.net.Uri;
 import android.os.Parcel;

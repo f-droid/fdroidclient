@@ -26,10 +26,10 @@ import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.BluetoothManager;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.localrepo.SwapView;
-import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.nearby.BluetoothManager;
+import org.fdroid.fdroid.nearby.SwapService;
+import org.fdroid.fdroid.nearby.SwapView;
+import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.ArrayList;

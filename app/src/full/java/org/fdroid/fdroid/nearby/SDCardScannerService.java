@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.localrepo;
+package org.fdroid.fdroid.nearby;
 
 import android.Manifest;
 import android.app.IntentService;
@@ -66,7 +66,7 @@ import java.util.List;
 public class SDCardScannerService extends IntentService {
     public static final String TAG = "SDCardScannerService";
 
-    private static final String ACTION_SCAN = "org.fdroid.fdroid.localrepo.SCAN";
+    private static final String ACTION_SCAN = "org.fdroid.fdroid.nearby.SCAN";
 
     private static final List<String> SKIP_DIRS = Arrays.asList(".android_secure", "LOST.DIR");
 
