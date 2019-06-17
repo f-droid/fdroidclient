@@ -23,7 +23,6 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
 import java.util.Collections;

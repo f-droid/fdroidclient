@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.hiding;
+package org.fdroid.fdroid.panic;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.fdroid.fdroid.R;
 
 import java.util.regex.Pattern;
@@ -28,7 +27,8 @@ public class CalculatorActivity extends AppCompatActivity {
     // unary operators
     private static final String PERCENT = "%";
 
-    private @Nullable String lastOp;
+    @Nullable
+    private String lastOp;
 
     // views
     private TextView textView;

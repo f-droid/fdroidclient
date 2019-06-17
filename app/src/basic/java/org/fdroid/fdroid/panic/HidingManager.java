@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views.hiding;
+package org.fdroid.fdroid.panic;
 
 import android.content.Context;
 

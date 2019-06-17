@@ -124,7 +124,7 @@
                 android:name=".panic.ExitActivity"
                 android:theme="@android:style/Theme.NoDisplay"/>
         <activity
-                android:name=".views.hiding.CalculatorActivity"
+                android:name=".panic.CalculatorActivity"
                 android:enabled="false"
                 android:icon="@mipmap/ic_calculator_launcher"
                 android:label="@string/hiding_calculator"

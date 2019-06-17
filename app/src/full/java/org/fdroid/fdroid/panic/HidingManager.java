@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.hiding;
+package org.fdroid.fdroid.panic;
 
 import android.content.ComponentName;
 import android.content.Context;

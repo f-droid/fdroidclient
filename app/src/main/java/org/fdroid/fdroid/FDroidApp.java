@@ -76,7 +76,7 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
-import org.fdroid.fdroid.views.hiding.HidingManager;
+import org.fdroid.fdroid.panic.HidingManager;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;

@@ -24,7 +24,7 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 import org.fdroid.fdroid.views.categories.CategoryController;
-import org.fdroid.fdroid.views.hiding.HidingManager;
+import org.fdroid.fdroid.panic.HidingManager;
 
 import java.util.ArrayList;
 import java.util.Collections;

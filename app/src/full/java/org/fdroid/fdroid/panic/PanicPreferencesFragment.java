@@ -29,7 +29,6 @@ import info.guardianproject.panic.PanicResponder;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.views.hiding.HidingManager;
 
 import java.util.ArrayList;
 import java.util.Set;
