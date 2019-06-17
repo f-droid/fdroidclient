@@ -78,7 +78,6 @@
                 android:exported="false"/>
         <service android:name=".nearby.SwapService"/>
 
-        <service android:name=".nearby.LocalHTTPDManager"/>
         <service
                 android:name=".nearby.LocalRepoService"
                 android:exported="false"/>
