@@ -8,7 +8,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.peers.WifiPeer;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import java.util.Arrays;
 import java.util.Locale;

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap;
+package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;

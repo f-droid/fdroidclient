@@ -62,7 +62,7 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import java.lang.reflect.Field;
 

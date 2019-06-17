@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views.swap;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.net.Uri;

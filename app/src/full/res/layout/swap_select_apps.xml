@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.SelectAppsView
+<org.fdroid.fdroid.nearby.SelectAppsView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarColor="@color/swap_bright_blue"
@@ -15,4 +15,4 @@
             android:layout_height="match_parent"
             android:orientation="vertical"/>
 
-</org.fdroid.fdroid.views.swap.SelectAppsView>
+</org.fdroid.fdroid.nearby.SelectAppsView>

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap;
+package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -58,12 +58,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.nearby.BluetoothManager;
-import org.fdroid.fdroid.nearby.BonjourManager;
-import org.fdroid.fdroid.nearby.LocalHTTPDManager;
-import org.fdroid.fdroid.nearby.LocalRepoService;
-import org.fdroid.fdroid.nearby.SwapService;
-import org.fdroid.fdroid.nearby.SwapView;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;

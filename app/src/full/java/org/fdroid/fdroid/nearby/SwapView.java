@@ -8,7 +8,6 @@ import android.support.annotation.LayoutRes;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
  * A {@link android.view.View} that registers to handle the swap events from

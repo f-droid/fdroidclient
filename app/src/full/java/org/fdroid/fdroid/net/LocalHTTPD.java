@@ -39,7 +39,7 @@ import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response.IStatus;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import javax.net.ssl.SSLServerSocketFactory;
 import java.io.File;

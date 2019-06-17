@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/swap_blue"
-        tools:context=".views.swap.SwapWorkflowActivity">
+        tools:context=".nearby.SwapWorkflowActivity">
 
     <TextView
             android:layout_width="wrap_content"

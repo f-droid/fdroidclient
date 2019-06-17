@@ -34,7 +34,6 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.io.IOException;
 import java.io.OutputStream;
