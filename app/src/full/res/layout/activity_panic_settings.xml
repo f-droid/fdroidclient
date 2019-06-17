@@ -14,7 +14,7 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_container"
-        class="org.fdroid.fdroid.views.panic.PanicPreferencesFragment"
+        class="org.fdroid.fdroid.panic.PanicPreferencesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -25,7 +25,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.hiding.HidingManager;
+import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 import java.util.Date;

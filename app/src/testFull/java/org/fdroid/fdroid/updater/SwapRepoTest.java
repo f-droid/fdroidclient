@@ -23,10 +23,11 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.data.ShadowApp;
 import org.fdroid.fdroid.data.TempAppProvider;
-import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.LocalRepoService;
-import org.fdroid.fdroid.net.LocalHTTPD;
+import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
+import org.fdroid.fdroid.nearby.LocalRepoManager;
+import org.fdroid.fdroid.nearby.LocalRepoService;
+import org.fdroid.fdroid.nearby.WifiStateChangeService;
+import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -94,7 +95,7 @@ public class SwapRepoTest {
     }
 
     /**
-     * @see org.fdroid.fdroid.net.WifiStateChangeService.WifiInfoThread#run()
+     * @see WifiStateChangeService.WifiInfoThread#run()
      */
     @Test
     public void testSwap()

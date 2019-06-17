@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.localrepo.SwapView
+<org.fdroid.fdroid.nearby.SwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarColor="@color/swap_bright_blue"
@@ -38,4 +38,4 @@
             android:visibility="gone"
             android:text="@string/try_again"/>
 
-</org.fdroid.fdroid.localrepo.SwapView>
+</org.fdroid.fdroid.nearby.SwapView>

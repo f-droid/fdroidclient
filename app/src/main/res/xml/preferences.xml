@@ -149,7 +149,7 @@
                 android:title="@string/panic_settings">
             <intent
                     android:action="android.intent.action.MAIN"
-                    android:targetClass="org.fdroid.fdroid.views.panic.PanicPreferencesActivity"
+                    android:targetClass="org.fdroid.fdroid.panic.PanicPreferencesActivity"
                     android:targetPackage="@string/applicationId"/>
         </android.support.v7.preference.PreferenceScreen>
     </android.support.v7.preference.PreferenceCategory>

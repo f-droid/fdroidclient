@@ -56,13 +56,13 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.localrepo.SDCardScannerService;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.nearby.SDCardScannerService;
+import org.fdroid.fdroid.nearby.SwapService;
+import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import java.lang.reflect.Field;
 
