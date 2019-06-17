@@ -1,10 +1,8 @@
-package org.fdroid.fdroid.net.bluetooth.httpish;
+package org.fdroid.fdroid.nearby.httpish;
 
 import android.util.Log;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
-import org.fdroid.fdroid.net.bluetooth.FileDetails;
-import org.fdroid.fdroid.net.bluetooth.httpish.headers.Header;
+import org.fdroid.fdroid.nearby.BluetoothConnection;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -87,7 +85,7 @@ public class Response {
 
     /**
      * Extracts meaningful headers from the response into a more useful and safe
-     * {@link org.fdroid.fdroid.net.bluetooth.FileDetails} object.
+     * {@link FileDetails} object.
      */
     public FileDetails toFileDetails() {
         FileDetails details = new FileDetails();

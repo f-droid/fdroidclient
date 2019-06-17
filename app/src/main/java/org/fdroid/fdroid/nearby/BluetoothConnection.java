@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.fdroid.fdroid.nearby;
 
 import android.bluetooth.BluetoothSocket;
 import org.fdroid.fdroid.Utils;

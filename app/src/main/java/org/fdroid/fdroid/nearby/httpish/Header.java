@@ -1,14 +1,12 @@
-package org.fdroid.fdroid.net.bluetooth.httpish.headers;
-
-import org.fdroid.fdroid.net.bluetooth.FileDetails;
+package org.fdroid.fdroid.nearby.httpish;
 
 import java.util.Locale;
 
 public abstract class Header {
 
     private static final Header[] VALID_HEADERS = {
-        new ContentLengthHeader(),
-        new ETagHeader(),
+            new ContentLengthHeader(),
+            new ETagHeader(),
     };
 
     protected abstract String getName();

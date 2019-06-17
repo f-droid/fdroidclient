@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.net.bluetooth;
+package org.fdroid.fdroid.nearby;
 
 /**
  * Dummy version for basic app flavor.

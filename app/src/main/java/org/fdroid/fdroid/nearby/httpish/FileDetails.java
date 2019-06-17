@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.fdroid.fdroid.nearby.httpish;
 
 public class FileDetails {
 
@@ -13,11 +13,11 @@ public class FileDetails {
         return fileSize;
     }
 
-    public void setFileSize(int fileSize) {
+    void setFileSize(int fileSize) {
         this.fileSize = fileSize;
     }
 
-    public void setCacheTag(String cacheTag) {
+    void setCacheTag(String cacheTag) {
         this.cacheTag = cacheTag;
     }
 }

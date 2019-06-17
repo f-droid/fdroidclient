@@ -1,6 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth.httpish.headers;
-
-import org.fdroid.fdroid.net.bluetooth.FileDetails;
+package org.fdroid.fdroid.nearby.httpish;
 
 public class ETagHeader extends Header {
 

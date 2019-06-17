@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.fdroid.fdroid.nearby;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
@@ -7,8 +7,8 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 import fi.iki.elonen.NanoHTTPD;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.bluetooth.httpish.Request;
-import org.fdroid.fdroid.net.bluetooth.httpish.Response;
+import org.fdroid.fdroid.nearby.httpish.Request;
+import org.fdroid.fdroid.nearby.httpish.Response;
 
 import java.io.File;
 import java.io.FileInputStream;
