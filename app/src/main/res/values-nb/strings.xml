@@ -507,7 +507,7 @@
     <string name="panic_add_apps_to_uninstall">Legg til programmer som skal avinstalleres og tømmes</string>
     <string name="panic_reset_repos_title">Tilbakestill pakkebrønner</string>
     <string name="panic_reset_repos_summary">Tving oppsett av pakkebrønn tilbake til forvalg</string>
-    <string name="swap_visible_hotspot">Synlig via internett-deling</string>
+    <string name="swap_visible_hotspot">Synlig via Internett-deling</string>
     <string name="swap_blank_wifi_ssid">(blank)</string>
     <string name="swap_hidden_wifi_ssid">(skjult)</string>
     <string name="swap_setting_up_hotspot">Setter opp felles trådløstilknytning…</string>
