@@ -46,6 +46,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.Certificate;
+import java.util.ArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
@@ -122,19 +123,33 @@ public class TreeUriScannerIntentService extends IntentService {
         searchDirectory(treeFile);
     }
 
+    /**
+     * Recursively search for {@link IndexV1Updater#SIGNED_FILE_NAME} starting
+     * from the given directory, looking at files first before recursing into
+     * directories.  This is "depth last" since the index file is much more
+     * likely to be shallow than deep, and there can be a lot of files to
+     * search through starting at 4 or more levels deep, like the fdroid
+     * icons dirs and the per-app "external storage" dirs.
+     */
     private void searchDirectory(DocumentFile documentFileDir) {
         DocumentFile[] documentFiles = documentFileDir.listFiles();
         if (documentFiles == null) {
             return;
         }
+        boolean foundIndex = false;
+        ArrayList<DocumentFile> dirs = new ArrayList<>();
         for (DocumentFile documentFile : documentFiles) {
             if (documentFile.isDirectory()) {
-                searchDirectory(documentFile);
-            } else {
+                dirs.add(documentFile);
+            } else if (!foundIndex) {
                 if (IndexV1Updater.SIGNED_FILE_NAME.equals(documentFile.getName())) {
                     registerRepo(documentFile);
+                    foundIndex = true;
                 }
             }
+        }
+        for (DocumentFile dir : dirs) {
+            searchDirectory(dir);
         }
     }
 
@@ -150,9 +165,7 @@ public class TreeUriScannerIntentService extends IntentService {
     private void registerRepo(DocumentFile index) {
         InputStream inputStream = null;
         try {
-            Log.i(TAG, "FOUND: " + index.getUri());
             inputStream = getContentResolver().openInputStream(index.getUri());
-            Log.i(TAG, "repo URL: " + index.getParentFile().getUri());
             registerRepo(this, inputStream, index.getParentFile().getUri());
         } catch (IOException | IndexUpdater.SigningException e) {
             e.printStackTrace();
@@ -172,7 +185,6 @@ public class TreeUriScannerIntentService extends IntentService {
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1Updater.DATA_FILE_NAME);
         IOUtils.readLines(jarFile.getInputStream(indexEntry));
         Certificate certificate = IndexUpdater.getSigningCertFromJar(indexEntry);
-        Log.i(TAG, "Got certificate: " + certificate);
         String fingerprint = Utils.calcFingerprint(certificate);
         Log.i(TAG, "Got fingerprint: " + fingerprint);
         destFile.delete();
