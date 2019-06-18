@@ -1,0 +1,7 @@
+* Obsługuj domyślne uprawnienia READ_EXTERNAL_STORAGE, które uruchamiają monit
+   o uprawnienia podczas instalacji z rozszerzeniem Privileged 
+* Dane indeksu oczyszczone w celu zmniejszenia możliwych zagrożeń z serwera 
+* „Read Timeout” wyzwala użycie lustra, gdy odczyt jest powolny 
+* Naprawiono brakujące ikony dla osób nie korzystających z Wi-Fi 
+* Użyj oddzielnych tytułów dla zakładki Aktualizacje i Aktualizacje, aby ułatwić tłumaczenie 
+* Poprawki interfejsu użytkownika z @ConnyDuck

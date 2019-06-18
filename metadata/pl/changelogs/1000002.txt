@@ -1,0 +1,7 @@
+* Zapobieganie używaniu HTTP ETag jako cookie do śledzenia 
+ 
+* Ulepszony układ zrzutów ekranu 
+ 
+* Prawidłowe czyszczenie plików tymczasowych i plików z pamięci podręcznej. 
+ 
+* Poprawki trybu ciemnego

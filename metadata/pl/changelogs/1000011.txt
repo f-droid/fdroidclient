@@ -1,0 +1,11 @@
+F-Droid to 1.0! 
+ To wydanie zawiera wiele dużych zmian:
+* Całkowicie przeprojektowany proces aktualizacji aplikacji
+* Pełne tłumaczenia streszczeń i opisów aplikacji
+* Sekcja „Co nowego” pokazuje zmiany w bieżącej wersji
+* Zrzuty ekranu i grafika funkcji
+* Wsparcie instalacji mediów, pliki OTA, ZIP itp
+* Poprawiona ochrona przed śledzeniem (HTTP ETag, TLS, itp.)
+* Pełne aktualizacje w tle dzięki uprzywilejowanemu rozszerzeniu
+* Wyróżnianie darowiz dla twórców
+* Szybsze aktualizacje indeksu

@@ -1,0 +1,12 @@
+v1.3.1
+* Duży remont rdzenia Nearby/Swap plumbing
+* Obsługa TLSv1.3, gdy urządzenie to obsługuje
+
+v1.3
+* Bardziej niezawodne przyciski i aktualizacje statusu
+* Przegląd ustawień, w tym nowe kontrole wykorzystania danych
+* Działanie w tle z świadomością baterii w systemie Android 5.0 i nowszych
+* Udostępnianie pozycji menu dla repos
+* Wyłączanie raportów o awariach w Ustawienia
+* Przeglądarka historii instalacji po włączeniu logowania
+* Lista nieporządanych funkcji, dodano NoSourceSince

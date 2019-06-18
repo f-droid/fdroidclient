@@ -1,0 +1,7 @@
+* Wymiana za pomocą obsługiwanych kart SD 
+* W pobliżu Zamień poprawki i ulepszenia 
+* Dalsza poprawa „szczegółów aplikacji” 
+* Zaktualizuj język i tłumaczenia w pobliżu i zamianie 
+* Poprawiona logika wyboru ikon aplikacji 
+* Dodaj repozytorium za pomocą wbudowanego dodatkowego_repos.xml z ROM, OEM, dostawcy. 
+* Wyświetl Kod wersji w rozszerzonych pozycjach listy wersji w trybie Eksperta

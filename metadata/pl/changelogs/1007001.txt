@@ -1,0 +1,5 @@
+* przebudowano pobliską wymianę przy użyciu punktu dostępowego urządzenia 
+ 
+* dodano nowe reakcje napadowe: aplikacja odinstaluje i zresetuje repozytorium do wartości domyślnych 
+ 
+* poprawiono obsługę serwera proxy przy pierwszym uruchomieniu

@@ -1,0 +1,9 @@
+* Automatyczne usuwanie pamięci podręcznej, gdy pamięci jest mało
+* Poprawiona wydajność na urządzeniach o małej pamięci
+* Ustaw, aby wszystkie pliki były pobierane „Tylko przez Wi-Fi”
+* Zmniejsz użycie pamięci, gdy jest na wyczerpaniu
+* Dodaj niestandardowe lustra do dowolnego repozytorium, klikając linki, skanując kody QR itp.
+* Poprawiony automatyczny wybór lustra
+* Wiele zmian, poprawek błędów i ulepszeń
+* Naprawiono cykliczne powiadomienia o aktualizacjach (#1271)
+* Nocne F-Droid z GitLab

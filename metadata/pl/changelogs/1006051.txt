@@ -1,0 +1,3 @@
+* Zaktualizowano tłumaczenia 
+* Naprawiono problemy z rozmiarem przycisków #1678 
+* Zatrzymano przypadkowe awarie tła

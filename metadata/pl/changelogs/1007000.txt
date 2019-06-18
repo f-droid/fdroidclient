@@ -1,0 +1,6 @@
+* gruntowny przegląd UI wymiany, aby przygotować się do przepisania wnętrza
+* pokaż "cofnij" po przesunięciu elementów z karty Aktualizacje (dzięki @Hocuri!)
+* naprawiano obsługę ETag podczas łączenia się z serwerami lustrzanymi nginx #1737
+* naprawiono problemy z wyświetlaniem "Najnowsze" spowodowane niewłaściwymi strefami czasowymi #1757
+* ignoruj wszystkie nieistotne awarie w usługach działających w tle
+* nie używaj Rozszerzenia Uprzywilejowanego, jeśli zostało wyłączone w Ustawieniach
