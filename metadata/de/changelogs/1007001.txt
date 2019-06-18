@@ -1,0 +1,5 @@
+* überholter Direkt Swap mit dem Hotspot AP des Geräts
+
+* neue Panikreaktionen hinzufügen: App deinstalliert und setzt Repos auf den Standard zurück
+
+* Proxy-Unterstützung beim ersten Start korrigieren

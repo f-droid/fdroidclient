@@ -1,0 +1,11 @@
+* Generalüberholung der Swap-UI, um sich auf das Umschreiben von Innereien vorzubereiten
+
+* zeige "rückgängig", nachdem Elemente aus der Registerkarte "Updates" entfernt wurde (danke @Hocuri!)
+
+* behebt ETag-Handling beim Verbinden mit nginx-Spiegeln #1737
+
+* behebt Probleme mit der "neuesten" Anzeige, von Zeitzonen #1757 verursacht
+
+* ignorieren aller unwichtigen Abstürze in Hintergrunddiensten
+
+* privilegierte Erweiterung nicht verwenden, wenn sie in den Einstellungen deaktiviert wurde
