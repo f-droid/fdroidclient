@@ -1,3 +1,7 @@
+### 1.7-alpha2 (2019-06-18)
+
+* USB OTG flash drives can be used as nearby repos and mirrors 
+
 ### 1.7-alpha1 (2019-06-14)
 
 * overhauled nearby swap using the device's hotspot AP
