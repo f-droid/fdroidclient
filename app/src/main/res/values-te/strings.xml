@@ -303,4 +303,9 @@
     <string name="about_forum">తోడ్పాటు వేదిక</string>
     <string name="app_size">పరిమాణం: %1$s</string>
     <string name="menu_open">తెరువు</string>
+    <string name="notify_on">తాజాకరణలు అందుబాటులో ఉన్నప్పుడు గమనింపును చూపించు</string>
+    <string name="details_new_in_version">వెర్షను %sలో కొత్తవి</string>
+    <string name="antifeatureswarning">"ఈ యాప్ లోని  కొన్ని సౌలభ్యాలు మీకు నచ్చకపోవచ్చు."</string>
+    <string name="panic_settings_summary">అత్యవసర పరిస్థితిలో తీసుకోవలసిన చర్యలు</string>
+    <string name="try_again">మళ్ళీ ప్రయత్నించు</string>
 </resources>

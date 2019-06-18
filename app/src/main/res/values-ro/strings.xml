@@ -483,4 +483,10 @@
     <string name="menu_translation">Traducere</string>
     <string name="undo">Anulare</string>
     <string name="app_list__dismiss_installing_app">Instalare anulată</string>
+    <string name="menu_select_for_wipe">Selectează pentru ștergere</string>
+    <string name="try_again">Încearcă din nou</string>
+    <string name="panic_will_be_wiped">Se va dezinstala iar toate datele vor fi șterse</string>
+    <string name="panic_apps_to_uninstall">Aplicații de dezinstalat ce vor avea datele șterse</string>
+    <string name="panic_add_apps_to_uninstall">Adaugă aplicații de dezinstalat și șters date</string>
+    <string name="panic_reset_repos_title">Resetare depozite</string>
 </resources>

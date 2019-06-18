@@ -406,7 +406,7 @@
     <string name="panic_settings">اعدادات زر الهلع</string>
     <string name="panic_settings_summary">الإجراءات الواجب اتخاذها في حالة الطوارئ</string>
     <string name="panic_exit_title">اغلاق التطبيق</string>
-    <string name="panic_exit_summary">سيتم اغلاق التطبيق</string>
+    <string name="panic_exit_summary">سيتم إغلاق هذا التطبيق</string>
     <string name="panic_destructive_actions">الإجراءات التدميرية</string>
     <string name="panic_hide_title">إخفاء %s</string>
     <string name="panic_hide_summary">التطبيق سوف يخفي نفسه</string>
@@ -511,14 +511,31 @@
     <string name="not_visible_nearby_description">قبل المشاركة مع الأجهزة القريبة، أجعل الجهاز الخاص بك مرئياً.</string>
     <string name="swap_toast_not_removable_storage">هذا الخيار لم يتتطابق مع أي جهاز تخزين قابل للإزالة، حاول مرة أخرى!</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="zero">إظهار التطبيقات  %1$d في الفئة %2$s</item>
-        <item quantity="one">إظهار التطبيق  %1$d الوحيد في الفئة %2$s</item>
-        <item quantity="two">إظهار التطبيقين %1$d في الفئة %2$s</item>
-        <item quantity="few">إظهار التطبيقات %1$d في هذه الفئة %2$s</item>
+        <item quantity="zero">لا تطبيقات</item>
+        <item quantity="one">إظهار التطبيق %1$d الوحيد في الفئة %2$s</item>
+        <item quantity="two">إظهار التطبيقان %1$d في الفئة %2$s</item>
+        <item quantity="few">إظهار عدة تطبيقات %1$d في هذه الفئة %2$s</item>
         <item quantity="many">إظهار التطبيقات %1$d في الفئة %2$s</item>
-        <item quantity="other">إظهار التطبيقات %1$d في الفئة %2$s</item>
+        <item quantity="other">إظهار الموجود %1$d في الفئة %2$s</item>
     </plurals>
     <string name="menu_translation">الترجمة</string>
     <string name="undo">تراجع</string>
     <string name="app_list__dismiss_installing_app">تم إلغاء التثبيت</string>
+    <string name="menu_select_for_wipe">حدد للمسح</string>
+    <string name="try_again">حاول مجدداً</string>
+    <string name="panic_will_be_wiped">سيتم إلغاء تثبيته ومسح كل بياناته</string>
+    <string name="panic_apps_to_uninstall">التطبيقات التي سيتم إلغاء تثبيتها وحذف بياناتها</string>
+    <string name="panic_add_apps_to_uninstall">اضف تطبيقات لكي يتم إلغاء تثبيتها وحذف بيانتها</string>
+    <string name="panic_reset_repos_title">‘إعادة تعيين المستودعات</string>
+    <string name="panic_reset_repos_summary">فرض إعدادات المستودعات الافتراضية مرة أخري</string>
+    <string name="swap_visible_hotspot">ظاهر من خلال شبكة الإنترنت</string>
+    <string name="swap_blank_wifi_ssid">(خالي)</string>
+    <string name="swap_hidden_wifi_ssid">(مخفي)</string>
+    <string name="swap_setting_up_hotspot">يجهز نقطة الإتصال…</string>
+    <string name="swap_stopping_hotspot">يوقف نقطة الإتصال…</string>
+    <string name="swap_starting">يبدء.…</string>
+    <string name="swap_stopping">يتوقف…</string>
+    <string name="disabled">مُعطل</string>
+    <string name="swap_error_cannot_start_bluetooth">لا يمكن تشغيل البلوتوث!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">إغلاق قريب لأنه كان خاملًا.</string>
 </resources>
