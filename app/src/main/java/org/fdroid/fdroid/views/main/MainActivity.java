@@ -58,11 +58,12 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
+import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 
 import java.lang.reflect.Field;
 
@@ -85,10 +86,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private static final String TAG = "MainActivity";
 
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
+    public static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
+    public static final int REQUEST_STORAGE_ACCESS = 0x40E5;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -133,6 +136,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             bottomNavigation
                     .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
                     .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby));
+
+            bottomNavigation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bottomNavigation.getCurrentSelectedPosition() == 2) {
+                        NearbyViewBinder.updateUsbOtg(MainActivity.this);
+                    }
+                }
+            });
         }
         bottomNavigation.setTabSelectedListener(this)
                 .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
@@ -217,6 +229,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
             selectedMenuId = R.id.updates;
             setSelectedMenuInNav();
+        } else if (getIntent().hasExtra(EXTRA_VIEW_NEARBY)) {
+            getIntent().removeExtra(EXTRA_VIEW_NEARBY);
+            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.nearby));
+            selectedMenuId = R.id.nearby;
+            setSelectedMenuInNav();
         } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
             getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.settings));
@@ -244,6 +261,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         // here and once in onResume(). However, the method deals with this by ensuring it only
         // handles the same intent once.
         checkForAddRepoIntent(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_STORAGE_ACCESS) {
+            TreeUriScannerIntentService.onActivityResult(this, data);
+        }
     }
 
     @Override

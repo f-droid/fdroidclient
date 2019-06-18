@@ -2,13 +2,21 @@ package org.fdroid.fdroid.views.main;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.UriPermission;
 import android.content.pm.PackageManager;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +25,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * A splash screen encouraging people to start the swap process. The swap
@@ -50,13 +60,14 @@ import java.io.File;
  * @see TreeUriScannerIntentService
  * @see org.fdroid.fdroid.nearby.SDCardScannerService
  */
-class NearbyViewBinder {
+public class NearbyViewBinder {
     public static final String TAG = "NearbyViewBinder";
 
-    static File externalStorage = null;
+    private static File externalStorage = null;
+    private static View swapView;
 
     NearbyViewBinder(final Activity activity, FrameLayout parent) {
-        View swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, parent, true);
+        swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, parent, true);
 
         TextView subtext = swapView.findViewById(R.id.both_parties_need_fdroid_text);
         subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid,
@@ -130,6 +141,63 @@ class NearbyViewBinder {
                     }
                 }
             });
+        }
+
+        updateUsbOtg(activity);
+    }
+
+    public static void updateUsbOtg(final Activity activity) {
+        if (Build.VERSION.SDK_INT < 24) {
+            return;
+        }
+        if (swapView == null) {
+            Utils.debugLog(TAG, "swapView == null");
+            return;
+        }
+        TextView storageVolumeText = swapView.findViewById(R.id.storage_volume_text);
+        Button requestStorageVolume = swapView.findViewById(R.id.request_storage_volume_button);
+        storageVolumeText.setVisibility(View.GONE);
+        requestStorageVolume.setVisibility(View.GONE);
+
+        final StorageManager storageManager = (StorageManager) activity.getSystemService(Context.STORAGE_SERVICE);
+        for (final StorageVolume storageVolume : storageManager.getStorageVolumes()) {
+            if (storageVolume.isRemovable() && !storageVolume.isPrimary()) {
+                Log.i(TAG, "StorageVolume: " + storageVolume);
+                final Intent intent = storageVolume.createAccessIntent(null);
+                if (intent == null) {
+                    Utils.debugLog(TAG, "Got null Storage Volume access Intent");
+                    return;
+                }
+                storageVolumeText.setVisibility(View.VISIBLE);
+
+                String text = storageVolume.getDescription(activity);
+                if (!TextUtils.isEmpty(text)) {
+                    requestStorageVolume.setText(text);
+                    UsbDevice usb = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+                    if (usb != null) {
+                        text = String.format("%s (%s %s)", text, usb.getManufacturerName(), usb.getProductName());
+                        Toast.makeText(activity, text, Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                requestStorageVolume.setVisibility(View.VISIBLE);
+                requestStorageVolume.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    @RequiresApi(api = 24)
+                    public void onClick(View v) {
+                        List<UriPermission> list = activity.getContentResolver().getPersistedUriPermissions();
+                        if (list != null) for (UriPermission uriPermission : list) {
+                            Uri uri = uriPermission.getUri();
+                            if (uri.getPath().equals(String.format("/tree/%s:", storageVolume.getUuid()))) {
+                                intent.setData(uri);
+                                TreeUriScannerIntentService.onActivityResult(activity, intent);
+                                return;
+                            }
+                        }
+                        activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                    }
+                });
+            }
         }
     }
 }
