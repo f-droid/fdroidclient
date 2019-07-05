@@ -1,0 +1,5 @@
+* býtti við nálæg tæki endurhannað miðað við færanlega tengistaði (hotspot)
+
+* bætt við nýjum aðgerðum neyðarhnapps: fjarlæging forrita og frumstilling hugbúnaðarsafna
+
+* lagaður stuðningur við milliþjóna við fyrstu ræsingu
