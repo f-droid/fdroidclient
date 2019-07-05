@@ -42,6 +42,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
@@ -187,6 +188,23 @@ public class MainActivityEspressoTest {
                 allOf(withText(R.string.preference_manage_installed_apps), isDisplayed()));
         manageInstalledAppsButton.perform(click());
         onView(withText(R.string.installed_apps__activity_title)).check(matches(isDisplayed()));
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
+
+        onView(withText(R.string.menu_manage)).perform(click());
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
+
+        manageInstalledAppsButton.perform(click());
+        onView(withText(R.string.installed_apps__activity_title)).check(matches(isDisplayed()));
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
+
+        onView(withText(R.string.menu_manage)).perform(click());
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
+
+        onView(withText(R.string.about_title)).perform(click());
+        onView(withId(R.id.version)).check(matches(isDisplayed()));
+        onView(withId(R.id.ok_button)).perform(click());
+
+        onView(withId(R.id.list)).perform(swipeUp()).perform(swipeUp()).perform(swipeUp());
     }
 
     @LargeTest
