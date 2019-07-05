@@ -237,7 +237,13 @@ public class WifiStateChangeService extends IntentService {
             }
             FDroidApp.bssid = wifiInfo.getBSSID();
         } else {
-            WifiApControl wifiApControl = WifiApControl.getInstance(this);
+            WifiApControl wifiApControl = null;
+            try {
+                wifiApControl = WifiApControl.getInstance(this);
+                wifiApControl.isEnabled();
+            } catch (NullPointerException e) {
+                wifiApControl = null;
+            }
             Utils.debugLog(TAG, "WifiApControl: " + wifiApControl);
             if (wifiApControl == null && FDroidApp.ipAddressString != null) {
                 wifiInfo = wifiManager.getConnectionInfo();
@@ -249,7 +255,9 @@ public class WifiStateChangeService extends IntentService {
             } else if (wifiApControl != null && wifiApControl.isEnabled()) {
                 WifiConfiguration wifiConfiguration = wifiApControl.getConfiguration();
                 Utils.debugLog(TAG, "WifiConfiguration: " + wifiConfiguration);
-                if (wifiConfiguration.hiddenSSID) {
+                if (wifiConfiguration == null) {
+                    FDroidApp.ssid = getString(R.string.swap_active_hotspot, "");
+                } else if (wifiConfiguration.hiddenSSID) {
                     FDroidApp.ssid = getString(R.string.swap_hidden_wifi_ssid);
                 } else {
                     FDroidApp.ssid = wifiConfiguration.SSID;
