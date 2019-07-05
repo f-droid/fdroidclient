@@ -1,0 +1,13 @@
+* Scambio tramite schede SD supportato
+
+* Miglioramenti e risoluzione problemi Scambio Ravvicinato
+
+* Ulteriore miglioramento di "Dettagli App"
+
+* Aggiornate lingua e traduzione riguardo Vicinanze e Scambio
+
+* Migliorata la logica di selezione dell'icona delle app
+
+* Aggiungi repository tramite l'additional_repos.xml integrato da ROM, OEM, produttori.
+
+* Visualizza versionCode nelle voci della lista espansa delle versioni nella modalità Esperto

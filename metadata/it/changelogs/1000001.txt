@@ -1,0 +1,3 @@
+* Risolto bug rimozione app dalle repository (#568)
+
+* Aggiornamenti dell'indice molto più rapidi

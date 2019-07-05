@@ -1,0 +1,13 @@
+* "Più recenti" ora evidenzia le app che forniscono descrizioni, traduzioni, schermate
+
+* Auto-download dai mirror, per velocizzare lo scaricamento e ridurre il carico
+
+* Disattiva mirror che usano nuovi switch in RepoDetails (#1696)
+
+* Miglior caching di download (per-repo; tra webserver diversi #1708)
+
+* Fix installazioni via Origini Sconosciute con Estensione Privilegiata (#1702)
+
+* Corregge icone mancanti per chi non usa il Wi-Fi (#1592)
+
+* Migliori traduzioni per aggiornamenti e preferenze
