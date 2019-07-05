@@ -507,7 +507,7 @@
     <string name="not_visible_nearby">خدمة \"Nearby\" غير مفعّلة</string>
     <string name="swap_toast_find_removeable_storage">اختر بطاقة ذاكرة التخزين أو USB</string>
     <string name="scan_removable_storage_summary">البحث عن مستودعات الحزم في اجهزة التخزين القابلة للإزالة مثل محركات أقراص usb وبطاقات SD</string>
-    <string name="nearby_splash__read_external_storage">"ابحث في  بطاقة الذاكرة عن المستودعات والمرايا."</string>
+    <string name="nearby_splash__read_external_storage">ابحث في  بطاقة الذاكرة عن المستودعات والمرايا.</string>
     <string name="not_visible_nearby_description">قبل المشاركة مع الأجهزة القريبة، أجعل الجهاز الخاص بك مرئياً.</string>
     <string name="swap_toast_not_removable_storage">هذا الخيار لم يتتطابق مع أي جهاز تخزين قابل للإزالة، حاول مرة أخرى!</string>
     <plurals name="tts_view_all_in_category">
@@ -538,5 +538,5 @@
     <string name="disabled">مُعطل</string>
     <string name="swap_error_cannot_start_bluetooth">لا يمكن تشغيل البلوتوث!</string>
     <string name="swap_toast_closing_nearby_after_timeout">إغلاق قريب لأنه كان خاملًا.</string>
-    <string name="nearby_splash__document_tree">"إبحث عن  المستودعات والمرايا في USB OTG."</string>
+    <string name="nearby_splash__document_tree">إبحث عن  المستودعات والمرايا في USB OTG.</string>
 </resources>

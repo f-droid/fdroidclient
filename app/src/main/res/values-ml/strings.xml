@@ -246,7 +246,7 @@
     <string name="swap_nfc_title">കെെമാറ്റം ചെയ്യാന്‍ തൊടുക</string>
     <string name="swap_join_same_wifi">നിങ്ങളുടെ സുഹൃത്തിന്റെ അതേ വൈ-ഫൈ യില്‍ ചേരുക</string>
     <string name="swap_join_this_hotspot">നിങ്ങളുടെ ഹോട്ട്സ്പോട്ടില്‍ ചേരാൻ സുഹൃത്തിനെ സഹായിക്കുക</string>
-    <string name="swap">"ആപ്പ്  കെെമാറ്റം ചെയ്യുക"</string>
+    <string name="swap">ആപ്പ്  കെെമാറ്റം ചെയ്യുക</string>
     <string name="swap_success">ആപ്പ് കൈമാറ്റം ചെയ്തു!</string>
     <string name="swap_no_wifi_network">ഇതുവരെ നെറ്റ്വർക്ക് ഇല്ല</string>
     <string name="swap_active_hotspot">%1$s (നിങ്ങളുടെ ഹോട്ട്സ്പോട്ട്)</string>
@@ -368,10 +368,10 @@
     <string name="enable_proxy_summary">എല്ലാ നെറ്റ്വർക്ക് അഭ്യർത്ഥനകൾക്കും പ്രോക്സി ക്രമീകരിക്കുക</string>
     <string name="proxy_host">പ്രോക്സി ഹോസ്റ്റ്</string>
     <string name="hide_all_notifications">എല്ലാ അറിയിപ്പുകളും മറയ്ക്കൂ</string>
-    <string name="repo_exists_add_fingerprint">"%1$s  ഇതിനകം സജ്ജമാണ്, പുതിയ കീ വിവരങ്ങൾ ചേർക്കും."</string>
+    <string name="repo_exists_add_fingerprint">%1$s  ഇതിനകം സജ്ജമാണ്, പുതിയ കീ വിവരങ്ങൾ ചേർക്കും.</string>
     <string name="repo_exists_enable">%1$s മുമ്പുതന്നെ തയ്യാറാണ്, അത് വീണ്ടും സജ്ജമാക്കാന്‍ താൽപ്പര്യപ്പെടുന്നുവെന്ന് സ്ഥിരീകരിക്കുക.</string>
     <string name="repo_exists_and_enabled">%1$s മുമ്പുതന്നെ തയ്യാറാക്കി സജ്ജമാക്കിയിട്ടുള്ളതാണ് .</string>
-    <string name="repo_delete_to_overwrite">"മറ്റൊരു കീ ഉപയോഗിച്ച്  ചേർക്കുന്നതിനുമുമ്പ് ആദ്യം നിങ്ങൾ %1$s സംഭരണി നീക്കംചെയ്യണം."</string>
+    <string name="repo_delete_to_overwrite">മറ്റൊരു കീ ഉപയോഗിച്ച്  ചേർക്കുന്നതിനുമുമ്പ് ആദ്യം നിങ്ങൾ %1$s സംഭരണി നീക്കംചെയ്യണം.</string>
     <string name="proxy_host_summary">നിങ്ങളുടെ പ്രോക്സി ഹോസ്റ്റ് നെയിം (ഉദാ: 127.0.0.1)</string>
     <string name="proxy_port">പ്രോക്സി പോർട്ട്‌</string>
     <string name="proxy_port_summary">നിങ്ങളുടെ പ്രോക്സി പോർട്ട്‌ സംഖ്യ (ഉദാ: 8118)</string>
@@ -400,7 +400,7 @@
     <string name="panic_app_setting_summary">ഒരു ആപ്പും ഉറപ്പിച്ചിട്ടില്ല</string>
     <string name="panic_app_setting_none">ഒന്നുമില്ല</string>
     <string name="panic_app_dialog_title">അത്യാഹിതസമയ ആപ്പ് സ്‌ഥിരീകരിക്കുക</string>
-    <string name="panic_app_dialog_message">"ഹാനികരമായ അത്യാഹിതസമയ ക്രിയകൾക്കു ഹേതുവാകാൻ %1$s  ന്റെ അനുമതി സ്‌ഥിരീകരിക്കട്ടേ\?"</string>
+    <string name="panic_app_dialog_message">ഹാനികരമായ അത്യാഹിതസമയ ക്രിയകൾക്കു ഹേതുവാകാൻ %1$s  ന്റെ അനുമതി സ്‌ഥിരീകരിക്കട്ടേ\?</string>
     <string name="allow">അനുവദിക്കൂ</string>
     <string name="panic_settings">പാനിക്ക് ബട്ടൺ ക്രമീകരണങ്ങൾ</string>
     <string name="panic_settings_summary">അത്യാഹിതം സംഭവിക്കുമ്പോൾ ചെയ്യേണ്ട പ്രവർത്തികൾ</string>
@@ -412,7 +412,7 @@
     <string name="force_touch_apps">ടച് സ്ക്രീൻ ആപ്പുകൾ ഉൾപെടുത്തുക</string>
     <string name="force_touch_apps_on">ഉപകരണ പിൻതാങ്ങു കണക്കെടുക്കാതെ ടച് സ്ക്രീൻ ആവശ്യമായ ആപുകൾ കാട്ടുക</string>
     <string name="panic_hide_warning_title">പൂർവ്വസ്‌ഥിതിയിലാക്കാൻ ഓർത്തുവെക്കുക</string>
-    <string name="panic_hide_warning_message">"അത്യാഹിതം ഉണ്ടാകുമ്പോൾ ഇത്  %1$s നേ ലോഞ്ചറിൽ നിന്നും നീക്കം ചെയ്യും. പിന്നീട് %3$s അനുകരണ ആപ്പിൽ \"%2$d\" എന്ന്  അടിച്ചാൽ മാത്രമേ ഇത് തിരിച്ചുകിട്ടൂ."</string>
+    <string name="panic_hide_warning_message">അത്യാഹിതം ഉണ്ടാകുമ്പോൾ ഇത്  %1$s നേ ലോഞ്ചറിൽ നിന്നും നീക്കം ചെയ്യും. പിന്നീട് %3$s അനുകരണ ആപ്പിൽ \"%2$d\" എന്ന്  അടിച്ചാൽ മാത്രമേ ഇത് തിരിച്ചുകിട്ടൂ.</string>
     <string name="hiding_calculator">ക്യാൽകുലേറ്റർ</string>
     <string name="hiding_dialog_title">%s ഇപ്പോൾ മറക്കുക</string>
     <string name="hiding_dialog_message">ലോഞ്ചറിൽ നിന്നും %1$s നീക്കം ചെയ്യണോ\? %3$s അനുകരണ ആപ്പിൽ \"%2$d\" അടിച്ചാൽ മാത്രമേ ഇനി തിരിച്ചുകിട്ടൂ.</string>
@@ -463,7 +463,7 @@
     <string name="app_repository">ശേഖരണം : %1$s</string>
     <string name="scan_removable_storage_title">ബാഹ്യമായ സ്റ്റോറേജിൽ സൂക്ഷ്മപരിശോധന നടത്തുക</string>
     <string name="scan_removable_storage_summary">ആപ്പ് ശേഖരണ വിവരം ബാഹ്യമായ എസ.ഡി കാർഡിലോ യു.എസ്‌.ബി ഡ്രൈവുകളിലോ തിരയുക</string>
-    <string name="nearby_splash__read_external_storage">"ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും  എസ്‌.ഡി കാർഡിൽ തിരയുക."</string>
+    <string name="nearby_splash__read_external_storage">ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും  എസ്‌.ഡി കാർഡിൽ തിരയുക.</string>
     <string name="nearby_splash__request_permission">ശ്രമിക്കുക</string>
     <string name="swap_toast_using_path">%1$s ഉപയോഗിക്കുന്നു</string>
     <string name="swap_toast_not_removable_storage">നിങ്ങൾ തിരഞ്ഞെടുത്തത്, ഒരു ബാഹ്യമായ സ്റ്റോറേജുമായും ചേരുന്നില്ല, ഒന്നുകൂടി ശ്രമിക്കുക !</string>

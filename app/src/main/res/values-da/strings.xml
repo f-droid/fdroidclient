@@ -390,7 +390,7 @@
     <string name="repo_exists_add_mirror">Dette er en kopi af %1$s, tilføj som et spejl?</string>
     <string name="antidisabledalgorithmlist">Denne app har en svag sikkerhedssignatur</string>
     <string name="antiknownvulnlist">Denne app indeholder en kendt sårbarhed</string>
-    <string name="prompt_to_send_crash_reports">"Spørg for at sende  nedbrud rapporter"</string>
+    <string name="prompt_to_send_crash_reports">Spørg for at sende  nedbrud rapporter</string>
     <string name="hide_all_notifications">Skjul alle meddelelser</string>
     <string name="send_install_history">Send installationshistorik</string>
     <string name="send_history_csv">%s installationshistorik som CSV-fil</string>
