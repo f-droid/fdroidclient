@@ -3,7 +3,6 @@
 # cherry-pick complete translations from weblate
 
 import git
-import json
 import os
 import re
 import requests
