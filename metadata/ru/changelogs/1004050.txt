@@ -1,0 +1,11 @@
+* Серьезно переработан список Версии в разделе О приложении, множественные улучшения UI, спасибо новому участнику @wsdfhjxc
+
+* Исправлена навигация с помощью клавиатуры/геймпада во многих разделах, спасибо @doeffinger
+
+* Показ кнопки "Открыть", когда носитель установлен и доступен* Add Share button to "Installed Apps" to export CSV list
+
+* Add clickable list of APKs to the swap HTML index page
+
+* Retry index downloads from mirrors
+
+* Fix "Send F-Droid via Bluetooth" on recent Android versions
