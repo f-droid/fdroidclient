@@ -1,0 +1,1 @@
+* USB-OTG-Flash-Laufwerke können als Direktpaketquellen und -spiegelserver dienen
