@@ -1,0 +1,6 @@
+* Generalüberholung der Tausch-UI, zur Vorbereitung auf Neuprogrammierung
+* „Rückgängig“-Anzeige, nach Entfernen von Elementen aus der Registerkarte „Aufgaben“ (danke @Hocuri!)
+* Durch falsche Zeitzonen verursachte Probleme der Anzeige „Neueste“ behoben  #1757
+* Alle unwichtigen Abstürze in Hintergrunddiensten ignorieren
+* neue Panikreaktionen hinzufügen: App deinstalliert und setzt Repos auf den Standard zurück
+* USB-OTG-Flash-Laufwerke können als Direktpaketquellen und -spiegelserver dienen

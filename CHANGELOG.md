@@ -1,3 +1,9 @@
+### 1.7 (2019-07-06)
+
+* fix crash in Panic Settings
+
+* catch random crashes related to WifiApControl
+
 ### 1.7-alpha2 (2019-06-18)
 
 * USB OTG flash drives can be used as nearby repos and mirrors 
