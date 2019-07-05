@@ -118,9 +118,7 @@
     <string name="app_incompatible">Nekompatibilní</string>
     <string name="app_inst_known_source">Nainstalováno (z %s)</string>
     <string name="app_inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
-
     <string name="links">Odkazy</string>
-
     <string name="back">Zpět</string>
     <string name="bluetooth_activity_not_found">Nerozpoznána žádná Bluetooth metoda přenosu, nějakou vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
@@ -128,34 +126,26 @@
     <string name="repo_exists_enable">%1$s je už nastavené, potvrďte že chcete znovu začít používat.</string>
     <string name="invalid_url">Toto není validní URL.</string>
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
-
     <string name="menu_changelog">Seznam změn</string>
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
     <string name="antinonfreenetlist">Tato aplikace propaguje nesvobodné síťové služby</string>
     <string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
-
     <string name="appcompatibility">Kompatibilita aplikace</string>
     <string name="display">Zobrazení</string>
-
     <string name="show_incompat_versions_on">Zobrazit verze aplikace které jsou nekompatibilní s tímto zařízením</string>
     <string name="proxy_port_summary">Číslo portu vaší proxy (např. 8118)</string>
-
     <string name="status_download">Stahování\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="app_name">F-Droid</string>
-
     <string name="unstable_updates">Nestabilní aktualizace</string>
     <string name="unstable_updates_summary">Doporučovat aktualizace na nestabilní verze</string>
     <string name="more">Více</string>
     <string name="less">Méně</string>
-
     <string name="bad_fingerprint">Špatný fingerprint</string>
     <string name="menu_settings">Nastavení</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="status_download_unknown_size">Stahování\n%2$s z\n%1$s</string>
     <string name="update_notification_title">Aktualizace repozitářů</string>
     <string name="status_processing_xml_percent">Zpracovávání %2$s / %3$s (%4$d%%) z %1$s</string>
@@ -173,18 +163,14 @@
     <string name="login_password">Heslo</string>
     <string name="repo_edit_credentials">Změnit heslo</string>
     <string name="repo_error_empty_username">Uživatelské jméno nevyplněno, přihlašovací údaje nebyly změněny</string>
-
     <string name="about_license">Licence</string>
-
     <string name="not_on_same_wifi">Tento přístroj není na stejné wifi síti jako právě přidaný místní repozitář! Zkuste
         se připojit k této síti: %s
     </string>
     <string name="pref_language">Jazyk</string>
     <string name="pref_language_default">Systémové výchozí</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
-
     <string name="category_Connectivity">Připojení</string>
     <string name="category_Graphics">Grafika</string>
     <string name="category_Money">Peníze</string>
@@ -192,13 +178,11 @@
     <string name="category_Theming">Vzhledy</string>
     <string name="category_Time">Čas</string>
     <string name="category_Writing">Psaní</string>
-
     <string name="empty_installed_app_list">Žádné instalované aplikace.\n\nNa tomto přístoji jsou aplikace, které nejsou
         dostupné v F-Droid. To může být způsobeno zastaralým seznamem repozitářů nebo aplikace nejsou v repozitářích
         vůbec dostupné.
     </string>
     <string name="empty_can_update_app_list">Gratulujeme!\nVšechny nainstalované aplikace jsou aktuální.</string>
-
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
@@ -224,9 +208,7 @@
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>
     <string name="loading">Načítání…</string>
-
     <string name="install_confirm">vyžaduje přístup k</string>
-
     <string name="swap_nfc_title">Ťuknout pro výměnu</string>
     <string name="swap_switch_to_wifi">Dotykem přepnout síť Wi-Fi</string>
     <string name="newPerms">Nová</string>
@@ -235,11 +217,9 @@
     <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
     <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>
     <string name="download_error">Stahování se nezdařilo!</string>
-
     <string name="perms_new_perm_prefix">Nová:</string>
     <string name="perms_description_app">Poskytováno %1$s.</string>
     <string name="downloading">Stahování…</string>
-
     <string name="interval_never">Žádné automatické aktualizace aplikace</string>
     <string name="interval_1h">Zjišťovat aktualizace každou hodinu</string>
     <string name="interval_4h">Zjišťovat aktualizace každé 4 hodiny</string>
@@ -247,7 +227,6 @@
     <string name="interval_1d">Zjišťovat aktualizace každý den</string>
     <string name="interval_1w">Zjišťovat aktualizace každý týden</string>
     <string name="interval_2w">Zjišťovat aktualizace  každé 2 týdny</string>
-
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
     <string name="theme_night">Noc</string>
@@ -257,19 +236,15 @@
     <string name="cache_downloaded">Uchovat balíčky</string>
     <string name="menu_email">Odeslat email autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
-
     <string name="status_inserting_apps">Ukládání podrobností o aplikaci</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
-
     <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, přibližte svá zařízení k sobě.
     </string>
     <string name="update_auto_download">Stahovat aktualizace automaticky</string>
     <string name="update_auto_download_summary">Aktualizace jsou stahovány automaticky a jste upozorněni na možnost je nainstalovat</string>
     <string name="repo_provider">Repozitář: %s</string>
-
     <string name="useTor">Použít Tor</string>
     <string name="useTorSummary">Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot</string>
-
     <string name="swap_join_same_wifi_desc">Pro kopírování po Wi-Fi musí být oba na stejné síti. Pokud nemáte přístup ke
         stejné síti, může jeden z vás vytvořit vlastní Wi-Fi hotspot.
     </string>
@@ -298,18 +273,14 @@
     <string name="download_pending">Čekání na spuštění stahování…</string>
     <string name="install_error_notify_title">Chyba instalace %s</string>
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>
-
-
     <string name="installing">Instalace…</string>
     <string name="uninstalling">Odinstalace…</string>
-
     <string name="keep_hour">1 hodina</string>
     <string name="keep_day">1 den</string>
     <string name="keep_week">1 týden</string>
     <string name="keep_month">1 měsíc</string>
     <string name="keep_year">1 rok</string>
     <string name="keep_forever">navždy</string>
-
     <string name="crash_dialog_title">F-Droid neočekávaně skončil</string>
     <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. Odeslat vývojářům podrobnosti e-mailem a pomoci tak s nápravou?</string>
     <string name="crash_dialog_comment_prompt">Zde můžete přidat další informace a komentáře:</string>
@@ -321,16 +292,12 @@
     <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
     <string name="app_details_donate_prompt">%1$s vytvořil %2$s. Kup mu kávu!</string>
-
     <string name="app_version_x_available">Je dostupná verze %1$s</string>
     <string name="app_version_x_installed">Verze %1$s</string>
     <string name="clear_search">Vymazat hledání</string>
-
     <string name="repositories_summary">Přidat další zdroje aplikací</string>
     <string name="main_menu__latest_apps">Nejnovější</string>
     <string name="main_menu__categories">Kategorie</string>
-
-
     <string name="notification_title_single_update_available">Je k dispozici aktualizace</string>
     <string name="notification_title_single_ready_to_install">Připraveno k instalaci</string>
     <string name="notification_title_single_ready_to_install_update">Aktualizace připravena k instalaci</string>
@@ -350,29 +317,19 @@
     <string name="notification_action_update">Aktualizovat</string>
     <string name="notification_action_cancel">Storno</string>
     <string name="notification_action_install">Nainstalovat</string>
-
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
     <string name="app_new">Nové</string>
-
     <string name="installed_apps__activity_title">Nainstalované aplikace</string>
     <string name="installed_app__updates_ignored">Ignorované aktualizace</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aktualizace na verzi %1$s jsou ignorovány</string>
-
     <string name="main_menu__swap_nearby">Nablízku</string>
-
     <string name="preference_category__my_apps">Moje aplikace</string>
     <string name="preference_manage_installed_apps">Spravovat nainstalované aplikace</string>
-
-
     <string name="tts_category_name">Kategorie %1$s</string>
-
     <string name="app__install_downloaded_update">Aktualizovat</string>
-
     <string name="app_list__name__downloading_in_progress">Stahování %1$s</string>
-
     <string name="updates__tts__download_app">Stáhnout</string>
     <string name="update_all">Aktualizovat vše</string>
-
     <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>
     <string name="force_old_index">vynutit původní formát rejstříku</string>
@@ -382,20 +339,16 @@
     <string name="app_details__no_versions__no_compatible_signatures">Není k dispozici žádná veze s kompatibilním podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Není k dispozici verze kompatibilní s tímto zařízením</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím služby Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
-
     <string name="app__tts__cancel_download">Zrušit stahování</string>
     <string name="app_installed_media">Soubor nainstalován do %s</string>
     <string name="app_permission_storage">Pro instalaci tohoto do úložiště potřebuje F-Droid oprávnění. Umožněte to na následující obrazovce a instalace bude moci pokračovat.</string>
-
     <string name="app_list_download_ready">Staženo, připraveno k instalaci</string>
     <string name="app_list__dismiss_app_update">Aktualizace ignorována</string>
     <string name="app_list__dismiss_vulnerable_app">Zranitelnost ignorována</string>
     <string name="app_list__dismiss_downloading_app">Stahování zrušeno</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci okamžitě odinstalovat.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">V %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci aktualizovat na nejnovější verzi.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorovat</string>
-
     <string name="updates__hide_updateable_apps">Skrýt aplikace</string>
     <string name="updates__show_updateable_apps">Zobrazit aplikace</string>
     <plurals name="updates__download_updates_for_apps">
@@ -403,17 +356,13 @@
         <item quantity="few">Stáhnout aktualizace pro %1$d aplikace.</item>
         <item quantity="other">Stáhnout aktualizace pro %1$d aplikací.</item>
     </plurals>
-
     <string name="menu_video">Video</string>
     <string name="menu_license">Licence: %s</string>
     <string name="latest__empty_state__no_recent_apps">Nebyly nalezeny žádné nedávné aplikace</string>
     <string name="latest__empty_state__never_updated">Jakmile bude aktualizován seznam aplikací, nejnovější aplikace by se mely zobrazit zde</string>
     <string name="latest__empty_state__no_enabled_repos">Jakmile zapnete repozitář a necháte aktualizovat, měly by se zde zobrazit nejnovější aplikace</string>
-
     <string name="categories__empty_state__no_categories">Žádné kategorie k zobrazení</string>
-
     <string name="details_new_in_version">Novinky ve verzi %s</string>
-
     <string name="antifeatureswarning">Tato aplikace má funkce které se vám možná nebudou líbit.</string>
     <string name="antifeatures">Anti-funkce</string>
     <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
@@ -423,11 +372,9 @@
         <item quantity="few">Zobrazit oba %d</item>
         <item quantity="other">Zobrazit všech %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">Není k dispozici připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
     <string name="nearby_splash__find_people_button">Najít zařízení poblíž</string>
     <string name="nearby_splash__both_parties_need_fdroid">Je třeba, aby obě strany používaly %1$s aby bylo možné využít funkce poblíž.</string>
-
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d další…</item>
@@ -449,7 +396,6 @@
         <item quantity="few">Zobrazit %1$d aplikace v %2$s kategoriích</item>
         <item quantity="other">Zobrazit %1$d aplikací v %2$s kategoriích</item>
     </plurals>
-
     <string name="details_last_updated_today">Aktualizováno dnes</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Aktualizováno před %1$d dnem</item>
@@ -474,26 +420,22 @@
     <string name="privacy">Soukromí</string>
     <string name="preventScreenshots_title">Zabránit pořizování snímků obrazovky</string>
     <string name="preventScreenshots_summary">Blokuje pořizování snímků obrazovky a skrývá aplikace v seznamu nedávno použitých</string>
-
     <string name="panic_app_setting_title">Aplikace Panické tlačítko</string>
     <string name="panic_app_unknown_app">neznámá aplikace</string>
     <string name="panic_app_setting_summary">Nebyla nastavena žádná aplikace</string>
     <string name="panic_app_setting_none">Žádné</string>
     <string name="panic_app_dialog_title">Potvrdit Panickou aplikaci</string>
     <string name="allow">Umožnit</string>
-
     <string name="panic_settings">Nastavení tlačítka paniky</string>
     <string name="panic_settings_summary">Akce které podniknout v případě nouze</string>
     <string name="panic_exit_title">Ukončit aplikaci</string>
-    <string name="panic_exit_summary">Aplikace bude ukončena</string>
+    <string name="panic_exit_summary">Tato aplikace bude ukončena</string>
     <string name="panic_destructive_actions">Destruktivní akce</string>
     <string name="panic_hide_title">Skrýt %s</string>
     <string name="panic_hide_summary">Aplikace se skryje</string>
-
     <string name="panic_app_dialog_message">Opravdu chcete umožnit %1$s spouštět destruktivní akce panického tlačítka?</string>
     <string name="panic_hide_warning_title">Zapamatovat si jak obnovit</string>
     <string name="panic_hide_warning_message">V panické události, toto odebere  %1$s ze spouštěče. Pouze zadání „%2$d“ v nastrčené aplikaci %3$s ho může obnovit.</string>
-
     <string name="hiding_calculator">Kalkulačka</string>
     <string name="hiding_dialog_title">Skrýt %s nyní</string>
     <string name="hiding_dialog_message">Opravdu chcete odebrat %1$s ze spouštěče? Pouze zadání „%2$d“ v nastrčené aplikaci %3$s ho může obnovit.</string>
@@ -501,15 +443,12 @@
     <string name="hide_on_long_search_press_title">Skrýt tlačítko vyhledávání</string>
     <string name="hide_on_long_search_press_summary">Dlouhý stisk tlačítka hledání skryje aplikaci</string>
     <string name="sort_search">Setřídit hledání</string>
-
     <string name="menu_liberapay">Liberapay</string>
-
     <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
     <string name="show_anti_feature_apps">Zahrnout aplikace s funkcemi které nejsou v zájmu uživatele</string>
     <string name="show_anti_feature_apps_on">Zobrazit aplikace které vyžadují funkce které nejsou v zájmu uživatele</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
     <string name="force_touch_apps_on">Zobrazit aplikace které vyžadují dotykovou obrazovku i když toto zařízení takovou není vybaveno</string>
-
     <string name="repo_add_mirror">Přidat zrcadlo (mirror)</string>
     <string name="repo_official_mirrors">Oficiální zrcadla</string>
     <string name="repo_user_mirrors">Uživatelem určená zrcadla</string>
@@ -520,7 +459,6 @@
     <string name="swap_toast_invalid_url">Neplatná URL adresa pro prohození: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi přístupový bod zapnut</string>
     <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout Wi-Fi přístupový bod!</string>
-
     <string name="over_wifi">Přes Wi-Fi</string>
     <string name="over_data">Přes mobilní data</string>
     <string name="over_network_always_summary">Pokud je k dispozici, vždy použít toto připojení</string>
@@ -528,7 +466,6 @@
     <string name="over_network_never_summary">Přes toto připojení nikdy nic nestahovat</string>
     <string name="antidisabledalgorithmlist">Tato aplikace má slabý bezpečnostní podpis</string>
     <string name="antiknownvulnlist">Tato aplikace má známou zranitelnost v zabezpečení</string>
-
     <string name="prompt_to_send_crash_reports">Dotázat se na odeslání hlášení o pádu</string>
     <string name="prompt_to_send_crash_reports_summary">Shromáždí důležitá data o pádu aplikace a před odesláním vývojářúm se dotáže</string>
     <string name="hide_all_notifications">Skrýt všechna upozornění</string>
@@ -542,14 +479,11 @@
     <string name="allow_push_requests">Umožnit repozitářům instalovat/odinstalovat aplikace</string>
     <string name="allow_push_requests_summary">Metadata repozitáře mohou obsahovat push požadavky na instalaci nebo odinstalaci aplikací</string>
     <string name="updates_disabled_by_settings">Veškeré aktualizace vypnuty kvůli nastavením dat/WiFi</string>
-
     <string name="antinosourcesince">Zdrojový kód už není k dispozici, aktualizace nejsou možné.</string>
-
     <string name="share_repository">Sdílet repozitář</string>
     <string name="about_forum">Diskuzní fórum podpory</string>
     <string name="app_suggested">Doporučeno</string>
     <string name="app_size">Velikost: %1$s</string>
-
     <string name="send_installed_apps">Sdílet instalátory nainstalovaných aplikací</string>
     <string name="send_installed_apps_csv">Seznam aplikací nainstalovaných prostřednictvím F-Droid v podobě CSV souboru</string>
     <string name="menu_open">Otevřít</string>
@@ -566,4 +500,6 @@
     <string name="swap_toast_not_removable_storage">Vybraná složka neodpovídá žádným odpojitelným úložištím, zkuste to znovu!</string>
     <string name="swap_toast_find_removeable_storage">Vyberte vaši SD kartu nebo USB flash disk</string>
     <string name="main_menu__updates">Aktualizace</string>
+    <string name="try_again">Zkusit znovu</string>
+    <string name="panic_will_be_wiped">Bude odinstalováno a veškerá data budou smazána</string>
 </resources>

@@ -502,4 +502,5 @@
     <string name="panic_add_apps_to_uninstall">Ajouter des applications à désinstaller</string>
     <string name="swap_blank_wifi_ssid">(vide)</string>
     <string name="swap_hidden_wifi_ssid">(masqué)</string>
+    <string name="menu_select_for_wipe">Sélectionner pour suppression</string>
 </resources>

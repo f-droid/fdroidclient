@@ -1,0 +1,11 @@
+* Handle implied READ_EXTERNAL_STORAGE permissions, 在使用特权安装时触发权限提示 (#1702)
+
+* 索引数据变 sanetized 以减少来自服务器的可能威胁
+
+* "读取超时" 在读取缓慢时触发镜像使用
+
+* 修复那些不使用 Wi-Fi 就丢失的图标 (#1592)
+
+* 为 Updates pref 和 Updates 选项卡使用单独的标题，以帮助翻译
+
+* UI修复来自 @ConnyDuck (#1636, #1618)

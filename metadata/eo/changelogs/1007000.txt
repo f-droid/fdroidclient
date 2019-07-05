@@ -1,0 +1,6 @@
+* signife rekonstruita fasado de “proksima interŝanĝo”
+* montri “malfari” post formovi elementojn en la langeto de ĝisdatigoj (danke al @Hocuri)
+* riparita pritrakto de ETag dum konekti al spegul‑serviloj NGINX (#1737)
+* riparita problemo pri vidigi la langeton “novaj” kaŭzita pro malĝusta horzono (#1757)
+* ignori ĉiujn malgravajn paneojn de fonaj servoj
+* ne uzi la privilegian aldonaĵon, se ĝi estas malŝaltita en agordoj

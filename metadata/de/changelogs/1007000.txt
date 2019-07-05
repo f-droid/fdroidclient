@@ -1,11 +1,11 @@
-* Generalüberholung der Swap-UI, um sich auf das Umschreiben von Innereien vorzubereiten
+* Generalüberholung der Tausch-UI, zur Vorbereitung auf Neuprogrammierung 
 
-* zeige "rückgängig", nachdem Elemente aus der Registerkarte "Updates" entfernt wurde (danke @Hocuri!)
+* „Rückgängig“-Anzeige, nach Entfernen von Elementen aus der Registerkarte „Aufgaben“ (danke @Hocuri!)
 
-* behebt ETag-Handling beim Verbinden mit nginx-Spiegeln #1737
+* ETag-Handling beim Verbinden mit NGINX-Spiegeln korrigiert #1737
 
-* behebt Probleme mit der "neuesten" Anzeige, von Zeitzonen #1757 verursacht
+* Durch falsche Zeitzonen verursachte Probleme der Anzeige „Neueste“ behoben  #1757 
 
-* ignorieren aller unwichtigen Abstürze in Hintergrunddiensten
+* Alle unwichtigen Abstürze in Hintergrunddiensten ignorieren 
 
-* privilegierte Erweiterung nicht verwenden, wenn sie in den Einstellungen deaktiviert wurde
+* Rechteerweiterung nicht verwenden, wenn sie in den Einstellungen deaktiviert wurde

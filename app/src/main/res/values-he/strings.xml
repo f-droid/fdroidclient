@@ -241,7 +241,7 @@
     <string name="login_name">שם משתמש</string>
     <string name="login_password">סיסמה</string>
     <string name="repo_edit_credentials">החלפת סיסמה</string>
-    <string name="about_license">רשיון</string>
+    <string name="about_license">רישיון</string>
     <string name="status_inserting_apps">פרטי היישומון נשמרים</string>
     <string name="repo_error_empty_username">שם המשתמש ריק, פרטי הכניסה לא שונו</string>
     <string name="empty_search_available_app_list">אין אפליקציות תואמות זמינות.</string>

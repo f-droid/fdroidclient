@@ -334,7 +334,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet\? Obtenha as aplicações através das pessoas perto de si!</string>
     <string name="nearby_splash__find_people_button">Procurar pessoas</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
-    <string name="nearby_splash__read_external_storage">Pode-se usar cartões SD para trocar!</string>
+    <string name="nearby_splash__read_external_storage">Pesquisar cartão SD por repos e espelhos.</string>
     <string name="nearby_splash__request_permission">Experimente</string>
     <string name="swap_nfc_title">Toque para trocar</string>
     <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, juntem os vossos dispositivos.</string>
@@ -491,4 +491,5 @@
     <string name="disabled">Desativado</string>
     <string name="swap_error_cannot_start_bluetooth">Não é possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">O Próximo foi fechado desde que estava ocioso.</string>
+    <string name="nearby_splash__document_tree">Pesquisar USB OTG por repos e espelhos.</string>
 </resources>

@@ -1,0 +1,11 @@
+* Takas arayüzünde büyük değişiklikler, yeniden yazılmaya hazırlanılıyor
+
+* Öğeleri "Güncellemeler" sekmesinden kaydırdıktan sonra "Geri Al"ı göster. (Teşekkürler @Hocuri!)
+
+* NGINX yansılarına bağlanırken Etag kullanımı düzeltildi. #1737
+
+* "En Yeni" ekranındaki zaman dilimlerinin kötü yönetilmesinden dolayı meydana gelen hata düzeltildi. #1757
+
+* Arka plandaki tüm önemsiz çökemeleri göz ardı et
+
+*"Ayarlar" ekranında kapatıldıysa Ayrıcalıklı Uzantıları kullanmayın

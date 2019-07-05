@@ -1,0 +1,7 @@
+* Impedisce a HTTP ETag di essere usato come un cookie tracciante
+
+* Migliorato il layout degli screenshot
+
+* Pulizia corretta dei file temporanei e della cache
+
+* Correzioni modalità scura

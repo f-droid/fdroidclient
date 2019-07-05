@@ -489,4 +489,15 @@
     <string name="panic_apps_to_uninstall">Aplicații de dezinstalat ce vor avea datele șterse</string>
     <string name="panic_add_apps_to_uninstall">Adaugă aplicații de dezinstalat și șters date</string>
     <string name="panic_reset_repos_title">Resetare depozite</string>
+    <string name="panic_reset_repos_summary">Forțează resetarea listei de depozite</string>
+    <string name="swap_visible_hotspot">Vizibil prin hotspot</string>
+    <string name="swap_blank_wifi_ssid">(gol)</string>
+    <string name="swap_hidden_wifi_ssid">(ascuns)</string>
+    <string name="swap_setting_up_hotspot">Configurare hotspot…</string>
+    <string name="swap_stopping_hotspot">Închidere hostspot…</string>
+    <string name="swap_starting">Pornire…</string>
+    <string name="swap_stopping">Oprire…</string>
+    <string name="disabled">Dezactivat</string>
+    <string name="swap_error_cannot_start_bluetooth">Nu s-a putut activa Bluetooth!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Schimbul a fost oprit deoarece era nefolosit.</string>
 </resources>

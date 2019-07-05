@@ -1,0 +1,3 @@
+* Grandi miglioramenti delle prestazioni dell'interfaccia, specialmente con l'archivio attivato
+
+* Risolti bug che provocavano crash

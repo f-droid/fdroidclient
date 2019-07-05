@@ -1,12 +1,12 @@
 * Seneste-fanen fremhever programmer med beskrivelser, oversettelser, skjermavbildninger
 
-* Automatisk nedlasting fra speil, framskynder nedlastinger og redusere last på f-droid.org
+* Auto-nedlasting fra speil, framskynder nedlastinger og redusere last på f-droid.org
 
 * Skru av speil som bruker nye brytere i RepoDetails (#1696)
 
 * Mer effektiv nedlastingshurtiglagring (per pakkebrønn, på tvers av tjenere #1708)
 
-* Fiks for installasjoner som krever uj
+* Ukjente kilder med priviligert tillegg virker
 
 * Fiks manglende ikoner for bruk av annet enn Wi-Fi (#1592)
 

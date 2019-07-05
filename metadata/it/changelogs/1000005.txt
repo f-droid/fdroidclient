@@ -1,0 +1,3 @@
+* Risolto un bug che impediva alle traduzioni di apparire su Android >= 7.0
+
+* Risolto un crash dell'upgrade del DB 1.0-alpha3 → 1.0-alpha4 #1181

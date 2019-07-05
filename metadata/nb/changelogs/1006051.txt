@@ -1,0 +1,3 @@
+* Oppdaterte oversettelser
+* Fikset problem med knappestørrelser #1678
+* Stoppet tilfeldige bakgrunnskræsj

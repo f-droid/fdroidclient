@@ -1,0 +1,7 @@
+* Pulsanti aggiunti a RepoDetails per disattivare i mirror (#1696)
+
+* Scelta di mirror casuali per scaricare ogni pacchetto/APK
+
+* Tutti i download di APK in cache per-repo, non per-mirror
+
+* Gestione ETags Apache ed NGINX quando si controlla se l'indice è aggiornato (#1708)

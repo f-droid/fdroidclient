@@ -236,7 +236,7 @@
     <string name="empty_search_available_app_list">没有符合条件的应用程序可用。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>
     <string name="menu_email">发邮件给作者</string>
-    <string name="antinonfreeassetslist">该应用包含非自由资产</string>
+    <string name="antinonfreeassetslist">该应用包含非自由资源</string>
     <string name="crash_dialog_title">F-Droid 已停止运行</string>
     <string name="crash_dialog_text">本应用因意外问题而停止运行。您愿意通过电子邮件向我们提供细节信息，以协助修复此问题吗？</string>
     <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
@@ -447,7 +447,7 @@
     <string name="scan_removable_storage_title">扫描可移动存储器</string>
     <string name="scan_removable_storage_toast">正在扫描 %s…</string>
     <string name="scan_removable_storage_summary">寻找可移动存储设备上的存储库，比如 SD 卡和 USB 闪存驱动器</string>
-    <string name="nearby_splash__read_external_storage">SD 卡可以用来交换！</string>
+    <string name="nearby_splash__read_external_storage">搜索 SD 卡用于存储库和镜像。</string>
     <string name="nearby_splash__request_permission">试试看</string>
     <string name="not_visible_nearby">附近功能未启用</string>
     <string name="not_visible_nearby_description">在与附近的设备交换之前，使您的设备可见。</string>
@@ -475,4 +475,5 @@
     <string name="disabled">禁用</string>
     <string name="swap_error_cannot_start_bluetooth">无法启动蓝牙！</string>
     <string name="swap_toast_closing_nearby_after_timeout">附近因闲置而关闭。</string>
+    <string name="nearby_splash__document_tree">搜索 USB OTG 用于存储库和镜像。</string>
 </resources>

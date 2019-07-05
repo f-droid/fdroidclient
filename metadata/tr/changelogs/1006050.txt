@@ -1,0 +1,5 @@
+* En yeni sekmesinde, şimdi öne çıkarılan uygulamaların açıklamaları, çevirileri ve ekran görüntüleri gösteriliyor
+* f-droid.org'un yükünü azaltmak ve indirmeleri hızlandırmak için yansılardan otomatik indirme
+* Depo detaylarından yeni düğmeleri kullanarak yansıları devre dışı bırak
+* Daha verimli indirme önbelleklemesi (Her depoya karşılık farklı bir web sunucusu #1708)
+* Ayrıcalıklı Eklentili gerektiren bilinmeyen kaynak yüklemeleri düzeltildi.  (#1702)

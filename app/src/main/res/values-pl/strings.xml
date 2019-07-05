@@ -348,7 +348,7 @@
         <item quantity="many">Pobierz aktualizacje dla %1$d aplikacji.</item>
         <item quantity="other">Pobierz aktualizacje dla %1$d aplikacji.</item>
     </plurals>
-    <string name="details_new_in_version">Nowe w wersji %s</string>
+    <string name="details_new_in_version">Co nowego w wersji %s</string>
     <string name="antifeatureswarning">Ta aplikacja zawiera funkcje, których możesz nie lubić.</string>
     <string name="antifeatures">Niepożądane funkcje</string>
     <string name="details_last_updated_today">Uaktualniono dzisiaj</string>

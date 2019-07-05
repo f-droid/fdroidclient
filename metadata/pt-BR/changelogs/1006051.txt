@@ -1,0 +1,3 @@
+* Traduções atualizadas
+* Corrigido tamanho do botão, issue #1678
+* Cessados os travamentos aleatórios de segundo plano

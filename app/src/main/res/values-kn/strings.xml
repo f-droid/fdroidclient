@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
-
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಅನುಸ್ಥಾಪಿಸು</string>
-
     <string name="notification_title_summary_install_error">ಅನುಸ್ಥಾಪನೆ ವಿಫಲವಾಗಿದೆ</string>
     <string name="notification_title_summary_installing">ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="theme_night">ರಾತ್ರಿ</string>
-
     <string name="keep_year">೧ ವರ್ಷ</string>
     <string name="keep_month">೧ ತಿಂಗಳು</string>
     <string name="keep_hour">೧ ಗಂಟೆ</string>
@@ -20,7 +17,6 @@
     <string name="interval_1d">ಪ್ರತಿದಿನ</string>
     <string name="interval_1w">ಪ್ರತಿವಾರ</string>
     <string name="interval_2w">ಪ್ರತಿ ೨ ವಾರಕ್ಕೊಮ್ಮೆ</string>
-
     <string name="installing">ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="perms_new_perm_prefix">ಹೊಸತು:</string>
     <string name="allPerms">ಎಲ್ಲವೂ</string>
@@ -29,7 +25,7 @@
     <string name="swap_dont_show_again">ಇದನ್ನು ಮತ್ತೆ ತೋರಿಸಬೇಡ</string>
     <string name="open_qr_code_scanner">ಕ್ಯುಆರ್ ಸ್ಕ್ಯಾನರ್ ತೆರೆ</string>
     <string name="swap_welcome">ಎಫ್-ಡ್ರಾಯ್ಡ್ ಗೆ ಸುಸ್ವಾಗತ!</string>
-    <string name="nearby_splash__find_people_button">ನನ್ನ ಹತ್ತಿರವಿರುವ ಜನರನ್ನು ಹುಡುಕು</string>
+    <string name="nearby_splash__find_people_button">Найти людей поблизости</string>
     <string name="category_Time">ಸಮಯ</string>
     <string name="category_Security">ಸುರಕ್ಷತೆ</string>
     <string name="category_Sports_Health">ಕ್ರೀಡೆ &amp; ಆರೋಗ್ಯ</string>
@@ -41,9 +37,7 @@
     <string name="repo_url">ವಿಳಾಸ</string>
     <string name="next">ಮುಂದೆ</string>
     <string name="details_new_in_version">%s ನೇ ಆವೃತ್ತಿಯಲ್ಲಿ ಹೊಸತು</string>
-
     <string name="main_menu__swap_nearby">ಹತ್ತಿರವೇನಿದೆ</string>
-
     <string name="main_menu__latest_apps">ಇತ್ತೀಚಿನ</string>
     <string name="menu_donate">ದೇಣಿಗೆ</string>
     <string name="menu_website">ಜಾಲತಾಣ</string>
@@ -56,12 +50,10 @@
     <string name="versions">ಆವೃತ್ತಿಗಳು</string>
     <string name="more">ಹೆಚ್ಚು</string>
     <string name="less">ಕಡಿಮೆ</string>
-
     <string name="repo_add_add">ಸೇರಿಸಿ</string>
     <string name="yes">ಹೌದು</string>
     <string name="no">ಇಲ್ಲ</string>
     <string name="ok">ಸರಿ</string>
-
     <string name="app_version_x_installed">%1$s ನೆಯ ಆವೃತ್ತಿ</string>
     <string name="app_new">ಹೊಸತು</string>
     <string name="added_on">%s ನಂದು ಸೇರಿಸಲಾಯಿತು</string>
@@ -74,12 +66,10 @@
     <string name="about_version">ಆವೃತ್ತಿ</string>
     <string name="about_site">ಜಾಲತಾಣ</string>
     <string name="about_license">ಪರವಾನಿಗೆ</string>
-
     <string name="login_name">ಬಳಕೆದಾರರ ಹೆಸರು</string>
     <string name="login_password">ಗುಪ್ತಪದ</string>
     <string name="repo_edit_credentials">ಗುಪ್ತಪದವನ್ನು ಬದಲಿಸಿ</string>
     <string name="other">ಇತರೆ</string>
-
     <string name="delete">ಅಳಿಸು</string>
     <string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
     <string name="updates">ವಿಭಾಗಗಳು</string>
@@ -88,7 +78,6 @@
     <string name="category_Reading">ಓದು</string>
     <string name="category_Science_Education">ವಿಜ್ಞಾನ ಮತ್ತು ಶಿಕ್ಷಣ</string>
     <string name="category_Writing">ಬರವಣಿಗೆ</string>
-
     <string name="newPerms">ನವೀನ</string>
     <string name="notification_action_cancel">ತ್ಯಜಿಸು</string>
     <string name="app_list__name__downloading_in_progress">%1$s ಇಳಿಸಲಾಗುತ್ತಿದೆ</string>

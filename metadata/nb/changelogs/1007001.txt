@@ -1,0 +1,5 @@
+* Omarbeidet bytting i nærheten ved bruk av enhetens nettverk i umiddelbar nærhet
+
+* Nye panikkhandlinger: Programavinstallasjon og tilbakestilling av pakkebrønner til forvalg
+
+* Fiks mellomtjenerstøtte ved første start

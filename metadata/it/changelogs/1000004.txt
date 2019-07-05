@@ -1,0 +1,7 @@
+* Aggiunte le gesture di scorrimento nel tab Aggiornamenti
+
+* Mostra avvisi con le azioni nel tab Aggiornamenti per KnownVulns
+
+* Traduzioni aggiornate
+
+* Correzioni interfaccia scura

@@ -1,0 +1,11 @@
+* Revisão geral da interface swap, preparando para reescrever
+
+* Mostrar "Desfazer" depois de remover itens da guia Atualizações (obrigado @Hocuri!)
+
+* Fixar o manuseamento da ETag ao ligar aos espelhos NGINX #1737
+
+* Corrigir problemas com o ecrã "Último" causado pelo mau tratamento dos fusos horários #1757
+
+* Ignorar todos os crashes sem importância em serviços de fundo
+
+* Não usar a Extensão Privilegiada se estiver desligado nas "Configurações"
