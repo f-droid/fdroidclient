@@ -1,0 +1,11 @@
+* Storoverhaling av I nærheten, i påvente av omskriving
+
+* Vis "Angre" etter å dra vekk elementer fra oppdateringsfane (takk @Hocuri!)
+
+* Fikset ETag-håndtering ved tilkobling til NGINX-speil #1737
+
+*Fikset feil med "Seneste"-visning, forårsaket av feilhåndtering av tidssoner #1757
+
+* Ignorer alle uviktige kræsj i bakgrunnstjenester
+
+* Ikke bruk Priviligert tillegg hvis det er skrudd av i innstillingene
