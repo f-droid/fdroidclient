@@ -491,7 +491,7 @@
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий: %1$s</string>
     <string name="scan_removable_storage_title">Сканирование съемного носителя</string>
-    <string name="nearby_splash__read_external_storage">Для обмена можно использовать SD-карты!</string>
+    <string name="nearby_splash__read_external_storage">Поиск на SD-карте репозиториев и зеркал.</string>
     <string name="nearby_splash__request_permission">Попробуй</string>
     <string name="not_visible_nearby">Режим \'Рядом\' не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с устройством находящимся поблизости, сделайте ваше устройство видимым.</string>
@@ -519,4 +519,5 @@
     <string name="disabled">Отключено</string>
     <string name="swap_error_cannot_start_bluetooth">Не удается запустить Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Рядом\' был отключен.</string>
+    <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
 </resources>

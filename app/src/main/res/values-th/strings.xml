@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="installIncompatible">โปรแกรมนี้เข้ากันไม่ได้กับเครื่องของคุณ, ดำเนินการติดตั้งต่อหรือไม่?</string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้การแบ่งปันโปรแกรมผ่าน NFC…</string>
     <string name="cache_downloaded">เก็บไฟล์โปรแกรมที่ดาวน์โหลดไว้</string>
     <string name="other">อื่นๆ</string>
-
     <string name="update_interval">อัพเดตข้อมูลอัตโนมัติทุกๆ</string>
     <string name="update_auto_download">ดาวน์โหลดอัพเดตโดยอัตโนมัติ</string>
     <string name="local_repo_name">ชื่อที่ตั้งให้แหล่งโปรแกรมจากเครื่องคุณ</string>
@@ -17,7 +15,6 @@
     <string name="repo_edit_credentials">เปลี่ยนรหัสผ่าน</string>
     <string name="app_details">รายละเอียดของโปรแกรม</string>
     <string name="no_such_app">ไม่พบโปรแกรมตามที่ระบุ</string>
-
     <string name="about_title">เกี่ยวกับ F-Droid</string>
     <string name="about_version">รุ่น</string>
     <string name="about_site">เว็บไซต์</string>
@@ -25,15 +22,12 @@
     <string name="about_license">สัญญาอนุญาต</string>
     <string name="main_menu__categories">หมวดหมู่</string>
     <string name="main_menu__swap_nearby">ใกล้เคียง</string>
-
     <string name="app_incompatible">เข้ากันไม่ได้</string>
     <string name="app_installed">ติดตั้งอยู่</string>
     <string name="app_not_installed">ไม่ได้ติดตั้ง</string>
     <string name="app_inst_known_source">ติดตั้งอยู่ (จาก %s)</string>
     <string name="app_inst_unknown_source">ติดตั้งอยู่ (มาจากแหล่งที่ไม่รู้จัก)</string>
-
     <string name="ok">ตกลง</string>
-
     <string name="yes">ใช่</string>
     <string name="no">ไม่</string>
     <string name="repo_add_title">เพิ่มแหล่งโปรแกรมใหม่</string>
@@ -41,22 +35,18 @@
     <string name="links">ลิงค์</string>
     <string name="more">เพิ่มเติม</string>
     <string name="less">ซ่อนรายละเอียด</string>
-
     <string name="back">กลับ</string>
     <string name="cancel">ยกเลิก</string>
     <string name="enable">เปิดใช้</string>
-
     <string name="repo_add_url">ตำแหน่งของแหล่งโปรแกรม</string>
     <string name="repo_add_fingerprint">ลายนิ้วมือดิจิตอล (หากมี)</string>
     <string name="bad_fingerprint">ลายนิ้วมือดิจิตอลไม่ตรงกัน</string>
     <string name="invalid_url">เขียนยูอาร์แอลผิดรูปแบบ</string>
     <string name="repo_provider">แหล่งโปรแกรม: %s</string>
-
     <string name="menu_manage">แหล่งโปรแกรม</string>
     <string name="menu_settings">การตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
-
     <string name="menu_launch">เริ่มโปรแกรม</string>
     <string name="menu_share">แบ่งปัน</string>
     <string name="menu_install">ติดตั้ง</string>
@@ -73,8 +63,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">ไม่ได้ติดตั้งอยู่</string>
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
     <string name="antitracklist">โปรแกรมนี้ติดตามและส่งต่อข้อมูลกิจกรรมของคุณให้บุคคลภายนอก</string>
@@ -83,14 +71,10 @@
     <string name="antinonfreedeplist">โปรแกรมนี้พึ่งพาโปรแกรมไม่เสรีอื่นๆ</string>
     <string name="antiupstreamnonfreelist">ซอร์สโค้ดต้นฉบับมีบางส่วนที่ไม่เสรี</string>
     <string name="antinonfreeassetslist">โปรแกรมนี้มีส่วนประกอบภาพเสียงที่ไม่เสรี</string>
-
     <string name="display">แสดง</string>
-
     <string name="expert">โหมดผู้เชี่ยวชาญ</string>
     <string name="expert_on">แสดงข้อมูลและการตั้งค่าเพิ่มเติม</string>
-
     <string name="search_hint">พิมพ์คำค้นหาโปรแกรม</string>
-
     <string name="appcompatibility">ความเข้ากันได้ของโปรแกรม</string>
     <string name="show_incompat_versions">รุ่นที่เข้ากันไม่ได้</string>
     <string name="show_incompat_versions_on">แสดงโปรแกรมที่เข้ากันไม่ได้กับเครื่องนี้ด้วย</string>
@@ -100,7 +84,6 @@
     <string name="icon">ไอคอน</string>
     <string name="next">ต่อไป</string>
     <string name="skip">ข้าม</string>
-
     <string name="useTor">เชื่อมต่อผ่าน Tor</string>
     <string name="useTorSummary">ดาวน์โหลดข้อมูลและโปรแกรมผ่านเครือข่าย Tor เพื่อเพิ่มความเป็นส่วนตัว</string>
     <string name="proxy">พรอกซี</string>
@@ -136,7 +119,6 @@
     </string>
     <string name="pref_language">ภาษา</string>
     <string name="pref_language_default">ใช้ภาษาของเครื่อง</string>
-
     <string name="category_Connectivity">การสื่อสาร</string>
     <string name="category_Development">การพัฒนาซอฟต์แวร์</string>
     <string name="category_Games">เกม</string>
@@ -154,7 +136,6 @@
     <string name="category_Theming">ธีมต่างๆ</string>
     <string name="category_Time">เวลาและวันที่</string>
     <string name="category_Writing">การเขียน</string>
-
     <string name="swap_nfc_title">แตะเพื่อแบ่งปันโปรแกรม</string>
     <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้
         เพียงแค่นำเครื่องมาแตะกัน
@@ -170,7 +151,6 @@
     <string name="swap_confirm">ยืนยันการส่งต่อ</string>
     <string name="loading">กำลังโหลด…</string>
     <string name="swap_connection_misc_error">การเชื่อมต่อกับอีกเครื่องล้มเหลว, ไม่สามารถส่งต่อโปรแกรมได้</string>
-
     <string name="install_confirm">ต้องการเข้าถึง</string>
     <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่
         และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
@@ -193,13 +173,10 @@
     <string name="download_pending">เตรียมพร้อมจะเริ่มการดาวน์โหลด…</string>
     <string name="install_error_notify_title">การติดตั้ง %s ล้มเหลว</string>
     <string name="uninstall_error_notify_title">การถอนการติดตั้ง %s ล้มเหลว</string>
-
-
     <string name="perms_new_perm_prefix">ใหม่:</string>
     <string name="downloading">กำลังดาวน์โหลด…</string>
     <string name="installing">กำลังติดตั้ง…</string>
     <string name="uninstalling">กำลังถอนการติดตั้ง…</string>
-
     <string name="interval_never">ไม่เลย</string>
     <string name="interval_1h">ทุกชั่วโมง</string>
     <string name="interval_4h">ทุก 4 ชั่วโมง</string>
@@ -207,18 +184,15 @@
     <string name="interval_1d">ทุกวัน</string>
     <string name="interval_1w">ทุกสัปดาห์</string>
     <string name="interval_2w">ทุก 2 สัปดาห์</string>
-
     <string name="keep_hour">1 ชั่วโมง</string>
     <string name="keep_day">1 วัน</string>
     <string name="keep_week">1 สัปดาห์</string>
     <string name="keep_month">1 เดือน</string>
     <string name="keep_year">1 ปี</string>
     <string name="keep_forever">ตลอดไป</string>
-
     <string name="theme_light">สว่าง</string>
     <string name="theme_dark">มืด</string>
     <string name="theme_night">กลางคืน</string>
-
     <string name="crash_dialog_title">F-Droid เกิดข้อผิดพลาด</string>
     <string name="crash_dialog_text">มีข้อผิดพลาดที่ทำให้โปรแกรมหยุดทำงานกะทันหัน,
         คุณต้องการจะส่งอีเมลแจ้งปัญหาไปยังผู้พัฒนาเพื่อทำการแก้ไขหรือไม่?
@@ -228,7 +202,7 @@
         คุณจะต้องทำการถอนการติดตั้งรุ่นเดิมออกก่อน จึงจะทำการติดตั้งรุ่นใหม่ได้ (หมายเหตุ:
         การถอนการติดตั้งจะทำให้ข้อมูลภายในของโปรแกรมนั้นๆ ถูกลบ)
     </string>
-    <string name="updates">อัพเดต</string>
+    <string name="updates">อัพเดต18 sex</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
@@ -236,37 +210,28 @@
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดตให้ดาวน์โหลด</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
     <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
-
     <string name="login_title">ต้องใช้รหัสผ่าน</string>
     <string name="system_installer">ส่วนขยายเพื่อช่วยติดตั้ง</string>
     <string name="system_installer_on">ใช้ส่วนขยายช่วยติดตั้งของ F-Droid เพื่อจัดการติดตั้ง, อัพเดต,
         และถอนการติดตั้งโปรแกรม
     </string>
     <string name="repo_error_empty_username">ชื่อผู้ใช้ว่างเปล่า, จะไม่มีการเปลี่ยนข้อมูลรหัสผ่านใดๆ ทั้งสิ้น</string>
-
     <string name="added_on">เพิ่มมาเมื่อ %s</string>
-
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
     <string name="overwrite">เขียนทับ</string>
-
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
-
     <string name="proxy_host_summary">ตั้งค่าที่อยู่เครื่องพรอกซีที่จะใช้ (เช่น 127.0.0.1)</string>
     <string name="proxy_port_summary">ตั้งค่าพอร์ตของเครื่องพรอกซี่ที่จะใช้ (เช่น 8118)</string>
-
     <string name="status_download">กำลังดาวน์โหลด\n%2$s / %3$s (%4$d%%) จาก\n%1$s</string>
-
     <string name="status_download_unknown_size">กำลังดาวน์โหลด\n%2$s จาก\n%1$s</string>
     <string name="update_notification_title">กำลังอัพเดตข้อมูลจากแหล่งโปรแกรม</string>
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>
-
     <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
     <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
-
     <string name="swap_no_wifi_network">ยังไม่พบเครือข่าย</string>
     <string name="swap_view_available_networks">แสดงเครือข่ายที่มีทั้งหมด</string>
     <string name="swap_switch_to_wifi">เปลี่ยนไปใช้เครือข่าย Wi-Fi</string>
@@ -296,7 +261,6 @@
         ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)
     </string>
     <string name="wifi_ap">เครื่องส่ง WiFi</string>
-
     <string name="repo_searching_address">กำลังค้นหาแหล่งโปรแกรม F-Droid ที่
         %1$s
     </string>

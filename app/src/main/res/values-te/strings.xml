@@ -308,4 +308,17 @@
     <string name="antifeatureswarning">ఈ యాప్ లోని  కొన్ని సౌలభ్యాలు మీకు నచ్చకపోవచ్చు.</string>
     <string name="panic_settings_summary">అత్యవసర పరిస్థితిలో తీసుకోవలసిన చర్యలు</string>
     <string name="try_again">మళ్ళీ ప్రయత్నించు</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">వర్సిన్ %1$s కోసం నవీకరణలు విస్మరించబడ్డాయి</string>
+    <string name="add_key">కీని జోడించండి</string>
+    <string name="send_installed_apps_csv">అనువర్తనం స్థాపించు</string>
+    <string name="app_suggested">సూచించారు</string>
+    <string name="app_repository">భాండాగారము:%1$s</string>
+    <string name="menu_translation">అనువాదం</string>
+    <string name="menu_select_for_wipe">తుడవడం కోసం ఎంచుకోండి</string>
+    <string name="SignatureMismatch">క్రొత్త సంస్కరణ పాతదానికి విభిన్న key తో సంతకం చేయబడింది.క్రొత్త సంస్కరణను వ్యవస్థాపించడానికి, పాతదాన్ని మొదట uninstall చేయాలి. దయచేసి దీన్ని చేసి మళ్ళీ ప్రయత్నించండి. (Uninstall చేయడం వల్ల అనువర్తనం నిల్వ చేసిన ఏదైనా అంతర్గత డేటా తొలగిపోతుందని గమనించండి)</string>
+    <string name="unstable_updates">అస్థిర నవీకరణలు</string>
+    <string name="unstable_updates_summary">అస్థిర సంస్కరణలకు నవీకరణలను సూచించండి</string>
+    <string name="crash_dialog_text">"అనువర్తనాన్ని బలవంతగా  ఆపుతూ   అనుకోని తప్పు జరిగినది.సమస్యను పరిష్కరించడంలో సహాయపడటానికి మీరు వివరాలను ఇ-మెయిల్ చేయాలనుకుంటున్నారా\?"</string>
+    <string name="prompt_to_send_crash_reports">"crash  నివేదికలను పంపమని promt చేయండి"</string>
+    <string name="prompt_to_send_crash_reports_summary">"Crash సంబంధిత  డేటాను సేకరించి వాటిని నిపుణులకు పంపమని అడగండి."</string>
 </resources>

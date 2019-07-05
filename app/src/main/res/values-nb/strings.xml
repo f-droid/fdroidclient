@@ -517,4 +517,5 @@
     <string name="disabled">Avslått</string>
     <string name="swap_error_cannot_start_bluetooth">Kunne ikke skru på Blåtann.</string>
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
+    <string name="nearby_splash__document_tree">Gjennomsøk USB OTG for pakkebrønner og speil.</string>
 </resources>

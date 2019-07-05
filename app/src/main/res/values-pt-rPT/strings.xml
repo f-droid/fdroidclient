@@ -480,7 +480,7 @@
     <string name="scan_removable_storage_title">Analisar armazenamento removível</string>
     <string name="scan_removable_storage_toast">A analisar %s…</string>
     <string name="scan_removable_storage_summary">Procurar por repositórios de pacotes no armazenamento removível, como cartões SD e unidades USB</string>
-    <string name="nearby_splash__read_external_storage">Pode-se usar cartões SD para trocar!</string>
+    <string name="nearby_splash__read_external_storage">Pesquisar cartão SD por repos e espelhos.</string>
     <string name="nearby_splash__request_permission">Experimente</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o seu dispositivo visível.</string>
@@ -508,4 +508,5 @@
     <string name="disabled">Desativado</string>
     <string name="swap_error_cannot_start_bluetooth">Não é possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">O Próximo foi fechado desde que estava ocioso.</string>
+    <string name="nearby_splash__document_tree">Pesquisar USB OTG por repos e espelhos.</string>
 </resources>
