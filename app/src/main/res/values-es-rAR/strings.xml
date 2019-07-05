@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">La versión nuevo está firmada con una llave diferente a la antigua. Para instalar la nueva versión, la antigua debe ser desinstalada primero. Hacé esto y probá de nuevo, por favor. (Tené en cuenta que al desinstalar, todos los datos internos guardados de la aplicación serán eliminados)</string>
     <string name="installIncompatible">Aplicación incompatible con tu dispositivo, ¿instalar igual\?</string>
@@ -190,22 +190,22 @@
     <string name="pref_language">Lenguaje</string>
     <string name="pref_language_default">Predeterminado del sistema</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Conectividad</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Desarrollo</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Juegos</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Gráficos</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Dinero</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navegación</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Teléfono y SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Lectura</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Ciencias y Educación</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Seguridad</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Deportes y Salud</string>
-    <string tools:ignore="UnusedResources" name="category_System">Sistema</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Tiempo</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Escritura</string>
+    <string name="category_Connectivity">Conectividad</string>
+    <string name="category_Development">Desarrollo</string>
+    <string name="category_Games">Juegos</string>
+    <string name="category_Graphics">Gráficos</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Money">Dinero</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Navigation">Navegación</string>
+    <string name="category_Phone_SMS">Teléfono y SMS</string>
+    <string name="category_Reading">Lectura</string>
+    <string name="category_Science_Education">Ciencias y Educación</string>
+    <string name="category_Security">Seguridad</string>
+    <string name="category_Sports_Health">Deportes y Salud</string>
+    <string name="category_System">Sistema</string>
+    <string name="category_Time">Tiempo</string>
+    <string name="category_Writing">Escritura</string>
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
     <string name="swap_dont_show_again">No mostrar de nuevo</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
@@ -324,7 +324,7 @@
     <string name="share_repository">Compartir repositorio</string>
     <string name="requires_features">Requiere: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Personalización</string>
+    <string name="category_Theming">Personalización</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d</item>
         <item quantity="other">Ver todos %d</item>
