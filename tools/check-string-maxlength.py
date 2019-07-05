@@ -5,7 +5,6 @@
 import glob
 import os
 import sys
-import re
 from xml.etree import ElementTree
 
 maxlengths = {
