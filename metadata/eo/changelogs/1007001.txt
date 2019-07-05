@@ -1,0 +1,3 @@
+* rekonstruita “proksima interŝanĝo” por uzi retkaptejon de aparato
+* aldonis panikajn agojn: malinstali aplikaĵojn kaj restarigi implicitajn deponejojn
+* riparita subteno por retperanto je unua starto
