@@ -1,0 +1,5 @@
+* reformulada permuta com Por Perto usando AP hotspot do dispositivo
+
+* adição de novas respostas a pânico: o aplicativo desinstala e redefine os repos para o padrão
+
+* correção do suporte a proxy na primeira execução
