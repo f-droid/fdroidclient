@@ -257,7 +257,11 @@ public class WifiStateChangeService extends IntentService {
                 Utils.debugLog(TAG, "WifiConfiguration: " + wifiConfiguration);
                 if (wifiConfiguration == null) {
                     FDroidApp.ssid = getString(R.string.swap_active_hotspot, "");
-                } else if (wifiConfiguration.hiddenSSID) {
+                    FDroidApp.bssid = "";
+                    return;
+                }
+
+                if (wifiConfiguration.hiddenSSID) {
                     FDroidApp.ssid = getString(R.string.swap_hidden_wifi_ssid);
                 } else {
                     FDroidApp.ssid = wifiConfiguration.SSID;
