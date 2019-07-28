@@ -26,10 +26,6 @@
           package="org.fdroid.fdroid"
           android:installLocation="auto">
 
-    <uses-sdk
-            android:minSdkVersion="14"
-            android:targetSdkVersion="25"
-    />
 
     <supports-screens
             android:anyDensity="true"
