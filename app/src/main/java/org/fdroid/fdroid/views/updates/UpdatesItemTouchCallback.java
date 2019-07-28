@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.views.updates;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.updates.items.AppStatusListItemController;

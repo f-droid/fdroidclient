@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                 android:visibility="visible"
                 android:gravity="end">
 
-                <android.support.v7.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/secondaryButtonView"
                     style="@style/DetailsSecondaryButtonStyle"
                     android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                     android:ellipsize="marquee"
                     tools:text="Uninstall"/>
 
-                <android.support.v7.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/primaryButtonView"
                     style="@style/DetailsPrimaryButtonStyle"
                     android:layout_width="wrap_content"
@@ -246,4 +246,4 @@
             android:layout_marginTop="4dp"
             android:text="@string/more" />
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

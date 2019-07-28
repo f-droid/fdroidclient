@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.support.v4.app.LoaderManager;
-import android.support.v7.recyclerview.extensions.ListAdapter;
-import android.support.v7.util.DiffUtil;
+import androidx.annotation.NonNull;
+import androidx.loader.app.LoaderManager;
+import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;

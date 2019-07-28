@@ -2,7 +2,7 @@ package org.fdroid.fdroid.views;
 
 import android.app.Application;
 import android.content.ContentValues;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.nostra13.universalimageloader.core.ImageLoader;

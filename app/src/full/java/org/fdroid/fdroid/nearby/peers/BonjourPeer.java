@@ -2,7 +2,7 @@ package org.fdroid.fdroid.nearby.peers;
 
 import android.net.Uri;
 import android.os.Parcel;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import org.fdroid.fdroid.FDroidApp;
 

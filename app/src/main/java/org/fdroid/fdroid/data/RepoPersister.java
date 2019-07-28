@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.os.RemoteException;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.IndexUpdater;

@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.panic;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.Preferences;

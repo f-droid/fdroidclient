@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
-import android.support.v7.preference.PreferenceViewHolder;
-import android.support.v7.preference.SeekBarPreference;
+import androidx.preference.PreferenceViewHolder;
+import androidx.preference.SeekBarPreference;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 import android.widget.TextView;

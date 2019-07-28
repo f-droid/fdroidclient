@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
+import androidx.test.InstrumentationRegistry;
 import android.text.TextUtils;
 import android.util.Log;
 import org.apache.commons.io.IOUtils;
