@@ -1,3 +1,7 @@
+### 1.7.1 (2019-07-31)
+
+* fix crashes from ACRA report emails
+
 ### 1.7 (2019-07-06)
 
 * fix crash in Panic Settings
