@@ -96,6 +96,9 @@ public class TreeUriScannerIntentService extends IntentService {
      * like an SD Card that can be directly accessed via the file system.
      */
     public static void onActivityResult(Activity activity, Intent intent) {
+        if (intent == null) {
+            return;
+        }
         Uri uri = intent.getData();
         if (uri != null) {
             if (Build.VERSION.SDK_INT >= 19) {
