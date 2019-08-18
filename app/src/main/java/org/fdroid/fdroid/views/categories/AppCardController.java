@@ -32,7 +32,7 @@ public class AppCardController extends RecyclerView.ViewHolder
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
      */
-    private static final int DAYS_TO_CONSIDER_NEW = 14;
+    private static final int DAYS_TO_CONSIDER_NEW = 99;
 
     @NonNull
     private final ImageView icon;
@@ -91,6 +91,7 @@ public class AppCardController extends RecyclerView.ViewHolder
         if (newTag != null) {
             if (isConsideredNew(app)) {
                 newTag.setVisibility(View.VISIBLE);
+                newTag.setText(app.added.toString());
             } else {
                 newTag.setVisibility(View.GONE);
             }

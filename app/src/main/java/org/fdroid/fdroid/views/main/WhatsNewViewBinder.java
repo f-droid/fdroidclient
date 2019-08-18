@@ -103,7 +103,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         }
 
         // select that have all required items:
-        String selection = "(" + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME + " != ''"
+        String selection = "((" + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME + " != ''"
                 + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.SUMMARY + " != ''"
                 + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.DESCRIPTION + " != ''"
                 + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.LICENSE + " != ''"
@@ -121,12 +121,19 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " IS NOT NULL "
                 + " OR " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.FEATURE_GRAPHIC + " IS NOT NULL "
                 + ")";
+        selection += ") OR ("
+                + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.ADDED + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.LAST_UPDATED + " != ''"
+                + " AND " + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.ADDED + " == "
+                + AppMetadataTable.NAME + "." + AppMetadataTable.Cols.LAST_UPDATED
+                + ")";
 
         return new CursorLoader(
                 activity,
                 AppProvider.getRecentlyUpdatedUri(),
                 AppMetadataTable.Cols.ALL,
-                null,//selection,
+                selection,
                 null,
                 null
         );
