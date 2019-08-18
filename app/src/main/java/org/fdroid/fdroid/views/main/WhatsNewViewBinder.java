@@ -126,7 +126,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 activity,
                 AppProvider.getRecentlyUpdatedUri(),
                 AppMetadataTable.Cols.ALL,
-                selection,
+                null,//selection,
                 null,
                 null
         );

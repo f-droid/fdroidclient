@@ -62,7 +62,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public int getItemViewType(int position) {
-        int relativePositionInCycle = position % 5;
+        int relativePositionInCycle = 0;//position % 5;
 
         if (BuildConfig.FLAVOR.startsWith("basic")) {
             if (relativePositionInCycle > 0) {
@@ -115,7 +115,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     public static class SpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
         @Override
         public int getSpanSize(int position) {
-            int relativePositionInCycle = position % 5;
+            int relativePositionInCycle =0;// position % 5;
             if (relativePositionInCycle == 0) {
                 return 2;
             } else {
@@ -145,7 +145,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
             int horizontalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__horizontal);
             int verticalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__vertical);
 
-            int relativePositionInCycle = position % 5;
+            int relativePositionInCycle = 0;//position % 5;
             if (relativePositionInCycle != 0) {
                 // The item on the left will have both left and right padding. The item on the right
                 // will only have padding on the right. This will allow the same amount of padding
