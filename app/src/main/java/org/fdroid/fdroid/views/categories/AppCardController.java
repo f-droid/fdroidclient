@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.IdRes;
@@ -18,6 +19,8 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.AppDetailsActivity;
+
+import java.util.Locale;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
@@ -92,6 +95,11 @@ public class AppCardController extends RecyclerView.ViewHolder
             if (isConsideredNew(app)) {
                 newTag.setVisibility(View.VISIBLE);
                 newTag.setText(app.added.toString());
+                if (app.name!=null && app.summary!=null && app.description!=null && app.license!=null //&& app.whatsNew!=null
+                        //&& (!"en".equals(Locale.getDefault().getLanguage())&& app.???)
+                        && (app.sevenInchScreenshots!=null || app.phoneScreenshots!=null || app.tenInchScreenshots!=null || app.tvScreenshots!=null || app.wearScreenshots!=null || app.featureGraphic!=null))
+                    newTag.setTextColor(Color.BLUE);
+                else newTag.setTextColor(Color.LTGRAY);
             } else {
                 newTag.setVisibility(View.GONE);
             }
