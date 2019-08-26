@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <item
+        android:id="@+id/action_forum"
+        android:icon="@drawable/gitlabi"
+        android:title="@string/menu_search"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share_white"
         android:title="@string/menu_share"

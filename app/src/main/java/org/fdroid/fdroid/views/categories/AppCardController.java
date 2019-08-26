@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.categories;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.IdRes;
@@ -30,7 +31,7 @@ import java.util.Locale;
  * + {@link R.id#new_tag} ({@link TextView}, optional)
  */
 public class AppCardController extends RecyclerView.ViewHolder
-        implements View.OnClickListener {
+        implements View.OnClickListener, View.OnLongClickListener {
 
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
@@ -68,6 +69,7 @@ public class AppCardController extends RecyclerView.ViewHolder
         newTag = (TextView) itemView.findViewById(R.id.new_tag);
 
         itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
     }
 
     /**
@@ -140,4 +142,18 @@ public class AppCardController extends RecyclerView.ViewHolder
             activity.startActivity(intent);
         }
     }
+    /**
+     * When the user clicks/long https://forum.f-droid.org/search?q=
+     */
+    @Override
+    public boolean onLongClick(View v)  {
+        if (currentApp == null) {
+            return true;
+        }
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forum.f-droid.org/search?q="
+                +currentApp.name.replaceAll(" ","%20")));
+        activity.startActivity(browserIntent);
+        return true;
+    }
+
 }

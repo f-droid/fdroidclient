@@ -257,7 +257,12 @@ public class AppDetailsActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_share) {
+        if (item.getItemId() == R.id.action_forum) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/fdroid/fdroiddata/commits/master/metadata?search="
+                    +app.name.replaceAll(" ","%20")));
+            startActivity(browserIntent);
+            return true;
+        } else if (item.getItemId() == R.id.action_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
