@@ -61,6 +61,7 @@
             android:description="@string/app_description"
             android:allowBackup="true"
             android:fullBackupContent="true"
+            android:largeHeap="true"
             android:theme="@style/AppThemeLight"
             android:supportsRtl="true">
 
@@ -283,7 +284,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
 
             <!-- App URLs -->
 
@@ -547,6 +549,18 @@
         <activity android:name=".AboutActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name=".installer.FileInstallerActivity" android:theme="@style/AppThemeTransparent"/>
 
+        <activity android:name=".UpdateRepoNow"/>
+        <service
+            android:name=".Tile"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="F-Droid"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

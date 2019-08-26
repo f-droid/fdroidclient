@@ -1,0 +1,35 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="compose"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutShortLabel="@string/installed_apps__activity_title"
+        android:shortcutLongLabel="@string/installed_apps__activity_title"
+        android:shortcutDisabledMessage="@string/installed_apps__activity_title">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="org.fdroid.fdroid.debug"
+            android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="compose2"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutShortLabel="@string/updates"
+        android:shortcutLongLabel="@string/updates"
+        android:shortcutDisabledMessage="@string/updates">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="org.fdroid.fdroid.debug"
+            android:targetClass="org.fdroid.fdroid.UpdateRepoNow" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <!-- Specify more shortcuts here. -->
+</shortcuts>
