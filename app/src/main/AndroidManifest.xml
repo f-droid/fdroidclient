@@ -64,7 +64,7 @@
             android:label="@string/app_name"
             android:description="@string/app_description"
             android:allowBackup="true"
-            android:fullBackupContent="true"
+            android:fullBackupContent="@xml/backup_rules"
             android:theme="@style/AppThemeLight"
             android:supportsRtl="true">
 
