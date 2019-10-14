@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
-/* gets the version name from the latest Git tag, stripping the leading v off */
+/* gets the version name from the latest Git tag */
 def getVersionName = { ->
     def stdout = new ByteArrayOutputStream()
     exec {
@@ -192,7 +192,7 @@ task checkstyle(type: Checkstyle) {
 }
 
 pmd {
-    toolVersion = '5.5.1'
+    toolVersion = '6.20.0'
     consoleOutput = true
 }
 
@@ -202,7 +202,6 @@ task pmdMain(type: Pmd) {
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/main/java'
     include '**/*.java'
-    exclude '**/kellinwood/**/*.java'
 }
 
 task pmdTest(type: Pmd) {

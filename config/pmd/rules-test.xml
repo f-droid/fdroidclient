@@ -1,11 +1,17 @@
 <?xml version="1.0"?>
 <ruleset name="Custom ruleset (for tests)"
-        xmlns="http://pmd.sf.net/ruleset/1.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
-        xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+  <description>
+    Rules for the test harness code aka "androidTest" and "test".
+  </description>
 
-    <rule ref="rulesets/java/imports.xml">
-        <exclude name="TooManyStaticImports" /><!-- Static imports are commonly used for JUnit tests -->
-    </rule>
+  <!-- ideally these would be promoted to rules.xml -->
+  <rule ref="category/java/bestpractices.xml/ConstantsInInterface"/>
+  <rule ref="category/java/bestpractices.xml/UseCollectionIsEmpty"/>
+  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName"/>
+  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName"/>
+
 </ruleset>
