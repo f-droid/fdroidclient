@@ -32,8 +32,19 @@ public class SwapView extends RelativeLayout {
         this(context, attrs, 0);
     }
 
+    /**
+     * In order to support Android < 21, this calls {@code super} rather than
+     * {@code this}.  {@link RelativeLayout}'s methods just use a 0 for the
+     * fourth argument, just like this used to.
+     */
     public SwapView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
+        super(context, attrs, defStyleAttr);
+        final TypedArray a = context.obtainStyledAttributes(
+                attrs, R.styleable.SwapView, 0, 0);
+        toolbarColor = a.getColor(R.styleable.SwapView_toolbarColor,
+                getResources().getColor(R.color.swap_blue));
+        toolbarTitle = a.getString(R.styleable.SwapView_toolbarTitle);
+        a.recycle();
     }
 
     @TargetApi(21)
