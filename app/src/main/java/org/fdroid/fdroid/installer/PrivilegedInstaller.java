@@ -152,7 +152,7 @@ public class PrivilegedInstaller extends Installer {
                 "A previously installed package of the same name has a different signature than " +
                         "the new package (and the old package's data was not removed).");
         INSTALL_RETURN_CODES.put(INSTALL_FAILED_SHARED_USER_INCOMPATIBLE,
-                "The new package is requested a shared user which is already installed on " +
+                "The new package has requested a shared user which is already installed on " +
                         "the device and does not have matching signature.");
         INSTALL_RETURN_CODES.put(INSTALL_FAILED_MISSING_SHARED_LIBRARY,
                 "The new package uses a shared library that is not available.");
