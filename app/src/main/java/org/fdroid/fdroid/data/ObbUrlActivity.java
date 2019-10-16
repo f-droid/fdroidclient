@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
+
 import org.fdroid.fdroid.Utils;
 
 /**

@@ -6,6 +6,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
@@ -26,7 +27,7 @@ public class CategoryProvider extends FDroidProvider {
          * During repo updates, each app needs to know the ID of each category it belongs to.
          * This results in lots of database lookups, usually at least one for each app, sometimes more.
          * To improve performance, this caches the association between categories and their database IDs.
-         *
+         * <p>
          * It can stay around for the entire F-Droid process, even across multiple repo updates, as we
          * don't actually remove data from the categories table.
          */

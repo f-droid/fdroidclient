@@ -60,7 +60,7 @@ public class TempApkProvider extends ApkProvider {
         /**
          * Deletes the old temporary table (if it exists). Then creates a new temporary apk provider
          * table and populates it with all the data from the real apk provider table.
-         *
+         * <p>
          * This is package local because it must be invoked after
          * {@link org.fdroid.fdroid.data.TempAppProvider.Helper#init(Context, long)}. Due to this
          * dependence, that method invokes this one itself, rather than leaving it to the
@@ -107,8 +107,8 @@ public class TempApkProvider extends ApkProvider {
 
         String antiFeaturesWhere =
                 Schema.ApkAntiFeatureJoinTable.NAME + "." + Schema.ApkAntiFeatureJoinTable.Cols.APK_ID + " IN " +
-                "(SELECT innerApk." + Cols.ROW_ID + " FROM " + ApkTable.NAME + " AS innerApk " +
-                "WHERE innerApk." + Cols.REPO_ID + " != ?)";
+                        "(SELECT innerApk." + Cols.ROW_ID + " FROM " + ApkTable.NAME + " AS innerApk " +
+                        "WHERE innerApk." + Cols.REPO_ID + " != ?)";
 
         db.execSQL(TempAppProvider.copyData(
                 Schema.ApkAntiFeatureJoinTable.Cols.ALL_COLS,

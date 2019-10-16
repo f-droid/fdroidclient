@@ -88,27 +88,27 @@ public final class Contents {
      * phone numbers and addresses.
      */
     public static final String[] PHONE_KEYS = {
-        ContactsContract.Intents.Insert.PHONE,
-        ContactsContract.Intents.Insert.SECONDARY_PHONE,
-        ContactsContract.Intents.Insert.TERTIARY_PHONE,
+            ContactsContract.Intents.Insert.PHONE,
+            ContactsContract.Intents.Insert.SECONDARY_PHONE,
+            ContactsContract.Intents.Insert.TERTIARY_PHONE,
     };
 
     public static final String[] PHONE_TYPE_KEYS = {
-        ContactsContract.Intents.Insert.PHONE_TYPE,
-        ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE,
-        ContactsContract.Intents.Insert.TERTIARY_PHONE_TYPE,
+            ContactsContract.Intents.Insert.PHONE_TYPE,
+            ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE,
+            ContactsContract.Intents.Insert.TERTIARY_PHONE_TYPE,
     };
 
     public static final String[] EMAIL_KEYS = {
-        ContactsContract.Intents.Insert.EMAIL,
-        ContactsContract.Intents.Insert.SECONDARY_EMAIL,
-        ContactsContract.Intents.Insert.TERTIARY_EMAIL,
+            ContactsContract.Intents.Insert.EMAIL,
+            ContactsContract.Intents.Insert.SECONDARY_EMAIL,
+            ContactsContract.Intents.Insert.TERTIARY_EMAIL,
     };
 
     public static final String[] EMAIL_TYPE_KEYS = {
-        ContactsContract.Intents.Insert.EMAIL_TYPE,
-        ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE,
-        ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE,
+            ContactsContract.Intents.Insert.EMAIL_TYPE,
+            ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE,
+            ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE,
     };
 
 }

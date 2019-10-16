@@ -26,7 +26,9 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;

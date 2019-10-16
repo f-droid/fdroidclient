@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
 import org.acra.ReportField;
 import org.acra.collections.ImmutableSet;
 import org.acra.collector.CrashReportData;

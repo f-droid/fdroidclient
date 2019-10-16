@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
+
 import org.fdroid.fdroid.BuildConfig;
 
 import java.util.ArrayList;

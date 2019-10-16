@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;

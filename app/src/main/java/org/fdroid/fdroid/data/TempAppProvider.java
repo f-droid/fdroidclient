@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -239,7 +240,7 @@ public class TempAppProvider extends AppProvider {
 
             db.execSQL(
                     "DELETE FROM " + Schema.ApkAntiFeatureJoinTable.NAME + " " +
-                    "WHERE " + getAntiFeatureRepoWhere(Schema.ApkAntiFeatureJoinTable.NAME), repoArgs);
+                            "WHERE " + getAntiFeatureRepoWhere(Schema.ApkAntiFeatureJoinTable.NAME), repoArgs);
 
             db.execSQL(copyData(
                     Schema.ApkAntiFeatureJoinTable.Cols.ALL_COLS,
@@ -261,9 +262,9 @@ public class TempAppProvider extends AppProvider {
     private String getCatRepoWhere(String categoryTable) {
         String catRepoSubquery =
                 "SELECT DISTINCT innerCatJoin." + CatJoinTable.Cols.ROW_ID + " " +
-                "FROM " + categoryTable + " AS innerCatJoin " +
-                "JOIN " + getTableName() + " AS app ON (app." + Cols.ROW_ID + " = innerCatJoin." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
-                "WHERE app." + Cols.REPO_ID + " = ?";
+                        "FROM " + categoryTable + " AS innerCatJoin " +
+                        "JOIN " + getTableName() + " AS app ON (app." + Cols.ROW_ID + " = innerCatJoin." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
+                        "WHERE app." + Cols.REPO_ID + " = ?";
 
         return CatJoinTable.Cols.ROW_ID + " IN (" + catRepoSubquery + ")";
     }
@@ -271,8 +272,8 @@ public class TempAppProvider extends AppProvider {
     private String getAntiFeatureRepoWhere(String antiFeatureTable) {
         String subquery =
                 "SELECT innerApk." + ApkTable.Cols.ROW_ID + " " +
-                "FROM " + ApkTable.NAME + " AS innerApk " +
-                "WHERE innerApk." + ApkTable.Cols.REPO_ID + " = ?";
+                        "FROM " + ApkTable.NAME + " AS innerApk " +
+                        "WHERE innerApk." + ApkTable.Cols.REPO_ID + " = ?";
 
         return antiFeatureTable + "." + Schema.ApkAntiFeatureJoinTable.Cols.APK_ID + " IN (" + subquery + ")";
     }

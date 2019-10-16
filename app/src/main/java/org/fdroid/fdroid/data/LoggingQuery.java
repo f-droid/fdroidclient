@@ -10,29 +10,29 @@ import org.fdroid.fdroid.Utils;
 /**
  * Helper class to log slow queries to logcat when in debug mode. When not in debug mode, it
  * runs the queries without any logging.
- *
+ * <p>
  * Here is an example of what would be output to logcat for a query that takes too long (except the
  * query would not be formatted as nicely):
- *
- *   Query [155ms]:
- *     SELECT fdroid_app.rowid as _id, ...
- *     FROM fdroid_app
- *       LEFT JOIN fdroid_apk ON (fdroid_apk.appId = fdroid_app.rowid)
- *       LEFT JOIN fdroid_repo ON (fdroid_apk.repo = fdroid_repo._id)
- *       LEFT JOIN fdroid_installedApp AS installed ON (installed.appId = fdroid_app.id)
- *       LEFT JOIN fdroid_apk AS suggestedApk ON (fdroid_app.suggestedVercode = suggestedApk.vercode
- *                                                AND fdroid_app.rowid = suggestedApk.appId)
- *     WHERE
- *       fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap IS NULL
- *     GROUP BY fdroid_app.rowid
- *     ORDER BY fdroid_app.name COLLATE LOCALIZED
- *   Explain:
- *     SCAN TABLE fdroid_app
- *     SEARCH TABLE fdroid_apk USING COVERING INDEX sqlite_autoindex_fdroid_apk_1 (appId=?)
- *     SEARCH TABLE fdroid_repo USING INTEGER PRIMARY KEY (rowid=?)
- *     SEARCH TABLE fdroid_installedApp AS installed USING INDEX sqlite_autoindex_fdroid_installedApp_1 (appId=?)
- *     SEARCH TABLE fdroid_apk AS suggestedApk USING INDEX sqlite_autoindex_fdroid_apk_1 (appId=? AND vercode=?)
- *     USE TEMP B-TREE FOR ORDER BY
+ * <p>
+ * Query [155ms]:
+ * SELECT fdroid_app.rowid as _id, ...
+ * FROM fdroid_app
+ * LEFT JOIN fdroid_apk ON (fdroid_apk.appId = fdroid_app.rowid)
+ * LEFT JOIN fdroid_repo ON (fdroid_apk.repo = fdroid_repo._id)
+ * LEFT JOIN fdroid_installedApp AS installed ON (installed.appId = fdroid_app.id)
+ * LEFT JOIN fdroid_apk AS suggestedApk ON (fdroid_app.suggestedVercode = suggestedApk.vercode
+ * AND fdroid_app.rowid = suggestedApk.appId)
+ * WHERE
+ * fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap IS NULL
+ * GROUP BY fdroid_app.rowid
+ * ORDER BY fdroid_app.name COLLATE LOCALIZED
+ * Explain:
+ * SCAN TABLE fdroid_app
+ * SEARCH TABLE fdroid_apk USING COVERING INDEX sqlite_autoindex_fdroid_apk_1 (appId=?)
+ * SEARCH TABLE fdroid_repo USING INTEGER PRIMARY KEY (rowid=?)
+ * SEARCH TABLE fdroid_installedApp AS installed USING INDEX sqlite_autoindex_fdroid_installedApp_1 (appId=?)
+ * SEARCH TABLE fdroid_apk AS suggestedApk USING INDEX sqlite_autoindex_fdroid_apk_1 (appId=? AND vercode=?)
+ * USE TEMP B-TREE FOR ORDER BY
  */
 final class LoggingQuery {
 

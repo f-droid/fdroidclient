@@ -287,29 +287,29 @@ public interface Schema {
             /**
              * Foreign key to the {@link AppMetadataTable}.
              */
-            String APP_ID          = "appId";
-            String ROW_ID          = "rowid";
-            String VERSION_NAME    = "version";
-            String REPO_ID         = "repo";
-            String HASH            = "hash";
-            String VERSION_CODE    = "vercode";
-            String NAME            = "apkName";
-            String SIZE            = "size";
-            String SIGNATURE       = "sig";
-            String SOURCE_NAME     = "srcname";
+            String APP_ID = "appId";
+            String ROW_ID = "rowid";
+            String VERSION_NAME = "version";
+            String REPO_ID = "repo";
+            String HASH = "hash";
+            String VERSION_CODE = "vercode";
+            String NAME = "apkName";
+            String SIZE = "size";
+            String SIGNATURE = "sig";
+            String SOURCE_NAME = "srcname";
             String MIN_SDK_VERSION = "minSdkVersion";
             String TARGET_SDK_VERSION = "targetSdkVersion";
             String MAX_SDK_VERSION = "maxSdkVersion";
-            String OBB_MAIN_FILE   = "obbMainFile";
+            String OBB_MAIN_FILE = "obbMainFile";
             String OBB_MAIN_FILE_SHA256 = "obbMainFileSha256";
-            String OBB_PATCH_FILE  = "obbPatchFile";
+            String OBB_PATCH_FILE = "obbPatchFile";
             String OBB_PATCH_FILE_SHA256 = "obbPatchFileSha256";
             String REQUESTED_PERMISSIONS = "permissions";
-            String FEATURES        = "features";
-            String NATIVE_CODE     = "nativecode";
-            String HASH_TYPE       = "hashType";
-            String ADDED_DATE      = "added";
-            String IS_COMPATIBLE   = "compatible";
+            String FEATURES = "features";
+            String NATIVE_CODE = "nativecode";
+            String HASH_TYPE = "hashType";
+            String ADDED_DATE = "added";
+            String IS_COMPATIBLE = "compatible";
             String INCOMPATIBLE_REASONS = "incompatibleReasons";
 
             interface Repo {
@@ -322,7 +322,7 @@ public interface Schema {
             }
 
             interface AntiFeatures {
-                String ANTI_FEATURES   = "antiFeatures_commaSeparated";
+                String ANTI_FEATURES = "antiFeatures_commaSeparated";
             }
 
             /**
@@ -356,23 +356,23 @@ public interface Schema {
 
         interface Cols extends BaseColumns {
 
-            String ADDRESS      = "address";
-            String NAME         = "name";
-            String DESCRIPTION  = "description";
-            String IN_USE       = "inuse";
-            String PRIORITY     = "priority";
+            String ADDRESS = "address";
+            String NAME = "name";
+            String DESCRIPTION = "description";
+            String IN_USE = "inuse";
+            String PRIORITY = "priority";
             String SIGNING_CERT = "pubkey";
-            String FINGERPRINT  = "fingerprint";
-            String MAX_AGE      = "maxage";
-            String LAST_ETAG    = "lastetag";
+            String FINGERPRINT = "fingerprint";
+            String MAX_AGE = "maxage";
+            String LAST_ETAG = "lastetag";
             String LAST_UPDATED = "lastUpdated";
-            String VERSION      = "version";
-            String IS_SWAP      = "isSwap";
-            String USERNAME     = "username";
-            String PASSWORD     = "password";
-            String TIMESTAMP    = "timestamp";
-            String ICON         = "icon";
-            String MIRRORS      = "mirrors";
+            String VERSION = "version";
+            String IS_SWAP = "isSwap";
+            String USERNAME = "username";
+            String PASSWORD = "password";
+            String TIMESTAMP = "timestamp";
+            String ICON = "icon";
+            String MIRRORS = "mirrors";
             String USER_MIRRORS = "userMirrors";
             String DISABLED_MIRRORS = "disabledMirrors";
             String PUSH_REQUESTS = "pushRequests";

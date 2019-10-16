@@ -11,10 +11,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.JobIntentService;
 import android.util.Log;
+
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;

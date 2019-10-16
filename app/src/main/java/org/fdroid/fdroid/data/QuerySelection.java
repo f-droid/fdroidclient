@@ -19,7 +19,7 @@ public class QuerySelection {
 
     public QuerySelection(String selection) {
         this.selection = selection;
-        this.args = new String[] {};
+        this.args = new String[]{};
     }
 
     public QuerySelection(String selection, String[] args) {
@@ -28,7 +28,7 @@ public class QuerySelection {
     }
 
     public QuerySelection(String selection, List<String> args) {
-        this.args = new String[ args.size() ];
+        this.args = new String[args.size()];
         args.toArray(this.args);
         this.selection = selection;
     }
@@ -63,7 +63,7 @@ public class QuerySelection {
             s = query.selection;
         }
 
-        int thisNumArgs  = this.hasArgs() ? this.args.length : 0;
+        int thisNumArgs = this.hasArgs() ? this.args.length : 0;
         int queryNumArgs = query.hasArgs() ? query.args.length : 0;
         List<String> a = new ArrayList<>(thisNumArgs + queryNumArgs);
 
