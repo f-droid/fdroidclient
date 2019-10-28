@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.support.v7.preference.SeekBarPreference;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import org.fdroid.fdroid.R;
@@ -37,8 +38,11 @@ public class LiveSeekBarPreference extends SeekBarPreference {
     public void onBindViewHolder(final PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        SeekBarForegroundThumb seekbar = holder.itemView.findViewById(R.id.seekbar);
-        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        View seekBarValue = holder.findViewById(R.id.seekbar_value);
+        seekBarValue.setVisibility(View.GONE);
+
+        SeekBarForegroundThumb seekBar = holder.itemView.findViewById(R.id.seekbar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
@@ -65,12 +69,12 @@ public class LiveSeekBarPreference extends SeekBarPreference {
                 persistInt(value);
             }
         });
-        seekbar.setProgress(value);
+        seekBar.setProgress(value);
 
         if (isEnabled()) {
-            seekbar.setAlpha(1.0f);
+            seekBar.setAlpha(1.0f);
         } else {
-            seekbar.setAlpha(0.3f);
+            seekBar.setAlpha(0.3f);
         }
     }
 
