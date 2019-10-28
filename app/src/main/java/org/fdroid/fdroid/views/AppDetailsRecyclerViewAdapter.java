@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
@@ -719,11 +720,13 @@ public class AppDetailsRecyclerViewAdapter
     private class ScreenShotsViewHolder extends AppDetailsViewHolder
             implements ScreenShotsRecyclerViewAdapter.Listener {
         final RecyclerView recyclerView;
-        LinearLayoutManagerSnapHelper snapHelper;
+        ItemDecorator itemDecorator;
 
         ScreenShotsViewHolder(View view) {
             super(view);
-            recyclerView = (RecyclerView) view.findViewById(R.id.screenshots);
+            recyclerView = view.findViewById(R.id.screenshots);
+            itemDecorator = new ItemDecorator(context);
+            recyclerView.addItemDecoration(itemDecorator);
         }
 
         @Override
@@ -734,16 +737,30 @@ public class AppDetailsRecyclerViewAdapter
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setNestedScrollingEnabled(false);
-            if (snapHelper != null) {
-                snapHelper.attachToRecyclerView(null);
-            }
-            snapHelper = new LinearLayoutManagerSnapHelper(lm);
-            snapHelper.attachToRecyclerView(recyclerView);
         }
 
         @Override
         public void onScreenshotClick(int position) {
             context.startActivity(ScreenShotsActivity.getStartIntent(context, app.packageName, position));
+        }
+
+        private class ItemDecorator extends RecyclerView.ItemDecoration {
+            private final Context context;
+
+            ItemDecorator(Context context) {
+                this.context = context.getApplicationContext();
+            }
+
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                int position = parent.getChildAdapterPosition(view);
+                int padding = (int) context.getResources().getDimension(R.dimen.details_activity_padding_screenshot);
+                if (position == 0) {
+                    outRect.set(padding, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
+                } else {
+                    outRect.set(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
+                }
+            }
         }
     }
 

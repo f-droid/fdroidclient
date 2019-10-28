@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:fitsSystemWindows="true"
-                                                 tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
-                                                 android:background="?attr/appDetailsBackground"
-                                                 android:id="@+id/rootCoordinator">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
+    android:background="?attr/appDetailsBackground"
+    android:id="@+id/rootCoordinator">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -41,12 +41,10 @@
                 app:popupTheme="@style/AppThemeLight.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/rvDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

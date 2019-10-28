@@ -5,6 +5,7 @@
     <dimen name="material_listitem_height">48dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="details_activity_padding">16dp</dimen>
+    <dimen name="details_activity_padding_screenshot">14dp</dimen>
 
     <dimen name="details_activity__collapsable_lists__padding__vertical">3dp</dimen>
     <!-- This is in addition to the padding that almost all items in the app details screen have
