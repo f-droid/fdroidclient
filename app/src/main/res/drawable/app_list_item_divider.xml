@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Used to separate two sepparate R.layout.app_list_item views in a list.
+  Used to separate two separate R.layout.app_list_item views in a list.
   As these are not cards, they don't have their own drop shadow or other features that help
   separate different list items.
 -->
