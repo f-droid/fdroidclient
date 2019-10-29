@@ -44,7 +44,7 @@
              android:layout_below="@android:id/summary"
              android:layout_alignStart="@android:id/summary"
              android:layout_alignLeft="@android:id/summary"
-             android:progressDrawable="@drawable/seekbar_bg"
+             android:progressDrawable="@drawable/seekbar_background"
              android:thumb="@drawable/seekbar_thumb"
              android:padding="16dip"
              android:theme="@style/DiscreteSeekBar"/>
