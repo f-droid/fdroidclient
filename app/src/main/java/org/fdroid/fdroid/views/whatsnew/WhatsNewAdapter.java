@@ -146,11 +146,13 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
             int verticalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__vertical);
 
             int relativePositionInCycle = position % 5;
-            if (relativePositionInCycle != 0) {
+            if (position == 0) {
+                outRect.set(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
+            } else if (relativePositionInCycle != 0) {
                 // The item on the left will have both left and right padding. The item on the right
                 // will only have padding on the right. This will allow the same amount of padding
                 // on the left, centre, and right of the grid, rather than double the padding in the
-                // middle (which would happen if both left+right paddings were set for both items).
+                // middle (which would happen if both left and right padding was set for both items).
                 boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
                 boolean isAtStart = relativePositionInCycle == 1 || relativePositionInCycle == 3;
                 int paddingStart = isAtStart ? horizontalPadding : 0;
@@ -158,7 +160,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
                 int paddingRight = isLtr ? horizontalPadding : paddingStart;
                 outRect.set(paddingLeft, 0, paddingRight, verticalPadding);
             } else {
-                outRect.set(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
+                outRect.set(horizontalPadding, 0, horizontalPadding, verticalPadding);
             }
         }
     }
