@@ -74,7 +74,9 @@ errorprone:
     - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
-    - test $AVD_SDK -ge 25 || export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest
+    - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
+          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest;
+      fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
       || ./gradlew connectedFullDebugAndroidTest $FLAG
       || ./gradlew connectedFullDebugAndroidTest $FLAG
