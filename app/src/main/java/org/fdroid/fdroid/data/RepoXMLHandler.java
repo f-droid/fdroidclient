@@ -103,6 +103,18 @@ public class RepoXMLHandler extends DefaultHandler {
                     requestedPermissionsSet.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 requestedPermissionsSet.add(Manifest.permission.READ_EXTERNAL_STORAGE);
             }
+            if (curapk.targetSdkVersion <= 28) {
+                if (Build.VERSION.SDK_INT >= 29 &&
+                        (requestedPermissionsSet.contains(Manifest.permission.ACCESS_COARSE_LOCATION) ||
+                        requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION))) {
+                    // TODO: Change the below to Manifest.permission once we target SDK 29.
+                    requestedPermissionsSet.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                }
+            }
+            if (Build.VERSION.SDK_INT >= 29 &&
+                    requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                requestedPermissionsSet.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
             int size = requestedPermissionsSet.size();
             curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
             requestedPermissionsSet.clear();
