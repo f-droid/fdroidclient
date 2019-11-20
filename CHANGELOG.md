@@ -1,3 +1,11 @@
+### 1.8 (2019-11-20)
+
+* fix seekbar preference on recent Android versions (thanks @dkanada)
+
+* handle API 29 split-permissions: fine location now implies coarse location
+
+* define backup rules to avoid saving the swap repo
+
 ### 1.7.1 (2019-07-31)
 
 * fix crashes from ACRA report emails
