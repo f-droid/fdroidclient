@@ -37,6 +37,11 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
 
         found_simple_format = False  # %s
         found_numbered_format = False  # %1$s
+        if e.text is None:
+            fulltext = re.sub(r' *<string name="' + e.attrib['name'] + r'"> *</string> *\n?', '', fulltext)
+            print('%s: %s is blank!' % (str_path, e.attrib['name']))
+            count += 1
+            continue
         for m in formatRe.finditer(e.text):
             s = m.group(0)
             if simpleFormatRe.match(s):

@@ -395,8 +395,6 @@
     <string name="allow">Permitir</string>
     <string name="panic_settings">Axustes del botón de pánicu</string>
     <string name="panic_settings_summary">Aiciones que van facese en casu d\'emerxencia</string>
-    <string name="panic_exit_title"></string>
-    <string name="panic_exit_summary"></string>
     <string name="panic_destructive_actions">Aiciones destructives</string>
     <string name="panic_hide_title">Anubrir %s</string>
     <string name="panic_hide_summary">L\'aplicación va anubrise</string>
@@ -453,7 +451,6 @@
     <string name="share_repository">Compartición del depósitu</string>
     <string name="app_repository">Repositoriu: %1$s</string>
     <string name="main_menu__updates">Anovamientos</string>
-    <string name="nearby_splash__read_external_storage"></string>
     <string name="swap_toast_using_path">Usando %1$s</string>
     <string name="swap_starting">Aniciando…</string>
     <string name="swap_stopping">Parando…</string>
