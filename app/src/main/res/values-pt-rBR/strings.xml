@@ -58,7 +58,7 @@
     <string name="menu_upgrade">Atualizar</string>
     <string name="menu_donate">Fazer doação</string>
     <string name="details_notinstalled">Não instalado</string>
-    <string name="antiadslist">Este aplicativo contém propaganda</string>
+    <string name="antiadslist">Este aplicativo contém anúncios</string>
     <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
     <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>
     <string name="antinonfreenetlist">Este aplicativo promove serviços de rede não livres</string>
@@ -249,7 +249,7 @@
     <string name="permissions">Permissões</string>
     <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
-    <string name="theme_night">Noite</string>
+    <string name="theme_night">Noturno</string>
     <string name="menu_settings">Configurações</string>
     <string name="login_title">Autenticação necessária</string>
     <string name="login_name">Nome de usuário</string>
