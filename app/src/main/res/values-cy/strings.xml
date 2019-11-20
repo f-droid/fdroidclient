@@ -397,7 +397,7 @@
     <plurals name="details_last_update_years">
         <item quantity="zero">Diweddarwyd %1$d blynyddoedd yn ôl</item>
         <item quantity="one">Diweddarwyd %1$d flwyddyn yn ôl</item>
-        <item quantity="two">"Diweddarwyd %1$d flynedd  yn ôl"</item>
+        <item quantity="two">Diweddarwyd %1$d flynedd  yn ôl</item>
         <item quantity="few">Diweddarwyd %1$d blynedd yn ôl</item>
         <item quantity="many">Diweddarwyd %1$d blynedd yn ôl</item>
         <item quantity="other">Diweddarwyd %1$d mlynedd yn ôl</item>

@@ -392,7 +392,7 @@
     <string name="swap_blank_wifi_ssid">(खाली)</string>
     <string name="swap_hidden_wifi_ssid">(छिपा हुआ)</string>
     <string name="disabled">अक्षम</string>
-    <string name="repo_not_yet_updated">"यह रेपोसिटोरी अभी तक इस्तेमाल नहीं किया गया है।  अप्प्स को देखने के लिए इसको इनेबल करने की आवशक्ता है।"</string>
+    <string name="repo_not_yet_updated">यह रेपोसिटोरी अभी तक इस्तेमाल नहीं किया गया है।  अप्प्स को देखने के लिए इसको इनेबल करने की आवशक्ता है।</string>
     <string name="repo_confirm_delete_title">डिलीट रेपोसिटोरी \?</string>
     <string tools:ignore="UnusedResources" name="category_Theming">थेमिंग</string>
     <string name="empty_can_update_app_list">बधाई !
