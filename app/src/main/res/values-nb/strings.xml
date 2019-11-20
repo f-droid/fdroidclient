@@ -291,7 +291,7 @@
     <string name="keep_install_history">Behold installasjonshistorikk</string>
     <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer i et privat lager</string>
     <string name="update_auto_install">Installer oppdateringer automatisk</string>
-    <string name="update_auto_install_summary">Last ned og installer programoppdateringer i bakgrunnen, med visning av merknad.</string>
+    <string name="update_auto_install_summary">Last ned og oppdater apper i bakgrunnen, og vis et varsel</string>
     <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
     <string name="versions">Versjoner</string>
     <string name="app_details_donate_prompt_unknown_author">Spander kaffe på utviklerne av %1$s.</string>
@@ -488,7 +488,7 @@
     <string name="scan_removable_storage_title">Skann flyttbart medium</string>
     <string name="scan_removable_storage_summary">Se etter pakkebrønner på flyttbare medium som SD-kort og USB-minnepinner</string>
     <string name="app_repository">Pakkebrønn: %1$s</string>
-    <string name="nearby_splash__read_external_storage">SD-kort kan ikke brukes til sirkulering!</string>
+    <string name="nearby_splash__read_external_storage">Søk SD-kort for pakkebrønner og speil.</string>
     <string name="nearby_splash__request_permission">Prøv det</string>
     <string name="swap_toast_using_path">Bruker %1$s</string>
     <string name="swap_toast_not_removable_storage">Det valget samsvarte ikke med noe flyttbart medium, prøv igjen.</string>
@@ -504,18 +504,18 @@
     <string name="try_again">Prøv igjen</string>
     <string name="panic_will_be_wiped">Vil bli avinstallert og all data slettet</string>
     <string name="panic_apps_to_uninstall">Programmer som skal avinstalleres og all data slettes</string>
-    <string name="panic_add_apps_to_uninstall">Legg til programmer som skal avinstalleres og tømmes</string>
+    <string name="panic_add_apps_to_uninstall">Legg til apper som skal avinstalleres og slettes</string>
     <string name="panic_reset_repos_title">Tilbakestill pakkebrønner</string>
     <string name="panic_reset_repos_summary">Tving oppsett av pakkebrønn tilbake til forvalg</string>
     <string name="swap_visible_hotspot">Synlig via Internett-deling</string>
-    <string name="swap_blank_wifi_ssid">(blank)</string>
+    <string name="swap_blank_wifi_ssid">(tom)</string>
     <string name="swap_hidden_wifi_ssid">(skjult)</string>
     <string name="swap_setting_up_hotspot">Setter opp felles trådløstilknytning…</string>
     <string name="swap_stopping_hotspot">Slår av felles trådløstilknytning…</string>
     <string name="swap_starting">Starter…</string>
     <string name="swap_stopping">Slår av…</string>
     <string name="disabled">Avslått</string>
-    <string name="swap_error_cannot_start_bluetooth">Kunne ikke skru på Blåtann.</string>
+    <string name="swap_error_cannot_start_bluetooth">Kan ikke starte Blåtann!</string>
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
-    <string name="nearby_splash__document_tree">Gjennomsøk USB OTG for pakkebrønner og speil.</string>
+    <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>
 </resources>
