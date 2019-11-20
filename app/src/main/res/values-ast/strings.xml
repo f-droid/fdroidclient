@@ -154,7 +154,7 @@
     <string name="swap_send_fdroid">Unviar F-Droid</string>
     <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez un códigu d\'intercambéu.</string>
     <string name="swap_connection_misc_error">Asocedió un fallu mentanto se coneutaba col preséu, ¡nun pue intercambiase con elli!</string>
-    <string name="swap_confirm">Confirmación del intercambéu</string>
+    <string name="swap_confirm">Confirmación</string>
     <string name="swap_wifi_device_name">Nome del preséu</string>
     <string name="swap_visible_bluetooth">Visible per Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Configurando\'l Bluetooth…</string>
@@ -395,8 +395,8 @@
     <string name="allow">Permitir</string>
     <string name="panic_settings">Axustes del botón de pánicu</string>
     <string name="panic_settings_summary">Aiciones que van facese en casu d\'emerxencia</string>
-    <string name="panic_exit_title">Colar de l\'aplicación</string>
-    <string name="panic_exit_summary">L\'aplicación va zarrase</string>
+    <string name="panic_exit_title"></string>
+    <string name="panic_exit_summary"></string>
     <string name="panic_destructive_actions">Aiciones destructives</string>
     <string name="panic_hide_title">Anubrir %s</string>
     <string name="panic_hide_summary">L\'aplicación va anubrise</string>
@@ -453,6 +453,8 @@
     <string name="share_repository">Compartición del depósitu</string>
     <string name="app_repository">Repositoriu: %1$s</string>
     <string name="main_menu__updates">Anovamientos</string>
-    <string name="nearby_splash__read_external_storage">¡Les tarxetes SD pue usase pa intercambiar!</string>
+    <string name="nearby_splash__read_external_storage"></string>
     <string name="swap_toast_using_path">Usando %1$s</string>
+    <string name="swap_starting">Aniciando…</string>
+    <string name="swap_stopping">Parando…</string>
 </resources>
