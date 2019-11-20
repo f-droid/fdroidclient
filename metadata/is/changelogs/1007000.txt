@@ -1,0 +1,11 @@
+* Stór yfirhalning á býttiviðmótinu (swap-UI), undirbúið að endurskrifa það alveg
+
+* Birt "Afturkalla" eftir að atriði eru strokin út af "Uppfærslur" flipanum (takk @Hocuri!)
+
+* Löguð meðhöndlun á ETag þegar tengst er við NGINX-pakkaspegla #1737
+
+* Löguð vandamál með birtingu "Nýjast" vegna rangrar meðhöndlunar tímabelta #1757
+
+* Hunsa öll minna-mikilvæg hrun í bakgrunnsþjónustum
+
+* Nota ekki 'Privileged Extension' viðbótina ef slökkt er á henni í "Stillingar"

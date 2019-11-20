@@ -240,7 +240,7 @@
         útgáfuna verður að fjarlægja fyrst þá eldri. Gerðu þetta og prófaðu aftur. (Athugaðu að fjarlæging forritsins
         mun hreinsa út öll gögn sem forritið geymir)
     </string>
-    <string name="installIncompatible">Forritið er ekki samhæfðt tækinu þínu. Viltu samt prófa að setja það upp?</string>
+    <string name="installIncompatible">Forritið er ekki samhæft tækinu þínu. Viltu samt prófa að setja það upp\?</string>
     <string name="repo_exists_add_fingerprint">%1$s er þegar uppsett, þetta mun bæta við nýjum lykilupplýsingum.</string>
     <string name="repo_exists_enable">%1$s er þegar uppsett, staðfestu að þú viljir endurvirkja það.</string>
     <string name="repo_exists_and_enabled">%1$s er þegar uppsett og virkjað.</string>
@@ -268,10 +268,9 @@
         Athugaðu: Öll forrit sem þegar hafa verið sett inn,
         munu haldast á tækinu þínu.
     </string>
-    <string name="repo_disabled_notification">Gerði %1$s óvirkt.
-
-        Þú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.
-    </string>
+    <string name="repo_disabled_notification">Gerði %1$s óvirkt. 
+\n
+\nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
     <string name="not_on_same_wifi">Tækið þitt er ekki á sama Wi-Fi netinu og staðværa hugbúnaðarsafnið sem þú varst að
         bæta við! Reyndu að tengjast þessu neti: %s
     </string>
