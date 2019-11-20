@@ -1,6 +1,6 @@
 * Ispiluak desgaitzeko aukera gehitu da biltegien zehetasunetara (#1696)
 
-* Ausazko ispiluaren aukeraketa pakete/apk bakoitzaren deskargarako
+* Ausazko ispiluaren aukeraketa pakete/APK bakoitzaren deskargarako
 
 * APK guztien deskargak biltegiko cacheatzen dira, ez ispiluko
 

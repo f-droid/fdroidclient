@@ -1,0 +1,11 @@
+* Trukearen interfazearen aldaketa sakona, berridazketarako prest
+
+* Desegin" erakustea eguneraketen fitxatik elementuak kentzean (eskerrak @Hocuri!)
+
+* ETag etiketen kudeaketa hobea NGINX ispiluetara konektatzean #1737
+
+* "Azkenak" atalean ordu zonaldearen araberako arazoak konponduta #1757
+
+* Bigarren planoko garrantzi gabeko kraskatzeak ezikusten dira
+
+* Ez erabili pribilegiodun luzapena ezarpenetan desgaitu bada

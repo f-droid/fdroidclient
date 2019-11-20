@@ -1,0 +1,5 @@
+* inguruko trukea berridatzi da gailuaren AP wifi gunea erabiliz
+
+* larrialdiko erantzun berriak: aplikazioak desinstalatu eta biltegiak lehenetsitakoetara itzuli
+
+* lehen abioan proxyen euskarria konponduta

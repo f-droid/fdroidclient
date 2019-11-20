@@ -1,0 +1,16 @@
+F-droid instalatu daitekeen Android plataformarako aplikazio librearen katalogo bat da.
+F-Droid bezeroari eske erreza da hauek arakatzea, instalatzea eta eguneraketen jarraipena egitea zure gailuan.
+
+F-Droid-ekin bateragarriak diren biltegietara konektatzen da.
+Lehenetsitako biltegia f-droid.org da, eta egiaztatutako software librea besterik ez dauka.
+
+Android berez irekia da, Non nahitik APK fitxategiak instalatzea baimentzen du alegia,
+baina arrazoi ugari daude F-Droid zure software librearentzako aplikazio kudeatzaile gisa erabiltzeko:
+
+* Eguneraketen jakinarazpenak jaso
+* Aukeran eguneraketak automatikoki deskargatu eta instalatu
+* Bertsio zaharren eta beta bertsioen jarraipena egin
+* Gailuarekin bateragarriak ez diren aplikazioak iragazi
+* Aplikazioak kategoriaren arabera eta bilaketen arabera aurkitu
+* Dohaintzak egiteko URLak
+* Segurtasuna zaintzea biltegiaren indizearen sinadurak eta APK fitxategien hash.a egiaztatuz

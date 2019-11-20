@@ -1,0 +1,3 @@
+* Eguneratutako itzulpenak
+* Botoien tamainaren arazoa konponduta #1678
+* Bigarren planoan ausaz kraskatzea konponduta
