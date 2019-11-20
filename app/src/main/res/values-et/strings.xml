@@ -299,7 +299,7 @@
     <string name="force_old_index">Sunni vana indeksi vorming</string>
     <string name="force_old_index_summary">Kasuta vigade või ühilduvusprobleemide ilmnemisel rakenduste XML indeksit</string>
     <string name="update_auto_install">Paigalda värskendused automaatselt</string>
-    <string name="update_auto_install_summary">Laadi alla ja paigalda rakenduste värskendused taustal</string>
+    <string name="update_auto_install_summary">Laadi alla ja värskenda rakendusi taustal ning kuva teavitus</string>
     <string name="app_details_donate_prompt_unknown_author">Osta %1$s  arendajatele kohvi!</string>
     <string name="app_details_donate_prompt">%1$s loojad on %2$s. Osta neile kohvi!</string>
     <string name="app_details__incompatible_mismatched_signature">Signatuur erineb paigaldatud versiooni omast</string>
@@ -416,7 +416,7 @@
     <string name="panic_settings">Paanikanupu seaded</string>
     <string name="panic_settings_summary">Tegevused, mida hädaolukorras rakendada</string>
     <string name="panic_exit_title">Välju rakendusest</string>
-    <string name="panic_exit_summary">Rakendus suletakse</string>
+    <string name="panic_exit_summary">See rakendus suletakse</string>
     <string name="panic_destructive_actions">Hävitavad tegevused</string>
     <string name="panic_hide_title">Peida %s</string>
     <string name="panic_hide_summary">Rakendus peidab end ise</string>
@@ -479,8 +479,8 @@
     <string name="app_repository">Hoidla: %1$s</string>
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
     <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>
-    <string name="nearby_splash__read_external_storage">SD kaarte saab kasutada vahetamiseks!</string>
-    <string name="nearby_splash__request_permission">Proovi seda</string>
+    <string name="nearby_splash__read_external_storage">Otsi SD kaardilt hoidlaid ja peegleid.</string>
+    <string name="nearby_splash__request_permission">Proovi</string>
     <string name="swap_toast_using_path">Kasutatakse %1$s</string>
     <string name="swap_toast_not_removable_storage">See valik ei vastanud mitte ühelegi eemaldatavale mäluseadmele. Proovi uuesti!</string>
     <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD kaart või uSB mälupulk</string>
@@ -488,4 +488,25 @@
     <string name="not_visible_nearby">Naabrus pole lubatud</string>
     <string name="not_visible_nearby_description">Tee enda seade enne vahetamist naabruses oleva seadmega nähtavaks.</string>
     <string name="main_menu__updates">Värskendused</string>
+    <string name="menu_translation">Tõlge</string>
+    <string name="undo">Võta tagasi</string>
+    <string name="app_list__dismiss_installing_app">Paigaldus tühistatud</string>
+    <string name="menu_select_for_wipe">Vali puhastamiseks</string>
+    <string name="try_again">Proovi uuesti</string>
+    <string name="panic_will_be_wiped">Eemaldatakse ja kõik andmed kustutatakse</string>
+    <string name="panic_apps_to_uninstall">Rakendused, mida eemaldada ja mille andmed kustutada</string>
+    <string name="panic_add_apps_to_uninstall">Lisa eemaldatavaid ja puhastatavaid rakendusi</string>
+    <string name="panic_reset_repos_title">Lähtesta hoidlad</string>
+    <string name="panic_reset_repos_summary">Taasta hoidlate vaikehäälestus jõuga</string>
+    <string name="swap_visible_hotspot">Pääsupunktist nähtav</string>
+    <string name="swap_blank_wifi_ssid">(tühi)</string>
+    <string name="swap_hidden_wifi_ssid">(peidetud)</string>
+    <string name="swap_setting_up_hotspot">Pääsupunkti üles seadmine…</string>
+    <string name="swap_stopping_hotspot">Pääsupunkti peatamine…</string>
+    <string name="swap_starting">Käivitamine…</string>
+    <string name="swap_stopping">Peatamine…</string>
+    <string name="disabled">Keelatud</string>
+    <string name="swap_error_cannot_start_bluetooth">Bluetoothi ei saa käivitada!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Naabrus suleti, sest teda ei kasutatud.</string>
+    <string name="nearby_splash__document_tree">Otsi USB OTG meedialt hoidlaid ja peegleid.</string>
 </resources>

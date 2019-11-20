@@ -1,0 +1,18 @@
+F-Droid on paigaldatav vaba tarkvara rakenduste kataloog Androidile.
+F-Droidi kliendirakendus lubab lihtsalt sirvida, paigaldada ja hoida 
+silm peal oma seadme rakenduste värskendustel.
+
+Ta ühendub kõigi F-Droidiga  ühilduvate hoidlatega. Vaikimisi hoidla 
+on saidil f-droid.org ja pakub ainult tõelist vaba tarkvara.
+
+Android ise on avatud selles mõttes, et sa oled vaba paigaldamaks 
+APK faile kõikjalt, kus sa soovid, kuid F-Droidi kasutamisel on mitmeid 
+eeliseid su vaba tarkvara rakenduste haldurina:
+
+* Oled teavitatud, kui värskendused on saadaval
+* Valikuline värskenduste alla laadimine ja paigaldamine
+* Jälgi rakenduste vanemaid ja prooviversioone
+* Filtreeri välja seadme mitteühilduvad rakendused
+* Otsi rakendusi kategooriate ja otsitavate kirjelduste kaudu
+* Pöördu seotud annetuste, lähtekoodi jms. viidetele
+* Ole turvatud kontrollides hoidla indeksi allkirju ja APK räsisid
