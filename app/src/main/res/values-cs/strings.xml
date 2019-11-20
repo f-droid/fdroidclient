@@ -185,16 +185,16 @@
     <string name="empty_can_update_app_list">Gratulujeme!\nVšechny nainstalované aplikace jsou aktuální.</string>
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
-    <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
+    <string name="swap_join_this_hotspot">Pomoz přátelům s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
     <string name="swap_active_hotspot">%1$s (tvůj hotspot)</string>
     <string name="swap_dont_show_again">Toto už nezobrazovat</string>
     <string name="swap_choose_apps">Vybrat aplikace</string>
     <string name="swap_scan_qr">Skenovat QR kód</string>
-    <string name="swap_people_nearby">Lidé v blízkosti</string>
+    <string name="swap_people_nearby">Lidé Nablízku</string>
     <string name="swap_scanning_for_peers">Hledání lidí v blízkosti…</string>
-    <string name="swap_nearby">Lokální výměna</string>
+    <string name="swap_nearby">Výměna Nablízku</string>
     <string name="swap_visible_bluetooth">Viditelné přes Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Nastavení Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Skryté přes Bluetooth</string>
@@ -252,7 +252,7 @@
     </string>
     <string name="swap_intro">Propojte se a vyměňujte si aplikace s lidmi z okolí.</string>
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
-    <string name="swap_no_peers_nearby">Nelze nalézt lidi v okolí pro výměnu aplikací.</string>
+    <string name="swap_no_peers_nearby">V blízkosti nenalezen nikdo pro výměnu aplikací.</string>
     <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
     <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
         Aktuální data nebudou ztracena.
@@ -287,7 +287,7 @@
     <string name="keep_install_history">Uchovat historii instalací</string>
     <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích soukromém úložišti</string>
     <string name="update_auto_install">Automaticky nainstalovat aktualizace</string>
-    <string name="update_auto_install_summary">Převzít a nainstalovat aktualizace aplikací na pozadí</string>
+    <string name="update_auto_install_summary">Stažení a aktualizace aplikací na pozadí, zobrazení oznámení</string>
     <string name="versions">Verze</string>
     <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
@@ -373,8 +373,8 @@
         <item quantity="other">Zobrazit všech %d</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Není k dispozici připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
-    <string name="nearby_splash__find_people_button">Najít zařízení poblíž</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Je třeba, aby obě strany používaly %1$s aby bylo možné využít funkce poblíž.</string>
+    <string name="nearby_splash__find_people_button">Najít zařízení v blízkosti</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Je třeba, aby obě strany používaly %1$s aby bylo možné využít funkce Nablízku.</string>
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d další…</item>
@@ -457,8 +457,8 @@
     <string name="repo_exists_add_mirror">Toto je kopie %1$s, přidat ji jako zrcadlo?</string>
     <string name="use_bluetooth">Použít bluetooth</string>
     <string name="swap_toast_invalid_url">Neplatná URL adresa pro prohození: %1$s</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi přístupový bod zapnut</string>
-    <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout Wi-Fi přístupový bod!</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot zapnut</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout Wi-Fi hotspot!</string>
     <string name="over_wifi">Přes Wi-Fi</string>
     <string name="over_data">Přes mobilní data</string>
     <string name="over_network_always_summary">Pokud je k dispozici, vždy použít toto připojení</string>
@@ -492,14 +492,33 @@
     <string name="scan_removable_storage_toast">Prohledávám %s…</string>
     <string name="scan_removable_storage_summary">Hledat repozitáře v odpojitelných úložištích (např. SD karty a USB disky)</string>
     <string name="app_repository">Repozitář: %1$s</string>
-    <string name="nearby_splash__read_external_storage">SD karty lze použít k výměně!</string>
-    <string name="nearby_splash__request_permission">Vyskoušet</string>
-    <string name="not_visible_nearby">Funkce Poblíž je vypnuta</string>
-    <string name="not_visible_nearby_description">Před sdílením se zařízeními poblíž, zapněte viditelnost tohoto zařízení.</string>
+    <string name="nearby_splash__read_external_storage">Vyhledat repozitáře a zrcadlení na SD kartě.</string>
+    <string name="nearby_splash__request_permission">Vyzkoušet</string>
+    <string name="not_visible_nearby">Funkce Nablízku je vypnuta</string>
+    <string name="not_visible_nearby_description">Před sdílením se zařízeními v blízkosti, zapněte viditelnost tohoto zařízení.</string>
     <string name="swap_toast_using_path">Používám %1$s</string>
     <string name="swap_toast_not_removable_storage">Vybraná složka neodpovídá žádným odpojitelným úložištím, zkuste to znovu!</string>
     <string name="swap_toast_find_removeable_storage">Vyberte vaši SD kartu nebo USB flash disk</string>
     <string name="main_menu__updates">Aktualizace</string>
     <string name="try_again">Zkusit znovu</string>
     <string name="panic_will_be_wiped">Bude odinstalováno a veškerá data budou smazána</string>
+    <string name="menu_translation">Překlad</string>
+    <string name="undo">Zpět</string>
+    <string name="app_list__dismiss_installing_app">Instalace byla zrušena</string>
+    <string name="menu_select_for_wipe">Vybrat pro vymazání</string>
+    <string name="panic_apps_to_uninstall">Aplikace, které mají být odinstalovány a všechna data vymazána</string>
+    <string name="panic_add_apps_to_uninstall">Přidat aplikace, které mají být odinstalovány a vymazány</string>
+    <string name="panic_reset_repos_title">Obnovit repozitáře</string>
+    <string name="panic_reset_repos_summary">Vynutit výchozí nastavení repozitáře</string>
+    <string name="swap_visible_hotspot">Viditelné prostřednictvím hotspotu</string>
+    <string name="swap_blank_wifi_ssid">(prázdný)</string>
+    <string name="swap_hidden_wifi_ssid">(skrytý)</string>
+    <string name="swap_setting_up_hotspot">Nastavení hotspotu…</string>
+    <string name="swap_stopping_hotspot">Zastavení hotspotu…</string>
+    <string name="swap_starting">Spouštění…</string>
+    <string name="swap_stopping">Ukončování…</string>
+    <string name="disabled">Vypnuto</string>
+    <string name="swap_error_cannot_start_bluetooth">"Nelze spustit  Bluetooth!"</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Funkce Nablízku ukončena kvůli nečinnosti.</string>
+    <string name="nearby_splash__document_tree">Vyhledat repozitáře a zrcadlení na USB OTG.</string>
 </resources>
