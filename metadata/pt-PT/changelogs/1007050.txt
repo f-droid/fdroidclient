@@ -1,6 +1,6 @@
-* Revisão geral da interface swap, preparando para reescrever
-* Mostrar "Desfazer" depois de remover itens da guia Atualizações (obrigado @Hocuri!)
-* Corrigir problemas com o ecrã "Último" causado pelo mau tratamento dos fusos horários #1757
-* Ignorar todos os crashes sem importância em serviços de fundo
-* adicionar novas respostas de pânico: desinstalar aplicativos e redefinir reposições para predefinição
-* As unidades flash USB OTG podem ser usadas como repositórios e espelhos próximos
+* revisão geral da interface swap, preparando para reescrever
+* mostrar "desfazer" depois de remover itens da aba Atualizações (obrigado @Hocuri!)
+* corrigir problemas com o ecrã "Último" causado pelo mau tratamento dos fusos horários #1757
+* ignorar todos os crashes sem importância em serviços de fundo
+* adicionar novas respostas de pânico: desinstalar apps e redefinir reposições para predefinição
+* unidades flash USB OTG podem ser usadas como repositórios e espelhos próximos

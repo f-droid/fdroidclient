@@ -102,18 +102,20 @@
     <string name="proxy_host_summary">Nome do seu servidor proxy (ex: 127.0.0.1)</string>
     <string name="proxy_port">Porta do proxy</string>
     <string name="proxy_port_summary">Número da porta do seu proxy (ex: 8118)</string>
-    <string name="status_download">A descarregar
-\n%2$s / %3$s (%4$d%%) de
+    <string name="status_download">A transferir
+\n%2$s / %3$s (%4$d%%) de 
 \n%1$s</string>
-    <string name="status_download_unknown_size">A descarregar\n%2$s de\n%1$s</string>
-    <string name="update_notification_title">A atualizar repositórios</string>
+    <string name="status_download_unknown_size">A transferir
+\n%2$s de
+\n%1$s</string>
+    <string name="update_notification_title">A atualizar os repositórios</string>
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
-    <string name="status_connecting_to_repo">A conectar a
+    <string name="status_connecting_to_repo">A ligar a 
 \n%1$s</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
     <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
-    <string name="no_permissions">Não utiliza permissões.</string>
+    <string name="no_permissions">Não são utilizadas permissões.</string>
     <string name="no_handler_app">Não tem nenhuma aplicação capaz de lidar com %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Não assinada</string>
@@ -264,7 +266,7 @@
     <string name="menu_email">E-mail do autor</string>
     <string name="repo_provider">Repositório: %s</string>
     <string name="useTor">Utilizar Tor</string>
-    <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade. Requer a aplicação Orbot</string>
+    <string name="useTorSummary">Forçar tráfego de transferências via Tor para uma melhor privacidade. Requer Orbot</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
     <string name="update_auto_download">Obter atualizações automaticamente</string>
     <string name="update_auto_download_summary">As descargas são automáticas e será notificado para as instalar</string>
@@ -391,7 +393,7 @@
     <string name="app_installed_media">Ficheiro instalado em %s</string>
     <string name="app_permission_storage">O F-Droid necessita de aceder ao armazenamento. Por favor conceda essa permissão no próximo ecrã para continuar com a instalação.</string>
     <string name="app_list_download_ready">Descarregada e pronta para instalar</string>
-    <string name="status_inserting_x_apps">A guardar detalhes das aplicações (%1$d/%2$d) de %3$s</string>
+    <string name="status_inserting_x_apps">A guardar os detalhes de aplicação (%1$d/%2$d) de %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">Assinatura diferente da versão instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a opção \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Não existem versões com uma assinatura compatível</string>
@@ -434,11 +436,11 @@
     <string name="force_touch_apps_on">Mostrar aplicações que necessitem de ecrã tátil mesmo que equipamento não seja tátil</string>
     <string name="panic_app_setting_title">Aplicação de botão de pânico</string>
     <string name="panic_app_dialog_title">Confirmar aplicação de pânico</string>
-    <string name="panic_app_dialog_message">Tem a certeza de que quer permitir que %1$s ative as ações do botão de pânico\?</string>
+    <string name="panic_app_dialog_message">Tem a certeza que pretende permitir que %1$s ative as ações do botão de pânico destrutivas\?</string>
     <string name="panic_settings">Definições do botão de pânico</string>
     <string name="panic_hide_summary">A aplicação ocultar-se-á</string>
     <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
-    <string name="hiding_dialog_message">Tem a certeza de que quer remover %1$s do ecrã inicial\? Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
+    <string name="hiding_dialog_message">Tem a certeza que quer remover %1$s do ecrã inicial\? Digitar apenas \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_dialog_warning">Aviso: qualquer atalho existente no ecrã será removido e terá que ser adicionado manualmente.</string>
     <string name="repo_official_mirrors">Servidores espelho oficiais</string>
     <string name="repo_user_mirrors">Servidores espelho do utilizador</string>
@@ -496,8 +498,8 @@
     <string name="panic_will_be_wiped">Será desinstalado e todos os dados serão apagados</string>
     <string name="panic_apps_to_uninstall">Aplicativos a serem desinstalados e todos os dados apagados</string>
     <string name="panic_add_apps_to_uninstall">Adicionar aplicativos a serem desinstalados e limpos</string>
-    <string name="panic_reset_repos_title">Reinicializar repos</string>
-    <string name="panic_reset_repos_summary">Forçar a configuração do repositório de volta ás predefinições</string>
+    <string name="panic_reset_repos_title">Reinicializar repositório</string>
+    <string name="panic_reset_repos_summary">Forçar a configuração do repositório para as predefinições</string>
     <string name="swap_visible_hotspot">Visível via hotspot</string>
     <string name="swap_blank_wifi_ssid">(em branco)</string>
     <string name="swap_hidden_wifi_ssid">(oculto)</string>
