@@ -1,0 +1,5 @@
+* granskade byte i närheten med enhetens hotspot AP
+
+* lägg till nya paniksvar: app avinstallerar och återställer repos till standard
+
+* fixa proxystöd vid första start
