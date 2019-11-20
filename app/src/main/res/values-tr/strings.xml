@@ -495,6 +495,6 @@
     <string name="swap_error_cannot_start_bluetooth">Bluetooth başlatılamadı!</string>
     <string name="panic_will_be_wiped">Kaldırılacak ve bütün veriler silinecek</string>
     <string name="panic_add_apps_to_uninstall">Kaldıralacak ve silinecek uygulamaları ekle</string>
-    <string name="nearby_splash__document_tree">Depolar ve yansılar için USB OTG ara</string>
+    <string name="nearby_splash__document_tree">Depolar ve yansılar için USB OTG ara.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Kullanımda olmadığından, yakın zamanda kapatıldı.</string>
 </resources>

@@ -1,0 +1,7 @@
+* Güncellemeler sekmesine kaydırma hareketleri eklendi
+
+* BilinenAçıklar için Güncellemeler sekmesindeki işlemlerle uyarıları göster
+
+* Çeviriler güncellendi
+
+* Koyu kullanıcı arayüzü düzeltmeleri

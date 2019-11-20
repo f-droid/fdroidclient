@@ -1,0 +1,3 @@
+* Çevirilerin Android'de görünmesini engelleyen hatanın düzeltilmesi >= 7.0
+
+* 1.0-alpha3 → 1.0-alpha4 geçişinde DB yükseltme çökmesinin düzeltilmesi #1181
