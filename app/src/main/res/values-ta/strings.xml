@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை.
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
@@ -9,7 +9,6 @@
     <string name="updates">மேம்படுத்தல்கள்</string>
     <string name="unstable_updates">உறுதியற்ற மேம்பாடுகள்</string>
     <string name="other">பிற</string>
-
     <string name="update_auto_download">மேம்பாடுகளை தானாக தறவிறக்கு</string>
     <string name="notify">மேம்படுத்தலுக்கான அறிவிப்புகள்</string>
     <string name="notify_on">மேம்படுத்தல்கள் கிடைக்கப்பெறும் பொழுது அறிவிப்புகளை காண்பி</string>
@@ -19,25 +18,19 @@
     <string name="repo_edit_credentials">கடவுச்சொல்லை மாற்று</string>
     <string name="repo_error_empty_username">பயனர் பெயர் கொடுக்கப்படாததால் எந்த மாற்றமும் இல்லை</string>
     <string name="main_menu__swap_nearby">அருகிலுள்ளவை</string>
-
     <string name="app_details">செயலி விபரங்கள்</string>
-    <string name="no_such_app">அப்படி எந்த செயலியும் இல்லை</string>
-
+    <string name="no_such_app">அப்படி எந்த செயலியும் இல்லை.</string>
     <string name="about_title">F-Droid பற்றி</string>
     <string name="about_version">பதிப்பு</string>
     <string name="about_site">வலைதளம்</string>
     <string name="about_source">மூல ஆதார நிரல்</string>
     <string name="about_license">உரிமம்</string>
-
     <string name="app_installed">நிறுவப்பட்டது</string>
     <string name="app_not_installed">நிறுவப்படவில்லை</string>
     <string name="app_inst_known_source">நிறுவப்பட்டது (%s லிருந்து)</string>
     <string name="app_inst_unknown_source">நிறுவப்பட்டது (ஆதாரம் தெரியவில்லை)</string>
-
     <string name="added_on">சேர்க்கப்பட்ட தேதி %s</string>
-
     <string name="ok">சரி</string>
-
     <string name="yes">ஆம்</string>
     <string name="no">இல்லை</string>
     <string name="repo_add_title">புதிய களஞ்சியத்தை சேர்க்க</string>
@@ -45,19 +38,16 @@
     <string name="links">இணைப்புகள்</string>
     <string name="more">மேலும்</string>
     <string name="less">குறைவான</string>
-
     <string name="back">பின்</string>
     <string name="cancel">ரத்து செய்</string>
     <string name="enable">செயல்படுத்த</string>
     <string name="overwrite">மாற்றி எழுது</string>
-
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
-    <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல</string>
+    <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல.</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
     <string name="menu_settings">அமைப்பு</string>
     <string name="menu_search">தேடல்</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>
-
     <string name="menu_share">பகிர</string>
     <string name="menu_install">நிறுவு</string>
     <string name="menu_uninstall">அகற்று</string>
@@ -73,8 +63,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">நிறுவப்படவில்லை</string>
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளன</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
@@ -86,6 +74,18 @@
     <string name="category_Money">பணம்</string>
     <string name="newPerms">புதியன</string>
     <string name="notification_action_install">நிறுவு</string>
-
     <string name="repo_details">களஞ்சியம்</string>
+    <string name="SignatureMismatch">புதிய பதிப்பு பழையவற்றுக்கு வேறு விசையுடன் கையொப்பமிடப்பட்டுள்ளது. புதிய பதிப்பை நிறுவ, பழையதை முதலில் நிறுவல் நீக்க வேண்டும். தயவுசெய்து இதைச் செய்து மீண்டும் முயற்சிக்கவும். (நிறுவல் நீக்குவது பயன்பாட்டின் மூலம் சேமிக்கப்பட்ட எந்த உள் தரவையும் அழிக்கும் என்பதை நினைவில் கொள்க)</string>
+    <string name="enable_proxy_summary">அனைத்து பிணைய கோரிக்கைகளுக்கும் HTTP ப்ராக்ஸியை உள்ளமைக்கவும்</string>
+    <string name="proxy_host">ப்ராக்ஸி ஹோஸ்ட்</string>
+    <string name="proxy_host_summary">உங்கள் ப்ராக்ஸியின் ஹோஸ்ட்பெயர் (எ.கா. 127.0.0.1)</string>
+    <string name="proxy_port">ப்ராக்ஸி போர்ட்</string>
+    <string name="proxy_port_summary">உங்கள் ப்ராக்ஸியின் போர்ட் எண் (எ.கா. 8118)</string>
+    <string name="status_processing_xml_percent">% 1 $ s இலிருந்து% 2 $ s /% 3 $ s (% 4 $ d %%) செயலாக்குகிறது</string>
+    <string name="status_inserting_apps">பயன்பாட்டு விவரங்களைச் சேமிக்கிறது</string>
+    <string name="theme_light">ஒளி</string>
+    <string name="theme_dark">இருண்ட</string>
+    <string name="theme_night">இரவு</string>
+    <string name="notification_action_cancel">ரத்து</string>
+    <string name="unknown">அறியப்படாத</string>
 </resources>
