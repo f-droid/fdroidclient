@@ -1,0 +1,1 @@
+* Le penne USB OTG possono essere usate come repo e mirror locali
