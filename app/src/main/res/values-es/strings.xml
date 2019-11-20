@@ -423,7 +423,7 @@
     <string name="panic_settings">Ajustes de botón de pánico</string>
     <string name="panic_settings_summary">Acciones a tomar en caso de emergencia</string>
     <string name="panic_exit_title">Salir de la aplicación</string>
-    <string name="panic_exit_summary">Se cerrará la aplicación</string>
+    <string name="panic_exit_summary">Se cerrará esta aplicación</string>
     <string name="panic_destructive_actions">Acciones destructivas</string>
     <string name="panic_hide_title">Ocultar %s</string>
     <string name="panic_hide_summary">La aplicación se ocultará</string>
@@ -486,9 +486,9 @@
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="app_repository">Repositorio: %1$s</string>
-    <string name="scan_removable_storage_summary">Busque repositorios de paquetes en almacenamiento extraíble como tarjetas SD y unidades USB</string>
+    <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en el almacenamiento extraíble como tarjetas SD y unidades USB</string>
     <string name="main_menu__updates">Actualizaciones</string>
-    <string name="nearby_splash__read_external_storage">Las tarjetas SD se pueden utilizar como swap!</string>
+    <string name="nearby_splash__read_external_storage">Buscar por repositorios y mirrors en la tarjeta SD.</string>
     <string name="nearby_splash__request_permission">Probar</string>
     <string name="not_visible_nearby">Nearby no habilitado</string>
     <string name="not_visible_nearby_description">Antes de intercambiar con dispositivos cercanos, haga visible su dispositivo.</string>
@@ -496,4 +496,24 @@
     <string name="swap_toast_not_removable_storage">Esa opción no coincide con ningún dispositivo de almacenamiento extraíble, ¡inténtalo de nuevo!</string>
     <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
     <string name="menu_translation">Traducción</string>
+    <string name="menu_select_for_wipe">Selecciona para eliminar</string>
+    <string name="try_again">Intentar de nuevo</string>
+    <string name="panic_will_be_wiped">Se desinstalará y se eliminarán todos los datos</string>
+    <string name="panic_apps_to_uninstall">Aplicaciones que se van a desinstalar y todos los datos eliminados</string>
+    <string name="panic_add_apps_to_uninstall">Añadir las aplicaciones que se van a desinstalar y a borrar</string>
+    <string name="panic_reset_repos_title">Reinicializar repositorios</string>
+    <string name="panic_reset_repos_summary">Reinicializar la configuración de repositorios</string>
+    <string name="swap_visible_hotspot">Visible por punto wifi</string>
+    <string name="swap_blank_wifi_ssid">(blanco)</string>
+    <string name="swap_hidden_wifi_ssid">(oculto)</string>
+    <string name="swap_setting_up_hotspot">Iniciando punto wifi…</string>
+    <string name="swap_stopping_hotspot">Parando punto wifi…</string>
+    <string name="swap_starting">Iniciando…</string>
+    <string name="swap_stopping">Parando…</string>
+    <string name="disabled">Deshabilitado</string>
+    <string name="swap_error_cannot_start_bluetooth">No se puede iniciar Bluetooth!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Cerré Nearby ya que estaba inactivo.</string>
+    <string name="undo">Deshacer</string>
+    <string name="app_list__dismiss_installing_app">Instalación cancelada</string>
+    <string name="nearby_splash__document_tree">Buscar por repositorios y mirrors en USB OTG.</string>
 </resources>

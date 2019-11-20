@@ -1,0 +1,5 @@
+* swap cercado remozado usando el hotspot AP del dispositivo
+
+* añadir nuevas respuestas al pánico: la app desinstala y restablece repositorios a su estado de serie
+
+* corregir el soporte de proxy en el primer inicio

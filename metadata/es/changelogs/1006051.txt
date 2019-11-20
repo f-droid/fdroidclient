@@ -1,0 +1,3 @@
+* Traducciones actualizadas
+* Problemas con el tamaño de botón corregidos #1678
+* Caídas aleatorias en segundo plano eliminadas

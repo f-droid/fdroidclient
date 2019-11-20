@@ -1,0 +1,13 @@
+* Última solapa ahora destaca apps com descripciones, traducciones, capturas de pantalla
+
+* Descarga automatica desde espejos. Acelera y reduce carga.
+
+* Desactiva espejos usando interruptores nuevos en RepoDetails (#1696)
+
+* Cachaado de descargar mas eficiente (#1708)
+
+* Arregla instalaciones que requieren fuentes desconocidas con Extensión Privilegiada (#1702)
+
+* Arregla iconos que faltan para quienes no usan Wi-Fi (#1592)
+
+* Traducciones mejoradas para solapa de Atualizaciones vs preferencia

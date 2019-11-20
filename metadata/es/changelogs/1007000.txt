@@ -1,0 +1,11 @@
+* Revisión profunda del interfaz de intercambio, preparando para rescribir
+
+* Mostrar "Deshacer" después de eliminar elementosde la solapa "Actualizaciones" (gracias @Hocuri!)
+
+* Arreglar el  menejo de ETag al conectar con os espejos NGINX #1737
+
+* Corregir incidencias con el "Último" display causado por tratamiento erróneo de husos horarios #1757
+
+* Ignorar todos los cuelgues sin importancia en servicos en segundo plano
+
+* No usar la Extensión Privilegiada si está desactivada en "Configuración"
