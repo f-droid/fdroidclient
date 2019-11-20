@@ -2,6 +2,6 @@
 * montri “malfari” post formovi elementojn en la langeto de ĝisdatigoj (danke al @Hocuri)
 * riparita problemo pri vidigi la langeton “novaj” kaŭzita pro malĝusta horzono (#1757)
 * ignori ĉiujn malgravajn paneojn de fonaj servoj
-* aldonis panikajn agojn: malinstali aplikaĵojn kaj restarigi implicitajn deponejojn
-* riparita subteno por retperanto je unua
+* proksima interŝanĝo per aparata retkaptejo
+* panikaj agoj: malinstali aplikaĵojn kaj restarigi implicitajn deponejojn
 * eblas uzi poŝmemorilojn USB On-The-Go kiel proksimajn deponejojn kaj spegul‑servilojn

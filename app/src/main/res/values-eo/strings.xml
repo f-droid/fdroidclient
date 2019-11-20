@@ -27,7 +27,7 @@
     <string name="menu_manage">Deponejoj</string>
     <string name="menu_search">Serĉi</string>
     <string name="menu_add_repo">Nova deponejo</string>
-    <string name="menu_launch">Malfermi</string>
+    <string name="menu_launch">Startigi</string>
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_install">Instali</string>
     <string name="menu_uninstall">Malinstali</string>
