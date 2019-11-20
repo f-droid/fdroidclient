@@ -461,7 +461,7 @@
     <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی رسانهٔ جداشدنی مثل کارت‌های SD و حافظه‌های USB</string>
     <string name="app_repository">مخزن: %1$s</string>
     <string name="main_menu__updates">به‌روز رسانی‌ها</string>
-    <string name="nearby_splash__read_external_storage">کارت SD می‌تواند برای تاخت زدن استفاده شود!</string>
+    <string name="nearby_splash__read_external_storage">کارت SD را برای آینه‌ها و مخازن جستجو کنید.</string>
     <string name="nearby_splash__request_permission">بیازماییدش</string>
     <string name="not_visible_nearby">اطراف فعّال نیست</string>
     <string name="not_visible_nearby_description">پیش از تاخت زدن با دستگاه‌های اطراف، دستگاهتان را قابل مشاهده کنید.</string>
@@ -469,4 +469,24 @@
     <string name="swap_toast_not_removable_storage">آن گزینه با هیچ رسانهٔ جداشدنی‌ای مطابقت نداشت. دوباره تلاش کنید!</string>
     <string name="swap_toast_find_removeable_storage">کارت SD یا USB جداشدنیتان را برگزینید</string>
     <string name="menu_translation">ترجمه</string>
+    <string name="undo">برگردان</string>
+    <string name="app_list__dismiss_installing_app">نصب، لغو شد</string>
+    <string name="menu_select_for_wipe">برای پاک کردن، انتخاب کنید</string>
+    <string name="try_again">تلاش دوباره</string>
+    <string name="panic_will_be_wiped">کاره به همراه داده‌هایش حذف خواهد شد</string>
+    <string name="panic_apps_to_uninstall">فهرست کاره‌هایی که حذف و داده‌هاشان پاک خواهد شد</string>
+    <string name="panic_add_apps_to_uninstall">کاره‌هایی که باید حذف شود، اضافه کنید</string>
+    <string name="panic_reset_repos_title">بازنشانی مخزن</string>
+    <string name="panic_reset_repos_summary">تنظیمات مخزن اجبارا به حالت پیش‌فرض برگردانده شود</string>
+    <string name="swap_visible_hotspot">آشکار از طریق هات‌اسپات</string>
+    <string name="swap_blank_wifi_ssid">(خالی)</string>
+    <string name="swap_hidden_wifi_ssid">(پنهان)</string>
+    <string name="swap_setting_up_hotspot">راه‌اندازی هات‌اسپات…</string>
+    <string name="swap_stopping_hotspot">در حال متوقف کردن هات‌اسپات…</string>
+    <string name="swap_starting">در حال آغاز…</string>
+    <string name="swap_stopping">در حال توقف…</string>
+    <string name="disabled">غیرفعال</string>
+    <string name="swap_error_cannot_start_bluetooth">ناتوانی در آغاز بلوتوث!</string>
+    <string name="nearby_splash__document_tree">حافظه USB OTG را برای آینه‌ها و مخازن جستجو کنید.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">ویژگی اطراف به دلیل بی‌کار بودن، بسته شد.</string>
 </resources>
