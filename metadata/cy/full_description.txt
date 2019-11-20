@@ -1,0 +1,13 @@
+Mae F-Droid yn gatalog y gellir ei osod o apiau meddalwedd rhydd ar gyfer Android. Mae'r ap cleient F-Droid yn ei wneud yn hawdd pori, gosod a chadw trefn ar ddiweddariadau ar dy ddyfais.
+
+Mae'n cysylltu ag unrhyw ystorfeydd sy'n gydnaws ag F-Droid. Cynhelir yr ystorfa graidd yn f-droid.org, ble cynhelir dim ond meddalwedd rhydd bona fide.
+
+Mae Android ei hun yn agored yn yr ystyr dy fod yn rhydd i osod APKiau o unrhyw le wyt yn dymuno, ond mae yna nifer o resymau da i ddefnyddio F-Droid fel dy reolwr apiau meddalwedd rhydd:
+
+* Cael dy hysbysu pan mae diweddariadau ar gael
+* Dewis i lawrlwytho a gosod diweddariadau yn awtomatig neu beidio
+* Cadw trefn ar fersiynau hyn a fersiynau beta
+* Diystyru apiau na sy'n gydnaws â dy ddyfais
+* Darganfod apiau fesul categori a thrwy chwilio eu disgrifiadau
+* Cael mynediad at URLau er mwyn cyfrannu, gweld cod gwreiddiol, ayyb
+* Aros yn ddiogel gan wirio llofnodion mynegai ystorfeydd a hashiau APK
