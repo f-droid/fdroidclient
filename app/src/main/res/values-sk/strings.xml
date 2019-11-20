@@ -495,10 +495,10 @@
     <string name="panic_hide_title">Skryť %s</string>
     <string name="panic_hide_summary">Aplikácia sa skryje</string>
     <string name="panic_hide_warning_title">Zapamätať si ako obnoviť</string>
-    <string name="panic_hide_warning_message">V panické udalosti, toto odstráni %1$s z launcheru. Iba zadanie „%2$d“ v nastrčenej aplikácii to môžete obnoviť</string>
+    <string name="panic_hide_warning_message">V panické udalosti, toto odstráni %1$s z launcheru. Iba zadanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť</string>
     <string name="hiding_calculator">Kalkulačka</string>
     <string name="hiding_dialog_title">Skryť %s teraz</string>
-    <string name="hiding_dialog_message">Ste si istý že chcete odstrániť %1$s z launcheru\? Iba napísanie „%2$d“ v nastrčenej aplikácii %2$s to môžete obnoviť</string>
+    <string name="hiding_dialog_message">Ste si istý že chcete odstrániť %1$s z launcheru\? Iba napísanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť</string>
     <string name="hiding_dialog_warning">Varovanie: akýkoľvek zástupca aplikácie na domovskej obrazovke bude tiež odstránený a bude ho treba znova ručne pridať</string>
     <string name="hide_on_long_search_press_title">Skryť tlačidlo vyhľadávania</string>
     <string name="hide_on_long_search_press_summary">Dlhé stlačenie tlačidla hľadanie skryje aplikáciu</string>

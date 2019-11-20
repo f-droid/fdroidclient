@@ -81,7 +81,7 @@
     <string name="proxy_host_summary">உங்கள் ப்ராக்ஸியின் ஹோஸ்ட்பெயர் (எ.கா. 127.0.0.1)</string>
     <string name="proxy_port">ப்ராக்ஸி போர்ட்</string>
     <string name="proxy_port_summary">உங்கள் ப்ராக்ஸியின் போர்ட் எண் (எ.கா. 8118)</string>
-    <string name="status_processing_xml_percent">% 1 $ s இலிருந்து% 2 $ s /% 3 $ s (% 4 $ d %%) செயலாக்குகிறது</string>
+    <string name="status_processing_xml_percent">%1$s இலிருந்து %2$s/%3$s (%4$d%%) செயலாக்குகிறது</string>
     <string name="status_inserting_apps">பயன்பாட்டு விவரங்களைச் சேமிக்கிறது</string>
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருண்ட</string>

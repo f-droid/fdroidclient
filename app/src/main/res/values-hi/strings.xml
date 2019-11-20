@@ -186,14 +186,14 @@
     <string name="allow_push_requests">भंडार को स्थापना/अस्थापना की अनुमती दें</string>
     <string name="system_installer">प्रिविलेज्ड एक्सटेंशन</string>
     <string name="system_installer_on">संकुल को स्थापित करने, अद्यतन करने और निकालने के लिए विशेषाधिकार एक्सटेंशन का उपयोग करें</string>
-    <string name="repo_exists_add_fingerprint">% 1 $ s पहले से ही सेटअप है, इससे नई महत्वपूर्ण जानकारी जुड़ जाएगी।</string>
-    <string name="repo_exists_enable">% 1 $ s पहले से ही सेटअप है, पुष्टि करें कि आप इसे फिर से सक्षम करना चाहते हैं।</string>
-    <string name="repo_exists_and_enabled">% 1 $ s पहले से ही सेटअप और सक्षम है।</string>
-    <string name="repo_delete_to_overwrite">एक विरोधी कुंजी के साथ इसे जोड़ने के लिए पहले% 1 $ s को हटाएं।</string>
+    <string name="repo_exists_add_fingerprint">%1$s पहले से ही सेटअप है, इससे नई महत्वपूर्ण जानकारी जुड़ जाएगी।</string>
+    <string name="repo_exists_enable">%1$s पहले से ही सेटअप है, पुष्टि करें कि आप इसे फिर से सक्षम करना चाहते हैं।</string>
+    <string name="repo_exists_and_enabled">%1$s पहले से ही सेटअप और सक्षम है।</string>
+    <string name="repo_delete_to_overwrite">एक विरोधी कुंजी के साथ इसे जोड़ने के लिए पहले%1$s को हटाएं।</string>
     <string name="bad_fingerprint">खराब फिंगरप्रिंट</string>
     <string name="invalid_url">यह एक मान्य URL नहीं है।</string>
-    <string name="malformed_repo_uri">विकृत रेपो URI को अनदेखा करना:% s</string>
-    <string name="repo_provider">रिपोजिटरी:% s</string>
+    <string name="malformed_repo_uri">विकृत रेपो URI को अनदेखा करना: %s</string>
+    <string name="repo_provider">रिपोजिटरी: %s</string>
     <string name="menu_ignore_all">सभी अपडेट्स पर ध्यान न दें</string>
     <string name="menu_ignore_this">इस अद्यतन की उपेक्षा करें</string>
     <string name="menu_website">वेबसाइट</string>
@@ -222,7 +222,7 @@
     <string name="local_repo_running">F-Droid स्वैप करने के लिए तैयार है</string>
     <string name="touch_to_configure_local_repo">विवरण देखने के लिए स्पर्श करें और दूसरों को अपने ऐप स्वैप करने की अनुमति दें।</string>
     <string name="deleting_repo">वर्तमान रेपो हटा रहा है …</string>
-    <string name="adding_apks_format">रेपो में% s जोड़ना …</string>
+    <string name="adding_apks_format">रेपो में %s जोड़ना …</string>
     <string name="writing_index_jar">हस्ताक्षरित सूचकांक फ़ाइल (index.jar) लिखना …</string>
     <string name="linking_apks">रेपो में APK को जोड़ना …</string>
     <string name="copying_icons">रेपो में ऐप आइकन कॉपी करना …</string>
@@ -237,15 +237,15 @@
     <string name="proxy_port">प्रॉक्सी पोर्ट</string>
     <string name="proxy_port_summary">आपके प्रॉक्सी का पोर्ट नंबर (जैसे 8118)</string>
     <string name="status_download">डाउनलोड कर रहा है
-\n% 2 $ s /% 3 $ s (% 4 $ d %%) से
-\n% 1 $ s</string>
+\n%2$s/%3$s (%4$d%%) से
+\n%1$s</string>
     <string name="status_download_unknown_size">डाउनलोड कर रहा है
-\n% 2 $ से
-\n% 1 $ s</string>
+\n%2$s से
+\n%1$s</string>
     <string name="update_notification_title">रिपोजिटरी को अपडेट करना</string>
     <string name="no_permissions">कोई अनुमति का उपयोग नहीं किया जाता है।</string>
     <string name="permissions">अनुमतियां</string>
-    <string name="no_handler_app">आपके पास कोई भी उपलब्ध ऐप नहीं है जो% s को संभाल सके।</string>
+    <string name="no_handler_app">आपके पास कोई भी उपलब्ध ऐप नहीं है जो %s को संभाल सके।</string>
     <string name="theme">विषय</string>
     <string name="repo_url">पता</string>
     <string name="repo_num_apps">ऐप्स की संख्या</string>
@@ -258,25 +258,25 @@
     <string name="update_auto_install">स्वचालित रूप से अद्यतन स्थापित करें</string>
     <string name="update_auto_install_summary">एक अधिसूचना दिखाते हुए पृष्ठभूमि में एप्लिकेशन डाउनलोड करें और अपडेट करें</string>
     <string name="versions">संस्करण</string>
-    <string name="app_details_donate_prompt_unknown_author">% 1 $ s के डेवलपर्स को एक कॉफी खरीदें!</string>
-    <string name="app_details_donate_prompt">% 1 $ s% 2 $ s द्वारा बनाया गया है। उन्हें एक कॉफी खरीदें!</string>
+    <string name="app_details_donate_prompt_unknown_author">%1$s के डेवलपर्स को एक कॉफी खरीदें!</string>
+    <string name="app_details_donate_prompt">%1$s %2$s द्वारा बनाया गया है। उन्हें एक कॉफी खरीदें!</string>
     <string name="repositories_summary">ऐप्स के अतिरिक्त स्रोत जोड़ें</string>
-    <string name="app_version_x_available">संस्करण% 1 $ s उपलब्ध है</string>
-    <string name="app_version_x_installed">संस्करण% 1 $ s</string>
+    <string name="app_version_x_available">संस्करण%1$s उपलब्ध है</string>
+    <string name="app_version_x_installed">संस्करण%1$s</string>
     <string name="clear_search">स्पष्ट खोज</string>
-    <string name="app_recommended_version_installed">संस्करण% 1 $ s (अनुशंसित)</string>
+    <string name="app_recommended_version_installed">संस्करण%1$s (अनुशंसित)</string>
     <string name="installed_apps__activity_title">इंस्टॉल किए गए ऐप्स</string>
     <string name="installed_app__updates_ignored">अपडेट की अनदेखी की गई</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">अद्यतनों को संस्करण% 1 $ s के लिए अनदेखा किया गया</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">अद्यतनों को संस्करण%1$s के लिए अनदेखा किया गया</string>
     <string name="preference_category__my_apps">मेरी एप्प्स</string>
     <string name="app__install_downloaded_update">अद्यतन करें</string>
     <string name="updates__hide_updateable_apps">ऐप्स छिपाएं</string>
     <string name="updates__show_updateable_apps">ऐप्स छिपाएं</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">% 1 $ d ऐप के लिए अपडेट डाउनलोड करें।</item>
-        <item quantity="other">% 1 $ d एप्लिकेशन के लिए अपडेट डाउनलोड करें।</item>
+        <item quantity="one">%1$d ऐप के लिए अपडेट डाउनलोड करें।</item>
+        <item quantity="other">%1$d एप्लिकेशन के लिए अपडेट डाउनलोड करें।</item>
     </plurals>
-    <string name="details_new_in_version">% S में नया है</string>
+    <string name="details_new_in_version">%s में नया है</string>
     <string name="antifeatureswarning">इस ऐप में ऐसी विशेषताएं हैं जो आपको पसंद नहीं हो सकती हैं।</string>
     <string name="antifeatures">विरोधी सुविधाओं</string>
     <string name="latest__empty_state__no_recent_apps">हाल ही में कोई ऐप नहीं मिला</string>
@@ -285,19 +285,19 @@
     <string name="categories__empty_state__no_categories">प्रदर्शित करने के लिए कोई श्रेणियां नहीं</string>
     <string name="menu_video">वीडियो</string>
     <string name="app__tts__cancel_download">डाउनलोड रद्द करें</string>
-    <string name="menu_license">वीडियो</string>
+    <string name="menu_license">वीडियो: %s</string>
     <string name="download_404">अनुरोधित फ़ाइल नहीं मिली।</string>
     <string name="app_list_download_ready">डाउनलोड, स्थापित करने के लिए तैयार है</string>
-    <string name="status_inserting_x_apps">एप्लिकेशन विवरण सहेजना (% 1 $ d /% 2 $ d)% 3 $ s से</string>
-    <string name="app_installed_media">% S पर फ़ाइल स्थापित की गई</string>
+    <string name="status_inserting_x_apps">एप्लिकेशन विवरण सहेजना (%1$d /%2$d) %3$s से</string>
+    <string name="app_installed_media">%s पर फ़ाइल स्थापित की गई</string>
     <string name="app_permission_storage">F-Droid को स्टोरेज में इसे इंस्टॉल करने के लिए स्टोरेज अनुमति की आवश्यकता होती है। कृपया इसे अगली स्क्रीन पर संस्थापन के साथ आगे बढ़ने दें।</string>
     <string name="app_details__incompatible_mismatched_signature">स्थापित संस्करण के लिए अलग हस्ताक्षर</string>
-    <string name="app_details__no_versions__show_incompat_versions">वैसे भी असंगत संस्करण दिखाने के लिए, \"% 1 $ s\" सेटिंग सक्षम करें।</string>
+    <string name="app_details__no_versions__show_incompat_versions">वैसे भी असंगत संस्करण दिखाने के लिए, \"%1$s\" सेटिंग सक्षम करें।</string>
     <string name="app_details__no_versions__no_compatible_signatures">संगत हस्ताक्षर के साथ कोई संस्करण नहीं</string>
     <string name="app_details__no_versions__none_compatible_with_device">डिवाइस के साथ संगत कोई संस्करण नहीं</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">स्थापित संस्करण किसी भी उपलब्ध संस्करण के साथ संगत नहीं है। एप्लिकेशन को अनइंस्टॉल करने से आप संगत संस्करण देख और इंस्टॉल कर पाएंगे। यह अक्सर Google Play या अन्य स्रोतों के माध्यम से इंस्टॉल किए गए एप्लिकेशन के साथ होता है, अगर वे एक अलग प्रमाण पत्र द्वारा हस्ताक्षरित हैं।</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">हमें% 1 $ s के साथ भेद्यता मिली। हम इस ऐप को तुरंत अनइंस्टॉल करने की सलाह देते हैं।</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">हमें% 1 $ s के साथ भेद्यता मिली। हम तुरंत नवीनतम संस्करण को अपडेट करने की सलाह देते हैं।</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">हमें%1$s के साथ भेद्यता मिली। हम इस ऐप को तुरंत अनइंस्टॉल करने की सलाह देते हैं।</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">हमें%1$s के साथ भेद्यता मिली। हम तुरंत नवीनतम संस्करण को अपडेट करने की सलाह देते हैं।</string>
     <string name="updates__app_with_known_vulnerability__ignore">नज़रअंदाज़ करना</string>
     <string name="app_list__dismiss_app_update">अपडेट को अनदेखा कर दिया गया</string>
     <string name="app_list__dismiss_vulnerable_app">अपडेट को अनदेखा कर दिया गया</string>
@@ -310,22 +310,22 @@
     <string name="panic_app_setting_summary">कोई ऐप सेट नहीं किया गया है</string>
     <string name="panic_app_setting_none">कोई नहीं</string>
     <string name="panic_app_dialog_title">पैनिक ऐप की पुष्टि करें</string>
-    <string name="panic_app_dialog_message">क्या आप सुनिश्चित हैं कि आप विनाशकारी आतंक बटन कार्रवाई को ट्रिगर करने के लिए% 1 $ s की अनुमति देना चाहते हैं\?</string>
+    <string name="panic_app_dialog_message">क्या आप सुनिश्चित हैं कि आप विनाशकारी आतंक बटन कार्रवाई को ट्रिगर करने के लिए%1$s की अनुमति देना चाहते हैं\?</string>
     <string name="allow">अनुमति दें</string>
     <string name="panic_settings">पैनिक बटन सेटिंग्स</string>
     <string name="panic_settings_summary">आपातकाल के मामले में कार्रवाई की जाएगी</string>
     <string name="panic_exit_title">ऐप से बाहर निकलें</string>
     <string name="panic_exit_summary">यह ऐप बंद हो जाएगा</string>
     <string name="panic_destructive_actions">विनाशकारी क्रिया</string>
-    <string name="panic_hide_title">% S छिपाएँ</string>
+    <string name="panic_hide_title">%s छिपाएँ</string>
     <string name="panic_hide_summary">ऐप खुद ही छिप जाएगा</string>
     <string name="force_touch_apps">टचस्क्रीन ऐप्स शामिल करें</string>
     <string name="force_touch_apps_on">ऐसे ऐप दिखाएं जिनमें हार्डवेयर समर्थन की परवाह किए बिना टचस्क्रीन की आवश्यकता होती है</string>
     <string name="panic_hide_warning_title">याद रखें कि कैसे पुनर्स्थापित करें</string>
-    <string name="panic_hide_warning_message">पैनिक इवेंट में, यह लॉन्चर से% 1 $ s को हटा देगा। केवल नकली% 3 $ s ऐप में \"% 2 $ d\" टाइप करने पर यह पुनर्स्थापित हो सकता है।</string>
+    <string name="panic_hide_warning_message">पैनिक इवेंट में, यह लॉन्चर से%1$s को हटा देगा। केवल नकली%3$s ऐप में \"%2$d\" टाइप करने पर यह पुनर्स्थापित हो सकता है।</string>
     <string name="hiding_calculator">कैलकुलेटर</string>
-    <string name="hiding_dialog_title">अब% s छुपाएं</string>
-    <string name="hiding_dialog_message">क्या आप वाकई लॉन्चर से% 1 $ s निकालना चाहते हैं\? केवल नकली% 3 $ s ऐप में \"% 2 $ d\" टाइप करने पर यह पुनर्स्थापित हो सकता है।</string>
+    <string name="hiding_dialog_title">अब %s छुपाएं</string>
+    <string name="hiding_dialog_message">क्या आप वाकई लॉन्चर से%1$s निकालना चाहते हैं\? केवल नकली%3$s ऐप में \"%2$d\" टाइप करने पर यह पुनर्स्थापित हो सकता है।</string>
     <string name="hiding_dialog_warning">चेतावनी: होम स्क्रीन पर किसी भी ऐप शॉर्टकट को हटा दिया जाएगा और उसे मैन्युअल रूप से फिर से जोड़ना होगा।</string>
     <string name="hide_on_long_search_press_title">खोज बटन के साथ छिपाएँ</string>
     <string name="hide_on_long_search_press_summary">सर्च बटन को देर तक दबाने पर ऐप छिप जाएगा</string>
@@ -333,7 +333,7 @@
     <string name="show_anti_feature_apps">एंटी-फीचर ऐप शामिल करें</string>
     <string name="show_anti_feature_apps_on">ऐसे ऐप दिखाएं जिनमें एंटी-फीचर्स की आवश्यकता हो</string>
     <string name="repo_add_mirror">दर्पण जोड़ें</string>
-    <string name="repo_exists_add_mirror">यह% 1 $ s की प्रतिलिपि है, इसे दर्पण के रूप में जोड़ें\?</string>
+    <string name="repo_exists_add_mirror">यह%1$s की प्रतिलिपि है, इसे दर्पण के रूप में जोड़ें\?</string>
     <string name="repo_official_mirrors">आधिकारिक दर्पण</string>
     <string name="repo_user_mirrors">उपयोगकर्ता दर्पण</string>
     <string name="over_wifi">ओवर वाई-फाई</string>
@@ -351,14 +351,14 @@
     <string name="menu_open">खुला</string>
     <string name="about_forum">सहयता मंच</string>
     <string name="app_suggested">सुझाव दिया</string>
-    <string name="app_size">रिपोजिटरी:% 1 $ s</string>
+    <string name="app_size">रिपोजिटरी:%1$s</string>
     <string name="menu_downgrade">ढाल</string>
     <string name="app_new">नया</string>
-    <string name="app_repository">रिपोजिटरी:% 1 $ s</string>
+    <string name="app_repository">रिपोजिटरी:%1$s</string>
     <string name="update_all">सब अद्यतित</string>
     <string name="scan_removable_storage_title">हटाने योग्य भंडारण को स्कैन करें</string>
     <string name="scan_removable_storage_summary">एसडी कार्ड और यूएसबी थंब ड्राइव जैसे रिमूवेबल स्टोरेज पर पैकेज रिपोज के लिए देखें</string>
-    <string name="scan_removable_storage_toast">% S स्कैन कर रहा है…</string>
+    <string name="scan_removable_storage_toast">%s स्कैन कर रहा है…</string>
     <string name="main_menu__updates">अपडेट</string>
     <string name="menu_translation">अनुवाद</string>
     <string name="menu_select_for_wipe">पोंछने के लिए चयन करें</string>
@@ -373,8 +373,8 @@
         <item quantity="other">%1$d महीने पहले अपडेट किया गया</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">अपडेट किया गया% 1 $ d साल पहले</item>
-        <item quantity="other">% 1 $ d साल पहले अपडेट किया गया</item>
+        <item quantity="one">अपडेट किया गया%1$d साल पहले</item>
+        <item quantity="other">%1$d साल पहले अपडेट किया गया</item>
     </plurals>
     <string name="unknown">अज्ञात</string>
     <string name="wifi_ap">हॉटस्पॉट</string>
