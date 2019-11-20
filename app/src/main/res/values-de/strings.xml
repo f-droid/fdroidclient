@@ -57,9 +57,9 @@
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
-    <string name="antinonfreeadlist">Diese App bewirbt nicht freie Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt nicht freie Netzwerkdienste</string>
-    <string name="antinonfreedeplist">Diese App hängt von nicht-quelloffenen Apps ab</string>
+    <string name="antinonfreeadlist">Diese App bewirbt proprietäre Erweiterungen</string>
+    <string name="antinonfreenetlist">Diese App bewirbt proprietäre Netzwerkdienste</string>
+    <string name="antinonfreedeplist">Diese App hängt von proprietären Apps ab</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
     <string name="display">Anzeige</string>
     <string name="expert">Expertenmodus</string>
@@ -219,10 +219,10 @@
     <string name="loading">Ladevorgang …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
     <string name="install_confirm">benötigt Zugriff auf</string>
-    <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser App installieren\? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte App erhält danach Zugriff auf:</string>
-    <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser App installieren\? Ihre bestehenden Daten gehen nicht verloren. Sie benötigt keine besonderen Zugriffsrechte.</string>
-    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten App installieren\? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte App erhält danach Zugriff auf:</string>
-    <string name="install_confirm_update_system_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten App installieren\? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte benötigt.</string>
+    <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser App installieren\? Ihre bestehenden Daten bleiben erhalten. Die aktualisierte App erhält danach Zugriff auf:</string>
+    <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser App installieren\? Ihre bestehenden Daten bleiben erhalten. Sie benötigt keine besonderen Zugriffsrechte.</string>
+    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten App installieren\? Ihre bestehenden Daten bleiben erhalten. Die aktualisierte App erhält danach Zugriff auf:</string>
+    <string name="install_confirm_update_system_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten App installieren\? Ihre bestehenden Daten bleiben erhalten. Es werden keine besonderen Zugriffsrechte benötigt.</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Das könnte Sie Geld kosten</string>
     <string name="uninstall_update_confirm">Möchten Sie diese App durch die Version des Werkszustands ersetzen?</string>
@@ -241,7 +241,7 @@
     <string name="empty_search_available_app_list">Keine passenden Apps verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
-    <string name="antinonfreeassetslist">Diese App enthält nicht freie Bestandteile</string>
+    <string name="antinonfreeassetslist">Diese App enthält proprietäre Bestandteile</string>
     <string name="crash_dialog_text">Die App wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen\?</string>
     <string name="menu_email">E-Mail an Autor</string>
     <string name="repo_provider">Paketquelle: %s</string>
@@ -448,7 +448,7 @@
     <string name="share_repository">Paketquelle teilen</string>
     <string name="allow_push_requests">Paketquellen erlauben, Apps zu installieren/deinstallieren</string>
     <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten</string>
-    <string name="antinosourcesince">Der Quelltext ist nicht mehr verfügbar, keine Aktualisierungen möglich.</string>
+    <string name="antinosourcesince">Der Quelltext ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
     <string name="send_history_csv">%s Installationsverlauf als CSV-Datei</string>
@@ -475,7 +475,7 @@
     <string name="try_again">Erneut versuchen</string>
     <string name="panic_will_be_wiped">Wird deinstalliert und alle Daten werden gelöscht</string>
     <string name="panic_apps_to_uninstall">Apps, die deinstalliert und deren Daten komplett gelöscht werden sollen</string>
-    <string name="panic_add_apps_to_uninstall">Hinzufügen von Apps, die deinstalliert und gelöscht werden sollen</string>
+    <string name="panic_add_apps_to_uninstall">Zu löschende Apps hinzufügen</string>
     <string name="panic_reset_repos_title">Repos zurücksetzen</string>
     <string name="panic_reset_repos_summary">Wiederherstellung der Paketquellen-Standardeinstellungen erzwingen</string>
     <string name="swap_visible_hotspot">Sichtbar über Hotspot</string>
