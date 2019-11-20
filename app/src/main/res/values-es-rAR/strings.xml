@@ -481,7 +481,7 @@
     <string name="panic_reset_repos_title">Resetear repositorios</string>
     <string name="panic_reset_repos_summary">Forzar la configuración del repositorio a defecto</string>
     <string name="swap_visible_hotspot">Visible vía hotspot</string>
-    <string name="swap_blank_wifi_ssid">(vacio)</string>
+    <string name="swap_blank_wifi_ssid">(vacío)</string>
     <string name="swap_hidden_wifi_ssid">(escondido)</string>
     <string name="swap_setting_up_hotspot">Configurando hotspot…</string>
     <string name="swap_stopping_hotspot">Deteniendo hotspot…</string>
