@@ -204,9 +204,9 @@
     </string>
     <string name="updates">อัพเดต18 sex</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
-    <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
+    <string name="unstable_updates_summary">แนะนำการอัพเดตไปยังเวอร์ชั่นที่ไม่เสถียร</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
-    <string name="notify">การแจ้งเตือนอัพเดต</string>
+    <string name="notify">แสดงการแจ้งเตือนอัพเดตที่ใช้ได้</string>
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดตให้ดาวน์โหลด</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
     <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
@@ -277,7 +277,7 @@
     <string name="update_auto_install_summary">ดาวน์โหลดและติดตั้งโปรแกรมที่อัดเดต แบบเบื้องหลัง</string>
     <string name="update_auto_install">ติดตั้งโปรแกรมที่อัพเดต โดยอัดโนมัติ</string>
     <string name="keep_install_history">เก็บประวัติการติดตั้ง</string>
-    <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดใน F-Droid</string>
+    <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดไว้ในหน่วยความจำเฉพาะ</string>
     <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
     <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
     <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
@@ -303,4 +303,11 @@
         ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่
     </string>
     <string name="main_menu__latest_apps">ล่าสุด</string>
+    <string name="by_author_format">โดย %s</string>
+    <string name="hide_all_notifications">ซ่อนการแจ้งเตือนทั้งหมด</string>
+    <string name="send_install_history">ส่งประวัติการติดตั้ง</string>
+    <string name="force_old_index">บังคับใช้ดัชนีรูปแบบเก่า</string>
+    <string name="over_data">เครือข่ายมือถือ</string>
+    <string name="allow_push_requests">อนุญาตให้แหล่งโปรแกรมดำเนินการติดตั้งหรือถอนการติดตั้งเอง</string>
+    <string name="scan_removable_storage_toast">กำลังค้นหา %s…</string>
 </resources>
