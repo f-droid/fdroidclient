@@ -1,160 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Да бисте инсталирали ново
-        издање, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке апликације.)
-    </string>
-    <string name="installIncompatible">Пакет не одговара вашем уређају, свеједно инсталирати?</string>
+    <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Ради уградње новог издања, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке програма.)</string>
+    <string name="installIncompatible">Програм не одговара овом уређају, да ли га свеједно уградити\?</string>
     <string name="version">Издање</string>
     <string name="delete">Обриши</string>
     <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
-    <string name="cache_downloaded">Чувај кеширане апликације</string>
-    <string name="updates">Надоградње</string>
+    <string name="cache_downloaded">Чувај захваћене програме</string>
+    <string name="updates">Надградње</string>
     <string name="other">Остало</string>
     <string name="update_interval">Међувреме самосталног освежавања</string>
-    <string name="notify">Прикажи доступне надоградње</string>
-    <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
+    <string name="notify">Прикажи доступне надградње</string>
+    <string name="notify_on">Приказуз обавештења о доступним надградњама</string>
     <string name="system_installer">Повлашћено проширење</string>
-    <string name="system_installer_on">Користи повлашћено проширење за уградњу, надоградњу и уклањање пакета</string>
+    <string name="system_installer_on">Користи повлашћено проширење за уградњу, надградњу и уклањање пакета</string>
     <string name="local_repo_name">Назив месне ризнице</string>
     <string name="local_repo_https_on">Користи шифровану везу ХТТПС:// за ову ризницу</string>
-    <string name="app_details">Појединости апликације</string>
+    <string name="app_details">Појединости програма</string>
     <string name="no_such_app">Нема таквог програма.</string>
     <string name="about_title">О Ф-дроиду</string>
     <string name="about_site">Мрежна страница</string>
     <string name="about_version">Издање</string>
-    <string name="app_installed">Инсталирана</string>
-    <string name="app_not_installed">Није инсталирана</string>
-    <string name="app_inst_known_source">Инсталирана (са %s)</string>
-    <string name="app_inst_unknown_source">Инсталирана (са непознатог извора)</string>
-    <string name="added_on">Додат %s</string>
+    <string name="app_installed">Уграђено</string>
+    <string name="app_not_installed">Није уграђено</string>
+    <string name="app_inst_known_source">Уграђено (из %s)</string>
+    <string name="app_inst_unknown_source">Уграђено (из непознатог извора)</string>
+    <string name="added_on">Додато у %s</string>
     <string name="ok">У реду</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Додај нову ризницу</string>
     <string name="repo_add_add">Додај</string>
     <string name="cancel">Одустани</string>
-    <string name="enable">Укључи</string>
+    <string name="enable">Омогући</string>
     <string name="add_key">Додај кључ</string>
-    <string name="overwrite">Пребриши</string>
-    <string name="bluetooth_activity_not_found">Нема начина за слања блутутом, одредите један!</string>
-    <string name="choose_bt_send">Одредите начин слања блутутом</string>
+    <string name="overwrite">Препиши</string>
+    <string name="bluetooth_activity_not_found">Нема начина за слања Блутутом, одредите један!</string>
+    <string name="choose_bt_send">Одредите начин слања Блутутом</string>
     <string name="repo_add_url">Адреса ризнице</string>
-    <string name="repo_add_fingerprint">Отисак (опционо)</string>
+    <string name="repo_add_fingerprint">Отисак (додатно)</string>
     <string name="malformed_repo_uri">Занемарујем лошу адресу ризнице: %s</string>
     <string name="menu_manage">Ризнице</string>
     <string name="menu_search">Тражи</string>
     <string name="menu_add_repo">Нова ризница</string>
-    <string name="menu_launch">Покрени</string>
+    <string name="menu_launch">Отвори</string>
     <string name="menu_share">Дели</string>
-    <string name="menu_install">Инсталирај</string>
+    <string name="menu_install">Угради</string>
     <string name="menu_uninstall">Уклони</string>
-    <string name="menu_ignore_all">Занемари све надоградње</string>
-    <string name="menu_ignore_this">Занемари ову надоградњу</string>
-    <string name="menu_website">Вебсајт</string>
-    <string name="menu_issues">Проблеми</string>
+    <string name="menu_ignore_all">Занемари све надградње</string>
+    <string name="menu_ignore_this">Занемари ову надградњу</string>
+    <string name="menu_website">Мрежна страница</string>
+    <string name="menu_issues">Праћење недостатака</string>
     <string name="menu_source">Изворни кôд</string>
-    <string name="menu_upgrade">Надогради</string>
-    <string name="menu_donate">Донирај</string>
-    <string name="details_notinstalled">Није инсталирано</string>
-    <string name="antiadslist">Ова апликација садржи огласе</string>
-    <string name="antitracklist">Ова апликација прати и пријављује ваше активности</string>
-    <string name="antinonfreeadlist">Ова апликација предлаже неслободне додатке</string>
-    <string name="antinonfreenetlist">Ова апликација предлаже неслободне мрежне услуге</string>
-    <string name="antinonfreedeplist">Ова апликација зависи од неслободних апликација</string>
+    <string name="menu_upgrade">Надгради</string>
+    <string name="menu_donate">Приложите</string>
+    <string name="details_notinstalled">Није уграђен</string>
+    <string name="antiadslist">Овај програм садржи огласе</string>
+    <string name="antitracklist">Овај програм прати и пријављује Ваша дејства</string>
+    <string name="antinonfreeadlist">Овај програм предлаже неслободне додатке</string>
+    <string name="antinonfreenetlist">Овај програм предлаже неслободне мрежне услуге</string>
+    <string name="antinonfreedeplist">Овај програм зависи од неслободних програма</string>
     <string name="antiupstreamnonfreelist">Изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
-    <string name="expert">Режим за стручњаке</string>
+    <string name="expert">Устројство за стручњаке</string>
     <string name="expert_on">Приказ додатних података и поставки</string>
-    <string name="search_hint">Претрага апликација</string>
-    <string name="appcompatibility">Усклађеност апликација</string>
-    <string name="show_incompat_versions">Неодговарајућа издања</string>
-    <string name="show_incompat_versions_on">Приказ неодговарајућих издања апликације са уређајем</string>
-    <string name="local_repo">Локална ризница</string>
+    <string name="search_hint">Претрага програма</string>
+    <string name="appcompatibility">Усклађеност програма</string>
+    <string name="show_incompat_versions">Обухвати неусклађена издања</string>
+    <string name="show_incompat_versions_on">Приказуј неусклађена издања програма са уређајем</string>
+    <string name="local_repo">Месна ризница</string>
     <string name="local_repo_running">Ф-дроид је спреман за размену</string>
-    <string name="touch_to_configure_local_repo">Додирните за приказ детаља и да дозволите другима да размењују ваше
- апликације.</string>
+    <string name="touch_to_configure_local_repo">Додирните за приказ појединости и да дозволите другима да размењују Ваше програме.</string>
     <string name="deleting_repo">Бришем тренутну ризницу…</string>
     <string name="adding_apks_format">Додајем %s у ризницу…</string>
-    <string name="writing_index_jar">Уписујем потписани фајл садржаја (index.jar)…</string>
-    <string name="linking_apks">Повезујем АПК фајлове са ризницом…</string>
-    <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
-    <string name="icon">Икона</string>
+    <string name="writing_index_jar">Уписујем потписану датотеку садржаја (index.jar)…</string>
+    <string name="linking_apks">Повезујем датотеке АПК-а са ризницом…</string>
+    <string name="copying_icons">Умножавам сличице програма у ризницу…</string>
+    <string name="icon">Сличица</string>
     <string name="next">Следеће</string>
     <string name="skip">Прескочи</string>
-    <string name="proxy">Прокси</string>
-    <string name="enable_proxy_title">Омогући ХТТП прокси</string>
-    <string name="enable_proxy_summary">ХТТП прокси за све мрежне захтеве</string>
-    <string name="proxy_host">Домаћин проксија</string>
-    <string name="proxy_host_summary">Домаћин вашег проксија (нпр. 127.0.0.1)</string>
-    <string name="proxy_port">Порт проксија</string>
-    <string name="proxy_port_summary">Порт вашег проксија (нпр. 8118)</string>
-    <string name="status_download">Преузимам\n%2$s / %3$s (%4$d%%) са\n%1$s</string>
+    <string name="proxy">Посредник</string>
+    <string name="enable_proxy_title">Омогући посредника ХТТП-а</string>
+    <string name="enable_proxy_summary">Подесите ХТТП посредника за све мрежне захтеве</string>
+    <string name="proxy_host">Домаћин посредника</string>
+    <string name="proxy_host_summary">Адреса домаћина посредника (нпр. 127.0.0.1)</string>
+    <string name="proxy_port">Прикључник посредника</string>
+    <string name="proxy_port_summary">Број прикључника посредника (нпр. 8118)</string>
+    <string name="status_download">Преузимам
+\n%2$s / %3$s (%4$d%%) од
+\n%1$s</string>
     <string name="status_connecting_to_repo">Повезујем се са\n%1$s</string>
     <string name="repos_unchanged">Све ризнице су свеже</string>
     <string name="all_other_repos_fine">Остале ризнице нису направиле грешку.</string>
     <string name="global_error_updating_repos">Грешка приликом освежавања: %s</string>
     <string name="no_permissions">Не захтева никакве дозволе.</string>
-    <string name="no_handler_app">Немате инсталирану апликацију за %s.</string>
+    <string name="no_handler_app">Немате уграђен програм за %s.</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Непотписана</string>
     <string name="unverified">Неоверена</string>
-    <string name="repo_num_apps">Број апликација</string>
+    <string name="repo_num_apps">Број програма</string>
     <string name="repo_fingerprint">Отисак кључа за потписивање (СХА-256)</string>
     <string name="repo_description">Опис</string>
     <string name="repo_last_update">Последње освежавање</string>
     <string name="repo_name">Назив</string>
-    <string name="unsigned_description">Ово значи да списак
-        апликација није могао бити оверен. Требате бити опрезни
-        са преузетим апликацијама преко непотписаних садржаја.
-    </string>
-    <string name="repo_not_yet_updated">Ова ризница још није коришћена.
-        Омогућите је да бисте видели апликације које садржи.
-    </string>
+    <string name="unsigned_description">Ово значи да списак програма није могао бити оверен. Требате бити опрезни са преузетим програмима преко садржаја без потписа.</string>
+    <string name="repo_not_yet_updated">Ова ризница још није коришћена. Омогућите је да бисте видели програме које садржи.</string>
     <string name="unknown">Непознато</string>
     <string name="repo_confirm_delete_title">Обрисати ризницу?</string>
-    <string name="repo_confirm_delete_body">Брисање ризнице значи
-        да њене апликације више неће бити доступне на Ф-дроиду.
-
-        Напомена: Све
-        претходно инсталиране апликације ће остати на уређају.
-    </string>
-    <string name="repo_disabled_notification">Онемогућена „%1$s“.
-
-        Мораћете
-        поново да омогућите ову ризницу да бисте инсталирали апликације са ње.
-    </string>
-    <string name="repo_added">Сачувана је ризница Ф-дроида %1$s.</string>
-    <string name="repo_searching_address">Тражим ризницу Ф-дроида на\n%1$s</string>
-    <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали!
-        Придружите се овој мрежи: %s
-    </string>
+    <string name="repo_confirm_delete_body">Брисање ризнице значи да њени програми више неће бити доступни.
+\n
+\n
+\nНапомена: Сви претходно уграђени програми ће остати на уређају.</string>
+    <string name="repo_disabled_notification">Онемогућена „%1$s“. Мораћете поново да омогућите ову ризницу ради уградње програма из ње.</string>
+    <string name="repo_added">Сачувана је ризница %1$s.</string>
+    <string name="repo_searching_address">Тражим ризницу на
+\n%1$s</string>
+    <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са месном ризницом коју сте управо додали! Придружите се овој мрежи: %s</string>
     <string name="requires_features">Захтева: %1$s</string>
     <string name="category_Development">Развој</string>
     <string name="category_Games">Игре</string>
     <string name="category_Internet">Интернет</string>
     <string name="category_Multimedia">Мултимедија</string>
-    <string name="category_Navigation">Навигација</string>
-    <string name="category_Phone_SMS">Телефон и СМС</string>
+    <string name="category_Navigation">Навођење</string>
+    <string name="category_Phone_SMS">Телазвон и поруке</string>
     <string name="category_Reading">Читање</string>
     <string name="category_Science_Education">Наука и образовање</string>
     <string name="category_Security">Безбедност</string>
     <string name="category_System">Систем</string>
-    <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, спојите ваше уређаје.</string>
+    <string name="swap_nfc_description">Ако Ваш пријатељ има Ф-дроид и укључен НФЦ, спојите ваше уређаје.</string>
     <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
-    <string name="swap">Размена апликација</string>
+    <string name="swap">Размена програма</string>
     <string name="swap_no_wifi_network">Још нема мреже</string>
-    <string name="swap_view_available_networks">Тапните да отворите доступне мреже</string>
+    <string name="swap_view_available_networks">Тапните ради отварања доступних мрежа</string>
     <string name="open_qr_code_scanner">Отвори читач бар-кôда</string>
     <string name="swap_welcome">Добро дошли у Ф-дроид!</string>
-    <string name="swap_confirm_connect">Желите ли да добавите апликације са %1$s одмах?</string>
+    <string name="swap_confirm_connect">Желите ли да добавите програме са %1$s одмах\?</string>
     <string name="app_name">Ф-дроид</string>
-
-    <string name="unstable_updates">Надоградње нестабилних</string>
+    <string name="unstable_updates">Нестабилне надградње</string>
     <string name="unstable_updates_summary">Предлагање надоградњи на нестабилна издања</string>
     <string name="about_source">Изворни кôд</string>
     <string name="app_incompatible">Неодговарајуће</string>
     <string name="links">Везе</string>
-
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Лош отисак</string>
     <string name="invalid_url">Ово није исправна адреса.</string>
@@ -163,94 +148,84 @@
     <string name="status_processing_xml_percent">Обрађујем %2$s / %3$s (%4$d%%) од %1$s</string>
     <string name="pref_language">Језик</string>
     <string name="pref_language_default">Системски подразумеван</string>
-
     <string name="wifi">Бежични</string>
     <string name="wifi_ap">Врућа тачка</string>
-
     <string name="category_Connectivity">Повезивање</string>
-    <string name="category_Graphics">Графика</string>
-    <string name="category_Money">Финансије</string>
+    <string name="category_Graphics">Цртање</string>
+    <string name="category_Money">Новац</string>
     <string name="category_Sports_Health">Спорт и здравље</string>
     <string name="category_Theming">Теме</string>
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
-
-    <string name="swap_nfc_title">Тапните за размену</string>
+    <string name="swap_nfc_title">Тапните ради размену</string>
     <string name="swap_success">Размена је успела!</string>
-    <string name="swap_active_hotspot">%1$s (ваша врућа тачка)</string>
+    <string name="swap_active_hotspot">%1$s (Ваша врућа тачка)</string>
     <string name="swap_dont_show_again">Не приказуј ово поново</string>
-    <string name="swap_choose_apps">Изаберите апликације</string>
-    <string name="swap_setting_up_bluetooth">Подешавам блутут…</string>
+    <string name="swap_choose_apps">Изаберите програме</string>
+    <string name="swap_setting_up_bluetooth">Подешавам Блутут…</string>
     <string name="swap_setting_up_wifi">Подешавам бежични…</string>
     <string name="swap_wifi_device_name">Назив уређаја</string>
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
     <string name="swap_connecting">Повезујем се</string>
-    <string name="swap_confirm">Потврди размену</string>
+    <string name="swap_confirm">Потврдите размену</string>
     <string name="loading">Учитавам…</string>
     <string name="newPerms">Ново</string>
     <string name="allPerms">Све</string>
     <string name="perms_new_perm_prefix">Ново:</string>
     <string name="downloading">Преузимам…</string>
-
-    <string name="interval_never">никад</string>
-    <string name="interval_1h">сваког сата</string>
-    <string name="interval_4h">свака 4 сата</string>
-    <string name="interval_12h">сваких 12 сати</string>
-    <string name="interval_1d">једном дневно</string>
-    <string name="interval_1w">једном седмично</string>
-    <string name="interval_2w">сваке 2 седмице</string>
-
+    <string name="interval_never">Без самосталних надградњи програма</string>
+    <string name="interval_1h">Провери надградње сваког сата</string>
+    <string name="interval_4h">Провери надградње свака 4 сата</string>
+    <string name="interval_12h">Провери надградње сваких 12 сати</string>
+    <string name="interval_1d">Провери надградње једном дневно</string>
+    <string name="interval_1w">Провери надградње једном седмично</string>
+    <string name="interval_2w">Провери надградње сваке 2 седмице</string>
     <string name="theme_light">Светла</string>
     <string name="theme_dark">Тамна</string>
     <string name="swap_scan_qr">Очитај бар-кôд</string>
     <string name="local_repo_name_summary">Објављени назив месне ризнице: %s</string>
-    <string name="install_error_unknown">Инсталација није успела услед непознате грешке</string>
+    <string name="install_error_unknown">Уградња није успела услед непознате грешке</string>
     <string name="uninstall_error_unknown">Уклањање није успело услед непознате грешке</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">захтева приступ следећем</string>
-    <string name="perm_costs_money">Ово може да вас кошта</string>
-    <string name="uninstall_update_confirm">Желите ли да замените ову апликацију фабрички уграђеном?</string>
-    <string name="uninstall_confirm">Желите ли да уклоните ову аликацију?</string>
-
-
-    <string name="swap_visible_bluetooth">Видљив преко блутута</string>
-    <string name="swap_not_visible_bluetooth">Нисам видљив преко блутута</string>
+    <string name="perm_costs_money">Ово може да вас кошта пара</string>
+    <string name="uninstall_update_confirm">Желите ли да замените овај програм фабрички уграђеном\?</string>
+    <string name="uninstall_confirm">Желите ли да уклоните овај програм\?</string>
+    <string name="swap_visible_bluetooth">Видљив преко Блутута</string>
+    <string name="swap_not_visible_bluetooth">Нисам видљив преко Блутута</string>
     <string name="swap_visible_wifi">Видљив преко бежичног</string>
     <string name="swap_not_visible_wifi">Нисам видљив преко бежичног</string>
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца адресу друге особе у прегледачу.
     </string>
-    <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
-    <string name="empty_can_update_app_list">Честитке!\nВаше апликације су надограђене.</string>
-
+    <string name="swap_switch_to_wifi">Тапните ради пребацивања на бежичну мрежу</string>
+    <string name="empty_can_update_app_list">Честитке!
+\nПрограми су надграђени.</string>
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражим људе у близини…</string>
-    <string name="empty_installed_app_list">Нема инсталираних апликација.\n\nНа вашем уређају има апликација, али нису
-        доступне на Ф-дроиду. Ово је можда зато што требате да освежите ваше ризнице, или постојеће апликације нису у
-        ризницама.
-    </string>
-    <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашој врућој тачки</string>
+    <string name="empty_installed_app_list">Нема уграђених програма.
+\n
+\nНа Вашем уређају има програмаа, али нису доступни на Ф-дроиду. Ово је можда зато што требате да освежите ризнице, или постојећи програми нису у ризницама.</string>
+    <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи Вашој врућој тачки</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
     <string name="swap_nearby">Оближња размена</string>
-    <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>
+    <string name="swap_intro">Повежите се са људима у близини и размењујте програме.</string>
     <string name="swap_no_peers_nearby">Нисам нашао никога у близини за размену.</string>
     <string name="download_error">Преузимање није успело!</string>
-
-    <string name="perms_description_app">Обезбеђује %1$s.</string>
+    <string name="perms_description_app">Достављен од стране %1$s.</string>
     <string name="more">Више</string>
     <string name="less">Мање</string>
-
-    <string name="status_download_unknown_size">Преузимам\n%2$s са\n%1$s</string>
+    <string name="status_download_unknown_size">Преузимам
+\n%2$s од
+\n%1$s</string>
     <string name="permissions">Дозволе</string>
     <string name="repo_details">Ризница</string>
     <string name="repo_url">Адреса</string>
     <string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!
     </string>
     <string name="theme_night">Ноћ</string>
-    <string name="menu_bitcoin">Биткојн</string>
-    <string name="menu_litecoin">Лајткојн</string>
+    <string name="menu_bitcoin">Биткоин</string>
+    <string name="menu_litecoin">Лајткоин</string>
     <string name="menu_flattr">Флатр</string>
-
-
     <string name="menu_settings">Подешавања</string>
     <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, не можемо размењивати са њим!</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате
@@ -261,158 +236,115 @@
     <string name="login_password">Лозинка</string>
     <string name="repo_edit_credentials">Измени лозинку</string>
     <string name="repo_error_empty_username">Корисничко име је празно, пуномоћја нису измењена</string>
-
     <string name="about_license">Лиценца</string>
-
-    <string name="status_inserting_apps">Уписујем детаље апликација</string>
-    <string name="empty_search_available_app_list">Нема одговарајућих апликација.</string>
-
-    <string name="install_confirm_update">Желите ли да надоградите постојећу апликацију? Подаци неће бити изгубљени. Надограђена апликација ће добити приступ следећем:</string>
-    <string name="install_confirm_update_system">Желите ли да надоградите
-        подразумевану апликацију? Подаци неће бити
-        изгубљени. Надограђена апликација ће добити приступ следећем:
-    </string>
-    <string name="install_confirm_update_no_perms">Желите ли да надоградите постојећу
-        апликацију? Подаци неће бити изгубљени. Нису
-        потребне дозволе за додатни приступ.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Желите ли да надоградите
-        подразумевану апликацију? Подаци неће бити
-        изгубљени. Нису потребна овлашћења за додатни приступ.
-    </string>
+    <string name="status_inserting_apps">Уписујем појединости програма</string>
+    <string name="empty_search_available_app_list">Нема одговарајућих програма.</string>
+    <string name="install_confirm_update">Желите ли да надградите постојећи програм\? Подаци неће бити изгубљени. Надграђени програм ће добити приступ следећем:</string>
+    <string name="install_confirm_update_system">Желите ли да надоградите подразумевани програм\? Подаци неће бити изгубљени. Надграђена програм ће добити приступ следећем:</string>
+    <string name="install_confirm_update_no_perms">Желите ли да надградите постојећи програм\? Подаци неће бити изгубљени. Нису потребне дозволе за додатни приступ.</string>
+    <string name="install_confirm_update_system_no_perms">Желите ли да надоградите подразумевани програм\? Подаци неће бити изгубљени. Нису потребна овлашћења за додатни приступ.</string>
     <string name="crash_dialog_title">Ф-дроид се срушио</string>
-    <string name="crash_dialog_text">Неочекивана грешка је присилила
-        програм да се заустави. Желите ли да пошаљете детаље
-        е-поштом и тиме помогнете у решавању проблема?
-    </string>
-    <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и коментаре овде:</string>
-    <string name="antinonfreeassetslist">Ова апликација садржи неслободне ресурсе</string>
-
-    <string name="menu_email">Пошаљи е-пошту аутору</string>
-    <string name="useTor">Користи Тор</string>
-    <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност. Захтева Орбот</string>
+    <string name="crash_dialog_text">Неочекивана грешка је присилила програм да се заустави. Желите ли да пошаљете податке е-поштом и тиме помогнете у решавању проблема\?</string>
+    <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и напомене овде:</string>
+    <string name="antinonfreeassetslist">Овај програм поседује неслободан садржај</string>
+    <string name="menu_email">Пошаљи е-пошту творцу</string>
+    <string name="useTor">Користи Тора</string>
+    <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност. Захтева Орбота</string>
     <string name="swap_stopping_wifi">Заустављам бежични…</string>
     <string name="repo_provider">Ризница: %s</string>
-
-    <string name="update_auto_download">Аутоматски добављај надоградње</string>
-    <string name="update_auto_download_summary">Надоградње се преузимају аутоматски и бићете обавештени пре инсталације</string>
+    <string name="update_auto_download">Самостално добављај надградње</string>
+    <string name="update_auto_download_summary">Надградње се преузимају самостално и бићете обавештени пре примене</string>
     <string name="download_pending">Чекам на почетак преузимања…</string>
-
     <string name="keep_hour">1 сат</string>
     <string name="keep_day">1 дан</string>
     <string name="keep_week">1 седмицу</string>
     <string name="keep_month">1 месец</string>
     <string name="keep_year">1 годину</string>
     <string name="keep_forever">заувек</string>
-
-    <string name="install_error_notify_title">Грешка при инсталирању %s</string>
+    <string name="install_error_notify_title">Грешка при уградњи %s</string>
     <string name="uninstall_error_notify_title">Грешка уклањања %s</string>
-
-
-    <string name="installing">Инсталирам…</string>
+    <string name="installing">Уграђујем…</string>
     <string name="uninstalling">Уклањам…</string>
-
-    <string name="update_auto_install">Аутоматски инсталирај надоградње</string>
-    <string name="update_auto_install_summary">Преузимање и инсталација апликација у позадини</string>
-    <string name="keep_install_history">Чувај историјат инсталације</string>
-    <string name="keep_install_history_summary">Чувај запис свих инсталација и уклањања унутар Ф-дроида</string>
+    <string name="update_auto_install">Самостално надграђуј програме</string>
+    <string name="update_auto_install_summary">Преузми и надгради програме у позадини, приказујући обавештење</string>
+    <string name="keep_install_history">Чувај историјат уградњи</string>
+    <string name="keep_install_history_summary">Чувај дневник свих уградњи и уклањања унутар личног складишта</string>
     <string name="versions">Издања</string>
     <string name="warning_no_internet">Не могу да освежим, да ли сте повезани на интернет?</string>
     <string name="app_details_donate_prompt_unknown_author">Почастите програмере %1$s кафом!</string>
     <string name="app_details_donate_prompt">%1$s су направили %2$s. Почастите их кафом!</string>
-
     <string name="app_version_x_available">Издање %1$s је доступно</string>
     <string name="app_version_x_installed">Издање %1$s</string>
     <string name="clear_search">Очисти претрагу</string>
-
-    <string name="repositories_summary">Додај додатне изворе апликација</string>
+    <string name="repositories_summary">Додај додатне изворе програма</string>
     <string name="main_menu__latest_apps">Најновије</string>
     <string name="main_menu__categories">Категорије</string>
-
-
-    <string name="notification_title_single_update_available">Доступна надоградња</string>
-    <string name="notification_title_single_ready_to_install">Спреман за инсталацију</string>
-    <string name="notification_title_single_ready_to_install_update">Надоградња спремна</string>
+    <string name="notification_title_single_update_available">Доступна је надградња</string>
+    <string name="notification_title_single_ready_to_install">Спреман за уградњу</string>
+    <string name="notification_title_single_ready_to_install_update">Надградња је спремна</string>
     <string name="notification_title_single_install_error">Уградња није успела</string>
     <string name="notification_content_single_downloading">Преузимам „%1$s“…</string>
-    <string name="notification_content_single_downloading_update">Преузимам надоградњу за „%1$s“…</string>
-    <string name="notification_content_single_installing">Инсталирам „%1$s“…</string>
-    <string name="notification_content_single_installed">Инсталација успешна</string>
-    <string name="notification_title_summary_update_available">Надоградња доступна</string>
+    <string name="notification_content_single_downloading_update">Преузимам надградњу за „%1$s“…</string>
+    <string name="notification_content_single_installing">Уграђујем „%1$s“…</string>
+    <string name="notification_content_single_installed">Уградња је успешна</string>
+    <string name="notification_title_summary_update_available">Надградња је доступна</string>
     <string name="notification_title_summary_downloading">Преузимам…</string>
     <string name="notification_title_summary_downloading_update">Преузимам надоградњу…</string>
-    <string name="notification_title_summary_ready_to_install">Спреман за инсталацију</string>
-    <string name="notification_title_summary_installing">Инсталирам</string>
-    <string name="notification_title_summary_installed">Успешно инсталирано</string>
-    <string name="notification_title_summary_install_error">Инсталација није успела</string>
-    <string name="notification_action_update">Надогради</string>
+    <string name="notification_title_summary_ready_to_install">Спреман за уградњу</string>
+    <string name="notification_title_summary_installing">Уграђујем</string>
+    <string name="notification_title_summary_installed">Успешно је уграђен</string>
+    <string name="notification_title_summary_install_error">Уградња није успела</string>
+    <string name="notification_action_update">Освежи</string>
     <string name="notification_action_cancel">Одустани</string>
-    <string name="notification_action_install">Инсталирај</string>
-
-    <string name="main_menu__swap_nearby">У околини</string>
+    <string name="notification_action_install">Угради</string>
+    <string name="main_menu__swap_nearby">Оближње</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Прикажи %d</item>
         <item quantity="few">Прикажи све %d</item>
         <item quantity="other">Прикажи свих %d</item>
     </plurals>
-
-    <string name="notification_title_summary_ready_to_install_update">Надоградња спремна</string>
+    <string name="notification_title_summary_ready_to_install_update">Надградња је спремна</string>
     <string name="app_recommended_version_installed">Издање %1$s (препоручено)</string>
     <string name="app_new">Ново</string>
-
-    <string name="installed_apps__activity_title">Инсталиране апликације</string>
-    <string name="installed_app__updates_ignored">Надоградње занемарене</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Надоградње за издање %1$s занемарене</string>
-
-    <string name="preference_category__my_apps">Моје апликације</string>
-    <string name="preference_manage_installed_apps">Управљај инсталираним апликацијама</string>
-
-
+    <string name="installed_apps__activity_title">Уграђени програми</string>
+    <string name="installed_app__updates_ignored">Надградње су занемарене</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Надградње за издање %1$s су занемарене</string>
+    <string name="preference_category__my_apps">Моји програми</string>
+    <string name="preference_manage_installed_apps">Управљај уграђеним програмима</string>
     <string name="tts_category_name">Категорија %1$s</string>
-
-    <string name="app__install_downloaded_update">Надогради</string>
-
+    <string name="app__install_downloaded_update">Надгради</string>
     <string name="app_list__name__downloading_in_progress">Преузимам %1$s</string>
-
     <string name="updates__tts__download_app">Преузми</string>
-    <string name="update_all">Преузми све надоградње</string>
-
-    <string name="updates__hide_updateable_apps">Сакриј апликације</string>
-    <string name="updates__show_updateable_apps">Прикажи апликације</string>
-
+    <string name="update_all">Надгради све</string>
+    <string name="updates__hide_updateable_apps">Сакриј програме</string>
+    <string name="updates__show_updateable_apps">Приказуј програме</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Преузми надоградњу за %1$d апликацију.</item>
-        <item quantity="few">Преузми надоградње за %1$d апликације.</item>
-        <item quantity="other">Преузми надоградње за %1$d апликација.</item>
+        <item quantity="one">Преузми надградњу за %1$d програм.</item>
+        <item quantity="few">Преузми надградње за %1$d програма.</item>
+        <item quantity="other">Преузми надградње за %1$d програма.</item>
     </plurals>
-
     <string name="details_new_in_version">Ново у издању %s</string>
-
-    <string name="antifeatureswarning">Ова апликација поседује функционалности које вам се можда неће свидети.</string>
-    <string name="antifeatures">Анти-могућности</string>
+    <string name="antifeatureswarning">Овај програм поседује могућности које Вам се можда неће свидети.</string>
+    <string name="antifeatures">Лоше могућности</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Прикажи %1$d апликацију у категорији %2$s</item>
-        <item quantity="few">Прикажи све %1$d апликације у категорији %2$s</item>
-        <item quantity="other">Прикажи свих %1$d апликација у категорији %2$s</item>
+        <item quantity="one">Прикажи %1$d програм у категорији %2$s</item>
+        <item quantity="few">Прикажи %1$d програма у категорији %2$s</item>
+        <item quantity="other">Прикажи свих %1$d програма у категорији %2$s</item>
     </plurals>
-
     <plurals name="details_last_update_days">
-        <item quantity="one">Надограђена пре %1$d дан</item>
-        <item quantity="few">Надограђена пре %1$d дана</item>
-        <item quantity="other">Надограђена пре %1$d дана</item>
+        <item quantity="one">Надграђена пре %1$d дан</item>
+        <item quantity="few">Надграђена пре %1$d дана</item>
+        <item quantity="other">Надграђена пре %1$d дана</item>
     </plurals>
-    <string name="app_list__name__successfully_installed">%1$s инсталирана</string>
+    <string name="app_list__name__successfully_installed">%1$s је уграђен</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Обе стране треба да користе %1$s да би користиле ово.</string>
-
-    <string name="latest__empty_state__no_recent_apps">Нема недавних апликација</string>
-    <string name="categories__empty_state__no_categories">Нема категорија за приказ</string>
-
-    <string name="latest__empty_state__never_updated">Када се списак апликација ажурира, најновије апликације ће бити приказане овде</string>
-    <string name="latest__empty_state__no_enabled_repos">Када укључите ризнице и дозволите да се ажурира, најновије апликације ће бити приказане овде</string>
-
-    <string name="details_last_updated_today">Ажурирана данас</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Обе стране треба да користе %1$s да би користиле близинску размену.</string>
+    <string name="latest__empty_state__no_recent_apps">Нема недавних програма</string>
+    <string name="categories__empty_state__no_categories">Нема врста за приказ</string>
+    <string name="latest__empty_state__never_updated">Када се списак програма освежи, најновији програми ће бити приказане овде</string>
+    <string name="latest__empty_state__no_enabled_repos">Када укључите ризнице и дозволите да се освеже, најновији програми ће бити приказане овде</string>
+    <string name="details_last_updated_today">Освежено данас</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Откажи преузимање</string>
     <string name="menu_license">Лиценца: %s</string>
@@ -429,66 +361,147 @@
         <item quantity="other">%1$d надоградњи</item>
     </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d апл. инсталирана</item>
-	<item quantity="few">%1$d апл. инсталиране</item>
-	<item quantity="other">%1$d апл. инсталирано</item>
-</plurals>
+        <item quantity="one">%1$d програм је уграђен</item>
+        <item quantity="few">%1$d програма су уграђена</item>
+        <item quantity="other">%1$d програма је уграђено</item>
+    </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Надограђена пре %1$d седмицу</item>
-        <item quantity="few">Надограђена пре %1$d седмице</item>
-        <item quantity="other">Надограђена пре %1$d седмица</item>
+        <item quantity="one">Надграђена пре %1$d седмицу</item>
+        <item quantity="few">Надграђена пре %1$d седмице</item>
+        <item quantity="other">Надграђена пре %1$d седмица</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Надограђена пре %1$d месец</item>
-        <item quantity="few">Надограђена пре %1$d месеца</item>
-        <item quantity="other">Надограђена пре %1$d месеци</item>
+        <item quantity="one">Надграђена пре %1$d месец</item>
+        <item quantity="few">Надграђена пре %1$d месеца</item>
+        <item quantity="other">Надграђена пре %1$d месеци</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Надограђена пре %1$d годину</item>
-        <item quantity="few">Надограђена пре %1$d године</item>
-        <item quantity="other">Надограђена пре %1$d година</item>
+        <item quantity="one">Надграђена пре %1$d годину</item>
+        <item quantity="few">Надграђена пре %1$d године</item>
+        <item quantity="other">Надграђена пре %1$d година</item>
     </plurals>
-    <string name="force_old_index">Присили стари формат индекса</string>
-    <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите ИксМЛ индекс апликација</string>
-    <string name="app_installed_media">Фајл инсталиран у %s</string>
-    <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште да би инсталирао у складиште. Одобрите приступ на следећем екрану да бисте наставили инсталацију.</string>
-
-    <string name="app_list_download_ready">Преузето, спремно за инсталацију</string>
-
-    <string name="download_404">Захтевани фајл није нађен.</string>
-    <string name="status_inserting_x_apps">Уписујем детаље апликација (%1$d/%2$d) од %3$s</string>
-    <string name="app_list__dismiss_app_update">Надоградња игнорисана</string>
+    <string name="force_old_index">Присили стари облик садржаја</string>
+    <string name="force_old_index_summary">У случају грешака или проблема са усклађеношћу, користите облик ИксМЛ-а за садржај програма</string>
+    <string name="app_installed_media">Датотека је уграђена у %s</string>
+    <string name="app_permission_storage">Ф-дроид захтева дозволе за складиште ради уградње у складиште. Одобрите приступ на следећем приказу ради наставка уградње.</string>
+    <string name="app_list_download_ready">Преузето, спремно за уградњу</string>
+    <string name="download_404">Захтевана датотека није нађена.</string>
+    <string name="status_inserting_x_apps">Уписујем појединости програма (%1$d/%2$d) од %3$s</string>
+    <string name="app_list__dismiss_app_update">Надградња је занемарена</string>
     <string name="app_list__dismiss_vulnerable_app">Рањивост је занемарена</string>
-    <string name="app_list__dismiss_downloading_app">Преузимање отказано</string>
-
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа уклоните апликацију.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну рањивост у %1$s. Препоручујемо да сместа надоградите апликацију.</string>
+    <string name="app_list__dismiss_downloading_app">Преузимање је отказано</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронашли смо безбедносну претњу у %1$s. Препоручујемо да одмах уклоните програм.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронашли смо безбедносну претњу у %1$s. Препоручујемо да одмах надградите програм на најновије издање.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
-
     <string name="hide_all_notifications">Сакриј сва обавештења</string>
-    <string name="install_history">Историјат инсталације</string>
-    <string name="send_install_history">Шаљи историјат инсталације</string>
-    <string name="about_forum">Форум за подршку</string>
+    <string name="install_history">Историјат уградњи</string>
+    <string name="send_install_history">Шаљи историјат уградњи</string>
+    <string name="about_forum">Сабор за подршку</string>
     <string name="app_suggested">Предложено</string>
     <string name="app_size">Величина: %1$s</string>
-
-    <string name="send_installed_apps">Подели инсталиране апликације</string>
+    <string name="send_installed_apps">Дели уграђене програме</string>
     <string name="prompt_to_send_crash_reports">Питај да шаљеш извештај о рушењу</string>
-    <string name="prompt_to_send_crash_reports_summary">Скупљај податке у рушењима и питај да се пошаљу програмерима</string>
-    <string name="hide_all_notifications_summary">Забрани приказ свих радњи и из статусне траке и из фиоке.</string>
-    <string name="install_history_summary">Види приватни дневник свих инсталација и брисања</string>
-    <string name="send_version_and_uuid">Пошаљу верзију и UUID серверима</string>
-    <string name="send_version_and_uuid_summary">Укључи верзију ове апликације и случајни, јединствени ID приликом скидања, узима ефекта од следећег стартовања апликације.</string>
-    <string name="allow_push_requests">Дозволи складиштима да инсталирају/бришу апликације</string>
+    <string name="prompt_to_send_crash_reports_summary">Скупљај податке у рушењима и питај да ли да се пошаљу програмерима</string>
+    <string name="hide_all_notifications_summary">Забрани приказ свих радњи у траци стања и обавештења.</string>
+    <string name="install_history_summary">Види лични дневник свих уградњи и брисања</string>
+    <string name="send_version_and_uuid">Шаљи издање и УУИД служитељима</string>
+    <string name="send_version_and_uuid_summary">Укључи издање овог програма и случајни, јединствени ЛБ приликом преузимања, ступа на снагу од следећег покретања програма.</string>
+    <string name="allow_push_requests">Дозволи ризницама да уграђују/уклањају програме</string>
     <string name="over_wifi">Преко бежичне мреже</string>
     <string name="over_data">Преко мобилне мреже</string>
-    <string name="over_network_always_summary">Увек користи овај тип везе када је доступна</string>
-    <string name="over_network_on_demand_summary">Користи овај тип мреже само када ја кликнем на скидање</string>
-    <string name="over_network_never_summary">Никад ништа не скидај преко овог типа мреже</string>
-    <string name="app_details__incompatible_mismatched_signature">Различити потписи од инсталиране верзије</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Нема верзија са компатибилним потписом</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Нема верзије компатибилне са уређајем</string>
-    <string name="sort_search">Сортирај претрагу</string>
-
+    <string name="over_network_always_summary">Увек користи ову врсту везе када је доступна</string>
+    <string name="over_network_on_demand_summary">Користи ову врсту мреже само када ја кликнем на преузимање</string>
+    <string name="over_network_never_summary">Никад ништа не преузимај преко ове врсте мреже</string>
+    <string name="app_details__incompatible_mismatched_signature">Различити су потписи код уграђеног издања</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Нема издања са одговарајућим потписом</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Нема издања у складу са уређајем</string>
+    <string name="sort_search">Разврстај претрагу</string>
     <string name="menu_open">Отвори</string>
+    <string name="repo_exists_add_fingerprint">%1$s је већ подешена, ово ће додати нови кључни податак.</string>
+    <string name="repo_exists_enable">%1$s је већ подешена, потврдите да је желите поново омогућити.</string>
+    <string name="repo_exists_and_enabled">%1$s је већ подешена и омогућена.</string>
+    <string name="repo_delete_to_overwrite">Прво избришите %1$s у циљу додавања ове са сукобљеним кључем.</string>
+    <string name="app_details__no_versions__show_incompat_versions">Ради приказа неодговарајућих издања, омогућите поставку \"%1$s\".</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Уграђено издање није усклађено ни са којим доступним издањем. Уклањањем програма ћете омогућити преглед и уградњу одговарајућих издања. Ово се често дешава са програмима уграђеним са Гуглове продавнице или осталих извода, уколико су потписане различитим уверењима.</string>
+    <string name="privacy">Праватност</string>
+    <string name="preventScreenshots_title">Онемогући сликање приказа</string>
+    <string name="preventScreenshots_summary">Забрани сликање приказа и сакриј садржај програма са приказа скорашњих програма</string>
+    <string name="panic_app_setting_title">Програм дугмета панике</string>
+    <string name="panic_app_unknown_app">непознати програм</string>
+    <string name="panic_app_setting_summary">Нема постављеног програма</string>
+    <string name="panic_app_setting_none">Ни један</string>
+    <string name="panic_app_dialog_title">Потврди програм панике</string>
+    <string name="panic_app_dialog_message">Да ли сте сигурни да желите дозволити %1$s да окида разорне радње дугмета панике\?</string>
+    <string name="allow">Дозволи</string>
+    <string name="panic_settings">Поставке дугмета панике</string>
+    <string name="panic_settings_summary">Радња за потребе нужности</string>
+    <string name="panic_exit_title">Напусти програм</string>
+    <string name="panic_exit_summary">Овај програм ће бити затворен</string>
+    <string name="panic_destructive_actions">Разорне радње</string>
+    <string name="panic_hide_title">Сакриј %s</string>
+    <string name="panic_hide_summary">Програм ће се сакрити</string>
+    <string name="force_touch_apps">Обухвати програме са обавезним додиром</string>
+    <string name="force_touch_apps_on">Приказуј програме који захтевају управљање додиром без обзира на могућност уређаја за истим</string>
+    <string name="panic_hide_warning_title">Запамтите како их повратити</string>
+    <string name="panic_hide_warning_message">У случају паничног догађаја, ово ће уклонити програм %1$s са покретача. Само куцање „%2$d“ у лажни програм %3$s ће га повратити.</string>
+    <string name="hiding_calculator">Калкулатор</string>
+    <string name="hiding_dialog_title">Сакриј %s сада</string>
+    <string name="hiding_dialog_message">Да ли сте сигурни да желите уклонити програм %1$s из покретача\? Само куцањем „%2$d“ у лажни програм %3$s га може повратити.</string>
+    <string name="hiding_dialog_warning">Позор: Било која пречица програма на почетном приказу ће такође бити уклоњена и мора се додати ручно.</string>
+    <string name="hide_on_long_search_press_title">Сакриј дугметом претраге</string>
+    <string name="hide_on_long_search_press_summary">Дуги притисак на дугме претраге ће сакрити програм</string>
+    <string name="warning_scaning_qr_code">Камера нема саможижу. Можда ће бити тешко да скенира кôд.</string>
+    <string name="show_anti_feature_apps">Обухвати програме лоших бити</string>
+    <string name="show_anti_feature_apps_on">Приказуј програме који изискују лоше бити</string>
+    <string name="repo_add_mirror">Додај одразну ризницу</string>
+    <string name="repo_exists_add_mirror">Ово је умножак %1$s, додати је као одраз\?</string>
+    <string name="repo_official_mirrors">Званични одрази ризница</string>
+    <string name="repo_user_mirrors">Кориснички одрази ризница</string>
+    <string name="use_bluetooth">Користи Блутут</string>
+    <string name="swap_toast_invalid_url">Неисправна адреса за размену: %1$s</string>
+    <string name="swap_toast_hotspot_enabled">Врућа тачка бежичне везе је омогућена</string>
+    <string name="swap_toast_could_not_enable_hotspot">Нисам успео да омогућим врућу тачку бежичне везе!</string>
+    <string name="antidisabledalgorithmlist">Овај програм има слаб безбедносни потпис</string>
+    <string name="antiknownvulnlist">Овај програм садржи познату безбедносну рањивост</string>
+    <string name="share_repository">Дели ризницу</string>
+    <string name="antinosourcesince">Изворни код није више доступан, нема доступних надградњи.</string>
+    <string name="allow_push_requests_summary">Метаподаци о ризници могу садржати захтеве за уградњу и уклањање програма</string>
+    <string name="send_history_csv">%s белешке о уградњи као датотека ЦСВ-а</string>
+    <string name="updates_disabled_by_settings">Све надградње су онемогућене поставкама мобилне/бежичне мреже</string>
+    <string name="send_installed_apps_csv">Програми уграђени преко Ф-дроида као датотеке ЦСВ-а</string>
+    <string name="menu_downgrade">Разгради</string>
+    <string name="app_repository">Ризница: %1$s</string>
+    <string name="scan_removable_storage_title">Прегледај уклоњиво складиште</string>
+    <string name="scan_removable_storage_summary">Тражи ризнице на уклоњивим складиштима попут СД-картица или УСБ-картица</string>
+    <string name="nearby_splash__read_external_storage">Претражи ризнице и одразе на картици СД-а.</string>
+    <string name="nearby_splash__request_permission">Пробајте</string>
+    <string name="swap_toast_using_path">Користим %1$s</string>
+    <string name="swap_toast_not_removable_storage">Тај избор није сагласан ни са једним уклоњивим уређајем, покушајте поново!</string>
+    <string name="swap_toast_find_removeable_storage">Изаберите уклоњиву картицу СД-а или УСБ-а</string>
+    <string name="not_visible_nearby">Није омогућено оближње дељење</string>
+    <string name="not_visible_nearby_description">Пре размене са оближњим уређајима, учините свој уређај видљивим.</string>
+    <string name="scan_removable_storage_toast">Прегледам %s…</string>
+    <string name="main_menu__updates">Освежења</string>
+    <string name="menu_translation">Превод</string>
+    <string name="undo">Поврати</string>
+    <string name="app_list__dismiss_installing_app">Уградња је отказана</string>
+    <string name="menu_select_for_wipe">Означи за брисање</string>
+    <string name="try_again">Покушај поново</string>
+    <string name="panic_will_be_wiped">Биће уклоњени и сви подаци избрисани</string>
+    <string name="panic_apps_to_uninstall">Програми који ће се уклањати и подаци брисати</string>
+    <string name="panic_add_apps_to_uninstall">Додај програме који ће се уклањати и брисати</string>
+    <string name="panic_reset_repos_title">Врати ризнице на подразумевано</string>
+    <string name="panic_reset_repos_summary">Присили поставке ризница на почетне вредности</string>
+    <string name="swap_visible_hotspot">Видљиве преко вруће тачке</string>
+    <string name="swap_blank_wifi_ssid">(празно)</string>
+    <string name="swap_hidden_wifi_ssid">(скривено)</string>
+    <string name="swap_setting_up_hotspot">Постављам врућу тачку…</string>
+    <string name="swap_stopping_hotspot">Заустављам врућу тачку…</string>
+    <string name="swap_starting">Покрећем…</string>
+    <string name="swap_stopping">Заустављам…</string>
+    <string name="disabled">Онемогућено</string>
+    <string name="swap_error_cannot_start_bluetooth">Нисам успео да покренем Блутут!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Оближња размена је затворена јер је мировала.</string>
+    <string name="nearby_splash__document_tree">Претражи ризнице и одразе на приручном УСБ-у.</string>
+    <string name="menu_liberapay">Либерапеј</string>
 </resources>
