@@ -1,0 +1,17 @@
+* Automatisk reduksjon eller sletting av mellomlager når det er lite ledig diskplass
+
+* Ytingsforbetringar på einingar med lite minne
+
+* Alle nedlastingar følgjer no «Berre via Wi-Fi»-innstillinga
+
+* Redusert minnebruk når det er lite ledig minne
+
+* Kan no leggja til pakkebrønns­speglar ved å trykkja på lenkjer eller skanna QR-kodar
+
+* Forbetra automatisk spegelval
+
+* Mange feilrettingar og forbetringar  i funksjonar for apputveksling/«I nærleiken»-funksjonalitet
+
+* Fjerna éi årsak til gjentakande varsling om oppdateringar (#1271)
+
+* F-Droid kjenner no att GitLab-adresser for F-Droid nightly

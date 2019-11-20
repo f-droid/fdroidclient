@@ -1,0 +1,18 @@
+F-Droid er ein installerbar katalog over fri programvare for Android.
+Med F-Droid-klientappen kan du enkelt finna, installera og oppdatera
+appar på eininga di.
+
+Du kan kopla appen til alle F-Droid-kompatible pakkebrønnar. Standard-
+brønnane ligg på f-droid.org og inneheld berre heilt fri programvare.
+
+Android er ei open plattform, der du fritt kan installera appar via
+APK-filer du lastar ned, men det finst fleire gode grunnar til å bruka
+F-Droid til appbiblioteket ditt. Du kan:
+
+* Få varslingar når det finst nye versjonane av appane
+* Velja å få oppdateringar lasta ned og installert automatisk
+* Ta vare på eldre versjonar og betaversjonar av appane
+* Filtrera ut appar som ikkje er kompatible med eininga
+* Finna appar via kategoriar eller søk i appskildringane
+* Få direkte tilgang til nettsider for pengegåver eller kjeldekode til appane
+* Auka tryggleik ved automatisk kontroll av pakkebrønn­signaturar og kontrollsummar for APK-filer

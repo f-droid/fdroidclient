@@ -1,0 +1,3 @@
+* Oppdaterte omsetjingar
+* Retta problem med knappstorleik (#1678)
+* Stoppa sporadiske krasj ved køyring i bakgrunnen

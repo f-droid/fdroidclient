@@ -1,0 +1,13 @@
+* Apputveksling via SD-kort er no støtta
+
+* Feilrettingar og forbetringar ved apputveksling
+
+* Fleire forbetringar ved vising av appdetaljar
+
+* Oppdatert tekst og omsetjingar for «I nærleiken» og apputveksling
+
+* Forbetra automatisk val av appikon
+
+* Kan leggja til pakkebrønnar via «additional_repos.xml»-fil frå ROM/OEM/leverandør
+
+* Vis «versionCode» i utvida versjonslister i ekspertmodus

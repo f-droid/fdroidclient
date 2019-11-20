@@ -209,7 +209,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="main_menu__updates">Oppdateringar</string>
+    <string name="main_menu__updates">Oppdater</string>
     <string name="latest__empty_state__no_recent_apps">Fann ingen nylege appar</string>
     <string name="latest__empty_state__never_updated">Når appoversikta er oppdatert, vil dei nyaste appane visast her</string>
     <string name="latest__empty_state__no_enabled_repos">Når du har lagt til ein pakkebrønn og oppdatert han, vil dei nyaste appane visast her</string>
@@ -334,7 +334,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Manglar du Internett-tilgang\? Hent appar frå andre i nærleiken!</string>
     <string name="nearby_splash__find_people_button">Finn folk i nærleiken</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge to treng %1$s for å kunna utveksla appar.</string>
-    <string name="nearby_splash__read_external_storage">SD-kort kan brukast til apputveksling</string>
+    <string name="nearby_splash__read_external_storage">Søk på SD-kort etter pakkebrønnar og speglar.</string>
     <string name="nearby_splash__request_permission">Prøv no</string>
     <string name="swap_nfc_title">Trykk for å utveksla</string>
     <string name="swap_nfc_description">Viss vennen din har F-Droid og har slått på NFC, hald einingane nært kvarandre.</string>
@@ -354,7 +354,7 @@
     <string name="swap_scan_qr">Skann QR-kode</string>
     <string name="swap_people_nearby">Folk i nærleiken</string>
     <string name="swap_scanning_for_peers">Søkjer etter folk i nærleiken …</string>
-    <string name="swap_nearby">Utveksla via «I nærleiken»</string>
+    <string name="swap_nearby">\t</string>
     <string name="swap_intro">Kopla til og utveksla appar med folk i nærleiken.</string>
     <string name="swap_visible_bluetooth">Synleg via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Set opp Bluetooth …</string>
@@ -472,4 +472,24 @@
     <string name="theme_light">Lys</string>
     <string name="theme_dark">Mørk</string>
     <string name="theme_night">Natt</string>
+    <string name="undo">Angra</string>
+    <string name="app_list__dismiss_installing_app">Installering avbroten</string>
+    <string name="menu_select_for_wipe">Vel for fullstendig sletting</string>
+    <string name="try_again">Prøv på nytt</string>
+    <string name="panic_will_be_wiped">Vert avinstallerast og får alle sine data sletta</string>
+    <string name="panic_apps_to_uninstall">Appar som skal avinstallerast og få alle sine data sletta</string>
+    <string name="panic_add_apps_to_uninstall">Legg til appar som skal avinstallerast og fullstendig slettast</string>
+    <string name="panic_reset_repos_title">Tilbakestill pakkebrønnar</string>
+    <string name="panic_reset_repos_summary">Tving pakkebrønn­oppsett tilbake til standardverdiar</string>
+    <string name="swap_visible_hotspot">Synleg via trådlaussone</string>
+    <string name="swap_blank_wifi_ssid">(tom)</string>
+    <string name="swap_hidden_wifi_ssid">(gøymd)</string>
+    <string name="swap_setting_up_hotspot">Set opp trådlaussone …</string>
+    <string name="swap_stopping_hotspot">Stengjer ned trådlaussone …</string>
+    <string name="swap_starting">Startar …</string>
+    <string name="swap_stopping">Slår av …</string>
+    <string name="disabled">Slått av</string>
+    <string name="swap_error_cannot_start_bluetooth">Kan ikkje starta Bluetooth</string>
+    <string name="swap_toast_closing_nearby_after_timeout">«I nærleiken» vart slått av på grunn av inaktivitet.</string>
+    <string name="nearby_splash__document_tree">Søk på USB OTG-einingar for pakkebrønnar og speglar.</string>
 </resources>
