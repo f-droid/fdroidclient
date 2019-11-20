@@ -537,20 +537,20 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update
-        to this existing app? Your existing data will not
-        be lost. The updated app will get access to:
+        to this existing app? Your existing data will
+        be kept. The updated app will get access to:
     </string>
     <string name="install_confirm_update_system">Do you want to install an update
-        to this built-in app? Your existing data will not
-        be lost. The updated app will get access to:
+        to this built-in app? Your existing data will
+        be kept. The updated app will get access to:
     </string>
     <string name="install_confirm_update_no_perms">Do you want to install an update
-        to this existing app? Your existing data will not
-        be lost. It does not require any special access.
+        to this existing app? Your existing data will
+        be kept. It does not require any special access.
     </string>
     <string name="install_confirm_update_system_no_perms">Do you want to install an update
-        to this built-in app? Your existing data will not
-        be lost. It does not require any special access.
+        to this built-in app? Your existing data will
+        be kept. It does not require any special access.
     </string>
     <string name="newPerms">New</string>
     <string name="allPerms">All</string>
