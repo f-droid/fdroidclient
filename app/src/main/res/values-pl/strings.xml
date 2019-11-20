@@ -113,7 +113,7 @@
         usunięcie jej danych i ustawień)
     </string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
-    <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
+    <string name="notify_on">Wyświetlaj powiadomienie, gdy znalezione zostaną nowe aktualizacje</string>
     <string name="app_incompatible">Niekompatybilne</string>
     <string name="app_installed">Zainstalowane</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
@@ -125,7 +125,7 @@
     <string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
     <string name="invalid_url">Niepoprawny URL.</string>
     <string name="menu_manage">Repozytoria</string>
-    <string name="menu_ignore_all">Ignoruj przyszłe aktualizacje</string>
+    <string name="menu_ignore_all">Ignoruj wszystkie aktualizacje</string>
     <string name="menu_issues">Problemy</string>
     <string name="menu_changelog">Lista zmian</string>
     <string name="menu_source">Kod źródłowy</string>

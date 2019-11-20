@@ -1,4 +1,4 @@
-* Gruntowny przegląd UI wymiany, przygotowanie do przepisania
+* Gruntowny przegląd wymiany UI, przygotowanie do przepisania
 
 * Pokaż „Cofnij” po przesunięciu elementów z karty „Aktualizacje” (dzięki @Hocuri!)
 
@@ -6,6 +6,6 @@
 
 * Naprawiono problemy z wyświetlaniem "Najnowsze" spowodowane niewłaściwymi strefami czasowymi #1757
 
-* Ignoruj wszystkie nieistotne awarie w usługach działających w tle
+* Wszystkie nieistotne awarie w usługach działających w tle są ignorowane
 
 * Nie używaj Rozszerzenia Uprzywilejowanego, jeśli zostało wyłączone w "Ustawieniach"
