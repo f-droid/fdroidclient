@@ -1,13 +1,13 @@
-* Échanges par carte SD maintenant possibles
+* Support de l'échange via carte SD
 
-*
+* Correction et amélioration de l'échange de l'échange à proximité
 
 * Améliorations supplémentaires des "Détails d'Application"
 
-* 
+* Mise à jour des traductions à propos de l'échange à proximité.
 
-* Logique selection icônes d'applications amélioréeéchange
+* Amélioration de la logique de sélection des icônes d'application
 
-*
+* Possibilité d'ajouter des dépôts via le fichier additional_repos.xml pour les éditeurs de ROM ou vendeurs
 
-*
+* Affichage du "versionCode" dans la liste de versions étendue du mode Expert

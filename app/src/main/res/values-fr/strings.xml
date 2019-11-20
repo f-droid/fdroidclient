@@ -86,9 +86,9 @@
     <string name="skip">Ignorer</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Activer le proxy HTTP</string>
-    <string name="enable_proxy_summary">Configurer le proxy HTTP pour toutes les requêtes réseaux</string>
-    <string name="proxy_host">Hôte du proxy</string>
-    <string name="proxy_host_summary">Le nom d\'hôte de votre proxy (ex : 127.0.0.1)</string>
+    <string name="enable_proxy_summary">Configurer le proxy HTTP pour toutes les requêtes réseau</string>
+    <string name="proxy_host">Hôte proxy</string>
+    <string name="proxy_host_summary">Le nom d\'hôte de votre proxy (par exemple, 127.0.0.1)</string>
     <string name="proxy_port">Port du proxy</string>
     <string name="proxy_port_summary">Le numéro de port de votre proxy (ex : 8118)</string>
     <string name="status_download">Téléchargement
@@ -168,7 +168,7 @@
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'appli aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette appli ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
-    <string name="newPerms">Nouvelles</string>
+    <string name="newPerms">Nouveau</string>
     <string name="allPerms">Toutes</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
@@ -187,7 +187,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) de %1$s</string>
+    <string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) depuis %1$s</string>
     <string name="repo_added">Le dépôt d\'applications %1$s a été enregistré.</string>
     <string name="repo_searching_address">Recherche d\'un dépôt d\'applications sur
 \n%1$s</string>
@@ -250,7 +250,7 @@
     <string name="repo_error_empty_username">Nom d\'utilisateur vide, aucune modification effectuée</string>
     <string name="about_license">Licence</string>
     <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
-    <string name="status_inserting_apps">Enregistrement des détails de l\'appli</string>
+    <string name="status_inserting_apps">Enregistrement du détail des applis</string>
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
     <string name="crash_dialog_text">Une erreur inattendue s’est produite
@@ -284,7 +284,7 @@
     <string name="keep_install_history_summary">Mémoriser toutes les installations et désinstallations dans un journal privé</string>
     <string name="warning_no_internet">Impossible de mettre à jour, êtes-vous connecté à Internet ?</string>
     <string name="versions">Versions</string>
-    <string name="app_details_donate_prompt_unknown_author">Offrir un café aux développeurs de %1$s !</string>
+    <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-leur un café !</string>
     <string name="repositories_summary">Ajouter des sources additionnelles d’applis</string>
     <string name="notification_title_single_update_available">Mise à jour disponible</string>
@@ -391,7 +391,7 @@
     <string name="force_old_index">Forcer l\'ancien format d\'index</string>
     <string name="force_old_index_summary">Dans le cas où des erreurs ou des incompatibilités apparaitraient, utilisez l\'index des applications en XML</string>
     <string name="app_list_download_ready">Téléchargé, prêt à installer</string>
-    <string name="status_inserting_x_apps">Enregistrement des détails de l\'application (%1$d/%2$d) depuis %3$s</string>
+    <string name="status_inserting_x_apps">Enregistrement du détail des applis (%1$d/%2$d) depuis %3$s</string>
     <string name="app_installed_media">Fichier installé sur %s</string>
     <string name="app_permission_storage">F-droid requiert l\'accès au stockage pour effectuer l\'installation. Veuillez accorder cette autorisation sur l\'écran suivant afin de poursuivre  l\'installation.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Aucune version compatible avec votre appareil</string>
@@ -481,7 +481,7 @@
     <string name="swap_toast_using_path">Utilisation de %1$s</string>
     <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
     <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
-    <string name="nearby_splash__read_external_storage">Les cartes SD peuvent être utilisées pour les échanges !</string>
+    <string name="nearby_splash__read_external_storage">Rechercher sur la carte SD les dépôts et miroirs.</string>
     <string name="not_visible_nearby">Appareil non visible</string>
     <string name="not_visible_nearby_description">Pour échanger avec les appareils proches, vous devez d\'abord rendre visible votre appareil.</string>
     <string name="scan_removable_storage_toast">Recherche de %s…</string>
@@ -503,4 +503,9 @@
     <string name="swap_blank_wifi_ssid">(vide)</string>
     <string name="swap_hidden_wifi_ssid">(masqué)</string>
     <string name="menu_select_for_wipe">Sélectionner pour suppression</string>
+    <string name="swap_visible_hotspot">Visible via le point d\'accès</string>
+    <string name="swap_setting_up_hotspot">Mise en place du point d\'accès…</string>
+    <string name="swap_stopping_hotspot">Arrêt du point d\'accès…</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Échange à proximité terminé pour inactivité.</string>
+    <string name="nearby_splash__document_tree">Rechercher sur l\'USB OTG les dépôts et miroirs.</string>
 </resources>

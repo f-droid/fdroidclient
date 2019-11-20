@@ -1,0 +1,3 @@
+* Mise à jour des traductions
+* Correction des problèmes de taille de bouton #1678
+* Arrêt des plantages aléatoires en arrière-plan
