@@ -482,7 +482,7 @@
     <string name="app_repository">מאגר: %1$s</string>
     <string name="scan_removable_storage_title">סריקת אחסון נתיק</string>
     <string name="scan_removable_storage_summary">איתור מאגרי חבילות בהתקנים נתיקים כגון כרטיסי SD וכונני דיסק און קי</string>
-    <string name="nearby_splash__read_external_storage">ניתן להשתמש בכונני SD בתור זיכרון החלפה!</string>
+    <string name="nearby_splash__read_external_storage">חיפוש מאגרים ועותקי מראה בכרטיס ה־SD.</string>
     <string name="nearby_splash__request_permission">בואו ננסה</string>
     <string name="not_visible_nearby">קרבה לא מופעלת</string>
     <string name="not_visible_nearby_description">בטרם החלפה עם מכשירים בקרבת מקום עליך להפעיל את גילוי המכשיר שלך.</string>
@@ -511,4 +511,5 @@
     <string name="disabled">מושבת</string>
     <string name="swap_error_cannot_start_bluetooth">לא ניתן להפעיל Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">סריקת סביבה נסגרה עקב חוסר פעילות.</string>
+    <string name="nearby_splash__document_tree">חיפוש מאגרים ועותקי מראה בהתקני USB ניידים.</string>
 </resources>

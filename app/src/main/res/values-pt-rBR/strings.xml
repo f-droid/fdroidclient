@@ -484,7 +484,7 @@
     <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>
     <string name="app_repository">Repositório: %1$s</string>
     <string name="main_menu__updates">Atualizações</string>
-    <string name="nearby_splash__read_external_storage">Cartões SD podem ser usados para trocar!</string>
+    <string name="nearby_splash__read_external_storage">Pesquisa o Cartão SD por repositórios e espelhos.</string>
     <string name="nearby_splash__request_permission">Tente</string>
     <string name="not_visible_nearby">Próximo não ativado</string>
     <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o dispositivo visível.</string>
@@ -511,4 +511,5 @@
     <string name="disabled">Desativado</string>
     <string name="swap_error_cannot_start_bluetooth">Não foi possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Por Perto fechado já que estava ocioso.</string>
+    <string name="nearby_splash__document_tree">Pesquisa por USB OTG por repositórios e espelhos.</string>
 </resources>
