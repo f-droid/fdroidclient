@@ -495,4 +495,5 @@
     <string name="panic_apps_to_uninstall">Εφαρμογές για να απεγκατασταθούν και όλα τα δεδομένα να σβηστούν</string>
     <string name="panic_add_apps_to_uninstall">Προσθήκη εφαρμογών που θα απεγκατασταθούν και θα σβηστούν</string>
     <string name="panic_reset_repos_title">Επαναφορά αποθετηρίων</string>
+    <string name="disabled">Απενεργοποιημένο</string>
 </resources>

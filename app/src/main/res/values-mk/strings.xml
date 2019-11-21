@@ -23,4 +23,29 @@
     <string name="main_menu__categories">Категории</string>
 
     <string name="update_interval">Автоматско ажурирање временски интервал</string>
+    <string name="cancel">Откажи</string>
+    <string name="unknown">Непознато</string>
+    <string name="disabled">Оневозможено</string>
+    <string name="next">Следно</string>
+    <string name="installing">Се инсталира…</string>
+    <string name="install_confirm_update">Дали сакате да инсталирате надградба на оваа постоечка апликација? Вашите постоечки податоци нема да се изгубат. Ажурираната апликација ќе добие пристап до:</string>
+    <string name="install_confirm_update_system">Дали сакате да инсталирате надградба на оваа вградена апликација? Вашите постоечки податоци нема да се изгубат. Ажурираната апликација ќе добие пристап до:</string>
+    <string name="install_confirm_update_no_perms">Дали сакате да инсталирате надградба на оваа постоечка апликација? Вашите постоечки податоци нема да се изгубат. Таа не бара никаков посебен пристап.</string>
+    <string name="install_confirm_update_system_no_perms">Дали сакате да инсталирате надградба на оваа вградена апликација? Вашите постоечки податоци нема да се изгубат. Таа не бара никаков посебен пристап.</string>
+    <string name="menu_launch">Отвори</string>
+    <string name="ok">Во ред</string>
+    <string name="uninstall_confirm">Дали сакате да ја деинсталирате оваа апликација?</string>
+    <string name="uninstall_update_confirm">Сакате да ја замените оваа апликација со фабричката верзија? Сите податоци ќе се отстранат.</string>
+    <string name="uninstalling">Се деинсталира…</string>
+    <string name="newPerms">Ново</string>
+    <string name="allPerms">Сè</string>
+    <string name="no_permissions">Нема дозволи</string>
+    <string name="loading">Се вчитува…</string>
+    <string name="yes">Да</string>
+    <string name="no">Не</string>
+    <string name="allow">Дозволи</string>
+    <string name="swap_connecting">Се поврзува</string>
+    <string name="permissions">Дозволи</string>
+    <string name="menu_search">Пребарување</string>
+    <string name="wifi">Wi-Fi</string>
 </resources>

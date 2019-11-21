@@ -437,4 +437,5 @@
     <string name="send_version_and_uuid_summary">Đính kèm phiên bản app này và một ID ngẫu nhiên khi download, có hiệu lực sau khi khởi động lại.</string>
     <string name="send_install_history">Gửi Lịch sử Cài đặt</string>
     <string name="send_history_csv">%s lịch sử cài đặt dưới dạng CSV</string>
+    <string name="disabled">Đã tắt</string>
 </resources>

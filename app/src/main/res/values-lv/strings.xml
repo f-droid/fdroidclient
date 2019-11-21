@@ -205,4 +205,18 @@
 
     <string name="latest__empty_state__no_recent_apps">Netika atrasta neviena nesen izmantota aplikācija</string>
     <string name="latest__empty_state__never_updated">Tiklīdz jūsu aplikāciju saraksts tiks atjaunināts, jaunākajām aplikācijām vajadzētu šeit parādīties</string>
+    <string name="unknown">Nezināms</string>
+    <string name="disabled">Atspējots</string>
+    <string name="installing">Notiek instalēšana…</string>
+    <string name="install_confirm_update">Vai vēlaties instalēt šīs lietojumprogrammas atjauninājumu? Esošie dati netiks zaudēti. Atjauninātajai lietojumprogrammai būs piekļuve:</string>
+    <string name="install_confirm_update_system">Vai vēlaties instalēt šīs iebūvētās lietojumprogrammas atjauninājumu? Esošie dati netiks zaudēti. Atjauninātajai lietojumprogrammai būs piekļuve:</string>
+    <string name="install_confirm_update_no_perms">Vai vēlaties instalēt šīs lietojumprogrammas atjauninājumu? Esošie dati netiks zaudēti. Tam nav nepieciešama īpaša piekļuves atļauja.</string>
+    <string name="install_confirm_update_system_no_perms">Vai vēlaties instalēt šīs iebūvētās lietojumprogrammas atjauninājumu? Esošie dati netiks zaudēti. Tam nav nepieciešama īpaša piekļuves atļauja.</string>
+    <string name="uninstall_confirm">Vai vēlaties atinstalēt šo lietotni?</string>
+    <string name="uninstall_update_confirm">Vai aizstāt šo lietotni ar rūpnīcas versiju? Visi dati tiks noņemti.</string>
+    <string name="uninstalling">Notiek atinstalēšana…</string>
+    <string name="allPerms">Visas</string>
+    <string name="loading">Notiek ielāde…</string>
+    <string name="allow">Atļaut</string>
+    <string name="swap_connecting">Notiek savienojuma izveide</string>
 </resources>

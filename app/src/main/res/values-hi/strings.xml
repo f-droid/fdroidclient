@@ -397,4 +397,10 @@
     <string tools:ignore="UnusedResources" name="category_Theming">थेमिंग</string>
     <string name="empty_can_update_app_list">बधाई !
 \nआपके अप्प्स अप टो डेट है।</string>
+    <string name="installing">इंस्‍टॉल कर रहा है…</string>
+    <string name="install_confirm_update">क्‍या आप इस मौजूदा ऐप के बारे में नई जानकारी इंस्‍टॉल करना चाहते हैं? आपका मौजूदा डेटा गुम नहीं होगा. अपडेट किये गए ऐप से आपको इन पर पहुंच मिलेगी:</string>
+    <string name="install_confirm_update_system">क्‍या आप इस बिल्ट-इन ऐप के बारे में नई जानकारी इंस्‍टॉल करना चाहते हैं? आपका मौजूदा डेटा गुम नहीं होगा. नई जानकारी वाले ऐप से आपको इन पर मिलेगी:</string>
+    <string name="install_confirm_update_no_perms">क्या आप इस मौजूदा ऐप में नई जानकारी इंस्टॉल करना चाहते हैं? आपका मौजूदा डेटा बना रहेगा. इसे किसी खास पहुंच की ज़रुरत नहीं होती.</string>
+    <string name="install_confirm_update_system_no_perms">क्या आप इस मौजूदा ऐप में नई जानकारी इंस्टॉल करना चाहते हैं? आपका मौजूदा डेटा बना रहेगा. इसे किसी खास पहुंच की ज़रुरत नहीं होती.</string>
+    <string name="uninstalling">अनइंस्‍टॉल कर रहा है…</string>
 </resources>

@@ -399,4 +399,5 @@
     <string name="send_version_and_uuid">Strežnikom pošlji različico in UUID</string>
     <string name="send_version_and_uuid_summary">Ob prenosu vključi različico te aplikacije in naključen enoličen identifikator. Velja po vnovičnem zagonu.</string>
     <string name="try_again">Poskusi znova</string>
+    <string name="disabled">Onemogočeno</string>
 </resources>

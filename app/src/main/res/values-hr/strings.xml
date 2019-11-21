@@ -387,4 +387,6 @@
     <string name="repo_exists_and_enabled">%1$s je već podešen i omogućen.</string>
     <string name="force_old_index">Prisili korištenje starog indeks formata</string>
     <string name="send_version_and_uuid_summary">Koristi verziju i nasumični, jedinstven identifikator ove aplikacije prilikom preuzimanja; stupa u efekt nakon ponovnog pokretanja aplikacije.</string>
+    <string name="disabled">Onemogućeno</string>
+    <string name="allow">Dopusti</string>
 </resources>

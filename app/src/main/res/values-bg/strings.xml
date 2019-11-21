@@ -462,4 +462,5 @@
     <string name="try_again">Опитайте отново.</string>
     <string name="swap_blank_wifi_ssid">(празно)</string>
     <string name="swap_hidden_wifi_ssid">(скрито)</string>
+    <string name="disabled">Деактивирано</string>
 </resources>

@@ -294,4 +294,18 @@
     <string name="nearby_splash__both_parties_need_fdroid">Të dyja palët duhet %1$s për të përdorur afër.</string>
 
     <string name="swap_join_same_wifi">Të bashkohen në të njëjtin rrjet Wi-Fi si miku juaj</string>
+    <string name="disabled">Çaktivizuar</string>
+    <string name="next">Përpara</string>
+    <string name="installing">Po instalon…</string>
+    <string name="install_confirm_update">Dëshiron të instalosh një përditësim në këtë aplikacion ekzistues? Të dhënat e tua ekzistuese nuk do të humbin. Aplikacioni i përditësuar do të ketë qasje në:</string>
+    <string name="install_confirm_update_system">Dëshiron të instalosh një përditësim në këtë aplikacion të integruar? Të dhënat e tua ekzistuese nuk do të humbin. Aplikacioni i përditësuar do të ketë qasje në:</string>
+    <string name="install_confirm_update_no_perms">Dëshiron të instalosh një përditësim të këtij aplikacioni ekzistues? Të dhënat e tua ekzistuese nuk do të humbasin. Aplikacioni nuk kërkon ndonjë qasje të veçantë.</string>
+    <string name="install_confirm_update_system_no_perms">Dëshiron të instalosh një përditësim të këtij aplikacioni ekzistues? Të dhënat e tua ekzistuese nuk do të humbasin. Aplikacioni nuk kërkon ndonjë qasje të veçantë.</string>
+    <string name="uninstall_confirm">Dëshiron ta çinstalosh këtë aplikacion?</string>
+    <string name="uninstall_update_confirm">Të zëvendësohet ky aplikacion me versionin e fabrikës? Të gjitha të dhënat do të hiqen.</string>
+    <string name="uninstalling">Po e çinstalon…</string>
+    <string name="newPerms">E re</string>
+    <string name="no_permissions">Nuk ka leje</string>
+    <string name="loading">Po ngarkon…</string>
+    <string name="swap_connecting">Po lidhet</string>
 </resources>

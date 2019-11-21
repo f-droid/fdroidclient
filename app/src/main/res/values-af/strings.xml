@@ -409,4 +409,6 @@
     <string name="send_version_and_uuid">Stuur weergawe en UUID na servers</string>
     <string name="app_details__incompatible_mismatched_signature">Verskillende kenmerkwaarde as geïnstalleerde weergawe</string>
     <string name="app_details__no_versions__show_incompat_versions">Om onversoenbare weergawes in elk geval te wys, aktiveer die \"%1$s\" instelling.</string>
+    <string name="disabled">Gedeaktiveer</string>
+    <string name="allow">Laat toe</string>
 </resources>

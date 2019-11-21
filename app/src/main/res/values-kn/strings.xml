@@ -323,4 +323,11 @@
     <string name="swap_stopping">ನಿಲ್ಲಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="disabled">ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
     <string name="swap_error_cannot_start_bluetooth">ಬ್ಲೂಟೂತ್ ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="install_confirm_update_system_no_perms">ನೀವು ಈ ಬಿಲ್ಟ್-ಇನ್-ಅಪ್ಲಿಕೇಶನ್‌ನ ಅಪ್‌ಡೇಟ್‌‌ ಆದ ಅಪ್ಲಿಕೇಶನ್ ಸ್ಥಾಪಿಸಿಕೊಳ್ಳಲು ಬಯಸುವಿರಾ? ಈಗಿರುವ ನಿಮ್ಮ ಡೇಟಾ ಕಳೆದು ಹೋಗುವುದಿಲ್ಲ. ಇದಕ್ಕೆ ಯಾವುದೇ ವಿಶೇಷ ಪ್ರವೇಶದ ಅಗತ್ಯವಿಲ್ಲ.</string>
+    <string name="no_permissions">ಯಾವುದೇ ಅನುಮತಿಗಳಿಲ್ಲ</string>
+    <string name="loading">ಲೋಡ್ ಆಗುತ್ತಿದೆ…</string>
+    <string name="allow">ಅನುಮತಿಸಿ</string>
+    <string name="swap_connecting">ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="permissions">ಅನುಮತಿಗಳು</string>
 </resources>

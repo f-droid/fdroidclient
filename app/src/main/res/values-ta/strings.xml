@@ -88,4 +88,21 @@
     <string name="theme_night">இரவு</string>
     <string name="notification_action_cancel">ரத்து</string>
     <string name="unknown">அறியப்படாத</string>
+    <string name="disabled">முடக்கப்பட்டது</string>
+    <string name="next">அடுத்து</string>
+    <string name="installing">நிறுவுகிறது…</string>
+    <string name="install_confirm_update">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
+    <string name="install_confirm_update_system">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
+    <string name="install_confirm_update_no_perms">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்கமாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
+    <string name="install_confirm_update_system_no_perms">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
+    <string name="uninstall_confirm">இந்தப் பயன்பாட்டை நிறுவல் நீக்க விரும்புகிறீர்களா?</string>
+    <string name="uninstall_update_confirm">ஆரம்பநிலைப் பதிப்பாக இந்தப் பயன்பாட்டை மாற்றியமைக்கவா? எல்லா தரவும் அகற்றப்படும்.</string>
+    <string name="uninstalling">நிறுவலை நீக்குகிறது…</string>
+    <string name="allPerms">எல்லாம்</string>
+    <string name="no_permissions">அனுமதிகள் இல்லை</string>
+    <string name="loading">ஏற்றுகிறது…</string>
+    <string name="allow">அனுமதி</string>
+    <string name="swap_connecting">இணைக்கிறது</string>
+    <string name="permissions">அனுமதிகள்</string>
+    <string name="wifi">வைஃபை</string>
 </resources>

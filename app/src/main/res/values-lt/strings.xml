@@ -292,4 +292,16 @@
     <string name="repo_official_mirrors">Oficialūs veidrodžiai</string>
     <string name="unknown">Nežinomas</string>
     <string name="repo_added">Išsaugota paketo saugykla %1$s.</string>
+    <string name="disabled">Neleidžiama</string>
+    <string name="installing">Diegiama…</string>
+    <string name="install_confirm_update">Ar norite įdiegti šios esamos programos naujinį? Neprarasite esamų duomenų. Atnaujinus programą bus suteikta prieiga prie:</string>
+    <string name="install_confirm_update_system">Ar norite įdiegti šios integruotos programos naujinį? Neprarasite esamų duomenų. Atnaujinus programą bus suteikta prieiga prie:</string>
+    <string name="install_confirm_update_no_perms">Ar norite įdiegti šios esamos programos naujinį? Neprarasite esamų duomenų. Nereikia jokios specialios prieigos.</string>
+    <string name="install_confirm_update_system_no_perms">Ar norite įdiegti šios integruotos programos naujinį? Neprarasite esamų duomenų. Nereikia jokios specialios prieigos.</string>
+    <string name="uninstall_confirm">Ar norite pašalinti šią programą?</string>
+    <string name="uninstall_update_confirm">Pakeisti šios programos versiją į gamyklinę? Visi duomenys bus pašalinti.</string>
+    <string name="uninstalling">Pašalinama…</string>
+    <string name="allPerms">Visi</string>
+    <string name="loading">Įkeliama…</string>
+    <string name="swap_connecting">Jungiama</string>
 </resources>

@@ -302,4 +302,6 @@
     <string name="over_data">เครือข่ายมือถือ</string>
     <string name="allow_push_requests">อนุญาตให้แหล่งโปรแกรมดำเนินการติดตั้งหรือถอนการติดตั้งเอง</string>
     <string name="scan_removable_storage_toast">กำลังค้นหา %s…</string>
+    <string name="disabled">ปิดอยู่</string>
+    <string name="allow">อนุญาต</string>
 </resources>

@@ -484,4 +484,5 @@
     <string name="swap_toast_not_removable_storage">Aquesta tria no concorda amb cap dispositiu d\'emmagatzematge extraïble, torneu-ho a provar!</string>
     <string name="swap_toast_find_removeable_storage">Trieu la vostra targeta SD extraïble o USB</string>
     <string name="menu_translation">Traducció</string>
+    <string name="disabled">Desactivat</string>
 </resources>

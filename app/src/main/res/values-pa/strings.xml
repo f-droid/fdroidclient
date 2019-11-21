@@ -37,4 +37,24 @@
     <string name="menu_install">ਇੰਸਟਾਲ</string>
     <string name="menu_uninstall">ਅਨ-ਇੰਸਟਾਲ</string>
     <string name="menu_upgrade">ਅੱਪਡੇਟ</string>
+    <string name="unknown">ਅਗਿਆਤ</string>
+    <string name="disabled">ਅਯੋਗ ਬਣਾਇਆ</string>
+    <string name="other">ਹੋਰ</string>
+    <string name="next">ਅੱਗੇ</string>
+    <string name="installing">ਇੰਸਟੌਲ ਕਰ ਰਿਹਾ ਹੈ…</string>
+    <string name="install_confirm_update">ਕੀ ਤੁਸੀਂ ਇਸ ਮੌਜੂਦਾ ਐਪਲੀਕੇਸ਼ਨ ਤੇ ਇੱਕ ਅੱਪਡੇਟ ਸਥਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਡਾਟਾ ਨਸ਼ਟ ਕੀਤਾ ਜਾਏਗਾ। ਅੱਪਡੇਟ ਕੀਤੀ ਐਪਲੀਕੇਸ਼ਨ ਇਸ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਕਰੇਗੀ:</string>
+    <string name="install_confirm_update_system">ਕੀ ਤੁਸੀਂ ਇਸ ਬਿਲਟ-ਇਨ ਐਪਲੀਕੇਸ਼ਨ ਤੇ ਇੱਕ ਅੱਪਡੇਟ ਸਥਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਡਾਟਾ ਨਸ਼ਟ ਕੀਤਾ ਜਾਏਗਾ। ਅੱਪਡੇਟ ਕੀਤੀ ਐਪਲੀਕੇਸ਼ਨ ਇਸ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਕਰੇਗੀ:</string>
+    <string name="install_confirm_update_no_perms">ਕੀ ਤੁਸੀਂ ਇਸ ਮੌਜੂਦਾ ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ ਇੱਕ ਅੱਪਡੇਟ ਸਥਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਡਾਟਾ ਨਸ਼ਟ ਨਹੀਂ ਹੋਵੇਗਾ। ਇਸ ਲਈ ਕਿਸੇ ਖਾਸ ਪਹੁੰਚ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ।</string>
+    <string name="install_confirm_update_system_no_perms">ਕੀ ਤੁਸੀਂ ਇਸ ਬਿਲਟ-ਇਨ ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ ਇੱਕ ਅੱਪਡੇਟ ਸਥਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਡਾਟਾ ਨਸ਼ਟ ਨਹੀਂ ਹੋਵੇਗਾ। ਇਸ ਲਈ ਕਿਸੇ ਖਾਸ ਪਹੁੰਚ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ।</string>
+    <string name="uninstall_confirm">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਸਥਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+    <string name="uninstall_update_confirm">ਕੀ ਇਸ ਐਪ ਨੂੰ ਫੈਕਟਰੀ ਸੰਸਕਰਣ ਨਾਲ ਬਦਲਣਾ ਹੈ? ਸਾਰਾ  ਡਾਟਾ  ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ।</string>
+    <string name="uninstalling">ਅਣਇੰਸਟੌਲ ਕਰ  ਰਿਹਾ ਹੈ…</string>
+    <string name="newPerms">ਨਵਾਂ</string>
+    <string name="allPerms">ਸਭ</string>
+    <string name="no_permissions">ਕੋਈ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ</string>
+    <string name="loading">ਲੋਡ ਕਰ ਰਿਹਾ ਹੈ…</string>
+    <string name="allow">ਆਗਿਆ ਦਿਓ</string>
+    <string name="swap_connecting">ਕਨੈਕਟ ਕਰ ਰਿਹਾ ਹੈ</string>
+    <string name="permissions">ਇਜਾਜ਼ਤਾਂ</string>
+    <string name="wifi">ਵਾਈ-ਫਾਈ</string>
 </resources>

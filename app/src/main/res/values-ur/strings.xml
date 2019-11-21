@@ -43,4 +43,24 @@
     <string name="menu_uninstall">ان انسٹال</string>
     <string name="menu_upgrade">اپڈیٹ</string>
     <string name="main_menu__latest_apps">تارہ ترین</string>
+    <string name="cancel">منسوخ کریں</string>
+    <string name="unknown">نامعلوم</string>
+    <string name="disabled">غیر فعال</string>
+    <string name="next">اگلا</string>
+    <string name="installing">انسٹال کیا جا رہا ہے…</string>
+    <string name="install_confirm_update">کیا آپ اس موجودہ ایپلیکیشن میں ایک اپ ڈیٹ انسٹال کرنا چاہتے ہیں؟ آپ کا موجودہ ڈیٹا ضائع نہیں ہوگا۔ اپ ڈیٹ کردہ ایپلیکیشن کو مندرجہ ذیل تک رسائی حاصل ہوگی:</string>
+    <string name="install_confirm_update_system">کیا آپ پہلے سے شامل اس ایپلیکیشن میں ایک اپ ڈیٹ انسٹال کرنا چاہتے ہیں؟ آپ کا موجودہ ڈیٹا ضائع نہیں ہوگا۔ اپ ڈیٹ کردہ ایپلیکیشن کو مندرجہ ذیل تک رسائی حاصل ہوگی:</string>
+    <string name="install_confirm_update_no_perms">کیا آپ اس موجودہ ایپلیکیشن میں ایک اپ ڈیٹ انسٹال کرنا چاہتے ہیں؟ آپ کا موجودہ ڈیٹا ضائع نہیں ہوگا۔ اس کو کوئی خاص رسائی درکار نہیں۔</string>
+    <string name="install_confirm_update_system_no_perms">کیا آپ پہلے سے شامل اس ایپلیکیشن میں ایک اپ ڈیٹ انسٹال کرنا چاہتے ہیں؟ آپ کا موجودہ ڈیٹا ضائع نہیں ہوگا۔ اس کو کوئی خاص رسائی درکار نہیں۔</string>
+    <string name="uninstall_confirm">کیا آپ یہ ایپ اَن انسٹال کرنا چاہتے ہیں؟</string>
+    <string name="uninstall_update_confirm">اس ایپ کو فیکٹری ورژن سے تبدیل کریں؟ تمام ڈیٹا ہٹا دیا جائے گا۔</string>
+    <string name="uninstalling">اَن انسٹال ہو رہا ہے…</string>
+    <string name="newPerms">نئی</string>
+    <string name="allPerms">سبھی</string>
+    <string name="no_permissions">کوئی اجازتیں نہیں ہیں</string>
+    <string name="loading">لوڈ ہورہا ہے…</string>
+    <string name="allow">اجازت دیں</string>
+    <string name="swap_connecting">رابطہ کیا جا رہا ہے</string>
+    <string name="permissions">اجازتیں</string>
+    <string name="wifi">Wi-Fi</string>
 </resources>

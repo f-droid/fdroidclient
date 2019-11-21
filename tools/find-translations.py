@@ -6,6 +6,16 @@ import os
 import re
 from xml.etree import ElementTree
 
+
+def get_strings_xml_keys(root):
+    keys = set()
+    for e in root.findall('.//string'):
+        if e.text is None:
+            continue
+        keys.add(e.attrib['name'])
+    return keys
+
+
 android_dir = os.path.join(os.path.dirname(__file__),'../../../android.googlesource.com')
 fdroidclient_dir = os.path.join(os.path.dirname(__file__), '..')
 
@@ -31,11 +41,7 @@ keymap = {
 
 tree = ElementTree.parse(os.path.join(fdroidclient_dir, 'app/src/main/res/values/strings.xml'))
 root = tree.getroot()
-keys = set()
-for e in root.findall('.//string'):
-    if e.text is None:
-        continue
-    keys.add(e.attrib['name'])
+keys = get_strings_xml_keys(root)
 
 # remove the false friends
 for k in (
@@ -64,9 +70,16 @@ for f in sorted(glob.glob(android_dir + '/frameworks/base/packages/*/' + res_glo
         fdroid = fdroidclient_dir + '/app/src/main/res/values-' + locale + '/strings.xml'
         if os.path.exists(fdroid):
             print(locale, '\t', key, '\t', word)
+            root = ElementTree.parse(fdroid).getroot()
+            locale_keys = get_strings_xml_keys(root)
             with open(fdroid) as fp:
                 data = fp.read()
             with open(fdroid, 'w') as fp:
-                fp.write(re.sub(r'"' + key + r'">[^<]+</string',
-                                r'"' + key + '">' + word + '</string',
-                                data))
+                if key in locale_keys:
+                    fp.write(re.sub(r'"' + key + r'">[^<]+</string',
+                                    r'"' + key + r'">' + word + r'</string',
+                                    data))
+                else:
+                    fp.write(re.sub(r'(\n\s*</resources>)',
+                                    r'\n    <string name="' + key + r'">' + word + r'</string>\1',
+                                    data))
