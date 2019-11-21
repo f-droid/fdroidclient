@@ -8,8 +8,10 @@ import sys
 from xml.etree import ElementTree
 
 maxlengths = {
-    "menu_install": 20,
-    "menu_uninstall": 20,
+    "menu_install": 15,
+    "menu_uninstall": 15,
+    "installing": 50,
+    "uninstalling": 50,
     "nearby_splash__find_people_button": 30,
     "nearby_splash__request_permission": 30,
     "swap": 25,
