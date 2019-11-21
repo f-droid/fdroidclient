@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Включить отправку по NFC…</string>
     <string name="cache_downloaded">Хранить кэшированные приложения</string>
     <string name="updates">Обновления</string>
-    <string name="other">Прочее</string>
+    <string name="other">Другое</string>
     <string name="update_interval">Интервал автоматического обновления</string>
     <string name="notify">Показывать доступные обновления</string>
     <string name="notify_on">Показывать уведомление о доступных обновлениях</string>
@@ -92,7 +92,7 @@
     <string name="repos_unchanged">Все репозитории обновлены</string>
     <string name="all_other_repos_fine">Остальные репозитории не генерировали ошибок.</string>
     <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
-    <string name="no_permissions">Разрешений не требуется.</string>
+    <string name="no_permissions">Нет разрешений</string>
     <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Не подписано</string>

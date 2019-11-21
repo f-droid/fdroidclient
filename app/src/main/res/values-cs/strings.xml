@@ -6,7 +6,7 @@
     <string name="delete">Smazat</string>
     <string name="enable_nfc_send">Povolit posílání po NFC…</string>
     <string name="updates">Aktualizace</string>
-    <string name="other">Ostatní</string>
+    <string name="other">Jiné</string>
     <string name="update_interval">Interval automatických aktualizací</string>
     <string name="notify">Zobrazit dostupné aktualizace</string>
     <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
@@ -28,14 +28,14 @@
     <string name="no">Ne</string>
     <string name="repo_add_title">Přidat nový repozitář</string>
     <string name="repo_add_add">Přidat</string>
-    <string name="cancel">Storno</string>
+    <string name="cancel">Zrušit</string>
     <string name="enable">Povolit</string>
     <string name="add_key">Přidat klíč</string>
     <string name="overwrite">Přepsat</string>
     <string name="repo_add_url">Adresa repositáře</string>
     <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
     <string name="menu_manage">Repozitáře</string>
-    <string name="menu_search">Hledat</string>
+    <string name="menu_search">Vyhledávání</string>
     <string name="menu_add_repo">Nový repozitář</string>
     <string name="menu_launch">Otevřít</string>
     <string name="menu_share">Sdílet</string>
@@ -76,7 +76,7 @@
     <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
     <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
     <string name="global_error_updating_repos">Chyba při aktualizaci: %s</string>
-    <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
+    <string name="no_permissions">Žádná oprávnění</string>
     <string name="theme">Téma</string>
     <string name="unsigned">Nepodepsáno</string>
     <string name="unverified">Neověřeno</string>
@@ -154,7 +154,7 @@
     <string name="no_handler_app">Není dostupná žádná aplikace pro zpracování %s.</string>
     <string name="repo_details">Repozitář</string>
     <string name="repo_url">Adresa</string>
-    <string name="unknown">Neznámý</string>
+    <string name="unknown">Neznámé</string>
     <string name="repo_added">Uložen repozitář balíčků %1$s.</string>
     <string name="repo_searching_address">Vyhledávání repozitáře balíčků na
 \n%1$s</string>
@@ -211,8 +211,8 @@
     <string name="install_confirm">vyžaduje přístup k</string>
     <string name="swap_nfc_title">Ťuknout pro výměnu</string>
     <string name="swap_switch_to_wifi">Dotykem přepnout síť Wi-Fi</string>
-    <string name="newPerms">Nová</string>
-    <string name="allPerms">Všechna</string>
+    <string name="newPerms">Nově</string>
+    <string name="allPerms">Vše</string>
     <string name="perm_costs_money">Toto může stát peníze</string>
     <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
     <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>
@@ -273,8 +273,8 @@
     <string name="download_pending">Čekání na spuštění stahování…</string>
     <string name="install_error_notify_title">Chyba instalace %s</string>
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>
-    <string name="installing">Instalace…</string>
-    <string name="uninstalling">Odinstalace…</string>
+    <string name="installing">Probíhá instalace…</string>
+    <string name="uninstalling">Probíhá odinstalace…</string>
     <string name="keep_hour">1 hodina</string>
     <string name="keep_day">1 den</string>
     <string name="keep_week">1 týden</string>
@@ -425,7 +425,7 @@
     <string name="panic_app_setting_summary">Nebyla nastavena žádná aplikace</string>
     <string name="panic_app_setting_none">Žádné</string>
     <string name="panic_app_dialog_title">Potvrdit Panickou aplikaci</string>
-    <string name="allow">Umožnit</string>
+    <string name="allow">Povolit</string>
     <string name="panic_settings">Nastavení tlačítka paniky</string>
     <string name="panic_settings_summary">Akce které podniknout v případě nouze</string>
     <string name="panic_exit_title">Ukončit aplikaci</string>
@@ -500,7 +500,7 @@
     <string name="swap_toast_not_removable_storage">Vybraná složka neodpovídá žádným odpojitelným úložištím, zkuste to znovu!</string>
     <string name="swap_toast_find_removeable_storage">Vyberte vaši SD kartu nebo USB flash disk</string>
     <string name="main_menu__updates">Aktualizace</string>
-    <string name="try_again">Zkusit znovu</string>
+    <string name="try_again">Zkuste to znovu.</string>
     <string name="panic_will_be_wiped">Bude odinstalováno a veškerá data budou smazána</string>
     <string name="menu_translation">Překlad</string>
     <string name="undo">Zpět</string>
@@ -517,7 +517,7 @@
     <string name="swap_stopping_hotspot">Zastavení hotspotu…</string>
     <string name="swap_starting">Spouštění…</string>
     <string name="swap_stopping">Ukončování…</string>
-    <string name="disabled">Vypnuto</string>
+    <string name="disabled">Deaktivováno</string>
     <string name="swap_error_cannot_start_bluetooth">Nelze spustit  Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funkce Nablízku ukončena kvůli nečinnosti.</string>
     <string name="nearby_splash__document_tree">Vyhledat repozitáře a zrcadlení na USB OTG.</string>

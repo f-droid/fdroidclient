@@ -10,7 +10,7 @@
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновления</string>
-    <string name="other">Други</string>
+    <string name="other">Друго</string>
     <string name="update_interval">Проверка за актуализации</string>
     <string name="notify">Покажи наличните актуализации</string>
     <string name="notify_on">Известява при наличие на актуализация</string>
@@ -31,8 +31,8 @@
     <string name="app_inst_known_source">Инсталирана (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавена на %s</string>
-    <string name="ok">Добре</string>
-    <string name="yes">Да</string>
+    <string name="ok">OK</string>
+    <string name="yes"> Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
     <string name="repo_add_add">Добавяне</string>
@@ -46,7 +46,7 @@
     <string name="menu_manage">Хранилища</string>
     <string name="menu_search">Търсене</string>
     <string name="menu_add_repo">Ново хранилище</string>
-    <string name="menu_launch">Отвори</string>
+    <string name="menu_launch">Отваряне</string>
     <string name="menu_share">Споделяне</string>
     <string name="menu_install">Инсталиране</string>
     <string name="menu_uninstall">Деинсталиране</string>
@@ -90,7 +90,7 @@
     <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
     <string name="repos_unchanged">Всички хранилищата са актуални</string>
     <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
-    <string name="no_permissions">Не изисква разрешения.</string>
+    <string name="no_permissions">Няма разрешения</string>
     <string name="no_handler_app">Никое инсталирано приложение не може да изпълни %s.</string>
     <string name="theme">Тема</string>
     <string name="repo_num_apps">Брой приложения</string>
@@ -143,8 +143,8 @@
     <string name="category_Theming">Теми</string>
     <string name="category_Time">Час</string>
     <string name="category_Writing">Писане</string>
-    <string name="swap_connecting">Свързване</string>
-    <string name="loading">Зареждане…</string>
+    <string name="swap_connecting">Установява се връзка</string>
+    <string name="loading">Зарежда се…</string>
     <string name="allPerms">Всички</string>
     <string name="perm_costs_money">Може да ви струва пари</string>
     <string name="interval_never">Без автоматични актуализации</string>
@@ -381,8 +381,8 @@
     <string name="install_error_notify_title">Грешка при инсталацията на %s</string>
     <string name="uninstall_error_notify_title">Грешка при деинсталирането на %s</string>
     <string name="app__tts__downloading_progress">Изтеглянето на %1$d%%  завърши</string>
-    <string name="installing">Инсталиране…</string>
-    <string name="uninstalling">Деинсталиране…</string>
+    <string name="installing">Инсталира се…</string>
+    <string name="uninstalling">Деинсталира се…</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d  още…</item>
         <item quantity="other">+%1$d  повече…</item>
@@ -408,7 +408,7 @@
     <string name="panic_app_setting_summary">Няма зададено приложение</string>
     <string name="panic_app_dialog_title">Потвърдете паник приложение</string>
     <string name="panic_app_dialog_message">Сигурни ли сте, че искате да разрешите на %1$s да задейства унищожителни действия на паник бутон?</string>
-    <string name="allow">Разреши</string>
+    <string name="allow">Разрешаване</string>
     <string name="panic_settings">Настройки на паник бутон</string>
     <string name="panic_settings_summary">Действия, които се предприемат в спешен случай</string>
     <string name="panic_exit_summary">Приложението ще бъде затворено</string>
@@ -459,7 +459,7 @@
     <string name="menu_translation">Превод</string>
     <string name="undo">Отмени</string>
     <string name="app_list__dismiss_installing_app">Инсталацията бе отменена</string>
-    <string name="try_again">Пробвай отново</string>
+    <string name="try_again">Опитайте отново.</string>
     <string name="swap_blank_wifi_ssid">(празно)</string>
     <string name="swap_hidden_wifi_ssid">(скрито)</string>
 </resources>

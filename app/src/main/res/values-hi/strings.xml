@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="delete">नष्ट करे</string>
+    <string name="delete">मिटाएं</string>
     <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
     <string name="version">संस्करण</string>
     <string name="updates">नवीनतम बनाये</string>
@@ -31,8 +31,8 @@
     <string name="app_inst_known_source">स्थपित (द्वारा %s)</string>
     <string name="app_inst_unknown_source">स्थापित (अनजान सोत्र द्वारा)</string>
     <string name="added_on">%s पर जोड़ा</string>
-    <string name="ok">ठीक</string>
-    <string name="yes">हाँ</string>
+    <string name="ok">ठीक है</string>
+    <string name="yes">हां</string>
     <string name="no">नहीं</string>
     <string name="repo_add_title">नया कोष जोड़े</string>
     <string name="repo_add_add">जोड़े</string>
@@ -40,7 +40,7 @@
     <string name="more">अधिक</string>
     <string name="less">कम</string>
     <string name="back">वापस</string>
-    <string name="cancel">रद्द करे</string>
+    <string name="cancel">रद्द करें</string>
     <string name="enable">सक्षम करे</string>
     <string name="add_key">कुंजी जोड़े</string>
     <string name="overwrite">ऊपर लिखना</string>
@@ -66,12 +66,12 @@
     <string name="uninstall_confirm">क्या आप आप्लिकतिओन को हटाना चेहते हैं?</string>
     <string name="uninstall_update_confirm">क्या आप एप्लीकेशन को फैक्ट्री संस्करण से बदलना चाहते हैं?</string>
     <string name="perm_costs_money">यह तुम्हारे पैसे खर्च कर सकते हैं</string>
-    <string name="allPerms">सब</string>
+    <string name="allPerms">सभी</string>
     <string name="newPerms">नया</string>
     <string name="install_confirm">क्या आप यह एप्लीकेशन इनस्टॉल करना चाहते हैं? ये पहुंच मिल जाएगी:</string>
     <string name="loading">लोड हो रहा है…</string>
     <string name="swap_connection_misc_error">यन्त्र को जोड़ने मैं एक समस्या आ गयी| यन्त्र से अदला-बदली नहीं हो सकती!</string>
-    <string name="swap_connecting">जुड़ रहा है</string>
+    <string name="swap_connecting">कनेक्ट हो रहा है</string>
     <string name="swap_confirm">अदला-बदली की पुष्टि करे</string>
     <string name="swap_qr_isnt_for_swap">QR कोड जो अपने स्कैन किया है वह अदला-बदली का code नहीं है.</string>
     <string name="swap_intro">जुडें और एप्लीकेशन का लेन-देन करें आपके समीप लोगो से|</string>
@@ -121,7 +121,7 @@
     <string name="keep_install_history">स्थापना इतिहास देखें</string>
     <string name="keep_install_history_summary">सभी स्थापनाओं और अस्थापनाओं के लॉग को F-Droid में रखें</string>
     <string name="menu_settings">सेटिंग</string>
-    <string name="menu_search">खोज़</string>
+    <string name="menu_search">खोजें</string>
     <string name="menu_share">साझा करें</string>
     <string name="main_menu__latest_apps">नवीनतम</string>
     <string name="main_menu__categories">श्रेणियां</string>
@@ -140,7 +140,7 @@
     <string name="warning_no_internet">अद्यतन नही हो सकता। क्या आप इंटरनेट से जुड़े हैं?</string>
     <string name="unverified">असत्यापित</string>
     <string name="repo_last_update">अंतिम अद्यतन</string>
-    <string name="wifi">वाई-फाई</string>
+    <string name="wifi">वाई-फ़ाई</string>
     <string name="category_Sports_Health">खेल-कूद एवं स्वास्थ्य</string>
     <string name="notification_title_single_update_available">नवीन अद्यतन उपलब्ध</string>
     <string name="notification_title_summary_install_error">स्थापना असफल</string>
@@ -155,7 +155,7 @@
     <string name="main_menu__swap_nearby">आस–पास</string>
     <string name="preference_manage_installed_apps">स्थापित एप्स संशोधित करें</string>
     <string name="details_notinstalled">स्थापित नहीं है</string>
-    <string name="next">अगला</string>
+    <string name="next">आगे</string>
     <string name="category_Connectivity">संयोजकता</string>
     <string name="category_Development">विकास</string>
     <string name="category_Graphics">ग्राफिक्स</string>
@@ -243,7 +243,7 @@
 \n%2$s से
 \n%1$s</string>
     <string name="update_notification_title">रिपोजिटरी को अपडेट करना</string>
-    <string name="no_permissions">कोई अनुमति का उपयोग नहीं किया जाता है।</string>
+    <string name="no_permissions">कोई अनुमति नहीं</string>
     <string name="permissions">अनुमतियां</string>
     <string name="no_handler_app">आपके पास कोई भी उपलब्ध ऐप नहीं है जो %s को संभाल सके।</string>
     <string name="theme">विषय</string>
@@ -362,7 +362,7 @@
     <string name="main_menu__updates">अपडेट</string>
     <string name="menu_translation">अनुवाद</string>
     <string name="menu_select_for_wipe">पोंछने के लिए चयन करें</string>
-    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="try_again">पुन: प्रयास करें.</string>
     <string name="panic_will_be_wiped">अनइंस्टॉल कर दिया जाएगा और सभी डेटा हटा दिए गए हैं</string>
     <string name="panic_apps_to_uninstall">ऐप्स को अनइंस्टॉल किया जाना चाहिए और सभी डेटा मिटा दिए जाएंगे</string>
     <string name="panic_add_apps_to_uninstall">अनइंस्टॉल और मिटाए गए एप्लिकेशन जोड़ें</string>
@@ -391,7 +391,7 @@
     <string name="undo">पूर्ववत्</string>
     <string name="swap_blank_wifi_ssid">(खाली)</string>
     <string name="swap_hidden_wifi_ssid">(छिपा हुआ)</string>
-    <string name="disabled">अक्षम</string>
+    <string name="disabled">बंद किया गया</string>
     <string name="repo_not_yet_updated">यह रेपोसिटोरी अभी तक इस्तेमाल नहीं किया गया है।  अप्प्स को देखने के लिए इसको इनेबल करने की आवशक्ता है।</string>
     <string name="repo_confirm_delete_title">डिलीट रेपोसिटोरी \?</string>
     <string tools:ignore="UnusedResources" name="category_Theming">थेमिंग</string>

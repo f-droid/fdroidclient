@@ -62,7 +62,7 @@
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
     <string name="unstable_updates">تحديثات غير مستقرة</string>
     <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات الغير المستقرة</string>
-    <string name="other">أخرى</string>
+    <string name="other">غير ذلك</string>
     <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
     <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً و أنت تتلقي إشعار لتثبيتها</string>
@@ -144,8 +144,8 @@
     <string name="repos_unchanged">جميع المستودعات محدثة</string>
     <string name="all_other_repos_fine">كل المستودعات الأخرى لم تقم بإنشاء أخطاء.</string>
     <string name="global_error_updating_repos">خطأ أثناء التحديث: %s</string>
-    <string name="no_permissions">لا يوجد تصريحات مستخدمة.</string>
-    <string name="permissions">تصريحات</string>
+    <string name="no_permissions">ما مِن أذونات</string>
+    <string name="permissions">الأذونات</string>
     <string name="no_handler_app">ليس لديك أي تطبيق متاح يمكنه التعامل مع %s.</string>
     <string name="repo_details">مستودع</string>
     <string name="repo_url">العنوان</string>
@@ -167,7 +167,7 @@
     <string name="requires_features">احتياجات: %1$s</string>
     <string name="pref_language">اللغة</string>
     <string name="pref_language_default">النظام الافتراضي</string>
-    <string name="wifi">شبكة لاسلكية (واي-فاي)</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">نقاط الإنترنت</string>
     <string name="category_Connectivity">الاتصال</string>
     <string name="category_Graphics">الرسومات</string>
@@ -222,10 +222,10 @@
     <string name="swap_cant_find_peers">لا يمكن العثور على من كنت تبحث عنه؟</string>
     <string name="swap_send_fdroid">إرسال اف-درويد</string>
     <string name="swap_no_peers_nearby">لا يمكن العثور على شخص في مكان قريب للمبادلة معه.</string>
-    <string name="swap_connecting">جاري الاتصال</string>
+    <string name="swap_connecting">جارٍ الاتصال</string>
     <string name="swap_confirm">تأكيد المبادلة</string>
     <string name="swap_qr_isnt_for_swap">رمز الاستجابة السريعة الذي تم التقاطه لا يبدو وكأنه رمز المبادلة.</string>
-    <string name="loading">يتم التحميل…</string>
+    <string name="loading">جارٍ التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
     <string name="install_confirm_update">هل تريد تحديث
@@ -249,8 +249,8 @@
     <string name="perms_new_perm_prefix">جديد :</string>
     <string name="perms_description_app">المقدمة من %1$s.</string>
     <string name="downloading">جاري التنزيل …</string>
-    <string name="installing">جاري التثبيت …</string>
-    <string name="uninstalling">جاري إلغاء التثبيت …</string>
+    <string name="installing">جارٍ التثبيت…</string>
+    <string name="uninstalling">جارٍ الإزالة…</string>
     <string name="interval_never">ايقاف التحديثات التلقائية للتطبيق</string>
     <string name="interval_1h">ابحث عن التحديثات كل ساعة</string>
     <string name="interval_4h">البحث عن التحديثات كل 4 ساعات</string>
@@ -402,7 +402,7 @@
     <string name="panic_app_setting_none">لا شيء</string>
     <string name="panic_app_dialog_title">تحديد تطبيق الهلع</string>
     <string name="panic_app_dialog_message">هل أنت متأكد من أنك تريد السماح ل %1$s بتشغيل إجراءات زر الهلع المدمرة؟</string>
-    <string name="allow">السماح</string>
+    <string name="allow">سماح</string>
     <string name="panic_settings">اعدادات زر الهلع</string>
     <string name="panic_settings_summary">الإجراءات الواجب اتخاذها في حالة الطوارئ</string>
     <string name="panic_exit_title">اغلاق التطبيق</string>
@@ -522,7 +522,7 @@
     <string name="undo">تراجع</string>
     <string name="app_list__dismiss_installing_app">تم إلغاء التثبيت</string>
     <string name="menu_select_for_wipe">حدد للمسح</string>
-    <string name="try_again">حاول مجدداً</string>
+    <string name="try_again">أعد المحاولة.</string>
     <string name="panic_will_be_wiped">سيتم إلغاء تثبيته ومسح كل بياناته</string>
     <string name="panic_apps_to_uninstall">التطبيقات التي سيتم إلغاء تثبيتها وحذف بياناتها</string>
     <string name="panic_add_apps_to_uninstall">اضف تطبيقات لكي يتم إلغاء تثبيتها وحذف بيانتها</string>
@@ -535,7 +535,7 @@
     <string name="swap_stopping_hotspot">جارٍ إيقاف نقطة الاتصال…</string>
     <string name="swap_starting">يبدأ…</string>
     <string name="swap_stopping">يتوقف…</string>
-    <string name="disabled">مُعطل</string>
+    <string name="disabled">غير مفعّل</string>
     <string name="swap_error_cannot_start_bluetooth">لا يمكن تشغيل البلوتوث!</string>
     <string name="swap_toast_closing_nearby_after_timeout">إغلاق قريب لأنه كان خاملًا.</string>
     <string name="nearby_splash__document_tree">إبحث عن  المستودعات والمرايا في USB OTG.</string>

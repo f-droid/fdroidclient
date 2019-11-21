@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
     <string name="cache_downloaded">Conserver les applications en cache</string>
     <string name="updates">Téléchargements et Mises à jour</string>
-    <string name="other">Divers</string>
+    <string name="other">Autre</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
@@ -26,7 +26,7 @@
     <string name="app_inst_known_source">Installée (depuis %s)</string>
     <string name="app_inst_unknown_source">Installée (depuis une source inconnue)</string>
     <string name="added_on">Ajoutée le %s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="repo_add_title">Ajouter un nouveau dépôt</string>
@@ -98,7 +98,7 @@
     <string name="repos_unchanged">Tous les dépôts sont à jour</string>
     <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
     <string name="global_error_updating_repos">Erreur pendant la mise à jour : %s</string>
-    <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
+    <string name="no_permissions">Aucune autorisation</string>
     <string name="no_handler_app">Vous n\'avez aucune appli installée pour gérer %s.</string>
     <string name="theme">Thème</string>
     <string name="unsigned">Non signé</string>
@@ -162,13 +162,13 @@
     </string>
     <string name="swap_switch_to_wifi">Appuyez pour basculer vers un réseau Wi-Fi</string>
     <string name="swap_dont_show_again">Ne plus afficher</string>
-    <string name="loading">Chargement…</string>
+    <string name="loading">Chargement en cours…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
     <string name="install_confirm_update">Voulez-vous mettre à jour cette appli ? Vos données ne seront pas perdues. Une fois mise à jour, l\'appli aura accès à :</string>
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'appli aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette appli ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
-    <string name="newPerms">Nouveau</string>
+    <string name="newPerms">Nouveautés</string>
     <string name="allPerms">Toutes</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
@@ -490,13 +490,13 @@
     <string name="menu_translation">Traduction</string>
     <string name="undo">Annuler</string>
     <string name="app_list__dismiss_installing_app">Installation annulée</string>
-    <string name="try_again">Essayer à nouveau</string>
+    <string name="try_again">Réessayer</string>
     <string name="panic_will_be_wiped">sera supprimée et toutes les données supprimées</string>
     <string name="panic_reset_repos_title">Réinitialiser les dépôts</string>
     <string name="panic_reset_repos_summary">Restaure les dépôts par défaut</string>
     <string name="swap_starting">Démarrage…</string>
     <string name="swap_stopping">Arrêt…</string>
-    <string name="disabled">Désactivé</string>
+    <string name="disabled">Désactivée</string>
     <string name="swap_error_cannot_start_bluetooth">Impossible de démarrer le Bluetooth</string>
     <string name="panic_apps_to_uninstall">Applications à désinstaller avec leurs données</string>
     <string name="panic_add_apps_to_uninstall">Ajouter des applications à désinstaller</string>

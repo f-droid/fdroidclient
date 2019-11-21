@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
     <string name="cache_downloaded">Διατήρηση των εφαρμογών προσωρινά αποθηκευμένες</string>
     <string name="updates">Ενημερώσεις</string>
-    <string name="other">Άλλα</string>
+    <string name="other">Άλλο</string>
     <string name="update_interval">Συχνότητα ενημέρωσης</string>
     <string name="notify">Εμφάνιση διαθέσιμων ενημερώσεων</string>
     <string name="notify_on">Εμφάνιση ειδοποίησης όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
@@ -19,7 +19,7 @@
     <string name="app_installed">Εγκατεστημένο</string>
     <string name="app_not_installed">Δεν είναι εγκατεστημένο</string>
     <string name="added_on">Προστέθηκε στις %s</string>
-    <string name="ok">Οκ</string>
+    <string name="ok">OK</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="repo_add_title">Προσθήκη νέου αποθετηρίου</string>
@@ -64,7 +64,7 @@
     <string name="status_download">Λήψη
 \n%2$s / %3$s (%4$d%%) από %1$s</string>
     <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
-    <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
+    <string name="no_permissions">Χωρίς δικαιώματα</string>
     <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
     <string name="theme">Θέμα</string>
     <string name="unsigned">Μη υπογεγραμμένη</string>
@@ -212,7 +212,7 @@
     <string name="swap_connecting">Σύνδεση</string>
     <string name="swap_confirm">Επιβεβαίωση ανταλλαγής</string>
     <string name="swap_qr_isnt_for_swap">Ο κώδικας QR που σαρώσατε δεν μοιάζει με έναν κωδικό ανταλλαγής.</string>
-    <string name="loading">Φόρτωση…</string>
+    <string name="loading">Γίνεται φόρτωση…</string>
     <string name="swap_connection_misc_error">Παρουσιάστηκε σφάλμα κατά τη σύνδεση με την συσκευή, φαίνεται ότι δεν μπορούμε να ανταλλάξουμε με αυτή!</string>
     <string name="install_confirm">χρειάζεται πρόσβαση σε</string>
     <string name="install_confirm_update">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;
@@ -231,8 +231,8 @@
         Τα υπάρχοντα δεδομένα δεν θα χαθούν.
         Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.
     </string>
-    <string name="newPerms">Νέες εφαρμογές</string>
-    <string name="allPerms">Όλες οι εφαρμογές</string>
+    <string name="newPerms">Νέο</string>
+    <string name="allPerms">Όλα</string>
     <string name="perm_costs_money">Αυτό μπορεί να σας κοστίσει χρήματα</string>
     <string name="uninstall_update_confirm">Θέλετε να αντικαταστήσετε αυτή την εφαρμογή με την εργοστασιακή έκδοση?</string>
     <string name="uninstall_confirm">Θέλετε να απεγκαταστήσετε αυτή την εφαρμογή;</string>
@@ -377,7 +377,7 @@
     <string name="panic_app_setting_none">Κανένα</string>
     <string name="panic_app_dialog_title">Επιβεβαίωση εφαρμογής πανικού</string>
     <string name="panic_app_dialog_message">Σίγουρα θέλετε να επιτρέψετε στη %1$s να ενεργοποιήσει τις ενέργειες διαγραφής του κουμπιού πανικού;</string>
-    <string name="allow">Επιτρέψτε</string>
+    <string name="allow">Αποδοχή</string>
     <string name="panic_settings">Ρυθμίσεις κουμπιού πανικού</string>
     <string name="panic_settings_summary">Ενέργειες που πρέπει να γίνουν σε κατάσταση ανάγκης</string>
     <string name="panic_exit_title">Έξοδος από την εφαρμογή</string>
@@ -502,7 +502,7 @@
     <string name="undo">Αναίρεση</string>
     <string name="app_list__dismiss_installing_app">Η εγκατάσταση ακυρώθηκε</string>
     <string name="menu_select_for_wipe">Επιλογή για σβήσιμο</string>
-    <string name="try_again">Προσπαθήστε ξανά</string>
+    <string name="try_again">Δοκιμάστε ξανά.</string>
     <string name="panic_will_be_wiped">Θα απεγκατασταθεί και όλα τα δεδόμενα θα διαγραφούν</string>
     <string name="panic_apps_to_uninstall">Εφαρμογές για να απεγκατασταθούν και όλα τα δεδομένα να σβηστούν</string>
     <string name="panic_add_apps_to_uninstall">Προσθήκη εφαρμογών που θα απεγκατασταθούν και θα σβηστούν</string>

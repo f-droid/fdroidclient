@@ -4,11 +4,11 @@
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
     </string>
     <string name="version">பதிப்பு</string>
-    <string name="delete">அழி</string>
+    <string name="delete">நீக்கு</string>
     <string name="cache_downloaded">தற்காலிகமாக சேமிக்கப்பட்ட செயலிகளை வைத்திரு</string>
     <string name="updates">மேம்படுத்தல்கள்</string>
     <string name="unstable_updates">உறுதியற்ற மேம்பாடுகள்</string>
-    <string name="other">பிற</string>
+    <string name="other">மற்றவை</string>
     <string name="update_auto_download">மேம்பாடுகளை தானாக தறவிறக்கு</string>
     <string name="notify">மேம்படுத்தலுக்கான அறிவிப்புகள்</string>
     <string name="notify_on">மேம்படுத்தல்கள் கிடைக்கப்பெறும் பொழுது அறிவிப்புகளை காண்பி</string>
@@ -32,21 +32,21 @@
     <string name="added_on">சேர்க்கப்பட்ட தேதி %s</string>
     <string name="ok">சரி</string>
     <string name="yes">ஆம்</string>
-    <string name="no">இல்லை</string>
+    <string name="no">வேண்டாம்</string>
     <string name="repo_add_title">புதிய களஞ்சியத்தை சேர்க்க</string>
     <string name="repo_add_add">சேர்க்க</string>
     <string name="links">இணைப்புகள்</string>
     <string name="more">மேலும்</string>
     <string name="less">குறைவான</string>
     <string name="back">பின்</string>
-    <string name="cancel">ரத்து செய்</string>
+    <string name="cancel">ரத்துசெய்</string>
     <string name="enable">செயல்படுத்த</string>
     <string name="overwrite">மாற்றி எழுது</string>
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
     <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல.</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
     <string name="menu_settings">அமைப்பு</string>
-    <string name="menu_search">தேடல்</string>
+    <string name="menu_search">தேடு</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>
     <string name="menu_share">பகிர</string>
     <string name="menu_install">நிறுவு</string>
@@ -67,12 +67,12 @@
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளன</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது
     </string>
-    <string name="menu_launch">இயக்க</string>
+    <string name="menu_launch">திற</string>
     <string name="main_menu__latest_apps">சமீபத்திய</string>
     <string name="main_menu__categories">வகைகள்</string>
     <string name="category_Internet">இணையம்</string>
     <string name="category_Money">பணம்</string>
-    <string name="newPerms">புதியன</string>
+    <string name="newPerms">புதிது</string>
     <string name="notification_action_install">நிறுவு</string>
     <string name="repo_details">களஞ்சியம்</string>
     <string name="SignatureMismatch">புதிய பதிப்பு பழையவற்றுக்கு வேறு விசையுடன் கையொப்பமிடப்பட்டுள்ளது. புதிய பதிப்பை நிறுவ, பழையதை முதலில் நிறுவல் நீக்க வேண்டும். தயவுசெய்து இதைச் செய்து மீண்டும் முயற்சிக்கவும். (நிறுவல் நீக்குவது பயன்பாட்டின் மூலம் சேமிக்கப்பட்ட எந்த உள் தரவையும் அழிக்கும் என்பதை நினைவில் கொள்க)</string>

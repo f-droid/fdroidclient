@@ -37,12 +37,12 @@
     <string name="enable_nfc_send">Omogoči NFC pošiljanje…</string>
     <string name="unstable_updates">Nestabilne posodobitve</string>
     <string name="unstable_updates_summary">Predlagaj posodabljanje na nestabilne verzije</string>
-    <string name="other">Ostalo</string>
+    <string name="other">Drugo</string>
     <string name="update_interval">Interval samodejnega posodabljanja</string>
     <string name="notify_on">Prikaži obvestilo, ko so na voljo posodobitve</string>
     <string name="back">Nazaj</string>
     <string name="menu_settings">Nastavitve</string>
-    <string name="menu_launch">Zaženi</string>
+    <string name="menu_launch">Odpri</string>
     <string name="menu_share">Deli</string>
     <string name="menu_upgrade">Nadgradnja</string>
     <string name="main_menu__latest_apps">Najnovejše</string>
@@ -233,7 +233,7 @@
     <string name="update_notification_title">Posodabljanje skladišča aplikacij</string>
     <string name="repos_unchanged">Vsa skladišča aplikacij so posodobljena</string>
     <string name="global_error_updating_repos">Med posodobitvijo aplikacije %s je prišlo do napake.</string>
-    <string name="no_permissions">Nobena dovoljenja niso v uporabi.</string>
+    <string name="no_permissions">Ni dovoljenj</string>
     <string name="permissions">Dovoljenja</string>
     <string name="no_handler_app">Vi nimate nobene dostopne aplikacije, ki bi lahk upravljala z %s.</string>
     <string name="theme">Tema</string>
@@ -244,7 +244,7 @@
     <string name="repo_official_mirrors">Uradna ogledala</string>
     <string name="repo_user_mirrors">Uporabnikova ogledala</string>
     <string name="repo_name">Ime</string>
-    <string name="unknown">Nepoznano</string>
+    <string name="unknown">Neznano</string>
     <string name="repo_confirm_delete_title">Izbriši skladišče aplikacij?</string>
     <string name="requires_features">Potrebuje: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
@@ -283,11 +283,11 @@
     <string name="swap_wifi_device_name">Ime naprave</string>
     <string name="swap_cant_find_peers">Ne najdete osebe, ki jo iščete?</string>
     <string name="swap_no_peers_nearby">Ni bilo najdenih oseb v bližini za menjavo.</string>
-    <string name="swap_connecting">Povezujem</string>
+    <string name="swap_connecting">Vzpostavljanje povezave</string>
     <string name="swap_confirm">Potrdi zamenjavo</string>
     <string name="swap_qr_isnt_for_swap">Skenirana QR koda ne izgleda kot koda za izmenjevanje.</string>
     <string name="use_bluetooth">Uporabi Bluetooth</string>
-    <string name="loading">Nalagam…</string>
+    <string name="loading">Nalaganje …</string>
     <string name="swap_connection_misc_error">Napaka pri povezovanju z napravo, z njo ne gre zamenjati!</string>
     <string name="swap_toast_invalid_url">Neveljaven URL za zamenjavo: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot omogočen</string>
@@ -297,7 +297,7 @@
     <string name="install_confirm_update_system">Želite namestiti posodobitev na vgrajeni aplikaciji? Vaši obstoječi podatki bodo izgubljeni. Posodobljena aplikacija bo imela dostop do:</string>
     <string name="install_confirm_update_no_perms">Želite namestiti posodobitev tej obstoječi aplikaciji? Vaši obstoječi podatki ne bodo izgubljeni. Aplikacija ne potrebuje posebnih dovoljenj.</string>
     <string name="install_confirm_update_system_no_perms">Želite namestiti posodobitev tej vgrajeni aplikaciji? Vaši obstoječi podatki ne bodo izgubljeni. Aplikacija ne potrebuje posebnih dovoljenj.</string>
-    <string name="allPerms">Vsi</string>
+    <string name="allPerms">Vse</string>
     <string name="perm_costs_money">To vas lahko finančno bremeni</string>
     <string name="uninstall_update_confirm">Želite nadomestiti aplikacijo s tovarniško verzijo?</string>
     <string name="uninstall_confirm">Želite odstraniti aplikacijo?</string>
@@ -309,8 +309,8 @@
     <string name="perms_description_app">Priskrbljeno od %1$s.</string>
     <string name="downloading">V prenosu…</string>
     <string name="app__tts__downloading_progress">V prenosu, %1$d%% končan</string>
-    <string name="installing">V nameščanju…</string>
-    <string name="uninstalling">Odstranjujem…</string>
+    <string name="installing">Nameščanje …</string>
+    <string name="uninstalling">Odstranjevanje …</string>
     <string name="interval_never">Brez samodejnih posodobitev</string>
     <string name="interval_1h">Preveri za posodobitvami vsako uro</string>
     <string name="interval_4h">Preveri za posodobitvami vsake 4 ure</string>

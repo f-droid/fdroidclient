@@ -3,11 +3,11 @@
     <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Ради уградње новог издања, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке програма.)</string>
     <string name="installIncompatible">Програм не одговара овом уређају, да ли га свеједно уградити\?</string>
     <string name="version">Издање</string>
-    <string name="delete">Обриши</string>
+    <string name="delete">Избриши</string>
     <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
     <string name="cache_downloaded">Чувај захваћене програме</string>
     <string name="updates">Надградње</string>
-    <string name="other">Остало</string>
+    <string name="other">Друго</string>
     <string name="update_interval">Међувреме самосталног освежавања</string>
     <string name="notify">Прикажи доступне надградње</string>
     <string name="notify_on">Приказуз обавештења о доступним надградњама</string>
@@ -25,12 +25,12 @@
     <string name="app_inst_known_source">Уграђено (из %s)</string>
     <string name="app_inst_unknown_source">Уграђено (из непознатог извора)</string>
     <string name="added_on">Додато у %s</string>
-    <string name="ok">У реду</string>
+    <string name="ok">Потврди</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Додај нову ризницу</string>
     <string name="repo_add_add">Додај</string>
-    <string name="cancel">Одустани</string>
+    <string name="cancel">Откажи</string>
     <string name="enable">Омогући</string>
     <string name="add_key">Додај кључ</string>
     <string name="overwrite">Препиши</string>
@@ -40,7 +40,7 @@
     <string name="repo_add_fingerprint">Отисак (додатно)</string>
     <string name="malformed_repo_uri">Занемарујем лошу адресу ризнице: %s</string>
     <string name="menu_manage">Ризнице</string>
-    <string name="menu_search">Тражи</string>
+    <string name="menu_search">Претражи</string>
     <string name="menu_add_repo">Нова ризница</string>
     <string name="menu_launch">Отвори</string>
     <string name="menu_share">Дели</string>
@@ -76,7 +76,7 @@
     <string name="linking_apks">Повезујем датотеке АПК-а са ризницом…</string>
     <string name="copying_icons">Умножавам сличице програма у ризницу…</string>
     <string name="icon">Сличица</string>
-    <string name="next">Следеће</string>
+    <string name="next">Даље</string>
     <string name="skip">Прескочи</string>
     <string name="proxy">Посредник</string>
     <string name="enable_proxy_title">Омогући посредника ХТТП-а</string>
@@ -92,7 +92,7 @@
     <string name="repos_unchanged">Све ризнице су свеже</string>
     <string name="all_other_repos_fine">Остале ризнице нису направиле грешку.</string>
     <string name="global_error_updating_repos">Грешка приликом освежавања: %s</string>
-    <string name="no_permissions">Не захтева никакве дозволе.</string>
+    <string name="no_permissions">Нема дозвола</string>
     <string name="no_handler_app">Немате уграђен програм за %s.</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Непотписана</string>
@@ -148,7 +148,7 @@
     <string name="status_processing_xml_percent">Обрађујем %2$s / %3$s (%4$d%%) од %1$s</string>
     <string name="pref_language">Језик</string>
     <string name="pref_language_default">Системски подразумеван</string>
-    <string name="wifi">Бежични</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Врућа тачка</string>
     <string name="category_Connectivity">Повезивање</string>
     <string name="category_Graphics">Цртање</string>
@@ -166,9 +166,9 @@
     <string name="swap_setting_up_wifi">Подешавам бежични…</string>
     <string name="swap_wifi_device_name">Назив уређаја</string>
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
-    <string name="swap_connecting">Повезујем се</string>
+    <string name="swap_connecting">Повезивање</string>
     <string name="swap_confirm">Потврдите размену</string>
-    <string name="loading">Учитавам…</string>
+    <string name="loading">Учитава се…</string>
     <string name="newPerms">Ново</string>
     <string name="allPerms">Све</string>
     <string name="perms_new_perm_prefix">Ново:</string>
@@ -263,8 +263,8 @@
     <string name="keep_forever">заувек</string>
     <string name="install_error_notify_title">Грешка при уградњи %s</string>
     <string name="uninstall_error_notify_title">Грешка уклањања %s</string>
-    <string name="installing">Уграђујем…</string>
-    <string name="uninstalling">Уклањам…</string>
+    <string name="installing">Инсталирање…</string>
+    <string name="uninstalling">Деинсталирање…</string>
     <string name="update_auto_install">Самостално надграђуј програме</string>
     <string name="update_auto_install_summary">Преузми и надгради програме у позадини, приказујући обавештење</string>
     <string name="keep_install_history">Чувај историјат уградњи</string>

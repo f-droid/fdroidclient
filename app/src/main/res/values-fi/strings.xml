@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
     <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
     <string name="updates">Päivitykset</string>
-    <string name="other">Muut</string>
+    <string name="other">Muu</string>
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
     <string name="notify">Näytä saatavilla olevat päivitykset</string>
     <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
@@ -41,7 +41,7 @@
     <string name="repo_add_url">Sovelluslähteen osoite</string>
     <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
     <string name="menu_manage">Hallitse sovelluslähteitä</string>
-    <string name="menu_search">Etsi</string>
+    <string name="menu_search">Haku</string>
     <string name="menu_add_repo">Uusi sovelluslähde</string>
     <string name="menu_launch">Avaa</string>
     <string name="menu_share">Jaa</string>
@@ -171,8 +171,8 @@
     <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi. Orbot vaaditaan</string>
     <string name="update_notification_title">Päivitetään sovelluslähteitä</string>
     <string name="status_inserting_apps">Tallennetaan sovelluksen tietoja</string>
-    <string name="no_permissions">Käyttöoikeuksia ei tarvita.</string>
-    <string name="permissions">Käyttöoikeudet</string>
+    <string name="no_permissions">Ei käyttöoikeuksia</string>
+    <string name="permissions">Käyttöluvat</string>
     <string name="unsigned">Allekirjoittamaton</string>
     <string name="repo_details">Sovelluslähde</string>
     <string name="repo_confirm_delete_title">Poistetaanko sovelluslähde?</string>

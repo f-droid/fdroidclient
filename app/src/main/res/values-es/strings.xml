@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe desinstalarse antes. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Instalarla de todos modos?</string>
     <string name="version">Versión</string>
-    <string name="delete">Borrar</string>
+    <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
     <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
     <string name="updates">Avisos</string>
@@ -97,7 +97,7 @@
     <string name="repos_unchanged">Todos los repositorios están actualizados</string>
     <string name="all_other_repos_fine">El resto de los repositorios no crearon errores.</string>
     <string name="global_error_updating_repos">Error en la actualización: %s</string>
-    <string name="no_permissions">No se usan permisos.</string>
+    <string name="no_permissions">Sin permisos</string>
     <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">No firmado</string>
@@ -199,7 +199,7 @@
     <string name="swap_cant_find_peers">¿No encuentras a quien buscas?</string>
     <string name="swap_send_fdroid">Envía F-Droid</string>
     <string name="swap_no_peers_nearby">No se pudo encontrar gente cercana con la que intercambiar.</string>
-    <string name="swap_connecting">Conectando</string>
+    <string name="swap_connecting">Estableciendo conexión</string>
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="loading">Cargando…</string>
@@ -211,7 +211,7 @@
     </string>
     <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación existente? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>
-    <string name="allPerms">Todo</string>
+    <string name="allPerms">Todos</string>
     <string name="perm_costs_money">Esto puede costar dinero</string>
     <string name="uninstall_update_confirm">¿Deseas reemplazar esta aplicación con la versión de fábrica?</string>
     <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>
@@ -497,7 +497,7 @@
     <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
     <string name="menu_translation">Traducción</string>
     <string name="menu_select_for_wipe">Selecciona para eliminar</string>
-    <string name="try_again">Intentar de nuevo</string>
+    <string name="try_again">Inténtalo de nuevo.</string>
     <string name="panic_will_be_wiped">Se desinstalará y se eliminarán todos los datos</string>
     <string name="panic_apps_to_uninstall">Aplicaciones que se van a desinstalar y todos los datos eliminados</string>
     <string name="panic_add_apps_to_uninstall">Añadir las aplicaciones que se van a desinstalar y a borrar</string>
@@ -510,7 +510,7 @@
     <string name="swap_stopping_hotspot">Parando punto wifi…</string>
     <string name="swap_starting">Iniciando…</string>
     <string name="swap_stopping">Parando…</string>
-    <string name="disabled">Deshabilitado</string>
+    <string name="disabled">Inhabilitada</string>
     <string name="swap_error_cannot_start_bluetooth">No se puede iniciar Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Cerré Nearby ya que estaba inactivo.</string>
     <string name="undo">Deshacer</string>

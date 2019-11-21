@@ -21,7 +21,7 @@
     <string name="main_menu__swap_nearby">Próximo</string>
     <string name="preference_manage_installed_apps">Gerir aplicações instaladas</string>
     <string name="details_notinstalled">Não instaladas</string>
-    <string name="next">Seguinte</string>
+    <string name="next">Próximo</string>
     <string name="skip">Ignorar</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
@@ -71,7 +71,7 @@
     <string name="installIncompatible">A app não é compatível com o seu aparelho. Quer instalar mesmo assim\?</string>
     <string name="version">Versão</string>
     <string name="by_author_format">de %s</string>
-    <string name="delete">Eliminar</string>
+    <string name="delete">Excluir</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
     <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
     <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
@@ -92,7 +92,7 @@
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidades, utilizar o índice XML</string>
     <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
     <string name="allow_push_requests_summary">Os metadados do repositório podem incluir pedidos push para instalar ou desinstalar aplicações</string>
-    <string name="other">Outro</string>
+    <string name="other">Outros</string>
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
@@ -290,7 +290,7 @@
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
     <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
-    <string name="no_permissions">Não utiliza permissões.</string>
+    <string name="no_permissions">Sem permissões</string>
     <string name="permissions">Permissões</string>
     <string name="no_handler_app">Não tem nenhuma aplicação capaz de lidar com %s.</string>
     <string name="theme">Tema</string>
@@ -366,11 +366,11 @@
     <string name="swap_wifi_device_name">Nome do aparelho</string>
     <string name="swap_cant_find_peers">Não encontra o que procura\?</string>
     <string name="swap_no_peers_nearby">Não foram encontradas pessoas na sua vizinhança.</string>
-    <string name="swap_connecting">A estabelecer ligação</string>
+    <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
     <string name="use_bluetooth">Utilizar Bluetooth</string>
-    <string name="loading">A carregar…</string>
+    <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com aparelhos próximos, torne o seu aparelho visível.</string>
@@ -397,8 +397,8 @@
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">A descarregar…</string>
     <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
-    <string name="installing">A instalar…</string>
-    <string name="uninstalling">A desinstalar…</string>
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
     <string name="interval_never">Nunca</string>
     <string name="interval_1h">A cada 1 hora</string>
     <string name="interval_4h">A cada 4 horas</string>

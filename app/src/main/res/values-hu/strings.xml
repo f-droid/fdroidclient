@@ -58,7 +58,7 @@
     <string name="show_incompat_versions_on">Azon alkalmazásverziók megjelenítése, melyek nem kompatibilisek az eszközzel</string>
     <string name="status_download">Letöltés\n%2$s / %3$s (%4$d%%), forrás:\n%1$s</string>
     <string name="status_connecting_to_repo">Kapcsolódás ehhez:\n%1$s</string>
-    <string name="no_permissions">Nincsenek engedélyei.</string>
+    <string name="no_permissions">Nincs engedély</string>
     <string name="no_handler_app">Nincs elérhető alkalmazás, ami képes ezt kezelni: %s.</string>
     <string name="theme">Téma</string>
     <string name="repo_not_yet_updated">Ezt a tárolót még nem használta. Engedélyeznie kell, hogy megtekinthesse az általa kínált alkalmazásokat.</string>
@@ -101,7 +101,7 @@
     <string name="deleting_repo">Jelenlegi tároló törlése…</string>
     <string name="adding_apks_format">%s hozzáadása a tárolóhoz…</string>
     <string name="icon">Ikon</string>
-    <string name="next">Következő</string>
+    <string name="next">Tovább</string>
     <string name="skip">Kihagyás</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">HTTP proxy engedélyezése</string>
@@ -168,7 +168,7 @@
         hozzáférést.
     </string>
     <string name="newPerms">Új</string>
-    <string name="allPerms">Összes</string>
+    <string name="allPerms">Mind</string>
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
     <string name="uninstall_update_confirm">Szeretné lecserélni ezt az alkalmazást a gyári verzióra?</string>
     <string name="uninstall_confirm">Szeretné eltávolítani ezt az alkalmazást?</string>

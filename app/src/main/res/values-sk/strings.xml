@@ -8,11 +8,11 @@
         napriek tomu nainštalovať?
     </string>
     <string name="version">Verzia</string>
-    <string name="delete">Vymazať</string>
+    <string name="delete">Odstrániť</string>
     <string name="enable_nfc_send">Zapnúť odoslanie cez NFC …</string>
     <string name="cache_downloaded">Prevzaté balíky ponechať na úložisku</string>
     <string name="updates">Obnovy</string>
-    <string name="other">Iné</string>
+    <string name="other">Ďalšie</string>
     <string name="update_interval">Interval automat. aktualizácií</string>
     <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
@@ -46,7 +46,7 @@
     <string name="menu_manage">Repozitáre</string>
     <string name="menu_search">Hľadať</string>
     <string name="menu_add_repo">Nový repozitár</string>
-    <string name="menu_launch">Spustiť</string>
+    <string name="menu_launch">Otvoriť</string>
     <string name="menu_share">Zdieľať</string>
     <string name="menu_install">Inštalovať</string>
     <string name="menu_uninstall">Odinštalovať</string>
@@ -98,7 +98,7 @@
     <string name="repos_unchanged">Všetky repozitáre sú aktuálne</string>
     <string name="all_other_repos_fine">Ostatné repozitáre sú v poriadku.</string>
     <string name="global_error_updating_repos">Chyba počas aktualizácie: %s</string>
-    <string name="no_permissions">Nepoužívajú sa žiadne povolenia.</string>
+    <string name="no_permissions">Žiadne povolenia</string>
     <string name="no_handler_app">Nemáte žiadne dostupné aplikácie, ktoré môžu spracovať %s.</string>
     <string name="theme">Téma</string>
     <string name="unsigned">Nepodpísané</string>
@@ -168,7 +168,7 @@
     <string name="status_processing_xml_percent">Spracúvam %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="pref_language">Jazyk</string>
     <string name="pref_language_default">Prednastavené systémom</string>
-    <string name="wifi">Wi-Fi</string>
+    <string name="wifi">Wi‑Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Pripojiteľnosť</string>
     <string name="category_Graphics">Grafika</string>
@@ -198,10 +198,10 @@
     <string name="swap_wifi_device_name">Názov zariadenia</string>
     <string name="swap_cant_find_peers">Nemôžete nájsť koho hľadáte?</string>
     <string name="swap_send_fdroid">Poslať F-Droid</string>
-    <string name="swap_connecting">Pripájam</string>
-    <string name="loading">Načítavam…</string>
+    <string name="swap_connecting">Pripája sa</string>
+    <string name="loading">Načítava sa…</string>
     <string name="install_confirm">vyžaduje prístup k</string>
-    <string name="allPerms">Všetky</string>
+    <string name="allPerms">Všetko</string>
     <string name="newPerms">Nové</string>
     <string name="uninstall_update_confirm">Chcete nahradiť túto aplikáciu továreňskou verziou?</string>
     <string name="uninstall_confirm">Chcete odinštalovať túto aplikáciu?</string>
@@ -238,7 +238,7 @@
     <string name="antinonfreeassetslist">Táto aplikácia obsahuje proprietárne časti</string>
     <string name="status_download_unknown_size">Sťahuje sa\n%2$s z\n%1$s</string>
     <string name="status_inserting_apps">Ukladanie detailov aplikácie</string>
-    <string name="permissions">Povolenia aplikácie</string>
+    <string name="permissions">Povolenia</string>
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
     <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
@@ -294,8 +294,8 @@
     <string name="keep_forever">Navždy</string>
     <string name="install_error_notify_title">Chyba pri inštalácií %s</string>
     <string name="uninstall_error_notify_title">Chyba pri odinštalovaní %s</string>
-    <string name="installing">Inštalácia…</string>
-    <string name="uninstalling">Odinštalovávanie…</string>
+    <string name="installing">Inštaluje sa…</string>
+    <string name="uninstalling">Prebieha odinštalovanie…</string>
     <string name="update_auto_install">Automaticky nainštalovať aktualizácie</string>
     <string name="update_auto_install_summary">Prevziať a aktualizovať aplikácie na pozadí, so zobrazením upozornenia</string>
     <string name="warning_no_internet">Nemožno aktualizovať, máte prístup na Internet?</string>
@@ -531,7 +531,7 @@
     <string name="swap_stopping_hotspot">Zastavenie hotspotu…</string>
     <string name="swap_starting">Štartovanie…</string>
     <string name="swap_stopping">Ukončovanie…</string>
-    <string name="disabled">Vypnuté</string>
+    <string name="disabled">Deaktivované</string>
     <string name="swap_error_cannot_start_bluetooth">Nejde spustiť Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funkcia Nablízko ukončená kvôli nečinnosti.</string>
     <string name="nearby_splash__document_tree">Hľadať repozitáre a mirrory na zariadení USB OTG.</string>

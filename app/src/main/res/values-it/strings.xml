@@ -81,7 +81,7 @@
     <string name="linking_apks">Collegamento degli APK al repo…</string>
     <string name="copying_icons">Copia delle icone delle app nel repo…</string>
     <string name="icon">Icona</string>
-    <string name="next">Prossimo</string>
+    <string name="next">Avanti</string>
     <string name="skip">Salta</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Abilita proxy HTTP</string>
@@ -98,7 +98,7 @@
     <string name="repos_unchanged">Tutti i repository sono aggiornati</string>
     <string name="all_other_repos_fine">Tutti gli altri repository non hanno generato errori.</string>
     <string name="global_error_updating_repos">Errore durante l\'aggiornamento: %s</string>
-    <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
+    <string name="no_permissions">Nessuna autorizzazione</string>
     <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Non firmato</string>
@@ -115,7 +115,7 @@
     <string name="repo_not_yet_updated">Questo repository non è ancora stato utilizzato.
         Devi attivarlo per vedere le applicazioni che fornisce.
     </string>
-    <string name="unknown">Sconosciuto</string>
+    <string name="unknown">Sconosciuta</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
     <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili. 
 \n 
@@ -178,7 +178,7 @@
         non saranno rimossi. L\'app dopo l\'aggiornamento avrà accesso a:
     </string>
     <string name="loading">Caricamento…</string>
-    <string name="swap_connecting">Connessione in corso</string>
+    <string name="swap_connecting">Connessione</string>
     <string name="swap_wifi_device_name">Nome del dispositivo</string>
     <string name="swap_cant_find_peers">Non riesci a trovare chi stai cercando?</string>
     <string name="swap_visible_wifi">Visibile tramite Wi-Fi</string>
@@ -200,7 +200,7 @@
     <string name="interval_never">Nessun aggiornamento automatico delle app</string>
     <string name="uninstall_update_confirm">Vuoi sostituire questa app con la sua versione originale?</string>
     <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
-    <string name="newPerms">Nuovo</string>
+    <string name="newPerms">Nuove</string>
     <string name="swap_confirm">Conferma lo scambio</string>
     <string name="swap_qr_isnt_for_swap">Il codice QR che hai scansionato non sembra essere un codice di scambio.
     </string>
@@ -425,7 +425,7 @@
     <string name="panic_app_unknown_app">un\'applicazione sconosciuta</string>
     <string name="panic_app_setting_summary">Nessuna applicazione è stata impostata</string>
     <string name="panic_app_setting_none">Nessuno</string>
-    <string name="allow">Permetti</string>
+    <string name="allow">Consenti</string>
     <string name="panic_settings_summary">Azioni da intraprendere in caso di emergenza</string>
     <string name="panic_exit_summary">Questa applicazione sarà chiusa</string>
     <string name="panic_destructive_actions">Azioni Distruttive</string>

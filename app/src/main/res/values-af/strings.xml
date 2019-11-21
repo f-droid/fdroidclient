@@ -4,7 +4,7 @@
     <string name="SignatureMismatch">Die nuwe weergawe is geteken met \'n ander sleutel as die vorige een. Om die nuwe weergawe te installeer moet die vorige een eers verwyder word. Doen dit asseblief eers en probeer dan weer. (Neem egter kennis dat de-installasie alle interne data wat deur die program gestoor is sal verloor)</string>
     <string name="installIncompatible">Hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk geval probeer?</string>
     <string name="version">Weergawe</string>
-    <string name="delete">Uitvee</string>
+    <string name="delete">Vee uit</string>
     <string name="updates">Opdaterings</string>
     <string name="unstable_updates">Onstabiele opdaterings</string>
     <string name="unstable_updates_summary">Stel opgraderings voor vir onstabiele weergawes</string>
@@ -72,7 +72,7 @@
     <string name="menu_settings">Instellings</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>
-    <string name="menu_launch">Begin</string>
+    <string name="menu_launch">Open</string>
     <string name="menu_share">Uitruil</string>
     <string name="menu_install">Installeer</string>
     <string name="menu_uninstall">Deïnstalleer</string>
@@ -134,8 +134,8 @@
     <string name="enable_nfc_send">Aktiveer NFC stuur…</string>
     <string name="deleting_repo">Huidige argief word uitgevee …</string>
     <string name="adding_apks_format">Laai %s na argief…</string>
-    <string name="no_permissions">Geen magtigings in gebruik.</string>
-    <string name="permissions">Magtigings</string>
+    <string name="no_permissions">Geen toestemmings nie</string>
+    <string name="permissions">Toestemmings</string>
     <string name="unverified">Onbevestig</string>
     <string name="repo_details">Argief</string>
     <string name="repo_url">Adres</string>
@@ -242,7 +242,7 @@
     <string name="swap_cant_find_peers">Nog steeds nie gevind wat jy soek nie?</string>
     <string name="swap_send_fdroid">F-Droid stuur</string>
     <string name="swap_no_peers_nearby">Kan mense naby kry om mee te ruil nie.</string>
-    <string name="swap_connecting">Verbind tans</string>
+    <string name="swap_connecting">Koppel</string>
     <string name="app_version_x_available">Weergawe %1$s beskikbaar</string>
     <string name="app_version_x_installed">Weergawe %1$s</string>
     <string name="clear_search">Duidelike soektog</string>
@@ -259,7 +259,7 @@
     <string name="swap_intro">Verbind en deel programme met mense naby jou.</string>
     <string name="swap_confirm">Bevestig uitruil</string>
     <string name="swap_qr_isnt_for_swap">Die QR kode jy geskandeer het lyk nie soos \'n uitruil kode nie.</string>
-    <string name="loading">Laai tans…</string>
+    <string name="loading">Laai tans …</string>
     <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie asof ons kan uitruil nie!</string>
     <string name="install_confirm">benodig toegang tot</string>
     <string name="install_confirm_update">Wil jy \'n opdatering installeer
@@ -274,7 +274,7 @@
         vir hierdie ingeboude program? Jou bestaande data sal nie verloor word nie.
         Die opgadateerde progam benodig geen addisionele toegang nie.
     </string>
-    <string name="newPerms">Nuwe</string>
+    <string name="newPerms">Nuut</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dit kan jy dalk geld kos</string>
     <string name="uninstall_update_confirm">Wil jy hierdie program met die fabriek weergawe vervang?</string>
@@ -287,7 +287,7 @@
     <string name="perms_description_app">Verskaf deur %1$s.</string>
     <string name="downloading">Laai tans af…</string>
     <string name="installing">Installeer tans…</string>
-    <string name="uninstalling">Deïnstalleer…</string>
+    <string name="uninstalling">Deïnstalleer tans…</string>
     <string name="interval_never">Nooit</string>
     <string name="interval_1h">Uurliks</string>
     <string name="interval_4h">Elke 4 uur</string>

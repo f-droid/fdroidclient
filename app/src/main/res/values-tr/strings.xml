@@ -77,7 +77,7 @@
     <string name="linking_apks">APK\'lar depo içine bağlanıyor…</string>
     <string name="copying_icons">Uygulama simgeleri depoya kopyalanıyor…</string>
     <string name="icon">Simge</string>
-    <string name="next">İleri</string>
+    <string name="next">Sonraki</string>
     <string name="skip">Atla</string>
     <string name="proxy">Vekil</string>
     <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
@@ -96,7 +96,7 @@
     <string name="repos_unchanged">Tüm depolar güncel</string>
     <string name="all_other_repos_fine">Tüm diğer depolar hata oluşturmadı.</string>
     <string name="global_error_updating_repos">Güncelleme sırasında hata: %s</string>
-    <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
+    <string name="no_permissions">İzin yok</string>
     <string name="no_handler_app">%s işleyebilen kullanılabilir bir uygulamanız yok.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">İmzalanmamış</string>
@@ -172,7 +172,7 @@
     <string name="repo_url">Adres</string>
     <string name="pref_language">Dil</string>
     <string name="pref_language_default">Sistem varsayılanı</string>
-    <string name="wifi">Kablosuz ağ</string>
+    <string name="wifi">Kablosuz</string>
     <string name="category_Connectivity">Bağlanabilirlik</string>
     <string name="category_Graphics">Çizimler</string>
     <string name="category_Money">Para</string>
@@ -219,7 +219,7 @@
     <string name="install_confirm_update_no_perms">Bu mevcut uygulamayı güncellemek istiyor musunuz\? Mevcut verileriniz kaybolmayacak. Özel erişim gerektirmez.</string>
     <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamayı güncellemek ister misiniz\? Mevcut verileriniz kaybolmayacak. Özel erişim gerektirmez.</string>
     <string name="newPerms">Yeni</string>
-    <string name="allPerms">Hepsi</string>
+    <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
     <string name="uninstall_update_confirm">Bu uygulamayı fabrika sürümüyle değiştirmek istiyor musunuz\?</string>
     <string name="uninstall_confirm">Bu uygulamayı kaldırmak istiyor musunuz?</string>
@@ -255,7 +255,7 @@
     <string name="download_pending">İndirmenin başlaması bekleniyor…</string>
     <string name="install_error_notify_title">%s kurulumu sırasında hata</string>
     <string name="uninstall_error_notify_title">%s kaldırılması sırasında hata</string>
-    <string name="installing">Kuruluyor…</string>
+    <string name="installing">Yükleniyor…</string>
     <string name="uninstalling">Kaldırılıyor…</string>
     <string name="keep_hour">1 Saat</string>
     <string name="keep_day">1 Gün</string>
@@ -400,7 +400,7 @@
     <string name="panic_app_setting_none">Yok</string>
     <string name="panic_app_dialog_title">Panik Uygulamasını Onayla</string>
     <string name="panic_app_dialog_message">%1$s uygulamasının yıkıcı panik düğmesi eylemlerini tetiklemesine izin vermek istediğinize emin misiniz?</string>
-    <string name="allow">İzin Ver</string>
+    <string name="allow">İzin ver</string>
     <string name="panic_settings">Panik düğmesi ayarları</string>
     <string name="panic_settings_summary">Acil durum da uygulanacak eylemler</string>
     <string name="panic_exit_title">Uygulamadan Çık</string>

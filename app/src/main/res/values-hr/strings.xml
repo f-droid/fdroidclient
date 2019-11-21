@@ -4,7 +4,7 @@
     <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Da biste instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: uklanjanje će obrisati sve interne podatke aplikacije)</string>
     <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>
     <string name="version">Verzija</string>
-    <string name="delete">Obriši</string>
+    <string name="delete">Izbriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>
     <string name="cache_downloaded">Zadrži privremene aplikacije</string>
     <string name="updates">Ažuriranja</string>
@@ -41,7 +41,7 @@
     <string name="app_inst_known_source">Instalirano (sa %s)</string>
     <string name="app_inst_unknown_source">Instalirano (sa nepoznatog izvora)</string>
     <string name="added_on">Dodano %s</string>
-    <string name="ok">OK</string>
+    <string name="ok">U redu</string>
     <string name="yes">Da</string>
     <string name="no">Ne</string>
     <string name="repo_add_title">Dodaj novi repozitorij</string>
@@ -50,7 +50,7 @@
     <string name="more">Više</string>
     <string name="less">Manje</string>
     <string name="back">Natrag</string>
-    <string name="cancel">Otkaži</string>
+    <string name="cancel">Odustani</string>
     <string name="enable">Omogući</string>
     <string name="add_key">Dodaj ključ</string>
     <string name="overwrite">Prepiši</string>
@@ -64,7 +64,7 @@
     <string name="repo_provider">Repozitorij: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_settings">Postavke</string>
-    <string name="menu_search">Traži</string>
+    <string name="menu_search">Pretraži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
     <string name="menu_launch">Otvori</string>
     <string name="menu_share">Dijeli</string>
@@ -108,7 +108,7 @@
     <string name="linking_apks">Povezujem APK-ove u repozitorij…</string>
     <string name="copying_icons">Kopiram ikone aplikacija u repozitorij…</string>
     <string name="icon">Ikona</string>
-    <string name="next">Sljedeće</string>
+    <string name="next">Sljedeća</string>
     <string name="skip">Preskoči</string>
     <string name="useTor">Koristi Tor</string>
     <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost. Zahtjeva Orbot</string>
@@ -128,7 +128,7 @@
     <string name="repos_unchanged">Svi repozitoriji su ažurirani</string>
     <string name="all_other_repos_fine">Ostali repozitoriji nisu stvorili probleme.</string>
     <string name="global_error_updating_repos">Greška prilikom ažuriranja: %s</string>
-    <string name="no_permissions">Ne koriste se dozvole.</string>
+    <string name="no_permissions">Nema dopuštenja</string>
     <string name="permissions">Dozvole</string>
     <string name="no_handler_app">Nemate nijednu dostupnu aplikaciju koja može obraditi %s.</string>
     <string name="theme">Tema</string>
@@ -233,7 +233,7 @@
     <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
     <string name="swap_send_fdroid">Pošalji F-Droid</string>
     <string name="swap_no_peers_nearby">Nije uspjelo traženje ljudi u blizini.</string>
-    <string name="swap_connecting">Spajanje</string>
+    <string name="swap_connecting">Povezivanje</string>
     <string name="swap_confirm">Potvrdi razmjenu</string>
     <string name="swap_qr_isnt_for_swap">Čini se da QR kod koji ste skenirali nije kod za razmjenu.</string>
     <string name="loading">Učitavanje…</string>
@@ -267,8 +267,8 @@
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="perms_description_app">Pruža %1$s.</string>
     <string name="downloading">Preuzimanje…</string>
-    <string name="installing">Instaliram…</string>
-    <string name="uninstalling">Uklanjam…</string>
+    <string name="installing">Instaliranje…</string>
+    <string name="uninstalling">Deinstaliranje…</string>
     <string name="interval_never">Bez automatskih ažuriranja aplikacija</string>
     <string name="interval_1h">Provjeri ažurnost svakih sat vremena</string>
     <string name="interval_4h">Provjeri ažuriranja svaka 4 sata</string>

@@ -83,7 +83,7 @@
     <string name="repo_description">Opis</string>
     <string name="repo_last_update">Najnowsza aktualizacja</string>
     <string name="repo_name">Nazwa</string>
-    <string name="unknown">Nieznany</string>
+    <string name="unknown">Nieznana</string>
     <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>
     <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
 \n
@@ -135,7 +135,7 @@
     <string name="status_download">Pobieranie\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="update_notification_title">Aktualizowanie repozytoriów</string>
     <string name="status_processing_xml_percent">Przetwarzanie %2$s / %3$s (%4$d%%) z %1$s</string>
-    <string name="no_permissions">Brak wymaganych uprawnień.</string>
+    <string name="no_permissions">Brak uprawnień</string>
     <string name="unsigned">Brak podpisu</string>
     <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Powinieneś być
         ostrożny podczas pobierania aplikacji z nieznanych źródeł.
@@ -201,7 +201,7 @@
     <string name="swap_connecting">Łączenie</string>
     <string name="swap_confirm">Potwierdź wymianę</string>
     <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.</string>
-    <string name="loading">Ładowanie…</string>
+    <string name="loading">Ładuję…</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem wymiana nie powiodła się!</string>
     <string name="install_confirm">wymaga dostępu do</string>
     <string name="install_confirm_update">Czy chcesz zaktualizować tą aplikację? Aktualizacja dostanie dostęp do:
@@ -280,7 +280,7 @@
     <string name="install_error_notify_title">Błąd podczas instalacji %s</string>
     <string name="uninstall_error_notify_title">Błąd podczas dezinstalacji %s</string>
     <string name="installing">Instalowanie…</string>
-    <string name="uninstalling">Dezinstalacja…</string>
+    <string name="uninstalling">Odinstalowywanie…</string>
     <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
     <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
     <string name="keep_install_history">Zachowaj historię instalacji</string>
@@ -529,7 +529,7 @@
     <string name="swap_stopping_hotspot">Zatrzymywanie hotspotu…</string>
     <string name="swap_starting">Rozpoczynanie…</string>
     <string name="swap_stopping">Zatrzymywanie…</string>
-    <string name="disabled">Wyłącz</string>
+    <string name="disabled">Wyłączone</string>
     <string name="swap_error_cannot_start_bluetooth">Nie można uruchomić Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">W pobliżu jest zamknięty, ponieważ był bezczynny.</string>
 </resources>

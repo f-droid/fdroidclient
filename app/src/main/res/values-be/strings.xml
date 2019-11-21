@@ -45,7 +45,7 @@
     <string name="app_inst_known_source">Усталявана (з %s)</string>
     <string name="app_inst_unknown_source">Усталявана (з невядомай крыніцы)</string>
     <string name="added_on">Дададзена %s</string>
-    <string name="ok">Добра</string>
+    <string name="ok">ОК</string>
     <string name="yes">Так</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Дадаць новы рэпазіторый</string>
@@ -135,7 +135,7 @@
     <string name="all_other_repos_fine">Усе астатнія рэпазіторыі ў добрым стане.</string>
     <string name="global_error_updating_repos">Падчас абнаўлення адбылася памылка:  %s</string>
     <string name="warning_no_internet">Не атрымалася абнавіцца. Ці злучаныя вы з Інтэрнэтам\?</string>
-    <string name="no_permissions">Не патрабуецца дазволаў.</string>
+    <string name="no_permissions">Няма дазволаў</string>
     <string name="permissions">Дазволы</string>
     <string name="no_handler_app">Вы не маеце дадаткаў для апрацоўкі «%s».</string>
     <string name="theme">Тэма</string>
@@ -222,7 +222,7 @@
     <string name="swap_cant_find_peers">Не можаце знайсці, каго шукаеце\?</string>
     <string name="swap_send_fdroid">Адправіць F-Droid</string>
     <string name="swap_no_peers_nearby">Не атрымалася знайсці людзей паблізу для абмену.</string>
-    <string name="swap_connecting">Злучэнне</string>
+    <string name="swap_connecting">Падключэнне</string>
     <string name="swap_confirm">Пацвердзіць абмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, які вы адсканавалі, не выглядае як код абмену.</string>
     <string name="loading">Загрузка…</string>
@@ -244,7 +244,7 @@
     <string name="perms_new_perm_prefix">Новыя:</string>
     <string name="perms_description_app">Пададзена %1$s.</string>
     <string name="downloading">Спампоўванне…</string>
-    <string name="installing">Усталёўка…</string>
+    <string name="installing">Усталяванне…</string>
     <string name="uninstalling">Выдаленне…</string>
     <string name="interval_never">Не абнаўляць аўтаматычна</string>
     <string name="interval_1h">Штогадзінна правяраць на абнаўленні</string>
@@ -495,7 +495,7 @@
     <string name="swap_stopping_hotspot">Спыненне пункту доступу…</string>
     <string name="swap_starting">Запуск…</string>
     <string name="swap_stopping">Спыненне…</string>
-    <string name="disabled">Выключана</string>
+    <string name="disabled">Адключанае</string>
     <string name="swap_error_cannot_start_bluetooth">Немагчыма запусціць Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Праз прастой рэжым \"Паблізу\" быў выключаны.</string>
     <string name="nearby_splash__document_tree">Пошук рэпазіторыяў і люстэркаў па USB OTG.</string>

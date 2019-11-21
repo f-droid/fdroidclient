@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versiune</string>
-    <string name="delete">Șterge</string>
+    <string name="delete">Ștergeți</string>
     <string name="cache_downloaded">Păstrează aplicațiile descărcate</string>
     <string name="updates">Actualizări</string>
     <string name="other">Altele</string>
@@ -12,15 +12,15 @@
     <string name="about_version">Versiune</string>
     <string name="app_installed">Instalată</string>
     <string name="app_not_installed">Nu este instalat</string>
-    <string name="ok">Aplică</string>
+    <string name="ok">OK</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Anulează</string>
+    <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
-    <string name="menu_search">Caută</string>
-    <string name="menu_launch">Deschide</string>
+    <string name="menu_search">Căutați</string>
+    <string name="menu_launch">Deschideți</string>
     <string name="menu_install">Instalează</string>
     <string name="menu_uninstall">Dezinstalează</string>
     <string name="menu_ignore_all">Ignoră toate actualizările</string>
@@ -119,7 +119,7 @@
     <string name="repo_description">Descriere</string>
     <string name="repo_url">Adresă</string>
     <string name="unverified">Neverificat</string>
-    <string name="no_permissions">Nu folosește nici o permisiune.</string>
+    <string name="no_permissions">Fără permisiuni</string>
     <string name="all_other_repos_fine">Nici un alt depozit nu a mai dat vreo eroare.</string>
     <string name="status_inserting_apps">Salvare detalii aplicație</string>
     <string name="status_processing_xml_percent">Procesare %2$s / %3$s (%4$d%%) din %1$s</string>
@@ -130,7 +130,7 @@
     <string name="proxy_host_summary">Numele sau adresa gazdei proxy (ex. 127.0.0.1)</string>
     <string name="proxy_host">Gazdă proxy</string>
     <string name="enable_proxy_title">Activează proxy HTTP</string>
-    <string name="next">Următorul</string>
+    <string name="next">Înainte</string>
     <string name="copying_icons">Copiere iconițe în depozit…</string>
     <string name="antiadslist">Aplicația conține reclamă</string>
     <string name="menu_bitcoin">Bitcoin</string>
@@ -179,7 +179,7 @@
     <string name="swap_visible_bluetooth">Vizibil prin Bluetooth</string>
     <string name="swap_visible_wifi">Vizibil prin Wi-Fi</string>
     <string name="swap_setting_up_wifi">Configurare Wi-Fi…</string>
-    <string name="swap_connecting">Conectare</string>
+    <string name="swap_connecting">Se conectează</string>
     <string name="swap_send_fdroid">Trimite F-Droid</string>
     <string name="theme_night">Noapte</string>
     <string name="crash_dialog_title">F-Droid s-a oprit</string>
@@ -233,9 +233,9 @@
     <string name="keep_year">Un an</string>
     <string name="keep_forever">Totdeauna</string>
     <string name="crash_dialog_text">O eroare neașteptată s-a produs forțând oprirea aplicației. Doriți să trimite-ți un e-mail cu detalii pentru a putea ajuta la rezolvarea acestei probleme?</string>
-    <string name="uninstalling">Dezinstalare…</string>
+    <string name="uninstalling">În curs de dezinstalare…</string>
     <string name="installIncompatible">Aplicația nu este compatibilă cu dispozitivul dumneavoastră. Instalați oricum?</string>
-    <string name="installing">Instalare…</string>
+    <string name="installing">În curs de instalare…</string>
     <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
     <string name="install_error_notify_title">Eroare la instalarea %s</string>
     <string name="update_auto_install">Instalează automat actualizările</string>
@@ -399,7 +399,7 @@
     <string name="panic_app_setting_none">Nici una</string>
     <string name="panic_app_dialog_title">Confirmă aplicația buton de panică</string>
     <string name="panic_app_dialog_message">Sunteți siguri că doriți să permiteți aplicației %1$s să efectueze acțiuni distructive la apăsarea butonului de panică?</string>
-    <string name="allow">Permite</string>
+    <string name="allow">Permiteți</string>
     <string name="panic_settings">Setări buton de panică</string>
     <string name="panic_settings_summary">Acțiuni ce se vor executa în caz de urgență</string>
     <string name="panic_exit_title">Ieșire aplicație</string>
@@ -497,7 +497,7 @@
     <string name="swap_stopping_hotspot">Închidere hostspot…</string>
     <string name="swap_starting">Pornire…</string>
     <string name="swap_stopping">Oprire…</string>
-    <string name="disabled">Dezactivat</string>
+    <string name="disabled">Dezactivată</string>
     <string name="swap_error_cannot_start_bluetooth">Nu s-a putut activa Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Schimbul a fost oprit deoarece era nefolosit.</string>
 </resources>

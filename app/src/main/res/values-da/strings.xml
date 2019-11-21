@@ -116,7 +116,7 @@
     <string name="repos_unchanged">Alle depoter er opdaterede</string>
     <string name="all_other_repos_fine">Alle andre depoter gav ingen fejl.</string>
     <string name="global_error_updating_repos">Fejl under opdatering: %s</string>
-    <string name="no_permissions">Ingen tilladelser bliver brugt.</string>
+    <string name="no_permissions">Ingen tilladelser</string>
     <string name="permissions">Tilladelser</string>
     <string name="no_handler_app">Du har ikke nogen app som kan håndtere %s.</string>
     <string name="theme">Tema</string>
@@ -146,7 +146,7 @@
     <string name="requires_features">Kræver: %1$s</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_language_default">Systemstandard</string>
-    <string name="wifi">Wi-fi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Tillslutningsmuligheder</string>
     <string name="category_Development">Udvikling</string>
@@ -217,7 +217,7 @@
     <string name="install_confirm_update_system">Vil du installere en opdatering til denne indbyggede app? Dine eksisterende data vil ikke gå tabt. Den opdaterede app vil få adgang til:</string>
     <string name="install_confirm_update_no_perms">Vil du installere en opdatering til denne eksisterende app? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
     <string name="install_confirm_update_system_no_perms">Vil du installere en opdatering til denne indbyggede app? Dine eksisterende data vil ikke gå tabt. Den kræver ingen speciel adgang.</string>
-    <string name="newPerms">Nye</string>
+    <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dette kan koste dig penge</string>
     <string name="uninstall_update_confirm">Vil du erstatte denne app med fabriksversionen?</string>
@@ -471,7 +471,7 @@
     <string name="undo">Fortryd</string>
     <string name="app_list__dismiss_installing_app">Installering annulleret</string>
     <string name="menu_select_for_wipe">Vælge for at fjerne</string>
-    <string name="try_again">Prøv igen</string>
+    <string name="try_again">Prøv igen.</string>
     <string name="panic_will_be_wiped">Vil blive afinstalleret og alle data slettet</string>
     <string name="panic_apps_to_uninstall">Apps som vil blive afinstalleret og hvis data vil blive slettet</string>
     <string name="panic_add_apps_to_uninstall">Tilføj apps til afinstallering og rensning</string>

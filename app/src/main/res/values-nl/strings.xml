@@ -43,7 +43,7 @@
     <string name="menu_manage">Bronnen</string>
     <string name="menu_search">Zoeken</string>
     <string name="menu_add_repo">Nieuwe bron</string>
-    <string name="menu_launch">Open</string>
+    <string name="menu_launch">Openen</string>
     <string name="menu_share">Delen</string>
     <string name="menu_install">Installeren</string>
     <string name="menu_uninstall">Verwijderen</string>
@@ -96,7 +96,7 @@
     <string name="repos_unchanged">Alle bronnen zijn up-to-date</string>
     <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
     <string name="global_error_updating_repos">Fout tijdens update: %s</string>
-    <string name="no_permissions">Geen machtigingen in gebruik.</string>
+    <string name="no_permissions">Geen machtigingen</string>
     <string name="no_handler_app">Je hebt geen app die %s kan verwerken.</string>
     <string name="theme">Thema</string>
     <string name="unsigned">Ongetekend</string>
@@ -195,7 +195,7 @@
     <string name="swap_cant_find_peers">Kan je degene waar je naar zoekt niet vinden?</string>
     <string name="swap_send_fdroid">Verstuur F-Droid</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee uit te wisselen.</string>
-    <string name="swap_connecting">Verbinden</string>
+    <string name="swap_connecting">Verbinding maken</string>
     <string name="swap_confirm">Bevestig uitwisseling</string>
     <string name="swap_qr_isnt_for_swap">De QR-code die je gescand hebt lijkt geen uitwisselcode te zijn.</string>
     <string name="loading">Laden…</string>
@@ -206,7 +206,7 @@
     <string name="install_confirm_update_no_perms">Wil je een update voor deze bestaande app installeren? De bestaande gegevens zullen niet verloren gaan. Het heeft geen speciale toegang nodig.</string>
     <string name="install_confirm_update_system_no_perms">Wil je een update voor deze ingebouwde app installeren? De bestaande gegevens zullen niet verloren gaan. Het heeft geen speciale toegang nodig.</string>
     <string name="newPerms">Nieuw</string>
-    <string name="allPerms">Alles</string>
+    <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dit kan geld kosten</string>
     <string name="uninstall_update_confirm">Wil je deze app vervangen door de fabrieksversie?</string>
     <string name="uninstall_confirm">Wil je deze app verwijderen?</string>
@@ -270,7 +270,7 @@
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>
     <string name="uninstall_error_notify_title">Fout bij het deïnstalleren van %s</string>
     <string name="installing">Installeren…</string>
-    <string name="uninstalling">Deïnstalleren…</string>
+    <string name="uninstalling">Verwijderen…</string>
     <string name="keep_hour">1 uur</string>
     <string name="keep_day">1 dag</string>
     <string name="keep_week">1 week</string>

@@ -5,7 +5,7 @@
     </string>
     <string name="installIncompatible">Ứng dụng không tương thích với thiết bị, vẫn tiếp tục cài đặt?</string>
     <string name="version">Phiên bản</string>
-    <string name="delete">Xoá</string>
+    <string name="delete">Xóa</string>
     <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
     <string name="cache_downloaded">Lưu các ứng dụng trong bộ nhớ đệm</string>
     <string name="updates">Cập nhật</string>
@@ -32,7 +32,7 @@
     <string name="no">Không</string>
     <string name="repo_add_title">Thêm kho ứng dụng mới</string>
     <string name="repo_add_add">Thêm</string>
-    <string name="cancel">Huỷ</string>
+    <string name="cancel">Hủy</string>
     <string name="enable">Kích hoạt</string>
     <string name="add_key">Thêm mã khoá</string>
     <string name="overwrite">Ghi đè</string>
@@ -79,7 +79,7 @@
     <string name="adding_apks_format">Đang thêm %s vào kho…</string>
     <string name="copying_icons">Đang sao chép biểu tượng ứng dụng vào kho…</string>
     <string name="icon">Biểu tượng</string>
-    <string name="next">Tiếp</string>
+    <string name="next">Tiếp theo</string>
     <string name="skip">Bỏ qua</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Kích hoạt proxy HTTP</string>
@@ -91,7 +91,7 @@
     </string>
     <string name="repos_unchanged">Tất cả các kho ứng dụng đã được cập nhật</string>
     <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
-    <string name="no_permissions">Không sử dụng quyền nào.</string>
+    <string name="no_permissions">Không có quyền</string>
     <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
     <string name="theme">Giao diện</string>
     <string name="unverified">Chưa kiểm tra</string>
@@ -158,7 +158,7 @@
     <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi
         tải ứng dụng từ mục lục không có chữ kí điện tử.
     </string>
-    <string name="unknown">Không rõ</string>
+    <string name="unknown">Không xác định</string>
     <string name="pref_language">Ngôn ngữ</string>
     <string name="pref_language_default">Mặc định</string>
     <string name="wifi">Wi-Fi</string>
@@ -356,7 +356,7 @@
     <string name="uninstall_error_notify_title">Lỗi khi gỡ bỏ %s</string>
     <string name="app__tts__downloading_progress">Đang tải, hoàn thành %1$d%%</string>
     <string name="installing">Đang cài đặt…</string>
-    <string name="uninstalling">Đang gỡ bỏ…</string>
+    <string name="uninstalling">Đang gỡ cài đặt…</string>
     <string name="keep_hour">1 giờ</string>
     <string name="keep_day">1 ngày</string>
     <string name="keep_week">1 tuần</string>

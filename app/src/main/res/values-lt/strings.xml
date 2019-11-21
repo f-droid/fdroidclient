@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="version">Versija</string>
-    <string name="delete">Šalinti</string>
+    <string name="delete">Ištrinti</string>
     <string name="cache_downloaded">Saugoti atsisiųstų programėlių instaliacinius paketus</string>
     <string name="updates">Atnaujinimai</string>
     <string name="other">Kita</string>
@@ -20,15 +20,15 @@
     <string name="no">Ne</string>
     <string name="repo_add_title">Pridėti naują saugyklą</string>
     <string name="repo_add_add">Pridėti</string>
-    <string name="cancel">Atsisakyti</string>
+    <string name="cancel">Atšaukti</string>
     <string name="enable">Įjungti</string>
     <string name="add_key">Pridėti raktą</string>
     <string name="overwrite">Perrašyti</string>
     <string name="repo_add_url">Saugyklos adresas</string>
     <string name="menu_manage">Saugyklos</string>
-    <string name="menu_search">Ieškoti</string>
+    <string name="menu_search">Paieška</string>
     <string name="menu_add_repo">Nauja saugykla</string>
-    <string name="menu_launch">Vykdyti</string>
+    <string name="menu_launch">Atidaryti</string>
     <string name="menu_share">Dalintis</string>
     <string name="menu_install">Įdiegti</string>
     <string name="menu_uninstall">Pašalinti</string>
@@ -41,7 +41,7 @@
     <string name="show_incompat_versions">Rodyti nesuderinamas versijas</string>
     <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
     <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
-    <string name="next">Toliau</string>
+    <string name="next">Kitas</string>
     <string name="status_connecting_to_repo">Jungiamasi prie
         %1$s
     </string>
@@ -96,7 +96,7 @@
     <string name="category_Writing">Rašymas</string>
 
     <string name="swap_dont_show_again">Daugiau to nerodyti</string>
-    <string name="newPerms">Nauja</string>
+    <string name="newPerms">Naujiena</string>
     <string name="notification_action_update">Atnaujinti</string>
     <string name="notification_action_cancel">Atšaukti</string>
     <string name="notification_action_install">Įdiegti</string>
@@ -181,8 +181,8 @@
     <string name="update_notification_title">Atnaujinamos saugyklos</string>
     <string name="status_inserting_x_apps">Saugojama programos informacija (%1$d/%2$d) nuo %3$s</string>
     <string name="all_other_repos_fine">Visos kitos saugyklos nesukūrė klaidų.</string>
-    <string name="no_permissions">Nebuvo panaudoti jokie įgaliojimai.</string>
-    <string name="permissions">Įgaliojimai</string>
+    <string name="no_permissions">Nėra jokių leidimų</string>
+    <string name="permissions">Leidimai</string>
     <string name="repo_url">Adresas</string>
     <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie skirtingo Wi-Fi, nei tik ką pridėta saugykla! Pabandykite prisijungti prie šio Wi-Fi: %s</string>
     <string name="by_author_format">pagal %s</string>

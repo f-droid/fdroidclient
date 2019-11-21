@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
     <string name="cache_downloaded">Behåll mellanlagrade appar</string>
     <string name="updates">Uppdateringar</string>
-    <string name="other">Andra</string>
+    <string name="other">Annat</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
@@ -93,7 +93,7 @@
     <string name="repos_unchanged">Alla förråd är uppdaterade</string>
     <string name="all_other_repos_fine">Övriga förråd orsakade inga fel.</string>
     <string name="global_error_updating_repos">Fel vid uppdatering: %s</string>
-    <string name="no_permissions">Inga behörigheter används.</string>
+    <string name="no_permissions">Inga behörigheter</string>
     <string name="no_handler_app">Du har inte någon app tillgänglig för hantering av %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Osignerad</string>
@@ -156,12 +156,12 @@
 \n%2$s från
 \n%1$s</string>
     <string name="update_notification_title">Uppdaterar filförråd</string>
-    <string name="permissions">Tillstånd</string>
+    <string name="permissions">Behörigheter</string>
     <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemstandard</string>
-    <string name="wifi">Trådlöst</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="login_title">Autentisering krävs</string>
     <string name="login_name">Användarnamn</string>
     <string name="login_password">Lösenord</string>
@@ -221,7 +221,7 @@
     <string name="swap_connecting">Ansluter</string>
     <string name="swap_confirm">Bekräfta utbyte</string>
     <string name="swap_qr_isnt_for_swap">QR-koden du läst av ser inte ut som en utbytarkod.</string>
-    <string name="loading">Öppnar…</string>
+    <string name="loading">Läser in …</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="install_confirm">behöver åtkomst till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
@@ -234,7 +234,7 @@
         till denna inbyggda app? Din befintliga data försvinner inte.
         Den kräver inte någon särskild åtkomst.
     </string>
-    <string name="newPerms">Ny</string>
+    <string name="newPerms">Nytt</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
     <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
@@ -269,7 +269,7 @@
     <string name="install_error_notify_title">Fel vid installation %s</string>
     <string name="uninstall_error_notify_title">Fel vid avinstallation av %s</string>
     <string name="installing">Installerar…</string>
-    <string name="uninstalling">Avinstallera…</string>
+    <string name="uninstalling">Avinstallerar…</string>
     <string name="keep_install_history">Behåll installationshistorik</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>

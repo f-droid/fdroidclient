@@ -47,7 +47,7 @@
     <string name="menu_settings">การตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
-    <string name="menu_launch">เริ่มโปรแกรม</string>
+    <string name="menu_launch">เปิด</string>
     <string name="menu_share">แบ่งปัน</string>
     <string name="menu_install">ติดตั้ง</string>
     <string name="menu_uninstall">ถอนการติดตั้ง</string>
@@ -82,7 +82,7 @@
     <string name="deleting_repo">กำลังลบแหล่งโปรแกรมนี้…</string>
     <string name="adding_apks_format">กำลังเพิ่ม %s เข้าในแหล่งโปรแกรม…</string>
     <string name="icon">ไอคอน</string>
-    <string name="next">ต่อไป</string>
+    <string name="next">ถัดไป</string>
     <string name="skip">ข้าม</string>
     <string name="useTor">เชื่อมต่อผ่าน Tor</string>
     <string name="useTorSummary">ดาวน์โหลดข้อมูลและโปรแกรมผ่านเครือข่าย Tor เพื่อเพิ่มความเป็นส่วนตัว</string>
@@ -95,8 +95,8 @@
     <string name="status_inserting_apps">กำลังบันทึกรายละเอียดโปรแกรม</string>
     <string name="repos_unchanged">ข้อมูลโปรแกรมทั้งหมดนั้นอัพเดตอยู่แล้ว</string>
     <string name="global_error_updating_repos">การอัพเดตล้มเหลว: %s</string>
-    <string name="no_permissions">ไม่มีการขออนุญาตใดๆ เป็นพิเศษ</string>
-    <string name="permissions">การขออนุญาตพิเศษ</string>
+    <string name="no_permissions">ไม่มีสิทธิ์</string>
+    <string name="permissions">การอนุญาต</string>
     <string name="theme">ธีม</string>
     <string name="repo_details">แหล่งโปรแกรม</string>
     <string name="repo_url">ที่อยู่แหล่งโปรแกรม</string>

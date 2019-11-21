@@ -6,7 +6,7 @@
     <string name="enable_nfc_send">Skru på NFC-sending…</string>
     <string name="cache_downloaded">Behold mellomlagrede programmer</string>
     <string name="updates">Oppdateringer</string>
-    <string name="other">Andre</string>
+    <string name="other">Annet</string>
     <string name="update_interval">Intervall for automatisk oppdatering</string>
     <string name="notify">Vis tilgjengelig oppdateringer</string>
     <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
@@ -91,7 +91,7 @@
     <string name="repos_unchanged">Alle pakkebrønner ajourførte</string>
     <string name="all_other_repos_fine">Ingen andre pakkebrønner lagde noe krøll.</string>
     <string name="global_error_updating_repos">Feil under oppdatering: %s</string>
-    <string name="no_permissions">Krever ingen tillatelser.</string>
+    <string name="no_permissions">Ingen tillatelser</string>
     <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s.</string>
     <string name="theme">Utseende</string>
     <string name="unsigned">Usignert</string>
@@ -186,7 +186,7 @@
     <string name="swap_cant_find_peers">Finner du ikke den du leter etter?</string>
     <string name="swap_send_fdroid">Oversend F-Droid</string>
     <string name="swap_connecting">Kobler til</string>
-    <string name="loading">Laster inn…</string>
+    <string name="loading">Laster inn …</string>
     <string name="install_confirm">tilgang til</string>
     <string name="newPerms">Nye</string>
     <string name="allPerms">Alle</string>
@@ -209,7 +209,7 @@
     <string name="less">Mindre</string>
     <string name="menu_settings">Innstillinger</string>
     <string name="status_download_unknown_size">Laster ned\n%2$s fra\n%1$s</string>
-    <string name="permissions">Rettigheter</string>
+    <string name="permissions">Tillatelser</string>
     <string name="wifi_ap">Felles trådløstilknytning</string>
     <string name="category_Connectivity">Tilkobling</string>
     <string name="category_Theming">Tilpasning</string>
@@ -514,7 +514,7 @@
     <string name="swap_stopping_hotspot">Slår av felles trådløstilknytning…</string>
     <string name="swap_starting">Starter…</string>
     <string name="swap_stopping">Slår av…</string>
-    <string name="disabled">Avslått</string>
+    <string name="disabled">Slått av</string>
     <string name="swap_error_cannot_start_bluetooth">Kan ikke starte Blåtann!</string>
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>

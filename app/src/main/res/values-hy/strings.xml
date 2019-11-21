@@ -28,7 +28,7 @@
 
     <string name="installed_apps__activity_title">Տեղադրված ափփեր</string>
     <string name="installed_app__updates_ignored">Առհամարված թարմացումներ</string>
-    <string name="ok">Լավ</string>
+    <string name="ok">Հաստատել</string>
 
     <string name="yes">Այո</string>
     <string name="no">Ոչ</string>
@@ -53,7 +53,7 @@
     <string name="menu_website">Կայք</string>
     <string name="menu_donate">Նվիրաբերել</string>
     <string name="preference_category__my_apps">Իմ ափփերը</string>
-    <string name="next">Հաջորդ</string>
+    <string name="next">Հաջորդը</string>
     <string name="skip">Բաց թողնել</string>
 
     <string name="useTor">Օգտագործել Tor</string>
@@ -69,7 +69,7 @@
     <string name="status_connecting_to_repo">Միանում եմ
         %1$sին
     </string>
-    <string name="permissions">Թույլատվություններ</string>
+    <string name="permissions">Թույլտվություններ</string>
     <string name="repo_url">Հասցե</string>
     <string name="repo_description">Նկարագրություն</string>
     <string name="repo_last_update">Վերջին թարմացում</string>
@@ -86,13 +86,13 @@
     <string name="category_System">Համակարգ</string>
     <string name="swap_dont_show_again">Այլևս ցույց չտալ սա</string>
     <string name="swap_wifi_device_name">Սարքի անվանում</string>
-    <string name="loading">Բեռնում եմ…</string>
+    <string name="loading">Բեռնում…</string>
     <string name="newPerms">Նոր</string>
-    <string name="allPerms">Ամենը</string>
+    <string name="allPerms">Բոլորը</string>
     <string name="perms_new_perm_prefix">Նոր.</string>
     <string name="downloading">Ներբեռնում եմ…</string>
-    <string name="installing">Տեղադրում եմ…</string>
-    <string name="uninstalling">Ապատեղադրում եմ…</string>
+    <string name="installing">Տեղադրվում է…</string>
+    <string name="uninstalling">Ապատեղադրում է…</string>
 
     <string name="interval_never">Երբեք</string>
     <string name="keep_hour">1 ժամ</string>
@@ -154,7 +154,7 @@
     <string name="status_inserting_apps">Պահում եմ ափփի մանրամասները</string>
     <string name="global_error_updating_repos">Սխալ թարմացման ընթացքում. %s</string>
     <string name="warning_no_internet">Չկարողացա թարմացնել, ցանցին միացա՞ծ ես։</string>
-    <string name="no_permissions">Թույլատվություններ օգտագործված չեն</string>
+    <string name="no_permissions">Թույլտվություններ չկան</string>
     <string name="theme">Ոճ</string>
     <string name="unverified">Չվավերացված</string>
     <string name="repo_num_apps">Ափփերի քանակ</string>
@@ -176,7 +176,7 @@
     <string name="swap_no_wifi_network">Դեռ համացանց չկա</string>
     <string name="swap_welcome">Բարի՜ գալուստ F-Droid</string>
     <string name="swap_choose_apps">Ընտրել ափփեր</string>
-    <string name="swap_connecting">Կապվում եմ</string>
+    <string name="swap_connecting">Միանում է</string>
     <string name="perm_costs_money">Սա կարող է քեզ գումար արժենալ</string>
     <string name="uninstall_update_confirm">Փոխարինե՞լ այս ափփը իր գործնական տարբերակով։</string>
     <string name="uninstall_confirm">Ապատեղադրե՞լ այս ափփը։</string>

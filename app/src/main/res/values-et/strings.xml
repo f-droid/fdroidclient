@@ -39,7 +39,7 @@
     <string name="app_inst_known_source">Paigaldatud (%s)</string>
     <string name="app_inst_unknown_source">Paigaldatud (tundmatust allikast)</string>
     <string name="added_on">Lisatud %s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="repo_add_title">Lisa uus hoidla</string>
@@ -48,7 +48,7 @@
     <string name="more">Rohkem</string>
     <string name="less">Vähem</string>
     <string name="back">Tagasi</string>
-    <string name="cancel">Loobu</string>
+    <string name="cancel">Tühista</string>
     <string name="enable">Luba</string>
     <string name="add_key">Lisa võti</string>
     <string name="overwrite">Kirjuta üle</string>
@@ -99,7 +99,7 @@
         veateade!
     </string>
     <string name="menu_settings">Seaded</string>
-    <string name="menu_search">Otsi</string>
+    <string name="menu_search">Otsing</string>
     <string name="menu_launch">Ava</string>
     <string name="menu_share">Jaga</string>
     <string name="menu_install">Paigalda</string>
@@ -162,8 +162,8 @@
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) kokku %1$s töödeldud</string>
     <string name="status_connecting_to_repo">Ühenduse loomine\n%1$s</string>
     <string name="status_inserting_apps">Rakenduse detaile salvestatakse</string>
-    <string name="no_permissions">Eriõiguseid ei kasutata.</string>
-    <string name="permissions">Volitused</string>
+    <string name="no_permissions">Lube ei ole</string>
+    <string name="permissions">Load</string>
     <string name="no_handler_app">Sul puuduvad rakendused, mis suudaksid %s käsitleda.</string>
     <string name="theme">Teema</string>
     <string name="unsigned">Allkirjastamata</string>
@@ -236,10 +236,10 @@
     <string name="swap_cant_find_peers">Ei leia seda, keda otsid?</string>
     <string name="swap_send_fdroid">Saada F-Droid</string>
     <string name="swap_no_peers_nearby">Ei leidnud lähedal inimesi, kellega vahetada.</string>
-    <string name="swap_connecting">Ühenduse loomine</string>
+    <string name="swap_connecting">Ühendamine</string>
     <string name="swap_confirm">Kinnita vahetus</string>
     <string name="swap_qr_isnt_for_swap">Skannitud QR-kood ei paista olevat vahetamise kood.</string>
-    <string name="loading">Laadimine…</string>
+    <string name="loading">Laadimine …</string>
     <string name="install_confirm">vajab juurdepääsu</string>
     <string name="newPerms">Uus</string>
     <string name="allPerms">Kõik</string>
@@ -253,8 +253,8 @@
     <string name="perms_new_perm_prefix">Uus:</string>
     <string name="perms_description_app">Tagas %1$s.</string>
     <string name="downloading">Allalaadimine…</string>
-    <string name="installing">Paigaldamine…</string>
-    <string name="uninstalling">Eemaldamine…</string>
+    <string name="installing">Installimine …</string>
+    <string name="uninstalling">Desinstallimine …</string>
     <string name="interval_never">Ära uuenda rakendusi automaatselt</string>
     <string name="interval_1h">Kontrolli uuendusi iga tunni järel</string>
     <string name="interval_4h">Kontrolli uunedusi iga 4 tunni järel</string>

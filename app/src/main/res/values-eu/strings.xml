@@ -53,7 +53,7 @@
     <string name="status_connecting_to_repo">%1$s(e)ra
         \nkonektatzen
     </string>
-    <string name="no_permissions">Ez da baimenik erabiltzen.</string>
+    <string name="no_permissions">Ez dago baimenik</string>
     <string name="theme">Itxura</string>
     <string name="unsigned">Sinatu gabea</string>
     <string name="repo_num_apps">Aplikazio kopurua</string>
@@ -68,7 +68,7 @@
     <string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
     <string name="theme_dark">Iluna</string>
     <string name="theme_light">Argia</string>
-    <string name="other">Bestelakoak</string>
+    <string name="other">Beste bat</string>
     <string name="update_interval">Eguneratze-maiztasuna</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili pribilegiodun luzapena paketeak instalatu, eguneratu eta kentzeko</string>
@@ -111,7 +111,7 @@
     <string name="interval_never">Aplikazioen eguneraketa automatikorik ez</string>
     <string name="interval_12h">Egiaztatu eguneraketak 12 ordurik behin</string>
     <string name="interval_1d">Egiaztatu eguneraketak egunero</string>
-    <string name="newPerms">Berria</string>
+    <string name="newPerms">Berriak</string>
     <string name="allPerms">Guztiak</string>
     <string name="perms_new_perm_prefix">Berria:</string>
     <string name="loading">Kargatzen…</string>
@@ -161,7 +161,7 @@
 \n%1$s</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_language_default">Sistemaren lehenetsia</string>
-    <string name="wifi">Wi-Fi</string>
+    <string name="wifi">Wi-Fi konexioa</string>
     <string name="wifi_ap">Wi-Fi gunea</string>
     <string name="category_Connectivity">Sareak</string>
     <string name="category_Development">Garapena</string>

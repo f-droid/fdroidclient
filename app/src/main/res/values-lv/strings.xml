@@ -5,7 +5,7 @@
     <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
     <string name="cache_downloaded">Paturēt kešotās aplikācijas</string>
     <string name="updates">Atjauninājumi</string>
-    <string name="other">Cits</string>
+    <string name="other">Citi</string>
     <string name="update_interval">Automātisko atjauninājumu intervāls</string>
     <string name="notify">Parādīt pieejamos atjauninājumus</string>
     <string name="notify_on">Uzrādīt paziņojumu, kad atjauninājumi ir pieejami</string>
@@ -23,7 +23,7 @@
     <string name="app_inst_known_source">Ieinstalēts (no %s)</string>
     <string name="app_inst_unknown_source">Ieinstalēts (no nezināma avota)</string>
     <string name="added_on">Pievienotas pie %s</string>
-    <string name="ok">OK</string>
+    <string name="ok">Labi</string>
     <string name="yes">Jā</string>
     <string name="no">Nē</string>
     <string name="repo_add_title">Piecienot jaunu Repozitoriju</string>
@@ -40,7 +40,7 @@
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_search">Meklēt</string>
     <string name="menu_add_repo">Jauns Repozitorijs</string>
-    <string name="menu_launch">Palaist</string>
+    <string name="menu_launch">Atvērt</string>
     <string name="menu_share">Dalīties</string>
     <string name="menu_install">Instalēt</string>
     <string name="menu_uninstall">Izdzēst</string>
@@ -67,8 +67,8 @@
 
     <string name="proxy">Starpniekserveris</string>
     <string name="proxy_port">Starpniekservera ports</string>
-    <string name="no_permissions">Ši aplikācija neizmanto nekādu īpašu privilēģiju.</string>
-    <string name="permissions">Privilēģija</string>
+    <string name="no_permissions">Nav atļauju</string>
+    <string name="permissions">Atļaujas</string>
     <string name="repo_details">Repozitorijs</string>
     <string name="repo_description">Apraksts</string>
     <string name="repo_name">Vārds</string>
@@ -99,7 +99,7 @@
 
     <string name="pref_language_default">Sistēmas</string>
 
-    <string name="newPerms">Jauni</string>
+    <string name="newPerms">Jauna!</string>
     <string name="notification_action_update">Atjaunināt</string>
     <string name="notification_action_cancel">Atcelt</string>
     <string name="notification_action_install">Instalēt</string>

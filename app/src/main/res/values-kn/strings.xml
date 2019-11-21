@@ -17,9 +17,9 @@
     <string name="interval_1d">ಪ್ರತಿದಿನ</string>
     <string name="interval_1w">ಪ್ರತಿವಾರ</string>
     <string name="interval_2w">ಪ್ರತಿ ೨ ವಾರಕ್ಕೊಮ್ಮೆ</string>
-    <string name="installing">ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="installing">ಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="perms_new_perm_prefix">ಹೊಸತು:</string>
-    <string name="allPerms">ಎಲ್ಲವೂ</string>
+    <string name="allPerms">ಎಲ್ಲಾ</string>
     <string name="swap_wifi_device_name">ಸಾಧಕದ ಹೆಸರು</string>
     <string name="swap_people_nearby">ಹತ್ತಿರವಿರುವ ಜನರು</string>
     <string name="swap_dont_show_again">ಇದನ್ನು ಮತ್ತೆ ತೋರಿಸಬೇಡ</string>
@@ -69,8 +69,8 @@
     <string name="login_name">ಬಳಕೆದಾರರ ಹೆಸರು</string>
     <string name="login_password">ಗುಪ್ತಪದ</string>
     <string name="repo_edit_credentials">ಗುಪ್ತಪದವನ್ನು ಬದಲಿಸಿ</string>
-    <string name="other">ಇತರೆ</string>
-    <string name="delete">ಅಳಿಸು</string>
+    <string name="other">ಇತರ</string>
+    <string name="delete">ಅಳಿಸಿ</string>
     <string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
     <string name="updates">ವಿಭಾಗಗಳು</string>
     <string name="category_Internet">ಅಂತರ್ಜಾಲ</string>
@@ -78,7 +78,7 @@
     <string name="category_Reading">ಓದು</string>
     <string name="category_Science_Education">ವಿಜ್ಞಾನ ಮತ್ತು ಶಿಕ್ಷಣ</string>
     <string name="category_Writing">ಬರವಣಿಗೆ</string>
-    <string name="newPerms">ನವೀನ</string>
+    <string name="newPerms">ಹೊಸತು</string>
     <string name="notification_action_cancel">ತ್ಯಜಿಸು</string>
     <string name="app_list__name__downloading_in_progress">%1$s ಇಳಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="updates__tts__download_app">ಇಳಿಸು</string>
@@ -253,7 +253,7 @@
     <string name="app_list__name__successfully_installed">%1$s ಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
     <string name="menu_manage">ಭಂಡಾರಗಳು</string>
     <string name="menu_add_repo">ಹೊಸ ಭಂಡಾರ</string>
-    <string name="menu_launch">ತೆರೆಯಿರಿ</string>
+    <string name="menu_launch">ತೆರೆ</string>
     <string name="menu_install">ಅನುಸ್ಥಾಪಿಸಿ</string>
     <string name="menu_uninstall">ಅಸ್ಥಾಪಿಸು</string>
     <string name="menu_upgrade">ನವೀಕರಣ</string>
@@ -265,7 +265,7 @@
     <string name="unsigned">ಸಹಿ ಮಾಡಲಾಗಿಲ್ಲ</string>
     <string name="unverified">ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ</string>
     <string name="repo_last_update">ಕೊನೆಯ ನವೀಕರಣ</string>
-    <string name="unknown">ಅಜ್ಞಾತ</string>
+    <string name="unknown">ಅಪರಿಚಿತ</string>
     <string name="wifi_ap">ಹಾಟ್ಸ್ಪಾಟ್</string>
     <string tools:ignore="UnusedResources" name="category_Development">ಅಭಿವೃದ್ಧಿ</string>
     <string tools:ignore="UnusedResources" name="category_Graphics">ಗ್ರಾಫಿಕ್ಸ್</string>

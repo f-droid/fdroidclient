@@ -24,7 +24,7 @@
     <string name="app_inst_known_source">已安裝（來自 %s）</string>
     <string name="app_inst_unknown_source">已安裝（來源不明）</string>
     <string name="added_on">於 %s 添置</string>
-    <string name="ok">明白</string>
+    <string name="ok">確定</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="repo_add_title">加入軟件庫</string>
@@ -78,7 +78,7 @@
     <string name="repos_unchanged">所有倉庫已更新至最新的版本</string>
     <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
     <string name="global_error_updating_repos">更新時出現問題：%s</string>
-    <string name="no_permissions">沒有使用任何存取權。</string>
+    <string name="no_permissions">沒有權限</string>
     <string name="theme">主題</string>
     <string name="unsigned">未簽署</string>
     <string name="unverified">未經驗證</string>
@@ -162,8 +162,8 @@
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="uninstall_confirm">您想卸載此應用程式嗎？</string>
     <string name="allPerms">全部</string>
-    <string name="newPerms">新權限</string>
-    <string name="swap_connecting">正在連線</string>
+    <string name="newPerms">新增</string>
+    <string name="swap_connecting">連線中</string>
     <string name="swap_send_fdroid">傳送 F-Droid</string>
     <string name="swap_wifi_device_name">裝置名稱</string>
     <string name="swap_scan_qr">掃描 QR 碼</string>
@@ -217,7 +217,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="permissions">存取權</string>
+    <string name="permissions">權限</string>
     <string name="repo_details">軟件庫</string>
     <string name="repo_url">網址</string>
     <string name="login_name">用戶名</string>
@@ -274,8 +274,8 @@
     <string name="uninstall_error_notify_title">卸載 %s 時發生錯誤</string>
 
 
-    <string name="installing">安裝中…</string>
-    <string name="uninstalling">卸載中…</string>
+    <string name="installing">正在安裝…</string>
+    <string name="uninstalling">正在解除安裝…</string>
 
     <string name="keep_hour">一小時</string>
     <string name="keep_day">一天</string>

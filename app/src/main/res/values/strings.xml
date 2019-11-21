@@ -195,10 +195,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repositories_summary">Add additional sources of apps</string>
     <!-- This should be exactly the same as the standard word for Settings throughout Android and apps -->
     <string name="menu_settings">Settings</string>
+    <!-- This should be exactly the same as the standard word for a Search action throughout Android and apps -->
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>
 
+    <!-- This should be exactly the same as the standard word for Open throughout Android and apps -->
     <string name="menu_launch">Open</string>
+    <!-- This is like "launch" but for files and documents rather than apps -->
     <string name="menu_open">Open</string>
     <!-- This should be exactly the same as the standard word for Share throughout Android and apps -->
     <string name="menu_share">Share</string>
@@ -371,7 +374,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="global_error_updating_repos">Error during update: %s</string>
     <string name="warning_no_internet">Cannot update, are you connected to the Internet?</string>
     <!-- Should be exactly the same as the standard word for Permissions throughout Android and apps -->
-    <string name="no_permissions">No permissions are used.</string>
+    <string name="no_permissions">No permissions</string>
     <!-- Should be exactly the same as the standard word for Permissions throughout Android and apps -->
     <string name="permissions">Permissions</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
@@ -567,7 +570,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
     <string name="app__tts__downloading_progress">Downloading, %1$d%% complete</string>
+    <!-- [CHAR LIMIT=50] -->
     <string name="installing">Installing…</string>
+    <!-- [CHAR LIMIT=50] -->
     <string name="uninstalling">Uninstalling…</string>
     <!-- "updates" as in software updates -->
     <string name="interval_never">No automatic app updates</string>

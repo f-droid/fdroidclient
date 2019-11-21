@@ -7,7 +7,7 @@
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
     <string name="cache_downloaded">Zwischengespeicherte Apps behalten</string>
     <string name="updates">Aktualisierungen</string>
-    <string name="other">Andere</string>
+    <string name="other">Sonstiges</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
     <string name="notify">Aktualisierungsbenachrichtigung</string>
     <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
@@ -91,7 +91,7 @@
     <string name="repos_unchanged">Alle Paketquellen sind aktuell</string>
     <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugten keine Fehler.</string>
     <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
-    <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
+    <string name="no_permissions">Keine Berechtigungen</string>
     <string name="no_handler_app">Es ist keine App installiert, die mit %s umgehen kann.</string>
     <string name="theme">Thema</string>
     <string name="unsigned">Nicht signiert</string>
@@ -216,7 +216,7 @@
         Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
     </string>
     <string name="swap_nearby">Direkttausch</string>
-    <string name="loading">Ladevorgang …</string>
+    <string name="loading">Wird geladen…</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
     <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser App installieren\? Ihre bestehenden Daten bleiben erhalten. Die aktualisierte App erhält danach Zugriff auf:</string>
@@ -259,8 +259,8 @@
     <string name="keep_forever">Immer</string>
     <string name="install_error_notify_title">Fehler beim Installieren von %s</string>
     <string name="uninstall_error_notify_title">Fehler beim Deinstallieren von %s</string>
-    <string name="installing">Installation läuft …</string>
-    <string name="uninstalling">Deinstallation läuft …</string>
+    <string name="installing">Wird installiert…</string>
+    <string name="uninstalling">Wird deinstalliert…</string>
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
@@ -389,7 +389,7 @@
     <string name="privacy">Datenschutz</string>
     <string name="preventScreenshots_title">Bildschirmfotos verhindern</string>
     <string name="preventScreenshots_summary">Blockiert das Aufnehmen von Bildschirmfotos und versteckt die App in der Appübersicht</string>
-    <string name="allow">Erlauben</string>
+    <string name="allow">Zulassen</string>
     <string name="panic_app_setting_none">Keine</string>
     <string name="panic_settings_summary">Maßnahmen, die im Notfall ergriffen werden sollen</string>
     <string name="panic_exit_title">App beenden</string>

@@ -74,7 +74,7 @@
     <string name="proxy_port_summary">本机代理端口号（比如 8118）</string>
     <string name="status_download">下载中\n%2$s / %3$s (%4$d%%) 来自\n/ %1$s</string>
     <string name="status_connecting_to_repo">正在连接\n%1$s</string>
-    <string name="no_permissions">未使用任何权限。</string>
+    <string name="no_permissions">没有权限</string>
     <string name="no_handler_app">你没有可处理 %s 的应用程序。</string>
     <string name="theme">主题</string>
     <string name="unsigned">未签名</string>
@@ -156,7 +156,7 @@
 \n里查找存储库</string>
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
-    <string name="wifi">Wi-Fi</string>
+    <string name="wifi">WLAN</string>
     <string name="wifi_ap">Wi-Fi 热点</string>
     <string name="category_Connectivity">连接</string>
     <string name="category_Graphics">图像</string>
@@ -203,10 +203,10 @@
     <string name="swap_cant_find_peers">找不到你要找的人？</string>
     <string name="swap_send_fdroid">发送 F-Droid</string>
     <string name="swap_no_peers_nearby">附近无法找到可与其交换应用程序的人。</string>
-    <string name="swap_connecting">连接中</string>
+    <string name="swap_connecting">正在连接</string>
     <string name="swap_confirm">确认交换</string>
     <string name="swap_qr_isnt_for_swap">你扫描的二维码似乎不是一个交换代码。</string>
-    <string name="loading">加载中…</string>
+    <string name="loading">正在加载…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">是否更新现有应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>
@@ -214,7 +214,7 @@
     <string name="install_confirm_update_no_perms">是否更新现有应用？已有数据不会丢失。无需任何特殊访问权限。</string>
     <string name="install_confirm_update_system_no_perms">是否更新该内置应用？已有数据不会丢失。无需任何特殊访问权限。</string>
     <string name="newPerms">新权限</string>
-    <string name="allPerms">所有</string>
+    <string name="allPerms">全部</string>
     <string name="perm_costs_money">这可能会产生费用</string>
     <string name="uninstall_update_confirm">你要把这个程序换成出厂版本吗？</string>
     <string name="uninstall_confirm">确定要卸载此应用程序吗？</string>
@@ -255,8 +255,8 @@
     <string name="keep_forever">永远</string>
     <string name="install_error_notify_title">安装 %s 出错</string>
     <string name="uninstall_error_notify_title">卸载 %s 时出错</string>
-    <string name="installing">安装中…</string>
-    <string name="uninstalling">卸载中…</string>
+    <string name="installing">正在安装…</string>
+    <string name="uninstalling">正在卸载…</string>
     <string name="update_auto_install">自动安装更新</string>
     <string name="update_auto_install_summary">在后台下载并更新应用，显示通知</string>
     <string name="keep_install_history">保留安装纪录</string>
@@ -472,7 +472,7 @@
     <string name="swap_stopping_hotspot">正在停止热点…</string>
     <string name="swap_starting">正在启动…</string>
     <string name="swap_stopping">正在停止…</string>
-    <string name="disabled">禁用</string>
+    <string name="disabled">已停用</string>
     <string name="swap_error_cannot_start_bluetooth">无法启动蓝牙！</string>
     <string name="swap_toast_closing_nearby_after_timeout">附近因闲置而关闭。</string>
     <string name="nearby_splash__document_tree">搜索 USB OTG 用于存储库和镜像。</string>

@@ -10,7 +10,7 @@
     <string name="version">Versioni</string>
     <string name="delete">Fshi</string>
     <string name="updates">Përditësime</string>
-    <string name="other">Tjetër</string>
+    <string name="other">Të tjera</string>
 
     <string name="update_interval">Intervali i përditësimeve automatike</string>
     <string name="about_title">Rreth F-Droid</string>
@@ -18,7 +18,7 @@
     <string name="about_source">Burimi i kodit:</string>
     <string name="added_on">Shtuar me %s</string>
 
-    <string name="ok">OK</string>
+    <string name="ok">Në rregull</string>
     <string name="main_menu__categories">Kategoritë</string>
     <string name="main_menu__swap_nearby">Në afërsi</string>
 
@@ -58,7 +58,7 @@
     <string name="status_download_unknown_size">Duke shkarkuar\n%2$s nga\n%1$s</string>
     <string name="status_connecting_to_repo">Duke u lidhur me\n%1$s</string>
     <string name="global_error_updating_repos">Gabim gjatë përditësimit: %s</string>
-    <string name="permissions">Autorizimet</string>
+    <string name="permissions">Lejet</string>
     <string name="theme">Tema</string>
     <string name="repo_url">Adresa</string>
     <string name="repo_description">Përshkrimi</string>
@@ -108,7 +108,7 @@
     <string name="about_license">Licenca</string>
 
     <string name="app_incompatible">I mospërputhshëm</string>
-    <string name="menu_launch">Zbotoje</string>
+    <string name="menu_launch">Hap</string>
     <string name="by_author_format">nga %s</string>
     <string name="enable_nfc_send">Mundësoje dërgimin e NFC…</string>
     <string name="cache_downloaded">Mbaje aplikacionet nga (cache)</string>
@@ -281,7 +281,7 @@
     <string name="repo_num_apps">Numri i aplikacioneve</string>
     <string name="repo_official_mirrors">Pasqyrat zyrtare</string>
     <string name="repo_user_mirrors">Pasqyrat e përdoruesit</string>
-    <string name="unknown">Panjohur</string>
+    <string name="unknown">I panjohur</string>
     <string name="repo_confirm_delete_title">Të fshijë depon?</string>
     <string name="requires_features">Nevojitet: %1$s</string>
     <plurals name="button_view_all_apps_in_category">

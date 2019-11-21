@@ -77,7 +77,7 @@
     <string name="linking_apks">リポジトリにAPKを関連付けています</string>
     <string name="copying_icons">リポジトリにアプリのアイコンをコピー中</string>
     <string name="icon">アイコン</string>
-    <string name="next">進む</string>
+    <string name="next">次へ</string>
     <string name="skip">スキップ</string>
     <string name="proxy">プロキシ</string>
     <string name="enable_proxy_title">HTTPプロキシを有効にする</string>
@@ -93,7 +93,7 @@
     <string name="repos_unchanged">すべてのリポジトリが最新です</string>
     <string name="all_other_repos_fine">他のリポジトリに異常はありません。</string>
     <string name="global_error_updating_repos">更新中に問題が発生しました: %s</string>
-    <string name="no_permissions">使用される権限はありません。</string>
+    <string name="no_permissions">権限がありません</string>
     <string name="no_handler_app">%sを取り扱えるアプリがありません。</string>
     <string name="theme">テーマ</string>
     <string name="unsigned">未署名</string>
@@ -183,7 +183,7 @@
     <string name="swap_connecting">接続中</string>
     <string name="swap_confirm">交換の確認</string>
     <string name="swap_qr_isnt_for_swap">読み取ったQRコードは交換コードではないようです。</string>
-    <string name="loading">読み込み中</string>
+    <string name="loading">読み込んでいます…</string>
     <string name="downloading">ダウンロード中</string>
     <string name="swap_connection_misc_error">端末への接続中にエラーが発生しました。交換できません！</string>
     <string name="install_confirm">アクセス権限が必要</string>
@@ -260,8 +260,8 @@
     <string name="keep_forever">永久</string>
     <string name="install_error_notify_title">%sのインストール時にエラー</string>
     <string name="uninstall_error_notify_title">%sのアンインストール時にエラー</string>
-    <string name="installing">インストール中</string>
-    <string name="uninstalling">アンインストール中</string>
+    <string name="installing">インストール中…</string>
+    <string name="uninstalling">アンインストール中…</string>
     <string name="update_auto_install">自動的に更新をインストール</string>
     <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストールします</string>
     <string name="keep_install_history">インストール履歴を保存する</string>

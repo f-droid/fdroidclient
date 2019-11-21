@@ -8,13 +8,13 @@
         ၾကိဳးစားျပီးမရမကသြင္းခ်င္ပါသလား။
     </string>
     <string name="version">ဗားရွင္း</string>
-    <string name="delete">ဖ်က္မည္</string>
+    <string name="delete">ဖျက်ရန်</string>
     <string name="enable_nfc_send">NFC မွပို႔ႏိုင္ေအာင္လုပ္ေဆာင္မည္…</string>
     <string name="cache_downloaded">Cached app မ်ားကိုထားမည္</string>
     <string name="updates">အသစ္မြမ္းမံမႈမ်ား</string>
     <string name="unstable_updates">မတည္ျငိမ္ေသာ အသစ္မြမ္းမံမႈမ်ား</string>
     <string name="unstable_updates_summary">မတည္ျငိမ္ေသာဗားရွင္းမ်ားကို အၾကံေပးလိုေသာ အသစ္မြမ္းမံမႈမ်ား</string>
-    <string name="other">တျခား</string>
+    <string name="other">အခြား</string>
 
     <string name="update_interval">အလိုအေလ်ာက္ အသစ္မြမ္းမံမႈ interval</string>
     <string name="update_auto_download">အသစ္မြမ္းမံမႈမ်ားကိုအလိုအေလ်ာက္ေဒါင္းလုတ္ဆြဲမည္</string>
@@ -51,10 +51,10 @@
 
     <string name="added_on">%s တြင္ေပါင္းထည့္ခ့ဲသည္</string>
 
-    <string name="ok">အိုေက</string>
+    <string name="ok">OK</string>
 
-    <string name="yes">ဟုတ္</string>
-    <string name="no">မဟုတ္</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="repo_add_title">Repository အသစ္ထည့္မည္</string>
     <string name="repo_add_add">ေပါင္းထည့္မည္</string>
     <string name="links">လင့္ခ္</string>
@@ -62,7 +62,7 @@
     <string name="less">ခ်ံဳမည္</string>
 
     <string name="back">ေနာက္သို႔</string>
-    <string name="cancel">ပယ္ဖ်က္မည္</string>
+    <string name="cancel">မလုပ်တော့</string>
     <string name="enable">ဖြင့္မည္</string>
     <string name="add_key">ကီးထည့္မည္</string>
     <string name="overwrite">ထပ္ေရးမည္</string>
@@ -79,10 +79,10 @@
 
     <string name="menu_manage">Repository မ်ား</string>
     <string name="menu_settings">ဆက်တင်များ</string>
-    <string name="menu_search">ရွာေဖြမည္</string>
+    <string name="menu_search">ရှာဖွေခြင်း</string>
     <string name="menu_add_repo">Repository အသစ္</string>
 
-    <string name="menu_launch">ဖြင့္မည္</string>
+    <string name="menu_launch">ဖွင့်သည်</string>
     <string name="menu_share">ေဝမွ်မည္</string>
     <string name="menu_install">သြင္းမည္</string>
     <string name="menu_uninstall">ျဖဳတ္မည္</string>
@@ -122,7 +122,7 @@
     <string name="linking_apks">APK မ်ားကို repo ႏွင့္ခ်ိတ္ေနပါသည္…</string>
     <string name="copying_icons">App အိုင္ကြန္းကို repo ထဲသို႔ကူးေနပါသည္.…</string>
     <string name="icon">အိုင္ကြန္း</string>
-    <string name="next">ေနာက္</string>
+    <string name="next">ရှေ့သို့</string>
     <string name="skip">ေက်ာ္မည္</string>
 
     <string name="useTor">Tor ကိုသံုးမည္</string>
@@ -142,8 +142,8 @@
     </string>
     <string name="status_inserting_apps">Application အခ်က္အလက္မ်ားကိုသိမ္းဆည္းေနသည္</string>
     <string name="repos_unchanged">Repository မ်ားအားလံုးသည္အသစ္မြမ္းမံျပီးျဖစ္သည္</string>
-    <string name="no_permissions">မည္သည့္ခြင့္ျပဳခ်က္ကိုမွမသံုးခဲ့ပါ.</string>
-    <string name="permissions">ခြင့္ျပဳခ်က္မ်ား</string>
+    <string name="no_permissions">ခွင့်ပြုချက်မရှိ</string>
+    <string name="permissions">ခွင့်ပြုချက်များ</string>
     <string name="theme">အျပင္အဆင္</string>
     <string name="unverified">မစစ္ထားျခင္း</string>
     <string name="repo_details">Repository</string>
@@ -152,7 +152,7 @@
     <string name="repo_description">ေဖာ္ျပခ်က္</string>
     <string name="repo_last_update">ေနာက္ဆံုးအသစ္မြမ္းမံျခင္း</string>
     <string name="repo_name">အမည္</string>
-    <string name="unknown">မသိရွိေသာ</string>
+    <string name="unknown">မသိပါ</string>
     <string name="repo_confirm_delete_title">Repository ကိုဖ်က္မလား?</string>
     <string name="app_name">F-Droid</string>
 
@@ -199,10 +199,10 @@
     <string name="swap_wifi_device_name">ကိရိယာအမည္</string>
     <string name="swap_cant_find_peers">သင္ရွာေနတာကိုမေတြ႕ဘူးလား?</string>
     <string name="swap_send_fdroid">F-Droid ပို႔မည္</string>
-    <string name="swap_connecting">ခ်ိတ္ဆက္ေနသည္</string>
-    <string name="loading">ဖြင့္ေနသည္</string>
-    <string name="newPerms">အသစ္</string>
-    <string name="allPerms">အားလံုး</string>
+    <string name="swap_connecting">ချိတ်ဆက်နေသည်</string>
+    <string name="loading">တင်နေ…</string>
+    <string name="newPerms">အသစ်</string>
+    <string name="allPerms">အားလုံး</string>
     <string name="perm_costs_money">၄င္းသည္ ေငြေၾကးကုန္က်ႏိုင္သည္</string>
     <string name="uninstall_confirm">ဒီ app ကိုျဖုတ္ခ်င္ပါသလား?</string>
     <string name="download_error">ေဒါင္းလုတ္မေအာင္ျမင္ပါ</string>
@@ -211,8 +211,8 @@
     <string name="perms_new_perm_prefix">အသစ္ -</string>
     <string name="perms_description_app">%1$s မွေထာက္ပံ့ထားသည္.</string>
     <string name="downloading">ေဒါင္းလုတ္ဆြဲေနသည္…</string>
-    <string name="installing">သြင္းေနသည္.…</string>
-    <string name="uninstalling">ျဖဳတ္ေနသည္..…</string>
+    <string name="installing">ထည့်သွင်းနေပါသည်</string>
+    <string name="uninstalling">ဖယ်ထုတ်သည်</string>
 
     <string name="interval_never">ဘယ္ေတာ့မွ</string>
     <string name="interval_1h">အခ်ိန္အားျဖင့္</string>

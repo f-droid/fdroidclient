@@ -5,7 +5,7 @@
     <string name="version">Versión</string>
     <string name="cache_downloaded">Manter as aplicacións na caché</string>
     <string name="updates">Actualizacións</string>
-    <string name="other">Outro</string>
+    <string name="other">Outros</string>
     <string name="notify">Amosar actualizacións dispoñíbeis</string>
     <string name="app_details">Detalles da aplicación</string>
     <string name="no_such_app">Non se atopou esa aplicación.</string>
@@ -15,15 +15,15 @@
     <string name="app_installed">Instalada</string>
     <string name="app_not_installed">Non instalada</string>
     <string name="added_on">Engadida a %s</string>
-    <string name="ok">Feito</string>
+    <string name="ok">Aceptar</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
     <string name="repo_add_title">Engadir un novo repositorio</string>
     <string name="repo_add_add">Engadir</string>
-    <string name="cancel">Desbotar</string>
+    <string name="cancel">Cancelar</string>
     <string name="repo_add_url">Enderezo do repositorio</string>
     <string name="menu_manage">Repositorios</string>
-    <string name="menu_search">Procurar</string>
+    <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Novo repositorio</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartir</string>
@@ -50,7 +50,7 @@
     <string name="status_download">Estase a baixar %2$s / %3$s (%4$d%%) dende %1$s</string>
     <string name="status_connecting_to_repo">Estase a conectar con 
 \n%1$s</string>
-    <string name="no_permissions">Non se empregan permisos.</string>
+    <string name="no_permissions">Sen permisos</string>
     <string name="no_handler_app">Non tes ningunha aplicación dispoñíbel que poida manexar %s.</string>
     <string name="theme">Aparencia</string>
     <string name="app_name">F-Droid</string>
@@ -121,7 +121,7 @@
     <string name="category_Science_Education">Ciencia e educación</string>
     <string name="category_Reading">Lectura</string>
     <string name="category_Phone_SMS">Teléfono móbil e SMS</string>
-    <string name="wifi">Wi-Fi</string>
+    <string name="wifi">Wifi</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Development">Desenvolvemento</string>
     <string name="category_Games">Xogos</string>
@@ -153,11 +153,11 @@
     <string name="swap_setting_up_wifi">Estase a configurar o Wi-Fi…</string>
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
-    <string name="swap_connecting">Estase a contectar</string>
+    <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar o intercambio</string>
-    <string name="loading">Estase a cargar…</string>
+    <string name="loading">Cargando…</string>
     <string name="newPerms">Novo</string>
-    <string name="allPerms">Todo</string>
+    <string name="allPerms">Todos</string>
     <string name="perm_costs_money">Isto pode costarche cartos</string>
     <string name="uninstall_update_confirm">Desexas substituír esta aplicación pola versión de fábrica\?</string>
     <string name="uninstall_confirm">Desexas desinstalar esta aplicación\?</string>
@@ -179,7 +179,7 @@
     <string name="proxy_host_summary">Nome do teu proxy (p.ex. 127.0.0.1)</string>
     <string name="unsigned_description">Isto significa que a listaxe das aplicacións poderían non ser verificadas. Terías que ter coidado cas aplicacións baixadas dende escolmas sen asinar.</string>
     <string name="repo_not_yet_updated">Este repositorio aínda non se empregou. Terás que activalo para ollar as aplicacións que ofrece.</string>
-    <string name="unknown">Descoñecido</string>
+    <string name="unknown">Descoñecida</string>
     <string name="repo_confirm_delete_title">Eliminar o repositorio?</string>
     <string name="repo_confirm_delete_body">Eliminar un repositorio implica que as túas aplicacións deixen de estar dispoñíbeis. 
 \n 
@@ -228,7 +228,7 @@
     <string name="download_error">A baixada fallou!</string>
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="writing_index_jar">Estase a escribir o índice firmado para o ficheiro (index.jar)…</string>
-    <string name="menu_settings">Axustes</string>
+    <string name="menu_settings">Configuración</string>
     <string name="main_menu__latest_apps">Últimas</string>
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Preto</string>
@@ -321,8 +321,8 @@
     <string name="install_error_notify_title">Erro ó instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ó desinstalar %s</string>
     <string name="app__tts__downloading_progress">Estase a baixar, %1$d%% completo</string>
-    <string name="installing">Estase a instalar…</string>
-    <string name="uninstalling">Estase a desinstalar…</string>
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
     <string name="keep_hour">1 hora</string>
     <string name="keep_day">1 día</string>
     <string name="keep_week">1 semana</string>
@@ -486,7 +486,7 @@
     <string name="swap_stopping_hotspot">Estase a deter o punto wifi…</string>
     <string name="swap_starting">Estase a inciar…</string>
     <string name="swap_stopping">Estase a deter…</string>
-    <string name="disabled">Deshabilitado</string>
+    <string name="disabled">Desactivada</string>
     <string name="swap_error_cannot_start_bluetooth">Non se pode iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">O Preto (Nearby) foi pechado dende que estaba inhabilitado.</string>
     <string name="nearby_splash__document_tree">Procurar repositorios e espellos (mirrors) en USB OTG.</string>

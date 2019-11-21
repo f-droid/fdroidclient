@@ -10,7 +10,7 @@
     <string name="about_version">Версія</string>
     <string name="app_installed">Встановлено</string>
     <string name="app_not_installed">Не встановлено</string>
-    <string name="ok">ОК</string>
+    <string name="ok">OK</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="repo_add_title">Додати новий репозиторій</string>
@@ -132,13 +132,13 @@
     <string name="swap_connecting">Підключення</string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>
-    <string name="allPerms">Всі</string>
+    <string name="allPerms">Усі</string>
     <string name="enable_nfc_send">Ввімкнути надсилання через NFC…</string>
     <string name="repo_add_fingerprint">Відбиток (необов\'язковий)</string>
     <string name="antiadslist">Цей застосунок містить рекламу</string>
     <string name="copying_icons">Копіювання застосункових піктограм до комори даних…</string>
     <string name="icon">Піктограма</string>
-    <string name="no_permissions">Не потребує дозволів.</string>
+    <string name="no_permissions">Немає дозволів</string>
     <string name="requires_features">Потрібно: %1$s</string>
     <string name="empty_can_update_app_list">Вітаємо!\nВаші застосунки оновлені.</string>
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
@@ -226,7 +226,7 @@
     <string name="more">Більше</string>
     <string name="less">Менше</string>
     <string name="menu_settings">Налаштування</string>
-    <string name="permissions">Привілеї</string>
+    <string name="permissions">Дозволи</string>
     <string name="theme_night">Нічна</string>
     <string name="category_Connectivity">Зв\'язок</string>
     <string name="touch_to_configure_local_repo">Натиснути для перегляду деталей та дозволити іншим обмінюватись вашими застосунками.</string>
@@ -508,7 +508,7 @@
     <string name="swap_stopping_hotspot">Зупинка точки доступу…</string>
     <string name="swap_starting">Запуск…</string>
     <string name="swap_stopping">Зупинка…</string>
-    <string name="disabled">Вимкнуто</string>
+    <string name="disabled">Вимкнено</string>
     <string name="swap_error_cannot_start_bluetooth">Не вдається запустити Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Поруч закрито, оскільки простоювало.</string>
     <string name="nearby_splash__document_tree">Просканувати USB-OTG на наявність репозиторіїв та дзеркал.</string>

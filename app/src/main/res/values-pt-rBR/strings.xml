@@ -6,7 +6,7 @@
     </string>
     <string name="installIncompatible">O aplicativo é incompatível com seu dispositivo. Quer instalar mesmo assim?</string>
     <string name="version">Versão</string>
-    <string name="delete">Apagar</string>
+    <string name="delete">Excluir</string>
     <string name="enable_nfc_send">Habilitar envio NFC…</string>
     <string name="cache_downloaded">Manter aplicativos em cache</string>
     <string name="updates">Atualizações</string>
@@ -44,7 +44,7 @@
     <string name="repo_add_fingerprint">Fingerprint (opcional)</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_search">Procurar</string>
+    <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo Repositório</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
@@ -94,7 +94,7 @@
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
     <string name="global_error_updating_repos">Erro durante a atualização: %s</string>
-    <string name="no_permissions">Nenhuma permissão utilizada.</string>
+    <string name="no_permissions">Sem permissões</string>
     <string name="no_handler_app">Você não tem nenhum aplicativo instalado que possa lidar com %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Não assinado</string>
@@ -217,8 +217,8 @@
         para este aplicativo incorporado? Os dados existentes não
         serão perdidos. Ele não exige nenhum acesso especial.
     </string>
-    <string name="newPerms">Novo</string>
-    <string name="allPerms">Tudo</string>
+    <string name="newPerms">Novas</string>
+    <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
     <string name="uninstall_update_confirm">Você quer substituir este aplicativo com a versão de fábrica?</string>
     <string name="uninstall_confirm">Você quer desinstalar este aplicativo?</string>

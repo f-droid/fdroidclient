@@ -31,11 +31,11 @@
     <string name="update_auto_download_summary">اپڈیٹ والی فائلوں کو پسِ منظر ڈاؤنلوڈ کریں</string>
     <string name="system_installer_on">F-Droid Privileged Extension کے ذریعے پیکج کو انسٹال، اپڈیٹ اور حذف کریں</string>
     <string name="ok">ٹھیک ہے</string>
-    <string name="yes">ٹھیک</string>
+    <string name="yes">ہاں</string>
     <string name="no">نہیں</string>
     <string name="back">واپس</string>
     <string name="menu_manage">ریپازیٹری</string>
-    <string name="menu_search">تلاش</string>
+    <string name="menu_search">تلاش کریں</string>
     <string name="menu_add_repo">نئی ریپازیٹری</string>
     <string name="menu_launch">کھولیں</string>
     <string name="menu_share">اشتراک کریں</string>

@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
     <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
     <string name="version">Versió</string>
-    <string name="delete">Esborrar</string>
+    <string name="delete">Suprimeix</string>
     <string name="cache_downloaded">Manté les aplicacions en memòria cau</string>
     <string name="updates">Actualitzacions</string>
     <string name="other">Altres</string>
@@ -30,7 +30,7 @@
     <string name="no">No</string>
     <string name="repo_add_title">Afegeix un nou dipòsit</string>
     <string name="repo_add_add">Afegeix</string>
-    <string name="cancel">Anul·la</string>
+    <string name="cancel">Cancel·la</string>
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
@@ -92,7 +92,7 @@
     <string name="repos_unchanged">Tots els dipòsits estan actualitzats</string>
     <string name="all_other_repos_fine">Cap dels altres dipòsits ha donat errors.</string>
     <string name="global_error_updating_repos">S\'ha produït un error durant l\'actualització: %s</string>
-    <string name="no_permissions">No es fa servir cap permís.</string>
+    <string name="no_permissions">Sense permisos</string>
     <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Sense empremta digital</string>
@@ -230,7 +230,7 @@
     <string name="swap_cant_find_peers">No trobeu a qui esteu cercant?</string>
     <string name="swap_send_fdroid">Envia l\'F-Droid</string>
     <string name="swap_no_peers_nearby">No s\'ha trobat ningú a prop amb qui intercanviar.</string>
-    <string name="swap_connecting">Connectant</string>
+    <string name="swap_connecting">S\'està connectant</string>
     <string name="swap_confirm">Confirmeu l\'intercanvi</string>
     <string name="swap_qr_isnt_for_swap">El codi QR que heu escanejat no sembla un codi d\'intercanvi.</string>
     <string name="loading">S\'està carregant…</string>
@@ -272,8 +272,8 @@
     <string name="keep_year">1 any</string>
     <string name="install_error_notify_title">Error instal·lant %s</string>
     <string name="uninstall_error_notify_title">Error desinstal·lant %s</string>
-    <string name="installing">Instal·lant…</string>
-    <string name="uninstalling">Desinstal·lant…</string>
+    <string name="installing">S\'està instal·lant…</string>
+    <string name="uninstalling">S\'està desinstal·lant…</string>
     <string name="keep_hour">1 hora</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions en un emmagatzemament privat</string>
@@ -410,7 +410,7 @@
     <string name="panic_app_setting_none">Cap</string>
     <string name="panic_app_dialog_title">App \"Confirmeu pànic\"</string>
     <string name="panic_app_dialog_message">Esteu segurs que voleu permetre que %1$s iniciï accions destructives de \"Botó del pànic\"?</string>
-    <string name="allow">Permetre</string>
+    <string name="allow">Permet</string>
     <string name="panic_settings">Configuració del botó del pànic</string>
     <string name="panic_settings_summary">Accions a dur a terme en cas d\'emergència</string>
     <string name="panic_exit_title">Sortir de l\'app</string>

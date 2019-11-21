@@ -28,7 +28,7 @@
     <string name="added_on">%s에 추가됨</string>
     <string name="ok">확인</string>
     <string name="yes">예</string>
-    <string name="no">아니오</string>
+    <string name="no">아니요</string>
     <string name="repo_add_title">새로운 저장소 추가</string>
     <string name="repo_add_add">추가</string>
     <string name="cancel">취소</string>
@@ -94,7 +94,7 @@
     <string name="repos_unchanged">모든 저장소가 최신 상태입니다</string>
     <string name="all_other_repos_fine">다른 모든 저장소들은 오류를 일으키지 않았습니다.</string>
     <string name="global_error_updating_repos">업데이트 도중 오류: %s</string>
-    <string name="no_permissions">사용된 권한이 없습니다.</string>
+    <string name="no_permissions">권한이 없음</string>
     <string name="no_handler_app">%s을(를) 처리할 수 있는 어떠한 사용 가능한 앱도 없습니다.</string>
     <string name="theme">테마</string>
     <string name="unsigned">서명되지 않음</string>
@@ -212,15 +212,15 @@
     <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>
     <string name="swap_qr_isnt_for_swap">스캔한 QR 코드는 교환 코드가 아닌 것으로 파악됩니다.</string>
-    <string name="loading">불러오는 중…</string>
+    <string name="loading">로드 중…</string>
     <string name="swap_connection_misc_error">기기에 연결하는 동안 오류가 발생하여, 교환할 수 없습니다!</string>
     <string name="install_confirm">다음에의 접근 권한이 필요합니다</string>
     <string name="install_confirm_update">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
     <string name="install_confirm_update_system">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
     <string name="install_confirm_update_no_perms">기존 이 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
     <string name="install_confirm_update_system_no_perms">기존 이 내장 앱의 업데이트를 설치하시겠습니까? 기존의 데이터는 사라지지 않을 것입니다. 업데이트된 앱은 어떠한 특별한 접근도 요구하지 않습니다.</string>
-    <string name="newPerms">신규</string>
-    <string name="allPerms">모두</string>
+    <string name="newPerms">새 권한</string>
+    <string name="allPerms">전체</string>
     <string name="perm_costs_money">금전을 요구할 수 있습니다</string>
     <string name="uninstall_update_confirm">이 앱을 공장 초기화 버전으로 교체하시겠습니까?</string>
     <string name="uninstall_confirm">이 앱을 제거하시겠습니까?</string>
@@ -250,8 +250,8 @@
     <string name="download_pending">다운로드 시작을 기다리는 중…</string>
     <string name="install_error_notify_title">%s 설치 중 오류</string>
     <string name="uninstall_error_notify_title">%s 제거 중 오류</string>
-    <string name="installing">설치하는 중…</string>
-    <string name="uninstalling">제거하는 중…</string>
+    <string name="installing">설치 중…</string>
+    <string name="uninstalling">제거 중…</string>
     <string name="keep_hour">1시간</string>
     <string name="keep_day">1일</string>
     <string name="keep_week">1주</string>
@@ -476,7 +476,7 @@
     <string name="swap_stopping_hotspot">핫스팟 중지 중…</string>
     <string name="swap_starting">시작 중…</string>
     <string name="swap_stopping">중지 중…</string>
-    <string name="disabled">비활성화됨</string>
+    <string name="disabled">사용 안함</string>
     <string name="swap_error_cannot_start_bluetooth">블루투스를 켤 수 없습니다!</string>
     <string name="swap_toast_closing_nearby_after_timeout">유휴 상태에 따라 Nearby가 끝났습니다.</string>
     <string name="nearby_splash__document_tree">레포지터리와 미러를 위해 USB OTG를 검색합니다.</string>

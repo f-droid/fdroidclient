@@ -86,7 +86,7 @@
     <string name="deleting_repo">Eyði núgildandi hugbúnaðarsafni…</string>
     <string name="adding_apks_format">Bæti %s við í hugbúnaðarsafn…</string>
     <string name="icon">Táknmynd</string>
-    <string name="next">Næsta</string>
+    <string name="next">Áfram</string>
     <string name="skip">Sleppa</string>
     <string name="useTor">Nota Tor</string>
     <string name="useTorSummary">Þvinga niðurhalsumferð í gegnum Tor til að auka gagnaleynd. Þarfnast Orbot</string>
@@ -112,8 +112,8 @@
     <string name="repos_unchanged">Öll hugbúnaðarsöfn eru með nýjustu upplýsingum</string>
     <string name="all_other_repos_fine">Öll önnur hugbúnaðarsöfn gafu engar villur.</string>
     <string name="global_error_updating_repos">Villa kom upp í uppfærslu: %s</string>
-    <string name="no_permissions">Engar aðgangsheimildir eru í notkun.</string>
-    <string name="permissions">Aðgangsheimildir</string>
+    <string name="no_permissions">Engar heimildir</string>
+    <string name="permissions">Heimildir</string>
     <string name="no_handler_app">Þú hefur ekki nein forrit tiltæk sem geta meðhöndlað %s.</string>
     <string name="theme">Þema</string>
     <string name="unsigned">Óundirritað</string>
@@ -131,7 +131,7 @@
     <string name="requires_features">Krefst: %1$s</string>
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
-    <string name="wifi">Þráðlaust Wi-Fi net</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Tengipunktur (hotspot)</string>
     <string name="category_Connectivity">Tengingar</string>
     <string name="category_Development">Þróun</string>
@@ -182,10 +182,10 @@
     <string name="swap_no_peers_nearby">Gat ekki fundið neinn í nágrenninu til að býtta við.</string>
     <string name="swap_connecting">Tengist</string>
     <string name="swap_confirm">Staðfesta býtti</string>
-    <string name="loading">Hleð inn…</string>
+    <string name="loading">Hleður…</string>
     <string name="install_confirm">þarf aðgang að</string>
-    <string name="newPerms">Nýtt</string>
-    <string name="allPerms">Allt</string>
+    <string name="newPerms">Nýjar</string>
+    <string name="allPerms">Allar</string>
     <string name="perm_costs_money">Þetta gæti kostað þig peninga</string>
     <string name="uninstall_confirm">Ert þú viss um að þú viljir fjarlægja þetta forrit?</string>
     <string name="download_error">Niðurhal tókst ekki!</string>
@@ -195,8 +195,8 @@
     <string name="perms_new_perm_prefix">Nýtt:</string>
     <string name="perms_description_app">Útgefið af %1$s.</string>
     <string name="downloading">Sæki…</string>
-    <string name="installing">Set inn…</string>
-    <string name="uninstalling">Tek út uppsetningu…</string>
+    <string name="installing">Setur upp…</string>
+    <string name="uninstalling">Fjarlægir…</string>
     <string name="interval_never">Engar sjálfvirkar uppfærslur forrita</string>
     <string name="interval_1h">Athuga með uppfærslur á klukkustundar fresti</string>
     <string name="interval_4h">Athuga með uppfærslur á 4 klukkustunda fresti</string>

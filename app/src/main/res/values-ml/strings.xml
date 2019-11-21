@@ -3,15 +3,15 @@
     <string name="app_name">എഫ്-ഡ്രോയ്ഡ്</string>
     <string name="updates">പുതുക്കലുകള്‍</string>
     <string name="ok">ശരി</string>
-    <string name="yes">ശരി</string>
-    <string name="no">വേണ്ട</string>
+    <string name="yes">അതെ</string>
+    <string name="no">ഇല്ല</string>
     <string name="back">പിന്നോട്ട്</string>
     <string name="cancel">റദ്ദാക്കുക</string>
     <string name="menu_manage">സംഭരണികള്‍</string>
     <string name="menu_settings">ക്രമീകരണം</string>
-    <string name="menu_search">തെരയുക</string>
+    <string name="menu_search">തിരയൽ</string>
     <string name="menu_add_repo">ശേഖരണം ചേര്‍ക്കുക</string>
-    <string name="menu_launch">തുടങ്ങുക</string>
+    <string name="menu_launch">തുറക്കുക</string>
     <string name="menu_share">പങ്കിടുക</string>
     <string name="menu_install">സ്ഥാപിക്കുക</string>
     <string name="menu_uninstall">ഒഴിവാക്കുക</string>
@@ -59,7 +59,7 @@
     <string name="repo_details">സംഭരണി</string>
     <string name="repo_last_update">അവസാനം പുതുക്കിയത്</string>
     <string name="not_on_same_wifi">നിങ്ങളുടെ ഉപകരണം നിങ്ങൾ ഇപ്പോൾ ചേർത്ത പ്രാദേശിക റിപ്പോയുടെ അതേ വൈഫൈയിലല്ല! ഈ ശൃംഖലയില്‍ ചേരാൻ ശ്രമിക്കുക: %s</string>
-    <string name="wifi">വെെ-ഫെെ</string>
+    <string name="wifi">വൈഫൈ</string>
     <string name="category_Sports_Health">കായികവും ആരോഗ്യവും</string>
     <string name="category_System">ഉപകരണ സംബന്ധം</string>
     <string name="swap_send_fdroid">ഈ ആപ്പ് അയക്കുക</string>
@@ -71,7 +71,7 @@
     <string name="installIncompatible">ഈ പാക്കേജ് നിങ്ങളുടെ ഉപകരണത്തിന് അനുയോജ്യമല്ലെന്ന് തോന്നുന്നു. എന്തായാലും അത് സ്ഥാപിക്കണോ ?</string>
     <string name="version">പതിപ്പ്</string>
     <string name="by_author_format">%s എഴുതിയത്</string>
-    <string name="delete">മായ്ക്കുക</string>
+    <string name="delete">ഇല്ലാതാക്കുക</string>
     <string name="enable_nfc_send">എന്‍എഫ്സി അയക്കല്‍ സജ്ജമാക്കുക…</string>
     <string name="cache_downloaded">കാഷെ ചെയ്ത പ്രയോഗങ്ങൾ സൂക്ഷിക്കുക</string>
     <string name="unstable_updates">അസ്ഥിരമായ പുതുക്കലുകള്‍</string>
@@ -202,7 +202,7 @@
     <string name="repos_unchanged">എല്ലാ സംഭരണികളും കാലികമാണ്</string>
     <string name="all_other_repos_fine">മറ്റൊരു സംഭരികളും പിശകുകൾ സൃഷ്ടിച്ചില്ല.</string>
     <string name="global_error_updating_repos">പുതുക്കുമ്പോള്‍ പിശക്: %s</string>
-    <string name="no_permissions">ഒരു അനുമതികളും ഉപയോഗിക്കുന്നില്ല.</string>
+    <string name="no_permissions">അനുമതികൾ ഇല്ല</string>
     <string name="permissions">അനുമതികൾ</string>
     <string name="no_handler_app">നിങ്ങൾക്ക് %s കൈകാര്യം ചെയ്യാൻ ഒരു പ്രയോഗവും ഇല്ല.</string>
     <string name="theme">തീം</string>
@@ -267,7 +267,7 @@
     <string name="swap_wifi_device_name">ഉപകരണത്തിന്റെ പേര്</string>
     <string name="swap_cant_find_peers">നിങ്ങൾ തിരയുന്ന ആളെ കണ്ടെത്താൻ കഴിയുന്നില്ലേ?</string>
     <string name="swap_no_peers_nearby">കെെമാറ്റം ചെയ്യാന്‍ അടുത്തുള്ള ആളുകളെ കണ്ടെത്താൻ കഴിഞ്ഞില്ല.</string>
-    <string name="swap_connecting">ബന്ധിപ്പിക്കുന്നു</string>
+    <string name="swap_connecting">കണക്റ്റുചെയ്യുന്നു</string>
     <string name="swap_confirm">കെെമാറ്റം സ്ഥിരീകരിക്കുക</string>
     <string name="swap_qr_isnt_for_swap">നിങ്ങൾ സ്കാന്‍ ചെയ്ത QR കോഡ് ഒരു സ്വാപ്പ് കോഡ് പോലെ തോന്നുന്നില്ല.</string>
     <string name="loading">ലോഡുചെയ്യുന്നു…</string>
@@ -283,8 +283,8 @@
     <string name="perms_new_perm_prefix">പുതിയ:</string>
     <string name="downloading">ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
     <string name="app__tts__downloading_progress">ഡൗൺലോഡുചെയ്യുന്നു, %1$d%% പൂർണ്ണം</string>
-    <string name="installing">സ്ഥാപിക്കുന്നു…</string>
-    <string name="uninstalling">ഒഴിവാക്കുന്നു…</string>
+    <string name="installing">ഇൻസ്റ്റാൾ ചെയ്യുന്നു…</string>
+    <string name="uninstalling">അൺഇൻസ്‌‌റ്റാൾ ചെയ്യുന്നു…</string>
     <string name="interval_never">ഒരിക്കലും</string>
     <string name="interval_1h">ഓരോ മണിക്കൂറിലും</string>
     <string name="interval_4h">ഓരോ 4 മണിക്കൂറിലും</string>
@@ -401,7 +401,7 @@
     <string name="panic_app_setting_none">ഒന്നുമില്ല</string>
     <string name="panic_app_dialog_title">അത്യാഹിതസമയ ആപ്പ് സ്‌ഥിരീകരിക്കുക</string>
     <string name="panic_app_dialog_message">ഹാനികരമായ അത്യാഹിതസമയ ക്രിയകൾക്കു ഹേതുവാകാൻ %1$s  ന്റെ അനുമതി സ്‌ഥിരീകരിക്കട്ടേ\?</string>
-    <string name="allow">അനുവദിക്കൂ</string>
+    <string name="allow">അനുവദിക്കുക</string>
     <string name="panic_settings">പാനിക്ക് ബട്ടൺ ക്രമീകരണങ്ങൾ</string>
     <string name="panic_settings_summary">അത്യാഹിതം സംഭവിക്കുമ്പോൾ ചെയ്യേണ്ട പ്രവർത്തികൾ</string>
     <string name="panic_exit_title">ആപ്പിൽ നിന്നും പുറത്തുപോകുക</string>
@@ -489,7 +489,7 @@
     <string name="swap_stopping_hotspot">ഹോട്ട്സ്പോട്ട് നിർത്തുന്നു…</string>
     <string name="swap_starting">ആരംഭിക്കുന്നു…</string>
     <string name="swap_stopping">നിർത്തുന്നു…</string>
-    <string name="disabled">അസാധുവാണ്</string>
+    <string name="disabled">പ്രവർത്തനരഹിതമാക്കി</string>
     <string name="swap_error_cannot_start_bluetooth">ബ്ലൂടൂത്ത് സജ്ജമാക്കാൻ സാധിച്ചില്ല!</string>
     <string name="swap_toast_closing_nearby_after_timeout">പ്രവർത്തനശൂന്യമായതിനാൽ സമീപ ഇടപാടുകൾ നിർത്തി വെച്ചു.</string>
     <string name="nearby_splash__document_tree">ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും യു.എസ്‌.ബീ ഓ.ടി.ജിയിൽ തിരയുക.</string>
