@@ -1,0 +1,3 @@
+* Fikset søkefeltsinnstilling på nylig Android-versjoner (takket være @dkanada)
+* Håndtering av inndelte API 29-tilganger: presis plassering innbefatter nå grov plassering
+* Definerte sikkerhetskopieringsregler for å unngå lagring av sideveksingspakkebrønn
