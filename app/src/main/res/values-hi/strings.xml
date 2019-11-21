@@ -63,8 +63,8 @@
     <string name="perms_description_app">%1$s द्वारा उपलब्ध कराया गया|</string>
     <string name="perms_new_perm_prefix">नया:</string>
     <string name="download_error">डाउनलोड असफल!</string>
-    <string name="uninstall_confirm">क्या आप आप्लिकतिओन को हटाना चेहते हैं?</string>
-    <string name="uninstall_update_confirm">क्या आप एप्लीकेशन को फैक्ट्री संस्करण से बदलना चाहते हैं?</string>
+    <string name="uninstall_confirm">क्‍या आप इस ऐप्स  को अनइंस्‍टॉल करना चाहते हैं?</string>
+    <string name="uninstall_update_confirm">इस ऐप्लिकेशन को फ़ैक्टरी वर्शन से बदलें? सभी डेटा निकाल दिया जाएगा.</string>
     <string name="perm_costs_money">यह तुम्हारे पैसे खर्च कर सकते हैं</string>
     <string name="allPerms">सभी</string>
     <string name="newPerms">नया</string>

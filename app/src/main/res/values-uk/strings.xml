@@ -71,7 +71,7 @@
     <string name="skip">Пропустити</string>
     <string name="proxy">Проксі</string>
     <string name="download_error">Помилка завантаження!</string>
-    <string name="uninstall_confirm">Бажаєте видалити цей застосунок?</string>
+    <string name="uninstall_confirm">Видалити цю програму?</string>
     <string name="local_repo_name">Назва вашого локального сховища</string>
     <string name="local_repo_https_on">Використовувати шифроване HTTPS:// з\'єднання для локального сховища</string>
     <string name="overwrite">Перезаписати</string>
@@ -197,11 +197,11 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Бажаєте встановити оновлення для існуючого застосунку? Це не видалить ваші наявні дані. Оновлений застосунок матиме доступ до:</string>
-    <string name="install_confirm_update_system">Бажаєте встановити оновлення на вбудований застосунок? Ваші наявні дані не буде втрачено. Оновлений застосунок матиме доступ до:</string>
-    <string name="install_confirm_update_no_perms">Бажаєте встановити оновлення на існуючий застосунок? Ваші наявні дані не буде втрачено. Оновлення застосунку не потребує спеціальних дозволів.</string>
-    <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований застосунок? Ваші наявні дані не буде втрачено. Оновлення застосунку не потребує спеціальних дозволів.</string>
-    <string name="uninstall_update_confirm">Бажаєте замінити цей застосунок заводською версією?</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цієї наявної програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цієї вбудованої програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
+    <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявної програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цієї вбудованої програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="uninstall_update_confirm">Відновити заводську версію цього додатка? Усі дані буде видалено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено. 
 \n 

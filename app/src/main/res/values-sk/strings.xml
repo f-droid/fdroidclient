@@ -203,8 +203,8 @@
     <string name="install_confirm">vyžaduje prístup k</string>
     <string name="allPerms">Všetko</string>
     <string name="newPerms">Nové</string>
-    <string name="uninstall_update_confirm">Chcete nahradiť túto aplikáciu továreňskou verziou?</string>
-    <string name="uninstall_confirm">Chcete odinštalovať túto aplikáciu?</string>
+    <string name="uninstall_update_confirm">Nahradiť túto aplikáciu továrenskou verziou? Všetky údaje sa odstránia.</string>
+    <string name="uninstall_confirm">Chcete túto aplikáciu odinštalovať?</string>
     <string name="perms_new_perm_prefix">Nové:</string>
     <string name="downloading">Sťahujem…</string>
     <string name="interval_never">Žiadne automatické aktualizácie aplikácie</string>
@@ -256,22 +256,10 @@
     <string name="swap_confirm">Potvrdiť výmenu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevyzerá ako kód na výmenu.</string>
     <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční!</string>
-    <string name="install_confirm_update">Chcete nainštalovať aktualizáciu
-        k tejto existujúcej aplikácií? Dáta aplikácie nebudú
-        prepísané. Aktualizovaná aplikácia bude mať prístup k:
-    </string>
-    <string name="install_confirm_update_system">Chcete nainštalovať aktualizáciu
-        k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané.
-        Aktualizovaná aplikácia bude mať prístup k:
-    </string>
-    <string name="install_confirm_update_no_perms">Chcete nainštalovať aktualizáciu
-        k tejto existujúcej aplikácií? Dáta aplikácie nebudú
-        prepísané. Aplikácia nevyžaduje špeciálny prístup.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu
-        k tejto vstavanej aplikácií? Dáta aplikácie nebudú
-        prepísané. Aplikácia nevyžaduje špeciálny prístup.
-    </string>
+    <string name="install_confirm_update">Chcete nainštalovať aktualizáciu existujúcej aplikácie? Existujúce údaje sa nestratia. Aktualizovaná aplikácia získa nasledujúce povolenia:</string>
+    <string name="install_confirm_update_system">Chcete nainštalovať aktualizáciu tejto integrovanej aplikácie? Existujúce údaje sa nestratia. Aktualizovaná aplikácia získa nasledujúce povolenia:</string>
+    <string name="install_confirm_update_no_perms">Chcete nainštalovať aktualizáciu tejto existujúcej aplikácie? Vaše údaje nebudú stratené. Táto akcia nevyžaduje žiadny zvláštny prístup.</string>
+    <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu tejto vstavanej aplikácie? Vaše údaje sa nestratia. Táto akcia nevyžaduje žiadny zvláštny prístup.</string>
     <string name="download_error">Sťahovanie zlyhalo!</string>
     <string name="perms_description_app">Poskytované %1$s.</string>
     <string name="theme_night">Noc</string>

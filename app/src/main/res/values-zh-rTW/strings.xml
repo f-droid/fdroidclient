@@ -183,7 +183,7 @@
     <string name="swap_send_fdroid">傳送 F-Droid</string>
     <string name="swap_no_peers_nearby">找不到附近的人以進行交換。</string>
     <string name="swap_confirm">確認交換</string>
-    <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
+    <string name="uninstall_confirm">你要解除安裝這個應用程式嗎？</string>
     <string name="download_error">下載失敗！</string>
     <string name="system_installer_on">使用特權擴充套件安裝、更新和移除應用程式</string>
     <string name="repo_error_empty_username">使用者名稱空白，憑證未更改</string>
@@ -251,13 +251,13 @@
     <string name="download_pending">等待開始下載…</string>
     <string name="install_confirm">需要存取</string>
     <string name="loading">載入中…</string>
-    <string name="uninstall_update_confirm">您確定要以原始版本取代此應用程式嗎？</string>
+    <string name="uninstall_update_confirm">要將應用程式換成原廠版本嗎？這麼做會移除所有資料。</string>
     <string name="install_error_notify_title">%s 安裝時錯誤</string>
     <string name="uninstall_error_notify_title">%s 解除安裝時錯誤</string>
-    <string name="install_confirm_update">您想安裝此現有應用程式的更新嗎？您不會遺失現有的資料。更新後的應用程式會獲得以下的存取權：</string>
-    <string name="install_confirm_update_system">您想安裝此內建應用程式的更新嗎？您不會遺失現有的資料。更新後的應用程式會獲得以下的存取權：</string>
-    <string name="install_confirm_update_no_perms">您想安裝此現有應用程式的更新嗎？您不會遺失現有的資料。它不需要任何特殊的存取權限。</string>
-    <string name="install_confirm_update_system_no_perms">您想安裝此內建應用程式的更新嗎？您不會遺失現有的資料。它不需要任何特殊的存取權限。</string>
+    <string name="install_confirm_update">你要為這個現有的應用程式安裝更新嗎？你的現有資料不會遺失，而更新後的應用程式將取得以下權限：</string>
+    <string name="install_confirm_update_system">你要為這個內建的應用程式安裝更新嗎？你的現有資料不會遺失，而更新後的應用程式將取得以下權限：</string>
+    <string name="install_confirm_update_no_perms">你要為這個現有的應用程式安裝更新嗎？你不會遺失現有的資料，且應用程式不需任何特殊權限。</string>
+    <string name="install_confirm_update_system_no_perms">你要為這個現有的內建應用程式安裝更新嗎？你不會遺失現有的資料，且應用程式不需任何特殊權限。</string>
     <string name="crash_dialog_text">應用程式意外中止。您願意用電子郵件向我們提供詳細資訊，以協助修復此問題嗎？</string>
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能存取同個網路，你們其中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR code 看起來並不像用來交換的。</string>

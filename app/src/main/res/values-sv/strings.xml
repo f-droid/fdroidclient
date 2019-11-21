@@ -224,21 +224,15 @@
     <string name="loading">Läser in …</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="install_confirm">behöver åtkomst till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig app? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering till denna inbyggda app\? Din befintliga data försvinner inte. Den uppdaterade appen kommer att få åtkomst till:</string>
-    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering
-        till denna befintlig app? Din befintliga data försvinner inte.
-        Den kräver inte någon särskild åtkomst.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering
-        till denna inbyggda app? Din befintliga data försvinner inte.
-        Den kräver inte någon särskild åtkomst.
-    </string>
+    <string name="install_confirm_update">Vill du installera en uppdatering till den här befintliga appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här befintliga förinstallerade appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av den befintliga appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
+    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering av den inbyggda appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
     <string name="newPerms">Nytt</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
-    <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
-    <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>
+    <string name="uninstall_update_confirm">Vill du ersätta den här appen med den version som var installerad när enheten var ny? All information tas bort.</string>
+    <string name="uninstall_confirm">Vill du avinstallera appen?</string>
     <string name="download_error">Hämtning misslyckades!</string>
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tillhandahålls av %1$s.</string>

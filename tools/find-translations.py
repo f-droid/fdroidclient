@@ -15,11 +15,17 @@ locale_pat = re.compile(r'.*values-([a-z][a-z][a-zA-Z-]*)/strings.xml')
 translation_pat = re.compile(r'.*name="([a-zA-Z0-9_]+)"[^>]*>"?([^"<]*).*')
 
 keymap = {
+    'install_confirm_question_update': 'install_confirm_update',
+    'install_confirm_question_update_no_perms': 'install_confirm_update_no_perms',
+    'install_confirm_question_update_system': 'install_confirm_update_system',
+    'install_confirm_question_update_system_no_perms': 'install_confirm_update_system_no_perms',
     'launch': 'menu_launch',
     'permissions_label': 'permissions',
     'print_menu_item_search': 'menu_search',
     'radioInfo_data_connecting': 'swap_connecting',
     'settings_button': 'menu_settings',
+    'uninstall_application_text': 'uninstall_confirm',
+    'uninstall_update_text': 'uninstall_update_confirm',
 }
 
 

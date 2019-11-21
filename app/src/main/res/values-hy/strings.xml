@@ -178,8 +178,8 @@
     <string name="swap_choose_apps">Ընտրել ափփեր</string>
     <string name="swap_connecting">Միանում է</string>
     <string name="perm_costs_money">Սա կարող է քեզ գումար արժենալ</string>
-    <string name="uninstall_update_confirm">Փոխարինե՞լ այս ափփը իր գործնական տարբերակով։</string>
-    <string name="uninstall_confirm">Ապատեղադրե՞լ այս ափփը։</string>
+    <string name="uninstall_update_confirm">Փոխարինե՞լ այս հավելվածը գործարանային տարբերակով: Բոլոր տվյալները կհեռացվեն:</string>
+    <string name="uninstall_confirm">Ուզո՞ւմ եք ապատեղադրել այս հավելվածը։</string>
     <string name="download_error">Ներբեռնումը չհաջողվեց</string>
     <string name="download_pending">Սպասում եմ ներբեռնումը սկսելուն…</string>
     <string name="install_error_notify_title">Սխալ %s տեղադրելիս</string>

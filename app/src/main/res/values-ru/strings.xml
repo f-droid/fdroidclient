@@ -209,19 +209,15 @@
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
     <string name="install_confirm">требуется доступ к</string>
-    <string name="install_confirm_update">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Обновленное приложение получит доступ к:</string>
-    <string name="install_confirm_update_system">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Обновленное приложение получит доступ к:</string>
-    <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение? Существующие данные не
-        будут потеряны. Оно не требует особых разрешений.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Хотите обновить встроенное приложение? Существующие данные не
-        будут потеряны. Оно не требует особых разрешений.
-    </string>
+    <string name="install_confirm_update">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
+    <string name="install_confirm_update_system">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
+    <string name="install_confirm_update_no_perms">Установить обновление этого приложения? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
+    <string name="install_confirm_update_system_no_perms">Установить обновление этого встроенного приложения? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
     <string name="newPerms">Новые</string>
     <string name="allPerms">Все</string>
     <string name="perm_costs_money">Это может стоить вам денег</string>
-    <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
-    <string name="uninstall_confirm">Хотите удалить это приложение?</string>
+    <string name="uninstall_update_confirm">Установить исходную версию приложения? Все его данные будут удалены.</string>
+    <string name="uninstall_confirm">Удалить приложение?</string>
     <string name="download_error">Загрузка не удалась!</string>
     <string name="perms_new_perm_prefix">Новые:</string>
     <string name="crash_dialog_title">Произошел сбой F-Droid</string>

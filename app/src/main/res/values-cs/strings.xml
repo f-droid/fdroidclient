@@ -214,8 +214,8 @@
     <string name="newPerms">Nově</string>
     <string name="allPerms">Vše</string>
     <string name="perm_costs_money">Toto může stát peníze</string>
-    <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
-    <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>
+    <string name="uninstall_update_confirm">Chcete tuto aplikaci nahradit tovární verzí? Všechna data budou odstraněna.</string>
+    <string name="uninstall_confirm">Chcete tuto aplikaci odinstalovat?</string>
     <string name="download_error">Stahování se nezdařilo!</string>
     <string name="perms_new_perm_prefix">Nová:</string>
     <string name="perms_description_app">Poskytováno %1$s.</string>
@@ -254,22 +254,10 @@
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">V blízkosti nenalezen nikdo pro výměnu aplikací.</string>
     <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
-    <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
-        Aktuální data nebudou ztracena.
-        Aktualizovaná aplikace bude mít přístup k:
-    </string>
-    <string name="install_confirm_update_system">Chcete instalovat aktualizaci této zabudované aplikace?
-        Aktuální data nebudou ztracena.
-        Aktualizovaná aplikace bude mít přístup k:
-    </string>
-    <string name="install_confirm_update_no_perms">Chcete instalovat aktualizaci existující aplikace?
-        Aktuální data nebudou ztracena.
-        Nevyžaduje žádná speciální oprávnění.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Chcete instalovat aktualizaci této zabudované aplikace?
-        Aktuální data nebudou ztracena.
-        Nevyžaduje žádná speciální oprávnění.
-    </string>
+    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této existující aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update_system">Chcete nainstalovat aktualizaci této integrované aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update_no_perms">Chcete nainstalovat aktualizaci této existující aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
+    <string name="install_confirm_update_system_no_perms">Chcete nainstalovat aktualizaci této integrované aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
     <string name="download_pending">Čekání na spuštění stahování…</string>
     <string name="install_error_notify_title">Chyba instalace %s</string>
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>

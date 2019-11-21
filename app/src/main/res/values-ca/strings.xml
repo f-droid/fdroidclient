@@ -186,8 +186,8 @@
     <string name="newPerms">Nous</string>
     <string name="allPerms">Tots</string>
     <string name="perm_costs_money">Això us pot costar diners</string>
-    <string name="uninstall_update_confirm">Voleu restaurar l\'aplicació per la versió de fàbrica?</string>
-    <string name="uninstall_confirm">Voleu suprimir aquesta aplicació?</string>
+    <string name="uninstall_update_confirm">Si substitueixes aquesta aplicació per la versió de fàbrica, s\'esborraran totes les dades.</string>
+    <string name="uninstall_confirm">Vols desinstal·lar aquesta aplicació?</string>
     <string name="download_error">Error en la baixada!</string>
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Proporcionat per %1$s.</string>
@@ -236,13 +236,10 @@
     <string name="loading">S\'està carregant…</string>
     <string name="swap_connection_misc_error">S\'ha produït un error en connectar-se al dispositiu. No us podeu connectar!</string>
     <string name="install_confirm">necessita accés a</string>
-    <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
-    <string name="install_confirm_update_system">Voleu instal·lar una actualització
-        d\'aquesta aplicació integrada? No perdreu les dades
-        existents. L\'aplicació actualitzada tindrà accés a:
-    </string>
-    <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació? No perdreu les dades existents. No requereix cap accés especial.</string>
-    <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació no requereix cap accés especial.</string>
+    <string name="install_confirm_update">Vols instal·lar una actualització per a aquesta aplicació? No es perdran les teves dades existents. L\'aplicació actualitzada tindrà els permisos següents:</string>
+    <string name="install_confirm_update_system">Vols instal·lar una actualització d\'aquesta aplicació integrada? No es perdran les teves dades. L\'aplicació actualitzada tindrà els permisos següents:</string>
+    <string name="install_confirm_update_no_perms">Vols instal·lar una actualització a aquesta aplicació existent? Les dades existents no es perdran. No cal cap tipus d\'accés especial.</string>
+    <string name="install_confirm_update_system_no_perms">Vols instal·lar una actualització a aquesta aplicació integrada? Les teves dades existents no es perdran. No cal cap tipus d\'accés especial.</string>
     <string name="login_title">Es requereix autenticació</string>
     <string name="login_name">Nom d\'usuari</string>
     <string name="login_password">Contrasenya</string>

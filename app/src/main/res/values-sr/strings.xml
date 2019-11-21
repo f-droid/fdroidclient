@@ -189,8 +189,8 @@
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">захтева приступ следећем</string>
     <string name="perm_costs_money">Ово може да вас кошта пара</string>
-    <string name="uninstall_update_confirm">Желите ли да замените овај програм фабрички уграђеном\?</string>
-    <string name="uninstall_confirm">Желите ли да уклоните овај програм\?</string>
+    <string name="uninstall_update_confirm">Желите ли да замените ову апликацију фабричком верзијом? Сви подаци ће бити уклоњени.</string>
+    <string name="uninstall_confirm">Да ли желите да деинсталирате ову апликацију?</string>
     <string name="swap_visible_bluetooth">Видљив преко Блутута</string>
     <string name="swap_not_visible_bluetooth">Нисам видљив преко Блутута</string>
     <string name="swap_visible_wifi">Видљив преко бежичног</string>
@@ -239,10 +239,10 @@
     <string name="about_license">Лиценца</string>
     <string name="status_inserting_apps">Уписујем појединости програма</string>
     <string name="empty_search_available_app_list">Нема одговарајућих програма.</string>
-    <string name="install_confirm_update">Желите ли да надградите постојећи програм\? Подаци неће бити изгубљени. Надграђени програм ће добити приступ следећем:</string>
-    <string name="install_confirm_update_system">Желите ли да надоградите подразумевани програм\? Подаци неће бити изгубљени. Надграђена програм ће добити приступ следећем:</string>
-    <string name="install_confirm_update_no_perms">Желите ли да надградите постојећи програм\? Подаци неће бити изгубљени. Нису потребне дозволе за додатни приступ.</string>
-    <string name="install_confirm_update_system_no_perms">Желите ли да надоградите подразумевани програм\? Подаци неће бити изгубљени. Нису потребна овлашћења за додатни приступ.</string>
+    <string name="install_confirm_update">Желите ли да инсталирате ажурирање за ову постојећу апликацију? Постојећи подаци неће бити изгубљени. Ажурирана апликација имаће приступ следећем:</string>
+    <string name="install_confirm_update_system">Желите ли да инсталирате ажурирање за ову уграђену апликацију? Постојећи подаци неће бити изгубљени. Ажурирана апликација ће имати приступ следећем:</string>
+    <string name="install_confirm_update_no_perms">Да ли желите да инсталирате ажурирање ове постојеће апликације? Постојећи подаци неће бити изгубљени. Није потребан посебан приступ.</string>
+    <string name="install_confirm_update_system_no_perms">Да ли желите да инсталирате ажурирање ове уграђене апликације? Постојећи подаци неће бити изгубљени. Није потребан посебан приступ.</string>
     <string name="crash_dialog_title">Ф-дроид се срушио</string>
     <string name="crash_dialog_text">Неочекивана грешка је присилила програм да се заустави. Желите ли да пошаљете податке е-поштом и тиме помогнете у решавању проблема\?</string>
     <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и напомене овде:</string>

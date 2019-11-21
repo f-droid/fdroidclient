@@ -163,7 +163,7 @@
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не можете да откриете тези, които търсите?</string>
-    <string name="uninstall_confirm">Желаете ли приложението да бъде деинсталирано?</string>
+    <string name="uninstall_confirm">Искате ли да деинсталирате това приложение?</string>
     <string name="unstable_updates">Нестабилни актуализации</string>
     <string name="unstable_updates_summary">Предлагай актуализиране до версии, които могат да бъдат нестабилни</string>
     <string name="category_Connectivity">Свързаност</string>
@@ -176,10 +176,10 @@
     <string name="empty_can_update_app_list">Поздравления!
 \nВсички приложения са актуализирани до последните налични версии.</string>
     <string name="install_confirm">има нужда от достъп до</string>
-    <string name="install_confirm_update">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
-    <string name="install_confirm_update_system">Потвърдете актуализацията на вграденото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия ще има достъп до:</string>
-    <string name="install_confirm_update_no_perms">Потвърдете актуализацията на съществуващото приложение. Данните на приложението ще бъдат запазени. Актуализираната версия не изисква разрешения за достъп.</string>
-    <string name="install_confirm_update_system_no_perms">Желаете ли актуализацията на вграденото приложение да бъде инсталирана\? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за достъп.</string>
+    <string name="install_confirm_update">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_system">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_no_perms">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
+    <string name="install_confirm_update_system_no_perms">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
     <string name="swap_send_fdroid">Изпрати F-Droid</string>
     <string name="swap_scan_qr">Сканирай QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
@@ -226,7 +226,7 @@
     <string name="swap_confirm">Потвърдете размяната</string>
     <string name="swap_connection_misc_error">Възникна грешка при свързване с устройството, размяната не може да се осъществи!</string>
     <string name="newPerms">Нови</string>
-    <string name="uninstall_update_confirm">Искате ли да замените приложението със заводската му версия?</string>
+    <string name="uninstall_update_confirm">Това приложение да се замени ли с фабричната версия? Всички данни ще бъдат премахнати.</string>
     <string name="download_error">Грешка при изтегляне!</string>
     <string name="perms_new_perm_prefix">Ново:</string>
     <string name="perms_description_app">Предоставено от %1$s.</string>

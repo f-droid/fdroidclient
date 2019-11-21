@@ -378,7 +378,7 @@
     <string name="swap_confirm">స్వాప్‌ను నిర్ధారించండి</string>
     <string name="swap_toast_invalid_url">స్వాపింగ్ కొరకు చెల్లని URL: %1$s</string>
     <string name="perm_costs_money">దీని వల్ల మీకు డబ్బు ఖర్చు కావొచ్చు</string>
-    <string name="uninstall_confirm">మీరు ఈ అనువర్తనాన్ని అన్‌ఇన్‌స్టాల్ చేయాలనుకుంటున్నారా\?</string>
+    <string name="uninstall_confirm">మీరు ఈ యాప్‌ను అన్‌ఇన్‌స్టాల్ చేయాలనుకుంటున్నారా?</string>
     <string name="download_error">డౌన్లోడ్ విఫలమైంది!</string>
     <string name="download_pending">డౌన్‌లోడ్ ప్రారంభించడానికి వేచి ఉంది…</string>
     <string name="tts_category_name">వర్గం %1$s</string>

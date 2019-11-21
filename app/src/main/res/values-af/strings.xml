@@ -262,22 +262,13 @@
     <string name="loading">Laai tans …</string>
     <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie asof ons kan uitruil nie!</string>
     <string name="install_confirm">benodig toegang tot</string>
-    <string name="install_confirm_update">Wil jy \'n opdatering installeer
-        vir hierdie bestaande program? Jou bestaande data sal nie verloor word nie.
-        Die opgadateerde progam sal toegang te kry tot:
-    </string>
-    <string name="install_confirm_update_no_perms">Wil jy \'n opdatering installeer
-        vir hierdie bestaande program? Jou bestaande data sal nie verloor word nie.
-        Die opgadateerde progam benodig geen addisionele toegang nie.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Wil jy \'n opdatering installeer
-        vir hierdie ingeboude program? Jou bestaande data sal nie verloor word nie.
-        Die opgadateerde progam benodig geen addisionele toegang nie.
-    </string>
+    <string name="install_confirm_update">Wil jy \'n opdatering vir die bestaande program installeer? Jou bestaande data sal nie verlore gaan nie. Die opgedateerde program sal kan ingaan by:</string>
+    <string name="install_confirm_update_no_perms">Wil jy \'n opdatering na hierdie bestaande program installeer? Jou bestaande data sal nie verlore raak nie. Dit vereis nie enige spesiale toegang nie.</string>
+    <string name="install_confirm_update_system_no_perms">Wil jy \'n opdatering na hierdie ingeboude program installeer? Jou bestaande data sal nie verlore raak nie. Dit vereis nie enige spesiale toegang nie.</string>
     <string name="newPerms">Nuut</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dit kan jy dalk geld kos</string>
-    <string name="uninstall_update_confirm">Wil jy hierdie program met die fabriek weergawe vervang?</string>
+    <string name="uninstall_update_confirm">Vervang hierdie program met die fabriekweergawe? Alle data sal verwyder word.</string>
     <string name="uninstall_confirm">Wil jy hierdie program deïnstalleer?</string>
     <string name="download_error">Aflaai het misluk!</string>
     <string name="download_pending">Wag om aflaai te begin …</string>
@@ -310,10 +301,7 @@
     </string>
     <string name="crash_dialog_comment_prompt">Jy kan ekstra inligting en kommentaar hier laat:</string>
     <string name="notification_title_single_update_available">Opdatering beskikbaar</string>
-    <string name="install_confirm_update_system">Wil jy \'n opdatering installeer
-        vir hierdie ingeboude program? Jou bestaande data sal nie verloor word nie.
-        Die opgadateerde progam sal toegang te kry tot:
-    </string>
+    <string name="install_confirm_update_system">Wil jy \'n opdatering vir hierdie ingeboude program installeer? Jou bestaande data sal nie verlore gaan nie. Die opgedateerde program sal kan ingaan by:</string>
     <string name="notification_title_single_ready_to_install">Gereed om te installeer</string>
     <string name="notification_title_single_ready_to_install_update">Opdatering gereed vir installasie</string>
     <string name="notification_title_single_install_error">Installering het misluk</string>

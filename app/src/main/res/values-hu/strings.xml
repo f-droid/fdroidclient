@@ -158,20 +158,15 @@
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
-    <string name="install_confirm_update">Szeretne telepíteni egy frissítést ehhez a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
-    <string name="install_confirm_update_system">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az
-        adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:
-    </string>
-    <string name="install_confirm_update_no_perms">Szeretne telepíteni egy frissítést ehhez a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>
-    <string name="install_confirm_update_system_no_perms">Szeretne telepíteni egy frissítést ehhez a beépített
-        alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges
-        hozzáférést.
-    </string>
+    <string name="install_confirm_update">Telepít egy frissítést ehhez a meglévő alkalmazáshoz? A meglévő adatai nem vesznek el. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
+    <string name="install_confirm_update_system">Telepít egy frissítést ehhez a beépített alkalmazáshoz? A meglévő adatai nem vesznek el. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
+    <string name="install_confirm_update_no_perms">Telepít egy frissítést ehhez a meglévő alkalmazáshoz? A meglévő adatai nem vesznek el. A frissítés nem igényel különleges hozzáférést.</string>
+    <string name="install_confirm_update_system_no_perms">Telepít egy frissítést ehhez a beépített alkalmazáshoz? A meglévő adatai nem vesznek el. A frissítés nem igényel különleges hozzáférést.</string>
     <string name="newPerms">Új</string>
     <string name="allPerms">Mind</string>
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
-    <string name="uninstall_update_confirm">Szeretné lecserélni ezt az alkalmazást a gyári verzióra?</string>
-    <string name="uninstall_confirm">Szeretné eltávolítani ezt az alkalmazást?</string>
+    <string name="uninstall_update_confirm">Lecseréli az alkalmazást a gyári verzióra? Minden adat törlődik.</string>
+    <string name="uninstall_confirm">Eltávolítja ezt az alkalmazást?</string>
     <string name="download_error">Letöltés sikertelen!</string>
     <string name="perms_new_perm_prefix">Új:</string>
     <string name="downloading">Letöltés…</string>

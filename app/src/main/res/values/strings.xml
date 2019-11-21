@@ -558,7 +558,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="newPerms">New</string>
     <string name="allPerms">All</string>
     <string name="perm_costs_money">This may cost you money</string>
-    <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
+    <string name="uninstall_update_confirm">Do you want to replace this app with the factory version? All data will be removed.</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
     <string name="download_error">Download failed!</string>
     <string name="download_pending">Waiting to start download…</string>

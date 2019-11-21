@@ -152,23 +152,15 @@
     <string name="loading">กำลังโหลด…</string>
     <string name="swap_connection_misc_error">การเชื่อมต่อกับอีกเครื่องล้มเหลว, ไม่สามารถส่งต่อโปรแกรมได้</string>
     <string name="install_confirm">ต้องการเข้าถึง</string>
-    <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่
-        และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
-    </string>
-    <string name="install_confirm_update_system">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่?
-        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
-    </string>
-    <string name="install_confirm_update_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่?
-        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม
-    </string>
-    <string name="install_confirm_update_system_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่?
-        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม
-    </string>
+    <string name="install_confirm_update">คุณต้องการติดตั้งการอัปเดตของแอปพลิเคชันที่มีอยู่นี้หรือไม่ ข้อมูลที่มีอยู่ของคุณจะไม่สูญหายไป แอปพลิเคชันที่อัปเดตแล้วจะเข้าถึง:</string>
+    <string name="install_confirm_update_system">คุณต้องการจะติดตั้งการอัปเดตของแอปพลิเคชันในระบบนี้หรือไม่ ข้อมูลที่มีอยู่ของคุณจะไม่สูญหาย แอปพลิเคชันที่อัปเดตแล้วจะเข้าถึง:</string>
+    <string name="install_confirm_update_no_perms">คุณต้องการติดตั้งการอัปเดตไปยังแอปพลิเคชันที่มีอยู่นี้หรือไม่ ข้อมูลที่มีอยู่ของคุณจะไม่สูญหาย การอัปเดตนี้ไม่จำเป็นต้องใช้การเข้าถึงใดๆ เป็นพิเศษ</string>
+    <string name="install_confirm_update_system_no_perms">คุณต้องการติดตั้งการอัปเดตไปยังแอปพลิเคชันในตัวนี้หรือไม่ ข้อมูลที่มีอยู่ของคุณจะไม่สูญหาย การอัปเดตนี้ไม่จำเป็นต้องใช้การเข้าถึงใดๆ เป็นพิเศษ</string>
     <string name="newPerms">ใหม่</string>
     <string name="allPerms">ทั้งหมด</string>
     <string name="perm_costs_money">อาจจะัทำให้คุณเสียค่าใช้จ่าย</string>
-    <string name="uninstall_update_confirm">คุณต้องการจะแทนที่โปรแกรมนี้ด้วยรุ่นที่มากับระบบหรือไม่?</string>
-    <string name="uninstall_confirm">คุณต้องการจะถอนการติดตั้งโปรแกรมนี้หรือไม่?</string>
+    <string name="uninstall_update_confirm">แทนที่แอปนี้ด้วยเวอร์ชันเริ่มต้นไหม ระบบจะนำข้อมูลทั้งหมดออก</string>
+    <string name="uninstall_confirm">คุณต้องการถอนการติดตั้งแอปพลิเคชันนี้หรือไม่</string>
     <string name="download_error">การดาวน์โหลดล้มเหลว</string>
     <string name="download_pending">เตรียมพร้อมจะเริ่มการดาวน์โหลด…</string>
     <string name="install_error_notify_title">การติดตั้ง %s ล้มเหลว</string>

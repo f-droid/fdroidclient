@@ -160,7 +160,7 @@
     <string name="interval_1d">每天</string>
     <string name="interval_1w">每週</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
-    <string name="uninstall_confirm">您想卸載此應用程式嗎？</string>
+    <string name="uninstall_confirm">您要解除安裝這個應用程式嗎？</string>
     <string name="allPerms">全部</string>
     <string name="newPerms">新增</string>
     <string name="swap_connecting">連線中</string>
@@ -181,9 +181,9 @@
 
     <string name="status_download">正在從 %1$s 下載 %2$s / %3$s（%4$d%%）</string>
     <string name="install_confirm">需要存取權</string>
-    <string name="install_confirm_update">您是否要更新此應用程式？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
-    <string name="install_confirm_update_system">您是否要更新此內置應用程式？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
-    <string name="install_confirm_update_system_no_perms">您是否要更新此內置應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
+    <string name="install_confirm_update">您要為這個現有的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
+    <string name="install_confirm_update_system">您要為這個內置的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
+    <string name="install_confirm_update_system_no_perms">您要為這個內置應用程式安裝更新嗎？您不會遺失現有的資料，而應用程式無需任何特殊的存取權限。</string>
     <string name="next">下一步</string>
     <string name="SignatureMismatch">新版的應用程式使用了一個不相同的鑰匙簽署。若要安裝新版本，您必須先卸載舊版本。（註：卸載將會刪除應用程式內的資料）</string>
     <string name="download_error">下載失敗！</string>
@@ -255,8 +255,8 @@
     <string name="login_title">需要驗證</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
 
-    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
-    <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
+    <string name="install_confirm_update_no_perms">您要為這個現有的應用程式安裝更新嗎？您不會遺失現有的資料，而應用程式無需任何特殊的存取權限。</string>
+    <string name="uninstall_update_confirm">要將此應用程式回復至原廠版本嗎？所有資料將會刪除。</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供更多有關此問題的資料嗎？</string>
     <string name="repo_fingerprint">鑰匙指紋（SHA-256）</string>
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案（index.jar）…</string>

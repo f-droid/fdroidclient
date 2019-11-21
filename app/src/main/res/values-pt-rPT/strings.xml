@@ -230,24 +230,12 @@
     <string name="more">Mais</string>
     <string name="less">Menos</string>
     <string name="permissions">Permissões</string>
-    <string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação?
-        Os seus dados não serão perdidos.
-        A aplicação atualizada terá acesso a:
-    </string>
-    <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação
-        do sistema? Os seus dados não serão perdidos.
-        A aplicação atualizada terá acesso a:
-    </string>
-    <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação?
-        Os seus dados não serão perdidos.
-        A aplicação atualizada não requer acessos especiais.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação
-        do sistema? Os seus dados não serão perdidos.
-        A aplicação atualizada não requer qualquer acesso especial.
-    </string>
-    <string name="uninstall_update_confirm">Quer restaurar esta aplicação para a sua versão de fábrica\?</string>
-    <string name="uninstall_confirm">Quer desinstalar esta aplicação\?</string>
+    <string name="install_confirm_update">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_system">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. Não é necessário um acesso específico.</string>
+    <string name="install_confirm_update_system_no_perms">Pretende instalar uma atualização para a aplicação integrada? Os dados existentes não serão perdidos. Não é necessário um acesso específico.</string>
+    <string name="uninstall_update_confirm">Pretende substituir esta aplicação pela versão de fábrica? Todos os dados são removidos.</string>
+    <string name="uninstall_confirm">Pretende desinstalar esta aplicação?</string>
     <string name="download_error">Falha ao descarregar!</string>
     <string name="theme_night">Noite</string>
     <string name="menu_settings">Definições</string>

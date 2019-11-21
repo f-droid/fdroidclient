@@ -159,8 +159,8 @@
     <string name="newPerms">Novo</string>
     <string name="allPerms">Todos</string>
     <string name="perm_costs_money">Isto pode costarche cartos</string>
-    <string name="uninstall_update_confirm">Desexas substituír esta aplicación pola versión de fábrica\?</string>
-    <string name="uninstall_confirm">Desexas desinstalar esta aplicación\?</string>
+    <string name="uninstall_update_confirm">Queres substituír esta aplicación pola versión que viña de fábrica? Eliminaranse todos os datos.</string>
+    <string name="uninstall_confirm">Queres desinstalar esta aplicación?</string>
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="downloading">Estase a baixar…</string>
     <string name="interval_never">Non actualizar a aplicación de xeito automático</string>
@@ -221,10 +221,10 @@
     <string name="swap_qr_isnt_for_swap">O código QR que escaneaches non semella corresponder a un código de intercambio.</string>
     <string name="swap_connection_misc_error">Ocorreu un erro durante a conexión co dispositivo, non se pode facer o intercambio!</string>
     <string name="install_confirm">require acceso a</string>
-    <string name="install_confirm_update">Desexas instalar unha actualización desta aplicación existente\? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
-    <string name="install_confirm_update_system">Desexas instalar unha actualización para esta aplicación do sistema\? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
-    <string name="install_confirm_update_no_perms">Desexas instalar unha actualización desta aplicación existente\? Os teus datos existentes non se perderán. A actualización non require privilexios especiais.</string>
-    <string name="install_confirm_update_system_no_perms">Desexas instalar unha actualización para esta aplicación do sistema\? Os teus datos existentes non se perderán. Non require privilexios especiais.</string>
+    <string name="install_confirm_update">Queres instalar unha actualización para esta aplicación? Non se perderán os teus datos existentes. A aplicación actualizada disporá de acceso a:</string>
+    <string name="install_confirm_update_system">Queres instalar unha actualización para esta aplicación integrada?  Non se perderán os teus datos existentes. A aplicación actualizada disporá de acceso a:</string>
+    <string name="install_confirm_update_no_perms">Queres instalar unha actualización para esta aplicación? Non se perderán os teus datos existentes. Non require ningún acceso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Queres instalar unha actualización para esta aplicación integrada? Non se perderán os teus datos existentes. Non require ningún acceso especial.</string>
     <string name="download_error">A baixada fallou!</string>
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="writing_index_jar">Estase a escribir o índice firmado para o ficheiro (index.jar)…</string>

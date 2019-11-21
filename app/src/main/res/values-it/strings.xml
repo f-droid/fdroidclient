@@ -167,16 +167,10 @@
     <string name="download_error">Scaricamento fallito!</string>
     <string name="perms_new_perm_prefix">Nuovo:</string>
     <string name="perms_description_app">Fornito da %1$s.</string>
-    <string name="uninstall_confirm">Vuoi rimuovere questa app?</string>
+    <string name="uninstall_confirm">Vuoi disinstallare questa applicazione?</string>
     <string name="install_confirm">deve accedere a</string>
-    <string name="install_confirm_update_system">Vuoi installare un aggiornamento
-        per questa applicazione integrata? I dati presenti
-        non saranno rimossi. L\'app dopo l\'aggiornamento avrà accesso a:
-    </string>
-    <string name="install_confirm_update">Vuoi installare un aggiornamento
-        per questa app? I dati presenti
-        non saranno rimossi. L\'app dopo l\'aggiornamento avrà accesso a:
-    </string>
+    <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
+    <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione esistente? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
     <string name="loading">Caricamento…</string>
     <string name="swap_connecting">Connessione</string>
     <string name="swap_wifi_device_name">Nome del dispositivo</string>
@@ -198,7 +192,7 @@
     <string name="interval_1w">Cerca aggiornamenti ogni settimana</string>
     <string name="interval_1d">Cerca aggiornamenti ogni giorno</string>
     <string name="interval_never">Nessun aggiornamento automatico delle app</string>
-    <string name="uninstall_update_confirm">Vuoi sostituire questa app con la sua versione originale?</string>
+    <string name="uninstall_update_confirm">Sostituire questa app con la versione di fabbrica? Tutti i dati verranno rimossi.</string>
     <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
     <string name="newPerms">Nuove</string>
     <string name="swap_confirm">Conferma lo scambio</string>
@@ -263,14 +257,8 @@
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
-    <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata
-        di questa app? I dati presenti
-        non saranno rimossi. Non è richiesto alcun accesso speciale.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento
-        di questa app integrata? I dati presenti
-        non saranno rimossi. Non richiede alcun permesso speciale.
-    </string>
+    <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione esistente? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
+    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
     <string name="allPerms">Tutte</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>

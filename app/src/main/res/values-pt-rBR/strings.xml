@@ -207,21 +207,15 @@
     <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não foi possível trocar com ele!</string>
     <string name="install_confirm">necessário acesso à</string>
-    <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo já existente? Seus dados não serão perdidos. O aplicativo atualizado terá acesso a:</string>
-    <string name="install_confirm_update_system">Você quer instalar uma atualização
-        para este aplicativo incorporado? Os dados existentes não
-        serão perdidos. O aplicativo atualizado terá acesso a:
-    </string>
-    <string name="install_confirm_update_no_perms">Você quer instalar uma atualização para este aplicativo já existente? Os dados não serão perdidos. Ele não exige nenhum acesso especial.</string>
-    <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização
-        para este aplicativo incorporado? Os dados existentes não
-        serão perdidos. Ele não exige nenhum acesso especial.
-    </string>
+    <string name="install_confirm_update">Quer instalar uma atualização para este app? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
+    <string name="install_confirm_update_system">Quer instalar uma atualização para este app integrado? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Quer instalar uma atualização para este app existente? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para este app integrado? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
     <string name="newPerms">Novas</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
-    <string name="uninstall_update_confirm">Você quer substituir este aplicativo com a versão de fábrica?</string>
-    <string name="uninstall_confirm">Você quer desinstalar este aplicativo?</string>
+    <string name="uninstall_update_confirm">Substituir este app pela versão de fábrica? Todos os dados serão removidos.</string>
+    <string name="uninstall_confirm">Quer desinstalar este app?</string>
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">Baixando…</string>

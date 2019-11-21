@@ -215,27 +215,15 @@
     <string name="loading">Γίνεται φόρτωση…</string>
     <string name="swap_connection_misc_error">Παρουσιάστηκε σφάλμα κατά τη σύνδεση με την συσκευή, φαίνεται ότι δεν μπορούμε να ανταλλάξουμε με αυτή!</string>
     <string name="install_confirm">χρειάζεται πρόσβαση σε</string>
-    <string name="install_confirm_update">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;
-        Τα υπάρχοντα δεδομένα δεν θα χαθούν.
-        Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:
-    </string>
-    <string name="install_confirm_update_system">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή;
-        Τα υπάρχοντα δεδομένα δεν θα χαθούν.
-        Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:
-    </string>
-    <string name="install_confirm_update_no_perms">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;
-        Τα υπάρχοντα δεδομένα δεν θα χαθούν.
-        Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή;
-        Τα υπάρχοντα δεδομένα δεν θα χαθούν.
-        Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.
-    </string>
+    <string name="install_confirm_update">Θέλετε να εγκαταστήσετε μια ενημέρωση σε αυτήν την υπάρχουσα εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
+    <string name="install_confirm_update_system">Θέλετε να εγκαταστήσετε μια ενημέρωση σε αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
+    <string name="install_confirm_update_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την υπάρχουσα εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτείται ειδική πρόσβαση.</string>
+    <string name="install_confirm_update_system_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτείται ειδική πρόσβαση.</string>
     <string name="newPerms">Νέο</string>
     <string name="allPerms">Όλα</string>
     <string name="perm_costs_money">Αυτό μπορεί να σας κοστίσει χρήματα</string>
-    <string name="uninstall_update_confirm">Θέλετε να αντικαταστήσετε αυτή την εφαρμογή με την εργοστασιακή έκδοση?</string>
-    <string name="uninstall_confirm">Θέλετε να απεγκαταστήσετε αυτή την εφαρμογή;</string>
+    <string name="uninstall_update_confirm">Αντικατάσταση αυτής της εφαρμογής με την εργοστασιακή έκδοση; Όλα τα δεδομένα θα καταργηθούν.</string>
+    <string name="uninstall_confirm">Θέλετε να καταργήσετε την εγκατάσταση αυτής της εφαρμογής;</string>
     <string name="download_error">Ανεπιτυχής λήψη!</string>
     <string name="perms_new_perm_prefix">Νέα:</string>
     <string name="perms_description_app">Παρέχεται από %1$s.</string>

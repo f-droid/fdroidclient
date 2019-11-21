@@ -228,20 +228,15 @@
     <string name="loading">جارٍ التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
-    <string name="install_confirm_update">هل تريد تحديث
-\n هذا التطبيق الموجود ؟ لن تفقد بياناتك الموجودة.
-\n التطبيق المحدث سوف يتمكن من الوصول إلى:</string>
-    <string name="install_confirm_update_system">هل تريد تثبيت التحديث
-\n لهذا التطبيق المدمج ؟ لن تفقد بياناتك الموجودة.
-\n التطبيق المحدث سوف يتمكن من الوصول إلى:</string>
-    <string name="install_confirm_update_no_perms">هل تريد تثبيت التحديث
-\n لهذا التطبيق الموجود ؟ لن تفقد بياناتك الموجودة. لا يتطلب أي دخول خاص.</string>
-    <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث لهذا التطبيق المدمج ؟ لن تفقد بياناتك الموجودة. إنه لا يتطلب أي دخول خاص.</string>
+    <string name="install_confirm_update">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيكون بإمكان التطبيق المحدّث الدخول إلى:</string>
+    <string name="install_confirm_update_system">هل تريد تثبيت تحديث لهذا التطبيق المضمن؟ لن تفقد بياناتك الحالية. سيكون بإمكان التطبيق المحدّث الدخول إلى:</string>
+    <string name="install_confirm_update_no_perms">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
+    <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث لهذا التطبيق المضمن؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
     <string name="newPerms">جديد</string>
     <string name="allPerms">الكل</string>
     <string name="perm_costs_money">ذلك قد يكلفك مالياً</string>
-    <string name="uninstall_update_confirm">هل تريد استبدال هذا التطبيق بإصدار المصنع؟</string>
-    <string name="uninstall_confirm">هل تريد إزالة هذا التطبيق ؟</string>
+    <string name="uninstall_update_confirm">هل تريد استبدال هذا التطبيق بإصدار المصنع؟ ستتم إزالة جميع البيانات.</string>
+    <string name="uninstall_confirm">هل تريد إزالة هذا التطبيق؟</string>
     <string name="download_error">فشل التنزيل!</string>
     <string name="download_pending">في الانتظار لبدء التنزيل …</string>
     <string name="install_error_notify_title">خطأ في تثبيت %s</string>

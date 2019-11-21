@@ -239,27 +239,15 @@
     <string name="loading">Učitavanje…</string>
     <string name="swap_connection_misc_error">Greška prilikom spajanja na uređaj, razmjena nije moguća!</string>
     <string name="install_confirm">treba pristup</string>
-    <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?
-        Vaši podaci neće biti izgubljeni.
-        Ažurirana aplikacija će imati pristup:
-    </string>
-    <string name="install_confirm_update_system">Želite li ažurirati ovu ugrađenu aplikaciju?
-        Vaši podaci neće biti izgubljeni.
-        Ažurirana aplikacija će imati pristup:
-    </string>
-    <string name="install_confirm_update_no_perms">Želite li ažurirati ovu postojeću aplikaciju?
-        Vaši podaci neće biti izgubljeni.
-        Ne zahtijeva posebne dozvole.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Želite li ažurirati ovu ugrađenu aplikaciju?
-        Vaši podaci neće biti izgubljeni.
-        Ne zahtijeva posebne dozvole.
-    </string>
+    <string name="install_confirm_update">Želite li instalirati ažuriranje postojeće aplikacije? Vaši postojeći podaci neće biti izgubljeni. Ažurirana aplikacija dobit će pristup sljedećem:</string>
+    <string name="install_confirm_update_system">Želite li instalirati ažuriranje za ovu ugrađenu aplikaciju? Vaši postojeći podaci neće biti izgubljeni. Ažurirana aplikacija dobit će pristup sljedećem:</string>
+    <string name="install_confirm_update_no_perms">Želite li instalirati ažuriranje postojeće aplikacije? Vaši postojeći podaci neće se izgubiti. Nije potreban nikakav poseban pristup.</string>
+    <string name="install_confirm_update_system_no_perms">Želite li instalirati ažuriranje te ugrađene aplikacije? Vaši postojeći podaci neće se izgubiti. Nije potreban nikakav poseban pristup.</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Sve</string>
     <string name="perm_costs_money">Ovo se može naplaćivati</string>
-    <string name="uninstall_update_confirm">Želite li zamijeniti ovu aplikaciju sa tvorničkom verzijom?</string>
-    <string name="uninstall_confirm">Želite li ukloniti ovu aplikaciju?</string>
+    <string name="uninstall_update_confirm">Želite li tu aplikaciju zamijeniti tvorničkom verzijom? Izgubit ćete sve podatke.</string>
+    <string name="uninstall_confirm">Želite li deinstalirati ovu aplikaciju?</string>
     <string name="download_error">Preuzimanje neuspješno!</string>
     <string name="download_pending">Čekanje na početak preuzimanja…</string>
     <string name="install_error_notify_title">Greška pri instalaciji %s</string>

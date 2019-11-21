@@ -204,7 +204,7 @@
     <string name="newPerms">အသစ်</string>
     <string name="allPerms">အားလုံး</string>
     <string name="perm_costs_money">၄င္းသည္ ေငြေၾကးကုန္က်ႏိုင္သည္</string>
-    <string name="uninstall_confirm">ဒီ app ကိုျဖုတ္ခ်င္ပါသလား?</string>
+    <string name="uninstall_confirm">ဤအပလီကေးရှင်းကို သင်ဖယ်ရှားချင်ပါသလား</string>
     <string name="download_error">ေဒါင္းလုတ္မေအာင္ျမင္ပါ</string>
     <string name="download_pending">ေဒါင္းလုတ္စရန္ေစာင့္ဆိုင္းေနသည္…</string>
     <string name="install_error_notify_title">%s ကိုသြင္းေနစဥ္ခ်ိဳ႕ယြင္းခ်က္</string>

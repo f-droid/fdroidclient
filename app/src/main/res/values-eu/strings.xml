@@ -234,25 +234,13 @@
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
     <string name="install_confirm">baimen hauek behar ditu</string>
-    <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa
-        instalatu nahi duzu? Oraingo datuak ez dituzu galduko.
-        Eguneratutako aplikazioak honako baimenak behar ditu:
-    </string>
-    <string name="install_confirm_update_system">Sistemarekin zetorren aplikazio honen bertsio berriagoa
-        instalatu nahi duzu? Oraingo datuak ez dituzu galduko.
-        Eguneratutako aplikazioak honako baimenak behar ditu:
-    </string>
-    <string name="install_confirm_update_no_perms">Aurretik dagoen aplikazio honen bertsio berriagoa
-        instalatu nahi duzu? Oraingo datuak ez dituzu galduko.
-        Ez du baimen berezirik behar.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Sistemarekin zetorren aplikazio honen bertsio berriagoa
-        instalatu nahi duzu? Oraingo datuak ez dituzu galduko.
-        Ez du baimen berezirik behar.
-    </string>
+    <string name="install_confirm_update">Aplikazioaren eguneratzea instalatu nahi duzu? Lehendik dauden datuak ez dira galduko. Eguneratutako aplikazioak elementu hauetarako sarbidea izango du:</string>
+    <string name="install_confirm_update_system">Aplikazio integratu honen eguneratzea instalatu nahi duzu? Lehendik dauden datuak ez dira galduko. Eguneratutako aplikazioak elementu hauetarako sarbidea izango du:</string>
+    <string name="install_confirm_update_no_perms">Aplikazioaren eguneratzea instalatu nahi duzu? Lehendik dauden datuak ez dira galduko. Ez du sarbide berezirik behar.</string>
+    <string name="install_confirm_update_system_no_perms">Aplikazio integratu honen eguneratzea instalatu nahi duzu? Lehendik dauden datuak ez dira galduko. Ez du sarbide berezirik behar.</string>
     <string name="perm_costs_money">Honek dirua kosta dakizuke</string>
-    <string name="uninstall_update_confirm">Lantegiko bertsiora bueltatu nahi duzu aplikazio hau?</string>
-    <string name="uninstall_confirm">Aplikazio hau desinstalatu nahi duzu?</string>
+    <string name="uninstall_update_confirm">Aplikazio hau jatorrizko bertsioarekin ordeztu nahi duzu? Datu guztiak ezabatuko dira.</string>
+    <string name="uninstall_confirm">Aplikazioa desinstalatu nahi duzu?</string>
     <string name="download_error">Deskargak huts egin du!</string>
     <string name="perms_description_app">%1$sk hornitua.</string>
     <string name="more">Gehiago</string>

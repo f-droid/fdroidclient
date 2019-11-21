@@ -257,16 +257,12 @@
     <string name="swap_qr_isnt_for_swap">Skannaamasi QR-koodi ei näytä vaihtamiseen tarkoitetulta koodilta.</string>
     <string name="swap_connection_misc_error">Tapahtui virhe yhdistettäessä laitteeseen, vaihtaminen ei onnistu!</string>
     <string name="install_confirm">tarvitsee luvan käyttää</string>
-    <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Nykyiset tietosi eivät häviä. Päivitetty sovellus saa luvan käyttää:</string>
-    <string name="install_confirm_update_system">Haluatko asentaa päivityksen tähän sisäänrakennettuun sovellukseen? Nykyiset tietosi eivät häviä. Päivitetty sovellus saa luvan käyttää:</string>
-    <string name="install_confirm_update_no_perms">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen?
-        Nykyiset tietosi eivät häviä. Sovellus ei tarvitse uusia lupia.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Haluatko asentaa päivityksen tähän sisäänrakennettuun
-        sovellukseen? Nykyiset tietosi eivät häviä. Sovellus ei tarvitse uusia lupia.
-    </string>
+    <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
+    <string name="install_confirm_update_system">Haluatko asentaa päivityksen tähän sisäiseen sovellukseen? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
+    <string name="install_confirm_update_no_perms">Haluatko asentaa päivityksen tähän sovellukseen? Et menetä nykyisiä tietojasi. Päivitys ei edellytä erityisiä käyttöoikeuksia.</string>
+    <string name="install_confirm_update_system_no_perms">Haluatko asentaa päivityksen tähän laitteen mukana tulleeseen sovellukseen? Et menetä nykyisiä tietojasi. Päivitys ei edellytä erityisiä käyttöoikeuksia.</string>
     <string name="perm_costs_money">Tämä voi olla maksullista</string>
-    <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla?</string>
+    <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla? Kaikki tiedot poistetaan.</string>
     <string name="download_pending">Odotetaan latauksen alkamista…</string>
     <string name="install_error_notify_title">Virhe asennettaessa sovellusta %s</string>
     <string name="uninstall_error_notify_title">Virhe poistettaessa sovellusta %s</string>

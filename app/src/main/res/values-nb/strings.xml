@@ -191,8 +191,8 @@
     <string name="newPerms">Nye</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dette kan koste penger</string>
-    <string name="uninstall_update_confirm">Ønsker du å erstatte dette programmet med fabrikkversjonen?</string>
-    <string name="uninstall_confirm">Ønsker du å avinstallere dette programmet?</string>
+    <string name="uninstall_update_confirm">Vil du erstatte denne appen med den opprinnelige versjonen? Alle dataene fjernes.</string>
+    <string name="uninstall_confirm">Vil du avinstallere denne appen?</string>
     <string name="download_error">Nedlasting mislyktes!</string>
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tilbudt av %1$s.</string>
@@ -237,22 +237,10 @@
     <string name="swap_connection_misc_error">En feil inntraff under tilkobling til enheten, klarer ikke å sirkulere med
         den.
     </string>
-    <string name="install_confirm_update">Ønsker du å installere en oppdatering
-        til dette eksisterende programmet? Dataen du har vil ikke
-        gå tapt. Det oppdaterte programmet vil ha tilgang til:
-    </string>
-    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering
-        til dette innebygde programmet? Dataen din vil ikke
-        gå tapt. Det oppdaterte programmet vil ha tilgang til:
-    </string>
-    <string name="install_confirm_update_no_perms">Ønsker du å installere en oppdatering
-        til dette eksisterende programmet? Dataen din vil ikke
-        gå tapt. Det krever ingen spesiell tilgang.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Ønsker du å installere en oppdatering
-        til dette innebygde programmet? Dataen din vil ikke
-        gå tapt. Det krever ingen spesiell tilgang.
-    </string>
+    <string name="install_confirm_update">Ønsker du å installere en oppdatering for denne eksisterende appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
+    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for denne innebygde appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
+    <string name="install_confirm_update_no_perms">Vil du installere en oppdatering av denne eksisterende appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
+    <string name="install_confirm_update_system_no_perms">Vil du installere en oppdatering av denne innebygde appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="theme_night">Nattsvart</string>
     <string name="login_name">Brukernavn</string>
     <string name="login_password">Passord</string>

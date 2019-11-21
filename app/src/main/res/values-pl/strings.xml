@@ -204,22 +204,15 @@
     <string name="loading">Ładuję…</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem wymiana nie powiodła się!</string>
     <string name="install_confirm">wymaga dostępu do</string>
-    <string name="install_confirm_update">Czy chcesz zaktualizować tą aplikację? Aktualizacja dostanie dostęp do:
-    </string>
-    <string name="install_confirm_update_system">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja dostanie
-        dostęp do:
-    </string>
-    <string name="install_confirm_update_no_perms">Czy chcesz zaktualizować tą aplikację? Aktualizacja nie wymaga
-        żadnych specjalnych uprawnień.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja
-        nie wymaga żadnych specjalnych uprawnień.
-    </string>
+    <string name="install_confirm_update">Zainstalować aktualizację tej aplikacji? Nie utracisz wcześniejszych danych. Zaktualizowana aplikacja będzie miała następujące uprawnienia:</string>
+    <string name="install_confirm_update_system">Zainstalować aktualizację fabrycznej aplikacji? Nie utracisz wcześniejszych danych. Zaktualizowana aplikacja będzie miała następujące uprawnienia:</string>
+    <string name="install_confirm_update_no_perms">Chcesz zaktualizować tę istniejącą aplikację? Nie utracisz danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
+    <string name="install_confirm_update_system_no_perms">Chcesz zaktualizować tę wbudowaną aplikację? Nie utracisz danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
     <string name="newPerms">Nowe</string>
     <string name="allPerms">Wszystkie</string>
     <string name="perm_costs_money">To może Cię kosztować</string>
-    <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację pierwotną wersją?</string>
-    <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>
+    <string name="uninstall_update_confirm">Przywrócić fabryczną wersję tej aplikacji? Wszystkie dane zostaną usunięte.</string>
+    <string name="uninstall_confirm">Odinstalować tę aplikację?</string>
     <string name="perms_new_perm_prefix">Nowe:</string>
     <string name="perms_description_app">Dostarczone przez %1$s.</string>
     <string name="downloading">Pobieranie…</string>
