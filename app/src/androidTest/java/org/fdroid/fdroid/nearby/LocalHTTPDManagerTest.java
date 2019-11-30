@@ -14,6 +14,7 @@ import org.fdroid.fdroid.Netstat;
 import org.fdroid.fdroid.Utils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -64,6 +65,7 @@ public class LocalHTTPDManagerTest {
         lbm.unregisterReceiver(errorReceiver);
     }
 
+    @Ignore
     @Test
     public void testStartStop() throws InterruptedException {
         Log.i(TAG, "testStartStop");

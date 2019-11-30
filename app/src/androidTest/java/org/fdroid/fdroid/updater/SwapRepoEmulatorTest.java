@@ -27,6 +27,7 @@ import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -54,6 +55,7 @@ public class SwapRepoEmulatorTest {
     /**
      * @see org.fdroid.fdroid.nearby.WifiStateChangeService.WifiInfoThread#run()
      */
+    @Ignore
     @Test
     public void testSwap()
             throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
