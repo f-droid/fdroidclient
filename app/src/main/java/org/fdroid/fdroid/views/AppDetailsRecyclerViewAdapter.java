@@ -375,6 +375,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
+        final TextView summaryView;
         final TextView whatsNewView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
@@ -397,6 +398,7 @@ public class AppDetailsRecyclerViewAdapter
             titleView = (TextView) view.findViewById(R.id.title);
             authorView = (TextView) view.findViewById(R.id.author);
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
+            summaryView = (TextView) view.findViewById(R.id.summary);
             whatsNewView = (TextView) view.findViewById(R.id.whats_new);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
@@ -494,9 +496,13 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
 
+            if (!TextUtils.isEmpty(app.summary)) {
+                summaryView.setText(app.summary);
+            }
             Apk suggestedApk = getSuggestedApk();
             if (suggestedApk == null || TextUtils.isEmpty(app.whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
+                summaryView.setBackgroundResource(0); // make background of summary transparent
             } else {
                 //noinspection deprecation Ignore deprecation because the suggested way is only available in API 24.
                 Locale locale = context.getResources().getConfiguration().locale;
