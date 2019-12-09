@@ -511,6 +511,9 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * Also,
      * {@link Manifest.permission#ACCESS_FINE_LOCATION} implies
      * {@link Manifest.permission#ACCESS_COARSE_LOCATION}.
+     * And,
+     * {@link Manifest.permission#READ_EXTERNAL_STORAGE} implies
+     * {@link Manifest.permission#ACCESS_MEDIA_LOCATION}
      * Many of these rules are for quite old Android versions,
      * so they are not included here.
      *
@@ -542,6 +545,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
         if (Build.VERSION.SDK_INT >= 29 && set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
             set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (Build.VERSION.SDK_INT >= 29 && set.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            // TODO: Change the below to Manifest.permission once we target SDK 29.
+            set.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
         requestedPermissions = set.toArray(new String[set.size()]);
     }
