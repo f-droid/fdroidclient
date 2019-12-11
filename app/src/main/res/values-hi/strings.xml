@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="delete">मिटाएं</string>
     <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
     <string name="version">संस्करण</string>
@@ -394,7 +394,7 @@
     <string name="disabled">बंद किया गया</string>
     <string name="repo_not_yet_updated">यह रेपोसिटोरी अभी तक इस्तेमाल नहीं किया गया है।  अप्प्स को देखने के लिए इसको इनेबल करने की आवशक्ता है।</string>
     <string name="repo_confirm_delete_title">डिलीट रेपोसिटोरी \?</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">थेमिंग</string>
+    <string name="category_Theming">थेमिंग</string>
     <string name="empty_can_update_app_list">बधाई !
 \nआपके अप्प्स अप टो डेट है।</string>
     <string name="installing">इंस्‍टॉल कर रहा है…</string>

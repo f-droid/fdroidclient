@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="updates">Diweddariadau</string>
     <string name="ok">Iawn</string>
@@ -268,20 +268,20 @@
     <string name="requires_features">Angen: %1$s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Llecyn</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Graffigau</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Rhyngrwyd</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Arian</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Aml-gyfrwng</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Llywio</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Ffôn ac SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Darllen</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Gwyddoniaeth ac Addysg</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Diogelwch</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Chwaraeon a Iechyd</string>
-    <string tools:ignore="UnusedResources" name="category_System">System</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Themáu</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Amser</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Ysgrifennu</string>
+    <string name="category_Graphics">Graffigau</string>
+    <string name="category_Internet">Rhyngrwyd</string>
+    <string name="category_Money">Arian</string>
+    <string name="category_Multimedia">Aml-gyfrwng</string>
+    <string name="category_Navigation">Llywio</string>
+    <string name="category_Phone_SMS">Ffôn ac SMS</string>
+    <string name="category_Reading">Darllen</string>
+    <string name="category_Science_Education">Gwyddoniaeth ac Addysg</string>
+    <string name="category_Security">Diogelwch</string>
+    <string name="category_Sports_Health">Chwaraeon a Iechyd</string>
+    <string name="category_System">System</string>
+    <string name="category_Theming">Themáu</string>
+    <string name="category_Time">Amser</string>
+    <string name="category_Writing">Ysgrifennu</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="zero">Gweld %d</item>
         <item quantity="one">Gweld %d</item>
