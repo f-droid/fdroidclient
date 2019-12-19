@@ -26,6 +26,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -49,6 +50,14 @@ import static org.junit.Assert.assertNull;
 public class RepoProviderTest extends FDroidProviderTest {
 
     private static final String[] COLS = RepoTable.Cols.ALL;
+
+    /**
+     * Returns the number of repos in app/src/main/res/default_repo.xml
+     */
+    public static int getDefaultRepoCount(Context context) {
+        int itemCount = context.getResources().getStringArray(R.array.default_repos).length;
+        return itemCount / DBHelper.REPO_XML_ITEM_COUNT;
+    }
 
     /**
      * Set to random time zone to make sure that the dates are properly parsed.
@@ -159,7 +168,7 @@ public class RepoProviderTest extends FDroidProviderTest {
     @Test
     public void defaultRepos() {
         List<Repo> defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(defaultRepos.size(), 4); // based on app/src/main/res/default_repo.xml
+        assertEquals(defaultRepos.size(), getDefaultRepoCount(context));
 
         String[] reposFromXml = context.getResources().getStringArray(R.array.default_repos);
         if (reposFromXml.length % DBHelper.REPO_XML_ITEM_COUNT != 0) {
@@ -181,7 +190,9 @@ public class RepoProviderTest extends FDroidProviderTest {
     @Test
     public void canAddRepo() {
 
-        assertEquals(4, RepoProvider.Helper.all(context).size());
+        int defaultRepoCount = getDefaultRepoCount(context);
+
+        assertEquals(defaultRepoCount, RepoProvider.Helper.all(context).size());
 
         Repo mock1 = insertRepo(
                 context,
@@ -198,7 +209,7 @@ public class RepoProviderTest extends FDroidProviderTest {
                 "0123456789ABCDEF"
         );
 
-        assertEquals(6, RepoProvider.Helper.all(context).size());
+        assertEquals(defaultRepoCount + 2, RepoProvider.Helper.all(context).size());
 
         assertRepo(
                 mock1,
@@ -242,16 +253,18 @@ public class RepoProviderTest extends FDroidProviderTest {
                 "0123456789ABCDEF"
         );
 
+        int defaultRepoCount = getDefaultRepoCount(context);
+
         List<Repo> beforeDelete = RepoProvider.Helper.all(context);
-        assertEquals(6, beforeDelete.size()); // Expect six repos, because of the four default ones.
-        assertEquals(mock1.id, beforeDelete.get(4).id);
-        assertEquals(mock2.id, beforeDelete.get(5).id);
+        assertEquals(defaultRepoCount + 2, beforeDelete.size());
+        assertEquals(mock1.id, beforeDelete.get(defaultRepoCount).id);
+        assertEquals(mock2.id, beforeDelete.get(defaultRepoCount + 1).id);
 
         RepoProvider.Helper.remove(context, mock1.getId());
 
         List<Repo> afterDelete = RepoProvider.Helper.all(context);
-        assertEquals(5, afterDelete.size());
-        assertEquals(mock2.id, afterDelete.get(4).id);
+        assertEquals(defaultRepoCount + 1, afterDelete.size());
+        assertEquals(mock2.id, afterDelete.get(defaultRepoCount).id);
     }
 
     public Repo insertRepo(Context context, String address, String description, String fingerprint) {
