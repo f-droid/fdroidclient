@@ -164,10 +164,27 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/whats_new"
+            android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingEnd="8dp"
+            android:paddingRight="8dp"
+            android:padding="8dp"
+            android:scrollbars="none"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:background="?attr/detailPanel"
+            tools:text="App summary, one line - outlining what this app does" />
+
+        <TextView
+            android:id="@+id/whats_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:paddingStart="8dp"
             android:paddingLeft="8dp"
             android:paddingEnd="8dp"
