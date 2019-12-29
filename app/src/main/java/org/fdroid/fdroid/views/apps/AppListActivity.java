@@ -1,5 +1,26 @@
+/*
+ * Copyright (C) 2016-17 Peter Serwylo,
+ * Copyright (C) 2017-18 Hans-Christoph Steiner
+ * Copyright (C) 2019 Michael Pöhn, michael.poehn@fsfe.org
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.views.apps;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -21,6 +42,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
@@ -43,6 +65,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private TextView emptyState;
     private EditText searchInput;
     private ImageView sortImage;
+    private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
         String NAME = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME + " asc";
@@ -56,6 +79,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_app_list);
+
+        keyboardStateMonitor = new Utils.KeyboardStateMonitor(findViewById(R.id.app_list_root));
 
         searchInput = (EditText) findViewById(R.id.search);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
@@ -119,6 +144,13 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onClick(View v) {
                 searchInput.setText("");
+                searchInput.requestFocus();
+                if (!keyboardStateMonitor.isKeyboardVisible()) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
+                            InputMethodManager.SHOW_FORCED, 0);
+                }
             }
         });
 

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2019 Michael Pöhn, michael.poehn@fsfe.org
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,6 +26,7 @@ import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -45,6 +47,8 @@ import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -910,6 +914,37 @@ public final class Utils {
         } catch (IOException e) {
             // Could not connect.
             return true;
+        }
+    }
+
+    /**
+     * Keep an instance of this class as an field in an Activity for figuring out whether the on
+     * screen keyboard is currently visible or not.
+     */
+    public static class KeyboardStateMonitor {
+
+        private boolean visible = false;
+
+        /**
+         * @param contentView this must be the top most Container of the layout used by the Activity
+         */
+        public KeyboardStateMonitor(final View contentView) {
+            contentView.getViewTreeObserver().addOnGlobalLayoutListener(
+                    new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            int screenHeight = contentView.getRootView().getHeight();
+                            Rect rect = new Rect();
+                            contentView.getWindowVisibleDisplayFrame(rect);
+                            int keypadHeight = screenHeight - rect.bottom;
+                            visible = keypadHeight >= screenHeight * 0.15;
+                        }
+                    }
+            );
+        }
+
+        public boolean isKeyboardVisible() {
+            return visible;
         }
     }
 }
