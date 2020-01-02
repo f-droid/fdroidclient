@@ -9,7 +9,7 @@ import android.app.Activity;
  * org.fdroid.fdroid.views.updates.UpdatesAdapter#delegatesManager}
  * to specify a data type more specific than just {@link Object}.
  */
-public abstract class AppUpdateData {
+public abstract class AppUpdateData { // NOPMD This abstract class does not have any abstract methods
     public final Activity activity;
 
     public AppUpdateData(Activity activity) {

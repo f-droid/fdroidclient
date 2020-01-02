@@ -9,7 +9,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowContentResolver;
 
-public abstract class FDroidProviderTest {
+public abstract class FDroidProviderTest { // NOPMD This abstract class does not have any abstract methods
 
     protected ShadowContentResolver contentResolver;
     protected ContextWrapper context;

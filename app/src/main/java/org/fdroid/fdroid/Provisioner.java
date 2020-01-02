@@ -173,7 +173,7 @@ public class Provisioner {
                 try {
                     in = new ZipInputStream(new FileInputStream(file));
                     ZipEntry zipEntry;
-                    while ((zipEntry = in.getNextEntry()) != null) {
+                    while ((zipEntry = in.getNextEntry()) != null) { // NOPMD Avoid assignments in operands
                         String name = zipEntry.getName();
                         if ("repo_provision.json".equals(name)) {
                             if (plain.getRepositoryProvision() != null) {

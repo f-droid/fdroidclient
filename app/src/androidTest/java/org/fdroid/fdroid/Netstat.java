@@ -123,7 +123,7 @@ public class Netstat {
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/tcp"));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null) { // NOPMD
                 Matcher matcher = NET_PATTERN.matcher(line);
                 if (matcher.find()) {
                     final Connection c = new Connection();
@@ -156,7 +156,7 @@ public class Netstat {
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/udp"));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null) { // NOPMD
                 Matcher matcher = NET_PATTERN.matcher(line);
                 if (matcher.find()) {
                     final Connection c = new Connection();
@@ -189,7 +189,7 @@ public class Netstat {
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/raw"));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null) { // NOPMD
                 Matcher matcher = NET_PATTERN.matcher(line);
                 if (matcher.find()) {
                     final Connection c = new Connection();
