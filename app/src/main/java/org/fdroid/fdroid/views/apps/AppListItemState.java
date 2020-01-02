@@ -21,7 +21,7 @@ public class AppListItemState {
     private int progressMax = -1;
     private boolean showInstallButton;
     private boolean showCheckBox;
-    private boolean isCheckBoxChecked;
+    private boolean checkBoxChecked;
 
     public AppListItemState(@NonNull App app) {
         this.app = app;
@@ -124,7 +124,7 @@ public class AppListItemState {
     }
 
     public boolean isCheckBoxChecked() {
-        return isCheckBoxChecked;
+        return checkBoxChecked;
     }
 
     /**
@@ -133,7 +133,7 @@ public class AppListItemState {
      */
     public AppListItemState setCheckBoxStatus(boolean checked) {
         this.showCheckBox = true;
-        this.isCheckBoxChecked = checked;
+        this.checkBoxChecked = checked;
         return this;
     }
 

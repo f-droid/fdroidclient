@@ -27,7 +27,7 @@ public abstract class FDroidProvider extends ContentProvider {
     static final int CODE_LIST = 1;
     static final int CODE_SINGLE = 2;
 
-    private boolean isApplyingBatch;
+    private boolean applyingBatch;
 
     protected abstract String getTableName();
 
@@ -47,7 +47,7 @@ public abstract class FDroidProvider extends ContentProvider {
      * Based on http://stackoverflow.com/a/15886915.
      */
     protected final boolean isApplyingBatch() {
-        return this.isApplyingBatch;
+        return this.applyingBatch;
     }
 
     @NonNull
@@ -55,7 +55,7 @@ public abstract class FDroidProvider extends ContentProvider {
     public ContentProviderResult[] applyBatch(@NonNull ArrayList<ContentProviderOperation> operations)
             throws OperationApplicationException {
         ContentProviderResult[] result = null;
-        isApplyingBatch = true;
+        applyingBatch = true;
         final SQLiteDatabase db = db();
         db.beginTransaction();
         try {
@@ -63,7 +63,7 @@ public abstract class FDroidProvider extends ContentProvider {
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
-            isApplyingBatch = false;
+            applyingBatch = false;
         }
         return result;
     }

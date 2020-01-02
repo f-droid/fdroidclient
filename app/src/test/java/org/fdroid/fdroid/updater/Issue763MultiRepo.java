@@ -35,7 +35,7 @@ public class Issue763MultiRepo extends MultiIndexUpdaterTest {
     }
 
     @Test
-    public void antoxRepo() throws IndexUpdater.UpdateException {
+    public void testAntoxRepo() throws IndexUpdater.UpdateException {
         assertAntoxEmpty();
         setEnabled(microGRepo, true);
         updateAntox();
@@ -47,7 +47,7 @@ public class Issue763MultiRepo extends MultiIndexUpdaterTest {
     }
 
     @Test
-    public void microGRepo() throws IndexUpdater.UpdateException {
+    public void testMicroGRepo() throws IndexUpdater.UpdateException {
         assertMicroGEmpty();
         setEnabled(microGRepo, true);
         updateMicroG();
