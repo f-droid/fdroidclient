@@ -423,7 +423,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         for (String field : allowed) {
             fields.remove(field);
         }
-        if (fields.size() > 0) {
+        if (!fields.isEmpty()) {
             String sb = String.valueOf(instance.getClass()) + " has fields not setup for Jackson: " +
                     TextUtils.join(", ", fields) + "\nRead class javadoc for more info.";
             fail(sb);

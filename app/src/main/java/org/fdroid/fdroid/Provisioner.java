@@ -64,8 +64,8 @@ public class Provisioner {
             List<ProvisionPlaintext> plaintexts = p.extractProvisionsPlaintext(files);
             List<Provision> provisions = p.parseProvisions(plaintexts);
 
-            if (provisions == null || provisions.size() == 0) {
-                Utils.debugLog(TAG, "Provision dir does not contain any provisions: '" + provisionDir.getAbsolutePath() + "' moving on ...");
+            if (provisions == null || provisions.isEmpty()) {
+                Utils.debugLog(TAG, "Provision dir is empty: '" + provisionDir.getAbsolutePath() + "' moving on ...");
             } else {
                 int cleanupCounter = 0;
                 for (Provision provision : provisions) {

@@ -80,7 +80,7 @@ public class RepoProvider extends FDroidProvider {
 
             boolean haveTriedWithoutPath = false;
             while (repo == null && !haveTriedWithoutPath) {
-                if (pathSegments.size() == 0) {
+                if (pathSegments.isEmpty()) {
                     haveTriedWithoutPath = true;
                 } else {
                     pathSegments.remove(pathSegments.size() - 1);
@@ -99,7 +99,11 @@ public class RepoProvider extends FDroidProvider {
                                          String address, String[] projection) {
             List<Repo> repos = findBy(
                     context, Cols.ADDRESS, address, projection);
-            return repos.size() > 0 ? repos.get(0) : null;
+            if (repos.isEmpty()) {
+                return null;
+            } else {
+                return repos.get(0);
+            }
         }
 
         public static List<Repo> all(Context context) {
