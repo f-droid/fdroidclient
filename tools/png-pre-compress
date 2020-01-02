@@ -8,6 +8,7 @@ for f in `find $(dirname $0)/../app/src/ -type f -name \*.png`; do
     tmpfile=$(mktemp)
     aapt singleCrunch -v -i $f -o $tmpfile
     exiftool -all= $tmpfile
+    zopflipng--iterations=50 --keepchunks=iCCP --lossy_transparent --splitting=3 -my $tmpfile $tmpfile
     mv $tmpfile $f
 done
 
