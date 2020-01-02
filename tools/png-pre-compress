@@ -1,15 +1,33 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 set -e
 set -x
 
 for f in `find $(dirname $0)/../app/src/ -type f -name \*.png`; do
+    printf "\n\n=====================================================================\n"
     echo $f | grep -Eo '\.9\.png$' && continue  # do not optimized 9-patch, it breaks them
-    tmpfile=$(mktemp)
-    aapt singleCrunch -v -i $f -o $tmpfile
-    exiftool -all= $tmpfile
-    zopflipng--iterations=50 --keepchunks=iCCP --lossy_transparent --splitting=3 -my $tmpfile $tmpfile
-    mv $tmpfile $f
+    singlefile=$(mktemp)
+    zopflifile=$(mktemp)
+    aapt singleCrunch -v -i $f -o $singlefile || true
+    zopflipng --iterations=50 --keepchunks=iCCP --lossy_transparent --splitting=3 -my $f $zopflifile || true
+    if [ -s $singlefile ] && [ -s $zopflifile ]; then
+	ls -l $singlefile $zopflifile
+	if [ $(stat --format="%s" $singlefile) -lt $(stat --format="%s" $zopflifile) ]; then
+	    echo "Using aapt singleCrunch for $f"
+	    mv $singlefile $f
+	else
+	    echo "Using zopflipng for $f"
+	    mv $zopflifile $f
+	fi
+    elif [ -s $singlefile ] && [ ! -s $zopflifile ]; then
+	mv $singlefile $f
+    elif [ ! -s $singlefile ] && [ -s $zopflifile ]; then
+	mv $zopflifile $f
+    else
+	continue
+    fi
+    exiftool -all= $f
+    rm -f $singlefile $zopflifile
 done
 
 for f in metadata/*/images/*Screenshots/*.png; do
