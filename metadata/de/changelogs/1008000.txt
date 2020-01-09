@@ -1,0 +1,3 @@
+* Suchleisten-Voreinstellung in jüngsten Android-Versionen korrigiert (danke @dkanada)
+* Umgang mit geteilten Berechtigungen in API 29: hohe Standortgenauigkeit schließt nun grobe ein
+* Definition von Sicherungsregeln, um das Speichern getauschter Repos zu vermeiden
