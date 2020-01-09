@@ -1,0 +1,3 @@
+* Correção da preferência da barra de busca em versões recentes do Android (obrigado @dkanada)
+* Tratamento das permissões divididas da API 29: local fino agora implica local grosseira
+* Definição de regras de backup para evitar gravar o repositório de permuta

@@ -1,6 +1,6 @@
-* grande reformulação na interface de troca, para preparar para reescrita
-* mostra "Desfazer" após remover os itens da aba Atualizações (obrigado @Hocuri!)
-* correção de problemas com a exibição "Mais recentes" causada pelo mau uso dos fusos horários #1757
-* ignora todas as falhas sem importância nos serviços de segundo plano
-* adição de novas respostas a pânico: o aplicativo desinstala e redefine os repos para o padrão
+* Grande reformulação na interface de troca, para preparar para reescrita
+* Mostra "Desfazer" após remover os itens da aba Atualizações (obrigado @Hocuri!)
+* Correção de problemas com a exibição "Mais recentes" causada pelo mau uso dos fusos horários #1757
+* Ignora todas as falhas sem importância nos serviços de segundo plano
+* Adição de novas respostas a pânico: o aplicativo desinstala e redefine os repos para o padrão
 * Unidades USB OTG pode ser usadas como repositórios e espelhos no Por Perto
