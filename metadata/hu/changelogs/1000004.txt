@@ -1,0 +1,7 @@
+* Söprés gesztusok a Frissítések lapon
+
+* Figyelmeztetés és műveletek megjelenítése a Frissítés lapon, ha van ismert sebezhetőség
+
+* Frissített fordítások
+
+* Javítások a sötét témában

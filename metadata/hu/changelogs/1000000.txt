@@ -1,0 +1,7 @@
+* Média, OTA, ZIP, stb. fájlok telepítésének támogatása
+
+* Teljes támogatás a több aláírókulccsal aláírt APK-khoz
+
+* Új tibeti fordítás
+
+* Kapcsolódó alkalmazások és kategóriák eltávolítása egy tároló kikapcsolása után

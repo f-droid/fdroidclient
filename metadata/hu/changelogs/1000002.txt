@@ -1,0 +1,7 @@
+* HTTP ETag követősütiként történő használatának megakadályozása
+
+* Javított elrendezés a képernyőképeknél
+
+* Ideiglenes és gyorsítótárazott fájlok helyes kitakarítása
+
+* Sötét módot érintő javítások

@@ -1,0 +1,3 @@
+* Alkalmazások tárolóból törlését okozó hiba javítása (#568)
+
+* Sokkal gyorsabb indexfrissítések

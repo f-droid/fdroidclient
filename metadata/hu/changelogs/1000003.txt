@@ -1,0 +1,3 @@
+* Jelentős felületet érintő teljesítménynövekedés, különösen ha engedélyezett az archívum
+
+* Összeomlást okozó hibák javítása
