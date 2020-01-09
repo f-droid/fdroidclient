@@ -1,6 +1,7 @@
-* Takas arayüzünde büyük değişiklikler, yeniden yazılmaya hazırlanılıyor
-* Öğeleri "Güncellemeler" sekmesinden kaydırdıktan sonra "Geri Al"ı göster. (Teşekkürler @Hocuri!)
-* "En Yeni" ekranındaki zaman dilimlerinin kötü yönetilmesinden dolayı meydana gelen hata düzeltildi. #1757
-*"Ayarlar" ekranında kapatıldıysa Ayrıcalıklı Uzantıları kullanmayın
-* Cihazın hotspot özelliğini kullanarak yakındakilerle takas
-* USB OTG flaş sürücüleri depo ve yansılarla birlikte kullanılabilmektedir
+* Takas arayüzünün büyük revizyonu
+* Öğeleri Güncellemeler sekmesinden kaydırdıktan sonra "Geri al" ı göster (teşekkürler @Hocuri!)
+* Saat dilimleri yanlış kullanımından kaynaklanan "Son" ekran ile ilgili sorunları giderme #1757
+* Arka plan hizmetlerindeki tüm önemsiz kilitlenmeleri yoksay
+* Cihazın erişim noktası AP'sini kullanarak yakındaki takas değiştirildi
+* Yeni panik yanıtları ekleme
+* USB OTG flash sürücüler yakındaki depolar ve aynalar olarak kullanılabilir
