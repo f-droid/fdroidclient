@@ -1,0 +1,3 @@
+* Lagaðar kjörstillingar leitarstiku í nýlegum útgáfum Android (takk @dkanada)
+* Meðhöndlun API 29 split-permissions heimilda: nákvæm staðsetning krefst núna grófrar staðsetningar
+* Skilgreining reglna við öryggisafritun til að koma í veg fyrir að biðminnissafnið (swap repo) sé vistað
