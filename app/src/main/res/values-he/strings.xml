@@ -100,7 +100,7 @@
     <string name="repos_unchanged">כל המאגרים מעודכנים</string>
     <string name="all_other_repos_fine">כל שאר המאגרים לא נתקלו בשגיאות.</string>
     <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
-    <string name="no_permissions">אין הרשאות בשימוש.</string>
+    <string name="no_permissions">אין הרשאות</string>
     <string name="no_handler_app">לא מותקן יישומון זמין לטיפול בסוג %s.</string>
     <string name="theme">ערכת עיצוב</string>
     <string name="unsigned">לא חתום</string>
@@ -150,7 +150,7 @@
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכול</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
-    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן?</string>
+    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן\? כל הנתונים יוסרו.</string>
     <string name="uninstall_confirm">להסיר יישומון זה?</string>
     <string name="perms_new_perm_prefix">חדש:</string>
     <string name="perms_description_app">מסופק על ידי %1$s.</string>

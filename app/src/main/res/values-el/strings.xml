@@ -217,8 +217,8 @@
     <string name="install_confirm">χρειάζεται πρόσβαση σε</string>
     <string name="install_confirm_update">Θέλετε να εγκαταστήσετε μια ενημέρωση σε αυτήν την υπάρχουσα εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
     <string name="install_confirm_update_system">Θέλετε να εγκαταστήσετε μια ενημέρωση σε αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
-    <string name="install_confirm_update_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την υπάρχουσα εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτείται ειδική πρόσβαση.</string>
-    <string name="install_confirm_update_system_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτείται ειδική πρόσβαση.</string>
+    <string name="install_confirm_update_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την υπάρχουσα εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτεί ειδική πρόσβαση.</string>
+    <string name="install_confirm_update_system_no_perms">Θέλετε να εγκαταστήσετε μια ενημέρωση για αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα σας δεν θα χαθούν. Δεν απαιτεί ειδική πρόσβαση.</string>
     <string name="newPerms">Νέο</string>
     <string name="allPerms">Όλα</string>
     <string name="perm_costs_money">Αυτό μπορεί να σας κοστίσει χρήματα</string>
@@ -268,7 +268,7 @@
     <string name="menu_email">Ηλ. ταχυδρομείο δημιουργού</string>
     <string name="antinonfreeassetslist">Αυτή η εφαρμογή περιέχει μη-ελεύθερα στοιχεία</string>
     <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα. Απαιτείται εγκατάσταση του Orbot</string>
-    <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο internet;</string>
+    <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο διαδίκτυο;</string>
     <string name="swap_stopping_wifi">Διακοπή ασύρματου δικτύου Wi-Fi…</string>
     <string name="download_pending">Περιμένετε να αρχίσει η λήψη…</string>
     <string name="install_error_notify_title">Λάθος κατά την εγκατάσταση %s</string>
@@ -490,10 +490,20 @@
     <string name="undo">Αναίρεση</string>
     <string name="app_list__dismiss_installing_app">Η εγκατάσταση ακυρώθηκε</string>
     <string name="menu_select_for_wipe">Επιλογή για σβήσιμο</string>
-    <string name="try_again">Δοκιμάστε ξανά.</string>
+    <string name="try_again">Δοκιμάστε ξανά</string>
     <string name="panic_will_be_wiped">Θα απεγκατασταθεί και όλα τα δεδόμενα θα διαγραφούν</string>
     <string name="panic_apps_to_uninstall">Εφαρμογές για να απεγκατασταθούν και όλα τα δεδομένα να σβηστούν</string>
     <string name="panic_add_apps_to_uninstall">Προσθήκη εφαρμογών που θα απεγκατασταθούν και θα σβηστούν</string>
     <string name="panic_reset_repos_title">Επαναφορά αποθετηρίων</string>
     <string name="disabled">Απενεργοποιημένο</string>
+    <string name="nearby_splash__document_tree">Αναζήτηση στο OTG USB για αποθετήρια και καθρέφτες.</string>
+    <string name="swap_visible_hotspot">Ορατό μέσω σημείου πρόσβασης</string>
+    <string name="swap_blank_wifi_ssid">(κενό)</string>
+    <string name="swap_hidden_wifi_ssid">(κρυφό)</string>
+    <string name="swap_setting_up_hotspot">Ρύθμιση σημείου πρόσβασης…</string>
+    <string name="swap_stopping_hotspot">Διακοπή σημείου προσβασης…</string>
+    <string name="swap_starting">Εκκίνηση…</string>
+    <string name="swap_stopping">Διακοπή…</string>
+    <string name="swap_error_cannot_start_bluetooth">Δεν είναι δυνατή η εκκίνηση του Bluetooth!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Το \"Κοντά\" έκλεισε αφού ήταν αδρανές.</string>
 </resources>

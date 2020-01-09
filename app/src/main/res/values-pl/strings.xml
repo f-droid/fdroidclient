@@ -204,10 +204,10 @@
     <string name="loading">Ładuję…</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem wymiana nie powiodła się!</string>
     <string name="install_confirm">wymaga dostępu do</string>
-    <string name="install_confirm_update">Zainstalować aktualizację tej aplikacji? Nie utracisz wcześniejszych danych. Zaktualizowana aplikacja będzie miała następujące uprawnienia:</string>
+    <string name="install_confirm_update">Czy chcesz zainstalować aktualizację tej aplikacji\? Nie utracisz wcześniejszych danych. Zaktualizowana aplikacja będzie miała następujące uprawnienia:</string>
     <string name="install_confirm_update_system">Zainstalować aktualizację fabrycznej aplikacji? Nie utracisz wcześniejszych danych. Zaktualizowana aplikacja będzie miała następujące uprawnienia:</string>
-    <string name="install_confirm_update_no_perms">Chcesz zaktualizować tę istniejącą aplikację? Nie utracisz danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
-    <string name="install_confirm_update_system_no_perms">Chcesz zaktualizować tę wbudowaną aplikację? Nie utracisz danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
+    <string name="install_confirm_update_no_perms">Chcesz zaktualizować tę aplikację\? Nie utracisz wcześniejszych danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
+    <string name="install_confirm_update_system_no_perms">Chcesz zaktualizować wbudowaną aplikację\? Nie utracisz wcześniejszych danych. Nie są wymagane specjalne uprawnienia dostępu.</string>
     <string name="newPerms">Nowe</string>
     <string name="allPerms">Wszystkie</string>
     <string name="perm_costs_money">To może Cię kosztować</string>
@@ -497,7 +497,7 @@
     <string name="scan_removable_storage_title">Zeskanuj pamięć wymienną</string>
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>
     <string name="scan_removable_storage_summary">Poszukaj repozytoriów pakietów na wymiennych nośnikach, takich jak karty SD i pamięci USB</string>
-    <string name="nearby_splash__read_external_storage">Karty SD mogą być używane do wymiany!</string>
+    <string name="nearby_splash__read_external_storage">Wyszukaj na karcie SD repozytorium i kopie lustrzane.</string>
     <string name="nearby_splash__request_permission">Spróbuj</string>
     <string name="not_visible_nearby">W pobliżu nie jest włączone</string>
     <string name="not_visible_nearby_description">Przed wymianą z urządzeniami znajdującymi się w pobliżu upewnij się, że urządzenie jest ustawione jako widoczne.</string>
@@ -525,4 +525,5 @@
     <string name="disabled">Wyłączone</string>
     <string name="swap_error_cannot_start_bluetooth">Nie można uruchomić Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">W pobliżu jest zamknięty, ponieważ był bezczynny.</string>
+    <string name="nearby_splash__document_tree">Wyszukaj USB OTG dla repozytoriów i serwerów lustrzanych.</string>
 </resources>

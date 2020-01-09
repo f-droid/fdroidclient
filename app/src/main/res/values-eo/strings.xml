@@ -60,7 +60,7 @@
     <string name="icon">Emblemo</string>
     <string name="next">Sekvi</string>
     <string name="skip">Preterpasi</string>
-    <string name="no_permissions">Neniu permeso estas uzata.</string>
+    <string name="no_permissions">Sen permesoj</string>
     <string name="theme">Etoso</string>
     <string name="repo_num_apps">Nombro da aplikaĵoj</string>
     <string name="repo_description">Priskribo</string>
@@ -229,16 +229,14 @@
     <string name="loading">Prilaborado…</string>
     <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, ne povas interŝanĝi kun ĝi!</string>
     <string name="install_confirm">postulas permeson al</string>
-    <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
-    <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
-    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu estanta aplikaĵo? Viaj nunaj
-        datumoj ne foriĝos. Ĝi ne postulas iun ajn specialan permeson.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo? Viaj nunaj datumoj ne foriĝos. Ĝi ne bezonas iun ajn specialan permeson.</string>
+    <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
+    <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
+    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu estanta aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. Ĝi ne postulas iun ajn specialan permeson.</string>
+    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. Ĝi ne bezonas iun ajn specialan permeson.</string>
     <string name="newPerms">Nova(j)</string>
     <string name="allPerms">Ĉio</string>
     <string name="perm_costs_money">Tio ĉi povas elspezi vian monon</string>
-    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi tiun ĉi aplikaĵon per la antaŭinstalita versio?</string>
+    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi tiun ĉi aplikaĵon per la antaŭinstalita versio\? Ĉiuj ĝiaj datumoj perdiĝos.</string>
     <string name="uninstall_confirm">Ĉu vi volas malinstali tiun ĉi aplikaĵon?</string>
     <string name="download_error">Elŝuto fiaskis!</string>
     <string name="perms_new_perm_prefix">nova:</string>

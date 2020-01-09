@@ -226,7 +226,7 @@
     <string name="theme_dark">Oscuro</string>
     <string name="unstable_updates">Actualizaciones inestables</string>
     <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
-    <string name="install_confirm_update_system">¿Quieres instalar una actualización de esta aplicación integrada? Tus datos no se perderán. La aplicación actualizada podrá acceder a:</string>
+    <string name="install_confirm_update_system">¿Desea instalar una actualización de esta aplicación integrada\? Sus datos existentes no se perderán. La aplicación actualizada tendrá acceso a:</string>
     <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización de esta aplicación integrada? Tus datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>
@@ -494,11 +494,11 @@
     <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
     <string name="menu_translation">Traducción</string>
     <string name="menu_select_for_wipe">Selecciona para eliminar</string>
-    <string name="try_again">Inténtalo de nuevo.</string>
+    <string name="try_again">Inténtalo de nuevo</string>
     <string name="panic_will_be_wiped">Se desinstalará y se eliminarán todos los datos</string>
     <string name="panic_apps_to_uninstall">Aplicaciones que se van a desinstalar y todos los datos eliminados</string>
     <string name="panic_add_apps_to_uninstall">Añadir las aplicaciones que se van a desinstalar y a borrar</string>
-    <string name="panic_reset_repos_title">Reinicializar repositorios</string>
+    <string name="panic_reset_repos_title">Restablecer repositorios</string>
     <string name="panic_reset_repos_summary">Reinicializar la configuración de repositorios</string>
     <string name="swap_visible_hotspot">Visible por punto wifi</string>
     <string name="swap_blank_wifi_ssid">(blanco)</string>

@@ -9,7 +9,7 @@
     <string name="updates">Päivitykset</string>
     <string name="other">Muu</string>
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
-    <string name="notify">Näytä saatavilla olevat päivitykset</string>
+    <string name="notify">Näytä saatavilla olevat päivtykset</string>
     <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
     <string name="system_installer">Etuoikeutettu laajennus</string>
     <string name="system_installer_on">Käytä F-Droid Privileged Extensionia asentamiseen, päivittämiseen ja pakettien
@@ -223,7 +223,9 @@
 \n%1$s</string>
     <string name="category_Connectivity">Yhteydet</string>
     <string name="category_Graphics">Grafiikka</string>
-    <string name="empty_installed_app_list">Ei asennettuja sovelluksia. Laitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
+    <string name="empty_installed_app_list">Ei asennettuja sovelluksia. 
+\n
+\nLaitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
     <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu tarkistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
@@ -282,12 +284,12 @@
         Luo virheraportti!
     </string>
     <string name="versions">Versiot</string>
-    <string name="warning_no_internet">Päivitys epäonnistui, oletko yhteydessä internetiin\?</string>
+    <string name="warning_no_internet">Ei voida päivittää, olemmehan yhteydessä Internettiin\?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
     <string name="app_new">Uusi</string>
-    <string name="app__install_downloaded_update">Päivitys</string>
+    <string name="app__install_downloaded_update">Päivitä</string>
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s on asennettu</string>
     <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
@@ -356,7 +358,7 @@
         <item quantity="one">Näytä %1$d-sovellus %2$s-luokassa</item>
         <item quantity="other">Näytä kaikki %1$d sovellukset %2$s-luokasta</item>
     </plurals>
-    <string name="by_author_format">tekijältä %s</string>
+    <string name="by_author_format">tekijä %s</string>
     <string name="hide_all_notifications">Piilota kaikki ilmoitukset</string>
     <string name="hide_all_notifications_summary">Estä kaikkien toimintojen näkyminen tilapalkissa ja ilmoitusruudussa.</string>
     <string name="force_old_index">Pakota vanha ideksiformaatti</string>
@@ -366,8 +368,8 @@
     <string name="over_network_always_summary">Käytä aina tätä yhteyttä, kun se on saatavilla</string>
     <string name="over_network_on_demand_summary">Käytä tätä yhteyttä vain, kun klikkaan \'Lataa\'</string>
     <string name="over_network_never_summary">Älä koskaan lataa mitään käyttäen tätä yhteyttä</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Ei versioita yhteensopivalla allekirjoituksella</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Ei laitteen kanssa yhteensopivia versioita</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Ei versioita joilla sopiva allekirjoitus</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Ei versioita jotka ovat yhteensopivia laitteen kanssa</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Poistamalla seovelluksen voit selata ja asentaa yhteensopivia versioita. Näin käy usein Google Playstä tai muista lähteistä asennettujen sovellusten kohdalla, mikäli ne on allekirjoitettu eri sertifikaatilla.</string>
     <string name="app__tts__cancel_download">Peruuta lataus</string>
     <string name="app_installed_media">Tiedosto asennettu polkuun %s</string>
@@ -388,7 +390,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
     <string name="antiknownvulnlist">Tämä sovellus sisältää tunnetun haavoittuvuuden</string>
-    <string name="show_anti_feature_apps">Sisällytä anti-ominaisuus -sovellukset</string>
+    <string name="show_anti_feature_apps">Sisällytä ominaisuuksien vastaiset sovellukset</string>
     <string name="show_anti_feature_apps_on">Näytä sovellukset, jotka vaativat anti-ominaisuuksia</string>
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
@@ -471,7 +473,7 @@
     <string name="updates_disabled_by_settings">Kaikki päivitykset poistettu käytöstä Data/WiFi-asetuksissa</string>
     <string name="repo_exists_add_fingerprint">%1$s on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
     <string name="repo_exists_enable">%1$s on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
-    <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
+    <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
     <string name="menu_open">Avaa</string>
     <string name="menu_downgrade">Alenna</string>
     <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla, päivityksiä ei voi tehdä.</string>
@@ -482,7 +484,7 @@
     <string name="app_repository">Sovelluslähde: %1$s</string>
     <string name="menu_translation">Käännös</string>
     <string name="main_menu__updates">Päivitykset</string>
-    <string name="nearby_splash__read_external_storage">Etsi SD kortilta repositorioita ja peilejä</string>
+    <string name="nearby_splash__read_external_storage">Etsi SD-kortilta repositorioita ja peilejä.</string>
     <string name="nearby_splash__request_permission">Kokeile</string>
     <string name="not_visible_nearby">Lähistöllä ei ole käytössä</string>
     <string name="not_visible_nearby_description">Ennen kuin vaihdat lähistöllä olevien laitteiden kanssa, tee laite näkyväksi.</string>

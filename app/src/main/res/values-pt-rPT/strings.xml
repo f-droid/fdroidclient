@@ -230,10 +230,10 @@
     <string name="more">Mais</string>
     <string name="less">Menos</string>
     <string name="permissions">Permissões</string>
-    <string name="install_confirm_update">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_system">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_no_perms">Pretende instalar uma atualização para a aplicação existente? Os dados existentes não serão perdidos. Não é necessário um acesso específico.</string>
-    <string name="install_confirm_update_system_no_perms">Pretende instalar uma atualização para a aplicação integrada? Os dados existentes não serão perdidos. Não é necessário um acesso específico.</string>
+    <string name="install_confirm_update">Quer instalar uma atualização para esta app\? Seus dados existentes não serão perdidos. A app atualizada terá acesso a:</string>
+    <string name="install_confirm_update_system">Quer instalar uma atualização para esta app integrada\? Seus dados existentes não serão perdidos. A app atualizada terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Quer instalar uma atualização para esta app existente\? Seus dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para esta app integrada\? Seus dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
     <string name="uninstall_update_confirm">Pretende substituir esta aplicação pela versão de fábrica? Todos os dados são removidos.</string>
     <string name="uninstall_confirm">Pretende desinstalar esta aplicação?</string>
     <string name="download_error">Falha ao descarregar!</string>

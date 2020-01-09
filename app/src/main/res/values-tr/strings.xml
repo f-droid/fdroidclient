@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalandı. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekir. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın depolanan tüm dahili verilerini sileceğini unutmayın)</string>
-    <string name="installIncompatible">Cihazınızla uyumlu olmayan uygulama, yine de yüklensin mi\?</string>
+    <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın depolanan tüm dahili verilerini sileceğini unutmayın)</string>
+    <string name="installIncompatible">Uygulama cihazınızla uyumlu değil, yine de yüklesin mi\?</string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
     <string name="enable_nfc_send">NFC gönderimini etkinleştir…</string>
@@ -74,18 +74,18 @@
     <string name="deleting_repo">Mevcut depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış dizin dosyası yazılıyor (index.jar)…</string>
-    <string name="linking_apks">APK\'lar depo içine bağlanıyor…</string>
+    <string name="linking_apks">APK\'lar depoya bağlanıyor…</string>
     <string name="copying_icons">Uygulama simgeleri depoya kopyalanıyor…</string>
     <string name="icon">Simge</string>
     <string name="next">Sonraki</string>
     <string name="skip">Atla</string>
     <string name="proxy">Vekil</string>
     <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
-    <string name="enable_proxy_summary">Tüm ağ isteklerini HTTP vekiline yapılandır</string>
+    <string name="enable_proxy_summary">Tüm ağ isteklerini HTTP Vekiline yapılandır</string>
     <string name="proxy_host">Vekil Sunucu</string>
-    <string name="proxy_host_summary">Vekil sunucu ismi (örn. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Vekil sunucu adresi (örn. 127.0.0.1)</string>
     <string name="proxy_port">Vekil Bağlantı Noktası</string>
-    <string name="proxy_port_summary">Vekil bağlantı noktası rakamı (örn. 8118)</string>
+    <string name="proxy_port_summary">Vekil bağlantı noktası numarası (örn. 8118)</string>
     <string name="status_download">İndiriliyor
         %1$s konumundan
         %2$s / %3$s (%%%4$d)
@@ -263,7 +263,7 @@
     <string name="keep_month">1 Ay</string>
     <string name="keep_year">1 Yıl</string>
     <string name="keep_forever">Daima</string>
-    <string name="keep_install_history">Yükleme geçmişini sakla</string>
+    <string name="keep_install_history">Kurulum geçmişini sakla</string>
     <string name="keep_install_history_summary">Tüm kurulumların ve kaldırmaların bir günlüğünü özel bir depoda sakla</string>
     <string name="update_auto_install">Güncellemeleri otomatik olarak yükle</string>
     <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız\?</string>
@@ -445,17 +445,17 @@
     <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
     <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
-    <string name="prompt_to_send_crash_reports_summary">Çökmelerle ilgili veri topla ve bunları geliştiriciye göndermek için sor</string>
-    <string name="install_history">Yükleme geçmişi</string>
-    <string name="install_history_summary">Tüm yüklemelerin ve kaldırmaların özel günlüğünü görüntüleyin</string>
+    <string name="prompt_to_send_crash_reports_summary">Çökmeler hakkında veri topla ve geliştiriciye göndermek için sor</string>
+    <string name="install_history">Kurulum Geçmişi</string>
+    <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
     <string name="share_repository">Depoyu Paylaş</string>
     <string name="allow_push_requests">Depoların uygulamaları yüklemesine/kaldırmasına izin ver</string>
     <string name="allow_push_requests_summary">Depo meta verileri, uygulamaları yüklemek veya kaldırmak için push istekleri içerebilir</string>
     <string name="antinosourcesince">Kaynak kodu artık mevcut değil, güncelleme mümkün değil.</string>
-    <string name="send_install_history">Yükleme geçmişini gönder</string>
-    <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>
+    <string name="send_install_history">Yükleme Geçmişini Gönder</string>
+    <string name="send_history_csv">%s geçmişi CSV dosyası olarak yolla</string>
     <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/WiFi Ayarları tarafından devre dışı bırakıldı</string>
     <string name="send_installed_apps">Kurulu uygulamaları paylaş</string>
     <string name="send_installed_apps_csv">F-Droid tarafıdan kurulmuş uygulamalar, CSV dosyası olarak</string>
