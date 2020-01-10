@@ -1,8 +1,8 @@
-* Yfirhalning á býttiviðmóti, undirbúið að endurskrifa
-* Birt "Afturkalla" eftir að atriði eru tekin af uppfærsluflipanum (takk @Hocuri!)
-* Löguð meðhöndlun ETag þegar tengst er við NGINX-spegla #1737
-* Löguð birting "Nýjast" vegna rangrar meðhöndlunar tímabelta #1757
-* Hunsa öll ómikilvæg hrun í bakþjónustum
+* yfirhalning á býttiviðmóti, undirbúið að endurskrifa
+* birt "Afturkalla" eftir að atriði eru tekin af uppfærsluflipanum (takk @Hocuri!)
+* löguð meðhöndlun ETag þegar tengst er við NGINX-spegla #1737
+* löguð birting "Nýjast" vegna rangrar meðhöndlunar tímabelta #1757
+* hunsa öll ómikilvæg hrun í bakþjónustum
 * býtti við nálæg tæki endurhannað m/v færanlega tengistaði
 * nýtt í neyðarhnappi: fjarlægja forrit og frumstilla hugbúnaðarsöfn
 * USB OTG minnislykla má nota sem staðvær söfn og spegla
