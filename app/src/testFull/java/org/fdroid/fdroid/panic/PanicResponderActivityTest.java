@@ -22,8 +22,10 @@ public class PanicResponderActivityTest extends FDroidProviderTest {
      */
     @Test
     public void defaultRepos() {
+        int defaultRepoCount = RepoProviderTest.getDefaultRepoCount(context);
+
         List<Repo> defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(defaultRepos.size(), 4); // based on app/src/main/res/default_repo.xml
+        assertEquals(defaultRepos.size(), defaultRepoCount);
 
         Repo gpRepo = RepoProvider.Helper.findByAddress(context, "https://guardianproject.info/fdroid/repo");
         setEnabled(gpRepo, true);
@@ -32,7 +34,7 @@ public class PanicResponderActivityTest extends FDroidProviderTest {
         PanicResponderActivity.resetRepos(context);
         assertEquals(1, RepoProvider.Helper.countEnabledRepos(context));
         defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(4, defaultRepos.size());
+        assertEquals(defaultRepoCount, defaultRepos.size());
 
         RepoProviderTest.insertRepo(
                 context,
@@ -42,12 +44,12 @@ public class PanicResponderActivityTest extends FDroidProviderTest {
                 "Mock Repo 1"
         );
         defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(5, defaultRepos.size());
+        assertEquals(defaultRepoCount + 1, defaultRepos.size());
         assertEquals(2, RepoProvider.Helper.countEnabledRepos(context));
 
         PanicResponderActivity.resetRepos(context);
         defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(4, defaultRepos.size());
+        assertEquals(defaultRepoCount, defaultRepos.size());
         assertEquals(1, RepoProvider.Helper.countEnabledRepos(context));
     }
 }

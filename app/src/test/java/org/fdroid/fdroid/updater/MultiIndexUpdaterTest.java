@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexUpdater.UpdateException;
 import org.fdroid.fdroid.IndexV1Updater;
@@ -15,6 +16,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.RepoProviderTest;
 import org.fdroid.fdroid.data.Schema;
 import org.junit.Before;
 
@@ -77,12 +79,10 @@ public abstract class MultiIndexUpdaterTest extends FDroidProviderTest {
 
     @Before
     public final void setupMultiRepo() throws Exception {
-        // On a fresh database install, there will be F-Droid + GP repos, including their Archive
-        // repos that we are not interested in.
-        RepoProvider.Helper.remove(context, 1);
-        RepoProvider.Helper.remove(context, 2);
-        RepoProvider.Helper.remove(context, 3);
-        RepoProvider.Helper.remove(context, 4);
+        // Remove default repos.
+        for (int i = 1; i <= RepoProviderTest.getDefaultRepoCount(context); ++i) {
+            RepoProvider.Helper.remove(context, i);
+        }
 
         Preferences.setupForTests(context);
     }
