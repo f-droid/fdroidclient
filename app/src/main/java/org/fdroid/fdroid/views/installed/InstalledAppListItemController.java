@@ -54,7 +54,7 @@ public class InstalledAppListItemController extends AppListItemController {
         } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.autoInstallVersionCode) {
             return activity.getString(
                     R.string.installed_app__updates_ignored_for_suggested_version,
-                    app.getSuggestedVersionName());
+                    app.getAutoInstallVersionName());
         }
 
         return null;

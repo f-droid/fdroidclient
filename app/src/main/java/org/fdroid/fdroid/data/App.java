@@ -177,10 +177,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * Unlike other public fields, this is only accessible via a getter, to
      * emphasise that setting it wont do anything. In order to change this,
-     * you need to change suggestedVersionCode to an apk which is in the
-     * apk table.
+     * you need to change {@link #autoInstallVersionCode} to an APK which is
+     * in the {@link Schema.ApkTable} table.
      */
-    private String suggestedVersionName;
+    private String autoInstallVersionName;
 
     /**
      * The version that will be automatically installed if the user does not
@@ -304,7 +304,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     liberapayID = cursor.getString(i);
                     break;
                 case Cols.AutoInstallApk.VERSION_NAME:
-                    suggestedVersionName = cursor.getString(i);
+                    autoInstallVersionName = cursor.getString(i);
                     break;
                 case Cols.PREFERRED_SIGNER:
                     preferredSigner = cursor.getString(i);
@@ -1081,11 +1081,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
 
     /**
-     * @see App#suggestedVersionName for why this uses a getter while other member variables are
+     * @see App#autoInstallVersionName for why this uses a getter while other member variables are
      * publicly accessible.
      */
-    public String getSuggestedVersionName() {
-        return suggestedVersionName;
+    public String getAutoInstallVersionName() {
+        return autoInstallVersionName;
     }
 
     /**
@@ -1188,7 +1188,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.preferredSigner);
         dest.writeString(this.upstreamVersionName);
         dest.writeInt(this.upstreamVersionCode);
-        dest.writeString(this.suggestedVersionName);
+        dest.writeString(this.autoInstallVersionName);
         dest.writeInt(this.autoInstallVersionCode);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
         dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
@@ -1239,7 +1239,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.preferredSigner = in.readString();
         this.upstreamVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();
-        this.suggestedVersionName = in.readString();
+        this.autoInstallVersionName = in.readString();
         this.autoInstallVersionCode = in.readInt();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
