@@ -303,6 +303,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "antiFeatures",
                 "authorEmail",
                 "authorName",
+                "autoInstallVersionCode",
                 "bitcoin",
                 "categories",
                 "changelog",
@@ -333,11 +334,10 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "tvBanner",
                 "tvScreenshots",
                 "upstreamVersionCode",
-                "upstreamVersionName",
                 "video",
-                "whatsNew",
                 "wearScreenshots",
                 "webSite",
+                "whatsNew",
         };
         String[] ignoredInApp = new String[]{
                 "compatible",

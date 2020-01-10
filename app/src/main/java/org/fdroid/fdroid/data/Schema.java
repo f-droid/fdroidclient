@@ -191,7 +191,7 @@ public interface Schema {
             String FLATTR_ID = "flattrID";
             String LIBERAPAY_ID = "liberapayID";
             String PREFERRED_SIGNER = "preferredSigner";
-            String SUGGESTED_VERSION_CODE = "suggestedVercode";
+            String AUTO_INSTALL_VERSION_CODE = "suggestedVercode"; // name mismatch from issue #1063
             String UPSTREAM_VERSION_NAME = "upstreamVersion";
             String UPSTREAM_VERSION_CODE = "upstreamVercode";
             String ADDED = "added";
@@ -248,7 +248,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED,
+                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED,
             };
 
             /**
@@ -265,7 +265,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

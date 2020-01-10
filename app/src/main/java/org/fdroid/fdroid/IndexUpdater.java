@@ -481,7 +481,7 @@ public class IndexUpdater {
                 }
                 int versionCode;
                 if (repoPushRequest.versionCode == null) {
-                    versionCode = app.suggestedVersionCode;
+                    versionCode = app.autoInstallVersionCode;
                 } else {
                     versionCode = repoPushRequest.versionCode;
                 }

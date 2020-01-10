@@ -35,7 +35,7 @@ public class InstalledAppListItemController extends AppListItemController {
      * Either "Version X" or "Version Y (Recommended)", depending on the installed version.
      */
     private CharSequence getInstalledVersion(@NonNull App app) {
-        int statusStringRes = (app.suggestedVersionCode == app.installedVersionCode)
+        int statusStringRes = (app.autoInstallVersionCode == app.installedVersionCode)
                 ? R.string.app_recommended_version_installed
                 : R.string.app_version_x_installed;
 
@@ -51,7 +51,7 @@ public class InstalledAppListItemController extends AppListItemController {
         AppPrefs prefs = app.getPrefs(activity);
         if (prefs.ignoreAllUpdates) {
             return activity.getString(R.string.installed_app__updates_ignored);
-        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.suggestedVersionCode) {
+        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.autoInstallVersionCode) {
             return activity.getString(
                     R.string.installed_app__updates_ignored_for_suggested_version,
                     app.getSuggestedVersionName());

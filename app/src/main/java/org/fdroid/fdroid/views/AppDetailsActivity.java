@@ -250,7 +250,7 @@ public class AppDetailsActivity extends AppCompatActivity
         MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
         if (itemIgnoreThis != null) {
             itemIgnoreThis.setVisible(app.hasUpdates());
-            itemIgnoreThis.setChecked(app.getPrefs(this).ignoreThisUpdate >= app.suggestedVersionCode);
+            itemIgnoreThis.setChecked(app.getPrefs(this).ignoreThisUpdate >= app.autoInstallVersionCode);
         }
         return true;
     }
@@ -274,10 +274,10 @@ public class AppDetailsActivity extends AppCompatActivity
             AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
             return true;
         } else if (item.getItemId() == R.id.action_ignore_this) {
-            if (app.getPrefs(this).ignoreThisUpdate >= app.suggestedVersionCode) {
+            if (app.getPrefs(this).ignoreThisUpdate >= app.autoInstallVersionCode) {
                 app.getPrefs(this).ignoreThisUpdate = 0;
             } else {
-                app.getPrefs(this).ignoreThisUpdate = app.suggestedVersionCode;
+                app.getPrefs(this).ignoreThisUpdate = app.autoInstallVersionCode;
             }
             item.setChecked(app.getPrefs(this).ignoreThisUpdate > 0);
             AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));

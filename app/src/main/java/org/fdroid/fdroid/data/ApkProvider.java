@@ -92,7 +92,7 @@ public class ApkProvider extends FDroidProvider {
         @Nullable
         public static Apk findSuggestedApk(Context context, App app) {
             String mostAppropriateSignature = app.getMostAppropriateSignature();
-            Apk apk = findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode,
+            Apk apk = findApkFromAnyRepo(context, app.packageName, app.autoInstallVersionCode,
                     mostAppropriateSignature);
             if (apk == null && (mostAppropriateSignature == null || !app.isInstalled(context))) {
                 List<Apk> apks = findByPackageName(context, app.packageName);

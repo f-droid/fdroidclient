@@ -399,7 +399,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         getApkTableName(),
                         "suggestedApk",
-                        getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
+                        getTableName() + "." + Cols.AUTO_INSTALL_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
             }
             appendField(fieldName, "suggestedApk", alias);
         }
@@ -615,11 +615,11 @@ public class AppProvider extends FDroidProvider {
 
         // Need to use COALESCE because the prefs join may not resolve any rows, which means the
         // ignore* fields will be NULL. In that case, we want to instead use a default value of 0.
-        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.SUGGESTED_VERSION_CODE;
+        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.AUTO_INSTALL_VERSION_CODE;
         final String ignoreAll = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) != 1";
 
         final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
-        final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
+        final String where = ignore + " AND " + app + "." + Cols.AUTO_INSTALL_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
 
         return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
     }
@@ -1118,7 +1118,7 @@ public class AppProvider extends FDroidProvider {
         // installed table (this is impossible), but rather because the subselect above returned
         // zero rows.
         String updateSql =
-                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
@@ -1154,7 +1154,7 @@ public class AppProvider extends FDroidProvider {
         final String[] args;
 
         if (packageName == null) {
-            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.AUTO_INSTALL_VERSION_CODE + " IS NULL ";
             args = null;
         } else {
             // Don't update an app with an upstream version code, because that would have been updated
@@ -1164,7 +1164,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         String updateSql =
-                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +

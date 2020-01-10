@@ -182,7 +182,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     private String suggestedVersionName;
 
-    public int suggestedVersionCode;
+    /**
+     * The version that will be automatically installed if the user does not
+     * choose a specific version.
+     */
+    public int autoInstallVersionCode;
 
     public Date added;
     public Date lastUpdated;
@@ -305,8 +309,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.PREFERRED_SIGNER:
                     preferredSigner = cursor.getString(i);
                     break;
-                case Cols.SUGGESTED_VERSION_CODE:
-                    suggestedVersionCode = cursor.getInt(i);
+                case Cols.AUTO_INSTALL_VERSION_CODE:
+                    autoInstallVersionCode = cursor.getInt(i);
                     break;
                 case Cols.UPSTREAM_VERSION_CODE:
                     upstreamVersionCode = cursor.getInt(i);
@@ -955,7 +959,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
-        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
+        values.put(Cols.AUTO_INSTALL_VERSION_CODE, autoInstallVersionCode);
         values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
         values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
         values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
@@ -1021,8 +1025,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public boolean hasUpdates() {
         boolean updates = false;
-        if (suggestedVersionCode > 0) {
-            updates = installedVersionCode > 0 && installedVersionCode < suggestedVersionCode;
+        if (autoInstallVersionCode > 0) {
+            updates = installedVersionCode > 0 && installedVersionCode < autoInstallVersionCode;
         }
         return updates;
     }
@@ -1041,7 +1045,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public boolean canAndWantToUpdate(Context context) {
         boolean canUpdate = hasUpdates();
         AppPrefs prefs = getPrefs(context);
-        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < suggestedVersionCode;
+        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < autoInstallVersionCode;
         return canUpdate && wantsUpdate && !isDisabledByAntiFeatures();
     }
 
@@ -1185,7 +1189,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.upstreamVersionName);
         dest.writeInt(this.upstreamVersionCode);
         dest.writeString(this.suggestedVersionName);
-        dest.writeInt(this.suggestedVersionCode);
+        dest.writeInt(this.autoInstallVersionCode);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
         dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
         dest.writeStringArray(this.categories);
@@ -1236,7 +1240,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.upstreamVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();
         this.suggestedVersionName = in.readString();
-        this.suggestedVersionCode = in.readInt();
+        this.autoInstallVersionCode = in.readInt();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
         long tmpLastUpdated = in.readLong();

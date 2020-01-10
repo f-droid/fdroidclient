@@ -195,7 +195,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
      */
     public void assertSuggested(String packageName, int suggestedVersion, String installedSig, int installedVersion) {
         App suggestedApp = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), packageName);
-        assertEquals("Suggested version on App", suggestedVersion, suggestedApp.suggestedVersionCode);
+        assertEquals("Suggested version on App", suggestedVersion, suggestedApp.autoInstallVersionCode);
         assertEquals("Installed signature on App", installedSig, suggestedApp.installedSig);
 
         Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(context, suggestedApp);
@@ -212,7 +212,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
             App canUpdateApp = appsToUpdate.get(0);
             assertEquals("Package name of updatable app", packageName, canUpdateApp.packageName);
             assertEquals("Installed version of updatable app", installedVersion, canUpdateApp.installedVersionCode);
-            assertEquals("Suggested version to update to", suggestedVersion, canUpdateApp.suggestedVersionCode);
+            assertEquals("Suggested version to update to", suggestedVersion, canUpdateApp.autoInstallVersionCode);
             assertEquals("Installed signature of updatable app", installedSig, canUpdateApp.installedSig);
         }
     }
