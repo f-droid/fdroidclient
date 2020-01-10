@@ -182,12 +182,12 @@ public class RepoPersister {
     private void calcApkCompatibilityFlags(List<Apk> apks) {
         for (final Apk apk : apks) {
             final List<String> reasons = checker.getIncompatibleReasons(apk);
-            if (reasons.size() > 0) {
-                apk.compatible = false;
-                apk.incompatibleReasons = reasons.toArray(new String[reasons.size()]);
-            } else {
+            if (reasons.isEmpty()) {
                 apk.compatible = true;
                 apk.incompatibleReasons = null;
+            } else {
+                apk.compatible = false;
+                apk.incompatibleReasons = reasons.toArray(new String[reasons.size()]);
             }
         }
     }

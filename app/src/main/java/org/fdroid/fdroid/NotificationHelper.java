@@ -199,7 +199,7 @@ class NotificationHelper {
 
         Notification notification;
         if (updates.size() != 1 || useStackedNotifications()) {
-            if (updates.size() == 0) {
+            if (updates.isEmpty()) {
                 // No updates, remove summary
                 notificationManager.cancel(GROUP_UPDATES, NOTIFY_ID_UPDATES);
             } else {
@@ -208,7 +208,7 @@ class NotificationHelper {
             }
         }
         if (installed.size() != 1 || useStackedNotifications()) {
-            if (installed.size() == 0) {
+            if (installed.isEmpty()) {
                 // No installed, remove summary
                 notificationManager.cancel(GROUP_INSTALLED, NOTIFY_ID_INSTALLED);
             } else {

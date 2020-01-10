@@ -68,7 +68,7 @@ public class Hasher {
             InputStream input = null;
             try {
                 input = new BufferedInputStream(new FileInputStream(file));
-                while ((read = input.read(buffer)) > 0) {
+                while ((read = input.read(buffer)) > 0) { // NOPMD Avoid assignments in operands
                     digest.update(buffer, 0, read);
                 }
             } catch (Exception e) {

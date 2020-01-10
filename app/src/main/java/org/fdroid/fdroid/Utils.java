@@ -524,7 +524,7 @@ public final class Utils {
 
             byte[] dataBytes = new byte[8192];
             int nread;
-            while ((nread = bis.read(dataBytes)) != -1) {
+            while ((nread = bis.read(dataBytes)) != -1) { // NOPMD Avoid assignments in operands
                 md.update(dataBytes, 0, nread);
             }
 

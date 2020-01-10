@@ -638,7 +638,7 @@ public class AppProvider extends FDroidProvider {
         // Put in a Set to remove duplicates
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
 
-        if (keywordSet.size() == 0) {
+        if (keywordSet.isEmpty()) {
             return new AppQuerySelection();
         }
 

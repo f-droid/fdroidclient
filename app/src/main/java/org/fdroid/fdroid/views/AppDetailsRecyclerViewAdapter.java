@@ -153,13 +153,13 @@ public class AppDetailsRecyclerViewAdapter
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
-        if (versions.size() > 0) {
+        if (versions.isEmpty()) {
+            addItem(VIEWTYPE_NO_VERSIONS);
+        } else {
             addItem(VIEWTYPE_VERSIONS);
             if (showVersions) {
                 setShowVersions(true);
             }
-        } else {
-            addItem(VIEWTYPE_NO_VERSIONS);
         }
 
         notifyDataSetChanged();
@@ -563,7 +563,7 @@ public class AppDetailsRecyclerViewAdapter
 
             updateAntiFeaturesWarning();
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
+            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(new View.OnClickListener() {

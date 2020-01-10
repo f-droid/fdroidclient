@@ -840,7 +840,7 @@ public class RepoXMLHandlerTest {
         for (App app : apps) {
             if (expectedAntiFeatures.containsKey(app.packageName)) {
                 List<String> antiFeatures = expectedAntiFeatures.get(app.packageName);
-                if (antiFeatures.size() == 0) {
+                if (antiFeatures.isEmpty()) {
                     assertNull(app.antiFeatures);
                 } else {
                     List<String> actualAntiFeatures = new ArrayList<>();

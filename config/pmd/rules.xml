@@ -1,52 +1,52 @@
 <?xml version="1.0"?>
 <ruleset name="Custom ruleset"
-        xmlns="http://pmd.sf.net/ruleset/1.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
-        xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+  <description>
+    Rules for the whole project
+  </description>
 
-    <rule ref="rulesets/java/basic.xml">
-        <exclude name="CollapsibleIfStatements"/> <!--sometimes forces hard to read code-->
-    </rule>
-    <rule ref="rulesets/java/unusedcode.xml"/>
-    <rule ref="rulesets/java/android.xml"/>
-    <rule ref="rulesets/java/clone.xml"/>
-    <rule ref="rulesets/java/finalizers.xml"/>
-    <rule ref="rulesets/java/migrating.xml"/>
-    <rule ref="rulesets/java/unnecessary.xml">
-        <exclude name="UselessParentheses"/> <!--Too nitpicky-->
-    </rule>
-    <rule ref="rulesets/java/empty.xml">
-        <exclude name="EmptyCatchBlock"/> <!--Ignoring an exception-->
-        <exclude name="EmptyWhileStmt"/> <!--Can be useful sometimes-->
-    </rule>
-    <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
-    <rule ref="rulesets/java/optimizations.xml/AddEmptyString"/>
-    <rule ref="rulesets/java/optimizations.xml/UseArraysAsList"/>
-    <rule ref="rulesets/java/optimizations.xml/UnnecessaryWrapperObjectCreation"/>
-
-    <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
-    <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
-
-    <rule ref="rulesets/java/strictexception.xml/AvoidRethrowingException"/>
-    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable"/>
-    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE"/>
-    <rule ref="rulesets/java/strictexception.xml/DoNotExtendJavaLangError"/>
-    <rule ref="rulesets/java/strictexception.xml/DoNotThrowExceptionInFinally"/>
-    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNewInstanceOfSameException"/>
-    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNullPointerException"/>
-
-    <rule ref="rulesets/java/design.xml/FinalFieldCouldBeStatic"/>
-    <rule ref="rulesets/java/design.xml/CloseResource"/>
-    <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt"/>
-    <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn"/>
-    <rule ref="rulesets/java/design.xml/NonCaseLabelInSwitchStatement"/>
-    <rule ref="rulesets/java/design.xml/EqualsNull"/>
-    <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
-    <rule ref="rulesets/java/design.xml/ImmutableField"/>
-    <rule ref="rulesets/java/design.xml/SingularField"/>
-    <rule ref="rulesets/java/design.xml/SimplifyBooleanReturns"/>
-    <rule ref="rulesets/java/design.xml/SimplifyBooleanExpressions"/>
-    <rule ref="rulesets/java/design.xml/LogicInversion"/>
+  <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod"/>
+  <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables"/>
+  <rule ref="category/java/bestpractices.xml/DefaultLabelNotLastInSwitchStmt"/>
+  <rule ref="category/java/bestpractices.xml/MissingOverride"/>
+  <rule ref="category/java/bestpractices.xml/UnusedFormalParameter"/>
+  <rule ref="category/java/bestpractices.xml/UnusedLocalVariable"/>
+  <rule ref="category/java/bestpractices.xml/UnusedPrivateField"/>
+  <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod"/>
+  <rule ref="category/java/codestyle.xml/UnnecessaryConstructor"/>
+  <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn"/>
+  <rule ref="category/java/design.xml/AvoidRethrowingException"/>
+  <rule ref="category/java/design.xml/AvoidThrowingNewInstanceOfSameException"/>
+  <rule ref="category/java/design.xml/AvoidThrowingNullPointerException"/>
+  <rule ref="category/java/design.xml/DoNotExtendJavaLangError"/>
+  <rule ref="category/java/design.xml/FinalFieldCouldBeStatic"/>
+  <rule ref="category/java/design.xml/ImmutableField"/>
+  <rule ref="category/java/design.xml/LogicInversion"/>
+  <rule ref="category/java/design.xml/SimplifyBooleanExpressions"/>
+  <rule ref="category/java/design.xml/SimplifyBooleanReturns"/>
+  <rule ref="category/java/design.xml/SingularField"/>
+  <rule ref="category/java/errorprone.xml/AssignmentInOperand"/>
+  <rule ref="category/java/errorprone.xml/AvoidAssertAsIdentifier"/>
+  <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
+  <rule ref="category/java/errorprone.xml/AvoidCallingFinalize"/>
+  <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
+  <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
+  <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators"/>
+  <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues"/>
+  <rule ref="category/java/errorprone.xml/BrokenNullCheck"/>
+  <rule ref="category/java/errorprone.xml/CallSuperFirst"/>
+  <rule ref="category/java/errorprone.xml/CallSuperLast"/>
+  <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" />
+  <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally"/>
+  <rule ref="category/java/errorprone.xml/EqualsNull"/>
+  <rule ref="category/java/errorprone.xml/IdempotentOperations"/>
+  <rule ref="category/java/errorprone.xml/NonCaseLabelInSwitchStatement"/>
+  <rule ref="category/java/performance.xml/AddEmptyString"/>
+  <rule ref="category/java/performance.xml/UnnecessaryWrapperObjectCreation"/>
+  <rule ref="category/java/performance.xml/UseArraysAsList"/>
+  <rule ref="category/java/security.xml"/>
 
 </ruleset>

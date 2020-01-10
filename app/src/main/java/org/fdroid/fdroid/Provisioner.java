@@ -64,8 +64,8 @@ public class Provisioner {
             List<ProvisionPlaintext> plaintexts = p.extractProvisionsPlaintext(files);
             List<Provision> provisions = p.parseProvisions(plaintexts);
 
-            if (provisions == null || provisions.size() == 0) {
-                Utils.debugLog(TAG, "Provision dir does not contain any provisions: '" + provisionDir.getAbsolutePath() + "' moving on ...");
+            if (provisions == null || provisions.isEmpty()) {
+                Utils.debugLog(TAG, "Provision dir is empty: '" + provisionDir.getAbsolutePath() + "' moving on ...");
             } else {
                 int cleanupCounter = 0;
                 for (Provision provision : provisions) {
@@ -173,7 +173,7 @@ public class Provisioner {
                 try {
                     in = new ZipInputStream(new FileInputStream(file));
                     ZipEntry zipEntry;
-                    while ((zipEntry = in.getNextEntry()) != null) {
+                    while ((zipEntry = in.getNextEntry()) != null) { // NOPMD Avoid assignments in operands
                         String name = zipEntry.getName();
                         if ("repo_provision.json".equals(name)) {
                             if (plain.getRepositoryProvision() != null) {

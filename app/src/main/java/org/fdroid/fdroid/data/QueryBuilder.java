@@ -143,7 +143,7 @@ abstract class QueryBuilder {
     }
 
     private String orderBySql() {
-        if (orderBys.size() == 0) {
+        if (orderBys.isEmpty()) {
             return "";
         }
         return " ORDER BY " + TextUtils.join(", ", orderBys);
