@@ -65,6 +65,7 @@
             android:description="@string/app_description"
             android:allowBackup="true"
             android:fullBackupContent="@xml/backup_rules"
+            android:networkSecurityConfig="@xml/network_security_config"
             android:theme="@style/AppThemeLight"
             android:supportsRtl="true">
 

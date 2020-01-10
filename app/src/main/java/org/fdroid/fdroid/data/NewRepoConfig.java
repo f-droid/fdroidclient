@@ -7,10 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.nearby.peers.WifiPeer;
 import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
+import org.fdroid.fdroid.nearby.peers.WifiPeer;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class NewRepoConfig {
@@ -164,19 +165,43 @@ public class NewRepoConfig {
         return errorMessage;
     }
 
+    private static final List<String> FORCE_HTTPS_DOMAINS = Arrays.asList(
+            "amazonaws.com",
+            "github.com",
+            "githubusercontent.com",
+            "github.io",
+            "gitlab.com",
+            "gitlab.io"
+    );
+
     /**
-     * Sanitize and format an incoming repo URI for function and readability
+     * Sanitize and format an incoming repo URI for function and readability.
+     * This also forces URLs listed in {@code app/src/main/res/xml/network_security_config.xml}
+     * to have "https://" as the scheme.
+     *
+     * @see <a href="https://developer.android.com/training/articles/security-config">Network Security Config</a>
      */
     public static String sanitizeRepoUri(Uri uri) {
         String scheme = uri.getScheme();
+        String newScheme = scheme.toLowerCase(Locale.ENGLISH);
         String host = uri.getHost();
+        String newHost = host.toLowerCase(Locale.ENGLISH);
         String userInfo = uri.getUserInfo();
+        if ("http".equals(newScheme)) {
+            for (String httpsDomain : FORCE_HTTPS_DOMAINS) {
+                if (newHost.endsWith(httpsDomain)) {
+                    scheme = "https";
+                    break;
+                }
+            }
+        }
+
         return uri.toString()
                 .replaceAll("\\?.*$", "") // remove the whole query
                 .replaceAll("/*$", "") // remove all trailing slashes
                 .replace(userInfo + "@", "") // remove user authentication
-                .replace(host, host.toLowerCase(Locale.ENGLISH))
-                .replace(scheme, scheme.toLowerCase(Locale.ENGLISH))
+                .replaceFirst(host, newHost)
+                .replaceFirst(scheme, newScheme)
                 .replace("fdroidrepo", "http") // proper repo address
                 .replace("/FDROID/REPO", "/fdroid/repo"); // for QR FDroid path
     }
