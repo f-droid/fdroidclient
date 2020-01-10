@@ -269,7 +269,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.lastUpdated = Utils.parseDate(str, null);
                     break;
                 case "marketversion":
-                    curapp.upstreamVersionName = str;
+                    curapp.suggestedVersionName = str;
                     break;
                 case "marketvercode":
                     curapp.upstreamVersionCode = Utils.parseInt(str, -1);

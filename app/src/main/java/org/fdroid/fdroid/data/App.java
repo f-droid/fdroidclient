@@ -162,7 +162,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String liberapayID;
 
-    public String upstreamVersionName;
+    /**
+     * This matches {@code CurrentVersion} in build metadata files.
+     *
+     * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersion">CurrentVersion</a>
+     */
+    public String suggestedVersionName;
 
     /**
      * The index-v1 metadata uses the term `suggestedVersionCode` but we need that
@@ -315,8 +320,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.UPSTREAM_VERSION_CODE:
                     upstreamVersionCode = cursor.getInt(i);
                     break;
-                case Cols.UPSTREAM_VERSION_NAME:
-                    upstreamVersionName = cursor.getString(i);
+                case Cols.SUGGESTED_VERSION_NAME:
+                    suggestedVersionName = cursor.getString(i);
                     break;
                 case Cols.ADDED:
                     added = Utils.parseDate(cursor.getString(i), null);
@@ -960,7 +965,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
         values.put(Cols.AUTO_INSTALL_VERSION_CODE, autoInstallVersionCode);
-        values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
+        values.put(Cols.SUGGESTED_VERSION_NAME, suggestedVersionName);
         values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
         values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
@@ -1186,7 +1191,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.flattrID);
         dest.writeString(this.liberapayID);
         dest.writeString(this.preferredSigner);
-        dest.writeString(this.upstreamVersionName);
+        dest.writeString(this.suggestedVersionName);
         dest.writeInt(this.upstreamVersionCode);
         dest.writeString(this.autoInstallVersionName);
         dest.writeInt(this.autoInstallVersionCode);
@@ -1237,7 +1242,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.flattrID = in.readString();
         this.liberapayID = in.readString();
         this.preferredSigner = in.readString();
-        this.upstreamVersionName = in.readString();
+        this.suggestedVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();
         this.autoInstallVersionName = in.readString();
         this.autoInstallVersionCode = in.readInt();

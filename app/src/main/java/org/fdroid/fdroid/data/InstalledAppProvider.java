@@ -275,7 +275,7 @@ public class InstalledAppProvider extends FDroidProvider {
                 query.addField(Cols._ID);
                 query.appendField(Cols.APPLICATION_LABEL, null, Schema.AppMetadataTable.Cols.NAME);
                 query.appendField(Cols.VERSION_CODE, null, AppMetadataTable.Cols.UPSTREAM_VERSION_CODE);
-                query.appendField(Cols.VERSION_NAME, null, AppMetadataTable.Cols.UPSTREAM_VERSION_NAME);
+                query.appendField(Cols.VERSION_NAME, null, AppMetadataTable.Cols.SUGGESTED_VERSION_NAME);
                 query.appendField(PackageTable.Cols.PACKAGE_NAME, PackageTable.NAME,
                         AppMetadataTable.Cols.Package.PACKAGE_NAME);
                 break;

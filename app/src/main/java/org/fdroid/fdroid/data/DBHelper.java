@@ -148,7 +148,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.CHANGELOG + " text, "
             + AppMetadataTable.Cols.PREFERRED_SIGNER + " text,"
             + AppMetadataTable.Cols.AUTO_INSTALL_VERSION_CODE + " text,"
-            + AppMetadataTable.Cols.UPSTREAM_VERSION_NAME + " text,"
+            + AppMetadataTable.Cols.SUGGESTED_VERSION_NAME + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + " integer,"
             + AppMetadataTable.Cols.ANTI_FEATURES + " string,"
             + AppMetadataTable.Cols.DONATE + " string,"
