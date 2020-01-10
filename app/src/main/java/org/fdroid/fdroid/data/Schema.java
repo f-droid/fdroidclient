@@ -210,7 +210,7 @@ public interface Schema {
             String IS_APK = "isApk";
             String IS_LOCALIZED = "isLocalized";
 
-            interface SuggestedApk {
+            interface AutoInstallApk {
                 String VERSION_NAME = "suggestedApkVersion";
             }
 
@@ -238,7 +238,7 @@ public interface Schema {
             /**
              * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
              * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
-             * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
+             * or which are from other related tables (e.g. {@link AutoInstallApk#VERSION_NAME}).
              */
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
@@ -265,7 +265,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED, AutoInstallApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

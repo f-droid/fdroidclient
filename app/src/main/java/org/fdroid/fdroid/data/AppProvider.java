@@ -32,17 +32,17 @@ import java.util.Set;
 /**
  * Each app has a bunch of metadata that it associates with a package name (such as org.fdroid.fdroid).
  * Multiple repositories can host the same package, and provide different metadata for that app.
- *
+ * <p>
  * As such, it is usually the case that you are interested in an {@link App} which has its metadata
  * provided by "the repo with the best priority", rather than "specific repo X". This is important
  * when asking for an apk, whereby the preferable way is likely using:
- *
- *  * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}
- *
+ * <p>
+ * * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}
+ * <p>
  * rather than:
- *
- *  * {@link AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[])}
- *
+ * <p>
+ * * {@link AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[])}
+ * <p>
  * The same can be said of retrieving a list of {@link App} objects, where the metadata for each app
  * in the result set should be populated from the repository with the best priority.
  */
@@ -53,7 +53,8 @@ public class AppProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        private Helper() { }
+        private Helper() {
+        }
 
         public static List<App> all(ContentResolver resolver) {
             return all(resolver, Cols.ALL);
@@ -192,6 +193,7 @@ public class AppProvider extends FDroidProvider {
          * Tells the query selection that it will need to join onto the installed apps table
          * when used. This should be called when your query makes use of fields from that table
          * (for example, list all installed, or list those which can be updated).
+         *
          * @return A reference to this object, to allow method chaining, for example
          * <code>return new AppQuerySelection(selection).requiresInstalledTable())</code>
          */
@@ -361,8 +363,8 @@ public class AppProvider extends FDroidProvider {
                 case Cols.Package.PACKAGE_NAME:
                     appendField(PackageTable.Cols.PACKAGE_NAME, PackageTable.NAME, Cols.Package.PACKAGE_NAME);
                     break;
-                case Cols.SuggestedApk.VERSION_NAME:
-                    addSuggestedApkVersionField();
+                case Cols.AutoInstallApk.VERSION_NAME:
+                    addAutoInstallApkVersionField();
                     break;
                 case Cols.InstalledApp.VERSION_NAME:
                     addInstalledAppVersionName();
@@ -387,13 +389,16 @@ public class AppProvider extends FDroidProvider {
             appendField("COUNT( DISTINCT " + getTableName() + "." + Cols.ROW_ID + " ) AS " + Cols._COUNT);
         }
 
-        private void addSuggestedApkVersionField() {
-            addSuggestedApkField(
+        private void addAutoInstallApkVersionField() {
+            addAutoInstallApkField(
                     ApkTable.Cols.VERSION_NAME,
-                    Cols.SuggestedApk.VERSION_NAME);
+                    Cols.AutoInstallApk.VERSION_NAME);
         }
 
-        private void addSuggestedApkField(String fieldName, String alias) {
+        /**
+         * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">suggestedApk name mismatch #1063</a>
+         */
+        private void addAutoInstallApkField(String fieldName, String alias) {
             if (!isSuggestedApkTableAdded) {
                 isSuggestedApkTableAdded = true;
                 leftJoin(

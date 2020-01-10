@@ -303,7 +303,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.LIBERAPAY_ID:
                     liberapayID = cursor.getString(i);
                     break;
-                case Cols.SuggestedApk.VERSION_NAME:
+                case Cols.AutoInstallApk.VERSION_NAME:
                     suggestedVersionName = cursor.getString(i);
                     break;
                 case Cols.PREFERRED_SIGNER:
