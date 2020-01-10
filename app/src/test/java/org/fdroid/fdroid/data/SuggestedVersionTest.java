@@ -44,7 +44,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.updateDbAfterInserting(context);
         assertSuggested("single.app", 2);
 
-        // By enabling unstable updates, the "upstreamVersionCode" should get ignored, and we should
+        // By enabling unstable updates, the "suggestedVersionCode" should get ignored, and we should
         // suggest the latest version (3).
         Preferences.get().setUnstableUpdates(true);
         assertSuggested("single.app", 3);
@@ -66,7 +66,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.updateDbAfterInserting(context);
 
         // Given we aren't installed yet, we don't care which signature.
-        // Just get as close to upstreamVersionCode as possible.
+        // Just get as close to suggestedVersionCode as possible.
         assertSuggested("single.app", 4);
 
         // Now install v1 with the f-droid signature. In response, we should only suggest
@@ -74,13 +74,13 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         InstalledAppTestUtils.install(context, "single.app", 1, "v1", TestUtils.FDROID_CERT);
         assertSuggested("single.app", 3, TestUtils.FDROID_SIG, 1);
 
-        // This adds the "upstreamVersionCode" version of the app, but signed by f-droid.
+        // This adds the "suggestedVersionCode" version of the app, but signed by f-droid.
         TestUtils.insertApk(context, singleApp, 4, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 5, TestUtils.FDROID_SIG);
         TestUtils.updateDbAfterInserting(context);
         assertSuggested("single.app", 4, TestUtils.FDROID_SIG, 1);
 
-        // Version 5 from F-Droid is not the "upstreamVersionCode", but with beta updates it should
+        // Version 5 from F-Droid is not the "suggestedVersionCode", but with beta updates it should
         // still become the suggested version now.
         Preferences.get().setUnstableUpdates(true);
         assertSuggested("single.app", 5, TestUtils.FDROID_SIG, 1);
@@ -111,7 +111,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.updateDbAfterInserting(context);
 
         // Given we aren't installed yet, we don't care which signature or even which repo.
-        // Just get as close to upstreamVersionCode as possible.
+        // Just get as close to suggestedVersionCode as possible.
         assertSuggested("single.app", 4);
 
         // Now install v1 with the f-droid signature. In response, we should only suggest
@@ -119,7 +119,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         InstalledAppTestUtils.install(context, "single.app", 1, "v1", TestUtils.FDROID_CERT);
         assertSuggested("single.app", 3, TestUtils.FDROID_SIG, 1);
 
-        // This adds the "upstreamVersionCode" version of the app, but signed by f-droid.
+        // This adds the "suggestedVersionCode" version of the app, but signed by f-droid.
         TestUtils.insertApk(context, mainApp, 4, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, mainApp, 5, TestUtils.FDROID_SIG);
         TestUtils.updateDbAfterInserting(context);
@@ -131,7 +131,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         InstalledAppTestUtils.install(context, "single.app", 3, "v3", TestUtils.THIRD_PARTY_CERT);
         assertSuggested("single.app", 4, TestUtils.THIRD_PARTY_SIG, 3);
 
-        // Version 6 from the 3rd party repo is not the "upstreamVersionCode", but with beta updates
+        // Version 6 from the 3rd party repo is not the "suggestedVersionCode", but with beta updates
         // it should still become the suggested version now.
         Preferences.get().setUnstableUpdates(true);
         assertSuggested("single.app", 6, TestUtils.THIRD_PARTY_SIG, 3);
@@ -144,7 +144,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
      */
     @Test
     public void dontSuggestUpstreamVersions() {
-        // By setting the "upstreamVersionCode" to 0, we are letting F-Droid choose the highest compatible version.
+        // By setting the "suggestedVersionCode" to 0, we are letting F-Droid choose the highest compatible version.
         App mainApp = TestUtils.insertApp(context, "single.app", "Single App (Main repo)", 0, "https://main.repo",
                 TestUtils.UPSTREAM_SIG);
 

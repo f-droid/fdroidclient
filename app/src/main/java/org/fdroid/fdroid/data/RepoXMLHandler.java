@@ -272,7 +272,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.suggestedVersionName = str;
                     break;
                 case "marketvercode":
-                    curapp.upstreamVersionCode = Utils.parseInt(str, -1);
+                    curapp.suggestedVersionCode = Utils.parseInt(str, -1);
                     break;
                 case "categories":
                     curapp.categories = Utils.parseCommaSeparatedString(str);

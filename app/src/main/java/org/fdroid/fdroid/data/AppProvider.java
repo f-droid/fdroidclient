@@ -1098,7 +1098,7 @@ public class AppProvider extends FDroidProvider {
         final String installed = InstalledAppTable.NAME;
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
-        String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
+        String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.SUGGESTED_VERSION_CODE + " AND ");
 
         String restrictToApp = "";
         String[] args = null;
@@ -1133,7 +1133,7 @@ public class AppProvider extends FDroidProvider {
                     apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 " + restrictToApp;
+                " WHERE " + Cols.SUGGESTED_VERSION_CODE + " > 0 " + restrictToApp;
 
         LoggingQuery.execSQL(db(), updateSql, args);
     }
@@ -1159,12 +1159,12 @@ public class AppProvider extends FDroidProvider {
         final String[] args;
 
         if (packageName == null) {
-            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.AUTO_INSTALL_VERSION_CODE + " IS NULL ";
+            restrictToApps = " COALESCE(" + Cols.SUGGESTED_VERSION_CODE + ", 0) = 0 OR " + Cols.AUTO_INSTALL_VERSION_CODE + " IS NULL ";
             args = null;
         } else {
             // Don't update an app with an upstream version code, because that would have been updated
             // by updateSuggestedFromUpdate(packageName).
-            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
+            restrictToApps = " COALESCE(" + Cols.SUGGESTED_VERSION_CODE + ", 0) = 0 AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
             args = new String[]{packageName};
         }
 

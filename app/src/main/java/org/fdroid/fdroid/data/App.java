@@ -170,14 +170,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String suggestedVersionName;
 
     /**
-     * The index-v1 metadata uses the term `suggestedVersionCode` but we need that
-     * value to end up in the `upstreamVersionCode` property here. These variables
-     * need to be renamed across the whole F-Droid ecosystem to make sense.
+     * This matches {@code CurrentVersionCode} in build metadata files.
      *
-     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">issue #1063</a>
+     * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersionCode">CurrentVersionCode</a>
      */
-    @JsonProperty("suggestedVersionCode")
-    public int upstreamVersionCode;
+    public int suggestedVersionCode;
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
@@ -317,8 +314,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.AUTO_INSTALL_VERSION_CODE:
                     autoInstallVersionCode = cursor.getInt(i);
                     break;
-                case Cols.UPSTREAM_VERSION_CODE:
-                    upstreamVersionCode = cursor.getInt(i);
+                case Cols.SUGGESTED_VERSION_CODE:
+                    suggestedVersionCode = cursor.getInt(i);
                     break;
                 case Cols.SUGGESTED_VERSION_NAME:
                     suggestedVersionName = cursor.getString(i);
@@ -966,7 +963,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
         values.put(Cols.AUTO_INSTALL_VERSION_CODE, autoInstallVersionCode);
         values.put(Cols.SUGGESTED_VERSION_NAME, suggestedVersionName);
-        values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
+        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
@@ -1192,7 +1189,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.liberapayID);
         dest.writeString(this.preferredSigner);
         dest.writeString(this.suggestedVersionName);
-        dest.writeInt(this.upstreamVersionCode);
+        dest.writeInt(this.suggestedVersionCode);
         dest.writeString(this.autoInstallVersionName);
         dest.writeInt(this.autoInstallVersionCode);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
@@ -1243,7 +1240,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.liberapayID = in.readString();
         this.preferredSigner = in.readString();
         this.suggestedVersionName = in.readString();
-        this.upstreamVersionCode = in.readInt();
+        this.suggestedVersionCode = in.readInt();
         this.autoInstallVersionName = in.readString();
         this.autoInstallVersionCode = in.readInt();
         long tmpAdded = in.readLong();

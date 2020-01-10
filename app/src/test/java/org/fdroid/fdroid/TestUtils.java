@@ -94,17 +94,17 @@ public class TestUtils {
         return ApkProvider.Helper.findByUri(context, uri, Schema.ApkTable.Cols.ALL);
     }
 
-    public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
+    public static App insertApp(Context context, String packageName, String appName, int suggestedVersionCode,
                           String repoUrl, String preferredSigner) {
         Repo repo = ensureRepo(context, repoUrl);
-        return insertApp(context, packageName, appName, upstreamVersionCode, repo, preferredSigner);
+        return insertApp(context, packageName, appName, suggestedVersionCode, repo, preferredSigner);
     }
 
-    public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
+    public static App insertApp(Context context, String packageName, String appName, int suggestedVersionCode,
                           Repo repo, String preferredSigner) {
         ContentValues values = new ContentValues();
         values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
-        values.put(Schema.AppMetadataTable.Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
+        values.put(Schema.AppMetadataTable.Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(Schema.AppMetadataTable.Cols.PREFERRED_SIGNER, preferredSigner);
         return Assert.insertApp(context, packageName, appName, values);
     }

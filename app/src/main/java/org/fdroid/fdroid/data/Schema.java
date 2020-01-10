@@ -193,7 +193,7 @@ public interface Schema {
             String PREFERRED_SIGNER = "preferredSigner";
             String AUTO_INSTALL_VERSION_CODE = "suggestedVercode"; // name mismatch from issue #1063
             String SUGGESTED_VERSION_NAME = "upstreamVersion"; // name mismatch from issue #1063
-            String UPSTREAM_VERSION_CODE = "upstreamVercode";
+            String SUGGESTED_VERSION_CODE = "upstreamVercode"; // name mismatch from issue #1063
             String ADDED = "added";
             String LAST_UPDATED = "lastUpdated";
             String ANTI_FEATURES = "antiFeatures";
@@ -244,7 +244,7 @@ public interface Schema {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
                     TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
-                    SUGGESTED_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+                    SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
@@ -261,7 +261,7 @@ public interface Schema {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
                     TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
-                    SUGGESTED_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+                    SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
