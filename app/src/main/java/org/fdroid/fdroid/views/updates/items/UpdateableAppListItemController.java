@@ -42,7 +42,7 @@ public class UpdateableAppListItemController extends AppListItemController {
     @Override
     protected void onDismissApp(@NonNull final App app, UpdatesAdapter adapter) {
         final AppPrefs prefs = app.getPrefs(activity);
-        prefs.ignoreThisUpdate = app.suggestedVersionCode;
+        prefs.ignoreThisUpdate = app.autoInstallVersionCode;
 
         Snackbar.make(
                 itemView,

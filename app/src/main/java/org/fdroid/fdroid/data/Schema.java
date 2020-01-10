@@ -191,9 +191,9 @@ public interface Schema {
             String FLATTR_ID = "flattrID";
             String LIBERAPAY_ID = "liberapayID";
             String PREFERRED_SIGNER = "preferredSigner";
-            String SUGGESTED_VERSION_CODE = "suggestedVercode";
-            String UPSTREAM_VERSION_NAME = "upstreamVersion";
-            String UPSTREAM_VERSION_CODE = "upstreamVercode";
+            String AUTO_INSTALL_VERSION_CODE = "suggestedVercode"; // name mismatch from issue #1063
+            String SUGGESTED_VERSION_NAME = "upstreamVersion"; // name mismatch from issue #1063
+            String SUGGESTED_VERSION_CODE = "upstreamVercode"; // name mismatch from issue #1063
             String ADDED = "added";
             String LAST_UPDATED = "lastUpdated";
             String ANTI_FEATURES = "antiFeatures";
@@ -210,7 +210,7 @@ public interface Schema {
             String IS_APK = "isApk";
             String IS_LOCALIZED = "isLocalized";
 
-            interface SuggestedApk {
+            interface AutoInstallApk {
                 String VERSION_NAME = "suggestedApkVersion";
             }
 
@@ -238,17 +238,17 @@ public interface Schema {
             /**
              * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
              * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
-             * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
+             * or which are from other related tables (e.g. {@link AutoInstallApk#VERSION_NAME}).
              */
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
                     TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
-                    UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+                    SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED,
+                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED,
             };
 
             /**
@@ -261,11 +261,11 @@ public interface Schema {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
                     TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
-                    UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+                    SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, IS_APK, IS_LOCALIZED, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, AUTO_INSTALL_VERSION_CODE, IS_APK, IS_LOCALIZED, AutoInstallApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

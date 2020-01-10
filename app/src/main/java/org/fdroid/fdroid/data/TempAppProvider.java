@@ -199,7 +199,7 @@ public class TempAppProvider extends AppProvider {
         db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, mainCat, tempCat, null));
 
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + Cols.PACKAGE_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + Cols.UPSTREAM_VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + Cols.SUGGESTED_VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + Cols.IS_COMPATIBLE + ");");
     }
 

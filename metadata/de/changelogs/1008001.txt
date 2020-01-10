@@ -1,0 +1,4 @@
+* Bearbeitung der Berechtigungseinstellungen in Android 10, um „Unbekannte Quelle“-Hinweise zu beenden
+* Öffnet Tastatur, wenn Suchbegriff gelöscht wird
+* Abgleich von Übersetzungen mit Android-Vorgaben
+* HTTPS bei gebräuchlichen Repo-Domänen (GitLab, GitHub, Amazon) erzwingen

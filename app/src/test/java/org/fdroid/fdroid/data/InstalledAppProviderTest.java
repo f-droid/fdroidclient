@@ -94,14 +94,14 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         apps = InstalledAppProvider.Helper.all(context);
         assertEquals(3, apps.length);
         assertEquals(packageName0, apps[0].packageName);
-        assertEquals("v0", apps[0].upstreamVersionName);
-        assertEquals(0, apps[0].upstreamVersionCode);
+        assertEquals("v0", apps[0].suggestedVersionName);
+        assertEquals(0, apps[0].suggestedVersionCode);
         assertEquals(packageName1, apps[1].packageName);
-        assertEquals("v1", apps[1].upstreamVersionName);
-        assertEquals(1, apps[1].upstreamVersionCode);
+        assertEquals("v1", apps[1].suggestedVersionName);
+        assertEquals(1, apps[1].suggestedVersionCode);
         assertEquals(packageName2, apps[2].packageName);
-        assertEquals("v2", apps[2].upstreamVersionName);
-        assertEquals(2, apps[2].upstreamVersionCode);
+        assertEquals("v2", apps[2].suggestedVersionName);
+        assertEquals(2, apps[2].suggestedVersionCode);
         assertNotEquals(packageName0, apps[2].packageName);
     }
 

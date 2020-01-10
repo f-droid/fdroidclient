@@ -32,17 +32,17 @@ import java.util.Set;
 /**
  * Each app has a bunch of metadata that it associates with a package name (such as org.fdroid.fdroid).
  * Multiple repositories can host the same package, and provide different metadata for that app.
- *
+ * <p>
  * As such, it is usually the case that you are interested in an {@link App} which has its metadata
  * provided by "the repo with the best priority", rather than "specific repo X". This is important
  * when asking for an apk, whereby the preferable way is likely using:
- *
- *  * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}
- *
+ * <p>
+ * * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}
+ * <p>
  * rather than:
- *
- *  * {@link AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[])}
- *
+ * <p>
+ * * {@link AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[])}
+ * <p>
  * The same can be said of retrieving a list of {@link App} objects, where the metadata for each app
  * in the result set should be populated from the repository with the best priority.
  */
@@ -53,7 +53,8 @@ public class AppProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        private Helper() { }
+        private Helper() {
+        }
 
         public static List<App> all(ContentResolver resolver) {
             return all(resolver, Cols.ALL);
@@ -192,6 +193,7 @@ public class AppProvider extends FDroidProvider {
          * Tells the query selection that it will need to join onto the installed apps table
          * when used. This should be called when your query makes use of fields from that table
          * (for example, list all installed, or list those which can be updated).
+         *
          * @return A reference to this object, to allow method chaining, for example
          * <code>return new AppQuerySelection(selection).requiresInstalledTable())</code>
          */
@@ -361,8 +363,8 @@ public class AppProvider extends FDroidProvider {
                 case Cols.Package.PACKAGE_NAME:
                     appendField(PackageTable.Cols.PACKAGE_NAME, PackageTable.NAME, Cols.Package.PACKAGE_NAME);
                     break;
-                case Cols.SuggestedApk.VERSION_NAME:
-                    addSuggestedApkVersionField();
+                case Cols.AutoInstallApk.VERSION_NAME:
+                    addAutoInstallApkVersionField();
                     break;
                 case Cols.InstalledApp.VERSION_NAME:
                     addInstalledAppVersionName();
@@ -387,19 +389,22 @@ public class AppProvider extends FDroidProvider {
             appendField("COUNT( DISTINCT " + getTableName() + "." + Cols.ROW_ID + " ) AS " + Cols._COUNT);
         }
 
-        private void addSuggestedApkVersionField() {
-            addSuggestedApkField(
+        private void addAutoInstallApkVersionField() {
+            addAutoInstallApkField(
                     ApkTable.Cols.VERSION_NAME,
-                    Cols.SuggestedApk.VERSION_NAME);
+                    Cols.AutoInstallApk.VERSION_NAME);
         }
 
-        private void addSuggestedApkField(String fieldName, String alias) {
+        /**
+         * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">suggestedApk name mismatch #1063</a>
+         */
+        private void addAutoInstallApkField(String fieldName, String alias) {
             if (!isSuggestedApkTableAdded) {
                 isSuggestedApkTableAdded = true;
                 leftJoin(
                         getApkTableName(),
                         "suggestedApk",
-                        getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
+                        getTableName() + "." + Cols.AUTO_INSTALL_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
             }
             appendField(fieldName, "suggestedApk", alias);
         }
@@ -615,11 +620,11 @@ public class AppProvider extends FDroidProvider {
 
         // Need to use COALESCE because the prefs join may not resolve any rows, which means the
         // ignore* fields will be NULL. In that case, we want to instead use a default value of 0.
-        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.SUGGESTED_VERSION_CODE;
+        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.AUTO_INSTALL_VERSION_CODE;
         final String ignoreAll = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) != 1";
 
         final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
-        final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
+        final String where = ignore + " AND " + app + "." + Cols.AUTO_INSTALL_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
 
         return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
     }
@@ -1093,7 +1098,7 @@ public class AppProvider extends FDroidProvider {
         final String installed = InstalledAppTable.NAME;
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
-        String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
+        String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.SUGGESTED_VERSION_CODE + " AND ");
 
         String restrictToApp = "";
         String[] args = null;
@@ -1118,7 +1123,7 @@ public class AppProvider extends FDroidProvider {
         // installed table (this is impossible), but rather because the subselect above returned
         // zero rows.
         String updateSql =
-                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
@@ -1128,7 +1133,7 @@ public class AppProvider extends FDroidProvider {
                     apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 " + restrictToApp;
+                " WHERE " + Cols.SUGGESTED_VERSION_CODE + " > 0 " + restrictToApp;
 
         LoggingQuery.execSQL(db(), updateSql, args);
     }
@@ -1154,17 +1159,17 @@ public class AppProvider extends FDroidProvider {
         final String[] args;
 
         if (packageName == null) {
-            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+            restrictToApps = " COALESCE(" + Cols.SUGGESTED_VERSION_CODE + ", 0) = 0 OR " + Cols.AUTO_INSTALL_VERSION_CODE + " IS NULL ";
             args = null;
         } else {
             // Don't update an app with an upstream version code, because that would have been updated
             // by updateSuggestedFromUpdate(packageName).
-            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
+            restrictToApps = " COALESCE(" + Cols.SUGGESTED_VERSION_CODE + ", 0) = 0 AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
             args = new String[]{packageName};
         }
 
         String updateSql =
-                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +

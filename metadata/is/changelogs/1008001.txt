@@ -1,0 +1,4 @@
+* lagaðar heimildir í Android 10 til að stöðva kvaðningar vegna óþekkts uppruna
+* lyklaborð opnast þegar leit er hreinsuð
+* samstilling þýðinga við Android strengi
+* þvinguð lén algengra safna til að nota HTTPS (GitLab, GitHub, Amazon)

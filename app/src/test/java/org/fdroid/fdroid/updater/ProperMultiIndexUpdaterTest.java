@@ -252,7 +252,7 @@ public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
         List<App> appsToUpdate = AppProvider.Helper.findCanUpdate(context, AppMetadataTable.Cols.ALL);
         assertEquals(1, appsToUpdate.size());
         assertEquals(installedVersion, appsToUpdate.get(0).installedVersionCode);
-        assertEquals(expectedUpdateVersion, appsToUpdate.get(0).suggestedVersionCode);
+        assertEquals(expectedUpdateVersion, appsToUpdate.get(0).autoInstallVersionCode);
     }
 
     private void assertMainRepo() {

@@ -273,7 +273,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
 
     private void assertSuggested(Context context, int suggestedVersion, String suggestedSig) {
         App suggestedApp = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), PACKAGE_NAME);
-        assertEquals("Suggested version on App", suggestedVersion, suggestedApp.suggestedVersionCode);
+        assertEquals("Suggested version on App", suggestedVersion, suggestedApp.autoInstallVersionCode);
 
         Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(context, suggestedApp);
         assertEquals("Version on suggested Apk", suggestedVersion, suggestedApk.versionCode);

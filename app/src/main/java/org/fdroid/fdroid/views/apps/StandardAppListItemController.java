@@ -40,7 +40,7 @@ public class StandardAppListItemController extends AppListItemController {
             return activity.getString(R.string.antifeatures);
         } else if (app.isInstalled(activity.getApplicationContext())) {
             if (app.canAndWantToUpdate(activity)) {
-                return activity.getString(R.string.app_version_x_available, app.getSuggestedVersionName());
+                return activity.getString(R.string.app_version_x_available, app.getAutoInstallVersionName());
             } else {
                 return activity.getString(R.string.app_version_x_installed, app.installedVersionName);
             }

@@ -162,27 +162,36 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String liberapayID;
 
-    public String upstreamVersionName;
+    /**
+     * This matches {@code CurrentVersion} in build metadata files.
+     *
+     * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersion">CurrentVersion</a>
+     */
+    public String suggestedVersionName;
 
     /**
-     * The index-v1 metadata uses the term `suggestedVersionCode` but we need that
-     * value to end up in the `upstreamVersionCode` property here. These variables
-     * need to be renamed across the whole F-Droid ecosystem to make sense.
+     * This matches {@code CurrentVersionCode} in build metadata files. Java
+     * inits {@code int}s to 0.  Since it is valid to have a negative Version
+     * Code, this is inited to {@link Integer#MIN_VALUE};
      *
-     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">issue #1063</a>
+     * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersionCode">CurrentVersionCode</a>
      */
-    @JsonProperty("suggestedVersionCode")
-    public int upstreamVersionCode;
+    public int suggestedVersionCode = Integer.MIN_VALUE;
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
      * emphasise that setting it wont do anything. In order to change this,
-     * you need to change suggestedVersionCode to an apk which is in the
-     * apk table.
+     * you need to change {@link #autoInstallVersionCode} to an APK which is
+     * in the {@link Schema.ApkTable} table.
      */
-    private String suggestedVersionName;
+    private String autoInstallVersionName;
 
-    public int suggestedVersionCode;
+    /**
+     * The version that will be automatically installed if the user does not
+     * choose a specific version.
+     * TODO this should probably be converted to init to {@link Integer#MIN_VALUE} like {@link #suggestedVersionCode}
+     */
+    public int autoInstallVersionCode;
 
     public Date added;
     public Date lastUpdated;
@@ -299,20 +308,20 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.LIBERAPAY_ID:
                     liberapayID = cursor.getString(i);
                     break;
-                case Cols.SuggestedApk.VERSION_NAME:
-                    suggestedVersionName = cursor.getString(i);
+                case Cols.AutoInstallApk.VERSION_NAME:
+                    autoInstallVersionName = cursor.getString(i);
                     break;
                 case Cols.PREFERRED_SIGNER:
                     preferredSigner = cursor.getString(i);
                     break;
+                case Cols.AUTO_INSTALL_VERSION_CODE:
+                    autoInstallVersionCode = cursor.getInt(i);
+                    break;
                 case Cols.SUGGESTED_VERSION_CODE:
                     suggestedVersionCode = cursor.getInt(i);
                     break;
-                case Cols.UPSTREAM_VERSION_CODE:
-                    upstreamVersionCode = cursor.getInt(i);
-                    break;
-                case Cols.UPSTREAM_VERSION_NAME:
-                    upstreamVersionName = cursor.getString(i);
+                case Cols.SUGGESTED_VERSION_NAME:
+                    suggestedVersionName = cursor.getString(i);
                     break;
                 case Cols.ADDED:
                     added = Utils.parseDate(cursor.getString(i), null);
@@ -955,9 +964,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
+        values.put(Cols.AUTO_INSTALL_VERSION_CODE, autoInstallVersionCode);
+        values.put(Cols.SUGGESTED_VERSION_NAME, suggestedVersionName);
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
-        values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
-        values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
         values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
@@ -1021,8 +1030,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public boolean hasUpdates() {
         boolean updates = false;
-        if (suggestedVersionCode > 0) {
-            updates = installedVersionCode > 0 && installedVersionCode < suggestedVersionCode;
+        if (autoInstallVersionCode > 0) {
+            updates = installedVersionCode > 0 && installedVersionCode < autoInstallVersionCode;
         }
         return updates;
     }
@@ -1041,7 +1050,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public boolean canAndWantToUpdate(Context context) {
         boolean canUpdate = hasUpdates();
         AppPrefs prefs = getPrefs(context);
-        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < suggestedVersionCode;
+        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < autoInstallVersionCode;
         return canUpdate && wantsUpdate && !isDisabledByAntiFeatures();
     }
 
@@ -1077,11 +1086,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
 
     /**
-     * @see App#suggestedVersionName for why this uses a getter while other member variables are
+     * @see App#autoInstallVersionName for why this uses a getter while other member variables are
      * publicly accessible.
      */
-    public String getSuggestedVersionName() {
-        return suggestedVersionName;
+    public String getAutoInstallVersionName() {
+        return autoInstallVersionName;
     }
 
     /**
@@ -1182,10 +1191,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.flattrID);
         dest.writeString(this.liberapayID);
         dest.writeString(this.preferredSigner);
-        dest.writeString(this.upstreamVersionName);
-        dest.writeInt(this.upstreamVersionCode);
         dest.writeString(this.suggestedVersionName);
         dest.writeInt(this.suggestedVersionCode);
+        dest.writeString(this.autoInstallVersionName);
+        dest.writeInt(this.autoInstallVersionCode);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
         dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
         dest.writeStringArray(this.categories);
@@ -1233,10 +1242,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.flattrID = in.readString();
         this.liberapayID = in.readString();
         this.preferredSigner = in.readString();
-        this.upstreamVersionName = in.readString();
-        this.upstreamVersionCode = in.readInt();
         this.suggestedVersionName = in.readString();
         this.suggestedVersionCode = in.readInt();
+        this.autoInstallVersionName = in.readString();
+        this.autoInstallVersionCode = in.readInt();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
         long tmpLastUpdated = in.readLong();

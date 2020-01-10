@@ -239,7 +239,7 @@ public class AppDetailsRecyclerViewAdapter
         String appropriateSig = app.getMostAppropriateSignature();
         for (int i = 0; i < versions.size(); i++) {
             final Apk apk = versions.get(i);
-            if (apk.versionCode == app.suggestedVersionCode && TextUtils.equals(apk.sig, appropriateSig)) {
+            if (apk.versionCode == app.autoInstallVersionCode && TextUtils.equals(apk.sig, appropriateSig)) {
                 curApk = apk;
                 break;
             }
@@ -1104,7 +1104,7 @@ public class AppDetailsRecyclerViewAdapter
             boolean isAppInstalled = app.isInstalled(context);
             boolean isApkInstalled = apk.versionCode == app.installedVersionCode &&
                     TextUtils.equals(apk.sig, app.installedSig);
-            boolean isApkSuggested = apk.versionCode == app.suggestedVersionCode &&
+            boolean isApkSuggested = apk.versionCode == app.autoInstallVersionCode &&
                     TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
                     downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
