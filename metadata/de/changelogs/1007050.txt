@@ -1,6 +1,7 @@
 * Generalüberholung der Tausch-UI, zur Vorbereitung auf Neuprogrammierung
-* „Rückgängig“-Anzeige, nach Entfernen von Elementen aus der Registerkarte „Aufgaben“ (danke @Hocuri!)
-* durch falsche Zeitzonen verursachte Probleme der Anzeige „Neueste“ behoben #1757
-* alle unwichtigen Abstürze in Hintergrunddiensten ignorieren
-* Ergänzung neuer Panikreaktionen: App-Deinstallationen und Repos auf Standard zurücksetzen
-* USB-OTG-Flash-Laufwerke können als Direktpaketquellen und -spiegelserver dienen
+* „Rückgängig“ nach Entfernen von Elementen aus „Aufgaben“ (danke @Hocuri!)
+* Durch falsche Zeitzonen verursachte Probleme in „Neueste“ behoben #1757
+* Alle unwichtigen Abstürze in Hintergrunddiensten ignorieren
+* Direkttausch mittels Hotspot-AP des Gerätes überarbeitet
+* Neue Panikreaktionen: App-Deinstallationen und Repos auf Standard zurücksetzen
+* USB-OTG-Flash-Laufwerke als Direktpaketquellen und -spiegelserver

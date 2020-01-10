@@ -1,0 +1,3 @@
+* Az Android >= 7.0 esetén nem megjelenő fordítások hibájának javítása
+
+* Adatbázis-frissítés (1.0-alpha3 → 1.0-alpha4 #1181) okozta összeomlás javítása

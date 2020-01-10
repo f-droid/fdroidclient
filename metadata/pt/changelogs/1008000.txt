@@ -1,0 +1,3 @@
+* Corrigir preferência da barra de buscaem versões recentes do Android (obrigado @dkanada)
+* Lidar com permissões divididas da API 29: localização fina agora implica localização grosseira
+* Definir regras de backup para evitar gravar o repo de swap

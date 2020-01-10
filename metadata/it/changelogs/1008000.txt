@@ -1,0 +1,3 @@
+* Sistemata la preferenza per la seekbar sulle versioni recenti di Android (grazie a @dkanada)
+* Gestisce i permessi divisi delle API 29: localizzazione precisa ora implica la localizzazione grossolana
+* Definite regole di backup per evitare di salvare il repository di scambio

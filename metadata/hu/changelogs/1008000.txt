@@ -1,0 +1,3 @@
+* Keresősáv-beállítás javítás a friss Android verzióknál (köszönjük @dkanada)
+* Az Android API 29 jogosultság-felosztásának kezelése: a pontos helyadatok most már a durva helyadatokat is tartalmazzák
+* Biztonsági mentési szabályok meghatározása, hogy ne kelljen elmenteni a cseretárolót

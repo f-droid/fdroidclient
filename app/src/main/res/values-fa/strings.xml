@@ -14,7 +14,7 @@
     <string name="added_on">در %s افزوده شد</string>
     <string name="ok">تأیید</string>
     <string name="yes">بله</string>
-    <string name="no">نه</string>
+    <string name="no">خیر</string>
     <string name="repo_add_title">افزودن مخزنی جدید</string>
     <string name="repo_add_add">افزودن</string>
     <string name="cancel">لغو</string>
@@ -231,8 +231,8 @@
     <string name="loading">درحال بارگیری…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به دستگاه خطایی رخ داد، نمی‌توان تبادل کرد!</string>
     <string name="install_confirm">نیازمند دسترسی به</string>
-    <string name="install_confirm_update">آیا میٰ‌خواهید بهٰ‌روزرسانی این برنامه کنونی را نصب کنید؟ داده کنونی شما از بین نمی‌رود. برنامه به‌روزرسانی شده دسترسی خواهد داشت به:</string>
-    <string name="install_confirm_update_system">آیا می‌خواهید به‌روزرسانی این برنامه جاسازی شده را نصب کنید؟ داده‌های کنونی شما از بین نمی‌رود. برنامه به‌روزرسانی شده دسترسی خواهد داشت به:</string>
+    <string name="install_confirm_update">آیا میٰ‌خواهید بهٰ‌روزرسانی این برنامه کنونی را نصب کنید؟ داده کنونی شما از بین نمی‌رود. برنامهٔ به‌روزرسانی شده، به این موارد دسترسی خواهد داشت:</string>
+    <string name="install_confirm_update_system">آیا می‌خواهید به‌روزرسانی این برنامه جاسازی شده را نصب کنید؟ داده‌های کنونی شما از بین نمی‌رود. برنامهٔ به‌روزرسانی شده، به این موارد دسترسی خواهد داشت:</string>
     <string name="install_confirm_update_no_perms">آیا می‌خواهید یک به‌روزرسانی برای این برنامه کاربردی موجود نصب کنید؟ داده‌های موجود شما از دست نخواهد رفت. به دسترسی ویژه‌ای نیاز ندارد.</string>
     <string name="install_confirm_update_system_no_perms">آیا می‌خواهید یک به‌روزرسانی برای این برنامه کاربردی داخلی نصب کنید؟ داده‌های موجود شما از دست نخواهد رفت. به دسترسی ویژه‌ای نیاز ندارد.</string>
     <string name="uninstall_update_confirm">این برنامه با نسخه کارخانه جایگزین شود؟ همه داده‌ها پاک می‌شوند.</string>

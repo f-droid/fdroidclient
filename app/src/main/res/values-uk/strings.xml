@@ -197,8 +197,8 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Дійсно встановити оновлення для цієї наявної програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
-    <string name="install_confirm_update_system">Дійсно встановити оновлення для цієї вбудованої програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного додатку\? Існуючі дані втрачено не буде. Оновлений додаток отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого додатку\? Існуючі дані втрачено не буде. Оновлений додаток отримає доступ до:</string>
     <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявної програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
     <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цієї вбудованої програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
     <string name="uninstall_update_confirm">Відновити заводську версію цього додатка? Усі дані буде видалено.</string>
@@ -510,6 +510,6 @@
     <string name="swap_stopping">Зупинка…</string>
     <string name="disabled">Вимкнено</string>
     <string name="swap_error_cannot_start_bluetooth">Не вдається запустити Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Поруч закрито, оскільки простоювало.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">\"Поруч\" закрито, оскільки простоювало.</string>
     <string name="nearby_splash__document_tree">Просканувати USB-OTG на наявність репозиторіїв та дзеркал.</string>
 </resources>

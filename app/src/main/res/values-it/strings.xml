@@ -169,8 +169,8 @@
     <string name="perms_description_app">Fornito da %1$s.</string>
     <string name="uninstall_confirm">Vuoi disinstallare questa applicazione?</string>
     <string name="install_confirm">deve accedere a</string>
-    <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
-    <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione esistente? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
+    <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata\? I tuoi dati non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
+    <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione\? I tuoi dati non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
     <string name="loading">Caricamento…</string>
     <string name="swap_connecting">Connessione</string>
     <string name="swap_wifi_device_name">Nome del dispositivo</string>
@@ -257,8 +257,8 @@
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
-    <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione esistente? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
-    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
+    <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
+    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="allPerms">Tutte</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>

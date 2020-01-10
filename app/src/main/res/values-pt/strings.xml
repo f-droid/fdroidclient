@@ -381,10 +381,10 @@
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
     <string name="install_confirm">requer acesso a</string>
-    <string name="install_confirm_update">Quer instalar uma atualização para este app? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
-    <string name="install_confirm_update_system">Quer instalar uma atualização para este app integrado? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
-    <string name="install_confirm_update_no_perms">Quer instalar uma atualização para este app existente? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
-    <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para este app integrado? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
+    <string name="install_confirm_update">Quer instalar uma atualização para esta app\? Seus dados existentes não serão perdidos. A app atualizada terá acesso a:</string>
+    <string name="install_confirm_update_system">Quer instalar uma atualização para esta app integrada\? Seus dados existentes não serão perdidos. A app atualizada terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Quer instalar uma atualização para esta app existente\? Seus dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para esta app integrada\? Seus dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
     <string name="uninstall_update_confirm">Substituir este app pela versão de fábrica? Todos os dados serão removidos.</string>

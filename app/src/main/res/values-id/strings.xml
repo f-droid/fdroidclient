@@ -104,7 +104,7 @@
     <string name="status_connecting_to_repo">Menyambung ke\n%1$s</string>
     <string name="repos_unchanged">Semua repositori telah diperbarui</string>
     <string name="global_error_updating_repos">Galat saat memperbarui: %s</string>
-    <string name="no_permissions">Tidak memerlukan izin apapun.</string>
+    <string name="no_permissions">Tidak memerlukan izin apapun</string>
     <string name="permissions">Perizinan</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
     <string name="theme">Tema</string>
@@ -229,14 +229,14 @@
     <string name="loading">Memuat…</string>
     <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
     <string name="install_confirm">butuh akses ke</string>
-    <string name="install_confirm_update">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
+    <string name="install_confirm_update">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses atas:</string>
     <string name="install_confirm_update_system">Apakah anda ingin memasang pembaruan aplikasi bawaan ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_no_perms">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses spesial apapun.</string>
-    <string name="install_confirm_update_system_no_perms">Apakah anda ingin memasang pembaruan aplikasi bawaan ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses spesial apapun.</string>
+    <string name="install_confirm_update_system_no_perms">Apakah Anda ingin memasang pembaruan untuk aplikasi bawaan ini\? Data yang ada tidak akan hilang. Ini tidak memerlukan akses khusus.</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
     <string name="perm_costs_money">Ini mungkin akan memakan biaya</string>
-    <string name="uninstall_update_confirm">Apakah anda ingin mengganti aplikasi ini dengan versi pabrik\?</string>
+    <string name="uninstall_update_confirm">Apakah anda ingin mengganti aplikasi ini dengan versi pabrik\? Semua data akan dihapus.</string>
     <string name="uninstall_confirm">Apakah anda ingin mencopot pemasangan aplikasi ini\?</string>
     <string name="download_error">Unduhan gagal!</string>
     <string name="perms_new_perm_prefix">Baru:</string>

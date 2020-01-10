@@ -469,7 +469,7 @@
     <string name="send_version_and_uuid">Bidali bertsioa eta UUID zerbitzarietara</string>
     <string name="send_version_and_uuid_summary">Gehitu aplikazio honen bertsioa eta ausazko ID bakan  bat deskargatzean, hurrengo aplikazioa berrabiarazi eta gero aplikatuko da.</string>
     <string name="share_repository">Partekatu biltegia</string>
-    <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango dira eguneraketak egin.</string>
+    <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango da eguneratu.</string>
     <string name="send_install_history">Bidali instalazioen historiala</string>
     <string name="send_history_csv">%s instalazioen historiala CSV fitxategi gisa</string>
     <string name="allow_push_requests">Baimendu biltegiei aplikazioak instalatzea/desinstalatzea</string>

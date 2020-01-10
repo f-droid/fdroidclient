@@ -17,10 +17,10 @@
     <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
     <string name="system_installer">Rozšírenie Oprávnení</string>
-    <string name="system_installer_on">Použiť Rozšírenie oprávnení na inštaláciu, aktualizácie a odstránenie balíkov</string>
-    <string name="local_repo_name">Meno miestneho repozitára</string>
-    <string name="local_repo_name_summary">Zverejnený názov miestneho repozitára: %s</string>
-    <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny repozitár</string>
+    <string name="system_installer_on">Použiť privilegované rozšírenie na inštaláciu, aktualizáciu a odstránenie balíkov</string>
+    <string name="local_repo_name">Názov miestneho archívu</string>
+    <string name="local_repo_name_summary">Zverejnený názov miestneho archívu: %s</string>
+    <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny archív</string>
     <string name="app_details">Detaily aplikácie</string>
     <string name="no_such_app">Aplikácia sa nenašla.</string>
     <string name="about_title">O F-Droide</string>
@@ -117,19 +117,17 @@
     </string>
     <string name="unknown">Neznáme</string>
     <string name="repo_confirm_delete_title">Zmazať repozitár?</string>
-    <string name="repo_confirm_delete_body">Odstránenie repozitára znamená,
-        že aplikácie z neho už nebudú prístupné z F-Droidu.
-
-        Poznámka: Všetky
-        predtým nainštalované aplikácie zostávajú v zariadení.
-    </string>
+    <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú prístupné. 
+\n
+\nPoznámka: Všetky predtým nainštalované aplikácie zostávajú v zariadení.</string>
     <string name="repo_disabled_notification">Vypnuté \"%1$s\".
 
         Budete musieť
         znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.
     </string>
-    <string name="repo_added">Uložený F-Droid repozitár %1$s.</string>
-    <string name="repo_searching_address">Hľadá sa repozitár F-Droidu na %1$s</string>
+    <string name="repo_added">Uložený archív balíkov %1$s.</string>
+    <string name="repo_searching_address">Hľadá sa repozitár na
+\n %1$s</string>
     <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve
         pridali! Skúste sa pripojiť na túto sieť: %s
     </string>
@@ -174,9 +172,8 @@
     <string name="category_Graphics">Grafika</string>
     <string name="category_Money">Financie</string>
     <string name="category_Sports_Health">Šport &amp; Zdravie</string>
-    <string name="empty_can_update_app_list">Všetky aplikácie sú aktuálne.\n\nGratulujeme!\nVšetky vaše aplikácie sú
-        aktuálne (jedine žeby vaše repozitáre boli neaktuálne).
-    </string>
+    <string name="empty_can_update_app_list">Gratulujeme!
+\nVšetky vaše aplikácie sú aktuálne.</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="category_Time">Čas</string>
@@ -208,12 +205,12 @@
     <string name="perms_new_perm_prefix">Nové:</string>
     <string name="downloading">Sťahujem…</string>
     <string name="interval_never">Žiadne automatické aktualizácie aplikácie</string>
-    <string name="interval_1h">Každú hodinu</string>
-    <string name="interval_4h">Každé 4 hodiny</string>
-    <string name="interval_12h">Každých 12 hodín</string>
-    <string name="interval_1d">Denne</string>
-    <string name="interval_1w">Týždenne</string>
-    <string name="interval_2w">Každé 2 týždne</string>
+    <string name="interval_1h">Skontrolovať aktualizácie každú hodinu</string>
+    <string name="interval_4h">Skontrolovať aktualizácie každé 4 hodiny</string>
+    <string name="interval_12h">Skontrolovať aktualizácie každých 12 hodín</string>
+    <string name="interval_1d">Kontrolovať aktualizácie denne</string>
+    <string name="interval_1w">Kontrolovať aktualizácie týždenne</string>
+    <string name="interval_2w">Skontrolovať aktualizácie každé 2 týždne</string>
     <string name="theme_light">Svetlá</string>
     <string name="theme_dark">Tmavá</string>
     <string name="category_Writing">Písanie</string>
@@ -353,7 +350,7 @@
         <item quantity="other">Dostupných %d aplikácií</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Žiadny Internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
-    <string name="nearby_splash__find_people_button">Nájdi ľudí blízko mňa</string>
+    <string name="nearby_splash__find_people_button">Nájdi ľudí v blízkosti</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obidve strany potrebujú %1$s na použitie v okolí.</string>
     <string name="app__tts__downloading_progress">Sťahovanie, %1$d%% dokončených</string>
     <string name="tts_category_name">Kategória %1$s</string>
@@ -426,14 +423,14 @@
     <string name="over_network_always_summary">Vždy použiť toto pripojenie, keď je dostupné</string>
     <string name="over_network_never_summary">Nikdy nič nesťahovať cez toto pripojenie</string>
     <string name="menu_open">Otvoriť</string>
-    <string name="prompt_to_send_crash_reports">Opýtať sa na odoslanie hlásení o páde</string>
+    <string name="prompt_to_send_crash_reports">Opýtať sa na odoslanie hlásenia o páde</string>
     <string name="prompt_to_send_crash_reports_summary">Zhromaždiť údaje o páde aplikácie a pýtať sa, či ich odoslať vývojárom</string>
     <string name="hide_all_notifications_summary">Nezobrazovať nijakú aktivitu v notifikačnej lište ani v stavovom riadku.</string>
     <string name="send_history_csv">%s história inštalácií ako CSV súbor</string>
     <string name="install_history_summary">Zobraziť súkromný záznam o všetkých inštaláciách a deinštaláciách</string>
     <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor (zmena sa prejaví po reštarte aplikácie).</string>
     <string name="allow_push_requests">Povoliť repozitárom nainštalovať/odinštalovať aplikácie</string>
-    <string name="allow_push_requests_summary">Metadáta repozitára môžu obsahovať push požiadavky na inštaláciu alebo deinštaláciu aplikácií</string>
+    <string name="allow_push_requests_summary">Metadáta archívu môžu obsahovať push požiadavky na inštaláciu alebo od-inštaláciu aplikácií</string>
     <string name="over_network_on_demand_summary">Toto pripojenie použiť len keď kliknem na sťahovanie</string>
     <string name="scan_removable_storage_title">Prehľadať odpojiteľné úložisko</string>
     <string name="scan_removable_storage_toast">Prehľadáva sa %s…</string>
@@ -443,7 +440,7 @@
     <string name="app_repository">Repozitár: %1$s</string>
     <string name="app_size">Veľkosť: %1$s</string>
     <string name="send_installed_apps_csv">Zoznam aplikácií nainštalovaných F-Droidom v podobe CSV souboru</string>
-    <string name="send_installed_apps">Zdieľať balíčky nainštalovaných aplikácií</string>
+    <string name="send_installed_apps">Zdieľať nainštalované aplikácie</string>
     <string name="updates_disabled_by_settings">Všetky aktualizácie sú vypnuté kôli nastaveniu Mobilných dát/WiFi</string>
     <string name="repo_add_mirror">Pridať zrkadlo repozitára</string>
     <string name="sort_search">Zoradiť vyhľadávanie</string>
@@ -483,11 +480,11 @@
     <string name="panic_hide_title">Skryť %s</string>
     <string name="panic_hide_summary">Aplikácia sa skryje</string>
     <string name="panic_hide_warning_title">Zapamätať si ako obnoviť</string>
-    <string name="panic_hide_warning_message">V panické udalosti, toto odstráni %1$s z launcheru. Iba zadanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť</string>
+    <string name="panic_hide_warning_message">V panické udalosti, toto odstráni %1$s z domovskej obrazovky. Iba zadanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť.</string>
     <string name="hiding_calculator">Kalkulačka</string>
     <string name="hiding_dialog_title">Skryť %s teraz</string>
-    <string name="hiding_dialog_message">Ste si istý že chcete odstrániť %1$s z launcheru\? Iba napísanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť</string>
-    <string name="hiding_dialog_warning">Varovanie: akýkoľvek zástupca aplikácie na domovskej obrazovke bude tiež odstránený a bude ho treba znova ručne pridať</string>
+    <string name="hiding_dialog_message">Ste si istý že chcete odstrániť %1$s z domovskej obrazovky\? Iba napísanie „%2$d“ v nastrčenej aplikácii %3$s to môžete obnoviť.</string>
+    <string name="hiding_dialog_warning">Varovanie: akýkoľvek zástupca aplikácie na domovskej obrazovke bude tiež odstránený a bude ho treba znova ručne pridať.</string>
     <string name="hide_on_long_search_press_title">Skryť tlačidlo vyhľadávania</string>
     <string name="hide_on_long_search_press_summary">Dlhé stlačenie tlačidla hľadanie skryje aplikáciu</string>
     <string name="warning_scaning_qr_code">Vyzerá to tak, že váš fotoaparát nemá automatické zaostrovanie. Oskenovanie kódu môže byť obtiažné.</string>
@@ -498,7 +495,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot zapnutý</string>
     <string name="swap_toast_could_not_enable_hotspot">Nedarí sa zapnúť Wi-Fi hotspot!</string>
     <string name="share_repository">Zdielať repozitár</string>
-    <string name="nearby_splash__read_external_storage">Hľadať repozitáre a mirrory na SD karte</string>
+    <string name="nearby_splash__read_external_storage">Hľadať archivy a zrkadlá na SD karte.</string>
     <string name="nearby_splash__request_permission">Skúsiť</string>
     <string name="swap_toast_using_path">Používam %1$s</string>
     <string name="swap_toast_not_removable_storage">Vybratý priečinok neodpovedá žiadnym odpojitelným úložiskom, skúste to znova!</string>

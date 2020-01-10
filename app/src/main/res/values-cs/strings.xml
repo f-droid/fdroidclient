@@ -254,7 +254,7 @@
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">V blízkosti nenalezen nikdo pro výměnu aplikací.</string>
     <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
-    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této existující aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této aplikace\? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
     <string name="install_confirm_update_system">Chcete nainstalovat aktualizaci této integrované aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
     <string name="install_confirm_update_no_perms">Chcete nainstalovat aktualizaci této existující aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
     <string name="install_confirm_update_system_no_perms">Chcete nainstalovat aktualizaci této integrované aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
@@ -488,7 +488,7 @@
     <string name="swap_toast_not_removable_storage">Vybraná složka neodpovídá žádným odpojitelným úložištím, zkuste to znovu!</string>
     <string name="swap_toast_find_removeable_storage">Vyberte vaši SD kartu nebo USB flash disk</string>
     <string name="main_menu__updates">Aktualizace</string>
-    <string name="try_again">Zkuste to znovu.</string>
+    <string name="try_again">Zkuste to znovu</string>
     <string name="panic_will_be_wiped">Bude odinstalováno a veškerá data budou smazána</string>
     <string name="menu_translation">Překlad</string>
     <string name="undo">Zpět</string>

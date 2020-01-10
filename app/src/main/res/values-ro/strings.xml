@@ -471,7 +471,7 @@
     <string name="app_repository">Depozit: %1$s</string>
     <string name="scan_removable_storage_title">Căutare pe mediile de stocare</string>
     <string name="scan_removable_storage_summary">Se vor căuta depozite de aplicații pe mediile de stocare precum cardurile SD și unitățile USB</string>
-    <string name="nearby_splash__read_external_storage">Cardurile SD pot fi folosite pentru schimbul de aplicații!</string>
+    <string name="nearby_splash__read_external_storage">Caută pe cardul SD depozite sau servere de rezervă.</string>
     <string name="nearby_splash__request_permission">Încearcă</string>
     <string name="swap_toast_using_path">Se folosește %1$s</string>
     <string name="swap_toast_not_removable_storage">Alegerea nu se potrivește cu nici un dispozitiv de stocare, încercați din nou!</string>
@@ -500,4 +500,5 @@
     <string name="disabled">Dezactivată</string>
     <string name="swap_error_cannot_start_bluetooth">Nu s-a putut activa Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Schimbul a fost oprit deoarece era nefolosit.</string>
+    <string name="nearby_splash__document_tree">Caută pe USB OTG depozite sau servere de rezervă.</string>
 </resources>

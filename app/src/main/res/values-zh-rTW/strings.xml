@@ -254,10 +254,10 @@
     <string name="uninstall_update_confirm">要將應用程式換成原廠版本嗎？這麼做會移除所有資料。</string>
     <string name="install_error_notify_title">%s 安裝時錯誤</string>
     <string name="uninstall_error_notify_title">%s 解除安裝時錯誤</string>
-    <string name="install_confirm_update">你要為這個現有的應用程式安裝更新嗎？你的現有資料不會遺失，而更新後的應用程式將取得以下權限：</string>
-    <string name="install_confirm_update_system">你要為這個內建的應用程式安裝更新嗎？你的現有資料不會遺失，而更新後的應用程式將取得以下權限：</string>
-    <string name="install_confirm_update_no_perms">你要為這個現有的應用程式安裝更新嗎？你不會遺失現有的資料，且應用程式不需任何特殊權限。</string>
-    <string name="install_confirm_update_system_no_perms">你要為這個現有的內建應用程式安裝更新嗎？你不會遺失現有的資料，且應用程式不需任何特殊權限。</string>
+    <string name="install_confirm_update">你要為這個現有的應用程式安裝更新嗎？你的現有資料不會遺失。更新後的應用程式將取得以下權限：</string>
+    <string name="install_confirm_update_system">你要為這個內建的應用程式安裝更新嗎？你的現有資料不會遺失。更新後的應用程式將取得以下權限：</string>
+    <string name="install_confirm_update_no_perms">你要為這個現有的應用程式安裝更新嗎？你不會遺失現有的資料。應用程式不需任何特殊權限。</string>
+    <string name="install_confirm_update_system_no_perms">你要為這個現有的內建應用程式安裝更新嗎？你不會遺失現有的資料。應用程式不需任何特殊權限。</string>
     <string name="crash_dialog_text">應用程式意外中止。您願意用電子郵件向我們提供詳細資訊，以協助修復此問題嗎？</string>
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能存取同個網路，你們其中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR code 看起來並不像用來交換的。</string>
@@ -448,7 +448,7 @@
     <string name="app_repository">軟體庫：%1$s</string>
     <string name="scan_removable_storage_title">掃描可移除的儲存裝置</string>
     <string name="scan_removable_storage_summary">尋找可移除的儲存裝置上的套件軟體庫，例如 SD 卡和 USB 隨身碟</string>
-    <string name="nearby_splash__read_external_storage">SD 卡可用來交換！</string>
+    <string name="nearby_splash__read_external_storage">在 SD 記憶卡中搜尋軟體庫與鏡像。</string>
     <string name="nearby_splash__request_permission">試試看</string>
     <string name="swap_toast_using_path">使用 %1$s</string>
     <string name="swap_toast_not_removable_storage">那個選擇不符合任何行動儲存裝置，請再試一次！</string>
@@ -477,4 +477,5 @@
     <string name="disabled">已停用</string>
     <string name="swap_error_cannot_start_bluetooth">無法啟動藍牙！</string>
     <string name="swap_toast_closing_nearby_after_timeout">附近功能已關閉，因為其處於閒置狀態。</string>
+    <string name="nearby_splash__document_tree">在 USB OTG 中搜尋軟體庫與鏡像。</string>
 </resources>

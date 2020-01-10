@@ -1,0 +1,3 @@
+* riparita prefero pri progres‑strio ĉe plej novaj versioj de Android (danke al @dkanada)
+* priservo de dividitaj permesoj de API 29: preciza pozicio nun enhavas proksimuman pozicion
+* difini regulojn pri sekurkopio por eviti konservi interŝanĝitan deponejon

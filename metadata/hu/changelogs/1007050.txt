@@ -1,0 +1,7 @@
+* A csere felület nagymértékű átalakítása, felkészülés a belseje átírására
+* „Visszavonás” megjelenítése az elemük kisöprése után a Frissítés lapon (köszönjük @Hocuri!)
+* A „Legfrissebb” lap időzóna-kezelési problémáinak javítása #1757
+* Az összes nem fontos összeomlása figyelmen kívül hagyása a háttérszolgáltatásokban
+* Közeli csere átdolgozása
+* Új pánikválaszok: a tárolók eltávolítása és visszaállítás az alapértelmezettre
+* Az USB OTG-meghajtók használata közeli tárolóként és tükörként

@@ -1,3 +1,8 @@
-* býtti við nálæg tæki endurhannað miðað við færanlega tengistaði (hotspot)
-* bætt við nýjum aðgerðum neyðarhnapps: fjarlæging forrita og frumstilling hugbúnaðarsafna
-* lagaður stuðningur við milliþjóna við fyrstu ræsingu
+* Yfirhalning á býttiviðmóti, undirbúið að endurskrifa
+* Birt "Afturkalla" eftir að atriði eru tekin af uppfærsluflipanum (takk @Hocuri!)
+* Löguð meðhöndlun ETag þegar tengst er við NGINX-spegla #1737
+* Löguð birting "Nýjast" vegna rangrar meðhöndlunar tímabelta #1757
+* Hunsa öll ómikilvæg hrun í bakþjónustum
+* býtti við nálæg tæki endurhannað m/v færanlega tengistaði
+* nýtt í neyðarhnappi: fjarlægja forrit og frumstilla hugbúnaðarsöfn
+* USB OTG minnislykla má nota sem staðvær söfn og spegla

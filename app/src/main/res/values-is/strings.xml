@@ -494,7 +494,7 @@
     <string name="scan_removable_storage_toast">Skoða %s…</string>
     <string name="scan_removable_storage_summary">Athugaðu með pakkasöfn á útskiptanlegum geymslumiðlum eins og SD-minniskortum eða USB-minnislyklum</string>
     <string name="main_menu__updates">Uppfærslur</string>
-    <string name="nearby_splash__read_external_storage">Nota má SD-minniskort til að skiptast á!</string>
+    <string name="nearby_splash__read_external_storage">Leita á SD-minniskorti að hugbúnaðarsöfnum og speglum.</string>
     <string name="nearby_splash__request_permission">Prófaðu</string>
     <string name="not_visible_nearby">Skynjun nálægra tækja er óvirk</string>
     <string name="not_visible_nearby_description">Áður en þú skiptist á við nálæg tæki, skaltu gera tækið þitt sýnilegt.</string>
@@ -521,4 +521,5 @@
     <string name="disabled">Óvirkt</string>
     <string name="swap_error_cannot_start_bluetooth">Ekki hægt að ræsa Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nálægt-einingu var lokað þar sem hún var aðgerðalaus.</string>
+    <string name="nearby_splash__document_tree">Leita á USB OTG að hugbúnaðarsöfnum og speglum.</string>
 </resources>

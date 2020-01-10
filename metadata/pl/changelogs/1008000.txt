@@ -1,0 +1,3 @@
+* Naprawiono preferencje paska wyszukiwania w najnowszych wersjach Androida (dzięki @dkanada)
+* Obsługa rozdzielonych uprawnień API 29: dokładna lokalizacja oznacza teraz zgrubną lokalizację
+* Zdefiniowanie reguły tworzenia kopii zapasowych, aby uniknąć zapisywania repozytorium wymiany
