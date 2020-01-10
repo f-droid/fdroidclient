@@ -170,11 +170,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String suggestedVersionName;
 
     /**
-     * This matches {@code CurrentVersionCode} in build metadata files.
+     * This matches {@code CurrentVersionCode} in build metadata files. Java
+     * inits {@code int}s to 0.  Since it is valid to have a negative Version
+     * Code, this is inited to {@link Integer#MIN_VALUE};
      *
      * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersionCode">CurrentVersionCode</a>
      */
-    public int suggestedVersionCode;
+    public int suggestedVersionCode = Integer.MIN_VALUE;
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
@@ -187,6 +189,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * The version that will be automatically installed if the user does not
      * choose a specific version.
+     * TODO this should probably be converted to init to {@link Integer#MIN_VALUE} like {@link #suggestedVersionCode}
      */
     public int autoInstallVersionCode;
 
