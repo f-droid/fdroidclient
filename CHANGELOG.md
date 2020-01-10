@@ -1,4 +1,14 @@
-### 1.8 (2019-11-20)
+### 1.8-alpha1 (2020-01-10)
+
+* handle Android 10 permission config to stop Unknown Sources prompts
+
+* keyboard opens when search is cleared
+
+* translation sync with Android strings
+
+* force common repo domains to HTTPS (GitLab, GitHub, Amazon)
+
+### 1.8-alpha0 (2019-11-20)
 
 * fix seekbar preference on recent Android versions (thanks @dkanada)
 

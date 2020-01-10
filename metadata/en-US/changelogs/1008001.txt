@@ -1,0 +1,4 @@
+* handle Android 10 permission config to stop Unknown Sources prompts
+* keyboard opens when search is cleared
+* translation sync with Android strings
+* force common repo domains to HTTPS (GitLab, GitHub, Amazon)
