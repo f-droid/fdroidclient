@@ -115,6 +115,11 @@ public class RepoXMLHandler extends DefaultHandler {
                     requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 requestedPermissionsSet.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             }
+            if (Build.VERSION.SDK_INT >= 29 &&
+                    requestedPermissionsSet.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // TODO: Change the below to Manifest.permission once we target SDK 29.
+                requestedPermissionsSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+            }
             int size = requestedPermissionsSet.size();
             curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
             requestedPermissionsSet.clear();
