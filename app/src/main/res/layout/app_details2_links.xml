@@ -30,7 +30,8 @@
             android:drawableRight="@drawable/ic_expand_more_grey600"
             android:drawableEnd="@drawable/ic_expand_more_grey600"
             android:drawableLeft="@drawable/ic_website"
-            android:drawableStart="@drawable/ic_website" />
+            android:drawableStart="@drawable/ic_website"
+            android:background="?selectableItemBackground" />
     </FrameLayout>
 
     <LinearLayout
