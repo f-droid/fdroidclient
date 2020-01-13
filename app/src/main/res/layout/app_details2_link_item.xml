@@ -5,6 +5,7 @@
     style="@style/AppDetailsLink"
     android:drawableLeft="@drawable/ic_website"
     android:drawableStart="@drawable/ic_website"
-    android:layout_marginLeft="@dimen/layout_horizontal_margin"
-    android:layout_marginStart="@dimen/layout_horizontal_margin"
-    tools:text="@string/menu_website" />
+    android:paddingLeft="@dimen/layout_horizontal_margin"
+    android:paddingStart="@dimen/layout_horizontal_margin"
+    tools:text="@string/menu_website"
+    android:background="?selectableItemBackground"/>
