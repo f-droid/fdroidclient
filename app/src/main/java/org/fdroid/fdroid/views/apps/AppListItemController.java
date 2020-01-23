@@ -28,9 +28,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -191,7 +193,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             try {
                 icon.setImageDrawable(activity.getPackageManager().getApplicationIcon(app.packageName));
             } catch (PackageManager.NameNotFoundException e) {
-                // ignored
+                DisplayImageOptions options = Utils.getRepoAppDisplayImageOptions();
+                icon.setImageDrawable(options.shouldShowImageForEmptyUri()
+                        ? options.getImageForEmptyUri(FDroidApp.getInstance().getResources())
+                        : null);
             }
         } else {
             ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
