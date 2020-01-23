@@ -503,17 +503,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * another permission, for example:
      * {@link Manifest.permission#WRITE_EXTERNAL_STORAGE} implies
      * {@link Manifest.permission#READ_EXTERNAL_STORAGE}.
-     * Staring with API 29 / Android 10 / Q,
-     * Apps targetting API 28 or lower automatically get
-     * {@link Manifest.permission#ACCESS_BACKGROUND_LOCATION} when they ask for either of
-     * {@link Manifest.permission#ACCESS_COARSE_LOCATION} or
-     * {@link Manifest.permission#ACCESS_FINE_LOCATION}.
-     * Also,
-     * {@link Manifest.permission#ACCESS_FINE_LOCATION} implies
-     * {@link Manifest.permission#ACCESS_COARSE_LOCATION}.
-     * And,
-     * {@link Manifest.permission#READ_EXTERNAL_STORAGE} implies
-     * {@link Manifest.permission#ACCESS_MEDIA_LOCATION}
      * Many of these rules are for quite old Android versions,
      * so they are not included here.
      *
@@ -536,20 +525,27 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         if (Build.VERSION.SDK_INT >= 16 && set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             set.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
-        if (targetSdkVersion <= 28) {
-            if (Build.VERSION.SDK_INT >= 29 && (set.contains(Manifest.permission.ACCESS_COARSE_LOCATION) ||
-                    set.contains(Manifest.permission.ACCESS_FINE_LOCATION))) {
-                // TODO: Change the below to Manifest.permission once we target SDK 29.
-                set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+        if (Build.VERSION.SDK_INT >= 29) {
+            if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
+            if (targetSdkVersion >= 29) {
+                // Do nothing. The targetSdk for the below split-permissions is set to 29,
+                // so we don't make any changes for apps targetting 29 or above
+            } else {
+                // TODO: Change the strings below to Manifest.permission once we target SDK 29.
+                if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                }
+                if (set.contains(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                }
+                if (set.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    set.add("android.permission.ACCESS_MEDIA_LOCATION");
+                }
             }
         }
-        if (Build.VERSION.SDK_INT >= 29 && set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
-            set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
-        if (Build.VERSION.SDK_INT >= 29 && set.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            // TODO: Change the below to Manifest.permission once we target SDK 29.
-            set.add("android.permission.ACCESS_MEDIA_LOCATION");
-        }
+
         requestedPermissions = set.toArray(new String[set.size()]);
     }
 
