@@ -146,7 +146,7 @@ public class NearbyViewBinder {
         updateUsbOtg(activity);
     }
 
-    public static void updateUsbOtg(final Activity activity) {
+    public static void updateUsbOtg(final Context context) {
         if (Build.VERSION.SDK_INT < 24) {
             return;
         }
@@ -159,7 +159,7 @@ public class NearbyViewBinder {
         storageVolumeText.setVisibility(View.GONE);
         requestStorageVolume.setVisibility(View.GONE);
 
-        final StorageManager storageManager = (StorageManager) activity.getSystemService(Context.STORAGE_SERVICE);
+        final StorageManager storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
         for (final StorageVolume storageVolume : storageManager.getStorageVolumes()) {
             if (storageVolume.isRemovable() && !storageVolume.isPrimary()) {
                 Log.i(TAG, "StorageVolume: " + storageVolume);
@@ -170,13 +170,13 @@ public class NearbyViewBinder {
                 }
                 storageVolumeText.setVisibility(View.VISIBLE);
 
-                String text = storageVolume.getDescription(activity);
+                String text = storageVolume.getDescription(context);
                 if (!TextUtils.isEmpty(text)) {
                     requestStorageVolume.setText(text);
                     UsbDevice usb = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
                     if (usb != null) {
                         text = String.format("%s (%s %s)", text, usb.getManufacturerName(), usb.getProductName());
-                        Toast.makeText(activity, text, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, text, Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -185,16 +185,17 @@ public class NearbyViewBinder {
                     @Override
                     @RequiresApi(api = 24)
                     public void onClick(View v) {
-                        List<UriPermission> list = activity.getContentResolver().getPersistedUriPermissions();
+                        List<UriPermission> list = context.getContentResolver().getPersistedUriPermissions();
                         if (list != null) for (UriPermission uriPermission : list) {
                             Uri uri = uriPermission.getUri();
                             if (uri.getPath().equals(String.format("/tree/%s:", storageVolume.getUuid()))) {
                                 intent.setData(uri);
-                                TreeUriScannerIntentService.onActivityResult(activity, intent);
+                                TreeUriScannerIntentService.onActivityResult(context, intent);
                                 return;
                             }
                         }
-                        activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                        ((Activity) context).startActivityForResult(intent,
+                            MainActivity.REQUEST_STORAGE_ACCESS);
                     }
                 });
             }

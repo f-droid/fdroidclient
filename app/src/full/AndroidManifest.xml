@@ -91,16 +91,25 @@
                 android:name=".nearby.SDCardScannerService"
                 android:exported="false"/>
 
-        <activity
-                android:name=".nearby.UsbDeviceAttachedActivity"
-                android:noHistory="true">
+        <receiver
+                android:name=".nearby.UsbDeviceAttachedReceiver">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
             </intent-filter>
             <meta-data
                     android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                     android:resource="@xml/device_filter"/>
-        </activity>
+        </receiver>
+
+        <receiver
+                android:name=".nearby.UsbDeviceDetachedReceiver">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"/>
+            </intent-filter>
+            <meta-data
+                    android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"
+                    android:resource="@xml/device_filter"/>
+        </receiver>
 
         <activity
                 android:name=".panic.PanicPreferencesActivity"

@@ -44,47 +44,28 @@ import java.util.HashMap;
 
 /**
  * This is just a shim to receive {@link UsbManager#ACTION_USB_ACCESSORY_ATTACHED}
- * events then open up the right screen in {@link MainActivity}.
+ * events.
  */
-public class UsbDeviceAttachedActivity extends Activity {
-    public static final String TAG = "UsbDeviceAttachedActivi";
+public class UsbDeviceAttachedReceiver extends BroadcastReceiver {
+    public static final String TAG = "UsbDeviceAttachedReceiv";
 
     private static final HashMap<Uri, ContentObserver> contentObservers = new HashMap<>();
 
     @RequiresApi(api = 19)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onReceive(final Context context, Intent intent) {
         if (Build.VERSION.SDK_INT < 19) {
-            finish();
             return;
         }
 
-        Intent intent = getIntent();
         if (intent == null || TextUtils.isEmpty(intent.getAction())
                 || !UsbManager.ACTION_USB_DEVICE_ATTACHED.equals(intent.getAction())) {
             Log.i(TAG, "ignoring irrelevant intent: " + intent);
-            finish();
             return;
         }
         Log.i(TAG, "handling intent: " + intent);
 
-        final ContentResolver contentResolver = getContentResolver();
-        BroadcastReceiver receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (!UsbManager.ACTION_USB_DEVICE_DETACHED.equals(intent.getAction())) {
-                    return;
-                }
-                NearbyViewBinder.updateUsbOtg(UsbDeviceAttachedActivity.this);
-                unregisterReceiver(this);
-                for (ContentObserver contentObserver : contentObservers.values()) {
-                    contentResolver.unregisterContentObserver(contentObserver);
-                }
-            }
-        };
-        registerReceiver(receiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED));
+        final ContentResolver contentResolver = context.getContentResolver();
 
         for (final UriPermission uriPermission : contentResolver.getPersistedUriPermissions()) {
             Uri uri = uriPermission.getUri();
@@ -92,21 +73,10 @@ public class UsbDeviceAttachedActivity extends Activity {
 
                 @Override
                 public void onChange(boolean selfChange, Uri uri) {
-                    NearbyViewBinder.updateUsbOtg(UsbDeviceAttachedActivity.this);
+                    NearbyViewBinder.updateUsbOtg(context);
                 }
             };
             contentResolver.registerContentObserver(uri, true, contentObserver);
         }
-        intent.setComponent(new ComponentName(this, MainActivity.class));
-        intent.putExtra(MainActivity.EXTRA_VIEW_NEARBY, true);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void finish() {
-        setResult(RESULT_OK);
-        super.finish();
     }
 }

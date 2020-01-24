@@ -1,9 +1,9 @@
 package org.fdroid.fdroid.views.main;
 
-import android.app.Activity;
+import android.content.Context;
 
 class NearbyViewBinder {
-    public static void updateUsbOtg(final Activity activity) {
+    public static void updateUsbOtg(Context context) {
         throw new IllegalStateException("unimplemented");
     }
 }
