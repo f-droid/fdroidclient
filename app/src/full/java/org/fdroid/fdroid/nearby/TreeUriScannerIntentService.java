@@ -95,20 +95,20 @@ public class TreeUriScannerIntentService extends IntentService {
      * {@link TreeUriScannerIntentService} or whether it is External Storage
      * like an SD Card that can be directly accessed via the file system.
      */
-    public static void onActivityResult(Activity activity, Intent intent) {
+    public static void onActivityResult(Context context, Intent intent) {
         if (intent == null) {
             return;
         }
         Uri uri = intent.getData();
         if (uri != null) {
             if (Build.VERSION.SDK_INT >= 19) {
-                ContentResolver contentResolver = activity.getContentResolver();
+                ContentResolver contentResolver = context.getContentResolver();
                 int perms = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
                 contentResolver.takePersistableUriPermission(uri, perms);
             }
-            String msg = String.format(activity.getString(R.string.swap_toast_using_path), uri.toString());
-            Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
-            scan(activity, uri);
+            String msg = String.format(context.getString(R.string.swap_toast_using_path), uri.toString());
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+            scan(context, uri);
         }
     }
 
