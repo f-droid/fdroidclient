@@ -1,3 +1,11 @@
+### 1.8-alpha2 (2020-02-04)
+
+* stop showing Unknown Sources with Privileged Extension on Android 10 #1833
+
+* add standard ripple effect to links on app details activity
+
+* fix displaying default icon for apps without icons
+
 ### 1.8-alpha1 (2020-01-10)
 
 * handle Android 10 permission config to stop Unknown Sources prompts
