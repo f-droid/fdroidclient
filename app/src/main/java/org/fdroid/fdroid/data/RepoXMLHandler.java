@@ -103,22 +103,25 @@ public class RepoXMLHandler extends DefaultHandler {
                     requestedPermissionsSet.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 requestedPermissionsSet.add(Manifest.permission.READ_EXTERNAL_STORAGE);
             }
-            if (curapk.targetSdkVersion <= 28) {
-                if (Build.VERSION.SDK_INT >= 29 &&
-                        (requestedPermissionsSet.contains(Manifest.permission.ACCESS_COARSE_LOCATION) ||
-                        requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION))) {
-                    // TODO: Change the below to Manifest.permission once we target SDK 29.
-                    requestedPermissionsSet.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+            if (Build.VERSION.SDK_INT >= 29) {
+                if (requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    requestedPermissionsSet.add(Manifest.permission.ACCESS_COARSE_LOCATION);
                 }
-            }
-            if (Build.VERSION.SDK_INT >= 29 &&
-                    requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                requestedPermissionsSet.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-            }
-            if (Build.VERSION.SDK_INT >= 29 &&
-                    requestedPermissionsSet.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                // TODO: Change the below to Manifest.permission once we target SDK 29.
-                requestedPermissionsSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+                if (curapk.targetSdkVersion >= 29) {
+                    // Do nothing. The targetSdk for the below split-permissions is set to 29,
+                    // so we don't make any changes for apps targetting 29 or above
+                } else {
+                    // TODO: Change the strings below to Manifest.permission once we target SDK 29.
+                    if (requestedPermissionsSet.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                        requestedPermissionsSet.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    }
+                    if (requestedPermissionsSet.contains(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                        requestedPermissionsSet.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    }
+                    if (requestedPermissionsSet.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                        requestedPermissionsSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+                    }
+                }
             }
             int size = requestedPermissionsSet.size();
             curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
