@@ -189,6 +189,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
+        if (actionButton != null) actionButton.setEnabled(true);
+
         if (app.iconUrl == null) {
             try {
                 icon.setImageDrawable(activity.getPackageManager().getApplicationIcon(app.packageName));
