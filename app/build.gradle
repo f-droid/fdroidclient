@@ -169,7 +169,8 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:3.8'
     testImplementation "com.android.support.test:monitor:1.0.2"
     testImplementation 'org.bouncycastle:bcprov-jdk15on:1.60'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.mockito:mockito-core:2.7.22'
 
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
