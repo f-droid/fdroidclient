@@ -9,6 +9,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.hamcrest.text.MatchesPattern;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.text.MatchesPattern;
 
 /**
  * Check whether app icons are loaded from the correct repository. The repository with the
@@ -44,7 +44,7 @@ public class AppIconsTest extends MultiIndexUpdaterTest {
         updateMain();
         updateArchive();
 
-        assertIconUrl("^https://f-droid.org/repo/icons-[0-9]{3}/org.adaway.54.png$");
+        assertIconUrl("^https://f-droid\\.org/repo/icons-[0-9]{3}/org\\.adaway\\.54\\.png$");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class AppIconsTest extends MultiIndexUpdaterTest {
         updateMain();
         updateArchive();
 
-        assertIconUrl("^https://f-droid.org/archive/icons-[0-9]{3}/org.adaway.54.png$");
+        assertIconUrl("^https://f-droid\\.org/archive/icons-[0-9]{3}/org\\.adaway\\.54.png$");
     }
 
     private void setRepoPriority(String repoUri, int priority) {
