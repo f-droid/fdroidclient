@@ -118,7 +118,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String name = "Unknown";
 
     public String summary = "Unknown application";
-    public String icon;
+    public String iconFromApk;
 
     public String description;
 
@@ -217,7 +217,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String[] requirements;
 
     /**
-     * URL to download the app's icon.
+     * URL to download the app's icon. (Set only from localized block, see also
+     * {@link #iconFromApk} and {@link #getIconUrl(Context)}
      */
     private String iconUrl;
 
@@ -260,7 +261,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     summary = cursor.getString(i);
                     break;
                 case Cols.ICON:
-                    icon = cursor.getString(i);
+                    iconFromApk = cursor.getString(i);
                     break;
                 case Cols.DESCRIPTION:
                     description = cursor.getString(i);
@@ -665,7 +666,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String getIconUrl(Context context) {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
         if (TextUtils.isEmpty(iconUrl)) {
-            if (TextUtils.isEmpty(icon)){
+            if (TextUtils.isEmpty(iconFromApk)){
                 return null;
             }
             String iconsDir;
@@ -674,7 +675,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             } else {
                 iconsDir = Utils.FALLBACK_ICONS_DIR;
             }
-            return repo.address + iconsDir + icon;
+            return repo.address + iconsDir + iconFromApk;
         }
         return repo.address + "/" + packageName + "/" + iconUrl;
     }
@@ -779,7 +780,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 + ", last updated on " + this.lastUpdated + ")</p>";
 
         this.name = (String) appInfo.loadLabel(pm);
-        this.icon = getIconName(packageName, packageInfo.versionCode);
+        this.iconFromApk = getIconName(packageName, packageInfo.versionCode);
         this.installedVersionName = packageInfo.versionName;
         this.installedVersionCode = packageInfo.versionCode;
         this.compatible = true;
@@ -966,7 +967,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.NAME, name);
         values.put(Cols.REPO_ID, repoId);
         values.put(Cols.SUMMARY, summary);
-        values.put(Cols.ICON, icon);
+        values.put(Cols.ICON, iconFromApk);
         values.put(Cols.ICON_URL, iconUrl);
         values.put(Cols.DESCRIPTION, description);
         values.put(Cols.WHATSNEW, whatsNew);
@@ -1196,7 +1197,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.name);
         dest.writeLong(this.repoId);
         dest.writeString(this.summary);
-        dest.writeString(this.icon);
+        dest.writeString(this.iconFromApk);
         dest.writeString(this.description);
         dest.writeString(this.whatsNew);
         dest.writeString(this.license);
@@ -1247,7 +1248,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.name = in.readString();
         this.repoId = in.readLong();
         this.summary = in.readString();
-        this.icon = in.readString();
+        this.iconFromApk = in.readString();
         this.description = in.readString();
         this.whatsNew = in.readString();
         this.license = in.readString();

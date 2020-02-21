@@ -414,7 +414,7 @@ public final class LocalRepoManager {
             tag("lastupdated", app.lastUpdated);
             tag("name", app.name);
             tag("summary", app.summary);
-            tag("icon", app.icon);
+            tag("icon", app.iconFromApk);
             tag("desc", app.description);
             tag("license", "Unknown");
             tag("categories", "LocalRepo," + Preferences.get().getLocalRepoName());

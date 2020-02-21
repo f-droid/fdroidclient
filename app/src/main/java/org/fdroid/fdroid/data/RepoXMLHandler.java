@@ -214,7 +214,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.name = str;
                     break;
                 case "icon":
-                    curapp.icon = str;
+                    curapp.iconFromApk = str;
                     break;
                 case "description":
                     // This is the old-style description. We'll read it
