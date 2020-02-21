@@ -1007,8 +1007,6 @@ public class AppProvider extends FDroidProvider {
         updatePreferredMetadata();
         updateCompatibleFlags();
         updateSuggestedFromUpstream(null);
-        updateSuggestedFromLatest(null);
-        updateIconUrls();
     }
 
     /**
@@ -1182,51 +1180,4 @@ public class AppProvider extends FDroidProvider {
 
         LoggingQuery.execSQL(db(), updateSql, args);
     }
-
-    private void updateIconUrls() {
-        final String appTable = getTableName();
-        final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
-        String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
-        Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        String query = getIconUpdateQuery(appTable);
-        final String[] params = {
-            repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
-        };
-        db().execSQL(query, params);
-    }
-
-    /**
-     * Returns a query which requires two parameters to be bound. These are (in order):
-     *  1) The repo version that introduced density specific icons
-     *  2) The dir to density specific icons for the current device.
-     */
-    private static String getIconUpdateQuery(String app) {
-
-        final String repo = RepoTable.NAME;
-
-        final String iconUrlQuery =
-                "SELECT " +
-
-                // Concatenate (using the "||" operator) the address, the
-                // icons directory (bound to the ? as the second parameter
-                // when executing the query) and the icon path.
-                "( " +
-                    repo + "." + RepoTable.Cols.ADDRESS +
-                    " || " +
-
-                    // If the repo has the relevant version, then use a more
-                    // intelligent icons dir, otherwise revert to the default
-                    // one
-                    " CASE WHEN " + repo + "." + RepoTable.Cols.VERSION + " >= ? THEN ? ELSE ? END " +
-
-                    " || " +
-                    app + "." + Cols.ICON +
-                ") " +
-                " FROM " +
-                repo + " WHERE " + repo + "." + RepoTable.Cols._ID + " = " + app + "." + Cols.REPO_ID;
-        return "UPDATE " + app + " SET "
-            + Cols.ICON_URL + " = ( " + iconUrlQuery + " )";
-    }
-
 }

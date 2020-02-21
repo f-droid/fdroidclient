@@ -309,7 +309,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     nameView.setText(app.name);
                 }
 
-                ImageLoader.getInstance().displayImage(app.iconUrl, iconView, Utils.getRepoAppDisplayImageOptions());
+                ImageLoader.getInstance().displayImage(app.getIconUrl(iconView.getContext()), iconView, Utils.getRepoAppDisplayImageOptions());
 
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);

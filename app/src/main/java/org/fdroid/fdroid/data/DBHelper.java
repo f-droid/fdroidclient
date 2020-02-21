@@ -227,7 +227,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 83;
+    protected static final int DB_VERSION = 84;
 
     private final Context context;
 
@@ -456,6 +456,15 @@ public class DBHelper extends SQLiteOpenHelper {
         addIsLocalized(db, oldVersion);
         addTranslation(db, oldVersion);
         switchRepoArchivePriorities(db, oldVersion);
+        deleteOldIconUrls(db, oldVersion);
+    }
+
+    private void deleteOldIconUrls(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 84) {
+            return;
+        }
+        Utils.debugLog(TAG, "Clearing iconUrl field to enable localized icons on next update");
+        db.execSQL("UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.ICON_URL  + "= NULL");
     }
 
     private void switchRepoArchivePriorities(SQLiteDatabase db, int oldVersion) {

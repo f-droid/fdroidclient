@@ -480,7 +480,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
-            ImageLoader.getInstance().displayImage(app.iconUrl, iconView, Utils.getRepoAppDisplayImageOptions());
+            ImageLoader.getInstance().displayImage(app.getIconUrl(iconView.getContext()), iconView, Utils.getRepoAppDisplayImageOptions());
             titleView.setText(app.name);
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));

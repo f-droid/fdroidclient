@@ -19,9 +19,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -217,7 +219,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * URL to download the app's icon.
      */
-    public String iconUrl;
+    private String iconUrl;
 
     public static String getIconName(String packageName, int versionCode) {
         return packageName + "_" + versionCode + ".png";
@@ -567,6 +569,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (!TextUtils.isEmpty(value)) {
             description = formatDescription(value);
         }
+        value = getLocalizedGraphicsEntry(localized, localesToUse, "icon");
+        if (!TextUtils.isEmpty(value)) {
+            iconUrl = value;
+        }
 
         featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
         promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
@@ -654,6 +660,23 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public static String formatDescription(String description) {
         return description.replace("\n", "<br>");
+    }
+
+    public String getIconUrl(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        if (TextUtils.isEmpty(iconUrl)) {
+            if (TextUtils.isEmpty(icon)){
+                return null;
+            }
+            String iconsDir;
+            if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
+                iconsDir = Utils.getIconsDir(context, 1.0);
+            } else {
+                iconsDir = Utils.FALLBACK_ICONS_DIR;
+            }
+            return repo.address + iconsDir + icon;
+        }
+        return repo.address + "/" + packageName + "/" + iconUrl;
     }
 
     public String getFeatureGraphicUrl(Context context) {

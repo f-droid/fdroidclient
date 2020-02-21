@@ -96,7 +96,7 @@ public class AppCardController extends RecyclerView.ViewHolder
             }
         }
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(app.getIconUrl(icon.getContext()), icon, Utils.getRepoAppDisplayImageOptions());
     }
 
     private boolean isConsideredNew(@NonNull App app) {

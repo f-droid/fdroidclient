@@ -191,7 +191,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (actionButton != null) actionButton.setEnabled(true);
 
-        if (app.iconUrl == null) {
+        if (app.getIconUrl(icon.getContext()) == null) {
             try {
                 icon.setImageDrawable(activity.getPackageManager().getApplicationIcon(app.packageName));
             } catch (PackageManager.NameNotFoundException e) {
@@ -201,7 +201,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                         : null);
             }
         } else {
-            ImageLoader.getInstance().displayImage(app.iconUrl, icon, Utils.getRepoAppDisplayImageOptions());
+            ImageLoader.getInstance().displayImage(app.getIconUrl(icon.getContext()), icon, Utils.getRepoAppDisplayImageOptions());
         }
 
         // Figures out the current install/update/download/etc status for the app we are viewing.

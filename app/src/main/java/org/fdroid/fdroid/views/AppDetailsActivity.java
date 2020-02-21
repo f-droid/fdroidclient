@@ -149,7 +149,7 @@ public class AppDetailsActivity extends AppCompatActivity
         DisplayImageOptions displayImageOptions = Utils.getRepoAppDisplayImageOptions();
         String featureGraphicUrl = app.getFeatureGraphicUrl(this);
         featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions,
-                featureGraphicUrl, app.iconUrl);
+                featureGraphicUrl, app.getIconUrl(this));
     }
 
     private String getPackageNameFromIntent(Intent intent) {

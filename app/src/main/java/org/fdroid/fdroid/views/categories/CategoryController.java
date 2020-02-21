@@ -154,6 +154,8 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                             Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
                             Schema.AppMetadataTable.Cols.SUMMARY,
                             Schema.AppMetadataTable.Cols.ICON_URL,
+                            Schema.AppMetadataTable.Cols.ICON,
+                            Schema.AppMetadataTable.Cols.REPO_ID,
                     },
                     null,
                     null,
@@ -167,7 +169,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         int topAppsId = currentCategory.hashCode();
         int countAllAppsId = topAppsId + 1;
 
-        // Anything other than these IDs indicates that the loader which just finished finished
+        // Anything other than these IDs indicates that the loader which just finished
         // is no longer the one this view holder is interested in, due to the user having
         // scrolled away already during the asynchronous query being run.
         if (loader.getId() == topAppsId) {
