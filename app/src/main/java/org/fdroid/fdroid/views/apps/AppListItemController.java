@@ -191,18 +191,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (actionButton != null) actionButton.setEnabled(true);
 
-        if (app.getIconUrl(icon.getContext()) == null) {
-            try {
-                icon.setImageDrawable(activity.getPackageManager().getApplicationIcon(app.packageName));
-            } catch (PackageManager.NameNotFoundException e) {
-                DisplayImageOptions options = Utils.getRepoAppDisplayImageOptions();
-                icon.setImageDrawable(options.shouldShowImageForEmptyUri()
-                        ? options.getImageForEmptyUri(FDroidApp.getInstance().getResources())
-                        : null);
-            }
-        } else {
-            ImageLoader.getInstance().displayImage(app.getIconUrl(icon.getContext()), icon, Utils.getRepoAppDisplayImageOptions());
-        }
+        Utils.setIconFromRepoOrPM(app, icon, activity);
 
         // Figures out the current install/update/download/etc status for the app we are viewing.
         // Then, asks the view to update itself to reflect this status.
