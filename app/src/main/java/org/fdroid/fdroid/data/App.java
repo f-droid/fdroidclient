@@ -670,6 +670,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             if (TextUtils.isEmpty(iconFromApk)){
                 return null;
             }
+            if (iconFromApk.endsWith(".xml")){
+                // We cannot use xml ressources as icons. F-Droid server should not include them
+                // https://gitlab.com/fdroid/fdroidserver/issues/344
+                return null;
+            }
             String iconsDir;
             if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
                 iconsDir = Utils.getIconsDir(context, 1.0);
