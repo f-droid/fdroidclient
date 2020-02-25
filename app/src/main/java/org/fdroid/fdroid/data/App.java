@@ -1051,7 +1051,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         boolean canUpdate = hasUpdates();
         AppPrefs prefs = getPrefs(context);
         boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < autoInstallVersionCode;
-        return canUpdate && wantsUpdate && !isDisabledByAntiFeatures();
+        return canUpdate && wantsUpdate;
     }
 
     /**
