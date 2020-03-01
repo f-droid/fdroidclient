@@ -534,6 +534,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (availableLocales.contains(languageTag)) {
             localesToUse.add(languageTag);
         }
+        if (localesToUse.isEmpty()) {
+            // In case of non-standard region like [en-SE]
+            for (String availableLocale : availableLocales) {
+                String availableLanguage = availableLocale.split("-")[0];
+                if (languageTag.equals(availableLanguage)) {
+                    localesToUse.add(availableLocale);
+                }
+            }
+        }
         if (Build.VERSION.SDK_INT >= 24) {
             LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
             String[] sortedLocaleList = localeList.toLanguageTags().split(",");
