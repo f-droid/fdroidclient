@@ -1,0 +1,95 @@
+<!--
+  ~ This file is part of Feeel.
+  ~
+  ~     Feeel is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Feeel is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Feeel.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <path
+      android:pathData="M34,47L74,47A3,3 0,0 1,77 50L77,75A3,3 0,0 1,74 78L34,78A3,3 0,0 1,31 75L31,50A3,3 0,0 1,34 47z"
+      android:fillColor="#1976D2"/>
+  <path
+      android:pathData="M80.237,24.517C80.782,24.941 80.88,25.727 80.456,26.271L74.991,33.298C74.567,33.843 73.782,33.941 73.237,33.517C72.692,33.094 72.594,32.308 73.018,31.763L78.483,24.737C78.907,24.192 79.692,24.094 80.237,24.517Z"
+      android:fillColor="#8AB000"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M27.763,24.517C27.218,24.941 27.12,25.727 27.544,26.271L33.009,33.298C33.433,33.843 34.218,33.941 34.763,33.517C35.308,33.094 35.406,32.308 34.982,31.763L29.517,24.737C29.093,24.192 28.308,24.094 27.763,24.517Z"
+      android:fillColor="#8AB000"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M31,74V75C31,76.657 32.343,78 34,78H74C75.657,78 77,76.657 77,75V74C77,75.657 75.657,77 74,77H34C32.343,77 31,75.657 31,74Z"
+      android:fillColor="#263238"
+      android:fillAlpha="0.2"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M31,51V50C31,48.343 32.343,47 34,47H74C75.657,47 77,48.343 77,50V51C77,49.343 75.657,48 74,48H34C32.343,48 31,49.343 31,51Z"
+      android:fillColor="#ffffff"
+      android:fillAlpha="0.2"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M34,30L74,30A3,3 0,0 1,77 33L77,42A3,3 0,0 1,74 45L34,45A3,3 0,0 1,31 42L31,33A3,3 0,0 1,34 30z"
+      android:fillColor="#B2EB0B"/>
+  <path
+      android:pathData="M31,41V42C31,43.657 32.343,45 34,45H74C75.657,45 77,43.657 77,42V41C77,42.657 75.657,44 74,44H34C32.343,44 31,42.657 31,41Z"
+      android:fillColor="#263238"
+      android:fillAlpha="0.2"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M31,34V33C31,31.343 32.343,30 34,30H74C75.657,30 77,31.343 77,33V34C77,32.343 75.657,31 74,31H34C32.343,31 31,32.343 31,34Z"
+      android:fillColor="#ffffff"
+      android:fillAlpha="0.2"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M54.141,55.52C50.69,55.52 47.767,57.898 46.912,61.092H50.762C51.426,59.911 52.673,59.114 54.141,59.114C56.313,59.114 58.035,60.837 58.035,63.009C58.035,65.18 56.313,66.903 54.141,66.903C52.575,66.903 51.252,66.001 50.631,64.687H46.852C47.621,68 50.604,70.497 54.141,70.497C58.256,70.497 61.63,67.123 61.63,63.009C61.63,58.894 58.256,55.52 54.141,55.52Z"
+      android:fillColor="#0D47A1"/>
+  <path
+      android:pathData="M54.14,74.451C60.46,74.451 65.583,69.328 65.583,63.009C65.583,56.689 60.46,51.566 54.14,51.566C47.82,51.566 42.697,56.689 42.697,63.009C42.697,69.328 47.82,74.451 54.14,74.451Z"
+      android:strokeWidth="1.9"
+      android:fillColor="#00000000"
+      android:strokeColor="#0D47A1"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M69.469,37.5C69.49,37.336 69.5,37.169 69.5,37C69.5,34.791 67.709,33 65.5,33C63.291,33 61.5,34.791 61.5,37C61.5,37.169 61.511,37.336 61.531,37.5C61.777,35.527 63.46,34 65.5,34C67.54,34 69.223,35.527 69.469,37.5Z"
+      android:fillColor="#96C713"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M65.5,38m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M46.469,37.5C46.489,37.336 46.5,37.169 46.5,37C46.5,34.791 44.709,33 42.5,33C40.291,33 38.5,34.791 38.5,37C38.5,37.169 38.511,37.336 38.531,37.5C38.777,35.527 40.46,34 42.5,34C44.54,34 46.223,35.527 46.469,37.5Z"
+      android:fillColor="#96C713"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M42.5,38m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M27.763,24.517C27.218,24.941 27.12,25.727 27.544,26.271L31.494,31.35C31.182,31.824 31,32.39 31,33V42C31,43.657 32.343,45 34,45H74C75.657,45 77,43.657 77,42V33C77,32.39 76.818,31.824 76.506,31.35L80.456,26.271C80.88,25.727 80.782,24.941 80.237,24.517C79.692,24.094 78.907,24.192 78.483,24.737L74.371,30.023C74.25,30.008 74.126,30 74,30H34C33.874,30 33.75,30.008 33.628,30.023L29.517,24.737C29.093,24.192 28.308,24.094 27.763,24.517ZM34,47C32.343,47 31,48.343 31,50V75C31,76.657 32.343,78 34,78H74C75.657,78 77,76.657 77,75V50C77,48.343 75.657,47 74,47H34Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:gradientRadius="111.714"
+          android:centerX="15.0875"
+          android:centerY="13.6387"
+          android:type="radial">
+        <item android:offset="0" android:color="#19FFFFFF"/>
+        <item android:offset="1" android:color="#00FFFFFF"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
