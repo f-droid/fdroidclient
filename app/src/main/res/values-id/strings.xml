@@ -103,7 +103,7 @@
     <string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
     <string name="status_connecting_to_repo">Menyambung ke\n%1$s</string>
     <string name="repos_unchanged">Semua repositori telah diperbarui</string>
-    <string name="global_error_updating_repos">Galat saat memperbarui: %s</string>
+    <string name="global_error_updating_repos">Kesalahan saat memperbarui: %s</string>
     <string name="no_permissions">Tidak memerlukan izin apapun</string>
     <string name="permissions">Perizinan</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
@@ -144,7 +144,7 @@
     <string name="useTor">Gunakan Tor</string>
     <string name="useTorSummary">Paksa lalu lintas unduh melalui Tor untuk meningkatkan privasi. Membutuhkan Orbot</string>
     <string name="status_inserting_apps">Menyimpan detail aplikasi</string>
-    <string name="all_other_repos_fine">Semua repo lainnya tidak membuat galat.</string>
+    <string name="all_other_repos_fine">Tidak terjadi kesalahan untuk repo lainnya.</string>
     <string name="repo_fingerprint">Sidik jari kunci penandatanganan (SHA-256)</string>
     <string name="repo_disabled_notification">%1$s dinonaktifkan.
 \n
@@ -155,7 +155,7 @@
     <string name="not_on_same_wifi">Perangkat anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Membutuhkan: %1$s</string>
     <string name="pref_language">Bahasa</string>
-    <string name="pref_language_default">Baku Sistem</string>
+    <string name="pref_language_default">Sesuai Sistem</string>
     <string name="wifi">Wifi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Konektifitas</string>
@@ -181,19 +181,15 @@
 \nTerdapat aplikasi di perangkat anda, tetapi tidak tersedia di F-Droid. Ini mungkin disebabkan karena anda perlu memperbarui repositori, atau repositori memang tidak memiliki aplikasi tersebut.</string>
     <string name="empty_can_update_app_list">Selamat!
 \nAplikasi anda sudah yang paling baru.</string>
-    <string name="install_error_unknown">Gagal memasang karena galat yang tidak diketahui</string>
-    <string name="uninstall_error_unknown">Gagal mencopot pemasangan karena galat yang tidak diketahui</string>
-    <string name="system_install_denied_permissions">Izin istimewa belum diberikan ke ekstensi! Harap buat laporan
-        kutu!
-    </string>
+    <string name="install_error_unknown">Gagal memasang karena kesalahan yang tidak diketahui</string>
+    <string name="uninstall_error_unknown">Gagal mencopot pemasangan karena kesalahan yang tidak diketahui</string>
+    <string name="system_install_denied_permissions">Izin khusus belum diberikan ke ekstensi! Harap laporkan kerusakan!</string>
     <string name="swap_nfc_title">Ketuk untuk swap</string>
     <string name="swap_nfc_description">Jika teman anda memiliki F-Droid dan NFC yang dihidupkan ketuk perangkat
         berbarengan.
     </string>
     <string name="swap_join_same_wifi">Gabung ke Wi-Fi yang sama dengan temanmu</string>
-    <string name="swap_join_same_wifi_desc">Untuk swap menggunakan Wi-Fi, pastikan anda ada dijaringan yang sama. Jika
-        anda tidak memiliki akses ke jaringan yang sama, satu diantara anda buatlah peranggitan Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Untuk menggunakan swap dengan Wi-Fi, pastikan anda ada di jaringan yang sama. Jika anda tidak memiliki akses ke jaringan yang sama, salah satu dari anda bisa menyalakan Penambatan Hotspot.</string>
     <string name="swap_join_this_hotspot">Bantu teman anda bergabung ke hotspot anda</string>
     <string name="swap">Bertukar aplikasi</string>
     <string name="swap_success">Swap sukses!</string>
@@ -205,7 +201,7 @@
     <string name="swap_welcome">Selamat datang di F-Droid!</string>
     <string name="swap_confirm_connect">Apakah anda ingin mendapatkan aplikasi dari %1$s sekarang\?</string>
     <string name="swap_dont_show_again">Jangan tampilkan ini lagi</string>
-    <string name="swap_scan_or_type_url">Salah satu orang perlu memindai kode, atau ketik URL orang yang lain diperamban.</string>
+    <string name="swap_scan_or_type_url">Salah satu orang perlu memindai kode, atau ketik Tautan orang yang lain di peramban.</string>
     <string name="swap_choose_apps">Pilih Aplikasi</string>
     <string name="swap_scan_qr">Pindai Kode QR</string>
     <string name="swap_people_nearby">Orang Terdekat</string>
@@ -222,16 +218,16 @@
     <string name="swap_wifi_device_name">Nama Perangkat</string>
     <string name="swap_cant_find_peers">Tidak dapat menemukan siapa yang anda cari?</string>
     <string name="swap_send_fdroid">Kirim F-Droid</string>
-    <string name="swap_no_peers_nearby">Tidak dapat menemukan orang terdekan untuk swap.</string>
+    <string name="swap_no_peers_nearby">Tidak dapat menemukan orang terdekat untuk swap.</string>
     <string name="swap_connecting">Menyambung</string>
     <string name="swap_confirm">Konfirmasi swap</string>
     <string name="swap_qr_isnt_for_swap">Kode QR yang kamu pindai tidak terlihat seperti kode swap.</string>
     <string name="loading">Memuat…</string>
-    <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
+    <string name="swap_connection_misc_error">Terjadi kesalahan saat menyambungkan ke perangkat, tidak bisa melakukan pertukaran!</string>
     <string name="install_confirm">butuh akses ke</string>
-    <string name="install_confirm_update">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses atas:</string>
+    <string name="install_confirm_update">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_system">Apakah anda ingin memasang pembaruan aplikasi bawaan ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
-    <string name="install_confirm_update_no_perms">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses spesial apapun.</string>
+    <string name="install_confirm_update_no_perms">Apakah anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses khusus apapun.</string>
     <string name="install_confirm_update_system_no_perms">Apakah Anda ingin memasang pembaruan untuk aplikasi bawaan ini\? Data yang ada tidak akan hilang. Ini tidak memerlukan akses khusus.</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
@@ -262,8 +258,8 @@
     <string name="keep_month">1 Bulan</string>
     <string name="keep_year">1 Tahun</string>
     <string name="keep_forever">Selamanya</string>
-    <string name="install_error_notify_title">Galat memasang %s</string>
-    <string name="uninstall_error_notify_title">Galat mencopot pemasanagan %s</string>
+    <string name="install_error_notify_title">Kesalahan saat memasang %s</string>
+    <string name="uninstall_error_notify_title">Kesalahan saat mencopot pemasanagan %s</string>
     <string name="installing">Memasang…</string>
     <string name="uninstalling">Mencopot pemasangan…</string>
     <string name="keep_install_history">Simpan riwayat pemasangan</string>
@@ -381,10 +377,10 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan celah keamanan dengan %1$s. Kami rekomendasikan perbarui aplikasi ke versi terbaru segera.</string>
     <string name="privacy">Privasi</string>
     <string name="preventScreenshots_title">Cegah tangkapan layar</string>
-    <string name="preventScreenshots_summary">Blok pengambilan tangkapan layar dan sembunyikan isi aplikasi dari layar aplikasi saat ini</string>
+    <string name="preventScreenshots_summary">Cegah pengambilan tangkapan layar dan sembunyikan isi aplikasi dari layar aplikasi saat ini</string>
     <string name="panic_app_setting_title">Aplikasi Tombol Panik</string>
     <string name="panic_app_unknown_app">aplikasi tidak dikenal</string>
-    <string name="panic_app_setting_summary">Belum ada aplikasi yang ditetapkan</string>
+    <string name="panic_app_setting_summary">Belum ada aplikasi yang disetel</string>
     <string name="panic_app_setting_none">Nihil</string>
     <string name="panic_app_dialog_title">Konfirmasi Aplikasi Panik</string>
     <string name="panic_app_dialog_message">Apakah anda yakin ingin mengizinkan %1$s untuk menjalankan tindakan destruktif tombol panik\?</string>
@@ -427,7 +423,7 @@
     <string name="antidisabledalgorithmlist">Aplikasi ini mempunyai tanda tangan keamanan yang lemah</string>
     <string name="antiknownvulnlist">Aplikasi ini berisi kerentanan keamanan yang dikenal</string>
     <string name="use_bluetooth">Gunakan Bluetooth</string>
-    <string name="swap_toast_invalid_url">URL tidak valid untuk swapping: %1$s</string>
+    <string name="swap_toast_invalid_url">Tautan untuk swap tidak valid: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi nyala</string>
     <string name="swap_toast_could_not_enable_hotspot">Tidak dapat menyalakan Hotspot Wi-Fi!</string>
     <string name="prompt_to_send_crash_reports">Minta mengirim laporan kerusakan</string>
@@ -464,7 +460,7 @@
     <string name="nearby_splash__read_external_storage">Cari Kartu SD untuk repo dan mirror.</string>
     <string name="not_visible_nearby">Perangkat terdekat tidak menyala</string>
     <string name="not_visible_nearby_description">Sebelum bertukar dengan alat terdekat, atur supaya perangkat anda terlihat.</string>
-    <string name="swap_toast_not_removable_storage">Pilihan tersebut tidak sesuai dengan perangkat penyimpanan luar manapun, cobalah kembali!</string>
+    <string name="swap_toast_not_removable_storage">Pilihan tersebut tidak sesuai dengan perangkat penyimpanan eksternal manapun, silahkan coba lagi!</string>
     <string name="undo">Urungkan</string>
     <string name="app_list__dismiss_installing_app">Pemasangan dibatalkan</string>
     <string name="menu_select_for_wipe">Pilih yang akan dihapus</string>
