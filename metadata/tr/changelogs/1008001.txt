@@ -1,0 +1,4 @@
+* Bilinmeyen Kaynaklar uyarılarını durdurmak için yeni Android 10 izin yapılandırması
+* Arama silindiğinde klavye açılır
+* Android dizgileri ile çeviri eşzamanlaması
+* Yaygın depo alanlarını HTTPS'ye zorla (GitLab, GitHub, Amazon)

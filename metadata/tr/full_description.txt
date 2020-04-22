@@ -1,8 +1,8 @@
-F-Droid, Android platformu için özgür yazılım uygulamalarının
-yüklenebileceği bir dizinidir. F-Droid istemci uygulaması,
+F-Droid, Android için özgür yazılım uygulamalarının
+yüklenebilir bir kataloğudur. F-Droid istemci uygulaması,
 cihazınızdaki güncellemelere göz atmayı, yüklemeyi ve izlemeyi kolaylaştırır.
 
-Herhangi bir F-Droid uyumlu depolara bağlanır. Varsayılan depo,
+Herhangi bir F-Droid uyumlu depoya bağlanır. Öntanımlı depo,
 yalnızca iyi niyetli özgür yazılımları içeren f-droid.org adresinde barındırılmaktadır.
 
 Android'in kendisi, APK'ları istediğiniz yerden yüklemek için özgür

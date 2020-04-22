@@ -1,3 +1,3 @@
-* Son Android sürümlerinde seekbar tercihini düzeltin (teşekkürler @dkanada)
-* API 29 split izinlerini kullanın: iyi konum artık yaklaşık konum anlamına geliyor
-* Takas deposunu kaydetmemek için yedekleme kurallarını tanımlayın
+* Son Android sürümlerinde arama çubuğu tercihini düzelt (teşekkürler @dkanada)
+* API 29 bölünmüş izinlerini kullan: hassas konum artık yaklaşık konumu da içerir
+* Takas deposunu kaydetmemek için yedekleme kuralları tanımla

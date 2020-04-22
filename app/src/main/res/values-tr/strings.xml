@@ -171,7 +171,7 @@
     <string name="repo_details">Depo</string>
     <string name="repo_url">Adres</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_language_default">Sistem varsayılanı</string>
+    <string name="pref_language_default">Sistem Öntanımlı Değeri</string>
     <string name="wifi">Kablosuz</string>
     <string name="category_Connectivity">Bağlanabilirlik</string>
     <string name="category_Graphics">Çizimler</string>
@@ -452,7 +452,7 @@
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
     <string name="share_repository">Depoyu Paylaş</string>
     <string name="allow_push_requests">Depoların uygulamaları yüklemesine/kaldırmasına izin ver</string>
-    <string name="allow_push_requests_summary">Depo meta verileri, uygulamaları yüklemek veya kaldırmak için push istekleri içerebilir</string>
+    <string name="allow_push_requests_summary">Depo üst verileri, uygulamaları yüklemek veya kaldırmak için push istekleri içerebilir</string>
     <string name="antinosourcesince">Kaynak kodu artık mevcut değil, güncelleme mümkün değil.</string>
     <string name="send_install_history">Yükleme Geçmişini Gönder</string>
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yolla</string>
@@ -483,7 +483,7 @@
     <string name="try_again">Yeniden dene</string>
     <string name="panic_apps_to_uninstall">Uygulamalar kaldırıldı ve tüm veri silindi</string>
     <string name="panic_reset_repos_title">Depoları sıfırla</string>
-    <string name="panic_reset_repos_summary">Depo ayarını öntanımlı ayara geri dönmeye zorla</string>
+    <string name="panic_reset_repos_summary">Depo ayarını öntanımlılara geri dönmeye zorla</string>
     <string name="swap_visible_hotspot">Erişim noktası üzerinden görülebilir</string>
     <string name="swap_blank_wifi_ssid">(boş)</string>
     <string name="swap_hidden_wifi_ssid">(gizli)</string>

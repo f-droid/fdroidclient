@@ -1,0 +1,8 @@
+* Bilinmeyen Kaynaklar uyarılarını durdurmak için yeni Android 10 izin yapılandırması
+* Yeni "bölünmüş izinler" kullan: hassas konum, yaklaşık konumu da içerir
+* Son Android sürümlerinde arama çubuğu tercihini düzelt (teşekkürler @dkanada)
+* Takas deposunu kaydetmemek için yedekleme kurallarını ayarla
+* Arama silindiğinde klavye açılır
+* Android dizgileri ile çeviri eşzamanlaması
+* Yaygın depo alanlarını HTTPS'ye zorla
+* Uygulama ayrıntılarındaki bağlantılara standart dalgalanma efekti
