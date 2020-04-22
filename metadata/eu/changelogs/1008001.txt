@@ -1,0 +1,4 @@
+* Android 10 baimenenen kudeaketa jatorri ezezagunei buruzko galdera sahiesteko
+* teklatua irekitzen da bilaketa garbitzean
+* Itzulpenak Android kateekin sinkronizatuta
+* Biltegiak HTTPS erabilzera behartuta (GitLab, GitHub, Amazon)

@@ -1,0 +1,7 @@
+* Interfazearen aldaketa sakona, barneak aldatzeko prestatuz
+* Erakutsi "Desegin" eguneraketa fitxatik elementuak kentze (eskerrak @Hocuri!)
+* "Azkenak" fitxako ordu-zona akatsak konponduta #1757
+* Ezikusi kraskatze ez garrantzitsuak bigarren planoko zerbitzue
+* inguruko trukea berridatzita gailuaren wifi gunea erabiliz
+* Larrialdiko erantzun berriak: aplikazioak eta biltegiak kentzea
+* USB OTG flash gailuak trukerako erabili daitezke

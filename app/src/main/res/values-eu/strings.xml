@@ -54,7 +54,7 @@
         \nkonektatzen
     </string>
     <string name="no_permissions">Ez dago baimenik</string>
-    <string name="theme">Itxura</string>
+    <string name="theme">Azala</string>
     <string name="unsigned">Sinatu gabea</string>
     <string name="repo_num_apps">Aplikazio kopurua</string>
     <string name="repo_description">Deskribapena</string>
@@ -83,10 +83,10 @@
     <string name="repo_add_fingerprint">Hatz-marka (aukerazkoa)</string>
     <string name="bad_fingerprint">Hatz-marka okerra</string>
     <string name="menu_changelog">Aldaketa egunkaria</string>
-    <string name="antitracklist">Aplikazio honek zure eginkizunen jarraipena egiten du eta berri ematen du</string>
+    <string name="antitracklist">Aplikazio honek zure jardueraren jarraipena egiten du eta berri ematen du</string>
     <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
-    <string name="antinonfreenetlist">Aplikazio honek libreak ez diren sare zerbitzuak bultzatzen ditu</string>
-    <string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
+    <string name="antinonfreenetlist">Aplikazio honek sare zerbitzu ez libreak sustatzen ditu</string>
+    <string name="antinonfreedeplist">Aplikazio hau beste aplikazio ez libreen menpekoa da</string>
     <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
     <string name="local_repo_name">Zure biltegi lokalaren izena</string>
     <string name="local_repo_name_summary">Zure biltegi lokalak iragarritako izenburua: %s</string>
@@ -261,7 +261,7 @@
     <string name="about_license">Lizentzia</string>
     <string name="repo_provider">Biltegia: %s</string>
     <string name="menu_email">Bidali e-posta egileari</string>
-    <string name="antinonfreeassetslist">Aplikazio honek libreak ez diren atalak ditu</string>
+    <string name="antinonfreeassetslist">Aplikazio honek baliabide ez libreak ditu</string>
     <string name="useTor">Erabili Tor</string>
     <string name="status_inserting_apps">Aplikazioaren xehetasunak gordetzen</string>
     <string name="empty_search_available_app_list">Ez dago bat datorren aplikaziorik eskuragarri.</string>

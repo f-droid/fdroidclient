@@ -1,0 +1,9 @@
+* Android 10 baimen berria jatorri ezezagunen galdera sahiesteko #1833
+* "Baimen banatuen" kudeaketa.
+* Android bertsio berrietan bilaketa barraren lehentasun hobea (eskerrak @dkanada)
+* Babes-kopia arauak tarteko biltegia ez gordetzeko
+* bilaketa garbitzean teklatua irekitzen da
+* Itzulpenak Android-ekin sinkronizatuta
+* Biltegiak HTTPS erabiltzera behartuta (GitLab, GitHub, Amazon)
+* Efektua aplikazioen xehetasunen esteketan
+* Lehenetsitako ikonoa ikonorik gabeko aplikazioetan
