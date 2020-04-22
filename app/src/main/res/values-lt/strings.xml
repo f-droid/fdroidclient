@@ -335,7 +335,7 @@
     <string name="menu_translation">Vertimas</string>
     <string name="menu_changelog">Pakeitimų sąrašas</string>
     <string name="app_repository">Saugykla: %1$s</string>
-    <string name="app_details_donate_prompt_unknown_author">Paaukoti %1$ kūrėjams pinigų!</string>
+    <string name="app_details_donate_prompt_unknown_author">Paaukoti %1$s kūrėjams pinigų!</string>
     <string name="scan_removable_storage_toast">Tikrinama %s…</string>
     <string name="scan_removable_storage_title">Tikrinti išimamas laikmenas</string>
     <string name="local_repo_name_summary">Jūsų asmeninės saugyklos viešas pavadinimas: %s</string>
