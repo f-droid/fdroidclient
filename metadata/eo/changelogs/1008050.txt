@@ -1,0 +1,9 @@
+* Android 10: eviti averton pri nekonataj fontoj (#1833)
+* disigitaj permesoj: preciza pozicio implicas proksimuman pozicion
+* riparita prefero pri progres‑strio (danke al @dkanada)
+* sekurkopio: ne konservi interŝanĝitan deponejon
+* klavaro malfermiĝas je forviŝi serĉon
+* samtempigis tradukojn kun Androidaj tekstoĉenoj
+* devigi HTTPS ĉe popularaj nomregnoj de deponejoj (GitLab, GitHub, Amazon)
+* ondet‑efekto ĉe ligiloj al apaj detaloj
+* montri implicitan emblemon por senemblemaj apoj
