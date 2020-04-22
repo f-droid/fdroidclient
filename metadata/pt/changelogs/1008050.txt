@@ -1,0 +1,9 @@
+* nova configuração de permissão do Android 10 para #1833
+* Manusear novas "permissões divididas": locações
+* Corrige a preferência da barra de procura nas versões recentes do Android (obrigado @dkanada)
+* Definir regras de backup para evitar gravar o repo de swap
+* teclado abre quando a busca é limpa
+* Sincronização da tradução com cadeias do Android
+* força domínios repo comuns ao HTTPS (GitLab, GitHub, Amazon)
+* ondulação para ligações sobre detalhes da app
+* ícone padrão para apps sem ícone
