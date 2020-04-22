@@ -1,0 +1,7 @@
+* Te skeda Përditësime u shtuan gjeste fërkimi me gisht
+
+* Shfaqje sinjalizimesh me veprime te skeda Përditësime, për KnownVulns
+
+* U përditësuan përkthime
+
+* Ndreqje për UI-n e errët

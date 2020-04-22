@@ -1,311 +1,494 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">F-Droid</string>
-
-    <string name="SignatureMismatch">Versioni i ri është i nënshkruar me një çelës të ndryshëm nga ai i vjetri. Për të
-        instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutem provojeni dhe provoni
-        përsëri.\n(Vini re që çinstalimi do të fshijë çdo të dhënë të brendshme të ruajtur nga aplikacioni)
-    </string>
-    <string name="installIncompatible">Paketa nuk përputhet me pajisjen tuaj. Dëshironi të instaloni sidoqoftë?</string>
-    <string name="version">Versioni</string>
-    <string name="delete">Fshi</string>
+    <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
+    <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë\?</string>
+    <string name="version">Version</string>
+    <string name="delete">Fshije</string>
     <string name="updates">Përditësime</string>
-    <string name="other">Të tjera</string>
-
-    <string name="update_interval">Intervali i përditësimeve automatike</string>
-    <string name="about_title">Rreth F-Droid</string>
-    <string name="about_version">Verzioni:</string>
-    <string name="about_source">Burimi i kodit:</string>
-    <string name="added_on">Shtuar me %s</string>
-
-    <string name="ok">Në rregull</string>
-    <string name="main_menu__categories">Kategoritë</string>
-    <string name="main_menu__swap_nearby">Në afërsi</string>
-
+    <string name="other">Tjetër</string>
+    <string name="update_interval">Interval përditësimesh të vetvetishme</string>
+    <string name="about_title">Mbi F-Droid-in</string>
+    <string name="about_version">Version</string>
+    <string name="about_source">Kod burim</string>
+    <string name="added_on">Shtuar më %s</string>
+    <string name="ok">OK</string>
+    <string name="main_menu__categories">Kategori</string>
+    <string name="main_menu__swap_nearby">Atypari</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
     <string name="repo_add_add">Shtoje</string>
-    <string name="more">Më shumë</string>
+    <string name="more">Më tepër</string>
     <string name="less">Më pak</string>
-
-    <string name="back">Mbrapa</string>
-    <string name="cancel">Anulo</string>
-    <string name="enable">Aktivizo</string>
-    <string name="overwrite">Mbishkruaj</string>
-
-    <string name="bluetooth_activity_not_found">Nuk u gjet ndonjë mënyrë dërgimi me Bluetooth, zgjidhni një!</string>
-    <string name="choose_bt_send">Zgjidhni mënyrën e dërgimit me Bluetooth</string>
-
-    <string name="menu_settings">Cilësimet</string>
+    <string name="back">Mbrapsht</string>
+    <string name="cancel">Anuloje</string>
+    <string name="enable">Aktivizoje</string>
+    <string name="overwrite">Mbishkruaje</string>
+    <string name="bluetooth_activity_not_found">S’u gjet ndonjë mënyrë dërgimi me Bluetooth, zgjidhni një!</string>
+    <string name="choose_bt_send">Zgjidhni metodë dërgimi me Bluetooth</string>
+    <string name="menu_settings">Rregullime</string>
     <string name="menu_search">Kërko</string>
-    <string name="menu_share">Shpërndaj</string>
-    <string name="menu_install">Instalo</string>
-    <string name="menu_uninstall">Çinstalo</string>
-    <string name="menu_ignore_this">Shpërfill këtë përditësim</string>
-    <string name="menu_source">Kodi burimor</string>
-    <string name="menu_donate">Dhuro</string>
+    <string name="menu_share">Ndajeni me të tjerë</string>
+    <string name="menu_install">Instaloje</string>
+    <string name="menu_uninstall">Çinstaloje</string>
+    <string name="menu_ignore_this">Shpërfille Këtë Përditësim</string>
+    <string name="menu_source">Kod Burim</string>
+    <string name="menu_donate">Dhuroni</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Jo i instaluar</string>
-    <string name="icon">Ikona</string>
-    <string name="skip">Tejkalo</string>
-
-    <string name="status_download">Duke shkarkuar\n%2$s / %3$s (%4$d%%) nga\n%1$s</string>
-
-    <string name="status_download_unknown_size">Duke shkarkuar\n%2$s nga\n%1$s</string>
-    <string name="status_connecting_to_repo">Duke u lidhur me\n%1$s</string>
+    <string name="icon">Ikonë</string>
+    <string name="skip">Anashkaloje</string>
+    <string name="status_download">Po shkarkohet
+\n%2$s / %3$s (%4$d%%) nga
+\n%1$s</string>
+    <string name="status_download_unknown_size">Po shkarkohet
+\n%2$s që nga
+\n%1$s</string>
+    <string name="status_connecting_to_repo">Po lidhet te
+\n%1$s</string>
     <string name="global_error_updating_repos">Gabim gjatë përditësimit: %s</string>
-    <string name="permissions">Lejet</string>
-    <string name="theme">Tema</string>
-    <string name="repo_url">Adresa</string>
-    <string name="repo_description">Përshkrimi</string>
-    <string name="repo_last_update">Përditësimi i fundit</string>
-    <string name="repo_name">Emri</string>
-    <string name="pref_language">Gjuha</string>
+    <string name="permissions">Leje</string>
+    <string name="theme">Temë</string>
+    <string name="repo_url">Adresë</string>
+    <string name="repo_description">Përshkrim</string>
+    <string name="repo_last_update">Përditësimi i fundit më</string>
+    <string name="repo_name">Emër</string>
+    <string name="pref_language">Gjuhë</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
-
-    <string name="category_Games">Lojra</string>
+    <string name="category_Games">Lojëra</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Reading">Lexim</string>
-    <string name="category_Science_Education">Shkencë dhe edukim</string>
+    <string name="category_Science_Education">Shkencë &amp; Arsim</string>
     <string name="category_Security">Siguri</string>
     <string name="category_System">Sistem</string>
     <string name="category_Time">Kohë</string>
     <string name="category_Writing">Shkrim</string>
-
-    <string name="swap_welcome">Mirëserdhe në F-Droid!</string>
+    <string name="swap_welcome">Mirë se vini në F-Droid!</string>
     <string name="swap_dont_show_again">Mos e shfaq më këtë</string>
-    <string name="swap_people_nearby">Njerëz afër</string>
-    <string name="swap_wifi_device_name">Emri i pajisjes</string>
-    <string name="swap_cant_find_peers">Nuk po gjeni atë që po kërkoni?</string>
-    <string name="swap_send_fdroid">Dërgo F-Droid</string>
-    <string name="perm_costs_money">Kjo mund t\'ju kushtojë para</string>
-    <string name="download_error">Shkarkimi dështoi</string>
-
-    <string name="downloading">Duke shkarkuar…</string>
-
-    <string name="interval_never">Kurrë</string>
-    <string name="interval_1h">Çdo orë</string>
-    <string name="interval_4h">Çdo 4 orë</string>
-    <string name="interval_12h">Çdo 12 orë</string>
-    <string name="interval_1d">Çdo ditë</string>
-    <string name="interval_1w">Çdo javë</string>
-    <string name="interval_2w">Çdo 2 javë</string>
-
-    <string name="theme_light">Çiltër</string>
-    <string name="theme_dark">Errët</string>
+    <string name="swap_people_nearby">Njerëz Atypari</string>
+    <string name="swap_wifi_device_name">Emër Pajisjeje</string>
+    <string name="swap_cant_find_peers">S’po gjeni atë çka kërkoni\?</string>
+    <string name="swap_send_fdroid">Dërgoni F-Droid</string>
+    <string name="perm_costs_money">Kjo mund t’ju kushtojë para</string>
+    <string name="download_error">Shkarkimi dështoi!</string>
+    <string name="downloading">Po shkarkohet…</string>
+    <string name="interval_never">Pa përditësime të vetvetishme aplikacionesh</string>
+    <string name="interval_1h">Kontrollo për përditësime çdo orë</string>
+    <string name="interval_4h">Kontrollo për përditësime çdo 4 orë</string>
+    <string name="interval_12h">Kontrollo për përditësime çdo 12 orë</string>
+    <string name="interval_1d">Kontrollo përditë për përditësime</string>
+    <string name="interval_1w">Kontrollo për përditësime çdo javë</string>
+    <string name="interval_2w">Kontrollo për përditësime çdo 2 javë</string>
+    <string name="theme_light">E çelët</string>
+    <string name="theme_dark">E errët</string>
     <string name="theme_night">Natë</string>
-    <string name="login_password">Fjalëkalimi</string>
-    <string name="repo_edit_credentials">Ndrysho Fjalëkalimin</string>
-    <string name="crash_dialog_comment_prompt">Këtu mundë të shtosh detaje dhe komente shtesë:</string>
-    <string name="perms_new_perm_prefix">Risi:</string>
-    <string name="perms_description_app">Mundësuar nga %1$s.</string>
-    <string name="allPerms">Të gjitha</string>
-    <string name="about_license">Licenca</string>
-
-    <string name="app_incompatible">I mospërputhshëm</string>
+    <string name="login_password">Fjalëkalim</string>
+    <string name="repo_edit_credentials">Ndryshoni Fjalëkalimin</string>
+    <string name="crash_dialog_comment_prompt">Këtu mund të shtoni të dhëna ekstra dhe komente:</string>
+    <string name="perms_new_perm_prefix">E re:</string>
+    <string name="perms_description_app">Furnizuar nga %1$s.</string>
+    <string name="allPerms">Krejt</string>
+    <string name="about_license">Licencë</string>
+    <string name="app_incompatible">Jo i përputhshëm</string>
     <string name="menu_launch">Hap</string>
     <string name="by_author_format">nga %s</string>
-    <string name="enable_nfc_send">Mundësoje dërgimin e NFC…</string>
-    <string name="cache_downloaded">Mbaje aplikacionet nga (cache)</string>
-    <string name="unstable_updates">Freskime Jostabile</string>
-    <string name="unstable_updates_summary">Sugjero përditësime për verzione jostabile</string>
-    <string name="keep_install_history">Mbaje historinë e instalimeve</string>
-    <string name="keep_install_history_summary">Mbaje raportin e të gjitha instalimeve dhe çinstalimeve mbrenda F-Droid</string>
-    <string name="force_old_index">Forcoje formën e vjetër të indeksit</string>
-    <string name="force_old_index_summary">Në rast të gabimeve ose problemeve të pajtueshmërisë, përdoreni XML indeksin e aplikacioneve</string>
-    <string name="update_auto_download">Merr freskimet automatikisht</string>
-    <string name="update_auto_download_summary">Freskimet shkarkohen automatikisht dhe ti njoftohesh për të instaluar ato</string>
-    <string name="update_auto_install">Automatikisht instaloje freskimet</string>
-    <string name="update_auto_install_summary">Shkarkoje dhe instaloje aplikacionet në prapaskenë</string>
-    <string name="notify">Shfaqe përditshmëritë e mundshme</string>
-    <string name="notify_on">Njoftoje kur freskimet janë të mundshme</string>
-    <string name="system_installer">Zgjerimi i Privilegjuar</string>
-    <string name="system_installer_on">Përdore F-Droid Zgjerimin e Privilegjuar për instalim, përditshmëritë, dhe hiqjen e paketave</string>
-    <string name="local_repo_name">Emri i Depos Lokale</string>
-    <string name="local_repo_name_summary">Titulli i reklamuar të depos suaj lokale %s</string>
-    <string name="local_repo_https_on">Përdore encryptimin HTTPS:// për koneksionin për depon lokala</string>
-
-    <string name="login_title">Nevojitet vërtetimi</string>
-    <string name="login_name">Emri i përdoruesit</string>
-    <string name="repo_error_empty_username">Emri i përdoruesit i zbrazët, kredencialet nuk u ndryshuan</string>
-
-    <string name="no_such_app">Asnjë aplikacion i tillë nuk është gjetur</string>
-
-    <string name="app_details_donate_prompt_unknown_author">Bleje zhvilluesve të %1$s një kafe!</string>
-    <string name="app_details_donate_prompt">%1$s është krijuar nga %2$s. Bleje atyre një kafe!</string>
-
-    <string name="app_details__incompatible_mismatched_signature">Nënshkrimi i ndryshëm nga verzioni i instaluar</string>
-    <string name="app_details__no_versions__show_incompat_versions">Për të shfaqur versione jo të pajtueshëm megjithatë, aktivizo zgjedhjen \"%1$s\"</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Verzione me nënshkrim të përshtatshëm nuk gjinden</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Verzione të përshtatshëm me pajisjen tuaj nuk ka</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Verzioni i instaluar nuk është i përshtatshëm me verzione të tjera të mundshëm. Uninstalimi i aplikacionit do të mundësoj për ju të shihni dhe të instaloni verzione të përshtatshme. Kjo shpesh ndodhë për shkak të aplikacioneve të instaluara nga Google Play ose burime të tjera, nëse ata janë të nënshkruar nga një certifikatë të ndryshme.</string>
-
-    <string name="about_site">Faqja e Internetit</string>
+    <string name="enable_nfc_send">Aktivizo NFC Send…</string>
+    <string name="cache_downloaded">Mba aplikacione të ruajtur në fshehtinë</string>
+    <string name="unstable_updates">Përditësime jo të qëndrueshme</string>
+    <string name="unstable_updates_summary">Sugjeroni përditësime për versione të paqëndrueshëm</string>
+    <string name="keep_install_history">Mba historik instalimesh</string>
+    <string name="keep_install_history_summary">Ruaj një regjistër të krejt instalimeve dhe çinstalimeve në një depo private</string>
+    <string name="force_old_index">Detyro përdorim format të dikurshëm treguesi</string>
+    <string name="force_old_index_summary">Në rast se ka të meta apo probleme përputhshmërie, përdorni treguesin XML të aplikacionit</string>
+    <string name="update_auto_download">Sill vetvetiu përditësime</string>
+    <string name="update_auto_download_summary">Përditësimet shkarkohen automatikisht dhe ju njoftoheni për t’i instaluar</string>
+    <string name="update_auto_install">Instalo vetvetiu përditësime</string>
+    <string name="update_auto_install_summary">Shkarkojini dhe instalojini aplikacionet në prapaskenë, duke shfaqur një njoftim</string>
+    <string name="notify">Shfaq përditësime gati</string>
+    <string name="notify_on">Shfaq një njoftim kur ka përditësime gati</string>
+    <string name="system_installer">Zgjerim i Privilegjuar</string>
+    <string name="system_installer_on">Përdoreni Zgjerimin e Privilegjuar për instalim, përditësim dhe heqje paketash</string>
+    <string name="local_repo_name">Emër i Depos tuaj Vendore</string>
+    <string name="local_repo_name_summary">Titulli i reklamuar i depos tuaj vendore %s</string>
+    <string name="local_repo_https_on">Për depo vendore përdor lidhje HTTPS:// të fshehtëzuar</string>
+    <string name="login_title">Lypset mirëfilltësim</string>
+    <string name="login_name">Emër përdoruesi</string>
+    <string name="repo_error_empty_username">Emër përdoruesi i zbrazët, kredencialet s’u ndryshuan</string>
+    <string name="no_such_app">S’u gjet aplikacion i tillë.</string>
+    <string name="app_details_donate_prompt_unknown_author">Qerasini zhvilluesit e %1$s një kafe!</string>
+    <string name="app_details_donate_prompt">%1$s është krijuar nga %2$s. Qerasini një kafe!</string>
+    <string name="app_details__incompatible_mismatched_signature">Nënshkrim i ndryshëm te versioni i instaluar</string>
+    <string name="app_details__no_versions__show_incompat_versions">Për të shfaqur këtu versione të papërputhshëm, sido që të jetë, aktivizoni rregullimin \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signatures">S’ka versione me nënshkrim të përputhshëm</string>
+    <string name="app_details__no_versions__none_compatible_with_device">S’ka versione të përputhshëm me pajisjen</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Versioni i instaluar s’është i përputhshëm me ndonjë version të gatshëm. Çinstalimi i aplikacionit do t’ju bëjë të mundur të shihni dhe instaloni versione të përputhshëm. Kjo shpesh ndodh me aplikacione të instaluar përmes Google Play ose burime të tjera, nëse janë të nënshkruar me një dëshmi tjetër.</string>
+    <string name="about_site">Sajt</string>
     <string name="app_installed">I instaluar</string>
-    <string name="app_not_installed">Jo e instaluar</string>
+    <string name="app_not_installed">Jo i instaluar</string>
     <string name="app_inst_known_source">Instaluar (nga %s)</string>
     <string name="app_inst_unknown_source">I instaluar (nga burime të panjohura)</string>
-    <string name="app_version_x_available">Verzioni %1$s është i mundshëm</string>
-    <string name="app_version_x_installed">Verzioni %1$s</string>
-    <string name="app_recommended_version_installed">Verzioni %1$s (Rekomandohet)</string>
-    <string name="app_new">E re</string>
+    <string name="app_version_x_available">Është i gatshëm versioni %1$s</string>
+    <string name="app_version_x_installed">Versioni %1$s</string>
+    <string name="app_recommended_version_installed">Version %1$s (I këshilluar)</string>
+    <string name="app_new">I ri</string>
     <string name="app__tts__cancel_download">Anuloje shkarkimin</string>
-    <string name="app__install_downloaded_update">Freskim</string>
-    <string name="app_installed_media">Dosja është instaluar në %s</string>
-    <string name="app_permission_storage">F-Droid i nevojitet leje regjistrimi për të instaluar këto në regjistër. Ju lutemi lejoni në ekranin vijues për të vazhduar me instalim.</string>
-
+    <string name="app__install_downloaded_update">Përditësoje</string>
+    <string name="app_installed_media">Kartelë e instaluar te %s</string>
+    <string name="app_permission_storage">F-Droid lyp leje depozitimi për të instaluar këtë në depo. Ju lutemi, që të vazhdohet me instalimin, lejojeni në skenën pasuese.</string>
     <string name="app_list_download_ready">U shkarkua, është gati për instalim</string>
-    <string name="app_list__dismiss_app_update">Freskimi nuk u marr parasysh</string>
-    <string name="app_list__dismiss_vulnerable_app">Dobësia nuk u marr parasysh</string>
-    <string name="app_list__dismiss_downloading_app">Shkarkimi është anuluar</string>
-
-    <string name="installed_apps__activity_title">Aplikacionet e Instaluara</string>
-    <string name="installed_app__updates_ignored">Freskimet nuk u morrën parasysh</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Freskimet nuk u pranuan për Verzionin %1$s</string>
-    <string name="update_all">Shkarko të gjitha freskimet</string>
-
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Ne kemi gjetur një dobësi me %1$s. Ne rekomandojmë që të uninstaloni aplikacionin menjëherë.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ne kemi gjetur një dobësi me %1$s. Ne rekomandojmë që të bëni upgrade te një verzion tjetër menjëherë.</string>
-    <string name="updates__app_with_known_vulnerability__ignore">Ignoroje</string>
-
-    <string name="updates__hide_updateable_apps">Fsheh applikacionet</string>
-    <string name="updates__show_updateable_apps">Shfaqe aplikacionet</string>
+    <string name="app_list__dismiss_app_update">Përditësimi u shpërfill</string>
+    <string name="app_list__dismiss_vulnerable_app">Cenueshmëria u shpërfill</string>
+    <string name="app_list__dismiss_downloading_app">Shkarkimi u anulua</string>
+    <string name="installed_apps__activity_title">Aplikacione të Instaluara</string>
+    <string name="installed_app__updates_ignored">Përditësime të shpërfillura</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Përditësime të shpërfillura për Versionin %1$s</string>
+    <string name="update_all">Përditësoji krejt</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Gjetëm një cenueshmëri me %1$s. Rekomandojmë ta çinstaloni aplikacionin menjëherë.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Gjetëm një cenueshmëri me %1$s. Rekomandojmë përditësimin menjëherë me versionin më të ri.</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Shpërfille</string>
+    <string name="updates__hide_updateable_apps">Fshihi aplikacionet</string>
+    <string name="updates__show_updateable_apps">Shfaqi aplikacionet</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Shkarko freskimin për aplikacionin %1$d</item>
-	<item quantity="other">Shkarko freskimet për aplikacionet %1$d.</item>
-</plurals>
-
-    <string name="repo_add_title">Shtoje depo të re</string>
-    <string name="repo_add_mirror">Shtoje pasqyre</string>
+        <item quantity="one">Shkarkoni përditësim për %1$d aplikacion.</item>
+        <item quantity="other">Shkarkoni përditësime për %1$d aplikacione.</item>
+    </plurals>
+    <string name="repo_add_title">Shtoni depo të re</string>
+    <string name="repo_add_mirror">Shtoni pasqyrë</string>
     <string name="links">Lidhje</string>
-    <string name="versions">Verzionet</string>
-    <string name="add_key">Shtoje çelës</string>
+    <string name="versions">Versione</string>
+    <string name="add_key">Shtoni Kyç</string>
     <string name="clear_search">Pastroje kërkimin</string>
-    <string name="sort_search">Rendite kërkimin</string>
-
-    <string name="repo_add_url">Adresa e depos</string>
-    <string name="repo_add_fingerprint">Gjurmë gishtash (jo i detyrueshëm)</string>
-    <string name="repo_exists_add_fingerprint">Ishte bërë instalimi i %1$s, kjo do të shtojë informacione të reja çelësore</string>
-    <string name="repo_exists_enable">Ishte bërë instalimi i %1$s, konfirmoni që ju dëshironi të aktivizoni përsërisht</string>
-    <string name="repo_exists_and_enabled">Ishte bërë instalimi i %1$s dhe është i aktivizuar</string>
-    <string name="repo_delete_to_overwrite">Së pari hiqni %1$s në mënyrë që të shtoni kto me çelësin kontradiktor.</string>
-    <string name="repo_exists_add_mirror">Ky është një kopje e %1$s, shtoje si pasqyrë?</string>
-    <string name="bad_fingerprint">Gjurma e gabuar e gishtit</string>
-    <string name="invalid_url">Ky nuk është  URL e vlefshme.</string>
-    <string name="malformed_repo_uri">Ignorohet depoja e shformuar URI: %s</string>
-    <string name="repo_provider">Depoja: %s</string>
-
-    <string name="repositories_summary">Shtoje burime plotësuese të aplikacioneve</string>
-    <string name="menu_ignore_all">Ignoroje Të Gjitha Freskimet</string>
-    <string name="menu_website">Faqja e internetit</string>
-    <string name="menu_email">Autori i E-Mailit</string>
-    <string name="menu_issues">Problemet</string>
-    <string name="menu_changelog">Ndryshimet</string>
+    <string name="sort_search">Rendit përfundime kërkimi</string>
+    <string name="repo_add_url">Adresë depoje</string>
+    <string name="repo_add_fingerprint">Gjurmë gishtash (opsionale)</string>
+    <string name="repo_exists_add_fingerprint">%1$s është i ujdisur tashmë, kjo do të shtojë të dhëna të tjera kyçe.</string>
+    <string name="repo_exists_enable">%1$s është i ujdisur tashmë, ripohoni se doni ta riaktivizoni.</string>
+    <string name="repo_exists_and_enabled">%1$s është i ujdisur dhe i aktivizuar tashmë.</string>
+    <string name="repo_delete_to_overwrite">Që ta shtoni këtë me një kyç që ka përplasje, së pari hiqni %1$s.</string>
+    <string name="repo_exists_add_mirror">Kjo është një kopje e %1$s, të shtohet si pasqyrë\?</string>
+    <string name="bad_fingerprint">Shenja gishtash të këqija</string>
+    <string name="invalid_url">Kjo s’është URL e vlefshme.</string>
+    <string name="malformed_repo_uri">Po shpërfillet URI depoje e keqformuar: %s</string>
+    <string name="repo_provider">Depo: %s</string>
+    <string name="repositories_summary">Shtoni burime plotësuese të aplikacioneve</string>
+    <string name="menu_ignore_all">Shpërfilli Krejt Përditësimet</string>
+    <string name="menu_website">Sajt</string>
+    <string name="menu_email">Autor Email-i</string>
+    <string name="menu_issues">Probleme</string>
+    <string name="menu_changelog">Regjistër ndryshimesh</string>
     <string name="menu_video">Video</string>
-    <string name="menu_license">Licenca: %s</string>
+    <string name="menu_license">Licencë: %s</string>
     <string name="menu_liberapay">Liberapay</string>
-
-    <string name="latest__empty_state__no_recent_apps">Applikacionet bashkëkohor nuk u gjetën</string>
-    <string name="latest__empty_state__never_updated">Kur lista juaj e aplikacioneve freskohet, aplikacionet e fundit do të shihen këtu</string>
-    <string name="latest__empty_state__no_enabled_repos">Kur e aktivizon depon dhe e lëshon të freskohet, aplikacionet e fundit shihen këtu</string>
-
-    <string name="categories__empty_state__no_categories">Nuk ka kategori për të shfaqur</string>
-
+    <string name="latest__empty_state__no_recent_apps">S’u gjetën aplikacione së fundi</string>
+    <string name="latest__empty_state__never_updated">Pasi të jetë përditësuar lista juaj e aplikacioneve, aplikacionet më të reja do të duhej të dukeshin këtu</string>
+    <string name="latest__empty_state__no_enabled_repos">Pasi aktivizoni një depo dhe lini të përditësohet ajo, aplikacionet më të reja do të duhej të dukeshin këtu</string>
+    <string name="categories__empty_state__no_categories">S’ka kategori për shfaqje</string>
     <string name="preference_category__my_apps">Aplikacionet e Mia</string>
-    <string name="details_new_in_version">E re në verzionin %s</string>
-
-    <string name="antifeatureswarning">Ky aplikacion ka veçori që mund të ju mospëlqejë</string>
-    <string name="antifeatures">Kundër-veçori</string>
+    <string name="details_new_in_version">Të reja në versionin %s</string>
+    <string name="antifeatureswarning">Ky aplikacion ka veçori që mund të mos i pëlqeni.</string>
+    <string name="antifeatures">Anti-veçori</string>
     <string name="antiadslist">Ky aplikacion përmban reklama</string>
-    <string name="antinonfreeadlist">Ky aplikacion rekomandon shtesa jo-falas</string>
-    <string name="antinonfreenetlist">Ky aplikacion rekomandon rrjet shërbime jo-falas</string>
-    <string name="antinonfreedeplist">Ky aplikacion varet nga aplikacionet të tjera jo-falas</string>
-    <string name="antiupstreamnonfreelist">Kodi burimor nuk është plotësisht Falas</string>
-    <string name="antinonfreeassetslist">Ky aplikacion përmban pronë jo-falas</string>
-
+    <string name="antinonfreeadlist">Ky aplikacion rekomandon shtesa jo të lira</string>
+    <string name="antinonfreenetlist">Ky aplikacion rekomandon shërbime rrjeti jo të lira</string>
+    <string name="antinonfreedeplist">Ky aplikacion varet nga aplikacione të tjera jo të lira</string>
+    <string name="antiupstreamnonfreelist">Kodi burim origjinal s’është plotësisht i Lirë</string>
+    <string name="antinonfreeassetslist">Ky aplikacion përmban elementë jo të lirë</string>
     <string name="display">Shfaqje</string>
-
     <string name="expert">Mënyrë ekspert</string>
-    <string name="expert_on">Shfaqe informacione shtesë dhe aktivizo opcionet shtesë</string>
-
-    <string name="search_hint">Kërko aplikacionet</string>
-
-    <string name="appcompatibility">Përshtatja e Aplikacioneve</string>
-    <string name="show_incompat_versions">Përfshije verzione jo përshtatshme</string>
-    <string name="show_incompat_versions_on">Shfaqe verzione të aplikacioneve që janë nuk përshtaten me pajisjen tuaj</string>
-    <string name="show_anti_feature_apps">Përfshije aplikacionet kundër-veçori</string>
-    <string name="show_anti_feature_apps_on">Shfaqe aplikacione që kërkojnë kundër-veçori</string>
-    <string name="force_touch_apps">Përfshije aplikacionet me gjurmë gishtore</string>
-    <string name="force_touch_apps_on">Shfaqe aplikacione që kërkojnë gjurma gishtore pa marr parasysh mbështetjen e hardware-it</string>
-
-    <string name="local_repo">Depo Lokale</string>
-    <string name="local_repo_running">F-Droid është gati të shkembejë</string>
-    <string name="touch_to_configure_local_repo">Preke për të shikuar detajet dhe jep leje të tjerëve të shkëmbejnë aplikacionet tuaja.</string>
-    <string name="deleting_repo">Duke hequr depon aktuale…</string>
-    <string name="adding_apks_format">Duke shtuar %s në depo…</string>
-    <string name="writing_index_jar">Duke shkruar dosjen indekse të nënshkruar (index.jar)…</string>
-    <string name="linking_apks">Duke lidhur APK\'të mbrenda depos…</string>
-    <string name="copying_icons">Duke kopjuar ikonat e aplikacioneve në depo…</string>
-    <string name="useTor">Përdore Tor</string>
-    <string name="useTorSummary">Forcoje trafikun e shkarkimit përmes Tor për fshehtësi të rritur</string>
-    <string name="proxy">Prokurë</string>
-    <string name="enable_proxy_title">Aktivizo Prokurën HTTP</string>
-    <string name="privacy">Fshehtësi</string>
-    <string name="preventScreenshots_title">Ndaloje Screenshots</string>
-    <string name="panic_app_setting_title">Aplikacioni i Butonit të Panikut</string>
+    <string name="expert_on">Shfaq të dhëna shtesë dhe aktivizo rregullime shtesë</string>
+    <string name="search_hint">Kërkoni aplikacione</string>
+    <string name="appcompatibility">Përputhshmëri aplikacioni</string>
+    <string name="show_incompat_versions">Përfshi versione të papërputhshëm</string>
+    <string name="show_incompat_versions_on">Shfaq versione aplikacioni që janë të papërputhshëm me pajisjen</string>
+    <string name="show_anti_feature_apps">Përfshi aplikacione anti-veçori</string>
+    <string name="show_anti_feature_apps_on">Shfaq aplikacione që lypin anti-veçori</string>
+    <string name="force_touch_apps">Përfshi aplikacione touchscreen</string>
+    <string name="force_touch_apps_on">Shfaq aplikacione që lypin touchscreen, pavarësisht nëse mbulohen nga hardware-i</string>
+    <string name="local_repo">Depo Vendore</string>
+    <string name="local_repo_running">F-Droid-i është gati për shkëmbime</string>
+    <string name="touch_to_configure_local_repo">Prekeni që të shihni hollësi dhe të lejoni të tjerët të shkëmbejnë aplikacionet tuaja.</string>
+    <string name="deleting_repo">Po hiqet depoja e tanishme…</string>
+    <string name="adding_apks_format">Po shtohet %s te depo…</string>
+    <string name="writing_index_jar">Po shkruhet kartelë treguesi të nënshkruar (index.jar)…</string>
+    <string name="linking_apks">Po lidhen APK në depo…</string>
+    <string name="copying_icons">Po kopjohen ikona aplikacioni në depo…</string>
+    <string name="useTor">Përdor Tor-in</string>
+    <string name="useTorSummary">Për më tepër privatësi, kalojeni detyrimisht përmes Tor-it trafikun e shkarkimeve. Lyp Orbot</string>
+    <string name="proxy">Ndërmjetës</string>
+    <string name="enable_proxy_title">Aktivizo Ndërmjetës HTTP</string>
+    <string name="privacy">Privatësi</string>
+    <string name="preventScreenshots_title">Parandalo foto ekrani</string>
+    <string name="panic_app_setting_title">Aplikacion Butoni Paniku</string>
     <string name="panic_app_unknown_app">një aplikacion i panjohur</string>
-    <string name="panic_app_setting_summary">Asnjë aplikacion nuk është e vendosur</string>
-    <string name="panic_app_setting_none">Asgjë</string>
-    <string name="panic_app_dialog_title">Konfirmoje Aplikacionin e Panikës</string>
-    <string name="allow">Lejo</string>
-
-    <string name="panic_settings">Zgjedhjet e Butonit të Panikës</string>
-    <string name="panic_settings_summary">Veprimet që të merren në rast të emergjences</string>
-    <string name="panic_exit_title">Dil nga Aplikacioni</string>
-    <string name="panic_exit_summary">Aplikaciony do të mbyllet</string>
+    <string name="panic_app_setting_summary">S’është ujdisur ndonjë aplikacion</string>
+    <string name="panic_app_setting_none">Asnjë</string>
+    <string name="panic_app_dialog_title">Ripohoni Aplikacion Paniku</string>
+    <string name="allow">Lejoje</string>
+    <string name="panic_settings">Rregullime butoni paniku</string>
+    <string name="panic_settings_summary">Veprime për t’u ndërmarrë në rast urgjence</string>
+    <string name="panic_exit_title">Dilni nga aplikacioni</string>
+    <string name="panic_exit_summary">Ky aplikacion do të mbyllet</string>
     <string name="panic_hide_title">Fshihe %s</string>
-    <string name="panic_hide_summary">Aplikacioni do të fsheh vetveten</string>
-    <string name="panic_hide_warning_title">Kujtoje si të restauroj</string>
-    <string name="hiding_calculator">Makina Llogaritëse/Kalkulatriçe</string>
+    <string name="panic_hide_summary">Aplikacioni do të fshehë vetveten</string>
+    <string name="panic_hide_warning_title">Mba mend si të rikthehen</string>
+    <string name="hiding_calculator">Makinë llogaritëse</string>
     <string name="hiding_dialog_title">Fshihe %s Tani</string>
     <string name="hide_on_long_search_press_title">Fshihe me butonin e kërkimit</string>
-    <string name="hide_on_long_search_press_summary">Prekja e zgjatur e butonit të kërkimit do të fshih aplikacionin</string>
-
-    <string name="download_404">Dosja e kërkuar nuk është gjetur</string>
-    <string name="update_notification_title">Depotë janë duke u freskuar</string>
-    <string name="repo_num_apps">Numri i aplikacioneve</string>
-    <string name="repo_official_mirrors">Pasqyrat zyrtare</string>
-    <string name="repo_user_mirrors">Pasqyrat e përdoruesit</string>
+    <string name="hide_on_long_search_press_summary">Prekja e zgjatur e butonit të kërkimit do të fshehë aplikacionin</string>
+    <string name="download_404">Kartela e domosdoshme s’u gjet.</string>
+    <string name="update_notification_title">Përditësim deposh</string>
+    <string name="repo_num_apps">Numër aplikacionesh</string>
+    <string name="repo_official_mirrors">Pasqyra zyrtare</string>
+    <string name="repo_user_mirrors">Pasqyra përdoruesi</string>
     <string name="unknown">I panjohur</string>
-    <string name="repo_confirm_delete_title">Të fshijë depon?</string>
-    <string name="requires_features">Nevojitet: %1$s</string>
+    <string name="repo_confirm_delete_title">Të fshihet Depoja\?</string>
+    <string name="requires_features">Lyp: %1$s</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Shiko %d</item>
-	<item quantity="other">Shiko të gjithë %d</item>
-</plurals>
-
-    <string name="nearby_splash__download_apps_from_people_nearby">Nuk ka Internet? Merrni aplikacione nga njerëzit pranë jush!</string>
-    <string name="nearby_splash__find_people_button">Gjeni njerëz pranë meje</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Të dyja palët duhet %1$s për të përdorur afër.</string>
-
-    <string name="swap_join_same_wifi">Të bashkohen në të njëjtin rrjet Wi-Fi si miku juaj</string>
-    <string name="disabled">Çaktivizuar</string>
-    <string name="next">Përpara</string>
-    <string name="installing">Po instalon…</string>
-    <string name="install_confirm_update">Dëshiron të instalosh një përditësim në këtë aplikacion ekzistues? Të dhënat e tua ekzistuese nuk do të humbin. Aplikacioni i përditësuar do të ketë qasje në:</string>
-    <string name="install_confirm_update_system">Dëshiron të instalosh një përditësim në këtë aplikacion të integruar? Të dhënat e tua ekzistuese nuk do të humbin. Aplikacioni i përditësuar do të ketë qasje në:</string>
-    <string name="install_confirm_update_no_perms">Dëshiron të instalosh një përditësim të këtij aplikacioni ekzistues? Të dhënat e tua ekzistuese nuk do të humbasin. Aplikacioni nuk kërkon ndonjë qasje të veçantë.</string>
-    <string name="install_confirm_update_system_no_perms">Dëshiron të instalosh një përditësim të këtij aplikacioni ekzistues? Të dhënat e tua ekzistuese nuk do të humbasin. Aplikacioni nuk kërkon ndonjë qasje të veçantë.</string>
-    <string name="uninstall_confirm">Dëshiron ta çinstalosh këtë aplikacion?</string>
+        <item quantity="one">Shihni %d</item>
+        <item quantity="other">Shihni krejt %d</item>
+    </plurals>
+    <string name="nearby_splash__download_apps_from_people_nearby">Pa Internet\? Merrni aplikacione nga njerëz pranë jush!</string>
+    <string name="nearby_splash__find_people_button">Gjeni njerëz atypari</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Lypset që %1$s të përdorë veçorinë Atypari për të dy palët.</string>
+    <string name="swap_join_same_wifi">Hyni në të njëjtin rrjet Wi-Fi si shoku juaj</string>
+    <string name="disabled">E çaktivizuar</string>
+    <string name="next">Pasuesja</string>
+    <string name="installing">Po instalohet…</string>
+    <string name="install_confirm_update">Doni të instalohet një përditësim te ky aplikacion ekzistues\? Të dhënat tuaja ekzistuese s’do të humbin. Aplikacioni i përditësuar do të ketë hyrje te:</string>
+    <string name="install_confirm_update_system">Doni të instalohet një përditësim te ky aplikacion i brendshëm\? Të dhënat tuaja ekzistuese s’do të humbin. Aplikacioni i përditësuar do të ketë hyrje te:</string>
+    <string name="install_confirm_update_no_perms">Doni të instalohet një përditësim te ky aplikacion ekzistues\? Të dhënat tuaja ekzistuese s’do të humbin. Nuk kërkon ndonjë hyrje speciale.</string>
+    <string name="install_confirm_update_system_no_perms">Doni të instalohet një përditësim te ky aplikacion i brendshëm\? Të dhënat tuaja ekzistuese s’do të humbin. Nuk kërkon ndonjë hyrje speciale.</string>
+    <string name="uninstall_confirm">Doni të çinstalohet ky aplikacion\?</string>
     <string name="uninstall_update_confirm">Të zëvendësohet ky aplikacion me versionin e fabrikës? Të gjitha të dhënat do të hiqen.</string>
-    <string name="uninstalling">Po e çinstalon…</string>
+    <string name="uninstalling">Po çinstalohet…</string>
     <string name="newPerms">E re</string>
     <string name="no_permissions">Nuk ka leje</string>
-    <string name="loading">Po ngarkon…</string>
+    <string name="loading">Po ngarkohet…</string>
     <string name="swap_connecting">Po lidhet</string>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Përditësuar %1$d muaj më parë</item>
+        <item quantity="other">Përditësuar %1$d muaj më parë</item>
+    </plurals>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">Përditësuar %1$d javë më parë</item>
+        <item quantity="other">Përditësuar %1$d javë më parë</item>
+    </plurals>
+    <plurals name="details_last_update_days">
+        <item quantity="one">Përditësuar %1$d ditë më parë</item>
+        <item quantity="other">Përditësuar %1$d ditë më parë</item>
+    </plurals>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d më tepër…</item>
+        <item quantity="other">+%1$d më tepër…</item>
+    </plurals>
+    <string name="status_inserting_x_apps">Po ruhen hollësi aplikacioni (%1$d/%2$d) nga %3$s</string>
+    <string name="scan_removable_storage_summary">Shihni për depo paketash në depozita të heqshme, të tilla si karta SD dhe disqthe USB</string>
+    <string name="hiding_dialog_message">Jeni i sigurt se doni të hiqet %1$s nga nisësi\? Vetëm shtypja e \"%2$d\" te aplikacioni gjoja %3$s mund ta rikthejë.</string>
+    <string name="empty_installed_app_list">S’u instalua aplikacion.
+\n
+\nKa aplikacione në pajisjen tuaj, por nuk janë të passhëm prej F-Droid-it. Kjo mund të vijë ngaqë duhet të përditësoni depot tuaj, ose depot në thelb nuk i përmbajnë aplikacionet tuaja.</string>
+    <string name="prompt_to_send_crash_reports_summary">Mbledh të dhëna rreth vithisjesh dhe pyet për t’ia dërguar ato zhvilluesit</string>
+    <string name="app_size">Madhësi: %1$s</string>
+    <string name="swap_scan_or_type_url">Njëri person lyspet të skanojë kodin, ose të shtypë URL-në e tjetrit në një shfletues.</string>
+    <string name="not_on_same_wifi">Pajisja juaj s’është në të njëjtin rrjet Wi-Fi me depon vendore që sapo shtuat! Provoni të hyni në këtë rrjet: %s</string>
+    <string name="allow_push_requests">Lejoji depot të instalojnë/çinstalojnë aplikacione</string>
+    <string name="swap_nfc_title">Prekeni që të shkëmbehet</string>
+    <string name="over_network_never_summary">Mos shkarko kurrë gjë duke përdorur këtë lidhje</string>
+    <string name="over_network_on_demand_summary">Përdore këtë lidhje vetëm kur klikoj për shkarkim</string>
+    <string name="nearby_splash__read_external_storage">Kërko te kartë SD për depo dhe pasqyra.</string>
+    <string name="send_version_and_uuid_summary">Përfshi versionin e këtij aplikacioni dhe një ID kuturu, unike, kur shkarkohet, hyn në punë gjatë nisjes pasuese të aplikacioni.</string>
+    <string name="swap_confirm">Ripohoni shkëmbim</string>
+    <string name="swap_nearby">Shkëmbim Atypari</string>
+    <string name="hide_all_notifications_summary">Pengoju krejt veprimeve të shfaqen te shtylla e gjendjeve dhe te sirtari i njoftimeve.</string>
+    <string name="enable_proxy_summary">Formësoni Ndërmjetër HTTP për krejt kërkesa rrjeti</string>
+    <string name="panic_app_dialog_message">Jeni i sigurt se doni të lejohet %1$s të shkaktojë veprime shkatërruese butoni paniku\?</string>
+    <string name="repo_added">U ruajt depo paketash %1$s.</string>
+    <string name="repo_disabled_notification">U çaktivizua %1$s.
+\n
+\nQë të instaloni aplikacione prej saj, do t’ju duhet të riaktivizoni këtë depo.</string>
+    <string name="panic_hide_warning_message">Në një akt paniku, kjo do të heqë %1$s nga nisësi. Vetëm shtypja e \"%2$d\" te aplikacioni gjoja %3$s mund ta rikthejë.</string>
+    <string name="all_other_repos_fine">Krejt depot e tjera s’krijuan gabime.</string>
+    <string name="unsigned_description">Kjo do të thotë se lista e aplikacioneve s’u verifikua dot. Duhet të jeni i kujdesshëm me aplikacione të shkarkuar nga tregues të panënshkruar.</string>
+    <string name="send_installed_apps_csv">Aplikacionet instaluar nga F-Droid si kartelë CSV</string>
+    <string name="swap_toast_not_removable_storage">Ajo zgjedhje s’dha përputhje me ndonjë pajisje të heqshme depozitimesh, riprovoni!</string>
+    <string name="install_history_summary">Shihni regjistrin privat të krejt instalimeve dhe çinstalimeve</string>
+    <string name="nearby_splash__document_tree">Kërko te USB OTG për depo dhe pasqyra.</string>
+    <string name="system_install_denied_permissions">Zgjerimit s’i janë akorduar leje të privilegjuara! Ju lutemi, krijoni një njoftim të mete!</string>
+    <string name="updates_disabled_by_settings">Krejt përditësimet të çaktivizuara nga Rregullimet për Data/WiFi</string>
+    <string name="crash_dialog_text">Ndodhi një gabim i papritur që e detyroi aplikacionin të ndalet. Do të donit të dërgoni me email hollësitë, për të ndihmuar në ndreqjen e problemit\?</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Shihni %1$d aplikacion te kategoria %2$s</item>
+        <item quantity="other">Shihni krejt %1$d aplikacionet prej kategorisë %2$s</item>
+    </plurals>
+    <string name="panic_reset_repos_title">Rikthe depot te parazgjedhjet</string>
+    <string name="repo_confirm_delete_body">Fshirja e një depoje do të thotë se aplikacionet prej saj s’do të jenë më të gatshme.
+\n
+\nShënim: Krejt aplikacionet e instaluara më parë do të mbeten në pajisjen tuaj.</string>
+    <string name="allow_push_requests_summary">Te tejtëdhëna deposh mund të përfshihen kërkesa push për instalim ose çinstalim aplikacionesh</string>
+    <string name="no_handler_app">S’keni ndonjë aplikacion të gatshëm që mund të trajtojë %s.</string>
+    <string name="swap_toast_could_not_enable_hotspot">S’u aktivizua dot Hotspot Wi-Fi!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Funksioni atypari u mbyll, ngaqë qe pa punë.</string>
+    <string name="swap_join_this_hotspot">Ndihmojeni shokun tuaj të bëhet pjesë e hotspot-it tuaj</string>
+    <string name="swap_connection_misc_error">Ndodhi gabim teksa lidhej me pajisjen, s’mund të shkëmbehet me të!</string>
+    <string name="warning_scaning_qr_code">Kamera juaj s’duket se ka autofokus. Mund të jetë e vështirë të skanohet kodi.</string>
+    <string name="send_history_csv">Historik instalimesh %s si kartelë CSV</string>
+    <string name="swap_switch_to_wifi">Prekeni që të kalohet te një rrjet Wi-Fi</string>
+    <string name="share_repository">Ndani Depo Me të Tjerë</string>
+    <string name="swap_confirm_connect">Doni të merren aplikacione prej %1$s tani\?</string>
+    <string name="preventScreenshots_summary">Bllokon bërje fotosh ekrani dhe fsheh lëndë aplikacioni prej skenës Aplikacione Së Fundi</string>
+    <string name="hiding_dialog_warning">Sinjalizim: Do të hiqet gjithashtu çfarëdo shkurtoreje aplikacioni te skena e kreut dhe lypset të rishtohet dorazi.</string>
+    <string name="panic_reset_repos_summary">Kaloje forcërisht ujdisjen e depos mbrapsht te parazgjedhjet</string>
+    <string name="repo_not_yet_updated">Kjo depo s’është përdorur ende. Që të shihni aplikacionet që sjell, lypset ta aktivizoni.</string>
+    <string name="swap_join_same_wifi_desc">Që të shkëmbeni duke përdorur Wi-Fi, sigurohuni se gjendeni në të njëjtin rrjet. Nëse s’keni hyrje te po ai rrjet, njëri prej jush mund të krijojë një Wi-Fi Hotspot.</string>
+    <string name="swap_nfc_description">Nëse shoku juaj ka të aktivizuar F-Droid-in dhe NFC-në, prekni pajisjet tuaja me njëra-tjetrën.</string>
+    <string name="swap_toast_find_removeable_storage">Zgjidhni kartën tuaj SD ose diskthin tuaj USB të heqshëm</string>
+    <string name="not_visible_nearby_description">Para shkëmbimesh me pajisje atypari, bëjeni të dukshme pajisjen tuaj.</string>
+    <string name="swap_qr_isnt_for_swap">Kodi QR që skanuat s’duket si kod shkëmbimi.</string>
+    <string name="install_confirm">lyp hyrje te</string>
+    <string name="app_list__dismiss_installing_app">Instalimi u anulua</string>
+    <string name="proxy_host">Strehues Ndërmjetësi</string>
+    <string name="preference_manage_installed_apps">Administroni aplikacione të instaluara</string>
+    <string name="notification_content_single_installing">Po instalohet \"%1$s\"…</string>
+    <string name="notification_title_single_ready_to_install_update">Përditësim gati për instalim</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string name="use_bluetooth">Përdor Bluetooth</string>
+    <string name="swap_not_visible_bluetooth">Jo i dukshëm përmes Bluetooth-i</string>
+    <string name="menu_open">Hap</string>
+    <string name="scan_removable_storage_toast">Po skanohet %s…</string>
+    <string name="main_menu__updates">Përditësime</string>
+    <string name="antinosourcesince">Kodi burim s’mund të kihet më, s’ka përditësime të mundshme.</string>
+    <string name="notification_action_cancel">Anuloje</string>
+    <string name="panic_will_be_wiped">Do të çinstalohet dhe krejt të dhënat do të fshihen</string>
+    <string name="repos_unchanged">Krejt depot janë të përditësuara</string>
+    <string name="swap_view_available_networks">Prekeni që të hapen rrjete të gatshëm</string>
+    <string name="keep_forever">Përgjithmonë</string>
+    <string name="keep_month">1 Muaj</string>
+    <string name="keep_hour">1 Orë</string>
+    <string name="swap_setting_up_bluetooth">Po ujdiset Bluetooth-i…</string>
+    <string name="send_version_and_uuid">Dërgo version dhe UUID te shërbyes</string>
+    <string name="download_pending">Po pritet të nisë shkarkimi…</string>
+    <string name="about_forum">Forum asistence</string>
+    <string name="swap_no_peers_nearby">S’u gjetën njerëz atypari për shkëmbime.</string>
+    <string name="app_details">Hollësi Aplikacioni</string>
+    <string name="menu_add_repo">Depo e Re</string>
+    <string name="notification_title_summary_installing">Instalim</string>
+    <string name="repo_searching_address">Po shihet për depo paketash te
+\n%1$s</string>
+    <string name="swap_setting_up_hotspot">Po ujdiset hotspot…</string>
+    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sporte &amp; Shëndet</string>
+    <string name="details_last_updated_today">Përditësuar sot</string>
+    <string name="notification_content_single_downloading_update">Po shkarkohet përditësim për \"%1$s\"…</string>
+    <string name="notification_title_summary_ready_to_install_update">Përditësim gati për instalim</string>
+    <string name="not_visible_nearby">Atypari jo e aktivizuar</string>
+    <string name="antiknownvulnlist">Ky aplikacion përmban një cenueshmëri të njohur sigurie</string>
+    <string name="menu_select_for_wipe">Përzgjidhni për fshirje</string>
+    <string name="swap_hidden_wifi_ssid">(fshehur)</string>
+    <string name="swap_scanning_for_peers">Po kërkohet për njerëz atypari…</string>
+    <string name="notification_title_summary_downloading">Po shkarkohet…</string>
+    <plurals name="notification_summary_updates">
+        <item quantity="one">%1$d Përditësim</item>
+        <item quantity="other">%1$d Përditësime</item>
+    </plurals>
+    <string name="over_data">Përmes të dhënash</string>
+    <string name="swap_no_wifi_network">Ende pa rrjet</string>
+    <string name="swap_visible_hotspot">I dukshëm përmes hotspot-i</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">Lëvizje</string>
+    <string name="app_list__name__downloading_in_progress">Po shkarkohet %1$s</string>
+    <string name="swap_setting_up_wifi">Po ujdiset Wi-Fi…</string>
+    <string name="send_installed_apps">Ndani me të tjerë aplikacione të instaluara</string>
+    <string name="menu_upgrade">Përditësim</string>
+    <string name="repo_fingerprint">Shenja gishtash të kyçit të nënshkrimeve (SHA-256)</string>
+    <string name="swap_choose_apps">Zgjidhni Aplikacione</string>
+    <string name="panic_add_apps_to_uninstall">Shtoni aplikacione që duhen çinstaluar dhe spastruar</string>
+    <string name="over_wifi">Përmes Wi-Fi-je</string>
+    <string name="hide_all_notifications">Fshihi krejt njoftimet</string>
+    <string tools:ignore="UnusedResources" name="category_Theming">Ndryshim teme grafike</string>
+    <string name="keep_day">1 Ditë</string>
+    <string name="repo_details">Depo</string>
+    <string name="try_again">Riprovoni</string>
+    <string name="notification_content_single_downloading">Po shkarkohet \"%1$s\"…</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Zhvillim</string>
+    <string name="unverified">I paverifikuar</string>
+    <string name="tts_category_name">Kategori: %1$s</string>
+    <string name="antidisabledalgorithmlist">Ky aplikacion ka një nënshkrim të dobët sigurie</string>
+    <string name="swap_toast_hotspot_enabled">U aktivizua Hotspot Wi-Fi</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Grafika</string>
+    <string name="notification_action_update">Përditësoje</string>
+    <string name="undo">Zhbëje</string>
+    <string name="swap_intro">Lidhuni dhe jepni e merrni aplikacione me njerëz pranë jush.</string>
+    <string name="swap_stopping_wifi">Po ndalet Wi-Fi…</string>
+    <string name="over_network_always_summary">Përdor gjithmonë këtë lidhje, kur mundet</string>
+    <string name="swap_toast_using_path">Po përdoret %1$s</string>
+    <string name="panic_destructive_actions">Veprime Shkatërruese</string>
+    <string name="swap_blank_wifi_ssid">(i zbrazët)</string>
+    <string name="notification_title_single_ready_to_install">Gati për instalim</string>
+    <string name="updates__tts__download_app">Shkarkim</string>
+    <string name="notification_title_single_install_error">Instalimi Dështoi</string>
+    <string name="proxy_host_summary">Strehëemër i ndërmjetësit tuaj (p.sh., 127.0.0.1)</string>
+    <string name="open_qr_code_scanner">Hap Skaner QR</string>
+    <string name="notification_title_summary_ready_to_install">Gati për instalim</string>
+    <string name="send_install_history">Dërgo Historik Instalimesh</string>
+    <string name="antitracklist">Ky aplikacion gjurmon dhe raporton veprimtarinë tuaj</string>
+    <string name="menu_translation">Përkthim</string>
+    <string name="swap_not_visible_wifi">Jo i dukshëm përmes Wi-Fi</string>
+    <string name="scan_removable_storage_title">Skano depozitë të heqshme</string>
+    <string name="proxy_port">Portë Ndërmjetësi</string>
+    <string name="nearby_splash__request_permission">Provojeni</string>
+    <string name="swap_visible_wifi">I dukshëm përmes Wi-Fi-je</string>
+    <string name="notification_title_summary_downloading_update">Po shkarkohet përditësimi…</string>
+    <string name="notification_content_single_installed">U instalua me sukses</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string name="install_history">Historik instalimesh</string>
+    <string name="swap_visible_bluetooth">I dukshëm përmes Bluetooth-i</string>
+    <string name="menu_manage">Depo</string>
+    <string name="swap_active_hotspot">%1$s (hotspot-i juaj)</string>
+    <plurals name="notification_summary_installed">
+        <item quantity="one">%1$d Aplikacion i Instaluar</item>
+        <item quantity="other">%1$d Aplikacione të Instaluar</item>
+    </plurals>
+    <string name="swap_stopping">Po ndalet…</string>
+    <string name="swap_scan_qr">Skanoni Kod QR</string>
+    <string name="swap_success">Sukses shkëmbimi!</string>
+    <string name="install_error_notify_title">Gabim në instalimin e %s</string>
+    <string name="swap">Shkëmbeni aplikacione</string>
+    <string name="notification_title_summary_update_available">Përditësim i passhëm</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Aftësi lidhjeje</string>
+    <string name="prompt_to_send_crash_reports">Pyet për dërgim njoftimesh vithisjesh</string>
+    <string name="keep_year">1 Vit</string>
+    <string name="panic_apps_to_uninstall">Aplikacione për çinstalim dhe krejt të dhënat do të fshihen</string>
+    <string name="status_inserting_apps">Po ruhen hollësi aplikacioni</string>
+    <string name="app_repository">Depo: %1$s</string>
+    <string name="proxy_port_summary">Numër porte i ndërmjetësit tuaj (p.sh., 8118)</string>
+    <string name="warning_no_internet">S’përditësohet dot, jeni të lidhur në Internet\?</string>
+    <string name="swap_starting">Po niset…</string>
+    <string name="uninstall_error_notify_title">Gabim në çinstalimin e %s</string>
+    <string name="install_error_unknown">S’u arrit të instalohej, për shkak të një gabimi të panjohur</string>
+    <string name="pref_language_default">Parazgjedhje Sistemi</string>
+    <string name="main_menu__latest_apps">Më i riu</string>
+    <string name="notification_title_single_update_available">Ka Përditësim</string>
+    <string name="status_processing_xml_percent">Po përpunohet %2$s / %3$s (%4$d%%) nga %1$s</string>
+    <string name="notification_action_install">Instaloje</string>
+    <string name="swap_stopping_hotspot">Po ndalet hotspot-i…</string>
+    <string name="keep_week">1 Javë</string>
+    <string name="swap_error_cannot_start_bluetooth">S’niset dot Bluetooth!</string>
+    <string tools:ignore="UnusedResources" name="category_Money">Para</string>
+    <string name="crash_dialog_title">F-Droid-i u vithis</string>
+    <string name="unsigned">I panënshkruar</string>
+    <string name="swap_toast_invalid_url">URL e pavlefshme për shkëmbime: %1$s</string>
+    <string name="app__tts__downloading_progress">Po shkarkohet, %1$d%% i plotësuar</string>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Përditësuar %1$d vit më parë</item>
+        <item quantity="other">Përditësuar %1$d vjet më parë</item>
+    </plurals>
+    <string name="empty_can_update_app_list">Përgëzime!
+\nAplikacionet tuaja janë të përditësuara.</string>
+    <string name="notification_title_summary_install_error">Instalimi Dështoi</string>
+    <string name="empty_search_available_app_list">S’ka aplikacione me përputhje me kërkimin tuaj.</string>
+    <string name="uninstall_error_unknown">S’u arrit të instalohej për shkak të një gabimi të panjohur</string>
+    <string name="app_suggested">I sugjeruar</string>
+    <string name="app_list__name__successfully_installed">%1$s u instalua</string>
+    <string name="notification_title_summary_installed">U instalua me sukses</string>
 </resources>

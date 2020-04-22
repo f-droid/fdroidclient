@@ -1,0 +1,21 @@
+v1.3.1
+* Ripunim i madh i zorrëve për veçoritë e lidhura me Atypari/Shkëmbim
+
+* Mbulim për TLSv1.3, kur pajisja është e aftë për një gjë të tillë
+
+v1.3
+* Butona më të qëndrueshëm dhe përditësime gjendjesh
+
+* Ripunim i Rregullimeve, përfshi kontrolle të reja përdorimi të dhënash
+
+* Funksionim në prapaskenë me baterinë në mendje, në Android 5.0 dhe më të ri
+
+* Element ndarjesh me të tjerët për depo, në menu
+
+* Çaktivizim njoftimesh vithisjesh që nga Rregullimet
+
+* Parës Historiku Instalimesh, kur është aktivizuar regjistrimi
+
+* Listë e klikueshme Anti-Veçorish, u shtua NoSourceSince
+
+* Android 4.0 tani është minimumi i mbuluar

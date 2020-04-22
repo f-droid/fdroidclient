@@ -1,0 +1,7 @@
+* Shtim çelësash te RepoDetails për çaktivizim të cilësdo pasqyrë, ose të krejt atyre (#1696)
+
+* Zgjedhje e një pasqyre kutur për çdo shkarkim pakete/APK-je
+
+* krejt shkarkimet e APK-ve me përdorim fshehtine me bazë depo, jo me bazë pasqyre
+
+* Trajtim ETag-ësh Apache dhe NGINX, kur kontrollohet nëse treguesi është ai aktual (#1708)

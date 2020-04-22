@@ -1,0 +1,7 @@
+* Trajtim lejesh të nënkuptuara READ_EXTERNAL_STORAGE, që shkaktojnë
+  një kërkesë lejesh në instalime me Zgjerimin e Privilegjuar
+* Sanitarizim të dhënash treguesi për të reduktuar kërcënime të mundshme nga shërbyesi
+* "Mbarim kohe Leximi" vë në punë përdorim pasqyrash, kur leximi është i ngadaltë
+* Ndreqje mungesë ikonash për ata që s’përdorin Wi-Fi
+* Përdorim titujsh më vete për parapëlqime Përditësimesh dhe skedë Përditësimesh, për të ndihmuar përkthimin
+* Ndreqje UI nga @ConnyDuck

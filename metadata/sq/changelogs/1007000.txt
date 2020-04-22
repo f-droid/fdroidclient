@@ -1,0 +1,11 @@
+* Ripunim i rëndësishëm i UI-t për shkëmbime, përgatitje rishkrimi
+
+* Shfaq “Zhbëje” pas fërkimit me gisht për objekte prej skedës “Përditësime” (falë @Hocuri!)
+
+* Ndreqje e trajtimit të ETag-ëve kur bëhet lidhje me pasqyra NGINX #1737
+
+* Ndreqje problemesh me shfaqjen e “Më të rinjve” shkaktuar nga trajtimi gabim i zonave kohore #1757
+
+* Shpërfillje e krejt vithisjeve të parëndësishme të shërbimeve në prapaskenë
+
+* Mos përdor Zgjerimin e Privilegjuar, nëse kjo është çaktivizuar te “Rregullimet”

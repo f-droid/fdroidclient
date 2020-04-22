@@ -1,0 +1,7 @@
+* Mbulim për pasqyra zyrtare për çfarëdo depo, me vetëpërzgjedhje bazuar në pasjen ose jo të tyre në një kohë të caktuar
+
+* Plot lustrime të UI-t, si dhe ndreqje qëndrueshmërie dhe të metash
+
+* Parapëlqime të reja për privatësi: Pengim fotosh ekrani, dalje paniku
+
+* Gjuhë të reja: koreançe (ko) dhe vietnamezçe (vi)

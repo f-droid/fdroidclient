@@ -1,0 +1,19 @@
+* Butona më të qëndrueshëm dhe përditësime gjendjesh
+
+* Ripunim i Rregullimeve, përfshi kontrolle të reja përdorimi të dhënash
+
+* Funksionim në prapaskenë me baterinë në mendje, në Android 5.0 dhe më të ri
+
+* Element ndarjesh me të tjerët për depo, në menu
+
+* Çaktivizim njoftimesh vithisjesh që nga Rregullimet
+
+* Parës Historiku Instalimesh, kur është aktivizuar regjistrimi
+
+* Listë e klikueshme Anti-Veçorish, u shtua NoSourceSince
+
+* Android 4.0 tani është minimumi i mbuluar 
+
+* Përmirësime të mëdha për versione vetjake të F-Droid-it
+
+* Rregullim ekspertësh për të dërguar version diagnostikimi +UUID gjatë shkarkimi

@@ -1,0 +1,13 @@
+* Skeda “Më të rejat” tani nxjerr në pah aplikacione që shoqërohen me përshkrime, përkthime, foto ekrani
+
+* Vetëshkarkim prej pasqyrash, për të përshpejtuar shkarkimet dhe për të ulur ngarkesën në f-droid.org
+
+* Çaktivizim pasqyrash duke përdorur çelësa të rinj në RepoDetails (#1696)
+
+* Përdorim më efikas i fshehtinës për shkarkime (për depo; përmes shërbyesish të ndryshëm #1708)
+
+* Ndreqje instalimesh që lypin Burime të Panjohura me Zgjerimin e Privilegjuar (#1702)
+
+* Ndreqje mungesë ikonash për ata që s’përdorin Wi-Fi (#1592)
+
+* U përmirësuan përkthimet për skedën Përditësime vs parapëlqime

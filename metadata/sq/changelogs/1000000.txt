@@ -1,0 +1,7 @@
+* Mbulim për media instalimesh, kartela OTA, ZIP, etj.
+
+* Mbulim i plotë për APK-ra të nënshkruara me kyçe të shumtë nënshkrimesh
+
+* Përkthim i ri, në tibetanisht
+
+* Heqje aplikacionesh dhe kategorish përkatëse, pas çaktivizimit të një depoje

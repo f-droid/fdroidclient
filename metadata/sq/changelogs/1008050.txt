@@ -1,0 +1,9 @@
+* formësim i ri lejesh në Android 10, për të ndalur kërkesa Burimesh të Panjohur #1833
+* Trajtim "lejesh ndarjesh" të reja: vendndodhja e përimtuar nënkupton vendndodhje të përafërt
+* Ndreqje parapëlqimi për <em>seekbar</em> në versione të fundit Android (falënderime për @dkanada)
+* Caktim rregullash kopjeruajtjeje, për shmangie ruajtjeje deposh shkëbimesh
+* tastiera hapet kur spastrohet kërkimi
+* njëkohësim përkthimesh me vargje të Android-it
+* detyro përdorim HTTPS-je për përkatësi të rëndomta deposh (GitLab, GitHub, Amazon)
+* standard ripple effect to links on app details
+* shfaq ikona parazgjedhje për aplikacione pa një ikonë

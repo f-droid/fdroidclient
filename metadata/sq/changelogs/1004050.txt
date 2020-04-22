@@ -1,0 +1,13 @@
+* Ripunim i madh i listës “Versione” te “Hollësi Aplikacionesh”, dhe mjaft përmirësime të tjera të UI-t, falë kontribuesit të ri @wsdfhjxc
+
+* Ndreqje e lëvizjes me tastierë/D-pad në mjaft vende, falë kontribuesit të ri @doeffinger
+
+* Shfaq buton “Hape”, kur instalohet media dhe mund të shihet
+
+* Shtim butoni Ndarjeje Me të Tjerë te “Aplikacione të Instaluara” për eksportim liste CSV
+
+* Shtim liste të klikueshme APK-sh te faqja HTML e treguesit për shkëmbime
+
+* Riprovo shkarkime treguesi për pasqyra
+
+* Ndreqje e hapit “Dërgoje te F-Droid përmes Bluetooth-i” në versionet e fundit të Android-it

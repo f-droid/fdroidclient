@@ -1,0 +1,3 @@
+* Ndreqje të mete që pengonte shfaqjen e përkthimeve në Android >= 7.0
+
+* Ndreqje vithisjeje të përmirësimit të bazës së të dhënave gjatë kalimit nga.0-alpha3 → 1.0-alpha4 #1181

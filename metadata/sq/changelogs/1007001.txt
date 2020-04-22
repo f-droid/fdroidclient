@@ -1,0 +1,5 @@
+* u ripunua shkëmbimi atypari duke përdorur AP hotspot-i pajisjesh
+
+* u shtuan përgjigje të reja paniku: çinstalime aplikacionesh dhe rikthim deposh te parazgjedhja
+
+* Ndreqje mbulimi ndërmjetësish gjatë nisjes së parë

@@ -1,0 +1,13 @@
+* Tanimë mbulohet shkëmbim përmes kartash SD
+
+* Ndreqje të metash dhe përmirësim për veçorinë Shkëmbim Atypari
+
+* Përmirësim i mëtejshëm i “Hollësi Aplikacioni”
+
+* Përditësim gjuhësor dhe përkthimesh për Atypari dhe Shkëmbim
+
+* U përmirësua logjika e përzgjedhjes së ikonave të aplikacioneve
+
+* Shtim deposh përmes additional_repos.xml të brendshëm prej ROM-i, OEM-ësh, tregtuesi.
+
+* Shfaqje e versionCode-it në zëra liste të zgjeruar versionesh nën mënyrën Ekspert

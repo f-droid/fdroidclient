@@ -1,0 +1,15 @@
+* Qethje e vetvetishme ose spastrim i vetvetishëm i fshehtinës, kur hapësira e depozitimit është e ulët
+
+* Përmirësim i punës në pajisje me pak kujtesë
+
+* Bërje e krejt shkarkimeve të respektojnë parapëlqimin “Vetëm nën Wi-Fi”
+
+* Ulje e përdorimit të kujtesës, kur pajisja s’ka shumë kujtesë të lirë
+
+* Shtim pasqyrash vetjake te cilado depo duke klikuar mbi lidhje, skanim kodesh QR, etj.
+
+* Plot ndreqje të metash dhe përmirësime lidhur me Shkëmbim/Atypari
+
+* Ndreqje e njërin prej shkaqeve për ripërsëritje njoftimesh përditësimi (#1271)
+
+* U bë e mundur që F-Droid të njohë URL-ra <em>nightly</em> F-Droid nga GitLab

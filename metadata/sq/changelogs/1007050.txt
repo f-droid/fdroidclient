@@ -1,0 +1,7 @@
+* ripunim i rëndësishëm i UI-t për shkëmbime, si përgatitje për rishkrim të rropullive për të
+* shfaq “zhbëje” pas fërkimit me gisht për objekte prej skedës “Përditësime” (falë @Hocuri!)
+ndreqje problemesh me shfaqjen e “Më të rinjve” shkaktuar nga trajtimi gabim i zonave kohore #1757
+* shpërfillje e krejt vithisjeve të parëndësishme të shërbimeve në prapaskenë
+* u ripunua shkëmbimi atypari duke përdorur AP hotspot-i pajisjesh
+* u shtuan përgjigje të reja paniku: çinstalime aplikacionesh dhe rikthim deposh te parazgjedhja
+* Disqthet USB OTG mund të përdoren si depo dhe pasqyra atypari

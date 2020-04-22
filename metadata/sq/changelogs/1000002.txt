@@ -1,0 +1,7 @@
+* Pengim i përdorimit të HTTP ETag si cookie gjurmuese
+
+* U përmirësua skema e fotove të ekranit
+
+* Spastrim si duhet i kartelave të përkohshme dhe atyre të ruajtura në fshehtinë
+
+* Ndreqje për mënyrën e errët

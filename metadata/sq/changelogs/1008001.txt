@@ -1,0 +1,4 @@
+* trajtim formësimi lejesh Android 10 për të ndalur kërkesa Burimesh të Panjohura
+* tastiera hapet kur spastrohet kërkimi
+* njëkohësim përkthimesh me vargjet Android
+* detyro përdorim HTTPS-je për përkatësi të rëndomta deposh (GitLab, GitHub, Amazon)

@@ -1,0 +1,3 @@
+* Ndreqje të mete gjatë heqjesh aplikacionesh nga depo (#568)
+
+* Përditësime shumë më të shpejta të treguesve
