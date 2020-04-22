@@ -58,7 +58,7 @@
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
-    <string name="install_confirm_update">Kas soovite olemasoleva rakenduse värskenduse installida? Teie olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
+    <string name="install_confirm_update">Kas soovite paigaldada värskenduse olemasolevale rakendusele\? Teie andmed jäävad alles. Värskendatud rakendus saab kasutada neid funktsioone:</string>
     <string name="menu_email">Saada autorile meil</string>
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
     <string name="repo_provider">Hoidla: %s</string>
@@ -112,9 +112,9 @@
     <string name="menu_source">Lähtekood</string>
     <string name="global_error_updating_repos">Viga värskendamisel: %s</string>
     <string name="repo_last_update">Viimane värskendus</string>
-    <string name="install_confirm_update_system">Kas soovite sisseehitatud rakenduse värskenduse installida? Teie olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
-    <string name="install_confirm_update_no_perms">Kas soovite installida olemasoleva rakenduse värskenduse? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
-    <string name="install_confirm_update_system_no_perms">Kas soovite installida sisseehitatud rakenduse värskenduse? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
+    <string name="install_confirm_update_system">Kas soovite paigadada selle sisseehitatud rakenduse värskenduse\? Teie andmed jäävad alles. Värskendatud rakendus saab kasutada neid funktsioone:</string>
+    <string name="install_confirm_update_no_perms">Kas soovite paigaldada värskenduse sellele rakendusele\? Teie andmed ei lähe kaduma. Erijuurdepääs ei ole vajalik.</string>
+    <string name="install_confirm_update_system_no_perms">Kas soovite paigaldada värskenduse sisseehitatud rakendusele\? Olemasolevad andmed ei lähe kaduma. Erijuurdepääs ei ole vajalik.</string>
     <string name="menu_upgrade">Värskenda</string>
     <string name="menu_donate">Toeta</string>
     <string name="menu_bitcoin">Bitcoin</string>
