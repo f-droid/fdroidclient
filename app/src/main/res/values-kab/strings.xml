@@ -2,7 +2,6 @@
 <resources>
     <string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
-
     <string name="yes">Ih</string>
     <string name="no">Ala</string>
     <string name="back">Uγal</string>
@@ -11,7 +10,6 @@
     <string name="menu_settings">Iγewwaṛen</string>
     <string name="menu_search">Nadi</string>
     <string name="menu_add_repo">Akufi Amaynut</string>
-
     <string name="menu_launch">Ldi</string>
     <string name="menu_share">Bḍu</string>
     <string name="menu_install">Sbedd</string>
@@ -19,14 +17,11 @@
     <string name="main_menu__latest_apps">Amaynut</string>
     <string name="main_menu__categories">Taggayin</string>
     <string name="main_menu__swap_nearby">Igd izzin</string>
-
     <string name="details_notinstalled">Ur yebdid ara</string>
     <string name="next">Ar zdat</string>
     <string name="skip">Zgel</string>
-
     <string name="pref_language">Tutlayt</string>
     <string name="pref_language_default">Amezwer n unagraw</string>
-
     <string name="category_Games">Uraren</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Umuγ n ugetmedia</string>
@@ -35,17 +30,14 @@
     <string name="category_Security">Taγellist</string>
     <string name="category_Time">Akud</string>
     <string name="category_Writing">Tira</string>
-
     <string name="newPerms">Amaynut</string>
     <string name="notification_action_update">Mucceḍ</string>
     <string name="notification_action_cancel">Sefsex</string>
     <string name="notification_action_install">Sbedd</string>
-
     <string name="app_details">Talqayt n Usnas</string>
     <string name="updates__tts__download_app">Sider</string>
     <string name="more">Ugar</string>
     <string name="less">Drus</string>
-
     <string name="repo_details">Akufi</string>
     <string name="repo_last_update">Aleqqem aneggaru</string>
     <string name="category_System">Anagraw</string>
@@ -55,7 +47,6 @@
     <string name="by_author_format">ar %s</string>
     <string name="delete">Kkes</string>
     <string name="other">Wayeḍ</string>
-
     <string name="login_title">Tlaq tuqqna</string>
     <string name="login_name">Isem n useqdac</string>
     <string name="login_password">Awal uffir</string>
@@ -64,7 +55,6 @@
     <string name="about_site">Asmel n web</string>
     <string name="about_source">Tangalt taγbalutt</string>
     <string name="about_license">Turagt</string>
-
     <string name="app_installed">Yettusbedd</string>
     <string name="app_not_installed">Ur yebdid ara</string>
     <string name="app_new">Amaynut</string>
@@ -80,7 +70,6 @@
     <string name="bad_fingerprint">Adsil</string>
     <string name="invalid_url">Ur d-tefkiḍ ara URL ameɣtu.</string>
     <string name="repo_provider">%s Akufi</string>
-
     <string name="menu_website">Asmel n web</string>
     <string name="menu_issues">Uguren</string>
     <string name="menu_video">Ividyuten</string>
@@ -89,9 +78,7 @@
     <string name="menu_donate">Tawsa</string>
     <string name="antifeatures">Timahilin</string>
     <string name="display">Askan</string>
-
     <string name="search_hint">Nadi</string>
-
     <string name="local_repo">Akufi adigan</string>
     <string name="icon">D tignit n wesnas</string>
     <string name="proxy">Apruksi</string>
@@ -131,18 +118,15 @@
     <string name="update_auto_download">Anadi awurman n ileqman</string>
     <string name="update_auto_install">Asebded awurman n umucceḍ</string>
     <string name="app_details_donate_prompt">%1$s yerna-t %2$s. Aγ-asen lqehwa !</string>
-
     <string name="app_incompatible">Ur imṣada ara</string>
     <string name="app_version_x_available">Lqem %1$s yella</string>
     <string name="app_version_x_installed">Lqem %1$s</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ttu</string>
-
     <string name="repo_add_title">Rnu akufi amaynut</string>
     <string name="overwrite">Sfeɛj</string>
     <string name="repositories_summary">Rnu iγbula nniḍen n yisnasen</string>
     <string name="menu_changelog">Aɣmis n ibeddilen</string>
     <string name="menu_bitcoin">Bitcoin</string>
-
     <string name="adding_apks_format">Timerna n  %s ar ukufi…</string>
     <string name="repos_unchanged">Akk ikuffiyen ttwaleqmen</string>
     <string name="all_other_repos_fine">Ikufiyen nniḍen ur d-ggaren ara tuccḍiwin.</string>
@@ -152,28 +136,22 @@
     <string name="swap_confirm">Sentem ambaddal</string>
     <string name="keep_week">1 n umalas</string>
     <string name="keep_forever">Yal tikelt</string>
-
     <plurals name="notification_summary_more">
-    <item quantity="one">+%1$d nnayeḍ …</item>
-    <item quantity="other">+%1$d nniḍen …</item>
+        <item quantity="one">+%1$d nnayeḍ …</item>
+        <item quantity="other">+%1$d nniḍen …</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d n lqem</item>
         <item quantity="other">%1$d n ileqman</item>
     </plurals>
     <string name="tts_category_name">Taggayt %1$s</string>
-
     <string name="proxy_host">Asenneftaɣ Apṛuksi</string>
     <string name="proxy_port">Tabburt n Apṛuksi</string>
     <string name="status_inserting_apps">Rnu tazmilt i usnas</string>
     <string name="theme_night">Iḍ</string>
-
     <string name="app_name">F-Droid</string>
-
     <string name="menu_uninstall">Kkes</string>
     <string name="preference_manage_installed_apps">Asefrak n isnasen ibedden</string>
-
-
     <string name="category_Connectivity">Tuqqniwt</string>
     <string name="category_Money">Tadrimt</string>
     <string name="category_Science_Education">Tussna &amp; Usegmi</string>
@@ -196,9 +174,7 @@
     <string name="system_installer">Isiγzaf Yettwasirgen</string>
     <string name="local_repo_name">Isem n ukufi-ik adigan</string>
     <string name="local_repo_https_on">Seqdec tuqqna HTTPS:// tawgelhant i ukufi adigan</string>
-
     <string name="no_such_app">Ulac asnas am-a.</string>
-
     <string name="app_details_donate_prompt_unknown_author">Efk-asen lqahwa i yineflayen n %1$s!</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ulac ileqman imṣadan d yibenk-ik</string>
     <string name="app_inst_known_source">Yebded (si %s)</string>
@@ -209,15 +185,12 @@
     <string name="menu_email">Azen imayl i umeskar</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
     <string name="latest__empty_state__no_recent_apps">Ulac isnasen ineggura yettwafen</string>
     <string name="preference_category__my_apps">Isnasen-iw</string>
     <string name="details_new_in_version">D amaynut di lqem %s</string>
-
     <string name="details_last_updated_today">Yettwalqem ass-a</string>
     <string name="proxy_host_summary">Asenneftaɣ n upruksi-ik (m.d. 127.0.0.1)</string>
     <string name="proxy_port_summary">Uṭṭun n tebburt n upruksi-ik (m.d.. 8118)</string>
-
     <string name="status_processing_xml_percent">Asesfer n  %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="notification_title_single_ready_to_install">Iwjed i usebded</string>
     <string name="notification_title_single_ready_to_install_update">Alqem iwjed i usebded</string>
@@ -235,7 +208,6 @@
     <string name="status_download">Asider n
 \n%2$s / %3$s (%4$d%%) si
 \n%1$s</string>
-
     <string name="status_download_unknown_size">Asider n
 \n%2$s si
 \n%1$s</string>
@@ -275,9 +247,9 @@
     <string name="hide_on_long_search_press_title">Ffer s teqfilt n unadi</string>
     <string name="repo_confirm_delete_title">Tebγiḍ tuksa n ukufi\?</string>
     <plurals name="button_view_all_apps_in_category">
-    <item quantity="one">Sken-d %d</item>
-    <item quantity="other">Sken-it-id akk i %d</item>
-</plurals>
+        <item quantity="one">Sken-d %d</item>
+        <item quantity="other">Sken-it-id akk i %d</item>
+    </plurals>
     <string name="empty_can_update_app_list">Ayuz!
 \nIsnasen akk ttwaleqmen.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ulac tuqqna γer internet\? Awid isnasen sγur labɛaḍ igellan zdat-ik!</string>
@@ -314,11 +286,19 @@
     <string name="notification_title_summary_downloading_update">Yessidired lqem…</string>
     <string name="notification_title_summary_installed">Yettwasebdded aken ilaq</string>
     <plurals name="details_last_update_days">
-    <item quantity="one">Yettwalqem %1$d wass aya</item>
-    <item quantity="other">Yettwalqem %1$d wussan aya</item>
-</plurals>
+        <item quantity="one">Yettwalqem %1$d wass aya</item>
+        <item quantity="other">Yettwalqem %1$d wussan aya</item>
+    </plurals>
     <plurals name="details_last_update_years">
-    <item quantity="one">Yettwalqem %1$d assegas aya</item>
-    <item quantity="other">Yettwalqem %1$d iseggasen aya</item>
-</plurals>
+        <item quantity="one">Yettwalqem %1$d assegas aya</item>
+        <item quantity="other">Yettwalqem %1$d iseggasen aya</item>
+    </plurals>
+    <string name="disabled">Ittwarermed</string>
+    <string name="try_again">Eɛreḍ tikkelt-nniḍen</string>
+    <string name="undo">Err-d</string>
+    <string name="menu_translation">Tasuqilt</string>
+    <string name="main_menu__updates">Isedγiten</string>
+    <string name="app_suggested">Asumer</string>
+    <string name="local_repo_running">F-Droid ihegga i umbaddal</string>
+    <string name="expert">Askar n umusnas</string>
 </resources>
