@@ -211,7 +211,7 @@
     <string name="about_source">Codice sorgente</string>
     <string name="about_license">Licenza</string>
     <string name="links">Collegamenti</string>
-    <string name="menu_changelog">Changelog</string>
+    <string name="menu_changelog">Cronologia</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="update_notification_title">Aggiornamento dei repository</string>
