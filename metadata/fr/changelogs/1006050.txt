@@ -1,0 +1,7 @@
+* Le dernier onglet met désormais en évidence les traduction/déscription/capture d'écran
+* Téléchargement automatique depuis les miroirs, pour accélérer les téléchargements/charge de f-droid.org
+* Désactiver les miroirs à l'aide de nouveaux commutateurs dans RepoDetails #1696
+* Mise en cache des téléchargements plus efficace #1708
+* Correction des installations inconnues #1702
+* Correction des icônes manquantes
+* Amélioration des traductions de l'onglet Mises à jour par rapport aux préférences

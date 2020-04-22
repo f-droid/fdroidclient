@@ -1,0 +1,7 @@
+* Gérer "READ_EXTERNAL_STORAGE" implicites, qui déclenchent un
+   invite des autorisations sur les installations avec "Privileged Extension" #1702
+* Indexer les données aseptisées pour réduire les menaces du serveur
+* "Délais de lecture" déclenche l'utilisation du miroir lorsque des lectures lentes
+* Correction des icônes manquantes pour ceux qui n'utilisent pas le Wi-Fi #1592
+* Utilisation de titre séparer, pour faciliter la traduction
+* Corrections de l'interface de @ConnyDuck #1636, #1618

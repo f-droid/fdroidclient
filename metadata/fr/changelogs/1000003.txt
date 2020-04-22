@@ -1,3 +1,2 @@
 * Amélioration importante des performances de l'interface utilisateur, spécialement avec l'archive activée
-
 * Corrections de bogues provoquant le plantage

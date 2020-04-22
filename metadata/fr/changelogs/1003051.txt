@@ -1,0 +1,13 @@
+v1.3.1
+* Révision de proximité/Swap
+* Prise en charge de TLSv1.3, lorsque pris en charge
+
+v1.3
+* Boutons et mises à jour d'état plus fiables
+* Révision des paramètres/nouveaux contrôles d'utilisation des données
+* Arrière-plan conscient de la batterie sur Android 5.0+
+* Partager l'élément de menu pour les dépots
+* Désactiver les rapports d'erreur dans les paramètres
+* Installer la visionneuse d'historique quand la journalisation est activée
+* Anti-fonctionnalités cliquable
+* Android 4.0 minimum

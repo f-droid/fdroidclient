@@ -1,0 +1,7 @@
+* Refonte majeure de l'interface, pour préparer la réécriture des tripes
+* Afficher "annuler" après retirement des éléments de l'onglet Mises à jour (merci @Hocuri!)
+* Correction des problèmes d'affichage du "Dernier" dû a une mauvaise gestion des fuseaux horaires #1757
+* Ignore les plantages sans importance dans les services d'arrière-plan
+* Révisé l'échange à proximité à l'aide de l'AP de l'appareil
+* Ajouter de nouvelles réponses de panique
+* Les lecteurs USB OTG peut être utilisé en dépots

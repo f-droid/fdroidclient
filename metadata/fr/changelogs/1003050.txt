@@ -1,0 +1,10 @@
+* Boutons et mises à jour d'état plus fiables
+* Révision des paramètres/nouveaux contrôles d'utilisation des données
+* Arrière-plan conscient de la batterie sur Android 5.0+
+* Partager l'élément de menu pour les dépots
+* Désactiver les rapports d'erreur dans les paramètres
+* Installer la visionneuse historique quand journalisation est activée
+* Anti-fonctionnalités cliquable
+* Android 4.0 minimum
+* Améliorations pour les versions perso de F-Droid
+* Envoie de version de débogage + UUID en expert

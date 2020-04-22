@@ -1,3 +1,2 @@
-* Corrige le bogue retirant les applications des dépôts (#568)
-
+* Corrige le bogue retirant les applications des dépôts #568
 * Indexation plus rapide

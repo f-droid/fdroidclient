@@ -1,0 +1,4 @@
+* Gestes de balayage ajoutés à l'onglet Mises à jour
+* Affichage des avertissements avec des actions dans l'onglet Mises à jour pour KnownVulns
+* Traductions mises à jour
+* Corrections de l'interface utilisateur sombre

@@ -1,0 +1,9 @@
+* Reduit automatiquement le cache
+* Amélioration des performances lors de faible mémoire
+* Tous les téléchargements respectent la préférence "Uniquement sur Wi-Fi"
+* Utilisation de la mémoire réduit sur les appareils faibles
+* Ajout de miroirs personnalisés en cliquant sur les liens, etc.
+* Amélioration de sélection automatique des miroirs
+* Corrections de bugs et améliorations de Swap/à proximité
+* Correction des notifications de mise à jour #1271
+* F-Droid reconnaisse les URL nightly de GitLab

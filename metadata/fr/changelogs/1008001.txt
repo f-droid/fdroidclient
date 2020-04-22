@@ -1,0 +1,4 @@
+* Support des permissions de configuration d'Android 10 pour arrèter l'affichage des sources incconues
+* Le clavier s'ouvre en fin de recherche
+* Synchronisation des traduction d'Android
+* Oblige les dépots communs d'uttiliser l'HTTPS (GitLab, GitHub, Amazon)

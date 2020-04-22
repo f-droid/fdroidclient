@@ -1,0 +1,4 @@
+* Empêcher HTTP ETag d'être utilisé comme cookie de suivi
+* Amélioration de la disposition des captures d'écran
+* Nettoyage correct des fichiers temporaires et mise en cache
+* Corrections du mode sombre

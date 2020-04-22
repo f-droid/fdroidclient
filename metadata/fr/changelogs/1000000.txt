@@ -1,0 +1,4 @@
+* Prise en charge de l'installation de fichiers multimédias, OTA, ZIP, etc.
+* Prise en charge complète des fichiers APK signés par plusieurs clés de signature
+* Nouvelle traduction tibétaine
+* Supprimer les applications et catégories associées après avoir désactivé un dépôt

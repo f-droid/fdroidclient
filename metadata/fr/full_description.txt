@@ -1,18 +1,18 @@
-F-Droid est un catalogue installable d'applications
-libres pour Android. F-Droid facilite
-la navigation, l’installation, et les mises à jour sur votre appareil.
+F-Droid est un catalogue installable de logiciels d’application 
+libres pour Android. L’appli client F-Droid facilite la navigation,
+l’installation, ainsi que le suivi des mises à jour sur votre appareil.
 
-Il se connecte à n'importe quel dépôt F-Droid compatible. Le dépôt par défaut
-est hébergé chez f-droid.org, qui contient seulement de véritables logiciels libres.
+Elle se connecte à n’importe quel dépôt compatible avec F-Droid. Le dépôt par
+défaut est hébergé sur f-droid.org et ne propose que de véritables logiciels libres.
 
-Android est ouvert dans le sens où vous êtes libre d’installer des APK
-provenant de n’importe où, mais il y a beaucoup de bonnes raisons d’utiliser
-F-Droid comme votre gestionnaire d’applications libres :
+Android même est ouvert dans la mesure où vous êtes libre d’installer
+des APK quelque en soit la provenance, mais les raisons ne manquent pas d’utiliser
+F-Droid en tant que gestionnaire de vos logiciels d’application libres :
 
-* Être informé lorsque des mises à jour sont disponibles
-* Optionnellement télécharger et installer automatiquement les mises à jour
-* Garder la trace des anciennes versions et des bêta
-* Filtrer les applications incompatibles avec l'appareil
-* Trouver des applications via les catégories et les recherches de descriptions
-* Accès aux url pour les dons, le code source etc.
-* Rester en sécurité avec la vérification des signatures et du hash des APK
+* Être informé de la présence de mises à jour
+* Télécharger et installer facultativement et automatiquement les mises à jour
+* Effectuer le suivi des versions anciennes et bêta
+* Filtrer les applis incompatibles avec l’appareil
+* Trouver des applis par catégorie ou recherche dans les descriptions
+* Accéder aux URL connexes pour les dons, le code source, etc.
+* Garantir la sécurité en vérifiant les signatures des indices de dépôt et les hachages d’APK
