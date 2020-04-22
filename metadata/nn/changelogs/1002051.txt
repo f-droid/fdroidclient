@@ -10,7 +10,7 @@
 
 * Forbetra automatisk spegelval
 
-* Mange feilrettingar og forbetringar  i funksjonar for apputveksling/«I nærleiken»-funksjonalitet
+* Mange feilrettingar og forbetringar i funksjonar for apputveksling/«I nærleiken»-funksjonalitet
 
 * Fjerna éi årsak til gjentakande varsling om oppdateringar (#1271)
 

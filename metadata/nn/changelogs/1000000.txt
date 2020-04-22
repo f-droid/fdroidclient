@@ -4,4 +4,4 @@
 
 * Omsett til tibetansk
 
-* Fjernar tilhøyrande appar og kategoriar etter deaktivering av pakkebrønnar
+* Fjernar tilhøyrande appar og kategoriar når ein slår av pakkebrønnar

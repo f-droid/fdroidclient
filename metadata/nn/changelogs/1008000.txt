@@ -1,0 +1,3 @@
+* Fiksa søkjelinje-innstillingar for nyare Android-versjonar (takk til @dkanada)
+* Handtering av ny fininndeling av løyve (API 29): nøyaktig posisjon medfører no grov posisjon
+* La til reservekopi-reglar for å unngå å lagra swap-pakkebrønnen

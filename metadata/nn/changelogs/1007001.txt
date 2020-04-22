@@ -1,0 +1,5 @@
+* Forbetra apputveksling med einingar i nærleiken, via trådlaussone-API
+
+* Nye panikkhandlingar: avinstallering av appar og nullstilling av pakkebrønnar
+
+* Retta mellomtenarstøtte ved første appstart

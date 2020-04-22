@@ -8,7 +8,7 @@
 
 * Kan no leggja til pakkebrønns­speglar ved å trykkja på lenkjer eller skanna QR-kodar
 
-* Mange feilrettingar og forbetringar  i funksjonar for apputveksling/«I nærleiken»-funksjonalitet
+* Mange feilrettingar og forbetringar i funksjonar for apputveksling/«I nærleiken»-funksjonalitet
 
 * Fjerna éi årsak til gjentakande varsling om oppdateringar (#1271)
 

@@ -1,0 +1,9 @@
+* Ny Android 10-løyveinnstilling, for å hindra spørsmål om «ukjende kjelder» (#1833)
+* Handtering av ny fininndeling av løyve: nøyaktig posisjon medfører no grov posisjon
+* Fiksa søkjelinje-innstillingar for nyare Android-versjonar (takk til @dkanada)
+* La til reservekopi-reglar for å unngå å lagra swap-pakkebrønnen
+* Vising av tastaturet når søkjefeltet vert tømt
+* Synkronisering av omsetjingar med Android-tekstar
+* Tvinga bruk av HTTPS for vanlege domene (GitLab, GitHub, Amazon)
+* Standard bølgjeeffekt for lenkjer til appdetaljar
+* Vis standardikon for appar som manglar ikon

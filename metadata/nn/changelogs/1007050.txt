@@ -1,0 +1,7 @@
+* Store overhaling av brukargrensesnittet for apputveksling, som førebuing for omskriving
+* Viser no «Angra» når ein har sveipa vekk appar frå oppdateringsfana (takk til @Hocuri!)
+* Retta feil i «Nyaste»-fana, som kom av feil handtering av tidssoner (#1757)
+* Ignorer alle uviktige krasjar i bakgrunnstenester
+* Forbetra apputveksling med einingar i nærleiken, via trådlaussone-API
+* Nye panikkhandlingar: avinstallering av appar og nullstilling av pakkebrønnar
+* USB OTG-einingar kan no brukast som pakkebrønnar og speglar

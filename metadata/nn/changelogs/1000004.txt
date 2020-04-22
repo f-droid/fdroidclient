@@ -1,0 +1,7 @@
+* Støtte for sveiping i oppdateringsfana
+
+* Vis åtvaringar med handlingsval for «KnownVulns» i oppdateringsfana
+
+* Oppdaterte omsetjingar
+
+* Rettingar for det mørke temaet

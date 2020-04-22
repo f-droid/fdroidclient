@@ -1,0 +1,19 @@
+* Meir pålitelege knappar og status­oppdateringar
+
+* Forbetra innstillings­side, blant anna for bruk av mobildata
+
+* Batterigjerrige bakgrunns­operasjonar på Android 5.0 og nyare
+
+* Delefunksjon for pakkebrønnar
+
+* Kan slå av krasjrapportar i innstillingane
+
+* Visar for installeringslogg når logging er slått på
+
+* Klikkbar antifunksjonsliste, og lagt til «NoSourceSince»
+
+* Eldste støtte versjon er no Android 4.0
+
+* Store forbetringar for «whitelabel»-versjonar av F-Droid
+
+* Ekspertinnstillingar for å senda versjonsinfo og UUID ved nedlasting (for feilsøking)

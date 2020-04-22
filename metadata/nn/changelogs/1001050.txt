@@ -1,0 +1,7 @@
+* Støtte for offisielle speglar for alle pakkebrønnar, med automatisk val etter tilgjenge
+
+* Mykje finpussing av brukarflata, samt betra stabilitet og ymse feilrettingar
+
+* Nye personvernval: Hindring skjermbilete og avslutting ved panikk
+
+* Nye omsetjingar: koreansk (ko) og vietnamesisk (vi)

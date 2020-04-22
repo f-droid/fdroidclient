@@ -1,0 +1,13 @@
+* Sterkt forbetra versjonsoversikt i appvisinga, samt mange andre forbetringar i brukarflata (takk til den nye bidragsytaren @wsdfhjxc)
+
+* Retta navigering med tastatur/styrekross mange plassar (takk til den nye bidragsytaren @doeffinger)
+
+* Viser «Opna»-knapp når medium er installert og visbart
+
+* Lag til deleknapp i «Installerte appar», for eksport til CSV-format
+
+* Lagt til klikkbar liste med APK-filer til indeks­sida for apputveksling
+
+* Prøver no på nytt å lasta ned indeksar frå speglar
+
+* Retta «Send F-Droid via Bluetooth» på nyare Android-versjonar

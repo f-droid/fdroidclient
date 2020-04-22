@@ -1,0 +1,7 @@
+* Forhindring av at HTTP-ETag vert brukt til sporing
+
+* Forbetra utforming av skjermbilete av appar
+
+* Skikkeleg sletting av mellombelse filer og snøgglager
+
+* Rettingar for mørkt tema

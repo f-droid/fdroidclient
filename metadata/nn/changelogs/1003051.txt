@@ -1,0 +1,21 @@
+v1.3.1
+* Stor overhaling av kjernefunksjonaliteten «I nærleiken»/apputveksling
+
+* Støtte for TLSv1.3 (når eininga støttar dette)
+
+v1.3
+* Meir pålitelege knappar og status­oppdateringar
+
+* Forbetra innstillings­side, blant anna for bruk av mobildata
+
+* Batterigjerrige bakgrunns­operasjonar på Android 5.0 og nyare
+
+* Delefunksjon for pakkebrønnar
+
+* Kan slå av krasjrapportar i innstillingane
+
+* Visar for installeringslogg når logging er slått på
+
+* Klikkbar antifunksjonsliste, og lagt til «NoSourceSince»
+
+* Eldste støtte versjon er no Android 4.0

@@ -1,0 +1,11 @@
+* Store overhaling av brukargrensesnittet for apputveksling, som førebuing for omskriving
+
+* Viser no «Angra» når ein har sveipa vekk appar frå oppdateringsfana (takk til @Hocuri!)
+
+* Retta ETag-handtering ved tilkopling til NGINX-speglar (#1737)
+
+* Retta feil i «Nyaste»-fana, som kom av feil handtering av tidssoner (#1757)
+
+* Ignorer alle uviktige krasjar i bakgrunnstenester
+
+* Ikkje bruka «Utvida løyve»-tillegget om det er slått av i innstillingane

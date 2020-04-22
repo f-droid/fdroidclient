@@ -1,0 +1,13 @@
+* «Nyaste»-fana framhevar no appar som har skildringar, omsetjingar og skjermbilete
+
+* Automatisk nedlasting frå speglar, for raskare nedlasting og mindre ressursbruk for f-droid.org
+
+* Kan slå av speglar med nye innstillingar i «RepoDetails» (#1696)
+
+* Meir effektiv snøggbuffer for nedlasting (per pakkebrønn og på tvers av vevtenarar, #1708)
+
+* Retta installering som krev ukjende kjelder med «Utvida løyve»-tillegg (#1702)
+
+* Retta opp i manglande ikon for dei som ikkje brukar Wi-Fi (#1592)
+
+* Forbetra omsetjingar for «Oppdatering» og «Innstillingar»-fanene

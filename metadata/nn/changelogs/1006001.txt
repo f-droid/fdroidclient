@@ -1,0 +1,7 @@
+* Lagt til val for «RepoDetails» for å slå av eller på speglar (#1696)
+
+* Val av tilfeldig spegel for kvar nedlasting av pakke/APK-fil
+
+* Alle nedlasta APK-filer vert mellomlagra per pakkebrønn, ikkje per spegel
+
+* Handterer Apache- og NGINX-ETag-ar ved kontroll av at indeksen er oppdatert (#1708)

@@ -1,0 +1,21 @@
+F-Droid versjon 1.0!
+
+Denne versjonen har mange store nyheiter:
+
+* Heilt ny arbeidsflyt for appoppdatering
+
+* Samandrag og skildringar for appar kan no omsetjast
+
+* «Nytt i siste versjon» for å visa appnyheiter
+
+* Skjermbilete for appar og appfunksjonalitet
+
+* Støtte for installering av filer via installasjonsmedium, OTA, ZIP o.l.
+
+* Betre sporingsvern (HTTP ETag, TLS, …)
+
+* Bakgrunnsoppdateringar med «Utvida løyve»-tillegget
+
+* Framheva knappar for å gje pengegåve til apputviklarane
+
+* Mykje raskare indeksoppdatering

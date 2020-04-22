@@ -1,0 +1,4 @@
+* Handtering av Android 10-løyveinnstillingar, for å hindra spørsmål om «ukjende kjelder»
+* Vising av tastaturet når søkjefeltet vert tømt
+* Synkronisering av omsetjingar med Android-tekstar
+* Tvinga bruk av HTTPS for vanlege domene (GitLab, GitHub, Amazon)

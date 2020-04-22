@@ -1,0 +1,12 @@
+* Handterer implisitte «READ_EXTERNAL_STORAGE»-løyve, som utløyser
+  løyve­førespurnad når «Utvida løyve»-tillegget er installert (#1702)
+
+* Indeksdata vert reinska for å redusera eventuelle truslar frå tenaren
+
+* Tidsavbrot ved nedlasting utløyser no bruk av alternative speglar
+
+* Retta manglade ikon for dei som ikkje brukar Wi-Fi (#1592)
+
+* Ulike titlar for «Oppdateringar»-innstillingane og «Oppdateringar»-fana, for lettare omsetjing
+
+* Rettingar for brukargrensesnittet (@ConnyDuck, #1636, #1618)

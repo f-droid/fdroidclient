@@ -1,3 +1,3 @@
 * Retta feil som hindra omsetjingar å visast på Android versjonar ≥ 7.0
 
-* Retta krasj ved databaseoppgradering frå 1.0-alpha3 til 1.0-alpha4 (#1181)
+* Retta krasj ved database­oppgradering frå 1.0-alpha3 til 1.0-alpha4 (#1181)
