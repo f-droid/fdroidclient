@@ -371,7 +371,7 @@
     <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
     <string name="force_old_index">Altes Index-Format erzwingen</string>
     <string name="force_old_index_summary">Bei Fehlern oder Kompatibilitätsproblemen den XML-App-Index verwenden.</string>
-    <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation!</string>
+    <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation</string>
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
     <string name="status_inserting_x_apps">App-Details werden von %3$s gespeichert (%1$d/%2$d)</string>

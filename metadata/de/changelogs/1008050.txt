@@ -1,0 +1,9 @@
+* neue Rechtekonfig. (Android 10), um Fragen zu Unbekannter Quelle zu stoppen #1833
+* "geteilte Berechtigungen": genauer Standort impliziert ungefähren 
+* Fix für Suchleisteneinstellung im neusten Android (dank @dkanada)
+* Backup-Regeln, um Speichern des Tausch-Repos zu vermeiden
+* Tastatur nach Löschen der Suche öffnen
+* Übersetzungen mit Android abgeglichen
+* Repo-Domänen (GitLab, GitHub, Amazon) zu HTTPS zwingen 
+* Standardverhalten von Links in Appdetails
+* Standardsymbol für Apps ohne Icon
