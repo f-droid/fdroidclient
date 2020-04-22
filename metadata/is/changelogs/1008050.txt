@@ -1,0 +1,7 @@
+* Nýjar heimildir í Android 10 til að stöðva kvaðningar vegna óþekkts uppruna #1833
+* Meðhöndlun 'split-permissions': nákvæm staðsetning krefst núna grófrar staðsetningar
+* Lagaðar kjörstillingar leitarstiku í nýlegum útgáfum Android (takk @dkanada)
+* Reglur við öryggisafritun til að koma í veg fyrir að biðminnissafnið (swap repo) sé vistað
+* Lyklaborð opnast þegar leit er hreinsuð
+* Samstilling þýðinga við Android strengi
+* Lén algengra safna nota HTTPS (GitLab, GitHub, Amazon)
