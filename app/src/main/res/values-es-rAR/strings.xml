@@ -297,7 +297,7 @@
     <string name="repos_unchanged">Todos los repositorios están actualizados</string>
     <string name="all_other_repos_fine">Todos los otros repositorios no crearon errores.</string>
     <string name="global_error_updating_repos">Error al actualizar: %s</string>
-    <string name="no_permissions">Ningún permiso es usado.</string>
+    <string name="no_permissions">no permisos</string>
     <string name="permissions">Permisos</string>
     <string name="no_handler_app">No tenés ninguna aplicación disponible que pueda manejar %s.</string>
     <string name="theme">Tema</string>
@@ -341,7 +341,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">¿Sin internet\? ¡Obtené aplicaciones de personas cercanas a vos!</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambos necesitan %1$s para usar cerca.</string>
-    <string name="nearby_splash__read_external_storage">¡Tarjetas SD pueden ser usadas para intercambiar!</string>
+    <string name="nearby_splash__read_external_storage">Busque en la tarjeta SD repositorios y espejos.</string>
     <string name="nearby_splash__request_permission">Probalo</string>
     <string name="swap_nfc_title">Tocá para intercambiar</string>
     <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC prendidos, choquen sus dispositivos.</string>
@@ -388,13 +388,13 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi habilitado</string>
     <string name="swap_toast_could_not_enable_hotspot">¡No se pudo habilitar el hotspot Wi-Fi!</string>
     <string name="install_confirm">necesita acceso a</string>
-    <string name="install_confirm_update">¿Querés instalar una actualización para esta aplicación existente\? Tus datos existentes no serán perdidos. La aplicación actualizada tendrá acceso a:</string>
-    <string name="install_confirm_update_system">¿Querés instalar una actualización para esta aplicación integrada\? Tus datos existentes no será perdidos. La aplicación actualizada tendrá acceso a:</string>
-    <string name="install_confirm_update_no_perms">¿Querés instalar una actualización para esta aplicación existente\? Tus datos existentes no serán perdidos. No requiere ningún acceso especial.</string>
-    <string name="install_confirm_update_system_no_perms">¿Querés instalar una actualización para esta aplicación integrada\? Tus datos existentes no serán perdidos. No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update">¿Desea instalar una actualización de esta aplicación existente\? Sus datos existentes no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_system">¿Desea instalar una actualización de esta aplicación integrada\? Sus datos existentes no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_no_perms">¿Desea instalar una actualización de esta aplicación existente\? Sus datos existentes no se perderán. No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update_system_no_perms">¿Desea instalar una actualización de esta aplicación integrada\? Sus datos existentes no se perderán. No requiere ningún acceso especial.</string>
     <string name="allPerms">Todos</string>
     <string name="perm_costs_money">Esto te puede costar dinero</string>
-    <string name="uninstall_update_confirm">¿Querés reemplazar esta aplicación con la versión de fábrica\?</string>
+    <string name="uninstall_update_confirm">¿Desea reemplazar esta aplicación con la versión de fábrica\? Todos los datos serán eliminados.</string>
     <string name="uninstall_confirm">¿Querés desinstalar esta aplicación\?</string>
     <string name="download_error">¡La descarga falló!</string>
     <string name="download_pending">Esperando para empezar la descarga…</string>
@@ -490,4 +490,6 @@
     <string name="disabled">Deshabilitado</string>
     <string name="swap_error_cannot_start_bluetooth">¡No se puede iniciar el Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Cercano cerrado como estaba inactivo.</string>
+    <string name="nearby_splash__document_tree">Busque USB OTG para repositorios y espejos.</string>
+    <string name="menu_select_for_wipe">Seleccionar para borrar</string>
 </resources>
