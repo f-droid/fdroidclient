@@ -1,0 +1,4 @@
+* obsługa konfiguracji uprawnień systemu Android 10, aby zatrzymać monit Nieznane źródła
+* klawiatura otwiera się, gdy wyszukiwanie jest wyczyszczone
+* synchronizacja tłumaczeń z ciągami systemu Android
+* wymuszenie wspólnych domen repozytorium do HTTPS (GitLab, GitHub, Amazon)
