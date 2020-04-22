@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-
     <string name="version">Տարբերակ</string>
     <string name="delete">Ջնջել</string>
     <string name="updates">Թարմացումներ</string>
     <string name="unstable_updates">Ոչ կայուն թարմացումներ</string>
     <string name="keep_install_history">Պահել տեղադրման պատմությունը</string>
     <string name="other">Այլ</string>
-
     <string name="login_name">Օգտանուն</string>
     <string name="login_password">Գաղտնաբառ</string>
     <string name="repo_edit_credentials">Փոխել գաղտնաբառը</string>
@@ -17,7 +15,6 @@
     <string name="about_version">Տարբերակ</string>
     <string name="about_site">Կայք</string>
     <string name="about_license">Արտոնագիր</string>
-
     <string name="app_incompatible">Անհամատեղելի</string>
     <string name="app_installed">Տեղադրված</string>
     <string name="app_not_installed">Չտեղադրված</string>
@@ -25,11 +22,9 @@
     <string name="app_inst_unknown_source">Տեղադրված (անհայտ աղբյուրից)</string>
     <string name="app_version_x_installed">Տարբերակ %1$s</string>
     <string name="app_new">Նոր</string>
-
     <string name="installed_apps__activity_title">Տեղադրված ափփեր</string>
     <string name="installed_app__updates_ignored">Առհամարված թարմացումներ</string>
     <string name="ok">Հաստատել</string>
-
     <string name="yes">Այո</string>
     <string name="no">Ոչ</string>
     <string name="repo_add_add">Ավելացնել</string>
@@ -37,7 +32,6 @@
     <string name="versions">Տարբերակներ</string>
     <string name="more">Ավել</string>
     <string name="less">Պակաս</string>
-
     <string name="back">Ետ</string>
     <string name="cancel">Չեղարկել</string>
     <string name="enable">Միացնել</string>
@@ -45,7 +39,6 @@
     <string name="clear_search">Մաքրել որոնումը</string>
     <string name="main_menu__categories">Կատեգորիաներ</string>
     <string name="main_menu__swap_nearby">Մոտակայքում</string>
-
     <string name="menu_search">Որոնել</string>
     <string name="menu_share">Կիսվել</string>
     <string name="menu_install">Տեղադրել</string>
@@ -55,13 +48,11 @@
     <string name="preference_category__my_apps">Իմ ափփերը</string>
     <string name="next">Հաջորդը</string>
     <string name="skip">Բաց թողնել</string>
-
     <string name="useTor">Օգտագործել Tor</string>
     <string name="status_download">Downloading
         %2$s / %3$s (%4$d%%)
         %1$sից
     </string>
-
     <string name="status_download_unknown_size">Ներբեռնում եմ
         %2$s
         %1$sից
@@ -76,7 +67,6 @@
     <string name="repo_name">Անուն</string>
     <string name="pref_language">Լեզու</string>
     <string name="pref_language_default">Համակարգի լռելյայնը</string>
-
     <string name="category_Connectivity">Կապ</string>
     <string name="category_Games">Խաղեր</string>
     <string name="category_Internet">Ցանց</string>
@@ -93,7 +83,6 @@
     <string name="downloading">Ներբեռնում եմ…</string>
     <string name="installing">Տեղադրվում է…</string>
     <string name="uninstalling">Ապատեղադրում է…</string>
-
     <string name="interval_never">Երբեք</string>
     <string name="keep_hour">1 ժամ</string>
     <string name="keep_day">1 օր</string>
@@ -101,11 +90,9 @@
     <string name="keep_month">1 ամիս</string>
     <string name="keep_year">1 տարի</string>
     <string name="keep_forever">Ընդմիշտ</string>
-
     <string name="theme_light">Բաց</string>
     <string name="theme_dark">Մուգ</string>
     <string name="theme_night">Գիշեր</string>
-
     <string name="notification_title_single_update_available">Թարմացում է հասանելի</string>
     <string name="notification_title_single_ready_to_install">Պատրաստ է տեղադրման</string>
     <string name="notification_title_single_ready_to_install_update">Թարմացումը պատրաստ է տեղադրման</string>
@@ -125,15 +112,12 @@
     <string name="notification_action_update">Թարմացնել</string>
     <string name="notification_action_cancel">Չեղարկել</string>
     <string name="notification_action_install">Տեղադրել</string>
-
-    <string name="keep_install_history_summary">Պահել տեղադրման և ապատեղադրման լոգերը F-Droidում</string>
-    <string name="notify">Թարմացման ծանուցումներ</string>
+    <string name="keep_install_history_summary">Պահել տեղադրման և ապատեղադրման լոգերը անձնական պահուստում</string>
+    <string name="notify">Տեսնել հասանելի թարմացումները</string>
     <string name="notify_on">Երբ թարմացում է հասանելի՝ ցույց տալ ծանուցում</string>
     <string name="no_such_app">Այդպիսի ափփ չի գտնվել</string>
-
     <string name="app_version_x_available">Հասանելի է %1$s տարբերակը</string>
     <string name="added_on">Ավելացվել է %sին</string>
-
     <string name="bad_fingerprint">Վատ մատնահետք</string>
     <string name="invalid_url">Սա վավեր URL չէ։</string>
     <string name="menu_settings">Կարգավորումներ</string>
@@ -141,13 +125,10 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
     <string name="details_notinstalled">Տեղադրված չէ</string>
-
     <string name="antiadslist">Այս ափփը պարունակում է գովազդ</string>
     <string name="expert">Մասնագիտական ռեժիմ</string>
     <string name="search_hint">Որոնել ափփեր</string>
-
     <string name="appcompatibility">Ափփի համատեղելիություն</string>
     <string name="show_incompat_versions">Անհամատեղելի տարբերակներ</string>
     <string name="show_incompat_versions_on">Ցույց տալ սարքի հետ անհամատեղելի ափփի տարբերակներ</string>
@@ -171,8 +152,6 @@
     <string name="category_Theming">Ոճ</string>
     <string name="category_Time">Ժամանակ</string>
     <string name="category_Writing">Տեքստ</string>
-
-
     <string name="swap_no_wifi_network">Դեռ համացանց չկա</string>
     <string name="swap_welcome">Բարի՜ գալուստ F-Droid</string>
     <string name="swap_choose_apps">Ընտրել ափփեր</string>
@@ -180,24 +159,20 @@
     <string name="perm_costs_money">Սա կարող է քեզ գումար արժենալ</string>
     <string name="uninstall_update_confirm">Փոխարինե՞լ այս հավելվածը գործարանային տարբերակով: Բոլոր տվյալները կհեռացվեն:</string>
     <string name="uninstall_confirm">Ուզո՞ւմ եք ապատեղադրել այս հավելվածը։</string>
-    <string name="download_error">Ներբեռնումը չհաջողվեց</string>
+    <string name="download_error">Ներբեռնումը չհաջողվե՛ց</string>
     <string name="download_pending">Սպասում եմ ներբեռնումը սկսելուն…</string>
     <string name="install_error_notify_title">Սխալ %s տեղադրելիս</string>
     <string name="uninstall_error_notify_title">Սխալ %s ապատեղադրելիս</string>
-
-
     <string name="perms_description_app">Տրամադրված է %1$s։</string>
-    <string name="interval_4h">4 ժամը մեկ</string>
-    <string name="interval_12h">12 ժամը մեկ</string>
-    <string name="interval_1d">Օրական</string>
-    <string name="interval_1w">Շաբաթական</string>
-    <string name="interval_2w">2 շաբաթը մեկ</string>
-
+    <string name="interval_4h">Ստուգել թարմացումները 4 ժամը մեկ</string>
+    <string name="interval_12h">Ստուգել թարմացումները 12 ժամը մեկ</string>
+    <string name="interval_1d">Ստուգել թարմացումները ամեն օր</string>
+    <string name="interval_1w">Ստուգել թարմացումները ամեն շաբաթ</string>
+    <string name="interval_2w">Ստուգել թարմացումները 2 շաբաթը մեկ</string>
     <string name="crash_dialog_title">F-Droidը կործանվեց</string>
     <string name="crash_dialog_comment_prompt">Այստեղ կարող ես ավելացնել հավելյալ տեղեկատվություն և
         մեկնաբանություններ.
     </string>
-
     <string name="enable_nfc_send">Միացնել NFC Sendը…</string>
     <string name="unstable_updates_summary">Առաջարկել թարմացումներ անկայուն տարբերակների համար</string>
     <string name="update_auto_download_summary">Ներբեռնել թարմացումները ետնապատկերում</string>
@@ -206,18 +181,15 @@
     <string name="overwrite">Վրագրել</string>
     <string name="bluetooth_activity_not_found">Bluetoothով ուղարկելու մեթոդ չի գտնվել, ընտրի՛ր մեկը։</string>
     <string name="choose_bt_send">Ընտրիր Bluetoothով ուղարկելու մեթոդ</string>
-
     <string name="repo_add_url">Շտեմարանի հասցե</string>
     <string name="repo_provider">Շտեմարան. %s</string>
-
     <string name="menu_manage">Շտեմարաններ</string>
     <string name="repositories_summary">Ավելացնել ափփերի հավելյալ աղբյուրներ</string>
     <string name="menu_add_repo">Նոր շտեմարան</string>
-
     <string name="menu_ignore_all">Առհամարել բոլոր թարմացումները</string>
     <string name="menu_ignore_this">Առհամարել այս թարմացումը</string>
     <string name="menu_email">Գրել հեղինակին</string>
-    <string name="menu_upgrade">Նորացնել</string>
+    <string name="menu_upgrade">Թարմացնել</string>
     <string name="main_menu__latest_apps">Ամենանորը</string>
     <string name="adding_apks_format">Ավելացնում եմ %s շտեմարանին…</string>
     <string name="update_notification_title">Թարմացնում եմ շտեմարանները</string>
@@ -227,14 +199,11 @@
         Դու պետք ա այն ակտիվացնես՝ առաջարկվող ափփերը տեսնելու համար։
     </string>
     <string name="repo_confirm_delete_title">Ջնջե՞լ շտեմարանը։</string>
-    <string name="repo_added">Պահված F-Droid շտեմարան %1$s։</string>
-    <string name="repo_searching_address">Փնտրում եմ F-Droid շտեմարան
-        %1$sում
-    </string>
-    <string name="empty_can_update_app_list">Բոլոր ափփերը թարմ են։
-
-        Շնորհավո՜ր։ Քո բոլոր ափփերը արդիական են (կամ էլ շտեմարանները հին)։
-    </string>
+    <string name="repo_added">Պահեցի փաթեթի շտեմարանը %1$s։</string>
+    <string name="repo_searching_address">Փնտրում եմ փաթեթը շտեմարանում.
+\n%1$s</string>
+    <string name="empty_can_update_app_list">Շնորհավո՜ր։
+\nՔո բոլոր ափփերը թարմ են։</string>
     <string name="disabled">Կասեցված է</string>
     <string name="install_confirm_update">Ցանկանու՞մ եք այս առկա հավելվածում թարմացում տեղադրել: Ձեր ընթացիկ տվյալները չեն կորի: Նորացված հավելվածը կստանա մատչում`</string>
     <string name="install_confirm_update_system">Ցանկանու՞մ եք այս ներկառուցված հավելվածում թարմացում տեղադրել: Ձեր առկա տվյալները չեն կորի: Նորացված հավելվածը կստանա մատչում `</string>
@@ -242,4 +211,40 @@
     <string name="install_confirm_update_system_no_perms">Ցանկանու՞մ եք այս ներկառուցված հավելվածում թարմացում տեղադրել: Ձեր ընթացիկ տվյալները չեն կորի: Այն չի պահանջում որևէ հատուկ մուտք:</string>
     <string name="menu_launch">Բացել</string>
     <string name="allow">Թույլատրել</string>
+    <string name="main_menu__updates">Թարմացումներ</string>
+    <string name="menu_video">Տեսանյութ</string>
+    <string name="update_all">Բոլորը թարմացնել</string>
+    <string name="app_size">Չափս. %1$s</string>
+    <string name="app__install_downloaded_update">թարմացնել</string>
+    <string name="app_details_donate_prompt">%1$s ստեղծվել է %2$s֊ի կողմից։ Սուրճ հյուրասիրիր նրանց։</string>
+    <string name="over_wifi">Wi-Fi֊ով</string>
+    <string name="details_last_updated_today">Թարմացվել է այսօր</string>
+    <plurals name="notification_summary_updates">
+        <item quantity="one">%1$d թարմացում</item>
+        <item quantity="other">%1$d թարմացում</item>
+    </plurals>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d ավելին…</item>
+        <item quantity="other">+%1$d ավելին…</item>
+    </plurals>
+    <string name="interval_1h">Ստուգել թարմացումները ամեն ժամ</string>
+    <string name="app__tts__downloading_progress">Բեռնում եմ, %1$d%%</string>
+    <string name="updates__tts__download_app">Ներբեռնել</string>
+    <string name="app_list__name__successfully_installed">%1$s տեղադրվեց</string>
+    <string name="app_list__dismiss_installing_app">Տեղադրումը չեղարկվեց</string>
+    <string name="undo">Ետարկել</string>
+    <string name="nearby_splash__request_permission">Փորձիր</string>
+    <string name="nearby_splash__find_people_button">Գտնել մարդկանց շրջակայքում</string>
+    <string name="panic_app_setting_none">Ոչինչ</string>
+    <string name="try_again">Փորձել կրկին</string>
+    <string name="menu_translation">Թարգմանություն</string>
+    <string name="menu_open">Բացել</string>
+    <string name="repo_add_mirror">Ավելացնել հայելի</string>
+    <string name="hiding_dialog_title">Թաքցնել %s հիմա</string>
+    <string name="hiding_calculator">Հաշվիչ</string>
+    <string name="panic_hide_summary">Ափփը ինքն իրեն կթաքցնի</string>
+    <string name="panic_hide_title">Թաքցնել %s</string>
+    <string name="swap_scanning_for_peers">Փնտրել մարդկանց շրջակայքում…</string>
+    <string name="install_history">Տեղադրման պատմություն</string>
+    <string name="hide_all_notifications">Թաքցնել բոլոր ծանուցումները</string>
 </resources>
