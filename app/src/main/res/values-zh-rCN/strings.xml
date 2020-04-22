@@ -168,7 +168,8 @@
     <string name="empty_installed_app_list">应用程序未安装。 
 \n 
 \n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的存储库，或者在库里真的没有这些应用程序。</string>
-    <string name="empty_can_update_app_list">好棒！您的应用是最新的啦。</string>
+    <string name="empty_can_update_app_list">好棒！
+\n您的应用是最新的啦。</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致卸载失败</string>
     <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报告 BUG ！</string>
