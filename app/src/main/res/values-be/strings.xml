@@ -16,7 +16,7 @@
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
     <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
-    <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>
+    <string name="update_auto_install">Аўтаматычна ўсталеўваць абнаўленні</string>
     <string name="update_auto_install_summary">Спампоўваць і абнаўляць ў фоне, паказваючы апавяшчэнні</string>
     <string name="notify">Паказваць даступныя абнаўленні</string>
     <string name="notify_on">Паказваць апавяшчэнні пра даступныя абнаўленні</string>
