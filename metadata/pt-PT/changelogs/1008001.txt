@@ -1,0 +1,4 @@
+* lidar com a configuração de permissão do Android 10 para parar os avisos de Fontes Desconhecidas
+* teclado abre quando a busca é limpa
+* Sincronização da tradução com cadeias do Android
+* forçar domínios de repo comuns para HTTPS (GitLab, GitHub, Amazon)
