@@ -390,4 +390,6 @@
     <string name="disabled">Onemogućeno</string>
     <string name="allow">Dopusti</string>
     <string name="repo_exists_add_mirror">Ovo je kopija od %1$s, dodati ga kao zrcalo\?</string>
+    <string name="menu_video">Video</string>
+    <string name="force_old_index_summary">U slučaju grešaka ili problema s kompatibilnošću, koristi XML indeks aplikacije</string>
 </resources>
