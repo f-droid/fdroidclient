@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="installIncompatible">به‌نظر می‌رسد این کاره با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی نصب کنید؟</string>
+    <string name="installIncompatible">کاره با دستگاهتان ناسازگار است. به هر حال نصب شود؟</string>
     <string name="delete">حذف</string>
     <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
     <string name="updates">به‌روزرسانی‌ها</string>
     <string name="other">موارد دیگر</string>
-    <string name="update_interval">به‌روزرسانی دوره‌ای خودکار</string>
+    <string name="update_interval">فاصلهٔ به‌روزرسانی‌های خودکار</string>
     <string name="notify_on">نمایش یک اعلان هنگام موجود بودن به‌روز رسانی‌ها</string>
     <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
     <string name="about_title">دربارهٔ اف‌دروید</string>
@@ -26,7 +26,7 @@
     <string name="repo_add_url">نشانی مخزن</string>
     <string name="repo_add_fingerprint">اثر انگشت (اختیاری)</string>
     <string name="menu_manage">مخزن‌ها</string>
-    <string name="menu_search">جستجو</string>
+    <string name="menu_search">جست‌وجو</string>
     <string name="menu_share">به اشتراک گذاری</string>
     <string name="menu_install">نصب</string>
     <string name="menu_uninstall">حذف نصب</string>
@@ -56,9 +56,9 @@
     <string name="unknown">ناشناس</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
     <string name="app_name">اف‌دروید</string>
-    <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شده توسط کاره را در حافظه داخلی پاک می‌کند)</string>
+    <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شدهٔ کاره در حافظهٔ داخلی را پاک می‌کند)</string>
     <string name="version">نگارش</string>
-    <string name="enable_nfc_send">فعّال کردن ارسال NFC…</string>
+    <string name="enable_nfc_send">به کار انداختن فرستادن با NFC…</string>
     <string name="unstable_updates">به‌روز رسانی‌های ناپایدار</string>
     <string name="unstable_updates_summary">پیشنهاد به‌روز رسانی به نگارش‌های ناپایدار</string>
     <string name="notify">نمایش به‌روزرسانی‌های موجود</string>
@@ -88,12 +88,12 @@
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
-    <string name="menu_launch">باز کردن</string>
+    <string name="menu_launch">گشودن</string>
     <string name="menu_ignore_all">نادیده گرفتن تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">نادیده گرفتن این به‌روز رسانی</string>
     <string name="menu_website">پایگاه وب</string>
     <string name="menu_changelog">گزارش تغییرات</string>
-    <string name="menu_upgrade">ارتقا</string>
+    <string name="menu_upgrade">به‌روز رسانی</string>
     <string name="menu_bitcoin">بیت‌کوین</string>
     <string name="menu_litecoin">لایت‌کوین</string>
     <string name="menu_flattr">فلتر</string>
@@ -205,7 +205,7 @@
     <string name="interval_1w">بررسی هفتگی برای به‌روز رسانی‌ها</string>
     <string name="interval_2w">بررسی هر ۲ هفته برای به‌روز رسانی‌ها</string>
     <string name="theme_light">روشن</string>
-    <string name="theme_dark">تیره</string>
+    <string name="theme_dark">تاریک</string>
     <string name="theme_night">شب</string>
     <string name="malformed_repo_uri">نادیده گرفتن نشانی اینترنتی مخزن ناهنجار: %s</string>
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایجاد نکردند.</string>
@@ -241,7 +241,7 @@
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای پولی است</string>
     <string name="empty_search_available_app_list">چنین کاره‌هایی موجود نیستند.</string>
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
-    <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که کاره را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل، رایانامه بفرستید؟</string>
+    <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که کاره را وادار به توقّف کرد. می‌خواهید برای کمک به حل مشکل، جزییات را رایانامه کنید؟</string>
     <string name="crash_dialog_comment_prompt">در این‌جا می‌توانید اطّلاعات اضافی و نظرها را بیفزایید:</string>
     <string name="useTor">استفاده از Tor</string>
     <string name="useTorSummary">اجبار ترافیک بارگیری به استفاده از تور برای محرمانگی بیش‌تر. به Orbot نیاز است</string>
@@ -301,7 +301,7 @@
     <string name="details_new_in_version">جدید در نگارش %s</string>
     <string name="antifeatureswarning">این کاره ویژگی‌هایی دارد که شاید نپسندید.</string>
     <string name="antifeatures">ضد ویژگی‌ها</string>
-    <string name="warning_no_internet">نمی‌توان به‌روزرسانی کرد. به اینترنت وصل هستید؟</string>
+    <string name="warning_no_internet">نمی‌توان به‌روز کرد. به اینترنت وصلید؟</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">نمایش %d</item>
         <item quantity="other">نمایش‌ همه %d</item>
@@ -366,9 +366,9 @@
     </plurals>
     <string name="by_author_format">توسط %s</string>
     <string name="download_404">فایل درخواستی یافت نشد.</string>
-    <string name="force_old_index">استفاده اجباری از قالب فهرست قدیمی</string>
-    <string name="force_old_index_summary">در صورت وجود باگ یا مشکلات عدم سازگاری، از فهرست xml کاره استفاده کنید</string>
-    <string name="app_list_download_ready">بارگزاری شده است، آماده ی نصب</string>
+    <string name="force_old_index">اجبار به قالب فهرست قدیمی</string>
+    <string name="force_old_index_summary">استفاده از فهرست کارهٔ XML در صورت وجود اشکال یا ناسازگاری</string>
+    <string name="app_list_download_ready">بارگیری شده، آمادهٔ نصب</string>
     <string name="app_installed_media">فایل در %s نصب شد</string>
     <string name="app_permission_storage">اف دروید برای نصب روی این فضا، نیاز به دسترسی فضای ذخیره‌سازی دارد. لطفاً جهت ادامهٔ نصب، این اجازه را در صفحهٔ بعدی بدهید.</string>
     <string name="status_inserting_x_apps">ذخیره‌سازی جزئیات کاره (%1$d/%2$d) از %3$s</string>
@@ -419,9 +419,9 @@
     <string name="repo_exists_add_mirror">این یک کپی از %1$s میباشد، آیا میخواهید آن را به عنوان یک mirror اضافه کنید؟</string>
     <string name="over_wifi">روی وای‌فای</string>
     <string name="over_data">روی داده</string>
-    <string name="over_network_always_summary">هنگام موجود بودن، همیشه از این اتّصال استفاده شود</string>
-    <string name="over_network_on_demand_summary">هنگام بارگیری، فقط از این اتّصال استفاده شود</string>
-    <string name="over_network_never_summary">هرگز با استفاده از این اتّصال، چیزی بارگیری نشود</string>
+    <string name="over_network_always_summary">استفادهٔ همیشگی از این اتّصال، هنگام وجود</string>
+    <string name="over_network_on_demand_summary">استفاده از این اتّصال، فقط هنگام زدن روی بارگیری</string>
+    <string name="over_network_never_summary">بارگیری نشدن هیچ‌چیز هنگام استفاده از این اتّصال</string>
     <string name="antidisabledalgorithmlist">این کاره یک امضای امنیتی ضعیف دارد</string>
     <string name="antiknownvulnlist">این کاره یک آسیب‌پذیری امنیتی شناخته‌شده دارد</string>
     <string name="show_anti_feature_apps">شامل کاره‌های ضدویژگی‌دار</string>
@@ -434,16 +434,16 @@
     <string name="swap_toast_invalid_url">نشانی نامعتبر برای تاخت زدن: %1$s</string>
     <string name="swap_toast_hotspot_enabled">نقطهٔ داغ وای‌فای فعّال است</string>
     <string name="swap_toast_could_not_enable_hotspot">نمی‌توان نقطهٔ داغ وای‌فای را فعّال کرد!</string>
-    <string name="prompt_to_send_crash_reports">اعلان فرستادن گزارش‌های خرابی</string>
-    <string name="prompt_to_send_crash_reports_summary">جمع‌آوری داده دربارهٔ خرابی‌ها و پرسش برای فرستادنشان به توسعه‌دهنده</string>
-    <string name="hide_all_notifications">نهفتن تمام آگاه‌سازی‌ها</string>
-    <string name="hide_all_notifications_summary">جلوگیری تمام عمل‌ها از نشان داده شدن در نوار وضعیت و کشوی آگاه‌سازی.</string>
+    <string name="prompt_to_send_crash_reports">اعلان برای فرستادن گزارش‌های فروپاشی</string>
+    <string name="prompt_to_send_crash_reports_summary">جمع‌آوری داده دربارهٔ فروپاشی‌ها و پرسش برای فرستادنشان به توسعه‌دهنده</string>
+    <string name="hide_all_notifications">نهفتن تمام آگاهی‌ها</string>
+    <string name="hide_all_notifications_summary">جلوگیری تمام عمل‌ها از نمایش در نوار وضعیت و کشوی آگاهی.</string>
     <string name="send_install_history">فرستادن تاریخچهٔ نصب</string>
     <string name="send_history_csv">تاریخچهٔ نصب %s در قالب پروندهٔ csv</string>
     <string name="install_history">تاریخچهٔ نصب</string>
     <string name="install_history_summary">نمایش گزارش شخصی از تمام نصب و حذف‌ها</string>
-    <string name="send_version_and_uuid">فرستادن نگارش و UUID به کارسازها</string>
-    <string name="send_version_and_uuid_summary">شامل نگارش این کاره و یک شناسهٔ یکتای تصادفی هنگام بارگیری، شروع دوبارهٔ بعدی کاره را تحت تأثیر قرار می‌دهد.</string>
+    <string name="send_version_and_uuid">فرستادن نگارش و شناسهٔ یکتا به کارسازها</string>
+    <string name="send_version_and_uuid_summary">شامل نگارش این کاره و یک شناسهٔ یکتای تصادفی هنگام بارگیری. شروع دوبارهٔ بعدی کاره را تحت تأثیر قرار می‌دهد.</string>
     <string name="allow_push_requests">اجازه به مخازن برای نصب/حذف کاره‌ها</string>
     <string name="allow_push_requests_summary">فرادادهٔ مخزن می‌تواند شامل درخواست‌های ارسالی برای نصب یا حذف کاره‌ها باشد</string>
     <string name="updates_disabled_by_settings">تمامی به‌روز رسانی‌ها به دست تنظیمات داده/وای‌فای مسدود شده‌اند</string>
@@ -472,7 +472,7 @@
     <string name="undo">برگردان</string>
     <string name="app_list__dismiss_installing_app">نصب، لغو شد</string>
     <string name="menu_select_for_wipe">برای پاک کردن، انتخاب کنید</string>
-    <string name="try_again">دوباره امتحان کنید.</string>
+    <string name="try_again">دوباره تلاش کنید</string>
     <string name="panic_will_be_wiped">کاره به همراه داده‌هایش حذف خواهد شد</string>
     <string name="panic_apps_to_uninstall">فهرست کاره‌هایی که حذف و داده‌هاشان پاک خواهد شد</string>
     <string name="panic_add_apps_to_uninstall">کاره‌هایی که باید حذف شود، اضافه کنید</string>
