@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
     <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë\?</string>
@@ -353,7 +353,7 @@
     <string name="preference_manage_installed_apps">Administroni aplikacione të instaluara</string>
     <string name="notification_content_single_installing">Po instalohet \"%1$s\"…</string>
     <string name="notification_title_single_ready_to_install_update">Përditësim gati për instalim</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string name="category_Phone_SMS">Telefon &amp; SMS</string>
     <string name="use_bluetooth">Përdor Bluetooth</string>
     <string name="swap_not_visible_bluetooth">Jo i dukshëm përmes Bluetooth-i</string>
     <string name="menu_open">Hap</string>
@@ -378,7 +378,7 @@
     <string name="repo_searching_address">Po shihet për depo paketash te
 \n%1$s</string>
     <string name="swap_setting_up_hotspot">Po ujdiset hotspot…</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sporte &amp; Shëndet</string>
+    <string name="category_Sports_Health">Sporte &amp; Shëndet</string>
     <string name="details_last_updated_today">Përditësuar sot</string>
     <string name="notification_content_single_downloading_update">Po shkarkohet përditësim për \"%1$s\"…</string>
     <string name="notification_title_summary_ready_to_install_update">Përditësim gati për instalim</string>
@@ -395,7 +395,7 @@
     <string name="over_data">Përmes të dhënash</string>
     <string name="swap_no_wifi_network">Ende pa rrjet</string>
     <string name="swap_visible_hotspot">I dukshëm përmes hotspot-i</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Lëvizje</string>
+    <string name="category_Navigation">Lëvizje</string>
     <string name="app_list__name__downloading_in_progress">Po shkarkohet %1$s</string>
     <string name="swap_setting_up_wifi">Po ujdiset Wi-Fi…</string>
     <string name="send_installed_apps">Ndani me të tjerë aplikacione të instaluara</string>
@@ -405,17 +405,17 @@
     <string name="panic_add_apps_to_uninstall">Shtoni aplikacione që duhen çinstaluar dhe spastruar</string>
     <string name="over_wifi">Përmes Wi-Fi-je</string>
     <string name="hide_all_notifications">Fshihi krejt njoftimet</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Ndryshim teme grafike</string>
+    <string name="category_Theming">Ndryshim teme grafike</string>
     <string name="keep_day">1 Ditë</string>
     <string name="repo_details">Depo</string>
     <string name="try_again">Riprovoni</string>
     <string name="notification_content_single_downloading">Po shkarkohet \"%1$s\"…</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Zhvillim</string>
+    <string name="category_Development">Zhvillim</string>
     <string name="unverified">I paverifikuar</string>
     <string name="tts_category_name">Kategori: %1$s</string>
     <string name="antidisabledalgorithmlist">Ky aplikacion ka një nënshkrim të dobët sigurie</string>
     <string name="swap_toast_hotspot_enabled">U aktivizua Hotspot Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grafika</string>
+    <string name="category_Graphics">Grafika</string>
     <string name="notification_action_update">Përditësoje</string>
     <string name="undo">Zhbëje</string>
     <string name="swap_intro">Lidhuni dhe jepni e merrni aplikacione me njerëz pranë jush.</string>
@@ -440,7 +440,7 @@
     <string name="swap_visible_wifi">I dukshëm përmes Wi-Fi-je</string>
     <string name="notification_title_summary_downloading_update">Po shkarkohet përditësimi…</string>
     <string name="notification_content_single_installed">U instalua me sukses</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string name="category_Multimedia">Multimedia</string>
     <string name="install_history">Historik instalimesh</string>
     <string name="swap_visible_bluetooth">I dukshëm përmes Bluetooth-i</string>
     <string name="menu_manage">Depo</string>
@@ -455,7 +455,7 @@
     <string name="install_error_notify_title">Gabim në instalimin e %s</string>
     <string name="swap">Shkëmbeni aplikacione</string>
     <string name="notification_title_summary_update_available">Përditësim i passhëm</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Aftësi lidhjeje</string>
+    <string name="category_Connectivity">Aftësi lidhjeje</string>
     <string name="prompt_to_send_crash_reports">Pyet për dërgim njoftimesh vithisjesh</string>
     <string name="keep_year">1 Vit</string>
     <string name="panic_apps_to_uninstall">Aplikacione për çinstalim dhe krejt të dhënat do të fshihen</string>
@@ -474,7 +474,7 @@
     <string name="swap_stopping_hotspot">Po ndalet hotspot-i…</string>
     <string name="keep_week">1 Javë</string>
     <string name="swap_error_cannot_start_bluetooth">S’niset dot Bluetooth!</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Para</string>
+    <string name="category_Money">Para</string>
     <string name="crash_dialog_title">F-Droid-i u vithis</string>
     <string name="unsigned">I panënshkruar</string>
     <string name="swap_toast_invalid_url">URL e pavlefshme për shkëmbime: %1$s</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="version">Versija</string>
     <string name="delete">Ištrinti</string>
     <string name="cache_downloaded">Saugoti atsisiųstų programėlių instaliacinius paketus</string>
@@ -320,7 +320,7 @@
     <string name="nearby_splash__request_permission">Išbandykite</string>
     <string name="nearby_splash__find_people_button">Rasti netoli esamus įrenginius</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite ryšio su internetu\? Gaukite programas iš įrenginių netoliese!</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Temos</string>
+    <string name="category_Theming">Temos</string>
     <string name="share_repository">Dalintis saugykla</string>
     <string name="status_download">Atsiunčiama
 \n%2$s / %3$s (%4$d%%) iš
