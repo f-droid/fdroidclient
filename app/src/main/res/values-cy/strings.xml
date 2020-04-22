@@ -247,7 +247,7 @@
     <string name="repos_unchanged">Mae pob ystorfa yn gyfoes</string>
     <string name="global_error_updating_repos">Gwall wrth ddiweddaru: %s</string>
     <string name="warning_no_internet">Methu diweddaru. Wyt ti wedi cysylltu â\'r rhyngrwyd\?</string>
-    <string name="no_permissions">Ni ddefnyddir unrhyw ganiatâd.</string>
+    <string name="no_permissions">Dim caniatâd</string>
     <string name="permissions">Caniatâd</string>
     <string name="no_handler_app">Nid oes gennyt unrhyw apiau ar gael sy\'n medru ymdrin â %s.</string>
     <string name="theme">Thema</string>
@@ -320,7 +320,7 @@
     <string name="use_bluetooth">Defnyddio Bluetooth</string>
     <string name="loading">Yn llwytho…</string>
     <string name="perm_costs_money">Gall hyn gostio arian i ti</string>
-    <string name="uninstall_update_confirm">Wyt ti am newid yr ap hwn am y fersiwn o\'r ffatri\?</string>
+    <string name="uninstall_update_confirm">Ydych chi am ddisodli\'r app hon gyda\'r fersiwn ffatri\? Bydd yr holl ddata yn cael ei dynnu.</string>
     <string name="uninstall_confirm">Wyt ti am ddadosod yr ap hwn\?</string>
     <string name="download_error">Methodd y lawrlwytho!</string>
     <string name="download_pending">Yn aros i ddechrau lawrlwytho…</string>
@@ -487,10 +487,10 @@
     <string name="swap_toast_hotspot_enabled">Galluogwyd llecyn Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Methwyd â galluogi llecyn Wi-Fi!</string>
     <string name="install_confirm">angen mynediad at</string>
-    <string name="install_confirm_update">Wyt ti am osod diweddariad i\'r ap hwn sydd eisoes yn bodoli\? Ni chaiff dy ddata ei golli. Caiff yr ap wedi\'i ddiweddaru mynediad at:</string>
-    <string name="install_confirm_update_system">Wyt ti am osod diweddariad i\'r ap craidd hwn\? Ni chaiff dy ddata ei golli. Caiff yr ap wedi\'i ddiweddaru mynediad at:</string>
-    <string name="install_confirm_update_no_perms">Wyt ti am osod diweddariad i\'r ap hwn sy\'n bodoli eisoes\? Ni chaiff dy ddata ei golli. Nid oes angen arno unrhyw fynediad arbennig.</string>
-    <string name="install_confirm_update_system_no_perms">Wyt ti am osod diweddariad i\'r ap craidd hwn\? Ni chaiff dy ddata ei golli. Nid oes arno angen unrhyw fynediad arbennig.</string>
+    <string name="install_confirm_update">Ydych chi am osod diweddariad i\'r app presennol hwn\? Ni fydd eich data presennol yn cael ei golli. Bydd yr ap wedi\'i ddiweddaru yn cael mynediad at:</string>
+    <string name="install_confirm_update_system">Ydych chi am osod diweddariad i\'r app adeiledig hwn\? Ni fydd eich data presennol yn cael ei golli. Bydd yr ap wedi\'i ddiweddaru yn cael mynediad at:</string>
+    <string name="install_confirm_update_no_perms">Ydych chi am osod diweddariad i\'r app presennol hwn\? Ni fydd eich data presennol yn cael ei golli. Nid oes angen unrhyw fynediad arbennig arno.</string>
+    <string name="install_confirm_update_system_no_perms">Ydych chi am osod diweddariad i\'r app adeiledig hwn\? Ni fydd eich data presennol yn cael ei golli. Nid oes angen unrhyw fynediad arbennig arno.</string>
     <string name="newPerms">Newydd</string>
     <string name="allPerms">Y cwbl</string>
     <plurals name="notification_summary_more">
