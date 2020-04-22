@@ -33,7 +33,7 @@
     <string name="about_license">Licens</string>
     <string name="app_incompatible">Inkompatibel</string>
     <string name="app_installed">Installeret</string>
-    <string name="app_not_installed">Ikke Installeret</string>
+    <string name="app_not_installed">Ikke installeret</string>
     <string name="app_inst_known_source">Installeret (fra %s)</string>
     <string name="app_inst_unknown_source">Installeret (fra ukendt kilde)</string>
     <string name="added_on">Tilføjet den %s</string>
@@ -472,7 +472,7 @@
     <string name="app_list__dismiss_installing_app">Installering annulleret</string>
     <string name="menu_select_for_wipe">Vælge for at fjerne</string>
     <string name="try_again">Prøv igen</string>
-    <string name="panic_will_be_wiped">Vil blive afinstalleret og alle data slettet</string>
+    <string name="panic_will_be_wiped">Vil blive afinstalleret og alle data vil blive slettet</string>
     <string name="panic_apps_to_uninstall">Apps som vil blive afinstalleret og hvis data vil blive slettet</string>
     <string name="panic_add_apps_to_uninstall">Tilføj apps til afinstallering og rensning</string>
     <string name="panic_reset_repos_title">Nulstil depoter</string>
