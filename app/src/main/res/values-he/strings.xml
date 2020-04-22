@@ -147,7 +147,7 @@
     <string name="swap_dont_show_again">לא להציג זאת שוב</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד את הכתובת של הצד השני בדפדפן.</string>
     <string name="install_confirm">נדרשת גישה אל</string>
-    <string name="newPerms">חדש</string>
+    <string name="newPerms">חדשה</string>
     <string name="allPerms">הכול</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
     <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן\? כל הנתונים יוסרו.</string>
