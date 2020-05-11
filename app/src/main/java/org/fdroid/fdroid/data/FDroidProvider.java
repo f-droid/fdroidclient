@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.data;
 
-import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
@@ -9,14 +8,11 @@ import android.content.OperationApplicationException;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.NonNull;
+
 import org.fdroid.fdroid.BuildConfig;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 public abstract class FDroidProvider extends ContentProvider {
 
@@ -105,25 +101,9 @@ public abstract class FDroidProvider extends ContentProvider {
         return sb.toString();
     }
 
-    @TargetApi(11)
-    private Set<String> getKeySet(ContentValues values) {
-
-        if (Build.VERSION.SDK_INT >= 11) {
-            return values.keySet();
-        }
-
-        Set<String> keySet = new HashSet<>();
-        for (Map.Entry<String, Object> item : values.valueSet()) {
-            String key = item.getKey();
-            keySet.add(key);
-        }
-        return keySet;
-
-    }
-
     protected void validateFields(String[] validFields, ContentValues values)
             throws IllegalArgumentException {
-        for (final String key : getKeySet(values)) {
+        for (final String key : values.keySet()) {
             boolean isValid = false;
             for (final String validKey : validFields) {
                 if (validKey.equals(key)) {
