@@ -5,6 +5,7 @@
         <!-- customizations that are not API-level specific go here. -->
         <item name="android:alertDialogTheme">@style/AlertDialogThemeDark</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
         <item name="android:windowSharedElementEnterTransition">@transition/shared_elements</item>
         <item name="android:windowSharedElementExitTransition">@transition/shared_elements</item>
     </style>
