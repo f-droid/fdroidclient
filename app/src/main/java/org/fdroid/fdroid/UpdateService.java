@@ -41,6 +41,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -53,7 +54,6 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
-import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -265,18 +265,6 @@ public class UpdateService extends JobIntentService {
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentTitle(getString(R.string.update_notification_title));
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-
-        // Android docs are a little sketchy, however it seems that Gingerbread is the last
-        // sdk that made a content intent mandatory:
-        //
-        //   http://stackoverflow.com/a/20032920
-        //
-        if (Build.VERSION.SDK_INT <= 10) {
-            Intent pendingIntent = new Intent(this, MainActivity.class);
-            pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            notificationBuilder.setContentIntent(
-                    PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-        }
     }
 
     @Override

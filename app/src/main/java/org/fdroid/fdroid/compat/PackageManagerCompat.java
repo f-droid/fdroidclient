@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.compat;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -27,9 +27,7 @@ public class PackageManagerCompat {
 
     private static final String TAG = "PackageManagerCompat";
 
-    @TargetApi(11)
     public static void setInstaller(Context context, PackageManager mPm, String packageName) {
-        if (Build.VERSION.SDK_INT < 11) return;
         try {
             if (Build.VERSION.SDK_INT >= 24 && PrivilegedInstaller.isDefault(context)) {
                 mPm.setInstallerPackageName(packageName, PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
