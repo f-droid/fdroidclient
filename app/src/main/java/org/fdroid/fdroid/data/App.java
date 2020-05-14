@@ -518,10 +518,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     @JsonProperty("localized")
     private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
-        if (localized.size() > 1) {
-            isLocalized = true;
-        }
-
         Locale defaultLocale = Locale.getDefault();
         String languageTag = defaultLocale.getLanguage();
         String countryTag = defaultLocale.getCountry();
@@ -573,6 +569,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 localesToUse.add(l);
                 break;
             }
+        }
+
+        if (localesToUse.size() >= 1) {
+            isLocalized = true;
         }
 
         String value = getLocalizedEntry(localized, localesToUse, "whatsNew");
