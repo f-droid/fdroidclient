@@ -233,6 +233,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         public static void remove(Context context, long repoId) {
+            purgeApps(context, findById(context, repoId));
             ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri(repoId);
             resolver.delete(uri, null, null);
