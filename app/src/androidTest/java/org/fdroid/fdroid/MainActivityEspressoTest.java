@@ -285,10 +285,8 @@ public class MainActivityEspressoTest {
         }
         onView(allOf(withText(R.string.main_menu__latest_apps), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.fab_search), isDisplayed())).perform(click());
-        onView(withId(R.id.sort)).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.search), isDisplayed()))
                 .perform(click())
                 .perform(typeText("test"));
-        onView(allOf(withId(R.id.sort), isDisplayed())).perform(click());
     }
 }
