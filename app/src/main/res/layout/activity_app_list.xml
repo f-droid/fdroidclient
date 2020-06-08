@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/sort"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -68,18 +68,6 @@
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
-
-    <ImageView
-        android:id="@+id/sort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:contentDescription="@string/sort_search"
-        app:layout_constraintTop_toTopOf="@id/search_card"
-        app:layout_constraintBottom_toBottomOf="@id/search_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_card"/>
 
     <!-- Don't center, only show it at the top because a keyboard will usually be shown at the bottom of the screen,
          covering most of this layout. -->

@@ -57,21 +57,17 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
 
+    private static final String LAST_UPDATED = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.LAST_UPDATED + " desc";
+    private static final String NAME_COL = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME;
+    private static final String SUMMARY_COL = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.SUMMARY;
+
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
-    private String sortClauseSelected = SortClause.LAST_UPDATED;
     private TextView emptyState;
     private EditText searchInput;
-    private ImageView sortImage;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
-
-    private interface SortClause {
-        String NAME = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME + " asc";
-        String LAST_UPDATED = Schema.AppMetadataTable.NAME + "."
-                + Schema.AppMetadataTable.Cols.LAST_UPDATED + " desc";
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,35 +93,6 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                     return true;
                 }
                 return false;
-            }
-        });
-
-        sortImage = (ImageView) findViewById(R.id.sort);
-        if (FDroidApp.isAppThemeLight()) {
-            sortImage.setImageResource(R.drawable.ic_last_updated_black);
-        } else {
-            sortImage.setImageResource(R.drawable.ic_last_updated_white);
-        }
-        sortImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
-                    sortClauseSelected = SortClause.NAME;
-                    if (FDroidApp.isAppThemeLight()) {
-                        sortImage.setImageResource(R.drawable.ic_az_black);
-                    } else {
-                        sortImage.setImageResource(R.drawable.ic_az_white);
-                    }
-                } else {
-                    sortClauseSelected = SortClause.LAST_UPDATED;
-                    if (FDroidApp.isAppThemeLight()) {
-                        sortImage.setImageResource(R.drawable.ic_last_updated_black);
-                    } else {
-                        sortImage.setImageResource(R.drawable.ic_last_updated_white);
-                    }
-                }
-                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
-                appView.scrollToPosition(0);
             }
         });
 
@@ -210,6 +177,23 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         return string.toString();
     }
 
+    private String getSortOrder() {
+        final String[] terms = searchTerms.trim().split("\\s+");
+        if (terms.length == 0 || terms[0].equals("")) {
+            return LAST_UPDATED;
+        }
+
+        StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", NAME_COL, terms[0]));
+        StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", SUMMARY_COL, terms[0]));
+        for (int i = 1; i < terms.length; i++) {
+            titleCase.append(String.format(" or %s like '%%%s%%'", NAME_COL, terms[i]));
+            summaryCase.append(String.format(" or %s like '%%%s%%'", SUMMARY_COL, terms[i]));
+        }
+
+        return String.format("case when %s then 1 when %s then 2 else 3 end, %s",
+                titleCase.toString(), summaryCase.toString(), LAST_UPDATED);
+    }
+
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -219,7 +203,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 Schema.AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                sortClauseSelected
+                getSortOrder()
         );
     }
 
