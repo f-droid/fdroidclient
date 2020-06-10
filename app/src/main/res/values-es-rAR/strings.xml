@@ -159,7 +159,6 @@
     <string name="menu_source">Código fuente</string>
     <string name="menu_translation">Traducción</string>
     <string name="menu_upgrade">Actualizar</string>
-    <string name="menu_donate">Donar</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

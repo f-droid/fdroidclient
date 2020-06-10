@@ -40,7 +40,6 @@
     <string name="menu_changelog">మార్పులచిట్టా</string>
     <string name="menu_video">వీడియో</string>
     <string name="menu_license">లైసెన్సు: %s</string>
-    <string name="menu_donate">విరాళమివ్వండి</string>
     <string name="menu_bitcoin">బిట్‌కాయిన్</string>
     <string name="menu_litecoin">లైట్‌కాయిన్</string>
     <string name="menu_flattr">ఫ్లాట్‌ర్</string>

@@ -33,7 +33,6 @@
     <string name="menu_uninstall">Çinstaloje</string>
     <string name="menu_ignore_this">Shpërfille Këtë Përditësim</string>
     <string name="menu_source">Kod Burim</string>
-    <string name="menu_donate">Dhuroni</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

@@ -46,7 +46,6 @@
     <string name="menu_issues">Προβλήματα</string>
     <string name="menu_source">Πηγαίος κώδικας</string>
     <string name="menu_upgrade">Ενημέρωση</string>
-    <string name="menu_donate">Δωρεά</string>
     <string name="details_notinstalled">Μη εγκατεστημένο</string>
     <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
     <string name="antitracklist">Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας</string>

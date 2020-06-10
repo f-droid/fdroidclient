@@ -53,7 +53,6 @@
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quelltext</string>
     <string name="menu_upgrade">Aktualisieren</string>
-    <string name="menu_donate">Spenden</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>

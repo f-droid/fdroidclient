@@ -2,7 +2,7 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="30dp"
+    android:layout_height="wrap_content"
     android:drawableLeft="@drawable/ic_donate"
     android:drawableStart="@drawable/ic_donate"
     android:drawablePadding="4dp"
@@ -10,5 +10,4 @@
     android:layout_marginLeft="4dp"
     android:layout_marginEnd="4dp"
     android:layout_marginRight="4dp"
-    android:gravity="center_vertical"
-    android:text="@string/menu_donate" />
+    android:gravity="center_vertical" />

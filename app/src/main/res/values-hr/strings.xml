@@ -78,7 +78,6 @@
     <string name="menu_changelog">Zapis o promjenama</string>
     <string name="menu_source">Izvorni kod</string>
     <string name="menu_upgrade">Ažuriraj</string>
-    <string name="menu_donate">Doniraj</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

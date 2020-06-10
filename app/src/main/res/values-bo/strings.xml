@@ -165,7 +165,6 @@
     <string name="menu_video">བརྙན་འཕྲིན།</string>
     <string name="menu_license">ཆོག་མཆན་ལག་ཁྱེར་:%s</string>
     <string name="menu_source">འབྱུང་ཁུངས་་ཨང་རྟགས།</string>
-    <string name="menu_donate">ཞལ་འདེབས།</string>
     <string name="latest__empty_state__no_recent_apps">ཉེ་བའི་ཆར་གྱི་མཉེན་ཆས་རྙེད་མ་སོང་།</string>
     <string name="latest__empty_state__never_updated">ཁྱེད་རང་གིས་མཉེས་ཆས་ཀྱི་ཐོ་གཞུང་གསར་བསྒྱུར་བྱས་ཚར་ན། མཉེན་ཆས་ཐོན་གསར་ཤོས་རྣམས་འདིར་སྟོན་གྱི་རེད།</string>
     <string name="latest__empty_state__no_enabled_repos">ཁྱེད་རང་གིས་མཛོད་ཁང་སྒོ་ཕྱེས་ནས་གསར་བསྒྱུར་བྱེད་འགོ་བཙུགས་མ་ཐག མཉེན་ཆས་ཐོན་གསར་ཤོས་རྣམས་འདིར་སྟོན་གྱི་རེད།</string>

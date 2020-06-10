@@ -66,7 +66,6 @@
     <string name="menu_changelog">更新日誌</string>
     <string name="menu_source">原始碼</string>
     <string name="menu_upgrade">更新</string>
-    <string name="menu_donate">捐助</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

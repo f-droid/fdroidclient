@@ -174,7 +174,6 @@
     <string name="menu_video">Video</string>
     <string name="menu_license">Licentie: %s</string>
     <string name="menu_source">Broncode</string>
-    <string name="menu_donate">Doneren</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

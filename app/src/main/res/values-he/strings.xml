@@ -57,7 +57,6 @@
     <string name="menu_changelog">יומן שינויים</string>
     <string name="menu_source">קוד מקור</string>
     <string name="menu_upgrade">עדכון</string>
-    <string name="menu_donate">תרומות</string>
     <string name="details_notinstalled">לא מותקן</string>
     <string name="antiadslist">יישומון זה מכיל פרסום</string>
     <string name="antitracklist">יישומון זה עוקב ומדווח על פעילותך</string>
