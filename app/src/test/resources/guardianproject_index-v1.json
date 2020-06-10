@@ -49,6 +49,7 @@
             "issueTracker": "https://dev.guardianproject.info/projects/informacam/issues",
             "license": "GPLv3",
             "name": "CameraV",
+            "openCollective": "GuardianProject",
             "sourceCode": "https://github.com/guardianproject/CameraV",
             "summary": "An InformaCam app to generate verifiable media",
             "webSite": "https://guardianproject.info/apps/camerav/",

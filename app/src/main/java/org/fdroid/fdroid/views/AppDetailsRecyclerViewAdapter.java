@@ -796,6 +796,11 @@ public class AppDetailsRecyclerViewAdapter
                 addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
             }
 
+            // OpenCollective
+            if (uriIsSetAndCanBeOpened(app.getOpenCollectiveUri())) {
+                addDonateOption(R.layout.donate_opencollective, app.getOpenCollectiveUri());
+            }
+
             // Bitcoin
             if (uriIsSetAndCanBeOpened(app.getBitcoinUri())) {
                 addDonateOption(R.layout.donate_bitcoin, app.getBitcoinUri());

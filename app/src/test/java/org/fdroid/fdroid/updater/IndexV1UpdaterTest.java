@@ -329,6 +329,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "license",
                 "litecoin",
                 "name",
+                "openCollective",
                 "packageName",
                 "phoneScreenshots",
                 "promoGraphic",

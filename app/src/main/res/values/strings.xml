@@ -234,6 +234,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_flattr">Flattr</string>
     <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_liberapay">Liberapay</string>
+    <!-- This is a brand name, it should only be translated if the company does so -->
+    <string name="menu_opencollective">OpenCollective</string>
     <!-- The bottom bar button label -->
     <string name="main_menu__latest_apps">Latest</string>
     <!-- The bottom bar button label -->

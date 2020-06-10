@@ -157,6 +157,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.LITECOIN + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
             + AppMetadataTable.Cols.LIBERAPAY_ID + " string,"
+            + AppMetadataTable.Cols.OPEN_COLLECTIVE + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
@@ -227,7 +228,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 84;
+    protected static final int DB_VERSION = 85;
 
     private final Context context;
 
@@ -457,6 +458,20 @@ public class DBHelper extends SQLiteOpenHelper {
         addTranslation(db, oldVersion);
         switchRepoArchivePriorities(db, oldVersion);
         deleteOldIconUrls(db, oldVersion);
+        addOpenCollective(db, oldVersion);
+    }
+
+    private void addOpenCollective(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 85) {
+            return;
+        }
+
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.OPEN_COLLECTIVE)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.OPEN_COLLECTIVE + " field to "
+                    + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
+                    + AppMetadataTable.Cols.OPEN_COLLECTIVE + " string;");
+        }
     }
 
     private void deleteOldIconUrls(SQLiteDatabase db, int oldVersion) {
