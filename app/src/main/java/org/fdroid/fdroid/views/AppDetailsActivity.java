@@ -591,7 +591,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
-                    if (!TextUtils.isEmpty(errorMessage)) {
+                    if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
