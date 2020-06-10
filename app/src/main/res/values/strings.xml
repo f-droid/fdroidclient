@@ -448,7 +448,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         genuinely don\'t have your apps available.
     </string>
     <string name="empty_can_update_app_list">Congratulations!\nYour apps seem to be up to date.\n\nExpecting an app update?
-        Swipe down to refresh your repositories.
+        \nSwipe down to refresh your repositories.
     </string>
     <string name="empty_search_available_app_list">No matching applications available.</string>
 
