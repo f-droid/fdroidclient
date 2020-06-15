@@ -146,8 +146,7 @@ public class UpdateService extends JobIntentService {
         int wifi = prefs.getOverWifi();
         boolean scheduleNewJob =
                 interval != Preferences.UPDATE_INTERVAL_DISABLED
-                        && data != Preferences.OVER_NETWORK_NEVER
-                        && wifi != Preferences.OVER_NETWORK_NEVER;
+                        && !(data == Preferences.OVER_NETWORK_NEVER && wifi == Preferences.OVER_NETWORK_NEVER);
 
         if (Build.VERSION.SDK_INT < 21) {
             Intent intent = new Intent(context, UpdateService.class);
