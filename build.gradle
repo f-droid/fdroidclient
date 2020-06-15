@@ -5,7 +5,7 @@ buildscript {
         jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.0'
     }
 }
 allprojects {

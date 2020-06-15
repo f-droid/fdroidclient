@@ -21,14 +21,15 @@ def basicApplicationId = "org.fdroid.basic"
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
 
     defaultConfig {
         versionCode 1010000
         versionName getVersionName()
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 14
+        targetSdkVersion 25
         /*
           The Android Testing Support Library collects analytics to continuously improve the testing
           experience. More specifically, it uploads a hash of the package name of the application
@@ -134,17 +135,17 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:gridlayout-v7:27.1.1'
-    implementation 'com.android.support:support-annotations:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:gridlayout-v7:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:palette-v7:27.1.1'
-    implementation 'com.android.support:preference-v14:27.1.1'
+    implementation 'com.android.support:palette-v7:28.0.0'
+    implementation 'com.android.support:preference-v14:28.0.0'
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.google.zxing:core:3.3.3'
