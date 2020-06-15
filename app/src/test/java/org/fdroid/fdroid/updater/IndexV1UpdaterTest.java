@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.updater;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import com.fasterxml.jackson.core.JsonFactory;

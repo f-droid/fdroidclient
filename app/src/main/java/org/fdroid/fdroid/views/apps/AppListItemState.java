@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 

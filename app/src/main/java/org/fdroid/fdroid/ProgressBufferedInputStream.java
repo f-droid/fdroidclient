@@ -1,6 +1,6 @@
 package org.fdroid.fdroid;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

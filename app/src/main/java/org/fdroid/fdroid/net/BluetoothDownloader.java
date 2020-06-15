@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import org.apache.commons.io.input.BoundedInputStream;
 import org.fdroid.fdroid.Utils;

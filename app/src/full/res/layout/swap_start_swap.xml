@@ -54,7 +54,7 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
@@ -112,7 +112,7 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/switch_wifi"/>

@@ -28,7 +28,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -239,7 +239,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     /**
      * The original preference was a {@link String}, now it must be a {@link Integer}
-     * since {@link android.support.v7.preference.SeekBarPreference} uses it
+     * since {@link androidx.preference.SeekBarPreference} uses it
      * directly.
      */
     private boolean migrateUpdateIntervalStringToInt(SharedPreferences.Editor editor) {

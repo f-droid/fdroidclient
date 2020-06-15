@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.mock;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.data.Apk;

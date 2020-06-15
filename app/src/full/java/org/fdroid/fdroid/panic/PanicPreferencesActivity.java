@@ -1,9 +1,9 @@
 package org.fdroid.fdroid.panic;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;

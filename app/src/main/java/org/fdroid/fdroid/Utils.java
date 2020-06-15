@@ -32,10 +32,10 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -864,7 +864,7 @@ public final class Utils {
      * Converts a {@code long} bytes value, like from {@link File#length()}, to
      * an {@code int} value that is kilobytes, suitable for things like
      * {@link android.widget.ProgressBar#setMax(int)} or
-     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}
+     * {@link androidx.core.app.NotificationCompat.Builder#setProgress(int, int, boolean)}
      */
     public static int bytesToKb(long bytes) {
         return (int) (bytes / 1024);
@@ -874,7 +874,7 @@ public final class Utils {
      * Converts two {@code long} bytes values, like from {@link File#length()}, to
      * an {@code int} value that is a percentage, suitable for things like
      * {@link android.widget.ProgressBar#setMax(int)} or
-     * {@link android.support.v4.app.NotificationCompat.Builder#setProgress(int, int, boolean)}.
+     * {@link androidx.core.app.NotificationCompat.Builder#setProgress(int, int, boolean)}.
      * {@code total} must never be zero!
      */
     public static int getPercent(long current, long total) {

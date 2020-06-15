@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.preference.PreferenceScreen
+<androidx.preference.PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v7.preference.CheckBoxPreference
+    <androidx.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="pref_panic_exit"
             android:summary="@string/panic_exit_summary"
             android:title="@string/panic_exit_title"/>
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
             android:key="pref_panic_destructive_actions"
             android:title="@string/panic_destructive_actions">
 
-        <android.support.v7.preference.ListPreference
+        <androidx.preference.ListPreference
                 android:key="pref_panic_app"
                 android:summary="@string/panic_app_setting_summary"
                 android:title="@string/panic_app_setting_title"
@@ -33,12 +33,12 @@
                 android:summary="@string/panic_reset_repos_summary"
                 android:title="@string/panic_reset_repos_title"/>
 
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
             android:key="pref_panic_apps_to_uninstall"
             android:title="@string/panic_apps_to_uninstall">
 
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-</android.support.v7.preference.PreferenceScreen>
+</androidx.preference.PreferenceScreen>

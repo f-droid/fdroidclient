@@ -2,7 +2,7 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.IndexUpdater;

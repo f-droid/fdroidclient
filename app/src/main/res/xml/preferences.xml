@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.preference.PreferenceScreen
+<androidx.preference.PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.preference.PreferenceScreen android:title="@string/about_title">
+    <androidx.preference.PreferenceScreen android:title="@string/about_title">
         <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="@string/applicationId"
                 android:targetClass="org.fdroid.fdroid.AboutActivity"/>
-    </android.support.v7.preference.PreferenceScreen>
+    </androidx.preference.PreferenceScreen>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/preference_category__my_apps">
-        <android.support.v7.preference.PreferenceScreen android:title="@string/preference_manage_installed_apps">
+    <androidx.preference.PreferenceCategory android:title="@string/preference_category__my_apps">
+        <androidx.preference.PreferenceScreen android:title="@string/preference_manage_installed_apps">
             <intent
                     android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/applicationId"
                     android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity"/>
-        </android.support.v7.preference.PreferenceScreen>
-        <android.support.v7.preference.PreferenceScreen
+        </androidx.preference.PreferenceScreen>
+        <androidx.preference.PreferenceScreen
                 android:title="@string/menu_manage"
                 android:summary="@string/repositories_summary">
             <intent
                     android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/applicationId"
                     android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"/>
-        </android.support.v7.preference.PreferenceScreen>
-        <android.support.v7.preference.PreferenceScreen
+        </androidx.preference.PreferenceScreen>
+        <androidx.preference.PreferenceScreen
                 android:key="installHistory"
                 android:visible="false"
                 android:title="@string/install_history"
@@ -33,10 +33,10 @@
                     android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/applicationId"
                     android:targetClass="org.fdroid.fdroid.views.InstallHistoryActivity"/>
-        </android.support.v7.preference.PreferenceScreen>
-    </android.support.v7.preference.PreferenceCategory>
+        </androidx.preference.PreferenceScreen>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/updates">
+    <androidx.preference.PreferenceCategory android:title="@string/updates">
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="overWifi"
                 android:title="@string/over_wifi"
@@ -60,9 +60,9 @@
                 android:title="@string/notify"
                 android:defaultValue="true"
                 android:key="updateNotify"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/display"
+    <androidx.preference.PreferenceCategory android:title="@string/display"
                                                       android:key="pref_category_display">
         <ListPreference
                 android:title="@string/pref_language"
@@ -73,9 +73,9 @@
                 android:defaultValue="light"
                 android:entries="@array/themeNames"
                 android:entryValues="@array/themeValues"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/appcompatibility"
+    <androidx.preference.PreferenceCategory android:title="@string/appcompatibility"
                                                       android:key="pref_category_appcompatibility">
         <SwitchPreference
                 android:title="@string/show_incompat_versions"
@@ -89,9 +89,9 @@
                 android:title="@string/force_touch_apps"
                 android:defaultValue="false"
                 android:key="ignoreTouchscreen"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/local_repo">
+    <androidx.preference.PreferenceCategory android:title="@string/local_repo">
         <EditTextPreference
                 android:key="localRepoName"
                 android:title="@string/local_repo_name"/>
@@ -100,9 +100,9 @@
                 android:defaultValue="true"
                 android:title="@string/scan_removable_storage_title"
                 android:summary="@string/scan_removable_storage_summary"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/proxy">
+    <androidx.preference.PreferenceCategory android:title="@string/proxy">
         <SwitchPreference
                 android:key="useTor"
                 android:summary="@string/useTorSummary"
@@ -122,9 +122,9 @@
                 android:title="@string/proxy_port"
                 android:summary="@string/proxy_port_summary"
                 android:dependency="enableProxy"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
             android:key="pref_category_privacy"
             android:title="@string/privacy">
         <SwitchPreference
@@ -144,17 +144,17 @@
                 android:summary="@string/hide_on_long_search_press_summary"
                 android:title="@string/hide_on_long_search_press_title"/>
 
-        <android.support.v7.preference.PreferenceScreen
+        <androidx.preference.PreferenceScreen
                 android:summary="@string/panic_settings_summary"
                 android:title="@string/panic_settings">
             <intent
                     android:action="android.intent.action.MAIN"
                     android:targetClass="org.fdroid.fdroid.panic.PanicPreferencesActivity"
                     android:targetPackage="@string/applicationId"/>
-        </android.support.v7.preference.PreferenceScreen>
-    </android.support.v7.preference.PreferenceCategory>
+        </androidx.preference.PreferenceScreen>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
             android:title="@string/other"
             android:key="pref_category_other">
         <ListPreference
@@ -208,6 +208,6 @@
                 android:key="privilegedInstaller"
                 android:persistent="false"
                 android:dependency="expert"/>
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-</android.support.v7.preference.PreferenceScreen>
+</androidx.preference.PreferenceScreen>

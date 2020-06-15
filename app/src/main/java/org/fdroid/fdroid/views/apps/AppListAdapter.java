@@ -2,8 +2,8 @@ package org.fdroid.fdroid.views.apps;
 
 import android.app.Activity;
 import android.database.Cursor;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;

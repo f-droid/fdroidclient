@@ -119,7 +119,7 @@
                     android:resource="@xml/apk_file_provider"/>
         </provider>
         <provider
-                android:name="android.support.v4.content.FileProvider"
+                android:name="androidx.core.content.FileProvider"
                 android:authorities="${applicationId}.installer"
                 android:exported="false"
                 android:grantUriPermissions="true">
