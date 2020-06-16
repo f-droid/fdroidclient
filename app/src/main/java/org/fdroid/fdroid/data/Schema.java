@@ -189,7 +189,7 @@ public interface Schema {
             String BITCOIN = "bitcoinAddr";
             String LITECOIN = "litecoinAddr";
             String FLATTR_ID = "flattrID";
-            String LIBERAPAY_ID = "liberapayID";
+            String LIBERAPAY = "liberapayID";
             String OPEN_COLLECTIVE = "openCollective";
             String PREFERRED_SIGNER = "preferredSigner";
             String AUTO_INSTALL_VERSION_CODE = "suggestedVercode"; // name mismatch from issue #1063
@@ -244,7 +244,7 @@ public interface Schema {
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
+                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY,
                     OPEN_COLLECTIVE, SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
@@ -261,7 +261,7 @@ public interface Schema {
             String[] ALL = {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY_ID,
+                    TRANSLATION, VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID, LIBERAPAY,
                     OPEN_COLLECTIVE, SUGGESTED_VERSION_NAME, SUGGESTED_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,

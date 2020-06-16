@@ -156,7 +156,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.BITCOIN + " string,"
             + AppMetadataTable.Cols.LITECOIN + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
-            + AppMetadataTable.Cols.LIBERAPAY_ID + " string,"
+            + AppMetadataTable.Cols.LIBERAPAY + " string,"
             + AppMetadataTable.Cols.OPEN_COLLECTIVE + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
@@ -573,11 +573,11 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
 
-        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.LIBERAPAY_ID)) {
-            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.LIBERAPAY_ID + " field to "
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.LIBERAPAY)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.LIBERAPAY + " field to "
                     + AppMetadataTable.NAME + " table in db.");
             db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
-                    + AppMetadataTable.Cols.LIBERAPAY_ID + " string;");
+                    + AppMetadataTable.Cols.LIBERAPAY + " string;");
         }
     }
 

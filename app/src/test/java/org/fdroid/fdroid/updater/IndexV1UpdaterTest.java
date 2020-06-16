@@ -151,7 +151,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                         Schema.AppMetadataTable.Cols.REPO_ID,
                         Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME});
         assertEquals("localized icon takes precedence", TESTY_CANONICAL_URL + "/"
-                + app.packageName +  "/en-US/icon.png", app.getIconUrl(context));
+                + app.packageName + "/en-US/icon.png", app.getIconUrl(context));
     }
 
     @Test(expected = IndexUpdater.SigningException.class)
@@ -266,6 +266,17 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         }
         parser.close(); // ensure resources get cleaned up timely and properly
 
+        // test LiberapayID: -> Liberapay: migration
+        for (App app : apps) {
+            if ("org.witness.informacam.app".equals(app.packageName)) {
+                assertEquals("GuardianProject", app.liberapay);
+            } else if ("info.guardianproject.cacert".equals(app.packageName)) {
+                assertEquals("~1337", app.liberapay);
+            } else {
+                assertNull(app.liberapay);
+            }
+        }
+
         RepoDetails indexV0Details = getFromFile("guardianproject_index.xml",
                 Repo.PUSH_REQUEST_ACCEPT_ALWAYS);
         indexV0Details.apps.size();
@@ -325,7 +336,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "iconUrl",
                 "issueTracker",
                 "lastUpdated",
-                "liberapayID",
+                "liberapay",
                 "license",
                 "litecoin",
                 "name",

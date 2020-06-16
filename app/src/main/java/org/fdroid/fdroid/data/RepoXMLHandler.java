@@ -257,7 +257,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.flattrID = str;
                     break;
                 case "liberapay":
-                    curapp.liberapayID = str;
+                    curapp.liberapay = str;
                     break;
                 case "web":
                     curapp.webSite = str;
