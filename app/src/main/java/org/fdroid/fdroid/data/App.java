@@ -19,9 +19,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -116,7 +118,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String name = "Unknown";
 
     public String summary = "Unknown application";
-    public String icon;
+    @JsonProperty("icon")
+    public String iconFromApk;
 
     public String description;
 
@@ -215,9 +218,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String[] requirements;
 
     /**
-     * URL to download the app's icon.
+     * URL to download the app's icon. (Set only from localized block, see also
+     * {@link #iconFromApk} and {@link #getIconUrl(Context)}
      */
-    public String iconUrl;
+    private String iconUrl;
 
     public static String getIconName(String packageName, int versionCode) {
         return packageName + "_" + versionCode + ".png";
@@ -258,7 +262,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     summary = cursor.getString(i);
                     break;
                 case Cols.ICON:
-                    icon = cursor.getString(i);
+                    iconFromApk = cursor.getString(i);
                     break;
                 case Cols.DESCRIPTION:
                     description = cursor.getString(i);
@@ -567,6 +571,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (!TextUtils.isEmpty(value)) {
             description = formatDescription(value);
         }
+        value = getLocalizedGraphicsEntry(localized, localesToUse, "icon");
+        if (!TextUtils.isEmpty(value)) {
+            iconUrl = value;
+        }
 
         featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
         promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
@@ -654,6 +662,28 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public static String formatDescription(String description) {
         return description.replace("\n", "<br>");
+    }
+
+    public String getIconUrl(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        if (TextUtils.isEmpty(iconUrl)) {
+            if (TextUtils.isEmpty(iconFromApk)){
+                return null;
+            }
+            if (iconFromApk.endsWith(".xml")){
+                // We cannot use xml ressources as icons. F-Droid server should not include them
+                // https://gitlab.com/fdroid/fdroidserver/issues/344
+                return null;
+            }
+            String iconsDir;
+            if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
+                iconsDir = Utils.getIconsDir(context, 1.0);
+            } else {
+                iconsDir = Utils.FALLBACK_ICONS_DIR;
+            }
+            return repo.address + iconsDir + iconFromApk;
+        }
+        return repo.address + "/" + packageName + "/" + iconUrl;
     }
 
     public String getFeatureGraphicUrl(Context context) {
@@ -756,7 +786,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 + ", last updated on " + this.lastUpdated + ")</p>";
 
         this.name = (String) appInfo.loadLabel(pm);
-        this.icon = getIconName(packageName, packageInfo.versionCode);
+        this.iconFromApk = getIconName(packageName, packageInfo.versionCode);
         this.installedVersionName = packageInfo.versionName;
         this.installedVersionCode = packageInfo.versionCode;
         this.compatible = true;
@@ -943,7 +973,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.NAME, name);
         values.put(Cols.REPO_ID, repoId);
         values.put(Cols.SUMMARY, summary);
-        values.put(Cols.ICON, icon);
+        values.put(Cols.ICON, iconFromApk);
         values.put(Cols.ICON_URL, iconUrl);
         values.put(Cols.DESCRIPTION, description);
         values.put(Cols.WHATSNEW, whatsNew);
@@ -1173,7 +1203,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.name);
         dest.writeLong(this.repoId);
         dest.writeString(this.summary);
-        dest.writeString(this.icon);
+        dest.writeString(this.iconFromApk);
         dest.writeString(this.description);
         dest.writeString(this.whatsNew);
         dest.writeString(this.license);
@@ -1224,7 +1254,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.name = in.readString();
         this.repoId = in.readLong();
         this.summary = in.readString();
-        this.icon = in.readString();
+        this.iconFromApk = in.readString();
         this.description = in.readString();
         this.whatsNew = in.readString();
         this.license = in.readString();

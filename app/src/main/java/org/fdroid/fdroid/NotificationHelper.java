@@ -493,7 +493,7 @@ class NotificationHelper {
     private Bitmap getLargeIconForEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         final Point largeIconSize = getLargeIconSize();
         Bitmap iconLarge = null;
-        if (TextUtils.isEmpty(entry.app.iconUrl)) {
+        if (TextUtils.isEmpty(entry.app.getIconUrl(context))) {
             return null;
         } else if (entry.status == AppUpdateStatusManager.Status.Downloading
                 || entry.status == AppUpdateStatusManager.Status.Installing) {
@@ -505,12 +505,12 @@ class NotificationHelper {
                 downloadIcon.draw(canvas);
             }
             return bitmap;
-        } else if (DiskCacheUtils.findInCache(entry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+        } else if (DiskCacheUtils.findInCache(entry.app.getIconUrl(context), ImageLoader.getInstance().getDiskCache()) != null) {
             iconLarge = ImageLoader.getInstance().loadImageSync(
-                    entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y));
+                    entry.app.getIconUrl(context), new ImageSize(largeIconSize.x, largeIconSize.y));
         } else {
             // Load it for later!
-            ImageLoader.getInstance().loadImage(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), new ImageLoadingListener() {
+            ImageLoader.getInstance().loadImage(entry.app.getIconUrl(context), new ImageSize(largeIconSize.x, largeIconSize.y), new ImageLoadingListener() {
 
                 AppUpdateStatusManager.AppUpdateStatus entry;
 
@@ -536,8 +536,8 @@ class NotificationHelper {
                     AppUpdateStatusManager.AppUpdateStatus oldEntry = appUpdateStatusManager.get(entry.getCanonicalUrl());
                     if (oldEntry != null
                             && oldEntry.app != null
-                            && oldEntry.app.iconUrl != null
-                            && DiskCacheUtils.findInCache(oldEntry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+                            && oldEntry.app.getIconUrl(context) != null
+                            && DiskCacheUtils.findInCache(oldEntry.app.getIconUrl(context), ImageLoader.getInstance().getDiskCache()) != null) {
                         createNotification(oldEntry); // Update with new image!
                     }
                 }

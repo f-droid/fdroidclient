@@ -76,7 +76,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
         appName.setText(app.name);
-        ImageLoader.getInstance().displayImage(app.iconUrl, appIcon,
+        ImageLoader.getInstance().displayImage(app.getIconUrl(this), appIcon,
                 Utils.getRepoAppDisplayImageOptions());
 
         tabHost.setup();

@@ -27,6 +27,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.data.RepoXMLHandlerTest;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
@@ -143,6 +144,14 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         assertTrue(requestedPermissions.contains(android.Manifest.permission.READ_EXTERNAL_STORAGE));
         assertTrue(requestedPermissions.contains(android.Manifest.permission.WRITE_EXTERNAL_STORAGE));
         assertFalse(requestedPermissions.contains(android.Manifest.permission.READ_CALENDAR));
+        App app = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
+                "com.autonavi.minimap", new String[]{
+                        Schema.AppMetadataTable.Cols.ICON_URL,
+                        Schema.AppMetadataTable.Cols.ICON,
+                        Schema.AppMetadataTable.Cols.REPO_ID,
+                        Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME});
+        assertEquals("localized icon takes precedence", TESTY_CANONICAL_URL + "/"
+                + app.packageName +  "/en-US/icon.png", app.getIconUrl(context));
     }
 
     @Test(expected = IndexUpdater.SigningException.class)
@@ -312,7 +321,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "donate",
                 "featureGraphic",
                 "flattrID",
-                "icon",
+                "iconFromApk",
                 "iconUrl",
                 "issueTracker",
                 "lastUpdated",
