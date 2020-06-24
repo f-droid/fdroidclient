@@ -30,6 +30,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -226,7 +227,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 82;
+    protected static final int DB_VERSION = 83;
 
     private final Context context;
 
@@ -454,6 +455,40 @@ public class DBHelper extends SQLiteOpenHelper {
         addDisabledMirrorsFields(db, oldVersion);
         addIsLocalized(db, oldVersion);
         addTranslation(db, oldVersion);
+        switchRepoArchivePriorities(db, oldVersion);
+    }
+
+    private void switchRepoArchivePriorities(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 83) {
+            return;
+        }
+        Utils.debugLog(TAG, "Switching default repo and archive priority.");
+
+        db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
+                + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
+                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + ") - " + RepoTable.Cols.PRIORITY
+                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
+                + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
+                + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME
+                + " AS b ON a." + RepoTable.Cols.ADDRESS + "= 'https://f-droid.org/repo'"
+                + " AND b." + RepoTable.Cols.ADDRESS + "= 'https://f-droid.org/archive'"
+                + ")"
+        );
+
+        db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
+                + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
+                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + ") - " + RepoTable.Cols.PRIORITY
+                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
+                + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
+                + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME + " AS b ON a."
+                + RepoTable.Cols.ADDRESS + "= 'https://guardianproject.info/fdroid/repo'"
+                + " AND b." + RepoTable.Cols.ADDRESS + "= 'https://guardianproject.info/fdroid/archive'"
+                + ")"
+        );
     }
 
     private void addTranslation(SQLiteDatabase db, int oldVersion) {
