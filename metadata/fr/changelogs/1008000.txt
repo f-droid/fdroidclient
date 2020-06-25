@@ -1,3 +1,3 @@
-* Barre discrèt réparée sur les versions d'Androids récents (merci à @dkanada)
-* Support d'API 29 "split-permissions" : un emplacement précit implique maintenant un emplacement grossier
-* Règle de backup pour sauvegarder les dépots
+* Barre discrète réparée sur les versions d'Android récentes (merci à @dkanada)
+* Prise en charge de « split-permissions »  de l'API 29 : un emplacement précis implique maintenant un emplacement approximatif
+* Règle de sauvegarde pour sauvegarder les dépôts
