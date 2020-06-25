@@ -95,19 +95,15 @@
     <string name="proxy_host">Milliþjónn</string>
     <string name="proxy_port">Milliþjónsgátt</string>
     <string name="status_download">Sæki
-        %2$s / %3$s (%4$d%%) frá
-        %1$s
-    </string>
+\n%2$s / %3$s (%4$d%%) frá
+\n%1$s</string>
     <string name="status_download_unknown_size">Sæki
-
-        %2$s frá
-        %1$s
-    </string>
+\n%2$s frá
+\n%1$s</string>
     <string name="update_notification_title">Uppfæri hugbúnaðarsöfn</string>
     <string name="status_processing_xml_percent">Meðhöndla %2$s / %3$s (%4$d%%) frá %1$s</string>
     <string name="status_connecting_to_repo">Tengist við
-        %1$s
-    </string>
+\n%1$s</string>
     <string name="status_inserting_apps">Vista ítarupplýsingar um forrit</string>
     <string name="repos_unchanged">Öll hugbúnaðarsöfn eru með nýjustu upplýsingum</string>
     <string name="all_other_repos_fine">Öll önnur hugbúnaðarsöfn gafu engar villur.</string>
@@ -127,7 +123,8 @@
     <string name="unknown">Óþekkt</string>
     <string name="repo_confirm_delete_title">Eyða hugbúnaðarsafni?</string>
     <string name="repo_added">Vistaði  %1$s hugbúnaðarsafnið.</string>
-    <string name="repo_searching_address">Leita að hugbúnaðarsafni á %1$s</string>
+    <string name="repo_searching_address">Leita að hugbúnaðarsafni á
+\n%1$s</string>
     <string name="requires_features">Krefst: %1$s</string>
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
@@ -262,12 +259,9 @@
     <string name="repo_not_yet_updated">Þetta hugbúnaðarsafn hefur ekki verið notað áður.
         Þú verður að gera það virkt til að geta séð forritin sem það býður uppá.
     </string>
-    <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit
-        úr því safni verða ekki lengur tiltæk í F-Droid.
-
-        Athugaðu: Öll forrit sem þegar hafa verið sett inn,
-        munu haldast á tækinu þínu.
-    </string>
+    <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit úr því safni verða ekki lengur tiltæk í F-Droid.
+\n
+\nAthugaðu: Öll forrit sem þegar hafa verið sett inn, munu haldast á tækinu þínu.</string>
     <string name="repo_disabled_notification">Gerði %1$s óvirkt. 
 \n
 \nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
@@ -275,10 +269,8 @@
         bæta við! Reyndu að tengjast þessu neti: %s
     </string>
     <string name="empty_installed_app_list">Engin forrit uppsett.
-
-        Það eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að
-        uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.
-    </string>
+\n
+\nÞað eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.</string>
     <string name="empty_can_update_app_list">Til hamingju!\nÖll forritin þín eru af nýjustu útgáfu.</string>
     <string name="swap_nfc_description">Ef vinur þinn er með F-Droid og kveikt á NFC, látið þá tækin ykkar snertast.
     </string>

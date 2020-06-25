@@ -201,7 +201,7 @@
     <string name="enable_proxy_title">Rmed Aproksi HTTP</string>
     <string name="privacy">Tabaḍnit</string>
     <string name="preventScreenshots_title">Sewḥel tuṭṭfiwin n ugdil</string>
-    <string name="panic_exit_title">Ffeγ seg usnas-ayi</string>
+    <string name="panic_exit_title">Ffeɣ seg usnas-ayi</string>
     <string name="panic_hide_title">Ffer %s</string>
     <string name="hiding_calculator">Tamsiḍent</string>
     <string name="hiding_dialog_title">Ffer %s tura</string>
@@ -242,7 +242,7 @@
     <string name="categories__empty_state__no_categories">Ur ellant kra n taggayin iweskanay</string>
     <string name="panic_app_setting_none">Ulac</string>
     <string name="allow">Sireg</string>
-    <string name="panic_exit_summary">Ad yemdel wesnas</string>
+    <string name="panic_exit_summary">Tura ad yemdel wesnas-ayi</string>
     <string name="panic_hide_summary">Asnas ad yeffer iman-is</string>
     <string name="hide_on_long_search_press_title">Ffer s teqfilt n unadi</string>
     <string name="repo_confirm_delete_title">Tebγiḍ tuksa n ukufi\?</string>

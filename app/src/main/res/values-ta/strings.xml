@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை.
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
     </string>
@@ -32,7 +32,7 @@
     <string name="added_on">சேர்க்கப்பட்ட தேதி %s</string>
     <string name="ok">சரி</string>
     <string name="yes">ஆம்</string>
-    <string name="no">வேண்டாம்</string>
+    <string name="no">இல்லை</string>
     <string name="repo_add_title">புதிய களஞ்சியத்தை சேர்க்க</string>
     <string name="repo_add_add">சேர்க்க</string>
     <string name="links">இணைப்புகள்</string>
@@ -58,7 +58,7 @@
     <string name="menu_issues">சிக்கல்கள்</string>
     <string name="menu_changelog">மாற்றக் குறிப்புகள்</string>
     <string name="menu_source">மூல ஆதார நிரல்</string>
-    <string name="menu_upgrade">மேம்படுத்து</string>
+    <string name="menu_upgrade">புதுப்பி</string>
     <string name="menu_donate">கொடை செய்க</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -86,7 +86,7 @@
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருண்ட</string>
     <string name="theme_night">இரவு</string>
-    <string name="notification_action_cancel">ரத்து</string>
+    <string name="notification_action_cancel">ரத்துசெய்</string>
     <string name="unknown">அறியப்படாத</string>
     <string name="disabled">முடக்கப்பட்டது</string>
     <string name="next">அடுத்து</string>
@@ -105,4 +105,41 @@
     <string name="swap_connecting">இணைக்கிறது</string>
     <string name="permissions">அனுமதிகள்</string>
     <string name="wifi">வைஃபை</string>
+    <string name="requires_features">தேவைப்படுகிறது: %1$s</string>
+    <string name="repo_last_update">கடைசியாக புதுப்பிக்கப்பட்டது</string>
+    <string name="useTor">டோர் பயன்படுத்தவும்</string>
+    <string name="bad_fingerprint">மோசமான கைரேகை</string>
+    <string name="swap_starting">தொடங்குகிறது…</string>
+    <string name="swap_blank_wifi_ssid">(வெற்று)</string>
+    <string name="menu_translation">மொழிபெயர்ப்பு</string>
+    <string name="app_new">புதிது</string>
+    <string name="menu_liberapay">Liberapay</string>
+    <string name="panic_app_setting_none">ஏதுமில்லை</string>
+    <string name="updates__app_with_known_vulnerability__ignore">புறக்கணி</string>
+    <string name="antifeatures">எதிர்-அம்சங்கள்</string>
+    <string name="app__install_downloaded_update">புதுப்பி</string>
+    <string name="notification_title_summary_downloading">பதிவிறக்குகிறது…</string>
+    <string name="keep_forever">என்றென்றும்</string>
+    <string name="perms_new_perm_prefix">புதியன:</string>
+    <string tools:ignore="UnusedResources" name="category_System">அமைப்பு</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">வரைகலை</string>
+    <string name="repo_name">பெயர்</string>
+    <string name="repo_url">முகவரி</string>
+    <string name="unsigned">கையொப்பமிடப்படாதது</string>
+    <string name="icon">உருவம்</string>
+    <string name="app_name">எஃப்-டிராய்டு</string>
+    <string name="notification_action_update">புதுப்பி</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">எழுதுதல்</string>
+    <string tools:ignore="UnusedResources" name="category_Time">நேரம்</string>
+    <string tools:ignore="UnusedResources" name="category_Security">பாதுகாப்பு</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">அறிவியல் &amp; கல்வி</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">வாசித்தல்</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">தொலைபேசி &amp; குறுஞ்செய்திச் சேவை</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">உலாவல்</string>
+    <string tools:ignore="UnusedResources" name="category_Games">விளையாட்டுகள்</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">இணைப்புநிலை</string>
+    <string name="pref_language_default">அமைப்பு இயல்புநிலை</string>
+    <string name="pref_language">மொழி</string>
+    <string name="skip">தவிர்</string>
+    <string name="menu_open">திற</string>
 </resources>
