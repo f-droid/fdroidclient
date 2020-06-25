@@ -1,0 +1,4 @@
+* 新的 Android 10 权限配置，停止未知来源提示 #1833
+* 搜索被清除后打开键盘
+* 翻译同步 Android 字符串
+* 强制将常用的存储库域为 HTTPS（GitLab，GitHub，Amazon）
