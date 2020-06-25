@@ -136,7 +136,6 @@
     <string name="menu_flattr">Flattr</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_bitcoin">Bitcoin</string>
-    <string name="menu_donate">Donar</string>
     <string name="menu_downgrade">Desactualizar</string>
     <string name="menu_translation">Traducción</string>
     <string name="menu_source">Código fuente</string>
@@ -152,12 +151,12 @@
     <string name="menu_open">Abrir</string>
     <string name="repositories_summary">Añadir fuentes adicionales de aplicaciones</string>
     <string name="repo_provider">Repositorio: %s</string>
-    <string name="malformed_repo_uri">Ignorando el URI de repositorio malformado:% s</string>
+    <string name="malformed_repo_uri">Ignorando el URI de repositorio malformado: %s</string>
     <string name="invalid_url">Esta no es una dirección URL válida.</string>
     <string name="bad_fingerprint">Mala huella digital</string>
-    <string name="repo_exists_add_mirror">Esta es una copia de% 1 $ s, ¿agregarla como espejo\?</string>
+    <string name="repo_exists_add_mirror">Esta es una copia de %1$s, ¿agregarla como espejo\?</string>
     <string name="repo_delete_to_overwrite">Primero elimine %1$s para agregar esto con una clave en conflicto.</string>
-    <string name="repo_exists_and_enabled">% 1 $ s ya está configurado y habilitado.</string>
+    <string name="repo_exists_and_enabled">%1$s ya está configurado y habilitado.</string>
     <string name="repo_exists_enable">%1$s ya está configurado, confirme que desea volver a habilitarlo.</string>
     <string name="repo_exists_add_fingerprint">%1$s ya está configurado, esto agregará nueva información clave.</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>

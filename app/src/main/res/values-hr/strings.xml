@@ -414,7 +414,7 @@
     <string name="menu_license">Licenca: %s</string>
     <string name="menu_open">Otvori</string>
     <string name="repositories_summary">Dodaj daljnje izvore aplikacija</string>
-    <string name="repo_delete_to_overwrite">Najprije izbriši %1$ kako bi se dodalo s neodgovarajućim ključem.</string>
+    <string name="repo_delete_to_overwrite">Najprije izbriši %1$s kako bi se dodalo s neodgovarajućim ključem.</string>
     <string name="sort_search">Razvrstaj pretragu</string>
     <string name="clear_search">Isprazni pretragu</string>
     <string name="versions">Verzije</string>
