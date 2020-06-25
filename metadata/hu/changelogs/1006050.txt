@@ -1,0 +1,13 @@
+* A Legfrissebb lap kiemeli a leírással rendelkező alkalmazásokat
+
+* Automatikus letöltés a tükrökről, csökkentve az f-droid.org terhelését
+
+* Tükrök letiltása a tároló részleteiben (#1696)
+
+* Hatékonyabb gyorsítótárazás a letöltéseknél (tárolónként, több webkiszolgáló esetén #1708)
+
+* Ismeretlen források esetén történő telepítés javítása a Privilegizált kiterjesztésben (#1702)
+
+* Hiányzó ikonok kezelése, ha nincs Wi-Fi (#1592)
+
+* Javított fordítások a Frissítések lapon

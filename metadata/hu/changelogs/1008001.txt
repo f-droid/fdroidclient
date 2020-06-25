@@ -1,0 +1,4 @@
+* Android 10-es engedélykonfiguráció kezelése, hogy ne jelenjenek meg az Ismeretlen forrás figyelmeztetések
+* Keresés törlésekor megjelenik a billentyűzet
+* Fordítás szinkronizálása az Android szövegeivel
+* Gyakori tárolók domainjeinek HTTPS-re kényszerítése (GitLab, GitHub, Amazon)
