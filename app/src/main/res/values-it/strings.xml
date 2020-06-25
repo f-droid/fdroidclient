@@ -90,9 +90,8 @@
     <string name="proxy_port">Porta proxy</string>
     <string name="proxy_port_summary">Porta del tuo proxy (es. 8118)</string>
     <string name="status_download">Scaricamento
-        %2$s/%3$s (%4$d%%) da
-        %1$s
-    </string>
+\n%2$s / %3$s (%4$d%%) da
+\n%1$s</string>
     <string name="status_connecting_to_repo">Connessione a\n%1$s</string>
     <string name="repos_unchanged">Tutti i repository sono aggiornati</string>
     <string name="all_other_repos_fine">Tutti gli altri repository non hanno generato errori.</string>
@@ -119,11 +118,9 @@
     <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili. 
 \n 
 \nNota: Tutte le app installate precedentemente rimarranno sul dispositivo.</string>
-    <string name="repo_disabled_notification">%1$s è disabilitato.
-
-        È necessario
-        abilitare nuovamente questo repository per installare le app contenute.
-    </string>
+    <string name="repo_disabled_notification">%1$s disattivato.
+\n
+\nDovrai riattivare nuovamente questo repository per installare le app contenute.</string>
     <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repo locale che hai aggiunto!
         Prova a collegarti a questa rete: %s
     </string>
@@ -232,11 +229,9 @@
     <string name="category_Theming">Tematizzazione</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Scrittura</string>
-    <string name="empty_installed_app_list">Nessun\'app installata.
-
-        Ci sono delle app sul tuo dispositivo ma non sono disponibili su F-Droid. Ciò potrebbe essere dovuto al fatto
-        che devi aggiornare i repository o che le app non sono disponibili all\'interno dei repository.
-    </string>
+    <string name="empty_installed_app_list">Nessuna app installata.
+\n
+\nCi sono delle app sul tuo dispositivo ma non sono disponibili su F-Droid. Ciò potrebbe essere dovuto al fatto che devi aggiornare i repository o che le app non sono disponibili all\'interno dei repository.</string>
     <string name="empty_can_update_app_list">Congratulazioni!\nLe tue app sono aggiornate.</string>
     <string name="install_error_unknown">Installazione fallita a causa di un errore sconosciuto</string>
     <string name="uninstall_error_unknown">Disinstallazione fallita a causa di un errore sconosciuto</string>
@@ -512,4 +507,5 @@
     <string name="panic_apps_to_uninstall">App da disinstallare e di cui cancellare tutti i dati</string>
     <string name="panic_reset_repos_summary">Forza l\'impostazione del repository ai valori predefiniti</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nearby chiuso poiché era inattivo.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
