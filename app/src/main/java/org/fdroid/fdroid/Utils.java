@@ -505,7 +505,8 @@ public final class Utils {
                         : null);
             }
         } else {
-            ImageLoader.getInstance().displayImage(app.getIconUrl(iv.getContext()), iv, Utils.getRepoAppDisplayImageOptions());
+            ImageLoader.getInstance().displayImage(
+                    app.getIconUrl(iv.getContext()), iv, Utils.getRepoAppDisplayImageOptions());
         }
     }
 

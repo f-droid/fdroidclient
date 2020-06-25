@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.data.App;
@@ -16,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertThat;
 
 /**
  * Check whether app icons are loaded from the correct repository. The repository with the
@@ -71,7 +70,8 @@ public class AppIconsTest extends MultiIndexUpdaterTest {
                 "org.adaway", new String[]{
                         Schema.AppMetadataTable.Cols.ICON_URL,
                         Schema.AppMetadataTable.Cols.ICON,
-                        Schema.AppMetadataTable.Cols.REPO_ID});
+                        Schema.AppMetadataTable.Cols.REPO_ID,
+                });
         assertThat(app.getIconUrl(context), MatchesPattern.matchesPattern(expectedUrl));
     }
 }
