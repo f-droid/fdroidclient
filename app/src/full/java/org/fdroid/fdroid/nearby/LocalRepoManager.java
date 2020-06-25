@@ -124,7 +124,7 @@ public final class LocalRepoManager {
 
     private String writeFdroidApkToWebroot() {
         ApplicationInfo appInfo;
-        String fdroidClientURL = "https://f-droid.org/FDroid.apk";
+        String fdroidClientURL = "https://f-droid.org/F-Droid.apk";
 
         try {
             appInfo = pm.getApplicationInfo(fdroidPackageName, PackageManager.GET_META_DATA);
