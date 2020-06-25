@@ -1,0 +1,3 @@
+* Traducciones actualizadas
+* Solucionados problemas de tamaño de botón #1678
+* Detenido bloqueos de fondo aleatorios

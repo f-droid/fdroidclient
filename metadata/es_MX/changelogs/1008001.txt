@@ -1,0 +1,4 @@
+* Manejar Android 10 configuración de permisos para detener las solicitudes de fuentes desconocidas
+* El teclado se abre cuando se borra la búsqueda
+* sincronización de traducción con cadenas de Android
+* forzar dominios de repositorio comunes a HTTPS (GitLab, GitHub, Amazon)

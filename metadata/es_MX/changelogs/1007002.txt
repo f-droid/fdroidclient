@@ -1,0 +1,1 @@
+* Las unidades flash USB OTG se pueden utilizar como repositorios y espejos cercanos

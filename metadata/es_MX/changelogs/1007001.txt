@@ -1,0 +1,5 @@
+* Intercambio cercano revisado usando el hotspot AP del dispositivo
+
+* Añadir nuevas respuestas de pánico: desinstala la aplicación y restablecer los repositorios a la predeterminada
+
+* fijar el soporte de proxy en el primer inicio
