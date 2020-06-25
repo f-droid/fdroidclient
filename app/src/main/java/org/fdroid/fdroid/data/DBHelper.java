@@ -30,7 +30,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -479,7 +478,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "Clearing iconUrl field to enable localized icons on next update");
-        db.execSQL("UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.ICON_URL  + "= NULL");
+        db.execSQL("UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.ICON_URL + "= NULL");
     }
 
     private void switchRepoArchivePriorities(SQLiteDatabase db, int oldVersion) {
@@ -490,9 +489,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
                 + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
                 + ") - " + RepoTable.Cols.PRIORITY
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN  ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
                 + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
                 + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
                 + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME
@@ -503,9 +502,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
                 + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
                 + ") - " + RepoTable.Cols.PRIORITY
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN  ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
                 + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
                 + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
                 + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME + " AS b ON a."
