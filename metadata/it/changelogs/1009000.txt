@@ -1,0 +1,5 @@
+* Rimosso il supporto a "Android App Link" dato che non funziona con F-Droid e causava leak di DNS
+* I repo Archive ora sono di priorità inferiore a Repo (superiore in Gestione Repository), correggendo la ricerca di icone, schermate ed altre informazioni in Archive piuttosto del Repo stesso.
+* Stop taglio immagine nell'header (grazie @ByteHamster!)
+* Abbina la barra di navigazione con la modalità scura (grazie @MatthieuB!)
+* Pulitura di codice obsoleto (grazie @Isira-Seneviratne!)
