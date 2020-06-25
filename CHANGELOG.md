@@ -1,3 +1,19 @@
+### 1.9 (2020-06-25)
+
+* Removed "Android App Link" support since it cannot work with
+  F-Droid, and it was triggering DNS leaks.
+
+* Archive Repos are now lower priority than the Repo (higher on the
+  Manage Repos screen), fixing issues where it looked for icons,
+  screenshots and other information in the Archive rather than the
+  Repo itself.
+
+* Stop cropping feature header image (thanks @ByteHamster!)
+
+* Make navigation bar match dark mode (thanks @MatthieuB!)
+
+* Cleaned out obsolete code (thanks @Isira-Seneviratne!)
+
 ### 1.8-alpha2 (2020-02-04)
 
 * stop showing Unknown Sources with Privileged Extension on Android 10 #1833
