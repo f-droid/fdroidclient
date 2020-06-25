@@ -1,0 +1,19 @@
+* Migliori pulsanti e aggiornamenti di stato
+
+* Revisione Impostazioni controlli sull'utilizzo dei dati
+
+* Riduce consumo batteria di lavori in background (Android 5.0 +)
+
+* Condividi per i repo
+
+* Disattiva crash report in Impostazioni
+
+* Vedi cronologia quando la registrazione è abilitata
+
+* Elenco Anti-Caratteristiche cliccabili, aggiunto NoSourceSince
+
+* Android 4.0 è ora il minimo supportato
+
+* Personalizza whitelabel F-Droid
+
+* Impostazione esperta per scaricare versione debug+UUUID

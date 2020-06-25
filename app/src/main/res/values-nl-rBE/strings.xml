@@ -82,7 +82,7 @@
     <string name="force_old_index_summary">Gebruikt den XML-app-index in geval van programmafouten of compatibiliteitsproblemen</string>
     <string name="other">Overig</string>
     <string name="update_interval">Automatisch update-interval</string>
-    <string name="update_auto_download">Updates autmatisch downloaden</string>
+    <string name="update_auto_download">Updates automatisch downloaden</string>
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een melding weergegeven om ze te installeren</string>
     <string name="update_auto_install">Updates automatisch installeren</string>
     <string name="update_auto_install_summary">Download en installeer updates in de achtergrond</string>

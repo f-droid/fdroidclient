@@ -1,0 +1,13 @@
+* Az SD-kártyával történő csere támogatott
+
+* Közeli csere hibajavításai és fejlesztései
+
+* További fejlesztések az „Alkalmazás részleteiben”
+
+* Fordítások javítása a Közeli és Csere lapokon
+
+* Javított alkalmazásikon-kiválasztási logika
+
+* Tárolók hozzáadása ROM-ról, OEM-től, gyártótól származó beépített additional_repos.xml segítéségével
+
+* Verziókód megjelenítése a bővített verziólistában, Szakértő módban

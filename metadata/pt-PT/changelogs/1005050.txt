@@ -1,14 +1,13 @@
-* A troca com cartões SD agora é suportado
+* A troca via cartões SD é agora suportado
 
-* Correções de erros e melhorias nas tocas pela proximidade
+* Correções de erros e melhoramentos de «Troca» pela proximidade
 
-* Melhoria adicional de "Detalhes da aplicação"
+* Melhoramentos adicionais de "Detalhes da Aplicação"
 
-* Atualização de idioma e traduções em "Proximidades" e "Trocar"
+* Atualização de idioma e traduções acerca de «Proximidades» e »Trocar»
 
-* Melhoria na lógica de seleção de ícone da aplicação
+* Melhoramento na lógica da seleção de ícone da aplicação
 
-* Adiciona repositórios via additional_repos.xml adicional de ROM, OEM, fornecedor.
+* Adicionar repositórios via additional_repos.xml adicional de ROM, OEM, fornecedor.
 
-* Mostra o código de versão nas entradas da lista de versões expandidas no
-  modo avançado
+* Exibir o código da versão nas entradas da lista de versões expandidas no modo «Avançado»

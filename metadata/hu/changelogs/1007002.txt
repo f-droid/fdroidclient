@@ -1,1 +1,1 @@
-* Az USB OTG-meghajtók használata közeli tárolóként és tükörként
+* Az USB-s OTG-meghajtók használata közeli tárolóként és tükörként

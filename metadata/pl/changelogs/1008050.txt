@@ -1,0 +1,9 @@
+* Uprawnienie dla Android 10 zatrzymuje monit Nieznane źródła #1833
+* Obsługa „podział uprawnień”: dokładna lokalizacja oznacza przybliżoną lokalizację
+* Naprawa paska wyszukiwania w nowym Android (dzięki @dkanada)
+* Ustawienie reguł tworzenia kopii zapasowych w celu uniknięcia zapisywania repo wymiany
+* Otwiera klawiaturę po wyczyszczeniu wyszukiwania
+* Synchronizacja tłumaczeń
+* Wymusza domeny repo do HTTPS (GitLab, GitHub, Amazon)
+* Linki do szczegółów aplikacji
+* Domyślna ikona aplikacji

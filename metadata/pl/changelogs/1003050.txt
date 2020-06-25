@@ -4,6 +4,6 @@
 * Udostępnianie pozycji menu dla repozytoriów
 * Wyłączanie raportów o awariach w Ustawieniach
 * Podgląd historii po włączeniu logowania
-* Lista nieporządanych funcji z możliwością dodania do NoSourceSince
+* Lista niepożądanych funkcji z możliwością dodania do NoSourceSince
 * Android 4.0 jest teraz minimalnym obsługiwanym
-* Ogromne ulepszenia dla niestandardowych whitelabel wersji F-Droida
+* Ogromne ulepszenia dla niestandardowych whitelabel wersji F-Droid

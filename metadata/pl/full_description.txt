@@ -9,6 +9,6 @@ Android jest otwarty w tym sensie, że możesz zainstalować APK z dowolnego mie
 * Opcjonalne automatyczne pobieranie i instalowanie aktualizacji 
 * Śledzenie starszych wersji oraz wersji beta 
 * Filtrowanie aplikacji niezgodnych z urządzeniem 
-* Przegłądanie aplikacji za pomocą kategorii i opisów 
+* Przeglądanie aplikacji za pomocą kategorii i opisów 
 * Dostęp do powiązanych adresów URL dla darowizn, kodu źródłowego itp. 
 * Bądź bezpieczny, sprawdzając sygnatury indeksu repozytorium i sumy kontrolne plików APK

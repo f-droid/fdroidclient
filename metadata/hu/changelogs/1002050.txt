@@ -1,0 +1,15 @@
+* Gyorsítótárak automatikus törlése, ha kevés a hely
+
+* Javított teljesítmény a kevés memóriával rendelkező eszközökön
+
+* Az összes letöltés betartja a „Csak Wi-Fin” beállítást
+
+* Memóriahasználat csökkentése, ha nincs elég
+
+* Egyéni tükrök hozzáadása
+
+* Számos Csere/Közeli hibajavítás és fejlesztés
+
+* Ismétlődő frissítési értesítések egy okának javítása (#1271)
+
+* Az F-Droid felismeri a GitLabról származó F-Droid nightly URL-eket

@@ -1,0 +1,11 @@
+* Revisione importante dell'interfaccia utente swap, preparazione per la riscrittura
+
+* Mostra "Annulla" dopo aver eliminato gli elementi dalla scheda "Aggiornamenti" (grazie @Hocuri!)
+
+# Fix ETag handling quando si collega agli specchi NGINX #1737
+
+# Risolvi i problemi con la visualizzazione "Ultima" causati da un'errata gestione dei fusi orari #1757
+
+* Ignora tutti i crash non importanti nei servizi in background
+
+* Non utilizzare l'estensione privilegiata se disattivata in "Impostazioni"

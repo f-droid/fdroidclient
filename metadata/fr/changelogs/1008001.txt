@@ -1,4 +1,4 @@
-* Support des permissions de configuration d'Android 10 pour arrèter l'affichage des sources incconues
+* Prise en charge des permissions de configuration d'Android 10 pour arrêter l'affichage du message des sources inconnues
 * Le clavier s'ouvre en fin de recherche
-* Synchronisation des traduction d'Android
-* Oblige les dépots communs d'uttiliser l'HTTPS (GitLab, GitHub, Amazon)
+* Synchronisation des traduction Android
+* HTTPS forcé sur les dépôts communs (GitLab, GitHub, Amazon)

@@ -1,3 +1,5 @@
 * Refonte de l'échange à proximité via l'accès wifi de l'appareil
-* Ajout de nouvelles actions pour le bouton d'urgence :  désinstaller des applications et réinitialiser les dépôts
-* correction de la gestion du proxy au premier démarrage
+
+* Ajout de nouvelles actions pour le bouton d'urgence : désinstaller des applications et réinitialiser les dépôts
+
+* Correction de la gestion du proxy au premier démarrage

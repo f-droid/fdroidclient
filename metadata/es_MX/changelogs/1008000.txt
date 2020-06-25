@@ -1,0 +1,3 @@
+* Fijar preferencia de la barra de búsqueda en las versiones recientes de Android (gracias @dkanada)
+* Manejar API 29 permisos divididos: la ubicación fina ahora implica una ubicación gruesa
+* Definir reglas de copia de seguridad para evitar guardar el repositorio de intercambio

@@ -5,12 +5,12 @@
     <string name="version">Version</string>
     <string name="delete">Löschen</string>
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
-    <string name="cache_downloaded">Zwischengespeicherte Apps behalten</string>
+    <string name="cache_downloaded">Zwischengespeicherte Apps aufbewahren</string>
     <string name="updates">Aktualisierungen</string>
     <string name="other">Sonstiges</string>
     <string name="update_interval">Automatisches Aktualisierungsintervall</string>
     <string name="notify">Aktualisierungsbenachrichtigung</string>
-    <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
+    <string name="notify_on">Benachrichtigen, wenn Aktualisierungen bereitstehen</string>
     <string name="system_installer">Rechteerweiterung</string>
     <string name="system_installer_on">Rechteerweiterung verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
     <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
@@ -42,7 +42,7 @@
     <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
     <string name="menu_manage">Paketquellen</string>
     <string name="menu_search">Suchen</string>
-    <string name="menu_add_repo">Paketquelle hinzufügen</string>
+    <string name="menu_add_repo">Neue Paketquelle</string>
     <string name="menu_launch">Öffnen</string>
     <string name="menu_share">Empfehlen</string>
     <string name="menu_install">Installieren</string>
@@ -56,7 +56,7 @@
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
-    <string name="antinonfreeadlist">Diese App bewirbt proprietäre Erweiterungen</string>
+    <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht-quelloffene Erweiterungen</string>
     <string name="antinonfreenetlist">Diese App bewirbt proprietäre Netzwerkdienste</string>
     <string name="antinonfreedeplist">Diese App hängt von proprietären Apps ab</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
@@ -70,11 +70,11 @@
     <string name="local_repo">Lokale Paketquelle</string>
     <string name="local_repo_running">F-Droid ist zum Tausch bereit</string>
     <string name="touch_to_configure_local_repo">Berühren, um die Details anzusehen und anderen einen App-Tausch mit Ihnen zu ermöglichen.</string>
-    <string name="deleting_repo">Aktuelle Paketquelle wird gelöscht …</string>
-    <string name="adding_apks_format">%s wird zur Paketquelle hinzugefügt …</string>
-    <string name="writing_index_jar">Signierte Indexdatei (index.jar) wird geschrieben …</string>
-    <string name="linking_apks">APKs werden mit der Paketquelle verknüpft …</string>
-    <string name="copying_icons">App-Symbole werden in die Paketquelle kopiert …</string>
+    <string name="deleting_repo">Aktuelle Paketquelle löschen …</string>
+    <string name="adding_apks_format">%s zur Paketquelle hinzufügen …</string>
+    <string name="writing_index_jar">Signierte Indexdatei (index.jar) schreiben …</string>
+    <string name="linking_apks">APKs mit der Paketquelle verknüpfen …</string>
+    <string name="copying_icons">App-Symbole in die Paketquelle kopieren …</string>
     <string name="icon">Symbol</string>
     <string name="next">Weiter</string>
     <string name="skip">Überspringen</string>
@@ -85,8 +85,11 @@
     <string name="proxy_host_summary">Ihr Proxy-Rechnername (z. B. 127.0.0.1)</string>
     <string name="proxy_port">Proxy-Port</string>
     <string name="proxy_port_summary">Proxy-Port konfigurieren (z. B. 8818)</string>
-    <string name="status_download">%2$s / %3$s (%4$d%%) von\n%1$s\nwird heruntergeladen</string>
-    <string name="status_connecting_to_repo">Mit %1$s\nwird verbunden</string>
+    <string name="status_download">%2$s / %3$s (%4$d%%) von
+\n%1$s
+\nherunterladen</string>
+    <string name="status_connecting_to_repo">Mit %1$s
+\nverbinden</string>
     <string name="repos_unchanged">Alle Paketquellen sind aktuell</string>
     <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugten keine Fehler.</string>
     <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
@@ -107,7 +110,9 @@
     <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden. 
 \n 
 \nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
-    <string name="repo_disabled_notification">»%1$s« deaktiviert. Sie müssen diese Paketquelle wieder aktivieren, um Apps daraus installieren zu können.</string>
+    <string name="repo_disabled_notification">»%1$s« deaktiviert.
+\n
+\nSie müssen diese Paketquelle wieder aktivieren, um Apps daraus installieren zu können.</string>
     <string name="repo_added">Paketquelle %1$s gespeichert.</string>
     <string name="repo_searching_address">Nach Paketquelle wird gesucht unter
 \n%1$s</string>
@@ -141,7 +146,7 @@
     <string name="back">Zurück</string>
     <string name="bad_fingerprint">Falscher Fingerabdruck</string>
     <string name="invalid_url">Das ist keine gültige Adresse.</string>
-    <string name="update_notification_title">Paketquellen werden aktualisiert</string>
+    <string name="update_notification_title">Paketquellenaktualisierung</string>
     <string name="pref_language">Sprache</string>
     <string name="pref_language_default">Systemstandard</string>
     <string name="wifi">WLAN</string>
@@ -167,7 +172,9 @@
     <string name="interval_1w">Wöchentlich nach Aktualisierungen suchen</string>
     <string name="more">Mehr</string>
     <string name="less">Weniger</string>
-    <string name="empty_installed_app_list">Keine Apps installiert. Es sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
+    <string name="empty_installed_app_list">Keine Apps installiert.
+\n
+\nEs sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
     <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -175,12 +182,14 @@
     <string name="interval_2w">Alle zwei Wochen nach Aktualisierungen suchen</string>
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="menu_settings">Optionen</string>
+    <string name="menu_settings">Einstellungen</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_download_unknown_size">%2$s von\n%1$s\nwird heruntergeladen</string>
-    <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) von %1$s wird verarbeitet</string>
+    <string name="status_download_unknown_size">%2$s von
+\n%1$s
+\nherunterladen</string>
+    <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) von %1$s verarbeiten</string>
     <string name="permissions">Berechtigungen</string>
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
@@ -197,10 +206,10 @@
     <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="swap_visible_bluetooth">Über Bluetooth sichtbar</string>
-    <string name="swap_setting_up_bluetooth">Bluetooth wird eingestellt …</string>
+    <string name="swap_setting_up_bluetooth">Bluetooth einrichten …</string>
     <string name="swap_not_visible_bluetooth">Über Bluetooth nicht sichtbar</string>
     <string name="swap_visible_wifi">Über WLAN sichtbar</string>
-    <string name="swap_setting_up_wifi">WLAN wird eingerichtet …</string>
+    <string name="swap_setting_up_wifi">WLAN einrichten …</string>
     <string name="swap_not_visible_wifi">Über WLAN nicht sichtbar</string>
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser
         eingeben.
@@ -214,8 +223,8 @@
     <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn
         Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
     </string>
-    <string name="swap_nearby">Direkttausch</string>
-    <string name="loading">Wird geladen…</string>
+    <string name="swap_nearby">Direktübertragung</string>
+    <string name="loading">Laden …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
     <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_update">Möchtest du ein Update für diese vorhandene App installieren? Deine vorhandenen Daten bleiben erhalten. Die aktualisierte App erhält Zugriff auf:</string>
@@ -228,7 +237,7 @@
     <string name="uninstall_confirm">Möchtest du diese App deinstallieren?</string>
     <string name="download_error">Herunterladen fehlgeschlagen!</string>
     <string name="perms_description_app">Bereitgestellt von %1$s.</string>
-    <string name="downloading">Wird heruntergeladen …</string>
+    <string name="downloading">Herunterladen …</string>
     <string name="theme_night">Nacht</string>
     <string name="login_title">Legitimierung erforderlich</string>
     <string name="login_name">Benutzername</string>
@@ -236,7 +245,7 @@
     <string name="repo_edit_credentials">Passwort ändern</string>
     <string name="repo_error_empty_username">Leerer Benutzername, Anmeldeinformationen nicht geändert</string>
     <string name="about_license">Lizenz</string>
-    <string name="status_inserting_apps">App-Details werden gespeichert</string>
+    <string name="status_inserting_apps">App-Details speichern</string>
     <string name="empty_search_available_app_list">Keine passenden Apps verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
@@ -246,10 +255,10 @@
     <string name="repo_provider">Paketquelle: %s</string>
     <string name="useTor">Tor verwenden</string>
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
-    <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
+    <string name="swap_stopping_wifi">WLAN anhalten …</string>
     <string name="update_auto_download">Automatisch abrufen</string>
-    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, um sie zu installieren.</string>
-    <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
+    <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, um sie zu installieren</string>
+    <string name="download_pending">Start der Übertragung abwarten …</string>
     <string name="keep_hour">1 Stunde</string>
     <string name="keep_day">1 Tag</string>
     <string name="keep_week">1 Woche</string>
@@ -258,8 +267,8 @@
     <string name="keep_forever">Immer</string>
     <string name="install_error_notify_title">Fehler beim Installieren von %s</string>
     <string name="uninstall_error_notify_title">Fehler beim Deinstallieren von %s</string>
-    <string name="installing">Wird installiert…</string>
-    <string name="uninstalling">Wird deinstalliert…</string>
+    <string name="installing">Installation …</string>
+    <string name="uninstalling">Deinstallation …</string>
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
@@ -269,17 +278,17 @@
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
     <string name="app_details_donate_prompt">%2$s einen Kaffee für die Erstellung von %1$s spendieren!</string>
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
-    <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
+    <string name="notification_title_single_update_available">Aktualisierung abrufbar</string>
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_single_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_single_install_error">Installation fehlgeschlagen</string>
-    <string name="notification_content_single_downloading">»%1$s« wird heruntergeladen …</string>
-    <string name="notification_content_single_downloading_update">Aktualisierung für »%1$s« wird heruntergeladen …</string>
-    <string name="notification_content_single_installing">»%1$s« wird installiert …</string>
+    <string name="notification_content_single_downloading">»%1$s« herunterladen …</string>
+    <string name="notification_content_single_downloading_update">»%1$s«-Aktualisierung herunterladen …</string>
+    <string name="notification_content_single_installing">»%1$s« installieren …</string>
     <string name="notification_content_single_installed">Erfolgreich installiert</string>
-    <string name="notification_title_summary_update_available">Aktualisierung verfügbar</string>
-    <string name="notification_title_summary_downloading">wird heruntergeladen …</string>
-    <string name="notification_title_summary_downloading_update">Aktualisierung wird heruntergeladen …</string>
+    <string name="notification_title_summary_update_available">Aktualisierung abrufbar</string>
+    <string name="notification_title_summary_downloading">Herunterladen …</string>
+    <string name="notification_title_summary_downloading_update">Aktualisierung herunterladen …</string>
     <string name="notification_title_summary_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_summary_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_summary_installing">Installation läuft</string>
@@ -309,7 +318,7 @@
         <item quantity="other">Alle %1$s Apps aus der Kategorie %2$s ansehen</item>
     </plurals>
     <string name="app__install_downloaded_update">Aktualisieren</string>
-    <string name="app_list__name__downloading_in_progress">%1$s wird heruntergeladen</string>
+    <string name="app_list__name__downloading_in_progress">%1$s herunterladen</string>
     <string name="updates__tts__download_app">Herunterladen</string>
     <string name="update_all">Aktualisieren</string>
     <string name="updates__hide_updateable_apps">Apps ausblenden</string>
@@ -331,7 +340,7 @@
         <item quantity="other">Alle %d ansehen</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps mit Menschen in Ihrer Nähe tauschen!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Menschen in Ihrer Umgebung herunterladen!</string>
     <string name="nearby_splash__find_people_button">Tauschpartner finden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
@@ -340,7 +349,7 @@
     <string name="categories__empty_state__no_categories">Keine Kategorien zum Anzeigen</string>
     <string name="menu_video">Film</string>
     <string name="app__tts__cancel_download">Herunterladen abbrechen</string>
-    <string name="app__tts__downloading_progress">wird heruntergeladen, %1$d%% vervollständigt</string>
+    <string name="app__tts__downloading_progress">Herunterladen, %1$d%% abgeschlossen</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d weitere …</item>
@@ -373,7 +382,7 @@
     <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation</string>
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
-    <string name="status_inserting_x_apps">App-Details werden von %3$s gespeichert (%1$d/%2$d)</string>
+    <string name="status_inserting_x_apps">App-Details (%1$d/%2$d) von %3$s speichern</string>
     <string name="app_details__incompatible_mismatched_signature">Abweichende Signatur zur installierten Version</string>
     <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
@@ -480,8 +489,8 @@
     <string name="swap_visible_hotspot">Sichtbar über Hotspot</string>
     <string name="swap_blank_wifi_ssid">(leer)</string>
     <string name="swap_hidden_wifi_ssid">(versteckt)</string>
-    <string name="swap_setting_up_hotspot">Hotspot wird eingerichtet…</string>
-    <string name="swap_stopping_hotspot">Hotspot wird beendet…</string>
+    <string name="swap_setting_up_hotspot">Hotspot einrichten …</string>
+    <string name="swap_stopping_hotspot">Hotspot beenden …</string>
     <string name="swap_starting">Starten …</string>
     <string name="swap_stopping">Anhalten …</string>
     <string name="disabled">Deaktiviert</string>

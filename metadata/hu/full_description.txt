@@ -1,4 +1,4 @@
-Az F-Droid Android telepíthető szabad szoftveres alkalmazások katalógusa.
+Az F-Droid telepíthető szabad szoftveres alkalmazások katalógusa.
 Az F-Droid kliensalkalmazás könnyűvé teszi az alkalmazások tallózását,
 telepítését és azok frissen tartását az eszközén.
 
@@ -16,4 +16,4 @@ F-Droidot használja a szabad alkalmazáskezelőjeként:
 * Szűrje ki az eszközével nem kompatibilis alkalmazásokat
 * Keressen alkalmazásokat kategória és leírás alapján
 * Érje el az adományozási URL-eket, forráskódot, stb.
-* Maradjon biztonságban a tárolóindex és APK aláírásokkal
+* Maradjon biztonságban a tárolóindex- és APK-aláírásokkal

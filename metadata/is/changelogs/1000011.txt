@@ -10,7 +10,7 @@ F-Droid er komið í útgáfu 1.0!
 
 * skjámyndir af viðmóti og eiginleikum
 
-* studd uppsetning á  margmiðlunarskrám, OTA, ZIP, o.s.frv.
+* studd uppsetning á margmiðlunarskrám, OTA, ZIP, o.s.frv.
 
 * bættar varnir gegn eftirliti (HTTP ETag, TLS, o.s.frv.)
 

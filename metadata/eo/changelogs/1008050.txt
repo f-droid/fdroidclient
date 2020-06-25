@@ -3,7 +3,7 @@
 * riparita prefero pri progres‑strio (danke al @dkanada)
 * sekurkopio: ne konservi interŝanĝitan deponejon
 * klavaro malfermiĝas je forviŝi serĉon
-* samtempigis tradukojn kun Androidaj tekstoĉenoj
+* samtempigis tradukojn kun androidaj tekstoĉenoj
 * devigi HTTPS ĉe popularaj nomregnoj de deponejoj (GitLab, GitHub, Amazon)
 * ondet‑efekto ĉe ligiloj al apaj detaloj
 * montri implicitan emblemon por senemblemaj apoj

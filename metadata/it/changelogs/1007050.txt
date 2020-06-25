@@ -1,0 +1,7 @@
+* revisione dell'interfaccia utente , per prepararsi a rifarla tutta
+* mostra "annulla" dopo cancellazione elementi da Aggiornamenti (grazie @Hocuri!)
+* risolve problemi con le "Ultime" causati da errore dei fusi orari #1757
+* Ignora i crash non importanti nei servizi in background
+* revisionato swap nelle vicinanze utilizzando l'hotspot AP integrato
+* Nuove risposte di panico: l'app si disinstalla e ripristina i repo di default
+* Le chiavi USB OTG possono diventare repository e mirror vicini

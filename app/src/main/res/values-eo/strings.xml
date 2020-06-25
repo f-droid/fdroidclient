@@ -27,7 +27,7 @@
     <string name="menu_manage">Deponejoj</string>
     <string name="menu_search">Serĉi</string>
     <string name="menu_add_repo">Nova deponejo</string>
-    <string name="menu_launch">Startigi</string>
+    <string name="menu_launch">Ekigi</string>
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_install">Instali</string>
     <string name="menu_uninstall">Malinstali</string>
@@ -61,7 +61,7 @@
     <string name="skip">Preterpasi</string>
     <string name="no_permissions">Sen permesoj</string>
     <string name="theme">Etoso</string>
-    <string name="repo_num_apps">Nombro da aplikaĵoj</string>
+    <string name="repo_num_apps">Nombro de aplikaĵoj</string>
     <string name="repo_description">Priskribo</string>
     <string name="repo_last_update">Lasta ĝisdatigo</string>
     <string name="repo_name">Nomo</string>
@@ -89,7 +89,7 @@
     <string name="installIncompatible">Aplikaĵo nekongruas kun via aparato, ĉu instali ĝin malgraŭ tio?</string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
-    <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalo forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)</string>
+    <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Malinstalu la malnovan version kaj reprovu. (Estu konscia, ke malinstalo forigos ĉiujn internajn datumojn konservitajn de la aplikaĵo.)</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
@@ -183,7 +183,7 @@
         En via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F-Droid. Eble vi devas ĝisdatigi viajn
         deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.
     </string>
-    <string name="empty_search_available_app_list">Neniuj kongruaj aplikaĵoj disponeblaj.</string>
+    <string name="empty_search_available_app_list">Neniu kongrua aplikaĵo disponebla.</string>
     <string name="empty_can_update_app_list">Bonege!\nĈiuj viaj aplikaĵoj estas ĝisdataj.</string>
     <string name="install_error_unknown">Instalo malsukcesis pro nekonata eraro</string>
     <string name="uninstall_error_unknown">Malinstalo malsukcesis pro nekonata eraro</string>
@@ -348,10 +348,10 @@
     </string>
     <string name="nearby_splash__find_people_button">Trovi proksimajn ulojn</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.</string>
-    <string name="latest__empty_state__no_recent_apps">Neniuj novaj aplikaĵoj</string>
+    <string name="latest__empty_state__no_recent_apps">Neniu nova aplikaĵo</string>
     <string name="latest__empty_state__never_updated">Kiam la listo de aplikaĵoj estos ĝisdatigita, la plej novaj aplikaĵoj aperos tie ĉi</string>
     <string name="latest__empty_state__no_enabled_repos">Kiam vi aktivigos deponejon kaj ĝi estos ĝisdatigita, la plej novaj aplikaĵoj aperos tie ĉi</string>
-    <string name="categories__empty_state__no_categories">Neniuj kategorioj por montri</string>
+    <string name="categories__empty_state__no_categories">Neniu kategorio por montri</string>
     <string name="menu_video">Filmeto</string>
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
@@ -390,8 +390,8 @@
     <string name="app_permission_storage">F-Droid bezonas aliron al memorejo por instali ĝin tien. Permesu tion ĉi je la sekva ekrano por pluigi kun instalado.</string>
     <string name="app_details__incompatible_mismatched_signature">Alia subskribo ol instalita versio</string>
     <string name="app_details__no_versions__show_incompat_versions">Por montri nekongruajn versiojn tie ĉe malgraŭ tio, enŝaltu la agordon “%1$s”.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Neniuj versioj kun kongruaj subskriboj</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Neniuj versioj kongruaj kun la aparato</string>
+    <string name="app_details__no_versions__no_compatible_signatures">Neniu versio kun kongrua subskribo</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Neniu versio kongrua kun la aparato</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
     <string name="app_list__dismiss_app_update">Ĝisdatigo ignorata</string>
     <string name="app_list__dismiss_vulnerable_app">Sekurec-fliko ignorata</string>
@@ -409,8 +409,8 @@
     <string name="panic_app_dialog_title">Konfirmi panikan aplikaĵon</string>
     <string name="panic_app_dialog_message">Ĉu vi certas, ke vi volas permesi al %1$s por agordi detruajn agojn de panika butono?</string>
     <string name="allow">Permesi</string>
-    <string name="panic_settings">Agordoj de panika butono</string>
-    <string name="panic_settings_summary">Agoj por esti prenita en kazo de krizo</string>
+    <string name="panic_settings">Agordoj pri panika butono</string>
+    <string name="panic_settings_summary">Kion fari okaze de danĝero</string>
     <string name="panic_exit_title">Fermi aplikaĵon</string>
     <string name="panic_exit_summary">La aplikaĵo estos fermita</string>
     <string name="panic_destructive_actions">Detruaj agoj</string>
@@ -461,7 +461,7 @@
     <string name="share_repository">Kunhavigi deponejon</string>
     <string name="allow_push_requests">Permesi al deponejoj (mal)instali aplikaĵojn</string>
     <string name="allow_push_requests_summary">Metadatumoj de deponejoj povas enhavi petojn pri instali aŭ malinstali aplikaĵojn</string>
-    <string name="antinosourcesince">La fontkodo ne estas plu disponebla, neniuj eblaj ĝisdatigoj.</string>
+    <string name="antinosourcesince">La fontkodo ne estas plu disponebla, neniu ebla ĝisdatigo.</string>
     <string name="send_install_history">Sendi historion de instaladoj</string>
     <string name="send_history_csv">Historio de instaladoj de %s kiel CSV-dosiero</string>
     <string name="updates_disabled_by_settings">Ĉiuj ĝisdatigoj malaktivigitaj per agordoj de konektoj</string>
@@ -480,7 +480,7 @@
     <string name="not_visible_nearby">Proksima interŝanĝo estas malŝaltita</string>
     <string name="not_visible_nearby_description">Antaŭ interŝanĝi kun proksimaj aparatoj, igi vian aparaton videbla.</string>
     <string name="swap_toast_using_path">Uzas %1$s</string>
-    <string name="swap_toast_not_removable_storage">Tio ĉi ne estas demetebla konservejo, bonvolu reprovi!</string>
+    <string name="swap_toast_not_removable_storage">Tio ĉi ne estas demetebla konservejo, reprovu!</string>
     <string name="swap_toast_find_removeable_storage">Elektu demeteblan SD-karton aŭ memor-bastoneton</string>
     <string name="scan_removable_storage_toast">Skanado de %s…</string>
     <string name="main_menu__updates">Ĝisdatigoj</string>

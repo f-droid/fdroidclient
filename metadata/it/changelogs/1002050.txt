@@ -1,0 +1,15 @@
+* Riduce la cache quando lo spazio è poco
+
+* Migliori prestazioni con poca memoria
+
+* Tutti i download rispettano la preferenza "Solo su Wi-Fi
+
+* Riduce l'uso della memoria quando è in esaurimento
+
+* Aggiungi mirror a qualsiasi repo cliccando i link, scansione codici QR ecc.
+
+* Correzioni e miglioramenti di Swap/Nearby
+
+*Correzione di notifiche di aggiornamento ricorrenti (#1271)
+
+* Fai in modo che F-Droid riconosca gli URL nightly di F-Droid da GitLab

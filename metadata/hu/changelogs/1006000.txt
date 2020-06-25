@@ -1,0 +1,12 @@
+* Implicit READ_EXTERNAL_STORAGE engedélyek kezelése, amely figyelmeztetést
+  dob fel a Privilegizált kiterjesztéssel történő telepítéskor (#1702)
+
+* Indexadatok tisztítása, csökkentve a kiszolgáló felőli veszélyek csökkentéséhez
+
+* Az „Olvasási időtúllépés” egy tükör használatát eredményezi, ha az olvasás lassú
+
+* Hiányzó ikonok javítása, ha nincs Wi-Fi (#1592)
+
+* Különböző címek használata a fordítás megkönnyítéséhez
+
+* Felületi javítások @ConnyDuck közreműködésével (#1636, #1618)

@@ -1,6 +1,11 @@
 * Refonte majeur de l'interface d'échange, en préparation de la réécriture
+
 * Possibilité d'annuler la suppression par glissé d'items de l'onglet "Mises à jour" (merci @Hocuri!)
-* Correction de la gestion d'ETag lors de la connexion à des miroirs NGINX  #1737
+
+* Correction de la gestion d'ETag lors de la connexion à des miroirs NGINX #1737
+
 * Correction de problèmes d'affichages dans l'onglet "Nouveautés" à cause des fuseaux horaires #1757
+
 * Ignorer les crashs mineurs des services d'arrière plan
+
 * Ne pas utiliser l'Extension Privilégiée si désactivée dans les paramètres

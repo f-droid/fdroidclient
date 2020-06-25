@@ -4,7 +4,7 @@
 
 * ETag-Handling beim Verbinden mit NGINX-Spiegeln korrigiert #1737
 
-* Durch falsche Zeitzonen verursachte Probleme der Anzeige „Neueste“ behoben  #1757 
+* Durch falsche Zeitzonen verursachte Probleme der Anzeige „Neueste“ behoben #1757 
 
 * Alle unwichtigen Abstürze in Hintergrunddiensten ignorieren 
 

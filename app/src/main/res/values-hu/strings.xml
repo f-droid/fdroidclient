@@ -44,8 +44,8 @@
     <string name="details_notinstalled">Nincs telepítve</string>
     <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
     <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
-    <string name="antinonfreeadlist">Az alkalmazás nem szabad szoftver kiegészítőket támogat</string>
-    <string name="antinonfreenetlist">Az alkalmazás nem szabad szoftver alapú hálózati szolgáltatásokat támogat</string>
+    <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
+    <string name="antinonfreenetlist">Az alkalmazás nem szabad hálózati szolgáltatásokat támogat</string>
     <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
     <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
     <string name="display">Megjelenés</string>
@@ -149,12 +149,12 @@
     <string name="category_Time">Idő</string>
     <string name="category_Writing">Írás</string>
     <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
-    <string name="empty_installed_app_list">Nincs telepített alkalmazások.
+    <string name="empty_installed_app_list">Nincsenek telepített alkalmazások.
 \n
 \nVannak alkalmazások a készülékén, de azok nem érhetőek el az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az alkalmazásai.</string>
     <string name="empty_can_update_app_list">Gratulálunk!\nMinden alkalmazása naprakész.</string>
-    <string name="install_error_unknown">A telepítés ismeretlen hiba miatt meghiúsult</string>
-    <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt meghiúsult</string>
+    <string name="install_error_unknown">A telepítés ismeretlen hiba miatt sikertelen</string>
+    <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt sikertelen</string>
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
     <string name="install_confirm_update">Telepít egy frissítést ehhez a meglévő alkalmazáshoz? A meglévő adatai nem vesznek el. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
@@ -198,7 +198,7 @@
     <string name="useTorSummary">Letöltési forgalom Tor használatára kényszerítése az adatvédelem növeléséért. Orbot szükséges hozzá</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
-    <string name="antinonfreeassetslist">Az alkalmazás nem szabad szoftveres eszközöket tartalmaz</string>
+    <string name="antinonfreeassetslist">Az alkalmazás nem szabad eszközöket tartalmaz</string>
     <string name="requires_features">Szükséges: %1$s</string>
     <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az
         eszközeiket.
@@ -288,10 +288,10 @@
     <string name="latest__empty_state__no_enabled_repos">Amint engedélyez egy tárolót, és frissíti azt, a legújabb alkalmazások itt fognak megjelenni</string>
     <string name="categories__empty_state__no_categories">Nincsenek megjelenítendő kategóriák</string>
     <string name="details_new_in_version">Újdonság a(z) %s verzióban</string>
-    <string name="antifeatureswarning">Ennek az alkalmazásnak vannak előnytelen funkciói.</string>
+    <string name="antifeatureswarning">Ez az alkalmazás olyan funkciókkal rendelkezik, amiket nem biztos hogy kedvelni fog.</string>
     <string name="antifeatures">Előnytelen funkciók</string>
     <string name="touch_to_configure_local_repo">Érintse meg a részletek megtekintéséhez, és a másokkal történő alkalmazáscsere lehetővé tételéhez.</string>
-    <string name="linking_apks">APK fájlok tárolóhoz csatolása…</string>
+    <string name="linking_apks">APK-fájlok tárolóhoz csatolása…</string>
     <string name="download_404">A kért fájl nem található.</string>
     <string name="unsigned_description">Ez azt jelenti, hogy az alkalmazások listája nem ellenőrizhető. Óvatosnak kell lennie a hitelesítetlen indexekből letöltött alkalmazásokkal.</string>
     <string name="repo_added">A(z) %1$s csomagtároló mentve.</string>
@@ -307,11 +307,11 @@
     <string name="repositories_summary">További alkalmazásforrások hozzáadása</string>
     <string name="writing_index_jar">Aláírt indexfájl (index.jar) írása…</string>
     <string name="all_other_repos_fine">A többi tároló nem adott hibát.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet? Szerezzen appokat a közelben lévő emberektől!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet\? Szerezzen alkalmazásokat a közelben lévő emberektől!</string>
     <string name="nearby_splash__find_people_button">Közelben lévő emberek keresése</string>
     <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek szükséges az %1$s a funkció használatához.</string>
-    <string name="install_error_notify_title">Hiba a(z) %s telepítése közben</string>
-    <string name="uninstall_error_notify_title">Hiba a(z) %s eltávolítása közben</string>
+    <string name="install_error_notify_title">Hiba a(z) %s telepítésekor</string>
+    <string name="uninstall_error_notify_title">Hiba a(z) %s eltávolításakor</string>
     <string name="app__tts__downloading_progress">Letöltés, %1$d%% kész</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d további…</item>
@@ -456,18 +456,18 @@
     <string name="updates_disabled_by_settings">Összes frissítés letiltva az Adat/WiFi-beállításokban</string>
     <string name="menu_open">Megnyitás</string>
     <string name="menu_downgrade">Visszaállás</string>
-    <string name="scan_removable_storage_title">Cserélhető adattárolók szkennelése</string>
+    <string name="scan_removable_storage_title">Cserélhető adattárolók átvizsgálása</string>
     <string name="scan_removable_storage_toast">Keresés: %s…</string>
-    <string name="scan_removable_storage_summary">Keressen csomag tárolókat olyan cserélhető adattárolókon is, mint az SD kártyák és az USB pendrive-ok</string>
+    <string name="scan_removable_storage_summary">Keressen csomagtárolókat olyan cserélhető adattárolókon is, mint az SD kártyák és az USB pendrive-ok</string>
     <string name="app_repository">Tároló: %1$s</string>
     <string name="main_menu__updates">Frissítések</string>
-    <string name="nearby_splash__read_external_storage">Tárolók és tükrök keresése az SD-kártyákon.</string>
+    <string name="nearby_splash__read_external_storage">Tárolók és tükrök keresése az SD-kártyán.</string>
     <string name="nearby_splash__request_permission">Próbálja meg</string>
     <string name="not_visible_nearby">„Közelben” nem engedélyezett</string>
-    <string name="not_visible_nearby_description">Mielőtt cserélnél a közeli eszközökkel, tedd az eszközödet láthatóvá.</string>
-    <string name="swap_toast_using_path">Ezt használ: %1$s</string>
-    <string name="swap_toast_not_removable_storage">Az a választás nem felel meg egyik cserélhető adattárolónak sem, próbáld meg újra!</string>
-    <string name="swap_toast_find_removeable_storage">Válasszon eltávolítható SD kártyát vagy USB-t</string>
+    <string name="not_visible_nearby_description">Mielőtt cserélne a közeli eszközökkel, tegy láthatóvá az eszközét.</string>
+    <string name="swap_toast_using_path">Ezt használja: %1$s</string>
+    <string name="swap_toast_not_removable_storage">Az a lehetőség nem felel meg egyik cserélhető adattárolónak sem, próbálja meg újra!</string>
+    <string name="swap_toast_find_removeable_storage">Válasszon eltávolítható SD-kártyát vagy USB-t</string>
     <string name="menu_translation">Fordítás</string>
     <string name="undo">Visszavonás</string>
     <string name="app_list__dismiss_installing_app">Telepítés megszakítva</string>

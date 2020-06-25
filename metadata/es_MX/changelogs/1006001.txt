@@ -1,0 +1,7 @@
+* Interruptores añadidos a RepoDetails para desactivar cualquiera o todos los espejos (#1696)
+
+* Elección de espejo aleatorio para cada paquete / APK descargar
+
+* Todas las descargas APK almacenadas en caché por repositorio, no por espejo
+
+* Manejar Apache y NGINX ETags al comprobar si el índice es actual (#1708)

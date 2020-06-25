@@ -1,6 +1,7 @@
-* Revisão geral da interface swap, preparando para reescrever
-* Mostrar "desfazer" depois de remover itens da aba Atualizações (obrigado @Hocuri!)
-* Corrigir problemas com o ecrã "Último" causado pelo mau tratamento dos fusos horários #1757
-* Ignorar todos os crashes sem importância em serviços de fundo
-* Adicionar novas respostas de pânico: desinstalar apps e redefinir reposições para predefinição
-* Unidades flash USB OTG podem ser usadas como repositórios e espelhos próximos
+* Remodelação geral da IU de swap, para preparar para reescrever
+* Mostrar "anular" depois de remover itens do separador «Atualizações» (obrigado @Hocuri!)
+* Corrigir problemas com a exibição de "Último" causado pelo mau tratamento das zonas horárias #1757
+* Ignorar todos os craches sem importância nos serviços em segundo
+* Remodelado swap nas proximidades usando o AP do PA
+* Adicionar novas respostas de pânico: desinstala app e redefinir reposições para predefinição
+* Unidades flash USB OTG
