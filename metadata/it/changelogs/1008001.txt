@@ -1,0 +1,4 @@
+* Gestione della configurazione dei permessi di Android 10 per bloccare l'avviso di Fonti sconosciute
+* La tastiera si apre quando la barra di ricerca è svuotata
+* Sincronizzazione delle traduzioni con le stringhe di Android
+* Forzamento dei domini di repo comuni a HTTPS (GitLab, GitHub, Amazon)

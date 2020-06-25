@@ -1,0 +1,13 @@
+* Revisione della lista "Versioni" in "Dettagli App" e miglioramenti dell'interfaccia, grazie a @wsdfhjxc
+
+* Fix keyboard/D-pad navigation grazie a @doeffinger
+
+* Mostra pulsante "Apri" quando il supporto è installato e visualizzabile
+
+* Aggiungi il pulsante "Condividi" a "App installate" per esportare elenco CSV
+
+* Aggiunge elenco di APK alla pagina indice HTML di swap
+
+* Riprova l'indice downloads da mirror
+
+* Aggiusta "Invia F-Droid via Bluetooth" sulle recenti versioni Android

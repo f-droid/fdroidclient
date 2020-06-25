@@ -1,0 +1,9 @@
+* nuova configurazione permessi Android 10 per fermare prompt di Unknown Sources #1833
+* Gestire nuove "autorizzazioni frazionate".
+* Preferenze di ricerca sulle recenti versioni Android (grazie @dkanada)
+* Imposta regole di backup per non salvare il repo swap
+* Cancellare la ricerca apre la tastiera
+* Traduzione sincronizzata con le stringhe di Android
+* Forza domini repo a HTTPS (GitLab, GitHub, Amazon)
+* Link ondulato per i dettagli app
+* Mostra icona predefinita per le app senza icona
