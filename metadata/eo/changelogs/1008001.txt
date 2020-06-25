@@ -1,4 +1,4 @@
 * pritrakti agordon pri permesoj ĉe Android 10 por eviti averton pri nekonataj fontoj
 * klavaro malfermiĝas kiam serĉo estas forviŝita
-* samtempigo de tradukoj kun Androidaj tekstoĉenoj
+* samtempigo de tradukoj kun androidaj tekstoĉenoj
 * devigi HTTPS ĉe popularaj nomregnoj de deponejoj (GitLab, GitHub, Amazon)
