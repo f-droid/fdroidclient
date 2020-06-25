@@ -7,14 +7,15 @@
     android:layout_margin="@dimen/details_activity_padding"
     app:cardBackgroundColor="?attr/appDetailsCardBackground"
     app:cardCornerRadius="3dp"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    android:animateLayoutChanges="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:orientation="vertical">
+        android:paddingBottom="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,22 +36,22 @@
                     android:id="@+id/icon"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginRight="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:scaleType="fitCenter"
-                    android:transitionName="@string/transition_app_item_icon"
-                    android:src="@drawable/ic_repo_app_default" />
+                    android:src="@drawable/ic_repo_app_default"
+                    android:transitionName="@string/transition_app_item_icon" />
 
                 <!-- Name, Author (optional), Updated date -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@id/icon"
                     android:layout_toRightOf="@id/icon"
@@ -102,32 +103,32 @@
                     android:id="@+id/progress_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/downloading"
+                    android:layout_alignParentLeft="true"
                     android:contentDescription="@string/downloading"
                     android:focusable="true"
+                    android:text="@string/downloading"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                 <TextView
                     android:id="@+id/progress_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/progress_cancel"
                     android:layout_toStartOf="@id/progress_cancel"
-                    tools:text="500%"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:layout_toLeftOf="@id/progress_cancel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    tools:text="500%" />
 
                 <ProgressBar
                     android:id="@+id/progress_bar"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
                     android:layout_below="@id/progress_label"
-                    android:layout_toLeftOf="@id/progress_cancel"
-                    android:layout_toStartOf="@id/progress_cancel" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toStartOf="@id/progress_cancel"
+                    android:layout_toLeftOf="@id/progress_cancel" />
             </RelativeLayout>
 
             <!-- Install, Uninstall, Update, Open buttons -->
@@ -136,10 +137,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon_and_name"
-                android:paddingBottom="4dp"
                 android:clipToPadding="false"
-                android:visibility="visible"
-                android:gravity="end">
+                android:gravity="end"
+                android:paddingBottom="4dp"
+                android:visibility="visible">
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/secondaryButtonView"
@@ -148,18 +149,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
-                    tools:text="Uninstall"/>
+                    tools:text="Uninstall" />
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/primaryButtonView"
                     style="@style/DetailsPrimaryButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
-                    tools:text="Open"/>
+                    tools:text="Open" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -184,16 +185,16 @@
             android:id="@+id/whats_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:background="?attr/detailPanel"
             android:paddingStart="8dp"
             android:paddingLeft="8dp"
+            android:paddingTop="16dp"
             android:paddingEnd="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:background="?attr/detailPanel"
             tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
+
 
         <TextView
             android:id="@+id/description"
@@ -201,58 +202,56 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textIsSelectable="true"
             tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
-        <TextView
-            android:id="@+id/anti_features_warning"
-            style="@style/DetailsAntiFeaturesWarningStyle"
+        <LinearLayout
+            android:id="@+id/anti_features_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/antifeatureswarning"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:drawableStart="?attr/antiFeaturesWarning"
-            android:drawableLeft="?attr/antiFeaturesWarning"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical" />
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/label_anti_features"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:scrollbars="none"
-            android:text="@string/antifeatures"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/anti_features_warning"
+                style="@style/DetailsAntiFeaturesWarningStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="?attr/antiFeaturesWarning"
+                android:drawableLeft="?attr/antiFeaturesWarning"
+                android:drawablePadding="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/antifeatureswarning"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/text_anti_features"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:scrollbars="none"
-            tools:text="This app tracks and reports your activity."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/label_anti_features"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:scrollbars="none"
+                android:text="@string/antifeatures"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold" />
+
+            <!-- listing of all anti-features -->
+            <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView
+                android:id="@+id/anti_features_full_listing"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/description_more"
@@ -262,5 +261,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
             android:text="@string/more" />
+
     </LinearLayout>
 </android.support.v7.widget.CardView>

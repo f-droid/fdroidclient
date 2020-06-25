@@ -25,6 +25,7 @@
         <item name="backButtonDrawable">@drawable/ic_back_white_24dp</item>
         <item name="clearButtonDrawable">@drawable/ic_close_white_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
     </style>
 
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
@@ -51,6 +52,7 @@
         <item name="backButtonDrawable">@drawable/ic_back_black_24dp</item>
         <item name="clearButtonDrawable">@drawable/ic_close_black_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="appDetailsAntiFeatureIconColor">#000000</item>
     </style>
 
     <style name="AppBaseThemeNight" parent="AppThemeDark">

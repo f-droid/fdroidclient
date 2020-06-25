@@ -52,6 +52,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.io.File;
@@ -378,9 +379,10 @@ public class AppDetailsRecyclerViewAdapter
         final TextView whatsNewView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
+        final View antiFeaturesSectionView;
         final TextView antiFeaturesLabelView;
-        final TextView antiFeaturesView;
         final View antiFeaturesWarningView;
+        final AntiFeaturesListingView antiFeaturesListingView;
         final View buttonLayout;
         final Button buttonPrimaryView;
         final Button buttonSecondaryView;
@@ -401,9 +403,10 @@ public class AppDetailsRecyclerViewAdapter
             whatsNewView = (TextView) view.findViewById(R.id.whats_new);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
+            antiFeaturesSectionView =  view.findViewById(R.id.anti_features_section);
             antiFeaturesLabelView = (TextView) view.findViewById(R.id.label_anti_features);
-            antiFeaturesView = (TextView) view.findViewById(R.id.text_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
+            antiFeaturesListingView = view.findViewById(R.id.anti_features_full_listing);
             buttonLayout = view.findViewById(R.id.button_layout);
             buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
@@ -544,23 +547,10 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
             });
-            if (app.antiFeatures != null && app.antiFeatures.length > 0) {
-                StringBuilder sb = new StringBuilder();
-                for (String af : app.antiFeatures) {
-                    String afdesc = descAntiFeature(af);
-                    sb.append("<p><a href=\"https://f-droid.org/wiki/page/Antifeature:")
-                            .append(af)
-                            .append("\">")
-                            .append(afdesc)
-                            .append("</a></p>");
-                }
-                antiFeaturesView.setText(trimTrailingNewlines(Html.fromHtml(sb.toString())));
-                antiFeaturesView.setMovementMethod(LinkMovementMethod.getInstance());
-            } else {
-                antiFeaturesView.setVisibility(View.GONE);
-            }
 
+            antiFeaturesListingView.setApp(app);
             updateAntiFeaturesWarning();
+
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
@@ -663,41 +653,16 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void updateAntiFeaturesWarning() {
-            if (app.antiFeatures == null || TextUtils.isEmpty(antiFeaturesView.getText())) {
-                antiFeaturesLabelView.setVisibility(View.GONE);
-                antiFeaturesView.setVisibility(View.GONE);
+            if (app.antiFeatures == null || app.antiFeatures.length == 0) {
+                antiFeaturesSectionView.setVisibility(View.GONE);
+            } else if (descriptionIsExpanded) {
                 antiFeaturesWarningView.setVisibility(View.GONE);
+                antiFeaturesLabelView.setVisibility(View.VISIBLE);
+                antiFeaturesListingView.setVisibility(View.VISIBLE);
             } else {
-                antiFeaturesLabelView.setVisibility(descriptionIsExpanded ? View.VISIBLE : View.GONE);
-                antiFeaturesView.setVisibility(descriptionIsExpanded ? View.VISIBLE : View.GONE);
-                antiFeaturesWarningView.setVisibility(descriptionIsExpanded ? View.GONE : View.VISIBLE);
-            }
-        }
-
-        private String descAntiFeature(String af) {
-            switch (af) {
-                case "Ads":
-                    return itemView.getContext().getString(R.string.antiadslist);
-                case "Tracking":
-                    return itemView.getContext().getString(R.string.antitracklist);
-                case "NonFreeNet":
-                    return itemView.getContext().getString(R.string.antinonfreenetlist);
-                case "NonFreeAdd":
-                    return itemView.getContext().getString(R.string.antinonfreeadlist);
-                case "NonFreeDep":
-                    return itemView.getContext().getString(R.string.antinonfreedeplist);
-                case "UpstreamNonFree":
-                    return itemView.getContext().getString(R.string.antiupstreamnonfreelist);
-                case "NonFreeAssets":
-                    return itemView.getContext().getString(R.string.antinonfreeassetslist);
-                case "DisabledAlgorithm":
-                    return itemView.getContext().getString(R.string.antidisabledalgorithmlist);
-                case "KnownVuln":
-                    return itemView.getContext().getString(R.string.antiknownvulnlist);
-                case "NoSourceSince":
-                    return itemView.getContext().getString(R.string.antinosourcesince);
-                default:
-                    return af;
+                antiFeaturesWarningView.setVisibility(View.VISIBLE);
+                antiFeaturesLabelView.setVisibility(View.GONE);
+                antiFeaturesListingView.setVisibility(View.GONE);
             }
         }
     }
