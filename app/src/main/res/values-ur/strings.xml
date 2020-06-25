@@ -63,4 +63,9 @@
     <string name="swap_connecting">رابطہ کیا جا رہا ہے</string>
     <string name="permissions">اجازتیں</string>
     <string name="wifi">Wi-Fi</string>
+    <string name="proxy_port_summary">آپکی   پراکسی   کا   پورٹ   نمبر  (جیسے 8118  )</string>
+    <string name="proxy_port">پراکسی   پورٹ</string>
+    <string name="proxy_host_summary">آپکی  پراکسی  ہوسٹ  کا  نام (جیسے   127.0.0.1)</string>
+    <string name="proxy_host">پراکسی    ہوسٹ</string>
+    <string name="enable_proxy_summary">ایچ ٹی ٹی پی   پر اکسی  کو  تمام  نیٹ  ورکس  کے  لئے  تشکیل  دیں</string>
 </resources>

@@ -6,7 +6,7 @@ Diese Version beinhaltet wichtige Änderungen:
 
 * Komplett übersetzbare Zusammenfassungen und Beschreibungen
 
-* „Was ist neu“  zur Anzeige aktueller Änderungen 
+* „Was ist neu“ zur Anzeige aktueller Änderungen 
 
 * Screenshots und Feature-Grafiken
 

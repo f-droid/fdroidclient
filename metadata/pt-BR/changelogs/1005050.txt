@@ -9,7 +9,7 @@
 * Melhoria na lógica de seleção de ícone do aplicativo
 
 * Adiciona repositórios via additional_repos.xml adicional de ROM,
-  OEM, fornecedor.
+ OEM, fornecedor.
 
 * Exibe o versionCode nas entradas da lista de versões expandidas no
-  modo avançado
+ modo avançado

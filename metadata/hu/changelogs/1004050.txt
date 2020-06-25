@@ -1,0 +1,13 @@
+* A „Verziók” lista és „Alkalmazásrészletek” átdolgozása, és számos felület javítása, köszönjük @wsdfhjxc
+
+* Billentyűzet/D-pad navigáció javítása több helyen, köszönjük @doeffinger
+
+* „Megnyitás” gomb, ha a média telepített és megnézhető
+
+* Megosztás gomb hozzáadása a „Telepített alkalmazásoknál” CSV-lista exportálásához
+
+* Kattintható APK-lista hozzáadása a csere HTML kezdőlapjára
+
+* Indexletöltések újrapróbálása
+
+* „F-Droid küldése Bluetoothon” funkció javítása újabb Android verziókon

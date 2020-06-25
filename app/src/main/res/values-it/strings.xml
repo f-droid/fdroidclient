@@ -261,8 +261,8 @@
     <string name="allPerms">Tutte</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
-    <string name="menu_email">Invia email all\'autore</string>
-    <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare una e-mail con i dettagli per aiutarci a risolvere il problema?</string>
+    <string name="menu_email">Invia un\'e-mail all\'autore</string>
+    <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare un\'e-mail con i dettagli per aiutarci a risolvere il problema\?</string>
     <string name="crash_dialog_title">F-Droid si è bloccato</string>
     <string name="antinonfreeassetslist">Questa app contiene risorse non libere</string>
     <string name="empty_search_available_app_list">Non è disponibile nessuna app corrispondente.</string>

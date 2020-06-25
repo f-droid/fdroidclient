@@ -127,7 +127,7 @@
     <string name="less">收起</string>
     <string name="back">返回</string>
     <string name="bad_fingerprint">指纹无效</string>
-    <string name="invalid_url">地址无效。</string>
+    <string name="invalid_url">URL无效。</string>
     <string name="menu_settings">设置</string>
     <string name="menu_changelog">更新日志</string>
     <string name="menu_bitcoin">比特币</string>

@@ -1,0 +1,21 @@
+v1.3.1
+* A Közeli/Csere megvalósításának átdolgozása
+
+* TLSv1.3 támogatás, ha az eszköz is támogatja
+
+v1.3
+* Megbízhatóbb gombok és állapotfrissítések
+
+* Beállítások átdolgozása, új adathasználati kapcsolók
+
+* Akkumulátorkímélő háttérműveletek Android 5.0+ esetén
+
+* Megosztási menüelem a tárolóknál
+
+* Összeomlás-jelentések letiltása
+
+* Telepítési előzmények megjelenítése, ha a naplózás engedélyezett
+
+* Az előnytelen tulajdonságok listája kattintható
+
+* Android 4.0 a minimálisan támogatott verzió

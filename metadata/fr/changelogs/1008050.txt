@@ -1,9 +1,9 @@
-* Permission de configuration d'Android 10 pour les sources inconnue #1833
-* Support du "split permissions"
-* Barre discrèt réparée sur les versions d'Androids récents (merci à @dkanada)
-* Règle de backup pour sauvegarder les dépots
+* Permission de configuration d'Android 10 pour les sources inconnues #1833
+* Support du « split permissions »
+* Barre discrète réparée sur les versions d'Android récentes (merci à @dkanada)
+* Règle pour sauvegarder les dépôts
 * Le clavier s'ouvre en fin de recherche
-* Syncronisation de traduction d'Android
-* Forcer l'HTTPS dans les dommaines (GitLab, GitHub, Amazon)
-* Effect d'ondulation standart dans les détails des applications
-* Affiche l'iconne par défaut dans les apps sans iconnes
+* Synchronisation de traduction Android
+* HTTPS forcé dans les domaines (GitLab, GitHub, Amazon)
+* Ondulation standard dans les détails des applications
+* Affichage l'icône par défaut pour les applications sans icône

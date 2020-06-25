@@ -4,7 +4,7 @@
     <string name="installIncompatible">Application incompatible avec votre appareil, l\'installer quand même ?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
-    <string name="enable_nfc_send">Activer l’envoi par CCP…</string>
+    <string name="enable_nfc_send">Activer l’envoi par CCP/NFC…</string>
     <string name="cache_downloaded">Conserver les applis en cache</string>
     <string name="updates">Téléchargements et Mises à jour</string>
     <string name="other">Autre</string>
@@ -58,12 +58,11 @@
     <string name="menu_source">Code source</string>
     <string name="menu_upgrade">Mettre à jour</string>
     <string name="details_notinstalled">Non installée</string>
-    <string name="antiadslist">Cette appli contient des publicités</string>
-    <string name="antitracklist">Cette appli suit et transmet votre activité</string>
-    <string name="antinonfreeadlist">Cette appli promeut des extensions qui ne sont pas libres/open source</string>
-    <string name="antinonfreenetlist">Cette appli promeut des services réseaux qui ne sont pas libres/open source
-    </string>
-    <string name="antinonfreedeplist">Cette appli dépend d\'autres applis qui ne sont pas libres/open source</string>
+    <string name="antiadslist">Cette application contient des publicités</string>
+    <string name="antitracklist">Cette application suit et transmet votre activité</string>
+    <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
+    <string name="antinonfreenetlist">Cette application propose d\'utiliser des services réseaux qui ne sont pas libres</string>
+    <string name="antinonfreedeplist">Cette application s\'appuie d\'autres applications qui ne sont pas libres</string>
     <string name="antiupstreamnonfreelist">Le code source en amont n’est pas entièrement libre</string>
     <string name="display">Affichage</string>
     <string name="expert">Mode expert</string>
@@ -93,7 +92,8 @@
     <string name="status_download">Téléchargement
 \n%2$s / %3$s (%4$d%%) depuis
 \n%1$s</string>
-    <string name="status_connecting_to_repo">Connexion à %1$s</string>
+    <string name="status_connecting_to_repo">Connexion à
+\n%1$s</string>
     <string name="repos_unchanged">Tous les dépôts sont à jour</string>
     <string name="all_other_repos_fine">Tous les autres dépôts n’ont pas généré d’erreurs.</string>
     <string name="global_error_updating_repos">Erreur pendant la mise à jour : %s</string>
@@ -156,13 +156,13 @@
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport et santé</string>
     <string name="empty_can_update_app_list">Félicitations !\nVos applications sont à jour.</string>
-    <string name="swap_nfc_description">Si votre ami utilise F-Droid et a activé la CCP, faites toucher vos appareils.</string>
+    <string name="swap_nfc_description">Si votre ami utilise F-Droid et a activé la CCP/NFC, faites toucher vos appareils.</string>
     <string name="swap_switch_to_wifi">Appuyez pour basculer vers un réseau Wi-Fi</string>
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
-    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
-    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
+    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
+    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous installer une mise à jour pour cette application ? Vos données ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="install_confirm_update_system_no_perms">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="newPerms">Nouveautés</string>
@@ -251,7 +251,7 @@
     <string name="crash_dialog_title">F-Droid s’est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
     <string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l’arrêt de l’appli. Souhaitez envoyer les détails par courriel afin d’aider à corriger la situation \?</string>
-    <string name="antinonfreeassetslist">Cette appli comprend des éléments qui ne sont pas libres</string>
+    <string name="antinonfreeassetslist">Cette application contient des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
     <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
@@ -281,7 +281,7 @@
     <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-leur un café !</string>
     <string name="repositories_summary">Ajouter des sources additionnelles d’applis</string>
-    <string name="notification_title_single_update_available">Une mise à jour est proposée</string>
+    <string name="notification_title_single_update_available">Une mise à jour est disponible</string>
     <string name="notification_title_single_ready_to_install">Prêt à installer</string>
     <string name="notification_title_single_ready_to_install_update">Mise à jour prête pour installation</string>
     <string name="notification_title_single_install_error">L’installation a échoué</string>
@@ -325,7 +325,7 @@
     <string name="preference_category__my_apps">Mes applis</string>
     <string name="preference_manage_installed_apps">Gérer les applications installées</string>
     <string name="details_new_in_version">Nouveautés de la version %s</string>
-    <string name="antifeatureswarning">Cette appli présente des fonctions qui pourraient vous déplaire.</string>
+    <string name="antifeatureswarning">Cette application contient des fonctionnalités qui pourraient vous déplaire.</string>
     <string name="antifeatures">Antifonctions</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Afficher (%d)</item>
@@ -413,7 +413,7 @@
     <string name="panic_settings">Paramètres du bouton d\'urgence</string>
     <string name="panic_settings_summary">Actions à exécuter en cas d\'urgence</string>
     <string name="panic_app_setting_title">Appli Bouton d’urgence</string>
-    <string name="panic_app_dialog_title">Confirmer l\'application d\'urgence ?</string>
+    <string name="panic_app_dialog_title">Confirmer l\'application pour le mode panique</string>
     <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions destructrices du bouton d\'urgence ?</string>
     <string name="panic_destructive_actions">Actions destructrices</string>
     <string name="panic_hide_warning_title">Mémoriser comment restaurer</string>
@@ -445,7 +445,7 @@
     <string name="over_network_always_summary">Toujours utiliser cette connexion si disponible</string>
     <string name="over_network_on_demand_summary">Utiliser cette connexion seulement lors du clic sur télécharger</string>
     <string name="over_network_never_summary">Ne jamais télécharger via cette connexion</string>
-    <string name="antidisabledalgorithmlist">La signature de sécurité de cette appli est faible</string>
+    <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
     <string name="antiknownvulnlist">Cette application contient une vulnérabilité de sécurité connue</string>
     <string name="hide_all_notifications">Masquer toutes les notifications</string>
     <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>

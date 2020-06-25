@@ -1,0 +1,7 @@
+* Supporto per i mirror ufficiali per qualsiasi repo, con auto-selezione in base alla disponibilità
+
+* Un sacco di dettagli dell'interfaccia utente, così come la stabilità e le correzioni di bug
+
+* Nuova privacy prefs: Prevenire gli screenshot; uscire in preda al panico
+
+* Nuove lingue: Coreano (ko) e Vietnamita (vi)

@@ -1,0 +1,7 @@
+* Kapcsolók a tároló részleteiben a tükrök letiltásához (#1696)
+
+* Véletlenszerű tükör választása minden csomag-/APK-letöltéshez
+
+* Az összes APK-letöltés tárolónkénti gyorsítótározása, a tükrönkénti helyett
+
+* Apache és NGINX ETagek kezelése az index frissességének ellenőrzésekor (#1708)

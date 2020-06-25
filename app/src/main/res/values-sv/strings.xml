@@ -296,7 +296,7 @@
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Installerades framgångsrikt</string>
+    <string name="notification_content_single_installed">Installerades</string>
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
@@ -456,7 +456,7 @@
     <string name="antinosourcesince">Källkoden är inte längre tillgänglig, inga uppdateringar möjliga.</string>
     <string name="allow_push_requests_summary">Förråd-metadata kan innehålla push-förfrågningar för att installera eller avinstallera appar</string>
     <string name="about_forum">Supportforum</string>
-    <string name="app_suggested">Föreslagna</string>
+    <string name="app_suggested">Föreslagen</string>
     <string name="app_size">Storlek: %1$s</string>
     <string name="menu_downgrade">Nedgradera</string>
     <string name="scan_removable_storage_title">Skanna flyttbar lagring</string>

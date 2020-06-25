@@ -2,10 +2,10 @@
 
 * „Visszavonás” megjelenítése az elemük kisöprése után a Frissítés lapon (köszönjük @Hocuri!)
 
-* Az ETag kezelés javítása NGINX tükrökhöz kapcsolódáskor #1737
+* Az ETag kezelés javítása NGINX-tükrökhöz kapcsolódáskor #1737
 
 * A „Legfrissebb” lap időzóna-kezelési problémáinak javítása #1757
 
-* Az összes nem fontos összeomlása figyelmen kívül hagyása a háttérszolgáltatásokban
+* Az összes nem fontos összeomlás figyelmen kívül hagyása a háttérszolgáltatásokban
 
-*  Nem használja a Privilegizált kiegészítőt, ha az ki van kapcsolva a „Beállításokban”
+* Nem használja a Privilegizált kiterjesztést, ha az ki van kapcsolva a „Beállításokban”

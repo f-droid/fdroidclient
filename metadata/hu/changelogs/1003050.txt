@@ -1,0 +1,17 @@
+* Megbízhatóbb gombok és állapotfrissítések
+
+* Beállítások átdolgozása, új adathasználati kapcsolók
+
+* Akkumulátorkímélő háttérműveletek Android 5.0+ esetén
+
+* Megosztási menüelem a tárolóknál
+
+* Összeomlás-jelentések letiltása
+
+* Telepítési előzmények megjelenítése, ha a naplózás engedélyezett
+
+* Az előnytelen tulajdonságok listája kattintható
+
+* Android 4.0 a minimálisan támogatott verzió
+
+* Fejlesztések az egyénileg márkázott F-Droid verzióknál

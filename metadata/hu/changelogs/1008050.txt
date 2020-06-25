@@ -1,0 +1,9 @@
+* Ismeretlen forrás figyelmeztetések javítása #1833
+* „Felosztott engedélyek” kezelése
+* Keresősáv-beállítás javítása a friss Android verziókon (köszönjük @dkanada)
+* A cseretároló biztonsági mentésének kikapcsolása
+* Keresés törlésekor megjelenik a billentyűzet
+* Fordítás szinkronizálása az Android szövegeivel
+* Gyakori tárolók HTTPS-re kényszerítése (GitLab, GitHub, Amazon)
+* Animáció az alkalmazásrészletező hivatkozásokon
+* Alapértelmezett ikon az ikon nélküli alkalmazásokhoz

@@ -51,7 +51,7 @@
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
-    <string name="menu_ignore_this">Ignorar esta atualização</string>
+    <string name="menu_ignore_this">Ignore Esta Atualização</string>
     <string name="menu_website">Página web</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_source">Código Fonte</string>
@@ -92,7 +92,7 @@
     <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
-    <string name="global_error_updating_repos">Erro durante a atualização: %s</string>
+    <string name="global_error_updating_repos">Houve um erro durante a atualização: %s</string>
     <string name="no_permissions">Sem permissões</string>
     <string name="no_handler_app">Você não tem nenhum aplicativo instalado que possa lidar com %s.</string>
     <string name="theme">Tema</string>
@@ -280,7 +280,7 @@
     <string name="keep_install_history">Manter o histórico de instalação</string>
     <string name="keep_install_history_summary">Armazenar um registro privado de todas as instalações e desinstalações</string>
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
-    <string name="update_auto_install_summary">Baixar e atualizar aplicativos em segundo plano, mostrando uma atualização</string>
+    <string name="update_auto_install_summary">Baixar e atualizar os aplicativos em segundo plano, exibindo apenas uma notificação</string>
     <string name="warning_no_internet">Não é possível atualizar, você está conectado à Internet?</string>
     <string name="versions">Versões</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café para os desenvolvedores do %1$s!</string>
@@ -288,7 +288,7 @@
     <string name="repositories_summary">Acrescentar fontes adicionais de aplicativos</string>
     <string name="notification_title_single_update_available">Atualização Disponível</string>
     <string name="notification_title_single_ready_to_install">Pronto para instalar</string>
-    <string name="notification_title_single_ready_to_install_update">Atualização pronta para instalar</string>
+    <string name="notification_title_single_ready_to_install_update">A atualização está pronta para ser instalada</string>
     <string name="notification_title_single_install_error">Falha na instalação</string>
     <string name="notification_content_single_downloading">Baixando \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Baixando atualização para \"%1$s\"…</string>
@@ -296,7 +296,7 @@
     <string name="notification_content_single_installed">Instalado com sucesso</string>
     <string name="notification_title_summary_update_available">Atualização disponível</string>
     <string name="notification_title_summary_downloading">Baixando…</string>
-    <string name="notification_title_summary_downloading_update">Baixando atualização…</string>
+    <string name="notification_title_summary_downloading_update">Baixando a atualização…</string>
     <string name="notification_title_summary_ready_to_install">Pronto para instalar</string>
     <string name="notification_title_summary_ready_to_install_update">Atualização pronta para instalar</string>
     <string name="notification_title_summary_installing">Instalando</string>

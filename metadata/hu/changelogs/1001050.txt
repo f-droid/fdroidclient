@@ -1,0 +1,7 @@
+* Hivatalos tükrök támogatása minden tárolónál, elérhetőségen alapuló automatikus kiválasztással
+
+* Számos felületeti csiszolás, illetve stabilitási és hibajavítások
+
+* Új adatvédelmi beállítási beállítások: képernyőképek megakadályozása; kilépés pánikkor
+
+* Új nyelvek: koreai (ko) és vietnámi (vi)

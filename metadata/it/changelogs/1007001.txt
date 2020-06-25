@@ -1,0 +1,5 @@
+* revisionato lo swap nelle vicinanze utilizzando l'hotspot AP dell'apparecchio
+
+* Aggiunge nuove risposte di panico: l'applicazione si disinstalla e ripristina i repo di default
+
+* Riparato proxy support al primo avvio

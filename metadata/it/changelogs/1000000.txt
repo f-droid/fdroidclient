@@ -1,0 +1,7 @@
+* Supporto per l'installazione di file multimediali, OTA, ZIP, ecc.
+
+* Supporto completo per gli APK firmati da più chiavi di firma
+
+* Nuova traduzione in Tibetano
+
+* Rimuovere le app e le categorie correlate dopo aver scollegato un repo

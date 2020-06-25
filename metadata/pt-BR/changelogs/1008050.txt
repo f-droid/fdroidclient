@@ -1,0 +1,7 @@
+* nova conf de permissão do Android 10 para parar solicitações de fontes desconhecidas #1833
+* lida com novas "permissões divididas": local preciso implica o local aproximado
+* corrige a preferência da barra de pesquisa em versões recentes do Android (obrigado @dkanada)
+* Define regras de backup para evitar salvar o repositório de troca
+* teclado abre quando a pesquisa é limpa
+* sincronização de tradução com strings do Android
+* força domínios de repo comuns a HTTPS (GitLab, GitHub, Amazon)

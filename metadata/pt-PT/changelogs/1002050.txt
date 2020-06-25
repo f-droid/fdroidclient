@@ -2,7 +2,7 @@
 
 * Melhor desempenho em dispositivos com pouca memória
 
-* Descarregamentos respeitam "Apenas por Wi-Fi"
+* Transferências respeitam "Apenas por Wi-Fi"
 
 * Reduz o uso de memória quando tem pouca
 

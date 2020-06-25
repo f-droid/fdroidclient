@@ -1,2 +1,3 @@
 * Correction d'un bug empêchant les traductions d'apparaître sur Android> = 7.0
-* Correction d'un crash de mise à niveau  de Base de Donnée de 1.0-alpha3 → 1.0-alpha4 #1181
+
+* Correction d'un crash de mise à niveau de Base de Donnée de 1.0-alpha3 → 1.0-alpha4 #1181

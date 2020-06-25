@@ -8,8 +8,6 @@
 
 * Zu jedem Repo über Links, QR-Codes, etc. eigene Spiegel hinzufügen
 
-* Verbesserte automatische Spiegelwahl
-
 * Viele Direkttausch-Korrekturen und -Neuerungen
 
 * Ursache für wiederkehrende Update-Hinweise beseitigt (#1271)

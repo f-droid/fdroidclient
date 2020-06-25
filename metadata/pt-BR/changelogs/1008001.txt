@@ -1,0 +1,4 @@
+* lida com as permissões do Android 10 para interromper as solicitações de fontes desconhecidas
+* o teclado abre quando a pesquisa for limpa
+* sincronização da tradução com strings Android
+* imponha os domínios comuns ao repositório com HTTPS (GitLab, GitHub, Amazon)
