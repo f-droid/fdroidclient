@@ -30,7 +30,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -156,7 +155,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.BITCOIN + " string,"
             + AppMetadataTable.Cols.LITECOIN + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
-            + AppMetadataTable.Cols.LIBERAPAY_ID + " string,"
+            + AppMetadataTable.Cols.LIBERAPAY + " string,"
+            + AppMetadataTable.Cols.OPEN_COLLECTIVE + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
@@ -227,7 +227,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 84;
+    protected static final int DB_VERSION = 85;
 
     private final Context context;
 
@@ -457,6 +457,20 @@ public class DBHelper extends SQLiteOpenHelper {
         addTranslation(db, oldVersion);
         switchRepoArchivePriorities(db, oldVersion);
         deleteOldIconUrls(db, oldVersion);
+        addOpenCollective(db, oldVersion);
+    }
+
+    private void addOpenCollective(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 85) {
+            return;
+        }
+
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.OPEN_COLLECTIVE)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.OPEN_COLLECTIVE + " field to "
+                    + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
+                    + AppMetadataTable.Cols.OPEN_COLLECTIVE + " string;");
+        }
     }
 
     private void deleteOldIconUrls(SQLiteDatabase db, int oldVersion) {
@@ -464,7 +478,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "Clearing iconUrl field to enable localized icons on next update");
-        db.execSQL("UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.ICON_URL  + "= NULL");
+        db.execSQL("UPDATE " + AppMetadataTable.NAME + " SET " + AppMetadataTable.Cols.ICON_URL + "= NULL");
     }
 
     private void switchRepoArchivePriorities(SQLiteDatabase db, int oldVersion) {
@@ -475,9 +489,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
                 + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
                 + ") - " + RepoTable.Cols.PRIORITY
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN  ( 'https://f-droid.org/repo', 'https://f-droid.org/archive')"
                 + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
                 + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
                 + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME
@@ -488,9 +502,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("UPDATE " + RepoTable.NAME + " SET " + RepoTable.Cols.PRIORITY
                 + "= ( SELECT SUM(" + RepoTable.Cols.PRIORITY + ")" + " FROM " + RepoTable.NAME
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
                 + ") - " + RepoTable.Cols.PRIORITY
-                + " WHERE " +  RepoTable.Cols.ADDRESS + " IN  ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
+                + " WHERE " + RepoTable.Cols.ADDRESS + " IN  ( 'https://guardianproject.info/fdroid/repo', 'https://guardianproject.info/fdroid/archive')"
                 + " AND 'TRUE' IN (SELECT CASE WHEN a." + RepoTable.Cols.PRIORITY + " = b."
                 + RepoTable.Cols.PRIORITY + "-1" + " THEN 'TRUE' ELSE 'FASLE' END"
                 + " FROM " + RepoTable.NAME + " AS a INNER JOIN " + RepoTable.NAME + " AS b ON a."
@@ -558,11 +572,11 @@ public class DBHelper extends SQLiteOpenHelper {
             return;
         }
 
-        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.LIBERAPAY_ID)) {
-            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.LIBERAPAY_ID + " field to "
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.LIBERAPAY)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.LIBERAPAY + " field to "
                     + AppMetadataTable.NAME + " table in db.");
             db.execSQL("alter table " + AppMetadataTable.NAME + " add column "
-                    + AppMetadataTable.Cols.LIBERAPAY_ID + " string;");
+                    + AppMetadataTable.Cols.LIBERAPAY + " string;");
         }
     }
 

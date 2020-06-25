@@ -52,7 +52,6 @@
     <string name="menu_issues">Праћење недостатака</string>
     <string name="menu_source">Изворни кôд</string>
     <string name="menu_upgrade">Надгради</string>
-    <string name="menu_donate">Приложите</string>
     <string name="details_notinstalled">Није уграђен</string>
     <string name="antiadslist">Овај програм садржи огласе</string>
     <string name="antitracklist">Овај програм прати и пријављује Ваша дејства</string>

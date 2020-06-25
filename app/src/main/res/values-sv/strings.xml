@@ -53,7 +53,6 @@
     <string name="menu_issues">Fel</string>
     <string name="menu_source">Källkod</string>
     <string name="menu_upgrade">Uppdatera</string>
-    <string name="menu_donate">Donera</string>
     <string name="details_notinstalled">Inte installerad</string>
     <string name="antiadslist">Den här appen innehåller reklam</string>
     <string name="antitracklist">Den här appen spårar och rapporterar om din aktivitet</string>

@@ -72,7 +72,6 @@
     <string name="menu_changelog">Ændringslog</string>
     <string name="menu_source">Kildekode</string>
     <string name="menu_upgrade">Opdater</string>
-    <string name="menu_donate">Doner</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

@@ -51,7 +51,6 @@
     <string name="menu_issues">Problemes</string>
     <string name="menu_source">Codi font</string>
     <string name="menu_upgrade">Actualitza</string>
-    <string name="menu_donate">Feu una donació</string>
     <string name="details_notinstalled">No està instal·lat</string>
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
     <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>

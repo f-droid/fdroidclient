@@ -116,7 +116,6 @@
     <string name="install_confirm_update_no_perms">Kas soovite paigaldada värskenduse sellele rakendusele\? Teie andmed ei lähe kaduma. Erijuurdepääs ei ole vajalik.</string>
     <string name="install_confirm_update_system_no_perms">Kas soovite paigaldada värskenduse sisseehitatud rakendusele\? Olemasolevad andmed ei lähe kaduma. Erijuurdepääs ei ole vajalik.</string>
     <string name="menu_upgrade">Värskenda</string>
-    <string name="menu_donate">Toeta</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

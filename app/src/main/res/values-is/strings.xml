@@ -70,7 +70,6 @@
     <string name="menu_changelog">Breytingaskrá</string>
     <string name="menu_source">Upprunakóði</string>
     <string name="menu_upgrade">Uppfæra</string>
-    <string name="menu_donate">Styrkja</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

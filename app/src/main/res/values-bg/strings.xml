@@ -55,7 +55,6 @@
     <string name="menu_website">Уебсайт</string>
     <string name="menu_issues">Проблеми</string>
     <string name="menu_source">Изходен код</string>
-    <string name="menu_donate">Направете дарение</string>
     <string name="details_notinstalled">Не е инсталирано</string>
     <string name="antiadslist">Приложението съдържа реклами</string>
     <string name="antitracklist">Приложението следи и докладва активността ви</string>

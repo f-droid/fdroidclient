@@ -93,7 +93,6 @@
     <string name="menu_changelog">ေျပာင္းလဲမႈမွတ္တမ္း</string>
     <string name="menu_source">ဆိုစ့္ကုဒ္</string>
     <string name="menu_upgrade">အဆင့္ျမင့္တင္မည္</string>
-    <string name="menu_donate">လွဴဒါန္းမည္</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="details_notinstalled">မသြင္းထားခဲ့ပါ</string>

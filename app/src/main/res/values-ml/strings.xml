@@ -151,7 +151,6 @@
     <string name="menu_video">വീഡിയോ</string>
     <string name="menu_license">അനുമതി: %s</string>
     <string name="menu_source">സോഴ്സ് കോഡ്</string>
-    <string name="menu_donate">സംഭാവനചെയ്യുക</string>
     <string name="menu_bitcoin">ബിറ്റ്കോയിന്‍</string>
     <string name="menu_litecoin">ലെെറ്റ്കോയിന്‍</string>
     <string name="menu_flattr">Flattr</string>

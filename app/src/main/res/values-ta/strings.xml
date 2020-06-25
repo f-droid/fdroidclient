@@ -59,7 +59,6 @@
     <string name="menu_changelog">மாற்றக் குறிப்புகள்</string>
     <string name="menu_source">மூல ஆதார நிரல்</string>
     <string name="menu_upgrade">மேம்படுத்து</string>
-    <string name="menu_donate">கொடை செய்க</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

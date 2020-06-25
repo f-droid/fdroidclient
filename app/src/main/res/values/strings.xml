@@ -228,13 +228,14 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_translation">Translation</string>
     <string name="menu_upgrade">Update</string>
     <string name="menu_downgrade">Downgrade</string>
-    <string name="menu_donate">Donate</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_flattr">Flattr</string>
     <!-- This is a brand name, it should only be translated if the company does so -->
     <string name="menu_liberapay">Liberapay</string>
+    <!-- This is a brand name, it should only be translated if the company does so -->
+    <string name="menu_opencollective">OpenCollective</string>
     <!-- The bottom bar button label -->
     <string name="main_menu__latest_apps">Latest</string>
     <!-- The bottom bar button label -->

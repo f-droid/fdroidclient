@@ -200,7 +200,6 @@
     <string name="menu_issues">मुद्दे</string>
     <string name="menu_changelog">मुद्दे</string>
     <string name="menu_source">सोर्स कोड</string>
-    <string name="menu_donate">दान करना</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

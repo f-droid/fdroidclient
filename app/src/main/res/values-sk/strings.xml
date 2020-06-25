@@ -56,7 +56,6 @@
     <string name="menu_issues">Problémy</string>
     <string name="menu_source">Zdrojový kód</string>
     <string name="menu_upgrade">Aktualizovať</string>
-    <string name="menu_donate">Darovať peniaze</string>
     <string name="details_notinstalled">Nie je nainštalované</string>
     <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
     <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>

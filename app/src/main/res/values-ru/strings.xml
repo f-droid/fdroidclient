@@ -53,7 +53,6 @@
     <string name="menu_issues">Ошибки</string>
     <string name="menu_source">Исходный код</string>
     <string name="menu_upgrade">Обновить</string>
-    <string name="menu_donate">Пожертвовать</string>
     <string name="details_notinstalled">Не установлено</string>
     <string name="antiadslist">Это приложение содержит рекламу</string>
     <string name="antitracklist">Это приложение отслеживает и сообщает о вашей деятельности</string>

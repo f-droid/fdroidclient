@@ -55,7 +55,6 @@
     <string name="menu_issues">Incidencias</string>
     <string name="menu_source">Código fuente</string>
     <string name="menu_upgrade">Actualizar</string>
-    <string name="menu_donate">Donar</string>
     <string name="details_notinstalled">No instalado</string>
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>

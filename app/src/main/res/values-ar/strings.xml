@@ -31,7 +31,6 @@
     <string name="menu_ignore_all">تجاهل كل التحديثات</string>
     <string name="menu_ignore_this">تجاهل هذا التحديث</string>
     <string name="menu_source">الشفرة المصدرية</string>
-    <string name="menu_donate">التبرع</string>
     <string name="local_repo">المستودع المحلي</string>
     <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
     <string name="next">التالي</string>

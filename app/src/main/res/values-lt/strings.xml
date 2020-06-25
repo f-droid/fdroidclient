@@ -35,7 +35,6 @@
     <string name="menu_website">Svetainė</string>
     <string name="menu_source">Išeities tekstai</string>
     <string name="menu_upgrade">Atnaujinti</string>
-    <string name="menu_donate">Paaukoti</string>
     <string name="details_notinstalled">Neįdiegta</string>
     <string name="display">Rodymas</string>
     <string name="show_incompat_versions">Rodyti nesuderinamas versijas</string>

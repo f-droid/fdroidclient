@@ -163,7 +163,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String flattrID;
 
-    public String liberapayID;
+    public String liberapay;
+
+    public String openCollective;
 
     /**
      * This matches {@code CurrentVersion} in build metadata files.
@@ -309,8 +311,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.FLATTR_ID:
                     flattrID = cursor.getString(i);
                     break;
-                case Cols.LIBERAPAY_ID:
-                    liberapayID = cursor.getString(i);
+                case Cols.LIBERAPAY:
+                    liberapay = cursor.getString(i);
+                    break;
+                case Cols.OPEN_COLLECTIVE:
+                    openCollective = cursor.getString(i);
                     break;
                 case Cols.AutoInstallApk.VERSION_NAME:
                     autoInstallVersionName = cursor.getString(i);
@@ -442,6 +447,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         } else {
             throw new IllegalArgumentException("Repo index app entry includes unsafe packageName: '"
                     + packageName + "'");
+        }
+    }
+
+    /**
+     * {@link #liberapay} was originally included using a numeric ID, now it is a
+     * username. This should not override {@link #liberapay} if that is already set.
+     */
+    @JsonProperty("liberapayID")
+    void setLiberapayID(String liberapayId) {  // NOPMD
+        if (TextUtils.isEmpty(liberapayId) || !TextUtils.isEmpty(liberapay)) {
+            return;
+        }
+        try {
+            int id = Integer.parseInt(liberapayId);
+            if (id > 0) {
+                liberapay = "~" + liberapayId;
+            }
+        } catch (NumberFormatException e) {
+            // ignored
         }
     }
 
@@ -667,10 +691,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String getIconUrl(Context context) {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
         if (TextUtils.isEmpty(iconUrl)) {
-            if (TextUtils.isEmpty(iconFromApk)){
+            if (TextUtils.isEmpty(iconFromApk)) {
                 return null;
             }
-            if (iconFromApk.endsWith(".xml")){
+            if (iconFromApk.endsWith(".xml")) {
                 // We cannot use xml ressources as icons. F-Droid server should not include them
                 // https://gitlab.com/fdroid/fdroidserver/issues/344
                 return null;
@@ -990,7 +1014,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.BITCOIN, bitcoin);
         values.put(Cols.LITECOIN, litecoin);
         values.put(Cols.FLATTR_ID, flattrID);
-        values.put(Cols.LIBERAPAY_ID, liberapayID);
+        values.put(Cols.LIBERAPAY, liberapay);
+        values.put(Cols.OPEN_COLLECTIVE, openCollective);
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(Cols.PREFERRED_SIGNER, preferredSigner);
@@ -1105,13 +1130,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     @Nullable
+    public String getOpenCollectiveUri() {
+        return TextUtils.isEmpty(openCollective) ? null : "https://opencollective.com/"
+                + openCollective + "/donate/";
+    }
+
+    @Nullable
     public String getFlattrUri() {
         return TextUtils.isEmpty(flattrID) ? null : "https://flattr.com/thing/" + flattrID;
     }
 
     @Nullable
     public String getLiberapayUri() {
-        return TextUtils.isEmpty(liberapayID) ? null : "https://liberapay.com/~" + liberapayID;
+        return TextUtils.isEmpty(liberapay) ? null : "https://liberapay.com/" + liberapay;
     }
 
 
@@ -1219,7 +1250,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.bitcoin);
         dest.writeString(this.litecoin);
         dest.writeString(this.flattrID);
-        dest.writeString(this.liberapayID);
+        dest.writeString(this.liberapay);
+        dest.writeString(this.openCollective);
         dest.writeString(this.preferredSigner);
         dest.writeString(this.suggestedVersionName);
         dest.writeInt(this.suggestedVersionCode);
@@ -1270,7 +1302,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.bitcoin = in.readString();
         this.litecoin = in.readString();
         this.flattrID = in.readString();
-        this.liberapayID = in.readString();
+        this.liberapay = in.readString();
+        this.openCollective = in.readString();
         this.preferredSigner = in.readString();
         this.suggestedVersionName = in.readString();
         this.suggestedVersionCode = in.readInt();

@@ -6,5 +6,5 @@
     android:layout_marginLeft="12dp"
     android:layout_marginRight="12dp"
     android:layout_marginStart="12dp"
-    android:contentDescription="@string/menu_liberapay"
-    android:src="@drawable/donation_option_liberapay" />
+    android:contentDescription="@string/menu_opencollective"
+    android:src="@drawable/donation_option_opencollective" />

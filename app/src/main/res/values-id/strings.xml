@@ -63,7 +63,6 @@
     <string name="menu_changelog">Catatan Perubahan</string>
     <string name="menu_source">Kode Sumber</string>
     <string name="menu_upgrade">Perbarui</string>
-    <string name="menu_donate">Donasi</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

@@ -40,7 +40,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -791,9 +790,14 @@ public class AppDetailsRecyclerViewAdapter
 
             donationOptionsLayout.removeAllViews();
 
-            // Donate button
-            if (uriIsSetAndCanBeOpened(app.donate)) {
-                addDonateOption(R.layout.donate_generic, app.donate);
+            // LiberaPay
+            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
+                addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
+            }
+
+            // OpenCollective
+            if (uriIsSetAndCanBeOpened(app.getOpenCollectiveUri())) {
+                addDonateOption(R.layout.donate_opencollective, app.getOpenCollectiveUri());
             }
 
             // Bitcoin
@@ -808,17 +812,28 @@ public class AppDetailsRecyclerViewAdapter
 
             // Flattr
             if (uriIsSetAndCanBeOpened(app.getFlattrUri())) {
-                addDonateOption(R.layout.donate_flattr, app.getFlattrUri());
+                addDonateOption(R.layout.donate_generic, app.getFlattrUri());
             }
-            // LiberaPay
-            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
-                addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
+
+            // Donate button
+            if (uriIsSetAndCanBeOpened(app.donate)) {
+                addDonateOption(R.layout.donate_generic, app.donate);
             }
         }
 
+        /**
+         * Show the donate button, but only if it is an HTTPS URL.  The
+         * {@code https://} is then stripped off when URLs are directly displayed.
+         */
         private void addDonateOption(@LayoutRes int layout, final String uri) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View option = inflater.inflate(layout, donationOptionsLayout, false);
+            if (layout == R.layout.donate_generic) {
+                if (!uri.toLowerCase(Locale.ENGLISH).startsWith("https://")) {
+                    return;
+                }
+                ((TextView) option).setText(uri.substring(8));
+            }
             option.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

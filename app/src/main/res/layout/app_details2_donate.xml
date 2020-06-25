@@ -29,7 +29,7 @@
             android:id="@+id/donation_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:columnCount="3" />
+            app:columnCount="2" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

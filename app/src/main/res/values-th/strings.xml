@@ -59,7 +59,6 @@
     <string name="menu_changelog">รายการความเปลี่ยนแปลง</string>
     <string name="menu_source">ซอร์สโค้ด</string>
     <string name="menu_upgrade">อัพเกรด</string>
-    <string name="menu_donate">บริจาคสนับสนุน</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

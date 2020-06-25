@@ -84,7 +84,6 @@
     <string name="menu_changelog">Veranderingslys</string>
     <string name="menu_source">Bronkode</string>
     <string name="menu_upgrade">Opgradering</string>
-    <string name="menu_donate">Skenk</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

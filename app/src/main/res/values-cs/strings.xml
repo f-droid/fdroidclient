@@ -47,7 +47,6 @@
     <string name="menu_issues">Problémy</string>
     <string name="menu_source">Zdrojový kód</string>
     <string name="menu_upgrade">Aktualizovat</string>
-    <string name="menu_donate">Přispět</string>
     <string name="details_notinstalled">Nenainstalováno</string>
     <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
     <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>

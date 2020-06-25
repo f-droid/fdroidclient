@@ -47,7 +47,6 @@
     <string name="menu_issues">报告错误</string>
     <string name="menu_source">源代码</string>
     <string name="menu_upgrade">更新</string>
-    <string name="menu_donate">捐赠</string>
     <string name="details_notinstalled">未安装</string>
     <string name="antiadslist">该应用程序包含广告</string>
     <string name="antitracklist">此应用会记录并报告您的行为</string>

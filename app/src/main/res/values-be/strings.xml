@@ -84,7 +84,6 @@
     <string name="menu_changelog">Спіс змен</string>
     <string name="menu_source">Зыходны код</string>
     <string name="menu_upgrade">Абнавіць</string>
-    <string name="menu_donate">Ахвяраваць</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

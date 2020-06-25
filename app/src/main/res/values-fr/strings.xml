@@ -57,7 +57,6 @@
     <string name="menu_issues">Problèmes</string>
     <string name="menu_source">Code source</string>
     <string name="menu_upgrade">Mettre à jour</string>
-    <string name="menu_donate">Faire un don</string>
     <string name="details_notinstalled">Non installée</string>
     <string name="antiadslist">Cette appli contient des publicités</string>
     <string name="antitracklist">Cette appli suit et transmet votre activité</string>

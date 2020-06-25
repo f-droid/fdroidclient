@@ -154,7 +154,6 @@
     <string name="menu_license">Trwydded: %s</string>
     <string name="menu_source">Cod Gwreiddiol</string>
     <string name="menu_downgrade">Israddio</string>
-    <string name="menu_donate">Cyfrannu</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
