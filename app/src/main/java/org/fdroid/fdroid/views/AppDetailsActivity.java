@@ -262,7 +262,7 @@ public class AppDetailsActivity extends AppCompatActivity
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
             shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary
-                    + ") - https://f-droid.org/app/" + app.packageName);
+                    + ") - https://f-droid.org/packages/" + app.packageName);
 
             boolean showNearbyItem = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
             CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
