@@ -186,8 +186,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", NAME_COL, terms[0]));
         StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", SUMMARY_COL, terms[0]));
         for (int i = 1; i < terms.length; i++) {
-            titleCase.append(String.format(" or %s like '%%%s%%'", NAME_COL, terms[i]));
-            summaryCase.append(String.format(" or %s like '%%%s%%'", SUMMARY_COL, terms[i]));
+            titleCase.append(String.format(" and %s like '%%%s%%'", NAME_COL, terms[i]));
+            summaryCase.append(String.format(" and %s like '%%%s%%'", SUMMARY_COL, terms[i]));
         }
 
         return String.format("case when %s then 1 when %s then 2 else 3 end, %s",
