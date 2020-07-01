@@ -35,6 +35,9 @@ package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.text.TextUtils;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.Utils;
@@ -45,7 +48,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowLog;
 
 import java.io.File;
@@ -88,7 +90,7 @@ public class LocalHTTPDTest {
 
         assertFalse(Utils.isServerSocketInUse(port));
 
-        final Context context = RuntimeEnvironment.application.getApplicationContext();
+        final Context context = ApplicationProvider.getApplicationContext();
         webRoot = context.getFilesDir();
         FileUtils.deleteDirectory(webRoot);
         assertTrue(webRoot.mkdir());
@@ -266,7 +268,7 @@ public class LocalHTTPDTest {
             @Override
             public void run() {
                 LocalHTTPD localHttpd = new LocalHTTPD(
-                        RuntimeEnvironment.application,
+                        ApplicationProvider.getApplicationContext(),
                         "localhost",
                         testPort,
                         webRoot,

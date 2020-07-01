@@ -1,12 +1,9 @@
 package org.fdroid.fdroid.data;
 
-import static org.fdroid.fdroid.Assert.assertInvalidUri;
-import static org.fdroid.fdroid.Assert.assertValidUri;
-
 import android.content.ContentResolver;
-import java.util.ArrayList;
-import java.util.List;
-import org.fdroid.fdroid.BuildConfig;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.mock.MockApk;
@@ -15,10 +12,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
-import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.fdroid.fdroid.Assert.assertInvalidUri;
+import static org.fdroid.fdroid.Assert.assertValidUri;
 
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
@@ -33,7 +32,7 @@ public class ProviderUriTests {
 
     @Before
     public void setup() {
-        resolver = RuntimeEnvironment.application.getContentResolver();
+        resolver = ApplicationProvider.getApplicationContext().getContentResolver();
     }
 
     @After

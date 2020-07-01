@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import org.fdroid.fdroid.BuildConfig;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
@@ -12,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.util.Map;
@@ -36,7 +37,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
 
     @Test
     public void insertSingleApp() {
-        Map<String, Long> foundBefore = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
+        Map<String, Long> foundBefore = InstalledAppProvider.Helper.lastUpdateTimes(ApplicationProvider.getApplicationContext());
         assertEquals(foundBefore.size(), 0);
 
         ContentValues values = new ContentValues();
@@ -50,7 +51,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         values.put(Cols.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
         contentResolver.insert(InstalledAppProvider.getContentUri(), values);
 
-        Map<String, Long> foundAfter = InstalledAppProvider.Helper.lastUpdateTimes(RuntimeEnvironment.application);
+        Map<String, Long> foundAfter = InstalledAppProvider.Helper.lastUpdateTimes(ApplicationProvider.getApplicationContext());
         assertEquals(1, foundAfter.size());
         assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
 

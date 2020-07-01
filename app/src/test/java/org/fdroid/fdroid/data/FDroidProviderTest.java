@@ -3,12 +3,12 @@ package org.fdroid.fdroid.data;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.ContextWrapper;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
-import org.robolectric.shadows.ShadowContentResolver;
 
 public abstract class FDroidProviderTest { // NOPMD This abstract class does not have any abstract methods
 
@@ -17,7 +17,7 @@ public abstract class FDroidProviderTest { // NOPMD This abstract class does not
 
     @Before
     public final void setupBase() {
-        contentResolver = RuntimeEnvironment.application.getContentResolver();
+        contentResolver = ApplicationProvider.getApplicationContext().getContentResolver();
         context = TestUtils.createContextWithContentResolver(contentResolver);
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }

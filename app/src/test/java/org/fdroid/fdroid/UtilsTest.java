@@ -2,6 +2,9 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,7 +88,7 @@ public class UtilsTest {
 
     @Test
     public void testFormatFingerprint() {
-        Context context = RuntimeEnvironment.application;
+        Context context = ApplicationProvider.getApplicationContext();
         String badResult = Utils.formatFingerprint(context, "");
         // real fingerprints
         String formatted;

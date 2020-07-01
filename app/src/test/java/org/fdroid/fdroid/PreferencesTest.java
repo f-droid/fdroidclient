@@ -21,6 +21,8 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
+import androidx.test.core.app.ApplicationProvider;
+
 import android.util.Log;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +41,7 @@ import static org.junit.Assert.assertTrue;
 public class PreferencesTest {
     private static final String TAG = "PreferencesTest";
 
-    private static final Context CONTEXT = RuntimeEnvironment.application;
+    private static final Context CONTEXT = ApplicationProvider.getApplicationContext();
 
     private SharedPreferences defaults;
 

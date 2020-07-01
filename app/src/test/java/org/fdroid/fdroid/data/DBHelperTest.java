@@ -1,9 +1,10 @@
 package org.fdroid.fdroid.data;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.R;
@@ -12,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
@@ -47,7 +47,7 @@ public class DBHelperTest {
 
     @Before
     public final void setupBase() {
-        context = RuntimeEnvironment.application.getApplicationContext();
+        context = ApplicationProvider.getApplicationContext();
     }
 
     @Test

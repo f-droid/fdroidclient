@@ -1,12 +1,14 @@
 package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowLog;
 
 import java.util.concurrent.CountDownLatch;
@@ -23,7 +25,7 @@ public class LocalHTTPDManagerTest {
     @Test
     public void testStartStop() throws InterruptedException {
         ShadowLog.stream = System.out;
-        Context context = RuntimeEnvironment.application;
+        Context context = ApplicationProvider.getApplicationContext();
 
         final String host = "localhost";
         final int port = 8888;

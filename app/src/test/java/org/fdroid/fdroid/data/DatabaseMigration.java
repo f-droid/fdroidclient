@@ -7,6 +7,9 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
@@ -29,7 +32,7 @@ public class DatabaseMigration {
 
     @Before
     public final void setupBase() {
-        contentResolver = RuntimeEnvironment.application.getContentResolver();
+        contentResolver = ApplicationProvider.getApplicationContext().getContentResolver();
         context = TestUtils.createContextWithContentResolver(contentResolver);
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.core.app.ApplicationProvider;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -27,7 +28,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
@@ -48,7 +48,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
                 new ContentValues(), repo.getId());
 
-        themeContext = new ContextThemeWrapper(RuntimeEnvironment.application, R.style.AppBaseThemeDark);
+        themeContext = new ContextThemeWrapper(ApplicationProvider.getApplicationContext(), R.style.AppBaseThemeDark);
     }
 
     @After

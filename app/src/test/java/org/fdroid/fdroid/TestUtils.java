@@ -8,6 +8,8 @@ import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -158,7 +160,7 @@ public class TestUtils {
      */
     public static ContextWrapper createContextWithContentResolver(ContentResolver contentResolver) {
         final ContentResolver resolver = mock(ContentResolver.class, AdditionalAnswers.delegatesTo(contentResolver));
-        return new ContextWrapper(RuntimeEnvironment.application.getApplicationContext()) {
+        return new ContextWrapper(ApplicationProvider.getApplicationContext()) {
             @Override
             public ContentResolver getContentResolver() {
                 return resolver;
