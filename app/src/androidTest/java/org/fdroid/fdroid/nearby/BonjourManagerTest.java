@@ -1,6 +1,8 @@
 package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.fdroid.fdroid.FDroidApp;
@@ -23,7 +25,7 @@ public class BonjourManagerTest {
 
     @Test
     public void testStartStop() throws InterruptedException {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = ApplicationProvider.getApplicationContext();
 
         FDroidApp.ipAddressString = LOCALHOST;
         FDroidApp.port = PORT;
@@ -65,7 +67,7 @@ public class BonjourManagerTest {
 
     @Test
     public void testRestart() throws InterruptedException {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = ApplicationProvider.getApplicationContext();
 
         FDroidApp.ipAddressString = LOCALHOST;
         FDroidApp.port = PORT;

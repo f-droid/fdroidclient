@@ -5,6 +5,8 @@ import android.app.ActivityManager;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.os.Build;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.espresso.IdlingPolicies;
 import androidx.test.espresso.ViewInteraction;
@@ -88,7 +90,7 @@ public class MainActivityEspressoTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SystemAnimations.disableAll(InstrumentationRegistry.getTargetContext());
+        SystemAnimations.disableAll(ApplicationProvider.getApplicationContext());
 
         // dismiss the ANR or any other system dialogs that might be there
         UiObject button = new UiObject(new UiSelector().text("Wait").enabled(true));
@@ -109,7 +111,7 @@ public class MainActivityEspressoTest {
 
     @AfterClass
     public static void classTearDown() {
-        SystemAnimations.enableAll(InstrumentationRegistry.getTargetContext());
+        SystemAnimations.enableAll(ApplicationProvider.getApplicationContext());
     }
 
     public static boolean isEmulator() {

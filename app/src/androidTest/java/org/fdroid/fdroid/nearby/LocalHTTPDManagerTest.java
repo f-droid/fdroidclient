@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -41,7 +43,7 @@ public class LocalHTTPDManagerTest {
 
     @Before
     public void setUp() {
-        context = InstrumentationRegistry.getTargetContext();
+        context = ApplicationProvider.getApplicationContext();
         lbm = LocalBroadcastManager.getInstance(context);
 
         FDroidApp.ipAddressString = LOCALHOST;
