@@ -15,13 +15,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
-import androidx.preference.PreferenceFragment;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.text.TextUtils;
 import android.util.TypedValue;
 import info.guardianproject.panic.Panic;
@@ -33,7 +34,7 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class PanicPreferencesFragment extends PreferenceFragment
+public class PanicPreferencesFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String PREF_APP = "pref_panic_app";

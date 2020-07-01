@@ -1,14 +1,14 @@
 package org.fdroid.fdroid.views.main;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.PreferencesFragment;
@@ -58,7 +58,7 @@ public class SettingsView extends FrameLayout {
         }
 
         if (currentTransaction == null) {
-            currentTransaction = activity.getFragmentManager().beginTransaction();
+            currentTransaction = activity.getSupportFragmentManager().beginTransaction();
         }
 
         currentTransaction.replace(getId(), new PreferencesFragment(), "preferences-fragment");
@@ -76,13 +76,13 @@ public class SettingsView extends FrameLayout {
             throw new IllegalArgumentException("Cannot add a SettingsView to activities which are not an AppCompatActivity");
         }
 
-        Fragment existingFragment = activity.getFragmentManager().findFragmentByTag("preferences-fragment");
+        Fragment existingFragment = activity.getSupportFragmentManager().findFragmentByTag("preferences-fragment");
         if (existingFragment == null) {
             return;
         }
 
         if (currentTransaction == null) {
-            currentTransaction = activity.getFragmentManager().beginTransaction();
+            currentTransaction = activity.getSupportFragmentManager().beginTransaction();
         }
         currentTransaction.remove(existingFragment);
         currentTransaction.commitAllowingStateLoss();
