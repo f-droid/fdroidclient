@@ -1,15 +1,16 @@
 package org.fdroid.fdroid.qr;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
-import androidx.annotation.NonNull;
 import android.util.Log;
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChecker {
 
     private static final String TAG = "CameraCharMinApiLevel21";

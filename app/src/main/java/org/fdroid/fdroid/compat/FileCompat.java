@@ -5,6 +5,8 @@ import android.os.Build;
 import android.system.ErrnoException;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -40,6 +42,7 @@ public class FileCompat {
      * not attempt to load this class at runtime. Otherwise, using the Os.symlink method will cause
      * a VerifyError to be thrown at runtime when the FileCompat class is first used.
      */
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private static class Symlink21 {
 
         @TargetApi(21)

@@ -158,6 +158,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case REQUEST_CODE_INSTALL:
                 switch (resultCode) {

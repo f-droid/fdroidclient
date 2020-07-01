@@ -173,6 +173,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     @Override
     public void onNewIntent(Intent i) {
+        super.onNewIntent(i);
         // onResume gets called after this to handle the intent
         setIntent(i);
     }

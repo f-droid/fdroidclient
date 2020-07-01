@@ -29,6 +29,7 @@ android {
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         minSdkVersion 14
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         /*
           The Android Testing Support Library collects analytics to continuously improve the testing
