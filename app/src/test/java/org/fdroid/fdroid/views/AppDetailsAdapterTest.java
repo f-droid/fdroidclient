@@ -2,13 +2,17 @@ package org.fdroid.fdroid.views;
 
 import android.app.Application;
 import android.content.ContentValues;
-import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import org.fdroid.fdroid.Assert;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -23,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
@@ -32,6 +37,7 @@ import static org.junit.Assert.assertEquals;
 public class AppDetailsAdapterTest extends FDroidProviderTest {
 
     private App app;
+    private Context themeContext;
 
     @Before
     public void setup() {
@@ -41,6 +47,8 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
         app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
                 new ContentValues(), repo.getId());
+
+        themeContext = new ContextThemeWrapper(RuntimeEnvironment.application, R.style.AppBaseThemeDark);
     }
 
     @After
@@ -93,7 +101,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
      * out for us .
      */
     private void populateViewHolders(RecyclerView.Adapter<RecyclerView.ViewHolder> adapter) {
-        ViewGroup parent = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.app_details2_links, null);
+        ViewGroup parent = (ViewGroup) LayoutInflater.from(themeContext).inflate(R.layout.app_details2_links, null);
         for (int i = 0; i < adapter.getItemCount(); i++) {
             RecyclerView.ViewHolder viewHolder = adapter.createViewHolder(parent, adapter.getItemViewType(i));
             adapter.bindViewHolder(viewHolder, i);
