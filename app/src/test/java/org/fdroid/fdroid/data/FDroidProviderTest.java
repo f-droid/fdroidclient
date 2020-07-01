@@ -18,7 +18,7 @@ public abstract class FDroidProviderTest { // NOPMD This abstract class does not
     @Before
     public final void setupBase() {
         contentResolver = RuntimeEnvironment.application.getContentResolver();
-        context = TestUtils.createContextWithContentResolver(Shadows.shadowOf(contentResolver));
+        context = TestUtils.createContextWithContentResolver(contentResolver);
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 

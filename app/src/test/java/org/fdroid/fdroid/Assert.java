@@ -1,5 +1,6 @@
 package org.fdroid.fdroid;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,7 +14,6 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -86,7 +86,7 @@ public class Assert {
         }
     }
 
-    public static void assertCantDelete(ShadowContentResolver resolver, Uri uri) {
+    public static void assertCantDelete(ContentResolver resolver, Uri uri) {
         try {
             resolver.delete(uri, null, null);
             fail();
@@ -97,7 +97,7 @@ public class Assert {
         }
     }
 
-    public static void assertCantUpdate(ShadowContentResolver resolver, Uri uri) {
+    public static void assertCantUpdate(ContentResolver resolver, Uri uri) {
         try {
             resolver.update(uri, new ContentValues(), null, null);
             fail();
@@ -108,36 +108,36 @@ public class Assert {
         }
     }
 
-    public static void assertInvalidUri(ShadowContentResolver resolver, String uri) {
+    public static void assertInvalidUri(ContentResolver resolver, String uri) {
         assertInvalidUri(resolver, Uri.parse(uri));
     }
 
-    public static void assertValidUri(ShadowContentResolver resolver, String uri, String[] projection) {
+    public static void assertValidUri(ContentResolver resolver, String uri, String[] projection) {
         assertValidUri(resolver, Uri.parse(uri), projection);
     }
 
-    public static void assertInvalidUri(ShadowContentResolver resolver, Uri uri) {
+    public static void assertInvalidUri(ContentResolver resolver, Uri uri) {
         Cursor cursor = resolver.query(uri, new String[]{}, null, null, null);
         assertNull(cursor);
     }
 
-    public static void assertValidUri(ShadowContentResolver resolver, Uri uri, String[] projection) {
+    public static void assertValidUri(ContentResolver resolver, Uri uri, String[] projection) {
         Cursor cursor = resolver.query(uri, projection, null, null, null);
         assertNotNull(cursor);
         cursor.close();
     }
 
-    public static void assertValidUri(ShadowContentResolver resolver, Uri actualUri, String expectedUri,
+    public static void assertValidUri(ContentResolver resolver, Uri actualUri, String expectedUri,
                                       String[] projection) {
         assertValidUri(resolver, actualUri, projection);
         assertEquals(expectedUri, actualUri.toString());
     }
 
-    public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri) {
+    public static void assertResultCount(ContentResolver resolver, int expectedCount, Uri uri) {
         assertResultCount(resolver, expectedCount, uri, new String[]{});
     }
 
-    public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri,
+    public static void assertResultCount(ContentResolver resolver, int expectedCount, Uri uri,
                                          String[] projection) {
         Cursor cursor = resolver.query(uri, projection, null, null, null);
         assertResultCount(expectedCount, cursor);
@@ -154,7 +154,7 @@ public class Assert {
         assertEquals(expectedCount, result.getCount());
     }
 
-    public static void assertIsInstalledVersionInDb(ShadowContentResolver resolver,
+    public static void assertIsInstalledVersionInDb(ContentResolver resolver,
                                                     String appId, int versionCode, String versionName) {
         Uri uri = InstalledAppProvider.getAppUri(appId);
 

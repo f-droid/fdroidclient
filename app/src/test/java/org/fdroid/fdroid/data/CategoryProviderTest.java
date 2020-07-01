@@ -24,7 +24,7 @@ import static org.fdroid.fdroid.Assert.assertContainsOnly;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class CategoryProviderTest extends FDroidProviderTest {
 

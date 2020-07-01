@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class InstalledAppProviderTest extends FDroidProviderTest {
 

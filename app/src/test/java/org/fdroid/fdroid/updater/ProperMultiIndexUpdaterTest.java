@@ -33,7 +33,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, shadows = ProperMultiIndexUpdaterTest.ArmSystemProperties.class)
+@Config(shadows = ProperMultiIndexUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
 public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";

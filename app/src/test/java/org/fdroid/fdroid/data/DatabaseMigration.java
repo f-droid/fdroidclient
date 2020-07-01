@@ -20,7 +20,7 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class DatabaseMigration {
 
@@ -30,7 +30,7 @@ public class DatabaseMigration {
     @Before
     public final void setupBase() {
         contentResolver = RuntimeEnvironment.application.getContentResolver();
-        context = TestUtils.createContextWithContentResolver(Shadows.shadowOf(contentResolver));
+        context = TestUtils.createContextWithContentResolver(contentResolver);
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 

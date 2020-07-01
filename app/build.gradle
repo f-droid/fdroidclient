@@ -168,18 +168,22 @@ dependencies {
     fullImplementation 'org.jmdns:jmdns:3.5.5'
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
 
-    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'org.robolectric:robolectric:4.3'
     testImplementation 'androidx.test:monitor:1.1.1'
     testImplementation 'org.bouncycastle:bcprov-jdk15on:1.60'
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.mockito:mockito-core:2.7.22'
 
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+
+    androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
 }
 
 checkstyle {

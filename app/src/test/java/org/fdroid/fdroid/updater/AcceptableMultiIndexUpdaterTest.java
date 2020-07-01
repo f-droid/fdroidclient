@@ -18,7 +18,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class AcceptableMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
     private static final String TAG = "AcceptableMultiRepoTest";

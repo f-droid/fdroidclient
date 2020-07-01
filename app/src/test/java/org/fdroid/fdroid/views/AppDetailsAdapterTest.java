@@ -27,7 +27,7 @@ import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class AppDetailsAdapterTest extends FDroidProviderTest {
 

@@ -20,7 +20,6 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class ProviderUriTests {
@@ -45,67 +44,67 @@ public class ProviderUriTests {
     @Test
     public void invalidInstalledAppProviderUris() {
         TestUtils.registerContentProvider(InstalledAppProvider.getAuthority(), InstalledAppProvider.class);
-        assertInvalidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getAuthority());
-        assertInvalidUri(Shadows.shadowOf(resolver), "blah");
+        assertInvalidUri(resolver, InstalledAppProvider.getAuthority());
+        assertInvalidUri(resolver, "blah");
     }
 
     @Test
     public void validInstalledAppProviderUris() {
         TestUtils.registerContentProvider(InstalledAppProvider.getAuthority(), InstalledAppProvider.class);
         String[] projection = new String[]{InstalledAppTable.Cols._ID};
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getContentUri(), projection);
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getAppUri("org.example.app"), projection);
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getSearchUri("blah"), projection);
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getSearchUri("\"blah\""), projection);
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getSearchUri("blah & sneh"), projection);
-        assertValidUri(Shadows.shadowOf(resolver), InstalledAppProvider.getSearchUri("http://blah.example.com?sneh=\"sneh\""), projection);
+        assertValidUri(resolver, InstalledAppProvider.getContentUri(), projection);
+        assertValidUri(resolver, InstalledAppProvider.getAppUri("org.example.app"), projection);
+        assertValidUri(resolver, InstalledAppProvider.getSearchUri("blah"), projection);
+        assertValidUri(resolver, InstalledAppProvider.getSearchUri("\"blah\""), projection);
+        assertValidUri(resolver, InstalledAppProvider.getSearchUri("blah & sneh"), projection);
+        assertValidUri(resolver, InstalledAppProvider.getSearchUri("http://blah.example.com?sneh=\"sneh\""), projection);
     }
 
     @Test
     public void invalidRepoProviderUris() {
         TestUtils.registerContentProvider(RepoProvider.getAuthority(), RepoProvider.class);
-        assertInvalidUri(Shadows.shadowOf(resolver), RepoProvider.getAuthority());
-        assertInvalidUri(Shadows.shadowOf(resolver), "blah");
+        assertInvalidUri(resolver, RepoProvider.getAuthority());
+        assertInvalidUri(resolver, "blah");
     }
 
     @Test
     public void validRepoProviderUris() {
         TestUtils.registerContentProvider(RepoProvider.getAuthority(), RepoProvider.class);
         String[] projection = new String[]{Schema.RepoTable.Cols._ID};
-        assertValidUri(Shadows.shadowOf(resolver), RepoProvider.getContentUri(), projection);
-        assertValidUri(Shadows.shadowOf(resolver), RepoProvider.getContentUri(10000L), projection);
-        assertValidUri(Shadows.shadowOf(resolver), RepoProvider.allExceptSwapUri(), projection);
+        assertValidUri(resolver, RepoProvider.getContentUri(), projection);
+        assertValidUri(resolver, RepoProvider.getContentUri(10000L), projection);
+        assertValidUri(resolver, RepoProvider.allExceptSwapUri(), projection);
     }
 
     @Test
     public void invalidAppProviderUris() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
-        assertInvalidUri(Shadows.shadowOf(resolver), AppProvider.getAuthority());
-        assertInvalidUri(Shadows.shadowOf(resolver), "blah");
+        assertInvalidUri(resolver, AppProvider.getAuthority());
+        assertInvalidUri(resolver, "blah");
     }
 
     @Test
     public void validAppProviderUris() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
         String[] projection = new String[]{Schema.AppMetadataTable.Cols._ID};
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getContentUri(), APP_PROVIDER_URI_BASE, projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("'searching!'", null), APP_PROVIDER_URI_BASE + "/search/'searching!'", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("'searching!'", "Games"), APP_PROVIDER_URI_BASE + "/search/'searching!'/Games", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("/", null), APP_PROVIDER_URI_BASE + "/search/%2F", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("/", "Games"), APP_PROVIDER_URI_BASE + "/search/%2F/Games", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("", null), APP_PROVIDER_URI_BASE, projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri("", "Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getCategoryUri("Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri((String) null, null), APP_PROVIDER_URI_BASE, projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSearchUri((String) null, "Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getInstalledUri(), APP_PROVIDER_URI_BASE + "/installed", projection);
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getCanUpdateUri(), APP_PROVIDER_URI_BASE + "/canUpdate", projection);
+        assertValidUri(resolver, AppProvider.getContentUri(), APP_PROVIDER_URI_BASE, projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'", null), APP_PROVIDER_URI_BASE + "/search/'searching!'", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'", "Games"), APP_PROVIDER_URI_BASE + "/search/'searching!'/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/", null), APP_PROVIDER_URI_BASE + "/search/%2F", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/", "Games"), APP_PROVIDER_URI_BASE + "/search/%2F/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("", null), APP_PROVIDER_URI_BASE, projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("", "Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
+        assertValidUri(resolver, AppProvider.getCategoryUri("Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri((String) null, null), APP_PROVIDER_URI_BASE, projection);
+        assertValidUri(resolver, AppProvider.getSearchUri((String) null, "Games"), APP_PROVIDER_URI_BASE + "/category/Games", projection);
+        assertValidUri(resolver, AppProvider.getInstalledUri(), APP_PROVIDER_URI_BASE + "/installed", projection);
+        assertValidUri(resolver, AppProvider.getCanUpdateUri(), APP_PROVIDER_URI_BASE + "/canUpdate", projection);
 
         App app = new App();
         app.repoId = 1;
         app.packageName = "org.fdroid.fdroid";
 
-        assertValidUri(Shadows.shadowOf(resolver), AppProvider.getSpecificAppUri(app.packageName, app.repoId),
+        assertValidUri(resolver, AppProvider.getSpecificAppUri(app.packageName, app.repoId),
                 APP_PROVIDER_URI_BASE + "/app/1/org.fdroid.fdroid", projection);
     }
 
@@ -116,22 +115,22 @@ public class ProviderUriTests {
 
         // Required so that the `assertValidUri` calls below will indeed have a real temp_fdroid_app
         // table to query.
-        TempAppProvider.Helper.init(TestUtils.createContextWithContentResolver(Shadows.shadowOf(resolver)), 123);
+        TempAppProvider.Helper.init(TestUtils.createContextWithContentResolver(resolver), 123);
 
         List<String> packageNames = new ArrayList<>(2);
         packageNames.add("org.fdroid.fdroid");
         packageNames.add("com.example.com");
 
-        assertValidUri(Shadows.shadowOf(resolver), TempAppProvider.getAppsUri(packageNames, 1),
+        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames, 1),
                 TEMP_APP_PROVIDER_URI_BASE + "/apps/1/org.fdroid.fdroid%2Ccom.example.com", projection);
-        assertValidUri(Shadows.shadowOf(resolver), TempAppProvider.getContentUri(), TEMP_APP_PROVIDER_URI_BASE, projection);
+        assertValidUri(resolver, TempAppProvider.getContentUri(), TEMP_APP_PROVIDER_URI_BASE, projection);
     }
 
     @Test
     public void invalidApkProviderUris() {
         TestUtils.registerContentProvider(ApkProvider.getAuthority(), ApkProvider.class);
-        assertInvalidUri(Shadows.shadowOf(resolver), ApkProvider.getAuthority());
-        assertInvalidUri(Shadows.shadowOf(resolver), "blah");
+        assertInvalidUri(resolver, ApkProvider.getAuthority());
+        assertInvalidUri(resolver, "blah");
     }
 
     @Test
@@ -144,15 +143,15 @@ public class ProviderUriTests {
             apks.add(new MockApk("com.example." + i, i));
         }
 
-        assertValidUri(Shadows.shadowOf(resolver), ApkProvider.getContentUri(),
+        assertValidUri(resolver, ApkProvider.getContentUri(),
                 APK_PROVIDER_URI_BASE, projection);
-        assertValidUri(Shadows.shadowOf(resolver), ApkProvider.getAppUri("org.fdroid.fdroid"),
+        assertValidUri(resolver, ApkProvider.getAppUri("org.fdroid.fdroid"),
                 APK_PROVIDER_URI_BASE + "/app/org.fdroid.fdroid", projection);
-        assertValidUri(Shadows.shadowOf(resolver), ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)),
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)),
                 APK_PROVIDER_URI_BASE + "/apk-any-repo/100/org.fdroid.fdroid", projection);
-        assertValidUri(Shadows.shadowOf(resolver), ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100, null),
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100, null),
                 APK_PROVIDER_URI_BASE + "/apk-any-repo/100/org.fdroid.fdroid", projection);
-        assertValidUri(Shadows.shadowOf(resolver), ApkProvider.getRepoUri(1000),
+        assertValidUri(resolver, ApkProvider.getRepoUri(1000),
                 APK_PROVIDER_URI_BASE + "/repo/1000", projection);
     }
 }

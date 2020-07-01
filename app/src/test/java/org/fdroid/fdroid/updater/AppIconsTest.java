@@ -21,7 +21,6 @@ import static org.junit.Assert.assertThat;
  * Check whether app icons are loaded from the correct repository. The repository with the
  * highest priority should be where we decide to load icons from.
  */
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class AppIconsTest extends MultiIndexUpdaterTest {

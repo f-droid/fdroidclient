@@ -17,7 +17,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class Issue763MultiRepo extends MultiIndexUpdaterTest {

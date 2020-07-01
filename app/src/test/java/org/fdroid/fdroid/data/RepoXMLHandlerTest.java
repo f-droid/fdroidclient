@@ -58,7 +58,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class RepoXMLHandlerTest {
     private static final String TAG = "RepoXMLHandlerTest";

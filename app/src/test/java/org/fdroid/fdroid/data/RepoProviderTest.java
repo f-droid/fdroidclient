@@ -45,7 +45,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class RepoProviderTest extends FDroidProviderTest {
 

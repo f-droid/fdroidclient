@@ -19,7 +19,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class UtilsTest {

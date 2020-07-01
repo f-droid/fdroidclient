@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
@@ -46,7 +47,7 @@ public class DBHelperTest {
 
     @Before
     public final void setupBase() {
-        context = InstrumentationRegistry.getContext();
+        context = RuntimeEnvironment.application.getApplicationContext();
     }
 
     @Test
