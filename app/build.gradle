@@ -44,7 +44,6 @@ android {
         // release builds before.
         all {
             minifyEnabled true
-            useProguard true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
             buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"' // String needs both quotes
