@@ -10,7 +10,8 @@
          this package needs to link against the android.test library,
          which is needed when building test cases. -->
     <application>
-        <uses-library android:name="androidx.test.runner"/>
+        <uses-library android:name="android.test.runner"
+            android:required="false" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
