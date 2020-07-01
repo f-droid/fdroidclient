@@ -64,7 +64,7 @@ public class SwapRepoTest {
 
     private LocalHTTPD localHttpd;
 
-    protected ShadowContentResolver shadowContentResolver;
+    
     protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
@@ -73,7 +73,7 @@ public class SwapRepoTest {
         ShadowLog.stream = System.out;
 
         contentResolver = RuntimeEnvironment.application.getContentResolver();
-        shadowContentResolver = Shadows.shadowOf(contentResolver);
+        
         context = new ContextWrapper(RuntimeEnvironment.application.getApplicationContext()) {
             @Override
             public ContentResolver getContentResolver() {
@@ -102,7 +102,7 @@ public class SwapRepoTest {
             throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
 
         PackageManager packageManager = context.getPackageManager();
-        ShadowPackageManager shadowPackageManager = shadowOf(packageManager);
+        
         ApplicationInfo appInfo = new ApplicationInfo();
         appInfo.flags = 0;
         appInfo.packageName = context.getPackageName();
@@ -118,7 +118,7 @@ public class SwapRepoTest {
         packageInfo.applicationInfo = appInfo;
         packageInfo.versionCode = 1002001;
         packageInfo.versionName = "1.2-fake";
-        shadowPackageManager.addPackage(packageInfo);
+        shadowOf(packageManager).addPackage(packageInfo);
 
         try {
             FDroidApp.initWifiSettings();

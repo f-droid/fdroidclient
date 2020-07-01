@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -23,13 +24,13 @@ import org.robolectric.shadows.ShadowContentResolver;
 @RunWith(RobolectricTestRunner.class)
 public class DatabaseMigration {
 
-    protected ShadowContentResolver contentResolver;
+    protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
     @Before
     public final void setupBase() {
-        contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
-        context = TestUtils.createContextWithContentResolver(contentResolver);
+        contentResolver = RuntimeEnvironment.application.getContentResolver();
+        context = TestUtils.createContextWithContentResolver(Shadows.shadowOf(contentResolver));
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 

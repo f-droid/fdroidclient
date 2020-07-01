@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.data;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.ContextWrapper;
 import org.fdroid.fdroid.TestUtils;
@@ -11,13 +12,13 @@ import org.robolectric.shadows.ShadowContentResolver;
 
 public abstract class FDroidProviderTest { // NOPMD This abstract class does not have any abstract methods
 
-    protected ShadowContentResolver contentResolver;
+    protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
     @Before
     public final void setupBase() {
-        contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
-        context = TestUtils.createContextWithContentResolver(contentResolver);
+        contentResolver = RuntimeEnvironment.application.getContentResolver();
+        context = TestUtils.createContextWithContentResolver(Shadows.shadowOf(contentResolver));
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
