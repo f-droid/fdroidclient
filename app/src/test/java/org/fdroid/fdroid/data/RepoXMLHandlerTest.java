@@ -22,23 +22,21 @@
 
 package org.fdroid.fdroid.data;
 
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +48,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import androidx.test.core.app.ApplicationProvider;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;

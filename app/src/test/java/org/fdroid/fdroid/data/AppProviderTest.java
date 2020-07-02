@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;

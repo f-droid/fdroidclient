@@ -220,7 +220,8 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         }
 
         @Override
-        public void getItemOffsets(Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        public void getItemOffsets(Rect outRect, @NonNull View view, @NonNull RecyclerView parent,
+                                   @NonNull RecyclerView.State state) {
             Resources r = context.getResources();
             int horizontalPadding = (int) r.getDimension(R.dimen.category_preview__app_list__padding__horizontal);
             int horizontalPaddingFirst = (int) r.getDimension(

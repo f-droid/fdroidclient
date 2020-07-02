@@ -1,12 +1,10 @@
 package org.fdroid.fdroid.updater;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Tests two versions of the official main F-Droid metadata, from 10 days apart. This is here

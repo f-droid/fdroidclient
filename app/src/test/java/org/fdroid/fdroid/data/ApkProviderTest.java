@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import org.fdroid.fdroid.Assert;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;

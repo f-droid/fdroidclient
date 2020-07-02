@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-import org.fdroid.fdroid.BuildConfig;
+
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertThat;
 

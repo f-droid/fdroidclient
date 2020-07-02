@@ -2,7 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import org.fdroid.fdroid.Assert;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
 import org.junit.Before;
 import org.junit.Test;

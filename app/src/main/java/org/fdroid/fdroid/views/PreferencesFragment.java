@@ -33,22 +33,21 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.SwitchPreference;
+import android.text.TextUtils;
+import android.view.WindowManager;
+
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreference;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.WindowManager;
 
-import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
@@ -59,6 +58,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 public class PreferencesFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {

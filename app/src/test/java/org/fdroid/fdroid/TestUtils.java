@@ -20,7 +20,6 @@ import org.fdroid.fdroid.data.RepoProviderTest;
 import org.fdroid.fdroid.data.Schema;
 import org.mockito.AdditionalAnswers;
 import org.robolectric.Robolectric;
-import org.robolectric.RuntimeEnvironment;
 
 import java.io.File;
 import java.io.FileOutputStream;

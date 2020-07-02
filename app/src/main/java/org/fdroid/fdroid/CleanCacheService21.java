@@ -1,6 +1,5 @@
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
