@@ -85,7 +85,7 @@ import java.security.Security;
 import java.util.List;
 import java.util.UUID;
 
-@ReportsCrashes(mailTo = "reports@f-droid.org",
+@ReportsCrashes(mailTo = BuildConfig.ACRA_REPORT_EMAIL,
         mode = ReportingInteractionMode.DIALOG,
         reportDialogClass = org.fdroid.fdroid.acra.CrashReportActivity.class,
         reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class,
