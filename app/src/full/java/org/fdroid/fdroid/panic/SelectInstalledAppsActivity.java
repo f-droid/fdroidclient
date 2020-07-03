@@ -41,7 +41,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
+import org.fdroid.fdroid.views.manager.InstalledAppListAdapter;
 
 public class SelectInstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

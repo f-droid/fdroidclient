@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
-import org.fdroid.fdroid.views.installed.InstalledAppListItemController;
+import org.fdroid.fdroid.views.manager.InstalledAppListAdapter;
+import org.fdroid.fdroid.views.manager.InstalledAppListItemController;
 
 import java.util.Set;
 

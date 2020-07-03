@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views.installed;
+package org.fdroid.fdroid.views.manager;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -40,7 +40,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
-public class InstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class FragmentInstalled extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private InstalledAppListAdapter adapter;
     private RecyclerView appList;
@@ -107,7 +107,7 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.installed_apps, menu);
+        getMenuInflater().inflate(R.menu.app_manager, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

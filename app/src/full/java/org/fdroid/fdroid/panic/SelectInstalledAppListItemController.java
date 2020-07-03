@@ -7,7 +7,7 @@ import android.view.View;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemState;
-import org.fdroid.fdroid.views.installed.InstalledAppListItemController;
+import org.fdroid.fdroid.views.manager.InstalledAppListItemController;
 
 import java.util.Set;
 

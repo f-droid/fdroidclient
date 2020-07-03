@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.installed;
+package org.fdroid.fdroid.views.manager;
 
 import android.app.Activity;
 import android.database.Cursor;
