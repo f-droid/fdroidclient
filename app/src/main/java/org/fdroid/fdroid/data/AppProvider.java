@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
@@ -19,6 +20,7 @@ import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
+import org.fdroid.fdroid.data.Schema.CollectionTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
@@ -357,6 +359,15 @@ public class AppProvider extends FDroidProvider {
             }
         }
 
+        public void leftJoinToCollectionTable() {
+            leftJoin(
+                    CollectionTable.NAME,
+                    null,
+                    CollectionTable.NAME + "." + CollectionTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME
+            );
+        }
+
+
         @Override
         public void addField(String field) {
             switch (field) {
@@ -377,6 +388,9 @@ public class AppProvider extends FDroidProvider {
                     break;
                 case Cols._COUNT:
                     appendCountField();
+                    break;
+                case Cols.Collection.HIDDEN:
+                    addCollectionAppHidden();
                     break;
                 default:
                     appendField(field, getTableName());
@@ -434,12 +448,18 @@ public class AppProvider extends FDroidProvider {
             leftJoinToInstalledTable();
             appendField(fieldName, "installed", alias);
         }
+
+        private void addCollectionAppHidden() {
+            leftJoinToCollectionTable();
+            appendField(CollectionTable.Cols.HIDDEN, Schema.CollectionTable.NAME, Cols.Collection.HIDDEN);
+        }
     }
 
     private static final String PROVIDER_NAME = "AppProvider";
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
+    private static final String PATH_INSTALLED_HIDDEN = "installedHidden";
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
     private static final String PATH_SEARCH = "search";
@@ -457,7 +477,8 @@ public class AppProvider extends FDroidProvider {
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
-    private static final int SEARCH_TEXT = INSTALLED + 1;
+    private static final int INSTALLED_HIDDEN = INSTALLED + 1;
+    private static final int SEARCH_TEXT = INSTALLED_HIDDEN + 1;
     private static final int SEARCH_TEXT_AND_CATEGORIES = SEARCH_TEXT + 1;
     private static final int RECENTLY_UPDATED = SEARCH_TEXT_AND_CATEGORIES + 1;
     private static final int CATEGORY = RECENTLY_UPDATED + 1;
@@ -480,6 +501,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         MATCHER.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
+        MATCHER.addURI(getAuthority(), PATH_INSTALLED_HIDDEN, INSTALLED_HIDDEN);
         MATCHER.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
         MATCHER.addURI(getAuthority(), PATH_HIGHEST_PRIORITY + "/*", HIGHEST_PRIORITY);
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
@@ -523,6 +545,10 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getInstalledUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_INSTALLED);
+    }
+
+    public static Uri getInstalledHiddenUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_INSTALLED_HIDDEN);
     }
 
     public static Uri getCanUpdateUri() {
@@ -637,6 +663,11 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryInstalled() {
         return new AppQuerySelection().requireNaturalInstalledTable();
+    }
+
+    private AppQuerySelection queryHidden() {
+        final String selection = CollectionTable.NAME + "." + CollectionTable.Cols.HIDDEN + " != 1 ";
+        return new AppQuerySelection(selection).requireNaturalInstalledTable();
     }
 
     private AppQuerySelection querySearch(String query) {
@@ -805,6 +836,12 @@ public class AppProvider extends FDroidProvider {
 
             case INSTALLED:
                 selection = selection.add(queryInstalled());
+                sortOrder = Cols.NAME;
+                includeSwap = false;
+                break;
+
+            case INSTALLED_HIDDEN:
+                selection = selection.add(queryHidden());
                 sortOrder = Cols.NAME;
                 includeSwap = false;
                 break;

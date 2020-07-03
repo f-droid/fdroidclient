@@ -6,11 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
+
+import java.util.Set;
 
 /**
  * Shows the currently installed version name, and whether or not it is the recommended version.
@@ -18,6 +21,9 @@ import org.fdroid.fdroid.views.apps.AppListItemState;
  * a specific version of this app.
  */
 public class InstalledAppListItemController extends AppListItemController {
+
+    private boolean boxVisibly = false;
+
     public InstalledAppListItemController(Activity activity, View itemView) {
         super(activity, itemView);
     }
@@ -26,9 +32,15 @@ public class InstalledAppListItemController extends AppListItemController {
     @Override
     protected AppListItemState getCurrentViewState(
             @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
-        return new AppListItemState(app)
-                .setStatusText(getInstalledVersion(app))
-                .setSecondaryStatusText(getIgnoreStatus(app));
+        if (boxVisibly) {
+            Set<String> selectedApps = Preferences.get().getPanicTmpSelectedSet();
+            return new AppListItemState(app)
+                    .setCheckBoxStatus(selectedApps.contains(app.packageName));
+        } else {
+            return new AppListItemState(app)
+                    .setStatusText(getInstalledVersion(app))
+                    .setSecondaryStatusText(getIgnoreStatus(app));
+        }
     }
 
     /**
@@ -58,5 +70,9 @@ public class InstalledAppListItemController extends AppListItemController {
         }
 
         return null;
+    }
+
+    public void setBoxVisibly(boolean boxVisibly) {
+        this.boxVisibly = boxVisibly;
     }
 }

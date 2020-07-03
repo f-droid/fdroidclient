@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.filebrowser.fileBrowserActivity;
@@ -56,6 +57,33 @@ public class AppManagerActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                if (position == 0) {
+                    FragmentCollection fragment = (FragmentCollection) adapter.getItem(1); //Say that THIS fragment is FragmentCollection
+                    fragment.closeActionMode(); //now we got the closeActionMode() function
+                }
+
+                if (position == 1) {
+                    FragmentInstalled fragment = (FragmentInstalled) adapter.getItem(0); //Say that THIS fragment is FragmentInstalled
+                    fragment.closeActionMode(); //now we got the closeActionMode() function
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -65,10 +93,44 @@ public class AppManagerActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        MenuItem installedShowHidden = menu.findItem(R.id.menu_show_hidden_installed_apps);
+        if (installedShowHidden != null) {
+            installedShowHidden.setChecked(Preferences.get().installedShowHidden());
+        }
+
+        MenuItem collectionShowHidden = menu.findItem(R.id.menu_show_hidden_collection_apps);
+        if (collectionShowHidden != null) {
+            collectionShowHidden.setChecked(Preferences.get().collectionShowHidden());
+        }
+        return true;
+    }
+
+
+    void refreshFragments() {
+        int count = adapter.getCount();
+        for (int i = 0; i < count; i++) {
+            adapter.getItem(i).onResume();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
 
+            case R.id.menu_show_hidden_installed_apps:
+                Preferences.get().setInstalledShowHidden(!item.isChecked());
+                item.setChecked(!item.isChecked());
+                refreshFragments();
+                break;
+            case R.id.menu_show_hidden_collection_apps:
+                Preferences.get().setCollectionShowHidden(!item.isChecked());
+                item.setChecked(!item.isChecked());
+                refreshFragments();
+                break;
             case R.id.menu_load:
                 launchFileActivity(fileBrowserActivity.MODE_LOAD);
                 break;

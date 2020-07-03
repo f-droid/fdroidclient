@@ -118,6 +118,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
     public static final String PREF_ALLOW_PUSH_REQUESTS = "allowPushRequests";
+    public static final String PREF_INSTALLED_SHOW_HIDDEN = "installedShowHidden";
+    public static final String PREF_COLLECTION_SHOW_HIDDEN = "collectionShowHidden";
     public static final String PREF_BACKUP_PATH = "backupPath";
 
     public static final int OVER_NETWORK_NEVER = 0;
@@ -384,6 +386,22 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public void setExpertMode(boolean flag) {
         preferences.edit().putBoolean(PREF_EXPERT, flag).apply();
+    }
+
+    public boolean installedShowHidden() {
+        return preferences.getBoolean(PREF_INSTALLED_SHOW_HIDDEN, IGNORED_B);
+    }
+
+    public void setInstalledShowHidden(boolean flag) {
+        preferences.edit().putBoolean(PREF_INSTALLED_SHOW_HIDDEN, flag).apply();
+    }
+
+    public boolean collectionShowHidden() {
+        return preferences.getBoolean(PREF_COLLECTION_SHOW_HIDDEN, IGNORED_B);
+    }
+
+    public void setCollectionShowHidden(boolean flag) {
+        preferences.edit().putBoolean(PREF_COLLECTION_SHOW_HIDDEN, flag).apply();
     }
 
     public String BackupPath() {

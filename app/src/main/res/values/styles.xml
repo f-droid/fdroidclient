@@ -4,6 +4,7 @@
     <style name="AppBaseThemeDark" parent="Theme.AppCompat.NoActionBar">
         <!-- backward-compatibility theme options go here -->
 
+        <item name="windowActionModeOverlay">true</item>
         <item name="colorPrimary">@color/fdroid_blue_dark</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_darkest</item>
         <item name="colorAccent">@color/fdroid_green</item>
@@ -31,6 +32,7 @@
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- backward-compatibility theme options go here -->
 
+        <item name="windowActionModeOverlay">true</item>
         <item name="colorPrimary">@color/fdroid_blue</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
         <item name="colorAccent">@color/fdroid_green</item>
@@ -58,6 +60,7 @@
     <style name="AppBaseThemeNight" parent="AppThemeDark">
         <!-- backward-compatibility theme options go here -->
 
+        <item name="windowActionModeOverlay">true</item>
         <item name="colorPrimary">@color/fdroid_night</item>
         <item name="colorPrimaryDark">@color/fdroid_night_dark</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeNight</item>

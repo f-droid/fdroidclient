@@ -17,6 +17,9 @@ import java.util.Set;
 
 
 public class CollectionAppListItemController extends AppListItemController {
+
+    private boolean boxVisibly = false;
+
     public CollectionAppListItemController(Activity activity, View itemView) {
         super(activity, itemView);
     }
@@ -25,11 +28,17 @@ public class CollectionAppListItemController extends AppListItemController {
     @Override
     protected AppListItemState getCurrentViewState(
             @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
-        return new AppListItemState(app)
-                .setStatusText(getInstalledVersion(app))
-                .setSecondaryStatusText(getIgnoreStatus(app));
-    }
 
+        if (boxVisibly) {
+            Set<String> selectedApps = Preferences.get().getPanicTmpSelectedSet();
+            return new AppListItemState(app)
+                    .setCheckBoxStatus(selectedApps.contains(app.packageName));
+        } else {
+            return new AppListItemState(app)
+                    .setStatusText(getInstalledVersion(app))
+                    .setSecondaryStatusText(getIgnoreStatus(app));
+        }
+    }
 
 
     private CharSequence getInstalledVersion(@NonNull App app) {
@@ -55,6 +64,10 @@ public class CollectionAppListItemController extends AppListItemController {
         }
 
         return null;
+    }
+
+    public void setBoxVisibly(boolean boxVisibly) {
+        this.boxVisibly = boxVisibly;
     }
 
 }

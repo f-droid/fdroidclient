@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.basic.file.DirListActivity">
+
+    <item
+        android:id="@+id/action_hide"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_hide_white_24dp"
+        android:title="@string/menu_hide"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_show"
+        android:orderInCategory="101"
+        android:icon="@drawable/ic_show_white_24dp"
+        android:title="@string/menu_show"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="102"
+        android:icon="@drawable/ic_delete_white"
+        android:title="@string/menu_delete"
+        app:showAsAction="ifRoom" />
+
+    <!--
+    <item
+        android:id="@+id/action_install"
+        android:orderInCategory="100"
+        android:title="installieren"
+        app:showAsAction="ifRoom" />
+    //-->
+
+</menu>

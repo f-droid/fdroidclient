@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.manager.InstalledAppListAdapter;
@@ -15,7 +16,7 @@ public class SelectInstalledAppListAdapter extends InstalledAppListAdapter {
     private final Set<String> selectedApps;
 
     SelectInstalledAppListAdapter(Activity activity) {
-        super(activity);
+        super(activity, null);
         Preferences prefs = Preferences.get();
         selectedApps = prefs.getPanicWipeSet();
         prefs.setPanicTmpSelectedSet(selectedApps);

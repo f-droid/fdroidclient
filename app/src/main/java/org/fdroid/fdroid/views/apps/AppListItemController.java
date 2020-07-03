@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.Preferences;
@@ -180,6 +181,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     @Nullable
     protected final AppUpdateStatus getCurrentStatus() {
         return currentStatus;
+    }
+
+    public void resetOnClick() {
+        this.itemView.setOnClickListener(onAppClicked);
     }
 
     public void bindModel(@NonNull App app) {

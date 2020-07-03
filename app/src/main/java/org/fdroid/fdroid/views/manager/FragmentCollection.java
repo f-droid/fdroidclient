@@ -70,9 +70,17 @@ public class FragmentCollection extends Fragment implements LoaderManager.Loader
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Uri uri;
+
+        if (Preferences.get().collectionShowHidden()) {
+            uri = CollectionProvider.getCollectionUri();
+        } else {
+            uri = CollectionProvider.getCollectionHiddenUri();
+        }
+
         return new CursorLoader(
                 context,
-                CollectionProvider.getCollectionUri(),
+                uri,
                 Schema.AppMetadataTable.Cols.ALL_COLLECTION,
                 null, null, null);
     }
@@ -94,6 +102,12 @@ public class FragmentCollection extends Fragment implements LoaderManager.Loader
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adapter.setApps(null);
+    }
+
+    public void closeActionMode() {
+        if (adapter != null) {
+            adapter.closeActionMode();
+        }
     }
 
 }

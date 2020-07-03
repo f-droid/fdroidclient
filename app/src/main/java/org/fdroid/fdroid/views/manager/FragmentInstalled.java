@@ -62,7 +62,7 @@ public class FragmentInstalled extends Fragment implements LoaderManager.LoaderC
         this.context = getContext();
 
 
-        adapter = new InstalledAppListAdapter(activity);
+        adapter = new InstalledAppListAdapter(activity, this);
 
         appList = view.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
@@ -91,10 +91,18 @@ public class FragmentInstalled extends Fragment implements LoaderManager.LoaderC
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Uri uri;
+
+        if (Preferences.get().installedShowHidden()) {
+            uri = AppProvider.getInstalledUri();
+        } else {
+            uri = AppProvider.getInstalledHiddenUri();
+        }
+
         return new CursorLoader(
                 context,
-                AppProvider.getInstalledUri(),
-                Schema.AppMetadataTable.Cols.ALL,
+                uri,
+                Schema.AppMetadataTable.Cols.ALL_PLUS_COLLECTION,
                 null, null, null);
     }
 
@@ -117,5 +125,10 @@ public class FragmentInstalled extends Fragment implements LoaderManager.LoaderC
         adapter.setApps(null);
     }
 
+    public void closeActionMode() {
+        if (adapter != null) {
+            adapter.closeActionMode();
+        }
+    }
 
 }

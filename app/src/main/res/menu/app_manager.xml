@@ -20,4 +20,23 @@
         android:orderInCategory="102"
         android:title="@string/menu_export"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_show_hidden_installed_apps"
+        android:orderInCategory="103"
+        android:icon="@drawable/ic_do_not_disturb_white"
+        android:title="@string/menu_installed_show"
+        android:checkable="true"
+        app:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/menu_show_hidden_collection_apps"
+        android:orderInCategory="104"
+        android:icon="@drawable/ic_do_not_disturb_white"
+        android:title="@string/menu_collection_show"
+        android:checkable="true"
+        app:showAsAction="never"/>
+
+
 </menu>
