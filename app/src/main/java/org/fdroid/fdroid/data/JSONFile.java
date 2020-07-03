@@ -169,8 +169,6 @@ public class JSONFile {
         }
 
 
-        Log.i(TAG, jsonString);
-
         try {
             FileWriter myWriter = new FileWriter(filePath);
             myWriter.write(jsonString);

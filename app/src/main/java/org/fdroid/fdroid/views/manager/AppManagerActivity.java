@@ -51,6 +51,7 @@ public class AppManagerActivity extends AppCompatActivity {
 
         adapter = new AppManagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentInstalled(), getString(R.string.installed_layout_installed));
+        adapter.addFragment(new FragmentCollection(), getString(R.string.installed_layout_collection));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

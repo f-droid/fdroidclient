@@ -276,6 +276,12 @@ public interface Schema {
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };
+
+            String[] ALL_COLLECTION = {
+                    REPO_ID, NAME,SUMMARY, ICON, ICON_URL, SUGGESTED_VERSION_CODE, SUGGESTED_VERSION_NAME,
+                    Package.PACKAGE_NAME,
+                    Collection.LAST_MODIFIED, Collection.HIDDEN, Collection.IGNORING_VERSION_CODE,
+            };
         }
     }
 
