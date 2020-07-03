@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -30,6 +31,8 @@ import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 import java.util.Date;
 import java.util.Locale;
+
+import static org.fdroid.fdroid.data.CollectionProvider.CollectionSync;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -148,6 +151,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.VISIBLE);
         }
+
+        CollectionSync(activity.getApplicationContext()); // syncs Apps with collection_DB
     }
 
     private void explainEmptyStateToUser() {

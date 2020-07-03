@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,20 +14,25 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import static org.fdroid.fdroid.data.CollectionProvider.getJSONUri;
 
 /**
  * Manages the state of APKs that are being installed or that have updates available.
@@ -168,7 +174,7 @@ public final class AppUpdateStatusManager {
             return 0;
         }
 
-        public static final Parcelable.Creator<AppUpdateStatus> CREATOR = new Parcelable.Creator<AppUpdateStatus>() {
+        public static final Creator<AppUpdateStatus> CREATOR = new Creator<AppUpdateStatus>() {
             @Override
             public AppUpdateStatus createFromParcel(Parcel in) {
                 return new AppUpdateStatus(in);
@@ -263,6 +269,7 @@ public final class AppUpdateStatusManager {
 
         if (status == Status.Installed) {
             InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
+            CollectionInsertDB(entry); //guys, new app is installed. Put the info into CollectionDB
         }
     }
 
@@ -557,5 +564,22 @@ public final class AppUpdateStatusManager {
                 0,
                 errorDialogIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    public void CollectionInsertDB(AppUpdateStatus entry) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Schema.CollectionTable.Cols.LAST_MODIFIED, Utils.formatTime(new Date(), ""));
+        int ret = context.getContentResolver().update(getJSONUri(), contentValues, Schema.CollectionTable.Cols.PACKAGE_NAME + "=?", new String[]{entry.app.packageName});
+        if (ret == 0) {
+            // Update failed. Entry don't exist. So create new entry
+            contentValues.put(Schema.CollectionTable.Cols.NAME, entry.app.name);
+            contentValues.put(Schema.CollectionTable.Cols.PACKAGE_NAME, entry.app.packageName);
+            contentValues.put(Schema.CollectionTable.Cols.LAST_MODIFIED, System.currentTimeMillis());
+            contentValues.put(Schema.CollectionTable.Cols.VERSION_CODE, entry.app.installedVersionCode);
+            contentValues.put(Schema.CollectionTable.Cols.VERSION_NAME, entry.app.installedVersionName);
+
+            context.getContentResolver().insert(getJSONUri(), contentValues);
+        }
+
     }
 }
