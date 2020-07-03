@@ -28,9 +28,11 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -116,6 +118,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
     public static final String PREF_ALLOW_PUSH_REQUESTS = "allowPushRequests";
+    public static final String PREF_BACKUP_PATH = "backupPath";
 
     public static final int OVER_NETWORK_NEVER = 0;
     public static final int OVER_NETWORK_ON_DEMAND = 1;
@@ -135,6 +138,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final boolean IGNORED_B = false;
     private static final int IGNORED_I = -1;
+
+    private static final String DEFAULT_BACKUP_PATH = Environment.getExternalStorageDirectory() + "/FDroidBackup";
 
     /**
      * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
@@ -379,6 +384,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public void setExpertMode(boolean flag) {
         preferences.edit().putBoolean(PREF_EXPERT, flag).apply();
+    }
+
+    public String BackupPath() {
+        return preferences.getString(PREF_BACKUP_PATH, DEFAULT_BACKUP_PATH);
+    }
+
+    public void setBackupPath(String path) {
+        preferences.edit().putString(PREF_BACKUP_PATH, path).apply();
     }
 
     public boolean forceTouchApps() {

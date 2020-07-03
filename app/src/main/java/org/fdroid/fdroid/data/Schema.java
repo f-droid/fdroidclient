@@ -225,6 +225,12 @@ public interface Schema {
                 String PACKAGE_NAME = "package_packageName";
             }
 
+            interface Collection  {
+                String LAST_MODIFIED         = "lastModified";
+                String HIDDEN                = "hidden";
+                String IGNORING_VERSION_CODE = "ignoringVersion";
+            }
+
             /**
              * This is to make it explicit that you cannot request the {@link Categories#CATEGORIES}
              * field when selecting app metadata from the database. It is only here for the purpose

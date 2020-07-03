@@ -202,6 +202,17 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public Date lastUpdated;
 
     /**
+     * Properties which contains app metadata for collection overview
+     * {@link Schema.CollectionTable}
+     */
+
+    public Date collectionLastModified = null;
+
+    public String collectionHidden = "0";
+
+    public int collectionIgnoringVersionCode = 0;
+
+    /**
      * List of categories (as defined in the metadata documentation) or null if there aren't any.
      * This is only populated when parsing a repository. If you need to know about the categories
      * an app is in any other part of F-Droid, use the {@link CategoryProvider}.
@@ -385,6 +396,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.InstalledApp.SIGNATURE:
                     installedSig = cursor.getString(i);
+                    break;
+                case Cols.Collection.LAST_MODIFIED:
+                    collectionLastModified = Utils.parseTime(cursor.getString(i), null);
+                    break;
+                case Cols.Collection.HIDDEN:
+                    collectionHidden = cursor.getString(i);
+                    break;
+                case Cols.Collection.IGNORING_VERSION_CODE:
+                    collectionIgnoringVersionCode = cursor.getInt(i);
                     break;
                 case "_id":
                     break;

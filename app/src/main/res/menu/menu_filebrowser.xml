@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.basic.file.DirListActivity"
+    android:layout_width="100000dp"
+    android:layout_height="match_parent" >
+
+       <item
+        android:id="@+id/action_save"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_save_24"
+        android:title="@string/menu_action_save"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/action_newdir"
+        android:orderInCategory="101"
+        android:icon="@drawable/ic_baseline_create_new_folder_24"
+        android:title="@string/menu_action_new_folder"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_cancel"
+        android:orderInCategory="102"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/menu_cancel"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_change_backupdir"
+        android:orderInCategory="103"
+        android:title="@string/menu_default_folder"
+        app:showAsAction="never" />
+
+
+</menu>

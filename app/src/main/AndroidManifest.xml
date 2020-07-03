@@ -132,6 +132,10 @@
                     android:name="android.support.FILE_PROVIDER_PATHS"
                     android:resource="@xml/installer_file_provider"/>
         </provider>
+        <provider
+            android:authorities="${applicationId}.data.CollectionProvider"
+            android:name="org.fdroid.fdroid.data.CollectionProvider"
+            android:exported="false"/>
 
         <activity
                 android:name=".privileged.views.InstallConfirmActivity"
@@ -542,6 +546,9 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".views.main.MainActivity"/>
         </activity>
+
+        <activity android:name=".views.filebrowser.fileBrowserActivity"/>
+
         <activity android:name=".views.InstallHistoryActivity"
                   android:parentActivityName=".views.main.MainActivity">
             <meta-data

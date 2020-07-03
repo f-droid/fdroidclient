@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
+
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp" >
+
+    <ImageView
+        android:id="@+id/df_icon"
+
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+
+        android:scaleType="fitCenter"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_twotone_folder_24" />
+
+    <TextView
+        android:id="@+id/dir_name"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+
+        android:ellipsize="end"
+        android:singleLine="true"
+
+
+        android:textSize="20sp"
+
+        app:layout_constraintStart_toEndOf="@+id/df_icon"
+        app:layout_constraintTop_toTopOf="@+id/df_icon"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        tools:text="Folder long text long text long text long text long text long text long text long text long text long text long text long text long text" />
+
+</android.support.constraint.ConstraintLayout>
