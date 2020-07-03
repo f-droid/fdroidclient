@@ -30,6 +30,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -42,6 +43,7 @@ import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.fdroid.fdroid.data.Schema.CollectionTable;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -227,6 +229,17 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
+    private static final String CREATE_TABLE_COLLECTION =
+            "CREATE TABLE IF NOT EXISTS " + CollectionTable.NAME + " ("
+                    + CollectionTable.Cols.NAME + " TEXT, "
+                    + CollectionTable.Cols.PACKAGE_NAME + " TEXT, "
+                    + CollectionTable.Cols.LAST_MODIFIED + " TIMESTAMP, "
+                    + CollectionTable.Cols.HIDDEN + " INT NOT NULL DEFAULT 0, "
+                    + CollectionTable.Cols.VERSION_CODE + " INT, "
+                    + CollectionTable.Cols.VERSION_NAME + " TEXT, "
+                    + CollectionTable.Cols.IGNORING_VERSION_CODE + " INT "
+                    + " );";
+
     protected static final int DB_VERSION = 85;
 
     private final Context context;
@@ -267,6 +280,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APP_PREFS);
         db.execSQL(CREATE_TABLE_ANTI_FEATURE);
         db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
+        db.execSQL(CREATE_TABLE_COLLECTION);
         ensureIndexes(db);
 
         List<String> initialRepos = DBHelper.loadInitialRepos(context);
@@ -1356,6 +1370,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_ANTI_FEATURE);
             db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
             db.execSQL(CREATE_TABLE_INSTALLED_APP);
+            db.execSQL(CREATE_TABLE_COLLECTION);
             clearRepoEtags(db);
             ensureIndexes(db);
             db.setTransactionSuccessful();

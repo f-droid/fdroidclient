@@ -412,4 +412,23 @@ public interface Schema {
         }
     }
 
+
+    interface CollectionTable {
+
+        String NAME = "fdroid_collection";
+
+        interface Cols {
+            String NAME = "collection_name";
+            String PACKAGE_NAME = "collection_packageName";
+            String LAST_MODIFIED = "collection_lastModified";
+            String HIDDEN = "collection_hidden";
+            String VERSION_CODE = "collection_versionCode";
+            String VERSION_NAME = "collection_versionName";
+            String IGNORING_VERSION_CODE = "collection_ignoringVersion";
+
+            String[] ALL = {
+                    NAME, PACKAGE_NAME, LAST_MODIFIED, HIDDEN, VERSION_CODE, VERSION_NAME, IGNORING_VERSION_CODE,
+            };
+        }
+    }
 }
