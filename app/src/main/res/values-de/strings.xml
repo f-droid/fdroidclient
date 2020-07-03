@@ -172,9 +172,15 @@
     <string name="interval_1w">Wöchentlich nach Aktualisierungen suchen</string>
     <string name="more">Mehr</string>
     <string name="less">Weniger</string>
-    <string name="empty_installed_app_list">Keine Apps installiert.
-\n
-\nEs sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
+    <string name="empty_installed_app_list">Keine Apps installiert.\n\nEs sind Apps auf Ihrem Gerät installiert,
+        aber keine davon ist von F-Droid abrufbar, oder alle Apps sind ausgeblendet.
+        Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich
+        keine Ihrer Apps beinhalten.
+    </string>
+    <string name="empty_collection_app_list">Keine Apps in der Sammlung, oder alle Apps sind ausgeblendet.\n\nIn der
+        Sammlung erscheinen Apps, die Sie deinstalliert haben. Außerdem erscheinen hier Apps aus importierten Listen,
+        die Sie auf diesem Gerät noch nicht wieder installiert haben.
+    </string>
     <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -499,4 +505,35 @@
     <string name="undo">Rückgängig</string>
     <string name="app_list__dismiss_installing_app">Installation abgebrochen</string>
     <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegel durchsuchen.</string>
+    <string name="installed_layout_installed">Installiert</string>
+    <string name="installed_layout_collection">Sammlung</string>
+    <string name="installed_layout_unknown">Unbekannt</string>
+    <string name="installed_layout_last_modified">Letzte Änderung: %1$s</string>
+    <string name="installed_toast_import">Erfolgreich importiert</string>
+    <string name="installed_toast_export">Erfolgreich exportiert</string>
+    <string name="installed_dialog_delete">Möchten Sie die App(s) endgültig aus der Sammlung entfernen?</string>
+    <string name="installed_dialog_delete_app">App(s) entfernen</string>
+    <string name="menu_import">Laden</string>
+    <string name="menu_export">Speichern</string>
+    <string name="menu_installed_show">Apps in \'Installiert\' einblenden</string>
+    <string name="menu_collection_show">Apps in \'Sammlung\' einblenden</string>
+    <string name="menu_hide">Ausblenden</string>
+    <string name="menu_show">Einblenden</string>
+    <string name="menu_delete">Löschen</string>
+    <string name="menu_default_folder">Als Standardordner festlegen</string>
+    <string name="menu_cancel">Abbrechen</string>
+    <string name="menu_action_new_folder">Neuer Ordner</string>
+    <string name="menu_action_save">Speichern</string>
+    <string name="filebrowser_dialog_cancel">Abbrechen</string>
+    <string name="filebrowser_dialog_overwrite">Überschreiben</string>
+    <string name="filebrowser_dialog_save_file">Datei speichern</string>
+    <string name="filebrowser_dialog_overwrite_exist_file">Die Datei %1$s ist bereits vorhanden. Möchten Sie die alte Datei überschreiben?</string>
+    <string name="filebrowser_dialog_already_exist">Ordner oder Datei existiert bereits!</string>
+    <string name="filebrowser_dialog_new_folder">Neuer Ordner</string>
+    <string name="filebrowser_dialog_creat">Anlegen</string>
+    <string name="filebrowser_dialog_would_load">Möchten Sie die Datei \'%1$s\' laden?</string>
+    <string name="filebrowser_dialog_load_file">Datei laden</string>
+    <string name="filebrowser_dialog_no">Nein</string>
+    <string name="filebrowser_dialog_yes">Ja</string>
+    <string name="filebrowser_dialog_save">Speichern</string>
 </resources>

@@ -536,7 +536,7 @@
 
         <activity android:name=".views.apps.AppListActivity"/>
 
-        <activity android:name=".views.manager.FragmentInstalled"
+        <activity android:name=".views.manager.AppManagerActivity"
                   android:parentActivityName=".views.main.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

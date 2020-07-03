@@ -444,9 +444,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="other">View all %d</item>
     </plurals>
 
-    <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not
+    <string name="empty_installed_app_list">No apps installed, or all Apps are hidden.\n\nThere are apps on your device, but they are not
         available from F-Droid. This could be because you need to update your repositories, or the repositories
         genuinely don\'t have your apps available.
+    </string>
+    <string name="empty_collection_app_list">No Apps in the collection, or all Apps are hidden.\n\nIn the collection
+        appearing Apps which you had uninstalled. In addition, here appearing Apps from imported lists,
+        which you haven\'t reinstalled yet on this device.
     </string>
     <string name="empty_can_update_app_list">Congratulations!\nYour apps are up to date.</string>
 
@@ -670,4 +674,35 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="one">Updated %1$d year ago</item>
         <item quantity="other">Updated %1$d years ago</item>
     </plurals>
+    <string name="installed_layout_installed">Installed</string>
+    <string name="installed_layout_collection">Collection</string>
+    <string name="installed_layout_last_modified">Last modification: %1$s</string>
+    <string name="installed_layout_unknown">Unknown</string>
+    <string name="installed_toast_import">Successfully imported</string>
+    <string name="installed_toast_export">Successfully exported</string>
+    <string name="installed_dialog_delete">Do you want to remove the app(s) from the collection permanently?</string>
+    <string name="installed_dialog_delete_app">Remove app(s)</string>
+    <string name="menu_import">Load</string>
+    <string name="menu_export">Save</string>
+    <string name="menu_installed_show">Show apps in \'installed\'</string>
+    <string name="menu_collection_show">Show apps in \'collection\'</string>
+    <string name="menu_hide">Hide</string>
+    <string name="menu_show">Show</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_default_folder">Set as default folder</string>
+    <string name="menu_cancel">Cancel</string>
+    <string name="menu_action_new_folder">New folder</string>
+    <string name="menu_action_save">Save</string>
+    <string name="filebrowser_dialog_cancel">Cancel</string>
+    <string name="filebrowser_dialog_overwrite">Overwrite</string>
+    <string name="filebrowser_dialog_save_file">Save file</string>
+    <string name="filebrowser_dialog_overwrite_exist_file">The file %1$s already exists. Do you want to overwrite the old file?</string>
+    <string name="filebrowser_dialog_already_exist">Folder or file already exist!</string>
+    <string name="filebrowser_dialog_new_folder">New folder</string>
+    <string name="filebrowser_dialog_creat">Creat</string>
+    <string name="filebrowser_dialog_would_load">Do you want to load the file %1$s?</string>
+    <string name="filebrowser_dialog_load_file">Load file</string>
+    <string name="filebrowser_dialog_no">No</string>
+    <string name="filebrowser_dialog_yes">Yes</string>
+    <string name="filebrowser_dialog_save">Save</string>
 </resources>

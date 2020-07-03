@@ -19,69 +19,80 @@
 
 package org.fdroid.fdroid.views.manager;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.app.ShareCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import org.fdroid.fdroid.FDroidApp;
+
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
-public class FragmentInstalled extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+public class FragmentInstalled extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    private static final String TAG = "FragmentInstalled";
+    protected FragmentActivity activity;
+    protected Context context;
 
     private InstalledAppListAdapter adapter;
     private RecyclerView appList;
     private TextView emptyState;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_app_manager_layout, container, false);
 
-        ((FDroidApp) getApplication()).applyTheme(this);
-        super.onCreate(savedInstanceState);
+        this.activity = getActivity();
+        this.context = getContext();
 
-        setContentView(R.layout.installed_apps_layout);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.installed_apps__activity_title));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        adapter = new InstalledAppListAdapter(activity);
 
-        adapter = new InstalledAppListAdapter(this);
-
-        appList = (RecyclerView) findViewById(R.id.app_list);
+        appList = view.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
-        appList.setLayoutManager(new LinearLayoutManager(this));
+        appList.setLayoutManager(new LinearLayoutManager(context));
         appList.setAdapter(adapter);
 
-        emptyState = (TextView) findViewById(R.id.empty_state);
+        emptyState = view.findViewById(R.id.empty_state);
+
+        view.findViewById(R.id.helpText).setVisibility(View.GONE);
+
+        return view;
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
         // Starts a new or restarts an existing Loader in this manager
-        getSupportLoaderManager().restartLoader(0, null, this);
+        if (this.activity != null) {
+            this.activity.getSupportLoaderManager().restartLoader(0, null, this);
+        } else {
+            Log.e(TAG, "activity is gone");
+        }
     }
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(
-                this,
+                context,
                 AppProvider.getInstalledUri(),
                 Schema.AppMetadataTable.Cols.ALL,
                 null, null, null);
@@ -94,6 +105,7 @@ public class FragmentInstalled extends AppCompatActivity implements LoaderManage
         if (adapter.getItemCount() == 0) {
             appList.setVisibility(View.GONE);
             emptyState.setVisibility(View.VISIBLE);
+            emptyState.setText(R.string.empty_installed_app_list);
         } else {
             appList.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
@@ -105,35 +117,5 @@ public class FragmentInstalled extends AppCompatActivity implements LoaderManage
         adapter.setApps(null);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.app_manager, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.menu_share:
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("packageName,versionCode,versionName\n");
-                for (int i = 0; i < adapter.getItemCount(); i++) {
-                    App app = adapter.getItem(i);
-                    if (app != null) {
-                        stringBuilder.append(app.packageName).append(',')
-                                .append(app.installedVersionCode).append(',')
-                                .append(app.installedVersionName).append('\n');
-                    }
-                }
-                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this)
-                        .setSubject(getString(R.string.send_installed_apps))
-                        .setChooserTitle(R.string.send_installed_apps)
-                        .setText(stringBuilder.toString())
-                        .setType("text/csv");
-                startActivity(intentBuilder.getIntent());
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
