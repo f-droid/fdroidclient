@@ -26,10 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/installed_app_list_item" />
+        tools:listitem="@layout/fragment_app_manager_list_item" />
 
-    <!--
-    Commented out until the long press functionality is implemented.-->
     <TextView
         android:id="@+id/helpText"
         android:layout_width="0dp"
@@ -42,7 +40,7 @@
         android:gravity="center"
         android:textColor="#424242"
         android:textSize="14sp"
-        android:text="Tap and hold on an app for more options"
+        android:text="@string/installed_layout_onHold"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginBottom="-1dp" />
 

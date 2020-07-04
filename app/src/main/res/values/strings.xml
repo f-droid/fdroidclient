@@ -677,7 +677,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="installed_layout_installed">Installed</string>
     <string name="installed_layout_collection">Collection</string>
     <string name="installed_layout_last_modified">Last modification: %1$s</string>
-    <string name="installed_layout_unknown">Unknown</string>
+    <string name="installed_layout_onHold">Tap and hold on an app for more options</string>
     <string name="installed_toast_import">Successfully imported</string>
     <string name="installed_toast_export">Successfully exported</string>
     <string name="installed_dialog_delete">Do you want to remove the app(s) from the collection permanently?</string>

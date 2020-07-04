@@ -507,7 +507,7 @@
     <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegel durchsuchen.</string>
     <string name="installed_layout_installed">Installiert</string>
     <string name="installed_layout_collection">Sammlung</string>
-    <string name="installed_layout_unknown">Unbekannt</string>
+    <string name="installed_layout_onHold">Für weitere Optionen halten Sie die App gedrückt</string>
     <string name="installed_layout_last_modified">Letzte Änderung: %1$s</string>
     <string name="installed_toast_import">Erfolgreich importiert</string>
     <string name="installed_toast_export">Erfolgreich exportiert</string>

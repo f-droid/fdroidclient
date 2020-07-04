@@ -48,7 +48,6 @@ public class fileBrowserActivity extends AppCompatActivity {
     private int mode;
     private File currentDir;
     private fileBrowserAdapter adapter;
-    private RecyclerView rv;
     private TextView URI;
     private final String STORE = Environment.getExternalStorageDirectory().getPath();
     private final int rootLength = STORE.length();
@@ -93,7 +92,7 @@ public class fileBrowserActivity extends AppCompatActivity {
         URI = findViewById(R.id.URITextView);
 
         //find RecyclerView_Layout;
-        rv = findViewById(R.id.rv);
+        RecyclerView rv = findViewById(R.id.rv);
         rv.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -346,7 +345,7 @@ public class fileBrowserActivity extends AppCompatActivity {
                     @Override
                     public int compare(File f2, File f1) {
                         if (f1.isFile() == f2.isFile()) {
-                            return f2.getName().toLowerCase().compareTo(f1.getName().toLowerCase());
+                            return f2.getName().toLowerCase(Locale.getDefault()).compareTo(f1.getName().toLowerCase(Locale.getDefault()));
                         } else if (f1.isFile()) {
                             return 1; //put files on top
                         } else {
