@@ -16,6 +16,12 @@
 * Fixed a problem where repository updates would never trigger
   when either "Over Data" or "Over Wifi" were disabled.
 
+* Support OpenCollective donation option and highlight 
+  free software donation platforms
+
+* Fix for when the app update button wasn't showing up or working 
+  in some cases (thanks @di72nn)
+
 * Stop cropping feature header image (thanks @ByteHamster!)
 
 * Make navigation bar match dark mode (thanks @MatthieuB!)
