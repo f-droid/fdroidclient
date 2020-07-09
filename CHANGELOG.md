@@ -8,6 +8,14 @@
   screenshots and other information in the Archive rather than the
   Repo itself.
 
+* Fixed hopefully all occurrences where F-Droid client couldn't show an icon.
+  The remaining cases of missing icons are now caused either by 
+  icons not included in upstream repo or by temporary network failures.
+  (After updating this requires one additional repo update to take effect.)
+
+* Fixed a problem where repository updates would never trigger
+  when either "Over Data" or "Over Wifi" were disabled.
+
 * Stop cropping feature header image (thanks @ByteHamster!)
 
 * Make navigation bar match dark mode (thanks @MatthieuB!)
