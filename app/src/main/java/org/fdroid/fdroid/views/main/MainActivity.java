@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigation.setTabSelectedListener(this)
                 .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
                 .setInActiveColor(R.color.bottom_nav_items)
-                .setActiveColor(android.R.color.white)
+                .setActiveColor(R.color.bottom_nav_active)
                 .setMode(BottomNavigationBar.MODE_FIXED)
                 .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.main_menu__updates)
                         .setBadgeItem(updatesBadge))
