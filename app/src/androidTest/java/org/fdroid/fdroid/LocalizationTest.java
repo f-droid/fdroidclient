@@ -179,6 +179,9 @@ public class LocalizationTest {
                         case "dd":
                             resources.getString(resId, 1, 2);
                             break;
+                        case "ds":
+                            resources.getString(resId, 1, "TWO");
+                            break;
                         case "dds":
                             resources.getString(resId, 1, 2, "THREE");
                             break;
