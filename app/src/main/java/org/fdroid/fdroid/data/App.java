@@ -15,15 +15,13 @@ import android.os.Environment;
 import android.os.LocaleList;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -101,7 +99,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     public boolean isApk;
     @JsonIgnore
-    private boolean isLocalized = false;
+    boolean isLocalized = false;
 
     /**
      * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
@@ -517,7 +515,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * on other country-specific locales, rather than English.
      */
     @JsonProperty("localized")
-    private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
+    void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
         Locale defaultLocale = Locale.getDefault();
         String languageTag = defaultLocale.getLanguage();
         String countryTag = defaultLocale.getCountry();
@@ -571,7 +569,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
 
-        if (localesToUse.size() >= 1) {
+        for (String l : localesToUse) {
+            if (l.startsWith(languageTag)) {
+                isLocalized = true;
+                break;
+            }
+        }
+        if (localesToUse.size() > 1) {
             isLocalized = true;
         }
 

@@ -1,5 +1,7 @@
 ### 1.10-alpha0 (2020-07-20)
 
+* Latest Tab will show better results on non-English devices
+
 * updates to core libraries (Jackson, androidx, gradle, etc)
 
 * use Gradle's new dependency verification
