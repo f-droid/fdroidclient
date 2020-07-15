@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;

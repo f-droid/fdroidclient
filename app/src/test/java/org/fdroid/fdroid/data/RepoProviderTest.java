@@ -27,7 +27,6 @@ import android.content.Context;
 import android.net.Uri;
 import androidx.annotation.Nullable;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;

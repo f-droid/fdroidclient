@@ -3,7 +3,6 @@ package org.fdroid.fdroid.updater;
 import android.content.ContentValues;
 import androidx.annotation.StringDef;
 import android.util.Log;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
