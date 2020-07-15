@@ -2,17 +2,19 @@ package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -117,16 +119,12 @@ public class AppCardController extends RecyclerView.ViewHolder
 
         Intent intent = new Intent(activity, AppDetailsActivity.class);
         intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.packageName);
-        if (Build.VERSION.SDK_INT >= 21) {
-            Pair<View, String> iconTransitionPair = Pair.create((View) icon,
-                    activity.getString(R.string.transition_app_item_icon));
+        Pair<View, String> iconTransitionPair = Pair.create((View) icon,
+                activity.getString(R.string.transition_app_item_icon));
 
-            // unchecked since the right type is passed as 2nd varargs arg: Pair<View, String>
-            @SuppressWarnings("unchecked")
-            Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
-            activity.startActivity(intent, b);
-        } else {
-            activity.startActivity(intent);
-        }
+        // unchecked since the right type is passed as 2nd varargs arg: Pair<View, String>
+        @SuppressWarnings("unchecked")
+        Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
+        ContextCompat.startActivity(activity, intent, b);
     }
 }
