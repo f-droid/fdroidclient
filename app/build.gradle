@@ -158,9 +158,9 @@ dependencies {
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.5'
 
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.11'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.11'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.11'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15on:1.65'
