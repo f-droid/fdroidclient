@@ -1,9 +1,10 @@
 package org.fdroid.fdroid.data;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.R;
@@ -46,7 +47,7 @@ public class DBHelperTest {
 
     @Before
     public final void setupBase() {
-        context = InstrumentationRegistry.getContext();
+        context = ApplicationProvider.getApplicationContext();
     }
 
     @Test

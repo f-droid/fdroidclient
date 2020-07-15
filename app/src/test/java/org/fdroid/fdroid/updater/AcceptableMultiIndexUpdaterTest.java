@@ -1,9 +1,10 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import org.fdroid.fdroid.BuildConfig;
+
+import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.IndexUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -11,14 +12,12 @@ import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class AcceptableMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
     private static final String TAG = "AcceptableMultiRepoTest";

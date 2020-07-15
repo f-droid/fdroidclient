@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -16,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class AppProviderTest extends FDroidProviderTest {
@@ -315,11 +313,11 @@ public class AppProviderTest extends FDroidProviderTest {
         return insertApp(contentResolver, context, id, name, additionalValues);
     }
 
-    public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues) {
+    public static App insertApp(ContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues) {
         return insertApp(contentResolver, context, id, name, additionalValues, 1);
     }
 
-    public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues, long repoId) {
+    public static App insertApp(ContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues, long repoId) {
 
         ContentValues values = new ContentValues();
         values.put(Cols.Package.PACKAGE_NAME, id);

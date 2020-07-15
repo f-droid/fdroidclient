@@ -29,7 +29,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;

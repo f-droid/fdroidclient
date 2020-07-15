@@ -1,6 +1,9 @@
 package org.fdroid.fdroid.data;
 
-import org.fdroid.fdroid.BuildConfig;
+import android.content.ContentResolver;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.mock.MockApk;
@@ -9,10 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
-import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.List;
 import static org.fdroid.fdroid.Assert.assertInvalidUri;
 import static org.fdroid.fdroid.Assert.assertValidUri;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class ProviderUriTests {
@@ -30,11 +28,11 @@ public class ProviderUriTests {
     private static final String APP_PROVIDER_URI_BASE = CONTENT_URI_BASE + ".AppProvider";
     private static final String TEMP_APP_PROVIDER_URI_BASE = CONTENT_URI_BASE + ".TempAppProvider";
 
-    private ShadowContentResolver resolver;
+    private ContentResolver resolver;
 
     @Before
     public void setup() {
-        resolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
+        resolver = ApplicationProvider.getApplicationContext().getContentResolver();
     }
 
     @After

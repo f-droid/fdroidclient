@@ -1,19 +1,16 @@
 package org.fdroid.fdroid.updater;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Tests two versions of the official main F-Droid metadata, from 10 days apart. This is here
  * because there is so much metadata to parse in the main repo, covering many different aspects
  * of the available metadata. Some apps will be added, others updated, and it should all just work.
  */
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class FDroidRepoUpdateTest extends MultiIndexUpdaterTest {
 

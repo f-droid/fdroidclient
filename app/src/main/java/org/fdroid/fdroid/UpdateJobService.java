@@ -6,7 +6,7 @@ import android.app.job.JobService;
 
 /**
  * Interface between the new {@link android.app.job.JobScheduler} API and
- * {@link UpdateService}, which is based on {@link android.support.v4.app.JobIntentService}.
+ * {@link UpdateService}, which is based on {@link androidx.core.app.JobIntentService}.
  *
  * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
  */

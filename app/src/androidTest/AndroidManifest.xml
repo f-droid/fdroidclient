@@ -5,12 +5,13 @@
           package="org.fdroid.fdroid.tests"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18"/>
+    <uses-sdk tools:overrideLibrary="android_libs.ub_uiautomator" />
     <!-- We add an application tag here just so that we can indicate that
          this package needs to link against the android.test library,
          which is needed when building test cases. -->
     <application>
-        <uses-library android:name="android.test.runner"/>
+        <uses-library android:name="android.test.runner"
+            android:required="false" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

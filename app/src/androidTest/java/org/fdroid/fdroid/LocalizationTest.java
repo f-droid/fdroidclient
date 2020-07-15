@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -178,6 +178,9 @@ public class LocalizationTest {
                             break;
                         case "dd":
                             resources.getString(resId, 1, 2);
+                            break;
+                        case "ds":
+                            resources.getString(resId, 1, "TWO");
                             break;
                         case "dds":
                             resources.getString(resId, 1, 2, "THREE");

@@ -7,6 +7,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
@@ -23,23 +26,19 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.data.ShadowApp;
 import org.fdroid.fdroid.data.TempAppProvider;
+import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
-import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 import org.robolectric.shadows.ShadowLog;
-import org.robolectric.shadows.ShadowPackageManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,7 +63,7 @@ public class SwapRepoTest {
 
     private LocalHTTPD localHttpd;
 
-    protected ShadowContentResolver shadowContentResolver;
+    
     protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
@@ -72,9 +71,9 @@ public class SwapRepoTest {
     public void setUp() {
         ShadowLog.stream = System.out;
 
-        contentResolver = RuntimeEnvironment.application.getContentResolver();
-        shadowContentResolver = Shadows.shadowOf(contentResolver);
-        context = new ContextWrapper(RuntimeEnvironment.application.getApplicationContext()) {
+        contentResolver = ApplicationProvider.getApplicationContext().getContentResolver();
+        
+        context = new ContextWrapper(ApplicationProvider.getApplicationContext()) {
             @Override
             public ContentResolver getContentResolver() {
                 return contentResolver;
@@ -102,7 +101,7 @@ public class SwapRepoTest {
             throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
 
         PackageManager packageManager = context.getPackageManager();
-        ShadowPackageManager shadowPackageManager = shadowOf(packageManager);
+        
         ApplicationInfo appInfo = new ApplicationInfo();
         appInfo.flags = 0;
         appInfo.packageName = context.getPackageName();
@@ -118,7 +117,7 @@ public class SwapRepoTest {
         packageInfo.applicationInfo = appInfo;
         packageInfo.versionCode = 1002001;
         packageInfo.versionName = "1.2-fake";
-        shadowPackageManager.addPackage(packageInfo);
+        shadowOf(packageManager).addPackage(packageInfo);
 
         try {
             FDroidApp.initWifiSettings();

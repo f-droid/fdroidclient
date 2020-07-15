@@ -25,7 +25,7 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
@@ -45,7 +45,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class RepoProviderTest extends FDroidProviderTest {
 

@@ -2,7 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.Context;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.junit.Before;
@@ -13,7 +12,7 @@ import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+@Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class PreferredSignatureTest extends FDroidProviderTest {
 

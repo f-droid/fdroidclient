@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 import android.util.Log;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.IndexUpdater;
@@ -33,7 +33,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, shadows = ProperMultiIndexUpdaterTest.ArmSystemProperties.class)
+@Config(shadows = ProperMultiIndexUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
 public class ProperMultiIndexUpdaterTest extends MultiIndexUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";

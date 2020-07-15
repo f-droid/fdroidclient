@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +15,7 @@ import org.fdroid.fdroid.UpdateService;
  * Widget which reflects whether or not a repo update is currently in progress or not. If so, shows
  * some sort of feedback to the user.
  */
-public class BannerUpdatingRepos extends android.support.v7.widget.AppCompatTextView {
+public class BannerUpdatingRepos extends androidx.appcompat.widget.AppCompatTextView {
 
     public BannerUpdatingRepos(Context context) {
         this(context, null);

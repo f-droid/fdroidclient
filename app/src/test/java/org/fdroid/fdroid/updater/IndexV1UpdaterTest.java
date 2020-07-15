@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.updater;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -62,7 +62,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 public class IndexV1UpdaterTest extends FDroidProviderTest {
     public static final String TAG = "IndexV1UpdaterTest";

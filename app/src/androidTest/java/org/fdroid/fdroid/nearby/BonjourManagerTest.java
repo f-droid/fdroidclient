@@ -1,16 +1,19 @@
 package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+
+import androidx.test.core.app.ApplicationProvider;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.jmdns.ServiceEvent;
-import javax.jmdns.ServiceListener;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceListener;
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +26,7 @@ public class BonjourManagerTest {
 
     @Test
     public void testStartStop() throws InterruptedException {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = ApplicationProvider.getApplicationContext();
 
         FDroidApp.ipAddressString = LOCALHOST;
         FDroidApp.port = PORT;
@@ -65,7 +68,7 @@ public class BonjourManagerTest {
 
     @Test
     public void testRestart() throws InterruptedException {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = ApplicationProvider.getApplicationContext();
 
         FDroidApp.ipAddressString = LOCALHOST;
         FDroidApp.port = PORT;

@@ -2,12 +2,13 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.util.Date;
@@ -19,7 +20,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class UtilsTest {
@@ -86,7 +86,7 @@ public class UtilsTest {
 
     @Test
     public void testFormatFingerprint() {
-        Context context = RuntimeEnvironment.application;
+        Context context = ApplicationProvider.getApplicationContext();
         String badResult = Utils.formatFingerprint(context, "");
         // real fingerprints
         String formatted;

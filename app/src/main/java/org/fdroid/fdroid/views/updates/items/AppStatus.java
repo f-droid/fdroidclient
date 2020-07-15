@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.views.updates.items;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import org.fdroid.fdroid.AppUpdateStatusManager;

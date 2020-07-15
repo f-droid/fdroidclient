@@ -26,11 +26,6 @@
           package="org.fdroid.fdroid"
           android:installLocation="auto">
 
-    <uses-sdk
-            android:minSdkVersion="14"
-            android:targetSdkVersion="25"
-    />
-
     <supports-screens
             android:anyDensity="true"
             android:largeScreens="true"
@@ -124,7 +119,7 @@
                     android:resource="@xml/apk_file_provider"/>
         </provider>
         <provider
-                android:name="android.support.v4.content.FileProvider"
+                android:name="androidx.core.content.FileProvider"
                 android:authorities="${applicationId}.installer"
                 android:exported="false"
                 android:grantUriPermissions="true">

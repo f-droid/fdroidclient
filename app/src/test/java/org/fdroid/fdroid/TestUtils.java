@@ -8,6 +8,8 @@ import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -18,8 +20,6 @@ import org.fdroid.fdroid.data.RepoProviderTest;
 import org.fdroid.fdroid.data.Schema;
 import org.mockito.AdditionalAnswers;
 import org.robolectric.Robolectric;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -157,9 +157,9 @@ public class TestUtils {
      * {@link ContextWrapper} which is able to return a proper content
      * resolver that delegates to the Robolectric shadow object.
      */
-    public static ContextWrapper createContextWithContentResolver(ShadowContentResolver contentResolver) {
+    public static ContextWrapper createContextWithContentResolver(ContentResolver contentResolver) {
         final ContentResolver resolver = mock(ContentResolver.class, AdditionalAnswers.delegatesTo(contentResolver));
-        return new ContextWrapper(RuntimeEnvironment.application.getApplicationContext()) {
+        return new ContextWrapper(ApplicationProvider.getApplicationContext()) {
             @Override
             public ContentResolver getContentResolver() {
                 return resolver;

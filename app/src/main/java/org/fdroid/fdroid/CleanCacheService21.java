@@ -1,9 +1,10 @@
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.File;
 
@@ -11,7 +12,7 @@ import java.io.File;
  * Helper class to prevent {@link VerifyError}s from occurring in {@link CleanCacheService#clearOldFiles(File, long)}
  * due to the fact that {@link Os} was only introduced in API 21.
  */
-@TargetApi(21)
+@RequiresApi(21)
 class CleanCacheService21 {
     static void deleteIfOld(File file, long olderThan) {
         if (file == null || !file.exists()) {

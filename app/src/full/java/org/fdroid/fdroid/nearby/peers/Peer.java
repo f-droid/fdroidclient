@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.nearby.peers;
 
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * TODO This model assumes that "peers" from Bluetooth, Bonjour, and WiFi are
