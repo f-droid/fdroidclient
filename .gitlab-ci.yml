@@ -53,7 +53,7 @@ errorprone:
   stage: test
   script:
     - cat config/errorprone.gradle >> app/build.gradle
-    - ./gradlew assembleDebug
+    - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
 # once these prove stable, the task should be switched to
 # connectedCheck to test all the build flavors
