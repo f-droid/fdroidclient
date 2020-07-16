@@ -1,10 +1,12 @@
 package org.fdroid.fdroid.panic;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.util.AttributeSet;
+
+import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceViewHolder;
-import android.util.AttributeSet;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
@@ -31,11 +33,10 @@ public class DestructiveCheckBoxPreference extends CheckBoxPreference {
         if (!holder.itemView.isEnabled()) {
             return;
         }
-        Resources resources = getContext().getResources();
         if (FDroidApp.isAppThemeLight()) {
-            holder.itemView.setBackgroundColor(resources.getColor(R.color.panic_destructive_light));
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive_light));
         } else {
-            holder.itemView.setBackgroundColor(resources.getColor(R.color.panic_destructive_dark));
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive_dark));
         }
     }
 }

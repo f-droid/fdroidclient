@@ -35,15 +35,6 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -57,6 +48,18 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
@@ -538,7 +541,8 @@ public class ManageReposActivity extends AppCompatActivity
                     overwriteMessage.setText(getString(messageRes, name));
                     overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
-                        overwriteMessage.setTextColor(getResources().getColor(R.color.red));
+                        overwriteMessage.setTextColor(ContextCompat.getColor(ManageReposActivity.this,
+                                R.color.red));
                     } else {
                         overwriteMessage.setTextColor(defaultTextColour);
                     }

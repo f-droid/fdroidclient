@@ -221,7 +221,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                 int colour;
                 if (checked) {
                     resource = R.drawable.ic_check_circle;
-                    colour = getResources().getColor(R.color.swap_bright_blue);
+                    colour = ContextCompat.getColor(getContext(), R.color.swap_bright_blue);
                 } else {
                     resource = R.drawable.ic_add_circle_outline;
                     colour = 0xFFD0D0D4;

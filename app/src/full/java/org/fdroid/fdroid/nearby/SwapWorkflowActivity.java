@@ -934,7 +934,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             new QrGenAsyncTask(SwapWorkflowActivity.this, R.id.wifi_qr_code).execute(qrUriString);
 
             // Replace all blacks with the background blue.
-            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
+            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
+                    R.color.swap_blue)));
 
             final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
             if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {

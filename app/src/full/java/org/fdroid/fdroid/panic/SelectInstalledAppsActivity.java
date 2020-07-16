@@ -20,23 +20,25 @@
 package org.fdroid.fdroid.panic;
 
 import android.annotation.SuppressLint;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -116,9 +118,9 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
         menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         checkId = menuItem.getItemId();
         if (FDroidApp.isAppThemeLight()) {
-            Resources resources = getResources();
-            Drawable icon = resources.getDrawable(R.drawable.check);
-            icon.setColorFilter(new LightingColorFilter(0xffffffff, resources.getColor(android.R.color.white)));
+            Drawable icon = ContextCompat.getDrawable(this, R.drawable.check);
+            icon.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
+                    android.R.color.white)));
             menuItem.setIcon(icon);
         } else {
             menuItem.setIcon(R.drawable.check);

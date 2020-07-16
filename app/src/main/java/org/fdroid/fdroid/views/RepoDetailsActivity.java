@@ -13,14 +13,6 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.core.app.NavUtils;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -33,6 +25,17 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.NfcNotEnabledActivity;
@@ -305,7 +308,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         // TODO show the current state of the signature check, not just whether there is a key or not
         if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.signingCertificate)) {
             repoFingerprint = getResources().getString(R.string.unsigned);
-            repoFingerprintView.setTextColor(getResources().getColor(R.color.unsigned));
+            repoFingerprintView.setTextColor(ContextCompat.getColor(this, R.color.unsigned));
             repoFingerprintDescView.setVisibility(View.VISIBLE);
             repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
         } else {
