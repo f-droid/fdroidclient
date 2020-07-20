@@ -248,7 +248,7 @@
     <string name="status_inserting_apps">App-details opslaan</string>
     <string name="login_title">Authenticatie vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, referenties niet gewijzigd</string>
-    <string name="menu_email">E-mail de auteur</string>
+    <string name="menu_email">Stuur de auteur een E-mail</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
     <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
