@@ -170,9 +170,8 @@
     <string name="repo_searching_address">Op soek na F-Droid argief by
         %1$s
     </string>
-    <string name="not_on_same_wifi">"Jou toestel is nie op die dieselfde Wi-Fi as die plaaslike argief jy nou net gelaai
-        het nie! Probeer hierdie netwerk aansluiting by: %s"
-    </string>
+    <string name="not_on_same_wifi">Jou toestel is nie op die dieselfde Wi-Fi as die plaaslike argief jy nou net gelaai
+\n het nie! Probeer hierdie netwerk aansluiting by: %s</string>
     <string name="requires_features">Vereis: %1$s</string>
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Stelsel nalaat waarde</string>

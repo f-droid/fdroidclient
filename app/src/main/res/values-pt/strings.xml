@@ -127,7 +127,7 @@
     <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o aparelho</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com as versões disponíveis. Pode desinstalar a aplicação de modo a ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar aplicações através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
     <string name="about_version">Versão</string>
-    <string name="about_site">Sítio eletrónico</string>
+    <string name="about_site">Site</string>
     <string name="about_forum">Fórum de suporte</string>
     <string name="about_source">Código-fonte</string>
     <string name="about_license">Licença</string>
@@ -195,7 +195,7 @@
     <string name="menu_open">Abrir</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
     <string name="menu_ignore_this">Ignorar esta atualização</string>
-    <string name="menu_website">Sítio eletrónico</string>
+    <string name="menu_website">Site</string>
     <string name="menu_email">E-mail do autor</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registo de alterações</string>

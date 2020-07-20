@@ -84,9 +84,8 @@
     <string name="proxy_port">Port del servidor</string>
     <string name="proxy_port_summary">Número de port del servidor (p. ex. 8118)</string>
     <string name="status_download">S\'està baixant
-        %2$s / %3$s (%4$d%%) des de
-        %1$s
-    </string>
+\n%2$s / %3$s (%4$d%%) des de
+\n %1$s</string>
     <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
     <string name="repos_unchanged">Tots els dipòsits estan actualitzats</string>
     <string name="all_other_repos_fine">Cap dels altres dipòsits ha donat errors.</string>

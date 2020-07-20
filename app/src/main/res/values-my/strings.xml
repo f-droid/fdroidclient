@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">ဗားရွင္းအသစ္သည္ တျခားကီးႏွင့္ ဗားရွင္းအေဟာင္းကိုသတ္မွတ္ထားပါသည္။
         ဗားရွင္းအသစ္သြင္းရန္ အေဟာင္းသည္ အရင္ဆံုးျဖဳတ္မွရပါမည္။ ျဖဳတ္ျပီးမွ ျပန္လည္ၾကိဳးစားၾကည့္ပါ။ (ျဖဳတ္ျခင္းသည္
@@ -15,7 +15,6 @@
     <string name="unstable_updates">မတည္ျငိမ္ေသာ အသစ္မြမ္းမံမႈမ်ား</string>
     <string name="unstable_updates_summary">မတည္ျငိမ္ေသာဗားရွင္းမ်ားကို အၾကံေပးလိုေသာ အသစ္မြမ္းမံမႈမ်ား</string>
     <string name="other">အခြား</string>
-
     <string name="update_interval">အလိုအေလ်ာက္ အသစ္မြမ္းမံမႈ interval</string>
     <string name="update_auto_download">အသစ္မြမ္းမံမႈမ်ားကိုအလိုအေလ်ာက္ေဒါင္းလုတ္ဆြဲမည္</string>
     <string name="update_auto_download_summary">အေနာက္ပိုင္းတြင္ အသစ္မြမ္းမံမႈမ်ားကိုေဒါင္းလုတ္ဆြဲမည္</string>
@@ -27,32 +26,25 @@
     <string name="local_repo_name">သင္၏ Local Repo အမည္</string>
     <string name="local_repo_name_summary">သင္၏ Local Repo ေၾကျငာေခါင္းစဥ္ - %s</string>
     <string name="local_repo_https_on">Local Repo အတြက္ လံုျခံဳေသာ HTTPS:// ကိုသံုးမည္</string>
-
     <string name="login_title">ခြင့္ျပဳခ်က္လိုအပ္သည္</string>
     <string name="login_name">အသံုးျပဳသူအမည္</string>
     <string name="login_password">စကားဝွက္</string>
     <string name="repo_edit_credentials">စကားဝွက္ေျပာင္းမည္</string>
     <string name="repo_error_empty_username">အသံုးျပဳသူအမည္ အလြတ္ ႏွင့္ ခြင့္ျပဳထားခ်က္မ်ားမေျပာင္းလဲခဲ့ပါ</string>
-
     <string name="app_details">App အေသးစိတ္အခ်က္အလက္မ်ား</string>
     <string name="no_such_app">ထိုကဲ့သို႔ app မေတြ႕ပါ.</string>
-
     <string name="about_title">F-Droid အေၾကာင္း</string>
     <string name="about_version">ဗားရွင္း</string>
     <string name="about_site">ဝဘ္ဆုိဒ္</string>
     <string name="about_source">ဆို႔စ္ ကုဒ္</string>
     <string name="about_license">လိုင္စင္</string>
-
     <string name="app_incompatible">ကိုက္ညီမႈမရွိေသာ</string>
     <string name="app_installed">သြင္းထားခဲ့သည္</string>
     <string name="app_not_installed">မသြင္းထားေသးပါ</string>
     <string name="app_inst_known_source">သြင္းထားခဲ့သည္ (%s မွ )</string>
     <string name="app_inst_unknown_source">သြင္းထားခဲ့သည္ (မသိရွိေသာရင္းျမစ္)</string>
-
     <string name="added_on">%s တြင္ေပါင္းထည့္ခ့ဲသည္</string>
-
     <string name="ok">OK</string>
-
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="repo_add_title">Repository အသစ္ထည့္မည္</string>
@@ -60,28 +52,23 @@
     <string name="links">လင့္ခ္</string>
     <string name="more">ေနာက္ထပ္</string>
     <string name="less">ခ်ံဳမည္</string>
-
     <string name="back">ေနာက္သို႔</string>
     <string name="cancel">မလုပ်တော့</string>
     <string name="enable">ဖြင့္မည္</string>
     <string name="add_key">ကီးထည့္မည္</string>
     <string name="overwrite">ထပ္ေရးမည္</string>
-
     <string name="bluetooth_activity_not_found">ဘလူးသုဒ့္ႏွင့္ပို႔ရန္နည္းလမ္းရွာမေတြ႕ပါ။ တစ္ခုေရြးပါ!</string>
     <string name="choose_bt_send">ဘလူးသုဒ့္ႏွင့္ပို႔ေသာနည္းလမ္းကိုေရြးမည္</string>
-
     <string name="repo_add_url">Repository လိပ္စာ</string>
     <string name="repo_add_fingerprint">လက္ေဗြရာ(လိုအပ္မွသာ)</string>
     <string name="bad_fingerprint">လက္ေဗြရာမမွန္ကန္ပါ</string>
     <string name="invalid_url">မွန္ကန္ေသာ URL မဟုတ္ပါ.</string>
     <string name="malformed_repo_uri">repo URI မွားယြင္းျပဳလုပ္မႈကိုလ်စ္လ်ဴရႈမလား : %s</string>
     <string name="repo_provider">Repository: %s</string>
-
     <string name="menu_manage">Repository မ်ား</string>
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="menu_search">ရှာဖွေခြင်း</string>
     <string name="menu_add_repo">Repository အသစ္</string>
-
     <string name="menu_launch">ဖွင့်သည်</string>
     <string name="menu_share">ေဝမွ်မည္</string>
     <string name="menu_install">သြင္းမည္</string>
@@ -96,7 +83,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="details_notinstalled">မသြင္းထားခဲ့ပါ</string>
-
     <string name="antiadslist">ဒီ app သည္ ေၾကျငာမ်ားပါဝင္သည္</string>
     <string name="antitracklist">ဒီ app သည္ သင့္လႈပ္ရွားမႈမ်ားကိုလိုက္ၾကည့္ျပီးမွတ္တမ္း မွတ္သည္</string>
     <string name="antinonfreeadlist">ဒီ app သည္ အခမဲ့မဟုတ္ေသာ ေနာက္ထပ္ပါဝင္သည့္အရာမ်ားပါဝင္သည္</string>
@@ -104,18 +90,13 @@
     <string name="antinonfreedeplist">ဒီ app သည္ တျခားအခမဲ့မဟုတ္ေသာ app မ်ားေပၚမူတည္သည္</string>
     <string name="antiupstreamnonfreelist">ဆိုစ့္ကုဒ္သည္ လံုးဝအခမဲ့မဟုတ္ပါ</string>
     <string name="antinonfreeassetslist">ဒီ app သည္ အခမဲ့မဟုတ္ေသာ ပံုမ်ားပါဝင္သည္</string>
-
     <string name="display">မ်က္ႏ်ာျပင္ေဖာ္ျပခ်က္</string>
-
     <string name="expert">ကၽြမ္းက်င္သူမုဒ္</string>
     <string name="expert_on">ေနာက္ထပ္အခ်က္အလက္ ႏွင့္ ေနာက္ထပ္ အျပင္အဆင္မ်ားကိုဖြင့္မည္</string>
-
     <string name="search_hint">application မ်ားကိုရွာမည္</string>
-
     <string name="appcompatibility">Application သင့္ေလွ်ာ္မႈ</string>
     <string name="show_incompat_versions">မကိုက္ညီေသာဗားရွင္းမ်ား</string>
     <string name="show_incompat_versions_on">စက္ႏွင့္မကိုက္ညီေသာ app ဗားရွင္းမ်ားကိုျပမည္</string>
-
     <string name="local_repo_running">F-Droidကို စတင္ swap ႏိုင္ပါျပီ</string>
     <string name="adding_apks_format">%s ကို repot ထဲေပါင္းထည့္ေနပါသည္</string>
     <string name="linking_apks">APK မ်ားကို repo ႏွင့္ခ်ိတ္ေနပါသည္…</string>
@@ -123,13 +104,11 @@
     <string name="icon">အိုင္ကြန္း</string>
     <string name="next">ရှေ့သို့</string>
     <string name="skip">ေက်ာ္မည္</string>
-
     <string name="useTor">Tor ကိုသံုးမည္</string>
     <string name="useTorSummary">ကိုယ္ေရးအခ်က္အလက္မ်ားပိုမိုလံုျခံဳေစရန္ လိုင္းမ်ားမွ မရမက အတင္းေဒါင္းလုတ္ခ်မည္</string>
     <string name="proxy">ပေရာစီ</string>
     <string name="enable_proxy_title">HTTP ပေရာစီကိုဖြင့္မည္</string>
     <string name="status_download">%1$s မွ %2$s / %3$s (%4$d%%) ကိုေဒါင္းလုတ္ခ်ေနပါသည္</string>
-
     <string name="status_download_unknown_size">%1$s မွ
         %2$s ကို
         ေဒါင္းလုတ္ဆြဲေနပါသည္
@@ -154,17 +133,14 @@
     <string name="unknown">မသိပါ</string>
     <string name="repo_confirm_delete_title">Repository ကိုဖ်က္မလား?</string>
     <string name="app_name">F-Droid</string>
-
     <string name="deleting_repo">ယခုလက္ရွိ ရီပိုကိုဖ်က္ေနသည္.…</string>
     <string name="all_other_repos_fine">တျခားရီပိုအားလံုးသည္ ခ်ိဳ႕ယြင္းခ်က္မ်ားမရွိပါ.</string>
     <string name="global_error_updating_repos">အသစ္မြမ္းမံစဥ္ခ်ိဳ႕ယြင္းခ်က္ - %s</string>
     <string name="requires_features">လိုအပ္သည္- %1$s</string>
     <string name="pref_language">ဘာသာစကား</string>
     <string name="pref_language_default">စနစ္မူလအတိုင္း</string>
-
     <string name="wifi">ဝိုင္ဖိုင္</string>
     <string name="wifi_ap">ေဟာ့ဒ့္စေပါ့ဒ္</string>
-
     <string name="category_Connectivity">ခ်ိတ္ဆက္မႈ</string>
     <string name="category_Development">ေရးသားမႈ</string>
     <string name="category_Games">ဂိမ္းမ်ား</string>
@@ -182,7 +158,6 @@
     <string name="category_Theming">အျပင္အဆင္</string>
     <string name="category_Time">အခ်ိန္</string>
     <string name="category_Writing">ေရးသားျခင္း</string>
-
     <string name="swap_join_same_wifi">သင့္သူငယ္ခ်င္းႏွင့္တူညီေသာ ဝိုင္ဖိုင္ကိုခ်ိတ္မည္</string>
     <string name="swap_no_wifi_network">ကြန္ရက္မရွိပါ</string>
     <string name="open_qr_code_scanner">က်ဴအာ စကန္နာကိုဖြင့္မည္</string>
@@ -212,7 +187,6 @@
     <string name="downloading">ေဒါင္းလုတ္ဆြဲေနသည္…</string>
     <string name="installing">ထည့်သွင်းနေပါသည်</string>
     <string name="uninstalling">ဖယ်ထုတ်သည်</string>
-
     <string name="interval_never">ဘယ္ေတာ့မွ</string>
     <string name="interval_1h">အခ်ိန္အားျဖင့္</string>
     <string name="interval_4h">၄ နာရီအျမဲတမ္း</string>
@@ -220,18 +194,15 @@
     <string name="interval_1d">ေန႔စဥ္</string>
     <string name="interval_1w">အပတ္စဥ္</string>
     <string name="interval_2w">၂ ပတ္တိုင္း</string>
-
     <string name="keep_hour">၁ နာရီ</string>
     <string name="keep_day">၁ ရက္</string>
     <string name="keep_week">၁ ပတ္</string>
     <string name="keep_month">၁ လ</string>
     <string name="keep_year">၁ ႏွစ္</string>
     <string name="keep_forever">အျမဲတမ္း</string>
-
     <string name="theme_light">အလင္း</string>
     <string name="theme_dark">အေမွာင္</string>
     <string name="theme_night">ည</string>
-
     <string name="crash_dialog_title">F-Droid ခဏရပ္သြားပါသည္</string>
     <string name="crash_dialog_comment_prompt">သင္သည္ ေနာက္ထပ္ အခ်က္အလက္မ်ားႏွင့္မွတ္ခ်က္မ်ားကို
         ဒီေနရာတြင္ထည့္သြင္းႏိုင္သည္ :
@@ -248,44 +219,32 @@
     <string name="app_recommended_version_installed">ဗားရှင်း %1$s (အကြံပြုသည်)</string>
     <string name="app_new">အသစ်</string>
     <string name="app__install_downloaded_update">အသစ်ထွက်ရှိခြင်း</string>
-
     <string name="app_list__name__downloading_in_progress">%1$s ကိုဒေါင်းလုတ်ဆွဲနေသည်</string>
     <string name="app_list__name__successfully_installed">%1$s ကိုအောင်မြင်စွာသွင်းပြီးပါပြီ</string>
-
     <string name="installed_apps__activity_title">သွင်းခဲ့သော အက်ပ်စ်များ</string>
     <string name="installed_app__updates_ignored">အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှူမည်</string>
     <string name="installed_app__updates_ignored_for_suggested_version">ဗားရှင်း %1$s အတွက် အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှုမည်</string>
     <string name="update_all">အသစ်ထွက်ရှိမှုအားလုံးကိုဒေါင်းလုတ်ဆွဲမည်</string>
-
     <string name="updates__hide_updateable_apps">ဖျောက်ထားသောအက်ပ်စ်များ</string>
     <string name="updates__show_updateable_apps">အက်ပ်စ်များကိုပြမည်</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">%1$d အက်ပ်များအတွက် အသစ်ထွက်ရှိမှုကိုဒေါင်းလုတ်ဆွဲမည်</item>
     </plurals>
-
     <string name="versions">ဗားရှင်းများ</string>
     <string name="clear_search">ရှာဖွေထားမည်ကိုရှင်းမည်</string>
-
     <string name="repositories_summary">အက်ပလီကေးရှင်း၏ နောက်ထပ်ရင်းမြစ်များပေါင်းထည့်မည်</string>
     <string name="menu_issues">ထွက်ရှိမှုများ</string>
     <string name="menu_video">ဗွီဒီယို</string>
     <string name="main_menu__latest_apps">နောက်ဆုံး</string>
     <string name="main_menu__categories">အမျိုးအစားများ</string>
     <string name="main_menu__swap_nearby">အနီးတဝိုက်</string>
-
     <string name="latest__empty_state__no_recent_apps">မကြာသေးခင်က အက်ပ်စ်များမတွေ့ပါ</string>
-    <string name="latest__empty_state__never_updated">"သင်၏အက်ပ်စ့်များကို အသစ်မွမ်းမံပြီးပါက နောက်ဆုံးအသစ်မွမ်းမံသည့်အက်ပ်စ်များကို
- အောက်ပါတွင်ပါလိမ့်မည်
- "</string>
+    <string name="latest__empty_state__never_updated">သင်၏အက်ပ်စ့်များကို အသစ်မွမ်းမံပြီးပါက နောက်ဆုံးအသစ်မွမ်းမံသည့်အက်ပ်စ်များကို
+\n အောက်ပါတွင်ပါလိမ့်မည်</string>
     <string name="categories__empty_state__no_categories">ဖော်ပြရန် ခေါင်းစဉ်မရှိပါ</string>
-
     <string name="preference_category__my_apps">ကျွနိုပ်၏အက်ပ်စ်များ</string>
     <string name="preference_manage_installed_apps">သွင်းထားသည့်အက်ပ်စ့်များကို စီမံမည်</string>
-
-
     <string name="details_new_in_version">%s ဗားရှင်းတွင် အသစ်များ</string>
-
     <string name="antifeatureswarning">ဒီအက်ပ်သည် သင်မကြိုက်သည့်အင်္ဂါရပ်ရှိကောင်းရှိနိုင်သည်</string>
     <string name="touch_to_configure_local_repo">အသေးစိတ်အချက်အလက်ကြည်ရန် နှိပ်ပါ နှင့် သင့်အက်ပ်စ့်ကို တခြားသူများလဲလှယ်ရယူရန်အတွက် ခွင့်ပြုမည်</string>
     <string name="proxy_host">Proxy Host</string>
@@ -302,5 +261,4 @@
     <string name="install_confirm_update_system_no_perms">အဆင့်သင့် ပါလာသော အပလီကေးရှင်းကို အပ်ဒိတ်လုပ်လိုပါသလား။  ရှိပြီးသား အချက်အလက်များကို ဆုံးရှုံးမည် မဟုတ်ပါ။ အထူးတလည် သုံးခွင့် မလိုအပ်ပါ</string>
     <string name="uninstall_update_confirm">ဤအက်ပ်ကို စက်ရုံထုတ်ဗားရှင်းဖြင့် အစားထိုးမလား။ ဒေတာများအားလုံးကို ဖယ်ရှားလိုက်ပါမည်။</string>
     <string name="allow">ခွင့်ပြုပါ</string>
-
 </resources>

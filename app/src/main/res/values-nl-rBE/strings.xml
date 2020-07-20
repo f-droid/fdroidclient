@@ -477,7 +477,7 @@
     <string name="panic_reset_repos_title">Reset applicatiebronnen</string>
     <string name="panic_add_apps_to_uninstall">Voeg apps toe om te deïnstalleren en te wissen</string>
     <string name="panic_will_be_wiped">Zal gedeïnstalleerd worden en alle gegevens zullen verwijderd worden</string>
-    <string name="menu_opencollective"/>
+    <string name="menu_opencollective">OpenCollective</string>
     <string name="swap_setting_up_hotspot">Hotspot aan het starten…</string>
     <string name="undo">Maak ongedaan</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetooth kan niet gestart worden!</string>
