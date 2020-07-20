@@ -92,10 +92,9 @@
     <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.
 \n
 \nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
-    <string name="repo_disabled_notification">%1$s zakázáno.
-
-        Pro instalaci aplikací z tohoto repozitáře ho bude nejprve třeba znovu povolit.
-    </string>
+    <string name="repo_disabled_notification">%1$s vypnut.
+\n
+\nPro instalaci aplikací z tohoto repozitáře bude nutné jej znovu zapnout.</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
     <string name="category_Development">Vývoj</string>
     <string name="category_Games">Hry</string>
@@ -508,4 +507,5 @@
     <string name="swap_error_cannot_start_bluetooth">Nelze spustit  Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funkce Nablízku ukončena kvůli nečinnosti.</string>
     <string name="nearby_splash__document_tree">Vyhledat repozitáře a zrcadlení na USB OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
