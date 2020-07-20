@@ -1,0 +1,5 @@
+* Suppression du support "Android App Link" car il ne peut pas fonctionner avec F-Droid et il déclenchait des fuites DNS.
+* Les dépots d'archives ont maintenant une priorité moindre que les dépots (plus haut dans sur l'écran Manage Repos), corrigeant des problèmes avec icônes et autres informations dans les Archives.
+* Plus de recadrage de l'image de l'en-tête de l'application (merci @ByteHamster !)
+* Barre de nav en mode sombre (merci @MatthieuB !)
+* Nettoyage code (merci @Isira-Seneviratne !)
