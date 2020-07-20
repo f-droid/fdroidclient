@@ -1,0 +1,5 @@
+* 删除了“Android 应用链接”支持，因为它不能与 F-Droid 一起工作，而且会引发 DNS 泄漏。
+* Archive Repos 现在比 Repo 的优先级低（在管理存储库屏幕上优先级更高），修复了它在归档中寻找图标、截图和其他信息而不是 Repo 本身的问题。
+* 停止裁剪功能标题图片（感谢 @ByteHamster！）
+* 使导航栏与黑暗模式相匹配（感谢 @MatthieuB！）
+* 清理过时代码（感谢 @Isira-Seneviratne！）

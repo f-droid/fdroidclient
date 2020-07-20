@@ -441,7 +441,7 @@
     <string name="over_wifi">Über WLAN</string>
     <string name="over_data">Über Mobilfunk</string>
     <string name="over_network_always_summary">Diese Verbindung immer verwenden, wenn sie verfügbar ist</string>
-    <string name="over_network_on_demand_summary">Diese Verbindung nur verwenden, wenn ich zum Download klicke</string>
+    <string name="over_network_on_demand_summary">Diese Verbindung nur verwenden, wenn ich den Download auslöse</string>
     <string name="over_network_never_summary">Niemals etwas über diese Verbindung herunterladen</string>
     <string name="antidisabledalgorithmlist">Diese App hat eine schwache Sicherheitssignatur</string>
     <string name="antiknownvulnlist">Diese App enthält eine bekannte Sicherheitslücke</string>
@@ -477,7 +477,7 @@
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
     <string name="not_visible_nearby">Direkttausch nicht aktiviert</string>
     <string name="not_visible_nearby_description">Vor dem Tausch mit benachbarten Geräten müssen Sie Ihr Gerät sichtbar machen.</string>
-    <string name="scan_removable_storage_toast">%s scannen …</string>
+    <string name="scan_removable_storage_toast">%s durchsuchen …</string>
     <string name="menu_translation">Übersetzung</string>
     <string name="menu_select_for_wipe">Zum Löschen auswählen</string>
     <string name="try_again">Erneut versuchen</string>
@@ -499,4 +499,5 @@
     <string name="undo">Rückgängig</string>
     <string name="app_list__dismiss_installing_app">Installation abgebrochen</string>
     <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegel durchsuchen.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

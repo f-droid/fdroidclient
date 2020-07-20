@@ -33,7 +33,7 @@
     <string name="menu_issues">اشکال‌ها</string>
     <string name="menu_source">کد منبع</string>
     <string name="details_notinstalled">نصب نشده</string>
-    <string name="antiadslist">این برنامه دارای تبلیغات است</string>
+    <string name="antiadslist">این برنامه دارای آگهی است</string>
     <string name="antitracklist">این برنامه، فعّالیت‌هایتان را ردیابی و گزارش می‌کند</string>
     <string name="antinonfreeadlist">این برنامه، افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
     <string name="antinonfreenetlist">این برنامه، خدمات شبکه‌های غیر آزاد را تبلیغ می‌کند</string>
@@ -130,7 +130,7 @@
     <string name="repo_url">نشانی</string>
     <string name="repo_num_apps">تعداد برنامه ها</string>
     <string name="repo_fingerprint">اثر انگشت کلید امضا (SHA-256)</string>
-    <string name="repo_confirm_delete_title">حذف مخزن؟</string>
+    <string name="repo_confirm_delete_title">مخزن حذف شود؟</string>
     <string name="not_on_same_wifi">دستگاه شما روی همان شبکه وای‌فای مخزن محلّی‌ای که افزودید نیست! 
 \n
 \nلطفاً به این شبکه وصل شوید: %s</string>
@@ -170,7 +170,7 @@
     <string name="swap_welcome">به اف‌دروید خوش آمدید!</string>
     <string name="swap_confirm_connect">می‌خواهید اکنون برنامه‌ها را از %1$s بگیرید؟</string>
     <string name="swap_dont_show_again">دیگر این را نشان نده</string>
-    <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را اسکن کرده، یا نشانی اینترنتیش را در مرورگری بنویسد.</string>
+    <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانی اینترنتیش را در مرورگری بنویسد.</string>
     <string name="swap_choose_apps">گزینش برنامه‌ها</string>
     <string name="swap_scan_qr">پویش رمز QR</string>
     <string name="swap_people_nearby">افراد نزدیک</string>
@@ -221,8 +221,8 @@
     <string name="empty_installed_app_list">هیچ برنامه‌ای نصب نشده است. 
 \n 
 \nبرنامه‌هایی روی دستگاه‌تان وجود دارند، ولی در اف‌دروید موجود نیستند. ممکن است مخازن نیاز به به‌روزرسانی داشته و یا اساسا مخازن فاقد برنامه‌های شما باشند.</string>
-    <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
-    <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
+    <string name="install_error_unknown">به‌دلیل خطایی ناشناخته نصب نشد</string>
+    <string name="uninstall_error_unknown">به‌دلیل خطایی ناشناخته نصب نشد</string>
     <string name="system_install_denied_permissions">دسترسی‌های مجاز به افزونه داده نشده است! لطفاً یک گزارش خطا ایجاد کنید!</string>
     <string name="swap_nfc_description">اگر دوست‌تان اف‌دروید دارد و NFC اش روشن است، دستگاه‌های‌تان را با هم تماس بدهید.</string>
     <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکی از شما می‌تواند یک نقطه اتصال وای‌فای ایجاد کند.</string>
@@ -480,7 +480,7 @@
     <string name="swap_visible_hotspot">آشکار از طریق نقطه اتصال</string>
     <string name="swap_blank_wifi_ssid">(خالی)</string>
     <string name="swap_hidden_wifi_ssid">(پنهان)</string>
-    <string name="swap_setting_up_hotspot">راه‌اندازی نقطه اتصال…</string>
+    <string name="swap_setting_up_hotspot">در حال راه‌اندازی نقطه اتصال…</string>
     <string name="swap_stopping_hotspot">در حال متوقف کردن نقطه اتصال…</string>
     <string name="swap_starting">در حال آغاز…</string>
     <string name="swap_stopping">در حال توقف…</string>
