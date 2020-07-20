@@ -476,8 +476,8 @@
     <string name="menu_select_for_wipe">Selecione para limpar</string>
     <string name="try_again">Tente novamente</string>
     <string name="panic_will_be_wiped">Será desinstalado e todos os dados serão apagados</string>
-    <string name="panic_apps_to_uninstall">Aplicativos a serem desinstalados e todos os dados apagados</string>
-    <string name="panic_add_apps_to_uninstall">Adicionar aplicativos a serem desinstalados e limpos</string>
+    <string name="panic_apps_to_uninstall">Apps a serem desinstaladas e todos os dados apagados</string>
+    <string name="panic_add_apps_to_uninstall">Adicionar apps a serem desinstaladas e limpas</string>
     <string name="panic_reset_repos_title">Reinicializar repos</string>
     <string name="panic_reset_repos_summary">Forçar a configuração do repositório de volta ás predefinições</string>
     <string name="swap_visible_hotspot">Visível via hotspot</string>
@@ -491,4 +491,5 @@
     <string name="swap_error_cannot_start_bluetooth">Não é possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">O Próximo foi fechado desde que estava ocioso.</string>
     <string name="nearby_splash__document_tree">Pesquisar USB OTG por repos e espelhos.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

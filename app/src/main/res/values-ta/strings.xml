@@ -141,4 +141,9 @@
     <string name="pref_language">மொழி</string>
     <string name="skip">தவிர்</string>
     <string name="menu_open">திற</string>
+    <string name="send_install_history">நிறுவ வரலாற்றை அனுப்பவும்</string>
+    <string name="hide_all_notifications_summary">நிலைப் பட்டி மற்றும் அறிவிப்பு அலமாரியில் காண்பிப்பதில் இருந்து எல்லா செயல்களையும் தடுக்கவும்.</string>
+    <string name="hide_all_notifications">அனைத்து அறிவிப்புகளையும் மறைக்கவும்</string>
+    <string name="prompt_to_send_crash_reports_summary">செயலிழப்புகளைப் பற்றிய தரவைச் சேகரித்து அவற்றை உருவாக்குபவருக்கு அனுப்பச் சொல்லுங்கள்</string>
+    <string name="by_author_format">வழங்கியவர் %s</string>
 </resources>

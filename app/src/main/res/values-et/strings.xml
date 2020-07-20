@@ -59,7 +59,7 @@
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
     <string name="install_confirm_update">Kas soovite paigaldada värskenduse olemasolevale rakendusele\? Teie andmed jäävad alles. Värskendatud rakendus saab kasutada neid funktsioone:</string>
-    <string name="menu_email">Saada autorile meil</string>
+    <string name="menu_email">Saada autorile e-kiri</string>
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
     <string name="repo_provider">Hoidla: %s</string>
     <string name="menu_manage">Hoidlad</string>

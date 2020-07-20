@@ -1,0 +1,5 @@
+* forigis “androidan ap-ligilon” pro ne funkcii kun F-Droid kaj kaŭzi tralasi DNS-petojn
+* arĥivaj deponejoj nun havas malpli altan prioritaton ol la normaj deponejoj (pli altaj sur la listo “administri deponejojn”) por eviti montri emblemojn, ekrankopiojn kaj informojn el arĥivaj anstataŭ el normaj deponejoj
+* ĉesi stuci kapan bildon (danke al @ByteHamster)
+* navigad-strio konvenas al malluma reĝimo (danke al @MatthieuB)
+* forigis neuzatan kodon (danke al @Isira-Seneviratne)

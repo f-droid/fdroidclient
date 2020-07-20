@@ -151,10 +151,8 @@
 \n
 \nOharra: Aurretik instalatutako aplikazio guztiak gailuan jarraituko dute.</string>
     <string name="repo_disabled_notification">%1$s desgaitu da.
-
-        Bertako aplikazioak
-        instalatu ahal izateko gaitu egin beharko duzu.
-    </string>
+\n
+\nBertako aplikazioak instalatu ahal izateko gaitu egin beharko duzu.</string>
     <string name="repo_added">%1$s pakete-biltegia gorde da.</string>
     <string name="repo_searching_address">Pakete-biltegia hemen bilatzen:
 \n%1$s</string>
@@ -514,4 +512,5 @@
     <string name="swap_error_cannot_start_bluetooth">Ezin izan da Bluetooth hasi!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Inguruneko funtzioa itxi da geldirik zegoelako.</string>
     <string name="nearby_splash__document_tree">Bilatu USB OTG bidez biltegiak eta ispiluak.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

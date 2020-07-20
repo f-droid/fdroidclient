@@ -289,14 +289,14 @@
     <string name="notification_content_single_downloading">Pobieranie \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Pobieranie aktualizacji dla \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instalowanie \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Instalacja powiodła się</string>
+    <string name="notification_content_single_installed">Zainstalowano pomyślnie</string>
     <string name="notification_title_summary_update_available">Dostępna aktualizacja</string>
     <string name="notification_title_summary_downloading">Pobieranie…</string>
     <string name="notification_title_summary_downloading_update">Pobieranie aktualizacji…</string>
     <string name="notification_title_summary_ready_to_install">Gotowa do instalacji</string>
     <string name="notification_title_summary_ready_to_install_update">Aktualizacja gotowa do instalacji</string>
     <string name="notification_title_summary_installing">Instalowanie</string>
-    <string name="notification_title_summary_installed">Instalacja powiodła się</string>
+    <string name="notification_title_summary_installed">Zainstalowano pomyślnie</string>
     <string name="notification_title_summary_install_error">Instalacja zakończona niepowodzeniem</string>
     <string name="notification_action_update">Aktualizacja</string>
     <string name="notification_action_cancel">Anuluj</string>
@@ -525,4 +525,5 @@
     <string name="swap_error_cannot_start_bluetooth">Nie można uruchomić Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">W pobliżu jest zamknięty, ponieważ był bezczynny.</string>
     <string name="nearby_splash__document_tree">Wyszukaj USB OTG dla repozytoriów i serwerów lustrzanych.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

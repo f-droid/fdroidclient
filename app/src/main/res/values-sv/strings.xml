@@ -167,7 +167,7 @@
     <string name="repo_edit_credentials">Ändra lösenord</string>
     <string name="repo_error_empty_username">Tomt användarnamn, användaruppgifterna har inte ändrats</string>
     <string name="about_license">Licens</string>
-    <string name="menu_email">E-posta författare</string>
+    <string name="menu_email">E-posta utvecklare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
     <string name="useTor">Använd Tor</string>
     <string name="useTorSummary">Tvinga nerladdningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
@@ -492,4 +492,5 @@
     <string name="swap_error_cannot_start_bluetooth">Det går inte att starta Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Stängd i närheten eftersom den var inaktiv.</string>
     <string name="nearby_splash__document_tree">Sök USB OTG för förråd och speglar.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

@@ -1,0 +1,5 @@
+* Suppression d’« Android App Link » car il ne peut fonctionner avec F-Droid et provoquait des fuites DNS.
+* Les dépôts d’archives ont maintenant une priorité moindre que les dépôts ordinaires, corrigeant des problèmes où les informations étaient récupérées des archives au lieu des dépôts ordinaires.
+* Fonctionnalité d’arrêt de rognage de l’image de l’entête (merci @ByteHamster !)
+* Barre de navigation sombre (merci @MatthieuB !)
+* Nettoyage de code (merci @Isira-Seneviratne !)

@@ -9,7 +9,7 @@
     <string name="updates">Обновления</string>
     <string name="other">Другое</string>
     <string name="update_interval">Интервал автоматического обновления</string>
-    <string name="notify">Показывать доступные обновления</string>
+    <string name="notify">Показать доступные обновления</string>
     <string name="notify_on">Показывать уведомление о доступных обновлениях</string>
     <string name="system_installer">Привилегированное расширение</string>
     <string name="system_installer_on">Использовать привилегированное расширение для установки, обновления и удаления пакетов</string>
@@ -107,12 +107,12 @@
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше доступны не будут. 
+    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.
 \n 
 \nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
-    <string name="repo_disabled_notification">%1$s отключен.
-\n
-\nДля установки приложений из этого репозитория вам необходимо повторно включить его.</string>
+    <string name="repo_disabled_notification">%1$s отключен. 
+\n 
+\nВам нужно будет повторно включить этот репозиторий для установки приложений из него.</string>
     <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий,
         который вы только что добавили! Попробуйте присоединиться к этой сети: %s
     </string>
@@ -161,7 +161,7 @@
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
     <string name="pref_language_default">Системный</string>
-    <string name="theme_night">Ночная</string>
+    <string name="theme_night">Ночь</string>
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
 \nНа вашем устройстве есть приложения, но они недоступны из F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
@@ -254,9 +254,7 @@
     <string name="swap_connection_misc_error">При подключении к устройству произошла ошибка, невозможно провести с ним обмен!</string>
     <string name="perms_description_app">Предоставлено %1$s.</string>
     <string name="update_auto_download">Получать обновления автоматически</string>
-    <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне и выводить уведомление для их
-        установки
-    </string>
+    <string name="update_auto_download_summary">Обновления будут загружены автоматически, и вы получите уведомление о необходимости их установки</string>
     <string name="download_pending">Ожидание начала загрузки…</string>
     <string name="keep_hour">1 час</string>
     <string name="keep_day">1 день</string>
@@ -270,8 +268,8 @@
     <string name="uninstalling">Удаление…</string>
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
-    <string name="keep_install_history">Хранить историю установок</string>
-    <string name="keep_install_history_summary">Хранить журнал всех установок и деинсталляций в приватном хранилище</string>
+    <string name="keep_install_history">Хранить историю инсталляций</string>
+    <string name="keep_install_history_summary">Хранить журнал всех инсталляций и деинсталляций в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
@@ -465,15 +463,15 @@
     <string name="prompt_to_send_crash_reports">Запрос на отправку отчетов о сбоях</string>
     <string name="prompt_to_send_crash_reports_summary">Сбор информации о сбоях и запрос на отправку ее разработчику</string>
     <string name="install_history">История инсталляций</string>
-    <string name="install_history_summary">Просмотр личного журнала всех установок и удалений</string>
+    <string name="install_history_summary">Просмотреть журнал всех инсталляций и деинсталляций</string>
     <string name="send_version_and_uuid">Отправить версию и UUID на сервер</string>
-    <string name="send_version_and_uuid_summary">Включить в эту версию приложения случайный и уникальный идентификатор при загрузке, который вступает в силу при следующем перезапуске приложения.</string>
+    <string name="send_version_and_uuid_summary">Включить версию этого приложения и случайный уникальный ID. Изменения вступят в силу после перезапуска.</string>
     <string name="share_repository">Поделиться репозиторием</string>
     <string name="allow_push_requests">Разрешить репозиториям устанавливать и удалять приложения</string>
-    <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на установку или удаление приложений</string>
+    <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на инсталляцию или деинсталляцию приложений</string>
     <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
-    <string name="send_install_history">Отправить историю установок</string>
-    <string name="send_history_csv">%s история установок как CSV-файл</string>
+    <string name="send_install_history">Отправить историю инсталляций</string>
+    <string name="send_history_csv">%s история инсталляций как CSV-файл</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
     <string name="send_installed_apps">Поделиться установленными приложениями</string>
     <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
@@ -515,4 +513,5 @@
     <string name="swap_error_cannot_start_bluetooth">Не удается запустить Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Рядом\' был отключен.</string>
     <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

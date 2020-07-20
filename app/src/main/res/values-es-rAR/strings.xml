@@ -151,7 +151,7 @@
     <string name="menu_ignore_all">Ignorar todas las actualizaciones</string>
     <string name="menu_ignore_this">Ignorar esta actualización</string>
     <string name="menu_website">Sitio web</string>
-    <string name="menu_email">Enviar e-mail al autor</string>
+    <string name="menu_email">Enviar un correo electrónico al autor</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registro de cambios</string>
     <string name="menu_video">Video</string>
@@ -210,7 +210,7 @@
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="newPerms">Nuevo</string>
     <string name="crash_dialog_title">F-Droid se detuvo</string>
-    <string name="crash_dialog_text">Ocurrió un error inesperado que forzó a la aplicación a detenerse. ¿Querés enviar los detalles por mail para ayudar a resolver el problema\?</string>
+    <string name="crash_dialog_text">Ocurrió un error inesperado que forzó a la aplicación a detenerse. ¿Querés enviar los detalles por correo electrónico para ayudar a resolver el problema\?</string>
     <string name="notification_title_single_update_available">Actualización disponible</string>
     <string name="notification_title_summary_install_error">Falló la instalación</string>
     <string name="notification_action_update">Actualizar</string>
@@ -491,4 +491,5 @@
     <string name="swap_toast_closing_nearby_after_timeout">Cercano cerrado como estaba inactivo.</string>
     <string name="nearby_splash__document_tree">Busque USB OTG para repositorios y espejos.</string>
     <string name="menu_select_for_wipe">Seleccionar para borrar</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
