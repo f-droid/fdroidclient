@@ -253,7 +253,7 @@
     <string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l’arrêt de l’appli. Souhaitez envoyer les détails par courriel afin d’aider à corriger la situation \?</string>
     <string name="antinonfreeassetslist">Cette application contient des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
-    <string name="useTor">Utiliser Tor</string>
+    <string name="useTor">Utilisez Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi…</string>
     <string name="repo_provider">Dépôt : %s</string>
@@ -484,7 +484,7 @@
     <string name="menu_translation">Traduction</string>
     <string name="undo">Annuler</string>
     <string name="app_list__dismiss_installing_app">Installation annulée</string>
-    <string name="try_again">Réessayer</string>
+    <string name="try_again">Réessayez</string>
     <string name="panic_will_be_wiped">sera supprimée et toutes les données supprimées</string>
     <string name="panic_reset_repos_title">Réinitialiser les dépôts</string>
     <string name="panic_reset_repos_summary">Restaure les dépôts par défaut</string>
