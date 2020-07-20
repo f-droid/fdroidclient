@@ -233,7 +233,7 @@
         prosím jako chybu!
     </string>
     <string name="cache_downloaded">Uchovat balíčky</string>
-    <string name="menu_email">Odeslat email autorovi</string>
+    <string name="menu_email">Odeslat e-mail autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
     <string name="status_inserting_apps">Ukládání podrobností o aplikaci</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>

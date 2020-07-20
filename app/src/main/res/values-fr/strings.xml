@@ -279,7 +279,7 @@
     <string name="warning_no_internet">Impossible d’effectuer la mise à jour, êtes-vous connecté à Internet \?</string>
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
-    <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-leur un café !</string>
+    <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-lui un café !</string>
     <string name="repositories_summary">Ajouter des sources additionnelles d’applis</string>
     <string name="notification_title_single_update_available">Une mise à jour est disponible</string>
     <string name="notification_title_single_ready_to_install">Prêt à installer</string>
@@ -390,7 +390,7 @@
     <string name="app_permission_storage">F-droid requiert l\'accès au stockage pour effectuer l\'installation. Veuillez accorder cette autorisation sur l\'écran suivant afin de poursuivre  l\'installation.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Aucune version compatible avec votre appareil</string>
     <string name="app_details__incompatible_mismatched_signature">La signature diffère de la version déjà installée</string>
-    <string name="app_details__no_versions__show_incompat_versions">Pour tout de même afficher ici les versions incompatibles, activez la préférence \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Pour tout de même afficher ici les versions incompatibles, activez la préférence « %1$s ».</string>
     <string name="app_details__no_versions__no_compatible_signatures">Aucune version ne possède une signature compatible</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
     <string name="app_list__dismiss_app_update">Mise à jour ignorée</string>
@@ -502,4 +502,5 @@
     <string name="swap_stopping_hotspot">Arrêt du point d\'accès…</string>
     <string name="swap_toast_closing_nearby_after_timeout">Échange à proximité terminé pour inactivité.</string>
     <string name="nearby_splash__document_tree">Rechercher sur l\'USB OTG les dépôts et miroirs.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

@@ -143,7 +143,7 @@
     <string name="menu_video">Video</string>
     <string name="menu_changelog">Registro de cambios</string>
     <string name="menu_issues">Cuestiones</string>
-    <string name="menu_email">Autor de correo electrónico</string>
+    <string name="menu_email">Escribir al autor por correo electrónico</string>
     <string name="menu_website">Sitio web</string>
     <string name="menu_ignore_this">Ignorar esta actualización</string>
     <string name="menu_ignore_all">Ignorar todas las actualizaciones</string>
@@ -197,4 +197,5 @@
     <string name="system_installer_on">Usar extensión con privilegios para instalar, actualizar y remover paquetes</string>
     <string name="system_installer">Extensión con privilegios</string>
     <string name="local_repo_name">Nombre del repositorio local</string>
+    <string name="about_site">Sitio web</string>
 </resources>

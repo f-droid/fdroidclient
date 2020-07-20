@@ -281,7 +281,7 @@
     <string name="keep_year">1 Χρόνο</string>
     <string name="keep_forever">Για πάντα</string>
     <string name="crash_dialog_title">Το F-Droid σταμάτησε να λειτουργεί</string>
-    <string name="crash_dialog_text">Μη αναμενόμενο σφάλμα ανάγκασε την εφαρμογή να σταματήσει. Θα θέλατε να στείλετε e-mail με τις λεπτομέρειες για να βοηθήσετε να διορθωθεί το πρόβλημα;</string>
+    <string name="crash_dialog_text">Μη αναμενόμενο σφάλμα ανάγκασε την εφαρμογή να σταματήσει. Θα θέλατε να στείλετε ιμέιλ με τις λεπτομέρειες για να βοηθήσετε να διορθωθεί το πρόβλημα;</string>
     <string name="main_menu__latest_apps">Τελευταία</string>
     <string name="main_menu__categories">Κατηγορίες</string>
     <string name="preference_manage_installed_apps">Διαχείριση  εγκατεστημένων εφαρμογών</string>

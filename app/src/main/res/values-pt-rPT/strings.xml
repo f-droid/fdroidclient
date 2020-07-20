@@ -26,7 +26,7 @@
     <string name="no_such_app">Aplicação não encontrada.</string>
     <string name="about_title">Sobre o F-Droid</string>
     <string name="about_version">Versão</string>
-    <string name="about_site">Site</string>
+    <string name="about_site">Sítio eletrónico</string>
     <string name="about_source">Código-fonte</string>
     <string name="app_incompatible">Incompatível</string>
     <string name="app_installed">Instalada</string>
@@ -61,7 +61,7 @@
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
     <string name="menu_ignore_this">Ignorar esta atualização</string>
-    <string name="menu_website">Site</string>
+    <string name="menu_website">Sítio eletrónico</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registo de alterações</string>
     <string name="menu_source">Código-fonte</string>

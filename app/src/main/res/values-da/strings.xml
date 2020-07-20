@@ -235,7 +235,7 @@
     <string name="theme_light">Lys</string>
     <string name="theme_dark">Mørk</string>
     <string name="theme_night">Nat</string>
-    <string name="menu_email">E-Mail forfatter</string>
+    <string name="menu_email">E-mail forfatter</string>
     <string name="antinonfreeassetslist">Denne app indeholder ikke-frit indhold</string>
     <string name="empty_search_available_app_list">Ingen matchende apps tilgængelige.</string>
     <string name="crash_dialog_title">F-Droid er gået ned</string>
@@ -487,4 +487,5 @@
     <string name="swap_error_cannot_start_bluetooth">Kan ikke starte Bluetooth!</string>
     <string name="nearby_splash__document_tree">Søg på USB OTG efter depoter og spejle.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nærved lukket da det ikke var i brug.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
