@@ -385,7 +385,7 @@
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Er zit in %$s een kwetsbaarheid. We raden u aan deze app onmiddellijk te verwijderen.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Er zit in %1$s een kwetsbaarheid. We raden u aan deze app onmiddellijk te verwijderen.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Er zit in %1$s een kwetsbaarheid. We raden u aan onmiddellijk deze applicatie bij te werken naar de meest recente versie.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Negeer</string>
     <string name="privacy">Privacy</string>
