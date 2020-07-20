@@ -1,7 +1,11 @@
-* Ogromny przegląd listy „Wersje” w „Szczegóły aplikacji” i wiele innych ulepszeń interfejsu użytkownika dzięki nowemu współpracownikowi
-@wsdfhjxc 
-* Naprawiono nawigację klawiatury/D-pad w wielu miejscach dzięki nowemu współpracownikowi @doeffinger 
-* Pokaż przycisk „Otwórz”, gdy media są zainstalowane i widoczne 
-* Dodaj przycisk Share do „Installed Apps”, aby wyeksportować listę CSV 
-* Dodaj klikalną listę plików APK do strony indeksu wymiany HTML 
+* Ogromny przegląd listy „Wersje” w „Szczegóły aplikacji” i wiele innych ulepszeń interfejsu użytkownika dzięki nowemu współtwórcy @wsdfhjxc
+
+* Naprawiono nawigację klawiatury/D-pad w wielu miejscach dzięki nowemu współtwórcy @doeffinger
+
+* Pokaż przycisk „Otwórz”, gdy media są zainstalowane i widoczne
+
+* Dodano przycisk Udostępnij do „Zainstalowanych aplikacji”, aby eksportować listę CSV
+
+* Dodano klikalną listę plików APK do strony indeksu wymiany HTML
+
 * Ponów próbę pobrania indeksu z mirrors

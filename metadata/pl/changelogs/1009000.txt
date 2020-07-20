@@ -1,0 +1,5 @@
+* Usunięto obsługę „Android App Link”, nie współpracuje z F-Droid i powodowało wycieki DNS.
+* Archiwum Repo ma teraz niższy priorytet niż Repo (wyżej na ekranie Zarządza repozytoriami), rozwiązało to problemy, w których szukano ikon, zrzutów ekranu i innych informacji w Archiwum, a nie repozytorium.
+* Stop z funkcją przycinania obrazu nagłówka (dzięki @ByteHamster!)
+* Dopasowanie paska nawigacyjnego do trybu ciemnego (dzięki @ MatthieuB!)
+* Usunięto przestarzały kod (dzięki @ Isira-Seneviratne!)
