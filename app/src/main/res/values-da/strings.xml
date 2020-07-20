@@ -66,7 +66,7 @@
     <string name="menu_install">Installer</string>
     <string name="menu_uninstall">Afinstaller</string>
     <string name="menu_ignore_all">Ignorer alle opdateringer</string>
-    <string name="menu_ignore_this">Ignorer Denne Opdatering</string>
+    <string name="menu_ignore_this">Ignorer denne opdatering</string>
     <string name="menu_website">Hjemmeside</string>
     <string name="menu_issues">Problemer</string>
     <string name="menu_changelog">Ændringslog</string>
@@ -314,7 +314,7 @@
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Ingen Internet? Hent apps fra folk i nærheden af dig!</string>
     <string name="nearby_splash__find_people_button">Find personer i nærheden</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte i nærheden.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte \"i nærheden\".</string>
     <string name="app__tts__downloading_progress">Henter, %1$d%% udført</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d flere…</item>
@@ -455,7 +455,7 @@
     <string name="preventScreenshots_summary">Blokerer skærmbilleder fra at blive taget og skjuler program indhold fra seneste programmer skærme</string>
     <string name="hiding_dialog_warning">Advarsel: Enhver appgenvej på startskærmen fjernes også og vil skulle tilføjes manuelt igen.</string>
     <string name="allow_push_requests_summary">Arkiv metadata kan omfatte skubbe-forespørgsler for at installere og afinstallere apps</string>
-    <string name="scan_removable_storage_summary">Se efter pakke arkiv på fjern-bare lagerenheder som SD-kort og USB-drev</string>
+    <string name="scan_removable_storage_summary">Søg efter pakkearkiver på fjernbare lagerenheder som SD-kort og USB-drev</string>
     <string name="menu_translation">Oversættelse</string>
     <string name="main_menu__updates">Nyt</string>
     <string name="antinosourcesince">Kildekoden er ikke længere tilgængelig; ingen opdateringer mulige.</string>
