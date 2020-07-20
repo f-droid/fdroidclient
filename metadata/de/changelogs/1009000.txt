@@ -1,0 +1,5 @@
+* Entfernt "Android App Link"-Unterstützung, weil es nicht mit F-Droid funktioniert und DNS Leaks ermöglicht
+* Archiv-Repos haben geringere Prio als das Repo (höher in der Repos verwalten Ansicht), wodurch Fehler behoben wurden, wo es nach Icons, Screenshots und anderen Infos im Archiv anstatt dem Repo gesucht hatte
+* Stoppt Abschneiden vom Feature Titelbild (Danke @ByteHamster)
+* Navigationsleiste unterstützt dunklen Modus (Danke @MatthieuB)
+* Aufräumen von altem Code (Danke @Isira-Seneviratne)
