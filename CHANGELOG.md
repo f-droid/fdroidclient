@@ -1,3 +1,11 @@
+### 1.10-alpha0 (2020-07-20)
+
+* updates to core libraries (Jackson, androidx, gradle, etc)
+
+* use Gradle's new dependency verification
+
+* polish whitelabeling support
+
 ### 1.9 (2020-06-25)
 
 * Removed "Android App Link" support since it cannot work with
