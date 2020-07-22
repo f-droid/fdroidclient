@@ -161,7 +161,7 @@ public class NearbyViewBinder {
         storageVolumeText.setVisibility(View.GONE);
         requestStorageVolume.setVisibility(View.GONE);
 
-        final StorageManager storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
+        final StorageManager storageManager = ContextCompat.getSystemService(context, StorageManager.class);
         for (final StorageVolume storageVolume : storageManager.getStorageVolumes()) {
             if (storageVolume.isRemovable() && !storageVolume.isPrimary()) {
                 Log.i(TAG, "StorageVolume: " + storageVolume);

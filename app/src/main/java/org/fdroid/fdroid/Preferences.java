@@ -28,6 +28,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -457,7 +459,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Some users never use WiFi, this lets us check for that state on first run.
      */
     public void setDefaultForDataOnlyConnection(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = ContextCompat.getSystemService(context, ConnectivityManager.class);
         if (cm == null) {
             return;
         }

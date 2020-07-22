@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
 import androidx.core.net.ConnectivityManagerCompat;
 
 import android.util.Log;
@@ -79,7 +80,7 @@ public class ConnectivityMonitorService extends JobIntentService {
      * cases when looking through the network devices, especially on bad ROMs.
      */
     public static int getNetworkState(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = ContextCompat.getSystemService(context, ConnectivityManager.class);;
         if (cm == null) {
             return FLAG_NET_UNAVAILABLE;
         }

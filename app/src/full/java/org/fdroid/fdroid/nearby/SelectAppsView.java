@@ -141,7 +141,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         private LayoutInflater getInflater(Context context) {
             if (inflater == null) {
                 Context themedContext = new ContextThemeWrapper(context, R.style.SwapTheme_AppList_ListItem);
-                inflater = (LayoutInflater) themedContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater = ContextCompat.getSystemService(themedContext, LayoutInflater.class);
             }
             return inflater;
         }

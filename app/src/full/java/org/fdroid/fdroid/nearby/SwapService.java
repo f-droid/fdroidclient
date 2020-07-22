@@ -21,6 +21,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -365,7 +366,7 @@ public class SwapService extends Service {
                     new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
         }
 
-        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         if (wifiManager != null) {
             SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
         }

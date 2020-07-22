@@ -18,13 +18,14 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
@@ -118,8 +119,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         final int n = perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
         if (n > 0) {
             permVisible = true;
-            LayoutInflater inflater = (LayoutInflater) getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = ContextCompat.getSystemService(this, LayoutInflater.class);
             View root = inflater.inflate(R.layout.permissions_list, null);
             if (scrollView == null) {
                 scrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);

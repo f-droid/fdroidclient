@@ -182,7 +182,7 @@ public class ManageReposActivity extends AppCompatActivity
 
     public String getPrimaryClipAsText() {
         CharSequence text = null;
-        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboardManager = ContextCompat.getSystemService(this, ClipboardManager.class);
         if (clipboardManager.hasPrimaryClip()) {
             ClipData data = clipboardManager.getPrimaryClip();
             if (data.getItemCount() > 0) {
@@ -838,7 +838,8 @@ public class ManageReposActivity extends AppCompatActivity
     private void checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
         // if this is a local repo, check we're on the same wifi
         if (!TextUtils.isEmpty(newRepo.getBssid())) {
-            WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
+                    WifiManager.class);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String bssid = wifiInfo.getBSSID();
             if (TextUtils.isEmpty(bssid)) { /* not all devices have wifi */

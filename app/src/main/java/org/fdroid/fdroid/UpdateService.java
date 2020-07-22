@@ -41,6 +41,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.fdroid.fdroid.data.Apk;
@@ -164,7 +165,7 @@ public class UpdateService extends JobIntentService {
             }
         } else {
             Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
-            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
             ComponentName componentName = new ComponentName(context, UpdateJobService.class);
             JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
                     .setRequiresDeviceIdle(true)
@@ -257,7 +258,7 @@ public class UpdateService extends JobIntentService {
         super.onCreate();
         updateService = this;
 
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager = ContextCompat.getSystemService(this, NotificationManager.class);
 
         notificationBuilder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_UPDATES)
                 .setSmallIcon(R.drawable.ic_refresh)

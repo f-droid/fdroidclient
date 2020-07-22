@@ -236,7 +236,7 @@ public class AppSecurityPermissions {
 
     private AppSecurityPermissions(Context context) {
         this.context = context;
-        inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = ContextCompat.getSystemService(this.context, LayoutInflater.class);
         pm = this.context.getPackageManager();
         // Pick up from framework resources instead.
         newPermPrefix = this.context.getText(R.string.perms_new_perm_prefix);

@@ -6,6 +6,7 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.os.Build;
 
+import androidx.core.content.ContextCompat;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -103,7 +104,7 @@ public class MainActivityEspressoTest {
 
         Context context = instrumentation.getTargetContext();
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager activityManager = ContextCompat.getSystemService(context, ActivityManager.class);
         activityManager.getMemoryInfo(mi);
         long percentAvail = mi.availMem / mi.totalMem;
         Log.i(TAG, "RAM: " + mi.availMem + " / " + mi.totalMem + " = " + percentAvail);

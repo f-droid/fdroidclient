@@ -42,6 +42,8 @@ import android.os.Environment;
 import android.os.StrictMode;
 import androidx.annotation.Nullable;
 import androidx.collection.LongSparseArray;
+import androidx.core.content.ContextCompat;
+
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -428,7 +430,8 @@ public class FDroidApp extends Application {
         // submitted via app's git repos, so anyone with commit privs there could submit
         // exploits hidden in images.  Luckily, F-Droid doesn't need EXIF at all, and
         // that is where the JPEG/PNG vulns have been. So it can be entirely stripped.
-        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        Display display = ContextCompat.getSystemService(this, WindowManager.class)
+                .getDefaultDisplay();
         int maxSize = GL10.GL_MAX_TEXTURE_SIZE; // see ImageScaleType.NONE_SAFE javadoc
         int width = display.getWidth();
         if (width > maxSize) {
@@ -554,7 +557,7 @@ public class FDroidApp extends Application {
      * for end users than experiencing a deterministic crash every time F-Droid is started.
      */
     private boolean isAcraProcess() {
-        ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager manager = ContextCompat.getSystemService(this, ActivityManager.class);
         List<RunningAppProcessInfo> processes = manager.getRunningAppProcesses();
         if (processes == null) {
             return false;
@@ -578,7 +581,7 @@ public class FDroidApp extends Application {
     @TargetApi(16)
     private int getThreadPoolSize() {
         if (Build.VERSION.SDK_INT >= 16) {
-            ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager activityManager = ContextCompat.getSystemService(this, ActivityManager.class);
             ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
             if (activityManager != null) {
                 activityManager.getMemoryInfo(memInfo);

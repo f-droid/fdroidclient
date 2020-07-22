@@ -7,22 +7,26 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.peers.BonjourPeer;
 
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceEvent;
-import javax.jmdns.ServiceInfo;
-import javax.jmdns.ServiceListener;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.net.InetAddress;
 import java.util.HashMap;
+
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 
 /**
  * Manage {@link JmDNS} in a {@link HandlerThread}.  The start process is in
@@ -119,8 +123,7 @@ public class BonjourManager {
         }
         sendBroadcast(STATUS_STARTING, null);
 
-        final WifiManager wifiManager = (WifiManager) context.getApplicationContext()
-                .getSystemService(Context.WIFI_SERVICE);
+        final WifiManager wifiManager = ContextCompat.getSystemService(context, WifiManager.class);
         handlerThread = new HandlerThread("BonjourManager", Process.THREAD_PRIORITY_LESS_FAVORABLE) {
             @Override
             protected void onLooperPrepared() {
