@@ -14,15 +14,15 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.IBinder;
+import android.text.TextUtils;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import android.text.TextUtils;
-import android.util.Log;
-import cc.mvdan.accesspoint.WifiApControl;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NotificationHelper;
 import org.fdroid.fdroid.Preferences;
@@ -45,6 +45,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cc.mvdan.accesspoint.WifiApControl;
 
 /**
  * Central service which manages all of the different moving parts of swap which are required
@@ -72,15 +74,6 @@ public class SwapService extends Service {
     private static BluetoothAdapter bluetoothAdapter;
     private static WifiManager wifiManager;
     private static Timer pollConnectedSwapRepoTimer;
-
-    public static void start(Context context) {
-        Intent intent = new Intent(context, SwapService.class);
-        if (Build.VERSION.SDK_INT < 26) {
-            context.startService(intent);
-        } else {
-            context.startForegroundService(intent);
-        }
-    }
 
     public static void stop(Context context) {
         Intent intent = new Intent(context, SwapService.class);

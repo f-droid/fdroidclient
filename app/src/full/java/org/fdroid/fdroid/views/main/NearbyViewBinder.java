@@ -13,9 +13,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +21,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
@@ -86,7 +88,7 @@ public class NearbyViewBinder {
                     ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
                             MainActivity.REQUEST_LOCATION_PERMISSIONS);
                 } else {
-                    SwapService.start(activity);
+                    ContextCompat.startForegroundService(activity, new Intent(activity, SwapService.class));
                 }
             }
         });
