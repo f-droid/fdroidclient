@@ -14,6 +14,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.appcompat.app.AlertDialog;
@@ -506,8 +508,9 @@ public class AppDetailsRecyclerViewAdapter
                 whatsNewView.setVisibility(View.GONE);
                 summaryView.setBackgroundResource(0); // make background of summary transparent
             } else {
-                //noinspection deprecation Ignore deprecation because the suggested way is only available in API 24.
-                Locale locale = context.getResources().getConfiguration().locale;
+                final LocaleListCompat localeList =
+                        ConfigurationCompat.getLocales(context.getResources().getConfiguration());
+                Locale locale = localeList.get(0);
 
                 StringBuilder sbWhatsNew = new StringBuilder();
                 sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version,
