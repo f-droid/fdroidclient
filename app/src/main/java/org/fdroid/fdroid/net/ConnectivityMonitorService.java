@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
+import androidx.core.net.ConnectivityManagerCompat;
+
 import android.util.Log;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.FDroidApp;
@@ -115,7 +117,7 @@ public class ConnectivityMonitorService extends JobIntentService {
         switch (networkType) {
             case ConnectivityManager.TYPE_ETHERNET:
             case ConnectivityManager.TYPE_WIFI:
-                if (Build.VERSION.SDK_INT >= 16 && cm.isActiveNetworkMetered()) {
+                if (ConnectivityManagerCompat.isActiveNetworkMetered(cm)) {
                     return FLAG_NET_METERED;
                 } else {
                     return FLAG_NET_NO_LIMIT;
