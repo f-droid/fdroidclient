@@ -138,6 +138,10 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude '.readme'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
