@@ -28,14 +28,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -47,6 +43,10 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.databinding.InstallAppDetailsBinding;
+import org.fdroid.fdroid.databinding.InstallConfirmBinding;
+import org.fdroid.fdroid.databinding.InstallStartBinding;
+import org.fdroid.fdroid.databinding.PermissionsListBinding;
 
 /**
  * NOTES:
@@ -59,11 +59,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
 
     private AppDiff appDiff;
 
+    private InstallStartBinding installStartBinding;
     // View for install progress
-    private View installConfirm;
-    // Buttons to indicate user acceptance
-    private Button okButton;
-    private Button cancelButton;
+    private InstallConfirmBinding installConfirmBinding;
     private CaffeinatedScrollView scrollView;
     private boolean okCanInstall;
 
@@ -73,18 +71,15 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     private App app;
 
     private void startInstallConfirm() {
-        View appSnippet = findViewById(R.id.app_snippet);
-        TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
-        ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
-        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
+        InstallAppDetailsBinding appDetailsBinding = installStartBinding.appSnippet;
+        TabHost tabHost = findViewById(android.R.id.tabhost);
 
-        appName.setText(app.name);
-        ImageLoader.getInstance().displayImage(app.getIconUrl(this), appIcon,
+        appDetailsBinding.appName.setText(app.name);
+        ImageLoader.getInstance().displayImage(app.getIconUrl(this), appDetailsBinding.appIcon,
                 Utils.getRepoAppDisplayImageOptions());
 
         tabHost.setup();
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        TabsAdapter adapter = new TabsAdapter(this, tabHost, viewPager);
+        TabsAdapter adapter = new TabsAdapter(this, tabHost, installConfirmBinding.pager);
         adapter.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -115,21 +110,20 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
             adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
                     getText(R.string.newPerms)), scrollView);
         } else {
-            findViewById(R.id.tabscontainer).setVisibility(View.GONE);
-            findViewById(R.id.divider).setVisibility(View.VISIBLE);
+            installConfirmBinding.tabscontainer.setVisibility(View.GONE);
+            installConfirmBinding.divider.setVisibility(View.VISIBLE);
         }
         final int n = perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
         if (n > 0) {
             permVisible = true;
             LayoutInflater inflater = ContextCompat.getSystemService(this, LayoutInflater.class);
-            View root = inflater.inflate(R.layout.permissions_list, null);
+            PermissionsListBinding permissionsListBinding = PermissionsListBinding.inflate(inflater);
             if (scrollView == null) {
-                scrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
+                scrollView = permissionsListBinding.scrollview;
             }
-            final ViewGroup permList = (ViewGroup) root.findViewById(R.id.permission_list);
-            permList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+            permissionsListBinding.permissionList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             adapter.addTab(tabHost.newTabSpec(TAB_ID_ALL).setIndicator(
-                    getText(R.string.allPerms)), root);
+                    getText(R.string.allPerms)), permissionsListBinding.getRoot());
         }
 
         if (!permVisible) {
@@ -144,28 +138,26 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
                 throw new RuntimeException("no permissions requested. This screen should not appear!");
             }
             tabHost.setVisibility(View.GONE);
-            findViewById(R.id.filler).setVisibility(View.VISIBLE);
-            findViewById(R.id.divider).setVisibility(View.GONE);
+            installConfirmBinding.filler.setVisibility(View.VISIBLE);
+            installConfirmBinding.divider.setVisibility(View.GONE);
             scrollView = null;
         }
         if (msg != 0) {
-            ((TextView) findViewById(R.id.install_confirm)).setText(msg);
+            installConfirmBinding.installConfirm.setText(msg);
         }
-        installConfirm.setVisibility(View.VISIBLE);
-        okButton = (Button) findViewById(R.id.ok_button);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
-        okButton.setOnClickListener(this);
-        cancelButton.setOnClickListener(this);
+        installConfirmBinding.getRoot().setVisibility(View.VISIBLE);
+        installConfirmBinding.okButton.setOnClickListener(this);
+        installConfirmBinding.cancelButton.setOnClickListener(this);
         if (scrollView == null) {
             // There is nothing to scroll view, so the ok button is immediately
             // set to install.
-            okButton.setText(R.string.menu_install);
+            installConfirmBinding.okButton.setText(R.string.menu_install);
             okCanInstall = true;
         } else {
             scrollView.setFullScrollAction(new Runnable() {
                 @Override
                 public void run() {
-                    okButton.setText(R.string.menu_install);
+                    installConfirmBinding.okButton.setText(R.string.menu_install);
                     okCanInstall = true;
                 }
             });
@@ -186,14 +178,15 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
 
         appDiff = new AppDiff(this, apk);
 
-        setContentView(R.layout.install_start);
+        installStartBinding = InstallStartBinding.inflate(getLayoutInflater());
+        setContentView(installStartBinding.getRoot());
 
         // increase dialog to full width
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        installConfirm = findViewById(R.id.install_confirm_panel);
-        installConfirm.setVisibility(View.INVISIBLE);
+        installConfirmBinding = installStartBinding.installConfirmPanel;
+        installConfirmBinding.getRoot().setVisibility(View.INVISIBLE);
 
         startInstallConfirm();
     }
@@ -204,14 +197,14 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     }
 
     public void onClick(View v) {
-        if (v == okButton) {
+        if (v == installConfirmBinding.okButton) {
             if (okCanInstall || scrollView == null) {
                 setResult(RESULT_OK, intent);
                 finish();
             } else {
                 scrollView.pageScroll(View.FOCUS_DOWN);
             }
-        } else if (v == cancelButton) {
+        } else if (v == installConfirmBinding.cancelButton) {
             setResult(RESULT_CANCELED, intent);
             finish();
         }
