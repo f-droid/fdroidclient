@@ -4,25 +4,29 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.databinding.ActivityScreenshotsBinding;
+import org.fdroid.fdroid.databinding.ActivityScreenshotsPageBinding;
 
 /**
  * Full screen view of an apps screenshots to swipe through. This will always
@@ -33,7 +37,6 @@ import org.fdroid.fdroid.data.AppProvider;
  * background loading.
  */
 public class ScreenShotsActivity extends AppCompatActivity {
-
     private static final String EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME";
     private static final String EXTRA_START_POSITION = "EXTRA_START_POSITION";
 
@@ -52,7 +55,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
         fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screenshots);
+        final ActivityScreenshotsBinding binding = ActivityScreenshotsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         String packageName = getIntent().getStringExtra(EXTRA_PACKAGE_NAME);
         int startPosition = getIntent().getIntExtra(EXTRA_START_POSITION, 0);
@@ -60,13 +64,12 @@ public class ScreenShotsActivity extends AppCompatActivity {
         App app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
         String[] screenshots = app.getAllScreenshots(this);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.screenshot_view_pager);
         ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(getSupportFragmentManager(), screenshots);
-        viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(startPosition);
+        binding.screenshotViewPager.setAdapter(adapter);
+        binding.screenshotViewPager.setCurrentItem(startPosition);
 
         // display some nice animation while swiping
-        viewPager.setPageTransformer(true, new DepthPageTransformer());
+        binding.screenshotViewPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
     @Override
@@ -105,7 +108,6 @@ public class ScreenShotsActivity extends AppCompatActivity {
      * A single screenshot page.
      */
     public static class ScreenShotPageFragment extends Fragment {
-
         private static final String ARG_SCREENSHOT_URL = "ARG_SCREENSHOT_URL";
 
         static ScreenShotPageFragment newInstance(String screenshotUrl) {
@@ -118,6 +120,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
         private String screenshotUrl;
 
+        private ActivityScreenshotsPageBinding screenshotsPageBinding;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -128,19 +132,23 @@ public class ScreenShotsActivity extends AppCompatActivity {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
-
             DisplayImageOptions displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
                     .showImageOnFail(R.drawable.screenshot_placeholder)
                     .showImageOnLoading(R.drawable.screenshot_placeholder)
                     .showImageForEmptyUri(R.drawable.screenshot_placeholder)
                     .build();
 
-            View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);
+            screenshotsPageBinding = ActivityScreenshotsPageBinding.inflate(inflater, container, false);
 
-            ImageView screenshotView = (ImageView) rootView.findViewById(R.id.screenshot);
-            ImageLoader.getInstance().displayImage(screenshotUrl, screenshotView, displayImageOptions);
+            ImageLoader.getInstance().displayImage(screenshotUrl, screenshotsPageBinding.screenshot, displayImageOptions);
 
-            return rootView;
+            return screenshotsPageBinding.getRoot();
+        }
+
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            screenshotsPageBinding = null;
         }
     }
 
