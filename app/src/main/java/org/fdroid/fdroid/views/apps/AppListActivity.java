@@ -32,9 +32,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,13 +44,16 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.databinding.ActivityAppListBinding;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -70,14 +72,11 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
     private static SharedPreferences savedSearchSettings;
 
-    private RecyclerView appView;
+    private ActivityAppListBinding binding;
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
     private String sortClauseSelected;
-    private TextView emptyState;
-    private EditText searchInput;
-    private ImageView sortImage;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
@@ -90,79 +89,74 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_app_list);
+        binding = ActivityAppListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        keyboardStateMonitor = new Utils.KeyboardStateMonitor(findViewById(R.id.app_list_root));
+        keyboardStateMonitor = new Utils.KeyboardStateMonitor(binding.appListRoot);
 
         savedSearchSettings = getSavedSearchSettings(this);
         searchTerms = savedSearchSettings.getString(SEARCH_TERMS_KEY, null);
         sortClauseSelected = savedSearchSettings.getString(SORT_CLAUSE_KEY, SortClause.LAST_UPDATED);
 
-        searchInput = (EditText) findViewById(R.id.search);
-        searchInput.setText(searchTerms);
-        searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
-        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        binding.search.setText(searchTerms);
+        binding.search.addTextChangedListener(new CategoryTextWatcher(this, binding.search, this));
+        binding.search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
                     InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
                             InputMethodManager.class);
-                    inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+                    inputManager.hideSoftInputFromWindow(binding.search.getWindowToken(), 0);
 
                     // Change focus from the search input to the app list.
-                    appView.requestFocus();
+                    binding.appList.requestFocus();
                     return true;
                 }
                 return false;
             }
         });
 
-        sortImage = (ImageView) findViewById(R.id.sort);
         final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
                 R.drawable.ic_access_time)).mutate();
         DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
         final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
                 R.drawable.ic_sort)).mutate();
         DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-        sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
-        sortImage.setOnClickListener(new View.OnClickListener() {
+        binding.sort.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
+        binding.sort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (sortClauseSelected) {
                     case SortClause.WORDS:
                         sortClauseSelected = SortClause.LAST_UPDATED;
                         DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(lastUpdated);
+                        binding.sort.setImageDrawable(lastUpdated);
                         break;
                     case SortClause.LAST_UPDATED:
                         sortClauseSelected = SortClause.WORDS;
                         DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(words);
+                        binding.sort.setImageDrawable(words);
                         break;
                 }
                 putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
-                appView.scrollToPosition(0);
+                binding.appList.scrollToPosition(0);
             }
         });
 
-        emptyState = (TextView) findViewById(R.id.empty_state);
-
-        View backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        View clearButton = findViewById(R.id.clear);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        binding.clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchInput.setText("");
-                searchInput.requestFocus();
+                binding.search.setText("");
+                binding.search.requestFocus();
                 if (!keyboardStateMonitor.isKeyboardVisible()) {
                     InputMethodManager inputMethodManager =
                             ContextCompat.getSystemService(AppListActivity.this,
@@ -175,11 +169,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         appAdapter = new AppListAdapter(this);
 
-        appView = (RecyclerView) findViewById(R.id.app_list);
-        appView.setHasFixedSize(true);
-        appView.setLayoutManager(new LinearLayoutManager(this));
-        appView.setAdapter(appAdapter);
-        appView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        binding.appList.setHasFixedSize(true);
+        binding.appList.setLayoutManager(new LinearLayoutManager(this));
+        binding.appList.setAdapter(appAdapter);
+        binding.appList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private final ImageLoader imageLoader = ImageLoader.getInstance();
 
             @Override
@@ -204,13 +197,13 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         category = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
 
-        searchInput.setText(getSearchText(category, searchTerms));
-        searchInput.setSelection(searchInput.getText().length());
+        binding.search.setText(getSearchText(category, searchTerms));
+        binding.search.setSelection(binding.search.getText().length());
 
         if (category != null) {
             // Do this so that the search input does not get focus by default. This allows for a user
             // experience where the user scrolls through the apps in the category.
-            appView.requestFocus();
+            binding.appList.requestFocus();
         }
 
         getSupportLoaderManager().initLoader(0, null, this);
@@ -246,11 +239,11 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         appAdapter.setAppCursor(cursor);
         if (cursor.getCount() > 0) {
-            emptyState.setVisibility(View.GONE);
-            appView.setVisibility(View.VISIBLE);
+            binding.emptyState.setVisibility(View.GONE);
+            binding.appList.setVisibility(View.VISIBLE);
         } else {
-            emptyState.setVisibility(View.VISIBLE);
-            appView.setVisibility(View.GONE);
+            binding.emptyState.setVisibility(View.VISIBLE);
+            binding.appList.setVisibility(View.GONE);
         }
     }
 
