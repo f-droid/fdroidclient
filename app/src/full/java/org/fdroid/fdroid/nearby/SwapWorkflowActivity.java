@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -24,7 +23,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,7 +41,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -60,6 +57,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.databinding.SwapActivityBinding;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
@@ -99,15 +97,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
 
-    private ViewGroup container;
-
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SWAP = 2;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
     private static final int STEP_INTRO = 1;  // TODO remove this special case, only use layoutResIds
 
-    private Toolbar toolbar;
+    private SwapActivityBinding binding;
     private SwapView currentView;
     private boolean hasPreparedLocalRepo;
     private boolean newIntent;
@@ -167,31 +163,21 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             int nextStep = -1;
             switch (currentView.getLayoutResId()) {
                 case R.layout.swap_confirm_receive:
+                case R.layout.swap_send_fdroid:
+                case R.layout.swap_success:
+                case R.layout.swap_start_swap:
+                case R.layout.swap_join_wifi:
                     nextStep = STEP_INTRO;
                     break;
                 case R.layout.swap_connecting:
                     nextStep = R.layout.swap_select_apps;
                     break;
-                case R.layout.swap_join_wifi:
-                    nextStep = STEP_INTRO;
-                    break;
                 case R.layout.swap_nfc:
+                case R.layout.swap_wifi_qr:
                     nextStep = R.layout.swap_join_wifi;
                     break;
                 case R.layout.swap_select_apps:
                     nextStep = getSwapService().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
-                    break;
-                case R.layout.swap_send_fdroid:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_start_swap:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_success:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_wifi_qr:
-                    nextStep = R.layout.swap_join_wifi;
                     break;
             }
             currentSwapViewLayoutRes = nextStep;
@@ -212,14 +198,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             finish();
         }
 
-        setContentView(R.layout.swap_activity);
+        binding = SwapActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
-        setSupportActionBar(toolbar);
+        binding.toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        container = (ViewGroup) findViewById(R.id.container);
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
@@ -488,22 +472,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void inflateSwapView(@LayoutRes int viewRes) {
         getSwapService().initTimer();
 
-        container.removeAllViews();
+        binding.container.removeAllViews();
         View view = ContextCompat.getSystemService(this, LayoutInflater.class)
-                .inflate(viewRes, container, false);
+                .inflate(viewRes, binding.container, false);
         currentView = (SwapView) view;
         currentView.setLayoutResId(viewRes);
         currentSwapViewLayoutRes = viewRes;
 
-        toolbar.setBackgroundColor(currentView.getToolbarColour());
-        toolbar.setTitle(currentView.getToolbarTitle());
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        binding.toolbar.setBackgroundColor(currentView.getToolbarColour());
+        binding.toolbar.setTitle(currentView.getToolbarTitle());
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onToolbarCancel();
             }
         });
-        container.addView(view);
+        binding.container.addView(view);
         supportInvalidateOptionsMenu();
 
         switch (currentView.getLayoutResId()) {
@@ -776,8 +760,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothScanModeChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
-            TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
+            SwitchCompat bluetoothSwitch = binding.container.findViewById(R.id.switch_bluetooth);
+            TextView textBluetoothVisible = binding.container.findViewById(R.id.bluetooth_visible);
             if (bluetoothSwitch == null || textBluetoothVisible == null
                     || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
                 return;
@@ -859,7 +843,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             setUpFromWifi();
 
             int wifiStatus = -1;
-            TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
+            TextView textWifiVisible = binding.container.findViewById(R.id.wifi_visible);
             if (textWifiVisible != null) {
                 intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1);
             }
@@ -885,7 +869,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         // the fingerprint is not useful on the button label
         String buttonLabel = scheme + FDroidApp.ipAddressString + ":" + FDroidApp.port;
-        TextView ipAddressView = container.findViewById(R.id.device_ip_address);
+        TextView ipAddressView = binding.container.findViewById(R.id.device_ip_address);
         if (ipAddressView != null) {
             ipAddressView.setText(buttonLabel);
         }
@@ -927,7 +911,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 break;
         }
 
-        ImageView qrImage = container.findViewById(R.id.wifi_qr_code);
+        ImageView qrImage = binding.container.findViewById(R.id.wifi_qr_code);
         if (qrUriString != null && qrImage != null) {
             Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
             new QrGenAsyncTask(SwapWorkflowActivity.this, R.id.wifi_qr_code).execute(qrUriString);
@@ -936,7 +920,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             qrImage.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
                     R.color.swap_blue)));
 
-            final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
+            final View qrWarningMessage = binding.container.findViewById(R.id.warning_qr_scanner);
             if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
                 qrWarningMessage.setVisibility(View.GONE);
             } else {
@@ -953,10 +937,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
             }
         });
-        TextView descriptionView = container.findViewById(R.id.text_description);
-        ImageView wifiIcon = container.findViewById(R.id.wifi_icon);
-        TextView ssidView = container.findViewById(R.id.wifi_ssid);
-        TextView tapView = container.findViewById(R.id.wifi_available_networks_prompt);
+        TextView descriptionView = binding.container.findViewById(R.id.text_description);
+        ImageView wifiIcon = binding.container.findViewById(R.id.wifi_icon);
+        TextView ssidView = binding.container.findViewById(R.id.wifi_ssid);
+        TextView tapView = binding.container.findViewById(R.id.wifi_available_networks_prompt);
         if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
             // empty bssid with an ipAddress means hotspot mode
             descriptionView.setText(R.string.swap_join_this_hotspot);
@@ -1023,9 +1007,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bonjourStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
-            TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            TextView textWifiVisible = binding.container.findViewById(R.id.wifi_visible);
+            TextView peopleNearbyText = binding.container.findViewById(R.id.text_people_nearby);
+            ProgressBar peopleNearbyProgress = binding.container.findViewById(R.id.searching_people_nearby);
             if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null
                     || !BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
                 return;
@@ -1040,11 +1024,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
                     break;
                 case BonjourManager.STATUS_STARTED:
-                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
-                    peopleNearbyText.setVisibility(View.VISIBLE);
-                    peopleNearbyProgress.setVisibility(View.VISIBLE);
-                    break;
                 case BonjourManager.STATUS_NOT_VISIBLE:
                     textWifiVisible.setText(R.string.swap_not_visible_wifi);
                     peopleNearbyText.setText(R.string.swap_scanning_for_peers);
@@ -1090,7 +1069,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bonjourFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            ListView peopleNearbyList = binding.container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
                 peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
@@ -1101,7 +1080,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bonjourRemoved = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            ListView peopleNearbyList = binding.container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
                 peopleNearbyAdapter.remove((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
@@ -1112,11 +1091,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
-            TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
-            TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
-            TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            SwitchCompat bluetoothSwitch = binding.container.findViewById(R.id.switch_bluetooth);
+            TextView textBluetoothVisible = binding.container.findViewById(R.id.bluetooth_visible);
+            TextView textDeviceIdBluetooth = binding.container.findViewById(R.id.device_id_bluetooth);
+            TextView peopleNearbyText = binding.container.findViewById(R.id.text_people_nearby);
+            ProgressBar peopleNearbyProgress = binding.container.findViewById(R.id.searching_people_nearby);
             if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
                     || peopleNearbyText == null || peopleNearbyProgress == null
                     || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
@@ -1160,7 +1139,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                         peopleNearbyProgress.setVisibility(View.GONE);
                     }
 
-                    ListView peopleNearbyView = container.findViewById(R.id.list_people_nearby);
+                    ListView peopleNearbyView = binding.container.findViewById(R.id.list_people_nearby);
                     if (peopleNearbyView == null) {
                         break;
                     }
@@ -1187,7 +1166,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
+            ListView peopleNearbyList = binding.container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
                 peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BluetoothManager.EXTRA_PEER));
@@ -1226,7 +1205,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             descriptionTextView.setText(getString(R.string.swap_confirm_connect, confirmSwapConfig.getHost()));
         }
 
-        Button confirmReceiveYes = container.findViewById(R.id.confirm_receive_yes);
+        Button confirmReceiveYes = binding.container.findViewById(R.id.confirm_receive_yes);
         if (confirmReceiveYes != null) {
             findViewById(R.id.confirm_receive_yes).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1236,7 +1215,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             });
         }
 
-        Button confirmReceiveNo = container.findViewById(R.id.confirm_receive_no);
+        Button confirmReceiveNo = binding.container.findViewById(R.id.confirm_receive_no);
         if (confirmReceiveNo != null) {
             findViewById(R.id.confirm_receive_no).setOnClickListener(new View.OnClickListener() {
 
@@ -1251,7 +1230,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpNfcView() {
-        CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
+        CheckBox dontShowAgain = binding.container.findViewById(R.id.checkbox_dont_show);
         dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1262,7 +1241,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpConnectingProgressText(String message) {
-        TextView progressText = container.findViewById(R.id.progress_text);
+        TextView progressText = binding.container.findViewById(R.id.progress_text);
         if (progressText != null && message != null) {
             progressText.setVisibility(View.VISIBLE);
             progressText.setText(message);
@@ -1280,8 +1259,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             setUpConnectingProgressText(intent.getStringExtra(Intent.EXTRA_TEXT));
 
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
-            Button tryAgainButton = container.findViewById(R.id.try_again);
+            ProgressBar progressBar = binding.container.findViewById(R.id.progress_bar);
+            Button tryAgainButton = binding.container.findViewById(R.id.try_again);
 
             if (progressBar == null || tryAgainButton == null) {
                 Utils.debugLog(TAG, "prepareSwapReceiver received intent without view: " + intent);
@@ -1331,8 +1310,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
             setUpConnectingProgressText(message);
 
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
-            Button tryAgainButton = container.findViewById(R.id.try_again);
+            ProgressBar progressBar = binding.container.findViewById(R.id.progress_bar);
+            Button tryAgainButton = binding.container.findViewById(R.id.try_again);
 
             if (progressBar == null || tryAgainButton == null) {
                 Utils.debugLog(TAG, "repoUpdateReceiver received intent without view: " + intent);
@@ -1371,9 +1350,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     };
 
     private void setUpConnectingView() {
-        TextView heading = container.findViewById(R.id.progress_text);
+        TextView heading = binding.container.findViewById(R.id.progress_text);
         heading.setText(R.string.swap_connecting);
-        container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
+        binding.container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onAppsSelected();
