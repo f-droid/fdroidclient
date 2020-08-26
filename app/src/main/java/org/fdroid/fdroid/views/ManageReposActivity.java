@@ -45,14 +45,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
@@ -71,6 +69,8 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.fdroid.fdroid.databinding.AddRepoBinding;
+import org.fdroid.fdroid.databinding.RepoListActivityBinding;
 
 import java.io.File;
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class ManageReposActivity extends AppCompatActivity
         IS_SWAP
     }
 
-    private Toolbar toolbar;
+    private RepoListActivityBinding repoListActivityBinding;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -106,24 +106,22 @@ public class ManageReposActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.repo_list_activity);
+        repoListActivityBinding = RepoListActivityBinding.inflate(getLayoutInflater());
+        setContentView(repoListActivityBinding.getRoot());
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(repoListActivityBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final ListView repoList = (ListView) findViewById(R.id.list);
         repoAdapter = new RepoAdapter(this);
         repoAdapter.setEnabledListener(this);
-        repoList.setAdapter(repoAdapter);
-        repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        repoListActivityBinding.list.setAdapter(repoAdapter);
+        repoListActivityBinding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
+                Repo repo = new Repo((Cursor) repoListActivityBinding.list.getItemAtPosition(position));
                 editRepo(repo);
             }
         });
@@ -156,7 +154,7 @@ public class ManageReposActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        toolbar.inflateMenu(R.menu.manage_repos);
+        repoListActivityBinding.toolbar.inflateMenu(R.menu.manage_repos);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -256,12 +254,11 @@ public class ManageReposActivity extends AppCompatActivity
      * <li>Search for repos at common suffixes (/, /fdroid/repo, /repo)
      */
     private class AddRepo {
-
+        private final AddRepoBinding addRepoBinding;
         private final Context context;
         private final HashMap<String, Repo> urlRepoMap = new HashMap<>();
         private final HashMap<String, Repo> fingerprintRepoMap = new HashMap<>();
         private final AlertDialog addRepoDialog;
-        private final TextView overwriteMessage;
         private final ColorStateList defaultTextColour;
         private final Button addButton;
 
@@ -274,7 +271,6 @@ public class ManageReposActivity extends AppCompatActivity
          * checks that the repo type matches, e.g. "repo" or "archive".
          */
         AddRepo(String newAddress, String newFingerprint, final String username, final String password) {
-
             context = ManageReposActivity.this;
 
             for (Repo repo : RepoProvider.Helper.all(context)) {
@@ -288,10 +284,8 @@ public class ManageReposActivity extends AppCompatActivity
                 }
             }
 
-            final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
-            addRepoDialog = new AlertDialog.Builder(context).setView(view).create();
-            final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
-            final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
+            addRepoBinding = AddRepoBinding.inflate(getLayoutInflater());
+            addRepoDialog = new AlertDialog.Builder(context).setView(addRepoBinding.getRoot()).create();
 
             addRepoDialog.setTitle(R.string.repo_add_title);
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
@@ -335,8 +329,7 @@ public class ManageReposActivity extends AppCompatActivity
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            String url = uriEditText.getText().toString();
+                            String url = addRepoBinding.editUri.getText().toString();
 
                             try {
                                 url = AddRepoIntentService.normalizeUrl(url);
@@ -345,7 +338,7 @@ public class ManageReposActivity extends AppCompatActivity
                                 return;
                             }
 
-                            String fp = fingerprintEditText.getText().toString();
+                            String fp = addRepoBinding.editFingerprint.getText().toString();
                             // remove any whitespace from fingerprint
                             fp = fp.replaceAll("\\s", "");
 
@@ -378,19 +371,18 @@ public class ManageReposActivity extends AppCompatActivity
             );
 
             addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-            overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
-            overwriteMessage.setVisibility(View.GONE);
-            defaultTextColour = overwriteMessage.getTextColors();
+            addRepoBinding.overwriteMessage.setVisibility(View.GONE);
+            defaultTextColour = addRepoBinding.overwriteMessage.getTextColors();
 
             if (newFingerprint != null) {
-                fingerprintEditText.setText(newFingerprint);
+                addRepoBinding.editFingerprint.setText(newFingerprint);
             }
 
             if (newAddress != null) {
                 // This trick of emptying text then appending, rather than just setting in
                 // the first place, is necessary to move the cursor to the end of the input.
-                uriEditText.setText("");
-                uriEditText.append(newAddress);
+                addRepoBinding.editUri.setText("");
+                addRepoBinding.editUri.append(newAddress);
             }
 
             final TextWatcher textChangedListener = new TextWatcher() {
@@ -405,12 +397,12 @@ public class ManageReposActivity extends AppCompatActivity
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    validateRepoDetails(uriEditText.getText().toString(), fingerprintEditText.getText().toString());
+                    validateRepoDetails(addRepoBinding.editUri.getText().toString(), addRepoBinding.editFingerprint.getText().toString());
                 }
             };
 
-            uriEditText.addTextChangedListener(textChangedListener);
-            fingerprintEditText.addTextChangedListener(textChangedListener);
+            addRepoBinding.editUri.addTextChangedListener(textChangedListener);
+            addRepoBinding.editFingerprint.addTextChangedListener(textChangedListener);
             validateRepoDetails(newAddress == null ? "" : newAddress, newFingerprint == null ? "" : newFingerprint);
         }
 
@@ -538,16 +530,16 @@ public class ManageReposActivity extends AppCompatActivity
                 }
 
                 if (messageRes > 0) {
-                    overwriteMessage.setText(getString(messageRes, name));
-                    overwriteMessage.setVisibility(View.VISIBLE);
+                    addRepoBinding.overwriteMessage.setText(getString(messageRes, name));
+                    addRepoBinding.overwriteMessage.setVisibility(View.VISIBLE);
                     if (redMessage) {
-                        overwriteMessage.setTextColor(ContextCompat.getColor(ManageReposActivity.this,
+                        addRepoBinding.overwriteMessage.setTextColor(ContextCompat.getColor(ManageReposActivity.this,
                                 R.color.red));
                     } else {
-                        overwriteMessage.setTextColor(defaultTextColour);
+                        addRepoBinding.overwriteMessage.setTextColor(defaultTextColour);
                     }
                 } else {
-                    overwriteMessage.setVisibility(View.GONE);
+                    addRepoBinding.overwriteMessage.setVisibility(View.GONE);
                 }
 
                 addButton.setText(addTextRes);
