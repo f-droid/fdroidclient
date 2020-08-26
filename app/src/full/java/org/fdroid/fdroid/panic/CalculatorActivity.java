@@ -1,14 +1,14 @@
 package org.fdroid.fdroid.panic;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-import org.fdroid.fdroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.fdroid.fdroid.databinding.ActivityCalculatorBinding;
 
 import java.util.regex.Pattern;
 
@@ -30,49 +30,47 @@ public class CalculatorActivity extends AppCompatActivity {
     @Nullable
     private String lastOp;
 
-    // views
-    private TextView textView;
+    private ActivityCalculatorBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityCalculatorBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        textView = (TextView) findViewById(R.id.textView);
+        setSupportActionBar(binding.toolbar);
     }
 
     public void ce(View view) {
         // clear display
-        textView.setText(null);
+        binding.textView.setText(null);
     }
 
     public void c(View view) {
         // clear last character
-        if (textView.length() > 0) {
-            String text = textView.getText().toString();
-            textView.setText(text.substring(0, text.length() - 1));
+        if (binding.textView.length() > 0) {
+            String text = binding.textView.getText().toString();
+            binding.textView.setText(text.substring(0, text.length() - 1));
         }
     }
 
     public void number(View view) {
         String number = ((Button) view).getText().toString();
-        String newNumber = String.format("%s%s", textView.getText(), number);
+        String newNumber = String.format("%s%s", binding.textView.getText(), number);
         // FIXME don't allow multiple commas
         String pin = String.valueOf(HidingManager.getUnhidePin(this));
         if (newNumber.equals(pin)) {
             // correct PIN was entered, show app launcher again
             HidingManager.show(this);
         }
-        textView.setText(newNumber);
+        binding.textView.setText(newNumber);
     }
 
     public void op(View view) {
-        String text = textView.getText().toString();
+        String text = binding.textView.getText().toString();
 
-        if (text.length() == 0) {
+        if (text.isEmpty()) {
             return;
         } else if (containsBinaryOperator(String.valueOf(text.charAt(text.length() - 1)))) {
             // last character was already binary operator, ignore
@@ -84,17 +82,17 @@ public class CalculatorActivity extends AppCompatActivity {
             // remember binary operator
             lastOp = op;
             // add binary operator to display
-            textView.setText(String.format("%s%s", text, op));
+            binding.textView.setText(String.format("%s%s", text, op));
         } else if (op.equals(PERCENT)) {
             double result;
             try {
-                result = Double.valueOf(eval(text));
+                result = Double.parseDouble(eval(text));
             } catch (NumberFormatException e) {
                 result = 0;
             }
-            textView.setText(toString(result / 100));
+            binding.textView.setText(toString(result / 100));
         } else if ("=".equals(op)) {
-            textView.setText(eval(text));
+            binding.textView.setText(eval(text));
         } else {
             Toast.makeText(this, "Error: Unknown Operation", Toast.LENGTH_SHORT).show();
         }
