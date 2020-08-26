@@ -1,10 +1,12 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
+
+import org.fdroid.fdroid.databinding.AboutBinding;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -15,14 +17,15 @@ public class AboutActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.about);
+        final AboutBinding binding = AboutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         String versionName = Utils.getVersionName(this);
         if (versionName != null) {
-            ((TextView) findViewById(R.id.version)).setText(versionName);
+            binding.version.setText(versionName);
         }
 
-        findViewById(R.id.ok_button).setOnClickListener(new View.OnClickListener() {
+        binding.okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
