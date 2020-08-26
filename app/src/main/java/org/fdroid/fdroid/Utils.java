@@ -293,6 +293,7 @@ public final class Utils {
             "8.1",   // 27
             "9.0",   // 28
             "10.0",  // 29
+            "11.0",  // 30
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
