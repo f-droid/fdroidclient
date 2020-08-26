@@ -45,12 +45,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -66,11 +63,11 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.databinding.AppDetails2Binding;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
 
@@ -85,12 +82,11 @@ public class AppDetailsActivity extends AppCompatActivity
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
-    @SuppressWarnings("unused")
     protected BluetoothAdapter bluetoothAdapter;
 
     private FDroidApp fdroidApp;
     private App app;
-    private RecyclerView recyclerView;
+    private AppDetails2Binding binding;
     private AppDetailsRecyclerViewAdapter adapter;
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager.AppUpdateStatus currentStatus;
@@ -109,11 +105,11 @@ public class AppDetailsActivity extends AppCompatActivity
         fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyTheme(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_details2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(""); // Nice and clean toolbar
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        setSupportActionBar(toolbar);
+        binding = AppDetails2Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.toolbar.setTitle(""); // Nice and clean toolbar
+        binding.toolbar.setNavigationIcon(R.drawable.ic_back);
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         supportPostponeEnterTransition();
 
@@ -127,7 +123,6 @@ public class AppDetailsActivity extends AppCompatActivity
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rvDetails);
         adapter = new AppDetailsRecyclerViewAdapter(this, app, this);
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
@@ -135,10 +130,10 @@ public class AppDetailsActivity extends AppCompatActivity
         // Has to be invoked after AppDetailsRecyclerViewAdapter is created.
         refreshStatus();
 
-        recyclerView.setLayoutManager(lm);
-        recyclerView.setAdapter(adapter);
+        binding.rvDetails.setLayoutManager(lm);
+        binding.rvDetails.setAdapter(adapter);
 
-        recyclerView.getViewTreeObserver().addOnPreDrawListener(
+        binding.rvDetails.getViewTreeObserver().addOnPreDrawListener(
                 new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
@@ -149,10 +144,9 @@ public class AppDetailsActivity extends AppCompatActivity
         );
 
         // Load the feature graphic, if present
-        final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
         DisplayImageOptions displayImageOptions = Utils.getRepoAppDisplayImageOptions();
         String featureGraphicUrl = app.getFeatureGraphicUrl(this);
-        featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions,
+        binding.featureGraphic.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions,
                 featureGraphicUrl, app.getIconUrl(this));
     }
 
@@ -269,8 +263,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     + ") - https://f-droid.org/packages/" + app.packageName);
 
             boolean showNearbyItem = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
-            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
-            ShareChooserDialog.createChooser(coordinatorLayout, this, this, shareIntent, showNearbyItem);
+            ShareChooserDialog.createChooser(binding.rootCoordinator, this, this, shareIntent, showNearbyItem);
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
             app.getPrefs(this).ignoreAllUpdates ^= true;
@@ -385,7 +378,7 @@ public class AppDetailsActivity extends AppCompatActivity
         // Scroll back to the header, so that the user can see the progress beginning. This can be
         // removed once https://gitlab.com/fdroid/fdroidclient/issues/903 is implemented. However
         // for now it adds valuable feedback to the user about the download they just initiated.
-        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(0, 0);
+        ((LinearLayoutManager) binding.rvDetails.getLayoutManager()).scrollToPositionWithOffset(0, 0);
     }
 
     private void initiateInstall(Apk apk) {
@@ -666,7 +659,7 @@ public class AppDetailsActivity extends AppCompatActivity
     }
 
     private void onAppChanged() {
-        recyclerView.post(new Runnable() {
+        binding.rvDetails.post(new Runnable() {
             @Override
             public void run() {
                 String packageName = app != null ? app.packageName : null;
@@ -674,7 +667,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     AppDetailsActivity.this.finish();
                     return;
                 }
-                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) recyclerView.getAdapter();
+                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) binding.rvDetails.getAdapter();
                 adapter.updateItems(app);
                 refreshStatus();
                 supportInvalidateOptionsMenu();
