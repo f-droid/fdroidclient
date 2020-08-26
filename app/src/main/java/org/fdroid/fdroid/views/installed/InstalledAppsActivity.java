@@ -21,52 +21,46 @@ package org.fdroid.fdroid.views.installed;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.core.app.ShareCompat;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.databinding.InstalledAppsLayoutBinding;
 
 public class InstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
+    private InstalledAppsLayoutBinding binding;
     private InstalledAppListAdapter adapter;
-    private RecyclerView appList;
-    private TextView emptyState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.installed_apps_layout);
+        binding = InstalledAppsLayoutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.installed_apps__activity_title));
-        setSupportActionBar(toolbar);
+        binding.toolbar.setTitle(getString(R.string.installed_apps__activity_title));
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter = new InstalledAppListAdapter(this);
 
-        appList = (RecyclerView) findViewById(R.id.app_list);
-        appList.setHasFixedSize(true);
-        appList.setLayoutManager(new LinearLayoutManager(this));
-        appList.setAdapter(adapter);
-
-        emptyState = (TextView) findViewById(R.id.empty_state);
+        binding.appList.setHasFixedSize(true);
+        binding.appList.setLayoutManager(new LinearLayoutManager(this));
+        binding.appList.setAdapter(adapter);
     }
 
     @Override
@@ -92,11 +86,11 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
         adapter.setApps(cursor);
 
         if (adapter.getItemCount() == 0) {
-            appList.setVisibility(View.GONE);
-            emptyState.setVisibility(View.VISIBLE);
+            binding.appList.setVisibility(View.GONE);
+            binding.emptyState.setVisibility(View.VISIBLE);
         } else {
-            appList.setVisibility(View.VISIBLE);
-            emptyState.setVisibility(View.GONE);
+            binding.appList.setVisibility(View.VISIBLE);
+            binding.emptyState.setVisibility(View.GONE);
         }
     }
 
@@ -113,7 +107,6 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.menu_share:
                 StringBuilder stringBuilder = new StringBuilder();
