@@ -25,54 +25,46 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.databinding.InstalledAppsLayoutBinding;
 import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
 
 public class SelectInstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
     private InstalledAppListAdapter adapter;
-    private RecyclerView appList;
-    private TextView emptyState;
+    private InstalledAppsLayoutBinding binding;
     private int checkId;
 
     private Preferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.installed_apps_layout);
+        binding = InstalledAppsLayoutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.panic_add_apps_to_uninstall));
-        setSupportActionBar(toolbar);
+        binding.toolbar.setTitle(getString(R.string.panic_add_apps_to_uninstall));
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter = new SelectInstalledAppListAdapter(this);
 
-        appList = findViewById(R.id.app_list);
-        appList.setHasFixedSize(true);
-        appList.setLayoutManager(new LinearLayoutManager(this));
-        appList.setAdapter(adapter);
-
-        emptyState = findViewById(R.id.empty_state);
+        binding.appList.setHasFixedSize(true);
+        binding.appList.setLayoutManager(new LinearLayoutManager(this));
+        binding.appList.setAdapter(adapter);
     }
 
     @Override
@@ -96,11 +88,11 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
         adapter.setApps(cursor);
 
         if (adapter.getItemCount() == 0) {
-            appList.setVisibility(View.GONE);
-            emptyState.setVisibility(View.VISIBLE);
+            binding.appList.setVisibility(View.GONE);
+            binding.emptyState.setVisibility(View.VISIBLE);
         } else {
-            appList.setVisibility(View.VISIBLE);
-            emptyState.setVisibility(View.GONE);
+            binding.appList.setVisibility(View.VISIBLE);
+            binding.emptyState.setVisibility(View.GONE);
         }
     }
 
