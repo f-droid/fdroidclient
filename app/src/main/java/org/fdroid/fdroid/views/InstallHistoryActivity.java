@@ -25,16 +25,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import androidx.core.app.ShareCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
+
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.databinding.ActivityInstallHistoryBinding;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 
 import java.io.FileDescriptor;
@@ -45,13 +46,16 @@ import java.nio.charset.Charset;
 public class InstallHistoryActivity extends AppCompatActivity {
     public static final String TAG = "InstallHistoryActivity";
 
+    private ActivityInstallHistoryBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_install_history);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.install_history));
-        setSupportActionBar(toolbar);
+
+        binding = ActivityInstallHistoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.toolbar.setTitle(getString(R.string.install_history));
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String text = "";
@@ -71,8 +75,7 @@ public class InstallHistoryActivity extends AppCompatActivity {
         } catch (IOException | SecurityException | IllegalStateException e) {
             e.printStackTrace();
         }
-        TextView textView = findViewById(R.id.text);
-        textView.setText(text);
+        binding.text.setText(text);
     }
 
     @Override
@@ -83,7 +86,6 @@ public class InstallHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.menu_share:
                 StringBuilder stringBuilder = new StringBuilder();
@@ -107,8 +109,7 @@ public class InstallHistoryActivity extends AppCompatActivity {
                 break;
             case R.id.menu_delete:
                 getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
-                TextView textView = findViewById(R.id.text);
-                textView.setText("");
+                binding.text.setText("");
                 break;
         }
         return super.onOptionsItemSelected(item);
