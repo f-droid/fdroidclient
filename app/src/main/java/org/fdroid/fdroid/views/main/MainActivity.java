@@ -37,16 +37,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.BuildConfig;
@@ -57,6 +59,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.databinding.ActivityMainBinding;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
@@ -101,9 +104,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
 
-    private RecyclerView pager;
+    private ActivityMainBinding binding;
     private MainViewAdapter adapter;
-    private BottomNavigationBar bottomNavigation;
     private int selectedMenuId;
     private TextBadgeItem updatesBadge;
 
@@ -112,42 +114,41 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         adapter = new MainViewAdapter(this);
 
-        pager = (RecyclerView) findViewById(R.id.main_view_pager);
-        pager.setHasFixedSize(true);
-        pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
-        pager.setAdapter(adapter);
+        binding.mainViewPager.setHasFixedSize(true);
+        binding.mainViewPager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
+        binding.mainViewPager.setAdapter(adapter);
 
         // Without this, the focus is completely busted on pre 15 devices. Trying to use them
         // without this ends up with each child view showing for a fraction of a second, then
         // reverting back to the "Latest" screen again, in completely non-deterministic ways.
         if (Build.VERSION.SDK_INT <= 15) {
-            pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
+            binding.mainViewPager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         }
 
         updatesBadge = new TextBadgeItem().hide(false);
 
-        bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
-        bottomNavigation
+        binding.bottomNavigation
                 .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps));
         if (BuildConfig.FLAVOR.startsWith("full")) {
-            bottomNavigation
+            binding.bottomNavigation
                     .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
                     .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby));
 
-            bottomNavigation.setOnClickListener(new View.OnClickListener() {
+            binding.bottomNavigation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (bottomNavigation.getCurrentSelectedPosition() == 2) {
+                    if (binding.bottomNavigation.getCurrentSelectedPosition() == 2) {
                         NearbyViewBinder.updateUsbOtg(MainActivity.this);
                     }
                 }
             });
         }
-        bottomNavigation.setTabSelectedListener(this)
+        binding.bottomNavigation.setTabSelectedListener(this)
                 .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
                 .setInActiveColor(R.color.bottom_nav_items)
                 .setActiveColor(R.color.bottom_nav_active)
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .initialise();
 
         // turn off animation, scaling, and truncate labels in the middle
-        final LinearLayout linearLayout = bottomNavigation.findViewById(R.id.bottom_navigation_bar_item_container);
+        final LinearLayout linearLayout = binding.bottomNavigation.findViewById(R.id.bottom_navigation_bar_item_container);
         final int childCount = linearLayout.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View fixedBottomNavigationTab = linearLayout.getChildAt(i);
@@ -209,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void setSelectedMenuInNav() {
-        bottomNavigation.selectTab(adapter.adapterPositionFromItemId(selectedMenuId));
+        binding.bottomNavigation.selectTab(adapter.adapterPositionFromItemId(selectedMenuId));
     }
 
     private void initialRepoUpdateIfRequired() {
@@ -227,17 +228,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
+            binding.mainViewPager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
             selectedMenuId = R.id.updates;
             setSelectedMenuInNav();
         } else if (getIntent().hasExtra(EXTRA_VIEW_NEARBY)) {
             getIntent().removeExtra(EXTRA_VIEW_NEARBY);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.nearby));
+            binding.mainViewPager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.nearby));
             selectedMenuId = R.id.nearby;
             setSelectedMenuInNav();
         } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
             getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.settings));
+            binding.mainViewPager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.settings));
             selectedMenuId = R.id.settings;
             setSelectedMenuInNav();
         }
@@ -288,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public void onTabSelected(int position) {
-        pager.scrollToPosition(position);
+        binding.mainViewPager.scrollToPosition(position);
         selectedMenuId = (int) adapter.getItemId(position);
     }
 
