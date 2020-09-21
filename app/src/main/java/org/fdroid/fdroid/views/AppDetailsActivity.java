@@ -42,15 +42,6 @@ import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -73,9 +64,16 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class AppDetailsActivity extends AppCompatActivity
-        implements ShareChooserDialog.ShareChooserDialogListener,
-        AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
+        implements AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
     public static final String EXTRA_APPID = "appid";
     private static final String TAG = "AppDetailsActivity";
@@ -267,9 +265,10 @@ public class AppDetailsActivity extends AppCompatActivity
             shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary
                     + ") - https://f-droid.org/packages/" + app.packageName);
 
-            boolean showNearbyItem = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
-            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.rootCoordinator);
-            ShareChooserDialog.createChooser(coordinatorLayout, this, this, shareIntent, showNearbyItem);
+            // TODO: allow user to share APK if app is installed
+            boolean allowShareApk = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
+
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
             app.getPrefs(this).ignoreAllUpdates ^= true;
@@ -292,19 +291,13 @@ public class AppDetailsActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onNearby() {
+    private void shareApkBluetooth() {
         // If Bluetooth has not been enabled/turned on, then
         // enabling device discoverability will automatically enable Bluetooth
         Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
         startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
         // if this is successful, the Bluetooth transfer is started
-    }
-
-    @Override
-    public void onResolvedShareIntent(Intent shareIntent) {
-        startActivity(shareIntent);
     }
 
     @Override
