@@ -30,6 +30,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
@@ -45,6 +47,7 @@ import android.widget.Toast;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -56,12 +59,14 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import androidx.annotation.Nullable;
@@ -298,6 +303,33 @@ public class AppDetailsActivity extends AppCompatActivity
         discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
         startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
         // if this is successful, the Bluetooth transfer is started
+    }
+
+    @Nullable
+    private Intent getApkShareIntent() {
+        try {
+            PackageManager pm = getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(app.packageName, PackageManager.GET_META_DATA);
+
+            Intent shareApkIntent = new Intent(Intent.ACTION_SEND);
+            // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
+            shareApkIntent.setType("application/zip");
+            shareApkIntent.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, packageInfo));
+
+            // App might have been uninstalled while the menu was open
+            if (app.isInstalled(getApplicationContext())) {
+                return shareApkIntent;
+            } else {
+                Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_SHORT).show();
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Could not get application info to share", e);
+        } catch (IOException e) {
+            Exception toLog = new RuntimeException("Error preparing file to share", e);
+            ACRA.getErrorReporter().handleException(toLog, false);
+        }
+        Toast.makeText(this, R.string.share_apk_error, Toast.LENGTH_SHORT).show();
+        return null;
     }
 
     @Override
