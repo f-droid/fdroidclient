@@ -1,6 +1,8 @@
 package org.fdroid.fdroid;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,28 +14,35 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
+
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SuppressWarnings("LineLength")
-class NotificationHelper {
+public class NotificationHelper {
+    public static final String CHANNEL_SWAPS = "swap-channel";
+    public static final String CHANNEL_INSTALLS = "install-channel";
+    public static final String CHANNEL_UPDATES = "update-channel";
 
     static final String BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED = "org.fdroid.fdroid.installer.notifications.allupdates.cleared";
     static final String BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.allinstalled.cleared";
@@ -59,6 +68,25 @@ class NotificationHelper {
         this.context = context;
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         notificationManager = NotificationManagerCompat.from(context);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            final NotificationChannel installChannel = new NotificationChannel(CHANNEL_INSTALLS,
+                    context.getString(R.string.notification_channel_installs_title),
+                    NotificationManager.IMPORTANCE_LOW);
+            installChannel.setDescription(context.getString(R.string.notification_channel_installs_description));
+
+            final NotificationChannel swapChannel = new NotificationChannel(CHANNEL_SWAPS,
+                    context.getString(R.string.notification_channel_swaps_title),
+                    NotificationManager.IMPORTANCE_LOW);
+            swapChannel.setDescription(context.getString(R.string.notification_channel_swaps_description));
+
+            final NotificationChannel updateChannel = new NotificationChannel(CHANNEL_UPDATES,
+                    context.getString(R.string.notification_channel_updates_title),
+                    NotificationManager.IMPORTANCE_LOW);
+            updateChannel.setDescription(context.getString(R.string.notification_channel_updates_description));
+
+            notificationManager.createNotificationChannels(Arrays.asList(installChannel, swapChannel, updateChannel));
+        }
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
@@ -299,7 +327,7 @@ class NotificationHelper {
 
         Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, CHANNEL_UPDATES)
                         .setAutoCancel(true)
                         .setContentTitle(getSingleItemTitleString(app, status))
                         .setContentText(getSingleItemContentString(app, status))
@@ -384,7 +412,7 @@ class NotificationHelper {
         PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, CHANNEL_UPDATES)
                         .setAutoCancel(!useStackedNotifications())
                         .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))
@@ -412,7 +440,7 @@ class NotificationHelper {
 
         Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, CHANNEL_INSTALLS)
                         .setAutoCancel(true)
                         .setLargeIcon(iconLarge)
                         .setSmallIcon(R.drawable.ic_notification)
@@ -464,7 +492,7 @@ class NotificationHelper {
         PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, CHANNEL_INSTALLS)
                         .setAutoCancel(!useStackedNotifications())
                         .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))

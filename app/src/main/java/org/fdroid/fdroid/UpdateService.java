@@ -258,7 +258,7 @@ public class UpdateService extends JobIntentService {
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationBuilder = new NotificationCompat.Builder(this)
+        notificationBuilder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_UPDATES)
                 .setSmallIcon(R.drawable.ic_refresh_white)
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)

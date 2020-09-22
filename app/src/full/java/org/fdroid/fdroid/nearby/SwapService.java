@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NotificationHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -468,7 +469,7 @@ public class SwapService extends Service {
         Intent intent = new Intent(this, SwapWorkflowActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        return new NotificationCompat.Builder(this)
+        return new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_SWAPS)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
                 .setSmallIcon(R.drawable.ic_nearby)
