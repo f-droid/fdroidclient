@@ -642,6 +642,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_action_cancel">Cancel</string>
     <string name="notification_action_install">Install</string>
 
+    <string name="notification_channel_installs_title">Installations</string>
+    <string name="notification_channel_installs_description">Displays app installation notifications.</string>
+    <string name="notification_channel_swaps_title">Swaps</string>
+    <string name="notification_channel_swaps_description">Displays P2P app swapping notifications.</string>
+    <string name="notification_channel_updates_title">Updates</string>
+    <string name="notification_channel_updates_description">Displays app and repository update notifications.</string>
+
     <!-- Used by the TTS engine when showing a category "Chip" in the search box -->
     <string name="tts_category_name">Category %1$s</string>
 
