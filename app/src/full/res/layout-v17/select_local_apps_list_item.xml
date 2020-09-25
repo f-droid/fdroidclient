@@ -39,7 +39,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         tools:suppress="InconsistentLayout"
-        android:src="@drawable/ic_add_circle_outline_white" />
+        android:src="@drawable/ic_add_circle_outline" />
 
     <TwoLineListItem
         android:layout_toEndOf="@android:id/icon"

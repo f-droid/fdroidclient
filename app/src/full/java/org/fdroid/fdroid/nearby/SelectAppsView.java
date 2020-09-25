@@ -8,12 +8,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.cursoradapter.widget.CursorAdapter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
@@ -26,6 +20,14 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cursoradapter.widget.CursorAdapter;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -220,7 +222,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                     resource = R.drawable.ic_check_circle_white;
                     colour = getResources().getColor(R.color.swap_bright_blue);
                 } else {
-                    resource = R.drawable.ic_add_circle_outline_white;
+                    resource = R.drawable.ic_add_circle_outline;
                     colour = 0xFFD0D0D4;
                 }
                 imageView.setImageDrawable(getResources().getDrawable(resource));
