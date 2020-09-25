@@ -219,7 +219,7 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                 int resource;
                 int colour;
                 if (checked) {
-                    resource = R.drawable.ic_check_circle_white;
+                    resource = R.drawable.ic_check_circle;
                     colour = getResources().getColor(R.color.swap_bright_blue);
                 } else {
                     resource = R.drawable.ic_add_circle_outline;
@@ -230,5 +230,4 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
             }
         }
     }
-
 }
