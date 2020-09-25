@@ -23,15 +23,9 @@ package org.fdroid.fdroid.views.apps;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -39,7 +33,20 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -101,11 +108,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         });
 
         sortImage = (ImageView) findViewById(R.id.sort);
-        if (FDroidApp.isAppThemeLight()) {
-            sortImage.setImageResource(R.drawable.ic_last_updated_black);
-        } else {
-            sortImage.setImageResource(R.drawable.ic_last_updated_white);
-        }
+        final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
+                R.drawable.ic_access_time)).mutate();
+        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+        sortImage.setImageDrawable(lastUpdated);
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,11 +124,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                     }
                 } else {
                     sortClauseSelected = SortClause.LAST_UPDATED;
-                    if (FDroidApp.isAppThemeLight()) {
-                        sortImage.setImageResource(R.drawable.ic_last_updated_black);
-                    } else {
-                        sortImage.setImageResource(R.drawable.ic_last_updated_white);
-                    }
+                    sortImage.setImageDrawable(lastUpdated);
                 }
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
                 appView.scrollToPosition(0);
