@@ -842,8 +842,8 @@ public class AppDetailsRecyclerViewAdapter
                 iconDrawable = DrawableCompat.wrap(iconDrawable).mutate();
                 DrawableCompat.setTint(iconDrawable, Color.parseColor("#B4B4B4"));
             }
-            final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less_grey600);
-            final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more_grey600);
+            final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
+            final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more);
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
                     iconDrawable, null, isExpanded ? expandLess : expandMore, null);
         }
@@ -1300,7 +1300,7 @@ public class AppDetailsRecyclerViewAdapter
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
             versionCode.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
-                    R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600));
+                    R.drawable.ic_expand_less : R.drawable.ic_expand_more));
 
             // This is required to make these labels
             // auto-scrollable when they are too long
