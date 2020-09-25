@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/menu_delete"
-        android:icon="@drawable/ic_delete_white"
+        android:icon="@drawable/ic_delete"
         android:title="@string/delete"
         app:showAsAction="ifRoom|withText" />
 
