@@ -1023,7 +1023,7 @@ public class AppDetailsRecyclerViewAdapter
 
             // Issues button
             if (uriIsSetAndCanBeOpened(app.issueTracker)) {
-                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.issueTracker);
+                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_error, app.issueTracker);
             }
 
             // Translation button
