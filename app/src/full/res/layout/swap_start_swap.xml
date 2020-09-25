@@ -76,7 +76,7 @@
                 android:layout_height="24dp"
                 android:tint="@color/swap_grey_icon"
                 android:contentDescription="@string/wifi"
-                android:src="@drawable/ic_network_wifi_white"/>
+                android:src="@drawable/ic_network_wifi"/>
 
         <LinearLayout
                 android:layout_width="0dp"

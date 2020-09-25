@@ -3,6 +3,7 @@ package org.fdroid.fdroid.nearby.peers;
 import android.net.Uri;
 import android.os.Parcel;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.NewRepoConfig;
 
@@ -62,7 +63,7 @@ public class WifiPeer implements Peer {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_network_wifi_white;
+        return R.drawable.ic_network_wifi;
     }
 
     @Override
