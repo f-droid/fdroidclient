@@ -975,7 +975,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @DrawableRes
         protected int getIcon() {
-            return R.drawable.ic_lock_24dp_grey600;
+            return R.drawable.ic_lock;
         }
     }
 
