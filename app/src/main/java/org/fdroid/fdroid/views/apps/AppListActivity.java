@@ -117,11 +117,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             public void onClick(View view) {
                 if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
                     sortClauseSelected = SortClause.NAME;
-                    if (FDroidApp.isAppThemeLight()) {
-                        sortImage.setImageResource(R.drawable.ic_az_black);
-                    } else {
-                        sortImage.setImageResource(R.drawable.ic_az_white);
-                    }
+                    final Drawable alphabetical = DrawableCompat.wrap(
+                            ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort_by_alpha)).mutate();
+                    DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                    sortImage.setImageDrawable(alphabetical);
                 } else {
                     sortClauseSelected = SortClause.LAST_UPDATED;
                     sortImage.setImageDrawable(lastUpdated);
