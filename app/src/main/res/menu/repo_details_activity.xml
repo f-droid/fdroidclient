@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom|withText"/>
     <item
         android:id="@+id/menu_enable_nfc"
-        android:icon="@drawable/ic_nfc_white"
+        android:icon="@drawable/ic_nfc"
         android:title="@string/enable_nfc_send"
         app:showAsAction="ifRoom|withText" />
     <item
