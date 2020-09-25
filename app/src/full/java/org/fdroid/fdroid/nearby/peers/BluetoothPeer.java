@@ -3,8 +3,10 @@ package org.fdroid.fdroid.nearby.peers;
 import android.bluetooth.BluetoothClass.Device;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
+
+import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.R;
 
 public class BluetoothPeer implements Peer {
@@ -44,7 +46,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_bluetooth_white;
+        return R.drawable.ic_bluetooth;
     }
 
     @Override
