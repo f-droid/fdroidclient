@@ -44,7 +44,7 @@
     <string name="notification_title_single_update_available">Amucceḍ yewjed</string>
     <string name="notification_title_summary_install_error">Yecceḍ Usebded</string>
     <string name="version">Lqem</string>
-    <string name="by_author_format">ar %s</string>
+    <string name="by_author_format">sɣur %s</string>
     <string name="delete">Kkes</string>
     <string name="other">Wayeḍ</string>
     <string name="login_title">Tlaq tuqqna</string>
@@ -300,4 +300,9 @@
     <string name="app_suggested">Asumer</string>
     <string name="local_repo_running">F-Droid ihegga i umbaddal</string>
     <string name="expert">Askar n umusnas</string>
+    <string name="enable_proxy_summary">Sbadu Apruksi HTTP i yisuturen n uẓeṭṭa meṛṛa</string>
+    <string name="interval_never">Ulac aleqqem awurman</string>
+    <string name="send_history_csv">%s as isbedded amazray am ufaylu CSV</string>
+    <string name="cache_downloaded">Eǧǧ isnasen n tuffirt</string>
+    <string name="installIncompatible">Asnas aramsaḍan d ibenk-inek·inem, sebdded akken yebɣu yili\?</string>
 </resources>
