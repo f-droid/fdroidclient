@@ -147,12 +147,12 @@
     </string>
     <string name="unknown">Nepoznato</string>
     <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
-    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da aplikacije iz njega više neće biti dostupne. Napomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
+    <string name="repo_confirm_delete_body">Brisanje repozitorija znači, da aplikacije u repozitoriju više neće biti dostupne.
+\n
+\nNapomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
     <string name="repo_disabled_notification">Onemogućeno %1$s.
-
-        Morat će te
-        ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.
-    </string>
+\n
+\nMorat ćete ponovo omogućiti repozitorij kako bi instalirali aplikacije iz repozitorija.</string>
     <string name="repo_added">Spremljen repozitorij paketa %1$s.</string>
     <string name="repo_searching_address">Tražim repozitorij paketa na
 \n%1$s</string>
