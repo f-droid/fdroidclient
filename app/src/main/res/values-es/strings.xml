@@ -499,7 +499,7 @@
     <string name="panic_add_apps_to_uninstall">Añadir las aplicaciones que se van a desinstalar y a borrar</string>
     <string name="panic_reset_repos_title">Restablecer repositorios</string>
     <string name="panic_reset_repos_summary">Reinicializar la configuración de repositorios</string>
-    <string name="swap_visible_hotspot">Visible por punto Wi-Fi</string>
+    <string name="swap_visible_hotspot">Visible por punto de acceso</string>
     <string name="swap_blank_wifi_ssid">(blanco)</string>
     <string name="swap_hidden_wifi_ssid">(oculto)</string>
     <string name="swap_setting_up_hotspot">Iniciando punto wifi…</string>
@@ -513,4 +513,10 @@
     <string name="app_list__dismiss_installing_app">Instalación cancelada</string>
     <string name="nearby_splash__document_tree">Buscar repositorios y réplicas en OTG USB.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Muestra notificaciones de actualizaciones de repositorios y aplicaciones.</string>
+    <string name="notification_channel_updates_title">Actualizaciones</string>
+    <string name="notification_channel_swaps_description">Muestra notificaciones de intercambio P2P de aplicaciones.</string>
+    <string name="notification_channel_swaps_title">Intercambios</string>
+    <string name="notification_channel_installs_description">Muestra notificaciones de instalación de aplicaciones.</string>
+    <string name="notification_channel_installs_title">Instalaciones</string>
 </resources>
