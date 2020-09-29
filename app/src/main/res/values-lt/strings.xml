@@ -344,4 +344,7 @@
     <string name="theme_light">Šviesi</string>
     <string name="theme_night">Naktinė</string>
     <string name="enable_proxy_summary">Naudoti HTTP Proxy visiems ryšiams</string>
+    <string name="malformed_repo_uri">Ignoruojamas netaisyklingas repozitorijos URI: %s</string>
+    <string name="repo_add_mirror">Pridėti veidrodinę repozitoriją</string>
+    <string name="local_repo_https_on">Naudoti užšifruotą HTTPS:// ryšį lokaliai repozitorijai</string>
 </resources>
