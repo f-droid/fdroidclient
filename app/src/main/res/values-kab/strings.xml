@@ -305,4 +305,5 @@
     <string name="send_history_csv">%s as isbedded amazray am ufaylu CSV</string>
     <string name="cache_downloaded">Eǧǧ isnasen n tuffirt</string>
     <string name="installIncompatible">Asnas aramsaḍan d ibenk-inek·inem, sebdded akken yebɣu yili\?</string>
+    <string name="SignatureMismatch">Lqem amaynut yettwazmel s tsarut yemgaraden ɣef lqem aqbur. Akken ad tesbeddeḍ lqem amaynut, yessefk ad tekkseḍ lqem aqbur. Ttxil xdem aya tɛerḍeḍ tikkelt-nniḍen. (Ẓer dakken Tukksa ad tesfeḍ akk isefka igensanen yettwaskelsen s usnas)</string>
 </resources>
