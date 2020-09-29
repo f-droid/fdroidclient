@@ -112,7 +112,8 @@
     </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis. 
+    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis.
+\n
 \nNota: Todos os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s desativado.
 \n
@@ -511,4 +512,5 @@
     <string name="swap_error_cannot_start_bluetooth">Não foi possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Por Perto fechado já que estava ocioso.</string>
     <string name="nearby_splash__document_tree">Pesquisa por USB OTG por repositórios e espelhos.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
