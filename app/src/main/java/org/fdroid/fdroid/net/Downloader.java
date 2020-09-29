@@ -169,7 +169,7 @@ public abstract class Downloader {
             throws IOException, InterruptedException {
         Timer timer = new Timer();
         try {
-            bytesRead = 0;
+            bytesRead = outputFile.length();
             totalBytes = totalDownloadSize();
             byte[] buffer = new byte[bufferSize];
 

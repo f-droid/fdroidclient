@@ -60,6 +60,7 @@ public class HttpDownloader extends Downloader {
     private HttpURLConnection connection;
     private boolean newFileAvailableOnServer;
 
+    private long fileFullSize = -1L;
     /**
      * String to append to all HTTP downloads, created in {@link FDroidApp#onCreate()}
      */
@@ -140,6 +141,7 @@ public class HttpDownloader extends Downloader {
             case HttpURLConnection.HTTP_OK:
                 String headETag = tmpConn.getHeaderField(HEADER_FIELD_ETAG);
                 contentLength = tmpConn.getContentLength();
+                fileFullSize = contentLength;
                 if (!TextUtils.isEmpty(cacheTag)) {
                     if (cacheTag.equals(headETag)) {
                         Utils.debugLog(TAG, urlString + " cached, not downloading: " + headETag);
@@ -248,9 +250,9 @@ public class HttpDownloader extends Downloader {
     @TargetApi(24)
     public long totalDownloadSize() {
         if (Build.VERSION.SDK_INT < 24) {
-            return connection.getContentLength();
+            return (int) fileFullSize;
         } else {
-            return connection.getContentLengthLong();
+            return fileFullSize;
         }
     }
 
