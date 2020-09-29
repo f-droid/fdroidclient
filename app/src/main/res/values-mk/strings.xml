@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">F-Droid</string>
-    <string name="SignatureMismatch">Новата верзија е потпишата со разлилен клуч од стариот.За да ја инсталирата новата
-        верзија,најпрво деинсталирајте ја старата.(Имајте во предвиде да при деинсталирањето се бришат и податоците од
-        апликацијата.)
-    </string>
+    <string name="SignatureMismatch">Новата верзија е потпишана со различен клуч од стариот.За да ја инсталирате новата верзија, најпрво деинсталирајте ја старата.(Имајте во предвид при деинсталирањето се бришат и податоците од апликацијата.)</string>
     <string name="version">Верзија</string>
     <string name="delete">Избриши</string>
     <string name="enable_nfc_send">Овозможете ја функцијата NFC Испрати …</string>
@@ -90,4 +87,132 @@
     <string tools:ignore="UnusedResources" name="category_Games">Игри</string>
     <string name="skip">Прескокни</string>
     <string name="useTor">Користи Tor</string>
+    <string name="repo_confirm_delete_title">Избриши складиште\?</string>
+    <string name="local_repo">Локално складиште</string>
+    <string name="appcompatibility">Компатибилност со апликации</string>
+    <string name="search_hint">Пребарувај апликации</string>
+    <string name="expert">Напреден режим</string>
+    <string name="details_notinstalled">Не е инсталирано</string>
+    <string name="menu_source">Изворен код</string>
+    <string name="menu_email">Испрати е-пошта до авторот</string>
+    <string name="repo_provider">Складиште: %s</string>
+    <string name="bad_fingerprint">Лош отпечаток од прст</string>
+    <string name="repo_add_fingerprint">Отпечаток од прсти (по избор)</string>
+    <string name="app_not_installed">Не е инсталирана</string>
+    <string name="about_source">Изворен код</string>
+    <string name="about_title">За F-Droid</string>
+    <string name="app_details">Детали за апликацијата</string>
+    <string name="repo_edit_credentials">Промени ја лозинката</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="swap_stopping">Престанување…</string>
+    <string name="swap_starting">Почнување…</string>
+    <string name="swap_hidden_wifi_ssid">(скриено)</string>
+    <string name="swap_blank_wifi_ssid">(празно)</string>
+    <string name="undo">Поништи</string>
+    <string name="menu_translation">Превод</string>
+    <string name="main_menu__updates">Ажурирања</string>
+    <string name="app_new">Ново</string>
+    <string name="menu_downgrade">Замени со стара верзија</string>
+    <string name="app_suggested">Предложено</string>
+    <string name="menu_open">Отвори</string>
+    <string name="menu_liberapay">Liberapay</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Игнорирај</string>
+    <string name="menu_video">Видео</string>
+    <string name="antifeatures">Несакани карактеристики</string>
+    <string name="updates__tts__download_app">Преземи</string>
+    <string name="app__install_downloaded_update">Ажурирај</string>
+    <string name="main_menu__latest_apps">Најнови</string>
+    <string name="notification_title_summary_installing">Инсталирање</string>
+    <string name="notification_title_summary_downloading">Преземање…</string>
+    <string name="downloading">Преземање…</string>
+    <string name="perms_new_perm_prefix">Ново:</string>
+    <string tools:ignore="UnusedResources" name="category_Theming">Теми</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Развој</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Поврзаност</string>
+    <string name="wifi_ap">Hotspot</string>
+    <string name="pref_language">Јазик</string>
+    <string name="repo_name">Име</string>
+    <string name="repo_description">Опис</string>
+    <string name="repo_url">Адреса</string>
+    <string name="theme">Тема</string>
+    <string name="icon">Икона</string>
+    <string name="display">Екран</string>
+    <string name="menu_flattr">Flattr</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_upgrade">Ажурирај</string>
+    <string name="menu_changelog">Дневник со промени</string>
+    <string name="menu_issues">Проблеми</string>
+    <string name="menu_website">Веб-страница</string>
+    <string name="menu_uninstall">Деинсталирај</string>
+    <string name="menu_install">Инсталирај</string>
+    <string name="menu_share">Сподели</string>
+    <string name="app_installed">Инсталирана</string>
+    <string name="app_incompatible">Некомпатибилна</string>
+    <string name="about_license">Лиценца</string>
+    <string name="about_site">Веб-страница</string>
+    <string name="about_version">Верзија</string>
+    <string name="login_password">Лозинка</string>
+    <string name="login_name">Корисничко име</string>
+    <string name="menu_add_repo">Ново складиште</string>
+    <string name="menu_manage">Складишта</string>
+    <string name="back">Назад</string>
+    <string name="theme_night">Ноќна</string>
+    <string name="theme_dark">Темна</string>
+    <string name="theme_light">Светла</string>
+    <string name="crash_dialog_comment_prompt">Можете да додадете дополнителни информации и коментари овде:</string>
+    <string name="keep_forever">Засекогаш</string>
+    <string name="keep_year">1 година</string>
+    <string name="keep_month">1 месец</string>
+    <string name="keep_week">1 недела</string>
+    <string name="keep_day">1 ден</string>
+    <string name="keep_hour">1 час</string>
+    <string name="notification_title_single_update_available">Достапно ажурирање</string>
+    <string name="crash_dialog_text">Се случи неочекувана грешка принудувајќи ја апликацијата да престане со работа. Дали сакате да ги испратите по е-пошта деталите за да помогнете во поправањето на проблемот\?</string>
+    <string name="crash_dialog_title">F-Droid се урна</string>
+    <string name="swap_send_fdroid">Испрати F-Droid</string>
+    <string tools:ignore="UnusedResources" name="category_System">Систем</string>
+    <string tools:ignore="UnusedResources" name="category_Sports_Health">Спорт и Здравје</string>
+    <string name="not_on_same_wifi">Вашиот уред не е на истиот Wi-Fi како и локалното складиште што го додадовте! Обидете се да се приклучите на оваа мрежа:% s</string>
+    <string name="repo_last_update">Последно ажурирање</string>
+    <string name="repo_details">Складиште</string>
+    <string name="unverified">Непроверена</string>
+    <string name="unsigned">Непотпишана</string>
+    <string name="warning_no_internet">Не може да се ажурира, дали сте поврзани на интернет\?</string>
+    <string name="antitracklist">Оваа апликација ја следи и јавува вашата активност</string>
+    <string name="less">Помалку</string>
+    <string name="more">Повеќе</string>
+    <string name="repo_add_url">Адреса на складиштето</string>
+    <string name="choose_bt_send">Изберете Bluetooth метод за испраќање</string>
+    <string name="bluetooth_activity_not_found">Не е пронајден метод за испраќање преке Bluetooth, изберете еден!</string>
+    <string name="sort_search">Подреди пребарување</string>
+    <string name="clear_search">Исчисти пребарување</string>
+    <string name="overwrite">Препиши</string>
+    <string name="add_key">Додај клуч</string>
+    <string name="enable">Овозможи</string>
+    <string name="versions">Верзии</string>
+    <string name="links">Врски</string>
+    <string name="repo_add_add">Додај</string>
+    <string name="repo_add_title">Додај ново складиште</string>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">Преземи ажурирање за %1$d апликација.</item>
+        <item quantity="other">Преземи ажурирање за %1$d апликации.</item>
+    </plurals>
+    <string name="updates__hide_updateable_apps">Сокриј апликации</string>
+    <string name="updates__show_updateable_apps">Прикажи апликации</string>
+    <string name="update_all">Ажурирај ги сите</string>
+    <string name="all_other_repos_fine">Сите други складишта не создадоа грешки.</string>
+    <string name="repos_unchanged">Сите складишта се ажурирани</string>
+    <string name="repo_num_apps">Број на апликации</string>
+    <string name="scan_removable_storage_toast">Скенирање %s…</string>
+    <string name="swap_toast_using_path">Користење %1$s</string>
+    <string name="nearby_splash__request_permission">Пробај</string>
+    <string name="app_repository">Складиште: %1$s</string>
+    <string name="app_size">Големина: %1$s</string>
+    <string name="about_forum">Форум за поддршка</string>
+    <string name="share_repository">Сподели складиште</string>
+    <string name="over_data">Преку мобилни податоци</string>
+    <string name="over_wifi">Преку Wi-Fi</string>
+    <string name="use_bluetooth">Користи Bluetooth</string>
+    <string name="adding_apks_format">Додавање на %s во складиштето…</string>
 </resources>
