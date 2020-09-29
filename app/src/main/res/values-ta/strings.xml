@@ -146,4 +146,11 @@
     <string name="hide_all_notifications">அனைத்து அறிவிப்புகளையும் மறைக்கவும்</string>
     <string name="prompt_to_send_crash_reports_summary">செயலிழப்புகளைப் பற்றிய தரவைச் சேகரித்து அவற்றை உருவாக்குபவருக்கு அனுப்பச் சொல்லுங்கள்</string>
     <string name="by_author_format">வழங்கியவர் %s</string>
+    <string name="installed_app__updates_ignored">மேம்பாடுகள் தவிர்க்கப்பட்டது</string>
+    <string name="send_installed_apps">நிறுவப்பட்ட செயலிகளை பகிர்</string>
+    <string name="installed_apps__activity_title">நிறுவிய செயலிகள்</string>
+    <string name="app_list__dismiss_downloading_app">பதிவிறக்கம் ரத்து செய்யப்பட்டது</string>
+    <string name="app_list__dismiss_app_update">மேம்பாடு தவிர்க்கப்பட்டது</string>
+    <string name="app__tts__cancel_download">பதிவிறக்கத்தை ரத்து செய்</string>
+    <string name="app_version_x_available">பதிப்பு %1$s கள் உள்ளன</string>
 </resources>
