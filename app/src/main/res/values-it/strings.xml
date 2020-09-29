@@ -318,7 +318,7 @@
     <string name="latest__empty_state__no_recent_apps">Nessuna app recente trovata</string>
     <string name="latest__empty_state__no_enabled_repos">Una volta abilitato un repository e fatto aggiornare, le ultime applicazioni dovrebbero apparire qui</string>
     <string name="categories__empty_state__no_categories">Nessuna categoria da visualizzare</string>
-    <string name="details_new_in_version">Nuovo nella versione %s</string>
+    <string name="details_new_in_version">Novità della versione %s</string>
     <string name="antifeatureswarning">Questa app ha caratteristiche che potrebbero non piacerti.</string>
     <string name="antifeatures">Anti-caratteristiche</string>
     <string name="by_author_format">da %s</string>
