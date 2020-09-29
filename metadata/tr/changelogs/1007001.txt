@@ -1,1 +1,3 @@
-Cihazın hotspot özelliğini kullanarak yakındakilerle takas
+* aygıtın etkin nokta özelliğini kullanarak yakındakilerle takas elden geçirildi
+
+*
