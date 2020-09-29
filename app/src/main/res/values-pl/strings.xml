@@ -526,4 +526,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">W pobliżu jest zamknięty, ponieważ był bezczynny.</string>
     <string name="nearby_splash__document_tree">Wyszukaj USB OTG dla repozytoriów i serwerów lustrzanych.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Wyświetla powiadomienia o aktualizacjach aplikacji i repozytorium.</string>
+    <string name="notification_channel_updates_title">Aktualizacje</string>
+    <string name="notification_channel_swaps_title">Wymiana</string>
+    <string name="notification_channel_swaps_description">Wyświetla powiadomienia o wymianie aplikacji P2P.</string>
+    <string name="notification_channel_installs_description">Wyświetla powiadomienia o instalacji aplikacji.</string>
+    <string name="notification_channel_installs_title">Instalacje</string>
 </resources>
