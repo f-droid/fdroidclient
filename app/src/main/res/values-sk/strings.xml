@@ -17,7 +17,7 @@
     <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
     <string name="system_installer">Rozšírenie Oprávnení</string>
-    <string name="system_installer_on">Použiť privilegované rozšírenie na inštaláciu, aktualizáciu a odstránenie balíkov</string>
+    <string name="system_installer_on">Používať Privilegované Rozšírenie F-Droidu na inštaláciu, aktualizácie a odstránenie balíkov</string>
     <string name="local_repo_name">Názov miestneho archívu</string>
     <string name="local_repo_name_summary">Zverejnený názov miestneho archívu: %s</string>
     <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny archív</string>
@@ -281,7 +281,7 @@
     <string name="installing">Inštaluje sa…</string>
     <string name="uninstalling">Prebieha odinštalovanie…</string>
     <string name="update_auto_install">Automaticky nainštalovať aktualizácie</string>
-    <string name="update_auto_install_summary">Prevziať a aktualizovať aplikácie na pozadí, so zobrazením upozornenia</string>
+    <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí, zobraziť notifikáciu</string>
     <string name="warning_no_internet">Nemožno aktualizovať, máte prístup na Internet?</string>
     <string name="keep_install_history">Uchovať históriu inštalácií</string>
     <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaných a odinštalovaných aplikáciach v F-Droid-e</string>
@@ -339,7 +339,7 @@
     <string name="latest__empty_state__no_enabled_repos">Keď povolíte úložisko a necháte ho aktualizovať, mali by sa tu zobrazovať najnovšie aplikácie</string>
     <string name="categories__empty_state__no_categories">Žiadne kategórie na zobrazenie</string>
     <string name="preference_category__my_apps">Moje aplikácie</string>
-    <string name="preference_manage_installed_apps">Správa nainštalovaných aplikácií</string>
+    <string name="preference_manage_installed_apps">Spravovať nainštalované aplikácie</string>
     <string name="details_new_in_version">Nové vo verzii %s</string>
     <string name="antifeatureswarning">Táto aplikácia obsahuje funkcie, ktoré sa vám nemusia páčiť.</string>
     <string name="antifeatures">Anti-funkcie</string>
@@ -429,8 +429,8 @@
     <string name="install_history_summary">Zobraziť súkromný záznam o všetkých inštaláciách a deinštaláciách</string>
     <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor (zmena sa prejaví po reštarte aplikácie).</string>
     <string name="allow_push_requests">Povoliť repozitárom nainštalovať/odinštalovať aplikácie</string>
-    <string name="allow_push_requests_summary">Metadáta archívu môžu obsahovať push požiadavky na inštaláciu alebo od-inštaláciu aplikácií</string>
-    <string name="over_network_on_demand_summary">Toto pripojenie použiť len keď kliknem na sťahovanie</string>
+    <string name="allow_push_requests_summary">Metadáta repozitára môžu zahŕňať požiadavky na inštalovanie alebo odinštalovanie aplikácií</string>
+    <string name="over_network_on_demand_summary">Použiť toto pripojenie iba keď stlačím Stiahnuť</string>
     <string name="scan_removable_storage_title">Prehľadať odpojiteľné úložisko</string>
     <string name="scan_removable_storage_toast">Prehľadáva sa %s…</string>
     <string name="scan_removable_storage_summary">Hľadať repozitáre balíkov na odpojiteľnom úložisku ako sú SD karty a USB kľúče</string>
