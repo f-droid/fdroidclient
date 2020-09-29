@@ -488,4 +488,10 @@
     <string name="nearby_splash__document_tree">Søg på USB OTG efter depoter og spejle.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nærved lukket da det ikke var i brug.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Viser program og arkiv opdatering underretninger.</string>
+    <string name="notification_channel_updates_title">Opdateringer</string>
+    <string name="notification_channel_swaps_description">Viser P2P program bytte underretninger.</string>
+    <string name="notification_channel_swaps_title">Bytter</string>
+    <string name="notification_channel_installs_description">Viser program installation påmindelser.</string>
+    <string name="notification_channel_installs_title">Installeringer</string>
 </resources>
