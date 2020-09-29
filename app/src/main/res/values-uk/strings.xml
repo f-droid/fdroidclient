@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Нова версія підписана іншим ключем, ніж поточна. Щоби встановити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде видалено всі внутрішні дані, що зберігаються в застосунку)</string>
+    <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточна. Щоб встановити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде видалено всі внутрішні дані, що зберігаються в застосунку)</string>
     <string name="version">Версія</string>
     <string name="cache_downloaded">Зберігати кешовані застосунки</string>
     <string name="updates">Оновлення</string>
@@ -122,7 +122,7 @@
     <string name="category_Time">Час</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
     <string name="swap_join_same_wifi">Під\'єднайтеся до того ж Wi-Fi, що і ваш друг</string>
-    <string name="swap_view_available_networks">Натисніть, щоби відкрити доступні мережі</string>
+    <string name="swap_view_available_networks">Натисніть, щоб відкрити доступні мережі</string>
     <string name="open_qr_code_scanner">Відкрити QR-сканер</string>
     <string name="swap_welcome">Вітаємо у F-Droid!</string>
     <string name="swap_choose_apps">Виберіть застосунки</string>
@@ -394,7 +394,7 @@
     <string name="app_details__no_versions__none_compatible_with_device">Немає сумісних із пристроєм версій</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Встановлена версія несумісна з будь-якими доступними версіями. Якщо видалити застосунок, ви зможете переглядати та встановлювати сумісні версії. Це часто трапляється з застосунками, встановленими через Google Play або з інших джерел, якщо вони підписані іншим сертифікатом.</string>
     <string name="app_installed_media">Файл встановлено в %s</string>
-    <string name="app_permission_storage">F-Droid потребує дозволу на доступ до сховища для встановлення. Будь ласка, надайте дозвіл на наступному екрані, щоби продовжити встановлення.</string>
+    <string name="app_permission_storage">F-Droid потребує дозволу на доступ до сховища для встановлення. Будь ласка, надайте дозвіл на наступному екрані, щоб продовжити встановлення.</string>
     <string name="app_list_download_ready">Завантажено, готовий до встановлення</string>
     <string name="status_inserting_x_apps">Збереження деталей застосунку (%1$d/%2$d) з %3$s</string>
     <string name="app_list__dismiss_app_update">Оновлення ігнорується</string>
@@ -509,4 +509,5 @@
     <string name="swap_error_cannot_start_bluetooth">Не вдається запустити Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">\"Поруч\" закрито, оскільки простоювало.</string>
     <string name="nearby_splash__document_tree">Перевірити наявність репозиторіїв та дзеркал на USB-OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
