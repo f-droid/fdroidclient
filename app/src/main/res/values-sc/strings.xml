@@ -87,10 +87,11 @@
     <string name="proxy_host_summary">Su nùmene de s\'host de su proxy tuo (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Ghenna proxy</string>
     <string name="proxy_port_summary">Su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
-    <string name="status_download">Iscarrighende %2$s / %3$s (%4$d%%) dae %1$s</string>
+    <string name="status_download">Iscarrighende
+\n%2$s / %3$s (%4$d%%) dae
+\n%1$s</string>
     <string name="status_connecting_to_repo">Connessione a
-        %1$s
-    </string>
+\n%1$s</string>
     <string name="repos_unchanged">Totu sos depòsitos sunt agiornados</string>
     <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
     <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
@@ -113,12 +114,12 @@
     </string>
     <string name="unknown">Disconnotu</string>
     <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
-    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles. Nota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
+    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles.
+\n
+\nNota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
     <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
-
-        Depes
-        torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.
-    </string>
+\n
+\nDepes torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
     <string name="repo_added">Depòsitu de pachetos %1$s sarvadu.</string>
     <string name="repo_searching_address">Chirchende unu depòsitu de pachetos in
 \n%1$s</string>
@@ -284,8 +285,7 @@
     <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
     <string name="keep_install_history">Sarva s\'istòria de sas installatziones</string>
-    <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in 
-\n un\'archìviu locale</string>
+    <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in un\'archìviu locale</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">Cùmbida unu cafè a sos isvilupadores de %1$s!</string>
@@ -519,4 +519,11 @@
     <string name="swap_error_cannot_start_bluetooth">Impossìbile allùghere su Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Sa funtzione \" a curtzu\" est istada serrada ca non fiat ativa.</string>
     <string name="nearby_splash__document_tree">Chirca depòsitos e ispricos (mirrors) in s\'OTG USB.</string>
+    <string name="notification_channel_updates_description">Ammustrat sas notìficas de agiornamentu de sas aplicatziones e de sos depòsitos.</string>
+    <string name="notification_channel_updates_title">Agiornamentos</string>
+    <string name="notification_channel_installs_description">Ammustrat sas notìficas de installatzione de sas aplicatziones.</string>
+    <string name="notification_channel_swaps_description">Ammustrat sas notìficas de cuncàmbiu P2P de sas aplicatziones.</string>
+    <string name="notification_channel_swaps_title">Cuncàmbios</string>
+    <string name="notification_channel_installs_title">Installatziones</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
