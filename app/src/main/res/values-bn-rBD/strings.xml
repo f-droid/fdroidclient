@@ -79,4 +79,7 @@
     <string name="force_old_index">পুরাতন সূচি বিন্যাস ফোর্স করে চালু করুন</string>
     <string name="send_version_and_uuid">সংস্করণ এবং ইউআইডি সার্ভারে প্রেরণ করুন</string>
     <string name="keep_install_history_summary">একটি ব্যক্তিগত দোকানে(স্টোরে) সমস্ত ইনস্টল এবং আনইনস্টলগুলের লগ সঞ্চয় করো</string>
+    <string name="scan_removable_storage_title">অপসারণযোগ্য স্টোরেজ স্ক্যান করো</string>
+    <string name="local_repo_https_on">স্থানীয় রিপোর জন্য এনক্রিপটেড HTTPS:// সংযোগ ব্যবহার করো</string>
+    <string name="local_repo_name_summary">তোমার স্থানীয় রিপোর বিজ্ঞাপিত শিরোনাম: %s</string>
 </resources>
