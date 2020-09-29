@@ -237,7 +237,7 @@
     <string name="uninstall_update_confirm">این برنامه با نسخه کارخانه جایگزین شود؟ همه داده‌ها پاک می‌شوند.</string>
     <string name="uninstall_confirm">می‌خواهید این برنامه را حذف نصب کنید؟</string>
     <string name="menu_email">ایمیل به نویسنده</string>
-    <string name="antinonfreeassetslist">این برنامه شامل ابزارهای پولی است</string>
+    <string name="antinonfreeassetslist">این برنامه شامل دارایی های غیر آزاد است</string>
     <string name="empty_search_available_app_list">چنین برنامه هایی موجود نیستند.</string>
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که کاره را وادار به توقّف کرد. می‌خواهید برای کمک به حل مشکل، جزییات را رایانامه کنید؟</string>
