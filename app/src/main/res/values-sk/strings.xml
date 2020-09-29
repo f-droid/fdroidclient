@@ -90,9 +90,9 @@
     <string name="proxy_host_summary">Adresa proxy servera (napr. 127.0.0.1)</string>
     <string name="proxy_port">Port proxy</string>
     <string name="proxy_port_summary">Číslo portu proxy servera (napr. 8118)</string>
-    <string name="status_download">Sťahuje sa %2$s / %3$s (%4$d%%) z
-        %1$s
-    </string>
+    <string name="status_download">Sťahuje sa
+\n%2$s / %3$s (%4$d%%) z
+\n%1$s</string>
     <string name="status_connecting_to_repo">Pripájanie na\n%1$s</string>
     <string name="repos_unchanged">Všetky repozitáre sú aktuálne</string>
     <string name="all_other_repos_fine">Ostatné repozitáre sú v poriadku.</string>
@@ -120,10 +120,8 @@
 \n
 \nPoznámka: Všetky predtým nainštalované aplikácie zostávajú v zariadení.</string>
     <string name="repo_disabled_notification">Vypnuté \"%1$s\".
-
-        Budete musieť
-        znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.
-    </string>
+\n
+\nBudete musieť znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
     <string name="repo_added">Uložený archív balíkov %1$s.</string>
     <string name="repo_searching_address">Hľadá sa repozitár na
 \n %1$s</string>
@@ -519,4 +517,5 @@
     <string name="swap_error_cannot_start_bluetooth">Nejde spustiť Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funkcia Nablízko ukončená kvôli nečinnosti.</string>
     <string name="nearby_splash__document_tree">Hľadať repozitáre a mirrory na zariadení USB OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
