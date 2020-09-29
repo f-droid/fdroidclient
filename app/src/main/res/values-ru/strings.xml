@@ -238,7 +238,7 @@
     <string name="swap_people_nearby">Люди поблизости</string>
     <string name="swap_scanning_for_peers">Поиск людей поблизости…</string>
     <string name="swap_nearby">Обмен поблизости</string>
-    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с пользователми поблизости.</string>
+    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с пользователями поблизости.</string>
     <string name="swap_visible_bluetooth">Видимый через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Настройка Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Не видимый через Bluetooth</string>
@@ -439,7 +439,7 @@
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
     <string name="show_anti_feature_apps">Включить приложения с анти-функциями</string>
     <string name="show_anti_feature_apps_on">Показывать приложения, которым необходим несвободный функционал</string>
-    <string name="force_touch_apps">Включить приложения, требущие сенсорного экрана</string>
+    <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
     <string name="repo_official_mirrors">Официальные зеркала</string>
     <string name="repo_user_mirrors">Пользовательские зеркала</string>
