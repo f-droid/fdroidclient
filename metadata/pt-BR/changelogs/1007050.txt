@@ -1,6 +1,7 @@
-* Grande reformulação na interface de troca, para preparar para reescrita
-* Mostra "Desfazer" após remover os itens da aba Atualizações (obrigado @Hocuri!)
-* Correção de problemas com a exibição "Mais recentes" causada pelo mau uso dos fusos horários #1757
-* Ignora todas as falhas sem importância nos serviços de segundo plano
-* Adição de novas respostas a pânico: o aplicativo desinstala e redefine os repos para o padrão
-* Unidades USB OTG pode ser usadas como repositórios e espelhos no Por Perto
+* major overhaul of swap UI, to prepare for rewriting guts
+* show "undo" after swiping away items from the Updates tab (thanks @Hocuri!)
+* fix issues with "Latest" display caused by mishandling time zones #1757
+* ignore all unimportant crashes in background services
+* overhauled nearby swap using the device's hotspot AP
+* add new panic responses: app uninstalls and reset repos to default
+* USB OTG flash drives can be used as nearby repos and mirrors
