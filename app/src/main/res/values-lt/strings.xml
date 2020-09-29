@@ -42,8 +42,7 @@
     <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
     <string name="next">Kitas</string>
     <string name="status_connecting_to_repo">Jungiamasi prie
-        %1$s
-    </string>
+\n%1$s</string>
     <string name="repos_unchanged">Visos saugyklos yra atnaujintos</string>
     <string name="global_error_updating_repos">Klaida naujinant: %s</string>
     <string name="theme">Tema</string>
@@ -55,12 +54,12 @@
         saugyklą atnaujinti. Atnaujinus, programų aprašymai taps matomi.
     </string>
     <string name="repo_confirm_delete_title">Pašalinti saugyklą?</string>
-    <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programų katalogas nebebus pasiekiamas su F-Droid.
-        Tačiau iki trynimo iš saugyklos įkeltos programos pašalintos nebus.
-    </string>
-    <string name="repo_disabled_notification">\"%1$s\" pažymėta kaip nenaudotina. Jei norite įkelti programas iš šios
-        saugyklos, turite pirma leisti tai savo nustatymuose.
-    </string>
+    <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programų katalogas nebebus pasiekiamas.
+\n
+\nPastaba: Visos anksčiau įdiegtos programos išliks jūsų įrenginyje.</string>
+    <string name="repo_disabled_notification">%1$s išjungta.
+\n
+\nNorėdami diegti programas iš šios saugyklos, turėsite ją vėl įjungti.</string>
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir mokymasis</string>
     <string name="swap_welcome">Sveikiname, jūs naudojate F-Droid!</string>
@@ -151,7 +150,7 @@
     <string name="allow">Leisti</string>
     <string name="panic_exit_title">Išeiti iš programos</string>
     <string name="panic_exit_summary">Programa bus užverta</string>
-    <string name="panic_destructive_actions">Sunaikinti įvykiai</string>
+    <string name="panic_destructive_actions">Destruktyvūs veiksmai</string>
     <string name="panic_hide_title">Paslėpti %s</string>
     <string name="panic_hide_summary">Programa pati pasislėps</string>
     <string name="panic_hide_warning_title">Prisiminti kaip atkūrti</string>
@@ -182,14 +181,14 @@
     <string name="over_network_never_summary">Nesiųsti nieko naudojant šį ryšį</string>
     <string name="update_auto_download">Automatiškai tikrinti atnaujinimus</string>
     <string name="update_auto_install">Automatiškai įdiegti atnaujinimus</string>
-    <string name="update_auto_install_summary">Atsiųsti ir suinstaliuoti atnaujinimus fone</string>
+    <string name="update_auto_install_summary">Atsiųsti ir suinstaliuoti atnaujinimus fone, rodant pranešimą</string>
     <string name="system_installer">Privilegijuoti papildiniai</string>
     <string name="login_title">Reikalingas autentifikavimas</string>
     <string name="login_name">Vartotojo vardas</string>
     <string name="login_password">Slaptažodis</string>
     <string name="repo_edit_credentials">Pakeisti slaptažodį</string>
     <string name="repo_error_empty_username">Tusčias vartotojo vardas, duomenys nepakeisti</string>
-    <string name="no_such_app">Nerasta tokia programa</string>
+    <string name="no_such_app">Tokia programa nerasta.</string>
     <string name="app_details__no_versions__show_incompat_versions">Norint pamatyti nepalaikomas versijas, įjunkite \"%1$s\" nustatyma.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nėra palaikomos versijos su jūsų įrenginiu</string>
     <string name="about_forum">Pagalbos forumas</string>
@@ -219,9 +218,9 @@
     <string name="updates__hide_updateable_apps">Paslėpti programas</string>
     <string name="updates__show_updateable_apps">Parodyti programas</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Atsiųsti atnaujinimą %1$d programai</item>
-        <item quantity="few">Atsiųsti atnaujinimus %1$d programoms</item>
-        <item quantity="other">Atsiųsti atnaujinimus %1$d programoms</item>
+        <item quantity="one">Atsiųsti atnaujinimą %1$d programai.</item>
+        <item quantity="few">Atsiųsti atnaujinimus %1$d programoms.</item>
+        <item quantity="other">Atsiųsti atnaujinimus %1$d programų.</item>
     </plurals>
     <string name="updates_disabled_by_settings">Visi atnaujinimai atšaukti pagal Mob. duomenų/WiFi nustatymus</string>
     <string name="links">Nuorodos</string>
@@ -238,11 +237,11 @@
     <string name="menu_ignore_this">Ignoruoti šį naujinimą</string>
     <string name="menu_issues">Klaidos</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nėra versijos su palaikomu įrenginio parašu</string>
-    <string name="app_permission_storage">F-Droid reikia saugyklos keitimo leidimo, norint instaliuoti. Prašome paspausti Leisti kitame, ekrane matome lange</string>
+    <string name="app_permission_storage">F-Droid reikia leidimo diegti į pasirinktą saugyklą. Norėdami tęsti leiskite tai kitame pasirinkimo lange.</string>
     <string name="send_installed_apps_csv">Programos suinstaliuotos F-Droid kaip CSV failas</string>
     <string name="bluetooth_activity_not_found">Nerasta Bluetooth siuntimo metodų, pasirinkite!</string>
     <string name="choose_bt_send">Pasirinkti Bluetooth siuntimo metodą</string>
-    <string name="repo_exists_enable">%1$s yra jau nustatytas, patvirtinkite, jog norite jį perjungti</string>
+    <string name="repo_exists_enable">%1$s jau yra nustatytas, patvirtinkite, jog norite jį perjungti.</string>
     <string name="repo_exists_add_mirror">Tai yra %1$s kopija, pridėti ją kaip veidrodį?</string>
     <string name="repositories_summary">Pridėti papildomus programų šaltinius</string>
     <string name="menu_email">El. Laiško autorius</string>
