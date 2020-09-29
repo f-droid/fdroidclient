@@ -1,6 +1,6 @@
-* Gestos de deslizar adicionados à aba Atualizações
+* Gestos de deslizar adicionados à guia Atualizações
 
-* Mostra avisos com ações na aba Atualizações para vulnerabilidades conhecidas
+* Mostra avisos com ações na guia Atualizações para vulnerabilidades conhecidas
 
 * Traduções atualizadas
 

@@ -21,7 +21,7 @@
     <string name="main_menu__swap_nearby">Próximo</string>
     <string name="preference_manage_installed_apps">Gerir aplicações instaladas</string>
     <string name="details_notinstalled">Não instaladas</string>
-    <string name="next">Próximo</string>
+    <string name="next">Seguinte</string>
     <string name="skip">Ignorar</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
@@ -68,10 +68,10 @@
     <string name="notification_title_single_update_available">Atualização disponível</string>
     <string name="notification_title_summary_install_error">Falha ao instalar</string>
     <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela aplicação)</string>
-    <string name="installIncompatible">A app não é compatível com o seu aparelho. Quer instalar mesmo assim\?</string>
+    <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
     <string name="version">Versão</string>
     <string name="by_author_format">de %s</string>
-    <string name="delete">Excluir</string>
+    <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
     <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
     <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
@@ -92,7 +92,7 @@
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidades, utilizar o índice XML</string>
     <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
     <string name="allow_push_requests_summary">Os metadados do repositório podem incluir pedidos push para instalar ou desinstalar aplicações</string>
-    <string name="other">Outros</string>
+    <string name="other">Outro</string>
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
@@ -247,7 +247,7 @@
     <string name="copying_icons">A copiar ícones para o repositório…</string>
     <string name="icon">Ícone</string>
     <string name="useTor">Utilizar Tor</string>
-    <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade. Requer a aplicação Orbot</string>
+    <string name="useTorSummary">Forçar tráfego de transferências via Tor para uma melhor privacidade. Requer Orbot</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Ativar proxy HTTP</string>
     <string name="privacy">Privacidade</string>
@@ -258,7 +258,7 @@
     <string name="panic_app_setting_summary">Não foi configurada nenhuma aplicação</string>
     <string name="panic_app_setting_none">Nenhuma</string>
     <string name="panic_app_dialog_title">Confirmar aplicação de pânico</string>
-    <string name="panic_app_dialog_message">Tem a certeza de que quer permitir que %1$s ative as ações do botão de pânico\?</string>
+    <string name="panic_app_dialog_message">Tem a certeza que pretende permitir que %1$s ative as ações do botão de pânico destrutivas\?</string>
     <string name="allow">Permitir</string>
     <string name="panic_settings">Definições do botão de pânico</string>
     <string name="panic_settings_summary">Ações a efetuar em caso de emergência</string>
@@ -271,25 +271,25 @@
     <string name="panic_hide_warning_message">Em caso de pânico, isto remove %1$s do ecrã inicial. Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Ocultar %s agora</string>
-    <string name="hiding_dialog_message">Tem a certeza de que quer remover %1$s do ecrã inicial\? Apenas se digitar \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
+    <string name="hiding_dialog_message">Tem a certeza que quer remover %1$s do ecrã inicial\? Digitar apenas \"%2$d\" na aplicação fictícia %3$s a poderá restaurar.</string>
     <string name="hiding_dialog_warning">Aviso: qualquer atalho existente no ecrã será removido e terá que ser adicionado manualmente.</string>
     <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisa</string>
     <string name="hide_on_long_search_press_summary">Toque longo no botão de pesquisa oculta a aplicação</string>
-    <string name="status_download">A descarregar 
+    <string name="status_download">A transferir 
 \n%2$s / %3$s (%4$d%%) de 
 \n%1$s</string>
-    <string name="status_download_unknown_size">A descarregar
-\n%2$s de
+    <string name="status_download_unknown_size">A transferir 
+\n%2$s de 
 \n%1$s</string>
     <string name="download_404">O ficheiro solicitado não foi encontrado.</string>
-    <string name="update_notification_title">A atualizar repositórios</string>
-    <string name="status_connecting_to_repo">A conectar a 
+    <string name="update_notification_title">A atualizar os repositórios</string>
+    <string name="status_connecting_to_repo">A ligar a 
 \n%1$s</string>
-    <string name="status_inserting_x_apps">A guardar detalhes das aplicações (%1$d/%2$d) de %3$s</string>
+    <string name="status_inserting_x_apps">A guardar os detalhes de aplicação (%1$d/%2$d) de %3$s</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
     <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
-    <string name="no_permissions">Sem permissões</string>
+    <string name="no_permissions">Sem autorizações</string>
     <string name="permissions">Permissões</string>
     <string name="no_handler_app">Não tem nenhuma aplicação capaz de lidar com %s.</string>
     <string name="theme">Tema</string>
@@ -321,22 +321,22 @@
         <item quantity="one">Ver (%d)</item>
         <item quantity="other">Ver todos (%d)</item>
     </plurals>
-    <string name="empty_installed_app_list">Não existem apps instaladas. 
+    <string name="empty_installed_app_list">Não existem aplicações instaladas. 
 \n 
-\nExistem apps no seu aparelho que não estão disponíveis no F-Droid. Porque talvez tenha de atualizar os seus repositórios ou porque realmente os repositórios não têm as suas apps.</string>
-    <string name="empty_can_update_app_list">Parabéns! 
-\nAs suas apps estão atualizadas.</string>
+\nExistem aplicações no seu aparelho que não estão disponíveis no F-Droid. Porque talvez tenha de atualizar os seus repositórios ou porque realmente os repositórios não têm as suas aplicações.</string>
+    <string name="empty_can_update_app_list">Parabéns!
+\nAs suas aplicações estão atualizadas.</string>
     <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincide.</string>
     <string name="install_error_unknown">Falha na instalação devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="system_install_denied_permissions">Não foram concedidas as permissões necessárias para a extensão. Por favor reporte este erro!</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet\? Obtenha as aplicações através das pessoas perto de si!</string>
-    <string name="nearby_splash__find_people_button">Procurar pessoas</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet\? Obtenha as aplicações através de pessoas perto de si!</string>
+    <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="nearby_splash__read_external_storage">Pesquisar cartão SD por repos e espelhos.</string>
     <string name="nearby_splash__request_permission">Experimente</string>
     <string name="swap_nfc_title">Toque para trocar</string>
-    <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, juntem os vossos dispositivos.</string>
+    <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, juntem os vossos aparelhos.</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -365,11 +365,11 @@
     <string name="swap_wifi_device_name">Nome do aparelho</string>
     <string name="swap_cant_find_peers">Não encontra o que procura\?</string>
     <string name="swap_no_peers_nearby">Não foram encontradas pessoas na sua vizinhança.</string>
-    <string name="swap_connecting">Conectando</string>
+    <string name="swap_connecting">A ligar</string>
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
     <string name="use_bluetooth">Utilizar Bluetooth</string>
-    <string name="loading">Carregando…</string>
+    <string name="loading">A carregar…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com aparelhos próximos, torne o seu aparelho visível.</string>
@@ -386,8 +386,8 @@
     <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para esta app integrada\? Seus dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
-    <string name="uninstall_update_confirm">Substituir este app pela versão de fábrica? Todos os dados serão removidos.</string>
-    <string name="uninstall_confirm">Quer desinstalar este app?</string>
+    <string name="uninstall_update_confirm">Pretende substituir esta aplicação pela versão de fábrica\? Todos os dados são removidos.</string>
+    <string name="uninstall_confirm">Pretende desinstalar esta aplicação\?</string>
     <string name="download_error">Falha ao descarregar!</string>
     <string name="download_pending">À espera da descarga…</string>
     <string name="install_error_notify_title">Erro ao instalar %s</string>
@@ -396,8 +396,8 @@
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">A descarregar…</string>
     <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
-    <string name="installing">Instalando…</string>
-    <string name="uninstalling">Desinstalando…</string>
+    <string name="installing">A instalar…</string>
+    <string name="uninstalling">A desinstalar…</string>
     <string name="interval_never">Nunca</string>
     <string name="interval_1h">A cada 1 hora</string>
     <string name="interval_4h">A cada 4 horas</string>
@@ -478,8 +478,8 @@
     <string name="panic_will_be_wiped">Será desinstalado e todos os dados serão apagados</string>
     <string name="panic_apps_to_uninstall">Apps a serem desinstaladas e todos os dados apagados</string>
     <string name="panic_add_apps_to_uninstall">Adicionar apps a serem desinstaladas e limpas</string>
-    <string name="panic_reset_repos_title">Reinicializar repos</string>
-    <string name="panic_reset_repos_summary">Forçar a configuração do repositório de volta ás predefinições</string>
+    <string name="panic_reset_repos_title">Reinicializar repositório</string>
+    <string name="panic_reset_repos_summary">Forçar a configuração do repositório para as predefinições</string>
     <string name="swap_visible_hotspot">Visível via hotspot</string>
     <string name="swap_blank_wifi_ssid">(em branco)</string>
     <string name="swap_hidden_wifi_ssid">(oculto)</string>
@@ -487,9 +487,15 @@
     <string name="swap_stopping_hotspot">Parando o hotspot…</string>
     <string name="swap_starting">Ativando…</string>
     <string name="swap_stopping">Parando…</string>
-    <string name="disabled">Desativado</string>
+    <string name="disabled">Desativada</string>
     <string name="swap_error_cannot_start_bluetooth">Não é possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">O Próximo foi fechado desde que estava ocioso.</string>
     <string name="nearby_splash__document_tree">Pesquisar USB OTG por repos e espelhos.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Exibe notificações de atualização de apps e repositórios.</string>
+    <string name="notification_channel_updates_title">Atualizações</string>
+    <string name="notification_channel_swaps_description">Exibe notificações de troca de apps por P2P.</string>
+    <string name="notification_channel_swaps_title">Trocas</string>
+    <string name="notification_channel_installs_description">Exibe notificações de instalação de apps.</string>
+    <string name="notification_channel_installs_title">Instalações</string>
 </resources>

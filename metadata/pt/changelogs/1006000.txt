@@ -7,6 +7,6 @@
 
 * Corrige ícones ausentes quando não se usa Wi-Fi (#1592)
 
-* Usa títulos separados para preferências e aba de atualizações, para ajudar na tradução
+* Usa títulos separados para preferências e guia de atualizações, para ajudar na tradução
 
 * Correções na interface por @ConnyDuck (#1636, #1618)

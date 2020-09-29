@@ -1,4 +1,4 @@
-* Última aba agora destaca aplicações com descrições, traduções e capturas de ecrã
+* Última guia agora destaca aplicações com descrições, traduções e capturas de ecrã
 
 * Descarrega automaticamente de servidores espelho
 
@@ -10,4 +10,4 @@
 
 * Correção de ícones em falta para aqueles que não usam Wi-Fi (#1592)
 
-* Traduções melhoradas para aba Atualizações vs preferência
+* Traduções melhoradas para guia Atualizações vs preferência

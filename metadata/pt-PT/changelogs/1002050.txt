@@ -1,12 +1,12 @@
 * Auto. apara/apaga cache quando tem pouco armazenamento
 
-* Melhor desempenho em dispositivos com pouca memória
+* Melhor desempenho em aparelhos com pouca memória
 
 * Transferências respeitam "Apenas por Wi-Fi"
 
 * Reduz o uso de memória quando tem pouca
 
-* Adiciona espelhos personalizados por meio de links, códigos QR, etc.
+* Adiciona espelhos personalizados por meio de ligações, códigos QR, etc.
 
 * Melhoria na seleção automática de espelhos
 

@@ -5,7 +5,7 @@
         versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar
         todos os dados guardados pela aplicação)
     </string>
-    <string name="installIncompatible">A aplicação não é compatível com o seu dispositivo. Deseja tentar a instalação?</string>
+    <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
     <string name="version">Versão</string>
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
@@ -82,7 +82,7 @@
     <string name="search_hint">Pesquisar aplicações</string>
     <string name="appcompatibility">Compatibilidade de aplicações</string>
     <string name="show_incompat_versions">Incluir versões incompatíveis</string>
-    <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
+    <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu aparelho</string>
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">O F-Droid está pronto para trocar</string>
     <string name="touch_to_configure_local_repo">Toque para ver os detalhes e permitir a troca de aplicações.</string>
@@ -139,9 +139,7 @@
     <string name="repo_added">Foi guardado o repositório de pacotes %1$s.</string>
     <string name="repo_searching_address">A procurar um repositório de pacotes em 
 \n%1$s</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente
-        entrar nesta rede: %s
-    </string>
+    <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="requires_features">Requer: %1$s</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
@@ -164,9 +162,9 @@
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
-    <string name="empty_installed_app_list">Não existem aplicações instaladas.
-\n
-\nExistem aplicações no seu dispositivo que não estão disponíveis no F-Droid. Porque talvez tenha de atualizar os seus repositórios ou porque realmente os repositórios não têm as suas aplicações.</string>
+    <string name="empty_installed_app_list">Não existem aplicações instaladas. 
+\n 
+\nExistem aplicações no seu aparelho que não estão disponíveis no F-Droid. Porque talvez tenha de atualizar os seus repositórios ou porque realmente os repositórios não têm as suas aplicações.</string>
     <string name="empty_can_update_app_list">Parabéns!\nAs suas aplicações estão atualizadas.</string>
     <string name="install_error_unknown">Falha na instalação devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
@@ -174,7 +172,7 @@
         favor reporte este erro!
     </string>
     <string name="swap_nfc_title">Toque para trocar</string>
-    <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, juntem os vossos dispositivos.</string>
+    <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, juntem os vossos aparelhos.</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -188,7 +186,7 @@
     <string name="swap_welcome">Bem-vindo ao F-Droid!</string>
     <string name="swap_dont_show_again">Não mostrar novamente</string>
     <string name="swap_choose_apps">Escolher aplicações</string>
-    <string name="swap_wifi_device_name">Nome do dispositivo</string>
+    <string name="swap_wifi_device_name">Nome do aparelho</string>
     <string name="swap_cant_find_peers">Não encontra o que procura?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="swap_connecting">A ligar</string>
@@ -384,7 +382,7 @@
     <string name="app_details__incompatible_mismatched_signature">Assinatura diferente da versão instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a opção \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Não existem versões com uma assinatura compatível</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o dispositivo</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o aparelho</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com as versões disponíveis. Pode desinstalar a aplicação de modo a ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar aplicações através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
@@ -499,4 +497,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">O Próximo foi fechado desde que estava ocioso.</string>
     <string name="nearby_splash__document_tree">Pesquisar USB OTG por repos e espelhos.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Exibe notificações de atualização de apps e repositórios.</string>
+    <string name="notification_channel_updates_title">Atualizações</string>
+    <string name="notification_channel_swaps_description">Exibe notificações de troca de apps por P2P.</string>
+    <string name="notification_channel_swaps_title">Trocas</string>
+    <string name="notification_channel_installs_description">Exibe notificações de instalação de apps.</string>
+    <string name="notification_channel_installs_title">Instalações</string>
 </resources>
