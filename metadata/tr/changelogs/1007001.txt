@@ -1,3 +1,5 @@
-* aygıtın etkin nokta özelliğini kullanarak yakındakilerle takas elden geçirildi
+* aygıtın erişim noktası özelliğini kullanarak yakındakilerle takas elden geçirildi
 
-*
+* yeni panik yanıtları ekle: uygulamayı kaldır ve depoları öntanımlı değerlere sıfırla
+
+* ilk başlangıçta vekil desteğini düzelt

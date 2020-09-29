@@ -430,7 +430,7 @@
     <string name="repo_official_mirrors">Resmi yansımalar</string>
     <string name="repo_user_mirrors">Kullanıcı yansımaları</string>
     <string name="use_bluetooth">Bluetooth Kullan</string>
-    <string name="swap_toast_invalid_url">Takaslamaya geçersiz URL: %1$s</string>
+    <string name="swap_toast_invalid_url">Takas etmek için geçersiz URL: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Kablosuz ağ bağlantı noktası etkin</string>
     <string name="swap_toast_could_not_enable_hotspot">Kablosuz ağ bağlantı noktası etkinleştirilemedi!</string>
     <string name="over_wifi">Kablosuz ağ üzerinden</string>
@@ -471,7 +471,7 @@
     <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
     <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
     <string name="not_visible_nearby">Yakın da etkin değil</string>
-    <string name="not_visible_nearby_description">Yakın da ki cihazlarla takaslamadan önce cihazınızı görünürleştirin.</string>
+    <string name="not_visible_nearby_description">Yakındaki cihazlarla takas etmeden önce cihazınızı görünür hale getirin.</string>
     <string name="scan_removable_storage_toast">%s taranıyor…</string>
     <string name="main_menu__updates">Güncellemeler</string>
     <string name="menu_translation">Çeviri</string>
@@ -496,4 +496,10 @@
     <string name="nearby_splash__document_tree">Depolar ve yansılar için USB OTG ara.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Kullanımda olmadığından, yakın zamanda kapatıldı.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Uygulama ve depo güncelleme bildirimlerini görüntüler.</string>
+    <string name="notification_channel_updates_title">Güncellemeler</string>
+    <string name="notification_channel_swaps_description">P2P uygulama takas etme bildirimlerini görüntüler.</string>
+    <string name="notification_channel_swaps_title">Takaslar</string>
+    <string name="notification_channel_installs_description">Uygulama kurulum bildirimlerini görüntüler.</string>
+    <string name="notification_channel_installs_title">Kurulumlar</string>
 </resources>
