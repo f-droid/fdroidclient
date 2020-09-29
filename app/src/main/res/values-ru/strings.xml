@@ -285,7 +285,7 @@
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
     <string name="main_menu__swap_nearby">Рядом</string>
-    <string name="nearby_splash__find_people_button">Найти людей поблизости</string>
+    <string name="nearby_splash__find_people_button">Поиск поблизости</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
@@ -303,7 +303,7 @@
         <item quantity="few">Посмотреть %d приложения</item>
         <item quantity="many">Посмотреть %d приложений</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Получайте приложения от людей рядом с вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
@@ -348,7 +348,7 @@
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Не найдено недавно обновленных приложений</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s для использования \'Рядом\'.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Для использования \'Рядом\' обеим сторонам необходим %1$s.</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Отменить скачивание</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
@@ -484,8 +484,8 @@
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий: %1$s</string>
     <string name="scan_removable_storage_title">Сканирование съемного носителя</string>
-    <string name="nearby_splash__read_external_storage">Поиск на SD-карте репозиториев и зеркал.</string>
-    <string name="nearby_splash__request_permission">Попробуй</string>
+    <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
+    <string name="nearby_splash__request_permission">Попробовать</string>
     <string name="not_visible_nearby">Режим \'Рядом\' не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с устройством находящимся поблизости, сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
