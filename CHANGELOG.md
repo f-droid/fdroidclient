@@ -1,3 +1,9 @@
+### 1.10-alpha1 (2020-09-29)
+
+* use notification channels for fine-grained control (@Isira-Seneviratne)
+
+* share apps using Direct Share from App Details (@fynngodau)
+
 ### 1.10-alpha0 (2020-07-20)
 
 * Latest Tab will show better results on non-English devices
