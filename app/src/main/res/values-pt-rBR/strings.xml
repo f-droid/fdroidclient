@@ -44,7 +44,7 @@
     <string name="repo_add_fingerprint">Fingerprint (opcional)</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_search">Pesquisar</string>
+    <string name="menu_search">Pesquise</string>
     <string name="menu_add_repo">Novo Repositório</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
