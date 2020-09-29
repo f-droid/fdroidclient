@@ -61,7 +61,8 @@
     <string name="show_incompat_versions">Να περιλαμβάνονται μη συμβατές εκδόσεις</string>
     <string name="show_incompat_versions_on">Προβολή εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
     <string name="status_download">Λήψη
-\n%2$s / %3$s (%4$d%%) από %1$s</string>
+\n%2$s / %3$s (%4$d%%) από
+\n %1$s</string>
     <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
     <string name="no_permissions">Χωρίς δικαιώματα</string>
     <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
@@ -83,10 +84,8 @@
     <string name="unknown">Άγνωστο</string>
     <string name="repo_confirm_delete_title">Διαγραφή αποθετηρίου;</string>
     <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.
-
-        Θα χρειαστεί
-        να το ενεργοποιήσετε ξανά για να εγκαταστήσετε εφαρμογές από αυτό.
-    </string>
+\n
+\n Θα χρειαστεί να ενεργοποιήσετε ξανά αυτό το αποθετήριο για να εγκαταστήσετε εφαρμογές από αυτό.</string>
     <string name="not_on_same_wifi">Η συσκευή σας δεν είναι στο ίδιο ασύρματο δίκτυο με το τοπικό αποθετήριο που μόλις
         προσθέσατε! Δοκιμάστε να συνδεθείτε σε αυτό το δίκτυο: %s
     </string>
@@ -144,7 +143,8 @@
     <string name="unverified">Μη επαληθευμένη</string>
     <string name="repo_details">Αποθετήριο</string>
     <string name="repo_url">Διεύθυνση</string>
-    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δεν θα είναι πλέον διαθέσιμες.
+    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δε θα είναι πλέον διαθέσιμες.
+\n
 \nΣημείωση: Όλες οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
     <string name="repo_added">Αποθηκευμένο αποθετήριο πακέτου %1$s.</string>
     <string name="repo_searching_address">Αναζήτηση για αποθετήριο πακέτου στο
@@ -506,4 +506,9 @@
     <string name="swap_error_cannot_start_bluetooth">Αδυναμία εκκίνησης Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Η κοντινή ανταλλαγή τερματίστηκε λόγω αδράνειας.</string>
     <string name="panic_reset_repos_summary">Επαναφορά προεπιλογών στο αποθετήριο</string>
+    <string name="notification_channel_updates_description">Εμφανίζει ειδοποιήσεις ενημέρωσης εφαρμογής και αποθετηρίου.</string>
+    <string name="notification_channel_updates_title">Ενημερώσεις</string>
+    <string name="notification_channel_installs_description">Εμφανίζει ειδοποιήσεις εγκατάστασης εφαρμογής.</string>
+    <string name="notification_channel_installs_title">Εγκαταστάσεις</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
