@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">F-Droid</string>
-
     <string name="SignatureMismatch">Новата верзија е потпишата со разлилен клуч од стариот.За да ја инсталирата новата
         верзија,најпрво деинсталирајте ја старата.(Имајте во предвиде да при деинсталирањето се бришат и податоците од
         апликацијата.)
@@ -21,7 +20,6 @@
     <string name="main_menu__swap_nearby">Во близина</string>
     <string name="menu_settings">Поставки</string>
     <string name="main_menu__categories">Категории</string>
-
     <string name="update_interval">Автоматско ажурирање временски интервал</string>
     <string name="cancel">Откажи</string>
     <string name="unknown">Непознато</string>
@@ -48,4 +46,48 @@
     <string name="permissions">Дозволи</string>
     <string name="menu_search">Пребарување</string>
     <string name="wifi">Wi-Fi</string>
+    <string name="status_inserting_x_apps">Зачувување детали за апликацијата (%1$d/%2$d) од %3$s</string>
+    <string name="status_connecting_to_repo">Поврзување со
+\n%1$s</string>
+    <string name="update_notification_title">Ажурирање на складиштата</string>
+    <string name="download_404">Бараната датотека не е пронајдена.</string>
+    <string name="hide_on_long_search_press_summary">Долго притискање на копчето за пребарување ќе ја скрие апликацијата</string>
+    <string name="hide_on_long_search_press_title">Сокриј со копчето за пребарување</string>
+    <string name="hiding_dialog_warning">Предупредување: Секоја кратенка за апликација на почетниот екран исто така ќе се отстрани и треба да се додаде повторно рачно.</string>
+    <string name="hiding_dialog_title">Сокриј %s Сега</string>
+    <string name="hiding_calculator">Калкулатор</string>
+    <string name="panic_reset_repos_title">Рестартирај складишта</string>
+    <string name="panic_hide_title">Сокриј %s</string>
+    <string name="panic_destructive_actions">Деструктивни активности</string>
+    <string name="panic_exit_summary">Оваа апликација ќе биде затворена</string>
+    <string name="panic_exit_title">Излези од апликацијата</string>
+    <string name="panic_settings_summary">Активности што треба да се преземат во случај на вонредна состојба</string>
+    <string name="panic_app_setting_none">Ништо</string>
+    <string name="panic_app_setting_summary">Ниту една апликација не е поставена</string>
+    <string name="panic_app_unknown_app">непозната апликација</string>
+    <string name="privacy">Приватност</string>
+    <string name="enable_proxy_title">Овозможи HTTP Прокси</string>
+    <string name="proxy">Прокси</string>
+    <string name="try_again">Обиди се повторно</string>
+    <string name="touch_to_configure_local_repo">Допрете за да ги видите деталите и да им дозволите на другите да ги разменуваат вашите апликации.</string>
+    <string name="local_repo_running">F-Droid е подготвен да размени</string>
+    <string name="notification_action_install">Инсталирај</string>
+    <string name="notification_action_cancel">Откажи</string>
+    <string name="notification_action_update">Ажурирање</string>
+    <string name="swap_dont_show_again">Не го прикажувај ова повторно</string>
+    <string name="swap_welcome">Добредојдовте на F-Droid!</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">Пишување</string>
+    <string tools:ignore="UnusedResources" name="category_Time">Време</string>
+    <string tools:ignore="UnusedResources" name="category_Security">Безбедност</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">Наука и Образование</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">Читање</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Телефон и СМС</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">Навигација</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Мултимедија</string>
+    <string tools:ignore="UnusedResources" name="category_Money">Пари</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">Интернет</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Графика</string>
+    <string tools:ignore="UnusedResources" name="category_Games">Игри</string>
+    <string name="skip">Прескокни</string>
+    <string name="useTor">Користи Tor</string>
 </resources>
