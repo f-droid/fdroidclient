@@ -59,7 +59,7 @@
     <string name="antinonfreeadlist">このアプリは有料アドオンを推奨します</string>
     <string name="antinonfreenetlist">このアプリは従量課金制ネットワークサービスを推奨します</string>
     <string name="antinonfreedeplist">このアプリは他の有料アプリに依存します</string>
-    <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部有料です</string>
+    <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
     <string name="expert">上級者モード</string>
     <string name="expert_on">拡張情報を表示し、拡張設定を有効にします</string>
