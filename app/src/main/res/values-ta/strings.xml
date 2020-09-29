@@ -153,4 +153,27 @@
     <string name="app_list__dismiss_app_update">மேம்பாடு தவிர்க்கப்பட்டது</string>
     <string name="app__tts__cancel_download">பதிவிறக்கத்தை ரத்து செய்</string>
     <string name="app_version_x_available">பதிப்பு %1$s கள் உள்ளன</string>
+    <string name="system_installer">சலுகை நீட்டிப்பு</string>
+    <string name="update_auto_install_summary">அறிவிப்பைக் காண்பிக்கும் பின்னணியில் பயன்பாடுகளைப் பதிவிறக்கி புதுப்பிக்கவும்</string>
+    <string name="update_auto_install">புதுப்பிப்புகளை தானாக நிறுவவும்</string>
+    <string name="update_auto_download_summary">புதுப்பிப்புகள் தானாகவே பதிவிறக்கம் செய்யப்படுகின்றன, அவற்றை நிறுவ உங்களுக்கு அறிவிக்கப்படும்</string>
+    <string name="over_network_never_summary">இந்த இணைப்பைப் பயன்படுத்தி எதையும் பதிவிறக்க வேண்டாம்</string>
+    <string name="over_network_on_demand_summary">பதிவிறக்க கிளிக் செய்தால் மட்டுமே இந்த இணைப்பைப் பயன்படுத்தவும்</string>
+    <string name="over_network_always_summary">கிடைக்கும்போது எப்போதும் இந்த இணைப்பைப் பயன்படுத்தவும்</string>
+    <string name="over_data">மொபைல் தரவைப் பயன்படுத்துதல்</string>
+    <string name="over_wifi">வைஃபை வழியாக</string>
+    <string name="update_interval">தானியங்கி புதுப்பிப்பு இடைவெளி</string>
+    <string name="allow_push_requests_summary">பயன்பாடுகளை நிறுவ அல்லது நிறுவல் நீக்குவதற்கான புஷ் கோரிக்கைகளை ரெப்போ மெட்டாடேட்டாவில் சேர்க்கலாம்</string>
+    <string name="allow_push_requests">பயன்பாடுகளை நிறுவ / நிறுவல் நீக்க களஞ்சியங்களை அனுமதிக்கவும்</string>
+    <string name="force_old_index_summary">பிழைகள் அல்லது பொருந்தக்கூடிய சிக்கல்கள் இருந்தால், எக்ஸ்எம்எல் பயன்பாட்டு குறியீட்டைப் பயன்படுத்தவும்</string>
+    <string name="force_old_index">பழைய குறியீட்டு வடிவமைப்பை கட்டாயப்படுத்தவும்</string>
+    <string name="send_version_and_uuid_summary">இந்த பயன்பாட்டின் பதிப்பையும், பதிவிறக்கும் போது சீரற்ற, தனித்துவமான ஐடியையும் சேர்க்கவும், அடுத்த பயன்பாட்டு மறுதொடக்கத்தை பாதிக்கும்.</string>
+    <string name="send_version_and_uuid">பதிப்பு மற்றும் UUID ஐ சேவையகங்களுக்கு அனுப்பவும்</string>
+    <string name="keep_install_history_summary">அனைத்து நிறுவல்கள் மற்றும் நிறுவல் நீக்கங்களின் பதிவை ஒரு தனியார் கடையில் சேமிக்கவும்</string>
+    <string name="keep_install_history">வரலாற்றை நிறுவுங்கள்</string>
+    <string name="install_history_summary">அனைத்து நிறுவல்கள் மற்றும் நிறுவல் நீக்குதல்களின் தனிப்பட்ட பதிவைக் காண்க</string>
+    <string name="send_history_csv">%s வரலாற்றை CSV கோப்பாக நிறுவவும்</string>
+    <string name="unstable_updates_summary">நிலையற்ற பதிப்புகளுக்கு புதுப்பிப்புகளைப் பரிந்துரைக்கவும்</string>
+    <string name="prompt_to_send_crash_reports">செயலிழப்பு அறிக்கைகளை அனுப்பும்படி கேட்கவும்</string>
+    <string name="enable_nfc_send">NFC அனுப்பலை இயக்கு…</string>
 </resources>
