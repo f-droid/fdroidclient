@@ -85,8 +85,8 @@
     <string name="proxy_host_summary">Hostnaam van proxy (bijv. 127.0.0.1)</string>
     <string name="proxy_port">Proxypoort</string>
     <string name="proxy_port_summary">Poortnummer van proxy (bijv. 8118)</string>
-    <string name="status_download">%2$s / %3$s (%4$d%%) worden
-\nvan %1$s gedownloadet</string>
+    <string name="status_download">%2$s / %3$s (%4$d%%) worden 
+\nvan %1$s gedownload</string>
     <string name="status_connecting_to_repo">Verbinding met 
 \n%1$s aan het maken</string>
     <string name="repos_unchanged">Alle applicatiebronnen zijn up-to-date</string>
@@ -225,7 +225,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_download_unknown_size">%2$s worden van %1$s gedownloadet</string>
+    <string name="status_download_unknown_size">%2$s worden van %1$s gedownload</string>
     <string name="permissions">Machtigingen</string>
     <string name="repo_details">Bron</string>
     <string name="repo_url">Adres</string>
@@ -253,7 +253,7 @@
     <string name="useTorSummary">Dwing downloadverkeer oor betere privacy door Tor heen. Vereist Orbot</string>
     <string name="swap_stopping_wifi">Wi-Fi aan het stoppen…</string>
     <string name="update_auto_download">Download automatisch updates</string>
-    <string name="update_auto_download_summary">Updates worden in de achtergrond automatisch gedownloadet en er wordt een melding weergegeven om ze te installeren</string>
+    <string name="update_auto_download_summary">Updates worden in de achtergrond automatisch gedownload en er wordt een melding weergegeven om ze te installeren</string>
     <string name="download_pending">Aan het wachten op start van download…</string>
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>
     <string name="uninstall_error_notify_title">Fout bij het deïnstalleren van %s</string>
@@ -373,7 +373,7 @@
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="force_old_index">Forceer oud indexformaat</string>
     <string name="force_old_index_summary">Gebruik in geval van programmafouten of compatibiliteitsproblemen de XML-app-index</string>
-    <string name="app_list_download_ready">Gedownloadet, klaar voor installatie</string>
+    <string name="app_list_download_ready">Gedownload, klaar voor installatie</string>
     <string name="app_installed_media">Bestand geïnstalleerd op %s</string>
     <string name="app_permission_storage">F-Droid heeft opslagtoestemming nodig om dit op de opslagruimte te installeren. Geef deze toestemming op het volgende scherm om de installatie verder te zetten.</string>
     <string name="status_inserting_x_apps">Appgegevens van %3$s worden opgeslagen (%1$d/%2$d)</string>
