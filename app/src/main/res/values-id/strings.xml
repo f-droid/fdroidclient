@@ -480,4 +480,5 @@
     <string name="swap_error_cannot_start_bluetooth">Tidak bisa menyalakan Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Di sekitar ditutup karena menganggur.</string>
     <string name="nearby_splash__document_tree">Cari USB OTG untuk repo dan mirror.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
