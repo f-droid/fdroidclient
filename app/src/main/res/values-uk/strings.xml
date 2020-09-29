@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточну. Щоб встановити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде видалено всі внутрішні дані, що зберігаються в застосунку)</string>
+    <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточну. Щоб встановити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде стерто всі внутрішні дані в застосунку)</string>
     <string name="version">Версія</string>
     <string name="cache_downloaded">Зберігати кешовані застосунки</string>
     <string name="updates">Оновлення</string>
@@ -510,4 +510,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">\"Поруч\" закрито, оскільки простоювало.</string>
     <string name="nearby_splash__document_tree">Перевірити наявність репозиторіїв та дзеркал на USB-OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Показує сповіщення про оновлення застосунку та сховища.</string>
+    <string name="notification_channel_updates_title">Оновлення</string>
+    <string name="notification_channel_swaps_description">Показує сповіщення про P2P обмін застосунками.</string>
+    <string name="notification_channel_swaps_title">Обміни</string>
+    <string name="notification_channel_installs_description">Показує сповіщення про встановлення застосунку.</string>
+    <string name="notification_channel_installs_title">Встановлення</string>
 </resources>
