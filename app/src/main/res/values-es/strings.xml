@@ -499,7 +499,7 @@
     <string name="panic_add_apps_to_uninstall">Añadir las aplicaciones que se van a desinstalar y a borrar</string>
     <string name="panic_reset_repos_title">Restablecer repositorios</string>
     <string name="panic_reset_repos_summary">Reinicializar la configuración de repositorios</string>
-    <string name="swap_visible_hotspot">Visible por punto wifi</string>
+    <string name="swap_visible_hotspot">Visible por punto Wi-Fi</string>
     <string name="swap_blank_wifi_ssid">(blanco)</string>
     <string name="swap_hidden_wifi_ssid">(oculto)</string>
     <string name="swap_setting_up_hotspot">Iniciando punto wifi…</string>
