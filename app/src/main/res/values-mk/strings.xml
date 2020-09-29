@@ -173,7 +173,7 @@
     <string name="swap_send_fdroid">Испрати F-Droid</string>
     <string tools:ignore="UnusedResources" name="category_System">Систем</string>
     <string tools:ignore="UnusedResources" name="category_Sports_Health">Спорт и Здравје</string>
-    <string name="not_on_same_wifi">Вашиот уред не е на истиот Wi-Fi како и локалното складиште што го додадовте! Обидете се да се приклучите на оваа мрежа:% s</string>
+    <string name="not_on_same_wifi">Вашиот уред не е на истиот Wi-Fi како и локалното складиште што го додадовте! Обидете се да се приклучите на оваа мрежа: %s</string>
     <string name="repo_last_update">Последно ажурирање</string>
     <string name="repo_details">Складиште</string>
     <string name="unverified">Непроверена</string>

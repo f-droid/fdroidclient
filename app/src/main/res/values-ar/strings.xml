@@ -156,7 +156,7 @@
     <string name="repo_confirm_delete_body">يعني حذف مستودع أن التطبيقات منه لن تكون متاحة بعد الآن.
 \n
 \nملاحظة: ستظل جميع التطبيقات المثبتة مسبقًا على جهازك.</string>
-    <string name="repo_disabled_notification">تم تعطيل ٪1$s.
+    <string name="repo_disabled_notification">تم تعطيل %1$s.
 \n
 \nستحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.</string>
     <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>

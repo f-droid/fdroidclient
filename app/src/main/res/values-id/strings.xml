@@ -48,7 +48,7 @@
     <string name="repo_add_fingerprint">Sidik jari (opsional)</string>
     <string name="bad_fingerprint">Sidik jari buruk</string>
     <string name="invalid_url">Ini bukan URL yang valid.</string>
-    <string name="malformed_repo_uri">Mengabaikan format URI repo yang salah:% s</string>
+    <string name="malformed_repo_uri">Mengabaikan format URI repo yang salah: %s</string>
     <string name="menu_manage">Repositori</string>
     <string name="menu_search">Telusuri</string>
     <string name="menu_add_repo">Repositori Baru</string>
