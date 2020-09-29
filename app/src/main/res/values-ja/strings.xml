@@ -52,13 +52,13 @@
     <string name="menu_website">ウェブサイト</string>
     <string name="menu_issues">課題</string>
     <string name="menu_source">ソースコード</string>
-    <string name="menu_upgrade">アップデート</string>
+    <string name="menu_upgrade">更新</string>
     <string name="details_notinstalled">未インストール</string>
     <string name="antiadslist">このアプリは広告を表示します</string>
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
     <string name="antinonfreeadlist">このアプリは有料アドオンを推奨します</string>
     <string name="antinonfreenetlist">このアプリは自由でないネットワークサービスの利用を助長します</string>
-    <string name="antinonfreedeplist">このアプリは他の有料アプリに依存します</string>
+    <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
     <string name="expert">上級者モード</string>
@@ -281,7 +281,7 @@
     <string name="notification_title_summary_update_available">アップデートが利用可能です</string>
     <string name="notification_title_summary_downloading_update">アップデートをダウンロードしています…</string>
     <string name="notification_title_summary_ready_to_install_update">アップデートをインストールする準備ができました</string>
-    <string name="notification_action_update">アップデート</string>
+    <string name="notification_action_update">更新</string>
     <string name="notification_title_summary_downloading">ダウンロード中…</string>
     <string name="notification_title_summary_ready_to_install">インストールの準備完了</string>
     <string name="notification_title_summary_installing">インストール中</string>
@@ -451,7 +451,7 @@
     <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
     <string name="scan_removable_storage_summary">SDカードやUSBメモリなどのリムーバブルストレージでパッケージレポジトリを探します</string>
     <string name="app_repository">リポジトリ: %1$s</string>
-    <string name="main_menu__updates">アップデート</string>
+    <string name="main_menu__updates">更新</string>
     <string name="nearby_splash__read_external_storage">リポジトリとミラーの SD カードを検索します。</string>
     <string name="nearby_splash__request_permission">試してください</string>
     <string name="not_visible_nearby">Nearbyが有効ではありません</string>
