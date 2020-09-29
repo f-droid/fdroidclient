@@ -503,4 +503,8 @@
     <string name="swap_toast_closing_nearby_after_timeout">Échange à proximité terminé pour inactivité.</string>
     <string name="nearby_splash__document_tree">Rechercher sur l\'USB OTG les dépôts et miroirs.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_title">Mises à jour</string>
+    <string name="notification_channel_installs_title">Installations</string>
+    <string name="notification_channel_swaps_description">Affiche les notifications de transfert d’applications en P2P.</string>
+    <string name="notification_channel_swaps_title">Transferts</string>
 </resources>
