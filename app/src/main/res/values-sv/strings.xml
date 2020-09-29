@@ -25,7 +25,7 @@
     <string name="app_not_installed">Inte installerad</string>
     <string name="app_inst_known_source">Installerad (från %s)</string>
     <string name="app_inst_unknown_source">Installerad (från okänd källa)</string>
-    <string name="added_on">Lades till %s</string>
+    <string name="added_on">Tillagd %s</string>
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
@@ -205,7 +205,7 @@
     <string name="swap_scan_qr">Skanna QR-kod</string>
     <string name="swap_people_nearby">Folk i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter folk i närheten…</string>
-    <string name="swap_intro">Anslut och utbyt appar med personer nära dig.</string>
+    <string name="swap_intro">Anslut och byt ut appar med personer nära dig.</string>
     <string name="swap_visible_bluetooth">Synlig via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ställer in Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Inte synlig via Bluetooth</string>
@@ -249,7 +249,7 @@
     <string name="crash_dialog_title">F-Droid har kraschat</string>
     <string name="crash_dialog_text">Ett oväntat fel tvingade appen att avslutas. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>
-    <string name="swap_nearby">Utbyt nära</string>
+    <string name="swap_nearby">Byta ut i närheten</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
     <string name="update_auto_download_summary">Uppdateringar laddas automatiskt ner och du blir aviserad om att installera dem</string>
     <string name="download_pending">Väntar på att påbörja hämtning…</string>
