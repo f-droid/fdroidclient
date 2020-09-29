@@ -6,7 +6,7 @@
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l’envoi par CCP/NFC…</string>
     <string name="cache_downloaded">Conserver les applis en cache</string>
-    <string name="updates">Téléchargements et Mises à jour</string>
+    <string name="updates">Mises à jour</string>
     <string name="other">Autre</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
@@ -58,7 +58,7 @@
     <string name="menu_source">Code source</string>
     <string name="menu_upgrade">Mettre à jour</string>
     <string name="details_notinstalled">Non installée</string>
-    <string name="antiadslist">Cette application contient des publicités</string>
+    <string name="antiadslist">Cette appli comprend des publicités</string>
     <string name="antitracklist">Cette application suit et transmet votre activité</string>
     <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
     <string name="antinonfreenetlist">Cette application propose d\'utiliser des services réseaux qui ne sont pas libres</string>
@@ -114,9 +114,9 @@
     <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les mises à jour ne seront plus disponibles. 
 \n 
 \nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
-    <string name="repo_disabled_notification">%1$s a été désactivé
+    <string name="repo_disabled_notification">%1$s a été désactivé.
 \n
-\nVous devez réactiver ce dépôt pour installer les applis qu\'il contient.</string>
+\nVous devrez réactiver ce dépôt pour installer des applis qu’il comprend.</string>
     <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez
         d\'ajouter ! Essayez de rejoindre ce réseau : %s
     </string>
@@ -251,7 +251,7 @@
     <string name="crash_dialog_title">F-Droid s’est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
     <string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l’arrêt de l’appli. Souhaitez envoyer les détails par courriel afin d’aider à corriger la situation \?</string>
-    <string name="antinonfreeassetslist">Cette application contient des éléments qui ne sont pas libres</string>
+    <string name="antinonfreeassetslist">Cette appli comprend des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
     <string name="useTor">Utilisez Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
@@ -323,9 +323,9 @@
         <item quantity="other">Télécharger les mises à jour pour %1$d applications.</item>
     </plurals>
     <string name="preference_category__my_apps">Mes applis</string>
-    <string name="preference_manage_installed_apps">Gérer les applications installées</string>
+    <string name="preference_manage_installed_apps">Gérer les applis installées</string>
     <string name="details_new_in_version">Nouveautés de la version %s</string>
-    <string name="antifeatureswarning">Cette application contient des fonctionnalités qui pourraient vous déplaire.</string>
+    <string name="antifeatureswarning">Cette appli présente des fonctions qui pourraient vous déplaire.</string>
     <string name="antifeatures">Antifonctions</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Afficher (%d)</item>
@@ -446,7 +446,7 @@
     <string name="over_network_on_demand_summary">Utiliser cette connexion seulement lors du clic sur télécharger</string>
     <string name="over_network_never_summary">Ne jamais télécharger via cette connexion</string>
     <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
-    <string name="antiknownvulnlist">Cette application contient une vulnérabilité de sécurité connue</string>
+    <string name="antiknownvulnlist">Cette appli présente une vulnérabilité de sécurité connue</string>
     <string name="hide_all_notifications">Masquer toutes les notifications</string>
     <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>
     <string name="prompt_to_send_crash_reports">Demander avant d\'envoyer les rapports de plantage</string>
@@ -507,4 +507,6 @@
     <string name="notification_channel_installs_title">Installations</string>
     <string name="notification_channel_swaps_description">Affiche les notifications de transfert d’applications en P2P.</string>
     <string name="notification_channel_swaps_title">Transferts</string>
+    <string name="notification_channel_updates_description">Afficher les notifications de mise à jour des applis et des dépôts.</string>
+    <string name="notification_channel_installs_description">Affiche les notifications d’installation d’applis.</string>
 </resources>
