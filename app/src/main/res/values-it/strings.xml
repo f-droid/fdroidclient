@@ -508,4 +508,7 @@
     <string name="panic_reset_repos_summary">Forza l\'impostazione del repository ai valori predefiniti</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nearby chiuso poiché era inattivo.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_title">Aggiornamenti</string>
+    <string name="notification_channel_installs_description">Mostra notifiche installazione app.</string>
+    <string name="notification_channel_installs_title">Installazioni</string>
 </resources>
