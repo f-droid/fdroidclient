@@ -64,7 +64,7 @@
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>
     <string name="expert">Modo experto</string>
-    <string name="expert_on">Mostrar info extra y habilitar los ajustes extra</string>
+    <string name="expert_on">Mostrar información extra y habilitar los ajustes extra</string>
     <string name="search_hint">Buscar aplicaciones</string>
     <string name="appcompatibility">Compatibilidad de aplicaciones</string>
     <string name="show_incompat_versions">Incluir versiones incompatibles</string>
@@ -116,8 +116,8 @@
     <string name="unknown">Desconocido</string>
     <string name="repo_confirm_delete_title">¿Borrar repositorio?</string>
     <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles. 
-\n
-\nNota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.</string>
+\n 
+\nNota: todas las aplicaciones previamente instaladas permanecerán en tu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s deshabilitado.
         \n\nNecesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.
     </string>
@@ -172,8 +172,8 @@
         repositorios no tienen esas aplicaciones.
     </string>
     <string name="empty_can_update_app_list">¡Felicitaciones!\nTus aplicaciones están actualizadas.</string>
-    <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
-    <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
+    <string name="install_error_unknown">Fallo al instalar debido a un error desconocido</string>
+    <string name="uninstall_error_unknown">Fallo al desinstalar debido a un error desconocido</string>
     <string name="swap_nfc_title">Tocar para intercambiar</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verificad que estáis en la misma red. Si no tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
@@ -295,7 +295,7 @@
     <string name="main_menu__swap_nearby">Cercano</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
-        <item quantity="other">Ver todos (%d)</item>
+        <item quantity="other">Ver todas (%d)</item>
     </plurals>
     <string name="notification_title_single_update_available">Actualización disponible</string>
     <string name="notification_title_single_ready_to_install">Listo para instalar</string>
@@ -390,7 +390,7 @@
     <string name="by_author_format">por %s</string>
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
     <string name="force_old_index">Forzar al formato de índice antiguo</string>
-    <string name="force_old_index_summary">En caso de que haya problemas o incopatibilidades, usa el índice XML de la aplicación</string>
+    <string name="force_old_index_summary">En caso de que haya problemas o incompatibilidades, usar el formato XML para el índice de aplicaciones</string>
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
@@ -452,19 +452,19 @@
     <string name="swap_toast_could_not_enable_hotspot">¡No se puedo habilitar el punto de acceso Wi-Fi!</string>
     <string name="over_wifi">Descargar usando WiFi</string>
     <string name="over_data">Descargar usando tus datos</string>
-    <string name="over_network_always_summary">Usar siempre esta conexion cuando este disponible</string>
-    <string name="over_network_on_demand_summary">Usar esta conexion únicamente cuando seleccione descargar</string>
-    <string name="over_network_never_summary">No descargar nada usando esta conexion</string>
+    <string name="over_network_always_summary">Usar siempre esta conexión cuando esté disponible</string>
+    <string name="over_network_on_demand_summary">Usar esta conexión únicamente cuando seleccione descargar</string>
+    <string name="over_network_never_summary">No descargar nada usando esta conexión</string>
     <string name="antidisabledalgorithmlist">Esta aplicación tiene una firma de seguridad débil</string>
     <string name="antiknownvulnlist">Esta aplicación contiene una vulnerabilidad de seguridad conocida</string>
     <string name="hide_all_notifications">Ocultar todas las notificaciones</string>
-    <string name="prompt_to_send_crash_reports_summary">Recopilar datos sobre fallos y pedir que se los envíen al desarrollador</string>
+    <string name="prompt_to_send_crash_reports_summary">Recopilar datos sobre fallos y preguntar si enviar al desarrollador</string>
     <string name="install_history">Historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
     <string name="send_version_and_uuid_summary">Incluir la versión de esta aplicación, un ID aleatorio y único cuando se está descargando, toma efecto en el próximo reinicio de la aplicación.</string>
     <string name="share_repository">Compartir Repositorio</string>
-    <string name="prompt_to_send_crash_reports">Preguntar si mandar informes de fallo</string>
+    <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
     <string name="allow_push_requests">Permitir que los repositorios instalen/desinstalen aplicaciones</string>
@@ -483,7 +483,7 @@
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="app_repository">Repositorio: %1$s</string>
     <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en el almacenamiento extraíble como tarjetas SD y unidades USB</string>
-    <string name="main_menu__updates">Actualizaciones</string>
+    <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>
     <string name="nearby_splash__request_permission">Probar</string>
     <string name="not_visible_nearby">Nearby no habilitado</string>
@@ -512,4 +512,5 @@
     <string name="undo">Deshacer</string>
     <string name="app_list__dismiss_installing_app">Instalación cancelada</string>
     <string name="nearby_splash__document_tree">Buscar repositorios y réplicas en OTG USB.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
