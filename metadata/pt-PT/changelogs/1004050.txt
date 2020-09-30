@@ -1,10 +1,10 @@
-* Melhorias de "Versões" em "Detalhes da aplicação", entre outras na interface, por @wsdfhjxc
+* Melhorias de "Versões" em "Detalhes da app", entre outras na interface, por @wsdfhjxc
 
 * Correção da navegação por teclado/direcional, por @doeffinger
 
 * Mostra "Abrir" quando a media estiver instalada e visível
 
-* Adicionado botão "Partilhar" em "Aplicações instaladas"
+* Adicionado botão "Partilhar" em "Apps instaladas"
 
 * Adicionada uma lista clicável de APKs à página de índice HTML de troca
 
