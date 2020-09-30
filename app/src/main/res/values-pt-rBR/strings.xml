@@ -44,7 +44,7 @@
     <string name="repo_add_fingerprint">Fingerprint (opcional)</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_search">Pesquisar</string>
+    <string name="menu_search">Pesquise</string>
     <string name="menu_add_repo">Novo Repositório</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
@@ -112,7 +112,8 @@
     </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis. 
+    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis.
+\n
 \nNota: Todos os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s desativado.
 \n
@@ -477,7 +478,7 @@
     <string name="about_forum">Fórum de suporte</string>
     <string name="app_suggested">Sugerido</string>
     <string name="app_size">Tamanho: %1$s</string>
-    <string name="menu_downgrade">Desatualizar</string>
+    <string name="menu_downgrade">Downgrade</string>
     <string name="scan_removable_storage_title">Verificar armazenamento removível</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>
@@ -511,4 +512,5 @@
     <string name="swap_error_cannot_start_bluetooth">Não foi possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Por Perto fechado já que estava ocioso.</string>
     <string name="nearby_splash__document_tree">Pesquisa por USB OTG por repositórios e espelhos.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

@@ -492,4 +492,5 @@
     <string name="swap_error_cannot_start_bluetooth">ബ്ലൂടൂത്ത് സജ്ജമാക്കാൻ സാധിച്ചില്ല!</string>
     <string name="swap_toast_closing_nearby_after_timeout">പ്രവർത്തനശൂന്യമായതിനാൽ സമീപ ഇടപാടുകൾ നിർത്തി വെച്ചു.</string>
     <string name="nearby_splash__document_tree">ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും യു.എസ്‌.ബീ ഓ.ടി.ജിയിൽ തിരയുക.</string>
+    <string name="menu_opencollective">ഓപ്പൺ കലക്ടീവ്</string>
 </resources>

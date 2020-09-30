@@ -153,12 +153,12 @@
     <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الآن.
         تحتاج إلى تمكينها من عرض التطبيقات التي يقدمها.
     </string>
-    <string name="repo_confirm_delete_body">حذف المستودع يعني أن التطبيقات الواقعة فيها لم تعد متاحة. ملاحظة: ستبقى جميع التطبيقات المثبتة مسبقا على جهازك.</string>
-    <string name="repo_disabled_notification">تعطيل %1$s.
-
-        سوف
-        تحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.
-    </string>
+    <string name="repo_confirm_delete_body">يعني حذف مستودع أن التطبيقات منه لن تكون متاحة بعد الآن.
+\n
+\nملاحظة: ستظل جميع التطبيقات المثبتة مسبقًا على جهازك.</string>
+    <string name="repo_disabled_notification">تم تعطيل %1$s.
+\n
+\nستحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.</string>
     <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>
     <string name="repo_searching_address">ابحث عن مستودع الحزمة في
 \n%1$s</string>
@@ -227,8 +227,8 @@
     <string name="loading">جارٍ التحميل…</string>
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
-    <string name="install_confirm_update">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيكون بإمكان التطبيق المحدّث الدخول إلى:</string>
-    <string name="install_confirm_update_system">هل تريد تثبيت تحديث لهذا التطبيق المضمن؟ لن تفقد بياناتك الحالية. سيكون بإمكان التطبيق المحدّث الدخول إلى:</string>
+    <string name="install_confirm_update">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيحصل التطبيق المحدث على حق الوصول إلى:</string>
+    <string name="install_confirm_update_system">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيحصل التطبيق المحدث على حق الوصول إلى:</string>
     <string name="install_confirm_update_no_perms">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
     <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث لهذا التطبيق المضمن؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
     <string name="newPerms">جديد</string>
@@ -516,7 +516,7 @@
     <string name="undo">تراجع</string>
     <string name="app_list__dismiss_installing_app">تم إلغاء التثبيت</string>
     <string name="menu_select_for_wipe">حدد للمسح</string>
-    <string name="try_again">أعد المحاولة.</string>
+    <string name="try_again">أعد المحاولة</string>
     <string name="panic_will_be_wiped">سيتم إلغاء تثبيته ومسح كل بياناته</string>
     <string name="panic_apps_to_uninstall">التطبيقات التي سيتم إلغاء تثبيتها وحذف بياناتها</string>
     <string name="panic_add_apps_to_uninstall">اضف تطبيقات لكي يتم إلغاء تثبيتها وحذف بيانتها</string>
@@ -533,4 +533,5 @@
     <string name="swap_error_cannot_start_bluetooth">لا يمكن تشغيل البلوتوث!</string>
     <string name="swap_toast_closing_nearby_after_timeout">إغلاق قريب لأنه كان خاملًا.</string>
     <string name="nearby_splash__document_tree">إبحث عن  المستودعات والمرايا في USB OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

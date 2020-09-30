@@ -477,4 +477,8 @@
     <string name="swap_toast_closing_nearby_after_timeout">附近因闲置而关闭。</string>
     <string name="nearby_splash__document_tree">搜索 USB OTG 用于存储库和镜像。</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">显示应用程序和存储库更新通知。</string>
+    <string name="notification_channel_updates_title">更新</string>
+    <string name="notification_channel_installs_description">展示应用安装通知。</string>
+    <string name="notification_channel_installs_title">安装</string>
 </resources>

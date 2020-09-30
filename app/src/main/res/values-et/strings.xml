@@ -502,4 +502,11 @@
     <string name="swap_error_cannot_start_bluetooth">Bluetoothi ei saa käivitada!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Naabrus suleti, sest teda ei kasutatud.</string>
     <string name="nearby_splash__document_tree">Otsi USB OTG meedialt hoidlaid ja peegleid.</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Kuvatakse rakenduste ja repositooriumite värskenduste teavitusi.</string>
+    <string name="notification_channel_updates_title">Värskendused</string>
+    <string name="notification_channel_swaps_description">Kuvatakse kohaliku ja autonoomse andmevahetuse teavitusi.</string>
+    <string name="notification_channel_swaps_title">Kohalik andmevahetus</string>
+    <string name="notification_channel_installs_description">Kuvatakse rakenduste paigalduste teavitusi.</string>
+    <string name="notification_channel_installs_title">Paigaldused</string>
 </resources>

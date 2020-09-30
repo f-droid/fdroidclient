@@ -3,5 +3,5 @@
 * Corrigir problemas com a exibição de "Último" causado pelo mau tratamento das zonas horárias #1757
 * Ignorar todos os craches sem importância nos serviços em segundo
 * Remodelado swap nas proximidades usando o AP do PA
-* Adicionar novas respostas de pânico: desinstalar apps e redefinir repos para predefinição
-* Repos unidades flash USB OTG
+* Adicionar novas respostas de pânico: desinstala app e redefinir reposições para predefinição
+* Unidades flash USB OTG

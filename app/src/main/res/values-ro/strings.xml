@@ -244,7 +244,9 @@
     <string name="system_installer_on">Folosiți Privileged Extension pentru a instala, actualiza și a înlătura pachete</string>
     <string name="empty_can_update_app_list">Felicitări!
 \nAplicațiile dumneavoastră sunt la zi.</string>
-    <string name="empty_installed_app_list">Nici o aplicație instalată. Exista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
+    <string name="empty_installed_app_list">Nici o aplicație instalată.
+\n
+\nExista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
 \nVa trebui sa reactivați acest depozit pentru a putea instala aplicații din el.</string>
@@ -500,4 +502,11 @@
     <string name="swap_error_cannot_start_bluetooth">Nu s-a putut activa Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Schimbul a fost oprit deoarece era nefolosit.</string>
     <string name="nearby_splash__document_tree">Caută pe USB OTG depozite sau servere de rezervă.</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Afișează notificările de actualizare a aplicațiilor și a depozitelor.</string>
+    <string name="notification_channel_updates_title">Actualizări</string>
+    <string name="notification_channel_swaps_description">Afișează notificări la schimbul de aplicații în mod P2P.</string>
+    <string name="notification_channel_swaps_title">Schimb</string>
+    <string name="notification_channel_installs_description">Afișează notificări la instalarea aplicațiilor.</string>
+    <string name="notification_channel_installs_title">Instalări</string>
 </resources>

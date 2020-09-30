@@ -21,11 +21,11 @@
     <string name="about_title">О F-Droid</string>
     <string name="about_site">Сайт</string>
     <string name="about_version">Версия</string>
-    <string name="app_installed">Установлено</string>
+    <string name="app_installed">Установлена</string>
     <string name="app_not_installed">Не установлено</string>
     <string name="app_inst_known_source">Установлено (из %s)</string>
     <string name="app_inst_unknown_source">Установлено (из неизвестного источника)</string>
-    <string name="added_on">Добавлено %s</string>
+    <string name="added_on">Добавлена %s</string>
     <string name="ok">ОК</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
@@ -168,7 +168,7 @@
     <string name="empty_can_update_app_list">Поздравляем!\nВаши приложения обновлены.</string>
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
-    <string name="app_incompatible">Несовместимо</string>
+    <string name="app_incompatible">Несовместима</string>
     <string name="more">Детали</string>
     <string name="less">Меньше</string>
     <string name="back">Назад</string>
@@ -238,7 +238,7 @@
     <string name="swap_people_nearby">Люди поблизости</string>
     <string name="swap_scanning_for_peers">Поиск людей поблизости…</string>
     <string name="swap_nearby">Обмен поблизости</string>
-    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с пользователми поблизости.</string>
+    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с пользователями поблизости.</string>
     <string name="swap_visible_bluetooth">Видимый через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Настройка Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Не видимый через Bluetooth</string>
@@ -322,7 +322,7 @@
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
     <string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
-    <string name="app_recommended_version_installed">Версия %1$s (Рекомендуемая)</string>
+    <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Скачать обновления для %1$d приложения.</item>
@@ -439,7 +439,7 @@
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
     <string name="show_anti_feature_apps">Включить приложения с анти-функциями</string>
     <string name="show_anti_feature_apps_on">Показывать приложения, которым необходим несвободный функционал</string>
-    <string name="force_touch_apps">Включить приложения, требущие сенсорного экрана</string>
+    <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
     <string name="repo_official_mirrors">Официальные зеркала</string>
     <string name="repo_user_mirrors">Пользовательские зеркала</string>
@@ -477,7 +477,7 @@
     <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
     <string name="menu_open">Открыть</string>
     <string name="about_forum">Форум поддержки</string>
-    <string name="app_suggested">Рекомендовано</string>
+    <string name="app_suggested">Рекомендована</string>
     <string name="app_size">Размер: %1$s</string>
     <string name="menu_downgrade">Понизить версию</string>
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
@@ -514,4 +514,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Рядом\' был отключен.</string>
     <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>
+    <string name="notification_channel_updates_title">Обновления</string>
+    <string name="notification_channel_swaps_description">Отображает уведомления об обмене приложениями P2P.</string>
+    <string name="notification_channel_swaps_title">Обмены</string>
+    <string name="notification_channel_installs_description">Отображает уведомления об установке приложения.</string>
+    <string name="notification_channel_installs_title">Инсталляции</string>
 </resources>

@@ -213,7 +213,8 @@
     <string name="update_auto_download_summary">自動下載更新的程式並通知您安裝</string>
     <string name="no_handler_app">您沒有任何可處理 %s 的應用程式。</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
-    <string name="repo_searching_address">正於 %1$s 中尋找套件軟體庫</string>
+    <string name="repo_searching_address">正於 %1$s 搜尋
+\n軟體庫</string>
     <string name="not_on_same_wifi">您的裝置與剛新增的本地軟體庫不在同一個 Wi-Fi 網路上！請試著加入此網路：%s</string>
     <string name="empty_installed_app_list">未安裝應用程式。
 \n
@@ -477,4 +478,11 @@
     <string name="swap_error_cannot_start_bluetooth">無法啟動藍牙！</string>
     <string name="swap_toast_closing_nearby_after_timeout">附近功能已關閉，因為其處於閒置狀態。</string>
     <string name="nearby_splash__document_tree">在 USB OTG 中搜尋軟體庫與鏡像。</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">顯示應用程式與軟體庫更新通知。</string>
+    <string name="notification_channel_updates_title">更新</string>
+    <string name="notification_channel_swaps_description">顯示 P2P 應用程式切換通知。</string>
+    <string name="notification_channel_swaps_title">切換</string>
+    <string name="notification_channel_installs_description">顯示應用程式安裝通知。</string>
+    <string name="notification_channel_installs_title">安裝</string>
 </resources>

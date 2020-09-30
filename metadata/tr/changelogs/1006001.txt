@@ -1,6 +1,6 @@
-* Aynaların herhangi birini veya tümünü kapatmak için RepoDetails öğesine eklenen anahtarlar (#1696)
+* Aynaların herhangi birini veya tümünü kapatmak için RepoDetails ögesine eklenen anahtarlar (#1696)
 
-* Her paket/APK  indirme için rastgele ayna seçimi
+* Her paket/APK indirme için rastgele ayna seçimi
 
 * Tüm APK indirmeleri ayna başına değil, depo başına önbelleğe alınır
 

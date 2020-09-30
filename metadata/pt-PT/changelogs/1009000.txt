@@ -1,5 +1,5 @@
 * Removido o suporte a "Android App Link".
-* Repos de arquivo são agora menos prioritários que o Repo (mais alto no ecrã Gerenciar Repos), corrigindo problemas onde procurava ícones, capturas de ecrã e outras informações no Arquivo em vez do próprio Repo.
+* Repos de arquivo são agora menos prioritários que o Repo (mais alto no ecrã Gerir Repos), corrigindo problemas onde procurava ícones, capturas de ecrã e outras informações no arquivo em vez do próprio Repo.
 * Para de cortar a imagem de cabeçalho da funcionalidade (obrigado @ByteHamster!)
-* Fay a barra de navegação corresponder ao modo escuro (obrigado @MatthieuB!)
+* Faz a barra de navegação corresponder ao modo escuro (obrigado @MatthieuB!)
 * Código obsoleto limpo (obrigado @Isira-Seneviratne!)

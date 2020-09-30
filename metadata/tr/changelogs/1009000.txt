@@ -1,0 +1,5 @@
+* F-Droid ile çalışamadığı ve DNS sızıntılarını tetiklediği için "Android App Link" desteği kaldırıldı.
+* Arşiv Depoları artık Depodan daha düşük önceliğe sahip (Depoları Yönet ekranında daha yukarıda); bu sayede bilgilerin Deponun kendisinde değil de Arşivde arandığı sorunlar düzeltildi.
+* Özellik başlık resmini kırpmayı durdur (teşekkürler @ByteHamster!)
+* Gezinme çubuğunun karanlık modla eşleşmesini sağla (teşekkürler @MatthieuB!)
+* Eski kodlar temizlendi (teşekkürler @Isira-Seneviratne!)

@@ -44,7 +44,7 @@
     <string name="menu_upgrade">Eguneratu</string>
     <string name="details_notinstalled">Instalatu gabe</string>
     <string name="antiadslist">Aplikazio honek iragarkiak ditu</string>
-    <string name="display">Bistaratu</string>
+    <string name="display">Bistaratzea</string>
     <string name="expert">Modu aditua</string>
     <string name="search_hint">Bilatu aplikazioak</string>
     <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
@@ -92,8 +92,8 @@
     <string name="local_repo_https_on">Erabili zifratutako HTTPS:// konexioa biltegi lokalarentzat</string>
     <string name="invalid_url">URL hau baliogabea da.</string>
     <string name="malformed_repo_uri">Ezikusi biltegi URI okerra: %s</string>
-    <string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
-    <string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
+    <string name="expert_on">Erakutsi informazio eta ezarpen gehigarriak</string>
+    <string name="show_incompat_versions_on">Erakutsi gailu honekin bateraezinak diren bertsioak</string>
     <string name="local_repo">Biltegi lokala</string>
     <string name="deleting_repo">Uneko biltegia ezabatzen…</string>
     <string name="adding_apks_format">%s biltegira gehitzen…</string>
@@ -201,7 +201,7 @@
     <string name="open_qr_code_scanner">Ireki QR eskanerra</string>
     <string name="swap_welcome">Ongi etorri F-Droidera!</string>
     <string name="swap_confirm_connect">%1$stik aplikazioak jaso nahi dituzu orain?</string>
-    <string name="swap_dont_show_again">Ez bistaratu hau berriro</string>
+    <string name="swap_dont_show_again">Ez erakutsi hau berriro</string>
     <string name="swap_scan_or_type_url">Pertsona batek bestearen kodea eskaneatu behar du, edo URL helbidea
         nabigatzailean sartu.
     </string>
