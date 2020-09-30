@@ -94,32 +94,14 @@ connected 22 default armeabi-v7a:
     - fdroid
     - kvm
   allow_failure: true
-  only:
-    - branches@eighthave/fdroidclient
   <<: *test-template
   <<: *connected-template
-
-connected 23 default x86:
-  <<: *kvm-template
-
-connected 25 default x86:
-  <<: *kvm-template
 
 connected 26 google_apis x86:
   <<: *kvm-template
   only:
     - branches@fdroid/fdroidclient
     - branches@eighthave/fdroidclient
-
-connected 27 google_apis_playstore x86:
-  <<: *kvm-template
-
-connected 28 default x86_64:
-  <<: *kvm-template
-
-connected 29 default x86_64:
-  <<: *kvm-template
-
 
 deploy_nightly:
   stage: deploy
