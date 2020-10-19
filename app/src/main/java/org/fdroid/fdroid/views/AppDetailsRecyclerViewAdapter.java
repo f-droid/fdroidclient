@@ -604,7 +604,7 @@ public class AppDetailsRecyclerViewAdapter
                             }
                         });
                     } else if (!app.isApk && mediaApk != null) {
-                        final File installedFile = new File(mediaApk.getMediaInstallPath(context), mediaApk.apkName);
+                        final File installedFile = mediaApk.getInstalledMediaFile(context);
                         if (!installedFile.toString().startsWith(context.getApplicationInfo().dataDir)) {
                             final Intent viewIntent = new Intent(Intent.ACTION_VIEW);
                             Uri uri = FileProvider.getUriForFile(context, Installer.AUTHORITY, installedFile);

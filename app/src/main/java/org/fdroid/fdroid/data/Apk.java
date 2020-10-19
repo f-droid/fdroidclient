@@ -588,8 +588,12 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return path;
     }
 
+    public File getInstalledMediaFile(Context context) {
+        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName));
+    }
+
     public boolean isMediaInstalled(Context context) {
-        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName)).isFile();
+        return getInstalledMediaFile(context).isFile();
     }
 
     /**

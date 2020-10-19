@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -148,10 +148,10 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private void installPackage(Uri localApkUri, Uri canonicalUri, Apk apk) {
         Utils.debugLog(TAG, "Installing: " + localApkUri.getPath());
-        File path = apk.getMediaInstallPath(activity.getApplicationContext());
-        path.mkdirs();
+        File path = apk.getInstalledMediaFile(activity.getApplicationContext());
+        path.getParentFile().mkdirs();
         try {
-            FileUtils.copyFileToDirectory(new File(localApkUri.getPath()), path);
+            FileUtils.copyFile(new File(localApkUri.getPath()), path);
         } catch (IOException e) {
             Utils.debugLog(TAG, "Failed to copy: " + e.getMessage());
             installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
@@ -169,7 +169,7 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private void uninstallPackage(Apk apk) {
         if (apk.isMediaInstalled(activity.getApplicationContext())) {
-            File file = new File(apk.getMediaInstallPath(activity.getApplicationContext()), apk.apkName);
+            File file = apk.getInstalledMediaFile(activity.getApplicationContext());
             if (!file.delete()) {
                 installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED);
                 return;
