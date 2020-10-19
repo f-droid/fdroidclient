@@ -17,14 +17,18 @@ import androidx.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
+import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.zip.ZipFile;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -551,10 +555,12 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     /**
-     * Get the install path for a "non-apk" media file
-     * Defaults to {@link android.os.Environment#DIRECTORY_DOWNLOADS}
+     * Get the install path for a "non-apk" media file, with special cases for
+     * files that can be usefully installed without PrivilegedExtension.
+     * Defaults to {@link android.os.Environment#DIRECTORY_DOWNLOADS}.
      *
      * @return the install path for this {@link Apk}
+     * @link <a href="https://source.android.com/devices/tech/ota/nonab/inside_packages">Inside OTA Packages</a>
      */
 
     public File getMediaInstallPath(Context context) {
@@ -579,11 +585,22 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         } else if ("video".equals(topLevelType)) {
             path = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_MOVIES);
-            // TODO support OsmAnd map files, other map apps?
-            //} else if (mimeTypeMap.hasExtension("map")) {  // OsmAnd map files
-            //} else if (this.apkName.matches(".*.ota_[0-9]*.zip")) {  // Over-The-Air update ZIP files
-        } else if (this.apkName.endsWith(".zip")) {  // Over-The-Air update ZIP files
-            path = new File(context.getApplicationInfo().dataDir + "/ota");
+        } else if ("zip".equals(fileExtension)) {
+            try {
+                File cachedFile = ApkCache.getApkDownloadPath(context, this.getCanonicalUrl());
+                ZipFile zipFile = new ZipFile(cachedFile);
+                if (zipFile.getEntry("META-INF/com/google/android/update-binary") != null) {
+                    // Over-The-Air update ZIP files
+                    return new File(context.getApplicationInfo().dataDir + "/ota");
+                }
+            } catch (IOException e) {
+                // this should happen when running isMediaInstalled() and the file isn't installed
+                // other cases are probably bugs
+                if (BuildConfig.DEBUG) e.printStackTrace();
+            }
+            return path;
+        } else if ("apk".equals(fileExtension)) {
+            throw new IllegalStateException("APKs should not be handled in the media install path!");
         }
         return path;
     }
