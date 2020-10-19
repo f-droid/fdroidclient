@@ -58,10 +58,10 @@ public class FileInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         localApkUri = intent.getData();
-        canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         installer = new FileInstaller(this, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {
+            canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
             if (hasStoragePermission()) {
                 installPackage(localApkUri, canonicalUri, apk);
             } else {
@@ -69,6 +69,7 @@ public class FileInstallerActivity extends FragmentActivity {
                 act = 1;
             }
         } else if (ACTION_UNINSTALL_FILE.equals(action)) {
+            canonicalUri = null;
             if (hasStoragePermission()) {
                 uninstallPackage(apk);
             } else {

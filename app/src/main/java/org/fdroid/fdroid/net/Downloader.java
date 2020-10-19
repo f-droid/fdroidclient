@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.net;
 
 import android.net.Uri;
-import androidx.annotation.NonNull;
 import android.text.format.DateUtils;
+import androidx.annotation.NonNull;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
@@ -34,6 +34,8 @@ public abstract class Downloader {
     /**
      * Unique ID used to represent this specific package's install process,
      * including {@link android.app.Notification}s, also known as {@code canonicalUrl}.
+     * Careful about types, this should always be a {@link String}, so it can
+     * be handled on the receiving side by {@link android.content.Intent#getStringArrayExtra(String)}.
      *
      * @see org.fdroid.fdroid.installer.InstallManagerService
      * @see android.content.Intent#EXTRA_ORIGINATING_URI
