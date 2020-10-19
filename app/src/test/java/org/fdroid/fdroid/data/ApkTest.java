@@ -2,7 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContextWrapper;
 import android.os.Environment;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
 import androidx.test.core.app.ApplicationProvider;
 import org.apache.commons.io.FileUtils;
@@ -56,6 +55,16 @@ public class ApkTest {
         copyResourceFileToCache(apk);
         File path = apk.getMediaInstallPath(context);
         assertEquals(new File(context.getApplicationInfo().dataDir + "/ota"), path);
+    }
+
+    @Test
+    public void testGetMediaInstallPathWithObf() {
+        Apk apk = new Apk();
+        apk.apkName = "Norway_bouvet_europe_2.obf";
+        apk.repoAddress = "https://example.com/fdroid/repo";
+        assertFalse(apk.isApk());
+        File path = apk.getMediaInstallPath(context);
+        assertEquals(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), path);
     }
 
     @Test

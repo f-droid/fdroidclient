@@ -54,5 +54,9 @@ public class ApkCacheTest {
                 new File(cacheDir, "example.com--1/Norway_bouvet_europe_2.obf.zip"),
                 ApkCache.getApkDownloadPath(context,
                         "https://example.com/fdroid/repo/Norway_bouvet_europe_2.obf.zip"));
+        assertEquals("Should work for OBF files also",
+                new File(cacheDir, "example.com--1/Norway_bouvet_europe_2.obf"),
+                ApkCache.getApkDownloadPath(context,
+                        "https://example.com/fdroid/repo/Norway_bouvet_europe_2.obf"));
     }
 }

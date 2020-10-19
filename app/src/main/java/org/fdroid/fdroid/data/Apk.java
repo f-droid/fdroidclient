@@ -569,12 +569,15 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         String fileExtension = MimeTypeMap.getFileExtensionFromUrl(this.getCanonicalUrl());
         if (TextUtils.isEmpty(fileExtension)) return path;
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        String[] mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension).split("/");
-        String topLevelType;
-        if (mimeType.length == 0) {
-            topLevelType = "";
-        } else {
-            topLevelType = mimeType[0];
+        String mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension);
+        String topLevelType = null;
+        if (!TextUtils.isEmpty(mimeType)) {
+            String[] mimeTypeSections = mimeType.split("/");
+            if (mimeTypeSections.length == 0) {
+                topLevelType = "";
+            } else {
+                topLevelType = mimeTypeSections[0];
+            }
         }
         if ("audio".equals(topLevelType)) {
             path = Environment.getExternalStoragePublicDirectory(
