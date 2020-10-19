@@ -7,9 +7,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
-
 import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -97,13 +95,13 @@ public class TestUtils {
     }
 
     public static App insertApp(Context context, String packageName, String appName, int suggestedVersionCode,
-                          String repoUrl, String preferredSigner) {
+                                String repoUrl, String preferredSigner) {
         Repo repo = ensureRepo(context, repoUrl);
         return insertApp(context, packageName, appName, suggestedVersionCode, repo, preferredSigner);
     }
 
     public static App insertApp(Context context, String packageName, String appName, int suggestedVersionCode,
-                          Repo repo, String preferredSigner) {
+                                Repo repo, String preferredSigner) {
         ContentValues values = new ContentValues();
         values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
         values.put(Schema.AppMetadataTable.Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
