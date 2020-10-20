@@ -26,6 +26,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.security.NoSuchAlgorithmException;
 
 import static org.junit.Assert.assertEquals;
@@ -176,5 +178,16 @@ public class TestUtils {
     public static void updateDbAfterInserting(Context context) {
         AppProvider.Helper.calcSuggestedApks(context);
         AppProvider.Helper.recalculatePreferredMetadata(context);
+    }
+
+    /**
+     * Set a static final field through reflection
+     */
+    public static void setFinalStatic(Field field, Object newValue) throws Exception {
+        field.setAccessible(true);
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+        field.set(null, newValue);
     }
 }
