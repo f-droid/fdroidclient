@@ -23,9 +23,9 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.Nullable;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 

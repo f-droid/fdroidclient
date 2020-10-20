@@ -22,10 +22,10 @@ package org.fdroid.fdroid.installer;
 import android.app.Instrumentation;
 import android.net.Uri;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 import org.fdroid.fdroid.AssetUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompatTest;
@@ -113,7 +113,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        String[] noPrefixPermissions = new String[]{
+        ArrayList<String> noPrefixPermissionsList = new ArrayList<>(Arrays.asList(
                 "AUTHENTICATE_ACCOUNTS",
                 "MANAGE_ACCOUNTS",
                 "READ_PROFILE",
@@ -129,8 +129,13 @@ public class ApkVerifierTest {
                 "READ_SYNC_SETTINGS",
                 "WRITE_SYNC_SETTINGS",
                 "WRITE_CALL_LOG", // implied-permission!
-                "READ_CALL_LOG", // implied-permission!
-        };
+                "READ_CALL_LOG" // implied-permission!
+        ));
+        if (Build.VERSION.SDK_INT >= 29) {
+            noPrefixPermissionsList.add("android.permission.ACCESS_MEDIA_LOCATION");
+        }
+        String[] noPrefixPermissions = noPrefixPermissionsList.toArray(new String[0]);
+
         for (int i = 0; i < noPrefixPermissions.length; i++) {
             noPrefixPermissions[i] = RepoXMLHandler.fdroidToAndroidPermission(noPrefixPermissions[i]);
         }
@@ -177,7 +182,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        apk.requestedPermissions = new String[]{
+        TreeSet<String> expectedSet = new TreeSet<>(Arrays.asList(
                 "android.permission.AUTHENTICATE_ACCOUNTS",
                 "android.permission.MANAGE_ACCOUNTS",
                 "android.permission.READ_PROFILE",
@@ -193,8 +198,12 @@ public class ApkVerifierTest {
                 "android.permission.READ_SYNC_SETTINGS",
                 "android.permission.WRITE_SYNC_SETTINGS",
                 "android.permission.WRITE_CALL_LOG", // implied-permission!
-                "android.permission.READ_CALL_LOG", // implied-permission!
-        };
+                "android.permission.READ_CALL_LOG"// implied-permission!
+        ));
+        if (Build.VERSION.SDK_INT >= 29) {
+            expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+        }
+        apk.requestedPermissions = expectedSet.toArray(new String[0]);
 
         Uri uri = Uri.fromFile(sdk14Apk);
 
@@ -371,6 +380,9 @@ public class ApkVerifierTest {
                     "android.permission.MANAGE_ACCOUNTS"
             ));
         }
+        if (Build.VERSION.SDK_INT >= 29) {
+            expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+        }
         Apk apk = actualDetails.apks.get(1);
         Log.i(TAG, "APK: " + apk.apkName);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
@@ -407,6 +419,9 @@ public class ApkVerifierTest {
                 "org.dmfs.permission.READ_TASKS",
                 "org.dmfs.permission.WRITE_TASKS"
         ));
+        if (Build.VERSION.SDK_INT >= 29) {
+            expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
+        }
         expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
         apk = actualDetails.apks.get(2);
         Log.i(TAG, "APK: " + apk.apkName);
