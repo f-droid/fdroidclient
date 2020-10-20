@@ -618,6 +618,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName));
     }
 
+    /**
+     * Check whether a media file is "installed" as based on the file type's
+     * install path, derived in {@link #getMediaInstallPath(Context)}
+     */
     public boolean isMediaInstalled(Context context) {
         return getInstalledMediaFile(context).isFile();
     }
