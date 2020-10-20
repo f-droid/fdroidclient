@@ -264,6 +264,9 @@
                 android:name=".installer.InstallHistoryService"
                 android:exported="false"/>
         <service
+                android:name=".installer.ObfInstallerService"
+                android:exported="false"/>
+        <service
                 android:name=".data.InstalledAppProviderService"
                 android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>

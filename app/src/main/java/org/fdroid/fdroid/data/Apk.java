@@ -592,7 +592,13 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             try {
                 File cachedFile = ApkCache.getApkDownloadPath(context, this.getCanonicalUrl());
                 ZipFile zipFile = new ZipFile(cachedFile);
-                if (zipFile.getEntry("META-INF/com/google/android/update-binary") != null) {
+                if (zipFile.size() == 1) {
+                    String name = zipFile.entries().nextElement().getName();
+                    if (name != null && name.endsWith(".obf")) {
+                        // temporarily cache this, it will be deleted after unzipping
+                        return context.getCacheDir();
+                    }
+                } else if (zipFile.getEntry("META-INF/com/google/android/update-binary") != null) {
                     // Over-The-Air update ZIP files
                     return new File(context.getApplicationInfo().dataDir + "/ota");
                 }

@@ -75,7 +75,7 @@ public class ApkTest {
         assertFalse(apk.isApk());
         copyResourceFileToCache(apk);
         File path = apk.getMediaInstallPath(context);
-        assertEquals(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), path);
+        assertEquals(context.getCacheDir(), path);
     }
 
     private void copyResourceFileToCache(Apk apk) throws IOException {

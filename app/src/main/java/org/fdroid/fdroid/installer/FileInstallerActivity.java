@@ -5,12 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -25,7 +21,6 @@ import org.fdroid.fdroid.data.Apk;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 public class FileInstallerActivity extends FragmentActivity {
 
@@ -164,10 +159,11 @@ public class FileInstallerActivity extends FragmentActivity {
         }
         if (apk.isMediaInstalled(activity.getApplicationContext())) { // Copying worked
             Utils.debugLog(TAG, "Copying worked: " + localApkUri.getPath());
-            Toast.makeText(this, String.format(this.getString(R.string.app_installed_media), path.toString()),
-                    Toast.LENGTH_LONG).show();
-            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
-            postInstall(path);
+            if (!postInstall(canonicalUri, apk, path)) {
+                Toast.makeText(this, String.format(this.getString(R.string.app_installed_media), path.toString()),
+                        Toast.LENGTH_LONG).show();
+                installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
+            }
         } else {
             installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
         }
@@ -176,33 +172,16 @@ public class FileInstallerActivity extends FragmentActivity {
 
     /**
      * Run any file-type-specific processes after the file has been copied into place.
-     * <p>
-     * When this was written, OsmAnd only supported importing OBF files via a
-     * {@code file:///} URL, so this disables {@link android.os.FileUriExposedException}.
+     *
+     * @return whether this handles sending the {@link Installer#ACTION_INSTALL_COMPLETE}
+     * broadcast.
      */
-    private void postInstall(File path) {
-        if (path.getName().endsWith(".obf")) {
-            if (Build.VERSION.SDK_INT >= 24) {
-                try {
-                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-                    m.invoke(null);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension("obf");
-            intent.setDataAndType(Uri.fromFile(path), mimeType);
-            if (Build.VERSION.SDK_INT >= 23) {
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            }
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            } else {
-                Log.i(TAG, "No Activity available to handle " + intent);
-            }
+    private boolean postInstall(Uri canonicalUri, Apk apk, File path) {
+        if (path.getName().endsWith(".obf") || path.getName().endsWith(".obf.zip")) {
+            ObfInstallerService.install(this, canonicalUri, apk, path);
+            return true;
         }
+        return false;
     }
 
     private void uninstallPackage(Apk apk) {
