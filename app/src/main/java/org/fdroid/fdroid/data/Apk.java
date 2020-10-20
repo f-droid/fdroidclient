@@ -10,10 +10,10 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +24,7 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -598,6 +599,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * @return true if this is an apk instead of a non-apk/media file
      */
     public boolean isApk() {
-        return this.apkName == null || this.apkName.endsWith(".apk");
+        return apkName == null
+                || apkName.substring(apkName.length() - 4).toLowerCase(Locale.ENGLISH).endsWith(".apk");
     }
 }
