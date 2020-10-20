@@ -178,10 +178,13 @@ public class LocaleSelectionTest {
         zh_TW.put(KEY, "summary-zh_TW");
         HashMap<String, Object> zh_CN = new HashMap<>();
         zh_CN.put(KEY, "summary-zh_CN");
+        HashMap<String, Object> zh_HK = new HashMap<>();
+        zh_HK.put(KEY, "summary-zh_HK");
 
         localized.clear();
         localized.put("en-US", en_US);
         localized.put("zh-CN", zh_CN);
+        localized.put("zh-HK", zh_HK);
         localized.put("zh-TW", zh_TW);
         app.setLocalized(localized);
         assertEquals(zh_TW.get(KEY), app.summary);
