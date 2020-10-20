@@ -7,10 +7,10 @@ import android.content.Context;
 import android.os.Build;
 
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.espresso.IdlingPolicies;
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -206,7 +206,7 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.version)).check(matches(isDisplayed()));
         onView(withId(R.id.ok_button)).perform(click());
 
-        onView(withId(R.id.list)).perform(swipeUp()).perform(swipeUp()).perform(swipeUp());
+        onView(withId(android.R.id.list_container)).perform(swipeUp()).perform(swipeUp()).perform(swipeUp());
     }
 
     @LargeTest
