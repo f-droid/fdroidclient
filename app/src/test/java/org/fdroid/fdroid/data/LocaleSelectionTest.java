@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 @RunWith(RobolectricTestRunner.class)
 public class LocaleSelectionTest {
 
+    private static final String KEY = "summary";
 
     @Test
     public void correctLocaleSelectionBeforeSDK24() throws Exception {
@@ -31,15 +32,15 @@ public class LocaleSelectionTest {
 
         Map<String, Map<String, Object>> localized = new HashMap<>();
         HashMap<String, Object> en_US = new HashMap<>();
-        en_US.put("summary", "summary-en_US");
+        en_US.put(KEY, "summary-en_US");
         HashMap<String, Object> de_AT = new HashMap<>();
-        de_AT.put("summary", "summary-de_AT");
+        de_AT.put(KEY, "summary-de_AT");
         HashMap<String, Object> de_DE = new HashMap<>();
-        de_DE.put("summary", "summary-de_DE");
+        de_DE.put(KEY, "summary-de_DE");
         HashMap<String, Object> sv = new HashMap<>();
-        sv.put("summary", "summary-sv");
+        sv.put(KEY, "summary-sv");
         HashMap<String, Object> sv_FI = new HashMap<>();
-        sv_FI.put("summary", "summary-sv_FI");
+        sv_FI.put(KEY, "summary-sv_FI");
 
         localized.put("de-AT", de_AT);
         localized.put("de-DE", de_DE);
@@ -51,37 +52,37 @@ public class LocaleSelectionTest {
         Locale.setDefault(new Locale("en", "US"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         // Fall back to en-US locale, when we have a different en locale
         Locale.setDefault(new Locale("en", "UK"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         // Fall back to language only
         Locale.setDefault(new Locale("en", "UK"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         // select the correct one out of multiple language locales
         Locale.setDefault(new Locale("de", "DE"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-de_DE", app.summary);
+        assertEquals(de_DE.get(KEY), app.summary);
 
         // Even when we have a non-exact matching locale, we should fall back to the same language
         Locale.setDefault(new Locale("de", "CH"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-de_AT", app.summary);
+        assertEquals(de_AT.get(KEY), app.summary);
 
         // Test fallback to base lang with not exact matching locale
         Locale.setDefault(new Locale("sv", "SE"));
         app = new App();
         app.setLocalized(localized);
-        assertEquals("summary-sv", app.summary);
+        assertEquals(sv.get(KEY), app.summary);
     }
 
     @Test
@@ -105,13 +106,13 @@ public class LocaleSelectionTest {
         assertEquals("Unknown application", app.summary);
 
         HashMap<String, Object> en_US = new HashMap<>();
-        en_US.put("summary", "summary-en_US");
+        en_US.put(KEY, "summary-en_US");
         HashMap<String, Object> en_GB = new HashMap<>();
-        en_GB.put("summary", "summary-en_GB");
+        en_GB.put(KEY, "summary-en_GB");
         HashMap<String, Object> de_AT = new HashMap<>();
-        de_AT.put("summary", "summary-de_AT");
+        de_AT.put(KEY, "summary-de_AT");
         HashMap<String, Object> de_DE = new HashMap<>();
-        de_DE.put("summary", "summary-de_DE");
+        de_DE.put(KEY, "summary-de_DE");
 
         app.summary = "reset";
         localized.put("de-AT", de_AT);
@@ -119,13 +120,13 @@ public class LocaleSelectionTest {
         localized.put("en-US", en_US);
         app.setLocalized(localized);
         // just select the matching en-US locale, nothing special here
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         Locale.setDefault(new Locale("en", "SE"));
         when(localeList.toLanguageTags()).thenReturn("en-SE,de-DE");
         app.setLocalized(localized);
         // Fall back to another en locale before de
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         app.summary = "reset";
         localized.clear();
@@ -138,7 +139,7 @@ public class LocaleSelectionTest {
         when(localeList.toLanguageTags()).thenReturn("de-AT,de-DE");
         app.setLocalized(localized);
         // full match against a non-default locale
-        assertEquals("summary-de_AT", app.summary);
+        assertEquals(de_AT.get(KEY), app.summary);
 
         app.summary = "reset";
         localized.clear();
@@ -150,7 +151,7 @@ public class LocaleSelectionTest {
         Locale.setDefault(new Locale("de", "CH"));
         when(localeList.toLanguageTags()).thenReturn("de-CH,en-US");
         app.setLocalized(localized);
-        assertEquals("summary-de_DE", app.summary);
+        assertEquals(de_DE.get(KEY), app.summary);
 
         app.summary = "reset";
         localized.clear();
@@ -160,7 +161,7 @@ public class LocaleSelectionTest {
         Locale.setDefault(new Locale("en", "AU"));
         when(localeList.toLanguageTags()).thenReturn("en-AU");
         app.setLocalized(localized);
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         app.summary = "reset";
         Locale.setDefault(new Locale("zh", "TW", "#Hant"));
@@ -170,25 +171,25 @@ public class LocaleSelectionTest {
         localized.put("en-US", en_US);
         app.setLocalized(localized);
         //No match at all, fall back to an english locale
-        assertEquals("summary-en_US", app.summary);
+        assertEquals(en_US.get(KEY), app.summary);
 
         app.summary = "reset";
         HashMap<String, Object> zh_TW = new HashMap<>();
-        zh_TW.put("summary", "summary-zh_TW");
+        zh_TW.put(KEY, "summary-zh_TW");
         HashMap<String, Object> zh_CN = new HashMap<>();
-        zh_CN.put("summary", "summary-zh_CN");
+        zh_CN.put(KEY, "summary-zh_CN");
 
         localized.clear();
         localized.put("en-US", en_US);
         localized.put("zh-CN", zh_CN);
         localized.put("zh-TW", zh_TW);
         app.setLocalized(localized);
-        assertEquals("summary-zh_TW", app.summary);
+        assertEquals(zh_TW.get(KEY), app.summary);
 
         localized.clear();
         localized.put("en-US", en_US);
         localized.put("zh-CN", zh_CN);
         app.setLocalized(localized);
-        assertEquals("summary-zh_CN", app.summary);
+        assertEquals(zh_CN.get(KEY), app.summary);
     }
 }
