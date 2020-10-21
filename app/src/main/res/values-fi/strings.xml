@@ -507,4 +507,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">Lähellä on suljettu, koska se oli tyhjäkäynnillä.</string>
     <string name="nearby_splash__document_tree">Etsi USB OTG:ltä repositorioita ja peilejä.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_title">Vaihdot</string>
+    <string name="notification_channel_updates_description">Näyttää sovelluksen ja sovelluslähteen päivitysilmoitukset.</string>
+    <string name="notification_channel_updates_title">Päivitykset</string>
+    <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksen vaihto-ilmoitukset.</string>
+    <string name="notification_channel_installs_description">Näyttää sovelluksen asennusilmoitukset.</string>
+    <string name="notification_channel_installs_title">Asennukset</string>
 </resources>
