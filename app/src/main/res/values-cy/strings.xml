@@ -94,7 +94,7 @@
     <string name="app_size">Maint: %1$s</string>
     <string name="app_list__name__downloading_in_progress">Yn lawrlwytho %1$s</string>
     <string name="app_list__name__successfully_installed">Gosodwyd %1$s</string>
-    <string name="app_list_download_ready">Wedi\'u lawrlwytho ac yn barod i\'w gosod</string>
+    <string name="app_list_download_ready">Wedi lawrlwytho a\'n barod i\'w osod</string>
     <string name="app_list__dismiss_app_update">Anwybyddwyd y diweddariad</string>
     <string name="app_list__dismiss_downloading_app">Diddymwyd y diweddariad</string>
     <string name="installed_apps__activity_title">Apiau wedi\'i Gosod</string>
@@ -531,4 +531,10 @@
     <string name="swap_visible_hotspot">Yn weladwy trwy lecyn</string>
     <string name="swap_toast_closing_nearby_after_timeout">Caewyd gerllaw am ei fod yn segur.</string>
     <string name="nearby_splash__document_tree">Chwilio OTG USB am ystorfeydd a drychau.</string>
+    <string name="notification_channel_updates_title">Diweddariadau</string>
+    <string name="notification_channel_swaps_description">Mae\'n dangos hysbysiadau cyfnewid apiau P2P.</string>
+    <string name="notification_channel_swaps_title">Cyfnewid</string>
+    <string name="notification_channel_installs_description">Mae\'n dangos hysbysiadau gosod apiau.</string>
+    <string name="notification_channel_installs_title">Gosodiadau</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
