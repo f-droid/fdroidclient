@@ -82,4 +82,6 @@
     <string name="scan_removable_storage_title">অপসারণযোগ্য স্টোরেজ স্ক্যান করো</string>
     <string name="local_repo_https_on">স্থানীয় রিপোর জন্য এনক্রিপটেড HTTPS:// সংযোগ ব্যবহার করো</string>
     <string name="local_repo_name_summary">তোমার স্থানীয় রিপোর বিজ্ঞাপিত শিরোনাম: %s</string>
+    <string name="swap_send_fdroid">এফ-ড্রয়েড পাঠান</string>
+    <string name="updates__tts__download_app">ডাউনলোড</string>
 </resources>
