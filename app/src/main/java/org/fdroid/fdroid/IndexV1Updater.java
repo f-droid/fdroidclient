@@ -24,7 +24,8 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
-
+import android.content.pm.PackageInfo;
+import android.net.Uri;
 import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -91,6 +92,8 @@ public class IndexV1Updater extends IndexUpdater {
 
     public static final String SIGNED_FILE_NAME = "index-v1.jar";
     public static final String DATA_FILE_NAME = "index-v1.json";
+
+    private String platformSigCache;
 
     public IndexV1Updater(@NonNull Context context, @NonNull Repo repo) {
         super(context, repo);
@@ -298,6 +301,11 @@ public class IndexV1Updater extends IndexUpdater {
         repo.maxage = getIntRepoValue(repoMap, "maxage");
         repo.version = getIntRepoValue(repoMap, "version");
 
+        if (platformSigCache == null || platformSigCache.isEmpty()) {
+            PackageInfo androidPackageInfo = Utils.getPackageInfo(context, "android");
+            platformSigCache = Utils.getPackageSig(androidPackageInfo);
+        }
+
         RepoPersister repoPersister = new RepoPersister(context, repo);
         if (apps != null && apps.length > 0) {
             int appCount = 0;
@@ -319,6 +327,8 @@ public class IndexV1Updater extends IndexUpdater {
                     for (Apk apk : apks) {
                         if (!apk.isApk()) {
                             app.isApk = false;
+                        } else if (apk.sig.equalsIgnoreCase(platformSigCache)) {
+                            app.preferredSigner = platformSigCache;
                         }
                     }
                 }
