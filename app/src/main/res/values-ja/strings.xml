@@ -481,4 +481,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">アイドル状態だったのでNearbyは閉じられました。</string>
     <string name="nearby_splash__document_tree">リポジトリとミラーの USB OTG を検索します。</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">アプリやリポジトリの更新通知を表示します。</string>
+    <string name="notification_channel_updates_title">更新</string>
+    <string name="notification_channel_swaps_description">P2Pアプリの入れ替え通知を表示します。</string>
+    <string name="notification_channel_swaps_title">入れ替え</string>
+    <string name="notification_channel_installs_description">アプリのインストール通知を表示します。</string>
+    <string name="notification_channel_installs_title">インストール</string>
 </resources>
