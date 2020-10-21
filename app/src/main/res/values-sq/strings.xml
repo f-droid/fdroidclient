@@ -490,4 +490,9 @@
     <string name="app_suggested">I sugjeruar</string>
     <string name="app_list__name__successfully_installed">%1$s u instalua</string>
     <string name="notification_title_summary_installed">U instalua me sukses</string>
+    <string name="notification_channel_updates_description">Shfaq njoftime përditësimesh aplikacionesh dhe deposh.</string>
+    <string name="notification_channel_updates_title">Përditësime</string>
+    <string name="notification_channel_installs_description">Shfaq njoftime instalimi aplikacionesh.</string>
+    <string name="notification_channel_installs_title">Instalime</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
