@@ -1,0 +1,7 @@
+* teavituskanalite kasutamine peenhäälestatud juhtimiseks (@Isira-Seneviratne)
+* DirectShare meetodiga rakenduste jagamine rakenduse detailide alt (@fynngodau)
+* vahekaart Uusimad kuvab paremad tulemused mitte-inglise keelsetel seadmetel
+* tuum-teekide värskendused (Jackson, androidx, gradle, jt.)
+* poola keele valgete siltide tugi
+
+Aitäh uutele toetajatele! @fynngodau @projectgus @glennmen @Isira-Seneviratne
