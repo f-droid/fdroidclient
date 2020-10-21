@@ -263,7 +263,7 @@
     <string name="keep_install_history_summary">نگه داشتن گزارشی از تمام نصب و حذف‌ها در یک فضای خصوصی</string>
     <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_install_summary">بارگیری و به‌روز رسانی برنامه‌ها در پس‌زمینه، با نمایش یک اعلان</string>
-    <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهند های %1$s!</string>
+    <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهنده‌های %1$s!</string>
     <string name="app_details_donate_prompt">‫%1$s به دست %2$s ایجاد شده است. برایشان قهوه بخرید!</string>
     <string name="app_version_x_available">نگارش %1$s موجود است</string>
     <string name="app_version_x_installed">نگارش %1$s</string>
@@ -305,7 +305,7 @@
         <item quantity="one">نمایش %d</item>
         <item quantity="other">نمایش‌ همه %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">اینترنت ندارید؟ برنامه ها را از افراد در نزدیکی خود بگیرید!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">اینترنت ندارید؟ برنامه‌ها را از افراد در نزدیکی خود بگیرید!</string>
     <string name="nearby_splash__find_people_button">یافتن اطرافیانم</string>
     <string name="nearby_splash__both_parties_need_fdroid">برای استفاده از این ویژگی، دو طرف به %1$s نیاز دارند.</string>
     <string name="app__tts__downloading_progress">در حال بارگیری، %1$d%% کامل</string>
@@ -460,7 +460,7 @@
     <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی حافظه جداشدنی مثل کارت‌های SD و حافظه‌های USB</string>
     <string name="app_repository">مخزن: %1$s</string>
     <string name="main_menu__updates">به‌روز رسانی‌ها</string>
-    <string name="nearby_splash__read_external_storage">کارت SD را برای mirrorو مخزن ها جستجو کنید.</string>
+    <string name="nearby_splash__read_external_storage">کارت SD را برای آینه‌ها و مخزن‌ها جستجو کنید.</string>
     <string name="nearby_splash__request_permission">بیازماییدش</string>
     <string name="not_visible_nearby">اطراف فعّال نیست</string>
     <string name="not_visible_nearby_description">پیش از تاخت زدن با دستگاه‌های اطراف، دستگاهتان را قابل مشاهده کنید.</string>
@@ -488,4 +488,9 @@
     <string name="swap_error_cannot_start_bluetooth">ناتوانی در آغاز بلوتوث!</string>
     <string name="nearby_splash__document_tree">حافظه USB OTG را برای mirrorها و مخازن جستجو کنید.</string>
     <string name="swap_toast_closing_nearby_after_timeout">ویژگی اطراف به دلیل بی‌کار بودن، بسته شد.</string>
+    <string name="notification_channel_updates_description">اعلان‌های به‌روزرسانی مخزن و برنامه نمایش داده می‌شوند.</string>
+    <string name="notification_channel_updates_title">به‌روزرسانی‌ها</string>
+    <string name="notification_channel_installs_description">اعلان‌های نصب برنامه نمایش داده می‌شوند.</string>
+    <string name="notification_channel_installs_title">نصب‌ها</string>
+    <string name="menu_opencollective">اوپن‌کالکتیو</string>
 </resources>
