@@ -214,9 +214,10 @@
     <string name="repo_not_yet_updated">ഈ ആപ്പ് ശേഖരണം ഇതുവരെ ഉപയോഗിച്ചിട്ടില്ല. ഇതിലുള്ള ആപ്പുകൾ കാണാന്‍ ഇത് സജ്ജമാക്കേണ്ടതുണ്ട്.</string>
     <string name="unknown">അജ്ഞാതം</string>
     <string name="repo_confirm_delete_title">ആപ്പ് ശേഖരണം ഒഴിവാക്കുക\?</string>
-    <string name="repo_confirm_delete_body">"ഒരു ആപ്പ് ശേഖരണം  നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
+    <string name="repo_confirm_delete_body">"ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
 \n
 \n      
+\n
 \n
 \n    കുറിപ്പ്:  മുമ്പ് ഇൻസ്റ്റാൾ ചെയ്ത എല്ലാ ആപ്പുകളും  നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും."</string>
     <string name="repo_disabled_notification">%1$s പ്രവര്‍ത്തനരഹിതമാക്കി. 
