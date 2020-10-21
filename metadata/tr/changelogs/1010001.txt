@@ -1,0 +1,7 @@
+* hassas denetim için bildirim kanallarını kullan (@Isira-Seneviratne)
+* Uygulama Ayrıntılarından Doğrudan Paylaşımı kullanarak uygulamaları paylaş (@fynngodau)
+* En Yeniler Sekmesi, İngilizce olmayan cihazlarda daha iyi sonuçlar gösterecek
+* çekirdek kütüphaneler (Jackson, androidx, gradle vb.) için güncellemeler
+* beyaz etiketleme desteğini geliştir
+
+Yeni katkıda bulunanlara teşekkürler! @fynngodau @projectgus @glennmen @Isira-Seneviratne
