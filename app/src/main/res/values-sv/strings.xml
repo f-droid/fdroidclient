@@ -494,4 +494,9 @@
     <string name="nearby_splash__document_tree">Sök USB OTG för förråd och speglar.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_installs_title">Installationer</string>
+    <string name="notification_channel_installs_description">Visar notifikationer för app-installationer.</string>
+    <string name="notification_channel_updates_description">Visar notifikationer för uppdateringar av app och förråd.</string>
+    <string name="notification_channel_updates_title">Uppdateringar</string>
+    <string name="notification_channel_swaps_description">Visar notifikationer för app-byten mellan användare.</string>
+    <string name="notification_channel_swaps_title">Byten</string>
 </resources>
