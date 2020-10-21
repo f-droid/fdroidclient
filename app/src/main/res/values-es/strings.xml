@@ -15,8 +15,8 @@
     <string name="system_installer_on">Utilizar la extensión de F-Droid con permisos de sistema al instalar, actualizar,
         y eliminar paquetes
     </string>
-    <string name="local_repo_name">Nombre de tu repo local</string>
-    <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
+    <string name="local_repo_name">Nombre de tu repositorio local</string>
+    <string name="local_repo_name_summary">El título que se muestra para el repositorio local: %s</string>
     <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
     <string name="app_details">Detalles de la aplicación</string>
     <string name="no_such_app">No se encontró la aplicación.</string>
@@ -389,7 +389,7 @@
     </plurals>
     <string name="by_author_format">por %s</string>
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
-    <string name="force_old_index">Forzar al formato de índice antiguo</string>
+    <string name="force_old_index">Forzar el formato de índice antiguo</string>
     <string name="force_old_index_summary">En caso de que haya problemas o incompatibilidades, usar el formato XML para el índice de aplicaciones</string>
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
@@ -467,7 +467,7 @@
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
-    <string name="allow_push_requests">Permitir que los repositorios instalen/desinstalen aplicaciones</string>
+    <string name="allow_push_requests">Dejar que repositorios instalen/desinstalen</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
     <string name="send_history_csv">%s instalar histórico como un archivo CSV</string>
     <string name="allow_push_requests_summary">Los metadatos del repositorio pueden incluir peticiones «push» para instalar o desinstalar aplicaciones</string>
