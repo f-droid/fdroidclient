@@ -511,4 +511,5 @@
     <string name="notification_channel_updates_title">Aggiornamenti</string>
     <string name="notification_channel_installs_description">Mostra notifiche installazione app.</string>
     <string name="notification_channel_installs_title">Installazioni</string>
+    <string name="notification_channel_updates_description">Mostra le notifiche di aggiornamento dell\'app e del repository.</string>
 </resources>
