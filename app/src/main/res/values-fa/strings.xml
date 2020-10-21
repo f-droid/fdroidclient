@@ -131,9 +131,7 @@
     <string name="repo_num_apps">تعداد برنامه ها</string>
     <string name="repo_fingerprint">اثر انگشت کلید امضا (SHA-256)</string>
     <string name="repo_confirm_delete_title">مخزن حذف شود؟</string>
-    <string name="not_on_same_wifi">دستگاه شما روی همان شبکه وای‌فای مخزن محلّی‌ای که افزودید نیست! 
-\n
-\nلطفاً به این شبکه وصل شوید: %s</string>
+    <string name="not_on_same_wifi">افزاره‌تان روی شبکهٔ وای‌فای مخزن محلّی‌ای که افزوده‌اید نیست! تلاش کنید به این شبکه وصل شوید: %s</string>
     <string name="pref_language">زبان</string>
     <string name="pref_language_default">پیش فرض سیستم</string>
     <string name="wifi">وای‌فای</string>
@@ -493,4 +491,6 @@
     <string name="notification_channel_installs_description">اعلان‌های نصب برنامه نمایش داده می‌شوند.</string>
     <string name="notification_channel_installs_title">نصب‌ها</string>
     <string name="menu_opencollective">اوپن‌کالکتیو</string>
+    <string name="notification_channel_swaps_description">نمایش آگاهی‌های مبادلهٔ کارهٔ نظیر به نظیر.</string>
+    <string name="notification_channel_swaps_title">مبادله‌ها</string>
 </resources>
