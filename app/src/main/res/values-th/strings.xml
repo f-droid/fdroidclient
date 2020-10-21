@@ -193,7 +193,7 @@
         คุณจะต้องทำการถอนการติดตั้งรุ่นเดิมออกก่อน จึงจะทำการติดตั้งรุ่นใหม่ได้ (หมายเหตุ:
         การถอนการติดตั้งจะทำให้ข้อมูลภายในของโปรแกรมนั้นๆ ถูกลบ)
     </string>
-    <string name="updates">อัพเดต18 sex</string>
+    <string name="updates">อัพเดต</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปยังเวอร์ชั่นที่ไม่เสถียร</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
@@ -303,4 +303,7 @@
     <string name="scan_removable_storage_toast">กำลังค้นหา %s…</string>
     <string name="disabled">ปิดอยู่</string>
     <string name="allow">อนุญาต</string>
+    <string name="try_again">ลองใหม่อีกครั้ง</string>
+    <string name="privacy">ความเป็นส่วนตัว</string>
+    <string name="updates__tts__download_app">ดาวน์โหลด</string>
 </resources>
