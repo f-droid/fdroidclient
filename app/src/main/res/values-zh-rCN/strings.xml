@@ -482,4 +482,5 @@
     <string name="notification_channel_installs_description">展示应用安装通知。</string>
     <string name="notification_channel_installs_title">安装</string>
     <string name="notification_channel_swaps_description">展示P2P 应用程序交换通知。</string>
+    <string name="notification_channel_swaps_title">交换</string>
 </resources>
