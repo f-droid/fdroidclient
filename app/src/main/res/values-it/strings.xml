@@ -296,9 +296,9 @@
     <string name="notification_title_single_ready_to_install">Pronto per l\'installazione</string>
     <string name="notification_title_single_ready_to_install_update">Aggiornamento pronto per l\'installazione</string>
     <string name="notification_title_single_install_error">Installazione fallita</string>
-    <string name="notification_content_single_downloading">Scaricamento \"%1$s\"…</string>
+    <string name="notification_content_single_downloading">Scaricamento di \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Scaricamento aggiornamento di \"%1$s\"…</string>
-    <string name="notification_content_single_installing">Installazione \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installazione di \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installato con successo</string>
     <string name="notification_title_summary_update_available">Aggiornamento disponibile</string>
     <string name="notification_title_summary_downloading">Scaricamento…</string>
@@ -322,7 +322,7 @@
     <string name="antifeatureswarning">Questa app ha caratteristiche che potrebbero non piacerti.</string>
     <string name="antifeatures">Anti-caratteristiche</string>
     <string name="by_author_format">da %s</string>
-    <string name="app_list__name__downloading_in_progress">Scaricamento %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Scaricamento di %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
     <string name="app_recommended_version_installed">Versione %1$s (Consigliata)</string>
@@ -512,4 +512,6 @@
     <string name="notification_channel_installs_description">Mostra notifiche installazione app.</string>
     <string name="notification_channel_installs_title">Installazioni</string>
     <string name="notification_channel_updates_description">Mostra le notifiche di aggiornamento dell\'app e del repository.</string>
+    <string name="notification_channel_swaps_description">Mostra notifiche di intercambio app P2P.</string>
+    <string name="notification_channel_swaps_title">Intercambi</string>
 </resources>
