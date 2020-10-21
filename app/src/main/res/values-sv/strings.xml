@@ -493,4 +493,5 @@
     <string name="swap_toast_closing_nearby_after_timeout">Stängd i närheten eftersom den var inaktiv.</string>
     <string name="nearby_splash__document_tree">Sök USB OTG för förråd och speglar.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_installs_title">Installationer</string>
 </resources>
