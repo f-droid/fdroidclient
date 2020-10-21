@@ -1,0 +1,7 @@
+* utilizar canales de notificación para un control detallado (@ Isira-Seneviratne)
+* compartir aplicaciones usando Direct Share desde Detalles de la aplicación (@fynngodau)
+* La última pestaña mostrará mejores resultados en dispositivos que no estén en inglés
+* actualizaciones de las bibliotecas centrales (Jackson, androidx, gradle, etc.)
+* soporte de marca blanca polaca
+
+¡Gracias nuevos colaboradores! @fynngodau @projectgus @glennmen @ Isira-Seneviratne
