@@ -494,4 +494,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">പ്രവർത്തനശൂന്യമായതിനാൽ സമീപ ഇടപാടുകൾ നിർത്തി വെച്ചു.</string>
     <string name="nearby_splash__document_tree">ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും യു.എസ്‌.ബീ ഓ.ടി.ജിയിൽ തിരയുക.</string>
     <string name="menu_opencollective">ഓപ്പൺ കലക്ടീവ്</string>
+    <string name="notification_channel_updates_description">അപ്ലിക്കേഷനും ശേഖരണ അപ്‌ഡേറ്റ് അറിയിപ്പുകളും പ്രദർശിപ്പിക്കുന്നു.</string>
+    <string name="notification_channel_updates_title">അപ്‌ഡേറ്റുകൾ</string>
+    <string name="notification_channel_swaps_description">P2P അപ്ലിക്കേഷൻ സ്വാപ്പിംഗ് അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
+    <string name="notification_channel_swaps_title">സ്വാപ്പുകൾ</string>
+    <string name="notification_channel_installs_description">അപ്ലിക്കേഷൻ ഇൻസ്റ്റാളേഷൻ അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
+    <string name="notification_channel_installs_title">ഇൻസ്റ്റാളേഷനുകൾ</string>
 </resources>
