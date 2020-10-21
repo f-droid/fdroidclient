@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.data;
 
-
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.LocaleList;
 import org.fdroid.fdroid.TestUtils;
@@ -20,6 +20,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
+@SuppressWarnings("LocalVariableName")
 public class LocaleSelectionTest {
 
     private static final String KEY = "summary";
@@ -92,10 +93,12 @@ public class LocaleSelectionTest {
         assertTrue(Build.VERSION.SDK_INT >= 24);
 
         App app = spy(new App());
-        LocaleList localeList = mock(LocaleList.class);
 
         // we mock both the getLocales call and the conversion to a language tag string.
-        doReturn(localeList).when(app).getLocales();
+        Configuration configuration = mock(Configuration.class);
+        LocaleList localeList = mock(LocaleList.class);
+        doReturn(localeList).when(configuration).getLocales();
+
         // Set both default locale as well as the locale list, because the algorithm uses both...
         Locale.setDefault(new Locale("en", "US"));
         when(localeList.toLanguageTags()).thenReturn("en-US,de-DE");

@@ -19,7 +19,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -545,7 +544,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            LocaleList localeList = getLocales();
+            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
             String[] sortedLocaleList = localeList.toLanguageTags().split(",");
             Arrays.sort(sortedLocaleList, new java.util.Comparator<String>() {
                 @Override
@@ -623,11 +622,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         sevenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
         tenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
         tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    LocaleList getLocales() {
-        return Resources.getSystem().getConfiguration().getLocales();
     }
 
     /**
