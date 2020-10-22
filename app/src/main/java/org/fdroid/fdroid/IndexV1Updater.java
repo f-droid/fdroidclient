@@ -327,7 +327,7 @@ public class IndexV1Updater extends IndexUpdater {
                     for (Apk apk : apks) {
                         if (!apk.isApk()) {
                             app.isApk = false;
-                        } else if (apk.sig.equalsIgnoreCase(platformSigCache)) {
+                        } else if (apk.sig.equals(platformSigCache)) {
                             app.preferredSigner = platformSigCache;
                         }
                     }
