@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <verification-metadata xmlns="https://schema.gradle.org/dependency-verification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://schema.gradle.org/dependency-verification https://schema.gradle.org/dependency-verification/dependency-verification-1.0.xsd">
    <configuration>
-      <verify-metadata>true</verify-metadata>
+      <verify-metadata>false</verify-metadata>
       <verify-signatures>true</verify-signatures>
       <trusted-keys>
          <trusted-key id="0394681addddb4f6388a64d295123567c1886c47" group="ch.acra" name="acra" version="4.9.1"/>
