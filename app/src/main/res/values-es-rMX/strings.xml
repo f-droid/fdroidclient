@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="keep_install_history">Mantener el historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="install_history">Historial de instalación</string>
@@ -23,8 +23,8 @@
     <string name="crash_dialog_text">Se ha producido un error inesperado que obliga a la aplicación a detenerse. ¿Desea enviar por correo electrónico los detalles para ayudar a solucionar el problema\?</string>
     <string name="crash_dialog_title">F-Droid se ha estrellado</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">Sistema</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Deportes &amp; Salud</string>
+    <string name="category_System">Sistema</string>
+    <string name="category_Sports_Health">Deportes &amp; Salud</string>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Conexión Wi-Fi que el repositorio local que acabas de agregar! Intente unirse a esta red: %s</string>
     <string name="repo_last_update">Ultima actualización</string>
@@ -46,20 +46,20 @@
     <string name="newPerms">Nuevo</string>
     <string name="swap_dont_show_again">No volver a mostrar</string>
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Escribiendo</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Hora</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Seguridad</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Ciencia y Educación</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Leyendo</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Teléfono &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navegación</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Dinero</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Gráficos</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Juegos</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Desarrollo</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Conectividad</string>
+    <string name="category_Writing">Escribiendo</string>
+    <string name="category_Time">Hora</string>
+    <string name="category_Security">Seguridad</string>
+    <string name="category_Science_Education">Ciencia y Educación</string>
+    <string name="category_Reading">Leyendo</string>
+    <string name="category_Phone_SMS">Teléfono &amp; SMS</string>
+    <string name="category_Navigation">Navegación</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Money">Dinero</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Graphics">Gráficos</string>
+    <string name="category_Games">Juegos</string>
+    <string name="category_Development">Desarrollo</string>
+    <string name="category_Connectivity">Conectividad</string>
     <string name="pref_language_default">Predeterminado del sistema</string>
     <string name="pref_language">Idioma</string>
     <string name="skip">Omitir</string>

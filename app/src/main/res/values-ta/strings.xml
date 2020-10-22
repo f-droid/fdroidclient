@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை.
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
     </string>
@@ -120,23 +120,23 @@
     <string name="notification_title_summary_downloading">பதிவிறக்குகிறது…</string>
     <string name="keep_forever">என்றென்றும்</string>
     <string name="perms_new_perm_prefix">புதியன:</string>
-    <string tools:ignore="UnusedResources" name="category_System">அமைப்பு</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">வரைகலை</string>
+    <string name="category_System">அமைப்பு</string>
+    <string name="category_Graphics">வரைகலை</string>
     <string name="repo_name">பெயர்</string>
     <string name="repo_url">முகவரி</string>
     <string name="unsigned">கையொப்பமிடப்படாதது</string>
     <string name="icon">உருவம்</string>
     <string name="app_name">எஃப்-டிராய்டு</string>
     <string name="notification_action_update">புதுப்பி</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">எழுதுதல்</string>
-    <string tools:ignore="UnusedResources" name="category_Time">நேரம்</string>
-    <string tools:ignore="UnusedResources" name="category_Security">பாதுகாப்பு</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">அறிவியல் &amp; கல்வி</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">வாசித்தல்</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">தொலைபேசி &amp; குறுஞ்செய்திச் சேவை</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">உலாவல்</string>
-    <string tools:ignore="UnusedResources" name="category_Games">விளையாட்டுகள்</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">இணைப்புநிலை</string>
+    <string name="category_Writing">எழுதுதல்</string>
+    <string name="category_Time">நேரம்</string>
+    <string name="category_Security">பாதுகாப்பு</string>
+    <string name="category_Science_Education">அறிவியல் &amp; கல்வி</string>
+    <string name="category_Reading">வாசித்தல்</string>
+    <string name="category_Phone_SMS">தொலைபேசி &amp; குறுஞ்செய்திச் சேவை</string>
+    <string name="category_Navigation">உலாவல்</string>
+    <string name="category_Games">விளையாட்டுகள்</string>
+    <string name="category_Connectivity">இணைப்புநிலை</string>
     <string name="pref_language_default">அமைப்பு இயல்புநிலை</string>
     <string name="pref_language">மொழி</string>
     <string name="skip">தவிர்</string>

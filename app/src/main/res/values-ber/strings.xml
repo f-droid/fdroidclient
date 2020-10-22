@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="notification_action_cancel">ⵙⵙⵔ</string>
     <string name="notification_action_update">ⴰⵙⵜⵔⴰⵔ</string>
     <string name="newPerms">ⴰⵎⴰⵢⵏⵓ</string>
     <string name="swap_welcome">ⴰⵣⵓⵍ ⵉ ⴼ-ⴷⵕⵓⵢⴷ</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">ⵜⵉⵔⵔⴰ</string>
-    <string tools:ignore="UnusedResources" name="category_Time">ⴰⴳⵓⵔ</string>
-    <string tools:ignore="UnusedResources" name="category_Security">ⵙⵙⵍⴰⵎⵜ</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">ⵜⴰⵎⴰⵙⵙⴰⵏⵜ ⴷ ⵓⵙⴳⵎⵉ</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">ⵜⵉⵖⵓⵔⵉ</string>
-    <string tools:ignore="UnusedResources" name="category_Money">ⴰⵥⵕⴼ</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">ⴰⵏⵜⵉⵔⵏⵉⵜ</string>
-    <string tools:ignore="UnusedResources" name="category_Games">ⵓⵔⴰⵔⵏ</string>
+    <string name="category_Writing">ⵜⵉⵔⵔⴰ</string>
+    <string name="category_Time">ⴰⴳⵓⵔ</string>
+    <string name="category_Security">ⵙⵙⵍⴰⵎⵜ</string>
+    <string name="category_Science_Education">ⵜⴰⵎⴰⵙⵙⴰⵏⵜ ⴷ ⵓⵙⴳⵎⵉ</string>
+    <string name="category_Reading">ⵜⵉⵖⵓⵔⵉ</string>
+    <string name="category_Money">ⴰⵥⵕⴼ</string>
+    <string name="category_Internet">ⴰⵏⵜⵉⵔⵏⵉⵜ</string>
+    <string name="category_Games">ⵓⵔⴰⵔⵏ</string>
     <string name="pref_language_default">ⵜⵓⵜⵍⴰⵢⵜ ⵏ ⵓⵏⴳⵔⴰⵡ</string>
     <string name="pref_language">ⵜⵓⵜⵍⴰⵢⵜ</string>
     <string name="next">ⴰⵎⴹⴼⴰⵕ</string>
@@ -75,7 +75,7 @@
     <string name="cache_downloaded">ⵊⵊⵉ ⵜⵉⵙⵏⵙⵉⵣⵉⵏ ⵉⴼⴼⵔⵏ</string>
     <string name="by_author_format">ⵙⴳ %s</string>
     <string name="delete">ⴽⴽⵙ</string>
-    <string tools:ignore="UnusedResources" name="category_Development">ⵜⵉⴳⵎⵉ</string>
+    <string name="category_Development">ⵜⵉⴳⵎⵉ</string>
     <string name="details_notinstalled">ⵓⵔ ⵉⵜⵜⵓⵙⵔⵙ</string>
     <string name="menu_upgrade">ⴰⵙⵜⵔⴰⵔ</string>
     <string name="menu_uninstall">ⴽⴽⵙ ⴰⵙⵔⴰⵙ</string>

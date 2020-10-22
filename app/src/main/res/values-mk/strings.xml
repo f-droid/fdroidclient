@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">Новата верзија е потпишана со различен клуч од стариот.За да ја инсталирате новата верзија, најпрво деинсталирајте ја старата.(Имајте во предвид при деинсталирањето се бришат и податоците од апликацијата.)</string>
     <string name="version">Верзија</string>
@@ -73,18 +73,18 @@
     <string name="notification_action_update">Ажурирање</string>
     <string name="swap_dont_show_again">Не го прикажувај ова повторно</string>
     <string name="swap_welcome">Добредојдовте на F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Пишување</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Време</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Безбедност</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Наука и Образование</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Читање</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Телефон и СМС</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Навигација</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Мултимедија</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Пари</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Интернет</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Графика</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Игри</string>
+    <string name="category_Writing">Пишување</string>
+    <string name="category_Time">Време</string>
+    <string name="category_Security">Безбедност</string>
+    <string name="category_Science_Education">Наука и Образование</string>
+    <string name="category_Reading">Читање</string>
+    <string name="category_Phone_SMS">Телефон и СМС</string>
+    <string name="category_Navigation">Навигација</string>
+    <string name="category_Multimedia">Мултимедија</string>
+    <string name="category_Money">Пари</string>
+    <string name="category_Internet">Интернет</string>
+    <string name="category_Graphics">Графика</string>
+    <string name="category_Games">Игри</string>
     <string name="skip">Прескокни</string>
     <string name="useTor">Користи Tor</string>
     <string name="repo_confirm_delete_title">Избриши складиште\?</string>
@@ -126,9 +126,9 @@
     <string name="notification_title_summary_downloading">Преземање…</string>
     <string name="downloading">Преземање…</string>
     <string name="perms_new_perm_prefix">Ново:</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Теми</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Развој</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Поврзаност</string>
+    <string name="category_Theming">Теми</string>
+    <string name="category_Development">Развој</string>
+    <string name="category_Connectivity">Поврзаност</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="pref_language">Јазик</string>
     <string name="repo_name">Име</string>
@@ -171,8 +171,8 @@
     <string name="crash_dialog_text">Се случи неочекувана грешка принудувајќи ја апликацијата да престане со работа. Дали сакате да ги испратите по е-пошта деталите за да помогнете во поправањето на проблемот\?</string>
     <string name="crash_dialog_title">F-Droid се урна</string>
     <string name="swap_send_fdroid">Испрати F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">Систем</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Спорт и Здравје</string>
+    <string name="category_System">Систем</string>
+    <string name="category_Sports_Health">Спорт и Здравје</string>
     <string name="not_on_same_wifi">Вашиот уред не е на истиот Wi-Fi како и локалното складиште што го додадовте! Обидете се да се приклучите на оваа мрежа: %s</string>
     <string name="repo_last_update">Последно ажурирање</string>
     <string name="repo_details">Складиште</string>

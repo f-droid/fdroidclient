@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="more">Uggar</string>
     <string name="updates__tts__download_app">Agem</string>
     <string name="app_list__name__downloading_in_progress">agam %1$s</string>
@@ -8,13 +8,13 @@
     <string name="notification_action_update">Ssedɣi</string>
     <string name="newPerms">amaynu</string>
     <string name="swap_welcome">azul deg F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Tirra</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Tamassant d usegmi</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">tiɣuri</string>
-    <string tools:ignore="UnusedResources" name="category_Money">aẓeṛf</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">antirnit</string>
-    <string tools:ignore="UnusedResources" name="category_Games">uraren</string>
-    <string tools:ignore="UnusedResources" name="category_Development">asbuɣlu</string>
+    <string name="category_Writing">Tirra</string>
+    <string name="category_Science_Education">Tamassant d usegmi</string>
+    <string name="category_Reading">tiɣuri</string>
+    <string name="category_Money">aẓeṛf</string>
+    <string name="category_Internet">antirnit</string>
+    <string name="category_Games">uraren</string>
+    <string name="category_Development">asbuɣlu</string>
     <string name="pref_language">Tutlayt</string>
     <string name="skip">Ssuref</string>
     <string name="main_menu__latest_apps">Ameggaru</string>
@@ -30,8 +30,8 @@
     <string name="back">Uɣul</string>
     <string name="cancel">Sser</string>
     <string name="app_name">F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Tiwwunɣa</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Azday</string>
+    <string name="category_Graphics">Tiwwunɣa</string>
+    <string name="category_Connectivity">Azday</string>
     <string name="pref_language_default">Angraw s uwnul</string>
     <string name="next">Γer zdat</string>
     <string name="menu_add_repo">Tisgit tamaynut</string>
@@ -134,10 +134,10 @@
     <string name="delete">Kkes</string>
     <string name="by_author_format">sɣur %s</string>
     <string name="swap_send_fdroid">Azen F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">Anegraw</string>
+    <string name="category_System">Anegraw</string>
     <string name="wifi">Wi-Fi</string>
     <string name="less">Drus</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Akud</string>
+    <string name="category_Time">Akud</string>
     <string name="main_menu__categories">Ismilen</string>
     <string name="main_menu__updates">Isedɣiten</string>
     <string name="menu_issues">Timukrisin</string>

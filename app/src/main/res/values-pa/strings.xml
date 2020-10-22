@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">ਐਫ-ਡਰੋਆਇਡ</string>
     <string name="SignatureMismatch">ਨਵੇਂ ਸੰਸਕਰਣ ਵਿੱਚ ਪੁਰਾਣੇ ਲਈ ਇੱਕ ਵੱਖਰੀ ਕੁੰਜੀ ਦੇ ਨਾਲ ਦਸਤਖਤ ਕੀਤੇ ਗਏ ਹਨ. ਨਵਾਂ ਸੰਸਕਰਣ ਇੰਸਟਾਲ ਕਰਨ ਲਈ, ਪੁਰਾਣੇ ਨੂੰ ਪਹਿਲਾਂ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਪਵੇਗਾ. ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ. (ਯਾਦ ਰੱਖੋ ਕਿ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਨਾਲ ਐਪ ਦੁਆਰਾ ਸਟੋਰ ਕੀਤਾ ਕੋਈ ਵੀ ਅੰਦਰੂਨੀ ਡਾਟਾ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ)</string>
     <string name="installIncompatible">ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਫਿਰ ਵੀ ਇੰਸਟਾਲ ਕਰੋ\?</string>
@@ -63,20 +63,20 @@
     <string name="download_error">ਡਾਊਨਲੋਡ ਕਰਨਾ ਅਸਫ਼ਲ ਹੈ!</string>
     <string name="swap_dont_show_again">ਇਹ ਮੁੜ ਨਾ ਦਿਖਾਓ</string>
     <string name="swap_welcome">F-Droid ਤੇ ਜੀ ਆਇਆਂ ਨੂੰ!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">ਲਿਖਣ</string>
-    <string tools:ignore="UnusedResources" name="category_Time">ਸਮਾਂ</string>
-    <string tools:ignore="UnusedResources" name="category_Security">ਸੁਰੱਖਿਆ</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">ਵਿਗਿਆਨ ਤੇ ਸਿੱਖਿਆ</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">ਪੜ੍ਹਨ</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">ਫ਼ੋਨ ਤੇ SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">ਨੇਵੀਗੇਸ਼ਨ</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">ਮਲਟੀ-ਮੀਡਿਆ</string>
-    <string tools:ignore="UnusedResources" name="category_Money">ਪੈਸੇ</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">ਇੰਟਰਨੈੱਟ</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">ਗਰਾਫਿਕਸ</string>
-    <string tools:ignore="UnusedResources" name="category_Games">ਖੇਡਾਂ</string>
-    <string tools:ignore="UnusedResources" name="category_Development">ਡਿਵੈਲਪਮੈਂਟ</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">ਕਨੈਕਟਵਿਟੀ</string>
+    <string name="category_Writing">ਲਿਖਣ</string>
+    <string name="category_Time">ਸਮਾਂ</string>
+    <string name="category_Security">ਸੁਰੱਖਿਆ</string>
+    <string name="category_Science_Education">ਵਿਗਿਆਨ ਤੇ ਸਿੱਖਿਆ</string>
+    <string name="category_Reading">ਪੜ੍ਹਨ</string>
+    <string name="category_Phone_SMS">ਫ਼ੋਨ ਤੇ SMS</string>
+    <string name="category_Navigation">ਨੇਵੀਗੇਸ਼ਨ</string>
+    <string name="category_Multimedia">ਮਲਟੀ-ਮੀਡਿਆ</string>
+    <string name="category_Money">ਪੈਸੇ</string>
+    <string name="category_Internet">ਇੰਟਰਨੈੱਟ</string>
+    <string name="category_Graphics">ਗਰਾਫਿਕਸ</string>
+    <string name="category_Games">ਖੇਡਾਂ</string>
+    <string name="category_Development">ਡਿਵੈਲਪਮੈਂਟ</string>
+    <string name="category_Connectivity">ਕਨੈਕਟਵਿਟੀ</string>
     <string name="pref_language_default">ਸਿਸਟਮ ਮੂਲ</string>
     <string name="pref_language">ਭਾਸ਼ਾ</string>
     <string name="skip">ਛੱਡੋ</string>
