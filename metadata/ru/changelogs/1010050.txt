@@ -1,7 +1,6 @@
 * используйте каналы оповещения для точного контроля (@Isira-Seneviratne)
-* делитесь приложениями, используя Direct Share из App Details (@fynngodau)
 * Последняя вкладка покажет лучшие результаты на неанглийских устройствах.
 * обновления для основных библиотек (Jackson, androidx, gradle и т.д.)
 * поддержка польского whitelabeling
 
-Спасибо новым участникам! @fynngodau @projectgus @glennmen @Isira-Seneviratne
+Спасибо новым участникам! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

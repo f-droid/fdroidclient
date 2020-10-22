@@ -1,0 +1,7 @@
+* use notification channels for fine-grained control (@Isira-Seneviratne)
+* Improved language selection with multiple locales (@spacecowboy/@bubu)
+* Latest Tab will show better results on non-English devices
+* updates to core libraries (Jackson, androidx, gradle, etc)
+* polish whitelabeling support
+
+Thanks new contributors! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

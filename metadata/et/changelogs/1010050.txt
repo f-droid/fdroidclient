@@ -1,0 +1,6 @@
+* teavituskanalite kasutamine peenhäälestatud juhtimiseks (@Isira-Seneviratne)
+* vahekaart Uusimad kuvab paremad tulemused mitte-inglise keelsetel seadmetel
+* tuum-teekide värskendused (Jackson, androidx, gradle, jt.)
+* poola keele valgete siltide tugi
+
+Aitäh uutele toetajatele! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

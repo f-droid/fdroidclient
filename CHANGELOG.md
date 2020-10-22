@@ -1,8 +1,11 @@
+### 1.10 (2020-10-20)
+
+* Improved language selection with multiple locales
+  (thanks @spacecowboy and @bubu!)
+
 ### 1.10-alpha1 (2020-09-29)
 
 * use notification channels for fine-grained control (@Isira-Seneviratne)
-
-* share apps using Direct Share from App Details (@fynngodau)
 
 ### 1.10-alpha0 (2020-07-20)
 

@@ -1,0 +1,6 @@
+* używaj kanałów powiadomień do precyzyjnej kontroli (@ Isira-Seneviratne)
+* Najnowsza karta będzie pokazywać lepsze wyniki na urządzeniach innych niż angielski
+* aktualizacje podstawowych bibliotek (Jackson, Androidx, Gradle itp.)
+* wsparcie dla polskich białych etykiet
+
+Dzięki nowym współtwórcom! @spacecowboy @projectgus @glennmen @ Isira-Seneviratne
