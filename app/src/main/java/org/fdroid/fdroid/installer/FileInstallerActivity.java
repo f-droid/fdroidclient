@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -53,10 +53,10 @@ public class FileInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         localApkUri = intent.getData();
-        canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         installer = new FileInstaller(this, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {
+            canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
             if (hasStoragePermission()) {
                 installPackage(localApkUri, canonicalUri, apk);
             } else {
@@ -64,6 +64,7 @@ public class FileInstallerActivity extends FragmentActivity {
                 act = 1;
             }
         } else if (ACTION_UNINSTALL_FILE.equals(action)) {
+            canonicalUri = null;
             if (hasStoragePermission()) {
                 uninstallPackage(apk);
             } else {
@@ -148,28 +149,44 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private void installPackage(Uri localApkUri, Uri canonicalUri, Apk apk) {
         Utils.debugLog(TAG, "Installing: " + localApkUri.getPath());
-        File path = apk.getMediaInstallPath(activity.getApplicationContext());
-        path.mkdirs();
+        File path = apk.getInstalledMediaFile(activity.getApplicationContext());
+        path.getParentFile().mkdirs();
         try {
-            FileUtils.copyFileToDirectory(new File(localApkUri.getPath()), path);
+            FileUtils.copyFile(new File(localApkUri.getPath()), path);
         } catch (IOException e) {
             Utils.debugLog(TAG, "Failed to copy: " + e.getMessage());
             installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
         }
         if (apk.isMediaInstalled(activity.getApplicationContext())) { // Copying worked
             Utils.debugLog(TAG, "Copying worked: " + localApkUri.getPath());
-            Toast.makeText(this, String.format(this.getString(R.string.app_installed_media), path.toString()),
-                    Toast.LENGTH_LONG).show();
-            installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
+            if (!postInstall(canonicalUri, apk, path)) {
+                Toast.makeText(this, String.format(this.getString(R.string.app_installed_media), path.toString()),
+                        Toast.LENGTH_LONG).show();
+                installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_COMPLETE);
+            }
         } else {
             installer.sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED);
         }
         finish();
     }
 
+    /**
+     * Run any file-type-specific processes after the file has been copied into place.
+     *
+     * @return whether this handles sending the {@link Installer#ACTION_INSTALL_COMPLETE}
+     * broadcast.
+     */
+    private boolean postInstall(Uri canonicalUri, Apk apk, File path) {
+        if (path.getName().endsWith(".obf") || path.getName().endsWith(".obf.zip")) {
+            ObfInstallerService.install(this, canonicalUri, apk, path);
+            return true;
+        }
+        return false;
+    }
+
     private void uninstallPackage(Apk apk) {
         if (apk.isMediaInstalled(activity.getApplicationContext())) {
-            File file = new File(apk.getMediaInstallPath(activity.getApplicationContext()), apk.apkName);
+            File file = apk.getInstalledMediaFile(activity.getApplicationContext());
             if (!file.delete()) {
                 installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED);
                 return;

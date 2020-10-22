@@ -10,20 +10,25 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
+import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
+import java.util.zip.ZipFile;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -550,10 +555,12 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     /**
-     * Get the install path for a "non-apk" media file
-     * Defaults to {@link android.os.Environment#DIRECTORY_DOWNLOADS}
+     * Get the install path for a "non-apk" media file, with special cases for
+     * files that can be usefully installed without PrivilegedExtension.
+     * Defaults to {@link android.os.Environment#DIRECTORY_DOWNLOADS}.
      *
      * @return the install path for this {@link Apk}
+     * @link <a href="https://source.android.com/devices/tech/ota/nonab/inside_packages">Inside OTA Packages</a>
      */
 
     public File getMediaInstallPath(Context context) {
@@ -562,12 +569,15 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         String fileExtension = MimeTypeMap.getFileExtensionFromUrl(this.getCanonicalUrl());
         if (TextUtils.isEmpty(fileExtension)) return path;
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        String[] mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension).split("/");
-        String topLevelType;
-        if (mimeType.length == 0) {
-            topLevelType = "";
-        } else {
-            topLevelType = mimeType[0];
+        String mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension);
+        String topLevelType = null;
+        if (!TextUtils.isEmpty(mimeType)) {
+            String[] mimeTypeSections = mimeType.split("/");
+            if (mimeTypeSections.length == 0) {
+                topLevelType = "";
+            } else {
+                topLevelType = mimeTypeSections[0];
+            }
         }
         if ("audio".equals(topLevelType)) {
             path = Environment.getExternalStoragePublicDirectory(
@@ -578,17 +588,42 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         } else if ("video".equals(topLevelType)) {
             path = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_MOVIES);
-            // TODO support OsmAnd map files, other map apps?
-            //} else if (mimeTypeMap.hasExtension("map")) {  // OsmAnd map files
-            //} else if (this.apkName.matches(".*.ota_[0-9]*.zip")) {  // Over-The-Air update ZIP files
-        } else if (this.apkName.endsWith(".zip")) {  // Over-The-Air update ZIP files
-            path = new File(context.getApplicationInfo().dataDir + "/ota");
+        } else if ("zip".equals(fileExtension)) {
+            try {
+                File cachedFile = ApkCache.getApkDownloadPath(context, this.getCanonicalUrl());
+                ZipFile zipFile = new ZipFile(cachedFile);
+                if (zipFile.size() == 1) {
+                    String name = zipFile.entries().nextElement().getName();
+                    if (name != null && name.endsWith(".obf")) {
+                        // temporarily cache this, it will be deleted after unzipping
+                        return context.getCacheDir();
+                    }
+                } else if (zipFile.getEntry("META-INF/com/google/android/update-binary") != null) {
+                    // Over-The-Air update ZIP files
+                    return new File(context.getApplicationInfo().dataDir + "/ota");
+                }
+            } catch (IOException e) {
+                // this should happen when running isMediaInstalled() and the file isn't installed
+                // other cases are probably bugs
+                if (BuildConfig.DEBUG) e.printStackTrace();
+            }
+            return path;
+        } else if ("apk".equals(fileExtension)) {
+            throw new IllegalStateException("APKs should not be handled in the media install path!");
         }
         return path;
     }
 
+    public File getInstalledMediaFile(Context context) {
+        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName));
+    }
+
+    /**
+     * Check whether a media file is "installed" as based on the file type's
+     * install path, derived in {@link #getMediaInstallPath(Context)}
+     */
     public boolean isMediaInstalled(Context context) {
-        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName)).isFile();
+        return getInstalledMediaFile(context).isFile();
     }
 
     /**
@@ -598,6 +633,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * @return true if this is an apk instead of a non-apk/media file
      */
     public boolean isApk() {
-        return this.apkName == null || this.apkName.endsWith(".apk");
+        return apkName == null
+                || apkName.substring(apkName.length() - 4).toLowerCase(Locale.ENGLISH).endsWith(".apk");
     }
 }

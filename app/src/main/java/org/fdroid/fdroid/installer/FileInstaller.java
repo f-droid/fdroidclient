@@ -51,7 +51,7 @@ public class FileInstaller extends Installer {
     protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
         Intent installIntent = new Intent(context, FileInstallerActivity.class);
         installIntent.setAction(FileInstallerActivity.ACTION_INSTALL_FILE);
-        installIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri);
+        installIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri.toString());
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 

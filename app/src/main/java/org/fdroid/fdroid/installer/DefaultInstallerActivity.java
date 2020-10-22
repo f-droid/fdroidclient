@@ -67,7 +67,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         installer = new DefaultInstaller(this, apk);
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
             Uri localApkUri = intent.getData();
-            canonicalUri = intent.getParcelableExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
+            canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
             installPackage(localApkUri);
         } else if (ACTION_UNINSTALL_PACKAGE.equals(action)) {
             uninstallPackage(apk.packageName);
