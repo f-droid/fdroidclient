@@ -93,7 +93,7 @@ public class IndexV1Updater extends IndexUpdater {
     public static final String SIGNED_FILE_NAME = "index-v1.jar";
     public static final String DATA_FILE_NAME = "index-v1.json";
 
-    private String platformSigCache;
+    private static String platformSigCache;
 
     public IndexV1Updater(@NonNull Context context, @NonNull Repo repo) {
         super(context, repo);
