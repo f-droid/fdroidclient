@@ -509,4 +509,5 @@
     <string name="panic_hide_warning_message">В случай на паника това ще премахне %1$s от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">Включва версията на това приложение и произволен уникален идентификатор, когато се извършва изтегляне, ще се отрази при рестарт на приложението.</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

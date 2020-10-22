@@ -500,4 +500,10 @@
     <string name="app_list__dismiss_installing_app">Installation abgebrochen</string>
     <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegel durchsuchen.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_title">Tauschen</string>
+    <string name="notification_channel_installs_description">Zeigt Benachrichtigungen zur App-Installation an.</string>
+    <string name="notification_channel_updates_description">Zeigt Benachrichtigungen über App- und Repository-Aktualisierungen an.</string>
+    <string name="notification_channel_updates_title">Aktualisierungen</string>
+    <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
+    <string name="notification_channel_installs_title">Installationen</string>
 </resources>

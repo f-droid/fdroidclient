@@ -1,0 +1,5 @@
+* Se ha eliminado el soporte de "Android App Link" debido a problemas con F-droid y DNS.
+* Repositorios Archivados tienen menos prioridad que el Repositorio principal, arreglando errores donde los iconos, capturas de pantallas y otros tipos de información se registraban desde el Archivo en vez del Repo en sí.
+* Ajustes a el recorte de imagen de encabezado(gracias @ByteHamster) 
+* La barra de navegación se ajusta al modo oscuro (@MatthieuB)
+* Se ha limpiado el codigo obsoleto (@Isira-Seneviratne)

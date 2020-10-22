@@ -495,4 +495,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">Dichtbij gesloten wegens inactiviteit.</string>
     <string name="nearby_splash__document_tree">Doorzoek USB-OTG naar applicatiebronnen en mirrors.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Toont app- en repository-updatenotificaties.</string>
+    <string name="notification_channel_updates_title">Updates</string>
+    <string name="notification_channel_swaps_description">Toon P2P app-uitwisselingsnotificaties.</string>
+    <string name="notification_channel_swaps_title">Uitwisselingen</string>
+    <string name="notification_channel_installs_description">Toon app-installatienotificaties.</string>
+    <string name="notification_channel_installs_title">Installaties</string>
 </resources>

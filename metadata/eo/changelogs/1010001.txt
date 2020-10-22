@@ -1,0 +1,7 @@
+* uzi sciigajn kanalojn de Android por pli detale regi la aplikaĵon (@Isira-Seneviratne)
+* kunhavigi aplikaĵojn per Direct Share ĉe la ekrano aplikaĵaj detaloj (@fynngodau)
+* langeto “novaj” montras pli bonajn rezultojn por neanglaj aparatoj
+* ĝisdatigitaj kernaj bibliotekoj (Jackson, androidx, gradle…)
+* pli bona subteno por mark‑tajloreblaj kompilaĵoj
+
+Dankojn al novaj kontribuantoj! @fynngodau @projectgus @glennmen @Isira-Seneviratne

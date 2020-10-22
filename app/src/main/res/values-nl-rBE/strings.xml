@@ -47,7 +47,7 @@
     <string name="notification_action_install">Installeer</string>
     <string name="app_details">App-details</string>
     <string name="about_title">Over F-Droid</string>
-    <string name="app_list__name__downloading_in_progress">%1$s wordt gedownloadet</string>
+    <string name="app_list__name__downloading_in_progress">%1$s wordt gedownload</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
     <string name="updates__tts__download_app">Download</string>
     <string name="more">Meer</string>
@@ -83,7 +83,7 @@
     <string name="other">Overig</string>
     <string name="update_interval">Automatisch update-interval</string>
     <string name="update_auto_download">Download automatisch updates</string>
-    <string name="update_auto_download_summary">Updates worden automatisch in de achtergrond gedownloadet en er wordt een melding weergegeven om ze te installeren</string>
+    <string name="update_auto_download_summary">Updates worden automatisch in de achtergrond gedownload en er wordt een melding weergegeven om ze te installeren</string>
     <string name="update_auto_install">Installeer automatisch updates</string>
     <string name="update_auto_install_summary">Download en werk in de achtergrond apps bij, met een melding</string>
     <string name="notify">Geef beschikbare updates weer</string>
@@ -124,7 +124,7 @@
     <string name="app__install_downloaded_update">Werk bij</string>
     <string name="app_installed_media">Bestand geïnstalleerd op %s</string>
     <string name="app_permission_storage">F-Droid heeft toestemming nodig om dit op de opslag te installeren. Geef deze toestemming op het volgende scherm om installatie verder te zetten.</string>
-    <string name="app_list_download_ready">Gedownloadet, klaar voor installatie</string>
+    <string name="app_list_download_ready">Gedownload, klaar voor installatie</string>
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>
@@ -242,7 +242,7 @@
     <string name="hide_on_long_search_press_title">Verberg met zoekknop</string>
     <string name="hide_on_long_search_press_summary">De zoekknop lang ingedrukt houden zal de app verbergen</string>
     <string name="status_download">%2$s / %3$s (%4$d%%) worden
-\nvan %1$s gedownloadet</string>
+\nvan %1$s gedownload</string>
     <string name="status_download_unknown_size">%2$s wordt gedownload van %1$s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="update_notification_title">Applicatiebronnen worden bijgewerkt</string>

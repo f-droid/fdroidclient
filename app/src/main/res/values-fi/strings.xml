@@ -228,7 +228,7 @@
 \nLaitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
-    <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu tarkistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
+    <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -507,4 +507,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">Lähellä on suljettu, koska se oli tyhjäkäynnillä.</string>
     <string name="nearby_splash__document_tree">Etsi USB OTG:ltä repositorioita ja peilejä.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_title">Vaihdot</string>
+    <string name="notification_channel_updates_description">Näyttää sovelluksen ja sovelluslähteen päivitysilmoitukset.</string>
+    <string name="notification_channel_updates_title">Päivitykset</string>
+    <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksen vaihto-ilmoitukset.</string>
+    <string name="notification_channel_installs_description">Näyttää sovelluksen asennusilmoitukset.</string>
+    <string name="notification_channel_installs_title">Asennukset</string>
 </resources>

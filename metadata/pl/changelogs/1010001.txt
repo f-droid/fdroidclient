@@ -1,0 +1,7 @@
+* używaj kanałów powiadomień do precyzyjnej kontroli (@ Isira-Seneviratne)
+* udostępniaj aplikacje za pomocą funkcji Direct Share z poziomu aplikacji (@fynngodau)
+* Najnowsza karta będzie pokazywać lepsze wyniki na urządzeniach innych niż angielski
+* aktualizacje podstawowych bibliotek (Jackson, Androidx, Gradle itp.)
+* wsparcie dla polskich białych etykiet
+
+Dzięki nowym współtwórcom! @fynngodau @projectgus @glennmen @ Isira-Seneviratne

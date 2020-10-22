@@ -1,0 +1,7 @@
+* 使用通知通道进行细粒度控制（@Isira-Seneviratne）
+* 使用来自应用详细信息的直接分享分享应用 （@fynngodau）
+* 最新的选项卡将在非英语设备上显示更好的结果
+* 更新核心库 （Jackson, androidx, gradle 等）
+• 优化白标支持
+
+感谢新的贡献者！@fynngodau @projectgus @glennmen @Isira-Seneviratne

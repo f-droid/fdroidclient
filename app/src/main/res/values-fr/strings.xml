@@ -505,8 +505,8 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_title">Mises à jour</string>
     <string name="notification_channel_installs_title">Installations</string>
-    <string name="notification_channel_swaps_description">Affiche les notifications de transfert d’applications en P2P.</string>
-    <string name="notification_channel_swaps_title">Transferts</string>
+    <string name="notification_channel_swaps_description">Affiche les notifications d\'échange d\'applications en P2P.</string>
+    <string name="notification_channel_swaps_title">Échanges</string>
     <string name="notification_channel_updates_description">Afficher les notifications de mise à jour des applis et des dépôts.</string>
     <string name="notification_channel_installs_description">Affiche les notifications d’installation d’applis.</string>
 </resources>

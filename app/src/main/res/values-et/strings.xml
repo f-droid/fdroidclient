@@ -447,7 +447,7 @@
     <string name="over_network_never_summary">Ära kasuta seda ühendust alla laadimiseks mitte kunagi</string>
     <string name="send_installed_apps">Jaga paigaldatud rakendusi</string>
     <string name="send_installed_apps_csv">F-Droidi paigaldatud rakendused CSV failina</string>
-    <string name="updates_disabled_by_settings">Kõik uuendused, mida Data/Wi-Fi seaded keelavad</string>
+    <string name="updates_disabled_by_settings">Kõik uuendused, mida mobiilne andmeside/Wi-Fi seaded keelavad</string>
     <string name="repo_add_mirror">Lisa peegel</string>
     <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisada ta peegliks?</string>
     <string name="menu_open">Ava</string>
