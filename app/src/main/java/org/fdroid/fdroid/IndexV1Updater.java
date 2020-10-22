@@ -301,7 +301,7 @@ public class IndexV1Updater extends IndexUpdater {
         repo.maxage = getIntRepoValue(repoMap, "maxage");
         repo.version = getIntRepoValue(repoMap, "version");
 
-        if (TextUtils.isEmpty(platformSigCache) {
+        if (TextUtils.isEmpty(platformSigCache)) {
             PackageInfo androidPackageInfo = Utils.getPackageInfo(context, "android");
             platformSigCache = Utils.getPackageSig(androidPackageInfo);
         }
