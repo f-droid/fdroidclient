@@ -14,6 +14,10 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
+
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
@@ -28,12 +32,9 @@ import java.util.Map;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.PublishSubject;
 
 /**
  * Handles all updates to {@link InstalledAppProvider}, whether checking the contents
@@ -65,12 +66,14 @@ public class InstalledAppProviderService extends JobIntentService {
     private static final String EXTRA_PACKAGE_INFO = "org.fdroid.fdroid.data.extra.PACKAGE_INFO";
 
     /**
-     * This is for notifing the users of this {@link android.content.ContentProvider}
-     * that the contents has changed.  Since {@link Intent}s can come in slow
+     * This is for notifying the users of this {@link android.content.ContentProvider}
+     * that the contents have changed. Since {@link Intent}s can come in slow
      * or fast, and this can trigger a lot of UI updates, the actual
      * notifications are rate limited to one per second.
      */
     private PublishSubject<String> packageChangeNotifier;
+
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     public void onCreate() {
@@ -81,17 +84,16 @@ public class InstalledAppProviderService extends JobIntentService {
         // only emit an event to the subscriber after it has not received any new events for one second.
         // This ensures that we don't constantly ask our lists of apps to update as we iterate over
         // the list of installed apps and insert them to the database...
-        packageChangeNotifier
-                .subscribeOn(Schedulers.newThread())
-                .debounce(3, TimeUnit.SECONDS)
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String packageName) {
-                        Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
-                        getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-                        getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
-                    }
-                });
+        compositeDisposable.add(
+                packageChangeNotifier
+                        .subscribeOn(Schedulers.newThread())
+                        .debounce(3, TimeUnit.SECONDS)
+                        .subscribe(packageName -> {
+                            Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
+                            getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+                            getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+                        })
+        );
 
         // ...alternatively, this non-debounced version will instantly emit an event about the
         // particular package being updated. This is required so that our AppDetails view can update
@@ -100,14 +102,18 @@ public class InstalledAppProviderService extends JobIntentService {
         // only for changes to specific URIs in the AppProvider. These are triggered when a more
         // general notification (e.g. to AppProvider.getContentUri()) is fired, but not when a
         // sibling such as AppProvider.getHighestPriorityMetadataUri() is fired.
-        packageChangeNotifier.subscribeOn(Schedulers.newThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String packageName) {
-                        getContentResolver()
-                                .notifyChange(AppProvider.getHighestPriorityMetadataUri(packageName), null);
-                    }
-                });
+        compositeDisposable.add(
+                packageChangeNotifier
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(packageName -> getContentResolver()
+                                .notifyChange(AppProvider.getHighestPriorityMetadataUri(packageName), null))
+        );
+    }
+
+    @Override
+    public void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
     }
 
     /**
@@ -243,12 +249,7 @@ public class InstalledAppProviderService extends JobIntentService {
     public static File getPathToInstalledApk(PackageInfo packageInfo) {
         File apk = new File(packageInfo.applicationInfo.publicSourceDir);
         if (apk.isDirectory()) {
-            FilenameFilter filter = new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    return name.endsWith(".apk");
-                }
-            };
+            FilenameFilter filter = (dir, name) -> name.endsWith(".apk");
             File[] files = apk.listFiles(filter);
             if (files == null) {
                 String msg = packageInfo.packageName + " sourceDir has no APKs: " + apk.getAbsolutePath();
