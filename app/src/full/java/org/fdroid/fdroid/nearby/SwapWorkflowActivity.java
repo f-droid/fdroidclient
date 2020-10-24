@@ -34,7 +34,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -54,7 +65,6 @@ import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
-import org.fdroid.fdroid.qr.QrGenAsyncTask;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.Date;
@@ -65,17 +75,8 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import com.google.android.material.switchmaterial.SwitchMaterial;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
@@ -117,6 +118,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @LayoutRes
     private int currentSwapViewLayoutRes = STEP_INTRO;
+
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public static void requestSwap(Context context, String repo) {
         requestSwap(context, Uri.parse(repo));
@@ -235,6 +238,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        compositeDisposable.dispose();
         localBroadcastManager.unregisterReceiver(downloaderInterruptedReceiver);
         unbindService(serviceConnection);
         super.onDestroy();
@@ -929,18 +933,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         ImageView qrImage = container.findViewById(R.id.wifi_qr_code);
         if (qrUriString != null && qrImage != null) {
             Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
-            new QrGenAsyncTask(SwapWorkflowActivity.this, R.id.wifi_qr_code).execute(qrUriString);
 
-            // Replace all blacks with the background blue.
-            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
-                    R.color.swap_blue)));
+            compositeDisposable.add(Utils.generateQrBitmap(this, qrUriString)
+                    .subscribe(qrBitmap -> {
+                        qrImage.setImageBitmap(qrBitmap);
 
-            final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
-            if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
-                qrWarningMessage.setVisibility(View.GONE);
-            } else {
-                qrWarningMessage.setVisibility(View.VISIBLE);
-            }
+                        // Replace all blacks with the background blue.
+                        qrImage.setColorFilter(new LightingColorFilter(0xffffffff,
+                                ContextCompat.getColor(this, R.color.swap_blue)));
+
+                        final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
+                        if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
+                            qrWarningMessage.setVisibility(View.GONE);
+                        } else {
+                            qrWarningMessage.setVisibility(View.VISIBLE);
+                        }
+                    })
+            );
         }
     }
 
