@@ -648,8 +648,8 @@ public class ManageReposActivity extends AppCompatActivity
             })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnDispose(() -> Utils.debugLog(TAG, "Not checking more repo addresses," +
-                            " because process was skipped."))
+                    .doOnDispose(() -> Utils.debugLog(TAG,
+                            "Not checking more repo addresses, because process was skipped."))
                     .subscribe(codeAddressPair -> {
                         final int statusCode = codeAddressPair.first;
                         final String newAddress = codeAddressPair.second;

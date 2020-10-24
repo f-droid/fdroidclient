@@ -89,8 +89,7 @@ public class InstalledAppProviderService extends JobIntentService {
                         .subscribeOn(Schedulers.newThread())
                         .debounce(3, TimeUnit.SECONDS)
                         .subscribe(packageName -> {
-                            Utils.debugLog(TAG, "Notifying content providers (so they can update" +
-                                    " the relevant views).");
+                            Utils.debugLog(TAG, "Notifying content providers to update relevant views.");
                             getContentResolver().notifyChange(AppProvider.getContentUri(), null);
                             getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
                         })
