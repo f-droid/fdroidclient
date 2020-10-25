@@ -1,0 +1,163 @@
+/*
+ * Copyright (C) 2018  Senecto Limited
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+package org.fdroid.fdroid;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+
+import androidx.test.core.app.ApplicationProvider;
+
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.FDroidProviderTest;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.mock.MockApk;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+
+import static org.fdroid.fdroid.data.Schema.*;
+import static org.junit.Assert.assertEquals;
+
+@RunWith(RobolectricTestRunner.class)
+public class RepoUrlsTest extends FDroidProviderTest {
+    private static final String TAG = "RepoUrlsTest";
+
+    private static class TestRepo {
+        public String repoUrl;
+        public String fileUrlPattern;
+
+        public TestRepo(String repoUrl, String fileUrlPattern)
+        {
+            this.repoUrl = repoUrl;
+            this.fileUrlPattern = fileUrlPattern;
+        }
+    }
+
+    private static final String APK_NAME = "test-v1.apk";
+
+    private static final TestRepo REPOS[] = {
+            new TestRepo(
+                    "https://microg.org/fdroid/repo",
+                    "https://microg.org/fdroid/repo/%s"),
+            new TestRepo(
+                    "http://bdf2wcxujkg6qqff.onion/fdroid/repo",
+                    "http://bdf2wcxujkg6qqff.onion/fdroid/repo/%s"),
+            new TestRepo(
+                    "http://lysator7eknrfl47rlyxvgeamrv7ucefgrrlhk7rouv3sna25asetwid.onion/pub/fdroid/repo",
+                    "http://lysator7eknrfl47rlyxvgeamrv7ucefgrrlhk7rouv3sna25asetwid.onion/pub/fdroid/repo/%s"),
+            new TestRepo(
+                    "https://mirrors.nju.edu.cn/fdroid/repo?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB",
+                    "https://mirrors.nju.edu.cn/fdroid/repo/%s?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB"),
+            new TestRepo(
+                    "https://raw.githubusercontent.com/guardianproject/fdroid-repo/master/fdroid/repo",
+                    "https://raw.githubusercontent.com/guardianproject/fdroid-repo/master/fdroid/repo/%s"),
+            new TestRepo(
+                    "content://com.android.externalstorage.documents/tree/1AFB-2402%3A/document/1AFB-2402%3Atesty.at.or.at%2Ffdroid%2Frepo",
+                    // note escaped URL-encoding % in format string patterns
+                    "content://com.android.externalstorage.documents/tree/1AFB-2402%%3A/document/1AFB-2402%%3Atesty.at.or.at%%2Ffdroid%%2Frepo%%2F%s"),
+            new TestRepo(
+                    "content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo",
+                    // note escaped URL-encoding % in format string patterns
+                    "content://authority/tree/313E-1F1C%%3A/document/313E-1F1C%%3Aguardianproject.info%%2Ffdroid%%2Frepo%%2F%s"),
+            new TestRepo(
+                    "http://10.20.31.244:8888/fdroid/repo?FINGERPRINT=35521D88285A9D06FBE33D35FB8B4BB872D753666CF981728E2249FEE6D2D0F2&SWAP=1&BSSID=FE:EE:DA:45:2D:4E",
+                    "http://10.20.31.244:8888/fdroid/repo/%s?FINGERPRINT=35521D88285A9D06FBE33D35FB8B4BB872D753666CF981728E2249FEE6D2D0F2&SWAP=1&BSSID=FE:EE:DA:45:2D:4E"),
+            new TestRepo(
+                    "fdroidrepos://briarproject.org/fdroid/repo?fingerprint=1FB874BEE7276D28ECB2C9B06E8A122EC4BCB4008161436CE474C257CBF49BD6",
+                    "fdroidrepos://briarproject.org/fdroid/repo/%s?fingerprint=1FB874BEE7276D28ECB2C9B06E8A122EC4BCB4008161436CE474C257CBF49BD6"),
+    };
+
+    @Before
+    public void setup() {
+        Preferences.setupForTests(context);
+    }
+
+    interface getFileFromRepo {
+        String get(TestRepo tr);
+    }
+
+    private void testReposWithFile(String fileName, getFileFromRepo useOfRepo)
+    {
+        for(TestRepo tr: REPOS) {
+            String expectedUrl = String.format(tr.fileUrlPattern, fileName);
+            System.out.println("Testing URL " + expectedUrl);
+            String actualUrl = useOfRepo.get(tr);
+            assertEquals(expectedUrl, actualUrl);
+        }
+    }
+
+    @Test
+    public void testIndexUrls()
+    {
+        testReposWithFile(IndexUpdater.SIGNED_FILE_NAME, new getFileFromRepo() {
+            @Override
+            public String get(TestRepo tr) {
+                Repo repo = new Repo();
+                repo.address = tr.repoUrl;
+                IndexUpdater updater = new IndexUpdater(context, repo);
+                return updater.getIndexUrl(repo);
+            }
+        });
+    }
+
+    @Test
+    public void testIndexV1Urls()
+    {
+        testReposWithFile(IndexV1Updater.SIGNED_FILE_NAME, new getFileFromRepo() {
+            @Override
+            public String get(TestRepo tr) {
+                Repo repo = new Repo();
+                repo.address = tr.repoUrl;
+                IndexV1Updater updater = new IndexV1Updater(context, repo);
+                return updater.getIndexUrl(repo);
+            }
+        });
+    }
+
+    @Test
+    public void testApkUrls()
+    {
+        testReposWithFile(APK_NAME, new getFileFromRepo() {
+            @Override
+            public String get(TestRepo tr) {
+                Apk apk = new MockApk(APK_NAME, 1, tr.repoUrl, APK_NAME);
+                return apk.getCanonicalUrl();
+            }
+        });
+    }
+
+    private Apk insertApk(String packageName, String name, String repoAddress) {
+
+        App app = Assert.insertApp(context, packageName, name);
+
+        ContentValues additionalValues = new ContentValues();
+        additionalValues.put(ApkTable.Cols.Repo.ADDRESS, repoAddress);
+
+        Uri contentUri = Assert.insertApk(context, app, 1, additionalValues);
+        Cursor queryCursor = contentResolver.query(contentUri, ApkTable.Cols.ALL, null, null, null);
+        queryCursor.moveToFirst();
+        return new Apk(queryCursor);
+    }
+
+}

@@ -10,6 +10,13 @@ public class MockApk extends Apk {
         this.versionCode = versionCode;
     }
 
+    public MockApk(String id, int versionCode, String repoAddress, String apkName) {
+        this.packageName = id;
+        this.versionCode = versionCode;
+        this.repoAddress = repoAddress;
+        this.apkName = apkName;
+    }
+
     public MockApk(App app, int versionCode) {
         this.appId = app.getId();
         this.versionCode = versionCode;

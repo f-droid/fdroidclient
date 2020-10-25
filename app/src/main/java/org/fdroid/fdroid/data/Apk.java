@@ -58,7 +58,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // these are never set by the Apk/package index metadata
     @JsonIgnore
-    String repoAddress;
+    protected String repoAddress;
     @JsonIgnore
     int repoVersion;
     @JsonIgnore
