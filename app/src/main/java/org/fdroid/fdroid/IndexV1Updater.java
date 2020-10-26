@@ -302,7 +302,7 @@ public class IndexV1Updater extends IndexUpdater {
         repo.version = getIntRepoValue(repoMap, "version");
 
         if (TextUtils.isEmpty(platformSigCache)) {
-            PackageInfo androidPackageInfo = Utils.getPackageInfo(context, "android");
+            PackageInfo androidPackageInfo = Utils.getPackageInfoWithSignatures(context, "android");
             platformSigCache = Utils.getPackageSig(androidPackageInfo);
         }
 
