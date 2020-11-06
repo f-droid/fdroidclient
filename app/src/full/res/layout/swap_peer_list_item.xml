@@ -27,7 +27,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_centerInParent="true"
-                tools:src="@drawable/ic_bluetooth_white"/>
+                tools:src="@drawable/ic_bluetooth"/>
 
     </RelativeLayout>
 

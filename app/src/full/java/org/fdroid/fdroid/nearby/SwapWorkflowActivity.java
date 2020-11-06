@@ -17,17 +17,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.core.view.MenuItemCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,9 +34,23 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import cc.mvdan.accesspoint.WifiApControl;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -74,6 +77,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cc.mvdan.accesspoint.WifiApControl;
 
 import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
@@ -955,19 +960,19 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
             // empty bssid with an ipAddress means hotspot mode
             descriptionView.setText(R.string.swap_join_this_hotspot);
-            wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.hotspot));
+            wifiIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wifi_tethering));
             ssidView.setText(R.string.swap_active_hotspot);
             tapView.setText(R.string.swap_switch_to_wifi);
         } else if (TextUtils.isEmpty(FDroidApp.ssid)) {
             // not connected to or setup with any wifi network
             descriptionView.setText(R.string.swap_join_same_wifi);
-            wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.wifi));
+            wifiIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wifi));
             ssidView.setText(R.string.swap_no_wifi_network);
             tapView.setText(R.string.swap_view_available_networks);
         } else {
             // connected to a regular wifi network
             descriptionView.setText(R.string.swap_join_same_wifi);
-            wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.wifi));
+            wifiIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wifi));
             ssidView.setText(FDroidApp.ssid);
             tapView.setText(R.string.swap_view_available_networks);
         }

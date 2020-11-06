@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.text.Html;
@@ -28,12 +30,14 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
@@ -42,6 +46,7 @@ import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -830,7 +835,17 @@ public class AppDetailsRecyclerViewAdapter
          * user can expand/collapse this item.
          */
         protected void updateExpandableItem(boolean isExpanded) {
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, getIcon(), 0, isExpanded ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+            final int icon = getIcon();
+            Drawable iconDrawable = ContextCompat.getDrawable(headerView.getContext(), icon);
+            if (icon == R.drawable.ic_access_time) {
+                assert iconDrawable != null;
+                iconDrawable = DrawableCompat.wrap(iconDrawable).mutate();
+                DrawableCompat.setTint(iconDrawable, Color.parseColor("#B4B4B4"));
+            }
+            final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
+            final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
+                    iconDrawable, null, isExpanded ? expandLess : expandMore, null);
         }
     }
 
@@ -855,7 +870,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @DrawableRes
         protected int getIcon() {
-            return R.drawable.ic_access_time_24dp_grey600;
+            return R.drawable.ic_access_time;
         }
     }
 
@@ -865,7 +880,11 @@ public class AppDetailsRecyclerViewAdapter
         NoVersionsViewHolder(View view) {
             super(view);
             headerView = (TextView) view.findViewById(R.id.information);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, 0, 0);
+            final Drawable accessTime = DrawableCompat.wrap(ContextCompat.getDrawable(headerView.getContext(),
+                    R.drawable.ic_access_time)).mutate();
+            DrawableCompat.setTint(accessTime, Color.parseColor("#B4B4B4"));
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
+                    accessTime, null, null, null);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -956,7 +975,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @DrawableRes
         protected int getIcon() {
-            return R.drawable.ic_lock_24dp_grey600;
+            return R.drawable.ic_lock;
         }
     }
 
@@ -1004,7 +1023,7 @@ public class AppDetailsRecyclerViewAdapter
 
             // Issues button
             if (uriIsSetAndCanBeOpened(app.issueTracker)) {
-                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.issueTracker);
+                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_error, app.issueTracker);
             }
 
             // Translation button
@@ -1281,7 +1300,7 @@ public class AppDetailsRecyclerViewAdapter
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
             versionCode.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
-                    R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600));
+                    R.drawable.ic_expand_less : R.drawable.ic_expand_more));
 
             // This is required to make these labels
             // auto-scrollable when they are too long

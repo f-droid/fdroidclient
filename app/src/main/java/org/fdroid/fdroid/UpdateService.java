@@ -34,13 +34,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -259,7 +260,7 @@ public class UpdateService extends JobIntentService {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationBuilder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_UPDATES)
-                .setSmallIcon(R.drawable.ic_refresh_white)
+                .setSmallIcon(R.drawable.ic_refresh)
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentTitle(getString(R.string.update_notification_title));

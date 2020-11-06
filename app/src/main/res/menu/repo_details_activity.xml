@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/action_share"
-        android:icon="@drawable/ic_share_white"
+        android:icon="@drawable/ic_share"
         android:title="@string/menu_share"
         app:showAsAction="ifRoom|withText"/>
     <item
         android:id="@+id/menu_enable_nfc"
-        android:icon="@drawable/ic_nfc_white"
+        android:icon="@drawable/ic_nfc"
         android:title="@string/enable_nfc_send"
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/menu_delete"
-        android:icon="@drawable/ic_delete_white"
+        android:icon="@drawable/ic_delete"
         android:title="@string/delete"
         app:showAsAction="ifRoom|withText" />
 

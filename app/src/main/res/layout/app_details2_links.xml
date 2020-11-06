@@ -27,8 +27,8 @@
             android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
             android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
             android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
-            android:drawableRight="@drawable/ic_expand_more_grey600"
-            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            android:drawableRight="@drawable/ic_expand_more"
+            android:drawableEnd="@drawable/ic_expand_more"
             android:drawableLeft="@drawable/ic_website"
             android:drawableStart="@drawable/ic_website"
             android:background="?selectableItemBackground" />
