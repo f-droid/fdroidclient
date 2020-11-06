@@ -245,7 +245,7 @@ public final class AppUpdateStatusManager {
         ArrayList<AppUpdateStatus> returnValues = new ArrayList<>();
         synchronized (appMapping) {
             for (AppUpdateStatus entry : appMapping.values()) {
-                if (entry.apk.packageName.equalsIgnoreCase(packageName)) {
+                if (entry.apk.packageName.equals(packageName)) {
                     returnValues.add(entry);
                 }
             }
