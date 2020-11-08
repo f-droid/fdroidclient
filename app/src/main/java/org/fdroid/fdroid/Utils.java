@@ -120,7 +120,7 @@ public final class Utils {
 
     private static Handler toastHandler;
 
-    public static final String FALLBACK_ICONS_DIR = "/icons/";
+    public static final String FALLBACK_ICONS_DIR = "icons";
 
     /*
      * @param dpiMultiplier Lets you grab icons for densities larger or
@@ -132,22 +132,22 @@ public final class Utils {
         final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         final double dpi = metrics.densityDpi * dpiMultiplier;
         if (dpi >= 640) {
-            return "/icons-640/";
+            return "icons-640";
         }
         if (dpi >= 480) {
-            return "/icons-480/";
+            return "icons-480";
         }
         if (dpi >= 320) {
-            return "/icons-320/";
+            return "icons-320";
         }
         if (dpi >= 240) {
-            return "/icons-240/";
+            return "icons-240";
         }
         if (dpi >= 160) {
-            return "/icons-160/";
+            return "icons-160";
         }
 
-        return "/icons-120/";
+        return "icons-120";
     }
 
     /**

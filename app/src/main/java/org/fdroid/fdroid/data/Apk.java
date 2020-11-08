@@ -280,7 +280,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
     public String getCanonicalUrl() {
         checkRepoAddress();
-        return repoAddress + "/" + apkName.replace(" ", "%20");
+        Repo repo = new Repo(repoAddress);
+        return repo.getFileUrl(apkName);
     }
 
     /**

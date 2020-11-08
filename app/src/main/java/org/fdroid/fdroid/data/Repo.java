@@ -25,13 +25,16 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.text.TextUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
+import org.fdroid.fdroid.net.TreeUriDownloader;
 
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -139,6 +142,10 @@ public class Repo extends ValueObject {
     public String[] disabledMirrors;
 
     public Repo() {
+    }
+
+    public Repo(String address) {
+        this.address = address;
     }
 
     public Repo(Cursor cursor) {
@@ -262,6 +269,42 @@ public class Repo extends ValueObject {
         }
         return tempName;
     }
+
+    public String getFileUrl(String... pathElements)
+    {
+        /* Each String in pathElements might contain a /, should keep these as path elements */
+        List<String> elements = new ArrayList();
+        for (String element: pathElements) {
+            for (String elementPart : element.split("/")) {
+                elements.add(elementPart);
+            }
+        }
+
+        /**
+         * Storage Access Framework URLs have this wacky URL-encoded path within the URL path.
+         *
+         * i.e.
+         * content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo
+         *
+         * Currently don't know a better way to identify these than by content:// prefix,
+         * seems the Android SDK expects apps to consider them as opaque identifiers.
+         */
+        if (address.startsWith("content://")) {
+            StringBuilder result = new StringBuilder(address);
+            for (String element: elements) {
+                result.append(TreeUriDownloader.ESCAPED_SLASH);
+                result.append(element);
+            }
+            return result.toString();
+        } else { // Normal URL
+            Uri.Builder result = Uri.parse(address).buildUpon();
+            for (String element: elements) {
+                result.appendPath((element));
+            }
+            return result.build().toString();
+        }
+    }
+
 
     private static int toInt(Integer value) {
         if (value == null) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018  Senecto Limited
+ * Copyright (C) 2018-2021  Senecto Limited
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -43,8 +43,13 @@ import static org.junit.Assert.assertEquals;
 public class RepoUrlsTest extends FDroidProviderTest {
     private static final String TAG = "RepoUrlsTest";
 
+    /** Private class describing a repository URL we're going to test, and
+     * the file pattern for any files within that URL.
+     */
     private static class TestRepo {
+        // Repo URL for the test case
         public String repoUrl;
+        // String format pattern for generating file URLs, should contain a single %s for the filename
         public String fileUrlPattern;
 
         public TestRepo(String repoUrl, String fileUrlPattern)
@@ -74,11 +79,13 @@ public class RepoUrlsTest extends FDroidProviderTest {
                     "https://raw.githubusercontent.com/guardianproject/fdroid-repo/master/fdroid/repo/%s"),
             new TestRepo(
                     "content://com.android.externalstorage.documents/tree/1AFB-2402%3A/document/1AFB-2402%3Atesty.at.or.at%2Ffdroid%2Frepo",
-                    // note escaped URL-encoding % in format string patterns
+                    // note: to have a URL-escaped path in a format string pattern, we need to
+                    // %-escape all URL %
                     "content://com.android.externalstorage.documents/tree/1AFB-2402%%3A/document/1AFB-2402%%3Atesty.at.or.at%%2Ffdroid%%2Frepo%%2F%s"),
             new TestRepo(
                     "content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo",
-                    // note escaped URL-encoding % in format string patterns
+                    // note: to have a URL-escaped path in a format string pattern, we need to
+                    // %-escape all URL %
                     "content://authority/tree/313E-1F1C%%3A/document/313E-1F1C%%3Aguardianproject.info%%2Ffdroid%%2Frepo%%2F%s"),
             new TestRepo(
                     "http://10.20.31.244:8888/fdroid/repo?FINGERPRINT=35521D88285A9D06FBE33D35FB8B4BB872D753666CF981728E2249FEE6D2D0F2&SWAP=1&BSSID=FE:EE:DA:45:2D:4E",
@@ -97,6 +104,13 @@ public class RepoUrlsTest extends FDroidProviderTest {
         String get(TestRepo tr);
     }
 
+    /** Utility test function - go through the list of test repos,
+     *  using the useOfRepo interface to instantiate a repo from the URL
+     *  and return a file of some kind (Apk, index, etc.) and check that
+     *  it matches the test repo's expected URL format.
+     * @param fileName File that 'useOfRepo' will return in the repo, when called
+     * @param useOfRepo Instance of the function that uses the repo to build a file URL
+     */
     private void testReposWithFile(String fileName, getFileFromRepo useOfRepo)
     {
         for(TestRepo tr: REPOS) {
@@ -146,18 +160,4 @@ public class RepoUrlsTest extends FDroidProviderTest {
             }
         });
     }
-
-    private Apk insertApk(String packageName, String name, String repoAddress) {
-
-        App app = Assert.insertApp(context, packageName, name);
-
-        ContentValues additionalValues = new ContentValues();
-        additionalValues.put(ApkTable.Cols.Repo.ADDRESS, repoAddress);
-
-        Uri contentUri = Assert.insertApk(context, app, 1, additionalValues);
-        Cursor queryCursor = contentResolver.query(contentUri, ApkTable.Cols.ALL, null, null, null);
-        queryCursor.moveToFirst();
-        return new Apk(queryCursor);
-    }
-
 }
