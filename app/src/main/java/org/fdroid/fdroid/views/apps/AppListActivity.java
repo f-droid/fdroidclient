@@ -20,7 +20,6 @@
 
 package org.fdroid.fdroid.views.apps;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -96,7 +95,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
-                    InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
+                            InputMethodManager.class);
                     inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
 
                     // Change focus from the search input to the app list.
@@ -148,7 +148,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 searchInput.requestFocus();
                 if (!keyboardStateMonitor.isKeyboardVisible()) {
                     InputMethodManager inputMethodManager =
-                            (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            ContextCompat.getSystemService(AppListActivity.this,
+                                    InputMethodManager.class);
                     inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
                             InputMethodManager.SHOW_FORCED, 0);
                 }

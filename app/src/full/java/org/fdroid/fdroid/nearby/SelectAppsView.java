@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.cursoradapter.widget.CursorAdapter;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
@@ -140,14 +141,14 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         private LayoutInflater getInflater(Context context) {
             if (inflater == null) {
                 Context themedContext = new ContextThemeWrapper(context, R.style.SwapTheme_AppList_ListItem);
-                inflater = (LayoutInflater) themedContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater = ContextCompat.getSystemService(themedContext, LayoutInflater.class);
             }
             return inflater;
         }
 
         private Drawable getDefaultAppIcon(Context context) {
             if (defaultAppIcon == null) {
-                defaultAppIcon = context.getResources().getDrawable(android.R.drawable.sym_def_app_icon);
+                defaultAppIcon = ContextCompat.getDrawable(context, android.R.drawable.sym_def_app_icon);
             }
             return defaultAppIcon;
         }
@@ -220,12 +221,12 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                 int colour;
                 if (checked) {
                     resource = R.drawable.ic_check_circle;
-                    colour = getResources().getColor(R.color.swap_bright_blue);
+                    colour = ContextCompat.getColor(getContext(), R.color.swap_bright_blue);
                 } else {
                     resource = R.drawable.ic_add_circle_outline;
                     colour = 0xFFD0D0D4;
                 }
-                imageView.setImageDrawable(getResources().getDrawable(resource));
+                imageView.setImageDrawable(ContextCompat.getDrawable(getContext(), resource));
                 imageView.setColorFilter(colour, PorterDuff.Mode.MULTIPLY);
             }
         }

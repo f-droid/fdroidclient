@@ -9,6 +9,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChecker {
@@ -17,7 +18,7 @@ public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChe
     private final CameraManager cameraManager;
 
     protected CameraCharacteristicsMinApiLevel21(final Context context) {
-        this.cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+        this.cameraManager = ContextCompat.getSystemService(context, CameraManager.class);
     }
 
     @Override

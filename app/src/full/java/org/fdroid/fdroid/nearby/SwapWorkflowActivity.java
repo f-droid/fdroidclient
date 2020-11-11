@@ -225,7 +225,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
                 new IntentFilter(Downloader.ACTION_INTERRUPTED));
 
-        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         wifiApControl = WifiApControl.getInstance(this);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -490,7 +490,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         getSwapService().initTimer();
 
         container.removeAllViews();
-        View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
+        View view = ContextCompat.getSystemService(this, LayoutInflater.class)
+                .inflate(viewRes, container, false);
         currentView = (SwapView) view;
         currentView.setLayoutResId(viewRes);
         currentSwapViewLayoutRes = viewRes;
@@ -934,7 +935,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             new QrGenAsyncTask(SwapWorkflowActivity.this, R.id.wifi_qr_code).execute(qrUriString);
 
             // Replace all blacks with the background blue.
-            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
+            qrImage.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
+                    R.color.swap_blue)));
 
             final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
             if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {

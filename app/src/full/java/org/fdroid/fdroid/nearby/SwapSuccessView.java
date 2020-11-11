@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
@@ -361,7 +362,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         @NonNull
         private LayoutInflater getInflater(Context context) {
             if (inflater == null) {
-                inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater = ContextCompat.getSystemService(context, LayoutInflater.class);
             }
             return inflater;
         }

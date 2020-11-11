@@ -12,6 +12,8 @@ import android.os.Process;
 import android.os.SystemClock;
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -58,7 +60,7 @@ public class CleanCacheService extends JobIntentService {
                     SystemClock.elapsedRealtime() + 5000, interval, pending);
         } else {
             Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
-            JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
             ComponentName componentName = new ComponentName(context, CleanCacheJobService.class);
             JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
                     .setRequiresDeviceIdle(true)

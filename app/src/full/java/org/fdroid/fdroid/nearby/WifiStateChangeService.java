@@ -11,6 +11,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -88,7 +89,7 @@ public class WifiStateChangeService extends IntentService {
         }
         Utils.debugLog(TAG, "WiFi change service started.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-        wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         wifiState = wifiManager.getWifiState();
         Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
         if (ni == null
