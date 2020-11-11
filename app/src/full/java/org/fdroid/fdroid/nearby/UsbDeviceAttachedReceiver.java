@@ -40,7 +40,6 @@ import android.util.Log;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.fdroid.views.main.NearbyViewBinder;
 
-import java.util.HashMap;
 
 /**
  * This is just a shim to receive {@link UsbManager#ACTION_USB_ACCESSORY_ATTACHED}
@@ -49,7 +48,6 @@ import java.util.HashMap;
 public class UsbDeviceAttachedReceiver extends BroadcastReceiver {
     public static final String TAG = "UsbDeviceAttachedReceiv";
 
-    private static final HashMap<Uri, ContentObserver> contentObservers = new HashMap<>();
 
     @RequiresApi(api = 19)
     @Override
@@ -77,6 +75,7 @@ public class UsbDeviceAttachedReceiver extends BroadcastReceiver {
                 }
             };
             contentResolver.registerContentObserver(uri, true, contentObserver);
+            UsbDeviceDetachedReceiver.contentObservers.put(uri, contentObserver);
         }
     }
 }
