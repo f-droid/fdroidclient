@@ -74,6 +74,11 @@ public class TreeUriScannerIntentService extends IntentService {
     public static final String TAG = "TreeUriScannerIntentSer";
 
     private static final String ACTION_SCAN_TREE_URI = "org.fdroid.fdroid.nearby.action.SCAN_TREE_URI";
+    /**
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/core/java/android/provider/DocumentsContract.java#238">DocumentsContract.EXTERNAL_STORAGE_PROVIDER_AUTHORITY</a>
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/packages/ExternalStorageProvider/src/com/android/externalstorage/ExternalStorageProvider.java#70">ExternalStorageProvider.AUTHORITY</a>
+     */
+    public static final String EXTERNAL_STORAGE_PROVIDER_AUTHORITY = "com.android.externalstorage.documents";
 
     public TreeUriScannerIntentService() {
         super("TreeUriScannerIntentService");
