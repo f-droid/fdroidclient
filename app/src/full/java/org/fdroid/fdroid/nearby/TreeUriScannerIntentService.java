@@ -20,7 +20,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.IntentService;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -28,15 +27,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Process;
-import androidx.documentfile.provider.DocumentFile;
 import android.util.Log;
 import android.widget.Toast;
+import androidx.documentfile.provider.DocumentFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
@@ -82,12 +80,10 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     public static void scan(Context context, Uri data) {
-        if (Preferences.get().isScanRemovableStorageEnabled()) {
-            Intent intent = new Intent(context, TreeUriScannerIntentService.class);
-            intent.setAction(ACTION_SCAN_TREE_URI);
-            intent.setData(data);
-            context.startService(intent);
-        }
+        Intent intent = new Intent(context, TreeUriScannerIntentService.class);
+        intent.setAction(ACTION_SCAN_TREE_URI);
+        intent.setData(data);
+        context.startService(intent);
     }
 
     /**

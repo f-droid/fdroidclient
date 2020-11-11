@@ -28,11 +28,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Process;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
+import androidx.core.content.ContextCompat;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
@@ -55,7 +54,7 @@ import java.util.List;
  * "External Storage"
  * <p>
  * Scanning the removable storage requires that the user allowed it.  This
- * requires both the {@link Preferences#isScanRemovableStorageEnabled()}
+ * requires both the {@link org.fdroid.fdroid.Preferences#isScanRemovableStorageEnabled()}
  * and the {@link android.Manifest.permission#READ_EXTERNAL_STORAGE}
  * permission to be enabled.
  *
@@ -75,11 +74,9 @@ public class SDCardScannerService extends IntentService {
     }
 
     public static void scan(Context context) {
-        if (Preferences.get().isScanRemovableStorageEnabled()) {
-            Intent intent = new Intent(context, SDCardScannerService.class);
-            intent.setAction(ACTION_SCAN);
-            context.startService(intent);
-        }
+        Intent intent = new Intent(context, SDCardScannerService.class);
+        intent.setAction(ACTION_SCAN);
+        context.startService(intent);
     }
 
     @Override
