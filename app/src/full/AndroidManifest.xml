@@ -100,7 +100,6 @@
                     android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                     android:resource="@xml/device_filter"/>
         </receiver>
-
         <receiver
                 android:name=".nearby.UsbDeviceDetachedReceiver">
             <intent-filter>
@@ -109,6 +108,17 @@
             <meta-data
                     android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"
                     android:resource="@xml/device_filter"/>
+        </receiver>
+        <receiver android:name=".nearby.UsbDeviceMediaMountedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+            </intent-filter>
         </receiver>
 
         <activity

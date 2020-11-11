@@ -196,8 +196,23 @@ public class NearbyViewBinder {
                                 return;
                             }
                         }
-                        ((Activity) context).startActivityForResult(intent,
-                            MainActivity.REQUEST_STORAGE_ACCESS);
+
+                        Activity activity = null;
+                        if (context instanceof Activity) {
+                            activity = (Activity) context;
+                        } else if (swapView != null && swapView.getContext() instanceof Activity) {
+                            activity = (Activity) swapView.getContext();
+                        }
+
+                        if (activity != null) {
+                            activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                        } else {
+                            // scan in the background without requesting permissions
+                            Toast.makeText(context.getApplicationContext(),
+                                    context.getString(R.string.scan_removable_storage_toast, externalStorage),
+                                    Toast.LENGTH_SHORT).show();
+                            SDCardScannerService.scan(context);
+                        }
                     }
                 });
             }
