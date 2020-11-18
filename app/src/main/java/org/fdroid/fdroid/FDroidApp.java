@@ -539,7 +539,9 @@ public class FDroidApp extends Application {
             atStartTime.edit().remove(queryStringKey).apply();
         }
 
-        SDCardScannerService.scan(this);
+        if (Preferences.get().isScanRemovableStorageEnabled()) {
+            SDCardScannerService.scan(this);
+        }
     }
 
     /**

@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.provider.DocumentsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +22,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
@@ -61,6 +60,8 @@ import java.util.List;
  *
  * @see TreeUriScannerIntentService
  * @see org.fdroid.fdroid.nearby.SDCardScannerService
+ * <p>
+ * TODO use {@link StorageManager#registerStorageVolumeCallback(Executor, StorageManager.StorageVolumeCallback)}
  */
 public class NearbyViewBinder {
     public static final String TAG = "NearbyViewBinder";
@@ -165,11 +166,26 @@ public class NearbyViewBinder {
         for (final StorageVolume storageVolume : storageManager.getStorageVolumes()) {
             if (storageVolume.isRemovable() && !storageVolume.isPrimary()) {
                 Log.i(TAG, "StorageVolume: " + storageVolume);
-                final Intent intent = storageVolume.createAccessIntent(null);
-                if (intent == null) {
+                Intent tmpIntent = null;
+                if (Build.VERSION.SDK_INT < 29) {
+                    tmpIntent = storageVolume.createAccessIntent(null);
+                } else {
+                    tmpIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                    tmpIntent.putExtra(DocumentsContract.EXTRA_INITIAL_URI,
+                            Uri.parse("content://"
+                                    + TreeUriScannerIntentService.EXTERNAL_STORAGE_PROVIDER_AUTHORITY
+                                    + "/tree/"
+                                    + storageVolume.getUuid()
+                                    + "%3A/document/"
+                                    + storageVolume.getUuid()
+                                    + "%3A"));
+                }
+                if (tmpIntent == null) {
                     Utils.debugLog(TAG, "Got null Storage Volume access Intent");
                     return;
                 }
+                final Intent intent = tmpIntent;
+
                 storageVolumeText.setVisibility(View.VISIBLE);
 
                 String text = storageVolume.getDescription(context);
@@ -196,8 +212,23 @@ public class NearbyViewBinder {
                                 return;
                             }
                         }
-                        ((Activity) context).startActivityForResult(intent,
-                            MainActivity.REQUEST_STORAGE_ACCESS);
+
+                        Activity activity = null;
+                        if (context instanceof Activity) {
+                            activity = (Activity) context;
+                        } else if (swapView != null && swapView.getContext() instanceof Activity) {
+                            activity = (Activity) swapView.getContext();
+                        }
+
+                        if (activity != null) {
+                            activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                        } else {
+                            // scan in the background without requesting permissions
+                            Toast.makeText(context.getApplicationContext(),
+                                    context.getString(R.string.scan_removable_storage_toast, externalStorage),
+                                    Toast.LENGTH_SHORT).show();
+                            SDCardScannerService.scan(context);
+                        }
                     }
                 });
             }

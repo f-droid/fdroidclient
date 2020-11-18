@@ -20,7 +20,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.IntentService;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -28,15 +27,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Process;
-import androidx.documentfile.provider.DocumentFile;
 import android.util.Log;
 import android.widget.Toast;
+import androidx.documentfile.provider.DocumentFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
@@ -76,18 +74,21 @@ public class TreeUriScannerIntentService extends IntentService {
     public static final String TAG = "TreeUriScannerIntentSer";
 
     private static final String ACTION_SCAN_TREE_URI = "org.fdroid.fdroid.nearby.action.SCAN_TREE_URI";
+    /**
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/core/java/android/provider/DocumentsContract.java#238">DocumentsContract.EXTERNAL_STORAGE_PROVIDER_AUTHORITY</a>
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/packages/ExternalStorageProvider/src/com/android/externalstorage/ExternalStorageProvider.java#70">ExternalStorageProvider.AUTHORITY</a>
+     */
+    public static final String EXTERNAL_STORAGE_PROVIDER_AUTHORITY = "com.android.externalstorage.documents";
 
     public TreeUriScannerIntentService() {
         super("TreeUriScannerIntentService");
     }
 
     public static void scan(Context context, Uri data) {
-        if (Preferences.get().isScanRemovableStorageEnabled()) {
-            Intent intent = new Intent(context, TreeUriScannerIntentService.class);
-            intent.setAction(ACTION_SCAN_TREE_URI);
-            intent.setData(data);
-            context.startService(intent);
-        }
+        Intent intent = new Intent(context, TreeUriScannerIntentService.class);
+        intent.setAction(ACTION_SCAN_TREE_URI);
+        intent.setData(data);
+        context.startService(intent);
     }
 
     /**
