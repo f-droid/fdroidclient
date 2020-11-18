@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -40,6 +39,7 @@ import androidx.core.content.FileProvider;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.gridlayout.widget.GridLayout;
@@ -529,7 +529,8 @@ public class AppDetailsRecyclerViewAdapter
                 // the changelog if its content becomes too long to fit on screen.
                 recyclerView.requestChildFocus(itemView, itemView);
             }
-            final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
+            final Spanned desc = HtmlCompat.fromHtml(app.description, HtmlCompat.FROM_HTML_MODE_LEGACY,
+                    null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
             descriptionView.setText(trimTrailingNewlines(desc));
             if (descriptionView.getText() instanceof Spannable) {
@@ -758,7 +759,8 @@ public class AppDetailsRecyclerViewAdapter
                 donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
             } else {
                 String author = "<strong>" + app.authorName + "</strong>";
-                donateHeading.setText(Html.fromHtml(context.getString(R.string.app_details_donate_prompt, app.name, author)));
+                final String prompt = context.getString(R.string.app_details_donate_prompt, app.name, author);
+                donateHeading.setText(HtmlCompat.fromHtml(prompt, HtmlCompat.FROM_HTML_MODE_LEGACY));
             }
 
             donationOptionsLayout.removeAllViews();
