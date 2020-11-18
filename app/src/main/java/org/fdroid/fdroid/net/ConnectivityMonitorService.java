@@ -80,7 +80,7 @@ public class ConnectivityMonitorService extends JobIntentService {
      * cases when looking through the network devices, especially on bad ROMs.
      */
     public static int getNetworkState(Context context) {
-        ConnectivityManager cm = ContextCompat.getSystemService(context, ConnectivityManager.class);;
+        ConnectivityManager cm = ContextCompat.getSystemService(context, ConnectivityManager.class);
         if (cm == null) {
             return FLAG_NET_UNAVAILABLE;
         }
