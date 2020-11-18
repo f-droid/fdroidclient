@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
+import android.text.util.Linkify;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -40,13 +40,13 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.text.HtmlCompat;
+import androidx.core.text.util.LinkifyCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -71,6 +71,7 @@ import java.util.Locale;
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public static final String TAG = "AppDetailsRecyclerViewA";
 
     public interface AppDetailsRecyclerViewAdapterCallbacks {
 
@@ -533,6 +534,8 @@ public class AppDetailsRecyclerViewAdapter
                     null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
             descriptionView.setText(trimTrailingNewlines(desc));
+            LinkifyCompat.addLinks(descriptionView, Linkify.WEB_URLS);
+
             if (descriptionView.getText() instanceof Spannable) {
                 Spannable spannable = (Spannable) descriptionView.getText();
                 URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
