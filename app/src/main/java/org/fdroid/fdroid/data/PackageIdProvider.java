@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
 
-public class PackageProvider extends FDroidProvider {
+public class PackageIdProvider extends FDroidProvider {
 
     public static final class Helper {
         private Helper() {
@@ -60,7 +60,7 @@ public class PackageProvider extends FDroidProvider {
         }
     }
 
-    private static final String PROVIDER_NAME = "PackageProvider";
+    private static final String PROVIDER_NAME = "PackageIdProvider";
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
@@ -105,7 +105,7 @@ public class PackageProvider extends FDroidProvider {
 
     @Override
     protected String getProviderName() {
-        return "PackageProvider";
+        return PROVIDER_NAME;
     }
 
     public static String getAuthority() {

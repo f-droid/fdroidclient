@@ -928,7 +928,7 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
-        long packageId = PackageProvider.Helper.ensureExists(getContext(), values.getAsString(Cols.Package.PACKAGE_NAME));
+        long packageId = PackageIdProvider.Helper.ensureExists(getContext(), values.getAsString(Cols.Package.PACKAGE_NAME));
         values.remove(Cols.Package.PACKAGE_NAME);
         values.put(Cols.PACKAGE_ID, packageId);
 

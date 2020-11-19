@@ -100,8 +100,8 @@
                 android:exported="false"/>
 
         <provider
-                android:authorities="${applicationId}.data.PackageProvider"
-                android:name="org.fdroid.fdroid.data.PackageProvider"
+                android:authorities="${applicationId}.data.PackageIdProvider"
+                android:name="org.fdroid.fdroid.data.PackageIdProvider"
                 android:exported="false"/>
 
         <provider

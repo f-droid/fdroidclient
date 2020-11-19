@@ -339,7 +339,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         String packageName = values.getAsString(Cols.Package.NAME);
-        long packageId = PackageProvider.Helper.ensureExists(getContext(), packageName);
+        long packageId = PackageIdProvider.Helper.ensureExists(getContext(), packageName);
         values.remove(Cols.Package.NAME);
         values.put(Cols.PACKAGE_ID, packageId);
 
