@@ -12,9 +12,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import org.fdroid.fdroid.Preferences;
@@ -42,8 +42,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final AppCompatActivity activity;
     private final TextView emptyState;
     private final RecyclerView appList;
-
-    private ProgressBar progressBar;
+    private final ProgressBar initialUpdateProgressBar;
 
     WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -56,6 +55,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         layoutManager.setSpanSizeLookup(new WhatsNewAdapter.SpanSizeLookup());
 
         emptyState = (TextView) whatsNewView.findViewById(R.id.empty_state);
+
+        initialUpdateProgressBar = whatsNewView.findViewById(R.id.initial_update_progress_bar);
 
         appList = (RecyclerView) whatsNewView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
@@ -140,6 +141,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         whatsNewAdapter.setAppsCursor(cursor);
 
+        initialUpdateProgressBar.setVisibility(View.GONE);
+
         if (whatsNewAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
             appList.setVisibility(View.GONE);
@@ -151,14 +154,14 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private void explainEmptyStateToUser() {
+
         if (Preferences.get().isIndexNeverUpdated() && UpdateService.isUpdating()) {
-            if (progressBar != null) {
+
+            if (initialUpdateProgressBar.getVisibility() == View.VISIBLE) {
                 return;
             }
-            LinearLayout linearLayout = (LinearLayout) appList.getParent();
-            progressBar = new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge);
-            progressBar.setId(R.id.progress_bar);
-            linearLayout.addView(progressBar);
+
+            initialUpdateProgressBar.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.GONE);
             return;
