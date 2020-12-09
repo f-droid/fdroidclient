@@ -471,6 +471,10 @@
                 <data android:pathPattern="/.*/.*/.*/fdroid/repo/*"/>
                 <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo"/>
                 <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo/*"/>
+                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo"/>
+                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo/*"/>
+                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo"/>
+                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo/*"/>
                 <data android:path="/fdroid/archive"/>
                 <data android:pathPattern="/fdroid/archive/*"/>
                 <data android:pathPattern="/.*/fdroid/archive"/>
