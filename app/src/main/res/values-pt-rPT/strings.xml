@@ -288,8 +288,8 @@
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">A descarregar atualização para %1$s aplicação.</item>
-        <item quantity="other">A descarregar atualizações para %1$s aplicações.</item>
+        <item quantity="one">A descarregar atualização para %1$d aplicação.</item>
+        <item quantity="other">A descarregar atualizações para %1$d aplicações.</item>
     </plurals>
     <string name="versions">Versões</string>
     <string name="clear_search">Limpar pesquisa</string>
