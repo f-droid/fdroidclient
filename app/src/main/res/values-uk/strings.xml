@@ -319,7 +319,7 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Немає Інтернету? Отримуйте застосунки від людей поруч із вами!</string>
     <string name="nearby_splash__find_people_button">Знайти людей поблизу</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Оновлено %1$s день тому</item>
+        <item quantity="one">Оновлено %1$d день тому</item>
         <item quantity="few">Оновлено %1$d дні тому</item>
         <item quantity="many">Оновлено %1$d днів тому</item>
         <item quantity="other">Оновлено %1$d днів тому</item>
