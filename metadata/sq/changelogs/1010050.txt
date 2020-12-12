@@ -1,0 +1,7 @@
+* përdorim kanalesh njoftimesh për kontroll të imët (@Isira-Seneviratne)
+* U përmirësua përzgjedhje gjuhësh me shumë vendore (@spacecowboy/@bubu)
+* Skeda Më të rejat do të shfaqë përfundime më të mirë në pajisje jo në anglisht
+* përditësime te libraritë bazë (Jackson, androidx, gradle, etj)
+* përimtim i mbulimit për <e>whitelabeling</em>
+
+Faleminderit kontribuesve të rinj! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

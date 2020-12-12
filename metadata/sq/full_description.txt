@@ -1,10 +1,10 @@
-F-Droid është një katalog i instalueshëm aplikacionesh
-software i lirë për Android. Aplikacioni klient për F-Droid e bën të lehtë
+F-Droid është një katalog i instalueshëm aplikacionesh software-i
+të lirë për Android. Aplikacioni klient për F-Droid e bën të lehtë
 shfletimin, instalimin dhe ndjekjen e përditësimeve në pajisjen tuaj.
 
 Lidhet me çfarëdo deposh të përputhshme me F-Droid. Depoja
-parazgjedhje strehohet te f-droid.org, e cila përmban vetëm
-software të lirë bona fide.
+parazgjedhje strehohet te f-droid.org, e cila përmban vetëm software
+të lirë <em>bona fide</em>.
 
 Android-i vetë është i hapur, në kuptimin që jeni të lirë të instaloni
 APK-ra prej nga të doni, por ka disa arsye të mira për përdorimin
@@ -17,4 +17,5 @@ përmes të cilit mund të:
 * Lini jashtë aplikacione të papërputhshëm me pajisjen
 * Gjeni aplikacione përmes kategorish dhe përshkrimesh të kërkueshëm
 * Të përdorni URL shoqëruese, për dhurime, kod burim, etj.
-* Të jini të parrezikuar, përmes marrjesh nënshkrimet treguesish deposh dhe hashesh APK-sh
+* Të jini të parrezikuar, përmes marrjesh nënshkrimet treguesish
+  deposh dhe hashesh APK-sh
