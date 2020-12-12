@@ -249,7 +249,7 @@
     <string name="login_title">Identifikasjon påkrevet</string>
     <string name="status_inserting_apps">Lagrer programdetaljer</string>
     <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>
-    <string name="crash_dialog_title">F-Droid har kræsjet</string>
+    <string name="crash_dialog_title">F-Droid har krasjet</string>
     <string name="crash_dialog_text">Uventet feil forårsaket
         stopp av programmet. Ønsker du å sende detaljer om dette
         i en e-post for å fikse problemet?

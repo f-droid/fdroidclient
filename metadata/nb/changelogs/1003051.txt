@@ -12,7 +12,7 @@ v1.3
 
 * Deling av menyelement for pakkebrønner
 
-* Kræsjrapporter av i innstillinger
+* Krasjrapporter av i innstillinger
 
 * Installasjonshistorikkvisning ved påskrudd logging
 

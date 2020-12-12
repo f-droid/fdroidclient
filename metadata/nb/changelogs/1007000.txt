@@ -6,6 +6,6 @@
 
 *Fikset feil med "Seneste"-visning, forårsaket av feilhåndtering av tidssoner #1757
 
-* Ignorer alle uviktige kræsj i bakgrunnstjenester
+* Ignorer alle uviktige krasj i bakgrunnstjenester
 
 * Ikke bruk Priviligert tillegg hvis det er skrudd av i innstillingene
