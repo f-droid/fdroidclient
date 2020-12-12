@@ -510,4 +510,10 @@
     <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">Включва версията на това приложение и произволен уникален идентификатор, когато се извършва изтегляне, ще се отрази при рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Показва известия за актуализиране на приложения и хранилища.</string>
+    <string name="notification_channel_updates_title">Актуализации</string>
+    <string name="notification_channel_swaps_description">Показва известия за размяна на приложения за P2P.</string>
+    <string name="notification_channel_swaps_title">Суапове</string>
+    <string name="notification_channel_installs_description">Показва известия за инсталиране на приложение.</string>
+    <string name="notification_channel_installs_title">Инсталации</string>
 </resources>

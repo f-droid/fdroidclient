@@ -486,4 +486,5 @@
     <string name="notification_channel_swaps_title">교환</string>
     <string name="notification_channel_installs_description">애플리케이션 설치 과정을 알림으로 표시합니다.</string>
     <string name="notification_channel_installs_title">설치</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
