@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe desinstalarse antes. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
-    <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Instalarla de todos modos?</string>
+    <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Quiere instalarla de todos modos\?</string>
     <string name="version">Versión</string>
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
@@ -15,7 +15,7 @@
     <string name="system_installer_on">Utilizar la extensión de F-Droid con permisos de sistema al instalar, actualizar,
         y eliminar paquetes
     </string>
-    <string name="local_repo_name">Nombre de tu repositorio local</string>
+    <string name="local_repo_name">Nombre de su repositorio local</string>
     <string name="local_repo_name_summary">El título que se muestra para el repositorio local: %s</string>
     <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
     <string name="app_details">Detalles de la aplicación</string>
@@ -57,7 +57,7 @@
     <string name="menu_upgrade">Actualizar</string>
     <string name="details_notinstalled">No instalado</string>
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
-    <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
+    <string name="antitracklist">Esta aplicación rastrea e informa de su actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
     <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
@@ -84,9 +84,9 @@
     <string name="enable_proxy_title">Habilitar proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar proxy HTTP para todas las solicitudes de red</string>
     <string name="proxy_host">Servidor proxy</string>
-    <string name="proxy_host_summary">El nombre de tu proxy (p. ej., 127.0.0.1)</string>
+    <string name="proxy_host_summary">La dirección de su proxy (por ejemplo, 127.0.0.1)</string>
     <string name="proxy_port">Puerto proxy</string>
-    <string name="proxy_port_summary">El número de puerto de tu proxy (p. ej., 8118)</string>
+    <string name="proxy_port_summary">El número de puerto de su proxy (por ejemplo, 8118)</string>
     <string name="status_download">Descargando\n%2$s / %3$s (%4$d%%) desde
         \n%1$s
     </string>
@@ -97,7 +97,7 @@
     <string name="all_other_repos_fine">El resto de los repositorios no crearon errores.</string>
     <string name="global_error_updating_repos">Error en la actualización: %s</string>
     <string name="no_permissions">Sin permisos</string>
-    <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
+    <string name="no_handler_app">No tiene instalada ninguna aplicación que pueda manejar %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">No firmado</string>
     <string name="unverified">No verificado</string>
@@ -106,27 +106,20 @@
     <string name="repo_description">Descripción</string>
     <string name="repo_last_update">Última actualización</string>
     <string name="repo_name">Nombre</string>
-    <string name="unsigned_description">Esto significa que la lista de
-        aplicaciones no ha podido verificarse.
-        Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
-    </string>
-    <string name="repo_not_yet_updated">Todavía no se ha usado este repositorio.
-        Para ver las aplicaciones que ofrece tienes que activarlo.
-    </string>
+    <string name="unsigned_description">Esto significa que la lista de aplicaciones no ha podido verificarse. Debería tener cuidado con aplicaciones descargadas desde índices no firmados.</string>
+    <string name="repo_not_yet_updated">Todavía no se ha usado este repositorio. Para ver las aplicaciones que ofrece tiene que activarlo.</string>
     <string name="unknown">Desconocido</string>
     <string name="repo_confirm_delete_title">¿Borrar repositorio?</string>
-    <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles. 
-\n 
-\nNota: todas las aplicaciones previamente instaladas permanecerán en tu dispositivo.</string>
+    <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles.
+\n
+\nNota: todas las aplicaciones previamente instaladas permanecerán en su dispositivo.</string>
     <string name="repo_disabled_notification">%1$s deshabilitado.
-        \n\nNecesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.
-    </string>
+\n
+\nNecesitará volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
     <string name="repo_added">Repositorio de paquetes guardado %1$s.</string>
     <string name="repo_searching_address">Buscando repositorio de paquetes en
 \n%1$s</string>
-    <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Wi-Fi que el repo que acabas de añadir! Intenta
-        unirte a esta red: %s
-    </string>
+    <string name="not_on_same_wifi">¡Su dispositivo no está en la misma red Wi-Fi que el repositorio local que acaba de añadir! Intente unirse a esta red: %s</string>
     <string name="requires_features">Requiere: %1$s</string>
     <string name="category_Development">Desarrollo</string>
     <string name="category_Games">Juegos</string>
@@ -138,14 +131,14 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguridad</string>
     <string name="category_System">Sistema</string>
-    <string name="swap_nfc_description">Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
-    <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
+    <string name="swap_nfc_description">Si su amigo y usted tienen F-Droid y han activado el NFC, pongan en contacto sus teléfonos.</string>
+    <string name="swap_join_same_wifi">Unirse a la misma red Wi-Fi que su amigo</string>
     <string name="swap">Intercambiar aplicaciones</string>
     <string name="swap_no_wifi_network">No hay red aún</string>
     <string name="swap_view_available_networks">Tocar para abrir las redes disponibles</string>
     <string name="open_qr_code_scanner">Abrir el escáner de códigos QR</string>
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
-    <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
+    <string name="swap_confirm_connect">¿Quiere obtener aplicaciones desde %1$s ahora\?</string>
     <string name="app_name">F-Droid</string>
     <string name="about_source">Código fuente</string>
     <string name="app_incompatible">Incompatible</string>
@@ -167,27 +160,27 @@
     <string name="category_Theming">Personalización del tema</string>
     <string name="category_Time">Hora, gestión del tiempo</string>
     <string name="category_Writing">Escritura</string>
-    <string name="empty_installed_app_list">No hay aplicaciones instaladas.\n\nHay aplicaciones en tu dispositivo, pero
-        no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o porque los
-        repositorios no tienen esas aplicaciones.
-    </string>
-    <string name="empty_can_update_app_list">¡Felicitaciones!\nTus aplicaciones están actualizadas.</string>
+    <string name="empty_installed_app_list">No hay aplicaciones instaladas.
+\n
+\nHay aplicaciones en su dispositivo, pero no están disponibles desde F-Droid. Esto podría ser porque necesita actualizar los repositorios, o porque los repositorios no tienen esas aplicaciones.</string>
+    <string name="empty_can_update_app_list">¡Enhorabuena!
+\nSus aplicaciones están actualizadas</string>
     <string name="install_error_unknown">Fallo al instalar debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar debido a un error desconocido</string>
     <string name="swap_nfc_title">Tocar para intercambiar</string>
-    <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verificad que estáis en la misma red. Si no tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.</string>
-    <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
+    <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verifiquen que están en la misma red. Si no tienen acceso a la misma red, uno de ustedes puede crear un punto de acceso Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Facilita que su amigo se conecte a su punto de acceso</string>
     <string name="swap_success">¡Intercambio exitoso!</string>
-    <string name="swap_active_hotspot">%1$s (tu punto de acceso)</string>
+    <string name="swap_active_hotspot">%1$s (su punto de acceso)</string>
     <string name="swap_switch_to_wifi">Tocar para cambiar a una red Wi-Fi</string>
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
     <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el URL de la otra en un navegador.</string>
     <string name="swap_choose_apps">Elige las aplicaciones</string>
-    <string name="swap_scan_qr">Escanea código QR</string>
-    <string name="swap_people_nearby">Personas cercanas</string>
-    <string name="swap_scanning_for_peers">Buscando personas cercanas…</string>
+    <string name="swap_scan_qr">Escanear código QR</string>
+    <string name="swap_people_nearby">Gente cercana</string>
+    <string name="swap_scanning_for_peers">Buscando gente cerca…</string>
     <string name="swap_nearby">Intercambio cercano</string>
-    <string name="swap_intro">Conectar e intercambiar aplicaciones con gente cercana a tu posición.</string>
+    <string name="swap_intro">Conectar e intercambiar aplicaciones con gente cercana a su posición.</string>
     <string name="swap_visible_bluetooth">Visible vía Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Preparando Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">No visible vía Bluetooth</string>
@@ -195,22 +188,22 @@
     <string name="swap_setting_up_wifi">Preparando Wi-Fi…</string>
     <string name="swap_not_visible_wifi">No visible vía Wi-Fi</string>
     <string name="swap_wifi_device_name">Nombre del dispositivo</string>
-    <string name="swap_cant_find_peers">¿No encuentras a quien buscas?</string>
-    <string name="swap_send_fdroid">Envía F-Droid</string>
-    <string name="swap_no_peers_nearby">No se pudo encontrar gente cercana con la que intercambiar.</string>
+    <string name="swap_cant_find_peers">¿No encuentra a quien busca\?</string>
+    <string name="swap_send_fdroid">Enviar</string>
+    <string name="swap_no_peers_nearby">No se pudo encontrar gente cerca para realizar intercambios.</string>
     <string name="swap_connecting">Estableciendo conexión</string>
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="loading">Cargando…</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. ¡No podemos intercambiar con él!</string>
     <string name="install_confirm">necesita acceso a</string>
-    <string name="install_confirm_update">¿Quieres instalar una actualización de la aplicación? Tus datos no se perderán. La aplicación actualizada podrá acceder a:</string>
-    <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización de esta aplicación? Tus datos no se perderán. No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update">¿Quiere instalar una actualización de la aplicación\? Sus datos no se perderán. La aplicación actualizada podrá acceder a:</string>
+    <string name="install_confirm_update_no_perms">¿Quiere instalar una actualización de esta aplicación\? Sus datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>
     <string name="allPerms">Todos</string>
     <string name="perm_costs_money">Esto puede costar dinero</string>
-    <string name="uninstall_update_confirm">¿Quieres sustituir esta aplicación con la versión de fábrica? Ten en cuenta que se eliminarán todos los datos.</string>
-    <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>
+    <string name="uninstall_update_confirm">¿Quiere sustituir esta aplicación con la versión de fábrica\? Tenga en cuenta que se eliminarán todos los datos.</string>
+    <string name="uninstall_confirm">¿Quiere desinstalar esta aplicación\?</string>
     <string name="perms_new_perm_prefix">Nuevos:</string>
     <string name="perms_description_app">Proporcionado por %1$s.</string>
     <string name="downloading">Descargando…</string>
@@ -225,8 +218,8 @@
     <string name="theme_dark">Oscuro</string>
     <string name="unstable_updates">Actualizaciones inestables</string>
     <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
-    <string name="install_confirm_update_system">¿Desea instalar una actualización de esta aplicación integrada\? Sus datos existentes no se perderán. La aplicación actualizada tendrá acceso a:</string>
-    <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización de esta aplicación integrada? Tus datos no se perderán. No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update_system">¿Quiere instalar una actualización de esta aplicación integrada\? Sus datos existentes no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_system_no_perms">¿Quiere instalar una actualización de esta aplicación integrada\? Sus datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>
     <string name="menu_bitcoin">Bitcoin</string>
@@ -250,11 +243,7 @@
     <string name="about_license">Licencia</string>
     <string name="status_inserting_apps">Guardando los detalles de la aplicación</string>
     <string name="crash_dialog_title">F-Droid se ha detenido</string>
-    <string name="crash_dialog_text">La aplicación se ha cerrado
-        debido a un error inesperado.
-        ¿Te interesa enviarnos un correo electrónico con los
-        detalles para ayudarnos a arreglar el problema?
-    </string>
+    <string name="crash_dialog_text">La aplicación se ha cerrado debido a un error inesperado. ¿Le gustaría enviarnos un correo electrónico con los detalles para ayudarnos a arreglar el problema\?</string>
     <string name="crash_dialog_comment_prompt">Puede añadir información extra y comentarios aquí:</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
     <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
@@ -263,17 +252,17 @@
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot</string>
     <string name="repo_provider">Repositorio: %s</string>
-    <string name="update_auto_download">Obtenga actualizaciones automáticamente</string>
+    <string name="update_auto_download">Obtener actualizaciones automáticamente</string>
     <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisará para
         instalarlas
     </string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
-    <string name="keep_day">1 día</string>
-    <string name="keep_week">1 semana</string>
-    <string name="keep_month">1 mes</string>
-    <string name="keep_year">1 año</string>
+    <string name="keep_day">Un día</string>
+    <string name="keep_week">Una semana</string>
+    <string name="keep_month">Un mes</string>
+    <string name="keep_year">Un año</string>
     <string name="keep_forever">Siempre</string>
-    <string name="keep_hour">1 hora</string>
+    <string name="keep_hour">Una hora</string>
     <string name="install_error_notify_title">Error instalando %s</string>
     <string name="uninstall_error_notify_title">Error desinstalando %s</string>
     <string name="installing">Instalando…</string>
@@ -282,7 +271,7 @@
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
-    <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a Internet?</string>
+    <string name="warning_no_internet">No se puede actualizar. ¿Está conectado a Internet\?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
     <string name="app_details_donate_prompt">%2$s han creado %1$s. ¡Invítelos a un café!</string>
@@ -292,7 +281,7 @@
     <string name="clear_search">Limpiar la búsqueda</string>
     <string name="main_menu__latest_apps">Último</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Cercano</string>
+    <string name="main_menu__swap_nearby">Cercanía</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
         <item quantity="other">Ver todas (%d)</item>
@@ -340,7 +329,7 @@
         <item quantity="other">Descargar actualizaciones para %1$d apps.</item>
     </plurals>
     <string name="details_new_in_version">Novedades en la versión %s</string>
-    <string name="antifeatureswarning">Esta aplicación tiene características que podrían no gustarte.</string>
+    <string name="antifeatureswarning">Esta aplicación tiene características que podrían no gustarle.</string>
     <string name="antifeatures">Características controvertidas</string>
     <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
@@ -348,9 +337,9 @@
         <item quantity="other">Actualizada hace %1$d días</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes Internet? ¡Descarga aplicaciones de gente cercana!</string>
-    <string name="nearby_splash__find_people_button">Encontrar personas cerca</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿No tiene Internet\? ¡Descargue aplicaciones de gente cercana!</string>
+    <string name="nearby_splash__find_people_button">Encontrar gente cerca</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la función de cercanía.</string>
     <string name="latest__empty_state__no_recent_apps">No se encontraron aplicaciones recientes</string>
     <string name="latest__empty_state__never_updated">Una vez que la lista de aplicaciones se actualice, aquí se
         mostrarán las últimas aplicaciones
@@ -394,12 +383,12 @@
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
-    <string name="app_permission_storage">F-Droid necesita el permiso instalar esto en su almacenamiento. Por favor permita que en la siguiente pantalla continúe con la instalación.</string>
+    <string name="app_permission_storage">F-Droid necesita permiso para instalar esto en su almacenamiento. Por favor, permita en la siguiente pantalla que se continúe con la instalación.</string>
     <string name="app_details__incompatible_mismatched_signature">La firma no coincide con la de la versión instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versiones incompatibles aquí de todos modos, habilita la opción \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">No hay versiones con una firma compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con el dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación te permitirá ver e instalar las versiones compatibles. Esto ocurre a menudo con aplicaciones instaladas a través de Google Play o de otras fuentes, si se han firmado con un certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación le permitirá ver e instalar las versiones compatibles. Esto ocurre a menudo con aplicaciones instaladas a través de Google Play o de otras fuentes, que pueden haberse firmado con un certificado diferente.</string>
     <string name="app_list__dismiss_app_update">Actualización ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidad ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
@@ -414,10 +403,10 @@
     <string name="panic_app_setting_summary">No se ha establecido aplicación</string>
     <string name="panic_app_setting_none">Ninguna</string>
     <string name="panic_app_dialog_title">Confirmar aplicación de pánico</string>
-    <string name="panic_app_dialog_message">¿Seguro que desea permitir que %1$s desencadene acciones destructivas como botón de pánico?</string>
+    <string name="panic_app_dialog_message">¿Está seguro de que quiere permitir que %1$s desencadene las acciones destructivas del botón de pánico\?</string>
     <string name="allow">Permitir</string>
     <string name="panic_settings">Ajustes de botón de pánico</string>
-    <string name="panic_settings_summary">Acciones a tomar en caso de emergencia</string>
+    <string name="panic_settings_summary">Acciones que se tomarán en caso de emergencia</string>
     <string name="panic_exit_title">Salir de la aplicación</string>
     <string name="panic_exit_summary">Se cerrará esta aplicación</string>
     <string name="panic_destructive_actions">Acciones destructivas</string>
@@ -426,20 +415,20 @@
     <string name="sort_search">Ordenar resultados</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="panic_hide_warning_title">Recordar cómo restaurar</string>
-    <string name="panic_hide_warning_message">En un momento de pánico, se eliminará %1$s de la pantalla de inicio. Solo se restaurará escribiendo \"%2$d\" en la apli falsa %3$s.</string>
+    <string name="panic_hide_warning_message">En un momento de pánico, se eliminará %1$s de la pantalla de inicio. Solo se restaurará escribiendo \"%2$d\" en la aplicación falsa %3$s.</string>
     <string name="hiding_calculator">Calculadora</string>
     <string name="hiding_dialog_title">Ocultar %s ahora</string>
-    <string name="hiding_dialog_message">¿Seguro que quieres eliminar %1$s de la pantalla de inicio? Solo se restaurará escribiendo \"%2$d\" en la apli falsa %3$s.</string>
+    <string name="hiding_dialog_message">¿Está seguro de que quiere eliminar %1$s de la pantalla de inicio\? Solo se restaurará escribiendo \"%2$d\" en la aplicación falsa %3$s.</string>
     <string name="hiding_dialog_warning">Atención: se eliminará también cualquier atajo de la aplicación en la pantalla de inicio y tendrá que añadirse manualmente.</string>
     <string name="hide_on_long_search_press_title">Ocultar con el botón de búsqueda</string>
     <string name="hide_on_long_search_press_summary">Manteniendo pulsado el botón de búsqueda se ocultará la aplicación</string>
-    <string name="warning_scaning_qr_code">Parece que tu cámara no tiene autoenfoque. Puede resultar difícil escanear el código.</string>
+    <string name="warning_scaning_qr_code">Parece que su cámara no tiene autoenfoque. Puede resultar difícil escanear el código.</string>
     <string name="repo_add_mirror">Agregar réplica</string>
-    <string name="repo_exists_add_fingerprint">%1$s ya está configurado, esto agregará la información nueva sobre la clave.</string>
-    <string name="repo_exists_enable">%1$s ya está configurado, confirma que quieres volver a habilitarlo.</string>
+    <string name="repo_exists_add_fingerprint">%1$s ya está configurado. Esto agregará la información nueva sobre la clave.</string>
+    <string name="repo_exists_enable">%1$s ya está configurado. Confirme que quiere volver a habilitarlo.</string>
     <string name="repo_exists_and_enabled">%1$s ya está configurado y habilitado.</string>
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
-    <string name="repo_exists_add_mirror">Esto es una copia de %1$s, ¿agregarlo como réplica?</string>
+    <string name="repo_exists_add_mirror">Esto es una copia de %1$s. ¿Quiere añadirlo como réplica\?</string>
     <string name="show_anti_feature_apps">Incluir aplicaciones controvertidas</string>
     <string name="show_anti_feature_apps_on">Listar aplicaciones que requieren características controvertidas</string>
     <string name="force_touch_apps">Incluir aplicaciones de pantalla táctil</string>
@@ -451,7 +440,7 @@
     <string name="swap_toast_hotspot_enabled">Punto de acceso Wi-Fi habilitado</string>
     <string name="swap_toast_could_not_enable_hotspot">¡No se puedo habilitar el punto de acceso Wi-Fi!</string>
     <string name="over_wifi">Descargar usando WiFi</string>
-    <string name="over_data">Descargar usando tus datos</string>
+    <string name="over_data">Descargar usando datos móviles</string>
     <string name="over_network_always_summary">Usar siempre esta conexión cuando esté disponible</string>
     <string name="over_network_on_demand_summary">Usar esta conexión únicamente cuando seleccione descargar</string>
     <string name="over_network_never_summary">No descargar nada usando esta conexión</string>
@@ -462,12 +451,12 @@
     <string name="install_history">Historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
-    <string name="send_version_and_uuid_summary">Incluir la versión de esta aplicación, un ID aleatorio y único cuando se está descargando, toma efecto en el próximo reinicio de la aplicación.</string>
+    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación</string>
     <string name="share_repository">Compartir Repositorio</string>
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
-    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
+    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones</string>
     <string name="send_install_history">Enviar historial de instalación</string>
-    <string name="allow_push_requests">Dejar que repositorios instalen/desinstalen</string>
+    <string name="allow_push_requests">Dejar a repositorios instalar/desinstalar</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
     <string name="send_history_csv">%s instalar histórico como un archivo CSV</string>
     <string name="allow_push_requests_summary">Los metadatos del repositorio pueden incluir peticiones «push» para instalar o desinstalar aplicaciones</string>
@@ -482,15 +471,15 @@
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="app_repository">Repositorio: %1$s</string>
-    <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en el almacenamiento extraíble como tarjetas SD y unidades USB</string>
+    <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en unidades de almacenamiento extraíble como tarjetas SD y dispositivos USB</string>
     <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>
     <string name="nearby_splash__request_permission">Probar</string>
-    <string name="not_visible_nearby">Nearby no habilitado</string>
-    <string name="not_visible_nearby_description">Antes de intercambiar con dispositivos cercanos, haga visible su dispositivo.</string>
+    <string name="not_visible_nearby">Función de cercanía no habilitada</string>
+    <string name="not_visible_nearby_description">Antes de realizar intercambios con la función de cercanía, haga visible su dispositivo.</string>
     <string name="swap_toast_using_path">Utilizando %1$s</string>
     <string name="swap_toast_not_removable_storage">Esa opción no coincide con ningún dispositivo de almacenamiento extraíble, ¡inténtalo de nuevo!</string>
-    <string name="swap_toast_find_removeable_storage">Elige tu tarjeta SD extraíble o USB</string>
+    <string name="swap_toast_find_removeable_storage">Elija su tarjeta SD o dispositivo USB</string>
     <string name="menu_translation">Traducción</string>
     <string name="menu_select_for_wipe">Selecciona para eliminar</string>
     <string name="try_again">Inténtalo de nuevo</string>
@@ -508,10 +497,10 @@
     <string name="swap_stopping">Parando…</string>
     <string name="disabled">Inhabilitada</string>
     <string name="swap_error_cannot_start_bluetooth">No se puede iniciar Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Se cerró Cercanos por inactividad.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Se canceló la función de cercanía por inactividad.</string>
     <string name="undo">Deshacer</string>
     <string name="app_list__dismiss_installing_app">Instalación cancelada</string>
-    <string name="nearby_splash__document_tree">Buscar repositorios y réplicas en OTG USB.</string>
+    <string name="nearby_splash__document_tree">Buscar repositorios y réplicas en USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Muestra notificaciones de actualizaciones de repositorios y aplicaciones.</string>
     <string name="notification_channel_updates_title">Actualizaciones</string>
