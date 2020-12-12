@@ -164,7 +164,7 @@
 \n
 \nHay aplicaciones en su dispositivo, pero no están disponibles desde F-Droid. Esto podría ser porque necesita actualizar los repositorios, o porque los repositorios no tienen esas aplicaciones.</string>
     <string name="empty_can_update_app_list">¡Enhorabuena!
-\nSus aplicaciones están actualizadas</string>
+\nSus aplicaciones están actualizadas.</string>
     <string name="install_error_unknown">Fallo al instalar debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar debido a un error desconocido</string>
     <string name="swap_nfc_title">Tocar para intercambiar</string>
@@ -451,10 +451,10 @@
     <string name="install_history">Historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
-    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación</string>
+    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación.</string>
     <string name="share_repository">Compartir Repositorio</string>
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
-    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones</string>
+    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
     <string name="allow_push_requests">Dejar a repositorios instalar/desinstalar</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
