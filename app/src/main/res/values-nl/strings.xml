@@ -225,7 +225,9 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_download_unknown_size">%2$s worden van %1$s gedownload</string>
+    <string name="status_download_unknown_size">%2$s van
+\n%1$s
+\ndownloaden</string>
     <string name="permissions">Machtigingen</string>
     <string name="repo_details">Bron</string>
     <string name="repo_url">Adres</string>
