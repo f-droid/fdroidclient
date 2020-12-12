@@ -157,7 +157,7 @@
     <string name="interval_2w">Cerca aggiornamenti ogni 2 settimane</string>
     <string name="interval_4h">Cerca aggiornamenti ogni 4 ore</string>
     <string name="interval_12h">Cerca aggiornamenti ogni 12 ore</string>
-    <string name="interval_1h">Cerca aggiornamenti ogni ora</string>
+    <string name="interval_1h">Controlla gli aggiornamenti ogni ora</string>
     <string name="downloading">Scaricamento…</string>
     <string name="download_error">Scaricamento fallito!</string>
     <string name="perms_new_perm_prefix">Nuovo:</string>
@@ -443,7 +443,7 @@
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi attivo</string>
     <string name="swap_toast_could_not_enable_hotspot">Impossibile attivare l\'hotspot Wi-Fi!</string>
     <string name="warning_scaning_qr_code">La tua fotocamera non ha l\'autofocus. Potrebbe essere complicato scansionare il codice.</string>
-    <string name="swap_toast_invalid_url">URL di scambio non valido: %1$s</string>
+    <string name="swap_toast_invalid_url">URL non valido per lo scambio: %1$s</string>
     <string name="over_wifi">Via Wi-Fi</string>
     <string name="over_data">Via dati mobili</string>
     <string name="over_network_always_summary">Usa sempre questa connessione quando disponibile</string>
