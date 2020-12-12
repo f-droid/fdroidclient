@@ -50,9 +50,9 @@
     <string name="details_notinstalled">未安装</string>
     <string name="antiadslist">该应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告您的行为</string>
-    <string name="antinonfreeadlist">该应用会推广非自由的插件或扩展</string>
-    <string name="antinonfreenetlist">该应用会推广非自由的网络服务</string>
-    <string name="antinonfreedeplist">该应用依赖于其它非自由的应用</string>
+    <string name="antinonfreeadlist">该应用会推广收费插件或扩展</string>
+    <string name="antinonfreenetlist">该应用会推广收费的网络服务</string>
+    <string name="antinonfreedeplist">该应用依赖于其它收费应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
     <string name="expert">专家模式</string>
@@ -303,7 +303,7 @@
     <string name="preference_category__my_apps">我的应用</string>
     <string name="details_new_in_version">版本 %s 的新功能</string>
     <string name="antifeatureswarning">此应用有一些您未必喜欢的功能。</string>
-    <string name="antifeatures">Anti-feature</string>
+    <string name="antifeatures">未必喜欢的功能</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
