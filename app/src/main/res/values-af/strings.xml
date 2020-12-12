@@ -15,13 +15,11 @@
     <string name="update_auto_download">Automatise opdaterings</string>
     <string name="update_auto_download_summary">Opdateerings word outomaties afgelaai en jy word in kennis gestel om dit self te installeer</string>
     <string name="update_auto_install">Installeer opdaterings automaties</string>
-    <string name="update_auto_install_summary">Laai en installeer opdaterings in die agtergrond</string>
+    <string name="update_auto_install_summary">Laai en opdateer opdaterings in die agtergrond</string>
     <string name="notify">Wys beskikbare opdaterings</string>
     <string name="notify_on">Wys \'n kennisgewing wanneer opdaterings beskikbaar is</string>
     <string name="system_installer">Bevoorregte uitbreiding</string>
-    <string name="system_installer_on">Gebruik F-Droid bevoorregte uitbreiding om pakkettete te installeer, verander of
-        verwyder
-    </string>
+    <string name="system_installer_on">Gebruik bevoorregte uitbreiding om pakkettete te installeer, verander of verwyder</string>
     <string name="local_repo_https_on">Gebruik geenkripteerde HTTPS:// verbinding vir lokale repo</string>
     <string name="login_title">Verifikasie word vereis</string>
     <string name="login_name">Gebruikersnaam</string>
@@ -72,10 +70,10 @@
     <string name="menu_settings">Instellings</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>
-    <string name="menu_launch">Open</string>
-    <string name="menu_share">Uitruil</string>
+    <string name="menu_launch">Oopmaak</string>
+    <string name="menu_share">Deel</string>
     <string name="menu_install">Installeer</string>
-    <string name="menu_uninstall">Deïnstalleer</string>
+    <string name="menu_uninstall">Verwyder</string>
     <string name="menu_ignore_all">Ignoreer alle opdaterings</string>
     <string name="menu_ignore_this">Ignoreer hierdie opdatering</string>
     <string name="menu_website">Webwerf</string>
@@ -126,7 +124,7 @@
     <string name="repos_unchanged">Alle argiewe is op datum</string>
     <string name="all_other_repos_fine">Alle ander argiewe het geen foute veroorsaak nie.</string>
     <string name="global_error_updating_repos">Fout tydens opdatering: %s</string>
-    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die Internet verbind?</string>
+    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die Internet gekoppel\?</string>
     <string name="no_handler_app">Jy het geen beskikbare program wat %s kan hanteer nie.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Ongeteken</string>
@@ -409,4 +407,14 @@
     <string name="app_details__no_versions__show_incompat_versions">Om onversoenbare weergawes in elk geval te wys, aktiveer die \"%1$s\" instelling.</string>
     <string name="disabled">Gedeaktiveer</string>
     <string name="allow">Laat toe</string>
+    <string name="scan_removable_storage_summary">Soek pakket repos op verwyderbare media soos SD Kaarte en USB duimskyfies</string>
+    <string name="scan_removable_storage_toast">Skandeer %s…</string>
+    <string name="scan_removable_storage_title">Scan verwyderbare media</string>
+    <string name="over_network_never_summary">"Moet nooit iets aflaai met  hierdie verbinding nie"</string>
+    <string name="over_network_on_demand_summary">Gebruik slegs hierdie verbinding wanneer ek aflaai klik</string>
+    <string name="over_network_always_summary">Gebruik hierdie verbinding altyd indien beskikbaar</string>
+    <string name="over_data">Oor data kanaal</string>
+    <string name="allow_push_requests">Laat repos toe om apps te installeer/deïnstalleer</string>
+    <string name="allow_push_requests_summary">Repo-metadata kan stootversoeke insluit om apps te installeer of te deïnstalleer</string>
+    <string name="send_version_and_uuid_summary">"Voeg die app se weergawe nommer en \'n  unieke ID tydens aflaai. Word aktief met volgende app lopie."</string>
 </resources>
