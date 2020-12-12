@@ -1,7 +1,7 @@
-* używaj kanałów powiadomień do precyzyjnej kontroli (@Isira-Seneviratne)
-* Ulepszono wybór języka z wieloma ustawieniami regionalnymi (@spacecowboy/@bubu)
+* użycie kanałów powiadomień do precyzyjnej kontroli (@Isira-Seneviratne)
+* Poprawiony wybór języka z wieloma lokalizacjami (@spacecowboy/@bubu)
 * Karta Ostatnie będzie pokazywać lepsze wyniki na urządzeniach z językiem innym niż angielski
 * aktualizacje podstawowych bibliotek (Jackson, Androidx, Gradle itp.)
-* ulepszono wsparcie dla białych etykiet
+* wsparcie dla polskich białych etykiet
 
 Dzięki nowym współtwórcom! @spacecowboy @projectgus @glennmen @ Isira-Seneviratne
