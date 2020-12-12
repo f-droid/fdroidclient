@@ -11,11 +11,11 @@
     <string name="menu_settings">Instellingen</string>
     <string name="menu_search">Zoek</string>
     <string name="menu_add_repo">Nieuwe applicatiebron</string>
-    <string name="menu_launch">Open</string>
+    <string name="menu_launch">Openen</string>
     <string name="menu_share">Deel</string>
     <string name="menu_install">Installeer</string>
-    <string name="menu_uninstall">Verwijder</string>
-    <string name="menu_upgrade">Werk bij</string>
+    <string name="menu_uninstall">Verwijderen</string>
+    <string name="menu_upgrade">Bijwerken</string>
     <string name="main_menu__latest_apps">Nieuwste</string>
     <string name="main_menu__categories">Categorieën</string>
     <string name="main_menu__swap_nearby">In de buurt</string>

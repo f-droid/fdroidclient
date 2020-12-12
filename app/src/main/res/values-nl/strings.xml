@@ -287,7 +287,7 @@
     <string name="updates__tts__download_app">Downloaden</string>
     <string name="update_all">Update alles</string>
     <string name="updates__hide_updateable_apps">Verberg apps</string>
-    <string name="updates__show_updateable_apps">Weergeef apps</string>
+    <string name="updates__show_updateable_apps">Toon apps</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Download updates voor %1$d app.</item>
         <item quantity="other">Download updates voor %1$d apps.</item>
