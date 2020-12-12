@@ -513,4 +513,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">Inguruneko funtzioa itxi da geldirik zegoelako.</string>
     <string name="nearby_splash__document_tree">Bilatu USB OTG bidez biltegiak eta ispiluak.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_description">P2P aplikazioaren truke-jakinarazpenak erakusten ditu.</string>
+    <string name="notification_channel_swaps_title">Trukeak</string>
+    <string name="notification_channel_updates_description">Aplikazioaren eta biltegiaren eguneratze-jakinarazpenak erakusten ditu.</string>
+    <string name="notification_channel_updates_title">Eguneraketak</string>
+    <string name="notification_channel_installs_description">Aplikazioaren instalazio-jakinarazpenak erakusten ditu.</string>
+    <string name="notification_channel_installs_title">Instalazioak</string>
 </resources>
