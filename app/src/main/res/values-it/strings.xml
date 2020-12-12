@@ -254,7 +254,7 @@
     <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="allPerms">Tutte</string>
-    <string name="swap_nearby">Scambio ravvicinato</string>
+    <string name="swap_nearby">Scambi nelle vicinanze</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
     <string name="menu_email">Invia un\'e-mail all\'autore</string>
     <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare un\'e-mail con i dettagli per aiutarci a risolvere il problema\?</string>
@@ -281,7 +281,7 @@
     <string name="update_auto_install">Installa automaticamente gli aggiornamenti</string>
     <string name="update_auto_install_summary">Scarica e aggiorna le app in background, mostrando una notifica</string>
     <string name="keep_install_history">Mantieni cronologia installazione</string>
-    <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni in un archivio privato</string>
+    <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni in un posto sicuro</string>
     <string name="versions">Versioni</string>
     <string name="warning_no_internet">Impossibile aggiornare, sei connesso ad Internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
