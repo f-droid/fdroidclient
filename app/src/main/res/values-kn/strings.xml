@@ -329,4 +329,7 @@
     <string name="allow">ಅನುಮತಿಸಿ</string>
     <string name="swap_connecting">ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="permissions">ಅನುಮತಿಗಳು</string>
+    <string name="useTor">ಟಾರ್ ಬಳಸಿ</string>
+    <string name="menu_opencollective">ಒಪನ್‌ಕಲೆಕ್ಟೀವ್</string>
+    <string name="repo_add_mirror">ಕೊಂಡಿಯನ್ನು ಸೇರಿಸಿ</string>
 </resources>
