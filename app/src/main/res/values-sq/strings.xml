@@ -495,4 +495,7 @@
     <string name="notification_channel_installs_description">Shfaq njoftime instalimi aplikacionesh.</string>
     <string name="notification_channel_installs_title">Instalime</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_description">Shfaq njoftimet e ndërrimit të aplikacionit P2P.</string>
+    <string name="notification_channel_swaps_title">Shkëmbime</string>
+    <string name="menu_downgrade">Rënie</string>
 </resources>
