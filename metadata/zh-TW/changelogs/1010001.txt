@@ -1,0 +1,7 @@
+* 使用通知頻道來做更細膩的控制 (@Isira-Seneviratne)
+* 在詳細資訊頁面使用 Direct Share 分享應用程式 (@fynngodau)
+* 最新分頁在非英文語系的裝置能顯示更好的結果
+* 更新核心函式庫 (Jackson, androidx, gradle, etc)
+* 潤飾例外允許標籤支援
+
+感謝新貢獻者們！@fynngodau @projectgus @glennmen @Isira-Seneviratne
