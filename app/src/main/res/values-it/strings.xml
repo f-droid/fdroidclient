@@ -36,8 +36,7 @@
     <string name="enable">Attiva</string>
     <string name="add_key">Aggiungi chiave</string>
     <string name="overwrite">Sovrascrivi</string>
-    <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth, scegliere un altro metodo!
-    </string>
+    <string name="bluetooth_activity_not_found">Nessun metodo di invio Bluetooth trovato, scegline uno!</string>
     <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
     <string name="repo_add_url">Indirizzo repository</string>
     <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
@@ -115,9 +114,9 @@
     </string>
     <string name="unknown">Sconosciuta</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
-    <string name="repo_confirm_delete_body">Eliminare un repository implica che le app contenute non saranno più disponibili. 
+    <string name="repo_confirm_delete_body">L\'eliminazione di un repository significa che le app da esso non saranno più disponibili.
 \n 
-\nNota: Tutte le app installate precedentemente rimarranno sul dispositivo.</string>
+\nNota: Tutte le applicazioni installate in precedenza rimarranno sul tuo dispositivo.</string>
     <string name="repo_disabled_notification">%1$s disattivato.
 \n
 \nDovrai riattivare nuovamente questo repository per installare le app contenute.</string>
@@ -254,7 +253,7 @@
     <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="allPerms">Tutte</string>
-    <string name="swap_nearby">Scambi nelle vicinanze</string>
+    <string name="swap_nearby">Scambio nelle vicinanze</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
     <string name="menu_email">Invia un\'e-mail all\'autore</string>
     <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare un\'e-mail con i dettagli per aiutarci a risolvere il problema\?</string>
@@ -313,7 +312,7 @@
     <string name="notification_action_install">Installa</string>
     <string name="main_menu__swap_nearby">Qui vicino</string>
     <string name="preference_category__my_apps">Mie App</string>
-    <string name="preference_manage_installed_apps">Gestisci app installate</string>
+    <string name="preference_manage_installed_apps">Gestisci le applicazioni installate</string>
     <string name="latest__empty_state__never_updated">Una volta aggiornata la tua lista delle applicazioni, le ultime applicazioni dovrebbero apparire qui</string>
     <string name="latest__empty_state__no_recent_apps">Nessuna app recente trovata</string>
     <string name="latest__empty_state__no_enabled_repos">Una volta abilitato un repository e fatto aggiornare, le ultime applicazioni dovrebbero apparire qui</string>
@@ -391,7 +390,7 @@
     <string name="status_inserting_x_apps">Salvataggio dettagli app (%1$d/%2$d) da %3$s</string>
     <string name="app_permission_storage">F-Droid ha bisogno dell\'autorizzazione di archiviazione per installare questo nella memoria. Per favore abilitala nella prossima schermata per procedere con l\'installazione.</string>
     <string name="app_details__incompatible_mismatched_signature">La firma non coincide con quella della versione installata</string>
-    <string name="app_details__no_versions__show_incompat_versions">Per mostrare comunque le versioni incompatibili qui, abilita l\'impostazione \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Per mostrare comunque le versioni incompatibili, abilita l\'impostazione \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nessuna versione con una firma compatibile</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nessuna versione compatibile con il dispositivo</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">La versione installata non è compatibile con nessuna versione disponibile. Disinstallare l\'applicazione ti permetterà di visualizzare ed installare le versioni compatibili. Questo accade spesso con applicazioni installate da Google Play o da altre sorgenti se firmate con un certificato differente.</string>
@@ -448,10 +447,10 @@
     <string name="over_wifi">Via Wi-Fi</string>
     <string name="over_data">Via dati mobili</string>
     <string name="over_network_always_summary">Usa sempre questa connessione quando disponibile</string>
-    <string name="over_network_on_demand_summary">Usa solo questa connessione quando scarico un\'app</string>
+    <string name="over_network_on_demand_summary">Usa solo questa connessione quando clicco su scarica</string>
     <string name="over_network_never_summary">Non scaricare mai nulla usando questa connessione</string>
-    <string name="antidisabledalgorithmlist">Questa app ha una firma di sicurezza debole</string>
-    <string name="antiknownvulnlist">Questa app contiene una vulnerabilità di sicurezza nota</string>
+    <string name="antidisabledalgorithmlist">Questa applicazione ha una firma digitale debole</string>
+    <string name="antiknownvulnlist">Questa applicazione contiene una falla di sicurezza nota</string>
     <string name="hide_all_notifications">Nascondi tutte le notifiche</string>
     <string name="prompt_to_send_crash_reports">Chiedi per inviare segnalazioni di errori</string>
     <string name="prompt_to_send_crash_reports_summary">Raccogli dati sugli errori e chiedi di inviarli allo sviluppatore</string>
@@ -473,7 +472,7 @@
     <string name="send_installed_apps">Condividi applicazioni installate</string>
     <string name="menu_open">Apri</string>
     <string name="menu_downgrade">Disinstalla aggiornamento</string>
-    <string name="send_installed_apps_csv">App installate da F-Droid come file CSV</string>
+    <string name="send_installed_apps_csv">Applicazioni installate da F-Droid in formato CSV</string>
     <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
     <string name="scan_removable_storage_toast">Scansione %s…</string>
