@@ -534,9 +534,10 @@
     <string name="swap_toast_closing_nearby_after_timeout">إغلاق قريب لأنه كان خاملًا.</string>
     <string name="nearby_splash__document_tree">إبحث عن  المستودعات والمرايا في USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_updates_description">اعرض واشعارات تحديث المستودعات والتطبيقات.</string>
+    <string name="notification_channel_updates_description">عرض إشعارات تحديث المستودعات والتطبيقات.</string>
     <string name="notification_channel_updates_title">تحديثات</string>
     <string name="notification_channel_installs_description">اعرض اشعار تثبيت التطبيق.</string>
     <string name="notification_channel_installs_title">تثبيتات</string>
     <string name="notification_channel_swaps_title">المقايضات</string>
+    <string name="notification_channel_swaps_description">يعرض P2P التطبيق مبادلة الإخطارات.</string>
 </resources>
