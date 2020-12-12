@@ -50,7 +50,7 @@
     <string name="menu_ignore_all">Ignorera alla uppdateringar</string>
     <string name="menu_ignore_this">Ignorera denna uppdatering</string>
     <string name="menu_website">Webbplats</string>
-    <string name="menu_issues">Fel</string>
+    <string name="menu_issues">Problem</string>
     <string name="menu_source">Källkod</string>
     <string name="menu_upgrade">Uppdatera</string>
     <string name="details_notinstalled">Inte installerad</string>
@@ -223,10 +223,10 @@
     <string name="loading">Läser in …</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="install_confirm">behöver åtkomst till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering till den här befintliga appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här befintliga förinstallerade appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av den befintliga appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
-    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering av den inbyggda appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
+    <string name="install_confirm_update">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här inbyggda appen\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
+    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering till denna inbyggda app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
     <string name="newPerms">Nytt</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
@@ -259,7 +259,7 @@
     <string name="keep_month">1 månad</string>
     <string name="keep_year">1 år</string>
     <string name="keep_forever">För evigt</string>
-    <string name="install_error_notify_title">Fel vid installation %s</string>
+    <string name="install_error_notify_title">Fel vid installation av %s</string>
     <string name="uninstall_error_notify_title">Fel vid avinstallation av %s</string>
     <string name="installing">Installerar…</string>
     <string name="uninstalling">Avinstallerar…</string>
@@ -290,8 +290,8 @@
         <item quantity="other">Visa alla %d</item>
     </plurals>
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
-    <string name="notification_title_single_ready_to_install">Färdig att installera</string>
-    <string name="notification_title_single_ready_to_install_update">Uppdatering färdig att installera</string>
+    <string name="notification_title_single_ready_to_install">Färdig att installeras</string>
+    <string name="notification_title_single_ready_to_install_update">Uppdatering redo att installeras</string>
     <string name="notification_title_single_install_error">Installationen misslyckades</string>
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
@@ -300,8 +300,8 @@
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
-    <string name="notification_title_summary_ready_to_install">Färdig att installera</string>
-    <string name="notification_title_summary_ready_to_install_update">Uppdatering färdig att installera</string>
+    <string name="notification_title_summary_ready_to_install">Färdig att installeras</string>
+    <string name="notification_title_summary_ready_to_install_update">Uppdatering redo att installeras</string>
     <string name="notification_title_summary_installing">Installerar</string>
     <string name="notification_title_summary_installed">Installationen lyckades</string>
     <string name="notification_title_summary_install_error">Installation misslyckades</string>
@@ -373,7 +373,7 @@
     <string name="force_old_index_summary">Om det finns fel eller kompatibilitetsproblem, använd XML-appindexet</string>
     <string name="app_installed_media">Fil installerad till %s</string>
     <string name="app_permission_storage">F-Droid behöver lagringstillstånd för att installera detta till lagring. Vänligen tillåt det på nästa skärm för att fortsätta med installationen.</string>
-    <string name="app_list_download_ready">Hämtad, redo att installera</string>
+    <string name="app_list_download_ready">Hämtad, redo att installeras</string>
     <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
     <string name="app_details__incompatible_mismatched_signature">Olika signaturer till installerad version</string>
     <string name="app_details__no_versions__show_incompat_versions">För att visa inkompatibla versioner här ändå, aktivera inställningen \"%1$s\".</string>
