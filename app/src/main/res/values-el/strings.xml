@@ -511,4 +511,6 @@
     <string name="notification_channel_installs_description">Εμφανίζει ειδοποιήσεις εγκατάστασης εφαρμογής.</string>
     <string name="notification_channel_installs_title">Εγκαταστάσεις</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_swaps_description">Επίδειξη ειδοποιήσεων ανταλλαγής εφαρμογών με τη χρήση P2P.</string>
+    <string name="notification_channel_swaps_title">Ανταλλαγές</string>
 </resources>
