@@ -57,9 +57,9 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt proprietäre Netzwerkdienste</string>
+    <string name="antinonfreenetlist">Diese Anwendung bewirbt nicht-quelloffene Netzwerkdienste</string>
     <string name="antinonfreedeplist">Diese Anwendung hängt von nicht-quelloffenen Anwendungen ab</string>
-    <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
+    <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
     <string name="expert">Expertenmodus</string>
     <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
@@ -202,7 +202,7 @@
     <string name="swap_dont_show_again">Nicht wieder anzeigen</string>
     <string name="swap_choose_apps">Apps auswählen</string>
     <string name="swap_scan_qr">QR-Code einlesen</string>
-    <string name="swap_people_nearby">Tauschpartner</string>
+    <string name="swap_people_nearby">Leute in Ihrer Nähe</string>
     <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="swap_visible_bluetooth">Über Bluetooth sichtbar</string>
@@ -249,7 +249,7 @@
     <string name="empty_search_available_app_list">Keine passenden Apps verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
-    <string name="antinonfreeassetslist">Diese App enthält proprietäre Bestandteile</string>
+    <string name="antinonfreeassetslist">Diese Anwendung enthält nicht-quelloffene Bestandteile</string>
     <string name="crash_dialog_text">Die App wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen\?</string>
     <string name="menu_email">E-Mail an Autor</string>
     <string name="repo_provider">Paketquelle: %s</string>
@@ -340,8 +340,8 @@
         <item quantity="other">Alle %d ansehen</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Menschen in Ihrer Umgebung herunterladen!</string>
-    <string name="nearby_splash__find_people_button">Tauschpartner finden</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Menschen in Ihrer Umgebung erhalten!</string>
+    <string name="nearby_splash__find_people_button">Menschen in Ihrer Nähe suchen</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
     <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
