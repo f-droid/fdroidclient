@@ -340,8 +340,8 @@
         <item quantity="other">Afficher toutes les applications %1$d de la catégorie %2$s</item>
     </plurals>
     <plurals name="details_last_update_days">
-        <item quantity="one">Mis à jour il y a %1$s jour</item>
-        <item quantity="other">Mis à jour il y a %1$s jours</item>
+        <item quantity="one">Mis à jour il y a %1$d jour</item>
+        <item quantity="other">Mis à jour il y a %1$d jours</item>
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Aucune application récente trouvée</string>
     <string name="categories__empty_state__no_categories">Aucune catégorie à afficher</string>
@@ -369,16 +369,16 @@
         <item quantity="other">%1$d applis installées</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Mis à jour il y a %1$s semaine</item>
-        <item quantity="other">Mis à jour il y a %1$s semaines</item>
+        <item quantity="one">Mis à jour il y a %1$d semaine</item>
+        <item quantity="other">Mis à jour il y a %1$d semaines</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Mis à jour il y a %1$d mois</item>
         <item quantity="other">Mis à jour il y a %1$d mois</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Mis à jour il y a %1$s an</item>
-        <item quantity="other">Mis à jour il y a %1$s ans</item>
+        <item quantity="one">Mis à jour il y a %1$d an</item>
+        <item quantity="other">Mis à jour il y a %1$d ans</item>
     </plurals>
     <string name="by_author_format">par %s</string>
     <string name="download_404">Le fichier demandé n\'a pas été trouvé.</string>

@@ -1,0 +1,7 @@
+* utilisation des canaux de notification pour un contrôle plus fin (@Isira-Seneviratne)
+* amélioration de la sélection de langue parmi plusieurs (@spacecowboy/@bubu)
+* l’onglet nouveauté montre désormais de meilleurs résultats sur les appareils non anglais
+* mise à jour des bibliothèques utilisées (Jackson, androidx, gradle, etc.)
+* améliore l’utilisation de version personnalisée
+
+Merci aux nouveaux contributeurs ! @spacecowboy @projectgus @glennmen @Isira-Seneviratne
