@@ -285,7 +285,7 @@
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
     <string name="main_menu__swap_nearby">Рядом</string>
-    <string name="nearby_splash__find_people_button">Поиск поблизости</string>
+    <string name="nearby_splash__find_people_button">Найти людей рядом</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
