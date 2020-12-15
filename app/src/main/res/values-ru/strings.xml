@@ -496,7 +496,7 @@
     <string name="undo">Вернуть</string>
     <string name="app_list__dismiss_installing_app">Установка отменена</string>
     <string name="menu_select_for_wipe">Выберите для очистки</string>
-    <string name="try_again">Попробуйте снова</string>
+    <string name="try_again">Повторить попытку</string>
     <string name="panic_will_be_wiped">Будут деинсталлированы и все данные будут удалены</string>
     <string name="panic_apps_to_uninstall">Приложения должны быть деинсталлированы и все данные очищены</string>
     <string name="panic_add_apps_to_uninstall">Добавить приложения для деинсталляции и очистки</string>
@@ -516,8 +516,8 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>
     <string name="notification_channel_updates_title">Обновления</string>
-    <string name="notification_channel_swaps_description">Отображает уведомления об обмене приложениями P2P.</string>
+    <string name="notification_channel_swaps_description">Отображает уведомления об обмене данными P2P-приложений .</string>
     <string name="notification_channel_swaps_title">Обмены</string>
     <string name="notification_channel_installs_description">Отображает уведомления об установке приложения.</string>
-    <string name="notification_channel_installs_title">Инсталляции</string>
+    <string name="notification_channel_installs_title">Установка приложений</string>
 </resources>
