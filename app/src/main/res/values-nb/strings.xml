@@ -318,8 +318,8 @@
     <string name="notification_action_install">Installer</string>
     <string name="tts_category_name">Kategori %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Visningen %1$d app i %2$s kategori</item>
-        <item quantity="other">Vis alle %1$d apper fra %2$s kategori</item>
+        <item quantity="one">Vis det ene programmet i kategorien %1$sVis alle programmer i kategorien %2$s</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
@@ -506,7 +506,7 @@
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_swaps_description">Viser P2P-app bytte varsler.</string>
+    <string name="notification_channel_swaps_description">Viser P2P-programutvekslingsmerknader.</string>
     <string name="notification_channel_swaps_title">Bytte</string>
     <string name="notification_channel_updates_description">Viser program- og pakkebrønns-oppdateringsmerknader.</string>
     <string name="notification_channel_updates_title">Oppdateringer</string>
