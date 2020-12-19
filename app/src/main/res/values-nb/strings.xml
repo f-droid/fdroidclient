@@ -318,8 +318,8 @@
     <string name="notification_action_install">Installer</string>
     <string name="tts_category_name">Kategori %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Vis det ene programmet i kategorien %1$sVis alle programmer i kategorien %2$s</item>
-        <item quantity="other"></item>
+        <item quantity="one">Vis det ene programmet i %2$s-kategorien</item>
+        <item quantity="other">Vis alle %1$d programmene i %2$s-kategorien</item>
     </plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
