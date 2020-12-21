@@ -1,0 +1,18 @@
+F-Droid is 'n installeerbare katalogus van gratis sagteware
+programme vir Android. Die F-Droid-kliënt-app maak dit
+maklik om te blaai, te installeer en op hoogte te bly van opdaterings op u toestel.
+
+Dit kan gekoppel word aan enige F-Droid-versoenbare bewaarplekke. Die standaardrepos
+word gehuisves by f-droid.org, wat slegs bona fide libre sagteware bevat.
+
+Android self is oop in die sin dat u vry is om APK's te installeer
+waar u ook al wil, maar daar is baie goeie redes om dit te gebruik
+F-Droid as u sagteware-programbestuurder:
+
+* Word in kennis gestel wanneer opdaterings beskikbaar is
+* Aflaai en installeer opdaterings outomaties
+* Hou ouer en beta-weergawes dop
+* Filtreer programme uit wat nie met die toestel versoenbaar is nie
+* Vind programme via kategorieë en soekbare beskrywings
+* Toegang tot geassosieerde URL's vir donasies, bronkode ens.
+* Bly veilig deur repo-indekshandtekeninge en APK-hakies na te gaan
