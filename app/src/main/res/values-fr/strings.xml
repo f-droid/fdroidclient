@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l\'ancienne version de l\'application avant de réessayer. (Attention : la désinstallation supprimera toutes les données de l\'application)</string>
-    <string name="installIncompatible">Application incompatible avec votre appareil, l\'installer quand même ?</string>
+    <string name="installIncompatible">Application non compatible avec votre appareil, l\'installer quand même \?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l’envoi par CCP/NFC…</string>
