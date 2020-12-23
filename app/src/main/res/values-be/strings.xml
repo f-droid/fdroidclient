@@ -312,10 +312,10 @@
     <string name="preference_manage_installed_apps">Кіраванне ўсталяванымі праграмамі</string>
     <string name="tts_category_name">Катэгорыя %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Паказаць %1$s праграму з катэгорыі %2$s</item>
-        <item quantity="few">Паказаць %1$s праграмы з катэгорыі %2$s</item>
-        <item quantity="many">Паказаць %1$s праграм з катэгорыі %2$s</item>
-        <item quantity="other">Паказаць %1$s праграм з катэгорыі %2$s</item>
+        <item quantity="one">Паказаць %1$d праграму з катэгорыі %2$s</item>
+        <item quantity="few">Паказаць %1$d праграмы з катэгорыі %2$s</item>
+        <item quantity="many">Паказаць %1$d праграм з катэгорыі %2$s</item>
+        <item quantity="other">Паказаць %1$d праграм з катэгорыі %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Абнавіць</string>
     <string name="app_list__name__downloading_in_progress">Спампоўванне %1$s</string>
@@ -370,22 +370,22 @@
         <item quantity="other">+%1$d больш…</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Абноўлена %1$s тыдзень таму</item>
-        <item quantity="few">Абноўлена %1$s тыдні таму</item>
-        <item quantity="many">Абноўлена %1$s тыдняў таму</item>
-        <item quantity="other">Абноўлена %1$s тыдняў таму</item>
+        <item quantity="one">Абноўлена %1$d тыдзень таму</item>
+        <item quantity="few">Абноўлена %1$d тыдні таму</item>
+        <item quantity="many">Абноўлена %1$d тыдняў таму</item>
+        <item quantity="other">Абноўлена %1$d тыдняў таму</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Абноўлена %1$s месяц таму</item>
-        <item quantity="few">Абноўлена %1$s месяцы таму</item>
-        <item quantity="many">Абноўлена %1$s месяцаў таму</item>
-        <item quantity="other">Абноўлена %1$s месяцаў таму</item>
+        <item quantity="one">Абноўлена %1$d месяц таму</item>
+        <item quantity="few">Абноўлена %1$d месяцы таму</item>
+        <item quantity="many">Абноўлена %1$d месяцаў таму</item>
+        <item quantity="other">Абноўлена %1$d месяцаў таму</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Абноўлена %1$s год таму</item>
-        <item quantity="few">Абноўлена %1$s гады таму</item>
-        <item quantity="many">Абноўлена %1$s гадоў таму</item>
-        <item quantity="other">Абноўлена %1$s гадоў таму</item>
+        <item quantity="one">Абноўлена %1$d год таму</item>
+        <item quantity="few">Абноўлена %1$d гады таму</item>
+        <item quantity="many">Абноўлена %1$d гадоў таму</item>
+        <item quantity="other">Абноўлена %1$d гадоў таму</item>
     </plurals>
     <string name="by_author_format">ад %s</string>
     <string name="download_404">Запытаны файл не знойдзены.</string>
