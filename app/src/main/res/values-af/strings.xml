@@ -359,8 +359,8 @@
     </plurals>
     <string name="details_last_updated_today">Vandag opgedateer</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">%1$s dag gelede opgedateer</item>
-        <item quantity="other">%1$s dae gelede opgedateer</item>
+        <item quantity="one">%1$d dag gelede opgedateer</item>
+        <item quantity="other">%1$d dae gelede opgedateer</item>
     </plurals>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d meer…</item>
