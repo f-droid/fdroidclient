@@ -293,7 +293,7 @@
     <string name="download_pending">ಡೌನ್‌ಲೋಡ್ ಪ್ರಾರಂಭಿಸಲು ಕಾಯಲಾಗುತ್ತಿದೆ…</string>
     <string name="install_error_notify_title">%s ಸ್ಥಾಪಿಸುವಲ್ಲಿ ದೋಷ</string>
     <string name="uninstall_error_notify_title">%s ಅಸ್ಥಾಪಿಸುವುದನ್ನು ದೋಷ</string>
-    <string name="perms_description_app">%1$s ಒದಗಿಸಿದೆ</string>
+    <string name="perms_description_app">%1$s ಒದಗಿಸಿದೆ.</string>
     <string name="uninstalling">ಅಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="interval_never">ಸ್ವಯಂಚಾಲಿತ ಅಪ್ಲಿಕೇಶನ್ ನವೀಕರಣಗಳಿಲ್ಲ</string>
     <string name="keep_forever">ಶಾಶ್ವತವಾಗಿ</string>
