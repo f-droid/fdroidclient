@@ -240,7 +240,7 @@
     <string name="login_password">परवलीचा शब्द</string>
     <string name="login_name">वापरकर्त्याचे नाव</string>
     <string name="login_title">प्रमाणीकरण अपेक्षित</string>
-    <string name="scan_removable_storage_toast">तपासणी सुरू आहे…</string>
+    <string name="scan_removable_storage_toast">तपासणी सुरू आहे %s…</string>
     <string name="local_repo_name">स्थानिक भांडाराचे</string>
     <string name="system_installer_on">एकत्रित स्थापना, अद्ययावतन किंवा अस्थापना करण्यासाठी विशेषअधिकाराचा वापर करा</string>
     <string name="system_installer">विशेषअधिकार जोडणी</string>
@@ -264,7 +264,7 @@
     <string name="perms_new_perm_prefix">नवीन:</string>
     <string name="download_error">डाउनलोड अयशस्वी</string>
     <string name="perm_costs_money">हे तुम्हाला आर्थिकरीत्या गोत्यात आणू शकतं</string>
-    <string name="allPerms"></string>
+    <string name="allPerms"/>
     <string name="install_confirm">हाताळले गरजेचे</string>
     <string name="swap_connecting">जोडले जात</string>
     <string name="swap_wifi_device_name">यंत्राचे</string>
@@ -291,10 +291,10 @@
     <string name="wifi_ap">हॉटस्पॉट</string>
     <string name="requires_features">%1$s गरजेचे</string>
     <string name="share_repository">भांडार सामाईक करा</string>
-    <string tools:ignore="UnusedResources" name="category_Money"></string>
+    <string tools:ignore="UnusedResources" name="category_Money"/>
     <string name="repo_confirm_delete_title">भांडार हटवावे \?</string>
     <string name="unknown">अज्ञात</string>
-    <string name="repo_name"></string>
+    <string name="repo_name"/>
     <string name="repo_user_mirrors">वापरकर्त्याचे प्रतिदुवे</string>
     <string name="repo_official_mirrors">अधिकारीक</string>
     <string name="repo_description">विवरण</string>
@@ -330,7 +330,7 @@
     <string name="panic_hide_warning_title">पुनर्स्थापना कशी करावी ते लक्षात ठेवा</string>
     <string name="panic_hide_summary">अँप स्वताला लपवेल</string>
     <string name="panic_hide_title">%s ला लपवा</string>
-    <string name="panic_add_apps_to_uninstall">अस्थापना आणि माहिती हटवण्यासाठीची अँप %sयादी</string>
+    <string name="panic_add_apps_to_uninstall">अस्थापना आणि माहिती हटवण्यासाठीची अँप यादी</string>
     <string name="panic_apps_to_uninstall">अस्थापना आणि सर्व माहिती पुसून टाकन्यासाठी सज्ज अँप्स</string>
     <string name="panic_will_be_wiped">आस्थापना केली जाईल तसेच सर्व माहिती देखिल हटवली जाईल</string>
     <string name="latest__empty_state__no_enabled_repos">एकदा भांडाराला सक्षम करून त्याला अद्ययावत केल्यास नवीन अँप्स इथे दिसायला</string>
