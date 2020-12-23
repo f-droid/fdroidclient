@@ -324,9 +324,9 @@
         <item quantity="zero">لا تحمل التحديثات لأي شيء.</item>
         <item quantity="one">حمل التحديثات لتطبيق واحد.</item>
         <item quantity="two">حمل التحديثات لتطبيقين.</item>
-        <item quantity="few">حمل التحديثات  %1$s تطبيقات.</item>
-        <item quantity="many">حمل التحديثات ل  %1$s تطبيقا.</item>
-        <item quantity="other">حمل التحديثات ل  %1$s تطبيق.</item>
+        <item quantity="few">حمل التحديثات %1$d تطبيقات.</item>
+        <item quantity="many">حمل التحديثات ل %1$d تطبيقا.</item>
+        <item quantity="other">حمل التحديثات ل %1$d تطبيق.</item>
     </plurals>
     <string name="repositories_summary">أضف مصادر إضافية للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
