@@ -1,90 +1,45 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.work;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Process;
-import android.os.SystemClock;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.StructStat;
+
 import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.content.ContextCompat;
+import androidx.annotation.RequiresApi;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Handles cleaning up caches files that are not going to be used, and do not
- * block the operation of the app itself.  For things that must happen before
- * F-Droid starts normal operation, that should go into
- * {@link FDroidApp#onCreate()}.
- * <p>
- * These files should only be deleted when they are at least an hour-ish old,
- * in case they are actively in use while {@code CleanCacheService} is running.
- * {@link #clearOldFiles(File, long)} checks the file age using access time from
- * {@link android.system.StructStat#st_atime} on {@link android.os.Build.VERSION_CODES#LOLLIPOP}
- * and newer.  On older Android, last modified time from {@link File#lastModified()}
- * is used.
- */
-public class CleanCacheService extends JobIntentService {
-    public static final String TAG = "CleanCacheService";
+public class CleanCacheWorker extends Worker {
+    private static final String TAG = CleanCacheWorker.class.getSimpleName();
 
-    private static final int JOB_ID = 0x982374;
-
-    /**
-     * Schedule or cancel this service to update the app index, according to the
-     * current preferences. Should be called a) at boot, b) if the preference
-     * is changed, or c) on startup, in case we get upgraded.
-     */
-    public static void schedule(Context context) {
-        long keepTime = Preferences.get().getKeepCacheTime();
-        long interval = TimeUnit.DAYS.toMillis(1);
-        if (keepTime < interval) {
-            interval = keepTime;
-        }
-
-        if (Build.VERSION.SDK_INT < 21) {
-            Intent intent = new Intent(context, CleanCacheService.class);
-            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
-
-            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarm.cancel(pending);
-            alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime() + 5000, interval, pending);
-        } else {
-            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
-            JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
-            ComponentName componentName = new ComponentName(context, CleanCacheJobService.class);
-            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
-                    .setRequiresDeviceIdle(true)
-                    .setRequiresCharging(true)
-                    .setPeriodic(interval);
-            if (Build.VERSION.SDK_INT >= 26) {
-                builder.setRequiresBatteryNotLow(true);
-            }
-            jobScheduler.schedule(builder.build());
-
-        }
+    public CleanCacheWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+        super(context, workerParams);
     }
 
-    public static void start(Context context) {
-        enqueueWork(context, CleanCacheService.class, JOB_ID, new Intent(context, CleanCacheService.class));
-    }
-
+    @NonNull
     @Override
-    protected void onHandleWork(@NonNull Intent intent) {
+    public Result doWork() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        deleteExpiredApksFromCache();
-        deleteStrayIndexFiles();
-        deleteOldInstallerFiles();
-        deleteOldIcons();
+        try {
+            deleteExpiredApksFromCache();
+            deleteStrayIndexFiles();
+            deleteOldInstallerFiles();
+            deleteOldIcons();
+            return Result.success();
+        } catch (Exception e) {
+            return Result.failure();
+        }
     }
 
     /**
@@ -93,7 +48,7 @@ public class CleanCacheService extends JobIntentService {
      * any APK in the cache that is older than that preference specifies.
      */
     private void deleteExpiredApksFromCache() {
-        File cacheDir = ApkCache.getApkCacheDir(getBaseContext());
+        File cacheDir = ApkCache.getApkCacheDir(getApplicationContext());
         clearOldFiles(cacheDir, Preferences.get().getKeepCacheTime());
     }
 
@@ -102,13 +57,15 @@ public class CleanCacheService extends JobIntentService {
      * a safe place before installing.  It doesn't clean up them reliably yet.
      */
     private void deleteOldInstallerFiles() {
-        File filesDir = getFilesDir();
+        File filesDir = getApplicationContext().getFilesDir();
         if (filesDir == null) {
+            Utils.debugLog(TAG, "The files directory doesn't exist.");
             return;
         }
 
         final File[] files = filesDir.listFiles();
         if (files == null) {
+            Utils.debugLog(TAG, "The files directory doesn't have any files.");
             return;
         }
 
@@ -132,13 +89,15 @@ public class CleanCacheService extends JobIntentService {
      * {@link org.fdroid.fdroid.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
      */
     private void deleteStrayIndexFiles() {
-        File cacheDir = getCacheDir();
+        File cacheDir = getApplicationContext().getCacheDir();
         if (cacheDir == null) {
+            Utils.debugLog(TAG, "The cache directory doesn't exist.");
             return;
         }
 
         final File[] files = cacheDir.listFiles();
         if (files == null) {
+            Utils.debugLog(TAG, "The cache directory doesn't have files.");
             return;
         }
 
@@ -156,7 +115,7 @@ public class CleanCacheService extends JobIntentService {
      * Delete cached icons that have not been accessed in over a year.
      */
     private void deleteOldIcons() {
-        clearOldFiles(Utils.getImageCacheDir(this), TimeUnit.DAYS.toMillis(365));
+        clearOldFiles(Utils.getImageCacheDir(getApplicationContext()), TimeUnit.DAYS.toMillis(365));
     }
 
     /**
@@ -170,24 +129,58 @@ public class CleanCacheService extends JobIntentService {
      */
     public static void clearOldFiles(File f, long millisAgo) {
         if (f == null) {
+            Utils.debugLog(TAG, "No files to be cleared.");
             return;
         }
         long olderThan = System.currentTimeMillis() - millisAgo;
         if (f.isDirectory()) {
             File[] files = f.listFiles();
             if (files == null) {
+                Utils.debugLog(TAG, "No more files to be cleared.");
                 return;
             }
             for (File file : files) {
                 clearOldFiles(file, millisAgo);
             }
-            f.delete();
-        } else if (Build.VERSION.SDK_INT < 21) {
+            deleteFileAndLog(f);
+        } else if (Build.VERSION.SDK_INT <= 21) {
             if (FileUtils.isFileOlder(f, olderThan)) {
-                f.delete();
+                deleteFileAndLog(f);
             }
         } else {
-            CleanCacheService21.deleteIfOld(f, olderThan);
+            Impl21.deleteIfOld(f, olderThan);
+        }
+    }
+
+    private static void deleteFileAndLog(final File file) {
+        file.delete();
+        Utils.debugLog(TAG, "Deleted file: " + file);
+    }
+
+    @RequiresApi(api = 21)
+    private static class Impl21 {
+        /**
+         * Recursively delete files in {@code f} that were last used
+         * {@code millisAgo} milliseconds ago.  On {@code android-21} and newer, this
+         * is based on the last access of the file, on older Android versions, it is
+         * based on the last time the file was modified, e.g. downloaded.
+         *
+         * @param file      The file or directory to clean
+         * @param olderThan The number of milliseconds old that marks a file for deletion.
+         */
+        public static void deleteIfOld(File file, long olderThan) {
+            if (file == null || !file.exists()) {
+                Utils.debugLog(TAG, "No files to be cleared.");
+                return;
+            }
+            try {
+                StructStat stat = Os.lstat(file.getAbsolutePath());
+                if ((stat.st_atime * 1000L) < olderThan) {
+                    deleteFileAndLog(file);
+                }
+            } catch (ErrnoException e) {
+                Utils.debugLog(TAG, "An exception occurred while deleting: ", e);
+            }
         }
     }
 }

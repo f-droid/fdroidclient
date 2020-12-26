@@ -1,11 +1,13 @@
 package org.fdroid.fdroid;
 
 import android.app.Instrumentation;
-import androidx.test.platform.app.InstrumentationRegistry;
+
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompatTest;
+import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,9 +18,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
-public class CleanCacheServiceTest {
-
-    public static final String TAG = "CleanCacheServiceTest";
+public class CleanCacheWorkerTest {
+    public static final String TAG = "CleanCacheWorkerTest";
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
@@ -48,18 +49,18 @@ public class CleanCacheServiceTest {
         assertTrue(second.createNewFile());
         assertTrue(second.exists());
 
-        CleanCacheService.clearOldFiles(dir, 3000);  // check all in dir
+        CleanCacheWorker.clearOldFiles(dir, 3000); // check all in dir
         assertFalse(first.exists());
         assertTrue(second.exists());
 
         Thread.sleep(7000);
-        CleanCacheService.clearOldFiles(second, 3000);  // check just second file
+        CleanCacheWorker.clearOldFiles(second, 3000); // check just second file
         assertFalse(first.exists());
         assertFalse(second.exists());
 
         // make sure it doesn't freak out on a non-existent file
         File nonexistent = new File(tempDir, "nonexistent");
-        CleanCacheService.clearOldFiles(nonexistent, 1);
-        CleanCacheService.clearOldFiles(null, 1);
+        CleanCacheWorker.clearOldFiles(nonexistent, 1);
+        CleanCacheWorker.clearOldFiles(null, 1);
     }
 }

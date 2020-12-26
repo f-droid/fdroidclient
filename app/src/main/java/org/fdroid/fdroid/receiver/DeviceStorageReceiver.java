@@ -3,9 +3,10 @@ package org.fdroid.fdroid.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import org.fdroid.fdroid.CleanCacheService;
+
 import org.fdroid.fdroid.DeleteCacheService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.work.WorkUtils;
 
 public class DeviceStorageReceiver extends BroadcastReceiver {
     @Override
@@ -18,7 +19,7 @@ public class DeviceStorageReceiver extends BroadcastReceiver {
             int percentageFree = Utils.getPercent(Utils.getImageCacheDirAvailableMemory(context),
                     Utils.getImageCacheDirTotalMemory(context));
             if (percentageFree > 2) {
-                CleanCacheService.start(context);
+                WorkUtils.scheduleCleanCache(context);
             } else {
                 DeleteCacheService.deleteAll(context);
             }
