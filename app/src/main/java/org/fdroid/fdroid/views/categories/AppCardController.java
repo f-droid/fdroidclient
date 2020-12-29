@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.fdroid.fdroid.R;
@@ -60,28 +60,12 @@ public class AppCardController extends RecyclerView.ViewHolder
 
         this.activity = activity;
 
-        icon = (ImageView) findViewAndEnsureNonNull(itemView, R.id.icon);
-        summary = (TextView) findViewAndEnsureNonNull(itemView, R.id.summary);
+        icon = ViewCompat.requireViewById(itemView, R.id.icon);
+        summary = ViewCompat.requireViewById(itemView, R.id.summary);
 
-        newTag = (TextView) itemView.findViewById(R.id.new_tag);
+        newTag = itemView.findViewById(R.id.new_tag);
 
         itemView.setOnClickListener(this);
-    }
-
-    /**
-     * The contract that this controller has is that it will consume any layout resource, given
-     * it has some specific view types (with specific IDs) available. This helper function will
-     * throw an {@link IllegalArgumentException} if the view doesn't exist,
-     */
-    @NonNull
-    private View findViewAndEnsureNonNull(View view, @IdRes int res) {
-        View found = view.findViewById(res);
-        if (found == null) {
-            String resName = activity.getResources().getResourceName(res);
-            throw new IllegalArgumentException("Layout for AppCardController requires " + resName);
-        }
-
-        return found;
     }
 
     public void bindApp(@NonNull App app) {
