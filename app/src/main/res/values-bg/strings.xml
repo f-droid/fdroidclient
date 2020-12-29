@@ -83,9 +83,8 @@
     <string name="proxy_port">Порт за проксито</string>
     <string name="proxy_port_summary">Номер на порта за посредника (напр. 8118)</string>
     <string name="status_download">Сваляне
-        %2$s / %3$s (%4$d%%) от
-        %1$s
-    </string>
+\n%2$s / %3$s (%4$d%%) от
+\n%1$s</string>
     <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
     <string name="repos_unchanged">Всички хранилищата са актуални</string>
     <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
@@ -101,11 +100,12 @@
         трябва да го активирате.
     </string>
     <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
-    <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.
+    <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични.
+\n
 \nБележка: Всички вече инсталирани приложения ще останат на устройството.</string>
-    <string name="repo_disabled_notification">\"%1$s\" е деактивирано. За да инсталирате приложения от него ще трябва да
-        го активирате наново.
-    </string>
+    <string name="repo_disabled_notification">\"%1$s\" е деактивирано.
+\n
+\nЗа да инсталирате приложения от него ще трябва да го активирате наново.</string>
     <string name="not_on_same_wifi">Вашето устройство не е в една и съща Wi-Fi мрежа с локалното хранилище, което
         добавихте! Опитайте да се свържете към тази мрежа: %s
     </string>

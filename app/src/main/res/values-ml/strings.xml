@@ -214,17 +214,15 @@
     <string name="repo_not_yet_updated">ഈ ആപ്പ് ശേഖരണം ഇതുവരെ ഉപയോഗിച്ചിട്ടില്ല. ഇതിലുള്ള ആപ്പുകൾ കാണാന്‍ ഇത് സജ്ജമാക്കേണ്ടതുണ്ട്.</string>
     <string name="unknown">അജ്ഞാതം</string>
     <string name="repo_confirm_delete_title">ആപ്പ് ശേഖരണം ഒഴിവാക്കുക\?</string>
-    <string name="repo_confirm_delete_body">"ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
+    <string name="repo_confirm_delete_body">ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
 \n
-\n      
-\n
-\n
-\n    കുറിപ്പ്:  മുമ്പ് ഇൻസ്റ്റാൾ ചെയ്ത എല്ലാ ആപ്പുകളും  നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും."</string>
+\n കുറിപ്പ്: മുമ്പ് ഇൻസ്റ്റാൾ ചെയ്ത എല്ലാ ആപ്പുകളും നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും.</string>
     <string name="repo_disabled_notification">%1$s പ്രവര്‍ത്തനരഹിതമാക്കി. 
 \n 
 \n ഈ സംഭരണിയില്‍ നിന്നും ആപ്പുകൾ ഉപയോഗിക്കാൻ ഇത് വീണ്ടും പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്.</string>
     <string name="repo_added">%1$s ആപ്പ് സംഭരണം സൂക്ഷിച്ചുവെച്ചു.</string>
-    <string name="repo_searching_address">%1$sൽ ആപ്പ് ശേഖരണം തിരയുന്നു</string>
+    <string name="repo_searching_address">%1$s
+\nൽ ആപ്പ് ശേഖരണം തിരയുന്നു</string>
     <string name="requires_features">വേണ്ടത്: %1$s</string>
     <string name="wifi_ap">ഹോട്ട്സ്പോട്ട്</string>
     <string name="category_Theming">ഭാവഭേദം</string>

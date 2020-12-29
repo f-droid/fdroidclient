@@ -114,7 +114,8 @@
 \n
 \n저장소로부터 앱을 설치하려면 이 저장소를 다시 활성화해야 합니다.</string>
     <string name="repo_added">패키지 저장소 %1$s 저장되었습니다.</string>
-    <string name="repo_searching_address">%1$s에서 패키지 저장소를 찾는 중</string>
+    <string name="repo_searching_address">%1$s
+\n에서 패키지 저장소를 찾는 중</string>
     <string name="not_on_same_wifi">당신의 기기는 당신이 추가한 로컬 저장소와 같은 Wi-Fi 네트워크 상에 있지 않습니다! 이 네트워크로 접속을 시도해보세요: %s</string>
     <string name="requires_features">필요: %1$s</string>
     <string name="category_Development">개발</string>

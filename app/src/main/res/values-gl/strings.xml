@@ -46,7 +46,9 @@
     <string name="search_hint">Procurar aplicacións</string>
     <string name="appcompatibility">Compatibilidade das aplicacións</string>
     <string name="show_incompat_versions">Inclúe versións incompatíbeis</string>
-    <string name="status_download">Estase a baixar %2$s / %3$s (%4$d%%) dende %1$s</string>
+    <string name="status_download">Estase a baixar
+\n%2$s / %3$s (%4$d%%) dende
+\n%1$s</string>
     <string name="status_connecting_to_repo">Estase a conectar con 
 \n%1$s</string>
     <string name="no_permissions">Sen permisos</string>
