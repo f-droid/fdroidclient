@@ -10,11 +10,11 @@
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
     <string name="cache_downloaded">Manter aplicações em cache</string>
-    <string name="updates">Atualizações</string>
-    <string name="unstable_updates">Atualizações instáveis</string>
-    <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
+    <string name="updates">Actualizações</string>
+    <string name="unstable_updates">Actualizações instáveis</string>
+    <string name="unstable_updates_summary">Sugerir actualizações para versões instáveis</string>
     <string name="other">Outro</string>
-    <string name="update_interval">Intervalo de atualização automática</string>
+    <string name="update_interval">Intervalo de actualização automática</string>
     <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
