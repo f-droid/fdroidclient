@@ -285,7 +285,7 @@
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
     <string name="main_menu__swap_nearby">Рядом</string>
-    <string name="nearby_splash__find_people_button">Поиск поблизости</string>
+    <string name="nearby_splash__find_people_button">Найти людей рядом</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
@@ -496,7 +496,7 @@
     <string name="undo">Вернуть</string>
     <string name="app_list__dismiss_installing_app">Установка отменена</string>
     <string name="menu_select_for_wipe">Выберите для очистки</string>
-    <string name="try_again">Попробуйте еще раз</string>
+    <string name="try_again">Повторить попытку</string>
     <string name="panic_will_be_wiped">Будут деинсталлированы и все данные будут удалены</string>
     <string name="panic_apps_to_uninstall">Приложения должны быть деинсталлированы и все данные очищены</string>
     <string name="panic_add_apps_to_uninstall">Добавить приложения для деинсталляции и очистки</string>
@@ -516,8 +516,8 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>
     <string name="notification_channel_updates_title">Обновления</string>
-    <string name="notification_channel_swaps_description">Отображает уведомления об обмене приложениями P2P.</string>
+    <string name="notification_channel_swaps_description">Отображает уведомления об обмене данными P2P-приложений .</string>
     <string name="notification_channel_swaps_title">Обмены</string>
     <string name="notification_channel_installs_description">Отображает уведомления об установке приложения.</string>
-    <string name="notification_channel_installs_title">Инсталляции</string>
+    <string name="notification_channel_installs_title">Установка приложений</string>
 </resources>

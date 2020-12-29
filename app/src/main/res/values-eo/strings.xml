@@ -116,10 +116,10 @@
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
     <string name="bad_fingerprint">Malbona fingrospuro</string>
-    <string name="invalid_url">Ĉi tio ne estas valida URL.</string>
-    <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
+    <string name="invalid_url">Tio ĉi ne estas ĝusta ligilo.</string>
+    <string name="malformed_repo_uri">Transsaltis eraran ligilon de deponejo: %s</string>
     <string name="menu_settings">Agordoj</string>
-    <string name="menu_email">Retleteri programiston</string>
+    <string name="menu_email">Retletero al programisto</string>
     <string name="menu_changelog">Ŝanĝoprotokolo</string>
     <string name="menu_bitcoin">Bitmono</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -130,7 +130,7 @@
     <string name="writing_index_jar">Konservado de subskribita indeksa dosiero (index.jar)…</string>
     <string name="proxy">Retperanto</string>
     <string name="enable_proxy_title">Aktivigi HTTP-retperanton</string>
-    <string name="enable_proxy_summary">Uzi HTTP-retperanton  por ĉiuj retkonektoj</string>
+    <string name="enable_proxy_summary">Uzi HTTP-retperanton por ĉiuj ret‑petoj</string>
     <string name="proxy_host">Adreso de retperanto</string>
     <string name="proxy_port">Pordo de retperanto</string>
     <string name="proxy_host_summary">Adreso de via retperanto (ekz. 127.0.0.1)</string>
@@ -146,19 +146,17 @@
     <string name="status_connecting_to_repo">Konektado al
 \n%1$s</string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
-    <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigitaj</string>
-    <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis eraroj.</string>
+    <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdataj</string>
+    <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis eraro.</string>
     <string name="global_error_updating_repos">Eraro dum ĝisdatigado: %s</string>
     <string name="permissions">Permesoj</string>
-    <string name="no_handler_app">Vi ne havas iun ajn disponeblan aplikaĵon, kiu povas trakti %s.</string>
+    <string name="no_handler_app">Vi havas neniun disponeblan aplikaĵon, kiu povas trakti %s.</string>
     <string name="unsigned">Nesubskribita</string>
     <string name="unverified">Neverigita</string>
     <string name="repo_details">Deponejo</string>
     <string name="repo_url">Adreso</string>
     <string name="repo_fingerprint">Fingrospuro de subskriba ŝlosilo (SHA-256)</string>
-    <string name="unsigned_description">Tio ĉi signifas, ke la listo de aplikaĵoj ne povas esti verigita. Vi devas esti
-        singarda kun aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.
-    </string>
+    <string name="unsigned_description">Tio ĉi signifas ke la listo de aplikaĵoj ne povas esti verigita. Estu singarda pri aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.</string>
     <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn,
         kiujn ĝi liveras.
     </string>
@@ -168,7 +166,7 @@
     <string name="repo_disabled_notification">%1$s malaktiva.
 \n
 \nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
-    <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al tiu ĉi reto: %s</string>
+    <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al la reto: %s</string>
     <string name="pref_language">Lingvo</string>
     <string name="pref_language_default">Sistema implicita</string>
     <string name="wifi">Vifio</string>
@@ -230,8 +228,8 @@
     <string name="install_confirm">postulas permeson al</string>
     <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
     <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La ĝisdatigita aplikaĵo povos aliri al:</string>
-    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu estanta aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. Ĝi ne postulas iun ajn specialan permeson.</string>
-    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. Ĝi ne bezonas iun ajn specialan permeson.</string>
+    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La aplikaĵo postulas neniun permeson.</string>
+    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrigita aplikaĵo\? Viaj nunaj datumoj ne perdiĝos. La aplikaĵo postulas neniun permeson.</string>
     <string name="newPerms">Nova(j)</string>
     <string name="allPerms">Ĉio</string>
     <string name="perm_costs_money">Tio ĉi povas elspezi vian monon</string>
@@ -279,12 +277,12 @@
     <string name="update_auto_install_summary">Elŝuti kaj instali ĝisdatigojn de aplikaĵoj fone, montrante sciigon</string>
     <string name="keep_install_history">Konservi historion de instaladoj</string>
     <string name="keep_install_history_summary">Memori historion de instaladoj kaj malinstaladoj en privata konservejo</string>
-    <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la Interreto?</string>
+    <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la interreto\?</string>
     <string name="versions">Versioj</string>
     <string name="app_details_donate_prompt_unknown_author">Bonvolu aĉeti kafon por programistoj de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s estas kreita de %2$s. Bonvolu aĉeti kafon por programistoj!</string>
     <string name="repositories_summary">Aldoni pliajn fontojn de aplikaĵoj</string>
-    <string name="notification_title_single_update_available">Ĝisdatigo disponebla</string>
+    <string name="notification_title_single_update_available">Disponebla ĝisdatigo</string>
     <string name="notification_title_single_ready_to_install">Instalpreta</string>
     <string name="notification_title_single_ready_to_install_update">Ĝisdatigo preta por instali</string>
     <string name="notification_title_single_install_error">Instalado fiaskis</string>
@@ -323,7 +321,7 @@
     <string name="tts_category_name">Kategorio %1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Montri %1$d aplikaĵon en la kategorio %2$s</item>
-        <item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
+        <item quantity="other">Montri ĉiujn %1$d aplikaĵojn en la kategorio %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Ĝisdatigi</string>
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
@@ -358,7 +356,7 @@
     <string name="menu_license">Permesilo: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d pli…</item>
-        <item quantity="other">+1$d pli…</item>
+        <item quantity="other">+%1$d pli…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d ĝisdatigo</item>
@@ -381,13 +379,13 @@
         <item quantity="other">Ĝisdatigita antaŭ %1$d jaroj</item>
     </plurals>
     <string name="by_author_format">de %s</string>
-    <string name="download_404">Ne trovis petitan dosieron.</string>
+    <string name="download_404">Ne trovis la petitan dosieron.</string>
     <string name="force_old_index">Devigi malnovan formon de indekso</string>
     <string name="force_old_index_summary">Por okazo de eraroj aŭ kongruec-problemoj, uzi XML-indekson de aplikaĵoj</string>
     <string name="app_list_download_ready">Elŝutita kaj instalpreta</string>
     <string name="status_inserting_x_apps">Konservado de aplikaĵaj detaloj (%1$d/%2$d) el %3$s</string>
     <string name="app_installed_media">Dosiero instalita al %s</string>
-    <string name="app_permission_storage">F-Droid bezonas aliron al memorejo por instali ĝin tien. Permesu tion ĉi je la sekva ekrano por pluigi kun instalado.</string>
+    <string name="app_permission_storage">F‑Droid bezonas aliron al konservejo por instali ĝin tien. Permesu tion ĉi sur la sekva ekrano por pluigi instaladon.</string>
     <string name="app_details__incompatible_mismatched_signature">Alia subskribo ol instalita versio</string>
     <string name="app_details__no_versions__show_incompat_versions">Por montri nekongruajn versiojn tie ĉe malgraŭ tio, enŝaltu la agordon “%1$s”.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Neniu versio kun kongrua subskribo</string>
@@ -438,7 +436,7 @@
     <string name="repo_delete_to_overwrite">Unue forigu %1$s por aldoni tiun ĉi servilon kun konflikta ŝlosilo.</string>
     <string name="repo_exists_add_mirror">Tio ĉi estas kopio de %1$s, ĉe aldoni ĝin kiel spegul-servilo?</string>
     <string name="repo_official_mirrors">Oficialaj spegul-serviloj</string>
-    <string name="repo_user_mirrors">Uzi spegul-servilojn</string>
+    <string name="repo_user_mirrors">Neoficialaj spegul‑serviloj</string>
     <string name="use_bluetooth">Uzi Bludenton</string>
     <string name="swap_toast_invalid_url">Erara ligilo por interŝanĝi: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Vifi-retkaptejo aktiva</string>

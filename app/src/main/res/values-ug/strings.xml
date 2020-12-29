@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">بۇ يېڭى نەشرىگە كونا نەشرىنىڭكىگە ئوخشىمايدىغان ئاچقۇچ بىلەن ئىمزا قويۇلغان. ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)</string>
     <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟
@@ -54,11 +54,10 @@
     <string name="status_connecting_to_repo">%1$s غا
         باغلىنىۋاتىدۇ
     </string>
-    <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
+    <string name="no_permissions"></string>
     <string name="no_handler_app">سىزنىڭ %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئۇيغۇلىمىڭىز يوق.</string>
     <string name="theme">ئۇسلۇب</string>
     <string name="app_name">ف-درويد</string>
-
     <string name="back">قايتىش</string>
     <string name="menu_settings">تەڭشەكلەر</string>
     <string name="main_menu__latest_apps">ئەڭ يېڭى</string>
@@ -66,7 +65,6 @@
     <string name="next">كېيىنكى</string>
     <string name="pref_language">تىل</string>
     <string name="pref_language_default">سىستېما سۈكۈت</string>
-
     <string name="category_Development">تەرەققىيات</string>
     <string name="category_Games">ئويۇنلار</string>
     <string name="category_Graphics">رەسىملەر</string>
@@ -80,7 +78,6 @@
     <string name="category_Security">بىخەتەرلىك</string>
     <string name="category_Time">ۋاقىت</string>
     <string name="category_Writing">يېزىقچىلىق</string>
-
     <string name="swap_welcome">ف-درويدقا خۇش كەلدىڭىز!</string>
     <string name="swap_dont_show_again">بۇنى تەكرار كۆرسەتمە</string>
     <string name="newPerms">يېڭى</string>
@@ -88,21 +85,15 @@
     <string name="delete">ئۆچۈرۈش</string>
     <string name="notification_action_cancel">ۋاز</string>
     <string name="main_menu__swap_nearby">ئەتراپتىكى</string>
-
     <string name="preference_manage_installed_apps">ئورنىتىلغان ئۇيغۇلىمالارنى باشقۇرۇش</string>
-
-
     <string name="skip">ئاتلا</string>
-
     <string name="category_Connectivity">ئۇلىنىشچانلىق</string>
     <string name="notification_action_install">ئورنىتىش</string>
-
     <string name="app_list__name__downloading_in_progress">%1$s چۈشۈرۈلىۋاتىدۇ</string>
     <string name="app_list__name__successfully_installed">%1$s ئورنىتىلدى</string>
     <string name="updates__tts__download_app">چۈشۈرۈش</string>
     <string name="more">جىقراق</string>
     <string name="less">ئازراق</string>
-
     <string name="warning_no_internet">يېڭىلاشقا بولمىدى،ئەجەبا تورغا باغلاندىڭىزمۇ؟</string>
     <string name="unsigned">ئىمزالانمىغان</string>
     <string name="unverified">جەزىملەنمىگەن</string>
@@ -139,7 +130,6 @@
     <string name="local_repo_name">يەرلىك ئامبىرىڭىزنىڭ ئىسمى</string>
     <string name="local_repo_name_summary">يەرلىك ئامبىرىڭىزنىڭ سىرتقا قارىتا ئىسمى: %s</string>
     <string name="local_repo_https_on">يەرلىك ئامبار ئۈچۈن مەخپىيلەشتۈرۈلگەن HTTPS:// ئۇلىنىشىنى ئىشلىتىڭ</string>
-
     <string name="login_title">ھوقۇق بېرىشىڭىز تەلەپ قىلىنىدۇ</string>
     <string name="login_name">ئىشلەتكۈچى ئاتى</string>
     <string name="login_password">شىفىر</string>
@@ -147,7 +137,6 @@
     <string name="app_details__no_versions__none_compatible_with_device">ئۈسكۈنىگە ماس كېلىدىغان نەشىرى يوق</string>
     <string name="about_source">مەنبە كودى</string>
     <string name="about_license">ئىجازەتنامە</string>
-
     <string name="app_incompatible">ماسلاشماس</string>
     <string name="app_inst_known_source">ئورئىتىلىدى (%s دىن)</string>
     <string name="app_inst_unknown_source">ئورنىتىلدى (بىلىنمىگەن مەنبەدىن)</string>
@@ -159,28 +148,23 @@
     <string name="app__install_downloaded_update">يېڭىلا</string>
     <string name="app_installed_media">ھۆججەت %s گە ئورنىتىلدى</string>
     <string name="app_permission_storage">ف-درويد بۇ بوشلۇققا ئورنىتىلىشى ئۈچۈن قوشۇلىشىڭىز كېرەك. كېيىنكى ئېكراندا ئۇنىڭغا قوشۇلۇپ ئورنىتىشنى سۈردۈرۈڭ.</string>
-
     <string name="app_list_download_ready">چۈشۈرۈلدى،ئورنىتىشقا تەييار</string>
     <string name="app_list__dismiss_app_update">يېڭىلانما ساقىتىلدى</string>
     <string name="app_list__dismiss_vulnerable_app">تۆشۈكلەر ساقىتىلدى</string>
     <string name="app_list__dismiss_downloading_app">چۈشۈرۈش ۋازكېچىلدى</string>
-
     <string name="installed_apps__activity_title">ئورنىتىلغان ئۇيغۇلىمىلار</string>
     <string name="installed_app__updates_ignored">ئېتىبارسىزلانغان يېڭىلانمىلار</string>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s نەشىرى ئۈچۈن يېڭىلانمىلار ساقىتىلدى</string>
     <string name="update_all">بارلىق يېڭىلانمىلارنى چۈشۈرۈش</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s دىن تۆشۈكۈك بايقىدۇق. بۇ ئۇيغۇلىمىنى دەرھال يۇيىۋېتىشىڭىزنى تەۋسىيە قىلىمىز.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s دىن تۆشۈكۈك بايقىدۇق. بۇ ئۇيغۇلىمىنى دەرھال يېڭى نەشىرىگە ئۆرلىتىشىڭىزنى تەۋسىيە قىلىمىز.</string>
     <string name="updates__app_with_known_vulnerability__ignore">ساقىت قىلىش</string>
-
     <string name="updates__hide_updateable_apps">ئۇيغۇلىمىلارنى يوشۇر</string>
     <string name="updates__show_updateable_apps">ئۇيغۇلىمىلارنى كۆرسەت</string>
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">%1$d ئۇيغۇلىمىسى ئۈچۈن يېڭىلانما چۈشۈر.</item>
-	<item quantity="other">%1$d ئۇيغۇلىمىلىرى ئۈچۈن يېڭىلانمىلارنى چۈشۈر.</item>
-</plurals>
-
+        <item quantity="one">%1$d ئۇيغۇلىمىسى ئۈچۈن يېڭىلانما چۈشۈر.</item>
+        <item quantity="other">%1$d ئۇيغۇلىمىلىرى ئۈچۈن يېڭىلانمىلارنى چۈشۈر.</item>
+    </plurals>
     <string name="repo_add_mirror">تەسۋىر قوش</string>
     <string name="links">ئۇلىنىشلار</string>
     <string name="versions">نەشىرلىرى</string>
@@ -189,10 +173,8 @@
     <string name="overwrite">ئۈستىلەپ ياز</string>
     <string name="clear_search">ئىزدەشلەرنى تازىلاش</string>
     <string name="sort_search">ئىزدەشلەرنى رەتلە</string>
-
     <string name="bluetooth_activity_not_found">كۆكچىش يوللاش ئۇسۇلى تېپىلمىدى،بىرنى تاللاڭ!</string>
     <string name="choose_bt_send">كۆكچىش يوللاش ئۇسۇلىنى تاللاڭ</string>
-
     <string name="repo_add_fingerprint">بارماق ئىزى (ئىختىيارى)</string>
     <string name="repo_exists_add_fingerprint">%1$s قۇرۇلدى،يېڭى ئاچقۇچ ئۇچۇرى قوشۇلىدۇ.</string>
     <string name="repo_exists_enable">%1$s قۇرۇلدى،قايتا-قوزغىتىش خالىغانلىقىڭىزنى جەزىملەڭ.</string>
@@ -202,14 +184,11 @@
     <string name="menu_litecoin">لايتكوين</string>
     <string name="menu_flattr">فلەتتر</string>
     <string name="menu_liberapay">لىبېراپەي</string>
-
     <string name="preference_category__my_apps">ئۇيغۇلىمىلىرىم</string>
     <string name="details_new_in_version">%s نەشىرىدىكى يېڭى ئىقتىدار</string>
-
     <string name="antifeatureswarning">بۇ ئۇيغۇلىمىدا سىز ياقتۇرمايدىغان ئىقتىدارلار بولىشى مۇمكىن.</string>
     <string name="antifeatures">ئىقتىدار-قارشى</string>
     <string name="expert_on">قوشۇمچە ئۇچۇرلانى كۆرسەت ۋە قوشۇمچە تەڭشەكلەرنى قوزغات</string>
-
     <string name="show_anti_feature_apps">ئىقتىدار-چەكلەش ئۇيغۇلىمىلىرىنى ئۆز ئىچىگە ئالىدۇ</string>
     <string name="local_repo">يەرلىك ئامبار</string>
     <string name="deleting_repo">ھازىرقى ئامبار ئۆچۈرۈلىۋاتىدۇ…</string>
@@ -230,23 +209,20 @@
     <string name="unknown">نامەلۇم</string>
     <string name="repo_confirm_delete_title">ئامبارنى ئۆچۈرەمسىز؟</string>
     <string name="wifi_ap">قىزىقنۇقتا</string>
-
     <string name="category_Theming">ئاساسىي ئۇسلۇب</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">كۆرۈش %d</item>
-	<item quantity="other">ھەممىسىنى كۆرۈش %d</item>
-</plurals>
-
+        <item quantity="one">كۆرۈش %d</item>
+        <item quantity="other">ھەممىسىنى كۆرۈش %d</item>
+    </plurals>
     <string name="keep_day">1 كۈن</string>
     <string name="keep_week">1 ھەپتە</string>
     <string name="keep_month">1 ئاي</string>
     <string name="keep_year">1 يىل</string>
     <string name="keep_forever">مەڭگۈ</string>
-
     <plurals name="notification_summary_more">
-	<item quantity="one">%1$d+ كۆپ…</item>
-	<item quantity="other">%1$d+ كۆپ …</item>
-</plurals>
+        <item quantity="one">%1$d+ كۆپ…</item>
+        <item quantity="other">%1$d+ كۆپ …</item>
+    </plurals>
     <string name="notification_title_single_ready_to_install">ئورنىتىشقا تەييار</string>
     <string name="notification_title_single_ready_to_install_update">يېڭىلانما ئورنىتىشقا تەييار</string>
     <string name="notification_title_single_install_error">ئورنىتىش مەغلۇب بولدى</string>
@@ -255,15 +231,15 @@
     <string name="notification_content_single_installing">\"%1$s\"نى ئورنىتىۋاتىدۇ…</string>
     <string name="notification_content_single_installed">ئوڭۇشلۇق ئورنىتىلىدى</string>
     <plurals name="notification_summary_updates">
-	<item quantity="one">بىر</item>
-	<item quantity="other">باشقا</item>
-</plurals>
+        <item quantity="one"></item>
+        <item quantity="other"></item>
+    </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">بىر
+        <item quantity="one">بىر
 \n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
-	<item quantity="other">باشقا
+        <item quantity="other">باشقا
 \n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
-</plurals>
+    </plurals>
     <string name="notification_title_summary_update_available">يېڭىلانما ئېرىشىشچان</string>
     <string name="notification_title_summary_downloading">چۈشۈرىۋاتىدۇ…</string>
     <string name="notification_title_summary_downloading_update">يېڭىلانمىنى چۈشۈرىۋاتىدۇ…</string>
@@ -272,7 +248,6 @@
     <string name="notification_title_summary_installing">ئورنىتىۋاتىدۇ</string>
     <string name="notification_title_summary_installed">ئوڭۇشلۇق ئورنىتىلدى</string>
     <string name="tts_category_name">%1$s تۈر</string>
-
     <string name="details_last_updated_today">بۇگۈن يېڭىلا</string>
     <string name="proxy_host">ۋاكالەتچى كومپىيوتېر</string>
     <string name="proxy_port">ۋاكالەتچى ئېغىزى</string>
@@ -280,7 +255,5 @@
     <string name="requires_features">تەلەپ: %1$s</string>
     <string name="empty_can_update_app_list">تەبرىكلەر!
 \nسىزنىڭ ئۇيغۇلىمىلىرڭىز گۈنجەل.</string>
-
     <string name="empty_search_available_app_list">ماس كېلىدىغان ئۇيغۇلىما يوق.</string>
-
 </resources>

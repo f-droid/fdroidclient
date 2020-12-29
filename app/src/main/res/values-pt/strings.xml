@@ -164,8 +164,8 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">A descarregar atualização para %1$s app.</item>
-        <item quantity="other">A descarregar atualizações para %1$s apps.</item>
+        <item quantity="one">A descarregar atualização para %1$d app.</item>
+        <item quantity="other">A descarregar atualizações para %1$d apps.</item>
     </plurals>
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme configurações de Wi-Fi/dados móveis</string>
     <string name="repo_add_title">Adicionar novo repositório</string>

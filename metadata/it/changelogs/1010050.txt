@@ -1,0 +1,7 @@
+* utilizzare canali di notifica per un controllo dettagliato (@Isira-Seneviratne)
+* Selezione della lingua migliorata con più lingue (@spacecowboy/@bubu)
+* La scheda più recente mostrerà risultati migliori sui dispositivi non in lingua inglese
+* aggiornamenti alle librerie principali (Jackson, androidx, gradle, ecc.)
+* supporto whitelabeling lucido
+
+Grazie ai nuovi collaboratori! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

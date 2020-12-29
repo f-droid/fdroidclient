@@ -54,7 +54,7 @@
     <string name="menu_source">Kaynak Kodu</string>
     <string name="menu_upgrade">Güncelle</string>
     <string name="details_notinstalled">Yüklü değil</string>
-    <string name="antiadslist">Bu uygulama reklam içeriyor</string>
+    <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliğinizi izler ve raporlar</string>
     <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler önerir</string>
     <string name="antinonfreenetlist">Bu uygulama özgür olmayan ağ servisleri önerir</string>
@@ -439,11 +439,11 @@
     <string name="over_network_on_demand_summary">İndire tıkladığımda yalnızca bu bağlantıyı kullan</string>
     <string name="over_network_never_summary">Asla bu bağlantıyı kullanarak bir şeyler indirme</string>
     <string name="antidisabledalgorithmlist">Bu uygulamanın zayıf güvenlikli imzası var</string>
-    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığı içeriyor</string>
+    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığını içeriyor</string>
     <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
     <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
-    <string name="prompt_to_send_crash_reports_summary">Çökmeler hakkında veri topla ve geliştiriciye göndermek için sor</string>
+    <string name="prompt_to_send_crash_reports_summary">Kilitlenmelerle ilgili verileri topla ve bunları geliştiriciye göndermeyi sor</string>
     <string name="install_history">Kurulum Geçmişi</string>
     <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>

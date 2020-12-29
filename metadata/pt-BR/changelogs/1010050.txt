@@ -1,6 +1,7 @@
-* use notification channels for fine-grained control (@Isira-Seneviratne)
-* Latest Tab will show better results on non-English devices
-* updates to core libraries (Jackson, androidx, gradle, etc)
-* polish whitelabeling support
+* uso de canais de notificação para um controle mais apurado (@Isira-Seneviratne)
+* seleção linguística melhorada com múltiplos idiomas (@spacececowboy/@bubu)
+* a guia novidades irá mostrar melhores resultados em dispositivos que não usem o inglês
+* atualizações das bibliotecas centrais (Jackson, androidx, gradle, etc)
+* suporte de versões personalizadas melhorado
 
-Thanks new contributors! @spacecowboy @projectgus @glennmen @Isira-Seneviratne
+Obrigado aos novos colaboradores! @spacececowboy @projectgus @glennmennmen @Isira-Seneviratne

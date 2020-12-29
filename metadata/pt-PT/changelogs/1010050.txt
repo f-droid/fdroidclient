@@ -1,6 +1,7 @@
 * utilizar canais de notificação para controlo de granulação fina (@Isira-Seneviratne)
-* O guia mais recente irá mostrar melhores resultados em aparelhos que não sejam em inglês
+* seleção linguística melhorada com múltiplos locais (@spacececowboy/@bubu)
+* a guia Últimas irá mostrar melhores resultados em aparelhos que não sejam em inglês
 * atualizações das bibliotecas centrais (Jackson, androidx, gradle, etc)
 * suporte de rótulos brancos polidos
 
-Obrigado aos novos colaboradores! @spacecowboy @projectgus @glennmennmen @Isira-Seneviratne
+Obrigado aos novos colaboradores! @spacececowboy @projectgus @glennmennmen @Isira-Seneviratne

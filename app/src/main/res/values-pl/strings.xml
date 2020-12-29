@@ -324,9 +324,9 @@
     <string name="tts_category_name">Kategoria %1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Pokaż %1$d aplikację w kategorii %2$s</item>
-        <item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
-        <item quantity="many">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
-        <item quantity="other">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
+        <item quantity="few">Pokaż wszystkie %1$d aplikacje w kategorii %2$s</item>
+        <item quantity="many">Pokaż wszystkich %1$d aplikacji w kategorii %2$s</item>
+        <item quantity="other">Pokaż wszystkich %1$d aplikacji w kategorii %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Aktualizuj</string>
     <string name="app_list__name__downloading_in_progress">Pobieranie %1$s</string>

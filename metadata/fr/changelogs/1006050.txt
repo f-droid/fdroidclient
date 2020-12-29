@@ -1,7 +1,13 @@
-* Le dernier onglet met désormais en évidence les traduction/description/capture d'écran
-* Téléchargement auto depuis les miroirs pour accélérer les téléchargements et réduire la charge de f-droid.org
-* Désactivation possible des miroirs dans RepoDetails #1696
-* Cache pour téléchargements plus efficaces #1708
-* Correction des installations inconnues #1702
-* Correction des icônes manquantes #1592
-* Amélioration des traductions de l'onglet Mises à jour par rapport aux préférences
+* L’onglet nouveauté met désormais en évidence les apps avec traduction/description/capture d'écran
+
+* Téléchargement auto depuis les miroirs pour les accélérer et réduire la charge sur f-droid.org
+
+* Désactivation possible des miroirs dans les details des dépôts #1696
+
+* Cache de téléchargement plus efficaces (#1708)
+
+* Correction des installations de sources inconnues (#1702)
+
+* Correction des icônes manquantes sans Wi-Fi (#1592)
+
+* Amélioration des trads de l'onglet Mises à jour

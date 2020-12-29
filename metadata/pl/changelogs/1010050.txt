@@ -1,5 +1,6 @@
-* używaj kanałów powiadomień do precyzyjnej kontroli (@ Isira-Seneviratne)
-* Najnowsza karta będzie pokazywać lepsze wyniki na urządzeniach innych niż angielski
+* użycie kanałów powiadomień do precyzyjnej kontroli (@Isira-Seneviratne)
+* Poprawiony wybór języka z wieloma lokalizacjami (@spacecowboy/@bubu)
+* Karta Ostatnie będzie pokazywać lepsze wyniki na urządzeniach z językiem innym niż angielski
 * aktualizacje podstawowych bibliotek (Jackson, Androidx, Gradle itp.)
 * wsparcie dla polskich białych etykiet
 

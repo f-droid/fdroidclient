@@ -1,0 +1,7 @@
+* gebruik kennisgewingskanale vir fyn beheer (@ Isira-Seneviratne)
+* Verbeterde taalkeuse met verskeie lokale (@ spacecowboy / @ bubu)
+* Laaste oortjie sal beter resultate op nie-Engelse toestelle wys
+* opdaterings aan kernbiblioteke (Jackson, androidx, gradle, ens.)
+* polish whitelabelling ondersteuning
+
+Dankie nuwe bydraers! @spacecowboy @projectgus @glennmen @ Isira-Seneviratne
