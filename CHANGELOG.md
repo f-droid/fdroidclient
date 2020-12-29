@@ -1,3 +1,13 @@
+### 1.11 (2020-12-29)
+
+* Improved linkifying of URLs in app descriptions
+
+* Improved handling of SDCards and USG-OTG in Nearby
+
+* Modernized code and switched PNGs to vectors (thanks @isira-seneviratne!)
+
+* Recognize longer repo URLs to support GitCDN/RawGit/etc mirrors
+
 ### 1.10 (2020-10-20)
 
 * Improved language selection with multiple locales
