@@ -118,8 +118,7 @@
     <string name="update_notification_title">Opdatering van argiewe</string>
     <string name="status_processing_xml_percent">Besig met %2$s / %3$s (%4$d%%) van %1$s</string>
     <string name="status_connecting_to_repo">Koppel tans aan
-        %1$s
-    </string>
+\n%1$s</string>
     <string name="status_inserting_apps">Stoor program besonderhede</string>
     <string name="repos_unchanged">Alle argiewe is op datum</string>
     <string name="all_other_repos_fine">Alle ander argiewe het geen foute veroorsaak nie.</string>
@@ -158,15 +157,12 @@
     <string name="icon">Simbooltjie</string>
     <string name="status_download">Aflaai\n%2$s / %3$s (%4$d%%) vanaf \n%1$s</string>
     <string name="repo_disabled_notification">Afgeskakel %1$s.
-
-        Jy moet
-        hierdie argief weer aktiveer om programme daaruit te kan installeer.
-    </string>
+\n
+\nJy moet hierdie argief weer aktiveer om programme daaruit te kan installeer.</string>
     <string name="repo_added">Gestoord pakketbewaarplek %1$s.</string>
     <string name="repo_searching_address">Op soek na pakketstoor by
 \n%1$s</string>
-    <string name="not_on_same_wifi">Jou toestel is nie op die dieselfde Wi-Fi as die plaaslike argief jy nou net gelaai
-\n het nie! Probeer hierdie netwerk aansluiting by: %s</string>
+    <string name="not_on_same_wifi">Jou toestel is nie op die dieselfde Wi-Fi as die plaaslike argief jy nou net gelaai het nie! Probeer hierdie netwerk aansluiting by: %s</string>
     <string name="requires_features">Vereis: %1$s</string>
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Stelsel nalaat waarde</string>
@@ -190,10 +186,8 @@
     <string name="category_Time">Tyd</string>
     <string name="category_Writing">Skryf</string>
     <string name="empty_installed_app_list">Geen programme geïnstalleer.
-
-        Daar is programme op jou toestel nie, maar hulle is nie beskikbaar vanaf F-Droid nie. Dit kan wees omdat jy jou
-        argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.
-    </string>
+\n
+\nDaar is programme op jou toestel nie, maar hulle is nie beskikbaar vanaf F-Droid nie. Dit kan wees omdat jy jou argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.</string>
     <string name="empty_can_update_app_list">Geluk!\nJou programme is op datum.</string>
     <string name="install_error_unknown">Installasie onsuksesvol vanweë \'n onbekende fout</string>
     <string name="uninstall_error_unknown">Deïnstallasie onsuksesvol vanweë \'n onbekende fout</string>
@@ -220,7 +214,7 @@
     <string name="swap_confirm_connect">Wil jy programme vanaf %1$s nou kry?</string>
     <string name="swap_dont_show_again">Moenie dit weer wys nie</string>
     <string name="swap_choose_apps">Kies programme</string>
-    <string name="swap_scan_qr">Skandeer die QR kode</string>
+    <string name="swap_scan_qr">Skandeer QR-kode</string>
     <string name="swap_people_nearby">Mense naby</string>
     <string name="swap_scanning_for_peers">Soek tans vir nabygeleë mense…</string>
     <string name="swap_nearby">Nabygeleë ruil</string>
@@ -243,9 +237,8 @@
     <string name="main_menu__categories">Kategorieë</string>
     <string name="main_menu__swap_nearby">Naby</string>
     <string name="status_download_unknown_size">Aflaai van
-        %2$s vanaf
-        %1$s
-    </string>
+\n%2$s vanaf
+\n%1$s</string>
     <string name="swap_scan_or_type_url">Een persoon het nodig om die kode te skandeer of tik die URL van die ander in
         \'n web browser.
     </string>
@@ -407,13 +400,13 @@
     <string name="scan_removable_storage_summary">Soek pakket repos op verwyderbare media soos SD Kaarte en USB duimskyfies</string>
     <string name="scan_removable_storage_toast">Skandeer %s…</string>
     <string name="scan_removable_storage_title">Scan verwyderbare media</string>
-    <string name="over_network_never_summary">"Moet nooit iets aflaai met  hierdie verbinding nie"</string>
+    <string name="over_network_never_summary">Moet nooit iets aflaai met hierdie verbinding nie</string>
     <string name="over_network_on_demand_summary">Gebruik slegs hierdie verbinding wanneer ek aflaai klik</string>
     <string name="over_network_always_summary">Gebruik hierdie verbinding altyd indien beskikbaar</string>
     <string name="over_data">Oor data kanaal</string>
     <string name="allow_push_requests">Laat repos toe om apps te installeer/deïnstalleer</string>
     <string name="allow_push_requests_summary">Repo-metadata kan stootversoeke insluit om apps te installeer of te deïnstalleer</string>
-    <string name="send_version_and_uuid_summary">"Voeg die app se weergawe nommer en \'n  unieke ID tydens aflaai. Word aktief met volgende app lopie."</string>
+    <string name="send_version_and_uuid_summary">Voeg die app se weergawe nommer en \'n unieke ID tydens aflaai. Word aktief met volgende app lopie.</string>
     <string name="app_list__dismiss_installing_app">Installasie gekanselleer</string>
     <string name="undo">Ontdoen</string>
     <string name="warning_scaning_qr_code">Dit lyk asof u kamera nie outofokus het nie. Dit kan moeilik wees om die kode te skandeer.</string>
