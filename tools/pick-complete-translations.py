@@ -51,6 +51,11 @@ for locale in metadata:
 for locale in sorted(app_locales.keys(), reverse=True):
     a = app_locales.get(locale)
     m = metadata_locales.get(locale)
+    if m:
+        print('%10s' % locale, a['translated_percent'], a['failing'], m['translated_percent'], m['failing'],
+              sep='\t')
+    else:
+        print('%10s' % locale, a['translated_percent'], a['failing'], sep='\t')
     if a is not None and a['translated_percent'] == 100 and a['failing'] == 0 \
        and m is not None and m['translated_percent'] == 100 and m['failing'] == 0:
         print(locale)
