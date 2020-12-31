@@ -1,0 +1,7 @@
+* korektitaj ligiloj en priskriboj de aplikaĵoj
+
+* plibonigita subteno por SD‑kartoj kaj USB OTG en la eblaĵo “Proksime”
+
+* modernigita kodo kaj transigo el PNG al vektoraj bildoj (danke al @isira-seneviratne)
+
+* subteno por pli longaj ligiloj de deponejoj (por uzi spegul‑serviloj ĉe GitCDN, RawGit, ktp.)
