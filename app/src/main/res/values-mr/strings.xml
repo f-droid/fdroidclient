@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="hide_all_notifications">सर्व सूचना लपवा</string>
     <string name="unstable_updates_summary">अस्थिर आवृत्तीसाठी अद्ययाव सुचवा</string>
     <string name="unstable_updates">अस्थिर अद्ययाव</string>
     <string name="prompt_to_send_crash_reports_summary">ऍप कोसाळल्याचा अहवाल बनवून तो अहवाल विकासकाला पाठवा</string>
     <string name="installIncompatible">हे अँप तुमच्या यंत्रासाठी अनुकूल नाही, तरीदेखील स्थापना करु इच्छिता\?</string>
     <string name="newPerms">नवीन</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">वाचन</string>
+    <string name="category_Reading">वाचन</string>
     <string name="pref_language">भाषा</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="repo_provider">: %s</string>
@@ -112,7 +112,6 @@
     <string name="send_version_and_uuid">सर्वर वर आवृत्ती आणि युयुआयडी</string>
     <string name="keep_install_history_summary">सर्व स्थापना आणि अस्थापनेची नोंद वैयक्तिक भांडारात ठेवा</string>
     <string name="unsigned">अहस्ताक्षरित</string>
-    <string name="main_menu__latest_apps"/>
     <string name="updates">अद्ययाव</string>
     <string name="keep_install_history">स्थापना इतिहासाची नोंद</string>
     <string name="install_history_summary">सर्व स्थापना आणि अस्थापनेची वैयक्तिक नोंदवही तपासा</string>
@@ -129,12 +128,11 @@
     <string name="notification_title_single_update_available">अद्ययाव उपलब्ध</string>
     <string name="crash_dialog_title">F-Droid कोसळला</string>
     <string name="swap_send_fdroid">F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">यंत्रणा</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">खेळ आणि</string>
+    <string name="category_System">यंत्रणा</string>
+    <string name="category_Sports_Health">खेळ आणि</string>
     <string name="wifi">वाय-</string>
     <string name="not_on_same_wifi">तुमचे यंत्र तुमच्याद्वारे जोडल्या गेलेल्या स्थानीक भांडाराच्या वाई-फाई वर नाही ! या नेटवर्क मध्ये सामील होण्याचा प्रयत्न करा: %s</string>
     <string name="repo_last_update">अंतिम अद्ययावत</string>
-    <string name="repo_details"/>
     <string name="unverified">असत्यापित</string>
     <string name="warning_no_internet">अद्यायवत शक्य नाही, तुम्ही इंटरनेटला जोडलेले आहात का \?</string>
     <string name="antitracklist">हे ऍप तुमच्या हालचालीवर पाळत ठेऊन नोंद करते</string>
@@ -148,17 +146,17 @@
     <string name="notification_action_update">अद्ययाव ( अपडेट)</string>
     <string name="swap_dont_show_again">हे पुन्हा दाखवू</string>
     <string name="swap_welcome">F-Droid मध्ये आपलं स्वागत!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">लिखाण</string>
-    <string tools:ignore="UnusedResources" name="category_Time">वेळ</string>
-    <string tools:ignore="UnusedResources" name="category_Security">सुरक्षा</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">विज्ञान आणि शिक्षण</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">फोन आणि एस एम</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">मार्गक्रम</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">मल्टीमीडिया</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">इंटरनेट</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">ग्राफिक्स</string>
-    <string tools:ignore="UnusedResources" name="category_Games">खेळ</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">संपर्क</string>
+    <string name="category_Writing">लिखाण</string>
+    <string name="category_Time">वेळ</string>
+    <string name="category_Security">सुरक्षा</string>
+    <string name="category_Science_Education">विज्ञान आणि शिक्षण</string>
+    <string name="category_Phone_SMS">फोन आणि एस एम</string>
+    <string name="category_Navigation">मार्गक्रम</string>
+    <string name="category_Multimedia">मल्टीमीडिया</string>
+    <string name="category_Internet">इंटरनेट</string>
+    <string name="category_Graphics">ग्राफिक्स</string>
+    <string name="category_Games">खेळ</string>
+    <string name="category_Connectivity">संपर्क</string>
     <string name="pref_language_default">पूर्वनिर्धारित यंत्रणा</string>
     <string name="skip">दुर्लक्ष</string>
     <string name="details_notinstalled">अस्थापित</string>
@@ -171,7 +169,6 @@
     <string name="menu_share">सामायिक</string>
     <string name="menu_add_repo">नवे</string>
     <string name="menu_settings">सेटिंग्स</string>
-    <string name="menu_manage"/>
     <string name="cancel">रद्द</string>
     <string name="ok">ठीक</string>
     <string name="app_name">F-Droid</string>
@@ -264,7 +261,6 @@
     <string name="perms_new_perm_prefix">नवीन:</string>
     <string name="download_error">डाउनलोड अयशस्वी</string>
     <string name="perm_costs_money">हे तुम्हाला आर्थिकरीत्या गोत्यात आणू शकतं</string>
-    <string name="allPerms"/>
     <string name="install_confirm">हाताळले गरजेचे</string>
     <string name="swap_connecting">जोडले जात</string>
     <string name="swap_wifi_device_name">यंत्राचे</string>
@@ -287,14 +283,12 @@
         <item quantity="one">%d ने पाहिले</item>
         <item quantity="other">%d नी पाहिले</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Theming">धर्तीवर</string>
+    <string name="category_Theming">धर्तीवर</string>
     <string name="wifi_ap">हॉटस्पॉट</string>
     <string name="requires_features">%1$s गरजेचे</string>
     <string name="share_repository">भांडार सामाईक करा</string>
-    <string tools:ignore="UnusedResources" name="category_Money"/>
     <string name="repo_confirm_delete_title">भांडार हटवावे \?</string>
     <string name="unknown">अज्ञात</string>
-    <string name="repo_name"/>
     <string name="repo_user_mirrors">वापरकर्त्याचे प्रतिदुवे</string>
     <string name="repo_official_mirrors">अधिकारीक</string>
     <string name="repo_description">विवरण</string>

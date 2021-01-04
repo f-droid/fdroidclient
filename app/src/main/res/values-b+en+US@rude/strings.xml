@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="updates">Updates</string>
     <string name="repo_searching_address">Looking for package repository at
 \n%1$s</string>
@@ -260,8 +260,8 @@
     <string name="crash_dialog_text">An unexpected error occurred forcing the app to stop. Would you like to e-mail the details to help fix the issue\?</string>
     <string name="crash_dialog_title">F-Droid has crashed</string>
     <string name="swap_send_fdroid">Send F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">System</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sports &amp; Health</string>
+    <string name="category_System">System</string>
+    <string name="category_Sports_Health">Sports &amp; Health</string>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining this network: %s</string>
     <string name="repo_last_update">Last update</string>
@@ -283,20 +283,20 @@
     <string name="newPerms">New</string>
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Writing</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Time</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Security</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Science &amp; Education</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Reading</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Phone &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navigation</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Money</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Graphics</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Games</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Development</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Connectivity</string>
+    <string name="category_Writing">Writing</string>
+    <string name="category_Time">Time</string>
+    <string name="category_Security">Security</string>
+    <string name="category_Science_Education">Science &amp; Education</string>
+    <string name="category_Reading">Reading</string>
+    <string name="category_Phone_SMS">Phone &amp; SMS</string>
+    <string name="category_Navigation">Navigation</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Money">Money</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Graphics">Graphics</string>
+    <string name="category_Games">Games</string>
+    <string name="category_Development">Development</string>
+    <string name="category_Connectivity">Connectivity</string>
     <string name="pref_language_default">System Default</string>
     <string name="pref_language">Language</string>
     <string name="skip">Skip</string>

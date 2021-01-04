@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="delete">Устгах</string>
     <string name="cancel">Цуцлах</string>
@@ -190,7 +190,7 @@
         <item quantity="one">%d үзэх</item>
         <item quantity="other">Бүх %d-г үзэх</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Theming">Дулаан</string>
+    <string name="category_Theming">Дулаан</string>
     <string name="wifi_ap">Халуун цэг</string>
     <string name="requires_features">Шаардлагатай: %1$s</string>
     <string name="share_repository">Хадгалах санг хуваалцах</string>
@@ -447,8 +447,8 @@
     <string name="crash_dialog_text">Аппыг зогсооход хүргэсэн гэнэтийн алдаа гарлаа. Асуудлыг арилгахад туслах дэлгэрэнгүй мэдээллийг имэйлээр илгээхийг хүсч байна уу\?</string>
     <string name="crash_dialog_title">F-Droid осолдсон</string>
     <string name="swap_send_fdroid">F-Droid илгээнэ үү</string>
-    <string tools:ignore="UnusedResources" name="category_System">Систем</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Спорт ба эрүүл мэнд</string>
+    <string name="category_System">Систем</string>
+    <string name="category_Sports_Health">Спорт ба эрүүл мэнд</string>
     <string name="not_on_same_wifi">Таны төхөөрөмж таны сая нэмсэн орон нутгийн репо-той ижил Wi-Fi сүлжээнд холбогдоогүй байна! Энэ сүлжээнд нэгдэж үзээрэй: %s</string>
     <string name="repo_last_update">Сүүлийн шинэчлэлт</string>
     <string name="repo_details">Хадгалах сан</string>
@@ -468,20 +468,20 @@
     <string name="notification_action_update">Шинэчлэх</string>
     <string name="swap_dont_show_again">Үүнийг дахиж битгий харуул</string>
     <string name="swap_welcome">F-Droid-д тавтай морилно уу!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Бичих</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Цаг хугацаа</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Аюулгүй байдал</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Шинжлэх ухаан ба боловсрол</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Унших</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Утас ба SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Чиглүүлэлт</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Мультимедиа</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Мөнгө</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Интернет</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">График</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Тоглоомууд</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Хөгжил</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Холболт</string>
+    <string name="category_Writing">Бичих</string>
+    <string name="category_Time">Цаг хугацаа</string>
+    <string name="category_Security">Аюулгүй байдал</string>
+    <string name="category_Science_Education">Шинжлэх ухаан ба боловсрол</string>
+    <string name="category_Reading">Унших</string>
+    <string name="category_Phone_SMS">Утас ба SMS</string>
+    <string name="category_Navigation">Чиглүүлэлт</string>
+    <string name="category_Multimedia">Мультимедиа</string>
+    <string name="category_Money">Мөнгө</string>
+    <string name="category_Internet">Интернет</string>
+    <string name="category_Graphics">График</string>
+    <string name="category_Games">Тоглоомууд</string>
+    <string name="category_Development">Хөгжил</string>
+    <string name="category_Connectivity">Холболт</string>
     <string name="pref_language_default">Системийн өгөгдмөл</string>
     <string name="pref_language">Хэл</string>
     <string name="skip">Алгасах</string>

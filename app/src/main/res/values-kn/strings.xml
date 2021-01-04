@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">ಎಫ್-ಡ್ರಾಯಿಡ್</string>
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಸ್ಥಾಪಿಸಿ</string>
@@ -333,7 +333,7 @@
     <string name="menu_opencollective">ಒಪನ್‌ಕಲೆಕ್ಟೀವ್</string>
     <string name="repo_add_mirror">ಕೊಂಡಿಯನ್ನು ಸೇರಿಸಿ</string>
     <string name="crash_dialog_title">ಎಫ್-ಡ್ರಾಯಿಡ್ ಕ್ರ್ಯಾಶ್ ಆಗಿದೆ</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">ಸಂಪರ್ಕ</string>
+    <string name="category_Connectivity">ಸಂಪರ್ಕ</string>
     <string name="pref_language_default">ಸಿಸ್ಟಮ್ ಡೀಫಾಲ್ಟ್</string>
     <string name="skip">ಬಿಟ್ಟುಬಿಡಿ</string>
     <string name="not_on_same_wifi">ನಿಮ್ಮ ಸಾಧನವು ನೀವು ಸೇರಿಸಿದ ಸ್ಥಳೀಯ ರೆಪೊದಂತೆಯೇ ಅದೇ Wi-Fi ನಲ್ಲಿಲ್ಲ! ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸೇರಲು ಪ್ರಯತ್ನಿಸಿ: %s</string>
@@ -434,7 +434,7 @@
         <item quantity="one">ನೋಟ %d</item>
         <item quantity="other">ಎಲ್ಲಾ ವೀಕ್ಷಿಸಿ %d</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Theming">ಥೀಮ್</string>
+    <string name="category_Theming">ಥೀಮ್</string>
     <string name="requires_features">ಅಗತ್ಯವಿದೆ: %1$s</string>
     <string name="share_repository">ಹಂಚಿಕೆ ಭಂಡಾರ</string>
     <string name="repo_searching_address">ನಲ್ಲಿ ಪ್ಯಾಕೇಜ್ ಭಂಡಾರವನ್ನು ಹುಡುಕುತ್ತಿದ್ದೇವೆ
