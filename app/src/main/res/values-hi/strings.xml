@@ -491,4 +491,11 @@
 \n
 \nनोट: पहले से इंस्टॉल किए गए सभी ऐप्स आपके डिवाइस पर रहेंगे।</string>
     <string name="menu_liberapay">Liberapay</string>
+    <string name="notification_channel_updates_description">एप्लिकेशन और रिपॉजिटरी अपडेट सूचनाओं को प्रदर्शित करता है।</string>
+    <string name="notification_channel_updates_title">अपडेट</string>
+    <string name="notification_channel_swaps_description">पी 2 पी ऐप स्वैपिंग नोटिफिकेशन दिखाता है।</string>
+    <string name="notification_channel_swaps_title">स्वैप</string>
+    <string name="notification_channel_installs_description">एप्लिकेशन इंस्टॉलेशन सूचनाएं प्रदर्शित करता है।</string>
+    <string name="notification_channel_installs_title">अधिष्ठापन</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>

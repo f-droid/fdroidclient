@@ -1,7 +1,7 @@
 * Storoverhaling av I nærheten, i påvente av omskriving
 * Vis "Angre" etter å dra vekk elementer fra oppdateringsfane (takk @Hocuri!)
 * Fikset feil med "Seneste"-visning, forårsaket av feilhåndtering av tidssoner #1757
-* Ignorer alle uviktige kræsj i bakgrunnstjenester
+* Ignorer alle uviktige krasj i bakgrunnstjenester
 * Nye panikkhandlinger: Programavinstallasjon og tilbakestilling av pakkebrønner til forvalg
 * Fiks mellomtjenerstøtte ved første start
 * USB OTG-minnepinner kan brukes som pakkebrønner og speil i nærheten

@@ -1,0 +1,7 @@
+* Melhor vinculação de URLs em descrições de aplicativos
+
+* Manuseio aprimorado de SDCards e USG-OTG nas proximidades
+
+* Código modernizado e PNGs trocados por vetores (obrigado @isira-seneviratne!)
+
+* Reconhecer URLs de repo mais longos para suportar espelhos GitCDN / RawGit / etc

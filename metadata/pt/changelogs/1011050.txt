@@ -1,0 +1,7 @@
+* Melhoria da ligação de URLs nas descrições da aplicação
+
+* Melhor tratamento de SDCards e USG-OTG em Nearby
+
+* Código modernizado e trocou PNGs por vectores (obrigado @isira-seneviratne!)
+
+* Reconhecer URLs mais longas para suportar espelhos GitCDN/RawGit/etc

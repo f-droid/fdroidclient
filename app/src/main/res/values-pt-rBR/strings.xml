@@ -356,8 +356,8 @@
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam do %1$s para uso próximo.</string>
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Atualizado %1$s dia atrás</item>
-        <item quantity="other">Atualizado %1$s dias atrás</item>
+        <item quantity="one">Atualizado %1$d dia atrás</item>
+        <item quantity="other">Atualizados %1$d dias atrás</item>
     </plurals>
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar download</string>

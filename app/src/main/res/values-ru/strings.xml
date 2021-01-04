@@ -284,8 +284,8 @@
     <string name="details_new_in_version">Новое в версии %s</string>
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
-    <string name="main_menu__swap_nearby">Рядом</string>
-    <string name="nearby_splash__find_people_button">Найти людей рядом</string>
+    <string name="main_menu__swap_nearby">Поблизости</string>
+    <string name="nearby_splash__find_people_button">Найти людей поблизости</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
@@ -303,7 +303,7 @@
         <item quantity="few">Посмотреть %d приложения</item>
         <item quantity="many">Посмотреть %d приложений</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей рядом с вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей поблизости!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
@@ -348,7 +348,7 @@
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Не найдено недавно обновленных приложений</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Для использования \'Рядом\' обеим сторонам необходим %1$s.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Для использования \'Поблизости\' обеим сторонам необходим %1$s.</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Отменить скачивание</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
@@ -486,7 +486,7 @@
     <string name="scan_removable_storage_title">Сканирование съемного носителя</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
     <string name="nearby_splash__request_permission">Попробовать</string>
-    <string name="not_visible_nearby">Режим \'Рядом\' не включен</string>
+    <string name="not_visible_nearby">Режим \'Поблизости\' не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с устройством находящимся поблизости, сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
     <string name="swap_toast_not_removable_storage">Этот выбор не подходит ни к одному из съемных носителей, попробуйте еще раз!</string>
@@ -511,7 +511,7 @@
     <string name="swap_stopping">Останавливаем…</string>
     <string name="disabled">Отключено</string>
     <string name="swap_error_cannot_start_bluetooth">Не удается запустить Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Рядом\' был отключен.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Поблизости\' был отключен.</string>
     <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>

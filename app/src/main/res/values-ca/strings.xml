@@ -285,7 +285,7 @@
     <string name="main_menu__swap_nearby">A prop</string>
     <string name="notification_title_single_update_available">Actualització disponible</string>
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>
-    <string name="notification_title_single_ready_to_install_update">Actualització llesta per a ser instal·lada</string>
+    <string name="notification_title_single_ready_to_install_update">Actualització disponible</string>
     <string name="notification_title_single_install_error">Instal·lació fallida</string>
     <string name="notification_content_single_downloading">Baixant \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Baixant una actualització de \"%1$s\"…</string>
@@ -295,14 +295,13 @@
     <string name="notification_title_summary_downloading">Baixant…</string>
     <string name="notification_title_summary_downloading_update">Baixant una actualització…</string>
     <string name="notification_title_summary_ready_to_install">Llest per instal·lar</string>
-    <string name="notification_title_summary_ready_to_install_update">Actualització llesta per a ser instal·lada
-    </string>
+    <string name="notification_title_summary_ready_to_install_update">Actualització disponible</string>
     <string name="notification_title_summary_installing">Instal·lant</string>
     <string name="notification_title_summary_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_install_error">Instal·lació fallida</string>
     <string name="notification_action_update">Actualitza</string>
     <string name="notification_action_cancel">Cancel·leu</string>
-    <string name="notification_action_install">Instal·leu</string>
+    <string name="notification_action_install">Instal·la</string>
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
     <string name="app_new">Nova</string>
     <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
@@ -453,7 +452,7 @@
     <string name="install_history_summary">Veieu l\'informe privat de totes les des/instal·lacions</string>
     <string name="send_version_and_uuid">Envia la versió i l\'UUID als servidors</string>
     <string name="send_version_and_uuid_summary">Inclou la versió de l\'aplicació i un ID aleatori únic per a les baixades, essent efectiu al proper reinici de l\'aplicació.</string>
-    <string name="share_repository">Compartir repositori</string>
+    <string name="share_repository">Comparteix el dipòsit</string>
     <string name="send_install_history">Envia l\'historial d\'instal·lacions</string>
     <string name="send_history_csv">%s historial d\'instal·lacions com a fitxer CSV</string>
     <string name="allow_push_requests">Permet la des/instal·lació d\'aplicacions</string>
@@ -463,7 +462,7 @@
     <string name="about_forum">Fòrum de suport</string>
     <string name="app_suggested">Suggerit</string>
     <string name="app_size">Mida: %1$s</string>
-    <string name="send_installed_apps">Compartir apps instal·lades</string>
+    <string name="send_installed_apps">Comparteix aplicacions instal·lades</string>
     <string name="send_installed_apps_csv">Apps instal·lades per F-Droid a través d\'un fitxer CSV</string>
     <string name="menu_open">Obrir</string>
     <string name="menu_downgrade">Revertir versió</string>
@@ -500,4 +499,10 @@
     <string name="swap_stopping_hotspot">S\'està aturant el punt Wifi…</string>
     <string name="swap_toast_closing_nearby_after_timeout">S\'ha tancat per inactivitat.</string>
     <string name="nearby_splash__document_tree">Cerca repositoris i còpies en USB OTG.</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Mostra les notificacions d’actualització d’aplicacions i repositoris.</string>
+    <string name="notification_channel_updates_title">Actualitzacions</string>
+    <string name="notification_channel_swaps_description">Mostra les notificacions d\'intercanvi d\'aplicacions P2P.</string>
+    <string name="notification_channel_installs_description">Mostra les notificacions d\'instal·lació d\'aplicacions.</string>
+    <string name="notification_channel_installs_title">Instal·lacions</string>
 </resources>

@@ -361,7 +361,7 @@
         <item quantity="one">%1$d سال پیش به‌روز شده</item>
         <item quantity="other">%1$d سال پیش به‌روز شده</item>
     </plurals>
-    <string name="by_author_format">توسط %s</string>
+    <string name="by_author_format">از %s</string>
     <string name="download_404">فایل درخواستی یافت نشد.</string>
     <string name="force_old_index">اجبار به قالب فهرست قدیمی</string>
     <string name="force_old_index_summary">استفاده از فهرست کارهٔ XML در صورت وجود اشکال یا ناسازگاری</string>

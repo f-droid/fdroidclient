@@ -249,7 +249,7 @@
     <string name="login_title">Identifikasjon påkrevet</string>
     <string name="status_inserting_apps">Lagrer programdetaljer</string>
     <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>
-    <string name="crash_dialog_title">F-Droid har kræsjet</string>
+    <string name="crash_dialog_title">F-Droid har krasjet</string>
     <string name="crash_dialog_text">Uventet feil forårsaket
         stopp av programmet. Ønsker du å sende detaljer om dette
         i en e-post for å fikse problemet?
@@ -318,8 +318,8 @@
     <string name="notification_action_install">Installer</string>
     <string name="tts_category_name">Kategori %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Vis %1$d programmet i kategorien %1$s</item>
-        <item quantity="other">Vis alle %1$d programmer i kategorien %2$s</item>
+        <item quantity="one">Vis det ene programmet i %2$s-kategorien</item>
+        <item quantity="other">Vis alle %1$d programmene i %2$s-kategorien</item>
     </plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
@@ -507,7 +507,7 @@
     <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_description">Viser P2P-programutvekslingsmerknader.</string>
-    <string name="notification_channel_swaps_title">Utvekslinger</string>
+    <string name="notification_channel_swaps_title">Bytte</string>
     <string name="notification_channel_updates_description">Viser program- og pakkebrønns-oppdateringsmerknader.</string>
     <string name="notification_channel_updates_title">Oppdateringer</string>
     <string name="notification_channel_installs_description">Viser programinstallasjonsmerknader.</string>

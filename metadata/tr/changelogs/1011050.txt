@@ -1,0 +1,7 @@
+* Uygulama açıklamalarında URL'lerin bağlantıya çevrilmesi iyileştirildi
+
+* Nearby'da SD kartların ve USG-OTG'nin daha işlenmesi iyileştirildi
+
+* Kodlar modernleştirildi ve PNG resimler vektörlere dönüştürüldü (teşekkürler @isira-seneviratne!)
+
+* GitCDN/RawGit vb. yansılarını desteklemek için daha uzun depo URL'lerini tanı

@@ -54,7 +54,6 @@
     <string name="status_connecting_to_repo">%1$s غا
         باغلىنىۋاتىدۇ
     </string>
-    <string name="no_permissions"></string>
     <string name="no_handler_app">سىزنىڭ %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئۇيغۇلىمىڭىز يوق.</string>
     <string name="theme">ئۇسلۇب</string>
     <string name="app_name">ف-درويد</string>
@@ -230,10 +229,6 @@
     <string name="notification_content_single_downloading_update">\"%1$s\" ئۈچۈن يېڭىلانمىنى چۈشۈرىۋاتىدۇ…</string>
     <string name="notification_content_single_installing">\"%1$s\"نى ئورنىتىۋاتىدۇ…</string>
     <string name="notification_content_single_installed">ئوڭۇشلۇق ئورنىتىلىدى</string>
-    <plurals name="notification_summary_updates">
-        <item quantity="one"></item>
-        <item quantity="other"></item>
-    </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">بىر
 \n%1$d ئۇيغۇلىما ئورنىتىلدى</item>

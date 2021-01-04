@@ -11,11 +11,11 @@
     <string name="menu_settings">Instellingen</string>
     <string name="menu_search">Zoek</string>
     <string name="menu_add_repo">Nieuwe applicatiebron</string>
-    <string name="menu_launch">Open</string>
+    <string name="menu_launch">Openen</string>
     <string name="menu_share">Deel</string>
     <string name="menu_install">Installeer</string>
-    <string name="menu_uninstall">Verwijder</string>
-    <string name="menu_upgrade">Werk bij</string>
+    <string name="menu_uninstall">Verwijderen</string>
+    <string name="menu_upgrade">Bijwerken</string>
     <string name="main_menu__latest_apps">Nieuwste</string>
     <string name="main_menu__categories">Categorieën</string>
     <string name="main_menu__swap_nearby">In de buurt</string>
@@ -489,4 +489,10 @@
     <string name="try_again">Probeer opnieuw</string>
     <string name="menu_translation">Vertaling</string>
     <string name="menu_select_for_wipe">Selecteer voor wissen</string>
+    <string name="notification_channel_updates_description">Toont app- en repository-update meldingen.</string>
+    <string name="notification_channel_updates_title">Updates</string>
+    <string name="notification_channel_swaps_description">Toont P2P app-uitwisselingsmeldingen.</string>
+    <string name="notification_channel_swaps_title">Uitwisselingen</string>
+    <string name="notification_channel_installs_description">Toont installatiemeldingen van apps.</string>
+    <string name="notification_channel_installs_title">Installaties</string>
 </resources>

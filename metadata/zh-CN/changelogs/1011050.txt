@@ -1,0 +1,7 @@
+* 改进了应用描述中的 URL 链接
+
+* 改进了附近中 SD 卡 和 USG-OTG 的处理
+
+* 代码现代化，并把 PNG 图片换成了矢量图 （感谢 @isira-seneviratne！）
+
+* 识别较长的代码库 URL 以支持 GitCDN/RawGit/ 等的镜像

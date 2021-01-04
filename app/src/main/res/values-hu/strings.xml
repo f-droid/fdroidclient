@@ -489,4 +489,11 @@
     <string name="swap_error_cannot_start_bluetooth">A Bluetooth nem indítható el!</string>
     <string name="swap_toast_closing_nearby_after_timeout">A helyi fél tétlenség miatt lezárta.</string>
     <string name="nearby_splash__document_tree">Tárolók és tükrök keresése az USB OTG-n.</string>
+    <string name="notification_channel_installs_description">Megjeleníti az alkalmazástelepítési értesítéseket.</string>
+    <string name="notification_channel_updates_description">Megjeleníti az alkalmazás- és tárolófrissítési értesítéseket.</string>
+    <string name="notification_channel_updates_title">Frissítések</string>
+    <string name="notification_channel_swaps_description">Megjeleníti a P2P alkalmazáscsere értesítéseit.</string>
+    <string name="notification_channel_swaps_title">Cserék</string>
+    <string name="notification_channel_installs_title">Telepítések</string>
+    <string name="menu_opencollective">OpenCollective</string>
 </resources>
