@@ -272,7 +272,7 @@
     <string name="swap_hidden_wifi_ssid">(लपवलेले)</string>
     <string name="swap_blank_wifi_ssid">(रिक्त)</string>
     <string name="swap_no_wifi_network">अजूनही कोणतेच नेटवर्क नाही</string>
-    <string name="swap_success">"देवाणघेवाण  यशस्वी!"</string>
+    <string name="swap_success">देवाणघेवाण  यशस्वी!</string>
     <string name="swap_nfc_title">देवाणघेवानिसाठी स्पर्श</string>
     <string name="nearby_splash__request_permission">अनुभव घ्या</string>
     <string name="uninstall_error_unknown">अज्ञात कारणाने, अस्थापना करण्यास असमर्थ</string>
