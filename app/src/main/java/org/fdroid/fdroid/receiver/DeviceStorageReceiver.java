@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import org.fdroid.fdroid.DeleteCacheService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.work.WorkUtils;
+import org.fdroid.fdroid.work.CleanCacheWorker;
 
 public class DeviceStorageReceiver extends BroadcastReceiver {
     @Override
@@ -19,7 +19,7 @@ public class DeviceStorageReceiver extends BroadcastReceiver {
             int percentageFree = Utils.getPercent(Utils.getImageCacheDirAvailableMemory(context),
                     Utils.getImageCacheDirTotalMemory(context));
             if (percentageFree > 2) {
-                WorkUtils.scheduleCleanCache(context);
+                CleanCacheWorker.schedule(context);
             } else {
                 DeleteCacheService.deleteAll(context);
             }

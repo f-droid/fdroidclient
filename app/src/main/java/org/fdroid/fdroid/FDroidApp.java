@@ -80,7 +80,6 @@ import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
-import org.fdroid.fdroid.work.WorkUtils;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -427,7 +426,7 @@ public class FDroidApp extends Application {
             }
         });
 
-        WorkUtils.scheduleCleanCache(this);
+        CleanCacheWorker.schedule(this);
 
         notificationHelper = new NotificationHelper(getApplicationContext());
 

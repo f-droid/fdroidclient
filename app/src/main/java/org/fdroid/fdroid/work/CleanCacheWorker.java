@@ -6,12 +6,14 @@ import android.os.Process;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -21,10 +23,38 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class CleanCacheWorker extends Worker {
-    private static final String TAG = CleanCacheWorker.class.getSimpleName();
+    public static final String TAG = "CleanCacheWorker";
 
     public CleanCacheWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+    }
+
+    /**
+     * Schedule or cancel a work request to update the app index, according to the
+     * current preferences. Should be called a) at boot, b) if the preference
+     * is changed, or c) on startup, in case we get upgraded.
+     */
+    public static void schedule(@NonNull final Context context) {
+        final WorkManager workManager = WorkManager.getInstance(context);
+        final long keepTime = Preferences.get().getKeepCacheTime();
+        long interval = TimeUnit.DAYS.toMillis(1);
+        if (keepTime < interval) {
+            interval = keepTime;
+        }
+
+        final Constraints.Builder constraintsBuilder = new Constraints.Builder()
+                .setRequiresCharging(true)
+                .setRequiresBatteryNotLow(true);
+        if (Build.VERSION.SDK_INT >= 23) {
+            constraintsBuilder.setRequiresDeviceIdle(true);
+        }
+        final PeriodicWorkRequest cleanCache =
+                new PeriodicWorkRequest.Builder(CleanCacheWorker.class, interval, TimeUnit.MILLISECONDS)
+                        .setConstraints(constraintsBuilder.build())
+                        .build();
+        workManager.enqueueUniquePeriodicWork("clean_cache",
+                ExistingPeriodicWorkPolicy.REPLACE, cleanCache);
+        Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache.");
     }
 
     @NonNull

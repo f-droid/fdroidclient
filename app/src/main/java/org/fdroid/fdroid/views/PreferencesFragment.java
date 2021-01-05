@@ -57,7 +57,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.work.WorkUtils;
+import org.fdroid.fdroid.work.CleanCacheWorker;
 
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
@@ -304,7 +304,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 entrySummary(key);
                 if (changing
                         && currentKeepCacheTime != Preferences.get().getKeepCacheTime()) {
-                    WorkUtils.scheduleCleanCache(requireContext());
+                    CleanCacheWorker.schedule(requireContext());
                 }
                 break;
 
