@@ -33,10 +33,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -52,6 +48,10 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -406,10 +406,26 @@ public final class Utils {
         return ret;
     }
 
+
     /**
      * Get the fingerprint used to represent an APK signing key in F-Droid.
      * This is a custom fingerprint algorithm that was kind of accidentally
      * created, but is still in use.
+     *
+     * @see #getPackageSig(PackageInfo)
+     * @see org.fdroid.fdroid.data.Apk#sig
+     */
+    public static String getsig(byte[] rawCertBytes) {
+        return Utils.hashBytes(toHexString(rawCertBytes).getBytes(), "md5");
+    }
+
+    /**
+     * Get the fingerprint used to represent an APK signing key in F-Droid.
+     * This is a custom fingerprint algorithm that was kind of accidentally
+     * created, but is still in use.
+     *
+     * @see #getsig(byte[])
+     * @see org.fdroid.fdroid.data.Apk#sig
      */
     public static String getPackageSig(PackageInfo info) {
         if (info == null || info.signatures == null || info.signatures.length < 1) {
@@ -556,7 +572,7 @@ public final class Utils {
             }
 
             byte[] mdbytes = md.digest();
-            return toHexString(mdbytes).toLowerCase(Locale.ENGLISH);
+            return toHexString(mdbytes);
         } catch (IOException e) {
             String message = e.getMessage();
             if (message.contains("read failed: EIO (I/O error)")) {
@@ -576,7 +592,7 @@ public final class Utils {
      * Computes the base 16 representation of the byte array argument.
      *
      * @param bytes an array of bytes.
-     * @return the bytes represented as a string of hexadecimal digits.
+     * @return the bytes represented as a string of lowercase hexadecimal digits.
      * @see <a href="https://stackoverflow.com/a/9855338">source</a>
      */
     public static String toHexString(byte[] bytes) {
@@ -589,7 +605,7 @@ public final class Utils {
         return new String(hexChars);
     }
 
-    private static final char[] HEX_LOOKUP_ARRAY = "0123456789ABCDEF".toCharArray();
+    private static final char[] HEX_LOOKUP_ARRAY = "0123456789abcdef".toCharArray();
 
     public static int parseInt(String str, int fallback) {
         if (str == null || str.length() == 0) {
