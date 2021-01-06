@@ -1,25 +1,48 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.work;
 
 import android.app.Instrumentation;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
-
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import com.google.common.util.concurrent.ListenableFuture;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompatTest;
-import org.fdroid.fdroid.work.CleanCacheWorker;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(AndroidJUnit4.class)
+/**
+ * This test cannot run on Robolectric unfortunately since it does not support
+ * <p>
+ * This is marked with {@link LargeTest} because it always fails on the emulator
+ * tests on GitLab CI.  That excludes it from the test run there.
+ */
+@LargeTest
 public class CleanCacheWorkerTest {
-    public static final String TAG = "CleanCacheWorkerTest";
+    public static final String TAG = "CleanCacheWorkerEmulatorTest";
+
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
+    @Rule
+    public WorkManagerTestRule workManagerTestRule = new WorkManagerTestRule();
+
+    @Test
+    public void testWorkRequest() throws ExecutionException, InterruptedException {
+        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(CleanCacheWorker.class).build();
+        workManagerTestRule.workManager.enqueue(request).getResult();
+        ListenableFuture<WorkInfo> workInfo = workManagerTestRule.workManager.getWorkInfoById(request.getId());
+        assertEquals(WorkInfo.State.SUCCEEDED, workInfo.get().getState());
+    }
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
