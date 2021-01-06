@@ -266,8 +266,11 @@
                 android:name=".AddRepoIntentService"
                 android:exported="false"/>
 
-
-        <!-- Warning: Please add all new services to HidingManager -->
+        <provider
+                android:name="androidx.work.impl.WorkManagerInitializer"
+                android:authorities="${applicationId}.workmanager-init"
+                android:exported="false"
+                tools:node="remove" />
 
         <activity
                 android:name=".views.main.MainActivity"
