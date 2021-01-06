@@ -52,8 +52,7 @@ public class CleanCacheWorker extends Worker {
                 new PeriodicWorkRequest.Builder(CleanCacheWorker.class, interval, TimeUnit.MILLISECONDS)
                         .setConstraints(constraintsBuilder.build())
                         .build();
-        workManager.enqueueUniquePeriodicWork("clean_cache",
-                ExistingPeriodicWorkPolicy.REPLACE, cleanCache);
+        workManager.enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.REPLACE, cleanCache);
         Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache.");
     }
 
