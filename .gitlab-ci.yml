@@ -21,6 +21,8 @@ before_script:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
       - logcat.txt
+      - app/core*
+      - app/*.log
       - app/build/reports
       - app/build/outputs/*ml
       - app/build/outputs/apk
