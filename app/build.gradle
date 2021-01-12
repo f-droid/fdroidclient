@@ -99,6 +99,7 @@ android {
                     events "skipped", "failed", "standardOut", "standardError"
                     showStandardStreams = true
                 }
+                systemProperty 'robolectric.dependency.repo.url', 'https://repo1.maven.org/maven2'
             }
         }
     }
