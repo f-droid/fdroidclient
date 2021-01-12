@@ -55,6 +55,10 @@ test_lint_pmd_checkstyle:
 errorprone:
   stage: test
   script:
+    - apt-get update
+    - apt-get install -t stretch-backports openjdk-11-jdk-headless
+    - update-java-alternatives --set java-1.11.0-openjdk-amd64
+    - export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
