@@ -40,7 +40,7 @@ test_lint_pmd_checkstyle:
     - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew testFullDebugUnitTest
+    - ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || set_error
     - ./gradlew lint
     - ./gradlew pmd || (export EXITVALUE=1; echo ERROR !!)
     - ./gradlew checkstyle || (export EXITVALUE=1; echo ERROR !!)
