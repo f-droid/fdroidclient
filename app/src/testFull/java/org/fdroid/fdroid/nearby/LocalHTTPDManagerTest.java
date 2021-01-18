@@ -50,7 +50,7 @@ public class LocalHTTPDManagerTest {
                 startLatch.countDown();
             }
         }).start();
-        assertTrue(startLatch.await(30, TimeUnit.SECONDS));
+        assertTrue(startLatch.await(60, TimeUnit.SECONDS));
         assertTrue(Utils.isServerSocketInUse(port));
         assertTrue(Utils.canConnectToSocket(host, port));
 
@@ -69,6 +69,6 @@ public class LocalHTTPDManagerTest {
                 stopLatch.countDown();
             }
         }).start();
-        assertTrue(stopLatch.await(10, TimeUnit.SECONDS));
+        assertTrue(stopLatch.await(60, TimeUnit.SECONDS));
     }
 }
