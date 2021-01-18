@@ -677,7 +677,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
      * Set up WorkManager on demand to avoid slowing down starts.
      *
      * @see CleanCacheWorker
-     * @see org.fdroid.fdroid.work.PopularityContestWorker
+     * @see org.fdroid.fdroid.work.FDroidMetricsWorker
      * @see org.fdroid.fdroid.work.UpdateWorker
      * @see <a href="https://developer.android.com/codelabs/android-adv-workmanager#3">example</a>
      */
