@@ -26,7 +26,7 @@ stages:
   extends: .base
   stage: test
   artifacts:
-    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    name: "${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
       - kernel.log
       - logcat.txt
@@ -50,7 +50,7 @@ buildFullDebug:
   script:
     - ./gradlew assembleFullDebug
   artifacts:
-    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    name: "${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
       - app/build
 
