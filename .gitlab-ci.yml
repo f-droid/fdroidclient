@@ -44,7 +44,7 @@ stages:
 build:
   stage: build
   script:
-    - ./gradlew assemble --configuration-cache
+    - ./gradlew assemble
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
