@@ -54,8 +54,7 @@ build:
 # the style tests if the rest of the more meaningful tests pass.
 test_lint:
   <<: *test-template
-  needs:
-    - build
+  needs: []
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
@@ -67,8 +66,7 @@ test_lint:
 
 test_pmd:
   <<: *test-template
-  needs:
-    - build
+  needs: []
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
