@@ -37,23 +37,28 @@ test_lint_pmd_checkstyle:
   <<: *test-template
   script:
     - export EXITVALUE=0
+    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
     - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew testFullDebugUnitTest
-    - ./gradlew lint
-    - ./gradlew pmd || (export EXITVALUE=1; echo ERROR !!)
-    - ./gradlew checkstyle || (export EXITVALUE=1; echo ERROR !!)
-    - ./tools/check-format-strings.py || (export EXITVALUE=1; echo ERROR !!)
-    - ./tools/check-fastlane-whitespace.py || (export EXITVALUE=1; echo ERROR !!)
-    - ./tools/remove-unused-and-blank-translations.py || (export EXITVALUE=1; echo ERROR !!)
+    - ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || set_error
+    - ./gradlew lint || set_error
+    - ./gradlew pmd || set_error
+    - ./gradlew checkstyle || set_error
+    - ./tools/check-format-strings.py || set_error
+    - ./tools/check-fastlane-whitespace.py || set_error
+    - ./tools/remove-unused-and-blank-translations.py || set_error
     - echo "These are unused or blank translations that should be removed:"
-    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || (export EXITVALUE=1; echo ERROR !!)
+    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || set_error
     - exit $EXITVALUE
 
 errorprone:
   stage: test
   script:
+    - apt-get update
+    - apt-get install -t stretch-backports openjdk-11-jdk-headless
+    - update-java-alternatives --set java-1.11.0-openjdk-amd64
+    - export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
