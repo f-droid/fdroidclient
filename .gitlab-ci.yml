@@ -49,17 +49,18 @@ buildAll:
 buildFullDebug:
   stage: build
   script:
-    - ./gradlew assemble
+    - ./gradlew assembleFullDebug
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
-      - app/build/outputs
+      - app/build
 
 # Run the most important first. Then we can decide whether to ignore
 # the style tests if the rest of the more meaningful tests pass.
 test_lint:
   <<: *test-template
-  needs: []
+  needs:
+    - buildAll
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
@@ -94,8 +95,6 @@ test_full_debug_unit_test:
 
 checkstyle:
   <<: *test-template
-  needs:
-    - buildFullDebug
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
