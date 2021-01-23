@@ -176,7 +176,7 @@ public class IndexV1Updater extends IndexUpdater {
                     if (downloader != null) {
                         FileUtils.deleteQuietly(downloader.outputFile);
                     }
-                    throw new IndexUpdater.UpdateException("Error getting F-Droid index file", e2);
+                    throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e2);
                 } catch (InterruptedException e2) {
                     // ignored if canceled, the local database just won't be updated
                 }
@@ -185,7 +185,7 @@ public class IndexV1Updater extends IndexUpdater {
             if (downloader != null) {
                 FileUtils.deleteQuietly(downloader.outputFile);
             }
-            throw new IndexUpdater.UpdateException("Error getting F-Droid index file", e);
+            throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e);
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
         }
@@ -278,7 +278,7 @@ public class IndexV1Updater extends IndexUpdater {
         long timestamp = (Long) repoMap.get("timestamp") / 1000;
 
         if (repo.timestamp > timestamp) {
-            throw new IndexUpdater.UpdateException("index.jar is older that current index! "
+            throw new IndexUpdater.UpdateException(repo, "index.jar is older that current index! "
                     + timestamp + " < " + repo.timestamp);
         }
 
