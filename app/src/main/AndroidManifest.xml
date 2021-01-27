@@ -242,14 +242,6 @@
                 android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
         <service
-                android:name=".CleanCacheService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".CleanCacheJobService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
                 android:name=".DeleteCacheService"
                 android:permission="android.permission.BIND_JOB_SERVICE"
                 android:exported="false"/>
