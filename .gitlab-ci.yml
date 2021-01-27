@@ -82,7 +82,7 @@ errorprone:
     - adb devices
     - adb shell input keyevent 82 &
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=android.support.test.filters.LargeTest;
+          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
       || ./gradlew connectedFullDebugAndroidTest $FLAG
