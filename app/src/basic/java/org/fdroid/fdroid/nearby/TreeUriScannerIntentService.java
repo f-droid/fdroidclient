@@ -19,14 +19,14 @@
 
 package org.fdroid.fdroid.nearby;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 
 /**
  * Dummy version for basic app flavor.
  */
 public class TreeUriScannerIntentService {
-    public static void onActivityResult(Activity activity, Intent intent) {
+    public static void onActivityResult(AppCompatActivity activity, Intent intent) {
         throw new IllegalStateException("unimplemented");
     }
 }

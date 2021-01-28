@@ -19,7 +19,7 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,7 +52,7 @@ public class ErrorDialogActivity extends FragmentActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        setResult(Activity.RESULT_OK);
+                        setResult(AppCompatActivity.RESULT_OK);
                         finish();
                     }
                 });
@@ -60,7 +60,7 @@ public class ErrorDialogActivity extends FragmentActivity {
                 new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
-                        setResult(Activity.RESULT_CANCELED);
+                        setResult(AppCompatActivity.RESULT_CANCELED);
                         finish();
                     }
                 });

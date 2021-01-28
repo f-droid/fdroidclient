@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -32,7 +32,7 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
  * (e.g. uninstall, update, disable).
  */
 public class KnownVulnAppListItemController extends AppListItemController {
-    public KnownVulnAppListItemController(Activity activity, View itemView) {
+    public KnownVulnAppListItemController(AppCompatActivity activity, View itemView) {
         super(activity, itemView);
     }
 

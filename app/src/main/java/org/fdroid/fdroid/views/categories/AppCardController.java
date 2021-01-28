@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.categories;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,9 +53,9 @@ public class AppCardController extends RecyclerView.ViewHolder
     @Nullable
     private App currentApp;
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
 
-    public AppCardController(Activity activity, View itemView) {
+    public AppCardController(AppCompatActivity activity, View itemView) {
         super(itemView);
 
         this.activity = activity;

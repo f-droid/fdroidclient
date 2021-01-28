@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.panic;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class SelectInstalledAppListAdapter extends InstalledAppListAdapter {
     private final Set<String> selectedApps;
 
-    SelectInstalledAppListAdapter(Activity activity) {
+    SelectInstalledAppListAdapter(AppCompatActivity activity) {
         super(activity);
         Preferences prefs = Preferences.get();
         selectedApps = prefs.getPanicWipeSet();

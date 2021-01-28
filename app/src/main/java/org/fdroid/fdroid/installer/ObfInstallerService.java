@@ -115,7 +115,7 @@ public class ObfInstallerService extends IntentService {
         if (intent != null && intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
-            Log.i(TAG, "No Activity available to handle " + intent);
+            Log.i(TAG, "No AppCompatActivity available to handle " + intent);
         }
         sendBroadcastInstall(Installer.ACTION_INSTALL_COMPLETE, canonicalUri, apk, null);
     }

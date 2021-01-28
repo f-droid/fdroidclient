@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.whatsnew;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -19,10 +19,10 @@ import org.fdroid.fdroid.views.categories.AppCardController;
 public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     private Cursor cursor;
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final RecyclerView.ItemDecoration appListDecorator;
 
-    public WhatsNewAdapter(Activity activity) {
+    public WhatsNewAdapter(AppCompatActivity activity) {
         this.activity = activity;
         appListDecorator = new WhatsNewAdapter.ItemDecorator(activity);
     }

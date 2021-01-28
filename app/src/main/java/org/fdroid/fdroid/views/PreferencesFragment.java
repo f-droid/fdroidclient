@@ -26,7 +26,6 @@
 
 package org.fdroid.fdroid.views;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +35,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
@@ -160,7 +160,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_display");
             category.removePreference(languagePref);
         } else {
-            Languages languages = Languages.get(getActivity());
+            Languages languages = Languages.get((AppCompatActivity) getActivity());
             languagePref.setDefaultValue(Languages.USE_SYSTEM_DEFAULT);
             languagePref.setEntries(languages.getAllNames());
             languagePref.setEntryValues(languages.getSupportedLocales());
@@ -259,7 +259,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_THEME:
                 entrySummary(key);
                 if (changing) {
-                    Activity activity = getActivity();
+                    AppCompatActivity activity = (AppCompatActivity) getActivity();
                     FDroidApp fdroidApp = (FDroidApp) activity.getApplication();
                     fdroidApp.reloadTheme();
                     fdroidApp.applyTheme(activity);
@@ -290,7 +290,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    Activity activity = getActivity();
+                    AppCompatActivity activity = (AppCompatActivity) getActivity();
                     Languages.setLanguage(activity);
 
                     RepoProvider.Helper.clearEtags(getActivity());
@@ -462,7 +462,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         public boolean onPreferenceChange(Preference preference, Object enabled) {
             if ((Boolean) enabled) {
                 enableProxyCheckPref.setChecked(false);
-                final Activity activity = getActivity();
+                final AppCompatActivity activity = (AppCompatActivity) getActivity();
                 if (!OrbotHelper.isOrbotInstalled(activity)) {
                     Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
                     activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);

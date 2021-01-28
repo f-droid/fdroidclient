@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,7 +22,7 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
  * {@link AppStatusListItemController}.
  */
 public class UpdateableAppListItemController extends AppListItemController {
-    public UpdateableAppListItemController(Activity activity, View itemView) {
+    public UpdateableAppListItemController(AppCompatActivity activity, View itemView) {
         super(activity, itemView);
     }
 

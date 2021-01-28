@@ -24,10 +24,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,7 +32,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -51,7 +53,7 @@ import org.fdroid.fdroid.data.Schema;
  * Parts are based on AOSP src/com/android/packageinstaller/PackageInstallerActivity.java
  * latest included commit: c23d802958158d522e7350321ad9ac6d43013883
  */
-public class InstallConfirmActivity extends FragmentActivity implements OnCancelListener, OnClickListener {
+public class InstallConfirmActivity extends AppCompatActivity implements OnCancelListener, OnClickListener {
 
     private Intent intent;
 

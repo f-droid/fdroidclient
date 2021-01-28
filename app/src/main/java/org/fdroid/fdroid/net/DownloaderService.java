@@ -366,7 +366,7 @@ public class DownloaderService extends Service {
     /**
      * Check if a URL is waiting in the queue for downloading or if actively being downloaded.
      * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
-     * in {@link android.app.Activity#onResume()}.
+     * in {@link android.app.AppCompatActivity#onResume()}.
      */
     public static boolean isQueuedOrActive(String canonicalUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) { //NOPMD - suggests unreadable format

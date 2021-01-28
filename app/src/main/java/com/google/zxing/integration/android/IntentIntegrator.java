@@ -16,7 +16,6 @@
 
 package com.google.zxing.integration.android;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -25,8 +24,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -48,8 +49,8 @@ import java.util.Map;
  * <p>It does require that the Barcode Scanner (or work-alike) application is installed. The
  * {@link #initiateScan()} method will prompt the user to download the application, if needed.</p>
  *
- * <p>There are a few steps to using this integration. First, your {@link Activity} must implement
- * the method {@link Activity#onActivityResult(int, int, Intent)} and include a line of code like this:</p>
+ * <p>There are a few steps to using this integration. First, your {@link AppCompatActivity} must implement
+ * the method {@link AppCompatActivity#onActivityResult(int, int, Intent)} and include a line of code like this:</p>
  *
  * <pre>{@code
  * public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -73,7 +74,8 @@ import java.util.Map;
  *
  * <p>Note that {@link #initiateScan()} returns an {@link AlertDialog} which is non-null if the
  * user was prompted to download the application. This lets the calling app potentially manage the dialog.
- * In particular, ideally, the app dismisses the dialog if it's still active in its {@link Activity#onPause()}
+ * In particular, ideally, the app dismisses the dialog if it's still active in its
+ * {@link AppCompatActivity#onPause()}
  * method.</p>
  *
  * <p>You can use {@link #setTitle(String)} to customize the title of this download prompt dialog (or, use
@@ -140,7 +142,7 @@ public class IntentIntegrator {
             // What else supports this intent?
             );
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final Fragment fragment;
 
     private String title;
@@ -151,9 +153,9 @@ public class IntentIntegrator {
     private final Map<String, Object> moreExtras = new HashMap<>(3);
 
     /**
-     * @param activity {@link Activity} invoking the integration
+     * @param activity {@link AppCompatActivity} invoking the integration
      */
-    public IntentIntegrator(Activity activity) {
+    public IntentIntegrator(AppCompatActivity activity) {
         this.activity = activity;
         this.fragment = null;
         initializeConfiguration();
@@ -162,10 +164,10 @@ public class IntentIntegrator {
     /**
      * @param fragment {@link Fragment} invoking the integration.
      *  {@link #startActivityForResult(Intent, int)} will be called on the {@link Fragment} instead
-     *  of an {@link Activity}
+     *  of an {@link AppCompatActivity}
      */
     public IntentIntegrator(Fragment fragment) {
-        this.activity = fragment.getActivity();
+        this.activity = (AppCompatActivity) fragment.getActivity();
         this.fragment = fragment;
         initializeConfiguration();
     }
@@ -333,7 +335,7 @@ public class IntentIntegrator {
      *
      * @param intent Intent to start.
      * @param code Request code for the activity
-     * @see android.app.Activity#startActivityForResult(Intent, int)
+     * @see android.app.AppCompatActivity#startActivityForResult(Intent, int)
      * @see android.app.Fragment#startActivityForResult(Intent, int)
      */
     protected void startActivityForResult(Intent intent, int code) {
@@ -402,8 +404,8 @@ public class IntentIntegrator {
     }
 
     /**
-     * <p>Call this from your {@link Activity}'s
-     * {@link Activity#onActivityResult(int, int, Intent)} method.</p>
+     * <p>Call this from your {@link AppCompatActivity}'s
+     * {@link AppCompatActivity#onActivityResult(int, int, Intent)} method.</p>
      *
      * @param requestCode request code from {@code onActivityResult()}
      * @param resultCode result code from {@code onActivityResult()}
@@ -414,7 +416,7 @@ public class IntentIntegrator {
      */
     public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");

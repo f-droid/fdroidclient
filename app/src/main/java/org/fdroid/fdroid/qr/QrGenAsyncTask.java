@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.qr;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.AsyncTask;
@@ -17,11 +17,11 @@ import org.fdroid.fdroid.Utils;
 public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
     private static final String TAG = "QrGenAsyncTask";
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final int viewId;
     private Bitmap qrBitmap;
 
-    public QrGenAsyncTask(Activity activity, int viewId) {
+    public QrGenAsyncTask(AppCompatActivity activity, int viewId) {
         this.activity = activity;
         this.viewId = viewId;
     }

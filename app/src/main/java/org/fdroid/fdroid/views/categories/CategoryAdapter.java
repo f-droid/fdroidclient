@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.categories;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
 import androidx.recyclerview.widget.ListAdapter;
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class CategoryAdapter extends ListAdapter<String, CategoryController> {
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final LoaderManager loaderManager;
 
-    public CategoryAdapter(Activity activity, LoaderManager loaderManager) {
+    public CategoryAdapter(AppCompatActivity activity, LoaderManager loaderManager) {
         super(new DiffUtil.ItemCallback<String>() {
             @Override
             public boolean areItemsTheSame(String oldItem, String newItem) {
