@@ -31,7 +31,7 @@ import java.util.Locale;
  * <p>
  * This only really properly queues {@link Intent}s that get filtered out. The
  * {@code Intent}s that go on to {@code ManageReposActivity} will not wait
- * until for that {@code Activity} to be ready to handle the next.  So when
+ * until for that {@code AppCompatActivity} to be ready to handle the next.  So when
  * multiple mirrors are discovered at once, only one in that session will
  * likely be added.
  */

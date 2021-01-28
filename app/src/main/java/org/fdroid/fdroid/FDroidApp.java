@@ -24,7 +24,7 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -159,7 +159,7 @@ public class FDroidApp extends Application {
         curTheme = Preferences.get().getTheme();
     }
 
-    public void applyTheme(Activity activity) {
+    public void applyTheme(AppCompatActivity activity) {
         activity.setTheme(getCurThemeResId());
         setSecureWindow(activity);
     }
@@ -181,12 +181,12 @@ public class FDroidApp extends Application {
         return curTheme == Theme.light;
     }
 
-    public void applyDialogTheme(Activity activity) {
+    public void applyDialogTheme(AppCompatActivity activity) {
         activity.setTheme(getCurDialogThemeResId());
         setSecureWindow(activity);
     }
 
-    public void setSecureWindow(Activity activity) {
+    public void setSecureWindow(AppCompatActivity activity) {
         if (Preferences.get().preventScreenshots()) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         }
@@ -206,12 +206,12 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * Force reload the {@link Activity to make theme changes take effect.}
-     * Same as {@link Languages#forceChangeLanguage(Activity)}
+     * Force reload the {@link AppCompatActivity to make theme changes take effect.}
+     * Same as {@link Languages#forceChangeLanguage(AppCompatActivity)}
      *
-     * @param activity the {@code Activity} to force reload
+     * @param activity the {@code AppCompatActivity} to force reload
      */
-    public static void forceChangeTheme(Activity activity) {
+    public static void forceChangeTheme(AppCompatActivity activity) {
         Intent intent = activity.getIntent();
         if (intent == null) { // when launched as LAUNCHER
             return;
@@ -602,8 +602,8 @@ public class FDroidApp extends Application {
         return getSharedPreferences("at-start-time", Context.MODE_PRIVATE);
     }
 
-    public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
-        if (resultCode == Activity.RESULT_CANCELED) {
+    public void sendViaBluetooth(AppCompatActivity activity, int resultCode, String packageName) {
+        if (resultCode == AppCompatActivity.RESULT_CANCELED) {
             return;
         }
 

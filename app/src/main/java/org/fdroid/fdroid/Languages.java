@@ -1,13 +1,14 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.text.TextUtils;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,7 +36,7 @@ public final class Languages {
         DEFAULT_LOCALE = Locale.getDefault();
     }
 
-    private Languages(Activity activity) {
+    private Languages(AppCompatActivity activity) {
         Set<Locale> localeSet = new LinkedHashSet<>();
         localeSet.addAll(Arrays.asList(LOCALES_TO_TEST));
 
@@ -63,10 +64,10 @@ public final class Languages {
     }
 
     /**
-     * @param activity the {@link Activity} this is working as part of
+     * @param activity the {@link AppCompatActivity} this is working as part of
      * @return the singleton to work with
      */
-    public static Languages get(Activity activity) {
+    public static Languages get(AppCompatActivity activity) {
         if (singleton == null) {
             singleton = new Languages(activity);
         }
@@ -116,11 +117,11 @@ public final class Languages {
     }
 
     /**
-     * Force reload the {@link Activity to make language changes take effect.}
+     * Force reload the {@link AppCompatActivity to make language changes take effect.}
      *
-     * @param activity the {@code Activity} to force reload
+     * @param activity the {@code AppCompatActivity} to force reload
      */
-    public static void forceChangeLanguage(Activity activity) {
+    public static void forceChangeLanguage(AppCompatActivity activity) {
         if (Build.VERSION.SDK_INT >= 24) {
             Utils.debugLog(TAG, "Languages.forceChangeLanguage() ignored on >= android-24");
             return;

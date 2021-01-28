@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.views.apps;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -68,7 +68,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     private static Preferences prefs;
 
-    protected final Activity activity;
+    protected final AppCompatActivity activity;
 
     @NonNull
     private final ImageView icon;
@@ -111,7 +111,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private AppUpdateStatus currentStatus;
 
     @TargetApi(21)
-    public AppListItemController(final Activity activity, View itemView) {
+    public AppListItemController(final AppCompatActivity activity, View itemView) {
         super(itemView);
         this.activity = activity;
         if (prefs == null) {

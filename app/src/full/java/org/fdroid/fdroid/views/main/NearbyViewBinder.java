@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.views.main;
 
 import android.Manifest;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.UriPermission;
@@ -69,7 +69,7 @@ public class NearbyViewBinder {
     private static File externalStorage = null;
     private static View swapView;
 
-    NearbyViewBinder(final Activity activity, FrameLayout parent) {
+    NearbyViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, parent, true);
 
         TextView subtext = swapView.findViewById(R.id.both_parties_need_fdroid_text);
@@ -213,11 +213,11 @@ public class NearbyViewBinder {
                             }
                         }
 
-                        Activity activity = null;
-                        if (context instanceof Activity) {
-                            activity = (Activity) context;
-                        } else if (swapView != null && swapView.getContext() instanceof Activity) {
-                            activity = (Activity) swapView.getContext();
+                        AppCompatActivity activity = null;
+                        if (context instanceof AppCompatActivity) {
+                            activity = (AppCompatActivity) context;
+                        } else if (swapView != null && swapView.getContext() instanceof AppCompatActivity) {
+                            activity = (AppCompatActivity) swapView.getContext();
                         }
 
                         if (activity != null) {

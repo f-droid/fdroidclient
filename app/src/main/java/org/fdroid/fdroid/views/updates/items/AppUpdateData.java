@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Used as a common base class for all data types in the {@link
@@ -10,9 +10,9 @@ import android.app.Activity;
  * to specify a data type more specific than just {@link Object}.
  */
 public abstract class AppUpdateData { // NOPMD This abstract class does not have any abstract methods
-    public final Activity activity;
+    public final AppCompatActivity activity;
 
-    public AppUpdateData(Activity activity) {
+    public AppUpdateData(AppCompatActivity activity) {
         this.activity = activity;
     }
 }

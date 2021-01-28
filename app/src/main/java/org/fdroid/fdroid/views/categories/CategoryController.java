@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.categories;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -40,14 +40,14 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final LoaderManager loaderManager;
     private final DisplayImageOptions displayImageOptions;
     private static int categoryItemCount = 20;
 
     private String currentCategory;
 
-    CategoryController(final Activity activity, LoaderManager loaderManager, View itemView) {
+    CategoryController(final AppCompatActivity activity, LoaderManager loaderManager, View itemView) {
         super(itemView);
 
         this.activity = activity;

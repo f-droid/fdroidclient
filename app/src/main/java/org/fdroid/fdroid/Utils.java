@@ -944,7 +944,7 @@ public final class Utils {
     }
 
     /**
-     * Keep an instance of this class as an field in an Activity for figuring out whether the on
+     * Keep an instance of this class as an field in an AppCompatActivity for figuring out whether the on
      * screen keyboard is currently visible or not.
      */
     public static class KeyboardStateMonitor {
@@ -952,7 +952,7 @@ public final class Utils {
         private boolean visible = false;
 
         /**
-         * @param contentView this must be the top most Container of the layout used by the Activity
+         * @param contentView this must be the top most Container of the layout used by the AppCompatActivity
          */
         public KeyboardStateMonitor(final View contentView) {
             contentView.getViewTreeObserver().addOnGlobalLayoutListener(

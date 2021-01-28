@@ -1,7 +1,7 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -195,7 +195,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
                 public void onChange(boolean selfChange) {
-                    Activity activity = getActivity();
+                    AppCompatActivity activity = getActivity();
                     if (activity != null && app != null) {
                         app = AppProvider.Helper.findSpecificApp(
                                 activity.getContentResolver(),

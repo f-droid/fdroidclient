@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
@@ -22,16 +22,16 @@ public class UpdateableApp extends AppUpdateData {
 
     public final App app;
 
-    public UpdateableApp(Activity activity, App app) {
+    public UpdateableApp(AppCompatActivity activity, App app) {
         super(activity);
         this.app = app;
     }
 
     public static class Delegate extends AdapterDelegate<List<AppUpdateData>> {
 
-        private final Activity activity;
+        private final AppCompatActivity activity;
 
-        public Delegate(Activity activity) {
+        public Delegate(AppCompatActivity activity) {
             this.activity = activity;
         }
 

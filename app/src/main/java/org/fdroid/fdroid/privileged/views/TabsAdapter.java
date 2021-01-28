@@ -17,7 +17,7 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Rect;
 import androidx.annotation.NonNull;
@@ -67,7 +67,7 @@ class TabsAdapter extends PagerAdapter
         }
     }
 
-    TabsAdapter(Activity activity, TabHost tabHost, ViewPager pager) {
+    TabsAdapter(AppCompatActivity activity, TabHost tabHost, ViewPager pager) {
         context = activity;
         this.tabHost = tabHost;
         viewPager = pager;

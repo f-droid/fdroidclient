@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
@@ -29,7 +29,7 @@ public class UpdateableAppsHeader extends AppUpdateData {
     public final List<UpdateableApp> apps;
     public final UpdatesAdapter adapter;
 
-    public UpdateableAppsHeader(Activity activity,
+    public UpdateableAppsHeader(AppCompatActivity activity,
                                 UpdatesAdapter updatesAdapter, List<UpdateableApp> updateableApps) {
         super(activity);
         apps = updateableApps;
@@ -40,7 +40,7 @@ public class UpdateableAppsHeader extends AppUpdateData {
 
         private final LayoutInflater inflater;
 
-        public Delegate(Activity activity) {
+        public Delegate(AppCompatActivity activity) {
             inflater = activity.getLayoutInflater();
         }
 

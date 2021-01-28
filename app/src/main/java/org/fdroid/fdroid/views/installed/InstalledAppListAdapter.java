@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.views.installed;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 import androidx.annotation.NonNull;
@@ -13,12 +13,12 @@ import org.fdroid.fdroid.data.App;
 
 public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
 
-    protected final Activity activity;
+    protected final AppCompatActivity activity;
 
     @Nullable
     private Cursor cursor;
 
-    protected InstalledAppListAdapter(Activity activity) {
+    protected InstalledAppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
         setHasStableIds(true);
     }

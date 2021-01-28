@@ -1,10 +1,12 @@
 package org.fdroid.fdroid.views.main;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import android.widget.FrameLayout;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.PreferencesFragment;
 import org.fdroid.fdroid.views.updates.UpdatesViewBinder;

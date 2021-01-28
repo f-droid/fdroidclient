@@ -1,6 +1,6 @@
 package org.fdroid.fdroid.panic;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -83,7 +83,7 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
                     prefHide.setEnabled(false);
                     prefResetRepos.setChecked(false);
                     prefResetRepos.setEnabled(false);
-                    getActivity().setResult(Activity.RESULT_CANCELED);
+                    getActivity().setResult(AppCompatActivity.RESULT_CANCELED);
                 } else {
                     prefHide.setEnabled(true);
                     prefResetRepos.setEnabled(true);
@@ -235,13 +235,13 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
             public void onClick(DialogInterface dialogInterface, int i) {
                 PanicResponder.setTriggerPackageName(getActivity());
                 showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
-                getActivity().setResult(Activity.RESULT_OK);
+                getActivity().setResult(AppCompatActivity.RESULT_OK);
             }
         };
         DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                getActivity().setResult(Activity.RESULT_CANCELED);
+                getActivity().setResult(AppCompatActivity.RESULT_CANCELED);
                 getActivity().finish();
             }
         };

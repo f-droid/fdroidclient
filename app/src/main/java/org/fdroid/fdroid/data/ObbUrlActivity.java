@@ -1,22 +1,24 @@
 package org.fdroid.fdroid.data;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.fdroid.fdroid.Utils;
 
 /**
  * Replies with the public download URL for the OBB that belongs to the
  * requesting app/version.  If it doesn't know the OBB URL for the requesting
- * app, the {@code resultCode} will be {@link Activity#RESULT_CANCELED}. The
- * request must be sent with {@link Activity#startActivityForResult(Intent, int)}
+ * app, the {@code resultCode} will be {@link AppCompatActivity#RESULT_CANCELED}. The
+ * request must be sent with {@link AppCompatActivity#startActivityForResult(Intent, int)}
  * in order to receive a reply, which will include an {@link Intent} with the
  * URL as data and the SHA-256 hash as a String {@code Intent} extra.
  */
-public class ObbUrlActivity extends Activity {
+public class ObbUrlActivity extends AppCompatActivity {
     public static final String TAG = "ObbUrlActivity";
 
     public static final String ACTION_GET_OBB_MAIN_URL = "org.fdroid.fdroid.action.GET_OBB_MAIN_URL";
