@@ -496,7 +496,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         toolbar.setBackgroundColor(currentView.getToolbarColour());
         toolbar.setTitle(currentView.getToolbarTitle());
-        toolbar.setNavigationIcon(R.drawable.ic_close_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -27,11 +28,11 @@
             android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
             android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
             android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
-            android:drawableRight="@drawable/ic_expand_more"
-            android:drawableEnd="@drawable/ic_expand_more"
-            android:drawableLeft="@drawable/ic_website"
-            android:drawableStart="@drawable/ic_website"
-            android:background="?selectableItemBackground" />
+            android:background="?selectableItemBackground"
+            app:drawableEndCompat="@drawable/ic_expand_more"
+            app:drawableStartCompat="@drawable/ic_website"
+            app:drawableLeftCompat="@drawable/ic_website"
+            app:drawableRightCompat="@drawable/ic_expand_more" />
     </FrameLayout>
 
     <LinearLayout
