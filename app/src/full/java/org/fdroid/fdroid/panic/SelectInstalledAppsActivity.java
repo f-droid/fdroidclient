@@ -21,8 +21,6 @@ package org.fdroid.fdroid.panic;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -117,14 +115,7 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
         MenuItem menuItem = menu.add(R.string.menu_select_for_wipe);
         menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         checkId = menuItem.getItemId();
-        if (FDroidApp.isAppThemeLight()) {
-            Drawable icon = ContextCompat.getDrawable(this, R.drawable.check);
-            icon.setColorFilter(new LightingColorFilter(0xffffffff, ContextCompat.getColor(this,
-                    android.R.color.white)));
-            menuItem.setIcon(icon);
-        } else {
-            menuItem.setIcon(R.drawable.check);
-        }
+        menuItem.setIcon(R.drawable.check);
         return true;
     }
 

@@ -7,7 +7,6 @@
     <color name="swap_deny">#ff21488c</color>
     <color name="swap_bright_blue">#00b9e6</color>
     <color name="swap_light_text">#bbbbbb</color>
-    <color name="swap_grey_icon">#4a4a4a</color>
     <color name="swap_light_grey_icon">#bbbbbb</color>
 
     <color name="panic_destructive_light">#fff0f0</color>

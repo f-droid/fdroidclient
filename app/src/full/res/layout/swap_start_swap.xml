@@ -25,9 +25,8 @@
         <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:tint="@color/swap_grey_icon"
                 android:contentDescription="@string/use_bluetooth"
-                android:src="@drawable/ic_bluetooth"/>
+                android:src="@drawable/ic_bluetooth_searching"/>
 
         <LinearLayout
                 android:layout_width="0dp"
@@ -74,9 +73,8 @@
         <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:tint="@color/swap_grey_icon"
                 android:contentDescription="@string/wifi"
-                android:src="@drawable/ic_network_wifi"/>
+                android:src="@drawable/ic_wifi"/>
 
         <LinearLayout
                 android:layout_width="0dp"
@@ -156,32 +154,20 @@
             android:layout_alignParentBottom="true">
 
         <Button
-                android:id="@+id/btn_send_fdroid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_fdroid_grey"
-                android:drawableStart="@drawable/ic_fdroid_grey"
-                android:text="@string/swap_send_fdroid"
-                android:drawablePadding="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
-                android:background="@android:color/transparent"/>
+            android:id="@+id/btn_send_fdroid"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            swap:icon="@drawable/ic_fdroid_grey"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_send_fdroid" />
 
         <Button
-                android:id="@+id/btn_scan_qr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_qr_grey"
-                android:drawableStart="@drawable/ic_qr_grey"
-                android:text="@string/swap_scan_qr"
-                android:drawablePadding="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
-                android:background="@android:color/transparent"/>
+            android:id="@+id/btn_scan_qr"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_scan_qr"
+            swap:icon="@drawable/ic_qr_code" />
 
     </LinearLayout>
 
