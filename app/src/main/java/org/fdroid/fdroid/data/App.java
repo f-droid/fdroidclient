@@ -520,17 +520,18 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (!TextUtils.isEmpty(value)) {
             whatsNew = value;
         }
+
         value = getLocalizedEntry(localized, localesToUse, "video");
         if (!TextUtils.isEmpty(value)) {
-            video = value.split("\n", 1)[0];
+            video = value.trim();
         }
         value = getLocalizedEntry(localized, localesToUse, "name");
         if (!TextUtils.isEmpty(value)) {
-            name = value;
+            name = value.trim();
         }
         value = getLocalizedEntry(localized, localesToUse, "summary");
         if (!TextUtils.isEmpty(value)) {
-            summary = value;
+            summary = value.trim();
         }
         value = getLocalizedEntry(localized, localesToUse, "description");
         if (!TextUtils.isEmpty(value)) {

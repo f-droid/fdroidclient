@@ -29,7 +29,7 @@ public class LocaleSelectionTest {
 
     private static final String KEY = "summary";
 
-    private static final String EN_US_NAME = "Checkey: info on local apps\n";
+    private static final String EN_US_NAME = "Checkey: info on local apps";
     private static final String EN_US_FEATURE_GRAPHIC = "en-US/featureGraphic.png";
     private static final String EN_US_PHONE_SCREENSHOT = "en-US/phoneScreenshots/First.png";
     private static final String EN_US_SEVEN_INCH_SCREENSHOT = "en-US/sevenInchScreenshots/checkey-tablet.png";
