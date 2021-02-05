@@ -514,43 +514,43 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (systemLocaleList == null) {
             systemLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
         }
-        Set<String> localesToUse = localized.keySet();
-        setIsLocalized(localesToUse);
-        String value = getLocalizedEntry(localized, localesToUse, "whatsNew");
+        Set<String> supportedLocales = localized.keySet();
+        setIsLocalized(supportedLocales);
+        String value = getLocalizedEntry(localized, supportedLocales, "whatsNew");
         if (!TextUtils.isEmpty(value)) {
             whatsNew = value;
         }
 
-        value = getLocalizedEntry(localized, localesToUse, "video");
+        value = getLocalizedEntry(localized, supportedLocales, "video");
         if (!TextUtils.isEmpty(value)) {
             video = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "name");
+        value = getLocalizedEntry(localized, supportedLocales, "name");
         if (!TextUtils.isEmpty(value)) {
             name = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "summary");
+        value = getLocalizedEntry(localized, supportedLocales, "summary");
         if (!TextUtils.isEmpty(value)) {
             summary = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "description");
+        value = getLocalizedEntry(localized, supportedLocales, "description");
         if (!TextUtils.isEmpty(value)) {
             description = formatDescription(value);
         }
-        value = getLocalizedGraphicsEntry(localized, localesToUse, "icon");
+        value = getLocalizedGraphicsEntry(localized, supportedLocales, "icon");
         if (!TextUtils.isEmpty(value)) {
             iconUrl = value;
         }
 
-        featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
-        promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
-        tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");
+        featureGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "featureGraphic");
+        promoGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "promoGraphic");
+        tvBanner = getLocalizedGraphicsEntry(localized, supportedLocales, "tvBanner");
 
-        wearScreenshots = getLocalizedListEntry(localized, localesToUse, "wearScreenshots");
-        phoneScreenshots = getLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
-        sevenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
-        tenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
-        tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
+        wearScreenshots = getLocalizedListEntry(localized, supportedLocales, "wearScreenshots");
+        phoneScreenshots = getLocalizedListEntry(localized, supportedLocales, "phoneScreenshots");
+        sevenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "sevenInchScreenshots");
+        tenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "tenInchScreenshots");
+        tvScreenshots = getLocalizedListEntry(localized, supportedLocales, "tvScreenshots");
     }
 
     /**
@@ -579,8 +579,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * @see LocaleList
      */
     private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
-                                     Set<String> locales, @NonNull String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, locales, key);
+                                     Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
         if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
             for (Object entry : localizedLocaleMap.values()) {
                 return (String) entry; // NOPMD
@@ -590,8 +590,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     private String getLocalizedGraphicsEntry(Map<String, Map<String, Object>> localized,
-                                             Set<String> locales, String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, locales, key);
+                                             Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
         if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
             for (String locale : localizedLocaleMap.keySet()) {
                 return locale + "/" + localizedLocaleMap.get(locale); // NOPMD
@@ -601,8 +601,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     private String[] getLocalizedListEntry(Map<String, Map<String, Object>> localized,
-                                           Set<String> locales, String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, locales, key);
+                                           Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
         if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
             for (String locale : localizedLocaleMap.keySet()) {
                 ArrayList<String> entry = (ArrayList<String>) localizedLocaleMap.get(locale);
@@ -625,8 +625,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * in the index JSON.
      */
     private Map<String, Object> getLocalizedLocaleMap(Map<String, Map<String, Object>> localized,
-                                                      Set<String> locales, String key) {
-        String[] localesToUse = getLocalesForKey(localized, locales, key);
+                                                      Set<String> supportedLocales, @NonNull String key) {
+        String[] localesToUse = getLocalesForKey(localized, supportedLocales, key);
         if (localesToUse.length > 0) {
             Locale firstMatch = systemLocaleList.getFirstMatch(localesToUse);
             if (firstMatch != null) {
@@ -653,9 +653,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * Get all locales that have an entry for {@code key}.
      */
     private String[] getLocalesForKey(Map<String, Map<String, Object>> localized,
-                                      Set<String> locales, String key) {
+                                      Set<String> supportedLocales, @NonNull String key) {
         Set<String> localesToUse = new HashSet<>();
-        for (String locale : locales) {
+        for (String locale : supportedLocales) {
             Map<String, Object> localeEntry = localized.get(locale);
             if (localeEntry != null && localeEntry.get(key) != null) {
                 localesToUse.add(locale);
