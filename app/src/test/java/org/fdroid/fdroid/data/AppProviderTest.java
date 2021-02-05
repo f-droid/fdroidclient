@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import androidx.core.os.LocaleListCompat;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -303,7 +304,7 @@ public class AppProviderTest extends FDroidProviderTest {
         localized.put("es", es);
         localized.put("fr", fr);
 
-        Locale.setDefault(new Locale("nl", "NL"));
+        App.systemLocaleList = LocaleListCompat.forLanguageTags("nl-NL");
         app.setLocalized(localized);
         assertFalse(app.isLocalized);
 
@@ -324,7 +325,7 @@ public class AppProviderTest extends FDroidProviderTest {
         app.setLocalized(localized);
         assertFalse(app.isLocalized);
 
-        Locale.setDefault(new Locale("en", "US"));
+        App.systemLocaleList = LocaleListCompat.forLanguageTags("en-US");
         app = new App();
         localized.clear();
         localized.put("en-US", en);

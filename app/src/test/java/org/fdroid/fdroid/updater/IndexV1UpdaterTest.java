@@ -370,6 +370,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "isLocalized",
                 "preferredSigner",
                 "prefs",
+                "systemLocaleList",
                 "TAG",
         };
         runJsonIgnoreTest(new App(), allowedInApp, ignoredInApp);

@@ -209,6 +209,13 @@ public interface Schema {
             String TV_SCREENSHOTS = "tvScreenshots";
             String WEAR_SCREENSHOTS = "wearScreenshots";
             String IS_APK = "isApk";
+
+            /**
+             * Has this {@code App} been localized into one of the user's current locales.
+             *
+             * @see App#setIsLocalized(java.util.Set)
+             * @see org.fdroid.fdroid.views.main.WhatsNewViewBinder#onCreateLoader(int, android.os.Bundle)
+             */
             String IS_LOCALIZED = "isLocalized";
 
             interface AutoInstallApk {
