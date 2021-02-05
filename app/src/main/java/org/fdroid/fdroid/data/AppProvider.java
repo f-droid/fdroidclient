@@ -6,10 +6,10 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
@@ -446,7 +446,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_SEARCH_REPO = "searchRepo";
     protected static final String PATH_APPS = "apps";
     protected static final String PATH_SPECIFIC_APP = "app";
-    private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
+    private static final String PATH_LATEST_TAB = "recentlyUpdated";
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_REPO = "repo";
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
@@ -459,8 +459,8 @@ public class AppProvider extends FDroidProvider {
     private static final int INSTALLED = CAN_UPDATE + 1;
     private static final int SEARCH_TEXT = INSTALLED + 1;
     private static final int SEARCH_TEXT_AND_CATEGORIES = SEARCH_TEXT + 1;
-    private static final int RECENTLY_UPDATED = SEARCH_TEXT_AND_CATEGORIES + 1;
-    private static final int CATEGORY = RECENTLY_UPDATED + 1;
+    private static final int LATEST_TAB = SEARCH_TEXT_AND_CATEGORIES + 1;
+    private static final int CATEGORY = LATEST_TAB + 1;
     private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
     private static final int REPO = CALC_SUGGESTED_APKS + 1;
     private static final int SEARCH_REPO = REPO + 1;
@@ -473,7 +473,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS, CALC_SUGGESTED_APKS);
         MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS + "/*", CALC_SUGGESTED_APKS);
-        MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
+        MATCHER.addURI(getAuthority(), PATH_LATEST_TAB, LATEST_TAB);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*/*", SEARCH_TEXT_AND_CATEGORIES);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH_TEXT);
@@ -492,8 +492,14 @@ public class AppProvider extends FDroidProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getRecentlyUpdatedUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_RECENTLY_UPDATED);
+    /**
+     * Get entries that are sorted by the {@link Schema.AppMetadataTable.Cols#LAST_UPDATED}
+     * date.
+     *
+     * @see #LATEST_TAB
+     */
+    public static Uri getLatestTabUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_LATEST_TAB);
     }
 
     private static Uri calcSuggestedApksUri() {
@@ -845,7 +851,7 @@ public class AppProvider extends FDroidProvider {
                 includeSwap = false;
                 break;
 
-            case RECENTLY_UPDATED:
+            case LATEST_TAB:
                 String table = getTableName();
                 String isNew = table + "." + Cols.LAST_UPDATED + " <= " + table + "." + Cols.ADDED + " DESC";
                 String hasFeatureGraphic = table + "." + Cols.FEATURE_GRAPHIC + " IS NULL ASC ";

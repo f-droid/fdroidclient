@@ -95,6 +95,9 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+    /**
+     * @see AppProvider#getLatestTabUri()
+     */
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -124,7 +127,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         return new CursorLoader(
                 activity,
-                AppProvider.getRecentlyUpdatedUri(),
+                AppProvider.getLatestTabUri(),
                 AppMetadataTable.Cols.ALL,
                 selection,
                 null,
