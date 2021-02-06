@@ -262,17 +262,17 @@ public class AppProvider extends FDroidProvider {
 
         @Override
         protected String getRequiredTables() {
-            final String pkg  = PackageTable.NAME;
-            final String app  = getTableName();
+            final String pkg = PackageTable.NAME;
+            final String app = getTableName();
             final String repo = RepoTable.NAME;
-            final String cat  = CategoryTable.NAME;
+            final String cat = CategoryTable.NAME;
             final String catJoin = getCatJoinTableName();
 
             return pkg +
-                " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
-                " JOIN " + repo + " ON (" + app + "." + Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") " +
-                " LEFT JOIN " + catJoin + " ON (" + app + "." + Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
-                " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") ";
+                    " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
+                    " JOIN " + repo + " ON (" + app + "." + Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") " +
+                    " LEFT JOIN " + catJoin + " ON (" + app + "." + Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
+                    " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") ";
         }
 
         @Override
@@ -537,9 +537,9 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getRepoUri(Repo repo) {
         return getContentUri().buildUpon()
-            .appendPath(PATH_REPO)
-            .appendPath(String.valueOf(repo.id))
-            .build();
+                .appendPath(PATH_REPO)
+                .appendPath(String.valueOf(repo.id))
+                .build();
     }
 
     /**
@@ -584,10 +584,10 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getSearchUri(Repo repo, String query) {
         return getContentUri().buildUpon()
-            .appendPath(PATH_SEARCH_REPO)
-            .appendPath(String.valueOf(repo.id))
-            .appendPath(query)
-            .build();
+                .appendPath(PATH_SEARCH_REPO)
+                .appendPath(String.valueOf(repo.id))
+                .appendPath(query)
+                .build();
     }
 
     @Override
@@ -945,7 +945,7 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
         String query = "DELETE FROM " + catJoin + " WHERE " + CatJoinTable.Cols.APP_METADATA_ID + " IN " +
                 "(SELECT " + Cols.ROW_ID + " FROM " + app + " WHERE " + app + "." + Cols.REPO_ID + " = ?)";
-        db().execSQL(query, new String[] {String.valueOf(repoId)});
+        db().execSQL(query, new String[]{String.valueOf(repoId)});
 
         AppQuerySelection selection = new AppQuerySelection(where, whereArgs).add(queryRepo(repoId));
         int result = db().delete(getTableName(), selection.getSelection(), selection.getArgs());
@@ -995,7 +995,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     protected void ensureCategories(String[] categories, long appMetadataId) {
-        db().delete(getCatJoinTableName(), CatJoinTable.Cols.APP_METADATA_ID + " = ?", new String[] {Long.toString(appMetadataId)});
+        db().delete(getCatJoinTableName(), CatJoinTable.Cols.APP_METADATA_ID + " = ?", new String[]{Long.toString(appMetadataId)});
         if (categories != null) {
             Set<String> categoriesSet = new HashSet<>();
             for (String categoryName : categories) {
@@ -1043,16 +1043,16 @@ public class AppProvider extends FDroidProvider {
     /**
      * If the repo hasn't changed, then there are many things which we shouldn't waste time updating
      * (compared to {@link AppProvider#updateAllAppDetails()}:
+     * <ul>
+     * <li>The "preferred metadata", as that is calculated based on repo with highest priority, and
+     * only takes into account the package name, not specific versions, when figuring this out.</li>
      *
-     * + The "preferred metadata", as that is calculated based on repo with highest priority, and
-     *   only takes into account the package name, not specific versions, when figuring this out.
+     * <li>Compatible flags. These were calculated earlier, whether or not an app was suggested or not.</li>
      *
-     * + Compatible flags. These were calculated earlier, whether or not an app was suggested or not.
-     *
-     * + Icon URLs. While technically these do change when the suggested version changes, it is not
-     *   important enough to spend a significant amount of time to calculate. In the future maybe,
-     *   but that effort should instead go into implementing an intent service.
-     *
+     * <li>Icon URLs. While technically these do change when the suggested version changes, it is not
+     * important enough to spend a significant amount of time to calculate. In the future maybe,
+     * but that effort should instead go into implementing an intent service.</li>
+     * </ul>
      * In the future, this problem of taking a long time should be fixed by implementing an
      * {@link android.app.IntentService} as described in https://gitlab.com/fdroid/fdroidclient/issues/520.
      */
@@ -1073,19 +1073,19 @@ public class AppProvider extends FDroidProvider {
 
         final String highestPriority =
                 "SELECT MAX(r." + RepoTable.Cols.PRIORITY + ") " +
-                "FROM " + RepoTable.NAME + " AS r " +
-                "JOIN " + getTableName() + " AS m ON (m." + Cols.REPO_ID + " = r." + RepoTable.Cols._ID + ") " +
-                "WHERE m." + Cols.PACKAGE_ID + " = " + "metadata." + Cols.PACKAGE_ID;
+                        "FROM " + RepoTable.NAME + " AS r " +
+                        "JOIN " + getTableName() + " AS m ON (m." + Cols.REPO_ID + " = r." + RepoTable.Cols._ID + ") " +
+                        "WHERE m." + Cols.PACKAGE_ID + " = " + "metadata." + Cols.PACKAGE_ID;
 
         String updateSql =
                 "UPDATE " + PackageTable.NAME + " " +
-                "SET " + PackageTable.Cols.PREFERRED_METADATA + " = ( " +
-                " SELECT metadata." + Cols.ROW_ID +
-                " FROM " + app + " AS metadata " +
-                " JOIN " + RepoTable.NAME + " AS repo ON (metadata." + Cols.REPO_ID + " = repo." + RepoTable.Cols._ID + ") " +
-                " WHERE metadata." + Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID +
-                " AND repo." + RepoTable.Cols.PRIORITY + " = (" + highestPriority + ")" +
-                ");";
+                        "SET " + PackageTable.Cols.PREFERRED_METADATA + " = ( " +
+                        " SELECT metadata." + Cols.ROW_ID +
+                        " FROM " + app + " AS metadata " +
+                        " JOIN " + RepoTable.NAME + " AS repo ON (metadata." + Cols.REPO_ID + " = repo." + RepoTable.Cols._ID + ") " +
+                        " WHERE metadata." + Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID +
+                        " AND repo." + RepoTable.Cols.PRIORITY + " = (" + highestPriority + ")" +
+                        ");";
 
         db().execSQL(updateSql);
     }
@@ -1102,9 +1102,9 @@ public class AppProvider extends FDroidProvider {
 
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.IS_COMPATIBLE + " = ( " +
-                " SELECT TOTAL( " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + ") > 0 " +
-                " FROM " + apk +
-                " WHERE " + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + " );";
+                        " SELECT TOTAL( " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + ") > 0 " +
+                        " FROM " + apk +
+                        " WHERE " + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + " );";
 
         db().execSQL(updateSql);
     }
@@ -1153,16 +1153,16 @@ public class AppProvider extends FDroidProvider {
         // zero rows.
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
-                " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
-                " FROM " + apk +
-                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                        " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
+                        " FROM " + apk +
+                        "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
                         "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
-                " WHERE " +
-                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
-                    apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
-                    restrictToStable +
-                    " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.SUGGESTED_VERSION_CODE + " > 0 " + restrictToApp;
+                        " WHERE " +
+                        app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                        apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
+                        restrictToStable +
+                        " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
+                        " WHERE " + Cols.SUGGESTED_VERSION_CODE + " > 0 " + restrictToApp;
 
         LoggingQuery.execSQL(db(), updateSql, args);
     }
@@ -1170,7 +1170,7 @@ public class AppProvider extends FDroidProvider {
     /**
      * We set each app's suggested version to the latest available that is
      * compatible, or the latest available if none are compatible.
-     *
+     * <p>
      * If the suggested version is null, it means that we could not figure it
      * out from the upstream vercode. In such a case, fall back to the simpler
      * algorithm as if upstreamVercode was 0.
@@ -1199,15 +1199,15 @@ public class AppProvider extends FDroidProvider {
 
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.AUTO_INSTALL_VERSION_CODE + " = ( " +
-                " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
-                " FROM " + apk +
-                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
-                "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
-                " WHERE " +
-                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
-                    apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
-                    " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + restrictToApps;
+                        " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
+                        " FROM " + apk +
+                        "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                        "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
+                        " WHERE " +
+                        app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                        apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
+                        " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
+                        " WHERE " + restrictToApps;
 
         LoggingQuery.execSQL(db(), updateSql, args);
     }
