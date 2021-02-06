@@ -10,6 +10,7 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Environment;
 import android.os.LocaleList;
 import android.os.Parcel;
@@ -630,7 +631,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (localesToUse.length > 0) {
             Locale firstMatch = systemLocaleList.getFirstMatch(localesToUse);
             if (firstMatch != null) {
-                for (String languageTag : new String[]{firstMatch.toLanguageTag(), null}) {
+                for (String languageTag : new String[]{toLanguageTag(firstMatch), null}) {
                     if (languageTag == null) {
                         languageTag = getFallbackLanguageTag(firstMatch, localesToUse); // NOPMD
                     }
@@ -647,6 +648,18 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
         return null;
+    }
+
+    /**
+     * Replace with {@link Locale#toLanguageTag()} once
+     * {@link android.os.Build.VERSION_CODES#LOLLIPOP} is {@code minSdkVersion}
+     */
+    private String toLanguageTag(Locale firstMatch) {
+        if (Build.VERSION.SDK_INT < 21) {
+            return firstMatch.toString().replace("_", "-");
+        } else {
+            return firstMatch.toLanguageTag();
+        }
     }
 
     /**
