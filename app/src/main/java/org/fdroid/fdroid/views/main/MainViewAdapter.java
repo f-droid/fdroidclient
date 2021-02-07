@@ -86,8 +86,8 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     public MainViewController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MainViewController holder = createEmptyView(activity);
         switch (viewType) {
-            case R.id.whats_new:
-                holder.bindWhatsNewView();
+            case R.id.latest:
+                holder.bindLatestView();
                 break;
             case R.id.categories:
                 holder.bindCategoriesView();

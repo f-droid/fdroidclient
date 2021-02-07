@@ -6,7 +6,7 @@
     <!-- android:title and android:icon are set dynamically in MainActivity -->
     <item
             app:showAsAction="ifRoom|withText"
-            android:id="@+id/whats_new"/>
+            android:id="@+id/latest"/>
     <item
             app:showAsAction="ifRoom|withText"
             android:id="@+id/categories"/>

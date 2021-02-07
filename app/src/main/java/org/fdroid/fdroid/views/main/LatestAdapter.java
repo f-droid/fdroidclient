@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.whatsnew;
+package org.fdroid.fdroid.views.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
@@ -16,15 +16,15 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.categories.AppCardController;
 
-public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
+public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
 
     private Cursor cursor;
     private final AppCompatActivity activity;
     private final RecyclerView.ItemDecoration appListDecorator;
 
-    public WhatsNewAdapter(AppCompatActivity activity) {
+    public LatestAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        appListDecorator = new WhatsNewAdapter.ItemDecorator(activity);
+        appListDecorator = new LatestAdapter.ItemDecorator(activity);
     }
 
     @Override
@@ -44,13 +44,13 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout;
         switch (viewType) {
-            case R.id.whats_new_large_tile:
+            case R.id.latest_large_tile:
                 layout = R.layout.app_card_large;
                 break;
-            case R.id.whats_new_small_tile:
+            case R.id.latest_small_tile:
                 layout = R.layout.app_card_horizontal;
                 break;
-            case R.id.whats_new_regular_list:
+            case R.id.latest_regular_list:
                 layout = R.layout.app_card_list_item;
                 break;
             default:
@@ -66,27 +66,27 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
         if (BuildConfig.FLAVOR.startsWith("basic")) {
             if (relativePositionInCycle > 0) {
-                return R.id.whats_new_small_tile;
+                return R.id.latest_small_tile;
             } else {
-                return R.id.whats_new_regular_list;
+                return R.id.latest_regular_list;
             }
         }
 
         if (position == 0) {
-            return R.id.whats_new_regular_list;
+            return R.id.latest_regular_list;
         } else {
             switch (relativePositionInCycle) {
                 case 1:
                 case 2:
-                    return R.id.whats_new_large_tile;
+                    return R.id.latest_large_tile;
 
                 case 3:
                 case 4:
-                    return R.id.whats_new_small_tile;
+                    return R.id.latest_small_tile;
 
                 case 0:
                 default:
-                    return R.id.whats_new_regular_list;
+                    return R.id.latest_regular_list;
             }
         }
     }
@@ -128,8 +128,8 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
      * Applies padding to items, ensuring that the spacing on the left, centre, and right all match.
      * The vertical padding is slightly shorter than the horizontal padding also.
      *
-     * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__horizontal
-     * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__vertical
+     * @see org.fdroid.fdroid.R.dimen#latest__padding__app_card__horizontal
+     * @see org.fdroid.fdroid.R.dimen#latest__padding__app_card__vertical
      */
     private static class ItemDecorator extends RecyclerView.ItemDecoration {
         private final Context context;
@@ -142,8 +142,8 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
             int position = parent.getChildAdapterPosition(view);
             Resources resources = context.getResources();
-            int horizontalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__horizontal);
-            int verticalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__vertical);
+            int horizontalPadding = (int) resources.getDimension(R.dimen.latest__padding__app_card__horizontal);
+            int verticalPadding = (int) resources.getDimension(R.dimen.latest__padding__app_card__vertical);
 
             int relativePositionInCycle = position % 5;
             if (position == 0) {

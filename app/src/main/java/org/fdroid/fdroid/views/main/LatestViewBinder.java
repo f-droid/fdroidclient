@@ -26,42 +26,41 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 import java.util.Date;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
  */
-class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
+class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int LOADER_ID = 978015789;
 
-    private final WhatsNewAdapter whatsNewAdapter;
+    private final LatestAdapter latestAdapter;
     private final AppCompatActivity activity;
     private final TextView emptyState;
     private final RecyclerView appList;
 
     private ProgressBar progressBar;
 
-    WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
+    LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
 
-        View whatsNewView = activity.getLayoutInflater().inflate(R.layout.main_tab_whats_new, parent, true);
+        View latestView = activity.getLayoutInflater().inflate(R.layout.main_tab_latest, parent, true);
 
-        whatsNewAdapter = new WhatsNewAdapter(activity);
+        latestAdapter = new LatestAdapter(activity);
 
         GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
-        layoutManager.setSpanSizeLookup(new WhatsNewAdapter.SpanSizeLookup());
+        layoutManager.setSpanSizeLookup(new LatestAdapter.SpanSizeLookup());
 
-        emptyState = (TextView) whatsNewView.findViewById(R.id.empty_state);
+        emptyState = (TextView) latestView.findViewById(R.id.empty_state);
 
-        appList = (RecyclerView) whatsNewView.findViewById(R.id.app_list);
+        appList = (RecyclerView) latestView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
         appList.setLayoutManager(layoutManager);
-        appList.setAdapter(whatsNewAdapter);
+        appList.setAdapter(latestAdapter);
 
-        final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) whatsNewView
+        final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) latestView
                 .findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,7 +71,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             }
         });
 
-        FloatingActionButton searchFab = (FloatingActionButton) whatsNewView.findViewById(R.id.fab_search);
+        FloatingActionButton searchFab = (FloatingActionButton) latestView.findViewById(R.id.fab_search);
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,9 +118,9 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             return;
         }
 
-        whatsNewAdapter.setAppsCursor(cursor);
+        latestAdapter.setAppsCursor(cursor);
 
-        if (whatsNewAdapter.getItemCount() == 0) {
+        if (latestAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
             appList.setVisibility(View.GONE);
             explainEmptyStateToUser();
@@ -170,6 +169,6 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             return;
         }
 
-        whatsNewAdapter.setAppsCursor(null);
+        latestAdapter.setAppsCursor(null);
     }
 }

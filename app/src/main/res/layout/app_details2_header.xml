@@ -182,7 +182,7 @@
             tools:text="App summary, one line - outlining what this app does" />
 
         <TextView
-            android:id="@+id/whats_new"
+            android:id="@+id/latest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/detailPanel"

@@ -32,10 +32,10 @@ class MainViewController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * @see WhatsNewViewBinder
+     * @see LatestViewBinder
      */
-    public void bindWhatsNewView() {
-        new WhatsNewViewBinder(activity, frame);
+    public void bindLatestView() {
+        new LatestViewBinder(activity, frame);
     }
 
     /**

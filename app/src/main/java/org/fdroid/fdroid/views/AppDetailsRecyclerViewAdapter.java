@@ -408,7 +408,7 @@ public class AppDetailsRecyclerViewAdapter
             authorView = (TextView) view.findViewById(R.id.author);
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
             summaryView = (TextView) view.findViewById(R.id.summary);
-            whatsNewView = (TextView) view.findViewById(R.id.whats_new);
+            whatsNewView = (TextView) view.findViewById(R.id.latest);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
             antiFeaturesSectionView = view.findViewById(R.id.anti_features_section);
