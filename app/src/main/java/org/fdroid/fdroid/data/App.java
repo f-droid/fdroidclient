@@ -19,6 +19,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,8 +43,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -75,6 +77,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     private static final String TAG = "App";
 
+    /**
+     * {@link LocaleListCompat} for finding the right app description material.
+     * It is set globally static to a) cache this value, since there are thousands
+     * of {@link App} entries, and b) make it easy to test {@link #setLocalized(Map)} )}
+     */
+    @JsonIgnore
+    public static LocaleListCompat systemLocaleList;
+
     // these properties are not from the index metadata, but represent the state on the device
     /**
      * True if compatible with the device (i.e. if at least one apk is)
@@ -98,8 +108,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String preferredSigner;
     @JsonIgnore
     public boolean isApk;
+
+    /**
+     * Has this {@code App} been localized into one of the user's current locales.
+     */
     @JsonIgnore
-    boolean isLocalized = false;
+    boolean isLocalized;
 
     /**
      * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
@@ -484,214 +498,217 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * {@code localized} block is included in the index.  Also, null strings in
      * the {@code localized} block should not overwrite Name/Summary/Description
      * strings with empty/null if they were set directly by Jackson.
-     * <p>
-     * Choosing the locale to use follows two sets of rules, one for Android versions
-     * older than {@code android-24} and the other for {@code android-24} or newer.
-     * The system-wide language preference list was added in {@code android-24}.
-     * <ul>
-     * <li>{@code >= android-24}<ol>
+     * <ol>
      * <li>the country variant {@code de-AT} from the user locale list
      * <li>only the language {@code de} from the above locale
+     * <li>next locale in the user's preference list ({@code >= android-24})
      * <li>{@code en-US} since its the most common English for software
      * <li>the first available {@code en} locale
-     * </ol></li>
-     * <li>{@code < android-24}<ol>
-     * <li>the country variant from the user locale: {@code de-AT}
-     * <li>only the language from the above locale:  {@code de}
-     * <li>all available locales with the same language:  {@code de-BE}
-     * <li>{@code en-US} since its the most common English for software
-     * <li>all available {@code en} locales
-     * </ol></li>
-     * </ul>
-     * On {@code >= android-24}, it is by design that this does not fallback to other
-     * country-specific locales, e.g. {@code fr-CH} does not fall back on {@code fr-FR}.
-     * If someone wants to fallback to {@code fr-FR}, they can add it to the system
-     * language list.  There are many cases where it is inappropriate to fallback to a
-     * different country-specific locale, for example {@code de-DE --> de-CH} or
-     * {@code zh-CN --> zh-TW}.
+     * </ol>
      * <p>
-     * On {@code < android-24}, the user can only set a single
-     * locale with a country as an option, so here it makes sense to try to fallback
-     * on other country-specific locales, rather than English.
+     * The system-wide language preference list was added in {@code android-24}.
+     *
+     * @see <a href="https://developer.android.com/guide/topics/resources/multilingual-support">Android language and locale resolution overview</a>
      */
     @JsonProperty("localized")
     void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
-        Locale defaultLocale = Locale.getDefault();
-        String languageTag = defaultLocale.getLanguage();
-        String countryTag = defaultLocale.getCountry();
-        String localeTag;
-        if (TextUtils.isEmpty(countryTag)) {
-            localeTag = languageTag;
-        } else {
-            localeTag = languageTag + "-" + countryTag;
+        if (systemLocaleList == null) {
+            systemLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
         }
-
-        Set<String> availableLocales = localized.keySet();
-        Set<String> localesToUse = new LinkedHashSet<>();
-        if (availableLocales.contains(localeTag)) {
-            localesToUse.add(localeTag);
-        }
-        if (availableLocales.contains(languageTag)) {
-            localesToUse.add(languageTag);
-        }
-        if (localesToUse.isEmpty()) {
-            // In case of non-standard region like [en-SE]
-            for (String availableLocale : availableLocales) {
-                String availableLanguage = availableLocale.split("-")[0];
-                if (languageTag.equals(availableLanguage)) {
-                    localesToUse.add(availableLocale);
-                }
-            }
-        }
-        if (Build.VERSION.SDK_INT >= 24) {
-            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
-            String[] sortedLocaleList = localeList.toLanguageTags().split(",");
-            Arrays.sort(sortedLocaleList, new java.util.Comparator<String>() {
-                @Override
-                public int compare(String s1, String s2) {
-                    return s1.length() - s2.length();
-                }
-            });
-            for (String toUse : sortedLocaleList) {
-                localesToUse.add(toUse);
-                for (String l : availableLocales) {
-                    if (l.equals(toUse.split("-")[0])) {
-                        localesToUse.add(l);
-                        break;
-                    }
-                }
-            }
-        } else {
-            for (String l : availableLocales) {
-                if (l.startsWith(languageTag)) {
-                    localesToUse.add(l);
-                }
-            }
-        }
-        if (availableLocales.contains("en-US")) {
-            localesToUse.add("en-US");
-        }
-        for (String l : availableLocales) {
-            if (l.startsWith("en")) {
-                localesToUse.add(l);
-                break;
-            }
-        }
-
-        for (String l : localesToUse) {
-            if (l.startsWith(languageTag)) {
-                isLocalized = true;
-                break;
-            }
-        }
-        if (localesToUse.size() > 1) {
-            isLocalized = true;
-        }
-
-        String value = getLocalizedEntry(localized, localesToUse, "whatsNew");
+        Set<String> supportedLocales = localized.keySet();
+        setIsLocalized(supportedLocales);
+        String value = getLocalizedEntry(localized, supportedLocales, "whatsNew");
         if (!TextUtils.isEmpty(value)) {
             whatsNew = value;
         }
-        value = getLocalizedEntry(localized, localesToUse, "video");
+
+        value = getLocalizedEntry(localized, supportedLocales, "video");
         if (!TextUtils.isEmpty(value)) {
-            video = value.split("\n", 1)[0];
+            video = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "name");
+        value = getLocalizedEntry(localized, supportedLocales, "name");
         if (!TextUtils.isEmpty(value)) {
-            name = value;
+            name = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "summary");
+        value = getLocalizedEntry(localized, supportedLocales, "summary");
         if (!TextUtils.isEmpty(value)) {
-            summary = value;
+            summary = value.trim();
         }
-        value = getLocalizedEntry(localized, localesToUse, "description");
+        value = getLocalizedEntry(localized, supportedLocales, "description");
         if (!TextUtils.isEmpty(value)) {
             description = formatDescription(value);
         }
-        value = getLocalizedGraphicsEntry(localized, localesToUse, "icon");
+        value = getLocalizedGraphicsEntry(localized, supportedLocales, "icon");
         if (!TextUtils.isEmpty(value)) {
             iconUrl = value;
         }
 
-        featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
-        promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
-        tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");
+        featureGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "featureGraphic");
+        promoGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "promoGraphic");
+        tvBanner = getLocalizedGraphicsEntry(localized, supportedLocales, "tvBanner");
 
-        wearScreenshots = getLocalizedListEntry(localized, localesToUse, "wearScreenshots");
-        phoneScreenshots = getLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
-        sevenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
-        tenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
-        tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
+        wearScreenshots = getLocalizedListEntry(localized, supportedLocales, "wearScreenshots");
+        phoneScreenshots = getLocalizedListEntry(localized, supportedLocales, "phoneScreenshots");
+        sevenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "sevenInchScreenshots");
+        tenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "tenInchScreenshots");
+        tvScreenshots = getLocalizedListEntry(localized, supportedLocales, "tvScreenshots");
     }
 
     /**
-     * Returns the right localized version of this entry, based on an immitation of
-     * the logic that Android/Java uses.  On Android >= 24, this can get the
-     * "Language Priority List", but it doesn't always seem to be properly sorted.
-     * So this method has to kind of fake it by using {@link Locale#getDefault()}
-     * as the first entry, then sorting the rest based on length (e.g. {@code de-AT}
-     * before {@code de}).
+     * Sets the boolean flag {@link #isLocalized} if this app entry has an localized
+     * entry in one of the user's current locales.
      *
-     * @see LocaleList
-     * @see Locale#getDefault()
-     * @see java.util.Locale.LanguageRange
+     * @see org.fdroid.fdroid.views.main.WhatsNewViewBinder#onCreateLoader(int, android.os.Bundle)
      */
-    private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
-                                     Set<String> locales, String key) {
-        try {
-            for (String locale : locales) {
-                if (localized.containsKey(locale)) {
-                    String value = (String) localized.get(locale).get(key);
-                    if (value != null) {
-                        return value;
-                    }
+    private void setIsLocalized(Set<String> supportedLocales) {
+        isLocalized = false;
+        for (int i = 0; i < systemLocaleList.size(); i++) {
+            String language = systemLocaleList.get(i).getLanguage();
+            for (String supportedLocale : supportedLocales) {
+                if (language.equals(supportedLocale.split("-")[0])) {
+                    isLocalized = true;
+                    return;
                 }
             }
-        } catch (ClassCastException e) {
-            Utils.debugLog(TAG, e.getMessage());
+        }
+    }
+
+    /**
+     * Returns the right localized version of this entry, based on an imitation of
+     * the logic that Android uses.
+     *
+     * @see LocaleList
+     */
+    private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
+                                     Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
+        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
+            for (Object entry : localizedLocaleMap.values()) {
+                return (String) entry; // NOPMD
+            }
         }
         return null;
     }
 
     private String getLocalizedGraphicsEntry(Map<String, Map<String, Object>> localized,
-                                             Set<String> locales, String key) {
-        try {
-            for (String locale : locales) {
-                Map<String, Object> entry = localized.get(locale);
-                if (entry != null) {
-                    Object value = entry.get(key);
-                    if (value != null && value.toString().length() > 0) {
-                        return locale + "/" + value;
-                    }
-                }
+                                             Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
+        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
+            for (String locale : localizedLocaleMap.keySet()) {
+                return locale + "/" + localizedLocaleMap.get(locale); // NOPMD
             }
-        } catch (ClassCastException e) {
-            Utils.debugLog(TAG, e.getMessage());
         }
         return null;
     }
 
     private String[] getLocalizedListEntry(Map<String, Map<String, Object>> localized,
-                                           Set<String> locales, String key) {
-        try {
-            for (String locale : locales) {
-                if (localized.containsKey(locale)) {
-                    ArrayList<String> entry = (ArrayList<String>) localized.get(locale).get(key);
-                    if (entry != null && entry.size() > 0) {
-                        String[] result = new String[entry.size()];
-                        int i = 0;
-                        for (String e : entry) {
-                            result[i] = locale + "/" + key + "/" + e;
-                            i++;
+                                           Set<String> supportedLocales, @NonNull String key) {
+        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
+        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
+            for (String locale : localizedLocaleMap.keySet()) {
+                ArrayList<String> entry = (ArrayList<String>) localizedLocaleMap.get(locale);
+                if (entry != null && entry.size() > 0) {
+                    String[] result = new String[entry.size()];
+                    int i = 0;
+                    for (String e : entry) {
+                        result[i] = locale + "/" + key + "/" + e;
+                        i++;
+                    }
+                    return result;
+                }
+            }
+        }
+        return new String[0];
+    }
+
+    /**
+     * Return one matching entry from the {@code localized} block in the app entry
+     * in the index JSON.
+     */
+    private Map<String, Object> getLocalizedLocaleMap(Map<String, Map<String, Object>> localized,
+                                                      Set<String> supportedLocales, @NonNull String key) {
+        String[] localesToUse = getLocalesForKey(localized, supportedLocales, key);
+        if (localesToUse.length > 0) {
+            Locale firstMatch = systemLocaleList.getFirstMatch(localesToUse);
+            if (firstMatch != null) {
+                for (String languageTag : new String[]{toLanguageTag(firstMatch), null}) {
+                    if (languageTag == null) {
+                        languageTag = getFallbackLanguageTag(firstMatch, localesToUse); // NOPMD
+                    }
+                    Map<String, Object> localeEntry = localized.get(languageTag);
+                    if (localeEntry != null && localeEntry.containsKey(key)) {
+                        Object value = localeEntry.get(key);
+                        if (value != null) {
+                            Map<String, Object> localizedLocaleMap = new HashMap<>();
+                            localizedLocaleMap.put(languageTag, value);
+                            return localizedLocaleMap;
                         }
-                        return result;
                     }
                 }
             }
-        } catch (ClassCastException e) {
-            Utils.debugLog(TAG, e.getMessage());
         }
-        return new String[0];
+        return null;
+    }
+
+    /**
+     * Replace with {@link Locale#toLanguageTag()} once
+     * {@link android.os.Build.VERSION_CODES#LOLLIPOP} is {@code minSdkVersion}
+     */
+    private String toLanguageTag(Locale firstMatch) {
+        if (Build.VERSION.SDK_INT < 21) {
+            return firstMatch.toString().replace("_", "-");
+        } else {
+            return firstMatch.toLanguageTag();
+        }
+    }
+
+    /**
+     * Get all locales that have an entry for {@code key}.
+     */
+    private String[] getLocalesForKey(Map<String, Map<String, Object>> localized,
+                                      Set<String> supportedLocales, @NonNull String key) {
+        Set<String> localesToUse = new HashSet<>();
+        for (String locale : supportedLocales) {
+            Map<String, Object> localeEntry = localized.get(locale);
+            if (localeEntry != null && localeEntry.get(key) != null) {
+                localesToUse.add(locale);
+            }
+        }
+        return localesToUse.toArray(new String[0]);
+    }
+
+    /**
+     * Look for the first language-country match for languages with multiple scripts.
+     * Then look for a language-only match, for when there is no exact
+     * {@link Locale} match.  Then try a locale with the same language, but
+     * different country. If there are still no matches, return the {@code en-US}
+     * entry. If all else fails, try to return the first existing English locale.
+     */
+    private String getFallbackLanguageTag(Locale firstMatch, String[] localesToUse) {
+        final String firstMatchLanguageCountry = firstMatch.getLanguage() + "-" + firstMatch.getCountry();
+        for (String languageTag : localesToUse) {
+            if (languageTag.equals(firstMatchLanguageCountry)) {
+                return languageTag;
+            }
+        }
+        final String firstMatchLanguage = firstMatch.getLanguage();
+        String englishLastResort = null;
+        for (String languageTag : localesToUse) {
+            if (languageTag.equals(firstMatchLanguage)) {
+                return languageTag;
+            } else if ("en-US".equals(languageTag)) {
+                englishLastResort = languageTag;
+            }
+        }
+        for (String languageTag : localesToUse) {
+            String languageToUse = languageTag.split("-")[0];
+            if (firstMatchLanguage.equals(languageToUse)) {
+                return languageTag;
+            } else if (englishLastResort == null && "en".equals(languageToUse)) {
+                englishLastResort = languageTag;
+            }
+        }
+        return englishLastResort;
     }
 
     /**

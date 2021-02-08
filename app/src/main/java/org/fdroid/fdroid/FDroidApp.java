@@ -67,6 +67,7 @@ import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
@@ -330,6 +331,7 @@ public class FDroidApp extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
+        App.systemLocaleList = null;
 
         // update the descriptions based on the new language preferences
         SharedPreferences atStartTime = getAtStartTimeSharedPreferences();

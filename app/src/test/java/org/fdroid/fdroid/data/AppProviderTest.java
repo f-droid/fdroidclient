@@ -18,10 +18,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
@@ -278,58 +276,6 @@ public class AppProviderTest extends FDroidProviderTest {
         assertNotNull(otherApp);
         assertEquals("org.fdroid.fdroid", otherApp.packageName);
         assertEquals("F-Droid", otherApp.name);
-    }
-
-    @Test
-    public void testAppSetLocalized() {
-        final String enSummary = "utility for getting information about the APKs that are installed on your device";
-        HashMap<String, Object> en = new HashMap<>();
-        en.put("summary", enSummary);
-
-        final String esSummary = "utilidad para obtener información sobre los APKs instalados en su dispositivo";
-        HashMap<String, Object> es = new HashMap<>();
-        es.put("summary", esSummary);
-
-        final String frSummary = "utilitaire pour obtenir des informations sur les APKs qui sont installés sur vot";
-        HashMap<String, Object> fr = new HashMap<>();
-        fr.put("summary", frSummary);
-
-        final String nlSummary = "hulpprogramma voor het verkrijgen van informatie over de APK die zijn geïnstalle";
-        HashMap<String, Object> nl = new HashMap<>();
-        nl.put("summary", nlSummary);
-
-        App app = new App();
-        Map<String, Map<String, Object>> localized = new HashMap<>();
-        localized.put("es", es);
-        localized.put("fr", fr);
-
-        Locale.setDefault(new Locale("nl", "NL"));
-        app.setLocalized(localized);
-        assertFalse(app.isLocalized);
-
-        localized.put("nl", nl);
-        app.setLocalized(localized);
-        assertTrue(app.isLocalized);
-        assertEquals(nlSummary, app.summary);
-
-        app = new App();
-        localized.clear();
-        localized.put("nl", nl);
-        app.setLocalized(localized);
-        assertTrue(app.isLocalized);
-
-        app = new App();
-        localized.clear();
-        localized.put("en-US", en);
-        app.setLocalized(localized);
-        assertFalse(app.isLocalized);
-
-        Locale.setDefault(new Locale("en", "US"));
-        app = new App();
-        localized.clear();
-        localized.put("en-US", en);
-        app.setLocalized(localized);
-        assertTrue(app.isLocalized);
     }
 
     @Test
