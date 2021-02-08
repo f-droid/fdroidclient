@@ -852,37 +852,6 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case LATEST_TAB:
-                /* Sort by localized first so users see entries in their language,
-                 * then sort by highlighted fields, then sort by whether the app is new,
-                 * then if it has WhatsNew/Changelog entries, then by when it was last
-                 * updated.  Last, it sorts by the date the app was added, putting older
-                 * ones first, to give preference to apps that have been maintained in
-                 * F-Droid longer.
-                 */
-                final String table = getTableName();
-                final String added = table + "." + Cols.ADDED;
-                final String lastUpdated = table + "." + Cols.LAST_UPDATED;
-                sortOrder = table + "." + Cols.IS_LOCALIZED + " DESC"
-                        + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                        + ", " + table + "." + Cols.ICON + " IS NULL ASC"
-                        + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                        + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                        + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                        + "        THEN 1 ELSE 0 END"
-                        + ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
-                        + "        AND date('now','-7 days') < date(" + lastUpdated + ")"
-                        + "        THEN 0 ELSE 1 END"
-                        + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-                        + ", " + lastUpdated + " DESC"
-                        + ", " + added + " ASC";
-
                 // There seems no reason to limit the number of apps on the front page, but it helps
                 // if it loads quickly, as it is the default view shown every time F-Droid is opened.
                 // 200 is an arbitrary number which hopefully gives the user enough to scroll through
