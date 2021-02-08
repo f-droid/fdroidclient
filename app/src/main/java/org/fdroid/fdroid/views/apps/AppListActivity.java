@@ -74,7 +74,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
-        String NAME = Cols.NAME;
+        String WORDS = Cols.NAME;
         String LAST_UPDATED = Cols.LAST_UPDATED;
     }
 
@@ -115,14 +115,14 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onClick(View view) {
                 switch (sortClauseSelected) {
-                    case SortClause.NAME:
+                    case SortClause.WORDS:
                         sortClauseSelected = SortClause.LAST_UPDATED;
                         sortImage.setImageDrawable(lastUpdated);
                         break;
                     case SortClause.LAST_UPDATED:
-                        sortClauseSelected = SortClause.NAME;
+                        sortClauseSelected = SortClause.WORDS;
                         final Drawable alphabetical = DrawableCompat.wrap(
-                                ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort_by_alpha))
+                                ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort))
                                 .mutate();
                         DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
                         sortImage.setImageDrawable(alphabetical);
@@ -253,25 +253,36 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private String getSortOrder() {
-        final String nameCol = AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME;
-        final String summaryCol = AppMetadataTable.NAME + "." + AppMetadataTable.Cols.SUMMARY;
-        final String nameSort = AppMetadataTable.NAME + "." + Cols.NAME + " COLLATE LOCALIZED ";
-        final String lastUpdatedSort = AppMetadataTable.NAME + "." + Cols.LAST_UPDATED + " DESC";
-        String sortOrder;
-        switch (sortClauseSelected) {
-            case SortClause.NAME:
-                sortOrder = nameSort;
-                break;
-            case SortClause.LAST_UPDATED:
-                sortOrder = lastUpdatedSort;
-                break;
-            default:
-                sortOrder = nameSort;
+        final String table = AppMetadataTable.NAME;
+        final String nameCol = table + "." + AppMetadataTable.Cols.NAME;
+        final String summaryCol = table + "." + AppMetadataTable.Cols.SUMMARY;
+        final String packageCol = Cols.Package.PACKAGE_NAME;
+
+        if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+            return table + "." + Cols.LAST_UPDATED + " DESC"
+                    + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
+                    + ", " + table + "." + Cols.ADDED + " ASC"
+                    + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                    + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                    + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                    + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                    + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+                    + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                    + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                    + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                    + "        THEN 1 ELSE 0 END";
         }
 
-        final String[] terms = searchTerms.trim().split("\\s+");
+        // prevent SQL injection https://en.wikipedia.org/wiki/SQL_injection#Escaping
+        final String[] terms = searchTerms.trim().replaceAll("[\\x1a\0\n\r\"';\\\\]+", " ").split("\\s+");
         if (terms.length == 0 || terms[0].equals("")) {
-            return sortOrder;
+            return table + "." + Cols.NAME + " COLLATE LOCALIZED ";
+        }
         }
         StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", nameCol, terms[0]));
         StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", summaryCol, terms[0]));
@@ -281,6 +292,24 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         }
 
         return String.format("case when %s then 1 when %s then 2 else 3 end, %s",
-                titleCase.toString(), summaryCase.toString(), sortOrder);
+                titleCase.toString(), summaryCase.toString(), ""
+                + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
+                + ", " + table + "." + Cols.ADDED + " ASC"
+                + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+                + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                + "        THEN 1 ELSE 0 END"
+                + ", " + table + "." + Cols.LAST_UPDATED + " DESC"
+        );
     }
 }
