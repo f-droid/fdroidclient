@@ -1,3 +1,18 @@
+### 1.12-alpha0 (2021-02-08)
+
+* App description localization now fully respects lists of languages in Android
+  Language Settings
+
+* Latest Tab lists results based on the Language Settings
+
+* Latest Tab now shows results ordered newest first (@TheLastProject @IzzySoft)
+
+* Theme support modernized and tied to the built-in Android themes (@proletarius101)
+
+* Search results greatly improved (@Tvax @gcbrown76)
+
+* Let Android efficiently schedule background cache cleanup operations (@Isira-Seneviratne)
+
 ### 1.11 (2020-12-29)
 
 * Improved linkifying of URLs in app descriptions
