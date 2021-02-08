@@ -20,11 +20,14 @@
 
 package org.fdroid.fdroid.views.apps;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -63,11 +66,15 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
 
+    private static final String SEARCH_TERMS_KEY = "searchTerms";
+    private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
+    private static SharedPreferences savedSearchSettings;
+
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
-    private String sortClauseSelected = SortClause.LAST_UPDATED;
+    private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
     private ImageView sortImage;
@@ -87,7 +94,12 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         keyboardStateMonitor = new Utils.KeyboardStateMonitor(findViewById(R.id.app_list_root));
 
+        savedSearchSettings = getSavedSearchSettings(this);
+        searchTerms = savedSearchSettings.getString(SEARCH_TERMS_KEY, null);
+        sortClauseSelected = savedSearchSettings.getString(SORT_CLAUSE_KEY, SortClause.LAST_UPDATED);
+
         searchInput = (EditText) findViewById(R.id.search);
+        searchInput.setText(searchTerms);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
         searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -110,24 +122,26 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
                 R.drawable.ic_access_time)).mutate();
         DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-        sortImage.setImageDrawable(lastUpdated);
+        final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
+                R.drawable.ic_sort)).mutate();
+        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+        sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (sortClauseSelected) {
                     case SortClause.WORDS:
                         sortClauseSelected = SortClause.LAST_UPDATED;
+                        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
                         sortImage.setImageDrawable(lastUpdated);
                         break;
                     case SortClause.LAST_UPDATED:
                         sortClauseSelected = SortClause.WORDS;
-                        final Drawable alphabetical = DrawableCompat.wrap(
-                                ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort))
-                                .mutate();
-                        DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(alphabetical);
+                        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                        sortImage.setImageDrawable(words);
                         break;
                 }
+                putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
                 appView.scrollToPosition(0);
             }
@@ -250,6 +264,11 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         this.category = category;
         this.searchTerms = searchTerms;
         getSupportLoaderManager().restartLoader(0, null, this);
+        if (TextUtils.isEmpty(searchTerms)) {
+            removeSavedSearchSettings(this, SEARCH_TERMS_KEY);
+        } else {
+            putSavedSearchSettings(this, SEARCH_TERMS_KEY, searchTerms);
+        }
     }
 
     private String getSortOrder() {
@@ -327,5 +346,23 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
                 + "        THEN 1 ELSE 0 END"
                 + ", " + table + "." + Cols.LAST_UPDATED + " DESC";
+    }
+
+    public static void putSavedSearchSettings(Context context, String key, String searchTerms) {
+        if (savedSearchSettings == null) {
+            savedSearchSettings = getSavedSearchSettings(context);
+        }
+        savedSearchSettings.edit().putString(key, searchTerms).apply();
+    }
+
+    public static void removeSavedSearchSettings(Context context, String key) {
+        if (savedSearchSettings == null) {
+            savedSearchSettings = getSavedSearchSettings(context);
+        }
+        savedSearchSettings.edit().remove(key).apply();
+    }
+
+    private static SharedPreferences getSavedSearchSettings(Context context) {
+        return context.getSharedPreferences("saved-search-settings", Context.MODE_PRIVATE);
     }
 }
