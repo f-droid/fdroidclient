@@ -32,7 +32,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,20 +42,21 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 /**
  * Provides scrollable listing of apps for search and category views.
  */
 public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         CategoryTextWatcher.SearchTermsChangedListener {
+
+    public static final String TAG = "AppListActivity";
 
     public static final String EXTRA_CATEGORY
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
@@ -74,9 +74,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
-        String NAME = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME + " asc";
-        String LAST_UPDATED = Schema.AppMetadataTable.NAME + "."
-                + Schema.AppMetadataTable.Cols.LAST_UPDATED + " desc";
+        String NAME = Cols.NAME;
+        String LAST_UPDATED = Cols.LAST_UPDATED;
     }
 
     @Override
@@ -115,15 +114,19 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
-                    sortClauseSelected = SortClause.NAME;
-                    final Drawable alphabetical = DrawableCompat.wrap(
-                            ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort_by_alpha)).mutate();
-                    DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                    sortImage.setImageDrawable(alphabetical);
-                } else {
-                    sortClauseSelected = SortClause.LAST_UPDATED;
-                    sortImage.setImageDrawable(lastUpdated);
+                switch (sortClauseSelected) {
+                    case SortClause.NAME:
+                        sortClauseSelected = SortClause.LAST_UPDATED;
+                        sortImage.setImageDrawable(lastUpdated);
+                        break;
+                    case SortClause.LAST_UPDATED:
+                        sortClauseSelected = SortClause.NAME;
+                        final Drawable alphabetical = DrawableCompat.wrap(
+                                ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort_by_alpha))
+                                .mutate();
+                        DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                        sortImage.setImageDrawable(alphabetical);
+                        break;
                 }
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
                 appView.scrollToPosition(0);
@@ -218,10 +221,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         return new CursorLoader(
                 this,
                 AppProvider.getSearchUri(searchTerms, category),
-                Schema.AppMetadataTable.Cols.ALL,
+                AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                sortClauseSelected
+                getSortOrder()
         );
     }
 
@@ -247,5 +250,37 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         this.category = category;
         this.searchTerms = searchTerms;
         getSupportLoaderManager().restartLoader(0, null, this);
+    }
+
+    private String getSortOrder() {
+        final String nameCol = AppMetadataTable.NAME + "." + AppMetadataTable.Cols.NAME;
+        final String summaryCol = AppMetadataTable.NAME + "." + AppMetadataTable.Cols.SUMMARY;
+        final String nameSort = AppMetadataTable.NAME + "." + Cols.NAME + " COLLATE LOCALIZED ";
+        final String lastUpdatedSort = AppMetadataTable.NAME + "." + Cols.LAST_UPDATED + " DESC";
+        String sortOrder;
+        switch (sortClauseSelected) {
+            case SortClause.NAME:
+                sortOrder = nameSort;
+                break;
+            case SortClause.LAST_UPDATED:
+                sortOrder = lastUpdatedSort;
+                break;
+            default:
+                sortOrder = nameSort;
+        }
+
+        final String[] terms = searchTerms.trim().split("\\s+");
+        if (terms.length == 0 || terms[0].equals("")) {
+            return sortOrder;
+        }
+        StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", nameCol, terms[0]));
+        StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", summaryCol, terms[0]));
+        for (int i = 1; i < terms.length; i++) {
+            titleCase.append(String.format(" and %s like '%%%s%%'", nameCol, terms[i]));
+            summaryCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
+        }
+
+        return String.format("case when %s then 1 when %s then 2 else 3 end, %s",
+                titleCase.toString(), summaryCase.toString(), sortOrder);
     }
 }
