@@ -43,7 +43,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final AppCompatActivity activity;
     private final LoaderManager loaderManager;
     private final DisplayImageOptions displayImageOptions;
-    private static int categoryItemCount = 20;
+    private static final int NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW = 20;
 
     private String currentCategory;
 
@@ -148,7 +148,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         } else {
             return new CursorLoader(
                     activity,
-                    AppProvider.getTopFromCategoryUri(currentCategory, categoryItemCount),
+                    AppProvider.getTopFromCategoryUri(currentCategory, NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW),
                     new String[]{
                             Schema.AppMetadataTable.Cols.NAME,
                             Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
@@ -231,7 +231,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
             int itemPosition = parent.getChildLayoutPosition(view);
             boolean first = itemPosition == 0;
-            boolean end = itemPosition == categoryItemCount - 1;
+            boolean end = itemPosition == NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW - 1;
 
             // Leave this "paddingEnd" local variable here for clarity when converting from
             // left/right to start/end for RTL friendly layout.
