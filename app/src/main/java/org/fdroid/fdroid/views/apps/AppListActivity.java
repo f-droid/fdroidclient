@@ -283,16 +283,33 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         if (terms.length == 0 || terms[0].equals("")) {
             return table + "." + Cols.NAME + " COLLATE LOCALIZED ";
         }
+
+        boolean potentialPackageName = false;
+        StringBuilder packageNameFirstCase = new StringBuilder();
+        if (terms[0].length() > 2 && terms[0].substring(1, terms[0].length() - 1).contains(".")) {
+            potentialPackageName = true;
+            packageNameFirstCase.append(String.format("%s LIKE '%%%s%%' ",
+                    packageCol, terms[0]));
         }
         StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", nameCol, terms[0]));
         StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", summaryCol, terms[0]));
+        StringBuilder packageNameCase = new StringBuilder(String.format("%s like '%%%s%%'", packageCol, terms[0]));
         for (int i = 1; i < terms.length; i++) {
+            if (potentialPackageName) {
+                packageNameCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
+            }
             titleCase.append(String.format(" and %s like '%%%s%%'", nameCol, terms[i]));
             summaryCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
         }
-
-        return String.format("case when %s then 1 when %s then 2 else 3 end, %s",
-                titleCase.toString(), summaryCase.toString(), ""
+        String sortOrder;
+        if (packageNameCase.length() > 0) {
+            sortOrder = String.format("CASE WHEN %s THEN 0 WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
+                    packageNameCase.toString(), titleCase.toString(), summaryCase.toString());
+        } else {
+            sortOrder = String.format("CASE WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
+                    titleCase.toString(), summaryCase.toString());
+        }
+        return sortOrder
                 + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
                 + ", " + table + "." + Cols.ADDED + " ASC"
                 + ", " + table + "." + Cols.NAME + " IS NULL ASC"
@@ -309,7 +326,6 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
                 + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
                 + "        THEN 1 ELSE 0 END"
-                + ", " + table + "." + Cols.LAST_UPDATED + " DESC"
-        );
+                + ", " + table + "." + Cols.LAST_UPDATED + " DESC";
     }
 }
