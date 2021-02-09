@@ -25,8 +25,10 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.categories.AppCardController;
 
 import java.util.Date;
 
@@ -134,7 +136,10 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                         + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
                         + "        THEN 1 ELSE 0 END"
                         + ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
-                        + "        AND date('now','-7 days') < date(" + lastUpdated + ")"
+                        + "        AND date((SELECT " + RepoTable.Cols.LAST_UPDATED + " FROM " + RepoTable.NAME
+                        + "                  WHERE _id=" + table + "." + Cols.REPO_ID
+                        + "                  ),'-" + AppCardController.DAYS_TO_CONSIDER_NEW + " days') "
+                        + "          < date(" + lastUpdated + ")"
                         + "        THEN 0 ELSE 1 END"
                         + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
                         + ", " + lastUpdated + " DESC"

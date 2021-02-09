@@ -1,20 +1,18 @@
 package org.fdroid.fdroid.views.categories;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -33,7 +31,7 @@ public class AppCardController extends RecyclerView.ViewHolder
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
      */
-    private static final int DAYS_TO_CONSIDER_NEW = 14;
+    public static final int DAYS_TO_CONSIDER_NEW = 14;
 
     @NonNull
     private final ImageView icon;
