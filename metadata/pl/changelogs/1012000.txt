@@ -1,0 +1,12 @@
+* Lokalizacja opisu aplikacji jest w pełni zgodna z listami języków w Androidzie.
+  Ustawienia języka
+
+* Karta Najnowsze wyświetla listę wyników w oparciu o ustawienia językowe
+
+* Karta Najnowsze pokazuje wyniki uporządkowane w kolejności według najnowszych (@TheLastProject @IzzySoft)
+
+* Zmodernizowana obsługa motywów (@proletarius101)
+
+* Poprawione wyniki wyszukiwania (@Tvax @gcbrown76)
+
+* Zezwalanie na efektywne zaplanowanie operacji czyszczenia pamięci podręcznej w tle (@Isira-Seneviratne)
