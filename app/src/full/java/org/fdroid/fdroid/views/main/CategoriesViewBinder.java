@@ -3,28 +3,28 @@ package org.fdroid.fdroid.views.main;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 import org.fdroid.fdroid.views.categories.CategoryController;
-import org.fdroid.fdroid.panic.HidingManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +37,7 @@ import java.util.List;
  * view with relevant info about each.
  */
 class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
+    public static final String TAG = "CategoriesViewBinder";
 
     private static final int LOADER_ID = 429820532;
 
@@ -92,10 +93,11 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         activity.getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id != LOADER_ID) {
-            return null;
+            throw new IllegalArgumentException("id != LOADER_ID");
         }
 
         return new CursorLoader(
@@ -110,7 +112,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /**
      * Reads all categories from the cursor and stores them in memory to provide to the {@link CategoryAdapter}.
-     *
+     * <p>
      * It does this so it is easier to deal with localized/unlocalized categories without having
      * to store the localized version in the database. It is not expected that the list of categories
      * will grow so large as to make this a performance concern. If it does in the future, the
