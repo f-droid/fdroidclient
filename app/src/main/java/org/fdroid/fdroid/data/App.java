@@ -735,9 +735,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             } else {
                 iconsDir = Utils.FALLBACK_ICONS_DIR;
             }
-            return repo.address + iconsDir + iconFromApk;
+            return repo.getFileUrl(iconsDir, iconFromApk);
         }
-        return repo.address + "/" + packageName + "/" + iconUrl;
+        return repo.getFileUrl(packageName, iconUrl);
     }
 
     public String getFeatureGraphicUrl(Context context) {
@@ -745,7 +745,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return null;
         }
         Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.address + "/" + packageName + "/" + featureGraphic;
+        return repo.getFileUrl(packageName, featureGraphic);
     }
 
     public String getPromoGraphic(Context context) {
@@ -753,7 +753,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return null;
         }
         Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.address + "/" + packageName + "/" + promoGraphic;
+        return repo.getFileUrl(packageName, promoGraphic);
     }
 
     public String getTvBanner(Context context) {
@@ -761,7 +761,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return null;
         }
         Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.address + "/" + packageName + "/" + tvBanner;
+        return repo.getFileUrl(packageName, tvBanner);
     }
 
     public String[] getAllScreenshots(Context context) {
@@ -785,7 +785,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         String[] result = new String[list.size()];
         int i = 0;
         for (String url : list) {
-            result[i] = repo.address + "/" + packageName + "/" + url;
+            result[i] = repo.getFileUrl(packageName, url);
             i++;
         }
         return result;

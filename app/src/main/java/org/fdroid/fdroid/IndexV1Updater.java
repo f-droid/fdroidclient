@@ -24,7 +24,7 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -97,15 +97,8 @@ public class IndexV1Updater extends IndexUpdater {
     }
 
     @Override
-    /**
-     * Storage Access Framework URLs have a crazy encoded path within the URL path.
-     */
     protected String getIndexUrl(@NonNull Repo repo) {
-        if (repo.address.startsWith("content://")) {
-            return repo.address + "%2F" + SIGNED_FILE_NAME;
-        } else {
-            return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
-        }
+        return repo.getFileUrl(SIGNED_FILE_NAME);
     }
 
     /**
