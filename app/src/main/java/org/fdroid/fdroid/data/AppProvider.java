@@ -506,6 +506,9 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_APKS);
     }
 
+    /**
+     * Get all {@link App} entries in the given {@code category}
+     */
     public static Uri getCategoryUri(String category) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_CATEGORY)
@@ -519,6 +522,13 @@ public class AppProvider extends FDroidProvider {
                 .build();
     }
 
+    /**
+     * Get the top {@link App} entries in the given {@code category} to display
+     * in the overview screen in {@link org.fdroid.fdroid.views.categories.CategoryController}.
+     * The number of entries is defined by {@code limit}.
+     *
+     * @see org.fdroid.fdroid.views.categories.CategoryController#onCreateLoader(int, android.os.Bundle)
+     */
     public static Uri getTopFromCategoryUri(String category, int limit) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_TOP_FROM_CATEGORY)
@@ -842,7 +852,6 @@ public class AppProvider extends FDroidProvider {
             case TOP_FROM_CATEGORY:
                 selection = selection.add(queryCategory(pathSegments.get(2)));
                 limit = Integer.parseInt(pathSegments.get(1));
-                sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 includeSwap = false;
                 break;
 
@@ -881,6 +890,12 @@ public class AppProvider extends FDroidProvider {
     /**
      * Helper method used by both the genuine {@link AppProvider} and the temporary version used
      * by the repo updater ({@link TempAppProvider}).
+     * <p>
+     * Query the database table specified by {@code uri}, which is usually (always?)
+     * {@link AppMetadataTable} with specified {@code selection} and {@code sortOrder}.
+     * <b>WARNING:</b> This contains a hack if {@code sortOrder} is equal to {@link Cols#NAME},
+     * i.e. not a complete table.column name, but just that single column name.  In that case,
+     * a {@code sortOrder} is built out into a {@code sortOrder} that includes localized sorting.
      */
     protected Cursor runQuery(Uri uri, AppQuerySelection selection, String[] projection, boolean includeSwap, String sortOrder, int limit) {
         if (!includeSwap) {

@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.categories;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,18 +7,19 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.core.content.ContextCompat;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.RecyclerView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
@@ -27,6 +27,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
@@ -133,9 +134,24 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         return Color.HSVToColor(hsv);
     }
 
+    /**
+     * Return either the total apps in the category, or the entries to display
+     * for a category, depending on the value of {@code id}.  This uses a sort
+     * similar to the one in {@link org.fdroid.fdroid.views.main.LatestViewBinder#onCreateLoader(int, Bundle)}.
+     * The difference is that this does not treat "new" app any differently.
+     *
+     * @see AppProvider#getCategoryUri(String)
+     * @see AppProvider#getTopFromCategoryUri(String, int)
+     * @see AppProvider#query(android.net.Uri, String[], String, String[], String)
+     * @see AppProvider#TOP_FROM_CATEGORY
+     * @see org.fdroid.fdroid.views.main.LatestViewBinder#onCreateLoader(int, Bundle)
+     */
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        final String table = Schema.AppMetadataTable.NAME;
+        final String added = table + "." + Cols.ADDED;
+        final String lastUpdated = table + "." + Cols.LAST_UPDATED;
         if (id == currentCategory.hashCode() + 1) {
             return new CursorLoader(
                     activity,
@@ -159,7 +175,22 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                     },
                     null,
                     null,
-                    Schema.AppMetadataTable.Cols.NAME
+                    table + "." + Cols.IS_LOCALIZED + " DESC"
+                            + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                            + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                            + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                            + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                            + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                            + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                            + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                            + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                            + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                            + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                            + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                            + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                            + "        THEN 1 ELSE 0 END"
+                            + ", " + lastUpdated + " DESC"
+                            + ", " + added + " ASC"
             );
         }
     }
