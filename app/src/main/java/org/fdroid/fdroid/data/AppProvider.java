@@ -983,6 +983,7 @@ public class AppProvider extends FDroidProvider {
                 categoryValues.put(CatJoinTable.Cols.CATEGORY_ID, categoryId);
                 db().insert(getCatJoinTableName(), null, categoryValues);
             }
+            getContext().getContentResolver().notifyChange(CategoryProvider.getContentUri(), null);
         }
     }
 

@@ -17,6 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CategoryProvider extends FDroidProvider {
+    public static final String TAG = "CategoryProvider";
 
     public static final class Helper {
         private Helper() {
@@ -26,7 +27,7 @@ public class CategoryProvider extends FDroidProvider {
          * During repo updates, each app needs to know the ID of each category it belongs to.
          * This results in lots of database lookups, usually at least one for each app, sometimes more.
          * To improve performance, this caches the association between categories and their database IDs.
-         *
+         * <p>
          * It can stay around for the entire F-Droid process, even across multiple repo updates, as we
          * don't actually remove data from the categories table.
          */
