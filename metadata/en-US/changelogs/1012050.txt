@@ -1,0 +1,11 @@
+* App description localization fully respects lists of languages in Android Language Settings
+
+* Latest Tab shows apps based on the Language Settings, ordered newest first (@TheLastProject @IzzySoft)
+
+* Theme support modernized and tied to built-in Android themes (@proletarius101)
+
+* Search results greatly improved (@Tvax @gcbrown76)
+
+* Let Android efficiently schedule background cache cleanup operations (@Isira-Seneviratne)
+
+* Overhaul repo URL parsing for reliable repo adding (@projectgus)

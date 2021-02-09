@@ -13,6 +13,8 @@
 
 * Let Android efficiently schedule background cache cleanup operations (@Isira-Seneviratne)
 
+* Overhaul repo URL parsing for reliable repo adding (@projectgus)
+
 ### 1.11 (2020-12-29)
 
 * Improved linkifying of URLs in app descriptions
