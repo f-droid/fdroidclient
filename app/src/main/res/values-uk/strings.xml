@@ -37,7 +37,7 @@
     <string name="update_interval">Інтервал автооновлення</string>
     <string name="notify_on">Показувати сповіщення, коли є доступні оновлення</string>
     <string name="system_installer">Привілейоване розширення</string>
-    <string name="system_installer_on">Використовувати привілейоване розширення для встановлення, оновлення та видалення пакетів</string>
+    <string name="system_installer_on">Використовувати привілейоване розширення для встановлення, оновлення та вилучення пакунків</string>
     <string name="theme_dark">Темна</string>
     <string name="theme_light">Світла</string>
     <string name="interval_4h">Перевіряти оновлення кожні 4 години</string>
@@ -71,17 +71,17 @@
     <string name="proxy">Проксі</string>
     <string name="download_error">Помилка завантаження!</string>
     <string name="uninstall_confirm">Видалити цю програму?</string>
-    <string name="local_repo_name">Назва вашого локального сховища</string>
-    <string name="local_repo_https_on">Використовувати шифроване HTTPS:// з\'єднання для локального сховища</string>
+    <string name="local_repo_name">Назва вашого локального репозиторію</string>
+    <string name="local_repo_https_on">Використовувати шифроване HTTPS:// з\'єднання для локального репозиторію</string>
     <string name="overwrite">Перезаписати</string>
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
     <string name="antinonfreedeplist">Цей застосунок залежить від інших невільних застосунків</string>
     <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
-    <string name="local_repo">Локальне сховище даних</string>
-    <string name="deleting_repo">Видалення поточного сховища даних…</string>
-    <string name="adding_apks_format">Додавання %s до сховища даних…</string>
+    <string name="local_repo">Локальний репозиторій</string>
+    <string name="deleting_repo">Видалення поточного репозиторію…</string>
+    <string name="adding_apks_format">Додавання %s до репозиторію…</string>
     <string name="next">Далі</string>
     <string name="enable_proxy_title">Увімкнути HTTP-проксі</string>
     <string name="enable_proxy_summary">Налаштувати HTTP проксі для всіх мережних запитів</string>
@@ -136,7 +136,7 @@
     <string name="enable_nfc_send">Ввімкнути надсилання через NFC…</string>
     <string name="repo_add_fingerprint">Відбиток (необов\'язковий)</string>
     <string name="antiadslist">Цей застосунок містить рекламу</string>
-    <string name="copying_icons">Копіювання піктограм застосунку до сховища даних…</string>
+    <string name="copying_icons">Копіювання піктограм застосунку до репозиторію…</string>
     <string name="icon">Піктограма</string>
     <string name="no_permissions">Немає дозволів</string>
     <string name="requires_features">Необхідно: %1$s</string>
@@ -152,11 +152,11 @@
     <string name="install_confirm">потребує доступу до</string>
     <string name="perm_costs_money">Це може вам коштувати грошей</string>
     <string name="unstable_updates_summary">Пропонувати оновлення до нестабільних версій</string>
-    <string name="local_repo_name_summary">Ваша локальне сховище пропонується під назвою: %s</string>
+    <string name="local_repo_name_summary">Ваш локальний репозиторій пропонується під назвою: %s</string>
     <string name="app_incompatible">Несумісний</string>
     <string name="bluetooth_activity_not_found">Жодного методу надсилання через Bluetooth не знайдено, виберіть один з них!</string>
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
-    <string name="malformed_repo_uri">Нехтування неправильним URI сховища даних: %s</string>
+    <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
     <string name="antinonfreenetlist">Цей застосунок просуває невільні мережні послуги</string>
     <string name="antiupstreamnonfreelist">Джерельний код випуску не є повністю вільним</string>
@@ -165,20 +165,20 @@
     <string name="show_incompat_versions_on">Показувати версії застосунків, які несумісні з цим пристроєм</string>
     <string name="local_repo_running">F-Droid готовий до обміну</string>
     <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
-    <string name="linking_apks">Включення APK-файлів до сховища даних…</string>
-    <string name="all_other_repos_fine">Всі інші сховища не містять помилок.</string>
+    <string name="linking_apks">Включення APK-файлів до репозиторію…</string>
+    <string name="all_other_repos_fine">Всі інші репозиторії не містять помилок.</string>
     <string name="no_handler_app">Ви не маєте застосунку для обробки %s.</string>
     <string name="repo_num_apps">Кількість застосунків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список застосунків не може бути перевірено. Ви маєте бути обачними з застосунками, які завантажуєте з непідписаних джерел.</string>
-    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Увімкніть його, аби побачити застосунки, які тут знаходяться.</string>
+    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Увімкніть його, щоб побачити розміщені в ньому застосунки.</string>
     <string name="repo_confirm_delete_body">Видалення репозиторію означає, що застосунки з нього не будуть доступними.
 \n
 \nПримітка: Всі раніше встановленні застосунки залишаться на вашому пристрої.</string>
     <string name="repo_disabled_notification">%1$s вимкнено.
 \n
 \nВам необхідно ввімкнути репозиторій, щоб встановлювати застосунки з нього.</string>
-    <string name="not_on_same_wifi">Ваш пристрій не в спільній мережі Wi-Fi з локальним сховищем, яке ви щойно додали! Спробуйте з\'єднатися з цією мережею: %s</string>
+    <string name="not_on_same_wifi">Ваш пристрій не в спільній мережі Wi-Fi з локальним репозиторієм, який ви щойно додали! Спробуйте з\'єднатися з цією мережею: %s</string>
     <string name="category_Development">Розробка</string>
     <string name="swap_nfc_title">Натисніть для обміну</string>
     <string name="swap">Обмін застосунками</string>
@@ -218,7 +218,7 @@
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
     <string name="status_download_unknown_size">Завантаження\n%2$s з\n%1$s</string>
-    <string name="repo_searching_address">Пошук пакунків репозиторію у
+    <string name="repo_searching_address">Пошук пакунків репозиторію в
 \n%1$s</string>
     <string name="more">Докладніше</string>
     <string name="less">Згорнути</string>
@@ -444,7 +444,7 @@
     <string name="repo_exists_add_fingerprint">%1$s вже встановлено, ця дія додасть нові відомості про ключ.</string>
     <string name="repo_exists_enable">%1$s вже налаштовано, підтвердьте, що бажаєте увімкнути знову.</string>
     <string name="repo_exists_and_enabled">%1$s вже налаштовано й увімкнено.</string>
-    <string name="repo_delete_to_overwrite">Спершу видаліть %1$s, аби додати його з конфліктним ключем.</string>
+    <string name="repo_delete_to_overwrite">Спершу видаліть %1$s, щоб додати його з конфліктним ключем.</string>
     <string name="share_repository">Поділитися репозиторієм</string>
     <string name="use_bluetooth">Використовувати Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Точку доступу Wi-Fi увімкнено</string>
@@ -453,8 +453,8 @@
     <string name="send_install_history">Надіслати історію встановлення</string>
     <string name="send_history_csv">%s історію встановлень як CSV file</string>
     <string name="send_version_and_uuid_summary">Включити версію цього застосунку та випадковий унікальний ID. Зміни набудуть чинності після перезапуску.</string>
-    <string name="allow_push_requests">Дозволяти сховищам даних встановлювати/видаляти застосунки</string>
-    <string name="allow_push_requests_summary">Метадані сховищ можуть містити push-запити на встановлення та видалення застосунків</string>
+    <string name="allow_push_requests">Дозволяти репозиторіям встановлювати/видаляти застосунки</string>
+    <string name="allow_push_requests_summary">Метадані репозиторіїв можуть містити push-запити на встановлення та видалення застосунків</string>
     <string name="send_installed_apps">Поширити встановлені застосунки</string>
     <string name="send_installed_apps_csv">Застосунки, встановлені через F-Droid, як файл CSV</string>
     <string name="updates_disabled_by_settings">Усі оновлення вимкнено у налаштуваннях мобільного інтернету/WiFi</string>
@@ -478,9 +478,9 @@
     <string name="menu_downgrade">Понизити версію</string>
     <string name="scan_removable_storage_title">Сканувати знімне сховище</string>
     <string name="scan_removable_storage_toast">Сканування %s…</string>
-    <string name="scan_removable_storage_summary">Шукати сховища пакетів на знімних носіях, таких як SD-карти та USB-накопичувачі</string>
+    <string name="scan_removable_storage_summary">Шукати репозиторії пакунків на знімних носіях, таких як SD-карти та USB-накопичувачі</string>
     <string name="app_repository">Репозиторій: %1$s</string>
-    <string name="nearby_splash__read_external_storage">Перевірити наявність сховищ та дзеркал на носії SD.</string>
+    <string name="nearby_splash__read_external_storage">Перевірити наявність репозиторіїв та дзеркал на носії SD.</string>
     <string name="nearby_splash__request_permission">Спробуйте це</string>
     <string name="not_visible_nearby">Поруч не ввімкнено</string>
     <string name="not_visible_nearby_description">Перед спробою обміну між пристроями поблизу, зробіть свій пристрій видимим.</string>
@@ -496,8 +496,8 @@
     <string name="panic_will_be_wiped">Буде видалено зі всіма даними</string>
     <string name="panic_apps_to_uninstall">Програми, які потрібно видалити та їх дані</string>
     <string name="panic_add_apps_to_uninstall">Додайте програми, які потрібно видалити разом з даними</string>
-    <string name="panic_reset_repos_title">Скинути сховища</string>
-    <string name="panic_reset_repos_summary">Примусове повернення сховища до початкового стану</string>
+    <string name="panic_reset_repos_title">Скинути репозиторії</string>
+    <string name="panic_reset_repos_summary">Примусове повернення репозиторію до початкового стану</string>
     <string name="swap_visible_hotspot">Видно через точку доступу</string>
     <string name="swap_blank_wifi_ssid">(пусто)</string>
     <string name="swap_hidden_wifi_ssid">(приховано)</string>
@@ -508,7 +508,7 @@
     <string name="disabled">Вимкнено</string>
     <string name="swap_error_cannot_start_bluetooth">Не вдається запустити Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">\"Поруч\" закрито, оскільки простоювало.</string>
-    <string name="nearby_splash__document_tree">Перевірити наявність сховищ та дзеркал на USB-OTG.</string>
+    <string name="nearby_splash__document_tree">Перевірити наявність репозиторіїв та дзеркал на USB-OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Показує сповіщення про оновлення застосунку та репозиторію.</string>
     <string name="notification_channel_updates_title">Оновлення</string>
