@@ -88,7 +88,7 @@
     <string name="app_name">F-Droid</string>
     <string name="installIncompatible">Aplikaĵo nekongruas kun via aparato, ĉu instali ĝin malgraŭ tio?</string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
-    <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
+    <string name="update_interval">Ofteco de aŭtomataj ĝisdatigoj</string>
     <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Malinstalu la malnovan version kaj reprovu. (Estu konscia, ke malinstalo forigos ĉiujn internajn datumojn konservitajn de la aplikaĵo.)</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>

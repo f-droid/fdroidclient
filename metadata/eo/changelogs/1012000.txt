@@ -1,0 +1,11 @@
+* tradukitaj priskriboj de aplikaĵoj nun kongruas kun la listo de agorditaj lingvoj en Android
+
+* rezultoj en la langeto “novaj” bazitaj sur lingvaj agordoj
+
+* langeto “novaj” montras rezultojn ordigitajn de la plej novaj (@TheLastProject @IzzySoft)
+
+* plibonigita subteno por etosoj kaj kongrua kun originalaj Android-etosoj (@proletarius101)
+
+* pli akurataj serĉ‑rezultoj (@Tvax @gcbrown76)
+
+* ebligi al Android efike plani fonajn agojn de forviŝi kaŝmemoron (@Isira-Seneviratne)
