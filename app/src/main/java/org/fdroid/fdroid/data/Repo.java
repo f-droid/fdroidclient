@@ -34,7 +34,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -270,11 +269,10 @@ public class Repo extends ValueObject {
         return tempName;
     }
 
-    public String getFileUrl(String... pathElements)
-    {
+    public String getFileUrl(String... pathElements) {
         /* Each String in pathElements might contain a /, should keep these as path elements */
         List<String> elements = new ArrayList();
-        for (String element: pathElements) {
+        for (String element : pathElements) {
             for (String elementPart : element.split("/")) {
                 elements.add(elementPart);
             }
@@ -291,20 +289,19 @@ public class Repo extends ValueObject {
          */
         if (address.startsWith("content://")) {
             StringBuilder result = new StringBuilder(address);
-            for (String element: elements) {
+            for (String element : elements) {
                 result.append(TreeUriDownloader.ESCAPED_SLASH);
                 result.append(element);
             }
             return result.toString();
         } else { // Normal URL
             Uri.Builder result = Uri.parse(address).buildUpon();
-            for (String element: elements) {
-                result.appendPath((element));
+            for (String element : elements) {
+                result.appendPath(element);
             }
             return result.build().toString();
         }
     }
-
 
     private static int toInt(Integer value) {
         if (value == null) {

@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2018-2021  Senecto Limited
+ * Copyright (C) 2021 Angus Gratton
+ * Copyright (C) 2018 Senecto Limited
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,35 +16,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
 package org.fdroid.fdroid;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-
-import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.mock.MockApk;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
-import static org.fdroid.fdroid.data.Schema.*;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 public class RepoUrlsTest extends FDroidProviderTest {
-    private static final String TAG = "RepoUrlsTest";
+    public static final String TAG = "RepoUrlsTest";
 
-    /** Private class describing a repository URL we're going to test, and
+    /**
+     * Private class describing a repository URL we're going to test, and
      * the file pattern for any files within that URL.
      */
     private static class TestRepo {
@@ -52,8 +44,7 @@ public class RepoUrlsTest extends FDroidProviderTest {
         // String format pattern for generating file URLs, should contain a single %s for the filename
         public String fileUrlPattern;
 
-        public TestRepo(String repoUrl, String fileUrlPattern)
-        {
+        TestRepo(String repoUrl, String fileUrlPattern) {
             this.repoUrl = repoUrl;
             this.fileUrlPattern = fileUrlPattern;
         }
@@ -61,7 +52,7 @@ public class RepoUrlsTest extends FDroidProviderTest {
 
     private static final String APK_NAME = "test-v1.apk";
 
-    private static final TestRepo REPOS[] = {
+    private static final TestRepo[] REPOS = {
             new TestRepo(
                     "https://microg.org/fdroid/repo",
                     "https://microg.org/fdroid/repo/%s"),
@@ -100,20 +91,21 @@ public class RepoUrlsTest extends FDroidProviderTest {
         Preferences.setupForTests(context);
     }
 
-    interface getFileFromRepo {
+    interface GetFileFromRepo {
         String get(TestRepo tr);
     }
 
-    /** Utility test function - go through the list of test repos,
-     *  using the useOfRepo interface to instantiate a repo from the URL
-     *  and return a file of some kind (Apk, index, etc.) and check that
-     *  it matches the test repo's expected URL format.
-     * @param fileName File that 'useOfRepo' will return in the repo, when called
+    /**
+     * Utility test function - go through the list of test repos,
+     * using the useOfRepo interface to instantiate a repo from the URL
+     * and return a file of some kind (Apk, index, etc.) and check that
+     * it matches the test repo's expected URL format.
+     *
+     * @param fileName  File that 'useOfRepo' will return in the repo, when called
      * @param useOfRepo Instance of the function that uses the repo to build a file URL
      */
-    private void testReposWithFile(String fileName, getFileFromRepo useOfRepo)
-    {
-        for(TestRepo tr: REPOS) {
+    private void testReposWithFile(String fileName, GetFileFromRepo useOfRepo) {
+        for (TestRepo tr : REPOS) {
             String expectedUrl = String.format(tr.fileUrlPattern, fileName);
             System.out.println("Testing URL " + expectedUrl);
             String actualUrl = useOfRepo.get(tr);
@@ -122,9 +114,8 @@ public class RepoUrlsTest extends FDroidProviderTest {
     }
 
     @Test
-    public void testIndexUrls()
-    {
-        testReposWithFile(IndexUpdater.SIGNED_FILE_NAME, new getFileFromRepo() {
+    public void testIndexUrls() {
+        testReposWithFile(IndexUpdater.SIGNED_FILE_NAME, new GetFileFromRepo() {
             @Override
             public String get(TestRepo tr) {
                 Repo repo = new Repo();
@@ -136,9 +127,8 @@ public class RepoUrlsTest extends FDroidProviderTest {
     }
 
     @Test
-    public void testIndexV1Urls()
-    {
-        testReposWithFile(IndexV1Updater.SIGNED_FILE_NAME, new getFileFromRepo() {
+    public void testIndexV1Urls() {
+        testReposWithFile(IndexV1Updater.SIGNED_FILE_NAME, new GetFileFromRepo() {
             @Override
             public String get(TestRepo tr) {
                 Repo repo = new Repo();
@@ -150,9 +140,8 @@ public class RepoUrlsTest extends FDroidProviderTest {
     }
 
     @Test
-    public void testApkUrls()
-    {
-        testReposWithFile(APK_NAME, new getFileFromRepo() {
+    public void testApkUrls() {
+        testReposWithFile(APK_NAME, new GetFileFromRepo() {
             @Override
             public String get(TestRepo tr) {
                 Apk apk = new MockApk(APK_NAME, 1, tr.repoUrl, APK_NAME);
