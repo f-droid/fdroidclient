@@ -1318,6 +1318,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "Removing all index tables, they will be recreated next time F-Droid updates.");
 
         Preferences.get().resetLastUpdateCheck();
+        CategoryProvider.Helper.clearCategoryIdCache();
 
         db.beginTransaction();
         try {

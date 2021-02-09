@@ -20,11 +20,14 @@
 
 package org.fdroid.fdroid.views.apps;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -32,7 +35,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,14 +45,13 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -58,25 +59,30 @@ import org.fdroid.fdroid.data.Schema;
 public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         CategoryTextWatcher.SearchTermsChangedListener {
 
+    public static final String TAG = "AppListActivity";
+
     public static final String EXTRA_CATEGORY
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
 
+    private static final String SEARCH_TERMS_KEY = "searchTerms";
+    private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
+    private static SharedPreferences savedSearchSettings;
+
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
-    private String sortClauseSelected = SortClause.LAST_UPDATED;
+    private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
     private ImageView sortImage;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
-        String NAME = Schema.AppMetadataTable.NAME + "." + Schema.AppMetadataTable.Cols.NAME + " asc";
-        String LAST_UPDATED = Schema.AppMetadataTable.NAME + "."
-                + Schema.AppMetadataTable.Cols.LAST_UPDATED + " desc";
+        String WORDS = Cols.NAME;
+        String LAST_UPDATED = Cols.LAST_UPDATED;
     }
 
     @Override
@@ -88,7 +94,12 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         keyboardStateMonitor = new Utils.KeyboardStateMonitor(findViewById(R.id.app_list_root));
 
+        savedSearchSettings = getSavedSearchSettings(this);
+        searchTerms = savedSearchSettings.getString(SEARCH_TERMS_KEY, null);
+        sortClauseSelected = savedSearchSettings.getString(SORT_CLAUSE_KEY, SortClause.LAST_UPDATED);
+
         searchInput = (EditText) findViewById(R.id.search);
+        searchInput.setText(searchTerms);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
         searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -111,20 +122,26 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
                 R.drawable.ic_access_time)).mutate();
         DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-        sortImage.setImageDrawable(lastUpdated);
+        final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
+                R.drawable.ic_sort)).mutate();
+        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+        sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sortClauseSelected.equalsIgnoreCase(SortClause.LAST_UPDATED)) {
-                    sortClauseSelected = SortClause.NAME;
-                    final Drawable alphabetical = DrawableCompat.wrap(
-                            ContextCompat.getDrawable(AppListActivity.this, R.drawable.ic_sort_by_alpha)).mutate();
-                    DrawableCompat.setTint(alphabetical, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                    sortImage.setImageDrawable(alphabetical);
-                } else {
-                    sortClauseSelected = SortClause.LAST_UPDATED;
-                    sortImage.setImageDrawable(lastUpdated);
+                switch (sortClauseSelected) {
+                    case SortClause.WORDS:
+                        sortClauseSelected = SortClause.LAST_UPDATED;
+                        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                        sortImage.setImageDrawable(lastUpdated);
+                        break;
+                    case SortClause.LAST_UPDATED:
+                        sortClauseSelected = SortClause.WORDS;
+                        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                        sortImage.setImageDrawable(words);
+                        break;
                 }
+                putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
                 getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
                 appView.scrollToPosition(0);
             }
@@ -218,10 +235,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         return new CursorLoader(
                 this,
                 AppProvider.getSearchUri(searchTerms, category),
-                Schema.AppMetadataTable.Cols.ALL,
+                AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                sortClauseSelected
+                getSortOrder()
         );
     }
 
@@ -247,5 +264,105 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         this.category = category;
         this.searchTerms = searchTerms;
         getSupportLoaderManager().restartLoader(0, null, this);
+        if (TextUtils.isEmpty(searchTerms)) {
+            removeSavedSearchSettings(this, SEARCH_TERMS_KEY);
+        } else {
+            putSavedSearchSettings(this, SEARCH_TERMS_KEY, searchTerms);
+        }
+    }
+
+    private String getSortOrder() {
+        final String table = AppMetadataTable.NAME;
+        final String nameCol = table + "." + AppMetadataTable.Cols.NAME;
+        final String summaryCol = table + "." + AppMetadataTable.Cols.SUMMARY;
+        final String packageCol = Cols.Package.PACKAGE_NAME;
+
+        if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+            return table + "." + Cols.LAST_UPDATED + " DESC"
+                    + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
+                    + ", " + table + "." + Cols.ADDED + " ASC"
+                    + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                    + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                    + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                    + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                    + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+                    + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                    + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                    + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                    + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                    + "        THEN 1 ELSE 0 END";
+        }
+
+        // prevent SQL injection https://en.wikipedia.org/wiki/SQL_injection#Escaping
+        final String[] terms = searchTerms.trim().replaceAll("[\\x1a\0\n\r\"';\\\\]+", " ").split("\\s+");
+        if (terms.length == 0 || terms[0].equals("")) {
+            return table + "." + Cols.NAME + " COLLATE LOCALIZED ";
+        }
+
+        boolean potentialPackageName = false;
+        StringBuilder packageNameFirstCase = new StringBuilder();
+        if (terms[0].length() > 2 && terms[0].substring(1, terms[0].length() - 1).contains(".")) {
+            potentialPackageName = true;
+            packageNameFirstCase.append(String.format("%s LIKE '%%%s%%' ",
+                    packageCol, terms[0]));
+        }
+        StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", nameCol, terms[0]));
+        StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", summaryCol, terms[0]));
+        StringBuilder packageNameCase = new StringBuilder(String.format("%s like '%%%s%%'", packageCol, terms[0]));
+        for (int i = 1; i < terms.length; i++) {
+            if (potentialPackageName) {
+                packageNameCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
+            }
+            titleCase.append(String.format(" and %s like '%%%s%%'", nameCol, terms[i]));
+            summaryCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
+        }
+        String sortOrder;
+        if (packageNameCase.length() > 0) {
+            sortOrder = String.format("CASE WHEN %s THEN 0 WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
+                    packageNameCase.toString(), titleCase.toString(), summaryCase.toString());
+        } else {
+            sortOrder = String.format("CASE WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
+                    titleCase.toString(), summaryCase.toString());
+        }
+        return sortOrder
+                + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
+                + ", " + table + "." + Cols.ADDED + " ASC"
+                + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+                + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                + "        THEN 1 ELSE 0 END"
+                + ", " + table + "." + Cols.LAST_UPDATED + " DESC";
+    }
+
+    public static void putSavedSearchSettings(Context context, String key, String searchTerms) {
+        if (savedSearchSettings == null) {
+            savedSearchSettings = getSavedSearchSettings(context);
+        }
+        savedSearchSettings.edit().putString(key, searchTerms).apply();
+    }
+
+    public static void removeSavedSearchSettings(Context context, String key) {
+        if (savedSearchSettings == null) {
+            savedSearchSettings = getSavedSearchSettings(context);
+        }
+        savedSearchSettings.edit().remove(key).apply();
+    }
+
+    private static SharedPreferences getSavedSearchSettings(Context context) {
+        return context.getSharedPreferences("saved-search-settings", Context.MODE_PRIVATE);
     }
 }

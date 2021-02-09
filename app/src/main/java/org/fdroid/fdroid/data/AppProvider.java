@@ -506,6 +506,9 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_APKS);
     }
 
+    /**
+     * Get all {@link App} entries in the given {@code category}
+     */
     public static Uri getCategoryUri(String category) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_CATEGORY)
@@ -519,6 +522,13 @@ public class AppProvider extends FDroidProvider {
                 .build();
     }
 
+    /**
+     * Get the top {@link App} entries in the given {@code category} to display
+     * in the overview screen in {@link org.fdroid.fdroid.views.categories.CategoryController}.
+     * The number of entries is defined by {@code limit}.
+     *
+     * @see org.fdroid.fdroid.views.categories.CategoryController#onCreateLoader(int, android.os.Bundle)
+     */
     public static Uri getTopFromCategoryUri(String category, int limit) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_TOP_FROM_CATEGORY)
@@ -842,7 +852,6 @@ public class AppProvider extends FDroidProvider {
             case TOP_FROM_CATEGORY:
                 selection = selection.add(queryCategory(pathSegments.get(2)));
                 limit = Integer.parseInt(pathSegments.get(1));
-                sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 includeSwap = false;
                 break;
 
@@ -852,37 +861,6 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case LATEST_TAB:
-                /* Sort by localized first so users see entries in their language,
-                 * then sort by highlighted fields, then sort by whether the app is new,
-                 * then if it has WhatsNew/Changelog entries, then by when it was last
-                 * updated.  Last, it sorts by the date the app was added, putting older
-                 * ones first, to give preference to apps that have been maintained in
-                 * F-Droid longer.
-                 */
-                final String table = getTableName();
-                final String added = table + "." + Cols.ADDED;
-                final String lastUpdated = table + "." + Cols.LAST_UPDATED;
-                sortOrder = table + "." + Cols.IS_LOCALIZED + " DESC"
-                        + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                        + ", " + table + "." + Cols.ICON + " IS NULL ASC"
-                        + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                        + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                        + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                        + "        THEN 1 ELSE 0 END"
-                        + ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
-                        + "        AND date('now','-7 days') < date(" + lastUpdated + ")"
-                        + "        THEN 0 ELSE 1 END"
-                        + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-                        + ", " + lastUpdated + " DESC"
-                        + ", " + added + " ASC";
-
                 // There seems no reason to limit the number of apps on the front page, but it helps
                 // if it loads quickly, as it is the default view shown every time F-Droid is opened.
                 // 200 is an arbitrary number which hopefully gives the user enough to scroll through
@@ -912,6 +890,12 @@ public class AppProvider extends FDroidProvider {
     /**
      * Helper method used by both the genuine {@link AppProvider} and the temporary version used
      * by the repo updater ({@link TempAppProvider}).
+     * <p>
+     * Query the database table specified by {@code uri}, which is usually (always?)
+     * {@link AppMetadataTable} with specified {@code selection} and {@code sortOrder}.
+     * <b>WARNING:</b> This contains a hack if {@code sortOrder} is equal to {@link Cols#NAME},
+     * i.e. not a complete table.column name, but just that single column name.  In that case,
+     * a {@code sortOrder} is built out into a {@code sortOrder} that includes localized sorting.
      */
     protected Cursor runQuery(Uri uri, AppQuerySelection selection, String[] projection, boolean includeSwap, String sortOrder, int limit) {
         if (!includeSwap) {
@@ -1014,6 +998,7 @@ public class AppProvider extends FDroidProvider {
                 categoryValues.put(CatJoinTable.Cols.CATEGORY_ID, categoryId);
                 db().insert(getCatJoinTableName(), null, categoryValues);
             }
+            getContext().getContentResolver().notifyChange(CategoryProvider.getContentUri(), null);
         }
     }
 

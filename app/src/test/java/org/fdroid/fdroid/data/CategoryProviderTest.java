@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import org.fdroid.fdroid.TestUtils;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Before;
@@ -163,6 +164,11 @@ public class CategoryProviderTest extends FDroidProviderTest {
         AppProviderTest.assertContainsOnlyIds(apps, expectedPackages);
     }
 
+    /**
+     * This does not include {@code sortOrder} since that is defined in
+     * {@link org.fdroid.fdroid.views.categories.CategoryController#onCreateLoader(int, android.os.Bundle)}
+     * so these results are sorted by the default sort.
+     */
     @Test
     public void topAppsFromCategory() {
         insertAppWithCategory("com.dog", "Dog", "Animal", new Date(2017, 2, 6));
@@ -178,13 +184,13 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana", "Banana", "Vegetable", new Date(2015, 1, 1));
         insertAppWithCategory("com.tomato", "Tomato", "Vegetable", new Date(2017, 4, 4));
 
-        assertArrayEquals(getTopAppsFromCategory("Animal", 3), new String[]{"com.dog", "com.cat", "com.bird"});
-        assertArrayEquals(getTopAppsFromCategory("Animal", 2), new String[]{"com.dog", "com.cat"});
-        assertArrayEquals(getTopAppsFromCategory("Animal", 1), new String[]{"com.dog"});
+        assertArrayEquals(new String[]{"com.bird", "com.cat", "com.dog"}, getTopAppsFromCategory("Animal", 3));
+        assertArrayEquals(new String[]{"com.bird", "com.cat"}, getTopAppsFromCategory("Animal", 2));
+        assertArrayEquals(new String[]{"com.bird"}, getTopAppsFromCategory("Animal", 1));
 
-        assertArrayEquals(getTopAppsFromCategory("Mineral", 2), new String[]{"com.rock", "com.stone"});
+        assertArrayEquals(new String[]{"com.boulder", "com.rock"}, getTopAppsFromCategory("Mineral", 2));
 
-        assertArrayEquals(getTopAppsFromCategory("Vegetable", 10), new String[]{"com.tomato", "com.banana"});
+        assertArrayEquals(new String[]{"com.banana", "com.tomato"}, getTopAppsFromCategory("Vegetable", 10));
     }
 
     public String[] getTopAppsFromCategory(String category, int numToGet) {
@@ -275,7 +281,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
     private void insertAppWithCategory(String id, String name, String categories, Date lastUpdated, long repoId) {
         ContentValues values = new ContentValues(2);
         values.put(Cols.ForWriting.Categories.CATEGORIES, categories);
-        values.put(Cols.LAST_UPDATED, lastUpdated.getTime() / 1000);
+        values.put(Cols.LAST_UPDATED, Utils.DATE_FORMAT.format(lastUpdated));
         AppProviderTest.insertApp(contentResolver, context, id, name, values, repoId);
     }
 

@@ -24,8 +24,11 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.categories.AppCardController;
 
 import java.util.Date;
 
@@ -94,6 +97,13 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     /**
+     * Sort by localized first so users see entries in their language,
+     * then sort by highlighted fields, then sort by whether the app is new,
+     * then if it has WhatsNew/Changelog entries, then by when it was last
+     * updated.  Last, it sorts by the date the app was added, putting older
+     * ones first, to give preference to apps that have been maintained in
+     * F-Droid longer.
+     *
      * @see AppProvider#getLatestTabUri()
      */
     @NonNull
@@ -102,14 +112,38 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         if (id != LOADER_ID) {
             return null;
         }
+        final String table = AppMetadataTable.NAME;
+        final String added = table + "." + Cols.ADDED;
+        final String lastUpdated = table + "." + Cols.LAST_UPDATED;
         return new CursorLoader(
                 activity,
                 AppProvider.getLatestTabUri(),
                 AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                null
-        );
+                table + "." + Cols.IS_LOCALIZED + " DESC"
+                        + ", " + table + "." + Cols.NAME + " IS NULL ASC"
+                        + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                        + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+                        + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+                        + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+                        + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+                        + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+                        + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+                        + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+                        + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+                        + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+                        + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+                        + "        THEN 1 ELSE 0 END"
+                        + ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
+                        + "        AND date((SELECT " + RepoTable.Cols.LAST_UPDATED + " FROM " + RepoTable.NAME
+                        + "                  WHERE _id=" + table + "." + Cols.REPO_ID
+                        + "                  ),'-" + AppCardController.DAYS_TO_CONSIDER_NEW + " days') "
+                        + "          < date(" + lastUpdated + ")"
+                        + "        THEN 0 ELSE 1 END"
+                        + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+                        + ", " + lastUpdated + " DESC"
+                        + ", " + added + " ASC");
     }
 
     @Override

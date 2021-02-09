@@ -101,7 +101,7 @@ public final class Utils {
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
-    private static final SimpleDateFormat DATE_FORMAT =
+    public static final SimpleDateFormat DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     private static final SimpleDateFormat TIME_FORMAT =
