@@ -3,7 +3,7 @@ aplikací pro Android. Klient F-Droid usnadní listování, instalaci, a uchová
 
 Spojuje se s repozitáři kompatibilními s F-Droid. Výchozí repozitář je hostován na f-droid.org, jenž obsahuje pouze důvěryhodný libre software.
 
-Sám Android je otevřený v tom smyslu, že jste svobodní instalovat APK odkud chcete, ale existují dobré důvody  k používání F-Droid jako správce aplikací libre softwaru:
+Sám Android je otevřený v tom smyslu, že jste svobodní instalovat APK odkud chcete, ale existují dobré důvody k používání F-Droid jako správce aplikací libre softwaru:
 
 * Obdržíte oznámení o aktualizaci, jakmile je dostupná
 * Volitelně stáhne a instaluje automaticky

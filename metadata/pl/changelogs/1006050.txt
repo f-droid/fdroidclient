@@ -1,6 +1,9 @@
 * Karta Ostatnie pokazuje teraz aplikacje, które zawierają opisy, tłumaczenia, zrzuty ekranu 
+
 * Automatyczne pobieranie z serwerów lustrzanych w celu przyspieszenia pobierania i zmniejszenia obciążenia f-droid.org 
+
 * Możliwość wyłączenia mirrorów za pomocą nowych przełączników w RepoDetails (#1696) 
+
 * Wydajniejsze buforowanie pobierania (na repozytorium; na różnych serwerach internetowych) #1708) 
-* Naprawiono instalacje wymagające nieznanych źródeł z uprzywilejowanym rozszerzeniem 
-* i inne
+
+* Naprawiono instalacje wymagające nieznanych źródeł z uprzywilejowanym rozszerzeniem

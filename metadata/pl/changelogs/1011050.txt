@@ -1,0 +1,7 @@
+* Ulepszone łączenie adresów URL w opisach aplikacji
+
+* Ulepszona obsługa SDCards i USG-OTG w pobliżu
+
+* Zmodernizowany kod i przełączony PNG na wektory (dzięki @isira-seneviratne!)
+
+* Rozpoznaje dłuższe adresy repo w celu wspierania serwerów GitCDN/RawGit/etc

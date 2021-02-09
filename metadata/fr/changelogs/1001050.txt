@@ -1,4 +1,7 @@
 * Gestion des miroirs officiels pour tous les dépôt, avec une sélection automatique en fonction de la disponibilité
+
 * Polissage de l'interface utilisateur, amélioration de la stabilité et correction de bogues
-* Nouvelles préférences de confidentialité : Prévention des captures d'écrans ; sortie en cas de panique
-* Nouvelles langues: Coréen (ko) and Vietnamien (vi)
+
+* Nouvelles préférences de confidentialité : Prévention des captures d'écrans ; sortie en cas de panique
+
+* Nouvelles langues : Coréen (ko) and Vietnamien (vi)
