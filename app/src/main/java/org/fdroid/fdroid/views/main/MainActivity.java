@@ -37,7 +37,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,11 +44,9 @@ import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.BuildConfig;
@@ -305,6 +302,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     }
 
+    /**
+     * Since any app could send this {@link Intent}, and the search terms are
+     * fed into a SQL query, the data must be strictly sanitized to avoid
+     * SQL injection attacks.
+     */
     private void handleSearchOrAppViewIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
@@ -391,6 +393,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         }
 
         if (!TextUtils.isEmpty(packageName)) {
+            // sanitize packageName to be a valid Java packageName and prevent exploits
+            packageName = packageName.replaceAll("[^A-Za-z\\d_.]", "");
             Utils.debugLog(TAG, "FDroid launched via app link for '" + packageName + "'");
             Intent intentToInvoke = new Intent(this, AppDetailsActivity.class);
             intentToInvoke.putExtra(AppDetailsActivity.EXTRA_APPID, packageName);
@@ -403,11 +407,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     /**
+     * These strings might end up in a SQL query, so strip all non-alpha-num
+     */
+    static String sanitizeSearchTerms(String query) {
+        return query.replaceAll("[^\\p{L}\\d_ -]", " ");
+    }
+
+    /**
      * Initiates the {@link AppListActivity} with the relevant search terms passed in via the query arg.
      */
     private void performSearch(String query) {
         Intent searchIntent = new Intent(this, AppListActivity.class);
-        searchIntent.putExtra(AppListActivity.EXTRA_SEARCH_TERMS, query);
+        searchIntent.putExtra(AppListActivity.EXTRA_SEARCH_TERMS, sanitizeSearchTerms(query));
         startActivity(searchIntent);
     }
 
