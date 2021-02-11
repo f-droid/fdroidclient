@@ -114,8 +114,8 @@ connected 22 default armeabi-v7a:
 connected 26 google_apis x86:
   <<: *kvm-template
   only:
-    - branches@fdroid/fdroidclient
-    - branches@eighthave/fdroidclient
+    variables:
+      - $RUN_KVM_JOBS
 
 deploy_nightly:
   extends: .base
