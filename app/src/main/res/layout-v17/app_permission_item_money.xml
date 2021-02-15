@@ -20,6 +20,7 @@
 
 <view class="org.fdroid.fdroid.privileged.views.AppSecurityPermissions$PermissionItemView"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -58,7 +59,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/perm_money_label"
             android:scaleType="fitCenter"
-            android:tint="@color/perms_costs_money"
+            app:tint="@color/perms_costs_money"
             android:tintMode="src_in"
             android:src="@drawable/ic_coins_s" />
         <TextView
