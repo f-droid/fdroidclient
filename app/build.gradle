@@ -21,7 +21,7 @@ def basicApplicationId = "org.fdroid.basic"
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         versionCode 1012000
