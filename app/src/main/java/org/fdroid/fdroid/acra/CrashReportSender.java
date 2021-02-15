@@ -30,7 +30,7 @@ public class CrashReportSender implements ReportSender {
     }
 
     private String[] buildSubjectBody(Context context, CrashReportData errorContent) {
-        ImmutableSet<ReportField> fields = this.config.getReportFields();
+        ImmutableSet<ReportField> fields = this.config.reportContent();
         if (fields.isEmpty()) {
             return new String[]{"No ACRA Report Fields found."};
         }
@@ -42,7 +42,7 @@ public class CrashReportSender implements ReportSender {
             builder.append(errorContent.get(field));
             builder.append('\n');
             if ("STACK_TRACE".equals(field.toString())) {
-                String stackTrace = errorContent.get(field);
+                String stackTrace = errorContent.getProperty(field);
                 if (stackTrace != null) {
                     subject = context.getPackageName() + ": "
                             + stackTrace.substring(0, stackTrace.indexOf('\n'));
