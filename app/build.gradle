@@ -28,7 +28,7 @@ android {
         versionName getVersionName()
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        minSdkVersion 14
+        minSdkVersion 22
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         /*
