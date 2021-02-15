@@ -115,7 +115,6 @@
         <module name="FinalClass" />
 
         <module name="ArrayTypeStyle" />
-        <module name="ArrayTrailingComma" />
         <module name="UpperEll" />
 
         <module name="StringLiteralEquality" />
