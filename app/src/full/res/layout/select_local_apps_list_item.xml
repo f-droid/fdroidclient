@@ -24,29 +24,24 @@
         android:id="@android:id/icon"
         android:layout_width="48dip"
         android:layout_height="48dip"
-        android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
         android:layout_marginTop="6dip"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         tools:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-        android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
-        android:layout_alignParentRight="true"
+    <ImageView
+        android:id="@+id/checked"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_marginEnd="?android:attr/listPreferredItemPaddingStart"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_add_circle_outline" />
 
     <TwoLineListItem
-        android:layout_toRightOf="@android:id/icon"
         android:layout_toEndOf="@android:id/icon"
-        android:layout_toLeftOf="@id/checkbox"
-        android:layout_toStartOf="@id/checkbox"
+        android:layout_toStartOf="@id/checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:mode="twoLine" >
@@ -55,7 +50,6 @@
             android:id="@+id/application_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
             android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
             android:layout_marginTop="6dip"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -66,7 +60,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/application_label"
-            android:layout_alignLeft="@+id/application_label"
             android:layout_below="@+id/application_label"
             android:textAppearance="?android:attr/textAppearanceSmall"
             tools:text="Application Manager" />
