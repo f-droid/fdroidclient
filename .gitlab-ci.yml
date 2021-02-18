@@ -66,6 +66,9 @@ errorprone:
 # connectedCheck to test all the build flavors
 .connected-template: &connected-template
   script:
+    - export maxmem=$(expr $(sed -n 's,^MemAvailable:[^0-9]*\([0-9][0-9]*\)[^0-9]*$,\1,p' /proc/meminfo) / 1024 / 2 / 1024 \* 1024)
+    - printf '\norg.gradle.jvmargs=-Xmx${maxmem}m -XX:MaxPermSize=${maxmem}m\norg.gradle.daemon=false\norg.gradle.parallel=false\n'
+          >> local.properties
     - ./gradlew assembleFullDebug
     - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
     - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
