@@ -50,7 +50,6 @@ public class AppProviderTest extends FDroidProviderTest {
     @Before
     public void setup() {
         defaultLocale = Locale.getDefault();
-        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
         Preferences.setupForTests(context);
     }
 

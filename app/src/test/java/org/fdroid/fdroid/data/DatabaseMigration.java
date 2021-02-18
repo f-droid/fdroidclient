@@ -7,16 +7,16 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.android.controller.ContentProviderController;
 import org.robolectric.annotation.Config;
 
 @Config(application = Application.class)
@@ -26,11 +26,18 @@ public class DatabaseMigration {
     protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
+    protected ContentProviderController contentProviderController;
+
     @Before
     public final void setupBase() {
         contentResolver = ApplicationProvider.getApplicationContext().getContentResolver();
         context = TestUtils.createContextWithContentResolver(contentResolver);
-        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
+        contentProviderController = TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
+    }
+
+    @After
+    public void teardown() {
+        contentProviderController.shutdown();
     }
 
     @Test

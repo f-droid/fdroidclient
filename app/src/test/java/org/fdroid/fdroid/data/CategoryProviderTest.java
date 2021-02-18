@@ -5,11 +5,9 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.mock.MockRepo;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -27,11 +25,6 @@ import static org.junit.Assert.assertEquals;
 @Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class CategoryProviderTest extends FDroidProviderTest {
-
-    @Before
-    public void setup() {
-        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
-    }
 
     /**
      * Different repositories can specify a different set of categories for the same package.

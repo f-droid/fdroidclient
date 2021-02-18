@@ -18,6 +18,7 @@ import org.fdroid.fdroid.data.RepoProviderTest;
 import org.fdroid.fdroid.data.Schema;
 import org.mockito.AdditionalAnswers;
 import org.robolectric.Robolectric;
+import org.robolectric.android.controller.ContentProviderController;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -118,10 +119,11 @@ public class TestUtils {
         return RepoProviderTest.insertRepo(context, repoUrl, "", "", "");
     }
 
-    public static <T extends ContentProvider> void registerContentProvider(String authority, Class<T> providerClass) {
+    public static <T extends ContentProvider> ContentProviderController<T> registerContentProvider(
+            String authority, Class<T> providerClass) {
         ProviderInfo info = new ProviderInfo();
         info.authority = authority;
-        Robolectric.buildContentProvider(providerClass).create(info);
+        return Robolectric.buildContentProvider(providerClass).create(info);
     }
 
     public static File copyResourceToTempFile(String resourceName) {
