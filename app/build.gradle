@@ -100,6 +100,9 @@ android {
                     showStandardStreams = true
                 }
                 systemProperty 'robolectric.dependency.repo.url', 'https://repo1.maven.org/maven2'
+
+                // hack to avoid memory leak crashes
+                forkEvery = 100
             }
         }
     }
