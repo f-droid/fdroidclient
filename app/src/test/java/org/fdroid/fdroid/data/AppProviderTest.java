@@ -12,6 +12,7 @@ import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -63,6 +64,7 @@ public class AppProviderTest extends FDroidProviderTest {
      * the {@link AppProvider} used to stumble across this bug when asking for installed apps,
      * and the device had over 1000 apps installed.
      */
+    @Ignore("takes a long time and covers a rare situation (over 1000 apps installed)")
     @Test
     public void testMaxSqliteParams() {
         insertApp("com.example.app1", "App 1");
