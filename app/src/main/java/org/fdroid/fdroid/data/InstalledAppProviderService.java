@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
@@ -186,7 +187,9 @@ public class InstalledAppProviderService extends JobIntentService {
     public static void compareToPackageManager(final Context context) {
         Utils.debugLog(TAG, "Comparing package manager to our installed app cache.");
 
-        if (PrivilegedInstaller.isExtensionInstalledCorrectly(context) == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
+        if (Build.VERSION.SDK_INT >= 29 &&
+                PrivilegedInstaller.isExtensionInstalledCorrectly(context) ==
+                        PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
             ServiceConnection mServiceConnection = new ServiceConnection() {
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
