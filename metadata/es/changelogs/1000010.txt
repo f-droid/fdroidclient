@@ -1,0 +1,11 @@
+¡F-Droid es 1.0!
+Esta actualización incluyen muchos cambios:
+* Flujo de trabajo revisado para las actualizaciónes
+* Resúmenes y descripciones de aplicaciones traducibles
+* La sección "Qué hay de nuevo"
+* Capturas de pantalla y características
+* Soporte para la instalación de archivos multimedia
+* Mejora de la protección contra el rastreo
+* Actualizaciones completas de fondo con la Extensión Privilegiada
+* Se destacan las donaciones a los desarrolladores
+* Actualizaciones de índice más rápidas

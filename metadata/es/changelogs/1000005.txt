@@ -1,0 +1,3 @@
+* Se arregló el error que impide que las traducciones aparezcan en Android >= 7.0
+
+* Se arregló el bloqueo de la actualización de la base de datos desde 1.0-alpha3 → 1.0-alpha4 #1181

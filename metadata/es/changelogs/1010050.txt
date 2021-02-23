@@ -1,6 +1,7 @@
-* utilizar canales de notificación para un control detallado (@ Isira-Seneviratne)
-* La última pestaña mostrará mejores resultados en dispositivos que no estén en inglés
-* actualizaciones de las bibliotecas centrales (Jackson, androidx, gradle, etc.)
-* soporte de marca blanca polaca
+* utiliza canales de notificación para el control detallado (@Isira-Seneviratne)
+* Selección de idioma mejorada con múltiples configuraciones regionales (@spacecowboy / @bubu)
+* La pestaña más reciente mostrará mejores resultados en dispositivos que no sean ingleses
+* actualizaciones a las bibliotecas principales (Jackson, androidx, gradle, etc.)
+* soporte de pulido de etiquetado blanco
 
-¡Gracias nuevos colaboradores! @spacecowboy @projectgus @glennmen @ Isira-Seneviratne
+Gracias nuevos colaboradores! @spacecowboy @projectgus @glennmen @Isira-Seneviratne
