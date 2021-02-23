@@ -206,3 +206,5 @@ sast:
   artifacts:
     paths:
       - gl-sast-report.json
+  before_script:
+    - cp app/src/main/AndroidManifest.xml .
