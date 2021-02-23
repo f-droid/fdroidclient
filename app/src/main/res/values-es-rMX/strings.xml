@@ -220,4 +220,5 @@
     <string name="send_version_and_uuid_summary">Incluir la versión de esta aplicación y un ID único y aleatorio cuando se descarga. Requiere reinicio.</string>
     <string name="send_version_and_uuid">Envíar versión y UUID a los servidores</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
+    <string name="no_such_app">No se ha encontrado dicha aplicación.</string>
 </resources>
