@@ -1,0 +1,12 @@
+* Omsetjingar av appskildringar støttar no fullstendig språklista i Android-innstillingane
+  Språkinnstillingar
+
+* «Nyaste»-fana viser resultat basert på språkinnstillingane
+
+* «Nyaste»-fana viser sist oppdaterte appar først (@TheLastProject @IzzySoft)
+
+* Tema-støtta er modernisert og knytt til dei innebygde Android-temaa (@proletarius101)
+
+* Søkjeresultata er sterkt forbetra (@Tvax @gcbrown76)
+
+* Lèt Android effektivt planleggja oppryddings­operasjonar i bakgrunnen (@Isira-Seneviratne)

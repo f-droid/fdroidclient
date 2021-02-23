@@ -491,4 +491,11 @@
     <string name="swap_error_cannot_start_bluetooth">Kan ikkje starta Bluetooth</string>
     <string name="swap_toast_closing_nearby_after_timeout">«I nærleiken» vart slått av på grunn av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Søk på USB OTG-einingar for pakkebrønnar og speglar.</string>
+    <string name="notification_channel_updates_description">Vis varslingar for app- og pakkebrønn­oppdateringar.</string>
+    <string name="notification_channel_updates_title">Oppdateringar</string>
+    <string name="notification_channel_swaps_description">Vis varslingar for P2P-apputveksling.</string>
+    <string name="notification_channel_swaps_title">Utvekslingar</string>
+    <string name="notification_channel_installs_description">Vis varslingar for appinstallering.</string>
+    <string name="notification_channel_installs_title">Installeringar</string>
+    <string name="menu_opencollective">Open Collective</string>
 </resources>

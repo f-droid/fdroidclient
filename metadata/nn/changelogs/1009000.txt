@@ -1,0 +1,5 @@
+* Fjerna «Android App Link»-støtte, som ikkje kan verka med F-Droid og som førte til DNS-lekkasjar
+* Arkivpakkebrønnar har no lågare prioritet enn hovud­pakkebrønnar (høgare på oppsett­skjermen) – rettar problem med leiting etter ikon, skjermbilete og annan informasjon i arkivet i staden for i sjølve pakkebrønnen
+* Ikkje skjer av delar av funksjonsbilete (takk til @ByteHamster!)
+* Tilpassa navigasjonslinja til mørkt tema (takk til @MatthieuB!)
+* Fjerna utdatert kode (takk til @Isira-Seneviratne!)
