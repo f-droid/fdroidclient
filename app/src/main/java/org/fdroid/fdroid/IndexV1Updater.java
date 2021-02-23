@@ -25,7 +25,6 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.net.Uri;
 import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
