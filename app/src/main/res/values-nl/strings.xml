@@ -248,7 +248,7 @@
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
     <string name="empty_search_available_app_list">Er zijn geen overeenkomende apps beschikbaar.</string>
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
-    <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app gestopt is. Wilt u de details over deze fout e-mailen om zo het probleem in de toekomst te helpen voorkomen\?</string>
+    <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt. Wilt u de details over deze fout e-mailen om zo het probleem in de toekomst te helpen voorkomen\?</string>
     <string name="crash_dialog_comment_prompt">Je kan extra informatie en commentaar hier toevoegen:</string>
     <string name="repo_provider">Bron: %s</string>
     <string name="useTor">Gebruik Tor</string>
@@ -287,7 +287,7 @@
     <string name="updates__tts__download_app">Downloaden</string>
     <string name="update_all">Update alles</string>
     <string name="updates__hide_updateable_apps">Verberg apps</string>
-    <string name="updates__show_updateable_apps">Toon apps</string>
+    <string name="updates__show_updateable_apps">Geef apps weer</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Download updates voor %1$d app.</item>
         <item quantity="other">Download updates voor %1$d apps.</item>
