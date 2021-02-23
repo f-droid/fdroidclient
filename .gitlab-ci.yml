@@ -200,3 +200,9 @@ deploy_nightly:
     # build the APKs!
     - ./gradlew assembleDebug
     - fdroid nightly -v
+
+# Explicitly allow downloading the report
+sast:
+  artifacts:
+    paths:
+      - gl-sast-report.json
