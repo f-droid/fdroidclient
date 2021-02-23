@@ -4,7 +4,7 @@
     <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase">
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
 
     <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase">
@@ -23,7 +23,7 @@
     </style>
 
     <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase">
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
 
 </resources>

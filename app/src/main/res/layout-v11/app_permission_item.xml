@@ -24,7 +24,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/perm_icon"
@@ -40,7 +40,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="?android:attr/dividerVertical" />
+        android:background="?attr/dividerVertical" />
 
     <TextView
         android:id="@+id/perm_name"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -17,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_nearby_share"
+        app:srcCompat="@drawable/ic_nearby_share"
         android:layout_marginRight="10dp"
         android:layout_marginEnd="10dp"
         />

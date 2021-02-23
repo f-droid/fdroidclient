@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -84,7 +84,7 @@
         <ImageView android:id="@+id/expand_arrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_expand_more" />
+            app:srcCompat="@drawable/ic_expand_more" />
     </LinearLayout>
 
     <LinearLayout android:id="@+id/expanded_layout"

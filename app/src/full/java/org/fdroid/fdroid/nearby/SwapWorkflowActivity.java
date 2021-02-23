@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.annotation.TargetApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -45,6 +44,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -273,7 +273,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         CharSequence title = getString(titleResId);
         next.setTitle(title);
         next.setTitleCondensed(title);
-        next.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(next, MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -302,8 +302,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         SearchView searchView = new SearchView(this);
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        searchMenuItem.setActionView(searchView);
-        searchMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setActionView(searchMenuItem, searchView);
+        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 

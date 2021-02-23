@@ -42,7 +42,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_repo_app_default"
+                    app:srcCompat="@drawable/ic_repo_app_default"
                     android:transitionName="@string/transition_app_item_icon" />
 
                 <!-- Name, Author (optional), Updated date -->
@@ -97,7 +97,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/app__tts__cancel_download"
-                    android:src="@android:drawable/ic_menu_close_clear_cancel" />
+                    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
                 <TextView
                     android:id="@+id/progress_label"

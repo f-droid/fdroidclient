@@ -3,7 +3,7 @@
 
     <style name="AppThemeNight" parent="AppBaseThemeNight">
         <!-- set all card views a bit darker than default dark theme -->
-        <item name="android:colorBackgroundFloating">@color/fdroid_night</item>
+        <item name="colorBackgroundFloating">@color/fdroid_night</item>
         <item name="appDetailsCardBackground">@color/fdroid_night</item>
     </style>
 

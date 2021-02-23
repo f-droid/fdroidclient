@@ -49,7 +49,7 @@
                 android:id="@+id/image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/no_updates_bg"
+                app:srcCompat="@drawable/no_updates_bg"
                 android:importantForAccessibility="no"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

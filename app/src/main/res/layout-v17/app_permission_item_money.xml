@@ -18,13 +18,14 @@
   Defines the layout of a single permission item that costs money.
 -->
 
-<view class="org.fdroid.fdroid.privileged.views.AppSecurityPermissions$PermissionItemView"
+<view xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="org.fdroid.fdroid.privileged.views.AppSecurityPermissions$PermissionItemView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/perm_icon"
@@ -37,7 +38,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="?android:attr/dividerVertical" />
+        android:background="?attr/dividerVertical" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -61,7 +62,7 @@
             android:scaleType="fitCenter"
             app:tint="@color/perms_costs_money"
             android:tintMode="src_in"
-            android:src="@drawable/ic_coins_s" />
+            app:srcCompat="@drawable/ic_coins_s" />
         <TextView
             android:id="@+id/perm_money_label"
             android:textAppearance="?android:attr/textAppearanceSmall"

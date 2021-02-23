@@ -9,14 +9,14 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">18dp</item>
         <item name="android:paddingRight">18dp</item>
-        <item name="android:textAllCaps">true</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase"/>
 
     <style name="DetailsPrimaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">#ffffff</item>
-        <item name="android:background">@drawable/button_primary_background_selector</item>
+        <item name="background">@drawable/button_primary_background_selector</item>
     </style>
 
     <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
@@ -29,7 +29,7 @@
 
     <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">@color/fdroid_blue</item>
-        <item name="android:background">@drawable/button_secondary_background_selector</item>
+        <item name="background">@drawable/button_secondary_background_selector</item>
     </style>
 
     <style name="DetailsSecondaryButtonStyleSmall" parent="DetailsSecondaryButtonStyle">
@@ -45,7 +45,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/fdroid_blue</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="DetailsAppTitleStyle" parent="TextAppearance.AppCompat.Title">

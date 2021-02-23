@@ -14,13 +14,13 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            android:layout_marginStart="?attr/listPreferredItemPaddingStart"
             android:layout_gravity="center_vertical">
 
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/circle"
+                app:srcCompat="@drawable/circle"
                 app:tint="@color/swap_light_grey_icon"/>
 
         <ImageView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            android:layout_marginStart="?attr/listPreferredItemPaddingStart"
             android:textSize="20sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="Nexus 4"/>

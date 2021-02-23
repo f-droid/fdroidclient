@@ -77,7 +77,7 @@ public class SettingsView extends FrameLayout {
         currentTransaction.remove(existingFragment);
         currentTransaction.commitAllowingStateLoss();
         currentTransaction = null;
-        activity.getFragmentManager().executePendingTransactions();
+        activity.getSupportFragmentManager().executePendingTransactions();
     }
 
 }
