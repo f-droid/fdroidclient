@@ -306,4 +306,8 @@
     <string name="cache_downloaded">Eǧǧ isnasen n tuffirt</string>
     <string name="installIncompatible">Asnas aramsaḍan d ibenk-inek·inem, sebdded akken yebɣu yili\?</string>
     <string name="SignatureMismatch">Lqem amaynut yettwazmel s tsarut yemgaraden ɣef lqem aqbur. Akken ad tesbeddeḍ lqem amaynut, yessefk ad tekkseḍ lqem aqbur. Ttxil xdem aya tɛerḍeḍ tikkelt-nniḍen. (Ẓer dakken Tukksa ad tesfeḍ akk isefka igensanen yettwaskelsen s usnas)</string>
+    <string name="notification_channel_installs_title">Isebdaden</string>
+    <string name="swap_stopping">Aseḥbes…</string>
+    <string name="swap_starting">Asenker…</string>
+    <string name="swap_blank_wifi_ssid">(ilem)</string>
 </resources>
