@@ -214,7 +214,7 @@
     <string name="menu_video">Տեսանյութ</string>
     <string name="update_all">Բոլորը թարմացնել</string>
     <string name="app_size">Չափս. %1$s</string>
-    <string name="app__install_downloaded_update">թարմացնել</string>
+    <string name="app__install_downloaded_update">Թարմացնել</string>
     <string name="app_details_donate_prompt">%1$s ստեղծվել է %2$s֊ի կողմից։ Սուրճ հյուրասիրիր նրանց։</string>
     <string name="over_wifi">Wi-Fi֊ով</string>
     <string name="details_last_updated_today">Թարմացվել է այսօր</string>
@@ -246,4 +246,25 @@
     <string name="swap_scanning_for_peers">Փնտրել մարդկանց շրջակայքում…</string>
     <string name="install_history">Տեղադրման պատմություն</string>
     <string name="hide_all_notifications">Թաքցնել բոլոր ծանուցումները</string>
+    <plurals name="notification_summary_installed">
+        <item quantity="one">%1$d ափփ տեղադրվեց</item>
+        <item quantity="other">%1$d ափփեր տեղադրվեցին</item>
+    </plurals>
+    <string name="app_recommended_version_installed">Տարբերակ %1$s (Ցանկալի)</string>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Թարմացվել է %1$d տարի առաջ</item>
+        <item quantity="other">Թարմացվել է %1$d տարի առաջ</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Թարմացվել է %1$d ամիս առաջ</item>
+        <item quantity="other">Թարմացվել է %1$d ամիս առաջ</item>
+    </plurals>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">Թարմացվել է %1$d շաբաթ առաջ</item>
+        <item quantity="other">Թարմացվել է %1$d շաբաթ առաջ</item>
+    </plurals>
+    <plurals name="details_last_update_days">
+        <item quantity="one">Թարմացվել է %1$d օր առաջ</item>
+        <item quantity="other">Թարմացվել է %1$d օր առաջ</item>
+    </plurals>
 </resources>
