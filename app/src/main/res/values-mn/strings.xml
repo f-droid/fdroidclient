@@ -83,7 +83,7 @@
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d шинэчлэлт</item>
-        <item quantity="other">%1$d шинэчлэлт</item>
+        <item quantity="other">%1$d шинэчлэлтүүд</item>
     </plurals>
     <string name="notification_content_single_installed">Амжилттай суулгасан</string>
     <string name="notification_content_single_installing">\"%1$s\"-г суулгаж байна …</string>
@@ -314,7 +314,7 @@
     <string name="menu_changelog">Өөрчлөлт</string>
     <string name="menu_issues">Асуудал</string>
     <string name="menu_email">Цахим шуудангийн зохиогч</string>
-    <string name="menu_website">Вэбсайт</string>
+    <string name="menu_website">Вэб хуудас</string>
     <string name="menu_ignore_this">Энэ шинэчлэлтийг үл тоомсорлох</string>
     <string name="menu_ignore_all">Бүх шинэчлэлтийг үл тоомсорлох</string>
     <string name="menu_select_for_wipe">Арчихын тулд сонгоно уу</string>
@@ -346,7 +346,7 @@
     <string name="updates_disabled_by_settings">Бүх шинэчлэлтийг Data / WiFi тохиргоогоор идэвхгүйжүүлсэн</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">%1$d програмын шинэчлэлтийг татаж авах.</item>
-        <item quantity="other">%1$d програмын шинэчлэлтийг татаж авах.</item>
+        <item quantity="other">%1$d програмуудын шинэчлэлтүүдийг татаж авах.</item>
     </plurals>
     <string name="updates__show_updateable_apps">Програмуудыг харуулах</string>
     <string name="updates__hide_updateable_apps">Аппуудыг нуух</string>
