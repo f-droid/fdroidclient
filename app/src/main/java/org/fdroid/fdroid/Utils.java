@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -802,6 +803,21 @@ public final class Utils {
     public static PackageInfo getPackageInfo(Context context, String packageName) {
         try {
             return context.getPackageManager().getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            debugLog(TAG, "Could not get PackageInfo: ", e);
+        }
+        return null;
+    }
+
+    /**
+     * Try to get the {@link PackageInfo} with signature info for the {@code packageName} provided.
+     *
+     * @return null on failure
+     */
+    @SuppressLint("PackageManagerGetSignatures")
+    public static PackageInfo getPackageInfoWithSignatures(Context context, String packageName) {
+        try {
+            return context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
         } catch (PackageManager.NameNotFoundException e) {
             debugLog(TAG, "Could not get PackageInfo: ", e);
         }
