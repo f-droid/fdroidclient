@@ -39,7 +39,7 @@
     <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
     <string name="repo_add_url">Адрес репозитория</string>
     <string name="repo_add_fingerprint">Отпечаток ключа (необязательно)</string>
-    <string name="malformed_repo_uri">Игнорировать неверный URI репозитория: %s</string>
+    <string name="malformed_repo_uri">Проигнорирован некорректный URI репозитория: %s</string>
     <string name="menu_manage">Репозитории</string>
     <string name="menu_search">Поиск</string>
     <string name="menu_add_repo">Новый репозиторий</string>
@@ -65,7 +65,7 @@
     <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
     <string name="search_hint">Поиск приложений</string>
     <string name="appcompatibility">Совместимость приложений</string>
-    <string name="show_incompat_versions">Включить несовместимые версии</string>
+    <string name="show_incompat_versions">Разрешить несовместимые версии</string>
     <string name="show_incompat_versions_on">Показывать версии приложений, несовместимые с устройством</string>
     <string name="local_repo">Локальный репозиторий</string>
     <string name="local_repo_running">F-Droid готов к обмену</string>
@@ -113,7 +113,7 @@
     <string name="repo_disabled_notification">%1$s отключен. 
 \n 
 \nВам нужно будет повторно включить этот репозиторий для установки приложений из него.</string>
-    <string name="not_on_same_wifi">Данное устройство не подключено к той сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
+    <string name="not_on_same_wifi">Данное устройство не подключено к той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
     <string name="requires_features">Требуется: %1$s</string>
     <string name="category_Development">Разработка</string>
     <string name="category_Games">Игры</string>
@@ -266,8 +266,8 @@
     <string name="uninstalling">Удаление…</string>
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
-    <string name="keep_install_history">Сохранять историю инсталляций</string>
-    <string name="keep_install_history_summary">Хранить журнал всех инсталляций и деинсталляций в приватном хранилище</string>
+    <string name="keep_install_history">Сохранять историю установок</string>
+    <string name="keep_install_history_summary">Хранить журнал всех установок и удалений в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
@@ -335,7 +335,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Последние</string>
     <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые последние приложения</string>
-    <string name="latest__empty_state__no_enabled_repos">Как только вы включите репозиторий и разрешите ему обновиться, здесь появятся самые последние приложения</string>
+    <string name="latest__empty_state__no_enabled_repos">Как только вы включите репозиторий и разрешите его обновлять, здесь появятся самые последние приложения</string>
     <string name="antifeatures">Анти-функции</string>
     <string name="notification_title_summary_installing">Установка</string>
     <string name="notification_title_summary_installed">Успешно установлено</string>
@@ -436,7 +436,7 @@
     <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
-    <string name="show_anti_feature_apps">Включить приложения с анти-функциями</string>
+    <string name="show_anti_feature_apps">Разрешить приложения с анти-функциями</string>
     <string name="show_anti_feature_apps_on">Показывать приложения, которым необходим несвободный функционал</string>
     <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
@@ -461,16 +461,16 @@
     <string name="hide_all_notifications_summary">Запретить показ всех действий в строке состояния и панели уведомлений.</string>
     <string name="prompt_to_send_crash_reports">Запрос на отправку отчетов о сбоях</string>
     <string name="prompt_to_send_crash_reports_summary">Сбор информации о сбоях и запрос на отправку ее разработчику</string>
-    <string name="install_history">История инсталляций</string>
-    <string name="install_history_summary">Просмотреть журнал всех инсталляций и деинсталляций</string>
+    <string name="install_history">История установок</string>
+    <string name="install_history_summary">Просмотреть журнал всех установок и удалений</string>
     <string name="send_version_and_uuid">Отправить версию и UUID на сервер</string>
     <string name="send_version_and_uuid_summary">Включить версию этого приложения и случайный уникальный ID. Изменения вступят в силу после перезапуска.</string>
     <string name="share_repository">Поделиться репозиторием</string>
     <string name="allow_push_requests">Разрешить репозиториям устанавливать и удалять приложения</string>
-    <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на инсталляцию или деинсталляцию приложений</string>
+    <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на установку или удаление приложений</string>
     <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
-    <string name="send_install_history">Отправить историю инсталляций</string>
-    <string name="send_history_csv">%s история инсталляций как CSV-файл</string>
+    <string name="send_install_history">Отправить историю установок</string>
+    <string name="send_history_csv">История установок %s в виде CSV-файл</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
     <string name="send_installed_apps">Поделиться установленными приложениями</string>
     <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
@@ -496,9 +496,9 @@
     <string name="app_list__dismiss_installing_app">Установка отменена</string>
     <string name="menu_select_for_wipe">Выберите для очистки</string>
     <string name="try_again">Повторить попытку</string>
-    <string name="panic_will_be_wiped">Будут деинсталлированы и все данные будут удалены</string>
-    <string name="panic_apps_to_uninstall">Приложения должны быть деинсталлированы и все данные очищены</string>
-    <string name="panic_add_apps_to_uninstall">Добавить приложения для деинсталляции и очистки</string>
+    <string name="panic_will_be_wiped">Будут удалены, а все данные стёрты</string>
+    <string name="panic_apps_to_uninstall">Приложения, которые будут удалены, а все данные вычищены</string>
+    <string name="panic_add_apps_to_uninstall">Добавить приложения, которые будут удалены, и вычищены</string>
     <string name="panic_reset_repos_title">Сбросить репозитории</string>
     <string name="panic_reset_repos_summary">Принудительно вернуть настройки репозитория к значениям по умолчанию</string>
     <string name="swap_visible_hotspot">Видимо через точку доступа</string>
