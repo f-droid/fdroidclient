@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri salausavaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
+    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
@@ -8,13 +8,11 @@
     <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
     <string name="updates">Päivitykset</string>
     <string name="other">Muu</string>
-    <string name="update_interval">Automaattisen päivityksen tiheys</string>
+    <string name="update_interval">Automaattisten päivitysten tiheys</string>
     <string name="notify">Näytä saatavilla olevat päivtykset</string>
-    <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
+    <string name="notify_on">Näytä ilmoitus, kun päivityksiä on saatavilla</string>
     <string name="system_installer">Etuoikeutettu laajennus</string>
-    <string name="system_installer_on">Käytä F-Droid Privileged Extensionia asentamiseen, päivittämiseen ja pakettien
-        poistamiseen
-    </string>
+    <string name="system_installer_on">Käytä F-Droidin etuoikeutettuja laajennuksia pakettien asentamiseen, päivittämiseen ja poistamiseen</string>
     <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>
     <string name="local_repo_name_summary">Paikallisen sovelluslähteesi mainostettava otsikko: %s</string>
     <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle sovelluslähteelle</string>
@@ -60,15 +58,13 @@
     <string name="antinonfreenetlist">Tämä sovellus tukee ei-vapaita verkkopalveluja</string>
     <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista, ei-vapaista sovelluksista</string>
     <string name="display">Näyttö</string>
-    <string name="expert">Asiantuntijatila</string>
+    <string name="expert">Kehittäjäasetukset</string>
     <string name="search_hint">Etsi sovelluksia</string>
     <string name="appcompatibility">Sovellusten yhteensopivuus</string>
     <string name="show_incompat_versions">Sisällytä yhteensopimattomat versiot</string>
     <string name="local_repo">Paikallinen sovelluslähde</string>
     <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
-    <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa
-        sovelluksiasi.
-    </string>
+    <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
     <string name="deleting_repo">Poistetaan nykyistä sovelluslähdettä…</string>
     <string name="adding_apks_format">Lisätään %s sovelluslähteisiin…</string>
     <string name="writing_index_jar">Kirjoitetaan allekirjoitettua indeksitiedostoa (index.jar)…</string>
@@ -85,13 +81,11 @@
     <string name="proxy_port">Välityspalvelimen portti</string>
     <string name="proxy_port_summary">Välityspalvelimesi porttinumero (esim. 8118)</string>
     <string name="repos_unchanged">Kaikki sovelluslähteet ovat ajan tasalla</string>
-    <string name="all_other_repos_fine">Muut ohjelmalähteet eivät luoneet virheitä.</string>
+    <string name="all_other_repos_fine">Muut sovelluslähteet eivät luoneet virheitä.</string>
     <string name="global_error_updating_repos">Virhe päivityksen aikana: %s</string>
     <string name="theme">Teema</string>
     <string name="unverified">Vahvistamaton</string>
-    <string name="repo_not_yet_updated">Tätä sovelluslähdettä ei ole vielä käytetty.
-        Sinun tulee ottaa se ensin käyttöön näkeäksesi sovellukset joita se tarjoaa.
-    </string>
+    <string name="repo_not_yet_updated">Tätä sovelluslähdettä ei ole vielä käytetty. Sinun tulee ottaa se ensin käyttöön, nähdäksesi sovellukset joita se tarjoaa.</string>
     <string name="repo_confirm_delete_body">Sovelluslähteen poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa.
 \n
 \nHuomautus: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
@@ -104,7 +98,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navigointi</string>
-    <string name="category_Phone_SMS">Puhelin &amp; tekstiviestit</string>
+    <string name="category_Phone_SMS">Viestintä</string>
     <string name="category_Reading">Lukeminen</string>
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
@@ -116,9 +110,9 @@
     <string name="swap">Vaihda sovelluksia</string>
     <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
     <string name="swap_view_available_networks">Näytä saatavilla olevat verkot napauttamalla</string>
-    <string name="open_qr_code_scanner">Avaa QR-koodilukija</string>
+    <string name="open_qr_code_scanner">Avaa QR-koodinlukija</string>
     <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
-    <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>
+    <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt\?</string>
     <string name="unstable_updates_summary">Ehdota päivityksiä epävakaisiin versioihin</string>
     <string name="app_name">F-Droid</string>
     <string name="login_password">Salasana</string>
@@ -145,7 +139,7 @@
     <string name="interval_1h">Tarkista päivitykset tunnin välein</string>
     <string name="theme_light">Vaalea</string>
     <string name="theme_dark">Tumma</string>
-    <string name="theme_night">Yö</string>
+    <string name="theme_night">Musta</string>
     <string name="uninstall_confirm">Haluatko poistaa tämän sovelluksen?</string>
     <string name="allPerms">Kaikki</string>
     <string name="newPerms">Uusi</string>
@@ -157,7 +151,7 @@
     <string name="less">Vähemmän</string>
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
-    <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
+    <string name="repo_error_empty_username">Ei käyttäjätunnusta. Tietoja ei muutettu.</string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
@@ -165,7 +159,7 @@
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">Yläjuoksun lähdekoodi ei ole kokonaan vapaata</string>
+    <string name="antiupstreamnonfreelist">Ylätason lähdekoodi ei ole kokonaan vapaata</string>
     <string name="expert_on">Näytä lisää tietoa ja ota käyttöön lisäasetukset</string>
     <string name="show_incompat_versions_on">Näytä sovellusversiot, jotka eivät ole yhteensopivia laitteesi kanssa</string>
     <string name="useTor">Käytä Tor-verkkoa</string>
@@ -187,9 +181,7 @@
     <string name="repo_name">Nimi</string>
     <string name="unknown">Tuntematon</string>
     <string name="repo_added">Tallennettiin sovelluslähde %1$s.</string>
-    <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin juuri lisäämäsi paikallinen
-        sovelluslähde! Kokeile liittyä verkkoon: %s
-    </string>
+    <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin juuri lisäämäsi paikallinen sovelluslähde! Kokeile liittyä verkkoon: %s</string>
     <string name="pref_language">Kieli</string>
     <string name="pref_language_default">Järjestelmän oletus</string>
     <string name="wifi">Wi-Fi</string>
@@ -223,9 +215,9 @@
 \n%1$s</string>
     <string name="category_Connectivity">Yhteydet</string>
     <string name="category_Graphics">Grafiikka</string>
-    <string name="empty_installed_app_list">Ei asennettuja sovelluksia. 
+    <string name="empty_installed_app_list">Ei asennettuja sovelluksia.
 \n
-\nLaitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
+\nLaitteessasi on sovelluksia, mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
     <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
@@ -233,14 +225,11 @@
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="swap_nfc_title">Vaihda koskettamalla</string>
-    <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, sinun tulee olla samassa verkossa.
-        Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-hotspotin.
-    </string>
+    <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, teidän tulee olla samassa verkossa. Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-hotspotin.</string>
     <string name="swap_join_this_hotspot">Auta ystävääsi liittymään hotspottiisi</string>
     <string name="swap_success">Vaihtaminen onnistui!</string>
     <string name="swap_switch_to_wifi">Napauta vaihtaaksesi Wi-Fi-verkkoon</string>
-    <string name="swap_scan_or_type_url">Henkilön tulee skannata koodi tai kirjoittaa toisen URL-osoite selaimeen.
-    </string>
+    <string name="swap_scan_or_type_url">Henkilön tulee skannata koodi tai kirjoittaa URL-osoite selaimeen.</string>
     <string name="swap_people_nearby">Lähellä olevat ihmiset</string>
     <string name="swap_scanning_for_peers">Etsitään lähellä olevia ihmisiä…</string>
     <string name="swap_nearby">Lähivaihto</string>
@@ -252,19 +241,19 @@
     <string name="swap_setting_up_wifi">Valmistellaan Wi-Fiä…</string>
     <string name="swap_stopping_wifi">Pysäytetään Wi-Fiä…</string>
     <string name="swap_not_visible_wifi">Ei nähtävissä Wi-Fin kautta</string>
-    <string name="swap_cant_find_peers">Etkö löydä ketä etsit?</string>
+    <string name="swap_cant_find_peers">Etkö löydä ketä etsit\?</string>
     <string name="swap_no_peers_nearby">Läheltä ei löytynyt ihmisiä, joiden kanssa vaihtaa sovelluksia.</string>
     <string name="swap_connecting">Yhdistetään</string>
     <string name="swap_confirm">Vahvista vaihto</string>
     <string name="swap_qr_isnt_for_swap">Skannaamasi QR-koodi ei näytä vaihtamiseen tarkoitetulta koodilta.</string>
     <string name="swap_connection_misc_error">Tapahtui virhe yhdistettäessä laitteeseen, vaihtaminen ei onnistu!</string>
     <string name="install_confirm">tarvitsee luvan käyttää</string>
-    <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
-    <string name="install_confirm_update_system">Haluatko asentaa päivityksen tähän sisäiseen sovellukseen? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
+    <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen\? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
+    <string name="install_confirm_update_system">Haluatko asentaa päivityksen tähän sisäiseen sovellukseen\? Olemassa olevat tiedot eivät katoa. Päivitetty sovellus saa käyttöönsä seuraavat ominaisuudet:</string>
     <string name="install_confirm_update_no_perms">Haluatko asentaa päivityksen tähän sovellukseen? Et menetä nykyisiä tietojasi. Päivitys ei edellytä erityisiä käyttöoikeuksia.</string>
     <string name="install_confirm_update_system_no_perms">Haluatko asentaa päivityksen tähän laitteen mukana tulleeseen sovellukseen? Et menetä nykyisiä tietojasi. Päivitys ei edellytä erityisiä käyttöoikeuksia.</string>
     <string name="perm_costs_money">Tämä voi olla maksullista</string>
-    <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla? Kaikki tiedot poistetaan.</string>
+    <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla\? Kaikki tiedot poistetaan.</string>
     <string name="download_pending">Odotetaan latauksen alkamista…</string>
     <string name="install_error_notify_title">Virhe asennettaessa sovellusta %s</string>
     <string name="uninstall_error_notify_title">Virhe poistettaessa sovellusta %s</string>
@@ -278,9 +267,7 @@
     <string name="status_download_unknown_size">Ladataan
 \n%2$s lähteestä
 \n%1$s</string>
-    <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia!
-        Luo virheraportti!
-    </string>
+    <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
     <string name="warning_no_internet">Ei voida päivittää, olemmehan yhteydessä Internettiin\?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
@@ -310,7 +297,7 @@
     <string name="preference_manage_installed_apps">Hallitse asennettuja sovelluksia</string>
     <string name="details_new_in_version">Uutta versiossa %s</string>
     <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Ei nettiyhteyttä? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä\? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
     <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
     <string name="notification_title_single_update_available">Päivitys Saatavilla</string>
     <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>
@@ -357,7 +344,7 @@
     <string name="by_author_format">tekijä %s</string>
     <string name="hide_all_notifications">Piilota kaikki ilmoitukset</string>
     <string name="hide_all_notifications_summary">Estä kaikkien toimintojen näkyminen tilapalkissa ja ilmoitusruudussa.</string>
-    <string name="force_old_index">Pakota vanha ideksiformaatti</string>
+    <string name="force_old_index">Pakota vanha indeksiformaatti</string>
     <string name="force_old_index_summary">Bugien tai yhteensopivuusongelmien sattuessa käytä XML-sovellusindeksiä</string>
     <string name="over_wifi">Wi-Fi-yhteydellä</string>
     <string name="over_data">Mobiilidatayhteydellä</string>
@@ -366,7 +353,7 @@
     <string name="over_network_never_summary">Älä koskaan lataa mitään käyttäen tätä yhteyttä</string>
     <string name="app_details__no_versions__no_compatible_signatures">Ei versioita joilla sopiva allekirjoitus</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ei versioita jotka ovat yhteensopivia laitteen kanssa</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Poistamalla seovelluksen voit selata ja asentaa yhteensopivia versioita. Näin käy usein Google Playstä tai muista lähteistä asennettujen sovellusten kohdalla, mikäli ne on allekirjoitettu eri sertifikaatilla.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Poistamalla seovelluksen voit selata ja asentaa yhteensopivan version. Näin käy usein Google Playstä tai muista lähteistä asennettujen sovellusten kohdalla, mikäli ne on allekirjoitettu eri sertifikaatilla.</string>
     <string name="app__tts__cancel_download">Peruuta lataus</string>
     <string name="app_installed_media">Tiedosto asennettu polkuun %s</string>
     <string name="app_permission_storage">F-Droid tarvitsee oikeuden tallennustilaan asentaakseen tämän. Ole hyvä ja myönnä oikeus seuraavassa ruudussa jatkaaksesi asennusta.</string>
@@ -390,14 +377,14 @@
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
     <string name="privacy">Tietosuoja</string>
-    <string name="preventScreenshots_title">Estä ruutukaappaukset</string>
-    <string name="preventScreenshots_summary">Estää ruutukaappausten ottamisen ja piilottaa sovelluksen sisällön viimeisimmät sovellukset -näytöltä</string>
+    <string name="preventScreenshots_title">Estä kuvankaappaukset</string>
+    <string name="preventScreenshots_summary">Estää kuvankaappausten ottamisen ja piilottaa sovelluksen sisällön viimeisimmät sovellukset -näkymästä</string>
     <string name="panic_app_setting_title">Paniikkinappulasovellus</string>
     <string name="panic_app_unknown_app">tuntematon sovellus</string>
     <string name="panic_app_setting_summary">Sovellusta ei ole asetettu</string>
     <string name="panic_app_setting_none">Ei mikään</string>
     <string name="panic_app_dialog_title">Vahvista paniikkisovellus</string>
-    <string name="panic_app_dialog_message">Oletko varma, että haluat sallia sovelluksen %1$s laukaista tuhoisia paniikkipainiketoimia?</string>
+    <string name="panic_app_dialog_message">Oletko varma, että haluat sallia sovelluksen %1$s laukaista tuhoisia paniikkipainiketoimia\?</string>
     <string name="allow">Salli</string>
     <string name="panic_settings">Paniikkinappulan asetukset</string>
     <string name="panic_settings_summary">Toimet, joita tehdään hätätilanteessa</string>
@@ -410,7 +397,7 @@
     <string name="panic_hide_warning_message">Paniikkitilanteessa %1$s poistetaan sovellusvalikosta. Sen voi palauttaa vain kirjoittamalla \"%2$d\" vale-%3$s -sovelluksessa.</string>
     <string name="hiding_calculator">Laskin</string>
     <string name="hiding_dialog_title">Piilota %s nyt</string>
-    <string name="hiding_dialog_message">Oletko varma, että haluat poistaa sovelluksen %1$s sovellusvalikosta? Sen voi palauttaa vain kirjoittamalla \"%2$d\" vale-%3$s -sovelluksessa.</string>
+    <string name="hiding_dialog_message">Oletko varma, että haluat poistaa sovelluksen %1$s sovellusvalikosta\? Sen voi palauttaa vain kirjoittamalla \"%2$d\" vale-%3$s -sovelluksessa.</string>
     <string name="hiding_dialog_warning">Varoitus: Myös sovellusten pikakuvakkeet poistetaan kotinäytöltä ja ne täytyy lisätä uudelleen käsin.</string>
     <string name="hide_on_long_search_press_title">Piilota hakunapilla</string>
     <string name="hide_on_long_search_press_summary">Hakunapin pitäminen pohjassa piilottaa sovelluksen</string>
@@ -465,7 +452,7 @@
     <string name="app_size">Koko: %1$s</string>
     <string name="send_installed_apps">Jaa asennetut sovellukset</string>
     <string name="send_installed_apps_csv">Sovellukset, jotka F-Droid asentanut CSV-tiedostona</string>
-    <string name="updates_disabled_by_settings">Kaikki päivitykset poistettu käytöstä Data/WiFi-asetuksissa</string>
+    <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä Mobiilidata/WiFi-asetuksissa</string>
     <string name="repo_exists_add_fingerprint">%1$s on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
     <string name="repo_exists_enable">%1$s on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
@@ -479,7 +466,7 @@
     <string name="app_repository">Sovelluslähde: %1$s</string>
     <string name="menu_translation">Käännös</string>
     <string name="main_menu__updates">Päivitykset</string>
-    <string name="nearby_splash__read_external_storage">Etsi SD-kortilta repositorioita ja peilejä.</string>
+    <string name="nearby_splash__read_external_storage">Etsi SD-kortilta sovelluslähteitä ja toisiopalvelimia.</string>
     <string name="nearby_splash__request_permission">Kokeile</string>
     <string name="not_visible_nearby">Lähistöllä ei ole käytössä</string>
     <string name="not_visible_nearby_description">Ennen kuin vaihdat lähistöllä olevien laitteiden kanssa, tee laite näkyväksi.</string>
@@ -496,8 +483,8 @@
     <string name="panic_will_be_wiped">Asennus ja kaikki data poistetaan</string>
     <string name="panic_apps_to_uninstall">Sovellukset, jotka poistetaan ja joiden data pyyhitään</string>
     <string name="panic_add_apps_to_uninstall">Lisää sovelluksia poistettavaksi ja pyyhittäväksi</string>
-    <string name="panic_reset_repos_title">Nollaa repositoriot</string>
-    <string name="panic_reset_repos_summary">Pakota repositorioasetukset takaisin oletukseksi</string>
+    <string name="panic_reset_repos_title">Nollaa sovelluslähteesi</string>
+    <string name="panic_reset_repos_summary">Pakota sovelluslähdeasetukset takaisin oletukseksi</string>
     <string name="swap_visible_hotspot">Näkyvä muille tukiaseman kautta</string>
     <string name="swap_setting_up_hotspot">Asetetaan tukisasemaa…</string>
     <string name="swap_stopping_hotspot">Pysäytetään tukiasema…</string>
@@ -505,7 +492,7 @@
     <string name="swap_stopping">Pysäytetään…</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetoothia ei voitu käynnistää!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Lähellä on suljettu, koska se oli tyhjäkäynnillä.</string>
-    <string name="nearby_splash__document_tree">Etsi USB OTG:ltä repositorioita ja peilejä.</string>
+    <string name="nearby_splash__document_tree">Etsi USB OTG:ltä sovelluslähteitä ja toisiopalvelimia.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_title">Vaihdot</string>
     <string name="notification_channel_updates_description">Näyttää sovelluksen ja sovelluslähteen päivitysilmoitukset.</string>
