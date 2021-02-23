@@ -503,4 +503,11 @@
     <string name="swap_toast_closing_nearby_after_timeout">Оближња размена је затворена јер је мировала.</string>
     <string name="nearby_splash__document_tree">Претражи ризнице и одразе на приручном УСБ-у.</string>
     <string name="menu_liberapay">Либерапеј</string>
+    <string name="notification_channel_swaps_title">Размене</string>
+    <string name="notification_channel_swaps_description">Приказују се обавештења о равноправној размени апликација.</string>
+    <string name="notification_channel_installs_description">Приказују се обавештења о уградњи апликација.</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="notification_channel_updates_description">Приказују се обавештења о обнављању апликација и спремишта.</string>
+    <string name="notification_channel_updates_title">Обнављања</string>
+    <string name="notification_channel_installs_title">Уградње</string>
 </resources>
