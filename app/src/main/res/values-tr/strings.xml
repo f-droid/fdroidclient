@@ -73,7 +73,7 @@
     <string name="deleting_repo">Mevcut depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış dizin dosyası yazılıyor (index.jar)…</string>
-    <string name="linking_apks">APK\'lar depoya bağlanıyor…</string>
+    <string name="linking_apks">APK\'ler depoya bağlanıyor…</string>
     <string name="copying_icons">Uygulama simgeleri depoya kopyalanıyor…</string>
     <string name="icon">Simge</string>
     <string name="next">Sonraki</string>
@@ -443,7 +443,7 @@
     <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
     <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
-    <string name="prompt_to_send_crash_reports_summary">Kilitlenmelerle ilgili verileri topla ve bunları geliştiriciye göndermeyi sor</string>
+    <string name="prompt_to_send_crash_reports_summary">Çökme verilerini topla ve bunları geliştirmene göndermek için sor</string>
     <string name="install_history">Kurulum Geçmişi</string>
     <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
