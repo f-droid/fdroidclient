@@ -5,7 +5,7 @@
     <string name="installIncompatible">Appen er ikke kompatibel med din enhed. Vil du installere den alligevel\?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
-    <string name="enable_nfc_send">Aktiver NFC Send…</string>
+    <string name="enable_nfc_send">Aktiver NFC send…</string>
     <string name="cache_downloaded">Behold cache-lagrede apps</string>
     <string name="updates">Opdat.</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
