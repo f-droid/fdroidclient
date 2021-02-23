@@ -10,12 +10,12 @@
     <string name="theme_dark">অন্ধকার</string>
     <string name="theme_light">হালকা</string>
     <string name="status_inserting_apps">অ্যাপের বিবরণ সংরক্ষণ করা হচ্ছে</string>
-    <string name="proxy_port_summary">আপনার প্রক্সিটির পোর্ট নম্বর (উদাঃ 8118)</string>
+    <string name="proxy_port_summary">আপনার প্রক্সির পোর্ট নম্বর (উদাঃ 8118)</string>
     <string name="proxy_port">প্রক্সি পোর্ট</string>
-    <string name="proxy_host_summary">আপনার প্রক্সি এর হোস্টনেম (যেমন 127.0.0.1)</string>
+    <string name="proxy_host_summary">আপনার প্রক্সির হোস্টনাম (যেমন 127.0.0.1)</string>
     <string name="proxy_host">প্রক্সি হোস্ট</string>
     <string name="menu_launch">খুলুন</string>
-    <string name="menu_search">সার্চ</string>
+    <string name="menu_search">খুঁজুন</string>
     <string name="cache_downloaded">ক্যাশড অ্যাপস রাখুন</string>
     <string name="prompt_to_send_crash_reports_summary">ক্র্যাশ সম্পর্কে তথ্য সংগ্রহ করুন এবং ডেভেলপারের কাছে পাঠাতে বলুন</string>
     <string name="prompt_to_send_crash_reports">ক্র্যাশ রিপোর্ট পাঠানোর অনুরোধ</string>
@@ -27,13 +27,13 @@
     <string name="SignatureMismatch">নতুন সংস্করণটি পুরানোটির থেকে আলাদা কি দিয়ে স্বাক্ষরিত। নতুন সংস্করণ ইনস্টল করতে, পুরানোটি প্রথমে আনইনস্টল করা উচিত। দয়া করে এটি করুন এবং আবার চেষ্টা করুন। (মনে রাখবেন যে আনইনস্টল করা অ্যাপ দ্বারা সঞ্চিত কোনও অভ্যন্তরীণ ডাটা মুছে যাবে)</string>
     <string name="status_processing_xml_percent">%1$s থেকে %2$s / %3$s (%4$d%%) প্রক্রিয়াকরণ করা হচ্ছে</string>
     <string name="enable_proxy_summary">সকল নেটওয়ার্ক অনুরোধের জন্য এইচটিটিপি প্রক্সি কনফিগার করুন</string>
-    <string name="menu_share">শেয়ার</string>
-    <string name="menu_install">ইন্সটল</string>
-    <string name="menu_uninstall">আনইন্সটল</string>
+    <string name="menu_share">শেয়ার করুন</string>
+    <string name="menu_install">ইনস্টল করুন</string>
+    <string name="menu_uninstall">আনইনস্টল করুন</string>
     <string name="menu_upgrade">আপডেট</string>
     <string name="main_menu__latest_apps">সর্বশেষ</string>
-    <string name="main_menu__categories">বিভাগ</string>
-    <string name="main_menu__swap_nearby">কাছে</string>
+    <string name="main_menu__categories">বিভাগ সমূহ</string>
+    <string name="main_menu__swap_nearby">কাছাকাছি</string>
     <string name="preference_manage_installed_apps">ইন্সটলকৃত অ্যাপ ব্যবস্থাপনা</string>
     <string name="details_notinstalled">ইন্সটল করা নেই</string>
     <string name="next">পরেরটা</string>
@@ -84,4 +84,6 @@
     <string name="local_repo_name_summary">তোমার স্থানীয় রিপোর বিজ্ঞাপিত শিরোনাম: %s</string>
     <string name="swap_send_fdroid">এফ-ড্রয়েড পাঠান</string>
     <string name="updates__tts__download_app">ডাউনলোড</string>
+    <string name="menu_settings">সেটিংস</string>
+    <string name="cancel">বাতিল</string>
 </resources>
