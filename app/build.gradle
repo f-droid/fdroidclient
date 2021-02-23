@@ -75,6 +75,8 @@ android {
 
     compileOptions {
         compileOptions.encoding = "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     aaptOptions {
