@@ -1,0 +1,7 @@
+* Forbetra generering av lenkjer for URL-ar i appskildringar
+
+* Forbetra handsaming av SD-kort og USG-OTG for «I nærleiken»
+
+* Modernisert kode og bytt ut PNG-bilete med vektorbilete (takk til @isira-seneviratne!)
+
+* Kjenner no att lengre pakkebrønns­adresser, for støtte for GitCDN- og RawGit-speglar

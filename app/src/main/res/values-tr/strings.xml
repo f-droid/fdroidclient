@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın depolanan tüm dahili verilerini sileceğini unutmayın)</string>
-    <string name="installIncompatible">Uygulama cihazınızla uyumlu değil, yine de yüklesin mi\?</string>
+    <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de kurulsun mu\?</string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
-    <string name="enable_nfc_send">NFC gönderimini etkinleştir…</string>
+    <string name="enable_nfc_send">NFC ile göndermeyi etkinleştir…</string>
     <string name="cache_downloaded">Önbelleklenen uygulamaları sakla</string>
     <string name="updates">Güncellemeler</string>
     <string name="other">Diğer</string>
@@ -19,7 +19,7 @@
     <string name="app_details">Uygulama ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
     <string name="about_title">F-Droid hakkında</string>
-    <string name="about_site">İnternet sitesi</string>
+    <string name="about_site">Web Sitesi</string>
     <string name="about_version">Sürüm</string>
     <string name="app_installed">Kurulu</string>
     <string name="app_not_installed">Kurulu değil</string>
@@ -49,7 +49,7 @@
     <string name="menu_uninstall">Kaldır</string>
     <string name="menu_ignore_all">Tüm güncellemeleri yoksay</string>
     <string name="menu_ignore_this">Bu güncellemeyi yoksay</string>
-    <string name="menu_website">İnternet sitesi</string>
+    <string name="menu_website">Web Sitesi</string>
     <string name="menu_issues">Sorunlar</string>
     <string name="menu_source">Kaynak Kodu</string>
     <string name="menu_upgrade">Güncelle</string>
@@ -70,17 +70,17 @@
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
     <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine müsaade etmek için dokunun.</string>
-    <string name="deleting_repo">Mevcut depo siliniyor…</string>
+    <string name="deleting_repo">Geçerli depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış dizin dosyası yazılıyor (index.jar)…</string>
-    <string name="linking_apks">APK\'lar depoya bağlanıyor…</string>
+    <string name="linking_apks">APK\'ler depoya bağlanıyor…</string>
     <string name="copying_icons">Uygulama simgeleri depoya kopyalanıyor…</string>
     <string name="icon">Simge</string>
     <string name="next">Sonraki</string>
     <string name="skip">Atla</string>
     <string name="proxy">Vekil</string>
     <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
-    <string name="enable_proxy_summary">Tüm ağ isteklerini HTTP Vekiline yapılandır</string>
+    <string name="enable_proxy_summary">HTTP Vekilini tüm ağ istekleri için yapılandır</string>
     <string name="proxy_host">Vekil Sunucu</string>
     <string name="proxy_host_summary">Vekil sunucu adresi (örn. 127.0.0.1)</string>
     <string name="proxy_port">Vekil Bağlantı Noktası</string>
@@ -107,16 +107,16 @@
     <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için etkinleştirmelisiniz.</string>
     <string name="unknown">Bilinmiyor</string>
     <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
-    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradan uygulamaların artık kullanılamayacağı anlamına gelir. 
-\n 
-\nNot: Önceden kurulan tüm uygulamalar cihazınızda kalacaktır.</string>
+    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradan uygulamaların artık kullanılamayacağı anlamına gelir.
+\n
+\nNot: Önceden kurulan tüm uygulamalar aygıtınızda kalacaktır.</string>
     <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.
 \n
 \nOradan uygulama kurmak için bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
     <string name="repo_added">Paket deposu %1$s kaydedildi.</string>
     <string name="repo_searching_address">%1$s konumunda paket deposu
 \naranıyor</string>
-    <string name="not_on_same_wifi">Cihazınız az önce eklediğiniz yerel depo ile aynı kablosuz ağda değil! Bu ağa katılmayı deneyin: %s</string>
+    <string name="not_on_same_wifi">Aygıtınız az önce eklediğiniz yerel depo ile aynı kablosuz ağda değil! Bu ağa katılmayı deneyin: %s</string>
     <string name="requires_features">Gerektirdiği: %1$s</string>
     <string name="category_Development">Geliştirme</string>
     <string name="category_Games">Oyunlar</string>
@@ -128,7 +128,7 @@
     <string name="category_Science_Education">Bilim ve eğitim</string>
     <string name="category_Security">Güvenlik</string>
     <string name="category_System">Sistem</string>
-    <string name="swap_nfc_description">Arkadaşınız da F-Droid varsa ve NFC açıksa cihazlarınızı birbirine dokundurun.</string>
+    <string name="swap_nfc_description">Arkadaşınızda F-Droid varsa ve NFC açıksa aygıtlarınızı birbirine dokundurun.</string>
     <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağa katılın</string>
     <string name="swap">Takas uygulamalar</string>
     <string name="swap_no_wifi_network">Henüz ağ yok</string>
@@ -154,7 +154,7 @@
     <string name="bad_fingerprint">Yanlış parmak izi</string>
     <string name="invalid_url">Bu geçerli bir URL değil.</string>
     <string name="menu_settings">Ayarlar</string>
-    <string name="menu_changelog">Değişiklikler</string>
+    <string name="menu_changelog">Değişiklik Günlüğü</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -181,7 +181,7 @@
     <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama yok.</string>
     <string name="empty_installed_app_list">Kurulu uygulama yok.
 \n
-\nCihazınızda uygulamalar var ancak bunlar F-Droid\'te mevcut değil. Bunun nedeni, depolarınızı güncellemeniz gerektiğinden ya da depoların uygulamalarınızı gerçekten elinizde bulundurması için olabilir.</string>
+\nAygıtınızda uygulamalar var ancak bunlar F-Droid\'te mevcut değil. Bunun nedeni, depolarınızı güncellemeniz gerektiğinden ya da depoların uygulamalarınızı gerçekten elinizde bulundurması için olabilir.</string>
     <string name="empty_can_update_app_list">Tebrikler!\nUygulamalarınız güncel.</string>
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
@@ -202,7 +202,7 @@
     <string name="swap_visible_wifi">Kablosuz ağdan görünür</string>
     <string name="swap_setting_up_wifi">Kablosuz Ağ Ayarlanıyor…</string>
     <string name="swap_not_visible_wifi">Kablosuz ağdan görünmez</string>
-    <string name="swap_wifi_device_name">Cihaz İsmi</string>
+    <string name="swap_wifi_device_name">Aygıt Adı</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
     <string name="swap_no_peers_nearby">Yakın da takaslanabilecek kişi bulunamadı.</string>
@@ -210,12 +210,12 @@
     <string name="swap_confirm">Takası onaylayın</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
     <string name="loading">Yükleniyor…</string>
-    <string name="swap_connection_misc_error">Cihaza bağlanırken hata oldu, takaslanılamıyor!</string>
+    <string name="swap_connection_misc_error">Aygıta bağlanırken hata oluştu, takas yapılamıyor!</string>
     <string name="install_confirm">erişmesi gerekenler</string>
     <string name="install_confirm_update">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
     <string name="install_confirm_update_system">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
-    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
-    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz silinmeyecektir. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz kaybolmayacaktır. Herhangi bir özel erişim gerektirmez.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
@@ -243,7 +243,7 @@
     <string name="swap_join_same_wifi_desc">Kablosuz ağla takaslamak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir kablosuz ağ bağlantı noktası oluşturabilir.</string>
     <string name="swap_join_this_hotspot">Arkadaşınızın bağlantı noktanıza bağlanmasına yardım edin</string>
     <string name="swap_active_hotspot">%1$s (kablosuz ağ bağlantı noktanız)</string>
-    <string name="menu_email">Geliştiriciye e-posta gönder</string>
+    <string name="menu_email">Geliştiriciye E-posta Gönder</string>
     <string name="update_auto_download">Güncellemeleri otomatik al</string>
     <string name="update_auto_download_summary">Güncellemeler otomatik olarak indirilir ve yüklenmeleri istenir</string>
     <string name="repo_provider">Depo: %s</string>
@@ -309,8 +309,8 @@
     <string name="preference_manage_installed_apps">Yüklü uygulamaları yönet</string>
     <string name="tts_category_name">Kategori %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">%2$s kategorisinde ki %1$d uygulamayı göster</item>
-        <item quantity="other">%2$s kategorisinde ki %1$d uygulamayı göster</item>
+        <item quantity="one">%2$s kategorisindeki %1$d uygulamayı göster</item>
+        <item quantity="other">%2$s kategorisindeki %1$d uygulamayı göster</item>
     </plurals>
     <string name="app__install_downloaded_update">Güncelle</string>
     <string name="app_list__name__downloading_in_progress">%1$s indiriliyor</string>
@@ -331,7 +331,7 @@
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s yüklendi</string>
     <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu? Uygulamaları yakınınızdaki kişilerden alın!</string>
-    <string name="nearby_splash__find_people_button">Yakında ki kişileri bul</string>
+    <string name="nearby_splash__find_people_button">Yakındaki kişileri bul</string>
     <string name="nearby_splash__both_parties_need_fdroid">Yakında kullanımı için her iki tarafta %1$s olmalı.</string>
     <string name="latest__empty_state__never_updated">Uygulama listeniz güncellendiğinde, en son uygulamalar burada
         görünmeli
@@ -342,7 +342,7 @@
     <string name="categories__empty_state__no_categories">Gösterilecek kategori yok</string>
     <string name="latest__empty_state__no_recent_apps">Yakın tarihli uygulama bulunamadı</string>
     <string name="menu_video">Video</string>
-    <string name="details_last_updated_today">Bu gün güncellendi</string>
+    <string name="details_last_updated_today">Bugün güncellendi</string>
     <string name="app__tts__cancel_download">İndirmeyi iptal et</string>
     <string name="app__tts__downloading_progress">İndiriliyor, %%%1$d tamamlandı</string>
     <string name="menu_license">Lisans: %s</string>
@@ -381,7 +381,7 @@
     <string name="app_details__incompatible_mismatched_signature">Kurulu sürümden farklı imza</string>
     <string name="app_details__no_versions__show_incompat_versions">Burada uyumsuz sürümleri yinede göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Uyumlu imza ile hiçbir sürüm</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Cihazla uyumlu sürüm yok</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Aygıtla uyumlu sürüm yok</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Kurulu sürüm hiçbir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, farklı bir sertifika ile imzalanmışsa, Google Play veya diğer kaynaklar aracılığıyla kurulmuş uygulamalarda oluşur.</string>
     <string name="app_list__dismiss_app_update">Güncelleme yok sayıldı</string>
     <string name="app_list__dismiss_vulnerable_app">Güvenlik açığı yok sayıldı</string>
@@ -439,11 +439,11 @@
     <string name="over_network_on_demand_summary">İndire tıkladığımda yalnızca bu bağlantıyı kullan</string>
     <string name="over_network_never_summary">Asla bu bağlantıyı kullanarak bir şeyler indirme</string>
     <string name="antidisabledalgorithmlist">Bu uygulamanın zayıf güvenlikli imzası var</string>
-    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığını içeriyor</string>
+    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığı içerir</string>
     <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
     <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
-    <string name="prompt_to_send_crash_reports_summary">Kilitlenmelerle ilgili verileri topla ve bunları geliştiriciye göndermeyi sor</string>
+    <string name="prompt_to_send_crash_reports_summary">Çökme verilerini topla ve bunları geliştiriciye göndermek için sor</string>
     <string name="install_history">Kurulum Geçmişi</string>
     <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
@@ -471,7 +471,7 @@
     <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
     <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
     <string name="not_visible_nearby">Yakın da etkin değil</string>
-    <string name="not_visible_nearby_description">Yakındaki cihazlarla takas etmeden önce cihazınızı görünür hale getirin.</string>
+    <string name="not_visible_nearby_description">Yakındaki aygıtlarla takas etmeden önce aygıtınızı görünür hale getirin.</string>
     <string name="scan_removable_storage_toast">%s taranıyor…</string>
     <string name="main_menu__updates">Güncellemeler</string>
     <string name="menu_translation">Çeviri</string>

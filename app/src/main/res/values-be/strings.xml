@@ -101,7 +101,7 @@
     <string name="search_hint">Пошук праграм</string>
     <string name="appcompatibility">Сумяшчальнасць</string>
     <string name="show_incompat_versions">Паказваць несумяшчальныя версіі</string>
-    <string name="show_incompat_versions_on">Паказваць версіі праграм несумяшчальных з прыладай</string>
+    <string name="show_incompat_versions_on">Паказваць версіі праграм, якія несумяшчальныя з прыладай</string>
     <string name="local_repo">Лакальны рэпазіторый</string>
     <string name="local_repo_running">F-Droid гатовы да абмену</string>
     <string name="touch_to_configure_local_repo">Дакраніцеся, каб праглядзець падрабязнасці і дазволіць абмен паміж праграмамі.</string>

@@ -1,4 +1,4 @@
-*防止HTTP ETag被用作跟踪cookie
+*防止 HTTP ETag 被用作跟踪 cookie
 
 *改进了屏幕截图布局
 

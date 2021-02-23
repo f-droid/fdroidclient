@@ -1,0 +1,7 @@
+* Parannettu URL-osoitteiden linkitys sovelluskuvauksissa
+
+* Parannettu SD-korttien ja USB-laitteiden lähistöllä toiminto
+
+* Uudistettu koodi ja PNGt vaihdettu vektoreiksi (kiitos @isira-seneviratne!)
+
+* Pidemmät sovelluslähde osoitteet tukemaan GitCDN/RawGit/ym toisiopalvelimet

@@ -1,0 +1,7 @@
+* Bruk av varslingskanalar for skreddarsydd kontroll (@Isira-Seneviratne)
+* Betre språkstøtte når ein har valt fleire språk (@spacecowboy/@bubu)
+* «Nyaste»-fana viser betre informasjon på ikkje-engelske einingar
+* Oppdaterte kjernebibliotek (Jackson, androidx, gradle, etc)
+* Forbetra Whitelabel-støtte
+
+Takk til dei nye bidragsytarane! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

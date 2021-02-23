@@ -1,0 +1,19 @@
+F-Droid on pakettivarasto avoimen lähdekoodin
+Android-ohjelmille. F-Droidilla on helppo etsiä, 
+asentaa ja päivittää sovelluksia.
+
+Se pystyy muodostamaan yhteyden kaikkiin F-Droid -yhteensopiviin
+sovelluslähteisiin. Oletus sovelluslähde on ylläpidetty osoitteessa
+f-droid.org, joka sisältää vain täysin avoimia ohjelmistoja.
+
+Android itsessään on avoin siinä mielessä, että voit vapaasti
+asentaa haluamiasi APK-tiedostoja mistä haluat.
+Tässä on monia hyviä syitä käyttää F-Droidia sovellusten asentamiseen:
+
+* Saat ilmoituksen, kun päivityksiä on saatavilla
+* Vaihtoehtoisesti voit ladata ja asentaa päivitykset automaattisesti
+* Halutessasi voit päivittää sovelluksen vanhempaan tai beta-versioon
+* Suodata laitteen kanssa yhteensopimattomat sovellukset
+* Etsi sovelluksia luokkien ja haun avulla
+* Sovelluksien kuvaussivuille liitetyt URL-osoitteet kehittäjille lahjoittamiseen, lähdekoodiin, käännökseen jne.
+* Pysy turvassa tarkistamalla sovelluslähteiden indeksi allekirjoitukset ja APK-hajautukset

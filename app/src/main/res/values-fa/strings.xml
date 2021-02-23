@@ -27,7 +27,7 @@
     <string name="repo_add_fingerprint">اثر انگشت (اختیاری)</string>
     <string name="menu_manage">مخزن‌ها</string>
     <string name="menu_search">جست‌وجو</string>
-    <string name="menu_share">اشتراک گذاری</string>
+    <string name="menu_share">هم‌رسانی</string>
     <string name="menu_install">نصب</string>
     <string name="menu_uninstall">حذف نصب</string>
     <string name="menu_issues">اشکال‌ها</string>
@@ -79,7 +79,7 @@
     <string name="app_incompatible">ناسازگار</string>
     <string name="app_inst_known_source">نصب شده (از %s)</string>
     <string name="app_inst_unknown_source">نصب شده (از منبع ناشناس)</string>
-    <string name="links">لینک‌ها</string>
+    <string name="links">پیوندها</string>
     <string name="more">بیشتر</string>
     <string name="less">کمتر</string>
     <string name="back">بازگشت</string>
@@ -90,7 +90,7 @@
     <string name="menu_launch">گشودن</string>
     <string name="menu_ignore_all">نادیده گرفتن تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">نادیده گرفتن این به‌روز رسانی</string>
-    <string name="menu_website">وبسایت</string>
+    <string name="menu_website">وب‌سایت</string>
     <string name="menu_changelog">گزارش دگرگونی</string>
     <string name="menu_upgrade">به‌روز رسانی</string>
     <string name="menu_bitcoin">بیت‌کوین</string>
@@ -425,8 +425,8 @@
     <string name="show_anti_feature_apps_on">نمایش برنامه‌هایی که نیاز به پادویژگی دارند</string>
     <string name="force_touch_apps">شامل برنامه‌های لمسی</string>
     <string name="force_touch_apps_on">نمایش برنامه‌هایی که نیاز به صفحهٔ لمسی دارند، فارغ از پشتیبانی سخت‌افزاری</string>
-    <string name="repo_official_mirrors">mirror‌های رسمی</string>
-    <string name="repo_user_mirrors">استفاده از mirrorها</string>
+    <string name="repo_official_mirrors">آینه‌های رسمی</string>
+    <string name="repo_user_mirrors">استفاده از آینه‌ها</string>
     <string name="use_bluetooth">استفاده از بلوتوث</string>
     <string name="swap_toast_invalid_url">نشانی نامعتبر برای تاخت زدن: %1$s</string>
     <string name="swap_toast_hotspot_enabled">نقطهٔ اتصال وای‌فای فعّال است</string>
@@ -484,13 +484,13 @@
     <string name="swap_stopping">در حال توقف…</string>
     <string name="disabled">غیر فعال شد</string>
     <string name="swap_error_cannot_start_bluetooth">ناتوانی در آغاز بلوتوث!</string>
-    <string name="nearby_splash__document_tree">حافظه USB OTG را برای mirrorها و مخازن جستجو کنید.</string>
+    <string name="nearby_splash__document_tree">حافظه USB OTG را برای آینه‌ها و مخازن جستجو کنید.</string>
     <string name="swap_toast_closing_nearby_after_timeout">ویژگی اطراف به دلیل بی‌کار بودن، بسته شد.</string>
     <string name="notification_channel_updates_description">اعلان‌های به‌روزرسانی مخزن و برنامه نمایش داده می‌شوند.</string>
     <string name="notification_channel_updates_title">به‌روزرسانی‌ها</string>
     <string name="notification_channel_installs_description">اعلان‌های نصب برنامه نمایش داده می‌شوند.</string>
     <string name="notification_channel_installs_title">نصب‌ها</string>
-    <string name="menu_opencollective">اوپن‌کالکتیو</string>
+    <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_description">نمایش آگاهی‌های مبادلهٔ کارهٔ نظیر به نظیر.</string>
     <string name="notification_channel_swaps_title">مبادله‌ها</string>
 </resources>

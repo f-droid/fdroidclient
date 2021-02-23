@@ -1,0 +1,7 @@
+* käytä ilmoituksia hienorakenteiseen hallintaan (@Isira-Seneviratne)
+* Parantunut kielivalinta useilla alueilla (@spacecowboy/@bubu)
+* Viimeisin -välilehti näyttää parempia tuloksia kuin englanninkielisillä laitteilla
+* päivitykset ydinkirjastoihin (Jackson, androidx, gradle, jne)
+* polish whitelabeling support
+
+Kiitos uudet avustajat! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

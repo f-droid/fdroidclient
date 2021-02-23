@@ -1,0 +1,7 @@
+* Benachrichtigungskanäle für fein-granularere Kontrolle verwenden (@Isira-Seneviratne)
+* Apps können über Direkttausch in den Appdetails geteilt werden (@fynngodau)
+* Neueste-Tab zeigt bessere Ergebnisse auf Nicht-Englischen Geräten an
+* Aktualisierungen der Kernbibliotheken (Jackson, androidx, gradle, etc.)
+* Verbesserung der „Whitelabeling“ Unterstützung
+
+Danke an die neuen Beitragenden! @fynngodau @projectgus @glennmen @Isira-Seneviratne

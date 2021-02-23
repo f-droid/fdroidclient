@@ -1,4 +1,4 @@
-F-Droid est 1.0!
+F-Droid est 1.0 !
 
 Cette version à les changements suivants :
 
@@ -6,7 +6,7 @@ Cette version à les changements suivants :
 
 * Résumé/descriptions d'application traduisibles
 
-* Section "Quoi de neuf" pour les nouveautés
+* Section « Quoi de neuf » pour les nouveautés
 
 * Captures d'écran et fonctionnalités graphiques
 

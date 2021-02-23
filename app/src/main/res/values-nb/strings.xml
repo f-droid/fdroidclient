@@ -8,7 +8,7 @@
     <string name="updates">Oppdateringer</string>
     <string name="other">Annet</string>
     <string name="update_interval">Intervall for automatisk oppdatering</string>
-    <string name="notify">Vis tilgjengelig oppdateringer</string>
+    <string name="notify">Vis tilgjengelige oppdateringer</string>
     <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
     <string name="system_installer">Priviligert tillegg</string>
     <string name="system_installer_on">Bruk priviligert tillegg til å installere, oppdatere, og fjerne programmer
@@ -126,7 +126,7 @@
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navigasjon</string>
     <string name="category_Phone_SMS">Telefon og SMS</string>
-    <string name="category_Reading">Lesning</string>
+    <string name="category_Reading">Lesing</string>
     <string name="category_Science_Education">Vitenskap &amp; utdanning</string>
     <string name="category_Security">Sikkerhet</string>
     <string name="category_System">System</string>
@@ -236,8 +236,8 @@
     <string name="swap_connection_misc_error">En feil inntraff under tilkobling til enheten, klarer ikke å sirkulere med
         den.
     </string>
-    <string name="install_confirm_update">Ønsker du å installere en oppdatering for denne eksisterende appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
-    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for denne innebygde appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
+    <string name="install_confirm_update">Ønsker du å installere en oppdatering for denne eksisterende appen\? Du mister ingen eksisterende data. Den oppdaterte appen får tilgang til:</string>
+    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for denne innebygde appen\? Du mister ingen eksisterende data. Den oppdaterte appen får tilgang til:</string>
     <string name="install_confirm_update_no_perms">Vil du installere en oppdatering av denne eksisterende appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="install_confirm_update_system_no_perms">Vil du installere en oppdatering av denne innebygde appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="theme_night">Nattsvart</string>
@@ -262,8 +262,7 @@
     <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet. Krever Orbot</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
     <string name="update_auto_download">Hent oppdateringer automatisk</string>
-    <string name="update_auto_download_summary">Oppdateringer blir lastet ned automatisk og du får en beskjed 
-\nom å installere dem</string>
+    <string name="update_auto_download_summary">Oppdateringer blir lastet ned automatisk og du får en beskjed om å installere dem</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
     <string name="keep_hour">Én time</string>
     <string name="keep_day">Én dag</string>
@@ -276,7 +275,7 @@
     <string name="installing">Installerer…</string>
     <string name="uninstalling">Avinstallerer…</string>
     <string name="keep_install_history">Behold installasjonshistorikk</string>
-    <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer i et privat lager</string>
+    <string name="keep_install_history_summary">Behold loggføring for alle (av)installeringer i et privat lager</string>
     <string name="update_auto_install">Installer oppdateringer automatisk</string>
     <string name="update_auto_install_summary">Last ned og oppdater apper i bakgrunnen, og vis et varsel</string>
     <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
@@ -335,7 +334,7 @@
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Vis ett %d</item>
+        <item quantity="one">Vis %d</item>
         <item quantity="other">Vis alle %d</item>
     </plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
@@ -457,7 +456,7 @@
     <string name="install_history">Installer historikk</string>
     <string name="install_history_summary">Vis privat loggføring for alle in- og av-installasjoner</string>
     <string name="send_version_and_uuid">Send versjon og UUID til tjenere</string>
-    <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID ved nadlasting. Trer i kraft ved neste programomstart.</string>
+    <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID ved nedlasting. Trer i kraft ved neste programomstart.</string>
     <string name="share_repository">Del pakkebrønn</string>
     <string name="send_install_history">Send installasjonshistorikk</string>
     <string name="send_history_csv">%s installasjonshistorikk som CSV-fil</string>
@@ -506,7 +505,7 @@
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_swaps_description">Viser P2P-programutvekslingsmerknader.</string>
+    <string name="notification_channel_swaps_description">Viser P2P-apputvekslingsvarsler.</string>
     <string name="notification_channel_swaps_title">Bytte</string>
     <string name="notification_channel_updates_description">Viser program- og pakkebrønns-oppdateringsmerknader.</string>
     <string name="notification_channel_updates_title">Oppdateringer</string>
