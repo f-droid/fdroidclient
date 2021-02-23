@@ -20,7 +20,7 @@
     <string name="no">Ne</string>
     <string name="repo_add_title">Pridėti naują saugyklą</string>
     <string name="repo_add_add">Pridėti</string>
-    <string name="cancel">Atsisakyti</string>
+    <string name="cancel">Atšaukti</string>
     <string name="enable">Įjungti</string>
     <string name="add_key">Pridėti raktą</string>
     <string name="overwrite">Perrašyti</string>
@@ -153,7 +153,7 @@
     <string name="panic_hide_summary">Programėlė pasislėps</string>
     <string name="panic_hide_warning_title">Prisiminti kaip atkūrti</string>
     <string name="hiding_calculator">Skaičiuotuvas</string>
-    <string name="hiding_dialog_title">Paslėpti %s</string>
+    <string name="hiding_dialog_title">Paslėpti %s dabar</string>
     <string name="hide_on_long_search_press_title">Paslėpti su paieškos mygtuku</string>
     <string name="hide_on_long_search_press_summary">Ilgai palaikus paieškos mygtuka programa bus paslėpta</string>
     <string name="download_404">Užklaustas failas nebuvo rastas.</string>
@@ -422,4 +422,11 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="repo_exists_add_fingerprint">%1$s jau nustatyta, tai pridės naują informaciją apie raktą.</string>
     <string name="app_list__dismiss_vulnerable_app">Pažeidžiamumo nepaisyta</string>
+    <string name="panic_add_apps_to_uninstall">Pridėti programėles išdiegimui ir ištrinimui</string>
+    <string name="panic_apps_to_uninstall">Programėlės, kurios bus išdiegtos ir visi jų duomenys pašalinti</string>
+    <string name="panic_will_be_wiped">Bus išdiegti ir visi duomenys pašalinti</string>
+    <string name="panic_settings_summary">Veiksmai, kurie turėtų būti įvykdyti nelaimės atveju</string>
+    <string name="app_details__incompatible_mismatched_signature">Skiriasi parašas nuo įdiegtos versijos</string>
+    <string name="allow_push_requests_summary">Repozitorijos metaduomenyse gali būti „push“ prašymai įdiegti ar išdiegti programėles</string>
+    <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
 </resources>
