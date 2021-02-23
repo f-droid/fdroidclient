@@ -177,6 +177,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void showSettings() {
         ViewInteraction settingsBottonNavButton = onView(
                 allOf(withText(R.string.menu_settings), isDisplayed()));
@@ -211,6 +212,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void showUpdates() {
         ViewInteraction updatesBottonNavButton = onView(allOf(withText(R.string.main_menu__updates), isDisplayed()));
         updatesBottonNavButton.perform(click());
@@ -218,6 +220,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void startSwap() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -233,6 +236,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void showCategories() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -258,6 +262,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void showLatest() {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
@@ -280,6 +285,7 @@ public class MainActivityEspressoTest {
     }
 
     @LargeTest
+    @Test
     public void showSearch() {
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(withId(R.id.fab_search)).check(doesNotExist());

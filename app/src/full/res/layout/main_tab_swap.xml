@@ -18,7 +18,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/both_parties_need_fdroid_text"
             android:layout_marginTop="36dp"
-            android:tint="?attr/mainTabSwapSplashTint"
+            app:tint="?attr/mainTabSwapSplashTint"
             android:scaleType="fitXY"
             tools:targetApi="jelly_bean"/>
 

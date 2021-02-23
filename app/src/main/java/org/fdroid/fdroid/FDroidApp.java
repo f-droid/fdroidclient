@@ -46,11 +46,10 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.collection.LongSparseArray;
 import androidx.core.content.ContextCompat;
-
 import com.nostra13.universalimageloader.cache.disc.DiskCache;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
@@ -58,7 +57,8 @@ import com.nostra13.universalimageloader.core.DefaultConfigurationFactory;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
-
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
@@ -82,16 +82,12 @@ import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 
+import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
 import java.util.UUID;
-
-import javax.microedition.khronos.opengles.GL10;
-
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 @ReportsCrashes(mailTo = BuildConfig.ACRA_REPORT_EMAIL,
         mode = ReportingInteractionMode.DIALOG,
@@ -113,7 +109,7 @@ import info.guardianproject.netcipher.proxy.OrbotHelper;
                 ReportField.STACK_TRACE,
         }
 )
-public class FDroidApp extends Application {
+public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
 
     private static final String TAG = "FDroidApp";
     private static final String ACRA_ID = BuildConfig.APPLICATION_ID + ":acra";
@@ -654,7 +650,7 @@ public class FDroidApp extends Application {
 
     /**
      * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
-     *
+     * <p>
      * Must be called on App startup and after every proxy configuration change.
      */
     public static void configureProxy(Preferences preferences) {
@@ -675,5 +671,27 @@ public class FDroidApp extends Application {
 
     public static Context getInstance() {
         return instance;
+    }
+
+    /**
+     * Set up WorkManager on demand to avoid slowing down starts.
+     *
+     * @see CleanCacheWorker
+     * @see org.fdroid.fdroid.work.PopularityContestWorker
+     * @see org.fdroid.fdroid.work.UpdateWorker
+     * @see <a href="https://developer.android.com/codelabs/android-adv-workmanager#3">example</a>
+     */
+    @NonNull
+    @Override
+    public androidx.work.Configuration getWorkManagerConfiguration() {
+        if (BuildConfig.DEBUG) {
+            return new androidx.work.Configuration.Builder()
+                    .setMinimumLoggingLevel(Log.DEBUG)
+                    .build();
+        } else {
+            return new androidx.work.Configuration.Builder()
+                    .setMinimumLoggingLevel(Log.ERROR)
+                    .build();
+        }
     }
 }

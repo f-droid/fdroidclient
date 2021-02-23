@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.File;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assume.assumeTrue;
 
 public class SanitizedFileTest {
@@ -45,4 +46,13 @@ public class SanitizedFileTest {
 
     }
 
+    @Test
+    public void testSanitizeFileName() {
+        for (String valid : new String[]{"An.stop", "a.0", "packageName", "com.this-and-that", "A_.o"}) {
+            assertEquals(valid, SanitizedFile.sanitizeFileName(valid));
+        }
+        for (String invalid : new String[]{"'--;DROP", "a.0)", "packageName\n"}) {
+            assertNotEquals(invalid, SanitizedFile.sanitizeFileName(invalid));
+        }
+    }
 }

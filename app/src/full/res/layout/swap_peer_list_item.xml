@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="?attr/listPreferredItemHeight"
@@ -20,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/circle"
-                android:tint="@color/swap_light_grey_icon"/>
+                app:tint="@color/swap_light_grey_icon"/>
 
         <ImageView
                 android:id="@+id/icon"

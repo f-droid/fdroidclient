@@ -27,6 +27,7 @@ stages:
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
+      - kernel.log
       - logcat.txt
       - app/core*
       - app/*.log
@@ -70,6 +71,10 @@ errorprone:
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
+# Run the tests in the emulator.  Each step is broken out to run on
+# its own since the CI runner can have limited RAM, and the emulator
+# can take a while to start.
+#
 # once these prove stable, the task should be switched to
 # connectedCheck to test all the build flavors
 .connected-template: &connected-template
@@ -90,16 +95,14 @@ errorprone:
     - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
+    - ./gradlew installFullDebug
+    - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
-      || ./gradlew connectedFullDebugAndroidTest $FLAG
-      || ./gradlew connectedFullDebugAndroidTest $FLAG
-      || (adb -e logcat -d > logcat.txt; exit 1)
 
-connected 22 default armeabi-v7a:
-  retry: 1
+no-accel 22 default x86:
   <<: *test-template
   <<: *connected-template
 
@@ -107,15 +110,14 @@ connected 22 default armeabi-v7a:
   tags:
     - fdroid
     - kvm
-  allow_failure: true
+  only:
+    variables:
+      - $RUN_KVM_JOBS
   <<: *test-template
   <<: *connected-template
 
-connected 26 google_apis x86:
+kvm 29 microg x86_64:
   <<: *kvm-template
-  only:
-    - branches@fdroid/fdroidclient
-    - branches@eighthave/fdroidclient
 
 deploy_nightly:
   extends: .base

@@ -949,24 +949,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         }
         apkJar.close();
 
-        /*
-         * I don't fully understand the loop used here. I've copied it verbatim
-         * from getsig.java bundled with FDroidServer. I *believe* it is taking
-         * the raw byte encoding of the certificate & converting it to a byte
-         * array of the hex representation of the original certificate byte
-         * array. This is then MD5 sum'd. It's a really bad way to be doing this
-         * if I'm right... If I'm not right, I really don't know! see lines
-         * 67->75 in getsig.java bundled with Fdroidserver
-         */
-        final byte[] fdroidSig = new byte[rawCertBytes.length * 2];
-        for (int j = 0; j < rawCertBytes.length; j++) {
-            byte v = rawCertBytes[j];
-            int d = (v >> 4) & 0xF;
-            fdroidSig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-            d = v & 0xF;
-            fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-        }
-        apk.sig = Utils.hashBytes(fdroidSig, "md5");
+        apk.sig = Utils.getsig(rawCertBytes);
     }
 
     /**

@@ -2,9 +2,9 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-
+import android.content.pm.PackageInfo;
+import android.content.pm.Signature;
 import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Random;
 import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
@@ -213,6 +214,42 @@ public class UtilsTest {
                 assertEquals(dateString + " failed to parse", 1511740800000L, date.getTime());
                 assertEquals("time zones should match", -((h * 60) + m), date.getTimezoneOffset());
             }
+        }
+    }
+
+    /**
+     * Test the replacement for the ancient fingerprint algorithm.
+     *
+     * @see org.fdroid.fdroid.data.Apk#sig
+     */
+    @Test
+    public void testGetsig() {
+        /*
+         * I don't fully understand the loop used here. I've copied it verbatim
+         * from getsig.java bundled with FDroidServer. I *believe* it is taking
+         * the raw byte encoding of the certificate & converting it to a byte
+         * array of the hex representation of the original certificate byte
+         * array. This is then MD5 sum'd. It's a really bad way to be doing this
+         * if I'm right... If I'm not right, I really don't know! see lines
+         * 67->75 in getsig.java bundled with Fdroidserver
+         */
+        for (int length : new int[]{256, 345, 1233, 4032, 12092}) {
+            byte[] rawCertBytes = new byte[length];
+            new Random().nextBytes(rawCertBytes);
+            final byte[] fdroidSig = new byte[rawCertBytes.length * 2];
+            for (int j = 0; j < rawCertBytes.length; j++) {
+                byte v = rawCertBytes[j];
+                int d = (v >> 4) & 0xF;
+                fdroidSig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+                d = v & 0xF;
+                fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+            }
+            String sig = Utils.hashBytes(fdroidSig, "md5");
+            assertEquals(sig, Utils.getsig(rawCertBytes));
+
+            PackageInfo packageInfo = new PackageInfo();
+            packageInfo.signatures = new Signature[]{new Signature(rawCertBytes)};
+            assertEquals(sig, Utils.getPackageSig(packageInfo));
         }
     }
 }
