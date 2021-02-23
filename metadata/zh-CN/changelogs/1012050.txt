@@ -1,0 +1,11 @@
+* 应用描述本地化完全遵照安卓语言设置中的语言列表
+
+* "最新" 选项卡显示基于语言设置的应用程序，最新的优先 (@TheLastProject @IzzySoft)
+
+* 主题支持现代化，并与内置的安卓主题关联 (@proletarius101)
+
+* 大幅改进搜索结果 (@Tvax @gcbrown76)
+
+* 让安卓系统高效地调度后台缓存清理操作 (@Isira-Seneviratne)
+
+* 大改仓库 URL 解析方法，以更稳定地添加仓库 (@projectgus)
