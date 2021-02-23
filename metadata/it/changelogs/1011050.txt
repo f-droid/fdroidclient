@@ -1,0 +1,7 @@
+* Migliorato collegamento di URL nelle descrizioni di app
+
+* Migliorata gestione di schede SD e di USG-OTG in "Qui vicino"
+
+* Modernizzato il codice e convertite le PNG in vettoriali (grazie @isira-seneviratne!)
+
+* Riconosce URL di repo più lunghi per supportare i mirror GitCDN/RawGit/ecc
