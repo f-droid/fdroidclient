@@ -80,7 +80,7 @@
     <string name="skip">Atla</string>
     <string name="proxy">Vekil</string>
     <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
-    <string name="enable_proxy_summary">Tüm ağ isteklerini HTTP Vekiline yapılandır</string>
+    <string name="enable_proxy_summary">HTTP Vekilini tüm ağ istekleri için yapılandır</string>
     <string name="proxy_host">Vekil Sunucu</string>
     <string name="proxy_host_summary">Vekil sunucu adresi (örn. 127.0.0.1)</string>
     <string name="proxy_port">Vekil Bağlantı Noktası</string>
@@ -214,8 +214,8 @@
     <string name="install_confirm">erişmesi gerekenler</string>
     <string name="install_confirm_update">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
     <string name="install_confirm_update_system">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
-    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
-    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz silinmeyecektir. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz kaybolmayacaktır. Herhangi bir özel erişim gerektirmez.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
@@ -309,8 +309,8 @@
     <string name="preference_manage_installed_apps">Yüklü uygulamaları yönet</string>
     <string name="tts_category_name">Kategori %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">%2$s kategorisinde ki %1$d uygulamayı göster</item>
-        <item quantity="other">%2$s kategorisinde ki %1$d uygulamayı göster</item>
+        <item quantity="one">%2$s kategorisindeki %1$d uygulamayı göster</item>
+        <item quantity="other">%2$s kategorisindeki %1$d uygulamayı göster</item>
     </plurals>
     <string name="app__install_downloaded_update">Güncelle</string>
     <string name="app_list__name__downloading_in_progress">%1$s indiriliyor</string>
@@ -342,7 +342,7 @@
     <string name="categories__empty_state__no_categories">Gösterilecek kategori yok</string>
     <string name="latest__empty_state__no_recent_apps">Yakın tarihli uygulama bulunamadı</string>
     <string name="menu_video">Video</string>
-    <string name="details_last_updated_today">Bu gün güncellendi</string>
+    <string name="details_last_updated_today">Bugün güncellendi</string>
     <string name="app__tts__cancel_download">İndirmeyi iptal et</string>
     <string name="app__tts__downloading_progress">İndiriliyor, %%%1$d tamamlandı</string>
     <string name="menu_license">Lisans: %s</string>
