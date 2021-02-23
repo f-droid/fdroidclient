@@ -1,0 +1,7 @@
+* Transformation en lien améliorée des URL dans les descriptions des applications
+
+* Gestion améliorée des cartes mémoires et de l’USB OTG à proximité
+
+* Code modernisé et bascule des PNG vers images vectorielles (merci @isira-seneviratne !)
+
+* Reconnait de plus longues URL pour prendre en charge les miroirs GitCDN, RawGit, etc.
