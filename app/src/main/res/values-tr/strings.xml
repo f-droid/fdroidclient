@@ -4,7 +4,7 @@
     <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de kurulsun mu\?</string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
-    <string name="enable_nfc_send">NFC gönderimini etkinleştir…</string>
+    <string name="enable_nfc_send">NFC ile göndermeyi etkinleştir…</string>
     <string name="cache_downloaded">Önbelleklenen uygulamaları sakla</string>
     <string name="updates">Güncellemeler</string>
     <string name="other">Diğer</string>
@@ -19,7 +19,7 @@
     <string name="app_details">Uygulama ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
     <string name="about_title">F-Droid hakkında</string>
-    <string name="about_site">İnternet sitesi</string>
+    <string name="about_site">Web Sitesi</string>
     <string name="about_version">Sürüm</string>
     <string name="app_installed">Kurulu</string>
     <string name="app_not_installed">Kurulu değil</string>
@@ -49,7 +49,7 @@
     <string name="menu_uninstall">Kaldır</string>
     <string name="menu_ignore_all">Tüm güncellemeleri yoksay</string>
     <string name="menu_ignore_this">Bu güncellemeyi yoksay</string>
-    <string name="menu_website">İnternet sitesi</string>
+    <string name="menu_website">Web Sitesi</string>
     <string name="menu_issues">Sorunlar</string>
     <string name="menu_source">Kaynak Kodu</string>
     <string name="menu_upgrade">Güncelle</string>
@@ -70,7 +70,7 @@
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
     <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine müsaade etmek için dokunun.</string>
-    <string name="deleting_repo">Mevcut depo siliniyor…</string>
+    <string name="deleting_repo">Geçerli depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış dizin dosyası yazılıyor (index.jar)…</string>
     <string name="linking_apks">APK\'ler depoya bağlanıyor…</string>
@@ -154,7 +154,7 @@
     <string name="bad_fingerprint">Yanlış parmak izi</string>
     <string name="invalid_url">Bu geçerli bir URL değil.</string>
     <string name="menu_settings">Ayarlar</string>
-    <string name="menu_changelog">Değişiklikler</string>
+    <string name="menu_changelog">Değişiklik Günlüğü</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -243,7 +243,7 @@
     <string name="swap_join_same_wifi_desc">Kablosuz ağla takaslamak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir kablosuz ağ bağlantı noktası oluşturabilir.</string>
     <string name="swap_join_this_hotspot">Arkadaşınızın bağlantı noktanıza bağlanmasına yardım edin</string>
     <string name="swap_active_hotspot">%1$s (kablosuz ağ bağlantı noktanız)</string>
-    <string name="menu_email">Geliştiriciye e-posta gönder</string>
+    <string name="menu_email">Geliştiriciye E-posta Gönder</string>
     <string name="update_auto_download">Güncellemeleri otomatik al</string>
     <string name="update_auto_download_summary">Güncellemeler otomatik olarak indirilir ve yüklenmeleri istenir</string>
     <string name="repo_provider">Depo: %s</string>
@@ -439,11 +439,11 @@
     <string name="over_network_on_demand_summary">İndire tıkladığımda yalnızca bu bağlantıyı kullan</string>
     <string name="over_network_never_summary">Asla bu bağlantıyı kullanarak bir şeyler indirme</string>
     <string name="antidisabledalgorithmlist">Bu uygulamanın zayıf güvenlikli imzası var</string>
-    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığını içeriyor</string>
+    <string name="antiknownvulnlist">Bu uygulama bilinen bir güvenlik açığı içerir</string>
     <string name="hide_all_notifications">Tüm bildirimleri gizle</string>
     <string name="hide_all_notifications_summary">Tüm eylemlerin durum çubuğunda ve bildirim çekmecesinde gösterilmesini önle.</string>
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
-    <string name="prompt_to_send_crash_reports_summary">Çökme verilerini topla ve bunları geliştirmene göndermek için sor</string>
+    <string name="prompt_to_send_crash_reports_summary">Çökme verilerini topla ve bunları geliştiriciye göndermek için sor</string>
     <string name="install_history">Kurulum Geçmişi</string>
     <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>

@@ -1,0 +1,5 @@
+* Uygulama açıklama yerelleştirmesi artık Android Dil Ayarlarındaki dil listelerine tam olarak uyar
+* En Yeniler Sekmesi, sonuçları Dil Ayarlarına göre listeler ve artık önce en yeniler olarak gösterir (@TheLastProject @IzzySoft)
+* Tema desteği güncellendi ve yerleşik Android temalarına bağlandı (@proletarius101)
+* Arama sonuçları büyük ölçüde iyileştirildi (@Tvax @gcbrown76)
+* Android'in arka planda önbellek temizleme işlemlerini verimli bir şekilde planlamasına izin ver (@Isira-Seneviratne)
