@@ -79,7 +79,7 @@
             android:paddingRight="8dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:src="@drawable/ic_cancel"
+            app:srcCompat="@drawable/ic_cancel"
             android:contentDescription="@string/cancel"
             android:background="@android:color/transparent"
             android:visibility="gone"
