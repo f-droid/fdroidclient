@@ -2,7 +2,7 @@ include:
   - template: Security/SAST.gitlab-ci.yml
 
 variables:
-  SAST_DEFAULT_ANALYZERS: mobsf
+  SAST_DEFAULT_ANALYZERS: mobsf, spotbugs
   SAST_EXPERIMENTAL_FEATURES: 'true'
 
 stages:
@@ -201,10 +201,16 @@ deploy_nightly:
     - ./gradlew assembleDebug
     - fdroid nightly -v
 
-# Explicitly allow downloading the report
+
 sast:
+  # Explicitly allow downloading the report
   artifacts:
     paths:
       - gl-sast-report.json
   before_script:
+    # MobSF expects AndroidManifest.xml to be at either the project root
+    # or app/src/main/AndroidManifest.xml. If it's not at one of those locations,
+    # then we will copy it over so that analysis may continue.
+    # https:#github.com/MobSF/Mobile-Security-Framework-MobSF/issues/1553
+
     - cp app/src/main/AndroidManifest.xml .
