@@ -299,9 +299,10 @@
     <string name="app_list__name__successfully_installed">%1$s установлено</string>
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Посмотреть %d приложение</item>
-        <item quantity="few">Посмотреть %d приложения</item>
-        <item quantity="many">Посмотреть %d приложений</item>
+        <item quantity="one">Смотреть %d</item>
+        <item quantity="few">Смотреть все %d</item>
+        <item quantity="many">Смотреть все %d</item>
+        <item quantity="other">Смотреть все %d</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей поблизости!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
