@@ -2,7 +2,8 @@ include:
   - template: Security/SAST.gitlab-ci.yml
 
 variables:
-  SAST_DEFAULT_ANALYZERS: mobsf, spotbugs
+  SAST_DEFAULT_ANALYZERS: mobsf
+  SAST_EXPERIMENTAL_FEATURES: 'true'
 
 stages:
   - build
