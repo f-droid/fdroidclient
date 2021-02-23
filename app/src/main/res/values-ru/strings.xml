@@ -470,7 +470,7 @@
     <string name="allow_push_requests_summary">Метаданные репозитория могут включать push-запросы на установку или удаление приложений</string>
     <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
     <string name="send_install_history">Отправить историю установок</string>
-    <string name="send_history_csv">История установок %s в виде CSV-файл</string>
+    <string name="send_history_csv">История установок %s в виде CSV-файла</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
     <string name="send_installed_apps">Поделиться установленными приложениями</string>
     <string name="send_installed_apps_csv">Приложения, установленные в F-Droid как файл CSV</string>
@@ -496,9 +496,9 @@
     <string name="app_list__dismiss_installing_app">Установка отменена</string>
     <string name="menu_select_for_wipe">Выберите для очистки</string>
     <string name="try_again">Повторить попытку</string>
-    <string name="panic_will_be_wiped">Будут удалены, а все данные стёрты</string>
+    <string name="panic_will_be_wiped">Будут удалены, а все данные уничтожены</string>
     <string name="panic_apps_to_uninstall">Приложения, которые будут удалены, а все данные вычищены</string>
-    <string name="panic_add_apps_to_uninstall">Добавить приложения, которые будут удалены, и вычищены</string>
+    <string name="panic_add_apps_to_uninstall">Добавить приложения, которые будут удалены и вычищены</string>
     <string name="panic_reset_repos_title">Сбросить репозитории</string>
     <string name="panic_reset_repos_summary">Принудительно вернуть настройки репозитория к значениям по умолчанию</string>
     <string name="swap_visible_hotspot">Видимо через точку доступа</string>
