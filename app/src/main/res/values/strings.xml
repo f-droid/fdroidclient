@@ -28,11 +28,19 @@
         drawer.
     </string>
     <string name="send_install_history">Send Install History</string>
+    <string name="send_fdroid_metrics_report">Send %s Metrics Report</string>
     <string name="send_history_csv">%s install history as CSV file</string>
+    <string name="send_fdroid_metrics_json">%s metrics report as JSON file</string>
     <string name="install_history">Install history</string>
+    <string name="install_history_and_metrics">Install history and metrics</string>
+    <string name="fdroid_metrics_report">%s Metrics Report</string>
     <string name="install_history_summary">View the private log of all installs and uninstalls</string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
+    <string name="send_to_fdroid_metrics">Send usage data</string>
+    <string name="send_to_fdroid_metrics_summary">Sends anonymous data weekly to F-Droid Metrics (requires "Keep install history")</string>
+    <!-- message shown as a "toast" when the user enables the Send to F-Droid Metrics preference -->
+    <string name="toast_metrics_in_install_history">The %s Metric report is viewable in the Install History viewer</string>
     <string name="send_version_and_uuid">Send version and UUID to servers</string>
     <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when
         downloading, takes affect next app restart.</string>
@@ -244,6 +252,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="main_menu__swap_nearby">Nearby</string>
     <!-- The bottom bar button label.  The updates tab isn't only about software updates. It is also about queued offline installs, in progress installs, known vulnerabilities, and in the future, also donation reminders and other things. In English, you can also say "do you have an update on your progress?" or "Keep me updated on how things are going". That combined with "software updates" is why the tab is called "Updates". Ideally, the Updates Tab would actually be a different word than the word used for "software update" to highlight that the Updates Tab is more than just software updates. -->
     <string name="main_menu__updates">Updates</string>
+
+    <!-- Used to switch the Install History viewer to showing the FDroid Metrics report -->
+    <string name="menu_show_fdroid_metrics_report">Show metrics report</string>
+    <!-- Used to switch the FDroid Metrics report to showing the Install History viewer -->
+    <string name="menu_show_install_history">Show install history</string>
 
     <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
     <string name="latest__empty_state__never_updated">Once your list of apps has been updated, the latest apps should

@@ -115,6 +115,10 @@ public class FDroidMetricsWorker extends Worker {
         Utils.debugLog(TAG, "Scheduled periodic work");
     }
 
+    public static void cancel(final Context context) {
+        WorkManager.getInstance(context).cancelUniqueWork(TAG);
+    }
+
     @NonNull
     @Override
     public Result doWork() {

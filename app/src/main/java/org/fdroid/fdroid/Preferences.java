@@ -28,11 +28,10 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-
-import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -95,6 +94,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
+    public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
@@ -361,6 +361,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean isKeepingInstallHistory() {
         return preferences.getBoolean(PREF_KEEP_INSTALL_HISTORY, IGNORED_B);
+    }
+
+    public boolean isSendingToFDroidMetrics() {
+        return isKeepingInstallHistory() && preferences.getBoolean(PREF_SEND_TO_FDROID_METRICS, IGNORED_B);
     }
 
     public boolean showIncompatibleVersions() {
