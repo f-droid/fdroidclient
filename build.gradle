@@ -8,13 +8,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
-allprojects {
-    repositories {
-        mavenCentral()
-        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
-        jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
-    }
-}
+
 
 plugins {
   id "org.sonarqube" version "3.1.1"
@@ -25,4 +19,11 @@ sonarqube {
     property "sonar.projectKey", "f-droid-test-group_fdroidclient"
     property "sonar.organization", "f-droid-test-group"
   }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
+        jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
+    }
 }
