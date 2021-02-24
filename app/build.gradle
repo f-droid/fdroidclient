@@ -1,6 +1,14 @@
+plugins {
+    id('com.android.application')
+    id('checkstyle')
+    id('pmd')
+    id("net.ltgt.errorprone") version "1.3.0" apply false
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
+apply plugin: 'net.ltgt.errorprone'
 
 /* gets the version name from the latest Git tag */
 def getVersionName = { ->
@@ -191,6 +199,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.work:work-testing:2.4.0'
+
+    String errorproneVersion = "2.5.1"
+    String errorproneJavacVersion = "9+181-r4173-1"
+
+    errorprone "com.google.errorprone:error_prone_core:$errorproneVersion"
+    errorproneJavac "com.google.errorprone:javac:$errorproneJavacVersion"
 }
 
 checkstyle {
@@ -227,3 +241,23 @@ task pmdTest(type: Pmd) {
 }
 
 task pmd(dependsOn: [pmdMain, pmdTest]) {}
+
+
+tasks.withType(JavaCompile).configureEach {
+    options.errorprone.errorproneArgs.addAll(
+        '-XepAllDisabledChecksAsWarnings',
+        '-Xep:CatchFail:OFF',
+        '-Xep:ClassCanBeStatic:OFF',
+        '-Xep:DateFormatConstant:OFF',
+        '-Xep:DefaultCharset:OFF',
+        '-Xep:FormatString:OFF',
+        '-Xep:JavaLangClash:OFF',
+        '-Xep:MissingCasesInEnumSwitch:OFF',
+        '-Xep:MissingOverride:OFF',
+        '-Xep:NonAtomicVolatileUpdate:OFF',
+        '-Xep:OperatorPrecedence:OFF',
+        '-Xep:StringSplitter:OFF',
+        '-Xep:UnsynchronizedOverridesSynchronized:OFF',
+    )
+    options.errorprone.enabled = false
+}
