@@ -15,3 +15,14 @@ allprojects {
         jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
     }
 }
+
+plugins {
+  id "org.sonarqube" version "3.1.1"
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "f-droid-test-group_fdroidclient"
+    property "sonar.organization", "f-droid-test-group"
+  }
+}
