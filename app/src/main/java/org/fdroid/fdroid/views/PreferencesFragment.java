@@ -458,32 +458,32 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
     private final Preference.OnPreferenceChangeListener useTorChangedListener =
             new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object enabled) {
-            if ((Boolean) enabled) {
-                enableProxyCheckPref.setChecked(false);
-                final AppCompatActivity activity = (AppCompatActivity) getActivity();
-                if (!OrbotHelper.isOrbotInstalled(activity)) {
-                    Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
-                    activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object enabled) {
+                    if ((Boolean) enabled) {
+                        enableProxyCheckPref.setChecked(false);
+                        final AppCompatActivity activity = (AppCompatActivity) getActivity();
+                        if (!OrbotHelper.isOrbotInstalled(activity)) {
+                            Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
+                            activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
+                        }
+                        // NetCipher gets configured to use Tor in onPause()
+                        // via a call to FDroidApp.configureProxy()
+                    }
+                    return true;
                 }
-                // NetCipher gets configured to use Tor in onPause()
-                // via a call to FDroidApp.configureProxy()
-            }
-            return true;
-        }
-    };
+            };
 
     private final Preference.OnPreferenceChangeListener proxyEnabledChangedListener =
             new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object enabled) {
-            if ((Boolean) enabled) {
-                useTorCheckPref.setChecked(false);
-            }
-            return true;
-        }
-    };
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object enabled) {
+                    if ((Boolean) enabled) {
+                        useTorCheckPref.setChecked(false);
+                    }
+                    return true;
+                }
+            };
 
     @Override
     public void onResume() {
