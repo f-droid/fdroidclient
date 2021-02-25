@@ -555,6 +555,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                         getContext().getString(R.string.app_name));
                 Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                 installHistoryPref.setTitle(R.string.install_history_and_metrics);
+                Intent intent = new Intent(getActivity(), InstallHistoryActivity.class);
+                intent.putExtra(InstallHistoryActivity.EXTRA_SHOW_FDROID_METRICS, true);
+                startActivity(intent);
             } else {
                 installHistoryPref.setTitle(R.string.install_history);
             }

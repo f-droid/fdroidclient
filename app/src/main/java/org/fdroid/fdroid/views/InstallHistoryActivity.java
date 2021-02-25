@@ -47,6 +47,8 @@ import java.nio.charset.Charset;
 public class InstallHistoryActivity extends AppCompatActivity {
     public static final String TAG = "InstallHistoryActivity";
 
+    public static final String EXTRA_SHOW_FDROID_METRICS = "showFDroidMetrics";
+
     private boolean showingInstallHistory;
     private Toolbar toolbar;
     private MenuItem showMenuItem;
@@ -65,7 +67,12 @@ public class InstallHistoryActivity extends AppCompatActivity {
         textView = findViewById(R.id.text);
         appName = getString(R.string.app_name);
 
-        showInstallHistory();
+        Intent intent = getIntent();
+        if (intent != null && intent.getBooleanExtra(EXTRA_SHOW_FDROID_METRICS, false)) {
+            showFDroidMetricsReport();
+        } else {
+            showInstallHistory();
+        }
     }
 
     private void showInstallHistory() {
