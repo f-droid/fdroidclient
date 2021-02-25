@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">Aaladaadu kuma jirto WiFi-ga kaydka gudaha eed hada ku dartay! Iskuday inaad ku biirto WiFi-gan: %s</string>
     <string name="repo_last_update">Midkii udambeeyay</string>
@@ -16,14 +16,14 @@
     <string name="notification_action_install">Ku</string>
     <string name="swap_dont_show_again">Mardambe tan ha itusi</string>
     <string name="swap_welcome">Kusoo dhawoow F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Sayniska &amp; Waxbarashada</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Taleefanka &amp;</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Dhex</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Lagu</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Lacag</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Farshaxa</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Geemamka</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Ku</string>
+    <string name="category_Science_Education">Sayniska &amp; Waxbarashada</string>
+    <string name="category_Phone_SMS">Taleefanka &amp;</string>
+    <string name="category_Navigation">Dhex</string>
+    <string name="category_Multimedia">Lagu</string>
+    <string name="category_Money">Lacag</string>
+    <string name="category_Graphics">Farshaxa</string>
+    <string name="category_Games">Geemamka</string>
+    <string name="category_Connectivity">Ku</string>
     <string name="pref_language_default">Siday Aaldu</string>
     <string name="skip">Ka</string>
     <string name="next">Ka</string>
@@ -44,19 +44,19 @@
     <string name="notification_title_single_update_available">Cusboonaysiin ayaa diyaar ah</string>
     <string name="crash_dialog_title">F-Droid way khalkhashay</string>
     <string name="swap_send_fdroid">Dir F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">Aalada</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Ciyaaraha &amp; Caafimaadka</string>
+    <string name="category_System">Aalada</string>
+    <string name="category_Sports_Health">Ciyaaraha &amp; Caafimaadka</string>
     <string name="repo_details">Qayb</string>
     <string name="updates__tts__download_app">Daji</string>
     <string name="notification_action_cancel">Ka noqo</string>
     <string name="notification_action_update">Cusboonaysiin</string>
     <string name="newPerms">Cusub</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Qorista</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Wakhtiga</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Amniga</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Akhriska</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Khadka</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Hormarka</string>
+    <string name="category_Writing">Qorista</string>
+    <string name="category_Time">Wakhtiga</string>
+    <string name="category_Security">Amniga</string>
+    <string name="category_Reading">Akhriska</string>
+    <string name="category_Internet">Khadka</string>
+    <string name="category_Development">Hormarka</string>
     <string name="pref_language">Luuqada</string>
     <string name="main_menu__categories">Qaybaha</string>
     <string name="menu_upgrade">Cusboonaysii</string>

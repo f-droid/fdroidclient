@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="menu_issues">ربړې</string>
     <string name="menu_video">وېډيو</string>
     <string name="menu_website">ګورتځی</string>
@@ -8,20 +8,20 @@
     <string name="swap_choose_apps">کاریالونه ټاکل</string>
     <string name="swap_wifi_device_name">د وزلې نوم</string>
     <string name="swap_welcome">اېف-ډروېډ ته ښه راغلاست!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">ليکنه</string>
-    <string tools:ignore="UnusedResources" name="category_Time">مهال</string>
-    <string tools:ignore="UnusedResources" name="category_System">غونډال</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">کړاو او روغتيا</string>
-    <string tools:ignore="UnusedResources" name="category_Security">خونديينه</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">پوهه او زده کړه</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">لوستنه</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">لرغږون او استوزې</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">چلونه</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">ګڼرسنۍ</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">نړیجال</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">كښنيزونه</string>
-    <string tools:ignore="UnusedResources" name="category_Games">لوبې</string>
-    <string tools:ignore="UnusedResources" name="category_Development">پرمختيا</string>
+    <string name="category_Writing">ليکنه</string>
+    <string name="category_Time">مهال</string>
+    <string name="category_System">غونډال</string>
+    <string name="category_Sports_Health">کړاو او روغتيا</string>
+    <string name="category_Security">خونديينه</string>
+    <string name="category_Science_Education">پوهه او زده کړه</string>
+    <string name="category_Reading">لوستنه</string>
+    <string name="category_Phone_SMS">لرغږون او استوزې</string>
+    <string name="category_Navigation">چلونه</string>
+    <string name="category_Multimedia">ګڼرسنۍ</string>
+    <string name="category_Internet">نړیجال</string>
+    <string name="category_Graphics">كښنيزونه</string>
+    <string name="category_Games">لوبې</string>
+    <string name="category_Development">پرمختيا</string>
     <string name="pref_language_default">د غونډال تلواله</string>
     <string name="pref_language">ژبه</string>
     <string name="next">بل</string>

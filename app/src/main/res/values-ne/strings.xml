@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="updates__tts__download_app">डाउनलोड</string>
     <string name="app_list__name__successfully_installed">%1$s स्थापित छ</string>
     <string name="app_list__name__downloading_in_progress">%1$s डाउनलोड गर्दै</string>
@@ -11,19 +11,19 @@
     <string name="newPerms">नयाँ</string>
     <string name="swap_dont_show_again">यो फेरि नदेखाउनुहोस्</string>
     <string name="swap_welcome">अफ्-ड्रोइड्मा तपाईंलाई स्वागत छ!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">लेखन</string>
-    <string tools:ignore="UnusedResources" name="category_Time">समय</string>
-    <string tools:ignore="UnusedResources" name="category_Security">सुरक्षा</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">विज्ञान र शिक्षा</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">पढ्दै</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">फोन र एसएमएस</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">नेभिगेसन</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">मल्टिमेडिया</string>
-    <string tools:ignore="UnusedResources" name="category_Money">पैसा</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">इन्टरनेट</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">ग्राफिक्स</string>
-    <string tools:ignore="UnusedResources" name="category_Games">खेलहरू</string>
-    <string tools:ignore="UnusedResources" name="category_Development">विकास</string>
+    <string name="category_Writing">लेखन</string>
+    <string name="category_Time">समय</string>
+    <string name="category_Security">सुरक्षा</string>
+    <string name="category_Science_Education">विज्ञान र शिक्षा</string>
+    <string name="category_Reading">पढ्दै</string>
+    <string name="category_Phone_SMS">फोन र एसएमएस</string>
+    <string name="category_Navigation">नेभिगेसन</string>
+    <string name="category_Multimedia">मल्टिमेडिया</string>
+    <string name="category_Money">पैसा</string>
+    <string name="category_Internet">इन्टरनेट</string>
+    <string name="category_Graphics">ग्राफिक्स</string>
+    <string name="category_Games">खेलहरू</string>
+    <string name="category_Development">विकास</string>
     <string name="pref_language_default">प्रणाली पूर्वनिर्धारित</string>
     <string name="pref_language">भाषा</string>
     <string name="skip">छोड्नुहोस्</string>

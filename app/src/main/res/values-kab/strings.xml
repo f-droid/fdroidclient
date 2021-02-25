@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="updates">Amucceḍ</string>
     <string name="ok">IH</string>
     <string name="yes">Ih</string>
@@ -374,7 +374,7 @@
     <string name="crash_dialog_text">Tella-d tuccḍa iɣef ur nebni tesseḥbes asnas. Tebɣiḍ ad tazneḍ ifatusen akken ad tɛawneḍ deg useggem n wugur\?</string>
     <string name="swap_cant_find_peers">Ur d-tufiḍ ara win.tin i ɣef tettnadiḍ\?</string>
     <string name="swap_visible_bluetooth">Yettban s Bluetooth</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Aggan</string>
+    <string name="category_Theming">Aggan</string>
     <string name="antinosourcesince">Tangalt taɣbalut dayen ur telli ara, ulac ileqman.</string>
     <string name="antidisabledalgorithmlist">Asnas-a yesɛa azmul i ixuṣṣen deg tɣellist</string>
     <string name="antinonfreeassetslist">Asnas-a yegber iḥricen ur nelli ara d ilelliyen</string>
