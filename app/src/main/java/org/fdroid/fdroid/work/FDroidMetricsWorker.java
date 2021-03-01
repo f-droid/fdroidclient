@@ -79,7 +79,7 @@ public class FDroidMetricsWorker extends Worker {
 
     static SimpleDateFormat weekFormatter = new SimpleDateFormat("yyyy ww", Locale.ENGLISH);
 
-    private static final ArrayList<MatomoEvent> events = new ArrayList<>();
+    private static final ArrayList<MatomoEvent> EVENTS = new ArrayList<>();
 
     public FDroidMetricsWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -259,11 +259,11 @@ public class FDroidMetricsWorker extends Worker {
             }
         });
         App[] installedApps = InstalledAppProvider.Helper.all(context);
-        events.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
+        EVENTS.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
                 Preferences.get().isPrivilegedInstallerEnabled()));
-        events.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
+        EVENTS.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
         if (Build.VERSION.SDK_INT >= 21) {
-            events.add(getDeviceEvent(weekStart, "Build.SUPPORTED_ABIS", Arrays.toString(Build.SUPPORTED_ABIS)));
+            EVENTS.add(getDeviceEvent(weekStart, "Build.SUPPORTED_ABIS", Arrays.toString(Build.SUPPORTED_ABIS)));
         }
 
         for (PackageInfo packageInfo : packageInfoList) {
@@ -283,8 +283,8 @@ public class FDroidMetricsWorker extends Worker {
                 addLastUpdateTimeEvent(pm, packageInfo);
             }
         }
-        events.addAll(parseInstallHistoryCsv(context, weekStart));
-        cleanInsightsReport.events = events.toArray(new MatomoEvent[0]);
+        EVENTS.addAll(parseInstallHistoryCsv(context, weekStart));
+        cleanInsightsReport.events = EVENTS.toArray(new MatomoEvent[0]);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
@@ -330,13 +330,13 @@ public class FDroidMetricsWorker extends Worker {
         matomoEvent.action = action;
         matomoEvent.name = pm.getInstallerPackageName(packageInfo.packageName);
         matomoEvent.times = 1;
-        for (MatomoEvent me : events) {
+        for (MatomoEvent me : EVENTS) {
             if (me.equals(matomoEvent)) {
                 me.times++;
                 return;
             }
         }
-        events.add(matomoEvent);
+        EVENTS.add(matomoEvent);
     }
 
     /**
