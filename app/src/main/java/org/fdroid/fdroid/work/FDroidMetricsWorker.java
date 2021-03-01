@@ -22,7 +22,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.system.Os;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.work.Constraints;
@@ -78,6 +78,8 @@ public class FDroidMetricsWorker extends Worker {
     public static final String TAG = "FDroidMetricsWorker";
 
     static SimpleDateFormat weekFormatter = new SimpleDateFormat("yyyy ww", Locale.ENGLISH);
+
+    private static final ArrayList<MatomoEvent> events = new ArrayList<>();
 
     public FDroidMetricsWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -257,7 +259,6 @@ public class FDroidMetricsWorker extends Worker {
             }
         });
         App[] installedApps = InstalledAppProvider.Helper.all(context);
-        final ArrayList<MatomoEvent> events = new ArrayList<>();
         events.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
                 Preferences.get().isPrivilegedInstallerEnabled()));
         events.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
@@ -276,21 +277,10 @@ public class FDroidMetricsWorker extends Worker {
             if (!found) continue;
 
             if (isTimestampInReportingWeek(weekStart, packageInfo.firstInstallTime)) {
-                events.add(getFirstInstallEvent(packageInfo));
+                addFirstInstallEvent(pm, packageInfo);
             }
             if (isTimestampInReportingWeek(weekStart, packageInfo.lastUpdateTime)) {
-                events.add(getInstallerEvent(pm, packageInfo));
-            }
-            if (Build.VERSION.SDK_INT >= 21) {
-                try {
-                    long atime = Os.lstat(packageInfo.applicationInfo.sourceDir).st_atime;
-                    if (isTimestampInReportingWeek(atime)) {
-                        events.add(getApkOpenedEvent(atime, packageInfo));
-                    }
-                } catch (Exception e) {
-                    // TODO replace with ErrnoException when using minSdkVersion 19 or higher
-                    e.printStackTrace();
-                }
+                addLastUpdateTimeEvent(pm, packageInfo);
             }
         }
         events.addAll(parseInstallHistoryCsv(context, weekStart));
@@ -325,31 +315,28 @@ public class FDroidMetricsWorker extends Worker {
         final String ua = Utils.getUserAgent();
     }
 
-    private static MatomoEvent getApkOpenedEvent(long timestamp, PackageInfo packageInfo) {
-        return getApkEvent(timestamp, packageInfo, "opened");
+    private static void addFirstInstallEvent(PackageManager pm, PackageInfo packageInfo) {
+        addInstallerEvent(pm, packageInfo, "PackageInfo.firstInstall", packageInfo.firstInstallTime);
     }
 
-    private static MatomoEvent getFirstInstallEvent(PackageInfo packageInfo) {
-        return getApkEvent(packageInfo.firstInstallTime, packageInfo, "PackageInfo.firstInstall");
+    private static void addLastUpdateTimeEvent(PackageManager pm, PackageInfo packageInfo) {
+        addInstallerEvent(pm, packageInfo, "PackageInfo.lastUpdateTime", packageInfo.lastUpdateTime);
     }
 
-    private static MatomoEvent getApkEvent(long timestamp, PackageInfo packageInfo, String action) {
+    private static void addInstallerEvent(
+            PackageManager pm, PackageInfo packageInfo, String action, long timestamp) {
         MatomoEvent matomoEvent = new MatomoEvent(timestamp);
         matomoEvent.category = "APK";
         matomoEvent.action = action;
-        matomoEvent.name = packageInfo.packageName;
-        return matomoEvent;
-    }
-
-    /**
-     * Which app store installed APKs.
-     */
-    private static MatomoEvent getInstallerEvent(PackageManager pm, PackageInfo packageInfo) {
-        MatomoEvent matomoEvent = new MatomoEvent(packageInfo.lastUpdateTime);
-        matomoEvent.category = "getInstallerPackageName";
-        matomoEvent.action = pm.getInstallerPackageName(packageInfo.packageName);
-        matomoEvent.name = packageInfo.packageName;
-        return matomoEvent;
+        matomoEvent.name = pm.getInstallerPackageName(packageInfo.packageName);
+        matomoEvent.times = 1;
+        for (MatomoEvent me : events) {
+            if (me.equals(matomoEvent)) {
+                me.times++;
+                return;
+            }
+        }
+        events.add(matomoEvent);
     }
 
     /**
@@ -360,6 +347,7 @@ public class FDroidMetricsWorker extends Worker {
         matomoEvent.category = "device";
         matomoEvent.action = action;
         matomoEvent.name = String.valueOf(name);
+        matomoEvent.times = 1;
         return matomoEvent;
     }
 
@@ -384,7 +372,7 @@ public class FDroidMetricsWorker extends Worker {
         @JsonProperty
         final long period_end;
         @JsonProperty
-        final long times = 1; // NOPMD
+        long times = 0;
         @JsonProperty
         String value;
 
@@ -398,6 +386,19 @@ public class FDroidMetricsWorker extends Worker {
             category = "package";
             action = rawEvent.action;
             name = rawEvent.applicationId;
+            times = 1;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            MatomoEvent that = (MatomoEvent) o;
+            return period_start == that.period_start &&
+                    period_end == that.period_end &&
+                    TextUtils.equals(category, that.category) &&
+                    TextUtils.equals(action, that.action) &&
+                    TextUtils.equals(name, that.name);
         }
     }
 
