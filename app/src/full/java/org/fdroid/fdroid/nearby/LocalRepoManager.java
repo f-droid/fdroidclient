@@ -10,10 +10,10 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.IndexUpdater;
@@ -56,7 +56,6 @@ import java.util.jar.JarOutputStream;
  * This class deals specifically with the webroot side of things, ensuring we have a valid index.jar
  * and the relevant .apk and icon files available.
  */
-@SuppressWarnings("LineLength")
 public final class LocalRepoManager {
     private static final String TAG = "LocalRepoManager";
 
@@ -348,7 +347,8 @@ public final class LocalRepoManager {
             serializer = XmlPullParserFactory.newInstance().newSerializer();
         }
 
-        public void build(Context context, Map<String, App> apps, OutputStream output) throws IOException, LocalRepoKeyStore.InitException {
+        public void build(Context context, Map<String, App> apps, OutputStream output)
+                throws IOException, LocalRepoKeyStore.InitException {
             serializer.setOutput(output, "UTF-8");
             serializer.startDocument(null, null);
             serializer.startTag("", "fdroid");
@@ -356,12 +356,14 @@ public final class LocalRepoManager {
             // <repo> block
             serializer.startTag("", "repo");
             serializer.attribute("", "icon", "blah.png");
-            serializer.attribute("", "name", Preferences.get().getLocalRepoName() + " on " + FDroidApp.ipAddressString);
+            serializer.attribute("", "name", Preferences.get().getLocalRepoName()
+                    + " on " + FDroidApp.ipAddressString);
             serializer.attribute("", "pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
             long timestamp = System.currentTimeMillis() / 1000L;
             serializer.attribute("", "timestamp", String.valueOf(timestamp));
             serializer.attribute("", "version", "10");
-            tag("description", "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName());
+            tag("description", "A local FDroid repo generated from apps installed on "
+                    + Preferences.get().getLocalRepoName());
             serializer.endTag("", "repo");
 
             // <application> blocks
