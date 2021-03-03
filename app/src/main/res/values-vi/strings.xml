@@ -67,7 +67,7 @@
     <string name="expert_on">Hiện thông tin và cài đặt bổ sung</string>
     <string name="search_hint">Tìm kiếm ứng dụng</string>
     <string name="appcompatibility">Tính tương thích của ứng dụng</string>
-    <string name="show_incompat_versions">Phiên bản không tương thích</string>
+    <string name="show_incompat_versions">Bao gồm các phiên bản không tương thích</string>
     <string name="show_incompat_versions_on">Hiện các phiên bản không tương thích với thiết bị này</string>
     <string name="local_repo">Kho nội bộ</string>
     <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
@@ -84,7 +84,9 @@
     <string name="enable_proxy_title">Kích hoạt proxy HTTP</string>
     <string name="proxy_port">Cổng proxy</string>
     <string name="proxy_port_summary">Số cổng proxy của bạn (ví dụ 8118)</string>
-    <string name="status_download">Đang tải %2$s / %3$s (%4$d%%) từ %1$s</string>
+    <string name="status_download">Đang tải
+\n%2$s / %3$s (%4$d%%) từ
+\n%1$s</string>
     <string name="status_connecting_to_repo">Đang kết nối đến
         \n%1$s
     </string>
@@ -109,7 +111,8 @@
         \n\nBạn sẽ cần phải kích hoạt lại để cài ứng dụng từ kho này.
     </string>
     <string name="repo_added">Đã lưu kho ứng dụng %1$s.</string>
-    <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ %1$s</string>
+    <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ
+\n%1$s</string>
     <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng
         này: %s
     </string>
@@ -129,7 +132,7 @@
     <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
     <string name="swap">Trao đổi ứng dụng</string>
     <string name="swap_no_wifi_network">Không có mạng</string>
-    <string name="swap_view_available_networks">(Chạm để xem các mạng hiện có)</string>
+    <string name="swap_view_available_networks">Chạm để xem các mạng hiện có</string>
     <string name="open_qr_code_scanner">Mở trình quét mã QR</string>
     <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
@@ -207,10 +210,10 @@
     <string name="loading">Đang tải…</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>
     <string name="install_confirm">cần truy cập</string>
-    <string name="install_confirm_update">Bạn có muốn cài đặt bản cập nhật cho ứng dụng hiện tại này không? Dữ liệu hiện tại của bạn sẽ không bị mất. Ứng dụng đã cập nhật sẽ có quyền truy cập vào:</string>
-    <string name="install_confirm_update_system">Bạn có muốn cài đặt bản cập nhật cho ứng dụng được cài sẵn này không? Dữ liệu hiện tại của bạn sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
-    <string name="install_confirm_update_no_perms">Bạn có muốn cài đặt bản cập nhật cho ứng dụng hiện có này không? Dữ liệu hiện có của bạn sẽ không bị mất. Việc cài đặt không yêu cầu bất kỳ quyền truy cập đặc biệt nào.</string>
-    <string name="install_confirm_update_system_no_perms">Bạn có muốn cài đặt bản cập nhật cho ứng dụng cài sẵn này không? Dữ liệu hiện có của bạn sẽ không bị mất. Việc cài đặt không yêu cầu quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng đã có này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_system">Bạn có muốn cập nhật ứng dụng hệ thống này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_no_perms">Bạn có muốn cập nhật ứng dụng đã có này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update_system_no_perms">Bạn có muốn cập nhật ứng dụng hệ thống này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
     <string name="newPerms">Mới</string>
     <string name="allPerms">Tất cả</string>
     <string name="perm_costs_money">Việc này có thể mất phí</string>
@@ -277,7 +280,7 @@
     <string name="update_auto_download">Tự động tải các bản cập nhật</string>
     <string name="update_auto_download_summary">Tải xuống các bản cập nhật tự động và nhắc bạn cài đặt chúng</string>
     <string name="update_auto_install">Tự động cài đặt các bản cập nhật</string>
-    <string name="update_auto_install_summary">Tải và cài đặt ngầm các bản cập nhật</string>
+    <string name="update_auto_install_summary">Tải và cập nhật ứng dụng trong nền và hiển thị thông báo</string>
     <string name="app_details_donate_prompt_unknown_author">Hãy mua một ly cà phê cho nhà phát triển ứng dụng %1$s!</string>
     <string name="app_details_donate_prompt">Ứng dụng %1$s được %2$s tạo ra. Hãy mua một ly cà phê cho nhà phát triển!</string>
     <string name="app_details__incompatible_mismatched_signature">Chữ kí ứng dụng khác với phiên bản đã cài đặt</string>
@@ -300,7 +303,7 @@
     <string name="installed_apps__activity_title">Ứng dụng đã cài đặt</string>
     <string name="installed_app__updates_ignored">Đã bỏ qua các cập nhật</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Đã bỏ qua cập nhật với phiên bản %1$s</string>
-    <string name="update_all">Tải về tất cả các bản cập nhật</string>
+    <string name="update_all">Cập nhật tất cả</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn gỡ bỏ ứng dụng này ngay lập tức.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Chúng tôi đã tìm thấy lỗ hổng bảo mật trong ứng dụng %1$s. Chúng tôi khuyên bạn cập nhật phiên bản mới nhất ngay lập tức.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Bỏ qua</string>
@@ -332,9 +335,9 @@
     <string name="allow">Cho phép</string>
     <string name="panic_settings_summary">Những hành động sẽ thực hiện trong trường hợp khẩn cấp</string>
     <string name="panic_exit_title">Thoát ứng dụng</string>
-    <string name="panic_exit_summary">Ứng dụng sẽ được đóng</string>
+    <string name="panic_exit_summary">Ứng dụng này sẽ được đóng</string>
     <string name="panic_hide_title">Ẩn %s</string>
-    <string name="panic_hide_summary">Ứng dúng sẽ tự ẩn</string>
+    <string name="panic_hide_summary">Ứng dụng sẽ tự ẩn</string>
     <string name="download_404">Không tìm thấy tập tin được yêu cầu.</string>
     <string name="status_inserting_x_apps">Đang lưu thông tin ứng dụng (%1$d/%2$d) từ %3$s</string>
     <string name="repo_fingerprint">Mã SHA-256 của khoá dùng để kí kho ứng dụng</string>
@@ -343,7 +346,7 @@
     </plurals>
     <string name="empty_search_available_app_list">Không tìm thấy ứng dụng tương ứng.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy cài đặt ứng dụng từ những thiết bị xung quanh bạn!</string>
-    <string name="nearby_splash__find_people_button">Tìm những người xung quanh</string>
+    <string name="nearby_splash__find_people_button">Tìm người gần đây</string>
     <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có ứng dụng %1$s để sử dụng tính năng Xung quanh.</string>
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>
     <string name="download_pending">Đang chờ tải về…</string>
@@ -437,4 +440,68 @@
     <string name="send_install_history">Gửi Lịch sử Cài đặt</string>
     <string name="send_history_csv">%s lịch sử cài đặt dưới dạng CSV</string>
     <string name="disabled">Đã tắt</string>
+    <string name="prompt_to_send_crash_reports">Hỏi để gửi báo cáo lỗi</string>
+    <string name="swap_stopping">Đang dừng lại…</string>
+    <string name="swap_starting">Đang bắt đầu…</string>
+    <string name="swap_stopping_hotspot">Đang dừng điểm phát sóng…</string>
+    <string name="swap_setting_up_hotspot">Đang thiết lập điểm phát sóng…</string>
+    <string name="swap_hidden_wifi_ssid">(ẩn)</string>
+    <string name="swap_blank_wifi_ssid">(trống)</string>
+    <string name="swap_visible_hotspot">Có thể thấy qua điểm phát sóng</string>
+    <string name="swap_error_cannot_start_bluetooth">Không thể khởi động Bluetooth!</string>
+    <string name="nearby_splash__request_permission">Thử</string>
+    <string name="share_repository">Chia sẻ kho</string>
+    <string name="try_again">Hãy thử lại</string>
+    <string name="antinosourcesince">Mã nguồn không còn nữa, không thể có cập nhật.</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="updates_disabled_by_settings">Tất cả bản cập nhật bị tắt bởi cài đặt dữ liệu di động/WiFi</string>
+    <string name="send_installed_apps_csv">Các ứng dụng được F-Droid cài đặt dưới dạng tệp CSV</string>
+    <string name="app_size">Kích cỡ: %1$s</string>
+    <string name="app_repository">Kho: %1$s</string>
+    <string name="app_suggested">Đề xuất</string>
+    <string name="scan_removable_storage_toast">Đang quét %s…</string>
+    <string name="main_menu__updates">Cập nhật</string>
+    <string name="menu_downgrade">Hạ cấp</string>
+    <string name="menu_translation">Dịch</string>
+    <string name="menu_select_for_wipe">Chọn để xoá dữ liệu</string>
+    <string name="menu_open">Mở</string>
+    <string name="repo_delete_to_overwrite">Đầu tiên hãy xoá %1$s để thêm kho có mã khoá xung đột này.</string>
+    <string name="repo_exists_and_enabled">%1$s đã được thiết lập và bật sẵn.</string>
+    <string name="repo_exists_enable">%1$s đã được thiết lập sẵn, hãy xác nhận rằng bạn muốn bật lại nó.</string>
+    <string name="repo_exists_add_fingerprint">%1$s đã được thiết lập sẵn, việc này sẽ thêm thông tin mã khoá mới.</string>
+    <string name="about_forum">Diễn đàn hỗ trợ</string>
+    <string name="panic_app_dialog_message">Bạn có chắc rằng bạn muốn cho phép %1$s kích hoạt các hành động phá huỷ khi ấn nút hoảng loạn không\?</string>
+    <string name="panic_apps_to_uninstall">Các ứng dụng sẽ được gỡ cài đặt và tất cả dữ liệu sẽ được xoá</string>
+    <string name="panic_destructive_actions">Những hành động phá huỷ</string>
+    <string name="panic_app_unknown_app">một ứng dụng không xác định</string>
+    <string name="panic_add_apps_to_uninstall">Thêm ứng dụng sẽ được gỡ cài đặt và xoá dữ liệu</string>
+    <string name="panic_hide_warning_title">Hãy nhớ cách khôi phục</string>
+    <string name="panic_app_dialog_title">Xác nhận ứng dụng hoảng loạn</string>
+    <string name="panic_will_be_wiped">Sẽ được gỡ cài đặt và tất cả dữ liệu sẽ bị xoá</string>
+    <string name="panic_reset_repos_summary">Buộc thiết lập kho ứng dụng quay về mặc định</string>
+    <string name="panic_reset_repos_title">Đặt lại các kho ứng dụng</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="notification_channel_installs_description">Hiển thị các thông báo cài đặt ứng dụng.</string>
+    <string name="notification_channel_installs_title">Cài đặt</string>
+    <string name="allow_push_requests">Cho phép các kho ứng dụng cài đặt/gỡ cài đặt các ứng dụng</string>
+    <string name="send_installed_apps">Chia sẻ các ứng dụng đã cài đặt</string>
+    <string name="notification_channel_updates_description">Hiển thị thông báo cập nhật ứng dụng và kho ứng dụng.</string>
+    <string name="notification_channel_updates_title">Cập nhật</string>
+    <string name="app_list__dismiss_installing_app">Cài đặt bị huỷ</string>
+    <string name="allow_push_requests_summary">Dữ liệu meta của kho có thể bao gồm các yêu cầu đẩy để cài đặt hoặc gỡ cài đặt các ứng dụng</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Tính năng Gần đây đã bị đóng vì nó không hoạt động.</string>
+    <string name="scan_removable_storage_summary">Tìm các kho ứng dụng trong kho lưu trữ gắn ngoài như thẻ SD và USB</string>
+    <string name="nearby_splash__document_tree">Tìm kiếm các kho và bản sao trong USB OTG.</string>
+    <string name="nearby_splash__read_external_storage">Tìm kiếm các kho và bản sao trong thẻ SD.</string>
+    <string name="repo_exists_add_mirror">Đây là một bản sao của %1$s, có thêm không\?</string>
+    <string name="notification_channel_swaps_description">Hiển thị các thông báo trao đổi ứng dụng kiểu P2P.</string>
+    <string name="notification_channel_swaps_title">Trao đổi</string>
+    <string name="not_visible_nearby_description">Trước khi trao đổi với các thiết bị gần đây, hãy làm cho thiết bị của bạn có thể thấy được.</string>
+    <string name="not_visible_nearby">Tính năng Gần đây không được bật</string>
+    <string name="repo_add_mirror">Thêm bản sao</string>
+    <string name="scan_removable_storage_title">Quét kho lưu trữ gắn ngoài</string>
+    <string name="swap_toast_invalid_url">URL không hợp lệ để trao đổi: %1$s</string>
+    <string name="swap_toast_find_removeable_storage">Chọn thẻ SD hoặc USB gắn ngoài</string>
+    <string name="swap_toast_not_removable_storage">Lựa chọn đó không khớp với bất kỳ thiết bị lưu trữ gắn ngoài nào, hãy thử lại!</string>
+    <string name="swap_toast_using_path">Đang dùng %1$s</string>
 </resources>
