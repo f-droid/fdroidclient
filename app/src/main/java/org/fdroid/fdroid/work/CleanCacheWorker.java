@@ -20,8 +20,11 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.nearby.LocalRepoManager;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -127,8 +130,9 @@ public class CleanCacheWorker extends Worker {
             return;
         }
 
+        final List<String> webRootAssetFiles = Arrays.asList(LocalRepoManager.WEB_ROOT_ASSET_FILES);
         for (File f : files) {
-            if (f.getName().endsWith(".apk")) {
+            if (f.isFile() && !f.getName().endsWith(".html") && !webRootAssetFiles.contains(f.getName())) {
                 clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }

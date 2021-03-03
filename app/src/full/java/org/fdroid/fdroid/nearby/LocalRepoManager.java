@@ -64,7 +64,7 @@ public final class LocalRepoManager {
     private final AssetManager assetManager;
     private final String fdroidPackageName;
 
-    private static final String[] WEB_ROOT_ASSET_FILES = {
+    public static final String[] WEB_ROOT_ASSET_FILES = {
             "swap-icon.png",
             "swap-tick-done.png",
             "swap-tick-not-done.png",
