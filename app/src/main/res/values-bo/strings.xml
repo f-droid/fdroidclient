@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="menu_manage">མཛོད་ཁང་།</string>
     <string name="menu_settings">སྒྲིག་བཀོད།</string>
     <string name="menu_search">འཚོལ།</string>
     <string name="menu_add_repo">མཛོད་ཁང་གསར་པ།</string>
-
     <string name="menu_launch">འཁོར་སྐྱོད།</string>
     <string name="menu_share">མཉམ་སྤྱོད།</string>
     <string name="menu_install">འགྲིག་བཅུག</string>
@@ -13,17 +12,12 @@
     <string name="main_menu__latest_apps">གསར་ཤོས།</string>
     <string name="main_menu__categories">སྡེ་ཚན།</string>
     <string name="main_menu__swap_nearby">ཉེ་འགྲམ།</string>
-
     <string name="preference_manage_installed_apps">མཉེན་ཆས་འགྲིག་བཅུག་སྟངས་འཛིན།</string>
-
-
     <string name="details_notinstalled">འགྲིག་བཅུག་བྱེད་མིན་འདུག</string>
     <string name="next">རྗེས་མ།</string>
     <string name="skip">མཆོང་།</string>
-
     <string name="pref_language">སྐད་ཡིག།</string>
     <string name="pref_language_default">མ་ལག་སོར་བཞག</string>
-
     <string name="category_Connectivity">མཐུད་མཚམས།</string>
     <string name="category_Development">ཡར་རྒྱས།</string>
     <string name="category_Games">རྩེད་རིགས།</string>
@@ -38,14 +32,12 @@
     <string name="category_Security">སྲུང་སྐྱོབ།</string>
     <string name="category_Time">དུས་ཚོད།</string>
     <string name="category_Writing">འབྲི་བཞིན་པ།</string>
-
     <string name="swap_welcome">ཨེཕ་རོཌ་ཕེབས་པར་དགའ་བསུ་ཞུ།!</string>
     <string name="swap_dont_show_again">འདི་ཡང་སྐྱར་མ་སྟོན་རོགས།</string>
     <string name="newPerms">གསར་པ།</string>
     <string name="notification_action_update">གསར་བསྒྱུར།</string>
     <string name="notification_action_cancel">བརྩི་མེད།</string>
     <string name="notification_action_install">འགྲིག་བཅུག</string>
-
     <string name="app_details">མཉེས་ཆས་སྐོར་རྒྱས་བཤད།</string>
     <string name="about_title">ཨེཕ་རོཌ་སྐོར།</string>
     <string name="app_list__name__downloading_in_progress">%1$s ཕབ་ལེན་བྱེད་བཞིན་པ།</string>
@@ -53,7 +45,6 @@
     <string name="updates__tts__download_app">ཕབ་ལེན།</string>
     <string name="more">མང་པོ།</string>
     <string name="less">ཉུང་བ།</string>
-
     <string name="antitracklist">མཉེན་ཆས་འདིས་ཁྱེད་རང་རྗེས་འདེད་བཏང་ནས་ལས་ཀ་གང་བྱས་ཀྱང་བརྡ་ལན་སྤྲད་ཀྱི་རེད།</string>
     <string name="warning_no_internet">གསར་བསྒྱུར་བྱེད་ཐུབ་མ་སོང་། ཁྱེད་རང་དྲྭ་རྒྱར་མཐུད་ཡོད་དམ།?</string>
     <string name="unsigned">མིང་རྟགས་མ་བཀོད་པ།</string>
@@ -82,7 +73,6 @@
     <string name="keep_install_history_summary">ཨེཕ་རོཌ་ནང་གི་འགྲིག་བཅུག་བྱས་པ་དང་འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱས་པ་ཚང་མའི་ཐོ་གཞུང་ཉར་ཚགས།</string>
     <string name="force_old_index_summary">གལ་སྲིད་སྐྱོན་གྱི་རིགས་དང་མཐུན་མི་མཐུན་གྱི་དཀའ་ངལ་ཡོད་ན། XMLམཉེན་ཆས་བརྡ་སྟོན་བེད་སྤྱོད་གཏོང་།</string>
     <string name="other">གཞན།</string>
-
     <string name="update_interval">རང་འགུལ་ངང་ནས་གསར་བསྒྱུར་བར་མཚམས།</string>
     <string name="update_auto_download">རང་འགུལ་ངང་ནས་གསར་བསྒྱར་ལེན།</string>
     <string name="update_auto_download_summary">རང་འགུལ་གྱི་ངང་ནས་གསར་བསྒྱུར་དང་ཕབ་ལེན་བྱས་པ་དང་ཁྱེད་རང་ལ་བརྡ་ལན་འབྱོར་སྐབས་དེ་དག་འགྲིག་བཅུག་བྱེད།</string>
@@ -95,23 +85,18 @@
     <string name="local_repo_name">ཁྱེད་རང་གི་རཱེ་པ་བསྟི་གནས་ཀྱི་མིང་།</string>
     <string name="local_repo_name_summary">ཁྱེད་རང་གི་རཱེ་པོ་བསྟི་གནས་ཀྱི་ཁྱབ་བསྒྲགས་འགོ་བརྗོད།:%s</string>
     <string name="local_repo_https_on">HTTPS གསང་སྡོམ་བེད་སྤྱོད་://རཱེ་པོ་བསྟི་གནས་ལ་མཐུད་ཀ།</string>
-
     <string name="login_title">ཁུངས་ལྡན་ར་སྤྲོད་དགོས།</string>
     <string name="login_name">སྤྱོད་མིང།</string>
     <string name="login_password">གསང་ཨང་།</string>
     <string name="repo_edit_credentials">གསང་ཨང་བརྗེས།</string>
     <string name="repo_error_empty_username">སྤྱོད་མིང་སྟོང་པ་དང་ཁ་བྱང་བརྗེ་པོ་རྒྱབ་མེད།</string>
-
     <string name="no_such_app">མཉེན་ཆས་འདེ་འདྲས་ཤིག་རྙེད་མ་སོང་།</string>
-
     <string name="app_details_donate_prompt_unknown_author">བཟོ་མཁན་ཚོའི་ཆེད་དུ་ %1$s ཇ་ཀོ་ཕྷི་ཉོས།!</string>
     <string name="app_details_donate_prompt">%1$s བཟོ་མཁན་ནི་ %2$s.ཁོང་ཚོར་ཇ་ཀོ་ཕྷི་ཉོས།!</string>
-
     <string name="about_version">ཐོན་རིམ།</string>
     <string name="about_site">དྲྭ་ཚིགས།</string>
     <string name="about_source">འབྱུང་ཁུངས་ཨང་རྟགས།</string>
     <string name="about_license">ཆོག་མཆན་ལག་ཁྱེར།</string>
-
     <string name="app_incompatible">མི་མཐུན་པ།</string>
     <string name="app_installed">འགྲིག་བཅུག</string>
     <string name="app_not_installed">འགྲིག་བཅུག་བྱེད་མེད།</string>
@@ -124,21 +109,16 @@
     <string name="added_on">%sའདིའི་སྒང་ལ་ཁ་སྣོན།</string>
     <string name="app__tts__cancel_download">ཕབ་ལེན་བརྩི་མེད།</string>
     <string name="app__install_downloaded_update">གསར་བསྒྱུར།</string>
-
     <string name="app_list_download_ready">ཕབ་ལེན་བྱས་པ་དེ་འགྲིག་བཅུག་བྱེད་ཆོག་ཆོག་ཡིན།</string>
-
     <string name="installed_apps__activity_title">མཉེན་ཆས་ཁག་འགྲིག་བཅུག</string>
     <string name="installed_app__updates_ignored">གསར་བསྒྱུར་ཁག་ལ་ཡ་བྱས་མ་སོང་།</string>
     <string name="installed_app__updates_ignored_for_suggested_version">ཐོན་རིམ་ %1$s འདིའི་གསར་བསྒྱུར་ཁག་ལ་ཡ་བྱས་ན་སོང་།</string>
     <string name="update_all">གསར་བསྒྱུར་ཚང་མ་ཕབ་ལེན་བྱེད།</string>
-
     <string name="updates__hide_updateable_apps">མཉེན་ཆས་སྦས།</string>
     <string name="updates__show_updateable_apps">མཉེན་ཆས་སྟོན།</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">མཉེན་ཆས་%1$dའདིའི་ཆེད་དུ་གསར་བསྒྱུར་ཕབ་ལེན་བྱེད།</item>
     </plurals>
-
     <string name="repo_add_title">མཛོད་ཁང་གསར་པ་ཁ་སྣོན།</string>
     <string name="repo_add_add">ཁ་སྣོན།</string>
     <string name="links">སྦྲེལ་མཐུད་ཁག</string>
@@ -147,14 +127,12 @@
     <string name="add_key">ལྡེ་མིག་ཁ་སྣོན།</string>
     <string name="overwrite">སྐྱར་བྲིས།</string>
     <string name="clear_search">འཚོལ་ཞིབ་གཙང་བཟོ།</string>
-
     <string name="repo_add_url">མཛོད་ཁང་གི་ཁ་བྱང་།</string>
     <string name="repo_add_fingerprint">མཛུབ་ཐེལ།(གདམ་ཀ་)</string>
     <string name="bad_fingerprint">མཛུབ་ཐེལ་ཡག་པོ་ཐེབས་མིན་འདུག</string>
     <string name="invalid_url">འདི་URL ཁུངས་ལྡན་རེད་མིན་འདུག</string>
     <string name="malformed_repo_uri">བཟོ་ཉེས་ཤོར་བའི་རེ་པོ་URI ལ་ཡ་མེད་བཏང་བ་:%s</string>
     <string name="repo_provider">མཛོད་ཁང་།:%s</string>
-
     <string name="repositories_summary">མཉེན་ཆས་ཀྱི་འབྱུང་ཁུངས་འཕར་མ་ཁ་སྣོན།</string>
     <string name="menu_ignore_all">གསར་བསྒྱུར་ཚང་མར་ཡ་མ་བྱེད།</string>
     <string name="menu_ignore_this">གསར་བསྒྱུར་འདི་ལ་ཡ་མ་བྱེད་།</string>
@@ -168,12 +146,9 @@
     <string name="latest__empty_state__no_recent_apps">ཉེ་བའི་ཆར་གྱི་མཉེན་ཆས་རྙེད་མ་སོང་།</string>
     <string name="latest__empty_state__never_updated">ཁྱེད་རང་གིས་མཉེས་ཆས་ཀྱི་ཐོ་གཞུང་གསར་བསྒྱུར་བྱས་ཚར་ན། མཉེན་ཆས་ཐོན་གསར་ཤོས་རྣམས་འདིར་སྟོན་གྱི་རེད།</string>
     <string name="latest__empty_state__no_enabled_repos">ཁྱེད་རང་གིས་མཛོད་ཁང་སྒོ་ཕྱེས་ནས་གསར་བསྒྱུར་བྱེད་འགོ་བཙུགས་མ་ཐག མཉེན་ཆས་ཐོན་གསར་ཤོས་རྣམས་འདིར་སྟོན་གྱི་རེད།</string>
-
     <string name="categories__empty_state__no_categories">སྡེ་ཚན་མེད་གསལ་སྟོན་བྱེད་རྒྱུ་མེད།</string>
-
     <string name="preference_category__my_apps">ངའི་མཉེན་ཆས་ཁག</string>
     <string name="details_new_in_version">ཐོན་རིམ་གསར་པ་%s</string>
-
     <string name="antifeatureswarning">མཉེན་ཆས་འདིར་ཁྱེད་རང་གིས་དགའ་མོས་མེད་པའི་ཁྱད་ཆོས་ཀྱང་ཡོད་སྲིད།</string>
     <string name="antifeatures">ཁྱད་ཆོས་འགལ་ཟླ།</string>
     <string name="antiadslist">མཉེན་ཆས་འདིའི་ནང་ཁྱབ་བསྒྲགས་ཡོད།</string>
@@ -181,18 +156,13 @@
     <string name="antinonfreedeplist">མཉེན་ཆས་འདི་རིན་མེད་མ་ཡིན་པའི་མཉེན་ཆས་གཞན་ལ་བརྟེན་ནས་ཡོད།</string>
     <string name="antiupstreamnonfreelist">འབྱུང་ཁུངས་ཨང་རྟགས་འདི་ཆ་ཚང་རིན་མེད་མ་རེད།</string>
     <string name="antinonfreeassetslist">མཉེན་ཆས་འདིའི་ནང་རིན་མེད་མ་ཡིན་པའི་རྒྱུ་ཆ་ཡོད།</string>
-
     <string name="display">གསལ་སྟོན།</string>
-
     <string name="expert">མཁས་པའི་ངང་ཚུལ།</string>
     <string name="expert_on">གནས་ཚུལ་འཕར་མ་དང་སྒྲིག་བཀོད་འཕར་མ་སྒོ་ཕྱེས་རྣམས་སྟོན།</string>
-
     <string name="search_hint">མཉེན་ཆས་རྣམས་འཚོལ།</string>
-
     <string name="appcompatibility">མཉེན་ཆས་རན་མཚམས།</string>
     <string name="show_incompat_versions">རན་མཚམས་མེད་པའི་ཐོན་རིམ་ཁག</string>
     <string name="show_incompat_versions_on">ཡོ་བྱད་དང་རན་མཚམས་མེད་པའི་མཉེན་ཆས་ཀྱི་ཐོན་རིམ་རྣམས་སྟོན།</string>
-
     <string name="local_repo">རེ་པོ་བསྟི་གནས།</string>
     <string name="local_repo_running">ཨེཕ་རོཌ་བརྗེ་ལེན་བྱས་པར་གྲ་སྒྲིག་ཡོད།</string>
     <string name="touch_to_configure_local_repo">རེག་ནས་ཞིབ་ཕྲ་ལྟོས་ནས་གཞན་གྱིས་ཁྱེད་རང་གི་མཉེན་ཆས་བརྗེ་ལེན་བྱེད་དུ་བཅུག</string>
@@ -200,7 +170,7 @@
     <string name="adding_apks_format">རེ་པོ་ལ་ཁ་སྣོན་%s བྱེད་བཞིན་པ།…</string>
     <string name="writing_index_jar">མིང་རྟགས་བཀོད་པའི་བརྡ་སྟོན་ཡིག་ཆ་འབྲི་བཞིན་པ། (index.jar)..…</string>
     <string name="linking_apks">རེ་པོ་ནང་དུ་APKs སྦྲེལ་མཐུད་བྱེད་བཞིན་པ།</string>
-    <string name="copying_icons">རེ་པོ་ནང་དུ་མཉེན་ཆས་རྟགས་ཅན་ཕབ་ཤུས།</string>
+    <string name="copying_icons">རེ་པོ་ནང་དུ་མཉེན་ཆས་རྟགས་ཅན་ཕབ་ཤུས།…</string>
     <string name="icon">རྟགས་ཅན།</string>
     <string name="useTor">ཏོར་བེད་སྤྱོད།</string>
     <string name="useTorSummary">གསང་དོན་ཤུགས་ཆེ་རུ་གཏོང་བའི་ཆེད་དུ་ཏཱོར་རྒྱུད་དེ་དྲྭ་ཟིང་ཕབ་ལེན་ནན་སྐུལ་བྱེད། Orbot དགོས་ངེས་རེད།</string>
@@ -209,7 +179,6 @@
     <string name="status_download">ཕབ་ལེན་བྱེད་བཞིན་པ།
 \n%2$s/%3$s (%4$d%%)ནས་
 \n%1$s</string>
-
     <string name="status_download_unknown_size">ཕབ་ལེན་བྱེད་བཞིན་པ།
 \n%2$s ནས་
 \n%1$s</string>
@@ -242,24 +211,19 @@
 \n%1$s</string>
     <string name="requires_features">དགོས་མཁོ་:%1$s</string>
     <string name="wifi_ap">དྲྭ་འཛོམས།</string>
-
     <string name="category_Theming">བརྗོད་གཞི་གླེང་བཞིན་པ།</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">ཚང་མར་བལྟས། %d</item>
     </plurals>
-
     <string name="empty_installed_app_list">མཉེན་ཆས་འགྲིག་བཅུག་བྱེད་མེད། 
 \nཁྱེད་རང་གི་ཡོ་བྱད་སྒང་ལ་མཉེན་ཆས་འདུག འོན་ཀྱང་དེ་ཚོ་ཨེཕ་རོཌ་རྒྱུད་ནས་ཐོབ་པ་མ་རེད། འདིའི་རྒྱུ་མཚན་ནི་གཅིག་བྱས་ན་ཁྱེད་རང་གི་མཛོད་ཁང་གསར་བསྒྱུར་བྱེད་དགོས་ཀྱི་ཡོད་པའམ་ཡང་ན་མཛོད་ཁང་ནང་ལ་དོན་ངོ་མའི་ཐོག་ལ་ཁྱེད་རང་གི་མཉེན་ཆས་འདི་མེད་པའི་རྐྱེན་གྱིས་བྱས་པ་རེད།</string>
     <string name="empty_can_update_app_list">བཀྲིས་བདེ་ལེགས་!ཁྱེད་རང་གི་མཉེན་ཆས་རྣམས་དུས་ཐོག་སྒང་ལ་འདུག</string>
-
     <string name="install_error_unknown">རྒྱུས་མེད་པའི་སྐྱོན་ཞིག་བྱུང་བའི་རྐྱེན་གྱིས་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="uninstall_error_unknown">རྒྱུས་མེད་པའི་སྐྱོན་ཞིག་བྱུང་བའི་རྐྱེན་གྱིས་འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="status_inserting_x_apps">མཉེན་ཆས་ཀྱི་ཞིབ་ཕྲ་ཉར་ཚགས་བྱེད་བཞིན་པ། (%1$d/%2$d) ནས་ %3$s</string>
-
     <string name="nearby_splash__download_apps_from_people_nearby">དྲྭ་རྒྱ་མིན་འདུག ཁྱེད་རང་གི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མིའི་ཁྲིད་ནས་མཉེན་ཆས་འདི་ལེན་རོགས།!</string>
     <string name="nearby_splash__find_people_button">ངའི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མི་འཚོལ།</string>
     <string name="nearby_splash__both_parties_need_fdroid">ཚོགས་སྡེ་གཉིས་ཀར་ཉེ་འདབ་བེད་སྤྱོད་བྱས་པ་ལ་%1$s འདི་དགོས།</string>
-
     <string name="swap_nfc_title">རེག་ནས་བརྗེ་ལེན་བྱེད།</string>
     <string name="swap_nfc_description">གལ་ཏེ་ཁྱེད་རང་གི་གྲོགས་པོར་ཨེཕ་རོཌ་དང་NFC ཡོད་ན་ཡོ་བྱད་མཉམ་དུ་རེག་པ་འདི་སྒོ་ཕྱེས་ཟིན་པ་རེད།</string>
     <string name="swap_join_same_wifi">ཁྱེད་རང་གི་གྲོགས་པོ་དང་ཝཡེ་ཕཡེ་གཅིག་པ་མཐུད་</string>
@@ -277,15 +241,15 @@
     <string name="swap_choose_apps">མཉེས་ཆས་འདེམས།</string>
     <string name="swap_scan_qr">QR ཨང་རྟགས་འཚག་རྒྱབ།</string>
     <string name="swap_people_nearby">ཉེ་འགྲམ་གྱི་མི།</string>
-    <string name="swap_scanning_for_peers">ཉེ་འགྲམ་གྱི་མི་འཚོལ་བཞིན་པ།</string>
+    <string name="swap_scanning_for_peers">ཉེ་འགྲམ་གྱི་མི་འཚོལ་བཞིན་པ།…</string>
     <string name="swap_nearby">ཉེ་འགྲམ་བརྗེ་ལེན།</string>
     <string name="swap_intro">རང་གི་ཉེ་འགྲམ་གྱི་མི་དང་མཉམ་དུ་མཉེན་ཆས་མཐུད་ནས་བརྗེ་ལེན་བྱེད་།</string>
     <string name="swap_visible_bluetooth">བྷུ་ལུ་ཊུཐ་རྒྱུད་དེ་མཐོང་།</string>
     <string name="swap_setting_up_bluetooth">བྷུ་ལུ་ཊུཐ་སྒྲིག་བཀོད།.…</string>
     <string name="swap_not_visible_bluetooth">བྷུ་ལུ་ཊུཐ་རྒྱུད་དེ་མཐོང་མི་ཐུབ།</string>
     <string name="swap_visible_wifi">ཝཡེ་ཕྷཡེ་རྒྱུད་དེ་མཐོང་།</string>
-    <string name="swap_setting_up_wifi">ཝཡེ་ཕྷཡེ་སྒྲིག་བཀོད་བྱེད་བཞིན་པ།</string>
-    <string name="swap_stopping_wifi">ཝཡེ་ཕྷཡེ་མཚམས་འཇོག་བཞིན་པ།</string>
+    <string name="swap_setting_up_wifi">ཝཡེ་ཕྷཡེ་སྒྲིག་བཀོད་བྱེད་བཞིན་པ།…</string>
+    <string name="swap_stopping_wifi">ཝཡེ་ཕྷཡེ་མཚམས་འཇོག་བཞིན་པ།…</string>
     <string name="swap_not_visible_wifi">ཝཡེ་ཕྷཡེ་རྒྱུད་དེ་མཐོང་མི་ཐུབ།</string>
     <string name="swap_wifi_device_name">ཡོ་བྱད་ཀྱི་མིང་།</string>
     <string name="swap_cant_find_peers">ཁྱེད་རང་གིས་འཚོལ་བཞིན་པ་དེ་རྙེད་མ་སོང་།</string>
@@ -295,20 +259,15 @@
     <string name="swap_qr_isnt_for_swap">ཁྱེད་རང་གིས་འཚག་རྒྱག་པའི་QR ཨང་རྟགས་འདི་བརྗེ་ལེན་ཨང་རྟགས་དང་འདྲ་མཚུངས་མིན་འདུག</string>
     <string name="loading">བཅུག་བཞིན་པ།..…</string>
     <string name="swap_connection_misc_error">ཡོ་བྱད་ལ་མཐུད་པའི་སྐབས་སུ་སྐྱོན་ཤོར་སོང་བས་དེ་དང་མཉམ་དུ་བརྗེ་ལེན་བྱེད་ཐུབ་ཀྱི་མིན་འདུག!</string>
-
     <string name="install_confirm">འདི་ལྟ་ཐུབ་པ་དགོས།</string>
     <string name="bluetooth_activity_not_found">བྷུ་ལུ་ཊུཐ་གཏོང་ཐབས་རྙེད་མ་སོང་། གཅིག་འདེམས།!</string>
     <string name="choose_bt_send">བྷུ་ལུ་ཊུཐ་གཏོང་ཐབས་འདེམས།</string>
-
     <string name="menu_bitcoin">དྲྭ་དངུལ།</string>
     <string name="menu_litecoin">དྲྭ་རྒྱ་གསང་དངུལ།</string>
     <string name="menu_flattr">ཞལ་འདེབས་འབུལ་ཡུལ་ཕེ་ལེ་ཊར།</string>
-
     <string name="app_name">ཨེཕ་རོཌ།</string>
-
     <string name="updates">གསར་བསྒྱུར་ཁག</string>
     <string name="ok">འགྲིག</string>
-
     <string name="yes">རེད།</string>
     <string name="no">མ་རེད།</string>
     <string name="back">རྒྱབ།</string>
@@ -316,7 +275,6 @@
     <string name="force_old_index">བརྡ་སྟོན་རྙིང་པ་དེ་ནན་སྐུལ་གྱིས་མེད་པ་བཟོས།</string>
     <string name="app_installed_media">ཡིག་ཆ་འགྲིག་བཅུག་འདི་ལ%s</string>
     <string name="app_permission_storage">ཨེཕ་རོཌ་གསོག་ཉར་ཁང་ནང་ལ་འདི་བཅུག་པའི་ཆེད་དུ་གསོག་ཉར་ཆོག་མཆན་དགོས། དྲྭ་ཤེལ་རྗེས་མ་དེའི་སྒང་ལ་སྒྲིག་བཅུག་བྱས་པ་དང་མཉམ་དུ་མུ་མཐུད་ཆོག་གི་རེད།</string>
-
     <string name="antinonfreeadlist">མཉེན་ཆས་འདི་རིན་མེད་མ་ཡིན་པའི་ཆ་རྐྱེན་འཕར་མ་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་ཡོད།</string>
     <string name="system_install_denied_permissions">མཇུག་མཐུད་དེ་ལ་ཁེ་ཕན་ཆོག་མཆན་སྤྲད་མེད། སྐྱོན་ཅན་ཡིན་པའི་བརྡ་གཏོང་རོགས།!</string>
     <string name="install_confirm_update">ད་ལྟ་ཡོད་བཞིན་པའི་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། གསར་བསྒྱུར་བྱས་ཟིན་པའི་མཉེན་ཆས་འདི་དག་རག་ཐུབ།:</string>
@@ -331,15 +289,12 @@
     <string name="download_pending">ཕབ་ལེན་འགོ་བཙུགས་རེ་སྒུག་བྱེད་བཞིན་པ།…</string>
     <string name="install_error_notify_title">འགྲིག་བཅུག་ལ་སྐྱོན་ཤོར་བ་%s</string>
     <string name="uninstall_error_notify_title">འགྲིག་བཅུག་ཕྱིར་འཐེན་ལ་སྐྱོན་ཤོར་བ།%s</string>
-
-
     <string name="perms_new_perm_prefix">གསར་པ།:</string>
     <string name="perms_description_app">སྤྲད་མཁན་%1$s.</string>
     <string name="downloading">ཕན་ལེན་བྱེད་བཞིན་པ་…</string>
     <string name="app__tts__downloading_progress">ཕབ་ལེན་བྱེད་བཞིན་པ་%1$d%% ཚར་སོང་།</string>
     <string name="installing">འགྲིག་བཅུག་བྱེད་བཞིན་པ།…</string>
     <string name="uninstalling">འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་བཞིན་པ།…</string>
-
     <string name="interval_never">ནམ་ཡང་།</string>
     <string name="interval_1h">ཆུ་ཚོད་རེ།</string>
     <string name="interval_4h">ཆུ་ཚུད་ ༤ རེ་རེ་ལ་།</string>
@@ -347,16 +302,13 @@
     <string name="interval_1d">ཉིན་ལྟར།</string>
     <string name="interval_1w">བདུན་ཕྲག་རེ།</string>
     <string name="interval_2w">བདུན་ཕྲག་ ༢ རེ་ལ།</string>
-
     <string name="keep_hour">ཆུ་ཚོད་ ༡</string>
     <string name="keep_day">ཉིན་ ༡</string>
     <string name="keep_week">བདུན་ཕྲག་ ༡</string>
     <string name="keep_month">ཟླ་བ་ ༡</string>
     <string name="keep_year">ལོ་ ༡</string>
     <string name="keep_forever">དུས་རྟག་ཏུ།</string>
-
     <string name="crash_dialog_comment_prompt">ཁྱེད་རང་གིས་གནས་ཚུལ་འཕར་མ་དང་མཆན་འདིར་བཀོད་ཐུབ།:</string>
-
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d དེ་ལས་མང་བ།…</item>
     </plurals>
@@ -380,11 +332,9 @@
     <string name="notification_title_summary_ready_to_install_update">གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་རྒྱུར་གྲ་སྒྲིག་ཡིན།</string>
     <string name="notification_title_summary_installing">འགྲིག་བཅུག་བྱེད་བཞིན་པ།</string>
     <string name="notification_title_summary_installed">འགྲིག་བཅུག་ལེགས་གྲུབ་བྱུང་།</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="other">ཚང་མར་ལྟོས་ %1$d མཉེན་ཆས་དེ་ནས་ %2$s སྡེ་ཚན།</item>
     </plurals>
-
     <string name="details_last_updated_today">དེ་རེས་གསར་བསྒྱུར་བྱས་ཟིན།</string>
     <plurals name="details_last_update_days">
         <item quantity="other">གསར་བསྒྱུར་%1$d ཉིན་ཤས་གོང་ལ་བྱས་ཟིན།</item>
@@ -403,33 +353,25 @@
     <string name="proxy_host_summary">ཁྱེད་རང་གི་ངོ་ཚབ་ཀྱི་དོ་བདག་མིང་(དཔེར་ན། 127.0.0.1)</string>
     <string name="proxy_port">ངོ་ཚབ་མཐུད་སྒོ།</string>
     <string name="proxy_port_summary">ཁྱེད་རང་གི་ངོ་ཚབ་མཐུད་སྒོའི་ཨང་གྲངས་(དཔེར་ན། 8118)</string>
-
     <string name="status_processing_xml_percent">འགྲོ་བཞིན་པ་ %2$s / %3$s (%4$d%%) དེ་ནས་ %1$s</string>
     <string name="status_inserting_apps">མཉེས་ཆས་ཞིབ་ཕྲ་ཉར་ཚགས་བྱེད་བཞིན་པ།</string>
     <string name="theme_light">དཀར་མདངས།</string>
     <string name="theme_dark">ནག་པོ།</string>
     <string name="theme_night">མཚན་མོ།</string>
-
     <string name="tts_category_name">སྡེ་ཚན་%1$s</string>
-
     <string name="app_details__incompatible_mismatched_signature">སྒྲིག་བཅུག་བྱེད་པའི་ཐོན་རིམ་འདི་མིང་རྟགས་མཐུན་མ་སོང་།</string>
     <string name="app_details__no_versions__show_incompat_versions">འདིར་ཐོན་རིམ་མི་མཐུན་པ་རྣམས་སྟོན་དགོས་ན། \"%1$s\" སྒྲིག་བཀོད་འདི་སྒོ་ཕྱེད།</string>
     <string name="app_details__no_versions__no_compatible_signatures">མིང་རྟགས་མཐུན་པའི་ཐོན་རིམ་མིན་འདུག</string>
     <string name="app_details__no_versions__none_compatible_with_device">ཡོ་བྱད་འདི་དང་མཐུན་པའི་ཐོན་རིམ་མིན་འདུག</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">སྒྲིག་བཅུག་བྱེད་པའི་ཐོན་རིམ་འདི་ཡོད་བཞིན་པའི་ཐོན་རིམ་གང་དང་ཡང་མཐུན་གྱི་མིན་འདུག སོང་ཙང་ཕྱིར་སྟོན་བྱས་པའི་ཐོན་རིམ་འདིས་མཐུན་པའི་ཐོན་རིམ་རྣམས་སྒྲིག་བཅུག་བྱེད་པ་དང་ལྟ་ཐུབ། འདི་ནི་གུ་གྷལ་མཉེན་ཆས་གསོག་ཉར་ཁང་དང་ཡན་ན་འབྱུང་ཁུངས་གཞན་དག་རྒྱུད་དེ་སྒྲིག་བཅུག་བྱས་པའི་མཉེན་ཆས་རིགས་ལ་ཆོག་མཆན་ལག་ཁྱེར་གྱི་མིང་རྟགས་གཞན་དག་གིས་བཀོད་ཚེ་དཀའ་ངལ་དེའི་རིགས་ཡང་སེ་ཕྲད་ཀྱི་ཡོད།</string>
-
     <string name="empty_search_available_app_list">འདི་དང་མཐུན་པའི་མཉེན་ཆས་རྙེད་མ་སོང་།</string>
-
     <string name="app_list__dismiss_app_update">ཡ་ལན་མ་བྱས་པའི་གསར་བསྒྱུར།</string>
     <string name="app_list__dismiss_vulnerable_app">ཡ་ལན་མ་བྱས་པའི་ཉེན་ཁ།</string>
     <string name="app_list__dismiss_downloading_app">ཕབ་ལེན་བརྩི་མེད།</string>
-
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">ང་ཚོས་ %1$s འདི་དང་མཉམ་དུ་ཉེན་ཁ་འབྱུང་ཉེ་བ་རྙེད་སོང་། མཉེན་ཆས་འདི་ལམ་སེང་ཕྱིར་དབྱུང་བྱེད་རྒྱུའི་རེ་བ་ཞུ་གི་ཡོད།</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">ང་ཚོས་ %1$s འདི་དང་མཉམ་དུ་ཉེན་ཁ་འབྱུང་ཉེ་བ་རྙེད་སོང་། ཁྱེད་རང་གིས་གང་མགྱོགས་ཐོན་རིམ་གསར་ཤོས་འདི་ལ་གསར་བསྒྱུར་བྱེད་རྒྱུའི་རེ་བ་འདོན་རྒྱུ་ཡིན།</string>
     <string name="updates__app_with_known_vulnerability__ignore">ཡ་ལན་མ་བྱས་པ།</string>
-
     <string name="privacy">གསང་དོན།</string>
     <string name="preventScreenshots_title">དྲྭ་ཤེལ་པར་ལེན་བཀག</string>
     <string name="preventScreenshots_summary">ཉེ་བའི་ཆར་གྱི་མཉེས་ཆས་དྲྭ་ཤེལ་ནས་དྲྭ་ཤེལ་པར་ལེན་བཀག་པ་དང་། དྲྭ་ཤེལ་པར་ལེན་ནསམཉེས་ཆས་ནང་དོན་སྦས་པ།</string>
-
 </resources>

@@ -125,7 +125,7 @@
     <string name="login_name">নাম</string>
     <string name="app_details_donate_prompt">%2$s %1$s তৈরী করেছেন। কফি কিনে দিন!</string>
     <string name="app_details__incompatible_mismatched_signature">ইন্সটলড ভার্সন থেকে আলাদা সিগনেচার</string>
-    <string name="app_details_donate_prompt_unknown_author">ডেভলপারকে %1$ দামের কফি কিনে দিন!</string>
+    <string name="app_details_donate_prompt_unknown_author">ডেভলপারকে %1$s দামের কফি কিনে দিন!</string>
     <string name="no_such_app">এ জাতীয় কোনও অ্যাপ পাওয়া যায় নি।</string>
     <string name="repo_error_empty_username">ব্যবহারকারীর নাম খালি , শংসাপত্র পরিবর্তন হয়নি</string>
 </resources>

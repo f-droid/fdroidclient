@@ -78,7 +78,7 @@
     <string name="loading">Բեռնում…</string>
     <string name="newPerms">Նոր</string>
     <string name="allPerms">Բոլորը</string>
-    <string name="perms_new_perm_prefix">Նոր.</string>
+    <string name="perms_new_perm_prefix">Նոր:</string>
     <string name="downloading">Ներբեռնում եմ…</string>
     <string name="installing">Տեղադրվում է…</string>
     <string name="uninstalling">Ապատեղադրում է…</string>
@@ -169,9 +169,7 @@
     <string name="interval_1w">Ստուգել թարմացումները ամեն շաբաթ</string>
     <string name="interval_2w">Ստուգել թարմացումները 2 շաբաթը մեկ</string>
     <string name="crash_dialog_title">F-Droidը կործանվեց</string>
-    <string name="crash_dialog_comment_prompt">Այստեղ կարող ես ավելացնել հավելյալ տեղեկատվություն և
-        մեկնաբանություններ.
-    </string>
+    <string name="crash_dialog_comment_prompt">Այստեղ կարող ես ավելացնել հավելյալ տեղեկատվություն և մեկնաբանություններ՝</string>
     <string name="enable_nfc_send">Միացնել NFC Sendը…</string>
     <string name="unstable_updates_summary">Առաջարկել թարմացումներ անկայուն տարբերակների համար</string>
     <string name="update_auto_download_summary">Ներբեռնել թարմացումները ետնապատկերում</string>
