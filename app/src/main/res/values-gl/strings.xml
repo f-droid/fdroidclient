@@ -138,9 +138,9 @@
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
     <string name="uninstall_error_unknown">Fallou ó desinstalar por un erro descoñecido</string>
-    <string name="swap_nfc_title">Preme para facer intercambio (swap)</string>
+    <string name="swap_nfc_title">Preme para intercambiar</string>
     <string name="swap">Intercambiar aplicacións</string>
-    <string name="swap_success">Intercambio feito con éxito!</string>
+    <string name="swap_success">Intercambio exitoso!</string>
     <string name="swap_view_available_networks">Preme para abrir as redes dispoñíbeis</string>
     <string name="open_qr_code_scanner">Abrir o lector QR</string>
     <string name="swap_welcome">Benvido ó F-Droid!</string>
