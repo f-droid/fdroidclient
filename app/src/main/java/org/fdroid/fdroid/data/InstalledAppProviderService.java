@@ -14,10 +14,6 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
-
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
@@ -33,6 +29,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
@@ -58,7 +57,6 @@ import rx.subjects.PublishSubject;
  * process was underway, e.g. uninstalling via {@code adb}, updates via Google
  * Play, Yalp, etc.
  */
-@SuppressWarnings("LineLength")
 public class InstalledAppProviderService extends JobIntentService {
     private static final String TAG = "InstalledAppProviderSer";
 
@@ -196,8 +194,7 @@ public class InstalledAppProviderService extends JobIntentService {
                     IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
                     List<PackageInfo> packageInfoList = null;
                     try {
-                        packageInfoList =
-                                privService.getInstalledPackages(PackageManager.GET_SIGNATURES);
+                        packageInfoList = privService.getInstalledPackages(PackageManager.GET_SIGNATURES);
                     } catch (RemoteException e) {
                         Log.e(TAG, "RemoteException", e);
                     } finally {
@@ -224,8 +221,7 @@ public class InstalledAppProviderService extends JobIntentService {
 
     private static void compareToPackageManager(Context context, List<PackageInfo> packageInfoList) {
         if (packageInfoList == null || packageInfoList.isEmpty()) {
-            packageInfoList = context.getPackageManager()
-                    .getInstalledPackages(PackageManager.GET_SIGNATURES);
+            packageInfoList = context.getPackageManager().getInstalledPackages(PackageManager.GET_SIGNATURES);
         }
         Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
         Collections.sort(packageInfoList, new Comparator<PackageInfo>() {
