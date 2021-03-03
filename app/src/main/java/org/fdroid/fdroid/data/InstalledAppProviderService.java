@@ -196,10 +196,9 @@ public class InstalledAppProviderService extends JobIntentService {
                     try {
                         packageInfoList = privService.getInstalledPackages(PackageManager.GET_SIGNATURES);
                     } catch (RemoteException e) {
-                        Log.e(TAG, "RemoteException", e);
-                    } finally {
-                        compareToPackageManager(context, packageInfoList);
+                        e.printStackTrace();
                     }
+                    compareToPackageManager(context, packageInfoList);
                 }
 
                 @Override
@@ -213,9 +212,7 @@ public class InstalledAppProviderService extends JobIntentService {
             context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         } else {
-            List<PackageInfo> packageInfoList = context.getPackageManager()
-                    .getInstalledPackages(PackageManager.GET_SIGNATURES);
-            compareToPackageManager(context, packageInfoList);
+            compareToPackageManager(context, null);
         }
     }
 
