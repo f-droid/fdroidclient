@@ -22,6 +22,18 @@ import org.fdroid.fdroid.installer.ApkCache;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Deletes the built-up cruft left over from various processes.
+ * <p>
+ * The installation process downloads APKs to the cache, then when an APK is being
+ * installed, it is copied into files for running the install. Installs can happen
+ * fully in the background, so the user might clear the cache at any time, so the
+ * APK cannot be installed from the cache. Also, F-Droid is not guaranteed to get
+ * an event after the APK is installed, so that can't be used to delete the APK
+ * from files when it is no longer needed. That's where CleanCacheWorker comes in,
+ * it runs regularly to ensure things are cleaned up. If something blocks it from
+ * running, then APKs can remain in {@link org.fdroid.fdroid.installer.ApkFileProvider}
+ */
 public class CleanCacheWorker extends Worker {
     public static final String TAG = "CleanCacheWorker";
 
