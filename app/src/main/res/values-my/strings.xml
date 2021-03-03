@@ -45,7 +45,6 @@
     <string name="app_inst_unknown_source">သြင္းထားခဲ့သည္ (မသိရွိေသာရင္းျမစ္)</string>
     <string name="added_on">%s တြင္ေပါင္းထည့္ခ့ဲသည္</string>
     <string name="ok">OK</string>
-    <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="repo_add_title">Repository အသစ္ထည့္မည္</string>
     <string name="repo_add_add">ေပါင္းထည့္မည္</string>

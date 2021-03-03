@@ -26,7 +26,7 @@
     <string name="installIncompatible">অ্যাপ্লিকেশনটি আপনার ডিভাইসের সাথে নাও চলতে পারে, তবুও ইনস্টল করবেন\?</string>
     <string name="SignatureMismatch">নতুন সংস্করণটি পুরানোটির থেকে আলাদা কি দিয়ে স্বাক্ষরিত। নতুন সংস্করণ ইনস্টল করতে, পুরানোটি প্রথমে আনইনস্টল করা উচিত। দয়া করে এটি করুন এবং আবার চেষ্টা করুন। (মনে রাখবেন যে আনইনস্টল করা অ্যাপ দ্বারা সঞ্চিত কোনও অভ্যন্তরীণ ডাটা মুছে যাবে)</string>
     <string name="status_processing_xml_percent">%1$s থেকে %2$s / %3$s (%4$d%%) প্রক্রিয়াকরণ করা হচ্ছে</string>
-    <string name="enable_proxy_summary">সকল নেটওয়ার্ক অনুরোধের জন্য এইচটিটিপি প্রক্সি কনফিগার করুন</string>
+    <string name="enable_proxy_summary">সকল নেটওয়ার্ক অনুরোধের জন্য এইচটিটিপি প্রক্সি কনফিগার করুন</string>
     <string name="menu_share">শেয়ার করো</string>
     <string name="menu_install">ইনস্টল করো</string>
     <string name="menu_uninstall">আনইনস্টল করো</string>
@@ -123,4 +123,9 @@
     <string name="about_version">সংস্করণ</string>
     <string name="login_password">পাসওয়ার্ড</string>
     <string name="login_name">নাম</string>
+    <string name="app_details_donate_prompt">%2$s %1$s তৈরী করেছেন। কফি কিনে দিন!</string>
+    <string name="app_details__incompatible_mismatched_signature">ইন্সটলড ভার্সন থেকে আলাদা সিগনেচার</string>
+    <string name="app_details_donate_prompt_unknown_author">ডেভলপারকে %1$s দামের কফি কিনে দিন!</string>
+    <string name="no_such_app">এ জাতীয় কোনও অ্যাপ পাওয়া যায় নি।</string>
+    <string name="repo_error_empty_username">ব্যবহারকারীর নাম খালি , শংসাপত্র পরিবর্তন হয়নি</string>
 </resources>
