@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
@@ -42,7 +44,7 @@ public class CleanCacheWorker extends Worker {
     }
 
     /**
-     * Schedule or cancel a work request to update the app index, according to the
+     * Schedule or cancel a work request to clean up caches, according to the
      * current preferences. Should be called a) at boot, b) if the preference
      * is changed, or c) on startup, in case we get upgraded.
      */
@@ -66,6 +68,18 @@ public class CleanCacheWorker extends Worker {
                         .build();
         workManager.enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.REPLACE, cleanCache);
         Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache.");
+    }
+
+    /**
+     * Force a cache cleanup.  Since {@link #deleteOldInstallerFiles(Context)}
+     * only deletes files older than an hour, any ongoing APK install processes
+     * should not have their APKs are deleted out from under them.
+     */
+    public static void force(@NonNull final Context context) {
+        OneTimeWorkRequest cleanCache = new OneTimeWorkRequest.Builder(CleanCacheWorker.class).build();
+        WorkManager workManager = WorkManager.getInstance(context);
+        workManager.enqueueUniqueWork(TAG + ".force", ExistingWorkPolicy.KEEP, cleanCache);
+        Utils.debugLog(TAG, "Enqueued forced run for cleaning the cache.");
     }
 
     @NonNull
@@ -95,7 +109,10 @@ public class CleanCacheWorker extends Worker {
 
     /**
      * {@link org.fdroid.fdroid.installer.Installer} instances copy the APK into
-     * a safe place before installing.  It doesn't clean up them reliably yet.
+     * a safe place before installing.  This only deletes files older than an
+     * hour to avoid deleting APKs while they are still being installed.  This
+     * also avoids deleting the nearby swap repo files since that might be
+     * actively in use.
      */
     private void deleteOldInstallerFiles() {
         File filesDir = getApplicationContext().getFilesDir();

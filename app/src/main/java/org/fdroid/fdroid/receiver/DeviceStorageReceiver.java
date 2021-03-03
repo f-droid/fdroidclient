@@ -18,9 +18,8 @@ public class DeviceStorageReceiver extends BroadcastReceiver {
         if (Intent.ACTION_DEVICE_STORAGE_LOW.equals(action)) {
             int percentageFree = Utils.getPercent(Utils.getImageCacheDirAvailableMemory(context),
                     Utils.getImageCacheDirTotalMemory(context));
-            if (percentageFree > 2) {
-                CleanCacheWorker.schedule(context);
-            } else {
+            CleanCacheWorker.force(context);
+            if (percentageFree <= 2) {
                 DeleteCacheService.deleteAll(context);
             }
         }
