@@ -1,23 +1,25 @@
 package org.fdroid.fdroid.data;
 
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.os.IBinder;
 import android.os.Process;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
+import android.os.RemoteException;
 import android.util.Log;
+
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.privileged.IPrivilegedService;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -26,6 +28,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
+import rx.subjects.PublishSubject;
 
 /**
  * Handles all updates to {@link InstalledAppProvider}, whether checking the contents
@@ -48,7 +57,6 @@ import java.util.concurrent.TimeUnit;
  * process was underway, e.g. uninstalling via {@code adb}, updates via Google
  * Play, Yalp, etc.
  */
-@SuppressWarnings("LineLength")
 public class InstalledAppProviderService extends JobIntentService {
     private static final String TAG = "InstalledAppProviderSer";
 
@@ -174,12 +182,45 @@ public class InstalledAppProviderService extends JobIntentService {
      *
      * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/819>issue #819</a>
      */
-    public static void compareToPackageManager(Context context) {
+    public static void compareToPackageManager(final Context context) {
         Utils.debugLog(TAG, "Comparing package manager to our installed app cache.");
-        Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
 
-        List<PackageInfo> packageInfoList = context.getPackageManager()
-                .getInstalledPackages(PackageManager.GET_SIGNATURES);
+        if (Build.VERSION.SDK_INT >= 29 &&
+                PrivilegedInstaller.isExtensionInstalledCorrectly(context) ==
+                        PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
+            ServiceConnection mServiceConnection = new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
+                    List<PackageInfo> packageInfoList = null;
+                    try {
+                        packageInfoList = privService.getInstalledPackages(PackageManager.GET_SIGNATURES);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    compareToPackageManager(context, packageInfoList);
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName componentName) {
+                    // Nothing to tear down from onServiceConnected
+                }
+            };
+
+            Intent serviceIntent = new Intent(PrivilegedInstaller.PRIVILEGED_EXTENSION_SERVICE_INTENT);
+            serviceIntent.setPackage(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+            context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                    Context.BIND_AUTO_CREATE);
+        } else {
+            compareToPackageManager(context, null);
+        }
+    }
+
+    private static void compareToPackageManager(Context context, List<PackageInfo> packageInfoList) {
+        if (packageInfoList == null || packageInfoList.isEmpty()) {
+            packageInfoList = context.getPackageManager().getInstalledPackages(PackageManager.GET_SIGNATURES);
+        }
+        Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
         Collections.sort(packageInfoList, new Comparator<PackageInfo>() {
             @Override
             public int compare(PackageInfo o1, PackageInfo o2) {
