@@ -505,4 +505,5 @@
     <string name="notification_channel_swaps_description">Mostra les notificacions d\'intercanvi d\'aplicacions P2P.</string>
     <string name="notification_channel_installs_description">Mostra les notificacions d\'instal·lació d\'aplicacions.</string>
     <string name="notification_channel_installs_title">Instal·lacions</string>
+    <string name="notification_channel_swaps_title">Intercanvis</string>
 </resources>
