@@ -15,7 +15,7 @@
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
     <string name="delete">Borrar</string>
     <string name="by_author_format">por %s</string>
-    <string name="version">Version</string>
+    <string name="version">Versión</string>
     <string name="installIncompatible">Aplicación incompatible con su dispositivo, instalar de todos modos\?</string>
     <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la anterior. Para instalar la nueva versión, primero se debe desinstalar la antigua. Por favor, haga esto e inténtelo de nuevo. (Tenga en cuenta que la desinstalación borrará los datos internos almacenados por la aplicación)</string>
     <string name="notification_title_summary_install_error">Error al instalar</string>
