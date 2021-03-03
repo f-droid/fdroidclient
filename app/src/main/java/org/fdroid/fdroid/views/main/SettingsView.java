@@ -2,17 +2,14 @@ package org.fdroid.fdroid.views.main;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.PreferencesFragment;
 
-@SuppressWarnings("LineLength")
 /**
  * When attached to the window, the {@link PreferencesFragment} will be added. When detached from
  * the window, the fragment will be removed.
@@ -52,9 +49,6 @@ public class SettingsView extends FrameLayout {
         super.onAttachedToWindow();
 
         AppCompatActivity activity = (AppCompatActivity) getContext();
-        if (activity == null) {
-            throw new IllegalArgumentException("Cannot add a SettingsView to activities which are not an AppCompatActivity");
-        }
 
         if (currentTransaction == null) {
             currentTransaction = activity.getSupportFragmentManager().beginTransaction();
@@ -71,9 +65,6 @@ public class SettingsView extends FrameLayout {
         super.onDetachedFromWindow();
 
         AppCompatActivity activity = (AppCompatActivity) getContext();
-        if (activity == null) {
-            throw new IllegalArgumentException("Cannot add a SettingsView to activities which are not an AppCompatActivity");
-        }
 
         Fragment existingFragment = activity.getSupportFragmentManager().findFragmentByTag("preferences-fragment");
         if (existingFragment == null) {

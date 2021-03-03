@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
@@ -18,10 +20,25 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.nearby.LocalRepoManager;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Deletes the built-up cruft left over from various processes.
+ * <p>
+ * The installation process downloads APKs to the cache, then when an APK is being
+ * installed, it is copied into files for running the install. Installs can happen
+ * fully in the background, so the user might clear the cache at any time, so the
+ * APK cannot be installed from the cache. Also, F-Droid is not guaranteed to get
+ * an event after the APK is installed, so that can't be used to delete the APK
+ * from files when it is no longer needed. That's where CleanCacheWorker comes in,
+ * it runs regularly to ensure things are cleaned up. If something blocks it from
+ * running, then APKs can remain in {@link org.fdroid.fdroid.installer.ApkFileProvider}
+ */
 public class CleanCacheWorker extends Worker {
     public static final String TAG = "CleanCacheWorker";
 
@@ -30,7 +47,7 @@ public class CleanCacheWorker extends Worker {
     }
 
     /**
-     * Schedule or cancel a work request to update the app index, according to the
+     * Schedule or cancel a work request to clean up caches, according to the
      * current preferences. Should be called a) at boot, b) if the preference
      * is changed, or c) on startup, in case we get upgraded.
      */
@@ -56,15 +73,28 @@ public class CleanCacheWorker extends Worker {
         Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache.");
     }
 
+    /**
+     * Force a cache cleanup.  Since {@link #deleteOldInstallerFiles(Context)}
+     * only deletes files older than an hour, any ongoing APK install processes
+     * should not have their APKs are deleted out from under them.
+     */
+    public static void force(@NonNull final Context context) {
+        OneTimeWorkRequest cleanCache = new OneTimeWorkRequest.Builder(CleanCacheWorker.class).build();
+        WorkManager workManager = WorkManager.getInstance(context);
+        workManager.enqueueUniqueWork(TAG + ".force", ExistingWorkPolicy.KEEP, cleanCache);
+        Utils.debugLog(TAG, "Enqueued forced run for cleaning the cache.");
+    }
+
     @NonNull
     @Override
     public Result doWork() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         try {
-            deleteExpiredApksFromCache();
-            deleteStrayIndexFiles();
-            deleteOldInstallerFiles();
-            deleteOldIcons();
+            final Context context = getApplicationContext();
+            deleteExpiredApksFromCache(context);
+            deleteStrayIndexFiles(context);
+            deleteOldInstallerFiles(context);
+            deleteOldIcons(context);
             return Result.success();
         } catch (Exception e) {
             return Result.failure();
@@ -76,17 +106,20 @@ public class CleanCacheWorker extends Worker {
      * specified by the user in the "Keep Cache Time" preference.  This removes
      * any APK in the cache that is older than that preference specifies.
      */
-    private void deleteExpiredApksFromCache() {
-        File cacheDir = ApkCache.getApkCacheDir(getApplicationContext());
+    static void deleteExpiredApksFromCache(@NonNull Context context) {
+        File cacheDir = ApkCache.getApkCacheDir(context);
         clearOldFiles(cacheDir, Preferences.get().getKeepCacheTime());
     }
 
     /**
      * {@link org.fdroid.fdroid.installer.Installer} instances copy the APK into
-     * a safe place before installing.  It doesn't clean up them reliably yet.
+     * a safe place before installing.  This only deletes files older than an
+     * hour to avoid deleting APKs while they are still being installed.  This
+     * also avoids deleting the nearby swap repo files since that might be
+     * actively in use.
      */
-    private void deleteOldInstallerFiles() {
-        File filesDir = getApplicationContext().getFilesDir();
+    static void deleteOldInstallerFiles(@NonNull Context context) {
+        File filesDir = context.getFilesDir();
         if (filesDir == null) {
             Utils.debugLog(TAG, "The files directory doesn't exist.");
             return;
@@ -98,8 +131,9 @@ public class CleanCacheWorker extends Worker {
             return;
         }
 
+        final List<String> webRootAssetFiles = Arrays.asList(LocalRepoManager.WEB_ROOT_ASSET_FILES);
         for (File f : files) {
-            if (f.getName().endsWith(".apk")) {
+            if (f.isFile() && !f.getName().endsWith(".html") && !webRootAssetFiles.contains(f.getName())) {
                 clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
@@ -117,8 +151,8 @@ public class CleanCacheWorker extends Worker {
      * This also deletes temp files that are created by
      * {@link org.fdroid.fdroid.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
      */
-    private void deleteStrayIndexFiles() {
-        File cacheDir = getApplicationContext().getCacheDir();
+    static void deleteStrayIndexFiles(@NonNull Context context) {
+        File cacheDir = context.getCacheDir();
         if (cacheDir == null) {
             Utils.debugLog(TAG, "The cache directory doesn't exist.");
             return;
@@ -143,8 +177,8 @@ public class CleanCacheWorker extends Worker {
     /**
      * Delete cached icons that have not been accessed in over a year.
      */
-    private void deleteOldIcons() {
-        clearOldFiles(Utils.getImageCacheDir(getApplicationContext()), TimeUnit.DAYS.toMillis(365));
+    static void deleteOldIcons(@NonNull Context context) {
+        clearOldFiles(Utils.getImageCacheDir(context), TimeUnit.DAYS.toMillis(365));
     }
 
     /**

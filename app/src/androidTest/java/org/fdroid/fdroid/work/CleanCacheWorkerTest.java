@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * This test cannot run on Robolectric unfortunately since it does not support
+ * getting the timestamps from the files completely.
  * <p>
  * This is marked with {@link LargeTest} because it always fails on the emulator
  * tests on GitLab CI.  That excludes it from the test run there.
@@ -86,4 +87,24 @@ public class CleanCacheWorkerTest {
         CleanCacheWorker.clearOldFiles(nonexistent, 1);
         CleanCacheWorker.clearOldFiles(null, 1);
     }
+
+    /*
+    // TODO enable this once getImageCacheDir() can be mocked or provide a writable dir in the test
+    @Test
+    public void testDeleteOldIcons() throws IOException {
+        Context context = InstrumentationRegistry.getInstrumentation().getContext();
+        File imageCacheDir = Utils.getImageCacheDir(context);
+        imageCacheDir.mkdirs();
+        assertTrue(imageCacheDir.isDirectory());
+        File oldIcon = new File(imageCacheDir, "old.png");
+        assertTrue(oldIcon.createNewFile());
+        Assume.assumeTrue("test environment must be able to set LastModified time",
+                oldIcon.setLastModified(System.currentTimeMillis() - (DateUtils.DAY_IN_MILLIS * 370)));
+        File currentIcon = new File(imageCacheDir, "current.png");
+        assertTrue(currentIcon.createNewFile());
+        CleanCacheWorker.deleteOldIcons(context);
+        assertTrue(currentIcon.exists());
+        assertFalse(oldIcon.exists());
+    }
+     */
 }
