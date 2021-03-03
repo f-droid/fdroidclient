@@ -6,6 +6,8 @@
 
 * Search results greatly improved (@Tvax @gcbrown76)
 
-* Let Android efficiently schedule background cache cleanup operations (@Isira-Seneviratne)
+* More reliable cache clean up
+
+* Efficiently schedule cache cleanup (@Isira-Seneviratne)
 
 * Overhaul repo URL parsing for reliable repo adding (@projectgus)

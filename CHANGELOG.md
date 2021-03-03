@@ -1,3 +1,21 @@
+### 1.12-alpha2 (2021-03-03)
+
+* Overhaul clean up of cached files
+
+* Support updating "shared library packages" like Trichrome (@uldiniad)
+
+### 1.12-alpha1 (2021-02-25)
+
+* Add extra sanitation to search terms to prevent vulnerabilities.
+
+* Fix Nearby Swap's close button (@proletarius101)
+
+* Bump to compileSdkVersion 29 to support Java8
+
+* Set up WorkManager on demand to avoid slowing down starts
+
+* Prefer system keys when APKs are signed by them (@glennmen)
+
 ### 1.12-alpha0 (2021-02-08)
 
 * App description localization now fully respects lists of languages in Android
