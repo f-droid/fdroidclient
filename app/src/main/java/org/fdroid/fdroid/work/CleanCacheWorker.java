@@ -90,10 +90,11 @@ public class CleanCacheWorker extends Worker {
     public Result doWork() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         try {
-            deleteExpiredApksFromCache();
-            deleteStrayIndexFiles();
-            deleteOldInstallerFiles();
-            deleteOldIcons();
+            final Context context = getApplicationContext();
+            deleteExpiredApksFromCache(context);
+            deleteStrayIndexFiles(context);
+            deleteOldInstallerFiles(context);
+            deleteOldIcons(context);
             return Result.success();
         } catch (Exception e) {
             return Result.failure();
@@ -105,8 +106,8 @@ public class CleanCacheWorker extends Worker {
      * specified by the user in the "Keep Cache Time" preference.  This removes
      * any APK in the cache that is older than that preference specifies.
      */
-    private void deleteExpiredApksFromCache() {
-        File cacheDir = ApkCache.getApkCacheDir(getApplicationContext());
+    static void deleteExpiredApksFromCache(@NonNull Context context) {
+        File cacheDir = ApkCache.getApkCacheDir(context);
         clearOldFiles(cacheDir, Preferences.get().getKeepCacheTime());
     }
 
@@ -117,8 +118,8 @@ public class CleanCacheWorker extends Worker {
      * also avoids deleting the nearby swap repo files since that might be
      * actively in use.
      */
-    private void deleteOldInstallerFiles() {
-        File filesDir = getApplicationContext().getFilesDir();
+    static void deleteOldInstallerFiles(@NonNull Context context) {
+        File filesDir = context.getFilesDir();
         if (filesDir == null) {
             Utils.debugLog(TAG, "The files directory doesn't exist.");
             return;
@@ -150,8 +151,8 @@ public class CleanCacheWorker extends Worker {
      * This also deletes temp files that are created by
      * {@link org.fdroid.fdroid.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
      */
-    private void deleteStrayIndexFiles() {
-        File cacheDir = getApplicationContext().getCacheDir();
+    static void deleteStrayIndexFiles(@NonNull Context context) {
+        File cacheDir = context.getCacheDir();
         if (cacheDir == null) {
             Utils.debugLog(TAG, "The cache directory doesn't exist.");
             return;
@@ -176,8 +177,8 @@ public class CleanCacheWorker extends Worker {
     /**
      * Delete cached icons that have not been accessed in over a year.
      */
-    private void deleteOldIcons() {
-        clearOldFiles(Utils.getImageCacheDir(getApplicationContext()), TimeUnit.DAYS.toMillis(365));
+    static void deleteOldIcons(@NonNull Context context) {
+        clearOldFiles(Utils.getImageCacheDir(context), TimeUnit.DAYS.toMillis(365));
     }
 
     /**

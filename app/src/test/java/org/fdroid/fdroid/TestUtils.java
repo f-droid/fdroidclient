@@ -8,6 +8,7 @@ import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
 import androidx.test.core.app.ApplicationProvider;
+import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -189,5 +190,18 @@ public class TestUtils {
         modifiersField.setAccessible(true);
         modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
         field.set(null, newValue);
+    }
+
+    public static void ls(File dir) {
+        Process p = null;
+        try {
+            p = Runtime.getRuntime().exec("ls -l " + dir.getAbsolutePath());
+            p.waitFor();
+            for (String line : IOUtils.readLines(p.getInputStream())) {
+                System.out.println(line);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
