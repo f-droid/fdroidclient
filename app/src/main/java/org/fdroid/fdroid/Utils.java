@@ -811,6 +811,10 @@ public final class Utils {
         return versionName;
     }
 
+    public static String getUserAgent() {
+        return "F-Droid " + BuildConfig.VERSION_NAME;
+    }
+
     /**
      * Try to get the {@link PackageInfo} for the {@code packageName} provided.
      *

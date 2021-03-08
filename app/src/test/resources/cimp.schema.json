@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "$id": "https://cleaninsights.org/schemas/cimp.schema.json",
+  "title": "CleanInsights Matomo Proxy API",
+  "description": "The scheme defining the JSON API of the CleanInsights Matomo Proxy.",
+  "type": "object",
+  "properties": {
+    "idsite": {
+      "title": "Matomo Site ID",
+      "description": "The site ID used in the Matomo server which will collect and analyze the gathered data.",
+      "examples": [1, 2, 3, 345345],
+      "type": "integer",
+      "minimum": 1
+    },
+    "lang": {
+      "title": "HTTP Accept-Language Header",
+      "description": "A HTTP Accept-Language header. Matomo uses this value to detect the visitor's country.",
+      "examples": ["fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5", "en", "de_AT"],
+      "type": "string"
+    },
+    "ua": {
+      "title": "HTTP User-Agent Header",
+      "description": "A  HTTP User-Agent. The user agent is used to detect the operating system and browser used.",
+      "examples": ["Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"],
+      "type": "string"
+    },
+    "visits": {
+      "title": "Visit Measurements",
+      "description": "List of aggregated measurements to specific pages/scenes/activities.",
+      "type": "array",
+      "items": {
+        "title": "Visit Measurement",
+        "description": "A single aggregated measurement of repeated visits to a page/scene/activity.",
+        "type": "object",
+        "properties": {
+          "action_name": {
+            "title": "Visited Page/Scene/Activity Identifier",
+            "description": "Main identifier to track page/scene/activity visits in Matomo.",
+            "examples": ["For example, Help / Feedback will create the Action Feedback in the category Help."],
+            "type": "string",
+            "minLength": 1
+          },
+          "period_start": {
+            "title": "Start UNIX Epoch Timestamp",
+            "description": "Beginning of the aggregation period in seconds since 1970-01-01 00:00:00 UTC",
+            "examples": [1602499451],
+            "type": "integer"
+          },
+          "period_end": {
+            "title": "End UNIX Epoch Timestamp",
+            "description": "End of the aggregation period in seconds since 1970-01-01 00:00:00 UTC",
+            "examples": [1602499451],
+            "type": "integer"
+          },
+          "times": {
+            "title": "Number of Times Occurred",
+            "description": "The number of times the visit to this page/scene/activity happened during the specified period.",
+            "examples": [1, 2, 3, 26745],
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": ["action_name", "period_start", "period_end", "times"]
+      }
+    },
+    "events": {
+      "title": "Event Measurement",
+      "description": "List of aggregated measurements of a specific event. (e.g. like a press of a button, picture taken etc.)",
+      "type": "array",
+      "items": {
+        "title": "Event Measurement",
+        "description": "A single aggregated measurement of a specific event.",
+        "type": "object",
+        "properties": {
+          "category": {
+            "title": "Event Category Identifier",
+            "description": "A category identifier for the Matomo event tracking: https://matomo.org/docs/event-tracking/",
+            "examples": ["Videos", "Music", "Games"],
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "title": "Event Action Identifier",
+            "description": "An action identifier for the Matomo event tracking: https://matomo.org/docs/event-tracking/",
+            "examples": ["Play", "Pause", "Duration", "Add Playlist", "Downloaded", "Clicked"],
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "title": "Event Name",
+            "description": "An action name for the Matomo event tracking: https://matomo.org/docs/event-tracking/",
+            "examples": ["Office Space", "Jonathan Coulton - Code Monkey", "kraftwerk-autobahn.mp3"],
+            "type": "string"
+          },
+          "value": {
+            "title": "Event Value",
+            "description": "A value for the Matomo event tracking: https://matomo.org/docs/event-tracking/",
+            "examples": [0, 1, 1.5, 100, 56.44332],
+            "type": "number"
+          },
+          "period_start": {
+            "title": "Start UNIX Epoch Timestamp",
+            "description": "Beginning of the aggregation period in seconds since 1970-01-01 00:00:00 UTC",
+            "examples": [1602499451],
+            "type": "integer"
+          },
+          "period_end": {
+            "title": "End UNIX Epoch Timestamp",
+            "description": "End of the aggregation period in seconds since 1970-01-01 00:00:00 UTC",
+            "examples": [1602499451],
+            "type": "integer"
+          },
+          "times": {
+            "title": "Number of Times Occurred",
+            "description": "The number of times the visit to this page/scene/activity happened during the specified period.",
+            "examples": [1, 2, 3, 26745],
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": ["category", "action","period_start", "period_end", "times"]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["idsite"]
+}

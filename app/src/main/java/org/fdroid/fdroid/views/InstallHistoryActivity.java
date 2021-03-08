@@ -25,17 +25,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import androidx.core.app.ShareCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ShareCompat;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
+import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
@@ -45,15 +47,35 @@ import java.nio.charset.Charset;
 public class InstallHistoryActivity extends AppCompatActivity {
     public static final String TAG = "InstallHistoryActivity";
 
+    public static final String EXTRA_SHOW_FDROID_METRICS = "showFDroidMetrics";
+
+    private boolean showingInstallHistory;
+    private Toolbar toolbar;
+    private MenuItem showMenuItem;
+    private TextView textView;
+    private String appName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_install_history);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.install_history));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        textView = findViewById(R.id.text);
+        appName = getString(R.string.app_name);
+
+        Intent intent = getIntent();
+        if (intent != null && intent.getBooleanExtra(EXTRA_SHOW_FDROID_METRICS, false)) {
+            showFDroidMetricsReport();
+        } else {
+            showInstallHistory();
+        }
+    }
+
+    private void showInstallHistory() {
         String text = "";
         try {
             ContentResolver resolver = getContentResolver();
@@ -71,13 +93,35 @@ public class InstallHistoryActivity extends AppCompatActivity {
         } catch (IOException | SecurityException | IllegalStateException e) {
             e.printStackTrace();
         }
-        TextView textView = findViewById(R.id.text);
+        toolbar.setTitle(getString(R.string.install_history));
         textView.setText(text);
+        showingInstallHistory = true;
+        if (showMenuItem != null) {
+            showMenuItem.setVisible(Preferences.get().isSendingToFDroidMetrics());
+            showMenuItem.setTitle(R.string.menu_show_fdroid_metrics_report);
+        }
+    }
+
+    private void showFDroidMetricsReport() {
+        toolbar.setTitle(getString(R.string.fdroid_metrics_report, appName));
+        textView.setText(FDroidMetricsWorker.generateReport(this));
+        showingInstallHistory = false;
+        if (showMenuItem != null) {
+            showMenuItem.setVisible(Preferences.get().isSendingToFDroidMetrics());
+            showMenuItem.setTitle(R.string.menu_show_install_history);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.install_history, menu);
+        showMenuItem = menu.findItem(R.id.menu_show);
+        showMenuItem.setVisible(Preferences.get().isSendingToFDroidMetrics());
+        if (showingInstallHistory) {
+            showMenuItem.setTitle(R.string.menu_show_fdroid_metrics_report);
+        } else {
+            showMenuItem.setTitle(R.string.menu_show_install_history);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,29 +130,46 @@ public class InstallHistoryActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_share:
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("Repos:\n");
-                for (Repo repo : RepoProvider.Helper.all(this)) {
-                    if (repo.inuse) {
-                        stringBuilder.append("* ");
-                        stringBuilder.append(repo.address);
-                        stringBuilder.append('\n');
+                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this);
+                if (showingInstallHistory) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append("Repos:\n");
+                    for (Repo repo : RepoProvider.Helper.all(this)) {
+                        if (repo.inuse) {
+                            stringBuilder.append("* ");
+                            stringBuilder.append(repo.address);
+                            stringBuilder.append('\n');
+                        }
                     }
+                    intentBuilder
+                            .setText(stringBuilder.toString())
+                            .setStream(InstallHistoryService.LOG_URI)
+                            .setType("text/plain")
+                            .setSubject(getString(R.string.send_history_csv, appName))
+                            .setChooserTitle(R.string.send_install_history);
+                } else {
+                    intentBuilder
+                            .setText(textView.getText())
+                            .setType("application/json")
+                            .setSubject(getString(R.string.send_fdroid_metrics_json, appName))
+                            .setChooserTitle(R.string.send_fdroid_metrics_report);
                 }
-                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this)
-                        .setStream(InstallHistoryService.LOG_URI)
-                        .setSubject(getString(R.string.send_history_csv, getString(R.string.app_name)))
-                        .setChooserTitle(R.string.send_install_history)
-                        .setText(stringBuilder.toString())
-                        .setType("text/plain");
                 Intent intent = intentBuilder.getIntent();
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 startActivity(intent);
                 break;
             case R.id.menu_delete:
-                getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
-                TextView textView = findViewById(R.id.text);
+                if (showingInstallHistory) {
+                    getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
+                }
                 textView.setText("");
+                break;
+            case R.id.menu_show:
+                if (showingInstallHistory) {
+                    showFDroidMetricsReport();
+                } else {
+                    showInstallHistory();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
