@@ -55,7 +55,7 @@ stages:
 
 .test-script-exit: &test-script-exit
   - exit $EXITVALUE
-    
+
 .build-base:
   extends: .base
   stage: build
@@ -119,7 +119,7 @@ checkstyle:
 errorprone:
   extends: .base
   stage: test
-  needs: []  # no need to wait for build
+  needs: [] # no need to wait for build
   script:
     - apt-get update
     - apt-get install -t stretch-backports openjdk-11-jdk-headless
@@ -198,7 +198,6 @@ deploy_nightly:
     # build the APKs!
     - ./gradlew assembleDebug
     - fdroid nightly -v
-
 
 sast:
   # TODO: change this after https://gitlab.com/gitlab-org/security-products/analyzers/mobsf/-/merge_requests/18
