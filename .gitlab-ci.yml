@@ -54,12 +54,12 @@ stages:
     when: on_failure
 
 buildAll:
-  stage: build
+  extends: .build-base
   script:
     - ./gradlew assemble
 
 buildFullDebug:
-  stage: build
+  extends: .build-base
   script:
     - ./gradlew assembleFullDebug
 
