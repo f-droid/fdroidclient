@@ -65,8 +65,6 @@ stages:
     name: "${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
       - app/build
-    expire_in: 1 week
-    when: on_failure
 
 build-all:
   extends: .build-base
