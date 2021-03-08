@@ -90,7 +90,10 @@
             <trusting group="com.google.code.gson" name="gson"/>
          </trusted-key>
          <trusted-key id="b6e73d84ea4fcc47166087253faad2cd5ecbb314" group="org.apache.commons"/>
-         <trusted-key id="b801e2f8ef035068ec1139cc29579f18fa8fd93b" group="com.google.j2objc" name="j2objc-annotations" version="1.1"/>
+         <trusted-key id="b801e2f8ef035068ec1139cc29579f18fa8fd93b">
+            <trusting group="com.google.j2objc" name="j2objc-annotations" version="1.1"/>
+            <trusting group="com.google.j2objc" name="j2objc-annotations"/>
+         </trusted-key>
          <trusted-key id="bdb5fa4fe719d787fb3d3197f6d4a1d411e9d1ae">
             <trusting group="com.google.guava" name="listenablefuture" version="9999.0-empty-to-avoid-conflict-with-guava"/>
             <trusting group="com.google.guava" name="listenablefuture"/>
