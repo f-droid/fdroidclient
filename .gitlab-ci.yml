@@ -54,10 +54,12 @@ stages:
     when: on_failure
 
 buildAll:
+  stage: build
   script:
     - ./gradlew assemble
 
 buildFullDebug:
+  stage: build
   script:
     - ./gradlew assembleFullDebug
 
@@ -65,8 +67,7 @@ buildFullDebug:
 # the style tests if the rest of the more meaningful tests pass.
 test_lint:
   <<: *test-template
-  needs:
-    - buildAll
+  needs: []
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
