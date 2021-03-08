@@ -53,7 +53,6 @@ stages:
     expire_in: 1 week
     when: on_failure
 
-
 buildAll:
   script:
     - ./gradlew assemble
@@ -61,6 +60,7 @@ buildAll:
 buildFullDebug:
   script:
     - ./gradlew assembleFullDebug
+
 # Run the most important first. Then we can decide whether to ignore
 # the style tests if the rest of the more meaningful tests pass.
 test_lint:
@@ -72,7 +72,6 @@ test_lint:
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew testFullDebugUnitTest || set_error
     - ./gradlew lint || set_error
     - exit $EXITVALUE
 
