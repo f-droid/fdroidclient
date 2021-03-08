@@ -203,14 +203,14 @@ deploy_nightly:
 
 
 sast:
+  # TODO: change this after https://gitlab.com/gitlab-org/security-products/analyzers/mobsf/-/merge_requests/18
+  image: registry.gitlab.com/proletarius101/mobsf
+  needs:
+    - build-full-debug
   # Explicitly allow downloading the report
   artifacts:
     paths:
       - gl-sast-report.json
   before_script:
-    # MobSF expects AndroidManifest.xml to be at either the project root
-    # or app/src/main/AndroidManifest.xml. If it's not at one of those locations,
-    # then we will copy it over so that analysis may continue.
-    # https:#github.com/MobSF/Mobile-Security-Framework-MobSF/issues/1553
-
-    - cp app/src/main/AndroidManifest.xml .
+    # Make sure the apk is search before the manifest
+    - cp app/build/outputs/apk/full/debug/app-full-debug.apk .
