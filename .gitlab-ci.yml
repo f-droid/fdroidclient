@@ -41,6 +41,15 @@ stages:
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
+.test-script-prepare: &test-script-prepare
+  - export EXITVALUE=0
+  - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
+  # always report on lint errors to the build log
+  - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+
+.test-script-exit: &test-script-exit
+  - exit $EXITVALUE
+    
 .build-base:
   extends: .base
   stage: build
@@ -69,51 +78,39 @@ test_lint:
   <<: *test-template
   needs: []
   script:
-    - export EXITVALUE=0
-    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
-    # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - *test-script-prepare
     - ./gradlew lint || set_error
-    - exit $EXITVALUE
+    - *test-script-exit
 
 test_pmd:
   <<: *test-template
   needs: []
   script:
-    - export EXITVALUE=0
-    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
-    # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - *test-script-prepare
     - ./gradlew pmd || set_error
-    - exit $EXITVALUE
+    - *test-script-exit
 
 test_full_debug_unit_test:
   <<: *test-template
   needs:
     - buildFullDebug
   script:
-    - export EXITVALUE=0
-    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
-    # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - *test-script-prepare
     - ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || set_error
-    - exit $EXITVALUE
+    - *test-script-exit
 
 checkstyle:
   <<: *test-template
   needs: []
   script:
-    - export EXITVALUE=0
-    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
-    # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - *test-script-prepare
     - ./gradlew checkstyle || set_error
     - ./tools/check-format-strings.py || set_error
     - ./tools/check-fastlane-whitespace.py || set_error
     - ./tools/remove-unused-and-blank-translations.py || set_error
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || set_error
-    - exit $EXITVALUE
+    - *test-script-exit
 
 errorprone:
   extends: .base
