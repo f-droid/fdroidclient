@@ -101,6 +101,7 @@ test_full_debug_unit_test:
 
 checkstyle:
   <<: *test-template
+  needs: []
   script:
     - export EXITVALUE=0
     - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
