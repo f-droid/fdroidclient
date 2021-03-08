@@ -201,7 +201,8 @@ deploy_nightly:
 
 sast:
   # TODO: change this after https://gitlab.com/gitlab-org/security-products/analyzers/mobsf/-/merge_requests/18
-  image: registry.gitlab.com/proletarius101/mobsf
+  variables: 
+    SECURE_ANALYZERS_PREFIX: registry.gitlab.com/proletarius101
   needs:
     - build-full-debug
   # Explicitly allow downloading the report
