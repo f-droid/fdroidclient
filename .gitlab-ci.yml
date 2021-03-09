@@ -26,7 +26,7 @@ stages:
   extends: .base
   stage: test
   artifacts:
-    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    name: '${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}'
     paths:
       - kernel.log
       - logcat.txt
@@ -48,14 +48,14 @@ stages:
 
 .test-script-exit: &test-script-exit
   - exit $EXITVALUE
-    
+
 .build-base:
   extends: .base
   stage: build
   script:
     - ./gradlew assemble
   artifacts:
-    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    name: '${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}'
     paths:
       - app/build
     expire_in: 1 week
@@ -99,6 +99,10 @@ test_full_debug_unit_test:
     - *test-script-prepare
     - ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || ./gradlew testFullDebugUnitTest || set_error
     - *test-script-exit
+  artifacts:
+    when: always
+    reports:
+      junit: app/build/test-results/test*/**/TEST-*.xml
 
 checkstyle:
   <<: *test-template
@@ -154,7 +158,7 @@ errorprone:
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
+      export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
 
@@ -183,8 +187,8 @@ deploy_nightly:
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
     - sed -i
-        's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
-        app/src/main/res/values*/strings.xml
+      's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
+      app/src/main/res/values*/strings.xml
     # add this nightly repo as a enabled repo
     - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
