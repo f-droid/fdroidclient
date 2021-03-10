@@ -490,4 +490,13 @@
     <string name="notification_channel_updates_title">Pembaruan</string>
     <string name="notification_channel_installs_description">Tampilkan notifikasi pemasangan apl.</string>
     <string name="notification_channel_installs_title">Pemasangan</string>
+    <string name="menu_show_install_history">Tampilkan riwayat pemasangan</string>
+    <string name="menu_show_fdroid_metrics_report">Tampilkan laporan metrik</string>
+    <string name="toast_metrics_in_install_history">Laporan Metrik %s dapat dilihat dalam peninjau Riwayat Pemasangan</string>
+    <string name="send_to_fdroid_metrics_summary">Kirim data perminggu tanpa nama ke Metrik F-Droid (memerlukan Tetapkan riwayat pemasangan)</string>
+    <string name="send_to_fdroid_metrics">Kirim data pemakaian</string>
+    <string name="fdroid_metrics_report">Laporan Metrik %s</string>
+    <string name="install_history_and_metrics">Pasang riwayat dan metrik</string>
+    <string name="send_fdroid_metrics_json">Laporan metrik %s sebagai berkas JSON</string>
+    <string name="send_fdroid_metrics_report">Kirim Laporan Metrik %s</string>
 </resources>
