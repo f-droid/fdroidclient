@@ -5,13 +5,13 @@
         версия.)
     </string>
     <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това?</string>
-    <string name="version">Версия</string>
+    <string name="version">Издание</string>
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
-    <string name="updates">Обновления</string>
-    <string name="other">Друго</string>
-    <string name="update_interval">Проверка за актуализации</string>
+    <string name="updates">Нови</string>
+    <string name="other">Други</string>
+    <string name="update_interval">Период за автоматична проверка</string>
     <string name="notify">Покажи наличните актуализации</string>
     <string name="notify_on">Известява при наличие на актуализация</string>
     <string name="system_installer">Инсталиране чрез системни разрешения</string>
@@ -26,12 +26,12 @@
     <string name="about_title">Относно F-Droid</string>
     <string name="about_site">Уебсайт</string>
     <string name="about_version">Версия</string>
-    <string name="app_installed">Инсталирана</string>
+    <string name="app_installed">Инсталирано</string>
     <string name="app_not_installed">Неинсталирана</string>
     <string name="app_inst_known_source">Инсталирана (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавена на %s</string>
-    <string name="ok">OK</string>
+    <string name="ok">Добре</string>
     <string name="yes"> Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
@@ -49,7 +49,7 @@
     <string name="menu_launch">Отваряне</string>
     <string name="menu_share">Споделяне</string>
     <string name="menu_install">Инсталиране</string>
-    <string name="menu_uninstall">Деинсталиране</string>
+    <string name="menu_uninstall">Премахване</string>
     <string name="menu_ignore_all">Игнорирай всички актуализации</string>
     <string name="menu_ignore_this">Игнорирай актуализацията</string>
     <string name="menu_website">Уебсайт</string>
@@ -58,8 +58,8 @@
     <string name="details_notinstalled">Не е инсталирано</string>
     <string name="antiadslist">Приложението съдържа реклами</string>
     <string name="antitracklist">Приложението следи и докладва активността ви</string>
-    <string name="antinonfreeadlist">Приложението промотира несвободни добавки</string>
-    <string name="antinonfreenetlist">Приложението промотира несвободни мрежови услуги</string>
+    <string name="antinonfreeadlist">Приложението насърчава използване на несвободни добавки</string>
+    <string name="antinonfreenetlist">Приложението насърчава използване на несвободни мрежови услуги</string>
     <string name="antinonfreedeplist">Приложението зависи от други несвободни приложения</string>
     <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
     <string name="display">Изглед</string>
@@ -87,7 +87,7 @@
 \n%1$s</string>
     <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
     <string name="repos_unchanged">Всички хранилищата са актуални</string>
-    <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
+    <string name="global_error_updating_repos">Грешка при обновяване: %s</string>
     <string name="no_permissions">Няма разрешения</string>
     <string name="no_handler_app">Никое инсталирано приложение не може да изпълни %s.</string>
     <string name="theme">Тема</string>
@@ -156,18 +156,18 @@
     <string name="interval_2w">През 2 седмици</string>
     <string name="downloading">Сваляне…</string>
     <string name="about_source">Изходен код</string>
-    <string name="update_notification_title">Актуализиране на хранилищата</string>
+    <string name="update_notification_title">Обновяване на хранилищата</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не можете да откриете тези, които търсите?</string>
     <string name="uninstall_confirm">Искате ли да деинсталирате това приложение?</string>
-    <string name="unstable_updates">Нестабилни актуализации</string>
-    <string name="unstable_updates_summary">Предлагай актуализиране до версии, които могат да бъдат нестабилни</string>
+    <string name="unstable_updates">Нестабилни издания</string>
+    <string name="unstable_updates_summary">Предлага обновяване с нестабилни издания</string>
     <string name="category_Connectivity">Свързаност</string>
-    <string name="menu_upgrade">Обнови</string>
-    <string name="links">Връзки</string>
+    <string name="menu_upgrade">Обновяване</string>
+    <string name="links">Препратки</string>
     <string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през
         F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите,
         който ползвате.
@@ -179,7 +179,7 @@
     <string name="install_confirm_update_system">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
     <string name="install_confirm_update_no_perms">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
     <string name="install_confirm_update_system_no_perms">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
-    <string name="swap_send_fdroid">Изпрати F-Droid</string>
+    <string name="swap_send_fdroid">Изпращане F-Droid</string>
     <string name="swap_scan_qr">Сканирай QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
     <string name="swap_no_wifi_network">Няма налична мрежа</string>
@@ -267,7 +267,7 @@
     <string name="update_auto_download">Автоматично изтегляне на актуализации</string>
     <string name="update_auto_install">Автоматично инсталиране на актуализации</string>
     <string name="keep_install_history">Запазване на история за инсталираните приложения</string>
-    <string name="keep_install_history_summary">Запазване на дневник за всички инсталирани и деинсталирани приложения</string>
+    <string name="keep_install_history_summary">Запазване на дневник за всичко инсталирано и премахвано</string>
     <string name="update_auto_download_summary">Обновленията се свалят автоматично и получавате известие за да ги
         инсталирате
     </string>
@@ -280,34 +280,34 @@
     <string name="app_new">Ново</string>
     <string name="app__install_downloaded_update">Обновяване</string>
     <string name="app_list__name__downloading_in_progress">Изтегляне на %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s се инсталира успешно</string>
+    <string name="app_list__name__successfully_installed">Приложението %1$s е инсталирано</string>
     <string name="installed_apps__activity_title">Инсталирани приложения</string>
     <string name="installed_app__updates_ignored">Обновленията са отхвърлени</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновленията са отхвърлени за версия %1$s
     </string>
-    <string name="update_all">Обнови всички</string>
+    <string name="update_all">Обновяване всички</string>
     <string name="updates__hide_updateable_apps">Скриване на приложения</string>
     <string name="updates__show_updateable_apps">Показване на приложения</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Изтегляне на обновление за %1$d приложение.</item>
         <item quantity="other">Изтегляне на обновления за %1$d приложения.</item>
     </plurals>
-    <string name="versions">Версии</string>
+    <string name="versions">Издания</string>
     <string name="clear_search">Изчистване на търсенето</string>
     <string name="repositories_summary">Добавяне на допълнителни източници на приложения</string>
     <string name="main_menu__latest_apps">Последни</string>
     <string name="main_menu__categories">Категории</string>
-    <string name="main_menu__swap_nearby">В района</string>
+    <string name="main_menu__swap_nearby">Наблизо</string>
     <string name="latest__empty_state__no_recent_apps">Няма намерени нови приложения</string>
-    <string name="preference_manage_installed_apps">Управление на инсталираните  приложения</string>
+    <string name="preference_manage_installed_apps">Управление на инсталирани приложения</string>
     <string name="preference_category__my_apps">Моите приложения</string>
-    <string name="details_new_in_version">Ново във версия %s</string>
-    <string name="antifeatureswarning">Някои свойства на това приложение може да не ви харесат.</string>
+    <string name="details_new_in_version">Новото в издание %s</string>
+    <string name="antifeatureswarning">Някои от свойствата на приложението може да не ви допаднат.</string>
     <string name="antifeatures">Анти-функции</string>
     <string name="by_author_format">от %s</string>
     <string name="force_old_index_summary">В случай на грешки или проблеми със съвместимостта, използвай XML приложение за индекс</string>
     <string name="app__tts__cancel_download">Прекратено сваляне</string>
-    <string name="updates__tts__download_app">Сваляне</string>
+    <string name="updates__tts__download_app">Изтегляне</string>
     <string name="menu_video">Видео</string>
     <string name="menu_license">Лиценз: %s</string>
     <string name="latest__empty_state__never_updated">След  обновяване на листа с приложения, новите приложения трябва да се покажат тук</string>
@@ -332,8 +332,8 @@
         <item quantity="other">%1$d Актуализации</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d Инсталирано приложение</item>
-        <item quantity="other">%1$d Инсталирани приложения</item>
+        <item quantity="one">%1$d инсталирано приложение</item>
+        <item quantity="other">%1$d инсталирани приложения</item>
     </plurals>
     <string name="notification_title_summary_update_available">Налична актуализация</string>
     <string name="notification_title_summary_downloading">Сваляне…</string>
@@ -347,22 +347,22 @@
         <item quantity="one">Покажи %1$d  приложение в %2$s категория</item>
         <item quantity="other">Покажи всички %1$d  приложения от %2$s категория</item>
     </plurals>
-    <string name="details_last_updated_today">Актуализирано днес</string>
+    <string name="details_last_updated_today">Обновено днес</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Актуализирано преди %1$d ден</item>
-        <item quantity="other">Актуализирано преди %1$d дни</item>
+        <item quantity="one">Обновено преди %1$d ден</item>
+        <item quantity="other">Обновено преди %1$d дни</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Актуализирано преди %1$d седмица</item>
-        <item quantity="other">Актуализирано преди %1$d седмици</item>
+        <item quantity="one">Обновено преди %1$d седмица</item>
+        <item quantity="other">Обновено преди %1$d седмици</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Актуализирано преди %1$d месец</item>
-        <item quantity="other">Актуализирано преди %1$d месеца</item>
+        <item quantity="one">Обновено преди %1$d месец</item>
+        <item quantity="other">Обновено преди %1$d месеца</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Актуализирано преди %1$d година</item>
-        <item quantity="other">Актуализирано преди %1$d години</item>
+        <item quantity="one">Обновено преди %1$d година</item>
+        <item quantity="other">Обновено преди %1$d години</item>
     </plurals>
     <string name="notification_action_update">Актуализация</string>
     <string name="notification_action_cancel">Отказ</string>
@@ -389,7 +389,7 @@
     <string name="force_old_index">Принудителен стар формат на индексиране</string>
     <string name="app_details__incompatible_mismatched_signature">Различен подпис от инсталираната версия</string>
     <string name="app_details__no_versions__no_compatible_signatures">Няма налични версии със съвместим подпис</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Няма версии които са съвместими с това устройство</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Няма съвместими с устройството издания</string>
     <string name="app_details__no_versions__show_incompat_versions">Включете настройката \"%1$s\" за показване на несъвместими версии.</string>
     <string name="app_list_download_ready">Изтeглено и готово за инсталиране</string>
     <string name="app_list__dismiss_downloading_app">Спряно изтегляне</string>
@@ -414,19 +414,19 @@
     <string name="panic_destructive_actions">Унищожителни действия</string>
     <string name="panic_hide_title">Скриване на %s</string>
     <string name="panic_hide_summary">Приложението ще се скрие само</string>
-    <string name="prompt_to_send_crash_reports">Питай дали да се изпраща отчет за срив</string>
+    <string name="prompt_to_send_crash_reports">Потвърждаване при изпращане на доклад за срив</string>
     <string name="prompt_to_send_crash_reports_summary">Събирай данни за сривове и предлагай да бъдат изпращани на разработчика</string>
-    <string name="hide_all_notifications">Скрий всички известия</string>
+    <string name="hide_all_notifications">Скрване на всички известия</string>
     <string name="hide_all_notifications_summary">Спри показването на всички действия в статус лентата и лентата за уведомления.</string>
-    <string name="send_install_history">Изпрати история на Инсталирането</string>
-    <string name="send_history_csv">%s история на инсталрането като csv файл</string>
-    <string name="install_history">История на Инсталирането</string>
-    <string name="install_history_summary">Покажи частния журнал на всяка инсталация и деинсталация</string>
+    <string name="send_install_history">Изпращане на история на инсталирани приложения</string>
+    <string name="send_history_csv">%s история на инсталирани приложения като файл на CSV</string>
+    <string name="install_history">История на инсталирани приложения</string>
+    <string name="install_history_summary">Частен журнал на всяка инсталация и премахване</string>
     <string name="send_version_and_uuid">Изпрати версия и UUID към сървърите</string>
     <string name="allow_push_requests">Разреши на хранилищата да инсталират/деинсталират приложения</string>
     <string name="allow_push_requests_summary">Метаданни от хранилищата могат да включват заявки за инсталиране или деинсталиране на приложения</string>
-    <string name="over_wifi">Чрез Wi-Fi</string>
-    <string name="over_data">Чрез данни</string>
+    <string name="over_wifi">През Wi-Fi</string>
+    <string name="over_data">През мобилни данни</string>
     <string name="over_network_always_summary">Винаги използвай тази връзка когато е възможно</string>
     <string name="over_network_on_demand_summary">Използвай тази връзка само когато избера Изтегли</string>
     <string name="over_network_never_summary">Никога не използвай тази връзка за изтегляне</string>
@@ -510,10 +510,19 @@
     <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">Включва версията на това приложение и произволен уникален идентификатор, когато се извършва изтегляне, ще се отрази при рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_updates_description">Показва известия за актуализиране на приложения и хранилища.</string>
-    <string name="notification_channel_updates_title">Актуализации</string>
+    <string name="notification_channel_updates_description">Показва известия за обновяване на приложения и хранилища.</string>
+    <string name="notification_channel_updates_title">Обновления</string>
     <string name="notification_channel_swaps_description">Показва известия за размяна на приложения за P2P.</string>
     <string name="notification_channel_swaps_title">Суапове</string>
     <string name="notification_channel_installs_description">Показва известия за инсталиране на приложение.</string>
     <string name="notification_channel_installs_title">Инсталации</string>
+    <string name="install_history_and_metrics">История на инсталирани приложения и метрики</string>
+    <string name="menu_show_install_history">История на инсталирани приложения</string>
+    <string name="menu_show_fdroid_metrics_report">Преглед на метрики</string>
+    <string name="toast_metrics_in_install_history">Докладът за %s е видим при преглед на история на инсталираните приложения</string>
+    <string name="send_to_fdroid_metrics_summary">Всяка седмица изпраща анонимни данни към F-Droid Metrics (изисква запазване на история за инсталираните приложения)</string>
+    <string name="send_to_fdroid_metrics">Изпращане на данни за използването</string>
+    <string name="fdroid_metrics_report">Метрики за %s</string>
+    <string name="send_fdroid_metrics_json">Метрики на %s като файл на JSON</string>
+    <string name="send_fdroid_metrics_report">Изпращане на метрики за %s</string>
 </resources>
