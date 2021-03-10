@@ -1,0 +1,13 @@
+* A app respeita totalmente as listas de idiomas nas configurações do Android
+
+* A guia mais recente mostra apps baseados nas configurações de idioma (@TheLastProject @IzzySoft)
+
+* Suporte de temas modernizado e vinculado aos temas do Android (@proletarius101)
+
+* Melhor resultado de pesquisa (@Tvax @gcbrown76)
+
+* Limpeza do cache mais confiável
+
+* Programa eficientemente a limpeza do cache (@Isira-Seneviratne)
+
+* Revisão de URLs para a adição de repositórios (@projectgus)
