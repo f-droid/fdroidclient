@@ -58,22 +58,20 @@
     <string name="details_notinstalled">Chưa cài đặt</string>
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
-    <string name="antinonfreeadlist">Ứng dụng này khuyến khích sử dụng phần mở rộng không tự do</string>
-    <string name="antinonfreenetlist">Ứng dụng này khuyến khích sử dụng dịch vụ mạng không tự do</string>
+    <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
+    <string name="antinonfreenetlist">Ứng dụng này khuyến khích các dịch vụ mạng không tự do</string>
     <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
     <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
     <string name="display">Hiển thị</string>
     <string name="expert">Chế độ nâng cao</string>
-    <string name="expert_on">Hiện thông tin và cài đặt bổ sung</string>
+    <string name="expert_on">Hiện thêm thông tin và bật các cài đặt bổ sung</string>
     <string name="search_hint">Tìm kiếm ứng dụng</string>
     <string name="appcompatibility">Tính tương thích của ứng dụng</string>
     <string name="show_incompat_versions">Bao gồm các phiên bản không tương thích</string>
     <string name="show_incompat_versions_on">Hiện các phiên bản không tương thích với thiết bị này</string>
     <string name="local_repo">Kho nội bộ</string>
     <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
-    <string name="touch_to_configure_local_repo">Chạm để xem danh sách và cho phép mọi người trao đổi ứng dụng với
-        bạn.
-    </string>
+    <string name="touch_to_configure_local_repo">Chạm để xem chi tiết và cho phép những người khác trao đổi các ứng dụng của bạn.</string>
     <string name="deleting_repo">Đang xoá kho hiện tại…</string>
     <string name="adding_apks_format">Đang thêm %s vào kho…</string>
     <string name="copying_icons">Đang sao chép biểu tượng ứng dụng vào kho…</string>
@@ -81,7 +79,7 @@
     <string name="next">Tiếp theo</string>
     <string name="skip">Bỏ qua</string>
     <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Kích hoạt proxy HTTP</string>
+    <string name="enable_proxy_title">Bật proxy HTTP</string>
     <string name="proxy_port">Cổng proxy</string>
     <string name="proxy_port_summary">Số cổng proxy của bạn (ví dụ 8118)</string>
     <string name="status_download">Đang tải
@@ -145,12 +143,12 @@
     <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
     <string name="invalid_url">Đây không phải là URL hợp lệ.</string>
-    <string name="menu_changelog">Lịch sử sửa đổi</string>
+    <string name="menu_changelog">Lịch sử thay đổi</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
-    <string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
+    <string name="linking_apks">Đang liên kết các tập tin APK vào kho…</string>
     <string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>
     <string name="proxy_host">Máy chủ Proxy</string>
     <string name="proxy_host_summary">Tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
@@ -243,7 +241,7 @@
     <string name="system_install_denied_permissions">Phần mở rộng chưa được cấp quyền nâng cao! Hãy thông báo lỗi này
         cho chúng tôi!
     </string>
-    <string name="theme_night">Đen</string>
+    <string name="theme_night">Ban đêm</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>
@@ -256,7 +254,7 @@
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
-    <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư. Cần ứng dụng Orbot</string>
+    <string name="useTorSummary">Buộc lưu lượng tải xuống phải thông qua Tor để tăng tính riêng tư. Yêu cầu ứng dụng Orbot</string>
     <string name="main_menu__swap_nearby">Lân cận</string>
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Hạng mục</string>
@@ -320,17 +318,17 @@
     <string name="menu_license">Giấy phép: %s</string>
     <string name="latest__empty_state__no_recent_apps">Không có ứng dụng mới cập nhật</string>
     <string name="latest__empty_state__never_updated">Các ứng dụng mới nhất sẽ hiện lên ở đây sau khi danh sách ứng dụng của bạn được cập nhật</string>
-    <string name="latest__empty_state__no_enabled_repos">Khi bạn bật một kho ứng dụng và cập nhật nó, các ứng dụng mới nhất sẽ hiện lên ở đây</string>
-    <string name="categories__empty_state__no_categories">Không có mục nào</string>
+    <string name="latest__empty_state__no_enabled_repos">Khi bạn bật một kho ứng dụng và để nó cập nhật, các ứng dụng mới nhất sẽ hiện lên ở đây</string>
+    <string name="categories__empty_state__no_categories">Không có mục nào để hiển thị</string>
     <string name="preference_category__my_apps">Ứng dụng của tôi</string>
     <string name="details_new_in_version">Những điểm mới trong phiên bản %s</string>
-    <string name="antifeatureswarning">Ứng dụng này có thể có các tính năng không mong muốn.</string>
+    <string name="antifeatureswarning">Ứng dụng này có các tính năng bạn có thể không thích.</string>
     <string name="antifeatures">Tính năng không mong muốn</string>
     <string name="antinonfreeassetslist">Ứng dụng này có những phần không tự do</string>
-    <string name="privacy">Quyền riêng tư</string>
-    <string name="preventScreenshots_title">Chặn chụp màn hình</string>
-    <string name="preventScreenshots_summary">Không cho phép chụp màn hình và ẩn nội dung ứng dụng trong màn hình các ứng dụng gần đây</string>
-    <string name="panic_app_setting_summary">Chưa đặt ứng dụng</string>
+    <string name="privacy">Riêng tư</string>
+    <string name="preventScreenshots_title">Ngăn chặn chụp màn hình</string>
+    <string name="preventScreenshots_summary">Chặn việc chụp màn hình và ẩn nội dung ứng dụng trong màn hình các ứng dụng gần đây</string>
+    <string name="panic_app_setting_summary">Không có ứng dụng nào được đặt</string>
     <string name="panic_app_setting_none">Không có</string>
     <string name="allow">Cho phép</string>
     <string name="panic_settings_summary">Những hành động sẽ thực hiện trong trường hợp khẩn cấp</string>
@@ -410,13 +408,13 @@
     <string name="sort_search">Sắp xếp kết quả tìm kiếm</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
-    <string name="antiknownvulnlist">Ứng dụng này có lỗ hổng bảo mật đã bị phát hiện</string>
-    <string name="show_anti_feature_apps">Hiện ứng dụng có tính năng không mong muốn</string>
-    <string name="show_anti_feature_apps_on">Hiện các ứng dụng có một số tính năng không mong muốn</string>
+    <string name="antiknownvulnlist">Ứng dụng này có một lỗ hổng bảo mật đã biết</string>
+    <string name="show_anti_feature_apps">Bao gồm các ứng dụng có tính năng không mong muốn</string>
+    <string name="show_anti_feature_apps_on">Hiện các ứng dụng yêu cầu các tính năng không mong muốn</string>
     <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>
-    <string name="force_touch_apps_on">Hiển thị các ứng dụng cần màn hình cảm ứng bất kể thiết bị của bạn có hỗ trợ hay không</string>
-    <string name="panic_app_setting_title">Ứng dụng nút khẩn cấp</string>
-    <string name="panic_settings">Cài đặt nút khẩn cấp</string>
+    <string name="force_touch_apps_on">Hiện các ứng dụng yêu cầu màn hình cảm ứng bất kể phần cứng có hỗ trợ hay không</string>
+    <string name="panic_app_setting_title">Ứng dụng nút hoảng loạn</string>
+    <string name="panic_settings">Cài đặt nút hoảng loạn</string>
     <string name="panic_hide_warning_message">Trong trường hợp khẩn cấp, việc này sẽ ẩn %1$s khỏi launcher. Bạn chỉ có thể khôi phục ứng dụng bằng cách gõ \"%2$d\" trong ứng dụng giả có tên %3$s.</string>
     <string name="hiding_calculator">Máy tính</string>
     <string name="hiding_dialog_title">Ẩn %s ngay</string>
@@ -431,13 +429,13 @@
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
     <string name="hide_all_notifications">Giấu mọi thông báo</string>
-    <string name="hide_all_notifications_summary">Ngăn mọi thao tác không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
+    <string name="hide_all_notifications_summary">Ngăn mọi hành động không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
     <string name="prompt_to_send_crash_reports_summary">Thu thập thông tin khi app gặp lỗi và gửi đến nhà phát triển</string>
     <string name="install_history">Lịch sử cài đặt</string>
     <string name="install_history_summary">Xem nhật ký của từng lượt cài đặt và gỡ bỏ</string>
     <string name="send_version_and_uuid">Gửi phiên bản và UUID đến máy chủ</string>
     <string name="send_version_and_uuid_summary">Đính kèm phiên bản app này và một ID ngẫu nhiên khi download, có hiệu lực sau khi khởi động lại.</string>
-    <string name="send_install_history">Gửi Lịch sử Cài đặt</string>
+    <string name="send_install_history">Gửi lịch sử cài đặt</string>
     <string name="send_history_csv">%s lịch sử cài đặt dưới dạng CSV</string>
     <string name="disabled">Đã tắt</string>
     <string name="prompt_to_send_crash_reports">Hỏi để gửi báo cáo lỗi</string>
@@ -473,7 +471,7 @@
     <string name="panic_app_dialog_message">Bạn có chắc rằng bạn muốn cho phép %1$s kích hoạt các hành động phá huỷ khi ấn nút hoảng loạn không\?</string>
     <string name="panic_apps_to_uninstall">Các ứng dụng sẽ được gỡ cài đặt và tất cả dữ liệu sẽ được xoá</string>
     <string name="panic_destructive_actions">Những hành động phá huỷ</string>
-    <string name="panic_app_unknown_app">một ứng dụng không xác định</string>
+    <string name="panic_app_unknown_app">một ứng dụng chưa biết</string>
     <string name="panic_add_apps_to_uninstall">Thêm ứng dụng sẽ được gỡ cài đặt và xoá dữ liệu</string>
     <string name="panic_hide_warning_title">Hãy nhớ cách khôi phục</string>
     <string name="panic_app_dialog_title">Xác nhận ứng dụng hoảng loạn</string>
@@ -504,4 +502,5 @@
     <string name="swap_toast_find_removeable_storage">Chọn thẻ SD hoặc USB gắn ngoài</string>
     <string name="swap_toast_not_removable_storage">Lựa chọn đó không khớp với bất kỳ thiết bị lưu trữ gắn ngoài nào, hãy thử lại!</string>
     <string name="swap_toast_using_path">Đang dùng %1$s</string>
+    <string name="send_to_fdroid_metrics">Gửi dữ liệu sử dụng</string>
 </resources>
