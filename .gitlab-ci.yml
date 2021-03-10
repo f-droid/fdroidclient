@@ -76,7 +76,8 @@ build-full-debug:
 # the style tests if the rest of the more meaningful tests pass.
 test_lint:
   <<: *test-template
-  needs: []
+  needs:
+    - build-full-debug
   script:
     - *test-script-prepare
     - ./gradlew lint || set_error
@@ -84,7 +85,8 @@ test_lint:
 
 test_pmd:
   <<: *test-template
-  needs: []
+  needs:
+    - build-full-debug
   script:
     - *test-script-prepare
     - ./gradlew pmd || set_error
@@ -115,7 +117,8 @@ checkstyle:
 errorprone:
   extends: .base
   stage: test
-  needs: []  # no need to wait for build
+  needs:
+    - build-full-debug
   script:
     - apt-get update
     - apt-get install -t stretch-backports openjdk-11-jdk-headless
