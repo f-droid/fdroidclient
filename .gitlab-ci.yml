@@ -19,8 +19,7 @@ stages:
     - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
   cache:
     paths:
-      - .gradle/wrapper
-      - .gradle/caches
+      - .gradle
     key: '${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}'
 
 .test-template: &test-template
