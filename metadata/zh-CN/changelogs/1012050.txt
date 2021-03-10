@@ -6,6 +6,8 @@
 
 * 大幅改进搜索结果 (@Tvax @gcbrown76)
 
-* 让安卓系统高效地调度后台缓存清理操作 (@Isira-Seneviratne)
+* 更可靠的缓存清理操作 
+
+*有效计划缓存清理 (@Isira-Seneviratne)
 
 * 大改仓库 URL 解析方法，以更稳定地添加仓库 (@projectgus)
