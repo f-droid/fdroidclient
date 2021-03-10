@@ -509,4 +509,5 @@
     <string name="notification_channel_swaps_title">Échanges</string>
     <string name="notification_channel_updates_description">Afficher les notifications de mise à jour des applis et des dépôts.</string>
     <string name="notification_channel_installs_description">Affiche les notifications d’installation d’applis.</string>
+    <string name="menu_show_install_history">Afficher l’historique des installations</string>
 </resources>
