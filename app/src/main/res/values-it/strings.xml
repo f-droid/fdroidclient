@@ -513,4 +513,13 @@
     <string name="notification_channel_updates_description">Mostra le notifiche di aggiornamento dell\'app e del repository.</string>
     <string name="notification_channel_swaps_description">Mostra notifiche di intercambio app P2P.</string>
     <string name="notification_channel_swaps_title">Intercambi</string>
+    <string name="menu_show_install_history">Mostra storico installazioni</string>
+    <string name="menu_show_fdroid_metrics_report">Mostra rapporto metriche</string>
+    <string name="toast_metrics_in_install_history">Il rapporto metriche %s è visibile nel visualizzatore dello storico installazioni</string>
+    <string name="send_to_fdroid_metrics_summary">Invia settimanalmente dati anonimi alle metriche F-Droid (richiede Mantieni storico installazioni)</string>
+    <string name="send_to_fdroid_metrics">Invia dati utilizzo</string>
+    <string name="fdroid_metrics_report">Rapporto metriche %s</string>
+    <string name="install_history_and_metrics">Installa storico e metriche</string>
+    <string name="send_fdroid_metrics_json">Rapporo metriche %s come file JSON</string>
+    <string name="send_fdroid_metrics_report">Invia rapporto metriche %s</string>
 </resources>
