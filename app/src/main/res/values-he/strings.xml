@@ -518,4 +518,13 @@
     <string name="notification_channel_swaps_description">מציג התראות החלפת יישומונים בין עמיתים.</string>
     <string name="notification_channel_swaps_title">החלפות</string>
     <string name="notification_channel_installs_title">התקנות</string>
+    <string name="send_to_fdroid_metrics_summary">שליחת נתונים אלמוניים למדדי F-Droid מדי שבוע (מחייב שמירה על היסטוריית ההתקנות)</string>
+    <string name="menu_show_install_history">הצגת היסטוריית התקנות</string>
+    <string name="menu_show_fdroid_metrics_report">הצגת דוח מדדים</string>
+    <string name="toast_metrics_in_install_history">דוח מדדי %s ניתן לצפייה במציג היסטוריית ההתקנות</string>
+    <string name="send_to_fdroid_metrics">שליחת נתוני שימוש</string>
+    <string name="fdroid_metrics_report">דוח מדדי %s</string>
+    <string name="install_history_and_metrics">היסטוריית התקנה ומדדים</string>
+    <string name="send_fdroid_metrics_json">דוח מדדי %s כקובץ JSON</string>
+    <string name="send_fdroid_metrics_report">שליחת דוח מדדי %s</string>
 </resources>
