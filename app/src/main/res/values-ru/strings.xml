@@ -520,7 +520,7 @@
     <string name="notification_channel_installs_description">Отображает уведомления об установке приложения.</string>
     <string name="notification_channel_installs_title">Установка приложений</string>
     <string name="menu_show_install_history">Показать историю установок</string>
-    <string name="send_to_fdroid_metrics">Отправка данных об использовании</string>
+    <string name="send_to_fdroid_metrics">Отправлять данные об использовании</string>
     <string name="menu_show_fdroid_metrics_report">Показать отчет по метрикам</string>
     <string name="toast_metrics_in_install_history">Отчет %s по метрике можно просмотреть в окне просмотра истории установок</string>
     <string name="send_to_fdroid_metrics_summary">Еженедельно отправляет анонимные данные метрик в F-Droid (требуется сохранение истории установок)</string>
