@@ -509,4 +509,13 @@
     <string name="notification_channel_swaps_title">Schimb</string>
     <string name="notification_channel_installs_description">Afișează notificări la instalarea aplicațiilor.</string>
     <string name="notification_channel_installs_title">Instalări</string>
+    <string name="send_to_fdroid_metrics_summary">Trimite date anonime săptămânal la F-Droid Metrics (necesită păstrarea istoricului de instalare)</string>
+    <string name="send_to_fdroid_metrics">Trimitere date de utilizare</string>
+    <string name="menu_show_install_history">Afișare istoric instalări</string>
+    <string name="fdroid_metrics_report">Raport de măsurători %s</string>
+    <string name="send_fdroid_metrics_json">Raportul de măsurători %s ca fișier JSON</string>
+    <string name="send_fdroid_metrics_report">Trimitere raport măsurători %s</string>
+    <string name="menu_show_fdroid_metrics_report">Afișare raport de măsurători</string>
+    <string name="toast_metrics_in_install_history">Raportul de măsurători %s poate fi vizualizat în istoricul de instalări</string>
+    <string name="install_history_and_metrics">Istoric de instalări și măsurători</string>
 </resources>
