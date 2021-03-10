@@ -1,3 +1,7 @@
+### 1.12-alpha3 (2021-03-10)
+
+* Opt-in F-Droid Metrics
+
 ### 1.12-alpha2 (2021-03-03)
 
 * Overhaul clean up of cached files
