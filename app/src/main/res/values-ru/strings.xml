@@ -519,4 +519,6 @@
     <string name="notification_channel_swaps_title">Обмены</string>
     <string name="notification_channel_installs_description">Отображает уведомления об установке приложения.</string>
     <string name="notification_channel_installs_title">Установка приложений</string>
+    <string name="menu_show_install_history">Показать историю установок</string>
+    <string name="send_to_fdroid_metrics">Отправка данных об использовании</string>
 </resources>
