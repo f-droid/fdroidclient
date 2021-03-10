@@ -11,7 +11,7 @@ stages:
     - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
     # limit RAM usage for all gradle runs
     - export maxmem=$(expr $(sed -n 's,^MemAvailable:[^0-9]*\([0-9][0-9]*\)[^0-9]*$,\1,p' /proc/meminfo) / 1024 / 2 / 1024 \* 1024)
-    - printf '\norg.gradle.jvmargs=-Xmx${maxmem}m -XX:MaxPermSize=${maxmem}m\norg.gradle.daemon=false\norg.gradle.parallel=false\n' >> local.properties
+    - printf "\norg.gradle.jvmargs=-Xmx${maxmem}m -XX:MaxPermSize=${maxmem}m\norg.gradle.daemon=false\norg.gradle.parallel=false\n" >> gradle.properties
   after_script:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
