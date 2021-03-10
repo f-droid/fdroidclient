@@ -510,13 +510,13 @@
     <string name="notification_channel_swaps_title">Interŝanĝoj</string>
     <string name="notification_channel_installs_description">Montri sciigojn pri instaladoj de aplikaĵoj.</string>
     <string name="notification_channel_installs_title">Instaladoj</string>
-    <string name="send_to_fdroid_metrics_summary">Sendi anoniman datenon ĉiusemajne al Metrikoj de F-Droid (postulas konservadon de historio de instaloj)</string>
-    <string name="toast_metrics_in_install_history">La raporto pri metriko %s estas videbla per la vidigilo de Historio de Instaloj</string>
+    <string name="send_to_fdroid_metrics_summary">Sendi anonimajn datumojn ĉiusemajne al Metrikoj de F-Droid (postulas aktivigi la eblaĵon ”konservi historion de instaladoj”)</string>
+    <string name="toast_metrics_in_install_history">La raporto pri metriko %s estas videbla per la vidigilo de historio de instaladoj</string>
     <string name="send_fdroid_metrics_json">Raporto pri metriko %s kiel JSON-dosiero</string>
-    <string name="send_fdroid_metrics_report">Sendi Raporton pri Metriko %s</string>
-    <string name="fdroid_metrics_report">Raporto pri Metriko %s</string>
-    <string name="install_history_and_metrics">Historio de instaloj kaj metrikoj</string>
+    <string name="send_fdroid_metrics_report">Sendi raporton pri metriko %s</string>
+    <string name="fdroid_metrics_report">Raporto pri metriko %s</string>
+    <string name="install_history_and_metrics">Historio de instaladoj kaj metrikoj</string>
     <string name="menu_show_install_history">Montri historion de instaloj</string>
     <string name="menu_show_fdroid_metrics_report">Montri raporton pri metrikoj</string>
-    <string name="send_to_fdroid_metrics">Sendi datenon pri uzado</string>
+    <string name="send_to_fdroid_metrics">Sendi datumojn pri uzado</string>
 </resources>
