@@ -1,12 +1,13 @@
 * Omsetjingar av appskildringar støttar no fullstendig språklista i Android-innstillingane
-  Språkinnstillingar
 
-* «Nyaste»-fana viser resultat basert på språkinnstillingane, med nyaste først (@TheLastProject @IzzySoft)
+* «Nyaste»-fana viser resultat basert på språk­innstillingane, med nyaste først (@TheLastProject @IzzySoft)
 
-* Tema-støtta er modernisert og knytt til dei innebygde Android-temaa (@proletarius101)
+* Tema-støtta er modernisert og knytt til innebygde Android-tema (@proletarius101)
 
 * Søkjeresultata er sterkt forbetra (@Tvax @gcbrown76)
 
-* Lèt Android effektivt planleggja oppryddings­operasjonar i bakgrunnen (@Isira-Seneviratne)
+* Meir påliteleg opprydding av mellomlageret
+
+* Effektiv planlegging av opprydding (@Isira-Seneviratne)
 
 * Overhala URL-tolking for påliteleg tilføying av pakkebrønnar (@projectgus)

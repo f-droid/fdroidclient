@@ -430,7 +430,7 @@
     <string name="repo_delete_to_overwrite">Konflikti lahendamiseks kustuta esmalt %1$s ning lisa varamu teise võtmega.</string>
     <string name="prompt_to_send_crash_reports">Küsi luba krahhiraportite saatmiseks</string>
     <string name="prompt_to_send_crash_reports_summary">Kogu krahhide andmeid  ja küsi luba nende saatmiseks arendajale</string>
-    <string name="hide_all_notifications">Paida kõik märguanded</string>
+    <string name="hide_all_notifications">Peida kõik märguanded</string>
     <string name="hide_all_notifications_summary">Väldi kõigi tegevuste kuvamist olekuribal ja märguannete sahtlis.</string>
     <string name="send_install_history">Saada paigalduste ajalugu</string>
     <string name="send_history_csv">%s paigalduste ajalugu CSV failina</string>
@@ -447,7 +447,7 @@
     <string name="over_network_never_summary">Ära kasuta seda ühendust alla laadimiseks mitte kunagi</string>
     <string name="send_installed_apps">Jaga paigaldatud rakendusi</string>
     <string name="send_installed_apps_csv">F-Droidi paigaldatud rakendused CSV failina</string>
-    <string name="updates_disabled_by_settings">Kõik uuendused, mida mobiilne andmeside/Wi-Fi seaded keelavad</string>
+    <string name="updates_disabled_by_settings">Kõik uuendused, mille keelavad andmeside/WiFi seaded</string>
     <string name="repo_add_mirror">Lisa peegel</string>
     <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisada ta peegliks?</string>
     <string name="menu_open">Ava</string>
@@ -509,4 +509,13 @@
     <string name="notification_channel_swaps_title">Kohalik andmevahetus</string>
     <string name="notification_channel_installs_description">Kuvatakse rakenduste paigalduste teavitusi.</string>
     <string name="notification_channel_installs_title">Paigaldused</string>
+    <string name="menu_show_install_history">Kuva paigaldamise ajalugu</string>
+    <string name="menu_show_fdroid_metrics_report">Kuva meetrika raport</string>
+    <string name="toast_metrics_in_install_history">%s meetrika raport on nähtav paigaldamise ajaloo vaates</string>
+    <string name="send_to_fdroid_metrics_summary">Saada anonüümselt ja iganädalaselt F-Droidi meetrika (vajalik on paigaldamise ajaloo säilitamine)</string>
+    <string name="send_to_fdroid_metrics">Saada kasutamise andmed</string>
+    <string name="fdroid_metrics_report">%s meetrika raport</string>
+    <string name="install_history_and_metrics">Paigalda ajalugu ja meetrika</string>
+    <string name="send_fdroid_metrics_json">%s meetrika JSON failina</string>
+    <string name="send_fdroid_metrics_report">Saada %s meetrika raport</string>
 </resources>

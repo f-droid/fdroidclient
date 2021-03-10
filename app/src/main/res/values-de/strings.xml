@@ -506,4 +506,11 @@
     <string name="notification_channel_updates_title">Aktualisierungen</string>
     <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
     <string name="notification_channel_installs_title">Installationen</string>
+    <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
+    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchtenlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
+    <string name="send_to_fdroid_metrics">Sende Nutzungsdaten</string>
+    <string name="fdroid_metrics_report">%s Metrikenbericht</string>
+    <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
+    <string name="send_fdroid_metrics_json">%s Metrikenbericht als JSON-Datei</string>
+    <string name="send_fdroid_metrics_report">Sende Metrikenbericht %s</string>
 </resources>

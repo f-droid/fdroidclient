@@ -105,7 +105,7 @@
     <string name="links">Σύνδεσμοι</string>
     <string name="more">Περισσότερα</string>
     <string name="less">Λιγότερα</string>
-    <string name="back">Πίσω</string>
+    <string name="back">Επιστροφή</string>
     <string name="bad_fingerprint">Λανθασμένο δακτυλικό αποτύπωμα</string>
     <string name="invalid_url">Αυτή δεν είναι έγκυρη διεύθυνση.</string>
     <string name="menu_settings">Ρυθμίσεις</string>
@@ -513,4 +513,13 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_description">Επίδειξη ειδοποιήσεων ανταλλαγής εφαρμογών με τη χρήση P2P.</string>
     <string name="notification_channel_swaps_title">Ανταλλαγές</string>
+    <string name="menu_show_install_history">Εμφάνιση ιστορικού εγκατάστασης</string>
+    <string name="menu_show_fdroid_metrics_report">Εμφάνιση αναφοράς διαγνωστικών</string>
+    <string name="toast_metrics_in_install_history">Η αναφορά διαγνωστικών %s είναι ορατή στην προβολή ιστορικού εγκατάστασης</string>
+    <string name="send_to_fdroid_metrics_summary">Αποστέλλει ανώνυμα δεδομένα εβδομαδιαίως στο κέντρο διαγνωστικών του F-Droid (απαιτεί διατήρηση ιστορικού εγκατάστασης)</string>
+    <string name="fdroid_metrics_report">Αναφορά διαγνωστικών %s</string>
+    <string name="install_history_and_metrics">Ιστορικό εγκαταστάσεων και διαγνωστικών</string>
+    <string name="send_fdroid_metrics_json">Αναφορά διαγνωστικών %s ως αρχείο JSON</string>
+    <string name="send_fdroid_metrics_report">Αποστολή αναφοράς διαγνωστικών %s</string>
+    <string name="send_to_fdroid_metrics">Αποστολή δεδομένων χρήσης</string>
 </resources>

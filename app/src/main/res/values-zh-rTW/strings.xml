@@ -485,4 +485,13 @@
     <string name="notification_channel_swaps_title">切換</string>
     <string name="notification_channel_installs_description">顯示應用程式安裝通知。</string>
     <string name="notification_channel_installs_title">安裝</string>
+    <string name="menu_show_install_history">顯示安裝歷史紀錄</string>
+    <string name="menu_show_fdroid_metrics_report">顯示指標回報</string>
+    <string name="toast_metrics_in_install_history">在「安裝歷史紀錄檢視器」中可以檢視 %s 指標回報</string>
+    <string name="send_to_fdroid_metrics_summary">每週傳送匿名資料給 F-Droid Metrics（需要保留安裝歷史紀錄）</string>
+    <string name="send_to_fdroid_metrics">傳送使用情況資料</string>
+    <string name="fdroid_metrics_report">%s 指標回報</string>
+    <string name="install_history_and_metrics">安裝歷史紀錄與指標</string>
+    <string name="send_fdroid_metrics_json">%s 指標回報為 JSON 檔</string>
+    <string name="send_fdroid_metrics_report">傳送 %s 指標回報</string>
 </resources>

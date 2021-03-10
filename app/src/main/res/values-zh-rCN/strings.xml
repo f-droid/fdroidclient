@@ -483,4 +483,13 @@
     <string name="notification_channel_installs_title">安装</string>
     <string name="notification_channel_swaps_description">展示P2P 应用程序交换通知。</string>
     <string name="notification_channel_swaps_title">交换</string>
+    <string name="menu_show_install_history">显示安装历史</string>
+    <string name="menu_show_fdroid_metrics_report">显示指标报告</string>
+    <string name="toast_metrics_in_install_history">可以在安装历史查看器中查看 %s 份指标报告</string>
+    <string name="send_to_fdroid_metrics_summary">每周发送匿名数据到 F-Droid Metrics (需要保存安装历史)</string>
+    <string name="send_to_fdroid_metrics">发送使用数据</string>
+    <string name="fdroid_metrics_report">%s 份指标报告</string>
+    <string name="install_history_and_metrics">安装历史和指标</string>
+    <string name="send_fdroid_metrics_json">发送 %s 份指标报告为 JSON 报告</string>
+    <string name="send_fdroid_metrics_report">发送 %s 份指标报告</string>
 </resources>

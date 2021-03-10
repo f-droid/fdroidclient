@@ -516,4 +516,13 @@
     <string name="notification_channel_swaps_title">Обміни</string>
     <string name="notification_channel_installs_description">Показує сповіщення про встановлення застосунку.</string>
     <string name="notification_channel_installs_title">Установлення</string>
+    <string name="menu_show_install_history">Показати історію встановлення</string>
+    <string name="menu_show_fdroid_metrics_report">Показати звіт з показниками</string>
+    <string name="toast_metrics_in_install_history">Звіт %s можна переглянути в засобі перегляду журналу встановлення</string>
+    <string name="send_to_fdroid_metrics_summary">Щотижня надсилає анонімні дані до F-Droid Metrics (потрібно зберігати історію встановлення)</string>
+    <string name="send_to_fdroid_metrics">Надіслати дані про використання</string>
+    <string name="fdroid_metrics_report">%s звіт з показниками</string>
+    <string name="install_history_and_metrics">Встановити історію та показники</string>
+    <string name="send_fdroid_metrics_json">%s звіт з показниками у вигляді файлу JSON</string>
+    <string name="send_fdroid_metrics_report">Надіслати %s звіт з показниками</string>
 </resources>

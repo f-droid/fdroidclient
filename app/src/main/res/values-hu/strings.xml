@@ -496,4 +496,13 @@
     <string name="notification_channel_swaps_title">Cserék</string>
     <string name="notification_channel_installs_title">Telepítések</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="send_to_fdroid_metrics_summary">Hetente anonim adatokat küld az F-Droid metrikáknak (a Telepítési előzmények megtartása szükséges)</string>
+    <string name="send_fdroid_metrics_report">%s metrikajelentés elküldése</string>
+    <string name="menu_show_install_history">Telepítési előzmények megjelenítése</string>
+    <string name="menu_show_fdroid_metrics_report">Metrikajelentés megtekintése</string>
+    <string name="toast_metrics_in_install_history">Az %s metrikajelentés a Telepítési előzmények megjelenítőjében nézhető meg</string>
+    <string name="send_to_fdroid_metrics">Használati adatok elküldése</string>
+    <string name="fdroid_metrics_report">%s metrikajelentés</string>
+    <string name="install_history_and_metrics">Telepítési előzmények és metrikák</string>
+    <string name="send_fdroid_metrics_json">%s metrikajelentés JSON fájlként</string>
 </resources>

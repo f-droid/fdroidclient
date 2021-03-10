@@ -502,4 +502,13 @@
     <string name="notification_channel_swaps_title">Takaslar</string>
     <string name="notification_channel_installs_description">Uygulama kurulum bildirimlerini görüntüler.</string>
     <string name="notification_channel_installs_title">Kurulumlar</string>
+    <string name="menu_show_install_history">Kurulum geçmişini göster</string>
+    <string name="menu_show_fdroid_metrics_report">Ölçüm raporunu göster</string>
+    <string name="toast_metrics_in_install_history">%s Ölçüm raporu, Kurulum Geçmişi görüntüleyicisinde görülebilir</string>
+    <string name="send_to_fdroid_metrics_summary">Anonim verileri haftalık olarak F-Droid Ölçümlerine gönderir (Kurulum geçmişini sakla özelliğini gerektirir)</string>
+    <string name="send_to_fdroid_metrics">Kullanım verilerini gönder</string>
+    <string name="fdroid_metrics_report">%s Ölçüm Raporu</string>
+    <string name="install_history_and_metrics">Geçmişi ve ölçümleri kur</string>
+    <string name="send_fdroid_metrics_json">JSON dosyası olarak %s ölçüm raporu</string>
+    <string name="send_fdroid_metrics_report">%s Ölçüm Raporu Gönder</string>
 </resources>

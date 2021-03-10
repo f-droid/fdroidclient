@@ -6,6 +6,8 @@
 
 * pli akurataj serĉ‑rezultoj (@Tvax @gcbrown76)
 
-* ebligi al Android efike plani fonajn agojn de forviŝi kaŝmemoron (@Isira-Seneviratne)
+* pli akurate forviŝi kaŝmemoron
+
+* efike plani forviŝi kaŝmemoron (@Isira-Seneviratne)
 
 * profunde kontroli ligilon de deponejo por fideble aldoni deponejon (@projectgus)
