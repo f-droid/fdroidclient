@@ -29,23 +29,22 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLKeyException;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLProtocolException;
 import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
@@ -54,6 +53,11 @@ import java.net.NoRouteToHostException;
 import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLKeyException;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLProtocolException;
 
 /**
  * DownloaderService is a service that handles asynchronous download requests
@@ -237,8 +241,28 @@ public class DownloaderService extends Service {
             downloader.setTimeout(timeout);
             downloader.download();
             if (downloader.isNotFound()) {
-                sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
-                        repoId, canonicalUrl);
+                Utils.debugLog(TAG, "NOT FOUND: " + uri.toString());
+                // Check if the file was requested from a mirror.
+                // If that is the case, retry the download with the original repo address
+                final String notFoundUriString = uri.toString();
+                String newUriString = null;
+                final Repo repo = RepoProvider.Helper.findById(getBaseContext(), repoId);
+                if (repo != null) {
+                    for (String mirrorAddress : repo.getMirrorList()) {
+                        if (notFoundUriString.contains(mirrorAddress)) {
+                            newUriString = notFoundUriString.replace(mirrorAddress, repo.address);
+                            break;
+                        }
+                    }
+
+                }
+                if (newUriString != null && !notFoundUriString.equals(newUriString)) {
+                    Utils.debugLog(TAG, "Retrying download from original repo: " + newUriString);
+                    queue(getBaseContext(), newUriString, repo.getId(), activeCanonicalUrl);
+                } else {
+                    sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
+                            repoId, canonicalUrl);
+                }
             } else {
                 sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
             }
