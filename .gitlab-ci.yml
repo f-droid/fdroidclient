@@ -3,7 +3,7 @@ include:
 
 variables:
   SAST_DEFAULT_ANALYZERS: mobsf, spotbugs
-  SAST_EXPERIMENTAL_FEATURES: 'true'
+  SAST_EXPERIMENTAL_FEATURES: "true"
 
 stages:
   - build
@@ -156,7 +156,7 @@ errorprone:
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
+      export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
 
@@ -185,8 +185,8 @@ deploy_nightly:
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
     - sed -i
-        's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
-        app/src/main/res/values*/strings.xml
+      's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
+      app/src/main/res/values*/strings.xml
     # add this nightly repo as a enabled repo
     - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
@@ -211,3 +211,6 @@ sast:
   variables:
     # Make sure the apk is search before the manifest
     ANALYZER_TARGET_DIR: /target/app/build/outputs/apk/full/release/
+
+mobsf-android-sast:
+  image: registry.gitlab.com/proletarius101/mobsf:add-uploading-apks-directly
