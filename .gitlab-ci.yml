@@ -199,18 +199,15 @@ deploy_nightly:
     - ./gradlew assembleDebug
     - fdroid nightly -v
 
-mobsf-android-sast:
-  stage: test
+sast:
   # TODO: change this after https://gitlab.com/gitlab-org/security-products/analyzers/mobsf/-/merge_requests/18
   image: registry.gitlab.com/proletarius101/mobsf:add-uploading-apks-directly
   needs:
-    - build-full-debug
+    - build-all
   # Explicitly allow downloading the report
   artifacts:
     paths:
       - gl-sast-report.json
-  before_script:
+  variables:
     # Make sure the apk is search before the manifest
-    - cp app/build/outputs/apk/full/debug/app-full-debug.apk .
-  script:
-    - /analyzer run
+    ANALYZER_TARGET_DIR: /target/app/build/outputs/apk/full/release/

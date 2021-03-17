@@ -1,0 +1,13 @@
+apply plugin: 'checkstyle'
+
+checkstyle.toolVersion = '8.41'
+
+tasks.register("checkstyle", Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    source 'src/main/java', 'src/test/java', 'src/androidTest/java'
+    include '**/*.java'
+
+    showViolations true
+
+    classpath = files()
+}
