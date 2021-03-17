@@ -199,10 +199,10 @@ deploy_nightly:
     - ./gradlew assembleDebug
     - fdroid nightly -v
 
-sast:
+mobsf-android-sast:
+  stage: test
   # TODO: change this after https://gitlab.com/gitlab-org/security-products/analyzers/mobsf/-/merge_requests/18
-  variables: 
-    SECURE_ANALYZERS_PREFIX: registry.gitlab.com/proletarius101
+  image: registry.gitlab.com/proletarius101/mobsf:add-uploading-apks-directly
   needs:
     - build-full-debug
   # Explicitly allow downloading the report
@@ -212,3 +212,5 @@ sast:
   before_script:
     # Make sure the apk is search before the manifest
     - cp app/build/outputs/apk/full/debug/app-full-debug.apk .
+  script:
+    - /analyzer run
