@@ -210,7 +210,7 @@ sast:
       - gl-sast-report.json
   variables:
     # Make sure the apk is search before the manifest
-    ANALYZER_TARGET_DIR: /target/app/build/outputs/apk/full/release/
+    ANALYZER_TARGET_DIR: $CI_PROJECT_DIR/app/build/outputs/apk/full/release
 
 mobsf-android-sast:
   image: registry.gitlab.com/proletarius101/mobsf:add-uploading-apks-directly
