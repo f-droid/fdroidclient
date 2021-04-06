@@ -1,8 +1,8 @@
-* tradukitaj aplikaĵaj priskriboj en lingvoj agorditaj en Android‑agordoj
+* aplikaĵaj priskriboj en lingvoj agorditaj en Android‑agordoj
 
-* langeto “novaj” montras aplikaĵojn surbaze de lingvaj agordoj, laŭ la plej novaj (@TheLastProject @IzzySoft)
+* langeto “novaj” montras aplikaĵojn surbaze de lingvaj agordoj, laŭ plej novaj (@TheLastProject @IzzySoft)
 
-* plibonigita subteno por etosoj, kongruo kun originalaj Android‑etosoj (@proletarius101)
+* etosoj kongruaj kun originalaj Android‑etosoj (@proletarius101)
 
 * pli akurataj serĉ‑rezultoj (@Tvax @gcbrown76)
 
@@ -10,4 +10,6 @@
 
 * efike plani forviŝi kaŝmemoron (@Isira-Seneviratne)
 
-* profunde kontroli ligilon de deponejo por fideble aldoni deponejon (@projectgus)
+* profunde kontroli ligilon de deponejo dum aldoni ĝin (@projectgus)
+
+* implicite malaktivaj F‑Droid‑Statistikoj

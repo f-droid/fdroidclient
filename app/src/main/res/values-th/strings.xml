@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-    <string name="installIncompatible">โปรแกรมนี้เข้ากันไม่ได้กับเครื่องของคุณ, ดำเนินการติดตั้งต่อหรือไม่?</string>
+    <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณติดตั้งหรือไม่\?</string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
-    <string name="enable_nfc_send">เปิดใช้งานส่งผ่าน NFC…</string>
-    <string name="cache_downloaded">เก็บไฟล์เเคชของเเอพ</string>
+    <string name="enable_nfc_send">เปิดใช้งานการส่ง NFC …</string>
+    <string name="cache_downloaded">เก็บแอปที่แคชไว้</string>
     <string name="other">อื่นๆ</string>
     <string name="update_interval">อัพเดตอัตโนมัติทุกๆ</string>
     <string name="update_auto_download">อัพเดตอัตโนมัติ</string>
@@ -33,8 +33,8 @@
     <string name="repo_add_title">เพิ่มแหล่งที่เก็บใหม่</string>
     <string name="repo_add_add">เพิ่ม</string>
     <string name="links">ลิงค์</string>
-    <string name="more">เพิ่มเติม</string>
-    <string name="less">ซ่อนรายละเอียด</string>
+    <string name="more">มากกว่า</string>
+    <string name="less">น้อยกว่า</string>
     <string name="back">กลับ</string>
     <string name="cancel">ยกเลิก</string>
     <string name="enable">เปิดใช้งาน</string>
@@ -58,13 +58,13 @@
     <string name="menu_issues">ประเด็นปัญหา</string>
     <string name="menu_changelog">ปูมบันทึกเปลี่ยนแปลง</string>
     <string name="menu_source">ซอร์สโค้ด</string>
-    <string name="menu_upgrade">อัพเกรด</string>
+    <string name="menu_upgrade">อัปเดต</string>
     <string name="menu_bitcoin">บิตคอยน์</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="details_notinstalled">ไม่ได้ติดตั้งอยู่</string>
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
-    <string name="antitracklist">โปรแกรมนี้ติดตามและส่งต่อข้อมูลกิจกรรมของคุณให้บุคคลภายนอก</string>
+    <string name="antitracklist">แอพนี้ติดตามและรายงานกิจกรรมของคุณ</string>
     <string name="antinonfreeadlist">โปรแกรมนี้สนับสนุนส่วนขยายที่ไม่เสรี</string>
     <string name="antinonfreenetlist">โปรแกรมนี้สนับสนุนการใช้งานบริการที่ไม่เสรี</string>
     <string name="antinonfreedeplist">โปรแกรมนี้พึ่งพาโปรแกรมไม่เสรีอื่นๆ</string>
@@ -119,7 +119,7 @@
     <string name="pref_language">ภาษา</string>
     <string name="pref_language_default">ใช้ภาษาของเครื่อง</string>
     <string name="category_Connectivity">การสื่อสาร</string>
-    <string name="category_Development">การพัฒนาซอฟต์แวร์</string>
+    <string name="category_Development">การพัฒนา</string>
     <string name="category_Games">เกม</string>
     <string name="category_Graphics">กราฟิก</string>
     <string name="category_Internet">อินเตอร์เน็ต</string>
@@ -185,14 +185,12 @@
     <string name="theme_dark">มืด</string>
     <string name="theme_night">กลางคืน</string>
     <string name="crash_dialog_title">F-Droid เกิดข้อผิดพลาด</string>
-    <string name="crash_dialog_text">มีข้อผิดพลาดที่ทำให้โปรแกรมหยุดทำงานกะทันหัน,
-        คุณต้องการจะส่งอีเมลแจ้งปัญหาไปยังผู้พัฒนาเพื่อทำการแก้ไขหรือไม่?
-    </string>
+    <string name="crash_dialog_text">เกิดข้อผิดพลาดที่ไม่คาดคิดบังคับให้แอปหยุดทำงาน คุณต้องการส่งรายละเอียดทางอีเมลเพื่อช่วยแก้ไขปัญหาหรือไม่</string>
     <string name="crash_dialog_comment_prompt">ระบุรายละเอียดและหมายเหตุเพิ่มเติมที่นี่:</string>
-    <string name="SignatureMismatch">โปรแกรมรุ่นใหม่มีการประทับลายเซ็นดิจิตอลที่ไม่เหมือนกับโปรแกรมที่ติดตั้งอยู่, กรณีจะติดตั้งรุ่นใหม่คุณจะต้องทำการถอนการติดตั้งรุ่นเดิมออกก่อน จึงจะทำการติดตั้งรุ่นใหม่ได้ (หมายเหตุ: การถอนการติดตั้งจะทำให้ข้อมูลภายในของโปรแกรมนั้นๆ ถูกลบ)</string>
+    <string name="SignatureMismatch">เวอร์ชันใหม่มีการลงนามด้วยคีย์อื่นกับเวอร์ชันเก่า ในการติดตั้งเวอร์ชันใหม่ต้องถอนการติดตั้งเวอร์ชันเก่าก่อน โปรดดำเนินการนี้และลองอีกครั้ง (โปรดทราบว่าการถอนการติดตั้งจะลบข้อมูลภายในที่จัดเก็บโดยแอป)</string>
     <string name="updates">อัพเดต</string>
-    <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
-    <string name="unstable_updates_summary">แนะนำการอัพเดตไปยังรุ่นที่ไม่เสถียร</string>
+    <string name="unstable_updates">การอัปเดตที่ไม่เสถียร</string>
+    <string name="unstable_updates_summary">แนะนำการอัปเดตเวอร์ชันที่ไม่เสถียร</string>
     <string name="update_auto_download_summary">ดาวน์โหลดอัพเดตเเอพอัตโนมัติเเละเเจ้งเตือนให้ติดตั้ง</string>
     <string name="notify">แสดงอัพเดตที่ใช้ได้</string>
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดต</string>
@@ -251,7 +249,7 @@
         %1$s
     </string>
     <string name="repo_added">บันทึกแหล่งโปรแกรม F-Droid %1$s แล้ว</string>
-    <string name="unverified">ตรวจสอบไม่ได้</string>
+    <string name="unverified">ไม่ได้รับการยืนยัน</string>
     <string name="unsigned">ไม่มีลายเซ็นดิจิตอล</string>
     <string name="no_handler_app">คุณไม่มีโปรแกรมที่รองรับการใช้งาน %s</string>
     <string name="copying_icons">กำลังคัดลอกข้อมูลไอคอนลงไปในแหล่งโปรแกรม…</string>
@@ -266,7 +264,7 @@
     <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดไว้ในหน่วยความจำเฉพาะ</string>
     <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
     <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
-    <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
+    <string name="warning_no_internet">ไม่สามารถอัปเดตคุณเชื่อมต่อกับอินเทอร์เน็ตหรือไม่\?</string>
     <string name="swap_confirm_connect">ยืนยันเพื่อรับโปรแกรมจาก %1$s</string>
     <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi,
         คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ
@@ -370,8 +368,23 @@
     <string name="send_version_and_uuid">ส่งรุ่นเเละ UUIDไปที่เซิร์ฟเวอร์</string>
     <string name="install_history_summary">ดูปูมบันทึกส่วนตัวสำหรับการติดตั้งเเละการถอนติดตั้งทั้งหมด</string>
     <string name="install_history">ประวัติการติดตั้ง</string>
-    <string name="send_history_csv">%s ประวัติการติดตั้งเเบบไฟล์ CSV</string>
-    <string name="hide_all_notifications_summary">ป้องกันไม่ให้การดำเนินการทั้งหมดแสดงในแถบสถานะและเเท๊ปการแจ้งเตือน</string>
-    <string name="prompt_to_send_crash_reports">ถามเเละส่งรายงานข้อขัดข้อง</string>
-    <string name="prompt_to_send_crash_reports_summary">รวบรวมข้อมูลเกี่ยวกับข้อขัดข้องและถามให้ส่งไปยังนักพัฒนา</string>
+    <string name="send_history_csv">%s ประวัติการติดตั้งเป็นไฟล์ CSV</string>
+    <string name="hide_all_notifications_summary">ป้องกันการกระทำทั้งหมดไม่ให้แสดงในแถบสถานะและลิ้นชักการแจ้งเตือน</string>
+    <string name="prompt_to_send_crash_reports">แจ้งให้ส่งรายงานข้อขัดข้อง</string>
+    <string name="prompt_to_send_crash_reports_summary">รวบรวมข้อมูลเกี่ยวกับข้อขัดข้องและขอให้ส่งไปยังนักพัฒนา</string>
+    <string name="notification_action_cancel">ยกเลิก</string>
+    <string name="send_fdroid_metrics_report">ส่งรายงานเมตริก%s</string>
+    <string name="notification_title_summary_install_error">ติดตั้งล้มเหลว</string>
+    <string name="notification_title_single_update_available">มีการอัปเดต</string>
+    <string name="app_list__name__successfully_installed">%1$sติดตั้ง</string>
+    <string name="app_list__name__downloading_in_progress">กำลังดาวน์โหลด%1$s</string>
+    <string name="notification_action_install">ติดตั้ง</string>
+    <string name="notification_action_update">อัปเดต</string>
+    <string name="preference_manage_installed_apps">จัดการแอดที่ติดตั้ง</string>
+    <string name="toast_metrics_in_install_history">สามารถดูรายงาน%s เมตริกได้ในวิวเวอร์ประวัติการติดตั้ง</string>
+    <string name="send_to_fdroid_metrics_summary">ส่งข้อมูลที่ไม่ระบุตัวตนทุกสัปดาห์ไปยัง F-Droid Metrics (ต้องเก็บประวัติการติดตั้ง)</string>
+    <string name="send_to_fdroid_metrics">ส่งข้อมูลการใช้งาน</string>
+    <string name="fdroid_metrics_report">รายงานเมตริก%s</string>
+    <string name="install_history_and_metrics">ติดตั้งประวัติและเมตริก</string>
+    <string name="send_fdroid_metrics_json">%s รายงานเมตริกเป็นไฟล์ JSON</string>
 </resources>

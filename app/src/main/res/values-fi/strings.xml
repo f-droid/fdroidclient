@@ -38,7 +38,7 @@
     <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
     <string name="repo_add_url">Sovelluslähteen osoite</string>
     <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
-    <string name="menu_manage">Hallitse sovelluslähteitä</string>
+    <string name="menu_manage">Ohjelmavarastot</string>
     <string name="menu_search">Haku</string>
     <string name="menu_add_repo">Uusi sovelluslähde</string>
     <string name="menu_launch">Avaa</string>
@@ -98,7 +98,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navigointi</string>
-    <string name="category_Phone_SMS">Viestintä</string>
+    <string name="category_Phone_SMS">Puhelin &amp; SMS</string>
     <string name="category_Reading">Lukeminen</string>
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
@@ -169,7 +169,7 @@
     <string name="no_permissions">Ei käyttöoikeuksia</string>
     <string name="permissions">Käyttöluvat</string>
     <string name="unsigned">Allekirjoittamaton</string>
-    <string name="repo_details">Sovelluslähde</string>
+    <string name="repo_details">Ohjelmavarasto</string>
     <string name="repo_confirm_delete_title">Poistetaanko sovelluslähde?</string>
     <string name="update_auto_install">Asenna päivitykset automaattisesti</string>
     <string name="repo_provider">Sovelluslähde: %s</string>
@@ -269,14 +269,14 @@
 \n%1$s</string>
     <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
-    <string name="warning_no_internet">Ei voida päivittää, olemmehan yhteydessä Internettiin\?</string>
+    <string name="warning_no_internet">Ei voida päivittää, olethan yhteydessä Internettiin\?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
     <string name="app_new">Uusi</string>
     <string name="app__install_downloaded_update">Päivitä</string>
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s on asennettu</string>
+    <string name="app_list__name__successfully_installed">%1$s asennettu</string>
     <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
     <string name="update_all">Päivitä kaikki</string>
     <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
@@ -299,7 +299,7 @@
     <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä\? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
     <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
-    <string name="notification_title_single_update_available">Päivitys Saatavilla</string>
+    <string name="notification_title_single_update_available">Päivitys saatavilla</string>
     <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>
     <string name="notification_title_single_ready_to_install_update">Päivitys valmiina asennettavaksi</string>
     <string name="notification_title_single_install_error">Asennus epäonnistui</string>
@@ -327,7 +327,7 @@
     <string name="app_details_donate_prompt_unknown_author">Osta sovelluksen %1$s kehittäjille kahvi!</string>
     <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Osta heille kahvi!</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Version %1$s päivitykset ohitetaan</string>
-    <string name="updates__tts__download_app">Lataa päivitykset</string>
+    <string name="updates__tts__download_app">Lataa</string>
     <string name="main_menu__swap_nearby">Lähellä</string>
     <string name="latest__empty_state__no_enabled_repos">Kun otat sovelluslähteen käyttöön ja annat sen päivittyä, uusimpien sovelluksien pitäsi näkyä tässä</string>
     <plurals name="button_view_all_apps_in_category">

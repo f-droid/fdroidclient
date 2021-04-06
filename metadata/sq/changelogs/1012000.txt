@@ -1,0 +1,12 @@
+* Përkthimi i përshkrimeve të aplikacioneve tani respekton plotësisht listat e gjuhëve prej
+Rregullimesh Gjuhësh në Android
+
+* Përfundime listash të Skedës Më të Rejat të bazuara në Rregullime Gjuhës
+
+* Skeda Më të Reja tani shfaq përfundime renditur sipas më të rejave së pari
+
+*Modernizim i mbulimit të temave dhe lidhje e tij me tema të brendshme të Android-it
+
+*Përmirësim i madh i përfundimeve të kërkimit
+
+* Lënie e Android-it të planifikojë veprime spastrimi fshehtine në prapaskenë

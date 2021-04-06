@@ -90,7 +90,7 @@
     <string name="menu_launch">گشودن</string>
     <string name="menu_ignore_all">نادیده گرفتن تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">نادیده گرفتن این به‌روز رسانی</string>
-    <string name="menu_website">وب‌سایت</string>
+    <string name="menu_website">پایگاه وب</string>
     <string name="menu_changelog">گزارش دگرگونی</string>
     <string name="menu_upgrade">به‌روز رسانی</string>
     <string name="menu_bitcoin">بیت‌کوین</string>
@@ -234,7 +234,7 @@
     <string name="install_confirm_update_system_no_perms">آیا می‌خواهید یک به‌روزرسانی برای این برنامه کاربردی داخلی نصب کنید؟ داده‌های موجود شما از دست نخواهد رفت. به دسترسی ویژه‌ای نیاز ندارد.</string>
     <string name="uninstall_update_confirm">این برنامه با نسخه کارخانه جایگزین شود؟ همه داده‌ها پاک می‌شوند.</string>
     <string name="uninstall_confirm">می‌خواهید این برنامه را حذف نصب کنید؟</string>
-    <string name="menu_email">ایمیل به نویسنده</string>
+    <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این برنامه شامل دارایی های غیر آزاد است</string>
     <string name="empty_search_available_app_list">چنین برنامه هایی موجود نیستند.</string>
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
@@ -289,7 +289,7 @@
     <string name="main_menu__latest_apps">جدیدترین</string>
     <string name="main_menu__categories">دسته‌ها</string>
     <string name="main_menu__swap_nearby">اطراف</string>
-    <string name="latest__empty_state__no_recent_apps">برنامه جدیدی پیدا نشد</string>
+    <string name="latest__empty_state__no_recent_apps">هیچ برنامهٔ اخیری پیدا نشد</string>
     <string name="latest__empty_state__never_updated">پس از به‌روز رسانی فهرست برنامه های‌تان، جدیدترین برنامه‌ها در این‌‌جا نمایش داده می شوند</string>
     <string name="latest__empty_state__no_enabled_repos">به محض فعّال و به‌روز کردن یک مخزن، جدیدترین برنامه‌ها باید در این‌جا نمایش یابند</string>
     <string name="categories__empty_state__no_categories">هیچ دسته‌ای برای نمایش نیست</string>
@@ -434,7 +434,7 @@
     <string name="prompt_to_send_crash_reports">اعلان برای فرستادن گزارش‌های فروپاشی</string>
     <string name="prompt_to_send_crash_reports_summary">جمع‌آوری داده دربارهٔ فروپاشی‌ها و پرسش برای فرستادنشان به توسعه‌دهنده</string>
     <string name="hide_all_notifications">نهفتن تمام آگاهی‌ها</string>
-    <string name="hide_all_notifications_summary">جلوگیری تمام عمل‌ها از نمایش در نوار وضعیت و کشوی آگاهی.</string>
+    <string name="hide_all_notifications_summary">جلوگیری از نمایش تمامی کنش‌ها در نوار وضعیت و کشوی آگاهی.</string>
     <string name="send_install_history">فرستادن تاریخچهٔ نصب</string>
     <string name="send_history_csv">تاریخچهٔ نصب %s در قالب پروندهٔ csv</string>
     <string name="install_history">تاریخچهٔ نصب</string>
@@ -490,7 +490,16 @@
     <string name="notification_channel_updates_title">به‌روزرسانی‌ها</string>
     <string name="notification_channel_installs_description">اعلان‌های نصب برنامه نمایش داده می‌شوند.</string>
     <string name="notification_channel_installs_title">نصب‌ها</string>
-    <string name="menu_opencollective">OpenCollective</string>
+    <string name="menu_opencollective">اوپن‌کالکتیو</string>
     <string name="notification_channel_swaps_description">نمایش آگاهی‌های مبادلهٔ کارهٔ نظیر به نظیر.</string>
     <string name="notification_channel_swaps_title">مبادله‌ها</string>
+    <string name="menu_show_install_history">نمایش تاریخچهٔ نصب</string>
+    <string name="menu_show_fdroid_metrics_report">نمایش گزارش سنجش</string>
+    <string name="toast_metrics_in_install_history">گزارش سنجش %s در نمایشگر تاریخچهٔ نصب، قابل مشاهده است</string>
+    <string name="send_to_fdroid_metrics_summary">هر هفته، داده‌های ناشناس را به سنجش اف‌دروید می‌فرستد (نیاز به نگه‌داشتن تاریخچهٔ نصب)</string>
+    <string name="send_to_fdroid_metrics">فرستادن داده‌های استفاده</string>
+    <string name="fdroid_metrics_report">گزارش سنجش‌%s</string>
+    <string name="install_history_and_metrics">سنجش و تاریخچهٔ نصب</string>
+    <string name="send_fdroid_metrics_json">گزارش سنجش %s در قالب پروندهٔ جی‌سان</string>
+    <string name="send_fdroid_metrics_report">فرستادن گزارش سنجش %s</string>
 </resources>

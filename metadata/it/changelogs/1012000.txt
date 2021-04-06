@@ -1,0 +1,11 @@
+*La localizzazione della descrizione dell'app ora rispetta gli elenchi delle lingue nelle impostazioni della lingua di Android
+
+*Scheda più recente elenca i risultati basate sulle impostazioni della lingua
+
+*Scheda più recente ora mostra i risultati ordinati per più recenti
+
+*Il supporto del tema modernizzato e collegato ai temi Android integrati
+
+*I risultati della ricerca sono migliorati
+
+*Consenti ad Android di pianificare le operazioni di pulizia della cache

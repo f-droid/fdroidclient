@@ -532,4 +532,13 @@
     <string name="notification_channel_swaps_description">Wyświetla powiadomienia o wymianie aplikacji P2P.</string>
     <string name="notification_channel_installs_description">Wyświetla powiadomienia o instalacji aplikacji.</string>
     <string name="notification_channel_installs_title">Instalacje</string>
+    <string name="menu_show_install_history">Pokaż historię instalacji</string>
+    <string name="menu_show_fdroid_metrics_report">Pokaż raport z metryczny</string>
+    <string name="toast_metrics_in_install_history">Raport %s Metric jest widoczny w przeglądarce historii instalacji</string>
+    <string name="send_to_fdroid_metrics_summary">Wysyła co tydzień anonimowe dane do F-Droid Metrics (wymaga Zachowaj historię instalacji)</string>
+    <string name="send_to_fdroid_metrics">Wyślij dane o użytkowaniu</string>
+    <string name="fdroid_metrics_report">%s Raport metryczny</string>
+    <string name="install_history_and_metrics">Historia i metryka instalacji</string>
+    <string name="send_fdroid_metrics_json">%s raport metryczny jako plik JSON</string>
+    <string name="send_fdroid_metrics_report">Wyślij %s Raport metryczny</string>
 </resources>

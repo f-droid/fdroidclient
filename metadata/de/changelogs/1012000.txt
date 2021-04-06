@@ -1,0 +1,11 @@
+* Lokalisierung der App-Beschreibung beachtet jetzt Sprachlisten in den Spracheinstellungen
+
+* Tab "Neueste" listet Ergebnisse basierend auf den Spracheinstellungen
+
+* Tab "Neueste" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
+
+* Modernisierung der Theme-Unterstützung und Anbindung an die Android-Themes (@proletarius101)
+
+* Verbesserte Suchergebnisse (@Tvax @gcbrown76)
+
+* Zulassen effizienter Planung und Cache-Bereinigungen durch Android im Hintergrund (@Isira-Seneviratne)

@@ -1,0 +1,13 @@
+* Përkthimi i përshkrimeve të aplikacioneve tani respekton plotësisht listat e gjuhëve prej Rregullimesh Gjuhësh në Android
+
+* Skeda Më të rejat shfaq aplikacioni bazuar te Rregullime Gjuhe, renditur sipas më të rejave së pari
+
+* Mbulimi i temave u lidh me tema të brendshme të Android-it
+
+* Përmirësim i madh i përfundimeve të kërkimit
+
+* Spastrim fshehtine më i qëndrueshëm
+
+* Planifikim efikas spastrimi fshehtine
+
+* Zgjedhje pjesëmarrje te Statistika F-Droid

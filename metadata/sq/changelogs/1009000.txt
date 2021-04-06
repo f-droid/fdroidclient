@@ -1,0 +1,4 @@
+* U hoq mbulim për “Android App Link”, ngaqë s’mund të punojë me F-Droid, dhe shkaktonte rrjedhje DNS.
+* Depo Arkivash tani kanë përparësi më të ulët se Depoja (më të madhe në skenën Administroni Depo), për të ndrequr probleme kur kërkohej për ikona, foto ekrani dhe të dhëna të tjera te Arkivi, në vend se te vetë Depoja.
+* Resht së qethuri krye figure të zgjedhur (faleminderit @ByteHamster!)
+* Bërje e shtyllës së lëvizjes të përputhet me mënyrën e errët (faleminderit @MatthieuB!)

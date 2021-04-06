@@ -512,4 +512,10 @@
     <string name="menu_show_install_history">Afficher l’historique des installations</string>
     <string name="send_to_fdroid_metrics_summary">Envoi hebdomadaire de données anonymes aux indicateurs métriques F-Droid (requiert la sauvegarde de l\'historique de téléchargement)</string>
     <string name="send_to_fdroid_metrics">Envoyer les données d\'utilisation</string>
+    <string name="send_fdroid_metrics_report">Envoyer le rapport d\'analyses de %s</string>
+    <string name="send_fdroid_metrics_json">Rapport d\'analyse de %s en tant que fichier JSON</string>
+    <string name="fdroid_metrics_report">Rapport d\'analyse de %s</string>
+    <string name="install_history_and_metrics">Installer l\'historique et les analyses</string>
+    <string name="toast_metrics_in_install_history">Le rapport de télémétrie de %s est visualisable dans la visionneuse de l\'installation d\'historique</string>
+    <string name="menu_show_fdroid_metrics_report">Afficher le rapport d\'analyse</string>
 </resources>

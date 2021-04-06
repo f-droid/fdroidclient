@@ -44,7 +44,7 @@
     <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Buscar</string>
-    <string name="menu_add_repo">Repositorio nuevo</string>
+    <string name="menu_add_repo">Nuevo repositorio</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instalar</string>
@@ -451,10 +451,10 @@
     <string name="install_history">Historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
-    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación</string>
+    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación.</string>
     <string name="share_repository">Compartir Repositorio</string>
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
-    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones</string>
+    <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
     <string name="allow_push_requests">Dejar a repositorios instalar/desinstalar</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
@@ -508,4 +508,13 @@
     <string name="notification_channel_swaps_title">Intercambios</string>
     <string name="notification_channel_installs_description">Muestra notificaciones de instalación de aplicaciones.</string>
     <string name="notification_channel_installs_title">Instalaciones</string>
+    <string name="menu_show_install_history">Mostrar historial de instalación</string>
+    <string name="menu_show_fdroid_metrics_report">Mostrar el informe de métricas</string>
+    <string name="toast_metrics_in_install_history">El informe %s se puede ver en el visor del historial de instalaciones</string>
+    <string name="send_to_fdroid_metrics_summary">Enviar estadísticas anónimas a F-Droid Metrics (necesita que se mantenga el historial de instalación)</string>
+    <string name="send_to_fdroid_metrics">Enviar estadísticas de uso</string>
+    <string name="fdroid_metrics_report">%s Reporte de métricas</string>
+    <string name="install_history_and_metrics">Instalar historial y métricas</string>
+    <string name="send_fdroid_metrics_json">%s reporte de métricas como un archivo JSON</string>
+    <string name="send_fdroid_metrics_report">Enviar %s informe de métricas</string>
 </resources>

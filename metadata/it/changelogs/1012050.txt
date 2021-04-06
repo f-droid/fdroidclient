@@ -1,0 +1,11 @@
+*La localizzazione della descrizione dell'app rispetta gli elenchi nelle impostazioni della lingua di Android
+
+*La scheda Più Recente mostra le app in base alle impostazioni della lingua, ordinate dalla più recenti
+
+*Supporto dei temi legato ai temi Android incorporati
+
+*La pulizia della cache più robusta
+
+*Pianificazione della pulizia della cache nel modo più efficace
+
+*Revisiona l'analisi dell'URL del repo per aggiunta affidabile di repo

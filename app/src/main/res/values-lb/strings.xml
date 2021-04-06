@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="menu_upgrade">Aktualiséieren</string>
+    <string name="delete">Läschen</string>
+    <string name="version">Versioun</string>
+    <string name="installIncompatible">Dës App ass mat ärem Gerät inkomatibel. Trotzdem installéieren\?</string>
+    <string name="notification_title_summary_install_error">Installatioun feelgeschloen</string>
+    <string name="notification_title_single_update_available">Akualiséierung disponibel</string>
+    <string name="crash_dialog_text">D\'App ass duerch een onerwaarte Feeler ofgestierzt. Wëllt Dir eng E-Mail schécken, fir d\'Fehlerbehiewung ze ënnerstëtzen\?</string>
+    <string name="crash_dialog_title">F-Droid ass ofgestierzt</string>
+    <string tools:ignore="UnusedResources" name="category_System">System</string>
+    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sport &amp; Gesondheet</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="repo_last_update">Lescht Aktualiséierung</string>
+    <string name="unverified">Net iwwerpréift</string>
+    <string name="unsigned">Net signéiert</string>
+    <string name="warning_no_internet">Akutaliséierung feelgeschloen, sidd Dir mam Internet verbonnen\?</string>
+    <string name="antitracklist">Dës App verfollegt an deelt Är Aktivitéiten</string>
+    <string name="less">Manner</string>
+    <string name="more">Méi</string>
+    <string name="about_title">Iwwer F-Droid</string>
+    <string name="app_details">App-Detailler</string>
+    <string name="notification_action_install">Installéieren</string>
+    <string name="notification_action_cancel">Ofbriechen</string>
+    <string name="notification_action_update">Akualiséierung</string>
+    <string name="newPerms">Nei</string>
+    <string name="swap_dont_show_again">Net nach eng Kéier uweisen</string>
+    <string name="swap_welcome">Wëllkomm bei F-Droid!</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">Schreiwen</string>
+    <string tools:ignore="UnusedResources" name="category_Time">Zäit</string>
+    <string tools:ignore="UnusedResources" name="category_Security">Sécherheet</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">Wëssenschaft &amp; Bildung</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">Liesen</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">Navigatioun</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string tools:ignore="UnusedResources" name="category_Money">Suen</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Grafik</string>
+    <string tools:ignore="UnusedResources" name="category_Games">Spiller</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Entwécklung</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Connectioun</string>
+    <string name="pref_language_default">Systemstandard</string>
+    <string name="pref_language">Sprooch</string>
+    <string name="skip">Iwwersprangen</string>
+    <string name="next">Weider</string>
+    <string name="details_notinstalled">Net installéiert</string>
+    <string name="preference_manage_installed_apps">Installéiert Apps verwalten</string>
+    <string name="main_menu__swap_nearby">An der Géigend</string>
+    <string name="main_menu__categories">Kategorien</string>
+    <string name="main_menu__latest_apps">Neist</string>
+    <string name="menu_uninstall">Läschen</string>
+    <string name="menu_install">Installéieren</string>
+    <string name="menu_share">Empfehlen</string>
+    <string name="menu_launch">Opmaachen</string>
+    <string name="menu_search">Sichen</string>
+    <string name="menu_settings">Astellungen</string>
+    <string name="cancel">Ofbriechen</string>
+    <string name="back">Zréck</string>
+    <string name="no">Nee</string>
+    <string name="yes">Jo</string>
+    <string name="ok">OK</string>
+    <string name="app_name">F-Droid</string>
+</resources>

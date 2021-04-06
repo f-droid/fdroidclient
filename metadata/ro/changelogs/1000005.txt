@@ -1,0 +1,3 @@
+* Fix bug care împiedică traducerile să apară pe Android >= 7.0
+
+* Fix DB upgrade crash de la 1.0-alpha3 → 1.0-alpha4 #1181

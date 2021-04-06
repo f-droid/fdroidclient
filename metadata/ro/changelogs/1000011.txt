@@ -1,0 +1,21 @@
+F-Droid este 1.0!
+
+Această versiune include:
+
+* Flux de lucru revizuit pt. actualizarea aplicațiilor
+
+* Rezumate și descrieri ale aplicațiilor traductibile
+
+* Secțiunea "Ce e nou" pt. a arăta schimbările din versiunea curentă
+
+* Capturi de ecran și grafice
+
+* Suport pt. instalarea fișierelor media, OTA, ZIP etc.
+
+* Protecție îmbunătățită împotriva urmăririi (HTTP ETag, TLS, etc.)
+
+* Actualizări cu Privileged Extension
+
+* Evidențierea donațiilor către dezvoltatori
+
+* Actualizări mult mai rapide

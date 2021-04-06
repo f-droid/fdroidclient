@@ -499,4 +499,13 @@
     <string name="notification_channel_updates_title">Uppdateringar</string>
     <string name="notification_channel_swaps_description">Visar notifikationer för app-byten mellan användare.</string>
     <string name="notification_channel_swaps_title">Byten</string>
+    <string name="menu_show_install_history">Visa installationshistorik</string>
+    <string name="menu_show_fdroid_metrics_report">Visa mätvärdesrapport</string>
+    <string name="toast_metrics_in_install_history">%s-mätvärdesrapporten är synlig i Install History-visaren</string>
+    <string name="send_to_fdroid_metrics_summary">Skickar anonyma data varje vecka till F-Droid Metrics (kräver Behåll installationshistorik)</string>
+    <string name="send_to_fdroid_metrics">Skicka användningsdata</string>
+    <string name="fdroid_metrics_report">%s-mätvärdesrapport</string>
+    <string name="install_history_and_metrics">Installera historik och mätvärden</string>
+    <string name="send_fdroid_metrics_json">%s-mätvärdesrapport som JSON-fil</string>
+    <string name="send_fdroid_metrics_report">Skicka %s-mätvärdesrapport</string>
 </resources>

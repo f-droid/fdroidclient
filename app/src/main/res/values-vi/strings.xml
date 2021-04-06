@@ -17,7 +17,7 @@
     <string name="system_installer_on">Dùng phần mở rộng được cấp quyền để cài đặt, cập nhật và gỡ bỏ ứng dụng</string>
     <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>
     <string name="local_repo_https_on">Dùng kết nối HTTPS:// mã hoá cho kho nội bộ</string>
-    <string name="app_details">Thông tin ứng dụng</string>
+    <string name="app_details">Chi tiết ứng dụng</string>
     <string name="no_such_app">Không tìm thấy ứng dụng.</string>
     <string name="about_title">Giới thiệu về F-Droid</string>
     <string name="about_site">Trang web</string>
@@ -33,7 +33,7 @@
     <string name="repo_add_title">Thêm kho ứng dụng mới</string>
     <string name="repo_add_add">Thêm</string>
     <string name="cancel">Hủy</string>
-    <string name="enable">Kích hoạt</string>
+    <string name="enable">Bật</string>
     <string name="add_key">Thêm mã khoá</string>
     <string name="overwrite">Ghi đè</string>
     <string name="bluetooth_activity_not_found">Không tìm thấy phương pháp gửi qua Bluetooth mặc định, hãy chọn phương
@@ -136,7 +136,7 @@
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
     <string name="app_name">F-Droid</string>
     <string name="unstable_updates">Cập nhật bản không ổn định</string>
-    <string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
+    <string name="unstable_updates_summary">Đề xuất cập nhật lên các phiên bản không ổn định</string>
     <string name="links">Liên kết</string>
     <string name="back">Quay lại</string>
     <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
@@ -160,7 +160,7 @@
     </string>
     <string name="unknown">Không xác định</string>
     <string name="pref_language">Ngôn ngữ</string>
-    <string name="pref_language_default">Mặc định</string>
+    <string name="pref_language_default">Mặc định hệ thống</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
     <string name="category_Connectivity">Kết nối</string>
@@ -188,10 +188,10 @@
     <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
     <string name="swap_choose_apps">Chọn ứng dụng</string>
     <string name="swap_scan_qr">Quét mã QR</string>
-    <string name="swap_people_nearby">Những người ở gần</string>
-    <string name="swap_scanning_for_peers">Đang tìm kiếm những người ở gần bạn…</string>
+    <string name="swap_people_nearby">Những người lân cận</string>
+    <string name="swap_scanning_for_peers">Đang tìm kiếm những người lân cận…</string>
     <string name="swap_intro">Kết nối và trao đổi ứng dụng với những người ở gần bạn.</string>
-    <string name="swap_nearby">Trao đổi gần</string>
+    <string name="swap_nearby">Trao đổi lân cận</string>
     <string name="swap_visible_bluetooth">Nhìn thấy được qua Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Đang cài đặt Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Không nhìn thấy được qua Bluetooth</string>
@@ -201,7 +201,7 @@
     <string name="swap_wifi_device_name">Tên thiết bị</string>
     <string name="swap_cant_find_peers">Bạn không tìm được người cần tìm?</string>
     <string name="swap_send_fdroid">Gửi F-Droid</string>
-    <string name="swap_no_peers_nearby">Không tìm thấy người ở gần để trao đổi.</string>
+    <string name="swap_no_peers_nearby">Không tìm thấy người lân cận để trao đổi.</string>
     <string name="swap_connecting">Đang kết nối</string>
     <string name="swap_confirm">Xác nhận trao đổi</string>
     <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
@@ -251,7 +251,7 @@
     <string name="repo_edit_credentials">Đổi mật khẩu</string>
     <string name="repo_error_empty_username">Tên người dùng trống, không đổi được mật khẩu</string>
     <string name="about_license">Giấy phép</string>
-    <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
+    <string name="status_inserting_apps">Đang lưu chi tiết ứng dụng</string>
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Buộc lưu lượng tải xuống phải thông qua Tor để tăng tính riêng tư. Yêu cầu ứng dụng Orbot</string>
@@ -260,7 +260,7 @@
     <string name="main_menu__categories">Hạng mục</string>
     <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
     <string name="notification_action_update">Cập nhật</string>
-    <string name="notification_action_cancel">Hủy bỏ</string>
+    <string name="notification_action_cancel">Hủy</string>
     <string name="notification_action_install">Cài đặt</string>
     <string name="app_list__name__downloading_in_progress">Đang tải %1$s</string>
     <string name="app_list__name__successfully_installed">Đã cài đặt %1$s</string>
@@ -271,7 +271,7 @@
     <string name="notification_title_single_update_available">Có bản cập nhật</string>
     <string name="notification_title_summary_install_error">Cài đặt thất bại</string>
     <string name="by_author_format">của %s</string>
-    <string name="keep_install_history">Lưu lịch sử cài đặt</string>
+    <string name="keep_install_history">Giữ lịch sử cài đặt</string>
     <string name="keep_install_history_summary">Lưu lại lịch sử cài đặt và gỡ bỏ ứng dụng trong bộ nhớ riêng</string>
     <string name="force_old_index">Bắt buộc dùng định dạng chỉ mục cũ</string>
     <string name="force_old_index_summary">Khi xảy ra lỗi hoặc vấn đề về tính tương thích, sử dụng danh mục ứng dụng bằng định dạng XML</string>
@@ -280,7 +280,7 @@
     <string name="update_auto_install">Tự động cài đặt các bản cập nhật</string>
     <string name="update_auto_install_summary">Tải và cập nhật ứng dụng trong nền và hiển thị thông báo</string>
     <string name="app_details_donate_prompt_unknown_author">Hãy mua một ly cà phê cho nhà phát triển ứng dụng %1$s!</string>
-    <string name="app_details_donate_prompt">Ứng dụng %1$s được %2$s tạo ra. Hãy mua một ly cà phê cho nhà phát triển!</string>
+    <string name="app_details_donate_prompt">%1$s được %2$s tạo ra. Hãy mua một ly cà phê cho họ!</string>
     <string name="app_details__incompatible_mismatched_signature">Chữ kí ứng dụng khác với phiên bản đã cài đặt</string>
     <string name="app_details__no_versions__show_incompat_versions">Để hiển thị cả những phiên bản không tương tích, hãy bật tuỳ chọn \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Không phiên bản nào có chữ kí tương thích</string>
@@ -344,8 +344,8 @@
     </plurals>
     <string name="empty_search_available_app_list">Không tìm thấy ứng dụng tương ứng.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy cài đặt ứng dụng từ những thiết bị xung quanh bạn!</string>
-    <string name="nearby_splash__find_people_button">Tìm người gần đây</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có ứng dụng %1$s để sử dụng tính năng Xung quanh.</string>
+    <string name="nearby_splash__find_people_button">Tìm người lân cận</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có %1$s để sử dụng tính năng Lân cận.</string>
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>
     <string name="download_pending">Đang chờ tải về…</string>
     <string name="install_error_notify_title">Lỗi khi cài đặt %s</string>
@@ -376,7 +376,7 @@
     <plurals name="notification_summary_installed">
         <item quantity="other">Đã cài đặt %1$d ứng dụng</item>
     </plurals>
-    <string name="notification_title_summary_update_available">Đã có bản cập nhật</string>
+    <string name="notification_title_summary_update_available">Có bản cập nhật</string>
     <string name="notification_title_summary_downloading">Đang tải…</string>
     <string name="notification_title_summary_downloading_update">Đang tải bản cập nhật…</string>
     <string name="notification_title_summary_ready_to_install">Sẵn sàng cài đặt</string>
@@ -428,7 +428,7 @@
     <string name="swap_toast_hotspot_enabled">Đã bật điểm phát Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
-    <string name="hide_all_notifications">Giấu mọi thông báo</string>
+    <string name="hide_all_notifications">Ẩn tất cả thông báo</string>
     <string name="hide_all_notifications_summary">Ngăn mọi hành động không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
     <string name="prompt_to_send_crash_reports_summary">Thu thập thông tin khi app gặp lỗi và gửi đến nhà phát triển</string>
     <string name="install_history">Lịch sử cài đặt</string>
@@ -487,20 +487,28 @@
     <string name="notification_channel_updates_title">Cập nhật</string>
     <string name="app_list__dismiss_installing_app">Cài đặt bị huỷ</string>
     <string name="allow_push_requests_summary">Dữ liệu meta của kho có thể bao gồm các yêu cầu đẩy để cài đặt hoặc gỡ cài đặt các ứng dụng</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Tính năng Gần đây đã bị đóng vì nó không hoạt động.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Tính năng Lân cận đã bị đóng vì nó không hoạt động.</string>
     <string name="scan_removable_storage_summary">Tìm các kho ứng dụng trong kho lưu trữ gắn ngoài như thẻ SD và USB</string>
-    <string name="nearby_splash__document_tree">Tìm kiếm các kho và bản sao trong USB OTG.</string>
-    <string name="nearby_splash__read_external_storage">Tìm kiếm các kho và bản sao trong thẻ SD.</string>
-    <string name="repo_exists_add_mirror">Đây là một bản sao của %1$s, có thêm không\?</string>
+    <string name="nearby_splash__document_tree">Tìm kiếm các kho và máy chủ dự phòng trong USB OTG.</string>
+    <string name="nearby_splash__read_external_storage">Tìm kiếm các kho và máy chủ dự phòng trong thẻ SD.</string>
+    <string name="repo_exists_add_mirror">Đây là một bản sao của %1$s, có thêm nó làm máy chủ dự phòng không\?</string>
     <string name="notification_channel_swaps_description">Hiển thị các thông báo trao đổi ứng dụng kiểu P2P.</string>
     <string name="notification_channel_swaps_title">Trao đổi</string>
-    <string name="not_visible_nearby_description">Trước khi trao đổi với các thiết bị gần đây, hãy làm cho thiết bị của bạn có thể thấy được.</string>
-    <string name="not_visible_nearby">Tính năng Gần đây không được bật</string>
-    <string name="repo_add_mirror">Thêm bản sao</string>
+    <string name="not_visible_nearby_description">Trước khi trao đổi với các thiết bị lân cận, hãy làm cho thiết bị của bạn có thể thấy được.</string>
+    <string name="not_visible_nearby">Tính năng Lân cận không được bật</string>
+    <string name="repo_add_mirror">Thêm máy chủ dự phòng</string>
     <string name="scan_removable_storage_title">Quét kho lưu trữ gắn ngoài</string>
     <string name="swap_toast_invalid_url">URL không hợp lệ để trao đổi: %1$s</string>
     <string name="swap_toast_find_removeable_storage">Chọn thẻ SD hoặc USB gắn ngoài</string>
     <string name="swap_toast_not_removable_storage">Lựa chọn đó không khớp với bất kỳ thiết bị lưu trữ gắn ngoài nào, hãy thử lại!</string>
     <string name="swap_toast_using_path">Đang dùng %1$s</string>
     <string name="send_to_fdroid_metrics">Gửi dữ liệu sử dụng</string>
+    <string name="menu_show_install_history">Hiện lịch sử cài đặt</string>
+    <string name="menu_show_fdroid_metrics_report">Hiện báo cáo số liệu</string>
+    <string name="toast_metrics_in_install_history">Báo cáo số liệu %s có thể xem được trong trình xem lịch sử cài đặt</string>
+    <string name="send_to_fdroid_metrics_summary">Gửi dữ liệu vô danh hàng tuần đến Số liệu F-Droid (yêu cầu Giữ lịch sử cài đặt)</string>
+    <string name="fdroid_metrics_report">%s báo cáo số liệu</string>
+    <string name="install_history_and_metrics">Lịch sử và số liệu cài đặt</string>
+    <string name="send_fdroid_metrics_json">%s báo cáo số liệu dưới dạng tệp JSON</string>
+    <string name="send_fdroid_metrics_report">Gửi %s báo cáo số liệu</string>
 </resources>

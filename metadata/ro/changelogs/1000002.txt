@@ -1,0 +1,7 @@
+* Împiedicați HTTP ETag să fie folosit ca un cookie de urmărire
+
+* Îmbunătățirea aspectului capturilor de ecran
+
+* Curățarea corectă a fișierelor temporare și a celor din cache
+
+* Corecții pentru modul întunecat

@@ -526,4 +526,13 @@
     <string name="notification_channel_swaps_title">Cuncàmbios</string>
     <string name="notification_channel_installs_title">Installatziones</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="menu_show_install_history">Ammustra sa cronologia de sas installatziones</string>
+    <string name="menu_show_fdroid_metrics_report">Ammustra su raportu de sas mètricas</string>
+    <string name="toast_metrics_in_install_history">Su raportu de anàlisi de sas mètricas %s si podet pompiare in su visualizadore de sa cronologia de sas installatziones</string>
+    <string name="send_to_fdroid_metrics_summary">Imbia in manera anònima datos cada chida a sas mètricas de F-Droid (bisòngiat de su sarvamentu de sa cronologia de sas installatziones)</string>
+    <string name="send_to_fdroid_metrics">Imbia sos datos de impreu</string>
+    <string name="fdroid_metrics_report">Raportu de sas mètricas %s</string>
+    <string name="install_history_and_metrics">Cronologia de sas installatzione e mètricas</string>
+    <string name="send_fdroid_metrics_json">Raportu de anàlisi mètrica %s comente documentu JSON</string>
+    <string name="send_fdroid_metrics_report">Imbia su raportu de anàlisi mètrica de %s</string>
 </resources>

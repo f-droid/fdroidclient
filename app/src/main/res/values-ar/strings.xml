@@ -540,4 +540,13 @@
     <string name="notification_channel_installs_title">تثبيتات</string>
     <string name="notification_channel_swaps_title">المقايضات</string>
     <string name="notification_channel_swaps_description">يعرض P2P التطبيق مبادلة الإخطارات.</string>
+    <string name="menu_show_install_history">عرض محفوظات التثبيت</string>
+    <string name="menu_show_fdroid_metrics_report">عرض تقرير المقاييس</string>
+    <string name="toast_metrics_in_install_history">يمكن عرض تقرير المقاييس %s في عارض محفوظات التثبيت</string>
+    <string name="send_to_fdroid_metrics_summary">يرسل بيانات مجهولة إلى F-Droid Metrics (يتطلب الاحتفاظ بتاريخ التثبيت)</string>
+    <string name="send_to_fdroid_metrics">إرسال بيانات الاستخدام</string>
+    <string name="fdroid_metrics_report">%s تقرير المقاييس</string>
+    <string name="install_history_and_metrics">سجل التثبيت والمقاييس</string>
+    <string name="send_fdroid_metrics_json">%s تقرير المقاييس كملف JSON</string>
+    <string name="send_fdroid_metrics_report">إرسال تقرير %s القياسات</string>
 </resources>
