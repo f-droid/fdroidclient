@@ -510,4 +510,5 @@
     <string name="notification_channel_updates_description">Приказују се обавештења о обнављању апликација и спремишта.</string>
     <string name="notification_channel_updates_title">Обнављања</string>
     <string name="notification_channel_installs_title">Уградње</string>
+    <string name="send_to_fdroid_metrics">Пошаљи податке о коришћењу</string>
 </resources>
