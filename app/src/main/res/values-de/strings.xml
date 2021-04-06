@@ -513,4 +513,6 @@
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
     <string name="send_fdroid_metrics_json">%s Metrikenbericht als JSON-Datei</string>
     <string name="send_fdroid_metrics_report">Sende Metrikenbericht %s</string>
+    <string name="menu_show_install_history">Installationsverlauf anzeigen</string>
+    <string name="menu_show_fdroid_metrics_report">Metrikbericht anzeigen</string>
 </resources>
