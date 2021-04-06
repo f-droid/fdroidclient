@@ -2,8 +2,6 @@
 
 * "最新" 选项卡显示基于语言设置的应用程序，最新的优先 (@TheLastProject @IzzySoft)
 
-* 主题内置的安卓主题相关联 (@proletarius101)
-
 * 大幅改进搜索结果 (@Tvax @gcbrown76)
 
 * 更可靠的缓存清理操作 

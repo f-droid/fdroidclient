@@ -2,8 +2,6 @@
 
 * Tab "Neueste" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
 
-* Kopplung der Theme-Unterstützung integrierte Android-Themes (@proletarius101)
-
 * Verbesserte Suchergebnisse (@Tvax @gcbrown76)
 
 * Effiziente Planung der und zuverlässigere Cache-Bereinigung (@Isira-Seneviratne)

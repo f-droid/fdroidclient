@@ -2,8 +2,6 @@
 
 * «Nyaste»-fana viser resultat basert på språk­innstillingane, med nyaste først (@TheLastProject @IzzySoft)
 
-* Tema-støtta er modernisert og knytt til innebygde Android-tema (@proletarius101)
-
 * Søkjeresultata er sterkt forbetra (@Tvax @gcbrown76)
 
 * Meir påliteleg opprydding av mellomlageret

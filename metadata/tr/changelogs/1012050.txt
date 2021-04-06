@@ -2,8 +2,6 @@
 
 * En Yeniler Sekmesi, sonuçları önce en yeniler olacak şekilde dil ayarlarına göre listeler
 
-* Tema desteği yerleşik Android temalarına bağlandı
-
 * Arama sonuçları büyük ölçüde iyileştirildi
 
 * Daha güvenilir önbellek temizlemesi

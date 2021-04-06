@@ -2,8 +2,6 @@
 
 * langeto “novaj” montras aplikaĵojn surbaze de lingvaj agordoj, laŭ plej novaj (@TheLastProject @IzzySoft)
 
-* etosoj kongruaj kun originalaj Android‑etosoj (@proletarius101)
-
 * pli akurataj serĉ‑rezultoj (@Tvax @gcbrown76)
 
 * pli akurate forviŝi kaŝmemoron

@@ -2,8 +2,6 @@
 
 * Skeda Më të rejat shfaq aplikacioni bazuar te Rregullime Gjuhe, renditur sipas më të rejave së pari
 
-* Mbulimi i temave u lidh me tema të brendshme të Android-it
-
 * Përmirësim i madh i përfundimeve të kërkimit
 
 * Spastrim fshehtine më i qëndrueshëm

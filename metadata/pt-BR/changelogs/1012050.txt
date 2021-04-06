@@ -2,8 +2,6 @@
 
 * A aba mais recente mostra aplicativos baseados nas Configurações de Idioma (@TheLastProject @IzzySoft)
 
-* Suporte de temas modernizado e vinculado aos temas do Android (@proletarius101)
-
 * Melhor resultado de pesquisa (@Tvax @gcbrown76)
 
 * Limpeza mais confiável do cache

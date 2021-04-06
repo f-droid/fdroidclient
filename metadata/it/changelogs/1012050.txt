@@ -2,8 +2,6 @@
 
 *La scheda Più Recente mostra le app in base alle impostazioni della lingua, ordinate dalla più recenti
 
-*Supporto dei temi legato ai temi Android incorporati
-
 *La pulizia della cache più robusta
 
 *Pianificazione della pulizia della cache nel modo più efficace

@@ -1,0 +1,1 @@
+* Suporte de temas modernizado e vinculado aos temas do Android (@proletarius101)

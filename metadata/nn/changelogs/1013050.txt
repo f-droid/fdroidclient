@@ -1,0 +1,1 @@
+* Tema-støtta er modernisert og knytt til innebygde Android-tema (@proletarius101)
