@@ -260,4 +260,5 @@
     <string name="install_confirm_update_system_no_perms">အဆင့်သင့် ပါလာသော အပလီကေးရှင်းကို အပ်ဒိတ်လုပ်လိုပါသလား။  ရှိပြီးသား အချက်အလက်များကို ဆုံးရှုံးမည် မဟုတ်ပါ။ အထူးတလည် သုံးခွင့် မလိုအပ်ပါ</string>
     <string name="uninstall_update_confirm">ဤအက်ပ်ကို စက်ရုံထုတ်ဗားရှင်းဖြင့် အစားထိုးမလား။ ဒေတာများအားလုံးကို ဖယ်ရှားလိုက်ပါမည်။</string>
     <string name="allow">ခွင့်ပြုပါ</string>
+    <string name="yes">ဟုတ်ပြီ</string>
 </resources>
