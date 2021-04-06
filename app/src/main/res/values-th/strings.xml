@@ -374,4 +374,5 @@
     <string name="hide_all_notifications_summary">ป้องกันไม่ให้การดำเนินการทั้งหมดแสดงในแถบสถานะและเเท๊ปการแจ้งเตือน</string>
     <string name="prompt_to_send_crash_reports">ถามเเละส่งรายงานข้อขัดข้อง</string>
     <string name="prompt_to_send_crash_reports_summary">รวบรวมข้อมูลเกี่ยวกับข้อขัดข้องและถามให้ส่งไปยังนักพัฒนา</string>
+    <string name="notification_action_cancel">ยกเลิก</string>
 </resources>
