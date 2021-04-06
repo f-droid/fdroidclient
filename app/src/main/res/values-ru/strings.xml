@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для ее установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны).</string>
+    <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для ее установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны)</string>
     <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить?</string>
     <string name="version">Версия</string>
     <string name="delete">Удалить</string>
     <string name="enable_nfc_send">Включить отправку по NFC…</string>
-    <string name="cache_downloaded">Сохранять кешированные приложения</string>
+    <string name="cache_downloaded">Хранить кешированные приложения</string>
     <string name="updates">Обновления</string>
     <string name="other">Другое</string>
     <string name="update_interval">Интервал автоматического обновления</string>
@@ -38,7 +38,7 @@
     <string name="bluetooth_activity_not_found">Методы отправки по Bluetooth не найдены, выберите какой-либо!</string>
     <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
     <string name="repo_add_url">Адрес репозитория</string>
-    <string name="repo_add_fingerprint">Отпечаток ключа (необязательно)</string>
+    <string name="repo_add_fingerprint">Отпечаток (необязательно)</string>
     <string name="malformed_repo_uri">Проигнорирован некорректный URI репозитория: %s</string>
     <string name="menu_manage">Репозитории</string>
     <string name="menu_search">Поиск</string>
@@ -81,16 +81,17 @@
     <string name="enable_proxy_title">Включить HTTP-прокси</string>
     <string name="enable_proxy_summary">Настроить HTTP-прокси для всех запросов</string>
     <string name="proxy_host">Хост прокси</string>
-    <string name="proxy_host_summary">Хост вашего прокси (напр. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Имя хоста вашего прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт прокси</string>
     <string name="proxy_port_summary">Номера порта вашего прокси (напр. 8118)</string>
     <string name="status_download">Загрузка
 \n%2$s / %3$s (%4$d%%) из
 \n%1$s</string>
-    <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
+    <string name="status_connecting_to_repo">Подключение к
+\n%1$s</string>
     <string name="repos_unchanged">Все репозитории обновлены</string>
     <string name="all_other_repos_fine">Остальные репозитории не генерировали ошибки.</string>
-    <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
+    <string name="global_error_updating_repos">Ошибка при обновлении: %s</string>
     <string name="no_permissions">Нет разрешений</string>
     <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
     <string name="theme">Тема</string>
@@ -101,9 +102,7 @@
     <string name="repo_description">Описание</string>
     <string name="repo_last_update">Последнее обновление</string>
     <string name="repo_name">Название</string>
-    <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Следует быть
-        осторожным с приложениями, загруженными из неподписанных источников.
-    </string>
+    <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
@@ -134,7 +133,7 @@
     <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>
     <string name="about_source">Исходный код</string>
     <string name="links">Ссылки</string>
-    <string name="interval_never">Никогда</string>
+    <string name="interval_never">Не обновлять приложения автоматически</string>
     <string name="interval_1h">Проверять обновления ежечасно</string>
     <string name="interval_4h">Проверять обновления каждые 4 часа</string>
     <string name="interval_12h">Проверять обновления каждые 12 часов</string>
@@ -158,7 +157,7 @@
     <string name="uninstall_error_unknown">Не удалось удалить из-за неизвестной ошибки</string>
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
-    <string name="pref_language_default">Системный</string>
+    <string name="pref_language_default">Язык системы</string>
     <string name="theme_night">Ночь</string>
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
@@ -167,16 +166,16 @@
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместима</string>
-    <string name="more">Детали</string>
-    <string name="less">Меньше</string>
+    <string name="more">Подробнее</string>
+    <string name="less">Свернуть</string>
     <string name="back">Назад</string>
-    <string name="bad_fingerprint">Неверный отпечаток ключа</string>
+    <string name="bad_fingerprint">Неверный отпечаток</string>
     <string name="invalid_url">URL некорректен.</string>
     <string name="menu_changelog">Список изменений</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="touch_to_configure_local_repo">Коснитесь чтобы посмотреть подробную информацию и позволить другим пользователям скачивать ваши приложения.</string>
+    <string name="touch_to_configure_local_repo">Нажмите для просмотра сведений и разрешения другим пользователям обмениваться вашими приложениями.</string>
     <string name="status_download_unknown_size">Загрузка
 \n%2$s из
 \n%1$s</string>
@@ -192,12 +191,12 @@
     <string name="repo_searching_address">Поиск репозитория пакетов в
 \n%1$s</string>
     <string name="wifi_ap">Точка доступа</string>
-    <string name="category_Theming">Темы</string>
+    <string name="category_Theming">Оформление</string>
     <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, создайте отчет об ошибке!</string>
     <string name="downloading">Загрузка…</string>
     <string name="menu_email">Написать автору</string>
     <string name="antinonfreeassetslist">Это приложение содержит несвободные компоненты</string>
-    <string name="category_Writing">Работа с текстом</string>
+    <string name="category_Writing">Офис</string>
     <string name="empty_search_available_app_list">Нет подходящих приложений.</string>
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
@@ -207,21 +206,21 @@
     <string name="loading">Загрузка…</string>
     <string name="install_confirm">необходим доступ к</string>
     <string name="install_confirm_update">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
-    <string name="install_confirm_update_system">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
-    <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение\? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
-    <string name="install_confirm_update_system_no_perms">Хотите обновить встроенное приложение\? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
+    <string name="install_confirm_update_system">Хотите обновить встроенное приложение\? Существующие данные не будут потеряны. Обновленное приложение получит доступ к:</string>
+    <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение\? Существующие данные не будут потеряны. Оно не требует специальных разрешений.</string>
+    <string name="install_confirm_update_system_no_perms">Хотите обновить встроенное приложение\? Существующие данные не будут потеряны. Оно не требует специальных разрешений.</string>
     <string name="newPerms">Новые</string>
     <string name="allPerms">Все</string>
     <string name="perm_costs_money">Это может стоить вам денег</string>
     <string name="uninstall_update_confirm">Установить исходную версию приложения? Все его данные будут удалены.</string>
-    <string name="uninstall_confirm">Удалить приложение?</string>
+    <string name="uninstall_confirm">Вы хотите удалить это приложение\?</string>
     <string name="download_error">Загрузка не удалась!</string>
     <string name="perms_new_perm_prefix">Новые:</string>
     <string name="crash_dialog_title">Произошел сбой F-Droid</string>
     <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с
         подробностями, чтобы помочь исправить эту ошибку?
     </string>
-    <string name="crash_dialog_comment_prompt">Можете добавить дополнительную информацию и комментарии:</string>
+    <string name="crash_dialog_comment_prompt">Здесь вы можете добавить дополнительную информацию и комментарии:</string>
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Необходим Orbot</string>
     <string name="repo_provider">Репозиторий: %s</string>
@@ -236,7 +235,7 @@
     <string name="swap_people_nearby">Люди поблизости</string>
     <string name="swap_scanning_for_peers">Поиск людей поблизости…</string>
     <string name="swap_nearby">Обмен поблизости</string>
-    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с пользователями поблизости.</string>
+    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с людьми поблизости.</string>
     <string name="swap_visible_bluetooth">Видимый через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Настройка Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Не видимый через Bluetooth</string>
@@ -266,11 +265,11 @@
     <string name="uninstalling">Удаление…</string>
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
-    <string name="keep_install_history">Сохранять историю установок</string>
+    <string name="keep_install_history">Хранить историю установок</string>
     <string name="keep_install_history_summary">Хранить журнал всех установок и удалений в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
-    <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
+    <string name="app_details_donate_prompt_unknown_author">Купите разработчику %1$s чашечку кофе!</string>
     <string name="update_all">Обновить все</string>
     <string name="updates__hide_updateable_apps">Скрыть приложения</string>
     <string name="updates__show_updateable_apps">Показать приложения</string>
@@ -320,7 +319,7 @@
         <item quantity="many">Обновлено %1$d дней назад</item>
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
-    <string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
+    <string name="app_details_donate_prompt">%1$s создано %2$s. Купите им кофе!</string>
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
@@ -331,11 +330,11 @@
     </plurals>
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
-    <string name="installed_app__updates_ignored">Игнорируемые обновления</string>
+    <string name="installed_app__updates_ignored">Обновления игнорируются</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Последние</string>
-    <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые последние приложения</string>
-    <string name="latest__empty_state__no_enabled_repos">Как только вы включите репозиторий и разрешите его обновлять, здесь появятся самые последние приложения</string>
+    <string name="latest__empty_state__never_updated">После обновления списка приложений тут появятся самые последние</string>
+    <string name="latest__empty_state__no_enabled_repos">После включения и обновления репозитория тут появятся последние приложения</string>
     <string name="antifeatures">Анти-функции</string>
     <string name="notification_title_summary_installing">Установка</string>
     <string name="notification_title_summary_installed">Успешно установлено</string>
@@ -346,10 +345,10 @@
         <item quantity="many">Посмотреть %1$d приложений в категории %2$s</item>
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
     </plurals>
-    <string name="latest__empty_state__no_recent_apps">Не найдено недавно обновленных приложений</string>
+    <string name="latest__empty_state__no_recent_apps">Не найдено недавних приложений</string>
     <string name="nearby_splash__both_parties_need_fdroid">Для использования \'Поблизости\' обеим сторонам необходим %1$s.</string>
     <string name="menu_video">Видео</string>
-    <string name="app__tts__cancel_download">Отменить скачивание</string>
+    <string name="app__tts__cancel_download">Отменить загрузку</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
     <string name="menu_license">Лицензия: %s</string>
     <plurals name="notification_summary_updates">
@@ -365,9 +364,10 @@
         <item quantity="other">%1$d приложений установлено</item>
     </plurals>
     <plurals name="notification_summary_more">
-        <item quantity="one">+еще %1$d…</item>
-        <item quantity="few">+еще %1$d…</item>
-        <item quantity="many">+еще %1$d…</item>
+        <item quantity="one">+%1$d уведомление…</item>
+        <item quantity="few">+%1$d уведомления…</item>
+        <item quantity="many">+%1$d уведомлений…</item>
+        <item quantity="other">+%1$d уведомлений…</item>
     </plurals>
     <string name="by_author_format">от %s</string>
     <string name="download_404">Запрошенный файл не найден.</string>
@@ -389,26 +389,26 @@
         <item quantity="many">Обновлено %1$d лет назад</item>
         <item quantity="other">Обновлено %1$d лет назад</item>
     </plurals>
-    <string name="force_old_index">Старый формат индекса (принудительно)</string>
+    <string name="force_old_index">Принудительно использовать старый формат индекса</string>
     <string name="force_old_index_summary">Использовать индекс приложений XML в случае проблем с совместимостью</string>
     <string name="app_list_download_ready">Загружено, готово к установке</string>
     <string name="status_inserting_x_apps">Сохранение данных приложений (%1$d/%2$d) из %3$s</string>
     <string name="app_installed_media">Файл установлен в %s</string>
-    <string name="app_permission_storage">Для установки в хранилище F-Droid нуждается в соответствующем разрешении. Его можно предоставить на следующем экране.</string>
+    <string name="app_permission_storage">Для установки в хранилище F-Droid необходимо соответствующее разрешение. Его можно предоставить на следующем экране.</string>
     <string name="app_details__incompatible_mismatched_signature">У установленной версии другая подпись</string>
     <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии включите параметр \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Нет версий с совместимой подписью</string>
     <string name="app_details__no_versions__none_compatible_with_device">Нет версий, совместимых с устройством</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Установленная версия несовместима со всеми доступными версиями. Удаление приложения позволит вам установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников.</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Установленная версия не совместима ни с одной из доступных версий. Удаление приложения позволит вам просмотреть и установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников, если они подписаны другим сертификатом.</string>
     <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимость игнорируется</string>
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно удалить это приложение.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновить приложение.</string>
-    <string name="updates__app_with_known_vulnerability__ignore">Пропустить</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Игнорировать</string>
     <string name="privacy">Приватность</string>
     <string name="preventScreenshots_title">Запретить скриншоты</string>
-    <string name="preventScreenshots_summary">Блокирует скриншоты и скрывает содержимое из последних приложений</string>
+    <string name="preventScreenshots_summary">Блокирует создание снимков экрана и скрывает содержимое приложения с экрана недавних приложений</string>
     <string name="sort_search">Сортировка поиска</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="panic_app_setting_title">Выбор тревожной кнопки</string>
@@ -437,7 +437,7 @@
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
     <string name="show_anti_feature_apps">Разрешить приложения с анти-функциями</string>
-    <string name="show_anti_feature_apps_on">Показывать приложения, которым необходим несвободный функционал</string>
+    <string name="show_anti_feature_apps_on">Показывать приложения, которые требуют анти-функций</string>
     <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
     <string name="repo_official_mirrors">Официальные зеркала</string>
@@ -482,11 +482,11 @@
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий: %1$s</string>
-    <string name="scan_removable_storage_title">Сканирование съемного носителя</string>
+    <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
     <string name="nearby_splash__request_permission">Попробовать</string>
     <string name="not_visible_nearby">Режим \'Поблизости\' не включен</string>
-    <string name="not_visible_nearby_description">Перед обменом с устройством находящимся поблизости, сделайте ваше устройство видимым.</string>
+    <string name="not_visible_nearby_description">Перед обменом с соседними устройствами сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
     <string name="swap_toast_not_removable_storage">Этот выбор не подходит ни к одному из съемных носителей, попробуйте еще раз!</string>
     <string name="swap_toast_find_removeable_storage">Выберите съемную SD-карту или USB-накопитель</string>
