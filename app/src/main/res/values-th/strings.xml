@@ -368,12 +368,12 @@
     <string name="send_version_and_uuid">ส่งรุ่นเเละ UUIDไปที่เซิร์ฟเวอร์</string>
     <string name="install_history_summary">ดูปูมบันทึกส่วนตัวสำหรับการติดตั้งเเละการถอนติดตั้งทั้งหมด</string>
     <string name="install_history">ประวัติการติดตั้ง</string>
-    <string name="send_history_csv">% s ประวัติการติดตั้งเป็นไฟล์ CSV</string>
+    <string name="send_history_csv">%s ประวัติการติดตั้งเป็นไฟล์ CSV</string>
     <string name="hide_all_notifications_summary">ป้องกันการกระทำทั้งหมดไม่ให้แสดงในแถบสถานะและลิ้นชักการแจ้งเตือน</string>
     <string name="prompt_to_send_crash_reports">แจ้งให้ส่งรายงานข้อขัดข้อง</string>
     <string name="prompt_to_send_crash_reports_summary">รวบรวมข้อมูลเกี่ยวกับข้อขัดข้องและขอให้ส่งไปยังนักพัฒนา</string>
     <string name="notification_action_cancel">ยกเลิก</string>
-    <string name="send_fdroid_metrics_report">ส่งรายงานเมตริก% s</string>
+    <string name="send_fdroid_metrics_report">ส่งรายงานเมตริก%s</string>
     <string name="notification_title_summary_install_error">ติดตั้งล้มเหลว</string>
     <string name="notification_title_single_update_available">มีการอัปเดต</string>
     <string name="app_list__name__successfully_installed">%1$sติดตั้ง</string>
@@ -381,10 +381,10 @@
     <string name="notification_action_install">ติดตั้ง</string>
     <string name="notification_action_update">อัปเดต</string>
     <string name="preference_manage_installed_apps">จัดการแอดที่ติดตั้ง</string>
-    <string name="toast_metrics_in_install_history">สามารถดูรายงาน% s เมตริกได้ในวิวเวอร์ประวัติการติดตั้ง</string>
+    <string name="toast_metrics_in_install_history">สามารถดูรายงาน%s เมตริกได้ในวิวเวอร์ประวัติการติดตั้ง</string>
     <string name="send_to_fdroid_metrics_summary">ส่งข้อมูลที่ไม่ระบุตัวตนทุกสัปดาห์ไปยัง F-Droid Metrics (ต้องเก็บประวัติการติดตั้ง)</string>
     <string name="send_to_fdroid_metrics">ส่งข้อมูลการใช้งาน</string>
-    <string name="fdroid_metrics_report">รายงานเมตริก% s</string>
+    <string name="fdroid_metrics_report">รายงานเมตริก%s</string>
     <string name="install_history_and_metrics">ติดตั้งประวัติและเมตริก</string>
-    <string name="send_fdroid_metrics_json">% s รายงานเมตริกเป็นไฟล์ JSON</string>
+    <string name="send_fdroid_metrics_json">%s รายงานเมตริกเป็นไฟล์ JSON</string>
 </resources>
