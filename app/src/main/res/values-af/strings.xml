@@ -509,4 +509,5 @@
     <string name="app_details__no_versions__none_compatible_with_device">Geen weergawes versoenbaar met die toestel nie</string>
     <string name="app_details__no_versions__no_compatible_signatures">Geen weergawes met versoenbare handtekening nie</string>
     <string name="over_wifi">Oor Wi-Fi</string>
+    <string name="send_fdroid_metrics_report">Stuur %s Statistieke Verslag</string>
 </resources>
