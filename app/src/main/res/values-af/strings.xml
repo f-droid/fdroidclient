@@ -510,4 +510,11 @@
     <string name="app_details__no_versions__no_compatible_signatures">Geen weergawes met versoenbare handtekening nie</string>
     <string name="over_wifi">Oor Wi-Fi</string>
     <string name="send_fdroid_metrics_report">Stuur %s Statistieke Verslag</string>
+    <string name="menu_show_install_history">Wys instelasie geskiedenis</string>
+    <string name="menu_show_fdroid_metrics_report">Wys gebruikersverslag</string>
+    <string name="send_to_fdroid_metrics_summary">Stuur weeklikse anonieme data na F-Droid Metrics (benodig \"Keep install history\")</string>
+    <string name="send_to_fdroid_metrics">Stuur gebruikersdata</string>
+    <string name="fdroid_metrics_report">%s gebruikersverslag</string>
+    <string name="install_history_and_metrics">installasie geskiedenis en gebruikers data</string>
+    <string name="send_fdroid_metrics_json">%s gebruikersverslag as \'n JSON lêer</string>
 </resources>
