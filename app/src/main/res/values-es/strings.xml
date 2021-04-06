@@ -508,4 +508,5 @@
     <string name="notification_channel_swaps_title">Intercambios</string>
     <string name="notification_channel_installs_description">Muestra notificaciones de instalación de aplicaciones.</string>
     <string name="notification_channel_installs_title">Instalaciones</string>
+    <string name="menu_show_install_history">Mostrar historial de instalación</string>
 </resources>
