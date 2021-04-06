@@ -297,8 +297,8 @@
     <string name="notification_action_cancel">İptal</string>
     <string name="notification_action_install">Yükle</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Tüm %d taneyi göster</item>
-        <item quantity="other">Tüm %d taneyi göster</item>
+        <item quantity="one">%d taneyi göster</item>
+        <item quantity="other">%d taneyi göster</item>
     </plurals>
     <string name="app_recommended_version_installed">Sürüm %1$s (Önerilen)</string>
     <string name="app_new">Yeni</string>
