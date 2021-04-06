@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-    <string name="SignatureMismatch">La versión nuevo está firmada con una llave diferente a la antigua. Para instalar la nueva versión, la antigua debe ser desinstalada primero. Hacé esto y probá de nuevo, por favor. (Tené en cuenta que al desinstalar, todos los datos internos guardados de la aplicación serán eliminados)</string>
+    <string name="SignatureMismatch">La nueva versión está firmada con una llave diferente a la antigua. Para instalar la nueva versión, la antigua debe ser desinstalada primero. Hacé esto y probá de nuevo, por favor. (Tené en cuenta que al desinstalar, todos los datos internos guardados de la aplicación serán eliminados)</string>
     <string name="installIncompatible">Aplicación incompatible con tu dispositivo, ¿instalar igual\?</string>
     <string name="version">Versión</string>
     <string name="by_author_format">por %s</string>
@@ -498,4 +498,13 @@
     <string name="notification_channel_swaps_title">Intercambios</string>
     <string name="notification_channel_installs_description">Muestra notificaciones de instalación de aplicaciones.</string>
     <string name="notification_channel_installs_title">Instalaciones</string>
+    <string name="menu_show_install_history">Ver historial de instalación</string>
+    <string name="menu_show_fdroid_metrics_report">Ver métricas de reporte</string>
+    <string name="fdroid_metrics_report">%s métricas de reporte</string>
+    <string name="toast_metrics_in_install_history">Las métricas de reporte %s son visibles en el Historial de instalación</string>
+    <string name="send_to_fdroid_metrics_summary">Enviar datos métricos anónimos semanales a F-Droid (requiere Mantener historial de instalaciones)</string>
+    <string name="send_to_fdroid_metrics">Enviar datos de uso</string>
+    <string name="install_history_and_metrics">Historial de instalaciones y métricas</string>
+    <string name="send_fdroid_metrics_json">%s métricas como archivos JSON</string>
+    <string name="send_fdroid_metrics_report">Enviar %s Métricas de reportes</string>
 </resources>
