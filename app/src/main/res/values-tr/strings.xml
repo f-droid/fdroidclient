@@ -273,7 +273,7 @@
     <string name="app_version_x_available">%1$s sürümü kullanılabilir</string>
     <string name="app_version_x_installed">Sürüm %1$s</string>
     <string name="clear_search">Aramayı temizle</string>
-    <string name="repositories_summary">Ek uygulama kaynakları ekle</string>
+    <string name="repositories_summary">Uygulama kaynakları ekle</string>
     <string name="main_menu__latest_apps">En son</string>
     <string name="main_menu__categories">Kategoriler</string>
     <string name="main_menu__swap_nearby">Yakınımda</string>
