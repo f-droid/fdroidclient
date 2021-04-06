@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ایف-ڈیرائڈ</string>
     <string name="SignatureMismatch">نیا ورژن مختلف کیی کے ساتھ دستخط کیا گیا ہے۔ نیا ورژن نصب کرنے کے لیے، پرانے ورژن
         کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم
@@ -68,4 +68,28 @@
     <string name="proxy_host_summary">آپکی  پراکسی  ہوسٹ  کا  نام (جیسے   127.0.0.1)</string>
     <string name="proxy_host">پراکسی    ہوسٹ</string>
     <string name="enable_proxy_summary">ایچ ٹی ٹی پی   پر اکسی  کو  تمام  نیٹ  ورکس  کے  لئے  تشکیل  دیں</string>
+    <string name="notification_action_install">انسٹال</string>
+    <string name="notification_action_cancel">کیںسل</string>
+    <string name="notification_action_update">اپڈیٹ</string>
+    <string name="swap_dont_show_again">دوبارا نہ دکھایں</string>
+    <string name="swap_welcome">ایف - ڈرائڈ میں خوش آمدید</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">لیکھنا</string>
+    <string tools:ignore="UnusedResources" name="category_Time">وقت</string>
+    <string tools:ignore="UnusedResources" name="category_Security">سیکوریٹی</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">سائنس اور تعلیم</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">پڈھنا</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">پھون اور ایس ایم ایس</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">سمت شناسی</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">ملٹیمیڈیا</string>
+    <string tools:ignore="UnusedResources" name="category_Money">رقم</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">انٹرنیٹ</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">گرافیکس</string>
+    <string tools:ignore="UnusedResources" name="category_Games">گیمس</string>
+    <string tools:ignore="UnusedResources" name="category_Development">ترقی</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">کنیکٹیویٹی</string>
+    <string name="pref_language_default">سیسٹم ڈیفالٹ</string>
+    <string name="pref_language">زبان</string>
+    <string name="skip">چھوڈ دو</string>
+    <string name="details_notinstalled">انسٹال نہیں ہے</string>
+    <string name="preference_manage_installed_apps">انستال ہوے ایپس کو مینیج کریں</string>
 </resources>
