@@ -1,6 +1,6 @@
 * korektitaj ligiloj en priskriboj de aplikaĵoj
 
-* plibonigita subteno por SD‑kartoj kaj USB OTG en la eblaĵo “Proksime”
+* plibonigita subteno por SD‑kartoj kaj USB OTG en la eblo “Proksime”
 
 * modernigita kodo kaj transigo el PNG al vektoraj bildoj (danke al @isira-seneviratne)
 
