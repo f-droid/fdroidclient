@@ -1,0 +1,7 @@
+* U përmirësua aftësi lidhjeje e URL-ve në përshkrime aplikacionesh
+
+* U përmirësua trajtimi i kartave SD dhe USG-OTG në Atypari
+
+* U modernizua kod dhe u kaluan PNG-të në figura vektoriale (thanks @isira-seneviratne!)
+
+* Njohje URL-sh më të gjata deposh, për të mbuluar pasqyra GitCDN/RawGit/etc
