@@ -1,6 +1,15 @@
-* Uygulama açıklama yerelleştirmesi artık Android Dil Ayarlarındaki dil listelerine tam olarak uyar
-* En Yeniler Sekmesi, sonuçları önce en yeniler olarak Dil Ayarlarına göre listeler (@TheLastProject @IzzySoft)
-* Tema desteği güncellendi ve yerleşik Android temalarına bağlandı (@proletarius101)
-* Arama sonuçları büyük ölçüde iyileştirildi (@Tvax @gcbrown76)
-* Önbellek temizlemeyi verimli şekilde zamanla (@Isira-Seneviratne)
-* Güvenilir depo ekleme için depo URL ayrıştırmayı yenile (@projectgus)
+* Uygulama açıklama yerelleştirmesi artık Android Dil Ayarlarındaki listelere tam olarak uyar
+
+* En Yeniler Sekmesi, sonuçları önce en yeniler olacak şekilde dil ayarlarına göre listeler
+
+* Tema desteği yerleşik Android temalarına bağlandı
+
+* Arama sonuçları büyük ölçüde iyileştirildi
+
+* Daha güvenilir önbellek temizlemesi
+
+* Önbellek temizlemeyi verimli şekilde zamanla
+
+* Güvenilir depo ekleme için depo URL ayrıştırmayı yenile
+
+* Tercihe bağlı F-Droid ölçümleri
