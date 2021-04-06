@@ -498,4 +498,13 @@
     <string name="notification_channel_installs_description">एप्लिकेशन इंस्टॉलेशन सूचनाएं प्रदर्शित करता है।</string>
     <string name="notification_channel_installs_title">अधिष्ठापन</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="menu_show_install_history">Install history देखिए</string>
+    <string name="menu_show_fdroid_metrics_report">Metrics report देखीए</string>
+    <string name="toast_metrics_in_install_history">%s Metric report इंस्टॉल History viewer में देख सकते है</string>
+    <string name="send_to_fdroid_metrics_summary">अनाम डेटा को F-Droid मेट्रिक्स पर साप्ताहिक भेजता है (इतिहास स्थापित करने की आवश्यकता है)</string>
+    <string name="send_to_fdroid_metrics">Usage data भेजे</string>
+    <string name="fdroid_metrics_report">%s Metrics का रिपोर्ट</string>
+    <string name="install_history_and_metrics">इतिहास और metrics इंस्टॉल करे</string>
+    <string name="send_fdroid_metrics_json">%s मेट्रिक्स JSON फ़ाइल से report करे</string>
+    <string name="send_fdroid_metrics_report">%s का Metrics Report भेजे</string>
 </resources>
