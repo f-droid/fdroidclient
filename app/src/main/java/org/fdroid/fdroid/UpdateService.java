@@ -404,22 +404,23 @@ public class UpdateService extends JobIntentService {
             if (isLocalRepoAddress(address)) {
                 Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
-                boolean foundLocalRepo = false;
+                // keep track of repos that have a local copy in case internet is not available
+                ArrayList<Repo> localRepos = new ArrayList<>();
                 for (Repo repo : repos) {
                     if (isLocalRepoAddress(repo.address)) {
-                        foundLocalRepo = true;
+                        localRepos.add(repo);
                     } else {
                         for (String mirrorAddress : repo.getMirrorList()) {
                             if (isLocalRepoAddress(mirrorAddress)) {
-                                foundLocalRepo = true;
-                                //localRepos.add(repo);
-                                //FDroidApp.setLastWorkingMirror(repo.getId(), mirrorAddress);
+                                localRepos.add(repo);
                                 break;
                             }
                         }
                     }
                 }
-                if (!foundLocalRepo) {
+                if (localRepos.size() > 0) {
+                    repos = localRepos;
+                } else {
                     Utils.debugLog(TAG, "No internet, cannot update");
                     if (manualUpdate) {
                         Utils.showToastFromService(this, getString(R.string.warning_no_internet), Toast.LENGTH_SHORT);
