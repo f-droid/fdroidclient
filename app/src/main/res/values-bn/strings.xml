@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="menu_search">খুজো</string>
     <string name="menu_settings">সেটিংস</string>
@@ -196,6 +196,6 @@
     <string name="swap_starting">শুরু হচ্ছে…</string>
     <string name="swap_hidden_wifi_ssid">(লুকোনো)</string>
     <string name="swap_blank_wifi_ssid">(খালি)</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">থিমিং</string>
+    <string name="category_Theming">থিমিং</string>
     <string name="repo_last_update">শেষ হালনাগাদ</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="menu_upgrade">Aktualiséieren</string>
     <string name="delete">Läschen</string>
     <string name="version">Versioun</string>
@@ -8,8 +8,8 @@
     <string name="notification_title_single_update_available">Akualiséierung disponibel</string>
     <string name="crash_dialog_text">D\'App ass duerch een onerwaarte Feeler ofgestierzt. Wëllt Dir eng E-Mail schécken, fir d\'Fehlerbehiewung ze ënnerstëtzen\?</string>
     <string name="crash_dialog_title">F-Droid ass ofgestierzt</string>
-    <string tools:ignore="UnusedResources" name="category_System">System</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sport &amp; Gesondheet</string>
+    <string name="category_System">System</string>
+    <string name="category_Sports_Health">Sport &amp; Gesondheet</string>
     <string name="wifi">Wi-Fi</string>
     <string name="repo_last_update">Lescht Aktualiséierung</string>
     <string name="unverified">Net iwwerpréift</string>
@@ -26,20 +26,20 @@
     <string name="newPerms">Nei</string>
     <string name="swap_dont_show_again">Net nach eng Kéier uweisen</string>
     <string name="swap_welcome">Wëllkomm bei F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Schreiwen</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Zäit</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Sécherheet</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Wëssenschaft &amp; Bildung</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Liesen</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefon &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navigatioun</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Suen</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grafik</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Spiller</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Entwécklung</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Connectioun</string>
+    <string name="category_Writing">Schreiwen</string>
+    <string name="category_Time">Zäit</string>
+    <string name="category_Security">Sécherheet</string>
+    <string name="category_Science_Education">Wëssenschaft &amp; Bildung</string>
+    <string name="category_Reading">Liesen</string>
+    <string name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string name="category_Navigation">Navigatioun</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Money">Suen</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Graphics">Grafik</string>
+    <string name="category_Games">Spiller</string>
+    <string name="category_Development">Entwécklung</string>
+    <string name="category_Connectivity">Connectioun</string>
     <string name="pref_language_default">Systemstandard</string>
     <string name="pref_language">Sprooch</string>
     <string name="skip">Iwwersprangen</string>

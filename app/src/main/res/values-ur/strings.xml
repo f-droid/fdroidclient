@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">ایف-ڈیرائڈ</string>
     <string name="SignatureMismatch">نیا ورژن مختلف کیی کے ساتھ دستخط کیا گیا ہے۔ نیا ورژن نصب کرنے کے لیے، پرانے ورژن
         کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم
@@ -73,20 +73,20 @@
     <string name="notification_action_update">اپڈیٹ</string>
     <string name="swap_dont_show_again">دوبارا نہ دکھایں</string>
     <string name="swap_welcome">ایف - ڈرائڈ میں خوش آمدید</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">لیکھنا</string>
-    <string tools:ignore="UnusedResources" name="category_Time">وقت</string>
-    <string tools:ignore="UnusedResources" name="category_Security">سیکوریٹی</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">سائنس اور تعلیم</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">پڈھنا</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">پھون اور ایس ایم ایس</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">سمت شناسی</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">ملٹیمیڈیا</string>
-    <string tools:ignore="UnusedResources" name="category_Money">رقم</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">انٹرنیٹ</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">گرافیکس</string>
-    <string tools:ignore="UnusedResources" name="category_Games">گیمس</string>
-    <string tools:ignore="UnusedResources" name="category_Development">ترقی</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">کنیکٹیویٹی</string>
+    <string name="category_Writing">لیکھنا</string>
+    <string name="category_Time">وقت</string>
+    <string name="category_Security">سیکوریٹی</string>
+    <string name="category_Science_Education">سائنس اور تعلیم</string>
+    <string name="category_Reading">پڈھنا</string>
+    <string name="category_Phone_SMS">پھون اور ایس ایم ایس</string>
+    <string name="category_Navigation">سمت شناسی</string>
+    <string name="category_Multimedia">ملٹیمیڈیا</string>
+    <string name="category_Money">رقم</string>
+    <string name="category_Internet">انٹرنیٹ</string>
+    <string name="category_Graphics">گرافیکس</string>
+    <string name="category_Games">گیمس</string>
+    <string name="category_Development">ترقی</string>
+    <string name="category_Connectivity">کنیکٹیویٹی</string>
     <string name="pref_language_default">سیسٹم ڈیفالٹ</string>
     <string name="pref_language">زبان</string>
     <string name="skip">چھوڈ دو</string>
