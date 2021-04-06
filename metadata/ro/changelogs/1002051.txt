@@ -1,0 +1,17 @@
+* Gestionare cache atunci când spațiul de stocare este redus
+
+* Performanță pe dispozitive cu memorie redusă
+
+* Respectarea preferinței "Doar pe Wi-Fi"
+
+* Reduceți utilizarea memoriei
+
+* Adăugați oglinzi personalizate la orice repo făcând clic pe linkuri, scanând coduri QR etc.
+
+* Îmbunătățirea selecției oglinzilor
+
+* O mulțime de corecturi și îmbunătățir
+
+* Corectarea unei cauze a notificărilor de actualizare recurente (#1271)
+
+* Faceți ca F-Droid să recunoască URL-urile nocturne din GitLab

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versiune</string>
-    <string name="delete">Ștergeți</string>
+    <string name="delete">Șterge</string>
     <string name="cache_downloaded">Păstrează aplicațiile descărcate</string>
     <string name="updates">Actualizări</string>
     <string name="other">Altele</string>

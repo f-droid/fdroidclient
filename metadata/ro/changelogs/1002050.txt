@@ -1,0 +1,21 @@
+v1.3.1
+* Revizuire mare de bază Nearby/Swap
+
+* Suport TLSv1.3, atunci când dispozitivul îl suportă
+
+v1.3
+* Butoane și actualizări de stare mai fiabile
+
+* Revizuire a setărilor
+
+* Funcționare în fundal pe Android 5.0 și mai nou
+
+* Posibilitatea de partajare a meniului pentru depozite
+
+* Dezactivarea rapoartelor de accident în Setări
+
+* Instalarea istoricului atunci când este activată logarea
+
+* Listă anti-caracteristici, a adăugat NoSourceSince
+
+* Android 4.0 este acum minimul acceptat

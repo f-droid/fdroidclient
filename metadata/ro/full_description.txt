@@ -1,0 +1,18 @@
+F-Droid este un catalog instalabil de software liber
+pentru Android. Aplicația client F-Droid face
+ușor să navigați, să instalați și să urmăriți actualizările pe dispozitivul dumneavoastră.
+
+Aceasta se conectează la orice depozit compatibil F-Droid. Repo-ul implicit
+este găzduit la f-droid.org, care conține numai software liber de bună credință.
+
+Android în sine este deschis, în sensul că sunteți liber să instalați APK-uri
+de oriunde doriți, dar există multe motive întemeiate pentru a utiliza
+F-Droid ca manager de aplicații de software liber:
+
+* Primiți notificări atunci când sunt disponibile actualizări
+* Descărcați și instalați opțional actualizări în mod automat
+* Păstrați evidența versiunilor mai vechi și beta
+* Filtrați aplicațiile incompatibile cu dispozitivul
+* Găsiți aplicațiile prin intermediul categoriilor și descrierilor care pot fi căutate
+* Accesați URL-urile asociate pentru donații, cod sursă etc.
+* Rămâneți în siguranță prin verificarea semnăturilor indexului repo și a hașurilor APK

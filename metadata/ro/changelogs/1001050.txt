@@ -1,0 +1,7 @@
+* Suport pentru oglinzi oficiale pentru orice repo, cu selecție automată în funcție de disponibilitate
+
+* O mulțime de îmbunătățiri ale interfeței de utilizare, precum și stabilitate și corecturi de erori
+
+* Noi preferințe de confidențialitate: Prevenirea capturilor de ecran; ieșire în caz de panică
+
+* Limbi noi: Coreeană (ko) și vietnameză (vi)
