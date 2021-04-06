@@ -498,4 +498,13 @@
     <string name="notification_channel_installs_description">Vis varslingar for appinstallering.</string>
     <string name="notification_channel_installs_title">Installeringar</string>
     <string name="menu_opencollective">Open Collective</string>
+    <string name="menu_show_install_history">Vis installeringslogg</string>
+    <string name="menu_show_fdroid_metrics_report">Vis Metrics-rapport</string>
+    <string name="toast_metrics_in_install_history">Bruksdatarapport for %s er synleg via installeringsloggen</string>
+    <string name="send_to_fdroid_metrics_summary">Send vekentleg anonyme data til F-Droid Metrics (krev at «Behald installeringslogg» er slått på)</string>
+    <string name="send_to_fdroid_metrics">Send bruksdata</string>
+    <string name="fdroid_metrics_report">Bruksdata for %s</string>
+    <string name="install_history_and_metrics">Installeringslogg og bruksdata</string>
+    <string name="send_fdroid_metrics_json">Bruksdata for %s som JSON-fil</string>
+    <string name="send_fdroid_metrics_report">Send bruksdatarapport for %s</string>
 </resources>
