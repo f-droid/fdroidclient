@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="?android:attr/dividerHorizontal"
+        android:background="?attr/dividerHorizontal"
         android:visibility="gone" />
 
     <FrameLayout
@@ -102,7 +102,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="?android:attr/dividerHorizontal"
+        android:divider="?attr/dividerHorizontal"
         android:orientation="vertical"
         android:showDividers="beginning">
 

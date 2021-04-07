@@ -8,7 +8,7 @@
     </style>
 
     <style name="SwapTheme.StartSwap" parent="AppThemeLight">
-        <item name="android:background">@android:color/white</item>
+        <item name="background">@android:color/white</item>
     </style>
 
     <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap">

@@ -31,7 +31,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/ic_known_vuln_overlay"
+        app:srcCompat="@drawable/ic_known_vuln_overlay"
         android:scaleType="fitCenter"
         tools:ignore="ContentDescription"/>
 

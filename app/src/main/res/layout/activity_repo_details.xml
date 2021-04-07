@@ -145,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
-                android:src="@drawable/swap_qr_example" />
+                app:srcCompat="@drawable/swap_qr_example" />
 
         </LinearLayout>
 

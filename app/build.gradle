@@ -38,6 +38,7 @@ android {
           passing the following argument to the test runner: disableAnalytics "true".
          */
         testInstrumentationRunnerArguments disableAnalytics: 'true'
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

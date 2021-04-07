@@ -11,7 +11,7 @@
             android:id="@+id/image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nearby_splash"
+            app:srcCompat="@drawable/nearby_splash"
             android:importantForAccessibility="no"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

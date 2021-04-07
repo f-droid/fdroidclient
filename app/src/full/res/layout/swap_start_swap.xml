@@ -26,7 +26,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/use_bluetooth"
-                android:src="@drawable/ic_bluetooth_searching"/>
+                swap:srcCompat="@drawable/ic_bluetooth_searching"/>
 
         <LinearLayout
                 android:layout_width="0dp"
@@ -74,7 +74,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/wifi"
-                android:src="@drawable/ic_wifi"/>
+                swap:srcCompat="@drawable/ic_wifi"/>
 
         <LinearLayout
                 android:layout_width="0dp"

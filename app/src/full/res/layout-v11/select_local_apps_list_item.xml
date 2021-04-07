@@ -13,10 +13,11 @@
 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:minHeight="?attr/listPreferredItemHeight"
     android:paddingBottom="2dip"
     android:paddingTop="2dip">
 
@@ -25,7 +26,7 @@
         android:layout_width="48dip"
         android:layout_height="48dip"
         android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-        android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+        android:layout_marginStart="?attr/listPreferredItemPaddingStart"
         android:layout_marginTop="6dip"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -38,12 +39,12 @@
         android:layout_width="32dip"
         android:layout_height="32dip"
         android:layout_marginRight="?attr/listPreferredItemPaddingLeft"
-        android:layout_marginEnd="?android:attr/listPreferredItemPaddingStart"
+        android:layout_marginEnd="?attr/listPreferredItemPaddingStart"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         tools:suppress="InconsistentLayout"
-        android:src="@drawable/ic_add_circle_outline" />
+        app:srcCompat="@drawable/ic_add_circle_outline" />
 
     <TwoLineListItem
         android:layout_toRightOf="@android:id/icon"
@@ -59,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            android:layout_marginStart="?attr/listPreferredItemPaddingStart"
             android:layout_marginTop="6dip"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="F-Droid" />
