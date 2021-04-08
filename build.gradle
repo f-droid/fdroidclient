@@ -1,8 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
-        jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
+        maven { url 'https://maven.google.com/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
@@ -11,7 +10,11 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
-        maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
-        jcenter() // download from jCenter as last resort https://blog.autsoft.hu/a-confusing-dependency
+        maven { url 'https://maven.google.com/' }
+        jcenter() {
+            content {
+                includeModule("cc.mvdan.accesspoint", "library")
+            }
+        }
     }
 }
