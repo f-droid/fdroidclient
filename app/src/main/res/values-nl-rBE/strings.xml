@@ -425,7 +425,6 @@
     <string name="status_inserting_apps">Appgegevens aan het opslaan</string>
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
-    <string name="theme_night">Nacht</string>
     <string name="over_wifi">Via Wi-Fi</string>
     <string name="over_data">Via mobiel netwerk</string>
     <string name="over_network_always_summary">Gebruik, indien beschikbaar, altijd deze verbinding</string>

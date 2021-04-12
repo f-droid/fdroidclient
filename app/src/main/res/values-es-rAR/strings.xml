@@ -420,7 +420,6 @@
     <string name="keep_forever">Siempre</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
-    <string name="theme_night">Noche</string>
     <string name="crash_dialog_comment_prompt">Podés añadir información extra y comentarios acá:</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d más…</item>

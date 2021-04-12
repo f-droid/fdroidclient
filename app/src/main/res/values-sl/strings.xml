@@ -384,7 +384,6 @@
     <string name="status_inserting_apps">Shranjujem podrobnosti aplikacije</string>
     <string name="theme_light">Svetlo</string>
     <string name="theme_dark">Temna</string>
-    <string name="theme_night">Noč</string>
     <string name="malformed_repo_uri">Neskladen URI repozitorija ne bo upoštevan: %s</string>
     <string name="touch_to_configure_local_repo">Tepnite za prikaz podrobnosti in dovoljenje drugim za izmenjavo vaših aplikacij.</string>
     <string name="writing_index_jar">Zapisovanje podpisanega indeksa (index.jar) …</string>

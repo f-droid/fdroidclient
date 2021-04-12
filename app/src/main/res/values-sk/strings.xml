@@ -256,7 +256,6 @@
     <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu tejto vstavanej aplikácie? Vaše údaje sa nestratia. Táto akcia nevyžaduje žiadny zvláštny prístup.</string>
     <string name="download_error">Sťahovanie zlyhalo!</string>
     <string name="perms_description_app">Poskytované %1$s.</string>
-    <string name="theme_night">Noc</string>
     <string name="crash_dialog_title">F-Droid spadol</string>
     <string name="crash_dialog_text">Neočakávaná chyba spôsobila násilné ukončenie aplikácie. Chcete poslať e-mail s detailami a pomôcť tak vyriešiť problém?</string>
     <string name="crash_dialog_comment_prompt">Sem môžete poskytnúť extra informácie a pripomienky:</string>

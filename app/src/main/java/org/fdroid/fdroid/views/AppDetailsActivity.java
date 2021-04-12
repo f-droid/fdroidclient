@@ -45,13 +45,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -106,15 +106,15 @@ public class AppDetailsActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        fdroidApp = (FDroidApp) getApplication();
-        fdroidApp.applyTheme(this);
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(""); // Nice and clean toolbar
-        toolbar.setNavigationIcon(R.drawable.ic_back);
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false); // clear title
         supportPostponeEnterTransition();
 
         String packageName = getPackageNameFromIntent(getIntent());

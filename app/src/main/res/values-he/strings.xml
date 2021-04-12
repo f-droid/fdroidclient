@@ -234,7 +234,6 @@
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
     <string name="repo_url">כתובת</string>
-    <string name="theme_night">לילה</string>
     <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! נא לדווח על באג!</string>
     <string name="login_title">נדרש אימות</string>
     <string name="login_name">שם משתמש</string>

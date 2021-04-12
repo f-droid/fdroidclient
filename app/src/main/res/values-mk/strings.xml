@@ -157,7 +157,6 @@
     <string name="menu_add_repo">Ново складиште</string>
     <string name="menu_manage">Складишта</string>
     <string name="back">Назад</string>
-    <string name="theme_night">Ноќна</string>
     <string name="theme_dark">Темна</string>
     <string name="theme_light">Светла</string>
     <string name="crash_dialog_comment_prompt">Можете да додадете дополнителни информации и коментари овде:</string>

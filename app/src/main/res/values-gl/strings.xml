@@ -173,7 +173,6 @@
     <string name="interval_2w">Procurar actualizacións cada dúas semanas</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-    <string name="theme_night">Noite</string>
     <string name="unstable_updates_summary">Suxire actualizacións para versións inestábeis</string>
     <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
     <string name="proxy_host">Servidor proxy</string>

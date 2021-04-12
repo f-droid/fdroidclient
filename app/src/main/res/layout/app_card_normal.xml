@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="100dp"
-    android:layout_height="130dp"
-    android:background="?attr/categoryPreviewAppCardBackground"
-    android:padding="8dp">
+    android:id="@+id/card"
+    android:layout_width="120dp"
+    android:layout_height="144dp"
+    android:layout_margin="4dp">
 
-    <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
-         when it will inevitably read out the name of the app straight after. -->
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="48dip"
-        android:layout_height="48dip"
-        tools:src="@drawable/ic_launcher"
-        android:scaleType="fitCenter"
-        android:transitionName="@string/transition_app_item_icon"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        tools:text="F-Droid An application summary which takes up too much space and must ellipsize"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/summary"
-        android:maxLines="3"
-        android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/icon"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp" />
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
+             when it will inevitably read out the name of the app straight after. -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="match_parent"
+                android:layout_height="48dip"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
+                android:transitionName="@string/transition_app_item_icon"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="end"
+                android:maxLines="3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icon"
+                tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -229,7 +229,6 @@
 \n%2$s
 \n%1$sから</string>
     <string name="permissions">権限</string>
-    <string name="theme_night">ナイト</string>
     <string name="menu_settings">設定</string>
     <string name="login_title">認証が必要です</string>
     <string name="login_name">ユーザー名</string>

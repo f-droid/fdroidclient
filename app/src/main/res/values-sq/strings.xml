@@ -83,7 +83,6 @@
     <string name="interval_2w">Kontrollo për përditësime çdo 2 javë</string>
     <string name="theme_light">E çelët</string>
     <string name="theme_dark">E errët</string>
-    <string name="theme_night">Natë</string>
     <string name="login_password">Fjalëkalim</string>
     <string name="repo_edit_credentials">Ndryshoni Fjalëkalimin</string>
     <string name="crash_dialog_comment_prompt">Këtu mund të shtoni të dhëna ekstra dhe komente:</string>

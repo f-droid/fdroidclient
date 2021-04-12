@@ -231,7 +231,6 @@
     <string name="interval_2w">每两周检查一次更新</string>
     <string name="theme_light">明亮</string>
     <string name="theme_dark">夜间</string>
-    <string name="theme_night">黑暗</string>
     <string name="about_license">许可协议</string>
     <string name="empty_search_available_app_list">没有符合条件的应用可用。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>

@@ -236,7 +236,6 @@
     <string name="interval_2w">Να γίνεται έλεγχος για ενημερώσεις κάθε 2 εβδομάδες</string>
     <string name="theme_light">Φωτεινό</string>
     <string name="theme_dark">Σκοτεινό</string>
-    <string name="theme_night">Νυχτερινό</string>
     <string name="swap_nfc_title">Αγγίξτε για ανταλλαγή</string>
     <string name="swap_nfc_description">Αν ο φίλος σας έχει το F-Droid και ενεργοποιημένο το NFC αγγίξτε μεταξύ τους τις
         συσκευές σας.

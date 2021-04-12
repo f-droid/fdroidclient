@@ -203,7 +203,6 @@
     <string name="interval_2w">بررسی هر ۲ هفته برای به‌روز رسانی‌ها</string>
     <string name="theme_light">روشن</string>
     <string name="theme_dark">تاریک</string>
-    <string name="theme_night">شب</string>
     <string name="malformed_repo_uri">نادیده گرفتن نشانی اینترنتی مخزن ناهنجار: %s</string>
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایجاد نکردند.</string>
     <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن برنامه هایی که فراهم می‌کند باید فعّالش کنید.</string>

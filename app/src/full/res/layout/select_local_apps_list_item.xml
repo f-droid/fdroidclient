@@ -28,7 +28,6 @@
         android:layout_marginStart="?attr/listPreferredItemPaddingStart"
         android:layout_marginTop="6dip"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         tools:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
@@ -43,9 +42,7 @@
         android:layout_centerVertical="true" />
 
     <TwoLineListItem
-        android:layout_toRightOf="@android:id/icon"
         android:layout_toEndOf="@android:id/icon"
-        android:layout_toLeftOf="@id/checkbox"
         android:layout_toStartOf="@id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,7 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/application_label"
-            android:layout_alignLeft="@+id/application_label"
             android:layout_below="@+id/application_label"
             android:textAppearance="?android:attr/textAppearanceSmall"
             tools:text="Application Manager" />

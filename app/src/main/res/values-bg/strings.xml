@@ -218,7 +218,6 @@
     <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s?</string>
     <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
     <string name="status_processing_xml_percent">Обработване на %2$s / %3$s (%4$d%%) от %1$s</string>
-    <string name="theme_night">Нощна</string>
     <string name="repo_added">Хранилището %1$s е записано.</string>
     <string name="repo_searching_address">Търсене на хранилище в\n%1$s</string>
     <string name="unsigned">Неподписано</string>

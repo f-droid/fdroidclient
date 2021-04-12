@@ -158,7 +158,6 @@
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
     <string name="pref_language_default">Язык системы</string>
-    <string name="theme_night">Ночь</string>
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
 \nНа вашем устройстве есть приложения, которые недоступны в F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>

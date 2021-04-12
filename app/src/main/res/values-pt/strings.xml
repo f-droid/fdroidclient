@@ -470,7 +470,6 @@
     <string name="status_inserting_apps">A guardar detalhes das aplicações</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-    <string name="theme_night">Noite</string>
     <string name="undo">Desfazer</string>
     <string name="app_list__dismiss_installing_app">Instalação cancelada</string>
     <string name="menu_select_for_wipe">Selecione para limpar</string>

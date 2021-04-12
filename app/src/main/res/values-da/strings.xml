@@ -234,7 +234,6 @@
     <string name="interval_2w">Søg efter opdateringer hver anden uge</string>
     <string name="theme_light">Lys</string>
     <string name="theme_dark">Mørk</string>
-    <string name="theme_night">Nat</string>
     <string name="menu_email">E-mail forfatter</string>
     <string name="antinonfreeassetslist">Denne app indeholder ikke-frit indhold</string>
     <string name="empty_search_available_app_list">Ingen matchende apps tilgængelige.</string>

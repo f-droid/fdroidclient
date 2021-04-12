@@ -61,7 +61,7 @@
             android:allowBackup="true"
             android:fullBackupContent="@xml/backup_rules"
             android:networkSecurityConfig="@xml/network_security_config"
-            android:theme="@style/AppThemeLight"
+            android:theme="@style/Theme.App"
             android:supportsRtl="true">
 
         <provider
@@ -131,7 +131,6 @@
         <activity
                 android:name=".privileged.views.InstallConfirmActivity"
                 android:label="@string/menu_install"
-                android:theme="@style/MinWithDialogBaseThemeLight"
                 android:excludeFromRecents="true"
                 android:parentActivityName=".views.main.MainActivity"
                 android:configChanges="layoutDirection|locale">
@@ -141,8 +140,7 @@
         </activity>
         <activity
                 android:name=".privileged.views.UninstallDialogActivity"
-                android:excludeFromRecents="true"
-                android:theme="@style/AppThemeTransparent"/>
+                android:excludeFromRecents="true" />
         <activity
                 android:name=".views.ManageReposActivity"
                 android:label="@string/menu_manage"
@@ -180,7 +178,6 @@
         </activity>
         <activity
                 android:name=".acra.CrashReportActivity"
-                android:theme="@style/AppThemeDark"
                 android:process=":error_report"
                 android:launchMode="singleInstance"
                 android:excludeFromRecents="true"
@@ -546,7 +543,7 @@
                     android:value=".views.main.MainActivity"/>
         </activity>
 
-        <activity android:name=".AboutActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".installer.FileInstallerActivity" android:theme="@style/AppThemeTransparent"/>
 
     </application>

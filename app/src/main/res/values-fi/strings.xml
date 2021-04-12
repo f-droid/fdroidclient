@@ -139,7 +139,6 @@
     <string name="interval_1h">Tarkista päivitykset tunnin välein</string>
     <string name="theme_light">Vaalea</string>
     <string name="theme_dark">Tumma</string>
-    <string name="theme_night">Musta</string>
     <string name="uninstall_confirm">Haluatko poistaa tämän sovelluksen?</string>
     <string name="allPerms">Kaikki</string>
     <string name="newPerms">Uusi</string>

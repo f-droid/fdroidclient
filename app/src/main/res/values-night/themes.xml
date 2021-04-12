@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
+    <style name="Theme.App" parent="Base.Theme.App">
+        <!--Material color attributes (dark theme) -->
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+
+        <!-- backward-compatibility theme options go here -->
+        <item name="colorPrimary">@color/fdroid_blue_light</item>
+        <item name="colorPrimaryVariant">@color/fdroid_blue</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">@color/fdroid_green_light</item>
+        <item name="colorOnSecondary">#ffffff</item>
+        <item name="android:textColorLink">@color/fdroid_green</item>
+        <item name="appDetailsBackground">?android:windowBackground</item>
+        <item name="appDetailsCardBackground">#424242</item>
+        <item name="categoryPreviewAppCardBackground">
+            @drawable/category_preview_app_card_background_dark
+        </item>
+
+        <item name="mainTabSwapBackground">?android:windowBackground</item>
+        <item name="mainTabSwapSplashTint">#2c2c2c</item>
+        <item name="categoryName">#ffffff</item>
+        <item name="installedApps">#ffffff</item>
+        <item name="detailPanel">@drawable/details_panel_donate_background_dark</item>
+        <item name="appListItem">#ffffff</item>
+        <item name="lightGrayTextColor">#a6a6a6</item>
+        <item name="antiFeaturesWarning">@drawable/ic_warning</item>
+        <item name="backButtonDrawable">@drawable/ic_back</item>
+        <item name="clearButtonDrawable">@drawable/ic_close</item>
+        <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
+    </style>
+
+    <style name="Theme.App.Black" parent="Theme.App">
+        <item name="backgroundColor">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
+    </style>
+</resources>

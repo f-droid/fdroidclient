@@ -247,7 +247,6 @@
     <string name="interval_2w">Periksa pembaruan setiap 2 minggu sekali</string>
     <string name="theme_light">Terang</string>
     <string name="theme_dark">Gelap</string>
-    <string name="theme_night">Malam</string>
     <string name="crash_dialog_title">F-Droid telah gagal</string>
     <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi berhenti. Maukah mengirimkan detail melalui email untuk membantu memperbaiki masalah ini\?</string>
     <string name="crash_dialog_comment_prompt">Anda bisa menambahkan informasi ekstra dan komentar di sini:</string>

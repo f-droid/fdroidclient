@@ -280,7 +280,6 @@
     <string name="keep_forever">Vir ewig</string>
     <string name="theme_light">Lig</string>
     <string name="theme_dark">Donker</string>
-    <string name="theme_night">Nag</string>
     <string name="crash_dialog_title">F-Droid het ineengestort</string>
     <string name="crash_dialog_text">\'N Onverwagse fout het voorgekom wat die program laat stop het.
         Wil jy \'n e-pos met die besonderhede stuur om die probleem te help oplos?

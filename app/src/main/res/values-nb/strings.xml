@@ -240,7 +240,6 @@
     <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for denne innebygde appen\? Du mister ingen eksisterende data. Den oppdaterte appen får tilgang til:</string>
     <string name="install_confirm_update_no_perms">Vil du installere en oppdatering av denne eksisterende appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="install_confirm_update_system_no_perms">Vil du installere en oppdatering av denne innebygde appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
-    <string name="theme_night">Nattsvart</string>
     <string name="login_name">Brukernavn</string>
     <string name="login_password">Passord</string>
     <string name="repo_edit_credentials">Bytt passord</string>

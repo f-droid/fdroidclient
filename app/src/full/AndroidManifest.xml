@@ -56,7 +56,6 @@
                 android:name=".nearby.SwapWorkflowActivity"
                 android:parentActivityName=".views.main.MainActivity"
                 android:launchMode="singleTask"
-                android:theme="@style/SwapTheme.Wizard"
                 android:screenOrientation="portrait"
                 android:configChanges="orientation|keyboardHidden">
             <meta-data
@@ -159,8 +158,7 @@
                 android:name=".panic.CalculatorActivity"
                 android:enabled="false"
                 android:icon="@mipmap/ic_calculator_launcher"
-                android:label="@string/hiding_calculator"
-                android:theme="@style/AppThemeLight">
+                android:label="@string/hiding_calculator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -248,7 +248,6 @@
     <string name="interval_2w">Kontroli pri ĝisdatigoj ĉiu-2-semajne</string>
     <string name="theme_light">Hela</string>
     <string name="theme_dark">Malhela</string>
-    <string name="theme_night">Nokta</string>
     <string name="crash_dialog_title">F-Droid kolapsis</string>
     <string name="crash_dialog_text">Senatenda eraro okazis kaj devigis aplikaĵon halti. Ĉu vi volas retmesaĝi detalojn
         por helpi ripari la eraron?

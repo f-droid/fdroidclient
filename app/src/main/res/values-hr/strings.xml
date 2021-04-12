@@ -269,7 +269,6 @@
     <string name="keep_forever">Zauvijek</string>
     <string name="theme_light">Svijetla</string>
     <string name="theme_dark">Tamna</string>
-    <string name="theme_night">Noćna</string>
     <string name="crash_dialog_title">F-Droid se srušio</string>
     <string name="crash_dialog_text">Dogodila se neočekivana greška, aplikacija je prisilno zaustavljena. Želite li poslati detalje kvara putem e-pošte da bismo ga popravili\?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>

@@ -245,7 +245,6 @@
     <string name="interval_2w">Leta efter uppdateringar varannan vecka</string>
     <string name="theme_light">Ljust</string>
     <string name="theme_dark">Mörkt</string>
-    <string name="theme_night">Natt</string>
     <string name="crash_dialog_title">F-Droid har kraschat</string>
     <string name="crash_dialog_text">Ett oväntat fel tvingade appen att avslutas. Vill du skicka detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>

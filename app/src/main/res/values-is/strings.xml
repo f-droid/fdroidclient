@@ -208,7 +208,6 @@
     <string name="keep_forever">Að eilífu</string>
     <string name="theme_light">Ljóst</string>
     <string name="theme_dark">Dökkt</string>
-    <string name="theme_night">Næturhamur</string>
     <string name="crash_dialog_title">F-Droid hrundi</string>
     <string name="crash_dialog_comment_prompt">Þú getur bætt hér við aukaupplýsingum og athugasemdum:</string>
     <string name="unstable_updates_summary">Stinga upp á uppfærslum í óstöðugar útgáfur</string>

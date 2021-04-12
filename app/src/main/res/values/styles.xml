@@ -1,114 +1,56 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <style name="AppBaseThemeDark" parent="Theme.AppCompat.NoActionBar">
-        <!-- backward-compatibility theme options go here -->
-
-        <item name="colorPrimary">@color/fdroid_blue_dark</item>
-        <item name="colorPrimaryDark">@color/fdroid_blue_darkest</item>
-        <item name="colorAccent">@color/fdroid_green</item>
-        <item name="android:textColorLink">@color/fdroid_green</item>
-        <item name="alertDialogTheme">@style/AlertDialogThemeDark</item>
-        <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="appDetailsBackground">?android:windowBackground</item>
-        <item name="appDetailsCardBackground">#424242</item>
-        <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_dark</item>
-        <item name="mainTabSwapBackground">?android:windowBackground</item>
-        <item name="mainTabSwapSplashTint">#2c2c2c</item>
-        <item name="categoryName">#ffffff</item>
-        <item name="installedApps">#ffffff</item>
-        <item name="detailPanel">@drawable/details_panel_donate_background_dark</item>
-        <item name="appListItem">#ffffff</item>
-        <item name="lightGrayTextColor">#a6a6a6</item>
-        <item name="antiFeaturesWarning">@drawable/ic_warning_white_24dp</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-        <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
+    <!--Button-->
+    <style name="ThemeOverlay.App.Button" parent="">
+        <item name="colorPrimary">@color/fdroid_green</item>
     </style>
 
-    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- backward-compatibility theme options go here -->
-
-        <item name="colorPrimary">@color/fdroid_blue</item>
-        <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
-        <item name="colorAccent">@color/fdroid_green</item>
-        <item name="android:textColorLink">@color/fdroid_green</item>
-        <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
-        <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="appDetailsBackground">#fcfcfc</item>
-        <item name="appDetailsCardBackground">#ffffff</item>
-        <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_light</item>
-        <item name="mainTabSwapBackground">#fafafa</item>
-        <item name="mainTabSwapSplashTint">#f5f5f5</item>
-        <item name="categoryName">#4a4a4a</item>
-        <item name="installedApps">#424242</item>
-        <item name="detailPanel">@drawable/details_panel_donate_background_light</item>
-        <item name="appListItem">#424242</item>
-        <item name="lightGrayTextColor">#4a4a4a</item>
-        <item name="antiFeaturesWarning">@drawable/ic_warning_black_24dp</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-        <item name="appDetailsAntiFeatureIconColor">#000000</item>
+    <style name="ThemeOverlay.App.Button.TextButton" parent="">
+        <item name="colorPrimary">@color/fdroid_green</item>
+        <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
-    <style name="AppBaseThemeNight" parent="AppThemeDark">
-        <!-- backward-compatibility theme options go here -->
-
-        <item name="colorPrimary">@color/fdroid_night</item>
-        <item name="colorPrimaryDark">@color/fdroid_night_dark</item>
-        <item name="alertDialogTheme">@style/AlertDialogThemeNight</item>
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="detailPanel">@drawable/details_panel_donate_background_night</item>
-        <item name="mainTabSwapSplashTint">#111111</item>
+    <!--Dialog-->
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
-    <!-- dark app theme with accent colors following roughly android design guidelines -->
-    <style name="AppThemeDark" parent="AppBaseThemeDark">
-        <!-- customizations that are not API-level specific go here. -->
+    <style name="Widget.App.Button.Dialog" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
+        <item name="colorPrimary">@color/fdroid_green</item>
+        <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
-    <!-- light app theme with accent colors following roughly android design guidelines -->
-    <style name="AppThemeLight" parent="AppBaseThemeLight">
-        <!-- customizations that are not API-level specific go here. -->
-    </style>
+    <style name="AlertDialogBaseThemeDark" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
 
-    <!-- mostly deep black theme specialized for OLED screens -->
-    <style name="AppThemeNight" parent="AppBaseThemeNight">
-        <!-- customizations that are not API-level specific go here. -->
-    </style>
-
-    <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert"/>
-    <style name="AlertDialogThemeDark" parent="AlertDialogBaseThemeDark">
-        <item name="colorAccent">@color/fdroid_green</item>
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Dark" parent="AlertDialogBaseThemeDark">
         <item name="android:windowBackground">@color/cardview_dark_background</item>
     </style>
 
-    <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert"/>
-    <style name="AlertDialogThemeLight" parent="AlertDialogBaseThemeLight">
-        <item name="colorAccent">@color/fdroid_green</item>
+    <style name="AlertDialogBaseThemeLight" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Light" parent="AlertDialogBaseThemeLight">
+        <item name="colorSecondary">@color/fdroid_green</item>
     </style>
 
-    <style name="AlertDialogBaseThemeNight" parent="AlertDialogThemeDark"/>
-    <style name="AlertDialogThemeNight" parent="AlertDialogBaseThemeNight">
+    <style name="AlertDialogBaseThemeNight" parent="AlertDialogBaseThemeDark" />
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Night" parent="AlertDialogBaseThemeNight">
         <item name="android:windowBackground">@color/fdroid_night</item>
     </style>
 
-    <style name="MinWithDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.MinWidth">
-        <item name="colorAccent">@color/fdroid_green</item>
+    <style name="MinWithDialogBaseThemeDark" parent="Theme.MaterialComponents.Dialog.MinWidth">
+        <item name="colorSecondary">@color/fdroid_green</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MinWithDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.MinWidth">
-        <item name="colorAccent">@color/fdroid_green</item>
+    <style name="MinWithDialogBaseThemeLight" parent="Theme.MaterialComponents.Light.Dialog.MinWidth">
+        <item name="colorSecondary">@color/fdroid_green</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <!-- use this style for a text view that is a caption to a paragraph of text -->
@@ -120,7 +62,8 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
-    <style name="CaptionText" parent="CaptionTextBase"/>
+
+    <style name="CaptionText" parent="CaptionTextBase" />
 
     <!-- use this style for a text views that is a paragraph of text -->
     <style name="BodyTextBase">
@@ -128,7 +71,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
     </style>
-    <style name="BodyText" parent="BodyTextBase"/>
+
+    <style name="BodyText" parent="BodyTextBase" />
 
     <style name="AppListEmptyText">
         <item name="android:id">@android:id/empty</item>
@@ -147,7 +91,8 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
-    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase"/>
+
+    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase" />
 
     <style name="AppDetailsLinkBase">
         <item name="android:layout_width">match_parent</item>
@@ -156,7 +101,7 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <style name="AppDetailsLink" parent="AppDetailsLinkBase"/>
+    <style name="AppDetailsLink" parent="AppDetailsLinkBase" />
 
     <style name="AppDetailsSubheaderTextBase">
         <item name="android:layout_width">match_parent</item>
@@ -180,23 +125,8 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase"/>
+    <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase" />
 
-    <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay"/>
-
-    <style name="AppThemeLight.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorControlNormal">@android:color/white</item>
-    </style>
-
-    <style name="ActionButtonOverflow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_more</item>
-    </style>
-
-    <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="DiscreteSeekBar" parent="Base.Widget.AppCompat.SeekBar.Discrete">
         <!-- Disable default tickMarks. We draw our own in SeekBarForegroundThumb -->

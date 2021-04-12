@@ -178,7 +178,6 @@
     <string name="interval_2w">Frissítések keresése kéthetente</string>
     <string name="theme_light">Világos</string>
     <string name="theme_dark">Sötét</string>
-    <string name="theme_night">Éjszakai</string>
     <string name="crash_dialog_title">Az F-Droid összeomlott</string>
     <string name="crash_dialog_text">Egy váratlan hiba következtében az alkalmazásnak le kellett állnia. Szeretné
         elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?

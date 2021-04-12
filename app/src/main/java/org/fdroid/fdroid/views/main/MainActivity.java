@@ -40,6 +40,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -109,7 +110,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        ((FDroidApp) getApplication()).applyTheme(this);
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -457,12 +460,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private int getBottomNavigationBackgroundColorResId() {
-        switch (FDroidApp.getCurThemeResId()) {
-            case R.style.AppThemeNight:
-                return R.color.fdroid_night;
-            default:
-                return R.color.fdroid_blue;
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            return R.color.fdroid_night;
         }
+        return R.color.fdroid_blue;
     }
 
     private static class NonScrollingHorizontalLayoutManager extends LinearLayoutManager {

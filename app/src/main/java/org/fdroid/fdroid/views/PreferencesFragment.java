@@ -33,8 +33,11 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
@@ -44,10 +47,13 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.SeekBarPreference;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
@@ -72,6 +78,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
+            Preferences.PREF_USE_PURE_BLACK_DARK_THEME,
             Preferences.PREF_FORCE_TOUCH_APPS,
             Preferences.PREF_LOCAL_REPO_NAME,
             Preferences.PREF_LANGUAGE,
@@ -99,8 +106,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private LiveSeekBarPreference overWifiSeekBar;
     private LiveSeekBarPreference overDataSeekBar;
     private LiveSeekBarPreference updateIntervalSeekBar;
-    private SwitchPreference enableProxyCheckPref;
-    private SwitchPreference useTorCheckPref;
+    private SwitchPreferenceCompat enableProxyCheckPref;
+    private SwitchPreferenceCompat useTorCheckPref;
     private Preference updateAutoDownloadPref;
     private CheckBoxPreference keepInstallHistoryPref;
     private CheckBoxPreference sendToFDroidMetricsPref;
@@ -121,6 +128,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         addPreferencesFromResource(R.xml.preferences);
         otherPrefGroup = (PreferenceGroup) findPreference("pref_category_other");
 
+
+        Preference aboutPreference = findPreference("pref_about");
+        if (aboutPreference != null) {
+            aboutPreference.setOnPreferenceClickListener(aboutPrefClickedListener);
+        }
+
         keepInstallHistoryPref = (CheckBoxPreference) findPreference(Preferences.PREF_KEEP_INSTALL_HISTORY);
         sendToFDroidMetricsPref = findPreference(Preferences.PREF_SEND_TO_FDROID_METRICS);
         sendToFDroidMetricsPref.setEnabled(keepInstallHistoryPref.isChecked());
@@ -132,9 +145,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             installHistoryPref.setTitle(R.string.install_history);
         }
 
-        useTorCheckPref = (SwitchPreference) findPreference(Preferences.PREF_USE_TOR);
+        useTorCheckPref = (SwitchPreferenceCompat) findPreference(Preferences.PREF_USE_TOR);
         useTorCheckPref.setOnPreferenceChangeListener(useTorChangedListener);
-        enableProxyCheckPref = (SwitchPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        enableProxyCheckPref = (SwitchPreferenceCompat) findPreference(Preferences.PREF_ENABLE_PROXY);
         enableProxyCheckPref.setOnPreferenceChangeListener(proxyEnabledChangedListener);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
 
@@ -269,9 +282,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 if (changing) {
                     AppCompatActivity activity = (AppCompatActivity) getActivity();
                     FDroidApp fdroidApp = (FDroidApp) activity.getApplication();
-                    fdroidApp.reloadTheme();
-                    fdroidApp.applyTheme(activity);
-                    FDroidApp.forceChangeTheme(activity);
+                    fdroidApp.applyTheme();
+                }
+                break;
+
+            case Preferences.PREF_USE_PURE_BLACK_DARK_THEME:
+                if (changing) {
+                    AppCompatActivity activity = (AppCompatActivity) getActivity();
+                    // Theme will be applied upon activity creation
+                    if (activity != null) {
+                        activity.recreate();
+                    }
                 }
                 break;
 
@@ -349,7 +370,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 break;
 
             case Preferences.PREF_ENABLE_PROXY:
-                SwitchPreference checkPref = (SwitchPreference) findPreference(key);
+                SwitchPreferenceCompat checkPref = (SwitchPreferenceCompat) findPreference(key);
                 checkPref.setSummary(R.string.enable_proxy_summary);
                 break;
 
@@ -399,6 +420,31 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             FDroidMetricsWorker.cancel(getContext());
         }
     }
+
+    /**
+     * About dialog click listener
+     * <p>
+     * TODO: this might need to be changed when updated to the new preference pattern
+     */
+
+    private final Preference.OnPreferenceClickListener aboutPrefClickedListener =
+            new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    final View view = getLayoutInflater().inflate(R.layout.about, null);
+                    final Context context = requireContext();
+
+                    String versionName = Utils.getVersionName(context);
+                    if (versionName != null) {
+                        ((TextView) view.findViewById(R.id.version)).setText(versionName);
+                    }
+                    new MaterialAlertDialogBuilder(context)
+                            .setView(view)
+                            .setPositiveButton(R.string.ok, null)
+                            .show();
+                    return true;
+                }
+            };
 
     /**
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app

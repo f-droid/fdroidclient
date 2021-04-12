@@ -42,10 +42,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -106,7 +106,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
     private static final int STEP_INTRO = 1;  // TODO remove this special case, only use layoutResIds
 
-    private Toolbar toolbar;
+    private MaterialToolbar toolbar;
     private SwapView currentView;
     private boolean hasPreparedLocalRepo;
     private boolean newIntent;
@@ -200,7 +200,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ((FDroidApp) getApplication()).setSecureWindow(this);
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.setSecureWindow(this);
+
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
 
         currentView = new SwapView(this); // dummy placeholder to avoid NullPointerExceptions;
@@ -213,10 +217,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         setContentView(R.layout.swap_activity);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         container = (ViewGroup) findViewById(R.id.container);
 
@@ -494,7 +496,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         currentView.setLayoutResId(viewRes);
         currentSwapViewLayoutRes = viewRes;
 
-        toolbar.setBackgroundColor(currentView.getToolbarColour());
         toolbar.setTitle(currentView.getToolbarTitle());
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

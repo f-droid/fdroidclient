@@ -221,7 +221,6 @@
     <string name="repo_url">Адреса</string>
     <string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!
     </string>
-    <string name="theme_night">Ноћ</string>
     <string name="menu_bitcoin">Биткоин</string>
     <string name="menu_litecoin">Лајткоин</string>
     <string name="menu_flattr">Флатр</string>

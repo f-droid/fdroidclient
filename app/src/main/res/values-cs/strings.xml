@@ -227,7 +227,6 @@
     <string name="interval_2w">Zjišťovat aktualizace  každé 2 týdny</string>
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
-    <string name="theme_night">Noc</string>
     <string name="system_install_denied_permissions">Privilegovaná oprávnění nebyla tomuto rozšíření udělena! Nahlašte
         prosím jako chybu!
     </string>

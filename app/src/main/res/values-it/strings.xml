@@ -195,7 +195,6 @@
     </string>
     <string name="theme_light">Chiaro</string>
     <string name="theme_dark">Scuro</string>
-    <string name="theme_night">Notte</string>
     <string name="permissions">Autorizzazioni</string>
     <string name="unstable_updates_summary">Suggerisci aggiornamenti a versioni non stabili</string>
     <string name="login_title">Autenticazione richiesta</string>

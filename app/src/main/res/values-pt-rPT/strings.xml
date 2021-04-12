@@ -231,7 +231,6 @@
     <string name="uninstall_update_confirm">Pretende substituir esta aplicação pela versão de fábrica\? Todos os dados serão removidos.</string>
     <string name="uninstall_confirm">Deseja desinstalar esta aplicação\?</string>
     <string name="download_error">Falha ao descarregar!</string>
-    <string name="theme_night">Noite</string>
     <string name="menu_settings">Definições</string>
     <string name="login_title">Requer autenticação</string>
     <string name="login_name">Nome de utilizador</string>

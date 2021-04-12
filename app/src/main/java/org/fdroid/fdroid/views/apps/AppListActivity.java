@@ -87,7 +87,9 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        ((FDroidApp) getApplication()).applyTheme(this);
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_app_list);

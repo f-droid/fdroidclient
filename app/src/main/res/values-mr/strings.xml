@@ -243,7 +243,6 @@
     <string name="system_installer">विशेषअधिकार जोडणी</string>
     <string name="notify_on">नवी आवृत्ती उपलब्ध झाल्यास सूचित करा</string>
     <string name="notify">उपलब्ध अद्ययावतने दाखवा</string>
-    <string name="theme_night">रात्र</string>
     <string name="theme_dark">गडद किंवा अंधारमय</string>
     <string name="theme_light">शुभ्र किंवा</string>
     <string name="status_inserting_apps">अँपचे विवरण नोंदणी होत</string>
