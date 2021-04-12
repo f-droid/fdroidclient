@@ -241,7 +241,6 @@
     <string name="system_install_denied_permissions">Phần mở rộng chưa được cấp quyền nâng cao! Hãy thông báo lỗi này
         cho chúng tôi!
     </string>
-    <string name="theme_night">Ban đêm</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>

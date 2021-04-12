@@ -47,7 +47,6 @@
     <string name="enable">啟用</string>
     <string name="repo_add_url">軟體庫位址</string>
     <string name="repo_add_fingerprint">金鑰指紋（選填）</string>
-    <string name="theme_night">夜間</string>
     <string name="theme_dark">暗色</string>
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資訊及評論：</string>
     <string name="overwrite">覆寫</string>

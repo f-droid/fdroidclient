@@ -340,7 +340,6 @@
     <string name="status_processing_xml_percent">Apdorojama %2$s / %3$s (%4$d%%) iš %1$s</string>
     <string name="theme_dark">Tamsus</string>
     <string name="theme_light">Šviesus</string>
-    <string name="theme_night">Naktinis</string>
     <string name="enable_proxy_summary">Naudoti HTTP Proxy visiems ryšiams</string>
     <string name="malformed_repo_uri">Nepaisoma netaisyklingo saugyklos URI: %s</string>
     <string name="repo_add_mirror">Pridėti tinklavietę</string>

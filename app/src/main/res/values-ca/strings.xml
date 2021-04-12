@@ -180,7 +180,6 @@
     <string name="interval_2w">Cerca actualitzacions cada dues setmanes</string>
     <string name="theme_light">Clar</string>
     <string name="theme_dark">Fosc</string>
-    <string name="theme_night">Nit</string>
     <string name="newPerms">Nous</string>
     <string name="allPerms">Tots</string>
     <string name="perm_costs_money">Això us pot costar diners</string>

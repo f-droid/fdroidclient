@@ -86,7 +86,6 @@
     <string name="updates">Actualizaciones</string>
     <string name="app_name">F-Droid</string>
     <string name="notify">Mostrar actualizaciones disponibles</string>
-    <string name="theme_night">Noche</string>
     <string name="theme_dark">Oscuro</string>
     <string name="theme_light">Claro</string>
     <string name="status_inserting_apps">Guardado Detalles de la Aplicacion</string>

@@ -7,4 +7,5 @@
     android:layout_height="match_parent"
     android:contentDescription="@null"
     android:padding="@dimen/layout_horizontal_margin"
-    tools:src="@drawable/screenshot_placeholder" />
+    tools:src="@drawable/screenshot_placeholder"
+    android:fitsSystemWindows="true"/>

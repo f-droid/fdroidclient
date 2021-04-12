@@ -239,7 +239,6 @@
     <string name="less">Mniej</string>
     <string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
     <string name="permissions">Uprawnienia</string>
-    <string name="theme_night">Nocny</string>
     <string name="menu_settings">Ustawienia</string>
     <string name="login_title">Wymagane uwierzytelnienie</string>
     <string name="login_name">Użytkownik</string>

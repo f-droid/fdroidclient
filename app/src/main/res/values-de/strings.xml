@@ -238,7 +238,6 @@
     <string name="download_error">Herunterladen fehlgeschlagen!</string>
     <string name="perms_description_app">Bereitgestellt von %1$s.</string>
     <string name="downloading">Herunterladen …</string>
-    <string name="theme_night">Nacht</string>
     <string name="login_title">Legitimierung erforderlich</string>
     <string name="login_name">Benutzername</string>
     <string name="login_password">Passwort</string>

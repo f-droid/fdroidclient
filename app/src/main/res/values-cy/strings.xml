@@ -346,7 +346,6 @@
     <string name="keep_forever">Am byth</string>
     <string name="theme_light">Golau</string>
     <string name="theme_dark">Tywyll</string>
-    <string name="theme_night">Nos</string>
     <string name="crash_dialog_title">Mae F-Droid wedi chwalu</string>
     <string name="crash_dialog_text">Bu gwall annisgwyl a orfododd yr ap i stopio. Hoffet anfon neges e-bost gyda\'r manylion er mwyn trwsio\'r broblem\?</string>
     <string name="crash_dialog_comment_prompt">Gellir ychwanegu gwybodaeth ychwanegol a sylwadau yma:</string>

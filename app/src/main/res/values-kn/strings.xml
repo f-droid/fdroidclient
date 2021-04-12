@@ -5,7 +5,6 @@
     <string name="notification_action_install">ಸ್ಥಾಪಿಸಿ</string>
     <string name="notification_title_summary_install_error">ಸ್ಥಾಪನೆ ವಿಫಲವಾಗಿದೆ</string>
     <string name="notification_title_summary_installing">ಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ</string>
-    <string name="theme_night">ರಾತ್ರಿ</string>
     <string name="keep_year">1 ವರ್ಷ</string>
     <string name="keep_month">1 ತಿಂಗಳು</string>
     <string name="keep_hour">1 ಗಂಟೆ</string>

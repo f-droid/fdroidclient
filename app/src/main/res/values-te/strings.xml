@@ -269,7 +269,6 @@
     <string name="status_inserting_apps">అనువర్తన వివరాలను భద్రపరుస్తోంది</string>
     <string name="theme_light">వెలుతురు</string>
     <string name="theme_dark">చీకటి</string>
-    <string name="theme_night">రాత్రి</string>
     <string name="install_history">స్థాపన చరిత్ర</string>
     <string name="repo_official_mirrors">అధికారిక మిర్రర్లు</string>
     <string name="repo_user_mirrors">వాడుకరి మిర్రర్లు</string>

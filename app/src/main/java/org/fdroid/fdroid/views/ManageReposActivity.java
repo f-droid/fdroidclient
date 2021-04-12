@@ -40,6 +40,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,6 +60,9 @@ import androidx.core.content.ContextCompat;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
@@ -96,8 +100,6 @@ public class ManageReposActivity extends AppCompatActivity
         IS_SWAP
     }
 
-    private Toolbar toolbar;
-
     /**
      * True if activity started with an intent such as from QR code. False if
      * opened from, e.g. the main menu.
@@ -106,15 +108,37 @@ public class ManageReposActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
-        ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.repo_list_activity);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.action_add_repo) {
+                    showAddRepo();
+                    return true;
+                }
+                return false;
+            }
+        });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upIntent = NavUtils.getParentActivityIntent(ManageReposActivity.this);
+                if (NavUtils.shouldUpRecreateTask(ManageReposActivity.this, upIntent) || isTaskRoot()) {
+                    TaskStackBuilder.create(ManageReposActivity.this).addNextIntentWithParentStack(upIntent)
+                            .startActivities();
+                } else {
+                    NavUtils.navigateUpTo(ManageReposActivity.this, upIntent);
+                }
+            }
+        });
 
         final ListView repoList = (ListView) findViewById(R.id.list);
         repoAdapter = new RepoAdapter(this);
@@ -127,6 +151,13 @@ public class ManageReposActivity extends AppCompatActivity
                 editRepo(repo);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.manage_repos, menu);
+        return true;
     }
 
     @Override
@@ -152,32 +183,6 @@ public class ManageReposActivity extends AppCompatActivity
         Intent ret = new Intent();
         setResult(RESULT_OK, ret);
         super.finish();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        toolbar.inflateMenu(R.menu.manage_repos);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add_repo:
-                showAddRepo();
-                return true;
-            case android.R.id.home:
-                Intent upIntent = NavUtils.getParentActivityIntent(this);
-                if (NavUtils.shouldUpRecreateTask(this, upIntent) || isTaskRoot()) {
-                    TaskStackBuilder.create(this)
-                            .addNextIntentWithParentStack(upIntent)
-                            .startActivities();
-                } else {
-                    NavUtils.navigateUpTo(this, upIntent);
-                }
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public String getPrimaryClipAsText() {
@@ -208,7 +213,7 @@ public class ManageReposActivity extends AppCompatActivity
         String text = getPrimaryClipAsText();
         String fingerprint = null;
         String username = null;
-        String password = null;
+        StringBuilder password = null;
         if (!TextUtils.isEmpty(text)) {
             try {
                 new URL(text);
@@ -224,9 +229,9 @@ public class ManageReposActivity extends AppCompatActivity
                     String[] userInfoTokens = userInfo.split(":");
                     if (userInfoTokens.length >= 2) {
                         username = userInfoTokens[0];
-                        password = userInfoTokens[1];
+                        password = new StringBuilder(userInfoTokens[1]);
                         for (int i = 2; i < userInfoTokens.length; i++) {
-                            password += ":" + userInfoTokens[i];
+                            password.append(":").append(userInfoTokens[i]);
                         }
                     }
                 }
@@ -240,7 +245,7 @@ public class ManageReposActivity extends AppCompatActivity
         if (TextUtils.isEmpty(text)) {
             text = DEFAULT_NEW_REPO_TEXT;
         }
-        showAddRepo(text, fingerprint, username, password);
+        showAddRepo(text, fingerprint, username, password != null ? password.toString() : null);
     }
 
     private void showAddRepo(String newAddress, String newFingerprint, String username, String password) {
@@ -289,22 +294,21 @@ public class ManageReposActivity extends AppCompatActivity
             }
 
             final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
-            addRepoDialog = new AlertDialog.Builder(context).setView(view).create();
+            MaterialAlertDialogBuilder addRepoDialogBuilder = new MaterialAlertDialogBuilder(context);
+            addRepoDialogBuilder.setView(view);
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-            addRepoDialog.setTitle(R.string.repo_add_title);
-            addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            if (finishAfterAddingRepo) {
-                                ManageReposActivity.this.finish();
-                            }
-                        }
-                    });
+            addRepoDialogBuilder.setTitle(R.string.repo_add_title);
+            addRepoDialogBuilder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    if (finishAfterAddingRepo) {
+                        finish();
+                    }
+                }
+            });
 
             // HACK:
             // After adding a new repo, need to show feedback to the user.
@@ -319,15 +323,14 @@ public class ManageReposActivity extends AppCompatActivity
             // hang around so we can show further info on it.
             //
             // Thus, the hack described at http://stackoverflow.com/a/15619098 is implemented.
-            addRepoDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                    getString(R.string.repo_add_add),
+            addRepoDialogBuilder.setPositiveButton(getString(R.string.repo_add_add),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     });
 
-            addRepoDialog.show();
+            addRepoDialog = addRepoDialogBuilder.show();
 
             // This must be *after* addRepoDialog.show() otherwise getButtion() returns null:
             // https://code.google.com/p/android/issues/detail?id=6360

@@ -268,7 +268,6 @@
     <string name="keep_forever">Заўсёды</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Цёмная</string>
-    <string name="theme_night">Начная</string>
     <string name="crash_dialog_title">F-Droid даў хібу</string>
     <string name="crash_dialog_text">Узнікла нечаканая памылка, што прывяла да аварыйнага спынення праграмы. Хочаце адправіць электронны ліст з падрабязнасцямі, каб дапамагчы выправіць гэтую праблему\?</string>
     <string name="crash_dialog_comment_prompt">Можаце ўвясці дадатковую інфармацыю і каментары сюды:</string>

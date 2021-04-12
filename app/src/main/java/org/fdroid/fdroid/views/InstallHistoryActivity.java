@@ -29,10 +29,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ShareCompat;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.Preferences;
+
+import com.google.android.material.appbar.MaterialToolbar;
+
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -50,17 +53,19 @@ public class InstallHistoryActivity extends AppCompatActivity {
     public static final String EXTRA_SHOW_FDROID_METRICS = "showFDroidMetrics";
 
     private boolean showingInstallHistory;
-    private Toolbar toolbar;
+    private MaterialToolbar toolbar;
     private MenuItem showMenuItem;
     private TextView textView;
     private String appName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_install_history);
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.install_history));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

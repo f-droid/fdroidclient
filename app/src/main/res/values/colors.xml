@@ -24,12 +24,13 @@
     <color tools:ignore="UnusedResources" name="category_time">#FF7043</color>
     <color tools:ignore="UnusedResources" name="category_writing">#F2E9CE</color>
 
+    <color name="fdroid_blue_light">#ff63a4ff</color>
     <color name="fdroid_blue">#ff1976d2</color>
-    <color name="fdroid_blue_dark">#ff0d47a1</color>
-    <color name="fdroid_blue_darkest">#ff042570</color>
+    <color name="fdroid_blue_dark">#ff004ba0</color>
+    <color name="fdroid_green_light">#ffbee247</color>
     <color name="fdroid_green">#ff8ab000</color>
-    <color name="fdroid_night">#ff222222</color>
-    <color name="fdroid_night_dark">#ff111111</color>
+    <!--https://material.io/design/color/dark-theme.html#properties-->
+    <color name="fdroid_night">#ff121212</color>
 
     <color name="shadow">#cc222222</color>
 

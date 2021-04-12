@@ -230,7 +230,6 @@
     <string name="repo_details">Repositorio</string>
     <string name="repo_url">Dirección</string>
     <string name="download_error">¡Descarga fallida!</string>
-    <string name="theme_night">Noche</string>
     <string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por
         favor, informa sobre este fallo!
     </string>

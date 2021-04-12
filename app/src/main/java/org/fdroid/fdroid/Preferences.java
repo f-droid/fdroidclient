@@ -87,6 +87,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPDATE_NOTIFICATION_ENABLED = "updateNotify";
     public static final String PREF_THEME = "theme";
+    public static final String PREF_USE_PURE_BLACK_DARK_THEME = "usePureBlackDarkTheme";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
@@ -151,7 +152,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public enum Theme {
         light,
         dark,
-        night,
+        followSystem,
+        night, // Obsolete
         lightWithDarkActionBar, // Obsolete
     }
 
@@ -393,6 +395,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public Theme getTheme() {
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, null));
+    }
+
+    public boolean isPureBlack() {
+        return preferences.getBoolean(Preferences.PREF_USE_PURE_BLACK_DARK_THEME, false);
     }
 
     public boolean isLocalRepoHttpsEnabled() {

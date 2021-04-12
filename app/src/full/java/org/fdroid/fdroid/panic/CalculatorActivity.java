@@ -3,11 +3,14 @@ package org.fdroid.fdroid.panic;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.appbar.MaterialToolbar;
+
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
 import java.util.regex.Pattern;
@@ -35,10 +38,13 @@ public class CalculatorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         textView = (TextView) findViewById(R.id.textView);

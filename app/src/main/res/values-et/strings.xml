@@ -263,7 +263,6 @@
     <string name="keep_forever">Igavesti</string>
     <string name="theme_light">Hele</string>
     <string name="theme_dark">Tume</string>
-    <string name="theme_night">Öö</string>
     <string name="crash_dialog_title">F-Droidi tabas krahh</string>
     <string name="crash_dialog_comment_prompt">Sa saad lisada täiendavat informatsiooni ja kommentaare siia:</string>
     <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs

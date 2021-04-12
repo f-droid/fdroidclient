@@ -260,7 +260,6 @@
     <string name="keep_forever">إلى الأبد</string>
     <string name="theme_light">فاتحة</string>
     <string name="theme_dark">داكنة</string>
-    <string name="theme_night">ليلية</string>
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>

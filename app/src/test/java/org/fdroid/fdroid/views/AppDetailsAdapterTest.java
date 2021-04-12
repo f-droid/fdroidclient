@@ -48,7 +48,10 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
                 new ContentValues(), repo.getId());
 
-        themeContext = new ContextThemeWrapper(ApplicationProvider.getApplicationContext(), R.style.AppBaseThemeDark);
+        // Must manually set the theme again here other than in AndroidManifest,xml
+        // https://github.com/mozilla-mobile/fenix/pull/15646#issuecomment-707345798
+        ApplicationProvider.getApplicationContext().setTheme(R.style.Theme_App);
+        themeContext = new ContextThemeWrapper(ApplicationProvider.getApplicationContext(), R.style.Theme_App);
     }
 
     @After

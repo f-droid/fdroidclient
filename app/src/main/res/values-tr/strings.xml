@@ -235,7 +235,6 @@
     <string name="interval_2w">Güncellemeleri 2 haftada bir denetle</string>
     <string name="theme_light">Aydınlık</string>
     <string name="theme_dark">Karanlık</string>
-    <string name="theme_night">Gece</string>
     <string name="crash_dialog_title">F-Droid çöktü</string>
     <string name="crash_dialog_text">Uygulamanın durmasına neden olan beklenmedik bir hata oluştu. Sorunun giderilmesine yardım etmek için ayrıntıları e-posta ile göndermek ister misiniz\?</string>
     <string name="crash_dialog_comment_prompt">Ek bilgi ve yorumları buraya ekleyebilirsiniz:</string>

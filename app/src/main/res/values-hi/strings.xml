@@ -46,7 +46,6 @@
     <string name="overwrite">ऊपर लिखना</string>
     <string name="theme_light">रोशनी</string>
     <string name="theme_dark">अंधेरा</string>
-    <string name="theme_night">रात्रि</string>
     <string name="crash_dialog_title">F-Droid क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारन एप्लीकेशन बंद हो गयी है| क्या ईमेल भेज कर इस समाधान को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>

@@ -237,7 +237,6 @@
     <string name="interval_2w">2주마다 업데이트를 확인</string>
     <string name="theme_light">밝음</string>
     <string name="theme_dark">어두움</string>
-    <string name="theme_night">야간</string>
     <string name="update_auto_download">업데이트를 자동으로 얻기</string>
     <string name="update_auto_download_summary">업데이트를 자동으로 다운로드하고 업데이트의 설치를 알려줍니다</string>
     <string name="repo_provider">저장소: %s</string>

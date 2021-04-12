@@ -200,8 +200,6 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                     }
                 });
             }
-
-            updateCheckedIndicatorView(view, listView.isItemChecked(listPosition));
         }
 
         public void updateCheckedIndicatorView(int position, boolean checked) {
@@ -210,24 +208,6 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
 
             if (position >= firstListItemPosition && position <= lastListItemPosition) {
                 final int childIndex = position - firstListItemPosition;
-                updateCheckedIndicatorView(listView.getChildAt(childIndex), checked);
-            }
-        }
-
-        private void updateCheckedIndicatorView(View view, boolean checked) {
-            ImageView imageView = (ImageView) view.findViewById(R.id.checked);
-            if (imageView != null) {
-                int resource;
-                int colour;
-                if (checked) {
-                    resource = R.drawable.ic_check_circle;
-                    colour = ContextCompat.getColor(getContext(), R.color.swap_bright_blue);
-                } else {
-                    resource = R.drawable.ic_add_circle_outline;
-                    colour = 0xFFD0D0D4;
-                }
-                imageView.setImageDrawable(ContextCompat.getDrawable(getContext(), resource));
-                imageView.setColorFilter(colour, PorterDuff.Mode.MULTIPLY);
             }
         }
     }

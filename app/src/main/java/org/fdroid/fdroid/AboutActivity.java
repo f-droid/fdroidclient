@@ -10,9 +10,6 @@ public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        FDroidApp fdroidApp = (FDroidApp) getApplication();
-        fdroidApp.applyDialogTheme(this);
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.about);

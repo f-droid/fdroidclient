@@ -24,7 +24,6 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -48,8 +47,11 @@ import android.view.WindowManager;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.collection.LongSparseArray;
 import androidx.core.content.ContextCompat;
+
 import com.nostra13.universalimageloader.cache.disc.DiskCache;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
@@ -152,30 +154,46 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     private static Theme curTheme = Theme.light;
 
-    public void reloadTheme() {
-        curTheme = Preferences.get().getTheme();
-    }
-
-    public void applyTheme(AppCompatActivity activity) {
-        activity.setTheme(getCurThemeResId());
-        setSecureWindow(activity);
-    }
-
-    public static int getCurThemeResId() {
-        switch (curTheme) {
-            case light:
-                return R.style.AppThemeLight;
-            case dark:
-                return R.style.AppThemeDark;
-            case night:
-                return R.style.AppThemeNight;
-            default:
-                return R.style.AppThemeLight;
+    /**
+     * Apply pure black background in dark theme setting. Must be called in every activity's
+     * {@link AppCompatActivity#onCreate()}, before super.onCreate().
+     * @param activity The activity to apply the setting.
+     */
+    public void applyPureBlackBackgroundInDarkTheme(AppCompatActivity activity) {
+        final boolean isPureBlack = Preferences.get().isPureBlack();
+        if (isPureBlack) {
+            activity.setTheme(R.style.Theme_App_Black);
         }
     }
 
+    public void applyTheme() {
+        curTheme = Preferences.get().getTheme();
+        switch (curTheme) {
+            case dark:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            case light:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            default:
+                // `Set by Battery Saver` for Q above (inclusive), `Use system default` for Q below
+                // https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                }
+                break;
+        }
+    }
+
+    //    TODO: ResId no longer exists.
+    public static int getCurThemeResId() {
+        return R.style.Theme_App;
+    }
+
     public static boolean isAppThemeLight() {
-        return curTheme == Theme.light;
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO;
     }
 
     public void applyDialogTheme(AppCompatActivity activity) {
@@ -191,33 +209,11 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     private static int getCurDialogThemeResId() {
         switch (curTheme) {
-            case light:
-                return R.style.MinWithDialogBaseThemeLight;
-            case dark:
-                return R.style.MinWithDialogBaseThemeDark;
-            case night:
+            case dark: case night:
                 return R.style.MinWithDialogBaseThemeDark;
             default:
                 return R.style.MinWithDialogBaseThemeLight;
         }
-    }
-
-    /**
-     * Force reload the {@link AppCompatActivity to make theme changes take effect.}
-     * Same as {@link Languages#forceChangeLanguage(AppCompatActivity)}
-     *
-     * @param activity the {@code AppCompatActivity} to force reload
-     */
-    public static void forceChangeTheme(AppCompatActivity activity) {
-        Intent intent = activity.getIntent();
-        if (intent == null) { // when launched as LAUNCHER
-            return;
-        }
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        activity.finish();
-        activity.overridePendingTransition(0, 0);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(0, 0);
     }
 
     public static void enableBouncyCastle() {
@@ -393,7 +389,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         PRNGFixes.apply();
 
-        curTheme = preferences.getTheme();
+        applyTheme();
+
         configureProxy(preferences);
 
 
@@ -650,7 +647,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     /**
      * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
-     * <p>
+     *
      * Must be called on App startup and after every proxy configuration change.
      */
     public static void configureProxy(Preferences preferences) {

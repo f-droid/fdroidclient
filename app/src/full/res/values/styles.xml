@@ -3,13 +3,9 @@
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
-        <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
-        <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
     </style>
 
-    <style name="SwapTheme.StartSwap" parent="AppThemeLight">
-        <item name="background">@android:color/white</item>
-    </style>
+    <style name="SwapTheme.StartSwap" parent="Theme.App"/>
 
     <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap">
     </style>
@@ -17,10 +13,10 @@
     <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard">
     </style>
 
-    <style name="SwapTheme.AppList" parent="AppThemeLight">
+    <style name="SwapTheme.AppList" parent="Base.Theme.App">
     </style>
 
-    <style name="SwapTheme.AppList.ListItem" parent="AppThemeLight">
+    <style name="SwapTheme.AppList.ListItem" parent="Theme.App">
     </style>
 
     <style name="SwapTheme.AppList.SwapSuccessBase">

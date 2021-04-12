@@ -84,7 +84,6 @@
     <string name="status_inserting_apps">பயன்பாட்டு விவரங்களைச் சேமிக்கிறது</string>
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருண்ட</string>
-    <string name="theme_night">இரவு</string>
     <string name="notification_action_cancel">ரத்துசெய்</string>
     <string name="unknown">அறியப்படாத</string>
     <string name="disabled">முடக்கப்பட்டது</string>

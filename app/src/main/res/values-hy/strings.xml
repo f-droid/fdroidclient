@@ -91,7 +91,6 @@
     <string name="keep_forever">Ընդմիշտ</string>
     <string name="theme_light">Բաց</string>
     <string name="theme_dark">Մուգ</string>
-    <string name="theme_night">Գիշեր</string>
     <string name="notification_title_single_update_available">Թարմացում է հասանելի</string>
     <string name="notification_title_single_ready_to_install">Պատրաստ է տեղադրման</string>
     <string name="notification_title_single_ready_to_install_update">Թարմացումը պատրաստ է տեղադրման</string>

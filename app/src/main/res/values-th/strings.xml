@@ -183,7 +183,6 @@
     <string name="keep_forever">ตลอดไป</string>
     <string name="theme_light">สว่าง</string>
     <string name="theme_dark">มืด</string>
-    <string name="theme_night">กลางคืน</string>
     <string name="crash_dialog_title">F-Droid เกิดข้อผิดพลาด</string>
     <string name="crash_dialog_text">เกิดข้อผิดพลาดที่ไม่คาดคิดบังคับให้แอปหยุดทำงาน คุณต้องการส่งรายละเอียดทางอีเมลเพื่อช่วยแก้ไขปัญหาหรือไม่</string>
     <string name="crash_dialog_comment_prompt">ระบุรายละเอียดและหมายเหตุเพิ่มเติมที่นี่:</string>

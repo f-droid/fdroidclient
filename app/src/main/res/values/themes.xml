@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<resources>
+
+    <style name="Base.Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
+
+        <!-- backward-compatibility theme options go here -->
+        <!--Material color attributes (light theme) -->
+        <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
+        <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
+        <!--selection controls.-->
+        <item name="colorPrimary">@color/fdroid_blue</item>
+        <item name="colorPrimaryVariant">@color/fdroid_blue_dark</item>
+        <item name="colorSecondary">@color/fdroid_green</item>
+        <!--colorBackground appears behind scrollable content and is used for the default window-->
+        <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
+        <!--and menus. colorError is used to indicate an error state for components such as-->
+        <!--text fields.-->
+        <item name="appDetailsBackground">#fcfcfc</item>
+        <item name="appDetailsCardBackground">#ffffff</item>
+        <item name="categoryPreviewAppCardBackground">
+            @drawable/category_preview_app_card_background_light
+        </item>
+        <item name="mainTabSwapBackground">#fafafa</item>
+        <item name="detailPanel">@drawable/details_panel_donate_background_light</item>
+        <item name="antiFeaturesWarning">@drawable/ic_warning</item>
+        <item name="backButtonDrawable">@drawable/ic_back</item>
+        <item name="clearButtonDrawable">@drawable/ic_close</item>
+
+        <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
+        <!--on which they appear.-->
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorOnSecondary">#ffffff</item>
+
+        <item name="android:textColorLink">@color/fdroid_green</item>
+        <item name="mainTabSwapSplashTint">#f5f5f5</item>
+        <item name="categoryName">#4a4a4a</item>
+        <item name="installedApps">#424242</item>
+        <item name="appListItem">#424242</item>
+        <item name="lightGrayTextColor">#4a4a4a</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="appDetailsAntiFeatureIconColor">#000000</item>
+    </style>
+
+    <!-- light app theme with accent colors following roughly android design guidelines -->
+    <style name="Theme.App" parent="Base.Theme.App">
+        <!-- customizations that are not API-level specific go here. -->
+    </style>
+
+    <!-- Same as Theme.App except a black background in Dark mode -->
+    <style name="Theme.App.Black" parent="Theme.App" />
+
+    <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
+</resources>
