@@ -33,20 +33,20 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  *
  * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/724">"No internet" banner on main, categories, and updates screen</a>
  */
-public class BannerUpdatingRepos extends androidx.appcompat.widget.AppCompatTextView {
+public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
 
     private int updateServiceStatus = UpdateService.STATUS_COMPLETE_WITH_CHANGES;
     private int networkState = ConnectivityMonitorService.FLAG_NET_NO_LIMIT;
 
-    public BannerUpdatingRepos(Context context) {
+    public StatusBanner(Context context) {
         this(context, null);
     }
 
-    public BannerUpdatingRepos(Context context, AttributeSet attrs) {
+    public StatusBanner(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
-    public BannerUpdatingRepos(Context context, AttributeSet attrs, int defStyleAttr) {
+    public StatusBanner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         int padding = (int) getResources().getDimension(R.dimen.banner__padding);
         setPadding(padding, padding, padding, padding);

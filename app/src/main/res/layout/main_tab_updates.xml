@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:background="?attr/mainTabSwapBackground">
 
-            <org.fdroid.fdroid.views.BannerUpdatingRepos
+            <org.fdroid.fdroid.views.StatusBanner
                 android:id="@+id/banner_updating_repos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
