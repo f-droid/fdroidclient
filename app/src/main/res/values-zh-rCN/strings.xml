@@ -142,7 +142,7 @@
     <string name="next">下一步</string>
     <string name="skip">跳过</string>
     <string name="status_download_unknown_size">下载中\n%2$s 来自\n%1$s</string>
-    <string name="update_notification_title">正在更新库</string>
+    <string name="banner_updating_repositories">正在更新库</string>
     <string name="status_processing_xml_percent">处理中 %2$s / %3$s (%4$d%%) 来自 %1$s</string>
     <string name="repos_unchanged">所有的存储库已是最新的</string>
     <string name="all_other_repos_fine">所有其他的存储库并没有产生错误。</string>

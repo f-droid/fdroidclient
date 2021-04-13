@@ -229,7 +229,7 @@
     <string name="hide_on_long_search_press_title">Skrij iskalni gumb</string>
     <string name="hide_on_long_search_press_summary">Dolg pritisk na gumb iskanje bo skril aplikacije</string>
     <string name="download_404">Zahtevana datoteka ni bila najdena.</string>
-    <string name="update_notification_title">Posodabljanje skladišča aplikacij</string>
+    <string name="banner_updating_repositories">Posodabljanje skladišča aplikacij</string>
     <string name="repos_unchanged">Vsa skladišča aplikacij so posodobljena</string>
     <string name="global_error_updating_repos">Med posodobitvijo aplikacije %s je prišlo do napake</string>
     <string name="no_permissions">Ni dovoljenj</string>

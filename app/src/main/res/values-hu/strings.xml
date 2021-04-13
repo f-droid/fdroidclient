@@ -116,7 +116,7 @@
     <string name="unsigned">Aláíratlan</string>
     <string name="unverified">Megerősítetlen</string>
     <string name="repo_details">Tároló</string>
-    <string name="update_notification_title">Tárolók frissítése</string>
+    <string name="banner_updating_repositories">Tárolók frissítése</string>
     <string name="repos_unchanged">Minden tároló naprakész</string>
     <string name="repo_url">Cím</string>
     <string name="repo_num_apps">Alkalmazások száma</string>

@@ -157,7 +157,7 @@
     <string name="hide_on_long_search_press_title">Paslėpti su paieškos mygtuku</string>
     <string name="hide_on_long_search_press_summary">Ilgai palaikus paieškos mygtuka programa bus paslėpta</string>
     <string name="download_404">Užklaustas failas nebuvo rastas.</string>
-    <string name="update_notification_title">Atnaujinamos saugyklos</string>
+    <string name="banner_updating_repositories">Atnaujinamos saugyklos</string>
     <string name="status_inserting_x_apps">Saugojama programos informacija (%1$d/%2$d) nuo %3$s</string>
     <string name="all_other_repos_fine">Visos kitos saugyklos nesukūrė klaidų.</string>
     <string name="no_permissions">Nėra leidimų</string>

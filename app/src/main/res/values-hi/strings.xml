@@ -239,7 +239,7 @@
     <string name="status_download_unknown_size">डाउनलोड कर रहा है
 \n%2$s से
 \n%1$s</string>
-    <string name="update_notification_title">रिपोजिटरी को अपडेट करना</string>
+    <string name="banner_updating_repositories">रिपोजिटरी को अपडेट करना</string>
     <string name="no_permissions">कोई अनुमति नहीं</string>
     <string name="permissions">अनुमतियां</string>
     <string name="no_handler_app">आपके पास कोई भी उपलब्ध ऐप नहीं है जो %s को संभाल सके।</string>

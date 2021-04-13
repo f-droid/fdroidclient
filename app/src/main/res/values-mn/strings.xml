@@ -220,7 +220,7 @@
     <string name="status_inserting_x_apps">Аппын дэлгэрэнгүйг (%1$d /%2$d) %3$s-с хадгалах</string>
     <string name="status_connecting_to_repo">Холбогдож байна
 \n%1$s</string>
-    <string name="update_notification_title">Агуулахуудыг шинэчилж байна</string>
+    <string name="banner_updating_repositories">Агуулахуудыг шинэчилж байна</string>
     <string name="download_404">Хүссэн файл олдсонгүй.</string>
     <string name="status_download_unknown_size">Татаж байна
 \n%2$s-аас

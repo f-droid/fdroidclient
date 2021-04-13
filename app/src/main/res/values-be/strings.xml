@@ -128,7 +128,7 @@
     <string name="status_download_unknown_size">Спампоўванне
 \n%2$s з
 \n%1$s</string>
-    <string name="update_notification_title">Абнаўленне рэпазіторыяў</string>
+    <string name="banner_updating_repositories">Абнаўленне рэпазіторыяў</string>
     <string name="status_processing_xml_percent">Апрацоўка %2$s / %3$s (%4$d%%) з %1$s</string>
     <string name="status_connecting_to_repo">Злучэнне з
 \n%1$s</string>

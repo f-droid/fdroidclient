@@ -245,7 +245,7 @@
 \nvan %1$s gedownload</string>
     <string name="status_download_unknown_size">%2$s wordt gedownload van %1$s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
-    <string name="update_notification_title">Applicatiebronnen worden bijgewerkt</string>
+    <string name="banner_updating_repositories">Applicatiebronnen worden bijgewerkt</string>
     <string name="status_connecting_to_repo">Verbinding met 
 \n%1$s aan het maken</string>
     <string name="status_inserting_x_apps">Appgegevens van %3$s worden opgeslagen (%1$d/%2$d)</string>

@@ -108,7 +108,7 @@
     <string name="proxy_port_summary">Proxy portnummer (e.g. 8118)</string>
     <string name="status_download">Henter\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
     <string name="status_download_unknown_size">Henter\n%2$s fra\n%1$s</string>
-    <string name="update_notification_title">Opdaterer depoter</string>
+    <string name="banner_updating_repositories">Opdaterer depoter</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="status_connecting_to_repo">Forbinder til\n%1$s</string>
     <string name="status_inserting_apps">Gemmer app-detaljer</string>

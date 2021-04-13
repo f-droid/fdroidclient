@@ -141,7 +141,7 @@
     <string name="bad_fingerprint">フィンガープリントが間違っています</string>
     <string name="invalid_url">有効なURLではありません。</string>
     <string name="menu_changelog">変更履歴</string>
-    <string name="update_notification_title">リポジトリを更新中</string>
+    <string name="banner_updating_repositories">リポジトリを更新中</string>
     <string name="status_processing_xml_percent">%1$sから%2$s/%3$s(%4$d%%)処理中</string>
     <string name="pref_language">言語</string>
     <string name="pref_language_default">システムの既定</string>

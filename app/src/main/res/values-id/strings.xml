@@ -102,7 +102,7 @@
     <string name="status_download_unknown_size">Mengunduh
 \n%2$s dari
 \n%1$s</string>
-    <string name="update_notification_title">Memperbarui repositori</string>
+    <string name="banner_updating_repositories">Memperbarui repositori</string>
     <string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
     <string name="status_connecting_to_repo">Menghubungkan ke
 \n%1$s</string>

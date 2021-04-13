@@ -104,7 +104,7 @@
     <string name="status_download_unknown_size">A descarregar
 \n%2$s de
 \n%1$s</string>
-    <string name="update_notification_title">A atualizar repositórios</string>
+    <string name="banner_updating_repositories">A atualizar repositórios</string>
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
     <string name="status_connecting_to_repo">Estabelecendo ligação
 \na %1$s</string>

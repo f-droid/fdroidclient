@@ -142,7 +142,7 @@
     <string name="bad_fingerprint">Slechte vingerafdruk</string>
     <string name="invalid_url">Dit is geen geldige URL.</string>
     <string name="menu_changelog">Lijst van veranderingen</string>
-    <string name="update_notification_title">Applicatiebronnen worden bijgewerkt</string>
+    <string name="banner_updating_repositories">Applicatiebronnen worden bijgewerkt</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) van %1$s worden verwerkt</string>
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Systeemstandaard</string>

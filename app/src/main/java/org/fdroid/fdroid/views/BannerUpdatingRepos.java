@@ -33,7 +33,7 @@ public class BannerUpdatingRepos extends androidx.appcompat.widget.AppCompatText
         setPadding(padding, padding, padding, padding);
         setBackgroundColor(0xFF4A4A4A);
         setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        setText(R.string.update_notification_title);
+        setText(R.string.banner_updating_repositories);
         setTextColor(0xFFFFFFFF);
     }
 

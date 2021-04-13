@@ -188,7 +188,7 @@
     <string name="menu_upgrade">Թարմացնել</string>
     <string name="main_menu__latest_apps">Ամենանորը</string>
     <string name="adding_apks_format">Ավելացնում եմ %s շտեմարանին…</string>
-    <string name="update_notification_title">Թարմացնում եմ շտեմարանները</string>
+    <string name="banner_updating_repositories">Թարմացնում եմ շտեմարանները</string>
     <string name="repos_unchanged">Բոլոր շտեմարանները արդի են</string>
     <string name="repo_details">Շտեմարան</string>
     <string name="repo_not_yet_updated">Այս շտեմարանը դեռևս չի օգտագործվել։

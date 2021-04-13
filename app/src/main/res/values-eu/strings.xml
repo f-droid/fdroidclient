@@ -121,7 +121,7 @@
     <string name="copying_icons">Aplikazioen ikonoak biltegira kopiatzen…</string>
     <string name="proxy_host">Proxy ostalaria</string>
     <string name="enable_proxy_summary">Konfiguratu HTTP Proxya sare eskari guztientzat</string>
-    <string name="update_notification_title">Biltegiak eguneratzen</string>
+    <string name="banner_updating_repositories">Biltegiak eguneratzen</string>
     <string name="repos_unchanged">Biltegi guztiak egunean daude</string>
     <string name="all_other_repos_fine">Beste biltegiek ez dute errorerik sortu.</string>
     <string name="global_error_updating_repos">Errorea eguneratzean: %s</string>

@@ -70,7 +70,7 @@
     <string name="adding_apks_format">%s lisatakse hoidlasse…</string>
     <string name="linking_apks">APK faile lingitakse hoidlasse…</string>
     <string name="copying_icons">Rakenduste ikoone kopeeritakse hoidlasse…</string>
-    <string name="update_notification_title">Hoidlaid värskendatakse</string>
+    <string name="banner_updating_repositories">Hoidlaid värskendatakse</string>
     <string name="repos_unchanged">Kõik hoidlad on kaasajastaud</string>
     <string name="all_other_repos_fine">Kõik ülejäänud hoidlad vigu ei põhjustanud.</string>
     <string name="repo_details">Hoidla</string>

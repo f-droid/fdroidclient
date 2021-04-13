@@ -116,7 +116,7 @@
     <string name="deleting_repo">正在刪除目前的軟體庫…</string>
     <string name="adding_apks_format">正在加入 %s 到軟體庫…</string>
     <string name="copying_icons">正在複製應用程式圖示至軟體庫…</string>
-    <string name="update_notification_title">正在更新軟體庫</string>
+    <string name="banner_updating_repositories">正在更新軟體庫</string>
     <string name="repos_unchanged">所有軟體庫已更新至最新的版本</string>
     <string name="all_other_repos_fine">所有其它軟體庫都沒有出現錯誤。</string>
     <string name="global_error_updating_repos">更新時發生錯誤：%s</string>

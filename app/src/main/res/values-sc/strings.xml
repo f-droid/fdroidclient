@@ -153,7 +153,7 @@
     <string name="back">In dae segus</string>
     <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
     <string name="menu_changelog">Lista modìficas</string>
-    <string name="update_notification_title">Agiornende sos depòsitos</string>
+    <string name="banner_updating_repositories">Agiornende sos depòsitos</string>
     <string name="status_processing_xml_percent">Protzessende %2$s / %3$s (%4$d%%) dae %1$s</string>
     <string name="pref_language">Limba</string>
     <string name="pref_language_default">Predefinida de sistema</string>

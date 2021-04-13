@@ -282,7 +282,7 @@
 \n%2$s de
 \n%1$s</string>
     <string name="download_404">O ficheiro solicitado não foi encontrado.</string>
-    <string name="update_notification_title">A atualizar repositórios</string>
+    <string name="banner_updating_repositories">A atualizar repositórios</string>
     <string name="status_connecting_to_repo">Estabelecendo ligação
 \na %1$s</string>
     <string name="status_inserting_x_apps">A guardar detalhes da aplicação (%1$d/%2$d) de %3$s</string>

@@ -264,7 +264,7 @@ public class UpdateService extends JobIntentService {
                 .setSmallIcon(R.drawable.ic_refresh)
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .setContentTitle(getString(R.string.update_notification_title));
+                .setContentTitle(getString(R.string.banner_updating_repositories));
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
     }
 

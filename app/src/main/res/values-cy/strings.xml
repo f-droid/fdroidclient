@@ -237,7 +237,7 @@
 \n%2$s o
 \n%1$s</string>
     <string name="download_404">Ni chanfuwyd y ffeil honno.</string>
-    <string name="update_notification_title">Yn diweddaru ystorfeydd</string>
+    <string name="banner_updating_repositories">Yn diweddaru ystorfeydd</string>
     <string name="status_processing_xml_percent">Yn prosesu %2$s / %3$s (%4$d%%) o %1$s</string>
     <string name="status_connecting_to_repo">Yn cysylltu â
 \n%1$s</string>

@@ -305,7 +305,7 @@
     <string name="status_inserting_x_apps">%3$s मधून
 \n (%1$d/%2$d) अँप विवरण नोंद करून घेतले जात आहे</string>
     <string name="status_connecting_to_repo">%1$s शी जोडले जात</string>
-    <string name="update_notification_title">भांडाराला अद्ययावत केले जात</string>
+    <string name="banner_updating_repositories">भांडाराला अद्ययावत केले जात</string>
     <string name="download_404">अपेक्षित फाईल मिळाली नाही.</string>
     <string name="status_download_unknown_size">%1$s मधून %2$s डाऊनलोड केले जात आहे</string>
     <string name="status_download">%1$s मधून %2$s / %3$s (%4$d%%) 

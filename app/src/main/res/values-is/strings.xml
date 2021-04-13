@@ -99,7 +99,7 @@
     <string name="status_download_unknown_size">Sæki
 \n%2$s frá
 \n%1$s</string>
-    <string name="update_notification_title">Uppfæri hugbúnaðarsöfn</string>
+    <string name="banner_updating_repositories">Uppfæri hugbúnaðarsöfn</string>
     <string name="status_processing_xml_percent">Meðhöndla %2$s / %3$s (%4$d%%) frá %1$s</string>
     <string name="status_connecting_to_repo">Tengist við
 \n%1$s</string>
