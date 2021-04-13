@@ -23,7 +23,9 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
+
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.data.Apk;

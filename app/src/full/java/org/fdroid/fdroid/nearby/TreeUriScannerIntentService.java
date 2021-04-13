@@ -29,7 +29,7 @@ import android.os.Build;
 import android.os.Process;
 import android.util.Log;
 import android.widget.Toast;
-import androidx.documentfile.provider.DocumentFile;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.AddRepoIntentService;
@@ -48,6 +48,8 @@ import java.util.ArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
+
+import androidx.documentfile.provider.DocumentFile;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous scanning of a

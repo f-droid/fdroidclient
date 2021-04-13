@@ -21,7 +21,6 @@
 package org.fdroid.fdroid.installer;
 
 import android.annotation.SuppressLint;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -29,11 +28,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentActivity;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * A transparent activity as a wrapper around Android's PackageInstaller Intents

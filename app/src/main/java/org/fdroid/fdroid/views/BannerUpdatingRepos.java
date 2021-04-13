@@ -4,12 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Widget which reflects whether or not a repo update is currently in progress or not. If so, shows

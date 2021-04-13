@@ -10,6 +10,7 @@ import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
 

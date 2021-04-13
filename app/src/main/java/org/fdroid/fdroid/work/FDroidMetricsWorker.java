@@ -24,20 +24,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import androidx.annotation.NonNull;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ListenableWorker;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-import androidx.work.Worker;
-import androidx.work.WorkerParameters;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -62,6 +56,15 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ListenableWorker;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 /**
  * This gathers all the information needed for F-Droid Metrics, aka the

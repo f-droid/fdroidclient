@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Handles setting up and generating the local repo used to swap apps, including

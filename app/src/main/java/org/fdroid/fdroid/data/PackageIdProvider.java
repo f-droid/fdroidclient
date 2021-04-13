@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
+
+import androidx.annotation.NonNull;
 
 public class PackageIdProvider extends FDroidProvider {
 

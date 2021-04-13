@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.os.RemoteException;
-import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.IndexUpdater;
@@ -16,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
 
 public class RepoPersister {
 

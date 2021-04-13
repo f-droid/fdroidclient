@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.Context;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.junit.Before;

@@ -19,11 +19,12 @@
 
 package org.fdroid.fdroid.data;
 
-import androidx.annotation.Nullable;
 import org.fdroid.fdroid.Utils;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Represents action requests embedded in the index XML received from a repo.

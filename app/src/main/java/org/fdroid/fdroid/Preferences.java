@@ -30,8 +30,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.text.format.DateUtils;
 import android.util.Log;
-import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
+
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -43,6 +42,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 /**
  * Handles shared preferences for FDroid, looking after the names of

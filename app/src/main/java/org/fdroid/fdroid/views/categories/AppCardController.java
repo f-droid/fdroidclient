@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.views.AppDetailsActivity;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +19,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.views.AppDetailsActivity;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout

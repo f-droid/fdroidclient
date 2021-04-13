@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.annotation.Nullable;
 
 // Call getIncompatibleReasons(apk) on an instance of this class to
 // find reasons why an apk may be incompatible with the user's device.

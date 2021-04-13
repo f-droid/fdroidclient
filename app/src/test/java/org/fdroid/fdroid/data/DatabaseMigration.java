@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ContentProviderController;
 import org.robolectric.annotation.Config;
+
+import androidx.test.core.app.ApplicationProvider;
 
 @Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)

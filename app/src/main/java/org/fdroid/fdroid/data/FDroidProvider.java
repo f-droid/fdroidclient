@@ -8,11 +8,12 @@ import android.content.OperationApplicationException;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.BuildConfig;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 public abstract class FDroidProvider extends ContentProvider {
 

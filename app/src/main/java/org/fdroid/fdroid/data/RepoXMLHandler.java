@@ -21,8 +21,7 @@ package org.fdroid.fdroid.data;
 
 import android.Manifest;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.xml.sax.Attributes;
@@ -33,6 +32,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Parses the index.xml into Java data structures.

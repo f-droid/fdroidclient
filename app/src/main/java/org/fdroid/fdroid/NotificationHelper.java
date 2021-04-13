@@ -20,11 +20,6 @@ import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
@@ -37,6 +32,11 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 @SuppressWarnings("LineLength")
 public class NotificationHelper {

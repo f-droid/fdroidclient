@@ -12,8 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.IndexUpdater;
@@ -49,6 +48,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * The {@link SwapService} deals with managing the entire workflow from selecting apps to

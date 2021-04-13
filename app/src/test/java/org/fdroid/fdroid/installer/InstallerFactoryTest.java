@@ -1,13 +1,15 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.ContextWrapper;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 

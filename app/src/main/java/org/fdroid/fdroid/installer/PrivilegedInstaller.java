@@ -29,8 +29,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
-import androidx.annotation.NonNull;
 import android.util.Log;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -39,6 +39,8 @@ import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
 
 /**
  * Installer that only works if the "F-Droid Privileged

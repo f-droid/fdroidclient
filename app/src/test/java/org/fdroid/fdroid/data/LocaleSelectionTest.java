@@ -1,8 +1,9 @@
 package org.fdroid.fdroid.data;
 
 import android.os.Build;
-import androidx.core.os.LocaleListCompat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.TestUtils;
 import org.junit.Assume;
@@ -18,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import androidx.core.os.LocaleListCompat;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

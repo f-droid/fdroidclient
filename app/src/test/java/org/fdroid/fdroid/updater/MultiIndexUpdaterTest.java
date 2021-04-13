@@ -2,7 +2,6 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.IndexUpdater;
@@ -26,6 +25,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import androidx.annotation.NonNull;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

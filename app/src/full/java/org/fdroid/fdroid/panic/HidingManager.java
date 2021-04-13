@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.appcompat.app.AlertDialog;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.main.MainActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationManagerCompat;
 
 /**
  * This class is encapsulating all methods related to hiding the app from the launcher

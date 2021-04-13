@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.panic;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,16 +15,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.TypedValue;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.preference.CheckBoxPreference;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -33,6 +22,16 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import java.util.ArrayList;
 import java.util.Set;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
 import info.guardianproject.panic.Panic;
 import info.guardianproject.panic.PanicResponder;
 

@@ -1,11 +1,12 @@
 package org.fdroid.fdroid.data;
 
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 abstract class QueryBuilder {
 

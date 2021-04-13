@@ -23,8 +23,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Apk;
+
+import androidx.annotation.NonNull;
 
 public class FileInstaller extends Installer {
 

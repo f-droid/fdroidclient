@@ -2,15 +2,17 @@ package org.fdroid.fdroid.views;
 
 import android.content.Context;
 import android.database.Cursor;
-import androidx.cursoradapter.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.Repo;
+
+import androidx.cursoradapter.widget.CursorAdapter;
 
 public class RepoAdapter extends CursorAdapter {
 

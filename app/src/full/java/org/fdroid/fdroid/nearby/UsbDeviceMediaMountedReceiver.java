@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+
 import org.fdroid.fdroid.views.main.NearbyViewBinder;
 
 public class UsbDeviceMediaMountedReceiver extends BroadcastReceiver {

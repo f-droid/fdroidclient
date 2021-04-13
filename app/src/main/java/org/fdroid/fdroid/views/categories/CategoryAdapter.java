@@ -1,15 +1,16 @@
 package org.fdroid.fdroid.views.categories;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.DiffUtil;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 
 public class CategoryAdapter extends ListAdapter<String, CategoryController> {
 

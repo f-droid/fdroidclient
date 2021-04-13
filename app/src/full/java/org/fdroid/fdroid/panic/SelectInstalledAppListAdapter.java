@@ -1,15 +1,17 @@
 package org.fdroid.fdroid.panic;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
 import org.fdroid.fdroid.views.installed.InstalledAppListItemController;
 
 import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectInstalledAppListAdapter extends InstalledAppListAdapter {
     private final Set<String> selectedApps;

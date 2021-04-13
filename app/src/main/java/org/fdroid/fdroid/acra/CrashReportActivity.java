@@ -2,11 +2,12 @@ package org.fdroid.fdroid.acra;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 import android.widget.EditText;
 
 import org.acra.dialog.BaseCrashReportDialog;
 import org.fdroid.fdroid.R;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class CrashReportActivity extends BaseCrashReportDialog
         implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {

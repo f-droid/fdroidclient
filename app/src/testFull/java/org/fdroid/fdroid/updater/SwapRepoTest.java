@@ -8,8 +8,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
@@ -44,6 +42,8 @@ import java.io.File;
 import java.io.IOException;
 import java.security.cert.Certificate;
 import java.util.List;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -1,10 +1,8 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
@@ -13,6 +11,10 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Shows apps which are:

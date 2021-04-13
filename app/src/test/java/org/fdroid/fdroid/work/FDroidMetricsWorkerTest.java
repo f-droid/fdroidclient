@@ -3,7 +3,7 @@ package org.fdroid.fdroid.work;
 import android.app.Application;
 import android.content.ContextWrapper;
 import android.text.format.DateUtils;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collection;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

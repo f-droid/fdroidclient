@@ -4,7 +4,7 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.Signature;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

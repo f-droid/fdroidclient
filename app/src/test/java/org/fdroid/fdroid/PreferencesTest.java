@@ -20,10 +20,8 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
-import androidx.test.core.app.ApplicationProvider;
-
 import android.util.Log;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +29,9 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowLog;
 
 import java.util.Map;
+
+import androidx.preference.PreferenceManager;
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

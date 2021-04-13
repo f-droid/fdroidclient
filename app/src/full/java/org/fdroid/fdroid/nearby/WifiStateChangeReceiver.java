@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
+
 import org.fdroid.fdroid.Utils;
 
 public class WifiStateChangeReceiver extends BroadcastReceiver {

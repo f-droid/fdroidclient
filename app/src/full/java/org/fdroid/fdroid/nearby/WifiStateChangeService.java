@@ -10,12 +10,9 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-import cc.mvdan.accesspoint.WifiApControl;
+
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
@@ -33,6 +30,11 @@ import java.net.SocketException;
 import java.security.cert.Certificate;
 import java.util.Enumeration;
 import java.util.Locale;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import cc.mvdan.accesspoint.WifiApControl;
 
 /**
  * Handle state changes to the device's wifi, storing the required bits.

@@ -3,6 +3,7 @@ package org.fdroid.fdroid.net;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
+
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;

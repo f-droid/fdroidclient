@@ -2,7 +2,7 @@ package org.fdroid.fdroid.net;
 
 import android.net.Uri;
 import android.text.format.DateUtils;
-import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
@@ -14,6 +14,8 @@ import java.io.OutputStream;
 import java.net.ConnectException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.annotation.NonNull;
 
 public abstract class Downloader {
 

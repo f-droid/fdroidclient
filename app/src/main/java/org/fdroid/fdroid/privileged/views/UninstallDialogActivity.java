@@ -19,21 +19,22 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-import androidx.appcompat.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.installer.Installer;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * This class provides the confirmation prompt for when the user chooses to

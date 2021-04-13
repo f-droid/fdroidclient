@@ -28,15 +28,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
 
 public class AntiFeaturesListingView extends RecyclerView {
 

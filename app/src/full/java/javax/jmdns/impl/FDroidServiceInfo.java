@@ -4,11 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
-import javax.jmdns.ServiceInfo;
-import javax.jmdns.impl.util.ByteWrangler;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.UnknownHostException;
+
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.impl.util.ByteWrangler;
 
 /**
  * The ServiceInfo class needs to be serialized in order to be sent as an Android broadcast.

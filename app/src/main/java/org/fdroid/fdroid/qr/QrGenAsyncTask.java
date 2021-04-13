@@ -1,18 +1,21 @@
 package org.fdroid.fdroid.qr;
 
 import android.annotation.TargetApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Display;
 import android.widget.ImageView;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
+
 import org.fdroid.fdroid.Utils;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
     private static final String TAG = "QrGenAsyncTask";

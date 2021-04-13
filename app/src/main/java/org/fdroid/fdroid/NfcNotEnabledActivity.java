@@ -6,6 +6,7 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 // aka Android 4.0 aka Ice Cream Sandwich

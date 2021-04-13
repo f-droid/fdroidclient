@@ -8,11 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -21,6 +17,12 @@ import org.fdroid.fdroid.data.Apk;
 
 import java.io.File;
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 public class FileInstallerActivity extends FragmentActivity {
 

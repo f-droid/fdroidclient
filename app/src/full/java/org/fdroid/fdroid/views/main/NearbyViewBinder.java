@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.main;
 
 import android.Manifest;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.UriPermission;
@@ -22,9 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
@@ -33,6 +30,11 @@ import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 
 import java.io.File;
 import java.util.List;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * A splash screen encouraging people to start the swap process. The swap

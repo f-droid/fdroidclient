@@ -27,7 +27,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Process;
 import android.text.TextUtils;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -37,6 +37,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Saves all activity of installs and uninstalls to the database for later use, like

@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.net.Uri;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 

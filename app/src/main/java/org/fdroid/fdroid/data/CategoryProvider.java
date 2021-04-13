@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
@@ -15,6 +15,8 @@ import org.fdroid.fdroid.data.Schema.PackageTable;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
 
 public class CategoryProvider extends FDroidProvider {
     public static final String TAG = "CategoryProvider";

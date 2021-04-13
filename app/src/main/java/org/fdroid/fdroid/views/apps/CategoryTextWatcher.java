@@ -3,14 +3,16 @@ package org.fdroid.fdroid.views.apps;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.TtsSpan;
 import android.widget.EditText;
+
 import org.fdroid.fdroid.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * The search input treats text before the first colon as a category name. Text after this colon

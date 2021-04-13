@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
-import androidx.annotation.StringDef;
 import android.util.Log;
+
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
@@ -28,6 +28,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.StringDef;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

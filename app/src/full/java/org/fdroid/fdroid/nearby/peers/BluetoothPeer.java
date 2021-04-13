@@ -5,9 +5,9 @@ import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 import android.text.TextUtils;
 
-import androidx.annotation.Nullable;
-
 import org.fdroid.fdroid.R;
+
+import androidx.annotation.Nullable;
 
 public class BluetoothPeer implements Peer {
 

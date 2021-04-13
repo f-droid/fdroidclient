@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable.Cols;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class AppPrefsProvider extends FDroidProvider {
 

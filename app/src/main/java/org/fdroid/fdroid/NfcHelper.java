@@ -1,7 +1,6 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -11,6 +10,8 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NfcHelper {
 

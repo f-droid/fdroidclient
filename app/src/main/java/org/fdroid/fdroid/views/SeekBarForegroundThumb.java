@@ -6,10 +6,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 
+import org.fdroid.fdroid.R;
+
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.core.content.ContextCompat;
-
-import org.fdroid.fdroid.R;
 
 /**
  * SeekBar that does not show the TickMark above the thumb

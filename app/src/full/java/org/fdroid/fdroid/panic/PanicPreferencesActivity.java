@@ -3,12 +3,12 @@ package org.fdroid.fdroid.panic;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PanicPreferencesActivity extends AppCompatActivity {
 

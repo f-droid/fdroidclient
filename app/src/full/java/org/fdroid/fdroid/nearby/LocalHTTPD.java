@@ -35,11 +35,9 @@ package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.net.Uri;
-import fi.iki.elonen.NanoHTTPD;
-import fi.iki.elonen.NanoHTTPD.Response.IStatus;
+
 import org.fdroid.fdroid.BuildConfig;
 
-import javax.net.ssl.SSLServerSocketFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -61,6 +59,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
+
+import javax.net.ssl.SSLServerSocketFactory;
+
+import fi.iki.elonen.NanoHTTPD;
+import fi.iki.elonen.NanoHTTPD.Response.IStatus;
 
 /**
  * A HTTP server for serving the files that are being swapped via WiFi, etc.

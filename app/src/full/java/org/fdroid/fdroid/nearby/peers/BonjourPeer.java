@@ -2,12 +2,14 @@ package org.fdroid.fdroid.nearby.peers;
 
 import android.net.Uri;
 import android.os.Parcel;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.FDroidApp;
 
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.impl.FDroidServiceInfo;
+
+import androidx.annotation.Nullable;
 
 public class BonjourPeer extends WifiPeer {
     private static final String TAG = "BonjourPeer";

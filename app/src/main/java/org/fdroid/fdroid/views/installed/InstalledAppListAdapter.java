@@ -1,15 +1,17 @@
 package org.fdroid.fdroid.views.installed;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.provider.BaseColumns;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
 

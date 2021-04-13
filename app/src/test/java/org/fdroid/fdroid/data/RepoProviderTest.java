@@ -25,7 +25,6 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.Nullable;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -39,6 +38,8 @@ import org.robolectric.annotation.Config;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
+import androidx.annotation.Nullable;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

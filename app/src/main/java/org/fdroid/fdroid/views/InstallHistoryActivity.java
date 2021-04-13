@@ -28,14 +28,12 @@ import android.os.ParcelFileDescriptor;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ShareCompat;
-import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.Preferences;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -46,6 +44,9 @@ import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 
 public class InstallHistoryActivity extends AppCompatActivity {
     public static final String TAG = "InstallHistoryActivity";

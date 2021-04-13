@@ -8,8 +8,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.text.TextUtils;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -17,6 +15,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public final class Languages {
     public static final String TAG = "Languages";

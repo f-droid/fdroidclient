@@ -36,8 +36,6 @@ package org.fdroid.fdroid.nearby;
 import android.content.Context;
 import android.text.TextUtils;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.Utils;
@@ -58,6 +56,8 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;

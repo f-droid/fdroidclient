@@ -3,11 +3,13 @@ package org.fdroid.fdroid.data;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.ContextWrapper;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.robolectric.android.controller.ContentProviderController;
+
+import androidx.test.core.app.ApplicationProvider;
 
 public abstract class FDroidProviderTest { // NOPMD This abstract class does not have any abstract methods
 

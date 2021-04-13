@@ -45,12 +45,6 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.collection.LongSparseArray;
-import androidx.core.content.ContextCompat;
 
 import com.nostra13.universalimageloader.cache.disc.DiskCache;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
@@ -59,8 +53,7 @@ import com.nostra13.universalimageloader.core.DefaultConfigurationFactory;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
+
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
@@ -84,12 +77,22 @@ import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 
-import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
 import java.util.UUID;
+
+import javax.microedition.khronos.opengles.GL10;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.collection.LongSparseArray;
+import androidx.core.content.ContextCompat;
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 @ReportsCrashes(mailTo = BuildConfig.ACRA_REPORT_EMAIL,
         mode = ReportingInteractionMode.DIALOG,

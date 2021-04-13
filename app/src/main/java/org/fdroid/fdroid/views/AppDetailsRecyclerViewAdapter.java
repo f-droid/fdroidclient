@@ -30,23 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
-import androidx.core.text.HtmlCompat;
-import androidx.core.text.util.LinkifyCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.widget.TextViewCompat;
-import androidx.gridlayout.widget.GridLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -67,6 +51,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
+import androidx.core.text.HtmlCompat;
+import androidx.core.text.util.LinkifyCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.TextViewCompat;
+import androidx.gridlayout.widget.GridLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter

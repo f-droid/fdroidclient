@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import android.content.Context;
+
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 

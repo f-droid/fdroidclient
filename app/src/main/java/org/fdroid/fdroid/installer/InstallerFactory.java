@@ -21,10 +21,12 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
+
+import androidx.annotation.NonNull;
 
 public class InstallerFactory {
 

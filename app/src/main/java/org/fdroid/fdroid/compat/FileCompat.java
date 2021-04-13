@@ -5,14 +5,14 @@ import android.os.Build;
 import android.system.ErrnoException;
 import android.util.Log;
 
-import androidx.annotation.RequiresApi;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * This class works only with {@link SanitizedFile} instances to enforce

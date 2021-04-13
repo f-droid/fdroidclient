@@ -1,10 +1,10 @@
 package org.fdroid.fdroid;
 
-import androidx.annotation.NonNull;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import androidx.annotation.NonNull;
 
 class ProgressBufferedInputStream extends BufferedInputStream {
 

@@ -29,7 +29,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Process;
 import android.util.Log;
-import androidx.core.content.ContextCompat;
+
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Utils;
@@ -43,6 +43,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * An {@link IntentService} subclass for scanning removable "external storage"

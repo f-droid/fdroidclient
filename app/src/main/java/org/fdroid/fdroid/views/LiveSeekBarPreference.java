@@ -1,13 +1,15 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
-import androidx.preference.PreferenceViewHolder;
-import androidx.preference.SeekBarPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.R;
+
+import androidx.preference.PreferenceViewHolder;
+import androidx.preference.SeekBarPreference;
 
 public class LiveSeekBarPreference extends SeekBarPreference {
     private SeekBarLiveUpdater seekBarLiveUpdater;

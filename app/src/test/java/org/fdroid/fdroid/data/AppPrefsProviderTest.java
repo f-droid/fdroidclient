@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
+
 import org.fdroid.fdroid.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

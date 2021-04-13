@@ -3,7 +3,7 @@ package org.fdroid.fdroid.data;
 import android.content.ContextWrapper;
 import android.os.Environment;
 import android.webkit.MimeTypeMap;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.junit.Before;
@@ -16,6 +16,8 @@ import org.robolectric.shadows.ShadowMimeTypeMap;
 
 import java.io.File;
 import java.io.IOException;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -17,13 +17,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
+
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -53,6 +51,11 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
 
 /**
  * Represents an application, its availability, and its current installed state.

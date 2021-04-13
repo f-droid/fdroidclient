@@ -9,10 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.TaskStackBuilder;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -27,6 +24,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.TaskStackBuilder;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manages the state of APKs that are being installed or that have updates available.

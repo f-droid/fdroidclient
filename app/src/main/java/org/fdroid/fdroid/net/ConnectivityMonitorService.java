@@ -7,13 +7,10 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.content.ContextCompat;
-import androidx.core.net.ConnectivityManagerCompat;
-
 import android.util.Log;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
@@ -22,6 +19,11 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
+import androidx.core.net.ConnectivityManagerCompat;
 
 /**
  * An {@link JobIntentService} subclass for tracking whether there is metered or

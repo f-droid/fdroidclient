@@ -1,11 +1,12 @@
 package org.fdroid.fdroid.views;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 @SuppressWarnings("LineLength")
 public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {

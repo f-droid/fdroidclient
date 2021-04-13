@@ -1,11 +1,9 @@
 package org.fdroid.fdroid.mock;
 
-import androidx.annotation.NonNull;
-
-import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.RepoPushRequest;
+import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -19,6 +17,8 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import androidx.annotation.NonNull;
 
 import static org.junit.Assert.fail;
 

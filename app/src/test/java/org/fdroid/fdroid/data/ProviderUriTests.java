@@ -2,8 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentResolver;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.mock.MockApk;
@@ -15,6 +13,8 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.fdroid.fdroid.Assert.assertInvalidUri;
 import static org.fdroid.fdroid.Assert.assertValidUri;

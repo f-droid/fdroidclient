@@ -2,6 +2,7 @@ package org.fdroid.fdroid;
 
 import android.app.Application;
 import android.content.ContentValues;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;

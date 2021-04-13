@@ -1,10 +1,8 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
@@ -14,6 +12,10 @@ import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.

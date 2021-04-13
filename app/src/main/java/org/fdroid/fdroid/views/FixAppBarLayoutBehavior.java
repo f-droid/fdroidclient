@@ -17,11 +17,13 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
-import com.google.android.material.appbar.AppBarLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.google.android.material.appbar.AppBarLayout;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
 
 /**
  * Workaround AppBarLayout.Behavior for https://issuetracker.google.com/66996774

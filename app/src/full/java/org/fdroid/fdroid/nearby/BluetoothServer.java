@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-import fi.iki.elonen.NanoHTTPD;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.httpish.Request;
 import org.fdroid.fdroid.nearby.httpish.Response;
@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import fi.iki.elonen.NanoHTTPD;
 
 /**
  * Act as a layer on top of LocalHTTPD server, by forwarding requests served

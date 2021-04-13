@@ -1,15 +1,18 @@
 package org.fdroid.fdroid.views.updates.items;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
+
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Apps which we want to show some more substantial information about.

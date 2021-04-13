@@ -5,8 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
@@ -17,6 +15,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.Map;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
 import static org.fdroid.fdroid.Assert.assertResultCount;

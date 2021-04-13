@@ -4,8 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.TestUtils;
@@ -22,6 +20,8 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

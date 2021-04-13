@@ -25,12 +25,14 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
 import java.util.Arrays;
 import java.util.HashSet;
+
+import androidx.annotation.Nullable;
 
 /**
  * This ApkVerifier verifies that the downloaded apk corresponds to the Apk information

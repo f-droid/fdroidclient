@@ -3,8 +3,6 @@ package org.fdroid.fdroid.nearby;
 import android.content.Context;
 import android.text.TextUtils;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Utils;
@@ -21,6 +19,8 @@ import java.security.cert.Certificate;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

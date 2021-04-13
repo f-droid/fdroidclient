@@ -26,10 +26,12 @@ import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
+
+import org.fdroid.fdroid.R;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import org.fdroid.fdroid.R;
 
 /**
  * Represents the main views that are accessible from the main screen via each

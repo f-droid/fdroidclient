@@ -31,8 +31,10 @@ import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.RequiresApi;
+
 import org.fdroid.fdroid.views.main.NearbyViewBinder;
+
+import androidx.annotation.RequiresApi;
 
 
 /**

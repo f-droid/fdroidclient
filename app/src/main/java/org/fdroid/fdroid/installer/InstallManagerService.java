@@ -12,8 +12,7 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -30,6 +29,9 @@ import org.fdroid.fdroid.net.DownloaderService;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manages the whole process when a background update triggers an install or the user

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;

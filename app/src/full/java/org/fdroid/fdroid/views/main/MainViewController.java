@@ -2,14 +2,14 @@ package org.fdroid.fdroid.views.main;
 
 import android.widget.FrameLayout;
 
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.PreferencesFragment;
+import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.PreferencesFragment;
-import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 
 /**
  * Decides which view on the main screen to attach to a given {@link FrameLayout}. This class

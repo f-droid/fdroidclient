@@ -3,8 +3,6 @@ package org.fdroid.fdroid.updater;
 import android.content.ContentValues;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import org.fdroid.fdroid.IndexUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -14,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

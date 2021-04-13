@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -29,6 +29,8 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.NoSuchAlgorithmException;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

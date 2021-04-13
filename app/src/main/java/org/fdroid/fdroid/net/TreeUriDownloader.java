@@ -3,7 +3,7 @@ package org.fdroid.fdroid.net;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
-import androidx.documentfile.provider.DocumentFile;
+
 import org.fdroid.fdroid.FDroidApp;
 
 import java.io.BufferedInputStream;
@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+
+import androidx.documentfile.provider.DocumentFile;
 
 /**
  * An {@link Downloader} subclass for downloading files from a repo on a

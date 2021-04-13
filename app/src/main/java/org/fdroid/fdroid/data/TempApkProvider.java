@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
+
+import androidx.annotation.NonNull;
 
 /**
  * This class does all of its operations in a temporary sqlite table.

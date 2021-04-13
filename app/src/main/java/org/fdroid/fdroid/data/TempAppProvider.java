@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -16,6 +16,8 @@ import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * This class does all of its operations in a temporary sqlite table.

@@ -26,6 +26,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
@@ -34,14 +42,6 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.appbar.MaterialToolbar;
-
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
 
 public class InstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

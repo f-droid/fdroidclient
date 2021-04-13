@@ -6,9 +6,8 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
 import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
@@ -25,6 +24,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class ApkProvider extends FDroidProvider {
 

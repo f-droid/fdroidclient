@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -28,10 +31,6 @@ import androidx.cursoradapter.widget.CursorAdapter;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 
 public class SelectAppsView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
 

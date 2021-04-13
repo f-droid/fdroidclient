@@ -28,9 +28,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PatternMatcher;
-import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -41,6 +40,9 @@ import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 import org.fdroid.fdroid.privileged.views.UninstallDialogActivity;
 
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Handles the actual install process.  Subclasses implement the details.

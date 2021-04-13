@@ -1,8 +1,8 @@
 package org.fdroid.fdroid.updater;
 
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
@@ -47,6 +48,8 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import androidx.annotation.NonNull;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;

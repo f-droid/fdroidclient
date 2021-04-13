@@ -1,12 +1,12 @@
 package org.fdroid.fdroid.views.updates;
 
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
-
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.updates.items.AppStatusListItemController;
 import org.fdroid.fdroid.views.updates.items.KnownVulnAppListItemController;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Certain views within the {@link UpdatesAdapter} can be swiped to dismiss. Depending on which item is swiped, there

@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.nearby.peers;
 
 import android.os.Parcelable;
+
 import androidx.annotation.DrawableRes;
 
 /**

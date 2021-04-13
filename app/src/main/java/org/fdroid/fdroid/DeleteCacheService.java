@@ -3,13 +3,15 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
 
 /**
  * An {@link JobIntentService} subclass for deleting the full cache for this app.

@@ -25,8 +25,6 @@ package org.fdroid.fdroid.data;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.fdroid.fdroid.mock.RepoDetails;
@@ -51,6 +49,8 @@ import java.util.TimeZone;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import androidx.annotation.NonNull;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

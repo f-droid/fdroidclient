@@ -1,17 +1,13 @@
 package org.fdroid.fdroid.panic;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import info.guardianproject.panic.Panic;
-import info.guardianproject.panic.PanicResponder;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.DBHelper;
@@ -30,6 +26,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import info.guardianproject.panic.Panic;
+import info.guardianproject.panic.PanicResponder;
 
 /**
  * This {@link AppCompatActivity} is purely to run events in response to a panic trigger.

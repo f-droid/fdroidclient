@@ -6,14 +6,16 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
 import java.io.IOException;
 import java.net.BindException;
 import java.util.Random;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manage {@link LocalHTTPD} in a {@link HandlerThread};
