@@ -183,17 +183,17 @@
             android:summary="@string/keep_install_history_summary"
             android:title="@string/keep_install_history" />
         <CheckBoxPreference
-                android:key="sendToFdroidMetrics"
-                android:title="@string/send_to_fdroid_metrics"
-                android:summary="@string/send_to_fdroid_metrics_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="sendToFdroidMetrics"
+            android:title="@string/send_to_fdroid_metrics"
+            android:summary="@string/send_to_fdroid_metrics_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="hideAllNotifications"
-                android:title="@string/hide_all_notifications"
-                android:summary="@string/hide_all_notifications_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="hideAllNotifications"
+            android:title="@string/hide_all_notifications"
+            android:summary="@string/hide_all_notifications_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:dependency="expert"

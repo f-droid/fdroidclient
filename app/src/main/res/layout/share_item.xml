@@ -31,7 +31,6 @@
         android:minLines="2"
         android:maxLines="2"
         android:ellipsize="marquee"
-        app:fontFamily="sans-serif-condensed"
-        />
+        app:fontFamily="sans-serif-condensed" />
 
 </LinearLayout>

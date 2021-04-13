@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            tools:text="This repo is already setup, this will add new key information."/>
+            tools:text="This repo is already setup, this will add new key information." />
 
     </LinearLayout>
 
@@ -60,7 +60,9 @@
         android:layout_height="wrap_content"
         tools:text="Searching for repository at\nhttps://www.example.com/fdroid/repo/" />
 
-</RelativeLayout><!--
+</RelativeLayout>
+
+<!--
  * Copyright (C) 2009  Roberto Jacinto
  * roberto.jacinto@caixamagica.pt
  *

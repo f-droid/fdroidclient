@@ -37,10 +37,10 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_alignParentStart="true"
-                    
+
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="8dp"
-                    
+
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_repo_app_default"
                     android:transitionName="@string/transition_app_item_icon" />
@@ -51,10 +51,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    
+
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@id/icon"
-                    
+
                     android:orientation="vertical">
 
                     <TextView
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    
+
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/app__tts__cancel_download"
                     android:src="@android:drawable/ic_menu_close_clear_cancel" />
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    
+
                     android:contentDescription="@string/downloading"
                     android:focusable="true"
                     android:text="@string/downloading"
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toStartOf="@id/progress_cancel"
-                    
+
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     tools:text="500%" />
 
@@ -126,9 +126,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
-                    
-                    android:layout_toStartOf="@id/progress_cancel"
-                     />
+
+                    android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
             <!-- Install, Uninstall, Update, Open buttons -->
@@ -157,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    
+
                     android:layout_weight="0"
                     android:ellipsize="marquee"
                     tools:text="Open" />
@@ -223,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_warning"
-                
+
                 android:drawablePadding="10dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
@@ -249,7 +248,7 @@
                 android:id="@+id/anti_features_full_listing"
                 android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
-        android:background="?attr/appDetailsBackground"
-        android:fitsSystemWindows="true"
-        android:id="@+id/rootCoordinator">
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
+    android:background="?attr/appDetailsBackground"
+    android:fitsSystemWindows="true"
+    android:id="@+id/rootCoordinator">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height"
-            android:fitsSystemWindows="true"
-            app:layout_behavior="org.fdroid.fdroid.views.FixAppBarLayoutBehavior">
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="org.fdroid.fdroid.views.FixAppBarLayoutBehavior">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                app:contentScrim="?attr/colorPrimarySurface"
-                app:statusBarScrim="?attr/colorPrimarySurface"
-                app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
-                app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
-                app:expandedTitleMarginTop="24dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorPrimarySurface"
+            app:statusBarScrim="?attr/colorPrimarySurface"
+            app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
+            app:expandedTitleMarginTop="24dp">
 
             <org.fdroid.fdroid.views.apps.FeatureImage
-                    android:id="@+id/feature_graphic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:fitsSystemWindows="true"
-                    app:layout_collapseMode="parallax" />
+                android:id="@+id/feature_graphic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
 
             <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:navigationIcon="@drawable/ic_back"
-                    android:background="@android:color/transparent"
-                    app:layout_collapseMode="pin"
-                    style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
-                    android:elevation="0dp" />
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_back"
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="pin"
+                style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+                android:elevation="0dp" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDetails"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layoutManager="LinearLayoutManager"
-            tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
-            tools:showIn="@layout/app_details2" />
+        android:id="@+id/rvDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
+        tools:showIn="@layout/app_details2" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

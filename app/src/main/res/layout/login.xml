@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            tools:text="This repo is already setup, this will add new key information."/>
+            tools:text="This repo is already setup, this will add new key information." />
 
     </LinearLayout>
 

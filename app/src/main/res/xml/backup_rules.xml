@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
-	<!-- Don't include apks or the local swap repo -->
-    <exclude domain="file" path="."/>
+    <!-- Don't include apks or the local swap repo -->
+    <exclude
+        domain="file"
+        path="." />
 </full-backup-content>

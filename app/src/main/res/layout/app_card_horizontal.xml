@@ -40,7 +40,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <include layout="@layout/app_status_new"
+        <include
+            layout="@layout/app_status_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/new_tag"

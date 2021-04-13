@@ -41,7 +41,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="8dp" />
 
-        <include layout="@layout/app_status_new"
+        <include
+            layout="@layout/app_status_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/new_tag"

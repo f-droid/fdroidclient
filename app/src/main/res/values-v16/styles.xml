@@ -4,7 +4,8 @@
     <style name="BodyTextV16" parent="BodyTextBase">
         <item name="android:lineSpacingMultiplier">1.25</item>
     </style>
-    <style name="BodyText" parent="BodyTextV16"/>
+
+    <style name="BodyText" parent="BodyTextV16" />
 
     <style name="AppListItemStatusText" parent="AppListItemStatusTextBase">
         <item name="fontFamily">sans-serif-light</item>

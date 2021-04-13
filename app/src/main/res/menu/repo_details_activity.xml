@@ -7,7 +7,7 @@
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share"
         android:title="@string/menu_share"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/menu_enable_nfc"
         android:icon="@drawable/ic_nfc"
