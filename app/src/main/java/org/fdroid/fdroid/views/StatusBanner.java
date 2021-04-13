@@ -4,16 +4,22 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
+import java.util.List;
+
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
 
 /**
  * Banner widget which reflects current status related to repository updates.
@@ -37,6 +43,11 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
 
     private int updateServiceStatus = UpdateService.STATUS_COMPLETE_WITH_CHANGES;
     private int networkState = ConnectivityMonitorService.FLAG_NET_NO_LIMIT;
+    private int overDataState;
+    private int overWiFiState;
+    private List<Repo> localRepos;
+
+    private final SharedPreferences preferences;
 
     public StatusBanner(Context context) {
         this(context, null);
@@ -53,6 +64,8 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         setBackgroundColor(0xFF4A4A4A);
         setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         setTextColor(0xFFFFFFFF);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
@@ -69,6 +82,11 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         LocalBroadcastManager.getInstance(context).registerReceiver(onRepoFeedback,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
+        overDataState = Preferences.get().getOverData();
+        overWiFiState = Preferences.get().getOverWifi();
+        localRepos = UpdateService.getLocalRepos(context);
+        preferences.registerOnSharedPreferenceChangeListener(dataWifiChangeListener);
+
         setBannerTextAndVisibility();
     }
 
@@ -78,6 +96,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         Context context = getContext();
         LocalBroadcastManager.getInstance(context).unregisterReceiver(onRepoFeedback);
         context.unregisterReceiver(onNetworkStateChanged);
+        preferences.unregisterOnSharedPreferenceChangeListener(dataWifiChangeListener);
     }
 
     private void setBannerTextAndVisibility() {
@@ -88,6 +107,15 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
                 || networkState == ConnectivityMonitorService.FLAG_NET_DEVICE_AP_WITHOUT_INTERNET) {
             setText(R.string.banner_no_internet);
             setVisibility(View.VISIBLE);
+        } else if (overDataState == Preferences.OVER_NETWORK_NEVER
+                && overWiFiState == Preferences.OVER_NETWORK_NEVER) {
+            localRepos = UpdateService.getLocalRepos(getContext());
+            if (localRepos.size() == 0) {
+                setText(R.string.banner_no_data_or_wifi);
+                setVisibility(View.VISIBLE);
+            } else {
+                setVisibility(View.GONE);
+            }
         } else {
             setVisibility(View.GONE);
         }
@@ -113,4 +141,16 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
             setBannerTextAndVisibility();
         }
     };
+
+    private final SharedPreferences.OnSharedPreferenceChangeListener dataWifiChangeListener =
+            new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                    if (key == Preferences.PREF_OVER_DATA || key == Preferences.PREF_OVER_WIFI) {
+                        overDataState = Preferences.get().getOverData();
+                        overWiFiState = Preferences.get().getOverWifi();
+                        setBannerTextAndVisibility();
+                    }
+                }
+            };
 }

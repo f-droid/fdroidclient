@@ -253,6 +253,37 @@ public class UpdateService extends JobIntentService {
         }
     }
 
+    /**
+     * Return a {@link List} of all {@link Repo}s that have either a local
+     * canonical URL or a local mirror URL.  These are repos that can be
+     * updated and used without using the Internet.
+     */
+    public static List<Repo> getLocalRepos(Context context) {
+        return getLocalRepos(RepoProvider.Helper.all(context));
+    }
+
+    /**
+     * Return the repos in the {@code repos} {@link List} that have either a
+     * local canonical URL or a local mirror URL.  These are repos that can be
+     * updated and used without using the Internet.
+     */
+    public static List<Repo> getLocalRepos(List<Repo> repos) {
+        ArrayList<Repo> localRepos = new ArrayList<>();
+        for (Repo repo : repos) {
+            if (isLocalRepoAddress(repo.address)) {
+                localRepos.add(repo);
+            } else {
+                for (String mirrorAddress : repo.getMirrorList()) {
+                    if (isLocalRepoAddress(mirrorAddress)) {
+                        localRepos.add(repo);
+                        break;
+                    }
+                }
+            }
+        }
+        return localRepos;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -405,19 +436,7 @@ public class UpdateService extends JobIntentService {
                 Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
                 // keep track of repos that have a local copy in case internet is not available
-                ArrayList<Repo> localRepos = new ArrayList<>();
-                for (Repo repo : repos) {
-                    if (isLocalRepoAddress(repo.address)) {
-                        localRepos.add(repo);
-                    } else {
-                        for (String mirrorAddress : repo.getMirrorList()) {
-                            if (isLocalRepoAddress(mirrorAddress)) {
-                                localRepos.add(repo);
-                                break;
-                            }
-                        }
-                    }
-                }
+                List<Repo> localRepos = getLocalRepos(repos);
                 if (localRepos.size() > 0) {
                     repos = localRepos;
                 } else {
