@@ -379,6 +379,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="status_download_unknown_size">Downloading\n%2$s from\n%1$s</string>
     <string name="download_404">The requested file was not found.</string>
     <string name="banner_updating_repositories">Updating repositories</string>
+    <string name="banner_no_internet">No Internet</string>
     <string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
     <string name="status_inserting_apps">Saving app details</string>
