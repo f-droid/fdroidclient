@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -16,6 +17,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
+import java.util.Arrays;
 import java.util.List;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -99,6 +101,16 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         preferences.unregisterOnSharedPreferenceChangeListener(dataWifiChangeListener);
     }
 
+    /**
+     * Display banner with specific text depending on updating status, network
+     * connectivity, and Data/WiFi Settings.  This also takes into account
+     * whether there are local repos/mirrors available, e.g. if there is a
+     * mirror on a USB OTG thumb drive.  Local repos on system partitions are
+     * not treated as local mirrors here, they are shipped as part of the
+     * device, and users are generally not aware of them.
+     *
+     * @see org.fdroid.fdroid.data.DBHelper#loadAdditionalRepos(String)
+     */
     private void setBannerTextAndVisibility() {
         if (updateServiceStatus == UpdateService.STATUS_INFO) {
             setText(R.string.banner_updating_repositories);
@@ -110,7 +122,17 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         } else if (overDataState == Preferences.OVER_NETWORK_NEVER
                 && overWiFiState == Preferences.OVER_NETWORK_NEVER) {
             localRepos = UpdateService.getLocalRepos(getContext());
-            if (localRepos.size() == 0) {
+            boolean hasLocalNonSystemRepos = true;
+            final List<String> systemPartitions = Arrays.asList("odm", "oem", "product", "system", "vendor");
+            for (Repo repo : localRepos) {
+                for (String segment : Uri.parse(repo.address).getPathSegments()) {
+                    if (systemPartitions.contains(segment)) {
+                        hasLocalNonSystemRepos = false;
+                    }
+                    break; // only check the first segment NOPMD
+                }
+            }
+            if (localRepos.size() == 0 || !hasLocalNonSystemRepos) {
                 setText(R.string.banner_no_data_or_wifi);
                 setVisibility(View.VISIBLE);
             } else {
