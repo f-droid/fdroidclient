@@ -464,7 +464,7 @@
     <string name="scan_removable_storage_summary">Leta efter paketförråd på flyttbar lagring som SD-kort och USB-minnen</string>
     <string name="app_repository">Förråd: %1$s</string>
     <string name="main_menu__updates">Uppdateringar</string>
-    <string name="nearby_splash__read_external_storage">Sök i SD-kort efter förråd och speglar.</string>
+    <string name="nearby_splash__read_external_storage">Sök på SD-kort efter förråd och speglar.</string>
     <string name="nearby_splash__request_permission">Prova</string>
     <string name="not_visible_nearby">I närheten inte aktiverat</string>
     <string name="not_visible_nearby_description">Gör din enhet synlig innan du byter med närliggande enheter.</string>
@@ -507,4 +507,7 @@
     <string name="install_history_and_metrics">Installera historik och mätvärden</string>
     <string name="send_fdroid_metrics_json">%s-mätvärdesrapport som JSON-fil</string>
     <string name="send_fdroid_metrics_report">Skicka %s-mätvärdesrapport</string>
+    <string name="theme_follow_system">Följ systemet</string>
+    <string name="use_pure_black_dark_theme_summary">Rekommenderas endast för OLED-skärmar.</string>
+    <string name="use_pure_black_dark_theme">Använd ren svart bakgrund i mörkt tema</string>
 </resources>
