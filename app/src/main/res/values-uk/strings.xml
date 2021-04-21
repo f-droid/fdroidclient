@@ -524,4 +524,7 @@
     <string name="install_history_and_metrics">Встановити історію та показники</string>
     <string name="send_fdroid_metrics_json">%s звіт з показниками у вигляді файлу JSON</string>
     <string name="send_fdroid_metrics_report">Надіслати %s звіт з показниками</string>
+    <string name="theme_follow_system">Дотримуватись системної</string>
+    <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
+    <string name="use_pure_black_dark_theme">Використання чистого чорного тла в темній темі</string>
 </resources>
