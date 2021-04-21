@@ -32,7 +32,7 @@
     <string name="no">Nono</string>
     <string name="repo_add_title">Annanghe unu depòsitu nou</string>
     <string name="repo_add_add">Annanghe</string>
-    <string name="cancel">Annudda</string>
+    <string name="cancel">Annulla</string>
     <string name="enable">Abìlita</string>
     <string name="add_key">Annanghe crae</string>
     <string name="overwrite">Subraiscrie</string>
@@ -534,4 +534,7 @@
     <string name="install_history_and_metrics">Cronologia de sas installatzione e mètricas</string>
     <string name="send_fdroid_metrics_json">Raportu de anàlisi mètrica %s comente documentu JSON</string>
     <string name="send_fdroid_metrics_report">Imbia su raportu de anàlisi mètrica de %s</string>
+    <string name="theme_follow_system">Sighi su sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Racumandadu pro sos ischermos OLED.</string>
+    <string name="use_pure_black_dark_theme">Imprea un\'isfundu nieddu de su totu in su tema iscuru</string>
 </resources>
