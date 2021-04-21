@@ -521,4 +521,7 @@
     <string name="install_history_and_metrics">Installa storico e metriche</string>
     <string name="send_fdroid_metrics_json">Rapporo metriche %s come file JSON</string>
     <string name="send_fdroid_metrics_report">Invia rapporto metriche %s</string>
+    <string name="use_pure_black_dark_theme">Utilizzare lo sfondo nero puro nel tema scuro</string>
+    <string name="use_pure_black_dark_theme_summary">Raccomandato solo per schermi OLED.</string>
+    <string name="theme_follow_system">Segui il sistema</string>
 </resources>
