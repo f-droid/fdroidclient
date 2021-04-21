@@ -19,7 +19,7 @@
     <string name="repo_add_add">Adaugă</string>
     <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
-    <string name="menu_search">Căutați</string>
+    <string name="menu_search">Caută</string>
     <string name="menu_launch">Deschideți</string>
     <string name="menu_install">Instalează</string>
     <string name="menu_uninstall">Dezinstalează</string>
@@ -517,4 +517,7 @@
     <string name="menu_show_fdroid_metrics_report">Afișare raport de măsurători</string>
     <string name="toast_metrics_in_install_history">Raportul de măsurători %s poate fi vizualizat în istoricul de instalări</string>
     <string name="install_history_and_metrics">Istoric de instalări și măsurători</string>
+    <string name="theme_follow_system">Folosește tema sistemului</string>
+    <string name="use_pure_black_dark_theme_summary">Recomandat numai pentru ecrane OLED.</string>
+    <string name="use_pure_black_dark_theme">Utilizați un fundal negru pur în tema întunecată</string>
 </resources>
