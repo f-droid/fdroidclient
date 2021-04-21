@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">F-Droid</string>
-    <string name="menu_search">খুজো</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">এফ-ড্রয়েড</string>
+    <string name="menu_search">অনুসন্ধান</string>
     <string name="menu_settings">সেটিংস</string>
-    <string name="menu_manage">রিপোসিটরি</string>
+    <string name="menu_manage">ভাণ্ডার</string>
     <string name="cancel">বাতিল</string>
     <string name="back">পিছনে</string>
     <string name="no">না</string>
@@ -197,4 +197,29 @@
     <string name="swap_blank_wifi_ssid">(খালি)</string>
     <string name="category_Theming">থিমিং</string>
     <string name="repo_last_update">শেষ হালনাগাদ</string>
+    <string name="swap_scanning_for_peers">কাছাকাছি মানুষের জন্য অনুসন্ধান হচ্ছে…</string>
+    <string name="hide_on_long_search_press_title">অনুসন্ধান বোতাম লুকাও</string>
+    <string name="search_hint">অ্যাপ খুঁজো</string>
+    <string name="sort_search">অনুসন্ধান সাজাও</string>
+    <string name="clear_search">অনুসন্ধান পরিষ্কার করো</string>
+    <string name="add_key">চাবি যোগ করো</string>
+    <string name="repo_add_mirror">আয়না(মিরর) যোগ করো</string>
+    <string name="updates__show_updateable_apps">অ্যাপ দেখাও</string>
+    <string name="updates__hide_updateable_apps">অ্যাপ লুকাও</string>
+    <string name="update_all">সব হালনাগাদ</string>
+    <string name="installed_app__updates_ignored">হালনাগাদ উপেক্ষাকৃত</string>
+    <string name="installed_apps__activity_title">ইন্সটলকৃত অ্যাপ</string>
+    <string name="app_list__dismiss_downloading_app">ডাউনলোড বাতিলকৃত</string>
+    <string name="app_list__dismiss_vulnerable_app">ক্ষতির সম্ভাবনা উপেক্ষাকৃত</string>
+    <string name="app_list__dismiss_app_update">হালনাগাদ উপেক্ষাকৃত</string>
+    <string name="app_size">আকার: %1$s</string>
+    <string name="app_repository">ভাণ্ডার: %1$s</string>
+    <string name="app__tts__cancel_download">ডাউনলোড বাতিল করো</string>
+    <string name="app_version_x_installed">সংস্করণ %1$s</string>
+    <string name="app_not_installed">ইন্সটল হয়নি</string>
+    <string name="about_source">উৎস কোড</string>
+    <string name="about_forum">সহায়তা সভা</string>
+    <string name="undo">পূর্বাবস্থা</string>
+    <string name="notification_channel_updates_title">হালনাগাদ</string>
+    <string tools:ignore="UnusedResources" name="category_System">ব্যবস্থা</string>
 </resources>
