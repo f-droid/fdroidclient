@@ -506,4 +506,7 @@
     <string name="install_history_and_metrics">इतिहास और metrics इंस्टॉल करे</string>
     <string name="send_fdroid_metrics_json">%s मेट्रिक्स JSON फ़ाइल से report करे</string>
     <string name="send_fdroid_metrics_report">%s का Metrics Report भेजे</string>
+    <string name="theme_follow_system">सिस्टम का पालन करें</string>
+    <string name="use_pure_black_dark_theme_summary">केवल OLED स्क्रीन के लिए अनुशंसित।</string>
+    <string name="use_pure_black_dark_theme">डार्क थीम में शुद्ध काले रंग का उपयोग करें</string>
 </resources>
