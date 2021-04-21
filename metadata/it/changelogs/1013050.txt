@@ -1,1 +1,1 @@
-*Supporto dei temi legato ai temi Android incorporati
+* Supporto dei temi legato ai temi Android integrati (@proletarius101)
