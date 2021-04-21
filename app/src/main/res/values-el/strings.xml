@@ -134,7 +134,7 @@
     <string name="status_download_unknown_size">Λήψη
 \n%2$s από
 \n%1$s</string>
-    <string name="update_notification_title">Ενημέρωση αποθετηρίων</string>
+    <string name="banner_updating_repositories">Ενημέρωση αποθετηρίων</string>
     <string name="status_processing_xml_percent">Επεξεργασία %2$s / %3$s (%4$d%%) από %1$s</string>
     <string name="repos_unchanged">Όλα τα αποθετήρια είναι ενημερωμένα</string>
     <string name="all_other_repos_fine">Τα υπόλοιπα αποθετήρια δεν δημιούργησαν σφάλματα.</string>

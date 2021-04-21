@@ -146,7 +146,7 @@
     <string name="back">Zurück</string>
     <string name="bad_fingerprint">Falscher Fingerabdruck</string>
     <string name="invalid_url">Das ist keine gültige Adresse.</string>
-    <string name="update_notification_title">Paketquellenaktualisierung</string>
+    <string name="banner_updating_repositories">Paketquellenaktualisierung</string>
     <string name="pref_language">Sprache</string>
     <string name="pref_language_default">Systemstandard</string>
     <string name="wifi">WLAN</string>

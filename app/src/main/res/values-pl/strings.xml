@@ -132,7 +132,7 @@
     <string name="antitracklist">Ta aplikacja śledzi i raportuje Twoją aktywność</string>
     <string name="show_incompat_versions_on">Pokazuj aplikacje, które są niekompatybilne z tym urządzeniem</string>
     <string name="status_download">Pobieranie\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
-    <string name="update_notification_title">Aktualizowanie repozytoriów</string>
+    <string name="banner_updating_repositories">Aktualizowanie repozytoriów</string>
     <string name="status_processing_xml_percent">Przetwarzanie %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="no_permissions">Brak uprawnień</string>
     <string name="unsigned">Brak podpisu</string>

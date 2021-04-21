@@ -145,7 +145,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="status_download_unknown_size">Stahování\n%2$s z\n%1$s</string>
-    <string name="update_notification_title">Aktualizace repozitářů</string>
+    <string name="banner_updating_repositories">Aktualizace repozitářů</string>
     <string name="status_processing_xml_percent">Zpracovávání %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="all_other_repos_fine">Žádné jiné repozitáře nenahlásily chyby.</string>
     <string name="permissions">Oprávnění</string>

@@ -119,7 +119,7 @@
     <string name="back">返回</string>
     <string name="invalid_url">這不是有效的網址。</string>
     <string name="menu_changelog">更新日誌</string>
-    <string name="update_notification_title">正在更新軟件庫</string>
+    <string name="banner_updating_repositories">正在更新軟件庫</string>
     <string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
     <string name="repo_confirm_delete_body">刪除軟件庫後，庫中的應用程式將不會在 F-Droid 中出現。
 \n

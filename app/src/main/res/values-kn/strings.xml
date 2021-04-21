@@ -459,7 +459,7 @@
     <string name="status_inserting_x_apps">ಅಪ್ಲಿಕೇಶನ್ ವಿವರಗಳನ್ನು (%1$d /%2$d) %3$s ನಿಂದ ಉಳಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="status_connecting_to_repo">ಗೆ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ
 \n%1$s</string>
-    <string name="update_notification_title">ರೆಪೊಸಿಟರಿಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="banner_updating_repositories">ರೆಪೊಸಿಟರಿಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="download_404">ವಿನಂತಿಸಿದ ಫೈಲ್ ಕಂಡುಬಂದಿಲ್ಲ.</string>
     <string name="status_download_unknown_size">ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ
 \n%2$s ನಿಂದ

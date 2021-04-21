@@ -208,7 +208,7 @@
     <string name="menu_changelog">Cronologia</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="update_notification_title">Aggiornamento dei repository</string>
+    <string name="banner_updating_repositories">Aggiornamento dei repository</string>
     <string name="status_processing_xml_percent">Elaborazione %2$s/%3$s (%4$d%%) di %1$s</string>
     <string name="status_inserting_apps">Salvataggio dettagli applicazione</string>
     <string name="repo_details">Repository</string>

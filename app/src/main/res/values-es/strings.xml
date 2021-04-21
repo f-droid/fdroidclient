@@ -147,7 +147,7 @@
     <string name="bad_fingerprint">Huella digital incorrecta</string>
     <string name="invalid_url">No es una URL válida.</string>
     <string name="menu_changelog">Historial de cambios</string>
-    <string name="update_notification_title">Actualizando repositorios</string>
+    <string name="banner_updating_repositories">Actualizando repositorios</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Predeterminado del sistema</string>

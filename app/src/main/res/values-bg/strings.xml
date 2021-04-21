@@ -156,7 +156,7 @@
     <string name="interval_2w">През 2 седмици</string>
     <string name="downloading">Сваляне…</string>
     <string name="about_source">Изходен код</string>
-    <string name="update_notification_title">Обновяване на хранилищата</string>
+    <string name="banner_updating_repositories">Обновяване на хранилищата</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
     <string name="swap_choose_apps">Изберете приложения</string>

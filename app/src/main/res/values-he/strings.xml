@@ -92,7 +92,7 @@
     <string name="status_download">מתבצעת הורדה 
 \n%2$s / %3$s (%4$d%%) מתוך 
 \n%1$s</string>
-    <string name="update_notification_title">המאגרים מתעדכנים</string>
+    <string name="banner_updating_repositories">המאגרים מתעדכנים</string>
     <string name="status_processing_xml_percent">%2$s בהליכי עיבוד / %3$s (%4$d%%) מתוך %1$s</string>
     <string name="status_connecting_to_repo">מתבצעת התחברות אל 
 \n%1$s</string>

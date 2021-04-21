@@ -253,6 +253,37 @@ public class UpdateService extends JobIntentService {
         }
     }
 
+    /**
+     * Return a {@link List} of all {@link Repo}s that have either a local
+     * canonical URL or a local mirror URL.  These are repos that can be
+     * updated and used without using the Internet.
+     */
+    public static List<Repo> getLocalRepos(Context context) {
+        return getLocalRepos(RepoProvider.Helper.all(context));
+    }
+
+    /**
+     * Return the repos in the {@code repos} {@link List} that have either a
+     * local canonical URL or a local mirror URL.  These are repos that can be
+     * updated and used without using the Internet.
+     */
+    public static List<Repo> getLocalRepos(List<Repo> repos) {
+        ArrayList<Repo> localRepos = new ArrayList<>();
+        for (Repo repo : repos) {
+            if (isLocalRepoAddress(repo.address)) {
+                localRepos.add(repo);
+            } else {
+                for (String mirrorAddress : repo.getMirrorList()) {
+                    if (isLocalRepoAddress(mirrorAddress)) {
+                        localRepos.add(repo);
+                        break;
+                    }
+                }
+            }
+        }
+        return localRepos;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -264,7 +295,7 @@ public class UpdateService extends JobIntentService {
                 .setSmallIcon(R.drawable.ic_refresh)
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .setContentTitle(getString(R.string.update_notification_title));
+                .setContentTitle(getString(R.string.banner_updating_repositories));
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
     }
 
@@ -404,22 +435,11 @@ public class UpdateService extends JobIntentService {
             if (isLocalRepoAddress(address)) {
                 Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
-                boolean foundLocalRepo = false;
-                for (Repo repo : repos) {
-                    if (isLocalRepoAddress(repo.address)) {
-                        foundLocalRepo = true;
-                    } else {
-                        for (String mirrorAddress : repo.getMirrorList()) {
-                            if (isLocalRepoAddress(mirrorAddress)) {
-                                foundLocalRepo = true;
-                                //localRepos.add(repo);
-                                //FDroidApp.setLastWorkingMirror(repo.getId(), mirrorAddress);
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (!foundLocalRepo) {
+                // keep track of repos that have a local copy in case internet is not available
+                List<Repo> localRepos = getLocalRepos(repos);
+                if (localRepos.size() > 0) {
+                    repos = localRepos;
+                } else {
                     Utils.debugLog(TAG, "No internet, cannot update");
                     if (manualUpdate) {
                         Utils.showToastFromService(this, getString(R.string.warning_no_internet), Toast.LENGTH_SHORT);

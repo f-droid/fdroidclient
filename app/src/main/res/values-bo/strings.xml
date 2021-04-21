@@ -183,7 +183,7 @@
 \n%2$s ནས་
 \n%1$s</string>
     <string name="download_404">རེ་སྐུལ་ཞུས་པའི་ཡིག་ཆ་དེ་རྙེད་མ་སོང་།</string>
-    <string name="update_notification_title">མཛོད་ཁང་རྣམས་གསར་བསྒྱུར་བྱེད་བཞིན་པ།</string>
+    <string name="banner_updating_repositories">མཛོད་ཁང་རྣམས་གསར་བསྒྱུར་བྱེད་བཞིན་པ།</string>
     <string name="status_connecting_to_repo">%1$s འདིར་མཐུད་བཞིན་པ།</string>
     <string name="repos_unchanged">མཛོད་ཁང་ཚང་མ་དུས་ཐོག་ཏུ་ཡོད།</string>
     <string name="all_other_repos_fine">རེ་པོ་གཞན་དག་ཚང་མར་སྐྱོན་ཤོར་མིན་འདུག</string>

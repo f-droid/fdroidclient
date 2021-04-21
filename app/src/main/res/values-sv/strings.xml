@@ -154,7 +154,7 @@
     <string name="status_download_unknown_size">Hämtar
 \n%2$s från
 \n%1$s</string>
-    <string name="update_notification_title">Uppdaterar filförråd</string>
+    <string name="banner_updating_repositories">Uppdaterar filförråd</string>
     <string name="permissions">Behörigheter</string>
     <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>

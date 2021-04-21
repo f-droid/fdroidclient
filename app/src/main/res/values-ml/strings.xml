@@ -195,7 +195,7 @@
 \n %2$s നെ 
 \n %1$s ല്‍ നിന്ന്</string>
     <string name="download_404">അഭ്യർത്ഥിച്ച ഫയൽ കണ്ടെത്തിയില്ല.</string>
-    <string name="update_notification_title">ആപ്പ് ശേഖരണം പുതുക്കുന്നു</string>
+    <string name="banner_updating_repositories">ആപ്പ് ശേഖരണം പുതുക്കുന്നു</string>
     <string name="status_connecting_to_repo">ബന്ധിപ്പിക്കുന്നു 
 \n %1$s ലേക്ക്</string>
     <string name="repos_unchanged">എല്ലാ സംഭരണികളും കാലികമാണ്</string>

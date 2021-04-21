@@ -267,7 +267,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
      * @see #getTimeout()
      * @see Repo#getRandomMirror(String)
      */
-    public static String getNewMirrorOnError(@Nullable String urlString, Repo repo2) throws IOException {
+    public static synchronized String getNewMirrorOnError(@Nullable String urlString, Repo repo2) throws IOException {
         if (repo2.hasMirrors()) {
             if (numTries <= 0) {
                 if (timeout == Downloader.DEFAULT_TIMEOUT) {

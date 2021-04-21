@@ -46,7 +46,7 @@
     <string name="status_inserting_x_apps">Зачувување детали за апликацијата (%1$d/%2$d) од %3$s</string>
     <string name="status_connecting_to_repo">Поврзување со
 \n%1$s</string>
-    <string name="update_notification_title">Ажурирање на складиштата</string>
+    <string name="banner_updating_repositories">Ажурирање на складиштата</string>
     <string name="download_404">Бараната датотека не е пронајдена.</string>
     <string name="hide_on_long_search_press_summary">Долго притискање на копчето за пребарување ќе ја скрие апликацијата</string>
     <string name="hide_on_long_search_press_title">Сокриј со копчето за пребарување</string>

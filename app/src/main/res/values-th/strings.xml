@@ -208,7 +208,7 @@
     <string name="proxy_port_summary">หมายเลขพอร์ตพร็อกซีของคุณ (เช่น 8118)</string>
     <string name="status_download">กำลังดาวน์โหลด\n%2$s / %3$s (%4$d%%) จาก\n%1$s</string>
     <string name="status_download_unknown_size">กำลังดาวน์โหลด\n%2$s จาก\n%1$s</string>
-    <string name="update_notification_title">กำลังอัพเดตข้อมูลจากแหล่งโปรแกรม</string>
+    <string name="banner_updating_repositories">กำลังอัพเดตข้อมูลจากแหล่งโปรแกรม</string>
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
     <string name="wifi">Wi-Fi</string>

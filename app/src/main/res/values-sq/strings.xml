@@ -237,7 +237,7 @@
     <string name="hide_on_long_search_press_title">Fshihe me butonin e kërkimit</string>
     <string name="hide_on_long_search_press_summary">Prekja e zgjatur e butonit të kërkimit do të fshehë aplikacionin</string>
     <string name="download_404">Kartela e domosdoshme s’u gjet.</string>
-    <string name="update_notification_title">Përditësim deposh</string>
+    <string name="banner_updating_repositories">Përditësim deposh</string>
     <string name="repo_num_apps">Numër aplikacionesh</string>
     <string name="repo_official_mirrors">Pasqyra zyrtare</string>
     <string name="repo_user_mirrors">Pasqyra përdoruesi</string>

@@ -115,7 +115,7 @@
     <string name="proxy_host_summary">Jou proxy se hostnaam (bv. 127.0.0.1)</string>
     <string name="proxy_port">Proxypoort</string>
     <string name="proxy_port_summary">Jou proxy se poortnommer (bv. 8118)</string>
-    <string name="update_notification_title">Opdatering van argiewe</string>
+    <string name="banner_updating_repositories">Opdatering van argiewe</string>
     <string name="status_processing_xml_percent">Besig met %2$s / %3$s (%4$d%%) van %1$s</string>
     <string name="status_connecting_to_repo">Koppel tans aan
 \n%1$s</string>

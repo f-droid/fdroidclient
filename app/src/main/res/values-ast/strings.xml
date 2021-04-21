@@ -170,7 +170,7 @@
     <string name="bad_fingerprint">Buelga incorreuta</string>
     <string name="invalid_url">Esto nun ye una URL válida.</string>
     <string name="menu_changelog">Rexistru de cambeos</string>
-    <string name="update_notification_title">Anovando depósitos</string>
+    <string name="banner_updating_repositories">Anovando depósitos</string>
     <string name="pref_language">Llingua</string>
     <string name="pref_language_default">La del sistema</string>
     <string name="wifi">Wi-Fi</string>

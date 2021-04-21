@@ -21,7 +21,7 @@ import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
 import android.util.Log;
 import android.view.View;
-import org.fdroid.fdroid.views.BannerUpdatingRepos;
+import org.fdroid.fdroid.views.StatusBanner;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -267,7 +267,7 @@ public class MainActivityEspressoTest {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
         }
-        onView(Matchers.<View>instanceOf(BannerUpdatingRepos.class)).check(matches(not(isDisplayed())));
+        onView(Matchers.<View>instanceOf(StatusBanner.class)).check(matches(not(isDisplayed())));
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(allOf(withText(R.string.main_menu__latest_apps), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.swipe_to_refresh), isDisplayed()))

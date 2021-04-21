@@ -162,7 +162,7 @@
     <string name="status_download_unknown_size">%1$s konumundan
 \n%2$s
 \nindiriliyor</string>
-    <string name="update_notification_title">Depolar güncelleniyor</string>
+    <string name="banner_updating_repositories">Depolar güncelleniyor</string>
     <string name="status_processing_xml_percent">İşleniyor %2$s / %3$s (%%%4$d) kaynak: %1$s</string>
     <string name="status_inserting_apps">Uygulama ayrıntıları kaydediliyor</string>
     <string name="permissions">İzinler</string>

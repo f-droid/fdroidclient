@@ -112,7 +112,7 @@
         %2$s ကို
         ေဒါင္းလုတ္ဆြဲေနပါသည္
     </string>
-    <string name="update_notification_title">repositories ကိုအသစ္မြမ္းမံေနသည္</string>
+    <string name="banner_updating_repositories">repositories ကိုအသစ္မြမ္းမံေနသည္</string>
     <string name="status_processing_xml_percent">%1$s မွ %2$s / %3$s (%4$d%%) ကိုရယူေနသည္</string>
     <string name="status_connecting_to_repo">%1$s
         သို႔ခ်ိတ္ဆက္ေနသည္

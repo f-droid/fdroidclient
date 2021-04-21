@@ -90,7 +90,7 @@
     <string name="proxy_port">Проксі порт</string>
     <string name="proxy_port_summary">Номер порту вашого проксі (наприклад 8118)</string>
     <string name="status_download">Завантаження\n%2$s / %3$s (%4$d%%) з\n%1$s</string>
-    <string name="update_notification_title">Оновлення репозиторіїв</string>
+    <string name="banner_updating_repositories">Оновлення репозиторіїв</string>
     <string name="status_processing_xml_percent">Обробка %2$s / %3$s (%4$d%%) з %1$s</string>
     <string name="status_connecting_to_repo">З\'єднання з
 \n%1$s</string>

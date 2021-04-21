@@ -282,7 +282,7 @@
 \n%2$s frå
 \n%1$s</string>
     <string name="download_404">Fann ikkje førespurd fil.</string>
-    <string name="update_notification_title">Oppdaterer pakkebrønnar</string>
+    <string name="banner_updating_repositories">Oppdaterer pakkebrønnar</string>
     <string name="status_connecting_to_repo">Koplar til
 \n%1$s</string>
     <string name="status_inserting_x_apps">Lagrar appdetaljar (%1$d/%2$d) frå %3$s</string>

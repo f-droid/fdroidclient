@@ -135,7 +135,7 @@
     <string name="proxy_port_summary">رقم منفذ البروكسي الخاص بك (مثلا 8118)</string>
     <string name="status_download">تحميل\n%2$s / %3$s (%4$d%%) من\n%1$s</string>
     <string name="status_download_unknown_size">تحميل\n%2$s من\n%1$s</string>
-    <string name="update_notification_title">تحديث المستودعات</string>
+    <string name="banner_updating_repositories">تحديث المستودعات</string>
     <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) مِن %1$s</string>
     <string name="status_connecting_to_repo">جارٍ الاتصال ب
 \n %1$s</string>

@@ -192,7 +192,7 @@
     <string name="hide_on_long_search_press_title">శోధన బటన్తో దాచు</string>
     <string name="hide_on_long_search_press_summary">చాలాసేపు శోధన బటన్ను నొక్కినప్పుడు అనువర్తనం దాచబడుతుంది</string>
     <string name="download_404">అభ్యర్థించిన ఫైల్ కనుగొనబడలేదు.</string>
-    <string name="update_notification_title">రిపోజిటరీలను నవీకరిస్తోంది</string>
+    <string name="banner_updating_repositories">రిపోజిటరీలను నవీకరిస్తోంది</string>
     <string name="repos_unchanged">అన్ని రిపోజిటరీలు తాజావి</string>
     <string name="all_other_repos_fine">అన్ని ఇతర రేపోలు లోపాలు సృష్టించలేదు.</string>
     <string name="global_error_updating_repos">నవీకరణ సమయంలో లోపం: %s</string>

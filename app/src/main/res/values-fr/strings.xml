@@ -148,7 +148,7 @@
     <string name="bad_fingerprint">Mauvaise empreinte</string>
     <string name="invalid_url">Ceci n\'est pas une URL valide.</string>
     <string name="menu_changelog">Journal des changements</string>
-    <string name="update_notification_title">Mise à jour des dépôts</string>
+    <string name="banner_updating_repositories">Mise à jour des dépôts</string>
     <string name="pref_language">Langue</string>
     <string name="pref_language_default">Langue du système</string>
     <string name="wifi">Wi-Fi</string>

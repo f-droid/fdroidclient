@@ -141,7 +141,7 @@
     <string name="status_download_unknown_size">Elŝutado
 \n%2$s el
 \n%1$s</string>
-    <string name="update_notification_title">Ĝisdatigado de deponejoj</string>
+    <string name="banner_updating_repositories">Ĝisdatigado de deponejoj</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
     <string name="status_connecting_to_repo">Konektado al
 \n%1$s</string>

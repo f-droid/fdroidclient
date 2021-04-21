@@ -118,7 +118,7 @@
     <string name="proxy_port">درگاه پروکسی</string>
     <string name="proxy_port_summary">شمارهٔ درگاه پروکسی (مثلاً 8118)</string>
     <string name="status_download_unknown_size">در حال بارگیری\n%2$s از\n%1$s</string>
-    <string name="update_notification_title">در حال به‌روز رسانی مخزن‌ها</string>
+    <string name="banner_updating_repositories">در حال به‌روز رسانی مخزن‌ها</string>
     <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$d%%) از %1$s</string>
     <string name="status_inserting_apps">در حال ذخیرهٔ جزئیات برنامه</string>
     <string name="repos_unchanged">تمام مخزن‌ها به‌روز هستند</string>
