@@ -511,4 +511,7 @@
     <string name="install_history_and_metrics">Installatie historie en statistieken</string>
     <string name="send_fdroid_metrics_json">%s statistiekverslag als JSON bestand</string>
     <string name="send_fdroid_metrics_report">Verstuur %s Statistiek Verslag</string>
+    <string name="theme_follow_system">Volg systeem</string>
+    <string name="use_pure_black_dark_theme_summary">Alleen aanbevolen voor OLED-schermen.</string>
+    <string name="use_pure_black_dark_theme">Gebruik puur zwarte achtergrond bij donker thema</string>
 </resources>
