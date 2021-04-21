@@ -499,4 +499,6 @@
     <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksen vaihto-ilmoitukset.</string>
     <string name="notification_channel_installs_description">Näyttää sovelluksen asennusilmoitukset.</string>
     <string name="notification_channel_installs_title">Asennukset</string>
+    <string name="use_pure_black_dark_theme_summary">Suositellaan ainoastaan OLED-näytöille.</string>
+    <string name="use_pure_black_dark_theme">Käytä täysin mustaa taustaa tummassa teemassa</string>
 </resources>
