@@ -501,4 +501,7 @@
     <string name="install_history_and_metrics">سنجش و تاریخچهٔ نصب</string>
     <string name="send_fdroid_metrics_json">گزارش سنجش %s در قالب پروندهٔ جی‌سان</string>
     <string name="send_fdroid_metrics_report">فرستادن گزارش سنجش %s</string>
+    <string name="theme_follow_system">از سیستم تبعیت کن</string>
+    <string name="use_pure_black_dark_theme_summary">فقط برای صفحه های OLED توصیه می شود.</string>
+    <string name="use_pure_black_dark_theme">از زمینه سیاه خالص در تم تاریک استفاده کن</string>
 </resources>
