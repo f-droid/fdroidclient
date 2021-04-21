@@ -493,4 +493,16 @@
     <string name="notification_channel_swaps_title">Bytter</string>
     <string name="notification_channel_installs_description">Viser program installation påmindelser.</string>
     <string name="notification_channel_installs_title">Installeringer</string>
+    <string name="theme_follow_system">Følg systemet</string>
+    <string name="use_pure_black_dark_theme_summary">Anbefales kun til OLED-skærme.</string>
+    <string name="use_pure_black_dark_theme">Anvend helt sort baggrund i mørkt tema</string>
+    <string name="menu_show_install_history">Vis installationshistorik</string>
+    <string name="menu_show_fdroid_metrics_report">Vis målingsrapport</string>
+    <string name="toast_metrics_in_install_history">Rapporten %s Metric kan ses i fremviser til Installationshistorik</string>
+    <string name="send_to_fdroid_metrics_summary">Send anonyme data ugentligt til F-Droid Metrics (kræver at Keep installerer historik)</string>
+    <string name="send_to_fdroid_metrics">Send forbrugsdata</string>
+    <string name="fdroid_metrics_report">%s Målerapport</string>
+    <string name="install_history_and_metrics">Installér historik og måling</string>
+    <string name="send_fdroid_metrics_json">%s målerapport som en JSON-fil</string>
+    <string name="send_fdroid_metrics_report">Send %s målerapport</string>
 </resources>
