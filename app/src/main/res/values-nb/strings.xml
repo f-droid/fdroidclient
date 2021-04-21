@@ -454,7 +454,7 @@
     <string name="prompt_to_send_crash_reports_summary">Henter data om krasj, og sender dem til utvikleren</string>
     <string name="install_history">Installasjonshistorikk</string>
     <string name="install_history_summary">Vis privat loggføring for alle installasjoner og avinstallasjoner</string>
-    <string name="send_version_and_uuid">Send versjon og UUID til serverene</string>
+    <string name="send_version_and_uuid">Send versjon og UUID til tjenere</string>
     <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID, ved nedlasting. Trer i kraft ved neste programomstart.</string>
     <string name="share_repository">Del pakkebrønn</string>
     <string name="send_install_history">Send installasjonshistorikk</string>
@@ -512,7 +512,7 @@
     <string name="notification_channel_installs_title">Installasjoner</string>
     <string name="menu_show_install_history">Vis installasjonshistorikk</string>
     <string name="menu_show_fdroid_metrics_report">Vis bruksdatarapport</string>
-    <string name="toast_metrics_in_install_history">%s bruksdata rapporten kan leses i «Installasjonshistorikk»-viseren</string>
+    <string name="toast_metrics_in_install_history">Bruksdatarapport for %s kan leses i «Installasjonshistorikk»-viseren</string>
     <string name="send_to_fdroid_metrics_summary">Sender anonym data ukentlig til F-Droid Metrics (krever «Behold installasjonshistorikk»)</string>
     <string name="send_to_fdroid_metrics">Send bruksdata</string>
     <string name="fdroid_metrics_report">%s rapport over bruksmåledata</string>
