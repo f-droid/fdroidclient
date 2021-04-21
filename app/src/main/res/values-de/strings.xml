@@ -44,7 +44,7 @@
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Neue Paketquelle</string>
     <string name="menu_launch">Öffnen</string>
-    <string name="menu_share">Verteilen</string>
+    <string name="menu_share">Teilen</string>
     <string name="menu_install">Installieren</string>
     <string name="menu_uninstall">Entfernen</string>
     <string name="menu_ignore_all">Alle Updates ignorieren</string>
@@ -507,7 +507,7 @@
     <string name="notification_channel_installs_title">Installationen</string>
     <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
     <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchtenlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
-    <string name="send_to_fdroid_metrics">Sende Nutzungsdaten</string>
+    <string name="send_to_fdroid_metrics">Nutzungsdaten senden</string>
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
     <string name="send_fdroid_metrics_json">%s Metrikenbericht als JSON-Datei</string>
@@ -515,4 +515,6 @@
     <string name="menu_show_install_history">Installationsverlauf anzeigen</string>
     <string name="menu_show_fdroid_metrics_report">Metrikbericht anzeigen</string>
     <string name="use_pure_black_dark_theme_summary">Nur für OLED-Bildschirme empfohlen.</string>
+    <string name="theme_follow_system">Systemdefiniert</string>
+    <string name="use_pure_black_dark_theme">Rein schwarzen Hintergrund im dunklen Thema verwenden</string>
 </resources>
