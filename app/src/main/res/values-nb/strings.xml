@@ -141,7 +141,7 @@
     <string name="app_name">F-Droid</string>
     <string name="theme_dark">Mørkt</string>
     <string name="unstable_updates">Ustabile oppdateringer</string>
-    <string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
+    <string name="unstable_updates_summary">Foreslå oppdateringer til ustabile versjoner</string>
     <string name="about_source">Kildekode</string>
     <string name="app_incompatible">Ukompatibel</string>
     <string name="links">Lenker</string>
@@ -274,7 +274,7 @@
     <string name="installing">Installerer…</string>
     <string name="uninstalling">Avinstallerer…</string>
     <string name="keep_install_history">Behold installasjonshistorikk</string>
-    <string name="keep_install_history_summary">Behold loggføring for alle (av)installeringer i et privat lager</string>
+    <string name="keep_install_history_summary">Lagre logger av alle installasjoner og avinstallasjoner i et privat lager</string>
     <string name="update_auto_install">Installer oppdateringer automatisk</string>
     <string name="update_auto_install_summary">Last ned og oppdater apper i bakgrunnen, og vis et varsel</string>
     <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
@@ -379,7 +379,7 @@
     </plurals>
     <string name="version">Versjon</string>
     <string name="by_author_format">av %s</string>
-    <string name="force_old_index">Tving gjennom gammelt indeksformat</string>
+    <string name="force_old_index">Tvungen bruk av gammelt indeksformat</string>
     <string name="app_installed_media">Fil installert til %s</string>
     <string name="force_old_index_summary">I tilfelle det er feil eller kompabilitetsproblemer, bruk XML-programindeksen</string>
     <string name="app_permission_storage">F-droid trenger lagringstilgang for å installere til dette lagringsmediet. Tillat det på neste skjerm for å fortsette installasjonen.</string>
@@ -448,14 +448,14 @@
     <string name="repo_delete_to_overwrite">Slett %1$s først for å legge til dette uten en konflikterende nøkkel.</string>
     <string name="antidisabledalgorithmlist">Dette programmet har en svak sikkerhetssignatur</string>
     <string name="antiknownvulnlist">Dette programmet inneholder en kjent sikkerhetsfeil</string>
-    <string name="hide_all_notifications">Skjul alle merknader</string>
-    <string name="hide_all_notifications_summary">Ikke vis noen handlinger i statusfeltet og merknadsskuffen.</string>
+    <string name="hide_all_notifications">Skjul alle varsler</string>
+    <string name="hide_all_notifications_summary">Ikke vis noen handlinger i statusfeltet og varslingsskuffen.</string>
     <string name="prompt_to_send_crash_reports">Forespør krasjrapportinnsending</string>
     <string name="prompt_to_send_crash_reports_summary">Henter data om krasj, og sender dem til utvikleren</string>
-    <string name="install_history">Installer historikk</string>
-    <string name="install_history_summary">Vis privat loggføring for alle in- og av-installasjoner</string>
-    <string name="send_version_and_uuid">Send versjon og UUID til tjenere</string>
-    <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID ved nedlasting. Trer i kraft ved neste programomstart.</string>
+    <string name="install_history">Installasjonshistorikk</string>
+    <string name="install_history_summary">Vis privat loggføring for alle installasjoner og avinstallasjoner</string>
+    <string name="send_version_and_uuid">Send versjon og UUID til serverene</string>
+    <string name="send_version_and_uuid_summary">Inkluder dette programmets versjon og en tilfeldig, unik ID, ved nedlasting. Trer i kraft ved neste programomstart.</string>
     <string name="share_repository">Del pakkebrønn</string>
     <string name="send_install_history">Send installasjonshistorikk</string>
     <string name="send_history_csv">%s installasjonshistorikk som CSV-fil</string>
@@ -512,11 +512,11 @@
     <string name="notification_channel_installs_title">Installasjoner</string>
     <string name="menu_show_install_history">Vis installasjonshistorikk</string>
     <string name="menu_show_fdroid_metrics_report">Vis bruksdatarapport</string>
-    <string name="toast_metrics_in_install_history">%s-bruksdatarapporten kan leses i «Installasjonshistorikk»-viseren</string>
+    <string name="toast_metrics_in_install_history">%s bruksdata rapporten kan leses i «Installasjonshistorikk»-viseren</string>
     <string name="send_to_fdroid_metrics_summary">Sender anonym data ukentlig til F-Droid Metrics (krever «Behold installasjonshistorikk»)</string>
     <string name="send_to_fdroid_metrics">Send bruksdata</string>
-    <string name="fdroid_metrics_report">%s-innmelding</string>
-    <string name="install_history_and_metrics">Installer historikk og statistikk</string>
-    <string name="send_fdroid_metrics_json">%s-innmelding som JSON-fil</string>
-    <string name="send_fdroid_metrics_report">Meld inn %s-statistikk</string>
+    <string name="fdroid_metrics_report">%s rapport over bruksmåledata</string>
+    <string name="install_history_and_metrics">Installasjonshistorikk og bruksdata</string>
+    <string name="send_fdroid_metrics_json">%s bruksmåledata rapport som JSON-fil</string>
+    <string name="send_fdroid_metrics_report">Send %s bruksmåledata</string>
 </resources>
