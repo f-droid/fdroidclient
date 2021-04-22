@@ -844,11 +844,6 @@ public class AppDetailsRecyclerViewAdapter
         protected void updateExpandableItem(boolean isExpanded) {
             final int icon = getIcon();
             Drawable iconDrawable = ContextCompat.getDrawable(headerView.getContext(), icon);
-            if (icon == R.drawable.ic_access_time) {
-                assert iconDrawable != null;
-                iconDrawable = DrawableCompat.wrap(iconDrawable).mutate();
-                DrawableCompat.setTint(iconDrawable, Color.parseColor("#B4B4B4"));
-            }
             final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
             final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more);
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
@@ -877,7 +872,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @DrawableRes
         protected int getIcon() {
-            return R.drawable.ic_access_time;
+            return R.drawable.ic_versions;
         }
     }
 
@@ -888,7 +883,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
             headerView = (TextView) view.findViewById(R.id.information);
             final Drawable accessTime = DrawableCompat.wrap(ContextCompat.getDrawable(headerView.getContext(),
-                    R.drawable.ic_access_time)).mutate();
+                    R.drawable.ic_versions)).mutate();
             DrawableCompat.setTint(accessTime, Color.parseColor("#B4B4B4"));
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
                     accessTime, null, null, null);

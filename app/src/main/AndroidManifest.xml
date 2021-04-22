@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
  * Copyright (C) 2010-2012 Ciaran Gultnieks
  * Copyright (C) 2013-2017 Peter Serwylo
@@ -22,394 +23,328 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="org.fdroid.fdroid"
-          android:installLocation="auto">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.fdroid.fdroid"
+    android:installLocation="auto">
 
     <supports-screens
-            android:anyDensity="true"
-            android:largeScreens="true"
-            android:normalScreens="true"
-            android:resizeable="true"
-            android:smallScreens="true"
-            android:xlargeScreens="true"
-    />
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <uses-feature
-            android:name="android.hardware.telephony"
-            android:required="false"/>
+        android:name="android.hardware.telephony"
+        android:required="false" />
     <uses-feature
-            android:name="android.hardware.wifi"
-            android:required="false"/>
-    <uses-feature
-            android:name="android.hardware.touchscreen"
-            android:required="false"/>
+        android:name="android.hardware.wifi"
+        android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.NFC"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-            android:name=".FDroidApp"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:description="@string/app_description"
-            android:allowBackup="true"
-            android:fullBackupContent="@xml/backup_rules"
-            android:networkSecurityConfig="@xml/network_security_config"
-            android:theme="@style/Theme.App"
-            android:supportsRtl="true">
-
-        <provider
-                android:authorities="${applicationId}.data.AppProvider"
-                android:name="org.fdroid.fdroid.data.AppProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.RepoProvider"
-                android:name="org.fdroid.fdroid.data.RepoProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.ApkProvider"
-                android:name="org.fdroid.fdroid.data.ApkProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.TempApkProvider"
-                android:name="org.fdroid.fdroid.data.TempApkProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.TempAppProvider"
-                android:name="org.fdroid.fdroid.data.TempAppProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.InstalledAppProvider"
-                android:name="org.fdroid.fdroid.data.InstalledAppProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.AppPrefsProvider"
-                android:name="org.fdroid.fdroid.data.AppPrefsProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.PackageIdProvider"
-                android:name="org.fdroid.fdroid.data.PackageIdProvider"
-                android:exported="false"/>
-
-        <provider
-                android:authorities="${applicationId}.data.CategoryProvider"
-                android:name="org.fdroid.fdroid.data.CategoryProvider"
-                android:exported="false"/>
-
-        <provider
-                android:name="org.fdroid.fdroid.installer.ApkFileProvider"
-                android:authorities="${applicationId}.installer.ApkFileProvider"
-                android:exported="false"
-                android:grantUriPermissions="true">
-            <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/apk_file_provider"/>
-        </provider>
-        <provider
-                android:name="androidx.core.content.FileProvider"
-                android:authorities="${applicationId}.installer"
-                android:exported="false"
-                android:grantUriPermissions="true">
-            <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/installer_file_provider"/>
-        </provider>
+        android:name=".FDroidApp"
+        android:allowBackup="true"
+        android:description="@string/app_description"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App">
 
         <activity
-                android:name=".privileged.views.InstallConfirmActivity"
-                android:label="@string/menu_install"
-                android:excludeFromRecents="true"
-                android:parentActivityName=".views.main.MainActivity"
-                android:configChanges="layoutDirection|locale">
+            android:name=".privileged.views.InstallConfirmActivity"
+            android:configChanges="layoutDirection|locale"
+            android:excludeFromRecents="true"
+            android:label="@string/menu_install"
+            android:parentActivityName=".views.main.MainActivity">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
-        </activity>
-        <activity
-                android:name=".privileged.views.UninstallDialogActivity"
-                android:excludeFromRecents="true" />
-        <activity
-                android:name=".views.ManageReposActivity"
-                android:label="@string/menu_manage"
-                android:launchMode="singleTask"
-                android:parentActivityName=".views.main.MainActivity"
-                android:configChanges="layoutDirection|locale">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
-        </activity>
-        <activity
-                android:name=".NfcNotEnabledActivity"
-                android:noHistory="true"
-                android:configChanges="layoutDirection|locale"/>
-        <activity
-                android:name=".views.RepoDetailsActivity"
-                android:label="@string/repo_details"
-                android:parentActivityName=".views.ManageReposActivity"
-                android:windowSoftInputMode="stateHidden"
-                android:configChanges="layoutDirection|locale">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.ManageReposActivity"/>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
-                android:name=".views.AppDetailsActivity"
-                android:label="@string/app_details"
-                android:exported="true"
-                android:parentActivityName=".views.main.MainActivity"
-                android:configChanges="layoutDirection|locale">
+            android:name=".privileged.views.UninstallDialogActivity"
+            android:excludeFromRecents="true" />
+
+        <activity
+            android:name=".views.ManageReposActivity"
+            android:configChanges="layoutDirection|locale"
+            android:label="@string/menu_manage"
+            android:launchMode="singleTask"
+            android:parentActivityName=".views.main.MainActivity">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
         </activity>
-        <activity
-                android:name=".acra.CrashReportActivity"
-                android:process=":error_report"
-                android:launchMode="singleInstance"
-                android:excludeFromRecents="true"
-                android:finishOnTaskLaunch="true"/>
-        <activity android:name=".views.ScreenShotsActivity"/>
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <activity android:name=".data.ObbUrlActivity"
-                  android:theme="@android:style/Theme.NoDisplay"/>
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <activity
-                android:name=".installer.DefaultInstallerActivity"
-                android:theme="@style/AppThemeTransparent"/>
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <activity
-                android:name=".installer.ErrorDialogActivity"
-                android:theme="@style/AppThemeTransparent"/>
-
-        <receiver android:name=".receiver.StartupReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-
-                <category android:name="android.intent.category.HOME"/>
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".receiver.PackageManagerReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_CHANGED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-
-                <data android:scheme="package"/>
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".NotificationBroadcastReceiver" android:exported="false">
-            <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
-        </receiver>
-
-        <receiver android:name=".receiver.DeviceStorageReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
-            </intent-filter>
-        </receiver>
-
-        <service
-                android:name=".UpdateService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".UpdateJobService"
-                android:exported="false"
-                android:permission="android.permission.BIND_JOB_SERVICE"/>
-        <service
-                android:name=".net.DownloaderService"
-                android:exported="false"/>
-        <service
-                android:name=".installer.InstallerService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".DeleteCacheService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".net.ConnectivityMonitorService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".installer.InstallManagerService"
-                android:exported="false"/>
-        <service
-                android:name=".installer.InstallHistoryService"
-                android:exported="false"/>
-        <service
-                android:name=".installer.ObfInstallerService"
-                android:exported="false"/>
-        <service
-                android:name=".data.InstalledAppProviderService"
-                android:permission="android.permission.BIND_JOB_SERVICE"
-                android:exported="false"/>
-        <service
-                android:name=".AddRepoIntentService"
-                android:exported="false"/>
-
-        <provider
-                android:name="androidx.work.impl.WorkManagerInitializer"
-                android:authorities="${applicationId}.workmanager-init"
-                android:exported="false"
-                tools:node="remove" />
 
         <activity
-                android:name=".views.main.MainActivity"
-                android:launchMode="singleTop"
-                android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            android:name=".NfcNotEnabledActivity"
+            android:configChanges="layoutDirection|locale"
+            android:noHistory="true" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <activity
+            android:name=".views.RepoDetailsActivity"
+            android:configChanges="layoutDirection|locale"
+            android:label="@string/repo_details"
+            android:parentActivityName=".views.ManageReposActivity"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.ManageReposActivity" />
+        </activity>
+
+        <activity
+            android:name=".views.AppDetailsActivity"
+            android:configChanges="layoutDirection|locale"
+            android:exported="true"
+            android:label="@string/app_details"
+            android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".acra.CrashReportActivity"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
+            android:process=":error_report" />
+
+        <activity android:name=".views.ScreenShotsActivity" />
+
+        <activity
+            android:name=".data.ObbUrlActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+
+        <activity
+            android:name=".installer.DefaultInstallerActivity"
+            android:theme="@style/AppThemeTransparent" />
+        <activity
+            android:name=".installer.ErrorDialogActivity"
+            android:theme="@style/AppThemeTransparent" />
+
+        <activity
+            android:name=".views.main.MainActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
 
             <!-- App URLs -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="fdroid.app"/>
+                <data android:scheme="fdroid.app" />
             </intent-filter>
 
             <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="https"/>
-                <data android:host="f-droid.org"/>
-                <data android:host="www.f-droid.org"/>
-                <data android:host="staging.f-droid.org"/>
-                <data android:pathPrefix="/app/"/>
-                <data android:pathPrefix="/packages/"/>
-                <data android:pathPrefix="/repository/browse"/>
+                <data android:scheme="https" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:host="staging.f-droid.org" />
+                <data android:pathPrefix="/app/" />
+                <data android:pathPrefix="/packages/" />
+                <data android:pathPrefix="/repository/browse" />
                 <!-- support localized URLs -->
-                <data android:pathPattern="/.*/packages/.*"/>
-                <data android:pathPattern="/.*/packages/.*/"/>
+                <data android:pathPattern="/.*/packages/.*" />
+                <data android:pathPattern="/.*/packages/.*/" />
             </intent-filter>
 
             <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:host="f-droid.org"/>
-                <data android:host="www.f-droid.org"/>
-                <data android:host="staging.f-droid.org"/>
-                <data android:pathPrefix="/app/"/>
-                <data android:pathPrefix="/packages/"/>
-                <data android:pathPrefix="/repository/browse"/>
+                <data android:scheme="http" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:host="staging.f-droid.org" />
+                <data android:pathPrefix="/app/" />
+                <data android:pathPrefix="/packages/" />
+                <data android:pathPrefix="/repository/browse" />
                 <!-- support localized URLs -->
-                <data android:pathPattern="/.*/packages/.*"/>
-                <data android:pathPattern="/.*/packages/.*/"/>
+                <data android:pathPattern="/.*/packages/.*" />
+                <data android:pathPattern="/.*/packages/.*/" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="market" android:host="details"/>
+                <data
+                    android:host="details"
+                    android:scheme="market" />
             </intent-filter>
 
             <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="play.google.com"/> <!-- they don't do www. -->
-                <data android:path="/store/apps/details"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" /> <!-- they don't do www. -->
+                <data android:path="/store/apps/details" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="amzn" android:host="apps" android:path="/android"/>
+                <data
+                    android:host="apps"
+                    android:path="/android"
+                    android:scheme="amzn" />
             </intent-filter>
 
             <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="amazon.com"/>
-                <data android:host="www.amazon.com"/>
-                <data android:path="/gp/mas/dl/android"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="amazon.com" />
+                <data android:host="www.amazon.com" />
+                <data android:path="/gp/mas/dl/android" />
             </intent-filter>
 
 
             <!-- Search URLs -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="fdroid.search"/>
+                <data android:scheme="fdroid.search" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="market" android:host="search"/>
+                <data
+                    android:host="search"
+                    android:scheme="market" />
             </intent-filter>
 
             <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="play.google.com"/> <!-- they don't do www. -->
-                <data android:path="/store/search"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" /> <!-- they don't do www. -->
+                <data android:path="/store/search" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
-            <meta-data
-                    android:name="android.app.searchable"
-                    android:resource="@xml/searchable"/>
+            <intent-filter android:autoVerify="false">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
+                <data android:scheme="http" />
+                <data
+                    android:scheme="HTTP"
+                    tools:ignore="AppLinkUrlError" />
+                <data android:scheme="https" />
+                <data
+                    android:scheme="HTTPS"
+                    tools:ignore="AppLinkUrlError" />
+
+                <data android:host="*" />
+
+                <!--
+                The pattern matcher here is poorly implemented, in particular the * is
+                non-greedy, so you have to do stupid tricks to match patterns that have
+                repeat characters in them. http://stackoverflow.com/a/8599921/306864
+                -->
+                <data android:path="/fdroid/repo" />
+                <data android:pathPattern="/fdroid/repo/*" />
+                <data android:pathPattern="/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo/*" />
+                <data android:path="/fdroid/archive" />
+                <data android:pathPattern="/fdroid/archive/*" />
+                <data android:pathPattern="/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive/*" />
+                <!--
+                Some QR Code scanners don't respect custom schemes like fdroidrepo://,
+                so this is a workaround, since the local repo URL is all uppercase in
+                the QR Code for sending the local repo to another device.
+                -->
+                <data android:path="/FDROID/REPO" />
+                <data android:pathPattern="/.*/FDROID/REPO" />
+                <data android:pathPattern="/.*/.*/FDROID/REPO" />
+                <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
+            </intent-filter>
 
 
             <!-- Repo URLs -->
@@ -429,11 +364,11 @@
             This filter supports HTTP and HTTPS schemes. There is an additional filter for
             fdroidrepo:// and fdroidrepos://
             -->
-            <intent-filter android:autoVerify="false">
-                <action android:name="android.intent.action.VIEW"/>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <!--
                 Android's scheme matcher is case-sensitive, so include
@@ -441,51 +376,14 @@
                 QR Codes have a special ALL CAPS mode that uses a reduced
                 character set, making for more compact QR Codes.
                 -->
-                <data android:scheme="http"/>
-                <data android:scheme="HTTP" tools:ignore="AppLinkUrlError"/>
-                <data android:scheme="https"/>
-                <data android:scheme="HTTPS" tools:ignore="AppLinkUrlError"/>
-
-                <data android:host="*"/>
-
-                <!--
-                The pattern matcher here is poorly implemented, in particular the * is
-                non-greedy, so you have to do stupid tricks to match patterns that have
-                repeat characters in them. http://stackoverflow.com/a/8599921/306864
-                -->
-                <data android:path="/fdroid/repo"/>
-                <data android:pathPattern="/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/.*/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/.*/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/.*/.*/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/.*/.*/.*/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/.*/.*/.*/.*/fdroid/repo/*"/>
-                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo"/>
-                <data android:pathPattern="/.*/.*/.*/.*/.*/.*/fdroid/repo/*"/>
-                <data android:path="/fdroid/archive"/>
-                <data android:pathPattern="/fdroid/archive/*"/>
-                <data android:pathPattern="/.*/fdroid/archive"/>
-                <data android:pathPattern="/.*/fdroid/archive/*"/>
-                <data android:pathPattern="/.*/.*/fdroid/archive"/>
-                <data android:pathPattern="/.*/.*/fdroid/archive/*"/>
-                <data android:pathPattern="/.*/.*/.*/fdroid/archive"/>
-                <data android:pathPattern="/.*/.*/.*/fdroid/archive/*"/>
-                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive"/>
-                <data android:pathPattern="/.*/.*/.*/.*/fdroid/archive/*"/>
-                <!--
-                Some QR Code scanners don't respect custom schemes like fdroidrepo://,
-                so this is a workaround, since the local repo URL is all uppercase in
-                the QR Code for sending the local repo to another device.
-                -->
-                <data android:path="/FDROID/REPO"/>
-                <data android:pathPattern="/.*/FDROID/REPO"/>
-                <data android:pathPattern="/.*/.*/FDROID/REPO"/>
-                <data android:pathPattern="/.*/.*/.*/FDROID/REPO"/>
+                <data android:scheme="fdroidrepo" />
+                <data
+                    android:scheme="FDROIDREPO"
+                    tools:ignore="AppLinkUrlError" />
+                <data android:scheme="fdroidrepos" />
+                <data
+                    android:scheme="FDROIDREPOS"
+                    tools:ignore="AppLinkUrlError" />
             </intent-filter>
 
             <!--
@@ -493,58 +391,186 @@
             looks for fdroidrepos://* and doesn't care what the path is.
             -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <!--
-                Android's scheme matcher is case-sensitive, so include
-                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
-                QR Codes have a special ALL CAPS mode that uses a reduced
-                character set, making for more compact QR Codes.
-                -->
-                <data android:scheme="fdroidrepo"/>
-                <data android:scheme="FDROIDREPO" tools:ignore="AppLinkUrlError"/>
-                <data android:scheme="fdroidrepos"/>
-                <data android:scheme="FDROIDREPOS" tools:ignore="AppLinkUrlError"/>
-            </intent-filter>
-
-
-            <!-- Handle NFC tags detected from outside our application -->
-
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <!--
                 URIs that come in via NFC have scheme/host normalized to all lower case
                 https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
                 -->
-                <data android:scheme="fdroidrepo"/>
-                <data android:scheme="fdroidrepos"/>
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="fdroidrepos" />
             </intent-filter>
 
-        </activity>
 
-        <activity android:name=".views.apps.AppListActivity"/>
+            <!-- Handle NFC tags detected from outside our application -->
 
-        <activity android:name=".views.installed.InstalledAppsActivity"
-                  android:parentActivityName=".views.main.MainActivity">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
-        </activity>
-        <activity android:name=".views.InstallHistoryActivity"
-                  android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
-        </activity>
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
 
+        </activity>
+        <activity android:name=".views.apps.AppListActivity" />
+        <activity
+            android:name=".views.installed.InstalledAppsActivity"
+            android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".views.InstallHistoryActivity"
+            android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
+        </activity>
         <activity android:name=".AboutActivity" />
-        <activity android:name=".installer.FileInstallerActivity" android:theme="@style/AppThemeTransparent"/>
+
+        <activity
+            android:name=".installer.FileInstallerActivity"
+            android:theme="@style/AppThemeTransparent" />
+
+        <provider
+            android:name="org.fdroid.fdroid.data.AppProvider"
+            android:authorities="${applicationId}.data.AppProvider"
+            android:exported="false" />
+        <provider
+            android:name="org.fdroid.fdroid.data.RepoProvider"
+            android:authorities="${applicationId}.data.RepoProvider"
+            android:exported="false" />
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
+        <provider
+            android:name="org.fdroid.fdroid.data.ApkProvider"
+            android:authorities="${applicationId}.data.ApkProvider"
+            android:exported="false" />
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
+        <provider
+            android:name="org.fdroid.fdroid.data.TempApkProvider"
+            android:authorities="${applicationId}.data.TempApkProvider"
+            android:exported="false" />
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
+        <provider
+            android:name="org.fdroid.fdroid.data.TempAppProvider"
+            android:authorities="${applicationId}.data.TempAppProvider"
+            android:exported="false" />
+
+        <provider
+            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:authorities="${applicationId}.data.InstalledAppProvider"
+            android:exported="false" />
+
+        <provider
+            android:name="org.fdroid.fdroid.data.AppPrefsProvider"
+            android:authorities="${applicationId}.data.AppPrefsProvider"
+            android:exported="false" />
+
+        <provider
+            android:name="org.fdroid.fdroid.data.PackageIdProvider"
+            android:authorities="${applicationId}.data.PackageIdProvider"
+            android:exported="false" />
+
+        <provider
+            android:name="org.fdroid.fdroid.data.CategoryProvider"
+            android:authorities="${applicationId}.data.CategoryProvider"
+            android:exported="false" />
+
+        <provider
+            android:name="org.fdroid.fdroid.installer.ApkFileProvider"
+            android:authorities="${applicationId}.installer.ApkFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/apk_file_provider" />
+        </provider>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.installer"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/installer_file_provider" />
+        </provider>
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false"
+            tools:node="remove" />
+
+        <receiver android:name=".receiver.StartupReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.PackageManagerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".NotificationBroadcastReceiver"
+            android:exported="false">
+            <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
+        </receiver>
+        <receiver android:name=".receiver.DeviceStorageReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".UpdateService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".UpdateJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".net.DownloaderService"
+            android:exported="false" />
+        <service
+            android:name=".installer.InstallerService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".DeleteCacheService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".net.ConnectivityMonitorService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".installer.InstallManagerService"
+            android:exported="false" />
+
+        <service
+            android:name=".installer.InstallHistoryService"
+            android:exported="false" />
+        <service
+            android:name=".installer.ObfInstallerService"
+            android:exported="false" />
+
+        <service
+            android:name=".data.InstalledAppProviderService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".AddRepoIntentService"
+            android:exported="false" />
 
     </application>
 
