@@ -1,1 +1,1 @@
-* Tema desteği yerleşik Android temalarına bağlandı
+* Tema desteği yerleşik Android temalarına bağlandı (@proletarius101)

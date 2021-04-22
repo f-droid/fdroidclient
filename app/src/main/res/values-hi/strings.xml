@@ -3,7 +3,7 @@
     <string name="delete">मिटाएं</string>
     <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
     <string name="version">संस्करण</string>
-    <string name="updates">अपडेटस</string>
+    <string name="updates">सॉफ़्ट्वेर अपडेट</string>
     <string name="unstable_updates">अस्थिर अद्यतन</string>
     <string name="unstable_updates_summary">अस्थिर अद्यतन को सुझाव दें</string>
     <string name="other">अन्य</string>
@@ -32,14 +32,14 @@
     <string name="app_inst_unknown_source">स्थापित (अनजान सोत्र द्वारा)</string>
     <string name="added_on">%s पर जोड़ा</string>
     <string name="ok">ठीक है</string>
-    <string name="yes">हां</string>
+    <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
     <string name="repo_add_title">नया कोष जोड़े</string>
     <string name="repo_add_add">जोड़े</string>
     <string name="links">संधियां</string>
     <string name="more">अधिक</string>
     <string name="less">कम</string>
-    <string name="back">वापस</string>
+    <string name="back">पीछे जाए</string>
     <string name="cancel">रद्द करें</string>
     <string name="enable">सक्षम करे</string>
     <string name="add_key">कुंजी जोड़े</string>
@@ -49,7 +49,7 @@
     <string name="crash_dialog_title">F-Droid क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारन एप्लीकेशन बंद हो गयी है| क्या ईमेल भेज कर इस समाधान को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name">एफ-ड्रॉइड</string>
     <string name="installIncompatible">ऐसा ज्ञात होता है की ऐप्लिकेशन आपके डिवाइस के लिए अनुकुल नहीं है| क्या आप इसे फिर भी स्थापित करना चाहते हैं\?</string>
     <string name="interval_1w">साप्ताहिक अपडेट के लिए जाँच करें</string>
     <string name="interval_2w">हर 2 सप्ताह में अपडेट की जाँच करें</string>
@@ -144,7 +144,7 @@
     <string name="notification_title_summary_install_error">इनस्टॉल असफल</string>
     <string name="by_author_format">%s के द्वारा</string>
     <string name="hide_all_notifications">सभी अधिसूचनाएं छुपाएं</string>
-    <string name="menu_manage">रिपॉजिटरी</string>
+    <string name="menu_manage">रेपोसिटोरीए</string>
     <string name="menu_add_repo">नई रिपॉजिटरी</string>
     <string name="menu_launch">खोलें</string>
     <string name="menu_install">इंस्टॉल करें</string>
@@ -506,4 +506,7 @@
     <string name="install_history_and_metrics">इतिहास और metrics इंस्टॉल करे</string>
     <string name="send_fdroid_metrics_json">%s मेट्रिक्स JSON फ़ाइल से report करे</string>
     <string name="send_fdroid_metrics_report">%s का Metrics Report भेजे</string>
+    <string name="theme_follow_system">सिस्टम का पालन करें</string>
+    <string name="use_pure_black_dark_theme_summary">केवल OLED स्क्रीन के लिए अनुशंसित।</string>
+    <string name="use_pure_black_dark_theme">डार्क थीम में शुद्ध काले रंग का उपयोग करें</string>
 </resources>

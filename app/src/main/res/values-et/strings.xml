@@ -517,4 +517,7 @@
     <string name="install_history_and_metrics">Paigalda ajalugu ja meetrika</string>
     <string name="send_fdroid_metrics_json">%s meetrika JSON failina</string>
     <string name="send_fdroid_metrics_report">Saada %s meetrika raport</string>
+    <string name="theme_follow_system">Kasuta üldist teemat</string>
+    <string name="use_pure_black_dark_theme_summary">Soovitame kasutamiseks vaid OLED-ekraanidel.</string>
+    <string name="use_pure_black_dark_theme">Tumedas teemas kasuta musta tausta</string>
 </resources>

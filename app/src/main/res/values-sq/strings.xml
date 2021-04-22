@@ -495,7 +495,7 @@
     <string name="notification_channel_installs_title">Instalime</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_title">Shkëmbime</string>
-    <string name="notification_channel_swaps_description">Shfaq njoftime shkëmbimi aplikacionesh përmes P2P-së</string>
+    <string name="notification_channel_swaps_description">Shfaq njoftime shkëmbimi aplikacionesh përmes P2P-së.</string>
     <string name="menu_show_install_history">Shfaq historik instalimesh</string>
     <string name="menu_show_fdroid_metrics_report">Shfaq raport statistikash</string>
     <string name="menu_downgrade">Kaloje në version të mëparshëm</string>
@@ -506,4 +506,7 @@
     <string name="install_history_and_metrics">Historik instalimesh dhe statistika</string>
     <string name="send_fdroid_metrics_json">Raport statistikash %s si kartelë JSON</string>
     <string name="send_fdroid_metrics_report">Dërgo Raport Statistikash %s</string>
+    <string name="theme_follow_system">Ndiq sistemin</string>
+    <string name="use_pure_black_dark_theme_summary">E rekomanduar vetëm për ekranë OLED.</string>
+    <string name="use_pure_black_dark_theme">Përdor sfond të zi në temë të errët</string>
 </resources>

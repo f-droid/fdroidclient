@@ -8,7 +8,7 @@
     <string name="update_interval">فاصلهٔ به‌روزرسانی‌های خودکار</string>
     <string name="notify_on">نمایش یک اعلان هنگام موجود بودن به‌روز رسانی‌ها</string>
     <string name="no_such_app">چنین برنامه‌ای پیدا نشد.</string>
-    <string name="about_title">دربارهٔ اف‌دروید</string>
+    <string name="about_title">دَرباره‌ی اِف‌دروید</string>
     <string name="app_installed">نصب شده</string>
     <string name="app_not_installed">نصب نشده</string>
     <string name="added_on">در %s افزوده شد</string>
@@ -54,7 +54,7 @@
     <string name="unsigned_description">این یعنی فهرست برنامه‌ها نتوانست تأیید شود. باید مراقب برنامه‌های بارگیری شده از فهرست‌های امضا نشده باشید.</string>
     <string name="unknown">ناشناس</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
-    <string name="app_name">اف‌دروید</string>
+    <string name="app_name">اِف‌دروید</string>
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شدهٔ کاره در حافظهٔ داخلی را پاک می‌کند)</string>
     <string name="version">نگارش</string>
     <string name="enable_nfc_send">به کار انداختن فرستادن با NFC…</string>
@@ -501,4 +501,7 @@
     <string name="install_history_and_metrics">سنجش و تاریخچهٔ نصب</string>
     <string name="send_fdroid_metrics_json">گزارش سنجش %s در قالب پروندهٔ جی‌سان</string>
     <string name="send_fdroid_metrics_report">فرستادن گزارش سنجش %s</string>
+    <string name="theme_follow_system">از سیستم تبعیت کن</string>
+    <string name="use_pure_black_dark_theme_summary">فقط برای صفحه های OLED توصیه می شود.</string>
+    <string name="use_pure_black_dark_theme">از زمینه سیاه خالص در تم تاریک استفاده کن</string>
 </resources>

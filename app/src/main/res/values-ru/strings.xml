@@ -62,7 +62,7 @@
     <string name="antiupstreamnonfreelist">Оригинальный исходный код не является полностью свободным</string>
     <string name="display">Вид</string>
     <string name="expert">Экспертный режим</string>
-    <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
+    <string name="expert_on">Показать дополнительную информацию и включить расширенные настройки</string>
     <string name="search_hint">Поиск приложений</string>
     <string name="appcompatibility">Совместимость приложений</string>
     <string name="show_incompat_versions">Разрешить несовместимые версии</string>
@@ -119,7 +119,7 @@
     <string name="category_Internet">Интернет</string>
     <string name="category_Multimedia">Мультимедиа</string>
     <string name="category_Navigation">Навигация</string>
-    <string name="category_Phone_SMS">Телефон и SMS</string>
+    <string name="category_Phone_SMS">Звонки и сообщения</string>
     <string name="category_Reading">Чтение</string>
     <string name="category_Science_Education">Наука и образование</string>
     <string name="category_Security">Безопасность</string>
@@ -147,9 +147,9 @@
     <string name="pref_language">Язык</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Графика</string>
-    <string name="category_Money">Деньги</string>
+    <string name="category_Money">Финансы</string>
     <string name="category_Sports_Health">Спорт и здоровье</string>
-    <string name="category_Time">Время</string>
+    <string name="category_Time">Часы</string>
     <string name="app_name">F-Droid</string>
     <string name="banner_updating_repositories">Обновление репозиториев</string>
     <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
@@ -265,7 +265,7 @@
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
     <string name="keep_install_history">Хранить историю установок</string>
-    <string name="keep_install_history_summary">Хранить журнал всех установок и удалений в приватном хранилище</string>
+    <string name="keep_install_history_summary">Сохранять журнал всех установок и удалений в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купите разработчику %1$s чашечку кофе!</string>
@@ -520,11 +520,14 @@
     <string name="notification_channel_installs_title">Установка приложений</string>
     <string name="menu_show_install_history">Показать историю установок</string>
     <string name="send_to_fdroid_metrics">Отправлять данные об использовании</string>
-    <string name="menu_show_fdroid_metrics_report">Показать отчет по метрикам</string>
-    <string name="toast_metrics_in_install_history">Отчет %s по метрике можно просмотреть в окне просмотра истории установок</string>
-    <string name="send_to_fdroid_metrics_summary">Еженедельно отправляет анонимные данные метрик в F-Droid (требуется сохранение истории установок)</string>
-    <string name="fdroid_metrics_report">%s отчет по метрикам</string>
-    <string name="install_history_and_metrics">Установить историю и метрики</string>
-    <string name="send_fdroid_metrics_json">%s отчет по метрикам в виде JSON-файла</string>
-    <string name="send_fdroid_metrics_report">Отправить %s отчет по метрикам</string>
+    <string name="menu_show_fdroid_metrics_report">Показать статистический отчет</string>
+    <string name="toast_metrics_in_install_history">Статистический отчет %s доступен в средстве просмотра истории установок</string>
+    <string name="send_to_fdroid_metrics_summary">Еженедельно отправлять анонимные данные в F-Droid Metrics (работает при включенной опции \'Хранить историю установок\')</string>
+    <string name="fdroid_metrics_report">Статистический отчет %s</string>
+    <string name="install_history_and_metrics">История установок и статистика</string>
+    <string name="send_fdroid_metrics_json">%s статистический отчет в виде JSON-файла</string>
+    <string name="send_fdroid_metrics_report">Отправить статистический отчет %s</string>
+    <string name="theme_follow_system">Как в системе</string>
+    <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
+    <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
 </resources>

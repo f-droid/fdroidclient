@@ -294,12 +294,12 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_downgrade">Downgrade</string>
     <string name="menu_translation">Translation</string>
-    <string name="menu_source">Source Code</string>
-    <string name="menu_license">License: %s</string>
+    <string name="menu_source">Source code</string>
+    <string name="menu_license">Licence: %s</string>
     <string name="menu_video">Video</string>
     <string name="menu_changelog">Changelog</string>
     <string name="menu_issues">Issues</string>
-    <string name="menu_email">E-Mail Author</string>
+    <string name="menu_email">E-mail author</string>
     <string name="menu_website">Website</string>
     <string name="menu_ignore_this">Ignore This Update</string>
     <string name="menu_ignore_all">Ignore All Updates</string>
@@ -366,7 +366,7 @@
     <string name="app_installed">Installed</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="app_suggested">Suggested</string>
-    <string name="about_license">License</string>
+    <string name="about_license">Licence</string>
     <string name="about_source">Source code</string>
     <string name="about_forum">Support forum</string>
     <string name="about_site">Website</string>
@@ -424,7 +424,7 @@
     <string name="cache_downloaded">Keep cached apps</string>
     <string name="prompt_to_send_crash_reports_summary">Gather data about crashes and ask to send them to the developer</string>
     <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
-    <string name="enable_nfc_send">Enable NFC Send…</string>
+    <string name="enable_nfc_send">Enable NFC send…</string>
     <string name="delete">Delete</string>
     <string name="by_author_format">by %s</string>
     <string name="version">Version</string>
@@ -497,4 +497,16 @@
     <string name="updates">Updates</string>
     <string name="ok">OK</string>
     <string name="app_name">F-Droid</string>
+    <string name="theme_follow_system">Follow system</string>
+    <string name="use_pure_black_dark_theme_summary">Recommended only for OLED screens.</string>
+    <string name="use_pure_black_dark_theme">Use pure black background in dark theme</string>
+    <string name="menu_show_install_history">Show install history</string>
+    <string name="menu_show_fdroid_metrics_report">Show metrics report</string>
+    <string name="toast_metrics_in_install_history">The %s Metric report is viewable in the Install History viewer</string>
+    <string name="send_to_fdroid_metrics_summary">Sends anonymous data weekly to F-Droid Metrics (requires Keep install history)</string>
+    <string name="send_to_fdroid_metrics">Send usage data</string>
+    <string name="fdroid_metrics_report">%s metrics report</string>
+    <string name="install_history_and_metrics">Install history and metrics</string>
+    <string name="send_fdroid_metrics_json">%s metrics report as JSON file</string>
+    <string name="send_fdroid_metrics_report">Send %s metrics report</string>
 </resources>

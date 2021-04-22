@@ -4,9 +4,7 @@
         ဗားရွင္းအသစ္သြင္းရန္ အေဟာင္းသည္ အရင္ဆံုးျဖဳတ္မွရပါမည္။ ျဖဳတ္ျပီးမွ ျပန္လည္ၾကိဳးစားၾကည့္ပါ။ (ျဖဳတ္ျခင္းသည္
         application မွသိမ္းထားေသာ ေဒတာအားလံုးဖ်က္သြားပါလိမ့္မည္)
     </string>
-    <string name="installIncompatible">ဒီ Package သည္ သင့္ကိရိယာႏွင့္ကိုက္ညီမႈမရွိဘူးဟုထင္ရပါသည္။
-        ၾကိဳးစားျပီးမရမကသြင္းခ်င္ပါသလား။
-    </string>
+    <string name="installIncompatible">ဒါသည်သင့်ကရိယာနှင့်မလိုက်ဖက်ပါ။ဘာဖြစ်ဖြစ်အခြေချမလား\?</string>
     <string name="version">ဗားရွင္း</string>
     <string name="delete">ဖျက်ရန်</string>
     <string name="enable_nfc_send">NFC မွပို႔ႏိုင္ေအာင္လုပ္ေဆာင္မည္…</string>
@@ -68,7 +66,7 @@
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="menu_search">ရှာဖွေခြင်း</string>
     <string name="menu_add_repo">Repository အသစ္</string>
-    <string name="menu_launch">ဖွင့်သည်</string>
+    <string name="menu_launch">ဖွင့်</string>
     <string name="menu_share">ေဝမွ်မည္</string>
     <string name="menu_install">သြင္းမည္</string>
     <string name="menu_uninstall">ျဖဳတ္မည္</string>
@@ -78,7 +76,7 @@
     <string name="menu_email">အီးေမးလ္ေရးသားသူ</string>
     <string name="menu_changelog">ေျပာင္းလဲမႈမွတ္တမ္း</string>
     <string name="menu_source">ဆိုစ့္ကုဒ္</string>
-    <string name="menu_upgrade">အဆင့္ျမင့္တင္မည္</string>
+    <string name="menu_upgrade">နောက်ဆုံးအဆင့်</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="details_notinstalled">မသြင္းထားခဲ့ပါ</string>
@@ -241,13 +239,13 @@
 \n အောက်ပါတွင်ပါလိမ့်မည်</string>
     <string name="categories__empty_state__no_categories">ဖော်ပြရန် ခေါင်းစဉ်မရှိပါ</string>
     <string name="preference_category__my_apps">ကျွနိုပ်၏အက်ပ်စ်များ</string>
-    <string name="preference_manage_installed_apps">သွင်းထားသည့်အက်ပ်စ့်များကို စီမံမည်</string>
+    <string name="preference_manage_installed_apps">သွင်းထားသည့်အက်ပ်များကို စီမံမည်</string>
     <string name="details_new_in_version">%s ဗားရှင်းတွင် အသစ်များ</string>
     <string name="antifeatureswarning">ဒီအက်ပ်သည် သင်မကြိုက်သည့်အင်္ဂါရပ်ရှိကောင်းရှိနိုင်သည်</string>
     <string name="touch_to_configure_local_repo">အသေးစိတ်အချက်အလက်ကြည်ရန် နှိပ်ပါ နှင့် သင့်အက်ပ်စ့်ကို တခြားသူများလဲလှယ်ရယူရန်အတွက် ခွင့်ပြုမည်</string>
     <string name="proxy_host">Proxy Host</string>
     <string name="proxy_port">Proxy Port</string>
-    <string name="warning_no_internet">အသစ်မွမ်းမံလို့မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား?</string>
+    <string name="warning_no_internet">နောက်ဆုံးတင်မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား\?</string>
     <string name="no_handler_app">%s ကိုကိုင်တွယ်ရန်အတွက် သင့်တွင် ရရှိထားသော အက်ပ်မရှိပါ</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d အားလုံးကိုကြည့်မည်</item>
@@ -260,4 +258,27 @@
     <string name="uninstall_update_confirm">ဤအက်ပ်ကို စက်ရုံထုတ်ဗားရှင်းဖြင့် အစားထိုးမလား။ ဒေတာများအားလုံးကို ဖယ်ရှားလိုက်ပါမည်။</string>
     <string name="allow">ခွင့်ပြုပါ</string>
     <string name="yes">ဟုတ်ပြီ</string>
+    <string name="send_to_fdroid_metrics">အသုံးပြုဒေတာပို့ရန်</string>
+    <string name="install_history_summary">အခြေချ၊ထုတ်တာတွေအားလုံးကိုယ်ပိုင်မှတ်တမ်းကြည့်ရန်</string>
+    <string name="fdroid_metrics_report">Metrics အကြောင်း %s</string>
+    <string name="install_history_and_metrics">အခြေချသမိုင်းနှင့်Metrics</string>
+    <string name="install_history">အခြေချသမိုင်း</string>
+    <string name="send_fdroid_metrics_json">အခြေချသမိုင်း၏JSONဖိုင်အဖြစ်%s</string>
+    <string name="send_history_csv">အခြေချသမိုင်း၏CSVဖိုင်အဖြစ်%s</string>
+    <string name="send_fdroid_metrics_report">Metrics အကြောင်းကြားပို့ခြင်း%s</string>
+    <string name="send_install_history">အခြေချသမိုင်းကိုပို့</string>
+    <string name="hide_all_notifications_summary">အခြေပြဘားတန်းနှင့်နှိုးဆော်ပြသမှုအားလုံးကိုဟန့်တား။</string>
+    <string name="hide_all_notifications">နှိုးဆော်အလုံးစုံကိုဖုံးကွယ်</string>
+    <string name="prompt_to_send_crash_reports_summary">ပျက်ကျအချက်အလက်များကိုစု၍ထုတ်လုပ်သူသို့ပို့ဖို့သဘောတူမေးရန်</string>
+    <string name="prompt_to_send_crash_reports">ပြုတ်ကျအကြောင်းကြားရန်နှိုးဆော်စေ</string>
+    <string name="by_author_format">နှင့်%s</string>
+    <string name="notification_title_summary_install_error">အခြေချမအောင်မြင်</string>
+    <string name="notification_title_single_update_available">နောက်ဆုံးတင်တာရနိုင်သည်</string>
+    <string name="crash_dialog_text">မမျှော်မှန်းသည့်အမှားဖြစ်၍အက္ပ်ရပ်သွား၏။ဒီကိစ္စကိုပြင်ဖို့အသေးစိတ်ကိုသင်အီမေးနှင့်ပို့လိုသလား\?</string>
+    <string name="not_on_same_wifi">သင့်ပစ္စည်းသည်သင်ယ္ခုရွေးတာနှင့်Wi-Fiကွန်ယက်တခုတည်းမဟုတ်ပါ။ ထိုကွန်ယက်ကိုသွားပါ။ %s</string>
+    <string name="unsigned">လက်မှတ်မထိုးထား</string>
+    <string name="updates__tts__download_app">ဆွဲချယူ</string>
+    <string name="notification_action_install">ထားမည်</string>
+    <string name="notification_action_cancel">ပါယ်</string>
+    <string name="notification_action_update">နောက်ဆုံးတင်ရန်</string>
 </resources>

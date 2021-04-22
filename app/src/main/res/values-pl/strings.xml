@@ -540,4 +540,7 @@
     <string name="install_history_and_metrics">Historia i metryka instalacji</string>
     <string name="send_fdroid_metrics_json">%s raport metryczny jako plik JSON</string>
     <string name="send_fdroid_metrics_report">Wyślij %s Raport metryczny</string>
+    <string name="theme_follow_system">Systemowy</string>
+    <string name="use_pure_black_dark_theme_summary">Zalecane jedynie dla ekranów OLED.</string>
+    <string name="use_pure_black_dark_theme">Użyj czarnego tła w ciemnym motywie</string>
 </resources>

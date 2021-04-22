@@ -517,4 +517,7 @@
     <string name="install_history_and_metrics">Installer l\'historique et les analyses</string>
     <string name="toast_metrics_in_install_history">Le rapport de télémétrie de %s est visualisable dans la visionneuse de l\'installation d\'historique</string>
     <string name="menu_show_fdroid_metrics_report">Afficher le rapport d\'analyse</string>
+    <string name="theme_follow_system">Suivre le système</string>
+    <string name="use_pure_black_dark_theme_summary">Recommandé uniquement pour les écrans OLED.</string>
+    <string name="use_pure_black_dark_theme">Utiliser un fond noir pur pour le thème sombre</string>
 </resources>

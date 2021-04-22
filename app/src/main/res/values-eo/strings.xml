@@ -203,7 +203,7 @@
     <string name="swap_switch_to_wifi">Tuŝu por ŝanĝi al vifio</string>
     <string name="swap_confirm_connect">Ĉu vi volas elŝuti aplikaĵojn el %1$s nun?</string>
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
-    <string name="swap_scan_or_type_url">Unu persono devas skani la kodon, aŭ entajpi URL-n de aliulo en foliumilon.</string>
+    <string name="swap_scan_or_type_url">Unu persono devas skani la kodon aŭ enigi ligilon de la aliulo en la ret‑foliumilon.</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">Skani QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
@@ -414,10 +414,10 @@
     <string name="panic_hide_title">Kaŝi %s</string>
     <string name="panic_hide_summary">Aplikaĵo kaŝiĝos</string>
     <string name="panic_hide_warning_title">Memori kiel restarigi</string>
-    <string name="panic_hide_warning_message">En kriza okazo, tio ĉi forigos %1$s el la lanĉilo. Nur tajpado de “%2$d” en la ŝajn-aplikaĵo %3$s povas restarigi ĝin.</string>
+    <string name="panic_hide_warning_message">En kriza okazo, tio ĉi forigos %1$s el la lanĉilo. Por restarigi la aplikaĵon %1$s, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
     <string name="hiding_calculator">Kalkulilo</string>
     <string name="hiding_dialog_title">Kaŝi %s nun</string>
-    <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo? Nur tajpado de “%2$d” en la ŝajn-aplikaĵo %3$s povas restarigi ĝin.</string>
+    <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo\? Por restarigi la aplikaĵon %1$s, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
     <string name="hiding_dialog_warning">Averto: ĉiu ligilo ĉe la hejmekrano ankaŭ estos forigita kaj devas esti realdonita permane.</string>
     <string name="hide_on_long_search_press_title">Kaŝi per serĉ-butono</string>
     <string name="hide_on_long_search_press_summary">Kaŝi la aplikaĵon per longe premi la serĉ-butonon</string>
@@ -518,4 +518,7 @@
     <string name="menu_show_install_history">Montri historion de instaloj</string>
     <string name="menu_show_fdroid_metrics_report">Montri raporton pri uzado</string>
     <string name="send_to_fdroid_metrics">Sendi datumojn pri uzado</string>
+    <string name="theme_follow_system">Sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Konsilinda nur por ekranoj OLED.</string>
+    <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela etoso</string>
 </resources>

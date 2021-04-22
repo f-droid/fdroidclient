@@ -1,0 +1,18 @@
+F-Droid là một mục lục các ứng dụng phần mềm tự do
+cho Android. Ứng dụng khách F-Droid khiến
+việc duyệt, cài đặt, và theo dõi các bản cập nhật trên thiết bị của bạn được dễ dàng.
+
+Ứng dụng này kết nối đến bất kỳ kho nào tương thích với F-Droid. Kho mặc định
+được lưu trữ tại f-droid.org, nó chỉ chứa các phần mềm tự do thực sự.
+
+Bản thân Android là mở theo cách là bạn có thể tuỳ ý cài đặt các tệp APK
+từ bất cứ đâu bạn muốn, nhưng có nhiều lý do tốt để sử dụng
+F-Droid làm trình quản lý ứng dụng phần mềm tự do:
+
+* Có thông báo khi có bản cập nhật
+* Tự động tải xuống và cài đặt các bản cập nhật (không bắt buộc)
+* Theo dõi các phiên bản cũ hơn và phiên bản beta
+* Lọc ra các ứng dụng không tương thích với thiết bị
+* Tìm các ứng dụng qua các hạng mục và các mục mô tả có thể tìm kiếm
+* Truy cập các URL được liên kết để quyên góp, tìm mã nguồn, v.v.
+* Giữ an toàn bằng cách kiểm tra chữ ký mục lục kho và mã kiểm tra của các tệp APK

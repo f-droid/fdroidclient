@@ -70,7 +70,7 @@
     <string name="other">ಇತರ</string>
     <string name="delete">ಅಳಿಸಿ</string>
     <string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
-    <string name="updates">ವಿಭಾಗಗಳು</string>
+    <string name="updates">ನವೀಕರಣಗಳು</string>
     <string name="category_Internet">ಇಂಟರ್ನೆಟ್</string>
     <string name="category_Money">ಹಣ</string>
     <string name="category_Reading">ಓದುವಿಕೆ</string>
@@ -307,7 +307,7 @@
     <string name="notification_action_update">ನವೀಕರಣ</string>
     <string name="details_last_updated_today">ಇಂದು ನವೀಕರಿಸಲಾಗಿದೆ</string>
     <string name="panic_app_setting_none">ಯಾವುದೂ ಅಲ್ಲ</string>
-    <string name="panic_hide_title">ಹೈಡ್ %s</string>
+    <string name="panic_hide_title">ಮರೆಮಾಡಿ %s</string>
     <string name="warning_scaning_qr_code">ನಿಮ್ಮ ಕ್ಯಾಮೆರಾದಲ್ಲಿ ಆಟೋಫೋಕಸ್ ಇರುವಂತೆ ತೋರುತ್ತಿಲ್ಲ. ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡುವುದು ಕಷ್ಟವಾಗಬಹುದು.</string>
     <string name="swap_toast_could_not_enable_hotspot">ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!</string>
     <string name="undo">ರದ್ದುಗೊಳಿಸಿ</string>
@@ -497,4 +497,16 @@
     <string name="enable_proxy_title">HTTP ಪ್ರಾಕ್ಸಿ ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
     <string name="proxy">ಪ್ರಾಕ್ಸಿ</string>
     <string name="useTorSummary">ಹೆಚ್ಚಿದ ಗೌಪ್ಯತೆಗಾಗಿ TOR ಮೂಲಕ ಡೌನ್‌ಲೋಡ್ ದಟ್ಟಣೆಯನ್ನು ಒತ್ತಾಯಿಸಿ. ORBOT ಅಗತ್ಯವಿದೆ</string>
+    <string name="theme_follow_system">ಸಿಸ್ಟಮ್ ಅನ್ನು ಅನುಸರಿಸಿ</string>
+    <string name="use_pure_black_dark_theme_summary">OLED ಪರದೆಗಳಿಗೆ ಮಾತ್ರ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ.</string>
+    <string name="use_pure_black_dark_theme">ಡಾರ್ಕ್ ಥೀಮ್ ನಲ್ಲಿ ಶುದ್ಧ ಕಪ್ಪು ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಿ</string>
+    <string name="menu_show_install_history">ಸ್ಥಾಪನೆಯ ಇತಿಹಾಸವನ್ನು ತೋರಿಸಿ</string>
+    <string name="menu_show_fdroid_metrics_report">ಮೆಟ್ರಿಕ್ಸ್ ವರದಿಯನ್ನು ತೋರಿಸಿ</string>
+    <string name="toast_metrics_in_install_history">%s ಮೆಟ್ರಿಕ್ ವರದಿಯು ಇನ್ ಸ್ಟಾಲ್ ಹಿಸ್ಟರಿ ವೀಕ್ಷಕದಲ್ಲಿ ವೀಕ್ಷಿಸಬಹುದಾಗಿದೆ</string>
+    <string name="send_to_fdroid_metrics_summary">ಅನಾಮಧೇಯ ಡೇಟಾವನ್ನು ವಾರಕ್ಕೊಮ್ಮೆ ಎಫ್-ಡ್ರಾಯಿಡ್ ಮೆಟ್ರಿಕ್ಸ್‌ಗೆ ಕಳುಹಿಸಿ (ಆಪ್ ಸ್ಥಾಪಿಸಿದ್ ಇತಿಹಾಸದ ಅಗತ್ಯವಿದೆ)</string>
+    <string name="send_to_fdroid_metrics">ಬಳಕೆಯ ಡೇಟಾವನ್ನು ಕಳುಹಿಸಿ</string>
+    <string name="fdroid_metrics_report">%s ಮೆಟ್ರಿಕ್ಸ್ ವರದಿ</string>
+    <string name="install_history_and_metrics">ಇತಿಹಾಸ ಮತ್ತು ಮೆಟ್ರಿಕ್ಸ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿ</string>
+    <string name="send_fdroid_metrics_json">%s ಮೆಟ್ರಿಕ್ಸ್ ವರದಿಯನ್ನುJSON ಫೈಲ್ ಪ್ರಕಾರದಲ್ಲಿ ವರದಿ ಮಾಡಿ</string>
+    <string name="send_fdroid_metrics_report">%s ಮೆಟ್ರಿಕ್ಸ್ ವರದಿಯನ್ನು ಕಳುಹಿಸಿ</string>
 </resources>

@@ -526,4 +526,7 @@
     <string name="install_history_and_metrics">היסטוריית התקנה ומדדים</string>
     <string name="send_fdroid_metrics_json">דוח מדדי %s כקובץ JSON</string>
     <string name="send_fdroid_metrics_report">שליחת דוח מדדי %s</string>
+    <string name="theme_follow_system">כמו המערכת</string>
+    <string name="use_pure_black_dark_theme_summary">מומלץ למסכי OLED בלבד.</string>
+    <string name="use_pure_black_dark_theme">להשתמש ברקע שחור טהור בערכת עיצוב כהה</string>
 </resources>

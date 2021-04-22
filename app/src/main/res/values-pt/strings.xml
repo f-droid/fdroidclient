@@ -506,4 +506,7 @@
     <string name="install_history_and_metrics">Histórico de instalações e métrica</string>
     <string name="send_fdroid_metrics_json">Relatório de métrica %s como ficheiro JSON</string>
     <string name="send_fdroid_metrics_report">Enviar relatório de métrica %s</string>
+    <string name="theme_follow_system">Usar o sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Recomendado apenas para ecrãs OLED.</string>
+    <string name="use_pure_black_dark_theme">Usar fundo preto puro no tema escuro</string>
 </resources>
