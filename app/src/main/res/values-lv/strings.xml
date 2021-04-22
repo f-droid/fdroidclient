@@ -329,7 +329,7 @@
     <string name="repos_unchanged">Visas krātuves ir atjauninātas</string>
     <string name="status_connecting_to_repo">Savienojas ar
 \n%1$s</string>
-    <string name="update_notification_title">Atjauno krātuves</string>
+    <string name="banner_updating_repositories">Atjauno krātuves</string>
     <string name="hide_on_long_search_press_summary">Ilgi spiežot meklēšanas pogu paslēps lietotni</string>
     <string name="hide_on_long_search_press_title">Paslēpt ar meklēšanas pogu</string>
     <string name="panic_hide_warning_message">Panikas gadījumā, šis noņems %1$s no sākum ekrāna. Tikai ierakstot \"%2$d\" neīstajā %3$s lietotnē to atjaunos.</string>
