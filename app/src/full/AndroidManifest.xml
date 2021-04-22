@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
  * Copyright (C) 2010-2012 Ciaran Gultnieks
  * Copyright (C) 2013-2017 Peter Serwylo
@@ -23,90 +24,128 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.fdroid.fdroid"
-          android:installLocation="auto">
+    package="org.fdroid.fdroid"
+    android:installLocation="auto">
 
-    <uses-feature android:name="android.hardware.nfc" android:required="false"/>
-    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
-    <uses-feature android:name="android.hardware.usb.host" android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.NFC"/>
-    <uses-permission android:name="android.permission.USB_PERMISSION"
-                     android:maxSdkVersion="22"/> <!-- maybe unnecessary -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
 
-    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission
+        android:name="android.permission.USB_PERMISSION"
+        android:maxSdkVersion="22" /><!-- maybe unnecessary -->
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application>
 
         <activity
-                android:label="@string/swap"
-                android:name=".nearby.SwapWorkflowActivity"
-                android:parentActivityName=".views.main.MainActivity"
-                android:launchMode="singleTask"
-                android:screenOrientation="portrait"
-                android:configChanges="orientation|keyboardHidden">
+            android:name=".nearby.SwapWorkflowActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/swap"
+            android:launchMode="singleTask"
+            android:parentActivityName=".views.main.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
         </activity>
 
+        <activity
+            android:name=".panic.PanicPreferencesActivity"
+            android:label="@string/panic_settings"
+            android:parentActivityName=".views.main.MainActivity">
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.CONNECT" />
+                <action android:name="info.guardianproject.panic.action.DISCONNECT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".panic.SelectInstalledAppsActivity"
+            android:parentActivityName=".panic.PanicPreferencesActivity" />
+
+        <activity
+            android:name=".panic.PanicResponderActivity"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoDisplay">
+
+            <!-- this can never have launchMode singleTask or singleInstance! -->
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".panic.ExitActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+
+        <activity
+            android:name=".panic.CalculatorActivity"
+            android:enabled="false"
+            android:icon="@mipmap/ic_calculator_launcher"
+            android:label="@string/hiding_calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <receiver android:name=".nearby.WifiStateChangeReceiver">
             <intent-filter>
-                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".receiver.DeviceStorageReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
             </intent-filter>
         </receiver>
 
-        <service
-                android:name=".nearby.WifiStateChangeService"
-                android:exported="false"/>
-        <service android:name=".nearby.SwapService"/>
-
-        <service
-                android:name=".nearby.LocalRepoService"
-                android:exported="false"/>
-        <service
-                android:name=".nearby.TreeUriScannerIntentService"
-                android:exported="false"/>
-        <service
-                android:name=".nearby.SDCardScannerService"
-                android:exported="false"/>
-
-        <receiver
-                android:name=".nearby.UsbDeviceAttachedReceiver">
+        <receiver android:name=".nearby.UsbDeviceAttachedReceiver">
             <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
             <meta-data
-                    android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                    android:resource="@xml/device_filter"/>
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
         </receiver>
-        <receiver
-                android:name=".nearby.UsbDeviceDetachedReceiver">
+        <receiver android:name=".nearby.UsbDeviceDetachedReceiver">
             <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"/>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
             </intent-filter>
             <meta-data
-                    android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"
-                    android:resource="@xml/device_filter"/>
+                android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"
+                android:resource="@xml/device_filter" />
         </receiver>
         <receiver android:name=".nearby.UsbDeviceMediaMountedReceiver">
             <intent-filter>
@@ -120,51 +159,20 @@
             </intent-filter>
         </receiver>
 
-        <activity
-                android:name=".panic.PanicPreferencesActivity"
-                android:label="@string/panic_settings"
-                android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.main.MainActivity"/>
+        <service
+            android:name=".nearby.WifiStateChangeService"
+            android:exported="false" />
+        <service android:name=".nearby.SwapService" />
 
-            <intent-filter>
-                <action android:name="info.guardianproject.panic.action.CONNECT"/>
-                <action android:name="info.guardianproject.panic.action.DISCONNECT"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".panic.SelectInstalledAppsActivity"
-                android:parentActivityName=".panic.PanicPreferencesActivity"/>
-
-        <activity
-                android:name=".panic.PanicResponderActivity"
-                android:noHistory="true"
-                android:theme="@android:style/Theme.NoDisplay">
-
-            <!-- this can never have launchMode singleTask or singleInstance! -->
-            <intent-filter>
-                <action android:name="info.guardianproject.panic.action.TRIGGER"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".panic.ExitActivity"
-                android:theme="@android:style/Theme.NoDisplay"/>
-        <activity
-                android:name=".panic.CalculatorActivity"
-                android:enabled="false"
-                android:icon="@mipmap/ic_calculator_launcher"
-                android:label="@string/hiding_calculator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <service
+            android:name=".nearby.LocalRepoService"
+            android:exported="false" />
+        <service
+            android:name=".nearby.TreeUriScannerIntentService"
+            android:exported="false" />
+        <service
+            android:name=".nearby.SDCardScannerService"
+            android:exported="false" />
 
     </application>
 
