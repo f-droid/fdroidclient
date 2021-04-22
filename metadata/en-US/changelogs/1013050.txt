@@ -1,1 +1,5 @@
 * Theme support tied to built-in Android themes (@proletarius101)
+
+* New top banner notifications: "No Internet" and "No Data or WiFi enabled"
+
+* Improved handling of USB-OTG and SD Card repos and mirrors
