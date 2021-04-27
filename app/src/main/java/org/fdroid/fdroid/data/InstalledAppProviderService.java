@@ -23,10 +23,9 @@ import org.fdroid.fdroid.privileged.IPrivilegedService;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -221,13 +220,9 @@ public class InstalledAppProviderService extends JobIntentService {
             packageInfoList = context.getPackageManager().getInstalledPackages(PackageManager.GET_SIGNATURES);
         }
         Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
-        Collections.sort(packageInfoList, new Comparator<PackageInfo>() {
-            @Override
-            public int compare(PackageInfo o1, PackageInfo o2) {
-                return o1.packageName.compareTo(o2.packageName);
-            }
-        });
-        for (PackageInfo packageInfo : packageInfoList) {
+        TreeSet<PackageInfo> packageInfoSet = new TreeSet<>((o1, o2) -> o1.packageName.compareTo(o2.packageName));
+        packageInfoSet.addAll(packageInfoList);
+        for (PackageInfo packageInfo : packageInfoSet) {
             if (cachedInfo.containsKey(packageInfo.packageName)) {
                 if (packageInfo.lastUpdateTime < 1262300400000L // 2010-01-01 00:00
                         || packageInfo.lastUpdateTime > cachedInfo.get(packageInfo.packageName)) {
