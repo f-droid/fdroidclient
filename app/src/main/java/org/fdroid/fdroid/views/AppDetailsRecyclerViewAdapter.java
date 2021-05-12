@@ -262,7 +262,8 @@ public class AppDetailsRecyclerViewAdapter
                 uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getFlattrUri()) ||
-                uriIsSetAndCanBeOpened(app.getLiberapayUri());
+                uriIsSetAndCanBeOpened(app.getLiberapayUri()) ||
+                uriIsSetAndCanBeOpened(app.getOpenCollectiveUri());
     }
 
     private void notifyVersionViewsChanged() {
