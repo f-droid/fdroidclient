@@ -126,10 +126,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         sortImage = (ImageView) findViewById(R.id.sort);
         final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
                 R.drawable.ic_last_updated)).mutate();
-        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
         final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
                 R.drawable.ic_sort)).mutate();
-        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
         sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
