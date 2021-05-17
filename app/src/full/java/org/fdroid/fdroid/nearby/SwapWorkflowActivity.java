@@ -72,7 +72,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SwitchCompat;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
@@ -775,7 +775,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothScanModeChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             if (bluetoothSwitch == null || textBluetoothVisible == null
                     || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
@@ -987,7 +987,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
-        SwitchCompat wifiSwitch = findViewById(R.id.switch_wifi);
+        SwitchMaterial wifiSwitch = findViewById(R.id.switch_wifi);
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1111,7 +1111,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            SwitchCompat bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
