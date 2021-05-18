@@ -123,6 +123,8 @@
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/progress_cancel"
+                    android:indeterminate="true"
+                    android:visibility="gone"
                     app:hideAnimationBehavior="outward"
                     app:showAnimationBehavior="inward"
                     app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />

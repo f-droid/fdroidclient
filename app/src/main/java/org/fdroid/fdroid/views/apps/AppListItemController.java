@@ -283,12 +283,12 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (progressBar != null) {
             if (viewState.showProgress()) {
-                progressBar.setVisibility(View.VISIBLE);
                 if (viewState.isProgressIndeterminate()) {
                     progressBar.setIndeterminate(true);
                 } else {
                     progressBar.setProgressCompat(Utils.getPercent(viewState.getProgressCurrent(), viewState.getProgressMax()), true);
                 }
+                progressBar.setVisibility(View.VISIBLE);
             } else {
                 progressBar.setVisibility(View.GONE);
             }

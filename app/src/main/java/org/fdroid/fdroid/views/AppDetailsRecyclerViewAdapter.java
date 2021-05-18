@@ -457,9 +457,10 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void setIndeterminateProgress(int resIdString) {
+            progressBar.setIndeterminate(true);
+            progressBar.show();
             progressLayout.setVisibility(View.VISIBLE);
             buttonLayout.setVisibility(View.GONE);
-            progressBar.setIndeterminate(true);
             progressLabel.setText(resIdString);
             progressLabel.setContentDescription(context.getString(R.string.downloading));
             progressPercent.setText("");
@@ -471,15 +472,16 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void setProgress(long bytesDownloaded, long totalBytes) {
-            progressLayout.setVisibility(View.VISIBLE);
-            buttonLayout.setVisibility(View.GONE);
-            progressCancel.setVisibility(View.VISIBLE);
-
             if (totalBytes <= 0) {
                 progressBar.setIndeterminate(true);
             } else {
                 progressBar.setProgressCompat(Utils.getPercent(Utils.bytesToKb(bytesDownloaded), Utils.bytesToKb(totalBytes)), true);
             }
+
+            progressLayout.setVisibility(View.VISIBLE);
+            buttonLayout.setVisibility(View.GONE);
+            progressCancel.setVisibility(View.VISIBLE);
+
             progressLabel.setContentDescription("");
             if (totalBytes > 0 && bytesDownloaded >= 0) {
                 int percent = Utils.getPercent(bytesDownloaded, totalBytes);
