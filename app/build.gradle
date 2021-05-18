@@ -164,7 +164,6 @@ dependencies {
     implementation 'ch.acra:acra:4.9.1'
     implementation 'io.reactivex:rxjava:1.1.0'
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
-    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.5'
 
     implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'

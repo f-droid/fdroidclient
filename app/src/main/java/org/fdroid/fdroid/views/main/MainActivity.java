@@ -31,20 +31,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.ashokvarma.bottomnavigation.TextBadgeItem;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -61,17 +63,6 @@ import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 
-import java.lang.reflect.Field;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 /**
  * Main view shown to users upon starting F-Droid.
  * <p>
@@ -86,7 +77,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * When switching from one screen to the next, we stay within this activity. The new screen will
  * get inflated (if required)
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -107,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
-    private BottomNavigationBar bottomNavigation;
+    private BottomNavigationView bottomNavigation;
     private int selectedMenuId;
-    private TextBadgeItem updatesBadge;
+    private BadgeDrawable updatesBadge;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,61 +125,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         }
 
-        updatesBadge = new TextBadgeItem().hide(false);
+        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(item -> {
+            pager.scrollToPosition(item.getOrder());
+            selectedMenuId = (int) adapter.getItemId(item.getItemId());
 
-        bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
-        bottomNavigation
-                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps));
-        if (BuildConfig.FLAVOR.startsWith("full")) {
-            bottomNavigation
-                    .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
-                    .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby));
-
-            bottomNavigation.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (bottomNavigation.getCurrentSelectedPosition() == 2) {
-                        NearbyViewBinder.updateUsbOtg(MainActivity.this);
-                    }
-                }
-            });
-        }
-        bottomNavigation.setTabSelectedListener(this)
-                .setBarBackgroundColor(getBottomNavigationBackgroundColorResId())
-                .setInActiveColor(R.color.bottom_nav_items)
-                .setActiveColor(R.color.bottom_nav_active)
-                .setMode(BottomNavigationBar.MODE_FIXED)
-                .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.main_menu__updates)
-                        .setBadgeItem(updatesBadge))
-                .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
-                .setAnimationDuration(0)
-                .initialise();
-
-        // turn off animation, scaling, and truncate labels in the middle
-        final LinearLayout linearLayout = bottomNavigation.findViewById(R.id.bottom_navigation_bar_item_container);
-        final int childCount = linearLayout.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            final View fixedBottomNavigationTab = linearLayout.getChildAt(i);
-            try {
-                Field labelScale = fixedBottomNavigationTab.getClass().getDeclaredField("labelScale");
-                labelScale.setAccessible(true);
-                labelScale.set(fixedBottomNavigationTab, 1.0f);
-            } catch (IllegalAccessException | NoSuchFieldException | IllegalArgumentException e) {
-                e.printStackTrace();
+            if (item.getItemId() == 2) {
+                NearbyViewBinder.updateUsbOtg(MainActivity.this);
             }
 
-            final View container = fixedBottomNavigationTab.findViewById(R.id.fixed_bottom_navigation_container);
-            container.setPadding(
-                    2,
-                    container.getPaddingTop(),
-                    2,
-                    container.getPaddingBottom()
-            );
+            return true;
 
-            final TextView title = fixedBottomNavigationTab.findViewById(R.id.fixed_bottom_navigation_title);
-            title.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-        }
+        });
+        updatesBadge = bottomNavigation.getOrCreateBadge(R.id.updates);
+        updatesBadge.setVisible(false);
 
         IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
@@ -215,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void setSelectedMenuInNav() {
-        bottomNavigation.selectTab(adapter.adapterPositionFromItemId(selectedMenuId));
+        bottomNavigation.setSelectedItemId(adapter.adapterPositionFromItemId(selectedMenuId));
     }
 
     private void initialRepoUpdateIfRequired() {
@@ -290,22 +240,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     Toast.LENGTH_SHORT).show();
             SDCardScannerService.scan(this);
         }
-    }
-
-    @Override
-    public void onTabSelected(int position) {
-        pager.scrollToPosition(position);
-        selectedMenuId = (int) adapter.getItemId(position);
-    }
-
-    @Override
-    public void onTabUnselected(int position) {
-
-    }
-
-    @Override
-    public void onTabReselected(int position) {
-
     }
 
     /**
@@ -455,18 +389,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     private void refreshUpdatesBadge(int canUpdateCount) {
         if (canUpdateCount == 0) {
-            updatesBadge.hide(true);
+            updatesBadge.setVisible(false);
+            updatesBadge.clearNumber();
         } else {
-            updatesBadge.setText(Integer.toString(canUpdateCount));
-            updatesBadge.show(true);
+            updatesBadge.setNumber(canUpdateCount);
+            updatesBadge.setVisible(true);
         }
-    }
-
-    private int getBottomNavigationBackgroundColorResId() {
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            return R.color.fdroid_night;
-        }
-        return R.color.fdroid_blue;
     }
 
     private static class NonScrollingHorizontalLayoutManager extends LinearLayoutManager {
