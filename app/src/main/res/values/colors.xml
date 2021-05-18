@@ -29,12 +29,9 @@
     <color name="fdroid_blue_dark">#ff004ba0</color>
     <color name="fdroid_green_light">#ffbee247</color>
     <color name="fdroid_green">#ff8ab000</color>
-    <!--https://material.io/design/color/dark-theme.html#properties-->
-    <color name="fdroid_night">#ff121212</color>
 
     <color name="shadow">#cc222222</color>
 
     <color name="perms_costs_money">#fff4511e</color>
 
-    <color name="bottom_nav_active">@android:color/white</color>
 </resources>

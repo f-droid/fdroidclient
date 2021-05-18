@@ -35,10 +35,6 @@
 
     <style name="AlertDialogBaseThemeNight" parent="AlertDialogBaseThemeDark" />
 
-    <style name="ThemeOverlay.App.MaterialAlertDialog.Night" parent="AlertDialogBaseThemeNight">
-        <item name="android:windowBackground">@color/fdroid_night</item>
-    </style>
-
     <style name="MinWithDialogBaseThemeDark" parent="Theme.MaterialComponents.Dialog.MinWidth">
         <item name="colorSecondary">@color/fdroid_green</item>
 

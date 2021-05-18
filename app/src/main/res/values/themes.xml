@@ -60,6 +60,7 @@
         <item name="lightGrayTextColor">#4a4a4a</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="appDetailsAntiFeatureIconColor">#000000</item>
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface</item>
     </style>
 
     <!-- light app theme with accent colors following roughly android design guidelines -->
