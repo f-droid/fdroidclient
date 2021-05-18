@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingLeft="24dp"
+        android:paddingTop="20dp"
         android:paddingRight="24dp"
-        android:paddingBottom="24dp"
-        android:paddingTop="20dp">
+        android:paddingBottom="24dp">
 
         <TextView
             android:id="@android:id/text1"
@@ -25,13 +25,19 @@
             android:layout_marginTop="20dp"
             android:text="@string/crash_dialog_comment_prompt" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@android:id/input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
 </ScrollView>

@@ -3,40 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingLeft="24dp"
     android:paddingStart="24dp"
-    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
+    android:paddingTop="20dp"
     android:paddingEnd="24dp"
-    android:paddingTop="20dp">
+    android:paddingRight="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_name" />
-
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textNoSuggestions"
-            android:maxLines="1" />
+            android:layout_margin="4dp"
+            android:hint="@string/login_name">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_password" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1" />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1" />
+            android:layout_margin="4dp"
+            android:hint="@string/login_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/overwrite_message"
@@ -48,12 +58,12 @@
     </LinearLayout>
 
     <TextView
-        android:padding="10dp"
-        android:textSize="16sp"
         android:id="@+id/text_searching_for_repo"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="16sp"
         tools:text="Searching for repository at\nhttps://www.example.com/fdroid/repo/" />
 
 </RelativeLayout>

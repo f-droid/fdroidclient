@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -424,8 +425,10 @@ public class RepoDetailsActivity extends AppCompatActivity {
     public void showChangePasswordDialog(final View parentView) {
         final View view = getLayoutInflater().inflate(R.layout.login, null);
         final AlertDialog credentialsDialog = new AlertDialog.Builder(this).setView(view).create();
-        final EditText nameInput = view.findViewById(R.id.edit_name);
-        final EditText passwordInput = view.findViewById(R.id.edit_password);
+        final TextInputLayout nameInputLayout = view.findViewById(R.id.edit_name);
+        final TextInputLayout passwordInputLayout = view.findViewById(R.id.edit_password);
+        final EditText nameInput = nameInputLayout.getEditText();
+        final EditText passwordInput = passwordInputLayout.getEditText();
 
         nameInput.setText(repo.username);
         passwordInput.requestFocus();

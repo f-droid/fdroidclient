@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingLeft="24dp"
     android:paddingStart="24dp"
-    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
+    android:paddingTop="20dp"
     android:paddingEnd="24dp"
-    android:paddingTop="20dp">
+    android:paddingRight="24dp">
 
     <LinearLayout
         android:id="@+id/add_repo_form"
@@ -15,32 +15,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/repo_add_url" />
-
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_uri"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textUri"
-            android:maxLines="2"
-            android:text="@string/https" />
+            android:layout_margin="4dp"
+            android:hint="@string/repo_add_url"
+            android:text="@string/https">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/repo_add_fingerprint" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:maxLines="2" />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_fingerprint"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:digits="0123456789ABCDEFabcedf: "
-            android:inputType="textNoSuggestions"
-            android:maxLines="3"
-            android:typeface="monospace" />
+            android:hint="@string/repo_add_fingerprint"
+            android:typeface="monospace">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions"
+                android:maxLines="3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/overwrite_message"
@@ -52,31 +61,31 @@
     </LinearLayout>
 
     <TextView
-        android:padding="10dp"
-        android:textSize="16sp"
         android:id="@+id/text_searching_for_repo"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="16sp"
         tools:text="Searching for repository at\nhttps://www.example.com/fdroid/repo/" />
 
 </RelativeLayout>
 
-<!--
- * Copyright (C) 2009  Roberto Jacinto
- * roberto.jacinto@caixamagica.pt
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
--->
+    <!--
+     * Copyright (C) 2009  Roberto Jacinto
+     * roberto.jacinto@caixamagica.pt
+     *
+     * This program is free software; you can redistribute it and/or
+     * modify it under the terms of the GNU General Public License
+     * as published by the Free Software Foundation; either version 2
+     * of the License, or (at your option) any later version.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public License
+     * along with this program; if not, write to the Free Software
+     * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    -->
