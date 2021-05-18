@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -47,7 +47,7 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final TextView emptyState;
     private final RecyclerView appList;
 
-    private ProgressBar progressBar;
+    private CircularProgressIndicator progressBar;
 
     LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -173,7 +173,7 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 return;
             }
             LinearLayout linearLayout = (LinearLayout) appList.getParent();
-            progressBar = new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge);
+            progressBar = new CircularProgressIndicator(activity);
             progressBar.setId(R.id.progress_bar);
             linearLayout.addView(progressBar);
             emptyState.setVisibility(View.GONE);

@@ -30,11 +30,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -1024,7 +1024,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            CircularProgressIndicator peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null
                     || !BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
                 return;
@@ -1115,7 +1115,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            CircularProgressIndicator peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
                     || peopleNearbyText == null || peopleNearbyProgress == null
                     || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
@@ -1279,7 +1279,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             setUpConnectingProgressText(intent.getStringExtra(Intent.EXTRA_TEXT));
 
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+            CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
 
             if (progressBar == null || tryAgainButton == null) {
@@ -1330,7 +1330,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
             setUpConnectingProgressText(message);
 
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+            CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
 
             if (progressBar == null || tryAgainButton == null) {

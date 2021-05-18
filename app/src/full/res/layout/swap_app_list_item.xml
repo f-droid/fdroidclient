@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,13 +76,12 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="F-Droid"/>
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress"
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            style="?android:attr/progressBarStyleHorizontal"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:paddingEnd="5dp"
@@ -91,6 +91,8 @@
             android:layout_toStartOf="@+id/button_or_text"
             android:layout_toLeftOf="@+id/button_or_text"
             android:layout_below="@+id/name"
-    />
+            app:showAnimationBehavior="inward"
+            app:hideAnimationBehavior="outward"
+            app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />
 
 </RelativeLayout>

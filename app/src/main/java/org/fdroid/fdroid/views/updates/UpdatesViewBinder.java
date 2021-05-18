@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
@@ -21,13 +20,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 public class UpdatesViewBinder {
 
     private final UpdatesAdapter adapter;
     private final RecyclerView list;
     private final TextView emptyState;
     private final ImageView emptyImage;
-    private final ProgressBar emptyUpdatingProgress;
+    private final CircularProgressIndicator emptyUpdatingProgress;
     private final AppCompatActivity activity;
 
     public UpdatesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
