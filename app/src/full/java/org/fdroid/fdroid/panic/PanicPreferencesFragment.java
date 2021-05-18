@@ -27,11 +27,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
+
 import info.guardianproject.panic.Panic;
 import info.guardianproject.panic.PanicResponder;
 
@@ -42,9 +43,9 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     private PackageManager pm;
     private ListPreference prefApp;
-    private CheckBoxPreference prefExit;
-    private CheckBoxPreference prefHide;
-    private CheckBoxPreference prefResetRepos;
+    private SwitchPreferenceCompat prefExit;
+    private SwitchPreferenceCompat prefHide;
+    private SwitchPreferenceCompat prefResetRepos;
     private PreferenceCategory categoryAppsToUninstall;
 
     @Override
@@ -52,11 +53,11 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
         addPreferencesFromResource(R.xml.preferences_panic);
 
         pm = getActivity().getPackageManager();
-        prefExit = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_EXIT);
+        prefExit = (SwitchPreferenceCompat) findPreference(Preferences.PREF_PANIC_EXIT);
         prefApp = (ListPreference) findPreference(PREF_APP);
-        prefHide = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_HIDE);
+        prefHide = (SwitchPreferenceCompat) findPreference(Preferences.PREF_PANIC_HIDE);
         prefHide.setTitle(getString(R.string.panic_hide_title, getString(R.string.app_name)));
-        prefResetRepos = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_RESET_REPOS);
+        prefResetRepos = (SwitchPreferenceCompat) findPreference(Preferences.PREF_PANIC_RESET_REPOS);
         categoryAppsToUninstall = (PreferenceCategory) findPreference("pref_panic_apps_to_uninstall");
 
         if (PanicResponder.checkForDisconnectIntent(getActivity())) {
