@@ -9,6 +9,8 @@ import org.fdroid.fdroid.R;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class CrashReportActivity extends BaseCrashReportDialog
         implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
 
@@ -30,7 +32,8 @@ public class CrashReportActivity extends BaseCrashReportDialog
         dialog.setOnDismissListener(this);
         dialog.show();
 
-        comment = (EditText) dialog.findViewById(android.R.id.input);
+        TextInputLayout commentLayout = dialog.findViewById(android.R.id.input);
+        comment = commentLayout.getEditText();
         if (savedInstanceState != null) {
             comment.setText(savedInstanceState.getString(STATE_COMMENT));
         }

@@ -50,8 +50,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
@@ -74,17 +86,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
-import androidx.core.content.ContextCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 
 public class ManageReposActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
@@ -296,8 +297,10 @@ public class ManageReposActivity extends AppCompatActivity
             final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
             MaterialAlertDialogBuilder addRepoDialogBuilder = new MaterialAlertDialogBuilder(context);
             addRepoDialogBuilder.setView(view);
-            final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
-            final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
+            final TextInputLayout uriEditTextLayout = view.findViewById(R.id.edit_uri);
+            final TextInputLayout fingerprintEditTextLayout = view.findViewById(R.id.edit_fingerprint);
+            final EditText uriEditText = uriEditTextLayout.getEditText();
+            final EditText fingerprintEditText = fingerprintEditTextLayout.getEditText();
 
             addRepoDialogBuilder.setTitle(R.string.repo_add_title);
             addRepoDialogBuilder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
