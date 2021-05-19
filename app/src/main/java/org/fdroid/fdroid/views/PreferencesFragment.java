@@ -449,7 +449,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
     private void initPrivilegedInstallerPreference() {
-        final SwitchPreferenceCompat pref = (SwitchPreferenceCompat) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+        final SwitchPreferenceCompat pref = findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
 
         // This code will be run each time the activity is resumed, and so we may have already removed
         // this preference.
