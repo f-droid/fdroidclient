@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:orientation="horizontal"
+        android:paddingStart="120dp"
         android:paddingTop="@dimen/category_preview__app_list__padding__vertical"
         android:paddingBottom="@dimen/category_preview__app_list__padding__vertical"
         app:layoutManager="LinearLayoutManager"

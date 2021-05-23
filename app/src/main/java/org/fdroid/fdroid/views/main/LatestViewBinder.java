@@ -33,6 +33,7 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
@@ -56,14 +57,11 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         latestAdapter = new LatestAdapter(activity);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
-        layoutManager.setSpanSizeLookup(new LatestAdapter.SpanSizeLookup());
 
         emptyState = (TextView) latestView.findViewById(R.id.empty_state);
 
         appList = (RecyclerView) latestView.findViewById(R.id.app_list);
-        appList.setHasFixedSize(true);
-        appList.setLayoutManager(layoutManager);
+        appList.setHasFixedSize(false);
         appList.setAdapter(latestAdapter);
 
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) latestView
