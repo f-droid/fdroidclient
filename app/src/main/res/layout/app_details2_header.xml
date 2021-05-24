@@ -160,10 +160,10 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
             android:id="@+id/changelog"
@@ -208,11 +208,12 @@
 
     <LinearLayout
         android:id="@+id/anti_features_section"
+        android:theme="@style/ThemeOverlay.App.Warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffde03"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/details_activity_padding"
+        android:background="?attr/colorPrimary"
+        android:orientation="vertical"
         android:padding="@dimen/details_activity_padding">
 
         <TextView
@@ -221,10 +222,12 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_warning"
             android:drawableLeft="@drawable/ic_warning"
+            android:drawableTint="?attr/colorOnPrimary"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:text="@string/antifeatureswarning"
-            android:textAppearance="?attr/textAppearanceSubtitle1" />
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="?attr/colorOnPrimary" />
 
         <TextView
             android:id="@+id/label_anti_features"
@@ -234,7 +237,8 @@
             android:scrollbars="none"
             android:text="@string/antifeatures"
             android:textAllCaps="true"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/colorOnPrimary" />
 
         <!-- listing of all anti-features -->
         <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView

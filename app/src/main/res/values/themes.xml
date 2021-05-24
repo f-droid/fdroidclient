@@ -71,5 +71,10 @@
     <!-- Same as Theme.App except a black background in Dark mode -->
     <style name="Theme.App.Black" parent="Theme.App" />
 
+    <style name="ThemeOverlay.App.Warning" parent="@style/ThemeOverlay.MaterialComponents">
+        <item name="colorPrimary">#ffde03</item>
+        <item name="colorOnPrimary">#000000</item>
+    </style>
+
     <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
 </resources>

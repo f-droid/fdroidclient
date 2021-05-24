@@ -53,4 +53,9 @@
         <item name="backgroundColor">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
     </style>
+
+    <style name="ThemeOverlay.App.Warning" parent="@style/ThemeOverlay.MaterialComponents">
+        <item name="colorPrimary">#c7ad00</item>
+        <item name="colorOnPrimary">#000000</item>
+    </style>
 </resources>
