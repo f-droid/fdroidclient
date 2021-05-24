@@ -194,7 +194,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
         installConfirm = findViewById(R.id.install_confirm_panel);
-        installConfirm.setVisibility(View.INVISIBLE);
+        installConfirm.setVisibility(View.GONE);
 
         startInstallConfirm();
     }

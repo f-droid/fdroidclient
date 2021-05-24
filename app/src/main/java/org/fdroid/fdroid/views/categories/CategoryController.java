@@ -87,7 +87,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         heading.setText(translatedName);
         heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
 
-        viewAll.setVisibility(View.INVISIBLE);
+        viewAll.setVisibility(View.GONE);
 
         loaderManager.initLoader(currentCategory.hashCode(), null, this);
         loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);

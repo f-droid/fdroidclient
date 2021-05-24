@@ -569,7 +569,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
-            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -1139,7 +1139,7 @@ public class AppDetailsRecyclerViewAdapter
                 added.setVisibility(View.VISIBLE);
                 added.setText(context.getString(R.string.added_on, df.format(apk.added)));
             } else {
-                added.setVisibility(View.INVISIBLE);
+                added.setVisibility(View.GONE);
             }
 
             // Repository name, APK size and required Android version
@@ -1148,7 +1148,7 @@ public class AppDetailsRecyclerViewAdapter
                 repository.setVisibility(View.VISIBLE);
                 repository.setText(String.format(context.getString(R.string.app_repository), repo.getName()));
             } else {
-                repository.setVisibility(View.INVISIBLE);
+                repository.setVisibility(View.GONE);
             }
             size.setText(context.getString(R.string.app_size, Utils.getFriendlySize(apk.size)));
             api.setText(getApiText(apk));
