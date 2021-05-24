@@ -46,11 +46,4 @@
 
     <style name="DetailsMoreButtonStyle" parent="Widget.MaterialComponents.Button.TextButton" />
 
-    <style name="DetailsAppTitleStyle" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="android:textSize">18sp</item>
-    </style>
-
-
-    <style name="DetailsLastUpdatedStyle" parent="TextAppearance.MaterialComponents.Caption" />
-
 </resources>

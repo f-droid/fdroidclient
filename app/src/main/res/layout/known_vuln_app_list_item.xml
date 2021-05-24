@@ -65,7 +65,7 @@
 
     <Button
         android:id="@+id/secondary_button"
-        style="@style/DetailsSecondaryButtonStyleSmall"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
