@@ -158,22 +158,42 @@
         android:textIsSelectable="true"
         tools:text="App summary, one line - outlining what this app does" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="?attr/colorPrimarySurface"
-        app:shapeAppearance="@style/ShapeAppearance.App.ChangelogCard">
 
-        <TextView
-            android:id="@+id/latest"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/changelog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?attr/colorOnPrimarySurface"
-            tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/changelog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="NEW IN VERSION 1.0.2233" />
+
+            <TextView
+                android:id="@+id/changelog_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="A lot has happened since the last build:\n\t• Improved UI\n\t• Bug fixes" />
+
+
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 
     <TextView
         android:id="@+id/description"
@@ -190,9 +210,10 @@
         android:id="@+id/anti_features_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffde03"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/details_activity_padding"
-        android:paddingTop="@dimen/details_activity_padding">
+        android:layout_marginTop="@dimen/details_activity_padding"
+        android:padding="@dimen/details_activity_padding">
 
         <TextView
             android:id="@+id/anti_features_warning"

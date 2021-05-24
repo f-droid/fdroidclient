@@ -59,8 +59,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.core.text.util.LinkifyCompat;
 import androidx.core.view.ViewCompat;
@@ -387,7 +385,9 @@ public class AppDetailsRecyclerViewAdapter
         final TextView authorView;
         final TextView lastUpdateView;
         final TextView summaryView;
-        final TextView whatsNewView;
+        final View changelogView;
+        final TextView changelogTitleView;
+        final TextView changelogContentView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
         final View antiFeaturesSectionView;
@@ -411,7 +411,9 @@ public class AppDetailsRecyclerViewAdapter
             authorView = (TextView) view.findViewById(R.id.author);
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
             summaryView = (TextView) view.findViewById(R.id.summary);
-            whatsNewView = (TextView) view.findViewById(R.id.latest);
+            changelogView = (View) view.findViewById(R.id.changelog);
+            changelogTitleView = (TextView) view.findViewById(R.id.changelog_title);
+            changelogContentView = (TextView) view.findViewById(R.id.changelog_content);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
             antiFeaturesSectionView = view.findViewById(R.id.anti_features_section);
@@ -514,20 +516,13 @@ public class AppDetailsRecyclerViewAdapter
             }
             Apk suggestedApk = getSuggestedApk();
             if (suggestedApk == null || TextUtils.isEmpty(app.whatsNew)) {
-                whatsNewView.setVisibility(View.GONE);
+                changelogView.setVisibility(View.GONE);
                 summaryView.setBackgroundResource(0); // make background of summary transparent
             } else {
-                final LocaleListCompat localeList =
-                        ConfigurationCompat.getLocales(context.getResources().getConfiguration());
-                Locale locale = localeList.get(0);
-
-                StringBuilder sbWhatsNew = new StringBuilder();
-                sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version,
-                        suggestedApk.versionName).toUpperCase(locale));
-                sbWhatsNew.append("\n\n");
-                sbWhatsNew.append(app.whatsNew);
-                whatsNewView.setText(sbWhatsNew);
-                whatsNewView.setVisibility(View.VISIBLE);
+                changelogTitleView.setText(changelogView.getContext().getString(R.string.details_new_in_version,
+                        suggestedApk.versionName));
+                changelogContentView.setText(app.whatsNew);
+                changelogView.setVisibility(View.VISIBLE);
 
                 // Set focus on the header section to prevent auto scrolling to
                 // the changelog if its content becomes too long to fit on screen.
