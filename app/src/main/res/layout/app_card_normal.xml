@@ -14,8 +14,7 @@
         android:clipToPadding="false"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="12dp">
+        android:padding="12dp">
 
         <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
              when it will inevitably read out the name of the app straight after. -->
@@ -35,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingTop="4dp">
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/title"
