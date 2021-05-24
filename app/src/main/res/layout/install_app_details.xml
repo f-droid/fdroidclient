@@ -54,11 +54,8 @@ installation screens
         android:paddingLeft="16dip"
         android:paddingRight="16dip"
         android:paddingStart="16dip"
-        android:shadowColor="@color/shadow"
-        android:shadowRadius="2"
         android:singleLine="true"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         tools:text="App Name" />
 
 </LinearLayout>

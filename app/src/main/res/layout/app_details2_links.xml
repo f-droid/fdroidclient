@@ -6,14 +6,14 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/details_activity_padding"
     android:layout_marginLeft="@dimen/details_activity_padding"
+    android:layout_marginTop="@dimen/details_activity__collapsable_lists__padding__vertical"
     android:layout_marginEnd="@dimen/details_activity_padding"
     android:layout_marginRight="@dimen/details_activity_padding"
-    android:layout_marginTop="@dimen/details_activity__collapsable_lists__padding__vertical"
     android:layout_marginBottom="@dimen/details_activity__collapsable_lists__padding__vertical"
     android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical"
-    tools:ignore="UnusedAttribute"
-    android:focusable="true">
+    tools:ignore="UnusedAttribute">
 
     <!-- This frame layout is only for showing the material-design-like background ripple when
          selecting the TextView. -->
@@ -22,24 +22,25 @@
         <TextView
             android:id="@+id/information"
             style="@style/AppDetailsSubheaderText"
-            android:text="@string/links"
-            android:paddingLeft="@dimen/details_activity__collapsable_lists__padding__horizontal"
-            android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
-            android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
-            android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
             android:background="?selectableItemBackground"
+            android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingLeft="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:text="@string/links"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
             app:drawableEndCompat="@drawable/ic_expand_more"
-            app:drawableStartCompat="@drawable/ic_link"
             app:drawableLeftCompat="@drawable/ic_link"
-            app:drawableRightCompat="@drawable/ic_expand_more" />
+            app:drawableRightCompat="@drawable/ic_expand_more"
+            app:drawableStartCompat="@drawable/ic_link" />
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="@dimen/layout_horizontal_margin"
         android:layout_marginStart="@dimen/layout_horizontal_margin"
-        android:visibility="gone"></LinearLayout>
+        android:layout_marginLeft="@dimen/layout_horizontal_margin"
+        android:orientation="vertical"
+        android:visibility="gone" />
 </LinearLayout>

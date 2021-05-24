@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/AppDetailsLink"
-    android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingStart="@dimen/layout_horizontal_margin"
+    android:paddingHorizontal="@dimen/layout_horizontal_margin"
     tools:text="@string/menu_website"
+    android:textAppearance="?textAppearanceBody1"
     android:background="?selectableItemBackground"
     app:drawableLeftCompat="@drawable/ic_website"
     app:drawableStartCompat="@drawable/ic_website" />

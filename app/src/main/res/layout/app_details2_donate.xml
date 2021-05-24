@@ -19,7 +19,7 @@
             android:layout_marginBottom="12dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:textSize="15sp"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
             tools:text="F-Droid is created by F-Droid Limited and Contributors. Buy them a coffee!" />
 
         <androidx.gridlayout.widget.GridLayout

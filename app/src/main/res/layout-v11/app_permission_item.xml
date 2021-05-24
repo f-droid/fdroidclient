@@ -35,8 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="fitCenter"
-        app:tint="@android:color/black" />
+        android:scaleType="fitCenter"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -45,8 +44,7 @@
 
     <TextView
         android:id="@+id/perm_name"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="16sp"
+        android:textAppearance="?attr/textAppearanceBody1"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_width="wrap_content"

@@ -21,8 +21,7 @@
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
-    <style name="ThemeOverlay.App.DetailsButton" parent="">
-    </style>
+    <style name="ThemeOverlay.App.DetailsButton" parent="" />
 
     <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
         <item name="android:textSize">12sp</item>
@@ -53,9 +52,5 @@
 
 
     <style name="DetailsLastUpdatedStyle" parent="TextAppearance.MaterialComponents.Caption" />
-
-    <style name="DetailsAntiFeaturesWarningStyle" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textStyle">bold</item>
-    </style>
 
 </resources>

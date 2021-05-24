@@ -1,98 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="4dp"
-    android:paddingStart="10dp"
-    android:paddingEnd="4dp"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/layout_horizontal_margin">
 
-    <LinearLayout android:id="@+id/basic_layout"
+    <LinearLayout
+        android:id="@+id/basic_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                <TextView android:id="@+id/version"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    tools:text="1.2.3"/>
+                    android:layout_height="match_parent">
 
-                    <TextView android:id="@+id/versionCode"
-                              android:layout_height="wrap_content"
-                              android:layout_width="wrap_content"
-                              android:layout_gravity="center"
-                              android:singleLine="true"
-                              android:textSize="14sp"
-                              android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        tools:text="1.2.3" />
+
+                    <TextView
+                        android:id="@+id/versionCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:singleLine="true"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp">
+                    android:layout_height="match_parent">
 
-                    <TextView android:id="@+id/status_installed"
+                    <TextView
+                        android:id="@+id/status_installed"
                         style="@style/AppVersionStatus"
                         android:background="@drawable/app_version_item_status_installed"
+                        android:text="@string/app_installed"
                         android:textColor="#19c878"
-                        android:textStyle="bold"
-                        android:text="@string/app_installed" />
+                        android:textStyle="bold" />
 
-                    <include layout="@layout/app_status_suggested"
-                        android:id="@+id/status_suggested" />
+                    <include
+                        android:id="@+id/status_suggested"
+                        layout="@layout/app_status_suggested" />
 
-                    <TextView android:id="@+id/status_incompatible"
+                    <TextView
+                        android:id="@+id/status_incompatible"
                         style="@style/AppVersionStatus"
                         android:background="@drawable/app_version_item_status_incompatible"
-                        android:textColor="#d86758"
-                        android:text="@string/app_incompatible" />
+                        android:text="@string/app_incompatible"
+                        android:textColor="#d86758" />
                 </LinearLayout>
             </LinearLayout>
-            <TextView android:id="@+id/added"
-                android:layout_height="wrap_content"
+
+            <TextView
+                android:id="@+id/added"
                 android:layout_width="wrap_content"
-                android:singleLine="true"
+                android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:textSize="13sp"
+                android:singleLine="true"
+                android:textAppearance="?attr/textAppearanceOverline"
                 tools:text="Added on 31/12/2050" />
         </LinearLayout>
 
-        <ImageView android:id="@+id/expand_arrow"
+        <ImageView
+            android:id="@+id/expand_arrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_expand_more" />
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/expanded_layout"
-        android:orientation="vertical"
-        android:layout_below="@id/basic_layout"
+    <LinearLayout
+        android:id="@+id/expanded_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/basic_layout"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -101,38 +103,37 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_marginEnd="8dp">
+                android:paddingEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView android:id="@+id/repository"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/repository"
                     android:layout_width="wrap_content"
-                    android:singleLine="true"
+                    android:layout_height="wrap_content"
                     android:ellipsize="marquee"
-                    android:textColor="?attr/lightGrayTextColor"
-                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="F-Droid" />
 
-                <TextView android:id="@+id/size"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/size"
                     android:layout_width="wrap_content"
-                    android:singleLine="true"
+                    android:layout_height="wrap_content"
                     android:ellipsize="marquee"
-                    android:textColor="?attr/lightGrayTextColor"
-                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="Size: 4.8 MiB" />
 
-                <TextView android:id="@+id/api"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/api"
                     android:layout_width="wrap_content"
-                    android:singleLine="true"
+                    android:layout_height="wrap_content"
                     android:ellipsize="marquee"
-                    android:textColor="?attr/lightGrayTextColor"
-                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="Android 4.1 or later" />
             </LinearLayout>
 
@@ -141,27 +142,22 @@
                 style="@style/DetailsSecondaryButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"
-                android:maxEms="10"
                 android:ellipsize="end"
+                android:maxEms="10"
                 android:singleLine="true"
-                tools:text="@string/menu_install"/>
+                tools:text="@string/menu_install" />
 
             <Button
                 android:id="@+id/button_downgrade"
                 style="@style/DetailsButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
                 android:text="@string/menu_downgrade"
-                android:textColor="#b87032"
-                android:background="@drawable/app_version_button_bg_selector_downgrade" />
+                android:textColor="#b87032" />
 
-            <ProgressBar android:id="@+id/busy_indicator"
+            <ProgressBar
+                android:id="@+id/busy_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
@@ -169,20 +165,22 @@
                 tools:visibility="gone" />
         </LinearLayout>
 
-        <TextView android:id="@+id/incompatible_reasons"
+        <TextView
+            android:id="@+id/incompatible_reasons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceCaption"
             android:textColor="#d86758"
-            android:textSize="12sp"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:text="Requires: armeabi-v7a" />
+            tools:text="Requires: armeabi-v7a"
+            tools:visibility="visible" />
 
-        <TextView android:id="@+id/target_arch"
+        <TextView
+            android:id="@+id/target_arch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?attr/lightGrayTextColor"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:visibility="gone"
+            tools:text="armeabi-v7a" />
     </LinearLayout>
 </RelativeLayout>
