@@ -36,14 +36,6 @@
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
-    <style name="DetailsSecondaryButtonStyleSmall" parent="DetailsSecondaryButtonStyle">
-        <item name="android:textSize">12sp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
-    </style>
-
     <style name="DetailsMoreButtonStyle" parent="Widget.MaterialComponents.Button.TextButton" />
 
 </resources>
