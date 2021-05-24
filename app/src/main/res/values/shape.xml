@@ -46,6 +46,12 @@
     <!--Shape Appearance for large components like side and bottom navigation drawers-->
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <!--Your custom shape here-->
+    </style>-->
+
+    <style name="ShapeAppearance.App.ChangelogCard" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">0dp</item>
     </style>
+
 
 </resources>

@@ -45,15 +45,9 @@
         <item name="android:paddingRight">12dp</item>
     </style>
 
-    <style name="DetailsMoreButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:padding">8dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
-    </style>
+    <style name="DetailsMoreButtonStyle" parent="Widget.MaterialComponents.Button.TextButton" />
 
-    <style name="DetailsAppTitleStyle" parent="TextAppearance.MaterialComponents.Headline6">
+    <style name="DetailsAppTitleStyle" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="android:textSize">18sp</item>
     </style>
 
