@@ -198,54 +198,69 @@
         android:textIsSelectable="true"
         tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
-    <LinearLayout
-        android:id="@+id/anti_features_section"
-        android:theme="@style/ThemeOverlay.App.Warning"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/details_activity_padding"
-        android:background="?attr/colorPrimary"
-        android:orientation="vertical"
-        android:padding="@dimen/details_activity_padding">
-
-        <TextView
-            android:id="@+id/anti_features_warning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableTint="?attr/colorOnPrimary"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:text="@string/antifeatureswarning"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/colorOnPrimary"
-            app:drawableLeftCompat="@drawable/ic_warning"
-            app:drawableStartCompat="@drawable/ic_warning" />
-
-        <TextView
-            android:id="@+id/label_anti_features"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none"
-            android:text="@string/antifeatures"
-            android:textAllCaps="true"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorOnPrimary" />
-
-        <!-- listing of all anti-features -->
-        <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView
-            android:id="@+id/anti_features_full_listing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <TextView
+    <Button
         android:id="@+id/description_more"
         style="@style/DetailsMoreButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/more" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/details_activity_padding"
+        android:layout_marginBottom="@dimen/details_activity_padding"
+        android:theme="@style/ThemeOverlay.App.Warning"
+        app:cardBackgroundColor="?attr/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/anti_features_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/details_activity_padding"
+            android:paddingTop="@dimen/details_activity_padding">
+
+            <TextView
+                android:id="@+id/anti_features_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/colorOnPrimary"
+                android:gravity="center_vertical"
+                android:text="@string/antifeatureswarning"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="?attr/colorOnPrimary"
+                app:drawableLeftCompat="@drawable/ic_warning"
+                app:drawableStartCompat="@drawable/ic_warning" />
+
+            <TextView
+                android:id="@+id/label_anti_features"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:text="@string/antifeatures"
+                android:textAllCaps="true"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorOnPrimary" />
+
+            <!-- listing of all anti-features -->
+            <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView
+                android:id="@+id/anti_features_full_listing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/anti_features_more"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/more" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

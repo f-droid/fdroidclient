@@ -73,7 +73,8 @@
 
     <style name="ThemeOverlay.App.Warning" parent="@style/ThemeOverlay.MaterialComponents">
         <item name="colorPrimary">#ffde03</item>
-        <item name="colorOnPrimary">#000000</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+        <item name="borderlessButtonStyle">@style/Widget.App.Warning.Button.TextButton</item>
     </style>
 
     <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />

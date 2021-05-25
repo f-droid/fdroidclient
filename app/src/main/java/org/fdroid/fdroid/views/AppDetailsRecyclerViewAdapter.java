@@ -389,10 +389,11 @@ public class AppDetailsRecyclerViewAdapter
         final TextView changelogTitleView;
         final TextView changelogContentView;
         final TextView descriptionView;
-        final TextView descriptionMoreView;
+        final Button descriptionMoreView;
         final View antiFeaturesSectionView;
         final TextView antiFeaturesLabelView;
         final View antiFeaturesWarningView;
+        final Button antiFeaturesMoreView;
         final AntiFeaturesListingView antiFeaturesListingView;
         final View buttonLayout;
         final Button buttonPrimaryView;
@@ -403,6 +404,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView progressPercent;
         final View progressCancel;
         boolean descriptionIsExpanded;
+        boolean antiFeaturesIsExpanded;
 
         HeaderViewHolder(View view) {
             super(view);
@@ -415,11 +417,12 @@ public class AppDetailsRecyclerViewAdapter
             changelogTitleView = (TextView) view.findViewById(R.id.changelog_title);
             changelogContentView = (TextView) view.findViewById(R.id.changelog_content);
             descriptionView = (TextView) view.findViewById(R.id.description);
-            descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
+            descriptionMoreView = (Button) view.findViewById(R.id.description_more);
             antiFeaturesSectionView = view.findViewById(R.id.anti_features_section);
             antiFeaturesLabelView = (TextView) view.findViewById(R.id.label_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
             antiFeaturesListingView = view.findViewById(R.id.anti_features_full_listing);
+            antiFeaturesMoreView = (Button) view.findViewById(R.id.anti_features_more);
             buttonLayout = view.findViewById(R.id.button_layout);
             buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
@@ -430,25 +433,31 @@ public class AppDetailsRecyclerViewAdapter
             progressCancel = view.findViewById(R.id.progress_cancel);
             descriptionView.setMaxLines(MAX_LINES);
             descriptionView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            descriptionMoreView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Make this "header section" the focused child, so that RecyclerView will use
-                    // it as the anchor in the layout process. Otherwise the RV might select another
-                    // view as the anchor, resulting in that the top of this view is instead scrolled
-                    // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
-                    recyclerView.requestChildFocus(itemView, itemView);
-                    if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
-                        descriptionView.setMaxLines(MAX_LINES);
-                        descriptionMoreView.setText(R.string.more);
-                        descriptionIsExpanded = false;
-                    } else {
-                        descriptionView.setMaxLines(Integer.MAX_VALUE);
-                        descriptionMoreView.setText(R.string.less);
-                        descriptionIsExpanded = true;
-                    }
-                    updateAntiFeaturesWarning();
+            descriptionMoreView.setOnClickListener(v -> {
+                // Make this "header section" the focused child, so that RecyclerView will use
+                // it as the anchor in the layout process. Otherwise the RV might select another
+                // view as the anchor, resulting in that the top of this view is instead scrolled
+                // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
+                recyclerView.requestChildFocus(itemView, itemView);
+                if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
+                    descriptionView.setMaxLines(MAX_LINES);
+                    descriptionMoreView.setText(R.string.more);
+                    descriptionIsExpanded = false;
+                } else {
+                    descriptionView.setMaxLines(Integer.MAX_VALUE);
+                    descriptionMoreView.setText(R.string.less);
+                    descriptionIsExpanded = true;
                 }
+            });
+            antiFeaturesMoreView.setOnClickListener(v -> {
+                // Make this "header section" the focused child, so that RecyclerView will use
+                // it as the anchor in the layout process. Otherwise the RV might select another
+                // view as the anchor, resulting in that the top of this view is instead scrolled
+                // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
+                recyclerView.requestChildFocus(itemView, itemView);
+                antiFeaturesIsExpanded = !antiFeaturesIsExpanded;
+                antiFeaturesMoreView.setText(antiFeaturesIsExpanded ? R.string.less : R.string.more);
+                updateAntiFeaturesWarning();
             });
         }
 
@@ -665,7 +674,7 @@ public class AppDetailsRecyclerViewAdapter
         private void updateAntiFeaturesWarning() {
             if (app.antiFeatures == null || app.antiFeatures.length == 0) {
                 antiFeaturesSectionView.setVisibility(View.GONE);
-            } else if (descriptionIsExpanded) {
+            } else if (antiFeaturesIsExpanded) {
                 antiFeaturesWarningView.setVisibility(View.GONE);
                 antiFeaturesLabelView.setVisibility(View.VISIBLE);
                 antiFeaturesListingView.setVisibility(View.VISIBLE);

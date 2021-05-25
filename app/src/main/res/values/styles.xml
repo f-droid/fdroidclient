@@ -126,4 +126,12 @@
         <!-- Disable default tickMarks. We draw our own in SeekBarForegroundThumb -->
         <item name="tickMark">@null</item>
     </style>
+
+    <style name="Widget.App.Warning.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Warning.Button.TextButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Warning.Button.TextButton" parent="">
+        <item name="colorPrimary">@android:color/black</item>
+    </style>
 </resources>
