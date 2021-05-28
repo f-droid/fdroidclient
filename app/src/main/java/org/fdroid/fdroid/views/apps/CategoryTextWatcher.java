@@ -6,13 +6,17 @@ import android.os.Build;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ImageSpan;
 import android.text.style.TtsSpan;
+import android.view.View;
 import android.widget.EditText;
 
 import org.fdroid.fdroid.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.android.material.chip.ChipDrawable;
 
 /**
  * The search input treats text before the first colon as a category name. Text after this colon
@@ -131,24 +135,23 @@ public class CategoryTextWatcher implements TextWatcher {
             return;
         }
 
-        removeSpans(textToSpannify, CategorySpan.class);
+        removeSpans(textToSpannify, ImageSpan.class);
         if (Build.VERSION.SDK_INT >= 21) {
-            removeSpans(textToSpannify, TtsSpan.class);
+            removeSpans(textToSpannify, ImageSpan.class);
         }
 
         int colonIndex = textToSpannify.toString().indexOf(':');
         if (colonIndex > 0) {
-            CategorySpan span = new CategorySpan(context);
-            textToSpannify.setSpan(span, 0, colonIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            final ChipDrawable chip = ChipDrawable.createFromResource(context, R.xml.standalone_chip);
+            CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
+            final String text = context.getString(R.string.tts_category_name,
+                    categoryName);
+            chip.setText(categoryName);
+            chip.setBounds(0, 0, chip.getIntrinsicWidth(), chip.getIntrinsicHeight());
+            chip.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
+            final ImageSpan span = new ImageSpan(chip);
+            textToSpannify.setSpan(span,0, textToSpannify.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                // For accessibility reasons, make this more clear to screen readers that the
-                // span we just added semantically represents a category.
-                CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
-                        categoryName)).build();
-                textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
         }
     }
 
