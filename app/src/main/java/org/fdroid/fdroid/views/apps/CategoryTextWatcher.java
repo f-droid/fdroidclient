@@ -136,19 +136,16 @@ public class CategoryTextWatcher implements TextWatcher {
         }
 
         removeSpans(textToSpannify, ImageSpan.class);
-        if (Build.VERSION.SDK_INT >= 21) {
-            removeSpans(textToSpannify, ImageSpan.class);
-        }
 
         int colonIndex = textToSpannify.toString().indexOf(':');
         if (colonIndex > 0) {
             final ChipDrawable chip = ChipDrawable.createFromResource(context, R.xml.standalone_chip);
             CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-            final String text = context.getString(R.string.tts_category_name,
-                    categoryName);
             chip.setText(categoryName);
             chip.setBounds(0, 0, chip.getIntrinsicWidth(), chip.getIntrinsicHeight());
-            chip.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                chip.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
+            }
             final ImageSpan span = new ImageSpan(chip);
             textToSpannify.setSpan(span,0, textToSpannify.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
