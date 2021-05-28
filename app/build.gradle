@@ -42,15 +42,11 @@ android {
     }
 
     buildTypes {
-        release {
-            signingConfig signingConfigs.debug
-        }
-
         // use proguard on debug too since we have unknowingly broken
         // release builds before.
         all {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
             buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"' // String needs both quotes
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -61,7 +57,6 @@ android {
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
             println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
-            signingConfig signingConfigs.debug
         }
     }
 
