@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -33,11 +32,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.textfield.TextInputEditText;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -143,7 +140,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                         InputMethodManager inputMethodManager =
                                 ContextCompat.getSystemService(AppListActivity.this,
                                         InputMethodManager.class);
-                        inputMethodManager.toggleSoftInputFromWindow(menuItem.getActionView().getApplicationWindowToken(),
+                        inputMethodManager.toggleSoftInputFromWindow(
+                                menuItem.getActionView().getApplicationWindowToken(),
                                 InputMethodManager.SHOW_FORCED, 0);
                     }
                     return true;
