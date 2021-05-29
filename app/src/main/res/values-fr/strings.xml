@@ -126,7 +126,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimédia</string>
     <string name="category_Navigation">Navigation</string>
-    <string name="category_Phone_SMS">Téléphone et textos</string>
+    <string name="category_Phone_SMS">Téléphone et SMS</string>
     <string name="category_Reading">Lecture</string>
     <string name="category_Science_Education">Science et éducation</string>
     <string name="category_Security">Sécurité</string>
@@ -210,10 +210,10 @@
     <string name="swap_intro">Connectez-vous et échangez des applis avec des personnes autour de vous.</string>
     <string name="swap_visible_bluetooth">Visible en Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Activation du Bluetooth…</string>
-    <string name="swap_not_visible_bluetooth">Non visible par le Bluetooth</string>
-    <string name="swap_visible_wifi">Visible par le Wi-Fi</string>
+    <string name="swap_not_visible_bluetooth">Non visible en Bluetooth</string>
+    <string name="swap_visible_wifi">Visible en Wi-Fi</string>
     <string name="swap_setting_up_wifi">Mise en place du Wi-Fi…</string>
-    <string name="swap_not_visible_wifi">Non visible par le Wi-Fi</string>
+    <string name="swap_not_visible_wifi">Non visible en Wi-Fi</string>
     <string name="swap_wifi_device_name">Nom de l’appareil</string>
     <string name="swap_send_fdroid">Envoyer F-Droid</string>
     <string name="swap_no_peers_nearby">Aucune personne n\'a été trouvée à proximité.</string>
@@ -246,7 +246,7 @@
     <string name="repo_error_empty_username">Nom d\'utilisateur vide, aucune modification effectuée</string>
     <string name="about_license">Licence</string>
     <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
-    <string name="status_inserting_apps">Enregistrement des détails des applis</string>
+    <string name="status_inserting_apps">Enregistrement des détails de l\'appli</string>
     <string name="crash_dialog_title">F-Droid s’est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
     <string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l’arrêt de l’appli. Souhaitez envoyer les détails par courriel afin d’aider à corriger la situation \?</string>
@@ -288,7 +288,7 @@
     <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour de « %1$s »…</string>
     <string name="notification_content_single_installing">Installation de « %1$s »…</string>
     <string name="notification_content_single_installed">Installation réussie</string>
-    <string name="notification_title_summary_update_available">Une mise à jour est proposée</string>
+    <string name="notification_title_summary_update_available">Une mise à jour est disponible</string>
     <string name="notification_title_summary_downloading">Téléchargement…</string>
     <string name="notification_title_summary_downloading_update">Téléchargement de la mise à jour…</string>
     <string name="notification_title_summary_ready_to_install">Prêt pour installation</string>
@@ -520,4 +520,6 @@
     <string name="theme_follow_system">Suivre le système</string>
     <string name="use_pure_black_dark_theme_summary">Recommandé uniquement pour les écrans OLED.</string>
     <string name="use_pure_black_dark_theme">Utiliser un fond noir pur pour le thème sombre</string>
+    <string name="banner_no_data_or_wifi">Aucune connexion Données ou Wifi active</string>
+    <string name="banner_no_internet">Aucune connexion Internet</string>
 </resources>
