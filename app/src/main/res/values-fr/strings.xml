@@ -295,7 +295,7 @@
     <string name="notification_title_summary_ready_to_install_update">Mise à jour prête pour installation</string>
     <string name="notification_title_summary_installing">Installation</string>
     <string name="notification_title_summary_installed">Installé avec succès</string>
-    <string name="notification_title_summary_install_error">Échec d’installation</string>
+    <string name="notification_title_summary_install_error">L’installation a échoué</string>
     <string name="notification_action_update">Mettre à jour</string>
     <string name="notification_action_cancel">Annuler</string>
     <string name="notification_action_install">Installer</string>
