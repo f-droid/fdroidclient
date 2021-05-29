@@ -486,4 +486,5 @@
     <string name="notification_channel_swaps_title">入れ替え</string>
     <string name="notification_channel_installs_description">アプリのインストール通知を表示します。</string>
     <string name="notification_channel_installs_title">インストール</string>
+    <string name="send_to_fdroid_metrics">使用データを送信</string>
 </resources>
