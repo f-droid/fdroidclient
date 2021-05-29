@@ -331,7 +331,7 @@
     <string name="installed_apps__activity_title">App Installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
-    <string name="update_all">Aggiorna tutti</string>
+    <string name="update_all">Aggiorna tutte</string>
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
     <plurals name="updates__download_updates_for_apps">
