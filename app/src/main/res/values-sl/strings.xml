@@ -75,7 +75,7 @@
     <string name="app_details">Podrobnosti aplikacije</string>
     <string name="about_title">Več o F-Droid</string>
     <string name="app_list__name__downloading_in_progress">Prenašanje %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s nameščena</string>
+    <string name="app_list__name__successfully_installed">%1$s nameščen</string>
     <string name="more">Več</string>
     <string name="less">Manj</string>
     <string name="antitracklist">Ta aplikacija vam sledi in poroča o vaši aktivnosti</string>
