@@ -51,18 +51,18 @@
     <string name="menu_ignore_this">Dieses Update ignorieren</string>
     <string name="menu_website">Internetseite</string>
     <string name="menu_issues">Probleme</string>
-    <string name="menu_source">Quelltext</string>
+    <string name="menu_source">Quellcode</string>
     <string name="menu_upgrade">Aktualisieren</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
-    <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese Anwendung bewirbt nicht-quelloffene Netzwerkdienste</string>
-    <string name="antinonfreedeplist">Diese Anwendung hängt von nicht-quelloffenen Anwendungen ab</string>
+    <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
+    <string name="antinonfreenetlist">Diese App bewirbt nicht-quelloffene Netzwerkdienste</string>
+    <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
     <string name="expert">Expertenmodus</string>
-    <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
+    <string name="expert_on">Zusätzliche Informationen anzeigen und dazugehörige Einstellungen aktivieren</string>
     <string name="search_hint">Apps suchen</string>
     <string name="appcompatibility">Kompatibilität der App</string>
     <string name="show_incompat_versions">Inkompatible Versionen einbeziehen</string>
@@ -157,7 +157,7 @@
     <string name="uninstall_error_unknown">Deinstallation wegen unbekanntem Fehler fehlgeschlagen</string>
     <string name="app_name">F-Droid</string>
     <string name="unstable_updates">Instabile Aktualisierungen</string>
-    <string name="unstable_updates_summary">Aktualisierungen für instabile Version vorschlagen</string>
+    <string name="unstable_updates_summary">Aktualisierungen für instabile Version vorschlagen.</string>
     <string name="menu_changelog">Änderungen</string>
     <string name="category_Connectivity">Verbindung</string>
     <string name="category_Sports_Health">Sport / Gesundheit</string>
@@ -248,7 +248,7 @@
     <string name="empty_search_available_app_list">Keine passenden Apps verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
-    <string name="antinonfreeassetslist">Diese Anwendung enthält nicht-quelloffene Bestandteile</string>
+    <string name="antinonfreeassetslist">Diese App enthält nicht-quelloffene Bestandteile</string>
     <string name="crash_dialog_text">Die App wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen\?</string>
     <string name="menu_email">E-Mail an Autor</string>
     <string name="repo_provider">Paketquelle: %s</string>
@@ -271,7 +271,7 @@
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
-    <string name="keep_install_history_summary">Ein Protokoll zu allen Installationen und Deinstallationen in einem privaten Speicher anlegen</string>
+    <string name="keep_install_history_summary">Speichern Sie ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher.</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
@@ -299,7 +299,7 @@
     <string name="app_version_x_available">Version %1$s verfügbar</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Suche löschen</string>
-    <string name="main_menu__latest_apps">Neueste</string>
+    <string name="main_menu__latest_apps">Neues</string>
     <string name="main_menu__categories">Kategorien</string>
     <string name="main_menu__updates">Aufgaben</string>
     <string name="main_menu__swap_nearby">Umfeld</string>
@@ -327,7 +327,7 @@
         <item quantity="other">Aktualisierungen für %1$d Apps herunterladen.</item>
     </plurals>
     <string name="details_new_in_version">Neu in Version %s</string>
-    <string name="antifeatureswarning">Diese Anwendung besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
+    <string name="antifeatureswarning">Diese App besitzt Merkmale, die möglicherweise unerwünscht sind.</string>
     <string name="antifeatures">Unerwünschte Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
@@ -343,16 +343,16 @@
     <string name="nearby_splash__find_people_button">Menschen in Ihrer Nähe suchen</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
-    <string name="latest__empty_state__never_updated">Sobald Ihre Anwendungsliste aktualisiert wurde, sollten die neuesten Anwendungen hier angezeigt werden.</string>
-    <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und diese aktualisiert wurde, sollten die neuesten Anwendungen hier angezeigt werden.</string>
+    <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
+    <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und diese aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
     <string name="categories__empty_state__no_categories">Keine Kategorien zum Anzeigen</string>
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Herunterladen abbrechen</string>
     <string name="app__tts__downloading_progress">Herunterladen, %1$d%% abgeschlossen</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d weitere …</item>
-        <item quantity="other">+%1$d weitere …</item>
+        <item quantity="one">+%1$d weitere…</item>
+        <item quantity="other">+%1$d weitere…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Aktualisierung</item>
@@ -448,13 +448,13 @@
     <string name="hide_all_notifications">Alle Benachrichtigungen ausblenden</string>
     <string name="install_history">Installationsverlauf</string>
     <string name="install_history_summary">Das private Protokoll zu allen Installationen und Deinstallationen ansehen</string>
-    <string name="send_version_and_uuid">Version und UUID an Server verschicken</string>
+    <string name="send_version_and_uuid">Version und UUID an Server senden</string>
     <string name="prompt_to_send_crash_reports">Auf Nachfrage Absturzbericht senden</string>
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
     <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
     <string name="share_repository">Paketquelle teilen</string>
-    <string name="allow_push_requests">Paketquellen erlauben, Apps zu installieren/deinstallieren</string>
-    <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten</string>
+    <string name="allow_push_requests">Apps mit Paketquellen de-/installieren</string>
+    <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten.</string>
     <string name="antinosourcesince">Der Quelltext ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
@@ -501,12 +501,12 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_title">Tauschen</string>
     <string name="notification_channel_installs_description">Zeigt Benachrichtigungen zur App-Installation an.</string>
-    <string name="notification_channel_updates_description">Zeigt Benachrichtigungen über App- und Repository-Aktualisierungen an.</string>
+    <string name="notification_channel_updates_description">Zeigt Benachrichtigungen über App- und Paketquellen-Aktualisierungen an.</string>
     <string name="notification_channel_updates_title">Aktualisierungen</string>
     <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
     <string name="notification_channel_installs_title">Installationen</string>
     <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
-    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchtenlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
+    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchentlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes).</string>
     <string name="send_to_fdroid_metrics">Nutzungsdaten senden</string>
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
@@ -517,4 +517,6 @@
     <string name="use_pure_black_dark_theme_summary">Nur für OLED-Bildschirme empfohlen.</string>
     <string name="theme_follow_system">Systemdefiniert</string>
     <string name="use_pure_black_dark_theme">Rein schwarzen Hintergrund im dunklen Thema verwenden</string>
+    <string name="banner_no_data_or_wifi">Keine Daten oder WLAN aktiviert</string>
+    <string name="banner_no_internet">Kein Internet</string>
 </resources>
