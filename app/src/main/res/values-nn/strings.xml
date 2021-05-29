@@ -506,4 +506,9 @@
     <string name="install_history_and_metrics">Installeringslogg og bruksdata</string>
     <string name="send_fdroid_metrics_json">Bruksdata for %s som JSON-fil</string>
     <string name="send_fdroid_metrics_report">Send bruksdatarapport for %s</string>
+    <string name="theme_follow_system">Følg systeminnstillingane</string>
+    <string name="use_pure_black_dark_theme_summary">Berre tilrådd for OLED-skjermar.</string>
+    <string name="use_pure_black_dark_theme">Bruk heilt svart bakgrunn i mørkt tema</string>
+    <string name="banner_no_data_or_wifi">Ikkje mobildata/Wi-Fi</string>
+    <string name="banner_no_internet">Manglar Internett-tilgang</string>
 </resources>

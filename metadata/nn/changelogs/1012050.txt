@@ -9,3 +9,5 @@
 * Effektiv planlegging av opprydding (@Isira-Seneviratne)
 
 * Overhala URL-tolking for påliteleg tilføying av pakkebrønnar (@projectgus)
+
+* Valfri innsending av bruksdata
