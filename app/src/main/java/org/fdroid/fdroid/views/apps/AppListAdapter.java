@@ -3,23 +3,28 @@ package org.fdroid.fdroid.views.apps;
 import android.database.Cursor;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Schema;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController> {
 
     private Cursor cursor;
     private final AppCompatActivity activity;
-    private final AppListItemDivider divider;
+    private final InsetDivider divider;
 
     AppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        divider = new AppListItemDivider(activity);
+        divider = new InsetDivider(
+                activity.getResources().getDimensionPixelSize(R.dimen.divider_inset),
+                activity.getResources().getDimensionPixelSize((R.dimen.divider_height)),
+                ContextCompat.getColor(activity, R.color.divider)
+        );
         setHasStableIds(true);
     }
 

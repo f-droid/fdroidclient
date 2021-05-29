@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
@@ -48,7 +49,8 @@ android {
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
-            buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"' // String needs both quotes
+            buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"'
+            // String needs both quotes
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
@@ -78,6 +80,10 @@ android {
         compileOptions.encoding = "UTF-8"
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     aaptOptions {
@@ -150,7 +156,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
     implementation 'androidx.work:work-runtime:2.4.0'
 
     implementation 'com.google.android.material:material:1.3.0'
@@ -191,6 +197,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.work:work-testing:2.4.0'
+    implementation "androidx.core:core-ktx:1.5.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 checkstyle {

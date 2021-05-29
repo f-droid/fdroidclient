@@ -1,4 +1,5 @@
 buildscript {
+    ext.kotlin_version = '1.5.20-M1'
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' } // :-| must be before jcenter()
@@ -6,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 allprojects {
