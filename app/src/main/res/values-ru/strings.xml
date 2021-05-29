@@ -530,4 +530,6 @@
     <string name="theme_follow_system">Как в системе</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
     <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
+    <string name="banner_no_data_or_wifi">Данные или WiFi не включены</string>
+    <string name="banner_no_internet">Интернет отсутствует</string>
 </resources>
