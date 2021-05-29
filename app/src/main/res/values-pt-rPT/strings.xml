@@ -73,7 +73,7 @@
     <string name="antinonfreenetlist">Esta aplicação promove serviços de rede não livres</string>
     <string name="antinonfreedeplist">Esta aplicação depende de aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
-    <string name="display">Exibição</string>
+    <string name="display">Visualização</string>
     <string name="expert">Modo avançado</string>
     <string name="expert_on">Mostrar informações extra e ativar mais definições</string>
     <string name="search_hint">Pesquisar aplicações</string>
@@ -308,7 +308,7 @@
         <item quantity="other">Ver todas (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
-    <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
+    <string name="nearby_splash__find_people_button">Encontrar pessoas por perto</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="notification_title_single_update_available">Atualização disponível</string>
     <string name="notification_title_single_ready_to_install">Pronta para instalação</string>
@@ -426,8 +426,8 @@
     <string name="repo_official_mirrors">Servidores espelho oficiais</string>
     <string name="repo_user_mirrors">Servidores espelho do utilizador</string>
     <string name="warning_scaning_qr_code">Parece que a sua câmara não possui foco automático. Poderá ser difícil digitalizar o código.</string>
-    <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
-    <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
+    <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de craches</string>
+    <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os craches e pedir para os enviar ao programador</string>
     <string name="hide_all_notifications">Ocultar todas as notificações</string>
     <string name="send_install_history">Enviar histórico de instalações</string>
     <string name="install_history">Histórico de instalações</string>
@@ -449,7 +449,7 @@
     <string name="swap_toast_invalid_url">URL inválido para trocas: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
-    <string name="send_history_csv">Histórico de instalações de %s em ficheiro CSV</string>
+    <string name="send_history_csv">Histórico de instalações de %s como ficheiro CSV</string>
     <string name="send_version_and_uuid_summary">Inclui a versão da aplicação e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a aplicação.</string>
     <string name="allow_push_requests_summary">Os meta-dados do repositório podem incluir pedidos \'push\' para instalar ou desinstalar aplicações</string>
     <string name="send_installed_apps">Partilhar aplicações instaladas</string>
