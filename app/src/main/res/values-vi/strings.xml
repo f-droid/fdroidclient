@@ -247,7 +247,7 @@
     <string name="repo_error_empty_username">Tên người dùng trống, không đổi được mật khẩu</string>
     <string name="about_license">Giấy phép</string>
     <string name="status_inserting_apps">Đang lưu chi tiết ứng dụng</string>
-    <string name="menu_email">E-mail tác giả</string>
+    <string name="menu_email">Gửi e-mail đến tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Buộc lưu lượng tải xuống phải thông qua Tor để tăng tính riêng tư. Yêu cầu ứng dụng Orbot</string>
     <string name="main_menu__swap_nearby">Lân cận</string>
@@ -451,7 +451,7 @@
     <string name="send_installed_apps_csv">Các ứng dụng được F-Droid cài đặt dưới dạng tệp CSV</string>
     <string name="app_size">Kích cỡ: %1$s</string>
     <string name="app_repository">Kho: %1$s</string>
-    <string name="app_suggested">Đề xuất</string>
+    <string name="app_suggested">Được đề xuất</string>
     <string name="scan_removable_storage_toast">Đang quét %s…</string>
     <string name="main_menu__updates">Cập nhật</string>
     <string name="menu_downgrade">Hạ cấp</string>
@@ -509,4 +509,6 @@
     <string name="theme_follow_system">Theo hệ thống</string>
     <string name="use_pure_black_dark_theme_summary">Chỉ được khuyên dùng cho màn hình OLED.</string>
     <string name="use_pure_black_dark_theme">Sử dụng nền đen thuần tuý trong chế độ tối</string>
+    <string name="banner_no_data_or_wifi">Chưa bật dữ liệu hoặc WiFi</string>
+    <string name="banner_no_internet">Không có internet</string>
 </resources>
