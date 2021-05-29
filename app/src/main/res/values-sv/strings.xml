@@ -510,4 +510,6 @@
     <string name="theme_follow_system">Följ systemet</string>
     <string name="use_pure_black_dark_theme_summary">Rekommenderas endast för OLED-skärmar.</string>
     <string name="use_pure_black_dark_theme">Använd ren svart bakgrund i mörkt tema</string>
+    <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktiverat</string>
+    <string name="banner_no_internet">Inget internet</string>
 </resources>
