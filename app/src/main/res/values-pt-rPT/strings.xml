@@ -305,7 +305,7 @@
     <string name="warning_no_internet">Não é possível atualizar. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
-        <item quantity="other">Ver (%d)</item>
+        <item quantity="other">Ver todas (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
     <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
@@ -508,4 +508,9 @@
     <string name="install_history_and_metrics">Histórico de instalações e métrica</string>
     <string name="send_fdroid_metrics_json">Relatório de métrica %s como ficheiro JSON</string>
     <string name="send_fdroid_metrics_report">Enviar relatório de métrica %s</string>
+    <string name="theme_follow_system">Usar o sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Recomendado apenas para ecrãs OLED.</string>
+    <string name="use_pure_black_dark_theme">Usar fundo preto puro no tema escuro</string>
+    <string name="banner_no_data_or_wifi">Dados móveis/WiFi desativados</string>
+    <string name="banner_no_internet">Sem Internet</string>
 </resources>

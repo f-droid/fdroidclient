@@ -58,7 +58,7 @@
     <string name="unverified">Não verificada</string>
     <string name="repo_details">Repositório</string>
     <string name="repo_last_update">Última atualização</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
+    <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
@@ -68,7 +68,7 @@
     <string name="notification_title_single_update_available">Atualização disponível</string>
     <string name="notification_title_summary_install_error">Falha ao instalar</string>
     <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a app e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela app)</string>
-    <string name="installIncompatible">A aplicação não é compatível com o seu dispositivo. Deseja tentar a instalação\?</string>
+    <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
     <string name="version">Versão</string>
     <string name="by_author_format">de %s</string>
     <string name="delete">Eliminar</string>
@@ -124,7 +124,7 @@
     <string name="app_details__incompatible_mismatched_signature">Assinatura diferente da versão instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a opção \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Não existem versões com uma assinatura compatível</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o dispositivo</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o aparelho</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com as versões disponíveis. Desinstalar a app permite-o ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar apps através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
     <string name="about_version">Versão</string>
     <string name="about_site">Site</string>
@@ -232,11 +232,11 @@
     <string name="search_hint">Pesquisar aplicações</string>
     <string name="appcompatibility">Compatibilidade de aplicações</string>
     <string name="show_incompat_versions">Incluir versões incompatíveis</string>
-    <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
+    <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu aparelho</string>
     <string name="show_anti_feature_apps">Incluir aplicações com funcionalidades indesejadas</string>
     <string name="show_anti_feature_apps_on">Mostrar aplicações que necessitem de funcionalidades indesejadas</string>
     <string name="force_touch_apps">Incluir aplicações de ecrã tátil</string>
-    <string name="force_touch_apps_on">Mostrar aplicações que necessitem de ecrã tátil mesmo que o dispositivo não o permita</string>
+    <string name="force_touch_apps_on">Mostrar apps que necessitem de ecrã tátil mesmo que o aparelho não o permita</string>
     <string name="local_repo">Repositório local</string>
     <string name="local_repo_running">F-Droid está pronto para a troca</string>
     <string name="touch_to_configure_local_repo">Toque para ver os detalhes e permitir a troca de aplicações.</string>
@@ -323,7 +323,7 @@
     </plurals>
     <string name="empty_installed_app_list">Não existem aplicações instaladas.
 \n
-\nExistem aplicações no seu dispositivo que não estão disponíveis em F-Droid. Talvez tenha que atualizar os seus repositórios ou então as suas aplicações não existem nos repositórios adicionados.</string>
+\nExistem aplicações no seu aparelho que não estão disponíveis em F-Droid. Talvez tenha que atualizar os seus repositórios ou então as suas aplicações não existem nos repositórios adicionados.</string>
     <string name="empty_can_update_app_list">Parabéns!
 \nAs suas aplicações estão atualizadas.</string>
     <string name="empty_search_available_app_list">Não há aplicações correspondentes.</string>
@@ -336,7 +336,7 @@
     <string name="nearby_splash__read_external_storage">Pesquisar repositórios e espelhos no cartão SD.</string>
     <string name="nearby_splash__request_permission">Experimente</string>
     <string name="swap_nfc_title">Toque para trocar</string>
-    <string name="swap_nfc_description">Se a outra pessoa tiver F-Droid instalada e NFC ativo, aproximem os vossos dispositivos.</string>
+    <string name="swap_nfc_description">Se a outra pessoa tiver F-Droid instalada e NFC ativo, aproximem os vossos aparelhos.</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -362,7 +362,7 @@
     <string name="swap_setting_up_wifi">A configurar Wi-Fi…</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Não visível por Wi-Fi</string>
-    <string name="swap_wifi_device_name">Nome do dispositivo</string>
+    <string name="swap_wifi_device_name">Nome do aparelho</string>
     <string name="swap_cant_find_peers">Não encontra o que procura\?</string>
     <string name="swap_no_peers_nearby">Não foram encontradas pessoas na sua vizinhança.</string>
     <string name="swap_connecting">A ligar</string>
@@ -372,7 +372,7 @@
     <string name="loading">A carregar…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
-    <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o seu visível.</string>
+    <string name="not_visible_nearby_description">Antes de trocar com aparelho próximos, torne o seu visível.</string>
     <string name="swap_toast_using_path">A utilizar %1$s</string>
     <string name="swap_toast_not_removable_storage">A escolha não coincide com um armazenamento amovível, tente novamente!</string>
     <string name="swap_toast_find_removeable_storage">Escolha o seu cartão SD ou USB</string>
@@ -509,4 +509,6 @@
     <string name="theme_follow_system">Usar o sistema</string>
     <string name="use_pure_black_dark_theme_summary">Recomendado apenas para ecrãs OLED.</string>
     <string name="use_pure_black_dark_theme">Usar fundo preto puro no tema escuro</string>
+    <string name="banner_no_data_or_wifi">Dados móveis/WiFi desativados</string>
+    <string name="banner_no_internet">Sem Internet</string>
 </resources>
