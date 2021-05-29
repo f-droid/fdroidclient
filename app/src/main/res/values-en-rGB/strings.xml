@@ -56,9 +56,9 @@
         <item quantity="other">%1$d Updates</item>
     </plurals>
     <string name="notification_content_single_installed">Successfully installed</string>
-    <string name="notification_content_single_installing">Installing \"%1$s\"…</string>
-    <string name="notification_content_single_downloading_update">Downloading update for \"%1$s\"…</string>
-    <string name="notification_content_single_downloading">Downloading \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installing ‘%1$s’…</string>
+    <string name="notification_content_single_downloading_update">Downloading update for ‘%1$s’…</string>
+    <string name="notification_content_single_downloading">Downloading ‘%1$s’…</string>
     <string name="notification_title_single_install_error">Install Failed</string>
     <string name="notification_title_single_ready_to_install_update">Update ready to install</string>
     <string name="notification_title_single_ready_to_install">Ready to install</string>
@@ -217,12 +217,12 @@
     <string name="hide_on_long_search_press_summary">Long pressing the search button will hide the app</string>
     <string name="hide_on_long_search_press_title">Hide with search button</string>
     <string name="hiding_dialog_warning">Warning: Any app shortcut on the home screen will also be removed and needs to be re-added manually.</string>
-    <string name="hiding_dialog_message">Are you sure you want to remove %1$s from the launcher\? Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
+    <string name="hiding_dialog_message">Are you sure you want to remove %1$s from the launcher\? Only typing ‘%2$d’ in the fake %3$s app can restore it.</string>
     <string name="hiding_dialog_title">Hide %s Now</string>
     <string name="hiding_calculator">Calculator</string>
     <string name="panic_reset_repos_summary">Force the repo setup back to defaults</string>
     <string name="panic_reset_repos_title">Reset repos</string>
-    <string name="panic_hide_warning_message">In a panic event, this will remove %1$s from the launcher. Only typing \"%2$d\" in the fake %3$s app can restore it.</string>
+    <string name="panic_hide_warning_message">In a panic event, this will remove %1$s from the launcher. Only typing ‘%2$d’ in the fake %3$s app can restore it.</string>
     <string name="panic_hide_warning_title">Remember how to restore</string>
     <string name="panic_hide_summary">App will hide itself</string>
     <string name="panic_hide_title">Hide %s</string>
@@ -374,7 +374,7 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">The installed version is not compatible with any available versions. Uninstalling the app will enable you to view and install compatible versions. This often occurs with apps installed via Google Play or other sources, if they are signed by a different certificate.</string>
     <string name="app_details__no_versions__none_compatible_with_device">No versions compatible with device</string>
     <string name="app_details__no_versions__no_compatible_signatures">No versions with compatible signature</string>
-    <string name="app_details__no_versions__show_incompat_versions">To show incompatible versions here anyway, enable the \"%1$s\" setting.</string>
+    <string name="app_details__no_versions__show_incompat_versions">To show incompatible versions here anyway, enable the ‘%1$s’ setting.</string>
     <string name="app_details__incompatible_mismatched_signature">Different signature to installed version</string>
     <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
     <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
@@ -509,4 +509,6 @@
     <string name="install_history_and_metrics">Install history and metrics</string>
     <string name="send_fdroid_metrics_json">%s metrics report as JSON file</string>
     <string name="send_fdroid_metrics_report">Send %s metrics report</string>
+    <string name="banner_no_data_or_wifi">No Data or Wi-Fi enabled</string>
+    <string name="banner_no_internet">No Internet</string>
 </resources>
