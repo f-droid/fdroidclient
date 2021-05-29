@@ -175,4 +175,5 @@
     <string name="unstable_updates_summary">நிலையற்ற பதிப்புகளுக்கு புதுப்பிப்புகளைப் பரிந்துரைக்கவும்</string>
     <string name="prompt_to_send_crash_reports">செயலிழப்பு அறிக்கைகளை அனுப்பும்படி கேட்கவும்</string>
     <string name="enable_nfc_send">NFC அனுப்பலை இயக்கு…</string>
+    <string name="details_new_in_version">பதிப்பு இல் புதியது</string>
 </resources>
