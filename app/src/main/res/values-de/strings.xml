@@ -157,7 +157,7 @@
     <string name="uninstall_error_unknown">Deinstallation wegen unbekanntem Fehler fehlgeschlagen</string>
     <string name="app_name">F-Droid</string>
     <string name="unstable_updates">Instabile Aktualisierungen</string>
-    <string name="unstable_updates_summary">Aktualisierungen für instabile Version vorschlagen.</string>
+    <string name="unstable_updates_summary">Aktualisierungen für instabile Versionen vorschlagen</string>
     <string name="menu_changelog">Änderungen</string>
     <string name="category_Connectivity">Verbindung</string>
     <string name="category_Sports_Health">Sport / Gesundheit</string>
@@ -271,7 +271,7 @@
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
-    <string name="keep_install_history_summary">Speichern Sie ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher.</string>
+    <string name="keep_install_history_summary">Speichern Sie ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
@@ -343,8 +343,8 @@
     <string name="nearby_splash__find_people_button">In Ihrer Nähe suchen</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
-    <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
-    <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und diese aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
+    <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden</string>
+    <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und diese aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden</string>
     <string name="categories__empty_state__no_categories">Keine Kategorien zum Anzeigen</string>
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Herunterladen abbrechen</string>
@@ -377,7 +377,7 @@
     <string name="by_author_format">von %s</string>
     <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
     <string name="force_old_index">Altes Index-Format erzwingen</string>
-    <string name="force_old_index_summary">Bei Fehlern oder Kompatibilitätsproblemen den XML-App-Index verwenden.</string>
+    <string name="force_old_index_summary">Bei Fehlern oder Kompatibilitätsproblemen den XML-App-Index verwenden</string>
     <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation</string>
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
@@ -454,7 +454,7 @@
     <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
     <string name="share_repository">Paketquelle teilen</string>
     <string name="allow_push_requests">Paketquellen App-Installationen erlauben</string>
-    <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten.</string>
+    <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten</string>
     <string name="antinosourcesince">Der Quelltext ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
@@ -506,7 +506,7 @@
     <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
     <string name="notification_channel_installs_title">Installationen</string>
     <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
-    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchentlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes).</string>
+    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchentlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
     <string name="send_to_fdroid_metrics">Nutzungsdaten senden</string>
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
