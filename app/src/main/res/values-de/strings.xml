@@ -340,7 +340,7 @@
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Menschen in Ihrer Umgebung erhalten!</string>
-    <string name="nearby_splash__find_people_button">Menschen in Ihrer Nähe suchen</string>
+    <string name="nearby_splash__find_people_button">In Ihrer Nähe suchen</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>
     <string name="latest__empty_state__never_updated">Sobald Ihre App-Liste aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
