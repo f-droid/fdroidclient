@@ -22,7 +22,7 @@ import com.google.android.material.chip.ChipDrawable;
  * The search input treats text before the first colon as a category name. Text after this colon
  * (or all text if there is no colon) is the free text search terms.
  * The behaviour of this search input is:
- * * Replacing anything before the first colon with a {@link CategorySpan} that renders a "Chip"
+ * * Replacing anything before the first colon with a {@link ChipDrawable} that renders a "Chip"
  * including an icon representing "category" and the name of the category.
  * * Removing the trailing ":" from a category chip will cause it to remove the entire category
  * from the input.
@@ -76,7 +76,7 @@ public class CategoryTextWatcher implements TextWatcher {
 
     /**
      * If the user added a colon, and there was not previously a colon before the newly added
-     * one, then request for a {@link CategorySpan} to be added when able.
+     * one, then request for a {@link ChipDrawable} to be added when able.
      */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -93,7 +93,7 @@ public class CategoryTextWatcher implements TextWatcher {
     /**
      * If it was decided that we were removing a category, then ensure that the relevant
      * characters are removed. If it was deemed we were adding a new category, then ensure
-     * that the relevant {@link CategorySpan} is added to {@param searchText}.
+     * that the relevant {@link ChipDrawable} is added to {@param searchText}.
      */
     @Override
     public void afterTextChanged(Editable searchText) {
@@ -124,7 +124,6 @@ public class CategoryTextWatcher implements TextWatcher {
     }
 
     /**
-     * Ensures that a {@link CategorySpan} is in {@param textToSpannify} if required.
      * Will firstly remove all existing category spans, and then add back one if necessary.
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
