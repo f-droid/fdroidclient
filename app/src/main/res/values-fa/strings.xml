@@ -505,4 +505,5 @@
     <string name="use_pure_black_dark_theme_summary">فقط برای صفحه های OLED توصیه می شود.</string>
     <string name="use_pure_black_dark_theme">از زمینه سیاه خالص در تم تاریک استفاده کن</string>
     <string name="banner_no_data_or_wifi">اتصال وای‌فای یا داده‌ها فعال نیست</string>
+    <string name="banner_no_internet">بدون اینترنت</string>
 </resources>
