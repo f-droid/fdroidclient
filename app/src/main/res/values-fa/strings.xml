@@ -25,11 +25,11 @@
     <string name="choose_bt_send">گزینش روش ارسال بلوتوث</string>
     <string name="repo_add_url">نشانی مخزن</string>
     <string name="repo_add_fingerprint">اثر انگشت (اختیاری)</string>
-    <string name="menu_manage">مخزن‌ها</string>
+    <string name="menu_manage">مخازن</string>
     <string name="menu_search">جست‌وجو</string>
     <string name="menu_share">هم‌رسانی</string>
     <string name="menu_install">نصب</string>
-    <string name="menu_uninstall">حذف نصب</string>
+    <string name="menu_uninstall">لغو نصب</string>
     <string name="menu_issues">اشکال‌ها</string>
     <string name="menu_source">کد منبع</string>
     <string name="details_notinstalled">نصب نشده</string>
@@ -118,7 +118,7 @@
     <string name="proxy_port">درگاه پروکسی</string>
     <string name="proxy_port_summary">شمارهٔ درگاه پروکسی (مثلاً 8118)</string>
     <string name="status_download_unknown_size">در حال بارگیری\n%2$s از\n%1$s</string>
-    <string name="banner_updating_repositories">در حال به‌روز رسانی مخزن‌ها</string>
+    <string name="banner_updating_repositories">در حال به‌روزرسانی مخازن</string>
     <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$d%%) از %1$s</string>
     <string name="status_inserting_apps">در حال ذخیرهٔ جزئیات برنامه</string>
     <string name="repos_unchanged">تمام مخزن‌ها به‌روز هستند</string>
@@ -285,7 +285,7 @@
     <string name="clear_search">پاک‌سازی جست‌وجو</string>
     <string name="repositories_summary">افزودن منابع اضافی برای برنامه ها</string>
     <string name="menu_video">ویدیو</string>
-    <string name="main_menu__latest_apps">جدیدترین</string>
+    <string name="main_menu__latest_apps">آخرین</string>
     <string name="main_menu__categories">دسته‌ها</string>
     <string name="main_menu__swap_nearby">اطراف</string>
     <string name="latest__empty_state__no_recent_apps">هیچ برنامهٔ اخیری پیدا نشد</string>
@@ -504,4 +504,5 @@
     <string name="theme_follow_system">از سیستم تبعیت کن</string>
     <string name="use_pure_black_dark_theme_summary">فقط برای صفحه های OLED توصیه می شود.</string>
     <string name="use_pure_black_dark_theme">از زمینه سیاه خالص در تم تاریک استفاده کن</string>
+    <string name="banner_no_data_or_wifi">اتصال وای‌فای یا داده‌ها فعال نیست</string>
 </resources>
