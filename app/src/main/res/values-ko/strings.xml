@@ -434,7 +434,7 @@
     <string name="send_version_and_uuid_summary">이 앱의 버전과 임의의, 고유한 ID를 포함하며, 다음에 앱을 다시 시작하면 영향을 받습니다.</string>
     <string name="share_repository">저장소 공유</string>
     <string name="send_install_history">설치 내역 보내기</string>
-    <string name="send_history_csv">설치 내역을 CSV 파일로 %s</string>
+    <string name="send_history_csv">%s 설치 내역을 CSV 파일로</string>
     <string name="allow_push_requests">저장소에 앱을 설치/제거할 수 있도록 하기</string>
     <string name="allow_push_requests_summary">저장소 메타데이터에는 설치 또는 제거를 위한 푸시 요청을 포함할 수 있습니다</string>
     <string name="updates_disabled_by_settings">모든 업데이트가 데이터/WiFi 설정에 의해 비활성화됨</string>
@@ -486,4 +486,18 @@
     <string name="notification_channel_installs_description">애플리케이션 설치 과정을 알림으로 표시합니다.</string>
     <string name="notification_channel_installs_title">설치</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="theme_follow_system">시스템 따르기</string>
+    <string name="banner_no_data_or_wifi">활성화된 데이터나 WiFi 없음</string>
+    <string name="banner_no_internet">인터넷 없음</string>
+    <string name="menu_show_install_history">설치 내역 보기</string>
+    <string name="use_pure_black_dark_theme_summary">OLED 화면에만 권장됩니다.</string>
+    <string name="use_pure_black_dark_theme">어두운 테마에서 순수한 검은 배경 사용</string>
+    <string name="menu_show_fdroid_metrics_report">메트릭 데이터 보이기</string>
+    <string name="toast_metrics_in_install_history">%s 메트릭 보고서는 설치 내역 뷰어에서 볼 수 있습니다</string>
+    <string name="send_to_fdroid_metrics_summary">익명으로 데이터를 매주 F-Droid 메트릭으로 보냅니다 (설치 내역 유지 필요)</string>
+    <string name="send_to_fdroid_metrics">사용 데이터 보내기</string>
+    <string name="fdroid_metrics_report">%s 메트릭 보고서</string>
+    <string name="send_fdroid_metrics_report">%s 메트릭 보고서 보내기</string>
+    <string name="install_history_and_metrics">설치 내역 및 메트릭</string>
+    <string name="send_fdroid_metrics_json">%s 메트릭 보고서를 JSON 파일로</string>
 </resources>
