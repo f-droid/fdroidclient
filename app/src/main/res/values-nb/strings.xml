@@ -71,7 +71,7 @@
     <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
     <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
     <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
-    <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
+    <string name="adding_apks_format">Legger %s til pakkebrønn…</string>
     <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
     <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
     <string name="copying_icons">Kopierer program-miniatyrbilder til pakkebrønnen…</string>
@@ -152,7 +152,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Oppdaterer pakkebrønner</string>
+    <string name="banner_updating_repositories">Oppdaterer arkiver</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="repo_details">Pakkebrønn</string>
     <string name="repo_url">Adresse</string>
@@ -519,4 +519,9 @@
     <string name="install_history_and_metrics">Installasjonshistorikk og bruksdata</string>
     <string name="send_fdroid_metrics_json">%s bruksmåledata rapport som JSON-fil</string>
     <string name="send_fdroid_metrics_report">Send %s bruksmåledata</string>
+    <string name="theme_follow_system">Følg systemet</string>
+    <string name="use_pure_black_dark_theme_summary">Anbefales bare for OLED-skjermer.</string>
+    <string name="use_pure_black_dark_theme">Bruk ren svart bakgrunn i mørkt tema</string>
+    <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktivert</string>
+    <string name="banner_no_internet">Ingen internett</string>
 </resources>
