@@ -509,4 +509,5 @@
     <string name="theme_follow_system">Ndiq sistemin</string>
     <string name="use_pure_black_dark_theme_summary">E rekomanduar vetëm për ekranë OLED.</string>
     <string name="use_pure_black_dark_theme">Përdor sfond të zi në temë të errët</string>
+    <string name="banner_no_internet">Jo Internet</string>
 </resources>
