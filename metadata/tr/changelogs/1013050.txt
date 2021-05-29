@@ -1,1 +1,5 @@
 * Tema desteği yerleşik Android temalarına bağlandı (@proletarius101)
+
+* Yeni üst başlık bildirimleri: "İnternet Yok" ve "Veri veya etkin Wi-Fi yok"
+
+* USB-OTG ve SD Kart depoları ve yansılarının işlenilmesi iyileştirildi
