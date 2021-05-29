@@ -102,7 +102,7 @@
     <string name="status_download_unknown_size">Mengunduh
 \n%2$s dari
 \n%1$s</string>
-    <string name="banner_updating_repositories">Memperbarui repositori</string>
+    <string name="banner_updating_repositories">Memperbarui repostori</string>
     <string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
     <string name="status_connecting_to_repo">Menghubungkan ke
 \n%1$s</string>
@@ -501,4 +501,6 @@
     <string name="theme_follow_system">Ikuti sistem</string>
     <string name="use_pure_black_dark_theme_summary">Direkomendasikan hanya untuk layar OLED.</string>
     <string name="use_pure_black_dark_theme">Gunakan latar belakang hitam murni dalam tema gelap</string>
+    <string name="banner_no_data_or_wifi">Data atau WiFi tdkaktif</string>
+    <string name="banner_no_internet">Tnp Intnet</string>
 </resources>
