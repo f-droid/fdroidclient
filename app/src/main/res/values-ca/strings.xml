@@ -516,7 +516,7 @@
     <string name="send_to_fdroid_metrics_summary">Envia setmanalment dades anònimes a les mètriques F-Droid (requereix mantenir historial d’instal·lacions)</string>
     <string name="send_to_fdroid_metrics">Enviar dades d\'ús</string>
     <string name="fdroid_metrics_report">Informe de mètriques %s</string>
-    <string name="install_history_and_metrics">Instal·leu l\'historial i les mètriques</string>
+    <string name="install_history_and_metrics">Instal·la l\'històric i les mètriques</string>
     <string name="send_fdroid_metrics_json">Informe de mètriques %s como a fitxer JSON</string>
     <string name="send_fdroid_metrics_report">Envia informe de mètriques %s</string>
 </resources>
