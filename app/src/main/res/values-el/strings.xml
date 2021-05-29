@@ -521,4 +521,9 @@
     <string name="send_fdroid_metrics_json">Αναφορά διαγνωστικών %s ως αρχείο JSON</string>
     <string name="send_fdroid_metrics_report">Αποστολή αναφοράς διαγνωστικών %s</string>
     <string name="send_to_fdroid_metrics">Αποστολή δεδομένων χρήσης</string>
+    <string name="theme_follow_system">Ίδιο με του συστήματος</string>
+    <string name="use_pure_black_dark_theme_summary">Συνιστάται μόνο για οθόνες OLED.</string>
+    <string name="use_pure_black_dark_theme">Χρήση τελείως μαύρου φόντου στο σκούρο θέμα</string>
+    <string name="banner_no_data_or_wifi">Δεν έχουν ενεργοποιηθεί δεδομένα ή WiFi</string>
+    <string name="banner_no_internet">Χωρίς σύνδεση στο διαδίκτυο</string>
 </resources>
