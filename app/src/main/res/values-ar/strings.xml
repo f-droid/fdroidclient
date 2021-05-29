@@ -358,12 +358,12 @@
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
-    <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة التطبيقات، التطبيقات الأخيرة سوف تظهر هنا</string>
+    <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، الطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
-        <item quantity="zero">لاشيء</item>
+        <item quantity="zero">لاشيء…</item>
         <item quantity="one">+%1$d آخر…</item>
         <item quantity="two">آخرين…</item>
         <item quantity="few">+%1$d أخرى…</item>
@@ -481,7 +481,7 @@
     <string name="antinosourcesince">لم يعد الكود المصدري متاحا ، ولا توجد تحديثات ممكنة.</string>
     <string name="panic_hide_warning_message">في حالة الهلع ، سيؤدي هذا إلى إزالة%1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
     <string name="share_repository">مشاركة المستودع</string>
-    <string name="send_install_history">إرسال محفوظات التثبيت</string>
+    <string name="send_install_history">إرسال سجل التثبيت</string>
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
     <string name="updates_disabled_by_settings">جميع التحديثات معطلة عن طريق إعدادات البيانات / واي فاي</string>
     <string name="about_forum">منتدى الدعم</string>
@@ -548,4 +548,9 @@
     <string name="install_history_and_metrics">سجل التثبيت والمقاييس</string>
     <string name="send_fdroid_metrics_json">%s تقرير المقاييس كملف JSON</string>
     <string name="send_fdroid_metrics_report">إرسال تقرير %s القياسات</string>
+    <string name="theme_follow_system">اتبع مظهر النظام</string>
+    <string name="use_pure_black_dark_theme_summary">يوصى به فقط لشاشات OLED.</string>
+    <string name="use_pure_black_dark_theme">استخدم خلفية سوداء نقية في المظهر داكن</string>
+    <string name="banner_no_data_or_wifi">لم يتم تمكين البيانات أو WiFi</string>
+    <string name="banner_no_internet">لا يوجد إنترنت</string>
 </resources>
