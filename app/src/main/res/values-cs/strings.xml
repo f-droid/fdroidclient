@@ -145,7 +145,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="status_download_unknown_size">Stahování\n%2$s z\n%1$s</string>
-    <string name="banner_updating_repositories">Aktualizace repozitářů</string>
+    <string name="banner_updating_repositories">Aktualizuji repozitáře</string>
     <string name="status_processing_xml_percent">Zpracovávání %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="all_other_repos_fine">Žádné jiné repozitáře nenahlásily chyby.</string>
     <string name="permissions">Oprávnění</string>
@@ -513,4 +513,18 @@
     <string name="notification_channel_installs_title">Instalace</string>
     <string name="notification_channel_swaps_description">Zobrazí oznámení o P2P směnách aplikací.</string>
     <string name="notification_channel_swaps_title">Směny</string>
+    <string name="theme_follow_system">Podle systému</string>
+    <string name="use_pure_black_dark_theme_summary">Doporučeno jen pro OLED-obrazovky.</string>
+    <string name="use_pure_black_dark_theme">Použít čistě černé pozadí s tmavým motivem</string>
+    <string name="banner_no_data_or_wifi">Datové spojení nebo WLAN nejsou aktivní</string>
+    <string name="banner_no_internet">Nemáme spojení</string>
+    <string name="menu_show_install_history">Zobrazit průběh instalací</string>
+    <string name="menu_show_fdroid_metrics_report">Zobrazit hlášení metrik</string>
+    <string name="toast_metrics_in_install_history">Hlášení metrik %s lze prohlédnout v náhledu průběhu instalací</string>
+    <string name="send_to_fdroid_metrics_summary">Odesílá anonymizovaná data týdně pro metriky F-Droid (vyžaduje uchování průběhu instalací)</string>
+    <string name="send_to_fdroid_metrics">Odeslat data o používání</string>
+    <string name="fdroid_metrics_report">%s Hlášení metrik</string>
+    <string name="install_history_and_metrics">Průběh instalací a metriky</string>
+    <string name="send_fdroid_metrics_json">%s hlášení metrik jako JSON soubor</string>
+    <string name="send_fdroid_metrics_report">Odeslat hlášení metrik %s</string>
 </resources>
