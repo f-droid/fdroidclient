@@ -10,7 +10,7 @@
     <string name="about_version">Версія</string>
     <string name="app_installed">Установлено</string>
     <string name="app_not_installed">Не встановлено</string>
-    <string name="ok">OK</string>
+    <string name="ok">Гаразд</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="repo_add_title">Додати новий репозиторій</string>
@@ -117,7 +117,7 @@
     <string name="category_Reading">Читання</string>
     <string name="category_Science_Education">Освіта та наука</string>
     <string name="category_Security">Безпека</string>
-    <string name="category_Sports_Health">Спорт та здоров\'я</string>
+    <string name="category_Sports_Health">Спорт і здоров\'я</string>
     <string name="category_System">Система</string>
     <string name="category_Time">Час</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
@@ -298,7 +298,7 @@
     <string name="main_menu__categories">Категорії</string>
     <string name="main_menu__swap_nearby">Поруч</string>
     <string name="preference_category__my_apps">Мої застосунки</string>
-    <string name="preference_manage_installed_apps">Керування встановленими застосунками</string>
+    <string name="preference_manage_installed_apps">Керувати встановленими застосунками</string>
     <string name="tts_category_name">Категорія %1$s</string>
     <string name="app_details_donate_prompt_unknown_author">Придбай розробнику %1$s філіжанку кави!</string>
     <string name="app__install_downloaded_update">Оновити</string>
@@ -341,7 +341,7 @@
     <string name="latest__empty_state__no_recent_apps">Недавніх застосунків не виявлено</string>
     <string name="latest__empty_state__never_updated">Щойно ваш перелік застосунків буде оновлено, найновіші застосунки з\'являться тут</string>
     <string name="latest__empty_state__no_enabled_repos">Щойно ви увімкнете репозиторій та оновите його, найновіші застосунки з\'являться тут</string>
-    <string name="categories__empty_state__no_categories">Немає категорій для відображення</string>
+    <string name="categories__empty_state__no_categories">Немає категорій для показу</string>
     <string name="download_404">Запитаний файл не знайдено.</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Огляд %d застосунку</item>
@@ -462,10 +462,10 @@
     <string name="antidisabledalgorithmlist">Цей застосунок має слабкий підпис безпеки</string>
     <string name="antiknownvulnlist">Цей застосунок містить знану вразливість безпеки</string>
     <string name="antinosourcesince">Джерельний код вже не доступний, оновлення неможливі.</string>
-    <string name="show_anti_feature_apps">Включити застосунки з сумнівними можливостями</string>
-    <string name="show_anti_feature_apps_on">Показати застосунки, які для роботи потребують сумнівні можливості</string>
-    <string name="force_touch_apps">Включити застосунки, які потребують тачскрин</string>
-    <string name="force_touch_apps_on">Показати застосунки, які потребують тачскрин, незалежно від апаратного підтримування</string>
+    <string name="show_anti_feature_apps">Включити застосунки з небажаними можливостями</string>
+    <string name="show_anti_feature_apps_on">Показати застосунки, які для роботи потребують небажані можливості</string>
+    <string name="force_touch_apps">Включити застосунки, які потребують сенсорний екран</string>
+    <string name="force_touch_apps_on">Показати застосунки, які потребують сенсорний екран, незалежно від апаратної підтримки</string>
     <string name="panic_hide_warning_message">У разі небезпеки, це усуне %1$s із запускача. Лише введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
     <string name="hiding_dialog_message">Ви певні що хочете прибрати %1$s із запускача\? Тільки введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
     <string name="hiding_dialog_warning">Увага: всі піктограми застосунку на домашньому екрані буде вилучено, їх необхідно буде повернути вручну.</string>
@@ -527,4 +527,6 @@
     <string name="theme_follow_system">Дотримуватись системної</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
     <string name="use_pure_black_dark_theme">Використання чистого чорного тла в темній темі</string>
+    <string name="banner_no_data_or_wifi">Дані або Wi-Fi не ввімкнуто</string>
+    <string name="banner_no_internet">Немає Інтернету</string>
 </resources>
