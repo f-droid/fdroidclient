@@ -147,7 +147,7 @@ public class CategoryTextWatcher implements TextWatcher {
                 chip.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
             }
             final ImageSpan span = new ImageSpan(chip);
-            textToSpannify.setSpan(span,0, textToSpannify.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textToSpannify.setSpan(span, 0, textToSpannify.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         }
     }
