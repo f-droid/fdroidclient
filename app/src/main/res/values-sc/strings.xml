@@ -537,4 +537,6 @@
     <string name="theme_follow_system">Sighi su sistema</string>
     <string name="use_pure_black_dark_theme_summary">Racumandadu pro sos ischermos OLED.</string>
     <string name="use_pure_black_dark_theme">Imprea un\'isfundu nieddu de su totu in su tema iscuru</string>
+    <string name="banner_no_data_or_wifi">Peruna connessione mòbile o Wifi ativa</string>
+    <string name="banner_no_internet">Chene ìnternet</string>
 </resources>
