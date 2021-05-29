@@ -529,4 +529,6 @@
     <string name="theme_follow_system">כמו המערכת</string>
     <string name="use_pure_black_dark_theme_summary">מומלץ למסכי OLED בלבד.</string>
     <string name="use_pure_black_dark_theme">להשתמש ברקע שחור טהור בערכת עיצוב כהה</string>
+    <string name="banner_no_data_or_wifi">הרשתות האלחוטית והסלולרית מושבתות</string>
+    <string name="banner_no_internet">אין אינטרנט</string>
 </resources>
