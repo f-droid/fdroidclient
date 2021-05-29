@@ -1,1 +1,5 @@
 * etosoj kongruaj kun originalaj Android‑etosoj (@proletarius101)
+
+* novaj supraj atentigoj: “neniu interreta konekto aktiva” kaj “sen interreto”
+
+* plibonigita traktado de deponejoj kaj spegul‑serviloj ĉe USB OTG kaj SD‑kartoj

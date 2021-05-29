@@ -94,7 +94,7 @@
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
-    <string name="system_installer_on">Uzi privilegian aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn</string>
+    <string name="system_installer_on">Uzi la privilegian aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn</string>
     <string name="local_repo_name">Nomo de via loka deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
     <string name="local_repo_https_on">Uzi ĉifritan HTTPS:// konekton por loka deponejo</string>
@@ -521,4 +521,6 @@
     <string name="theme_follow_system">Sistema</string>
     <string name="use_pure_black_dark_theme_summary">Konsilinda nur por ekranoj OLED.</string>
     <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela etoso</string>
+    <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>
+    <string name="banner_no_internet">Sen interreto</string>
 </resources>
