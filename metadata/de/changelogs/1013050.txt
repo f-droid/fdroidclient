@@ -1,1 +1,5 @@
-* Kopplung der Theme-Unterstützung integrierte Android-Themes (@proletarius101)
+* Theme-Unterstützung gebunden an eingebaute Android-Themes (@proletarius101)
+
+* Neue Banner-Benachrichtigungen oben: "Kein Internet" und "Keine Daten oder WLAN aktiviert"
+
+* Verbesserte Handhabung von USB-OTG- und SD-Karten-Repos und Mirrors

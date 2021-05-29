@@ -2,6 +2,6 @@
 * Verbesserte Sprachauswahl mit mehreren Gebietsschemata (@spacecowboy/@bubu)
 * Neuester Tab zeigt bessere Ergebnisse auf nicht-englischen Geräten
 * Aktualisierungen der Kernbibliotheken (Jackson, androidx, gradle, etc)
-* polnische Whitelabeling-Unterstützung
+* Polnische Whitelabeling-Unterstützung
 
 Danke an neue Mitwirkende! @spacecowboy @projectgus @glennmen @Isira-Seneviratne
