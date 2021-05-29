@@ -148,7 +148,7 @@
     <string name="status_download">Descărcare
 \n%2$s / %3$s (%4$d%%) din
 \n%1$s</string>
-    <string name="banner_updating_repositories">Actualizare depozit</string>
+    <string name="banner_updating_repositories">Actualizare depozite</string>
     <string name="status_connecting_to_repo">Conectare la\n%1$s</string>
     <string name="global_error_updating_repos">Eroare la actualizare: %s</string>
     <string name="permissions">Permisiuni</string>
@@ -520,4 +520,6 @@
     <string name="theme_follow_system">Folosește tema sistemului</string>
     <string name="use_pure_black_dark_theme_summary">Recomandat numai pentru ecrane OLED.</string>
     <string name="use_pure_black_dark_theme">Utilizați un fundal negru pur în tema întunecată</string>
+    <string name="banner_no_data_or_wifi">Nu sunt activate date mobile sau Wi-Fi</string>
+    <string name="banner_no_internet">Fără internet</string>
 </resources>
