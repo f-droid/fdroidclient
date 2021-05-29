@@ -74,6 +74,16 @@ public class AppListItemState {
                 : Utils.formatAppNameAndSummary(app.name, app.summary);
     }
 
+    @Nullable
+    public CharSequence getAppName() {
+        return app.name;
+    }
+
+    @Nullable
+    public CharSequence getAppSummary() {
+        return app.summary;
+    }
+
     public boolean shouldShowInstall() {
         return showInstallButton;
     }

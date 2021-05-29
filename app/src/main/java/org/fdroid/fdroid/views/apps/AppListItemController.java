@@ -76,8 +76,11 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     @NonNull
     private final TextView name;
 
+    @NonNull
+    private final TextView description;
+
     @Nullable
-    private final ImageView installButton;
+    private final Button installButton;
 
     @Nullable
     private final TextView status;
@@ -118,37 +121,14 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             prefs = Preferences.get();
         }
 
-        installButton = (ImageView) itemView.findViewById(R.id.install);
+        installButton = (Button) itemView.findViewById(R.id.install);
         if (installButton != null) {
-            installButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onActionButtonPressed(currentApp);
-                }
-            });
-
-            if (Build.VERSION.SDK_INT >= 21) {
-                installButton.setOutlineProvider(new ViewOutlineProvider() {
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        float density = activity.getResources().getDisplayMetrics().density;
-
-                        // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
-                        // This is because the default "download & install" and "downloaded & ready to install"
-                        // icons are smaller than the "downloading progress" button. Hence, we can't just use
-                        // the width/height of the view to calculate the outline size.
-                        int xPadding = (int) (8 * density);
-                        int yPadding = (int) (9 * density);
-                        int right = installButton.getWidth() - xPadding;
-                        int bottom = installButton.getHeight() - yPadding;
-                        outline.setOval(xPadding, yPadding, right, bottom);
-                    }
-                });
-            }
+            installButton.setOnClickListener(v -> onActionButtonPressed(currentApp));
         }
 
         icon = (ImageView) itemView.findViewById(R.id.icon);
         name = (TextView) itemView.findViewById(R.id.app_name);
+        description = (TextView) itemView.findViewById(R.id.app_description);
         status = (TextView) itemView.findViewById(R.id.status);
         secondaryStatus = (TextView) itemView.findViewById(R.id.secondary_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
@@ -260,7 +240,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
-        name.setText(viewState.getMainText());
+        name.setText(viewState.getAppName());
+        description.setText(viewState.getAppSummary());
 
         if (actionButton != null) {
             if (viewState.shouldShowActionButton()) {
@@ -308,15 +289,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 installButton.setVisibility(View.GONE);
             } else if (viewState.showProgress()) {
                 installButton.setEnabled(false);
-                installButton.setVisibility(View.VISIBLE);
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
-                int progressAsDegrees = viewState.getProgressMax() <= 0 ? 0 :
-                        (int) (((float) viewState.getProgressCurrent() / viewState.getProgressMax()) * 360);
-                installButton.setImageLevel(progressAsDegrees);
+                installButton.setVisibility(View.GONE);
             } else if (viewState.shouldShowInstall()) {
                 installButton.setEnabled(true);
                 installButton.setVisibility(View.VISIBLE);
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download));
             } else {
                 installButton.setVisibility(View.GONE);
             }
