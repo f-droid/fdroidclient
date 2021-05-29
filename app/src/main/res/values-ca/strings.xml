@@ -30,7 +30,7 @@
     <string name="no">No</string>
     <string name="repo_add_title">Afegeix un nou dipòsit</string>
     <string name="repo_add_add">Afegeix</string>
-    <string name="cancel">Cancel·la</string>
+    <string name="cancel">Cancel·lar</string>
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
@@ -154,7 +154,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Actualitzant els dipòsits</string>
+    <string name="banner_updating_repositories">Actualitzant respositoris</string>
     <string name="more">Més</string>
     <string name="less">Menys</string>
     <string name="permissions">Permisos</string>
@@ -425,10 +425,10 @@
     <string name="repo_exists_add_mirror">Això és una còpia de %1$s, voleu afegir-la com a rèplica?</string>
     <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
     <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
-    <string name="show_anti_feature_apps">Inclou aplicacions amb característiques indesitjades</string>
-    <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen característiques indesitjades</string>
+    <string name="show_anti_feature_apps">Inclou aplicacions amb funcionalitats indesitjades</string>
+    <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen funcionalitats indesitjades</string>
     <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>
-    <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tinc</string>
+    <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingui</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
     <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
     <string name="repo_official_mirrors">Rèpliques oficials</string>
@@ -466,13 +466,13 @@
     <string name="menu_open">Obrir</string>
     <string name="menu_downgrade">Revertir versió</string>
     <string name="scan_removable_storage_title">Escaneja l\'emmagatzematge extraïble</string>
-    <string name="scan_removable_storage_toast">S\'està escanejant %s…</string>
+    <string name="scan_removable_storage_toast">Escanejant %s…</string>
     <string name="scan_removable_storage_summary">Cerca dipòsits de paquets en emmagatzematge extraïble com ara targetes SD i memòries USB</string>
     <string name="app_repository">Dipòsit: %1$s</string>
     <string name="main_menu__updates">Actualitzacions</string>
     <string name="nearby_splash__read_external_storage">Cerca a la memòria SD repositoris d\'intercanvi.</string>
     <string name="nearby_splash__request_permission">Prova-ho</string>
-    <string name="not_visible_nearby">Al voltant no habilitat</string>
+    <string name="not_visible_nearby">Proximitat no habilitada</string>
     <string name="not_visible_nearby_description">Abans d\'intercanviar amb dispositius propers, feu el vostre dispositiu visible.</string>
     <string name="swap_toast_using_path">Utilitzant %1$s</string>
     <string name="swap_toast_not_removable_storage">Aquesta tria no concorda amb cap dispositiu d\'emmagatzematge extraïble, torneu-ho a provar!</string>
@@ -505,4 +505,18 @@
     <string name="notification_channel_installs_description">Mostra les notificacions d\'instal·lació d\'aplicacions.</string>
     <string name="notification_channel_installs_title">Instal·lacions</string>
     <string name="notification_channel_swaps_title">Intercanvis</string>
+    <string name="theme_follow_system">Seguir el sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Recomanat només per a pantalles OLED.</string>
+    <string name="use_pure_black_dark_theme">Utilitzar fons negre pur en el tema fosc</string>
+    <string name="banner_no_data_or_wifi">Dades/WiFi desactivats</string>
+    <string name="banner_no_internet">Sense Internet</string>
+    <string name="menu_show_install_history">Mostra l\'historial d\'instal·lacions</string>
+    <string name="menu_show_fdroid_metrics_report">Mostra l\'informe de mètriques</string>
+    <string name="toast_metrics_in_install_history">L\'informe mètriques %s es pot visualitzar al visor de l\'historial d\'instal·lacions</string>
+    <string name="send_to_fdroid_metrics_summary">Envia setmanalment dades anònimes a les mètriques F-Droid (requereix mantenir historial d’instal·lacions)</string>
+    <string name="send_to_fdroid_metrics">Enviar dades d\'ús</string>
+    <string name="fdroid_metrics_report">Informe de mètriques %s</string>
+    <string name="install_history_and_metrics">Instal·leu l\'historial i les mètriques</string>
+    <string name="send_fdroid_metrics_json">Informe de mètriques %s como a fitxer JSON</string>
+    <string name="send_fdroid_metrics_report">Envia informe de mètriques %s</string>
 </resources>
