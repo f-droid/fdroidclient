@@ -22,7 +22,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
         this.activity = activity;
         divider = new InsetDivider(
                 activity.getResources().getDimensionPixelSize(R.dimen.divider_inset),
-                activity.getResources().getDimensionPixelSize((R.dimen.divider_height)),
+                activity.getResources().getDimensionPixelSize(R.dimen.divider_height),
                 ContextCompat.getColor(activity, R.color.divider)
         );
         setHasStableIds(true);
