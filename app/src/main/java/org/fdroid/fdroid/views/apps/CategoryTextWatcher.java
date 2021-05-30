@@ -2,13 +2,11 @@ package org.fdroid.fdroid.views.apps;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ImageSpan;
 import android.text.style.TtsSpan;
-import android.view.View;
 import android.widget.EditText;
 
 import org.fdroid.fdroid.R;
