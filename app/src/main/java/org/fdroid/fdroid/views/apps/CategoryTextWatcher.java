@@ -142,9 +142,6 @@ public class CategoryTextWatcher implements TextWatcher {
             CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
             chip.setText(categoryName);
             chip.setBounds(0, 0, chip.getIntrinsicWidth(), chip.getIntrinsicHeight());
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                chip.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
-            }
             final ImageSpan span = new ImageSpan(chip);
             textToSpannify.setSpan(span, 0, textToSpannify.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
