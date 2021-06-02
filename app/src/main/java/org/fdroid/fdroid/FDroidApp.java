@@ -160,6 +160,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     /**
      * Apply pure black background in dark theme setting. Must be called in every activity's
      * {@link AppCompatActivity#onCreate()}, before super.onCreate().
+     *
      * @param activity The activity to apply the setting.
      */
     public void applyPureBlackBackgroundInDarkTheme(AppCompatActivity activity) {
@@ -212,7 +213,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     private static int getCurDialogThemeResId() {
         switch (curTheme) {
-            case dark: case night:
+            case dark:
+            case night:
                 return R.style.MinWithDialogBaseThemeDark;
             default:
                 return R.style.MinWithDialogBaseThemeLight;
@@ -650,7 +652,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     /**
      * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
-     *
+     * <p>
      * Must be called on App startup and after every proxy configuration change.
      */
     public static void configureProxy(Preferences preferences) {
