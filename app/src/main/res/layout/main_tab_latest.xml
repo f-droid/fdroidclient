@@ -32,7 +32,7 @@
                 android:id="@+id/app_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="16dp"
+                android:padding="16dp"
                 android:clipToPadding="false"
                 android:scrollbars="vertical"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"

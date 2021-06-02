@@ -17,8 +17,8 @@
              when it will inevitably read out the name of the app straight after. -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/icon"
-            android:layout_width="96dip"
-            android:layout_height="96dip"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:transitionName="@string/transition_app_item_icon"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="16dp">
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/title"
@@ -43,7 +43,6 @@
                 android:id="@+id/summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 android:maxLines="4"
                 android:text="@string/app_description"
@@ -56,7 +55,7 @@
             layout="@layout/app_status_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 
