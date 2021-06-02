@@ -1,3 +1,11 @@
+### 1.13-alpha1 (2021-06-02)
+
+* Stop repeated updates of Trichrome Library
+
+* More changes to follow Material Design (@proletarius101)
+
+* Improve OpenCollective badge (@ConnyDuck)
+
 ### 1.13-alpha0 (2021-04-22)
 
 * Theme support tied to built-in Android themes (@proletarius101)

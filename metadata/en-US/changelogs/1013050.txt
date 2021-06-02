@@ -3,3 +3,9 @@
 * New top banner notifications: "No Internet" and "No Data or WiFi enabled"
 
 * Improved handling of USB-OTG and SD Card repos and mirrors
+
+* Stop repeated updates of Trichrome Library
+
+* More changes to follow Material Design (@proletarius101)
+
+* Improve OpenCollective badge (@ConnyDuck)
