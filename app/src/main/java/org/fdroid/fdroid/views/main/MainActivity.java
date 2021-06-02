@@ -94,12 +94,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
     public static final String ACTION_REQUEST_SWAP = "requestSwap";
 
-    private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
-
     private RecyclerView pager;
     private MainViewAdapter adapter;
     private BottomNavigationView bottomNavigation;
-    private int selectedMenuId;
     private BadgeDrawable updatesBadge;
 
     @Override
@@ -128,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
-            selectedMenuId = (int) adapter.getItemId(item.getItemId());
 
             if (item.getItemId() == 2) {
                 NearbyViewBinder.updateUsbOtg(MainActivity.this);
@@ -145,27 +141,16 @@ public class MainActivity extends AppCompatActivity {
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
 
-        if (savedInstanceState != null) {
-            selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, (int) adapter.getItemId(0));
-        } else {
-            selectedMenuId = (int) adapter.getItemId(0);
-        }
-        setSelectedMenuInNav();
-
         initialRepoUpdateIfRequired();
 
         Intent intent = getIntent();
         handleSearchOrAppViewIntent(intent);
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt(STATE_SELECTED_MENU_ID, selectedMenuId);
-        super.onSaveInstanceState(outState);
-    }
-
-    private void setSelectedMenuInNav() {
-        bottomNavigation.setSelectedItemId(adapter.adapterPositionFromItemId(selectedMenuId));
+    private void setSelectedMenuInNav(int menuId) {
+        int position = adapter.adapterPositionFromItemId(menuId);
+        pager.scrollToPosition(position);
+        bottomNavigation.setSelectedItemId(position);
     }
 
     private void initialRepoUpdateIfRequired() {
@@ -183,19 +168,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
-            selectedMenuId = R.id.updates;
-            setSelectedMenuInNav();
+            setSelectedMenuInNav(R.id.updates);
         } else if (getIntent().hasExtra(EXTRA_VIEW_NEARBY)) {
             getIntent().removeExtra(EXTRA_VIEW_NEARBY);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.nearby));
-            selectedMenuId = R.id.nearby;
-            setSelectedMenuInNav();
+            setSelectedMenuInNav(R.id.nearby);
         } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
             getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.settings));
-            selectedMenuId = R.id.settings;
-            setSelectedMenuInNav();
+            setSelectedMenuInNav(R.id.settings);
         }
 
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
