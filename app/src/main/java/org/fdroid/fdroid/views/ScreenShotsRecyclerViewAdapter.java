@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -29,10 +31,12 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         this.listener = listener;
 
         screenshots = app.getAllScreenshots(context);
+
+        Drawable screenShotPlaceholder = ContextCompat.getDrawable(context, R.drawable.screenshot_placeholder);
         displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
-                .showImageOnFail(R.drawable.screenshot_placeholder)
-                .showImageOnLoading(R.drawable.screenshot_placeholder)
-                .showImageForEmptyUri(R.drawable.screenshot_placeholder)
+                .showImageOnFail(screenShotPlaceholder)
+                .showImageOnLoading(screenShotPlaceholder)
+                .showImageForEmptyUri(screenShotPlaceholder)
                 .build();
     }
 

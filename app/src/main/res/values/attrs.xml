@@ -15,5 +15,6 @@
         <attr name="backButtonDrawable" format="reference"/>
         <attr name="clearButtonDrawable" format="reference"/>
         <attr name="appDetailsAntiFeatureIconColor" format="color"/>
+        <attr name="screenshotPlaceholderIconColor" format="color"/>
     </declare-styleable>
 </resources>

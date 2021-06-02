@@ -483,12 +483,7 @@ public final class Utils {
      */
     public static DisplayImageOptions.Builder getDefaultDisplayImageOptionsBuilder() {
         if (defaultDisplayImageOptionsBuilder == null) {
-            defaultDisplayImageOptionsBuilder = new DisplayImageOptions.Builder()
-                    .cacheInMemory(true)
-                    .cacheOnDisk(true)
-                    .considerExifParams(false)
-                    .bitmapConfig(Bitmap.Config.RGB_565)
-                    .imageScaleType(ImageScaleType.EXACTLY);
+            defaultDisplayImageOptionsBuilder = createDefaultDisplayImageOptionsBuilder();
         }
         return defaultDisplayImageOptionsBuilder;
     }
@@ -500,7 +495,7 @@ public final class Utils {
      */
     public static DisplayImageOptions getRepoAppDisplayImageOptions() {
         if (repoAppDisplayImageOptions == null) {
-            repoAppDisplayImageOptions = getDefaultDisplayImageOptionsBuilder()
+            repoAppDisplayImageOptions = createDefaultDisplayImageOptionsBuilder()
                     .showImageOnLoading(R.drawable.ic_repo_app_default)
                     .showImageForEmptyUri(R.drawable.ic_repo_app_default)
                     .showImageOnFail(R.drawable.ic_repo_app_default)
@@ -508,6 +503,15 @@ public final class Utils {
                     .build();
         }
         return repoAppDisplayImageOptions;
+    }
+
+    private static DisplayImageOptions.Builder createDefaultDisplayImageOptionsBuilder() {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .considerExifParams(false)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.EXACTLY);
     }
 
     /**
