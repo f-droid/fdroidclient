@@ -35,17 +35,32 @@
 
     <!--Shape Appearance for small components like chips, buttons, text fields and FABs-->
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerSize">32dp</item>
+        <item name="cornerSize">4dp</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 
     <!--Shape Appearance for medium components like cards, alert dialogs-->
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <!--Your custom shape here-->
+        <item name="cornerSize">16dp</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 
     <!--Shape Appearance for large components like side and bottom navigation drawers-->
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <!--Your custom shape here-->
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="ShapeAppearance.App.Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Card" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">4dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 </resources>

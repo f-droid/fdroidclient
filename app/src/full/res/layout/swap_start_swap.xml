@@ -155,7 +155,7 @@
 
         <Button
             android:id="@+id/btn_send_fdroid"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.App.Button.TextButton"
             android:layout_width="wrap_content"
             swap:icon="@drawable/ic_fdroid_grey"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
 
         <Button
             android:id="@+id/btn_scan_qr"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.App.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/swap_scan_qr"

@@ -24,6 +24,11 @@
         </item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
 
+        <item name="borderlessButtonStyle">@style/Widget.App.Button.TextButton</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.OutlinedButton</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
+
         <!-- backward-compatibility theme options go here -->
         <!--Material color attributes (light theme) -->
         <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->

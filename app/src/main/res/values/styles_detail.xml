@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="DetailsButtonStyleBase" parent="Widget.MaterialComponents.Button.OutlinedButton">
+
+    <style name="DetailsButtonStyleBase" parent="Widget.App.Button.OutlinedButton">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:minHeight">32dp</item>
@@ -11,18 +12,15 @@
         <item name="android:paddingRight">18dp</item>
         <item name="textAllCaps">true</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase" />
 
-    <style name="DetailsPrimaryButtonStyle" parent="Widget.MaterialComponents.Button">
+    <style name="DetailsPrimaryButtonStyle" parent="Widget.App.Button">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
-    <style name="ThemeOverlay.App.DetailsButton" parent="">
-    </style>
+    <style name="ThemeOverlay.App.DetailsButton" parent="" />
 
     <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
         <item name="android:textSize">12sp</item>
@@ -34,7 +32,6 @@
 
     <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="DetailsSecondaryButtonStyleSmall" parent="DetailsSecondaryButtonStyle">
@@ -45,12 +42,11 @@
         <item name="android:paddingRight">12dp</item>
     </style>
 
-    <style name="DetailsMoreButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="DetailsMoreButtonStyle" parent="Widget.App.Button.TextButton">
         <item name="android:padding">8dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="DetailsAppTitleStyle" parent="TextAppearance.MaterialComponents.Headline6">

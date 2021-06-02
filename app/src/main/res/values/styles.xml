@@ -15,10 +15,28 @@
         <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
+
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Card</item>
+    </style>
+
     <style name="Widget.App.Button.Dialog" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
         <item name="colorPrimary">@color/fdroid_green</item>
         <item name="android:textColor">@color/fdroid_green</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
+    </style>
+
+    <style name="Widget.App.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
+    </style>
+
+    <style name="Widget.App.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
     <style name="AlertDialogBaseThemeDark" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
