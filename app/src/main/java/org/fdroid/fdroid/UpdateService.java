@@ -81,6 +81,13 @@ public class UpdateService extends JobIntentService {
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
 
+    /**
+     * This number should never change, it is used by ROMs to trigger
+     * the first background update of F-Droid during setup.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/issues/2147">Add a way to trigger an index update externally</a>
+     * @see <a href="https://review.calyxos.org/c/CalyxOS/platform_packages_apps_SetupWizard/+/3461"/>Schedule F-Droid index update on initialization and network connection</a>
+     */
     private static final int JOB_ID = 0xfedcba;
 
     private static final int NOTIFY_ID_UPDATING = 0;
