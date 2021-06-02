@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -132,10 +134,14 @@ public class ScreenShotsActivity extends AppCompatActivity {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
 
+            Drawable screenShotPlaceholder = ContextCompat.getDrawable(
+                    inflater.getContext(),
+                    R.drawable.screenshot_placeholder
+            );
             DisplayImageOptions displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
-                    .showImageOnFail(R.drawable.screenshot_placeholder)
-                    .showImageOnLoading(R.drawable.screenshot_placeholder)
-                    .showImageForEmptyUri(R.drawable.screenshot_placeholder)
+                    .showImageOnFail(screenShotPlaceholder)
+                    .showImageOnLoading(screenShotPlaceholder)
+                    .showImageForEmptyUri(screenShotPlaceholder)
                     .build();
 
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);

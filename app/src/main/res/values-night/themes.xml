@@ -47,6 +47,8 @@
         <item name="backButtonDrawable">@drawable/ic_back</item>
         <item name="clearButtonDrawable">@drawable/ic_close</item>
         <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
+
+        <item name="screenshotPlaceholderIconColor">#424242</item>
     </style>
 
     <style name="Theme.App.Black" parent="Theme.App">
