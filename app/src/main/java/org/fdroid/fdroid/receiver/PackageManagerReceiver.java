@@ -3,10 +3,12 @@ package org.fdroid.fdroid.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.InstalledAppProviderService;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 /**
  * Receive {@link Intent#ACTION_PACKAGE_ADDED} and {@link Intent#ACTION_PACKAGE_REMOVED}
@@ -31,6 +33,15 @@ public class PackageManagerReceiver extends BroadcastReceiver {
                     Log.i(TAG, "Ignoring request to remove ourselves from cache.");
                 } else {
                     InstalledAppProviderService.delete(context, intent.getData());
+                }
+            } else if (Intent.ACTION_PACKAGE_CHANGED.equals(action) && Build.VERSION.SDK_INT >= 29 &&
+                    PrivilegedInstaller.isExtensionInstalledCorrectly(context) ==
+                            PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
+                String[] allowList = new String[]{"org.chromium.chrome"};
+                for (String allowed : allowList) {
+                    if (allowed.equals(intent.getData().getSchemeSpecificPart())) {
+                        InstalledAppProviderService.compareToPackageManager(context);
+                    }
                 }
             } else {
                 Log.i(TAG, "unsupported action: " + action + " " + intent);
