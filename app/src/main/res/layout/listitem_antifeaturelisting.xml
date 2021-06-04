@@ -20,7 +20,6 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@id/anti_feature_icon"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="?attr/colorOnPrimary" />
+        android:textAppearance="?attr/textAppearanceBody2" />
 
 </RelativeLayout>

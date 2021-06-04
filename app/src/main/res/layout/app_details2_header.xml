@@ -8,9 +8,10 @@
     android:orientation="vertical">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingHorizontal="@dimen/details_activity_padding"
         android:paddingTop="@dimen/details_activity_padding">
 
@@ -65,12 +66,20 @@
             </LinearLayout>
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textIsSelectable="true"
+            tools:text="App summary, one line - outlining what this app does" />
+
         <!-- Progress info -->
         <RelativeLayout
             android:id="@+id/progress_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/icon_and_name"
             tools:visibility="gone">
 
             <ImageView
@@ -115,8 +124,8 @@
             android:id="@+id/button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/icon_and_name"
             android:clipToPadding="false"
+            android:paddingTop="16dp"
             android:visibility="visible">
 
             <com.google.android.material.button.MaterialButton
@@ -137,28 +146,17 @@
                 android:ellipsize="marquee"
                 tools:text="Open" />
         </LinearLayout>
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:scrollbars="none"
-        android:textAppearance="?attr/textAppearanceBody1"
-        android:textIsSelectable="true"
-        tools:text="App summary, one line - outlining what this app does" />
+    </LinearLayout>
 
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/changelog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp">
 
         <LinearLayout
-            android:id="@+id/changelog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -188,11 +186,22 @@
 
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/description_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
         android:paddingTop="16dp"
+        android:scrollbars="none"
+        android:text="@string/about_this_app"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
         android:scrollbars="none"
         android:textAppearance="?attr/textAppearanceBody1"
         android:textIsSelectable="true"
@@ -210,9 +219,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/details_activity_padding"
-        android:layout_marginBottom="@dimen/details_activity_padding"
-        android:theme="@style/ThemeOverlay.App.Warning"
-        app:cardBackgroundColor="?attr/colorPrimary">
+        android:layout_marginBottom="@dimen/details_activity_padding">
 
         <LinearLayout
             android:id="@+id/anti_features_section"
@@ -222,18 +229,25 @@
             android:paddingHorizontal="@dimen/details_activity_padding"
             android:paddingTop="@dimen/details_activity_padding">
 
-            <TextView
-                android:id="@+id/anti_features_warning"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:drawableTint="?attr/colorOnPrimary"
-                android:gravity="center_vertical"
-                android:text="@string/antifeatureswarning"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textColor="?attr/colorOnPrimary"
-                app:drawableLeftCompat="@drawable/ic_warning"
-                app:drawableStartCompat="@drawable/ic_warning" />
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:srcCompat="@drawable/ic_warning"
+                    app:tint="@color/warning" />
+
+                <TextView
+                    android:id="@+id/anti_features_warning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/antifeatureswarning"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/label_anti_features"
@@ -242,8 +256,7 @@
                 android:scrollbars="none"
                 android:text="@string/antifeatures"
                 android:textAllCaps="true"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="?attr/colorOnPrimary" />
+                android:textAppearance="?attr/textAppearanceHeadline6" />
 
             <!-- listing of all anti-features -->
             <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView
