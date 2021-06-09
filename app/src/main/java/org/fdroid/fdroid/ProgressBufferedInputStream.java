@@ -24,7 +24,7 @@ class ProgressBufferedInputStream extends BufferedInputStream {
     }
 
     @Override
-    public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
+    public synchronized int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
         if (progressListener != null) {
             currentBytes += byteCount;
             /* don't send every change to keep things efficient.  333333 bytes to keep all

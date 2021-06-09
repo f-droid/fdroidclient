@@ -256,7 +256,7 @@ public abstract class Downloader {
         }
 
         @Override
-        public void mark(int readlimit) {
+        public synchronized void mark(int readlimit) {
             toWrap.mark(readlimit);
         }
 
