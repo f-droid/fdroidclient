@@ -266,6 +266,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     public void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms) {
         this.category = category;
         this.searchTerms = searchTerms;
+        appView.scrollToPosition(0);
         getSupportLoaderManager().restartLoader(0, null, this);
         if (TextUtils.isEmpty(searchTerms)) {
             removeSavedSearchSettings(this, SEARCH_TERMS_KEY);
