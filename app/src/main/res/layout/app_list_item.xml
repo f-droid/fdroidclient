@@ -74,10 +74,12 @@
 
         <Button
             android:id="@+id/install"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.App.Button.AppListDownloadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_install" />
+            android:contentDescription="@string/menu_install"
+            android:paddingHorizontal="8dp"
+            app:icon="@drawable/ic_file_download" />
 
         <Button
             android:id="@+id/action_button"
