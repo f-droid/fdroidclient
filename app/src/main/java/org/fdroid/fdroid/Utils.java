@@ -51,12 +51,6 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
@@ -103,6 +97,11 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;

@@ -14,10 +14,6 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
-
 import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
@@ -32,6 +28,9 @@ import java.util.Map;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.reactivex.rxjava3.subjects.PublishSubject;

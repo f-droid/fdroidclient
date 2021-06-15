@@ -37,12 +37,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -60,6 +54,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
