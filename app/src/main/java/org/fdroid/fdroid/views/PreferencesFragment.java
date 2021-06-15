@@ -53,6 +53,7 @@ import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
@@ -291,7 +292,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                     AppCompatActivity activity = (AppCompatActivity) getActivity();
                     // Theme will be applied upon activity creation
                     if (activity != null) {
-                        activity.recreate();
+                        ActivityCompat.recreate(activity);
                     }
                 }
                 break;
