@@ -30,7 +30,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
@@ -51,15 +50,18 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class UpdateService extends JobIntentService {
 
@@ -215,42 +217,30 @@ public class UpdateService extends JobIntentService {
      * unlimited networks over metered networks for index updates and auto
      * downloads of app updates. Starting with {@code android-21}, this uses
      * {@link android.app.job.JobScheduler} instead.
+     *
+     * @return a {@link Completable} that schedules the update. If this process is already running,
+     * a {@code Completable} that completes immediately is returned.
      */
-    public static void scheduleIfStillOnWifi(Context context) {
+    @NonNull
+    public static Completable scheduleIfStillOnWifi(Context context) {
         if (Build.VERSION.SDK_INT >= 21) {
             throw new IllegalStateException("This should never be used on android-21 or newer!");
         }
         if (isScheduleIfStillOnWifiRunning || !Preferences.get().isBackgroundDownloadAllowed()) {
-            return;
+            return Completable.complete();
         }
         isScheduleIfStillOnWifiRunning = true;
-        new StillOnWifiAsyncTask(context).execute();
-    }
 
-    private static final class StillOnWifiAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        private final WeakReference<Context> contextWeakReference;
-
-        private StillOnWifiAsyncTask(Context context) {
-            this.contextWeakReference = new WeakReference<>(context);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Context context = contextWeakReference.get();
-            try {
-                Thread.sleep(120000);
-                if (Preferences.get().isBackgroundDownloadAllowed()) {
-                    Utils.debugLog(TAG, "scheduling update because there is good internet");
-                    schedule(context);
-                }
-            } catch (Throwable e) { // NOPMD
-                Utils.debugLog(TAG, e.getMessage());
-            }
-            isScheduleIfStillOnWifiRunning = false;
-            return null;
-        }
-
+        return Completable.timer(2, TimeUnit.MINUTES)
+                .andThen(Completable.fromAction(() -> {
+                    if (Preferences.get().isBackgroundDownloadAllowed()) {
+                        Utils.debugLog(TAG, "scheduling update because there is good internet");
+                        schedule(context);
+                    }
+                    isScheduleIfStillOnWifiRunning = false;
+                }))
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     public static void stopNow(Context context) {

@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid.views;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
@@ -32,13 +31,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -49,17 +48,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
-import androidx.core.content.ContextCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -87,6 +75,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class ManageReposActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
     private static final String TAG = "ManageReposActivity";
@@ -106,6 +110,8 @@ public class ManageReposActivity extends AppCompatActivity
      * opened from, e.g. the main menu.
      */
     private boolean finishAfterAddingRepo;
+
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +158,12 @@ public class ManageReposActivity extends AppCompatActivity
                 editRepo(repo);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
     }
 
     @Override
@@ -571,10 +583,8 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Adds a new repo to the database.
          */
-        @SuppressLint("StaticFieldLeak")
         private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint,
                                             final String username, final String password) {
-
             final View addRepoForm = addRepoDialog.findViewById(R.id.add_repo_form);
             addRepoForm.setVisibility(View.GONE);
             final View positiveButton = addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -586,153 +596,117 @@ public class ManageReposActivity extends AppCompatActivity
             final Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
             skip.setText(R.string.skip);
 
-            final AsyncTask<String, String, String> checker = new AsyncTask<String, String, String>() {
+            final int refreshDialog = Integer.MAX_VALUE;
+            final Disposable disposable = Single.fromCallable(() -> {
+                int statusCode = -1;
 
-                private int statusCode = -1;
-                private static final int REFRESH_DIALOG = Integer.MAX_VALUE;
-
-                @Override
-                protected String doInBackground(String... params) {
-                    final String originalAddress = params[0];
-
-                    if (fingerprintRepoMap.containsKey(fingerprint)) {
-                        statusCode = REFRESH_DIALOG;
-                        return originalAddress;
-                    }
-
-                    if (originalAddress.startsWith(ContentResolver.SCHEME_CONTENT)
-                            || originalAddress.startsWith(ContentResolver.SCHEME_FILE)) {
-                        // TODO check whether there is read access
-                        return originalAddress;
-                    }
-
-                    final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
-                    for (final String path : pathsToCheck) {
-
-                        Utils.debugLog(TAG, "Check for repo at " + originalAddress + " with suffix '" + path + "'");
-                        Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
-                        final String addressWithoutIndex = builder.build().toString();
-                        publishProgress(addressWithoutIndex);
-
-                        if (urlRepoMap.containsKey(addressWithoutIndex)) {
-                            statusCode = REFRESH_DIALOG;
-                            return addressWithoutIndex;
-                        }
-
-                        final Uri uri = builder.appendPath(IndexUpdater.SIGNED_FILE_NAME).build();
-
-                        try {
-                            if (checkForRepository(uri)) {
-                                Utils.debugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
-                                return addressWithoutIndex;
-                            }
-                        } catch (IOException e) {
-                            Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex, e);
-                            return originalAddress;
-                        }
-
-                        if (isCancelled()) {
-                            Utils.debugLog(TAG, "Not checking more repo addresses, because process was skipped.");
-                            break;
-                        }
-                    }
-                    return originalAddress;
-
+                if (fingerprintRepoMap.containsKey(fingerprint)) {
+                    statusCode = refreshDialog;
+                    return Pair.create(statusCode, originalAddress);
                 }
 
-                private boolean checkForRepository(Uri indexUri) throws IOException {
-                    final URL url = new URL(indexUri.toString());
-                    final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("HEAD");
-
-                    statusCode = connection.getResponseCode();
-
-                    return statusCode == HttpURLConnection.HTTP_UNAUTHORIZED
-                            || statusCode == HttpURLConnection.HTTP_OK;
+                if (originalAddress.startsWith(ContentResolver.SCHEME_CONTENT)
+                        || originalAddress.startsWith(ContentResolver.SCHEME_FILE)) {
+                    // TODO check whether there is read access
+                    return Pair.create(statusCode, originalAddress);
                 }
 
-                @Override
-                protected void onProgressUpdate(String... values) {
-                    String address = values[0];
-                    textSearching.setText(getString(R.string.repo_searching_address, address));
+                final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
+                for (final String path : pathsToCheck) {
+                    Utils.debugLog(TAG, "Check for repo at " + originalAddress + " with suffix '" + path + "'");
+                    Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
+                    final String addressWithoutIndex = builder.build().toString();
+                    runOnUiThread(() -> textSearching.setText(getString(R.string.repo_searching_address,
+                            addressWithoutIndex)));
+
+                    if (urlRepoMap.containsKey(addressWithoutIndex)) {
+                        statusCode = refreshDialog;
+                        return Pair.create(statusCode, addressWithoutIndex);
+                    }
+
+                    final Uri uri = builder.appendPath(IndexUpdater.SIGNED_FILE_NAME).build();
+
+                    try {
+                        final URL url = new URL(uri.toString());
+                        final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setRequestMethod("HEAD");
+
+                        statusCode = connection.getResponseCode();
+
+                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED
+                                || statusCode == HttpURLConnection.HTTP_OK) {
+                            Utils.debugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
+                            return Pair.create(statusCode, addressWithoutIndex);
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex, e);
+                        return Pair.create(statusCode, originalAddress);
+                    }
                 }
+                return Pair.create(statusCode, originalAddress);
+            })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnDispose(() -> Utils.debugLog(TAG,
+                            "Not checking more repo addresses, because process was skipped."))
+                    .subscribe(codeAddressPair -> {
+                        final int statusCode = codeAddressPair.first;
+                        final String newAddress = codeAddressPair.second;
 
-                @Override
-                protected void onPostExecute(final String newAddress) {
+                        if (addRepoDialog.isShowing()) {
+                            if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                                final View view = getLayoutInflater().inflate(R.layout.login, null);
+                                final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
+                                        .setView(view).create();
+                                final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
+                                final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
 
-                    if (addRepoDialog.isShowing()) {
+                                if (username != null) {
+                                    nameInput.setText(username);
+                                }
+                                if (password != null) {
+                                    passwordInput.setText(password);
+                                }
 
-                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
-
-                            final View view = getLayoutInflater().inflate(R.layout.login, null);
-                            final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
-                                    .setView(view).create();
-                            final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
-                            final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
-
-                            if (username != null) {
-                                nameInput.setText(username);
-                            }
-                            if (password != null) {
-                                passwordInput.setText(password);
-                            }
-
-                            credentialsDialog.setTitle(R.string.login_title);
-                            credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                                    getString(R.string.cancel),
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
+                                credentialsDialog.setTitle(R.string.login_title);
+                                credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                                        getString(R.string.cancel), (dialog, which) -> {
                                             dialog.dismiss();
                                             // cancel parent dialog, don't add repo
                                             addRepoDialog.cancel();
-                                        }
-                                    });
+                                        });
 
-                            credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                                    getString(R.string.ok),
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            createNewRepo(newAddress, fingerprint,
-                                                    nameInput.getText().toString(),
-                                                    passwordInput.getText().toString());
-                                        }
-                                    });
+                                credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                        getString(R.string.ok),
+                                        (dialog, which) -> createNewRepo(newAddress, fingerprint,
+                                                nameInput.getText().toString(),
+                                                passwordInput.getText().toString()));
 
-                            credentialsDialog.show();
-
-                        } else if (statusCode == REFRESH_DIALOG) {
-                            addRepoForm.setVisibility(View.VISIBLE);
-                            positiveButton.setVisibility(View.VISIBLE);
-                            textSearching.setText("");
-                            skip.setText(R.string.cancel);
-                            skip.setOnClickListener(null);
-                            validateRepoDetails(newAddress, fingerprint);
-                        } else {
-
-                            // create repo without username/password
-                            createNewRepo(newAddress, fingerprint);
+                                credentialsDialog.show();
+                            } else if (statusCode == refreshDialog) {
+                                addRepoForm.setVisibility(View.VISIBLE);
+                                positiveButton.setVisibility(View.VISIBLE);
+                                textSearching.setText("");
+                                skip.setText(R.string.cancel);
+                                skip.setOnClickListener(null);
+                                validateRepoDetails(newAddress, fingerprint);
+                            } else {
+                                // create repo without username/password
+                                createNewRepo(newAddress, fingerprint);
+                            }
                         }
-                    }
-                }
-            };
+                    });
+            compositeDisposable.add(disposable);
 
-            skip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Still proceed with adding the repo, just don't bother searching for
-                    // a better alternative than the one provided.
-                    // The reason for this is that if they are not connected to the internet,
-                    // or their internet is playing up, then you'd have to wait for several
-                    // connection timeouts before being able to proceed.
-
-                    createNewRepo(originalAddress, fingerprint);
-                    checker.cancel(false);
-                }
+            skip.setOnClickListener(v -> {
+                // Still proceed with adding the repo, just don't bother searching for
+                // a better alternative than the one provided.
+                // The reason for this is that if they are not connected to the internet,
+                // or their internet is playing up, then you'd have to wait for several
+                // connection timeouts before being able to proceed.
+                createNewRepo(originalAddress, fingerprint);
+                disposable.dispose();
             });
-
-            checker.execute(originalAddress);
         }
 
         /**

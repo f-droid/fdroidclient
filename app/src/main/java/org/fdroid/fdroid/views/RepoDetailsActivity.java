@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
-import org.fdroid.fdroid.qr.QrGenAsyncTask;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,6 +52,7 @@ import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 public class RepoDetailsActivity extends AppCompatActivity {
     private static final String TAG = "RepoDetailsActivity";
@@ -90,6 +91,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private String shareUrl;
 
     private MirrorAdapter adapterToNotify;
+
+    private Disposable disposable;
 
     /**
      * Help function to make switching between two view states easier.
@@ -141,7 +144,19 @@ public class RepoDetailsActivity extends AppCompatActivity {
         Uri uri = Uri.parse(repo.address);
         uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
         String qrUriString = uri.toString();
-        new QrGenAsyncTask(this, R.id.qr_code).execute(qrUriString);
+        disposable = Utils.generateQrBitmap(this, qrUriString)
+                .subscribe(bitmap -> {
+                    final ImageView qrCode = findViewById(R.id.qr_code);
+                    if (qrCode != null) {
+                        qrCode.setImageBitmap(bitmap);
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        super.onDestroy();
     }
 
     @TargetApi(14)
