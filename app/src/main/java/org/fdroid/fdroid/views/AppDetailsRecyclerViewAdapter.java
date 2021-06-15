@@ -27,7 +27,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +44,8 @@ import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
 import org.fdroid.fdroid.views.main.MainActivity;
+
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -398,7 +399,7 @@ public class AppDetailsRecyclerViewAdapter
         final Button buttonPrimaryView;
         final Button buttonSecondaryView;
         final View progressLayout;
-        final ProgressBar progressBar;
+        final LinearProgressIndicator progressBar;
         final TextView progressLabel;
         final TextView progressPercent;
         final View progressCancel;
@@ -422,7 +423,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
             progressLayout = view.findViewById(R.id.progress_layout);
-            progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+            progressBar = (LinearProgressIndicator) view.findViewById(R.id.progress_bar);
             progressLabel = (TextView) view.findViewById(R.id.progress_label);
             progressPercent = (TextView) view.findViewById(R.id.progress_percent);
             progressCancel = view.findViewById(R.id.progress_cancel);
@@ -456,9 +457,10 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void setIndeterminateProgress(int resIdString) {
+            progressBar.setIndeterminate(true);
+            progressBar.show();
             progressLayout.setVisibility(View.VISIBLE);
             buttonLayout.setVisibility(View.GONE);
-            progressBar.setIndeterminate(true);
             progressLabel.setText(resIdString);
             progressLabel.setContentDescription(context.getString(R.string.downloading));
             progressPercent.setText("");
@@ -470,13 +472,16 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void setProgress(long bytesDownloaded, long totalBytes) {
+            if (totalBytes <= 0) {
+                progressBar.setIndeterminate(true);
+            } else {
+                progressBar.setProgressCompat(Utils.getPercent(Utils.bytesToKb(bytesDownloaded), Utils.bytesToKb(totalBytes)), true);
+            }
+
             progressLayout.setVisibility(View.VISIBLE);
             buttonLayout.setVisibility(View.GONE);
             progressCancel.setVisibility(View.VISIBLE);
 
-            progressBar.setMax(Utils.bytesToKb(totalBytes));
-            progressBar.setProgress(Utils.bytesToKb(bytesDownloaded));
-            progressBar.setIndeterminate(totalBytes <= 0);
             progressLabel.setContentDescription("");
             if (totalBytes > 0 && bytesDownloaded >= 0) {
                 int percent = Utils.getPercent(bytesDownloaded, totalBytes);

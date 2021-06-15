@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -31,6 +30,9 @@ import androidx.annotation.Nullable;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 import cc.mvdan.accesspoint.WifiApControl;
 
 @SuppressWarnings("LineLength")
@@ -86,7 +88,7 @@ public class StartSwapView extends SwapView {
     private TextView viewWifiNetwork;
     private TextView peopleNearbyText;
     private ListView peopleNearbyList;
-    private ProgressBar peopleNearbyProgress;
+    private CircularProgressIndicator peopleNearbyProgress;
 
     private PeopleNearbyAdapter peopleNearbyAdapter;
 
@@ -142,7 +144,7 @@ public class StartSwapView extends SwapView {
 
         peopleNearbyText = (TextView) findViewById(R.id.text_people_nearby);
         peopleNearbyList = (ListView) findViewById(R.id.list_people_nearby);
-        peopleNearbyProgress = (ProgressBar) findViewById(R.id.searching_people_nearby);
+        peopleNearbyProgress = (CircularProgressIndicator) findViewById(R.id.searching_people_nearby);
 
         peopleNearbyAdapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(peopleNearbyAdapter);

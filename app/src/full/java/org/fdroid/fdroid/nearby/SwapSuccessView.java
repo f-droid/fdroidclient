@@ -20,10 +20,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.R;
@@ -142,7 +142,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             @Nullable
             private Apk apk;
 
-            ProgressBar progressView;
+            LinearProgressIndicator progressView;
             TextView nameView;
             ImageView iconView;
             Button btnInstall;
@@ -163,9 +163,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             long read = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
                             long total = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                             if (total > 0) {
-                                progressView.setIndeterminate(false);
-                                progressView.setMax(100);
-                                progressView.setProgress(Utils.getPercent(read, total));
+                                progressView.setProgressCompat(Utils.getPercent(read, total), true);
                             } else {
                                 progressView.setIndeterminate(true);
                             }
@@ -376,7 +374,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
 
             ViewHolder holder = new ViewHolder();
 
-            holder.progressView = (ProgressBar) view.findViewById(R.id.progress);
+            holder.progressView = (LinearProgressIndicator) view.findViewById(R.id.progress);
             holder.nameView = (TextView) view.findViewById(R.id.name);
             holder.iconView = (ImageView) view.findViewById(android.R.id.icon);
             holder.btnInstall = (Button) view.findViewById(R.id.btn_install);

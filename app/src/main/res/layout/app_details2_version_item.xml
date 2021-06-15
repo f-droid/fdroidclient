@@ -161,11 +161,15 @@
                 android:textColor="#b87032"
                 android:background="@drawable/app_version_button_bg_selector_downgrade" />
 
-            <ProgressBar android:id="@+id/busy_indicator"
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/busy_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
                 android:visibility="gone"
+                app:hideAnimationBehavior="outward"
+                app:showAnimationBehavior="inward"
+                app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"
                 tools:visibility="gone" />
         </LinearLayout>
 

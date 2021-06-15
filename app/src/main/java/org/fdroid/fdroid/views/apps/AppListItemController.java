@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -34,6 +33,8 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
+
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.Iterator;
@@ -86,7 +87,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final TextView secondaryStatus;
 
     @Nullable
-    private final ProgressBar progressBar;
+    private final LinearProgressIndicator progressBar;
 
     @Nullable
     private final ImageButton cancelButton;
@@ -151,7 +152,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         name = (TextView) itemView.findViewById(R.id.app_name);
         status = (TextView) itemView.findViewById(R.id.status);
         secondaryStatus = (TextView) itemView.findViewById(R.id.secondary_status);
-        progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
+        progressBar = (LinearProgressIndicator) itemView.findViewById(R.id.progress_bar);
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
         secondaryButton = (Button) itemView.findViewById(R.id.secondary_button);
@@ -282,14 +283,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (progressBar != null) {
             if (viewState.showProgress()) {
-                progressBar.setVisibility(View.VISIBLE);
                 if (viewState.isProgressIndeterminate()) {
                     progressBar.setIndeterminate(true);
                 } else {
-                    progressBar.setIndeterminate(false);
-                    progressBar.setMax(viewState.getProgressMax());
-                    progressBar.setProgress(viewState.getProgressCurrent());
+                    progressBar.setProgressCompat(
+                            Utils.getPercent(viewState.getProgressCurrent(), viewState.getProgressMax()),
+                            true
+                    );
                 }
+                progressBar.setVisibility(View.VISIBLE);
             } else {
                 progressBar.setVisibility(View.GONE);
             }

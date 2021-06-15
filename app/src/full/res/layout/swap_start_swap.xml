@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.fdroid.fdroid.nearby.StartSwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:swap="http://schemas.android.com/apk/res-auto"
         swap:toolbarColor="@color/swap_bright_blue"
@@ -136,11 +137,14 @@
                 android:textColor="@color/swap_light_text"
                 android:layout_weight="1.00"/>
 
-        <ProgressBar
+        <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/searching_people_nearby"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:indeterminate="true"/>
+                android:indeterminate="true"
+                app:showAnimationBehavior="inward"
+                app:hideAnimationBehavior="outward"
+                app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"/>
 
     </LinearLayout>
 
