@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/clear"
+        android:icon="@drawable/ic_clear"
+        android:title="@string/clear_search"
+        android:contentDescription="@string/clear_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort_search"
+        android:contentDescription="@string/sort_search"
+        app:showAsAction="ifRoom" />
+
+</menu>

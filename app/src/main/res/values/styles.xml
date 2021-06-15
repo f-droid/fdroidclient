@@ -39,6 +39,13 @@
         <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
+    <style name="Widget.App.Button.AppListDownloadButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.AppListDownloadButton</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
     <style name="AlertDialogBaseThemeDark" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
 
     <style name="ThemeOverlay.App.MaterialAlertDialog.Dark" parent="AlertDialogBaseThemeDark">

@@ -63,4 +63,11 @@
         <item name="cornerSize">4dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
+
+
+    <style name="ShapeAppearance.App.AppListDownloadButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
 </resources>

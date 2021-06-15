@@ -482,7 +482,6 @@ public class AppDetailsActivity extends AppCompatActivity
                 // Ignore.
                 break;
         }
-
     }
 
     private final BroadcastReceiver appStatusReceiver = new BroadcastReceiver() {

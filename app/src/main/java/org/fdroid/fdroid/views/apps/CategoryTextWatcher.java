@@ -2,10 +2,10 @@ package org.fdroid.fdroid.views.apps;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ImageSpan;
 import android.text.style.TtsSpan;
 import android.widget.EditText;
 
@@ -14,11 +14,13 @@ import org.fdroid.fdroid.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.material.chip.ChipDrawable;
+
 /**
  * The search input treats text before the first colon as a category name. Text after this colon
  * (or all text if there is no colon) is the free text search terms.
  * The behaviour of this search input is:
- * * Replacing anything before the first colon with a {@link CategorySpan} that renders a "Chip"
+ * * Replacing anything before the first colon with a {@link ChipDrawable} that renders a "Chip"
  * including an icon representing "category" and the name of the category.
  * * Removing the trailing ":" from a category chip will cause it to remove the entire category
  * from the input.
@@ -72,7 +74,7 @@ public class CategoryTextWatcher implements TextWatcher {
 
     /**
      * If the user added a colon, and there was not previously a colon before the newly added
-     * one, then request for a {@link CategorySpan} to be added when able.
+     * one, then request for a {@link ChipDrawable} to be added when able.
      */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -89,7 +91,7 @@ public class CategoryTextWatcher implements TextWatcher {
     /**
      * If it was decided that we were removing a category, then ensure that the relevant
      * characters are removed. If it was deemed we were adding a new category, then ensure
-     * that the relevant {@link CategorySpan} is added to {@param searchText}.
+     * that the relevant {@link ChipDrawable} is added to {@param searchText}.
      */
     @Override
     public void afterTextChanged(Editable searchText) {
@@ -120,7 +122,6 @@ public class CategoryTextWatcher implements TextWatcher {
     }
 
     /**
-     * Ensures that a {@link CategorySpan} is in {@param textToSpannify} if required.
      * Will firstly remove all existing category spans, and then add back one if necessary.
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
@@ -131,24 +132,17 @@ public class CategoryTextWatcher implements TextWatcher {
             return;
         }
 
-        removeSpans(textToSpannify, CategorySpan.class);
-        if (Build.VERSION.SDK_INT >= 21) {
-            removeSpans(textToSpannify, TtsSpan.class);
-        }
+        removeSpans(textToSpannify, ImageSpan.class);
 
         int colonIndex = textToSpannify.toString().indexOf(':');
         if (colonIndex > 0) {
-            CategorySpan span = new CategorySpan(context);
-            textToSpannify.setSpan(span, 0, colonIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            final ChipDrawable chip = ChipDrawable.createFromResource(context, R.xml.standalone_chip);
+            CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
+            chip.setText(categoryName);
+            chip.setBounds(0, 0, chip.getIntrinsicWidth(), chip.getIntrinsicHeight());
+            final ImageSpan span = new ImageSpan(chip);
+            textToSpannify.setSpan(span, 0, textToSpannify.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                // For accessibility reasons, make this more clear to screen readers that the
-                // span we just added semantically represents a category.
-                CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
-                        categoryName)).build();
-                textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
         }
     }
 

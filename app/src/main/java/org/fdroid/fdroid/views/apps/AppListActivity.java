@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -33,9 +32,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -80,7 +79,6 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
-    private ImageView sortImage;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
@@ -123,58 +121,50 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
-        sortImage = (ImageView) findViewById(R.id.sort);
+        MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(view -> {
+            // Handle navigation icon press
+            onBackPressed();
+        });
+
         final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
                 R.drawable.ic_last_updated)).mutate();
         final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
                 R.drawable.ic_sort)).mutate();
-        sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
-        sortImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (sortClauseSelected) {
-                    case SortClause.WORDS:
-                        sortClauseSelected = SortClause.LAST_UPDATED;
-                        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(lastUpdated);
-                        break;
-                    case SortClause.LAST_UPDATED:
-                        sortClauseSelected = SortClause.WORDS;
-                        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(words);
-                        break;
-                }
-                putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
-                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
-                appView.scrollToPosition(0);
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.clear:
+                    searchInput.setText("");
+                    searchInput.requestFocus();
+                    if (!keyboardStateMonitor.isKeyboardVisible()) {
+                        InputMethodManager inputMethodManager =
+                                ContextCompat.getSystemService(AppListActivity.this,
+                                        InputMethodManager.class);
+                        inputMethodManager.toggleSoftInputFromWindow(
+                                menuItem.getActionView().getApplicationWindowToken(),
+                                InputMethodManager.SHOW_FORCED, 0);
+                    }
+                    return true;
+                case R.id.sort:
+                    switch (sortClauseSelected) {
+                        case SortClause.WORDS:
+                            sortClauseSelected = SortClause.LAST_UPDATED;
+                            menuItem.setIcon(lastUpdated);
+                            break;
+                        case SortClause.LAST_UPDATED:
+                            sortClauseSelected = SortClause.WORDS;
+                            menuItem.setIcon(words);
+                            break;
+                    }
+                    putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
+                    getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
+                    appView.scrollToPosition(0);
+                    return true;
             }
+            return false;
         });
 
         emptyState = (TextView) findViewById(R.id.empty_state);
-
-        View backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        View clearButton = findViewById(R.id.clear);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchInput.setText("");
-                searchInput.requestFocus();
-                if (!keyboardStateMonitor.isKeyboardVisible()) {
-                    InputMethodManager inputMethodManager =
-                            ContextCompat.getSystemService(AppListActivity.this,
-                                    InputMethodManager.class);
-                    inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
-                            InputMethodManager.SHOW_FORCED, 0);
-                }
-            }
-        });
 
         appAdapter = new AppListAdapter(this);
 

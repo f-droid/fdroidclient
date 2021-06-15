@@ -31,4 +31,7 @@
     <dimen name="category_preview__app_list__padding__vertical">18dp</dimen>
 
     <dimen name="banner__padding">4dp</dimen>
+
+    <dimen name="divider_inset">72dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
 </resources>
