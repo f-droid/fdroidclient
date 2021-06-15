@@ -165,7 +165,7 @@ dependencies {
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
-    implementation 'io.reactivex.rxjava3:rxjava:3.0.7'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
 
     implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
