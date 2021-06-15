@@ -597,12 +597,12 @@ public class ManageReposActivity extends AppCompatActivity
             final Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
             skip.setText(R.string.skip);
 
-            final int REFRESH_DIALOG = Integer.MAX_VALUE;
+            final int refreshDialog = Integer.MAX_VALUE;
             final Disposable disposable = Single.fromCallable(() -> {
                 int statusCode = -1;
 
                 if (fingerprintRepoMap.containsKey(fingerprint)) {
-                    statusCode = REFRESH_DIALOG;
+                    statusCode = refreshDialog;
                     return Pair.create(statusCode, originalAddress);
                 }
 
@@ -617,10 +617,11 @@ public class ManageReposActivity extends AppCompatActivity
                     Utils.debugLog(TAG, "Check for repo at " + originalAddress + " with suffix '" + path + "'");
                     Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                     final String addressWithoutIndex = builder.build().toString();
-                    runOnUiThread(() -> textSearching.setText(getString(R.string.repo_searching_address, addressWithoutIndex)));
+                    runOnUiThread(() -> textSearching.setText(getString(R.string.repo_searching_address,
+                            addressWithoutIndex)));
 
                     if (urlRepoMap.containsKey(addressWithoutIndex)) {
-                        statusCode = REFRESH_DIALOG;
+                        statusCode = refreshDialog;
                         return Pair.create(statusCode, addressWithoutIndex);
                     }
 
@@ -633,7 +634,8 @@ public class ManageReposActivity extends AppCompatActivity
 
                         statusCode = connection.getResponseCode();
 
-                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED || statusCode == HttpURLConnection.HTTP_OK) {
+                        if (statusCode == HttpURLConnection.HTTP_UNAUTHORIZED
+                                || statusCode == HttpURLConnection.HTTP_OK) {
                             Utils.debugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
                             return Pair.create(statusCode, addressWithoutIndex);
                         }
@@ -646,7 +648,8 @@ public class ManageReposActivity extends AppCompatActivity
             })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnDispose(() -> Utils.debugLog(TAG, "Not checking more repo addresses, because process was skipped."))
+                    .doOnDispose(() -> Utils.debugLog(TAG, "Not checking more repo addresses," +
+                            " because process was skipped."))
                     .subscribe(codeAddressPair -> {
                         final int statusCode = codeAddressPair.first;
                         final String newAddress = codeAddressPair.second;
@@ -681,7 +684,7 @@ public class ManageReposActivity extends AppCompatActivity
                                                 passwordInput.getText().toString()));
 
                                 credentialsDialog.show();
-                            } else if (statusCode == REFRESH_DIALOG) {
+                            } else if (statusCode == refreshDialog) {
                                 addRepoForm.setVisibility(View.VISIBLE);
                                 positiveButton.setVisibility(View.VISIBLE);
                                 textSearching.setText("");
