@@ -69,6 +69,9 @@
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface</item>
 
         <item name="screenshotPlaceholderIconColor">#e8e8e8</item>
+
+        <!--Platform attributes-->
+        <item name="android:statusBarColor">@color/immersive_sys_ui</item>
     </style>
 
     <!-- light app theme with accent colors following roughly android design guidelines -->
