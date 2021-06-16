@@ -128,6 +128,7 @@ public class FileInstallerActivity extends FragmentActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_STORAGE:
                 // If request is cancelled, the result arrays are empty.
