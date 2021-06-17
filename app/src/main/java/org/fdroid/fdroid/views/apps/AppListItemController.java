@@ -20,6 +20,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.Preferences;
@@ -38,15 +47,6 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.util.Pair;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Supports the following layouts:
@@ -120,12 +120,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         installButton = (ImageView) itemView.findViewById(R.id.install);
         if (installButton != null) {
-            installButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onActionButtonPressed(currentApp);
-                }
-            });
+            installButton.setOnClickListener(v -> onActionButtonPressed(currentApp));
 
             if (Build.VERSION.SDK_INT >= 21) {
                 installButton.setOutlineProvider(new ViewOutlineProvider() {
@@ -159,12 +154,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (actionButton != null) {
             actionButton.setEnabled(true);
-            actionButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    actionButton.setEnabled(false);
-                    onActionButtonPressed(currentApp);
-                }
+            actionButton.setOnClickListener(v -> {
+                actionButton.setEnabled(false);
+                onActionButtonPressed(currentApp);
             });
         }
 
@@ -542,12 +534,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     @SuppressWarnings("FieldCanBeLocal")
-    private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            cancelDownload();
-        }
-    };
+    private final View.OnClickListener onCancelDownload = v -> cancelDownload();
 
     protected final void cancelDownload() {
         if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {

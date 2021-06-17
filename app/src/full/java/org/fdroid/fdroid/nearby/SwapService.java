@@ -553,12 +553,7 @@ public class SwapService extends Service {
         }
     }
 
-    private final Preferences.ChangeListener httpsEnabledListener = new Preferences.ChangeListener() {
-        @Override
-        public void onPreferenceChange() {
-            restartWiFiServices();
-        }
-    };
+    private final Preferences.ChangeListener httpsEnabledListener = this::restartWiFiServices;
 
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override

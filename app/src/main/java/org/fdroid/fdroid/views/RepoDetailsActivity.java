@@ -27,6 +27,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -44,14 +53,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.rxjava3.disposables.Disposable;
 
 public class RepoDetailsActivity extends AppCompatActivity {
@@ -162,12 +163,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
     @TargetApi(14)
     private void setNfc() {
         if (NfcHelper.setPushMessage(this, Utils.getSharingUri(repo))) {
-            findViewById(android.R.id.content).post(new Runnable() {
-                @Override
-                public void run() {
-                    onNewIntent(getIntent());
-                }
-            });
+            findViewById(android.R.id.content).post(() -> onNewIntent(getIntent()));
         }
     }
 
@@ -422,17 +418,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
-                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        RepoProvider.Helper.remove(getApplicationContext(), repoId);
-                        finish();
-                    }
-                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing...
-                    }
+                .setPositiveButton(R.string.delete, (dialog, which) -> {
+                    RepoProvider.Helper.remove(getApplicationContext(), repoId);
+                    finish();
+                }).setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                    // Do nothing...
                 }
         ).show();
     }
@@ -449,41 +439,27 @@ public class RepoDetailsActivity extends AppCompatActivity {
         passwordInput.requestFocus();
 
         credentialsDialog.setTitle(R.string.repo_edit_credentials);
-        credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel),
+                (dialog, which) -> dialog.dismiss());
+
+        credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok),
+                (dialog, which) -> {
+                    final String name = nameInput.getText().toString();
+                    final String password = passwordInput.getText().toString();
+
+                    if (!TextUtils.isEmpty(name)) {
+                        final ContentValues values = new ContentValues(2);
+                        values.put(RepoTable.Cols.USERNAME, name);
+                        values.put(RepoTable.Cols.PASSWORD, password);
+
+                        RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
+
+                        updateRepoView();
+
                         dialog.dismiss();
-                    }
-                });
-
-        credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                getString(R.string.ok),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        final String name = nameInput.getText().toString();
-                        final String password = passwordInput.getText().toString();
-
-                        if (!TextUtils.isEmpty(name)) {
-
-                            final ContentValues values = new ContentValues(2);
-                            values.put(RepoTable.Cols.USERNAME, name);
-                            values.put(RepoTable.Cols.PASSWORD, password);
-
-                            RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
-
-                            updateRepoView();
-
-                            dialog.dismiss();
-
-                        } else {
-
-                            Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username,
-                                    Toast.LENGTH_LONG).show();
-                        }
+                    } else {
+                        Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username,
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -532,40 +508,37 @@ public class RepoDetailsActivity extends AppCompatActivity {
             }
             CompoundButton switchView = holder.view.findViewById(R.id.repo_switch);
             switchView.setChecked(enabled);
-            switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    HashSet<String> disabledMirrors;
-                    if (repo.disabledMirrors == null) {
-                        disabledMirrors = new HashSet<>(1);
-                    } else {
-                        disabledMirrors = new HashSet<>(Arrays.asList(repo.disabledMirrors));
-                    }
-
-                    if (isChecked) {
-                        disabledMirrors.remove(itemMirror);
-                    } else {
-                        disabledMirrors.add(itemMirror);
-                    }
-
-                    int totalMirrors = (repo.mirrors == null ? 0 : repo.mirrors.length)
-                            + (repo.userMirrors == null ? 0 : repo.userMirrors.length);
-                    if (disabledMirrors.size() == totalMirrors) {
-                        // if all mirrors are disabled, re-enable canonical repo as mirror
-                        disabledMirrors.remove(repo.address);
-                        adapterToNotify.notifyItemChanged(0);
-                    }
-
-                    if (disabledMirrors.size() == 0) {
-                        repo.disabledMirrors = null;
-                    } else {
-                        repo.disabledMirrors = disabledMirrors.toArray(new String[disabledMirrors.size()]);
-                    }
-                    final ContentValues values = new ContentValues(1);
-                    values.put(RepoTable.Cols.DISABLED_MIRRORS,
-                            Utils.serializeCommaSeparatedString(repo.disabledMirrors));
-                    RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
+            switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                HashSet<String> disabledMirrors;
+                if (repo.disabledMirrors == null) {
+                    disabledMirrors = new HashSet<>(1);
+                } else {
+                    disabledMirrors = new HashSet<>(Arrays.asList(repo.disabledMirrors));
                 }
+
+                if (isChecked) {
+                    disabledMirrors.remove(itemMirror);
+                } else {
+                    disabledMirrors.add(itemMirror);
+                }
+
+                int totalMirrors = (repo.mirrors == null ? 0 : repo.mirrors.length)
+                        + (repo.userMirrors == null ? 0 : repo.userMirrors.length);
+                if (disabledMirrors.size() == totalMirrors) {
+                    // if all mirrors are disabled, re-enable canonical repo as mirror
+                    disabledMirrors.remove(repo.address);
+                    adapterToNotify.notifyItemChanged(0);
+                }
+
+                if (disabledMirrors.size() == 0) {
+                    repo.disabledMirrors = null;
+                } else {
+                    repo.disabledMirrors = disabledMirrors.toArray(new String[disabledMirrors.size()]);
+                }
+                final ContentValues values = new ContentValues(1);
+                values.put(RepoTable.Cols.DISABLED_MIRRORS,
+                        Utils.serializeCommaSeparatedString(repo.disabledMirrors));
+                RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
             });
 
             View repoUnverified = holder.view.findViewById(R.id.repo_unverified);

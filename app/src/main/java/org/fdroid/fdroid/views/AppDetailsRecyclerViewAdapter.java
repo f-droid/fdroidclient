@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -31,6 +30,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
+import androidx.core.text.HtmlCompat;
+import androidx.core.text.util.LinkifyCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.TextViewCompat;
+import androidx.gridlayout.widget.GridLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -51,24 +68,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-import androidx.annotation.DrawableRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
-import androidx.core.text.HtmlCompat;
-import androidx.core.text.util.LinkifyCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.widget.TextViewCompat;
-import androidx.gridlayout.widget.GridLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
@@ -428,25 +427,22 @@ public class AppDetailsRecyclerViewAdapter
             progressCancel = view.findViewById(R.id.progress_cancel);
             descriptionView.setMaxLines(MAX_LINES);
             descriptionView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            descriptionMoreView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Make this "header section" the focused child, so that RecyclerView will use
-                    // it as the anchor in the layout process. Otherwise the RV might select another
-                    // view as the anchor, resulting in that the top of this view is instead scrolled
-                    // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
-                    recyclerView.requestChildFocus(itemView, itemView);
-                    if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
-                        descriptionView.setMaxLines(MAX_LINES);
-                        descriptionMoreView.setText(R.string.more);
-                        descriptionIsExpanded = false;
-                    } else {
-                        descriptionView.setMaxLines(Integer.MAX_VALUE);
-                        descriptionMoreView.setText(R.string.less);
-                        descriptionIsExpanded = true;
-                    }
-                    updateAntiFeaturesWarning();
+            descriptionMoreView.setOnClickListener(v -> {
+                // Make this "header section" the focused child, so that RecyclerView will use
+                // it as the anchor in the layout process. Otherwise the RV might select another
+                // view as the anchor, resulting in that the top of this view is instead scrolled
+                // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
+                recyclerView.requestChildFocus(itemView, itemView);
+                if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
+                    descriptionView.setMaxLines(MAX_LINES);
+                    descriptionMoreView.setText(R.string.more);
+                    descriptionIsExpanded = false;
+                } else {
+                    descriptionView.setMaxLines(Integer.MAX_VALUE);
+                    descriptionMoreView.setText(R.string.less);
+                    descriptionIsExpanded = true;
                 }
+                updateAntiFeaturesWarning();
             });
         }
 
@@ -552,14 +548,11 @@ public class AppDetailsRecyclerViewAdapter
                     spannable.setSpan(safeUrlSpan, start, end, flags);
                 }
             }
-            descriptionView.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES && app.antiFeatures == null) {
-                        descriptionMoreView.setVisibility(View.GONE);
-                    } else {
-                        descriptionMoreView.setVisibility(View.VISIBLE);
-                    }
+            descriptionView.post(() -> {
+                if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES && app.antiFeatures == null) {
+                    descriptionMoreView.setVisibility(View.GONE);
+                } else {
+                    descriptionMoreView.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -570,12 +563,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
-            buttonSecondaryView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callbacks.uninstallApk();
-                }
-            });
+            buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
@@ -589,32 +577,17 @@ public class AppDetailsRecyclerViewAdapter
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setEnabled(true);
                 buttonLayout.setVisibility(View.VISIBLE);
-                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        callbacks.installApk();
-                    }
-                });
+                buttonPrimaryView.setOnClickListener(v -> callbacks.installApk());
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(context) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
-                    buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            callbacks.installApk();
-                        }
-                    });
+                    buttonPrimaryView.setOnClickListener(v -> callbacks.installApk());
                 } else {
                     Apk mediaApk = app.getMediaApkifInstalled(context);
                     if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
-                        buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                callbacks.launchApk();
-                            }
-                        });
+                        buttonPrimaryView.setOnClickListener(v -> callbacks.launchApk());
                     } else if (!app.isApk && mediaApk != null) {
                         final File installedFile = mediaApk.getInstalledMediaFile(context);
                         if (!installedFile.toString().startsWith(context.getApplicationInfo().dataDir)) {
@@ -631,14 +604,11 @@ public class AppDetailsRecyclerViewAdapter
                             }
                             if (context.getPackageManager().queryIntentActivities(viewIntent, 0).size() > 0) {
                                 buttonPrimaryView.setText(R.string.menu_open);
-                                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        try {
-                                            context.startActivity(viewIntent);
-                                        } catch (ActivityNotFoundException e) {
-                                            e.printStackTrace();
-                                        }
+                                buttonPrimaryView.setOnClickListener(v -> {
+                                    try {
+                                        context.startActivity(viewIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        e.printStackTrace();
                                     }
                                 });
                             } else {
@@ -658,12 +628,7 @@ public class AppDetailsRecyclerViewAdapter
                 buttonLayout.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
             }
-            progressCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callbacks.installCancel();
-                }
-            });
+            progressCancel.setOnClickListener(v -> callbacks.installCancel());
 
         }
 
@@ -815,12 +780,7 @@ public class AppDetailsRecyclerViewAdapter
                 }
                 ((TextView) option).setText(uri.substring(8));
             }
-            option.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onLinkClicked(uri);
-                }
-            });
+            option.setOnClickListener(v -> onLinkClicked(uri));
             donationOptionsLayout.addView(option);
         }
     }
@@ -860,12 +820,9 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setShowVersions(!showVersions, true);
-                    updateExpandableItem(showVersions);
-                }
+            itemView.setOnClickListener(v -> {
+                setShowVersions(!showVersions, true);
+                updateExpandableItem(showVersions);
             });
             headerView.setText(R.string.versions);
             updateExpandableItem(showVersions);
@@ -889,12 +846,7 @@ public class AppDetailsRecyclerViewAdapter
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
                     accessTime, null, null, null);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    explainIncompatibleVersions();
-                }
-            });
+            itemView.setOnClickListener(v -> explainIncompatibleVersions());
         }
 
         @Override
@@ -932,13 +884,10 @@ public class AppDetailsRecyclerViewAdapter
             new AlertDialog.Builder(context)
                     .setTitle(title)
                     .setMessage(message)
-                    .setPositiveButton(R.string.menu_settings, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(context, MainActivity.class);
-                            intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
-                            context.startActivity(intent);
-                        }
+                    .setPositiveButton(R.string.menu_settings, (dialog, which) -> {
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
+                        context.startActivity(intent);
                     })
                     .setNegativeButton(R.string.cancel, null)
                     .show();
@@ -957,15 +906,13 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
-                    contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    updateExpandableItem(shouldBeVisible);
-                    if (shouldBeVisible && recyclerView != null) {
-                        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_PERMISSIONS), 0);
-                    }
+            itemView.setOnClickListener(v -> {
+                boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
+                contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                updateExpandableItem(shouldBeVisible);
+                if (shouldBeVisible && recyclerView != null) {
+                    ((LinearLayoutManager) recyclerView.getLayoutManager())
+                            .scrollToPositionWithOffset(items.indexOf(VIEWTYPE_PERMISSIONS), 0);
                 }
             });
             headerView.setText(R.string.permissions);
@@ -990,15 +937,13 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
-                    contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    updateExpandableItem(shouldBeVisible);
-                    if (shouldBeVisible && recyclerView != null) {
-                        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_LINKS), 0);
-                    }
+            itemView.setOnClickListener(v -> {
+                boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
+                contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                updateExpandableItem(shouldBeVisible);
+                if (shouldBeVisible && recyclerView != null) {
+                    ((LinearLayoutManager) recyclerView.getLayoutManager())
+                            .scrollToPositionWithOffset(items.indexOf(VIEWTYPE_LINKS), 0);
                 }
             });
             headerView.setText(R.string.links);
@@ -1212,12 +1157,7 @@ public class AppDetailsRecyclerViewAdapter
             // contain any meaningful info, so there is no reason to expand it.
             if (!isApkInstalledDummy) {
                 expandArrow.setAlpha(1f);
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        toggleExpanded();
-                    }
-                });
+                itemView.setOnClickListener(v -> toggleExpanded());
             } else {
                 expandArrow.setAlpha(0.3f);
                 itemView.setOnClickListener(null);
@@ -1289,12 +1229,7 @@ public class AppDetailsRecyclerViewAdapter
                         callbacks.isAppDownloading();
                 buttonAction.setEnabled(!buttonActionDisabled);
                 buttonAction.setAlpha(buttonActionDisabled ? 0.15f : 1f);
-                buttonAction.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        callbacks.installApk(apk);
-                    }
-                });
+                buttonAction.setOnClickListener(v -> callbacks.installApk(apk));
             }
         }
 
@@ -1358,12 +1293,7 @@ public class AppDetailsRecyclerViewAdapter
         }
         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
         parent.addView(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onLinkClicked(url);
-            }
-        });
+        view.setOnClickListener(v -> onLinkClicked(url));
     }
 
     private void onLinkClicked(String url) {

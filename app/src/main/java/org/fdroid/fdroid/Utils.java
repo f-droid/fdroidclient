@@ -45,7 +45,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -918,13 +917,7 @@ public final class Utils {
         if (toastHandler == null) {
             toastHandler = new Handler(Looper.getMainLooper());
         }
-        toastHandler.post(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(context.getApplicationContext(), msg, length).show();
-            }
-        });
+        toastHandler.post(() -> Toast.makeText(context.getApplicationContext(), msg, length).show());
     }
 
     public static void applySwipeLayoutColors(SwipeRefreshLayout swipeLayout) {
@@ -987,18 +980,13 @@ public final class Utils {
          * @param contentView this must be the top most Container of the layout used by the AppCompatActivity
          */
         public KeyboardStateMonitor(final View contentView) {
-            contentView.getViewTreeObserver().addOnGlobalLayoutListener(
-                    new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            int screenHeight = contentView.getRootView().getHeight();
-                            Rect rect = new Rect();
-                            contentView.getWindowVisibleDisplayFrame(rect);
-                            int keypadHeight = screenHeight - rect.bottom;
-                            visible = keypadHeight >= screenHeight * 0.15;
-                        }
-                    }
-            );
+            contentView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+                int screenHeight = contentView.getRootView().getHeight();
+                Rect rect = new Rect();
+                contentView.getWindowVisibleDisplayFrame(rect);
+                int keypadHeight = screenHeight - rect.bottom;
+                visible = keypadHeight >= screenHeight * 0.15;
+            });
         }
 
         public boolean isKeyboardVisible() {

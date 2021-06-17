@@ -42,22 +42,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * This class contains the SecurityPermissions view implementation.
@@ -94,8 +93,7 @@ public class AppSecurityPermissions {
     private final PackageManager pm;
     private final Map<String, MyPermissionGroupInfo> permGroups = new HashMap<>();
     private final List<MyPermissionGroupInfo> permGroupsList = new ArrayList<>();
-    private final PermissionGroupInfoComparator permGroupComparator = new PermissionGroupInfoComparator();
-    private final PermissionInfoComparator permComparator = new PermissionInfoComparator();
+    private final Collator collator = Collator.getInstance();
     private final CharSequence newPermPrefix;
 
     // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
@@ -450,33 +448,12 @@ public class AppSecurityPermissions {
         return isDevelopment && wasGranted;
     }
 
-    private static class PermissionGroupInfoComparator implements Comparator<MyPermissionGroupInfo> {
-
-        private final Collator collator = Collator.getInstance();
-
-        public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            return collator.compare(a.label, b.label);
-        }
-    }
-
-    private static class PermissionInfoComparator implements Comparator<MyPermissionInfo> {
-
-        private final Collator collator = Collator.getInstance();
-
-        PermissionInfoComparator() {
-        }
-
-        public final int compare(MyPermissionInfo a, MyPermissionInfo b) {
-            return collator.compare(a.label, b.label);
-        }
-    }
-
     private void addPermToList(List<MyPermissionInfo> permList,
                                MyPermissionInfo pInfo) {
         if (pInfo.label == null) {
             pInfo.label = pInfo.loadLabel(pm);
         }
-        int idx = Collections.binarySearch(permList, pInfo, permComparator);
+        int idx = Collections.binarySearch(permList, pInfo, (a, b) -> collator.compare(a.label, b.label));
         if (idx < 0) {
             idx = -idx - 1;
             permList.add(idx, pInfo);
@@ -514,6 +491,6 @@ public class AppSecurityPermissions {
             }
             permGroupsList.add(pgrp);
         }
-        Collections.sort(permGroupsList, permGroupComparator);
+        Collections.sort(permGroupsList, (a, b) -> collator.compare(a.label, b.label));
     }
 }

@@ -38,6 +38,20 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceGroup;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreferenceCompat;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -52,19 +66,6 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.preference.CheckBoxPreference;
-import androidx.preference.EditTextPreference;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.SeekBarPreference;
-import androidx.preference.SwitchPreferenceCompat;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 public class PreferencesFragment extends PreferenceFragmentCompat
@@ -428,24 +429,20 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * TODO: this might need to be changed when updated to the new preference pattern
      */
 
-    private final Preference.OnPreferenceClickListener aboutPrefClickedListener =
-            new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    final View view = getLayoutInflater().inflate(R.layout.about, null);
-                    final Context context = requireContext();
+    private final Preference.OnPreferenceClickListener aboutPrefClickedListener = preference -> {
+        final View view = getLayoutInflater().inflate(R.layout.about, null);
+        final Context context = requireContext();
 
-                    String versionName = Utils.getVersionName(context);
-                    if (versionName != null) {
-                        ((TextView) view.findViewById(R.id.version)).setText(versionName);
-                    }
-                    new MaterialAlertDialogBuilder(context)
-                            .setView(view)
-                            .setPositiveButton(R.string.ok, null)
-                            .show();
-                    return true;
-                }
-            };
+        String versionName = Utils.getVersionName(context);
+        if (versionName != null) {
+            ((TextView) view.findViewById(R.id.version)).setText(versionName);
+        }
+        new MaterialAlertDialogBuilder(context)
+                .setView(view)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        return true;
+    };
 
     /**
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
@@ -478,18 +475,15 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             pref.setDefaultValue(installed);
             pref.setChecked(enabled && installed);
 
-            pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                    if (pref.isChecked()) {
-                        editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
-                    } else {
-                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                    }
-                    editor.apply();
-                    return true;
+            pref.setOnPreferenceClickListener(preference -> {
+                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                if (pref.isChecked()) {
+                    editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
+                } else {
+                    editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
                 }
+                editor.apply();
+                return true;
             });
         }
     }
@@ -501,15 +495,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * will actually _install_ apps, not just fetch their .apk file automatically.
      */
     private void initAutoFetchUpdatesPreference() {
-        updateAutoDownloadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if (newValue instanceof Boolean && (boolean) newValue) {
-                    UpdateService.autoDownloadUpdates(getActivity());
-                }
-                return true;
+        updateAutoDownloadPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            if (newValue instanceof Boolean && (boolean) newValue) {
+                UpdateService.autoDownloadUpdates(getActivity());
             }
+            return true;
         });
 
         if (PrivilegedInstaller.isDefault(getActivity())) {

@@ -6,6 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -22,11 +27,6 @@ import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Tell the user that an app they have installed has a known vulnerability.
@@ -103,17 +103,8 @@ public class KnownVulnAppListItemController extends AppListItemController {
     private void ignoreVulnerableApp(@NonNull final App app) {
         setIgnoreVulnerableApp(app, true);
 
-        Snackbar.make(
-                itemView,
-                R.string.app_list__dismiss_vulnerable_app,
-                Snackbar.LENGTH_LONG
-        )
-                .setAction(R.string.undo, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        setIgnoreVulnerableApp(app, false);
-                    }
-                })
+        Snackbar.make(itemView, R.string.app_list__dismiss_vulnerable_app, Snackbar.LENGTH_LONG)
+                .setAction(R.string.undo, view -> setIgnoreVulnerableApp(app, false))
                 .show();
     }
 

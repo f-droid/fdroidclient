@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -27,7 +26,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -278,12 +276,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         next.setTitle(title);
         next.setTitleCondensed(title);
         next.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                sendNext();
-                return true;
-            }
+        next.setOnMenuItemClickListener(item -> {
+            sendNext();
+            return true;
         });
     }
 
@@ -413,32 +408,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.swap_join_same_wifi)
                 .setMessage(R.string.swap_join_same_wifi_desc)
-                .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing
-                    }
+                .setNeutralButton(R.string.cancel, (dialog, which) -> {
+                    // Do nothing
                 })
-                .setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
-                        wifiManager.setWifiEnabled(true);
-                        Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
+                .setPositiveButton(R.string.wifi, (dialog, which) -> {
+                    SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
+                    wifiManager.setWifiEnabled(true);
+                    Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 })
-                .setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (Build.VERSION.SDK_INT >= 26) {
-                            showTetheringSettings();
-                        } else if (Build.VERSION.SDK_INT >= 23 && !Settings.System.canWrite(getBaseContext())) {
-                            requestWriteSettingsPermission();
-                        } else {
-                            setupWifiAP();
-                        }
+                .setNegativeButton(R.string.wifi_ap, (dialog, which) -> {
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        showTetheringSettings();
+                    } else if (Build.VERSION.SDK_INT >= 23 && !Settings.System.canWrite(getBaseContext())) {
+                        requestWriteSettingsPermission();
+                    } else {
+                        setupWifiAP();
                     }
                 })
                 .create().show();
@@ -500,12 +486,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         currentSwapViewLayoutRes = viewRes;
 
         toolbar.setTitle(currentView.getToolbarTitle());
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onToolbarCancel();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> onToolbarCancel());
         container.addView(view);
         supportInvalidateOptionsMenu();
 
@@ -955,12 +936,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     // TODO: Listen for "Connecting..." state and reflect that in the view too.
     private void setUpJoinWifi() {
-        currentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-            }
-        });
+        currentView.setOnClickListener(v -> startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK)));
         TextView descriptionView = container.findViewById(R.id.text_description);
         ImageView wifiIcon = container.findViewById(R.id.wifi_icon);
         TextView ssidView = container.findViewById(R.id.wifi_ssid);
@@ -989,43 +965,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpStartVisibility() {
         TextView viewWifiNetwork = findViewById(R.id.wifi_network);
 
-        viewWifiNetwork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                promptToSelectWifiNetwork();
-            }
-        });
+        viewWifiNetwork.setOnClickListener(v -> promptToSelectWifiNetwork());
 
         SwitchMaterial wifiSwitch = findViewById(R.id.switch_wifi);
-        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Context context = getApplicationContext();
-                if (isChecked) {
-                    if (wifiApControl != null && wifiApControl.isEnabled()) {
-                        setupWifiAP();
-                    } else {
-                        wifiManager.setWifiEnabled(true);
-                    }
-                    BonjourManager.start(context);
+        wifiSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Context context = getApplicationContext();
+            if (isChecked) {
+                if (wifiApControl != null && wifiApControl.isEnabled()) {
+                    setupWifiAP();
+                } else {
+                    wifiManager.setWifiEnabled(true);
                 }
-                BonjourManager.setVisible(context, isChecked);
-                SwapService.putWifiVisibleUserPreference(isChecked);
+                BonjourManager.start(context);
             }
+            BonjourManager.setVisible(context, isChecked);
+            SwapService.putWifiVisibleUserPreference(isChecked);
         });
 
-        findViewById(R.id.btn_scan_qr).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inflateSwapView(R.layout.swap_wifi_qr);
-            }
-        });
+        findViewById(R.id.btn_scan_qr).setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
 
-        if (SwapService.getWifiVisibleUserPreference()) {
-            wifiSwitch.setChecked(true);
-        } else {
-            wifiSwitch.setChecked(false);
-        }
+        wifiSwitch.setChecked(SwapService.getWifiVisibleUserPreference());
     }
 
     private final BroadcastReceiver bonjourStatus = new BroadcastReceiver() {
@@ -1206,12 +1165,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpUseBluetoothButton() {
         Button useBluetooth = findViewById(R.id.btn_use_bluetooth);
         if (useBluetooth != null) {
-            useBluetooth.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showIntro();
-                    sendFDroidBluetooth();
-                }
+            useBluetooth.setOnClickListener(v -> {
+                showIntro();
+                sendFDroidBluetooth();
             });
         }
     }
@@ -1219,12 +1175,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpQrScannerButton() {
         Button openQr = findViewById(R.id.btn_qr_scanner);
         if (openQr != null) {
-            openQr.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    initiateQrScan();
-                }
-            });
+            openQr.setOnClickListener(v -> initiateQrScan());
         }
     }
 
@@ -1236,12 +1187,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         Button confirmReceiveYes = container.findViewById(R.id.confirm_receive_yes);
         if (confirmReceiveYes != null) {
-            findViewById(R.id.confirm_receive_yes).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    denySwap();
-                }
-            });
+            findViewById(R.id.confirm_receive_yes).setOnClickListener(v -> denySwap());
         }
 
         Button confirmReceiveNo = container.findViewById(R.id.confirm_receive_no);
@@ -1260,13 +1206,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void setUpNfcView() {
         CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
-        dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Preferences.get().setShowNfcDuringSwap(!isChecked);
-            }
-        });
-
+        dontShowAgain.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Preferences.get().setShowNfcDuringSwap(!isChecked));
     }
 
     private void setUpConnectingProgressText(String message) {
@@ -1381,11 +1322,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpConnectingView() {
         TextView heading = container.findViewById(R.id.progress_text);
         heading.setText(R.string.swap_connecting);
-        container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAppsSelected();
-            }
-        });
+        container.findViewById(R.id.try_again).setOnClickListener(v -> onAppsSelected());
     }
 }

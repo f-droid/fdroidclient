@@ -2,6 +2,10 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -12,10 +16,6 @@ import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.
@@ -46,17 +46,10 @@ public class UpdateableAppListItemController extends AppListItemController {
         final AppPrefs prefs = app.getPrefs(activity);
         prefs.ignoreThisUpdate = app.autoInstallVersionCode;
 
-        Snackbar.make(
-                itemView,
-                R.string.app_list__dismiss_app_update,
-                Snackbar.LENGTH_LONG
-        )
-                .setAction(R.string.undo, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        prefs.ignoreThisUpdate = 0;
-                        AppPrefsProvider.Helper.update(activity, app, prefs);
-                    }
+        Snackbar.make(itemView, R.string.app_list__dismiss_app_update, Snackbar.LENGTH_LONG)
+                .setAction(R.string.undo, view -> {
+                    prefs.ignoreThisUpdate = 0;
+                    AppPrefsProvider.Helper.update(activity, app, prefs);
                 })
                 .show();
 

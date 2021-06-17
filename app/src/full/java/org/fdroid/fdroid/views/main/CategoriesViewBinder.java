@@ -7,6 +7,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.fdroid.fdroid.Preferences;
@@ -22,17 +31,7 @@ import org.fdroid.fdroid.views.categories.CategoryController;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * Responsible for ensuring that the categories view is inflated and then populated correctly.
@@ -66,30 +65,19 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         final SwipeRefreshLayout swipeToRefresh =
                 (SwipeRefreshLayout) categoriesView.findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
 
         FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
-                }
+        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+        searchFab.setOnLongClickListener(view -> {
+            if (Preferences.get().hideOnLongPressSearch()) {
+                HidingManager.showHideDialog(activity);
+                return true;
+            } else {
+                return false;
             }
         });
 
@@ -135,13 +123,10 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             cursor.moveToNext();
         }
 
-        Collections.sort(categoryNames, new Comparator<String>() {
-            @Override
-            public int compare(String categoryOne, String categoryTwo) {
-                String localizedCategoryOne = CategoryController.translateCategory(activity, categoryOne);
-                String localizedCategoryTwo = CategoryController.translateCategory(activity, categoryTwo);
-                return localizedCategoryOne.compareTo(localizedCategoryTwo);
-            }
+        Collections.sort(categoryNames, (categoryOne, categoryTwo) -> {
+            String localizedCategoryOne = CategoryController.translateCategory(activity, categoryOne);
+            String localizedCategoryTwo = CategoryController.translateCategory(activity, categoryTwo);
+            return localizedCategoryOne.compareTo(localizedCategoryTwo);
         });
 
         categoryAdapter.setCategories(categoryNames);
@@ -161,7 +146,6 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             return;
         }
 
-        categoryAdapter.setCategories(Collections.<String>emptyList());
+        categoryAdapter.setCategories(Collections.emptyList());
     }
-
 }

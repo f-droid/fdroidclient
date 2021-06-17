@@ -22,20 +22,15 @@ public class ExitActivity extends AppCompatActivity {
     }
 
     public static void exitAndRemoveFromRecentApps(final AppCompatActivity activity) {
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(activity, ExitActivity.class);
+        activity.runOnUiThread(() -> {
+            Intent intent = new Intent(activity, ExitActivity.class);
 
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                        | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
-                        | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+                    | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-                activity.startActivity(intent);
-            }
+            activity.startActivity(intent);
         });
-
     }
-
 }

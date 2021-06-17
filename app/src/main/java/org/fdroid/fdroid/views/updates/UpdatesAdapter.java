@@ -9,6 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -23,18 +31,9 @@ import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Manages the following types of information:
@@ -124,12 +123,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         }
 
-        Collections.sort(appsToShowStatus, new Comparator<AppStatus>() {
-            @Override
-            public int compare(AppStatus o1, AppStatus o2) {
-                return o1.status.app.name.compareTo(o2.status.app.name);
-            }
-        });
+        Collections.sort(appsToShowStatus, (o1, o2) -> o1.status.app.name.compareTo(o2.status.app.name));
 
         populateItems();
     }
