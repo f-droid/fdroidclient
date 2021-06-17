@@ -34,4 +34,6 @@
 
     <color name="perms_costs_money">#fff4511e</color>
 
+    <color name="immersive_sys_ui">#33000000</color>
+
 </resources>
