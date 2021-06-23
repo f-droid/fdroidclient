@@ -22,7 +22,7 @@ issues, translate the app into your language or help with development.
 
 ## IRC
 
-We are on `#fdroid` and `#fdroid-dev` on Freenode. We hold weekly dev meetings
+We are on `#fdroid` and `#fdroid-dev` on OFTC. We hold weekly dev meetings
 on `#fdroid-dev` on Thursdays at 11:30h UTC, which usually last half an hour.
 
 ## FAQ
