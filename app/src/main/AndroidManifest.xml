@@ -426,7 +426,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.main.MainActivity" />
         </activity>
-        <activity android:name=".AboutActivity" />
 
         <activity
             android:name=".installer.FileInstallerActivity"
