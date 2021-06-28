@@ -6,6 +6,7 @@ import android.webkit.MimeTypeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +36,7 @@ public class ApkTest {
         ShadowMimeTypeMap mimeTypeMap = Shadows.shadowOf(MimeTypeMap.getSingleton());
         mimeTypeMap.addExtensionMimeTypMapping("apk", "application/vnd.android.package-archive");
         mimeTypeMap.addExtensionMimeTypMapping("obf", "application/octet-stream");
-        mimeTypeMap.addExtensionMimeTypMapping("zip", "application/zip");
+        mimeTypeMap.addExtensionMimeTypMapping("zip", PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
         ShadowLog.stream = System.out;
     }
 

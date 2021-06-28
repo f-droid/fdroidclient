@@ -64,6 +64,7 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
+import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.io.IOException;
@@ -313,7 +314,7 @@ public class AppDetailsActivity extends AppCompatActivity
 
             Intent shareApkIntent = new Intent(Intent.ACTION_SEND);
             // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
-            shareApkIntent.setType("application/zip");
+            shareApkIntent.setType(PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
             shareApkIntent.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, packageInfo));
 
             // App might have been uninstalled while the menu was open
