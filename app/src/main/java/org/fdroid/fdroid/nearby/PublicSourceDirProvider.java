@@ -3,11 +3,14 @@ package org.fdroid.fdroid.nearby;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,11 +46,39 @@ public class PublicSourceDirProvider extends ContentProvider {
                 context.getPackageName(), TAG, packageName));
     }
 
+    public static Intent getApkShareIntent(Context context, String packageName) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        Uri apkUri = getUri(context, packageName);
+        intent.setType(SHARE_APK_MIME_TYPE);
+        intent.putExtra(Intent.EXTRA_STREAM, apkUri);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        return intent;
+    }
+
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection,
-                        @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        throw new IllegalStateException("unimplemented");
+                        @Nullable String selection, @Nullable String[] selectionArgs,
+                        @Nullable String sortOrder) {
+        MatrixCursor metadataCursor = new MatrixCursor(new String[]{
+                MediaStore.MediaColumns.DISPLAY_NAME,
+                MediaStore.MediaColumns.MIME_TYPE,
+                MediaStore.MediaColumns.DATA,
+                MediaStore.MediaColumns.SIZE,
+        });
+        try {
+            ApplicationInfo applicationInfo = getApplicationInfo(uri);
+            File f = new File(applicationInfo.publicSourceDir);
+            metadataCursor.addRow(new Object[]{
+                    pm.getApplicationLabel(applicationInfo).toString().replace(" ", "") + ".apk",
+                    SHARE_APK_MIME_TYPE,
+                    Uri.parse("file://" + f.getCanonicalPath()),
+                    f.length(),
+            });
+        } catch (PackageManager.NameNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return metadataCursor;
     }
 
     @Nullable

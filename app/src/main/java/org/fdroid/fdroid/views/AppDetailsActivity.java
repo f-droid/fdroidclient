@@ -30,8 +30,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
@@ -47,7 +45,6 @@ import android.widget.Toast;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 
-import org.acra.ACRA;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -59,7 +56,6 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
@@ -67,7 +63,6 @@ import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 import androidx.annotation.Nullable;
@@ -262,19 +257,62 @@ public class AppDetailsActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * An app can create an {@link Intent#ACTION_SEND} to share a file
+     * and/or text to another app.  This {@link Intent} can provide an
+     * {@link java.io.InputStream} to get the actual file via
+     * {@link Intent#EXTRA_STREAM}.  This {@link Intent} can also include
+     * {@link Intent#EXTRA_TEXT} to describe what the shared file is.  Apps
+     * like K-9Mail, Gmail, Signal, etc. correctly handle this case and
+     * include both the file itself and the related text in the draft message.
+     * <p>
+     * This is used in F-Droid to share apps.  The text is the
+     * name/description of the app and the URL that points to the app's page
+     * on f-droid.org.  The {@link Intent#EXTRA_STREAM} is the actual APK if available.
+     * Having all together means that the user can choose to share a message
+     * or the actual APK, depending on the receiving app.
+     * <p>
+     * Unfortunately, not all apps handle this well.  WhatsApp and Element
+     * only attach the file and ignore the text.
+     *
+     * @see <a href="https://github.com/vector-im/element-android/issues/3637"></a>
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_share) {
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary
-                    + ") - https://f-droid.org/packages/" + app.packageName);
+            String extraText = String.format("%s (%s)\nhttps://f-droid.org/packages/%s/",
+                    app.name, app.summary, app.packageName);
 
-            // TODO: allow user to share APK if app is installed
-            boolean allowShareApk = app.isInstalled(getApplicationContext()) && bluetoothAdapter != null;
+            Intent uriIntent = new Intent(Intent.ACTION_SEND);
+            uriIntent.setData(Uri.parse(String.format("https://f-droid.org/packages/%s/", app.packageName)));
+            uriIntent.putExtra(Intent.EXTRA_TITLE, app.name);
 
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
+            Intent textIntent = new Intent(Intent.ACTION_SEND);
+            textIntent.setType("text/plain");
+            textIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
+            textIntent.putExtra(Intent.EXTRA_TITLE, app.name);
+            textIntent.putExtra(Intent.EXTRA_TEXT, extraText);
+
+            if (app.isInstalled(getApplicationContext())) {
+                // allow user to share APK if app is installed
+                Intent streamIntent = PublicSourceDirProvider.getApkShareIntent(this, app.packageName);
+                streamIntent.putExtra(Intent.EXTRA_SUBJECT, "Shared from F-Droid: " + app.name + ".apk");
+                streamIntent.putExtra(Intent.EXTRA_TITLE, app.name + ".apk");
+                streamIntent.putExtra(Intent.EXTRA_TEXT, extraText);
+
+                Intent chooserIntent = Intent.createChooser(streamIntent, getString(R.string.menu_share));
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{
+                        textIntent,
+                        uriIntent,
+                });
+                startActivity(chooserIntent);
+            } else {
+                Intent chooserIntent = Intent.createChooser(textIntent, getString(R.string.menu_share));
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{
+                        uriIntent,
+                });
+                startActivity(chooserIntent);
+            }
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
             app.getPrefs(this).ignoreAllUpdates ^= true;
@@ -297,6 +335,7 @@ public class AppDetailsActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     private void shareApkBluetooth() {
         // If Bluetooth has not been enabled/turned on, then
         // enabling device discoverability will automatically enable Bluetooth
@@ -305,33 +344,7 @@ public class AppDetailsActivity extends AppCompatActivity
         startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
         // if this is successful, the Bluetooth transfer is started
     }
-
-    @Nullable
-    private Intent getApkShareIntent() {
-        try {
-            PackageManager pm = getPackageManager();
-            PackageInfo packageInfo = pm.getPackageInfo(app.packageName, PackageManager.GET_META_DATA);
-
-            Intent shareApkIntent = new Intent(Intent.ACTION_SEND);
-            // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
-            shareApkIntent.setType(PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
-            shareApkIntent.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, packageInfo));
-
-            // App might have been uninstalled while the menu was open
-            if (app.isInstalled(getApplicationContext())) {
-                return shareApkIntent;
-            } else {
-                Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_SHORT).show();
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Could not get application info to share", e);
-        } catch (IOException e) {
-            Exception toLog = new RuntimeException("Error preparing file to share", e);
-            ACRA.getErrorReporter().handleException(toLog, false);
-        }
-        Toast.makeText(this, R.string.share_apk_error, Toast.LENGTH_SHORT).show();
-        return null;
-    }
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
