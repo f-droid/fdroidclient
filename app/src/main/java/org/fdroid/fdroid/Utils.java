@@ -27,7 +27,6 @@ import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
@@ -45,11 +44,17 @@ import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.DisplayCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
@@ -97,11 +102,6 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -999,17 +999,15 @@ public final class Utils {
     public static Single<Bitmap> generateQrBitmap(@NonNull final AppCompatActivity activity,
                                                   @NonNull final String qrData) {
         return Single.fromCallable(() -> {
-            Display display = activity.getWindowManager().getDefaultDisplay();
-            Point outSize = new Point();
-            display.getSize(outSize);
-            final int x = outSize.x;
-            final int y = outSize.y;
-            final int qrCodeDimension = Math.min(x, y);
+            // TODO: Use DisplayCompat.getMode() once it becomes available in Core 1.6.0.
+            final DisplayCompat.ModeCompat displayMode = DisplayCompat.getSupportedModes(activity,
+                    activity.getWindowManager().getDefaultDisplay())[0];
+            final int qrCodeDimension = Math.min(displayMode.getPhysicalWidth(),
+                    displayMode.getPhysicalHeight());
             debugLog(TAG, "generating QRCode Bitmap of " + qrCodeDimension + "x" + qrCodeDimension);
-            QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(qrData, null,
-                    Contents.Type.TEXT, BarcodeFormat.QR_CODE.toString(), qrCodeDimension);
 
-            return qrCodeEncoder.encodeAsBitmap();
+            return new QRCodeEncoder(qrData, null, Contents.Type.TEXT,
+                    BarcodeFormat.QR_CODE.toString(), qrCodeDimension).encodeAsBitmap();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
