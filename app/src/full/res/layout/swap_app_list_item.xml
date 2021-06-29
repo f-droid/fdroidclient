@@ -17,7 +17,7 @@
             android:layout_marginTop="6dip"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            tools:src="@drawable/ic_launcher"/>
+            tools:src="@mipmap/ic_launcher"/>
 
     <LinearLayout
             android:id="@+id/button_or_text"

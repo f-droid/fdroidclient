@@ -34,7 +34,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription"
-                tools:src="@drawable/ic_launcher" />
+                tools:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/summary"

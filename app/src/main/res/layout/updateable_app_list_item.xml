@@ -12,7 +12,7 @@
         android:id="@+id/icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        tools:src="@drawable/ic_launcher"
+        tools:src="@mipmap/ic_launcher"
         android:scaleType="fitCenter"
         android:layout_margin="16dp"
         tools:ignore="ContentDescription"

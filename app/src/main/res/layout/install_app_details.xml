@@ -41,7 +41,7 @@ installation screens
         android:background="@android:color/transparent"
         android:gravity="start"
         android:scaleType="centerCrop"
-        tools:src="@drawable/ic_launcher" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/app_name"
