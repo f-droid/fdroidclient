@@ -39,9 +39,14 @@ public class AppCardController extends RecyclerView.ViewHolder
     private final ImageView icon;
 
     /**
-     * Text starting with the app name (in bold) followed by a short summary of the app.
+     * Text of the app name
      */
     @NonNull
+    private final TextView title;
+
+    /**
+     * Text of a short summary of the app.
+     */
     private final TextView summary;
 
     /**
@@ -61,7 +66,8 @@ public class AppCardController extends RecyclerView.ViewHolder
         this.activity = activity;
 
         icon = ViewCompat.requireViewById(itemView, R.id.icon);
-        summary = ViewCompat.requireViewById(itemView, R.id.summary);
+        title = ViewCompat.requireViewById(itemView, R.id.title);
+        summary = itemView.findViewById(R.id.summary);
 
         newTag = itemView.findViewById(R.id.new_tag);
 
@@ -71,7 +77,10 @@ public class AppCardController extends RecyclerView.ViewHolder
     public void bindApp(@NonNull App app) {
         currentApp = app;
 
-        summary.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
+        title.setText(app.name);
+        if (summary != null) {
+            summary.setText(app.summary);
+        }
 
         if (newTag != null) {
             if (isConsideredNew(app)) {

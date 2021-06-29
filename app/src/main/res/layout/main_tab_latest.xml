@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swipe_to_refresh">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,18 +22,22 @@
 
             <TextView
                 android:id="@+id/empty_state"
+                style="@style/AppListEmptyText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/AppListEmptyText"
                 android:visibility="gone"
-                tools:text="@string/latest__empty_state__no_recent_apps"/>
+                tools:text="@string/latest__empty_state__no_recent_apps" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/app_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/app_card_normal"
-                android:scrollbars="vertical" />
+                android:padding="16dp"
+                android:clipToPadding="false"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/app_card_large" />
 
         </LinearLayout>
 

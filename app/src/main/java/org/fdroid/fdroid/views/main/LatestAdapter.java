@@ -22,22 +22,18 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
 
     private Cursor cursor;
     private final AppCompatActivity activity;
-    private final RecyclerView.ItemDecoration appListDecorator;
 
     public LatestAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        appListDecorator = new LatestAdapter.ItemDecorator(activity);
     }
 
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        recyclerView.addItemDecoration(appListDecorator);
     }
 
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.removeItemDecoration(appListDecorator);
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
@@ -45,19 +41,7 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
     @Override
     public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout;
-        switch (viewType) {
-            case R.id.latest_large_tile:
-                layout = R.layout.app_card_large;
-                break;
-            case R.id.latest_small_tile:
-                layout = R.layout.app_card_horizontal;
-                break;
-            case R.id.latest_regular_list:
-                layout = R.layout.app_card_list_item;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown view type when rendering \"Whats New\": " + viewType);
-        }
+        layout = R.layout.app_card_large;
 
         return new AppCardController(activity, activity.getLayoutInflater().inflate(layout, parent, false));
     }

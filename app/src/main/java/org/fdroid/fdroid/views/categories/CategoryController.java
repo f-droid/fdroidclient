@@ -68,7 +68,6 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
         appCards.setAdapter(appCardsAdapter);
-        appCards.addItemDecoration(new ItemDecorator(activity));
 
         displayImageOptions = Utils.getDefaultDisplayImageOptionsBuilder()
                 .displayer(new FadeInBitmapDisplayer(100, true, true, false))
