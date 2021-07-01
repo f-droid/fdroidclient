@@ -36,15 +36,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +46,13 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -182,22 +180,6 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         appView.setHasFixedSize(true);
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
-        appView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            private final ImageLoader imageLoader = ImageLoader.getInstance();
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                switch (newState) {
-                    case RecyclerView.SCROLL_STATE_DRAGGING:
-                        imageLoader.pause();
-                        break;
-                    case RecyclerView.SCROLL_STATE_IDLE:
-                        imageLoader.resume();
-                        break;
-                }
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
 
         parseIntentForSearchQuery();
     }

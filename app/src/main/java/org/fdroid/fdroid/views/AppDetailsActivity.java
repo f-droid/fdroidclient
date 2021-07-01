@@ -42,9 +42,17 @@ import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
@@ -64,15 +72,6 @@ import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class AppDetailsActivity extends AppCompatActivity
         implements ShareChooserDialog.ShareChooserDialogListener,
@@ -150,9 +149,9 @@ public class AppDetailsActivity extends AppCompatActivity
 
         // Load the feature graphic, if present
         final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
-        DisplayImageOptions displayImageOptions = Utils.getRepoAppDisplayImageOptions();
+        RequestOptions displayImageOptions = new RequestOptions();
         String featureGraphicUrl = app.getFeatureGraphicUrl(this);
-        featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions,
+        featureImage.loadImageAndDisplay(displayImageOptions,
                 featureGraphicUrl, app.getIconUrl(this));
     }
 
@@ -463,7 +462,9 @@ public class AppDetailsActivity extends AppCompatActivity
                         Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
                     } else {
                         String msg = newStatus.errorText;
-                        if (!newStatus.getCanonicalUrl().equals(msg)) msg += " " + newStatus.getCanonicalUrl();
+                        if (!newStatus.getCanonicalUrl().equals(msg)) {
+                            msg += " " + newStatus.getCanonicalUrl();
+                        }
                         Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     }

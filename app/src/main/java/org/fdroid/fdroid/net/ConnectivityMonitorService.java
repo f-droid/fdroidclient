@@ -9,21 +9,18 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
+import androidx.core.net.ConnectivityManagerCompat;
 
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.content.ContextCompat;
-import androidx.core.net.ConnectivityManagerCompat;
 
 /**
  * An {@link JobIntentService} subclass for tracking whether there is metered or
@@ -134,7 +131,6 @@ public class ConnectivityMonitorService extends JobIntentService {
     protected void onHandleWork(@NonNull Intent intent) {
         if (ACTION_START.equals(intent.getAction())) {
             FDroidApp.networkState = getNetworkState(this);
-            ImageLoader.getInstance().denyNetworkDownloads(!Preferences.get().isBackgroundDownloadAllowed());
         }
     }
 }
