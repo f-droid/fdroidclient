@@ -6,6 +6,10 @@
       <trusted-keys>
          <trusted-key id="0394681addddb4f6388a64d295123567c1886c47" group="ch.acra" name="acra" version="4.9.1"/>
          <trusted-key id="042b29e928995b9db963c636c7ca19b7b620d787" group="org.apache.maven" name="maven-ant-tasks" version="2.1.3"/>
+         <trusted-key id="04543577d6a9cc626239c50c7ecbd740ff06aeb5">
+            <trusting group="^com[.]sun($|([.].*))" regex="true"/>
+            <trusting group="org.glassfish.jaxb"/>
+         </trusted-key>
          <trusted-key id="06a228aab83a18a8df7b84b08614d6ab265b4c63" group="org.apache.ant"/>
          <trusted-key id="06d34ed6ff73de368a772a781063fe98bcecb758" group="com.puppycrawl.tools" name="checkstyle" version="7.2"/>
          <trusted-key id="0785b3eff60b1b1bea94e0bb7c25280eae63ebe5" group="org.apache.httpcomponents"/>
@@ -15,7 +19,10 @@
             <trusting group="commons-collections"/>
             <trusting group="commons-collections" name="commons-collections" version="3.2.2"/>
          </trusted-key>
-         <trusted-key id="19beab2d799c020f17c69126b16698a4adf4d638" group="org.checkerframework" name="checker-qual" version="2.5.2"/>
+         <trusted-key id="19beab2d799c020f17c69126b16698a4adf4d638">
+            <trusting group="org.checkerframework" name="checker-qual" version="2.5.2"/>
+            <trusting group="org.checkerframework" name="checker-qual"/>
+         </trusted-key>
          <trusted-key id="1d9aa7f9e1e2824728b8cd1794b291aef984a085">
             <trusting group="io.reactivex" name="rxjava" version="1.1.0"/>
             <trusting group="io.reactivex.rxjava3"/>
@@ -30,6 +37,7 @@
          <trusted-key id="31bae2e51d95e0f8ad9b7bcc40a3c4432bd7308c" group="com.googlecode.juniversalchardet" name="juniversalchardet" version="1.0.3"/>
          <trusted-key id="3288b8be8512d6c0ca185268c51e6cbc7ff46f0b" group="com.google.auto.service" name="auto-service" version="1.0-rc4"/>
          <trusted-key id="3872ed7d5904493d23d78fa2c4c8cb73b1435348" group="com.android.tools.build" name="transform-api" version="2.0.0-deprecated-use-gradle-api"/>
+         <trusted-key id="3d11126ea77e4e07fbabb38614a84c976d265b25" group="com.google.protobuf"/>
          <trusted-key id="475f3b8e59e6e63aa78067482c7b12f2a511e325" group="org.slf4j"/>
          <trusted-key id="49977dad0140e24894f9b955354214e5e508c045" group="com.hannesdorfmann" name="adapterdelegates3" version="3.0.1"/>
          <trusted-key id="4cf4b443734c0aed8dc93a1f6132aae95d8e9fe0" group="org.nanohttpd"/>
@@ -66,7 +74,10 @@
          <trusted-key id="7f36e793ae3252e5d9e9b98fee9e7dc9d92fc896" group="com.google.errorprone"/>
          <trusted-key id="7faa0f2206de228f0db01ad741321490758aad6f" group="org.codehaus.groovy" name="groovy-all" version="2.4.15"/>
          <trusted-key id="8254180bfc943b816e0b5e2e5e2f2b3d474efe6b" group="it.unimi.dsi" name="fastutil" version="7.2.0"/>
-         <trusted-key id="8756c4f765c9ac3cb6b85d62379ce192d401ab61" group="org.jetbrains.kotlinx"/>
+         <trusted-key id="8756c4f765c9ac3cb6b85d62379ce192d401ab61">
+            <trusting group="org.jetbrains.kotlinx"/>
+            <trusting group="^org[.]jetbrains($|([.].*))" regex="true"/>
+         </trusted-key>
          <trusted-key id="90ee19787a7bcf6fd37a1e9180c08b1c29100955">
             <trusting group="com.squareup" name="javawriter"/>
             <trusting group="com.squareup" name="javawriter" version="2.1.1"/>
@@ -80,9 +91,16 @@
          <trusted-key id="a6d6c97108b8585f91b158748671a8df71296252" group="com.squareup" name="javapoet" version="1.10.0"/>
          <trusted-key id="a7892505cf1a58076453e52d7999befba1039e8b" group="net.bytebuddy"/>
          <trusted-key id="ae2b18e836c5f30687f37efdcc6346f2ce3872d9" group="com.google.protobuf" name="protobuf-java" version="2.6.1"/>
-         <trusted-key id="afcc4c7594d09e2182c60e0f7a01b0f236e5430f" group="com.google.code.gson"/>
+         <trusted-key id="afcc4c7594d09e2182c60e0f7a01b0f236e5430f">
+            <trusting group="com.google.code.gson"/>
+            <trusting group="com.google.code.gson" name="gson"/>
+         </trusted-key>
+         <trusted-key id="b69a63a5ef7183dbc09199ac26e74b6874aee127" group="com.github.bumptech.glide"/>
          <trusted-key id="b6e73d84ea4fcc47166087253faad2cd5ecbb314" group="org.apache.commons"/>
-         <trusted-key id="b801e2f8ef035068ec1139cc29579f18fa8fd93b" group="com.google.j2objc" name="j2objc-annotations" version="1.1"/>
+         <trusted-key id="b801e2f8ef035068ec1139cc29579f18fa8fd93b">
+            <trusting group="com.google.j2objc" name="j2objc-annotations" version="1.1"/>
+            <trusting group="com.google.j2objc" name="j2objc-annotations"/>
+         </trusted-key>
          <trusted-key id="bdb5fa4fe719d787fb3d3197f6d4a1d411e9d1ae">
             <trusting group="com.google.guava" name="listenablefuture" version="9999.0-empty-to-avoid-conflict-with-guava"/>
             <trusting group="com.google.guava" name="listenablefuture"/>
@@ -115,7 +133,11 @@
          <trusted-key id="e3a9f95079e84ce201f7cf60bede11eaf1164480" group="org.hamcrest" name="hamcrest" version="2.2"/>
          <trusted-key id="e77417ac194160a3fabd04969a259c7ee636c5ed" group="com.google.errorprone"/>
          <trusted-key id="e85aed155021af8a6c6b7a4a7c7d8456294423ba" group="org.objenesis"/>
-         <trusted-key id="f254b35617dc255d9344bcfa873a8e86b4372146" group="org.codehaus.mojo"/>
+         <trusted-key id="f254b35617dc255d9344bcfa873a8e86b4372146">
+            <trusting group="org.codehaus.mojo"/>
+            <trusting group="org.codehaus.mojo" name="animal-sniffer-annotations"/>
+         </trusted-key>
+         <trusted-key id="fa7929f83ad44c4590f6cc6815c71c0a4e0b8edd" group="net.java.dev.jna"/>
          <trusted-key id="ff6e2c001948c5f2f38b0cc385911f425ec61b51" group="junit" name="junit" version="4.13"/>
       </trusted-keys>
    </configuration>
@@ -318,12 +340,22 @@
             <sha256 value="a106582fb3a33d7d2a0cee8da000e421376ecfdc3e90e9e254caae62b24eedeb" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="androidx.databinding" name="databinding-common" version="4.2.1">
+         <artifact name="databinding-common-4.2.1.jar">
+            <sha256 value="4c10017bc927f42627397c4ad2ab46b3bdb9b28e4e86c0bdb62d898aeeff1415" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="androidx.databinding" name="databinding-compiler-common" version="3.6.3">
          <artifact name="databinding-compiler-common-3.6.3.jar">
             <sha256 value="2692996256ddc84c583e0257779d29dbe22acc0cbf7bea2387e27566ce2d9548" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="databinding-compiler-common-3.6.3.pom">
             <sha256 value="6e1362379a970b9a79ade2f64fc98b3690fa669e7c140b750eb3d40667492da9" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="androidx.databinding" name="databinding-compiler-common" version="4.2.1">
+         <artifact name="databinding-compiler-common-4.2.1.jar">
+            <sha256 value="f387c65ebf3b413a89b640fe106c9b8b5165f787637bbf8840b7803f97e9ed48" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="androidx.documentfile" name="documentfile" version="1.0.0">
@@ -345,6 +377,11 @@
       <component group="androidx.dynamicanimation" name="dynamicanimation" version="1.0.0">
          <artifact name="dynamicanimation-1.0.0.aar">
             <sha256 value="ce005162c229bf308d2d5b12fb6cad0874069cbbeaccee63a8193bd08d40de04" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="androidx.exifinterface" name="exifinterface" version="1.2.0">
+         <artifact name="exifinterface-1.2.0.aar">
+            <sha256 value="aae68e513095e475a7670556eacba772ec2bb592d17187091578d3fef947aea7" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="androidx.fragment" name="fragment" version="1.1.0">
@@ -833,12 +870,22 @@
             <sha256 value="a6f76e1a0bfe223c5e478d4cb01dd824e4ae35859c0513d575a056f0f497c3a8" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android" name="signflinger" version="4.2.1">
+         <artifact name="signflinger-4.2.1.jar">
+            <sha256 value="90ddb3e00cbeabff00fc014947a4de2504567e43eafabdb0f920c99d9ee29572" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android" name="zipflinger" version="3.6.3">
          <artifact name="zipflinger-3.6.3.jar">
             <sha256 value="a0361e0856947ae601a92ecf8e30b957c4613fe0289ad5246e5c27e71f888e8c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="zipflinger-3.6.3.pom">
             <sha256 value="2c626afca701ec9ec30789947d49b3d11489921c0cfddcb1df2eb22c12161a99" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android" name="zipflinger" version="4.2.1">
+         <artifact name="zipflinger-4.2.1.jar">
+            <sha256 value="a00f8e0126c19695c779971ea8ecce9374cb696cc78fce62028749938ba461ef" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.databinding" name="baseLibrary" version="3.6.3">
@@ -849,12 +896,22 @@
             <sha256 value="ce6790c3f6e2da465da0e24aa08352e0c6d658af87a85abcff895231813359a4" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.databinding" name="baseLibrary" version="4.2.1">
+         <artifact name="baseLibrary-4.2.1.jar">
+            <sha256 value="efef9b153c42eb4b78f7a9cdb00ba8ddc6c81c5a0c792d3cf8788b99a35f3f64" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools" name="annotations" version="26.6.3">
          <artifact name="annotations-26.6.3.jar">
             <sha256 value="9bb9e1aef699819309fb30ab9094d7beb04fb09da184ddabc14ca3ec21c7f14a" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="annotations-26.6.3.pom">
             <sha256 value="8ae752ae276f2c575254dccf41496f6bf91069b3251be0745c15185e5e3d67c8" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools" name="annotations" version="27.2.1">
+         <artifact name="annotations-27.2.1.jar">
+            <sha256 value="898149a83a49f20913f47b77aa78fa6a9c42c58673b0cfca377f8b870eee63b0" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools" name="common" version="26.6.3">
@@ -865,12 +922,22 @@
             <sha256 value="afcf1086cbe410a42473d7021bdb1b0b64adb2379930f78449757d792a6ac255" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools" name="common" version="27.2.1">
+         <artifact name="common-27.2.1.jar">
+            <sha256 value="54fb5c771da68137e91a2a474d896efe2797cbeab69d6f449f60e4edc8f42f46" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools" name="dvlib" version="26.6.3">
          <artifact name="dvlib-26.6.3.jar">
             <sha256 value="a4b01099bd144943889e806e0e02eaaea802df6291294e8b6f1f7405c983f151" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="dvlib-26.6.3.pom">
             <sha256 value="2e9d66c4373c8ea4c25661354b6bc5da625d2fe91f7a7dfcb72ab185be09bf92" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools" name="dvlib" version="27.2.1">
+         <artifact name="dvlib-27.2.1.jar">
+            <sha256 value="00d012a78bc785327cea1c531332eee99c71e5746257dd006fb5793344caf2cd" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools" name="repository" version="26.6.3">
@@ -881,12 +948,22 @@
             <sha256 value="1da975eba34127b9981ee883814b0b1e3a1471e00cc8e28644e247843a6692e3" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools" name="repository" version="27.2.1">
+         <artifact name="repository-27.2.1.jar">
+            <sha256 value="fcf13eccdf769380376f675595ab2ec527de9190137da252c896ff9444886ef8" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools" name="sdk-common" version="26.6.3">
          <artifact name="sdk-common-26.6.3.jar">
             <sha256 value="618a00d8d1c081b87879a7721181f02073058a24aeb57718c63074fc9250e234" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="sdk-common-26.6.3.pom">
             <sha256 value="ca5e3620331198ab587a66a7b117ad1e1b7c38f3285aac7bf53b5b92bca2b7b5" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools" name="sdk-common" version="27.2.1">
+         <artifact name="sdk-common-27.2.1.jar">
+            <sha256 value="fcfe5fcc903e3a8037a53b3dd8ccf2ca021cd3e7b6820a1d289a7c20c427bcc0" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools" name="sdklib" version="26.6.3">
@@ -897,12 +974,22 @@
             <sha256 value="ba71db6b32283e0680d17c047a49e9cb36c2ec6751e4e7ba3d45626ab60427c4" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools" name="sdklib" version="27.2.1">
+         <artifact name="sdklib-27.2.1.jar">
+            <sha256 value="a25e87f7bc176f4afc254b12c9b798eb5f22c921ebcb09fcfc014786e2c87845" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.analytics-library" name="crash" version="26.6.3">
          <artifact name="crash-26.6.3.jar">
             <sha256 value="44bd57a50e22fa0175b941ae9f83acdd8acef3fe6cce84a7ec37d60890dcbb2e" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="crash-26.6.3.pom">
             <sha256 value="85ad989d67f3bfdd7d07861a407f88d5b829cfc63b2ee889b611c916bf5f53dc" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.analytics-library" name="crash" version="27.2.1">
+         <artifact name="crash-27.2.1.jar">
+            <sha256 value="dc9cc72f113633f1eb03817ffadc4ecb3f7a15320ef213a3e71aa2715c678aa2" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.analytics-library" name="protos" version="26.6.3">
@@ -913,6 +1000,11 @@
             <sha256 value="209d668ee92a83d0ebc74840101777f1f2548cbc3151729d4973f75916c933f5" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.analytics-library" name="protos" version="27.2.1">
+         <artifact name="protos-27.2.1.jar">
+            <sha256 value="1ce0868dad3694e63f6203777444f36c335737a5836dda91e81185baa843c1db" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.analytics-library" name="shared" version="26.6.3">
          <artifact name="shared-26.6.3.jar">
             <sha256 value="65a1a685fec4546b5b1633abcdeca969cb3752bfcf3080ccfeb5f62b63809249" origin="Generated by Gradle because artifact wasn't signed"/>
@@ -921,12 +1013,22 @@
             <sha256 value="f6d807423157feaaae19d1f661c8fcf815a48b09c2ca75cf124ed96228d9cdf1" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.analytics-library" name="shared" version="27.2.1">
+         <artifact name="shared-27.2.1.jar">
+            <sha256 value="1e88737c2d846d126479de3d487643fb7d1f154faabbf46afc6c87c95016bdf9" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.analytics-library" name="tracker" version="26.6.3">
          <artifact name="tracker-26.6.3.jar">
             <sha256 value="87cc8e882caac7973dd97cd24c88f2105bf28612513199869918a2b4ff3e5b4a" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="tracker-26.6.3.pom">
             <sha256 value="9b038cafdb1818e26fce8dc6f93b4e75171597f3cfe80c8c921344403f845809" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.analytics-library" name="tracker" version="27.2.1">
+         <artifact name="tracker-27.2.1.jar">
+            <sha256 value="1beca5db6495219d8924cabc5704a1e097eccc627f78bd764985bd3f7a174e5c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="aapt2" version="3.6.3-6040484">
@@ -948,12 +1050,32 @@
             <sha256 value="a24bdd4e8e374fdcd8cef8d77ea723f147ccd0f25dc6de4fbe290039be904339" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build" name="aapt2-proto" version="4.1.0-alpha01-6193524">
+         <artifact name="aapt2-proto-4.1.0-alpha01-6193524.jar">
+            <sha256 value="17e75523e1e92dd4f222c7368ee41df9e964a508232f591e265d0c499baf9dca" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="aapt2-proto" version="4.2.1-7147631">
+         <artifact name="aapt2-proto-4.2.1-7147631.jar">
+            <sha256 value="1c315f59f7f9a1f0b479d59682880e6c6968bd7df41ddac4cc30b6c16e31b8b5" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="aaptcompiler" version="4.2.1">
+         <artifact name="aaptcompiler-4.2.1.jar">
+            <sha256 value="3eb1563fa0f5e3a1dc009ee2fd6b3ed88c9e091c9fb3794010491f056a6e32a3" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build" name="apksig" version="3.6.3">
          <artifact name="apksig-3.6.3.jar">
             <sha256 value="453044606ea4cf7996f52e91dbd3e005f0c6c184f86e32005099050b424bbf9c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="apksig-3.6.3.pom">
             <sha256 value="793217e1ca8b5d941451c26473d46f58faf1358c9f159ca2e21bd9fdfe024217" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="apksig" version="4.2.1">
+         <artifact name="apksig-4.2.1.jar">
+            <sha256 value="d8ea8eb467d310850fa80bbcc2b0f9daa8ceec1d1397d26a282f0b1f79b76c89" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="apkzlib" version="3.6.3">
@@ -964,12 +1086,22 @@
             <sha256 value="d8d5ca96d4278f9d7e477f68d47f76944bef1078366e79381f914580ee78f8ff" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build" name="apkzlib" version="4.2.1">
+         <artifact name="apkzlib-4.2.1.jar">
+            <sha256 value="3278f75167831fab7108f181f9aee89b2fde7d4c630d553ddee30f275701a0ba" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build" name="builder" version="3.6.3">
          <artifact name="builder-3.6.3.jar">
             <sha256 value="87752bdad5778c84198299e406d6883d3719884d2de58cb659a0e6d8a2a9dd34" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="builder-3.6.3.pom">
             <sha256 value="601046f59e2c23b66f01df0a5e508450a1c8cd835913189b6a3de6df288fe9cc" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="builder" version="4.2.1">
+         <artifact name="builder-4.2.1.jar">
+            <sha256 value="7623c31b41671c49aa15d8775a1987d4f4bb54733571d5c3ec84aa1c7b67dc2f" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="builder-model" version="3.6.3">
@@ -980,12 +1112,22 @@
             <sha256 value="5728b2d8cdc6671d2c9279e97ee66c22b4abef28369e3b88798004e13d450cd6" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build" name="builder-model" version="4.2.1">
+         <artifact name="builder-model-4.2.1.jar">
+            <sha256 value="315dcbfc26b5da56d11b627b31ac82c9bfc02a95e656b9c4eb0fd633b15d64e2" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build" name="builder-test-api" version="3.6.3">
          <artifact name="builder-test-api-3.6.3.jar">
             <sha256 value="d2451b4bc7182135ebcb8110364c2db3cb6af16ce4c828e8ef3b68cf569a0324" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="builder-test-api-3.6.3.pom">
             <sha256 value="fd407f0e0a001f05cda5cf2ac7b255989ba04ef01c0944c12884e9258cfdceb0" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="builder-test-api" version="4.2.1">
+         <artifact name="builder-test-api-4.2.1.jar">
+            <sha256 value="7daa32db5b483b750e3c36016443142825b46f867e4750f19d54da659552604c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="bundletool" version="0.10.3">
@@ -996,12 +1138,22 @@
             <sha256 value="ad9c1614680f29b5c39018c32e2b44d3adfc52d667e7bf29ca64eb2feb697034" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build" name="bundletool" version="1.1.0">
+         <artifact name="bundletool-1.1.0.jar">
+            <sha256 value="4cb02a7963fa7c82c302fdcde679b336e669e928f5bbad00457d9c562ef1cd30" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build" name="gradle" version="3.6.3">
          <artifact name="gradle-3.6.3.jar">
             <sha256 value="4b051c73bb44c062ee0b2cfa019f1b07cfec889c5760448c75f7f0e1150c737c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="gradle-3.6.3.pom">
             <sha256 value="98fb10dddc7b019556341d11cefc3614f4cf71729fb1b20b1e090711948cd8a1" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="gradle" version="4.2.1">
+         <artifact name="gradle-4.2.1.jar">
+            <sha256 value="058d7c727442d3f2bbf325c52cf76d3490c5a2036b192390e3b972fc025dbcf8" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="gradle-api" version="3.6.3">
@@ -1012,12 +1164,22 @@
             <sha256 value="a5af3d2f8a9fc9a5035bf060054b10a988bd1af89dce28e26259feff0b478e9c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build" name="gradle-api" version="4.2.1">
+         <artifact name="gradle-api-4.2.1.jar">
+            <sha256 value="1e199938ec9e838852bef9a3e276da5258da875decff307a851eced06b7b297e" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build" name="manifest-merger" version="26.6.3">
          <artifact name="manifest-merger-26.6.3.jar">
             <sha256 value="9481685044f456699de67a896ddc0ad38e7eb68838a764936680a4d55bfeb19c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="manifest-merger-26.6.3.pom">
             <sha256 value="d79af238e08104d1a9121f8a5311684ad639e6604d59e73be89b1dedffb6da50" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build" name="manifest-merger" version="27.2.1">
+         <artifact name="manifest-merger-27.2.1.jar">
+            <sha256 value="cde7e801b72b798611ba33e384734452bf997ea599b75a3ba4c7476e3702f6aa" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.build" name="transform-api" version="2.0.0-deprecated-use-gradle-api">
@@ -1037,12 +1199,22 @@
             <sha256 value="c39f0d195566b2ca9e1c954a665a553dc60320d4022acad82fd56a31a6d395d5" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.build.jetifier" name="jetifier-core" version="1.0.0-beta09">
+         <artifact name="jetifier-core-1.0.0-beta09.jar">
+            <sha256 value="9bb3a91e871e784446e4dd1e1d1dea5c322e271cba8278c1dec3669a66aee858" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.build.jetifier" name="jetifier-processor" version="1.0.0-beta08">
          <artifact name="jetifier-processor-1.0.0-beta08.jar">
             <sha256 value="689e5637b0b61b460f447064ff62ed4267203a26a70cf071fa34d7c3faba5366" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="jetifier-processor-1.0.0-beta08.pom">
             <sha256 value="be08f1215cd2bb5cbd22b1146ea92e0f14558fafc1603cbef7553b3a6677984c" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.build.jetifier" name="jetifier-processor" version="1.0.0-beta09">
+         <artifact name="jetifier-processor-1.0.0-beta09.jar">
+            <sha256 value="1838f9ee70120e64f45612ca071972ac83ddc118185abffbce3932a4710325eb" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.ddms" name="ddmlib" version="26.6.3">
@@ -1053,12 +1225,22 @@
             <sha256 value="b0b4d11a3395cd8d47e7d71afa8ff3e1bf9b42052e3e7ee95f5feaf8c1b9b96e" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.ddms" name="ddmlib" version="27.2.1">
+         <artifact name="ddmlib-27.2.1.jar">
+            <sha256 value="757b43f32f4c2a57fbc4bfd34e4100be808fcdda240fcba812edbb6702a2b668" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.external.com-intellij" name="intellij-core" version="26.6.3">
          <artifact name="intellij-core-26.6.3.jar">
             <sha256 value="b89d6ced01dabd7ac822e12bb1f1280299571516935e29678f24676a1df1ed12" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="intellij-core-26.6.3.pom">
             <sha256 value="6d3007eceadefdeb6bbd6c7f13a598b17ca32c12cc63092c18efc604f14889f7" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.external.com-intellij" name="intellij-core" version="27.2.1">
+         <artifact name="intellij-core-27.2.1.jar">
+            <sha256 value="dced6fb2bf3a7fbdcf791c00fc4f61f8532b95d348f254bc5999753b052e8fda" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.external.com-intellij" name="kotlin-compiler" version="26.6.3">
@@ -1069,12 +1251,22 @@
             <sha256 value="c560d05a9729d4398adc42c9826f19f4443f6f50e00971dc9038928086e545e0" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.external.com-intellij" name="kotlin-compiler" version="27.2.1">
+         <artifact name="kotlin-compiler-27.2.1.jar">
+            <sha256 value="a999511f7838e654b9346e311d68c983f70c8677481ec0334fc630ff717e7326" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.external.org-jetbrains" name="uast" version="26.6.3">
          <artifact name="uast-26.6.3.jar">
             <sha256 value="e2fb91a91f842102e69822eaaac567b93120f0a67b9c6590f188ec01f4e7a8d9" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="uast-26.6.3.pom">
             <sha256 value="fc847a0a870a2d1467f654ce9f154da81f50eb09e4c6260bf15f7044227c1856" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.external.org-jetbrains" name="uast" version="27.2.1">
+         <artifact name="uast-27.2.1.jar">
+            <sha256 value="475824900256f7a446ebfbeda0b2ab43b77a9d232d05e7baeaa5193f82fa8d3f" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.layoutlib" name="layoutlib-api" version="26.6.3">
@@ -1085,12 +1277,22 @@
             <sha256 value="27ca36244c77ca8762e41b292b208ad9e6b0b3245b7420b7c2c12e08572f3801" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.layoutlib" name="layoutlib-api" version="27.2.1">
+         <artifact name="layoutlib-api-27.2.1.jar">
+            <sha256 value="4b6e1395c13d3312324490ce767cb154e9a9046cd89ca921dc0a0e4edd88c07f" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.lint" name="lint" version="26.6.3">
          <artifact name="lint-26.6.3.jar">
             <sha256 value="069acbbcc308165788cd13d44e67162de69dc715644d4b26dd913e7cf9438560" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="lint-26.6.3.pom">
             <sha256 value="863fc9478d7aa08ccb1f4f6593f0b078e927dd854f79fad76b872b040c02626b" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.lint" name="lint" version="27.2.1">
+         <artifact name="lint-27.2.1.jar">
+            <sha256 value="6d5d2349e38ec23d129e0a81f138317a33059b62a07db68574fb7ee0e23e4106" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.lint" name="lint-api" version="26.6.3">
@@ -1101,12 +1303,22 @@
             <sha256 value="c5babe1aa3ad29bb92f138fd6ca8b4efd284641655c28556574e44075a89c9d6" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.lint" name="lint-api" version="27.2.1">
+         <artifact name="lint-api-27.2.1.jar">
+            <sha256 value="bdf54428cfd512c55000744e60f19d148d9524b1aa5df1f4646d95afb4f591e1" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.lint" name="lint-checks" version="26.6.3">
          <artifact name="lint-checks-26.6.3.jar">
             <sha256 value="d6a1eccec58c01f3c8056baa7790221f57b36e34b749e78f5c9d0f4c932144b7" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="lint-checks-26.6.3.pom">
             <sha256 value="aad1c13ee6cb1d58d9ccc6d237faba58666420c136daac16ab14bc71dfed21b1" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.lint" name="lint-checks" version="27.2.1">
+         <artifact name="lint-checks-27.2.1.jar">
+            <sha256 value="9f7482bb793020d6debe2345855e81670cfb93b9cc2caa52272e11182f436099" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.android.tools.lint" name="lint-gradle" version="26.6.3">
@@ -1117,12 +1329,27 @@
             <sha256 value="c3a4d17d87a640eda6b158d5faadf7a50a1ca98b828a9f56eecae3038b11812c" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
+      <component group="com.android.tools.lint" name="lint-gradle" version="27.2.1">
+         <artifact name="lint-gradle-27.2.1.jar">
+            <sha256 value="45d81d4d62bfc4c0cd01c3e72ed3338497df977d6875b7d48853a35fe5282bad" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
       <component group="com.android.tools.lint" name="lint-gradle-api" version="26.6.3">
          <artifact name="lint-gradle-api-26.6.3.jar">
             <sha256 value="1128b2794ece2207ad48eec4e481a603b264afc1ad5fcd6ddec29da45e80043a" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
          <artifact name="lint-gradle-api-26.6.3.pom">
             <sha256 value="c4a65d0b0b339071e0f7b23b5bbea0658e8034e7788613a09baaf558ac9758d2" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.lint" name="lint-gradle-api" version="27.2.1">
+         <artifact name="lint-gradle-api-27.2.1.jar">
+            <sha256 value="59618021a9252e39a2000cbd8cee23347d262d2e05ab9561fb615e56c4511c35" origin="Generated by Gradle because artifact wasn't signed"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools.lint" name="lint-model" version="27.2.1">
+         <artifact name="lint-model-27.2.1.jar">
+            <sha256 value="1530bcd47ca17b7b8245cc3f5dd8e4630538c139f9c98ebda508cab1ed9dd1dd" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.ashokvarma.android" name="bottom-navigation-bar" version="2.0.5">
@@ -1343,6 +1570,16 @@
             <sha256 value="8f1fec72b91a71ea39ec39f5f778c4d1124b6b097c6d55b3a50b554a52237b27" origin="Generated by Gradle"/>
          </artifact>
       </component>
+      <component group="com.google.crypto.tink" name="tink" version="1.3.0-rc2">
+         <artifact name="tink-1.3.0-rc2.jar">
+            <pgp value="4bf79b8259007b566d2fce82296cd27f60eed12c"/>
+         </artifact>
+      </component>
+      <component group="com.google.dagger" name="dagger" version="2.28.3">
+         <artifact name="dagger-2.28.3.jar">
+            <pgp value="4f8fec6785f611d9a712ea2734918b7d3969d2f5"/>
+         </artifact>
+      </component>
       <component group="com.google.errorprone" name="error_prone_annotation" version="2.2.0">
          <artifact name="error_prone_annotation-2.2.0.jar">
             <sha256 value="93b39756da13eda02bd217394dcbfd993fc1fbf93c8b37541e17b3433f2120e4" origin="Generated by Gradle"/>
@@ -1367,6 +1604,16 @@
          </artifact>
          <artifact name="error_prone_annotations-2.3.1.pom">
             <sha256 value="3edce6b711ba368efe16b9b7aacb0214fbd648414cb9b965953a2e7ed89a819a" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="com.google.errorprone" name="error_prone_annotations" version="2.3.2">
+         <artifact name="error_prone_annotations-2.3.2.jar">
+            <pgp value="5ce325996a35213326ae2c68912d2c0eccda55c0"/>
+         </artifact>
+      </component>
+      <component group="com.google.errorprone" name="error_prone_annotations" version="2.3.4">
+         <artifact name="error_prone_annotations-2.3.4.jar">
+            <pgp value="7615ad56144df2376f49d98b1669c4bb543e0445"/>
          </artifact>
       </component>
       <component group="com.google.errorprone" name="error_prone_check_api" version="2.2.0">
@@ -1401,6 +1648,11 @@
          </artifact>
          <artifact name="javac-9+181-r4173-1.pom">
             <sha256 value="1569c081fa8358a06164372f9f541b8a0ea5ec0964931f5f74ead36ff52b4015" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="com.google.flatbuffers" name="flatbuffers-java" version="1.12.0">
+         <artifact name="flatbuffers-java-1.12.0.jar">
+            <pgp value="bcc135fc7ed8214f823d73e97fe9900f412d622e"/>
          </artifact>
       </component>
       <component group="com.google.guava" name="failureaccess" version="1.0.1">
@@ -1542,6 +1794,11 @@
       <component group="com.google.protobuf" name="protobuf-parent" version="3.4.0">
          <artifact name="protobuf-parent-3.4.0.pom">
             <sha256 value="24909c552842c0eb7a4c769d631a43cbef5a9a10c1640f2bdbd1ea149c573a47" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="com.google.testing.platform" name="core-proto" version="0.0.8-alpha01">
+         <artifact name="core-proto-0.0.8-alpha01.jar">
+            <sha256 value="2deaa8c40f27c8af158ae2c2132927cd9be345deb1450da49aca29cb168289cd" origin="Generated by Gradle because artifact wasn't signed"/>
          </artifact>
       </component>
       <component group="com.google.zxing" name="core" version="3.3.3">
@@ -1825,6 +2082,21 @@
          </artifact>
          <artifact name="fastutil-7.2.0.pom">
             <sha256 value="953b116521a73575eee990e3f2c36a892fb088bb2d9a3027c82193cb7a013ef7" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="it.unimi.dsi" name="fastutil" version="8.4.0">
+         <artifact name="fastutil-8.4.0.jar">
+            <pgp value="8254180bfc943b816e0b5e2e5e2f2b3d474efe6b"/>
+         </artifact>
+      </component>
+      <component group="jakarta.activation" name="jakarta.activation-api" version="1.2.1">
+         <artifact name="jakarta.activation-api-1.2.1.jar">
+            <pgp value="6dd3b8c64ef75253beb2c53ad908a43fb7ec07ac"/>
+         </artifact>
+      </component>
+      <component group="jakarta.xml.bind" name="jakarta.xml.bind-api" version="2.3.2">
+         <artifact name="jakarta.xml.bind-api-2.3.2.jar">
+            <pgp value="fc411cd3cb7dcb0abc9801058118b3bcdb1a5000"/>
          </artifact>
       </component>
       <component group="javax.activation" name="javax.activation-api" version="1.2.0">
@@ -2678,6 +2950,11 @@
             <sha256 value="6d02106e990a58632eab6ba38d271ed3d19e8ba3ae6d3f2e335d771b6156f216" origin="Generated by Gradle"/>
          </artifact>
       </component>
+      <component group="org.json" name="json" version="20180813">
+         <artifact name="json-20180813.jar">
+            <pgp value="5fa41c402006eac55d72aafd99ce9d9f22dc5c99"/>
+         </artifact>
+      </component>
       <component group="org.jvnet.staxex" name="stax-ex" version="1.8">
          <artifact name="stax-ex-1.8.jar">
             <pgp value="70cd19bfd9f6c330027d6f260315bfb7970a144f"/>
@@ -2685,6 +2962,11 @@
          </artifact>
          <artifact name="stax-ex-1.8.pom">
             <sha256 value="0a84c20cf71f6a3d21fe226b0d588332fc7ae3e90cb583c60a483317eb9f3644" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="org.jvnet.staxex" name="stax-ex" version="1.8.1">
+         <artifact name="stax-ex-1.8.1.jar">
+            <pgp value="04543577d6a9cc626239c50c7ecbd740ff06aeb5"/>
          </artifact>
       </component>
       <component group="org.mockito" name="mockito-core" version="2.19.0">
@@ -2913,6 +3195,21 @@
          <artifact name="oss-parent-9.pom">
             <pgp value="44fbdbbc1a00fe414f1c1873586654072ead6677"/>
             <sha256 value="fb40265f982548212ff82e362e59732b2187ec6f0d80182885c14ef1f982827a" origin="Generated by Gradle"/>
+         </artifact>
+      </component>
+      <component group="org.tensorflow" name="tensorflow-lite-metadata" version="0.1.0-rc2">
+         <artifact name="tensorflow-lite-metadata-0.1.0-rc2.jar">
+            <pgp value="db0597e3144342256bc81e3ec727d053c4481cf5"/>
+         </artifact>
+      </component>
+      <component group="xerces" name="xercesImpl" version="2.12.0">
+         <artifact name="xercesImpl-2.12.0.jar">
+            <pgp value="51b52dc5dd452f92be342cc2858fc4c4f43856a3"/>
+         </artifact>
+      </component>
+      <component group="xml-apis" name="xml-apis" version="1.4.01">
+         <artifact name="xml-apis-1.4.01.jar">
+            <pgp value="2db4f1ef0fa761ecc4ea935c86fdc7e2a11262cb"/>
          </artifact>
       </component>
    </components>

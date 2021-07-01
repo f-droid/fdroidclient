@@ -23,7 +23,6 @@
 
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -34,7 +33,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -42,17 +40,10 @@ import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.disc.DiskCache;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
-import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
-import com.nostra13.universalimageloader.core.DefaultConfigurationFactory;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.process.BitmapProcessor;
+import com.bumptech.glide.Glide;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
@@ -73,7 +64,6 @@ import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
-import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 
@@ -82,8 +72,6 @@ import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
 import java.util.UUID;
-
-import javax.microedition.khronos.opengles.GL10;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -361,10 +349,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     }
 
     private void clearImageLoaderMemoryCache() {
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        if (imageLoader.isInited()) {
-            imageLoader.clearMemoryCache();
-        }
+        Glide.get(getApplicationContext()).clearMemory();
     }
 
     @Override
@@ -429,53 +414,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         CleanCacheWorker.schedule(this);
 
         notificationHelper = new NotificationHelper(getApplicationContext());
-
-        // There are a couple things to pay attention to with this config: memory usage,
-        // especially on small devices; and, image processing vulns, since images are
-        // submitted via app's git repos, so anyone with commit privs there could submit
-        // exploits hidden in images.  Luckily, F-Droid doesn't need EXIF at all, and
-        // that is where the JPEG/PNG vulns have been. So it can be entirely stripped.
-        Display display = ContextCompat.getSystemService(this, WindowManager.class)
-                .getDefaultDisplay();
-        int maxSize = GL10.GL_MAX_TEXTURE_SIZE; // see ImageScaleType.NONE_SAFE javadoc
-        int width = display.getWidth();
-        if (width > maxSize) {
-            maxSize = width;
-        }
-        int height = display.getHeight();
-        if (height > maxSize) {
-            maxSize = height;
-        }
-
-        DiskCache diskCache;
-        long available = Utils.getImageCacheDirAvailableMemory(this);
-        int percentageFree = Utils.getPercent(available, Utils.getImageCacheDirTotalMemory(this));
-        if (percentageFree > 5) {
-            diskCache = new UnlimitedDiskCache(Utils.getImageCacheDir(this));
-        } else {
-            Log.i(TAG, "Switching to LruDiskCache(" + available / 2L + ") to save disk space!");
-            try {
-                diskCache = new LruDiskCache(Utils.getImageCacheDir(this),
-                        DefaultConfigurationFactory.createFileNameGenerator(),
-                        available / 2L);
-            } catch (IOException e) {
-                diskCache = new UnlimitedDiskCache(Utils.getImageCacheDir(this));
-            }
-        }
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-                .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
-                .defaultDisplayImageOptions(Utils.getDefaultDisplayImageOptionsBuilder().build())
-                .diskCache(diskCache)
-                .diskCacheExtraOptions(maxSize, maxSize, new BitmapProcessor() {
-                    @Override
-                    public Bitmap process(Bitmap bitmap) {
-                        // converting JPEGs to Bitmaps, then saving them removes EXIF metadata
-                        return bitmap;
-                    }
-                })
-                .threadPoolSize(getThreadPoolSize())
-                .build();
-        ImageLoader.getInstance().init(config);
 
         if (preferences.isIndexNeverUpdated()) {
             preferences.setDefaultForDataOnlyConnection(this);
@@ -578,24 +516,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         }
 
         return false;
-    }
-
-    /**
-     * Return the number of threads Universal Image Loader should use, based on
-     * the total RAM in the device.  Devices with lots of RAM can do lots of
-     * parallel operations for fast icon loading.
-     */
-    @TargetApi(16)
-    private int getThreadPoolSize() {
-        if (Build.VERSION.SDK_INT >= 16) {
-            ActivityManager activityManager = ContextCompat.getSystemService(this, ActivityManager.class);
-            ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
-            if (activityManager != null) {
-                activityManager.getMemoryInfo(memInfo);
-                return (int) Math.max(1, Math.min(16, memInfo.totalMem / 256 / 1024 / 1024));
-            }
-        }
-        return 2;
     }
 
     private SharedPreferences getAtStartTimeSharedPreferences() {

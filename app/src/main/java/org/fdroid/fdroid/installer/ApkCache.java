@@ -24,8 +24,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 
-import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.data.Apk;
@@ -150,7 +148,7 @@ public class ApkCache {
      * is fine since that does the right thing.
      */
     public static File getApkCacheDir(Context context) {
-        File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), CACHE_DIR);
+        File apkCacheDir = new File(context.getCacheDir(), CACHE_DIR);
         if (apkCacheDir.isFile()) {
             apkCacheDir.delete();
         }

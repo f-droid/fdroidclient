@@ -24,7 +24,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.cursoradapter.widget.CursorAdapter;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.bumptech.glide.Glide;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -41,16 +51,6 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.cursoradapter.widget.CursorAdapter;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * This is a view that shows a listing of all apps in the swap repo that this
@@ -313,7 +313,10 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     nameView.setText(app.name);
                 }
 
-                ImageLoader.getInstance().displayImage(app.getIconUrl(iconView.getContext()), iconView, Utils.getRepoAppDisplayImageOptions());
+                Glide.with(iconView.getContext())
+                        .load(app.getIconUrl(iconView.getContext()))
+                        .apply(Utils.getRepoAppDisplayImageOptions())
+                        .into(iconView);
 
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);

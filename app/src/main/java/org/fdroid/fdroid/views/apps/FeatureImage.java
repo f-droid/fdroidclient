@@ -11,16 +11,6 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
-import org.fdroid.fdroid.R;
-
-import java.util.Random;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
@@ -28,6 +18,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+
+import org.fdroid.fdroid.R;
+
+import java.util.Random;
 
 /**
  * A feature image can have a {@link android.graphics.drawable.Drawable} or a {@link Palette}. If
@@ -248,55 +249,32 @@ public class FeatureImage extends AppCompatImageView {
         return path;
     }
 
-    public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, @Nullable String featureImageToShow, @Nullable String fallbackImageToExtractColours) {
+    public void loadImageAndDisplay(@NonNull RequestOptions imageOptions, @Nullable String featureImageToShow, @Nullable String fallbackImageToExtractColours) {
         setColour(ContextCompat.getColor(getContext(), R.color.fdroid_blue));
         if (!TextUtils.isEmpty(featureImageToShow)) {
-            loadImageAndDisplay(loader, imageOptions, featureImageToShow);
+            loadImageAndDisplay(imageOptions, featureImageToShow);
         } else if (!TextUtils.isEmpty(fallbackImageToExtractColours)) {
-            loadImageAndExtractColour(loader, imageOptions, fallbackImageToExtractColours);
+            loadImageAndExtractColour(imageOptions, fallbackImageToExtractColours);
         }
     }
 
-    private void loadImageAndExtractColour(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, String url) {
-        loader.loadImage(url, imageOptions, new ImageLoadingAdapter() {
+    private void loadImageAndExtractColour(@NonNull RequestOptions imageOptions, String url) {
+        Glide.with(getContext()).asBitmap().load(url).apply(imageOptions).listener(new RequestListener<Bitmap>() {
             @Override
-            public void onLoadingComplete(String imageUri, View view, final Bitmap loadedImage) {
-                if (loadedImage != null) {
-                    new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                        @Override
-                        public void onGenerated(@NonNull Palette palette) {
-                            if (palette != null) {
-                                setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
-                            }
-                        }
-                    });
-                }
+            public boolean onLoadFailed(@Nullable GlideException e, Object o, Target<Bitmap> target, boolean b) {
+                setColorAndAnimateChange(Color.LTGRAY);
+                return false;
             }
-        });
-    }
 
-    public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, String url) {
-        loader.loadImage(url, imageOptions, new ImageLoadingAdapter() {
             @Override
-            public void onLoadingComplete(String imageUri, View view, final Bitmap loadedImage) {
-                if (loadedImage != null) {
-                    setImageBitmap(loadedImage);
-                }
+            public boolean onResourceReady(Bitmap loadedImage, Object o, Target<Bitmap> target, DataSource dataSource, boolean b) {
+                return false;
             }
-        });
+        }).into(this);
+
     }
 
-    private abstract static class ImageLoadingAdapter implements ImageLoadingListener {
-        @Override
-        public void onLoadingStarted(String imageUri, View view) {
-        }
-
-        @Override
-        public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-        }
-
-        @Override
-        public void onLoadingCancelled(String imageUri, View view) {
-        }
+    public void loadImageAndDisplay(@NonNull RequestOptions imageOptions, String url) {
+        Glide.with(getContext()).load(url).apply(imageOptions).into(this);
     }
 }

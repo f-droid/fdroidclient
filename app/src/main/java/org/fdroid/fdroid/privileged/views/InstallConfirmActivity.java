@@ -33,7 +33,11 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -43,10 +47,6 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
 
 /**
  * NOTES:
@@ -79,8 +79,10 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
         appName.setText(app.name);
-        ImageLoader.getInstance().displayImage(app.getIconUrl(this), appIcon,
-                Utils.getRepoAppDisplayImageOptions());
+        Glide.with(this)
+                .load(app.getIconUrl(this))
+                .apply(Utils.getRepoAppDisplayImageOptions())
+                .into(appIcon);
 
         tabHost.setup();
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

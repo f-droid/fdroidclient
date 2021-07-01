@@ -59,11 +59,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.App;
@@ -126,8 +124,7 @@ public final class Utils {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
     };
 
-    private static DisplayImageOptions.Builder defaultDisplayImageOptionsBuilder;
-    private static DisplayImageOptions repoAppDisplayImageOptions;
+    private static RequestOptions repoAppDisplayImageOptions;
 
     private static Pattern safePackageNamePattern;
 
@@ -167,7 +164,7 @@ public final class Utils {
      * @return the directory where cached icons/feature graphics/screenshots are stored
      */
     public static File getImageCacheDir(Context context) {
-        File cacheDir = StorageUtils.getCacheDirectory(context.getApplicationContext(), true);
+        File cacheDir = Glide.getPhotoCacheDir(context.getApplicationContext());
         return new File(cacheDir, "icons");
     }
 
@@ -485,42 +482,17 @@ public final class Utils {
     }
 
     /**
-     * Since there have been vulnerabilities in EXIF processing in Android, this
-     * disables all use of EXIF.
-     *
-     * @see <a href="https://securityaffairs.co/wordpress/51043/mobile-2/android-cve-2016-3862-flaw.html">CVE-2016-3862</a>
-     */
-    public static DisplayImageOptions.Builder getDefaultDisplayImageOptionsBuilder() {
-        if (defaultDisplayImageOptionsBuilder == null) {
-            defaultDisplayImageOptionsBuilder = createDefaultDisplayImageOptionsBuilder();
-        }
-        return defaultDisplayImageOptionsBuilder;
-    }
-
-    /**
-     * Gets the {@link DisplayImageOptions} instance used to configure
-     * {@link com.nostra13.universalimageloader.core.ImageLoader} instances
+     * Gets the {@link RequestOptions} instance used to configure
+     * {@link Glide} instances
      * used to display app icons.  It lazy loads a reusable static instance.
      */
-    public static DisplayImageOptions getRepoAppDisplayImageOptions() {
+    public static RequestOptions getRepoAppDisplayImageOptions() {
         if (repoAppDisplayImageOptions == null) {
-            repoAppDisplayImageOptions = createDefaultDisplayImageOptionsBuilder()
-                    .showImageOnLoading(R.drawable.ic_repo_app_default)
-                    .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-                    .showImageOnFail(R.drawable.ic_repo_app_default)
-                    .displayer(new FadeInBitmapDisplayer(200, true, true, false))
-                    .build();
+            repoAppDisplayImageOptions = new RequestOptions()
+                    .error(R.drawable.ic_repo_app_default)
+                    .fallback(R.drawable.ic_repo_app_default);
         }
         return repoAppDisplayImageOptions;
-    }
-
-    private static DisplayImageOptions.Builder createDefaultDisplayImageOptionsBuilder() {
-        return new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .considerExifParams(false)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .imageScaleType(ImageScaleType.EXACTLY);
     }
 
     /**
@@ -529,19 +501,8 @@ public final class Utils {
      * We fall back to the placeholder icon otherwise.
      */
     public static void setIconFromRepoOrPM(@NonNull App app, ImageView iv, Context context) {
-        if (app.getIconUrl(iv.getContext()) == null) {
-            try {
-                iv.setImageDrawable(context.getPackageManager().getApplicationIcon(app.packageName));
-            } catch (PackageManager.NameNotFoundException e) {
-                DisplayImageOptions options = Utils.getRepoAppDisplayImageOptions();
-                iv.setImageDrawable(options.shouldShowImageForEmptyUri()
-                        ? options.getImageForEmptyUri(FDroidApp.getInstance().getResources())
-                        : null);
-            }
-        } else {
-            ImageLoader.getInstance().displayImage(
-                    app.getIconUrl(iv.getContext()), iv, Utils.getRepoAppDisplayImageOptions());
-        }
+        RequestOptions options = Utils.getRepoAppDisplayImageOptions();
+        Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(options).into(iv);
     }
 
     // this is all new stuff being added

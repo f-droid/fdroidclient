@@ -1,13 +1,16 @@
 package org.fdroid.fdroid.views;
 
+import static org.junit.Assert.assertEquals;
+
 import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.core.app.ApplicationProvider;
 
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.Preferences;
@@ -26,12 +29,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import androidx.appcompat.view.ContextThemeWrapper;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-
 @Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
 public class AppDetailsAdapterTest extends FDroidProviderTest {
@@ -41,7 +38,6 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
         Preferences.setupForTests(context);
 
         Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
@@ -56,7 +52,6 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
 
     @After
     public void teardown() {
-        ImageLoader.getInstance().destroy();
         DBHelper.clearDbHelperSingleton();
     }
 
