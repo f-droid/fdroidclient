@@ -73,8 +73,6 @@
 
         <!--Platform attributes-->
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
-        <item name="android:statusBarColor">?colorPrimaryVariant</item>
     </style>
 
     <!-- light app theme with accent colors following roughly android design guidelines -->
