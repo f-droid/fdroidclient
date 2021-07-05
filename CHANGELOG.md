@@ -1,3 +1,11 @@
+### 1.13 (2021-07-05)
+
+* Overhaul icon loading using Glide (@proletarius101)
+
+* New adaptive icon (@12people)
+
+* Code modernization (@Isira-Seneviratne)
+
 ### 1.13-alpha1 (2021-06-02)
 
 * Stop repeated updates of Trichrome Library

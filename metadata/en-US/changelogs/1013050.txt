@@ -9,3 +9,9 @@
 * More changes to follow Material Design (@proletarius101)
 
 * Improve OpenCollective badge (@ConnyDuck)
+
+* Overhaul icon loading using Glide (@proletarius101)
+
+* New adaptive icon (@12people)
+
+* Code modernization (@Isira-Seneviratne)
