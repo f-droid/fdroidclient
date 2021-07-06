@@ -60,9 +60,9 @@
     <string name="local_repo_name">আপনার স্থানীয় রেপোর নাম</string>
     <string name="system_installer_on">প্যাকেজ ইনস্টল, আপডেট এবং মুছে ফেলার জন্য প্রাইভেলিজড এক্সটেনশন ব্যবহার করুন</string>
     <string name="system_installer">প্রিভিলেজড এক্সটেনশন</string>
-    <string name="notify_on">আপডেট আসলে নোটিফিকেশন দেখান</string>
+    <string name="notify_on">আপডেট আসলে বিজ্ঞপ্তি দেখাও</string>
     <string name="notify">উপলব্ধ আপডেটগুলি দেখান</string>
-    <string name="update_auto_install_summary">একটি নোটিফিকেশন দেখিয়ে ব্যাকগ্রাউন্ডে অ্যাপ্লিকেশনগুলি ডাউনলোড এবং আপডেট করুন</string>
+    <string name="update_auto_install_summary">একটি বিজ্ঞপ্তি দেখিয়ে ব্যাকগ্রাউন্ডে অ্যাপ্লিকেশনগুলি ডাউনলোড এবং আপডেট করুন</string>
     <string name="update_auto_install">স্বয়ংক্রিয়ভাবে আপডেটগুলি ইনস্টল করুন</string>
     <string name="update_auto_download_summary">আপডেটগুলি স্বয়ংক্রিয়ভাবে ডাউনলোড হয় এবং সেগুলি ইনস্টল করার জন্য আপনাকে অবহিত করা হয়</string>
     <string name="update_auto_download">স্বয়ংক্রিয়ভাবে আপডেটগুলি আনুন</string>
@@ -123,10 +123,10 @@
     <string name="login_password">পাসওয়ার্ড</string>
     <string name="login_name">নাম</string>
     <string name="app_details_donate_prompt">%2$s, %1$s বানিয়েছে। তাদেরকে এক কাপ কফি কিনে দাও!</string>
-    <string name="app_details__incompatible_mismatched_signature">ইন্সটলড ভার্সন থেকে আলাদা সিগনেচার</string>
+    <string name="app_details__incompatible_mismatched_signature">এটার স্বাক্ষর ইন্সটলকৃত সংস্করণ থেকে আলাদা</string>
     <string name="app_details_donate_prompt_unknown_author">ডেভলপারকে %1$s দামের কফি কিনে দিন!</string>
     <string name="no_such_app">এ জাতীয় কোনও অ্যাপ পাওয়া যায় নি।</string>
-    <string name="repo_error_empty_username">ব্যবহারকারীর নাম খালি , শংসাপত্র পরিবর্তন হয়নি</string>
+    <string name="repo_error_empty_username">ব্যবহারকারীর নাম খালি, যাচাইকরণপত্র পরিবর্তন হয়নি</string>
     <string name="theme">রঙ</string>
     <string name="permissions">অনুমতি</string>
     <string name="hiding_calculator">গণন-যন্ত্র</string>

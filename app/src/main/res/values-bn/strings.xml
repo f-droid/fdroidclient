@@ -129,9 +129,9 @@
     <string name="local_repo_name">আপনার স্থানীয় রেপোর নাম</string>
     <string name="system_installer_on">প্যাকেজ ইনস্টল, আপডেট এবং মুছে ফেলার জন্য প্রাইভেলিজড এক্সটেনশন ব্যবহার করুন</string>
     <string name="system_installer">প্রিভিলেজড এক্সটেনশন</string>
-    <string name="notify_on">আপডেট আসলে নোটিফিকেশন দেখান</string>
+    <string name="notify_on">হালনাগাদ আসলে বিজ্ঞপ্তি দেখাও</string>
     <string name="notify">উপলব্ধ আপডেটগুলি দেখান</string>
-    <string name="update_auto_install_summary">একটি নোটিফিকেশন দেখিয়ে ব্যাকগ্রাউন্ডে অ্যাপ্লিকেশনগুলি ডাউনলোড এবং আপডেট করুন</string>
+    <string name="update_auto_install_summary">একটি বিজ্ঞপ্তি দেখিয়ে পটভূমিতে অ্যাপলিকেশনগুলো ডাউনলোড এবং হালনাগাদ করো</string>
     <string name="update_auto_install">স্বয়ংক্রিয়ভাবে আপডেটগুলি ইনস্টল করুন</string>
     <string name="update_auto_download_summary">আপডেটগুলি স্বয়ংক্রিয়ভাবে ডাউনলোড হয় এবং সেগুলি ইনস্টল করার জন্য আপনাকে অবহিত করা হয়</string>
     <string name="update_auto_download">স্বয়ংক্রিয়ভাবে আপডেটগুলি আনুন</string>
@@ -157,7 +157,7 @@
     <string name="hide_all_notifications">সকল বিজ্ঞপ্তি লুকাও</string>
     <string name="unstable_updates_summary">অস্থিতিশীল সংস্করণের আপডেট প্রস্তাব দাও</string>
     <string name="unstable_updates">অস্থিতিশীল আপডেট</string>
-    <string name="cache_downloaded">ক্যাশড অ্যাপস রাখুন</string>
+    <string name="cache_downloaded">ক্যাশড অ্যাপ রাখো</string>
     <string name="prompt_to_send_crash_reports_summary">ক্র্যাশ সম্পর্কে তথ্য সংগ্রহ করুন এবং ডেভেলপারের কাছে পাঠাতে বলুন</string>
     <string name="prompt_to_send_crash_reports">ক্র্যাশ রিপোর্ট পাঠানোর অনুরোধ</string>
     <string name="enable_nfc_send">এনএফসি যোগাযোগ সক্রিয় করুন…</string>
