@@ -1,5 +1,17 @@
-* etosoj kongruaj kun originalaj Android‑etosoj (@proletarius101)
+• etosoj kongruaj kun originalaj Android‑etosoj (@proletarius101)
 
-* novaj supraj atentigoj: “neniu interreta konekto aktiva” kaj “sen interreto”
+• supraj atentigoj: “neniu interreta konekto” k “sen interreto”
 
-* plibonigita traktado de deponejoj kaj spegul‑serviloj ĉe USB OTG kaj SD‑kartoj
+• pli bone trakti deponejojn kaj spegul‑servilojn ĉe USB OTG kaj SD‑kartoj
+
+• ĉesi plurfoje ĝisdatigi bibliotekon Trichrome
+
+• ŝanĝoj por kongrui kun Material Design (@proletarius101)
+
+• plibeligita emblemo de OpenCollective (@ConnyDuck)
+
+• ŝargado de emblemoj uzante Glide (@proletarius101)
+
+• adaptiĝanta emblemo (@12people)
+
+• modernigita kodo (@Isira-Seneviratne)
