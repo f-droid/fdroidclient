@@ -1,0 +1,17 @@
+* Obsł. motywów powiąz. z wbud. motywami Androida (@proletarius101)
+
+* Nowe powiadom. na górnym banerze: „Brak Internetu” i „Brak wł. transmisji danych lub Wi-Fi”
+
+* Ulepsz. obsł. repo i mirrorów USB-OTG i kart SD
+
+* Zatrz. powt. się aktualizacji Trichrome Library
+
+* Więcej zmian do śledz. Material Design (@proletarius101)
+
+* Ulepsz. odznaki OpenCollective (@ConnyDuck)
+
+* Przebud. ikony ładow. za pomocą Glide (@proletarius101)
+
+* Nowa ikona adapt. (@12people)
+
+* Modern. kodu (@Isira-Seneviratne)
