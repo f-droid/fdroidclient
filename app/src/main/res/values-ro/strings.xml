@@ -17,10 +17,10 @@
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Anulați</string>
+    <string name="cancel">Cancel</string>
     <string name="enable">Activează</string>
     <string name="menu_search">Caută</string>
-    <string name="menu_launch">Deschide</string>
+    <string name="menu_launch">Deschideți</string>
     <string name="menu_install">Instalează</string>
     <string name="menu_uninstall">Dezinstalează</string>
     <string name="menu_ignore_all">Ignoră toate actualizările</string>
