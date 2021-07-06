@@ -3,3 +3,15 @@
 *新的顶部横幅通知:“没有互联网”和“未启用数据或WiFi”
 
 *改进了对USB-OTG和SD卡仓库和镜像的处理
+
+* 停止 Trichrome 库的重复更新
+
+*更多遵循 Material Design 的更改 (@proletarius101)
+
+* 改进 OpenCollective 徽章 (@ConnyDuck)
+
+* 使用 Glide 对图标加载方式进行大幅调整 (@proletarius101)
+
+*新的适应性图标 (@12people)
+
+* 代码现代化 (@Isira-Seneviratne)

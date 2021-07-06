@@ -8,8 +8,8 @@
     <string name="updates">Aktualizacje</string>
     <string name="other">Inne</string>
     <string name="notify">Pokaż dostępne aktualizacje</string>
-    <string name="system_installer">Uprzywilejowany dodatek</string>
-    <string name="system_installer_on">Używaj uprzywilejowanego dodatku, aby instalować, aktualizować i usuwać paczki</string>
+    <string name="system_installer">Uprzywilejowane rozszerzenie</string>
+    <string name="system_installer_on">Używaj uprzywilejowanego rozszerzenia, aby instalować, aktualizować i usuwać paczki</string>
     <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
     <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
     <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS</string>
@@ -543,6 +543,6 @@
     <string name="theme_follow_system">Systemowy</string>
     <string name="use_pure_black_dark_theme_summary">Zalecane jedynie dla ekranów OLED.</string>
     <string name="use_pure_black_dark_theme">Użyj czarnego tła w ciemnym motywie</string>
-    <string name="banner_no_data_or_wifi">Brak danych lub WiFi włączone</string>
+    <string name="banner_no_data_or_wifi">Brak włączonej transmisji danych lub Wi-Fi</string>
     <string name="banner_no_internet">Brak Internetu</string>
 </resources>

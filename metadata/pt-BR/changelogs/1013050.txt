@@ -1,1 +1,3 @@
 * Suporte de temas modernizado e vinculado aos temas do Android (@proletarius101)
+
+* Novas notificações no banner superior: "Sem Internet" e "Sem dados ou WiFi habilitados"

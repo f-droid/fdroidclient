@@ -1,0 +1,3 @@
+* Grandes mejoras en el rendimiento de la interfaz de usuario, especialmente con archivo habilitado
+
+* Se han corregidos errores de crasheo

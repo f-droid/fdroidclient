@@ -504,4 +504,9 @@
     <string name="fdroid_metrics_report">%s metrikajelentés</string>
     <string name="install_history_and_metrics">Telepítési előzmények és metrikák</string>
     <string name="send_fdroid_metrics_json">%s metrikajelentés JSON fájlként</string>
+    <string name="theme_follow_system">Rendszer követése</string>
+    <string name="use_pure_black_dark_theme_summary">Csak OLED képernyőkön javasolt.</string>
+    <string name="use_pure_black_dark_theme">Teljesen fekete háttér használata a sötét téma esetén</string>
+    <string name="banner_no_data_or_wifi">Nincs adatkapcsolat vagy WiFi</string>
+    <string name="banner_no_internet">Nincs internet</string>
 </resources>

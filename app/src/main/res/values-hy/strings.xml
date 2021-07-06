@@ -264,4 +264,15 @@
         <item quantity="one">Թարմացվել է %1$d օր առաջ</item>
         <item quantity="other">Թարմացվել է %1$d օր առաջ</item>
     </plurals>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">Թարմացնել %1$d ափփ։</item>
+        <item quantity="other">Թարմացնել %1$d ափփ։</item>
+    </plurals>
+    <string name="updates__show_updateable_apps">Ցույց տալ</string>
+    <string name="updates__hide_updateable_apps">Փաքցնել</string>
+    <string name="app_list__dismiss_app_update">Թարմացումն արհամարված է</string>
+    <string name="app_list_download_ready">Բեռնվել է, պատրաստ է տեղադրման</string>
+    <string name="send_installed_apps">Կիսվել տեղադրված հավելվածներով</string>
+    <string name="sort_search">Դասակարգել արդյունքները</string>
+    <string name="antifeatures">Անցանկալի ֆունկցիաներ</string>
 </resources>

@@ -489,4 +489,24 @@
     <string name="scan_removable_storage_summary">Traži repozitorije paketa na prijenosnoj pohrani kao što su SD kartice i USB pohrana</string>
     <string name="allow_push_requests_summary">Metapodaci repozitorija mogu uključivati push zahtjeve za instaliranje ili deinstaliranje aplikacija</string>
     <string name="theme_follow_system">Slijedi sustav</string>
+    <string name="app_list__dismiss_installing_app">Instalacija prekinuta</string>
+    <string name="undo">Natrag</string>
+    <string name="warning_scaning_qr_code">Vaša kamera nema automatsko fokusiranje. Možda će biti teško skenirati kod.</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Prikaži %1$d aplikaciju iz %2$s kategorije</item>
+        <item quantity="few">Prikaži sve %1$d aplikacije iz %2$s kategorije</item>
+        <item quantity="other">Prikaži sve %1$d aplikacije iz %2$s kategorije</item>
+    </plurals>
+    <string name="tts_category_name">Kategorija %1$s</string>
+    <string name="notification_channel_updates_description">Prikaže obavijesti o ažuriranjima aplikacija i repozitorija.</string>
+    <string name="notification_channel_updates_title">Ažuriranja</string>
+    <string name="notification_channel_swaps_description">Prikaže obavijesti o P2P razmjeni aplikacija.</string>
+    <string name="notification_channel_swaps_title">Razmjene</string>
+    <string name="notification_channel_installs_description">Prikaže obavijesti o instalaciji aplikacija.</string>
+    <string name="notification_channel_installs_title">Instalacije</string>
+    <string name="swap_toast_invalid_url">Nevaljan URL za razmjenu: %1$s</string>
+    <string name="swap_toast_find_removeable_storage">Izaberite svoju uklonjivu SD karticu ili USB</string>
+    <string name="swap_toast_not_removable_storage">Taj izbor se ne podudara s niti jednim uklonjivim medijem za pohranu, pokušajte ponovno!</string>
+    <string name="not_visible_nearby_description">Prije razmjene s uređajima u blizini, učinite svoj uređaj vidljivim.</string>
+    <string name="banner_no_internet">Nema interneta</string>
 </resources>

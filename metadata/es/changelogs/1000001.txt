@@ -1,0 +1,3 @@
+* Se corrige un error al eliminar aplicaciones de los repos (#568)
+
+* Actualizaciones del índice mucho más rápidas

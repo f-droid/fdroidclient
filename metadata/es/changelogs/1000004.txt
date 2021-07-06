@@ -1,0 +1,7 @@
+* Gestos de deslizamiento añadidos a la pestaña de Actualizaciones
+
+* Mostrar advertencias con acciones en la pestaña de Actualizaciones para KnownVulns (Vulnerabilidades Conocidas)
+
+* Actualización de las traducciones
+
+* Correcciones en la interfaz de usuario oscura

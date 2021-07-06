@@ -1,5 +1,11 @@
-* Theme-Unterstützung gebunden an eingebaute Android-Themes (@proletarius101)
+* Designunterstützung an vorgegebene Android-Designs gebunden (@proletarius101)
 
-* Neue Banner-Benachrichtigungen oben: "Kein Internet" und "Keine Daten oder WLAN aktiviert"
+* Neue Benachrichtigungen: "Kein Internet" und "Mobile Daten oder WLAN nicht eingeschaltet"
 
-* Verbesserte Handhabung von USB-OTG- und SD-Karten-Repos und Mirrors
+* Verbesserte Verarbeitung von Repos und Spiegel auf USB-OTG und SD-Karten
+
+* Beendigung wiederholter Updates der Trichrome Library
+
+* Weitere Änderungen, um dem Material Design zu folgen (@proletarius101)
+
+* Verbesserung der OpenCollective-Marke (@ConnyDuck)
