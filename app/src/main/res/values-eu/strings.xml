@@ -518,4 +518,17 @@
     <string name="notification_channel_updates_title">Eguneraketak</string>
     <string name="notification_channel_installs_description">Aplikazioaren instalazio-jakinarazpenak erakusten ditu.</string>
     <string name="notification_channel_installs_title">Instalazioak</string>
+    <string name="send_to_fdroid_metrics">Erabilera datuak bidali</string>
+    <string name="fdroid_metrics_report">%s Metrika Erreportea</string>
+    <string name="install_history_and_metrics">Historia eta metrikak instalatu</string>
+    <string name="send_fdroid_metrics_json">%s metrika erreportea JSON fitxategia batean</string>
+    <string name="send_fdroid_metrics_report">%s metrika erreportea bidali</string>
+    <string name="menu_show_fdroid_metrics_report">Metrika erreportea erakutsi</string>
+    <string name="toast_metrics_in_install_history">%s metrika erreportea instalazio historian ikus daiteke</string>
+    <string name="theme_follow_system">Sistemarena erabili</string>
+    <string name="use_pure_black_dark_theme_summary">OLED paintailetarako bakarrik gomendatua.</string>
+    <string name="use_pure_black_dark_theme">Gai ilunearen atzealderako kolore beltz-beltza erabili</string>
+    <string name="banner_no_data_or_wifi">Datuak eta WiFi-a itzalita</string>
+    <string name="banner_no_internet">Internet gabe</string>
+    <string name="menu_show_install_history">Instalazio historia erakutsi</string>
 </resources>
