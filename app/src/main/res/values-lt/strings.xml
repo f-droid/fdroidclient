@@ -163,7 +163,7 @@
     <string name="no_permissions">Nėra leidimų</string>
     <string name="permissions">Leidimai</string>
     <string name="repo_url">Adresas</string>
-    <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie skirtingo Wi-Fi, nei tik ką pridėta saugykla! Pabandykite prisijungti prie šio Wi-Fi: %s</string>
+    <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie skirtingo Wi-Fi, nei tik ką pridėta vietinė saugykla! Pabandykite prisijungti prie šio tinklo: %s</string>
     <string name="by_author_format">autoriai %s</string>
     <string name="prompt_to_send_crash_reports_summary">Rinkti duomenis apie strigtis ir klausti ar siųsti juos programos kūrėjui</string>
     <string name="hide_all_notifications">Slėpti visus pranešimus</string>
