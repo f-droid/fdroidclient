@@ -426,7 +426,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.main.MainActivity" />
         </activity>
-        <activity android:name=".AboutActivity" />
 
         <activity
             android:name=".installer.FileInstallerActivity"
@@ -494,6 +493,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/installer_file_provider" />
         </provider>
+        <provider
+            android:name="org.fdroid.fdroid.nearby.PublicSourceDirProvider"
+            android:authorities="${applicationId}.nearby.PublicSourceDirProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
         <provider
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"

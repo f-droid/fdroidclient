@@ -59,6 +59,7 @@ import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
+import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
@@ -537,7 +538,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             sendBt = new Intent(Intent.ACTION_SEND);
 
             // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
-            sendBt.setType("application/zip");
+            sendBt.setType(PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
             sendBt.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, packageInfo));
 
             // not all devices have the same Bluetooth Activities, so
