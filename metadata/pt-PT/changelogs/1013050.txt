@@ -1,5 +1,11 @@
 * Suporte temático ligado aos temas do Android embutido (@proletarius101)
 
-* Novas notificações de banners no topo: "Sem Internet" e "Sem dados móveis/WiFi"
+* Novas notificações de banners de topo: "Sem Internet" e "Sem dados ou Wi-Fi ativados"
 
-* Melhoria no manuseio de repos e espelhos de USB-OTG e cartões SD
+* Melhoria no manuseio de USB-OTG e SD Card repos e espelhos
+
+* Parar atualizações repetidas da Biblioteca Tricromia
+
+* Mais alterações a seguir o Design de Material (@proletarius101)
+
+* Melhorado o crachá OpenCollective (@ConnyDuck)
