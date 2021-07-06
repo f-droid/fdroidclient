@@ -1,5 +1,11 @@
-* Theme-Unterstützung gebunden an eingebaute Android-Themes (@proletarius101)
+* Theme support tied to built-in Android themes (@proletarius101)
 
-* Neue Banner-Benachrichtigungen oben: "Kein Internet" und "Keine Daten oder WLAN aktiviert"
+* New top banner notifications: "No Internet" and "No Data or WiFi enabled"
 
-* Verbesserte Handhabung von USB-OTG- und SD-Karten-Repos und Mirrors
+* Improved handling of USB-OTG and SD Card repos and mirrors
+
+* Stop repeated updates of Trichrome Library
+
+* More changes to follow Material Design (@proletarius101)
+
+* Improve OpenCollective badge (@ConnyDuck)
