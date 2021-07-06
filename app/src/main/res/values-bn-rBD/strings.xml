@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">F-Droid</string>
     <string name="updates">আপডেট</string>
     <string name="ok">ঠিক আছে</string>
@@ -149,13 +149,13 @@
         <item quantity="one">%dটি দেখো</item>
         <item quantity="other">%d এর সবগুলো দেখো</item>
     </plurals>
-    <string tools:ignore="UnusedResources" name="category_Writing">লেখা</string>
-    <string tools:ignore="UnusedResources" name="category_Time">সময়</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">থিমিং</string>
-    <string tools:ignore="UnusedResources" name="category_System">ব্যবস্থা</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">খেলাধুলা ও স্বাস্থ্য</string>
-    <string tools:ignore="UnusedResources" name="category_Security">নিরাপত্তা</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">দিক নির্ণয়</string>
+    <string name="category_Writing">লেখা</string>
+    <string name="category_Time">সময়</string>
+    <string name="category_Theming">থিমিং</string>
+    <string name="category_System">ব্যবস্থা</string>
+    <string name="category_Sports_Health">খেলাধুলা ও স্বাস্থ্য</string>
+    <string name="category_Security">নিরাপত্তা</string>
+    <string name="category_Navigation">দিক নির্ণয়</string>
     <string name="wifi_ap">হটস্পট</string>
     <string name="wifi">ওয়াই-ফাই</string>
     <string name="pref_language_default">সিস্টেম ডিফল্ট</string>

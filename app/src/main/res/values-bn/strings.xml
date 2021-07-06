@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">এফ-ড্রয়েড</string>
     <string name="menu_search">অনুসন্ধান</string>
     <string name="menu_settings">সেটিংস</string>
@@ -221,7 +221,7 @@
     <string name="about_forum">সহায়তা সভা</string>
     <string name="undo">পূর্বাবস্থা</string>
     <string name="notification_channel_updates_title">হালনাগাদ</string>
-    <string tools:ignore="UnusedResources" name="category_System">ব্যবস্থা</string>
+    <string name="category_System">ব্যবস্থা</string>
     <string name="preference_category__my_apps">আমার অ্যাপ</string>
     <string name="menu_source">উৎস কোড</string>
     <string name="menu_license">অনুমতিপত্র: %s</string>
@@ -296,7 +296,7 @@
     <string name="swap_active_hotspot">%1$s (তোমার হটস্পট)</string>
     <string name="swap_no_wifi_network">কোনো নেটওয়ার্ক নেই</string>
     <string name="nearby_splash__find_people_button">কাছা</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">খেলাধুলা ও স্বাস্থ্য</string>
+    <string name="category_Sports_Health">খেলাধুলা ও স্বাস্থ্য</string>
     <string name="repo_num_apps">অ্যাপ সংখ্যা</string>
     <string name="status_connecting_to_repo">%1$s
 \nএর সাথে যোগাযোগ হচ্ছে</string>

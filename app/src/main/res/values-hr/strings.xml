@@ -495,7 +495,7 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Prikaži %1$d aplikaciju iz %2$s kategorije</item>
         <item quantity="few">Prikaži sve %1$d aplikacije iz %2$s kategorije</item>
-        <item quantity="other"></item>
+        <item quantity="other">Prikaži sve %1$d aplikacije iz %2$s kategorije</item>
     </plurals>
     <string name="tts_category_name">Kategorija %1$s</string>
     <string name="notification_channel_updates_description">Prikaže obavijesti o ažuriranjima aplikacija i repozitorija.</string>

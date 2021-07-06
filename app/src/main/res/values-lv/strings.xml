@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="version">Versija</string>
     <string name="delete">Dzēst</string>
     <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
@@ -315,7 +315,7 @@
     <string name="empty_search_available_app_list">Nav pieejamas atbilstošas lietotnes.</string>
     <string name="empty_can_update_app_list">Apsveicam!
 \nJūsu lietotnes ir atjauninātas.</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Motīvi</string>
+    <string name="category_Theming">Motīvi</string>
     <string name="wifi_ap">Karstais punkts</string>
     <string name="requires_features">Nepieciešams: %1$s</string>
     <string name="share_repository">Dalīt Krātuvi</string>

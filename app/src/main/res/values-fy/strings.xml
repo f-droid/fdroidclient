@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="notification_channel_updates_title">Fernijingen</string>
     <string name="keep_forever">Ivich</string>
     <string name="keep_year">1 Jier</string>
@@ -39,8 +39,8 @@
     <string name="notify">Beskikbere fernijingen sjen litte</string>
     <string name="notification_title_summary_install_error">Ynstallaasje Mislearre</string>
     <string name="notification_title_single_update_available">Fernijing Beskikber</string>
-    <string tools:ignore="UnusedResources" name="category_System">Systeem</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sport &amp; Sûnens</string>
+    <string name="category_System">Systeem</string>
+    <string name="category_Sports_Health">Sport &amp; Sûnens</string>
     <string name="wifi">Wi-Fi</string>
     <string name="less">Minder</string>
     <string name="more">Mear</string>
@@ -52,18 +52,18 @@
     <string name="newPerms">Nij</string>
     <string name="swap_dont_show_again">Nea wer sjen litte</string>
     <string name="swap_welcome">Wolkom by F-Droid!</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Skrieuwe</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Tiid</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Befeiliging</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Wittenskip &amp; Edukaasje</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Lêze</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Telefoan &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navigaasje</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Jild</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grafysk</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Spultsjes</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Ûntwikkeling</string>
+    <string name="category_Writing">Skrieuwe</string>
+    <string name="category_Time">Tiid</string>
+    <string name="category_Security">Befeiliging</string>
+    <string name="category_Science_Education">Wittenskip &amp; Edukaasje</string>
+    <string name="category_Reading">Lêze</string>
+    <string name="category_Phone_SMS">Telefoan &amp; SMS</string>
+    <string name="category_Navigation">Navigaasje</string>
+    <string name="category_Money">Jild</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Graphics">Grafysk</string>
+    <string name="category_Games">Spultsjes</string>
+    <string name="category_Development">Ûntwikkeling</string>
     <string name="skip">Oerslaan</string>
     <string name="details_notinstalled">Net ynstalleare</string>
     <string name="main_menu__swap_nearby">Tichteby</string>
@@ -102,7 +102,7 @@
     <string name="ok">OK</string>
     <string name="updates">Fernijingen</string>
     <string name="app_name">F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string name="category_Multimedia">Multimedia</string>
     <string name="pref_language_default">Systeem Standert</string>
     <string name="pref_language">Taal</string>
     <string name="preference_manage_installed_apps">Ynstallearre applikaasjes beheare</string>
@@ -135,7 +135,7 @@
     <string name="warning_no_internet">Kin net fernije, binne jo mei it ynternet ferbûn\?</string>
     <string name="antitracklist">Dizze applikaasje folget en rapportearret jo aktiviteit</string>
     <string name="app_list__name__downloading_in_progress">%1$s oan it ynladen</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Ferbiningen</string>
+    <string name="category_Connectivity">Ferbiningen</string>
     <string name="menu_add_repo">Nij Bewarplak</string>
     <string name="menu_manage">Bewarplakken</string>
 </resources>

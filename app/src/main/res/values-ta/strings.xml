@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="installIncompatible">உங்கள் சாதனத்துடன் பொருந்தாத பயன்பாடு, எப்படியும் நிறுவவா\?</string>
     <string name="version">பதிப்பு</string>
     <string name="delete">நீக்குக</string>
@@ -354,8 +354,8 @@
     <string name="crash_dialog_text">எதிர்பாராத பிழை ஏற்பட்டது, பயன்பாட்டை நிறுத்துமாறு கட்டாயப்படுத்தியது. சிக்கலைசரிசெய்ய உதவும் விவரங்களை மின்னஞ்சல் செய்ய விரும்புகிறீர்களா\?</string>
     <string name="crash_dialog_title">எஃப்-டிரயோடு செயலிழந்தது</string>
     <string name="swap_send_fdroid">அனுப்புக F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">விளையாட்டு மற்றும் சுகாதாரம்</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">மல்டிமீடியா</string>
+    <string name="category_Sports_Health">விளையாட்டு மற்றும் சுகாதாரம்</string>
+    <string name="category_Multimedia">மல்டிமீடியா</string>
     <string name="unverified">சரிபார்க்கப்படாதது</string>
     <string name="warning_no_internet">புதுப்பிக்க முடியவில்லை, நீங்கள் இணையத்துடன் இணைக்கப்பட்டுள்ளீர்களா\?</string>
     <string name="updates__tts__download_app">தரவிறக்கம்</string>
@@ -363,7 +363,7 @@
     <string name="app_list__name__downloading_in_progress">பதிவிறக்குகிறது %1$s</string>
     <string name="swap_dont_show_again">இதை மீண்டும் காட்ட வேண்டாம்</string>
     <string name="swap_welcome">வரவேற்கிறோம் எஃப்-டிரயோடு க்கு!</string>
-    <string tools:ignore="UnusedResources" name="category_Development">வளர்ச்சி</string>
+    <string name="category_Development">வளர்ச்சி</string>
     <string name="preference_manage_installed_apps">நிறுவப்பட்ட பயன்பாடுகளை நிர்வகிக்கவும்</string>
     <plurals name="details_last_update_years">
         <item quantity="one">புதுப்பிக்கப்பட்டது %1$d ஆண்டு முன்பு</item>
@@ -485,7 +485,7 @@
     <string name="swap_hidden_wifi_ssid">(மறைக்கப்பட்டுள்ளது)</string>
     <string name="swap_visible_hotspot">ஹாட்ஸ்பாட் வழியாக தெரியும்</string>
     <string name="swap_active_hotspot">%1$s (உங்கள் ஹாட்ஸ்பாட்)</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">கருப்பொருள்</string>
+    <string name="category_Theming">கருப்பொருள்</string>
     <string name="swap_no_wifi_network">இன்னும் பிணையம் இல்லை</string>
     <string name="swap_success">இடமாற்று வெற்றி!</string>
     <string name="swap">பயன்பாடுகளை இடமாற்று</string>
