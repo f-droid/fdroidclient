@@ -100,7 +100,7 @@
     <string name="menu_manage">గిడ్డంగిలు</string>
     <string name="menu_uninstall">నివర్తించు</string>
     <string name="menu_upgrade">నవీకరించు</string>
-    <string name="preference_manage_installed_apps">సంస్థాపించిన అప్ లను నిర్వహించు</string>
+    <string name="preference_manage_installed_apps">స్థాపించిన యాప్‌లను నిర్వహించు</string>
     <string name="details_notinstalled">సంస్థాపన చేసి లేదు</string>
     <string name="category_Navigation">నౌకాయానం</string>
     <string name="app_list__name__successfully_installed">%1$s సంస్థాపన అయ్యింది</string>
@@ -157,7 +157,7 @@
     <string name="menu_source">మూల కోడ్</string>
     <string name="latest__empty_state__no_recent_apps">ఇటీవలి అనువర్తనాలు కనుగొనబడలేదు</string>
     <string name="categories__empty_state__no_categories">ప్రదర్శించడానికి వర్గాలు లేవు</string>
-    <string name="preference_category__my_apps">నా అనువర్తనాలు</string>
+    <string name="preference_category__my_apps">నా యాప్స్</string>
     <string name="antiadslist">ఈ అనువర్తనం ప్రకటనలు కలిగి ఉంది</string>
     <string name="antinonfreeadlist">ఈ అనువర్తనం ఉచితం కానీ పొడిగింతలను ప్రోత్సహిస్తుంది</string>
     <string name="antinonfreenetlist">ఈ అనువర్తనం ఉచితం కానీ నెట్వర్క్ సేవలను ప్రోత్సహిస్తుంది</string>
@@ -326,7 +326,7 @@
     <string name="install_history_summary">అన్ని ఇన్‌స్టాల్‌లు మరియు అన్‌ఇన్‌స్టాల్‌ల ప్రైవేట్ లాగ్‌ను చూడండి</string>
     <string name="send_version_and_uuid_summary">ఈ అనువర్తనం యొక్క సంస్కరణను మరియు డౌన్‌లోడ్ చేసేటప్పుడు యాదృచ్ఛిక, ప్రత్యేకమైన ID ని చేర్చండి, తదుపరి అనువర్తన పున art ప్రారంభంపై ప్రభావం చూపుతుంది.</string>
     <string name="allow_push_requests">అనువర్తనాలను ఇన్‌స్టాల్ చేయడానికి / అన్‌ఇన్‌స్టాల్ చేయడానికి రెపోలను అనుమతించండి</string>
-    <string name="send_history_csv">%s చరిత్రను CSV ఫైల్‌గా ఇన్‌స్టాల్ చేయండి</string>
+    <string name="send_history_csv">%s స్థాపన చరిత్రను CSV ఫైల్‌గా</string>
     <string name="over_data">డేటా ద్వారా</string>
     <string name="update_auto_download_summary">నవీకరణలు స్వయంచాలకంగా డౌన్‌లోడ్ చేయబడతాయి మరియు వాటిని ఇన్‌స్టాల్ చేయమని మీకు తెలియజేయబడుతుంది</string>
     <string name="allow_push_requests_summary">రెపో మెటాడేటా అనువర్తనాలను ఇన్‌స్టాల్ చేయడానికి లేదా అన్‌ఇన్‌స్టాల్ చేయడానికి పుష్ అభ్యర్థనలను కలిగి ఉంటుంది</string>
@@ -397,4 +397,21 @@
     <string name="uninstall_update_confirm">ఈ అనువర్తనాన్ని ఫ్యాక్టరీ సంస్కరణతో భర్తీ చేయాలా? మొత్తం డేటా తీసివేయబడుతుంది.</string>
     <string name="uninstalling">అన్‌ఇన్‌స్టాల్ చేస్తోంది…</string>
     <string name="swap_connecting">కనెక్ట్ చేస్తోంది</string>
+    <string name="panic_will_be_wiped">అన్‌ఇన్‌స్టాల్ చేయబడుతుంది మరియు మొత్తం డేటా తొలగించబడుతుంది</string>
+    <string name="preventScreenshots_summary">స్క్రీన్‌షాట్స్‌ని నిరొదించి మరియు యాప్ విషయాన్ని ఇటీవల అంశాలలో కనిపించకుండా చేయి</string>
+    <string name="show_incompat_versions_on">ఈ పరికరనికి ప్రతికూల యాప్ లను కూడా చూపు</string>
+    <string name="antinosourcesince">కొడ్ మూలం ఇక అందుబాటులో లేదు, నవికరణాలు లబించవు</string>
+    <string name="menu_show_install_history">స్థాపన చరిత్రను చూపించు</string>
+    <string name="menu_show_fdroid_metrics_report">కొలమానాల నివేదికను చూపించు</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="menu_liberapay">Liberapay</string>
+    <string name="repo_exists_add_mirror">ఇది %1$s యొక్క కాపీ. అదనపు వనరుగా జోడించాలా \?</string>
+    <string name="repositories_summary">యాప్స్ యొక్క అదనపు ములాలను జోడించండి</string>
+    <string name="send_fdroid_metrics_json">%s కొలమానాల నివేదిక ఫైల్‌గా</string>
+    <string name="toast_metrics_in_install_history">స్థాపన చరిత్ర చూసే సాధనంతో %s కొలమానాల నివేదిక చూడవచ్చు</string>
+    <string name="send_to_fdroid_metrics_summary">వారపు అనామక డేటాను F-Droid కొలమానాలకు పంపుతుంది (స్థాపన చరిత్రను ఉంచడం అవసరం)</string>
+    <string name="send_to_fdroid_metrics">వాడుక డేటాను పంపు</string>
+    <string name="send_fdroid_metrics_report">%s యొక్క కొలమానాల నివేదిక పంపు</string>
+    <string name="fdroid_metrics_report">%s కొలమానాల నివేదిక</string>
+    <string name="install_history_and_metrics">స్థాపన చరిత్ర మరియు కొలమానాలు</string>
 </resources>
