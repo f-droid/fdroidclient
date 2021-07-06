@@ -509,4 +509,6 @@
     <string name="install_history_and_metrics">ಇತಿಹಾಸ ಮತ್ತು ಮೆಟ್ರಿಕ್ಸ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿ</string>
     <string name="send_fdroid_metrics_json">%s ಮೆಟ್ರಿಕ್ಸ್ ವರದಿಯನ್ನುJSON ಫೈಲ್ ಪ್ರಕಾರದಲ್ಲಿ ವರದಿ ಮಾಡಿ</string>
     <string name="send_fdroid_metrics_report">%s ಮೆಟ್ರಿಕ್ಸ್ ವರದಿಯನ್ನು ಕಳುಹಿಸಿ</string>
+    <string name="banner_no_data_or_wifi">ಡೇಟಾ ಅಥವಾ ವೈಫೈ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿಲ್ಲ</string>
+    <string name="banner_no_internet">ಇಂಟರ್ನೆಟ್ ಇಲ್ಲ</string>
 </resources>
