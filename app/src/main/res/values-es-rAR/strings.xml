@@ -506,4 +506,9 @@
     <string name="install_history_and_metrics">Historial de instalaciones y métricas</string>
     <string name="send_fdroid_metrics_json">%s métricas como archivos JSON</string>
     <string name="send_fdroid_metrics_report">Enviar %s Métricas de reportes</string>
+    <string name="theme_follow_system">Usar el del sistema</string>
+    <string name="use_pure_black_dark_theme_summary">Recomendado solo para pantallas OLED.</string>
+    <string name="use_pure_black_dark_theme">Usar un fondo negro puro en el tema oscuro</string>
+    <string name="banner_no_data_or_wifi">Sin datos o WiFi activo</string>
+    <string name="banner_no_internet">Sin Internet</string>
 </resources>
