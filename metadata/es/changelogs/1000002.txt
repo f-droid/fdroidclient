@@ -1,0 +1,7 @@
+* Evita que el HTTP ETag se utilice como cookie de seguimiento
+
+* Se mejoro el diseño de las capturas de pantalla
+
+* Ahora se limpian correctamente los archivos temporales y de caché
+
+* Correcciones a el modo oscuro

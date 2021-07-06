@@ -1,0 +1,7 @@
+* Soporta la instalación de archivos multimedia, OTA, ZIP, etc.
+
+* Soporte completo para APKs firmados por múltiples claves de firma.
+
+* Nueva traducción al tibetano
+
+* Elimina aplicaciones y categorías relacionadas después de apagar un repostorio

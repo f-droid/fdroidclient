@@ -2,7 +2,7 @@
 
 * Mostrar "Deshacer" después de eliminar elementosde la solapa "Actualizaciones" (gracias @Hocuri!)
 
-* Arreglar el  menejo de ETag al conectar con os espejos NGINX #1737
+* Arreglar el menejo de ETag al conectar con os espejos NGINX #1737
 
 * Corregir incidencias con el "Último" display causado por tratamiento erróneo de husos horarios #1757
 
