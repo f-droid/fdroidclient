@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        tools:src="@drawable/ic_launcher"
+        tools:src="@mipmap/ic_launcher"
         android:scaleType="fitCenter"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"

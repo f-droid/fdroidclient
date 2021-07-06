@@ -14,7 +14,7 @@
 
     <ImageView
             android:id="@+id/icon"
-            swap:srcCompat="@drawable/ic_launcher"
+            swap:srcCompat="@drawable/ic_launcher_foreground"
             android:contentDescription="@string/icon"
             android:layout_alignParentTop="true"
             android:layout_width="117.6dp"
