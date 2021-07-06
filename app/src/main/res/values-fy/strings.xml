@@ -102,4 +102,40 @@
     <string name="ok">OK</string>
     <string name="updates">Fernijingen</string>
     <string name="app_name">F-Droid</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string name="pref_language_default">Systeem Standert</string>
+    <string name="pref_language">Taal</string>
+    <string name="preference_manage_installed_apps">Ynstallearre applikaasjes beheare</string>
+    <string name="main_menu__categories">Kategoryen</string>
+    <string name="antinonfreedeplist">Dizze applikaasje hinget ôf fan oare net-frije applikaasjes</string>
+    <string name="antiadslist">Dizze applikaasje hat advertinsjes</string>
+    <string name="antifeatures">Anty-funksjes</string>
+    <string name="antifeatureswarning">Dizze applikaasje hat funksjes wer ast misskien net oer meist.</string>
+    <string name="preference_category__my_apps">Myn Applikaasjes</string>
+    <string name="main_menu__updates">Fernijingen</string>
+    <string name="menu_uninstall">Fuortsmite</string>
+    <string name="menu_ignore_this">Dizze Fernijing Negearre</string>
+    <string name="menu_ignore_all">Alle Fernijingen Negearre</string>
+    <string name="send_install_history">Ynstallaasje skiednis ferstjoere</string>
+    <string name="unstable_updates_summary">Fernijingen nei ynstabile ferzjes oanbiede</string>
+    <string name="unstable_updates">Ynstabile fernijingen</string>
+    <string name="cache_downloaded">Cachte applikaasjes bewarje</string>
+    <string name="prompt_to_send_crash_reports_summary">Gegevens sammelje oer fêstrinners en freegje om dizze nei de ûntwikkelder te stjoeren</string>
+    <string name="prompt_to_send_crash_reports">Freegje om crash rapporten te ferstjoeren</string>
+    <string name="enable_nfc_send">NFC ferstjoeren Ynskeakelje…</string>
+    <string name="installIncompatible">De app is ynkompatibel mei jo apparaat, dochs ynstallearje\?</string>
+    <string name="crash_dialog_text">In ûnferwachte fout hat harren foardien, en de app mat no stopje. Wolle jo de details e-maile om te helpen dit probleem op te lossen\?</string>
+    <string name="crash_dialog_title">F-Droid is fêstrûn</string>
+    <string name="swap_send_fdroid">F-Droid Stjoere</string>
+    <string name="not_on_same_wifi">Jo apparaat sit net op itselde Wi-Fi as it lokale bewarplak dy jo krekt ta foecht ha! Probearje mei dit netwurk te ferbinen: %s</string>
+    <string name="repo_last_update">Lêste fernijing</string>
+    <string name="repo_details">Bewarplak</string>
+    <string name="unverified">Net ferifieare</string>
+    <string name="unsigned">Net ûndertekene</string>
+    <string name="warning_no_internet">Kin net fernije, binne jo mei it ynternet ferbûn\?</string>
+    <string name="antitracklist">Dizze applikaasje folget en rapportearret jo aktiviteit</string>
+    <string name="app_list__name__downloading_in_progress">%1$s oan it ynladen</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Ferbiningen</string>
+    <string name="menu_add_repo">Nij Bewarplak</string>
+    <string name="menu_manage">Bewarplakken</string>
 </resources>
