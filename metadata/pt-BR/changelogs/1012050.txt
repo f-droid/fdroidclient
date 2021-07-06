@@ -9,3 +9,5 @@
 * Programa eficientemente a limpeza do cache (@Isira-Seneviratne)
 
 * Revisão de URLs para a adição de repositórios (@projectgus)
+
+* Métricas do F-Doid opcionais (opt-in)
