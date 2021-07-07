@@ -1,3 +1,6 @@
+include:
+  - template: Security/License-Scanning.gitlab-ci.yml
+
 stages:
   - test
   - deploy
@@ -98,7 +101,7 @@ errorprone:
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
+      export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
 
@@ -127,8 +130,8 @@ deploy_nightly:
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
     - sed -i
-        's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
-        app/src/main/res/values*/strings.xml
+      's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
+      app/src/main/res/values*/strings.xml
     # add this nightly repo as a enabled repo
     - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
@@ -140,3 +143,8 @@ deploy_nightly:
     # build the APKs!
     - ./gradlew assembleDebug
     - fdroid nightly -v
+
+license_scanning:
+  variables:
+    # No need to verify dependencies for GitLab vendor CI jobs
+    GRADLE_CLI_OPTS: -Dorg.gradle.dependency.verification=lenient
