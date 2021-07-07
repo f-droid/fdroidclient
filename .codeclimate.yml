@@ -1,0 +1,39 @@
+version: '2'
+plugins:
+  sonar-java:
+    enabled: true
+    config:
+      tests_patterns:
+        - app/src/test/**
+        - app/src/testFull/**
+        - app/src/testShared/**
+        - app/src/androidTest/**
+  pmd:
+    enabled: true
+    config:
+      file: config/pmd/rules.xml
+    channel: beta
+  sonar-python:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - python:
+            python_version: 3
+  shellcheck:
+    enabled: true
+exclude_patterns:
+  - '**/*.jar'
+  - '**/*.gpg'
+  - '**/*.png'
+  - '**/*.jpg'
+  - '**/*.apk'
+  - '**/*.zip'
+  - '**/*.pro'
+  - '**/build/'
+  - '**/assets/'
+  - '**/resources/'
+  # Ignore symlinks
+  - app/src/main/res/values-iw
+  - app/src/main/res/values-in
