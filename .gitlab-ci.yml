@@ -1,3 +1,9 @@
+include:
+  - template: Dependency-Scanning.gitlab-ci.yml
+
+variables:
+  DS_DEFAULT_ANALYZERS: gemnasium-maven
+
 stages:
   - test
   - deploy
@@ -140,3 +146,10 @@ deploy_nightly:
     # build the APKs!
     - ./gradlew assembleDebug
     - fdroid nightly -v
+
+gemnasium-maven-dependency_scanning:
+  variables:
+    SECURE_LOG_LEVEL: debug
+  script:
+    # No need to verify the signing key of gemnasium
+    - /analyzer run --gradle-opts -Dorg.gradle.dependency.verification=lenient
