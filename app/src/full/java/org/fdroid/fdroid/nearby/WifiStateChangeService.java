@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.nearby;
 
-import android.app.IntentService;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.DhcpInfo;
@@ -9,20 +7,14 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 
@@ -35,8 +27,19 @@ import java.security.cert.Certificate;
 import java.util.Enumeration;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 import cc.mvdan.accesspoint.WifiApControl;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 /**
  * Handle state changes to the device's wifi, storing the required bits.
@@ -61,7 +64,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
  * keep the {@link #BROADCAST} useful.
  */
 @SuppressWarnings("LineLength")
-public class WifiStateChangeService extends IntentService {
+public class WifiStateChangeService extends Worker {
     private static final String TAG = "WifiStateChangeService";
 
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
@@ -70,42 +73,52 @@ public class WifiStateChangeService extends IntentService {
     private WifiManager wifiManager;
     private static WifiInfoThread wifiInfoThread;
     private static int previousWifiState = Integer.MIN_VALUE;
-    private static int wifiState;
+    private volatile static int wifiState;
+    private static final int NETWORK_INFO_STATE_NOT_SET = -1;
 
-    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-
-    public WifiStateChangeService() {
-        super("WifiStateChangeService");
+    public WifiStateChangeService(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+        super(context, workerParams);
     }
 
     public static void start(Context context, @Nullable Intent intent) {
-        if (intent == null) {
-            intent = new Intent(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        int networkInfoStateInt = NETWORK_INFO_STATE_NOT_SET;
+        if (intent != null) {
+            NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+            networkInfoStateInt = ni.getState().ordinal();
         }
-        intent.setComponent(new ComponentName(context, WifiStateChangeService.class));
-        context.startService(intent);
+
+        WorkRequest workRequest = new OneTimeWorkRequest.Builder(WifiStateChangeService.class)
+                .setConstraints(new Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.CONNECTED)
+                        .build())
+                .setInputData(new Data.Builder()
+                        .putInt(WifiManager.EXTRA_NETWORK_INFO, networkInfoStateInt)
+                        .build()
+                )
+                .build();
+        WorkManager.getInstance(context).enqueue(workRequest);
     }
 
+    @NonNull
     @Override
-    public void onDestroy() {
-        compositeDisposable.dispose();
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
+    public Result doWork() {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-        if (intent == null) {
-            Utils.debugLog(TAG, "received null Intent, ignoring");
-            return;
+        int networkInfoStateInt = getInputData().getInt(WifiManager.EXTRA_NETWORK_INFO, NETWORK_INFO_STATE_NOT_SET);
+        NetworkInfo.State networkInfoState = null;
+        if (networkInfoStateInt != NETWORK_INFO_STATE_NOT_SET) {
+            networkInfoState = NetworkInfo.State.values()[networkInfoStateInt];
         }
         Utils.debugLog(TAG, "WiFi change service started.");
-        NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
+        if (wifiManager == null) {
+            return Result.failure();
+        }
         wifiState = wifiManager.getWifiState();
-        Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
-        if (ni == null
-                || ni.getState() == NetworkInfo.State.CONNECTED || ni.getState() == NetworkInfo.State.DISCONNECTED) {
+        Utils.debugLog(TAG, "networkInfoStateInt == " + networkInfoStateInt
+                + "  wifiState == " + printWifiState(wifiState));
+        if (networkInfoState == null
+                || networkInfoState == NetworkInfo.State.CONNECTED
+                || networkInfoState == NetworkInfo.State.DISCONNECTED) {
             if (previousWifiState != wifiState &&
                     (wifiState == WifiManager.WIFI_STATE_ENABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
@@ -117,11 +130,8 @@ public class WifiStateChangeService extends IntentService {
                 wifiInfoThread = new WifiInfoThread();
                 wifiInfoThread.start();
             }
-
-            if (Build.VERSION.SDK_INT < 21 && wifiState == WifiManager.WIFI_STATE_ENABLED) {
-                compositeDisposable.add(UpdateService.scheduleIfStillOnWifi(this).subscribe());
-            }
         }
+        return Result.success();
     }
 
     public class WifiInfoThread extends Thread {
@@ -235,16 +245,17 @@ public class WifiStateChangeService extends IntentService {
             }
             Intent intent = new Intent(BROADCAST);
             intent.putExtra(EXTRA_STATUS, wifiState);
-            LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
+            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
         }
     }
 
     private void setSsid(WifiInfo wifiInfo) {
+        Context context = getApplicationContext();
         if (wifiInfo != null && wifiInfo.getBSSID() != null) {
             String ssid = wifiInfo.getSSID();
             Utils.debugLog(TAG, "Have wifi info, connected to " + ssid);
             if (ssid == null) {
-                FDroidApp.ssid = getString(R.string.swap_blank_wifi_ssid);
+                FDroidApp.ssid = context.getString(R.string.swap_blank_wifi_ssid);
             } else {
                 FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
             }
@@ -252,7 +263,7 @@ public class WifiStateChangeService extends IntentService {
         } else {
             WifiApControl wifiApControl = null;
             try {
-                wifiApControl = WifiApControl.getInstance(this);
+                wifiApControl = WifiApControl.getInstance(context);
                 wifiApControl.isEnabled();
             } catch (NullPointerException e) {
                 wifiApControl = null;
@@ -263,19 +274,19 @@ public class WifiStateChangeService extends IntentService {
                 if (wifiInfo != null && wifiInfo.getBSSID() != null) {
                     setSsid(wifiInfo);
                 } else {
-                    FDroidApp.ssid = getString(R.string.swap_active_hotspot, "");
+                    FDroidApp.ssid = context.getString(R.string.swap_active_hotspot, "");
                 }
             } else if (wifiApControl != null && wifiApControl.isEnabled()) {
                 WifiConfiguration wifiConfiguration = wifiApControl.getConfiguration();
                 Utils.debugLog(TAG, "WifiConfiguration: " + wifiConfiguration);
                 if (wifiConfiguration == null) {
-                    FDroidApp.ssid = getString(R.string.swap_active_hotspot, "");
+                    FDroidApp.ssid = context.getString(R.string.swap_active_hotspot, "");
                     FDroidApp.bssid = "";
                     return;
                 }
 
                 if (wifiConfiguration.hiddenSSID) {
-                    FDroidApp.ssid = getString(R.string.swap_hidden_wifi_ssid);
+                    FDroidApp.ssid = context.getString(R.string.swap_hidden_wifi_ssid);
                 } else {
                     FDroidApp.ssid = wifiConfiguration.SSID;
                 }
