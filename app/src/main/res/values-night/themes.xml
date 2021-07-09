@@ -20,12 +20,15 @@
     <style name="Theme.App" parent="Base.Theme.App">
         <!--Material color attributes (dark theme) -->
 
+        <!--Platform attributes-->
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+        <item name="android:statusBarColor">@android:color/black</item>
 
         <!-- backward-compatibility theme options go here -->
         <item name="colorPrimary">@color/fdroid_blue_light</item>
         <item name="colorPrimaryVariant">@color/fdroid_blue</item>
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
         <item name="colorOnPrimary">#000000</item>
         <item name="colorSecondary">@color/fdroid_green_light</item>
         <item name="colorOnSecondary">#ffffff</item>
