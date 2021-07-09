@@ -63,6 +63,7 @@
     <string name="category_Sports_Health">Idrett og helse</string>
     <string name="category_System">System</string>
     <string name="swap_send_fdroid">Oversend F-Droid</string>
+    <string name="apps">Appar</string>
     <string name="crash_dialog_title">F-Droid har krasja</string>
     <string name="crash_dialog_text">Det oppstod ein feil som gjorde at programmet måtte stoppa. Vil du senda ein e-post med detaljar om dette, for å hjelpa til å retta problemet\?</string>
     <string name="notification_title_single_update_available">Oppdatering tilgjengeleg</string>

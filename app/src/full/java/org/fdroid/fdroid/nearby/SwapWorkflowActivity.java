@@ -34,17 +34,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -75,6 +66,15 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
@@ -1014,12 +1014,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_scan_qr).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inflateSwapView(R.layout.swap_wifi_qr);
-            }
-        });
+        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
+        scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
+
+        MaterialButton appsButton = findViewById(R.id.btn_apps);
+        appsButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_select_apps));
+        appsButton.setEllipsize(TextUtils.TruncateAt.END);
 
         if (SwapService.getWifiVisibleUserPreference()) {
             wifiSwitch.setChecked(true);

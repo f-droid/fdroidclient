@@ -354,6 +354,7 @@
     <string name="crash_dialog_text">எதிர்பாராத பிழை ஏற்பட்டது, பயன்பாட்டை நிறுத்துமாறு கட்டாயப்படுத்தியது. சிக்கலைசரிசெய்ய உதவும் விவரங்களை மின்னஞ்சல் செய்ய விரும்புகிறீர்களா\?</string>
     <string name="crash_dialog_title">எஃப்-டிரயோடு செயலிழந்தது</string>
     <string name="swap_send_fdroid">அனுப்புக F-Droid</string>
+    <string name="apps">பயன்பாடுகள்</string>
     <string name="category_Sports_Health">விளையாட்டு மற்றும் சுகாதாரம்</string>
     <string name="category_Multimedia">மல்டிமீடியா</string>
     <string name="unverified">சரிபார்க்கப்படாதது</string>

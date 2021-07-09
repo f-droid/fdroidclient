@@ -228,6 +228,7 @@
     <string name="swap_wifi_device_name">Назва прылады</string>
     <string name="swap_cant_find_peers">Не можаце знайсці, каго шукаеце\?</string>
     <string name="swap_send_fdroid">Адправіць F-Droid</string>
+    <string name="apps">Праграмы</string>
     <string name="swap_no_peers_nearby">Не атрымалася знайсці людзей паблізу для абмену.</string>
     <string name="swap_connecting">Падлучэнне</string>
     <string name="swap_confirm">Пацвердзіць абмен</string>

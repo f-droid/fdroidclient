@@ -190,6 +190,7 @@
     <string name="swap_wifi_device_name">Apparaatnaam</string>
     <string name="swap_cant_find_peers">Kunt u de persoon waar u naar zoekt niet vinden\?</string>
     <string name="swap_send_fdroid">Verstuur F-Droid</string>
+    <string name="apps">Apps</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee uit te wisselen.</string>
     <string name="swap_connecting">Verbinding maken</string>
     <string name="swap_confirm">Bevestig uitwisseling</string>

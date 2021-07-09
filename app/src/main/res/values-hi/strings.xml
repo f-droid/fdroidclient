@@ -84,6 +84,7 @@
     <string name="swap_wifi_device_name">उपकरण का नाम</string>
     <string name="swap_cant_find_peers">नहीं धुंद प् रहे जिसकी आप तलाश कर रहे है?</string>
     <string name="swap_send_fdroid">F-Droid भेजे</string>
+    <string name="apps">ऐप्स</string>
     <string name="swap_no_peers_nearby">अदला-बदली के लिए आस पास के लोग नहीं खोज पाए|</string>
     <string name="swap_join_this_hotspot">हॉटस्पॉट से जुडने मैं अपने दोस्त की सहयता करें</string>
     <string name="swap">ऐप्स स्वैप करें</string>

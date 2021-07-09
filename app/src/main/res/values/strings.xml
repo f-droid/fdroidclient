@@ -545,6 +545,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should be less than 15 characters. -->
     <string name="swap_send_fdroid">Send F-Droid</string>
+    <string name="apps">Apps</string>
     <string name="swap_no_peers_nearby">Could not find people nearby to swap with.</string>
     <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_connecting">Connecting</string>

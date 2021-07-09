@@ -226,6 +226,7 @@
     <string name="swap_wifi_device_name">Nom del dispositiu</string>
     <string name="swap_cant_find_peers">No trobeu a qui esteu cercant?</string>
     <string name="swap_send_fdroid">Envia l\'F-Droid</string>
+    <string name="apps">Aplicacions</string>
     <string name="swap_no_peers_nearby">No s\'ha trobat ningú a prop amb qui intercanviar.</string>
     <string name="swap_connecting">S\'està connectant</string>
     <string name="swap_confirm">Confirmeu l\'intercanvi</string>

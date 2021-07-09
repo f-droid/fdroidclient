@@ -208,6 +208,7 @@
     <string name="swap_wifi_device_name">기기 이름</string>
     <string name="swap_cant_find_peers">찾고 있는 사람을 찾을 수 없습니까?</string>
     <string name="swap_send_fdroid">F-Droid 보내기</string>
+    <string name="apps">앱</string>
     <string name="swap_no_peers_nearby">근처에 교환할 수 있는 사람들을 찾을 수 없었습니다.</string>
     <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>

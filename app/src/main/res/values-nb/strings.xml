@@ -184,6 +184,7 @@
     <string name="swap_wifi_device_name">Enhetsnavn</string>
     <string name="swap_cant_find_peers">Finner du ikke den du leter etter?</string>
     <string name="swap_send_fdroid">Oversend F-Droid</string>
+    <string name="apps">Programmer</string>
     <string name="swap_connecting">Kobler til</string>
     <string name="loading">Laster inn …</string>
     <string name="install_confirm">tilgang til</string>

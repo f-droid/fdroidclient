@@ -190,6 +190,7 @@
     <string name="swap_wifi_device_name">Nombre del dispositivo</string>
     <string name="swap_cant_find_peers">¿No encuentra a quien busca\?</string>
     <string name="swap_send_fdroid">Enviar</string>
+    <string name="apps">Aplicaciones</string>
     <string name="swap_no_peers_nearby">No se pudo encontrar gente cerca para realizar intercambios.</string>
     <string name="swap_connecting">Estableciendo conexión</string>
     <string name="swap_confirm">Confirmar intercambio</string>

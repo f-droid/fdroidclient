@@ -219,6 +219,7 @@
     <string name="swap_not_visible_wifi">Wi-Fi bidez ez ikusgai</string>
     <string name="swap_cant_find_peers">Ezin duzu bilatzen ari zarena aurkitu?</string>
     <string name="swap_send_fdroid">Bidali F-Droid</string>
+    <string name="apps">Aplikazioak</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>

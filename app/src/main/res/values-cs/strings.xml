@@ -202,6 +202,7 @@
     <string name="swap_wifi_device_name">Jméno přístroje</string>
     <string name="swap_cant_find_peers">Nemůžete nalézt koho hledáte?</string>
     <string name="swap_send_fdroid">Odeslat F-Droid</string>
+    <string name="apps">Aplikace</string>
     <string name="swap_connecting">Připojování</string>
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>

@@ -312,6 +312,7 @@
     <string name="swap_wifi_device_name">Enw\'r Ddyfais</string>
     <string name="swap_cant_find_peers">Methu â ffeindio\'r person wyt yn edrych am\?</string>
     <string name="swap_send_fdroid">Anfon F-Droid</string>
+    <string name="apps">Apiau</string>
     <string name="swap_no_peers_nearby">Methwyd â ffeindio pobol gerllaw i gyfnewid â nhw.</string>
     <string name="swap_connecting">Yn cysylltu</string>
     <string name="swap_confirm">Cadarnhau cyfnewid</string>

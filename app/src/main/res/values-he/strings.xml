@@ -197,6 +197,7 @@
     <string name="swap_nearby">החלפה בקרבת מקום</string>
     <string name="swap_cant_find_peers">לא מצאת את מבוקשך?</string>
     <string name="swap_send_fdroid">שליחת F-Droid</string>
+    <string name="apps">יישומונים</string>
     <string name="swap_confirm">אימות ההחלפה</string>
     <string name="swap_qr_isnt_for_swap">קוד ה־QR שסרקת לא נראה כמו קוד החלפה.</string>
     <string name="swap_intro">ניתן להתחבר ולהחליף יישומונים עם אנשים בקרבתך.</string>

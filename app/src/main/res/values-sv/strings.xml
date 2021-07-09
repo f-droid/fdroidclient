@@ -216,6 +216,7 @@
     <string name="swap_wifi_device_name">Enhetsnamn</string>
     <string name="swap_cant_find_peers">Det går inte att hitta den du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
+    <string name="apps">Appar</string>
     <string name="swap_no_peers_nearby">Kunde inte hitta personer i närheten att utbyta med.</string>
     <string name="swap_connecting">Ansluter</string>
     <string name="swap_confirm">Bekräfta utbyte</string>

@@ -199,6 +199,7 @@
     <string name="swap_wifi_device_name">Tên thiết bị</string>
     <string name="swap_cant_find_peers">Bạn không tìm được người cần tìm?</string>
     <string name="swap_send_fdroid">Gửi F-Droid</string>
+    <string name="apps">Ứng dụng</string>
     <string name="swap_no_peers_nearby">Không tìm thấy người lân cận để trao đổi.</string>
     <string name="swap_connecting">Đang kết nối</string>
     <string name="swap_confirm">Xác nhận trao đổi</string>

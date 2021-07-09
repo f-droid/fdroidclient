@@ -200,6 +200,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicativos</string>
     <string name="swap_no_peers_nearby">Não foi possível encontrar pessoas próximas para permutar.</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar a permuta</string>

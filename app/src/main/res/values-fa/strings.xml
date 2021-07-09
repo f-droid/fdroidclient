@@ -184,6 +184,7 @@
     <string name="swap_wifi_device_name">نام دستگاه</string>
     <string name="swap_cant_find_peers">نمی‌توانید کسی که دنبالش هستید را پیدا کنید؟</string>
     <string name="swap_send_fdroid">ارسال اف‌دروید</string>
+    <string name="apps">کاره‌ها</string>
     <string name="swap_no_peers_nearby">نمی‌توان افراد نزدیک را برای تبادل با آن‌ها پیدا کرد.</string>
     <string name="swap_connecting">درحال اتصال</string>
     <string name="swap_confirm">تأیید تبادل</string>

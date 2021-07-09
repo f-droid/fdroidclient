@@ -220,6 +220,7 @@
     <string name="swap_wifi_device_name">Nama Perangkat</string>
     <string name="swap_cant_find_peers">Tidak bisa menemukan siapa yang Anda cari\?</string>
     <string name="swap_send_fdroid">Kirimkan F-Droid</string>
+    <string name="apps">Aplikasi</string>
     <string name="swap_no_peers_nearby">Tidak bisa menemukan orang untuk bertukar di sekitar.</string>
     <string name="swap_connecting">Menghubungkan</string>
     <string name="swap_confirm">Konfirmasi tukar</string>

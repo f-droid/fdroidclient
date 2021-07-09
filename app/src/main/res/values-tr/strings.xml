@@ -206,6 +206,7 @@
     <string name="swap_wifi_device_name">Aygıt Adı</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı\?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
+    <string name="apps">Uygulamalar</string>
     <string name="swap_no_peers_nearby">Yakında takaslanabilecek kişi bulunamadı.</string>
     <string name="swap_connecting">Bağlanıyor</string>
     <string name="swap_confirm">Takası onaylayın</string>

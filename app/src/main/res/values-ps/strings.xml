@@ -4,6 +4,7 @@
     <string name="menu_video">وېډيو</string>
     <string name="menu_website">ګورتځی</string>
     <string name="swap_send_fdroid">اېف-ډراېډ واستوئ</string>
+    <string name="apps">کاریالونه</string>
     <string name="swap_scan_qr">کيوآر کوډ وځېرئ</string>
     <string name="swap_choose_apps">کاریالونه ټاکل</string>
     <string name="swap_wifi_device_name">د وزلې نوم</string>

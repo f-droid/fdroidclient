@@ -179,6 +179,7 @@
     <string name="swap_wifi_device_name">裝置名稱</string>
     <string name="swap_cant_find_peers">找不到您想找的人？</string>
     <string name="swap_send_fdroid">傳送 F-Droid</string>
+    <string name="apps">軟體</string>
     <string name="swap_no_peers_nearby">找不到附近的人以進行交換。</string>
     <string name="swap_confirm">確認交換</string>
     <string name="uninstall_confirm">你要解除安裝這個應用程式嗎？</string>

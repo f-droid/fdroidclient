@@ -143,6 +143,7 @@
     <string name="allPerms">Kaikki</string>
     <string name="newPerms">Uusi</string>
     <string name="swap_send_fdroid">Lähetä F-Droid</string>
+    <string name="apps">Sovellukset</string>
     <string name="swap_wifi_device_name">Laitteen nimi</string>
     <string name="swap_choose_apps">Valitse sovellukset</string>
     <string name="links">Linkit</string>

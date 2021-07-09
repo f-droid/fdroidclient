@@ -151,6 +151,7 @@
     <string name="swap_connecting">Coneutando</string>
     <string name="swap_cant_find_peers">¿Nun alcuentres a quién tas guetando\?</string>
     <string name="swap_send_fdroid">Unviar F-Droid</string>
+    <string name="apps">Restolar</string>
     <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez un códigu d\'intercambéu.</string>
     <string name="swap_connection_misc_error">Asocedió un fallu mentanto se coneutaba col preséu, ¡nun pue intercambiase con elli!</string>
     <string name="swap_confirm">Confirmación</string>

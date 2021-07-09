@@ -166,6 +166,7 @@
     <string name="swap_setting_up_wifi">Подешавам бежични…</string>
     <string name="swap_wifi_device_name">Назив уређаја</string>
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
+    <string name="apps">Програми</string>
     <string name="swap_connecting">Повезивање</string>
     <string name="swap_confirm">Потврдите размену</string>
     <string name="loading">Учитава се…</string>

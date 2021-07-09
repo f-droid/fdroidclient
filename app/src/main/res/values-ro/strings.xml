@@ -180,6 +180,7 @@
     <string name="swap_setting_up_wifi">Configurare Wi-Fi…</string>
     <string name="swap_connecting">Se conectează</string>
     <string name="swap_send_fdroid">Trimite F-Droid</string>
+    <string name="apps">Aplicații</string>
     <string name="crash_dialog_title">F-Droid s-a oprit</string>
     <string name="theme_light">Luminoasă</string>
     <string name="theme_dark">Întunecată</string>

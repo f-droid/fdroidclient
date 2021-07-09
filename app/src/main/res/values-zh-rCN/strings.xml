@@ -202,6 +202,7 @@
     <string name="swap_wifi_device_name">设备名称</string>
     <string name="swap_cant_find_peers">找不到你要找的人？</string>
     <string name="swap_send_fdroid">发送 F-Droid</string>
+    <string name="apps">应用</string>
     <string name="swap_no_peers_nearby">附近无法找到可与其交换应用的人。</string>
     <string name="swap_connecting">正在连接</string>
     <string name="swap_confirm">确认交换</string>

@@ -129,6 +129,7 @@
     <string name="swap_scan_qr">Сканувати QR-код</string>
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
+    <string name="apps">Застосунки</string>
     <string name="swap_connecting">З\'єднання</string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>

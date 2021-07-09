@@ -228,6 +228,7 @@
     <string name="swap_wifi_device_name">Seadme nimi</string>
     <string name="swap_cant_find_peers">Ei leia seda, keda otsid?</string>
     <string name="swap_send_fdroid">Saada F-Droid</string>
+    <string name="apps">Rakendused</string>
     <string name="swap_no_peers_nearby">Ei leidnud lähedal inimesi, kellega vahetada.</string>
     <string name="swap_connecting">Ühendamine</string>
     <string name="swap_confirm">Kinnita vahetus</string>

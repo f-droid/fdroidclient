@@ -196,6 +196,7 @@
     <string name="swap_wifi_device_name">Nazwa urządzenia</string>
     <string name="swap_cant_find_peers">Nie możesz znaleźć kogo szukasz?</string>
     <string name="swap_send_fdroid">Wyślij F-Droida</string>
+    <string name="apps">Aplikacje</string>
     <string name="swap_no_peers_nearby">Nie udało się znaleźć urządzeń, z którymi można by się wymienić.</string>
     <string name="swap_connecting">Łączenie</string>
     <string name="swap_confirm">Potwierdź wymianę</string>

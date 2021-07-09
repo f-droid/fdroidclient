@@ -63,6 +63,7 @@
     <string name="category_Sports_Health">Sport &amp; Gezondheid</string>
     <string name="category_System">Systeem</string>
     <string name="swap_send_fdroid">Verstuur F-Droid</string>
+    <string name="apps">Applicaties</string>
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app gestopt is. Wilt u de details over deze fout e-mailen om zo het probleem te helpen oplossen\?</string>
     <string name="notification_title_single_update_available">Update beschikbaar</string>

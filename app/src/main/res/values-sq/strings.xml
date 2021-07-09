@@ -71,6 +71,7 @@
     <string name="swap_wifi_device_name">Emër Pajisjeje</string>
     <string name="swap_cant_find_peers">S’po gjeni atë çka kërkoni\?</string>
     <string name="swap_send_fdroid">Dërgoni F-Droid</string>
+    <string name="apps">Aplikacione</string>
     <string name="perm_costs_money">Kjo mund t’ju kushtojë para</string>
     <string name="download_error">Shkarkimi dështoi!</string>
     <string name="downloading">Po shkarkohet…</string>

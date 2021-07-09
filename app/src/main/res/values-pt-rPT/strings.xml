@@ -186,6 +186,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não encontra o que procura?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicações</string>
     <string name="swap_connecting">A ligar</string>
     <string name="loading">A carregar…</string>
     <string name="newPerms">Novas</string>

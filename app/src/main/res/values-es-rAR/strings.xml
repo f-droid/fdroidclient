@@ -208,6 +208,7 @@
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
     <string name="swap_dont_show_again">No mostrar de nuevo</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicaciones</string>
     <string name="newPerms">Nuevo</string>
     <string name="crash_dialog_title">F-Droid se detuvo</string>
     <string name="crash_dialog_text">Ocurrió un error inesperado que forzó a la aplicación a detenerse. ¿Querés enviar los detalles por correo electrónico para ayudar a resolver el problema\?</string>

@@ -63,6 +63,7 @@
     <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Apps</string>
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
     <string name="crash_dialog_text">Ocorreu um erro inesperado e a app foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro\?</string>
     <string name="notification_title_single_update_available">Atualização disponível</string>
