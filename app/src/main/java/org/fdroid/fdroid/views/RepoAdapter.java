@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import androidx.cursoradapter.widget.CursorAdapter;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.Repo;
-
-import androidx.cursoradapter.widget.CursorAdapter;
 
 public class RepoAdapter extends CursorAdapter {
 
@@ -64,12 +64,9 @@ public class RepoAdapter extends CursorAdapter {
 
         // Add this listener *after* setting the checked status, so we don't
         // invoke the listener while setting up the view...
-        switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (enabledListener != null) {
-                    enabledListener.onSetEnabled(repo, isChecked);
-                }
+        switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (enabledListener != null) {
+                enabledListener.onSetEnabled(repo, isChecked);
             }
         });
 

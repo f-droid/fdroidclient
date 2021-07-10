@@ -2,6 +2,10 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -11,10 +15,6 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Shows apps which are:
@@ -73,17 +73,14 @@ public class AppStatusListItemController extends AppListItemController {
 
                 case ReadyToInstall:
                     if (appUpdateStatus != null) {
-                        Snackbar.make(
-                                itemView,
-                                R.string.app_list__dismiss_installing_app,
-                                Snackbar.LENGTH_LONG
-                        ).setAction(R.string.undo, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                manager.addApk(appUpdateStatus.apk, appUpdateStatus.status, appUpdateStatus.intent);
-                                adapter.refreshStatuses();
-                            }
-                        }).show();
+                        Snackbar.make(itemView, R.string.app_list__dismiss_installing_app,
+                                Snackbar.LENGTH_LONG)
+                                .setAction(R.string.undo, view -> {
+                                    manager.addApk(appUpdateStatus.apk, appUpdateStatus.status,
+                                            appUpdateStatus.intent);
+                                    adapter.refreshStatuses();
+                                })
+                                .show();
                         break;
                     }
             }

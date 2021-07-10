@@ -24,12 +24,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
         Preferences.setupForTests(context);
 
         // This is what the FDroidApp does when this preference is changed. Need to also do this under testing.
-        Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
-            @Override
-            public void onPreferenceChange() {
-                AppProvider.Helper.calcSuggestedApks(context);
-            }
-        });
+        Preferences.get().registerUnstableUpdatesChangeListener(() -> AppProvider.Helper.calcSuggestedApks(context));
     }
 
     private Repo createFDroidRepo() {

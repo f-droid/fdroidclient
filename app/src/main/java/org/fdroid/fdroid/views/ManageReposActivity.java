@@ -40,14 +40,22 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -75,16 +83,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
-import androidx.core.content.ContextCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -124,26 +122,20 @@ public class ManageReposActivity extends AppCompatActivity
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.action_add_repo) {
-                    showAddRepo();
-                    return true;
-                }
-                return false;
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.action_add_repo) {
+                showAddRepo();
+                return true;
             }
+            return false;
         });
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent upIntent = NavUtils.getParentActivityIntent(ManageReposActivity.this);
-                if (NavUtils.shouldUpRecreateTask(ManageReposActivity.this, upIntent) || isTaskRoot()) {
-                    TaskStackBuilder.create(ManageReposActivity.this).addNextIntentWithParentStack(upIntent)
-                            .startActivities();
-                } else {
-                    NavUtils.navigateUpTo(ManageReposActivity.this, upIntent);
-                }
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent upIntent = NavUtils.getParentActivityIntent(ManageReposActivity.this);
+            if (NavUtils.shouldUpRecreateTask(ManageReposActivity.this, upIntent) || isTaskRoot()) {
+                TaskStackBuilder.create(ManageReposActivity.this).addNextIntentWithParentStack(upIntent)
+                        .startActivities();
+            } else {
+                NavUtils.navigateUpTo(ManageReposActivity.this, upIntent);
             }
         });
 
@@ -151,12 +143,9 @@ public class ManageReposActivity extends AppCompatActivity
         repoAdapter = new RepoAdapter(this);
         repoAdapter.setEnabledListener(this);
         repoList.setAdapter(repoAdapter);
-        repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
-                editRepo(repo);
-            }
+        repoList.setOnItemClickListener((parent, view, position, id) -> {
+            Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
+            editRepo(repo);
         });
     }
 
@@ -315,13 +304,10 @@ public class ManageReposActivity extends AppCompatActivity
             final EditText fingerprintEditText = fingerprintEditTextLayout.getEditText();
 
             addRepoDialogBuilder.setTitle(R.string.repo_add_title);
-            addRepoDialogBuilder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    if (finishAfterAddingRepo) {
-                        finish();
-                    }
+            addRepoDialogBuilder.setNegativeButton(getString(R.string.cancel), (dialog, which) -> {
+                dialog.dismiss();
+                if (finishAfterAddingRepo) {
+                    finish();
                 }
             });
 
@@ -338,62 +324,51 @@ public class ManageReposActivity extends AppCompatActivity
             // hang around so we can show further info on it.
             //
             // Thus, the hack described at http://stackoverflow.com/a/15619098 is implemented.
-            addRepoDialogBuilder.setPositiveButton(getString(R.string.repo_add_add),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
+            addRepoDialogBuilder.setPositiveButton(getString(R.string.repo_add_add), (dialog, which) -> { });
 
             addRepoDialog = addRepoDialogBuilder.show();
 
             // This must be *after* addRepoDialog.show() otherwise getButtion() returns null:
             // https://code.google.com/p/android/issues/detail?id=6360
-            addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+            addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+                String url = uriEditText.getText().toString();
 
-                            String url = uriEditText.getText().toString();
+                try {
+                    url = AddRepoIntentService.normalizeUrl(url);
+                } catch (URISyntaxException e) {
+                    invalidUrl();
+                    return;
+                }
 
-                            try {
-                                url = AddRepoIntentService.normalizeUrl(url);
-                            } catch (URISyntaxException e) {
-                                invalidUrl();
-                                return;
-                            }
+                String fp = fingerprintEditText.getText().toString();
+                // remove any whitespace from fingerprint
+                fp = fp.replaceAll("\\s", "");
 
-                            String fp = fingerprintEditText.getText().toString();
-                            // remove any whitespace from fingerprint
-                            fp = fp.replaceAll("\\s", "");
+                switch (addRepoState) {
+                    case DOESNT_EXIST:
+                        prepareToCreateNewRepo(url, fp, username, password);
+                        break;
 
-                            switch (addRepoState) {
-                                case DOESNT_EXIST:
-                                    prepareToCreateNewRepo(url, fp, username, password);
-                                    break;
+                    case IS_SWAP:
+                        Utils.debugLog(TAG, "Removing existing swap repo " + url
+                                + " before adding new repo.");
+                        Repo repo = RepoProvider.Helper.findByAddress(context, url);
+                        RepoProvider.Helper.remove(context, repo.getId());
+                        prepareToCreateNewRepo(url, fp, username, password);
+                        break;
 
-                                case IS_SWAP:
-                                    Utils.debugLog(TAG, "Removing existing swap repo " + url
-                                            + " before adding new repo.");
-                                    Repo repo = RepoProvider.Helper.findByAddress(context, url);
-                                    RepoProvider.Helper.remove(context, repo.getId());
-                                    prepareToCreateNewRepo(url, fp, username, password);
-                                    break;
+                    case EXISTS_DISABLED:
+                    case EXISTS_UPGRADABLE_TO_SIGNED:
+                    case EXISTS_ADD_MIRROR:
+                        updateAndEnableExistingRepo(url, fp);
+                        finishedAddingRepo();
+                        break;
 
-                                case EXISTS_DISABLED:
-                                case EXISTS_UPGRADABLE_TO_SIGNED:
-                                case EXISTS_ADD_MIRROR:
-                                    updateAndEnableExistingRepo(url, fp);
-                                    finishedAddingRepo();
-                                    break;
-
-                                default:
-                                    finishedAddingRepo();
-                                    break;
-                            }
-                        }
-                    }
-            );
+                    default:
+                        finishedAddingRepo();
+                        break;
+                }
+            });
 
             addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
             overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);

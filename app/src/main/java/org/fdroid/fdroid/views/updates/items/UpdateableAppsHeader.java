@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 
 import org.fdroid.fdroid.R;
@@ -15,10 +19,6 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Summary of all apps that can be downloaded. Includes a button to download all of them and also
@@ -83,21 +83,15 @@ public class UpdateableAppsHeader extends AppUpdateData {
             downloadAll = (Button) itemView.findViewById(R.id.button_download_all);
             toggleAppsToUpdate = (Button) itemView.findViewById(R.id.button_toggle_apps_to_update);
 
-            toggleAppsToUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    header.adapter.toggleAllUpdateableApps();
-                    updateToggleButtonText();
-                }
+            toggleAppsToUpdate.setOnClickListener(v -> {
+                header.adapter.toggleAllUpdateableApps();
+                updateToggleButtonText();
             });
 
             downloadAll.setVisibility(View.VISIBLE);
-            downloadAll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    downloadAll.setVisibility(View.GONE);
-                    UpdateService.autoDownloadUpdates(header.activity);
-                }
+            downloadAll.setOnClickListener(v -> {
+                downloadAll.setVisibility(View.GONE);
+                UpdateService.autoDownloadUpdates(header.activity);
             });
         }
 
@@ -125,5 +119,4 @@ public class UpdateableAppsHeader extends AppUpdateData {
             }
         }
     }
-
 }

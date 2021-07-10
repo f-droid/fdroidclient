@@ -28,15 +28,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 public class AntiFeaturesListingView extends RecyclerView {
 
@@ -68,18 +68,15 @@ public class AntiFeaturesListingView extends RecyclerView {
                         ContextCompat.getDrawable(getContext(), antiFeatureIcon(antiFeatureName)));
                 holder.antiFeatureText.setText(
                         getAntiFeatureDescriptionText(holder.antiFeatureText.getContext(), antiFeatureName));
-                holder.entireView.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        if (Build.VERSION.SDK_INT >= 21) {
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-                        } else {
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                        }
-                        i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureName));
-                        getContext().startActivity(i);
+                holder.entireView.setOnClickListener(v -> {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                    } else {
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                     }
+                    i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureName));
+                    getContext().startActivity(i);
                 });
             }
 

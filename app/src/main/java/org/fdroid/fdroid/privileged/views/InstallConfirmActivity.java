@@ -87,11 +87,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         tabHost.setup();
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         TabsAdapter adapter = new TabsAdapter(this, tabHost, viewPager);
-        adapter.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-            }
-        });
+        adapter.setOnTabChangedListener(tabId -> { });
 
         boolean permVisible = false;
         scrollView = null;
@@ -164,12 +160,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
             okButton.setText(R.string.menu_install);
             okCanInstall = true;
         } else {
-            scrollView.setFullScrollAction(new Runnable() {
-                @Override
-                public void run() {
-                    okButton.setText(R.string.menu_install);
-                    okCanInstall = true;
-                }
+            scrollView.setFullScrollAction(() -> {
+                okButton.setText(R.string.menu_install);
+                okCanInstall = true;
             });
         }
     }

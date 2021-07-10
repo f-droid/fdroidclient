@@ -9,6 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.fdroid.fdroid.Preferences;
@@ -25,15 +34,6 @@ import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.AppCardController;
 
 import java.util.Date;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -69,30 +69,20 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) latestView
                 .findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
 
         FloatingActionButton searchFab = (FloatingActionButton) latestView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
-                }
+        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity,
+                AppListActivity.class)));
+        searchFab.setOnLongClickListener(view -> {
+            if (Preferences.get().hideOnLongPressSearch()) {
+                HidingManager.showHideDialog(activity);
+                return true;
+            } else {
+                return false;
             }
         });
 

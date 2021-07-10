@@ -10,16 +10,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 
 public class UpdatesViewBinder {
 
@@ -51,14 +51,10 @@ public class UpdatesViewBinder {
 
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
-
     }
 
     public void bind() {

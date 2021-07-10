@@ -406,12 +406,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             switch (statusCode) {
                 case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
                     Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
+                    getActivity().runOnUiThread(() -> adapter.notifyDataSetChanged());
                     break;
             }
         }

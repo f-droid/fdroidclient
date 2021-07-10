@@ -28,7 +28,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -104,21 +103,18 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         searchInput = (EditText) findViewById(R.id.search);
         searchInput.setText(searchTerms);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
-        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
-                    InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
-                            InputMethodManager.class);
-                    inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+        searchInput.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
+                InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
+                        InputMethodManager.class);
+                inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
 
-                    // Change focus from the search input to the app list.
-                    appView.requestFocus();
-                    return true;
-                }
-                return false;
+                // Change focus from the search input to the app list.
+                appView.requestFocus();
+                return true;
             }
+            return false;
         });
 
         sortImage = (ImageView) findViewById(R.id.sort);
@@ -127,50 +123,39 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
                 R.drawable.ic_sort)).mutate();
         sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
-        sortImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (sortClauseSelected) {
-                    case SortClause.WORDS:
-                        sortClauseSelected = SortClause.LAST_UPDATED;
-                        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(lastUpdated);
-                        break;
-                    case SortClause.LAST_UPDATED:
-                        sortClauseSelected = SortClause.WORDS;
-                        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(words);
-                        break;
-                }
-                putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
-                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
-                appView.scrollToPosition(0);
+        sortImage.setOnClickListener(view -> {
+            switch (sortClauseSelected) {
+                case SortClause.WORDS:
+                    sortClauseSelected = SortClause.LAST_UPDATED;
+                    DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                    sortImage.setImageDrawable(lastUpdated);
+                    break;
+                case SortClause.LAST_UPDATED:
+                    sortClauseSelected = SortClause.WORDS;
+                    DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
+                    sortImage.setImageDrawable(words);
+                    break;
             }
+            putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
+            getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
+            appView.scrollToPosition(0);
         });
 
         emptyState = (TextView) findViewById(R.id.empty_state);
 
         View backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backButton.setOnClickListener(v -> finish());
 
         View clearButton = findViewById(R.id.clear);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchInput.setText("");
-                searchInput.requestFocus();
-                if (!keyboardStateMonitor.isKeyboardVisible()) {
-                    InputMethodManager inputMethodManager =
-                            ContextCompat.getSystemService(AppListActivity.this,
-                                    InputMethodManager.class);
-                    inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
-                            InputMethodManager.SHOW_FORCED, 0);
-                }
+        clearButton.setOnClickListener(v -> {
+            searchInput.setText("");
+            searchInput.requestFocus();
+            if (!keyboardStateMonitor.isKeyboardVisible()) {
+                InputMethodManager inputMethodManager =
+                        ContextCompat.getSystemService(AppListActivity.this,
+                                InputMethodManager.class);
+                inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
+                        InputMethodManager.SHOW_FORCED, 0);
             }
         });
 
