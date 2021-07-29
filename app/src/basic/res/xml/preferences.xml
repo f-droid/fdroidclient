@@ -65,7 +65,7 @@
         <ListPreference
                 android:title="@string/theme"
                 android:key="theme"
-                android:defaultValue="light"
+                android:defaultValue="@string/defaultTheme"
                 android:entries="@array/themeNames"
                 android:entryValues="@array/themeValues"/>
     </PreferenceCategory>

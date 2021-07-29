@@ -65,7 +65,7 @@
             android:key="language"
             android:title="@string/pref_language" />
         <ListPreference
-            android:defaultValue="light"
+            android:defaultValue="@string/defaultTheme"
             android:entries="@array/themeNames"
             android:entryValues="@array/themeValues"
             android:key="theme"
