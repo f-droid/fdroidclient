@@ -1,0 +1,3 @@
+* Fixează preferințele barei de căutare pe versiunile recente de Android (mulțumesc @dkanada)
+* Gestionați API 29 split-permissions: locația fină implică acum locația grosieră
+* Definiți regulile de backup pentru a evita salvarea repo-ului de swap

@@ -1,0 +1,7 @@
+* Îmbunătățirea linkifierii URL-urilor în descrierile aplicațiilor
+
+* Gestionarea îmbunătățită a SDCards și USG-OTG în Nearby
+
+* Codul modernizat și trecerea de la PNG-uri la vectori (mulțumiri @isira-seneviratne!)
+
+* Recunoașterea URL-urilor repo mai lungi pentru a sprijini oglinzile GitCDN/RawGit/etc

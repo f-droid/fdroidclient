@@ -1,0 +1,9 @@
+* Noua conf.de permisiuni Android 10 să opriți cereri din surse necunoscute #1833
+* "permisiuni split" noi:loc.fină implică cea grosieră
+* S-a corectat seekbar pe vers.noi Android(thanks @dkanada)
+* Config. backup pt. evitarea salvării repo-ului swap
+* Tastatura se deschide când căutarea e ștearsă
+* sinc. traduceri cu șirurile Android
+* forțați domeniile common repo la HTTPS (GitLab,GitHub,Amazon)
+* efect ripple standard pt. link-uri din detaliile app
+* afișare icon implicit pt. app-uri ce n-au

@@ -1,0 +1,12 @@
+* Tratați permisiunile implicite READ_EXTERNAL_STORAGE, care activează
+  permisiuni când instalați cu Privileged Extension (#1702)
+
+* Datele de indexare au fost asanate pt. a reduce posibilele amenințări de pe server
+
+* "Read Timeout" declanșează utilizarea oglinzii când citirile sunt lente
+
+* Corectare iconi lipsă pt. cei fără Wi-Fi (#1592)
+
+* Folosiți titluri separate pt. actualizări pref și fila Actualizări,pt. ajutor la traducere
+
+* Corecții de interfață de la @ConnyDuck (#1636, #1618)

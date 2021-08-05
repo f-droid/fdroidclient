@@ -1,0 +1,7 @@
+* utilizați canale de notificare pentru un control fin (@Isira-Seneviratne)
+* Îmbunătățirea selecției limbii cu mai multe locale (@spacecowboy/@bubu)
+* Ultima filă va afișa rezultate mai bune pe dispozitive care nu sunt în limba engleză
+* actualizări ale bibliotecilor de bază (Jackson, androidx, gradle, etc.)
+* suportul pentru etichetarea albă de lustruire
+
+Mulțumim noilor colaboratori! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

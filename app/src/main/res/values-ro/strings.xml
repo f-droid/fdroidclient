@@ -17,7 +17,7 @@
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Anulaţi</string>
     <string name="enable">Activează</string>
     <string name="menu_search">Caută</string>
     <string name="menu_launch">Deschideți</string>
@@ -509,7 +509,7 @@
     <string name="notification_channel_installs_description">Afișează notificări la instalarea aplicațiilor.</string>
     <string name="notification_channel_installs_title">Instalări</string>
     <string name="send_to_fdroid_metrics_summary">Trimite date anonime săptămânal la F-Droid Metrics (necesită păstrarea istoricului de instalare)</string>
-    <string name="send_to_fdroid_metrics">Trimitere date de utilizare</string>
+    <string name="send_to_fdroid_metrics">Trimiteți date de utilizare</string>
     <string name="menu_show_install_history">Afișare istoric instalări</string>
     <string name="fdroid_metrics_report">Raport de măsurători %s</string>
     <string name="send_fdroid_metrics_json">Raportul de măsurători %s ca fișier JSON</string>
