@@ -23,6 +23,7 @@ import org.fdroid.fdroid.privileged.IPrivilegedService;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -220,12 +221,28 @@ public class InstalledAppProviderService extends JobIntentService {
         }
     }
 
+    private static class PackageInfoComparator implements Comparator<PackageInfo> {
+        @Override
+        public int compare(PackageInfo o1, PackageInfo o2) {
+            // There are two trichrome library entries in the list,
+            // one for each version. We only want the newest here.
+            String[] duplicateList = new String[]{"org.chromium.trichromelibrary"};
+            for (String dup : duplicateList) {
+                if (o1.packageName.contentEquals(dup)
+                        && o2.packageName.contentEquals(dup)) {
+                    return Integer.compare(o1.versionCode, o2.versionCode);
+                }
+            }
+            return o1.packageName.compareTo(o2.packageName);
+        }
+    }
+
     private static void compareToPackageManager(Context context, List<PackageInfo> packageInfoList) {
         if (packageInfoList == null || packageInfoList.isEmpty()) {
             packageInfoList = context.getPackageManager().getInstalledPackages(PackageManager.GET_SIGNATURES);
         }
         Map<String, Long> cachedInfo = InstalledAppProvider.Helper.lastUpdateTimes(context);
-        TreeSet<PackageInfo> packageInfoSet = new TreeSet<>((o1, o2) -> o1.packageName.compareTo(o2.packageName));
+        TreeSet<PackageInfo> packageInfoSet = new TreeSet<>(new PackageInfoComparator());
         packageInfoSet.addAll(packageInfoList);
         for (PackageInfo packageInfo : packageInfoSet) {
             if (cachedInfo.containsKey(packageInfo.packageName)) {
