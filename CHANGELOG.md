@@ -1,3 +1,7 @@
+### 1.13.1 (2021-08-05)
+
+* Better tested fix for repeated updates of Trichrome library.
+
 ### 1.13 (2021-07-05)
 
 * Overhaul icon loading using Glide (@proletarius101)
