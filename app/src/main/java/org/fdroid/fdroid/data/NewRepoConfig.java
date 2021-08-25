@@ -10,6 +10,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 import org.fdroid.fdroid.nearby.peers.WifiPeer;
+import org.fdroid.fdroid.views.ManageReposActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +47,12 @@ public class NewRepoConfig {
         /* an URL from a click, NFC, QRCode scan, etc */
         Uri uri = incomingUri;
         if (uri == null) {
+            isValidRepo = false;
+            return;
+        }
+
+        if (ManageReposActivity.hasDisallowInstallUnknownSources(context)) {
+            errorMessage = ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage(context);
             isValidRepo = false;
             return;
         }
