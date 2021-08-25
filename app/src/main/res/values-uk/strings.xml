@@ -10,7 +10,7 @@
     <string name="about_version">Версія</string>
     <string name="app_installed">Установлено</string>
     <string name="app_not_installed">Не встановлено</string>
-    <string name="ok">Гаразд</string>
+    <string name="ok">OK</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="repo_add_title">Додати новий репозиторій</string>
@@ -130,7 +130,7 @@
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
     <string name="apps">Застосунки</string>
-    <string name="swap_connecting">З\'єднання</string>
+    <string name="swap_connecting">Підключення</string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>
     <string name="allPerms">Усі</string>
@@ -197,11 +197,11 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Установити оновлення для цього наявного застосунку\? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_system">Установити оновлення для цього вбудованого застосунку\? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_no_perms">Установити оновлення для цього наявного застосунку\? Наявні дані втрачено не буде. Спеціальний доступ не потрібен.</string>
-    <string name="install_confirm_update_system_no_perms">Установити оновлення для цього вбудованого застосунку\? Наявні дані втрачено не буде. Спеціальний доступ не потрібен.</string>
-    <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цієї наявної програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цієї вбудованої програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
+    <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявної програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цієї вбудованої програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="uninstall_update_confirm">Відновити заводську версію цього додатка? Усі дані буде видалено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено.
 \n
@@ -256,7 +256,7 @@
     <string name="keep_forever">Завжди</string>
     <string name="install_error_notify_title">Помилка встановлення %s</string>
     <string name="uninstall_error_notify_title">Помилка видалення %s</string>
-    <string name="installing">Установлення…</string>
+    <string name="installing">Встановлення…</string>
     <string name="uninstalling">Видалення…</string>
     <string name="update_auto_install_summary">Завантажувати та встановлювати оновлення застосунків у фоновому режимі, показуючи сповіщення</string>
     <string name="update_auto_install">Автоматичне встановлення оновлень</string>

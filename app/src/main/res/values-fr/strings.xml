@@ -26,7 +26,7 @@
     <string name="app_inst_known_source">Installée (depuis %s)</string>
     <string name="app_inst_unknown_source">Installée (depuis une source inconnue)</string>
     <string name="added_on">Ajoutée le %s</string>
-    <string name="ok">Valider</string>
+    <string name="ok">OK</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="repo_add_title">Ajouter un nouveau dépôt</string>
@@ -161,8 +161,8 @@
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
-    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
-    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
+    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
+    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous installer une mise à jour pour cette application ? Vos données ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="install_confirm_update_system_no_perms">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="newPerms">Nouveautés</string>

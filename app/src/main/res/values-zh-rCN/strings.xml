@@ -210,10 +210,10 @@
     <string name="loading">正在加载…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
-    <string name="install_confirm_update">你要安装此已安装应用的更新吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_system">你要安装此内置应用的更新吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_no_perms">是否要为此已安装应用安装更新？你现有的数据不会丢失。它无需任何特殊权限。</string>
-    <string name="install_confirm_update_system_no_perms">是否要为此内置应用安装更新？你现有的数据不会丢失。它无需任何特殊权限。</string>
+    <string name="install_confirm_update">您要安装此应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_system">您要安装此内置应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_no_perms">是否要为这一现有应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
+    <string name="install_confirm_update_system_no_perms">是否要为这一内置应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
     <string name="newPerms">新权限</string>
     <string name="allPerms">全部</string>
     <string name="perm_costs_money">这可能会产生费用</string>

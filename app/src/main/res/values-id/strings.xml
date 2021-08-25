@@ -87,7 +87,7 @@
     <string name="linking_apks">Menautkan APK ke dalam repo…</string>
     <string name="copying_icons">Menyalin ikon aplikasi ke dalam repo…</string>
     <string name="icon">Ikon</string>
-    <string name="next">Selanjutnya</string>
+    <string name="next">Berikutnya</string>
     <string name="skip">Lewati</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Aktifkan Proxy HTTP</string>
@@ -108,8 +108,8 @@
 \n%1$s</string>
     <string name="repos_unchanged">Semua repositori telah diperbarui</string>
     <string name="global_error_updating_repos">Kesalahan saat memperbarui: %s</string>
-    <string name="no_permissions">Tidak memerlukan izin apapun</string>
-    <string name="permissions">Izin aplikasi</string>
+    <string name="no_permissions">Tidak ada izin</string>
+    <string name="permissions">Izin</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Tidak bertanda tangan</string>
@@ -120,7 +120,7 @@
     <string name="repo_description">Deskripsi</string>
     <string name="repo_last_update">Pembaruan terakhir</string>
     <string name="repo_name">Nama</string>
-    <string name="unknown">Tidak dikenal</string>
+    <string name="unknown">Tidak diketahui</string>
     <string name="menu_settings">Setelan</string>
     <string name="unsigned_description">Ini berarti jika daftar aplikasi tidak dapat diverifikasi. Anda harus berhati-hati dengan aplikasi yang diunduh dari indeks yang tidak bertanda tangan.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
@@ -222,21 +222,21 @@
     <string name="swap_send_fdroid">Kirimkan F-Droid</string>
     <string name="apps">Aplikasi</string>
     <string name="swap_no_peers_nearby">Tidak bisa menemukan orang untuk bertukar di sekitar.</string>
-    <string name="swap_connecting">Menghubungkan</string>
+    <string name="swap_connecting">Menyambung</string>
     <string name="swap_confirm">Konfirmasi tukar</string>
     <string name="swap_qr_isnt_for_swap">Kode QR yang Anda pindai tidak terlihat seperti kode untuk bertukar.</string>
     <string name="loading">Memuat…</string>
     <string name="swap_connection_misc_error">Terjadi kesalahan saat menyambungkan perangkat, tidak bisa bertukar dengan mereka!</string>
     <string name="install_confirm">memerlukan akses ke</string>
-    <string name="install_confirm_update">Apakah Anda ingin memasang pembaruan aplikasi ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
-    <string name="install_confirm_update_system">Apakah Anda ingin memasang pembaruan untuk aplikasi bawaan ini\? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
-    <string name="install_confirm_update_no_perms">Apakah Anda ingin memasang pembaruan untuk aplikasi ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses khusus apapun.</string>
-    <string name="install_confirm_update_system_no_perms">Apakah Anda ingin memasang pembaruan untuk aplikasi bawaan ini\? Data yang ada tidak akan hilang. Tidak membutuhkan akses khusus apapun.</string>
+    <string name="install_confirm_update">Apakah Anda ingin memasang pembaruan ke aplikasi yang ada? Data Anda yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
+    <string name="install_confirm_update_system">Apakah Anda ingin memasang pembaruan ke aplikasi yang tertanam? Data Anda yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
+    <string name="install_confirm_update_no_perms">Anda ingin memasang pembaruan ke aplikasi yang ada ini? Data Anda yang ada akan hilang. Tindakan ini tidak memerlukan akses khusus apa pun.</string>
+    <string name="install_confirm_update_system_no_perms">Anda ingin memasang pembaruan ke aplikasi yang ada di dalamnya? Data Anda yang ada akan hilang. Tindakan ini tidak memerlukan akses khusus apa pun.</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
     <string name="perm_costs_money">Ini dapat memakan biaya</string>
-    <string name="uninstall_update_confirm">Apakah Anda ingin mengganti aplikasi ini dengan versi pabrik\? Semua data akan dihapus.</string>
-    <string name="uninstall_confirm">Apakah Anda ingin menghapus aplikasi ini\?</string>
+    <string name="uninstall_update_confirm">Gantikan aplikasi ini dengan versi pabrik? Semua data akan dihapus.</string>
+    <string name="uninstall_confirm">Apakah Anda ingin meng-uninstal apl ini?</string>
     <string name="download_error">Pengunduhan gagal!</string>
     <string name="perms_new_perm_prefix">Baru:</string>
     <string name="perms_description_app">Disediakan oleh %1$s.</string>
@@ -263,7 +263,7 @@
     <string name="install_error_notify_title">Kesalahan memasang %s</string>
     <string name="uninstall_error_notify_title">Kesalahan menghapus %s</string>
     <string name="installing">Memasang…</string>
-    <string name="uninstalling">Menghapus…</string>
+    <string name="uninstalling">Mencopot pemasangan…</string>
     <string name="keep_install_history">Simpan riwayat pemasangan</string>
     <string name="keep_install_history_summary">Simpan catatan semua pemasangan dan pencopotan di dalam penyimpanan privat</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>

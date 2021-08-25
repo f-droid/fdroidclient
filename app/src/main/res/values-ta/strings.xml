@@ -2,7 +2,7 @@
 <resources>
     <string name="installIncompatible">உங்கள் சாதனத்துடன் பொருந்தாத பயன்பாடு, எப்படியும் நிறுவவா\?</string>
     <string name="version">பதிப்பு</string>
-    <string name="delete">நீக்குக</string>
+    <string name="delete">நீக்கு</string>
     <string name="cache_downloaded">தற்காலிகமாக சேமிக்கப்பட்ட செயலிகளை வைத்திரு</string>
     <string name="updates">புதுப்பிப்புகள்</string>
     <string name="unstable_updates">நிலையற்ற புதுப்பிப்புகள்</string>
@@ -30,7 +30,7 @@
     <string name="added_on">%s இல் சேர்க்கப்பட்டது</string>
     <string name="ok">சரி</string>
     <string name="yes">ஆம்</string>
-    <string name="no">இல்லை</string>
+    <string name="no">வேண்டாம்</string>
     <string name="repo_add_title">புதிய களஞ்சியத்தைச் சேர்க்கவும்</string>
     <string name="repo_add_add">சேர்</string>
     <string name="links">இணைப்புகள்</string>
@@ -43,8 +43,8 @@
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
     <string name="invalid_url">இது சரியான யுஆர்எல் அல்ல.</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
-    <string name="menu_settings">அமைப்புகள்</string>
-    <string name="menu_search">தேடுக</string>
+    <string name="menu_settings">அமைப்பு</string>
+    <string name="menu_search">தேடு</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>
     <string name="menu_share">பகிர்</string>
     <string name="menu_install">நிறுவு</string>
@@ -68,7 +68,7 @@
     <string name="main_menu__categories">பிரிவுகள்</string>
     <string name="category_Internet">இணையம்</string>
     <string name="category_Money">பணம்</string>
-    <string name="newPerms">புதிய</string>
+    <string name="newPerms">புதிது</string>
     <string name="notification_action_install">நிறுவு</string>
     <string name="repo_details">களஞ்சியம்</string>
     <string name="SignatureMismatch">புதிய பதிப்பு பழைய ஒரு வேறு விசை யுடன் கையொப்பமிடப்பட்டுள்ளது. புதிய பதிப்பை நிறுவ, பழையது முதலில் நிறுவல்நீக்கம் செய்யப்பட வேண்டும். தயவுசெய்து இதைச் செய்து மீண்டும் முயற்சிக்கவும். (நிறுவல் நீக்கம் பயன்பாடு சேமிக்கப்படும் எந்த உள் தரவு அழித்து விடும் என்பதை நினைவில் கொள்க)</string>
@@ -81,18 +81,18 @@
     <string name="status_inserting_apps">பயன்பாட்டு விவரங்களைச் சேமிக்கிறது</string>
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருள்</string>
-    <string name="notification_action_cancel">ரத்து செய்</string>
+    <string name="notification_action_cancel">ரத்துசெய்</string>
     <string name="unknown">அறியப்படாத</string>
-    <string name="disabled">முடக்கப்பட்டுள்ளது</string>
-    <string name="next">அடுத்த</string>
+    <string name="disabled">முடக்கப்பட்டது</string>
+    <string name="next">அடுத்து</string>
     <string name="installing">நிறுவுகிறது…</string>
-    <string name="install_confirm_update">தற்போதுள்ள இந்த பயன்பாட்டிற்கு புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா\? உங்கள் தற்போதைய தரவு இழக்கப்படாது. புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
-    <string name="install_confirm_update_system">இந்த உள்ளமைக்கப்பட்ட பயன்பாட்டிற்கு புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா\? உங்கள் தற்போதைய தரவு இழக்கப்படாது. புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
-    <string name="install_confirm_update_no_perms">தற்போதுள்ள இந்த பயன்பாட்டிற்கு புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா\? உங்கள் தற்போதைய தரவு இழக்கப்படாது. இதற்கு எந்த சிறப்பு அணுகலும் தேவையில்லை.</string>
-    <string name="install_confirm_update_system_no_perms">இந்த உள்ளமைக்கப்பட்ட பயன்பாட்டிற்கு புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா\? உங்கள் தற்போதைய தரவு இழக்கப்படாது. இதற்கு எந்த சிறப்பு அணுகலும் தேவையில்லை.</string>
-    <string name="uninstall_confirm">இந்தப் பயன்பாட்டை நிறுவல்நீக்கம் செய்ய விரும்புகிறீர்களா\?</string>
-    <string name="uninstall_update_confirm">இந்த பயன்பாட்டை தொழிற்சாலை பதிப்பால் மாற்ற விரும்புகிறீர்களா\? எல்லா தரவும் அகற்றப்படும்.</string>
-    <string name="uninstalling">நிறுவல் நீக்குகிறது…</string>
+    <string name="install_confirm_update">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
+    <string name="install_confirm_update_system">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
+    <string name="install_confirm_update_no_perms">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்கமாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
+    <string name="install_confirm_update_system_no_perms">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
+    <string name="uninstall_confirm">இந்தப் பயன்பாட்டை நிறுவல் நீக்க விரும்புகிறீர்களா?</string>
+    <string name="uninstall_update_confirm">ஆரம்பநிலைப் பதிப்பாக இந்தப் பயன்பாட்டை மாற்றியமைக்கவா? எல்லா தரவும் அகற்றப்படும்.</string>
+    <string name="uninstalling">நிறுவலை நீக்குகிறது…</string>
     <string name="allPerms">எல்லாம்</string>
     <string name="no_permissions">அனுமதிகள் இல்லை</string>
     <string name="loading">ஏற்றுகிறது…</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versiune</string>
-    <string name="delete">Șterge</string>
+    <string name="delete">Ștergeți</string>
     <string name="cache_downloaded">Păstrează aplicațiile descărcate</string>
     <string name="updates">Actualizări</string>
     <string name="other">Altele</string>
@@ -19,7 +19,7 @@
     <string name="repo_add_add">Adaugă</string>
     <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
-    <string name="menu_search">Caută</string>
+    <string name="menu_search">Căutați</string>
     <string name="menu_launch">Deschideți</string>
     <string name="menu_install">Instalează</string>
     <string name="menu_uninstall">Dezinstalează</string>
@@ -277,7 +277,7 @@
     <string name="notification_title_summary_installed">Instalare reușită</string>
     <string name="notification_title_summary_install_error">Instalarea a eșuat</string>
     <string name="notification_action_update">Actualizare</string>
-    <string name="notification_action_cancel">Anulează</string>
+    <string name="notification_action_cancel">Anulați</string>
     <string name="notification_action_install">Instalare</string>
     <string name="tts_category_name">Categorie %1$s</string>
     <plurals name="tts_view_all_in_category">

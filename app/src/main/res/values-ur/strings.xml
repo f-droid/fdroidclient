@@ -69,7 +69,7 @@
     <string name="proxy_host">پراکسی    ہوسٹ</string>
     <string name="enable_proxy_summary">ایچ ٹی ٹی پی   پر اکسی  کو  تمام  نیٹ  ورکس  کے  لئے  تشکیل  دیں</string>
     <string name="notification_action_install">انسٹال</string>
-    <string name="notification_action_cancel">کیںسل</string>
+    <string name="notification_action_cancel">منسوخ کریں</string>
     <string name="notification_action_update">اپڈیٹ</string>
     <string name="swap_dont_show_again">دوبارا نہ دکھایں</string>
     <string name="swap_welcome">ایف - ڈرائڈ میں خوش آمدید</string>

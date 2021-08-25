@@ -224,10 +224,10 @@
     <string name="loading">Läser in …</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="install_confirm">behöver åtkomst till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här inbyggda appen\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
-    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering till denna inbyggda app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
+    <string name="install_confirm_update">Vill du installera en uppdatering till den här befintliga appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här befintliga förinstallerade appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av den befintliga appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
+    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering av den inbyggda appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
     <string name="newPerms">Nytt</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>

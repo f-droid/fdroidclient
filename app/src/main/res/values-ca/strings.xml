@@ -30,7 +30,7 @@
     <string name="no">No</string>
     <string name="repo_add_title">Afegeix un nou dipòsit</string>
     <string name="repo_add_add">Afegeix</string>
-    <string name="cancel">Cancel·lar</string>
+    <string name="cancel">Cancel·la</string>
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
@@ -300,7 +300,7 @@
     <string name="notification_title_summary_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_install_error">Instal·lació fallida</string>
     <string name="notification_action_update">Actualitza</string>
-    <string name="notification_action_cancel">Cancel·leu</string>
+    <string name="notification_action_cancel">Cancel·la</string>
     <string name="notification_action_install">Instal·la</string>
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
     <string name="app_new">Nova</string>

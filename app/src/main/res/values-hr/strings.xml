@@ -64,7 +64,7 @@
     <string name="repo_provider">Repozitorij: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_settings">Postavke</string>
-    <string name="menu_search">Traži</string>
+    <string name="menu_search">Pretraži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
     <string name="menu_launch">Otvori</string>
     <string name="menu_share">Dijeli</string>
@@ -280,7 +280,7 @@
     <string name="main_menu__latest_apps">Najnovije</string>
     <string name="preference_manage_installed_apps">Upravljaj instaliranim aplikacijama</string>
     <string name="notification_action_update">Ažuriraj</string>
-    <string name="notification_action_cancel">Odustani</string>
+    <string name="notification_action_cancel">Otkaži</string>
     <string name="notification_action_install">Instaliraj</string>
     <string name="app_list__name__downloading_in_progress">Preuzimanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instaliran</string>

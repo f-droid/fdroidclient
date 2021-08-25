@@ -66,7 +66,7 @@
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="menu_search">ရှာဖွေခြင်း</string>
     <string name="menu_add_repo">Repository အသစ္</string>
-    <string name="menu_launch">ဖွင့်</string>
+    <string name="menu_launch">ဖွင့်သည်</string>
     <string name="menu_share">ေဝမွ်မည္</string>
     <string name="menu_install">သြင္းမည္</string>
     <string name="menu_uninstall">ျဖဳတ္မည္</string>
@@ -279,6 +279,6 @@
     <string name="unsigned">လက်မှတ်မထိုးထား</string>
     <string name="updates__tts__download_app">ဆွဲချယူ</string>
     <string name="notification_action_install">ထားမည်</string>
-    <string name="notification_action_cancel">ပါယ်</string>
+    <string name="notification_action_cancel">မလုပ်တော့</string>
     <string name="notification_action_update">နောက်ဆုံးတင်ရန်</string>
 </resources>

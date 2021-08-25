@@ -95,4 +95,5 @@
     <string name="menu_bitcoin">ਬਿੱਟ-ਕੁਆਇਨ</string>
     <string name="main_menu__swap_nearby">ਨੇੜੇ-ਤੇੜੇ</string>
     <string name="swap_scan_qr">QR ਕੋਡ</string>
+    <string name="notification_action_cancel">ਰੱਦ ਕਰੋ</string>
 </resources>

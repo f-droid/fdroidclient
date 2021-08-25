@@ -12,7 +12,7 @@
     <string name="app_installed">نصب شده</string>
     <string name="app_not_installed">نصب نشده</string>
     <string name="added_on">افزوده در %s</string>
-    <string name="ok">قبول</string>
+    <string name="ok">تأیید</string>
     <string name="yes">بله</string>
     <string name="no">نه</string>
     <string name="repo_add_title">افزودن مخزنی جدید</string>
@@ -26,7 +26,7 @@
     <string name="repo_add_url">نشانی مخزن</string>
     <string name="repo_add_fingerprint">اثر انگشت (اختیاری)</string>
     <string name="menu_manage">مخزن‌ها</string>
-    <string name="menu_search">جست‌وجو</string>
+    <string name="menu_search">جستجو</string>
     <string name="menu_share">هم‌رسانی</string>
     <string name="menu_install">نصب</string>
     <string name="menu_uninstall">حذف نصب</string>
@@ -48,14 +48,14 @@
 \n%1$s</string>
     <string name="status_connecting_to_repo">وصل شدن به
 \n%1$s</string>
-    <string name="no_permissions">بدون اجازه</string>
+    <string name="no_permissions">مجوزی موجود نیست</string>
     <string name="theme">زمینه</string>
     <string name="unsigned">امضا نشده</string>
     <string name="repo_description">شرح</string>
     <string name="repo_last_update">آخرین به‌روز رسانی</string>
     <string name="repo_name">نام</string>
     <string name="unsigned_description">یعنی فهرست برنامه‌ها نتوانست تأیید شود. باید مراقب کاره‌های بارگرفته از نمایه‌های امضا نشده باشید.</string>
-    <string name="unknown">نشناخته</string>
+    <string name="unknown">ناشناس</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
     <string name="app_name">اف‌دروید</string>
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شدهٔ کاره در حافظهٔ داخلی را پاک می‌کند)</string>
@@ -90,7 +90,7 @@
     <string name="invalid_url">این نشانی، معتبر نیست.</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
-    <string name="menu_launch">گشودن</string>
+    <string name="menu_launch">باز کردن</string>
     <string name="menu_ignore_all">چشم‌پوشی از تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">چشم‌پوشی از این به‌روز رسانی</string>
     <string name="menu_website">پایگاه وب</string>
@@ -128,7 +128,7 @@
     <string name="status_inserting_apps">ذخیره کردن جزییات کاره</string>
     <string name="repos_unchanged">تمام مخزن‌ها به‌روزند</string>
     <string name="global_error_updating_repos">خطا هنگام به‌روز رسانی: %s</string>
-    <string name="permissions">اجازه‌ها</string>
+    <string name="permissions">مجوزها</string>
     <string name="no_handler_app">هیچ کاره‌ای ندارید که بتواند %s را مدیریت کند.</string>
     <string name="unverified">تأیید نشده</string>
     <string name="repo_details">مخزن</string>
@@ -190,10 +190,10 @@
     <string name="swap_cant_find_peers">نمی‌توانید کسی که به دنبالش هستید را بیابید؟</string>
     <string name="swap_send_fdroid">فرستادن اف‌دروید</string>
     <string name="swap_no_peers_nearby">نتوانست افراد نزدیک را برای تاخت زدن بیابد.</string>
-    <string name="swap_connecting">وصل شدن</string>
+    <string name="swap_connecting">درحال اتصال</string>
     <string name="swap_confirm">تأیید تاخت زدن</string>
     <string name="newPerms">جدید</string>
-    <string name="allPerms">همه</string>
+    <string name="allPerms">همه موارد</string>
     <string name="perm_costs_money">ممکن است برایتان خرج داشته باشد</string>
     <string name="download_error">بارگیری شکست خورد!</string>
     <string name="perms_new_perm_prefix">جدید:</string>
@@ -229,15 +229,15 @@
     <string name="swap_nfc_description">اگر دوستتان اف‌دروید داشته و NFCاش روشن است، افزاره‌هایتان را به هم بچسبانید.</string>
     <string name="swap_join_same_wifi_desc">برای تاخت زدن با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکیتان می‌تواند یک نقطهٔ اتّصال وای‌فای ایجاد کند.</string>
     <string name="swap_qr_isnt_for_swap">رمز QRای که پوییدید، شبیه یک رمز تاخت‌زنی نیست.</string>
-    <string name="loading">بار کردن…</string>
+    <string name="loading">درحال بارگیری…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به افزاره خطایی رخ داد. نمی‌توان تاخت زد!</string>
     <string name="install_confirm">نیازمند دسترسی به</string>
-    <string name="install_confirm_update">می‌خواهیدبرای این کارهٔ موجود، به‌روزرسانی‌ای نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. کارهٔ به‌روز، دسترسی‌های زیر را خواهد داشت:</string>
-    <string name="install_confirm_update_system">می‌خواهید برای این کارهٔ توکار به‌روزرسانی‌ای نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. برنامهٔ به‌روز، دسترسی‌های زیر را خواهد داشت:</string>
-    <string name="install_confirm_update_no_perms">می‌خواهید برای این کارهٔ موجود به‌روزرسانی‌ای نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی ویژه‌ای ندارد.</string>
-    <string name="install_confirm_update_system_no_perms">می‌خواهید برای این کارهٔ توکار به‌روزرسانی‌ای نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی ویژه‌ای ندارد.</string>
-    <string name="uninstall_update_confirm">می‌خواهید این کاره را با نگارش کارخانه عوض کنید؟ تمام داده‌ها برداشته خواهند شد.</string>
-    <string name="uninstall_confirm">می‌خواهید این کاره را حذف نصب کنید؟</string>
+    <string name="install_confirm_update">آیا میٰ‌خواهید بهٰ‌روزرسانی این برنامه کنونی را نصب کنید؟ داده کنونی شما از بین نمی‌رود. برنامه به‌روزرسانی شده دسترسی خواهد داشت به:</string>
+    <string name="install_confirm_update_system">آیا می‌خواهید به‌روزرسانی این برنامه جاسازی شده را نصب کنید؟ داده‌های کنونی شما از بین نمی‌رود. برنامه به‌روزرسانی شده دسترسی خواهد داشت به:</string>
+    <string name="install_confirm_update_no_perms">آیا می‌خواهید یک به‌روزرسانی برای این برنامه کاربردی موجود نصب کنید؟ داده‌های موجود شما از دست نخواهد رفت. به دسترسی ویژه‌ای نیاز ندارد.</string>
+    <string name="install_confirm_update_system_no_perms">آیا می‌خواهید یک به‌روزرسانی برای این برنامه کاربردی داخلی نصب کنید؟ داده‌های موجود شما از دست نخواهد رفت. به دسترسی ویژه‌ای نیاز ندارد.</string>
+    <string name="uninstall_update_confirm">این برنامه با نسخه کارخانه جایگزین شود؟ همه داده‌ها پاک می‌شوند.</string>
+    <string name="uninstall_confirm">می‌خواهید این برنامه را حذف نصب کنید؟</string>
     <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره دارای بخش‌های ناآزاد است</string>
     <string name="empty_search_available_app_list">چنین کاره‌هایی موجود نیستند.</string>
@@ -257,8 +257,8 @@
     <string name="keep_month">۱ ماه</string>
     <string name="keep_year">۱ سال</string>
     <string name="keep_forever">برای همیشه</string>
-    <string name="uninstalling">حذف کردن نصب…</string>
-    <string name="installing">نصب کردن…</string>
+    <string name="uninstalling">در حال حذف نصب…</string>
+    <string name="installing">در حال نصب…</string>
     <string name="install_error_notify_title">خطا در نصب %s</string>
     <string name="uninstall_error_notify_title">خطا در حذف نصب %s</string>
     <string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
@@ -328,7 +328,7 @@
     <string name="notification_title_summary_installed">با موفّقیت نصب شد</string>
     <string name="notification_title_summary_install_error">نصب شکست خورد</string>
     <string name="notification_action_update">به‌روز رسانی</string>
-    <string name="notification_action_cancel">لغو</string>
+    <string name="notification_action_cancel">لغو کردن</string>
     <string name="notification_action_install">نصب</string>
     <string name="tts_category_name">دستهٔ %1$s</string>
     <plurals name="tts_view_all_in_category">
@@ -388,7 +388,7 @@
     <string name="panic_app_unknown_app">کاره‌ای ناشناخته</string>
     <string name="panic_app_setting_summary">هیچ کاره‌ای تنظیم نشده</string>
     <string name="panic_app_setting_none">هیچ‌کدام</string>
-    <string name="allow">اجازه دادن</string>
+    <string name="allow">مجاز است</string>
     <string name="panic_exit_title">خروج از کاره</string>
     <string name="panic_exit_summary">این کاره بسته خواهد شد</string>
     <string name="panic_destructive_actions">کنش‌های مخرّب</string>
@@ -486,7 +486,7 @@
     <string name="swap_stopping_hotspot">متوقّف کردن نقطهٔ اتّصال…</string>
     <string name="swap_starting">آغاز کردن…</string>
     <string name="swap_stopping">متوقّف شدن…</string>
-    <string name="disabled">از کار افتاده</string>
+    <string name="disabled">غیر فعال شد</string>
     <string name="swap_error_cannot_start_bluetooth">ناتوانی در آغاز بلوتوث!</string>
     <string name="nearby_splash__document_tree">جست‌وجوی ذخیره‌ساز یواس‌بی برای آینه‌ها و مخرن‌ها.</string>
     <string name="swap_toast_closing_nearby_after_timeout">نزدیک به خاطر بی‌کار بودن، بسته شد.</string>

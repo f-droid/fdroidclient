@@ -130,7 +130,7 @@
     <string name="swap_send_fdroid">F-Droid</string>
     <string name="category_System">यंत्रणा</string>
     <string name="category_Sports_Health">खेळ आणि</string>
-    <string name="wifi">वाय-</string>
+    <string name="wifi">वाय-फाय</string>
     <string name="not_on_same_wifi">तुमचे यंत्र तुमच्याद्वारे जोडल्या गेलेल्या स्थानीक भांडाराच्या वाई-फाई वर नाही ! या नेटवर्क मध्ये सामील होण्याचा प्रयत्न करा: %s</string>
     <string name="repo_last_update">अंतिम अद्ययावत</string>
     <string name="unverified">असत्यापित</string>
@@ -142,7 +142,7 @@
     <string name="about_title">F-Droid बद्दल</string>
     <string name="app_details">ऍपचे विवरण</string>
     <string name="notification_action_install">स्थापना</string>
-    <string name="notification_action_cancel">रद्द</string>
+    <string name="notification_action_cancel">रद्द करा</string>
     <string name="notification_action_update">अद्ययाव ( अपडेट)</string>
     <string name="swap_dont_show_again">हे पुन्हा दाखवू</string>
     <string name="swap_welcome">F-Droid मध्ये आपलं स्वागत!</string>
@@ -168,8 +168,8 @@
     <string name="menu_install">स्थापना</string>
     <string name="menu_share">सामायिक</string>
     <string name="menu_add_repo">नवे</string>
-    <string name="menu_settings">सेटिंग्स</string>
-    <string name="cancel">रद्द</string>
+    <string name="menu_settings">सेटिंग्ज</string>
+    <string name="cancel">रद्द करा</string>
     <string name="ok">ठीक</string>
     <string name="app_name">F-Droid</string>
     <string name="panic_destructive_actions">विध्वंसक</string>
@@ -261,9 +261,9 @@
     <string name="download_error">डाउनलोड अयशस्वी</string>
     <string name="perm_costs_money">हे तुम्हाला आर्थिकरीत्या गोत्यात आणू शकतं</string>
     <string name="install_confirm">हाताळले गरजेचे</string>
-    <string name="swap_connecting">जोडले जात</string>
+    <string name="swap_connecting">कनेक्ट करत आहे</string>
     <string name="swap_wifi_device_name">यंत्राचे</string>
-    <string name="disabled">निष्क्रिय</string>
+    <string name="disabled">अक्षम</string>
     <string name="swap_stopping">बंद होत आहे</string>
     <string name="swap_starting">सुरू होत आहे</string>
     <string name="swap_choose_apps">अँप्स निवडा</string>
@@ -298,7 +298,7 @@
     <string name="no_handler_app">तुमच्याकडे असे कोणतेही अँप नाही जे
 \n%s वर नियंत्रण करेल.</string>
     <string name="permissions">परवानग्या</string>
-    <string name="no_permissions">कोणतीही परवानगी</string>
+    <string name="no_permissions">परवानग्या नाहीत</string>
     <string name="global_error_updating_repos">अद्ययावत करतेवेळी चूक :%s</string>
     <string name="all_other_repos_fine">इतर सर्व भांडारांनी कोणतीही चूक केली</string>
     <string name="repos_unchanged">सर्व भांडारे अद्ययावत</string>
@@ -334,13 +334,26 @@
     <string name="local_repo_https_on">स्थानिक भांडाराला संपर्कासाठी संकीर्ण HTTPS:// पद्धतीचा वापर करा</string>
     <string name="local_repo_name_summary">तुमच्या स्थानिक भांडाराचे जाहिरात शीर्षक : %s</string>
     <string name="update_auto_install_summary">अँप्सना डाऊनलोड करून अज्ञानवासात फक्त सूचना दाखवून अद्ययावत करा</string>
-    <string name="other">इतर</string>
+    <string name="other">अन्य</string>
     <string name="allow_push_requests_summary">भांडारणातील मेटाडेटा अप्पसची स्थापना अथवा अस्थापना करण्याच्या आग्रही मागण्या सामावून घेऊ</string>
     <string name="menu_launch">उघडा</string>
     <string name="back">मागे</string>
-    <string name="yes">हो</string>
+    <string name="yes">होय</string>
     <string name="less">कमी</string>
     <string name="more">अधिक</string>
     <string name="menu_search">शोध</string>
     <string name="no">नाही</string>
+    <string name="installing">इंस्टॉल करत आहे…</string>
+    <string name="install_confirm_update">तुम्हाला सद्य अॅप्लिकेशनवर अपडेट इंस्टॉल करायची आहे? तुम्ही तुमचा सद्य डेटा गमावणार नाही. अपडेट केलेल्या अॅप्लिकेशनला यावर अॅक्सेस मिळेल:</string>
+    <string name="install_confirm_update_system">तुम्ही या बिल्ट-इन अॅप्लिकेशनवर अपडेट इंस्टॉल करायची आहे? तुम्ही तुमचा सद्य डेटा गमावणार नाही. अपडेट केलेल्या अॅप्लिकेशनला यावर अॅक्सेस मिळेल:</string>
+    <string name="uninstall_confirm">तुम्ही हा अॅप अनइंस्टॉल करू इच्छिता?</string>
+    <string name="uninstall_update_confirm">फॅक्टरी आवृत्तीसह हा अॅप पुनर्स्थित करायचा? सर्व डेटा काढला जाईल.</string>
+    <string name="uninstalling">अनइंस्टॉल करत आहे…</string>
+    <string name="swap_scan_qr">QR कोड स्कॅन करा</string>
+    <string name="next">पुढील</string>
+    <string name="install_confirm_update_no_perms">तुम्हाला सद्य अॅप्लिकेशनवर अपडेट इंस्टॉल करायची आहे? तुम्ही तुमचा सद्य डेटा गमावणार नाही. यासाठी कोणताही विशेष अॅक्सेस आवश्यक नसतो.</string>
+    <string name="install_confirm_update_system_no_perms">तुम्ही या बिल्ट-इन अॅप्लिकेशनवर अपडेट इंस्टॉल करायची आहे? तुम्ही तुमचा सद्य डेटा गमावणार नाही. यासाठी कोणताही विशेष अॅक्सेस आवश्यक नसतो.</string>
+    <string name="allPerms">सर्व</string>
+    <string name="loading">लोड करत आहे…</string>
+    <string name="delete">हटवा</string>
 </resources>

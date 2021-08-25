@@ -10,7 +10,7 @@
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновления</string>
-    <string name="other">Други</string>
+    <string name="other">Друго</string>
     <string name="update_interval">Период за автоматична проверка</string>
     <string name="notify">Показване на новите издания</string>
     <string name="notify_on">Показва се известие при ново издание</string>
@@ -31,7 +31,7 @@
     <string name="app_inst_known_source">Инсталирана (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавена на %s</string>
-    <string name="ok">Добре</string>
+    <string name="ok">OK</string>
     <string name="yes"> Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
@@ -143,7 +143,7 @@
     <string name="category_Time">Час</string>
     <string name="category_Writing">Писане</string>
     <string name="swap_connecting">Установява се връзка</string>
-    <string name="loading">Зареждане…</string>
+    <string name="loading">Зарежда се…</string>
     <string name="allPerms">Всички</string>
     <string name="perm_costs_money">Може да бъдете таксувани</string>
     <string name="interval_never">Без автоматично обновяване</string>
@@ -162,7 +162,7 @@
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не откривате когото търсите\?</string>
-    <string name="uninstall_confirm">Искате ли да премахнете това приложение\?</string>
+    <string name="uninstall_confirm">Искате ли да деинсталирате това приложение?</string>
     <string name="unstable_updates">Нестабилни издания</string>
     <string name="unstable_updates_summary">Предлага се обновяване с нестабилни издания</string>
     <string name="category_Connectivity">Свързаност</string>
@@ -174,10 +174,10 @@
     <string name="empty_can_update_app_list">Поздравления!
 \nВсички приложения са последно издание.</string>
     <string name="install_confirm">има нужда от достъп до</string>
-    <string name="install_confirm_update">Искате ли да бъде обновено това приложение\? Съществуващите данни няма да бъдат загубени. Новото издание ще получи достъп до:</string>
-    <string name="install_confirm_update_system">Искате ли да бъде обновено това вградено приложение\? Съществуващите данни няма да бъдат загубени. Новото издание ще получи достъп до:</string>
-    <string name="install_confirm_update_no_perms">Желаете ли обновяване на това приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
-    <string name="install_confirm_update_system_no_perms">Желаете ли обновяване на това вградено приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
+    <string name="install_confirm_update">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_system">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_no_perms">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
+    <string name="install_confirm_update_system_no_perms">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
     <string name="swap_send_fdroid">Изпращане F-Droid</string>
     <string name="swap_scan_qr">QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
@@ -377,8 +377,8 @@
     <string name="install_error_notify_title">Грешка при инсталиране на %s</string>
     <string name="uninstall_error_notify_title">Грешка при премахване на %s</string>
     <string name="app__tts__downloading_progress">Изтегляне, %1$d%% завършени</string>
-    <string name="installing">Инсталиране…</string>
-    <string name="uninstalling">Премахване…</string>
+    <string name="installing">Инсталира се…</string>
+    <string name="uninstalling">Деинсталира се…</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d повече…</item>
         <item quantity="other">+%1$d повече…</item>
@@ -458,7 +458,7 @@
     <string name="try_again">Опитайте отново</string>
     <string name="swap_blank_wifi_ssid">(празно)</string>
     <string name="swap_hidden_wifi_ssid">(скрито)</string>
-    <string name="disabled">Изключено</string>
+    <string name="disabled">Деактивирано</string>
     <string name="swap_toast_could_not_enable_hotspot">Не може да се активира Wi-Fi Hotspot!</string>
     <string name="swap_toast_hotspot_enabled">Включена точка за достъп през Wi-Fi</string>
     <string name="swap_toast_invalid_url">Невалиден URL адрес за размяна: %1$s</string>

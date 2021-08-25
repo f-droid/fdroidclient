@@ -252,7 +252,7 @@
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">V blízkosti nenalezen nikdo pro výměnu aplikací.</string>
     <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
-    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této aplikace\? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této existující aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
     <string name="install_confirm_update_system">Chcete nainstalovat aktualizaci této integrované aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
     <string name="install_confirm_update_no_perms">Chcete nainstalovat aktualizaci této existující aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
     <string name="install_confirm_update_system_no_perms">Chcete nainstalovat aktualizaci této integrované aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
@@ -301,7 +301,7 @@
     <string name="notification_title_summary_installed">Úspěšně nainstalováno</string>
     <string name="notification_title_summary_install_error">Instalace selhala</string>
     <string name="notification_action_update">Aktualizovat</string>
-    <string name="notification_action_cancel">Storno</string>
+    <string name="notification_action_cancel">Zrušit</string>
     <string name="notification_action_install">Nainstalovat</string>
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
     <string name="app_new">Nové</string>

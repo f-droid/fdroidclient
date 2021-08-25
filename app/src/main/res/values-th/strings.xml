@@ -6,7 +6,7 @@
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้งานการส่ง NFC …</string>
     <string name="cache_downloaded">เก็บแอปที่แคชไว้</string>
-    <string name="other">อื่น ๆ</string>
+    <string name="other">อื่นๆ</string>
     <string name="update_interval">ช่วงเวลาอัปเดตอัตโนมัติ</string>
     <string name="update_auto_download">ดึงอัปเดตอัตโนมัติ</string>
     <string name="local_repo_name">ชื่อที่ตั้งให้แหล่งโปรแกรมจากเครื่องคุณ</string>

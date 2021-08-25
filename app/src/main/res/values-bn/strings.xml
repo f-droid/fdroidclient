@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-    <string name="menu_search">অনুসন্ধান</string>
+    <string name="menu_search">খুঁজুন</string>
     <string name="menu_settings">সেটিংস</string>
     <string name="menu_manage">ভাণ্ডার</string>
     <string name="cancel">বাতিল</string>
     <string name="back">পিছনে</string>
     <string name="no">না</string>
-    <string name="yes">হ্যা</string>
-    <string name="ok">আচ্ছা</string>
+    <string name="yes">হ্যাঁ</string>
+    <string name="ok">ঠিক আছে</string>
     <string name="updates">হালনাগাদ</string>
-    <string name="menu_launch">খুলো</string>
+    <string name="menu_launch">খুলুন</string>
     <string name="enable">সক্ষম করো</string>
     <string name="less">কম</string>
     <string name="more">আরো</string>
@@ -30,14 +30,14 @@
     <string name="login_password">পাসওয়ার্ড</string>
     <string name="login_name">নাম</string>
     <string name="other">অন্যান্য</string>
-    <string name="delete">মুছো</string>
+    <string name="delete">মুছুন</string>
     <string name="version">সংস্করণ</string>
     <string name="category_Development">ডেভেলপমেন্ট</string>
     <string name="category_Connectivity">যোগাযোগ</string>
     <string name="pref_language_default">সিস্টেম ডিফল্ট</string>
     <string name="pref_language">ভাষা</string>
     <string name="skip">উপেক্ষা করো</string>
-    <string name="next">পরেরটা</string>
+    <string name="next">পরবর্তী</string>
     <string name="details_notinstalled">ইন্সটল করা নেই</string>
     <string name="preference_manage_installed_apps">ইন্সটলকৃত অ্যাপ ব্যবস্থাপনা</string>
     <string name="main_menu__swap_nearby">কাছাকাছি</string>
@@ -77,7 +77,7 @@
     <string name="about_title">এফ-ড্রয়েড সম্পর্কে</string>
     <string name="app_details">অ্যাপের বিবরণ</string>
     <string name="notification_action_install">ইনস্টল</string>
-    <string name="notification_action_cancel">বাতিল</string>
+    <string name="notification_action_cancel">বাতিল করুন</string>
     <string name="notification_action_update">হালনাগাদ</string>
     <string name="newPerms">নতুন</string>
     <string name="swap_dont_show_again">আবার দেখাবে না</string>
@@ -166,7 +166,7 @@
     <string name="installIncompatible">অ্যাপ্লিকেশনটি আপনার ডিভাইসের সাথে নাও চলতে পারে, তবুও ইনস্টল করবেন\?</string>
     <string name="SignatureMismatch">নতুন সংস্করণটি পুরানোটির থেকে আলাদা কি দিয়ে স্বাক্ষরিত। নতুন সংস্করণ ইনস্টল করতে, পুরানোটি প্রথমে আনইনস্টল করা উচিত। দয়া করে এটি করুন এবং আবার চেষ্টা করুন। (মনে রাখবেন যে আনইনস্টল করা অ্যাপ দ্বারা সঞ্চিত কোনও অভ্যন্তরীণ ডাটা মুছে যাবে)</string>
     <string name="wifi_ap">হটস্পট</string>
-    <string name="wifi">ওয়াই-ফাই</string>
+    <string name="wifi">ওয়াই-ফাই</string>
     <string name="unknown">অজানা</string>
     <string name="repo_name">নাম</string>
     <string name="repo_description">বিবরণ</string>
@@ -174,9 +174,9 @@
     <string name="repo_details">রিপোসিটরি</string>
     <string name="unverified">অযাচাইকৃত</string>
     <string name="theme">থিম</string>
-    <string name="permissions">অনুমতি</string>
+    <string name="permissions">অনুমতিগুলি</string>
     <string name="hiding_calculator">ক্যালকুলেটর</string>
-    <string name="allow">অনুমতি দাও</string>
+    <string name="allow">অনুমতি দিন</string>
     <string name="panic_app_setting_none">কোনটি না</string>
     <string name="privacy">গোপনীয়তা</string>
     <string name="proxy">প্রক্সি</string>
@@ -184,14 +184,14 @@
     <string name="menu_downgrade">ডাউনগ্রেড</string>
     <string name="notification_channel_installs_title">ইনস্টলকৃত</string>
     <string name="keep_forever">সর্বদা</string>
-    <string name="uninstalling">আনইনস্টলরত…</string>
-    <string name="installing">ইন্সটলরত…</string>
+    <string name="uninstalling">আনইনস্টল করা হচ্ছে …</string>
+    <string name="installing">ইনস্টল করা হচ্ছে…</string>
     <string name="downloading">ডাউনলোডরত…</string>
     <string name="perms_new_perm_prefix">নতুন:</string>
-    <string name="allPerms">সব</string>
-    <string name="loading">প্রক্রিয়ারত…</string>
-    <string name="swap_connecting">যুক্ত হচ্ছে</string>
-    <string name="disabled">নিষ্ক্রিয়</string>
+    <string name="allPerms">সমস্ত</string>
+    <string name="loading">লোড হচ্ছে…</string>
+    <string name="swap_connecting">কানেক্ট হচ্ছে</string>
+    <string name="disabled">অক্ষম হয়েছে</string>
     <string name="swap_stopping">থামছে…</string>
     <string name="swap_starting">শুরু হচ্ছে…</string>
     <string name="swap_hidden_wifi_ssid">(লুকোনো)</string>
@@ -449,10 +449,10 @@
     <string name="app_details_donate_prompt_unknown_author">%1$s এর তৈরিকারকদের এক কাপ কফি কিনে দাও!</string>
     <string name="send_fdroid_metrics_json">জেসন নথি হিসেবে %s পরিসংখ্যান প্রতিবেদন</string>
     <string name="notification_channel_updates_description">অ্যাপ ও ভাণ্ডার হালনাগাদের বিজ্ঞপ্তি দেখাবে।</string>
-    <string name="install_confirm_update_system_no_perms">ডিভাইসে আগে থেকে বিদ্যমান এই অ্যাপটি হালনাগাদ করবে\? তোমার বিদ্যমান তথ্য মুছে যাবে না। এতে কোনো বিশেষ অনুমতি লাগবে না।</string>
-    <string name="install_confirm_update_no_perms">ডিভাইসে আগে থেকে বিদ্যমান এই অ্যাপটি হালনাগাদ করবে\? তোমার বিদ্যমান তথ্য মুছে যাবে না। এতে কোনো বিশেষ অনুমতি লাগবে না।</string>
-    <string name="install_confirm_update_system">ডিভাইসে আগে থেকে বিদ্যমান এই অ্যাপটি হালনাগাদ করবে\? তোমার বিদ্যমান তথ্য মুছে যাবে না। হালনাগাদকৃত অ্যাপ যেসব অনুমতি পাবে তা নিম্নরূপ:</string>
-    <string name="install_confirm_update">বিদ্যমান অ্যাপের জন্য এই হালনাগাদটি কি ইন্সটল করবে\? তোমার তথ্য মুছবে না। হালনাগাদকৃত অ্যাপ যেসব অনুমতি পাবে তা নিম্নরূপ:</string>
+    <string name="install_confirm_update_system_no_perms">আপনি কি ভেতরে থাকা অ্যাপ্লিকেশানের একটি আপডেট ইনস্টল করতে চান? আপনার বিদ্যমান ডেটাগুলি একই রকম থাকবে৷ এর জন্য কোনো বিশেষ অ্যাক্সেসের প্রয়োজন নেই৷</string>
+    <string name="install_confirm_update_no_perms">আপনি কি এই বিদ্যমান অ্যাপ্লিকেশানের একটি আপডেট ইনস্টল করতে চান? আপনার বিদ্যমান ডেটাগুলি একই রকম থাকবে৷ এর জন্য কোনো বিশেষ অ্যাক্সেসের প্রয়োজন নেই৷</string>
+    <string name="install_confirm_update_system">আপনি কি এই ভেতরে থাকা অ্যাপ্লিকেশানের একটি আপডেট ইনস্টল করতে চান? আপনার বিদ্যমান ডেটাগুলি একই রকম থাকবে৷ এই আপডেট হওয়া অ্যাপ্লিকেশানটির মাধ্যমে যেসব জিনিস অ্যাক্সেস করার সুবিধা পাবেন সেগুলি হল:</string>
+    <string name="install_confirm_update">আপনি কি এই বিদ্যমান অ্যাপ্লিকেশানের একটি আপডেট ইনস্টল করতে চান? আপনার বিদ্যমান ডেটাগুলি একই রকম থাকবে৷ এই আপডেট হওয়া অ্যাপ্লিকেশানটির মাধ্যমে যেসব জিনিস অ্যাক্সেস করার সুবিধা পাবেন সেগুলি হল:</string>
     <string name="swap_join_same_wifi_desc">নিশ্চিত করো একই ওয়াইফাইয়ে আছো, যাতে ওয়াইফাই দিয়ে বিনিময় করতে পারো। একই নেটওয়ার্কে তোমাদের প্রবেশ না পারলে, একটা হটস্পট বানাতে পারো।</string>
     <string name="force_touch_apps_on">কঠিনন্ত্র(হার্ডওয়্যার) সমর্থন ছাড়া টাচপর্দা লাগে এমন অ্যাপ দেখাও</string>
     <string name="show_incompat_versions_on">এই যন্ত্রের সাথে অসামঞ্জস্যপূর্ণ অ্যাপ সংস্করণ দেখাও</string>
@@ -475,7 +475,7 @@
         <item quantity="one">%2$s বিভাগের %1$d অ্যাপটি দেখো</item>
         <item quantity="other">%2$s বিভাগের %1$d সব অ্যাপ দেখো</item>
     </plurals>
-    <string name="uninstall_confirm">অ্যাপটি মুছতে চাও\?</string>
+    <string name="uninstall_confirm">আপনি কি এই অ্যাপ্লিকেশানটিকে আনইনস্টল করতে চান?</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s এ একটি অনিরাপত্তা পাওয়া গেছে। এই‌ মুহূর্তেই অ্যাপটি হালনাগাদের প্রস্তাব দিচ্ছি।</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s এ একটি অনিরাপত্তা পাওয়া গেছে। এই‌ মুহূর্তেই অ্যাপটি মুছে ফেলার প্রস্তাব দিচ্ছি।</string>
     <string name="app_permission_storage">স্টোরেজে ইন্সটল করতে এফ-ড্রয়েডের স্টোরেজ অনুমতি লাগবে। ইনস্টল চালিয়ে যেতে পরের পর্দায় এটার অনুমতি দিও।</string>
@@ -486,7 +486,7 @@
     <string name="crash_dialog_text">একটা অপ্রত্যাশিত ত্রুটির কারণে অ্যাপ থামাতে হয়েছে। সমস্যাটা ঠিক করতে বিস্তারিত তথ্য ইমেইল করে পাঠাবে কি\?</string>
     <string name="warning_scaning_qr_code">তোমার ক্যামেরায় মনে হয় স্বয়ংক্রিয়-মনোযোগ নেই, এতে সংকেতের পাঠোদ্ধার কঠিন হতে পারে।</string>
     <string name="crash_dialog_comment_prompt">এখানে তুমি অতিরিক্ত তথ্য ও মন্তব্য দিতে পারো:</string>
-    <string name="uninstall_update_confirm">এই অ্যাপটিকে কি কারখানা সংস্করণ দিয়ে প্রতিস্থাপিত করবে\? সব তথ্য এতে মুছে যাবে।</string>
+    <string name="uninstall_update_confirm">ফ্যাক্টরি সংস্করণের সাথে এই অ্যাপটিকে বদলাবেন? সব ডেটা মুছে যাবে।</string>
     <string name="swap_toast_not_removable_storage">নির্বাচিত ভুক্তির সাথে কোনো স্টোরেজ যন্ত্র মিলেনি, আবার চেষ্টা করো।</string>
     <string name="swap_no_peers_nearby">বিনিময়ের জন্য কাছাকাছি কাউকে পাওয়া যায়নি।</string>
     <string name="swap_scan_or_type_url">একজন সংকেতের পাঠোদ্ধার করবে অথবা সংষোগটি নিজের পরিব্রাজক(ব্রাউজারে) লিখবে।</string>
