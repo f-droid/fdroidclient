@@ -37,8 +37,9 @@
     <string-array name="themeValues">
         <item>light</item>
         <item>dark</item>
-        <item>night</item>
+        <item>followSystem</item>
     </string-array>
+    <string name="defaultTheme">followSystem</string>
 
     <integer name="defaultOverData">1</integer> <!-- Preferences.OVER_NETWORK_ON_DEMAND -->
     <integer name="defaultOverWifi">2</integer> <!-- Preferences.OVER_NETWORK_ALWAYS -->
