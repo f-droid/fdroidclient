@@ -541,6 +541,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_setting_up_wifi">Setting up Wi-Fi…</string>
     <string name="swap_stopping_wifi">Stopping Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Not visible via Wi-Fi</string>
+    <string name="swap_wifi_vpn_conflict">Conflicts with active VPN!</string>
     <string name="swap_wifi_device_name">Device Name</string>
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should be less than 15 characters. -->

@@ -1039,7 +1039,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return;
             }
             int status = intent.getIntExtra(BonjourManager.EXTRA_STATUS, -1);
-            Log.i(TAG, "BonjourManager.EXTRA_STATUS: " + status);
             switch (status) {
                 case BonjourManager.STATUS_STARTING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
@@ -1052,6 +1051,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyText.setText(R.string.swap_scanning_for_peers);
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_VPN_CONFLICT:
+                    textWifiVisible.setText(R.string.swap_wifi_vpn_conflict);
                     break;
                 case BonjourManager.STATUS_NOT_VISIBLE:
                     textWifiVisible.setText(R.string.swap_not_visible_wifi);

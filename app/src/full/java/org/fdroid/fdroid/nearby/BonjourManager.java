@@ -2,7 +2,11 @@ package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -48,6 +52,7 @@ public class BonjourManager {
     public static final int STATUS_STOPPED = 3;
     public static final int STATUS_VISIBLE = 4;
     public static final int STATUS_NOT_VISIBLE = 5;
+    public static final int STATUS_VPN_CONFLICT = 6;
     public static final int STATUS_ERROR = 0xffff;
 
     public static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
@@ -56,6 +61,7 @@ public class BonjourManager {
     private static final int STOP = 5709;
     private static final int VISIBLE = 4151873;
     private static final int NOT_VISIBLE = 144151873;
+    private static final int VPN_CONFLICT = 72346752;
 
     private static WeakReference<Context> context;
     private static Handler handler;
@@ -89,7 +95,9 @@ public class BonjourManager {
             Log.e(TAG, "handlerThread is stopped, not changing visibility!");
             return;
         }
-        if (visible) {
+        if (isVpnActive(context)) {
+            handler.sendEmptyMessage(VPN_CONFLICT);
+        } else if (visible) {
             handler.sendEmptyMessage(VISIBLE);
         } else {
             handler.sendEmptyMessage(NOT_VISIBLE);
@@ -160,6 +168,9 @@ public class BonjourManager {
                     case NOT_VISIBLE:
                         handleNotVisible();
                         break;
+                    case VPN_CONFLICT:
+                        handleVpnConflict();
+                        break;
                     case STOP:
                         handleStop();
                         break;
@@ -200,6 +211,10 @@ public class BonjourManager {
                     pairService = null;
                 }
                 sendBroadcast(STATUS_NOT_VISIBLE, null);
+            }
+
+            private void handleVpnConflict() {
+                sendBroadcast(STATUS_VPN_CONFLICT, null);
             }
 
             private void handleStop() {
@@ -283,5 +298,20 @@ public class BonjourManager {
         public void serviceResolved(ServiceEvent serviceEvent) {
             sendBroadcast(ACTION_FOUND, serviceEvent.getInfo());
         }
+    }
+
+    /**
+     * {@link ConnectivityManager#getActiveNetwork()} is only available
+     * starting on {@link Build.VERSION_CODES#M}, so for now, just return false
+     * if the device is too old.
+     */
+    public static boolean isVpnActive(Context context) {
+        if (Build.VERSION.SDK_INT < 23) {
+            return false;
+        }
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        Network activeNetwork = cm.getActiveNetwork();
+        NetworkCapabilities caps = cm.getNetworkCapabilities(activeNetwork);
+        return caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN);
     }
 }
