@@ -668,8 +668,10 @@ public class ManageReposActivity extends AppCompatActivity
                                 final View view = getLayoutInflater().inflate(R.layout.login, null);
                                 final AlertDialog credentialsDialog = new AlertDialog.Builder(context)
                                         .setView(view).create();
-                                final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
-                                final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
+                                final TextInputLayout nameTextInputLayout = view.findViewById(R.id.edit_name);
+                                final TextInputLayout passwordTextInputLayout = view.findViewById(R.id.edit_password);
+                                final EditText nameInput = nameTextInputLayout.getEditText();
+                                final EditText passwordInput = passwordTextInputLayout.getEditText();
 
                                 if (username != null) {
                                     nameInput.setText(username);
