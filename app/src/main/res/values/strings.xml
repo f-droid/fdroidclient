@@ -197,6 +197,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
+    <!-- Message presented in a dialog box when the device-wide management policy restricts adding new repos, e.g. "Unknown Sources". -->
+    <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
+    <!-- Message presented in a dialog box when the user restriction set by the system restricts adding new repos, e.g. "Unknown Sources". -->
+    <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
     <string name="repo_provider">Repository: %s</string>
 
     <string name="menu_manage">Repositories</string>
