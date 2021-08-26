@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
 @GlideModule
@@ -23,6 +24,6 @@ public class FDroidGlideModule extends AppGlideModule {
                 DrawableTransitionOptions.withCrossFade()).setDefaultTransitionOptions(Bitmap.class,
                 BitmapTransitionOptions.withCrossFade())
                 .setDefaultRequestOptions(new RequestOptions().onlyRetrieveFromCache(!Preferences.get()
-                        .isBackgroundDownloadAllowed()));
+                        .isBackgroundDownloadAllowed()).timeout(FDroidApp.getTimeout()));
     }
 }
