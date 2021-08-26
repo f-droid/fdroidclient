@@ -479,7 +479,7 @@
     <string name="swap_nearby">কাছাকাছি অদলবদল</string>
     <string name="swap_scanning_for_peers">কাছাকাছি মানুষের জন্য অনুসন্ধান হচ্ছে…</string>
     <string name="swap_people_nearby">কাছাকাছি লোকজন</string>
-    <string name="swap_scan_qr">কিউআর কোড খুঁজো</string>
+    <string name="swap_scan_qr">কিউআর কোড</string>
     <string name="swap_choose_apps">অ্যাপ নির্বাচন</string>
     <string name="swap_scan_or_type_url">একজন সংকেতের পাঠোদ্ধার করবে অথবা সংষোগটি নিজের পরিব্রাজক(ব্রাউজারে) লিখবে।</string>
     <string name="swap_dont_show_again">আবার দেখাবে না</string>

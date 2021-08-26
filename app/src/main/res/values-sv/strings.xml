@@ -202,7 +202,7 @@
     <string name="swap_dont_show_again">Visa inte detta igen</string>
     <string name="swap_scan_or_type_url">En person behöver skanna koden eller skriva in adressen för den andra i en webbläsare.</string>
     <string name="swap_choose_apps">Välj appar</string>
-    <string name="swap_scan_qr">Skanna QR-kod</string>
+    <string name="swap_scan_qr">QR-kod</string>
     <string name="swap_people_nearby">Personer i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter personer i närheten…</string>
     <string name="swap_intro">Anslut och byt ut appar med personer nära dig.</string>

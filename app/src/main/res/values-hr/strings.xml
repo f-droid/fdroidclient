@@ -214,7 +214,7 @@
         preglednik.
     </string>
     <string name="swap_choose_apps">Odaberi aplikacije</string>
-    <string name="swap_scan_qr">Skeniraj QR kod</string>
+    <string name="swap_scan_qr">QR kod</string>
     <string name="swap_people_nearby">Ljudi u blizini</string>
     <string name="swap_scanning_for_peers">Tražim ljude u blizini…</string>
     <string name="swap_nearby">Obližnja razmjena</string>

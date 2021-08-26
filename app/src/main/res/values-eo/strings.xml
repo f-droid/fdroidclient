@@ -205,7 +205,7 @@
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
     <string name="swap_scan_or_type_url">Unu persono devas skani la kodon aŭ enigi ligilon de la aliulo en la ret‑foliumilon.</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
-    <string name="swap_scan_qr">Skani QR-kodon</string>
+    <string name="swap_scan_qr">QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
     <string name="swap_scanning_for_peers">Serĉado de proksimuloj…</string>
     <string name="swap_nearby">Proksima interŝanĝo</string>

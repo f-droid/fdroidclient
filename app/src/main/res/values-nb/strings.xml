@@ -172,7 +172,7 @@
         adresseopplysninger en nettleser.
     </string>
     <string name="swap_choose_apps">Velg programmer</string>
-    <string name="swap_scan_qr">Skann QR-kode</string>
+    <string name="swap_scan_qr">QR-kode</string>
     <string name="swap_people_nearby">Folk i nærheten</string>
     <string name="swap_scanning_for_peers">Søker etter folk i nærheten…</string>
     <string name="swap_visible_bluetooth">Synlig via Blåtann</string>

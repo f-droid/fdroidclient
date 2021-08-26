@@ -524,7 +524,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_choose_apps">Choose Apps</string>
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should be less than 15 characters. -->
-    <string name="swap_scan_qr">Scan QR Code</string>
+    <string name="swap_scan_qr">QR Code</string>
     <string name="swap_people_nearby">People Nearby</string>
     <string name="swap_scanning_for_peers">Searching for nearby people…</string>
     <!-- This is a screen title, it should be maximum 25 characters -->

@@ -183,7 +183,7 @@
     <string name="interval_2w">Провери надградње сваке 2 седмице</string>
     <string name="theme_light">Светла</string>
     <string name="theme_dark">Тамна</string>
-    <string name="swap_scan_qr">Очитај бар-кôд</string>
+    <string name="swap_scan_qr">QR-код</string>
     <string name="local_repo_name_summary">Објављени назив месне ризнице: %s</string>
     <string name="install_error_unknown">Уградња није успела услед непознате грешке</string>
     <string name="uninstall_error_unknown">Уклањање није успело услед непознате грешке</string>

@@ -222,7 +222,7 @@
     <string name="open_qr_code_scanner">QR స్కానర్ను తెరవండి</string>
     <string name="swap_confirm_connect">మీరు ఇప్పుడు %1$s నుండి అనువర్తనాలను పొందాలనుకుంటున్నారా?</string>
     <string name="swap_choose_apps">అనువర్తనాలను ఎంచుకోండి</string>
-    <string name="swap_scan_qr">QR కోడ్ను స్కాన్ చేయండి</string>
+    <string name="swap_scan_qr">QR కోడ్ను</string>
     <string name="swap_people_nearby">సమీపంలోవున్న ప్రజలు</string>
     <string name="swap_scanning_for_peers">సమీపంలోని వ్యక్తుల కోసం శోధిస్తోంది …</string>
     <string name="swap_visible_bluetooth">బ్లూటూత్ ద్వారా కనిపిస్తుంది</string>

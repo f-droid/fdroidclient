@@ -165,7 +165,7 @@
     <string name="swap_connecting">連線中</string>
     <string name="swap_send_fdroid">傳送 F-Droid</string>
     <string name="swap_wifi_device_name">裝置名稱</string>
-    <string name="swap_scan_qr">掃描 QR 碼</string>
+    <string name="swap_scan_qr">QR 碼</string>
     <string name="swap_people_nearby">附近的人</string>
     <string name="swap_scanning_for_peers">正在尋找附近的人…</string>
     <string name="swap_choose_apps">選擇程式</string>

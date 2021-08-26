@@ -474,7 +474,7 @@
     <string name="swap_nearby">அருகிலுள்ள இடமாற்று</string>
     <string name="swap_scanning_for_peers">அருகிலுள்ளவர்களைத் தேடுகிறது…</string>
     <string name="swap_people_nearby">அருகிலிருக்கும் நபர்கள்</string>
-    <string name="swap_scan_qr">ஸ்கேன் QR குறியீடு</string>
+    <string name="swap_scan_qr">QR குறியீடு</string>
     <string name="swap_choose_apps">பயன்பாடுகளைத் தேர்வுசெய்க</string>
     <string name="swap_scan_or_type_url">ஒரு நபர் குறியீட்டை ஸ்கேன் செய்ய வேண்டும், அல்லது மற்றவரின் URL ஐ உலாவியில் தட்டச்சு செய்ய வேண்டும்.</string>
     <string name="swap_confirm_connect">நீங்கள் இப்போது %1$s இருந்து பயன்பாடுகள் பெற விரும்புகிறீர்களா\?</string>

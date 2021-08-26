@@ -170,7 +170,7 @@
     <string name="swap_dont_show_again">دیگر این را نشان نده</string>
     <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانی اینترنتیش را در مرورگری بنویسد.</string>
     <string name="swap_choose_apps">گزینش برنامه‌ها</string>
-    <string name="swap_scan_qr">پویش رمز QR</string>
+    <string name="swap_scan_qr">کد QR</string>
     <string name="swap_people_nearby">افراد نزدیک</string>
     <string name="swap_scanning_for_peers">در حال جست‌وجو برای افراد نزدیک…</string>
     <string name="swap_nearby">تبادل نزدیک</string>

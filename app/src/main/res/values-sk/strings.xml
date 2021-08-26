@@ -184,7 +184,7 @@
     <string name="swap_active_hotspot">%1$s (váš hotspot)</string>
     <string name="swap_dont_show_again">Nabudúce nezobrazovať</string>
     <string name="swap_choose_apps">Vybrať aplikácie</string>
-    <string name="swap_scan_qr">Skenovať QR kód</string>
+    <string name="swap_scan_qr">QR kód</string>
     <string name="swap_visible_bluetooth">Viditeľný cez Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Nastavujem Bluetooth…</string>
     <string name="swap_visible_wifi">Viditeľný cez Wi-fi</string>

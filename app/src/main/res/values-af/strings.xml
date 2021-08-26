@@ -214,7 +214,7 @@
     <string name="swap_confirm_connect">Wil jy programme vanaf %1$s nou kry?</string>
     <string name="swap_dont_show_again">Moenie dit weer wys nie</string>
     <string name="swap_choose_apps">Kies programme</string>
-    <string name="swap_scan_qr">Skandeer QR-kode</string>
+    <string name="swap_scan_qr">QR-kode</string>
     <string name="swap_people_nearby">Mense naby</string>
     <string name="swap_scanning_for_peers">Soek tans vir nabygeleë mense…</string>
     <string name="swap_nearby">Nabygeleë ruil</string>

@@ -205,7 +205,7 @@
     <string name="swap_dont_show_again">Jangan tampilkan ini lagi</string>
     <string name="swap_scan_or_type_url">Salah satu orang harus memindai kode, atau mengetik URL-nya pada browser.</string>
     <string name="swap_choose_apps">Pilih Aplikasi</string>
-    <string name="swap_scan_qr">Pindai Kode QR</string>
+    <string name="swap_scan_qr">Kode QR</string>
     <string name="swap_people_nearby">Orang Di Sekitar</string>
     <string name="swap_scanning_for_peers">Menelusuri orang di sekitar…</string>
     <string name="swap_nearby">Bertukar Di Sekitar</string>

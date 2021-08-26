@@ -297,7 +297,7 @@
     <string name="swap_confirm_connect">Wyt ti am gael yr apiau o %1$s nawr\?</string>
     <string name="swap_scan_or_type_url">Mae angen i un person sganio\'r cod neu deipio URL y llall mewn porwr.</string>
     <string name="swap_choose_apps">Dewis Apiau</string>
-    <string name="swap_scan_qr">Sganio Cod QR</string>
+    <string name="swap_scan_qr">Cod QR</string>
     <string name="swap_people_nearby">Pobol Gerllaw</string>
     <string name="swap_scanning_for_peers">Yn chwilio am bobol gerllaw…</string>
     <string name="swap_nearby">Cyfnewid Gerllaw</string>

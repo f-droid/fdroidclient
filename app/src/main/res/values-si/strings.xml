@@ -16,4 +16,5 @@
     <string name="updates__tts__download_app">බාගන්න</string>
     <string name="app_list__name__successfully_installed">%1$s ස්ථාපිතයි</string>
     <string name="app_list__name__downloading_in_progress">%1$s බාගත වෙමින්</string>
+    <string name="swap_scan_qr">QR කේතය</string>
 </resources>

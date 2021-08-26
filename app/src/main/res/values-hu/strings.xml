@@ -210,7 +210,7 @@
     <string name="swap_welcome">Üdvözli az F-Droid!</string>
     <string name="swap_dont_show_again">Ne mutassa ismét</string>
     <string name="swap_choose_apps">Alkalmazások kiválasztása</string>
-    <string name="swap_scan_qr">QR-kód beolvasása</string>
+    <string name="swap_scan_qr">QR-kód</string>
     <string name="swap_people_nearby">Emberek a közelben</string>
     <string name="swap_scanning_for_peers">Közeli emberek keresése…</string>
     <string name="swap_visible_bluetooth">Látható Bluetoothon</string>

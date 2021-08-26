@@ -212,7 +212,7 @@
     <string name="swap_dont_show_again">No tornis a mostrar això</string>
     <string name="swap_scan_or_type_url">Una persona ha d\'escanejar el codi, o escriure l\'URL de l\'altra al navegador.</string>
     <string name="swap_choose_apps">Trieu les aplicacions</string>
-    <string name="swap_scan_qr">Escaneja codi QR</string>
+    <string name="swap_scan_qr">Codi QR</string>
     <string name="swap_people_nearby">Persones a prop</string>
     <string name="swap_scanning_for_peers">S\'està cercant persones a prop…</string>
     <string name="swap_nearby">Intercanvi per proximitat</string>

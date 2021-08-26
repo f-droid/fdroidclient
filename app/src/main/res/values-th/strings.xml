@@ -220,7 +220,7 @@
     <string name="swap_switch_to_wifi">เปลี่ยนไปใช้เครือข่าย Wi-Fi</string>
     <string name="open_qr_code_scanner">เปิดตัวอ่าน QR Code</string>
     <string name="swap_choose_apps">เลือกโปรแกรม</string>
-    <string name="swap_scan_qr">สแกน QR Code</string>
+    <string name="swap_scan_qr">คิวอาร์โค้ด</string>
     <string name="swap_people_nearby">ผู้คนข้างเคียง</string>
     <string name="swap_scanning_for_peers">กำลังค้นหาผู้คนข้างเคียง…</string>
     <string name="swap_intro">เชื่อมต่อและแลกเปลี่ยนโปรแกรมกับผู้คนรอบๆ คุณ</string>

@@ -203,7 +203,7 @@
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
     <string name="swap_scan_or_type_url">Une personne doit balayer le code ou saisir l’URL de l’autre dans un navigateur.</string>
     <string name="swap_choose_apps">Sélectionnez des applis</string>
-    <string name="swap_scan_qr">Lire un code QR</string>
+    <string name="swap_scan_qr">Code QR</string>
     <string name="swap_people_nearby">Personnes à proximité</string>
     <string name="swap_scanning_for_peers">Recherche des personnes à proximité…</string>
     <string name="swap_nearby">Échange d\'applications</string>

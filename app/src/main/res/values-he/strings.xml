@@ -169,7 +169,7 @@
     <string name="category_Time">זמן</string>
     <string name="category_Writing">כתיבה</string>
     <string name="swap_choose_apps">בחירת יישומונים</string>
-    <string name="swap_scan_qr">סריקת קוד QR</string>
+    <string name="swap_scan_qr">קוד QR</string>
     <string name="swap_people_nearby">אנשים בקרבת מקום</string>
     <string name="swap_scanning_for_peers">מתבצא חיפוש אחר אנשים בקרבת מקום…</string>
     <string name="swap_visible_bluetooth">גלוי דרך Bluetooth</string>

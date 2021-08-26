@@ -189,7 +189,7 @@
     <string name="swap_active_hotspot">%1$s (tvůj hotspot)</string>
     <string name="swap_dont_show_again">Toto už nezobrazovat</string>
     <string name="swap_choose_apps">Vybrat aplikace</string>
-    <string name="swap_scan_qr">Skenovat QR kód</string>
+    <string name="swap_scan_qr">QR kód</string>
     <string name="swap_people_nearby">Lidé Nablízku</string>
     <string name="swap_scanning_for_peers">Hledání lidí v blízkosti…</string>
     <string name="swap_nearby">Výměna Nablízku</string>

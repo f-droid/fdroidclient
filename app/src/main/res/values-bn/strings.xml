@@ -290,7 +290,7 @@
     <string name="swap_error_cannot_start_bluetooth">ব্লুটুথ শুরু করা যাচ্ছে না!</string>
     <string name="swap_setting_up_bluetooth">ব্লুটুথ শুরু হচ্ছে…</string>
     <string name="swap_visible_bluetooth">ব্লুটুথ দিয়ে দেখা যায়</string>
-    <string name="swap_scan_qr">কিউআর কোড খুঁজো</string>
+    <string name="swap_scan_qr">কিউআর কোড</string>
     <string name="open_qr_code_scanner">কিউআর স্ক্যানার খুলো</string>
     <string name="swap_setting_up_hotspot">হটস্পট শুরু হচ্ছে…</string>
     <string name="swap_visible_hotspot">হটস্পট দিয়ে দৃশ্যমান</string>

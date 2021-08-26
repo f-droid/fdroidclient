@@ -213,7 +213,7 @@
     <string name="swap_dont_show_again">Ära seda enam näita</string>
     <string name="swap_scan_or_type_url">Üks inimene peab koodi skannima või sisestama teise URLi brauserisse.</string>
     <string name="swap_choose_apps">Vali rakendused</string>
-    <string name="swap_scan_qr">Skanni QR-kood</string>
+    <string name="swap_scan_qr">QR-kood</string>
     <string name="swap_people_nearby">Inimesed lähedal</string>
     <string name="swap_scanning_for_peers">Otsitakse lähedal asuvaid inimesi…</string>
     <string name="swap_nearby">Läheduses vahetus</string>

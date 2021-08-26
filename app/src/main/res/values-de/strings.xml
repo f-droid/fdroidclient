@@ -202,7 +202,7 @@
     <string name="swap_switch_to_wifi">Antippen, um zu einem WLAN-Netzwerk zu wechseln</string>
     <string name="swap_dont_show_again">Nicht wieder anzeigen</string>
     <string name="swap_choose_apps">Apps auswählen</string>
-    <string name="swap_scan_qr">QR-Code einlesen</string>
+    <string name="swap_scan_qr">QR-Code</string>
     <string name="swap_people_nearby">Leute in Ihrer Nähe</string>
     <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
     <string name="wifi_ap">Hotspot</string>

@@ -173,7 +173,7 @@
     <string name="swap_welcome">Bine ați venit la F-Droid!</string>
     <string name="open_qr_code_scanner">Deschide scaner QR</string>
     <string name="swap_choose_apps">Selectează aplicații</string>
-    <string name="swap_scan_qr">Scanează cod QR</string>
+    <string name="swap_scan_qr">Cod QR</string>
     <string name="swap_scanning_for_peers">Căutare persoane în apropiere…</string>
     <string name="swap_visible_bluetooth">Vizibil prin Bluetooth</string>
     <string name="swap_visible_wifi">Vizibil prin Wi-Fi</string>

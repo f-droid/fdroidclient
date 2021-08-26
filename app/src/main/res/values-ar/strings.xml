@@ -205,7 +205,7 @@
     <string name="swap_dont_show_again">عدم إظهار ذلك مرة أخرى</string>
     <string name="swap_scan_or_type_url">شخص واحد يحتاج إلى فحص الرمز، أو كتابة عنوان الرابط الآخر في المتصفح.</string>
     <string name="swap_choose_apps">اختر تطبيقات</string>
-    <string name="swap_scan_qr">امسح رمز الكيو آر</string>
+    <string name="swap_scan_qr">رمز QR</string>
     <string name="swap_people_nearby">أشخاص حولي</string>
     <string name="swap_scanning_for_peers">جارٍ البحث عن أشخاص بالقرب مني…</string>
     <string name="swap_nearby">المبادلة في مكان قريب</string>

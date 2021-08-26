@@ -351,7 +351,7 @@
     <string name="swap_confirm_connect">Vil du henta appar frå %1$s no\?</string>
     <string name="swap_scan_or_type_url">Nokon må skanna koden eller skriva inn adressa i ein nettlesar.</string>
     <string name="swap_choose_apps">Vel appar</string>
-    <string name="swap_scan_qr">Skann QR-kode</string>
+    <string name="swap_scan_qr">QR-kode</string>
     <string name="swap_people_nearby">Folk i nærleiken</string>
     <string name="swap_scanning_for_peers">Søkjer etter folk i nærleiken …</string>
     <string name="swap_nearby">\t</string>

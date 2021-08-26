@@ -449,7 +449,7 @@
         <item quantity="other">%1$d Aplikacione të Instaluar</item>
     </plurals>
     <string name="swap_stopping">Po ndalet…</string>
-    <string name="swap_scan_qr">Skanoni Kod QR</string>
+    <string name="swap_scan_qr">Kod QR</string>
     <string name="swap_success">Sukses shkëmbimi!</string>
     <string name="install_error_notify_title">Gabim në instalimin e %s</string>
     <string name="swap">Shkëmbeni aplikacione</string>

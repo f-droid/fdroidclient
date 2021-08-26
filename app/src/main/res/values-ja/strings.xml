@@ -164,7 +164,7 @@
     <string name="swap_dont_show_again">今後表示しない</string>
     <string name="swap_scan_or_type_url">どちらかがコードを読み取るか、URLをブラウザに入力する必要があります。</string>
     <string name="swap_choose_apps">アプリを選択</string>
-    <string name="swap_scan_qr">QRコードをスキャン</string>
+    <string name="swap_scan_qr">QRコード</string>
     <string name="swap_people_nearby">近くにいる人</string>
     <string name="swap_scanning_for_peers">近くの人を探しています</string>
     <string name="swap_nearby">近くの人と交換</string>

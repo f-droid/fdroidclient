@@ -213,7 +213,7 @@
     <string name="swap_dont_show_again">Не паказваць зноў</string>
     <string name="swap_scan_or_type_url">Адзін з вас мусіць адсканаваць код ці ўвесці URL іншага ў браўзеры.</string>
     <string name="swap_choose_apps">Абраць праграму</string>
-    <string name="swap_scan_qr">Сканаваць QR-код</string>
+    <string name="swap_scan_qr">QR-код</string>
     <string name="swap_people_nearby">Людзі паблізу</string>
     <string name="swap_scanning_for_peers">Пошук людзей паблізу…</string>
     <string name="swap_nearby">Абмен паблізу</string>

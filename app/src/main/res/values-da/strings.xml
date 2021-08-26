@@ -191,7 +191,7 @@
     <string name="swap_dont_show_again">Vis ikke dette igen</string>
     <string name="swap_scan_or_type_url">En person skal skanne koden, eller skrive den andens URL i en browser.</string>
     <string name="swap_choose_apps">Vælg apps</string>
-    <string name="swap_scan_qr">Skan QR-kode</string>
+    <string name="swap_scan_qr">QR-kode</string>
     <string name="swap_people_nearby">Folk i nærheden</string>
     <string name="swap_scanning_for_peers">Leder efter folk i nærheden…</string>
     <string name="swap_nearby">Nærhedsudveksling</string>

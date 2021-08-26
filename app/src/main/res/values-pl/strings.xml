@@ -182,7 +182,7 @@
         URL drugiego urządzenia.
     </string>
     <string name="swap_choose_apps">Wybierz aplikacje</string>
-    <string name="swap_scan_qr">Skanuj kod QR</string>
+    <string name="swap_scan_qr">Kod QR</string>
     <string name="swap_people_nearby">Ludzie w okolicy</string>
     <string name="swap_scanning_for_peers">Wyszukiwanie ludzi w tej okolicy…</string>
     <string name="swap_nearby">Wymiana w pobliżu</string>
