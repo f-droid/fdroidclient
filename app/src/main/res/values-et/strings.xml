@@ -523,4 +523,5 @@
     <string name="use_pure_black_dark_theme">Tumedas teemas kasuta musta tausta</string>
     <string name="banner_no_data_or_wifi">3G, 4G või WiFi pole kasutusel</string>
     <string name="banner_no_internet">Internetiühendus puudub</string>
+    <string name="share_apk_error">Rakenduse faili jagamine ei õnnestunud</string>
 </resources>
