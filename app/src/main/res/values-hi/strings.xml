@@ -49,7 +49,7 @@
     <string name="crash_dialog_title">F-Droid क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारण एप्लीकेशन बंद हो गयी है| क्या आप ईमेल पर डिटेलस भेज कर इस मुद्दे को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
-    <string name="app_name">एफ-ड्रॉइड</string>
+    <string name="app_name">F-Droid</string>
     <string name="installIncompatible">ऐप्लिकेशन आपके डिवाइस के लिए अनुकुल नहीं है, क्या आप इसे फिर भी स्थापित करना चाहते हैं\?</string>
     <string name="interval_1w">साप्ताहिक अपडेट के लिए जाँच करें</string>
     <string name="interval_2w">हर 2 सप्ताह में अपडेट की जाँच करें</string>
@@ -72,7 +72,7 @@
     <string name="swap_connection_misc_error">उपकरण से कनेक्ट करते समय त्रुटि हुई, इसके साथ स्वैप नहीं किया जा सकता है!</string>
     <string name="swap_connecting">कनेक्ट हो रहा है</string>
     <string name="swap_confirm">अदला-बदली की पुष्टि करे</string>
-    <string name="swap_qr_isnt_for_swap">क्यूआर कोड जो अपने स्कैन किया है वह अदला-बदली का कोड नहीं है.</string>
+    <string name="swap_qr_isnt_for_swap">QR कोड जो अपने स्कैन किया है वह अदला-बदली का कोड नहीं है.</string>
     <string name="swap_intro">अपने आस-पास के लोगों के साथ ऐप्स कनेक्ट और साझा करें।</string>
     <string name="swap_visible_bluetooth">ब्लूटूथ के माध्यम से दिखाई दे</string>
     <string name="swap_setting_up_bluetooth">ब्लूटूथ को सेट किया जा रहा है…</string>
@@ -510,4 +510,7 @@
     <string name="theme_follow_system">सिस्टम का पालन करें</string>
     <string name="use_pure_black_dark_theme_summary">केवल OLED स्क्रीन के लिए अनुशंसित।</string>
     <string name="use_pure_black_dark_theme">डार्क थीम में शुद्ध काले रंग का उपयोग करें</string>
+    <string name="share_apk_error">ऐप फ़ाइल साझा नहीं कर सका</string>
+    <string name="banner_no_data_or_wifi">कोई डेटा या वाईफाई सक्षम नहीं</string>
+    <string name="banner_no_internet">इंटरनेट नहीं है</string>
 </resources>
