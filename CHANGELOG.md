@@ -1,3 +1,15 @@
+### 1.14-alpha0 (2021-08-27)
+
+* Overhaul Share menu to use built-in options like Nearby.
+
+* material design improvements (@proletarius101)
+
+* Improve offline, nearby sharing
+
+* block adding new repos when device admin disallows "Unknown Sources"
+
+* fix crash when using repos with username/password
+
 ### 1.13.1 (2021-08-05)
 
 * Better tested fix for repeated updates of Trichrome library.
