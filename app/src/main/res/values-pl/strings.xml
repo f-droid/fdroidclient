@@ -182,7 +182,7 @@
         URL drugiego urządzenia.
     </string>
     <string name="swap_choose_apps">Wybierz aplikacje</string>
-    <string name="swap_scan_qr">Kod QR</string>
+    <string name="swap_scan_qr">Skanuj kod QR</string>
     <string name="swap_people_nearby">Ludzie w okolicy</string>
     <string name="swap_scanning_for_peers">Wyszukiwanie ludzi w tej okolicy…</string>
     <string name="swap_nearby">Wymiana w pobliżu</string>
@@ -196,7 +196,6 @@
     <string name="swap_wifi_device_name">Nazwa urządzenia</string>
     <string name="swap_cant_find_peers">Nie możesz znaleźć kogo szukasz?</string>
     <string name="swap_send_fdroid">Wyślij F-Droida</string>
-    <string name="apps">Aplikacje</string>
     <string name="swap_no_peers_nearby">Nie udało się znaleźć urządzeń, z którymi można by się wymienić.</string>
     <string name="swap_connecting">Łączenie</string>
     <string name="swap_confirm">Potwierdź wymianę</string>
