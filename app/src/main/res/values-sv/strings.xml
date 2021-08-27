@@ -71,7 +71,7 @@
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
     <string name="deleting_repo">Tar bort aktuellt förråd…</string>
-    <string name="adding_apks_format">Lägger till %s till förråd…</string>
+    <string name="adding_apks_format">Lägger till %s i förråd…</string>
     <string name="writing_index_jar">Skriver signerad indexfil (index.jar)…</string>
     <string name="linking_apks">Länkar APK:er till förrådet…</string>
     <string name="copying_icons">Kopierar appikoner till förrådet…</string>
@@ -513,4 +513,5 @@
     <string name="use_pure_black_dark_theme">Använd ren svart bakgrund i mörkt tema</string>
     <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktiverat</string>
     <string name="banner_no_internet">Inget internet</string>
+    <string name="share_apk_error">Det gick inte att dela appfilen</string>
 </resources>
