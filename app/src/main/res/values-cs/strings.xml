@@ -528,4 +528,5 @@
     <string name="install_history_and_metrics">Průběh instalací a metriky</string>
     <string name="send_fdroid_metrics_json">%s hlášení metrik jako JSON soubor</string>
     <string name="send_fdroid_metrics_report">Odeslat hlášení metrik %s</string>
+    <string name="share_apk_error">Sdílet aplikační soubor se nezdařilo</string>
 </resources>
