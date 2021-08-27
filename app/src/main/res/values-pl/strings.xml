@@ -174,7 +174,7 @@
         URL drugiego urządzenia.
     </string>
     <string name="swap_choose_apps">Wybierz aplikacje</string>
-    <string name="swap_scan_qr">Skanuj kod QR</string>
+    <string name="swap_scan_qr">Kod QR</string>
     <string name="swap_people_nearby">Osoby w pobliżu</string>
     <string name="swap_scanning_for_peers">Szukam osób w pobliżu…</string>
     <string name="swap_nearby">Wymiana w pobliżu</string>
@@ -533,4 +533,6 @@
     <string name="share_apk_error">Nie udało się udostępnić pliku aplikacji</string>
     <string name="has_disallow_install_unknown_sources_globally">Administrator Twojego urządzenia nie pozwala na instalowanie aplikacji z nieznanych źródeł, w tym nowych repozytoriów</string>
     <string name="has_disallow_install_unknown_sources">Ten użytkownik nie może dodawać nieznanych źródeł, w tym nowych repozytoriów</string>
+    <string name="apps">Aplikacje</string>
+    <string name="swap_wifi_vpn_conflict">Konflikty z włączonym VPN-em!</string>
 </resources>
