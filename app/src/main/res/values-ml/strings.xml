@@ -498,4 +498,19 @@
     <string name="notification_channel_swaps_title">സ്വാപ്പുകൾ</string>
     <string name="notification_channel_installs_description">അപ്ലിക്കേഷൻ ഇൻസ്റ്റാളേഷൻ അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
     <string name="notification_channel_installs_title">ഇൻസ്റ്റാളേഷനുകൾ</string>
+    <string name="install_history_and_metrics">സ്ഥാപനം ചരിത്രവും റിപ്പോർട്ടും</string>
+    <string name="send_fdroid_metrics_json">%s മെട്രിക്സ് റിപ്പോർട്ട് ജെസൺ ഫയൽ ആയിട്ട്</string>
+    <string name="send_fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട് അയക്കയുക</string>
+    <string name="theme_follow_system">സിസ്റ്റം സ്ഥിരസ്ഥിതി പിന്തുടരുക</string>
+    <string name="share_apk_error">ആപ്പ് ഫയൽ പങ്കിടാൻ കഴിഞ്ഞില്ല</string>
+    <string name="use_pure_black_dark_theme_summary">OLED സ്‌ക്രീനുകൾക്ക് മാത്രം ശുപാർശചെയ്യുന്നു.</string>
+    <string name="use_pure_black_dark_theme">ഇരുണ്ട തീമിൽ ശുദ്ധമായ കറുത്ത പശ്ചാത്തലം ഉപയോഗിക്കുക</string>
+    <string name="banner_no_data_or_wifi">ഡാറ്റയോ വൈഫൈയോ ഓണല്ല</string>
+    <string name="banner_no_internet">ഇന്റർനെറ്റ് ഇല്ല</string>
+    <string name="menu_show_install_history">സ്ഥാപന ചരിത്രം കാണിക്കുക</string>
+    <string name="menu_show_fdroid_metrics_report">അളവുകളുടെ റിപ്പോർട്ട് കാണിക്കുക</string>
+    <string name="toast_metrics_in_install_history">ഇൻസ്റ്റാൾ ചരിത്രത്തിൽ %s ന്റെ അളവുകളുടെ റിപ്പോർട്ട് കാണാൻ കഴിയും</string>
+    <string name="send_to_fdroid_metrics_summary">F-Droid അളവുകളിലേക്ക് ആഴ്ചതോറും അജ്ഞാത വിവരം അയയ്ക്കുക (\'സ്ഥാപിക്കല്‍ ചരിത്രം നിലനിർത്തുക\' ആവശ്യമാണ് )</string>
+    <string name="send_to_fdroid_metrics">ഉപയോഗത്തിന്റെ അടിസ്ഥാനവിവരം അയയ്‌ക്കുക</string>
+    <string name="fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട്</string>
 </resources>
