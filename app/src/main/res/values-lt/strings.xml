@@ -429,7 +429,7 @@
     <string name="allow_push_requests_summary">Repozitorijos metaduomenyse gali būti „push“ prašymai įdiegti ar išdiegti programėles</string>
     <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
     <string name="open_qr_code_scanner">Atidaryti QR kodo skenavimą</string>
-    <string name="swap_scan_qr">QR kodo nuskaitymas</string>
+    <string name="swap_scan_qr">Skenuoti QR</string>
     <string name="swap_error_cannot_start_bluetooth">Nepavyksta paleisti Bluetooth!</string>
     <string name="send_to_fdroid_metrics">Siųsti naudojimo duomenis</string>
     <string name="theme_follow_system">Sekti sistemos</string>
