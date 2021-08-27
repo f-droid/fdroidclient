@@ -512,4 +512,5 @@
     <string name="use_pure_black_dark_theme">Sử dụng nền đen thuần tuý trong chế độ tối</string>
     <string name="banner_no_data_or_wifi">Chưa bật dữ liệu hoặc WiFi</string>
     <string name="banner_no_internet">Không có internet</string>
+    <string name="share_apk_error">Không thể chia sẻ tệp ứng dụng</string>
 </resources>
