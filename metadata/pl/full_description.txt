@@ -1,18 +1,18 @@
-F-Droid jest katalogiem wolnych programów możliwych do zainstalowania w systemie Android. 
-Aplikacja kliencka F-Droid ułatwia przeglądanie, 
-instalowanie i śledzenie aktualizacji na urządzeniu. 
- 
-Łączy się z dowolnymi repozytoriami kompatybilnymi z F-Droid. Domyślne repozytorium 
-jest hostowane na f-droid.org, które zawiera tylko wolne oprogramowanie. 
+F-Droid jest katalogiem wolnego oprogramowania dla Androida.
+Aplikacja kliencka F-Droid ułatwia przeglądanie,
+instalowanie i śledzenie aktualizacji na urządzeniu.
 
-Android jest otwarty w tym sensie, że możesz zainstalować APK 
-z dowolnego miejsca, ale istnieje wiele dobrych powodów, 
-aby użyć F-Droid jako menedżera wolnych aplikacji: 
- 
-* Powiadomienia o dostępnych aktualizacjach 
-* Opcjonalne automatyczne pobieranie i instalowanie aktualizacji 
-* Śledzenie starszych wersji oraz wersji beta 
-* Filtrowanie aplikacji niezgodnych z urządzeniem 
-* Przeglądanie aplikacji za pomocą kategorii i opisów 
-* Dostęp do powiązanych adresów URL dla darowizn, kodu źródłowego itp. 
-* Bądź bezpieczny, sprawdzając sygnatury indeksu repozytorium i sumy kontrolne plików APK
+Łączy się z dowolnymi repozytoriami kompatybilnymi z F-Droid. Domyślne repozytorium
+jest hostowane na f-droid.org, które zawiera tylko wolne oprogramowanie.
+
+Android jest otwarty w tym sensie, że możesz zainstalować APK
+z dowolnego miejsca, ale istnieje wiele dobrych powodów,
+aby użyć F-Droid jako menedżera wolnych aplikacji:
+
+* Otrzymuj powiadomienia o dostępnych aktualizacjach
+* Opcjonalne pobieraj i instaluj aktualizacje automatycznie
+* Śledź starsze wersje oraz wersje beta
+* Filtruj aplikacje niezgodne z urządzeniem
+* Znajduj aplikacje za pomocą kategorii i przeszukiwalnych opisów
+* Uzyskaj dostęp do powiązanych adresów URL dla darowizn, kodu źródłowego itd.
+* Bądź bezpieczny, sprawdzając sygnatury indeksów repozytorium i sumy kontrolne APK
