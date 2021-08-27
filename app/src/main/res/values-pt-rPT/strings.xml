@@ -514,4 +514,5 @@
     <string name="use_pure_black_dark_theme">Usar fundo preto puro no tema escuro</string>
     <string name="banner_no_data_or_wifi">Dados móveis/WiFi desativados</string>
     <string name="banner_no_internet">Sem Internet</string>
+    <string name="share_apk_error">Não foi possível partilhar o ficheiro da aplicação</string>
 </resources>
