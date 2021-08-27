@@ -77,7 +77,7 @@
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
-    <string name="antinonfreedeplist">Цей застосунок залежить від інших пропрієтарних програм</string>
+    <string name="antinonfreedeplist">Застосунок залежить від інших не вільних застосунків</string>
     <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
@@ -160,7 +160,7 @@
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
     <string name="antinonfreenetlist">Цей застосунок просуває невільні мережні послуги</string>
-    <string name="antiupstreamnonfreelist">Джерельний код випуску не є повністю вільним</string>
+    <string name="antiupstreamnonfreelist">Джерельний код випуску частково не вільний</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
     <string name="show_incompat_versions_on">Показувати версії застосунків, які несумісні з цим пристроєм</string>
@@ -239,16 +239,14 @@
     <string name="crash_dialog_title">Збій F-Droid</string>
     <string name="crash_dialog_text">Сталася неочікувана помилка, змусивши застосунок зупинитися. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
     <string name="crash_dialog_comment_prompt">Можете ввести додаткові відомості та коментарі тут:</string>
-    <string name="antinonfreeassetslist">Цей застосунок містить невільні ресурси</string>
+    <string name="antinonfreeassetslist">Цей застосунок містить не вільні ресурси</string>
     <string name="menu_email">Написати листа авторові</string>
     <string name="useTor">Використовувати Tor</string>
     <string name="useTorSummary">Примусове завантаження трафіку через мережу Tor для покращення приватності. Потрібен Orbot</string>
     <string name="swap_stopping_wifi">Зупиняю Wi-Fi…</string>
     <string name="repo_provider">Репозиторій: %s</string>
-    <string name="update_auto_download">Автоматично завантажувати оновлення</string>
-    <string name="update_auto_download_summary">Оновлення буде завантажено автоматично, по завершенню буде запропоновано
-        встановити їх
-    </string>
+    <string name="update_auto_download">Автозавантаження оновлень</string>
+    <string name="update_auto_download_summary">Оновлення завантажуватимуться автоматично, а після завершення пропонуватиметься їх встановити</string>
     <string name="download_pending">Очікування початку завантаження…</string>
     <string name="keep_hour">1 година</string>
     <string name="keep_day">1 день</string>
@@ -413,7 +411,7 @@
     <string name="panic_hide_title">Приховати %s</string>
     <string name="sort_search">Впорядкувати пошук</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="preventScreenshots_summary">Блокує знімки екрану та приховує вміст з останніх застосунків</string>
+    <string name="preventScreenshots_summary">Блокує знімки екрана та приховує вміст з останніх застосунків</string>
     <string name="panic_app_setting_title">Вибір тривожної кнопки</string>
     <string name="panic_app_dialog_title">Підтвердити тривожну кнопку</string>
     <string name="panic_app_dialog_message">Ви впевнені, що бажаєте дозволити %1$s виконувати дію тривожної кнопки?</string>
@@ -527,8 +525,10 @@
     <string name="send_fdroid_metrics_report">Надіслати %s звіт з показниками</string>
     <string name="theme_follow_system">Дотримуватись системної</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
-    <string name="use_pure_black_dark_theme">Використання чистого чорного тла в темній темі</string>
+    <string name="use_pure_black_dark_theme">Чисте чорне тло в темній темі</string>
     <string name="banner_no_data_or_wifi">Дані або Wi-Fi не ввімкнуто</string>
     <string name="banner_no_internet">Немає Інтернету</string>
     <string name="share_apk_error">Не вдалося надіслати файл застосунку</string>
+    <string name="has_disallow_install_unknown_sources">Цей користувач не може додати невідомі джерела, які містять нові репозиторії</string>
+    <string name="has_disallow_install_unknown_sources_globally">Адміністратор пристрою не дозволяє встановлювати застосунки з невідомих джерел, що містять нові репозиторії</string>
 </resources>
