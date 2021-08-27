@@ -175,7 +175,7 @@
     <string name="swap_dont_show_again">دیگر این را نشان نده</string>
     <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانیش را در مرورگری بنویسد.</string>
     <string name="swap_choose_apps">گزینش کاره‌ها</string>
-    <string name="swap_scan_qr">پویش رمز QR</string>
+    <string name="swap_scan_qr">رمز QR</string>
     <string name="swap_people_nearby">افراد نزدیک</string>
     <string name="swap_scanning_for_peers">جست‌وجو کردن برای افراد نزدیک…</string>
     <string name="swap_nearby">تاخت زدن نزدیک</string>
@@ -514,4 +514,6 @@
     <string name="share_apk_error">نتوانست پروندهٔ کاره را هم‌رسانی کند</string>
     <string name="has_disallow_install_unknown_sources">منابع ناشناس، شامل مخزن‌های جدید، نمی‌تواند به دست این کاربر افزوده شود</string>
     <string name="has_disallow_install_unknown_sources_globally">مدیر افزاره‌تان اجازهٔ نصب کاره‌ها از منابع ناشناس را نمی‌دهد که شامل مخزن‌های جدید هم می‌شود</string>
+    <string name="apps">کاره‌ها</string>
+    <string name="swap_wifi_vpn_conflict">با وی‌پی‌ان فعّال تداخل دارد!</string>
 </resources>
