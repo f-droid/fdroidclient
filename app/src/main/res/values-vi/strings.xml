@@ -513,4 +513,7 @@
     <string name="banner_no_data_or_wifi">Chưa bật dữ liệu hoặc WiFi</string>
     <string name="banner_no_internet">Không có internet</string>
     <string name="share_apk_error">Không thể chia sẻ tệp ứng dụng</string>
+    <string name="swap_wifi_vpn_conflict">Xung đột với VPN đang hoạt động!</string>
+    <string name="has_disallow_install_unknown_sources">Nguồn không xác định không thể được người dùng này thêm vào, bao gồm cả các kho mới</string>
+    <string name="has_disallow_install_unknown_sources_globally">Quản trị viên thiết bị không cho phép cài đặt ứng dụng từ nguồn không xác định, bao gồm cả các kho mới</string>
 </resources>
