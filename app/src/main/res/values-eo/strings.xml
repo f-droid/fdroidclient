@@ -524,4 +524,5 @@
     <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela etoso</string>
     <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>
     <string name="banner_no_internet">Sen interreto</string>
+    <string name="share_apk_error">Ne povas kunhavigi dosieron de la aplikaĵo</string>
 </resources>
