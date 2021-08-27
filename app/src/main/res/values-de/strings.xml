@@ -521,4 +521,6 @@
     <string name="banner_no_data_or_wifi">Keine Daten oder WLAN aktiviert</string>
     <string name="banner_no_internet">Kein Internet</string>
     <string name="share_apk_error">Appdatei konnte nicht geteilt werden</string>
+    <string name="has_disallow_install_unknown_sources">Unbekannte Quellen können von diesem Benutzer nicht hinzugefügt werden, einschließlich neuer Repositories</string>
+    <string name="has_disallow_install_unknown_sources_globally">Ihr Geräteadministrator lässt die Installation von Apps aus unbekannten Quellen nicht zu, einschließlich neuer Repositories</string>
 </resources>

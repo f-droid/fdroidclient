@@ -9,3 +9,9 @@
 * Weitere Änderungen, um dem Material Design zu folgen (@proletarius101)
 
 * Verbesserung der OpenCollective-Marke (@ConnyDuck)
+
+* Überarbeitung des Icon-Ladens mit Glide (@proletarius101)
+
+*
+
+*
