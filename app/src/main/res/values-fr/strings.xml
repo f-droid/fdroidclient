@@ -526,4 +526,5 @@
     <string name="share_apk_error">Impossible de partager le fichier de l\'appli</string>
     <string name="has_disallow_install_unknown_sources">Les sources inconnues ne peuvent pas être ajoutées par cet utilisateur et cette règle s\'applique aux nouveaux dépôts.</string>
     <string name="has_disallow_install_unknown_sources_globally">L\'administrateur de votre appareil n\'autorise pas l\'installation d\'applications provenant de sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
+    <string name="swap_wifi_vpn_conflict">Conflit avec le VPN actif !</string>
 </resources>
