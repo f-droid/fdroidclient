@@ -520,4 +520,5 @@
     <string name="share_apk_error">Uygulama dosyası paylaşılamadı</string>
     <string name="has_disallow_install_unknown_sources">Yeni depolar da dahil, bilinmeyen kaynaklar bu kullanıcı tarafından eklenemiyor</string>
     <string name="has_disallow_install_unknown_sources_globally">Aygıt yöneticiniz, yeni depolar da dahil bilinmeyen kaynaklardan uygulamaların kurulmasına izin vermiyor</string>
+    <string name="swap_wifi_vpn_conflict">Etkin VPN ile çakışıyor!</string>
 </resources>
