@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">এফ-ড্রয়েড</string>
+    <string name="app_name">F-Droid</string>
     <string name="menu_search">অনুসন্ধান</string>
     <string name="menu_settings">সেটিংস</string>
     <string name="menu_manage">ভাণ্ডার</string>
@@ -115,7 +115,7 @@
     <string name="menu_bitcoin">বিটকয়েন</string>
     <string name="menu_translation">অনুবাদ</string>
     <string name="menu_video">ভিডিও</string>
-    <string name="menu_changelog">পরিবর্তনসূচী</string>
+    <string name="menu_changelog">পরিবর্তনসূচি</string>
     <string name="menu_issues">সমস্যা</string>
     <string name="menu_website">ওয়েবসাইট</string>
     <string name="menu_open">খুলো</string>
@@ -321,7 +321,7 @@
     <string name="panic_exit_summary">এই অ্যাপ বন্ধ করা হবে</string>
     <string name="panic_app_setting_summary">কোনো অ্যাপ নির্দিষ্ট করা হয়নি</string>
     <string name="linking_apks">ভাণ্ডারে এপিকে সংযুক্ত করা হচ্ছে…</string>
-    <string name="writing_index_jar">স্বাক্ষরিত সূচী নথি লেখা হচ্ছে (index.jar)…</string>
+    <string name="writing_index_jar">স্বাক্ষরিত সূচির নথি লেখা হচ্ছে (index.jar)…</string>
     <string name="local_repo_running">এফ-ড্রয়েড অদলবদলের জন্য প্রস্তুত</string>
     <string name="show_anti_feature_apps_on">যেসব অ্যাপের অপবৈশিষ্ট্য লাগে তা দেখাও</string>
     <string name="antinonfreeassetslist">এই অ্যাপে অ-মুক্ত উপাদান আছে</string>
@@ -506,10 +506,11 @@
     <string name="preventScreenshots_summary">স্ক্রিনশট নেওয়া প্রতিরোধ করে আর অ্যাপের বিষয়বস্তু সাম্প্রতিক পর্দা থেকে লুকায়</string>
     <string name="useTorSummary">গোপনীয়তা বৃদ্ধির জন্য জোর করে সব তথ্যের গমন টর দিয়ে নাও। অরবট লাগবে</string>
     <string name="touch_to_configure_local_repo">বিস্তারিত দেখতে টিপ দাও এবং অন্যদের সাথে অ্যাপ বিনিময়ের অনুমতি দাও।</string>
-    <string name="unsigned_description">এর অর্থ একটা তালিকার অ্যাপ যাচাই করা যায়নি। অস্বাক্ষরিত সূচী থেকে অ্যাপ নামানোর সময় তোমাকে সাবধান হতে হবে।</string>
+    <string name="unsigned_description">এর অর্থ একটা তালিকার অ্যাপ যাচাই করা যায়নি। অস্বাক্ষরিত সূচি থেকে অ্যাপ নামানোর সময় তোমাকে সাবধান হতে হবে।</string>
     <string name="repo_confirm_delete_body">একটা ভাণ্ডার মুছা মানে এটার অ্যাপ আর উপলভ্য থাকবে না।
 \n
 \nদ্র: আগে থেকে ইন্সটল করা অ্যাপ ডিভাইসে থাকবে।</string>
     <string name="hiding_dialog_message">তুমি কি আসলেই লঞ্চার থেকে %1$s সরাতে চাও\? শুধু নকল %3$s অ্যাপের মধ্যে ‘%2$d’ লিখলেই এটা ফিরত আসবে।</string>
     <string name="panic_hide_warning_message">আতঙ্ক/বিপদের সময়, লঞ্চার থেকে %1$s সরানো হবে। শুধু নকল %3$s অ্যাপের মধ্যে ‘%2$d’ লিখলেই এটা ফিরত আসবে।</string>
+    <string name="share_apk_error">অ্যাপ নথি ভাগ করা যায়নি</string>
 </resources>
