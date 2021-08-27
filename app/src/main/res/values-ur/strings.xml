@@ -92,4 +92,5 @@
     <string name="skip">چھوڈ دو</string>
     <string name="details_notinstalled">انسٹال نہیں ہے</string>
     <string name="preference_manage_installed_apps">انستال ہوے ایپس کو مینیج کریں</string>
+    <string name="swap_scan_qr">QR کوڈ</string>
 </resources>

@@ -164,7 +164,7 @@
     <string name="swap_dont_show_again">今後表示しない</string>
     <string name="swap_scan_or_type_url">どちらかがコードを読み取るか、URLをブラウザに入力する必要があります。</string>
     <string name="swap_choose_apps">アプリを選択</string>
-    <string name="swap_scan_qr">QRコードをスキャン</string>
+    <string name="swap_scan_qr">QRコード</string>
     <string name="swap_people_nearby">近くにいる人</string>
     <string name="swap_scanning_for_peers">近くの人を探しています</string>
     <string name="swap_nearby">近くの人と交換</string>
@@ -178,6 +178,7 @@
     <string name="swap_wifi_device_name">端末名</string>
     <string name="swap_cant_find_peers">探している人が見つかりませんか？</string>
     <string name="swap_send_fdroid">F-Droidを送信</string>
+    <string name="apps">アプリ</string>
     <string name="swap_no_peers_nearby">交換できる近くにいる人が見つかりませんでした｡</string>
     <string name="swap_connecting">接続中</string>
     <string name="swap_confirm">交換の確認</string>

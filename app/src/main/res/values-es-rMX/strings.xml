@@ -220,4 +220,5 @@
     <string name="send_version_and_uuid">Envíar versión y UUID a los servidores</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
     <string name="no_such_app">No se ha encontrado dicha aplicación.</string>
+    <string name="swap_scan_qr">Código QR</string>
 </resources>

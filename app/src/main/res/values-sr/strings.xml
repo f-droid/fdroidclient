@@ -166,6 +166,7 @@
     <string name="swap_setting_up_wifi">Подешавам бежични…</string>
     <string name="swap_wifi_device_name">Назив уређаја</string>
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
+    <string name="apps">Програми</string>
     <string name="swap_connecting">Повезивање</string>
     <string name="swap_confirm">Потврдите размену</string>
     <string name="loading">Учитава се…</string>
@@ -182,7 +183,7 @@
     <string name="interval_2w">Провери надградње сваке 2 седмице</string>
     <string name="theme_light">Светла</string>
     <string name="theme_dark">Тамна</string>
-    <string name="swap_scan_qr">Очитај бар-кôд</string>
+    <string name="swap_scan_qr">QR-код</string>
     <string name="local_repo_name_summary">Објављени назив месне ризнице: %s</string>
     <string name="install_error_unknown">Уградња није успела услед непознате грешке</string>
     <string name="uninstall_error_unknown">Уклањање није успело услед непознате грешке</string>

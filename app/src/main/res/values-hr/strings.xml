@@ -214,7 +214,7 @@
         preglednik.
     </string>
     <string name="swap_choose_apps">Odaberi aplikacije</string>
-    <string name="swap_scan_qr">Skeniraj QR kod</string>
+    <string name="swap_scan_qr">QR kod</string>
     <string name="swap_people_nearby">Ljudi u blizini</string>
     <string name="swap_scanning_for_peers">Tražim ljude u blizini…</string>
     <string name="swap_nearby">Obližnja razmjena</string>
@@ -229,6 +229,7 @@
     <string name="swap_wifi_device_name">Ime uređja</string>
     <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
     <string name="swap_send_fdroid">Pošalji F-Droid</string>
+    <string name="apps">Programi</string>
     <string name="swap_no_peers_nearby">Nije uspjelo traženje ljudi u blizini.</string>
     <string name="swap_connecting">Povezivanje</string>
     <string name="swap_confirm">Potvrdi razmjenu</string>

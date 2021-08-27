@@ -267,7 +267,7 @@
     <string name="swap_confirm_connect">Želite dobiti aplikacije iz lokacije %1$s zdaj?</string>
     <string name="swap_scan_or_type_url">Ena izmed oseb mora skenirati kodo ali vtipkati URL druge osebe v brskalnik.</string>
     <string name="swap_choose_apps">Izberi aplikacije</string>
-    <string name="swap_scan_qr">Skeniraj QR kodo</string>
+    <string name="swap_scan_qr">QR kodo</string>
     <string name="swap_people_nearby">Ljudje v bližini</string>
     <string name="swap_scanning_for_peers">Iščem ljudi v bližini…</string>
     <string name="swap_nearby">Izmenjava v bližini</string>

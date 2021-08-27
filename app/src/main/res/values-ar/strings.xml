@@ -205,7 +205,7 @@
     <string name="swap_dont_show_again">عدم إظهار ذلك مرة أخرى</string>
     <string name="swap_scan_or_type_url">شخص واحد يحتاج إلى فحص الرمز، أو كتابة عنوان الرابط الآخر في المتصفح.</string>
     <string name="swap_choose_apps">اختر تطبيقات</string>
-    <string name="swap_scan_qr">امسح رمز الكيو آر</string>
+    <string name="swap_scan_qr">رمز QR</string>
     <string name="swap_people_nearby">أشخاص حولي</string>
     <string name="swap_scanning_for_peers">جارٍ البحث عن أشخاص بالقرب مني…</string>
     <string name="swap_nearby">المبادلة في مكان قريب</string>
@@ -220,6 +220,7 @@
     <string name="swap_wifi_device_name">اسم الجهاز</string>
     <string name="swap_cant_find_peers">لا يمكن العثور على من كنت تبحث عنه؟</string>
     <string name="swap_send_fdroid">إرسال اف-درويد</string>
+    <string name="apps">تطبيقات</string>
     <string name="swap_no_peers_nearby">لا يمكن العثور على شخص في مكان قريب للمبادلة معه.</string>
     <string name="swap_connecting">جارٍ الاتصال</string>
     <string name="swap_confirm">تأكيد المبادلة</string>

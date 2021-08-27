@@ -284,7 +284,7 @@
     <string name="swap_nearby">Dalīšanās Tuvumā</string>
     <string name="swap_scanning_for_peers">Meklē cilvēkus tuvumā…</string>
     <string name="swap_people_nearby">Cilvēki Tuvumā</string>
-    <string name="swap_scan_qr">Skenēt QR Kodu</string>
+    <string name="swap_scan_qr">QR Kodu</string>
     <string name="swap_choose_apps">Izvēlaties Lietotnes</string>
     <string name="swap_scan_or_type_url">Vienai personai vajag skenēt kodu, vai ierakstīt otra URL pārlūkprogrammā.</string>
     <string name="swap_confirm_connect">Vai vēlaties saņemt lietotnes no %1$s tagad\?</string>

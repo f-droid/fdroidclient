@@ -313,6 +313,7 @@
 \nAtnaujintos visos įdiegtos programos.</string>
     <string name="swap">Keitimasis programomis</string>
     <string name="swap_nfc_title">Spustelkite ir apsikeisit</string>
+    <string name="swap_scan_qr">QR kodo</string>
     <string name="nearby_splash__request_permission">Išbandykite</string>
     <string name="nearby_splash__find_people_button">Rasti įrenginius netoliese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programų iš įrenginių netoliese!</string>

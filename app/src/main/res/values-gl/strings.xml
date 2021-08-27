@@ -147,7 +147,7 @@
     <string name="swap_confirm_connect">Desexas obter aplicacións dende %1$s agora\?</string>
     <string name="swap_dont_show_again">Non amosar de novo</string>
     <string name="swap_choose_apps">Escoller as aplicacións</string>
-    <string name="swap_scan_qr">Escanear código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_visible_bluetooth">Visíbel por Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Estase a configurar o Bluetooth…</string>
     <string name="swap_visible_wifi">Visíbel por Wi-Fi</string>

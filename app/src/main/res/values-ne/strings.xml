@@ -48,4 +48,5 @@
     <string name="yes">हो</string>
     <string name="ok">ठीक</string>
     <string name="app_name">एफ-ड्रोइड</string>
+    <string name="swap_scan_qr">QR कोड</string>
 </resources>

@@ -188,7 +188,7 @@
     <string name="swap_dont_show_again">不再显示</string>
     <string name="swap_scan_or_type_url">别人需要扫描此二维码，或在浏览器输入对方的 URL 。</string>
     <string name="swap_choose_apps">选择应用</string>
-    <string name="swap_scan_qr">扫描二维码</string>
+    <string name="swap_scan_qr">二维码</string>
     <string name="swap_people_nearby">附近的人</string>
     <string name="swap_scanning_for_peers">正在搜索附近的人…</string>
     <string name="swap_nearby">附近交换</string>
@@ -202,6 +202,7 @@
     <string name="swap_wifi_device_name">设备名称</string>
     <string name="swap_cant_find_peers">找不到你要找的人？</string>
     <string name="swap_send_fdroid">发送 F-Droid</string>
+    <string name="apps">应用</string>
     <string name="swap_no_peers_nearby">附近无法找到可与其交换应用的人。</string>
     <string name="swap_connecting">正在连接</string>
     <string name="swap_confirm">确认交换</string>

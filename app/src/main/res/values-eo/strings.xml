@@ -205,7 +205,7 @@
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
     <string name="swap_scan_or_type_url">Unu persono devas skani la kodon aŭ enigi ligilon de la aliulo en la ret‑foliumilon.</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
-    <string name="swap_scan_qr">Skani QR-kodon</string>
+    <string name="swap_scan_qr">QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
     <string name="swap_scanning_for_peers">Serĉado de proksimuloj…</string>
     <string name="swap_nearby">Proksima interŝanĝo</string>
@@ -219,6 +219,7 @@
     <string name="swap_wifi_device_name">Nomo de aparato</string>
     <string name="swap_cant_find_peers">Ĉu vi ne povas trovi kiun, tiun vi serĉas?</string>
     <string name="swap_send_fdroid">Sendi F-Droid</string>
+    <string name="apps">Katalogo</string>
     <string name="swap_no_peers_nearby">Ne povas trovi homojn proksime por interŝanĝi.</string>
     <string name="swap_connecting">Konektado</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>

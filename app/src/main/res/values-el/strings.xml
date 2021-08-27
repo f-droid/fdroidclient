@@ -195,7 +195,7 @@
         του άλλου σε ένα πρόγραμμα περιήγησης.
     </string>
     <string name="swap_choose_apps">Επιλέξτε εφαρμογές</string>
-    <string name="swap_scan_qr">Σάρωση κωδικού QR</string>
+    <string name="swap_scan_qr">κωδικού QR</string>
     <string name="swap_people_nearby">Άτομα σε κοντινή απόσταση</string>
     <string name="swap_scanning_for_peers">Αναζητώντας άτομα σε κοντινή απόσταση…</string>
     <string name="swap_nearby">Κοντινή ανταλλαγή</string>
@@ -208,6 +208,7 @@
     <string name="swap_wifi_device_name">Όνομα της συσκευής</string>
     <string name="swap_cant_find_peers">Δεν βρήκατε αυτόν που αναζητάτε;</string>
     <string name="swap_send_fdroid">Αποστολή F-Droid</string>
+    <string name="apps">Εφαρμογές</string>
     <string name="swap_connecting">Σύνδεση</string>
     <string name="swap_confirm">Επιβεβαίωση ανταλλαγής</string>
     <string name="swap_qr_isnt_for_swap">Ο κώδικας QR που σαρώσατε δεν μοιάζει με έναν κωδικό ανταλλαγής.</string>

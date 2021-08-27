@@ -149,7 +149,7 @@
     <string name="swap_nearby">Ойролцоох солилцоо</string>
     <string name="swap_scanning_for_peers">Ойролцоох хүмүүсийг хайж байна …</string>
     <string name="swap_people_nearby">Ойролцоох хүмүүс</string>
-    <string name="swap_scan_qr">QRкодыг сканнердах</string>
+    <string name="swap_scan_qr">QRкодыг</string>
     <string name="swap_choose_apps">Апп-г сонгоно уу</string>
     <string name="swap_scan_or_type_url">Нэг хүн кодыг сканнердах эсвэл нөгөөгийнхөө URL-г хөтөч дээр бичих шаардлагатай.</string>
     <string name="swap_confirm_connect">Та одоо %1$s-с програм авахыг хүсч байна уу\?</string>

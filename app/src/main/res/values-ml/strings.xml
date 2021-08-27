@@ -63,6 +63,7 @@
     <string name="category_Sports_Health">കായികവും ആരോഗ്യവും</string>
     <string name="category_System">ഉപകരണ സംബന്ധം</string>
     <string name="swap_send_fdroid">ഈ ആപ്പ് അയക്കുക</string>
+    <string name="apps">അപ്ലിക്കേഷനുകൾ</string>
     <string name="crash_dialog_title">എഫ്-ഡ്രോയ്ഡ് തകര്‍ന്നു</string>
     <string name="crash_dialog_text">പ്രയോഗം നിർത്തുന്നതില്‍ ഒരു അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. പ്രശ്നം പരിഹരിക്കാൻ സഹായിക്കുന്നതിന് വിശദാംശങ്ങൾ ഇ-മെയിൽ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
     <string name="notification_title_single_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
@@ -252,7 +253,7 @@
     <string name="swap_switch_to_wifi">ഒരു വൈഫൈ നെറ്റ്വർക്ക് മാറുന്നതിന് തൊടുക</string>
     <string name="open_qr_code_scanner">QR സ്കാനർ തുറക്കുക</string>
     <string name="swap_choose_apps">ആപ്പുകൾ തിരഞ്ഞെടുക്കുക</string>
-    <string name="swap_scan_qr">ക്യുആർ കോഡ് നോക്കു</string>
+    <string name="swap_scan_qr">QR കോഡ്</string>
     <string name="swap_people_nearby">അടുത്തുള്ള ആളുകൾ</string>
     <string name="swap_scanning_for_peers">സമീപത്തുള്ള ആളുകൾക്കായി തിരയുന്നു …</string>
     <string name="swap_visible_bluetooth">ബ്ലൂടൂത്ത് വഴി ദൃശ്യം</string>

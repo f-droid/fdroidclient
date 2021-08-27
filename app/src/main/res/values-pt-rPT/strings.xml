@@ -186,6 +186,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não encontra o que procura?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicações</string>
     <string name="swap_connecting">A ligar</string>
     <string name="loading">A carregar…</string>
     <string name="newPerms">Novas</string>
@@ -205,7 +206,7 @@
     <string name="theme_dark">Escuro</string>
     <string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s\?</string>
     <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador de Internet.</string>
-    <string name="swap_scan_qr">Analisar código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Pessoas próximas</string>
     <string name="swap_scanning_for_peers">A pesquisar pessoas próximas…</string>
     <string name="swap_nearby">Troca por proximidade</string>

@@ -181,7 +181,7 @@
     <string name="swap_dont_show_again">Non mostrare più</string>
     <string name="swap_switch_to_wifi">Tocca per passare ad una rete Wi-Fi</string>
     <string name="swap_choose_apps">Scegli le app</string>
-    <string name="swap_scan_qr">Scansiona QR code</string>
+    <string name="swap_scan_qr">Codice QR</string>
     <string name="swap_intro">Connettiti e scambia app con le persone vicine.</string>
     <string name="swap_no_peers_nearby">Non sono state trovate persone nelle vicinanze con cui scambiare app.</string>
     <string name="interval_1w">Cerca aggiornamenti ogni settimana</string>
@@ -248,6 +248,7 @@
         browser.
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
+    <string name="apps">Applicazioni</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
     <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>

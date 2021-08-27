@@ -192,7 +192,7 @@
     <string name="swap_dont_show_again">Bunu bir daha gösterme</string>
     <string name="swap_scan_or_type_url">Birisinin kodu taraması veya bağlantıyı tarayıcıya girmesi gerekir.</string>
     <string name="swap_choose_apps">Uygulama Seç</string>
-    <string name="swap_scan_qr">Karekod Tara</string>
+    <string name="swap_scan_qr">QR kod</string>
     <string name="swap_people_nearby">Yakındaki Kişiler</string>
     <string name="swap_scanning_for_peers">Yakın kişiler aranıyor…</string>
     <string name="swap_nearby">Yakınımda Takas</string>
@@ -206,6 +206,7 @@
     <string name="swap_wifi_device_name">Aygıt Adı</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı\?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
+    <string name="apps">Uygulamalar</string>
     <string name="swap_no_peers_nearby">Yakında takaslanabilecek kişi bulunamadı.</string>
     <string name="swap_connecting">Bağlanıyor</string>
     <string name="swap_confirm">Takası onaylayın</string>

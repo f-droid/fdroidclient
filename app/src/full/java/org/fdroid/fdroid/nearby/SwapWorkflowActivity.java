@@ -34,17 +34,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -75,6 +66,15 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
@@ -1014,12 +1014,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_scan_qr).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inflateSwapView(R.layout.swap_wifi_qr);
-            }
-        });
+        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
+        scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
+
+        MaterialButton appsButton = findViewById(R.id.btn_apps);
+        appsButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_select_apps));
+        appsButton.setEllipsize(TextUtils.TruncateAt.END);
 
         if (SwapService.getWifiVisibleUserPreference()) {
             wifiSwitch.setChecked(true);
@@ -1039,7 +1039,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return;
             }
             int status = intent.getIntExtra(BonjourManager.EXTRA_STATUS, -1);
-            Log.i(TAG, "BonjourManager.EXTRA_STATUS: " + status);
             switch (status) {
                 case BonjourManager.STATUS_STARTING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
@@ -1052,6 +1051,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyText.setText(R.string.swap_scanning_for_peers);
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
+                    break;
+                case BonjourManager.STATUS_VPN_CONFLICT:
+                    textWifiVisible.setText(R.string.swap_wifi_vpn_conflict);
                     break;
                 case BonjourManager.STATUS_NOT_VISIBLE:
                     textWifiVisible.setText(R.string.swap_not_visible_wifi);

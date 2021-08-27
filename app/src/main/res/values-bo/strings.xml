@@ -56,6 +56,7 @@
     <string name="category_Sports_Health">རྩེད་རིགས་དང་འཕྲོད་བསྟེན།</string>
     <string name="category_System">མ་ལག</string>
     <string name="swap_send_fdroid">ཨེཕ་རོཌ་གཏོང་།</string>
+    <string name="apps">ལྟ་བ།</string>
     <string name="crash_dialog_title">ཨེཕ་རོཌ་ལ་གཏོར་སྐྱོན་ཤོར་འདུག</string>
     <string name="crash_dialog_text">གློ་བུར་དུ་སྐྱོན་ཆ་ཞིག་ཤོར་སོང་བས་མཉེན་ཆས་འདི་སྒོ་མ་རྒྱབ་ཀ་མེད་ཐུག་སོང་། ཁྱེད་རང་གིས་གློག་འཕྲིན་གཏོང་ནས་གནད་དོན་འདི་སེལ་འདོད་དམ།?</string>
     <string name="notification_title_single_update_available">གསར་བསྒྱུར་ཡོད།</string>

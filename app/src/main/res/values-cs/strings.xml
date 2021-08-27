@@ -189,7 +189,7 @@
     <string name="swap_active_hotspot">%1$s (tvůj hotspot)</string>
     <string name="swap_dont_show_again">Toto už nezobrazovat</string>
     <string name="swap_choose_apps">Vybrat aplikace</string>
-    <string name="swap_scan_qr">Skenovat QR kód</string>
+    <string name="swap_scan_qr">QR kód</string>
     <string name="swap_people_nearby">Lidé Nablízku</string>
     <string name="swap_scanning_for_peers">Hledání lidí v blízkosti…</string>
     <string name="swap_nearby">Výměna Nablízku</string>
@@ -202,6 +202,7 @@
     <string name="swap_wifi_device_name">Jméno přístroje</string>
     <string name="swap_cant_find_peers">Nemůžete nalézt koho hledáte?</string>
     <string name="swap_send_fdroid">Odeslat F-Droid</string>
+    <string name="apps">Aplikace</string>
     <string name="swap_connecting">Připojování</string>
     <string name="swap_confirm">Potvrdit výměnu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>

@@ -275,4 +275,5 @@
     <string name="send_installed_apps">Կիսվել տեղադրված հավելվածներով</string>
     <string name="sort_search">Դասակարգել արդյունքները</string>
     <string name="antifeatures">Անցանկալի ֆունկցիաներ</string>
+    <string name="swap_scan_qr">QR կոդի</string>
 </resources>

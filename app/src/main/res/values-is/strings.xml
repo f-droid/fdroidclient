@@ -161,7 +161,7 @@
     <string name="swap_confirm_connect">Viltu ná í forrit frá %1$s núna?</string>
     <string name="swap_dont_show_again">Ekki birta þetta aftur</string>
     <string name="swap_choose_apps">Veldu forrit</string>
-    <string name="swap_scan_qr">Skanna QR-kóða</string>
+    <string name="swap_scan_qr">QR-kóða</string>
     <string name="swap_people_nearby">Fólk sem er nálægt</string>
     <string name="swap_scanning_for_peers">Leita að fólki í nágrenninu…</string>
     <string name="swap_nearby">Býtti í nágrenninu</string>
@@ -175,6 +175,7 @@
     <string name="swap_wifi_device_name">Heiti tækis</string>
     <string name="swap_cant_find_peers">Finnurðu ekki það sem þú leitar að?</string>
     <string name="swap_send_fdroid">Senda F-Droid</string>
+    <string name="apps">Forrit</string>
     <string name="swap_no_peers_nearby">Gat ekki fundið neinn í nágrenninu til að býtta við.</string>
     <string name="swap_connecting">Tengist</string>
     <string name="swap_confirm">Staðfesta býtti</string>

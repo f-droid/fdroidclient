@@ -213,7 +213,7 @@
     <string name="swap_dont_show_again">Ära seda enam näita</string>
     <string name="swap_scan_or_type_url">Üks inimene peab koodi skannima või sisestama teise URLi brauserisse.</string>
     <string name="swap_choose_apps">Vali rakendused</string>
-    <string name="swap_scan_qr">Skanni QR-kood</string>
+    <string name="swap_scan_qr">QR-kood</string>
     <string name="swap_people_nearby">Inimesed lähedal</string>
     <string name="swap_scanning_for_peers">Otsitakse lähedal asuvaid inimesi…</string>
     <string name="swap_nearby">Läheduses vahetus</string>
@@ -228,6 +228,7 @@
     <string name="swap_wifi_device_name">Seadme nimi</string>
     <string name="swap_cant_find_peers">Ei leia seda, keda otsid?</string>
     <string name="swap_send_fdroid">Saada F-Droid</string>
+    <string name="apps">Rakendused</string>
     <string name="swap_no_peers_nearby">Ei leidnud lähedal inimesi, kellega vahetada.</string>
     <string name="swap_connecting">Ühendamine</string>
     <string name="swap_confirm">Kinnita vahetus</string>

@@ -143,6 +143,7 @@
     <string name="allPerms">Kaikki</string>
     <string name="newPerms">Uusi</string>
     <string name="swap_send_fdroid">Lähetä F-Droid</string>
+    <string name="apps">Sovellukset</string>
     <string name="swap_wifi_device_name">Laitteen nimi</string>
     <string name="swap_choose_apps">Valitse sovellukset</string>
     <string name="links">Linkit</string>
@@ -192,7 +193,7 @@
     <string name="category_Writing">Kirjoittaminen</string>
     <string name="swap_active_hotspot">%1$s (tukiasemasi)</string>
     <string name="swap_dont_show_again">Älä näytä tätä uudelleen</string>
-    <string name="swap_scan_qr">Skannaa QR-koodi</string>
+    <string name="swap_scan_qr">QR-koodi</string>
     <string name="loading">Ladataan…</string>
     <string name="keep_year">1 vuosi</string>
     <string name="keep_month">1 kuukausi</string>

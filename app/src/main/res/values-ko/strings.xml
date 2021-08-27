@@ -194,7 +194,7 @@
     <string name="swap_dont_show_again">다시 보지 않기</string>
     <string name="swap_scan_or_type_url">한 사람은 코드를 스캔하거나, 상대방의 URL을 브라우저에 입력하세요.</string>
     <string name="swap_choose_apps">앱 선택</string>
-    <string name="swap_scan_qr">QR 코드 스캔</string>
+    <string name="swap_scan_qr">QR 코드</string>
     <string name="swap_people_nearby">근처 사람들</string>
     <string name="swap_scanning_for_peers">근처 사람들을 검색 중…</string>
     <string name="swap_nearby">근처 교환하기</string>
@@ -208,6 +208,7 @@
     <string name="swap_wifi_device_name">기기 이름</string>
     <string name="swap_cant_find_peers">찾고 있는 사람을 찾을 수 없습니까?</string>
     <string name="swap_send_fdroid">F-Droid 보내기</string>
+    <string name="apps">앱</string>
     <string name="swap_no_peers_nearby">근처에 교환할 수 있는 사람들을 찾을 수 없었습니다.</string>
     <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>

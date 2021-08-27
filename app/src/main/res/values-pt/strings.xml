@@ -63,6 +63,7 @@
     <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Apps</string>
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
     <string name="crash_dialog_text">Ocorreu um erro inesperado e a app foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro\?</string>
     <string name="notification_title_single_update_available">Atualização disponível</string>
@@ -350,7 +351,7 @@
     <string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s\?</string>
     <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador de Internet.</string>
     <string name="swap_choose_apps">Escolher aplicações</string>
-    <string name="swap_scan_qr">Analisar código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Pessoas próximas</string>
     <string name="swap_scanning_for_peers">A pesquisar pessoas próximas…</string>
     <string name="swap_nearby">Troca por proximidade</string>

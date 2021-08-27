@@ -71,6 +71,7 @@
     <string name="swap_wifi_device_name">Emër Pajisjeje</string>
     <string name="swap_cant_find_peers">S’po gjeni atë çka kërkoni\?</string>
     <string name="swap_send_fdroid">Dërgoni F-Droid</string>
+    <string name="apps">Aplikacione</string>
     <string name="perm_costs_money">Kjo mund t’ju kushtojë para</string>
     <string name="download_error">Shkarkimi dështoi!</string>
     <string name="downloading">Po shkarkohet…</string>
@@ -448,7 +449,7 @@
         <item quantity="other">%1$d Aplikacione të Instaluar</item>
     </plurals>
     <string name="swap_stopping">Po ndalet…</string>
-    <string name="swap_scan_qr">Skanoni Kod QR</string>
+    <string name="swap_scan_qr">Kod QR</string>
     <string name="swap_success">Sukses shkëmbimi!</string>
     <string name="install_error_notify_title">Gabim në instalimin e %s</string>
     <string name="swap">Shkëmbeni aplikacione</string>

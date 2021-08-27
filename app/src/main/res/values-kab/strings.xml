@@ -164,6 +164,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">Addal &amp; Tazmert</string>
     <string name="swap_send_fdroid">Azen F-Droid</string>
+    <string name="apps">Isnasen</string>
     <string name="crash_dialog_title">F-Droid yeγli</string>
     <string name="enable_nfc_send">Rmed Tuzna NFC …</string>
     <string name="unstable_updates">Ileqman ur yerkiden ara</string>
@@ -218,7 +219,7 @@
     <string name="share_repository">Bḍu akufi</string>
     <string name="requires_features">Ilaq: %1$s</string>
     <string name="swap_no_wifi_network">Ulac tuqqna</string>
-    <string name="swap_scan_qr">Semḍen tangalt QR</string>
+    <string name="swap_scan_qr">Tangalt QR</string>
     <string name="swap_setting_up_bluetooth">Asbadu n Blutut…</string>
     <string name="app_size">Teγzi: %1$s</string>
     <string name="installed_apps__activity_title">Isnasen yettusbedden</string>

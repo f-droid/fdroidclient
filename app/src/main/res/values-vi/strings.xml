@@ -185,7 +185,7 @@
     <string name="swap_dont_show_again">Không hiện lại</string>
     <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
     <string name="swap_choose_apps">Chọn ứng dụng</string>
-    <string name="swap_scan_qr">Quét mã QR</string>
+    <string name="swap_scan_qr">Mã QR</string>
     <string name="swap_people_nearby">Những người lân cận</string>
     <string name="swap_scanning_for_peers">Đang tìm kiếm những người lân cận…</string>
     <string name="swap_intro">Kết nối và trao đổi ứng dụng với những người ở gần bạn.</string>
@@ -199,6 +199,7 @@
     <string name="swap_wifi_device_name">Tên thiết bị</string>
     <string name="swap_cant_find_peers">Bạn không tìm được người cần tìm?</string>
     <string name="swap_send_fdroid">Gửi F-Droid</string>
+    <string name="apps">Ứng dụng</string>
     <string name="swap_no_peers_nearby">Không tìm thấy người lân cận để trao đổi.</string>
     <string name="swap_connecting">Đang kết nối</string>
     <string name="swap_confirm">Xác nhận trao đổi</string>

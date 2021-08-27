@@ -179,7 +179,7 @@
     <string name="install_confirm_update_no_perms">Желаете ли обновяване на това приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
     <string name="install_confirm_update_system_no_perms">Желаете ли обновяване на това вградено приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
     <string name="swap_send_fdroid">Изпращане F-Droid</string>
-    <string name="swap_scan_qr">Сканиране на QR</string>
+    <string name="swap_scan_qr">QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
     <string name="swap_no_wifi_network">Все още няма мрежа</string>
     <string name="swap_intro">Свързване и обмяна на приложения с хора около вас.</string>

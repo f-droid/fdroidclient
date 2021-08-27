@@ -186,7 +186,7 @@
         navegador.
     </string>
     <string name="swap_choose_apps">Escolher os aplicativos</string>
-    <string name="swap_scan_qr">Escanear código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Pessoas próximas</string>
     <string name="swap_scanning_for_peers">Procurando por pessoas próximas…</string>
     <string name="swap_nearby">Permuta próxima</string>
@@ -200,6 +200,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicativos</string>
     <string name="swap_no_peers_nearby">Não foi possível encontrar pessoas próximas para permutar.</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar a permuta</string>

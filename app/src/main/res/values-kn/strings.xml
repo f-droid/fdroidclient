@@ -408,7 +408,7 @@
     <string name="swap_not_visible_bluetooth">ಬ್ಲೂಟೂತ್ ಮೂಲಕ ಗೋಚರಿಸುವುದಿಲ್ಲ</string>
     <string name="swap_intro">ನಿಮ್ಮ ಹತ್ತಿರದ ಜನರೊಂದಿಗೆ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ವ್ಯಾಪಾರ ಮಾಡಿ.</string>
     <string name="swap_nearby">ಹತ್ತಿರದ ಸ್ವಾಪ್</string>
-    <string name="swap_scan_qr">ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="swap_scan_qr">ಕ್ಯೂಆರ್ ಕೋಡ್</string>
     <string name="swap_scan_or_type_url">ಒಬ್ಬ ವ್ಯಕ್ತಿಯು ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬೇಕಾಗುತ್ತದೆ, ಅಥವಾ ಇನ್ನೊಬ್ಬರ URL ಅನ್ನು ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.</string>
     <string name="swap_confirm_connect">ನೀವು ಈಗ %1$s ರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಲು ಬಯಸುವಿರಾ\?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ಬಳಸಿ ಸ್ವ್ಯಾಪ್ ಮಾಡಲು, ನೀವು ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿದ್ದೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ನಿಮಗೆ ಪ್ರವೇಶವಿಲ್ಲದಿದ್ದರೆ, ನಿಮ್ಮಲ್ಲಿ ಒಬ್ಬರು ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್ ರಚಿಸಬಹುದು.</string>

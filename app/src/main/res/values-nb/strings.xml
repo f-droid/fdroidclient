@@ -172,7 +172,7 @@
         adresseopplysninger en nettleser.
     </string>
     <string name="swap_choose_apps">Velg programmer</string>
-    <string name="swap_scan_qr">Skann QR-kode</string>
+    <string name="swap_scan_qr">QR-kode</string>
     <string name="swap_people_nearby">Folk i nærheten</string>
     <string name="swap_scanning_for_peers">Søker etter folk i nærheten…</string>
     <string name="swap_visible_bluetooth">Synlig via Blåtann</string>
@@ -184,6 +184,7 @@
     <string name="swap_wifi_device_name">Enhetsnavn</string>
     <string name="swap_cant_find_peers">Finner du ikke den du leter etter?</string>
     <string name="swap_send_fdroid">Oversend F-Droid</string>
+    <string name="apps">Programmer</string>
     <string name="swap_connecting">Kobler til</string>
     <string name="loading">Laster inn …</string>
     <string name="install_confirm">tilgang til</string>

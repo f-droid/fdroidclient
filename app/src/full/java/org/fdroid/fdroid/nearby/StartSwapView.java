@@ -28,6 +28,8 @@ import org.fdroid.fdroid.nearby.peers.Peer;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -126,6 +128,8 @@ public class StartSwapView extends SwapView {
     };
 
     private void uiInitButtons() {
+        MaterialButton sendFDroidButton = findViewById(R.id.btn_send_fdroid);
+        sendFDroidButton.setEllipsize(TextUtils.TruncateAt.END);
         findViewById(R.id.btn_send_fdroid).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

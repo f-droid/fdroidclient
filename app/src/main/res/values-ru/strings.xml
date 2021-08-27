@@ -199,7 +199,7 @@
     <string name="empty_search_available_app_list">Нет подходящих приложений.</string>
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
-    <string name="swap_scan_qr">Сканировать QR-код</string>
+    <string name="swap_scan_qr">QR-код</string>
     <string name="swap_wifi_device_name">Имя устройства</string>
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
@@ -244,6 +244,7 @@
     <string name="swap_not_visible_wifi">Не видимый через Wi-Fi</string>
     <string name="swap_cant_find_peers">Не можете найти того, кого ищете?</string>
     <string name="swap_send_fdroid">Отправить F-Droid</string>
+    <string name="apps">Каталог</string>
     <string name="swap_no_peers_nearby">Не удается найти людей поблизости.</string>
     <string name="swap_confirm">Подтвердить обмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>

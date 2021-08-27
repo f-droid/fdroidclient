@@ -132,7 +132,7 @@
     <string name="swap_nearby">Nearby Swap</string>
     <string name="swap_scanning_for_peers">Searching for nearby people…</string>
     <string name="swap_people_nearby">People Nearby</string>
-    <string name="swap_scan_qr">Scan QR Code</string>
+    <string name="swap_scan_qr">QR Code</string>
     <string name="swap_choose_apps">Choose Apps</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now\?</string>

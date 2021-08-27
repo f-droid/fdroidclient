@@ -109,7 +109,7 @@
     <string name="open_qr_code_scanner">開啟 QR Code 掃描器</string>
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
     <string name="swap_dont_show_again">不再顯示</string>
-    <string name="swap_scan_qr">掃描 QR Code</string>
+    <string name="swap_scan_qr">二維碼</string>
     <string name="menu_manage">軟體庫</string>
     <string name="menu_add_repo">新增軟體庫</string>
     <string name="local_repo">本地軟體庫</string>
@@ -179,6 +179,7 @@
     <string name="swap_wifi_device_name">裝置名稱</string>
     <string name="swap_cant_find_peers">找不到您想找的人？</string>
     <string name="swap_send_fdroid">傳送 F-Droid</string>
+    <string name="apps">軟體</string>
     <string name="swap_no_peers_nearby">找不到附近的人以進行交換。</string>
     <string name="swap_confirm">確認交換</string>
     <string name="uninstall_confirm">你要解除安裝這個應用程式嗎？</string>

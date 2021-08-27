@@ -208,6 +208,7 @@
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
     <string name="swap_dont_show_again">No mostrar de nuevo</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
+    <string name="apps">Aplicaciones</string>
     <string name="newPerms">Nuevo</string>
     <string name="crash_dialog_title">F-Droid se detuvo</string>
     <string name="crash_dialog_text">Ocurrió un error inesperado que forzó a la aplicación a detenerse. ¿Querés enviar los detalles por correo electrónico para ayudar a resolver el problema\?</string>
@@ -357,7 +358,7 @@
     <string name="swap_confirm_connect">¿Querés obtener aplicaciones desde %1$s ahora\?</string>
     <string name="swap_scan_or_type_url">Una persona debe escanear el código, o tipear la URL del otro en un navegador web.</string>
     <string name="swap_choose_apps">Elegir aplicaciones</string>
-    <string name="swap_scan_qr">Escanear código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Personas cerca</string>
     <string name="swap_scanning_for_peers">Buscando personas cerca…</string>
     <string name="swap_nearby">Intercambio cercano</string>

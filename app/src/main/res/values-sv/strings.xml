@@ -202,7 +202,7 @@
     <string name="swap_dont_show_again">Visa inte detta igen</string>
     <string name="swap_scan_or_type_url">En person behöver skanna koden eller skriva in adressen för den andra i en webbläsare.</string>
     <string name="swap_choose_apps">Välj appar</string>
-    <string name="swap_scan_qr">Skanna QR-kod</string>
+    <string name="swap_scan_qr">QR-kod</string>
     <string name="swap_people_nearby">Personer i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter personer i närheten…</string>
     <string name="swap_intro">Anslut och byt ut appar med personer nära dig.</string>
@@ -216,6 +216,7 @@
     <string name="swap_wifi_device_name">Enhetsnamn</string>
     <string name="swap_cant_find_peers">Det går inte att hitta den du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
+    <string name="apps">Appar</string>
     <string name="swap_no_peers_nearby">Kunde inte hitta personer i närheten att utbyta med.</string>
     <string name="swap_connecting">Ansluter</string>
     <string name="swap_confirm">Bekräfta utbyte</string>

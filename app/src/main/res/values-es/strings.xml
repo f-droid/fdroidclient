@@ -176,7 +176,7 @@
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
     <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el URL de la otra en un navegador.</string>
     <string name="swap_choose_apps">Elige las aplicaciones</string>
-    <string name="swap_scan_qr">Escanear código QR</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Gente cercana</string>
     <string name="swap_scanning_for_peers">Buscando gente cerca…</string>
     <string name="swap_nearby">Intercambio cercano</string>
@@ -190,6 +190,7 @@
     <string name="swap_wifi_device_name">Nombre del dispositivo</string>
     <string name="swap_cant_find_peers">¿No encuentra a quien busca\?</string>
     <string name="swap_send_fdroid">Enviar</string>
+    <string name="apps">Aplicaciones</string>
     <string name="swap_no_peers_nearby">No se pudo encontrar gente cerca para realizar intercambios.</string>
     <string name="swap_connecting">Estableciendo conexión</string>
     <string name="swap_confirm">Confirmar intercambio</string>

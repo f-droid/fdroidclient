@@ -206,7 +206,7 @@
         nabigatzailean sartu.
     </string>
     <string name="swap_choose_apps">Hautatu aplikazioak</string>
-    <string name="swap_scan_qr">Eskaneatu QR kodea</string>
+    <string name="swap_scan_qr">QR kodea</string>
     <string name="swap_people_nearby">Inguruko jendea</string>
     <string name="swap_scanning_for_peers">Inguruko jendearen bila…</string>
     <string name="swap_nearby">Ingurukoekin partekatu</string>
@@ -219,6 +219,7 @@
     <string name="swap_not_visible_wifi">Wi-Fi bidez ez ikusgai</string>
     <string name="swap_cant_find_peers">Ezin duzu bilatzen ari zarena aurkitu?</string>
     <string name="swap_send_fdroid">Bidali F-Droid</string>
+    <string name="apps">Aplikazioak</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>
