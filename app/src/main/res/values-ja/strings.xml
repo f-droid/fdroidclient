@@ -501,5 +501,5 @@
     <string name="install_history_and_metrics">インストール歴史とメトリクス</string>
     <string name="send_fdroid_metrics_json">%sメトリクス報告をJSONファイルとして</string>
     <string name="send_fdroid_metrics_report">%sメトリクス報告を通信</string>
-    <string name="banner_no_internet">ネットワーク接続なし</string>
+    <string name="banner_no_internet">インターネットなし</string>
 </resources>
