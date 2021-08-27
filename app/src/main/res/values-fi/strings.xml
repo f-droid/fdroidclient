@@ -151,7 +151,7 @@
     <string name="less">Vähemmän</string>
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
-    <string name="repo_error_empty_username">Ei käyttäjätunnusta. Tietoja ei muutettu.</string>
+    <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
@@ -220,7 +220,7 @@
 \nLaitteessasi on sovelluksia, mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sovelluslähteesi tarvitsee päivittää tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
-    <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu vahvistaa. Ole varovainen sovelluksia ladatessa niiden varmentamattomista hakemistoista.</string>
+    <string name="unsigned_description">Tämä tarkoittaa, että sovelluslistaa ei voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -503,4 +503,16 @@
     <string name="use_pure_black_dark_theme_summary">Suositellaan ainoastaan OLED-näytöille.</string>
     <string name="use_pure_black_dark_theme">Käytä täysin mustaa taustaa tummassa teemassa</string>
     <string name="theme_follow_system">Sama kuin järjestelmässä</string>
+    <string name="share_apk_error">Ei voitu jakaa sovellustiedostoa</string>
+    <string name="banner_no_data_or_wifi">Data tai WiFi ei ole sallittu</string>
+    <string name="banner_no_internet">Ei internet-yhteyttä</string>
+    <string name="menu_show_install_history">Näytä asennushistoria</string>
+    <string name="menu_show_fdroid_metrics_report">Näytä raportti</string>
+    <string name="send_to_fdroid_metrics_summary">Lähetä anonyymiä dataa viikottain F-Droid Metricsille (vaatii asennushistorian sallimisen)</string>
+    <string name="send_to_fdroid_metrics">Lähetä käyttäjädataa</string>
+    <string name="install_history_and_metrics">Asenna historia ja tilastot</string>
+    <string name="toast_metrics_in_install_history">%s analytiikkaraportti on nähtävillä asennushistorian näkymässä</string>
+    <string name="fdroid_metrics_report">%s analytiikkaraportti</string>
+    <string name="send_fdroid_metrics_json">%s analytiikkaraportti JSON-tiedostona</string>
+    <string name="send_fdroid_metrics_report">Lähetä %s analytiikkaraportti</string>
 </resources>

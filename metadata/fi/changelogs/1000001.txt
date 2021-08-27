@@ -1,0 +1,3 @@
+* Korjattu bugi liittyen sovellusten poistoon ohjelmavarastosta (#568)
+
+* Paljon nopeammat hakemistopäivitykset
