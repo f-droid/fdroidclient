@@ -512,4 +512,5 @@
     <string name="use_pure_black_dark_theme">Përdor sfond të zi në temë të errët</string>
     <string name="banner_no_internet">Pa Internet</string>
     <string name="banner_no_data_or_wifi">Pa të Dhëna ose WiFi aktive</string>
+    <string name="share_apk_error">Nuk mund te ndaj skedarin e aplikacionit</string>
 </resources>
