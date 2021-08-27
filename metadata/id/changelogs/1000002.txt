@@ -1,0 +1,7 @@
+* Larang HTTP ETag untuk digunakan sebagai cookie pelacak
+
+* Tata letak screenshot ditingkatkan
+
+* Menghapus file sementara dan cache dengan benar
+
+* Memperbaiki mode gelap

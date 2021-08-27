@@ -1,0 +1,7 @@
+* Gestur geser ditambahkan ke tab Update
+
+* Menampilkan peringatan dengan aksi di tab Update untuk kerentanan yang diketahui
+
+* Terjemahan diperbarui
+
+* Memperbaiki UI gelap
