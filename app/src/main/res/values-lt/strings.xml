@@ -180,7 +180,7 @@
     <string name="update_auto_download">Automatiškai atsisiųsti naujinimus</string>
     <string name="update_auto_install">Automatiškai įdiegti atnaujinimus</string>
     <string name="update_auto_install_summary">Atsisiųsti ir atnaujinti programas fone, rodant pranešimą</string>
-    <string name="system_installer">Privilegijuoti papildiniai</string>
+    <string name="system_installer">Ypatingasis plėtinys</string>
     <string name="login_title">Reikalingas tapatybės nustatymas</string>
     <string name="login_name">Naudotojo vardas</string>
     <string name="login_password">Slaptažodis</string>
@@ -312,7 +312,7 @@
     <string name="empty_can_update_app_list">Sveikiname!
 \nAtnaujintos visos įdiegtos programos.</string>
     <string name="swap">Keitimasis programomis</string>
-    <string name="swap_nfc_title">Spustelkite ir apsikeisit</string>
+    <string name="swap_nfc_title">Spustelėkite, kad keistis</string>
     <string name="nearby_splash__request_permission">Išbandykite</string>
     <string name="nearby_splash__find_people_button">Rasti įrenginius netoliese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programų iš įrenginių netoliese!</string>
@@ -428,4 +428,24 @@
     <string name="app_details__incompatible_mismatched_signature">Skiriasi parašas nuo įdiegtos versijos</string>
     <string name="allow_push_requests_summary">Repozitorijos metaduomenyse gali būti „push“ prašymai įdiegti ar išdiegti programėles</string>
     <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
+    <string name="open_qr_code_scanner">Atidaryti QR kodo skenavimą</string>
+    <string name="swap_scan_qr">Skenuoti QR</string>
+    <string name="swap_error_cannot_start_bluetooth">Nepavyksta paleisti Bluetooth!</string>
+    <string name="send_to_fdroid_metrics">Siųsti naudojimo duomenis</string>
+    <string name="theme_follow_system">Sekti sistemos</string>
+    <string name="banner_no_internet">Nėra interneto</string>
+    <string name="swap_qr_isnt_for_swap">Nuskaitytas QR kodas neatrodo kaip apsikeitimo kodas.</string>
+    <string name="unsigned_description">Tai reiškia, kad programėlių sąrašo patikrinti nepavyko. Turėtumėte būti atsargūs su programėlėmis, atsisiųstomis iš nepasirašytų indeksų.</string>
+    <string name="swap_join_same_wifi_desc">Norėdami keistis naudodami Wi-Fi, įsitikinkite, kad esate tame pačiame tinkle. Jei neturite prieigos prie to paties tinklo, vienas iš jūsų gali sukurti Wi-Fi prieigos tašką.</string>
+    <string name="touch_to_configure_local_repo">Palieskite, kad peržiūrėtumėte išsamią informaciją ir leistumėte kitiems keistis jūsų programėlėmis.</string>
+    <string name="use_pure_black_dark_theme">Naudoti visiškai juodą foną tamsioje temoje</string>
+    <string name="hiding_dialog_warning">Įspėjimas: B kuri programėlės nuorodą pagrindiniame ekrane taip pat bus pašalinta ir ją reikės iš naujo pridėti rankiniu būdu.</string>
+    <string name="warning_scaning_qr_code">Panašu, kad jūsų fotoaparate nėra automatinio fokusavimo funkcijos. Gali būti sunku nuskaityti kodą.</string>
+    <string name="toast_metrics_in_install_history">%s metrikų ataskaitą galima peržiūrėti diegimo istorijos peržiūroje</string>
+    <string name="send_to_fdroid_metrics_summary">Kas savaitę siunčia anoniminius duomenis į F-Droid metriką (būtina išlaikyti diegimo istoriją)</string>
+    <string name="fdroid_metrics_report">%s metrikų ataskaita</string>
+    <string name="install_history_and_metrics">Įdiegti istoriją ir metrikas</string>
+    <string name="send_fdroid_metrics_json">%s metrikų ataskaitą kaip JSON failą</string>
+    <string name="send_fdroid_metrics_report">Siųsti %s metrikų ataskaita</string>
+    <string name="prompt_to_send_crash_reports">Raginti siųsti gedimų ataskaitas</string>
 </resources>
