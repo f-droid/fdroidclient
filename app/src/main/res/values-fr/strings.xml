@@ -468,7 +468,7 @@
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
     <string name="menu_downgrade">Rétrograder</string>
-    <string name="allow_push_requests_summary">Les méta-données des dépôts peuvent contenir des requêtes pour installer ou désinstaller des applications</string>
+    <string name="allow_push_requests_summary">Les méta-données des dépôts peuvent contenir des requêtes push pour installer ou désinstaller des applications</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Essayer</string>
