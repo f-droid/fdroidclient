@@ -448,7 +448,7 @@
     <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
     <string name="antiknownvulnlist">Cette appli présente une vulnérabilité de sécurité connue</string>
     <string name="hide_all_notifications">Masquer toutes les notifications</string>
-    <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>
+    <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut et le volet de notification.</string>
     <string name="prompt_to_send_crash_reports">Demander avant d\'envoyer les rapports de plantage</string>
     <string name="prompt_to_send_crash_reports_summary">Recueillir des données au sujet du plantage et proposer de les envoyer au développeur</string>
     <string name="install_history">Historique d\'installation</string>

@@ -1,4 +1,4 @@
-* Reduit automatiquement le cache
+* Réduit automatiquement le cache
 * Amélioration des performances lors de faible mémoire
 * Tous les téléchargements respectent la préférence "Uniquement sur Wi-Fi"
 * Utilisation de la mémoire réduit sur les appareils faibles
