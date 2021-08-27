@@ -133,14 +133,15 @@
     <string name="category_Theming">主題</string>
     <string name="category_Time">時間</string>
     <string name="category_Writing">文書</string>
-    <string name="empty_can_update_app_list">恭喜您！所有應用程式已更新至最新版本。</string>
+    <string name="empty_can_update_app_list">恭喜您！
+\n所有應用程式已更新至最新版本。</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
     <string name="swap_nfc_title">觸碰來交換</string>
     <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。</string>
     <string name="theme_dark">暗色系</string>
     <string name="theme_light">明亮色系</string>
-    <string name="interval_2w">每兩週</string>
+    <string name="interval_2w">每兩週檢查一次更新</string>
     <string name="perms_new_perm_prefix">新的存取權：</string>
     <string name="downloading">下載中…</string>
     <string name="interval_never">永不</string>
@@ -148,7 +149,7 @@
     <string name="interval_4h">每四小時</string>
     <string name="interval_12h">每十二小時</string>
     <string name="interval_1d">每天</string>
-    <string name="interval_1w">每週</string>
+    <string name="interval_1w">每週檢查更新</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="uninstall_confirm">您要解除安裝這個應用程式嗎？</string>
     <string name="allPerms">全部</string>
@@ -168,11 +169,12 @@
     <string name="proxy_host_summary">您的代理伺服器 hostname（如 127.0.0.1）</string>
     <string name="proxy_port">代理伺服器通訊埠</string>
     <string name="proxy_port_summary">您的代理伺服器通訊埠號碼（如：8118）</string>
-    <string name="status_download">正在從 %1$s 下載 %2$s / %3$s（%4$d%%）</string>
+    <string name="status_download">正在從 %1$s 下載
+\n %2$s / %3$s (%4$d%%)</string>
     <string name="install_confirm">需要存取權</string>
-    <string name="install_confirm_update">您要為這個現有的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
-    <string name="install_confirm_update_system">您要為這個內置的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
-    <string name="install_confirm_update_system_no_perms">您要為這個內置應用程式安裝更新嗎？您不會遺失現有的資料，而應用程式無需任何特殊的存取權限。</string>
+    <string name="install_confirm_update">您是否要更新此應用程式？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system">您是否要更新此內置應用程式？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system_no_perms">您是否要更新此內置應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
     <string name="next">下一步</string>
     <string name="SignatureMismatch">新版的應用程式使用了一個不相同的鑰匙簽署。若要安裝新版本，您必須先卸載舊版本。（註：卸載將會刪除應用程式內的資料）</string>
     <string name="download_error">下載失敗！</string>
@@ -233,7 +235,7 @@
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
     <string name="login_title">需要驗證</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
-    <string name="install_confirm_update_no_perms">您要為這個現有的應用程式安裝更新嗎？您不會遺失現有的資料，而應用程式無需任何特殊的存取權限。</string>
+    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會失去現有的數據，也不需要提供任何存取權。</string>
     <string name="uninstall_update_confirm">要將此應用程式回復至原廠版本嗎？所有資料將會刪除。</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供更多有關此問題的資料嗎？</string>
     <string name="repo_fingerprint">鑰匙指紋（SHA-256）</string>
@@ -387,8 +389,16 @@
     <string name="send_history_csv">%s 安裝歷史為CSV文件</string>
     <string name="send_fdroid_metrics_report">發送%s度量報告</string>
     <string name="send_install_history">發送安裝歷史</string>
-    <string name="hide_all_notifications_summary">阻止所有操作顯示在狀態欄和通知欄中</string>
+    <string name="hide_all_notifications_summary">阻止所有操作顯示在狀態欄和通知欄中。</string>
     <string name="hide_all_notifications">隱藏所有通知</string>
     <string name="prompt_to_send_crash_reports_summary">收集有關崩潰的數據並要求將其發送給開發人員</string>
     <string name="prompt_to_send_crash_reports">提示發送崩潰報告</string>
+    <string name="repo_delete_to_overwrite">先刪除%1$s，以便添加互不兼容的鑰匙。</string>
+    <string name="repo_exists_enable">%1$s已經設置好，請確認您要否要重新啟用倉庫。</string>
+    <string name="repo_exists_add_fingerprint">%1$s已經設置好，此動作將會加入新的鑰匙資料。</string>
+    <string name="scan_removable_storage_summary">在可移除的儲存裝置上尋找軟件庫，例如 SD 卡或 USB 隨身碟</string>
+    <string name="app_repository">軟件庫：%1$s</string>
+    <string name="app_suggested">建議</string>
+    <string name="about_forum">支援論壇</string>
+    <string name="scan_removable_storage_toast">正在掃描 %s…</string>
 </resources>
