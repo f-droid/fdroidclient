@@ -499,4 +499,7 @@
     <string name="use_pure_black_dark_theme">在深色主題中使用純黑色背景</string>
     <string name="banner_no_data_or_wifi">未啟用行動數據或 WiFi</string>
     <string name="banner_no_internet">沒有網際網路</string>
+    <string name="share_apk_error">無法分享應用程式檔案</string>
+    <string name="has_disallow_install_unknown_sources">此使用者無法新增未知來源，包含了新的軟體倉庫</string>
+    <string name="has_disallow_install_unknown_sources_globally">您的裝置管理員不允許安裝來自未知來源的應用程式，其中包括新的軟體倉庫</string>
 </resources>
