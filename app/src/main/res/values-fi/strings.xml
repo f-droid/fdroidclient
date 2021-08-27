@@ -151,7 +151,7 @@
     <string name="less">Vähemmän</string>
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
-    <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
+    <string name="repo_error_empty_username">Ei käyttäjänimeä, tunnistetietoja ei muutettu</string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
