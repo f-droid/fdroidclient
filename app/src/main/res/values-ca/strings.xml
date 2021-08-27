@@ -520,4 +520,5 @@
     <string name="install_history_and_metrics">Instal·la l\'històric i les mètriques</string>
     <string name="send_fdroid_metrics_json">Informe de mètriques %s como a fitxer JSON</string>
     <string name="send_fdroid_metrics_report">Envia informe de mètriques %s</string>
+    <string name="share_apk_error">No es pot compartir l\'arxiu de l\'aplicació</string>
 </resources>
