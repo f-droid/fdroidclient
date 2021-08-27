@@ -530,4 +530,5 @@
     <string name="use_pure_black_dark_theme">Використання чистого чорного тла в темній темі</string>
     <string name="banner_no_data_or_wifi">Дані або Wi-Fi не ввімкнуто</string>
     <string name="banner_no_internet">Немає Інтернету</string>
+    <string name="share_apk_error">Не вдалося надіслати файл застосунку</string>
 </resources>
