@@ -53,7 +53,7 @@
     <string name="category_Science_Education">العلوم و التعليم</string>
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
-    <string name="app_name">اِف‌-دروید</string>
+    <string name="app_name">اف-درويد</string>
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
@@ -554,4 +554,7 @@
     <string name="use_pure_black_dark_theme">استخدم خلفية سوداء نقية في المظهر داكن</string>
     <string name="banner_no_data_or_wifi">لم يتم تمكين البيانات أو WiFi</string>
     <string name="banner_no_internet">لا يوجد إنترنت</string>
+    <string name="share_apk_error">تعذر مشاركة ملف التطبيق</string>
+    <string name="has_disallow_install_unknown_sources">لا يمكن إضافة مصادر غير معروفة بواسطة هذا المستخدم ، بما في ذلك عمليات اضافة مستودعات جديدة</string>
+    <string name="has_disallow_install_unknown_sources_globally">لا يسمح مسؤول جهازك بتثبيت التطبيقات من مصادر غير معروفة، والتي تتضمن مستودعات جديدة</string>
 </resources>
