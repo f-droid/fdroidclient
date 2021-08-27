@@ -517,4 +517,7 @@
     <string name="use_pure_black_dark_theme">Koyu temada saf siyah arka plan kullan</string>
     <string name="banner_no_data_or_wifi">Veri veya etkin Wi-Fi yok</string>
     <string name="banner_no_internet">İnternet Yok</string>
+    <string name="share_apk_error">Uygulama dosyası paylaşılamadı</string>
+    <string name="has_disallow_install_unknown_sources">Yeni depolar da dahil, bilinmeyen kaynaklar bu kullanıcı tarafından eklenemiyor</string>
+    <string name="has_disallow_install_unknown_sources_globally">Aygıt yöneticiniz, yeni depolar da dahil bilinmeyen kaynaklardan uygulamaların kurulmasına izin vermiyor</string>
 </resources>
