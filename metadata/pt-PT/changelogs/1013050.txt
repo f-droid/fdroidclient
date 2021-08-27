@@ -1,11 +1,17 @@
-* Suporte temático ligado aos temas do Android embutido (@proletarius101)
+* Suporte dos temas embutidos do Android (@proletarius101)
 
-* Novas notificações de banners de topo: "Sem Internet" e "Sem dados ou Wi-Fi ativados"
+* Novas notificações: "Sem Internet" e "Sem dados ou Wi-Fi ativados"
 
-* Melhoria no manuseio de USB-OTG e SD Card repos e espelhos
+* Melhoria com repositórios e espelhos USB-OTG e SD Card
 
 * Parar atualizações repetidas da Biblioteca Tricromia
 
-* Mais alterações a seguir o Design de Material (@proletarius101)
+* Alterações conforme Material Design (@proletarius101)
 
-* Melhorado o crachá OpenCollective (@ConnyDuck)
+* Melhorado crachá OpenCollective (@ConnyDuck)
+
+* Revisão do carregamento de ícones usando o Glide (@proletarius101)
+
+* Novo ícone adaptativo (@12people)
+
+* Código modernizado (@Isira-Seneviratne)
