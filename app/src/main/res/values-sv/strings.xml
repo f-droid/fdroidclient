@@ -267,7 +267,7 @@
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och uppdatera appar i bakgrunden, visar en avisering</string>
-    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
+    <string name="warning_no_internet">Kan inte uppdatera: Är du ansluten till internet\?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till %1$s-utvecklarna!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
