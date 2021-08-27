@@ -497,4 +497,7 @@
     <string name="use_pure_black_dark_theme">在深色主题中使用纯黑色背景</string>
     <string name="banner_no_data_or_wifi">未启用流量或WiFi网络</string>
     <string name="banner_no_internet">无互联网</string>
+    <string name="share_apk_error">无法分享应用文件</string>
+    <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
+    <string name="has_disallow_install_unknown_sources_globally">您的设备管理员不允许安装来自未知来源的应用程序，其中包括新的存储库</string>
 </resources>
