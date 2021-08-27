@@ -524,4 +524,6 @@
     <string name="banner_no_data_or_wifi">Pas de Données ou Wi-Fi actif</string>
     <string name="banner_no_internet">Aucune connexion Internet</string>
     <string name="share_apk_error">Impossible de partager le fichier de l\'appli</string>
+    <string name="has_disallow_install_unknown_sources">Les sources inconnues ne peuvent pas être ajoutées par cet utilisateur et cette règle s\'applique aux nouveaux dépôts.</string>
+    <string name="has_disallow_install_unknown_sources_globally">L\'administrateur de votre appareil n\'autorise pas l\'installation d\'applications provenant de sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
 </resources>
