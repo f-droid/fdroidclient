@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F-Droid</string>
-    <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณติดตั้งหรือไม่\?</string>
+    <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณ ติดตั้งหรือไม่\?</string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้งานการส่ง NFC …</string>
     <string name="cache_downloaded">เก็บแอปที่แคชไว้</string>
     <string name="other">อื่นๆ</string>
-    <string name="update_interval">อัพเดตอัตโนมัติทุกๆ</string>
-    <string name="update_auto_download">อัพเดตอัตโนมัติ</string>
+    <string name="update_interval">ช่วงเวลาอัปเดตอัตโนมัติ</string>
+    <string name="update_auto_download">ดึงอัปเดตอัตโนมัติ</string>
     <string name="local_repo_name">ชื่อที่ตั้งให้แหล่งโปรแกรมจากเครื่องคุณ</string>
     <string name="login_name">ชื่อผู้ใช้</string>
     <string name="login_password">รหัสผ่าน</string>
     <string name="repo_edit_credentials">เปลี่ยนรหัสผ่าน</string>
     <string name="app_details">รายละเอียดของโปรแกรม</string>
-    <string name="no_such_app">ไม่พบเเอพตามที่ค้นหา</string>
+    <string name="no_such_app">ไม่พบแอปที่ค้นหา</string>
     <string name="about_title">เกี่ยวกับ F-Droid</string>
     <string name="about_version">รุ่น</string>
     <string name="about_site">เว็บไซต์</string>
@@ -26,7 +26,7 @@
     <string name="app_installed">ถูกติดตั้ง</string>
     <string name="app_not_installed">ไม่ได้ถูกติดตั้ง</string>
     <string name="app_inst_known_source">ถูกติดตั้ง (จาก %s)</string>
-    <string name="app_inst_unknown_source">ถูกติดตั้ง (มาจากแหล่งที่มาที่ไม่รู้จัก)</string>
+    <string name="app_inst_unknown_source">ถูกติดตั้ง (จากแหล่งที่มาที่ไม่รู้จัก)</string>
     <string name="ok">ตกลง</string>
     <string name="yes">ใช่</string>
     <string name="no">ไม่</string>
@@ -48,7 +48,7 @@
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
     <string name="menu_launch">เปิด</string>
-    <string name="menu_share">แบ่งปัน</string>
+    <string name="menu_share">แชร์</string>
     <string name="menu_install">ติดตั้ง</string>
     <string name="menu_uninstall">ถอนการติดตั้ง</string>
     <string name="menu_ignore_all">ไม่สนใจอัพเดตทั้งหมด</string>
@@ -62,9 +62,9 @@
     <string name="menu_bitcoin">บิตคอยน์</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="details_notinstalled">ไม่ได้ติดตั้งอยู่</string>
+    <string name="details_notinstalled">ไม่ได้ติดตั้ง</string>
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
-    <string name="antitracklist">แอพนี้ติดตามและรายงานกิจกรรมของคุณ</string>
+    <string name="antitracklist">แอปนี้ติดตามและรายงานกิจกรรมของคุณ</string>
     <string name="antinonfreeadlist">โปรแกรมนี้สนับสนุนส่วนขยายที่ไม่เสรี</string>
     <string name="antinonfreenetlist">โปรแกรมนี้สนับสนุนการใช้งานบริการที่ไม่เสรี</string>
     <string name="antinonfreedeplist">โปรแกรมนี้พึ่งพาโปรแกรมไม่เสรีอื่นๆ</string>
@@ -102,7 +102,7 @@
     <string name="repo_num_apps">จำนวนโปรแกรมที่มี</string>
     <string name="repo_fingerprint">ลายนิ้วมือของลายเซ็นดิจิตอลที่ใช้ (SHA-256)</string>
     <string name="repo_description">คำอธิบาย</string>
-    <string name="repo_last_update">อัพเดตครั้งล่าสุดเมื่อ</string>
+    <string name="repo_last_update">อัปเดตครั้งล่าสุดเมื่อ</string>
     <string name="repo_name">ชื่อ</string>
     <string name="unsigned_description">นี่หมายความว่ารายการโปรแกรมที่มีให้ดาวน์โหลดนี้ไม่สามารถตรวจสอบได้,
         คุณควรระวังโปรแกรมที่ติดตั้งจากแหล่งที่ตรวจสอบไม่ได้เหล่านี้
@@ -122,7 +122,7 @@
     <string name="category_Development">การพัฒนา</string>
     <string name="category_Games">เกม</string>
     <string name="category_Graphics">กราฟิก</string>
-    <string name="category_Internet">อินเตอร์เน็ต</string>
+    <string name="category_Internet">อินเทอร์เน็ต</string>
     <string name="category_Money">การเงิน</string>
     <string name="category_Multimedia">สื่อผสม</string>
     <string name="category_Navigation">การนำทาง</string>
@@ -133,7 +133,7 @@
     <string name="category_Sports_Health">กีฬาและสุขภาพ</string>
     <string name="category_System">เครื่องมือระบบ</string>
     <string name="category_Theming">ธีมต่างๆ</string>
-    <string name="category_Time">เวลาและวันที่</string>
+    <string name="category_Time">เวลา</string>
     <string name="category_Writing">การเขียน</string>
     <string name="swap_nfc_title">แตะเพื่อแบ่งปันโปรแกรม</string>
     <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้
@@ -145,7 +145,7 @@
     <string name="swap_dont_show_again">ไม่ต้องแสดงอีก</string>
     <string name="swap_setting_up_bluetooth">กำลังเปิดบลูทูธ…</string>
     <string name="swap_wifi_device_name">ชื่อเครื่อง</string>
-    <string name="swap_send_fdroid">ส่งต่อโปรแกรม F-Droid</string>
+    <string name="swap_send_fdroid">ส่ง F-Droid</string>
     <string name="swap_connecting">กำลังเชื่อมต่อ</string>
     <string name="swap_confirm">ยืนยันการส่งต่อ</string>
     <string name="loading">กำลังโหลด…</string>
@@ -186,18 +186,18 @@
     <string name="crash_dialog_title">F-Droid เกิดข้อผิดพลาด</string>
     <string name="crash_dialog_text">เกิดข้อผิดพลาดที่ไม่คาดคิดบังคับให้แอปหยุดทำงาน คุณต้องการส่งรายละเอียดทางอีเมลเพื่อช่วยแก้ไขปัญหาหรือไม่</string>
     <string name="crash_dialog_comment_prompt">ระบุรายละเอียดและหมายเหตุเพิ่มเติมที่นี่:</string>
-    <string name="SignatureMismatch">เวอร์ชันใหม่มีการลงนามด้วยคีย์อื่นกับเวอร์ชันเก่า ในการติดตั้งเวอร์ชันใหม่ต้องถอนการติดตั้งเวอร์ชันเก่าก่อน โปรดดำเนินการนี้และลองอีกครั้ง (โปรดทราบว่าการถอนการติดตั้งจะลบข้อมูลภายในที่จัดเก็บโดยแอป)</string>
-    <string name="updates">อัพเดต</string>
+    <string name="SignatureMismatch">เวอร์ชันใหม่มีการลงนามด้วยคีย์อื่นกับเวอร์ชันเก่า เพื่อติดตั้งเวอร์ชันใหม่ ต้องถอนการติดตั้งเวอร์ชันเก่าก่อน โปรดดำเนินการนี้และลองอีกครั้ง (โปรดทราบว่าการถอนการติดตั้งจะลบข้อมูลภายในที่จัดเก็บโดยแอป)</string>
+    <string name="updates">อัปเดต</string>
     <string name="unstable_updates">การอัปเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัปเดตเวอร์ชันที่ไม่เสถียร</string>
-    <string name="update_auto_download_summary">ดาวน์โหลดอัพเดตเเอพอัตโนมัติเเละเเจ้งเตือนให้ติดตั้ง</string>
-    <string name="notify">แสดงอัพเดตที่ใช้ได้</string>
-    <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดต</string>
+    <string name="update_auto_download_summary">ดาวน์โหลดอัปเดตแอปอัตโนมัติและแจ้งเตือนให้ติดตั้ง</string>
+    <string name="notify">แสดงอัปเดตที่ใช้ได้</string>
+    <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัปเดต</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
     <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
-    <string name="login_title">ร้องขอการยืนยันตัวตน</string>
+    <string name="login_title">ต้องมีการยืนยันตัวตน</string>
     <string name="system_installer">ส่วนขยายเพื่อช่วยติดตั้ง</string>
-    <string name="system_installer_on">ใช้ส่วนขยายเพื่อจัดการติดตั้ง, อัพเดต, และถอนการติดตั้งเเอพ</string>
+    <string name="system_installer_on">ใช้ส่วนขยายเพื่อจัดการติดตั้ง อัปเดต และถอนการติดตั้งเเอพ</string>
     <string name="repo_error_empty_username">ชื่อผู้ใช้ว่างเปล่า ข้อมูลรับรองไม่ถูกเปลี่ยนแปลง</string>
     <string name="added_on">เพิ่มมาเมื่อ %s</string>
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
@@ -257,13 +257,13 @@
     </string>
     <string name="local_repo_running">F-Droid พร้อมจะแบ่งบันโปรแกรมแล้ว</string>
     <string name="malformed_repo_uri">ละเว้นเเหล่งที่อยู่ที่จัดเก็บผิดรูปเเบบ: %s</string>
-    <string name="update_auto_install_summary">ดาวน์โหลดและอัพเดทเเอพแบบเบื้องหลัง โดยเเสดงเฉพาะการเเจ้งเตือน</string>
-    <string name="update_auto_install">ติดตั้งเเอพที่อัพเดต โดยอัดโนมัติ</string>
+    <string name="update_auto_install_summary">ดาวน์โหลดและอัปเดตแอปในเบื้องหลัง โดยแสดงการแจ้งเตือน</string>
+    <string name="update_auto_install">ติดตั้งการอัปเดตโดยอัตโนมัติ</string>
     <string name="keep_install_history">เก็บประวัติการติดตั้ง</string>
     <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดไว้ในหน่วยความจำเฉพาะ</string>
     <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
     <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
-    <string name="warning_no_internet">ไม่สามารถอัปเดตคุณเชื่อมต่อกับอินเทอร์เน็ตหรือไม่\?</string>
+    <string name="warning_no_internet">ไม่สามารถอัปเดต คุณเชื่อมต่อกับอินเทอร์เน็ตหรือยัง\?</string>
     <string name="swap_confirm_connect">ยืนยันเพื่อรับโปรแกรมจาก %1$s</string>
     <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi,
         คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ
@@ -278,9 +278,7 @@
         อาจจะเป็นเพราะว่าคุณไม่ได้อัพเดตข้อมูลแหล่งโปรแกรม
         หรือโปรแกรมที่คุณใช้อยู่ไม่ได้มีอยู่ในรายการของแหล่งโปรแกรมที่คุณตั้งไว้
     </string>
-    <string name="not_on_same_wifi">ตอนนี้เครื่องของคุณยังไม่ได้อยู่ในเครือข่าย WiFi
-        เดียวกับแหล่งโปรแกรมท้องถิ่นที่คุณตั้งไว้, ให้คุณลองเข้าเครือข่าย: %s
-    </string>
+    <string name="not_on_same_wifi">ตอนนี้อุปกรณ์ของคุณยังไม่ได้อยู่ในเครือข่าย Wi-Fi เดียวกับแหล่งโปรแกรมท้องถิ่นที่คุณเพิ่งเพิ่ม! ลองเข้าเครือข่ายนี้: %s</string>
     <string name="repo_disabled_notification">ปิดการใช้งานแหล่งโปรแกรม %1$s แล้ว
 
         ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่
@@ -290,7 +288,7 @@
     <string name="hide_all_notifications">ซ่อนการแจ้งเตือนทั้งหมด</string>
     <string name="send_install_history">ส่งประวัติการติดตั้ง</string>
     <string name="force_old_index">บังคับใช้ดัชนีรูปแบบเก่า</string>
-    <string name="over_data">โดยผ่านเครือข่ายมือถือเซลลูล่าร์</string>
+    <string name="over_data">ผ่านเครือข่ายมือถือ</string>
     <string name="allow_push_requests">อนุญาตให้ใช้แหล่งโปรแกรมภายนอก ก่อนดำเนินการติดตั้งหรือถอนการติดตั้งเอง</string>
     <string name="scan_removable_storage_toast">กำลังค้นหา %s…</string>
     <string name="disabled">ปิดอยู่</string>
@@ -347,43 +345,43 @@
     <string name="app_version_x_installed">รุ่น %1$s</string>
     <string name="app_version_x_available">รุ่น %1$s พร้อมใช้งาน</string>
     <string name="app_new">ใหม่</string>
-    <string name="app_suggested">ถูกเเนะนำ</string>
+    <string name="app_suggested">แนะนำ</string>
     <string name="about_forum">ฟอรัมการสนับสนุน</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">รุ่นที่ติดตั้งเข้ากันไม่ได้กับรุ่นที่มีอยู่ การถอนการติดตั้งแอปจะช่วยให้คุณสามารถดูและติดตั้งรุ่นที่เข้ากันได้ สิ่งนี้มักเกิดขึ้นกับแอปที่ติดตั้งผ่าน Google Play หรือแหล่งที่มาอื่น ๆ หากมีการลงนามโดยใบรับรองอื่น</string>
     <string name="app_details__no_versions__none_compatible_with_device">ไม่มีรุ่นที่เข้ากันได้กับอุปกรณ์</string>
     <string name="app_details__no_versions__no_compatible_signatures">ไม่มีรุ่นที่มีลายเซ็นที่เข้ากันได้</string>
     <string name="app_details__incompatible_mismatched_signature">ลายเซ็นแตกต่างไปจากเวอร์ชันที่ถูกติดตั้ง</string>
-    <string name="app_details_donate_prompt">%1$s ถูกสร้างโดย %2$s. ซื้อกาเเฟให้พวกเขาเหล่านั้น</string>
-    <string name="app_details_donate_prompt_unknown_author">ซื้อ %1$s กาเเฟให้นักพัฒนา</string>
+    <string name="app_details_donate_prompt">%1$s ถูกสร้างโดย %2$s ซื้อกาแฟให้พวกเขาได้นะ!</string>
+    <string name="app_details_donate_prompt_unknown_author">ซื้อกาแฟให้นักพัฒนาแอป %1$s!</string>
     <string name="scan_removable_storage_summary">มองหาเเพ็กเกจเเหล่งเเอพบนหน่วยวามจำที่ถอดออกได้ อย่าง SD Cards เเละ ยูเอสบีทรัมป์ไดร์ฟ</string>
     <string name="scan_removable_storage_title">สเเกนหน่วยความจำที่ถอดออกได้</string>
     <string name="over_network_never_summary">อย่าดาวน์โหลดสิ่งใดก็ตามโดยใช้การเชื่อมต่อนี้</string>
     <string name="over_network_on_demand_summary">ใช้การเชื่อมต่อนี้เมื่อฉันกดดาวน์โหลดเท่านั้น</string>
     <string name="over_network_always_summary">ใช้การเชื่อมต่อนี้เสมอเมื่อสามารถใช้งานได้</string>
-    <string name="over_wifi">โดยผ่านเครือข่ายไวไฟ</string>
+    <string name="over_wifi">ผ่าน Wi-Fi</string>
     <string name="allow_push_requests_summary">ข้อมูลเมตาสามารถรวมคำขอเเบบเเสดงการเเจ้งเตือนเพื่อติดตั้งหรือถอนการติดตั้งแอพ</string>
     <string name="force_old_index_summary">ในกรณีพบปัญหาหรือประเด็นความเข้ากันได้ ใช้ดัชนีเเอพXML</string>
     <string name="send_version_and_uuid_summary">รวมเวอร์ชันของแอปนี้และรหัสที่ไม่ซ้ำกันแบบสุ่มเมื่อดาวน์โหลดจะมีผลต่อการรีสตาร์ทแอปครั้งต่อไป</string>
-    <string name="send_version_and_uuid">ส่งรุ่นเเละ UUIDไปที่เซิร์ฟเวอร์</string>
+    <string name="send_version_and_uuid">ส่งรุ่นเเละ UUID ไปที่เซิร์ฟเวอร์</string>
     <string name="install_history_summary">ดูปูมบันทึกส่วนตัวสำหรับการติดตั้งเเละการถอนติดตั้งทั้งหมด</string>
     <string name="install_history">ประวัติการติดตั้ง</string>
     <string name="send_history_csv">%s ประวัติการติดตั้งเป็นไฟล์ CSV</string>
-    <string name="hide_all_notifications_summary">ป้องกันการกระทำทั้งหมดไม่ให้แสดงในแถบสถานะและลิ้นชักการแจ้งเตือน</string>
+    <string name="hide_all_notifications_summary">ป้องกันการกระทำทั้งหมดไม่ให้แสดงในแถบสถานะและแถบการแจ้งเตือน</string>
     <string name="prompt_to_send_crash_reports">แจ้งให้ส่งรายงานข้อขัดข้อง</string>
     <string name="prompt_to_send_crash_reports_summary">รวบรวมข้อมูลเกี่ยวกับข้อขัดข้องและขอให้ส่งไปยังนักพัฒนา</string>
     <string name="notification_action_cancel">ยกเลิก</string>
     <string name="send_fdroid_metrics_report">ส่งรายงานเมตริก%s</string>
     <string name="notification_title_summary_install_error">ติดตั้งล้มเหลว</string>
     <string name="notification_title_single_update_available">มีการอัปเดต</string>
-    <string name="app_list__name__successfully_installed">%1$sติดตั้ง</string>
-    <string name="app_list__name__downloading_in_progress">กำลังดาวน์โหลด%1$s</string>
+    <string name="app_list__name__successfully_installed">ติดตั้ง %1$s แล้ว</string>
+    <string name="app_list__name__downloading_in_progress">กำลังดาวน์โหลด %1$s</string>
     <string name="notification_action_install">ติดตั้ง</string>
     <string name="notification_action_update">อัปเดต</string>
-    <string name="preference_manage_installed_apps">จัดการแอดที่ติดตั้ง</string>
+    <string name="preference_manage_installed_apps">จัดการแอปที่ติดตั้ง</string>
     <string name="toast_metrics_in_install_history">สามารถดูรายงาน%s เมตริกได้ในวิวเวอร์ประวัติการติดตั้ง</string>
     <string name="send_to_fdroid_metrics_summary">ส่งข้อมูลที่ไม่ระบุตัวตนทุกสัปดาห์ไปยัง F-Droid Metrics (ต้องเก็บประวัติการติดตั้ง)</string>
     <string name="send_to_fdroid_metrics">ส่งข้อมูลการใช้งาน</string>
     <string name="fdroid_metrics_report">รายงานเมตริก%s</string>
-    <string name="install_history_and_metrics">ติดตั้งประวัติและเมตริก</string>
+    <string name="install_history_and_metrics">ประวัติการติดตั้งและเมตริก</string>
     <string name="send_fdroid_metrics_json">%s รายงานเมตริกเป็นไฟล์ JSON</string>
 </resources>

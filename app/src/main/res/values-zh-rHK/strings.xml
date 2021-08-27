@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
@@ -109,13 +109,11 @@
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
     <string name="swap_confirm_connect">你是否想從 %1$s 取得應用程式？</string>
     <string name="app_name">F-Droid</string>
-
     <string name="unstable_updates">不穩定的更新</string>
     <string name="unstable_updates_summary">建議更新至不穩定的版本</string>
     <string name="about_source">原始碼</string>
     <string name="app_incompatible">不相容</string>
     <string name="links">連結</string>
-
     <string name="back">返回</string>
     <string name="invalid_url">這不是有效的網址。</string>
     <string name="menu_changelog">更新日誌</string>
@@ -126,10 +124,8 @@
 \n註：之前所安裝的應用程式均會保留在您的裝置上。</string>
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Wi-Fi 熱點</string>
-
     <string name="category_Connectivity">網絡</string>
     <string name="category_Graphics">繪圖</string>
     <string name="category_Money">財經</string>
@@ -137,27 +133,23 @@
     <string name="category_Theming">主題</string>
     <string name="category_Time">時間</string>
     <string name="category_Writing">文書</string>
-
-    <string name="empty_can_update_app_list">恭喜您！所有應用程式已更新至最新版本。</string>
-
+    <string name="empty_can_update_app_list">恭喜您！
+\n所有應用程式已更新至最新版本。</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
-
     <string name="swap_nfc_title">觸碰來交換</string>
     <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。</string>
     <string name="theme_dark">暗色系</string>
     <string name="theme_light">明亮色系</string>
-    <string name="interval_2w">每兩週</string>
-
+    <string name="interval_2w">每兩週檢查一次更新</string>
     <string name="perms_new_perm_prefix">新的存取權：</string>
     <string name="downloading">下載中…</string>
-
     <string name="interval_never">永不</string>
     <string name="interval_1h">每小時</string>
     <string name="interval_4h">每四小時</string>
     <string name="interval_12h">每十二小時</string>
     <string name="interval_1d">每天</string>
-    <string name="interval_1w">每週</string>
+    <string name="interval_1w">每週檢查更新</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="uninstall_confirm">您要解除安裝這個應用程式嗎？</string>
     <string name="allPerms">全部</string>
@@ -177,8 +169,8 @@
     <string name="proxy_host_summary">您的代理伺服器 hostname（如 127.0.0.1）</string>
     <string name="proxy_port">代理伺服器通訊埠</string>
     <string name="proxy_port_summary">您的代理伺服器通訊埠號碼（如：8118）</string>
-
-    <string name="status_download">正在從 %1$s 下載 %2$s / %3$s（%4$d%%）</string>
+    <string name="status_download">正在從 %1$s 下載
+\n %2$s / %3$s (%4$d%%)</string>
     <string name="install_confirm">需要存取權</string>
     <string name="install_confirm_update">您要為這個現有的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
     <string name="install_confirm_update_system">您要為這個內置的應用程式安裝更新嗎？您的現有資料將會喪失，更新後的應用程式將取得以下存取權：</string>
@@ -186,10 +178,8 @@
     <string name="next">下一步</string>
     <string name="SignatureMismatch">新版的應用程式使用了一個不相同的鑰匙簽署。若要安裝新版本，您必須先卸載舊版本。（註：卸載將會刪除應用程式內的資料）</string>
     <string name="download_error">下載失敗！</string>
-
     <string name="more">顯示更多</string>
     <string name="less">顯示較少</string>
-
     <string name="swap_connection_misc_error">與裝置連接時發生了問題，未能進行交換！</string>
     <string name="loading">正在載入…</string>
     <string name="swap_qr_isnt_for_swap">您所掃描的 QR 碼不是一個交換碼。</string>
@@ -212,8 +202,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="permissions">權限</string>
     <string name="repo_details">軟件庫</string>
     <string name="repo_url">網址</string>
@@ -221,12 +209,10 @@
     <string name="login_password">密碼</string>
     <string name="repo_edit_credentials">更改密碼</string>
     <string name="repo_error_empty_username">因用戶名未填妥，沒有更改個人資料</string>
-
     <string name="bad_fingerprint">指紋無效</string>
     <string name="status_download_unknown_size">正在從 %1$s 下載
 %2$s</string>
     <string name="malformed_repo_uri">略過無效的倉庫 URI：%s</string>
-
     <string name="linking_apks">正在連接 APK 檔至軟件庫…</string>
     <string name="status_processing_xml_percent">正在從 %1$s 處理 %2$s / %3$s（%4$d%%）</string>
     <string name="repo_not_yet_updated">此軟件庫還未啟用。您需要啟用倉庫才可以檢視其中的應用程式。</string>
@@ -235,14 +221,12 @@
     <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
     <string name="swap_active_hotspot">%1$s（您的熱點）</string>
     <string name="about_license">特許條款</string>
-
     <string name="enable_proxy_summary">為所有網絡請求設置 HTTP 代理</string>
     <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
     <string name="status_inserting_apps">正在儲存應用程式的資料</string>
     <string name="empty_installed_app_list">沒有安裝任何應用程式。
 \n
 \nF-Droid 並不提供您裝置上的應用程式。您可以嘗試更新您的軟件庫，但若更新後此頁還沒有顯示任何應用程式，您的倉庫的確不提供裝置現有的程式。</string>
-
     <string name="system_install_denied_permissions">套件尚未得到系統權限！
 請提交一份錯誤報告！
 </string>
@@ -251,7 +235,6 @@
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
     <string name="login_title">需要驗證</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
-
     <string name="install_confirm_update_no_perms">您要為這個現有的應用程式安裝更新嗎？您不會遺失現有的資料，而應用程式無需任何特殊的存取權限。</string>
     <string name="uninstall_update_confirm">要將此應用程式回復至原廠版本嗎？所有資料將會刪除。</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供更多有關此問題的資料嗎？</string>
@@ -265,79 +248,60 @@
     <string name="update_auto_download">自動下載更新</string>
     <string name="update_auto_download_summary">F-Droid 將會自動下載更新，下載完畢後會通知您安裝有關更新</string>
     <string name="repo_provider">軟件庫：%s</string>
-
     <string name="download_pending">正等待下載開始…</string>
     <string name="install_error_notify_title">安裝 %s 時發生錯誤</string>
     <string name="uninstall_error_notify_title">卸載 %s 時發生錯誤</string>
-
-
     <string name="installing">正在安裝…</string>
     <string name="uninstalling">正在解除安裝…</string>
-
     <string name="keep_hour">一小時</string>
     <string name="keep_day">一天</string>
     <string name="keep_week">一週</string>
     <string name="keep_month">一個月</string>
     <string name="keep_year">一年</string>
     <string name="keep_forever">永遠</string>
-
     <string name="keep_install_history">保留安裝紀錄</string>
-    <string name="keep_install_history_summary">在 F-Droid 中儲存所有安裝及卸載的紀錄</string>
+    <string name="keep_install_history_summary">在應用的私有存儲內記錄所有安裝和卸載</string>
     <string name="update_auto_install">自動安裝更新</string>
-    <string name="update_auto_install_summary">在背景下載及安裝應用程式更新</string>
+    <string name="update_auto_install_summary">在後臺下載及安裝應用程式更新</string>
     <string name="app_version_x_available">已可以下載 %1$s 版</string>
     <string name="app_details_donate_prompt_unknown_author">給 %1$s 的開發者買一杯咖啡吧！</string>
     <string name="app_details_donate_prompt">%2$s 是 %1$s 的開發者，給他們買一杯咖啡吧！</string>
-
     <string name="app_version_x_installed">版本 %1$s</string>
     <string name="app_recommended_version_installed">版本 %1$s（建議使用）</string>
     <string name="app__install_downloaded_update">更新</string>
-
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
     <string name="app_list__name__successfully_installed">已安裝 %1$s</string>
-
     <string name="installed_apps__activity_title">已安裝的應用程式</string>
     <string name="installed_app__updates_ignored">已略過的更新</string>
     <string name="installed_app__updates_ignored_for_suggested_version">已略過 %1$s 版的更新</string>
     <string name="update_all">下載所有更新</string>
-
     <string name="updates__hide_updateable_apps">隱藏應用程式</string>
     <string name="updates__show_updateable_apps">顯示應用程式</string>
-
     <string name="versions">版本</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">為 %1$d 個應用程式下載更新。</item>
     </plurals>
-
     <string name="clear_search">清除搜尋</string>
-
     <string name="updates__tts__download_app">下載</string>
     <string name="repositories_summary">加入更多應用程式來源</string>
     <string name="menu_video">影片</string>
     <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">分類</string>
     <string name="main_menu__swap_nearby">附近</string>
-
     <string name="latest__empty_state__never_updated">當您更新應用程式目錄後，最新的程式將會在此處顯示</string>
     <string name="latest__empty_state__no_enabled_repos">當您啟用並更新軟件庫後，此處將顯示最新的程式</string>
-
     <string name="preference_category__my_apps">我的應用程式</string>
     <string name="preference_manage_installed_apps">管理已安裝的應用程式</string>
-
-
     <string name="details_new_in_version">%s 版有下列的新功能</string>
-
     <string name="antifeatureswarning">此應用程式有些您未必喜歡的功能。</string>
     <string name="antifeatures">反功能</string>
     <string name="warning_no_internet">無法更新，您是否能夠連線至互聯網？</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">顯示所有 %d</item>
     </plurals>
-
     <string name="nearby_splash__download_apps_from_people_nearby">沒有網絡連線？您可以從附近的人取得應用程式！</string>
     <string name="nearby_splash__find_people_button">搜索附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">雙方都需要 %1$s 才可使用附近功能。</string>
-
     <string name="notification_title_single_ready_to_install">安裝就緒</string>
     <string name="notification_title_single_update_available">可以更新</string>
     <string name="notification_title_single_ready_to_install_update">已準備好進行安裝</string>
@@ -357,13 +321,10 @@
     <string name="notification_action_update">更新</string>
     <string name="notification_action_cancel">取消</string>
     <string name="notification_action_install">安裝</string>
-
     <string name="tts_category_name">類別 %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="other">檢視屬於 %2$s 類別的全部 %1$d 個應用程式</item>
     </plurals>
-
     <string name="details_last_updated_today">今天更新</string>
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 天前更新</item>
@@ -371,15 +332,12 @@
     <string name="app_new">最新</string>
     <string name="latest__empty_state__no_recent_apps">找不到近期用過的應用程式</string>
     <string name="categories__empty_state__no_categories">沒有可顯示的程式分類</string>
-
     <string name="by_author_format">作者為 %s</string>
     <string name="force_old_index_summary">當發生錯誤或相容性問題時，使用 XML 程式索引</string>
     <string name="app__tts__cancel_download">取消下載</string>
     <string name="app_installed_media">已安裝檔案至 %s</string>
     <string name="app_permission_storage">若要將應用程式安裝至裝置， F-Droid 必須取得「儲存裝置」權限。請於下一個畫面允許權限，以繼續安裝的流程。</string>
-
     <string name="app_list_download_ready">已下載，可以隨時安裝</string>
-
     <string name="menu_license">特約條款：%s</string>
     <string name="download_404">找不到需要的檔案。</string>
     <string name="status_inserting_x_apps">正在從 %3$s 儲存應用程式的資料（%1$d/%2$d）</string>
@@ -410,5 +368,37 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的程式版本與可供安裝的版本並不相容。卸載現有的應用程式將讓您檢視及安裝相容的版本。此問題通常出現於透過 Google Play 或其他途徑安裝，並使用不同認證的應用程式。</string>
     <string name="disabled">已停用</string>
     <string name="allow">允許</string>
-
+    <string name="scan_removable_storage_title">掃描可移動存儲</string>
+    <string name="over_network_never_summary">從不使用此連接下載任何內容</string>
+    <string name="over_network_on_demand_summary">僅在按下下載時使用此連接</string>
+    <string name="over_network_always_summary">此連線可用時總是使用</string>
+    <string name="over_data">通過行動網絡</string>
+    <string name="over_wifi">通過Wi-Fi</string>
+    <string name="allow_push_requests_summary">存儲庫的中繼資料可以含有安裝或卸載應用的推送請求</string>
+    <string name="allow_push_requests">允許軟體庫安裝/解除安裝應用程式</string>
+    <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，重新啟動應用程式後才能套用設定。</string>
+    <string name="send_version_and_uuid">傳送版本和 UUID 至伺服器</string>
+    <string name="toast_metrics_in_install_history">在「安裝歷史紀錄檢視器」中可以檢視 %s 指標回報</string>
+    <string name="send_to_fdroid_metrics_summary">每週傳送匿名資料給 F-Droid Metrics（需要保留安裝歷史紀錄）</string>
+    <string name="send_to_fdroid_metrics">發送使用數據</string>
+    <string name="install_history_summary">檢視所有安裝和解除安裝的私人記錄</string>
+    <string name="fdroid_metrics_report">%s 指標回報</string>
+    <string name="install_history_and_metrics">安裝歷史和指標</string>
+    <string name="install_history">安裝歷史</string>
+    <string name="send_fdroid_metrics_json">發送%s份名額報告為JSON報告</string>
+    <string name="send_history_csv">%s 安裝歷史為CSV文件</string>
+    <string name="send_fdroid_metrics_report">發送%s度量報告</string>
+    <string name="send_install_history">發送安裝歷史</string>
+    <string name="hide_all_notifications_summary">阻止所有操作顯示在狀態欄和通知欄中。</string>
+    <string name="hide_all_notifications">隱藏所有通知</string>
+    <string name="prompt_to_send_crash_reports_summary">收集有關崩潰的數據並要求將其發送給開發人員</string>
+    <string name="prompt_to_send_crash_reports">提示發送崩潰報告</string>
+    <string name="repo_delete_to_overwrite">先刪除%1$s，以便添加互不兼容的鑰匙。</string>
+    <string name="repo_exists_enable">%1$s已經設置好，請確認您要否要重新啟用倉庫。</string>
+    <string name="repo_exists_add_fingerprint">%1$s已經設置好，此動作將會加入新的鑰匙資料。</string>
+    <string name="scan_removable_storage_summary">在可移除的儲存裝置上尋找軟件庫，例如 SD 卡或 USB 隨身碟</string>
+    <string name="app_repository">軟件庫：%1$s</string>
+    <string name="app_suggested">建議</string>
+    <string name="about_forum">支援論壇</string>
+    <string name="scan_removable_storage_toast">正在掃描 %s…</string>
 </resources>

@@ -46,7 +46,7 @@
     <string name="menu_manage">מאגרים</string>
     <string name="menu_search">חיפוש</string>
     <string name="menu_add_repo">מאגר חדש</string>
-    <string name="menu_launch">פתיחה</string>
+    <string name="menu_launch">פתח</string>
     <string name="menu_share">שיתוף</string>
     <string name="menu_install">התקנה</string>
     <string name="menu_uninstall">הסרה</string>
@@ -146,11 +146,11 @@
     <string name="swap_dont_show_again">לא להציג זאת שוב</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד את הכתובת של הצד השני בדפדפן.</string>
     <string name="install_confirm">נדרשת גישה אל</string>
-    <string name="newPerms">חדשה</string>
-    <string name="allPerms">הכול</string>
+    <string name="newPerms">חדש</string>
+    <string name="allPerms">הכל</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
-    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן\? כל הנתונים יוסרו.</string>
-    <string name="uninstall_confirm">להסיר יישומון זה?</string>
+    <string name="uninstall_update_confirm">האם להחליף את האפליקציה הזאת בגירסת היצרן? כל הנתונים יוסרו.</string>
+    <string name="uninstall_confirm">האם ברצונך להסיר את ההתקנה של אפליקציה זו?</string>
     <string name="perms_new_perm_prefix">חדש:</string>
     <string name="perms_description_app">מסופק על ידי %1$s.</string>
     <string name="downloading">מתבצעת הורדה…</string>
@@ -179,8 +179,8 @@
     <string name="swap_setting_up_wifi">הרשת האלחוטית מוגדרת…</string>
     <string name="swap_not_visible_wifi">לא גלוי דרך רשת אלחוטית</string>
     <string name="swap_wifi_device_name">שם התקן</string>
-    <string name="swap_connecting">מתבצע חיבור</string>
-    <string name="loading">בטעינה…</string>
+    <string name="swap_connecting">מתחבר</string>
+    <string name="loading">טוען…</string>
     <string name="interval_never">לא לעדכן את היישומונים אוטומטית</string>
     <string name="interval_1h">לחפש עדכונים כל שעה</string>
     <string name="interval_4h">לחפש עדכונים כל 4 שעות</string>
@@ -218,10 +218,10 @@
 \nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
     <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית.</string>
-    <string name="install_confirm_update">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. היישומון המעודכן יקבל גישה אל:</string>
-    <string name="install_confirm_update_system">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. היישומון העדכני יקבל גישה אל:</string>
-    <string name="install_confirm_update_no_perms">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה הרשאת גישה מיוחדת.</string>
-    <string name="install_confirm_update_system_no_perms">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה גישה מיוחדת.</string>
+    <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? הנתונים הקיימים שלך לא יאבדו. האפליקציה המעודכנת תקבל גישה אל:</string>
+    <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית זו? הנתונים הקיימים שלך לא יאבדו. האפליקציה המעודכנת תקבל גישה אל:</string>
+    <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון עבור אפליקציה קיימת זו? הנתונים הקיימים שלך לא יאבדו. אין צורך בגישה מיוחדת.</string>
+    <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון עבור אפליקציה מובנית זו? הנתונים הקיימים שלך לא יאבדו. אין צורך בגישה מיוחדת.</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -320,8 +320,8 @@
     <string name="install_error_notify_title">שגיאה בהתקנת %s</string>
     <string name="uninstall_error_notify_title">שגיאה בהסרת %s</string>
     <string name="app__tts__downloading_progress">מתבצעת הורדה, %1$d%% הושלמו</string>
-    <string name="installing">מתבצעת התקנה…</string>
-    <string name="uninstalling">מתבצעת הסרה…</string>
+    <string name="installing">מתקין…</string>
+    <string name="uninstalling">מסיר התקנה…</string>
     <string name="keep_hour">שעה</string>
     <string name="keep_day">יום</string>
     <string name="keep_week">שבוע</string>
@@ -418,7 +418,7 @@
     <string name="panic_app_setting_none">אין</string>
     <string name="panic_app_dialog_title">הגדרת יישומון מצוקה</string>
     <string name="panic_app_dialog_message">לאפשר ל־%1$s לבצע פעולות כפתור מצוקה הרסניות?</string>
-    <string name="allow">לאפשר</string>
+    <string name="allow">כן, זה בסדר</string>
     <string name="panic_settings">הגדרות כפתור מצוקה</string>
     <string name="panic_settings_summary">פעולות בהן לנקוט במקרה חירום</string>
     <string name="panic_exit_title">יציאה מהיישומון</string>
@@ -532,4 +532,5 @@
     <string name="use_pure_black_dark_theme">להשתמש ברקע שחור טהור בערכת עיצוב כהה</string>
     <string name="banner_no_data_or_wifi">הרשתות האלחוטית והסלולרית מושבתות</string>
     <string name="banner_no_internet">אין אינטרנט</string>
+    <string name="share_apk_error">לא ניתן לשתף קובץ יישומון</string>
 </resources>

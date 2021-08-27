@@ -1,0 +1,11 @@
+* Revizuirea majoră a interfeței de swap, pregătirea pentru rescriere
+
+* Afișare "Undo" după ce se îndepărtează elementele din fila "Updates" (mulțumesc @Hocuri!)
+
+* Corectarea gestionării ETag-urilor la conectarea la oglinzile NGINX #1737
+
+* Corectarea problemelor cu afișarea "Latest" cauzate de gestionarea defectuoasă a fusurilor orare #1757
+
+* Ignoră toate accidentările neimportante în serviciile de fundal
+
+* Nu folosiți Privileged Extension dacă este dezactivată în "Settings"

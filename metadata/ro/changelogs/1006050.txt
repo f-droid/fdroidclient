@@ -1,0 +1,13 @@
+* Ultima filă arată app-uri ce oferă descrieri,traduceri,capturi de ecran
+
+* Descarcă automat din oglinzi,pt. accelerare descărcări /reduce încărcarea pe f-droid.org
+
+* Dezactivare oglinzi cu noile comutatoare din RepoDetails (#1696)
+
+* Stocare mai bună a descărcărilor (per-repo; pe diferite servere web #1708)
+
+* Repară instalările ce implică Surse neștiute cu extensia Privileged (#1702)
+
+* Corectare iconi lipsă pt. cei fără Wi-Fi (#1592)
+
+* Îmbunătățire traduceri pt. Actualizări vs. preferințe

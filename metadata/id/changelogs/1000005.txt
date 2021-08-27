@@ -1,0 +1,3 @@
+* Memperbaiki error yang melarang terjemahan untuk muncul di Android >= 7.0
+
+* Memperbaiki upgrade Database error dari 1.0-alpha3 → 1.0-alpha4 (#1181)

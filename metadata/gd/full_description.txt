@@ -1,0 +1,18 @@
+’S e catalog de bhathar-bhog saor a ghabhas stàladh air Android
+a th’ ann an F-Droid. Nì aplacaid cliant F-Droid e furasta dhut
+gun rùraich, gun stàlaich is gun cùm thu sùil air ùrachaidhean air an uidheam agad.
+
+Nì i ceangal ri ionad-tasgaidh sam bith a tha co-chòrdail le F-Droid. Tha an t-ionad-tasgaidh bunaiteach
+’ga òstadh air f-droid.org agus fhan ghaigh thu ach bathar-bog a tha saor dha-rìribh ann.
+
+Tha Android fhèin fosgailte san t-seagh gum faod thu APK
+a stàladh à àite sam bith a thogras tu ach tha iomadh deagh adhbhar ann airson
+F-Droid a chleachdadh airson na h-aplacaidean saora agad a stùireadh:
+
+* Gheibh thu brath nuair a bhios ùrachadh ri fhaighinn
+* ’S urrainn dhut ùrachaidhean a lochdadh a-nuas is a stàladh gu fèin-obrachail ma thogras tu
+* ’S urrainn dhut sùil a chumail air seann-tionndaidhean is tionndaidhean beta
+* ’S urrainn dhut aplacaidean nach eil co-chòrdail ris an uidheam agad a chriathradh air falbh
+* ’S urrainn dhut aplacaidean a lorg le roinnean-seòrsa is tuairisgeulan a ghabhas lorg annta
+* ’S urrainn dhut URLaichean co-cheangailte inntrigeadh, can airson tabhartas a thoirt, am bun-tùs fhaighinn is msaa.
+* Bidh thu nas sàbhailte le dearbhadh nan soidhnidhean air inneacsan nan ionadan-tasgaidh is haisichean nan APK

@@ -10,10 +10,10 @@
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновления</string>
-    <string name="other">Други</string>
+    <string name="other">Друго</string>
     <string name="update_interval">Период за автоматична проверка</string>
     <string name="notify">Показване на новите издания</string>
-    <string name="notify_on">Известява при наличие на ново издание</string>
+    <string name="notify_on">Показва се известие при ново издание</string>
     <string name="system_installer">Инсталиране чрез системни разрешения</string>
     <string name="system_installer_on">Ползване на системни права за инсталиране, актуализиране и премахване на
         приложения
@@ -31,7 +31,7 @@
     <string name="app_inst_known_source">Инсталирана (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавена на %s</string>
-    <string name="ok">Добре</string>
+    <string name="ok">OK</string>
     <string name="yes"> Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
@@ -50,7 +50,7 @@
     <string name="menu_share">Споделяне</string>
     <string name="menu_install">Инсталиране</string>
     <string name="menu_uninstall">Премахване</string>
-    <string name="menu_ignore_all">Пренебрегване на всички нови издания</string>
+    <string name="menu_ignore_all">Пропускане на всички нови издания</string>
     <string name="menu_ignore_this">Игнорирай актуализацията</string>
     <string name="menu_website">Уебсайт</string>
     <string name="menu_issues">Проблеми</string>
@@ -76,12 +76,12 @@
     <string name="next">Напред</string>
     <string name="skip">Пропускане</string>
     <string name="proxy">Прокси</string>
-    <string name="enable_proxy_title">Включване на HTTP прокси</string>
-    <string name="enable_proxy_summary">Настройка на HTTP прокси за всички мрежови заявки</string>
-    <string name="proxy_host">Хост на проксито</string>
-    <string name="proxy_host_summary">Име на хоста за посредника (напр. 127.0.0.1)</string>
-    <string name="proxy_port">Порт за проксито</string>
-    <string name="proxy_port_summary">Номер на порта за посредника (напр. 8118)</string>
+    <string name="enable_proxy_title">Включване на прокси на HTTP</string>
+    <string name="enable_proxy_summary">Настройка на прокси на HTTP за всички заявки</string>
+    <string name="proxy_host">Хост на прокси</string>
+    <string name="proxy_host_summary">Име на хоста на прокси (напр. 127.0.0.1)</string>
+    <string name="proxy_port">Порт на прокси</string>
+    <string name="proxy_port_summary">Номер на порта на прокси (напр. 8118)</string>
     <string name="status_download">Изтегляне
 \n%2$s / %3$s (%4$d%%) от
 \n%1$s</string>
@@ -132,7 +132,7 @@
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Грешен отпечатък</string>
     <string name="invalid_url">Адресът не е валиден URL.</string>
-    <string name="menu_changelog">Журнал на промените</string>
+    <string name="menu_changelog">Дневник на промените</string>
     <string name="pref_language">Език</string>
     <string name="pref_language_default">Стандартния за системата</string>
     <string name="wifi">Wi-Fi</string>
@@ -143,11 +143,11 @@
     <string name="category_Time">Час</string>
     <string name="category_Writing">Писане</string>
     <string name="swap_connecting">Установява се връзка</string>
-    <string name="loading">Зареждане…</string>
+    <string name="loading">Зарежда се…</string>
     <string name="allPerms">Всички</string>
     <string name="perm_costs_money">Може да бъдете таксувани</string>
     <string name="interval_never">Без автоматично обновяване</string>
-    <string name="interval_1h">Проверка за обновяване всеки час</string>
+    <string name="interval_1h">Всеки час</string>
     <string name="interval_1d">Всеки ден</string>
     <string name="interval_4h">През 4 часа</string>
     <string name="interval_12h">През 12 часа</string>
@@ -162,9 +162,9 @@
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не откривате когото търсите\?</string>
-    <string name="uninstall_confirm">Искате ли да премахнете това приложение\?</string>
+    <string name="uninstall_confirm">Искате ли да деинсталирате това приложение?</string>
     <string name="unstable_updates">Нестабилни издания</string>
-    <string name="unstable_updates_summary">Предлага обновяване с нестабилни издания</string>
+    <string name="unstable_updates_summary">Предлага се обновяване с нестабилни издания</string>
     <string name="category_Connectivity">Свързаност</string>
     <string name="menu_upgrade">Обновяване</string>
     <string name="links">Препратки</string>
@@ -172,19 +172,19 @@
 \n
 \nСъществуващите приложения не са налични през F-Droid. Вероятна причина може да бъде не обновени хранилища или просто хранилищата не предлагат приложенията, който ползвате.</string>
     <string name="empty_can_update_app_list">Поздравления!
-\nВсичките ви приложения са последно издание.</string>
+\nВсички приложения са последно издание.</string>
     <string name="install_confirm">има нужда от достъп до</string>
-    <string name="install_confirm_update">Искате ли да инсталирате актуализация за това съществуващо приложение\? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
-    <string name="install_confirm_update_system">Искате ли да инсталирате актуализация за това вградено приложение\? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
-    <string name="install_confirm_update_no_perms">Желаете ли обновяване на това приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
-    <string name="install_confirm_update_system_no_perms">Желаете ли обновяване на това вградено приложение\? Съществуващите данни няма да бъдат загубени. Не изисква специален достъп.</string>
+    <string name="install_confirm_update">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_system">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Актуализираното приложение ще получи достъп до:</string>
+    <string name="install_confirm_update_no_perms">Искате ли да инсталирате актуализация за това съществуващо приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
+    <string name="install_confirm_update_system_no_perms">Искате ли да инсталирате актуализация за това вградено приложение? Съществуващите ви данни няма да бъдат загубени. Не се изисква специален достъп.</string>
     <string name="swap_send_fdroid">Изпращане F-Droid</string>
     <string name="swap_scan_qr">QR код</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
     <string name="swap_no_wifi_network">Все още няма мрежа</string>
     <string name="swap_intro">Свързване и обмяна на приложения с хора около вас.</string>
     <string name="swap_no_peers_nearby">Наоколо не са открити хора с които да размените приложения.</string>
-    <string name="swap_people_nearby">Хора наоколо</string>
+    <string name="swap_people_nearby">Хора наблизо</string>
     <string name="swap_visible_wifi">Видими сте чрез Wi-Fi</string>
     <string name="swap_not_visible_bluetooth">Не сте видими чрез Bluetooth</string>
     <string name="swap_visible_bluetooth">Видими сте чрез Bluetooth</string>
@@ -241,14 +241,14 @@
     <string name="menu_email">Изпращане на имейл на създателя</string>
     <string name="antinonfreeassetslist">Това приложение съдържа несвободни елементи</string>
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
-    <string name="useTor">Да се използва Tor</string>
-    <string name="useTorSummary">Използване на мрежата на Tor за повече анонимност. Изисква Орбот</string>
+    <string name="useTor">Използване на мрежата на Tor</string>
+    <string name="useTorSummary">Използва се мрежата на Tor за повишаване на анонимността. Изисква Орбот</string>
     <string name="status_inserting_apps">Запазване на данни за приложенията</string>
     <string name="unverified">Непотвърдено</string>
     <string name="unsigned_description">Това означава че списъкът на приложенията не е бил потвърден. Бъдете внимателни с приложения, изтеглени от неудостоверени индекси.</string>
     <string name="unknown">Неизвестно</string>
     <string name="wifi_ap">Хотспот</string>
-    <string name="swap_join_this_hotspot">Помогнете на приятеля Ви да се включи към хотспота Ви</string>
+    <string name="swap_join_this_hotspot">Помогнете на приятеля ви да се включи към мобилната ви точка за достъп</string>
     <string name="swap_active_hotspot">%1$s (Вашия хотспот)</string>
     <string name="swap_scan_or_type_url">Единия човек трябва да сканира кода, или да въведе URL адреса на другия в
         браузер.
@@ -268,7 +268,7 @@
     <string name="update_auto_install">Автоматично инсталиране на издания</string>
     <string name="keep_install_history">Запазване на история за инсталираните приложения</string>
     <string name="keep_install_history_summary">Запазване на дневник за всичко инсталирано и премахвано</string>
-    <string name="update_auto_download_summary">Новите издания се изтеглят автоматично и получавате известие</string>
+    <string name="update_auto_download_summary">Новите издания се изтеглят автоматично и се получава известие</string>
     <string name="update_auto_install_summary">Изтегля и обновява приложения на заден фон, показвайки известие</string>
     <string name="app_details_donate_prompt_unknown_author">Почерпете разработчиците на %1$s с кафе!</string>
     <string name="app_details_donate_prompt">%1$s е създадено от %2$s. Почерпете ги кафе!</string>
@@ -280,8 +280,8 @@
     <string name="app_list__name__downloading_in_progress">Изтегляне на %1$s</string>
     <string name="app_list__name__successfully_installed">Приложението %1$s е инсталирано</string>
     <string name="installed_apps__activity_title">Инсталирани приложения</string>
-    <string name="installed_app__updates_ignored">Новите издания са пренебрегнати</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Новите издания са пренебрегнати за %1$s</string>
+    <string name="installed_app__updates_ignored">Новите издания се пропускат</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Новите издания се пропускат за %1$s</string>
     <string name="update_all">Обновяване на всички</string>
     <string name="updates__hide_updateable_apps">Скриване на приложения</string>
     <string name="updates__show_updateable_apps">Показване на приложения</string>
@@ -302,7 +302,7 @@
     <string name="antifeatureswarning">Някои от свойствата на приложението може да не ви допаднат.</string>
     <string name="antifeatures">Анти-функции</string>
     <string name="by_author_format">от %s</string>
-    <string name="force_old_index_summary">В случай на грешки или проблеми със съвместимостта, използвай XML приложение за индекс</string>
+    <string name="force_old_index_summary">В случай на грешки или несъвместимост, се използва списък на приложенията в XML</string>
     <string name="app__tts__cancel_download">Прекратяване на изтегляне</string>
     <string name="updates__tts__download_app">Изтегляне</string>
     <string name="menu_video">Видео</string>
@@ -371,14 +371,14 @@
         <item quantity="one">Преглед на %d</item>
         <item quantity="other">Всички %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Няма връзка с интернет\? Вземете приложения от хората около вас!</string>
-    <string name="nearby_splash__find_people_button">Откриване на хора наоколо</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нямате връзка с интернет\? Вземете приложения от хората около вас!</string>
+    <string name="nearby_splash__find_people_button">Откриване на хора наблизо</string>
     <string name="download_pending">Изчакване за изтегляне…</string>
     <string name="install_error_notify_title">Грешка при инсталиране на %s</string>
     <string name="uninstall_error_notify_title">Грешка при премахване на %s</string>
     <string name="app__tts__downloading_progress">Изтегляне, %1$d%% завършени</string>
-    <string name="installing">Инсталиране…</string>
-    <string name="uninstalling">Премахване…</string>
+    <string name="installing">Инсталира се…</string>
+    <string name="uninstalling">Деинсталира се…</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d повече…</item>
         <item quantity="other">+%1$d повече…</item>
@@ -395,7 +395,7 @@
     <string name="preventScreenshots_title">Без снимки на екрана</string>
     <string name="preventScreenshots_summary">Забрана на снимките на екрана на приложението и скриване от списъка с последни приложения</string>
     <string name="status_inserting_x_apps">Запазване (%1$d/%2$d) от %3$s</string>
-    <string name="nearby_splash__both_parties_need_fdroid">За споделянето на приложения с други около вас, и двете устройства трябва да използват %1$s.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">За да споделяте приложения с хора около вас, и двете устройства трябва да използват %1$s.</string>
     <string name="app_installed_media">Файлът е инсталиран в %s</string>
     <string name="app_permission_storage">F-Droid се нуждае от разрешение, за да инсталира приложението в хранилището. Моля, разрешете на следващия екран, за да продължи инсталирането.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открита е уязвимост в %1$s. Препоръчваме незабавно да премахнете приложението.</string>
@@ -412,26 +412,26 @@
     <string name="panic_hide_title">Скриване на %s</string>
     <string name="panic_hide_summary">Приложението ще се скрие само</string>
     <string name="prompt_to_send_crash_reports">Потвърждаване при изпращане на доклад за срив</string>
-    <string name="prompt_to_send_crash_reports_summary">Събирай данни за сривове и предлагай да бъдат изпращани на разработчика</string>
+    <string name="prompt_to_send_crash_reports_summary">Събират се данни за сривове и се предлага да бъдат изпращани на разработчика</string>
     <string name="hide_all_notifications">Скрване на всички известия</string>
-    <string name="hide_all_notifications_summary">Спри показването на всички действия в статус лентата и лентата за уведомления.</string>
+    <string name="hide_all_notifications_summary">Действията на приложението не се показват в лентата зна състояние и известията.</string>
     <string name="send_install_history">Изпращане на история на инсталирани приложения</string>
     <string name="send_history_csv">%s история на инсталирани приложения като файл на CSV</string>
     <string name="install_history">История на инсталирани приложения</string>
-    <string name="install_history_summary">Частен журнал на всяка инсталация и премахване</string>
+    <string name="install_history_summary">Частен дневник на всяка инсталация и премахване</string>
     <string name="send_version_and_uuid">Изпрати версия и UUID към сървърите</string>
     <string name="allow_push_requests">Разреши на хранилищата да инсталират/деинсталират приложения</string>
     <string name="allow_push_requests_summary">Метаданни от хранилищата могат да включват заявки за инсталиране или деинсталиране на приложения</string>
     <string name="over_wifi">През Wi-Fi</string>
     <string name="over_data">През мобилни данни</string>
-    <string name="over_network_always_summary">Винаги използвай тази връзка когато е възможно</string>
-    <string name="over_network_on_demand_summary">Използвай тази връзка само когато избера Изтегли</string>
-    <string name="over_network_never_summary">Никога не използвай тази връзка за изтегляне</string>
+    <string name="over_network_always_summary">Винаги се използва тази връзка, когато е налична</string>
+    <string name="over_network_on_demand_summary">Тази връзка се използва само при ръчно изтегляне</string>
+    <string name="over_network_never_summary">Тази връзка никога не се използва за изтегляне</string>
     <string name="app_suggested">Предложено</string>
     <string name="app_size">Размер: %1$s</string>
     <string name="send_installed_apps">Сподели инсталираните приложения</string>
     <string name="send_installed_apps_csv">Приложенията инсталирани от F-Droid като CSV файл</string>
-    <string name="updates__app_with_known_vulnerability__ignore">Пренебрегване</string>
+    <string name="updates__app_with_known_vulnerability__ignore">Пропускане</string>
     <string name="repo_add_mirror">Добави огледално хранилище</string>
     <string name="sort_search">Сортирай търсенето</string>
     <string name="menu_open">Отвори</string>
@@ -448,8 +448,8 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Камерата няма автоматичен фокус. Сканирането на кода може да бъде затруднено.</string>
     <string name="share_repository">Сподели хранилище</string>
-    <string name="updates_disabled_by_settings">Всички обновления са изключени чрез настройките за WiFi и мобилни данни</string>
-    <string name="nearby_splash__request_permission">Изпробвай</string>
+    <string name="updates_disabled_by_settings">Всички обновления са изключени от настройките за Wi-Fi и мобилни данни</string>
+    <string name="nearby_splash__request_permission">Пробване</string>
     <string name="swap_toast_using_path">Използва се %1$s</string>
     <string name="main_menu__updates">Нови</string>
     <string name="menu_translation">Превод</string>
@@ -458,7 +458,7 @@
     <string name="try_again">Опитайте отново</string>
     <string name="swap_blank_wifi_ssid">(празно)</string>
     <string name="swap_hidden_wifi_ssid">(скрито)</string>
-    <string name="disabled">Изключено</string>
+    <string name="disabled">Деактивирано</string>
     <string name="swap_toast_could_not_enable_hotspot">Не може да се активира Wi-Fi Hotspot!</string>
     <string name="swap_toast_hotspot_enabled">Включена точка за достъп през Wi-Fi</string>
     <string name="swap_toast_invalid_url">Невалиден URL адрес за размяна: %1$s</string>
@@ -492,27 +492,27 @@
     <string name="menu_select_for_wipe">Избери за изчистване</string>
     <string name="app_repository">Хранилище: %1$s</string>
     <string name="about_forum">Форум за поддръжка</string>
-    <string name="scan_removable_storage_summary">Потърси за хранилища върху външни носители като SD Cards или USB памети</string>
+    <string name="scan_removable_storage_summary">Търсят се хранилища върху външните носители като SD Card или USB</string>
     <string name="scan_removable_storage_toast">Сканиране на %s…</string>
-    <string name="scan_removable_storage_title">Сканирай външен носител</string>
+    <string name="scan_removable_storage_title">Сканиране на външния носител</string>
     <string name="repo_exists_add_mirror">Това е копие на %1$s, да се добави ли като mirror\?</string>
     <string name="repo_delete_to_overwrite">Изтрийте първо %1$s за да добавите това хранилище с различен ключ.</string>
     <string name="repo_exists_and_enabled">%1$s е вече настроено и активирано.</string>
     <string name="repo_exists_enable">%1$s е вече настроено, потвърдете че искате да го активирате.</string>
     <string name="repo_exists_add_fingerprint">%1$s е вече настроено, това ще добави нова иформация за ключа.</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Наблизо затворен, тъй като е бездействал.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Наоколо се изключва поради бездействие.</string>
     <string name="not_visible_nearby">Наблизо не е включено</string>
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="panic_hide_warning_message">В случай на паника това ще премахне %1$s от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">Включва версията на това приложение и произволен уникален идентификатор, когато се извършва изтегляне, ще се отрази при рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_updates_description">Показва известия за обновяване на приложения и хранилища.</string>
-    <string name="notification_channel_updates_title">Обновления</string>
-    <string name="notification_channel_swaps_description">Показва известия за размяна на приложения за P2P.</string>
-    <string name="notification_channel_swaps_title">Размени</string>
-    <string name="notification_channel_installs_description">Показва известия за инсталиране на приложение.</string>
-    <string name="notification_channel_installs_title">Инсталации</string>
+    <string name="notification_channel_updates_description">Показва известия при обновяване на приложения и хранилища.</string>
+    <string name="notification_channel_updates_title">Обновяване</string>
+    <string name="notification_channel_swaps_description">Показва известия при размяна на приложения чрез P2P.</string>
+    <string name="notification_channel_swaps_title">Разменяне</string>
+    <string name="notification_channel_installs_description">Показва известия при инсталиране на приложения.</string>
+    <string name="notification_channel_installs_title">Инсталиране</string>
     <string name="install_history_and_metrics">История на инсталирани приложения и метрики</string>
     <string name="menu_show_install_history">История на инсталирани приложения</string>
     <string name="menu_show_fdroid_metrics_report">Преглед на метрики</string>
@@ -525,6 +525,7 @@
     <string name="theme_follow_system">Според системата</string>
     <string name="use_pure_black_dark_theme_summary">Препоръчително само за екрани с OLED.</string>
     <string name="use_pure_black_dark_theme">Тъмната тема ползва чисто черен фон</string>
-    <string name="banner_no_data_or_wifi">Мобилни данни и WiFi изключени</string>
+    <string name="banner_no_data_or_wifi">Мобилните данни и W-iFi са изключени</string>
     <string name="banner_no_internet">Няма интернет</string>
+    <string name="share_apk_error">Грешка при споделяне на файл на приложение</string>
 </resources>

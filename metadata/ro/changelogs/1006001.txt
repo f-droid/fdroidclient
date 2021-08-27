@@ -1,0 +1,7 @@
+* Comutatoare adăugate la RepoDetails pentru a dezactiva oricare sau toate oglinzile (#1696)
+
+* Alegerea unei oglinzi aleatoare pentru fiecare pachet/APK descărcat
+
+* Toate descărcările APK sunt stocate în memoria cache pentru fiecare repo, nu pentru fiecare oglindă.
+
+* Gestionarea ETag-urilor Apache și NGINX atunci când se verifică dacă indexul este actual (#1708)

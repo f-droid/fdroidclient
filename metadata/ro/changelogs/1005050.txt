@@ -1,0 +1,13 @@
+* Schimbul via carduri SD acceptate
+
+* Modificări/îmbunătățiri la Nearby Swap
+
+* Îmbunătățirea în continuare a "App Details"
+
+* Actualizarea limbii și a traducerilor despre Nearby și Swap
+
+* Îmbunătățirea logicii de selecție a pictogramelor aplicațiilor
+
+* Add repos via built-in additional_repos.xml from ROM, OEM, vendor.
+
+* Adăugarea de depozite prin intermediul built-in additional_repos.xml de la ROM, OEM, furnizor

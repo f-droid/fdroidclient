@@ -5,13 +5,13 @@
     <string name="version">Version</string>
     <string name="delete">Ta bort</string>
     <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
-    <string name="cache_downloaded">Behåll mellanlagrade appar</string>
+    <string name="cache_downloaded">Behåll cachade appar</string>
     <string name="updates">Uppdateringar</string>
     <string name="other">Annat</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
-    <string name="system_installer">Priviligerat tillägg</string>
+    <string name="system_installer">Privilegierat tillägg</string>
     <string name="system_installer_on">Använd Privilegierat tillägg för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Den annonserade titeln på ditt lokala förråd: %s</string>
@@ -71,7 +71,7 @@
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
     <string name="deleting_repo">Tar bort aktuellt förråd…</string>
-    <string name="adding_apks_format">Lägger till %s till förråd…</string>
+    <string name="adding_apks_format">Lägger till %s i förråd…</string>
     <string name="writing_index_jar">Skriver signerad indexfil (index.jar)…</string>
     <string name="linking_apks">Länkar APK:er till förrådet…</string>
     <string name="copying_icons">Kopierar appikoner till förrådet…</string>
@@ -154,7 +154,7 @@
     <string name="status_download_unknown_size">Hämtar
 \n%2$s från
 \n%1$s</string>
-    <string name="banner_updating_repositories">Uppdaterar filförråd</string>
+    <string name="banner_updating_repositories">Uppdaterar förråd</string>
     <string name="permissions">Behörigheter</string>
     <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>
@@ -224,10 +224,10 @@
     <string name="loading">Läser in …</string>
     <string name="swap_connection_misc_error">Fel uppstod under enhetsanslutning, går inte att utföra utbyte med den!</string>
     <string name="install_confirm">behöver åtkomst till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här inbyggda appen\? Dina befintliga data kommer inte att gå förlorade. Den uppdaterade appen får åtkomst till:</string>
-    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av denna befintliga app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
-    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering till denna inbyggda app\? Dina befintliga data kommer inte att gå förlorade. Den kräver ingen speciell åtkomst.</string>
+    <string name="install_confirm_update">Vill du installera en uppdatering till den här befintliga appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering till den här befintliga förinstallerade appen? Dina befintliga data försvinner inte. Den uppdaterade appen får åtkomst till:</string>
+    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering av den befintliga appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
+    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering av den inbyggda appen? Dina befintliga data försvinner inte. Ingen särskild åtkomst krävs.</string>
     <string name="newPerms">Nytt</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
@@ -267,7 +267,7 @@
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och uppdatera appar i bakgrunden, visar en avisering</string>
-    <string name="warning_no_internet">Kan inte att uppdatera, är du ansluten till internet?</string>
+    <string name="warning_no_internet">Kan inte uppdatera: Är du ansluten till internet\?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till %1$s-utvecklarna!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
@@ -513,4 +513,5 @@
     <string name="use_pure_black_dark_theme">Använd ren svart bakgrund i mörkt tema</string>
     <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktiverat</string>
     <string name="banner_no_internet">Inget internet</string>
+    <string name="share_apk_error">Det gick inte att dela appfilen</string>
 </resources>

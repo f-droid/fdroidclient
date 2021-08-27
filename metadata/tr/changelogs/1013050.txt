@@ -1,11 +1,8 @@
 * Tema desteği yerleşik Android temalarına bağlandı (@proletarius101)
-
 * Yeni üst başlık bildirimleri: "İnternet Yok" ve "Veri veya etkin Wi-Fi yok"
-
 * USB-OTG ve SD Kart depoları ve yansılarının işlenilmesi iyileştirildi
-
 * Trichrome kütüphanesinin tekrarlanan güncellemeleri durduruldu
-
 * Material Tasarımını takip etmek için daha fazla değişiklik (@proletarius101)
-
 * OpenCollective rozeti iyileştirildi (@ConnyDuck)
+* Yeni uyarlanabilir simge (@12people)
+* Kodların güncellenmesi (@Isira-Seneviratne)

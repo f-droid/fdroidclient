@@ -210,10 +210,10 @@
     <string name="loading">正在加载…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
-    <string name="install_confirm_update">你要安装此已安装应用的更新吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_system">你要安装此内置应用的更新吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_no_perms">是否要为此已安装应用安装更新？你现有的数据不会丢失。它无需任何特殊权限。</string>
-    <string name="install_confirm_update_system_no_perms">是否要为此内置应用安装更新？你现有的数据不会丢失。它无需任何特殊权限。</string>
+    <string name="install_confirm_update">您要安装此应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_system">您要安装此内置应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_no_perms">是否要为这一现有应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
+    <string name="install_confirm_update_system_no_perms">是否要为这一内置应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
     <string name="newPerms">新权限</string>
     <string name="allPerms">全部</string>
     <string name="perm_costs_money">这可能会产生费用</string>
@@ -354,16 +354,16 @@
     <string name="by_author_format">作者：%s</string>
     <string name="download_404">找不到所请求的文件。</string>
     <string name="force_old_index">强制使用旧索引格式</string>
-    <string name="force_old_index_summary">如果出现错误或兼容问题，请使用 XML 应用索引</string>
+    <string name="force_old_index_summary">如遇到缺陷或兼容性问题，尝试改用旧版的 XML 应用索引</string>
     <string name="app_installed_media">文件已安装到%s</string>
     <string name="app_permission_storage">F-Droid 需要存储权限以安装到存储。请在下一个界面允许此权限以继续进行安装。</string>
     <string name="app_list_download_ready">已下载，安装准备就绪</string>
     <string name="status_inserting_x_apps">正在从 %3$s 保存应用的详细信息 (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signature">与已安装版本的签署不符</string>
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
-    <string name="app_details__no_versions__no_compatible_signatures">没有兼容签署的版本</string>
-    <string name="app_details__no_versions__none_compatible_with_device">没有与装置兼容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">已安装版本不与任何可用版本兼容。卸载该应用将让你可以查看和安装兼容的版本。这种情况通常发生在通过 Google Play 或其他存储库安装的应用上，如果它们是由不同的证书签署的。</string>
+    <string name="app_details__no_versions__no_compatible_signatures">没有与签名兼容的版本</string>
+    <string name="app_details__no_versions__none_compatible_with_device">没有与设备兼容的版本</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">已安装的版本与可用的任何版本都不兼容。卸载该应用将使您可以查看和安装兼容的版本。这种情况常发生在通过 Google Play 或其他存储库安装的应用上，它们可能经由不同的证书签名。</string>
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
@@ -430,8 +430,8 @@
     <string name="send_install_history">发送安装历史</string>
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
     <string name="install_history_summary">浏览所有关于安装与卸载的私有日志</string>
-    <string name="send_version_and_uuid_summary">在下载时包含此应用的版本和一个随机唯一 ID，将在下次重新启动应用时生效。</string>
-    <string name="allow_push_requests">允许存储库去安装/卸载应用</string>
+    <string name="send_version_and_uuid_summary">下载请求中包含本应用的版本和一个随机且唯一的用户 ID。重启应用后生效。</string>
+    <string name="allow_push_requests">允许存储库指示安装与卸载应用</string>
     <string name="send_installed_apps">分享已安装的应用</string>
     <string name="share_repository">分享存储库</string>
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
@@ -497,4 +497,7 @@
     <string name="use_pure_black_dark_theme">在深色主题中使用纯黑色背景</string>
     <string name="banner_no_data_or_wifi">未启用流量或WiFi网络</string>
     <string name="banner_no_internet">无互联网</string>
+    <string name="share_apk_error">无法分享应用文件</string>
+    <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
+    <string name="has_disallow_install_unknown_sources_globally">您的设备管理员不允许安装来自未知来源的应用程序，其中包括新的存储库</string>
 </resources>

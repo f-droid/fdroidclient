@@ -1,0 +1,7 @@
+* 支援安裝 media、OTA、ZIP之類的檔案
+
+* 對簽署multiple signing keys的APK檔案有了完整的支援
+
+* 新藏語翻譯
+
+* after turning off a repo移除相關應用程式和類別

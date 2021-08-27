@@ -26,7 +26,7 @@
     <string name="app_inst_known_source">Installée (depuis %s)</string>
     <string name="app_inst_unknown_source">Installée (depuis une source inconnue)</string>
     <string name="added_on">Ajoutée le %s</string>
-    <string name="ok">Valider</string>
+    <string name="ok">OK</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="repo_add_title">Ajouter un nouveau dépôt</string>
@@ -161,8 +161,8 @@
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
-    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
-    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée \? Vos données existantes seront conservées. L\'application mise à jour aura accès à :</string>
+    <string name="install_confirm_update">Voulez-vous installer une mise à jour pour cette application ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
+    <string name="install_confirm_update_system">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes seront conservées. L\'application mise à jour pourra :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous installer une mise à jour pour cette application ? Vos données ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="install_confirm_update_system_no_perms">Voulez-vous installer une mise à jour pour cette application intégrée ? Vos données existantes ne seront pas perdues. Aucun droit d\'accès spécial n\'est requis.</string>
     <string name="newPerms">Nouveautés</string>
@@ -448,7 +448,7 @@
     <string name="antidisabledalgorithmlist">La signature de sécurité de cette application est faible</string>
     <string name="antiknownvulnlist">Cette appli présente une vulnérabilité de sécurité connue</string>
     <string name="hide_all_notifications">Masquer toutes les notifications</string>
-    <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut ou le volet de notification.</string>
+    <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut et le volet de notification.</string>
     <string name="prompt_to_send_crash_reports">Demander avant d\'envoyer les rapports de plantage</string>
     <string name="prompt_to_send_crash_reports_summary">Recueillir des données au sujet du plantage et proposer de les envoyer au développeur</string>
     <string name="install_history">Historique d\'installation</string>
@@ -468,7 +468,7 @@
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
     <string name="menu_downgrade">Rétrograder</string>
-    <string name="allow_push_requests_summary">Les méta-données des dépôts peuvent contenir des requêtes pour installer ou désinstaller des applications</string>
+    <string name="allow_push_requests_summary">Les métadonnées des dépôts peuvent contenir des requêtes push pour installer ou désinstaller des applications</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Essayer</string>
@@ -523,4 +523,7 @@
     <string name="use_pure_black_dark_theme">Utiliser un fond noir pur pour le thème sombre</string>
     <string name="banner_no_data_or_wifi">Pas de Données ou Wi-Fi actif</string>
     <string name="banner_no_internet">Aucune connexion Internet</string>
+    <string name="share_apk_error">Impossible de partager le fichier de l\'appli</string>
+    <string name="has_disallow_install_unknown_sources">Les sources inconnues ne peuvent pas être ajoutées par cet utilisateur et cette règle s\'applique aux nouveaux dépôts.</string>
+    <string name="has_disallow_install_unknown_sources_globally">L\'administrateur de votre appareil n\'autorise pas l\'installation d\'applications provenant de sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
 </resources>

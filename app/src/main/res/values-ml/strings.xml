@@ -43,7 +43,7 @@
     <string name="swap_dont_show_again">ഇനി കാണിക്കേണ്ട</string>
     <string name="newPerms">പുതിയത്</string>
     <string name="notification_action_update">പുതുക്കുക</string>
-    <string name="notification_action_cancel">വേണ്ട</string>
+    <string name="notification_action_cancel">റദ്ദാക്കുക</string>
     <string name="notification_action_install">സ്ഥാപിക്കുക</string>
     <string name="app_details">വിശദാംശങ്ങള്‍</string>
     <string name="about_title">എഫ്-ഡ്രോയ്ഡിനെക്കുറിച്ച്</string>
@@ -357,10 +357,10 @@
     <string name="force_old_index">പഴയ സൂചിക ഫോർമാറ്റ് ഉപയോഗിക്കാന്‍ നിര്‍ബന്ധിക്കുക</string>
     <string name="force_old_index_summary">ബഗ്ഗുകൾ അല്ലെങ്കിൽ അനുയോജ്യത പ്രശ്നങ്ങൾ ഉണ്ടെങ്കിൽ, XML ആപ്പ് സൂചിക ഉപയോഗിക്കുക</string>
     <string name="swap_intro">നിങ്ങളുടെ അടുത്തുള്ള ആളുകളുമായി ബന്ധപ്പെട്ട് പ്രയോഗങ്ങള്‍ കെെമാറ്റം ചെയ്യൂ.</string>
-    <string name="install_confirm_update">നിലവിലുള്ള ഈ അപ്ലിക്കേഷനിലേക്ക് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ\? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്‌ടപ്പെടില്ല. അപ്‌ഡേറ്റുചെയ്‌ത അപ്ലിക്കേഷന് ഇനിപ്പറയുന്നതിലേക്ക് ആക്‌സസ്സ് ലഭിക്കും:</string>
-    <string name="install_confirm_update_system">ഈ അന്തർനിർമ്മിത അപ്ലിക്കേഷനിലേക്ക് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ\? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്‌ടപ്പെടില്ല. അപ്‌ഡേറ്റുചെയ്‌ത അപ്ലിക്കേഷന് ഇനിപ്പറയുന്നതിലേക്ക് ആക്‌സസ്സ് ലഭിക്കും:</string>
-    <string name="install_confirm_update_no_perms">നിലവിലുള്ള ഈ അപ്ലിക്കേഷനിലേക്ക് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ\? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്‌ടപ്പെടില്ല. ഇതിന് പ്രത്യേക ആക്‌സസ്സ് ആവശ്യമില്ല.</string>
-    <string name="install_confirm_update_system_no_perms">ഈ അന്തർനിർമ്മിത അപ്ലിക്കേഷനിലേക്ക് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ\? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്‌ടപ്പെടില്ല. ഇതിന് പ്രത്യേക ആക്‌സസ്സ് ആവശ്യമില്ല.</string>
+    <string name="install_confirm_update">നിലവിലുള്ള ഈ അപ്ലിക്കേഷന് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാളുചെയ്യണോ? നിങ്ങളുടെ നിലവിലെ ഡാറ്റ നഷ്‌ടപ്പെടില്ല. അപ്‌ഡേറ്റുചെയ്‌ത അപ്ലിക്കേഷന് ഇവയിലേക്ക് ആക്‌സസ്സ് ലഭിക്കും:</string>
+    <string name="install_confirm_update_system">ഈ അന്തർ നിർമ്മിത അപ്ലിക്കേഷന് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാളുചെയ്യണോ? നിങ്ങളുടെ നിലവിലെ ഡാറ്റ നഷ്‌ടപ്പെടില്ല. അപ്‌ഡേറ്റുചെയ്‌ത അപ്ലിക്കേഷന് ഇവയിലേക്ക് ആക്‌സസ്സ് ലഭിക്കും:</string>
+    <string name="install_confirm_update_no_perms">നിലവിലുള്ള ഈ അപ്ലിക്കേഷന് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാളുചെയ്യണോ? നിങ്ങളുടെ നിലവിലെ ഡാറ്റ നഷ്‌ടപ്പെടില്ല. ഇതിന് പ്രത്യേക ആക്‌സസ്സൊന്നും ആവശ്യമില്ല.</string>
+    <string name="install_confirm_update_system_no_perms">ഈ അന്തർ നിർമ്മിത അപ്ലിക്കേഷന് ഒരു അപ്‌ഡേറ്റ് ഇൻസ്റ്റാളുചെയ്യണോ? നിങ്ങളുടെ നിലവിലെ ഡാറ്റ നഷ്‌ടപ്പെടില്ല. ഇതിന് പ്രത്യേക ആക്‌സസ്സൊന്നും ആവശ്യമില്ല.</string>
     <string name="uninstall_update_confirm">ഫാക്ടറി പതിപ്പ് ഉപയോഗിച്ച് ഈ ആപ്പ് മാറ്റിസ്ഥാപിക്കണോ? എല്ലാ ഡാറ്റയും നീക്കംചെയ്യപ്പെടും.</string>
     <string name="perms_description_app">%1$s നൽകിയത്.</string>
     <string name="enable_proxy_summary">എല്ലാ നെറ്റ്വർക്ക് അഭ്യർത്ഥനകൾക്കും പ്രോക്സി ക്രമീകരിക്കുക</string>
@@ -498,4 +498,19 @@
     <string name="notification_channel_swaps_title">സ്വാപ്പുകൾ</string>
     <string name="notification_channel_installs_description">അപ്ലിക്കേഷൻ ഇൻസ്റ്റാളേഷൻ അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
     <string name="notification_channel_installs_title">ഇൻസ്റ്റാളേഷനുകൾ</string>
+    <string name="install_history_and_metrics">സ്ഥാപനം ചരിത്രവും റിപ്പോർട്ടും</string>
+    <string name="send_fdroid_metrics_json">%s മെട്രിക്സ് റിപ്പോർട്ട് ജെസൺ ഫയൽ ആയിട്ട്</string>
+    <string name="send_fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട് അയക്കയുക</string>
+    <string name="theme_follow_system">സിസ്റ്റം സ്ഥിരസ്ഥിതി പിന്തുടരുക</string>
+    <string name="share_apk_error">ആപ്പ് ഫയൽ പങ്കിടാൻ കഴിഞ്ഞില്ല</string>
+    <string name="use_pure_black_dark_theme_summary">OLED സ്‌ക്രീനുകൾക്ക് മാത്രം ശുപാർശചെയ്യുന്നു.</string>
+    <string name="use_pure_black_dark_theme">ഇരുണ്ട തീമിൽ ശുദ്ധമായ കറുത്ത പശ്ചാത്തലം ഉപയോഗിക്കുക</string>
+    <string name="banner_no_data_or_wifi">ഡാറ്റയോ വൈഫൈയോ ഓണല്ല</string>
+    <string name="banner_no_internet">ഇന്റർനെറ്റ് ഇല്ല</string>
+    <string name="menu_show_install_history">സ്ഥാപന ചരിത്രം കാണിക്കുക</string>
+    <string name="menu_show_fdroid_metrics_report">അളവുകളുടെ റിപ്പോർട്ട് കാണിക്കുക</string>
+    <string name="toast_metrics_in_install_history">ഇൻസ്റ്റാൾ ചരിത്രത്തിൽ %s ന്റെ അളവുകളുടെ റിപ്പോർട്ട് കാണാൻ കഴിയും</string>
+    <string name="send_to_fdroid_metrics_summary">F-Droid അളവുകളിലേക്ക് ആഴ്ചതോറും അജ്ഞാത വിവരം അയയ്ക്കുക (\'സ്ഥാപിക്കല്‍ ചരിത്രം നിലനിർത്തുക\' ആവശ്യമാണ് )</string>
+    <string name="send_to_fdroid_metrics">ഉപയോഗത്തിന്റെ അടിസ്ഥാനവിവരം അയയ്‌ക്കുക</string>
+    <string name="fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട്</string>
 </resources>

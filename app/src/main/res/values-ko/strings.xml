@@ -28,7 +28,7 @@
     <string name="added_on">%s에 추가됨</string>
     <string name="ok">확인</string>
     <string name="yes">예</string>
-    <string name="no">아니오</string>
+    <string name="no">아니요</string>
     <string name="repo_add_title">새로운 저장소 추가</string>
     <string name="repo_add_add">추가</string>
     <string name="cancel">취소</string>
@@ -216,10 +216,10 @@
     <string name="loading">로드 중…</string>
     <string name="swap_connection_misc_error">기기에 연결하는 동안 오류가 발생하여, 교환할 수 없습니다!</string>
     <string name="install_confirm">다음에의 접근 권한이 필요합니다</string>
-    <string name="install_confirm_update">이 기존 앱의 업데이트를 설치하시겠습니까\? 기존 데이터는 손실되지 않습니다. 업데이트된 앱은 다음에 액세스할 수 있습니다:</string>
-    <string name="install_confirm_update_system">이 내장 앱의 업데이트를 설치하시겠습니까\? 기존 데이터는 손실되지 않습니다. 업데이트된 앱은 다음에 액세스할 수 있습니다:</string>
-    <string name="install_confirm_update_no_perms">이 기존 앱에 대한 업데이트를 설치 하시겠습니까\? 기존 데이터는 손실되지 않습니다. 특별한 액세스가 필요하지 않습니다.</string>
-    <string name="install_confirm_update_system_no_perms">이 내장 앱에 대한 업데이트를 설치 하시겠습니까\? 기존 데이터는 손실되지 않습니다. 특별한 액세스가 필요하지 않습니다.</string>
+    <string name="install_confirm_update">기존 애플리케이션에 업데이트를 설치하시겠습니까? 기존 데이터는 손실되지 않습니다. 업데이트된 애플리케이션이 다음에 액세스할 수 있습니다.</string>
+    <string name="install_confirm_update_system">내장 애플리케이션에 업데이트를 설치하시겠습니까? 기존 데이터는 손실되지 않습니다. 업데이트된 애플리케이션이 다음에 액세스할 수 있습니다.</string>
+    <string name="install_confirm_update_no_perms">기존의 애플리케이션 업데이트를 설치하시겠습니까? 기존의 데이터는 손실되지 않으며 특별한 액세스 권한이 필요하지 않습니다.</string>
+    <string name="install_confirm_update_system_no_perms">내장 애플리케이션 업데이트를 설치하시겠습니까? 기존의 데이터는 손실되지 않으며 특별한 액세스 권한이 필요하지 않습니다.</string>
     <string name="newPerms">새 권한</string>
     <string name="allPerms">전체</string>
     <string name="perm_costs_money">금전을 요구할 수 있습니다</string>
@@ -501,4 +501,7 @@
     <string name="send_fdroid_metrics_report">%s 메트릭 보고서 보내기</string>
     <string name="install_history_and_metrics">설치 내역 및 메트릭</string>
     <string name="send_fdroid_metrics_json">%s 메트릭 보고서를 JSON 파일로</string>
+    <string name="share_apk_error">앱 파일을 공유할 수 없었습니다</string>
+    <string name="has_disallow_install_unknown_sources">알 수 없는 출처는 새 저장소를 포함하여, 이 사용자에 의해 추가될 수 없습니다</string>
+    <string name="has_disallow_install_unknown_sources_globally">기기 관리자에 새 저장소를 포함하여, 알 수 없는 출처로부터의 앱 설치를 허용하지 않습니다</string>
 </resources>

@@ -1,0 +1,7 @@
+* Mendukung pemasangan media, OTA, ZIP, dll.
+
+* Dukungan penuh untuk aplikasi yang ditandatangani oleh banyak kunci tanda tangan
+
+* Menerjemahkan bahasa Tibetan (baru)
+
+* Menghapus aplikasi terkait dan kategori setelah mematikan repo

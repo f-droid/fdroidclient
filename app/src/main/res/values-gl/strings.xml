@@ -221,10 +221,10 @@
     <string name="swap_qr_isnt_for_swap">O código QR que escaneaches non semella corresponder a un código de intercambio.</string>
     <string name="swap_connection_misc_error">Ocorreu un erro durante a conexión co dispositivo, non se pode facer o intercambio!</string>
     <string name="install_confirm">require acceso a</string>
-    <string name="install_confirm_update">¿Quere instalar unha actualización para esta aplicación existente\? Non se perderán os teus datos existentes. A aplicación actualizada terá acceso a:</string>
-    <string name="install_confirm_update_system">Desexas instalar unha actualización para esta aplicación do sistema\? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
-    <string name="install_confirm_update_no_perms">¿Quere instalar unha actualización para esta aplicación existente\? Non se perderán os teus datos existentes. Non precisa acceso especial.</string>
-    <string name="install_confirm_update_system_no_perms">¿Quere instalar unha actualización para esta aplicación incorporada\? Non se perderán os teus datos existentes. Non precisa acceso especial.</string>
+    <string name="install_confirm_update">Queres instalar unha actualización para esta aplicación? Non se perderán os teus datos existentes. A aplicación actualizada disporá de acceso a:</string>
+    <string name="install_confirm_update_system">Queres instalar unha actualización para esta aplicación integrada?  Non se perderán os teus datos existentes. A aplicación actualizada disporá de acceso a:</string>
+    <string name="install_confirm_update_no_perms">Queres instalar unha actualización para esta aplicación? Non se perderán os teus datos existentes. Non require ningún acceso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Queres instalar unha actualización para esta aplicación integrada? Non se perderán os teus datos existentes. Non require ningún acceso especial.</string>
     <string name="download_error">A baixada fallou!</string>
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="writing_index_jar">Estase a escribir o índice firmado para o ficheiro (index.jar)…</string>
@@ -234,7 +234,7 @@
     <string name="main_menu__swap_nearby">Preto</string>
     <string name="preference_manage_installed_apps">Xestionar aplicacións instaladas</string>
     <string name="notification_action_update">Actualizar</string>
-    <string name="notification_action_cancel">Desbotar</string>
+    <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
     <string name="app_list__name__downloading_in_progress">Estase a baixar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s foi instalada</string>

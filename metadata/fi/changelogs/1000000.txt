@@ -1,0 +1,7 @@
+* Tukee media-, OTA-, ZIP- ynnä muiden tiedostojen asentamista
+
+* Täysi tuki APK:lle, jotka on allekirjoitettu useilla varmennusavaimilla
+
+* Uusi tiibetinkielinen käännös
+
+* Poista aiheeseen liittyvät sovellukset ja kategoriat, kun ohjelmavarasto on sammutettu

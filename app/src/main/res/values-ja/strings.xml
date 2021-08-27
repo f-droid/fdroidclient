@@ -141,7 +141,7 @@
     <string name="bad_fingerprint">フィンガープリントが間違っています</string>
     <string name="invalid_url">有効なURLではありません。</string>
     <string name="menu_changelog">変更履歴</string>
-    <string name="banner_updating_repositories">リポジトリを更新中</string>
+    <string name="banner_updating_repositories">リポジトリの更新中</string>
     <string name="status_processing_xml_percent">%1$sから%2$s/%3$s(%4$d%%)処理中</string>
     <string name="pref_language">言語</string>
     <string name="pref_language_default">システムの既定</string>
@@ -187,10 +187,10 @@
     <string name="downloading">ダウンロード中</string>
     <string name="swap_connection_misc_error">端末への接続中にエラーが発生しました。交換できません！</string>
     <string name="install_confirm">アクセス権限が必要</string>
-    <string name="install_confirm_update">この既存のアプリにアップデートをインストールしますか？既存のデータは失われません。アップデートされたアプリは以下にアクセスします：</string>
-    <string name="install_confirm_update_system">この内蔵アプリにアップデートをインストールしますか？既存のデータは失われません。アップデートされたアプリは以下にアクセスします：</string>
-    <string name="install_confirm_update_no_perms">この既存のアプリにアップデートをインストールしますか？既存のデータは失われません。特別なアクセス権は必要ありません。</string>
-    <string name="install_confirm_update_system_no_perms">この内蔵アプリにアップデートをインストールしますか？既存のデータは失われません。特別なアクセス権は必要ありません。</string>
+    <string name="install_confirm_update">この既存のアプリケーションへのアップデートをインストールしてもよろしいですか？既存のデータは失われません。アップデート後のアプリケーションは下記にアクセスする場合があります:</string>
+    <string name="install_confirm_update_system">この内蔵アプリケーションへのアップデートをインストールしてもよろしいですか？既存のデータは失われません。アップデート後のアプリケーションは下記にアクセスする場合があります:</string>
+    <string name="install_confirm_update_no_perms">この既存のアプリにアップデートをインストールしますか？既存のデータが失われることはありません。特別なアクセス権も必要ありません。</string>
+    <string name="install_confirm_update_system_no_perms">この内蔵アプリにアップデートをインストールしますか？既存のデータが失われることはありません。特別なアクセス権も必要ありません。</string>
     <string name="newPerms">New</string>
     <string name="allPerms">すべて</string>
     <string name="perm_costs_money">通信料金が発生する場合があります</string>
@@ -488,4 +488,18 @@
     <string name="notification_channel_installs_description">アプリのインストール通知を表示します。</string>
     <string name="notification_channel_installs_title">インストール</string>
     <string name="send_to_fdroid_metrics">使用データを送信</string>
+    <string name="theme_follow_system">システムのテーマに追随</string>
+    <string name="share_apk_error">アプリのファイルを共有できませんでした</string>
+    <string name="use_pure_black_dark_theme_summary">OLED画面の場合にのみ推奨される。</string>
+    <string name="use_pure_black_dark_theme">ダークテーマではバックグラウンドにピュアブラックを利用する</string>
+    <string name="banner_no_data_or_wifi">データ/無線LANは無効状態です</string>
+    <string name="menu_show_install_history">インストール歴史を表示する</string>
+    <string name="menu_show_fdroid_metrics_report">メトリクス報告を表示する</string>
+    <string name="toast_metrics_in_install_history">%sメトリクス報告はインストール歴史ビューアで閲覧できます</string>
+    <string name="send_to_fdroid_metrics_summary">匿名化されたデータを毎週にF-Droidメトリクスに通信（インストール歴史の保存が必要）</string>
+    <string name="fdroid_metrics_report">%sメトリクス報告</string>
+    <string name="install_history_and_metrics">インストール歴史とメトリクス</string>
+    <string name="send_fdroid_metrics_json">%sメトリクス報告をJSONファイルとして</string>
+    <string name="send_fdroid_metrics_report">%sメトリクス報告を通信</string>
+    <string name="banner_no_internet">インターネットなし</string>
 </resources>

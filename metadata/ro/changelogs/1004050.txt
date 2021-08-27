@@ -1,0 +1,13 @@
+* Mare revizie a listei "Versiuni" din "Detalii aplicație"și multe alte optimizări de interfață,grație lui @wsdfhjxc
+
+* Corecție pt. navigare prin tastatură/D-pad în multe locuri,grație lui @doeffinger
+
+* Arată "Open" când mediile sunt instalate/vizibile
+
+* Adaugă Share la "Installed Apps" pt. export lista CSV
+
+* Adaugă lista de APK-uri cu clic pe pag. de index HTML a schimbului
+
+* Reia descărcările de index din oglinzi
+
+* Corectarea "Trimite F-Droid prin Bluetooth" pe versiunile noi de Android

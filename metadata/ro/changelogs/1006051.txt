@@ -1,0 +1,3 @@
+* Traduceri actualizate
+* Probleme de mărime a butoanelor #1678
+* A oprit accidentările aleatorii de fundal

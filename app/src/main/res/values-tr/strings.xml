@@ -137,8 +137,8 @@
     <string name="swap_welcome">F-Droid\'e hoş geldiniz!</string>
     <string name="swap_confirm_connect">%1$s cihazından şimdi uygulama almak istiyor musunuz\?</string>
     <string name="app_name">F-Droid</string>
-    <string name="unstable_updates">Kararsız güncellemeler</string>
-    <string name="unstable_updates_summary">Kararsız sürümlere güncellemeyi öner</string>
+    <string name="unstable_updates">Stabil olmayan güncellemeler</string>
+    <string name="unstable_updates_summary">Stabil olmayan sürümlere güncellemeyi öner</string>
     <string name="login_title">Kimlik doğrulama gerekli</string>
     <string name="login_name">Kullanıcı adı</string>
     <string name="login_password">Parola</string>
@@ -214,15 +214,15 @@
     <string name="loading">Yükleniyor…</string>
     <string name="swap_connection_misc_error">Aygıta bağlanırken hata oluştu, takas yapılamıyor!</string>
     <string name="install_confirm">erişmesi gerekenler</string>
-    <string name="install_confirm_update">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
-    <string name="install_confirm_update_system">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
-    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz silinmeyecektir. Herhangi bir özel erişim gerektirmez.</string>
-    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz\? Mevcut verileriniz kaybolmayacaktır. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
+    <string name="install_confirm_update_system">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz silinmeyecektir. Güncellenen uygulama şunlara erişebilecektir:</string>
+    <string name="install_confirm_update_no_perms">Bu mevcut uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
+    <string name="install_confirm_update_system_no_perms">Bu yerleşik uygulamaya ait bir güncellemeyi yüklemek istiyor musunuz? Mevcut verileriniz kaybolacaktır. Herhangi bir özel erişim gerektirmez.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
-    <string name="uninstall_update_confirm">Bu uygulamayı fabrika sürümüyle değiştirmek istiyor musunuz\? Tüm veriler silinecektir.</string>
-    <string name="uninstall_confirm">Bu uygulamayı kaldırmak istiyor musunuz\?</string>
+    <string name="uninstall_update_confirm">Bu uygulamayı fabrika sürümüyle değiştirmek istiyor musunuz? Tüm veriler silinecektir.</string>
+    <string name="uninstall_confirm">Bu uygulamanın yüklemesini kaldırmak istiyor musunuz?</string>
     <string name="download_error">İndirme başarısız oldu!</string>
     <string name="perms_new_perm_prefix">Yeni:</string>
     <string name="perms_description_app">%1$s tarafından sağlanmıştır.</string>
@@ -517,4 +517,7 @@
     <string name="use_pure_black_dark_theme">Koyu temada saf siyah arka plan kullan</string>
     <string name="banner_no_data_or_wifi">Veri veya etkin Wi-Fi yok</string>
     <string name="banner_no_internet">İnternet Yok</string>
+    <string name="share_apk_error">Uygulama dosyası paylaşılamadı</string>
+    <string name="has_disallow_install_unknown_sources">Yeni depolar da dahil, bilinmeyen kaynaklar bu kullanıcı tarafından eklenemiyor</string>
+    <string name="has_disallow_install_unknown_sources_globally">Aygıt yöneticiniz, yeni depolar da dahil bilinmeyen kaynaklardan uygulamaların kurulmasına izin vermiyor</string>
 </resources>

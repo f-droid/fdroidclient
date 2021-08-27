@@ -100,7 +100,7 @@
     <string name="menu_bitcoin">বিটকয়েন</string>
     <string name="menu_translation">অনুবাদ</string>
     <string name="menu_video">ভিডিও</string>
-    <string name="menu_changelog">পরিবর্তনসূচী</string>
+    <string name="menu_changelog">পরিবর্তনসূচি</string>
     <string name="menu_issues">সমস্যা</string>
     <string name="menu_website">ওয়েবসাইট</string>
     <string name="menu_open">খুলো</string>
@@ -174,7 +174,7 @@
     <string name="repo_confirm_delete_title">ভাণ্ডার মুছবে\?</string>
     <string name="unknown">অজানা</string>
     <string name="repo_not_yet_updated">এই ভাণ্ডার আগে ব্যবহার করা হয়নি। এতে বিদ্যমান অ্যাপ দেখতে এটাকে সক্রিয় করতে হবে।</string>
-    <string name="unsigned_description">এর অর্থ একটা তালিকার অ্যাপ যাচাই করা যায়নি। অস্বাক্ষরিত সূচী থেকে অ্যাপ নামানোর সময় তোমাকে সাবধান হতে হবে।</string>
+    <string name="unsigned_description">এর অর্থ একটা তালিকার অ্যাপ যাচাই করা যায়নি। অস্বাক্ষরিত সূচি থেকে অ্যাপ নামানোর সময় তোমাকে সাবধান হতে হবে।</string>
     <string name="repo_name">নাম</string>
     <string name="repo_user_mirrors">ব্যবহারকারী আয়না</string>
     <string name="repo_official_mirrors">প্রাতিষ্ঠানিক আয়না(মিরর)</string>
@@ -237,7 +237,7 @@
     <string name="try_again">আবার চেষ্টা করো</string>
     <string name="copying_icons">ভাণ্ডারে অ্যাপ আইকন অনুলিপিত হচ্ছে…</string>
     <string name="linking_apks">ভাণ্ডারে এপিকে সংযুক্ত করা হচ্ছে…</string>
-    <string name="writing_index_jar">স্বাক্ষরিত সূচী নথি লেখা হচ্ছে (index.jar)…</string>
+    <string name="writing_index_jar">স্বাক্ষরিত সূচির নথি লেখা হচ্ছে (index.jar)…</string>
     <string name="adding_apks_format">ভাণ্ডারে %s যোগ করা হচ্ছে…</string>
     <string name="deleting_repo">বর্তমান ভাণ্ডার মুছা হচ্ছে…</string>
     <string name="touch_to_configure_local_repo">বিস্তারিত দেখতে টিপ দাও এবং অন্যদের সাথে অ্যাপ বিনিময়ের অনুমতি দাও।</string>

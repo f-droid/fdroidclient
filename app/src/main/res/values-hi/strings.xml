@@ -32,7 +32,7 @@
     <string name="app_inst_unknown_source">स्थापित (अनजान सोत्र द्वारा)</string>
     <string name="added_on">%s पर जोड़ा</string>
     <string name="ok">ठीक है</string>
-    <string name="yes">हाँ</string>
+    <string name="yes">हां</string>
     <string name="no">नहीं</string>
     <string name="repo_add_title">नया कोष जोड़े</string>
     <string name="repo_add_add">जोड़े</string>
@@ -49,7 +49,7 @@
     <string name="crash_dialog_title">F-Droid क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारण एप्लीकेशन बंद हो गयी है| क्या आप ईमेल पर डिटेलस भेज कर इस मुद्दे को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
-    <string name="app_name">एफ-ड्रॉइड</string>
+    <string name="app_name">F-Droid</string>
     <string name="installIncompatible">ऐप्लिकेशन आपके डिवाइस के लिए अनुकुल नहीं है, क्या आप इसे फिर भी स्थापित करना चाहते हैं\?</string>
     <string name="interval_1w">साप्ताहिक अपडेट के लिए जाँच करें</string>
     <string name="interval_2w">हर 2 सप्ताह में अपडेट की जाँच करें</string>
@@ -72,7 +72,7 @@
     <string name="swap_connection_misc_error">उपकरण से कनेक्ट करते समय त्रुटि हुई, इसके साथ स्वैप नहीं किया जा सकता है!</string>
     <string name="swap_connecting">कनेक्ट हो रहा है</string>
     <string name="swap_confirm">अदला-बदली की पुष्टि करे</string>
-    <string name="swap_qr_isnt_for_swap">क्यूआर कोड जो अपने स्कैन किया है वह अदला-बदली का कोड नहीं है.</string>
+    <string name="swap_qr_isnt_for_swap">QR कोड जो अपने स्कैन किया है वह अदला-बदली का कोड नहीं है.</string>
     <string name="swap_intro">अपने आस-पास के लोगों के साथ ऐप्स कनेक्ट और साझा करें।</string>
     <string name="swap_visible_bluetooth">ब्लूटूथ के माध्यम से दिखाई दे</string>
     <string name="swap_setting_up_bluetooth">ब्लूटूथ को सेट किया जा रहा है…</string>
@@ -119,8 +119,8 @@
     <string name="SignatureMismatch">नया संस्करण किसी दूसरी \'की\' से साईन किया हुआ है। इस नये संस्करण को स्थापित करने के लिए पुराने वाले को अस्थापित करें। कृपया फिर से कोशिश करें। (याद रखें कि अस्थापित करने के बाद ऐप्लिकेशन डेटा नष्ट हो जायेगा)</string>
     <string name="keep_install_history">स्थापना इतिहास देखें</string>
     <string name="keep_install_history_summary">सभी स्थापनाओं और अस्थापनाओं के लॉग को F-Droid में रखें</string>
-    <string name="menu_settings">सेटिंगस</string>
-    <string name="menu_search">खोज</string>
+    <string name="menu_settings">सेटिंग</string>
+    <string name="menu_search">खोजें</string>
     <string name="menu_share">साझा करें</string>
     <string name="main_menu__latest_apps">नवीनतम</string>
     <string name="main_menu__categories">श्रेणियां (कैटगरीज़)</string>
@@ -389,18 +389,18 @@
     <string name="undo">पूर्ववत्</string>
     <string name="swap_blank_wifi_ssid">(खाली)</string>
     <string name="swap_hidden_wifi_ssid">(छिपा हुआ)</string>
-    <string name="disabled">निष्क्रिय</string>
+    <string name="disabled">बंद किया गया</string>
     <string name="repo_not_yet_updated">इस रिपॉजिटरी का उपयोग अभी तक नहीं किया गया है। आपको इस रेपो की एप्प्स देखने की लिए इसे चालू करना होगा।</string>
     <string name="repo_confirm_delete_title">डिलीट रिपॉजिटरी \?</string>
     <string name="category_Theming">विषय</string>
     <string name="empty_can_update_app_list">बधाई हो!
 \nआपके सभी ऐप्स अप टू डेट हैं।</string>
-    <string name="installing">इंस्‍टॉल हो रहा है…</string>
+    <string name="installing">इंस्‍टॉल कर रहा है…</string>
     <string name="install_confirm_update">क्‍या आप इस मौजूदा ऐप के बारे में नई जानकारी इंस्‍टॉल करना चाहते हैं? आपका मौजूदा डेटा गुम नहीं होगा. अपडेट किये गए ऐप से आपको इन पर पहुंच मिलेगी:</string>
     <string name="install_confirm_update_system">क्‍या आप इस बिल्ट-इन ऐप के बारे में नई जानकारी इंस्‍टॉल करना चाहते हैं? आपका मौजूदा डेटा गुम नहीं होगा. नई जानकारी वाले ऐप से आपको इन पर मिलेगी:</string>
     <string name="install_confirm_update_no_perms">क्या आप इस मौजूदा ऐप में नई जानकारी इंस्टॉल करना चाहते हैं? आपका मौजूदा डेटा बना रहेगा. इसे किसी खास पहुंच की ज़रुरत नहीं होती.</string>
     <string name="install_confirm_update_system_no_perms">क्या आप इस मौजूदा ऐप में नई जानकारी इंस्टॉल करना चाहते हैं? आपका मौजूदा डेटा बना रहेगा. इसे किसी खास पहुंच की ज़रुरत नहीं होती.</string>
-    <string name="uninstalling">अनइंस्‍टॉल हो रहा है…</string>
+    <string name="uninstalling">अनइंस्‍टॉल कर रहा है…</string>
     <string name="swap_join_same_wifi_desc">वाई-फाई का उपयोग करके स्वैप करने के लिए, सुनिश्चित करें कि आप एक ही नेटवर्क पर हैं। यदि आपके पास समान नेटवर्क तक पहुंच नहीं है, तो आप में से कोई एक वाई-फाई हॉटस्पॉट बना सकता है।</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">%d देखें</item>
@@ -510,4 +510,7 @@
     <string name="theme_follow_system">सिस्टम का पालन करें</string>
     <string name="use_pure_black_dark_theme_summary">केवल OLED स्क्रीन के लिए अनुशंसित।</string>
     <string name="use_pure_black_dark_theme">डार्क थीम में शुद्ध काले रंग का उपयोग करें</string>
+    <string name="share_apk_error">ऐप फ़ाइल साझा नहीं कर सका</string>
+    <string name="banner_no_data_or_wifi">कोई डेटा या वाईफाई सक्षम नहीं</string>
+    <string name="banner_no_internet">इंटरनेट नहीं है</string>
 </resources>

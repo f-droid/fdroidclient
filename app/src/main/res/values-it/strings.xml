@@ -4,7 +4,7 @@
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
         (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)
     </string>
-    <string name="installIncompatible">App incompatibile con il tuo dispositivo, installarla lo stesso?</string>
+    <string name="installIncompatible">L\'app non è compatibile con il tuo dispositivo, vuoi installarla lo stesso\?</string>
     <string name="version">Versione</string>
     <string name="delete">Elimina</string>
     <string name="enable_nfc_send">Attiva invio NFC…</string>
@@ -14,11 +14,11 @@
     <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
     <string name="notify">Mostra aggiornamenti disponibili</string>
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
-    <string name="system_installer">Estensione Privilegiata</string>
-    <string name="system_installer_on">Usa l\'Estensione Privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
-    <string name="local_repo_name">Nome del tuo repo locale</string>
-    <string name="local_repo_name_summary">Il titolo visualizzato del tuo repo: %s</string>
-    <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repo locali</string>
+    <string name="system_installer">Estensione privilegiata</string>
+    <string name="system_installer_on">Usa l\'Estensione privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
+    <string name="local_repo_name">Nome del tuo repository locale</string>
+    <string name="local_repo_name_summary">Il titolo visualizzato del tuo repository: %s</string>
+    <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repository locali</string>
     <string name="app_details">Dettagli app</string>
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title">Informazioni su F-Droid</string>
@@ -40,7 +40,7 @@
     <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
     <string name="repo_add_url">Indirizzo repository</string>
     <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
-    <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
+    <string name="malformed_repo_uri">Ignora URI non valide dei repository: %s</string>
     <string name="menu_manage">Repository</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nuovo repository</string>
@@ -64,29 +64,29 @@
     <string name="display">Mostra</string>
     <string name="expert">Modalità esperto</string>
     <string name="expert_on">Mostra ulteriori informazioni e attiva le impostazioni avanzate</string>
-    <string name="search_hint">Ricerca applicazioni</string>
+    <string name="search_hint">Cerca applicazioni</string>
     <string name="appcompatibility">Compatibilità applicazione</string>
     <string name="show_incompat_versions">Includi versioni incompatibili</string>
     <string name="show_incompat_versions_on">Mostra le versioni incompatibili con il dispositivo</string>
-    <string name="local_repo">Repo locale</string>
+    <string name="local_repo">Repository locale</string>
     <string name="local_repo_running">F-Droid è pronto per lo scambio</string>
     <string name="touch_to_configure_local_repo">Tocca per vedere i dettagli e permettere agli altri di ricevere le tue
         app.
     </string>
-    <string name="deleting_repo">Cancellazione dell\'attuale repo…</string>
-    <string name="adding_apks_format">Aggiunta di %s al repo…</string>
+    <string name="deleting_repo">Cancellazione del repository attuale…</string>
+    <string name="adding_apks_format">Aggiunta di %s al repository…</string>
     <string name="writing_index_jar">Scrittura del file di indice firmato (index.jar)…</string>
-    <string name="linking_apks">Collegamento degli APK al repo…</string>
-    <string name="copying_icons">Copia delle icone delle app nel repo…</string>
+    <string name="linking_apks">Collegamento degli APK al repository…</string>
+    <string name="copying_icons">Copia delle icone delle app nel repository…</string>
     <string name="icon">Icona</string>
     <string name="next">Avanti</string>
     <string name="skip">Salta</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Abilita proxy HTTP</string>
     <string name="enable_proxy_summary">Configura il proxy HTTP per tutte le richieste di rete</string>
-    <string name="proxy_host">Host Proxy</string>
+    <string name="proxy_host">Host del proxy</string>
     <string name="proxy_host_summary">Hostname del tuo proxy (es. 127.0.0.1)</string>
-    <string name="proxy_port">Porta proxy</string>
+    <string name="proxy_port">Porta del proxy</string>
     <string name="proxy_port_summary">Porta del tuo proxy (es. 8118)</string>
     <string name="status_download">Scaricamento
 \n%2$s / %3$s (%4$d%%) da
@@ -114,15 +114,13 @@
     </string>
     <string name="unknown">Sconosciuta</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
-    <string name="repo_confirm_delete_body">L\'eliminazione di un repository significa che le app da esso non saranno più disponibili.
-\n 
+    <string name="repo_confirm_delete_body">L\'eliminazione di un repository comporta che le app contenute in esso non saranno più disponibili.
+\n
 \nNota: Tutte le applicazioni installate in precedenza rimarranno sul tuo dispositivo.</string>
     <string name="repo_disabled_notification">%1$s disattivato.
 \n
 \nDovrai riattivare nuovamente questo repository per installare le app contenute.</string>
-    <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repo locale che hai aggiunto!
-        Prova a collegarti a questa rete: %s
-    </string>
+    <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repository locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
     <string name="requires_features">Richiede: %1$s</string>
     <string name="category_Development">Sviluppo</string>
     <string name="category_Games">Giochi</string>
@@ -164,8 +162,8 @@
     <string name="perms_description_app">Fornito da %1$s.</string>
     <string name="uninstall_confirm">Vuoi disinstallare questa applicazione?</string>
     <string name="install_confirm">deve accedere a</string>
-    <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata\? I tuoi dati non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
-    <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione\? I tuoi dati non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
+    <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
+    <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione esistente? I tuoi dati esistenti non andranno persi. L\'applicazione aggiornata avrà accesso a:</string>
     <string name="loading">Caricamento…</string>
     <string name="swap_connecting">Connessione</string>
     <string name="swap_wifi_device_name">Nome del dispositivo</string>
@@ -250,14 +248,14 @@
     <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="apps">Applicazioni</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
-    <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
-    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata\? I tuoi dati non andranno persi. Non occorrono accessi speciali.</string>
+    <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione esistente? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
+    <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
     <string name="allPerms">Tutte</string>
     <string name="swap_nearby">Scambio nelle vicinanze</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
     <string name="menu_email">Invia un\'e-mail all\'autore</string>
-    <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare un\'e-mail con i dettagli per aiutarci a risolvere il problema\?</string>
-    <string name="crash_dialog_title">F-Droid si è bloccato</string>
+    <string name="crash_dialog_text">Un errore inaspettato ha provocato un arresto anomalo dell\'applicazione. Vuoi inviare un\'e-mail con i dettagli per aiutarci a risolvere il problema\?</string>
+    <string name="crash_dialog_title">Arresto anomalo di F-Droid</string>
     <string name="antinonfreeassetslist">Questa app contiene risorse non libere</string>
     <string name="empty_search_available_app_list">Non è disponibile nessuna app corrispondente.</string>
     <string name="useTor">Usa Tor</string>
@@ -279,10 +277,10 @@
     <string name="uninstalling">Disinstallazione…</string>
     <string name="update_auto_install">Installa automaticamente gli aggiornamenti</string>
     <string name="update_auto_install_summary">Scarica e aggiorna le app in background, mostrando una notifica</string>
-    <string name="keep_install_history">Mantieni cronologia installazione</string>
+    <string name="keep_install_history">Mantieni la cronologia delle installazioni</string>
     <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni in un posto sicuro</string>
     <string name="versions">Versioni</string>
-    <string name="warning_no_internet">Impossibile aggiornare, sei connesso ad Internet?</string>
+    <string name="warning_no_internet">Impossibile effettuare l\'aggiornamento, sei connesso ad Internet\?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
     <string name="app_details_donate_prompt">%1$s è creato da %2$s. Offri un caffè!</string>
     <string name="app_version_x_available">Versione %1$s disponibile</string>
@@ -329,7 +327,7 @@
     <string name="app__tts__cancel_download">Annulla scaricamento</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
     <string name="app_list_download_ready">Scaricato, pronto per l\'installazione</string>
-    <string name="installed_apps__activity_title">App Installate</string>
+    <string name="installed_apps__activity_title">App installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
     <string name="update_all">Aggiorna tutte</string>
@@ -359,8 +357,8 @@
     <string name="details_last_updated_today">Aggiornata oggi</string>
     <string name="tts_category_name">Categoria %1$s</string>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d App Installata</item>
-        <item quantity="other">%1$d App Installate</item>
+        <item quantity="one">%1$d app installata</item>
+        <item quantity="other">%1$d app installate</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Aggiornamento</item>
@@ -409,14 +407,14 @@
     <string name="allow">Consenti</string>
     <string name="panic_settings_summary">Azioni da intraprendere in caso di emergenza</string>
     <string name="panic_exit_summary">Questa applicazione sarà chiusa</string>
-    <string name="panic_destructive_actions">Azioni Distruttive</string>
+    <string name="panic_destructive_actions">Azioni distruttive</string>
     <string name="panic_hide_title">Nascondi %s</string>
     <string name="panic_hide_summary">L\'applicazione si auto-nasconderà</string>
     <string name="panic_exit_title">Esci dall\'app</string>
-    <string name="panic_app_setting_title">Applicazione per Pulsante di Panico</string>
-    <string name="panic_app_dialog_title">Conferma Applicazione Pulsante di Panico</string>
-    <string name="panic_app_dialog_message">Sei sicuro di voler permettere %1$s di eseguire azioni distruttive del pulsante di panico?</string>
-    <string name="panic_settings">Impostazioni Pulsante di Panico</string>
+    <string name="panic_app_setting_title">App per il pulsante antipanico</string>
+    <string name="panic_app_dialog_title">Conferma app per il pulsante antipanico</string>
+    <string name="panic_app_dialog_message">Sei sicuro di voler consentire a %1$s di eseguire le azioni distruttive del pulsante antipanico\?</string>
+    <string name="panic_settings">Impostazioni del pulsante antipanico</string>
     <string name="repo_add_mirror">Aggiungi mirror</string>
     <string name="sort_search">Ordina ricerca</string>
     <string name="repo_exists_add_fingerprint">%1$s è già impostato, ciò aggiungerà nuove informazioni chiave.</string>
@@ -430,13 +428,13 @@
     <string name="force_touch_apps">Includi app tattili</string>
     <string name="force_touch_apps_on">Mostra app che richiedono il touchscreen indipendentemente dall\'hardware</string>
     <string name="panic_hide_warning_title">Ricorda come ripristinare</string>
-    <string name="panic_hide_warning_message">In un evento di panico, ciò rimuoverà %1$s dal launcher. Solo digitando \"%2$d\" nella falsa app %3$s può ripristinarlo.</string>
+    <string name="panic_hide_warning_message">In caso di evento di panico, %1$s verrà rimossa dal launcher. Si potrà ripristinarla solo digitando \"%2$d\" nella falsa app %3$s.</string>
     <string name="hiding_calculator">Calcolatrice</string>
     <string name="hiding_dialog_title">Nascondi %s ora</string>
     <string name="hiding_dialog_message">Sei sicuro di volere rimuovere %1$s dal launcher? Solo digitando \"%2$d\" nella falsa app %3$s può ripristinarlo.</string>
     <string name="hiding_dialog_warning">Attenzione: verrà rimossa anche qualsiasi scorciatoia dell\'app nella home e dovrà essere riaggiunta a mano.</string>
-    <string name="hide_on_long_search_press_title">Nascondi con il tasto ricerca</string>
-    <string name="hide_on_long_search_press_summary">Verrà nascosta l\'app premendo a lungo il tasto ricerca</string>
+    <string name="hide_on_long_search_press_title">Nascondi con il tasto Cerca</string>
+    <string name="hide_on_long_search_press_summary">Verrà nascosta l\'app premendo a lungo il tasto Cerca</string>
     <string name="repo_official_mirrors">Mirror ufficiali</string>
     <string name="repo_user_mirrors">Mirror utente</string>
     <string name="use_bluetooth">Usa Bluetooth</string>
@@ -461,8 +459,8 @@
     <string name="install_history_summary">Vedi il registro privato di tutte le installazioni e rimozioni</string>
     <string name="send_version_and_uuid">Invia versione e UUID ai server</string>
     <string name="send_version_and_uuid_summary">Includi la versione di quest\'app e un ID casuale e unico quando scarichi, si applica al prossimo avvio dell\'app.</string>
-    <string name="allow_push_requests">Permetti ai repo di installare/disinstallare app</string>
-    <string name="allow_push_requests_summary">I metadati dei repo possono includere richieste push per installare o rimuovere app</string>
+    <string name="allow_push_requests">Permetti ai repository di installare/disinstallare app</string>
+    <string name="allow_push_requests_summary">I metadati dei repository possono includere richieste push per installare o rimuovere app</string>
     <string name="updates_disabled_by_settings">Tutti gli aggiornamenti disattivati per impostazioni dati/WiFi</string>
     <string name="antinosourcesince">Il codice sorgente non è più disponibile, aggiornamenti non possibili.</string>
     <string name="share_repository">Condividi repository</string>
@@ -476,14 +474,14 @@
     <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
     <string name="scan_removable_storage_toast">Scansione %s…</string>
-    <string name="nearby_splash__request_permission">Provala</string>
+    <string name="nearby_splash__request_permission">Prova</string>
     <string name="not_visible_nearby">Nearby non attivato</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
     <string name="swap_toast_not_removable_storage">Quella scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
     <string name="swap_toast_find_removeable_storage">Seleziona scheda SD o USB</string>
     <string name="scan_removable_storage_summary">Cerca repository di pacchetti su archivi rimovibili come schede SD e chiavette USB</string>
     <string name="main_menu__updates">Aggiornamenti</string>
-    <string name="nearby_splash__read_external_storage">Cerca scheda SD per repository e mirror.</string>
+    <string name="nearby_splash__read_external_storage">Cerca repository e mirror nella scheda SD.</string>
     <string name="not_visible_nearby_description">Prima di scambiare con dispositivi vicini, rendi il tuo visibile.</string>
     <string name="menu_translation">Traduzione</string>
     <string name="undo">Annulla</string>
@@ -492,7 +490,7 @@
     <string name="try_again">Riprova</string>
     <string name="panic_will_be_wiped">Sarà disinstallato e i dati cancellati</string>
     <string name="panic_add_apps_to_uninstall">Aggiungi le app da disinstallare</string>
-    <string name="panic_reset_repos_title">Resetta repos</string>
+    <string name="panic_reset_repos_title">Reimposta i repository</string>
     <string name="swap_visible_hotspot">Visibile tramite hotspot</string>
     <string name="swap_blank_wifi_ssid">(vuoto)</string>
     <string name="swap_hidden_wifi_ssid">(nascosto)</string>
@@ -502,7 +500,7 @@
     <string name="swap_stopping">Arresto..…</string>
     <string name="disabled">Disattivato</string>
     <string name="swap_error_cannot_start_bluetooth">Non è possibile avviare il Bluetooth!</string>
-    <string name="nearby_splash__document_tree">Cerca OTG USB per repository e mirror.</string>
+    <string name="nearby_splash__document_tree">Cerca repository e mirror nella chiavetta USB.</string>
     <string name="panic_apps_to_uninstall">App da disinstallare e di cui cancellare tutti i dati</string>
     <string name="panic_reset_repos_summary">Forza l\'impostazione del repository ai valori predefiniti</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nearby chiuso poiché era inattivo.</string>
@@ -516,10 +514,10 @@
     <string name="menu_show_install_history">Mostra storico installazioni</string>
     <string name="menu_show_fdroid_metrics_report">Mostra rapporto metriche</string>
     <string name="toast_metrics_in_install_history">Il rapporto metriche %s è visibile nel visualizzatore dello storico installazioni</string>
-    <string name="send_to_fdroid_metrics_summary">Invia settimanalmente dati anonimi alle metriche F-Droid (richiede Mantieni storico installazioni)</string>
-    <string name="send_to_fdroid_metrics">Invia dati utilizzo</string>
+    <string name="send_to_fdroid_metrics_summary">Invia settimanalmente dati anonimi alle metriche F-Droid (l\'opzione \"Mantieni la cronologia delle installazioni\" dev\'essere abilitata)</string>
+    <string name="send_to_fdroid_metrics">Invia dati di utilizzo</string>
     <string name="fdroid_metrics_report">Rapporto metriche %s</string>
-    <string name="install_history_and_metrics">Installa storico e metriche</string>
+    <string name="install_history_and_metrics">Cronologia installazioni e metriche</string>
     <string name="send_fdroid_metrics_json">Rapporo metriche %s come file JSON</string>
     <string name="send_fdroid_metrics_report">Invia rapporto metriche %s</string>
     <string name="use_pure_black_dark_theme">Utilizzare lo sfondo nero puro nel tema scuro</string>
@@ -527,4 +525,5 @@
     <string name="theme_follow_system">Segui il sistema</string>
     <string name="banner_no_data_or_wifi">Nessun dato o Wi-Fi abilitato</string>
     <string name="banner_no_internet">Nessuna connessione</string>
+    <string name="share_apk_error">Impossibile condividere il file dell\'app</string>
 </resources>

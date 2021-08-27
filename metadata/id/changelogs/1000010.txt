@@ -1,0 +1,21 @@
+F-Droid sekarang 1.0!
+
+Rilis ini menyertakan banyak perubahan:
+
+* Mengubah alur kerja mengupdate aplikasi
+
+* Terjemahan penuh untuk ringkasan dan deskripsi aplikasi
+
+* Bagian "Apa yang baru" untuk mengetahui perubahan di rilis ini
+
+* Screenshot dan feature graphics
+
+* Mendukung pemasangan media, OTA, ZIP, dll.
+
+* Proteksi yang ditingkatkan dari pelacakan (HTTP ETag, TLS, dll.)
+
+* Update dilatar belakang dengan ekstensi istimewa
+
+* Donasi ke developer aplikasi disorot
+
+* Update indeks lebih cepat

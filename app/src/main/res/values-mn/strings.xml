@@ -463,7 +463,7 @@
     <string name="about_title">F-Droid-ийн тухай</string>
     <string name="app_details">Аппын дэлгэрэнгүй</string>
     <string name="notification_action_install">Суулгах</string>
-    <string name="notification_action_cancel">Цуцлах</string>
+    <string name="notification_action_cancel">Болих</string>
     <string name="notification_action_update">Шинэчлэх</string>
     <string name="swap_dont_show_again">Үүнийг дахиж битгий харуул</string>
     <string name="swap_welcome">F-Droid-д тавтай морилно уу!</string>

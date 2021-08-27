@@ -207,10 +207,10 @@
     <string name="loading">Đang tải…</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, không thể trao đổi ứng dụng!</string>
     <string name="install_confirm">cần truy cập</string>
-    <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng đã có này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
-    <string name="install_confirm_update_system">Bạn có muốn cập nhật ứng dụng hệ thống này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
-    <string name="install_confirm_update_no_perms">Bạn có muốn cập nhật ứng dụng đã có này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
-    <string name="install_confirm_update_system_no_perms">Bạn có muốn cập nhật ứng dụng hệ thống này không\? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update">Bạn có muốn cài đặt bản cập nhật cho ứng dụng hiện tại này không? Dữ liệu hiện tại của bạn sẽ không bị mất. Ứng dụng đã cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_system">Bạn có muốn cài đặt bản cập nhật cho ứng dụng được cài sẵn này không? Dữ liệu hiện tại của bạn sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_no_perms">Bạn có muốn cài đặt bản cập nhật cho ứng dụng hiện có này không? Dữ liệu hiện có của bạn sẽ không bị mất. Việc cài đặt không yêu cầu bất kỳ quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update_system_no_perms">Bạn có muốn cài đặt bản cập nhật cho ứng dụng cài sẵn này không? Dữ liệu hiện có của bạn sẽ không bị mất. Việc cài đặt không yêu cầu quyền truy cập đặc biệt nào.</string>
     <string name="newPerms">Mới</string>
     <string name="allPerms">Tất cả</string>
     <string name="perm_costs_money">Việc này có thể mất phí</string>
@@ -512,4 +512,5 @@
     <string name="use_pure_black_dark_theme">Sử dụng nền đen thuần tuý trong chế độ tối</string>
     <string name="banner_no_data_or_wifi">Chưa bật dữ liệu hoặc WiFi</string>
     <string name="banner_no_internet">Không có internet</string>
+    <string name="share_apk_error">Không thể chia sẻ tệp ứng dụng</string>
 </resources>

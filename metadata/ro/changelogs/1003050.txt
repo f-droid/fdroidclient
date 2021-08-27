@@ -1,0 +1,19 @@
+* Butoane/actualizări de stare mai bune
+
+* Refacere a setărilor,cu noi contorizari de date
+
+* Rulare în fundal ce ține cont de baterie pe Android 5.0 și mai nou
+
+* Punct meniu Share pt. depozite
+
+* Opriți rapoartele de erori în Setări
+
+* Instalați History viewer când e activă logarea
+
+* Listă Anti-Features cu click,a adăugat NoSourceSince
+
+*Android 4.0 e minim acceptat
+
+* Mari progrese pt. versiuni pers. cu etichetă albă F-Droid
+
+* Setare expertă pt. a trimite versiunea debug +UUID la descărcare

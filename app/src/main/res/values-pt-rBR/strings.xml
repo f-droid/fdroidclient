@@ -44,7 +44,7 @@
     <string name="repo_add_fingerprint">Fingerprint (opcional)</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_search">Pesquise</string>
+    <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo Repositório</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
@@ -533,4 +533,5 @@
     <string name="use_pure_black_dark_theme">Use um fundo preto no tema escuro</string>
     <string name="banner_no_data_or_wifi">Dados móveis ou WiFi indisponíveis</string>
     <string name="banner_no_internet">Sem Internet</string>
+    <string name="share_apk_error">Não foi possível compartilhar o arquivo da aplicação</string>
 </resources>

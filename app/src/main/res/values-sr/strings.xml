@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">Нова верзија је потписана различитим кључем. Да инсталирате нову верзију, прво треба да уклоните стару. (Уклањањем такође бришете унутрашње податке програма.)</string>
     <string name="installIncompatible">Програм не одговара овом уређају. Свеједно инсталирати\?</string>
     <string name="version">Верзија</string>
-    <string name="delete">Обриши</string>
+    <string name="delete">Избриши</string>
     <string name="enable_nfc_send">Укључи НФЦ слање…</string>
     <string name="cache_downloaded">Чувај кеширане програме</string>
     <string name="updates">Ажурирања</string>
@@ -25,7 +25,7 @@
     <string name="app_inst_known_source">Уграђено (из %s)</string>
     <string name="app_inst_unknown_source">Уграђено (из непознатог извора)</string>
     <string name="added_on">Додато у %s</string>
-    <string name="ok">У реду</string>
+    <string name="ok">Потврди</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Додај нову ризницу</string>
@@ -40,7 +40,7 @@
     <string name="repo_add_fingerprint">Отисак (додатно)</string>
     <string name="malformed_repo_uri">Занемарујем лошу адресу ризнице: %s</string>
     <string name="menu_manage">Складишта</string>
-    <string name="menu_search">Тражи</string>
+    <string name="menu_search">Претражи</string>
     <string name="menu_add_repo">Ново складиште</string>
     <string name="menu_launch">Отвори</string>
     <string name="menu_share">Дели</string>
@@ -148,7 +148,7 @@
     <string name="status_processing_xml_percent">Обрађујем %2$s / %3$s (%4$d%%) од %1$s</string>
     <string name="pref_language">Језик</string>
     <string name="pref_language_default">Системски подразумеван</string>
-    <string name="wifi">Бежично</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Врућа тачка</string>
     <string name="category_Connectivity">Повезивање</string>
     <string name="category_Graphics">Графика</string>
@@ -226,7 +226,7 @@
     <string name="menu_bitcoin">Биткоин</string>
     <string name="menu_litecoin">Лајткоин</string>
     <string name="menu_flattr">Флатр</string>
-    <string name="menu_settings">Поставке</string>
+    <string name="menu_settings">Подешавања</string>
     <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, не можемо размењивати са њим!</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате
         приступ истој мрежи, једно од вас може да направи бежичну врућу тачку.

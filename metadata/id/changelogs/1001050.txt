@@ -1,0 +1,7 @@
+* Mendukung mirror resmi untuk semua repo, dengan auto-seleksi sesuai dengan ketersediaan
+
+* Banyak UI yang diperbarui, sama seperti stabilitas dan perbaikan error
+
+* Preferensi privasi baru: Melarang screenshot; keluar saat panik
+
+* Bahasa baru: Korea (ko) dan Vietnam (vi)

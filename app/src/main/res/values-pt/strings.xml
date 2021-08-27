@@ -8,7 +8,7 @@
     <string name="back">Recuar</string>
     <string name="cancel">Cancelar</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_settings">Definições</string>
+    <string name="menu_settings">Configurações</string>
     <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo repositório</string>
     <string name="menu_launch">Abrir</string>
@@ -21,7 +21,7 @@
     <string name="main_menu__swap_nearby">Proximidade</string>
     <string name="preference_manage_installed_apps">Gerir aplicações instaladas</string>
     <string name="details_notinstalled">Não instaladas</string>
-    <string name="next">Seguinte</string>
+    <string name="next">Próximo</string>
     <string name="skip">Ignorar</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
@@ -72,7 +72,7 @@
     <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
     <string name="version">Versão</string>
     <string name="by_author_format">de %s</string>
-    <string name="delete">Eliminar</string>
+    <string name="delete">Excluir</string>
     <string name="enable_nfc_send">Ativar envio NFC…</string>
     <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
     <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
@@ -93,7 +93,7 @@
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidades, utilizar o índice XML</string>
     <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
     <string name="allow_push_requests_summary">Os meta-dados do repositório podem incluir pedidos \'push\' para instalar ou desinstalar aplicações</string>
-    <string name="other">Outro</string>
+    <string name="other">Outros</string>
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
@@ -366,11 +366,11 @@
     <string name="swap_wifi_device_name">Nome do aparelho</string>
     <string name="swap_cant_find_peers">Não encontra o que procura\?</string>
     <string name="swap_no_peers_nearby">Não foram encontradas pessoas na sua vizinhança.</string>
-    <string name="swap_connecting">A ligar</string>
+    <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
     <string name="use_bluetooth">Utilizar Bluetooth</string>
-    <string name="loading">A carregar…</string>
+    <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com aparelho próximos, torne o seu visível.</string>
@@ -381,14 +381,14 @@
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
     <string name="install_confirm">requer acesso a</string>
-    <string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação\? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação\? Os dados existentes não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação\? Os dados existentes não serão perdidos. A aplicação atualizada não requer acessos especiais.</string>
-    <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação\? Os dados existentes não serão perdidos. A atualização não requer nenhum acesso especial.</string>
+    <string name="install_confirm_update">Quer instalar uma atualização para este app? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
+    <string name="install_confirm_update_system">Quer instalar uma atualização para este app integrado? Os dados existentes não serão perdidos. O app atualizado terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Quer instalar uma atualização para este app existente? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Quer instalar uma atualização para este app integrado? Seus dados existentes não serão perdidos. A atualização não requer qualquer acesso especial.</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
-    <string name="uninstall_update_confirm">Pretende substituir esta aplicação pela versão de fábrica\? Todos os dados serão removidos.</string>
-    <string name="uninstall_confirm">Deseja desinstalar esta aplicação\?</string>
+    <string name="uninstall_update_confirm">Substituir este app pela versão de fábrica? Todos os dados serão removidos.</string>
+    <string name="uninstall_confirm">Quer desinstalar este app?</string>
     <string name="download_error">Falha ao descarregar!</string>
     <string name="download_pending">À espera da descarga…</string>
     <string name="install_error_notify_title">Erro ao instalar %s</string>
@@ -397,8 +397,8 @@
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">A descarregar…</string>
     <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
-    <string name="installing">A instalar…</string>
-    <string name="uninstalling">A desinstalar…</string>
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
     <string name="interval_never">Não atualizar automaticamente</string>
     <string name="interval_1h">A cada 1 hora</string>
     <string name="interval_4h">A cada 4 horas</string>
@@ -487,7 +487,7 @@
     <string name="swap_stopping_hotspot">Parando hotspot…</string>
     <string name="swap_starting">A iniciar…</string>
     <string name="swap_stopping">A parar…</string>
-    <string name="disabled">Desativada</string>
+    <string name="disabled">Desativado</string>
     <string name="swap_error_cannot_start_bluetooth">Não foi possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Troca por proximidade foi desativada porque estava ociosa.</string>
     <string name="nearby_splash__document_tree">Pesquisar repositórios e espelhos por USB OTG.</string>
@@ -512,4 +512,5 @@
     <string name="use_pure_black_dark_theme">Usar fundo preto puro no tema escuro</string>
     <string name="banner_no_data_or_wifi">Dados móveis/WiFi desativados</string>
     <string name="banner_no_internet">Sem Internet</string>
+    <string name="share_apk_error">Não foi possível partilhar o ficheiro da aplicação</string>
 </resources>
