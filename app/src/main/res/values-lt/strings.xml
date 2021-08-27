@@ -448,4 +448,5 @@
     <string name="send_fdroid_metrics_json">%s metrikų ataskaitą kaip JSON failą</string>
     <string name="send_fdroid_metrics_report">Siųsti %s metrikų ataskaita</string>
     <string name="prompt_to_send_crash_reports">Raginti siųsti gedimų ataskaitas</string>
+    <string name="force_old_index_summary">"Atsitikus klaidai ar nesuderinamumo  atvėju naudoti XML aplikacijos indeksa"</string>
 </resources>
