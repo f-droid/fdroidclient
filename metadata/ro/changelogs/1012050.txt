@@ -1,0 +1,13 @@
+* Localizarea descrierii app respectă toate listele din setările de limbă Android
+
+* Ultima filă arată aplicațiile în funcție de setările de limbă,ordonate mai întâi cele mai noi (@TheLastProject @IzzySoft)
+
+* Rezultatele căutării au fost mult îmbunătățite (@Tvax @gcbrown76)
+
+* Curățare mai bună a memoriei cache
+
+* Programarea eficientă a curățării cache-ului (@Isira-Seneviratne)
+
+* Revizuirea analizei URL-urilor repo pentru adăugarea fiabilă a repo-urilor (@projectgus)
+
+* Opt-in F-Droid Metrics

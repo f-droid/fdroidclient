@@ -1,0 +1,7 @@
+* utilizați canale de notificare pentru un control fin (@Isira-Seneviratne)
+* partajați aplicațiile utilizând Direct Share din App Details (@fynngodau)
+* Latest Tab va afișa rezultate mai bune pe dispozitivele care nu sunt în limba engleză
+* actualizări ale bibliotecilor de bază (Jackson, androidx, gradle, etc.)
+* suport pentru etichetarea albă de lustruire
+
+Mulțumim noilor colaboratori! @fynngodau @projectgus @glennmen @Isira-Seneviratne

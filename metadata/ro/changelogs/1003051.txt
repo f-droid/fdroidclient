@@ -1,0 +1,21 @@
+v1.3.1
+* Revizuire mare de bază Nearby/Swap plumbing
+
+* Suport TLSv1.3,când dispozitivul îl suportă
+
+v1.3
+* Butoane/actualizări de stare mai bune
+
+* Refacere a setarilor,cu noi contorizari de date
+
+* Rulare în fundal conștientă de baterie pe Android 5.0 și mai nou
+
+* Elementul meniu Share pt. depozite
+
+* Opriți rapoartele de erori în Setări
+
+* Instalați History viewer când e activă logarea
+
+* Lista Anti-Features cu click,a adaugat NoSourceSince
+
+* Android 4.0 este acum minimul acceptat

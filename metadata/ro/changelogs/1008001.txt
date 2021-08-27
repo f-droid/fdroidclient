@@ -1,0 +1,4 @@
+* manipulați configurația permisiunilor Android 10 pentru a opri solicitările de surse necunoscute
+* tastatura se deschide atunci când se șterge căutarea
+* sincronizarea traducerilor cu șirurile Android
+* forțați domeniile repo comune la HTTPS (GitLab, GitHub, Amazon)

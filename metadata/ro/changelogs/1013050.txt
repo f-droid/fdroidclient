@@ -1,0 +1,17 @@
+* Suport pt. teme pt. temele incluse în Android (@proletarius101)
+
+* Noi notificări sus în banner:"Fără internet"/"Fără date sau WiFi activat"
+
+* Gestiunea mai bună pt. repo și oglinzi USB-OTG /carduri SD
+
+* Opriți reactualizările bibliotecii Trichrome
+
+* Optimizări pt. a urma Material Design (@proletarius101)
+
+* Îmbunătățirea insignei OpenCollective (@ConnyDuck)
+
+* Revizuirea încărcării iconilor cu Glide (@proletarius101)
+
+* Nou icon adaptiv(@12people)
+
+* Modernizare cod(@Isira-Seneviratne)

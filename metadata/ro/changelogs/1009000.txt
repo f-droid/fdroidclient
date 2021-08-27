@@ -1,0 +1,5 @@
+* s-a eliminat suportul pt. "Android App Link", căci nu merge cu F-Droid și declanșa DNS leaks.
+* Arhivele Repo sunt mai puțin prioritare decât Repo (mai sus pe ecranul Manage Repos),rezolvă erorile în care se căutau iconi,capturi de ecran și alte informații în Arhivă, mai degrabă decât în Repo în sine.
+* Nu tăia poza de antet a funcției (mulțumesc @ByteHamster!)
+* Face bara de navigare să corespundă cu modul dark (mulțumesc @MatthieuB!)
+* Curățat codul vechi (mulțumesc @Isira-Seneviratne!)

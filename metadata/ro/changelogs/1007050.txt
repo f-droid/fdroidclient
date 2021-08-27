@@ -1,0 +1,7 @@
+* refacere interfață swap,pt.a pregăti rescrierea guts
+* afișare "undo" când se șterg itemi din Updates (mulțumesc @Hocuri!)
+* am corectat erori cu afișarea "Latest" datorită manipulării greșite a fusurilor orare #1757
+* ignorați crash-uri mici la servicii din fundal
+* s-a revizuit swap de aproape cu AP-ul hotspot din device
+* am adăugat noi reacții de panică:dezinstalare app-uri/resetare repo la valorile implicite
+* unitățile flash USB OTG pot fi utilizate ca depozite și oglinzi din apropiere

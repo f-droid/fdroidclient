@@ -1,0 +1,5 @@
+* a revizuit swap-ul din apropiere folosind hotspotul AP al dispozitivului
+
+* adăugarea de noi răspunsuri de panică: dezinstalarea aplicațiilor și resetarea depozitelor la valorile implicite
+
+* corectarea suportului proxy la prima pornire

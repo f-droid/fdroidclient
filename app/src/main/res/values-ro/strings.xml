@@ -17,7 +17,7 @@
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
     <string name="menu_search">Caută</string>
     <string name="menu_launch">Deschideți</string>
@@ -510,7 +510,7 @@
     <string name="notification_channel_installs_description">Afișează notificări la instalarea aplicațiilor.</string>
     <string name="notification_channel_installs_title">Instalări</string>
     <string name="send_to_fdroid_metrics_summary">Trimite date anonime săptămânal la F-Droid Metrics (necesită păstrarea istoricului de instalare)</string>
-    <string name="send_to_fdroid_metrics">Trimitere date de utilizare</string>
+    <string name="send_to_fdroid_metrics">Trimiteți date de utilizare</string>
     <string name="menu_show_install_history">Afișare istoric instalări</string>
     <string name="fdroid_metrics_report">Raport de măsurători %s</string>
     <string name="send_fdroid_metrics_json">Raportul de măsurători %s ca fișier JSON</string>
@@ -523,4 +523,7 @@
     <string name="use_pure_black_dark_theme">Utilizați un fundal negru pur în tema întunecată</string>
     <string name="banner_no_data_or_wifi">Nu sunt activate date mobile sau Wi-Fi</string>
     <string name="banner_no_internet">Fără internet</string>
+    <string name="share_apk_error">Nu s-a putut partaja fișierul aplicației</string>
+    <string name="has_disallow_install_unknown_sources">Sursele necunoscute nu pot fi adăugate de acest utilizator, care include noi depozite</string>
+    <string name="has_disallow_install_unknown_sources_globally">Administratorul dispozitivului dumneavoastră nu permite instalarea de aplicații din surse necunoscute, care includ și noile depozite</string>
 </resources>

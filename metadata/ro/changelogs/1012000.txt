@@ -1,0 +1,12 @@
+* Localizarea descrierii aplicației respectă toate listele de limbi din Android
+  Setări de limbă
+
+* Ultima filă arată rezultatele în funcție de setările de limbă
+
+* Ultima filă arată rezultatele ordonate mai întâi cele mai noi (@TheLastProject @IzzySoft)
+
+* Suportul pt. teme e modernizat și legat de temele din Android (@proletarius101)
+
+* Rezultatele căutării au fost optimizate (@Tvax @gcbrown76)
+
+* Permiteți Android să programeze eficient curățarea cache-ului în fundal (@Isira-Seneviratne)
