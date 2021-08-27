@@ -527,4 +527,5 @@
     <string name="theme_follow_system">Segui il sistema</string>
     <string name="banner_no_data_or_wifi">Nessun dato o Wi-Fi abilitato</string>
     <string name="banner_no_internet">Nessuna connessione</string>
+    <string name="share_apk_error">Impossibile condividere il file dell\'app</string>
 </resources>

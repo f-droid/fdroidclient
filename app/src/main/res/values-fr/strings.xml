@@ -468,7 +468,7 @@
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
     <string name="menu_downgrade">Rétrograder</string>
-    <string name="allow_push_requests_summary">Les méta-données des dépôts peuvent contenir des requêtes push pour installer ou désinstaller des applications</string>
+    <string name="allow_push_requests_summary">Les métadonnées des dépôts peuvent contenir des requêtes push pour installer ou désinstaller des applications</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Essayer</string>
@@ -523,5 +523,5 @@
     <string name="use_pure_black_dark_theme">Utiliser un fond noir pur pour le thème sombre</string>
     <string name="banner_no_data_or_wifi">Pas de Données ou Wi-Fi actif</string>
     <string name="banner_no_internet">Aucune connexion Internet</string>
-    <string name="share_apk_error">Impossible de partager le fichier de l\'app</string>
+    <string name="share_apk_error">Impossible de partager le fichier de l\'appli</string>
 </resources>
