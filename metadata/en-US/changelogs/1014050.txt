@@ -1,9 +1,11 @@
 * Overhaul Share menu to use built-in options like Nearby.
 
-* material design improvements (@proletarius101)
+* Material design improvements (@proletarius101)
+
+* Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)
 
 * Improve offline, nearby sharing
 
-* block adding new repos when device admin disallows "Unknown Sources"
+* Block adding new repos when device admin disallows "Unknown Sources"
 
-* fix crash when using repos with username/password
+* Fix crash when using repos with username/password
