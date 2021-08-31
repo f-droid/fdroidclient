@@ -172,7 +172,9 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                     null,
                     table + "." + Cols.IS_LOCALIZED + " DESC"
                             + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                            + ", " + table + "." + Cols.ICON + " IS NULL ASC"
+                            + ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
+                            + "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
+                            + "        THEN 1 ELSE 0 END"
                             + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
                             + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
                             + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
