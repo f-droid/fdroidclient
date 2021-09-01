@@ -1208,6 +1208,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpUseBluetoothButton() {
         Button useBluetooth = findViewById(R.id.btn_use_bluetooth);
         if (useBluetooth != null) {
+            if (bluetoothAdapter == null) {
+                useBluetooth.setVisibility(View.GONE);
+            } else {
+                useBluetooth.setVisibility(View.VISIBLE);
+            }
             useBluetooth.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View v) {
