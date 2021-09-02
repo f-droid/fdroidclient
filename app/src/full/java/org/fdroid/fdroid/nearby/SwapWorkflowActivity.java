@@ -368,9 +368,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         localBroadcastManager.registerReceiver(bonjourFound, new IntentFilter(BonjourManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
-        localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bonjourStatusReceiver, new IntentFilter(BonjourManager.ACTION_STATUS));
         localBroadcastManager.registerReceiver(bluetoothFound, new IntentFilter(BluetoothManager.ACTION_FOUND));
-        localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bluetoothStatusReceiver, new IntentFilter(BluetoothManager.ACTION_STATUS));
 
         registerReceiver(bluetoothScanModeChanged,
                 new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
@@ -394,9 +394,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
         localBroadcastManager.unregisterReceiver(bonjourFound);
         localBroadcastManager.unregisterReceiver(bonjourRemoved);
-        localBroadcastManager.unregisterReceiver(bonjourStatus);
+        localBroadcastManager.unregisterReceiver(bonjourStatusReceiver);
         localBroadcastManager.unregisterReceiver(bluetoothFound);
-        localBroadcastManager.unregisterReceiver(bluetoothStatus);
+        localBroadcastManager.unregisterReceiver(bluetoothStatusReceiver);
     }
 
     @Override
@@ -1008,6 +1008,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void setUpStartVisibility() {
         TextView viewWifiNetwork = findViewById(R.id.wifi_network);
+        bluetoothStatusReceiver.onReceive(this, new Intent(BluetoothManager.ACTION_STATUS));
+        bonjourStatusReceiver.onReceive(this, new Intent(BonjourManager.ACTION_STATUS));
 
         viewWifiNetwork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1048,18 +1050,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    private final BroadcastReceiver bonjourStatus = new BroadcastReceiver() {
+    private final BroadcastReceiver bonjourStatusReceiver = new BroadcastReceiver() {
+
+        private volatile int bonjourStatus = BonjourManager.STATUS_STOPPED;
+
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            bonjourStatus = intent.getIntExtra(BonjourManager.EXTRA_STATUS, bonjourStatus);
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
             ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
-            if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null
-                    || !BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
+            if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
             }
-            int status = intent.getIntExtra(BonjourManager.EXTRA_STATUS, -1);
-            switch (status) {
+            switch (bonjourStatus) {
                 case BonjourManager.STATUS_STARTING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     peopleNearbyText.setText(R.string.swap_starting);
@@ -1150,22 +1157,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
-    private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
+    private final BroadcastReceiver bluetoothStatusReceiver = new BroadcastReceiver() {
+
+        private volatile int bluetoothStatus = BluetoothManager.STATUS_STOPPED;
+
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            bluetoothStatus = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, bluetoothStatus);
             SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
             ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
-                    || peopleNearbyText == null || peopleNearbyProgress == null
-                    || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                    || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
             }
-            int status = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, -1);
-            Log.i(TAG, "BluetoothManager.EXTRA_STATUS: " + status);
-            switch (status) {
+            switch (bluetoothStatus) {
                 case BluetoothManager.STATUS_STARTING:
                     bluetoothSwitch.setEnabled(false);
                     textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
