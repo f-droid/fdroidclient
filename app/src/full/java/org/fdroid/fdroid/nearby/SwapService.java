@@ -391,11 +391,12 @@ public class SwapService extends Service {
                 })
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .doOnError(e -> {
+                        .onErrorComplete(e -> {
                             Intent intent = new Intent(Downloader.ACTION_INTERRUPTED);
                             intent.setData(Uri.parse(repo.address));
                             intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
                             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+                            return true;
                         })
                         .subscribe()
         );
