@@ -877,12 +877,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             setUpFromWifi();
 
-            int wifiStatus = -1;
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
-            if (textWifiVisible != null) {
-                intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1);
+            if (textWifiVisible == null) {
+                return;
             }
-            switch (wifiStatus) {
+            switch (intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1)) {
                 case WifiManager.WIFI_STATE_ENABLING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     break;
