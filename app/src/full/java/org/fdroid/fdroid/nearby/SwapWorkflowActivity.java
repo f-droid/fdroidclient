@@ -1007,18 +1007,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpStartVisibility() {
-        TextView viewWifiNetwork = findViewById(R.id.wifi_network);
         bluetoothStatusReceiver.onReceive(this, new Intent(BluetoothManager.ACTION_STATUS));
         bonjourStatusReceiver.onReceive(this, new Intent(BonjourManager.ACTION_STATUS));
 
-        viewWifiNetwork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                promptToSelectWifiNetwork();
-            }
-        });
-
+        TextView viewWifiNetwork = findViewById(R.id.wifi_network);
         SwitchMaterial wifiSwitch = findViewById(R.id.switch_wifi);
+        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
+        MaterialButton appsButton = findViewById(R.id.btn_apps);
+        if (viewWifiNetwork == null || wifiSwitch == null || scanQrButton == null || appsButton == null) {
+            return;
+        }
+        viewWifiNetwork.setOnClickListener(v -> promptToSelectWifiNetwork());
+
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1036,10 +1036,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
         scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
 
-        MaterialButton appsButton = findViewById(R.id.btn_apps);
         appsButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_select_apps));
         appsButton.setEllipsize(TextUtils.TruncateAt.END);
 
