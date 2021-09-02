@@ -1108,13 +1108,24 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Add any new Bonjour devices that were found, as long as they are not
+     * already present.
+     *
+     * @see #bluetoothFound
+     * @see ArrayAdapter#getPosition(Object)
+     * @see java.util.List#indexOf(Object)
+     */
     private final BroadcastReceiver bonjourFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
-                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
+                Peer peer = intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER);
+                if (peopleNearbyAdapter.getPosition(peer) == -1) {
+                    peopleNearbyAdapter.add(peer);
+                }
             }
         }
     };
@@ -1205,13 +1216,24 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Add any new Bluetooth devices that were found, as long as they are not
+     * already present.
+     *
+     * @see #bonjourFound
+     * @see ArrayAdapter#getPosition(Object)
+     * @see java.util.List#indexOf(Object)
+     */
     private final BroadcastReceiver bluetoothFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
-                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BluetoothManager.EXTRA_PEER));
+                Peer peer = intent.getParcelableExtra(BluetoothManager.EXTRA_PEER);
+                if (peopleNearbyAdapter.getPosition(peer) == -1) {
+                    peopleNearbyAdapter.add(peer);
+                }
             }
         }
     };

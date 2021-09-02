@@ -20,6 +20,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -28,9 +31,6 @@ import org.fdroid.fdroid.nearby.peers.Peer;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
-
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
@@ -141,6 +141,9 @@ public class StartSwapView extends SwapView {
     /**
      * Setup the list of nearby peers with an adapter, and hide or show it and the associated
      * message for when no peers are nearby depending on what is happening.
+     *
+     * @see SwapWorkflowActivity#bonjourFound
+     * @see SwapWorkflowActivity#bluetoothFound
      */
     private void uiInitPeers() {
 
@@ -150,7 +153,11 @@ public class StartSwapView extends SwapView {
 
         peopleNearbyAdapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(peopleNearbyAdapter);
-        peopleNearbyAdapter.addAll(getActivity().getSwapService().getActivePeers());
+        for (Peer peer : getActivity().getSwapService().getActivePeers()) {
+            if (peopleNearbyAdapter.getPosition(peer) == -1) {
+                peopleNearbyAdapter.add(peer);
+            }
+        }
 
         peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
