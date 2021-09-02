@@ -84,6 +84,12 @@ import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
  * This activity will do its best to show the most relevant screen about swapping to the user.
  * The problem comes when there are two competing goals - 1) Show the user a list of apps from another
  * device to download and install, and 2) Prepare your own list of apps to share.
+ * There are lots of async events in this system, and the user can also change
+ * the views while things are working.  The {@link ViewGroup}
+ * {@link SwapWorkflowActivity#container} can have all its widgets removed and
+ * replaced by a new view at any point.  Therefore, any widget config that is
+ * based on fetching it from {@code container}  must check that the result is
+ * not null before trying to config it.
  */
 @SuppressWarnings("LineLength")
 public class SwapWorkflowActivity extends AppCompatActivity {
@@ -943,10 +949,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                                 ContextCompat.getColor(this, R.color.swap_blue)));
 
                         final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
-                        if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
-                            qrWarningMessage.setVisibility(View.GONE);
-                        } else {
-                            qrWarningMessage.setVisibility(View.VISIBLE);
+                        if (qrWarningMessage != null) {
+                            if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
+                                qrWarningMessage.setVisibility(View.GONE);
+                            } else {
+                                qrWarningMessage.setVisibility(View.VISIBLE);
+                            }
                         }
                     })
             );
@@ -965,6 +973,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         ImageView wifiIcon = container.findViewById(R.id.wifi_icon);
         TextView ssidView = container.findViewById(R.id.wifi_ssid);
         TextView tapView = container.findViewById(R.id.wifi_available_networks_prompt);
+        if (descriptionView == null || wifiIcon == null || ssidView == null || tapView == null) {
+            return;
+        }
         if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
             // empty bssid with an ipAddress means hotspot mode
             descriptionView.setText(R.string.swap_join_this_hotspot);
@@ -1213,12 +1224,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 useBluetooth.setVisibility(View.VISIBLE);
             }
-            useBluetooth.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showIntro();
-                    sendFDroidBluetooth();
-                }
+            useBluetooth.setOnClickListener(v -> {
+                showIntro();
+                sendFDroidBluetooth();
             });
         }
     }
@@ -1226,12 +1234,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpQrScannerButton() {
         Button openQr = findViewById(R.id.btn_qr_scanner);
         if (openQr != null) {
-            openQr.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    initiateQrScan();
-                }
-            });
+            openQr.setOnClickListener(v -> initiateQrScan());
         }
     }
 
@@ -1243,17 +1246,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         Button confirmReceiveYes = container.findViewById(R.id.confirm_receive_yes);
         if (confirmReceiveYes != null) {
-            findViewById(R.id.confirm_receive_yes).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    denySwap();
-                }
-            });
+            confirmReceiveYes.setOnClickListener(v -> denySwap());
         }
 
         Button confirmReceiveNo = container.findViewById(R.id.confirm_receive_no);
         if (confirmReceiveNo != null) {
-            findViewById(R.id.confirm_receive_no).setOnClickListener(new View.OnClickListener() {
+            confirmReceiveNo.setOnClickListener(new View.OnClickListener() {
 
                 private final NewRepoConfig config = confirmSwapConfig;
 
@@ -1267,13 +1265,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void setUpNfcView() {
         CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
-        dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Preferences.get().setShowNfcDuringSwap(!isChecked);
-            }
-        });
-
+        if (dontShowAgain != null) {
+            dontShowAgain.setOnCheckedChangeListener((buttonView, isChecked)
+                    -> Preferences.get().setShowNfcDuringSwap(!isChecked));
+        }
     }
 
     private void setUpConnectingProgressText(String message) {
@@ -1297,9 +1292,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
-
             if (progressBar == null || tryAgainButton == null) {
-                Utils.debugLog(TAG, "prepareSwapReceiver received intent without view: " + intent);
                 return;
             }
 
@@ -1348,9 +1341,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
-
             if (progressBar == null || tryAgainButton == null) {
-                Utils.debugLog(TAG, "repoUpdateReceiver received intent without view: " + intent);
                 return;
             }
 
@@ -1388,11 +1379,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpConnectingView() {
         TextView heading = container.findViewById(R.id.progress_text);
         heading.setText(R.string.swap_connecting);
-        container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAppsSelected();
-            }
-        });
+        Button tryAgainButton = container.findViewById(R.id.try_again);
+        if (tryAgainButton != null) {
+            tryAgainButton.setOnClickListener(v -> onAppsSelected());
+        }
     }
 }
