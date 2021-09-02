@@ -312,6 +312,9 @@ public class BonjourManager {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         Network activeNetwork = cm.getActiveNetwork();
         NetworkCapabilities caps = cm.getNetworkCapabilities(activeNetwork);
+        if (caps == null) {
+            return false;
+        }
         return caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN);
     }
 }
