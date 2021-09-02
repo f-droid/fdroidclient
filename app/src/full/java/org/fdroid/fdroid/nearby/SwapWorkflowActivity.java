@@ -258,7 +258,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         switch (currentView.getLayoutResId()) {
             case R.layout.swap_select_apps:
                 menuInflater.inflate(R.menu.swap_next_search, menu);
-                setUpNextButton(menu, R.string.next);
+                if (getSwapService().isConnectingWithPeer()) {
+                    setUpNextButton(menu, R.string.next, R.drawable.ic_nearby);
+                } else {
+                    setUpNextButton(menu, R.string.next, null);
+                }
                 setUpSearchView(menu);
                 return true;
             case R.layout.swap_success:
@@ -267,22 +271,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return true;
             case R.layout.swap_join_wifi:
                 menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.next);
+                setUpNextButton(menu, R.string.next, R.drawable.ic_arrow_forward);
                 return true;
             case R.layout.swap_nfc:
                 menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.skip);
+                setUpNextButton(menu, R.string.skip, R.drawable.ic_arrow_forward);
                 return true;
         }
 
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void setUpNextButton(Menu menu, @StringRes int titleResId) {
+    private void setUpNextButton(Menu menu, @StringRes int titleResId, Integer drawableResId) {
         MenuItem next = menu.findItem(R.id.action_next);
         CharSequence title = getString(titleResId);
         next.setTitle(title);
         next.setTitleCondensed(title);
+        if (drawableResId == null) {
+            next.setVisible(false);
+        } else {
+            next.setVisible(true);
+            next.setIcon(drawableResId);
+        }
         next.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
