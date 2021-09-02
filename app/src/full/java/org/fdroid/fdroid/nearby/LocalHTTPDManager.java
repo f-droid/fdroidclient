@@ -13,7 +13,6 @@ import org.fdroid.fdroid.Preferences;
 
 import java.io.IOException;
 import java.net.BindException;
-import java.util.Random;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -62,12 +61,11 @@ public class LocalHTTPDManager {
                     Intent intent = new Intent(ACTION_STARTED);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                 } catch (BindException e) {
-                    int prev = FDroidApp.port;
-                    FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
+                    FDroidApp.generateNewPort = true;
                     WifiStateChangeService.start(context, null);
                     Intent intent = new Intent(ACTION_ERROR);
                     intent.putExtra(Intent.EXTRA_TEXT,
-                            "port " + prev + " occupied, trying on " + FDroidApp.port + ": ("
+                            "port " + FDroidApp.port + " occupied, trying new port: ("
                                     + e.getLocalizedMessage() + ")");
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                 } catch (IOException e) {

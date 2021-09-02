@@ -72,6 +72,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
@@ -114,6 +115,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
+    public static volatile boolean generateNewPort;
     public static volatile String ipAddressString;
     public static volatile SubnetUtils.SubnetInfo subnetInfo;
     public static volatile String ssid;
@@ -229,10 +231,17 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     /**
      * Initialize the settings needed to run a local swap repo. This should
      * only ever be called in {@link WifiStateChangeService.WifiInfoThread},
-     * after the single init call in {@link FDroidApp#onCreate()}.
+     * after the single init call in {@link FDroidApp#onCreate()}.  If there is
+     * a port conflict on binding then {@code generateNewPort} will be set and
+     * the whole discovery process will be restarted in {@link WifiStateChangeService}
      */
     public static void initWifiSettings() {
-        port = 8888;
+        if (generateNewPort) {
+            port = new Random().nextInt(8888) + 1024;
+            generateNewPort = false;
+        } else {
+            port = 8888;
+        }
         ipAddressString = null;
         subnetInfo = UNSET_SUBNET_INFO;
         ssid = "";
