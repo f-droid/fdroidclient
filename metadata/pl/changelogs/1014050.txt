@@ -1,0 +1,11 @@
+* Przebudowano menu udostępniania, aby korzystać z wbudowanych opcji, takich jak W pobliżu.
+
+* Poprawiono Material Design (@proletarius101)
+
+* Aplikacje bez ikon w PNG są teraz wyświetlane w karcie Ostatnie (@ashutoshgngwr)
+
+* Poprawiono udostępnianie w trybie offline, w pobliżu
+
+* Zablokowano dodawanie nowych repozytoriów, gdy administrator urządzenia nie pozwala na „Nieznane źródła”
+
+* Naprawiono awarię podczas korzystania z repozytoriów z nazwą użytkownika/hasłem
