@@ -533,4 +533,7 @@
     <string name="banner_no_data_or_wifi">הרשתות האלחוטית והסלולרית מושבתות</string>
     <string name="banner_no_internet">אין אינטרנט</string>
     <string name="share_apk_error">לא ניתן לשתף קובץ יישומון</string>
+    <string name="swap_wifi_vpn_conflict">סותר VPN פעיל!</string>
+    <string name="has_disallow_install_unknown_sources">למשתמש הזה אין אפשרות להוסיף מקורות לא ידועים, לרבות מאגרים חדשים</string>
+    <string name="has_disallow_install_unknown_sources_globally">הנהלת המכשיר שלך לא מאפשרת התקנת יישומים ממקורות לא ידועים, לרבות מאגרים חדשים</string>
 </resources>
