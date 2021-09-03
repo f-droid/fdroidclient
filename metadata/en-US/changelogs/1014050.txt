@@ -1,5 +1,7 @@
 * Overhaul Share menu to use built-in options like Nearby.
 
+* Improved Nearby workflow and navigation, with lots of bug fixes.
+
 * Material design improvements (@proletarius101)
 
 * Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)

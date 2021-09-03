@@ -1,5 +1,7 @@
 ### 1.14-alpha1 (2021-09-03)
 
+* Improved Nearby workflow and navigation, with lots of bug fixes.
+
 * Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)
 
 ### 1.14-alpha0 (2021-08-27)
