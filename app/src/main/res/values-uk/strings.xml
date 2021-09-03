@@ -348,7 +348,7 @@
         <item quantity="many">Огляд усіх %d застосунків</item>
         <item quantity="other">Огляд усіх %d застосунків</item>
     </plurals>
-    <string name="nearby_splash__both_parties_need_fdroid">Обидві сторони мають %1$s використовувати поруч.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Щоб користуватися «Поруч», обидві сторони повинні встановити %1$s.</string>
     <string name="app__tts__downloading_progress">Завантаження, %1$d%% завершено</string>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d оновлення</item>
@@ -531,4 +531,5 @@
     <string name="share_apk_error">Не вдалося надіслати файл застосунку</string>
     <string name="has_disallow_install_unknown_sources">Цей користувач не може додати невідомі джерела, які містять нові репозиторії</string>
     <string name="has_disallow_install_unknown_sources_globally">Адміністратор пристрою не дозволяє встановлювати застосунки з невідомих джерел, що містять нові репозиторії</string>
+    <string name="swap_wifi_vpn_conflict">Конфлікти з активною VPN!</string>
 </resources>
