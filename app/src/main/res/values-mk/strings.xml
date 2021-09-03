@@ -215,4 +215,5 @@
     <string name="use_bluetooth">Користи Bluetooth</string>
     <string name="adding_apks_format">Додавање на %s во складиштето…</string>
     <string name="swap_scan_qr">QR-код</string>
+    <string name="apps">Апликации</string>
 </resources>

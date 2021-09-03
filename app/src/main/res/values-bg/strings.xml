@@ -528,4 +528,5 @@
     <string name="banner_no_data_or_wifi">Мобилните данни и W-iFi са изключени</string>
     <string name="banner_no_internet">Няма интернет</string>
     <string name="share_apk_error">Грешка при споделяне на файл на приложение</string>
+    <string name="apps">Приложения</string>
 </resources>

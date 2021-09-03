@@ -516,4 +516,5 @@
     <string name="fdroid_metrics_report">%s gebruikersverslag</string>
     <string name="install_history_and_metrics">installasie geskiedenis en gebruikers data</string>
     <string name="send_fdroid_metrics_json">%s gebruikersverslag as \'n JSON lêer</string>
+    <string name="apps">Apps</string>
 </resources>

@@ -166,7 +166,7 @@
     <string name="swap_setting_up_wifi">Подешавам бежични…</string>
     <string name="swap_wifi_device_name">Назив уређаја</string>
     <string name="swap_send_fdroid">Пошаљи Ф-дроид</string>
-    <string name="apps">Програми</string>
+    <string name="apps">Aпликације</string>
     <string name="swap_connecting">Повезивање</string>
     <string name="swap_confirm">Потврдите размену</string>
     <string name="loading">Учитава се…</string>
@@ -200,7 +200,7 @@
     </string>
     <string name="swap_switch_to_wifi">Тапните ради пребацивања на бежичну мрежу</string>
     <string name="empty_can_update_app_list">Честитке!
-\nПрограми су надграђени.</string>
+\nAпликације су надграђени.</string>
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражим људе у близини…</string>
     <string name="empty_installed_app_list">Нема уграђених програма.
@@ -468,7 +468,7 @@
     <string name="allow_push_requests_summary">Метаподаци о ризници могу садржати захтеве за уградњу и уклањање програма</string>
     <string name="send_history_csv">%s белешке о уградњи као датотека ЦСВ-а</string>
     <string name="updates_disabled_by_settings">Све надградње су онемогућене поставкама мобилне/бежичне мреже</string>
-    <string name="send_installed_apps_csv">Програми уграђени преко Ф-дроида као датотеке ЦСВ-а</string>
+    <string name="send_installed_apps_csv">Aпликације уграђени преко Ф-дроида као датотеке ЦСВ-а</string>
     <string name="menu_downgrade">Разгради</string>
     <string name="app_repository">Ризница: %1$s</string>
     <string name="scan_removable_storage_title">Прегледај уклоњиво складиште</string>
@@ -488,7 +488,7 @@
     <string name="menu_select_for_wipe">Означи за брисање</string>
     <string name="try_again">Покушај поново</string>
     <string name="panic_will_be_wiped">Биће уклоњени и сви подаци избрисани</string>
-    <string name="panic_apps_to_uninstall">Програми који ће се уклањати и подаци брисати</string>
+    <string name="panic_apps_to_uninstall">Aпликације који ће се уклањати и подаци брисати</string>
     <string name="panic_add_apps_to_uninstall">Додај програме који ће се уклањати и брисати</string>
     <string name="panic_reset_repos_title">Врати ризнице на подразумевано</string>
     <string name="panic_reset_repos_summary">Присили поставке ризница на почетне вредности</string>
