@@ -16,13 +16,6 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.ServiceCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NotificationHelper;
 import org.fdroid.fdroid.Preferences;
@@ -45,6 +38,12 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.ServiceCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
@@ -52,8 +51,9 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
- * Central service which manages all of the different moving parts of swap which are required
- * to enable p2p swapping of apps.
+ * Central service which manages all of the different moving parts of swap
+ * which are required to enable p2p swapping of apps.  This is the background
+ * operations for {@link SwapWorkflowActivity}.
  */
 public class SwapService extends Service {
     private static final String TAG = "SwapService";
@@ -391,11 +391,12 @@ public class SwapService extends Service {
                 })
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .doOnError(e -> {
+                        .onErrorComplete(e -> {
                             Intent intent = new Intent(Downloader.ACTION_INTERRUPTED);
                             intent.setData(Uri.parse(repo.address));
                             intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
                             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+                            return true;
                         })
                         .subscribe()
         );

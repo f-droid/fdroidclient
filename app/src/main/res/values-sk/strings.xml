@@ -517,4 +517,5 @@
     <string name="swap_toast_closing_nearby_after_timeout">Funkcia Nablízko ukončená kvôli nečinnosti.</string>
     <string name="nearby_splash__document_tree">Hľadať repozitáre a mirrory na zariadení USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
+    <string name="apps">Aplikácie</string>
 </resources>

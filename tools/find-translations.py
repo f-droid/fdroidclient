@@ -36,6 +36,7 @@ keymap = {
     'settings_button': 'menu_settings',
     'uninstall_application_text': 'uninstall_confirm',
     'uninstall_update_text': 'uninstall_update_confirm',
+    'app_and_notification_dashboard_title': 'apps',
 }
 
 

@@ -31,7 +31,7 @@
     <string name="search_hint">Пошук застосунків</string>
     <string name="appcompatibility">Сумісність застосунків</string>
     <string name="app_name">F-Droid</string>
-    <string name="installIncompatible">Застосунок несумісний з вашим пристроєм, все одно встановити\?</string>
+    <string name="installIncompatible">Додатки несумісний з вашим пристроєм, все одно встановити\?</string>
     <string name="delete">Видалити</string>
     <string name="other">Інше</string>
     <string name="update_interval">Інтервал автооновлення</string>
@@ -77,7 +77,7 @@
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
-    <string name="antinonfreedeplist">Застосунок залежить від інших не вільних застосунків</string>
+    <string name="antinonfreedeplist">Додатки залежить від інших не вільних застосунків</string>
     <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
@@ -129,7 +129,7 @@
     <string name="swap_scan_qr">QR-код</string>
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
-    <string name="apps">Застосунки</string>
+    <string name="apps">Додатки</string>
     <string name="swap_connecting">Підключення</string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>
@@ -417,9 +417,9 @@
     <string name="panic_app_dialog_message">Ви впевнені, що бажаєте дозволити %1$s виконувати дію тривожної кнопки?</string>
     <string name="panic_settings">Налаштування тривожної кнопки</string>
     <string name="panic_settings_summary">Заходи, які необхідно вжити в екстрених випадках</string>
-    <string name="panic_exit_summary">Застосунок буде закрито</string>
+    <string name="panic_exit_summary">Додатки буде закрито</string>
     <string name="panic_destructive_actions">Деструктивні дії</string>
-    <string name="panic_hide_summary">Застосунок приховає себе</string>
+    <string name="panic_hide_summary">Додатки приховає себе</string>
     <string name="panic_hide_warning_title">Запам\'ятайте, як відновити</string>
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Приховати %s зараз</string>

@@ -63,7 +63,7 @@
     <string name="category_Sports_Health">കായികവും ആരോഗ്യവും</string>
     <string name="category_System">ഉപകരണ സംബന്ധം</string>
     <string name="swap_send_fdroid">ഈ ആപ്പ് അയക്കുക</string>
-    <string name="apps">അപ്ലിക്കേഷനുകൾ</string>
+    <string name="apps">ആപ്പുകൾ</string>
     <string name="crash_dialog_title">എഫ്-ഡ്രോയ്ഡ് തകര്‍ന്നു</string>
     <string name="crash_dialog_text">പ്രയോഗം നിർത്തുന്നതില്‍ ഒരു അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. പ്രശ്നം പരിഹരിക്കാൻ സഹായിക്കുന്നതിന് വിശദാംശങ്ങൾ ഇ-മെയിൽ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
     <string name="notification_title_single_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>

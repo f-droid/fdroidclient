@@ -505,4 +505,5 @@
     <string name="install_history_and_metrics">Installér historik og måling</string>
     <string name="send_fdroid_metrics_json">%s målerapport som en JSON-fil</string>
     <string name="send_fdroid_metrics_report">Send %s målerapport</string>
+    <string name="apps">Apps</string>
 </resources>

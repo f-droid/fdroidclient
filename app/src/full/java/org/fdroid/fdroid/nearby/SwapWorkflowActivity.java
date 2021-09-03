@@ -63,6 +63,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -81,9 +82,27 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
 /**
- * This activity will do its best to show the most relevant screen about swapping to the user.
- * The problem comes when there are two competing goals - 1) Show the user a list of apps from another
- * device to download and install, and 2) Prepare your own list of apps to share.
+ * This is the core of the UI for the whole nearby swap experience.  Each
+ * screen is implemented as a {@link View} with the related logic in this
+ * {@link android.app.Activity}. Long lived pieces work in {@link SwapService}.
+ * All these pieces of the UX are tracked here:
+ * <ul>
+ * <li>which WiFi network to use</li>
+ * <li>whether to advertise via Bluetooth or WiFi+Bonjour</li>
+ * <li>connect to another device's swap</li>
+ * <li>choose which apps to share</li>
+ * <li>ask if the other device would like to swap with us</li>
+ * <li>help connect via QR Code or NFC</li>
+ * </ul>
+ * <p>
+ * There are lots of async events in this system, and the user can also change
+ * the views while things are working.  The {@link ViewGroup}
+ * {@link SwapWorkflowActivity#container} can have all its widgets removed and
+ * replaced by a new view at any point.  Therefore, any widget config that is
+ * based on fetching it from {@code container}  must check that the result is
+ * not null before trying to config it.
+ *
+ * @see <a href="https://developer.squareup.com/blog/advocating-against-android-fragments/"></a>
  */
 @SuppressWarnings("LineLength")
 public class SwapWorkflowActivity extends AppCompatActivity {
@@ -104,7 +123,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
-    private static final int STEP_INTRO = 1;  // TODO remove this special case, only use layoutResIds
 
     private MaterialToolbar toolbar;
     private SwapView currentView;
@@ -117,7 +135,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private BluetoothAdapter bluetoothAdapter;
 
     @LayoutRes
-    private int currentSwapViewLayoutRes = STEP_INTRO;
+    private int currentSwapViewLayoutRes = R.layout.swap_start_swap;
+    private final Stack<Integer> backstack = new Stack<>();
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -155,49 +174,76 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         return service;
     }
 
+    /**
+     * Handle the back logic for the system back button.
+     *
+     * @see #inflateSwapView(int, boolean)
+     */
     @Override
     public void onBackPressed() {
-        if (currentView.getLayoutResId() == STEP_INTRO) {
-            SwapService.stop(this);
-            finish();
+        if (backstack.isEmpty()) {
+            super.onBackPressed();
         } else {
-            // TODO: Currently StartSwapView is handleed by the SwapWorkflowActivity as a special case, where
-            // if getLayoutResId is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
-            // bit messy. It would be nicer if this was handled using the same mechanism as everything
-            // else.
-            int nextStep = -1;
-            switch (currentView.getLayoutResId()) {
-                case R.layout.swap_confirm_receive:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_connecting:
-                    nextStep = R.layout.swap_select_apps;
-                    break;
-                case R.layout.swap_join_wifi:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_nfc:
-                    nextStep = R.layout.swap_join_wifi;
-                    break;
-                case R.layout.swap_select_apps:
-                    nextStep = getSwapService().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
-                    break;
-                case R.layout.swap_send_fdroid:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_start_swap:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_success:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_wifi_qr:
-                    nextStep = R.layout.swap_join_wifi;
-                    break;
-            }
-            currentSwapViewLayoutRes = nextStep;
-            showRelevantView();
+            int resId = backstack.pop();
+            inflateSwapView(resId, true);
         }
+    }
+
+    /**
+     * Handle the back logic for the upper left back button in the toolbar.
+     * This has a simpler, hard-coded back logic than the system back button.
+     *
+     * @see #onBackPressed()
+     */
+    public void onToolbarBackPressed() {
+        int nextStep = R.layout.swap_start_swap;
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_confirm_receive:
+                nextStep = backstack.peek();
+                break;
+            case R.layout.swap_connecting:
+                nextStep = R.layout.swap_select_apps;
+                break;
+            case R.layout.swap_join_wifi:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_nfc:
+                nextStep = R.layout.swap_join_wifi;
+                break;
+            case R.layout.swap_select_apps:
+                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
+                    nextStep = R.layout.swap_start_swap;
+                } else if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                    nextStep = R.layout.swap_success;
+                } else {
+                    nextStep = R.layout.swap_join_wifi;
+                }
+                break;
+            case R.layout.swap_send_fdroid:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_start_swap:
+                if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                    nextStep = R.layout.swap_success;
+                } else {
+                    SwapService.stop(this);
+                    finish();
+                    return;
+                }
+                break;
+            case R.layout.swap_success:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_wifi_qr:
+                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
+                    nextStep = R.layout.swap_start_swap;
+                } else {
+                    nextStep = R.layout.swap_join_wifi;
+                }
+                break;
+        }
+        currentSwapViewLayoutRes = nextStep;
+        inflateSwapView(currentSwapViewLayoutRes);
     }
 
     @Override
@@ -223,6 +269,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.container);
+
+        backstack.clear();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
@@ -252,7 +300,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         switch (currentView.getLayoutResId()) {
             case R.layout.swap_select_apps:
                 menuInflater.inflate(R.menu.swap_next_search, menu);
-                setUpNextButton(menu, R.string.next);
+                if (getSwapService().isConnectingWithPeer()) {
+                    setUpNextButton(menu, R.string.next, R.drawable.ic_nearby);
+                } else {
+                    setUpNextButton(menu, R.string.next, null);
+                }
                 setUpSearchView(menu);
                 return true;
             case R.layout.swap_success:
@@ -261,22 +313,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return true;
             case R.layout.swap_join_wifi:
                 menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.next);
+                setUpNextButton(menu, R.string.next, R.drawable.ic_arrow_forward);
                 return true;
             case R.layout.swap_nfc:
                 menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.skip);
+                setUpNextButton(menu, R.string.skip, R.drawable.ic_arrow_forward);
                 return true;
         }
 
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void setUpNextButton(Menu menu, @StringRes int titleResId) {
+    private void setUpNextButton(Menu menu, @StringRes int titleResId, Integer drawableResId) {
         MenuItem next = menu.findItem(R.id.action_next);
         CharSequence title = getString(titleResId);
         next.setTitle(title);
         next.setTitleCondensed(title);
+        if (drawableResId == null) {
+            next.setVisible(false);
+        } else {
+            next.setVisible(true);
+            next.setIcon(drawableResId);
+        }
         next.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -303,8 +361,15 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpSearchView(Menu menu) {
-        SearchView searchView = new SearchView(this);
+        MenuItem appsMenuItem = menu.findItem(R.id.action_apps);
+        if (appsMenuItem != null) {
+            appsMenuItem.setOnMenuItemClickListener(item -> {
+                inflateSwapView(R.layout.swap_select_apps);
+                return true;
+            });
+        }
 
+        SearchView searchView = new SearchView(this);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         searchMenuItem.setActionView(searchView);
         searchMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -352,9 +417,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         localBroadcastManager.registerReceiver(bonjourFound, new IntentFilter(BonjourManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
-        localBroadcastManager.registerReceiver(bonjourStatus, new IntentFilter(BonjourManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bonjourStatusReceiver, new IntentFilter(BonjourManager.ACTION_STATUS));
         localBroadcastManager.registerReceiver(bluetoothFound, new IntentFilter(BluetoothManager.ACTION_FOUND));
-        localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
+        localBroadcastManager.registerReceiver(bluetoothStatusReceiver, new IntentFilter(BluetoothManager.ACTION_STATUS));
 
         registerReceiver(bluetoothScanModeChanged,
                 new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
@@ -378,9 +443,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
         localBroadcastManager.unregisterReceiver(bonjourFound);
         localBroadcastManager.unregisterReceiver(bonjourRemoved);
-        localBroadcastManager.unregisterReceiver(bonjourStatus);
+        localBroadcastManager.unregisterReceiver(bonjourStatusReceiver);
         localBroadcastManager.unregisterReceiver(bluetoothFound);
-        localBroadcastManager.unregisterReceiver(bluetoothStatus);
+        localBroadcastManager.unregisterReceiver(bluetoothStatusReceiver);
     }
 
     @Override
@@ -462,6 +527,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handle events that trigger different swap views to be shown.
+     */
     private void showRelevantView() {
 
         if (confirmSwapConfig != null) {
@@ -472,7 +540,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
 
         switch (currentSwapViewLayoutRes) {
-            case STEP_INTRO:
+            case R.layout.swap_start_swap:
                 showIntro();
                 return;
             case R.layout.swap_nfc:
@@ -490,7 +558,35 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void inflateSwapView(@LayoutRes int viewRes) {
+        inflateSwapView(viewRes, false);
+    }
+
+    /**
+     * The {@link #backstack} for the global back button is managed mostly here.
+     * The initial screen is never added to the {@code backstack} since the
+     * empty state is used to detect that the system's backstack should be used.
+     */
+    public void inflateSwapView(@LayoutRes int viewRes, boolean backPressed) {
         getSwapService().initTimer();
+
+        if (!backPressed) {
+            switch (currentSwapViewLayoutRes) {
+                case R.layout.swap_connecting:
+                case R.layout.swap_confirm_receive:
+                    // do not add to backstack
+                    break;
+                default:
+                    if (backstack.isEmpty()) {
+                        if (viewRes != R.layout.swap_start_swap) {
+                            backstack.push(currentSwapViewLayoutRes);
+                        }
+                    } else {
+                        if (backstack.peek() != currentSwapViewLayoutRes) {
+                            backstack.push(currentSwapViewLayoutRes);
+                        }
+                    }
+            }
+        }
 
         container.removeAllViews();
         View view = ContextCompat.getSystemService(this, LayoutInflater.class)
@@ -500,11 +596,17 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         currentSwapViewLayoutRes = viewRes;
 
         toolbar.setTitle(currentView.getToolbarTitle());
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onToolbarCancel();
+        toolbar.setNavigationOnClickListener(v -> onToolbarBackPressed());
+        toolbar.setNavigationOnClickListener(v -> {
+            switch (currentView.getLayoutResId()) {
+                case R.layout.swap_start_swap:
+                    SwapService.stop(this);
+                    finish();
+                    return;
+                default:
+                    currentSwapViewLayoutRes = R.layout.swap_start_swap;
             }
+            inflateSwapView(currentSwapViewLayoutRes);
         });
         container.addView(view);
         supportInvalidateOptionsMenu();
@@ -531,11 +633,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 setUpStartVisibility();
                 break;
         }
-    }
-
-    private void onToolbarCancel() {
-        SwapService.stop(this);
-        finish();
     }
 
     public void showIntro() {
@@ -673,10 +770,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void swapWith(NewRepoConfig repoConfig) {
         Peer peer = repoConfig.toPeer();
-        if (currentSwapViewLayoutRes == STEP_INTRO || currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
+        if (currentSwapViewLayoutRes == R.layout.swap_start_swap
+                || currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
             // This will force the "Select apps to swap" workflow to begin.
-            // TODO: Find a better way to decide whether we need to select the apps. Not sure if we
-            //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
             swapWith(peer);
         } else {
             getSwapService().swapWith(peer);
@@ -861,12 +957,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             setUpFromWifi();
 
-            int wifiStatus = -1;
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
-            if (textWifiVisible != null) {
-                intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1);
+            if (textWifiVisible == null) {
+                return;
             }
-            switch (wifiStatus) {
+            switch (intent.getIntExtra(WifiStateChangeService.EXTRA_STATUS, -1)) {
                 case WifiManager.WIFI_STATE_ENABLING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     break;
@@ -943,10 +1038,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                                 ContextCompat.getColor(this, R.color.swap_blue)));
 
                         final View qrWarningMessage = container.findViewById(R.id.warning_qr_scanner);
-                        if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
-                            qrWarningMessage.setVisibility(View.GONE);
-                        } else {
-                            qrWarningMessage.setVisibility(View.VISIBLE);
+                        if (qrWarningMessage != null) {
+                            if (CameraCharacteristicsChecker.getInstance(this).hasAutofocus()) {
+                                qrWarningMessage.setVisibility(View.GONE);
+                            } else {
+                                qrWarningMessage.setVisibility(View.VISIBLE);
+                            }
                         }
                     })
             );
@@ -965,6 +1062,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         ImageView wifiIcon = container.findViewById(R.id.wifi_icon);
         TextView ssidView = container.findViewById(R.id.wifi_ssid);
         TextView tapView = container.findViewById(R.id.wifi_available_networks_prompt);
+        if (descriptionView == null || wifiIcon == null || ssidView == null || tapView == null) {
+            return;
+        }
         if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
             // empty bssid with an ipAddress means hotspot mode
             descriptionView.setText(R.string.swap_join_this_hotspot);
@@ -987,16 +1087,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpStartVisibility() {
+        bluetoothStatusReceiver.onReceive(this, new Intent(BluetoothManager.ACTION_STATUS));
+        bonjourStatusReceiver.onReceive(this, new Intent(BonjourManager.ACTION_STATUS));
+
         TextView viewWifiNetwork = findViewById(R.id.wifi_network);
-
-        viewWifiNetwork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                promptToSelectWifiNetwork();
-            }
-        });
-
         SwitchMaterial wifiSwitch = findViewById(R.id.switch_wifi);
+        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
+        MaterialButton appsButton = findViewById(R.id.btn_apps);
+        if (viewWifiNetwork == null || wifiSwitch == null || scanQrButton == null || appsButton == null) {
+            return;
+        }
+        viewWifiNetwork.setOnClickListener(v -> promptToSelectWifiNetwork());
+
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1014,10 +1116,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
         scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
 
-        MaterialButton appsButton = findViewById(R.id.btn_apps);
         appsButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_select_apps));
         appsButton.setEllipsize(TextUtils.TruncateAt.END);
 
@@ -1028,18 +1128,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    private final BroadcastReceiver bonjourStatus = new BroadcastReceiver() {
+    private final BroadcastReceiver bonjourStatusReceiver = new BroadcastReceiver() {
+
+        private volatile int bonjourStatus = BonjourManager.STATUS_STOPPED;
+
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            bonjourStatus = intent.getIntExtra(BonjourManager.EXTRA_STATUS, bonjourStatus);
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
             ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
-            if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null
-                    || !BonjourManager.ACTION_STATUS.equals(intent.getAction())) {
+            if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
             }
-            int status = intent.getIntExtra(BonjourManager.EXTRA_STATUS, -1);
-            switch (status) {
+            switch (bonjourStatus) {
                 case BonjourManager.STATUS_STARTING:
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     peopleNearbyText.setText(R.string.swap_starting);
@@ -1097,13 +1202,24 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Add any new Bonjour devices that were found, as long as they are not
+     * already present.
+     *
+     * @see #bluetoothFound
+     * @see ArrayAdapter#getPosition(Object)
+     * @see java.util.List#indexOf(Object)
+     */
     private final BroadcastReceiver bonjourFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
-                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER));
+                Peer peer = intent.getParcelableExtra(BonjourManager.EXTRA_BONJOUR_PEER);
+                if (peopleNearbyAdapter.getPosition(peer) == -1) {
+                    peopleNearbyAdapter.add(peer);
+                }
             }
         }
     };
@@ -1119,22 +1235,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
-    private final BroadcastReceiver bluetoothStatus = new BroadcastReceiver() {
+    private final BroadcastReceiver bluetoothStatusReceiver = new BroadcastReceiver() {
+
+        private volatile int bluetoothStatus = BluetoothManager.STATUS_STOPPED;
+
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                return;
+            }
+            bluetoothStatus = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, bluetoothStatus);
             SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
             ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
-                    || peopleNearbyText == null || peopleNearbyProgress == null
-                    || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
+                    || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
             }
-            int status = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, -1);
-            Log.i(TAG, "BluetoothManager.EXTRA_STATUS: " + status);
-            switch (status) {
+            switch (bluetoothStatus) {
                 case BluetoothManager.STATUS_STARTING:
                     bluetoothSwitch.setEnabled(false);
                     textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
@@ -1194,13 +1314,24 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Add any new Bluetooth devices that were found, as long as they are not
+     * already present.
+     *
+     * @see #bonjourFound
+     * @see ArrayAdapter#getPosition(Object)
+     * @see java.util.List#indexOf(Object)
+     */
     private final BroadcastReceiver bluetoothFound = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ListView peopleNearbyList = container.findViewById(R.id.list_people_nearby);
             if (peopleNearbyList != null) {
                 ArrayAdapter<Peer> peopleNearbyAdapter = (ArrayAdapter<Peer>) peopleNearbyList.getAdapter();
-                peopleNearbyAdapter.add((Peer) intent.getParcelableExtra(BluetoothManager.EXTRA_PEER));
+                Peer peer = intent.getParcelableExtra(BluetoothManager.EXTRA_PEER);
+                if (peopleNearbyAdapter.getPosition(peer) == -1) {
+                    peopleNearbyAdapter.add(peer);
+                }
             }
         }
     };
@@ -1208,12 +1339,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpUseBluetoothButton() {
         Button useBluetooth = findViewById(R.id.btn_use_bluetooth);
         if (useBluetooth != null) {
-            useBluetooth.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showIntro();
-                    sendFDroidBluetooth();
-                }
+            if (bluetoothAdapter == null) {
+                useBluetooth.setVisibility(View.GONE);
+            } else {
+                useBluetooth.setVisibility(View.VISIBLE);
+            }
+            useBluetooth.setOnClickListener(v -> {
+                showIntro();
+                sendFDroidBluetooth();
             });
         }
     }
@@ -1221,12 +1354,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpQrScannerButton() {
         Button openQr = findViewById(R.id.btn_qr_scanner);
         if (openQr != null) {
-            openQr.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    initiateQrScan();
-                }
-            });
+            openQr.setOnClickListener(v -> initiateQrScan());
         }
     }
 
@@ -1238,17 +1366,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         Button confirmReceiveYes = container.findViewById(R.id.confirm_receive_yes);
         if (confirmReceiveYes != null) {
-            findViewById(R.id.confirm_receive_yes).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    denySwap();
-                }
-            });
+            confirmReceiveYes.setOnClickListener(v -> denySwap());
         }
 
         Button confirmReceiveNo = container.findViewById(R.id.confirm_receive_no);
         if (confirmReceiveNo != null) {
-            findViewById(R.id.confirm_receive_no).setOnClickListener(new View.OnClickListener() {
+            confirmReceiveNo.setOnClickListener(new View.OnClickListener() {
 
                 private final NewRepoConfig config = confirmSwapConfig;
 
@@ -1262,13 +1385,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void setUpNfcView() {
         CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
-        dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Preferences.get().setShowNfcDuringSwap(!isChecked);
-            }
-        });
-
+        if (dontShowAgain != null) {
+            dontShowAgain.setOnCheckedChangeListener((buttonView, isChecked)
+                    -> Preferences.get().setShowNfcDuringSwap(!isChecked));
+        }
     }
 
     private void setUpConnectingProgressText(String message) {
@@ -1292,9 +1412,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
-
             if (progressBar == null || tryAgainButton == null) {
-                Utils.debugLog(TAG, "prepareSwapReceiver received intent without view: " + intent);
                 return;
             }
 
@@ -1343,9 +1461,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             ProgressBar progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
-
             if (progressBar == null || tryAgainButton == null) {
-                Utils.debugLog(TAG, "repoUpdateReceiver received intent without view: " + intent);
                 return;
             }
 
@@ -1383,11 +1499,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void setUpConnectingView() {
         TextView heading = container.findViewById(R.id.progress_text);
         heading.setText(R.string.swap_connecting);
-        container.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAppsSelected();
-            }
-        });
+        Button tryAgainButton = container.findViewById(R.id.try_again);
+        if (tryAgainButton != null) {
+            tryAgainButton.setOnClickListener(v -> onAppsSelected());
+        }
     }
 }

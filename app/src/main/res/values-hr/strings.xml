@@ -229,7 +229,7 @@
     <string name="swap_wifi_device_name">Ime uređja</string>
     <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
     <string name="swap_send_fdroid">Pošalji F-Droid</string>
-    <string name="apps">Programi</string>
+    <string name="apps">Aplikacije</string>
     <string name="swap_no_peers_nearby">Nije uspjelo traženje ljudi u blizini.</string>
     <string name="swap_connecting">Povezivanje</string>
     <string name="swap_confirm">Potvrdi razmjenu</string>

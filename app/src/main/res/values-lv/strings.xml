@@ -411,4 +411,5 @@
     <string name="send_installed_apps">Dalīt instalētās aplikācijas</string>
     <string name="installed_apps__activity_title">Instalētās Aplikācijas</string>
     <string name="scan_removable_storage_toast">Skenē %s…</string>
+    <string name="apps">Lietotnes</string>
 </resources>

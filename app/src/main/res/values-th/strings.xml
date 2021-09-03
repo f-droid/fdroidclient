@@ -384,4 +384,5 @@
     <string name="fdroid_metrics_report">รายงานเมตริก%s</string>
     <string name="install_history_and_metrics">ประวัติการติดตั้งและเมตริก</string>
     <string name="send_fdroid_metrics_json">%s รายงานเมตริกเป็นไฟล์ JSON</string>
+    <string name="apps">แอพ</string>
 </resources>

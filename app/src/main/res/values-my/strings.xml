@@ -281,4 +281,5 @@
     <string name="notification_action_install">ထားမည်</string>
     <string name="notification_action_cancel">မလုပ်တော့</string>
     <string name="notification_action_update">နောက်ဆုံးတင်ရန်</string>
+    <string name="apps">အက်ပ</string>
 </resources>
