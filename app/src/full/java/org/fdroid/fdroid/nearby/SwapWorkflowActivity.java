@@ -63,6 +63,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -81,15 +82,27 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
 /**
- * This activity will do its best to show the most relevant screen about swapping to the user.
- * The problem comes when there are two competing goals - 1) Show the user a list of apps from another
- * device to download and install, and 2) Prepare your own list of apps to share.
+ * This is the core of the UI for the whole nearby swap experience.  Each
+ * screen is implemented as a {@link View} with the related logic in this
+ * {@link android.app.Activity}. Long lived pieces work in {@link SwapService}.
+ * All these pieces of the UX are tracked here:
+ * <ul>
+ * <li>which WiFi network to use</li>
+ * <li>whether to advertise via Bluetooth or WiFi+Bonjour</li>
+ * <li>connect to another device's swap</li>
+ * <li>choose which apps to share</li>
+ * <li>ask if the other device would like to swap with us</li>
+ * <li>help connect via QR Code or NFC</li>
+ * </ul>
+ * <p>
  * There are lots of async events in this system, and the user can also change
  * the views while things are working.  The {@link ViewGroup}
  * {@link SwapWorkflowActivity#container} can have all its widgets removed and
  * replaced by a new view at any point.  Therefore, any widget config that is
  * based on fetching it from {@code container}  must check that the result is
  * not null before trying to config it.
+ *
+ * @see <a href="https://developer.squareup.com/blog/advocating-against-android-fragments/"></a>
  */
 @SuppressWarnings("LineLength")
 public class SwapWorkflowActivity extends AppCompatActivity {
@@ -110,7 +123,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
     private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
     private static final int REQUEST_WRITE_SETTINGS_PERMISSION = 5;
-    private static final int STEP_INTRO = 1;  // TODO remove this special case, only use layoutResIds
 
     private MaterialToolbar toolbar;
     private SwapView currentView;
@@ -123,7 +135,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private BluetoothAdapter bluetoothAdapter;
 
     @LayoutRes
-    private int currentSwapViewLayoutRes = STEP_INTRO;
+    private int currentSwapViewLayoutRes = R.layout.swap_start_swap;
+    private final Stack<Integer> backstack = new Stack<>();
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -161,49 +174,76 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         return service;
     }
 
+    /**
+     * Handle the back logic for the system back button.
+     *
+     * @see #inflateSwapView(int, boolean)
+     */
     @Override
     public void onBackPressed() {
-        if (currentView.getLayoutResId() == STEP_INTRO) {
-            SwapService.stop(this);
-            finish();
+        if (backstack.isEmpty()) {
+            super.onBackPressed();
         } else {
-            // TODO: Currently StartSwapView is handleed by the SwapWorkflowActivity as a special case, where
-            // if getLayoutResId is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
-            // bit messy. It would be nicer if this was handled using the same mechanism as everything
-            // else.
-            int nextStep = -1;
-            switch (currentView.getLayoutResId()) {
-                case R.layout.swap_confirm_receive:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_connecting:
-                    nextStep = R.layout.swap_select_apps;
-                    break;
-                case R.layout.swap_join_wifi:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_nfc:
-                    nextStep = R.layout.swap_join_wifi;
-                    break;
-                case R.layout.swap_select_apps:
-                    nextStep = getSwapService().isConnectingWithPeer() ? STEP_INTRO : R.layout.swap_join_wifi;
-                    break;
-                case R.layout.swap_send_fdroid:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_start_swap:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_success:
-                    nextStep = STEP_INTRO;
-                    break;
-                case R.layout.swap_wifi_qr:
-                    nextStep = R.layout.swap_join_wifi;
-                    break;
-            }
-            currentSwapViewLayoutRes = nextStep;
-            showRelevantView();
+            int resId = backstack.pop();
+            inflateSwapView(resId, true);
         }
+    }
+
+    /**
+     * Handle the back logic for the upper left back button in the toolbar.
+     * This has a simpler, hard-coded back logic than the system back button.
+     *
+     * @see #onBackPressed()
+     */
+    public void onToolbarBackPressed() {
+        int nextStep = R.layout.swap_start_swap;
+        switch (currentView.getLayoutResId()) {
+            case R.layout.swap_confirm_receive:
+                nextStep = backstack.peek();
+                break;
+            case R.layout.swap_connecting:
+                nextStep = R.layout.swap_select_apps;
+                break;
+            case R.layout.swap_join_wifi:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_nfc:
+                nextStep = R.layout.swap_join_wifi;
+                break;
+            case R.layout.swap_select_apps:
+                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
+                    nextStep = R.layout.swap_start_swap;
+                } else if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                    nextStep = R.layout.swap_success;
+                } else {
+                    nextStep = R.layout.swap_join_wifi;
+                }
+                break;
+            case R.layout.swap_send_fdroid:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_start_swap:
+                if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                    nextStep = R.layout.swap_success;
+                } else {
+                    SwapService.stop(this);
+                    finish();
+                    return;
+                }
+                break;
+            case R.layout.swap_success:
+                nextStep = R.layout.swap_start_swap;
+                break;
+            case R.layout.swap_wifi_qr:
+                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
+                    nextStep = R.layout.swap_start_swap;
+                } else {
+                    nextStep = R.layout.swap_join_wifi;
+                }
+                break;
+        }
+        currentSwapViewLayoutRes = nextStep;
+        inflateSwapView(currentSwapViewLayoutRes);
     }
 
     @Override
@@ -229,6 +269,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.container);
+
+        backstack.clear();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
@@ -319,8 +361,15 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void setUpSearchView(Menu menu) {
-        SearchView searchView = new SearchView(this);
+        MenuItem appsMenuItem = menu.findItem(R.id.action_apps);
+        if (appsMenuItem != null) {
+            appsMenuItem.setOnMenuItemClickListener(item -> {
+                inflateSwapView(R.layout.swap_select_apps);
+                return true;
+            });
+        }
 
+        SearchView searchView = new SearchView(this);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         searchMenuItem.setActionView(searchView);
         searchMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -478,6 +527,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handle events that trigger different swap views to be shown.
+     */
     private void showRelevantView() {
 
         if (confirmSwapConfig != null) {
@@ -488,7 +540,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
 
         switch (currentSwapViewLayoutRes) {
-            case STEP_INTRO:
+            case R.layout.swap_start_swap:
                 showIntro();
                 return;
             case R.layout.swap_nfc:
@@ -506,7 +558,35 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void inflateSwapView(@LayoutRes int viewRes) {
+        inflateSwapView(viewRes, false);
+    }
+
+    /**
+     * The {@link #backstack} for the global back button is managed mostly here.
+     * The initial screen is never added to the {@code backstack} since the
+     * empty state is used to detect that the system's backstack should be used.
+     */
+    public void inflateSwapView(@LayoutRes int viewRes, boolean backPressed) {
         getSwapService().initTimer();
+
+        if (!backPressed) {
+            switch (currentSwapViewLayoutRes) {
+                case R.layout.swap_connecting:
+                case R.layout.swap_confirm_receive:
+                    // do not add to backstack
+                    break;
+                default:
+                    if (backstack.isEmpty()) {
+                        if (viewRes != R.layout.swap_start_swap) {
+                            backstack.push(currentSwapViewLayoutRes);
+                        }
+                    } else {
+                        if (backstack.peek() != currentSwapViewLayoutRes) {
+                            backstack.push(currentSwapViewLayoutRes);
+                        }
+                    }
+            }
+        }
 
         container.removeAllViews();
         View view = ContextCompat.getSystemService(this, LayoutInflater.class)
@@ -516,11 +596,17 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         currentSwapViewLayoutRes = viewRes;
 
         toolbar.setTitle(currentView.getToolbarTitle());
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onToolbarCancel();
+        toolbar.setNavigationOnClickListener(v -> onToolbarBackPressed());
+        toolbar.setNavigationOnClickListener(v -> {
+            switch (currentView.getLayoutResId()) {
+                case R.layout.swap_start_swap:
+                    SwapService.stop(this);
+                    finish();
+                    return;
+                default:
+                    currentSwapViewLayoutRes = R.layout.swap_start_swap;
             }
+            inflateSwapView(currentSwapViewLayoutRes);
         });
         container.addView(view);
         supportInvalidateOptionsMenu();
@@ -547,11 +633,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 setUpStartVisibility();
                 break;
         }
-    }
-
-    private void onToolbarCancel() {
-        SwapService.stop(this);
-        finish();
     }
 
     public void showIntro() {
@@ -689,10 +770,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void swapWith(NewRepoConfig repoConfig) {
         Peer peer = repoConfig.toPeer();
-        if (currentSwapViewLayoutRes == STEP_INTRO || currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
+        if (currentSwapViewLayoutRes == R.layout.swap_start_swap
+                || currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
             // This will force the "Select apps to swap" workflow to begin.
-            // TODO: Find a better way to decide whether we need to select the apps. Not sure if we
-            //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
             swapWith(peer);
         } else {
             getSwapService().swapWith(peer);
