@@ -1,9 +1,11 @@
-* Revisão do menu Compartilhar para usar opções incorporadas como nas proximidades.
+* Revisão do menu Partilhar para usar opções incorporadas tal como no menu Proximidades.
 
 * Melhorias no design do material (@proletarius101)
 
-* Melhorar compartilhar off-line e nas proximidades
+* Apps sem ícone em PNG são agora mostradas na Última Aba (@ashutoshgngwr)
 
-* bloquear a adição de novos repositórios quando o administrador do aparelho não permite "Fontes Desconhecidas"
+* Melhorada a partilha off-line e nas proximidades
 
-* corrigir falha ao usar repositórios com nome de utilizador/palavra-passe
+* Bloqueada a adição de novos repositórios quando o administrador do aparelho não permite instalação de "Fontes desconhecidas"
+
+* Corrigida falha ao usar repositórios com nome de utilizador/palavra-passe
