@@ -523,4 +523,5 @@
     <string name="share_apk_error">Appdatei konnte nicht geteilt werden</string>
     <string name="has_disallow_install_unknown_sources">Unbekannte Quellen können von diesem Benutzer nicht hinzugefügt werden, einschließlich neuer Repositories</string>
     <string name="has_disallow_install_unknown_sources_globally">Ihr Geräteadministrator lässt die Installation von Apps aus unbekannten Quellen nicht zu, einschließlich neuer Repositories</string>
+    <string name="swap_wifi_vpn_conflict">Konflikte mit aktivem VPN!</string>
 </resources>

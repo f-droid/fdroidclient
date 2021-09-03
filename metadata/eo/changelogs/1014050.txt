@@ -1,0 +1,11 @@
+• rekonstruita menuo “kunhavigi” por uzi enkonstruitajn eblaĵojn, kiel “proksime”
+
+• plibonigoj al Material Design (@proletarius101)
+
+• aplikaĵoj sen PNG-emblemoj nun montriĝas en la langeto “novaj” (@ashutoshgngwr)
+
+• plibonigoj al kunhavigi aplikaĵojn malkonekte per “proksime”
+
+• malpermesi aldoni novajn deponejojn kiam administranto de aparato malpermesas “nekonatajn fontojn”
+
+• riparita eraro dum uzi deponejojn kun uzantnomo/pasvorto

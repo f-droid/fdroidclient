@@ -526,4 +526,5 @@
     <string name="share_apk_error">Nu s-a putut partaja fișierul aplicației</string>
     <string name="has_disallow_install_unknown_sources">Sursele necunoscute nu pot fi adăugate de acest utilizator, care include noi depozite</string>
     <string name="has_disallow_install_unknown_sources_globally">Administratorul dispozitivului dumneavoastră nu permite instalarea de aplicații din surse necunoscute, care includ și noile depozite</string>
+    <string name="swap_wifi_vpn_conflict">Conflict cu VPN-ul activ!</string>
 </resources>

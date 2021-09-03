@@ -200,7 +200,7 @@
     <string name="swap_dont_show_again">Больше не показывать</string>
     <string name="swap_choose_apps">Выберите приложения</string>
     <string name="swap_scan_qr">QR-код</string>
-    <string name="swap_wifi_device_name">Имя устройства</string>
+    <string name="swap_wifi_device_name">Название устройства</string>
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
     <string name="install_confirm">необходим доступ к</string>
@@ -244,7 +244,7 @@
     <string name="swap_not_visible_wifi">Не видимый через Wi-Fi</string>
     <string name="swap_cant_find_peers">Не можете найти того, кого ищете?</string>
     <string name="swap_send_fdroid">Отправить F-Droid</string>
-    <string name="apps">Каталог</string>
+    <string name="apps">Приложения</string>
     <string name="swap_no_peers_nearby">Не удается найти людей поблизости.</string>
     <string name="swap_confirm">Подтвердить обмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>
@@ -534,4 +534,7 @@
     <string name="banner_no_data_or_wifi">Передача данных или WiFi отключены</string>
     <string name="banner_no_internet">Нет интернета</string>
     <string name="share_apk_error">Не удалось поделиться файлом приложения</string>
+    <string name="swap_wifi_vpn_conflict">Конфликтует с активной VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Неизвестные источники не могут быть добавлены этим пользователем, и это правило распространяется на новые репозитории</string>
+    <string name="has_disallow_install_unknown_sources_globally">Администратор вашего устройства не разрешает установку приложений из неизвестных источников, и это правило распространяется на новые репозитории</string>
 </resources>

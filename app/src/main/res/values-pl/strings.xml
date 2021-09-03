@@ -4,7 +4,7 @@
     <string name="version">Wersja</string>
     <string name="delete">Usuń</string>
     <string name="enable_nfc_send">Włącz przesyłanie NFC…</string>
-    <string name="cache_downloaded">Zapisuj pobrane pliki aplikacji</string>
+    <string name="cache_downloaded">Przechowuj instalatory aplikacji w pamięci podręcznej</string>
     <string name="updates">Aktualizacje</string>
     <string name="other">Inne</string>
     <string name="notify">Pokazuj dostępne aktualizacje</string>
@@ -66,7 +66,7 @@
     <string name="skip">Pomiń</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Włącz proxy HTTP</string>
-    <string name="enable_proxy_summary">Konfiguruj proxy HTTP dla wszystkich żądań sieciowych</string>
+    <string name="enable_proxy_summary">Skonfiguruj proxy HTTP dla wszystkich żądań sieciowych</string>
     <string name="proxy_host">Host proxy</string>
     <string name="proxy_host_summary">Adres proxy (np. 127.0.0.1)</string>
     <string name="proxy_port">Port proxy</string>
@@ -244,7 +244,7 @@
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
     <string name="empty_search_available_app_list">Brak dostępnych pasujących aplikacji.</string>
     <string name="useTor">Użyj Tora</string>
-    <string name="useTorSummary">Wymuś pobieranie przez Tora, aby zwiększyć prywatność. Wymagany Orbot</string>
+    <string name="useTorSummary">Wymuszaj pobieranie przez Tora, aby zwiększyć prywatność. Wymagany Orbot</string>
     <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>
     <string name="repo_provider">Repozytorium: %s</string>
     <string name="update_auto_download">Pobieraj aktualizacje automatycznie</string>
@@ -255,7 +255,7 @@
     <string name="keep_week">1 tydzień</string>
     <string name="keep_month">1 miesiąc</string>
     <string name="keep_year">1 rok</string>
-    <string name="keep_forever">Na zawsze</string>
+    <string name="keep_forever">Cały czas</string>
     <string name="install_error_notify_title">Błąd podczas instalacji %s</string>
     <string name="uninstall_error_notify_title">Błąd podczas dezinstalacji %s</string>
     <string name="installing">Instalowanie…</string>
