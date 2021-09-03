@@ -1,0 +1,9 @@
+* Revisão do menu Compartilhar para usar opções incorporadas como nas proximidades.
+
+* Melhorias no design do material (@proletarius101)
+
+* Melhorar compartilhar off-line e nas proximidades
+
+* bloquear a adição de novos repositórios quando o administrador do aparelho não permite "Fontes Desconhecidas"
+
+* corrigir falha ao usar repositórios com nome de utilizador/palavra-passe

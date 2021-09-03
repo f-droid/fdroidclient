@@ -186,7 +186,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não encontra o que procura?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
-    <string name="apps">Aplicações</string>
+    <string name="apps">Apps</string>
     <string name="swap_connecting">A ligar</string>
     <string name="loading">A carregar…</string>
     <string name="newPerms">Novas</string>
@@ -515,4 +515,5 @@
     <string name="banner_no_data_or_wifi">Dados móveis/WiFi desativados</string>
     <string name="banner_no_internet">Sem Internet</string>
     <string name="share_apk_error">Não foi possível partilhar o ficheiro da aplicação</string>
+    <string name="swap_wifi_vpn_conflict">Conflitos com VPN ativa!</string>
 </resources>
