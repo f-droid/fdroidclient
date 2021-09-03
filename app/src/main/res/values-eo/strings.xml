@@ -219,7 +219,7 @@
     <string name="swap_wifi_device_name">Nomo de aparato</string>
     <string name="swap_cant_find_peers">Ĉu vi ne povas trovi kiun, tiun vi serĉas?</string>
     <string name="swap_send_fdroid">Sendi F-Droid</string>
-    <string name="apps">Katalogo</string>
+    <string name="apps">Aplikaĵoj</string>
     <string name="swap_no_peers_nearby">Ne povas trovi homojn proksime por interŝanĝi.</string>
     <string name="swap_connecting">Konektado</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
@@ -525,4 +525,7 @@
     <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>
     <string name="banner_no_internet">Sen interreto</string>
     <string name="share_apk_error">Ne povas kunhavigi dosieron de la aplikaĵo</string>
+    <string name="swap_wifi_vpn_conflict">Ne funkcias kun VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Tiu ĉi uzanto ne povas aldoni novajn fontojn de aplikaĵoj por instali, inkluzivante novajn deponejojn</string>
+    <string name="has_disallow_install_unknown_sources_globally">Administranto de via aparato malpermesis instali aplikaĵojn el nekonataj fontoj, inkluzivante novajn deponejojn</string>
 </resources>
