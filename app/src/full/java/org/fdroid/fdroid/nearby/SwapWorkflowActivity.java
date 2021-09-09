@@ -608,6 +608,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
             inflateSwapView(currentSwapViewLayoutRes);
         });
+        if (viewRes == R.layout.swap_start_swap) {
+            toolbar.setNavigationIcon(R.drawable.ic_close);
+        } else {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+        }
         container.addView(view);
         supportInvalidateOptionsMenu();
 
