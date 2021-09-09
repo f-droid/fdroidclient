@@ -513,4 +513,7 @@
     <string name="hiding_dialog_message">তুমি কি আসলেই লঞ্চার থেকে %1$s সরাতে চাও\? শুধু নকল %3$s অ্যাপের মধ্যে ‘%2$d’ লিখলেই এটা ফিরত আসবে।</string>
     <string name="panic_hide_warning_message">আতঙ্ক/বিপদের সময়, লঞ্চার থেকে %1$s সরানো হবে। শুধু নকল %3$s অ্যাপের মধ্যে ‘%2$d’ লিখলেই এটা ফিরত আসবে।</string>
     <string name="share_apk_error">অ্যাপ নথি ভাগ করা যায়নি</string>
+    <string name="has_disallow_install_unknown_sources">ব্যবহারকারী অজানা উৎস থেকে অ্যাপ ইন্সটল করতে পারবে না, এজন্য নতুন ভাণ্ডারও যোগ করা যাবে না</string>
+    <string name="has_disallow_install_unknown_sources_globally">তোমার যন্ত্রের ব্যবস্থাপক অজানা উৎস থেকে অ্যাপ ইন্সটল করতে দেয় না, এজন্য নতুন ভাণ্ডারও যোগ করা যায় না</string>
+    <string name="swap_wifi_vpn_conflict">সক্রিয় ভিপিএনের সাথে সমস্যা হচ্ছে!</string>
 </resources>

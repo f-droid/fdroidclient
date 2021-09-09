@@ -511,4 +511,9 @@
     <string name="system_install_denied_permissions">এই এক্সটেনশনকে বিশেষ অনুমতি দেওয়া হয়নি। অনুগ্রহ করে একটি সমস্যার প্রতিবেদন বানাও।</string>
     <string name="uninstall_error_unknown">অজানা সমস্যার জন্য মুছতে ব্যর্থ</string>
     <string name="install_error_unknown">অজানা সমস্যার জন্য ইন্সটল করতে ব্যর্থ</string>
+    <string name="share_apk_error">অ্যাপ নথি ভাগ করা যায়নি</string>
+    <string name="has_disallow_install_unknown_sources">ব্যবহারকারী অজানা উৎস যোগ করতে পারবে না, ভাণ্ডারও যোগ করা এজন্য সম্ভব নয়</string>
+    <string name="has_disallow_install_unknown_sources_globally">তোমার যন্ত্রের ব্যবস্থাপক অজানা উৎস থেকে অ্যাপ ইন্সটল করতে দেয় না, এছাড়া নতুন ভাণ্ডার যোগ করতেও বাধা দেয়</string>
+    <string name="swap_wifi_vpn_conflict">সক্রিয় ভিপিএনের সাথে সমস্যা হচ্ছে!</string>
+    <string name="apps">অ্যাপস</string>
 </resources>
