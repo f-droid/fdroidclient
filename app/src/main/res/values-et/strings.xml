@@ -524,4 +524,7 @@
     <string name="banner_no_data_or_wifi">3G, 4G või WiFi pole kasutusel</string>
     <string name="banner_no_internet">Internetiühendus puudub</string>
     <string name="share_apk_error">Rakenduse faili jagamine ei õnnestunud</string>
+    <string name="has_disallow_install_unknown_sources_globally">Sinu seadme haldaja ei luba rakenduste paigaldamist tundmatutest allikatest, sealhulgas uutest hoidlatest</string>
+    <string name="has_disallow_install_unknown_sources">Antud kasutaja ei või lisada tundmatuid allikaid, sealhulgas uusi hoidlaid</string>
+    <string name="swap_wifi_vpn_conflict">Nii tekib vastuolu hetkel kasutusel oleva VPN\'iga!</string>
 </resources>
