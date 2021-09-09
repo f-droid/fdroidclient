@@ -534,4 +534,7 @@
     <string name="banner_no_data_or_wifi">Dados móveis ou WiFi indisponíveis</string>
     <string name="banner_no_internet">Sem Internet</string>
     <string name="share_apk_error">Não foi possível compartilhar o arquivo da aplicação</string>
+    <string name="swap_wifi_vpn_conflict">Há conflitos com a VPN ativa!</string>
+    <string name="has_disallow_install_unknown_sources">Fontes desconhecidas não podem ser adicionadas por este usuário, incluindo novos repositórios</string>
+    <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de aplicativos vindas de fontes desconhecidas e incluindo novos repositórios</string>
 </resources>
