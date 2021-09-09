@@ -246,7 +246,7 @@
         browser.
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
-    <string name="apps">Applicazioni</string>
+    <string name="apps">App</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
     <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione esistente? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
@@ -526,4 +526,7 @@
     <string name="banner_no_data_or_wifi">Nessun dato o Wi-Fi abilitato</string>
     <string name="banner_no_internet">Nessuna connessione</string>
     <string name="share_apk_error">Impossibile condividere il file dell\'app</string>
+    <string name="swap_wifi_vpn_conflict">In conflitto con la VPN attiva!</string>
+    <string name="has_disallow_install_unknown_sources">Fonti sconosciute non possono essere aggiunte da questo utente, inclusi nuovi repository</string>
+    <string name="has_disallow_install_unknown_sources_globally">L\'amministratore del tuo dispositivo non permette l\'installazione di app da fonti sconosciute, inclusi nuovi repository</string>
 </resources>
