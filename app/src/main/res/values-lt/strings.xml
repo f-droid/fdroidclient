@@ -8,7 +8,7 @@
     <string name="update_interval">Automatinis programėlių sąrašų naujinimas</string>
     <string name="notify">Rodyti prieinamus atnaujinimus</string>
     <string name="notify_on">Rodyti pranešimą, kai yra prieinami atnaujinimai</string>
-    <string name="local_repo_name">Jūsų vietinės saugyklos pavadinimas</string>
+    <string name="local_repo_name">Jūsų vietinės repozitorijos pavadinimas</string>
     <string name="about_title">Apie F-Droid</string>
     <string name="about_site">Svetainė internete</string>
     <string name="about_version">Versija</string>
@@ -18,7 +18,7 @@
     <string name="ok">Gerai</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
-    <string name="repo_add_title">Pridėti naują saugyklą</string>
+    <string name="repo_add_title">Pridėti naują repozitoriją</string>
     <string name="repo_add_add">Pridėti</string>
     <string name="cancel">Atšaukti</string>
     <string name="enable">Įjungti</string>
@@ -39,7 +39,7 @@
     <string name="display">Rodinys</string>
     <string name="show_incompat_versions">Rodyti nesuderinamas versijas</string>
     <string name="show_incompat_versions_on">Rodyti programėlių versijas, nesuderinamas su šiuo įrenginiu</string>
-    <string name="deleting_repo">Ištrinama esama saugykla…</string>
+    <string name="deleting_repo">Ištrinama esama repozitorija…</string>
     <string name="next">Kitas</string>
     <string name="status_connecting_to_repo">Jungiamasi prie
 \n%1$s</string>
@@ -50,14 +50,14 @@
     <string name="repo_description">Aprašas</string>
     <string name="repo_last_update">Paskutinis patikrinimas</string>
     <string name="repo_name">Pavadinimas</string>
-    <string name="repo_not_yet_updated">Ši saugykla dar nebuvo naudota. Norėdami matyti jos teikiamas programėles, turite ją įjungti.</string>
-    <string name="repo_confirm_delete_title">Ištrinti saugyklą\?</string>
+    <string name="repo_not_yet_updated">Ši repozitorija dar nebuvo naudota. Norėdami matyti jos teikiamas programėles, turite ją įjungti.</string>
+    <string name="repo_confirm_delete_title">Ištrinti repozitoriją\?</string>
     <string name="repo_confirm_delete_body">Ištrynus repozitoriją, jos programėlių katalogas nebebus pasiekiamas.
 \n
 \nPastaba: Visos anksčiau įdiegtos programėlės išliks jūsų įrenginyje.</string>
     <string name="repo_disabled_notification">%1$s išjungta.
 \n
-\nNorėdami diegti programėles iš šios saugyklos, turėsite įjungti ją iš naujo.</string>
+\nNorėdami diegti programėles iš šios repozitorijos, turėsite įjungti ją iš naujo.</string>
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir švietimas</string>
     <string name="swap_welcome">Sveikiname paleidus F-Droid!</string>
@@ -118,7 +118,7 @@
     <string name="force_old_index">Priverstinai naudoti senąjį indeksavimo formatą</string>
     <string name="update_auto_download_summary">Atnaujinimai yra atsiunčiami automatiškai ir jums pranešama, kad juos įdiegtumėte</string>
     <string name="latest__empty_state__no_recent_apps">Nerasta naujų programėlių</string>
-    <string name="latest__empty_state__never_updated">Atnaujinus jūsų programėlių sąrašą, naujausios programėlės turėtų pasirodyti čia.</string>
+    <string name="latest__empty_state__never_updated">Atnaujinus jūsų programėlių sąrašą, naujausios programėlės turėtų pasirodyti čia</string>
     <string name="categories__empty_state__no_categories">Nėra rodytinų kategorijų</string>
     <string name="preference_category__my_apps">Mano programėlės</string>
     <string name="details_new_in_version">Nauja versijoje %s</string>
@@ -134,9 +134,9 @@
     <string name="search_hint">Ieškoti programėlių</string>
     <string name="appcompatibility">Programėlių suderinamumas</string>
     <string name="force_touch_apps_on">Rodyti programėles, kurios reikalauja jutiklinio ekrano, nepriklausomai nuo palaikymo šiame įrenginyje</string>
-    <string name="adding_apks_format">Pridedama %s į saugyklą…</string>
+    <string name="adding_apks_format">Pridedama %s į repozitoriją…</string>
     <string name="linking_apks">Susiejami APK su repozitorija…</string>
-    <string name="copying_icons">Kopijuojamos programėlių piktogramos į saugyklą…</string>
+    <string name="copying_icons">Kopijuojamos programėlių piktogramos į repozitoriją…</string>
     <string name="icon">Piktograma</string>
     <string name="useTor">Naudoti Tor</string>
     <string name="proxy">Įgaliotasis serveris</string>
@@ -151,19 +151,19 @@
     <string name="panic_destructive_actions">Destruktyvūs veiksmai</string>
     <string name="panic_hide_title">Paslėpti %s</string>
     <string name="panic_hide_summary">Programėlė pasislėps</string>
-    <string name="panic_hide_warning_title">Prisiminti kaip atkūrti</string>
+    <string name="panic_hide_warning_title">Prisiminkite, kaip atkurti</string>
     <string name="hiding_calculator">Skaičiuotuvas</string>
     <string name="hiding_dialog_title">Paslėpti %s dabar</string>
     <string name="hide_on_long_search_press_title">Paslėpti su paieškos mygtuku</string>
     <string name="hide_on_long_search_press_summary">Ilgai palaikus paieškos mygtuką programėlė bus paslėpta</string>
     <string name="download_404">Užklaustas failas nebuvo rastas.</string>
-    <string name="banner_updating_repositories">Atnaujinamos saugyklos</string>
+    <string name="banner_updating_repositories">Atnaujinamos repozitorijos</string>
     <string name="status_inserting_x_apps">Išsaugoma programėlių informacija (%1$d/%2$d) iš %3$s</string>
     <string name="all_other_repos_fine">Visos kitos repozitorijos nesukūrė klaidų.</string>
     <string name="no_permissions">Nėra jokių leidimų</string>
     <string name="permissions">Leidimai</string>
     <string name="repo_url">Adresas</string>
-    <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie skirtingo Wi-Fi, nei tik ką pridėta vietinė saugykla! Pabandykite prisijungti prie šio tinklo: %s</string>
+    <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie skirtingo Wi-Fi, nei tik ką pridėta vietinė repozitorija! Pabandykite prisijungti prie šio tinklo: %s</string>
     <string name="by_author_format">autoriai %s</string>
     <string name="prompt_to_send_crash_reports_summary">Rinkti duomenis apie strigtis ir klausti ar siųsti juos programėlės kūrėjui</string>
     <string name="hide_all_notifications">Slėpti visus pranešimus</string>
@@ -171,7 +171,7 @@
     <string name="install_history">Įdiegimų istorija</string>
     <string name="install_history_summary">Rodyti visų programėlių įdiegimų ir šalinimų, atliktų per F-Droid, žurnalą</string>
     <string name="send_version_and_uuid">Siųsti versiją ir UUID į serverius</string>
-    <string name="allow_push_requests">Leisti saugykloms įdiegti/pašalinti programėles</string>
+    <string name="allow_push_requests">Leisti repozitorijoms įdiegti/pašalinti programėles</string>
     <string name="over_wifi">Per belaidį internetą (Wi-Fi)</string>
     <string name="over_data">Per mobiliuosius duomenis</string>
     <string name="over_network_always_summary">Visada naudoti šį ryšį, kuomet jis įjungtas</string>
@@ -250,14 +250,14 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="latest__empty_state__no_enabled_repos">Kai įjungsite saugykla ir leisite jai atsinaujinti, programėlių atnaujinimus matysite čia</string>
+    <string name="latest__empty_state__no_enabled_repos">Kai įjungsite repozitoriją ir leisite jai atsinaujinti, programėlių atnaujinimus matysite čia</string>
     <string name="antinonfreeassetslist">Šioje programėlėje yra nelaisvų resursų</string>
     <string name="antidisabledalgorithmlist">Ši programėlė turi silpną saugumo parašą</string>
     <string name="force_touch_apps">Rodyti programėles, skirtas jutikliniam ekranui</string>
-    <string name="local_repo">Vietinė saugykla</string>
+    <string name="local_repo">Vietinė repozitorija</string>
     <string name="repo_official_mirrors">Oficialios tinklavietės</string>
     <string name="unknown">Nežinomas</string>
-    <string name="repo_added">Išsaugota paketo saugykla %1$s.</string>
+    <string name="repo_added">Išsaugota paketo repozitorija %1$s.</string>
     <string name="disabled">Neleidžiama</string>
     <string name="installing">Diegiama…</string>
     <string name="install_confirm_update">Ar norite įdiegti šios esamos programos naujinį? Neprarasite esamų duomenų. Atnaujinus programą bus suteikta prieiga prie:</string>
@@ -290,12 +290,12 @@
     <string name="keep_month">1 mėnesį</string>
     <string name="keep_week">1 savaitę</string>
     <string name="keep_day">1 dieną</string>
-    <string name="interval_2w">Tikrinti dėl atnaujinimų kas 2 savaitės</string>
-    <string name="interval_1w">Tikrinti dėl atnaujinimų kas savaitę</string>
-    <string name="interval_1d">Tikrinti dėl atnaujinimų kasdien</string>
-    <string name="interval_12h">Tikrinti dėl atnaujinimų kas 12 valandų</string>
-    <string name="interval_4h">Tikrinti dėl atnaujinimų kas 4 valandas</string>
-    <string name="interval_1h">Tikrinti dėl atnaujinimų kas valandą</string>
+    <string name="interval_2w">Tikrinti ar yra atnaujinimų kas 2 savaitės</string>
+    <string name="interval_1w">Tikrinti ar yra atnaujinimų kas savaitę</string>
+    <string name="interval_1d">Tikrinti ar yra atnaujinimų kasdien</string>
+    <string name="interval_12h">Tikrinti ar yra atnaujinimų kas 12 valandų</string>
+    <string name="interval_4h">Tikrinti ar yra atnaujinimų kas 4 valandas</string>
+    <string name="interval_1h">Tikrinti ar yra atnaujinimų kas valandą</string>
     <string name="downloading">Atsiunčiama…</string>
     <string name="perms_new_perm_prefix">Nauji:</string>
     <string name="uninstall_error_notify_title">Klaida šalinant %s</string>
@@ -314,36 +314,36 @@
     <string name="swap">Keitimasis programėlėmis</string>
     <string name="swap_nfc_title">Spustelėkite, kad keistis</string>
     <string name="nearby_splash__request_permission">Išbandykite</string>
-    <string name="nearby_splash__find_people_button">Rasti įrenginius netoliese</string>
+    <string name="nearby_splash__find_people_button">Rasti žmones netoliese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programėlių iš įrenginių netoliese!</string>
     <string name="category_Theming">Apipavidalinimas</string>
-    <string name="share_repository">Bendrinti saugyklą</string>
+    <string name="share_repository">Bendrinti repozitoriją</string>
     <string name="status_download">Atsiunčiama
 \n%2$s / %3$s (%4$d%%) iš
 \n%1$s</string>
     <string name="status_download_unknown_size">Atsiunčiama
 \n%2$s iš
 \n%1$s</string>
-    <string name="panic_reset_repos_title">Atstatyti saugyklų sąrašą</string>
+    <string name="panic_reset_repos_title">Atstatyti rapozitorijų sąrašą</string>
     <string name="try_again">Bandykite dar kartą</string>
     <string name="local_repo_running">F-Droid pasiruošusi apsikeitimui</string>
     <string name="main_menu__updates">Naujinimai</string>
     <string name="menu_translation">Vertimas</string>
     <string name="menu_changelog">Keitinių žurnalas</string>
-    <string name="app_repository">Saugykla: %1$s</string>
+    <string name="app_repository">Repozitorija: %1$s</string>
     <string name="app_details_donate_prompt_unknown_author">Paaukokite %1$s kūrėjams kavai!</string>
     <string name="scan_removable_storage_toast">Peržiūrima %s…</string>
     <string name="scan_removable_storage_title">Tikrinti išimamas laikmenas</string>
-    <string name="local_repo_name_summary">Jūsų asmeninės saugyklos viešas pavadinimas: %s</string>
+    <string name="local_repo_name_summary">Jūsų asmeninės repozitorijos viešas pavadinimas: %s</string>
     <string name="app_details_donate_prompt">%1$s programėlę sukūrė %2$s. Paremkite kūrėjus!</string>
     <string name="status_inserting_apps">Įrašoma informacija apie programėles</string>
     <string name="status_processing_xml_percent">Apdorojama %2$s / %3$s (%4$d%%) iš %1$s</string>
     <string name="theme_dark">Tamsus</string>
     <string name="theme_light">Šviesus</string>
-    <string name="enable_proxy_summary">Naudoti HTTP Proxy visiems ryšiams</string>
-    <string name="malformed_repo_uri">Nepaisoma netaisyklingo saugyklos URI: %s</string>
+    <string name="enable_proxy_summary">Naudoti HTTP įgaliotąjį serverį visiems ryšiams</string>
+    <string name="malformed_repo_uri">Nepaisoma netaisyklingo repozitorijos URI: %s</string>
     <string name="repo_add_mirror">Pridėti tinklavietę</string>
-    <string name="local_repo_https_on">Vietinei saugyklai naudoti šifruotą HTTPS:// ryšį</string>
+    <string name="local_repo_https_on">Vietinei repozitorijai naudoti šifruotą HTTPS:// ryšį</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę atnaujinti.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę pašalinti.</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">Įdiegta versija nėra suderinama su jokia prieinama versija. Pašalinę programėlę, galėsite matyti ir įsidiegti suderinamas versijas. Taip dažnai nutinka su programėlėmis, kurios buvo įdiegtos per „Google Play“ arba iš kitų šaltinių, kuomet jos būna pasirašytos kitokiu liudijimu.</string>
@@ -409,7 +409,7 @@
         <item quantity="few">Rodyti visas %d</item>
         <item quantity="other">Rodyti visas %d</item>
     </plurals>
-    <string name="repo_searching_address">Ieškoma paketų saugyklos ties
+    <string name="repo_searching_address">Ieškoma paketų repozitorijos ties
 \n%1$s</string>
     <string name="repo_user_mirrors">Naudotojo tinklavietės</string>
     <string name="repo_fingerprint">Pasirašymo rakto kontrolinis kodas (SHA-256)</string>
@@ -429,7 +429,7 @@
     <string name="allow_push_requests_summary">Repozitorijos metaduomenyse gali būti „push“ prašymai įdiegti ar išdiegti programėles</string>
     <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
     <string name="open_qr_code_scanner">Atidaryti QR kodo skenavimą</string>
-    <string name="swap_scan_qr">Skenuoti QR</string>
+    <string name="swap_scan_qr">QR kodas</string>
     <string name="swap_error_cannot_start_bluetooth">Nepavyksta paleisti Bluetooth!</string>
     <string name="send_to_fdroid_metrics">Siųsti naudojimo duomenis</string>
     <string name="theme_follow_system">Sekti sistemos</string>
@@ -458,4 +458,72 @@
     <string name="has_disallow_install_unknown_sources">Šis naudotojas negali pridėti nežinomų šaltinių, įskaitant naujas repozitorijas</string>
     <string name="has_disallow_install_unknown_sources_globally">Jūsų įrenginio administratorius neleidžia diegti programėlių iš nežinomų šaltinių, įskaitant naujas repozitorijas</string>
     <string name="hide_all_notifications_summary">Nustatyti, kad jokie veiksmai nebūtų rodomi būsenos juostoje ir pranešimų stalčiuje.</string>
+    <string name="swap_connection_misc_error">Jungiantis prie įrenginio įvyko klaida, negalima su juo keistis!</string>
+    <string name="apps">Programėlės</string>
+    <string name="swap_cant_find_peers">Nerandate, ko ieškote\?</string>
+    <string name="swap_wifi_vpn_conflict">Konfliktuoja su aktyviu VPN!</string>
+    <string name="swap_not_visible_wifi">Nematoma per Wi-Fi</string>
+    <string name="swap_stopping_wifi">Stabdomas Wi-Fi…</string>
+    <string name="swap_setting_up_wifi">Nustatomas Wi-Fi…</string>
+    <string name="swap_visible_wifi">Matoma per Wi-Fi</string>
+    <string name="swap_not_visible_bluetooth">Nematoma per Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Nustatomas Bluetooth…</string>
+    <string name="swap_visible_bluetooth">Matoma per Bluetooth</string>
+    <string name="swap_intro">Prisijunkite ir keiskitės programėlėmis su netoliese esančiais žmonėmis.</string>
+    <string name="swap_scan_or_type_url">Vienas asmuo turi nuskaityti kodą arba įvesti kito URL adresą naršyklėje.</string>
+    <string name="swap_confirm_connect">Ar norite gauti programėles iš %1$s dabar\?</string>
+    <string name="swap_switch_to_wifi">Palieskite, kad perjungtumėte į Wi-Fi tinklą</string>
+    <string name="swap_view_available_networks">Palieskite, kad atidarytumėte galimus tinklus</string>
+    <string name="swap_stopping_hotspot">Stabdomas prieigos taškas…</string>
+    <string name="swap_setting_up_hotspot">Nustatomas prieigos taškas…</string>
+    <string name="swap_hidden_wifi_ssid">(paslėpta)</string>
+    <string name="swap_blank_wifi_ssid">(tuščia)</string>
+    <string name="swap_visible_hotspot">Matoma per prieigos tašką</string>
+    <string name="swap_active_hotspot">%1$s (jūsų prieigos taškas)</string>
+    <string name="swap_success">Sėkmingi mainai!</string>
+    <string name="swap_join_this_hotspot">Padėkite draugui prisijungti prie savo prieigos taško</string>
+    <string name="swap_join_same_wifi">Prisijunkite prie to paties Wi-Fi kaip ir jūsų draugas</string>
+    <string name="swap_nfc_description">Jei draugas turi įjungtą F-Droid ir NFC, suglauskite savo prietaisus kartu.</string>
+    <string name="share_apk_error">Nepavyko bendrinti programėlės failo</string>
+    <string name="system_install_denied_permissions">Ypatingieji leidimai plėtiniui nebuvo suteikti! Sukurkite pranešimą apie klaidą!</string>
+    <string name="empty_search_available_app_list">Atitinkančių paiešką programėlių nėra.</string>
+    <string name="empty_installed_app_list">Nėra įdiegtų programėlių.
+\n
+\nJūsų įrenginyje yra programėlių, tačiau jos neprieinamos F-Droid. Taip gali būti dėl to, kad jums reikia atnaujinti repozitorijas, arba repozitorijose tikrai nėra prieinamų jūsų programėlių.</string>
+    <string name="wifi_ap">Prieigos taškas</string>
+    <string name="use_pure_black_dark_theme_summary">Rekomenduojama tik OLED ekranams.</string>
+    <string name="hiding_dialog_message">Ar tikrai norite pašalinti %1$s iš paleidimo priemonės\? Tik įvedus „%2$d“ į netikrą %3$s programėlę galima tai atkurti.</string>
+    <string name="panic_reset_repos_summary">Priverstinai grąžinti repozitorijos sąranką į numatytuosius nustatymus</string>
+    <string name="panic_hide_warning_message">Panikos atveju tai pašalins %1$s iš paleidimo priemonės. Tik įvedus „%2$d“ į netikrą %3$s programėlę galima tai atkurti.</string>
+    <string name="panic_app_dialog_message">Ar tikrai norite leisti %1$s sukelti destruktyvius panikos mygtuko veiksmus\?</string>
+    <string name="panic_app_dialog_title">Patvirtinti panikos programėlę</string>
+    <string name="preventScreenshots_summary">Blokuoja ekrano nuotraukų darymą ir paslepia programėlės turinį iš naujausių programėlių ekrano</string>
+    <string name="useTorSummary">Priverstinai nukreipti atsisiuntimo srautą per Tor, kad būtų padidintas privatumas. Reikalingas Orbot</string>
+    <string name="menu_select_for_wipe">Pasirinkti išvalymui</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Peržiūrėti %1$d programėlę kategorijoje %2$s</item>
+        <item quantity="few">Peržiūrėti %1$d programėles kategorijoje %2$s</item>
+        <item quantity="other">Peržiūrėti %1$d programėlių kategorijoje %2$s</item>
+    </plurals>
+    <string name="notification_channel_updates_description">Rodomi programėlės ir repozitorijos atnaujinimo pranešimai.</string>
+    <string name="app__tts__downloading_progress">Atsisiunčiama, %1$d%% baigta</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nepavyko įgalinti Wi-Fi prieigos taško!</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi prieigos taškas įgalintas</string>
+    <string name="interval_never">Jokių automatinių programėlių atnaujinimų</string>
+    <string name="notification_channel_swaps_description">Rodo P2P programėlės apsikeitimo pranešimus.</string>
+    <string name="notification_channel_swaps_title">Apsikeitimai</string>
+    <string name="swap_toast_invalid_url">Netinkamas apsikeitimo URL: %1$s</string>
+    <string name="swap_toast_find_removeable_storage">Pasirinkite išimamą SD kortelę arba USB</string>
+    <string name="swap_toast_not_removable_storage">Šis pasirinkimas neatitiko jokių išimamų saugojimo įrenginių, bandykite dar kartą!</string>
+    <string name="swap_toast_using_path">Naudojama %1$s</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Netoliese funkcija sustabdyta, nes ji buvo nenaudojama.</string>
+    <string name="not_visible_nearby_description">Prieš apsikeisdami su netoliese esančiais įrenginius, padarykite savo įrenginį matomu.</string>
+    <string name="not_visible_nearby">Netoliese funkcija neįjungta</string>
+    <string name="swap_no_peers_nearby">Nepavyko rasti žmonių, su kuriais būtų galima apsikeisti.</string>
+    <string name="swap_nearby">Apsikeitimas netoliese</string>
+    <string name="swap_scanning_for_peers">Ieškoma netoliese esančių žmonių…</string>
+    <string name="swap_people_nearby">Žmonės netoliese</string>
+    <string name="nearby_splash__document_tree">Ieškoti repozitorijų ir tinklaviečių USB OTG.</string>
+    <string name="nearby_splash__read_external_storage">Ieškoti repozitorijų ir tinklaviečių SD kortelėje.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Abi pusės turi turėti %1$s, kad galėtų naudotis netoliese funkcija.</string>
 </resources>
