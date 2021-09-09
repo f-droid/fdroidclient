@@ -529,4 +529,7 @@
     <string name="banner_no_internet">Няма интернет</string>
     <string name="share_apk_error">Грешка при споделяне на файл на приложение</string>
     <string name="apps">Приложения</string>
+    <string name="swap_wifi_vpn_conflict">Конфликт с текущия VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Този потребител не може да добавя неизвестни източници, включително нови хранилища</string>
+    <string name="has_disallow_install_unknown_sources_globally">Администраторът на устройството не позволява инсталиране на приложения от неизвестни източници, включително нови хранилища</string>
 </resources>
