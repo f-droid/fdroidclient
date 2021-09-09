@@ -59,7 +59,7 @@
     <string name="menu_upgrade">Mettre à jour</string>
     <string name="details_notinstalled">Non installée</string>
     <string name="antiadslist">Cette appli comprend des publicités</string>
-    <string name="antitracklist">Cette application suit et transmet votre activité</string>
+    <string name="antitracklist">Cette Appli suit et transmet votre activité</string>
     <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
     <string name="antinonfreenetlist">Cette application propose d\'utiliser des services réseaux qui ne sont pas libres</string>
     <string name="antinonfreedeplist">Cette application s\'appuie d\'autres applications qui ne sont pas libres</string>
