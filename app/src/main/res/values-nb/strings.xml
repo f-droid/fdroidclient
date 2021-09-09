@@ -525,4 +525,8 @@
     <string name="use_pure_black_dark_theme">Bruk ren svart bakgrunn i mørkt tema</string>
     <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktivert</string>
     <string name="banner_no_internet">Ingen Internett</string>
+    <string name="swap_wifi_vpn_conflict">I konflikt med aktiv VPN.</string>
+    <string name="share_apk_error">Kunne ikke dele programfil</string>
+    <string name="has_disallow_install_unknown_sources_globally">Din enhetsadministrator tillater ikke installasjon av programmer fra ukjente kilder. Dette gjelder også nye pakkebrønner.</string>
+    <string name="has_disallow_install_unknown_sources">Ukjente kilder kan ikke legges til av denne brukeren. Dette gjelder også nye pakkebrønner.</string>
 </resources>
