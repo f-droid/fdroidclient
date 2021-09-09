@@ -521,4 +521,7 @@
     <string name="send_fdroid_metrics_json">Informe de mètriques %s como a fitxer JSON</string>
     <string name="send_fdroid_metrics_report">Envia informe de mètriques %s</string>
     <string name="share_apk_error">No es pot compartir l\'arxiu de l\'aplicació</string>
+    <string name="has_disallow_install_unknown_sources">L\'usuari actual no pot afegir fonts desconegudes, això inclou nou repositoris</string>
+    <string name="has_disallow_install_unknown_sources_globally">L\'administració del dispositiu no permet instal·lar aplicacions de fonts desconegudes, això inclou nous repositoris</string>
+    <string name="swap_wifi_vpn_conflict">Entra en conflicte amb la VPN activa!</string>
 </resources>
