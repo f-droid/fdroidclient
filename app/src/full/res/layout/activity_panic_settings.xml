@@ -18,7 +18,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/panic_settings"
-                app:navigationIcon="@drawable/ic_back"
                 style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface" />
 
     </com.google.android.material.appbar.AppBarLayout>

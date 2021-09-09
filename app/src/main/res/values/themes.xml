@@ -50,7 +50,7 @@
         <item name="mainTabSwapBackground">#fafafa</item>
         <item name="detailPanel">@drawable/details_panel_donate_background_light</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning</item>
-        <item name="backButtonDrawable">@drawable/ic_back</item>
+        <item name="backButtonDrawable">@drawable/abc_ic_ab_back_material</item>
         <item name="clearButtonDrawable">@drawable/ic_close</item>
 
         <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
