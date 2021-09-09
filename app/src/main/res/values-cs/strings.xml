@@ -529,4 +529,7 @@
     <string name="send_fdroid_metrics_json">%s hlášení metrik jako JSON soubor</string>
     <string name="send_fdroid_metrics_report">Odeslat hlášení metrik %s</string>
     <string name="share_apk_error">Sdílet aplikační soubor se nezdařilo</string>
+    <string name="swap_wifi_vpn_conflict">Konflikty s aktivní VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Tento uživatel nemůže přidávat neznámé zdroje, včetně nových repozitářů</string>
+    <string name="has_disallow_install_unknown_sources_globally">Správce vašeho zařízení nepovoluje instalaci aplikací z neznámých zdrojů, což zahrnuje i nové repozitáře</string>
 </resources>
