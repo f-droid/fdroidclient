@@ -122,7 +122,8 @@ public final class Utils {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
     };
 
-    private static RequestOptions repoAppDisplayImageOptions;
+    private static RequestOptions iconRequestOptions;
+    private static RequestOptions alwaysShowIconRequestOptions;
 
     private static Pattern safePackageNamePattern;
 
@@ -481,26 +482,33 @@ public final class Utils {
 
     /**
      * Gets the {@link RequestOptions} instance used to configure
-     * {@link Glide} instances
-     * used to display app icons.  It lazy loads a reusable static instance.
+     * {@link Glide} instances used to display app icons that should always be
+     * downloaded.  It lazy loads a reusable static instance.
      */
-    public static RequestOptions getRepoAppDisplayImageOptions() {
-        if (repoAppDisplayImageOptions == null) {
-            repoAppDisplayImageOptions = new RequestOptions()
+    public static RequestOptions getAlwaysShowIconRequestOptions() {
+        if (alwaysShowIconRequestOptions == null) {
+            alwaysShowIconRequestOptions = new RequestOptions()
+                    .onlyRetrieveFromCache(false)
                     .error(R.drawable.ic_repo_app_default)
                     .fallback(R.drawable.ic_repo_app_default);
         }
-        return repoAppDisplayImageOptions;
+        return alwaysShowIconRequestOptions;
     }
 
     /**
-     * If app has an iconUrl we feed that to UIL, otherwise we ask the PackageManager which will
-     * return the app's icon directly when the app is installed.
-     * We fall back to the placeholder icon otherwise.
+     * Write app icon into the view, downloading it as necessary and if the
+     * settings allow it.  Fall back to the placeholder icon otherwise.
+     *
+     * @see Preferences#isBackgroundDownloadAllowed()
      */
     public static void setIconFromRepoOrPM(@NonNull App app, ImageView iv, Context context) {
-        RequestOptions options = Utils.getRepoAppDisplayImageOptions();
-        Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(options).into(iv);
+        if (iconRequestOptions == null) {
+            iconRequestOptions = new RequestOptions()
+                    .error(R.drawable.ic_repo_app_default)
+                    .fallback(R.drawable.ic_repo_app_default);
+        }
+        iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
+        Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(iconRequestOptions).into(iv);
     }
 
     // this is all new stuff being added

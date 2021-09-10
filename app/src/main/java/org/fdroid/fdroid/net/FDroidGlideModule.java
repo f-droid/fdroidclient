@@ -17,6 +17,9 @@ import org.fdroid.fdroid.Preferences;
 
 import androidx.annotation.NonNull;
 
+/**
+ * The one time initialization of Glide.
+ */
 @GlideModule
 public class FDroidGlideModule extends AppGlideModule {
     @Override

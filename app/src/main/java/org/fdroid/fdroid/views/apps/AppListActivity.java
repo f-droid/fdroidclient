@@ -36,6 +36,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,13 +57,6 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -182,6 +186,13 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         appView.setAdapter(appAdapter);
 
         parseIntentForSearchQuery();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Glide.with(this).applyDefaultRequestOptions(new RequestOptions()
+                .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));
     }
 
     private void parseIntentForSearchQuery() {

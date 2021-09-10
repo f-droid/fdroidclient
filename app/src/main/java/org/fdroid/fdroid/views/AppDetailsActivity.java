@@ -42,12 +42,14 @@ import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -196,6 +198,9 @@ public class AppDetailsActivity extends AppCompatActivity
         updateNotificationsForApp();
         refreshStatus();
         registerAppStatusReceiver();
+
+        Glide.with(this).applyDefaultRequestOptions(new RequestOptions()
+                .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));
     }
 
     /**

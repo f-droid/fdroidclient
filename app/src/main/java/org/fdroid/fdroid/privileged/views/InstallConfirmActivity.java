@@ -81,7 +81,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         appName.setText(app.name);
         Glide.with(this)
                 .load(app.getIconUrl(this))
-                .apply(Utils.getRepoAppDisplayImageOptions())
+                .apply(Utils.getAlwaysShowIconRequestOptions())
                 .into(appIcon);
 
         tabHost.setup();
