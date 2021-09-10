@@ -449,10 +449,14 @@ public class SwapService extends Service {
 
         WifiApControl ap = WifiApControl.getInstance(this);
         if (ap != null) {
-            if (wasHotspotEnabledBeforeSwap()) {
-                ap.enable();
-            } else {
-                ap.disable();
+            try {
+                if (wasHotspotEnabledBeforeSwap()) {
+                    ap.enable();
+                } else {
+                    ap.disable();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
