@@ -38,6 +38,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -119,6 +122,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private int updateIntervalPrevious;
 
     private LinearSmoothScroller topScroller;
+
+    private RequestManager glideRequestManager;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -608,6 +613,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             } else {
                 installHistoryPref.setTitle(R.string.install_history);
             }
+        } else if (Preferences.PREF_OVER_DATA.equals(key) || Preferences.PREF_OVER_WIFI.equals(key)) {
+            if (glideRequestManager == null) {
+                glideRequestManager = Glide.with(getContext());
+            }
+            glideRequestManager.applyDefaultRequestOptions(new RequestOptions()
+                    .onlyRetrieveFromCache(Preferences.get().isBackgroundDownloadAllowed()));
         }
     }
 }

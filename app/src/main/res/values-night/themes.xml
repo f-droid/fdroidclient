@@ -47,7 +47,7 @@
         <item name="appListItem">#ffffff</item>
         <item name="lightGrayTextColor">#a6a6a6</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning</item>
-        <item name="backButtonDrawable">@drawable/ic_back</item>
+        <item name="backButtonDrawable">@drawable/abc_ic_ab_back_material</item>
         <item name="clearButtonDrawable">@drawable/ic_close</item>
         <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
 

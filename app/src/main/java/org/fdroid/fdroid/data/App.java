@@ -10,6 +10,7 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.LocaleList;
@@ -721,6 +722,17 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return description.replace("\n", "<br>");
     }
 
+    /**
+     * Get the URL with the standard path for displaying in a browser.
+     */
+    @NonNull
+    public Uri getShareUri(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return Uri.parse(repo.address).buildUpon()
+                .path(String.format("/packages/%s/", packageName))
+                .build();
+    }
+
     public String getIconUrl(Context context) {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
         if (TextUtils.isEmpty(iconUrl)) {
@@ -1160,7 +1172,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String getLiberapayUri() {
         return TextUtils.isEmpty(liberapay) ? null : "https://liberapay.com/" + liberapay;
     }
-
 
     /**
      * @see App#autoInstallVersionName for why this uses a getter while other member variables are

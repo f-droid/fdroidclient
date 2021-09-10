@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.bumptech.glide.Glide;
+
 import org.fdroid.fdroid.DeleteCacheService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.work.CleanCacheWorker;
@@ -21,6 +23,7 @@ public class DeviceStorageReceiver extends BroadcastReceiver {
             CleanCacheWorker.force(context);
             if (percentageFree <= 2) {
                 DeleteCacheService.deleteAll(context);
+                Glide.get(context).clearDiskCache();
             }
         }
     }
