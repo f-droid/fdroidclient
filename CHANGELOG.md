@@ -1,3 +1,11 @@
+### 1.14-alpha2 (2021-09-10)
+
+* Improved icon management with limited Data/WiFi settings
+
+* Sharing an app URL now uses the correct repo (#1946)
+
+* Nearby swap fixes
+
 ### 1.14-alpha1 (2021-09-03)
 
 * Improved Nearby workflow and navigation, with lots of bug fixes.

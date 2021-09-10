@@ -6,6 +6,8 @@
 
 * Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)
 
+* Improved icon management with limited Data/WiFi settings
+
 * Improve offline, nearby sharing
 
 * Block adding new repos when device admin disallows "Unknown Sources"
