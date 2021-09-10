@@ -72,7 +72,7 @@ public class NearbyViewBinder {
     private static View swapView;
 
     NearbyViewBinder(final AppCompatActivity activity, FrameLayout parent) {
-        swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, parent, true);
+        swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_nearby, parent, true);
 
         TextView subtext = swapView.findViewById(R.id.both_parties_need_fdroid_text);
         subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid,
