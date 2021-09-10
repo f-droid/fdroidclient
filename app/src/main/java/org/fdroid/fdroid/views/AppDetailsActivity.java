@@ -284,7 +284,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     app.name, app.summary, app.packageName);
 
             Intent uriIntent = new Intent(Intent.ACTION_SEND);
-            uriIntent.setData(Uri.parse(String.format("https://f-droid.org/packages/%s/", app.packageName)));
+            uriIntent.setData(app.getShareUri(this));
             uriIntent.putExtra(Intent.EXTRA_TITLE, app.name);
 
             Intent textIntent = new Intent(Intent.ACTION_SEND);
