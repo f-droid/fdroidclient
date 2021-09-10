@@ -119,10 +119,7 @@ public class NearbyViewBinder {
         }
 
         final String writeExternalStorage = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
-        if (externalStorage != null
-                || PackageManager.PERMISSION_GRANTED
-                != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
+        if (externalStorage != null) {
             nearbySplash.setVisibility(View.GONE);
             TextView readExternalStorageText = swapView.findViewById(R.id.read_external_storage_text);
             readExternalStorageText.setVisibility(View.VISIBLE);
