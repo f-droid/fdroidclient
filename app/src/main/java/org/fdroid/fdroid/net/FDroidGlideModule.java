@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.NonNull;
-
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.module.AppGlideModule;
@@ -16,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
+import androidx.annotation.NonNull;
+
 @GlideModule
 public class FDroidGlideModule extends AppGlideModule {
     @Override
@@ -23,7 +24,9 @@ public class FDroidGlideModule extends AppGlideModule {
         builder.setDefaultTransitionOptions(Drawable.class,
                 DrawableTransitionOptions.withCrossFade()).setDefaultTransitionOptions(Bitmap.class,
                 BitmapTransitionOptions.withCrossFade())
-                .setDefaultRequestOptions(new RequestOptions().onlyRetrieveFromCache(!Preferences.get()
-                        .isBackgroundDownloadAllowed()).timeout(FDroidApp.getTimeout()));
+                .setDefaultRequestOptions(new RequestOptions()
+                        .format(DecodeFormat.PREFER_RGB_565)
+                        .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed())
+                        .timeout(FDroidApp.getTimeout()));
     }
 }
