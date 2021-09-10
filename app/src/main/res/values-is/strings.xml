@@ -520,4 +520,9 @@
     <string name="notification_channel_swaps_title">Býtti</string>
     <string name="notification_channel_installs_description">Birtir tilkynningar vegna uppsetningar forrita.</string>
     <string name="notification_channel_installs_title">Uppsetningar</string>
+    <string name="theme_follow_system">Fylgja stýrikerfi</string>
+    <string name="use_pure_black_dark_theme">Nota hreinan svartan bakgrunn í dökku þema</string>
+    <string name="banner_no_data_or_wifi">Hvorki virkt gagnasamband né Wi-Fi</string>
+    <string name="banner_no_internet">Engin internettenging</string>
+    <string name="send_to_fdroid_metrics">Senda gögn um notkun</string>
 </resources>

@@ -540,4 +540,8 @@
     <string name="banner_no_data_or_wifi">Peruna connessione mòbile o Wifi ativa</string>
     <string name="banner_no_internet">Chene ìnternet</string>
     <string name="share_apk_error">Cumpartzidura de su documentu de s\'aplicatzione fallida</string>
+    <string name="apps">Aplicatziones</string>
+    <string name="swap_wifi_vpn_conflict">Cunflitos cun sa VPN ativa!</string>
+    <string name="has_disallow_install_unknown_sources">Custu impreadore non podet annànghere fontes disconnotas, chi incluint fintzas sos depòsitos noos</string>
+    <string name="has_disallow_install_unknown_sources_globally">S\'amministradore de su dispositivu tuo non permitit s\'installatzione de aplicatzione dae fontes disconnotas, cosa chi incluit sos depòsitos noos</string>
 </resources>

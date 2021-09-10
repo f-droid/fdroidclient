@@ -349,7 +349,7 @@
     <string name="swap_nearby">Iomlaid am fagas</string>
     <string name="swap_scanning_for_peers">A’ lorg nan daoine am fagas…</string>
     <string name="swap_people_nearby">Daoine am fagas</string>
-    <string name="swap_scan_qr">Sganaich an còd QR</string>
+    <string name="swap_scan_qr">Còd QR</string>
     <string name="swap_choose_apps">Tagh aplacaidean</string>
     <string name="swap_scan_or_type_url">Feumaidh an dàrna neach an còd QR a sganadh no URL an neach eile a sgrìobhadh ann am brabhsair.</string>
     <string name="swap_dont_show_again">Na seall seo a-rithist</string>
@@ -532,4 +532,8 @@
     <string name="installIncompatible">Chan eil an aplacaid co-chòrdail leis an uidheam agad, an stàlaich thu co-dhiù i\?</string>
     <string name="SignatureMismatch">Chaidh an tionndadh ùr a shoidhneadh le iuchair dhiofraichte on tionndadh roimhe. Airson an tionndadh ùr a stàladh, feumaidh tu an seann-tionndadh a thoirt air falbh an toiseach. Dèan seo is feuch ris a-rithist. (Thoir an aire gun suath an dì-stàladh bàn dàta inntearnail sam bith a chaidh a stòradh leis an aplacaid)</string>
     <string name="app_name">F-Droid</string>
+    <string name="apps">Aplacaidean</string>
+    <string name="swap_wifi_vpn_conflict">Tha còmhstri le VPN gnìomhach ann!</string>
+    <string name="has_disallow_install_unknown_sources">Chan fhaod an cleachdaiche seo tùsan nach aithne dhuinn a chur ris, tha seo a’ gabhail a-staigh ionadan-tasgaidh ùra</string>
+    <string name="has_disallow_install_unknown_sources_globally">Cha cheadaich rianaire an uidheim agad gun stàlaich thu aplacaidean o thùs nach aithne dhuinn, tha seo a’ gabhail a-staigh ionadan-tasgaidh ùra</string>
 </resources>

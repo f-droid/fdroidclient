@@ -40,17 +40,17 @@
     <string name="enable_nfc_send">Activează trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizări automate</string>
     <string name="unstable_updates">Actualizări instabile</string>
-    <string name="login_name">Nume utilizator</string>
+    <string name="login_name">Nume de utilizator</string>
     <string name="login_password">Parola</string>
-    <string name="no_such_app">Nu există aceasta aplicație.</string>
+    <string name="no_such_app">Nici o aplicație găsită.</string>
     <string name="login_title">Necesită autentificare</string>
     <string name="system_installer">Extensie privilegiată</string>
     <string name="unstable_updates_summary">Sugerează actualizări și la versiunile instabile</string>
     <string name="repo_error_empty_username">Nume utilizator gol, autentificare neschimbată</string>
     <string name="repo_edit_credentials">Schimbă parola</string>
     <string name="local_repo_name">Numele depozitului local</string>
-    <string name="local_repo_name_summary">Titlu depozitului local, găzduit de dispozitivul dumneavoastră, folosit la anunțare: %s</string>
-    <string name="notify_on">Arată o notificare atunci când există actualizări ale aplicațiilor</string>
+    <string name="local_repo_name_summary">Titlu depozitului local, folosit la anunțare: %s</string>
+    <string name="notify_on">Arată o notificare atunci când sunt disponibile actualizări</string>
     <string name="local_repo_https_on">Folosește o conexiune criptată HTTPS:// pentru depozitul local</string>
     <string name="about_source">Cod sursă</string>
     <string name="about_license">Licență</string>
@@ -213,9 +213,7 @@
     <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
     <string name="repo_provider">Depozit: %s</string>
     <string name="update_auto_download">Descarcă automat actualizările</string>
-    <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le
-        instala
-    </string>
+    <string name="update_auto_download_summary">Actualizările sunt descărcate automat și veți fi notificați pentru a le instala</string>
     <string name="useTorSummary">Pentru a îți proteja intimitatea, forțează folosirea Tor pentru descărcări. Necesită Orbot</string>
     <string name="no_handler_app">Nu există nici o aplicație disponibilă care sa poată folosi %s.</string>
     <string name="install_confirm">are nevoie de acces la</string>
@@ -238,7 +236,7 @@
     <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
     <string name="install_error_notify_title">Eroare la instalarea %s</string>
     <string name="update_auto_install">Instalează automat actualizările</string>
-    <string name="update_auto_install_summary">Descarcă și instalează actualizările aplicațiilor în fundal</string>
+    <string name="update_auto_install_summary">Descarcă și instalează actualizările aplicațiilor în fundal, arătând o notificare</string>
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
     <string name="keep_install_history_summary">Toate instalările și dezinstalările se notează într-un jurnal privat</string>
     <string name="system_installer_on">Folosiți Privileged Extension pentru a instala, actualiza și a înlătura pachete</string>
@@ -371,7 +369,7 @@
     <string name="download_404">Fișierul dorit nu a fost găsit.</string>
     <string name="app_list_download_ready">Descărcat, gata de instalare</string>
     <string name="app_installed_media">Fișierul instalat în %s</string>
-    <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în această locație. Va rugăm sa i-o acordați în ecranul următor pentru a putea continua cu instalarea.</string>
+    <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în spațiul de stocare. Va rugăm sa acordați permisiunea în ecranul următor pentru a continua instalarea.</string>
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
     <string name="not_on_same_wifi">Dispozitivul dumneavoastră nu este pe aceeași rețea Wi-Fi cu depozitul local pe care tocmai l-ați adăugat! Încercați să vă conectați la această rețea: %s</string>
     <string name="touch_to_configure_local_repo">Atingeți pentru a vedea detalii și a permite celorlalți să primească aplicațiile dumneavoastră.</string>
@@ -380,11 +378,11 @@
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
     <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
     <string name="swap_connection_misc_error">Eroare produsă în timpul conectării la dispozitiv, nu se poate face schimbul!</string>
-    <string name="app_details__incompatible_mismatched_signature">Semnătură diferită de cea instalată</string>
+    <string name="app_details__incompatible_mismatched_signature">Semnătură diferită de versiunea instalată</string>
     <string name="app_details__no_versions__show_incompat_versions">Pentru a afișa aici și versiunile incompatibile, activați setarea \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">Nici o versiune nu are o semnătură compatibilă</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Nici o versiune nu este compatibilă cu acest dispozitiv</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Versiunea instalată nu este compatibilă cu cele disponibile. Dacă dezinstalați aplicația veți putea vedea și instala versiunile compatibile. Acesta se întâmplă cel mai des atunci când aplicațiile sunt instalate din Google Play sau din alte surse, dacă sunt semnate cu un certificat diferit.</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nici o versiune compatibilă cu dispozitivul</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Versiunea instalată nu este compatibilă cu nici o versiune disponibilă. Dezinstalând aplicația veți putea vedea și instala versiuni compatibile. Aceasta se întâmplă de obicei aplicațiilor instalate din Google Play sau alte surse, dacă sunt semnate cu un alt certificat.</string>
     <string name="app_list__dismiss_app_update">Actualizare ignorată</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitate ignorată</string>
     <string name="app_list__dismiss_downloading_app">Descărcare anulată</string>
@@ -433,8 +431,8 @@
     <string name="repo_user_mirrors">Folosire servere de rezervă</string>
     <string name="over_wifi">Prin Wi-Fi</string>
     <string name="over_data">Prin date mobile</string>
-    <string name="over_network_always_summary">Folosește mereu această conexiune dacă este disponibilă</string>
-    <string name="over_network_on_demand_summary">Folosește această conexiune doar dacă apăs descărcare</string>
+    <string name="over_network_always_summary">Folosește mereu această conexiune când este disponibilă</string>
+    <string name="over_network_on_demand_summary">Folosește această conexiune doar când apăs pe descărcare</string>
     <string name="over_network_never_summary">Nu descărca niciodată nimic prin această conexiune</string>
     <string name="antidisabledalgorithmlist">Aplicația are o semnătură slab securizată</string>
     <string name="antiknownvulnlist">Aplicația conține o vulnerabilitate de securitate cunoscută</string>

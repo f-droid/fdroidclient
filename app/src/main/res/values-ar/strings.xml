@@ -220,7 +220,7 @@
     <string name="swap_wifi_device_name">اسم الجهاز</string>
     <string name="swap_cant_find_peers">لا يمكن العثور على من كنت تبحث عنه؟</string>
     <string name="swap_send_fdroid">إرسال اف-درويد</string>
-    <string name="apps">تطبيقات</string>
+    <string name="apps">التطبيقات</string>
     <string name="swap_no_peers_nearby">لا يمكن العثور على شخص في مكان قريب للمبادلة معه.</string>
     <string name="swap_connecting">جارٍ الاتصال</string>
     <string name="swap_confirm">تأكيد المبادلة</string>
@@ -557,4 +557,5 @@
     <string name="share_apk_error">تعذر مشاركة ملف التطبيق</string>
     <string name="has_disallow_install_unknown_sources">لا يمكن إضافة مصادر غير معروفة بواسطة هذا المستخدم ، بما في ذلك عمليات اضافة مستودعات جديدة</string>
     <string name="has_disallow_install_unknown_sources_globally">لا يسمح مسؤول جهازك بتثبيت التطبيقات من مصادر غير معروفة، والتي تتضمن مستودعات جديدة</string>
+    <string name="swap_wifi_vpn_conflict">يتعارض مع VPN النشط!</string>
 </resources>
