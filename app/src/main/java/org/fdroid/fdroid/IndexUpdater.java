@@ -26,6 +26,7 @@ package org.fdroid.fdroid;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources.NotFoundException;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import android.util.Log;
@@ -453,12 +454,16 @@ public class IndexUpdater {
      * Server index XML can include optional {@code install} and {@code uninstall}
      * requests.  This processes those requests, figuring out whether the client
      * should always accept, prompt the user, or ignore those requests on a
-     * per repo basis.  There is also a global preference as a failsafe.
+     * per repo basis.  There is also a compile-time option as a failsafe.
      *
-     * @see Preferences#allowPushRequests()
      */
     void processRepoPushRequests(List<RepoPushRequest> requestEntries) {
-        if (!Preferences.get().allowPushRequests()) {
+        try {
+            if (!context.getResources().getBoolean(R.bool.config_allowPushRequests)) {
+                return;
+            }
+        } catch (NotFoundException e) {
+            Utils.debugLog(TAG, "allowPushRequests configuration not found, defaulting to false");
             return;
         }
         for (RepoPushRequest repoPushRequest : requestEntries) {

@@ -47,9 +47,6 @@
         downloading, takes affect next app restart.</string>
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
-    <string name="allow_push_requests">Allow repos to install/uninstall apps</string>
-    <string name="allow_push_requests_summary">Repo metadata can include "push requests" to install or uninstall apps
-    </string>
     <string name="other">Other</string>
 
     <string name="update_interval">Automatic update interval</string>
