@@ -46,6 +46,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,6 +84,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private TextView emptyState;
     private EditText searchInput;
     private ImageView sortImage;
+    private View hiddenAppNotice;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
 
     private interface SortClause {
@@ -152,6 +154,15 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
+        hiddenAppNotice = findViewById(R.id.hiddenAppNotice);
+        hiddenAppNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
+                getApplicationContext().startActivity(intent);
+            }
+        });
         emptyState = (TextView) findViewById(R.id.empty_state);
 
         View backButton = findViewById(R.id.back);
@@ -225,6 +236,10 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         return string.toString();
     }
 
+    private void setShowHiddenAppsNotice(boolean show) {
+        hiddenAppNotice.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -240,6 +255,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
+        setShowHiddenAppsNotice(false);
+        appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
         appAdapter.setAppCursor(cursor);
         if (cursor.getCount() > 0) {
             emptyState.setVisibility(View.GONE);

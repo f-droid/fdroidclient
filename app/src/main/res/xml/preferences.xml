@@ -84,10 +84,12 @@
             android:defaultValue="false"
             android:key="incompatibleVersions"
             android:title="@string/show_incompat_versions" />
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="showAntiFeatureApps"
-            android:title="@string/show_anti_feature_apps" />
+        <MultiSelectListPreference
+            android:title="@string/show_anti_feature_apps"
+            android:defaultValue="@array/antifeaturesValues"
+            android:key="showAntiFeatures"
+            android:entries="@array/antifeaturesNames"
+            android:entryValues="@array/antifeaturesValues"/>
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="ignoreTouchscreen"

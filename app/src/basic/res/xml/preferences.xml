@@ -76,11 +76,13 @@
                 android:title="@string/show_incompat_versions"
                 android:defaultValue="false"
                 android:key="incompatibleVersions"/>
-        <SwitchPreferenceCompat
-                android:title="@string/show_anti_feature_apps"
-                android:defaultValue="false"
-                android:key="showAntiFeatureApps"/>
-        <SwitchPreferenceCompat
+        <MultiSelectListPreference
+            android:title="@string/show_anti_feature_apps"
+            android:defaultValue="@array/antifeaturesValues"
+            android:key="showAntiFeatures"
+            android:entries="@array/antifeaturesNames"
+            android:entryValues="@array/antifeaturesValues"/>
+        <SwitchPreference
                 android:title="@string/force_touch_apps"
                 android:defaultValue="false"
                 android:key="ignoreTouchscreen"/>
