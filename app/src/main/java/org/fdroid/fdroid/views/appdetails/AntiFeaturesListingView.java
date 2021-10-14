@@ -38,10 +38,103 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.HashMap;
+
 public class AntiFeaturesListingView extends RecyclerView {
+
+    static HashMap<String, String> antiFeatureDescriptions;
+    static HashMap<String, Integer> antiFeatureIcons;
 
     public AntiFeaturesListingView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+        if (antiFeatureDescriptions == null) {
+            antiFeatureDescriptions = new HashMap<>();
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antiads_key),
+                    context.getString(R.string.antiadslist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antitrack_key),
+                    context.getString(R.string.antitracklist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antinonfreenet_key),
+                    context.getString(R.string.antinonfreenetlist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antinonfreead_key),
+                    context.getString(R.string.antinonfreeadlist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antinonfreedep_key),
+                    context.getString(R.string.antinonfreedeplist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antiupstreamnonfree_key),
+                    context.getString(R.string.antiupstreamnonfreelist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antinonfreeassets_key),
+                    context.getString(R.string.antinonfreeassetslist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antidisabledalgorithm_key),
+                    context.getString(R.string.antidisabledalgorithmlist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antiknownvuln_key),
+                    context.getString(R.string.antiknownvulnlist)
+            );
+            antiFeatureDescriptions.put(
+                    context.getString(R.string.antinosource_key),
+                    context.getString(R.string.antinosourcesince)
+            );
+        }
+
+        if (antiFeatureIcons == null) {
+            antiFeatureIcons = new HashMap<>();
+            antiFeatureIcons.put(
+                    context.getString(R.string.antiads_key),
+                    R.drawable.ic_antifeature_ads
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antitrack_key),
+                    R.drawable.ic_antifeature_tracking
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antinonfreenet_key),
+                    R.drawable.ic_antifeature_nonfreenet
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antinonfreead_key),
+                    R.drawable.ic_antifeature_nonfreeadd
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antinonfreedep_key),
+                    R.drawable.ic_antifeature_nonfreedep
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antiupstreamnonfree_key),
+                    R.drawable.ic_antifeature_upstreamnonfree
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antinonfreeassets_key),
+                    R.drawable.ic_antifeature_nonfreeassets
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antidisabledalgorithm_key),
+                    R.drawable.ic_antifeature_disabledalgorithm
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antiknownvuln_key),
+                    R.drawable.ic_antifeature_knownvuln
+            );
+            antiFeatureIcons.put(
+                    context.getString(R.string.antinosource_key),
+                    R.drawable.ic_antifeature_nosourcesince
+            );
+        }
     }
 
     public void setApp(final App app) {
@@ -67,7 +160,7 @@ public class AntiFeaturesListingView extends RecyclerView {
                 holder.antiFeatureIcon.setBackgroundDrawable(
                         ContextCompat.getDrawable(getContext(), antiFeatureIcon(antiFeatureName)));
                 holder.antiFeatureText.setText(
-                        getAntiFeatureDescriptionText(holder.antiFeatureText.getContext(), antiFeatureName));
+                        getAntiFeatureDescriptionText(antiFeatureName));
                 holder.entireView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -105,57 +198,21 @@ public class AntiFeaturesListingView extends RecyclerView {
 
     }
 
-    public static String getAntiFeatureDescriptionText(Context context, String antiFeatureName) {
-        switch (antiFeatureName) {
-            case "Ads":
-                return context.getString(R.string.antiadslist);
-            case "Tracking":
-                return context.getString(R.string.antitracklist);
-            case "NonFreeNet":
-                return context.getString(R.string.antinonfreenetlist);
-            case "NonFreeAdd":
-                return context.getString(R.string.antinonfreeadlist);
-            case "NonFreeDep":
-                return context.getString(R.string.antinonfreedeplist);
-            case "UpstreamNonFree":
-                return context.getString(R.string.antiupstreamnonfreelist);
-            case "NonFreeAssets":
-                return context.getString(R.string.antinonfreeassetslist);
-            case "DisabledAlgorithm":
-                return context.getString(R.string.antidisabledalgorithmlist);
-            case "KnownVuln":
-                return context.getString(R.string.antiknownvulnlist);
-            case "NoSourceSince":
-                return context.getString(R.string.antinosourcesince);
-            default:
-                return antiFeatureName;
+    public static String getAntiFeatureDescriptionText(String antiFeatureName) {
+        String description = antiFeatureDescriptions.get(antiFeatureName);
+        if (description == null) {
+            return antiFeatureName;
         }
+
+        return description;
     }
 
     public static @DrawableRes int antiFeatureIcon(String antiFeatureName) {
-        switch (antiFeatureName) {
-            case "Ads":
-                return R.drawable.ic_antifeature_ads;
-            case "Tracking":
-                return R.drawable.ic_antifeature_tracking;
-            case "NonFreeNet":
-                return R.drawable.ic_antifeature_nonfreenet;
-            case "NonFreeAdd":
-                return R.drawable.ic_antifeature_nonfreeadd;
-            case "NonFreeDep":
-                return R.drawable.ic_antifeature_nonfreedep;
-            case "UpstreamNonFree":
-                return R.drawable.ic_antifeature_upstreamnonfree;
-            case "NonFreeAssets":
-                return R.drawable.ic_antifeature_nonfreeassets;
-            case "DisabledAlgorithm":
-                return R.drawable.ic_antifeature_disabledalgorithm;
-            case "KnownVuln":
-                return R.drawable.ic_antifeature_knownvuln;
-            case "NoSourceSince":
-                return R.drawable.ic_antifeature_nosourcesince;
-            default:
-                return R.drawable.ic_cancel;
+        Integer icon = antiFeatureIcons.get(antiFeatureName);
+        if (icon == null) {
+            return R.drawable.ic_cancel;
         }
+
+        return icon;
     }
 }

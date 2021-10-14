@@ -1139,12 +1139,22 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     /**
      * @return if the given app should be filtered out based on the
-     * {@link Preferences#PREF_SHOW_ANTI_FEATURE_APPS Show Anti-Features Setting}
+     * {@link Preferences#PREF_SHOW_ANTI_FEATURES Show Anti-Features Setting}
      */
     public boolean isDisabledByAntiFeatures() {
-        return this.antiFeatures != null
-                && this.antiFeatures.length > 0
-                && !Preferences.get().showAppsWithAntiFeatures();
+        if (this.antiFeatures == null) {
+            return false;
+        }
+
+        Set<String> shownAntiFeatures = Preferences.get().showAppsWithAntiFeatures();
+
+        for (String antiFeature : this.antiFeatures) {
+            if (!shownAntiFeatures.contains(antiFeature)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Nullable

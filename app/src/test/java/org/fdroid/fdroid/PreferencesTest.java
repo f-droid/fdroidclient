@@ -116,7 +116,7 @@ public class PreferencesTest {
                 preferences.isForceOldIndexEnabled());
         assertEquals(defaults.getBoolean(Preferences.PREF_PREVENT_SCREENSHOTS, false),
                 preferences.preventScreenshots());
-        assertEquals(defaults.getBoolean(Preferences.PREF_SHOW_ANTI_FEATURE_APPS, false),
+        assertEquals(defaults.getStringSet(Preferences.PREF_SHOW_ANTI_FEATURES, null),
                 preferences.showAppsWithAntiFeatures());
         assertEquals(defaults.getBoolean(Preferences.PREF_SHOW_INCOMPAT_VERSIONS, false),
                 preferences.showIncompatibleVersions());

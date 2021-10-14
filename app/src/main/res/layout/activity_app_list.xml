@@ -82,6 +82,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_card"/>
 
+    <TextView
+        android:id="@+id/hiddenAppNotice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_card"
+        android:drawableStart="@drawable/ic_error"
+        android:drawablePadding="4dp"
+        android:text="@string/app_list_results_hidden_antifeature_settings"
+        android:visibility="gone"/>
+
     <!-- Don't center, only show it at the top because a keyboard will usually be shown at the bottom of the screen,
          covering most of this layout. -->
     <TextView
@@ -90,7 +107,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_card"
+        app:layout_constraintTop_toBottomOf="@+id/hiddenAppNotice"
         android:visibility="gone"
         style="@style/AppListEmptyText"
         android:text="@string/empty_search_available_app_list"/>
@@ -103,7 +120,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_card"
+        app:layout_constraintTop_toBottomOf="@+id/hiddenAppNotice"
         android:visibility="visible"
         android:scrollbars="vertical" />
 

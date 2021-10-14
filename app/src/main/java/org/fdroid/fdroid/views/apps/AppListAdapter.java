@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.apps;
 
 import android.database.Cursor;
+import android.view.View;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
@@ -14,18 +15,21 @@ import androidx.recyclerview.widget.RecyclerView;
 class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController> {
 
     private Cursor cursor;
+    private Runnable hasHiddenAppsCallback;
     private final AppCompatActivity activity;
-    private final AppListItemDivider divider;
 
     AppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        divider = new AppListItemDivider(activity);
         setHasStableIds(true);
     }
 
     public void setAppCursor(Cursor cursor) {
         this.cursor = cursor;
         notifyDataSetChanged();
+    }
+
+    public void setHasHiddenAppsCallback(Runnable callback) {
+        hasHiddenAppsCallback = callback;
     }
 
     @NonNull
@@ -40,6 +44,28 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
         cursor.moveToPosition(position);
         final App app = new App(cursor);
         holder.bindModel(app);
+
+        if (app.isDisabledByAntiFeatures()) {
+            holder.itemView.setVisibility(View.GONE);
+            holder.itemView.setLayoutParams(
+                    new RecyclerView.LayoutParams(
+                            0,
+                            0
+                    )
+            );
+
+            if (this.hasHiddenAppsCallback != null) {
+                this.hasHiddenAppsCallback.run();
+            }
+        } else {
+            holder.itemView.setVisibility(View.VISIBLE);
+            holder.itemView.setLayoutParams(
+                    new RecyclerView.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+            );
+        }
     }
 
     @Override
@@ -51,17 +77,5 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     @Override
     public int getItemCount() {
         return cursor == null ? 0 : cursor.getCount();
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-        recyclerView.addItemDecoration(divider);
-    }
-
-    @Override
-    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.removeItemDecoration(divider);
-        super.onDetachedFromRecyclerView(recyclerView);
     }
 }

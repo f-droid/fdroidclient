@@ -80,6 +80,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     PrivilegedInstaller.isExtensionInstalledCorrectly(context)
                             != PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES);
         }
+
         editor.apply();
     }
 
@@ -91,7 +92,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_THEME = "theme";
     public static final String PREF_USE_PURE_BLACK_DARK_THEME = "usePureBlackDarkTheme";
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
-    public static final String PREF_SHOW_ANTI_FEATURE_APPS = "showAntiFeatureApps";
+    public static final String PREF_SHOW_ANTI_FEATURES = "showAntiFeatures";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
     public static final String PREF_PROMPT_TO_SEND_CRASH_REPORTS = "promptToSendCrashReports";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
@@ -170,7 +171,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             DateUtils.HOUR_IN_MILLIS,
     };
 
-    private boolean showAppsWithAntiFeatures;
+    private Set<String> showAppsWithAntiFeatures;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
@@ -585,18 +586,15 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
-     * in PREF_SHOW_ANTI_FEATURE_APPS.
+     * in PREF_SHOW_ANTI_FEATURES.
      */
-    public boolean showAppsWithAntiFeatures() {
-        // migrate old preference to new key
-        if (isInitialized("hideAntiFeatureApps")) {
-            boolean oldPreference = preferences.getBoolean("hideAntiFeatureApps", false);
-            preferences.edit().putBoolean(PREF_SHOW_ANTI_FEATURE_APPS, !oldPreference).apply();
+    public Set<String> showAppsWithAntiFeatures() {
+        if (!isInitialized(PREF_SHOW_ANTI_FEATURES)) {
+            initialize(PREF_SHOW_ANTI_FEATURES);
+            showAppsWithAntiFeatures = preferences.getStringSet(
+                    PREF_SHOW_ANTI_FEATURES, null);
         }
-        if (!isInitialized(PREF_SHOW_ANTI_FEATURE_APPS)) {
-            initialize(PREF_SHOW_ANTI_FEATURE_APPS);
-            showAppsWithAntiFeatures = preferences.getBoolean(PREF_SHOW_ANTI_FEATURE_APPS, IGNORED_B);
-        }
+
         return showAppsWithAntiFeatures;
     }
 
@@ -622,7 +620,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         uninitialize(key);
 
         switch (key) {
-            case PREF_SHOW_ANTI_FEATURE_APPS:
+            case PREF_SHOW_ANTI_FEATURES:
                 for (ChangeListener listener : showAppsRequiringAntiFeaturesListeners) {
                     listener.onPreferenceChange();
                 }

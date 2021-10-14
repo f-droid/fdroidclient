@@ -79,7 +79,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             Preferences.PREF_OVER_DATA,
             Preferences.PREF_UPDATE_INTERVAL,
             Preferences.PREF_UPDATE_NOTIFICATION_ENABLED,
-            Preferences.PREF_SHOW_ANTI_FEATURE_APPS,
+            Preferences.PREF_SHOW_ANTI_FEATURES,
             Preferences.PREF_SHOW_INCOMPAT_VERSIONS,
             Preferences.PREF_THEME,
             Preferences.PREF_USE_PURE_BLACK_DARK_THEME,
@@ -306,7 +306,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 checkSummary(key, R.string.show_incompat_versions_on);
                 break;
 
-            case Preferences.PREF_SHOW_ANTI_FEATURE_APPS:
+            case Preferences.PREF_SHOW_ANTI_FEATURES:
                 checkSummary(key, R.string.show_anti_feature_apps_on);
                 break;
 
