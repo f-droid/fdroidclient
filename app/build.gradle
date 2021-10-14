@@ -41,10 +41,16 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    ext {
+        APP_NAME = "@string/app_name"
+        APP_NAME_DEBUG = "@string/app_name_debug"
+    }
+
     buildTypes {
         // use proguard on debug too since we have unknowingly broken
         // release builds before.
         all {
+            manifestPlaceholders = [ applicationLabel: APP_NAME ]
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
@@ -53,6 +59,7 @@ android {
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
         debug {
+            manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
