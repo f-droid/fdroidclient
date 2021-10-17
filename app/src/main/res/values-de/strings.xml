@@ -140,7 +140,7 @@
     <string name="open_qr_code_scanner">QR-Code-Scanner öffnen</string>
     <string name="swap_welcome">Willkommen bei F-Droid!</string>
     <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
-    <string name="about_source">Quelltext</string>
+    <string name="about_source">Quellcode</string>
     <string name="app_incompatible">Inkompatibel</string>
     <string name="links">Verweise</string>
     <string name="back">Zurück</string>
@@ -456,7 +456,7 @@
     <string name="share_repository">Paketquelle teilen</string>
     <string name="allow_push_requests">Paketquellen App-Installationen erlauben</string>
     <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten</string>
-    <string name="antinosourcesince">Der Quelltext ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
+    <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
     <string name="send_history_csv">%s Installationsverlauf als CSV-Datei</string>
@@ -524,4 +524,15 @@
     <string name="has_disallow_install_unknown_sources">Unbekannte Quellen können von diesem Benutzer nicht hinzugefügt werden, einschließlich neuer Repositories</string>
     <string name="has_disallow_install_unknown_sources_globally">Ihr Geräteadministrator lässt die Installation von Apps aus unbekannten Quellen nicht zu, einschließlich neuer Repositories</string>
     <string name="swap_wifi_vpn_conflict">Konflikte mit aktivem VPN!</string>
+    <string name="antinonfreead">Nicht-quelloffene Erweiterungen</string>
+    <string name="antinonfreenet">Nicht-quelloffene Netzwerkdienste</string>
+    <string name="antinonfreeassets">Nicht-quelloffene Bestandteile</string>
+    <string name="antiknownvuln">Bekannte Sicherheitslücke</string>
+    <string name="antinosource">Quellcode nicht mehr verfügbar</string>
+    <string name="antiupstreamnonfree">Originalcode nicht quelloffen</string>
+    <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
+    <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Antifeature-Einstellungen ausgeblendet.</string>
+    <string name="antiads">Werbung</string>
+    <string name="antitrack">Tracking</string>
+    <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
 </resources>
