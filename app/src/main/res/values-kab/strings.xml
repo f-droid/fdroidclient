@@ -365,8 +365,6 @@
     <string name="over_network_never_summary">Werǧin ad d-tsaliḍ s tuqqna-a</string>
     <string name="over_network_on_demand_summary">Seqdec tuqqna-a mi ara ad senndeɣ kan ɣef sali-d</string>
     <string name="over_network_always_summary">Seqdec yal tikkelt tuqqna-a ma tella</string>
-    <string name="allow_push_requests_summary">Timsersiwt metadata tezmer ad tegber isuturen n usebdded neɣ tukksa n isnasen</string>
-    <string name="allow_push_requests">Sireg i temsersiwin ad sbeddent/ad kksent isnasen</string>
     <string name="install_history_summary">Wali aɣmis uslig n usebdded d tukksa</string>
     <string name="unstable_updates_summary">Sumer aleqqem i ileqman ur nṛessi ara</string>
     <string name="notification_channel_updates_title">Isedγiten</string>

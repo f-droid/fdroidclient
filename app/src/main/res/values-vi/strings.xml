@@ -477,12 +477,10 @@
     <string name="undo">Hoàn tác</string>
     <string name="notification_channel_installs_description">Hiển thị các thông báo cài đặt ứng dụng.</string>
     <string name="notification_channel_installs_title">Cài đặt</string>
-    <string name="allow_push_requests">Cho phép các kho ứng dụng cài đặt/gỡ cài đặt các ứng dụng</string>
     <string name="send_installed_apps">Chia sẻ các ứng dụng đã cài đặt</string>
     <string name="notification_channel_updates_description">Hiển thị thông báo cập nhật ứng dụng và kho ứng dụng.</string>
     <string name="notification_channel_updates_title">Cập nhật</string>
     <string name="app_list__dismiss_installing_app">Cài đặt bị huỷ</string>
-    <string name="allow_push_requests_summary">Dữ liệu meta của kho có thể bao gồm các yêu cầu đẩy để cài đặt hoặc gỡ cài đặt các ứng dụng</string>
     <string name="swap_toast_closing_nearby_after_timeout">Tính năng Lân cận đã bị đóng vì nó không hoạt động.</string>
     <string name="scan_removable_storage_summary">Tìm các kho ứng dụng trong kho lưu trữ gắn ngoài như thẻ SD và USB</string>
     <string name="nearby_splash__document_tree">Tìm kiếm các kho và máy chủ dự phòng trong USB OTG.</string>

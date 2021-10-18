@@ -459,8 +459,6 @@
     <string name="install_history_summary">Vedi il registro privato di tutte le installazioni e rimozioni</string>
     <string name="send_version_and_uuid">Invia versione e UUID ai server</string>
     <string name="send_version_and_uuid_summary">Includi la versione di quest\'app e un ID casuale e unico quando scarichi, si applica al prossimo avvio dell\'app.</string>
-    <string name="allow_push_requests">Permetti ai repository di installare/disinstallare app</string>
-    <string name="allow_push_requests_summary">I metadati dei repository possono includere richieste push per installare o rimuovere app</string>
     <string name="updates_disabled_by_settings">Tutti gli aggiornamenti disattivati per impostazioni dati/WiFi</string>
     <string name="antinosourcesince">Il codice sorgente non è più disponibile, aggiornamenti non possibili.</string>
     <string name="share_repository">Condividi repository</string>

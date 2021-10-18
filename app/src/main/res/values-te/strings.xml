@@ -325,11 +325,9 @@
     <string name="force_old_index_summary">బగ్స్ లేదా అనుకూలత సమస్యలు ఉంటే, XML అనువర్తన సూచికను ఉపయోగించండి</string>
     <string name="install_history_summary">అన్ని ఇన్‌స్టాల్‌లు మరియు అన్‌ఇన్‌స్టాల్‌ల ప్రైవేట్ లాగ్‌ను చూడండి</string>
     <string name="send_version_and_uuid_summary">ఈ అనువర్తనం యొక్క సంస్కరణను మరియు డౌన్‌లోడ్ చేసేటప్పుడు యాదృచ్ఛిక, ప్రత్యేకమైన ID ని చేర్చండి, తదుపరి అనువర్తన పున art ప్రారంభంపై ప్రభావం చూపుతుంది.</string>
-    <string name="allow_push_requests">అనువర్తనాలను ఇన్‌స్టాల్ చేయడానికి / అన్‌ఇన్‌స్టాల్ చేయడానికి రెపోలను అనుమతించండి</string>
     <string name="send_history_csv">%s స్థాపన చరిత్రను CSV ఫైల్‌గా</string>
     <string name="over_data">డేటా ద్వారా</string>
     <string name="update_auto_download_summary">నవీకరణలు స్వయంచాలకంగా డౌన్‌లోడ్ చేయబడతాయి మరియు వాటిని ఇన్‌స్టాల్ చేయమని మీకు తెలియజేయబడుతుంది</string>
-    <string name="allow_push_requests_summary">రెపో మెటాడేటా అనువర్తనాలను ఇన్‌స్టాల్ చేయడానికి లేదా అన్‌ఇన్‌స్టాల్ చేయడానికి పుష్ అభ్యర్థనలను కలిగి ఉంటుంది</string>
     <string name="keep_install_history_summary">అన్ని ఇన్‌స్టాల్‌లు మరియు అన్‌ఇన్‌స్టాల్‌ల లాగ్‌ను ప్రైవేట్ స్టోర్‌లో నిల్వ చేయండి</string>
     <string name="swap_setting_up_bluetooth">బ్లూటూత్ ఏర్పాటు…</string>
     <string name="update_auto_install_summary">నోటిఫికేషన్‌ను చూపిస్తూ నేపథ్యంలో అనువర్తనాలను డౌన్‌లోడ్ చేయండి మరియు నవీకరించండి</string>

@@ -443,8 +443,6 @@
     <string name="install_history_summary">Bekijk het privélogboek van alle installaties en deïnstallaties</string>
     <string name="send_version_and_uuid">Verzend versie en UUID naar servers</string>
     <string name="send_version_and_uuid_summary">Voeg het versienummer van deze app toe en een willekeurige unieke ID tijdens het downloaden. Werkt als u de app opnieuw start.</string>
-    <string name="allow_push_requests">Sta bronnen toe aps te installeren en te verwijderen</string>
-    <string name="allow_push_requests_summary">Bron-metagegevens kunnen push-requests bevatten om apps te installeren of te verwijderen</string>
     <string name="scan_removable_storage_title">Scan verwijderbare media</string>
     <string name="scan_removable_storage_toast">%s wordt gescand…</string>
     <string name="scan_removable_storage_summary">Zoek naar pakketbronnen op verwijderbare opslagmedia, zoals SD-kaarten en USB-sticks</string>

@@ -466,8 +466,6 @@
     <string name="send_version_and_uuid_summary">לכלול את גרסת היישומון ומזהה אקראי וייחודי בעת ההורדה, יחול עם הפעלת היישומון מחדש.</string>
     <string name="share_repository">שיתוף מאגר</string>
     <string name="antinosourcesince">קוד המקור אינו זמין עוד, אין עדכונים.</string>
-    <string name="allow_push_requests">לאפשר למאגרים להתקין/להסיר יישומונים</string>
-    <string name="allow_push_requests_summary">נתוני העל של המאגרים כוללים בקשות דחיפה להתקין או להסיר יישומונים</string>
     <string name="send_install_history">שליחת היסטוריית ההתקנות</string>
     <string name="send_history_csv">%s היסטוריית ההתקנות כקובץ CSV</string>
     <string name="updates_disabled_by_settings">כל העדכונים מושבתים בהגדרות תקשורת הנתונים/רשת אלחוטית</string>

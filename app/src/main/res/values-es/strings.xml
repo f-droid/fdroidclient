@@ -456,10 +456,8 @@
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
-    <string name="allow_push_requests">Dejar a repositorios instalar/desinstalar</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
     <string name="send_history_csv">%s instalar histórico como un archivo CSV</string>
-    <string name="allow_push_requests_summary">Los metadatos del repositorio pueden incluir peticiones «push» para instalar o desinstalar aplicaciones</string>
     <string name="about_forum">Foro de soporte</string>
     <string name="app_suggested">Sugerido</string>
     <string name="app_size">Tamaño: %1$s</string>

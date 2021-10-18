@@ -463,8 +463,6 @@
     <string name="send_version_and_uuid">Przesyłaj na serwery wersję i UUID</string>
     <string name="send_version_and_uuid_summary">Dołączaj wersję tej aplikacji i losowy, unikalny identyfikator podczas pobierania. Zacznie działać po restarcie aplikacji</string>
     <string name="share_repository">Udostępnij repozytorium</string>
-    <string name="allow_push_requests">Zezwalaj repozytoriom instalować/odinstalowywać aplikacje</string>
-    <string name="allow_push_requests_summary">Metadane repozytorium mogą zawierać żądania push do instalowania lub odinstalowywania aplikacji</string>
     <string name="antinosourcesince">Kod źródłowy nie jest już dostępny, nie są możliwe aktualizacje.</string>
     <string name="send_install_history">Wyślij historię instalacji</string>
     <string name="send_history_csv">Historia instalacji %s jako plik CSV</string>

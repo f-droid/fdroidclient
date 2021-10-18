@@ -155,7 +155,6 @@
     <string name="install_history_summary">Skatīt visus instalāciju un atinstalāciju privātos žurnālus</string>
     <string name="send_version_and_uuid">Sūtīt versiju un UUID uz serveriem</string>
     <string name="send_version_and_uuid_summary">Lejuplādējot, iekļaut šīs aplikācijas versiju un nejaušu, unikālu ID. Tiek realizēts nakāmās aplikācijas uzsākšanas reizē.</string>
-    <string name="allow_push_requests">Atļaut repozitorijām uzinstalēt/atinstalēt aplikācijas</string>
     <string name="over_wifi">Izmantojot Wi-Fi</string>
     <string name="over_data">Izmantojot mobilos datus</string>
     <string name="over_network_always_summary">Vienmēr izmantot šo savienojumu, kad tas ir pieejams</string>

@@ -162,7 +162,6 @@
     <string name="local_repo_https_on">Fersifere HTTPS:// ferbining brûke foar jo lokale opslachplak</string>
     <string name="local_repo_name_summary">De advertearre titel fan jo lokale opslachplak: %s</string>
     <string name="local_repo_name">Namme fan Lokaal Opslachplak</string>
-    <string name="allow_push_requests">Opslachplakken tastean om applikaasjes te ynstallearren en fuort te smiten</string>
     <string name="force_old_index_summary">Yn it gefal fan flaters of kompatibiliteits problemen, bruk de XML applikaasje yndeks</string>
     <string name="force_old_index">Âlde yndeksearrings opmaak ferplichtsje</string>
     <string name="toast_metrics_in_install_history">It %s Gegevens rapport is sichtber yn it Ynstallaasje Skiednis oersjoch</string>

@@ -467,8 +467,6 @@
     <string name="prompt_to_send_crash_reports">Запыт на адпраўленне справаздач пра хібы</string>
     <string name="prompt_to_send_crash_reports_summary">Збор інфармацыі пра хібы і запыт на адпраўленне яе распрацоўшчыку</string>
     <string name="share_repository">Падзяліцца рэпазіторыям</string>
-    <string name="allow_push_requests">Дазволіць рэпазіторыям усталёўваць/выдаляць праграмы</string>
-    <string name="allow_push_requests_summary">Метаданыя рэпазіторыяў могуць уключаць запыты на ўсталёўку ці выдаленне праграм</string>
     <string name="antinosourcesince">Зыходны код больш не даступны — абнаўляць немагчыма.</string>
     <string name="send_install_history">Адправіць гісторыю ўсталёвак</string>
     <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>

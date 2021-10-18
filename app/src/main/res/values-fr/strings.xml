@@ -457,7 +457,6 @@
     <string name="send_version_and_uuid_summary">Inclure dans cette version de cette appli et un identifiant unique aléatoire lors du téléchargement. Prendra effet au prochain redémarrage de l’appli.</string>
     <string name="share_repository">Partager le dépôt</string>
     <string name="send_install_history">Envoyer l\'historique des installations</string>
-    <string name="allow_push_requests">Autoriser les dépôts à installer/désinstaller des applications</string>
     <string name="send_installed_apps">Partager les applis installées</string>
     <string name="menu_open">Ouvrir</string>
     <string name="antinosourcesince">Le code source n’est plus accessible, aucune mise à jour n’est possible.</string>
@@ -468,7 +467,6 @@
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
     <string name="menu_downgrade">Rétrograder</string>
-    <string name="allow_push_requests_summary">Les métadonnées des dépôts peuvent contenir des requêtes push pour installer ou désinstaller des applications</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Essayer</string>

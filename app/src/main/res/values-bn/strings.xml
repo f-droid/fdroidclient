@@ -142,8 +142,6 @@
     <string name="over_data">ডাটার সাহায্যে</string>
     <string name="over_wifi">Wi-Fi এর মাধ্যমে</string>
     <string name="update_interval">স্বয়ংক্রিয় আপডেট ব্যবধান</string>
-    <string name="allow_push_requests_summary">রেপো মেটাডেটা অ্যাপটি ইনস্টল বা আনইনস্টল করার জন্য পুশ অনুরোধগুলি অন্তর্ভুক্ত করতে পারে</string>
-    <string name="allow_push_requests">রিপোকে অ্যাপ্লিকেশন ইনস্টল/আনইনস্টল করতে দাও</string>
     <string name="force_old_index_summary">বাগ বা সামঞ্জস্যের সমস্যা থাকলে XML অ্যাপ্লিকেশন সূচকটি ব্যবহার করুন</string>
     <string name="force_old_index">পুরাতন সূচি বিন্যাস ফোর্স করে চালু করুন</string>
     <string name="send_version_and_uuid_summary">এই অ্যাপ্লিকেশনটির সংস্করণ এবং একটি এলোমেলো, অনন্য আইডি ডাউনলোড করার সময় অন্তর্ভুক্ত করো, যা পরবর্তীতে অ্যাপ্লিকেশনটি পুনরায় চালু করার সময় প্রভাবিত হয়।</string>

@@ -475,8 +475,6 @@
     <string name="install_history_summary">عرض السجل الخاص لجميع عمليات التثبيت وعمليات الإزالة</string>
     <string name="send_version_and_uuid">إرسال نسخة و عنوان UUID إلى الخوادم</string>
     <string name="send_version_and_uuid_summary">تضمين إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل ، يسري مفعوله عند إعادة تشغيل التطبيق التالية.</string>
-    <string name="allow_push_requests">السماح للمستودعات بتثبيت / إلغاء تثبيت التطبيقات</string>
-    <string name="allow_push_requests_summary">يمكن أن تتضمن بيانات تعريف المستودع طلبات الدفع لتثبيت التطبيقات أو إلغاء تثبيتها</string>
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
     <string name="repo_exists_add_mirror">هذه نسخة من %1$s ، هل تريد إضافتها كمرآة؟</string>
     <string name="antinosourcesince">لم يعد الكود المصدري متاحا ، ولا توجد تحديثات ممكنة.</string>

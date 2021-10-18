@@ -435,8 +435,6 @@
     <string name="install_history_summary">すべてのインストールとアンインストールのプライベートログを表示します</string>
     <string name="send_version_and_uuid">バージョンおよび UUID をサーバーに送信</string>
     <string name="send_version_and_uuid_summary">ダウンロード時に、このアプリのバージョン、ランダムな一意の ID を含めます。アプリを再起動すると反映します。</string>
-    <string name="allow_push_requests">リポジトリにアプリのインストール/アンインストールを許可</string>
-    <string name="allow_push_requests_summary">リポジトリのメタデータに、アプリをインストールまたはアンインストールするプッシュリクエストを含めることができます</string>
     <string name="send_installed_apps">インストールされたアプリを共有</string>
     <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
     <string name="updates_disabled_by_settings">データ/WiFi の設定によって、すべてのアップデートが無効になっています</string>

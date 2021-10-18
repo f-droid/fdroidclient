@@ -450,8 +450,6 @@
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
     <string name="share_repository">Depoyu Paylaş</string>
-    <string name="allow_push_requests">Depoların uygulamaları yüklemesine/kaldırmasına izin ver</string>
-    <string name="allow_push_requests_summary">Depo üst verileri, uygulamaları yüklemek veya kaldırmak için push istekleri içerebilir</string>
     <string name="antinosourcesince">Kaynak kodu artık mevcut değil, güncelleme mümkün değil.</string>
     <string name="send_install_history">Yükleme Geçmişini Gönder</string>
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>

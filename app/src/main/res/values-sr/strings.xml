@@ -406,7 +406,6 @@
     <string name="install_history_summary">Види лични дневник свих уградњи и брисања</string>
     <string name="send_version_and_uuid">Шаљи издање и УУИД служитељима</string>
     <string name="send_version_and_uuid_summary">Укључи издање овог програма и случајни, јединствени ЛБ приликом преузимања, ступа на снагу од следећег покретања програма.</string>
-    <string name="allow_push_requests">Дозволи ризницама да уграђују/уклањају програме</string>
     <string name="over_wifi">Преко бежичне мреже</string>
     <string name="over_data">Преко мобилне мреже</string>
     <string name="over_network_always_summary">Увек користи ову врсту везе када је доступна</string>
@@ -465,7 +464,6 @@
     <string name="antiknownvulnlist">Овај програм садржи познату безбедносну рањивост</string>
     <string name="share_repository">Дели ризницу</string>
     <string name="antinosourcesince">Изворни код није више доступан, нема доступних надградњи.</string>
-    <string name="allow_push_requests_summary">Метаподаци о ризници могу садржати захтеве за уградњу и уклањање програма</string>
     <string name="send_history_csv">%s белешке о уградњи као датотека ЦСВ-а</string>
     <string name="updates_disabled_by_settings">Све надградње су онемогућене поставкама мобилне/бежичне мреже</string>
     <string name="send_installed_apps_csv">Aпликације уграђени преко Ф-дроида као датотеке ЦСВ-а</string>

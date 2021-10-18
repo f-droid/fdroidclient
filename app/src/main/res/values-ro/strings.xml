@@ -454,8 +454,6 @@
     <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
-    <string name="allow_push_requests">Permite depozitelor sa dez/instaleze aplicații</string>
-    <string name="allow_push_requests_summary">Metadatele depozitelor pot include acțiuni de instalare sau dezinstalare aplicații</string>
     <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza.</string>
     <string name="send_install_history">Trimite istoricul instalărilor</string>
     <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>

@@ -445,8 +445,6 @@
     <string name="install_history_summary">نمایش گزارش خصوصی از تمام نصب و حذف‌ها</string>
     <string name="send_version_and_uuid">فرستادن نگارش و شناسهٔ یکتا به کارسازها</string>
     <string name="send_version_and_uuid_summary">شامل نگارش این کاره و یک شناسهٔ یکتای تصادفی هنگام بارگیری. شروع دوبارهٔ بعدی کاره را تحت تأثیر قرار می‌دهد.</string>
-    <string name="allow_push_requests">اجازه به مخازن برای نصب/حذف کاره‌ها</string>
-    <string name="allow_push_requests_summary">فرادادهٔ مخزن می‌تواند شامل درخواست‌های ارسالی برای نصب یا حذف کاره‌ها باشد</string>
     <string name="updates_disabled_by_settings">تمامی به‌روز رسانی‌ها به دست تنظیمات داده/وای‌فای مسدود شدند</string>
     <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست. به‌روز رسانی ناممکن است.</string>
     <string name="share_repository">هم‌رسانی مخزن</string>

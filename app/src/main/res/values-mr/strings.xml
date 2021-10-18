@@ -107,7 +107,6 @@
     <string name="over_data">मोबाईल डेटा मार्फत</string>
     <string name="over_wifi">वाय-फाय</string>
     <string name="update_interval">स्वयंचलित आद्ययापन कालावधी</string>
-    <string name="allow_push_requests">भांडाराला अँप स्थापना/अस्थापना करण्याचा अधिकार दया</string>
     <string name="force_old_index">जुन्या अनुक्रम पद्धतीचा आग्रही वापर</string>
     <string name="send_version_and_uuid">सर्वर वर आवृत्ती आणि युयुआयडी</string>
     <string name="keep_install_history_summary">सर्व स्थापना आणि अस्थापनेची नोंद वैयक्तिक भांडारात ठेवा</string>
@@ -335,7 +334,6 @@
     <string name="local_repo_name_summary">तुमच्या स्थानिक भांडाराचे जाहिरात शीर्षक : %s</string>
     <string name="update_auto_install_summary">अँप्सना डाऊनलोड करून अज्ञानवासात फक्त सूचना दाखवून अद्ययावत करा</string>
     <string name="other">अन्य</string>
-    <string name="allow_push_requests_summary">भांडारणातील मेटाडेटा अप्पसची स्थापना अथवा अस्थापना करण्याच्या आग्रही मागण्या सामावून घेऊ</string>
     <string name="menu_launch">उघडा</string>
     <string name="back">मागे</string>
     <string name="yes">होय</string>

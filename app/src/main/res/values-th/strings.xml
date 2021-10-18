@@ -289,7 +289,6 @@
     <string name="send_install_history">ส่งประวัติการติดตั้ง</string>
     <string name="force_old_index">บังคับใช้ดัชนีรูปแบบเก่า</string>
     <string name="over_data">ผ่านเครือข่ายมือถือ</string>
-    <string name="allow_push_requests">อนุญาตให้ใช้แหล่งโปรแกรมภายนอก ก่อนดำเนินการติดตั้งหรือถอนการติดตั้งเอง</string>
     <string name="scan_removable_storage_toast">กำลังค้นหา %s…</string>
     <string name="disabled">ปิดอยู่</string>
     <string name="allow">อนุญาต</string>
@@ -359,7 +358,6 @@
     <string name="over_network_on_demand_summary">ใช้การเชื่อมต่อนี้เมื่อฉันกดดาวน์โหลดเท่านั้น</string>
     <string name="over_network_always_summary">ใช้การเชื่อมต่อนี้เสมอเมื่อสามารถใช้งานได้</string>
     <string name="over_wifi">ผ่าน Wi-Fi</string>
-    <string name="allow_push_requests_summary">ข้อมูลเมตาสามารถรวมคำขอเเบบเเสดงการเเจ้งเตือนเพื่อติดตั้งหรือถอนการติดตั้งแอพ</string>
     <string name="force_old_index_summary">ในกรณีพบปัญหาหรือประเด็นความเข้ากันได้ ใช้ดัชนีเเอพXML</string>
     <string name="send_version_and_uuid_summary">รวมเวอร์ชันของแอปนี้และรหัสที่ไม่ซ้ำกันแบบสุ่มเมื่อดาวน์โหลดจะมีผลต่อการรีสตาร์ทแอปครั้งต่อไป</string>
     <string name="send_version_and_uuid">ส่งรุ่นเเละ UUID ไปที่เซิร์ฟเวอร์</string>

@@ -462,8 +462,6 @@
     <string name="send_history_csv">%s historii instalací jako CSV soubor</string>
     <string name="send_version_and_uuid">Poslat verzi a nikde se neopakující identifikátor na servery</string>
     <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodný, neopakující se identifikátor (změna se projeví po restartu aplikace).</string>
-    <string name="allow_push_requests">Umožnit repozitářům instalovat/odinstalovat aplikace</string>
-    <string name="allow_push_requests_summary">Metadata repozitáře mohou obsahovat push požadavky na instalaci nebo odinstalaci aplikací</string>
     <string name="updates_disabled_by_settings">Veškeré aktualizace vypnuty kvůli nastavením dat/WiFi</string>
     <string name="antinosourcesince">Zdrojový kód už není k dispozici, aktualizace nejsou možné.</string>
     <string name="share_repository">Sdílet repozitář</string>

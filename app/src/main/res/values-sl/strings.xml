@@ -450,8 +450,6 @@
     <string name="prompt_to_send_crash_reports_summary">Zbiraj podatke o zrušitvah in vprašaj ali jih želiš poslati razvijalcu</string>
     <string name="share_repository">Deli skladišče</string>
     <string name="antinosourcesince">Izvirna koda ni več na voljo, zato posodobitve niso možne.</string>
-    <string name="allow_push_requests">Dovoli skladiščem, da nameščajo/odstranjujejo aplikacije</string>
-    <string name="allow_push_requests_summary">Meta podatki skladišč lahko vsebujejo push prošnje (push requests) za nameščanje ali odstranjevanje aplikacij</string>
     <string name="send_install_history">Pošlji zgodovino nameščanja</string>
     <string name="send_history_csv">%s namesti zgodovino kot CSV datoteko</string>
     <string name="updates_disabled_by_settings">Vse posodobitve so onemogočene v podatkovnih/wifi nastavitvah</string>

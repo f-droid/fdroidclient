@@ -411,7 +411,6 @@
     <string name="install_history_summary">Visualiza\'l rexistru priváu de toles des/instalaciones</string>
     <string name="send_version_and_uuid">Unviar la versión y l\'UUID a los sirvidores</string>
     <string name="send_version_and_uuid_summary">Inclúi la versión d\'esta aplicación, y una ID al debalu y única al baxar. Fai efeutu nel proximu aniciu de l\'aplicación.</string>
-    <string name="allow_push_requests">Permitir que los depósitos des/instalen aplicaciones</string>
     <string name="over_wifi">Per Wi-Fi</string>
     <string name="over_data">Per datos móviles</string>
     <string name="over_network_always_summary">Usa siempres esta conexón cuando tea disponible</string>
@@ -439,7 +438,6 @@
     <string name="swap_toast_hotspot_enabled">Activóse\'l puntu Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">¡Nun pudo activase\'l puntu Wi-Fi!</string>
     <string name="warning_scaning_qr_code">La cámara nun paez tener l\'enfoque automáticu. Quiciabes seya difícil escaniar el códigu.</string>
-    <string name="allow_push_requests_summary">Los metadatos de los depósitos puen incluyir solicitúes pa des/instalar aplicaciones</string>
     <string name="repo_add_mirror">Amestar espeyu</string>
     <string name="menu_open">Abrir</string>
     <string name="force_touch_apps">Inorar aplicaciones táutiles</string>

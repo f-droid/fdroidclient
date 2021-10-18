@@ -226,8 +226,6 @@
     <string name="send_version_and_uuid">ಆವೃತ್ತಿ ಮತ್ತು ಯುಯುಐಡಿ ಅನ್ನು ಸರ್ವರ್‌ಗಳಿಗೆ ಕಳುಹಿಸಿ</string>
     <string name="send_version_and_uuid_summary">ಡೌನ್‌ಲೋಡ್ ಮಾಡುವಾಗ ಈ ಅಪ್ಲಿಕೇಶನ್‌ನ ಆವೃತ್ತಿ ಮತ್ತು ಯಾದೃಚ್, ಅನನ್ಯ ID ಅನ್ನು ಸೇರಿಸಿ, ಇದು ಮುಂದಿನ ಅಪ್ಲಿಕೇಶನ್ ಮರುಪ್ರಾರಂಭದ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ.</string>
     <string name="antinosourcesince">ಮೂಲ ಕೋಡ್ ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿಲ್ಲ, ಯಾವುದೇ ನವೀಕರಣಗಳು ಸಾಧ್ಯವಿಲ್ಲ.</string>
-    <string name="allow_push_requests">ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು / ಅಸ್ಥಾಪಿಸಲು ರೆಪೊಗಳನ್ನು ಅನುಮತಿಸಿ</string>
-    <string name="allow_push_requests_summary">ರೆಪೊ ಮೆಟಾಡೇಟಾ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ಅಥವಾ ಅಸ್ಥಾಪಿಸಲು ಪುಶ್ ವಿನಂತಿಗಳನ್ನು ಒಳಗೊಂಡಿರಬಹುದು</string>
     <string name="send_install_history">ಸ್ಥಾಪಿಸಲಾದ ಇತಿಹಾಸವನ್ನು ಕಳುಹಿಸಿ</string>
     <string name="send_history_csv">%s ಇತಿಹಾಸವನ್ನು CSV ಫೈಲ್ ಆಗಿ ಸ್ಥಾಪಿಸಿ</string>
     <string name="updates_disabled_by_settings">ಡೇಟಾ / ವೈಫೈ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಎಲ್ಲಾ ನವೀಕರಣಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>

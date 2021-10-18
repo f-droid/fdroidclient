@@ -427,8 +427,6 @@
     <string name="install_history_summary">Εμφάνιση του ιδωτικού αρχείου καταγραφής όλων των εγκαταστάσεων και απεγκαταστάσεων</string>
     <string name="send_version_and_uuid">Αποστολή της έκδοσης και του UUID στους εξυπηρετητές</string>
     <string name="send_version_and_uuid_summary">Να περιληφθεί η έκδοση αυτής της εφαρμογής και ένας τυχαίος, μοναδικός αριθμός ταυτοποίησης με κάθε λήψη, εφαρμόζεται μετά την επόμενη επανεκκίνηση της εφαρμογής.</string>
-    <string name="allow_push_requests">Να επιτρέπεται στα αποθετήρια να εγκαθιστούν/απεγκαθιστούν εφαρμογές</string>
-    <string name="allow_push_requests_summary">Τα μεταδεδομένα του αποθετηρίου μπορεί να περιλαμβάνει αιτήματα push για να εγκαθιστά ή να απεγκαθιστά εφαρμογές</string>
     <string name="over_wifi">Mέσω Wi-Fi</string>
     <string name="over_data">Μέσω δεδομένων κινητής τηλεφωνίας</string>
     <string name="over_network_always_summary">Να χρησιμοποιείται πάντα αυτή η σύνδεση, όταν είναι διαθέσιμη</string>

@@ -425,8 +425,6 @@
     <string name="send_history_csv">%s história inštalácií ako CSV súbor</string>
     <string name="install_history_summary">Zobraziť súkromný záznam o všetkých inštaláciách a deinštaláciách</string>
     <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor (zmena sa prejaví po reštarte aplikácie).</string>
-    <string name="allow_push_requests">Povoliť repozitárom nainštalovať/odinštalovať aplikácie</string>
-    <string name="allow_push_requests_summary">Metadáta repozitára môžu zahŕňať požiadavky na inštalovanie alebo odinštalovanie aplikácií</string>
     <string name="over_network_on_demand_summary">Použiť toto pripojenie iba keď stlačím Stiahnuť</string>
     <string name="scan_removable_storage_title">Prehľadať odpojiteľné úložisko</string>
     <string name="scan_removable_storage_toast">Prehľadáva sa %s…</string>

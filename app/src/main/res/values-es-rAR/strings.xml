@@ -25,8 +25,6 @@
     <string name="send_version_and_uuid_summary">Incluir la version de esta aplicación y un ID único y aleatorio al descargar, toma efecto en el próximo reinicio.</string>
     <string name="force_old_index">Forzar formato de indexación antiguo</string>
     <string name="force_old_index_summary">En caso de bugs o problemas de compatiblidad, usá el índice XML de la aplicación</string>
-    <string name="allow_push_requests">Permitir a los repositorios instalar/desinstalar aplicaciones</string>
-    <string name="allow_push_requests_summary">Metadata del repositorio puede incluir petición push para instalar o desinstalar aplicaciones</string>
     <string name="other">Otro</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="over_wifi">Usando Wi-Fi</string>

@@ -467,10 +467,8 @@
     <string name="install_history_summary">Visualizar o registro privado de todas instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
     <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um aleatório, único ID enquanto baixar, torna-se efetivo após a reinicialização do aplicativo.</string>
-    <string name="allow_push_requests">Repositórios permitidos para instalar/desinstalar aplicativos</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas por causa das configurações de Dados/WiFi</string>
     <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível.</string>
-    <string name="allow_push_requests_summary">Repositório de metadados pode incluir requisições de envio para instalar ou desinstalar aplicativos</string>
     <string name="send_installed_apps">Compartilhar aplicativos instalados</string>
     <string name="send_installed_apps_csv">Aplicativos instalados por F-Droid com arquivo CSV</string>
     <string name="menu_open">Abrir</string>

@@ -394,7 +394,6 @@
     <string name="send_history_csv">%s installationshistorik som CSV-fil</string>
     <string name="install_history">Installationshistorik</string>
     <string name="send_version_and_uuid">Send version og UUID til servere</string>
-    <string name="allow_push_requests">Tillad depoter at installere/afinstallere apps</string>
     <string name="over_wifi">Via trådløst netværk</string>
     <string name="scan_removable_storage_title">Skan udskifteligt lager</string>
     <string name="about_forum">Hjælpe forum</string>
@@ -453,7 +452,6 @@
     <string name="repo_delete_to_overwrite">Først slettes %1$s for at tilføje den med en modstridende nøgle.</string>
     <string name="preventScreenshots_summary">Blokerer skærmbilleder fra at blive taget og skjuler program indhold fra seneste programmer skærme</string>
     <string name="hiding_dialog_warning">Advarsel: Enhver appgenvej på startskærmen fjernes også og vil skulle tilføjes manuelt igen.</string>
-    <string name="allow_push_requests_summary">Arkiv metadata kan omfatte skubbe-forespørgsler for at installere og afinstallere apps</string>
     <string name="scan_removable_storage_summary">Søg efter pakkearkiver på fjernbare lagerenheder som SD-kort og USB-drev</string>
     <string name="menu_translation">Oversættelse</string>
     <string name="main_menu__updates">Nyt</string>

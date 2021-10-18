@@ -432,8 +432,6 @@
     <string name="send_version_and_uuid">傳送版本和 UUID 至伺服器</string>
     <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，重新啟動應用程式後才能套用設定。</string>
     <string name="share_repository">分享軟體庫</string>
-    <string name="allow_push_requests">允許軟體庫安裝/解除安裝應用程式</string>
-    <string name="allow_push_requests_summary">軟體庫中介資料，可以包含安裝或解除安裝應用程式的推播請求</string>
     <string name="antinosourcesince">原始碼不再能取得，無法更新。</string>
     <string name="send_install_history">傳送安裝記錄</string>
     <string name="send_history_csv">%s 安裝記錄為 CSV 檔案</string>

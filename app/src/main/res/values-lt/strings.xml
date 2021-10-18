@@ -171,7 +171,6 @@
     <string name="install_history">Įdiegimų istorija</string>
     <string name="install_history_summary">Rodyti visų programėlių įdiegimų ir šalinimų, atliktų per F-Droid, žurnalą</string>
     <string name="send_version_and_uuid">Siųsti versiją ir UUID į serverius</string>
-    <string name="allow_push_requests">Leisti repozitorijoms įdiegti/pašalinti programėles</string>
     <string name="over_wifi">Per belaidį internetą (Wi-Fi)</string>
     <string name="over_data">Per mobiliuosius duomenis</string>
     <string name="over_network_always_summary">Visada naudoti šį ryšį, kuomet jis įjungtas</string>
@@ -426,7 +425,6 @@
     <string name="panic_will_be_wiped">Bus išdiegti ir visi duomenys pašalinti</string>
     <string name="panic_settings_summary">Veiksmai, kurie turėtų būti įvykdyti nelaimės atveju</string>
     <string name="app_details__incompatible_mismatched_signature">Skiriasi parašas nuo įdiegtos versijos</string>
-    <string name="allow_push_requests_summary">Repozitorijos metaduomenyse gali būti „push“ prašymai įdiegti ar išdiegti programėles</string>
     <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
     <string name="open_qr_code_scanner">Atidaryti QR kodo skenavimą</string>
     <string name="swap_scan_qr">QR kodas</string>

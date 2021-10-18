@@ -457,8 +457,6 @@
     <string name="send_version_and_uuid">Sendi version kaj identigilon al serviloj</string>
     <string name="send_version_and_uuid_summary">Ampleksi version de aplikaĵo kaj hazardan unikan identigilon (UUID) dum elŝutado, efikas post la sekva restarto de aplikaĵo.</string>
     <string name="share_repository">Kunhavigi deponejon</string>
-    <string name="allow_push_requests">Permesi al deponejoj (mal)instali aplikaĵojn</string>
-    <string name="allow_push_requests_summary">Metadatumoj de deponejoj povas enhavi petojn pri instali aŭ malinstali aplikaĵojn</string>
     <string name="antinosourcesince">La fontkodo ne estas plu disponebla, neniu ebla ĝisdatigo.</string>
     <string name="send_install_history">Sendi historion de instaladoj</string>
     <string name="send_history_csv">Historio de instaladoj de %s kiel CSV-dosiero</string>

@@ -417,8 +417,6 @@
     <string name="over_data">Өгөгдлөөр</string>
     <string name="over_wifi">Wi-Fi ашиглан</string>
     <string name="update_interval">Автоматаар шинэчлэх интервал</string>
-    <string name="allow_push_requests_summary">Репо мета өгөгдөлд програм суулгах эсвэл устгах түлхэх хүсэлтийг багтааж болно</string>
-    <string name="allow_push_requests">Аппуудыг суулгах / устгахыг репост зөвшөөрөх</string>
     <string name="force_old_index_summary">Алдаа, нийцтэй байдлын асуудал гарсан тохиолдолд XML програмын индексийг ашиглана уу</string>
     <string name="force_old_index">Хуучин индекс форматыг албадах</string>
     <string name="send_version_and_uuid_summary">Татаж авахдаа энэ програмын хувилбар болон санамсаргүй, өвөрмөц ID-г оруулаарай. Дараачийн аппликешныг дахин эхлүүлэхэд хүчин төгөлдөр болно.</string>
